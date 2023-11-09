@@ -6,6 +6,7 @@ logs
 node_modules/
 
 dist/
+rust/target/
 
 # Miscellaneous
 .DS_Store
