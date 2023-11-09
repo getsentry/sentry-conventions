@@ -1,0 +1,61 @@
+{
+  "name": "web_server",
+  "description": "",
+  "fields": [
+    {
+      "name": "http",
+      "description": "A general point-in-time span indicating an event"
+    },
+    {
+      "name": "http.client"
+    },
+    {
+      "name": "http.server"
+    },
+    {
+      "name": "websocket"
+    },
+    {
+      "name": "rpc"
+    },
+    {
+      "name": "grpc"
+    },
+    {
+      "name": "graphql"
+    },
+    {
+      "name": "subprocess"
+    },
+    {
+      "name": "middleware"
+    },
+    {
+      "name": "view"
+    },
+    {
+      "name": "template"
+    },
+    {
+      "name": "function"
+    },
+    {
+      "name": "function.remix"
+    },
+    {
+      "name": "function.nextjs"
+    },
+    {
+      "name": "serialize"
+    },
+    {
+      "name": "console"
+    },
+    {
+      "name": "file"
+    },
+    {
+      "name": "app"
+    }
+  ]
+}

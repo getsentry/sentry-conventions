@@ -1,0 +1,22 @@
+groups:
+  - id: sentry.mobile
+    prefix: ""
+    type: span
+    brief: >
+      This document defines semantic convention attributes in the mobile namespace used by Sentry.
+    attributes:
+      - id: blocked_main_thread
+        type: boolean
+        brief: >
+          Whether the main thread was blocked by the span.
+        examples: true
+      - id: url
+        type: string
+        brief: >
+          The URL of the resource that was fetched.
+        examples: https://example.com
+      - id: type
+        type: string
+        brief: >
+          More granular type of the operation happening.
+        examples: fetch

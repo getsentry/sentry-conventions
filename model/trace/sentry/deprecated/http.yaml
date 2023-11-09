@@ -1,0 +1,32 @@
+groups:
+  - id: sentry
+    prefix: ""
+    type: span
+    attributes:
+      id: method
+      type: string
+      brief: "Deprecated, use http.request.method instead."
+      examples: ["GET", "POST", "HEAD"]
+    attributes:
+      - id: "Encoded Body Size"
+        type: string
+        brief: "Deprecated, use http.response_content_length instead."
+        examples: 3495
+      - id: "Decoded Body Size"
+        type: string
+        brief: "Deprecated, use http.decoded_response_body_length instead."
+        examples: 3495
+      - id: "Transfer Size"
+        type: string
+        brief: "Deprecated, use http.response_transfer_size instead."
+        examples: 3495
+  - id: sentry.http
+    prefix: http
+    type: span
+    brief: >
+      This document defines semantic convention attributes in the HTTP namespace used by Sentry.
+    attributes:
+      - id: method
+        type: string
+        brief: "Deprecated, use http.request.method instead."
+        examples: ["GET", "POST", "HEAD"]

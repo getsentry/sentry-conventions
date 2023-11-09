@@ -1,0 +1,15 @@
+groups:
+  - id: sentry.thread
+    prefix: thread
+    type: span
+    brief: >
+      These attributes may be used for any operation to store information about a thread that started a span.
+    attributes:
+      - id: id
+        type: string
+        brief: "Identifier of a thread from where the span originated."
+        examples: 123456
+      - id: name
+        type: string
+        brief: "Label identifying a thread from where the span originated."
+        examples: main

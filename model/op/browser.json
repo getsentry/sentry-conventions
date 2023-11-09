@@ -1,0 +1,84 @@
+{
+  "name": "browser",
+  "description": "",
+  "fields": [
+    {
+      "name": "pageload",
+      "description": "A full page load of a web application."
+    },
+    {
+      "name": "navigation",
+      "description": "Client-side browser history change in a web application."
+    },
+    {
+      "name": "resource",
+      "description": "Resource as per [Performance Resource Timing](https://w3c.github.io/resource-timing/#sec-performanceresourcetiming). Defaults to resource.other if resource cannot be indentified."
+    },
+    {
+      "name": "resource.script"
+    },
+    {
+      "name": "resource.link"
+    },
+    {
+      "name": "resource.img"
+    },
+    {
+      "name": "resource.css"
+    },
+    {
+      "name": "resource.other"
+    },
+    {
+      "name": "browser",
+      "description": "Usage of browser APIs or functionality"
+    },
+    {
+      "name": "browser.paint"
+    },
+    {
+      "name": "ui",
+      "description": "Operations related to browser UI"
+    },
+    {
+      "name": "ui.task",
+      "description": "A task that is taken on the main UI thread. Typically used to indicate to users about things like the [Long Tasks API](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceLongTaskTiming)."
+    },
+    {
+      "name": "ui.render"
+    },
+    {
+      "name": "ui.action"
+    },
+    {
+      "name": "ui.action.click"
+    },
+    {
+      "name": "ui.react"
+    },
+    {
+      "name": "ui.react.mount"
+    },
+    {
+      "name": "ui.react.render"
+    },
+    {
+      "name": "ui.react.update"
+    },
+    {
+      "name": "ui.vue"
+    },
+    {
+      "name": "ui.svelte"
+    },
+    {
+      "name": "ui.angular"
+    },
+    {
+      "name": "ui.ember"
+    },
+    {
+      "name": "ui.livewire"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "@sentry-internal/conventions",
+  "private": true,
+  "license": "MIT",
+  "version": "0.0.1",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "unbuild"
+  },
+  "devDependencies": {
+    "@sentry-internal/typescript": "^7.79.0",
+    "typescript": "^5.2.2",
+    "unbuild": "^2.0.0"
+  },
+  "files": [
+    "dist"
+  ]
+}

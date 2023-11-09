@@ -1,0 +1,15 @@
+{
+  "name": "database",
+  "description": "Database related spans are expected to follow OpenTelemetry's Database semantic conventions when possible.",
+  "fields": [
+    {
+      "name": "db"
+    },
+    {
+      "name": "db.query"
+    },
+    {
+      "name": "cache"
+    }
+  ]
+}

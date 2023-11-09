@@ -1,0 +1,21 @@
+{
+  "name": "faas",
+  "description": "Serverless (FAAS)",
+  "fields": [
+    {
+      "name": "http"
+    },
+    {
+      "name": "grpc"
+    },
+    {
+      "name": "function.gcp"
+    },
+    {
+      "name": "function.aws"
+    },
+    {
+      "name": "function.azure"
+    }
+  ]
+}

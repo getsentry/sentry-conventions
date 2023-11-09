@@ -1,0 +1,14 @@
+{
+  "name": "general",
+  "description": "",
+  "fields": [
+    {
+      "name": "mark",
+      "description": "A general point-in-time span indicating an event"
+    },
+    {
+      "name": "function",
+      "description": "The time it took for a set of instructions to execute"
+    }
+  ]
+}

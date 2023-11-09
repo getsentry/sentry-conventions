@@ -1,0 +1,24 @@
+{
+  "name": "mobile",
+  "description": "",
+  "fields": [
+    {
+      "name": "app"
+    },
+    {
+      "name": "ui"
+    },
+    {
+      "name": "navigation"
+    },
+    {
+      "name": "file"
+    },
+    {
+      "name": "serialize"
+    },
+    {
+      "name": "http"
+    }
+  ]
+}

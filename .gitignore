@@ -5,6 +5,8 @@ logs
 # Dependency directories
 node_modules/
 
+dist/
+
 # Miscellaneous
 .DS_Store
 Thumbs.db

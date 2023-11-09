@@ -1,0 +1,68 @@
+groups:
+  - id: sentry.http
+    prefix: http
+    type: span
+    brief: >
+      This document defines semantic convention attributes in the HTTP namespace used by Sentry.
+    attributes:
+      - id: query
+        in_otel: true
+        otel_name: url.query
+        type: string
+        brief: >
+          The query string present in the URL.
+        examples: "?foo=bar&bar=baz"
+      - id: fragment
+        type: string
+        brief: >
+          The fragment present in the URI.
+        examples: "#foo=bar"
+      - id: request.method
+        in_otel: true
+        type:
+          allow_custom_values: true
+          members:
+            - id: connect
+              value: "CONNECT"
+            - id: delete
+              value: "DELETE"
+            - id: get
+              value: "GET"
+            - id: head
+              value: "HEAD"
+            - id: options
+              value: "OPTIONS"
+            - id: patch
+              value: "PATCH"
+            - id: post
+              value: "POST"
+            - id: put
+              value: "PUT"
+            - id: trace
+              value: "TRACE"
+            - id: other
+              value: "_OTHER"
+              brief: "Any HTTP method that the instrumentation has no prior knowledge of."
+        brief: "HTTP request method."
+        examples: ["GET", "POST", "HEAD"]
+      - id: response.status_code
+        in_otel: true
+        type: int
+        brief: "[HTTP response status code](https://tools.ietf.org/html/rfc7231#section-6)."
+        examples: [200]
+      - id: response_content_length
+        in_otel: true
+        otel_name: http.response.body.size
+        type: int
+        brief: "The encoded body size of the response (in bytes)."
+        examples: 3495
+      - id: decoded_response_content_length
+        in_otel: false
+        type: int
+        brief: "The decoded body size of the response (in bytes)."
+        examples: 3495
+      - id: response_transfer_size
+        in_otel: false
+        type: int
+        brief: "The transfer size of the response (in bytes)."
+        examples: 3495
