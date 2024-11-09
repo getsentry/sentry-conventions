@@ -1,5 +1,5 @@
-import * as path from "node:path";
-import * as fs from "node:fs";
+import * as fs from 'node:fs';
+import * as path from 'node:path';
 
 /**
  * Write content to a file.
@@ -10,7 +10,7 @@ function writeToFile(path: string, content: string) {
 }
 
 async function generateOps() {
-  const opDir = path.join(__dirname, "..", "model", "op");
+  const opDir = path.join(__dirname, '..', 'model', 'op');
 
   const opFiles = await fs.promises.readdir(opDir);
   writeToJs(opDir, opFiles);
@@ -18,11 +18,11 @@ async function generateOps() {
 }
 
 function writeToRust(opDir: string, opFiles: string[]) {
-  let opContent = "// This is an auto-generated file. Do not edit!\n\n";
+  let opContent = '// This is an auto-generated file. Do not edit!\n\n';
 
-  opFiles.forEach((file) => {
+  for (const file of opFiles) {
     const opPath = path.join(opDir, file);
-    const opJson = JSON.parse(fs.readFileSync(opPath, "utf-8"));
+    const opJson = JSON.parse(fs.readFileSync(opPath, 'utf-8'));
 
     const { name, description, fields } = opJson;
 
@@ -31,29 +31,29 @@ function writeToRust(opDir: string, opFiles: string[]) {
       opContent += `// Description: ${description}\n`;
     }
 
-    fields.forEach((field) => {
+    for (const field of fields) {
       if (field.description) {
-        opContent += `/// ${field.description}\n`;
+        opContent += '/// ';
+        opContent += field.description.split('\n').join('\n/// ');
+        opContent += '\n';
       }
-      opContent += `pub const ${name
+      opContent += `pub const ${name.toUpperCase().replaceAll('.', '_')}_${field.name
         .toUpperCase()
-        .replaceAll(".", "_")}_${field.name
-        .toUpperCase()
-        .replaceAll(".", "_")}_SPAN_OP: &str = "${field.name}";\n\n`;
-    });
+        .replaceAll('.', '_')}_SPAN_OP: &str = "${field.name}";\n\n`;
+    }
 
-    const opFilePath = path.join(__dirname, "..", "rust", "src", "op.rs");
+    const opFilePath = path.join(__dirname, '..', 'rust', 'src', 'op.rs');
 
     writeToFile(opFilePath, opContent);
-  });
+  }
 }
 
 function writeToJs(opDir: string, opFiles: string[]) {
-  let opContent = "// This is an auto-generated file. Do not edit!\n\n";
+  let opContent = '// This is an auto-generated file. Do not edit!\n\n';
 
-  opFiles.forEach((file) => {
+  for (const file of opFiles) {
     const opPath = path.join(opDir, file);
-    const opJson = JSON.parse(fs.readFileSync(opPath, "utf-8"));
+    const opJson = JSON.parse(fs.readFileSync(opPath, 'utf-8'));
 
     const { name, description, fields } = opJson;
 
@@ -62,30 +62,21 @@ function writeToJs(opDir: string, opFiles: string[]) {
       opContent += `// Description: ${description}\n`;
     }
 
-    fields.forEach((field) => {
+    for (const field of fields) {
       if (field.description) {
-        opContent += "/**\n";
+        opContent += '/**\n';
         opContent += ` * ${field.description}\n`;
-        opContent += " */\n";
+        opContent += ' */\n';
       }
-      opContent += `export const ${name
+      opContent += `export const ${name.toUpperCase().replaceAll('.', '_')}_${field.name
         .toUpperCase()
-        .replaceAll(".", "_")}_${field.name
-        .toUpperCase()
-        .replaceAll(".", "_")}_SPAN_OP = "${field.name}";\n\n`;
-    });
+        .replaceAll('.', '_')}_SPAN_OP = "${field.name}";\n\n`;
+    }
 
-    const opFilePath = path.join(
-      __dirname,
-      "..",
-      "packages",
-      "js",
-      "src",
-      "op.ts"
-    );
+    const opFilePath = path.join(__dirname, '..', 'packages', 'js', 'src', 'op.ts');
 
     writeToFile(opFilePath, opContent);
-  });
+  }
 }
 
 generateOps();

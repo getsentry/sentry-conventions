@@ -1,5 +1,5 @@
 {
-  "name": "@sentry-internal/conventions",
+  "name": "@sentry-internal/sentry-conventions",
   "private": true,
   "license": "MIT",
   "version": "0.0.1",
@@ -15,11 +15,8 @@
     "build": "unbuild"
   },
   "devDependencies": {
-    "@sentry-internal/typescript": "^7.79.0",
-    "typescript": "^5.2.2",
+    "typescript": "^5.6.3",
     "unbuild": "^2.0.0"
   },
-  "files": [
-    "dist"
-  ]
+  "files": ["dist"]
 }
