@@ -1,0 +1,14 @@
+{
+  "key": "http.fragment",
+  "brief": "The fragments present in the URI.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "requirement_level": {
+    "key": "recommended"
+  },
+  "example": "#details",
+  "alias": ["url.query"]
+}

@@ -1,0 +1,14 @@
+{
+  "key": "http.query",
+  "brief": "The query string present in the URL. Note that this contains the leading ? character, while the `url.query` attribute does not.",
+  "type": "string",
+  "pii": {
+    "key": "maybe",
+    "reason": "Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information."
+  },
+  "is_in_otel": false,
+  "requirement_level": {
+    "key": "recommended"
+  },
+  "example": "?foo=bar&bar=baz"
+}

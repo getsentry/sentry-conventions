@@ -6,8 +6,5 @@
     "key": "maybe"
   },
   "is_in_otel": true,
-  "requirement_level": {
-    "key": "recommended"
-  },
   "example": "/app/myapplication/http/handler/server.py"
 }

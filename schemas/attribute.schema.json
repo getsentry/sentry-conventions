@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Sentry Span Attribute Schema",
   "description": "Describes an attribute and how it's meant to be used",
   "type": "object",
@@ -102,14 +102,14 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "deprecation_reason": {
+        "replacement": {
           "type": "string"
         },
-        "replacement": {
+        "reason": {
           "type": "string"
         }
       },
-      "required": ["deprecation_reason"]
+      "required": ["replacement"]
     },
     "alias": {
       "description": "If there are attributes that alias to this attribute",

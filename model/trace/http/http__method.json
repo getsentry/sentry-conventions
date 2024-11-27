@@ -1,0 +1,17 @@
+{
+  "key": "http.method",
+  "brief": "The HTTP method used.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "requirement_level": {
+    "key": "required"
+  },
+  "example": "GET",
+  "deprecation": {
+    "replacement": "http.request.method"
+  },
+  "alias": ["http.request.method"]
+}
