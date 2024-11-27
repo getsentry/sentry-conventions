@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "@types/node": "^22.9.0"
+    "@types/node": "^22.10.0"
   },
   "workspaces": ["packages/*", "dev-packages/*"],
   "packageManager": "yarn@1.22.22",
