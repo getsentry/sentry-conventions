@@ -1,0 +1,11 @@
+{
+  "key": "http.response.header.content-length",
+  "brief": "The size of the message body sent to the recipient (in bytes)",
+  "has_dynamic_suffix": true,
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "http.response.header.custom-header=['foo', 'bar']"
+}

@@ -1,14 +1,11 @@
 {
   "key": "http.status_code",
   "brief": "The status code of the HTTP response.",
-  "type": "number",
+  "type": "integer",
   "pii": {
     "key": "false"
   },
   "is_in_otel": true,
-  "requirement_level": {
-    "key": "recommended"
-  },
   "example": 404,
   "deprecation": {
     "replacement": "http.response.status_code"

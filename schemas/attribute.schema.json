@@ -13,6 +13,10 @@
       "description": "A description of the attribute",
       "type": "string"
     },
+    "has_dynamic_suffix": {
+      "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic",
+      "type": "boolean"
+    },
     "type": {
       "description": "The type of the attribute value",
       "type": "string"
@@ -33,37 +37,6 @@
     },
     "is_in_otel": {
       "type": "boolean"
-    },
-    "requirement_level": {
-      "description": "If an attribute is required, conditionally required, recommended, or opt-in",
-      "oneOf": [
-        {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "key": {
-              "enum": ["required", "recommended", "opt-in"]
-            },
-            "reason": {
-              "type": "string"
-            }
-          },
-          "required": ["key"]
-        },
-        {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "key": {
-              "const": "conditionally_required"
-            },
-            "reason": {
-              "type": "string"
-            }
-          },
-          "required": ["key", "reason"]
-        }
-      ]
     },
     "example": {
       "description": "An example value of the attribute",

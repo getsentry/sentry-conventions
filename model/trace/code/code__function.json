@@ -6,8 +6,5 @@
     "key": "false"
   },
   "is_in_otel": true,
-  "requirement_level": {
-    "key": "recommended"
-  },
   "example": "server_request"
 }

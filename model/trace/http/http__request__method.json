@@ -6,9 +6,6 @@
     "key": "false"
   },
   "is_in_otel": true,
-  "requirement_level": {
-    "key": "required"
-  },
   "example": "GET",
   "alias": ["method", "http.method"]
 }

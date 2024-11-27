@@ -7,8 +7,5 @@
     "reason": "Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information."
   },
   "is_in_otel": false,
-  "requirement_level": {
-    "key": "recommended"
-  },
   "example": "?foo=bar&bar=baz"
 }

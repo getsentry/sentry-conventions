@@ -1,0 +1,11 @@
+{
+  "key": "http.response.header.<key>",
+  "brief": "HTTP response headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.",
+  "has_dynamic_suffix": true,
+  "type": "string[]",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "http.response.header.custom-header=['foo', 'bar']"
+}
