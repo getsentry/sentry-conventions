@@ -1,0 +1,7 @@
+{
+  "key": "stall_count",
+  "full_name": "Stall Count",
+  "brief": "A stall is when the JavaScript event loop takes longer than expected to complete. Only applies to React Native",
+  "unit": "none",
+  "platform": "mobile"
+}

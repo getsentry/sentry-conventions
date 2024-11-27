@@ -1,0 +1,7 @@
+{
+  "key": "frames_total",
+  "full_name": "Total Frames",
+  "brief": "Total frames rendered.",
+  "unit": "none",
+  "platform": "mobile"
+}

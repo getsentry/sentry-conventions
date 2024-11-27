@@ -1,0 +1,7 @@
+{
+  "key": "fid",
+  "full_name": "First Input Delay",
+  "brief": "The time from when a user first interacts with a page to the time when the browser is actually able to begin processing event handlers in response to that interaction",
+  "unit": "millisecond",
+  "platform": "web"
+}

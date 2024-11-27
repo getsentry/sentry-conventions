@@ -1,0 +1,7 @@
+{
+  "key": "inp",
+  "full_name": "Interaction to Next Paint",
+  "brief": "The time it takes for the largest contentful paint element to be rendered on the screen",
+  "unit": "millisecond",
+  "platform": "web"
+}

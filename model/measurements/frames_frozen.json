@@ -1,0 +1,7 @@
+{
+  "key": "frames_frozen",
+  "full_name": "Frozen Frames",
+  "brief": "The number of frames that took longer than 700ms to render",
+  "unit": "none",
+  "platform": "mobile"
+}

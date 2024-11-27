@@ -1,0 +1,7 @@
+{
+  "key": "app_start_warm",
+  "full_name": "App Start Warm",
+  "brief": "The time it takes for the app to start from a warm state",
+  "unit": "millisecond",
+  "platform": "mobile"
+}

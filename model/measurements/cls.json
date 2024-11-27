@@ -1,0 +1,7 @@
+{
+  "key": "cls",
+  "full_name": "Cumulative Layout Shift",
+  "brief": "Tthe sum total of all individual layout shift scores for every unexpected layout shift that occurs during the entire lifespan of the page",
+  "unit": "none",
+  "platform": "web"
+}

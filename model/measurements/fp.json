@@ -1,0 +1,7 @@
+{
+  "key": "fp",
+  "full_name": "First Paint",
+  "brief": "The time it takes for the browser to render the first pixel on the screen",
+  "unit": "millisecond",
+  "platform": "web"
+}

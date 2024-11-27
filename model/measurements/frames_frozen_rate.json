@@ -1,0 +1,7 @@
+{
+  "key": "frames_frozen_rate",
+  "full_name": "The rate of frozen frames",
+  "brief": "measurements.frames_frozen divided by the measurements.frames_total",
+  "unit": "none",
+  "platform": "mobile"
+}

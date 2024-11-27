@@ -1,0 +1,7 @@
+{
+  "key": "stall_total_time",
+  "full_name": "Total Stall Time",
+  "brief": "The total stall time is the total combined time of all stalls. Only applies to React Native.",
+  "unit": "milliseconds",
+  "platform": "mobile"
+}

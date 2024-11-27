@@ -1,0 +1,7 @@
+{
+  "key": "stall_longest_time",
+  "full_name": "Longest Stall Time",
+  "brief": "The longest stall time is the time of the longest event loop stall. Only applies to React Native.",
+  "unit": "milliseconds",
+  "platform": "mobile"
+}
