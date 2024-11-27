@@ -1,7 +1,7 @@
 {
   "key": "inp",
   "full_name": "Interaction to Next Paint",
-  "brief": "The time it takes for the largest contentful paint element to be rendered on the screen",
+  "brief": "The time it takes for the browser to render the next frame after a user interacts with the page.",
   "unit": "millisecond",
   "platform": "web"
 }
