@@ -1,0 +1,13 @@
+{
+  "key": "code.function",
+  "brief": "The method or function name, or equivalent (usually rightmost part of the code unit's name).",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "requirement_level": {
+    "key": "recommended"
+  },
+  "example": "server_request"
+}

@@ -1,0 +1,13 @@
+{
+  "key": "code.lineno",
+  "brief": "The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function",
+  "type": "number",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "requirement_level": {
+    "key": "recommended"
+  },
+  "example": 42
+}

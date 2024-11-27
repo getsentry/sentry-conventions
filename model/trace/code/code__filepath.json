@@ -1,0 +1,13 @@
+{
+  "key": "code.filepath",
+  "brief": "The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": true,
+  "requirement_level": {
+    "key": "recommended"
+  },
+  "example": "/app/myapplication/http/handler/server.py"
+}
