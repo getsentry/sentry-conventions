@@ -1,0 +1,10 @@
+{
+  "key": "sentry.origin",
+  "brief": "The origin of a span.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "auto.http.otel.fastify"
+}

@@ -1,0 +1,10 @@
+{
+  "key": "sentry.profile_id",
+  "brief": "The id of the profile associated with the span.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "123e4567e89b12d3a456426614174000"
+}

@@ -1,0 +1,10 @@
+{
+  "key": "sentry.op",
+  "brief": "The operation of a span.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "http.client"
+}

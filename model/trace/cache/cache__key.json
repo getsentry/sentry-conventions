@@ -1,0 +1,10 @@
+{
+  "key": "cache.key",
+  "brief": "The key of the cache accessed.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "my-cache-key"
+}
