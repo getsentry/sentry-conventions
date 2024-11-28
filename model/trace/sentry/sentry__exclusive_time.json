@@ -1,0 +1,10 @@
+{
+  "key": "sentry.exclusive_time",
+  "brief": "The exclusive time duration of the span.",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 1234
+}

@@ -1,0 +1,10 @@
+{
+  "key": "faas.cron",
+  "brief": "Type of the trigger which caused this function invocation.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "timer"
+}
