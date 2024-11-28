@@ -1,0 +1,11 @@
+{
+  "key": "db.query.parameter.<key>",
+  "brief": "A query parameter used in db.query.text, with <key> being the parameter name, and the attribute value being a string representation of the parameter value.",
+  "has_dynamic_suffix": true,
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "db.query.parameter.foo='123'"
+}

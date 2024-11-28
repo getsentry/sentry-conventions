@@ -1,0 +1,11 @@
+{
+  "key": "db.query.text",
+  "brief": "The database query being executed. Should be paramaterized",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "SELECT * FROM users",
+  "alias": ["db.statement"]
+}

@@ -1,0 +1,15 @@
+{
+  "key": "db.sql.bindings",
+  "brief": "The array of query bindings.",
+  "type": "string[]",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "deprecation": {
+    "replacement": "db.query.parameter.<key>",
+    "reason": "Instead of adding every binding in the db.sql.bindings attribute, add them as individual entires with db.query.parameter.<key>."
+  },
+  "example": ["1", "foo"],
+  "sdks": ["php-laravel"]
+}
