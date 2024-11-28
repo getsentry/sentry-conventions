@@ -1,0 +1,11 @@
+{
+  "key": "ai.model_id",
+  "brief": "The vendor-specific ID of the model used.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "gpt-4",
+  "alias": ["gen_ai.response.model"]
+}

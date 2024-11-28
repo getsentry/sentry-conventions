@@ -1,0 +1,10 @@
+{
+  "key": "ai.total_tokens.used",
+  "brief": "The total number of tokens used to process the prompt.",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 30
+}

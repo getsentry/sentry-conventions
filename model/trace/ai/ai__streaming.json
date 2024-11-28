@@ -1,0 +1,10 @@
+{
+  "key": "ai.streaming",
+  "brief": "Whether the request was streamed back.",
+  "type": "boolean",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": true
+}
