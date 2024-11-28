@@ -1,0 +1,10 @@
+{
+  "key": "browser.script.invoker_type",
+  "brief": "Browser script entry point type.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "event-listener"
+}

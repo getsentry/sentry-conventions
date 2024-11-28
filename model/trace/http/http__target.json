@@ -1,0 +1,14 @@
+{
+  "key": "http.target",
+  "brief": "The pathname and query string of the URL.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": true,
+  "example": "/test?foo=bar#buzz",
+  "deprecation": {
+    "replacement": "url.path",
+    "reason": "This attribute is being deprecated in favor of url.path and url.query"
+  }
+}

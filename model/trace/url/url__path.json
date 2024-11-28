@@ -1,0 +1,10 @@
+{
+  "key": "url.path",
+  "brief": "The URI path component.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": true,
+  "example": "/foo"
+}

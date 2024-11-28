@@ -1,0 +1,10 @@
+{
+  "key": "browser.script.invoker",
+  "brief": "A number representing the script character position of the script.",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 678
+}
