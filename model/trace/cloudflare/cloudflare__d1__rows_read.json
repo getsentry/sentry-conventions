@@ -1,0 +1,10 @@
+{
+  "key": "cloudflare.d1.rows_read",
+  "brief": "The number of rows read in a Cloudflare D1 operation.",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 12
+}

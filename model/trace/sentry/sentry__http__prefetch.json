@@ -1,0 +1,10 @@
+{
+  "key": "sentry.http.prefetch",
+  "brief": "If an http request was a prefetch request.",
+  "type": "boolean",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": true
+}
