@@ -1,5 +1,5 @@
 {
-  "key": "params.<key>",
+  "key": "url.path.params.<key>",
   "brief": "Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.",
   "has_dynamic_suffix": true,
   "type": "string",
@@ -7,6 +7,6 @@
     "key": "maybe"
   },
   "is_in_otel": false,
-  "example": "params.id='123'",
-  "alias": ["url.path.params.<key>"]
+  "example": "url.path.params.id='123'",
+  "alias": ["params.<key>"]
 }

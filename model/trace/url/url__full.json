@@ -6,9 +6,6 @@
     "key": "maybe"
   },
   "is_in_otel": true,
-  "example": "https://example.com",
-  "deprecation": {
-    "replacement": "url"
-  },
-  "alias": ["url"]
+  "example": "https://example.com/test?foo=bar#buzz",
+  "alias": ["url", "http.url"]
 }

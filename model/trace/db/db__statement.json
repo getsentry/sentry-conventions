@@ -1,0 +1,10 @@
+{
+  "key": "db.statement",
+  "brief": "The database statement being executed.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "SELECT * FROM users"
+}

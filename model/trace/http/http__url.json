@@ -1,11 +1,11 @@
 {
-  "key": "blocked_main_thread",
+  "key": "http.url",
   "brief": "The URL of the resource that was fetched.",
   "type": "string",
   "pii": {
     "key": "maybe"
   },
-  "is_in_otel": false,
+  "is_in_otel": true,
   "example": "https://example.com/test?foo=bar#buzz",
   "deprecation": {
     "replacement": "url.full"

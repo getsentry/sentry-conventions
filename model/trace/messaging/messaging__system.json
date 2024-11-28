@@ -1,0 +1,10 @@
+{
+  "key": "messaging.system",
+  "brief": "The messaging system as identified by the client instrumentation.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "activemq"
+}
