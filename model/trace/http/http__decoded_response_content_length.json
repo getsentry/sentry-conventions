@@ -1,0 +1,10 @@
+{
+  "key": "http.decoded_response_content_length",
+  "brief": "The decoded body size of the response (in bytes).",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 456
+}

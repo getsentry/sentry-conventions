@@ -1,0 +1,10 @@
+{
+  "key": "frames.frozen",
+  "brief": "The number of frozen frames rendered during the lifetime of the span.",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 3
+}

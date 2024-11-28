@@ -7,5 +7,6 @@
     "key": "false"
   },
   "is_in_otel": true,
-  "example": "http.response.header.custom-header=['foo', 'bar']"
+  "example": "http.response.header.custom-header=['foo', 'bar']",
+  "alias": ["http.response_content_length", "http.response.body.size"]
 }

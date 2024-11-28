@@ -1,0 +1,11 @@
+{
+  "key": "url.port",
+  "brief": "Server port number.",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": 1337,
+  "alias": ["server.port"]
+}

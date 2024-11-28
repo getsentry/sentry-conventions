@@ -1,0 +1,10 @@
+{
+  "key": "blocked_main_thread",
+  "brief": "Whether the main thread was blocked by the span.",
+  "type": "boolean",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": true
+}

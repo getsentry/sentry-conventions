@@ -1,0 +1,11 @@
+{
+  "key": "http.response.size",
+  "brief": "The transfer size of the response (in bytes).",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": 456,
+  "alias": ["http.response_transfer_size"]
+}

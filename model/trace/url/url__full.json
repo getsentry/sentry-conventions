@@ -1,0 +1,14 @@
+{
+  "key": "url.full",
+  "brief": "The URL of the resource that was fetched.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": true,
+  "example": "https://example.com",
+  "deprecation": {
+    "replacement": "url"
+  },
+  "alias": ["url"]
+}

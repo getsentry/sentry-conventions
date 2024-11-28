@@ -8,7 +8,7 @@
   "is_in_otel": true,
   "example": 123,
   "deprecation": {
-    "replacement": "http.response.header.content-length"
+    "replacement": "http.response.body.size"
   },
-  "alias": ["http.response.header.content-length", "http.response.header['content-length']"]
+  "alias": ["http.response.body.size", "http.response.header.content-length", "http.response.header['content-length']"]
 }

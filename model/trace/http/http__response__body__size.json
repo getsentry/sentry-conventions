@@ -1,0 +1,15 @@
+{
+  "key": "http.response.body.size",
+  "brief": "The encoded body size of the response (in bytes).",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": 123,
+  "alias": [
+    "http.response_content_length",
+    "http.response.header.content-length",
+    "http.response.header['content-length']"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "key": "server.address",
+  "brief": "Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "example.com",
+  "alias": ["url.domain"]
+}

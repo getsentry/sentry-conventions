@@ -1,0 +1,10 @@
+{
+  "key": "frames.total",
+  "brief": "The number of total frames rendered during the lifetime of the span.",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 60
+}
