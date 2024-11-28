@@ -1,0 +1,10 @@
+{
+  "key": "http.request.domain_lookup_end",
+  "brief": "The UNIX timestamp representing the time immediately after the browser finishes the domain-name lookup for the resource.",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 1732829555
+}

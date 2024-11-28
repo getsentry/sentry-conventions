@@ -1,0 +1,10 @@
+{
+  "key": "http.request.response_end",
+  "brief": "The UNIX timestamp representing the time immediately after the browser receives the last byte of the resource or immediately before the transport connection is closed, whichever comes first.",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 1732829555
+}
