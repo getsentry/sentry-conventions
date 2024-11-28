@@ -1,0 +1,10 @@
+{
+  "key": "cache.ttl",
+  "brief": "The ttl of the cache in seconds",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 120
+}

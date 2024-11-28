@@ -7,7 +7,7 @@
   },
   "is_in_otel": false,
   "deprecation": {
-    "key": "exception.message",
+    "replacement": "exception.message",
     "reason": "This attribute is not part of the OpenTelemetry specification and exception.message fits much better."
   },
   "alias": ["exception.message"],

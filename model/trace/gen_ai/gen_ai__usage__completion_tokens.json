@@ -8,7 +8,7 @@
   "is_in_otel": true,
   "example": 10,
   "deprecation": {
-    "key": "gen_ai.usage.output_tokens"
+    "replacement": "gen_ai.usage.output_tokens"
   },
   "alias": ["ai.completion_tokens.used", "gen_ai.usage.output_tokens"]
 }
