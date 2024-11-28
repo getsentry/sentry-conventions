@@ -1,0 +1,10 @@
+{
+  "key": "sentry.source",
+  "brief": "The source of a span, also referred to as transaction source.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "route"
+}

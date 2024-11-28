@@ -1,0 +1,11 @@
+{
+  "key": "http.route",
+  "brief": "The matched route, that is, the path template in the format used by the respective server framework.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "/users/:id",
+  "alias": ["url.template"]
+}

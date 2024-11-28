@@ -1,6 +1,6 @@
 {
   "key": "sentry.cancellation_reason",
-  "brief": "The reason why a span ended early. Usually set on idle spans like pageload spans in the browser SDK.",
+  "brief": "The reason why a span ended early.",
   "type": "string",
   "pii": {
     "key": "false"

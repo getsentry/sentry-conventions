@@ -1,0 +1,10 @@
+{
+  "key": "network.protocol.version",
+  "brief": "The actual version of the protocol used for network communication.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "1.1"
+}

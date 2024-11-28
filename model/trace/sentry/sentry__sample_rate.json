@@ -1,0 +1,10 @@
+{
+  "key": "sentry.sample_rate",
+  "brief": "The sample rate of the span.",
+  "type": "number",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 0.5
+}
