@@ -1,0 +1,11 @@
+{
+  "key": "params.<key>",
+  "brief": "Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.",
+  "has_dynamic_suffix": true,
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "params.id='123'"
+}

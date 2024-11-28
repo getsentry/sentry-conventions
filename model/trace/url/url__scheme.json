@@ -1,0 +1,10 @@
+{
+  "key": "url.scheme",
+  "brief": "The URI scheme component identifying the used protocol.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "https"
+}

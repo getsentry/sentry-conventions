@@ -1,0 +1,15 @@
+{
+  "key": "query.<key>",
+  "brief": "An item in a query string. Usually added by client-side routing frameworks like vue-router.",
+  "has_dynamic_suffix": true,
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "deprecation": {
+    "key": "url.query",
+    "note": "Instead of sending items individually in query.<key>, they should be sent all together with url.query."
+  },
+  "example": "query.id='123'"
+}
