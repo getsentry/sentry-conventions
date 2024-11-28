@@ -1,0 +1,15 @@
+{
+  "key": "fs_error",
+  "brief": "The error message of a file system error.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "deprecation": {
+    "key": "exception.message",
+    "reason": "This attribute is not part of the OpenTelemetry specification and exception.message fits much better."
+  },
+  "alias": ["exception.message"],
+  "example": "ENOENT: no such file or directory"
+}

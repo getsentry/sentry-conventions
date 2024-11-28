@@ -1,0 +1,11 @@
+{
+  "key": "remix.action_form_data.<key>",
+  "brief": "Remix form data, <key> being the form data key, the value being the form data value.",
+  "has_dynamic_suffix": true,
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "http.response.header.text='test'"
+}
