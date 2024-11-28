@@ -10,5 +10,6 @@
   "deprecation": {
     "replacement": "http.request.method"
   },
-  "alias": ["http.request.method"]
+  "alias": ["http.request.method"],
+  "sdks": ["javascript-browser", "javascript-node"]
 }

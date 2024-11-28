@@ -90,6 +90,13 @@
       "items": {
         "type": "string"
       }
+    },
+    "sdks": {
+      "description": "If an attribute is SDK specific, list the SDKs that use this attribute. This is not an exhaustive list, there might be SDKs that send this attribute that are is not documented here.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
     }
   },
   "required": ["key", "brief", "type", "pii", "is_in_otel"]

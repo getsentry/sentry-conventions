@@ -7,5 +7,6 @@
   },
   "is_in_otel": false,
   "example": 10,
-  "alias": ["gen_ai.usage.output_tokens", "gen_ai.usage.completion_tokens"]
+  "alias": ["gen_ai.usage.output_tokens", "gen_ai.usage.completion_tokens"],
+  "sdks": ["python"]
 }

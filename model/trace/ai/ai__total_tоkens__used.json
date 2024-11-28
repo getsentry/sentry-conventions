@@ -6,5 +6,6 @@
     "key": "false"
   },
   "is_in_otel": false,
-  "example": 30
+  "example": 30,
+  "sdks": ["python"]
 }

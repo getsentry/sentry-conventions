@@ -6,5 +6,6 @@
     "key": "false"
   },
   "is_in_otel": false,
-  "example": 678
+  "example": 678,
+  "sdks": ["browser"]
 }

@@ -7,5 +7,6 @@
     "key": "maybe"
   },
   "is_in_otel": false,
-  "example": "http.response.header.text='test'"
+  "example": "http.response.header.text='test'",
+  "sdks": ["javascript-remix"]
 }

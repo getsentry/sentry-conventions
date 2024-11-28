@@ -7,5 +7,6 @@
   },
   "is_in_otel": false,
   "example": "gpt-4",
-  "alias": ["gen_ai.response.model"]
+  "alias": ["gen_ai.response.model"],
+  "sdks": ["python"]
 }

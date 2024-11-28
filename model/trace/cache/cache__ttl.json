@@ -6,5 +6,6 @@
     "key": "false"
   },
   "is_in_otel": false,
-  "example": 120
+  "example": 120,
+  "sdks": ["php-laravel"]
 }

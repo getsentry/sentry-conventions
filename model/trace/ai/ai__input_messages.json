@@ -7,5 +7,6 @@
   },
   "is_in_otel": false,
   "example": "[{\"role\": \"user\", \"message\": \"hello\"}]",
-  "alias": ["gen_ai.prompt"]
+  "alias": ["gen_ai.prompt"],
+  "sdks": ["python"]
 }

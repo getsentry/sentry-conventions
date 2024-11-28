@@ -1,5 +1,5 @@
 {
-  "key": "blocked_main_thread",
+  "key": "url",
   "brief": "The URL of the resource that was fetched.",
   "type": "string",
   "pii": {
@@ -10,5 +10,6 @@
   "deprecation": {
     "replacement": "url.full"
   },
-  "alias": ["url.full", "http.url"]
+  "alias": ["url.full", "http.url"],
+  "sdks": ["javascript-browser", "javascript-node"]
 }
