@@ -1,0 +1,11 @@
+{
+  "key": "db.collection.name",
+  "brief": "The name of a collection (table, container) within the database.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "users",
+  "alias": ["db.collection"]
+}

@@ -1,0 +1,10 @@
+{
+  "key": "ui.contributes_to_ttfd",
+  "brief": "Whether the span execution contributed to the TTFD (time to fully drawn) metric.",
+  "type": "boolean",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": true
+}

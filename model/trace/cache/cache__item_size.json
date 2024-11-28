@@ -1,0 +1,10 @@
+{
+  "key": "cache.item_size",
+  "brief": "The size of the requested item in the cache. In bytes.",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 58
+}

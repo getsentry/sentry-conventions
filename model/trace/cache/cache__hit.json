@@ -1,0 +1,10 @@
+{
+  "key": "cache.hit",
+  "brief": "If the cache was hit during this span.",
+  "type": "boolean",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": true
+}

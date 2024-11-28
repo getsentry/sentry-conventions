@@ -1,0 +1,14 @@
+{
+  "key": "db.operation",
+  "brief": "The name of the operation being executed.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "SELECT",
+  "deprecation": {
+    "replacement": "db.operation.name"
+  },
+  "alias": ["db.operation.name"]
+}

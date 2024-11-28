@@ -1,0 +1,11 @@
+{
+  "key": "db.operation.name",
+  "brief": "The name of the operation being executed.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "SELECT",
+  "alias": ["db.operation"]
+}

@@ -1,0 +1,11 @@
+{
+  "key": "db.namespace",
+  "brief": "The name of the database being accessed.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "customers",
+  "alias": ["db.name"]
+}

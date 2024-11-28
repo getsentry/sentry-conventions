@@ -1,0 +1,14 @@
+{
+  "key": "db.name",
+  "brief": "The name of the database being accessed.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "customers",
+  "deprecation": {
+    "replacement": "db.namespace"
+  },
+  "alias": ["db.namespace"]
+}
