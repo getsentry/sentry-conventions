@@ -1,0 +1,10 @@
+{
+  "key": "otel.status_code",
+  "brief": "Name of the code, either “OK” or “ERROR”. MUST NOT be set if the status code is UNSET.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "OK"
+}

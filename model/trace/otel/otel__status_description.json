@@ -1,0 +1,10 @@
+{
+  "key": "otel.status_description",
+  "brief": "Description of the Status if it has a value, otherwise not set.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "resource not found"
+}
