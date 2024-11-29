@@ -1,0 +1,10 @@
+{
+  "key": "lcp.size",
+  "brief": "The size of the largest contentful paint element.",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 1234
+}

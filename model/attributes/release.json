@@ -1,0 +1,14 @@
+{
+  "key": "release",
+  "brief": "The sentry release.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "production",
+  "deprecation": {
+    "replacement": "sentry.release"
+  },
+  "alias": ["sentry.release"]
+}

@@ -7,5 +7,5 @@
   },
   "is_in_otel": false,
   "example": "7.0.0",
-  "alias": ["service.version"]
+  "alias": ["service.version", "release"]
 }

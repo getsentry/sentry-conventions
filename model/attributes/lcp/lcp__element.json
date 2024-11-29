@@ -1,0 +1,10 @@
+{
+  "key": "lcp.element",
+  "brief": "The dom element responsible for the largest contentful paint.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "img"
+}

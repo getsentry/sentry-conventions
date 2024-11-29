@@ -1,0 +1,10 @@
+{
+  "key": "sentry.sdk.name",
+  "brief": "The sentry sdk name.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "@sentry/react"
+}

@@ -1,0 +1,11 @@
+{
+  "key": "previous_route",
+  "brief": "Also used by mobile SDKs to indicate the previous route in the application.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "HomeScreen",
+  "sdks": ["javascript-reactnative"]
+}

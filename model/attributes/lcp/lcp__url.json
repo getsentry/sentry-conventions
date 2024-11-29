@@ -1,0 +1,10 @@
+{
+  "key": "lcp.url",
+  "brief": "The url of the dom element responsible for the largest contentful paint.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "https://example.com"
+}
