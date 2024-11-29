@@ -1,0 +1,11 @@
+{
+  "key": "db.redis.parameters",
+  "brief": "The array of command parameters given to a redis command.",
+  "type": "string[]",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": ["test", "*"],
+  "sdks": ["php-laravel"]
+}

@@ -1,0 +1,11 @@
+{
+  "key": "channel",
+  "brief": "The channel name that is being used.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "mail",
+  "sdks": ["php-laravel"]
+}

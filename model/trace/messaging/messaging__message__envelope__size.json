@@ -1,0 +1,11 @@
+{
+  "key": "messaging.message.envelope.size",
+  "brief": "The size of the message body and metadata in bytes.",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": 1045,
+  "sdks": ["php-laravel"]
+}

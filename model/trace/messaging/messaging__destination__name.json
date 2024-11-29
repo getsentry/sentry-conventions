@@ -1,0 +1,11 @@
+{
+  "key": "messaging.destination.name",
+  "brief": "The message destination name.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "BestTopic",
+  "sdks": ["php-laravel"]
+}

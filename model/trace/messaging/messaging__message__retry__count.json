@@ -1,0 +1,11 @@
+{
+  "key": "messaging.message.retry.count",
+  "brief": "The amount of attempts to send the message.",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 2,
+  "sdks": ["php-laravel"]
+}

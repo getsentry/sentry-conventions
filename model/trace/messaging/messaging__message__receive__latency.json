@@ -1,0 +1,11 @@
+{
+  "key": "messaging.message.receive.latency",
+  "brief": "The latency between when the message was published and received.",
+  "type": "float",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 1732847252,
+  "sdks": ["php-laravel"]
+}

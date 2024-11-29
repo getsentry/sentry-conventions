@@ -1,0 +1,11 @@
+{
+  "key": "messaging.destination.connection",
+  "brief": "The message destination connection.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "BestTopic",
+  "sdks": ["php-laravel"]
+}
