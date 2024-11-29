@@ -16,6 +16,6 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "noEmit": true,
-    "lib": ["es2020"]
+    "lib": ["ESNext"]
   }
 }

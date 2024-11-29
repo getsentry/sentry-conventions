@@ -1,7 +1,7 @@
 {
   "key": "db.redis.connection",
   "brief": "The redis connection name.",
-  "type": "string[]",
+  "type": "string",
   "pii": {
     "key": "false"
   },

@@ -1,7 +1,7 @@
 {
   "key": "messaging.message.receive.latency",
   "brief": "The latency between when the message was published and received.",
-  "type": "float",
+  "type": "number",
   "pii": {
     "key": "false"
   },
