@@ -6,7 +6,7 @@ import { describe, expect, it } from 'vitest';
 
 import schema from '../schemas/attribute.schema.json';
 
-const traceFolders = path.resolve(__dirname, '../model/trace');
+const traceFolders = path.resolve(__dirname, '../model/attributes');
 
 describe('attribute json', async () => {
   const filesIterator = await fs.promises.glob(`${traceFolders}/**/*.json`);
