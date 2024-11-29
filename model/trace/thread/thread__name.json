@@ -1,0 +1,10 @@
+{
+  "key": "thread.name",
+  "brief": "Current thread name.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "main"
+}

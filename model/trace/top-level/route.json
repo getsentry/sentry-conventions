@@ -1,0 +1,15 @@
+{
+  "key": "route",
+  "brief": "The matched route, that is, the path template in the format used by the respective server framework.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "App\\Controller::indexAction",
+  "deprecation": {
+    "replacement": "http.route"
+  },
+  "alias": ["http.route"],
+  "sdks": ["php-laravel"]
+}

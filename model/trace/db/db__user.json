@@ -1,0 +1,10 @@
+{
+  "key": "db.user",
+  "brief": "The database user.",
+  "type": "string",
+  "pii": {
+    "key": "true"
+  },
+  "is_in_otel": true,
+  "example": "fancy_user"
+}

@@ -1,5 +1,5 @@
 {
-  "key": "url.port",
+  "key": "net.host.port",
   "brief": "Server port number.",
   "type": "integer",
   "pii": {
@@ -7,5 +7,8 @@
   },
   "is_in_otel": true,
   "example": 1337,
-  "alias": ["server.port", "net.host.port"]
+  "deprecation": {
+    "replacement": "server.port"
+  },
+  "alias": ["server.port", "url.port"]
 }

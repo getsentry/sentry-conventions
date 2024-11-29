@@ -1,0 +1,10 @@
+{
+  "key": "thread.id",
+  "brief": "Current “managed” thread ID.",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": 56
+}
