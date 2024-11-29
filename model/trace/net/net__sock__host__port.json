@@ -1,0 +1,14 @@
+{
+  "key": "net.sock.host.port",
+  "brief": "Local port number of the network connection.",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": 8080,
+  "deprecation": {
+    "replacement": "network.local.port"
+  },
+  "alias": ["network.local.port"]
+}

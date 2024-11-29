@@ -10,5 +10,5 @@
   "deprecation": {
     "replacement": "server.port"
   },
-  "alias": ["server.port", "url.port"]
+  "alias": ["server.port"]
 }

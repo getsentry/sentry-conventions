@@ -1,5 +1,5 @@
 {
-  "key": "server.address",
+  "key": "net.host.name",
   "brief": "Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
   "type": "string",
   "pii": {
@@ -7,5 +7,8 @@
   },
   "is_in_otel": true,
   "example": "example.com",
-  "alias": ["http.server_name", "net.host.name"]
+  "deprecation": {
+    "replacement": "server.address"
+  },
+  "alias": ["server.address"]
 }

@@ -1,0 +1,14 @@
+{
+  "key": "net.protocol.name",
+  "brief": "OSI transport and network layer",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "inet",
+  "deprecation": {
+    "replacement": "network.transport",
+    "reason": "Deprecated, use network.transport and network.type."
+  }
+}

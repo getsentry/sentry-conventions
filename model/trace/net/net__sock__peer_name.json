@@ -1,0 +1,14 @@
+{
+  "key": "net.sock.peer.name",
+  "brief": "Peer address of the network connection - Unix domain socket name",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "/var/my.sock",
+  "deprecation": {
+    "replacement": "",
+    "reason": "Deprecated, no replacement at this time"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "key": "network.local.address",
+  "brief": "Local address of the network connection - IP address or Unix domain socket name.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "10.1.2.80",
+  "alias": ["net.host.ip", "net.sock.host.addr"]
+}

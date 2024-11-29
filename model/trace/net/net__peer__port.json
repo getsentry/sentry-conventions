@@ -1,0 +1,14 @@
+{
+  "key": "net.peer.port",
+  "brief": "Peer port number.",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": 1337,
+  "deprecation": {
+    "replacement": "server.port",
+    "reason": "Deprecated, use server.port on client spans and client.port on server spans."
+  }
+}

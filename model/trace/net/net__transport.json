@@ -1,0 +1,14 @@
+{
+  "key": "net.transport",
+  "brief": "OSI transport layer or inter-process communication method.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "tcp",
+  "deprecation": {
+    "replacement": "network.transport"
+  },
+  "alias": ["network.transport"]
+}

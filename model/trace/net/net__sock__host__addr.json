@@ -1,0 +1,14 @@
+{
+  "key": "net.sock.host.addr",
+  "brief": "Local address of the network connection mapping to Unix domain socket name.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "/var/my.sock",
+  "deprecation": {
+    "replacement": "network.local.address"
+  },
+  "alias": ["network.local.address"]
+}

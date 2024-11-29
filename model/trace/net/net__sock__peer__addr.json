@@ -1,0 +1,14 @@
+{
+  "key": "net.sock.peer.addr",
+  "brief": "Peer address of the network connection - IP address",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "192.168.0.1",
+  "deprecation": {
+    "replacement": "network.peer.address"
+  },
+  "alias": ["network.peer.address"]
+}

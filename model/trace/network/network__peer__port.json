@@ -1,0 +1,10 @@
+{
+  "key": "network.peer.port",
+  "brief": "Peer port number of the network connection.",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": 65400
+}

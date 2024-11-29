@@ -1,5 +1,5 @@
 {
-  "key": "network.protocol.name",
+  "key": "net.protocol.name",
   "brief": "OSI application layer or non-OSI equivalent.",
   "type": "string",
   "pii": {
@@ -7,5 +7,8 @@
   },
   "is_in_otel": true,
   "example": "http",
-  "alias": ["net.protocol.name"]
+  "deprecation": {
+    "replacement": "network.protocol.name"
+  },
+  "alias": ["network.protocol.name"]
 }

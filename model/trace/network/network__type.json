@@ -1,0 +1,10 @@
+{
+  "key": "network.type",
+  "brief": "OSI network layer or non-OSI equivalent.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "ipv4"
+}

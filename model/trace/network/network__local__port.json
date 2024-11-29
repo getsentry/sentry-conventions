@@ -1,0 +1,11 @@
+{
+  "key": "network.local.port",
+  "brief": "Local port number of the network connection.",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": 65400,
+  "alias": ["net.sock.host.port"]
+}

@@ -1,0 +1,13 @@
+{
+  "key": "net.sock.peer.port",
+  "brief": "Peer port number of the network connection.",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": 8080,
+  "deprecation": {
+    "replacement": "network.peer.port"
+  }
+}
