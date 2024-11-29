@@ -63,6 +63,10 @@ describe('attribute json', async () => {
             throw new Error('Invalid type');
         }
       });
+
+      it('should follow the correct naming convention', () => {
+        expect(name.replaceAll('__', '.').replace('.json', '')).toMatch(content.key);
+      });
     });
   }
 });

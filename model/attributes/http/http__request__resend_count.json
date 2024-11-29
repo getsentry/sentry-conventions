@@ -1,5 +1,5 @@
 {
-  "key": "http.request.request_start",
+  "key": "http.request.resend_count",
   "brief": "The ordinal number of request resending attempt (for any reason, including redirects).",
   "type": "integer",
   "pii": {

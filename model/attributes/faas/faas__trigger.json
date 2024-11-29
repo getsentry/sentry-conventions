@@ -1,5 +1,5 @@
 {
-  "key": "faas.cron",
+  "key": "faas.trigger",
   "brief": "Type of the trigger which caused this function invocation.",
   "type": "string",
   "pii": {

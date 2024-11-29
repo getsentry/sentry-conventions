@@ -1,5 +1,5 @@
 {
-  "key": "http.client_id",
+  "key": "http.client_ip",
   "brief": "Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
   "type": "string",
   "pii": {

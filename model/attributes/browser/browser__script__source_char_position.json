@@ -1,5 +1,5 @@
 {
-  "key": "browser.script.invoker",
+  "key": "browser.script.source_char_position",
   "brief": "A number representing the script character position of the script.",
   "type": "integer",
   "pii": {

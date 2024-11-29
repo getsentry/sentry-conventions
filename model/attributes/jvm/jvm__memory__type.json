@@ -1,5 +1,5 @@
 {
-  "key": "jvm.memory.pool.name",
+  "key": "jvm.memory.type",
   "brief": "Name of the memory pool.",
   "type": "string",
   "pii": {

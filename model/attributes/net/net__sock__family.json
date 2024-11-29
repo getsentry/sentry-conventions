@@ -1,5 +1,5 @@
 {
-  "key": "net.protocol.name",
+  "key": "net.sock.family",
   "brief": "OSI transport and network layer",
   "type": "string",
   "pii": {

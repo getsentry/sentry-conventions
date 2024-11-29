@@ -1,5 +1,5 @@
 {
-  "key": "jvm.memory.pool.name",
+  "key": "jvm.thread.state",
   "brief": "State of the thread.",
   "type": "string",
   "pii": {
