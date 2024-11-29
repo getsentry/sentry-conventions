@@ -1,0 +1,10 @@
+{
+  "key": "jvm.gc.action",
+  "brief": "Name of the garbage collector action.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "end of minor GC"
+}

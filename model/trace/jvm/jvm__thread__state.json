@@ -1,0 +1,10 @@
+{
+  "key": "jvm.memory.pool.name",
+  "brief": "State of the thread.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "blocked"
+}
