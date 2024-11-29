@@ -1,0 +1,11 @@
+{
+  "key": "sentry.release",
+  "brief": "The sentry release.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "7.0.0",
+  "alias": ["service.version"]
+}

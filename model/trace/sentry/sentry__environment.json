@@ -1,0 +1,10 @@
+{
+  "key": "sentry.environment",
+  "brief": "The sentry environment.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "production"
+}

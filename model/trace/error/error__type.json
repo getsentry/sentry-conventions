@@ -1,0 +1,10 @@
+{
+  "key": "error.type",
+  "brief": "Describes a class of error the operation ended with.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "timeout"
+}

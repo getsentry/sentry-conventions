@@ -1,0 +1,10 @@
+{
+  "key": "service.name",
+  "brief": "Logical name of the service.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "omegastar"
+}

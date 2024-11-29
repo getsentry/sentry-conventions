@@ -7,10 +7,9 @@
   },
   "is_in_otel": false,
   "deprecation": {
-    "replacement": "exception.message",
-    "reason": "This attribute is not part of the OpenTelemetry specification and exception.message fits much better."
+    "replacement": "error.type",
+    "reason": "This attribute is not part of the OpenTelemetry specification and error.type fits much better."
   },
-  "alias": ["exception.message"],
   "example": "ENOENT: no such file or directory",
   "sdks": ["javascript-node"]
 }

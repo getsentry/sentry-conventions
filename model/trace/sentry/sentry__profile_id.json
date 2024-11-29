@@ -1,6 +1,6 @@
 {
   "key": "sentry.profile_id",
-  "brief": "The id of the profile associated with the span.",
+  "brief": "The id of the sentry profile.",
   "type": "string",
   "pii": {
     "key": "false"
