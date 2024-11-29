@@ -1,0 +1,10 @@
+{
+  "key": "exception.type",
+  "brief": "The type of the exception (its fully-qualified class name, if applicable). The dynamic type of the exception should be preferred over the static type in languages that support it.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "OSError"
+}

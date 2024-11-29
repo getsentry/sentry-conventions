@@ -1,0 +1,10 @@
+{
+  "key": "exception.stacktrace",
+  "brief": "A stacktrace as a string in the natural representation for the language runtime. The representation is to be determined and documented by each language SIG.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "Exception in thread \"main\" java.lang.RuntimeException: Test exception\n at com.example.GenerateTrace.methodB(GenerateTrace.java:13)\n at com.example.GenerateTrace.methodA(GenerateTrace.java:9)\n at com.example.GenerateTrace.main(GenerateTrace.java:5)"
+}

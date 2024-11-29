@@ -1,0 +1,10 @@
+{
+  "key": "exception.escaped",
+  "brief": "SHOULD be set to true if the exception event is recorded at a point where it is known that the exception is escaping the scope of the span.",
+  "type": "boolean",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": true
+}
