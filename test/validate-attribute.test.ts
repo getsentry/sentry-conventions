@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import Ajv from 'ajv';
 import { describe, it, expect } from 'vitest';
 
-import attributeSchema from '../schemas/attribute.schema.json';
+import schema from '../schemas/attribute.schema.json';
 
 const traceFolders = path.resolve(__dirname, '../model/trace');
 
@@ -19,7 +19,7 @@ describe('attribute json', async () => {
 
       it('should follow the attribute json schema', () => {
         const ajv = new Ajv();
-        ajv.validate(attributeSchema, content);
+        ajv.validate(schema, content);
         expect(ajv.errors).toBe(null);
       });
 
