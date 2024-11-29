@@ -1,0 +1,10 @@
+{
+  "key": "browser.name",
+  "brief": "The name of the browser.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "Chrome"
+}

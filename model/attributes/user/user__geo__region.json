@@ -1,0 +1,10 @@
+{
+  "key": "user.geo.region",
+  "brief": "Human readable region name or code.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "Canada"
+}

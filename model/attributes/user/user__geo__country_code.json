@@ -1,0 +1,10 @@
+{
+  "key": "user.geo.country_code",
+  "brief": "Two-letter country code (ISO 3166-1 alpha-2).",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "CA"
+}

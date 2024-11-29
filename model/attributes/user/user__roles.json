@@ -1,0 +1,10 @@
+{
+  "key": "user.roles",
+  "brief": "Array of user roles at the time of the event.",
+  "type": "string[]",
+  "pii": {
+    "key": "true"
+  },
+  "is_in_otel": true,
+  "example": ["admin", "editor"]
+}

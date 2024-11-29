@@ -1,0 +1,10 @@
+{
+  "key": "user.geo.subdivision",
+  "brief": "Human readable subdivision name.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "Ontario"
+}

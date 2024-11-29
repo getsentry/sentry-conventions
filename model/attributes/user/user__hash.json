@@ -1,0 +1,10 @@
+{
+  "key": "user.hash",
+  "brief": "Unique user hash to correlate information for a user in anonymized form.",
+  "type": "string",
+  "pii": {
+    "key": "true"
+  },
+  "is_in_otel": true,
+  "example": "8ae4c2993e0f4f3b8b2d1b1f3b5e8f4d"
+}

@@ -1,0 +1,10 @@
+{
+  "key": "ui.component_name",
+  "brief": "The name of the associated component.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "HomeButton"
+}

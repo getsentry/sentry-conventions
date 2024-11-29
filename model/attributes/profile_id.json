@@ -1,5 +1,5 @@
 {
-  "key": "sentry.profile_id",
+  "key": "profile_id",
   "brief": "The id of the sentry profile.",
   "type": "string",
   "pii": {
@@ -7,5 +7,5 @@
   },
   "is_in_otel": false,
   "example": "123e4567e89b12d3a456426614174000",
-  "alias": ["profile_id"]
+  "alias": ["sentry.profile_id"]
 }

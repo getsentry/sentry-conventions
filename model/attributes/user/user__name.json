@@ -1,0 +1,10 @@
+{
+  "key": "user.name",
+  "brief": "Short name or login/username of the user.",
+  "type": "string",
+  "pii": {
+    "key": "true"
+  },
+  "is_in_otel": true,
+  "example": "j.smith"
+}

@@ -1,0 +1,10 @@
+{
+  "key": "user.geo.city",
+  "brief": "Human readable city name.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "Toronto"
+}

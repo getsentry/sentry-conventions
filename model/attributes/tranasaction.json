@@ -1,0 +1,11 @@
+{
+  "key": "transaction",
+  "brief": "The sentry transaction (segment name).",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "GET /",
+  "alias": ["sentry.transaction"]
+}

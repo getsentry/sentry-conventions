@@ -1,0 +1,10 @@
+{
+  "key": "user.email",
+  "brief": "User email address.",
+  "type": "string",
+  "pii": {
+    "key": "true"
+  },
+  "is_in_otel": true,
+  "example": "test@example.com"
+}
