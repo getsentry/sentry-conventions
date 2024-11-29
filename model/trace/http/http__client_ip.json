@@ -1,0 +1,14 @@
+{
+  "key": "http.client_id",
+  "brief": "Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "example.com",
+  "deprecation": {
+    "replacement": "http.client_ip"
+  },
+  "alias": ["client.address"]
+}

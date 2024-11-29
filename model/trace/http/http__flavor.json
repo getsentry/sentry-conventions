@@ -1,5 +1,5 @@
 {
-  "key": "network.protocol.version",
+  "key": "http.flavor",
   "brief": "The actual version of the protocol used for network communication.",
   "type": "string",
   "pii": {
@@ -7,5 +7,8 @@
   },
   "is_in_otel": true,
   "example": "1.1",
-  "alias": ["http.flavor"]
+  "deprecation": {
+    "replacement": "network.protocol.version"
+  },
+  "alias": ["network.protocol.version"]
 }

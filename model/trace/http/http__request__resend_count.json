@@ -1,0 +1,10 @@
+{
+  "key": "http.request.request_start",
+  "brief": "The ordinal number of request resending attempt (for any reason, including redirects).",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 2
+}

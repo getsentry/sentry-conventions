@@ -6,6 +6,5 @@
     "key": "false"
   },
   "is_in_otel": true,
-  "example": "example.com",
-  "alias": ["url.domain"]
+  "example": "example.com"
 }

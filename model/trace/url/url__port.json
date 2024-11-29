@@ -7,5 +7,5 @@
   },
   "is_in_otel": true,
   "example": 1337,
-  "alias": ["server.port", "net.host.port"]
+  "alias": ["net.host.port"]
 }
