@@ -5,6 +5,6 @@
   "pii": {
     "key": "false"
   },
-  "is_in_otel": 5432,
-  "example": "example.com"
+  "is_in_otel": true,
+  "example": 5432
 }
