@@ -1,5 +1,5 @@
 {
-  "key": "url.scheme",
+  "key": "http.scheme",
   "brief": "The URI scheme component identifying the used protocol.",
   "type": "string",
   "pii": {
@@ -7,5 +7,8 @@
   },
   "is_in_otel": true,
   "example": "https",
-  "alias": ["http.scheme"]
+  "deprecation": {
+    "replacement": "url.scheme"
+  },
+  "alias": ["url.scheme"]
 }

@@ -1,6 +1,6 @@
 {
   "key": "url.query",
-  "brief": "The query string present in the URL. Note that this does not contains the leading ? character, while the `http.query` attribute does.",
+  "brief": "The query string present in the URL. Note that this does not contain the leading ? character, while the `http.query` attribute does.",
   "type": "string",
   "pii": {
     "key": "maybe",

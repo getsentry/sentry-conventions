@@ -1,0 +1,14 @@
+{
+  "key": "http.server_name",
+  "brief": "The server domain name",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "example.com",
+  "deprecation": {
+    "replacement": "server.address"
+  },
+  "alias": ["server.address"]
+}

@@ -1,11 +1,10 @@
 {
   "key": "url.fragment",
-  "brief": "The fragments present in the URI.",
+  "brief": "The fragments present in the URI. Note that this does not contain the leading # character, while the `http.fragment` attribute does.",
   "type": "string",
   "pii": {
     "key": "maybe"
   },
   "is_in_otel": true,
-  "example": "#details",
-  "alias": ["url.query"]
+  "example": "details"
 }
