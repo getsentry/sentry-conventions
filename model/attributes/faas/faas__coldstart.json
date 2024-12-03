@@ -1,0 +1,10 @@
+{
+  "key": "faas.coldstart",
+  "brief": "A boolean that is true if the serverless function is executed for the first time (aka cold-start).",
+  "type": "boolean",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": true
+}
