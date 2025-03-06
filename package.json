@@ -10,12 +10,12 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "@types/node": "^22.10.0"
+    "@types/node": "^22.13.9"
   },
   "workspaces": ["packages/*", "dev-packages/*"],
   "packageManager": "yarn@1.22.22",
   "volta": {
-    "node": "22.11.0",
+    "node": "22.14.0",
     "yarn": "1.22.22"
   },
   "dependencies": {
