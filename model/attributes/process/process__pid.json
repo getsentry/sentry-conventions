@@ -1,0 +1,10 @@
+{
+  "key": "process.pid",
+  "brief": "The process ID of the running process.",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": 12345
+}

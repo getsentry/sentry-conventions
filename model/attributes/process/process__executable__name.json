@@ -1,0 +1,10 @@
+{
+  "key": "process.executable.name",
+  "brief": "The name of the executable that started the process.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "getsentry"
+}
