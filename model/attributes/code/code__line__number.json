@@ -1,5 +1,5 @@
 {
-  "key": "code.lineno",
+  "key": "code.line.number",
   "brief": "The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function",
   "type": "integer",
   "pii": {
@@ -7,8 +7,5 @@
   },
   "is_in_otel": true,
   "example": 42,
-  "deprecation": {
-    "replacement": "code.line.number"
-  },
   "alias": ["code.lineno"]
 }

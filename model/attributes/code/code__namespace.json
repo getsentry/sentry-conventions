@@ -6,5 +6,9 @@
     "key": "false"
   },
   "is_in_otel": true,
-  "example": "http.handler"
+  "example": "http.handler",
+  "deprecation": {
+    "replacement": "code.function.name",
+    "reason": "code.function.name should include the namespace."
+  }
 }

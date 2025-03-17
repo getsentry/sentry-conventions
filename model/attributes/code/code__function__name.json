@@ -1,5 +1,5 @@
 {
-  "key": "code.function",
+  "key": "code.function.name",
   "brief": "The method or function name, or equivalent (usually rightmost part of the code unit's name).",
   "type": "string",
   "pii": {
@@ -7,8 +7,5 @@
   },
   "is_in_otel": true,
   "example": "server_request",
-  "deprecation": {
-    "replacement": "code.function.name"
-  },
-  "alias": ["code.function.name"]
+  "alias": ["code.function"]
 }

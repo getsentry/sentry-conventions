@@ -1,5 +1,5 @@
 {
-  "key": "code.filepath",
+  "key": "code.file.path",
   "brief": "The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).",
   "type": "string",
   "pii": {
@@ -7,8 +7,5 @@
   },
   "is_in_otel": true,
   "example": "/app/myapplication/http/handler/server.py",
-  "deprecation": {
-    "replacement": "code.file.path"
-  },
-  "alias": ["code.file.path"]
+  "alias": ["code.filepath"]
 }
