@@ -1,0 +1,10 @@
+{
+  "key": "logger.name",
+  "brief": "The name of the logger that generated this event.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "myLogger"
+}
