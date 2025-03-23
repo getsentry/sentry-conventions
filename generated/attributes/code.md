@@ -2,7 +2,19 @@
 
 # Code Attributes
 
-## code.file.path
+- [Stable Attributes](#stable-attributes)
+  - [code.file.path](#codefilepath)
+  - [code.function.name](#codefunctionname)
+  - [code.line.number](#codelinenumber)
+- [Deprecated Attributes](#deprecated-attributes)
+  - [code.filepath](#code-filepath)
+  - [code.function](#code-function)
+  - [code.lineno](#code-lineno)
+  - [code.namespace](#code-namespace)
+
+## Stable Attributes
+
+### code.file.path
 
 The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).
 
@@ -14,7 +26,35 @@ The source code file name that identifies the code unit as uniquely as possible 
 | Example | `/app/myapplication/http/handler/server.py` |
 | Aliases | `code.filepath` |
 
-## code.filepath
+### code.function.name
+
+The method or function name, or equivalent (usually rightmost part of the code unit's name).
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | Yes |
+| Example | `server_request` |
+| Aliases | `code.function` |
+
+### code.line.number
+
+The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function
+
+| Property | Value |
+| --- | --- |
+| Type | `integer` |
+| Has PII | false |
+| Exists in OpenTelemetry | Yes |
+| Example | `42` |
+| Aliases | `code.lineno` |
+
+## Deprecated Attributes
+
+These attributes are deprecated and will be removed in a future version. Please use the recommended replacements.
+
+### code.filepath
 
 The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).
 
@@ -27,7 +67,7 @@ The source code file name that identifies the code unit as uniquely as possible 
 | Deprecated | Yes, use `code.file.path` instead |
 | Aliases | `code.file.path` |
 
-## code.function
+### code.function
 
 The method or function name, or equivalent (usually rightmost part of the code unit's name).
 
@@ -40,31 +80,7 @@ The method or function name, or equivalent (usually rightmost part of the code u
 | Deprecated | Yes, use `code.function.name` instead |
 | Aliases | `code.function.name` |
 
-## code.function.name
-
-The method or function name, or equivalent (usually rightmost part of the code unit's name).
-
-| Property | Value |
-| --- | --- |
-| Type | `string` |
-| Has PII | false |
-| Exists in OpenTelemetry | Yes |
-| Example | `server_request` |
-| Aliases | `code.function` |
-
-## code.line.number
-
-The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function
-
-| Property | Value |
-| --- | --- |
-| Type | `integer` |
-| Has PII | false |
-| Exists in OpenTelemetry | Yes |
-| Example | `42` |
-| Aliases | `code.lineno` |
-
-## code.lineno
+### code.lineno
 
 The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function
 
@@ -77,7 +93,7 @@ The line number in code.filepath best representing the operation. It SHOULD poin
 | Deprecated | Yes, use `code.line.number` instead |
 | Aliases | `code.lineno` |
 
-## code.namespace
+### code.namespace
 
 The 'namespace' within which code.function is defined. Usually the qualified class or module name, such that code.namespace + some separator + code.function form a unique identifier for the code unit.
 

@@ -2,7 +2,12 @@
 
 # Remix Attributes
 
-## remix.action_form_data.\<key\>
+- [Stable Attributes](#stable-attributes)
+  - [remix.action_form_data.<key>](#remixaction_form_datakey)
+
+## Stable Attributes
+
+### remix.action_form_data.\<key\>
 
 Remix form data, \<key\> being the form data key, the value being the form data value.
 

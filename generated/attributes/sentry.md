@@ -2,7 +2,27 @@
 
 # Sentry Attributes
 
-## sentry.cancellation_reason
+- [Stable Attributes](#stable-attributes)
+  - [sentry.cancellation_reason](#sentrycancellation_reason)
+  - [sentry.dist](#sentrydist)
+  - [sentry.environment](#sentryenvironment)
+  - [sentry.exclusive_time](#sentryexclusive_time)
+  - [sentry.http.prefetch](#sentryhttpprefetch)
+  - [sentry.idle_span_finish_reason](#sentryidle_span_finish_reason)
+  - [sentry.op](#sentryop)
+  - [sentry.origin](#sentryorigin)
+  - [sentry.profile_id](#sentryprofile_id)
+  - [sentry.release](#sentryrelease)
+  - [sentry.replay_id](#sentryreplay_id)
+  - [sentry.sample_rate](#sentrysample_rate)
+  - [sentry.sdk.name](#sentrysdkname)
+  - [sentry.sdk.version](#sentrysdkversion)
+  - [sentry.source](#sentrysource)
+  - [sentry.transaction](#sentrytransaction)
+
+## Stable Attributes
+
+### sentry.cancellation_reason
 
 The reason why a span ended early.
 
@@ -13,7 +33,7 @@ The reason why a span ended early.
 | Exists in OpenTelemetry | No |
 | Example | `document.hidden` |
 
-## sentry.dist
+### sentry.dist
 
 The sentry dist.
 
@@ -24,7 +44,7 @@ The sentry dist.
 | Exists in OpenTelemetry | No |
 | Example | `1.0` |
 
-## sentry.environment
+### sentry.environment
 
 The sentry environment.
 
@@ -36,7 +56,7 @@ The sentry environment.
 | Example | `production` |
 | Aliases | `environment` |
 
-## sentry.exclusive_time
+### sentry.exclusive_time
 
 The exclusive time duration of the span.
 
@@ -47,7 +67,7 @@ The exclusive time duration of the span.
 | Exists in OpenTelemetry | No |
 | Example | `1234` |
 
-## sentry.http.prefetch
+### sentry.http.prefetch
 
 If an http request was a prefetch request.
 
@@ -58,7 +78,7 @@ If an http request was a prefetch request.
 | Exists in OpenTelemetry | No |
 | Example | `true` |
 
-## sentry.idle_span_finish_reason
+### sentry.idle_span_finish_reason
 
 The reason why an idle span ended early.
 
@@ -69,7 +89,7 @@ The reason why an idle span ended early.
 | Exists in OpenTelemetry | No |
 | Example | `idleTimeout` |
 
-## sentry.op
+### sentry.op
 
 The operation of a span.
 
@@ -80,7 +100,7 @@ The operation of a span.
 | Exists in OpenTelemetry | No |
 | Example | `http.client` |
 
-## sentry.origin
+### sentry.origin
 
 The origin of a span.
 
@@ -91,7 +111,7 @@ The origin of a span.
 | Exists in OpenTelemetry | No |
 | Example | `auto.http.otel.fastify` |
 
-## sentry.profile_id
+### sentry.profile_id
 
 The id of the sentry profile.
 
@@ -103,7 +123,7 @@ The id of the sentry profile.
 | Example | `123e4567e89b12d3a456426614174000` |
 | Aliases | `profile_id` |
 
-## sentry.release
+### sentry.release
 
 The sentry release.
 
@@ -115,7 +135,7 @@ The sentry release.
 | Example | `7.0.0` |
 | Aliases | `service.version`, `release` |
 
-## sentry.replay_id
+### sentry.replay_id
 
 The id of the sentry replay.
 
@@ -127,7 +147,7 @@ The id of the sentry replay.
 | Example | `123e4567e89b12d3a456426614174000` |
 | Aliases | `replay_id` |
 
-## sentry.sample_rate
+### sentry.sample_rate
 
 The sample rate of the span.
 
@@ -138,7 +158,7 @@ The sample rate of the span.
 | Exists in OpenTelemetry | No |
 | Example | `0.5` |
 
-## sentry.sdk.name
+### sentry.sdk.name
 
 The sentry sdk name.
 
@@ -149,7 +169,7 @@ The sentry sdk name.
 | Exists in OpenTelemetry | No |
 | Example | `@sentry/react` |
 
-## sentry.sdk.version
+### sentry.sdk.version
 
 The sentry sdk version.
 
@@ -160,7 +180,7 @@ The sentry sdk version.
 | Exists in OpenTelemetry | No |
 | Example | `7.0.0` |
 
-## sentry.source
+### sentry.source
 
 The source of a span, also referred to as transaction source.
 
@@ -171,7 +191,7 @@ The source of a span, also referred to as transaction source.
 | Exists in OpenTelemetry | No |
 | Example | `route` |
 
-## sentry.transaction
+### sentry.transaction
 
 The sentry transaction (segment name).
 

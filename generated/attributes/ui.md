@@ -2,7 +2,14 @@
 
 # Ui Attributes
 
-## ui.component_name
+- [Stable Attributes](#stable-attributes)
+  - [ui.component_name](#uicomponent_name)
+  - [ui.contributes_to_ttfd](#uicontributes_to_ttfd)
+  - [ui.contributes_to_ttid](#uicontributes_to_ttid)
+
+## Stable Attributes
+
+### ui.component_name
 
 The name of the associated component.
 
@@ -13,7 +20,7 @@ The name of the associated component.
 | Exists in OpenTelemetry | No |
 | Example | `HomeButton` |
 
-## ui.contributes_to_ttfd
+### ui.contributes_to_ttfd
 
 Whether the span execution contributed to the TTFD (time to fully drawn) metric.
 
@@ -24,7 +31,7 @@ Whether the span execution contributed to the TTFD (time to fully drawn) metric.
 | Exists in OpenTelemetry | No |
 | Example | `true` |
 
-## ui.contributes_to_ttid
+### ui.contributes_to_ttid
 
 Whether the span execution contributed to the TTID (time to initial display) metric.
 

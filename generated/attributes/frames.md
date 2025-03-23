@@ -2,7 +2,15 @@
 
 # Frames Attributes
 
-## frames.delay
+- [Stable Attributes](#stable-attributes)
+  - [frames.delay](#framesdelay)
+  - [frames.frozen](#framesfrozen)
+  - [frames.slow](#framesslow)
+  - [frames.total](#framestotal)
+
+## Stable Attributes
+
+### frames.delay
 
 The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).
 
@@ -13,7 +21,7 @@ The sum of all delayed frame durations in seconds during the lifetime of the spa
 | Exists in OpenTelemetry | No |
 | Example | `5` |
 
-## frames.frozen
+### frames.frozen
 
 The number of frozen frames rendered during the lifetime of the span.
 
@@ -24,7 +32,7 @@ The number of frozen frames rendered during the lifetime of the span.
 | Exists in OpenTelemetry | No |
 | Example | `3` |
 
-## frames.slow
+### frames.slow
 
 The number of slow frames rendered during the lifetime of the span.
 
@@ -35,7 +43,7 @@ The number of slow frames rendered during the lifetime of the span.
 | Exists in OpenTelemetry | No |
 | Example | `1` |
 
-## frames.total
+### frames.total
 
 The number of total frames rendered during the lifetime of the span.
 

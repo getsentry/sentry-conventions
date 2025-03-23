@@ -2,7 +2,13 @@
 
 # Client Attributes
 
-## client.address
+- [Stable Attributes](#stable-attributes)
+  - [client.address](#clientaddress)
+  - [client.port](#clientport)
+
+## Stable Attributes
+
+### client.address
 
 Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
 
@@ -14,7 +20,7 @@ Client address - domain name if available without reverse DNS lookup; otherwise,
 | Example | `example.com` |
 | Aliases | `http.client_id` |
 
-## client.port
+### client.port
 
 Client port number.
 

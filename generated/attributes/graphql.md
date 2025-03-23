@@ -2,7 +2,13 @@
 
 # Graphql Attributes
 
-## graphql.operation.name
+- [Stable Attributes](#stable-attributes)
+  - [graphql.operation.name](#graphqloperationname)
+  - [graphql.operation.type](#graphqloperationtype)
+
+## Stable Attributes
+
+### graphql.operation.name
 
 The name of the operation being executed.
 
@@ -13,7 +19,7 @@ The name of the operation being executed.
 | Exists in OpenTelemetry | Yes |
 | Example | `findBookById` |
 
-## graphql.operation.type
+### graphql.operation.type
 
 The type of the operation being executed.
 

@@ -2,7 +2,13 @@
 
 # Thread Attributes
 
-## thread.id
+- [Stable Attributes](#stable-attributes)
+  - [thread.id](#threadid)
+  - [thread.name](#threadname)
+
+## Stable Attributes
+
+### thread.id
 
 Current “managed” thread ID.
 
@@ -13,7 +19,7 @@ Current “managed” thread ID.
 | Exists in OpenTelemetry | Yes |
 | Example | `56` |
 
-## thread.name
+### thread.name
 
 Current thread name.
 

@@ -2,7 +2,19 @@
 
 # Network Attributes
 
-## network.local.address
+- [Stable Attributes](#stable-attributes)
+  - [network.local.address](#networklocaladdress)
+  - [network.local.port](#networklocalport)
+  - [network.peer.address](#networkpeeraddress)
+  - [network.peer.port](#networkpeerport)
+  - [network.protocol.name](#networkprotocolname)
+  - [network.protocol.version](#networkprotocolversion)
+  - [network.transport](#networktransport)
+  - [network.type](#networktype)
+
+## Stable Attributes
+
+### network.local.address
 
 Local address of the network connection - IP address or Unix domain socket name.
 
@@ -14,7 +26,7 @@ Local address of the network connection - IP address or Unix domain socket name.
 | Example | `10.1.2.80` |
 | Aliases | `net.host.ip`, `net.sock.host.addr` |
 
-## network.local.port
+### network.local.port
 
 Local port number of the network connection.
 
@@ -26,7 +38,7 @@ Local port number of the network connection.
 | Example | `65400` |
 | Aliases | `net.sock.host.port` |
 
-## network.peer.address
+### network.peer.address
 
 Peer address of the network connection - IP address or Unix domain socket name.
 
@@ -37,7 +49,7 @@ Peer address of the network connection - IP address or Unix domain socket name.
 | Exists in OpenTelemetry | Yes |
 | Example | `10.1.2.80` |
 
-## network.peer.port
+### network.peer.port
 
 Peer port number of the network connection.
 
@@ -48,7 +60,7 @@ Peer port number of the network connection.
 | Exists in OpenTelemetry | Yes |
 | Example | `65400` |
 
-## network.protocol.name
+### network.protocol.name
 
 OSI application layer or non-OSI equivalent.
 
@@ -60,7 +72,7 @@ OSI application layer or non-OSI equivalent.
 | Example | `http` |
 | Aliases | `net.protocol.name` |
 
-## network.protocol.version
+### network.protocol.version
 
 The actual version of the protocol used for network communication.
 
@@ -72,7 +84,7 @@ The actual version of the protocol used for network communication.
 | Example | `1.1` |
 | Aliases | `http.flavor`, `net.protocol.version` |
 
-## network.transport
+### network.transport
 
 OSI transport layer or inter-process communication method.
 
@@ -84,7 +96,7 @@ OSI transport layer or inter-process communication method.
 | Example | `tcp` |
 | Aliases | `net.transport` |
 
-## network.type
+### network.type
 
 OSI network layer or non-OSI equivalent.
 

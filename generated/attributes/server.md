@@ -2,7 +2,13 @@
 
 # Server Attributes
 
-## server.address
+- [Stable Attributes](#stable-attributes)
+  - [server.address](#serveraddress)
+  - [server.port](#serverport)
+
+## Stable Attributes
+
+### server.address
 
 Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
 
@@ -14,7 +20,7 @@ Server domain name if available without reverse DNS lookup; otherwise, IP addres
 | Example | `example.com` |
 | Aliases | `http.server_name`, `net.host.name` |
 
-## server.port
+### server.port
 
 Server port number.
 

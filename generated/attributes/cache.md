@@ -2,7 +2,15 @@
 
 # Cache Attributes
 
-## cache.hit
+- [Stable Attributes](#stable-attributes)
+  - [cache.hit](#cachehit)
+  - [cache.item_size](#cacheitem_size)
+  - [cache.key](#cachekey)
+  - [cache.ttl](#cachettl)
+
+## Stable Attributes
+
+### cache.hit
 
 If the cache was hit during this span.
 
@@ -13,7 +21,7 @@ If the cache was hit during this span.
 | Exists in OpenTelemetry | No |
 | Example | `true` |
 
-## cache.item_size
+### cache.item_size
 
 The size of the requested item in the cache. In bytes.
 
@@ -24,7 +32,7 @@ The size of the requested item in the cache. In bytes.
 | Exists in OpenTelemetry | No |
 | Example | `58` |
 
-## cache.key
+### cache.key
 
 The key of the cache accessed.
 
@@ -35,7 +43,7 @@ The key of the cache accessed.
 | Exists in OpenTelemetry | No |
 | Example | `my-cache-key` |
 
-## cache.ttl
+### cache.ttl
 
 The ttl of the cache in seconds
 

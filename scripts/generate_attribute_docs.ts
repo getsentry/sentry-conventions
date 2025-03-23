@@ -28,7 +28,7 @@ function readJsonFile(filePath: string): AttributeJson {
 
 // Function to generate a markdown table for a single attribute
 function generateAttributeTable(attribute: AttributeJson): string {
-  let table = `## ${attribute.key}\n\n`;
+  let table = `### ${attribute.key}\n\n`;
   table += `${attribute.brief}\n\n`;
   table += '| Property | Value |\n';
   table += '| --- | --- |\n';
@@ -112,12 +112,48 @@ async function generateAttributeDocs() {
     let markdown = '<!-- THIS FILE IS AUTO-GENERATED. DO NOT EDIT DIRECTLY. -->\n\n';
     markdown += `# ${category.charAt(0).toUpperCase() + category.slice(1)} Attributes\n\n`;
 
-    // Sort attributes alphabetically by key
-    attributes.sort((a, b) => a.key.localeCompare(b.key));
+    // Split attributes into stable and deprecated
+    const stableAttributes = attributes.filter((attr) => !attr.deprecation);
+    const deprecatedAttributes = attributes.filter((attr) => attr.deprecation);
 
-    // Generate tables for each attribute
-    for (const attribute of attributes) {
-      markdown += generateAttributeTable(attribute);
+    // Sort both arrays alphabetically by key
+    stableAttributes.sort((a, b) => a.key.localeCompare(b.key));
+    deprecatedAttributes.sort((a, b) => a.key.localeCompare(b.key));
+
+    if (stableAttributes.length > 0) {
+      markdown += '- [Stable Attributes](#stable-attributes)\n';
+      for (const attr of stableAttributes) {
+        const anchorLink = attr.key.toLowerCase().replaceAll('.', '').replaceAll('-', '').replaceAll('<key>', 'key');
+        markdown += `  - [${attr.key}](#${anchorLink})\n`;
+      }
+    }
+
+    if (deprecatedAttributes.length > 0) {
+      markdown += '- [Deprecated Attributes](#deprecated-attributes)\n';
+      for (const attr of deprecatedAttributes) {
+        const anchorLink = attr.key.toLowerCase().replaceAll('.', '').replaceAll('-', '').replaceAll('<key>', 'key');
+        markdown += `  - [${attr.key}](#${anchorLink})\n`;
+      }
+    }
+
+    markdown += '\n';
+
+    // Generate stable attributes section
+    if (stableAttributes.length > 0) {
+      markdown += '## Stable Attributes\n\n';
+      for (const attribute of stableAttributes) {
+        markdown += generateAttributeTable(attribute);
+      }
+    }
+
+    // Generate deprecated attributes section
+    if (deprecatedAttributes.length > 0) {
+      markdown += '## Deprecated Attributes\n\n';
+      markdown +=
+        'These attributes are deprecated and will be removed in a future version. Please use the recommended replacements.\n\n';
+      for (const attribute of deprecatedAttributes) {
+        markdown += generateAttributeTable(attribute);
+      }
     }
 
     // Write the markdown file

@@ -2,7 +2,12 @@
 
 # User_agent Attributes
 
-## user_agent.original
+- [Stable Attributes](#stable-attributes)
+  - [user_agent.original](#user_agentoriginal)
+
+## Stable Attributes
+
+### user_agent.original
 
 Value of the HTTP User-Agent header sent by the client.
 

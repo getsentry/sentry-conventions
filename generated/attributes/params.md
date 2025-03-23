@@ -2,7 +2,12 @@
 
 # Params Attributes
 
-## params.\<key\>
+- [Stable Attributes](#stable-attributes)
+  - [params.<key>](#paramskey)
+
+## Stable Attributes
+
+### params.\<key\>
 
 Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.
 

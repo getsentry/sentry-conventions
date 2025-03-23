@@ -2,7 +2,28 @@
 
 # Net Attributes
 
-## net.host.ip
+- [Deprecated Attributes](#deprecated-attributes)
+  - [net.host.ip](#net-host-ip)
+  - [net.host.name](#net-host-name)
+  - [net.host.port](#net-host-port)
+  - [net.peer.ip](#net-peer-ip)
+  - [net.peer.name](#net-peer-name)
+  - [net.peer.port](#net-peer-port)
+  - [net.protocol.name](#net-protocol-name)
+  - [net.protocol.version](#net-protocol-version)
+  - [net.sock.family](#net-sock-family)
+  - [net.sock.host.addr](#net-sock-host-addr)
+  - [net.sock.host.port](#net-sock-host-port)
+  - [net.sock.peer.addr](#net-sock-peer-addr)
+  - [net.sock.peer.name](#net-sock-peer-name)
+  - [net.sock.peer.port](#net-sock-peer-port)
+  - [net.transport](#net-transport)
+
+## Deprecated Attributes
+
+These attributes are deprecated and will be removed in a future version. Please use the recommended replacements.
+
+### net.host.ip
 
 Local address of the network connection - IP address or Unix domain socket name.
 
@@ -15,7 +36,7 @@ Local address of the network connection - IP address or Unix domain socket name.
 | Deprecated | Yes, use `network.local.address` instead |
 | Aliases | `network.local.address` |
 
-## net.host.name
+### net.host.name
 
 Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
 
@@ -28,7 +49,7 @@ Server domain name if available without reverse DNS lookup; otherwise, IP addres
 | Deprecated | Yes, use `server.address` instead |
 | Aliases | `server.address` |
 
-## net.host.port
+### net.host.port
 
 Server port number.
 
@@ -41,7 +62,7 @@ Server port number.
 | Deprecated | Yes, use `server.port` instead |
 | Aliases | `server.port` |
 
-## net.peer.ip
+### net.peer.ip
 
 Peer address of the network connection - IP address or Unix domain socket name.
 
@@ -54,7 +75,7 @@ Peer address of the network connection - IP address or Unix domain socket name.
 | Deprecated | Yes, use `network.peer.address` instead |
 | Aliases | `network.peer.address` |
 
-## net.peer.name
+### net.peer.name
 
 Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
 
@@ -67,7 +88,7 @@ Server domain name if available without reverse DNS lookup; otherwise, IP addres
 | Deprecated | Yes, use `server.address` instead |
 | Deprecation Reason | Deprecated, use server.address on client spans and client.address on server spans. |
 
-## net.peer.port
+### net.peer.port
 
 Peer port number.
 
@@ -80,7 +101,7 @@ Peer port number.
 | Deprecated | Yes, use `server.port` instead |
 | Deprecation Reason | Deprecated, use server.port on client spans and client.port on server spans. |
 
-## net.protocol.name
+### net.protocol.name
 
 OSI application layer or non-OSI equivalent.
 
@@ -93,7 +114,7 @@ OSI application layer or non-OSI equivalent.
 | Deprecated | Yes, use `network.protocol.name` instead |
 | Aliases | `network.protocol.name` |
 
-## net.protocol.version
+### net.protocol.version
 
 The actual version of the protocol used for network communication.
 
@@ -106,7 +127,7 @@ The actual version of the protocol used for network communication.
 | Deprecated | Yes, use `network.protocol.version` instead |
 | Aliases | `network.protocol.version` |
 
-## net.sock.family
+### net.sock.family
 
 OSI transport and network layer
 
@@ -119,7 +140,7 @@ OSI transport and network layer
 | Deprecated | Yes, use `network.transport` instead |
 | Deprecation Reason | Deprecated, use network.transport and network.type. |
 
-## net.sock.host.addr
+### net.sock.host.addr
 
 Local address of the network connection mapping to Unix domain socket name.
 
@@ -132,7 +153,7 @@ Local address of the network connection mapping to Unix domain socket name.
 | Deprecated | Yes, use `network.local.address` instead |
 | Aliases | `network.local.address` |
 
-## net.sock.host.port
+### net.sock.host.port
 
 Local port number of the network connection.
 
@@ -145,7 +166,7 @@ Local port number of the network connection.
 | Deprecated | Yes, use `network.local.port` instead |
 | Aliases | `network.local.port` |
 
-## net.sock.peer.addr
+### net.sock.peer.addr
 
 Peer address of the network connection - IP address
 
@@ -158,7 +179,7 @@ Peer address of the network connection - IP address
 | Deprecated | Yes, use `network.peer.address` instead |
 | Aliases | `network.peer.address` |
 
-## net.sock.peer.name
+### net.sock.peer.name
 
 Peer address of the network connection - Unix domain socket name
 
@@ -171,7 +192,7 @@ Peer address of the network connection - Unix domain socket name
 | Deprecated | Yes, use `` instead |
 | Deprecation Reason | Deprecated, no replacement at this time |
 
-## net.sock.peer.port
+### net.sock.peer.port
 
 Peer port number of the network connection.
 
@@ -183,7 +204,7 @@ Peer port number of the network connection.
 | Example | `8080` |
 | Deprecated | Yes, use `network.peer.port` instead |
 
-## net.transport
+### net.transport
 
 OSI transport layer or inter-process communication method.
 

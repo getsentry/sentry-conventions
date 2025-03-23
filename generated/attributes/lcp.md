@@ -2,7 +2,15 @@
 
 # Lcp Attributes
 
-## lcp.element
+- [Stable Attributes](#stable-attributes)
+  - [lcp.element](#lcpelement)
+  - [lcp.id](#lcpid)
+  - [lcp.size](#lcpsize)
+  - [lcp.url](#lcpurl)
+
+## Stable Attributes
+
+### lcp.element
 
 The dom element responsible for the largest contentful paint.
 
@@ -13,7 +21,7 @@ The dom element responsible for the largest contentful paint.
 | Exists in OpenTelemetry | No |
 | Example | `img` |
 
-## lcp.id
+### lcp.id
 
 The id of the dom element responsible for the largest contentful paint.
 
@@ -24,7 +32,7 @@ The id of the dom element responsible for the largest contentful paint.
 | Exists in OpenTelemetry | No |
 | Example | `#hero` |
 
-## lcp.size
+### lcp.size
 
 The size of the largest contentful paint element.
 
@@ -35,7 +43,7 @@ The size of the largest contentful paint element.
 | Exists in OpenTelemetry | No |
 | Example | `1234` |
 
-## lcp.url
+### lcp.url
 
 The url of the dom element responsible for the largest contentful paint.
 

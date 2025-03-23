@@ -2,7 +2,14 @@
 
 # Query Attributes
 
-## query.\<key\>
+- [Deprecated Attributes](#deprecated-attributes)
+  - [query.<key>](#query-key-)
+
+## Deprecated Attributes
+
+These attributes are deprecated and will be removed in a future version. Please use the recommended replacements.
+
+### query.\<key\>
 
 An item in a query string. Usually added by client-side routing frameworks like vue-router.
 

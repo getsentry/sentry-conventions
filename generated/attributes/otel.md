@@ -2,7 +2,15 @@
 
 # Otel Attributes
 
-## otel.scope.name
+- [Stable Attributes](#stable-attributes)
+  - [otel.scope.name](#otelscopename)
+  - [otel.scope.version](#otelscopeversion)
+  - [otel.status_code](#otelstatus_code)
+  - [otel.status_description](#otelstatus_description)
+
+## Stable Attributes
+
+### otel.scope.name
 
 The name of the instrumentation scope - (InstrumentationScope.Name in OTLP).
 
@@ -13,7 +21,7 @@ The name of the instrumentation scope - (InstrumentationScope.Name in OTLP).
 | Exists in OpenTelemetry | Yes |
 | Example | `io.opentelemetry.contrib.mongodb` |
 
-## otel.scope.version
+### otel.scope.version
 
 The version of the instrumentation scope - (InstrumentationScope.Version in OTLP).
 
@@ -24,7 +32,7 @@ The version of the instrumentation scope - (InstrumentationScope.Version in OTLP
 | Exists in OpenTelemetry | Yes |
 | Example | `2.4.5` |
 
-## otel.status_code
+### otel.status_code
 
 Name of the code, either “OK” or “ERROR”. MUST NOT be set if the status code is UNSET.
 
@@ -35,7 +43,7 @@ Name of the code, either “OK” or “ERROR”. MUST NOT be set if the status 
 | Exists in OpenTelemetry | Yes |
 | Example | `OK` |
 
-## otel.status_description
+### otel.status_description
 
 Description of the Status if it has a value, otherwise not set.
 

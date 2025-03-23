@@ -2,7 +2,21 @@
 
 # User Attributes
 
-## user.email
+- [Stable Attributes](#stable-attributes)
+  - [user.email](#useremail)
+  - [user.full_name](#userfull_name)
+  - [user.geo.city](#usergeocity)
+  - [user.geo.country_code](#usergeocountry_code)
+  - [user.geo.region](#usergeoregion)
+  - [user.geo.subdivision](#usergeosubdivision)
+  - [user.hash](#userhash)
+  - [user.id](#userid)
+  - [user.name](#username)
+  - [user.roles](#userroles)
+
+## Stable Attributes
+
+### user.email
 
 User email address.
 
@@ -13,7 +27,7 @@ User email address.
 | Exists in OpenTelemetry | Yes |
 | Example | `test@example.com` |
 
-## user.full_name
+### user.full_name
 
 User's full name.
 
@@ -24,7 +38,7 @@ User's full name.
 | Exists in OpenTelemetry | Yes |
 | Example | `John Smith` |
 
-## user.geo.city
+### user.geo.city
 
 Human readable city name.
 
@@ -35,7 +49,7 @@ Human readable city name.
 | Exists in OpenTelemetry | No |
 | Example | `Toronto` |
 
-## user.geo.country_code
+### user.geo.country_code
 
 Two-letter country code (ISO 3166-1 alpha-2).
 
@@ -46,7 +60,7 @@ Two-letter country code (ISO 3166-1 alpha-2).
 | Exists in OpenTelemetry | No |
 | Example | `CA` |
 
-## user.geo.region
+### user.geo.region
 
 Human readable region name or code.
 
@@ -57,7 +71,7 @@ Human readable region name or code.
 | Exists in OpenTelemetry | No |
 | Example | `Canada` |
 
-## user.geo.subdivision
+### user.geo.subdivision
 
 Human readable subdivision name.
 
@@ -68,7 +82,7 @@ Human readable subdivision name.
 | Exists in OpenTelemetry | No |
 | Example | `Ontario` |
 
-## user.hash
+### user.hash
 
 Unique user hash to correlate information for a user in anonymized form.
 
@@ -79,7 +93,7 @@ Unique user hash to correlate information for a user in anonymized form.
 | Exists in OpenTelemetry | Yes |
 | Example | `8ae4c2993e0f4f3b8b2d1b1f3b5e8f4d` |
 
-## user.id
+### user.id
 
 Unique identifier of the user.
 
@@ -90,7 +104,7 @@ Unique identifier of the user.
 | Exists in OpenTelemetry | Yes |
 | Example | `S-1-5-21-202424912787-2692429404-2351956786-1000` |
 
-## user.name
+### user.name
 
 Short name or login/username of the user.
 
@@ -101,7 +115,7 @@ Short name or login/username of the user.
 | Exists in OpenTelemetry | Yes |
 | Example | `j.smith` |
 
-## user.roles
+### user.roles
 
 Array of user roles at the time of the event.
 

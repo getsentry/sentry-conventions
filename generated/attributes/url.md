@@ -2,7 +2,20 @@
 
 # Url Attributes
 
-## url.domain
+- [Stable Attributes](#stable-attributes)
+  - [url.domain](#urldomain)
+  - [url.fragment](#urlfragment)
+  - [url.full](#urlfull)
+  - [url.path](#urlpath)
+  - [url.path.params.<key>](#urlpathparamskey)
+  - [url.port](#urlport)
+  - [url.query](#urlquery)
+  - [url.scheme](#urlscheme)
+  - [url.template](#urltemplate)
+
+## Stable Attributes
+
+### url.domain
 
 Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
 
@@ -13,7 +26,7 @@ Server domain name if available without reverse DNS lookup; otherwise, IP addres
 | Exists in OpenTelemetry | Yes |
 | Example | `example.com` |
 
-## url.fragment
+### url.fragment
 
 The fragments present in the URI. Note that this does not contain the leading # character, while the `http.fragment` attribute does.
 
@@ -24,7 +37,7 @@ The fragments present in the URI. Note that this does not contain the leading # 
 | Exists in OpenTelemetry | Yes |
 | Example | `details` |
 
-## url.full
+### url.full
 
 The URL of the resource that was fetched.
 
@@ -36,7 +49,7 @@ The URL of the resource that was fetched.
 | Example | `https://example.com/test?foo=bar#buzz` |
 | Aliases | `url`, `http.url` |
 
-## url.path
+### url.path
 
 The URI path component.
 
@@ -47,7 +60,7 @@ The URI path component.
 | Exists in OpenTelemetry | Yes |
 | Example | `/foo` |
 
-## url.path.params.\<key\>
+### url.path.params.\<key\>
 
 Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.
 
@@ -60,7 +73,7 @@ Decoded parameters extracted from a URL path. Usually added by client-side routi
 | Example | `url.path.params.id='123'` |
 | Aliases | `params.\<key\>` |
 
-## url.port
+### url.port
 
 Server port number.
 
@@ -71,7 +84,7 @@ Server port number.
 | Exists in OpenTelemetry | Yes |
 | Example | `1337` |
 
-## url.query
+### url.query
 
 The query string present in the URL. Note that this does not contain the leading ? character, while the `http.query` attribute does.
 
@@ -82,7 +95,7 @@ The query string present in the URL. Note that this does not contain the leading
 | Exists in OpenTelemetry | Yes |
 | Example | `foo=bar&bar=baz` |
 
-## url.scheme
+### url.scheme
 
 The URI scheme component identifying the used protocol.
 
@@ -94,7 +107,7 @@ The URI scheme component identifying the used protocol.
 | Example | `https` |
 | Aliases | `http.scheme` |
 
-## url.template
+### url.template
 
 The low-cardinality template of an absolute path reference.
 

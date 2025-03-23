@@ -2,7 +2,13 @@
 
 # Process Attributes
 
-## process.executable.name
+- [Stable Attributes](#stable-attributes)
+  - [process.executable.name](#processexecutablename)
+  - [process.pid](#processpid)
+
+## Stable Attributes
+
+### process.executable.name
 
 The name of the executable that started the process.
 
@@ -13,7 +19,7 @@ The name of the executable that started the process.
 | Exists in OpenTelemetry | Yes |
 | Example | `getsentry` |
 
-## process.pid
+### process.pid
 
 The process ID of the running process.
 

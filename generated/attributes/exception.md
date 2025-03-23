@@ -2,7 +2,15 @@
 
 # Exception Attributes
 
-## exception.escaped
+- [Stable Attributes](#stable-attributes)
+  - [exception.escaped](#exceptionescaped)
+  - [exception.message](#exceptionmessage)
+  - [exception.stacktrace](#exceptionstacktrace)
+  - [exception.type](#exceptiontype)
+
+## Stable Attributes
+
+### exception.escaped
 
 SHOULD be set to true if the exception event is recorded at a point where it is known that the exception is escaping the scope of the span.
 
@@ -13,7 +21,7 @@ SHOULD be set to true if the exception event is recorded at a point where it is 
 | Exists in OpenTelemetry | Yes |
 | Example | `true` |
 
-## exception.message
+### exception.message
 
 The error message.
 
@@ -24,7 +32,7 @@ The error message.
 | Exists in OpenTelemetry | Yes |
 | Example | `ENOENT: no such file or directory` |
 
-## exception.stacktrace
+### exception.stacktrace
 
 A stacktrace as a string in the natural representation for the language runtime. The representation is to be determined and documented by each language SIG.
 
@@ -38,7 +46,7 @@ A stacktrace as a string in the natural representation for the language runtime.
  at com.example.GenerateTrace.methodA(GenerateTrace.java:9)
  at com.example.GenerateTrace.main(GenerateTrace.java:5)` |
 
-## exception.type
+### exception.type
 
 The type of the exception (its fully-qualified class name, if applicable). The dynamic type of the exception should be preferred over the static type in languages that support it.
 

@@ -2,7 +2,15 @@
 
 # Faas Attributes
 
-## faas.coldstart
+- [Stable Attributes](#stable-attributes)
+  - [faas.coldstart](#faascoldstart)
+  - [faas.cron](#faascron)
+  - [faas.time](#faastime)
+  - [faas.trigger](#faastrigger)
+
+## Stable Attributes
+
+### faas.coldstart
 
 A boolean that is true if the serverless function is executed for the first time (aka cold-start).
 
@@ -13,7 +21,7 @@ A boolean that is true if the serverless function is executed for the first time
 | Exists in OpenTelemetry | Yes |
 | Example | `true` |
 
-## faas.cron
+### faas.cron
 
 A string containing the schedule period as Cron Expression.
 
@@ -24,7 +32,7 @@ A string containing the schedule period as Cron Expression.
 | Exists in OpenTelemetry | Yes |
 | Example | `0/5 * * * ? *` |
 
-## faas.time
+### faas.time
 
 A string containing the function invocation time in the ISO 8601 format expressed in UTC.
 
@@ -35,7 +43,7 @@ A string containing the function invocation time in the ISO 8601 format expresse
 | Exists in OpenTelemetry | Yes |
 | Example | `2020-01-23T13:47:06Z` |
 
-## faas.trigger
+### faas.trigger
 
 Type of the trigger which caused this function invocation.
 

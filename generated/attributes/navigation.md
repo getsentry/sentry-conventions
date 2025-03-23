@@ -2,7 +2,12 @@
 
 # Navigation Attributes
 
-## navigation.type
+- [Stable Attributes](#stable-attributes)
+  - [navigation.type](#navigationtype)
+
+## Stable Attributes
+
+### navigation.type
 
 The type of navigation done by a client-side router.
 

@@ -2,7 +2,13 @@
 
 # Service Attributes
 
-## service.name
+- [Stable Attributes](#stable-attributes)
+  - [service.name](#servicename)
+  - [service.version](#serviceversion)
+
+## Stable Attributes
+
+### service.name
 
 Logical name of the service.
 
@@ -13,7 +19,7 @@ Logical name of the service.
 | Exists in OpenTelemetry | Yes |
 | Example | `omegastar` |
 
-## service.version
+### service.version
 
 The version string of the service API or implementation. The format is not defined by these conventions.
 

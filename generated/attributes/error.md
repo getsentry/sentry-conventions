@@ -2,7 +2,12 @@
 
 # Error Attributes
 
-## error.type
+- [Stable Attributes](#stable-attributes)
+  - [error.type](#errortype)
+
+## Stable Attributes
+
+### error.type
 
 Describes a class of error the operation ended with.
 

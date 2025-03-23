@@ -2,7 +2,17 @@
 
 # Jvm Attributes
 
-## jvm.gc.action
+- [Stable Attributes](#stable-attributes)
+  - [jvm.gc.action](#jvmgcaction)
+  - [jvm.gc.name](#jvmgcname)
+  - [jvm.memory.pool.name](#jvmmemorypoolname)
+  - [jvm.memory.type](#jvmmemorytype)
+  - [jvm.thread.daemon](#jvmthreaddaemon)
+  - [jvm.thread.state](#jvmthreadstate)
+
+## Stable Attributes
+
+### jvm.gc.action
 
 Name of the garbage collector action.
 
@@ -13,7 +23,7 @@ Name of the garbage collector action.
 | Exists in OpenTelemetry | Yes |
 | Example | `end of minor GC` |
 
-## jvm.gc.name
+### jvm.gc.name
 
 Name of the garbage collector.
 
@@ -24,7 +34,7 @@ Name of the garbage collector.
 | Exists in OpenTelemetry | Yes |
 | Example | `G1 Young Generation` |
 
-## jvm.memory.pool.name
+### jvm.memory.pool.name
 
 Name of the memory pool.
 
@@ -35,7 +45,7 @@ Name of the memory pool.
 | Exists in OpenTelemetry | Yes |
 | Example | `G1 Old Gen` |
 
-## jvm.memory.type
+### jvm.memory.type
 
 Name of the memory pool.
 
@@ -46,7 +56,7 @@ Name of the memory pool.
 | Exists in OpenTelemetry | Yes |
 | Example | `G1 Old Gen` |
 
-## jvm.thread.daemon
+### jvm.thread.daemon
 
 Whether the thread is daemon or not.
 
@@ -57,7 +67,7 @@ Whether the thread is daemon or not.
 | Exists in OpenTelemetry | Yes |
 | Example | `true` |
 
-## jvm.thread.state
+### jvm.thread.state
 
 State of the thread.
 

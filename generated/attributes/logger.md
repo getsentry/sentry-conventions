@@ -2,7 +2,12 @@
 
 # Logger Attributes
 
-## logger.name
+- [Stable Attributes](#stable-attributes)
+  - [logger.name](#loggername)
+
+## Stable Attributes
+
+### logger.name
 
 The name of the logger that generated this event.
 

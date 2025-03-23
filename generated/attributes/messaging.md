@@ -2,7 +2,19 @@
 
 # Messaging Attributes
 
-## messaging.destination.connection
+- [Stable Attributes](#stable-attributes)
+  - [messaging.destination.connection](#messagingdestinationconnection)
+  - [messaging.destination.name](#messagingdestinationname)
+  - [messaging.message.body.size](#messagingmessagebodysize)
+  - [messaging.message.envelope.size](#messagingmessageenvelopesize)
+  - [messaging.message.id](#messagingmessageid)
+  - [messaging.message.receive.latency](#messagingmessagereceivelatency)
+  - [messaging.message.retry.count](#messagingmessageretrycount)
+  - [messaging.system](#messagingsystem)
+
+## Stable Attributes
+
+### messaging.destination.connection
 
 The message destination connection.
 
@@ -13,7 +25,7 @@ The message destination connection.
 | Exists in OpenTelemetry | No |
 | Example | `BestTopic` |
 
-## messaging.destination.name
+### messaging.destination.name
 
 The message destination name.
 
@@ -24,7 +36,7 @@ The message destination name.
 | Exists in OpenTelemetry | Yes |
 | Example | `BestTopic` |
 
-## messaging.message.body.size
+### messaging.message.body.size
 
 The size of the message body in bytes.
 
@@ -35,7 +47,7 @@ The size of the message body in bytes.
 | Exists in OpenTelemetry | Yes |
 | Example | `839` |
 
-## messaging.message.envelope.size
+### messaging.message.envelope.size
 
 The size of the message body and metadata in bytes.
 
@@ -46,7 +58,7 @@ The size of the message body and metadata in bytes.
 | Exists in OpenTelemetry | Yes |
 | Example | `1045` |
 
-## messaging.message.id
+### messaging.message.id
 
 A value used by the messaging system as an identifier for the message, represented as a string.
 
@@ -57,7 +69,7 @@ A value used by the messaging system as an identifier for the message, represent
 | Exists in OpenTelemetry | Yes |
 | Example | `f47ac10b58cc4372a5670e02b2c3d479` |
 
-## messaging.message.receive.latency
+### messaging.message.receive.latency
 
 The latency between when the message was published and received.
 
@@ -68,7 +80,7 @@ The latency between when the message was published and received.
 | Exists in OpenTelemetry | No |
 | Example | `1732847252` |
 
-## messaging.message.retry.count
+### messaging.message.retry.count
 
 The amount of attempts to send the message.
 
@@ -79,7 +91,7 @@ The amount of attempts to send the message.
 | Exists in OpenTelemetry | No |
 | Example | `2` |
 
-## messaging.system
+### messaging.system
 
 The messaging system as identified by the client instrumentation.
 
