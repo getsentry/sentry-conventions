@@ -12,7 +12,7 @@
  *
  * @example 10
  */
-export const AI_COMPLETION_TOKENS_USED = "ai.completion_tokens.used";
+export const AI_COMPLETION_TOKENS_USED = 'ai.completion_tokens.used';
 
 // Path: model/attributes/ai/ai__input_messages.json
 
@@ -26,7 +26,7 @@ export const AI_COMPLETION_TOKENS_USED = "ai.completion_tokens.used";
  *
  * @example "[{\"role\": \"user\", \"message\": \"hello\"}]"
  */
-export const AI_INPUT_MESSAGES = "ai.input_messages";
+export const AI_INPUT_MESSAGES = 'ai.input_messages';
 
 // Path: model/attributes/ai/ai__model_id.json
 
@@ -40,7 +40,7 @@ export const AI_INPUT_MESSAGES = "ai.input_messages";
  *
  * @example "gpt-4"
  */
-export const AI_MODEL_ID = "ai.model_id";
+export const AI_MODEL_ID = 'ai.model_id';
 
 // Path: model/attributes/ai/ai__prompt_tokens__used.json
 
@@ -54,7 +54,7 @@ export const AI_MODEL_ID = "ai.model_id";
  *
  * @example 20
  */
-export const AI_PROMPT_TOKENS_USED = "ai.prompt_tokens.used";
+export const AI_PROMPT_TOKENS_USED = 'ai.prompt_tokens.used';
 
 // Path: model/attributes/ai/ai__responses.json
 
@@ -67,7 +67,7 @@ export const AI_PROMPT_TOKENS_USED = "ai.prompt_tokens.used";
  *
  * @example ["hello","world"]
  */
-export const AI_RESPONSES = "ai.responses";
+export const AI_RESPONSES = 'ai.responses';
 
 // Path: model/attributes/ai/ai__streaming.json
 
@@ -80,7 +80,7 @@ export const AI_RESPONSES = "ai.responses";
  *
  * @example true
  */
-export const AI_STREAMING = "ai.streaming";
+export const AI_STREAMING = 'ai.streaming';
 
 // Path: model/attributes/ai/ai__total_tokens__used.json
 
@@ -93,7 +93,7 @@ export const AI_STREAMING = "ai.streaming";
  *
  * @example 30
  */
-export const AI_TOTAL_TOKENS_USED = "ai.total_tokens.used";
+export const AI_TOTAL_TOKENS_USED = 'ai.total_tokens.used';
 
 // Path: model/attributes/app_start_type.json
 
@@ -106,7 +106,7 @@ export const AI_TOTAL_TOKENS_USED = "ai.total_tokens.used";
  *
  * @example "cold"
  */
-export const APP_START_TYPE = "app_start_type";
+export const APP_START_TYPE = 'app_start_type';
 
 // Path: model/attributes/blocked_main_thread.json
 
@@ -119,7 +119,7 @@ export const APP_START_TYPE = "app_start_type";
  *
  * @example true
  */
-export const BLOCKED_MAIN_THREAD = "blocked_main_thread";
+export const BLOCKED_MAIN_THREAD = 'blocked_main_thread';
 
 // Path: model/attributes/browser/browser__name.json
 
@@ -132,7 +132,7 @@ export const BLOCKED_MAIN_THREAD = "blocked_main_thread";
  *
  * @example "Chrome"
  */
-export const BROWSER_NAME = "browser.name";
+export const BROWSER_NAME = 'browser.name';
 
 // Path: model/attributes/browser/browser__script__invoker.json
 
@@ -145,7 +145,7 @@ export const BROWSER_NAME = "browser.name";
  *
  * @example "Window.requestAnimationFrame"
  */
-export const BROWSER_SCRIPT_INVOKER = "browser.script.invoker";
+export const BROWSER_SCRIPT_INVOKER = 'browser.script.invoker';
 
 // Path: model/attributes/browser/browser__script__invoker_type.json
 
@@ -158,7 +158,7 @@ export const BROWSER_SCRIPT_INVOKER = "browser.script.invoker";
  *
  * @example "event-listener"
  */
-export const BROWSER_SCRIPT_INVOKER_TYPE = "browser.script.invoker_type";
+export const BROWSER_SCRIPT_INVOKER_TYPE = 'browser.script.invoker_type';
 
 // Path: model/attributes/browser/browser__script__source_char_position.json
 
@@ -171,7 +171,7 @@ export const BROWSER_SCRIPT_INVOKER_TYPE = "browser.script.invoker_type";
  *
  * @example 678
  */
-export const BROWSER_SCRIPT_SOURCE_CHAR_POSITION = "browser.script.source_char_position";
+export const BROWSER_SCRIPT_SOURCE_CHAR_POSITION = 'browser.script.source_char_position';
 
 // Path: model/attributes/cache/cache__hit.json
 
@@ -184,7 +184,7 @@ export const BROWSER_SCRIPT_SOURCE_CHAR_POSITION = "browser.script.source_char_p
  *
  * @example true
  */
-export const CACHE_HIT = "cache.hit";
+export const CACHE_HIT = 'cache.hit';
 
 // Path: model/attributes/cache/cache__item_size.json
 
@@ -197,7 +197,7 @@ export const CACHE_HIT = "cache.hit";
  *
  * @example 58
  */
-export const CACHE_ITEM_SIZE = "cache.item_size";
+export const CACHE_ITEM_SIZE = 'cache.item_size';
 
 // Path: model/attributes/cache/cache__key.json
 
@@ -210,7 +210,7 @@ export const CACHE_ITEM_SIZE = "cache.item_size";
  *
  * @example "my-cache-key"
  */
-export const CACHE_KEY = "cache.key";
+export const CACHE_KEY = 'cache.key';
 
 // Path: model/attributes/cache/cache__ttl.json
 
@@ -223,7 +223,7 @@ export const CACHE_KEY = "cache.key";
  *
  * @example 120
  */
-export const CACHE_TTL = "cache.ttl";
+export const CACHE_TTL = 'cache.ttl';
 
 // Path: model/attributes/channel.json
 
@@ -236,7 +236,7 @@ export const CACHE_TTL = "cache.ttl";
  *
  * @example "mail"
  */
-export const CHANNEL = "channel";
+export const CHANNEL = 'channel';
 
 // Path: model/attributes/client/client__address.json
 
@@ -250,7 +250,7 @@ export const CHANNEL = "channel";
  *
  * @example "example.com"
  */
-export const CLIENT_ADDRESS = "client.address";
+export const CLIENT_ADDRESS = 'client.address';
 
 // Path: model/attributes/client/client__port.json
 
@@ -263,7 +263,7 @@ export const CLIENT_ADDRESS = "client.address";
  *
  * @example 5432
  */
-export const CLIENT_PORT = "client.port";
+export const CLIENT_PORT = 'client.port';
 
 // Path: model/attributes/cloudflare/cloudflare__d1__duration.json
 
@@ -276,7 +276,7 @@ export const CLIENT_PORT = "client.port";
  *
  * @example 543
  */
-export const CLOUDFLARE_D1_DURATION = "cloudflare.d1.duration";
+export const CLOUDFLARE_D1_DURATION = 'cloudflare.d1.duration';
 
 // Path: model/attributes/cloudflare/cloudflare__d1__rows_read.json
 
@@ -289,7 +289,7 @@ export const CLOUDFLARE_D1_DURATION = "cloudflare.d1.duration";
  *
  * @example 12
  */
-export const CLOUDFLARE_D1_ROWS_READ = "cloudflare.d1.rows_read";
+export const CLOUDFLARE_D1_ROWS_READ = 'cloudflare.d1.rows_read';
 
 // Path: model/attributes/cloudflare/cloudflare__d1__rows_written.json
 
@@ -302,7 +302,7 @@ export const CLOUDFLARE_D1_ROWS_READ = "cloudflare.d1.rows_read";
  *
  * @example 12
  */
-export const CLOUDFLARE_D1_ROWS_WRITTEN = "cloudflare.d1.rows_written";
+export const CLOUDFLARE_D1_ROWS_WRITTEN = 'cloudflare.d1.rows_written';
 
 // Path: model/attributes/code/code__file__path.json
 
@@ -316,7 +316,7 @@ export const CLOUDFLARE_D1_ROWS_WRITTEN = "cloudflare.d1.rows_written";
  *
  * @example "/app/myapplication/http/handler/server.py"
  */
-export const CODE_FILE_PATH = "code.file.path";
+export const CODE_FILE_PATH = 'code.file.path';
 
 // Path: model/attributes/code/code__filepath.json
 
@@ -331,7 +331,7 @@ export const CODE_FILE_PATH = "code.file.path";
  * @deprecated Use code.file.path instead
  * @example "/app/myapplication/http/handler/server.py"
  */
-export const CODE_FILEPATH = "code.filepath";
+export const CODE_FILEPATH = 'code.filepath';
 
 // Path: model/attributes/code/code__function.json
 
@@ -346,7 +346,7 @@ export const CODE_FILEPATH = "code.filepath";
  * @deprecated Use code.function.name instead
  * @example "server_request"
  */
-export const CODE_FUNCTION = "code.function";
+export const CODE_FUNCTION = 'code.function';
 
 // Path: model/attributes/code/code__function__name.json
 
@@ -360,7 +360,7 @@ export const CODE_FUNCTION = "code.function";
  *
  * @example "server_request"
  */
-export const CODE_FUNCTION_NAME = "code.function.name";
+export const CODE_FUNCTION_NAME = 'code.function.name';
 
 // Path: model/attributes/code/code__line__number.json
 
@@ -374,7 +374,7 @@ export const CODE_FUNCTION_NAME = "code.function.name";
  *
  * @example 42
  */
-export const CODE_LINE_NUMBER = "code.line.number";
+export const CODE_LINE_NUMBER = 'code.line.number';
 
 // Path: model/attributes/code/code__lineno.json
 
@@ -389,7 +389,7 @@ export const CODE_LINE_NUMBER = "code.line.number";
  * @deprecated Use code.line.number instead
  * @example 42
  */
-export const CODE_LINENO = "code.lineno";
+export const CODE_LINENO = 'code.lineno';
 
 // Path: model/attributes/code/code__namespace.json
 
@@ -403,7 +403,7 @@ export const CODE_LINENO = "code.lineno";
  * @deprecated Use code.function.name instead - code.function.name should include the namespace.
  * @example "http.handler"
  */
-export const CODE_NAMESPACE = "code.namespace";
+export const CODE_NAMESPACE = 'code.namespace';
 
 // Path: model/attributes/db/db__collection__name.json
 
@@ -417,7 +417,7 @@ export const CODE_NAMESPACE = "code.namespace";
  *
  * @example "users"
  */
-export const DB_COLLECTION_NAME = "db.collection.name";
+export const DB_COLLECTION_NAME = 'db.collection.name';
 
 // Path: model/attributes/db/db__name.json
 
@@ -432,7 +432,7 @@ export const DB_COLLECTION_NAME = "db.collection.name";
  * @deprecated Use db.namespace instead
  * @example "customers"
  */
-export const DB_NAME = "db.name";
+export const DB_NAME = 'db.name';
 
 // Path: model/attributes/db/db__namespace.json
 
@@ -446,7 +446,7 @@ export const DB_NAME = "db.name";
  *
  * @example "customers"
  */
-export const DB_NAMESPACE = "db.namespace";
+export const DB_NAMESPACE = 'db.namespace';
 
 // Path: model/attributes/db/db__operation.json
 
@@ -461,7 +461,7 @@ export const DB_NAMESPACE = "db.namespace";
  * @deprecated Use db.operation.name instead
  * @example "SELECT"
  */
-export const DB_OPERATION = "db.operation";
+export const DB_OPERATION = 'db.operation';
 
 // Path: model/attributes/db/db__operation__name.json
 
@@ -475,7 +475,7 @@ export const DB_OPERATION = "db.operation";
  *
  * @example "SELECT"
  */
-export const DB_OPERATION_NAME = "db.operation.name";
+export const DB_OPERATION_NAME = 'db.operation.name';
 
 // Path: model/attributes/db/db__query__parameter__<key>.json
 
@@ -489,7 +489,7 @@ export const DB_OPERATION_NAME = "db.operation.name";
  *
  * @example "db.query.parameter.foo='123'"
  */
-export const DB_QUERY_PARAMETER_KEY = "db.query.parameter.<key>";
+export const DB_QUERY_PARAMETER_KEY = 'db.query.parameter.<key>';
 
 // Path: model/attributes/db/db__query__text.json
 
@@ -503,7 +503,7 @@ export const DB_QUERY_PARAMETER_KEY = "db.query.parameter.<key>";
  *
  * @example "SELECT * FROM users"
  */
-export const DB_QUERY_TEXT = "db.query.text";
+export const DB_QUERY_TEXT = 'db.query.text';
 
 // Path: model/attributes/db/db__redis__connection.json
 
@@ -516,7 +516,7 @@ export const DB_QUERY_TEXT = "db.query.text";
  *
  * @example "my-redis-instance"
  */
-export const DB_REDIS_CONNECTION = "db.redis.connection";
+export const DB_REDIS_CONNECTION = 'db.redis.connection';
 
 // Path: model/attributes/db/db__redis__parameters.json
 
@@ -529,7 +529,7 @@ export const DB_REDIS_CONNECTION = "db.redis.connection";
  *
  * @example ["test","*"]
  */
-export const DB_REDIS_PARAMETERS = "db.redis.parameters";
+export const DB_REDIS_PARAMETERS = 'db.redis.parameters';
 
 // Path: model/attributes/db/db__sql__bindings.json
 
@@ -543,7 +543,7 @@ export const DB_REDIS_PARAMETERS = "db.redis.parameters";
  * @deprecated Use db.query.parameter.<key> instead - Instead of adding every binding in the db.sql.bindings attribute, add them as individual entires with db.query.parameter.<key>.
  * @example ["1","foo"]
  */
-export const DB_SQL_BINDINGS = "db.sql.bindings";
+export const DB_SQL_BINDINGS = 'db.sql.bindings';
 
 // Path: model/attributes/db/db__statement.json
 
@@ -558,7 +558,7 @@ export const DB_SQL_BINDINGS = "db.sql.bindings";
  * @deprecated Use db.query.text instead
  * @example "SELECT * FROM users"
  */
-export const DB_STATEMENT = "db.statement";
+export const DB_STATEMENT = 'db.statement';
 
 // Path: model/attributes/db/db__system.json
 
@@ -573,7 +573,7 @@ export const DB_STATEMENT = "db.statement";
  * @deprecated Use db.system.name instead
  * @example "postgresql"
  */
-export const DB_SYSTEM = "db.system";
+export const DB_SYSTEM = 'db.system';
 
 // Path: model/attributes/db/db__system__name.json
 
@@ -587,7 +587,7 @@ export const DB_SYSTEM = "db.system";
  *
  * @example "postgresql"
  */
-export const DB_SYSTEM_NAME = "db.system.name";
+export const DB_SYSTEM_NAME = 'db.system.name';
 
 // Path: model/attributes/db/db__user.json
 
@@ -600,7 +600,7 @@ export const DB_SYSTEM_NAME = "db.system.name";
  *
  * @example "fancy_user"
  */
-export const DB_USER = "db.user";
+export const DB_USER = 'db.user';
 
 // Path: model/attributes/environment.json
 
@@ -615,7 +615,7 @@ export const DB_USER = "db.user";
  * @deprecated Use sentry.environment instead
  * @example "production"
  */
-export const ENVIRONMENT = "environment";
+export const ENVIRONMENT = 'environment';
 
 // Path: model/attributes/error/error__type.json
 
@@ -628,7 +628,7 @@ export const ENVIRONMENT = "environment";
  *
  * @example "timeout"
  */
-export const ERROR_TYPE = "error.type";
+export const ERROR_TYPE = 'error.type';
 
 // Path: model/attributes/exception/exception__escaped.json
 
@@ -641,7 +641,7 @@ export const ERROR_TYPE = "error.type";
  *
  * @example true
  */
-export const EXCEPTION_ESCAPED = "exception.escaped";
+export const EXCEPTION_ESCAPED = 'exception.escaped';
 
 // Path: model/attributes/exception/exception__message.json
 
@@ -654,7 +654,7 @@ export const EXCEPTION_ESCAPED = "exception.escaped";
  *
  * @example "ENOENT: no such file or directory"
  */
-export const EXCEPTION_MESSAGE = "exception.message";
+export const EXCEPTION_MESSAGE = 'exception.message';
 
 // Path: model/attributes/exception/exception__stacktrace.json
 
@@ -667,7 +667,7 @@ export const EXCEPTION_MESSAGE = "exception.message";
  *
  * @example "Exception in thread \"main\" java.lang.RuntimeException: Test exception\n at com.example.GenerateTrace.methodB(GenerateTrace.java:13)\n at com.example.GenerateTrace.methodA(GenerateTrace.java:9)\n at com.example.GenerateTrace.main(GenerateTrace.java:5)"
  */
-export const EXCEPTION_STACKTRACE = "exception.stacktrace";
+export const EXCEPTION_STACKTRACE = 'exception.stacktrace';
 
 // Path: model/attributes/exception/exception__type.json
 
@@ -680,7 +680,7 @@ export const EXCEPTION_STACKTRACE = "exception.stacktrace";
  *
  * @example "OSError"
  */
-export const EXCEPTION_TYPE = "exception.type";
+export const EXCEPTION_TYPE = 'exception.type';
 
 // Path: model/attributes/faas/faas__coldstart.json
 
@@ -693,7 +693,7 @@ export const EXCEPTION_TYPE = "exception.type";
  *
  * @example true
  */
-export const FAAS_COLDSTART = "faas.coldstart";
+export const FAAS_COLDSTART = 'faas.coldstart';
 
 // Path: model/attributes/faas/faas__cron.json
 
@@ -706,7 +706,7 @@ export const FAAS_COLDSTART = "faas.coldstart";
  *
  * @example "0/5 * * * ? *"
  */
-export const FAAS_CRON = "faas.cron";
+export const FAAS_CRON = 'faas.cron';
 
 // Path: model/attributes/faas/faas__time.json
 
@@ -719,7 +719,7 @@ export const FAAS_CRON = "faas.cron";
  *
  * @example "2020-01-23T13:47:06Z"
  */
-export const FAAS_TIME = "faas.time";
+export const FAAS_TIME = 'faas.time';
 
 // Path: model/attributes/faas/faas__trigger.json
 
@@ -732,7 +732,7 @@ export const FAAS_TIME = "faas.time";
  *
  * @example "timer"
  */
-export const FAAS_TRIGGER = "faas.trigger";
+export const FAAS_TRIGGER = 'faas.trigger';
 
 // Path: model/attributes/frames/frames__delay.json
 
@@ -745,7 +745,7 @@ export const FAAS_TRIGGER = "faas.trigger";
  *
  * @example 5
  */
-export const FRAMES_DELAY = "frames.delay";
+export const FRAMES_DELAY = 'frames.delay';
 
 // Path: model/attributes/frames/frames__frozen.json
 
@@ -758,7 +758,7 @@ export const FRAMES_DELAY = "frames.delay";
  *
  * @example 3
  */
-export const FRAMES_FROZEN = "frames.frozen";
+export const FRAMES_FROZEN = 'frames.frozen';
 
 // Path: model/attributes/frames/frames__slow.json
 
@@ -771,7 +771,7 @@ export const FRAMES_FROZEN = "frames.frozen";
  *
  * @example 1
  */
-export const FRAMES_SLOW = "frames.slow";
+export const FRAMES_SLOW = 'frames.slow';
 
 // Path: model/attributes/frames/frames__total.json
 
@@ -784,7 +784,7 @@ export const FRAMES_SLOW = "frames.slow";
  *
  * @example 60
  */
-export const FRAMES_TOTAL = "frames.total";
+export const FRAMES_TOTAL = 'frames.total';
 
 // Path: model/attributes/fs_error.json
 
@@ -798,7 +798,7 @@ export const FRAMES_TOTAL = "frames.total";
  * @deprecated Use error.type instead - This attribute is not part of the OpenTelemetry specification and error.type fits much better.
  * @example "ENOENT: no such file or directory"
  */
-export const FS_ERROR = "fs_error";
+export const FS_ERROR = 'fs_error';
 
 // Path: model/attributes/gen_ai/gen_ai__prompt.json
 
@@ -811,7 +811,7 @@ export const FS_ERROR = "fs_error";
  *
  * @example "[{\"role\": \"user\", \"message\": \"hello\"}]"
  */
-export const GEN_AI_PROMPT = "gen_ai.prompt";
+export const GEN_AI_PROMPT = 'gen_ai.prompt';
 
 // Path: model/attributes/gen_ai/gen_ai__response__model.json
 
@@ -825,7 +825,7 @@ export const GEN_AI_PROMPT = "gen_ai.prompt";
  *
  * @example "gpt-4"
  */
-export const GEN_AI_RESPONSE_MODEL = "gen_ai.response.model";
+export const GEN_AI_RESPONSE_MODEL = 'gen_ai.response.model';
 
 // Path: model/attributes/gen_ai/gen_ai__usage__completion_tokens.json
 
@@ -840,7 +840,7 @@ export const GEN_AI_RESPONSE_MODEL = "gen_ai.response.model";
  * @deprecated Use gen_ai.usage.output_tokens instead
  * @example 10
  */
-export const GEN_AI_USAGE_COMPLETION_TOKENS = "gen_ai.usage.completion_tokens";
+export const GEN_AI_USAGE_COMPLETION_TOKENS = 'gen_ai.usage.completion_tokens';
 
 // Path: model/attributes/gen_ai/gen_ai__usage__input_tokens.json
 
@@ -854,7 +854,7 @@ export const GEN_AI_USAGE_COMPLETION_TOKENS = "gen_ai.usage.completion_tokens";
  *
  * @example 10
  */
-export const GEN_AI_USAGE_INPUT_TOKENS = "gen_ai.usage.input_tokens";
+export const GEN_AI_USAGE_INPUT_TOKENS = 'gen_ai.usage.input_tokens';
 
 // Path: model/attributes/gen_ai/gen_ai__usage__output_tokens.json
 
@@ -868,7 +868,7 @@ export const GEN_AI_USAGE_INPUT_TOKENS = "gen_ai.usage.input_tokens";
  *
  * @example 10
  */
-export const GEN_AI_USAGE_OUTPUT_TOKENS = "gen_ai.usage.output_tokens";
+export const GEN_AI_USAGE_OUTPUT_TOKENS = 'gen_ai.usage.output_tokens';
 
 // Path: model/attributes/gen_ai/gen_ai__usage__prompt_tokens.json
 
@@ -883,7 +883,7 @@ export const GEN_AI_USAGE_OUTPUT_TOKENS = "gen_ai.usage.output_tokens";
  * @deprecated Use gen_ai.usage.input_tokens instead
  * @example 20
  */
-export const GEN_AI_USAGE_PROMPT_TOKENS = "gen_ai.usage.prompt_tokens";
+export const GEN_AI_USAGE_PROMPT_TOKENS = 'gen_ai.usage.prompt_tokens';
 
 // Path: model/attributes/graphql/graphql__operation__name.json
 
@@ -896,7 +896,7 @@ export const GEN_AI_USAGE_PROMPT_TOKENS = "gen_ai.usage.prompt_tokens";
  *
  * @example "findBookById"
  */
-export const GRAPHQL_OPERATION_NAME = "graphql.operation.name";
+export const GRAPHQL_OPERATION_NAME = 'graphql.operation.name';
 
 // Path: model/attributes/graphql/graphql__operation__type.json
 
@@ -909,7 +909,7 @@ export const GRAPHQL_OPERATION_NAME = "graphql.operation.name";
  *
  * @example "query"
  */
-export const GRAPHQL_OPERATION_TYPE = "graphql.operation.type";
+export const GRAPHQL_OPERATION_TYPE = 'graphql.operation.type';
 
 // Path: model/attributes/http/http__client_ip.json
 
@@ -924,7 +924,7 @@ export const GRAPHQL_OPERATION_TYPE = "graphql.operation.type";
  * @deprecated Use http.client_ip instead
  * @example "example.com"
  */
-export const HTTP_CLIENT_IP = "http.client_ip";
+export const HTTP_CLIENT_IP = 'http.client_ip';
 
 // Path: model/attributes/http/http__decoded_response_content_length.json
 
@@ -937,7 +937,7 @@ export const HTTP_CLIENT_IP = "http.client_ip";
  *
  * @example 456
  */
-export const HTTP_DECODED_RESPONSE_CONTENT_LENGTH = "http.decoded_response_content_length";
+export const HTTP_DECODED_RESPONSE_CONTENT_LENGTH = 'http.decoded_response_content_length';
 
 // Path: model/attributes/http/http__flavor.json
 
@@ -952,7 +952,7 @@ export const HTTP_DECODED_RESPONSE_CONTENT_LENGTH = "http.decoded_response_conte
  * @deprecated Use network.protocol.version instead
  * @example "1.1"
  */
-export const HTTP_FLAVOR = "http.flavor";
+export const HTTP_FLAVOR = 'http.flavor';
 
 // Path: model/attributes/http/http__fragment.json
 
@@ -965,7 +965,7 @@ export const HTTP_FLAVOR = "http.flavor";
  *
  * @example "#details"
  */
-export const HTTP_FRAGMENT = "http.fragment";
+export const HTTP_FRAGMENT = 'http.fragment';
 
 // Path: model/attributes/http/http__host.json
 
@@ -980,7 +980,7 @@ export const HTTP_FRAGMENT = "http.fragment";
  * @deprecated Use server.address instead - Deprecated, use one of `server.address` or `client.address`, depending on the usage
  * @example "example.com"
  */
-export const HTTP_HOST = "http.host";
+export const HTTP_HOST = 'http.host';
 
 // Path: model/attributes/http/http__method.json
 
@@ -995,7 +995,7 @@ export const HTTP_HOST = "http.host";
  * @deprecated Use http.request.method instead
  * @example "GET"
  */
-export const HTTP_METHOD = "http.method";
+export const HTTP_METHOD = 'http.method';
 
 // Path: model/attributes/http/http__query.json
 
@@ -1008,7 +1008,7 @@ export const HTTP_METHOD = "http.method";
  *
  * @example "?foo=bar&bar=baz"
  */
-export const HTTP_QUERY = "http.query";
+export const HTTP_QUERY = 'http.query';
 
 // Path: model/attributes/http/http__request__connect_start.json
 
@@ -1021,7 +1021,7 @@ export const HTTP_QUERY = "http.query";
  *
  * @example 1732829555
  */
-export const HTTP_REQUEST_CONNECT_START = "http.request.connect_start";
+export const HTTP_REQUEST_CONNECT_START = 'http.request.connect_start';
 
 // Path: model/attributes/http/http__request__connection_end.json
 
@@ -1034,7 +1034,7 @@ export const HTTP_REQUEST_CONNECT_START = "http.request.connect_start";
  *
  * @example 1732829555
  */
-export const HTTP_REQUEST_CONNECTION_END = "http.request.connection_end";
+export const HTTP_REQUEST_CONNECTION_END = 'http.request.connection_end';
 
 // Path: model/attributes/http/http__request__domain_lookup_end.json
 
@@ -1047,7 +1047,7 @@ export const HTTP_REQUEST_CONNECTION_END = "http.request.connection_end";
  *
  * @example 1732829555
  */
-export const HTTP_REQUEST_DOMAIN_LOOKUP_END = "http.request.domain_lookup_end";
+export const HTTP_REQUEST_DOMAIN_LOOKUP_END = 'http.request.domain_lookup_end';
 
 // Path: model/attributes/http/http__request__domain_lookup_start.json
 
@@ -1060,7 +1060,7 @@ export const HTTP_REQUEST_DOMAIN_LOOKUP_END = "http.request.domain_lookup_end";
  *
  * @example 1732829555
  */
-export const HTTP_REQUEST_DOMAIN_LOOKUP_START = "http.request.domain_lookup_start";
+export const HTTP_REQUEST_DOMAIN_LOOKUP_START = 'http.request.domain_lookup_start';
 
 // Path: model/attributes/http/http__request__fetch_start.json
 
@@ -1073,7 +1073,7 @@ export const HTTP_REQUEST_DOMAIN_LOOKUP_START = "http.request.domain_lookup_star
  *
  * @example 1732829555
  */
-export const HTTP_REQUEST_FETCH_START = "http.request.fetch_start";
+export const HTTP_REQUEST_FETCH_START = 'http.request.fetch_start';
 
 // Path: model/attributes/http/http__request__header__<key>.json
 
@@ -1087,7 +1087,7 @@ export const HTTP_REQUEST_FETCH_START = "http.request.fetch_start";
  *
  * @example "http.request.header.custom-header=['foo', 'bar']"
  */
-export const HTTP_REQUEST_HEADER_KEY = "http.request.header.<key>";
+export const HTTP_REQUEST_HEADER_KEY = 'http.request.header.<key>';
 
 // Path: model/attributes/http/http__request__method.json
 
@@ -1101,7 +1101,7 @@ export const HTTP_REQUEST_HEADER_KEY = "http.request.header.<key>";
  *
  * @example "GET"
  */
-export const HTTP_REQUEST_METHOD = "http.request.method";
+export const HTTP_REQUEST_METHOD = 'http.request.method';
 
 // Path: model/attributes/http/http__request__redirect_start.json
 
@@ -1114,7 +1114,7 @@ export const HTTP_REQUEST_METHOD = "http.request.method";
  *
  * @example 1732829555
  */
-export const HTTP_REQUEST_REDIRECT_START = "http.request.redirect_start";
+export const HTTP_REQUEST_REDIRECT_START = 'http.request.redirect_start';
 
 // Path: model/attributes/http/http__request__request_start.json
 
@@ -1127,7 +1127,7 @@ export const HTTP_REQUEST_REDIRECT_START = "http.request.redirect_start";
  *
  * @example 1732829555
  */
-export const HTTP_REQUEST_REQUEST_START = "http.request.request_start";
+export const HTTP_REQUEST_REQUEST_START = 'http.request.request_start';
 
 // Path: model/attributes/http/http__request__resend_count.json
 
@@ -1140,7 +1140,7 @@ export const HTTP_REQUEST_REQUEST_START = "http.request.request_start";
  *
  * @example 2
  */
-export const HTTP_REQUEST_RESEND_COUNT = "http.request.resend_count";
+export const HTTP_REQUEST_RESEND_COUNT = 'http.request.resend_count';
 
 // Path: model/attributes/http/http__request__response_end.json
 
@@ -1153,7 +1153,7 @@ export const HTTP_REQUEST_RESEND_COUNT = "http.request.resend_count";
  *
  * @example 1732829555
  */
-export const HTTP_REQUEST_RESPONSE_END = "http.request.response_end";
+export const HTTP_REQUEST_RESPONSE_END = 'http.request.response_end';
 
 // Path: model/attributes/http/http__request__response_start.json
 
@@ -1166,7 +1166,7 @@ export const HTTP_REQUEST_RESPONSE_END = "http.request.response_end";
  *
  * @example 1732829555
  */
-export const HTTP_REQUEST_RESPONSE_START = "http.request.response_start";
+export const HTTP_REQUEST_RESPONSE_START = 'http.request.response_start';
 
 // Path: model/attributes/http/http__request__secure_connection_start.json
 
@@ -1179,7 +1179,7 @@ export const HTTP_REQUEST_RESPONSE_START = "http.request.response_start";
  *
  * @example 1732829555
  */
-export const HTTP_REQUEST_SECURE_CONNECTION_START = "http.request.secure_connection_start";
+export const HTTP_REQUEST_SECURE_CONNECTION_START = 'http.request.secure_connection_start';
 
 // Path: model/attributes/http/http__response__body__size.json
 
@@ -1193,7 +1193,7 @@ export const HTTP_REQUEST_SECURE_CONNECTION_START = "http.request.secure_connect
  *
  * @example 123
  */
-export const HTTP_RESPONSE_BODY_SIZE = "http.response.body.size";
+export const HTTP_RESPONSE_BODY_SIZE = 'http.response.body.size';
 
 // Path: model/attributes/http/http__response__header__<key>.json
 
@@ -1207,7 +1207,7 @@ export const HTTP_RESPONSE_BODY_SIZE = "http.response.body.size";
  *
  * @example "http.response.header.custom-header=['foo', 'bar']"
  */
-export const HTTP_RESPONSE_HEADER_KEY = "http.response.header.<key>";
+export const HTTP_RESPONSE_HEADER_KEY = 'http.response.header.<key>';
 
 // Path: model/attributes/http/http__response__header__content-length.json
 
@@ -1222,7 +1222,7 @@ export const HTTP_RESPONSE_HEADER_KEY = "http.response.header.<key>";
  *
  * @example "http.response.header.custom-header=['foo', 'bar']"
  */
-export const HTTP_RESPONSE_HEADER_CONTENT_LENGTH = "http.response.header.content-length";
+export const HTTP_RESPONSE_HEADER_CONTENT_LENGTH = 'http.response.header.content-length';
 
 // Path: model/attributes/http/http__response__size.json
 
@@ -1236,7 +1236,7 @@ export const HTTP_RESPONSE_HEADER_CONTENT_LENGTH = "http.response.header.content
  *
  * @example 456
  */
-export const HTTP_RESPONSE_SIZE = "http.response.size";
+export const HTTP_RESPONSE_SIZE = 'http.response.size';
 
 // Path: model/attributes/http/http__response__status_code.json
 
@@ -1250,7 +1250,7 @@ export const HTTP_RESPONSE_SIZE = "http.response.size";
  *
  * @example 404
  */
-export const HTTP_RESPONSE_STATUS_CODE = "http.response.status_code";
+export const HTTP_RESPONSE_STATUS_CODE = 'http.response.status_code';
 
 // Path: model/attributes/http/http__response_content_length.json
 
@@ -1265,7 +1265,7 @@ export const HTTP_RESPONSE_STATUS_CODE = "http.response.status_code";
  * @deprecated Use http.response.body.size instead
  * @example 123
  */
-export const HTTP_RESPONSE_CONTENT_LENGTH = "http.response_content_length";
+export const HTTP_RESPONSE_CONTENT_LENGTH = 'http.response_content_length';
 
 // Path: model/attributes/http/http__response_transfer_size.json
 
@@ -1280,7 +1280,7 @@ export const HTTP_RESPONSE_CONTENT_LENGTH = "http.response_content_length";
  * @deprecated Use http.response.size instead
  * @example 456
  */
-export const HTTP_RESPONSE_TRANSFER_SIZE = "http.response_transfer_size";
+export const HTTP_RESPONSE_TRANSFER_SIZE = 'http.response_transfer_size';
 
 // Path: model/attributes/http/http__route.json
 
@@ -1294,7 +1294,7 @@ export const HTTP_RESPONSE_TRANSFER_SIZE = "http.response_transfer_size";
  *
  * @example "/users/:id"
  */
-export const HTTP_ROUTE = "http.route";
+export const HTTP_ROUTE = 'http.route';
 
 // Path: model/attributes/http/http__scheme.json
 
@@ -1309,7 +1309,7 @@ export const HTTP_ROUTE = "http.route";
  * @deprecated Use url.scheme instead
  * @example "https"
  */
-export const HTTP_SCHEME = "http.scheme";
+export const HTTP_SCHEME = 'http.scheme';
 
 // Path: model/attributes/http/http__server_name.json
 
@@ -1324,7 +1324,7 @@ export const HTTP_SCHEME = "http.scheme";
  * @deprecated Use server.address instead
  * @example "example.com"
  */
-export const HTTP_SERVER_NAME = "http.server_name";
+export const HTTP_SERVER_NAME = 'http.server_name';
 
 // Path: model/attributes/http/http__status_code.json
 
@@ -1339,7 +1339,7 @@ export const HTTP_SERVER_NAME = "http.server_name";
  * @deprecated Use http.response.status_code instead
  * @example 404
  */
-export const HTTP_STATUS_CODE = "http.status_code";
+export const HTTP_STATUS_CODE = 'http.status_code';
 
 // Path: model/attributes/http/http__target.json
 
@@ -1353,7 +1353,7 @@ export const HTTP_STATUS_CODE = "http.status_code";
  * @deprecated Use url.path instead - This attribute is being deprecated in favor of url.path and url.query
  * @example "/test?foo=bar#buzz"
  */
-export const HTTP_TARGET = "http.target";
+export const HTTP_TARGET = 'http.target';
 
 // Path: model/attributes/http/http__url.json
 
@@ -1368,7 +1368,7 @@ export const HTTP_TARGET = "http.target";
  * @deprecated Use url.full instead
  * @example "https://example.com/test?foo=bar#buzz"
  */
-export const HTTP_URL = "http.url";
+export const HTTP_URL = 'http.url';
 
 // Path: model/attributes/http/http__user_agent.json
 
@@ -1383,7 +1383,7 @@ export const HTTP_URL = "http.url";
  * @deprecated Use user_agent.original instead
  * @example "Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1"
  */
-export const HTTP_USER_AGENT = "http.user_agent";
+export const HTTP_USER_AGENT = 'http.user_agent';
 
 // Path: model/attributes/id.json
 
@@ -1396,7 +1396,7 @@ export const HTTP_USER_AGENT = "http.user_agent";
  *
  * @example "f47ac10b58cc4372a5670e02b2c3d479"
  */
-export const ID = "id";
+export const ID = 'id';
 
 // Path: model/attributes/jvm/jvm__gc__action.json
 
@@ -1409,7 +1409,7 @@ export const ID = "id";
  *
  * @example "end of minor GC"
  */
-export const JVM_GC_ACTION = "jvm.gc.action";
+export const JVM_GC_ACTION = 'jvm.gc.action';
 
 // Path: model/attributes/jvm/jvm__gc__name.json
 
@@ -1422,7 +1422,7 @@ export const JVM_GC_ACTION = "jvm.gc.action";
  *
  * @example "G1 Young Generation"
  */
-export const JVM_GC_NAME = "jvm.gc.name";
+export const JVM_GC_NAME = 'jvm.gc.name';
 
 // Path: model/attributes/jvm/jvm__memory__pool__name.json
 
@@ -1435,7 +1435,7 @@ export const JVM_GC_NAME = "jvm.gc.name";
  *
  * @example "G1 Old Gen"
  */
-export const JVM_MEMORY_POOL_NAME = "jvm.memory.pool.name";
+export const JVM_MEMORY_POOL_NAME = 'jvm.memory.pool.name';
 
 // Path: model/attributes/jvm/jvm__memory__type.json
 
@@ -1448,7 +1448,7 @@ export const JVM_MEMORY_POOL_NAME = "jvm.memory.pool.name";
  *
  * @example "G1 Old Gen"
  */
-export const JVM_MEMORY_TYPE = "jvm.memory.type";
+export const JVM_MEMORY_TYPE = 'jvm.memory.type';
 
 // Path: model/attributes/jvm/jvm__thread__daemon.json
 
@@ -1461,7 +1461,7 @@ export const JVM_MEMORY_TYPE = "jvm.memory.type";
  *
  * @example true
  */
-export const JVM_THREAD_DAEMON = "jvm.thread.daemon";
+export const JVM_THREAD_DAEMON = 'jvm.thread.daemon';
 
 // Path: model/attributes/jvm/jvm__thread__state.json
 
@@ -1474,7 +1474,7 @@ export const JVM_THREAD_DAEMON = "jvm.thread.daemon";
  *
  * @example "blocked"
  */
-export const JVM_THREAD_STATE = "jvm.thread.state";
+export const JVM_THREAD_STATE = 'jvm.thread.state';
 
 // Path: model/attributes/lcp/lcp__element.json
 
@@ -1487,7 +1487,7 @@ export const JVM_THREAD_STATE = "jvm.thread.state";
  *
  * @example "img"
  */
-export const LCP_ELEMENT = "lcp.element";
+export const LCP_ELEMENT = 'lcp.element';
 
 // Path: model/attributes/lcp/lcp__id.json
 
@@ -1500,7 +1500,7 @@ export const LCP_ELEMENT = "lcp.element";
  *
  * @example "#hero"
  */
-export const LCP_ID = "lcp.id";
+export const LCP_ID = 'lcp.id';
 
 // Path: model/attributes/lcp/lcp__size.json
 
@@ -1513,7 +1513,7 @@ export const LCP_ID = "lcp.id";
  *
  * @example 1234
  */
-export const LCP_SIZE = "lcp.size";
+export const LCP_SIZE = 'lcp.size';
 
 // Path: model/attributes/lcp/lcp__url.json
 
@@ -1526,7 +1526,7 @@ export const LCP_SIZE = "lcp.size";
  *
  * @example "https://example.com"
  */
-export const LCP_URL = "lcp.url";
+export const LCP_URL = 'lcp.url';
 
 // Path: model/attributes/logger/logger__name.json
 
@@ -1539,7 +1539,7 @@ export const LCP_URL = "lcp.url";
  *
  * @example "myLogger"
  */
-export const LOGGER_NAME = "logger.name";
+export const LOGGER_NAME = 'logger.name';
 
 // Path: model/attributes/messaging/messaging__destination__connection.json
 
@@ -1552,7 +1552,7 @@ export const LOGGER_NAME = "logger.name";
  *
  * @example "BestTopic"
  */
-export const MESSAGING_DESTINATION_CONNECTION = "messaging.destination.connection";
+export const MESSAGING_DESTINATION_CONNECTION = 'messaging.destination.connection';
 
 // Path: model/attributes/messaging/messaging__destination__name.json
 
@@ -1565,7 +1565,7 @@ export const MESSAGING_DESTINATION_CONNECTION = "messaging.destination.connectio
  *
  * @example "BestTopic"
  */
-export const MESSAGING_DESTINATION_NAME = "messaging.destination.name";
+export const MESSAGING_DESTINATION_NAME = 'messaging.destination.name';
 
 // Path: model/attributes/messaging/messaging__message__body__size.json
 
@@ -1578,7 +1578,7 @@ export const MESSAGING_DESTINATION_NAME = "messaging.destination.name";
  *
  * @example 839
  */
-export const MESSAGING_MESSAGE_BODY_SIZE = "messaging.message.body.size";
+export const MESSAGING_MESSAGE_BODY_SIZE = 'messaging.message.body.size';
 
 // Path: model/attributes/messaging/messaging__message__envelope__size.json
 
@@ -1591,7 +1591,7 @@ export const MESSAGING_MESSAGE_BODY_SIZE = "messaging.message.body.size";
  *
  * @example 1045
  */
-export const MESSAGING_MESSAGE_ENVELOPE_SIZE = "messaging.message.envelope.size";
+export const MESSAGING_MESSAGE_ENVELOPE_SIZE = 'messaging.message.envelope.size';
 
 // Path: model/attributes/messaging/messaging__message__id.json
 
@@ -1604,7 +1604,7 @@ export const MESSAGING_MESSAGE_ENVELOPE_SIZE = "messaging.message.envelope.size"
  *
  * @example "f47ac10b58cc4372a5670e02b2c3d479"
  */
-export const MESSAGING_MESSAGE_ID = "messaging.message.id";
+export const MESSAGING_MESSAGE_ID = 'messaging.message.id';
 
 // Path: model/attributes/messaging/messaging__message__receive__latency.json
 
@@ -1617,7 +1617,7 @@ export const MESSAGING_MESSAGE_ID = "messaging.message.id";
  *
  * @example 1732847252
  */
-export const MESSAGING_MESSAGE_RECEIVE_LATENCY = "messaging.message.receive.latency";
+export const MESSAGING_MESSAGE_RECEIVE_LATENCY = 'messaging.message.receive.latency';
 
 // Path: model/attributes/messaging/messaging__message__retry__count.json
 
@@ -1630,7 +1630,7 @@ export const MESSAGING_MESSAGE_RECEIVE_LATENCY = "messaging.message.receive.late
  *
  * @example 2
  */
-export const MESSAGING_MESSAGE_RETRY_COUNT = "messaging.message.retry.count";
+export const MESSAGING_MESSAGE_RETRY_COUNT = 'messaging.message.retry.count';
 
 // Path: model/attributes/messaging/messaging__system.json
 
@@ -1643,7 +1643,7 @@ export const MESSAGING_MESSAGE_RETRY_COUNT = "messaging.message.retry.count";
  *
  * @example "activemq"
  */
-export const MESSAGING_SYSTEM = "messaging.system";
+export const MESSAGING_SYSTEM = 'messaging.system';
 
 // Path: model/attributes/method.json
 
@@ -1658,7 +1658,7 @@ export const MESSAGING_SYSTEM = "messaging.system";
  * @deprecated Use http.request.method instead
  * @example "GET"
  */
-export const METHOD = "method";
+export const METHOD = 'method';
 
 // Path: model/attributes/navigation/navigation__type.json
 
@@ -1671,7 +1671,7 @@ export const METHOD = "method";
  *
  * @example "router.push"
  */
-export const NAVIGATION_TYPE = "navigation.type";
+export const NAVIGATION_TYPE = 'navigation.type';
 
 // Path: model/attributes/net/net__host__ip.json
 
@@ -1686,7 +1686,7 @@ export const NAVIGATION_TYPE = "navigation.type";
  * @deprecated Use network.local.address instead
  * @example "192.168.0.1"
  */
-export const NET_HOST_IP = "net.host.ip";
+export const NET_HOST_IP = 'net.host.ip';
 
 // Path: model/attributes/net/net__host__name.json
 
@@ -1701,7 +1701,7 @@ export const NET_HOST_IP = "net.host.ip";
  * @deprecated Use server.address instead
  * @example "example.com"
  */
-export const NET_HOST_NAME = "net.host.name";
+export const NET_HOST_NAME = 'net.host.name';
 
 // Path: model/attributes/net/net__host__port.json
 
@@ -1716,7 +1716,7 @@ export const NET_HOST_NAME = "net.host.name";
  * @deprecated Use server.port instead
  * @example 1337
  */
-export const NET_HOST_PORT = "net.host.port";
+export const NET_HOST_PORT = 'net.host.port';
 
 // Path: model/attributes/net/net__peer__ip.json
 
@@ -1731,7 +1731,7 @@ export const NET_HOST_PORT = "net.host.port";
  * @deprecated Use network.peer.address instead
  * @example "192.168.0.1"
  */
-export const NET_PEER_IP = "net.peer.ip";
+export const NET_PEER_IP = 'net.peer.ip';
 
 // Path: model/attributes/net/net__peer__name.json
 
@@ -1745,7 +1745,7 @@ export const NET_PEER_IP = "net.peer.ip";
  * @deprecated Use server.address instead - Deprecated, use server.address on client spans and client.address on server spans.
  * @example "example.com"
  */
-export const NET_PEER_NAME = "net.peer.name";
+export const NET_PEER_NAME = 'net.peer.name';
 
 // Path: model/attributes/net/net__peer__port.json
 
@@ -1759,7 +1759,7 @@ export const NET_PEER_NAME = "net.peer.name";
  * @deprecated Use server.port instead - Deprecated, use server.port on client spans and client.port on server spans.
  * @example 1337
  */
-export const NET_PEER_PORT = "net.peer.port";
+export const NET_PEER_PORT = 'net.peer.port';
 
 // Path: model/attributes/net/net__protocol__name.json
 
@@ -1774,7 +1774,7 @@ export const NET_PEER_PORT = "net.peer.port";
  * @deprecated Use network.protocol.name instead
  * @example "http"
  */
-export const NET_PROTOCOL_NAME = "net.protocol.name";
+export const NET_PROTOCOL_NAME = 'net.protocol.name';
 
 // Path: model/attributes/net/net__protocol__version.json
 
@@ -1789,7 +1789,7 @@ export const NET_PROTOCOL_NAME = "net.protocol.name";
  * @deprecated Use network.protocol.version instead
  * @example "1.1"
  */
-export const NET_PROTOCOL_VERSION = "net.protocol.version";
+export const NET_PROTOCOL_VERSION = 'net.protocol.version';
 
 // Path: model/attributes/net/net__sock__family.json
 
@@ -1803,7 +1803,7 @@ export const NET_PROTOCOL_VERSION = "net.protocol.version";
  * @deprecated Use network.transport instead - Deprecated, use network.transport and network.type.
  * @example "inet"
  */
-export const NET_SOCK_FAMILY = "net.sock.family";
+export const NET_SOCK_FAMILY = 'net.sock.family';
 
 // Path: model/attributes/net/net__sock__host__addr.json
 
@@ -1818,7 +1818,7 @@ export const NET_SOCK_FAMILY = "net.sock.family";
  * @deprecated Use network.local.address instead
  * @example "/var/my.sock"
  */
-export const NET_SOCK_HOST_ADDR = "net.sock.host.addr";
+export const NET_SOCK_HOST_ADDR = 'net.sock.host.addr';
 
 // Path: model/attributes/net/net__sock__host__port.json
 
@@ -1833,7 +1833,7 @@ export const NET_SOCK_HOST_ADDR = "net.sock.host.addr";
  * @deprecated Use network.local.port instead
  * @example 8080
  */
-export const NET_SOCK_HOST_PORT = "net.sock.host.port";
+export const NET_SOCK_HOST_PORT = 'net.sock.host.port';
 
 // Path: model/attributes/net/net__sock__peer__addr.json
 
@@ -1848,7 +1848,7 @@ export const NET_SOCK_HOST_PORT = "net.sock.host.port";
  * @deprecated Use network.peer.address instead
  * @example "192.168.0.1"
  */
-export const NET_SOCK_PEER_ADDR = "net.sock.peer.addr";
+export const NET_SOCK_PEER_ADDR = 'net.sock.peer.addr';
 
 // Path: model/attributes/net/net__sock__peer__name.json
 
@@ -1862,7 +1862,7 @@ export const NET_SOCK_PEER_ADDR = "net.sock.peer.addr";
  * @deprecated Use  instead - Deprecated, no replacement at this time
  * @example "/var/my.sock"
  */
-export const NET_SOCK_PEER_NAME = "net.sock.peer.name";
+export const NET_SOCK_PEER_NAME = 'net.sock.peer.name';
 
 // Path: model/attributes/net/net__sock__peer__port.json
 
@@ -1876,7 +1876,7 @@ export const NET_SOCK_PEER_NAME = "net.sock.peer.name";
  * @deprecated Use network.peer.port instead
  * @example 8080
  */
-export const NET_SOCK_PEER_PORT = "net.sock.peer.port";
+export const NET_SOCK_PEER_PORT = 'net.sock.peer.port';
 
 // Path: model/attributes/net/net__transport.json
 
@@ -1891,7 +1891,7 @@ export const NET_SOCK_PEER_PORT = "net.sock.peer.port";
  * @deprecated Use network.transport instead
  * @example "tcp"
  */
-export const NET_TRANSPORT = "net.transport";
+export const NET_TRANSPORT = 'net.transport';
 
 // Path: model/attributes/network/network__local__address.json
 
@@ -1905,7 +1905,7 @@ export const NET_TRANSPORT = "net.transport";
  *
  * @example "10.1.2.80"
  */
-export const NETWORK_LOCAL_ADDRESS = "network.local.address";
+export const NETWORK_LOCAL_ADDRESS = 'network.local.address';
 
 // Path: model/attributes/network/network__local__port.json
 
@@ -1919,7 +1919,7 @@ export const NETWORK_LOCAL_ADDRESS = "network.local.address";
  *
  * @example 65400
  */
-export const NETWORK_LOCAL_PORT = "network.local.port";
+export const NETWORK_LOCAL_PORT = 'network.local.port';
 
 // Path: model/attributes/network/network__peer__address.json
 
@@ -1932,7 +1932,7 @@ export const NETWORK_LOCAL_PORT = "network.local.port";
  *
  * @example "10.1.2.80"
  */
-export const NETWORK_PEER_ADDRESS = "network.peer.address";
+export const NETWORK_PEER_ADDRESS = 'network.peer.address';
 
 // Path: model/attributes/network/network__peer__port.json
 
@@ -1945,7 +1945,7 @@ export const NETWORK_PEER_ADDRESS = "network.peer.address";
  *
  * @example 65400
  */
-export const NETWORK_PEER_PORT = "network.peer.port";
+export const NETWORK_PEER_PORT = 'network.peer.port';
 
 // Path: model/attributes/network/network__protocol__name.json
 
@@ -1959,7 +1959,7 @@ export const NETWORK_PEER_PORT = "network.peer.port";
  *
  * @example "http"
  */
-export const NETWORK_PROTOCOL_NAME = "network.protocol.name";
+export const NETWORK_PROTOCOL_NAME = 'network.protocol.name';
 
 // Path: model/attributes/network/network__protocol__version.json
 
@@ -1973,7 +1973,7 @@ export const NETWORK_PROTOCOL_NAME = "network.protocol.name";
  *
  * @example "1.1"
  */
-export const NETWORK_PROTOCOL_VERSION = "network.protocol.version";
+export const NETWORK_PROTOCOL_VERSION = 'network.protocol.version';
 
 // Path: model/attributes/network/network__transport.json
 
@@ -1987,7 +1987,7 @@ export const NETWORK_PROTOCOL_VERSION = "network.protocol.version";
  *
  * @example "tcp"
  */
-export const NETWORK_TRANSPORT = "network.transport";
+export const NETWORK_TRANSPORT = 'network.transport';
 
 // Path: model/attributes/network/network__type.json
 
@@ -2000,7 +2000,7 @@ export const NETWORK_TRANSPORT = "network.transport";
  *
  * @example "ipv4"
  */
-export const NETWORK_TYPE = "network.type";
+export const NETWORK_TYPE = 'network.type';
 
 // Path: model/attributes/otel/otel__scope__name.json
 
@@ -2013,7 +2013,7 @@ export const NETWORK_TYPE = "network.type";
  *
  * @example "io.opentelemetry.contrib.mongodb"
  */
-export const OTEL_SCOPE_NAME = "otel.scope.name";
+export const OTEL_SCOPE_NAME = 'otel.scope.name';
 
 // Path: model/attributes/otel/otel__scope__version.json
 
@@ -2026,7 +2026,7 @@ export const OTEL_SCOPE_NAME = "otel.scope.name";
  *
  * @example "2.4.5"
  */
-export const OTEL_SCOPE_VERSION = "otel.scope.version";
+export const OTEL_SCOPE_VERSION = 'otel.scope.version';
 
 // Path: model/attributes/otel/otel__status_code.json
 
@@ -2039,7 +2039,7 @@ export const OTEL_SCOPE_VERSION = "otel.scope.version";
  *
  * @example "OK"
  */
-export const OTEL_STATUS_CODE = "otel.status_code";
+export const OTEL_STATUS_CODE = 'otel.status_code';
 
 // Path: model/attributes/otel/otel__status_description.json
 
@@ -2052,7 +2052,7 @@ export const OTEL_STATUS_CODE = "otel.status_code";
  *
  * @example "resource not found"
  */
-export const OTEL_STATUS_DESCRIPTION = "otel.status_description";
+export const OTEL_STATUS_DESCRIPTION = 'otel.status_description';
 
 // Path: model/attributes/params/params.<key>.json
 
@@ -2067,7 +2067,7 @@ export const OTEL_STATUS_DESCRIPTION = "otel.status_description";
  *
  * @example "params.id='123'"
  */
-export const PARAMS_KEY = "params.<key>";
+export const PARAMS_KEY = 'params.<key>';
 
 // Path: model/attributes/previous_route.json
 
@@ -2080,7 +2080,7 @@ export const PARAMS_KEY = "params.<key>";
  *
  * @example "HomeScreen"
  */
-export const PREVIOUS_ROUTE = "previous_route";
+export const PREVIOUS_ROUTE = 'previous_route';
 
 // Path: model/attributes/process/process__executable__name.json
 
@@ -2093,7 +2093,7 @@ export const PREVIOUS_ROUTE = "previous_route";
  *
  * @example "getsentry"
  */
-export const PROCESS_EXECUTABLE_NAME = "process.executable.name";
+export const PROCESS_EXECUTABLE_NAME = 'process.executable.name';
 
 // Path: model/attributes/process/process__pid.json
 
@@ -2106,7 +2106,7 @@ export const PROCESS_EXECUTABLE_NAME = "process.executable.name";
  *
  * @example 12345
  */
-export const PROCESS_PID = "process.pid";
+export const PROCESS_PID = 'process.pid';
 
 // Path: model/attributes/profile_id.json
 
@@ -2121,7 +2121,7 @@ export const PROCESS_PID = "process.pid";
  * @deprecated Use sentry.profile_id instead
  * @example "123e4567e89b12d3a456426614174000"
  */
-export const PROFILE_ID = "profile_id";
+export const PROFILE_ID = 'profile_id';
 
 // Path: model/attributes/query/query.<key>.json
 
@@ -2136,7 +2136,7 @@ export const PROFILE_ID = "profile_id";
  * @deprecated Use url.query instead - Instead of sending items individually in query.<key>, they should be sent all together with url.query.
  * @example "query.id='123'"
  */
-export const QUERY_KEY = "query.<key>";
+export const QUERY_KEY = 'query.<key>';
 
 // Path: model/attributes/release.json
 
@@ -2151,7 +2151,7 @@ export const QUERY_KEY = "query.<key>";
  * @deprecated Use sentry.release instead
  * @example "production"
  */
-export const RELEASE = "release";
+export const RELEASE = 'release';
 
 // Path: model/attributes/remix/remix__action_form_data__<key>.json
 
@@ -2165,7 +2165,7 @@ export const RELEASE = "release";
  *
  * @example "http.response.header.text='test'"
  */
-export const REMIX_ACTION_FORM_DATA_KEY = "remix.action_form_data.<key>";
+export const REMIX_ACTION_FORM_DATA_KEY = 'remix.action_form_data.<key>';
 
 // Path: model/attributes/replay_id.json
 
@@ -2180,7 +2180,7 @@ export const REMIX_ACTION_FORM_DATA_KEY = "remix.action_form_data.<key>";
  * @deprecated Use sentry.replay_id instead
  * @example "123e4567e89b12d3a456426614174000"
  */
-export const REPLAY_ID = "replay_id";
+export const REPLAY_ID = 'replay_id';
 
 // Path: model/attributes/resource/resource__render_blocking_status.json
 
@@ -2193,7 +2193,7 @@ export const REPLAY_ID = "replay_id";
  *
  * @example "non-blocking"
  */
-export const RESOURCE_RENDER_BLOCKING_STATUS = "resource.render_blocking_status";
+export const RESOURCE_RENDER_BLOCKING_STATUS = 'resource.render_blocking_status';
 
 // Path: model/attributes/route.json
 
@@ -2208,7 +2208,7 @@ export const RESOURCE_RENDER_BLOCKING_STATUS = "resource.render_blocking_status"
  * @deprecated Use http.route instead
  * @example "App\\Controller::indexAction"
  */
-export const ROUTE = "route";
+export const ROUTE = 'route';
 
 // Path: model/attributes/rpc/rpc__grpc__status_code.json
 
@@ -2221,7 +2221,7 @@ export const ROUTE = "route";
  *
  * @example 2
  */
-export const RPC_GRPC_STATUS_CODE = "rpc.grpc.status_code";
+export const RPC_GRPC_STATUS_CODE = 'rpc.grpc.status_code';
 
 // Path: model/attributes/rpc/rpc__service.json
 
@@ -2234,7 +2234,7 @@ export const RPC_GRPC_STATUS_CODE = "rpc.grpc.status_code";
  *
  * @example "myService.BestService"
  */
-export const RPC_SERVICE = "rpc.service";
+export const RPC_SERVICE = 'rpc.service';
 
 // Path: model/attributes/sentry/sentry__cancellation_reason.json
 
@@ -2247,7 +2247,7 @@ export const RPC_SERVICE = "rpc.service";
  *
  * @example "document.hidden"
  */
-export const SENTRY_CANCELLATION_REASON = "sentry.cancellation_reason";
+export const SENTRY_CANCELLATION_REASON = 'sentry.cancellation_reason';
 
 // Path: model/attributes/sentry/sentry__dist.json
 
@@ -2260,7 +2260,7 @@ export const SENTRY_CANCELLATION_REASON = "sentry.cancellation_reason";
  *
  * @example "1.0"
  */
-export const SENTRY_DIST = "sentry.dist";
+export const SENTRY_DIST = 'sentry.dist';
 
 // Path: model/attributes/sentry/sentry__environment.json
 
@@ -2274,7 +2274,7 @@ export const SENTRY_DIST = "sentry.dist";
  *
  * @example "production"
  */
-export const SENTRY_ENVIRONMENT = "sentry.environment";
+export const SENTRY_ENVIRONMENT = 'sentry.environment';
 
 // Path: model/attributes/sentry/sentry__exclusive_time.json
 
@@ -2287,7 +2287,7 @@ export const SENTRY_ENVIRONMENT = "sentry.environment";
  *
  * @example 1234
  */
-export const SENTRY_EXCLUSIVE_TIME = "sentry.exclusive_time";
+export const SENTRY_EXCLUSIVE_TIME = 'sentry.exclusive_time';
 
 // Path: model/attributes/sentry/sentry__http__prefetch.json
 
@@ -2300,7 +2300,7 @@ export const SENTRY_EXCLUSIVE_TIME = "sentry.exclusive_time";
  *
  * @example true
  */
-export const SENTRY_HTTP_PREFETCH = "sentry.http.prefetch";
+export const SENTRY_HTTP_PREFETCH = 'sentry.http.prefetch';
 
 // Path: model/attributes/sentry/sentry__idle_span_finish_reason.json
 
@@ -2313,7 +2313,7 @@ export const SENTRY_HTTP_PREFETCH = "sentry.http.prefetch";
  *
  * @example "idleTimeout"
  */
-export const SENTRY_IDLE_SPAN_FINISH_REASON = "sentry.idle_span_finish_reason";
+export const SENTRY_IDLE_SPAN_FINISH_REASON = 'sentry.idle_span_finish_reason';
 
 // Path: model/attributes/sentry/sentry__op.json
 
@@ -2326,7 +2326,7 @@ export const SENTRY_IDLE_SPAN_FINISH_REASON = "sentry.idle_span_finish_reason";
  *
  * @example "http.client"
  */
-export const SENTRY_OP = "sentry.op";
+export const SENTRY_OP = 'sentry.op';
 
 // Path: model/attributes/sentry/sentry__origin.json
 
@@ -2339,7 +2339,7 @@ export const SENTRY_OP = "sentry.op";
  *
  * @example "auto.http.otel.fastify"
  */
-export const SENTRY_ORIGIN = "sentry.origin";
+export const SENTRY_ORIGIN = 'sentry.origin';
 
 // Path: model/attributes/sentry/sentry__profile_id.json
 
@@ -2353,7 +2353,7 @@ export const SENTRY_ORIGIN = "sentry.origin";
  *
  * @example "123e4567e89b12d3a456426614174000"
  */
-export const SENTRY_PROFILE_ID = "sentry.profile_id";
+export const SENTRY_PROFILE_ID = 'sentry.profile_id';
 
 // Path: model/attributes/sentry/sentry__release.json
 
@@ -2367,7 +2367,7 @@ export const SENTRY_PROFILE_ID = "sentry.profile_id";
  *
  * @example "7.0.0"
  */
-export const SENTRY_RELEASE = "sentry.release";
+export const SENTRY_RELEASE = 'sentry.release';
 
 // Path: model/attributes/sentry/sentry__replay_id.json
 
@@ -2381,7 +2381,7 @@ export const SENTRY_RELEASE = "sentry.release";
  *
  * @example "123e4567e89b12d3a456426614174000"
  */
-export const SENTRY_REPLAY_ID = "sentry.replay_id";
+export const SENTRY_REPLAY_ID = 'sentry.replay_id';
 
 // Path: model/attributes/sentry/sentry__sample_rate.json
 
@@ -2394,7 +2394,7 @@ export const SENTRY_REPLAY_ID = "sentry.replay_id";
  *
  * @example 0.5
  */
-export const SENTRY_SAMPLE_RATE = "sentry.sample_rate";
+export const SENTRY_SAMPLE_RATE = 'sentry.sample_rate';
 
 // Path: model/attributes/sentry/sentry__sdk__name.json
 
@@ -2407,7 +2407,7 @@ export const SENTRY_SAMPLE_RATE = "sentry.sample_rate";
  *
  * @example "@sentry/react"
  */
-export const SENTRY_SDK_NAME = "sentry.sdk.name";
+export const SENTRY_SDK_NAME = 'sentry.sdk.name';
 
 // Path: model/attributes/sentry/sentry__sdk__version.json
 
@@ -2420,7 +2420,7 @@ export const SENTRY_SDK_NAME = "sentry.sdk.name";
  *
  * @example "7.0.0"
  */
-export const SENTRY_SDK_VERSION = "sentry.sdk.version";
+export const SENTRY_SDK_VERSION = 'sentry.sdk.version';
 
 // Path: model/attributes/sentry/sentry__source.json
 
@@ -2433,7 +2433,7 @@ export const SENTRY_SDK_VERSION = "sentry.sdk.version";
  *
  * @example "route"
  */
-export const SENTRY_SOURCE = "sentry.source";
+export const SENTRY_SOURCE = 'sentry.source';
 
 // Path: model/attributes/sentry/sentry__transaction.json
 
@@ -2447,7 +2447,7 @@ export const SENTRY_SOURCE = "sentry.source";
  *
  * @example "GET /"
  */
-export const SENTRY_TRANSACTION = "sentry.transaction";
+export const SENTRY_TRANSACTION = 'sentry.transaction';
 
 // Path: model/attributes/server/server__address.json
 
@@ -2461,7 +2461,7 @@ export const SENTRY_TRANSACTION = "sentry.transaction";
  *
  * @example "example.com"
  */
-export const SERVER_ADDRESS = "server.address";
+export const SERVER_ADDRESS = 'server.address';
 
 // Path: model/attributes/server/server__port.json
 
@@ -2475,7 +2475,7 @@ export const SERVER_ADDRESS = "server.address";
  *
  * @example 1337
  */
-export const SERVER_PORT = "server.port";
+export const SERVER_PORT = 'server.port';
 
 // Path: model/attributes/service/service__name.json
 
@@ -2488,7 +2488,7 @@ export const SERVER_PORT = "server.port";
  *
  * @example "omegastar"
  */
-export const SERVICE_NAME = "service.name";
+export const SERVICE_NAME = 'service.name';
 
 // Path: model/attributes/service/service__version.json
 
@@ -2502,7 +2502,7 @@ export const SERVICE_NAME = "service.name";
  *
  * @example "5.0.0"
  */
-export const SERVICE_VERSION = "service.version";
+export const SERVICE_VERSION = 'service.version';
 
 // Path: model/attributes/thread/thread__id.json
 
@@ -2515,7 +2515,7 @@ export const SERVICE_VERSION = "service.version";
  *
  * @example 56
  */
-export const THREAD_ID = "thread.id";
+export const THREAD_ID = 'thread.id';
 
 // Path: model/attributes/thread/thread__name.json
 
@@ -2528,7 +2528,7 @@ export const THREAD_ID = "thread.id";
  *
  * @example "main"
  */
-export const THREAD_NAME = "thread.name";
+export const THREAD_NAME = 'thread.name';
 
 // Path: model/attributes/transaction.json
 
@@ -2543,7 +2543,7 @@ export const THREAD_NAME = "thread.name";
  * @deprecated Use sentry.transaction instead
  * @example "GET /"
  */
-export const TRANSACTION = "transaction";
+export const TRANSACTION = 'transaction';
 
 // Path: model/attributes/type.json
 
@@ -2556,7 +2556,7 @@ export const TRANSACTION = "transaction";
  *
  * @example "fetch"
  */
-export const TYPE = "type";
+export const TYPE = 'type';
 
 // Path: model/attributes/ui/ui__component_name.json
 
@@ -2569,7 +2569,7 @@ export const TYPE = "type";
  *
  * @example "HomeButton"
  */
-export const UI_COMPONENT_NAME = "ui.component_name";
+export const UI_COMPONENT_NAME = 'ui.component_name';
 
 // Path: model/attributes/ui/ui__contributes_to_ttfd.json
 
@@ -2582,7 +2582,7 @@ export const UI_COMPONENT_NAME = "ui.component_name";
  *
  * @example true
  */
-export const UI_CONTRIBUTES_TO_TTFD = "ui.contributes_to_ttfd";
+export const UI_CONTRIBUTES_TO_TTFD = 'ui.contributes_to_ttfd';
 
 // Path: model/attributes/ui/ui__contributes_to_ttid.json
 
@@ -2595,7 +2595,7 @@ export const UI_CONTRIBUTES_TO_TTFD = "ui.contributes_to_ttfd";
  *
  * @example true
  */
-export const UI_CONTRIBUTES_TO_TTID = "ui.contributes_to_ttid";
+export const UI_CONTRIBUTES_TO_TTID = 'ui.contributes_to_ttid';
 
 // Path: model/attributes/url/url__domain.json
 
@@ -2608,7 +2608,7 @@ export const UI_CONTRIBUTES_TO_TTID = "ui.contributes_to_ttid";
  *
  * @example "example.com"
  */
-export const URL_DOMAIN = "url.domain";
+export const URL_DOMAIN = 'url.domain';
 
 // Path: model/attributes/url/url__fragment.json
 
@@ -2621,7 +2621,7 @@ export const URL_DOMAIN = "url.domain";
  *
  * @example "details"
  */
-export const URL_FRAGMENT = "url.fragment";
+export const URL_FRAGMENT = 'url.fragment';
 
 // Path: model/attributes/url/url__full.json
 
@@ -2635,7 +2635,7 @@ export const URL_FRAGMENT = "url.fragment";
  *
  * @example "https://example.com/test?foo=bar#buzz"
  */
-export const URL_FULL = "url.full";
+export const URL_FULL = 'url.full';
 
 // Path: model/attributes/url/url__path.json
 
@@ -2648,7 +2648,7 @@ export const URL_FULL = "url.full";
  *
  * @example "/foo"
  */
-export const URL_PATH = "url.path";
+export const URL_PATH = 'url.path';
 
 // Path: model/attributes/url/url__path__params__<key>.json
 
@@ -2663,7 +2663,7 @@ export const URL_PATH = "url.path";
  *
  * @example "url.path.params.id='123'"
  */
-export const URL_PATH_PARAMS_KEY = "url.path.params.<key>";
+export const URL_PATH_PARAMS_KEY = 'url.path.params.<key>';
 
 // Path: model/attributes/url/url__port.json
 
@@ -2676,7 +2676,7 @@ export const URL_PATH_PARAMS_KEY = "url.path.params.<key>";
  *
  * @example 1337
  */
-export const URL_PORT = "url.port";
+export const URL_PORT = 'url.port';
 
 // Path: model/attributes/url/url__query.json
 
@@ -2689,7 +2689,7 @@ export const URL_PORT = "url.port";
  *
  * @example "foo=bar&bar=baz"
  */
-export const URL_QUERY = "url.query";
+export const URL_QUERY = 'url.query';
 
 // Path: model/attributes/url/url__scheme.json
 
@@ -2703,7 +2703,7 @@ export const URL_QUERY = "url.query";
  *
  * @example "https"
  */
-export const URL_SCHEME = "url.scheme";
+export const URL_SCHEME = 'url.scheme';
 
 // Path: model/attributes/url/url__template.json
 
@@ -2717,7 +2717,7 @@ export const URL_SCHEME = "url.scheme";
  *
  * @example "/users/:id"
  */
-export const URL_TEMPLATE = "url.template";
+export const URL_TEMPLATE = 'url.template';
 
 // Path: model/attributes/url.json
 
@@ -2732,7 +2732,7 @@ export const URL_TEMPLATE = "url.template";
  * @deprecated Use url.full instead
  * @example "https://example.com/test?foo=bar#buzz"
  */
-export const URL = "url";
+export const URL = 'url';
 
 // Path: model/attributes/user/user__email.json
 
@@ -2745,7 +2745,7 @@ export const URL = "url";
  *
  * @example "test@example.com"
  */
-export const USER_EMAIL = "user.email";
+export const USER_EMAIL = 'user.email';
 
 // Path: model/attributes/user/user__full_name.json
 
@@ -2758,7 +2758,7 @@ export const USER_EMAIL = "user.email";
  *
  * @example "John Smith"
  */
-export const USER_FULL_NAME = "user.full_name";
+export const USER_FULL_NAME = 'user.full_name';
 
 // Path: model/attributes/user/user__geo__city.json
 
@@ -2771,7 +2771,7 @@ export const USER_FULL_NAME = "user.full_name";
  *
  * @example "Toronto"
  */
-export const USER_GEO_CITY = "user.geo.city";
+export const USER_GEO_CITY = 'user.geo.city';
 
 // Path: model/attributes/user/user__geo__country_code.json
 
@@ -2784,7 +2784,7 @@ export const USER_GEO_CITY = "user.geo.city";
  *
  * @example "CA"
  */
-export const USER_GEO_COUNTRY_CODE = "user.geo.country_code";
+export const USER_GEO_COUNTRY_CODE = 'user.geo.country_code';
 
 // Path: model/attributes/user/user__geo__region.json
 
@@ -2797,7 +2797,7 @@ export const USER_GEO_COUNTRY_CODE = "user.geo.country_code";
  *
  * @example "Canada"
  */
-export const USER_GEO_REGION = "user.geo.region";
+export const USER_GEO_REGION = 'user.geo.region';
 
 // Path: model/attributes/user/user__geo__subdivision.json
 
@@ -2810,7 +2810,7 @@ export const USER_GEO_REGION = "user.geo.region";
  *
  * @example "Ontario"
  */
-export const USER_GEO_SUBDIVISION = "user.geo.subdivision";
+export const USER_GEO_SUBDIVISION = 'user.geo.subdivision';
 
 // Path: model/attributes/user/user__hash.json
 
@@ -2823,7 +2823,7 @@ export const USER_GEO_SUBDIVISION = "user.geo.subdivision";
  *
  * @example "8ae4c2993e0f4f3b8b2d1b1f3b5e8f4d"
  */
-export const USER_HASH = "user.hash";
+export const USER_HASH = 'user.hash';
 
 // Path: model/attributes/user/user__id.json
 
@@ -2836,7 +2836,7 @@ export const USER_HASH = "user.hash";
  *
  * @example "S-1-5-21-202424912787-2692429404-2351956786-1000"
  */
-export const USER_ID = "user.id";
+export const USER_ID = 'user.id';
 
 // Path: model/attributes/user/user__name.json
 
@@ -2849,7 +2849,7 @@ export const USER_ID = "user.id";
  *
  * @example "j.smith"
  */
-export const USER_NAME = "user.name";
+export const USER_NAME = 'user.name';
 
 // Path: model/attributes/user/user__roles.json
 
@@ -2862,7 +2862,7 @@ export const USER_NAME = "user.name";
  *
  * @example ["admin","editor"]
  */
-export const USER_ROLES = "user.roles";
+export const USER_ROLES = 'user.roles';
 
 // Path: model/attributes/user_agent/user_agent__original.json
 
@@ -2876,5 +2876,4 @@ export const USER_ROLES = "user.roles";
  *
  * @example "Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1"
  */
-export const USER_AGENT_ORIGINAL = "user_agent.original";
-
+export const USER_AGENT_ORIGINAL = 'user_agent.original';

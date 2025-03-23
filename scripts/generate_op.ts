@@ -1,4 +1,3 @@
-
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 
@@ -63,7 +62,7 @@ function writeToJs(opDir: string, opFiles: string[]) {
       }
       opContent += `export const ${name.toUpperCase().replaceAll('.', '_')}_${field.name
         .toUpperCase()
-        .replaceAll('.', '_')}_SPAN_OP = "${field.name}";\n\n`;
+        .replaceAll('.', '_')}_SPAN_OP = '${field.name}';\n\n`;
     }
 
     const opFilePath = path.join(__dirname, '..', 'packages', 'sentry-conventions', 'src', 'op.ts');

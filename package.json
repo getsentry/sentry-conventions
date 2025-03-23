@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "@types/node": "^22.13.10"
+    "@types/node": "^22.13.11"
   },
   "workspaces": ["packages/*", "dev-packages/*"],
   "packageManager": "yarn@1.22.22",
