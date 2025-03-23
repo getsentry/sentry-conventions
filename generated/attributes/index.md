@@ -1,0 +1,45 @@
+<!-- THIS FILE IS AUTO-GENERATED. DO NOT EDIT DIRECTLY. -->
+
+# Attribute Documentation
+
+This directory contains documentation for all available attributes.
+
+## Available Categories
+
+- [`ai` Attributes](./ai.md)
+- [`browser` Attributes](./browser.md)
+- [`cache` Attributes](./cache.md)
+- [`client` Attributes](./client.md)
+- [`cloudflare` Attributes](./cloudflare.md)
+- [`code` Attributes](./code.md)
+- [`db` Attributes](./db.md)
+- [`error` Attributes](./error.md)
+- [`exception` Attributes](./exception.md)
+- [`faas` Attributes](./faas.md)
+- [`frames` Attributes](./frames.md)
+- [`gen_ai` Attributes](./gen_ai.md)
+- [`general` Attributes](./general.md)
+- [`graphql` Attributes](./graphql.md)
+- [`http` Attributes](./http.md)
+- [`jvm` Attributes](./jvm.md)
+- [`lcp` Attributes](./lcp.md)
+- [`logger` Attributes](./logger.md)
+- [`messaging` Attributes](./messaging.md)
+- [`navigation` Attributes](./navigation.md)
+- [`net` Attributes](./net.md)
+- [`network` Attributes](./network.md)
+- [`otel` Attributes](./otel.md)
+- [`params` Attributes](./params.md)
+- [`process` Attributes](./process.md)
+- [`query` Attributes](./query.md)
+- [`remix` Attributes](./remix.md)
+- [`resource` Attributes](./resource.md)
+- [`rpc` Attributes](./rpc.md)
+- [`sentry` Attributes](./sentry.md)
+- [`server` Attributes](./server.md)
+- [`service` Attributes](./service.md)
+- [`thread` Attributes](./thread.md)
+- [`ui` Attributes](./ui.md)
+- [`url` Attributes](./url.md)
+- [`user` Attributes](./user.md)
+- [`user_agent` Attributes](./user_agent.md)

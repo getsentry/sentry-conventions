@@ -1,0 +1,15 @@
+<!-- THIS FILE IS AUTO-GENERATED. DO NOT EDIT DIRECTLY. -->
+
+# Resource Attributes
+
+## resource.render_blocking_status
+
+The render blocking status of the resource.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `non-blocking` |
+
