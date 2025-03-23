@@ -73,6 +73,7 @@ export const BROWSER_UI_LIVEWIRE_SPAN_OP = 'ui.livewire';
 // Name: database
 
 // Description: Database related spans are expected to follow OpenTelemetry's Database semantic conventions when possible.
+
 export const DATABASE_DB_SPAN_OP = 'db';
 
 export const DATABASE_DB_QUERY_SPAN_OP = 'db.query';
@@ -83,6 +84,7 @@ export const DATABASE_CACHE_SPAN_OP = 'cache';
 // Name: faas
 
 // Description: Serverless (FAAS)
+
 export const FAAS_HTTP_SPAN_OP = 'http';
 
 export const FAAS_GRPC_SPAN_OP = 'grpc';

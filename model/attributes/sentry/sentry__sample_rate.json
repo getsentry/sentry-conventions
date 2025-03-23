@@ -1,7 +1,7 @@
 {
   "key": "sentry.sample_rate",
   "brief": "The sample rate of the span.",
-  "type": "number",
+  "type": "double",
   "pii": {
     "key": "false"
   },

@@ -33,15 +33,18 @@ function writeToRust(opDir: string, opFiles: string[]) {
         .toUpperCase()
         .replaceAll('.', '_')}_SPAN_OP: &str = "${field.name}";\n\n`;
     }
-
-    const opFilePath = path.join(__dirname, '..', 'rust', 'src', 'op.rs');
-
-    fs.writeFileSync(opFilePath, opContent);
   }
+
+  // Remove the trailing newline character
+  opContent = opContent.trimEnd();
+
+  const opFilePath = path.join(__dirname, '..', 'rust', 'src', 'op.rs');
+
+  fs.writeFileSync(opFilePath, opContent);
 }
 
 function writeToJs(opDir: string, opFiles: string[]) {
-  let opContent = '// This is an auto-generated file. Do not edit!\n\n';
+  let opContent = '// This is an auto-generated file. Do not edit!\n';
 
   for (const file of opFiles) {
     const opPath = path.join(opDir, file);
@@ -49,24 +52,26 @@ function writeToJs(opDir: string, opFiles: string[]) {
 
     const { name, description, fields } = opJson;
 
-    opContent += `// Path: model/op/${file}\n// Name: ${name}\n\n`;
+    opContent += `\n// Path: model/op/${file}\n// Name: ${name}\n`;
     if (description) {
-      opContent += `// Description: ${description}\n`;
+      opContent += `\n// Description: ${description}\n`;
     }
 
     for (const field of fields) {
       if (field.description) {
-        opContent += '/**\n';
+        opContent += '\n/**\n';
         opContent += ` * ${field.description}\n`;
         opContent += ' */\n';
+      } else {
+        opContent += '\n';
       }
       opContent += `export const ${name.toUpperCase().replaceAll('.', '_')}_${field.name
         .toUpperCase()
-        .replaceAll('.', '_')}_SPAN_OP = '${field.name}';\n\n`;
+        .replaceAll('.', '_')}_SPAN_OP = '${field.name}';\n`;
     }
-
-    const opFilePath = path.join(__dirname, '..', 'packages', 'sentry-conventions', 'src', 'op.ts');
-
-    fs.writeFileSync(opFilePath, opContent);
   }
+
+  const opFilePath = path.join(__dirname, '..', 'packages', 'sentry-conventions', 'src', 'op.ts');
+
+  fs.writeFileSync(opFilePath, opContent);
 }

@@ -19,7 +19,7 @@
     },
     "type": {
       "description": "The type of the attribute value",
-      "enum": ["integer", "number", "string", "boolean", "integer[]", "number[]", "string[]", "boolean[]"]
+      "enum": ["string", "boolean", "integer", "double", "string[]", "boolean[]", "integer[]", "double[]"]
     },
     "pii": {
       "description": "If an attribute can have pii. Is either true, false or maybe. Optionally include a reason about why it has PII or not",

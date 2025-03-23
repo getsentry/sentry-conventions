@@ -144,4 +144,3 @@ pub const WEB_SERVER_CONSOLE_SPAN_OP: &str = "console";
 pub const WEB_SERVER_FILE_SPAN_OP: &str = "file";
 
 pub const WEB_SERVER_APP_SPAN_OP: &str = "app";
-
