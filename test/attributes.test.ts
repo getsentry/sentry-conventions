@@ -37,11 +37,11 @@ describe('attribute json', async () => {
 
         switch (content.type) {
           case 'integer':
-          case 'number':
+          case 'double':
             expect(typeof content.example).toBe('number');
             break;
           case 'integer[]':
-          case 'number[]':
+          case 'double[]':
             expect(Array.isArray(content.example)).toBe(true);
             expect(content.example.every((e: number) => typeof e === 'number')).toBe(true);
             break;
