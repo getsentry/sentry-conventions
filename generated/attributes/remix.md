@@ -3,7 +3,7 @@
 # Remix Attributes
 
 - [Stable Attributes](#stable-attributes)
-  - [remix.action_form_data.<key>](#remixaction_form_datakey)
+  - [remix.action_form_data.\<key\>](#remixaction_form_datakey)
 
 ## Stable Attributes
 

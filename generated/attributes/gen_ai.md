@@ -8,8 +8,8 @@
   - [gen_ai.usage.input_tokens](#gen_aiusageinput_tokens)
   - [gen_ai.usage.output_tokens](#gen_aiusageoutput_tokens)
 - [Deprecated Attributes](#deprecated-attributes)
-  - [gen_ai.usage.completion_tokens](#gen_ai-usage-completion_tokens)
-  - [gen_ai.usage.prompt_tokens](#gen_ai-usage-prompt_tokens)
+  - [gen_ai.usage.completion_tokens](#gen_aiusagecompletion_tokens)
+  - [gen_ai.usage.prompt_tokens](#gen_aiusageprompt_tokens)
 
 ## Stable Attributes
 

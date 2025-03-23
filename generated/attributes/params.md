@@ -3,7 +3,7 @@
 # Params Attributes
 
 - [Stable Attributes](#stable-attributes)
-  - [params.<key>](#paramskey)
+  - [params.\<key\>](#paramskey)
 
 ## Stable Attributes
 

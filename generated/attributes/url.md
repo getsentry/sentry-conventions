@@ -7,7 +7,7 @@
   - [url.fragment](#urlfragment)
   - [url.full](#urlfull)
   - [url.path](#urlpath)
-  - [url.path.params.<key>](#urlpathparamskey)
+  - [url.path.params.\<key\>](#urlpathparamskey)
   - [url.port](#urlport)
   - [url.query](#urlquery)
   - [url.scheme](#urlscheme)

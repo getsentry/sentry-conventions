@@ -62,8 +62,6 @@ function generateAttributeTable(attribute: AttributeJson): string {
 
   table += '\n';
 
-  table = table.replaceAll('<key>', '\\<key\\>');
-
   return table;
 }
 
@@ -155,6 +153,8 @@ async function generateAttributeDocs() {
         markdown += generateAttributeTable(attribute);
       }
     }
+
+    markdown = markdown.replaceAll('<key>', '\\<key\\>');
 
     // Write the markdown file
     const outputFile = path.join(outputDir, `${category}.md`);

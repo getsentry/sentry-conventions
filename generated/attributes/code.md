@@ -7,10 +7,10 @@
   - [code.function.name](#codefunctionname)
   - [code.line.number](#codelinenumber)
 - [Deprecated Attributes](#deprecated-attributes)
-  - [code.filepath](#code-filepath)
-  - [code.function](#code-function)
-  - [code.lineno](#code-lineno)
-  - [code.namespace](#code-namespace)
+  - [code.filepath](#codefilepath)
+  - [code.function](#codefunction)
+  - [code.lineno](#codelineno)
+  - [code.namespace](#codenamespace)
 
 ## Stable Attributes
 

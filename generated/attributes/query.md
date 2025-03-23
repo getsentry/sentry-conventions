@@ -3,7 +3,7 @@
 # Query Attributes
 
 - [Deprecated Attributes](#deprecated-attributes)
-  - [query.<key>](#query-key-)
+  - [query.\<key\>](#querykey)
 
 ## Deprecated Attributes
 
