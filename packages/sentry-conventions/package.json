@@ -7,6 +7,14 @@
     ".": {
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
+    },
+    "./attributes": {
+      "import": "./dist/attributes.mjs",
+      "require": "./dist/attributes.cjs"
+    },
+    "./op": {
+      "import": "./dist/op.mjs",
+      "require": "./dist/op.cjs"
     }
   },
   "main": "./dist/index.cjs",

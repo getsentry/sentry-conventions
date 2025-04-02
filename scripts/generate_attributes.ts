@@ -139,17 +139,6 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
   const outputFilePath = path.join(__dirname, '..', 'packages', 'sentry-conventions', 'src', 'attributes.ts');
   fs.writeFileSync(outputFilePath, attributesContent);
 
-  // Update the index.ts file to export the attributes
-  const indexPath = path.join(__dirname, '..', 'packages', 'sentry-conventions', 'src', 'index.ts');
-  let indexContent = fs.readFileSync(indexPath, 'utf-8');
-
-  // Check if the export already exists
-  if (!indexContent.includes("export * from './attributes';")) {
-    // Add the export if it doesn't exist
-    indexContent += "export * from './attributes';\n";
-    fs.writeFileSync(indexPath, indexContent);
-  }
-
   console.log(`Generated attributes file at: ${outputFilePath}`);
 }
 
