@@ -136,7 +136,7 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
 } & Record<string, AttributeValue | undefined>;\n`;
 
   // Write the generated content to the file
-  const outputFilePath = path.join(__dirname, '..', 'packages', 'sentry-conventions', 'src', 'attributes.ts');
+  const outputFilePath = path.join(__dirname, '..', 'javascript', 'sentry-conventions', 'src', 'attributes.ts');
   fs.writeFileSync(outputFilePath, attributesContent);
 
   console.log(`Generated attributes file at: ${outputFilePath}`);

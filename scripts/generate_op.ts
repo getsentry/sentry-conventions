@@ -71,7 +71,7 @@ function writeToJs(opDir: string, opFiles: string[]) {
     }
   }
 
-  const opFilePath = path.join(__dirname, '..', 'packages', 'sentry-conventions', 'src', 'op.ts');
+  const opFilePath = path.join(__dirname, '..', 'javascript', 'sentry-conventions', 'src', 'op.ts');
 
   fs.writeFileSync(opFilePath, opContent);
 }
