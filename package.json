@@ -14,11 +14,7 @@
     "@biomejs/biome": "1.9.4",
     "@types/node": "^22.13.17"
   },
-  "workspaces": [
-    "javascript/*",
-    "python/*",
-    "rust/*"
-  ],
+  "workspaces": ["javascript/*", "python/*", "rust/*"],
   "packageManager": "yarn@1.22.22",
   "volta": {
     "node": "22.14.0",
