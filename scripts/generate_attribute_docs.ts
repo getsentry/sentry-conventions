@@ -66,7 +66,7 @@ function generateAttributeTable(attribute: AttributeJson): string {
 }
 
 // Main function to generate all markdown docs
-async function generateAttributeDocs() {
+export async function generateAttributeDocs() {
   const baseDir = 'model/attributes';
   const outputDir = 'generated/attributes';
   const categories: Record<string, AttributeJson[]> = {};
@@ -180,6 +180,3 @@ async function generateAttributeDocs() {
 
   console.log('Documentation generation complete!');
 }
-
-// Run the script
-generateAttributeDocs().catch(console.error);

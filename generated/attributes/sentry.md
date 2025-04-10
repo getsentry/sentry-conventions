@@ -11,6 +11,7 @@
   - [sentry.idle_span_finish_reason](#sentryidle_span_finish_reason)
   - [sentry.op](#sentryop)
   - [sentry.origin](#sentryorigin)
+  - [sentry.platform](#sentryplatform)
   - [sentry.profile_id](#sentryprofile_id)
   - [sentry.release](#sentryrelease)
   - [sentry.replay_id](#sentryreplay_id)
@@ -110,6 +111,17 @@ The origin of a span.
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `auto.http.otel.fastify` |
+
+### sentry.platform
+
+The sdk platform that generated the event.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `php` |
 
 ### sentry.profile_id
 

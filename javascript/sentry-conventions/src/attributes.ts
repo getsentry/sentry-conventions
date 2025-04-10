@@ -2755,6 +2755,21 @@ export const SENTRY_OP = 'sentry.op';
  */
 export const SENTRY_ORIGIN = 'sentry.origin';
 
+// Path: model/attributes/sentry/sentry__platform.json
+
+/**
+ * The sdk platform that generated the event.
+ *
+ * Attribute Value Type: string
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "php"
+ */
+export const SENTRY_PLATFORM = 'sentry.platform';
+
 // Path: model/attributes/sentry/sentry__profile_id.json
 
 /**
@@ -3515,6 +3530,7 @@ export type Attributes = {
   [SENTRY_IDLE_SPAN_FINISH_REASON]?: string;
   [SENTRY_OP]?: string;
   [SENTRY_ORIGIN]?: string;
+  [SENTRY_PLATFORM]?: string;
   [SENTRY_PROFILE_ID]?: string;
   [SENTRY_RELEASE]?: string;
   [SENTRY_REPLAY_ID]?: string;
@@ -3727,6 +3743,7 @@ export type FullAttributes = {
   [SENTRY_IDLE_SPAN_FINISH_REASON]?: string;
   [SENTRY_OP]?: string;
   [SENTRY_ORIGIN]?: string;
+  [SENTRY_PLATFORM]?: string;
   [SENTRY_PROFILE_ID]?: string;
   [SENTRY_RELEASE]?: string;
   [SENTRY_REPLAY_ID]?: string;

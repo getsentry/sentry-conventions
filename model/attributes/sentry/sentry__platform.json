@@ -1,0 +1,10 @@
+{
+  "key": "sentry.platform",
+  "brief": "The sdk platform that generated the event.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "php"
+}
