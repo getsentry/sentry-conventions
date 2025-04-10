@@ -2883,7 +2883,7 @@ export const SENTRY_SDK_NAME = 'sentry.sdk.name';
  */
 export const SENTRY_SDK_VERSION = 'sentry.sdk.version';
 
-// Path: model/attributes/sentry/sentry__source.json
+// Path: model/attributes/sentry/sentry__span__source.json
 
 /**
  * The source of a span, also referred to as transaction source.
@@ -2896,7 +2896,7 @@ export const SENTRY_SDK_VERSION = 'sentry.sdk.version';
  *
  * @example "route"
  */
-export const SENTRY_SOURCE = 'sentry.source';
+export const SENTRY_SPAN_SOURCE = 'sentry.span.source';
 
 // Path: model/attributes/sentry/sentry__transaction.json
 
@@ -3555,7 +3555,7 @@ export type Attributes = {
   [SENTRY_SAMPLE_RATE]?: number;
   [SENTRY_SDK_NAME]?: string;
   [SENTRY_SDK_VERSION]?: string;
-  [SENTRY_SOURCE]?: string;
+  [SENTRY_SPAN_SOURCE]?: string;
   [SENTRY_TRANSACTION]?: string;
   [SERVER_ADDRESS]?: string;
   [SERVER_PORT]?: number;
@@ -3769,7 +3769,7 @@ export type FullAttributes = {
   [SENTRY_SAMPLE_RATE]?: number;
   [SENTRY_SDK_NAME]?: string;
   [SENTRY_SDK_VERSION]?: string;
-  [SENTRY_SOURCE]?: string;
+  [SENTRY_SPAN_SOURCE]?: string;
   [SENTRY_TRANSACTION]?: string;
   [SERVER_ADDRESS]?: string;
   [SERVER_PORT]?: number;

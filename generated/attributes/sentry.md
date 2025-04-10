@@ -19,7 +19,7 @@
   - [sentry.sample_rate](#sentrysample_rate)
   - [sentry.sdk.name](#sentrysdkname)
   - [sentry.sdk.version](#sentrysdkversion)
-  - [sentry.source](#sentrysource)
+  - [sentry.span.source](#sentryspansource)
   - [sentry.transaction](#sentrytransaction)
 
 ## Stable Attributes
@@ -205,7 +205,7 @@ The sentry sdk version.
 | Exists in OpenTelemetry | No |
 | Example | `7.0.0` |
 
-### sentry.source
+### sentry.span.source
 
 The source of a span, also referred to as transaction source.
 
