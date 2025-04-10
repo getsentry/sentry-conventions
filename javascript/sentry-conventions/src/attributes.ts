@@ -2725,6 +2725,23 @@ export const SENTRY_HTTP_PREFETCH = 'sentry.http.prefetch';
  */
 export const SENTRY_IDLE_SPAN_FINISH_REASON = 'sentry.idle_span_finish_reason';
 
+// Path: model/attributes/sentry/sentry__module__<key>.json
+
+/**
+ * A module that was loaded in the process. The key is the name of the module. 
+ *
+ * Attribute Value Type: string
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Has Dynamic Suffix: true
+ *
+ * @example "sentry.module.brianium/paratest='v7.7.0'"
+ */
+export const SENTRY_MODULE_KEY = 'sentry.module.<key>';
+
 // Path: model/attributes/sentry/sentry__op.json
 
 /**
@@ -3528,6 +3545,7 @@ export type Attributes = {
   [SENTRY_EXCLUSIVE_TIME]?: number;
   [SENTRY_HTTP_PREFETCH]?: boolean;
   [SENTRY_IDLE_SPAN_FINISH_REASON]?: string;
+  [SENTRY_MODULE_KEY]?: string;
   [SENTRY_OP]?: string;
   [SENTRY_ORIGIN]?: string;
   [SENTRY_PLATFORM]?: string;
@@ -3741,6 +3759,7 @@ export type FullAttributes = {
   [SENTRY_EXCLUSIVE_TIME]?: number;
   [SENTRY_HTTP_PREFETCH]?: boolean;
   [SENTRY_IDLE_SPAN_FINISH_REASON]?: string;
+  [SENTRY_MODULE_KEY]?: string;
   [SENTRY_OP]?: string;
   [SENTRY_ORIGIN]?: string;
   [SENTRY_PLATFORM]?: string;

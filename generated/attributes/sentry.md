@@ -9,6 +9,7 @@
   - [sentry.exclusive_time](#sentryexclusive_time)
   - [sentry.http.prefetch](#sentryhttpprefetch)
   - [sentry.idle_span_finish_reason](#sentryidle_span_finish_reason)
+  - [sentry.module.\<key\>](#sentrymodulekey)
   - [sentry.op](#sentryop)
   - [sentry.origin](#sentryorigin)
   - [sentry.platform](#sentryplatform)
@@ -89,6 +90,18 @@ The reason why an idle span ended early.
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `idleTimeout` |
+
+### sentry.module.\<key\>
+
+A module that was loaded in the process. The key is the name of the module. 
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Has dynamic suffix | Yes |
+| Example | `sentry.module.brianium/paratest='v7.7.0'` |
 
 ### sentry.op
 
