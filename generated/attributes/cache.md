@@ -6,6 +6,7 @@
   - [cache.hit](#cachehit)
   - [cache.item_size](#cacheitem_size)
   - [cache.key](#cachekey)
+  - [cache.operation](#cacheoperation)
   - [cache.ttl](#cachettl)
 
 ## Stable Attributes
@@ -38,10 +39,21 @@ The key of the cache accessed.
 
 | Property | Value |
 | --- | --- |
+| Type | `string[]` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `["my-cache-key","my-other-cache-key"]` |
+
+### cache.operation
+
+The operation being performed on the cache.
+
+| Property | Value |
+| --- | --- |
 | Type | `string` |
 | Has PII | false |
 | Exists in OpenTelemetry | No |
-| Example | `my-cache-key` |
+| Example | `get` |
 
 ### cache.ttl
 

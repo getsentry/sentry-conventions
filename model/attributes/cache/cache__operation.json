@@ -1,0 +1,11 @@
+{
+  "key": "cache.operation",
+  "brief": "The operation being performed on the cache.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "get",
+  "sdks": ["php-laravel"]
+}

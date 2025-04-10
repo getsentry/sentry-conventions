@@ -1,11 +1,11 @@
 {
   "key": "cache.key",
   "brief": "The key of the cache accessed.",
-  "type": "string",
+  "type": "string[]",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
-  "example": "my-cache-key",
+  "example": ["my-cache-key", "my-other-cache-key"],
   "sdks": ["php-laravel"]
 }

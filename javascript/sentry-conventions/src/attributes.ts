@@ -238,15 +238,30 @@ export const CACHE_ITEM_SIZE = 'cache.item_size';
 /**
  * The key of the cache accessed.
  *
+ * Attribute Value Type: Array<string>
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example ["my-cache-key","my-other-cache-key"]
+ */
+export const CACHE_KEY = 'cache.key';
+
+// Path: model/attributes/cache/cache__operation.json
+
+/**
+ * The operation being performed on the cache.
+ *
  * Attribute Value Type: string
  *
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
  *
- * @example "my-cache-key"
+ * @example "get"
  */
-export const CACHE_KEY = 'cache.key';
+export const CACHE_OPERATION = 'cache.operation';
 
 // Path: model/attributes/cache/cache__ttl.json
 
@@ -3437,7 +3452,8 @@ export type Attributes = {
   [BROWSER_SCRIPT_SOURCE_CHAR_POSITION]?: number;
   [CACHE_HIT]?: boolean;
   [CACHE_ITEM_SIZE]?: number;
-  [CACHE_KEY]?: string;
+  [CACHE_KEY]?: Array<string>;
+  [CACHE_OPERATION]?: string;
   [CACHE_TTL]?: number;
   [CHANNEL]?: string;
   [CLIENT_ADDRESS]?: string;
@@ -3605,7 +3621,8 @@ export type FullAttributes = {
   [BROWSER_SCRIPT_SOURCE_CHAR_POSITION]?: number;
   [CACHE_HIT]?: boolean;
   [CACHE_ITEM_SIZE]?: number;
-  [CACHE_KEY]?: string;
+  [CACHE_KEY]?: Array<string>;
+  [CACHE_OPERATION]?: string;
   [CACHE_TTL]?: number;
   [CHANNEL]?: string;
   [CLIENT_ADDRESS]?: string;
