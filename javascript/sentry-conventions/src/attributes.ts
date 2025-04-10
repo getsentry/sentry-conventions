@@ -2586,6 +2586,51 @@ export const PROCESS_EXECUTABLE_NAME = 'process.executable.name';
  */
 export const PROCESS_PID = 'process.pid';
 
+// Path: model/attributes/process/process__runtime__description.json
+
+/**
+ * An additional description about the runtime of the process, for example a specific vendor customization of the runtime environment. Equivalent to `raw_description` in the Sentry runtime context.
+ *
+ * Attribute Value Type: string
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "Eclipse OpenJ9 VM openj9-0.21.0"
+ */
+export const PROCESS_RUNTIME_DESCRIPTION = 'process.runtime.description';
+
+// Path: model/attributes/process/process__runtime__name.json
+
+/**
+ * The name of the runtime. Equivalent to `name` in the Sentry runtime context.
+ *
+ * Attribute Value Type: string
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "node"
+ */
+export const PROCESS_RUNTIME_NAME = 'process.runtime.name';
+
+// Path: model/attributes/process/process__runtime__version.json
+
+/**
+ * The version of the runtime of this process, as returned by the runtime without modification. Equivalent to `version` in the Sentry runtime context.
+ *
+ * Attribute Value Type: string
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "18.04.2"
+ */
+export const PROCESS_RUNTIME_VERSION = 'process.runtime.version';
+
 // Path: model/attributes/profile_id.json
 
 /**
@@ -3647,6 +3692,9 @@ export type Attributes = {
   [PREVIOUS_ROUTE]?: string;
   [PROCESS_EXECUTABLE_NAME]?: string;
   [PROCESS_PID]?: number;
+  [PROCESS_RUNTIME_DESCRIPTION]?: string;
+  [PROCESS_RUNTIME_NAME]?: string;
+  [PROCESS_RUNTIME_VERSION]?: string;
   [REMIX_ACTION_FORM_DATA_KEY]?: string;
   [RESOURCE_RENDER_BLOCKING_STATUS]?: string;
   [RPC_GRPC_STATUS_CODE]?: number;
@@ -3863,6 +3911,9 @@ export type FullAttributes = {
   [PREVIOUS_ROUTE]?: string;
   [PROCESS_EXECUTABLE_NAME]?: string;
   [PROCESS_PID]?: number;
+  [PROCESS_RUNTIME_DESCRIPTION]?: string;
+  [PROCESS_RUNTIME_NAME]?: string;
+  [PROCESS_RUNTIME_VERSION]?: string;
   [PROFILE_ID]?: string;
   [QUERY_KEY]?: string;
   [RELEASE]?: string;

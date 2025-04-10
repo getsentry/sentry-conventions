@@ -1,0 +1,10 @@
+{
+  "key": "process.runtime.name",
+  "brief": "The name of the runtime. Equivalent to `name` in the Sentry runtime context.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "node"
+}
