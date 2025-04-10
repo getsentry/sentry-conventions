@@ -1,6 +1,6 @@
 {
   "key": "sentry.module.<key>",
-  "brief": "A module that was loaded in the process. The key is the name of the module. ",
+  "brief": "A module that was loaded in the process. The key is the name of the module.",
   "has_dynamic_suffix": true,
   "type": "string",
   "pii": {

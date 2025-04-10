@@ -2878,7 +2878,7 @@ export const SENTRY_IDLE_SPAN_FINISH_REASON = 'sentry.idle_span_finish_reason';
 // Path: model/attributes/sentry/sentry__module__<key>.json
 
 /**
- * A module that was loaded in the process. The key is the name of the module. 
+ * A module that was loaded in the process. The key is the name of the module.
  *
  * Attribute Value Type: string
  *

@@ -93,7 +93,7 @@ The reason why an idle span ended early.
 
 ### sentry.module.\<key\>
 
-A module that was loaded in the process. The key is the name of the module. 
+A module that was loaded in the process. The key is the name of the module.
 
 | Property | Value |
 | --- | --- |
