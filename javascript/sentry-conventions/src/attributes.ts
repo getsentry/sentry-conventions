@@ -2387,6 +2387,81 @@ export const NETWORK_TRANSPORT = 'network.transport';
  */
 export const NETWORK_TYPE = 'network.type';
 
+// Path: model/attributes/os/os__build_id.json
+
+/**
+ * The build ID of the operating system.
+ *
+ * Attribute Value Type: string
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "1234567890"
+ */
+export const OS_BUILD_ID = 'os.build_id';
+
+// Path: model/attributes/os/os__description.json
+
+/**
+ * Human readable (not intended to be parsed) OS version information, like e.g. reported by ver or lsb_release -a commands.
+ *
+ * Attribute Value Type: string
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "Ubuntu 18.04.1 LTS"
+ */
+export const OS_DESCRIPTION = 'os.description';
+
+// Path: model/attributes/os/os__name.json
+
+/**
+ * Human readable operating system name.
+ *
+ * Attribute Value Type: string
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "Ubuntu"
+ */
+export const OS_NAME = 'os.name';
+
+// Path: model/attributes/os/os__type.json
+
+/**
+ * The operating system type.
+ *
+ * Attribute Value Type: string
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "linux"
+ */
+export const OS_TYPE = 'os.type';
+
+// Path: model/attributes/os/os__version.json
+
+/**
+ * The version of the operating system.
+ *
+ * Attribute Value Type: string
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "18.04.2"
+ */
+export const OS_VERSION = 'os.version';
+
 // Path: model/attributes/otel/otel__scope__name.json
 
 /**
@@ -3559,6 +3634,11 @@ export type Attributes = {
   [NETWORK_PROTOCOL_VERSION]?: string;
   [NETWORK_TRANSPORT]?: string;
   [NETWORK_TYPE]?: string;
+  [OS_BUILD_ID]?: string;
+  [OS_DESCRIPTION]?: string;
+  [OS_NAME]?: string;
+  [OS_TYPE]?: string;
+  [OS_VERSION]?: string;
   [OTEL_SCOPE_NAME]?: string;
   [OTEL_SCOPE_VERSION]?: string;
   [OTEL_STATUS_CODE]?: string;
@@ -3770,6 +3850,11 @@ export type FullAttributes = {
   [NETWORK_PROTOCOL_VERSION]?: string;
   [NETWORK_TRANSPORT]?: string;
   [NETWORK_TYPE]?: string;
+  [OS_BUILD_ID]?: string;
+  [OS_DESCRIPTION]?: string;
+  [OS_NAME]?: string;
+  [OS_TYPE]?: string;
+  [OS_VERSION]?: string;
   [OTEL_SCOPE_NAME]?: string;
   [OTEL_SCOPE_VERSION]?: string;
   [OTEL_STATUS_CODE]?: string;

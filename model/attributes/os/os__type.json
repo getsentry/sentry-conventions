@@ -1,0 +1,10 @@
+{
+  "key": "os.type",
+  "brief": "The operating system type.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "linux"
+}

@@ -1,0 +1,10 @@
+{
+  "key": "os.description",
+  "brief": "Human readable (not intended to be parsed) OS version information, like e.g. reported by ver or lsb_release -a commands.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "Ubuntu 18.04.1 LTS"
+}

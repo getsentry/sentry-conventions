@@ -1,0 +1,10 @@
+{
+  "key": "os.name",
+  "brief": "Human readable operating system name.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "Ubuntu"
+}

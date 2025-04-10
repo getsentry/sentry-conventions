@@ -28,6 +28,7 @@ This directory contains documentation for all available attributes.
 - [`navigation` Attributes](./navigation.md)
 - [`net` Attributes](./net.md)
 - [`network` Attributes](./network.md)
+- [`os` Attributes](./os.md)
 - [`otel` Attributes](./otel.md)
 - [`params` Attributes](./params.md)
 - [`process` Attributes](./process.md)

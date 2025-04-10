@@ -1,0 +1,10 @@
+{
+  "key": "os.version",
+  "brief": "The version of the operating system.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "18.04.2"
+}
