@@ -1,6 +1,6 @@
 {
   "key": "db.query.text",
-  "brief": "The database query being executed. Should be paramaterized",
+  "brief": "The database query being executed. Should be the full query, not a parameterized version. The parameterized version is in `db.query.summary`.",
   "type": "string",
   "pii": {
     "key": "false"

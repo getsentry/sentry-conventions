@@ -595,10 +595,25 @@ export const DB_OPERATION_NAME = 'db.operation.name';
  */
 export const DB_QUERY_PARAMETER_KEY = 'db.query.parameter.<key>';
 
+// Path: model/attributes/db/db__query__summary.json
+
+/**
+ * A database query being executed. Should be paramaterized. The full version of the query is in `db.query.text`.
+ *
+ * Attribute Value Type: string
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "SELECT * FROM users"
+ */
+export const DB_QUERY_SUMMARY = 'db.query.summary';
+
 // Path: model/attributes/db/db__query__text.json
 
 /**
- * The database query being executed. Should be paramaterized
+ * The database query being executed. Should be the full query, not a parameterized version. The parameterized version is in `db.query.summary`.
  *
  * Attribute Value Type: string
  *
@@ -3468,6 +3483,7 @@ export type Attributes = {
   [DB_NAMESPACE]?: string;
   [DB_OPERATION_NAME]?: string;
   [DB_QUERY_PARAMETER_KEY]?: string;
+  [DB_QUERY_SUMMARY]?: string;
   [DB_QUERY_TEXT]?: string;
   [DB_REDIS_CONNECTION]?: string;
   [DB_REDIS_PARAMETERS]?: Array<string>;
@@ -3643,6 +3659,7 @@ export type FullAttributes = {
   [DB_OPERATION]?: string;
   [DB_OPERATION_NAME]?: string;
   [DB_QUERY_PARAMETER_KEY]?: string;
+  [DB_QUERY_SUMMARY]?: string;
   [DB_QUERY_TEXT]?: string;
   [DB_REDIS_CONNECTION]?: string;
   [DB_REDIS_PARAMETERS]?: Array<string>;

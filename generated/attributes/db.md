@@ -7,6 +7,7 @@
   - [db.namespace](#dbnamespace)
   - [db.operation.name](#dboperationname)
   - [db.query.parameter.\<key\>](#dbqueryparameterkey)
+  - [db.query.summary](#dbquerysummary)
   - [db.query.text](#dbquerytext)
   - [db.redis.connection](#dbredisconnection)
   - [db.redis.parameters](#dbredisparameters)
@@ -69,9 +70,20 @@ A query parameter used in db.query.text, with \<key\> being the parameter name, 
 | Has dynamic suffix | Yes |
 | Example | `db.query.parameter.foo='123'` |
 
+### db.query.summary
+
+A database query being executed. Should be paramaterized. The full version of the query is in `db.query.text`.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | Yes |
+| Example | `SELECT * FROM users` |
+
 ### db.query.text
 
-The database query being executed. Should be paramaterized
+The database query being executed. Should be the full query, not a parameterized version. The parameterized version is in `db.query.summary`.
 
 | Property | Value |
 | --- | --- |
