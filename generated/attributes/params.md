@@ -18,5 +18,5 @@ Decoded parameters extracted from a URL path. Usually added by client-side routi
 | Exists in OpenTelemetry | No |
 | Has dynamic suffix | Yes |
 | Example | `params.id='123'` |
-| Aliases | `url.path.params.\<key\>` |
+| Aliases | `url.path.parameter.\<key\>` |
 

@@ -2535,7 +2535,7 @@ export const OTEL_STATUS_DESCRIPTION = 'otel.status_description';
  *
  * Has Dynamic Suffix: true
  *
- * Aliases: {@link URL_PATH_PARAMS_KEY} 'url.path.params.<key>'
+ * Aliases: {@link URL_PATH_PARAMETER_KEY} 'url.path.parameter.<key>'
  *
  * @example "params.id='123'"
  */
@@ -3316,9 +3316,9 @@ export const URL_PATH = 'url.path';
  *
  * Aliases: {@link PARAMS_KEY} 'params.<key>'
  *
- * @example "url.path.params.id='123'"
+ * @example "url.path.parameter.id='123'"
  */
-export const URL_PATH_PARAMS_KEY = 'url.path.params.<key>';
+export const URL_PATH_PARAMETER_KEY = 'url.path.parameter.<key>';
 
 // Path: model/attributes/url/url__port.json
 
@@ -3731,7 +3731,7 @@ export type Attributes = {
   [URL_FRAGMENT]?: string;
   [URL_FULL]?: string;
   [URL_PATH]?: string;
-  [URL_PATH_PARAMS_KEY]?: string;
+  [URL_PATH_PARAMETER_KEY]?: string;
   [URL_PORT]?: number;
   [URL_QUERY]?: string;
   [URL_SCHEME]?: string;
@@ -3956,7 +3956,7 @@ export type FullAttributes = {
   [URL_FRAGMENT]?: string;
   [URL_FULL]?: string;
   [URL_PATH]?: string;
-  [URL_PATH_PARAMS_KEY]?: string;
+  [URL_PATH_PARAMETER_KEY]?: string;
   [URL_PORT]?: number;
   [URL_QUERY]?: string;
   [URL_SCHEME]?: string;

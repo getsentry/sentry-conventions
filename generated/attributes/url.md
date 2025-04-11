@@ -7,7 +7,7 @@
   - [url.fragment](#urlfragment)
   - [url.full](#urlfull)
   - [url.path](#urlpath)
-  - [url.path.params.\<key\>](#urlpathparamskey)
+  - [url.path.parameter.\<key\>](#urlpathparameterkey)
   - [url.port](#urlport)
   - [url.query](#urlquery)
   - [url.scheme](#urlscheme)
@@ -60,7 +60,7 @@ The URI path component.
 | Exists in OpenTelemetry | Yes |
 | Example | `/foo` |
 
-### url.path.params.\<key\>
+### url.path.parameter.\<key\>
 
 Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.
 
@@ -70,7 +70,7 @@ Decoded parameters extracted from a URL path. Usually added by client-side routi
 | Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Has dynamic suffix | Yes |
-| Example | `url.path.params.id='123'` |
+| Example | `url.path.parameter.id='123'` |
 | Aliases | `params.\<key\>` |
 
 ### url.port

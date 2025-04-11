@@ -8,5 +8,5 @@
   },
   "is_in_otel": false,
   "example": "params.id='123'",
-  "alias": ["url.path.params.<key>"]
+  "alias": ["url.path.parameter.<key>"]
 }
