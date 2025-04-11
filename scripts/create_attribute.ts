@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import readline from 'node:readline';
 import { parseArgs } from 'node:util';
+import { execSync } from 'node:child_process';
 import Ajv from 'ajv';
 
 const HELP_TEXT = `
@@ -163,6 +164,19 @@ const createAttribute = async () => {
 
     fs.writeFileSync(filePath, `${JSON.stringify(attribute, null, 2)}\n`);
     console.log(`Successfully created attribute file at: ${filePath}`);
+
+    // Ask if user wants to generate docs
+    const generateDocs = await question('\nWould you like to generate documentation? (y/n): ');
+    if (generateDocs.toLowerCase() === 'y') {
+      console.log('Generating documentation...');
+      try {
+        execSync('yarn run generate', { stdio: 'inherit' });
+        console.log('Documentation generated successfully!');
+      } catch (error) {
+        console.error('Error generating documentation:', error);
+        process.exit(1);
+      }
+    }
   } catch (error) {
     console.error('Error creating attribute:', error);
     process.exit(1);

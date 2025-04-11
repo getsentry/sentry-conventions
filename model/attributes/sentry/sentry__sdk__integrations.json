@@ -1,0 +1,15 @@
+{
+  "key": "sentry.sdk.integrations",
+  "brief": "A list of names identifying enabled integrations. The list shouldhave all enabled integrations, including default integrations. Defaultintegrations are included because different SDK releases may contain differentdefault integrations.",
+  "type": "string[]",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": [
+    "InboundFilters",
+    "FunctionToString",
+    "BrowserApiErrors",
+    "Breadcrumbs"
+  ]
+}

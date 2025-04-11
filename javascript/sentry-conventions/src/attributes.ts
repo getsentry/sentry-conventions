@@ -3001,6 +3001,21 @@ export const SENTRY_REPLAY_ID = 'sentry.replay_id';
  */
 export const SENTRY_SAMPLE_RATE = 'sentry.sample_rate';
 
+// Path: model/attributes/sentry/sentry__sdk__integrations.json
+
+/**
+ * A list of names identifying enabled integrations. The list shouldhave all enabled integrations, including default integrations. Defaultintegrations are included because different SDK releases may contain differentdefault integrations.
+ *
+ * Attribute Value Type: Array<string>
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example ["InboundFilters","FunctionToString","BrowserApiErrors","Breadcrumbs"]
+ */
+export const SENTRY_SDK_INTEGRATIONS = 'sentry.sdk.integrations';
+
 // Path: model/attributes/sentry/sentry__sdk__name.json
 
 /**
@@ -3711,6 +3726,7 @@ export type Attributes = {
   [SENTRY_RELEASE]?: string;
   [SENTRY_REPLAY_ID]?: string;
   [SENTRY_SAMPLE_RATE]?: number;
+  [SENTRY_SDK_INTEGRATIONS]?: Array<string>;
   [SENTRY_SDK_NAME]?: string;
   [SENTRY_SDK_VERSION]?: string;
   [SENTRY_SPAN_SOURCE]?: string;
@@ -3935,6 +3951,7 @@ export type FullAttributes = {
   [SENTRY_RELEASE]?: string;
   [SENTRY_REPLAY_ID]?: string;
   [SENTRY_SAMPLE_RATE]?: number;
+  [SENTRY_SDK_INTEGRATIONS]?: Array<string>;
   [SENTRY_SDK_NAME]?: string;
   [SENTRY_SDK_VERSION]?: string;
   [SENTRY_SPAN_SOURCE]?: string;

@@ -17,6 +17,7 @@
   - [sentry.release](#sentryrelease)
   - [sentry.replay_id](#sentryreplay_id)
   - [sentry.sample_rate](#sentrysample_rate)
+  - [sentry.sdk.integrations](#sentrysdkintegrations)
   - [sentry.sdk.name](#sentrysdkname)
   - [sentry.sdk.version](#sentrysdkversion)
   - [sentry.span.source](#sentryspansource)
@@ -182,6 +183,17 @@ The sample rate of the span.
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `0.5` |
+
+### sentry.sdk.integrations
+
+A list of names identifying enabled integrations. The list shouldhave all enabled integrations, including default integrations. Defaultintegrations are included because different SDK releases may contain differentdefault integrations.
+
+| Property | Value |
+| --- | --- |
+| Type | `string[]` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `["InboundFilters","FunctionToString","BrowserApiErrors","Breadcrumbs"]` |
 
 ### sentry.sdk.name
 
