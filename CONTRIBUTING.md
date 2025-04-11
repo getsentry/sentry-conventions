@@ -17,10 +17,10 @@ Run `yarn run create:attribute` to create a new attribute. This will prompt you 
 
 ```bash
 # Interactive mode
-yarn create:attribute
+yarn run create:attribute
 
 # Non-interactive mode
-yarn create:attribute --key http.route --description "The route pattern of the request" --type string --has_pii false --is_in_otel true --example "/users/:id"
+yarn run create:attribute --key http.route --description "The route pattern of the request" --type string --has_pii false --is_in_otel true --example "/users/:id" --alias "url.template"
 ```
 
 If you need help, run `yarn run create:attribute --help` to see the available options.

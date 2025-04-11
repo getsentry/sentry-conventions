@@ -17,14 +17,15 @@ Options:
   --has_pii, -p       Whether the attribute contains PII (true/maybe/false)
   --is_in_otel, -o    Whether the attribute is in OpenTelemetry (true/false)
   --example, -e       An example value (optional)
+  --alias, -a         Comma-separated list of attributes that alias to this attribute (optional)
   --sdks, -s          Comma-separated list of SDKs that use this attribute (optional)
 
 Examples:
   # Interactive mode
-  yarn create:attribute
+  yarn run create:attribute
 
   # Non-interactive mode
-  yarn create:attribute --key http.route --description "The route pattern of the request" --type string --has_pii false --is_in_otel true --example "/users/:id"
+  yarn run create:attribute --key http.route --description "The route pattern of the request" --type string --has_pii false --is_in_otel true --example "/users/:id" --alias "url.template"
 `;
 
 const rl = readline.createInterface({
@@ -61,6 +62,7 @@ const createAttribute = async () => {
         has_pii: { type: 'string', short: 'p' },
         is_in_otel: { type: 'string', short: 'o' },
         example: { type: 'string', short: 'e' },
+        alias: { type: 'string', short: 'a' },
         sdks: { type: 'string', short: 's' },
       },
       allowPositionals: true,
@@ -80,6 +82,7 @@ const createAttribute = async () => {
     let piiKey: string | undefined;
     let isInOtel: string | undefined;
     let example: string | undefined;
+    let alias: string | undefined;
     let sdks: string | undefined;
 
     if (isInteractive) {
@@ -89,6 +92,7 @@ const createAttribute = async () => {
       piiKey = await question('Does this attribute contain PII? (true/maybe/false): ');
       isInOtel = await question('Is this attribute in OpenTelemetry? (true/false): ');
       example = await question('Enter an example value (optional): ');
+      alias = await question('Enter attributes that alias to this attribute (comma-separated, optional): ');
       sdks = await question('Enter SDKs that use this attribute (comma-separated, optional): ');
     } else {
       key = values.key;
@@ -97,6 +101,7 @@ const createAttribute = async () => {
       piiKey = values.has_pii;
       isInOtel = values.is_in_otel;
       example = values.example;
+      alias = values.alias;
       sdks = values.sdks;
     }
 
@@ -132,6 +137,7 @@ const createAttribute = async () => {
       },
       is_in_otel: isInOtel.toLowerCase() === 'true',
       ...(example && { example: exampleValue }),
+      ...(alias && alias.trim() !== '' && { alias: alias.split(',').map((s) => s.trim()) }),
       ...(sdks && sdks.trim() !== '' && { sdks: sdks.split(',').map((s) => s.trim()) }),
     };
 
@@ -155,7 +161,7 @@ const createAttribute = async () => {
       filePath = path.join(dirPath, `${fileName}.json`);
     }
 
-    fs.writeFileSync(filePath, JSON.stringify(attribute, null, 2));
+    fs.writeFileSync(filePath, `${JSON.stringify(attribute, null, 2)}\n`);
     console.log(`Successfully created attribute file at: ${filePath}`);
   } catch (error) {
     console.error('Error creating attribute:', error);
