@@ -1463,8 +1463,6 @@ export const HTTP_RESPONSE_HEADER_KEY = 'http.response.header.<key>';
  *
  * Attribute defined in OTEL: Yes
  *
- * Has Dynamic Suffix: true
- *
  * Aliases: {@link HTTP_RESPONSE_CONTENT_LENGTH} 'http.response_content_length', {@link HTTP_RESPONSE_BODY_SIZE} 'http.response.body.size'
  *
  * @example "http.response.header.custom-header=['foo', 'bar']"

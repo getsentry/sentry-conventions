@@ -8,20 +8,21 @@
     "fix": "biome check --write",
     "test": "vitest",
     "build": "yarn build:js",
-    "build:js": "(cd packages/sentry-conventions && yarn build)"
+    "build:js": "(cd packages/sentry-conventions && yarn build)",
+    "create:attribute": "tsx scripts/create_attribute.ts",
+    "generate": "tsx scripts/generate.ts"
   },
   "devDependencies": {
+    "ajv": "^8.17.1",
     "@biomejs/biome": "1.9.4",
-    "@types/node": "^22.13.17"
+    "@types/node": "^22.14.0",
+    "tsx": "^4.19.3",
+    "vitest": "^3.1.1"
   },
   "workspaces": ["javascript/*", "python/*", "rust/*"],
   "packageManager": "yarn@1.22.22",
   "volta": {
     "node": "22.14.0",
     "yarn": "1.22.22"
-  },
-  "dependencies": {
-    "ajv": "^8.17.1",
-    "vitest": "^3.1.1"
   }
 }

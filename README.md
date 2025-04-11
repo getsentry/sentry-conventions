@@ -13,13 +13,7 @@ To see the current list of attributes, see [the generated documentation](generat
 
 # Contributing
 
-Running this repo requires the usage of [volta](https://volta.sh/). See instructions on installing volta on their documentation [here](https://docs.volta.sh/guide/getting-started).
-
-To install required dependencies, run `yarn`.
-
-```bash
-yarn
-```
+See [CONTRIBUTING.md](CONTRIBUTING.md) for more information on how to contribute to this repository.
 
 # Related Links
 

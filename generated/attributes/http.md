@@ -252,7 +252,6 @@ The size of the message body sent to the recipient (in bytes)
 | Type | `string` |
 | Has PII | false |
 | Exists in OpenTelemetry | Yes |
-| Has dynamic suffix | Yes |
 | Example | `http.response.header.custom-header=['foo', 'bar']` |
 | Aliases | `http.response_content_length`, `http.response.body.size` |
 
