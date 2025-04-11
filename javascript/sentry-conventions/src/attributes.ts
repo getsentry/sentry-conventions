@@ -2522,7 +2522,7 @@ export const OTEL_STATUS_CODE = 'otel.status_code';
  */
 export const OTEL_STATUS_DESCRIPTION = 'otel.status_description';
 
-// Path: model/attributes/params/params.<key>.json
+// Path: model/attributes/params/params__<key>.json
 
 /**
  * Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.
@@ -2649,7 +2649,7 @@ export const PROCESS_RUNTIME_VERSION = 'process.runtime.version';
  */
 export const PROFILE_ID = 'profile_id';
 
-// Path: model/attributes/query/query.<key>.json
+// Path: model/attributes/query/query__<key>.json
 
 /**
  * An item in a query string. Usually added by client-side routing frameworks like vue-router.
