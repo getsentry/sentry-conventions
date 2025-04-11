@@ -3301,7 +3301,7 @@ export const URL_FULL = 'url.full';
  */
 export const URL_PATH = 'url.path';
 
-// Path: model/attributes/url/url__path__params__<key>.json
+// Path: model/attributes/url/url__path__parameter__<key>.json
 
 /**
  * Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.
