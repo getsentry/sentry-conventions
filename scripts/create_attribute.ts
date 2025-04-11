@@ -158,7 +158,7 @@ const createAttribute = async () => {
         fs.mkdirSync(dirPath, { recursive: true });
       }
       // Convert rest parts to use double underscores instead of dots
-      const fileName = parts.join('__').replace(/<key>/g, 'key');
+      const fileName = parts.join('__');
       filePath = path.join(dirPath, `${fileName}.json`);
     }
 

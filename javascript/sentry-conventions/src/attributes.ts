@@ -894,6 +894,23 @@ export const FAAS_TIME = 'faas.time';
  */
 export const FAAS_TRIGGER = 'faas.trigger';
 
+// Path: model/attributes/flag/flag__evaluation__<key>.json
+
+/**
+ * An instance of a feature flag evaluation. The value of this attribute is the boolean representing the evaluation result. The <key> suffix is the name of the feature flag.
+ *
+ * Attribute Value Type: boolean
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Has Dynamic Suffix: true
+ *
+ * @example "flag.evaluation.is_new_ui=true"
+ */
+export const FLAG_EVALUATION_KEY = 'flag.evaluation.<key>';
+
 // Path: model/attributes/frames/frames__delay.json
 
 /**
@@ -3631,6 +3648,7 @@ export type Attributes = {
   [FAAS_CRON]?: string;
   [FAAS_TIME]?: string;
   [FAAS_TRIGGER]?: string;
+  [FLAG_EVALUATION_KEY]?: boolean;
   [FRAMES_DELAY]?: number;
   [FRAMES_FROZEN]?: number;
   [FRAMES_SLOW]?: number;
@@ -3820,6 +3838,7 @@ export type FullAttributes = {
   [FAAS_CRON]?: string;
   [FAAS_TIME]?: string;
   [FAAS_TRIGGER]?: string;
+  [FLAG_EVALUATION_KEY]?: boolean;
   [FRAMES_DELAY]?: number;
   [FRAMES_FROZEN]?: number;
   [FRAMES_SLOW]?: number;
