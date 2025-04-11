@@ -1,8 +1,8 @@
+import { execSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import readline from 'node:readline';
 import { parseArgs } from 'node:util';
-import { execSync } from 'node:child_process';
 import Ajv from 'ajv';
 
 const HELP_TEXT = `
