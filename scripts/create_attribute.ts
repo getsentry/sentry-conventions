@@ -1,8 +1,8 @@
+import { execSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import readline from 'node:readline';
 import { parseArgs } from 'node:util';
-import { execSync } from 'node:child_process';
 import Ajv from 'ajv';
 
 const HELP_TEXT = `
@@ -158,7 +158,7 @@ const createAttribute = async () => {
         fs.mkdirSync(dirPath, { recursive: true });
       }
       // Convert rest parts to use double underscores instead of dots
-      const fileName = parts.join('__').replace(/<key>/g, 'key');
+      const fileName = parts.join('__');
       filePath = path.join(dirPath, `${fileName}.json`);
     }
 

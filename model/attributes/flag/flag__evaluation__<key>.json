@@ -1,0 +1,11 @@
+{
+  "key": "flag.evaluation.<key>",
+  "brief": "An instance of a feature flag evaluation. The value of this attribute is the boolean representing the evaluation result. The <key> suffix is the name of the feature flag.",
+  "has_dynamic_suffix": true,
+  "type": "boolean",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "flag.evaluation.is_new_ui=true"
+}

@@ -16,6 +16,7 @@ This directory contains documentation for all available attributes.
 - [`error` Attributes](./error.md)
 - [`exception` Attributes](./exception.md)
 - [`faas` Attributes](./faas.md)
+- [`flag` Attributes](./flag.md)
 - [`frames` Attributes](./frames.md)
 - [`gen_ai` Attributes](./gen_ai.md)
 - [`general` Attributes](./general.md)
