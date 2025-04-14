@@ -125,7 +125,6 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
 
     attributesContent += `export const ${constantName} = '${key}';\n\n`;
 
-
     attributesContent += '/**\n';
     attributesContent += ` * Type for {@link ${constantName}} ${key}\n`;
     attributesContent += ' */\n';

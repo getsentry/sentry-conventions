@@ -20,11 +20,24 @@
   "main": "./dist/index.cjs",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "unbuild"
+    "build": "unbuild",
+    "build:tarball": "yarn build && yarn pack"
   },
   "devDependencies": {
     "typescript": "^5.8.2",
     "unbuild": "^3.5.0"
   },
-  "files": ["dist"]
+  "sideEffects": false,
+  "engines": {
+    "node": ">=14"
+  },
+  "files": ["dist"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/getsentry/sentry-conventions.git"
+  },
+  "bugs": {
+    "url": "https://github.com/getsentry/sentry-conventions/issues"
+  },
+  "homepage": "https://github.com/getsentry/sentry-conventions#readme"
 }

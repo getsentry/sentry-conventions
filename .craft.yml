@@ -1,0 +1,6 @@
+minVersion: 0.28.1
+changelogPolicy: simple
+preReleaseCommand: bash scripts/craft-pre-release.sh
+targets:
+  - name: npm
+  - name: github

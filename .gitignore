@@ -145,3 +145,5 @@ dist
 
 # Turborepo
 .turbo
+
+.DS_Store

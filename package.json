@@ -9,8 +9,13 @@
     "test": "vitest",
     "build": "yarn build:js",
     "build:js": "(cd javascript/sentry-conventions && yarn build)",
+    "build:tarball": "yarn build:tarball:js",
+    "build:tarball:js": "(cd javascript/sentry-conventions && yarn build:tarball)",
     "create:attribute": "tsx scripts/create_attribute.ts",
     "generate": "tsx scripts/generate.ts"
+  },
+  "engines": {
+    "node": ">=22"
   },
   "devDependencies": {
     "ajv": "^8.17.1",

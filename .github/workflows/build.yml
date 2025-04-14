@@ -21,18 +21,22 @@ jobs:
       - name: Install node modules
         run: yarn install --frozen-lockfile
 
+      - name: Build Packages
+        run: yarn build
+
       - name: Run linter
         run: yarn lint
 
       - name: Run tests
         run: yarn test
 
-      # - name: Generate tarball artifact
-      #   run: yarn pack
+      - name: Generate tarball artifact
+        run: yarn build:tarball
 
-      # - name: Upload artifact for release via getsentry/craft
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: ${{ github.sha }}
-      #     path: ${{ github.workspace }}/*.tgz
-      #     if-no-files-found: error
+      - name: Upload artifacts for release via getsentry/craft
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ github.sha }}
+          path: |
+            javascript/**/*.tgz
+          if-no-files-found: error
