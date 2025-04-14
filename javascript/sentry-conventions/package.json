@@ -1,5 +1,5 @@
 {
-  "name": "@sentry-internal/sentry-conventions",
+  "name": "@sentry/conventions",
   "private": true,
   "license": "MIT",
   "version": "0.0.1",

@@ -24,14 +24,14 @@ jobs:
       - name: Build Packages
         run: yarn build
 
+      - name: Generate tarball artifact
+        run: yarn build:tarball
+
       - name: Run linter
         run: yarn lint
 
       - name: Run tests
         run: yarn test
-
-      - name: Generate tarball artifact
-        run: yarn build:tarball
 
       - name: Upload artifacts for release via getsentry/craft
         uses: actions/upload-artifact@v4
@@ -39,4 +39,5 @@ jobs:
           name: ${{ github.sha }}
           path: |
             javascript/**/*.tgz
+            model/**/*.tgz
           if-no-files-found: error

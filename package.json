@@ -9,8 +9,9 @@
     "test": "vitest",
     "build": "yarn build:js",
     "build:js": "(cd javascript/sentry-conventions && yarn build)",
-    "build:tarball": "yarn build:tarball:js",
+    "build:tarball": "yarn build:tarball:js && yarn build:tarball:model",
     "build:tarball:js": "(cd javascript/sentry-conventions && yarn build:tarball)",
+    "build:tarball:model": "tsx scripts/gzip_folder.ts model model/sentry-conventions-json.tgz",
     "create:attribute": "tsx scripts/create_attribute.ts",
     "generate": "tsx scripts/generate.ts"
   },
@@ -18,13 +19,19 @@
     "node": ">=22"
   },
   "devDependencies": {
-    "ajv": "^8.17.1",
     "@biomejs/biome": "1.9.4",
     "@types/node": "^22.14.0",
+    "@types/tar": "^6.1.13",
+    "ajv": "^8.17.1",
+    "tar": "^7.4.3",
     "tsx": "^4.19.3",
     "vitest": "^3.1.1"
   },
-  "workspaces": ["javascript/*", "python/*", "rust/*"],
+  "workspaces": [
+    "javascript/*",
+    "python/*",
+    "rust/*"
+  ],
   "packageManager": "yarn@1.22.22",
   "volta": {
     "node": "22.14.0",
