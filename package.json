@@ -27,11 +27,7 @@
     "tsx": "^4.19.3",
     "vitest": "^3.1.1"
   },
-  "workspaces": [
-    "javascript/*",
-    "python/*",
-    "rust/*"
-  ],
+  "workspaces": ["javascript/*", "python/*", "rust/*"],
   "packageManager": "yarn@1.22.22",
   "volta": {
     "node": "22.14.0",
