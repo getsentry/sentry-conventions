@@ -8,7 +8,7 @@
     "fix": "biome check --write",
     "test": "vitest",
     "build": "yarn build:js",
-    "build:js": "(cd packages/sentry-conventions && yarn build)",
+    "build:js": "(cd javascript/sentry-conventions && yarn build)",
     "create:attribute": "tsx scripts/create_attribute.ts",
     "generate": "tsx scripts/generate.ts"
   },

@@ -66,12 +66,12 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
 
     // Convert attribute key to a valid JavaScript constant name
     const constantName = getConstantName(key);
+    const typeConstantName = `${constantName}_TYPE`;
 
     attributesContent += `// Path: model/attributes/${file}\n\n`;
 
-    // Generate JSDoc comment
     attributesContent += '/**\n';
-    attributesContent += ` * ${brief}\n`;
+    attributesContent += ` * ${brief} \`${key}\`\n`;
 
     attributesContent += ' *\n';
 
@@ -79,7 +79,7 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
     const tsType = getTsType(type);
 
     // Add type information
-    attributesContent += ` * Attribute Value Type: ${tsType}\n`;
+    attributesContent += ` * Attribute Value Type: \`${tsType}\` {@link ${typeConstantName}}\n`;
 
     attributesContent += ' *\n';
 
@@ -102,7 +102,7 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
     if (alias && alias.length > 0) {
       attributesContent += ' *\n';
 
-      attributesContent += ` * Aliases: ${alias.map((alias) => `{@link ${getConstantName(alias)}} '${alias}'`).join(', ')}\n`;
+      attributesContent += ` * Aliases: ${alias.map((alias) => `{@link ${getConstantName(alias)}} \`${alias}\``).join(', ')}\n`;
     }
 
     attributesContent += ' *\n';
@@ -110,10 +110,10 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
     // Add deprecation info if present
     if (deprecation) {
       attributesContent += ` * @deprecated Use {@link ${getConstantName(deprecation.replacement)}} (${deprecation.replacement}) instead${deprecation.reason ? ` - ${deprecation.reason}` : ''}\n`;
-      fullAttributeTypeMap += `\n  [${constantName}]?: ${tsType};`;
+      fullAttributeTypeMap += `\n  [${constantName}]?: ${typeConstantName};`;
     } else {
-      fullAttributeTypeMap += `\n  [${constantName}]?: ${tsType};`;
-      attributeTypeMap += `\n  [${constantName}]?: ${tsType};`;
+      fullAttributeTypeMap += `\n  [${constantName}]?: ${typeConstantName};`;
+      attributeTypeMap += `\n  [${constantName}]?: ${typeConstantName};`;
     }
 
     // Add example if present
@@ -124,6 +124,13 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
     attributesContent += ' */\n';
 
     attributesContent += `export const ${constantName} = '${key}';\n\n`;
+
+
+    attributesContent += '/**\n';
+    attributesContent += ` * Type for {@link ${constantName}} ${key}\n`;
+    attributesContent += ' */\n';
+
+    attributesContent += `export type ${constantName}_TYPE = ${tsType};\n\n`;
   }
 
   attributesContent +=
