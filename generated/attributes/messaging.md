@@ -10,6 +10,7 @@
   - [messaging.message.id](#messagingmessageid)
   - [messaging.message.receive.latency](#messagingmessagereceivelatency)
   - [messaging.message.retry.count](#messagingmessageretrycount)
+  - [messaging.operation.type](#messagingoperationtype)
   - [messaging.system](#messagingsystem)
 
 ## Stable Attributes
@@ -90,6 +91,17 @@ The amount of attempts to send the message.
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `2` |
+
+### messaging.operation.type
+
+A string identifying the type of the messaging operation
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | Yes |
+| Example | `create` |
 
 ### messaging.system
 

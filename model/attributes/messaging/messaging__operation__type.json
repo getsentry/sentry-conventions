@@ -1,0 +1,10 @@
+{
+  "key": "messaging.operation.type",
+  "brief": "A string identifying the type of the messaging operation",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "create"
+}
