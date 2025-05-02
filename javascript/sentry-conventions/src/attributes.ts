@@ -2579,6 +2579,26 @@ export const MESSAGING_MESSAGE_RETRY_COUNT = 'messaging.message.retry.count';
  */
 export type MESSAGING_MESSAGE_RETRY_COUNT_TYPE = number;
 
+// Path: model/attributes/messaging/messaging__operation__type.json
+
+/**
+ * A string identifying the type of the messaging operation `messaging.operation.type`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_OPERATION_TYPE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "create"
+ */
+export const MESSAGING_OPERATION_TYPE = 'messaging.operation.type';
+
+/**
+ * Type for {@link MESSAGING_OPERATION_TYPE} messaging.operation.type
+ */
+export type MESSAGING_OPERATION_TYPE_TYPE = string;
+
 // Path: model/attributes/messaging/messaging__system.json
 
 /**
@@ -4825,6 +4845,7 @@ export type Attributes = {
   [MESSAGING_MESSAGE_ID]?: MESSAGING_MESSAGE_ID_TYPE;
   [MESSAGING_MESSAGE_RECEIVE_LATENCY]?: MESSAGING_MESSAGE_RECEIVE_LATENCY_TYPE;
   [MESSAGING_MESSAGE_RETRY_COUNT]?: MESSAGING_MESSAGE_RETRY_COUNT_TYPE;
+  [MESSAGING_OPERATION_TYPE]?: MESSAGING_OPERATION_TYPE_TYPE;
   [MESSAGING_SYSTEM]?: MESSAGING_SYSTEM_TYPE;
   [NAVIGATION_TYPE]?: NAVIGATION_TYPE_TYPE;
   [NETWORK_LOCAL_ADDRESS]?: NETWORK_LOCAL_ADDRESS_TYPE;
@@ -5030,6 +5051,7 @@ export type FullAttributes = {
   [MESSAGING_MESSAGE_ID]?: MESSAGING_MESSAGE_ID_TYPE;
   [MESSAGING_MESSAGE_RECEIVE_LATENCY]?: MESSAGING_MESSAGE_RECEIVE_LATENCY_TYPE;
   [MESSAGING_MESSAGE_RETRY_COUNT]?: MESSAGING_MESSAGE_RETRY_COUNT_TYPE;
+  [MESSAGING_OPERATION_TYPE]?: MESSAGING_OPERATION_TYPE_TYPE;
   [MESSAGING_SYSTEM]?: MESSAGING_SYSTEM_TYPE;
   [METHOD]?: METHOD_TYPE;
   [NAVIGATION_TYPE]?: NAVIGATION_TYPE_TYPE;
