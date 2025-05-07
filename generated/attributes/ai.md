@@ -6,9 +6,11 @@
   - [ai.completion_tokens.used](#aicompletion_tokensused)
   - [ai.input_messages](#aiinput_messages)
   - [ai.model_id](#aimodel_id)
+  - [ai.pipeline.name](#aipipelinename)
   - [ai.prompt_tokens.used](#aiprompt_tokensused)
   - [ai.responses](#airesponses)
   - [ai.streaming](#aistreaming)
+  - [ai.total_cost](#aitotal_cost)
   - [ai.total_tokens.used](#aitotal_tokensused)
 
 ## Stable Attributes
@@ -49,6 +51,17 @@ The vendor-specific ID of the model used.
 | Example | `gpt-4` |
 | Aliases | `gen_ai.response.model` |
 
+### ai.pipeline.name
+
+The name of the AI pipeline.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `Autofix Pipeline` |
+
 ### ai.prompt_tokens.used
 
 The number of tokens used to process just the prompt.
@@ -82,6 +95,17 @@ Whether the request was streamed back.
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `true` |
+
+### ai.total_cost
+
+The total cost for the tokens used.
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `12.34` |
 
 ### ai.total_tokens.used
 

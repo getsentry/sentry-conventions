@@ -66,6 +66,26 @@ export const AI_MODEL_ID = 'ai.model_id';
  */
 export type AI_MODEL_ID_TYPE = string;
 
+// Path: model/attributes/ai/ai__pipeline__name.json
+
+/**
+ * The name of the AI pipeline. `ai.pipeline.name`
+ *
+ * Attribute Value Type: `string` {@link AI_PIPELINE_NAME_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "Autofix Pipeline"
+ */
+export const AI_PIPELINE_NAME = 'ai.pipeline.name';
+
+/**
+ * Type for {@link AI_PIPELINE_NAME} ai.pipeline.name
+ */
+export type AI_PIPELINE_NAME_TYPE = string;
+
 // Path: model/attributes/ai/ai__prompt_tokens__used.json
 
 /**
@@ -127,6 +147,26 @@ export const AI_STREAMING = 'ai.streaming';
  * Type for {@link AI_STREAMING} ai.streaming
  */
 export type AI_STREAMING_TYPE = boolean;
+
+// Path: model/attributes/ai/ai__total_cost.json
+
+/**
+ * The total cost for the tokens used. `ai.total_cost`
+ *
+ * Attribute Value Type: `number` {@link AI_TOTAL_COST_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 12.34
+ */
+export const AI_TOTAL_COST = 'ai.total_cost';
+
+/**
+ * Type for {@link AI_TOTAL_COST} ai.total_cost
+ */
+export type AI_TOTAL_COST_TYPE = number;
 
 // Path: model/attributes/ai/ai__total_tokens__used.json
 
@@ -4750,9 +4790,11 @@ export type Attributes = {
   [AI_COMPLETION_TOKENS_USED]?: AI_COMPLETION_TOKENS_USED_TYPE;
   [AI_INPUT_MESSAGES]?: AI_INPUT_MESSAGES_TYPE;
   [AI_MODEL_ID]?: AI_MODEL_ID_TYPE;
+  [AI_PIPELINE_NAME]?: AI_PIPELINE_NAME_TYPE;
   [AI_PROMPT_TOKENS_USED]?: AI_PROMPT_TOKENS_USED_TYPE;
   [AI_RESPONSES]?: AI_RESPONSES_TYPE;
   [AI_STREAMING]?: AI_STREAMING_TYPE;
+  [AI_TOTAL_COST]?: AI_TOTAL_COST_TYPE;
   [AI_TOTAL_TOKENS_USED]?: AI_TOTAL_TOKENS_USED_TYPE;
   [APP_START_TYPE]?: APP_START_TYPE_TYPE;
   [BLOCKED_MAIN_THREAD]?: BLOCKED_MAIN_THREAD_TYPE;
@@ -4931,9 +4973,11 @@ export type FullAttributes = {
   [AI_COMPLETION_TOKENS_USED]?: AI_COMPLETION_TOKENS_USED_TYPE;
   [AI_INPUT_MESSAGES]?: AI_INPUT_MESSAGES_TYPE;
   [AI_MODEL_ID]?: AI_MODEL_ID_TYPE;
+  [AI_PIPELINE_NAME]?: AI_PIPELINE_NAME_TYPE;
   [AI_PROMPT_TOKENS_USED]?: AI_PROMPT_TOKENS_USED_TYPE;
   [AI_RESPONSES]?: AI_RESPONSES_TYPE;
   [AI_STREAMING]?: AI_STREAMING_TYPE;
+  [AI_TOTAL_COST]?: AI_TOTAL_COST_TYPE;
   [AI_TOTAL_TOKENS_USED]?: AI_TOTAL_TOKENS_USED_TYPE;
   [APP_START_TYPE]?: APP_START_TYPE_TYPE;
   [BLOCKED_MAIN_THREAD]?: BLOCKED_MAIN_THREAD_TYPE;
