@@ -10,6 +10,8 @@
   - [sentry.http.prefetch](#sentryhttpprefetch)
   - [sentry.idle_span_finish_reason](#sentryidle_span_finish_reason)
   - [sentry.module.\<key\>](#sentrymodulekey)
+  - [sentry.nextjs.ssr.function.route](#sentrynextjsssrfunctionroute)
+  - [sentry.nextjs.ssr.function.type](#sentrynextjsssrfunctiontype)
   - [sentry.op](#sentryop)
   - [sentry.origin](#sentryorigin)
   - [sentry.platform](#sentryplatform)
@@ -103,6 +105,30 @@ A module that was loaded in the process. The key is the name of the module.
 | Exists in OpenTelemetry | No |
 | Has dynamic suffix | Yes |
 | Example | `sentry.module.brianium/paratest='v7.7.0'` |
+
+### sentry.nextjs.ssr.function.route
+
+A parameterized route for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions when the file location of the function is known.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `/posts/[id]/layout` |
+| Aliases | `sentry.nextjs.function.route` |
+
+### sentry.nextjs.ssr.function.type
+
+A descriptor for a for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `generateMetadata` |
+| Aliases | `sentry.nextjs.function.type` |
 
 ### sentry.op
 
