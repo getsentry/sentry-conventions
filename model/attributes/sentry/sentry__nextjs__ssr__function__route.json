@@ -7,10 +7,6 @@
   },
   "is_in_otel": false,
   "example": "/posts/[id]/layout",
-  "alias": [
-    "sentry.nextjs.function.route"
-  ],
-  "sdks": [
-    "javascript"
-  ]
+  "alias": ["sentry.nextjs.function.route"],
+  "sdks": ["javascript"]
 }
