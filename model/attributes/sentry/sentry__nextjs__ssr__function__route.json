@@ -1,0 +1,16 @@
+{
+  "key": "sentry.nextjs.ssr.function.route",
+  "brief": "A parameterized route for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions when the file location of the function is known.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "/posts/[id]/layout",
+  "alias": [
+    "sentry.nextjs.function.route"
+  ],
+  "sdks": [
+    "javascript"
+  ]
+}

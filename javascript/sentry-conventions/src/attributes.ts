@@ -3872,6 +3872,50 @@ export const SENTRY_MODULE_KEY = 'sentry.module.<key>';
  */
 export type SENTRY_MODULE_KEY_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__nextjs__ssr__function__route.json
+
+/**
+ * A parameterized route for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions when the file location of the function is known. `sentry.nextjs.ssr.function.route`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_NEXTJS_SSR_FUNCTION_ROUTE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link SENTRY_NEXTJS_FUNCTION_ROUTE} `sentry.nextjs.function.route`
+ *
+ * @example "/posts/[id]/layout"
+ */
+export const SENTRY_NEXTJS_SSR_FUNCTION_ROUTE = 'sentry.nextjs.ssr.function.route';
+
+/**
+ * Type for {@link SENTRY_NEXTJS_SSR_FUNCTION_ROUTE} sentry.nextjs.ssr.function.route
+ */
+export type SENTRY_NEXTJS_SSR_FUNCTION_ROUTE_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__nextjs__ssr__function__type.json
+
+/**
+ * A descriptor for a for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions. `sentry.nextjs.ssr.function.type`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_NEXTJS_SSR_FUNCTION_TYPE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link SENTRY_NEXTJS_FUNCTION_TYPE} `sentry.nextjs.function.type`
+ *
+ * @example "generateMetadata"
+ */
+export const SENTRY_NEXTJS_SSR_FUNCTION_TYPE = 'sentry.nextjs.ssr.function.type';
+
+/**
+ * Type for {@link SENTRY_NEXTJS_SSR_FUNCTION_TYPE} sentry.nextjs.ssr.function.type
+ */
+export type SENTRY_NEXTJS_SSR_FUNCTION_TYPE_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__op.json
 
 /**
@@ -4925,6 +4969,8 @@ export type Attributes = {
   [SENTRY_HTTP_PREFETCH]?: SENTRY_HTTP_PREFETCH_TYPE;
   [SENTRY_IDLE_SPAN_FINISH_REASON]?: SENTRY_IDLE_SPAN_FINISH_REASON_TYPE;
   [SENTRY_MODULE_KEY]?: SENTRY_MODULE_KEY_TYPE;
+  [SENTRY_NEXTJS_SSR_FUNCTION_ROUTE]?: SENTRY_NEXTJS_SSR_FUNCTION_ROUTE_TYPE;
+  [SENTRY_NEXTJS_SSR_FUNCTION_TYPE]?: SENTRY_NEXTJS_SSR_FUNCTION_TYPE_TYPE;
   [SENTRY_OP]?: SENTRY_OP_TYPE;
   [SENTRY_ORIGIN]?: SENTRY_ORIGIN_TYPE;
   [SENTRY_PLATFORM]?: SENTRY_PLATFORM_TYPE;
@@ -5154,6 +5200,8 @@ export type FullAttributes = {
   [SENTRY_HTTP_PREFETCH]?: SENTRY_HTTP_PREFETCH_TYPE;
   [SENTRY_IDLE_SPAN_FINISH_REASON]?: SENTRY_IDLE_SPAN_FINISH_REASON_TYPE;
   [SENTRY_MODULE_KEY]?: SENTRY_MODULE_KEY_TYPE;
+  [SENTRY_NEXTJS_SSR_FUNCTION_ROUTE]?: SENTRY_NEXTJS_SSR_FUNCTION_ROUTE_TYPE;
+  [SENTRY_NEXTJS_SSR_FUNCTION_TYPE]?: SENTRY_NEXTJS_SSR_FUNCTION_TYPE_TYPE;
   [SENTRY_OP]?: SENTRY_OP_TYPE;
   [SENTRY_ORIGIN]?: SENTRY_ORIGIN_TYPE;
   [SENTRY_PLATFORM]?: SENTRY_PLATFORM_TYPE;

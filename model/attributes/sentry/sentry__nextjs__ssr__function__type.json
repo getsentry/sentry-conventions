@@ -1,0 +1,16 @@
+{
+  "key": "sentry.nextjs.ssr.function.type",
+  "brief": "A descriptor for a for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "generateMetadata",
+  "alias": [
+    "sentry.nextjs.function.type"
+  ],
+  "sdks": [
+    "javascript"
+  ]
+}
