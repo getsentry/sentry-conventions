@@ -1,5 +1,24 @@
 // This is an auto-generated file. Do not edit!
 
+// Path: model/attributes/ai/ai__citations.json
+
+/**
+ * References or sources cited by the AI model in its response. `ai.citations`
+ *
+ * Attribute Value Type: `string` {@link AI_CITATIONS_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ *
+ */
+export const AI_CITATIONS = 'ai.citations';
+
+/**
+ * Type for {@link AI_CITATIONS} ai.citations
+ */
+export type AI_CITATIONS_TYPE = string;
+
 // Path: model/attributes/ai/ai__completion_tokens__used.json
 
 /**
@@ -22,6 +41,106 @@ export const AI_COMPLETION_TOKENS_USED = 'ai.completion_tokens.used';
  */
 export type AI_COMPLETION_TOKENS_USED_TYPE = number;
 
+// Path: model/attributes/ai/ai__documents.json
+
+/**
+ * Documents or content chunks used as context for the AI model. `ai.documents`
+ *
+ * Attribute Value Type: `Array<string>` {@link AI_DOCUMENTS_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example ["document1.txt","document2.pdf"]
+ */
+export const AI_DOCUMENTS = 'ai.documents';
+
+/**
+ * Type for {@link AI_DOCUMENTS} ai.documents
+ */
+export type AI_DOCUMENTS_TYPE = Array<string>;
+
+// Path: model/attributes/ai/ai__finish_reason.json
+
+/**
+ * The reason why the model stopped generating. `ai.finish_reason`
+ *
+ * Attribute Value Type: `string` {@link AI_FINISH_REASON_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "COMPLETE"
+ */
+export const AI_FINISH_REASON = 'ai.finish_reason';
+
+/**
+ * Type for {@link AI_FINISH_REASON} ai.finish_reason
+ */
+export type AI_FINISH_REASON_TYPE = string;
+
+// Path: model/attributes/ai/ai__frequency_penalty.json
+
+/**
+ * Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation. `ai.frequency_penalty`
+ *
+ * Attribute Value Type: `number` {@link AI_FREQUENCY_PENALTY_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 0.5
+ */
+export const AI_FREQUENCY_PENALTY = 'ai.frequency_penalty';
+
+/**
+ * Type for {@link AI_FREQUENCY_PENALTY} ai.frequency_penalty
+ */
+export type AI_FREQUENCY_PENALTY_TYPE = number;
+
+// Path: model/attributes/ai/ai__function_call.json
+
+/**
+ * For an AI model call, the function that was called. This is deprecated for OpenAI, and replaced by tool_calls `ai.function_call`
+ *
+ * Attribute Value Type: `string` {@link AI_FUNCTION_CALL_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "function_name"
+ */
+export const AI_FUNCTION_CALL = 'ai.function_call';
+
+/**
+ * Type for {@link AI_FUNCTION_CALL} ai.function_call
+ */
+export type AI_FUNCTION_CALL_TYPE = string;
+
+// Path: model/attributes/ai/ai__generation_id.json
+
+/**
+ * Unique identifier for the completion. `ai.generation_id`
+ *
+ * Attribute Value Type: `string` {@link AI_GENERATION_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "gen_123abc"
+ */
+export const AI_GENERATION_ID = 'ai.generation_id';
+
+/**
+ * Type for {@link AI_GENERATION_ID} ai.generation_id
+ */
+export type AI_GENERATION_ID_TYPE = string;
+
 // Path: model/attributes/ai/ai__input_messages.json
 
 /**
@@ -43,6 +162,46 @@ export const AI_INPUT_MESSAGES = 'ai.input_messages';
  * Type for {@link AI_INPUT_MESSAGES} ai.input_messages
  */
 export type AI_INPUT_MESSAGES_TYPE = string;
+
+// Path: model/attributes/ai/ai__is_search_required.json
+
+/**
+ * Boolean indicating if the model needs to perform a search. `ai.is_search_required`
+ *
+ * Attribute Value Type: `boolean` {@link AI_IS_SEARCH_REQUIRED_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example false
+ */
+export const AI_IS_SEARCH_REQUIRED = 'ai.is_search_required';
+
+/**
+ * Type for {@link AI_IS_SEARCH_REQUIRED} ai.is_search_required
+ */
+export type AI_IS_SEARCH_REQUIRED_TYPE = boolean;
+
+// Path: model/attributes/ai/ai__metadata.json
+
+/**
+ * Extra metadata passed to an AI pipeline step. `ai.metadata`
+ *
+ * Attribute Value Type: `string` {@link AI_METADATA_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "{\"user_id\": 123, \"session_id\": \"abc123\"}"
+ */
+export const AI_METADATA = 'ai.metadata';
+
+/**
+ * Type for {@link AI_METADATA} ai.metadata
+ */
+export type AI_METADATA_TYPE = string;
 
 // Path: model/attributes/ai/ai__model_id.json
 
@@ -86,6 +245,46 @@ export const AI_PIPELINE_NAME = 'ai.pipeline.name';
  */
 export type AI_PIPELINE_NAME_TYPE = string;
 
+// Path: model/attributes/ai/ai__preamble.json
+
+/**
+ * For an AI model call, the preamble parameter. Preambles are a part of the prompt used to adjust the model's overall behavior and conversation style. `ai.preamble`
+ *
+ * Attribute Value Type: `string` {@link AI_PREAMBLE_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "You are now a clown."
+ */
+export const AI_PREAMBLE = 'ai.preamble';
+
+/**
+ * Type for {@link AI_PREAMBLE} ai.preamble
+ */
+export type AI_PREAMBLE_TYPE = string;
+
+// Path: model/attributes/ai/ai__presence_penalty.json
+
+/**
+ * Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies. `ai.presence_penalty`
+ *
+ * Attribute Value Type: `number` {@link AI_PRESENCE_PENALTY_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 0.5
+ */
+export const AI_PRESENCE_PENALTY = 'ai.presence_penalty';
+
+/**
+ * Type for {@link AI_PRESENCE_PENALTY} ai.presence_penalty
+ */
+export type AI_PRESENCE_PENALTY_TYPE = number;
+
 // Path: model/attributes/ai/ai__prompt_tokens__used.json
 
 /**
@@ -108,6 +307,46 @@ export const AI_PROMPT_TOKENS_USED = 'ai.prompt_tokens.used';
  */
 export type AI_PROMPT_TOKENS_USED_TYPE = number;
 
+// Path: model/attributes/ai/ai__raw_prompting.json
+
+/**
+ * When enabled, the user’s prompt will be sent to the model without any pre-processing. `ai.raw_prompting`
+ *
+ * Attribute Value Type: `boolean` {@link AI_RAW_PROMPTING_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example true
+ */
+export const AI_RAW_PROMPTING = 'ai.raw_prompting';
+
+/**
+ * Type for {@link AI_RAW_PROMPTING} ai.raw_prompting
+ */
+export type AI_RAW_PROMPTING_TYPE = boolean;
+
+// Path: model/attributes/ai/ai__response_format.json
+
+/**
+ * For an AI model call, the format of the response `ai.response_format`
+ *
+ * Attribute Value Type: `string` {@link AI_RESPONSE_FORMAT_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "json_object"
+ */
+export const AI_RESPONSE_FORMAT = 'ai.response_format';
+
+/**
+ * Type for {@link AI_RESPONSE_FORMAT} ai.response_format
+ */
+export type AI_RESPONSE_FORMAT_TYPE = string;
+
 // Path: model/attributes/ai/ai__responses.json
 
 /**
@@ -128,6 +367,66 @@ export const AI_RESPONSES = 'ai.responses';
  */
 export type AI_RESPONSES_TYPE = Array<string>;
 
+// Path: model/attributes/ai/ai__search_queries.json
+
+/**
+ * Queries used to search for relevant context or documents. `ai.search_queries`
+ *
+ * Attribute Value Type: `Array<string>` {@link AI_SEARCH_QUERIES_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example ["climate change effects","renewable energy"]
+ */
+export const AI_SEARCH_QUERIES = 'ai.search_queries';
+
+/**
+ * Type for {@link AI_SEARCH_QUERIES} ai.search_queries
+ */
+export type AI_SEARCH_QUERIES_TYPE = Array<string>;
+
+// Path: model/attributes/ai/ai__search_results.json
+
+/**
+ * Results returned from search queries for context. `ai.search_results`
+ *
+ * Attribute Value Type: `Array<string>` {@link AI_SEARCH_RESULTS_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example ["search_result_1, search_result_2"]
+ */
+export const AI_SEARCH_RESULTS = 'ai.search_results';
+
+/**
+ * Type for {@link AI_SEARCH_RESULTS} ai.search_results
+ */
+export type AI_SEARCH_RESULTS_TYPE = Array<string>;
+
+// Path: model/attributes/ai/ai__seed.json
+
+/**
+ * The seed, ideally models given the same seed and same other parameters will produce the exact same output. `ai.seed`
+ *
+ * Attribute Value Type: `string` {@link AI_SEED_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "1234567890"
+ */
+export const AI_SEED = 'ai.seed';
+
+/**
+ * Type for {@link AI_SEED} ai.seed
+ */
+export type AI_SEED_TYPE = string;
+
 // Path: model/attributes/ai/ai__streaming.json
 
 /**
@@ -147,6 +446,146 @@ export const AI_STREAMING = 'ai.streaming';
  * Type for {@link AI_STREAMING} ai.streaming
  */
 export type AI_STREAMING_TYPE = boolean;
+
+// Path: model/attributes/ai/ai__tags.json
+
+/**
+ * Tags that describe an AI pipeline step. `ai.tags`
+ *
+ * Attribute Value Type: `string` {@link AI_TAGS_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "{\"executed_function\": \"add_integers\"}"
+ */
+export const AI_TAGS = 'ai.tags';
+
+/**
+ * Type for {@link AI_TAGS} ai.tags
+ */
+export type AI_TAGS_TYPE = string;
+
+// Path: model/attributes/ai/ai__temperature.json
+
+/**
+ * For an AI model call, the temperature parameter. Temperature essentially means how random the output will be. `ai.temperature`
+ *
+ * Attribute Value Type: `number` {@link AI_TEMPERATURE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 0.1
+ */
+export const AI_TEMPERATURE = 'ai.temperature';
+
+/**
+ * Type for {@link AI_TEMPERATURE} ai.temperature
+ */
+export type AI_TEMPERATURE_TYPE = number;
+
+// Path: model/attributes/ai/ai__texts.json
+
+/**
+ * Raw text inputs provided to the model. `ai.texts`
+ *
+ * Attribute Value Type: `Array<string>` {@link AI_TEXTS_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example ["Hello, how are you?","What is the capital of France?"]
+ */
+export const AI_TEXTS = 'ai.texts';
+
+/**
+ * Type for {@link AI_TEXTS} ai.texts
+ */
+export type AI_TEXTS_TYPE = Array<string>;
+
+// Path: model/attributes/ai/ai__tool_calls.json
+
+/**
+ * For an AI model call, the tool calls that were made. `ai.tool_calls`
+ *
+ * Attribute Value Type: `Array<string>` {@link AI_TOOL_CALLS_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example ["tool_call_1","tool_call_2"]
+ */
+export const AI_TOOL_CALLS = 'ai.tool_calls';
+
+/**
+ * Type for {@link AI_TOOL_CALLS} ai.tool_calls
+ */
+export type AI_TOOL_CALLS_TYPE = Array<string>;
+
+// Path: model/attributes/ai/ai__tools.json
+
+/**
+ * For an AI model call, the functions that are available `ai.tools`
+ *
+ * Attribute Value Type: `Array<string>` {@link AI_TOOLS_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example ["function_1","function_2"]
+ */
+export const AI_TOOLS = 'ai.tools';
+
+/**
+ * Type for {@link AI_TOOLS} ai.tools
+ */
+export type AI_TOOLS_TYPE = Array<string>;
+
+// Path: model/attributes/ai/ai__top_k.json
+
+/**
+ *  Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered). `ai.top_k`
+ *
+ * Attribute Value Type: `number` {@link AI_TOP_K_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 35
+ */
+export const AI_TOP_K = 'ai.top_k';
+
+/**
+ * Type for {@link AI_TOP_K} ai.top_k
+ */
+export type AI_TOP_K_TYPE = number;
+
+// Path: model/attributes/ai/ai__top_p.json
+
+/**
+ * Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered). `ai.top_p`
+ *
+ * Attribute Value Type: `number` {@link AI_TOP_P_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 0.7
+ */
+export const AI_TOP_P = 'ai.top_p';
+
+/**
+ * Type for {@link AI_TOP_P} ai.top_p
+ */
+export type AI_TOP_P_TYPE = number;
 
 // Path: model/attributes/ai/ai__total_cost.json
 
@@ -187,6 +626,26 @@ export const AI_TOTAL_TOKENS_USED = 'ai.total_tokens.used';
  * Type for {@link AI_TOTAL_TOKENS_USED} ai.total_tokens.used
  */
 export type AI_TOTAL_TOKENS_USED_TYPE = number;
+
+// Path: model/attributes/ai/ai__warnings.json
+
+/**
+ * Warning messages generated during model execution. `ai.warnings`
+ *
+ * Attribute Value Type: `Array<string>` {@link AI_WARNINGS_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example ["Token limit exceeded"]
+ */
+export const AI_WARNINGS = 'ai.warnings';
+
+/**
+ * Type for {@link AI_WARNINGS} ai.warnings
+ */
+export type AI_WARNINGS_TYPE = Array<string>;
 
 // Path: model/attributes/app_start_type.json
 
@@ -4831,15 +5290,38 @@ export type USER_AGENT_ORIGINAL_TYPE = string;
 export type AttributeValue = string | number | boolean | Array<string> | Array<number> | Array<boolean>;
 
 export type Attributes = {
+  [AI_CITATIONS]?: AI_CITATIONS_TYPE;
   [AI_COMPLETION_TOKENS_USED]?: AI_COMPLETION_TOKENS_USED_TYPE;
+  [AI_DOCUMENTS]?: AI_DOCUMENTS_TYPE;
+  [AI_FINISH_REASON]?: AI_FINISH_REASON_TYPE;
+  [AI_FREQUENCY_PENALTY]?: AI_FREQUENCY_PENALTY_TYPE;
+  [AI_FUNCTION_CALL]?: AI_FUNCTION_CALL_TYPE;
+  [AI_GENERATION_ID]?: AI_GENERATION_ID_TYPE;
   [AI_INPUT_MESSAGES]?: AI_INPUT_MESSAGES_TYPE;
+  [AI_IS_SEARCH_REQUIRED]?: AI_IS_SEARCH_REQUIRED_TYPE;
+  [AI_METADATA]?: AI_METADATA_TYPE;
   [AI_MODEL_ID]?: AI_MODEL_ID_TYPE;
   [AI_PIPELINE_NAME]?: AI_PIPELINE_NAME_TYPE;
+  [AI_PREAMBLE]?: AI_PREAMBLE_TYPE;
+  [AI_PRESENCE_PENALTY]?: AI_PRESENCE_PENALTY_TYPE;
   [AI_PROMPT_TOKENS_USED]?: AI_PROMPT_TOKENS_USED_TYPE;
+  [AI_RAW_PROMPTING]?: AI_RAW_PROMPTING_TYPE;
+  [AI_RESPONSE_FORMAT]?: AI_RESPONSE_FORMAT_TYPE;
   [AI_RESPONSES]?: AI_RESPONSES_TYPE;
+  [AI_SEARCH_QUERIES]?: AI_SEARCH_QUERIES_TYPE;
+  [AI_SEARCH_RESULTS]?: AI_SEARCH_RESULTS_TYPE;
+  [AI_SEED]?: AI_SEED_TYPE;
   [AI_STREAMING]?: AI_STREAMING_TYPE;
+  [AI_TAGS]?: AI_TAGS_TYPE;
+  [AI_TEMPERATURE]?: AI_TEMPERATURE_TYPE;
+  [AI_TEXTS]?: AI_TEXTS_TYPE;
+  [AI_TOOL_CALLS]?: AI_TOOL_CALLS_TYPE;
+  [AI_TOOLS]?: AI_TOOLS_TYPE;
+  [AI_TOP_K]?: AI_TOP_K_TYPE;
+  [AI_TOP_P]?: AI_TOP_P_TYPE;
   [AI_TOTAL_COST]?: AI_TOTAL_COST_TYPE;
   [AI_TOTAL_TOKENS_USED]?: AI_TOTAL_TOKENS_USED_TYPE;
+  [AI_WARNINGS]?: AI_WARNINGS_TYPE;
   [APP_START_TYPE]?: APP_START_TYPE_TYPE;
   [BLOCKED_MAIN_THREAD]?: BLOCKED_MAIN_THREAD_TYPE;
   [BROWSER_NAME]?: BROWSER_NAME_TYPE;
@@ -5016,15 +5498,38 @@ export type Attributes = {
 } & Record<string, AttributeValue | undefined>;
 
 export type FullAttributes = {
+  [AI_CITATIONS]?: AI_CITATIONS_TYPE;
   [AI_COMPLETION_TOKENS_USED]?: AI_COMPLETION_TOKENS_USED_TYPE;
+  [AI_DOCUMENTS]?: AI_DOCUMENTS_TYPE;
+  [AI_FINISH_REASON]?: AI_FINISH_REASON_TYPE;
+  [AI_FREQUENCY_PENALTY]?: AI_FREQUENCY_PENALTY_TYPE;
+  [AI_FUNCTION_CALL]?: AI_FUNCTION_CALL_TYPE;
+  [AI_GENERATION_ID]?: AI_GENERATION_ID_TYPE;
   [AI_INPUT_MESSAGES]?: AI_INPUT_MESSAGES_TYPE;
+  [AI_IS_SEARCH_REQUIRED]?: AI_IS_SEARCH_REQUIRED_TYPE;
+  [AI_METADATA]?: AI_METADATA_TYPE;
   [AI_MODEL_ID]?: AI_MODEL_ID_TYPE;
   [AI_PIPELINE_NAME]?: AI_PIPELINE_NAME_TYPE;
+  [AI_PREAMBLE]?: AI_PREAMBLE_TYPE;
+  [AI_PRESENCE_PENALTY]?: AI_PRESENCE_PENALTY_TYPE;
   [AI_PROMPT_TOKENS_USED]?: AI_PROMPT_TOKENS_USED_TYPE;
+  [AI_RAW_PROMPTING]?: AI_RAW_PROMPTING_TYPE;
+  [AI_RESPONSE_FORMAT]?: AI_RESPONSE_FORMAT_TYPE;
   [AI_RESPONSES]?: AI_RESPONSES_TYPE;
+  [AI_SEARCH_QUERIES]?: AI_SEARCH_QUERIES_TYPE;
+  [AI_SEARCH_RESULTS]?: AI_SEARCH_RESULTS_TYPE;
+  [AI_SEED]?: AI_SEED_TYPE;
   [AI_STREAMING]?: AI_STREAMING_TYPE;
+  [AI_TAGS]?: AI_TAGS_TYPE;
+  [AI_TEMPERATURE]?: AI_TEMPERATURE_TYPE;
+  [AI_TEXTS]?: AI_TEXTS_TYPE;
+  [AI_TOOL_CALLS]?: AI_TOOL_CALLS_TYPE;
+  [AI_TOOLS]?: AI_TOOLS_TYPE;
+  [AI_TOP_K]?: AI_TOP_K_TYPE;
+  [AI_TOP_P]?: AI_TOP_P_TYPE;
   [AI_TOTAL_COST]?: AI_TOTAL_COST_TYPE;
   [AI_TOTAL_TOKENS_USED]?: AI_TOTAL_TOKENS_USED_TYPE;
+  [AI_WARNINGS]?: AI_WARNINGS_TYPE;
   [APP_START_TYPE]?: APP_START_TYPE_TYPE;
   [BLOCKED_MAIN_THREAD]?: BLOCKED_MAIN_THREAD_TYPE;
   [BROWSER_NAME]?: BROWSER_NAME_TYPE;
