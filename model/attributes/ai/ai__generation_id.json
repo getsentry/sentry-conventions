@@ -1,0 +1,10 @@
+{
+  "key": "ai.generation_id",
+  "brief": "Unique identifier for the completion.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "gen_123abc"
+}

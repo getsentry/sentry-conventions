@@ -1,0 +1,10 @@
+{
+  "key": "ai.top_k",
+  "brief": " Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 35
+}

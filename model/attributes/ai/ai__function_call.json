@@ -1,0 +1,10 @@
+{
+  "key": "ai.function_call",
+  "brief": "For an AI model call, the function that was called. This is deprecated for OpenAI, and replaced by tool_calls",
+  "type": "string",
+  "pii": {
+    "key": "true"
+  },
+  "is_in_otel": false,
+  "example": "function_name"
+}

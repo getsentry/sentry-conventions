@@ -1,0 +1,10 @@
+{
+  "key": "ai.search_queries",
+  "brief": "Queries used to search for relevant context or documents.",
+  "type": "string[]",
+  "pii": {
+    "key": "true"
+  },
+  "is_in_otel": false,
+  "example": ["climate change effects", "renewable energy"]
+}

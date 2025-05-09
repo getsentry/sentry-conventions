@@ -1,0 +1,10 @@
+{
+  "key": "ai.texts",
+  "brief": "Raw text inputs provided to the model.",
+  "type": "string[]",
+  "pii": {
+    "key": "true"
+  },
+  "is_in_otel": false,
+  "example": ["Hello, how are you?", "What is the capital of France?"]
+}

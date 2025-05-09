@@ -1,0 +1,10 @@
+{
+  "key": "ai.raw_prompting",
+  "brief": "When enabled, the user’s prompt will be sent to the model without any pre-processing.",
+  "type": "boolean",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": true
+}

@@ -1,0 +1,10 @@
+{
+  "key": "ai.is_search_required",
+  "brief": "Boolean indicating if the model needs to perform a search.",
+  "type": "boolean",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": false
+}
