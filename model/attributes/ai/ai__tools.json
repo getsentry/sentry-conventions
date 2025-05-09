@@ -1,0 +1,10 @@
+{
+  "key": "ai.tools",
+  "brief": "For an AI model call, the functions that are available",
+  "type": "string[]",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": ["function_1", "function_2"]
+}

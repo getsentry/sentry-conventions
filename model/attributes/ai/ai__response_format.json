@@ -1,0 +1,10 @@
+{
+  "key": "ai.response_format",
+  "brief": "For an AI model call, the format of the response",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "json_object"
+}

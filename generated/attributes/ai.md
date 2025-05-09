@@ -3,17 +3,50 @@
 # Ai Attributes
 
 - [Stable Attributes](#stable-attributes)
+  - [ai.citations](#aicitations)
   - [ai.completion_tokens.used](#aicompletion_tokensused)
+  - [ai.documents](#aidocuments)
+  - [ai.finish_reason](#aifinish_reason)
+  - [ai.frequency_penalty](#aifrequency_penalty)
+  - [ai.function_call](#aifunction_call)
+  - [ai.generation_id](#aigeneration_id)
   - [ai.input_messages](#aiinput_messages)
+  - [ai.is_search_required](#aiis_search_required)
+  - [ai.metadata](#aimetadata)
   - [ai.model_id](#aimodel_id)
   - [ai.pipeline.name](#aipipelinename)
+  - [ai.preamble](#aipreamble)
+  - [ai.presence_penalty](#aipresence_penalty)
   - [ai.prompt_tokens.used](#aiprompt_tokensused)
+  - [ai.raw_prompting](#airaw_prompting)
+  - [ai.response_format](#airesponse_format)
   - [ai.responses](#airesponses)
+  - [ai.search_queries](#aisearch_queries)
+  - [ai.search_results](#aisearch_results)
+  - [ai.seed](#aiseed)
   - [ai.streaming](#aistreaming)
+  - [ai.tags](#aitags)
+  - [ai.temperature](#aitemperature)
+  - [ai.texts](#aitexts)
+  - [ai.tool_calls](#aitool_calls)
+  - [ai.tools](#aitools)
+  - [ai.top_k](#aitop_k)
+  - [ai.top_p](#aitop_p)
   - [ai.total_cost](#aitotal_cost)
   - [ai.total_tokens.used](#aitotal_tokensused)
+  - [ai.warnings](#aiwarnings)
 
 ## Stable Attributes
+
+### ai.citations
+
+References or sources cited by the AI model in its response.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | true |
+| Exists in OpenTelemetry | No |
 
 ### ai.completion_tokens.used
 
@@ -27,6 +60,61 @@ The number of tokens used to respond to the message.
 | Example | `10` |
 | Aliases | `gen_ai.usage.output_tokens`, `gen_ai.usage.completion_tokens` |
 
+### ai.documents
+
+Documents or content chunks used as context for the AI model.
+
+| Property | Value |
+| --- | --- |
+| Type | `string[]` |
+| Has PII | true |
+| Exists in OpenTelemetry | No |
+| Example | `["document1.txt","document2.pdf"]` |
+
+### ai.finish_reason
+
+The reason why the model stopped generating.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `COMPLETE` |
+
+### ai.frequency_penalty
+
+Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `0.5` |
+
+### ai.function_call
+
+For an AI model call, the function that was called. This is deprecated for OpenAI, and replaced by tool_calls
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | true |
+| Exists in OpenTelemetry | No |
+| Example | `function_name` |
+
+### ai.generation_id
+
+Unique identifier for the completion.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `gen_123abc` |
+
 ### ai.input_messages
 
 The input messages sent to the model
@@ -38,6 +126,28 @@ The input messages sent to the model
 | Exists in OpenTelemetry | No |
 | Example | `[{"role": "user", "message": "hello"}]` |
 | Aliases | `gen_ai.prompt` |
+
+### ai.is_search_required
+
+Boolean indicating if the model needs to perform a search.
+
+| Property | Value |
+| --- | --- |
+| Type | `boolean` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `false` |
+
+### ai.metadata
+
+Extra metadata passed to an AI pipeline step.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `{"user_id": 123, "session_id": "abc123"}` |
 
 ### ai.model_id
 
@@ -62,6 +172,28 @@ The name of the AI pipeline.
 | Exists in OpenTelemetry | No |
 | Example | `Autofix Pipeline` |
 
+### ai.preamble
+
+For an AI model call, the preamble parameter. Preambles are a part of the prompt used to adjust the model's overall behavior and conversation style.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | true |
+| Exists in OpenTelemetry | No |
+| Example | `You are now a clown.` |
+
+### ai.presence_penalty
+
+Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `0.5` |
+
 ### ai.prompt_tokens.used
 
 The number of tokens used to process just the prompt.
@@ -74,6 +206,28 @@ The number of tokens used to process just the prompt.
 | Example | `20` |
 | Aliases | `gen_ai.usage.prompt_tokens`, `gen_ai.usage.input_tokens` |
 
+### ai.raw_prompting
+
+When enabled, the user’s prompt will be sent to the model without any pre-processing.
+
+| Property | Value |
+| --- | --- |
+| Type | `boolean` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `true` |
+
+### ai.response_format
+
+For an AI model call, the format of the response
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `json_object` |
+
 ### ai.responses
 
 The response messages sent back by the AI model.
@@ -85,6 +239,39 @@ The response messages sent back by the AI model.
 | Exists in OpenTelemetry | No |
 | Example | `["hello","world"]` |
 
+### ai.search_queries
+
+Queries used to search for relevant context or documents.
+
+| Property | Value |
+| --- | --- |
+| Type | `string[]` |
+| Has PII | true |
+| Exists in OpenTelemetry | No |
+| Example | `["climate change effects","renewable energy"]` |
+
+### ai.search_results
+
+Results returned from search queries for context.
+
+| Property | Value |
+| --- | --- |
+| Type | `string[]` |
+| Has PII | true |
+| Exists in OpenTelemetry | No |
+| Example | `["search_result_1, search_result_2"]` |
+
+### ai.seed
+
+The seed, ideally models given the same seed and same other parameters will produce the exact same output.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `1234567890` |
+
 ### ai.streaming
 
 Whether the request was streamed back.
@@ -95,6 +282,83 @@ Whether the request was streamed back.
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `true` |
+
+### ai.tags
+
+Tags that describe an AI pipeline step.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `{"executed_function": "add_integers"}` |
+
+### ai.temperature
+
+For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `0.1` |
+
+### ai.texts
+
+Raw text inputs provided to the model.
+
+| Property | Value |
+| --- | --- |
+| Type | `string[]` |
+| Has PII | true |
+| Exists in OpenTelemetry | No |
+| Example | `["Hello, how are you?","What is the capital of France?"]` |
+
+### ai.tool_calls
+
+For an AI model call, the tool calls that were made.
+
+| Property | Value |
+| --- | --- |
+| Type | `string[]` |
+| Has PII | true |
+| Exists in OpenTelemetry | No |
+| Example | `["tool_call_1","tool_call_2"]` |
+
+### ai.tools
+
+For an AI model call, the functions that are available
+
+| Property | Value |
+| --- | --- |
+| Type | `string[]` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `["function_1","function_2"]` |
+
+### ai.top_k
+
+ Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).
+
+| Property | Value |
+| --- | --- |
+| Type | `integer` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `35` |
+
+### ai.top_p
+
+Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `0.7` |
 
 ### ai.total_cost
 
@@ -117,4 +381,15 @@ The total number of tokens used to process the prompt.
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `30` |
+
+### ai.warnings
+
+Warning messages generated during model execution.
+
+| Property | Value |
+| --- | --- |
+| Type | `string[]` |
+| Has PII | true |
+| Exists in OpenTelemetry | No |
+| Example | `["Token limit exceeded"]` |
 

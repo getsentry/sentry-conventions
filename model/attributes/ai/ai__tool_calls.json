@@ -1,0 +1,10 @@
+{
+  "key": "ai.tool_calls",
+  "brief": "For an AI model call, the tool calls that were made.",
+  "type": "string[]",
+  "pii": {
+    "key": "true"
+  },
+  "is_in_otel": false,
+  "example": ["tool_call_1", "tool_call_2"]
+}
