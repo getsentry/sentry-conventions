@@ -1,9 +1,10 @@
 {
   "key": "ai.citations",
   "brief": "References or sources cited by the AI model in its response.",
-  "type": "string",
+  "type": "string[]",
   "pii": {
     "key": "true"
   },
-  "is_in_otel": false
+  "is_in_otel": false,
+  "example": ["Citation 1", "Citation 2"]
 }
