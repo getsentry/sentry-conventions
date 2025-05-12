@@ -4,7 +4,6 @@
 
 - [Stable Attributes](#stable-attributes)
   - [ai.citations](#aicitations)
-  - [ai.completion_tokens.used](#aicompletion_tokensused)
   - [ai.documents](#aidocuments)
   - [ai.function_call](#aifunction_call)
   - [ai.input_messages](#aiinput_messages)
@@ -26,6 +25,7 @@
   - [ai.total_tokens.used](#aitotal_tokensused)
   - [ai.warnings](#aiwarnings)
 - [Deprecated Attributes](#deprecated-attributes)
+  - [ai.completion_tokens.used](#aicompletion_tokensused)
   - [ai.finish_reason](#aifinish_reason)
   - [ai.frequency_penalty](#aifrequency_penalty)
   - [ai.generation_id](#aigeneration_id)
@@ -49,18 +49,6 @@ References or sources cited by the AI model in its response.
 | Has PII | true |
 | Exists in OpenTelemetry | No |
 | Example | `["Citation 1","Citation 2"]` |
-
-### ai.completion_tokens.used
-
-The number of tokens used to respond to the message.
-
-| Property | Value |
-| --- | --- |
-| Type | `integer` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `10` |
-| Aliases | `gen_ai.usage.output_tokens`, `gen_ai.usage.completion_tokens` |
 
 ### ai.documents
 
@@ -286,6 +274,19 @@ Warning messages generated during model execution.
 ## Deprecated Attributes
 
 These attributes are deprecated and will be removed in a future version. Please use the recommended replacements.
+
+### ai.completion_tokens.used
+
+The number of tokens used to respond to the message.
+
+| Property | Value |
+| --- | --- |
+| Type | `integer` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `10` |
+| Deprecated | Yes, use `gen_ai.usage.output_tokens` instead |
+| Aliases | `gen_ai.usage.output_tokens`, `gen_ai.usage.completion_tokens` |
 
 ### ai.finish_reason
 

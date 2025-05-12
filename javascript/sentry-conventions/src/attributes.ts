@@ -33,6 +33,7 @@ export type AI_CITATIONS_TYPE = Array<string>;
  *
  * Aliases: {@link GEN_AI_USAGE_OUTPUT_TOKENS} `gen_ai.usage.output_tokens`, {@link GEN_AI_USAGE_COMPLETION_TOKENS} `gen_ai.usage.completion_tokens`
  *
+ * @deprecated Use {@link GEN_AI_USAGE_OUTPUT_TOKENS} (gen_ai.usage.output_tokens) instead
  * @example 10
  */
 export const AI_COMPLETION_TOKENS_USED = 'ai.completion_tokens.used';
@@ -5456,7 +5457,6 @@ export type AttributeValue = string | number | boolean | Array<string> | Array<n
 
 export type Attributes = {
   [AI_CITATIONS]?: AI_CITATIONS_TYPE;
-  [AI_COMPLETION_TOKENS_USED]?: AI_COMPLETION_TOKENS_USED_TYPE;
   [AI_DOCUMENTS]?: AI_DOCUMENTS_TYPE;
   [AI_FUNCTION_CALL]?: AI_FUNCTION_CALL_TYPE;
   [AI_INPUT_MESSAGES]?: AI_INPUT_MESSAGES_TYPE;
