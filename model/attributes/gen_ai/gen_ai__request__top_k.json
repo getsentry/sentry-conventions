@@ -7,7 +7,5 @@
   },
   "is_in_otel": true,
   "example": 35,
-  "alias": [
-    "ai.top_k"
-  ]
+  "alias": ["ai.top_k"]
 }
