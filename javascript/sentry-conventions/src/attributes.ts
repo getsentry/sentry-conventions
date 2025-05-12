@@ -220,8 +220,6 @@ export type AI_METADATA_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link GEN_AI_SYSTEM} `gen_ai.system`
- *
  * @deprecated Use {@link GEN_AI_SYSTEM} (gen_ai.system) instead
  * @example "openai"
  */
@@ -1944,9 +1942,31 @@ export type GEN_AI_REQUEST_TEMPERATURE_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__request__top_k.json
 
 /**
- * Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered). `gen_ai.request.top_k`
+ * Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered). `gen_ai.request.top_k`
  *
  * Attribute Value Type: `number` {@link GEN_AI_REQUEST_TOP_K_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * Aliases: {@link AI_TOP_K} `ai.top_k`
+ *
+ * @example 35
+ */
+export const GEN_AI_REQUEST_TOP_K = 'gen_ai.request.top_k';
+
+/**
+ * Type for {@link GEN_AI_REQUEST_TOP_K} gen_ai.request.top_k
+ */
+export type GEN_AI_REQUEST_TOP_K_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__request__top_p.json
+
+/**
+ * Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered). `gen_ai.request.top_p`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_REQUEST_TOP_P_TYPE}
  *
  * Contains PII: false
  *
@@ -1956,12 +1976,12 @@ export type GEN_AI_REQUEST_TEMPERATURE_TYPE = number;
  *
  * @example 0.7
  */
-export const GEN_AI_REQUEST_TOP_K = 'gen_ai.request.top_k';
+export const GEN_AI_REQUEST_TOP_P = 'gen_ai.request.top_p';
 
 /**
- * Type for {@link GEN_AI_REQUEST_TOP_K} gen_ai.request.top_k
+ * Type for {@link GEN_AI_REQUEST_TOP_P} gen_ai.request.top_p
  */
-export type GEN_AI_REQUEST_TOP_K_TYPE = number;
+export type GEN_AI_REQUEST_TOP_P_TYPE = number;
 
 // Path: model/attributes/gen_ai/gen_ai__response__finish_reasons.json
 
@@ -5616,6 +5636,7 @@ export type Attributes = {
   [GEN_AI_REQUEST_SEED]?: GEN_AI_REQUEST_SEED_TYPE;
   [GEN_AI_REQUEST_TEMPERATURE]?: GEN_AI_REQUEST_TEMPERATURE_TYPE;
   [GEN_AI_REQUEST_TOP_K]?: GEN_AI_REQUEST_TOP_K_TYPE;
+  [GEN_AI_REQUEST_TOP_P]?: GEN_AI_REQUEST_TOP_P_TYPE;
   [GEN_AI_RESPONSE_FINISH_REASONS]?: GEN_AI_RESPONSE_FINISH_REASONS_TYPE;
   [GEN_AI_RESPONSE_ID]?: GEN_AI_RESPONSE_ID_TYPE;
   [GEN_AI_RESPONSE_MODEL]?: GEN_AI_RESPONSE_MODEL_TYPE;
@@ -5846,6 +5867,7 @@ export type FullAttributes = {
   [GEN_AI_REQUEST_SEED]?: GEN_AI_REQUEST_SEED_TYPE;
   [GEN_AI_REQUEST_TEMPERATURE]?: GEN_AI_REQUEST_TEMPERATURE_TYPE;
   [GEN_AI_REQUEST_TOP_K]?: GEN_AI_REQUEST_TOP_K_TYPE;
+  [GEN_AI_REQUEST_TOP_P]?: GEN_AI_REQUEST_TOP_P_TYPE;
   [GEN_AI_RESPONSE_FINISH_REASONS]?: GEN_AI_RESPONSE_FINISH_REASONS_TYPE;
   [GEN_AI_RESPONSE_ID]?: GEN_AI_RESPONSE_ID_TYPE;
   [GEN_AI_RESPONSE_MODEL]?: GEN_AI_RESPONSE_MODEL_TYPE;

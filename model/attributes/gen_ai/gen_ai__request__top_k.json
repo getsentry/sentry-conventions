@@ -1,11 +1,13 @@
 {
   "key": "gen_ai.request.top_k",
-  "brief": "Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).",
-  "type": "double",
+  "brief": "Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).",
+  "type": "integer",
   "pii": {
     "key": "false"
   },
   "is_in_otel": true,
-  "example": 0.7,
-  "alias": ["ai.top_p"]
+  "example": 35,
+  "alias": [
+    "ai.top_k"
+  ]
 }

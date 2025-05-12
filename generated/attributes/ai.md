@@ -339,7 +339,6 @@ The provider of the model.
 | Exists in OpenTelemetry | No |
 | Example | `openai` |
 | Deprecated | Yes, use `gen_ai.system` instead |
-| Aliases | `gen_ai.system` |
 
 ### ai.presence_penalty
 
