@@ -8,6 +8,6 @@
   "is_in_otel": false,
   "example": "gen_123abc",
   "deprecation": {
-    "replacement": "gen_ai.response.generation_id"
+    "replacement": "gen_ai.response.id"
   }
 }

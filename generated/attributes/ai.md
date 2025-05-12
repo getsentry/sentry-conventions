@@ -313,7 +313,7 @@ Unique identifier for the completion.
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `gen_123abc` |
-| Deprecated | Yes, use `gen_ai.response.generation_id` instead |
+| Deprecated | Yes, use `gen_ai.response.id` instead |
 
 ### ai.model_id
 

@@ -137,7 +137,7 @@ export type AI_FUNCTION_CALL_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
- * @deprecated Use {@link GEN_AI_RESPONSE_GENERATION_ID} (gen_ai.response.generation_id) instead
+ * @deprecated Use {@link GEN_AI_RESPONSE_ID} (gen_ai.response.id) instead
  * @example "gen_123abc"
  */
 export const AI_GENERATION_ID = 'ai.generation_id';
