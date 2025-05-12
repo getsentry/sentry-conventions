@@ -116,6 +116,7 @@ export type AI_FREQUENCY_PENALTY_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
+ * @deprecated Use {@link GEN_AI_TOOL_NAME} (gen_ai.tool.name) instead
  * @example "function_name"
  */
 export const AI_FUNCTION_CALL = 'ai.function_call';
@@ -2004,6 +2005,28 @@ export const GEN_AI_RESPONSE_MODEL = 'gen_ai.response.model';
  * Type for {@link GEN_AI_RESPONSE_MODEL} gen_ai.response.model
  */
 export type GEN_AI_RESPONSE_MODEL_TYPE = string;
+
+// Path: model/attributes/gen_ai/gen_ai__tool__name.json
+
+/**
+ * Name of the tool utilized by the agent. `gen_ai.tool.name`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_TOOL_NAME_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * Aliases: {@link AI_FUNCTION_CALL} `ai.function_call`
+ *
+ * @example "Flights"
+ */
+export const GEN_AI_TOOL_NAME = 'gen_ai.tool.name';
+
+/**
+ * Type for {@link GEN_AI_TOOL_NAME} gen_ai.tool.name
+ */
+export type GEN_AI_TOOL_NAME_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__usage__completion_tokens.json
 
@@ -5481,7 +5504,6 @@ export type AttributeValue = string | number | boolean | Array<string> | Array<n
 export type Attributes = {
   [AI_CITATIONS]?: AI_CITATIONS_TYPE;
   [AI_DOCUMENTS]?: AI_DOCUMENTS_TYPE;
-  [AI_FUNCTION_CALL]?: AI_FUNCTION_CALL_TYPE;
   [AI_INPUT_MESSAGES]?: AI_INPUT_MESSAGES_TYPE;
   [AI_IS_SEARCH_REQUIRED]?: AI_IS_SEARCH_REQUIRED_TYPE;
   [AI_METADATA]?: AI_METADATA_TYPE;
@@ -5552,6 +5574,7 @@ export type Attributes = {
   [GEN_AI_RESPONSE_FINISH_REASONS]?: GEN_AI_RESPONSE_FINISH_REASONS_TYPE;
   [GEN_AI_RESPONSE_ID]?: GEN_AI_RESPONSE_ID_TYPE;
   [GEN_AI_RESPONSE_MODEL]?: GEN_AI_RESPONSE_MODEL_TYPE;
+  [GEN_AI_TOOL_NAME]?: GEN_AI_TOOL_NAME_TYPE;
   [GEN_AI_USAGE_INPUT_TOKENS]?: GEN_AI_USAGE_INPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_OUTPUT_TOKENS]?: GEN_AI_USAGE_OUTPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_TOTAL_TOKENS]?: GEN_AI_USAGE_TOTAL_TOKENS_TYPE;
@@ -5779,6 +5802,7 @@ export type FullAttributes = {
   [GEN_AI_RESPONSE_FINISH_REASONS]?: GEN_AI_RESPONSE_FINISH_REASONS_TYPE;
   [GEN_AI_RESPONSE_ID]?: GEN_AI_RESPONSE_ID_TYPE;
   [GEN_AI_RESPONSE_MODEL]?: GEN_AI_RESPONSE_MODEL_TYPE;
+  [GEN_AI_TOOL_NAME]?: GEN_AI_TOOL_NAME_TYPE;
   [GEN_AI_USAGE_COMPLETION_TOKENS]?: GEN_AI_USAGE_COMPLETION_TOKENS_TYPE;
   [GEN_AI_USAGE_INPUT_TOKENS]?: GEN_AI_USAGE_INPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_OUTPUT_TOKENS]?: GEN_AI_USAGE_OUTPUT_TOKENS_TYPE;

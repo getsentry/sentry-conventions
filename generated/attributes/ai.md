@@ -5,7 +5,6 @@
 - [Stable Attributes](#stable-attributes)
   - [ai.citations](#aicitations)
   - [ai.documents](#aidocuments)
-  - [ai.function_call](#aifunction_call)
   - [ai.input_messages](#aiinput_messages)
   - [ai.is_search_required](#aiis_search_required)
   - [ai.metadata](#aimetadata)
@@ -27,6 +26,7 @@
   - [ai.completion_tokens.used](#aicompletion_tokensused)
   - [ai.finish_reason](#aifinish_reason)
   - [ai.frequency_penalty](#aifrequency_penalty)
+  - [ai.function_call](#aifunction_call)
   - [ai.generation_id](#aigeneration_id)
   - [ai.model_id](#aimodel_id)
   - [ai.presence_penalty](#aipresence_penalty)
@@ -60,17 +60,6 @@ Documents or content chunks used as context for the AI model.
 | Has PII | true |
 | Exists in OpenTelemetry | No |
 | Example | `["document1.txt","document2.pdf"]` |
-
-### ai.function_call
-
-For an AI model call, the function that was called. This is deprecated for OpenAI, and replaced by tool_calls
-
-| Property | Value |
-| --- | --- |
-| Type | `string` |
-| Has PII | true |
-| Exists in OpenTelemetry | No |
-| Example | `function_name` |
 
 ### ai.input_messages
 
@@ -300,6 +289,18 @@ Used to reduce repetitiveness of generated tokens. The higher the value, the str
 | Exists in OpenTelemetry | No |
 | Example | `0.5` |
 | Deprecated | Yes, use `gen_ai.request.frequency_penalty` instead |
+
+### ai.function_call
+
+For an AI model call, the function that was called. This is deprecated for OpenAI, and replaced by tool_calls
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | true |
+| Exists in OpenTelemetry | No |
+| Example | `function_name` |
+| Deprecated | Yes, use `gen_ai.tool.name` instead |
 
 ### ai.generation_id
 

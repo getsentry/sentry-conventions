@@ -6,5 +6,8 @@
     "key": "true"
   },
   "is_in_otel": false,
-  "example": "function_name"
+  "example": "function_name",
+  "deprecation": {
+    "replacement": "gen_ai.tool.name"
+  }
 }
