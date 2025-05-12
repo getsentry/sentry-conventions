@@ -630,6 +630,7 @@ export type AI_TOTAL_COST_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
+ * @deprecated Use {@link GEN_AI_USAGE_TOTAL_TOKENS} (gen_ai.usage.total_tokens) instead
  * @example 30
  */
 export const AI_TOTAL_TOKENS_USED = 'ai.total_tokens.used';
@@ -2093,6 +2094,28 @@ export const GEN_AI_USAGE_PROMPT_TOKENS = 'gen_ai.usage.prompt_tokens';
  * Type for {@link GEN_AI_USAGE_PROMPT_TOKENS} gen_ai.usage.prompt_tokens
  */
 export type GEN_AI_USAGE_PROMPT_TOKENS_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__usage__total_tokens.json
+
+/**
+ * The total number of tokens used to process the prompt. (input tokens plus output todkens) `gen_ai.usage.total_tokens`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_USAGE_TOTAL_TOKENS_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link AI_TOTAL_TOKENS_USED} `ai.total_tokens.used`
+ *
+ * @example 20
+ */
+export const GEN_AI_USAGE_TOTAL_TOKENS = 'gen_ai.usage.total_tokens';
+
+/**
+ * Type for {@link GEN_AI_USAGE_TOTAL_TOKENS} gen_ai.usage.total_tokens
+ */
+export type GEN_AI_USAGE_TOTAL_TOKENS_TYPE = number;
 
 // Path: model/attributes/graphql/graphql__operation__name.json
 
@@ -5475,7 +5498,6 @@ export type Attributes = {
   [AI_TOOL_CALLS]?: AI_TOOL_CALLS_TYPE;
   [AI_TOOLS]?: AI_TOOLS_TYPE;
   [AI_TOTAL_COST]?: AI_TOTAL_COST_TYPE;
-  [AI_TOTAL_TOKENS_USED]?: AI_TOTAL_TOKENS_USED_TYPE;
   [AI_WARNINGS]?: AI_WARNINGS_TYPE;
   [APP_START_TYPE]?: APP_START_TYPE_TYPE;
   [BLOCKED_MAIN_THREAD]?: BLOCKED_MAIN_THREAD_TYPE;
@@ -5532,6 +5554,7 @@ export type Attributes = {
   [GEN_AI_RESPONSE_MODEL]?: GEN_AI_RESPONSE_MODEL_TYPE;
   [GEN_AI_USAGE_INPUT_TOKENS]?: GEN_AI_USAGE_INPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_OUTPUT_TOKENS]?: GEN_AI_USAGE_OUTPUT_TOKENS_TYPE;
+  [GEN_AI_USAGE_TOTAL_TOKENS]?: GEN_AI_USAGE_TOTAL_TOKENS_TYPE;
   [GRAPHQL_OPERATION_NAME]?: GRAPHQL_OPERATION_NAME_TYPE;
   [GRAPHQL_OPERATION_TYPE]?: GRAPHQL_OPERATION_TYPE_TYPE;
   [HTTP_DECODED_RESPONSE_CONTENT_LENGTH]?: HTTP_DECODED_RESPONSE_CONTENT_LENGTH_TYPE;
@@ -5760,6 +5783,7 @@ export type FullAttributes = {
   [GEN_AI_USAGE_INPUT_TOKENS]?: GEN_AI_USAGE_INPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_OUTPUT_TOKENS]?: GEN_AI_USAGE_OUTPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_PROMPT_TOKENS]?: GEN_AI_USAGE_PROMPT_TOKENS_TYPE;
+  [GEN_AI_USAGE_TOTAL_TOKENS]?: GEN_AI_USAGE_TOTAL_TOKENS_TYPE;
   [GRAPHQL_OPERATION_NAME]?: GRAPHQL_OPERATION_NAME_TYPE;
   [GRAPHQL_OPERATION_TYPE]?: GRAPHQL_OPERATION_TYPE_TYPE;
   [HTTP_CLIENT_IP]?: HTTP_CLIENT_IP_TYPE;

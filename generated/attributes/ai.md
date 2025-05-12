@@ -22,7 +22,6 @@
   - [ai.tool_calls](#aitool_calls)
   - [ai.tools](#aitools)
   - [ai.total_cost](#aitotal_cost)
-  - [ai.total_tokens.used](#aitotal_tokensused)
   - [ai.warnings](#aiwarnings)
 - [Deprecated Attributes](#deprecated-attributes)
   - [ai.completion_tokens.used](#aicompletion_tokensused)
@@ -36,6 +35,7 @@
   - [ai.temperature](#aitemperature)
   - [ai.top_k](#aitop_k)
   - [ai.top_p](#aitop_p)
+  - [ai.total_tokens.used](#aitotal_tokensused)
 
 ## Stable Attributes
 
@@ -249,17 +249,6 @@ The total cost for the tokens used.
 | Exists in OpenTelemetry | No |
 | Example | `12.34` |
 
-### ai.total_tokens.used
-
-The total number of tokens used to process the prompt.
-
-| Property | Value |
-| --- | --- |
-| Type | `integer` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `30` |
-
 ### ai.warnings
 
 Warning messages generated during model execution.
@@ -409,4 +398,16 @@ Limits the model to only consider tokens whose cumulative probability mass adds 
 | Exists in OpenTelemetry | No |
 | Example | `0.7` |
 | Deprecated | Yes, use `gen_ai.request.top_p` instead |
+
+### ai.total_tokens.used
+
+The total number of tokens used to process the prompt.
+
+| Property | Value |
+| --- | --- |
+| Type | `integer` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `30` |
+| Deprecated | Yes, use `gen_ai.usage.total_tokens` instead |
 

@@ -14,6 +14,7 @@
   - [gen_ai.response.model](#gen_airesponsemodel)
   - [gen_ai.usage.input_tokens](#gen_aiusageinput_tokens)
   - [gen_ai.usage.output_tokens](#gen_aiusageoutput_tokens)
+  - [gen_ai.usage.total_tokens](#gen_aiusagetotal_tokens)
 - [Deprecated Attributes](#deprecated-attributes)
   - [gen_ai.usage.completion_tokens](#gen_aiusagecompletion_tokens)
   - [gen_ai.usage.prompt_tokens](#gen_aiusageprompt_tokens)
@@ -150,6 +151,18 @@ The number of tokens used in the GenAI response (completion).
 | Exists in OpenTelemetry | Yes |
 | Example | `10` |
 | Aliases | `ai.completion_tokens.used`, `gen_ai.usage.completion_tokens` |
+
+### gen_ai.usage.total_tokens
+
+The total number of tokens used to process the prompt. (input tokens plus output todkens)
+
+| Property | Value |
+| --- | --- |
+| Type | `integer` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `20` |
+| Aliases | `ai.total_tokens.used` |
 
 ## Deprecated Attributes
 
