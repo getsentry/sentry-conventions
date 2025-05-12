@@ -7,7 +7,6 @@
   - [ai.completion_tokens.used](#aicompletion_tokensused)
   - [ai.documents](#aidocuments)
   - [ai.finish_reason](#aifinish_reason)
-  - [ai.frequency_penalty](#aifrequency_penalty)
   - [ai.function_call](#aifunction_call)
   - [ai.generation_id](#aigeneration_id)
   - [ai.input_messages](#aiinput_messages)
@@ -35,6 +34,8 @@
   - [ai.total_cost](#aitotal_cost)
   - [ai.total_tokens.used](#aitotal_tokensused)
   - [ai.warnings](#aiwarnings)
+- [Deprecated Attributes](#deprecated-attributes)
+  - [ai.frequency_penalty](#aifrequency_penalty)
 
 ## Stable Attributes
 
@@ -44,9 +45,10 @@ References or sources cited by the AI model in its response.
 
 | Property | Value |
 | --- | --- |
-| Type | `string` |
+| Type | `string[]` |
 | Has PII | true |
 | Exists in OpenTelemetry | No |
+| Example | `["Citation 1","Citation 2"]` |
 
 ### ai.completion_tokens.used
 
@@ -81,17 +83,6 @@ The reason why the model stopped generating.
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `COMPLETE` |
-
-### ai.frequency_penalty
-
-Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.
-
-| Property | Value |
-| --- | --- |
-| Type | `double` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `0.5` |
 
 ### ai.function_call
 
@@ -392,4 +383,20 @@ Warning messages generated during model execution.
 | Has PII | true |
 | Exists in OpenTelemetry | No |
 | Example | `["Token limit exceeded"]` |
+
+## Deprecated Attributes
+
+These attributes are deprecated and will be removed in a future version. Please use the recommended replacements.
+
+### ai.frequency_penalty
+
+Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `0.5` |
+| Deprecated | Yes, use `gen_ai.request.frequency_penalty` instead |
 

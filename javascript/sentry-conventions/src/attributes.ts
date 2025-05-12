@@ -5,19 +5,20 @@
 /**
  * References or sources cited by the AI model in its response. `ai.citations`
  *
- * Attribute Value Type: `string` {@link AI_CITATIONS_TYPE}
+ * Attribute Value Type: `Array<string>` {@link AI_CITATIONS_TYPE}
  *
  * Contains PII: true
  *
  * Attribute defined in OTEL: No
  *
+ * @example ["Citation 1","Citation 2"]
  */
 export const AI_CITATIONS = 'ai.citations';
 
 /**
  * Type for {@link AI_CITATIONS} ai.citations
  */
-export type AI_CITATIONS_TYPE = string;
+export type AI_CITATIONS_TYPE = Array<string>;
 
 // Path: model/attributes/ai/ai__completion_tokens__used.json
 
@@ -92,6 +93,7 @@ export type AI_FINISH_REASON_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
+ * @deprecated Use {@link GEN_AI_REQUEST_FREQUENCY_PENALTY} (gen_ai.request.frequency_penalty) instead
  * @example 0.5
  */
 export const AI_FREQUENCY_PENALTY = 'ai.frequency_penalty';
@@ -1815,6 +1817,28 @@ export const GEN_AI_PROMPT = 'gen_ai.prompt';
  * Type for {@link GEN_AI_PROMPT} gen_ai.prompt
  */
 export type GEN_AI_PROMPT_TYPE = string;
+
+// Path: model/attributes/gen_ai/gen_ai__request__frequency_penalty.json
+
+/**
+ * Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation. `gen_ai.request.frequency_penalty`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_REQUEST_FREQUENCY_PENALTY_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * Aliases: {@link AI_FREQUENCY_PENALTY} `ai.frequency_penalty`
+ *
+ * @example 0.5
+ */
+export const GEN_AI_REQUEST_FREQUENCY_PENALTY = 'gen_ai.request.frequency_penalty';
+
+/**
+ * Type for {@link GEN_AI_REQUEST_FREQUENCY_PENALTY} gen_ai.request.frequency_penalty
+ */
+export type GEN_AI_REQUEST_FREQUENCY_PENALTY_TYPE = number;
 
 // Path: model/attributes/gen_ai/gen_ai__response__model.json
 
@@ -5294,7 +5318,6 @@ export type Attributes = {
   [AI_COMPLETION_TOKENS_USED]?: AI_COMPLETION_TOKENS_USED_TYPE;
   [AI_DOCUMENTS]?: AI_DOCUMENTS_TYPE;
   [AI_FINISH_REASON]?: AI_FINISH_REASON_TYPE;
-  [AI_FREQUENCY_PENALTY]?: AI_FREQUENCY_PENALTY_TYPE;
   [AI_FUNCTION_CALL]?: AI_FUNCTION_CALL_TYPE;
   [AI_GENERATION_ID]?: AI_GENERATION_ID_TYPE;
   [AI_INPUT_MESSAGES]?: AI_INPUT_MESSAGES_TYPE;
@@ -5367,6 +5390,7 @@ export type Attributes = {
   [FRAMES_SLOW]?: FRAMES_SLOW_TYPE;
   [FRAMES_TOTAL]?: FRAMES_TOTAL_TYPE;
   [GEN_AI_PROMPT]?: GEN_AI_PROMPT_TYPE;
+  [GEN_AI_REQUEST_FREQUENCY_PENALTY]?: GEN_AI_REQUEST_FREQUENCY_PENALTY_TYPE;
   [GEN_AI_RESPONSE_MODEL]?: GEN_AI_RESPONSE_MODEL_TYPE;
   [GEN_AI_USAGE_INPUT_TOKENS]?: GEN_AI_USAGE_INPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_OUTPUT_TOKENS]?: GEN_AI_USAGE_OUTPUT_TOKENS_TYPE;
@@ -5586,6 +5610,7 @@ export type FullAttributes = {
   [FRAMES_TOTAL]?: FRAMES_TOTAL_TYPE;
   [FS_ERROR]?: FS_ERROR_TYPE;
   [GEN_AI_PROMPT]?: GEN_AI_PROMPT_TYPE;
+  [GEN_AI_REQUEST_FREQUENCY_PENALTY]?: GEN_AI_REQUEST_FREQUENCY_PENALTY_TYPE;
   [GEN_AI_RESPONSE_MODEL]?: GEN_AI_RESPONSE_MODEL_TYPE;
   [GEN_AI_USAGE_COMPLETION_TOKENS]?: GEN_AI_USAGE_COMPLETION_TOKENS_TYPE;
   [GEN_AI_USAGE_INPUT_TOKENS]?: GEN_AI_USAGE_INPUT_TOKENS_TYPE;

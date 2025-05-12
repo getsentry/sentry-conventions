@@ -4,6 +4,7 @@
 
 - [Stable Attributes](#stable-attributes)
   - [gen_ai.prompt](#gen_aiprompt)
+  - [gen_ai.request.frequency_penalty](#gen_airequestfrequency_penalty)
   - [gen_ai.response.model](#gen_airesponsemodel)
   - [gen_ai.usage.input_tokens](#gen_aiusageinput_tokens)
   - [gen_ai.usage.output_tokens](#gen_aiusageoutput_tokens)
@@ -23,6 +24,18 @@ The input messages sent to the model
 | Has PII | false |
 | Exists in OpenTelemetry | Yes |
 | Example | `[{"role": "user", "message": "hello"}]` |
+
+### gen_ai.request.frequency_penalty
+
+Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | false |
+| Exists in OpenTelemetry | Yes |
+| Example | `0.5` |
+| Aliases | `ai.frequency_penalty` |
 
 ### gen_ai.response.model
 
