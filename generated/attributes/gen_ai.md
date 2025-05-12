@@ -9,6 +9,7 @@
   - [gen_ai.request.seed](#gen_airequestseed)
   - [gen_ai.request.temperature](#gen_airequesttemperature)
   - [gen_ai.request.top_k](#gen_airequesttop_k)
+  - [gen_ai.response.finish_reasons](#gen_airesponsefinish_reasons)
   - [gen_ai.response.model](#gen_airesponsemodel)
   - [gen_ai.usage.input_tokens](#gen_aiusageinput_tokens)
   - [gen_ai.usage.output_tokens](#gen_aiusageoutput_tokens)
@@ -88,6 +89,18 @@ Limits the model to only consider tokens whose cumulative probability mass adds 
 | Exists in OpenTelemetry | Yes |
 | Example | `0.7` |
 | Aliases | `ai.top_p` |
+
+### gen_ai.response.finish_reasons
+
+The reason why the model stopped generating.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | Yes |
+| Example | `COMPLETE` |
+| Aliases | `ai.finish_reason` |
 
 ### gen_ai.response.model
 

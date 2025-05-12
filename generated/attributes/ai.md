@@ -6,7 +6,6 @@
   - [ai.citations](#aicitations)
   - [ai.completion_tokens.used](#aicompletion_tokensused)
   - [ai.documents](#aidocuments)
-  - [ai.finish_reason](#aifinish_reason)
   - [ai.function_call](#aifunction_call)
   - [ai.generation_id](#aigeneration_id)
   - [ai.input_messages](#aiinput_messages)
@@ -30,6 +29,7 @@
   - [ai.total_tokens.used](#aitotal_tokensused)
   - [ai.warnings](#aiwarnings)
 - [Deprecated Attributes](#deprecated-attributes)
+  - [ai.finish_reason](#aifinish_reason)
   - [ai.frequency_penalty](#aifrequency_penalty)
   - [ai.presence_penalty](#aipresence_penalty)
   - [ai.seed](#aiseed)
@@ -72,17 +72,6 @@ Documents or content chunks used as context for the AI model.
 | Has PII | true |
 | Exists in OpenTelemetry | No |
 | Example | `["document1.txt","document2.pdf"]` |
-
-### ai.finish_reason
-
-The reason why the model stopped generating.
-
-| Property | Value |
-| --- | --- |
-| Type | `string` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `COMPLETE` |
 
 ### ai.function_call
 
@@ -332,6 +321,18 @@ Warning messages generated during model execution.
 ## Deprecated Attributes
 
 These attributes are deprecated and will be removed in a future version. Please use the recommended replacements.
+
+### ai.finish_reason
+
+The reason why the model stopped generating.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `COMPLETE` |
+| Deprecated | Yes, use `gen_ai.response.finish_reason` instead |
 
 ### ai.frequency_penalty
 

@@ -6,5 +6,8 @@
     "key": "false"
   },
   "is_in_otel": false,
-  "example": "COMPLETE"
+  "example": "COMPLETE",
+  "deprecation": {
+    "replacement": "gen_ai.response.finish_reason"
+  }
 }
