@@ -7,7 +7,5 @@
   },
   "is_in_otel": true,
   "example": "gen_123abc",
-  "alias": [
-    "ai.generation_id"
-  ]
+  "alias": ["ai.generation_id"]
 }

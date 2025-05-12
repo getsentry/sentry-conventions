@@ -7,7 +7,5 @@
   },
   "is_in_otel": false,
   "example": 20,
-  "alias": [
-    "ai.total_tokens.used"
-  ]
+  "alias": ["ai.total_tokens.used"]
 }

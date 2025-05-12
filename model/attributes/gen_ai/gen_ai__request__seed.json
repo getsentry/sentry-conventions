@@ -7,7 +7,5 @@
   },
   "is_in_otel": true,
   "example": "1234567890",
-  "alias": [
-    "ai.seed"
-  ]
+  "alias": ["ai.seed"]
 }

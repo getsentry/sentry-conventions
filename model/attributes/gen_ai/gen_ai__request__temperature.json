@@ -7,7 +7,5 @@
   },
   "is_in_otel": true,
   "example": 0.1,
-  "alias": [
-    "ai.temperature"
-  ]
+  "alias": ["ai.temperature"]
 }
