@@ -555,7 +555,7 @@ export type AI_TOOLS_TYPE = Array<string>;
 // Path: model/attributes/ai/ai__top_k.json
 
 /**
- *  Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered). `ai.top_k`
+ * Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered). `ai.top_k`
  *
  * Attribute Value Type: `number` {@link AI_TOP_K_TYPE}
  *
@@ -563,6 +563,7 @@ export type AI_TOOLS_TYPE = Array<string>;
  *
  * Attribute defined in OTEL: No
  *
+ * @deprecated Use {@link GEN_AI_REQUEST_TOP_K} (gen_ai.request.top_k) instead
  * @example 35
  */
 export const AI_TOP_K = 'ai.top_k';
@@ -1908,6 +1909,28 @@ export const GEN_AI_REQUEST_TEMPERATURE = 'gen_ai.request.temperature';
  * Type for {@link GEN_AI_REQUEST_TEMPERATURE} gen_ai.request.temperature
  */
 export type GEN_AI_REQUEST_TEMPERATURE_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__request__top_k.json
+
+/**
+ * Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered). `gen_ai.request.top_k`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_REQUEST_TOP_K_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * Aliases: {@link AI_TOP_K} `ai.top_k`
+ *
+ * @example 351
+ */
+export const GEN_AI_REQUEST_TOP_K = 'gen_ai.request.top_k';
+
+/**
+ * Type for {@link GEN_AI_REQUEST_TOP_K} gen_ai.request.top_k
+ */
+export type GEN_AI_REQUEST_TOP_K_TYPE = number;
 
 // Path: model/attributes/gen_ai/gen_ai__response__model.json
 
@@ -5406,7 +5429,6 @@ export type Attributes = {
   [AI_TEXTS]?: AI_TEXTS_TYPE;
   [AI_TOOL_CALLS]?: AI_TOOL_CALLS_TYPE;
   [AI_TOOLS]?: AI_TOOLS_TYPE;
-  [AI_TOP_K]?: AI_TOP_K_TYPE;
   [AI_TOP_P]?: AI_TOP_P_TYPE;
   [AI_TOTAL_COST]?: AI_TOTAL_COST_TYPE;
   [AI_TOTAL_TOKENS_USED]?: AI_TOTAL_TOKENS_USED_TYPE;
@@ -5460,6 +5482,7 @@ export type Attributes = {
   [GEN_AI_REQUEST_PRESENCE_PENALTY]?: GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE;
   [GEN_AI_REQUEST_SEED]?: GEN_AI_REQUEST_SEED_TYPE;
   [GEN_AI_REQUEST_TEMPERATURE]?: GEN_AI_REQUEST_TEMPERATURE_TYPE;
+  [GEN_AI_REQUEST_TOP_K]?: GEN_AI_REQUEST_TOP_K_TYPE;
   [GEN_AI_RESPONSE_MODEL]?: GEN_AI_RESPONSE_MODEL_TYPE;
   [GEN_AI_USAGE_INPUT_TOKENS]?: GEN_AI_USAGE_INPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_OUTPUT_TOKENS]?: GEN_AI_USAGE_OUTPUT_TOKENS_TYPE;
@@ -5683,6 +5706,7 @@ export type FullAttributes = {
   [GEN_AI_REQUEST_PRESENCE_PENALTY]?: GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE;
   [GEN_AI_REQUEST_SEED]?: GEN_AI_REQUEST_SEED_TYPE;
   [GEN_AI_REQUEST_TEMPERATURE]?: GEN_AI_REQUEST_TEMPERATURE_TYPE;
+  [GEN_AI_REQUEST_TOP_K]?: GEN_AI_REQUEST_TOP_K_TYPE;
   [GEN_AI_RESPONSE_MODEL]?: GEN_AI_RESPONSE_MODEL_TYPE;
   [GEN_AI_USAGE_COMPLETION_TOKENS]?: GEN_AI_USAGE_COMPLETION_TOKENS_TYPE;
   [GEN_AI_USAGE_INPUT_TOKENS]?: GEN_AI_USAGE_INPUT_TOKENS_TYPE;

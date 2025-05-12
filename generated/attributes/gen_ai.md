@@ -8,6 +8,7 @@
   - [gen_ai.request.presence_penalty](#gen_airequestpresence_penalty)
   - [gen_ai.request.seed](#gen_airequestseed)
   - [gen_ai.request.temperature](#gen_airequesttemperature)
+  - [gen_ai.request.top_k](#gen_airequesttop_k)
   - [gen_ai.response.model](#gen_airesponsemodel)
   - [gen_ai.usage.input_tokens](#gen_aiusageinput_tokens)
   - [gen_ai.usage.output_tokens](#gen_aiusageoutput_tokens)
@@ -75,6 +76,18 @@ For an AI model call, the temperature parameter. Temperature essentially means h
 | Exists in OpenTelemetry | Yes |
 | Example | `0.1` |
 | Aliases | `ai.temperature` |
+
+### gen_ai.request.top_k
+
+Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).
+
+| Property | Value |
+| --- | --- |
+| Type | `integer` |
+| Has PII | false |
+| Exists in OpenTelemetry | Yes |
+| Example | `351` |
+| Aliases | `ai.top_k` |
 
 ### gen_ai.response.model
 
