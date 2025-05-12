@@ -26,7 +26,6 @@
   - [ai.texts](#aitexts)
   - [ai.tool_calls](#aitool_calls)
   - [ai.tools](#aitools)
-  - [ai.top_p](#aitop_p)
   - [ai.total_cost](#aitotal_cost)
   - [ai.total_tokens.used](#aitotal_tokensused)
   - [ai.warnings](#aiwarnings)
@@ -36,6 +35,7 @@
   - [ai.seed](#aiseed)
   - [ai.temperature](#aitemperature)
   - [ai.top_k](#aitop_k)
+  - [ai.top_p](#aitop_p)
 
 ## Stable Attributes
 
@@ -296,17 +296,6 @@ For an AI model call, the functions that are available
 | Exists in OpenTelemetry | No |
 | Example | `["function_1","function_2"]` |
 
-### ai.top_p
-
-Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).
-
-| Property | Value |
-| --- | --- |
-| Type | `double` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `0.7` |
-
 ### ai.total_cost
 
 The total cost for the tokens used.
@@ -403,4 +392,16 @@ Limits the model to only consider the K most likely next tokens, where K is an i
 | Exists in OpenTelemetry | No |
 | Example | `35` |
 | Deprecated | Yes, use `gen_ai.request.top_k` instead |
+
+### ai.top_p
+
+Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `0.7` |
+| Deprecated | Yes, use `gen_ai.request.top_p` instead |
 

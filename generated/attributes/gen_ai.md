@@ -79,15 +79,15 @@ For an AI model call, the temperature parameter. Temperature essentially means h
 
 ### gen_ai.request.top_k
 
-Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).
+Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).
 
 | Property | Value |
 | --- | --- |
-| Type | `integer` |
+| Type | `double` |
 | Has PII | false |
 | Exists in OpenTelemetry | Yes |
-| Example | `351` |
-| Aliases | `ai.top_k` |
+| Example | `0.7` |
+| Aliases | `ai.top_p` |
 
 ### gen_ai.response.model
 

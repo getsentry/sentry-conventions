@@ -6,5 +6,8 @@
     "key": "false"
   },
   "is_in_otel": false,
-  "example": 0.7
+  "example": 0.7,
+  "deprecation": {
+    "replacement": "gen_ai.request.top_p"
+  }
 }

@@ -584,6 +584,7 @@ export type AI_TOP_K_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
+ * @deprecated Use {@link GEN_AI_REQUEST_TOP_P} (gen_ai.request.top_p) instead
  * @example 0.7
  */
 export const AI_TOP_P = 'ai.top_p';
@@ -1913,7 +1914,7 @@ export type GEN_AI_REQUEST_TEMPERATURE_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__request__top_k.json
 
 /**
- * Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered). `gen_ai.request.top_k`
+ * Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered). `gen_ai.request.top_k`
  *
  * Attribute Value Type: `number` {@link GEN_AI_REQUEST_TOP_K_TYPE}
  *
@@ -1921,9 +1922,9 @@ export type GEN_AI_REQUEST_TEMPERATURE_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link AI_TOP_K} `ai.top_k`
+ * Aliases: {@link AI_TOP_P} `ai.top_p`
  *
- * @example 351
+ * @example 0.7
  */
 export const GEN_AI_REQUEST_TOP_K = 'gen_ai.request.top_k';
 
@@ -5429,7 +5430,6 @@ export type Attributes = {
   [AI_TEXTS]?: AI_TEXTS_TYPE;
   [AI_TOOL_CALLS]?: AI_TOOL_CALLS_TYPE;
   [AI_TOOLS]?: AI_TOOLS_TYPE;
-  [AI_TOP_P]?: AI_TOP_P_TYPE;
   [AI_TOTAL_COST]?: AI_TOTAL_COST_TYPE;
   [AI_TOTAL_TOKENS_USED]?: AI_TOTAL_TOKENS_USED_TYPE;
   [AI_WARNINGS]?: AI_WARNINGS_TYPE;
