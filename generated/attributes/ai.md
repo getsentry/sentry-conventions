@@ -15,7 +15,6 @@
   - [ai.model_id](#aimodel_id)
   - [ai.pipeline.name](#aipipelinename)
   - [ai.preamble](#aipreamble)
-  - [ai.presence_penalty](#aipresence_penalty)
   - [ai.prompt_tokens.used](#aiprompt_tokensused)
   - [ai.raw_prompting](#airaw_prompting)
   - [ai.response_format](#airesponse_format)
@@ -36,6 +35,7 @@
   - [ai.warnings](#aiwarnings)
 - [Deprecated Attributes](#deprecated-attributes)
   - [ai.frequency_penalty](#aifrequency_penalty)
+  - [ai.presence_penalty](#aipresence_penalty)
 
 ## Stable Attributes
 
@@ -173,17 +173,6 @@ For an AI model call, the preamble parameter. Preambles are a part of the prompt
 | Has PII | true |
 | Exists in OpenTelemetry | No |
 | Example | `You are now a clown.` |
-
-### ai.presence_penalty
-
-Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.
-
-| Property | Value |
-| --- | --- |
-| Type | `double` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `0.5` |
 
 ### ai.prompt_tokens.used
 
@@ -399,4 +388,16 @@ Used to reduce repetitiveness of generated tokens. The higher the value, the str
 | Exists in OpenTelemetry | No |
 | Example | `0.5` |
 | Deprecated | Yes, use `gen_ai.request.frequency_penalty` instead |
+
+### ai.presence_penalty
+
+Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `0.5` |
+| Deprecated | Yes, use `gen_ai.request.presence_penalty` instead |
 

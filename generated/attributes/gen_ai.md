@@ -5,6 +5,7 @@
 - [Stable Attributes](#stable-attributes)
   - [gen_ai.prompt](#gen_aiprompt)
   - [gen_ai.request.frequency_penalty](#gen_airequestfrequency_penalty)
+  - [gen_ai.request.presence_penalty](#gen_airequestpresence_penalty)
   - [gen_ai.response.model](#gen_airesponsemodel)
   - [gen_ai.usage.input_tokens](#gen_aiusageinput_tokens)
   - [gen_ai.usage.output_tokens](#gen_aiusageoutput_tokens)
@@ -36,6 +37,18 @@ Used to reduce repetitiveness of generated tokens. The higher the value, the str
 | Exists in OpenTelemetry | Yes |
 | Example | `0.5` |
 | Aliases | `ai.frequency_penalty` |
+
+### gen_ai.request.presence_penalty
+
+Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | false |
+| Exists in OpenTelemetry | Yes |
+| Example | `0.5` |
+| Aliases | `ai.presence_penalty` |
 
 ### gen_ai.response.model
 
