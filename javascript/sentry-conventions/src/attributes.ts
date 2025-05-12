@@ -135,6 +135,7 @@ export type AI_FUNCTION_CALL_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
+ * @deprecated Use {@link GEN_AI_RESPONSE_GENERATION_ID} (gen_ai.response.generation_id) instead
  * @example "gen_123abc"
  */
 export const AI_GENERATION_ID = 'ai.generation_id';
@@ -1955,6 +1956,28 @@ export const GEN_AI_RESPONSE_FINISH_REASONS = 'gen_ai.response.finish_reasons';
  * Type for {@link GEN_AI_RESPONSE_FINISH_REASONS} gen_ai.response.finish_reasons
  */
 export type GEN_AI_RESPONSE_FINISH_REASONS_TYPE = string;
+
+// Path: model/attributes/gen_ai/gen_ai__response__id.json
+
+/**
+ * Unique identifier for the completion. `gen_ai.response.id`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_RESPONSE_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * Aliases: {@link AI_GENERATION_ID} `ai.generation_id`
+ *
+ * @example "gen_123abc"
+ */
+export const GEN_AI_RESPONSE_ID = 'gen_ai.response.id';
+
+/**
+ * Type for {@link GEN_AI_RESPONSE_ID} gen_ai.response.id
+ */
+export type GEN_AI_RESPONSE_ID_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__response__model.json
 
@@ -5434,7 +5457,6 @@ export type Attributes = {
   [AI_COMPLETION_TOKENS_USED]?: AI_COMPLETION_TOKENS_USED_TYPE;
   [AI_DOCUMENTS]?: AI_DOCUMENTS_TYPE;
   [AI_FUNCTION_CALL]?: AI_FUNCTION_CALL_TYPE;
-  [AI_GENERATION_ID]?: AI_GENERATION_ID_TYPE;
   [AI_INPUT_MESSAGES]?: AI_INPUT_MESSAGES_TYPE;
   [AI_IS_SEARCH_REQUIRED]?: AI_IS_SEARCH_REQUIRED_TYPE;
   [AI_METADATA]?: AI_METADATA_TYPE;
@@ -5506,6 +5528,7 @@ export type Attributes = {
   [GEN_AI_REQUEST_TEMPERATURE]?: GEN_AI_REQUEST_TEMPERATURE_TYPE;
   [GEN_AI_REQUEST_TOP_K]?: GEN_AI_REQUEST_TOP_K_TYPE;
   [GEN_AI_RESPONSE_FINISH_REASONS]?: GEN_AI_RESPONSE_FINISH_REASONS_TYPE;
+  [GEN_AI_RESPONSE_ID]?: GEN_AI_RESPONSE_ID_TYPE;
   [GEN_AI_RESPONSE_MODEL]?: GEN_AI_RESPONSE_MODEL_TYPE;
   [GEN_AI_USAGE_INPUT_TOKENS]?: GEN_AI_USAGE_INPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_OUTPUT_TOKENS]?: GEN_AI_USAGE_OUTPUT_TOKENS_TYPE;
@@ -5731,6 +5754,7 @@ export type FullAttributes = {
   [GEN_AI_REQUEST_TEMPERATURE]?: GEN_AI_REQUEST_TEMPERATURE_TYPE;
   [GEN_AI_REQUEST_TOP_K]?: GEN_AI_REQUEST_TOP_K_TYPE;
   [GEN_AI_RESPONSE_FINISH_REASONS]?: GEN_AI_RESPONSE_FINISH_REASONS_TYPE;
+  [GEN_AI_RESPONSE_ID]?: GEN_AI_RESPONSE_ID_TYPE;
   [GEN_AI_RESPONSE_MODEL]?: GEN_AI_RESPONSE_MODEL_TYPE;
   [GEN_AI_USAGE_COMPLETION_TOKENS]?: GEN_AI_USAGE_COMPLETION_TOKENS_TYPE;
   [GEN_AI_USAGE_INPUT_TOKENS]?: GEN_AI_USAGE_INPUT_TOKENS_TYPE;

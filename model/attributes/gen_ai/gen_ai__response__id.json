@@ -1,13 +1,13 @@
 {
-  "key": "ai.generation_id",
+  "key": "gen_ai.response.id",
   "brief": "Unique identifier for the completion.",
   "type": "string",
   "pii": {
     "key": "false"
   },
-  "is_in_otel": false,
+  "is_in_otel": true,
   "example": "gen_123abc",
-  "deprecation": {
-    "replacement": "gen_ai.response.generation_id"
-  }
+  "alias": [
+    "ai.generation_id"
+  ]
 }

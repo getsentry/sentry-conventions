@@ -7,7 +7,6 @@
   - [ai.completion_tokens.used](#aicompletion_tokensused)
   - [ai.documents](#aidocuments)
   - [ai.function_call](#aifunction_call)
-  - [ai.generation_id](#aigeneration_id)
   - [ai.input_messages](#aiinput_messages)
   - [ai.is_search_required](#aiis_search_required)
   - [ai.metadata](#aimetadata)
@@ -31,6 +30,7 @@
 - [Deprecated Attributes](#deprecated-attributes)
   - [ai.finish_reason](#aifinish_reason)
   - [ai.frequency_penalty](#aifrequency_penalty)
+  - [ai.generation_id](#aigeneration_id)
   - [ai.presence_penalty](#aipresence_penalty)
   - [ai.seed](#aiseed)
   - [ai.temperature](#aitemperature)
@@ -83,17 +83,6 @@ For an AI model call, the function that was called. This is deprecated for OpenA
 | Has PII | true |
 | Exists in OpenTelemetry | No |
 | Example | `function_name` |
-
-### ai.generation_id
-
-Unique identifier for the completion.
-
-| Property | Value |
-| --- | --- |
-| Type | `string` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `gen_123abc` |
 
 ### ai.input_messages
 
@@ -345,6 +334,18 @@ Used to reduce repetitiveness of generated tokens. The higher the value, the str
 | Exists in OpenTelemetry | No |
 | Example | `0.5` |
 | Deprecated | Yes, use `gen_ai.request.frequency_penalty` instead |
+
+### ai.generation_id
+
+Unique identifier for the completion.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `gen_123abc` |
+| Deprecated | Yes, use `gen_ai.response.generation_id` instead |
 
 ### ai.presence_penalty
 

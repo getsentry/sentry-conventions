@@ -10,6 +10,7 @@
   - [gen_ai.request.temperature](#gen_airequesttemperature)
   - [gen_ai.request.top_k](#gen_airequesttop_k)
   - [gen_ai.response.finish_reasons](#gen_airesponsefinish_reasons)
+  - [gen_ai.response.id](#gen_airesponseid)
   - [gen_ai.response.model](#gen_airesponsemodel)
   - [gen_ai.usage.input_tokens](#gen_aiusageinput_tokens)
   - [gen_ai.usage.output_tokens](#gen_aiusageoutput_tokens)
@@ -101,6 +102,18 @@ The reason why the model stopped generating.
 | Exists in OpenTelemetry | Yes |
 | Example | `COMPLETE` |
 | Aliases | `ai.finish_reason` |
+
+### gen_ai.response.id
+
+Unique identifier for the completion.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | Yes |
+| Example | `gen_123abc` |
+| Aliases | `ai.generation_id` |
 
 ### gen_ai.response.model
 
