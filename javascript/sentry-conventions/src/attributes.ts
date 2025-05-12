@@ -304,6 +304,7 @@ export type AI_PRESENCE_PENALTY_TYPE = number;
  *
  * Aliases: {@link GEN_AI_USAGE_PROMPT_TOKENS} `gen_ai.usage.prompt_tokens`, {@link GEN_AI_USAGE_INPUT_TOKENS} `gen_ai.usage.input_tokens`
  *
+ * @deprecated Use {@link GEN_AI_USAGE_INPUT_TOKENS} (gen_ai.usage.input_tokens) instead
  * @example 20
  */
 export const AI_PROMPT_TOKENS_USED = 'ai.prompt_tokens.used';
@@ -5463,7 +5464,6 @@ export type Attributes = {
   [AI_METADATA]?: AI_METADATA_TYPE;
   [AI_PIPELINE_NAME]?: AI_PIPELINE_NAME_TYPE;
   [AI_PREAMBLE]?: AI_PREAMBLE_TYPE;
-  [AI_PROMPT_TOKENS_USED]?: AI_PROMPT_TOKENS_USED_TYPE;
   [AI_RAW_PROMPTING]?: AI_RAW_PROMPTING_TYPE;
   [AI_RESPONSE_FORMAT]?: AI_RESPONSE_FORMAT_TYPE;
   [AI_RESPONSES]?: AI_RESPONSES_TYPE;

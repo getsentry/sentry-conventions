@@ -12,7 +12,6 @@
   - [ai.metadata](#aimetadata)
   - [ai.pipeline.name](#aipipelinename)
   - [ai.preamble](#aipreamble)
-  - [ai.prompt_tokens.used](#aiprompt_tokensused)
   - [ai.raw_prompting](#airaw_prompting)
   - [ai.response_format](#airesponse_format)
   - [ai.responses](#airesponses)
@@ -32,6 +31,7 @@
   - [ai.generation_id](#aigeneration_id)
   - [ai.model_id](#aimodel_id)
   - [ai.presence_penalty](#aipresence_penalty)
+  - [ai.prompt_tokens.used](#aiprompt_tokensused)
   - [ai.seed](#aiseed)
   - [ai.temperature](#aitemperature)
   - [ai.top_k](#aitop_k)
@@ -139,18 +139,6 @@ For an AI model call, the preamble parameter. Preambles are a part of the prompt
 | Has PII | true |
 | Exists in OpenTelemetry | No |
 | Example | `You are now a clown.` |
-
-### ai.prompt_tokens.used
-
-The number of tokens used to process just the prompt.
-
-| Property | Value |
-| --- | --- |
-| Type | `integer` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `20` |
-| Aliases | `gen_ai.usage.prompt_tokens`, `gen_ai.usage.input_tokens` |
 
 ### ai.raw_prompting
 
@@ -359,6 +347,19 @@ Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty,
 | Exists in OpenTelemetry | No |
 | Example | `0.5` |
 | Deprecated | Yes, use `gen_ai.request.presence_penalty` instead |
+
+### ai.prompt_tokens.used
+
+The number of tokens used to process just the prompt.
+
+| Property | Value |
+| --- | --- |
+| Type | `integer` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `20` |
+| Deprecated | Yes, use `gen_ai.usage.input_tokens` instead |
+| Aliases | `gen_ai.usage.prompt_tokens`, `gen_ai.usage.input_tokens` |
 
 ### ai.seed
 

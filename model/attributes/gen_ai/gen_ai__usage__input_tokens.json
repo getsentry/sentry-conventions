@@ -7,5 +7,7 @@
   },
   "is_in_otel": true,
   "example": 10,
-  "alias": ["ai.prompt_tokens.used", "gen_ai.usage.prompt_tokens"]
+  "alias": [
+    "ai.prompt_tokens.used", "gen_ai.usage.prompt_tokens"
+  ]
 }
