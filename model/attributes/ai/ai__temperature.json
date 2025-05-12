@@ -6,5 +6,8 @@
     "key": "false"
   },
   "is_in_otel": false,
-  "example": 0.1
+  "example": 0.1,
+  "deprecation": {
+    "replacement": "gen_ai.request.temperature"
+  }
 }

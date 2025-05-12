@@ -7,6 +7,7 @@
   - [gen_ai.request.frequency_penalty](#gen_airequestfrequency_penalty)
   - [gen_ai.request.presence_penalty](#gen_airequestpresence_penalty)
   - [gen_ai.request.seed](#gen_airequestseed)
+  - [gen_ai.request.temperature](#gen_airequesttemperature)
   - [gen_ai.response.model](#gen_airesponsemodel)
   - [gen_ai.usage.input_tokens](#gen_aiusageinput_tokens)
   - [gen_ai.usage.output_tokens](#gen_aiusageoutput_tokens)
@@ -62,6 +63,18 @@ The seed, ideally models given the same seed and same other parameters will prod
 | Exists in OpenTelemetry | Yes |
 | Example | `1234567890` |
 | Aliases | `ai.seed` |
+
+### gen_ai.request.temperature
+
+For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | false |
+| Exists in OpenTelemetry | Yes |
+| Example | `0.1` |
+| Aliases | `ai.temperature` |
 
 ### gen_ai.response.model
 

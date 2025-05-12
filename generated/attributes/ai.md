@@ -23,7 +23,6 @@
   - [ai.search_results](#aisearch_results)
   - [ai.streaming](#aistreaming)
   - [ai.tags](#aitags)
-  - [ai.temperature](#aitemperature)
   - [ai.texts](#aitexts)
   - [ai.tool_calls](#aitool_calls)
   - [ai.tools](#aitools)
@@ -36,6 +35,7 @@
   - [ai.frequency_penalty](#aifrequency_penalty)
   - [ai.presence_penalty](#aipresence_penalty)
   - [ai.seed](#aiseed)
+  - [ai.temperature](#aitemperature)
 
 ## Stable Attributes
 
@@ -263,17 +263,6 @@ Tags that describe an AI pipeline step.
 | Exists in OpenTelemetry | No |
 | Example | `{"executed_function": "add_integers"}` |
 
-### ai.temperature
-
-For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.
-
-| Property | Value |
-| --- | --- |
-| Type | `double` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `0.1` |
-
 ### ai.texts
 
 Raw text inputs provided to the model.
@@ -401,4 +390,16 @@ The seed, ideally models given the same seed and same other parameters will prod
 | Exists in OpenTelemetry | No |
 | Example | `1234567890` |
 | Deprecated | Yes, use `gen_ai.request.seed` instead |
+
+### ai.temperature
+
+For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `0.1` |
+| Deprecated | Yes, use `gen_ai.request.temperature` instead |
 

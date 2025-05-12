@@ -482,6 +482,7 @@ export type AI_TAGS_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
+ * @deprecated Use {@link GEN_AI_REQUEST_TEMPERATURE} (gen_ai.request.temperature) instead
  * @example 0.1
  */
 export const AI_TEMPERATURE = 'ai.temperature';
@@ -1885,6 +1886,28 @@ export const GEN_AI_REQUEST_SEED = 'gen_ai.request.seed';
  * Type for {@link GEN_AI_REQUEST_SEED} gen_ai.request.seed
  */
 export type GEN_AI_REQUEST_SEED_TYPE = string;
+
+// Path: model/attributes/gen_ai/gen_ai__request__temperature.json
+
+/**
+ * For an AI model call, the temperature parameter. Temperature essentially means how random the output will be. `gen_ai.request.temperature`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_REQUEST_TEMPERATURE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * Aliases: {@link AI_TEMPERATURE} `ai.temperature`
+ *
+ * @example 0.1
+ */
+export const GEN_AI_REQUEST_TEMPERATURE = 'gen_ai.request.temperature';
+
+/**
+ * Type for {@link GEN_AI_REQUEST_TEMPERATURE} gen_ai.request.temperature
+ */
+export type GEN_AI_REQUEST_TEMPERATURE_TYPE = number;
 
 // Path: model/attributes/gen_ai/gen_ai__response__model.json
 
@@ -5380,7 +5403,6 @@ export type Attributes = {
   [AI_SEARCH_RESULTS]?: AI_SEARCH_RESULTS_TYPE;
   [AI_STREAMING]?: AI_STREAMING_TYPE;
   [AI_TAGS]?: AI_TAGS_TYPE;
-  [AI_TEMPERATURE]?: AI_TEMPERATURE_TYPE;
   [AI_TEXTS]?: AI_TEXTS_TYPE;
   [AI_TOOL_CALLS]?: AI_TOOL_CALLS_TYPE;
   [AI_TOOLS]?: AI_TOOLS_TYPE;
@@ -5437,6 +5459,7 @@ export type Attributes = {
   [GEN_AI_REQUEST_FREQUENCY_PENALTY]?: GEN_AI_REQUEST_FREQUENCY_PENALTY_TYPE;
   [GEN_AI_REQUEST_PRESENCE_PENALTY]?: GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE;
   [GEN_AI_REQUEST_SEED]?: GEN_AI_REQUEST_SEED_TYPE;
+  [GEN_AI_REQUEST_TEMPERATURE]?: GEN_AI_REQUEST_TEMPERATURE_TYPE;
   [GEN_AI_RESPONSE_MODEL]?: GEN_AI_RESPONSE_MODEL_TYPE;
   [GEN_AI_USAGE_INPUT_TOKENS]?: GEN_AI_USAGE_INPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_OUTPUT_TOKENS]?: GEN_AI_USAGE_OUTPUT_TOKENS_TYPE;
@@ -5659,6 +5682,7 @@ export type FullAttributes = {
   [GEN_AI_REQUEST_FREQUENCY_PENALTY]?: GEN_AI_REQUEST_FREQUENCY_PENALTY_TYPE;
   [GEN_AI_REQUEST_PRESENCE_PENALTY]?: GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE;
   [GEN_AI_REQUEST_SEED]?: GEN_AI_REQUEST_SEED_TYPE;
+  [GEN_AI_REQUEST_TEMPERATURE]?: GEN_AI_REQUEST_TEMPERATURE_TYPE;
   [GEN_AI_RESPONSE_MODEL]?: GEN_AI_RESPONSE_MODEL_TYPE;
   [GEN_AI_USAGE_COMPLETION_TOKENS]?: GEN_AI_USAGE_COMPLETION_TOKENS_TYPE;
   [GEN_AI_USAGE_INPUT_TOKENS]?: GEN_AI_USAGE_INPUT_TOKENS_TYPE;
