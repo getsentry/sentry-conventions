@@ -29,6 +29,7 @@
   - [ai.function_call](#aifunction_call)
   - [ai.generation_id](#aigeneration_id)
   - [ai.model_id](#aimodel_id)
+  - [ai.model.provider](#aimodelprovider)
   - [ai.presence_penalty](#aipresence_penalty)
   - [ai.prompt_tokens.used](#aiprompt_tokensused)
   - [ai.seed](#aiseed)
@@ -326,6 +327,19 @@ The vendor-specific ID of the model used.
 | Example | `gpt-4` |
 | Deprecated | Yes, use `gen_ai.response.model` instead |
 | Aliases | `gen_ai.response.model` |
+
+### ai.model.provider
+
+The provider of the model.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `openai` |
+| Deprecated | Yes, use `gen_ai.system` instead |
+| Aliases | `gen_ai.system` |
 
 ### ai.presence_penalty
 

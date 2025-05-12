@@ -209,6 +209,29 @@ export const AI_METADATA = 'ai.metadata';
  */
 export type AI_METADATA_TYPE = string;
 
+// Path: model/attributes/ai/ai__model__provider.json
+
+/**
+ * The provider of the model. `ai.model.provider`
+ *
+ * Attribute Value Type: `string` {@link AI_MODEL_PROVIDER_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link GEN_AI_SYSTEM} `gen_ai.system`
+ *
+ * @deprecated Use {@link GEN_AI_SYSTEM} (gen_ai.system) instead
+ * @example "openai"
+ */
+export const AI_MODEL_PROVIDER = 'ai.model.provider';
+
+/**
+ * Type for {@link AI_MODEL_PROVIDER} ai.model.provider
+ */
+export type AI_MODEL_PROVIDER_TYPE = string;
+
 // Path: model/attributes/ai/ai__model_id.json
 
 /**
@@ -2005,6 +2028,28 @@ export const GEN_AI_RESPONSE_MODEL = 'gen_ai.response.model';
  * Type for {@link GEN_AI_RESPONSE_MODEL} gen_ai.response.model
  */
 export type GEN_AI_RESPONSE_MODEL_TYPE = string;
+
+// Path: model/attributes/gen_ai/gen_ai__system.json
+
+/**
+ * The provider of the model. `gen_ai.system`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_SYSTEM_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * Aliases: {@link AI_MODEL_PROVIDER} `ai.model.provider`
+ *
+ * @example "openai"
+ */
+export const GEN_AI_SYSTEM = 'gen_ai.system';
+
+/**
+ * Type for {@link GEN_AI_SYSTEM} gen_ai.system
+ */
+export type GEN_AI_SYSTEM_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__tool__name.json
 
@@ -5574,6 +5619,7 @@ export type Attributes = {
   [GEN_AI_RESPONSE_FINISH_REASONS]?: GEN_AI_RESPONSE_FINISH_REASONS_TYPE;
   [GEN_AI_RESPONSE_ID]?: GEN_AI_RESPONSE_ID_TYPE;
   [GEN_AI_RESPONSE_MODEL]?: GEN_AI_RESPONSE_MODEL_TYPE;
+  [GEN_AI_SYSTEM]?: GEN_AI_SYSTEM_TYPE;
   [GEN_AI_TOOL_NAME]?: GEN_AI_TOOL_NAME_TYPE;
   [GEN_AI_USAGE_INPUT_TOKENS]?: GEN_AI_USAGE_INPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_OUTPUT_TOKENS]?: GEN_AI_USAGE_OUTPUT_TOKENS_TYPE;
@@ -5716,6 +5762,7 @@ export type FullAttributes = {
   [AI_INPUT_MESSAGES]?: AI_INPUT_MESSAGES_TYPE;
   [AI_IS_SEARCH_REQUIRED]?: AI_IS_SEARCH_REQUIRED_TYPE;
   [AI_METADATA]?: AI_METADATA_TYPE;
+  [AI_MODEL_PROVIDER]?: AI_MODEL_PROVIDER_TYPE;
   [AI_MODEL_ID]?: AI_MODEL_ID_TYPE;
   [AI_PIPELINE_NAME]?: AI_PIPELINE_NAME_TYPE;
   [AI_PREAMBLE]?: AI_PREAMBLE_TYPE;
@@ -5802,6 +5849,7 @@ export type FullAttributes = {
   [GEN_AI_RESPONSE_FINISH_REASONS]?: GEN_AI_RESPONSE_FINISH_REASONS_TYPE;
   [GEN_AI_RESPONSE_ID]?: GEN_AI_RESPONSE_ID_TYPE;
   [GEN_AI_RESPONSE_MODEL]?: GEN_AI_RESPONSE_MODEL_TYPE;
+  [GEN_AI_SYSTEM]?: GEN_AI_SYSTEM_TYPE;
   [GEN_AI_TOOL_NAME]?: GEN_AI_TOOL_NAME_TYPE;
   [GEN_AI_USAGE_COMPLETION_TOKENS]?: GEN_AI_USAGE_COMPLETION_TOKENS_TYPE;
   [GEN_AI_USAGE_INPUT_TOKENS]?: GEN_AI_USAGE_INPUT_TOKENS_TYPE;

@@ -1,0 +1,16 @@
+{
+  "key": "ai.model.provider",
+  "brief": "The provider of the model.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "openai",
+  "alias": [
+    "gen_ai.system"
+  ],
+  "deprecation": {
+    "replacement": "gen_ai.system"
+  }
+}

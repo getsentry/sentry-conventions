@@ -12,6 +12,7 @@
   - [gen_ai.response.finish_reasons](#gen_airesponsefinish_reasons)
   - [gen_ai.response.id](#gen_airesponseid)
   - [gen_ai.response.model](#gen_airesponsemodel)
+  - [gen_ai.system](#gen_aisystem)
   - [gen_ai.tool.name](#gen_aitoolname)
   - [gen_ai.usage.input_tokens](#gen_aiusageinput_tokens)
   - [gen_ai.usage.output_tokens](#gen_aiusageoutput_tokens)
@@ -128,6 +129,18 @@ The vendor-specific ID of the model used.
 | Exists in OpenTelemetry | Yes |
 | Example | `gpt-4` |
 | Aliases | `ai.model_id` |
+
+### gen_ai.system
+
+The provider of the model.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | Yes |
+| Example | `openai` |
+| Aliases | `ai.model.provider` |
 
 ### gen_ai.tool.name
 
