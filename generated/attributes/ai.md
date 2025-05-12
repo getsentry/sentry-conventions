@@ -10,7 +10,6 @@
   - [ai.input_messages](#aiinput_messages)
   - [ai.is_search_required](#aiis_search_required)
   - [ai.metadata](#aimetadata)
-  - [ai.model_id](#aimodel_id)
   - [ai.pipeline.name](#aipipelinename)
   - [ai.preamble](#aipreamble)
   - [ai.prompt_tokens.used](#aiprompt_tokensused)
@@ -31,6 +30,7 @@
   - [ai.finish_reason](#aifinish_reason)
   - [ai.frequency_penalty](#aifrequency_penalty)
   - [ai.generation_id](#aigeneration_id)
+  - [ai.model_id](#aimodel_id)
   - [ai.presence_penalty](#aipresence_penalty)
   - [ai.seed](#aiseed)
   - [ai.temperature](#aitemperature)
@@ -117,18 +117,6 @@ Extra metadata passed to an AI pipeline step.
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `{"user_id": 123, "session_id": "abc123"}` |
-
-### ai.model_id
-
-The vendor-specific ID of the model used.
-
-| Property | Value |
-| --- | --- |
-| Type | `string` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `gpt-4` |
-| Aliases | `gen_ai.response.model` |
 
 ### ai.pipeline.name
 
@@ -346,6 +334,19 @@ Unique identifier for the completion.
 | Exists in OpenTelemetry | No |
 | Example | `gen_123abc` |
 | Deprecated | Yes, use `gen_ai.response.generation_id` instead |
+
+### ai.model_id
+
+The vendor-specific ID of the model used.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `gpt-4` |
+| Deprecated | Yes, use `gen_ai.response.model` instead |
+| Aliases | `gen_ai.response.model` |
 
 ### ai.presence_penalty
 

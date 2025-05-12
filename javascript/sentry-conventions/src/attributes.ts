@@ -220,6 +220,7 @@ export type AI_METADATA_TYPE = string;
  *
  * Aliases: {@link GEN_AI_RESPONSE_MODEL} `gen_ai.response.model`
  *
+ * @deprecated Use {@link GEN_AI_RESPONSE_MODEL} (gen_ai.response.model) instead
  * @example "gpt-4"
  */
 export const AI_MODEL_ID = 'ai.model_id';
@@ -5460,7 +5461,6 @@ export type Attributes = {
   [AI_INPUT_MESSAGES]?: AI_INPUT_MESSAGES_TYPE;
   [AI_IS_SEARCH_REQUIRED]?: AI_IS_SEARCH_REQUIRED_TYPE;
   [AI_METADATA]?: AI_METADATA_TYPE;
-  [AI_MODEL_ID]?: AI_MODEL_ID_TYPE;
   [AI_PIPELINE_NAME]?: AI_PIPELINE_NAME_TYPE;
   [AI_PREAMBLE]?: AI_PREAMBLE_TYPE;
   [AI_PROMPT_TOKENS_USED]?: AI_PROMPT_TOKENS_USED_TYPE;
