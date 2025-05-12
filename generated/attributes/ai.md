@@ -21,7 +21,6 @@
   - [ai.responses](#airesponses)
   - [ai.search_queries](#aisearch_queries)
   - [ai.search_results](#aisearch_results)
-  - [ai.seed](#aiseed)
   - [ai.streaming](#aistreaming)
   - [ai.tags](#aitags)
   - [ai.temperature](#aitemperature)
@@ -36,6 +35,7 @@
 - [Deprecated Attributes](#deprecated-attributes)
   - [ai.frequency_penalty](#aifrequency_penalty)
   - [ai.presence_penalty](#aipresence_penalty)
+  - [ai.seed](#aiseed)
 
 ## Stable Attributes
 
@@ -241,17 +241,6 @@ Results returned from search queries for context.
 | Exists in OpenTelemetry | No |
 | Example | `["search_result_1, search_result_2"]` |
 
-### ai.seed
-
-The seed, ideally models given the same seed and same other parameters will produce the exact same output.
-
-| Property | Value |
-| --- | --- |
-| Type | `string` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `1234567890` |
-
 ### ai.streaming
 
 Whether the request was streamed back.
@@ -400,4 +389,16 @@ Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty,
 | Exists in OpenTelemetry | No |
 | Example | `0.5` |
 | Deprecated | Yes, use `gen_ai.request.presence_penalty` instead |
+
+### ai.seed
+
+The seed, ideally models given the same seed and same other parameters will produce the exact same output.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `1234567890` |
+| Deprecated | Yes, use `gen_ai.request.seed` instead |
 

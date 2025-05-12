@@ -421,6 +421,7 @@ export type AI_SEARCH_RESULTS_TYPE = Array<string>;
  *
  * Attribute defined in OTEL: No
  *
+ * @deprecated Use {@link GEN_AI_REQUEST_SEED} (gen_ai.request.seed) instead
  * @example "1234567890"
  */
 export const AI_SEED = 'ai.seed';
@@ -1862,6 +1863,28 @@ export const GEN_AI_REQUEST_PRESENCE_PENALTY = 'gen_ai.request.presence_penalty'
  * Type for {@link GEN_AI_REQUEST_PRESENCE_PENALTY} gen_ai.request.presence_penalty
  */
 export type GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__request__seed.json
+
+/**
+ * The seed, ideally models given the same seed and same other parameters will produce the exact same output. `gen_ai.request.seed`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_REQUEST_SEED_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * Aliases: {@link AI_SEED} `ai.seed`
+ *
+ * @example "1234567890"
+ */
+export const GEN_AI_REQUEST_SEED = 'gen_ai.request.seed';
+
+/**
+ * Type for {@link GEN_AI_REQUEST_SEED} gen_ai.request.seed
+ */
+export type GEN_AI_REQUEST_SEED_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__response__model.json
 
@@ -5355,7 +5378,6 @@ export type Attributes = {
   [AI_RESPONSES]?: AI_RESPONSES_TYPE;
   [AI_SEARCH_QUERIES]?: AI_SEARCH_QUERIES_TYPE;
   [AI_SEARCH_RESULTS]?: AI_SEARCH_RESULTS_TYPE;
-  [AI_SEED]?: AI_SEED_TYPE;
   [AI_STREAMING]?: AI_STREAMING_TYPE;
   [AI_TAGS]?: AI_TAGS_TYPE;
   [AI_TEMPERATURE]?: AI_TEMPERATURE_TYPE;
@@ -5414,6 +5436,7 @@ export type Attributes = {
   [GEN_AI_PROMPT]?: GEN_AI_PROMPT_TYPE;
   [GEN_AI_REQUEST_FREQUENCY_PENALTY]?: GEN_AI_REQUEST_FREQUENCY_PENALTY_TYPE;
   [GEN_AI_REQUEST_PRESENCE_PENALTY]?: GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE;
+  [GEN_AI_REQUEST_SEED]?: GEN_AI_REQUEST_SEED_TYPE;
   [GEN_AI_RESPONSE_MODEL]?: GEN_AI_RESPONSE_MODEL_TYPE;
   [GEN_AI_USAGE_INPUT_TOKENS]?: GEN_AI_USAGE_INPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_OUTPUT_TOKENS]?: GEN_AI_USAGE_OUTPUT_TOKENS_TYPE;
@@ -5635,6 +5658,7 @@ export type FullAttributes = {
   [GEN_AI_PROMPT]?: GEN_AI_PROMPT_TYPE;
   [GEN_AI_REQUEST_FREQUENCY_PENALTY]?: GEN_AI_REQUEST_FREQUENCY_PENALTY_TYPE;
   [GEN_AI_REQUEST_PRESENCE_PENALTY]?: GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE;
+  [GEN_AI_REQUEST_SEED]?: GEN_AI_REQUEST_SEED_TYPE;
   [GEN_AI_RESPONSE_MODEL]?: GEN_AI_RESPONSE_MODEL_TYPE;
   [GEN_AI_USAGE_COMPLETION_TOKENS]?: GEN_AI_USAGE_COMPLETION_TOKENS_TYPE;
   [GEN_AI_USAGE_INPUT_TOKENS]?: GEN_AI_USAGE_INPUT_TOKENS_TYPE;

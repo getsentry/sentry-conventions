@@ -6,6 +6,7 @@
   - [gen_ai.prompt](#gen_aiprompt)
   - [gen_ai.request.frequency_penalty](#gen_airequestfrequency_penalty)
   - [gen_ai.request.presence_penalty](#gen_airequestpresence_penalty)
+  - [gen_ai.request.seed](#gen_airequestseed)
   - [gen_ai.response.model](#gen_airesponsemodel)
   - [gen_ai.usage.input_tokens](#gen_aiusageinput_tokens)
   - [gen_ai.usage.output_tokens](#gen_aiusageoutput_tokens)
@@ -49,6 +50,18 @@ Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty,
 | Exists in OpenTelemetry | Yes |
 | Example | `0.5` |
 | Aliases | `ai.presence_penalty` |
+
+### gen_ai.request.seed
+
+The seed, ideally models given the same seed and same other parameters will produce the exact same output.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | Yes |
+| Example | `1234567890` |
+| Aliases | `ai.seed` |
 
 ### gen_ai.response.model
 
