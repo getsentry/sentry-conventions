@@ -1,0 +1,13 @@
+{
+  "key": "gen_ai.request.temperature",
+  "brief": "For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.",
+  "type": "double",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": 0.1,
+  "alias": [
+    "ai.temperature"
+  ]
+}
