@@ -7,9 +7,6 @@
   },
   "is_in_otel": false,
   "example": "openai",
-  "alias": [
-    "gen_ai.system"
-  ],
   "deprecation": {
     "replacement": "gen_ai.system"
   }
