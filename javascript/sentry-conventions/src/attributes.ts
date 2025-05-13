@@ -5,19 +5,20 @@
 /**
  * References or sources cited by the AI model in its response. `ai.citations`
  *
- * Attribute Value Type: `string` {@link AI_CITATIONS_TYPE}
+ * Attribute Value Type: `Array<string>` {@link AI_CITATIONS_TYPE}
  *
  * Contains PII: true
  *
  * Attribute defined in OTEL: No
  *
+ * @example ["Citation 1","Citation 2"]
  */
 export const AI_CITATIONS = 'ai.citations';
 
 /**
  * Type for {@link AI_CITATIONS} ai.citations
  */
-export type AI_CITATIONS_TYPE = string;
+export type AI_CITATIONS_TYPE = Array<string>;
 
 // Path: model/attributes/ai/ai__completion_tokens__used.json
 
@@ -32,6 +33,7 @@ export type AI_CITATIONS_TYPE = string;
  *
  * Aliases: {@link GEN_AI_USAGE_OUTPUT_TOKENS} `gen_ai.usage.output_tokens`, {@link GEN_AI_USAGE_COMPLETION_TOKENS} `gen_ai.usage.completion_tokens`
  *
+ * @deprecated Use {@link GEN_AI_USAGE_OUTPUT_TOKENS} (gen_ai.usage.output_tokens) instead
  * @example 10
  */
 export const AI_COMPLETION_TOKENS_USED = 'ai.completion_tokens.used';
@@ -72,6 +74,7 @@ export type AI_DOCUMENTS_TYPE = Array<string>;
  *
  * Attribute defined in OTEL: No
  *
+ * @deprecated Use {@link GEN_AI_RESPONSE_FINISH_REASON} (gen_ai.response.finish_reason) instead
  * @example "COMPLETE"
  */
 export const AI_FINISH_REASON = 'ai.finish_reason';
@@ -92,6 +95,7 @@ export type AI_FINISH_REASON_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
+ * @deprecated Use {@link GEN_AI_REQUEST_FREQUENCY_PENALTY} (gen_ai.request.frequency_penalty) instead
  * @example 0.5
  */
 export const AI_FREQUENCY_PENALTY = 'ai.frequency_penalty';
@@ -112,6 +116,7 @@ export type AI_FREQUENCY_PENALTY_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
+ * @deprecated Use {@link GEN_AI_TOOL_NAME} (gen_ai.tool.name) instead
  * @example "function_name"
  */
 export const AI_FUNCTION_CALL = 'ai.function_call';
@@ -132,6 +137,7 @@ export type AI_FUNCTION_CALL_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
+ * @deprecated Use {@link GEN_AI_RESPONSE_ID} (gen_ai.response.id) instead
  * @example "gen_123abc"
  */
 export const AI_GENERATION_ID = 'ai.generation_id';
@@ -203,6 +209,27 @@ export const AI_METADATA = 'ai.metadata';
  */
 export type AI_METADATA_TYPE = string;
 
+// Path: model/attributes/ai/ai__model__provider.json
+
+/**
+ * The provider of the model. `ai.model.provider`
+ *
+ * Attribute Value Type: `string` {@link AI_MODEL_PROVIDER_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @deprecated Use {@link GEN_AI_SYSTEM} (gen_ai.system) instead
+ * @example "openai"
+ */
+export const AI_MODEL_PROVIDER = 'ai.model.provider';
+
+/**
+ * Type for {@link AI_MODEL_PROVIDER} ai.model.provider
+ */
+export type AI_MODEL_PROVIDER_TYPE = string;
+
 // Path: model/attributes/ai/ai__model_id.json
 
 /**
@@ -216,6 +243,7 @@ export type AI_METADATA_TYPE = string;
  *
  * Aliases: {@link GEN_AI_RESPONSE_MODEL} `gen_ai.response.model`
  *
+ * @deprecated Use {@link GEN_AI_RESPONSE_MODEL} (gen_ai.response.model) instead
  * @example "gpt-4"
  */
 export const AI_MODEL_ID = 'ai.model_id';
@@ -276,6 +304,7 @@ export type AI_PREAMBLE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
+ * @deprecated Use {@link GEN_AI_REQUEST_PRESENCE_PENALTY} (gen_ai.request.presence_penalty) instead
  * @example 0.5
  */
 export const AI_PRESENCE_PENALTY = 'ai.presence_penalty';
@@ -298,6 +327,7 @@ export type AI_PRESENCE_PENALTY_TYPE = number;
  *
  * Aliases: {@link GEN_AI_USAGE_PROMPT_TOKENS} `gen_ai.usage.prompt_tokens`, {@link GEN_AI_USAGE_INPUT_TOKENS} `gen_ai.usage.input_tokens`
  *
+ * @deprecated Use {@link GEN_AI_USAGE_INPUT_TOKENS} (gen_ai.usage.input_tokens) instead
  * @example 20
  */
 export const AI_PROMPT_TOKENS_USED = 'ai.prompt_tokens.used';
@@ -418,6 +448,7 @@ export type AI_SEARCH_RESULTS_TYPE = Array<string>;
  *
  * Attribute defined in OTEL: No
  *
+ * @deprecated Use {@link GEN_AI_REQUEST_SEED} (gen_ai.request.seed) instead
  * @example "1234567890"
  */
 export const AI_SEED = 'ai.seed';
@@ -478,6 +509,7 @@ export type AI_TAGS_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
+ * @deprecated Use {@link GEN_AI_REQUEST_TEMPERATURE} (gen_ai.request.temperature) instead
  * @example 0.1
  */
 export const AI_TEMPERATURE = 'ai.temperature';
@@ -550,7 +582,7 @@ export type AI_TOOLS_TYPE = Array<string>;
 // Path: model/attributes/ai/ai__top_k.json
 
 /**
- *  Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered). `ai.top_k`
+ * Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered). `ai.top_k`
  *
  * Attribute Value Type: `number` {@link AI_TOP_K_TYPE}
  *
@@ -558,6 +590,7 @@ export type AI_TOOLS_TYPE = Array<string>;
  *
  * Attribute defined in OTEL: No
  *
+ * @deprecated Use {@link GEN_AI_REQUEST_TOP_K} (gen_ai.request.top_k) instead
  * @example 35
  */
 export const AI_TOP_K = 'ai.top_k';
@@ -578,6 +611,7 @@ export type AI_TOP_K_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
+ * @deprecated Use {@link GEN_AI_REQUEST_TOP_P} (gen_ai.request.top_p) instead
  * @example 0.7
  */
 export const AI_TOP_P = 'ai.top_p';
@@ -618,6 +652,7 @@ export type AI_TOTAL_COST_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
+ * @deprecated Use {@link GEN_AI_USAGE_TOTAL_TOKENS} (gen_ai.usage.total_tokens) instead
  * @example 30
  */
 export const AI_TOTAL_TOKENS_USED = 'ai.total_tokens.used';
@@ -1816,6 +1851,182 @@ export const GEN_AI_PROMPT = 'gen_ai.prompt';
  */
 export type GEN_AI_PROMPT_TYPE = string;
 
+// Path: model/attributes/gen_ai/gen_ai__request__frequency_penalty.json
+
+/**
+ * Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation. `gen_ai.request.frequency_penalty`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_REQUEST_FREQUENCY_PENALTY_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * Aliases: {@link AI_FREQUENCY_PENALTY} `ai.frequency_penalty`
+ *
+ * @example 0.5
+ */
+export const GEN_AI_REQUEST_FREQUENCY_PENALTY = 'gen_ai.request.frequency_penalty';
+
+/**
+ * Type for {@link GEN_AI_REQUEST_FREQUENCY_PENALTY} gen_ai.request.frequency_penalty
+ */
+export type GEN_AI_REQUEST_FREQUENCY_PENALTY_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__request__presence_penalty.json
+
+/**
+ * Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies. `gen_ai.request.presence_penalty`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * Aliases: {@link AI_PRESENCE_PENALTY} `ai.presence_penalty`
+ *
+ * @example 0.5
+ */
+export const GEN_AI_REQUEST_PRESENCE_PENALTY = 'gen_ai.request.presence_penalty';
+
+/**
+ * Type for {@link GEN_AI_REQUEST_PRESENCE_PENALTY} gen_ai.request.presence_penalty
+ */
+export type GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__request__seed.json
+
+/**
+ * The seed, ideally models given the same seed and same other parameters will produce the exact same output. `gen_ai.request.seed`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_REQUEST_SEED_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * Aliases: {@link AI_SEED} `ai.seed`
+ *
+ * @example "1234567890"
+ */
+export const GEN_AI_REQUEST_SEED = 'gen_ai.request.seed';
+
+/**
+ * Type for {@link GEN_AI_REQUEST_SEED} gen_ai.request.seed
+ */
+export type GEN_AI_REQUEST_SEED_TYPE = string;
+
+// Path: model/attributes/gen_ai/gen_ai__request__temperature.json
+
+/**
+ * For an AI model call, the temperature parameter. Temperature essentially means how random the output will be. `gen_ai.request.temperature`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_REQUEST_TEMPERATURE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * Aliases: {@link AI_TEMPERATURE} `ai.temperature`
+ *
+ * @example 0.1
+ */
+export const GEN_AI_REQUEST_TEMPERATURE = 'gen_ai.request.temperature';
+
+/**
+ * Type for {@link GEN_AI_REQUEST_TEMPERATURE} gen_ai.request.temperature
+ */
+export type GEN_AI_REQUEST_TEMPERATURE_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__request__top_k.json
+
+/**
+ * Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered). `gen_ai.request.top_k`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_REQUEST_TOP_K_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * Aliases: {@link AI_TOP_K} `ai.top_k`
+ *
+ * @example 35
+ */
+export const GEN_AI_REQUEST_TOP_K = 'gen_ai.request.top_k';
+
+/**
+ * Type for {@link GEN_AI_REQUEST_TOP_K} gen_ai.request.top_k
+ */
+export type GEN_AI_REQUEST_TOP_K_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__request__top_p.json
+
+/**
+ * Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered). `gen_ai.request.top_p`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_REQUEST_TOP_P_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * Aliases: {@link AI_TOP_P} `ai.top_p`
+ *
+ * @example 0.7
+ */
+export const GEN_AI_REQUEST_TOP_P = 'gen_ai.request.top_p';
+
+/**
+ * Type for {@link GEN_AI_REQUEST_TOP_P} gen_ai.request.top_p
+ */
+export type GEN_AI_REQUEST_TOP_P_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__response__finish_reasons.json
+
+/**
+ * The reason why the model stopped generating. `gen_ai.response.finish_reasons`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_RESPONSE_FINISH_REASONS_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * Aliases: {@link AI_FINISH_REASON} `ai.finish_reason`
+ *
+ * @example "COMPLETE"
+ */
+export const GEN_AI_RESPONSE_FINISH_REASONS = 'gen_ai.response.finish_reasons';
+
+/**
+ * Type for {@link GEN_AI_RESPONSE_FINISH_REASONS} gen_ai.response.finish_reasons
+ */
+export type GEN_AI_RESPONSE_FINISH_REASONS_TYPE = string;
+
+// Path: model/attributes/gen_ai/gen_ai__response__id.json
+
+/**
+ * Unique identifier for the completion. `gen_ai.response.id`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_RESPONSE_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * Aliases: {@link AI_GENERATION_ID} `ai.generation_id`
+ *
+ * @example "gen_123abc"
+ */
+export const GEN_AI_RESPONSE_ID = 'gen_ai.response.id';
+
+/**
+ * Type for {@link GEN_AI_RESPONSE_ID} gen_ai.response.id
+ */
+export type GEN_AI_RESPONSE_ID_TYPE = string;
+
 // Path: model/attributes/gen_ai/gen_ai__response__model.json
 
 /**
@@ -1837,6 +2048,50 @@ export const GEN_AI_RESPONSE_MODEL = 'gen_ai.response.model';
  * Type for {@link GEN_AI_RESPONSE_MODEL} gen_ai.response.model
  */
 export type GEN_AI_RESPONSE_MODEL_TYPE = string;
+
+// Path: model/attributes/gen_ai/gen_ai__system.json
+
+/**
+ * The provider of the model. `gen_ai.system`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_SYSTEM_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * Aliases: {@link AI_MODEL_PROVIDER} `ai.model.provider`
+ *
+ * @example "openai"
+ */
+export const GEN_AI_SYSTEM = 'gen_ai.system';
+
+/**
+ * Type for {@link GEN_AI_SYSTEM} gen_ai.system
+ */
+export type GEN_AI_SYSTEM_TYPE = string;
+
+// Path: model/attributes/gen_ai/gen_ai__tool__name.json
+
+/**
+ * Name of the tool utilized by the agent. `gen_ai.tool.name`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_TOOL_NAME_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * Aliases: {@link AI_FUNCTION_CALL} `ai.function_call`
+ *
+ * @example "Flights"
+ */
+export const GEN_AI_TOOL_NAME = 'gen_ai.tool.name';
+
+/**
+ * Type for {@link GEN_AI_TOOL_NAME} gen_ai.tool.name
+ */
+export type GEN_AI_TOOL_NAME_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__usage__completion_tokens.json
 
@@ -1927,6 +2182,28 @@ export const GEN_AI_USAGE_PROMPT_TOKENS = 'gen_ai.usage.prompt_tokens';
  * Type for {@link GEN_AI_USAGE_PROMPT_TOKENS} gen_ai.usage.prompt_tokens
  */
 export type GEN_AI_USAGE_PROMPT_TOKENS_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__usage__total_tokens.json
+
+/**
+ * The total number of tokens used to process the prompt. (input tokens plus output todkens) `gen_ai.usage.total_tokens`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_USAGE_TOTAL_TOKENS_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link AI_TOTAL_TOKENS_USED} `ai.total_tokens.used`
+ *
+ * @example 20
+ */
+export const GEN_AI_USAGE_TOTAL_TOKENS = 'gen_ai.usage.total_tokens';
+
+/**
+ * Type for {@link GEN_AI_USAGE_TOTAL_TOKENS} gen_ai.usage.total_tokens
+ */
+export type GEN_AI_USAGE_TOTAL_TOKENS_TYPE = number;
 
 // Path: model/attributes/graphql/graphql__operation__name.json
 
@@ -5291,36 +5568,23 @@ export type AttributeValue = string | number | boolean | Array<string> | Array<n
 
 export type Attributes = {
   [AI_CITATIONS]?: AI_CITATIONS_TYPE;
-  [AI_COMPLETION_TOKENS_USED]?: AI_COMPLETION_TOKENS_USED_TYPE;
   [AI_DOCUMENTS]?: AI_DOCUMENTS_TYPE;
-  [AI_FINISH_REASON]?: AI_FINISH_REASON_TYPE;
-  [AI_FREQUENCY_PENALTY]?: AI_FREQUENCY_PENALTY_TYPE;
-  [AI_FUNCTION_CALL]?: AI_FUNCTION_CALL_TYPE;
-  [AI_GENERATION_ID]?: AI_GENERATION_ID_TYPE;
   [AI_INPUT_MESSAGES]?: AI_INPUT_MESSAGES_TYPE;
   [AI_IS_SEARCH_REQUIRED]?: AI_IS_SEARCH_REQUIRED_TYPE;
   [AI_METADATA]?: AI_METADATA_TYPE;
-  [AI_MODEL_ID]?: AI_MODEL_ID_TYPE;
   [AI_PIPELINE_NAME]?: AI_PIPELINE_NAME_TYPE;
   [AI_PREAMBLE]?: AI_PREAMBLE_TYPE;
-  [AI_PRESENCE_PENALTY]?: AI_PRESENCE_PENALTY_TYPE;
-  [AI_PROMPT_TOKENS_USED]?: AI_PROMPT_TOKENS_USED_TYPE;
   [AI_RAW_PROMPTING]?: AI_RAW_PROMPTING_TYPE;
   [AI_RESPONSE_FORMAT]?: AI_RESPONSE_FORMAT_TYPE;
   [AI_RESPONSES]?: AI_RESPONSES_TYPE;
   [AI_SEARCH_QUERIES]?: AI_SEARCH_QUERIES_TYPE;
   [AI_SEARCH_RESULTS]?: AI_SEARCH_RESULTS_TYPE;
-  [AI_SEED]?: AI_SEED_TYPE;
   [AI_STREAMING]?: AI_STREAMING_TYPE;
   [AI_TAGS]?: AI_TAGS_TYPE;
-  [AI_TEMPERATURE]?: AI_TEMPERATURE_TYPE;
   [AI_TEXTS]?: AI_TEXTS_TYPE;
   [AI_TOOL_CALLS]?: AI_TOOL_CALLS_TYPE;
   [AI_TOOLS]?: AI_TOOLS_TYPE;
-  [AI_TOP_K]?: AI_TOP_K_TYPE;
-  [AI_TOP_P]?: AI_TOP_P_TYPE;
   [AI_TOTAL_COST]?: AI_TOTAL_COST_TYPE;
-  [AI_TOTAL_TOKENS_USED]?: AI_TOTAL_TOKENS_USED_TYPE;
   [AI_WARNINGS]?: AI_WARNINGS_TYPE;
   [APP_START_TYPE]?: APP_START_TYPE_TYPE;
   [BLOCKED_MAIN_THREAD]?: BLOCKED_MAIN_THREAD_TYPE;
@@ -5367,9 +5631,20 @@ export type Attributes = {
   [FRAMES_SLOW]?: FRAMES_SLOW_TYPE;
   [FRAMES_TOTAL]?: FRAMES_TOTAL_TYPE;
   [GEN_AI_PROMPT]?: GEN_AI_PROMPT_TYPE;
+  [GEN_AI_REQUEST_FREQUENCY_PENALTY]?: GEN_AI_REQUEST_FREQUENCY_PENALTY_TYPE;
+  [GEN_AI_REQUEST_PRESENCE_PENALTY]?: GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE;
+  [GEN_AI_REQUEST_SEED]?: GEN_AI_REQUEST_SEED_TYPE;
+  [GEN_AI_REQUEST_TEMPERATURE]?: GEN_AI_REQUEST_TEMPERATURE_TYPE;
+  [GEN_AI_REQUEST_TOP_K]?: GEN_AI_REQUEST_TOP_K_TYPE;
+  [GEN_AI_REQUEST_TOP_P]?: GEN_AI_REQUEST_TOP_P_TYPE;
+  [GEN_AI_RESPONSE_FINISH_REASONS]?: GEN_AI_RESPONSE_FINISH_REASONS_TYPE;
+  [GEN_AI_RESPONSE_ID]?: GEN_AI_RESPONSE_ID_TYPE;
   [GEN_AI_RESPONSE_MODEL]?: GEN_AI_RESPONSE_MODEL_TYPE;
+  [GEN_AI_SYSTEM]?: GEN_AI_SYSTEM_TYPE;
+  [GEN_AI_TOOL_NAME]?: GEN_AI_TOOL_NAME_TYPE;
   [GEN_AI_USAGE_INPUT_TOKENS]?: GEN_AI_USAGE_INPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_OUTPUT_TOKENS]?: GEN_AI_USAGE_OUTPUT_TOKENS_TYPE;
+  [GEN_AI_USAGE_TOTAL_TOKENS]?: GEN_AI_USAGE_TOTAL_TOKENS_TYPE;
   [GRAPHQL_OPERATION_NAME]?: GRAPHQL_OPERATION_NAME_TYPE;
   [GRAPHQL_OPERATION_TYPE]?: GRAPHQL_OPERATION_TYPE_TYPE;
   [HTTP_DECODED_RESPONSE_CONTENT_LENGTH]?: HTTP_DECODED_RESPONSE_CONTENT_LENGTH_TYPE;
@@ -5508,6 +5783,7 @@ export type FullAttributes = {
   [AI_INPUT_MESSAGES]?: AI_INPUT_MESSAGES_TYPE;
   [AI_IS_SEARCH_REQUIRED]?: AI_IS_SEARCH_REQUIRED_TYPE;
   [AI_METADATA]?: AI_METADATA_TYPE;
+  [AI_MODEL_PROVIDER]?: AI_MODEL_PROVIDER_TYPE;
   [AI_MODEL_ID]?: AI_MODEL_ID_TYPE;
   [AI_PIPELINE_NAME]?: AI_PIPELINE_NAME_TYPE;
   [AI_PREAMBLE]?: AI_PREAMBLE_TYPE;
@@ -5586,11 +5862,22 @@ export type FullAttributes = {
   [FRAMES_TOTAL]?: FRAMES_TOTAL_TYPE;
   [FS_ERROR]?: FS_ERROR_TYPE;
   [GEN_AI_PROMPT]?: GEN_AI_PROMPT_TYPE;
+  [GEN_AI_REQUEST_FREQUENCY_PENALTY]?: GEN_AI_REQUEST_FREQUENCY_PENALTY_TYPE;
+  [GEN_AI_REQUEST_PRESENCE_PENALTY]?: GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE;
+  [GEN_AI_REQUEST_SEED]?: GEN_AI_REQUEST_SEED_TYPE;
+  [GEN_AI_REQUEST_TEMPERATURE]?: GEN_AI_REQUEST_TEMPERATURE_TYPE;
+  [GEN_AI_REQUEST_TOP_K]?: GEN_AI_REQUEST_TOP_K_TYPE;
+  [GEN_AI_REQUEST_TOP_P]?: GEN_AI_REQUEST_TOP_P_TYPE;
+  [GEN_AI_RESPONSE_FINISH_REASONS]?: GEN_AI_RESPONSE_FINISH_REASONS_TYPE;
+  [GEN_AI_RESPONSE_ID]?: GEN_AI_RESPONSE_ID_TYPE;
   [GEN_AI_RESPONSE_MODEL]?: GEN_AI_RESPONSE_MODEL_TYPE;
+  [GEN_AI_SYSTEM]?: GEN_AI_SYSTEM_TYPE;
+  [GEN_AI_TOOL_NAME]?: GEN_AI_TOOL_NAME_TYPE;
   [GEN_AI_USAGE_COMPLETION_TOKENS]?: GEN_AI_USAGE_COMPLETION_TOKENS_TYPE;
   [GEN_AI_USAGE_INPUT_TOKENS]?: GEN_AI_USAGE_INPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_OUTPUT_TOKENS]?: GEN_AI_USAGE_OUTPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_PROMPT_TOKENS]?: GEN_AI_USAGE_PROMPT_TOKENS_TYPE;
+  [GEN_AI_USAGE_TOTAL_TOKENS]?: GEN_AI_USAGE_TOTAL_TOKENS_TYPE;
   [GRAPHQL_OPERATION_NAME]?: GRAPHQL_OPERATION_NAME_TYPE;
   [GRAPHQL_OPERATION_TYPE]?: GRAPHQL_OPERATION_TYPE_TYPE;
   [HTTP_CLIENT_IP]?: HTTP_CLIENT_IP_TYPE;

@@ -1,0 +1,11 @@
+{
+  "key": "gen_ai.tool.name",
+  "brief": "Name of the tool utilized by the agent.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "Flights",
+  "alias": ["ai.function_call"]
+}

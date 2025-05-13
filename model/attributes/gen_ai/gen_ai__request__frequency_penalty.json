@@ -1,13 +1,11 @@
 {
-  "key": "ai.frequency_penalty",
+  "key": "gen_ai.request.frequency_penalty",
   "brief": "Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.",
   "type": "double",
   "pii": {
     "key": "false"
   },
-  "is_in_otel": false,
+  "is_in_otel": true,
   "example": 0.5,
-  "deprecation": {
-    "replacement": "gen_ai.request.frequency_penalty"
-  }
+  "alias": ["ai.frequency_penalty"]
 }

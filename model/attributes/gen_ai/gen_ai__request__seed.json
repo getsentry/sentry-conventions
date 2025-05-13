@@ -1,13 +1,11 @@
 {
-  "key": "ai.seed",
+  "key": "gen_ai.request.seed",
   "brief": "The seed, ideally models given the same seed and same other parameters will produce the exact same output.",
   "type": "string",
   "pii": {
     "key": "false"
   },
-  "is_in_otel": false,
+  "is_in_otel": true,
   "example": "1234567890",
-  "deprecation": {
-    "replacement": "gen_ai.request.seed"
-  }
+  "alias": ["ai.seed"]
 }

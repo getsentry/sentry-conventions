@@ -8,5 +8,8 @@
   "is_in_otel": false,
   "example": "gpt-4",
   "alias": ["gen_ai.response.model"],
-  "sdks": ["python"]
+  "sdks": ["python"],
+  "deprecation": {
+    "replacement": "gen_ai.response.model"
+  }
 }
