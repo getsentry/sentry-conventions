@@ -7,6 +7,7 @@
   - [browser.script.invoker](#browserscriptinvoker)
   - [browser.script.invoker_type](#browserscriptinvoker_type)
   - [browser.script.source_char_position](#browserscriptsource_char_position)
+  - [browser.version](#browserversion)
 
 ## Stable Attributes
 
@@ -53,4 +54,15 @@ A number representing the script character position of the script.
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `678` |
+
+### browser.version
+
+The version of the browser.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `120.0.6099.130` |
 
