@@ -1,0 +1,10 @@
+{
+  "key": "browser.version",
+  "brief": "The version of the browser.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "120.0.6099.130"
+}

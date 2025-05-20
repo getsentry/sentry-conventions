@@ -802,6 +802,26 @@ export const BROWSER_SCRIPT_SOURCE_CHAR_POSITION = 'browser.script.source_char_p
  */
 export type BROWSER_SCRIPT_SOURCE_CHAR_POSITION_TYPE = number;
 
+// Path: model/attributes/browser/browser__version.json
+
+/**
+ * The version of the browser. `browser.version`
+ *
+ * Attribute Value Type: `string` {@link BROWSER_VERSION_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "120.0.6099.130"
+ */
+export const BROWSER_VERSION = 'browser.version';
+
+/**
+ * Type for {@link BROWSER_VERSION} browser.version
+ */
+export type BROWSER_VERSION_TYPE = string;
+
 // Path: model/attributes/cache/cache__hit.json
 
 /**
@@ -5592,6 +5612,7 @@ export type Attributes = {
   [BROWSER_SCRIPT_INVOKER]?: BROWSER_SCRIPT_INVOKER_TYPE;
   [BROWSER_SCRIPT_INVOKER_TYPE]?: BROWSER_SCRIPT_INVOKER_TYPE_TYPE;
   [BROWSER_SCRIPT_SOURCE_CHAR_POSITION]?: BROWSER_SCRIPT_SOURCE_CHAR_POSITION_TYPE;
+  [BROWSER_VERSION]?: BROWSER_VERSION_TYPE;
   [CACHE_HIT]?: CACHE_HIT_TYPE;
   [CACHE_ITEM_SIZE]?: CACHE_ITEM_SIZE_TYPE;
   [CACHE_KEY]?: CACHE_KEY_TYPE;
@@ -5812,6 +5833,7 @@ export type FullAttributes = {
   [BROWSER_SCRIPT_INVOKER]?: BROWSER_SCRIPT_INVOKER_TYPE;
   [BROWSER_SCRIPT_INVOKER_TYPE]?: BROWSER_SCRIPT_INVOKER_TYPE_TYPE;
   [BROWSER_SCRIPT_SOURCE_CHAR_POSITION]?: BROWSER_SCRIPT_SOURCE_CHAR_POSITION_TYPE;
+  [BROWSER_VERSION]?: BROWSER_VERSION_TYPE;
   [CACHE_HIT]?: CACHE_HIT_TYPE;
   [CACHE_ITEM_SIZE]?: CACHE_ITEM_SIZE_TYPE;
   [CACHE_KEY]?: CACHE_KEY_TYPE;
