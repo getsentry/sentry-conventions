@@ -17,6 +17,7 @@
   - [gen_ai.tool.name](#gen_aitoolname)
   - [gen_ai.usage.input_tokens](#gen_aiusageinput_tokens)
   - [gen_ai.usage.output_tokens](#gen_aiusageoutput_tokens)
+  - [gen_ai.usage.total_cost](#gen_aiusagetotal_cost)
   - [gen_ai.usage.total_tokens](#gen_aiusagetotal_tokens)
 - [Deprecated Attributes](#deprecated-attributes)
   - [gen_ai.usage.completion_tokens](#gen_aiusagecompletion_tokens)
@@ -190,6 +191,17 @@ The number of tokens used in the GenAI response (completion).
 | Exists in OpenTelemetry | Yes |
 | Example | `10` |
 | Aliases | `ai.completion_tokens.used`, `gen_ai.usage.completion_tokens` |
+
+### gen_ai.usage.total_cost
+
+The total cost for the tokens used.
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `12.34` |
 
 ### gen_ai.usage.total_tokens
 

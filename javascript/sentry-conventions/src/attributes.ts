@@ -2203,6 +2203,26 @@ export const GEN_AI_USAGE_PROMPT_TOKENS = 'gen_ai.usage.prompt_tokens';
  */
 export type GEN_AI_USAGE_PROMPT_TOKENS_TYPE = number;
 
+// Path: model/attributes/gen_ai/gen_ai__usage__total_cost.json
+
+/**
+ * The total cost for the tokens used. `gen_ai.usage.total_cost`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_USAGE_TOTAL_COST_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 12.34
+ */
+export const GEN_AI_USAGE_TOTAL_COST = 'gen_ai.usage.total_cost';
+
+/**
+ * Type for {@link GEN_AI_USAGE_TOTAL_COST} gen_ai.usage.total_cost
+ */
+export type GEN_AI_USAGE_TOTAL_COST_TYPE = number;
+
 // Path: model/attributes/gen_ai/gen_ai__usage__total_tokens.json
 
 /**
@@ -5665,6 +5685,7 @@ export type Attributes = {
   [GEN_AI_TOOL_NAME]?: GEN_AI_TOOL_NAME_TYPE;
   [GEN_AI_USAGE_INPUT_TOKENS]?: GEN_AI_USAGE_INPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_OUTPUT_TOKENS]?: GEN_AI_USAGE_OUTPUT_TOKENS_TYPE;
+  [GEN_AI_USAGE_TOTAL_COST]?: GEN_AI_USAGE_TOTAL_COST_TYPE;
   [GEN_AI_USAGE_TOTAL_TOKENS]?: GEN_AI_USAGE_TOTAL_TOKENS_TYPE;
   [GRAPHQL_OPERATION_NAME]?: GRAPHQL_OPERATION_NAME_TYPE;
   [GRAPHQL_OPERATION_TYPE]?: GRAPHQL_OPERATION_TYPE_TYPE;
@@ -5899,6 +5920,7 @@ export type FullAttributes = {
   [GEN_AI_USAGE_INPUT_TOKENS]?: GEN_AI_USAGE_INPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_OUTPUT_TOKENS]?: GEN_AI_USAGE_OUTPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_PROMPT_TOKENS]?: GEN_AI_USAGE_PROMPT_TOKENS_TYPE;
+  [GEN_AI_USAGE_TOTAL_COST]?: GEN_AI_USAGE_TOTAL_COST_TYPE;
   [GEN_AI_USAGE_TOTAL_TOKENS]?: GEN_AI_USAGE_TOTAL_TOKENS_TYPE;
   [GRAPHQL_OPERATION_NAME]?: GRAPHQL_OPERATION_NAME_TYPE;
   [GRAPHQL_OPERATION_TYPE]?: GRAPHQL_OPERATION_TYPE_TYPE;
