@@ -80,6 +80,10 @@
         },
         "reason": {
           "type": "string"
+        },
+        "_status": {
+          "description": "How the attribute should be handled in the ingestion pipeline. The attribute should be backfilled for 90 days before status is set to normalize.",
+          "enum": ["backfill", "normalize"]
         }
       },
       "required": ["replacement"]

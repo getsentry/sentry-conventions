@@ -8,7 +8,8 @@
   "is_in_otel": false,
   "example": 456,
   "deprecation": {
-    "replacement": "http.response.size"
+    "replacement": "http.response.size",
+    "_status": "backfill"
   },
   "alias": ["http.response.size"]
 }
