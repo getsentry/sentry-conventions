@@ -10,6 +10,7 @@
       "is_in_otel": false,
       "example": "production",
       "deprecation": {
+        "_status": null,
         "replacement": "sentry.environment"
       },
       "alias": ["sentry.environment"]
@@ -23,6 +24,7 @@
       },
       "is_in_otel": false,
       "deprecation": {
+        "_status": null,
         "replacement": "error.type",
         "reason": "This attribute is not part of the OpenTelemetry specification and error.type fits much better."
       },
@@ -39,6 +41,7 @@
       "is_in_otel": false,
       "example": "GET",
       "deprecation": {
+        "_status": null,
         "replacement": "http.request.method"
       },
       "alias": ["http.request.method"],
@@ -54,6 +57,7 @@
       "is_in_otel": false,
       "example": "123e4567e89b12d3a456426614174000",
       "deprecation": {
+        "_status": null,
         "replacement": "sentry.profile_id"
       },
       "alias": ["sentry.profile_id"]
@@ -68,6 +72,7 @@
       "is_in_otel": false,
       "example": "production",
       "deprecation": {
+        "_status": null,
         "replacement": "sentry.release"
       },
       "alias": ["sentry.release"]
@@ -82,6 +87,7 @@
       "is_in_otel": false,
       "example": "123e4567e89b12d3a456426614174000",
       "deprecation": {
+        "_status": null,
         "replacement": "sentry.replay_id"
       },
       "alias": ["sentry.replay_id"]
@@ -96,6 +102,7 @@
       "is_in_otel": false,
       "example": "App\\Controller::indexAction",
       "deprecation": {
+        "_status": null,
         "replacement": "http.route"
       },
       "alias": ["http.route"],
@@ -111,6 +118,7 @@
       "is_in_otel": false,
       "example": "GET /",
       "deprecation": {
+        "_status": null,
         "replacement": "sentry.transaction"
       },
       "alias": ["sentry.transaction"]
@@ -125,6 +133,7 @@
       "is_in_otel": false,
       "example": "https://example.com/test?foo=bar#buzz",
       "deprecation": {
+        "_status": null,
         "replacement": "url.full"
       },
       "alias": ["url.full", "http.url"],
@@ -142,6 +151,7 @@
       "alias": ["gen_ai.usage.output_tokens", "gen_ai.usage.completion_tokens"],
       "sdks": ["python"],
       "deprecation": {
+        "_status": null,
         "replacement": "gen_ai.usage.output_tokens"
       }
     },
@@ -155,6 +165,7 @@
       "is_in_otel": false,
       "example": "COMPLETE",
       "deprecation": {
+        "_status": null,
         "replacement": "gen_ai.response.finish_reason"
       }
     },
@@ -168,6 +179,7 @@
       "is_in_otel": false,
       "example": 0.5,
       "deprecation": {
+        "_status": null,
         "replacement": "gen_ai.request.frequency_penalty"
       }
     },
@@ -181,6 +193,7 @@
       "is_in_otel": false,
       "example": "function_name",
       "deprecation": {
+        "_status": null,
         "replacement": "gen_ai.tool.name"
       }
     },
@@ -194,6 +207,7 @@
       "is_in_otel": false,
       "example": "gen_123abc",
       "deprecation": {
+        "_status": null,
         "replacement": "gen_ai.response.id"
       }
     },
@@ -207,6 +221,7 @@
       "is_in_otel": false,
       "example": "openai",
       "deprecation": {
+        "_status": null,
         "replacement": "gen_ai.system"
       }
     },
@@ -222,6 +237,7 @@
       "alias": ["gen_ai.response.model"],
       "sdks": ["python"],
       "deprecation": {
+        "_status": null,
         "replacement": "gen_ai.response.model"
       }
     },
@@ -235,6 +251,7 @@
       "is_in_otel": false,
       "example": 0.5,
       "deprecation": {
+        "_status": null,
         "replacement": "gen_ai.request.presence_penalty"
       }
     },
@@ -250,6 +267,7 @@
       "alias": ["gen_ai.usage.prompt_tokens", "gen_ai.usage.input_tokens"],
       "sdks": ["python"],
       "deprecation": {
+        "_status": null,
         "replacement": "gen_ai.usage.input_tokens"
       }
     },
@@ -263,6 +281,7 @@
       "is_in_otel": false,
       "example": "1234567890",
       "deprecation": {
+        "_status": null,
         "replacement": "gen_ai.request.seed"
       }
     },
@@ -276,6 +295,7 @@
       "is_in_otel": false,
       "example": 0.1,
       "deprecation": {
+        "_status": null,
         "replacement": "gen_ai.request.temperature"
       }
     },
@@ -289,6 +309,7 @@
       "is_in_otel": false,
       "example": 35,
       "deprecation": {
+        "_status": null,
         "replacement": "gen_ai.request.top_k"
       }
     },
@@ -302,6 +323,7 @@
       "is_in_otel": false,
       "example": 0.7,
       "deprecation": {
+        "_status": null,
         "replacement": "gen_ai.request.top_p"
       }
     },
@@ -316,6 +338,7 @@
       "example": 30,
       "sdks": ["python"],
       "deprecation": {
+        "_status": null,
         "replacement": "gen_ai.usage.total_tokens"
       }
     },
@@ -329,6 +352,7 @@
       "is_in_otel": true,
       "example": "/app/myapplication/http/handler/server.py",
       "deprecation": {
+        "_status": null,
         "replacement": "code.file.path"
       },
       "alias": ["code.file.path"]
@@ -343,6 +367,7 @@
       "is_in_otel": true,
       "example": "server_request",
       "deprecation": {
+        "_status": null,
         "replacement": "code.function.name"
       },
       "alias": ["code.function.name"]
@@ -357,6 +382,7 @@
       "is_in_otel": true,
       "example": 42,
       "deprecation": {
+        "_status": null,
         "replacement": "code.line.number"
       },
       "alias": ["code.lineno"]
@@ -371,6 +397,7 @@
       "is_in_otel": true,
       "example": "http.handler",
       "deprecation": {
+        "_status": null,
         "replacement": "code.function.name",
         "reason": "code.function.name should include the namespace."
       }
@@ -385,6 +412,7 @@
       "is_in_otel": true,
       "example": "customers",
       "deprecation": {
+        "_status": null,
         "replacement": "db.namespace"
       },
       "alias": ["db.namespace"]
@@ -399,6 +427,7 @@
       "is_in_otel": true,
       "example": "SELECT",
       "deprecation": {
+        "_status": null,
         "replacement": "db.operation.name"
       },
       "alias": ["db.operation.name"]
@@ -412,6 +441,7 @@
       },
       "is_in_otel": false,
       "deprecation": {
+        "_status": null,
         "replacement": "db.query.parameter.<key>",
         "reason": "Instead of adding every binding in the db.sql.bindings attribute, add them as individual entires with db.query.parameter.<key>."
       },
@@ -428,6 +458,7 @@
       "is_in_otel": true,
       "example": "SELECT * FROM users",
       "deprecation": {
+        "_status": null,
         "replacement": "db.query.text"
       },
       "alias": ["db.query.text"]
@@ -442,6 +473,7 @@
       "is_in_otel": true,
       "example": "postgresql",
       "deprecation": {
+        "_status": null,
         "replacement": "db.system.name"
       },
       "alias": ["db.system.name"]
@@ -456,6 +488,7 @@
       "is_in_otel": true,
       "example": 10,
       "deprecation": {
+        "_status": null,
         "replacement": "gen_ai.usage.output_tokens"
       },
       "alias": ["ai.completion_tokens.used", "gen_ai.usage.output_tokens"]
@@ -470,6 +503,7 @@
       "is_in_otel": true,
       "example": 20,
       "deprecation": {
+        "_status": null,
         "replacement": "gen_ai.usage.input_tokens"
       },
       "alias": ["ai.prompt_tokens.used", "gen_ai.usage.input_tokens"]
@@ -484,6 +518,7 @@
       "is_in_otel": true,
       "example": "example.com",
       "deprecation": {
+        "_status": null,
         "replacement": "http.client_ip"
       },
       "alias": ["client.address"]
@@ -498,6 +533,7 @@
       "is_in_otel": true,
       "example": "1.1",
       "deprecation": {
+        "_status": null,
         "replacement": "network.protocol.version"
       },
       "alias": ["network.protocol.version"]
@@ -512,6 +548,7 @@
       "is_in_otel": true,
       "example": "example.com",
       "deprecation": {
+        "_status": null,
         "replacement": "server.address",
         "reason": "Deprecated, use one of `server.address` or `client.address`, depending on the usage"
       },
@@ -527,6 +564,7 @@
       "is_in_otel": true,
       "example": "GET",
       "deprecation": {
+        "_status": null,
         "replacement": "http.request.method"
       },
       "alias": ["http.request.method"]
@@ -541,8 +579,8 @@
       "is_in_otel": true,
       "example": 123,
       "deprecation": {
-        "replacement": "http.response.body.size",
-        "_status": "backfill"
+        "_status": "backfill",
+        "replacement": "http.response.body.size"
       },
       "alias": [
         "http.response.body.size",
@@ -560,8 +598,8 @@
       "is_in_otel": false,
       "example": 456,
       "deprecation": {
-        "replacement": "http.response.size",
-        "_status": "backfill"
+        "_status": "backfill",
+        "replacement": "http.response.size"
       },
       "alias": ["http.response.size"]
     },
@@ -575,6 +613,7 @@
       "is_in_otel": true,
       "example": "https",
       "deprecation": {
+        "_status": null,
         "replacement": "url.scheme"
       },
       "alias": ["url.scheme"]
@@ -589,6 +628,7 @@
       "is_in_otel": true,
       "example": "example.com",
       "deprecation": {
+        "_status": null,
         "replacement": "server.address"
       },
       "alias": ["server.address"]
@@ -603,6 +643,7 @@
       "is_in_otel": true,
       "example": 404,
       "deprecation": {
+        "_status": null,
         "replacement": "http.response.status_code"
       },
       "alias": ["http.response.status_code"]
@@ -617,6 +658,7 @@
       "is_in_otel": true,
       "example": "/test?foo=bar#buzz",
       "deprecation": {
+        "_status": null,
         "replacement": "url.path",
         "reason": "This attribute is being deprecated in favor of url.path and url.query"
       }
@@ -631,6 +673,7 @@
       "is_in_otel": true,
       "example": "https://example.com/test?foo=bar#buzz",
       "deprecation": {
+        "_status": null,
         "replacement": "url.full"
       },
       "alias": ["url.full", "http.url"]
@@ -645,6 +688,7 @@
       "is_in_otel": true,
       "example": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1",
       "deprecation": {
+        "_status": null,
         "replacement": "user_agent.original"
       },
       "alias": ["user_agent.original"]
@@ -659,6 +703,7 @@
       "is_in_otel": true,
       "example": "192.168.0.1",
       "deprecation": {
+        "_status": null,
         "replacement": "network.local.address"
       },
       "alias": ["network.local.address"]
@@ -673,6 +718,7 @@
       "is_in_otel": true,
       "example": "example.com",
       "deprecation": {
+        "_status": null,
         "replacement": "server.address"
       },
       "alias": ["server.address"]
@@ -687,6 +733,7 @@
       "is_in_otel": true,
       "example": 1337,
       "deprecation": {
+        "_status": null,
         "replacement": "server.port"
       },
       "alias": ["server.port"]
@@ -701,6 +748,7 @@
       "is_in_otel": true,
       "example": "192.168.0.1",
       "deprecation": {
+        "_status": null,
         "replacement": "network.peer.address"
       },
       "alias": ["network.peer.address"]
@@ -715,6 +763,7 @@
       "is_in_otel": true,
       "example": "example.com",
       "deprecation": {
+        "_status": null,
         "replacement": "server.address",
         "reason": "Deprecated, use server.address on client spans and client.address on server spans."
       }
@@ -729,6 +778,7 @@
       "is_in_otel": true,
       "example": 1337,
       "deprecation": {
+        "_status": null,
         "replacement": "server.port",
         "reason": "Deprecated, use server.port on client spans and client.port on server spans."
       }
@@ -743,6 +793,7 @@
       "is_in_otel": true,
       "example": "http",
       "deprecation": {
+        "_status": null,
         "replacement": "network.protocol.name"
       },
       "alias": ["network.protocol.name"]
@@ -757,6 +808,7 @@
       "is_in_otel": true,
       "example": "1.1",
       "deprecation": {
+        "_status": null,
         "replacement": "network.protocol.version"
       },
       "alias": ["network.protocol.version"]
@@ -771,6 +823,7 @@
       "is_in_otel": true,
       "example": "inet",
       "deprecation": {
+        "_status": null,
         "replacement": "network.transport",
         "reason": "Deprecated, use network.transport and network.type."
       }
@@ -785,6 +838,7 @@
       "is_in_otel": true,
       "example": "/var/my.sock",
       "deprecation": {
+        "_status": null,
         "replacement": "network.local.address"
       },
       "alias": ["network.local.address"]
@@ -799,6 +853,7 @@
       "is_in_otel": true,
       "example": 8080,
       "deprecation": {
+        "_status": null,
         "replacement": "network.local.port"
       },
       "alias": ["network.local.port"]
@@ -813,6 +868,7 @@
       "is_in_otel": true,
       "example": "192.168.0.1",
       "deprecation": {
+        "_status": null,
         "replacement": "network.peer.address"
       },
       "alias": ["network.peer.address"]
@@ -827,6 +883,7 @@
       "is_in_otel": true,
       "example": "/var/my.sock",
       "deprecation": {
+        "_status": null,
         "replacement": "",
         "reason": "Deprecated, no replacement at this time"
       }
@@ -841,6 +898,7 @@
       "is_in_otel": true,
       "example": 8080,
       "deprecation": {
+        "_status": null,
         "replacement": "network.peer.port"
       }
     },
@@ -854,6 +912,7 @@
       "is_in_otel": true,
       "example": "tcp",
       "deprecation": {
+        "_status": null,
         "replacement": "network.transport"
       },
       "alias": ["network.transport"]
@@ -868,6 +927,7 @@
       },
       "is_in_otel": false,
       "deprecation": {
+        "_status": null,
         "replacement": "url.query",
         "reason": "Instead of sending items individually in query.<key>, they should be sent all together with url.query."
       },

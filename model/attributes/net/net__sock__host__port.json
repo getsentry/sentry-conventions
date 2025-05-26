@@ -8,6 +8,7 @@
   "is_in_otel": true,
   "example": 8080,
   "deprecation": {
+    "_status": null,
     "replacement": "network.local.port"
   },
   "alias": ["network.local.port"]

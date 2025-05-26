@@ -8,6 +8,7 @@
   "is_in_otel": true,
   "example": "/test?foo=bar#buzz",
   "deprecation": {
+    "_status": null,
     "replacement": "url.path",
     "reason": "This attribute is being deprecated in favor of url.path and url.query"
   }

@@ -8,6 +8,7 @@
   "is_in_otel": true,
   "example": "/app/myapplication/http/handler/server.py",
   "deprecation": {
+    "_status": null,
     "replacement": "code.file.path"
   },
   "alias": ["code.file.path"]

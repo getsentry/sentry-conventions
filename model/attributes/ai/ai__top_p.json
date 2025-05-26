@@ -8,6 +8,7 @@
   "is_in_otel": false,
   "example": 0.7,
   "deprecation": {
+    "_status": null,
     "replacement": "gen_ai.request.top_p"
   }
 }

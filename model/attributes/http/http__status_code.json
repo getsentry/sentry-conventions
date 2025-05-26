@@ -8,6 +8,7 @@
   "is_in_otel": true,
   "example": 404,
   "deprecation": {
+    "_status": null,
     "replacement": "http.response.status_code"
   },
   "alias": ["http.response.status_code"]

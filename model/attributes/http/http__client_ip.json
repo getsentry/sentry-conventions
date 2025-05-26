@@ -8,6 +8,7 @@
   "is_in_otel": true,
   "example": "example.com",
   "deprecation": {
+    "_status": null,
     "replacement": "http.client_ip"
   },
   "alias": ["client.address"]

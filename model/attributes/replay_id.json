@@ -8,6 +8,7 @@
   "is_in_otel": false,
   "example": "123e4567e89b12d3a456426614174000",
   "deprecation": {
+    "_status": null,
     "replacement": "sentry.replay_id"
   },
   "alias": ["sentry.replay_id"]

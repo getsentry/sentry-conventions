@@ -8,6 +8,7 @@
   "is_in_otel": false,
   "example": "1234567890",
   "deprecation": {
+    "_status": null,
     "replacement": "gen_ai.request.seed"
   }
 }

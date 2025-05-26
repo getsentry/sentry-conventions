@@ -8,6 +8,7 @@
   "is_in_otel": true,
   "example": "example.com",
   "deprecation": {
+    "_status": null,
     "replacement": "server.address",
     "reason": "Deprecated, use one of `server.address` or `client.address`, depending on the usage"
   },

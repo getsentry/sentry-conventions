@@ -8,6 +8,7 @@
   "is_in_otel": true,
   "example": "http",
   "deprecation": {
+    "_status": null,
     "replacement": "network.protocol.name"
   },
   "alias": ["network.protocol.name"]

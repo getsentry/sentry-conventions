@@ -8,6 +8,7 @@
   "is_in_otel": true,
   "example": "inet",
   "deprecation": {
+    "_status": null,
     "replacement": "network.transport",
     "reason": "Deprecated, use network.transport and network.type."
   }

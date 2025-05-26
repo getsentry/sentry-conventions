@@ -83,10 +83,10 @@
         },
         "_status": {
           "description": "How the attribute should be handled in the ingestion pipeline. The attribute should be backfilled for 90 days before status is set to normalize.",
-          "enum": ["backfill", "normalize"]
+          "enum": [null, "backfill", "normalize"]
         }
       },
-      "required": ["replacement"]
+      "required": ["replacement", "_status"]
     },
     "alias": {
       "description": "If there are attributes that alias to this attribute",

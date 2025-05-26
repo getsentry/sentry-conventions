@@ -8,6 +8,7 @@
   "is_in_otel": false,
   "example": "openai",
   "deprecation": {
+    "_status": null,
     "replacement": "gen_ai.system"
   }
 }

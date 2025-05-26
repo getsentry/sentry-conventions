@@ -8,6 +8,7 @@
   "is_in_otel": true,
   "example": 42,
   "deprecation": {
+    "_status": null,
     "replacement": "code.line.number"
   },
   "alias": ["code.lineno"]

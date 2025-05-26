@@ -8,6 +8,7 @@
   "is_in_otel": true,
   "example": "customers",
   "deprecation": {
+    "_status": null,
     "replacement": "db.namespace"
   },
   "alias": ["db.namespace"]
