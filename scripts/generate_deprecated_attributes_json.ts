@@ -31,7 +31,7 @@ function readJsonFile(filePath: string): AttributeJson {
 // Main function to generate all markdown docs
 export async function generateDeprecatedAttributesJSON() {
   const baseDir = 'model/attributes';
-  const outputDir = 'generated/attributes';
+  const outputDir = 'generated/attributes/json';
   const categories: Record<string, AttributeJson[]> = {};
   const allDeprecatedAttributes: Record<"attributes", AttributeJson[]> = {"attributes": []};
 
@@ -78,7 +78,7 @@ export async function generateDeprecatedAttributesJSON() {
   }
 
   const deprecatedAttributesFile = path.join(outputDir, 'deprecated_attributes.json');
-  fs.writeFileSync(deprecatedAttributesFile, JSON.stringify(allDeprecatedAttributes));
+  fs.writeFileSync(deprecatedAttributesFile, JSON.stringify(allDeprecatedAttributes, null, 2));
   console.log(`Generated deprecated attributes json: ${deprecatedAttributesFile}`);
 
   console.log('Deprecated attributes generation complete!');
