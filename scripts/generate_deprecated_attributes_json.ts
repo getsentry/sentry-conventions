@@ -30,7 +30,7 @@ function readJsonFile(filePath: string): AttributeJson {
 // Main function to generate all markdown docs
 export async function generateDeprecatedAttributesJSON() {
   const baseDir = 'model/attributes';
-  const outputDir = 'generated/attributes/json';
+  const outputDir = 'data';
   const categories: Record<string, AttributeJson[]> = {};
   const allDeprecatedAttributes: Record<'attributes', AttributeJson[]> = { attributes: [] };
 
