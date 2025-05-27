@@ -30,9 +30,12 @@ function readJsonFile(filePath: string): AttributeJson {
 // Main function to generate all markdown docs
 export async function generateDeprecatedAttributesJSON() {
   const baseDir = 'model/attributes';
-  const outputDir = 'data';
+  const outputDir = 'shared';
   const categories: Record<string, AttributeJson[]> = {};
-  const allDeprecatedAttributes: Record<'attributes', AttributeJson[]> = { attributes: [] };
+  const allDeprecatedAttributes: Record<string, unknown> = {
+    _generated: "This file is generated. Do not modify it directly. See scripts/generate_deprecated_attributes_json.ts",
+    attributes: []
+  };
 
   // Ensure output directory exists
   if (!fs.existsSync(outputDir)) {
@@ -72,7 +75,7 @@ export async function generateDeprecatedAttributesJSON() {
 
     // Add all deprecated attributes to JSON
     for (const attribute of deprecatedAttributes) {
-      allDeprecatedAttributes.attributes.push(attribute);
+      (allDeprecatedAttributes.attributes as AttributeJson[]).push(attribute);
     }
   }
 
