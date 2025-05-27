@@ -33,8 +33,8 @@ export async function generateDeprecatedAttributesJSON() {
   const outputDir = 'shared';
   const categories: Record<string, AttributeJson[]> = {};
   const allDeprecatedAttributes: Record<string, unknown> = {
-    _generated: "This file is generated. Do not modify it directly. See scripts/generate_deprecated_attributes_json.ts",
-    attributes: []
+    _generated: 'This file is generated. Do not modify it directly. See scripts/generate_deprecated_attributes_json.ts',
+    attributes: [],
   };
 
   // Ensure output directory exists
