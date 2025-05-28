@@ -8,6 +8,7 @@
   "is_in_otel": true,
   "example": "/var/my.sock",
   "deprecation": {
+    "_status": null,
     "replacement": "network.local.address"
   },
   "alias": ["network.local.address"]

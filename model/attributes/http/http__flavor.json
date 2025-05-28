@@ -8,6 +8,7 @@
   "is_in_otel": true,
   "example": "1.1",
   "deprecation": {
+    "_status": null,
     "replacement": "network.protocol.version"
   },
   "alias": ["network.protocol.version"]

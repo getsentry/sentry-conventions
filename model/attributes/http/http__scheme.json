@@ -8,6 +8,7 @@
   "is_in_otel": true,
   "example": "https",
   "deprecation": {
+    "_status": null,
     "replacement": "url.scheme"
   },
   "alias": ["url.scheme"]

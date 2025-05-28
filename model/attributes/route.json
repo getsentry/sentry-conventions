@@ -8,6 +8,7 @@
   "is_in_otel": false,
   "example": "App\\Controller::indexAction",
   "deprecation": {
+    "_status": null,
     "replacement": "http.route"
   },
   "alias": ["http.route"],

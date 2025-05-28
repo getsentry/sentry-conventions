@@ -8,6 +8,7 @@
   "is_in_otel": true,
   "example": "http.handler",
   "deprecation": {
+    "_status": null,
     "replacement": "code.function.name",
     "reason": "code.function.name should include the namespace."
   }

@@ -8,6 +8,7 @@
   },
   "is_in_otel": false,
   "deprecation": {
+    "_status": null,
     "replacement": "url.query",
     "reason": "Instead of sending items individually in query.<key>, they should be sent all together with url.query."
   },

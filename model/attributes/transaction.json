@@ -8,6 +8,7 @@
   "is_in_otel": false,
   "example": "GET /",
   "deprecation": {
+    "_status": null,
     "replacement": "sentry.transaction"
   },
   "alias": ["sentry.transaction"]

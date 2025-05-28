@@ -8,6 +8,7 @@
   "is_in_otel": false,
   "example": 0.1,
   "deprecation": {
+    "_status": null,
     "replacement": "gen_ai.request.temperature"
   }
 }

@@ -8,6 +8,7 @@
   "is_in_otel": true,
   "example": "/var/my.sock",
   "deprecation": {
+    "_status": null,
     "replacement": "",
     "reason": "Deprecated, no replacement at this time"
   }

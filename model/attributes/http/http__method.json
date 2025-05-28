@@ -8,6 +8,7 @@
   "is_in_otel": true,
   "example": "GET",
   "deprecation": {
+    "_status": null,
     "replacement": "http.request.method"
   },
   "alias": ["http.request.method"]

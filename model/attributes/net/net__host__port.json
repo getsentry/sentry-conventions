@@ -8,6 +8,7 @@
   "is_in_otel": true,
   "example": 1337,
   "deprecation": {
+    "_status": null,
     "replacement": "server.port"
   },
   "alias": ["server.port"]

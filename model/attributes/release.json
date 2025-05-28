@@ -8,6 +8,7 @@
   "is_in_otel": false,
   "example": "production",
   "deprecation": {
+    "_status": null,
     "replacement": "sentry.release"
   },
   "alias": ["sentry.release"]

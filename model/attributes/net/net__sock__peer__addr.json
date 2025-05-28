@@ -8,6 +8,7 @@
   "is_in_otel": true,
   "example": "192.168.0.1",
   "deprecation": {
+    "_status": null,
     "replacement": "network.peer.address"
   },
   "alias": ["network.peer.address"]

@@ -8,6 +8,7 @@
   "is_in_otel": true,
   "example": "postgresql",
   "deprecation": {
+    "_status": null,
     "replacement": "db.system.name"
   },
   "alias": ["db.system.name"]
