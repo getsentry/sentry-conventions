@@ -7,5 +7,6 @@
   },
   "is_in_otel": false,
   "example": "production",
-  "alias": ["environment"]
+  "alias": ["environment"],
+  "public_alias": [{"key": "environment"}]
 }

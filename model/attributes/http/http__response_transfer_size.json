@@ -2,6 +2,7 @@
   "key": "http.response_transfer_size",
   "brief": "The transfer size of the response (in bytes).",
   "type": "integer",
+  "unit": "bytes",
   "pii": {
     "key": "false"
   },

@@ -7,5 +7,6 @@
   },
   "is_in_otel": false,
   "example": "GET /",
-  "alias": ["transaction"]
+  "alias": ["transaction"],
+  "public_alias": [{"key": "transaction"}]
 }

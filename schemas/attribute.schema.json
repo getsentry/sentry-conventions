@@ -21,6 +21,10 @@
       "description": "The type of the attribute value",
       "enum": ["string", "boolean", "integer", "double", "string[]", "boolean[]", "integer[]", "double[]"]
     },
+    "unit": {
+      "description": "The unit of the attribute",
+      "enum": ["bit", "byte", "kibibyte", "mebibyte", "gibibyte", "tebibyte", "pebibyte", "exbibyte", "kilobyte", "megabyte", "gigabyte", "terabyte", "petabyte", "exabyte", "nanosecond", "microsecond", "millisecond", "second", "minute", "hour", "day", "week"]
+    },
     "pii": {
       "description": "If an attribute can have pii. Is either true, false or maybe. Optionally include a reason about why it has PII or not",
       "type": "object",
@@ -100,6 +104,23 @@
       "type": "array",
       "items": {
         "type": "string"
+      }
+    },
+    "public_alias": {
+      "description": "The public alias for this attribute in Sentry's UI and APIs. This should be used sparingly, where possible an attribute key should be exposed as-is.",
+      "type": "array",
+      "items": {
+        "type":"object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "is_secondary": {
+            "description": "Whether it is a secondary alias. Secondary aliases are a valid way to query the field but do not show up in auto-complete suggestions in the UI.",
+            "type": "boolean"
+          }
+        },
+        "required": ["key"]
       }
     }
   },
