@@ -1,0 +1,10 @@
+{
+  "key": "gen_ai.agent.name",
+  "brief": "The name of the agent being used.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "ResearchAssistant"
+}

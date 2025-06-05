@@ -56,7 +56,7 @@ The assistant message passed to the model.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | true |
 | Exists in OpenTelemetry | No |
 | Example | `get_weather tool call` |
 
@@ -67,7 +67,7 @@ The model's response message.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | true |
 | Exists in OpenTelemetry | No |
 | Example | `The weather in Paris is rainy and overcast, with temperatures around 57°F` |
 
@@ -242,7 +242,7 @@ The system instructions passed to the model.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | true |
 | Exists in OpenTelemetry | No |
 | Example | `You are a helpful assistant` |
 
@@ -264,7 +264,7 @@ The response from a tool or function call passed to the model.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | true |
 | Exists in OpenTelemetry | No |
 | Example | `rainy, 57°F` |
 
@@ -367,7 +367,7 @@ The user message passed to the model.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | true |
 | Exists in OpenTelemetry | No |
 | Example | `What's the weather in Paris?` |
 

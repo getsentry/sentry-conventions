@@ -1,0 +1,10 @@
+{
+  "key": "gen_ai.usage.input_tokens.cached",
+  "brief": "The number of cached tokens in the input.",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 50
+}

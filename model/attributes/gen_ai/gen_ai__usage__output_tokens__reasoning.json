@@ -1,0 +1,10 @@
+{
+  "key": "gen_ai.usage.output_tokens.reasoning",
+  "brief": "The number of tokens used for reasoning in the output.",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 75
+}

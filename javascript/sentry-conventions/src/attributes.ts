@@ -1878,7 +1878,7 @@ export type GEN_AI_AGENT_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GEN_AI_ASSISTANT_MESSAGE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: true
  *
  * Attribute defined in OTEL: No
  *
@@ -1898,7 +1898,7 @@ export type GEN_AI_ASSISTANT_MESSAGE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GEN_AI_CHOICE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: true
  *
  * Attribute defined in OTEL: No
  *
@@ -2218,7 +2218,7 @@ export type GEN_AI_SYSTEM_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GEN_AI_SYSTEM_MESSAGE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: true
  *
  * Attribute defined in OTEL: No
  *
@@ -2258,7 +2258,7 @@ export type GEN_AI_TOOL_DESCRIPTION_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GEN_AI_TOOL_MESSAGE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: true
  *
  * Attribute defined in OTEL: No
  *
@@ -2492,7 +2492,7 @@ export type GEN_AI_USAGE_TOTAL_TOKENS_TYPE = number;
  *
  * Attribute Value Type: `string` {@link GEN_AI_USER_MESSAGE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: true
  *
  * Attribute defined in OTEL: No
  *

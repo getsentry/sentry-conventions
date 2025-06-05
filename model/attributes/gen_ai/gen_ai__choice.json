@@ -1,0 +1,10 @@
+{
+  "key": "gen_ai.choice",
+  "brief": "The model's response message.",
+  "type": "string",
+  "pii": {
+    "key": "true"
+  },
+  "is_in_otel": false,
+  "example": "The weather in Paris is rainy and overcast, with temperatures around 57°F"
+}
