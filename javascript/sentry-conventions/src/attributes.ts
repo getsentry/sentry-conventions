@@ -1860,7 +1860,7 @@ export type FS_ERROR_TYPE = string;
  *
  * Contains PII: false
  *
- * Attribute defined in OTEL: No
+ * Attribute defined in OTEL: Yes
  *
  * @example "ResearchAssistant"
  */
@@ -1920,7 +1920,7 @@ export type GEN_AI_CHOICE_TYPE = string;
  *
  * Contains PII: false
  *
- * Attribute defined in OTEL: No
+ * Attribute defined in OTEL: Yes
  *
  * @example "chat"
  */
@@ -1982,7 +1982,7 @@ export type GEN_AI_REQUEST_FREQUENCY_PENALTY_TYPE = number;
  *
  * Contains PII: false
  *
- * Attribute defined in OTEL: No
+ * Attribute defined in OTEL: Yes
  *
  * @example 2048
  */
@@ -2002,7 +2002,7 @@ export type GEN_AI_REQUEST_MAX_TOKENS_TYPE = number;
  *
  * Contains PII: false
  *
- * Attribute defined in OTEL: No
+ * Attribute defined in OTEL: Yes
  *
  * @example "gpt-4-turbo-preview"
  */
@@ -2240,7 +2240,7 @@ export type GEN_AI_SYSTEM_MESSAGE_TYPE = string;
  *
  * Contains PII: false
  *
- * Attribute defined in OTEL: No
+ * Attribute defined in OTEL: Yes
  *
  * @example "Searches the web for current information about a topic"
  */
@@ -2302,7 +2302,7 @@ export type GEN_AI_TOOL_NAME_TYPE = string;
  *
  * Contains PII: false
  *
- * Attribute defined in OTEL: No
+ * Attribute defined in OTEL: Yes
  *
  * @example "function"
  */

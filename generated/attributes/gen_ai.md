@@ -46,7 +46,7 @@ The name of the agent being used.
 | --- | --- |
 | Type | `string` |
 | Has PII | false |
-| Exists in OpenTelemetry | No |
+| Exists in OpenTelemetry | Yes |
 | Example | `ResearchAssistant` |
 
 ### gen_ai.assistant.message
@@ -79,7 +79,7 @@ The name of the operation being performed.
 | --- | --- |
 | Type | `string` |
 | Has PII | false |
-| Exists in OpenTelemetry | No |
+| Exists in OpenTelemetry | Yes |
 | Example | `chat` |
 
 ### gen_ai.prompt
@@ -113,7 +113,7 @@ The maximum number of tokens to generate in the response.
 | --- | --- |
 | Type | `integer` |
 | Has PII | false |
-| Exists in OpenTelemetry | No |
+| Exists in OpenTelemetry | Yes |
 | Example | `2048` |
 
 ### gen_ai.request.model
@@ -124,7 +124,7 @@ The model identifier being used for the request.
 | --- | --- |
 | Type | `string` |
 | Has PII | false |
-| Exists in OpenTelemetry | No |
+| Exists in OpenTelemetry | Yes |
 | Example | `gpt-4-turbo-preview` |
 
 ### gen_ai.request.presence_penalty
@@ -254,7 +254,7 @@ The description of the tool being used.
 | --- | --- |
 | Type | `string` |
 | Has PII | false |
-| Exists in OpenTelemetry | No |
+| Exists in OpenTelemetry | Yes |
 | Example | `Searches the web for current information about a topic` |
 
 ### gen_ai.tool.message
@@ -288,7 +288,7 @@ The type of tool being used.
 | --- | --- |
 | Type | `string` |
 | Has PII | false |
-| Exists in OpenTelemetry | No |
+| Exists in OpenTelemetry | Yes |
 | Example | `function` |
 
 ### gen_ai.usage.input_tokens
