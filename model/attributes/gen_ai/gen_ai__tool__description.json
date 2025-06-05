@@ -5,6 +5,6 @@
   "pii": {
     "key": "false"
   },
-  "is_in_otel": false,
+  "is_in_otel": true,
   "example": "Searches the web for current information about a topic"
 }
