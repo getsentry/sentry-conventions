@@ -1,0 +1,10 @@
+{
+  "key": "gen_ai.system.message",
+  "brief": "The system instructions passed to the model.",
+  "type": "string",
+  "pii": {
+    "key": "true"
+  },
+  "is_in_otel": false,
+  "example": "You are a helpful assistant"
+}

@@ -1,0 +1,10 @@
+{
+  "key": "gen_ai.user.message",
+  "brief": "The user message passed to the model.",
+  "type": "string",
+  "pii": {
+    "key": "true"
+  },
+  "is_in_otel": false,
+  "example": "What's the weather in Paris?"
+}

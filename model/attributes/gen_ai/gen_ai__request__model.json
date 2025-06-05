@@ -1,0 +1,10 @@
+{
+  "key": "gen_ai.request.model",
+  "brief": "The model identifier being used for the request.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "gpt-4-turbo-preview"
+}

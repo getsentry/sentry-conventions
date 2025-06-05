@@ -1,0 +1,10 @@
+{
+  "key": "gen_ai.operation.name",
+  "brief": "The name of the operation being performed.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "chat"
+}

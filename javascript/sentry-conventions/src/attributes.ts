@@ -1851,6 +1851,86 @@ export const FS_ERROR = 'fs_error';
  */
 export type FS_ERROR_TYPE = string;
 
+// Path: model/attributes/gen_ai/gen_ai__agent__name.json
+
+/**
+ * The name of the agent being used. `gen_ai.agent.name`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_AGENT_NAME_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "ResearchAssistant"
+ */
+export const GEN_AI_AGENT_NAME = 'gen_ai.agent.name';
+
+/**
+ * Type for {@link GEN_AI_AGENT_NAME} gen_ai.agent.name
+ */
+export type GEN_AI_AGENT_NAME_TYPE = string;
+
+// Path: model/attributes/gen_ai/gen_ai__assistant__message.json
+
+/**
+ * The assistant message passed to the model. `gen_ai.assistant.message`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_ASSISTANT_MESSAGE_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "get_weather tool call"
+ */
+export const GEN_AI_ASSISTANT_MESSAGE = 'gen_ai.assistant.message';
+
+/**
+ * Type for {@link GEN_AI_ASSISTANT_MESSAGE} gen_ai.assistant.message
+ */
+export type GEN_AI_ASSISTANT_MESSAGE_TYPE = string;
+
+// Path: model/attributes/gen_ai/gen_ai__choice.json
+
+/**
+ * The model's response message. `gen_ai.choice`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_CHOICE_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "The weather in Paris is rainy and overcast, with temperatures around 57°F"
+ */
+export const GEN_AI_CHOICE = 'gen_ai.choice';
+
+/**
+ * Type for {@link GEN_AI_CHOICE} gen_ai.choice
+ */
+export type GEN_AI_CHOICE_TYPE = string;
+
+// Path: model/attributes/gen_ai/gen_ai__operation__name.json
+
+/**
+ * The name of the operation being performed. `gen_ai.operation.name`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_OPERATION_NAME_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "chat"
+ */
+export const GEN_AI_OPERATION_NAME = 'gen_ai.operation.name';
+
+/**
+ * Type for {@link GEN_AI_OPERATION_NAME} gen_ai.operation.name
+ */
+export type GEN_AI_OPERATION_NAME_TYPE = string;
+
 // Path: model/attributes/gen_ai/gen_ai__prompt.json
 
 /**
@@ -1892,6 +1972,46 @@ export const GEN_AI_REQUEST_FREQUENCY_PENALTY = 'gen_ai.request.frequency_penalt
  * Type for {@link GEN_AI_REQUEST_FREQUENCY_PENALTY} gen_ai.request.frequency_penalty
  */
 export type GEN_AI_REQUEST_FREQUENCY_PENALTY_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__request__max_tokens.json
+
+/**
+ * The maximum number of tokens to generate in the response. `gen_ai.request.max_tokens`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_REQUEST_MAX_TOKENS_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example 2048
+ */
+export const GEN_AI_REQUEST_MAX_TOKENS = 'gen_ai.request.max_tokens';
+
+/**
+ * Type for {@link GEN_AI_REQUEST_MAX_TOKENS} gen_ai.request.max_tokens
+ */
+export type GEN_AI_REQUEST_MAX_TOKENS_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__request__model.json
+
+/**
+ * The model identifier being used for the request. `gen_ai.request.model`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_REQUEST_MODEL_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "gpt-4-turbo-preview"
+ */
+export const GEN_AI_REQUEST_MODEL = 'gen_ai.request.model';
+
+/**
+ * Type for {@link GEN_AI_REQUEST_MODEL} gen_ai.request.model
+ */
+export type GEN_AI_REQUEST_MODEL_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__request__presence_penalty.json
 
@@ -2091,6 +2211,66 @@ export const GEN_AI_SYSTEM = 'gen_ai.system';
  */
 export type GEN_AI_SYSTEM_TYPE = string;
 
+// Path: model/attributes/gen_ai/gen_ai__system__message.json
+
+/**
+ * The system instructions passed to the model. `gen_ai.system.message`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_SYSTEM_MESSAGE_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "You are a helpful assistant"
+ */
+export const GEN_AI_SYSTEM_MESSAGE = 'gen_ai.system.message';
+
+/**
+ * Type for {@link GEN_AI_SYSTEM_MESSAGE} gen_ai.system.message
+ */
+export type GEN_AI_SYSTEM_MESSAGE_TYPE = string;
+
+// Path: model/attributes/gen_ai/gen_ai__tool__description.json
+
+/**
+ * The description of the tool being used. `gen_ai.tool.description`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_TOOL_DESCRIPTION_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "Searches the web for current information about a topic"
+ */
+export const GEN_AI_TOOL_DESCRIPTION = 'gen_ai.tool.description';
+
+/**
+ * Type for {@link GEN_AI_TOOL_DESCRIPTION} gen_ai.tool.description
+ */
+export type GEN_AI_TOOL_DESCRIPTION_TYPE = string;
+
+// Path: model/attributes/gen_ai/gen_ai__tool__message.json
+
+/**
+ * The response from a tool or function call passed to the model. `gen_ai.tool.message`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_TOOL_MESSAGE_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "rainy, 57°F"
+ */
+export const GEN_AI_TOOL_MESSAGE = 'gen_ai.tool.message';
+
+/**
+ * Type for {@link GEN_AI_TOOL_MESSAGE} gen_ai.tool.message
+ */
+export type GEN_AI_TOOL_MESSAGE_TYPE = string;
+
 // Path: model/attributes/gen_ai/gen_ai__tool__name.json
 
 /**
@@ -2112,6 +2292,26 @@ export const GEN_AI_TOOL_NAME = 'gen_ai.tool.name';
  * Type for {@link GEN_AI_TOOL_NAME} gen_ai.tool.name
  */
 export type GEN_AI_TOOL_NAME_TYPE = string;
+
+// Path: model/attributes/gen_ai/gen_ai__tool__type.json
+
+/**
+ * The type of tool being used. `gen_ai.tool.type`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_TOOL_TYPE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "function"
+ */
+export const GEN_AI_TOOL_TYPE = 'gen_ai.tool.type';
+
+/**
+ * Type for {@link GEN_AI_TOOL_TYPE} gen_ai.tool.type
+ */
+export type GEN_AI_TOOL_TYPE_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__usage__completion_tokens.json
 
@@ -2158,6 +2358,26 @@ export const GEN_AI_USAGE_INPUT_TOKENS = 'gen_ai.usage.input_tokens';
  */
 export type GEN_AI_USAGE_INPUT_TOKENS_TYPE = number;
 
+// Path: model/attributes/gen_ai/gen_ai__usage__input_tokens__cached.json
+
+/**
+ * The number of cached tokens in the input. `gen_ai.usage.input_tokens.cached`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 50
+ */
+export const GEN_AI_USAGE_INPUT_TOKENS_CACHED = 'gen_ai.usage.input_tokens.cached';
+
+/**
+ * Type for {@link GEN_AI_USAGE_INPUT_TOKENS_CACHED} gen_ai.usage.input_tokens.cached
+ */
+export type GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE = number;
+
 // Path: model/attributes/gen_ai/gen_ai__usage__output_tokens.json
 
 /**
@@ -2179,6 +2399,26 @@ export const GEN_AI_USAGE_OUTPUT_TOKENS = 'gen_ai.usage.output_tokens';
  * Type for {@link GEN_AI_USAGE_OUTPUT_TOKENS} gen_ai.usage.output_tokens
  */
 export type GEN_AI_USAGE_OUTPUT_TOKENS_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__usage__output_tokens__reasoning.json
+
+/**
+ * The number of tokens used for reasoning in the output. `gen_ai.usage.output_tokens.reasoning`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_USAGE_OUTPUT_TOKENS_REASONING_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 75
+ */
+export const GEN_AI_USAGE_OUTPUT_TOKENS_REASONING = 'gen_ai.usage.output_tokens.reasoning';
+
+/**
+ * Type for {@link GEN_AI_USAGE_OUTPUT_TOKENS_REASONING} gen_ai.usage.output_tokens.reasoning
+ */
+export type GEN_AI_USAGE_OUTPUT_TOKENS_REASONING_TYPE = number;
 
 // Path: model/attributes/gen_ai/gen_ai__usage__prompt_tokens.json
 
@@ -2244,6 +2484,26 @@ export const GEN_AI_USAGE_TOTAL_TOKENS = 'gen_ai.usage.total_tokens';
  * Type for {@link GEN_AI_USAGE_TOTAL_TOKENS} gen_ai.usage.total_tokens
  */
 export type GEN_AI_USAGE_TOTAL_TOKENS_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__user__message.json
+
+/**
+ * The user message passed to the model. `gen_ai.user.message`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_USER_MESSAGE_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "What's the weather in Paris?"
+ */
+export const GEN_AI_USER_MESSAGE = 'gen_ai.user.message';
+
+/**
+ * Type for {@link GEN_AI_USER_MESSAGE} gen_ai.user.message
+ */
+export type GEN_AI_USER_MESSAGE_TYPE = string;
 
 // Path: model/attributes/graphql/graphql__operation__name.json
 
@@ -5671,8 +5931,14 @@ export type Attributes = {
   [FRAMES_FROZEN]?: FRAMES_FROZEN_TYPE;
   [FRAMES_SLOW]?: FRAMES_SLOW_TYPE;
   [FRAMES_TOTAL]?: FRAMES_TOTAL_TYPE;
+  [GEN_AI_AGENT_NAME]?: GEN_AI_AGENT_NAME_TYPE;
+  [GEN_AI_ASSISTANT_MESSAGE]?: GEN_AI_ASSISTANT_MESSAGE_TYPE;
+  [GEN_AI_CHOICE]?: GEN_AI_CHOICE_TYPE;
+  [GEN_AI_OPERATION_NAME]?: GEN_AI_OPERATION_NAME_TYPE;
   [GEN_AI_PROMPT]?: GEN_AI_PROMPT_TYPE;
   [GEN_AI_REQUEST_FREQUENCY_PENALTY]?: GEN_AI_REQUEST_FREQUENCY_PENALTY_TYPE;
+  [GEN_AI_REQUEST_MAX_TOKENS]?: GEN_AI_REQUEST_MAX_TOKENS_TYPE;
+  [GEN_AI_REQUEST_MODEL]?: GEN_AI_REQUEST_MODEL_TYPE;
   [GEN_AI_REQUEST_PRESENCE_PENALTY]?: GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE;
   [GEN_AI_REQUEST_SEED]?: GEN_AI_REQUEST_SEED_TYPE;
   [GEN_AI_REQUEST_TEMPERATURE]?: GEN_AI_REQUEST_TEMPERATURE_TYPE;
@@ -5682,11 +5948,18 @@ export type Attributes = {
   [GEN_AI_RESPONSE_ID]?: GEN_AI_RESPONSE_ID_TYPE;
   [GEN_AI_RESPONSE_MODEL]?: GEN_AI_RESPONSE_MODEL_TYPE;
   [GEN_AI_SYSTEM]?: GEN_AI_SYSTEM_TYPE;
+  [GEN_AI_SYSTEM_MESSAGE]?: GEN_AI_SYSTEM_MESSAGE_TYPE;
+  [GEN_AI_TOOL_DESCRIPTION]?: GEN_AI_TOOL_DESCRIPTION_TYPE;
+  [GEN_AI_TOOL_MESSAGE]?: GEN_AI_TOOL_MESSAGE_TYPE;
   [GEN_AI_TOOL_NAME]?: GEN_AI_TOOL_NAME_TYPE;
+  [GEN_AI_TOOL_TYPE]?: GEN_AI_TOOL_TYPE_TYPE;
   [GEN_AI_USAGE_INPUT_TOKENS]?: GEN_AI_USAGE_INPUT_TOKENS_TYPE;
+  [GEN_AI_USAGE_INPUT_TOKENS_CACHED]?: GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE;
   [GEN_AI_USAGE_OUTPUT_TOKENS]?: GEN_AI_USAGE_OUTPUT_TOKENS_TYPE;
+  [GEN_AI_USAGE_OUTPUT_TOKENS_REASONING]?: GEN_AI_USAGE_OUTPUT_TOKENS_REASONING_TYPE;
   [GEN_AI_USAGE_TOTAL_COST]?: GEN_AI_USAGE_TOTAL_COST_TYPE;
   [GEN_AI_USAGE_TOTAL_TOKENS]?: GEN_AI_USAGE_TOTAL_TOKENS_TYPE;
+  [GEN_AI_USER_MESSAGE]?: GEN_AI_USER_MESSAGE_TYPE;
   [GRAPHQL_OPERATION_NAME]?: GRAPHQL_OPERATION_NAME_TYPE;
   [GRAPHQL_OPERATION_TYPE]?: GRAPHQL_OPERATION_TYPE_TYPE;
   [HTTP_DECODED_RESPONSE_CONTENT_LENGTH]?: HTTP_DECODED_RESPONSE_CONTENT_LENGTH_TYPE;
@@ -5904,8 +6177,14 @@ export type FullAttributes = {
   [FRAMES_SLOW]?: FRAMES_SLOW_TYPE;
   [FRAMES_TOTAL]?: FRAMES_TOTAL_TYPE;
   [FS_ERROR]?: FS_ERROR_TYPE;
+  [GEN_AI_AGENT_NAME]?: GEN_AI_AGENT_NAME_TYPE;
+  [GEN_AI_ASSISTANT_MESSAGE]?: GEN_AI_ASSISTANT_MESSAGE_TYPE;
+  [GEN_AI_CHOICE]?: GEN_AI_CHOICE_TYPE;
+  [GEN_AI_OPERATION_NAME]?: GEN_AI_OPERATION_NAME_TYPE;
   [GEN_AI_PROMPT]?: GEN_AI_PROMPT_TYPE;
   [GEN_AI_REQUEST_FREQUENCY_PENALTY]?: GEN_AI_REQUEST_FREQUENCY_PENALTY_TYPE;
+  [GEN_AI_REQUEST_MAX_TOKENS]?: GEN_AI_REQUEST_MAX_TOKENS_TYPE;
+  [GEN_AI_REQUEST_MODEL]?: GEN_AI_REQUEST_MODEL_TYPE;
   [GEN_AI_REQUEST_PRESENCE_PENALTY]?: GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE;
   [GEN_AI_REQUEST_SEED]?: GEN_AI_REQUEST_SEED_TYPE;
   [GEN_AI_REQUEST_TEMPERATURE]?: GEN_AI_REQUEST_TEMPERATURE_TYPE;
@@ -5915,13 +6194,20 @@ export type FullAttributes = {
   [GEN_AI_RESPONSE_ID]?: GEN_AI_RESPONSE_ID_TYPE;
   [GEN_AI_RESPONSE_MODEL]?: GEN_AI_RESPONSE_MODEL_TYPE;
   [GEN_AI_SYSTEM]?: GEN_AI_SYSTEM_TYPE;
+  [GEN_AI_SYSTEM_MESSAGE]?: GEN_AI_SYSTEM_MESSAGE_TYPE;
+  [GEN_AI_TOOL_DESCRIPTION]?: GEN_AI_TOOL_DESCRIPTION_TYPE;
+  [GEN_AI_TOOL_MESSAGE]?: GEN_AI_TOOL_MESSAGE_TYPE;
   [GEN_AI_TOOL_NAME]?: GEN_AI_TOOL_NAME_TYPE;
+  [GEN_AI_TOOL_TYPE]?: GEN_AI_TOOL_TYPE_TYPE;
   [GEN_AI_USAGE_COMPLETION_TOKENS]?: GEN_AI_USAGE_COMPLETION_TOKENS_TYPE;
   [GEN_AI_USAGE_INPUT_TOKENS]?: GEN_AI_USAGE_INPUT_TOKENS_TYPE;
+  [GEN_AI_USAGE_INPUT_TOKENS_CACHED]?: GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE;
   [GEN_AI_USAGE_OUTPUT_TOKENS]?: GEN_AI_USAGE_OUTPUT_TOKENS_TYPE;
+  [GEN_AI_USAGE_OUTPUT_TOKENS_REASONING]?: GEN_AI_USAGE_OUTPUT_TOKENS_REASONING_TYPE;
   [GEN_AI_USAGE_PROMPT_TOKENS]?: GEN_AI_USAGE_PROMPT_TOKENS_TYPE;
   [GEN_AI_USAGE_TOTAL_COST]?: GEN_AI_USAGE_TOTAL_COST_TYPE;
   [GEN_AI_USAGE_TOTAL_TOKENS]?: GEN_AI_USAGE_TOTAL_TOKENS_TYPE;
+  [GEN_AI_USER_MESSAGE]?: GEN_AI_USER_MESSAGE_TYPE;
   [GRAPHQL_OPERATION_NAME]?: GRAPHQL_OPERATION_NAME_TYPE;
   [GRAPHQL_OPERATION_TYPE]?: GRAPHQL_OPERATION_TYPE_TYPE;
   [HTTP_CLIENT_IP]?: HTTP_CLIENT_IP_TYPE;

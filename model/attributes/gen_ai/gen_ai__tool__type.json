@@ -1,0 +1,10 @@
+{
+  "key": "gen_ai.tool.type",
+  "brief": "The type of tool being used.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "function"
+}

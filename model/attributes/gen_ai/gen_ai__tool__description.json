@@ -1,0 +1,10 @@
+{
+  "key": "gen_ai.tool.description",
+  "brief": "The description of the tool being used.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "Searches the web for current information about a topic"
+}
