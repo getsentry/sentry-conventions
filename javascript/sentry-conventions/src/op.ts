@@ -95,6 +95,31 @@ export const FAAS_FUNCTION_AWS_SPAN_OP = 'function.aws';
 
 export const FAAS_FUNCTION_AZURE_SPAN_OP = 'function.azure';
 
+// Path: model/op/gen_ai.json
+// Name: gen_ai
+
+// Description: Operations related to Generative AI interactions
+
+/**
+ * A chat interaction with a generative AI model
+ */
+export const GEN_AI_CHAT_SPAN_OP = 'chat';
+
+/**
+ * Execution of a tool or function by a generative AI model
+ */
+export const GEN_AI_EXECUTE_TOOL_SPAN_OP = 'execute_tool';
+
+/**
+ * Handoff of control between different AI agents or components
+ */
+export const GEN_AI_HANDOFF_SPAN_OP = 'handoff';
+
+/**
+ * Invocation of an AI agent to perform a task
+ */
+export const GEN_AI_INVOKE_AGENT_SPAN_OP = 'invoke_agent';
+
 // Path: model/op/general.json
 // Name: general
 
