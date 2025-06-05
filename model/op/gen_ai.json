@@ -1,0 +1,22 @@
+{
+    "name": "gen_ai",
+    "description": "Operations related to Generative AI interactions",
+    "fields": [
+      {
+        "name": "chat",
+        "description": "A chat interaction with a generative AI model"
+      },
+      {
+        "name": "execute_tool",
+        "description": "Execution of a tool or function by a generative AI model"
+      },
+      {
+        "name": "handoff",
+        "description": "Handoff of control between different AI agents or components"
+      },
+      {
+        "name": "invoke_agent",
+        "description": "Invocation of an AI agent to perform a task"
+      }
+    ]
+  }
