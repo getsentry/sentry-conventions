@@ -8,8 +8,10 @@
   - [gen_ai.choice](#gen_aichoice)
   - [gen_ai.operation.name](#gen_aioperationname)
   - [gen_ai.prompt](#gen_aiprompt)
+  - [gen_ai.request.available_tools](#gen_airequestavailable_tools)
   - [gen_ai.request.frequency_penalty](#gen_airequestfrequency_penalty)
   - [gen_ai.request.max_tokens](#gen_airequestmax_tokens)
+  - [gen_ai.request.messages](#gen_airequestmessages)
   - [gen_ai.request.model](#gen_airequestmodel)
   - [gen_ai.request.presence_penalty](#gen_airequestpresence_penalty)
   - [gen_ai.request.seed](#gen_airequestseed)
@@ -19,11 +21,15 @@
   - [gen_ai.response.finish_reasons](#gen_airesponsefinish_reasons)
   - [gen_ai.response.id](#gen_airesponseid)
   - [gen_ai.response.model](#gen_airesponsemodel)
+  - [gen_ai.response.text](#gen_airesponsetext)
+  - [gen_ai.response.tool_calls](#gen_airesponsetool_calls)
   - [gen_ai.system](#gen_aisystem)
   - [gen_ai.system.message](#gen_aisystemmessage)
   - [gen_ai.tool.description](#gen_aitooldescription)
+  - [gen_ai.tool.input](#gen_aitoolinput)
   - [gen_ai.tool.message](#gen_aitoolmessage)
   - [gen_ai.tool.name](#gen_aitoolname)
+  - [gen_ai.tool.output](#gen_aitooloutput)
   - [gen_ai.tool.type](#gen_aitooltype)
   - [gen_ai.usage.input_tokens](#gen_aiusageinput_tokens)
   - [gen_ai.usage.input_tokens.cached](#gen_aiusageinput_tokenscached)
@@ -93,6 +99,17 @@ The input messages sent to the model
 | Exists in OpenTelemetry | Yes |
 | Example | `[{"role": "user", "message": "hello"}]` |
 
+### gen_ai.request.available_tools
+
+The available tools for the model. It has to be a stringified version of an array of objects.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `[{"name": "get_weather", "description": "Get the weather for a given location"}, {"name": "get_news", "description": "Get the news for a given topic"}]` |
+
 ### gen_ai.request.frequency_penalty
 
 Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.
@@ -115,6 +132,17 @@ The maximum number of tokens to generate in the response.
 | Has PII | false |
 | Exists in OpenTelemetry | Yes |
 | Example | `2048` |
+
+### gen_ai.request.messages
+
+The messages passed to the model. The "content" can be a string or an array of objects. It has to be a stringified version of an array of objects.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | true |
+| Exists in OpenTelemetry | No |
+| Example | `[{"role": "system", "content": "Generate a random number."}, {"role": "user", "content": [{"text": "Generate a random number between 0 and 10.", "type": "text"}]}]` |
 
 ### gen_ai.request.model
 
@@ -223,6 +251,28 @@ The vendor-specific ID of the model used.
 | Example | `gpt-4` |
 | Aliases | `ai.model_id` |
 
+### gen_ai.response.text
+
+The model's response text messages. It has to be a stringified version of an array of response text messages.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | true |
+| Exists in OpenTelemetry | No |
+| Example | `["The weather in Paris is rainy and overcast, with temperatures around 57°F", "The weather in London is sunny and warm, with temperatures around 65°F"]` |
+
+### gen_ai.response.tool_calls
+
+The tool calls in the model's response. It has to be a stringified version of an array of objects.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | true |
+| Exists in OpenTelemetry | No |
+| Example | `[{"name": "get_weather", "arguments": {"location": "Paris"}}]` |
+
 ### gen_ai.system
 
 The provider of the model.
@@ -257,6 +307,17 @@ The description of the tool being used.
 | Exists in OpenTelemetry | Yes |
 | Example | `Searches the web for current information about a topic` |
 
+### gen_ai.tool.input
+
+The input of the tool being used. It has to be a stringified version of the input to the tool.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | true |
+| Exists in OpenTelemetry | No |
+| Example | `{"location": "Paris"}` |
+
 ### gen_ai.tool.message
 
 The response from a tool or function call passed to the model.
@@ -279,6 +340,17 @@ Name of the tool utilized by the agent.
 | Exists in OpenTelemetry | Yes |
 | Example | `Flights` |
 | Aliases | `ai.function_call` |
+
+### gen_ai.tool.output
+
+The output of the tool being used. It has to be a stringified version of the output of the tool.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | true |
+| Exists in OpenTelemetry | No |
+| Example | `rainy, 57°F` |
 
 ### gen_ai.tool.type
 

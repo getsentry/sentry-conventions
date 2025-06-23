@@ -1,0 +1,11 @@
+{
+  "key": "gen_ai.tool.input",
+  "brief": "The input of the tool being used. It has to be a stringified version of the input to the tool.",
+  "type": "string",
+  "pii": {
+    "key": "true"
+  },
+  "is_in_otel": false,
+  "example": "{\"location\": \"Paris\"}",
+  "alias": []
+}

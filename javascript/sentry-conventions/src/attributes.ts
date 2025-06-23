@@ -1951,6 +1951,26 @@ export const GEN_AI_PROMPT = 'gen_ai.prompt';
  */
 export type GEN_AI_PROMPT_TYPE = string;
 
+// Path: model/attributes/gen_ai/gen_ai__request__available_tools.json
+
+/**
+ * The available tools for the model. It has to be a stringified version of an array of objects. `gen_ai.request.available_tools`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_REQUEST_AVAILABLE_TOOLS_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "[{\"name\": \"get_weather\", \"description\": \"Get the weather for a given location\"}, {\"name\": \"get_news\", \"description\": \"Get the news for a given topic\"}]"
+ */
+export const GEN_AI_REQUEST_AVAILABLE_TOOLS = 'gen_ai.request.available_tools';
+
+/**
+ * Type for {@link GEN_AI_REQUEST_AVAILABLE_TOOLS} gen_ai.request.available_tools
+ */
+export type GEN_AI_REQUEST_AVAILABLE_TOOLS_TYPE = string;
+
 // Path: model/attributes/gen_ai/gen_ai__request__frequency_penalty.json
 
 /**
@@ -1992,6 +2012,26 @@ export const GEN_AI_REQUEST_MAX_TOKENS = 'gen_ai.request.max_tokens';
  * Type for {@link GEN_AI_REQUEST_MAX_TOKENS} gen_ai.request.max_tokens
  */
 export type GEN_AI_REQUEST_MAX_TOKENS_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__request__messages.json
+
+/**
+ * The messages passed to the model. The "content" can be a string or an array of objects. It has to be a stringified version of an array of objects. `gen_ai.request.messages`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_REQUEST_MESSAGES_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "[{\"role\": \"system\", \"content\": \"Generate a random number.\"}, {\"role\": \"user\", \"content\": [{\"text\": \"Generate a random number between 0 and 10.\", \"type\": \"text\"}]}]"
+ */
+export const GEN_AI_REQUEST_MESSAGES = 'gen_ai.request.messages';
+
+/**
+ * Type for {@link GEN_AI_REQUEST_MESSAGES} gen_ai.request.messages
+ */
+export type GEN_AI_REQUEST_MESSAGES_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__request__model.json
 
@@ -2189,6 +2229,46 @@ export const GEN_AI_RESPONSE_MODEL = 'gen_ai.response.model';
  */
 export type GEN_AI_RESPONSE_MODEL_TYPE = string;
 
+// Path: model/attributes/gen_ai/gen_ai__response__text.json
+
+/**
+ * The model's response text messages. It has to be a stringified version of an array of response text messages. `gen_ai.response.text`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_RESPONSE_TEXT_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "[\"The weather in Paris is rainy and overcast, with temperatures around 57°F\", \"The weather in London is sunny and warm, with temperatures around 65°F\"]"
+ */
+export const GEN_AI_RESPONSE_TEXT = 'gen_ai.response.text';
+
+/**
+ * Type for {@link GEN_AI_RESPONSE_TEXT} gen_ai.response.text
+ */
+export type GEN_AI_RESPONSE_TEXT_TYPE = string;
+
+// Path: model/attributes/gen_ai/gen_ai__response__tool_calls.json
+
+/**
+ * The tool calls in the model's response. It has to be a stringified version of an array of objects. `gen_ai.response.tool_calls`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_RESPONSE_TOOL_CALLS_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "[{\"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]"
+ */
+export const GEN_AI_RESPONSE_TOOL_CALLS = 'gen_ai.response.tool_calls';
+
+/**
+ * Type for {@link GEN_AI_RESPONSE_TOOL_CALLS} gen_ai.response.tool_calls
+ */
+export type GEN_AI_RESPONSE_TOOL_CALLS_TYPE = string;
+
 // Path: model/attributes/gen_ai/gen_ai__system.json
 
 /**
@@ -2251,6 +2331,26 @@ export const GEN_AI_TOOL_DESCRIPTION = 'gen_ai.tool.description';
  */
 export type GEN_AI_TOOL_DESCRIPTION_TYPE = string;
 
+// Path: model/attributes/gen_ai/gen_ai__tool__input.json
+
+/**
+ * The input of the tool being used. It has to be a stringified version of the input to the tool. `gen_ai.tool.input`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_TOOL_INPUT_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "{\"location\": \"Paris\"}"
+ */
+export const GEN_AI_TOOL_INPUT = 'gen_ai.tool.input';
+
+/**
+ * Type for {@link GEN_AI_TOOL_INPUT} gen_ai.tool.input
+ */
+export type GEN_AI_TOOL_INPUT_TYPE = string;
+
 // Path: model/attributes/gen_ai/gen_ai__tool__message.json
 
 /**
@@ -2292,6 +2392,26 @@ export const GEN_AI_TOOL_NAME = 'gen_ai.tool.name';
  * Type for {@link GEN_AI_TOOL_NAME} gen_ai.tool.name
  */
 export type GEN_AI_TOOL_NAME_TYPE = string;
+
+// Path: model/attributes/gen_ai/gen_ai__tool__output.json
+
+/**
+ * The output of the tool being used. It has to be a stringified version of the output of the tool. `gen_ai.tool.output`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_TOOL_OUTPUT_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "rainy, 57°F"
+ */
+export const GEN_AI_TOOL_OUTPUT = 'gen_ai.tool.output';
+
+/**
+ * Type for {@link GEN_AI_TOOL_OUTPUT} gen_ai.tool.output
+ */
+export type GEN_AI_TOOL_OUTPUT_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__tool__type.json
 
@@ -5936,8 +6056,10 @@ export type Attributes = {
   [GEN_AI_CHOICE]?: GEN_AI_CHOICE_TYPE;
   [GEN_AI_OPERATION_NAME]?: GEN_AI_OPERATION_NAME_TYPE;
   [GEN_AI_PROMPT]?: GEN_AI_PROMPT_TYPE;
+  [GEN_AI_REQUEST_AVAILABLE_TOOLS]?: GEN_AI_REQUEST_AVAILABLE_TOOLS_TYPE;
   [GEN_AI_REQUEST_FREQUENCY_PENALTY]?: GEN_AI_REQUEST_FREQUENCY_PENALTY_TYPE;
   [GEN_AI_REQUEST_MAX_TOKENS]?: GEN_AI_REQUEST_MAX_TOKENS_TYPE;
+  [GEN_AI_REQUEST_MESSAGES]?: GEN_AI_REQUEST_MESSAGES_TYPE;
   [GEN_AI_REQUEST_MODEL]?: GEN_AI_REQUEST_MODEL_TYPE;
   [GEN_AI_REQUEST_PRESENCE_PENALTY]?: GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE;
   [GEN_AI_REQUEST_SEED]?: GEN_AI_REQUEST_SEED_TYPE;
@@ -5947,11 +6069,15 @@ export type Attributes = {
   [GEN_AI_RESPONSE_FINISH_REASONS]?: GEN_AI_RESPONSE_FINISH_REASONS_TYPE;
   [GEN_AI_RESPONSE_ID]?: GEN_AI_RESPONSE_ID_TYPE;
   [GEN_AI_RESPONSE_MODEL]?: GEN_AI_RESPONSE_MODEL_TYPE;
+  [GEN_AI_RESPONSE_TEXT]?: GEN_AI_RESPONSE_TEXT_TYPE;
+  [GEN_AI_RESPONSE_TOOL_CALLS]?: GEN_AI_RESPONSE_TOOL_CALLS_TYPE;
   [GEN_AI_SYSTEM]?: GEN_AI_SYSTEM_TYPE;
   [GEN_AI_SYSTEM_MESSAGE]?: GEN_AI_SYSTEM_MESSAGE_TYPE;
   [GEN_AI_TOOL_DESCRIPTION]?: GEN_AI_TOOL_DESCRIPTION_TYPE;
+  [GEN_AI_TOOL_INPUT]?: GEN_AI_TOOL_INPUT_TYPE;
   [GEN_AI_TOOL_MESSAGE]?: GEN_AI_TOOL_MESSAGE_TYPE;
   [GEN_AI_TOOL_NAME]?: GEN_AI_TOOL_NAME_TYPE;
+  [GEN_AI_TOOL_OUTPUT]?: GEN_AI_TOOL_OUTPUT_TYPE;
   [GEN_AI_TOOL_TYPE]?: GEN_AI_TOOL_TYPE_TYPE;
   [GEN_AI_USAGE_INPUT_TOKENS]?: GEN_AI_USAGE_INPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_INPUT_TOKENS_CACHED]?: GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE;
@@ -6182,8 +6308,10 @@ export type FullAttributes = {
   [GEN_AI_CHOICE]?: GEN_AI_CHOICE_TYPE;
   [GEN_AI_OPERATION_NAME]?: GEN_AI_OPERATION_NAME_TYPE;
   [GEN_AI_PROMPT]?: GEN_AI_PROMPT_TYPE;
+  [GEN_AI_REQUEST_AVAILABLE_TOOLS]?: GEN_AI_REQUEST_AVAILABLE_TOOLS_TYPE;
   [GEN_AI_REQUEST_FREQUENCY_PENALTY]?: GEN_AI_REQUEST_FREQUENCY_PENALTY_TYPE;
   [GEN_AI_REQUEST_MAX_TOKENS]?: GEN_AI_REQUEST_MAX_TOKENS_TYPE;
+  [GEN_AI_REQUEST_MESSAGES]?: GEN_AI_REQUEST_MESSAGES_TYPE;
   [GEN_AI_REQUEST_MODEL]?: GEN_AI_REQUEST_MODEL_TYPE;
   [GEN_AI_REQUEST_PRESENCE_PENALTY]?: GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE;
   [GEN_AI_REQUEST_SEED]?: GEN_AI_REQUEST_SEED_TYPE;
@@ -6193,11 +6321,15 @@ export type FullAttributes = {
   [GEN_AI_RESPONSE_FINISH_REASONS]?: GEN_AI_RESPONSE_FINISH_REASONS_TYPE;
   [GEN_AI_RESPONSE_ID]?: GEN_AI_RESPONSE_ID_TYPE;
   [GEN_AI_RESPONSE_MODEL]?: GEN_AI_RESPONSE_MODEL_TYPE;
+  [GEN_AI_RESPONSE_TEXT]?: GEN_AI_RESPONSE_TEXT_TYPE;
+  [GEN_AI_RESPONSE_TOOL_CALLS]?: GEN_AI_RESPONSE_TOOL_CALLS_TYPE;
   [GEN_AI_SYSTEM]?: GEN_AI_SYSTEM_TYPE;
   [GEN_AI_SYSTEM_MESSAGE]?: GEN_AI_SYSTEM_MESSAGE_TYPE;
   [GEN_AI_TOOL_DESCRIPTION]?: GEN_AI_TOOL_DESCRIPTION_TYPE;
+  [GEN_AI_TOOL_INPUT]?: GEN_AI_TOOL_INPUT_TYPE;
   [GEN_AI_TOOL_MESSAGE]?: GEN_AI_TOOL_MESSAGE_TYPE;
   [GEN_AI_TOOL_NAME]?: GEN_AI_TOOL_NAME_TYPE;
+  [GEN_AI_TOOL_OUTPUT]?: GEN_AI_TOOL_OUTPUT_TYPE;
   [GEN_AI_TOOL_TYPE]?: GEN_AI_TOOL_TYPE_TYPE;
   [GEN_AI_USAGE_COMPLETION_TOKENS]?: GEN_AI_USAGE_COMPLETION_TOKENS_TYPE;
   [GEN_AI_USAGE_INPUT_TOKENS]?: GEN_AI_USAGE_INPUT_TOKENS_TYPE;

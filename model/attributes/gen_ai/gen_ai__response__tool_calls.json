@@ -1,0 +1,11 @@
+{
+  "key": "gen_ai.response.tool_calls",
+  "brief": "The tool calls in the model's response. It has to be a stringified version of an array of objects.",
+  "type": "string",
+  "pii": {
+    "key": "true"
+  },
+  "is_in_otel": false,
+  "example": "[{\"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]",
+  "alias": []
+}
