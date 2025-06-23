@@ -1,6 +1,6 @@
 {
   "key": "gen_ai.request.messages",
-  "brief": "The messages passed to the model. The \"content\" can be a string or an array of objects. It has to be a stringified version of an array of objects.",
+  "brief": "The messages passed to the model. It has to be a stringified version of an array of objects. The \"content\" can be a string or an array of objects.",
   "type": "string",
   "pii": {
     "key": "true"
