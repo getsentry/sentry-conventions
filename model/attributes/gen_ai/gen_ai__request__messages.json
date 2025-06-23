@@ -1,0 +1,11 @@
+{
+  "key": "gen_ai.request.messages",
+  "brief": "The messages passed to the model. The \"content\" can be a string or an array of objects. It has to be a stringified version of an array of objects.",
+  "type": "string",
+  "pii": {
+    "key": "true"
+  },
+  "is_in_otel": false,
+  "example": "[{\"role\": \"system\", \"content\": \"Generate a random number.\"}, {\"role\": \"user\", \"content\": [{\"text\": \"Generate a random number between 0 and 10.\", \"type\": \"text\"}]}]",
+  "alias": []
+}
