@@ -7,5 +7,9 @@
   },
   "is_in_otel": false,
   "example": ["hello", "world"],
-  "sdks": ["python"]
+  "sdks": ["python"],
+  "deprecation": {
+    "_status": null,
+    "replacement": "gen_ai.response.text"
+  }
 }

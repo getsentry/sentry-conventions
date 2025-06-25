@@ -135,7 +135,7 @@ The maximum number of tokens to generate in the response.
 
 ### gen_ai.request.messages
 
-The messages passed to the model. The "content" can be a string or an array of objects. It has to be a stringified version of an array of objects.
+The messages passed to the model. It has to be a stringified version of an array of objects. The "content" can be a string or an array of objects.
 
 | Property | Value |
 | --- | --- |

@@ -7,6 +7,10 @@
   },
   "is_in_otel": false,
   "example": "[{\"role\": \"user\", \"message\": \"hello\"}]",
-  "alias": ["gen_ai.prompt"],
-  "sdks": ["python"]
+  "alias": ["gen_ai.prompt", "gen_ai.request.messages"],
+  "sdks": ["python"],
+  "deprecation": {
+    "_status": null,
+    "replacement": "gen_ai.request.messages"
+  }
 }

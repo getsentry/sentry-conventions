@@ -213,6 +213,22 @@
       }
     },
     {
+      "key": "ai.input_messages",
+      "brief": "The input messages sent to the model",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "[{\"role\": \"user\", \"message\": \"hello\"}]",
+      "alias": ["gen_ai.prompt", "gen_ai.request.messages"],
+      "sdks": ["python"],
+      "deprecation": {
+        "_status": null,
+        "replacement": "gen_ai.request.messages"
+      }
+    },
+    {
       "key": "ai.model.provider",
       "brief": "The provider of the model.",
       "type": "string",
@@ -273,6 +289,21 @@
       }
     },
     {
+      "key": "ai.responses",
+      "brief": "The response messages sent back by the AI model.",
+      "type": "string[]",
+      "pii": {
+        "key": "false"
+      },
+      "is_in_otel": false,
+      "example": ["hello", "world"],
+      "sdks": ["python"],
+      "deprecation": {
+        "_status": null,
+        "replacement": "gen_ai.response.text"
+      }
+    },
+    {
       "key": "ai.seed",
       "brief": "The seed, ideally models given the same seed and same other parameters will produce the exact same output.",
       "type": "string",
@@ -298,6 +329,34 @@
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.request.temperature"
+      }
+    },
+    {
+      "key": "ai.tool_calls",
+      "brief": "For an AI model call, the tool calls that were made.",
+      "type": "string[]",
+      "pii": {
+        "key": "true"
+      },
+      "is_in_otel": false,
+      "example": ["tool_call_1", "tool_call_2"],
+      "deprecation": {
+        "_status": null,
+        "replacement": "gen_ai.response.tool_calls"
+      }
+    },
+    {
+      "key": "ai.tools",
+      "brief": "For an AI model call, the functions that are available",
+      "type": "string[]",
+      "pii": {
+        "key": "false"
+      },
+      "is_in_otel": false,
+      "example": ["function_1", "function_2"],
+      "deprecation": {
+        "_status": null,
+        "replacement": "gen_ai.request.available_tools"
       }
     },
     {

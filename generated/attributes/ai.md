@@ -5,21 +5,17 @@
 - [Stable Attributes](#stable-attributes)
   - [ai.citations](#aicitations)
   - [ai.documents](#aidocuments)
-  - [ai.input_messages](#aiinput_messages)
   - [ai.is_search_required](#aiis_search_required)
   - [ai.metadata](#aimetadata)
   - [ai.pipeline.name](#aipipelinename)
   - [ai.preamble](#aipreamble)
   - [ai.raw_prompting](#airaw_prompting)
   - [ai.response_format](#airesponse_format)
-  - [ai.responses](#airesponses)
   - [ai.search_queries](#aisearch_queries)
   - [ai.search_results](#aisearch_results)
   - [ai.streaming](#aistreaming)
   - [ai.tags](#aitags)
   - [ai.texts](#aitexts)
-  - [ai.tool_calls](#aitool_calls)
-  - [ai.tools](#aitools)
   - [ai.total_cost](#aitotal_cost)
   - [ai.warnings](#aiwarnings)
 - [Deprecated Attributes](#deprecated-attributes)
@@ -28,12 +24,16 @@
   - [ai.frequency_penalty](#aifrequency_penalty)
   - [ai.function_call](#aifunction_call)
   - [ai.generation_id](#aigeneration_id)
+  - [ai.input_messages](#aiinput_messages)
   - [ai.model_id](#aimodel_id)
   - [ai.model.provider](#aimodelprovider)
   - [ai.presence_penalty](#aipresence_penalty)
   - [ai.prompt_tokens.used](#aiprompt_tokensused)
+  - [ai.responses](#airesponses)
   - [ai.seed](#aiseed)
   - [ai.temperature](#aitemperature)
+  - [ai.tool_calls](#aitool_calls)
+  - [ai.tools](#aitools)
   - [ai.top_k](#aitop_k)
   - [ai.top_p](#aitop_p)
   - [ai.total_tokens.used](#aitotal_tokensused)
@@ -61,18 +61,6 @@ Documents or content chunks used as context for the AI model.
 | Has PII | true |
 | Exists in OpenTelemetry | No |
 | Example | `["document1.txt","document2.pdf"]` |
-
-### ai.input_messages
-
-The input messages sent to the model
-
-| Property | Value |
-| --- | --- |
-| Type | `string` |
-| Has PII | maybe |
-| Exists in OpenTelemetry | No |
-| Example | `[{"role": "user", "message": "hello"}]` |
-| Aliases | `gen_ai.prompt` |
 
 ### ai.is_search_required
 
@@ -140,17 +128,6 @@ For an AI model call, the format of the response
 | Exists in OpenTelemetry | No |
 | Example | `json_object` |
 
-### ai.responses
-
-The response messages sent back by the AI model.
-
-| Property | Value |
-| --- | --- |
-| Type | `string[]` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `["hello","world"]` |
-
 ### ai.search_queries
 
 Queries used to search for relevant context or documents.
@@ -205,28 +182,6 @@ Raw text inputs provided to the model.
 | Has PII | true |
 | Exists in OpenTelemetry | No |
 | Example | `["Hello, how are you?","What is the capital of France?"]` |
-
-### ai.tool_calls
-
-For an AI model call, the tool calls that were made.
-
-| Property | Value |
-| --- | --- |
-| Type | `string[]` |
-| Has PII | true |
-| Exists in OpenTelemetry | No |
-| Example | `["tool_call_1","tool_call_2"]` |
-
-### ai.tools
-
-For an AI model call, the functions that are available
-
-| Property | Value |
-| --- | --- |
-| Type | `string[]` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `["function_1","function_2"]` |
 
 ### ai.total_cost
 
@@ -315,6 +270,19 @@ Unique identifier for the completion.
 | Example | `gen_123abc` |
 | Deprecated | Yes, use `gen_ai.response.id` instead |
 
+### ai.input_messages
+
+The input messages sent to the model
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `[{"role": "user", "message": "hello"}]` |
+| Deprecated | Yes, use `gen_ai.request.messages` instead |
+| Aliases | `gen_ai.prompt`, `gen_ai.request.messages` |
+
 ### ai.model_id
 
 The vendor-specific ID of the model used.
@@ -365,6 +333,18 @@ The number of tokens used to process just the prompt.
 | Deprecated | Yes, use `gen_ai.usage.input_tokens` instead |
 | Aliases | `gen_ai.usage.prompt_tokens`, `gen_ai.usage.input_tokens` |
 
+### ai.responses
+
+The response messages sent back by the AI model.
+
+| Property | Value |
+| --- | --- |
+| Type | `string[]` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `["hello","world"]` |
+| Deprecated | Yes, use `gen_ai.response.text` instead |
+
 ### ai.seed
 
 The seed, ideally models given the same seed and same other parameters will produce the exact same output.
@@ -388,6 +368,30 @@ For an AI model call, the temperature parameter. Temperature essentially means h
 | Exists in OpenTelemetry | No |
 | Example | `0.1` |
 | Deprecated | Yes, use `gen_ai.request.temperature` instead |
+
+### ai.tool_calls
+
+For an AI model call, the tool calls that were made.
+
+| Property | Value |
+| --- | --- |
+| Type | `string[]` |
+| Has PII | true |
+| Exists in OpenTelemetry | No |
+| Example | `["tool_call_1","tool_call_2"]` |
+| Deprecated | Yes, use `gen_ai.response.tool_calls` instead |
+
+### ai.tools
+
+For an AI model call, the functions that are available
+
+| Property | Value |
+| --- | --- |
+| Type | `string[]` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `["function_1","function_2"]` |
+| Deprecated | Yes, use `gen_ai.request.available_tools` instead |
 
 ### ai.top_k
 

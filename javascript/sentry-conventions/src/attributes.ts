@@ -158,8 +158,9 @@ export type AI_GENERATION_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link GEN_AI_PROMPT} `gen_ai.prompt`
+ * Aliases: {@link GEN_AI_PROMPT} `gen_ai.prompt`, {@link GEN_AI_REQUEST_MESSAGES} `gen_ai.request.messages`
  *
+ * @deprecated Use {@link GEN_AI_REQUEST_MESSAGES} (gen_ai.request.messages) instead
  * @example "[{\"role\": \"user\", \"message\": \"hello\"}]"
  */
 export const AI_INPUT_MESSAGES = 'ai.input_messages';
@@ -388,6 +389,7 @@ export type AI_RESPONSE_FORMAT_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
+ * @deprecated Use {@link GEN_AI_RESPONSE_TEXT} (gen_ai.response.text) instead
  * @example ["hello","world"]
  */
 export const AI_RESPONSES = 'ai.responses';
@@ -550,6 +552,7 @@ export type AI_TEXTS_TYPE = Array<string>;
  *
  * Attribute defined in OTEL: No
  *
+ * @deprecated Use {@link GEN_AI_RESPONSE_TOOL_CALLS} (gen_ai.response.tool_calls) instead
  * @example ["tool_call_1","tool_call_2"]
  */
 export const AI_TOOL_CALLS = 'ai.tool_calls';
@@ -570,6 +573,7 @@ export type AI_TOOL_CALLS_TYPE = Array<string>;
  *
  * Attribute defined in OTEL: No
  *
+ * @deprecated Use {@link GEN_AI_REQUEST_AVAILABLE_TOOLS} (gen_ai.request.available_tools) instead
  * @example ["function_1","function_2"]
  */
 export const AI_TOOLS = 'ai.tools';
@@ -2016,7 +2020,7 @@ export type GEN_AI_REQUEST_MAX_TOKENS_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__request__messages.json
 
 /**
- * The messages passed to the model. The "content" can be a string or an array of objects. It has to be a stringified version of an array of objects. `gen_ai.request.messages`
+ * The messages passed to the model. It has to be a stringified version of an array of objects. The "content" can be a string or an array of objects. `gen_ai.request.messages`
  *
  * Attribute Value Type: `string` {@link GEN_AI_REQUEST_MESSAGES_TYPE}
  *
@@ -5989,21 +5993,17 @@ export type AttributeValue = string | number | boolean | Array<string> | Array<n
 export type Attributes = {
   [AI_CITATIONS]?: AI_CITATIONS_TYPE;
   [AI_DOCUMENTS]?: AI_DOCUMENTS_TYPE;
-  [AI_INPUT_MESSAGES]?: AI_INPUT_MESSAGES_TYPE;
   [AI_IS_SEARCH_REQUIRED]?: AI_IS_SEARCH_REQUIRED_TYPE;
   [AI_METADATA]?: AI_METADATA_TYPE;
   [AI_PIPELINE_NAME]?: AI_PIPELINE_NAME_TYPE;
   [AI_PREAMBLE]?: AI_PREAMBLE_TYPE;
   [AI_RAW_PROMPTING]?: AI_RAW_PROMPTING_TYPE;
   [AI_RESPONSE_FORMAT]?: AI_RESPONSE_FORMAT_TYPE;
-  [AI_RESPONSES]?: AI_RESPONSES_TYPE;
   [AI_SEARCH_QUERIES]?: AI_SEARCH_QUERIES_TYPE;
   [AI_SEARCH_RESULTS]?: AI_SEARCH_RESULTS_TYPE;
   [AI_STREAMING]?: AI_STREAMING_TYPE;
   [AI_TAGS]?: AI_TAGS_TYPE;
   [AI_TEXTS]?: AI_TEXTS_TYPE;
-  [AI_TOOL_CALLS]?: AI_TOOL_CALLS_TYPE;
-  [AI_TOOLS]?: AI_TOOLS_TYPE;
   [AI_TOTAL_COST]?: AI_TOTAL_COST_TYPE;
   [AI_WARNINGS]?: AI_WARNINGS_TYPE;
   [APP_START_TYPE]?: APP_START_TYPE_TYPE;
