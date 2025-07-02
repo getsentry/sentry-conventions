@@ -1,0 +1,10 @@
+{
+  "key": "gen_ai.response.tokens_per_second",
+  "brief": "The total output tokens per seconds throughput",
+  "type": "double",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 12345.67
+}

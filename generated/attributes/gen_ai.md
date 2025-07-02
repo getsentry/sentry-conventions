@@ -22,6 +22,7 @@
   - [gen_ai.response.id](#gen_airesponseid)
   - [gen_ai.response.model](#gen_airesponsemodel)
   - [gen_ai.response.text](#gen_airesponsetext)
+  - [gen_ai.response.tokens_per_second](#gen_airesponsetokens_per_second)
   - [gen_ai.response.tool_calls](#gen_airesponsetool_calls)
   - [gen_ai.system](#gen_aisystem)
   - [gen_ai.system.message](#gen_aisystemmessage)
@@ -261,6 +262,17 @@ The model's response text messages. It has to be a stringified version of an arr
 | Has PII | true |
 | Exists in OpenTelemetry | No |
 | Example | `["The weather in Paris is rainy and overcast, with temperatures around 57°F", "The weather in London is sunny and warm, with temperatures around 65°F"]` |
+
+### gen_ai.response.tokens_per_second
+
+The total output tokens per seconds throughput
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `12345.67` |
 
 ### gen_ai.response.tool_calls
 
