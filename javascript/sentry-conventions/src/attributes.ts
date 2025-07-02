@@ -2253,6 +2253,26 @@ export const GEN_AI_RESPONSE_TEXT = 'gen_ai.response.text';
  */
 export type GEN_AI_RESPONSE_TEXT_TYPE = string;
 
+// Path: model/attributes/gen_ai/gen_ai__response__tokens_per_second.json
+
+/**
+ * The total output tokens per seconds throughput `gen_ai.response.tokens_per_second`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_RESPONSE_TOKENS_PER_SECOND_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 12345.67
+ */
+export const GEN_AI_RESPONSE_TOKENS_PER_SECOND = 'gen_ai.response.tokens_per_second';
+
+/**
+ * Type for {@link GEN_AI_RESPONSE_TOKENS_PER_SECOND} gen_ai.response.tokens_per_second
+ */
+export type GEN_AI_RESPONSE_TOKENS_PER_SECOND_TYPE = number;
+
 // Path: model/attributes/gen_ai/gen_ai__response__tool_calls.json
 
 /**
@@ -6070,6 +6090,7 @@ export type Attributes = {
   [GEN_AI_RESPONSE_ID]?: GEN_AI_RESPONSE_ID_TYPE;
   [GEN_AI_RESPONSE_MODEL]?: GEN_AI_RESPONSE_MODEL_TYPE;
   [GEN_AI_RESPONSE_TEXT]?: GEN_AI_RESPONSE_TEXT_TYPE;
+  [GEN_AI_RESPONSE_TOKENS_PER_SECOND]?: GEN_AI_RESPONSE_TOKENS_PER_SECOND_TYPE;
   [GEN_AI_RESPONSE_TOOL_CALLS]?: GEN_AI_RESPONSE_TOOL_CALLS_TYPE;
   [GEN_AI_SYSTEM]?: GEN_AI_SYSTEM_TYPE;
   [GEN_AI_SYSTEM_MESSAGE]?: GEN_AI_SYSTEM_MESSAGE_TYPE;
@@ -6322,6 +6343,7 @@ export type FullAttributes = {
   [GEN_AI_RESPONSE_ID]?: GEN_AI_RESPONSE_ID_TYPE;
   [GEN_AI_RESPONSE_MODEL]?: GEN_AI_RESPONSE_MODEL_TYPE;
   [GEN_AI_RESPONSE_TEXT]?: GEN_AI_RESPONSE_TEXT_TYPE;
+  [GEN_AI_RESPONSE_TOKENS_PER_SECOND]?: GEN_AI_RESPONSE_TOKENS_PER_SECOND_TYPE;
   [GEN_AI_RESPONSE_TOOL_CALLS]?: GEN_AI_RESPONSE_TOOL_CALLS_TYPE;
   [GEN_AI_SYSTEM]?: GEN_AI_SYSTEM_TYPE;
   [GEN_AI_SYSTEM_MESSAGE]?: GEN_AI_SYSTEM_MESSAGE_TYPE;
