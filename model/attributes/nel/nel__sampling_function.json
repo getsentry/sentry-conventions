@@ -1,7 +1,7 @@
 {
   "key": "nel.sampling_function",
   "brief": "The sampling function used to determine if the request should be sampled.",
-  "type": "float",
+  "type": "double",
   "pii": { "key": "false" },
   "is_in_otel": false,
   "example": 0.5
