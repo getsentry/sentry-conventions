@@ -746,6 +746,26 @@ export const BROWSER_NAME = 'browser.name';
  */
 export type BROWSER_NAME_TYPE = string;
 
+// Path: model/attributes/browser/browser__report__type.json
+
+/**
+ * A browser report sent via reporting API.. `browser.report.type`
+ *
+ * Attribute Value Type: `string` {@link BROWSER_REPORT_TYPE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "network-error"
+ */
+export const BROWSER_REPORT_TYPE = 'browser.report.type';
+
+/**
+ * Type for {@link BROWSER_REPORT_TYPE} browser.report.type
+ */
+export type BROWSER_REPORT_TYPE_TYPE = string;
+
 // Path: model/attributes/browser/browser__script__invoker.json
 
 /**
@@ -3882,6 +3902,106 @@ export const NAVIGATION_TYPE = 'navigation.type';
  */
 export type NAVIGATION_TYPE_TYPE = string;
 
+// Path: model/attributes/nel/nel__elapsed_time.json
+
+/**
+ * The elapsed number of milliseconds between the start of the resource fetch and when it was completed or aborted by the user agent. `nel.elapsed_time`
+ *
+ * Attribute Value Type: `number` {@link NEL_ELAPSED_TIME_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 100
+ */
+export const NEL_ELAPSED_TIME = 'nel.elapsed_time';
+
+/**
+ * Type for {@link NEL_ELAPSED_TIME} nel.elapsed_time
+ */
+export type NEL_ELAPSED_TIME_TYPE = number;
+
+// Path: model/attributes/nel/nel__phase.json
+
+/**
+ * If request failed, the phase of its network error. If request succeeded, "application". `nel.phase`
+ *
+ * Attribute Value Type: `string` {@link NEL_PHASE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "application"
+ */
+export const NEL_PHASE = 'nel.phase';
+
+/**
+ * Type for {@link NEL_PHASE} nel.phase
+ */
+export type NEL_PHASE_TYPE = string;
+
+// Path: model/attributes/nel/nel__referrer.json
+
+/**
+ * request's referrer, as determined by the referrer policy associated with its client. `nel.referrer`
+ *
+ * Attribute Value Type: `string` {@link NEL_REFERRER_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "https://example.com/foo?bar=baz"
+ */
+export const NEL_REFERRER = 'nel.referrer';
+
+/**
+ * Type for {@link NEL_REFERRER} nel.referrer
+ */
+export type NEL_REFERRER_TYPE = string;
+
+// Path: model/attributes/nel/nel__sampling_function.json
+
+/**
+ * The sampling function used to determine if the request should be sampled. `nel.sampling_function`
+ *
+ * Attribute Value Type: `number` {@link NEL_SAMPLING_FUNCTION_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 0.5
+ */
+export const NEL_SAMPLING_FUNCTION = 'nel.sampling_function';
+
+/**
+ * Type for {@link NEL_SAMPLING_FUNCTION} nel.sampling_function
+ */
+export type NEL_SAMPLING_FUNCTION_TYPE = number;
+
+// Path: model/attributes/nel/nel__type.json
+
+/**
+ * If request failed, the type of its network error. If request succeeded, "ok". `nel.type`
+ *
+ * Attribute Value Type: `string` {@link NEL_TYPE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "dns.unreachable"
+ */
+export const NEL_TYPE = 'nel.type';
+
+/**
+ * Type for {@link NEL_TYPE} nel.type
+ */
+export type NEL_TYPE_TYPE = string;
+
 // Path: model/attributes/net/net__host__ip.json
 
 /**
@@ -5119,7 +5239,7 @@ export type SENTRY_OP_TYPE = string;
 // Path: model/attributes/sentry/sentry__origin.json
 
 /**
- * The origin of the instrumentation (e.g. span, log, etc.). `sentry.origin`
+ * The origin of the instrumentation (e.g. span, log, etc.) `sentry.origin`
  *
  * Attribute Value Type: `string` {@link SENTRY_ORIGIN_TYPE}
  *
@@ -6029,6 +6149,7 @@ export type Attributes = {
   [APP_START_TYPE]?: APP_START_TYPE_TYPE;
   [BLOCKED_MAIN_THREAD]?: BLOCKED_MAIN_THREAD_TYPE;
   [BROWSER_NAME]?: BROWSER_NAME_TYPE;
+  [BROWSER_REPORT_TYPE]?: BROWSER_REPORT_TYPE_TYPE;
   [BROWSER_SCRIPT_INVOKER]?: BROWSER_SCRIPT_INVOKER_TYPE;
   [BROWSER_SCRIPT_INVOKER_TYPE]?: BROWSER_SCRIPT_INVOKER_TYPE_TYPE;
   [BROWSER_SCRIPT_SOURCE_CHAR_POSITION]?: BROWSER_SCRIPT_SOURCE_CHAR_POSITION_TYPE;
@@ -6153,6 +6274,11 @@ export type Attributes = {
   [MESSAGING_OPERATION_TYPE]?: MESSAGING_OPERATION_TYPE_TYPE;
   [MESSAGING_SYSTEM]?: MESSAGING_SYSTEM_TYPE;
   [NAVIGATION_TYPE]?: NAVIGATION_TYPE_TYPE;
+  [NEL_ELAPSED_TIME]?: NEL_ELAPSED_TIME_TYPE;
+  [NEL_PHASE]?: NEL_PHASE_TYPE;
+  [NEL_REFERRER]?: NEL_REFERRER_TYPE;
+  [NEL_SAMPLING_FUNCTION]?: NEL_SAMPLING_FUNCTION_TYPE;
+  [NEL_TYPE]?: NEL_TYPE_TYPE;
   [NETWORK_LOCAL_ADDRESS]?: NETWORK_LOCAL_ADDRESS_TYPE;
   [NETWORK_LOCAL_PORT]?: NETWORK_LOCAL_PORT_TYPE;
   [NETWORK_PEER_ADDRESS]?: NETWORK_PEER_ADDRESS_TYPE;
@@ -6271,6 +6397,7 @@ export type FullAttributes = {
   [APP_START_TYPE]?: APP_START_TYPE_TYPE;
   [BLOCKED_MAIN_THREAD]?: BLOCKED_MAIN_THREAD_TYPE;
   [BROWSER_NAME]?: BROWSER_NAME_TYPE;
+  [BROWSER_REPORT_TYPE]?: BROWSER_REPORT_TYPE_TYPE;
   [BROWSER_SCRIPT_INVOKER]?: BROWSER_SCRIPT_INVOKER_TYPE;
   [BROWSER_SCRIPT_INVOKER_TYPE]?: BROWSER_SCRIPT_INVOKER_TYPE_TYPE;
   [BROWSER_SCRIPT_SOURCE_CHAR_POSITION]?: BROWSER_SCRIPT_SOURCE_CHAR_POSITION_TYPE;
@@ -6421,6 +6548,11 @@ export type FullAttributes = {
   [MESSAGING_SYSTEM]?: MESSAGING_SYSTEM_TYPE;
   [METHOD]?: METHOD_TYPE;
   [NAVIGATION_TYPE]?: NAVIGATION_TYPE_TYPE;
+  [NEL_ELAPSED_TIME]?: NEL_ELAPSED_TIME_TYPE;
+  [NEL_PHASE]?: NEL_PHASE_TYPE;
+  [NEL_REFERRER]?: NEL_REFERRER_TYPE;
+  [NEL_SAMPLING_FUNCTION]?: NEL_SAMPLING_FUNCTION_TYPE;
+  [NEL_TYPE]?: NEL_TYPE_TYPE;
   [NET_HOST_IP]?: NET_HOST_IP_TYPE;
   [NET_HOST_NAME]?: NET_HOST_NAME_TYPE;
   [NET_HOST_PORT]?: NET_HOST_PORT_TYPE;
