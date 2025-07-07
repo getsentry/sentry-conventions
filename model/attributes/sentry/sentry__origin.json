@@ -1,6 +1,6 @@
 {
   "key": "sentry.origin",
-  "brief": "The origin of a span.",
+  "brief": "The origin of the instrumentation (e.g. span, log, etc.)",
   "type": "string",
   "pii": {
     "key": "false"

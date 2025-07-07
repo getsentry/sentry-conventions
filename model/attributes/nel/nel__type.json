@@ -1,0 +1,8 @@
+{
+    "key": "nel.type",
+    "brief": "If request failed, the type of its network error. If request succeeded, \"ok\".",
+    "type": "string",
+    "pii": { "key": "false" },
+    "is_in_otel": false,
+    "example": "dns.unreachable"
+}

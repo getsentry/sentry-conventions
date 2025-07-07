@@ -5119,7 +5119,7 @@ export type SENTRY_OP_TYPE = string;
 // Path: model/attributes/sentry/sentry__origin.json
 
 /**
- * The origin of a span. `sentry.origin`
+ * The origin of the instrumentation (e.g. span, log, etc.). `sentry.origin`
  *
  * Attribute Value Type: `string` {@link SENTRY_ORIGIN_TYPE}
  *
