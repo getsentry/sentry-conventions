@@ -1,7 +1,7 @@
 {
   "key": "nel.elapsed_time",
   "brief": "The elapsed number of milliseconds between the start of the resource fetch and when it was completed or aborted by the user agent.",
-  "type": "number",
+  "type": "integer",
   "pii": { "key": "false" },
   "is_in_otel": false,
   "example": 100
