@@ -1,8 +1,8 @@
 {
-    "key": "nel.referrer",
-    "brief": "request's referrer, as determined by the referrer policy associated with its client.",
-    "type": "string",
-    "pii": { "key": "false" },
-    "is_in_otel": false,
-    "example": "https://example.com/foo?bar=baz"
+  "key": "nel.referrer",
+  "brief": "request's referrer, as determined by the referrer policy associated with its client.",
+  "type": "string",
+  "pii": { "key": "false" },
+  "is_in_otel": false,
+  "example": "https://example.com/foo?bar=baz"
 }
