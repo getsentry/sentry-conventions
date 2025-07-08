@@ -38,12 +38,12 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add -A
+          git add -A generated/
           git commit -m "chore: update generated files [skip ci]"
 
       - name: Push changes
         if: steps.verify-changed-files.outputs.changed == 'true' && github.event_name == 'pull_request'
-        uses: ad-m/github-push-action@master
+        uses: ad-m/github-push-action@v0.8.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.head_ref }}
