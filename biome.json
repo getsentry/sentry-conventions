@@ -1,7 +1,10 @@
 {
   "$schema": "https://biomejs.dev/schemas/1.9.3/schema.json",
   "vcs": { "enabled": false, "clientKind": "git", "useIgnoreFile": false },
-  "files": { "ignoreUnknown": false, "ignore": ["dist/*", "javascript/sentry-conventions/package.json"] },
+  "files": {
+    "ignoreUnknown": false,
+    "ignore": ["dist/*", "javascript/sentry-conventions/package.json", "rust/target/*"]
+  },
   "formatter": {
     "enabled": true,
     "useEditorconfig": true,
