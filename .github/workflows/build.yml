@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    name: Build
+    name: Build & Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -32,6 +32,9 @@ jobs:
 
       - name: Run tests
         run: yarn test
+
+      - name: Run generate
+        run: yarn run generate
 
       - name: Upload artifacts for release via getsentry/craft
         uses: actions/upload-artifact@v4
