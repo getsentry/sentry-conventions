@@ -1,3 +1,4 @@
+import { execSync } from 'node:child_process';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 
@@ -82,6 +83,14 @@ export async function generateDeprecatedAttributesJSON() {
   const deprecatedAttributesFile = path.join(outputDir, 'deprecated_attributes.json');
   fs.writeFileSync(deprecatedAttributesFile, JSON.stringify(allDeprecatedAttributes, null, 2));
   console.log(`Generated deprecated attributes json: ${deprecatedAttributesFile}`);
+
+  // Format the generated file with biome
+  try {
+    execSync(`npx biome check --write ${deprecatedAttributesFile}`, { stdio: 'inherit' });
+    console.log(`Formatted ${deprecatedAttributesFile} with biome`);
+  } catch (error) {
+    console.warn(`Warning: Could not format ${deprecatedAttributesFile} with biome:`, error);
+  }
 
   console.log('Deprecated attributes generation complete!');
 }
