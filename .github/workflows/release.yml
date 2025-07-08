@@ -37,6 +37,7 @@ jobs:
         id: verify-changed-files
         run: |
           if [ -n "$(git status --porcelain)" ]; then
+            git status
             exit 1
           else
             exit 0
