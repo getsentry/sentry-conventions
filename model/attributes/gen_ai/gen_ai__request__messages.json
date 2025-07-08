@@ -3,7 +3,7 @@
   "brief": "The messages passed to the model. It has to be a stringified version of an array of objects. The \"content\" can be a string or an array of objects.",
   "type": "string",
   "pii": {
-    "key": "true"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "[{\"role\": \"system\", \"content\": \"Generate a random number.\"}, {\"role\": \"user\", \"content\": [{\"text\": \"Generate a random number between 0 and 10.\", \"type\": \"text\"}]}]",

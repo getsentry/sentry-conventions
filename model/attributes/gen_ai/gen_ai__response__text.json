@@ -3,7 +3,7 @@
   "brief": "The model's response text messages. It has to be a stringified version of an array of response text messages.",
   "type": "string",
   "pii": {
-    "key": "true"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "[\"The weather in Paris is rainy and overcast, with temperatures around 57°F\", \"The weather in London is sunny and warm, with temperatures around 65°F\"]",

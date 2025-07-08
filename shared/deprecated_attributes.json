@@ -98,7 +98,7 @@
       "brief": "The matched route, that is, the path template in the format used by the respective server framework. Also used by mobile SDKs to indicate the current route in the application.",
       "type": "string",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": false,
       "example": "App\\Controller::indexAction",
@@ -422,7 +422,7 @@
       "brief": "The method or function name, or equivalent (usually rightmost part of the code unit's name).",
       "type": "string",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": true,
       "example": "server_request",
@@ -452,7 +452,7 @@
       "brief": "The 'namespace' within which code.function is defined. Usually the qualified class or module name, such that code.namespace + some separator + code.function form a unique identifier for the code unit.",
       "type": "string",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": true,
       "example": "http.handler",
