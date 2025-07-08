@@ -143,7 +143,7 @@ The operation of a span.
 
 ### sentry.origin
 
-The origin of a span.
+The origin of the instrumentation (e.g. span, log, etc.)
 
 | Property | Value |
 | --- | --- |

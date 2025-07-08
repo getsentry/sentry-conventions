@@ -27,6 +27,7 @@ This directory contains documentation for all available attributes.
 - [`logger` Attributes](./logger.md)
 - [`messaging` Attributes](./messaging.md)
 - [`navigation` Attributes](./navigation.md)
+- [`nel` Attributes](./nel.md)
 - [`net` Attributes](./net.md)
 - [`network` Attributes](./network.md)
 - [`os` Attributes](./os.md)

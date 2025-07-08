@@ -1,0 +1,8 @@
+{
+  "key": "nel.phase",
+  "brief": "If request failed, the phase of its network error. If request succeeded, \"application\".",
+  "type": "string",
+  "pii": { "key": "false" },
+  "is_in_otel": false,
+  "example": "application"
+}

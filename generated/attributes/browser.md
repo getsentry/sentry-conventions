@@ -4,6 +4,7 @@
 
 - [Stable Attributes](#stable-attributes)
   - [browser.name](#browsername)
+  - [browser.report.type](#browserreporttype)
   - [browser.script.invoker](#browserscriptinvoker)
   - [browser.script.invoker_type](#browserscriptinvoker_type)
   - [browser.script.source_char_position](#browserscriptsource_char_position)
@@ -21,6 +22,17 @@ The name of the browser.
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `Chrome` |
+
+### browser.report.type
+
+A browser report sent via reporting API..
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `network-error` |
 
 ### browser.script.invoker
 
