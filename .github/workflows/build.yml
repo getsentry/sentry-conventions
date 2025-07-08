@@ -9,10 +9,11 @@ on:
 
 jobs:
   build:
-    name: Build
+    name: Build & Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
@@ -32,6 +33,19 @@ jobs:
 
       - name: Run tests
         run: yarn test
+      
+      - name: Run generate
+        run: yarn run generate
+  
+      - name: Check for changes
+        id: verify-changed-files
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git status
+            exit 1
+          else
+            exit 0
+          fi
 
       - name: Upload artifacts for release via getsentry/craft
         uses: actions/upload-artifact@v4
