@@ -21,10 +21,44 @@ jobs:
         with:
           app-id: ${{ vars.SENTRY_RELEASE_BOT_CLIENT_ID }}
           private-key: ${{ secrets.SENTRY_RELEASE_BOT_PRIVATE_KEY }}
-      - uses: actions/checkout@v3
+
+      - uses: actions/checkout@v4
         with:
           token: ${{ steps.token.outputs.token }}
           fetch-depth: 0
+          
+      - name: Install node modules
+        run: yarn install --frozen-lockfile
+
+      - name: Run generate
+        run: yarn run generate
+  
+      - name: Check for changes
+        id: verify-changed-files
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit generated files
+        if: steps.verify-changed-files.outputs.changed == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git status
+          git add -A generated/
+          git commit -m "chore: update generated files [skip ci]"
+
+      - name: Push changes
+        if: steps.verify-changed-files.outputs.changed == 'true'
+        uses: ad-m/github-push-action@v0.8.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.head_ref }}
+          force: true
+
       - name: Prepare release
         uses: getsentry/action-prepare-release@v1
         env:
