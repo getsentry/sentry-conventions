@@ -96,7 +96,7 @@ The input messages sent to the model
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `[{"role": "user", "message": "hello"}]` |
 
@@ -141,7 +141,7 @@ The messages passed to the model. It has to be a stringified version of an array
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | true |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `[{"role": "system", "content": "Generate a random number."}, {"role": "user", "content": [{"text": "Generate a random number between 0 and 10.", "type": "text"}]}]` |
 
@@ -259,7 +259,7 @@ The model's response text messages. It has to be a stringified version of an arr
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | true |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `["The weather in Paris is rainy and overcast, with temperatures around 57°F", "The weather in London is sunny and warm, with temperatures around 65°F"]` |
 
@@ -281,7 +281,7 @@ The tool calls in the model's response. It has to be a stringified version of an
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | true |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `[{"name": "get_weather", "arguments": {"location": "Paris"}}]` |
 
@@ -326,7 +326,7 @@ The input of the tool being used. It has to be a stringified version of the inpu
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | true |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `{"location": "Paris"}` |
 
@@ -360,7 +360,7 @@ The output of the tool being used. It has to be a stringified version of the out
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | true |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `rainy, 57°F` |
 

@@ -73,7 +73,7 @@ Also used by mobile SDKs to indicate the previous route in the application.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `HomeScreen` |
 
@@ -177,7 +177,7 @@ The matched route, that is, the path template in the format used by the respecti
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `App\Controller::indexAction` |
 | Deprecated | Yes, use `http.route` instead |

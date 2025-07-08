@@ -74,7 +74,7 @@ The method or function name, or equivalent (usually rightmost part of the code u
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `server_request` |
 | Deprecated | Yes, use `code.function.name` instead |
@@ -100,7 +100,7 @@ The 'namespace' within which code.function is defined. Usually the qualified cla
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `http.handler` |
 | Deprecated | Yes, use `code.function.name` instead |

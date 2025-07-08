@@ -1120,7 +1120,7 @@ export type CODE_FILEPATH_TYPE = string;
  *
  * Attribute Value Type: `string` {@link CODE_FUNCTION_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -1210,7 +1210,7 @@ export type CODE_LINENO_TYPE = number;
  *
  * Attribute Value Type: `string` {@link CODE_NAMESPACE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -1962,7 +1962,7 @@ export type GEN_AI_OPERATION_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GEN_AI_PROMPT_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -2044,7 +2044,7 @@ export type GEN_AI_REQUEST_MAX_TOKENS_TYPE = number;
  *
  * Attribute Value Type: `string` {@link GEN_AI_REQUEST_MESSAGES_TYPE}
  *
- * Contains PII: true
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -2260,7 +2260,7 @@ export type GEN_AI_RESPONSE_MODEL_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GEN_AI_RESPONSE_TEXT_TYPE}
  *
- * Contains PII: true
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -2300,7 +2300,7 @@ export type GEN_AI_RESPONSE_TOKENS_PER_SECOND_TYPE = number;
  *
  * Attribute Value Type: `string` {@link GEN_AI_RESPONSE_TOOL_CALLS_TYPE}
  *
- * Contains PII: true
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -2382,7 +2382,7 @@ export type GEN_AI_TOOL_DESCRIPTION_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GEN_AI_TOOL_INPUT_TYPE}
  *
- * Contains PII: true
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -2444,7 +2444,7 @@ export type GEN_AI_TOOL_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GEN_AI_TOOL_OUTPUT_TYPE}
  *
- * Contains PII: true
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -4718,7 +4718,7 @@ export type PARAMS_KEY_TYPE = string;
  *
  * Attribute Value Type: `string` {@link PREVIOUS_ROUTE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -4972,7 +4972,7 @@ export type RESOURCE_RENDER_BLOCKING_STATUS_TYPE = string;
  *
  * Attribute Value Type: `string` {@link ROUTE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *

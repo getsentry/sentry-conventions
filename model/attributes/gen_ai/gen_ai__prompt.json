@@ -3,7 +3,7 @@
   "brief": "The input messages sent to the model",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "[{\"role\": \"user\", \"message\": \"hello\"}]"
