@@ -6066,6 +6066,26 @@ export const USER_ID = 'user.id';
  */
 export type USER_ID_TYPE = string;
 
+// Path: model/attributes/user/user__ip_address.json
+
+/**
+ * The IP address of the user. `user.ip_address`
+ *
+ * Attribute Value Type: `string` {@link USER_IP_ADDRESS_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "192.168.1.1"
+ */
+export const USER_IP_ADDRESS = 'user.ip_address';
+
+/**
+ * Type for {@link USER_IP_ADDRESS} user.ip_address
+ */
+export type USER_IP_ADDRESS_TYPE = string;
+
 // Path: model/attributes/user/user__name.json
 
 /**
@@ -6355,6 +6375,7 @@ export type Attributes = {
   [USER_GEO_SUBDIVISION]?: USER_GEO_SUBDIVISION_TYPE;
   [USER_HASH]?: USER_HASH_TYPE;
   [USER_ID]?: USER_ID_TYPE;
+  [USER_IP_ADDRESS]?: USER_IP_ADDRESS_TYPE;
   [USER_NAME]?: USER_NAME_TYPE;
   [USER_ROLES]?: USER_ROLES_TYPE;
   [USER_AGENT_ORIGINAL]?: USER_AGENT_ORIGINAL_TYPE;
@@ -6651,6 +6672,7 @@ export type FullAttributes = {
   [USER_GEO_SUBDIVISION]?: USER_GEO_SUBDIVISION_TYPE;
   [USER_HASH]?: USER_HASH_TYPE;
   [USER_ID]?: USER_ID_TYPE;
+  [USER_IP_ADDRESS]?: USER_IP_ADDRESS_TYPE;
   [USER_NAME]?: USER_NAME_TYPE;
   [USER_ROLES]?: USER_ROLES_TYPE;
   [USER_AGENT_ORIGINAL]?: USER_AGENT_ORIGINAL_TYPE;
