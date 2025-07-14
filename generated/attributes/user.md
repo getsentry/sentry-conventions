@@ -11,6 +11,7 @@
   - [user.geo.subdivision](#usergeosubdivision)
   - [user.hash](#userhash)
   - [user.id](#userid)
+  - [user.ip_address](#userip_address)
   - [user.name](#username)
   - [user.roles](#userroles)
 
@@ -103,6 +104,17 @@ Unique identifier of the user.
 | Has PII | true |
 | Exists in OpenTelemetry | Yes |
 | Example | `S-1-5-21-202424912787-2692429404-2351956786-1000` |
+
+### user.ip_address
+
+The IP address of the user.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | true |
+| Exists in OpenTelemetry | No |
+| Example | `192.168.1.1` |
 
 ### user.name
 
