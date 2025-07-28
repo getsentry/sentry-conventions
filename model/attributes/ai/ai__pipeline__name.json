@@ -6,5 +6,9 @@
     "key": "false"
   },
   "is_in_otel": false,
-  "example": "Autofix Pipeline"
+  "example": "Autofix Pipeline",
+  "deprecation": {
+    "_status": null,
+    "replacement": "gen_ai.pipeline.name"
+  }
 }

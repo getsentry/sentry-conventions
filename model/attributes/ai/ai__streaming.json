@@ -7,5 +7,9 @@
   },
   "is_in_otel": false,
   "example": true,
-  "sdks": ["python"]
+  "sdks": ["python"],
+  "deprecation": {
+    "_status": null,
+    "replacement": "gen_ai.response.streaming"
+  }
 }
