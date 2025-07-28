@@ -1,0 +1,14 @@
+{
+  "brief": "A description of a filesystem operation.",
+  "is_in_otel": false,
+  "op": [
+    "file.open",
+    "file.read",
+    "file.write",
+    "file.copy",
+    "file.delete",
+    "file.rename"
+  ],
+  "template": ["File {{sentry.category}}", "File IO"],
+  "example": ["File open", "File read", "File IO"]
+}

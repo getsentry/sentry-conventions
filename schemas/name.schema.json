@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/SpanName",
+  "definitions": {
+    "SpanName": {
+      "title": "SpanName",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "brief": {
+          "type": "string"
+        },
+        "is_in_otel": {
+          "type": "boolean"
+        },
+        "op": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minItems": 1
+          }
+        },
+        "template": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minItems": 1
+          }
+        },
+        "example": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": ["brief", "is_in_otel", "op", "template"]
+    }
+  }
+}
