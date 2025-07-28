@@ -1,0 +1,11 @@
+{
+  "key": "gen_ai.pipeline.name",
+  "brief": "Name of the AI pipeline or chain being executed.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "Autofix Pipeline",
+  "alias": ["ai.pipeline.name"]
+}

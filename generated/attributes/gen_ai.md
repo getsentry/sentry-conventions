@@ -7,6 +7,7 @@
   - [gen_ai.assistant.message](#gen_aiassistantmessage)
   - [gen_ai.choice](#gen_aichoice)
   - [gen_ai.operation.name](#gen_aioperationname)
+  - [gen_ai.pipeline.name](#gen_aipipelinename)
   - [gen_ai.prompt](#gen_aiprompt)
   - [gen_ai.request.available_tools](#gen_airequestavailable_tools)
   - [gen_ai.request.frequency_penalty](#gen_airequestfrequency_penalty)
@@ -21,6 +22,7 @@
   - [gen_ai.response.finish_reasons](#gen_airesponsefinish_reasons)
   - [gen_ai.response.id](#gen_airesponseid)
   - [gen_ai.response.model](#gen_airesponsemodel)
+  - [gen_ai.response.streaming](#gen_airesponsestreaming)
   - [gen_ai.response.text](#gen_airesponsetext)
   - [gen_ai.response.tokens_per_second](#gen_airesponsetokens_per_second)
   - [gen_ai.response.tool_calls](#gen_airesponsetool_calls)
@@ -88,6 +90,18 @@ The name of the operation being performed.
 | Has PII | false |
 | Exists in OpenTelemetry | Yes |
 | Example | `chat` |
+
+### gen_ai.pipeline.name
+
+Name of the AI pipeline or chain being executed.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `Autofix Pipeline` |
+| Aliases | `ai.pipeline.name` |
 
 ### gen_ai.prompt
 
@@ -251,6 +265,18 @@ The vendor-specific ID of the model used.
 | Exists in OpenTelemetry | Yes |
 | Example | `gpt-4` |
 | Aliases | `ai.model_id` |
+
+### gen_ai.response.streaming
+
+Whether or not the AI model call's response was streamed back asynchronously
+
+| Property | Value |
+| --- | --- |
+| Type | `boolean` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `true` |
+| Aliases | `ai.streaming` |
 
 ### gen_ai.response.text
 

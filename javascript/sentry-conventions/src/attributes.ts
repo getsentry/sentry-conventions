@@ -265,6 +265,7 @@ export type AI_MODEL_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
+ * @deprecated Use {@link GEN_AI_PIPELINE_NAME} (gen_ai.pipeline.name) instead
  * @example "Autofix Pipeline"
  */
 export const AI_PIPELINE_NAME = 'ai.pipeline.name';
@@ -471,6 +472,7 @@ export type AI_SEED_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
+ * @deprecated Use {@link GEN_AI_RESPONSE_STREAMING} (gen_ai.response.streaming) instead
  * @example true
  */
 export const AI_STREAMING = 'ai.streaming';
@@ -1955,6 +1957,28 @@ export const GEN_AI_OPERATION_NAME = 'gen_ai.operation.name';
  */
 export type GEN_AI_OPERATION_NAME_TYPE = string;
 
+// Path: model/attributes/gen_ai/gen_ai__pipeline__name.json
+
+/**
+ * Name of the AI pipeline or chain being executed. `gen_ai.pipeline.name`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_PIPELINE_NAME_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link AI_PIPELINE_NAME} `ai.pipeline.name`
+ *
+ * @example "Autofix Pipeline"
+ */
+export const GEN_AI_PIPELINE_NAME = 'gen_ai.pipeline.name';
+
+/**
+ * Type for {@link GEN_AI_PIPELINE_NAME} gen_ai.pipeline.name
+ */
+export type GEN_AI_PIPELINE_NAME_TYPE = string;
+
 // Path: model/attributes/gen_ai/gen_ai__prompt.json
 
 /**
@@ -2252,6 +2276,28 @@ export const GEN_AI_RESPONSE_MODEL = 'gen_ai.response.model';
  * Type for {@link GEN_AI_RESPONSE_MODEL} gen_ai.response.model
  */
 export type GEN_AI_RESPONSE_MODEL_TYPE = string;
+
+// Path: model/attributes/gen_ai/gen_ai__response__streaming.json
+
+/**
+ * Whether or not the AI model call's response was streamed back asynchronously `gen_ai.response.streaming`
+ *
+ * Attribute Value Type: `boolean` {@link GEN_AI_RESPONSE_STREAMING_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link AI_STREAMING} `ai.streaming`
+ *
+ * @example true
+ */
+export const GEN_AI_RESPONSE_STREAMING = 'gen_ai.response.streaming';
+
+/**
+ * Type for {@link GEN_AI_RESPONSE_STREAMING} gen_ai.response.streaming
+ */
+export type GEN_AI_RESPONSE_STREAMING_TYPE = boolean;
 
 // Path: model/attributes/gen_ai/gen_ai__response__text.json
 
@@ -6155,13 +6201,11 @@ export type Attributes = {
   [AI_DOCUMENTS]?: AI_DOCUMENTS_TYPE;
   [AI_IS_SEARCH_REQUIRED]?: AI_IS_SEARCH_REQUIRED_TYPE;
   [AI_METADATA]?: AI_METADATA_TYPE;
-  [AI_PIPELINE_NAME]?: AI_PIPELINE_NAME_TYPE;
   [AI_PREAMBLE]?: AI_PREAMBLE_TYPE;
   [AI_RAW_PROMPTING]?: AI_RAW_PROMPTING_TYPE;
   [AI_RESPONSE_FORMAT]?: AI_RESPONSE_FORMAT_TYPE;
   [AI_SEARCH_QUERIES]?: AI_SEARCH_QUERIES_TYPE;
   [AI_SEARCH_RESULTS]?: AI_SEARCH_RESULTS_TYPE;
-  [AI_STREAMING]?: AI_STREAMING_TYPE;
   [AI_TAGS]?: AI_TAGS_TYPE;
   [AI_TEXTS]?: AI_TEXTS_TYPE;
   [AI_TOTAL_COST]?: AI_TOTAL_COST_TYPE;
@@ -6216,6 +6260,7 @@ export type Attributes = {
   [GEN_AI_ASSISTANT_MESSAGE]?: GEN_AI_ASSISTANT_MESSAGE_TYPE;
   [GEN_AI_CHOICE]?: GEN_AI_CHOICE_TYPE;
   [GEN_AI_OPERATION_NAME]?: GEN_AI_OPERATION_NAME_TYPE;
+  [GEN_AI_PIPELINE_NAME]?: GEN_AI_PIPELINE_NAME_TYPE;
   [GEN_AI_PROMPT]?: GEN_AI_PROMPT_TYPE;
   [GEN_AI_REQUEST_AVAILABLE_TOOLS]?: GEN_AI_REQUEST_AVAILABLE_TOOLS_TYPE;
   [GEN_AI_REQUEST_FREQUENCY_PENALTY]?: GEN_AI_REQUEST_FREQUENCY_PENALTY_TYPE;
@@ -6230,6 +6275,7 @@ export type Attributes = {
   [GEN_AI_RESPONSE_FINISH_REASONS]?: GEN_AI_RESPONSE_FINISH_REASONS_TYPE;
   [GEN_AI_RESPONSE_ID]?: GEN_AI_RESPONSE_ID_TYPE;
   [GEN_AI_RESPONSE_MODEL]?: GEN_AI_RESPONSE_MODEL_TYPE;
+  [GEN_AI_RESPONSE_STREAMING]?: GEN_AI_RESPONSE_STREAMING_TYPE;
   [GEN_AI_RESPONSE_TEXT]?: GEN_AI_RESPONSE_TEXT_TYPE;
   [GEN_AI_RESPONSE_TOKENS_PER_SECOND]?: GEN_AI_RESPONSE_TOKENS_PER_SECOND_TYPE;
   [GEN_AI_RESPONSE_TOOL_CALLS]?: GEN_AI_RESPONSE_TOOL_CALLS_TYPE;
@@ -6476,6 +6522,7 @@ export type FullAttributes = {
   [GEN_AI_ASSISTANT_MESSAGE]?: GEN_AI_ASSISTANT_MESSAGE_TYPE;
   [GEN_AI_CHOICE]?: GEN_AI_CHOICE_TYPE;
   [GEN_AI_OPERATION_NAME]?: GEN_AI_OPERATION_NAME_TYPE;
+  [GEN_AI_PIPELINE_NAME]?: GEN_AI_PIPELINE_NAME_TYPE;
   [GEN_AI_PROMPT]?: GEN_AI_PROMPT_TYPE;
   [GEN_AI_REQUEST_AVAILABLE_TOOLS]?: GEN_AI_REQUEST_AVAILABLE_TOOLS_TYPE;
   [GEN_AI_REQUEST_FREQUENCY_PENALTY]?: GEN_AI_REQUEST_FREQUENCY_PENALTY_TYPE;
@@ -6490,6 +6537,7 @@ export type FullAttributes = {
   [GEN_AI_RESPONSE_FINISH_REASONS]?: GEN_AI_RESPONSE_FINISH_REASONS_TYPE;
   [GEN_AI_RESPONSE_ID]?: GEN_AI_RESPONSE_ID_TYPE;
   [GEN_AI_RESPONSE_MODEL]?: GEN_AI_RESPONSE_MODEL_TYPE;
+  [GEN_AI_RESPONSE_STREAMING]?: GEN_AI_RESPONSE_STREAMING_TYPE;
   [GEN_AI_RESPONSE_TEXT]?: GEN_AI_RESPONSE_TEXT_TYPE;
   [GEN_AI_RESPONSE_TOKENS_PER_SECOND]?: GEN_AI_RESPONSE_TOKENS_PER_SECOND_TYPE;
   [GEN_AI_RESPONSE_TOOL_CALLS]?: GEN_AI_RESPONSE_TOOL_CALLS_TYPE;

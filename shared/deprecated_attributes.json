@@ -259,6 +259,20 @@
       }
     },
     {
+      "key": "ai.pipeline.name",
+      "brief": "The name of the AI pipeline.",
+      "type": "string",
+      "pii": {
+        "key": "false"
+      },
+      "is_in_otel": false,
+      "example": "Autofix Pipeline",
+      "deprecation": {
+        "_status": null,
+        "replacement": "gen_ai.pipeline.name"
+      }
+    },
+    {
       "key": "ai.presence_penalty",
       "brief": "Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.",
       "type": "double",
@@ -315,6 +329,21 @@
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.request.seed"
+      }
+    },
+    {
+      "key": "ai.streaming",
+      "brief": "Whether the request was streamed back.",
+      "type": "boolean",
+      "pii": {
+        "key": "false"
+      },
+      "is_in_otel": false,
+      "example": true,
+      "sdks": ["python"],
+      "deprecation": {
+        "_status": null,
+        "replacement": "gen_ai.response.streaming"
       }
     },
     {

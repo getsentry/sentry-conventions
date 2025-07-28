@@ -7,13 +7,11 @@
   - [ai.documents](#aidocuments)
   - [ai.is_search_required](#aiis_search_required)
   - [ai.metadata](#aimetadata)
-  - [ai.pipeline.name](#aipipelinename)
   - [ai.preamble](#aipreamble)
   - [ai.raw_prompting](#airaw_prompting)
   - [ai.response_format](#airesponse_format)
   - [ai.search_queries](#aisearch_queries)
   - [ai.search_results](#aisearch_results)
-  - [ai.streaming](#aistreaming)
   - [ai.tags](#aitags)
   - [ai.texts](#aitexts)
   - [ai.total_cost](#aitotal_cost)
@@ -27,10 +25,12 @@
   - [ai.input_messages](#aiinput_messages)
   - [ai.model_id](#aimodel_id)
   - [ai.model.provider](#aimodelprovider)
+  - [ai.pipeline.name](#aipipelinename)
   - [ai.presence_penalty](#aipresence_penalty)
   - [ai.prompt_tokens.used](#aiprompt_tokensused)
   - [ai.responses](#airesponses)
   - [ai.seed](#aiseed)
+  - [ai.streaming](#aistreaming)
   - [ai.temperature](#aitemperature)
   - [ai.tool_calls](#aitool_calls)
   - [ai.tools](#aitools)
@@ -83,17 +83,6 @@ Extra metadata passed to an AI pipeline step.
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `{"user_id": 123, "session_id": "abc123"}` |
-
-### ai.pipeline.name
-
-The name of the AI pipeline.
-
-| Property | Value |
-| --- | --- |
-| Type | `string` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `Autofix Pipeline` |
 
 ### ai.preamble
 
@@ -149,17 +138,6 @@ Results returned from search queries for context.
 | Has PII | true |
 | Exists in OpenTelemetry | No |
 | Example | `["search_result_1, search_result_2"]` |
-
-### ai.streaming
-
-Whether the request was streamed back.
-
-| Property | Value |
-| --- | --- |
-| Type | `boolean` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `true` |
 
 ### ai.tags
 
@@ -308,6 +286,18 @@ The provider of the model.
 | Example | `openai` |
 | Deprecated | Yes, use `gen_ai.system` instead |
 
+### ai.pipeline.name
+
+The name of the AI pipeline.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `Autofix Pipeline` |
+| Deprecated | Yes, use `gen_ai.pipeline.name` instead |
+
 ### ai.presence_penalty
 
 Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.
@@ -356,6 +346,18 @@ The seed, ideally models given the same seed and same other parameters will prod
 | Exists in OpenTelemetry | No |
 | Example | `1234567890` |
 | Deprecated | Yes, use `gen_ai.request.seed` instead |
+
+### ai.streaming
+
+Whether the request was streamed back.
+
+| Property | Value |
+| --- | --- |
+| Type | `boolean` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `true` |
+| Deprecated | Yes, use `gen_ai.response.streaming` instead |
 
 ### ai.temperature
 
