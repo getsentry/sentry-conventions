@@ -1,0 +1,11 @@
+{
+  "key": "gen_ai.response.streaming",
+  "brief": "Whether or not the AI model call's response was streamed back asynchronously",
+  "type": "boolean",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": true,
+  "alias": ["ai.streaming"]
+}
