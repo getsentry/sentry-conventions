@@ -2277,6 +2277,28 @@ export const GEN_AI_RESPONSE_MODEL = 'gen_ai.response.model';
  */
 export type GEN_AI_RESPONSE_MODEL_TYPE = string;
 
+// Path: model/attributes/gen_ai/gen_ai__response__streaming.json
+
+/**
+ * Whether or not the AI model call's response was streamed back asynchronously `gen_ai.response.streaming`
+ *
+ * Attribute Value Type: `boolean` {@link GEN_AI_RESPONSE_STREAMING_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link AI_STREAMING} `ai.streaming`
+ *
+ * @example true
+ */
+export const GEN_AI_RESPONSE_STREAMING = 'gen_ai.response.streaming';
+
+/**
+ * Type for {@link GEN_AI_RESPONSE_STREAMING} gen_ai.response.streaming
+ */
+export type GEN_AI_RESPONSE_STREAMING_TYPE = boolean;
+
 // Path: model/attributes/gen_ai/gen_ai__response__text.json
 
 /**
@@ -2336,28 +2358,6 @@ export const GEN_AI_RESPONSE_TOOL_CALLS = 'gen_ai.response.tool_calls';
  * Type for {@link GEN_AI_RESPONSE_TOOL_CALLS} gen_ai.response.tool_calls
  */
 export type GEN_AI_RESPONSE_TOOL_CALLS_TYPE = string;
-
-// Path: model/attributes/gen_ai/gen_ai__response_streaming.json
-
-/**
- * Whether or not the AI model call's response was streamed back asynchronously `gen_ai.response.streaming`
- *
- * Attribute Value Type: `boolean` {@link GEN_AI_RESPONSE_STREAMING_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * Aliases: {@link AI_STREAMING} `ai.streaming`
- *
- * @example true
- */
-export const GEN_AI_RESPONSE_STREAMING = 'gen_ai.response.streaming';
-
-/**
- * Type for {@link GEN_AI_RESPONSE_STREAMING} gen_ai.response.streaming
- */
-export type GEN_AI_RESPONSE_STREAMING_TYPE = boolean;
 
 // Path: model/attributes/gen_ai/gen_ai__system.json
 
@@ -6275,10 +6275,10 @@ export type Attributes = {
   [GEN_AI_RESPONSE_FINISH_REASONS]?: GEN_AI_RESPONSE_FINISH_REASONS_TYPE;
   [GEN_AI_RESPONSE_ID]?: GEN_AI_RESPONSE_ID_TYPE;
   [GEN_AI_RESPONSE_MODEL]?: GEN_AI_RESPONSE_MODEL_TYPE;
+  [GEN_AI_RESPONSE_STREAMING]?: GEN_AI_RESPONSE_STREAMING_TYPE;
   [GEN_AI_RESPONSE_TEXT]?: GEN_AI_RESPONSE_TEXT_TYPE;
   [GEN_AI_RESPONSE_TOKENS_PER_SECOND]?: GEN_AI_RESPONSE_TOKENS_PER_SECOND_TYPE;
   [GEN_AI_RESPONSE_TOOL_CALLS]?: GEN_AI_RESPONSE_TOOL_CALLS_TYPE;
-  [GEN_AI_RESPONSE_STREAMING]?: GEN_AI_RESPONSE_STREAMING_TYPE;
   [GEN_AI_SYSTEM]?: GEN_AI_SYSTEM_TYPE;
   [GEN_AI_SYSTEM_MESSAGE]?: GEN_AI_SYSTEM_MESSAGE_TYPE;
   [GEN_AI_TOOL_DESCRIPTION]?: GEN_AI_TOOL_DESCRIPTION_TYPE;
@@ -6537,10 +6537,10 @@ export type FullAttributes = {
   [GEN_AI_RESPONSE_FINISH_REASONS]?: GEN_AI_RESPONSE_FINISH_REASONS_TYPE;
   [GEN_AI_RESPONSE_ID]?: GEN_AI_RESPONSE_ID_TYPE;
   [GEN_AI_RESPONSE_MODEL]?: GEN_AI_RESPONSE_MODEL_TYPE;
+  [GEN_AI_RESPONSE_STREAMING]?: GEN_AI_RESPONSE_STREAMING_TYPE;
   [GEN_AI_RESPONSE_TEXT]?: GEN_AI_RESPONSE_TEXT_TYPE;
   [GEN_AI_RESPONSE_TOKENS_PER_SECOND]?: GEN_AI_RESPONSE_TOKENS_PER_SECOND_TYPE;
   [GEN_AI_RESPONSE_TOOL_CALLS]?: GEN_AI_RESPONSE_TOOL_CALLS_TYPE;
-  [GEN_AI_RESPONSE_STREAMING]?: GEN_AI_RESPONSE_STREAMING_TYPE;
   [GEN_AI_SYSTEM]?: GEN_AI_SYSTEM_TYPE;
   [GEN_AI_SYSTEM_MESSAGE]?: GEN_AI_SYSTEM_MESSAGE_TYPE;
   [GEN_AI_TOOL_DESCRIPTION]?: GEN_AI_TOOL_DESCRIPTION_TYPE;
