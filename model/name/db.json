@@ -1,0 +1,19 @@
+{
+  "brief": "A description of an operation performed against a database.",
+  "is_in_otel": true,
+  "op": ["db", "db.query"],
+  "template": [
+    "{{db.query.summary}}",
+    "{{db.operation.name}} {{db.collection.name}}",
+    "{{db.operation.name}} {{db.stored_procedure.name}}",
+    "{{db.operation.name}} {{db.namespace}}",
+    "{{db.operation.name}} {{server.address}}:{{server.port}}",
+    "{{db.collection.name}}",
+    "{{db.stored_procedure.name}}",
+    "{{db.namespace}}",
+    "{{server.address}}:{{server.port}}",
+    "{{db.system.name}}",
+    "Database operation"
+  ],
+  "example": ["SELECT users", "findAndModify products", "users", "postgres"]
+}
