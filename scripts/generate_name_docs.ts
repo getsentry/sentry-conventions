@@ -33,18 +33,18 @@ export async function generateNameDocs() {
     process.exit(1);
   }
 
-  topLevelFiles.forEach((file) => {
+  for (const file of topLevelFiles) {
     const nameJSON = readJsonFile(file);
     const categoryName = path.basename(file, ".json");
     categories[categoryName] = nameJSON;
-  });
+  }
 
   // Create index.md file that links to all categories
   let indexContent =
     "<!-- THIS FILE IS AUTO-GENERATED. DO NOT EDIT DIRECTLY. -->\n\n";
   indexContent += "# Name Documentation\n\n";
   indexContent +=
-    "This page contains documentation for known span names. You can use this documentation to understand how to create the \`name\` attribute for a span, when you have the span's other attributes. This is useful for SDK development, as well as in-product when deriving the span name.\n\n";
+    "This page contains documentation for known span names. You can use this documentation to understand how to create the `name` attribute for a span, when you have the span's other attributes. This is useful for SDK development, as well as in-product when deriving the span name.\n\n";
 
   indexContent += "## Generating Names\n\n";
   indexContent +=
@@ -55,8 +55,10 @@ export async function generateNameDocs() {
   // Generate documentation for each category
   for (const category of Object.keys(categories).sort()) {
     indexContent += `## \`${category}\`\n\n`;
-    const nameJSON = categories[category]!;
-    indexContent += `${generateCategoryDocs(nameJSON)}`;
+    const nameJSON = categories[category];
+    if (nameJSON) {
+      indexContent += `${generateCategoryDocs(nameJSON)}`;
+    }
   }
 
   // Write the index.md file
@@ -75,7 +77,7 @@ function readJsonFile(filePath: string): NameJson {
 
 // Function to generate text content for a category
 function generateCategoryDocs(nameJSON: NameJson): string {
-  let content = ``;
+  let content = "";
 
   content += `${nameJSON.brief}\n\n`;
 
@@ -83,26 +85,26 @@ function generateCategoryDocs(nameJSON: NameJson): string {
 
   content += "### Affected `op`s\n\n";
 
-  nameJSON.op.forEach((op) => {
+  for (const op of nameJSON.op) {
     content += `- \`${op}\`\n`;
-  });
+  }
 
   content += "\n";
 
   content += "### Name Templates\n\n";
 
-  nameJSON.template.forEach((template) => {
+  for (const template of nameJSON.template) {
     content += `- \`${template}\`\n`;
-  });
+  }
 
   content += "\n";
 
   if (nameJSON.example?.length) {
     content += "### Examples\n\n";
 
-    nameJSON.example.forEach((example) => {
+    for (const example of nameJSON.example) {
       content += `- \`"${example}"\`\n`;
-    });
+    }
 
     content += "\n";
   }
