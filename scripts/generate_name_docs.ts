@@ -48,8 +48,6 @@ export async function generateNameDocs() {
   indexContent +=
     "Span names are generated via string template. Each span category has a set of templates for the span name. Curly brackets in the template indicate that the contents inside the curly brackets should be replaced with the contents of the span attribute of the name within the brackets. The templates should be evaluated in order of appearance. At least one template must be provided that doesn't require any attributes.\n\n";
 
-  indexContent += '## Available Categories\n\n';
-
   // Generate documentation for each category
   for (const category of Object.keys(categories).sort()) {
     indexContent += `## \`${category}\`\n\n`;
