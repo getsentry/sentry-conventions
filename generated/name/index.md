@@ -15,8 +15,6 @@ Span names are generated via string template. Each span category has a set of te
 
 A description of an operation performed against a database.
 
-Names for this category of span **are** specified in OpenTelemetry Semantic Conventions.
-
 ### Affected `op`s
 
 - `"db"`
@@ -43,11 +41,12 @@ Names for this category of span **are** specified in OpenTelemetry Semantic Conv
 - `"users"`
 - `"postgres"`
 
-## `file`
+{% endraw %}## `file`
 
 A description of a filesystem operation.
 
-Names for this category of span **are not** specified in OpenTelemetry Semantic Conventions.
+> [!NOTE]
+> Names for this category of span are not specified in OpenTelemetry Semantic Conventions.
 
 ### Affected `op`s
 

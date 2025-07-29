@@ -79,7 +79,10 @@ function generateCategoryDocs(nameJSON: NameJson): string {
 
   content += `${nameJSON.brief}\n\n`;
 
-  content += `Names for this category of span **${nameJSON.is_in_otel ? 'are' : 'are not'}** specified in OpenTelemetry Semantic Conventions.\n\n`;
+  if (!nameJSON.is_in_otel) {
+    content +=
+      '> [!NOTE]\n> Names for this category of span are not specified in OpenTelemetry Semantic Conventions.\n\n';
+  }
 
   content += '### Affected `op`s\n\n';
 
