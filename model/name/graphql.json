@@ -1,0 +1,27 @@
+{
+  "brief": "GraphQL",
+  "operations": [
+    {
+      "name": "General GraphQL",
+      "brief": "Any and all operations that fall under GraphQL",
+      "is_in_otel": true,
+      "ops": [
+        "http.graphql",
+        "http.graphql.query",
+        "http.graphql.mutation",
+        "http.graphql.subscription",
+        "graphql.execute",
+        "graphql.execute",
+        "graphql.parse",
+        "graphql.resolve",
+        "graphql.request",
+        "graphql.query",
+        "graphql.mutation",
+        "graphql.subscription",
+        "graphql.validate"
+      ],
+      "templates": ["{{graphql.operation.type}}", "GraphQL Operation"],
+      "examples": ["mutation", "query"]
+    }
+  ]
+}

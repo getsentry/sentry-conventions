@@ -9,6 +9,30 @@ This page contains documentation for known span names. You can use this document
 
 Span names are generated via string template. Each span category of work has a set of templates for the span name. Curly brackets in the template indicate that the contents inside the curly brackets should be replaced with the contents of the span attribute of the name within the brackets. The templates should be evaluated in order of appearance. At least one template must be provided that doesn't require any attributes.
 
+## `app`
+
+### App Startup
+
+Operations related to starting up an application. NOTE: Names for this category of span are **not** specified in OpenTelemetry Semantic Conventions.
+
+#### Affected `op`s
+
+- `"app.start"`
+- `"app.bootstrap"`
+- `"app.start.warm"`
+- `"app.start.cold"`
+
+#### Templates
+
+- `"App {{app_start_type}} start"`
+- `"App start"`
+
+#### Examples
+
+- `"App warm start"`
+- `"App cold start"`
+- `"App start"`
+
 ## `db`
 
 ### Database Queries
@@ -84,5 +108,83 @@ Operations on individual files. NOTE: Names for this category of span are **not*
 - `"File open"`
 - `"File read"`
 - `"File IO"`
+
+## `gen_ai`
+
+### Agent operations
+
+Generative AI agent operations (e.g., spawning a new agent, an agent performing an action on behalf of a user, and agent handing off work to another agent).
+
+#### Affected `op`s
+
+- `"gen_ai.handoff"`
+- `"gen_ai.invoke_agent"`
+
+#### Templates
+
+- `"{{gen_ai.operation.name}} {{gen_ai.agent.name}}"`
+- `"{{gen_ai.operation.name}}"`
+- `"Generative AI agent operation"`
+
+#### Examples
+
+- `"text_completion Zed"`
+- `"text_completion Claude Code"`
+- `"embeddings"`
+
+### Inference
+
+Generative AI inference operations. Request to a generative AI model to perform some unit of work (e.g., autocomplete, translation, chat completion, response to a query).
+
+#### Affected `op`s
+
+- `"gen_ai"`
+- `"gen_ai.chat"`
+- `"gen_ai.execute_tool"`
+
+#### Templates
+
+- `"{{gen_ai.operation.name}} {{gen_ai.request.model}}"`
+- `"{{gen_ai.operation.name}}"`
+- `"Generative AI model operation"`
+
+#### Examples
+
+- `"text_completion gpt-4"`
+- `"embeddings huggingface"`
+- `"chat claude-opus-4"`
+- `"chat"`
+
+## `graphql`
+
+### General GraphQL
+
+Any and all operations that fall under GraphQL
+
+#### Affected `op`s
+
+- `"http.graphql"`
+- `"http.graphql.query"`
+- `"http.graphql.mutation"`
+- `"http.graphql.subscription"`
+- `"graphql.execute"`
+- `"graphql.execute"`
+- `"graphql.parse"`
+- `"graphql.resolve"`
+- `"graphql.request"`
+- `"graphql.query"`
+- `"graphql.mutation"`
+- `"graphql.subscription"`
+- `"graphql.validate"`
+
+#### Templates
+
+- `"{{graphql.operation.type}}"`
+- `"GraphQL Operation"`
+
+#### Examples
+
+- `"mutation"`
+- `"query"`
 
 {% endraw %}
