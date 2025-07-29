@@ -63,7 +63,7 @@ Database network operations. Any operation that deals with database network comm
 
 ### File Operations
 
-Operations on individual files NOTE: Names for this category of span are **not** specified in OpenTelemetry Semantic Conventions.
+Operations on individual files. NOTE: Names for this category of span are **not** specified in OpenTelemetry Semantic Conventions.
 
 #### Affected `op`s
 
