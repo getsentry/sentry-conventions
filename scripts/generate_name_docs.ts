@@ -79,12 +79,13 @@ function readJsonFile(filePath: string): NameJson {
 function generateCategoryDocs(nameJSON: NameJson): string {
   let content = '';
 
-  content += `${nameJSON.brief}\n\n`;
+  content += `${nameJSON.brief}`;
 
   if (!nameJSON.is_in_otel) {
-    content +=
-      '> [!NOTE]\n> Names for this category of span are not specified in OpenTelemetry Semantic Conventions.\n\n';
+    content += ' NOTE: Names for this category of span are **not** specified in OpenTelemetry Semantic Conventions.';
   }
+
+  content += '\n\n';
 
   content += '### Affected `op`s\n\n';
 

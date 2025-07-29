@@ -43,10 +43,7 @@ A description of an operation performed against a database.
 
 ## `file`
 
-A description of a filesystem operation.
-
-> [!NOTE]
-> Names for this category of span are not specified in OpenTelemetry Semantic Conventions.
+A description of a filesystem operation. NOTE: Names for this category of span are **not** specified in OpenTelemetry Semantic Conventions.
 
 ### Affected `op`s
 
