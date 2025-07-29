@@ -1,0 +1,13 @@
+{
+  "brief": "Operations that deal with the runtime and lifecycle of applications.",
+  "operations": [
+    {
+      "name": "App Startup",
+      "brief": "Operations related to starting up an application.",
+      "is_in_otel": false,
+      "ops": ["app.start", "app.bootstrap", "app.start.warm", "app.start.cold"],
+      "templates": ["App {{app_start_type}} start", "App start"],
+      "examples": ["App warm start", "App cold start", "App start"]
+    }
+  ]
+}
