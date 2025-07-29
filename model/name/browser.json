@@ -1,0 +1,26 @@
+{
+  "brief": "Browser",
+  "operations": [
+    {
+      "name": "Paint",
+      "brief": "Flushing pending UI changes to the screen.",
+      "is_in_otel": false,
+      "ops": ["browser.paint"],
+      "templates": ["Browser Paint"]
+    },
+    {
+      "name": "DNS",
+      "brief": "Connecting to a DNS server to resolve a domain name.",
+      "is_in_otel": false,
+      "ops": ["browser.dns"],
+      "templates": ["DNS"]
+    },
+    {
+      "name": "TLS",
+      "brief": "Establishing a secure connection via a cryptographic handshake.",
+      "is_in_otel": false,
+      "ops": ["browser.tls/ssl"],
+      "templates": ["TLS/SSL"]
+    }
+  ]
+}

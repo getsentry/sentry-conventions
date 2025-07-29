@@ -33,6 +33,44 @@ Operations related to starting up an application. NOTE: Names for this category 
 - `"App cold start"`
 - `"App start"`
 
+## `browser`
+
+### Paint
+
+Flushing pending UI changes to the screen. NOTE: Names for this category of span are **not** specified in OpenTelemetry Semantic Conventions.
+
+#### Affected `op`s
+
+- `"browser.paint"`
+
+#### Templates
+
+- `"Browser Paint"`
+
+### DNS
+
+Connecting to a DNS server to resolve a domain name. NOTE: Names for this category of span are **not** specified in OpenTelemetry Semantic Conventions.
+
+#### Affected `op`s
+
+- `"browser.dns"`
+
+#### Templates
+
+- `"DNS"`
+
+### TLS
+
+Establishing a secure connection via a cryptographic handshake. NOTE: Names for this category of span are **not** specified in OpenTelemetry Semantic Conventions.
+
+#### Affected `op`s
+
+- `"browser.tls/ssl"`
+
+#### Templates
+
+- `"TLS/SSL"`
+
 ## `db`
 
 ### Database Queries
