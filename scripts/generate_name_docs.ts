@@ -83,7 +83,7 @@ function generateCategoryDocs(nameJSON: NameJson): string {
   content += '### Affected `op`s\n\n';
 
   for (const op of nameJSON.op) {
-    content += `- \`${op}\`\n`;
+    content += `- \`"${op}"\`\n`;
   }
 
   content += '\n';
@@ -91,7 +91,7 @@ function generateCategoryDocs(nameJSON: NameJson): string {
   content += '### Name Templates\n\n';
 
   for (const template of nameJSON.template) {
-    content += `- \`${template}\`\n`;
+    content += `- \`"${template}"\`\n`;
   }
 
   content += '\n';

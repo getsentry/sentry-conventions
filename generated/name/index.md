@@ -18,22 +18,22 @@ Names for this category of span **are** specified in OpenTelemetry Semantic Conv
 
 ### Affected `op`s
 
-- `db`
-- `db.query`
+- `"db"`
+- `"db.query"`
 
 ### Name Templates
 
-- `{{db.query.summary}}`
-- `{{db.operation.name}} {{db.collection.name}}`
-- `{{db.operation.name}} {{db.stored_procedure.name}}`
-- `{{db.operation.name}} {{db.namespace}}`
-- `{{db.operation.name}} {{server.address}}:{{server.port}}`
-- `{{db.collection.name}}`
-- `{{db.stored_procedure.name}}`
-- `{{db.namespace}}`
-- `{{server.address}}:{{server.port}}`
-- `{{db.system.name}}`
-- `Database operation`
+- `"{{db.query.summary}}"`
+- `"{{db.operation.name}} {{db.collection.name}}"`
+- `"{{db.operation.name}} {{db.stored_procedure.name}}"`
+- `"{{db.operation.name}} {{db.namespace}}"`
+- `"{{db.operation.name}} {{server.address}}:{{server.port}}"`
+- `"{{db.collection.name}}"`
+- `"{{db.stored_procedure.name}}"`
+- `"{{db.namespace}}"`
+- `"{{server.address}}:{{server.port}}"`
+- `"{{db.system.name}}"`
+- `"Database operation"`
 
 ### Examples
 
@@ -50,17 +50,17 @@ Names for this category of span **are not** specified in OpenTelemetry Semantic 
 
 ### Affected `op`s
 
-- `file.open`
-- `file.read`
-- `file.write`
-- `file.copy`
-- `file.delete`
-- `file.rename`
+- `"file.open"`
+- `"file.read"`
+- `"file.write"`
+- `"file.copy"`
+- `"file.delete"`
+- `"file.rename"`
 
 ### Name Templates
 
-- `File {{sentry.category}}`
-- `File IO`
+- `"File {{sentry.category}}"`
+- `"File IO"`
 
 ### Examples
 
