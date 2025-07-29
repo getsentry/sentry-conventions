@@ -59,6 +59,8 @@ export async function generateNameDocs() {
     }
   }
 
+  indexContent += '{% endraw %}';
+
   // Write the index.md file
   const indexFile = path.join(outputDir, 'index.md');
   fs.writeFileSync(indexFile, indexContent);
@@ -109,8 +111,6 @@ function generateCategoryDocs(nameJSON: NameJson): string {
 
     content += '\n';
   }
-
-  content += '{% endraw %}';
 
   return content;
 }

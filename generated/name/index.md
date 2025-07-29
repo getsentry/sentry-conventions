@@ -41,7 +41,7 @@ A description of an operation performed against a database.
 - `"users"`
 - `"postgres"`
 
-{% endraw %}## `file`
+## `file`
 
 A description of a filesystem operation.
 
