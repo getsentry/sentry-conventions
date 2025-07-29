@@ -1,0 +1,29 @@
+{
+  "brief": "Operations that involve communication with generative AI models.",
+  "operations": [
+    {
+      "name": "Agent operations",
+      "brief": "Generative AI agent operations (e.g., spawning a new agent, an agent performing an action on behalf of a user, and agent handing off work to another agent).",
+      "is_in_otel": true,
+      "ops": ["gen_ai.handoff", "gen_ai.invoke_agent"],
+      "templates": [
+        "{{gen_ai.operation.name}} {{gen_ai.agent.name}}",
+        "{{gen_ai.operation.name}}",
+        "Generative AI agent operation"
+      ],
+      "examples": ["text_completion Zed", "text_completion Claude Code", "embeddings"]
+    },
+    {
+      "name": "Inference",
+      "brief": "Generative AI inference operations. Request to a generative AI model to perform some unit of work (e.g., autocomplete, translation, chat completion, response to a query).",
+      "is_in_otel": true,
+      "ops": ["gen_ai", "gen_ai.chat", "gen_ai.execute_tool"],
+      "templates": [
+        "{{gen_ai.operation.name}} {{gen_ai.request.model}}",
+        "{{gen_ai.operation.name}}",
+        "Generative AI model operation"
+      ],
+      "examples": ["text_completion gpt-4", "embeddings huggingface", "chat claude-opus-4", "chat"]
+    }
+  ]
+}
