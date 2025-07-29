@@ -9,8 +9,6 @@ This page contains documentation for known span names. You can use this document
 
 Span names are generated via string template. Each span category has a set of templates for the span name. Curly brackets in the template indicate that the contents inside the curly brackets should be replaced with the contents of the span attribute of the name within the brackets. The templates should be evaluated in order of appearance. At least one template must be provided that doesn't require any attributes.
 
-## Available Categories
-
 ## `db`
 
 A description of an operation performed against a database.
@@ -43,10 +41,7 @@ A description of an operation performed against a database.
 
 ## `file`
 
-A description of a filesystem operation.
-
-> [!NOTE]
-> Names for this category of span are not specified in OpenTelemetry Semantic Conventions.
+A description of a filesystem operation. NOTE: Names for this category of span are **not** specified in OpenTelemetry Semantic Conventions.
 
 ### Affected `op`s
 

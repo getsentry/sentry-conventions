@@ -48,8 +48,6 @@ export async function generateNameDocs() {
   indexContent +=
     "Span names are generated via string template. Each span category has a set of templates for the span name. Curly brackets in the template indicate that the contents inside the curly brackets should be replaced with the contents of the span attribute of the name within the brackets. The templates should be evaluated in order of appearance. At least one template must be provided that doesn't require any attributes.\n\n";
 
-  indexContent += '## Available Categories\n\n';
-
   // Generate documentation for each category
   for (const category of Object.keys(categories).sort()) {
     indexContent += `## \`${category}\`\n\n`;
@@ -79,12 +77,13 @@ function readJsonFile(filePath: string): NameJson {
 function generateCategoryDocs(nameJSON: NameJson): string {
   let content = '';
 
-  content += `${nameJSON.brief}\n\n`;
+  content += `${nameJSON.brief}`;
 
   if (!nameJSON.is_in_otel) {
-    content +=
-      '> [!NOTE]\n> Names for this category of span are not specified in OpenTelemetry Semantic Conventions.\n\n';
+    content += ' NOTE: Names for this category of span are **not** specified in OpenTelemetry Semantic Conventions.';
   }
+
+  content += '\n\n';
 
   content += '### Affected `op`s\n\n';
 
