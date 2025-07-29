@@ -39,6 +39,7 @@ export async function generateNameDocs() {
 
   // Create index.md file that links to all categories
   let indexContent = '<!-- THIS FILE IS AUTO-GENERATED. DO NOT EDIT DIRECTLY. -->\n\n';
+  indexContent += '{% raw %}\n'; // GitHub pages use Jekyll which parsed and interpolates `"{{"` and `"}}"`. Since we're using double curlies to indicate placeholder in our template, we need to wrap the document in Jekyll Liquid escape tags
   indexContent += '# Name Documentation\n\n';
   indexContent +=
     "This page contains documentation for known span names. You can use this documentation to understand how to create the `name` attribute for a span, when you have the span's other attributes. This is useful for SDK development, as well as in-product when deriving the span name.\n\n";
@@ -105,6 +106,8 @@ function generateCategoryDocs(nameJSON: NameJson): string {
 
     content += '\n';
   }
+
+  content += '{% endraw %}';
 
   return content;
 }

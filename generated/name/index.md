@@ -1,5 +1,6 @@
 <!-- THIS FILE IS AUTO-GENERATED. DO NOT EDIT DIRECTLY. -->
 
+{% raw %}
 # Name Documentation
 
 This page contains documentation for known span names. You can use this documentation to understand how to create the `name` attribute for a span, when you have the span's other attributes. This is useful for SDK development, as well as in-product when deriving the span name.
@@ -68,3 +69,4 @@ Names for this category of span **are not** specified in OpenTelemetry Semantic 
 - `"File read"`
 - `"File IO"`
 
+{% endraw %}
