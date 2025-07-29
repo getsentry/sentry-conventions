@@ -1,5 +1,6 @@
 <!-- THIS FILE IS AUTO-GENERATED. DO NOT EDIT DIRECTLY. -->
 
+{% raw %}
 # Name Documentation
 
 This page contains documentation for known span names. You can use this documentation to understand how to create the `name` attribute for a span, when you have the span's other attributes. This is useful for SDK development, as well as in-product when deriving the span name.
@@ -14,26 +15,24 @@ Span names are generated via string template. Each span category has a set of te
 
 A description of an operation performed against a database.
 
-Names for this category of span **are** specified in OpenTelemetry Semantic Conventions.
-
 ### Affected `op`s
 
-- `db`
-- `db.query`
+- `"db"`
+- `"db.query"`
 
 ### Name Templates
 
-- `{{db.query.summary}}`
-- `{{db.operation.name}} {{db.collection.name}}`
-- `{{db.operation.name}} {{db.stored_procedure.name}}`
-- `{{db.operation.name}} {{db.namespace}}`
-- `{{db.operation.name}} {{server.address}}:{{server.port}}`
-- `{{db.collection.name}}`
-- `{{db.stored_procedure.name}}`
-- `{{db.namespace}}`
-- `{{server.address}}:{{server.port}}`
-- `{{db.system.name}}`
-- `Database operation`
+- `"{{db.query.summary}}"`
+- `"{{db.operation.name}} {{db.collection.name}}"`
+- `"{{db.operation.name}} {{db.stored_procedure.name}}"`
+- `"{{db.operation.name}} {{db.namespace}}"`
+- `"{{db.operation.name}} {{server.address}}:{{server.port}}"`
+- `"{{db.collection.name}}"`
+- `"{{db.stored_procedure.name}}"`
+- `"{{db.namespace}}"`
+- `"{{server.address}}:{{server.port}}"`
+- `"{{db.system.name}}"`
+- `"Database operation"`
 
 ### Examples
 
@@ -42,25 +41,26 @@ Names for this category of span **are** specified in OpenTelemetry Semantic Conv
 - `"users"`
 - `"postgres"`
 
-## `file`
+{% endraw %}## `file`
 
 A description of a filesystem operation.
 
-Names for this category of span **are not** specified in OpenTelemetry Semantic Conventions.
+> [!NOTE]
+> Names for this category of span are not specified in OpenTelemetry Semantic Conventions.
 
 ### Affected `op`s
 
-- `file.open`
-- `file.read`
-- `file.write`
-- `file.copy`
-- `file.delete`
-- `file.rename`
+- `"file.open"`
+- `"file.read"`
+- `"file.write"`
+- `"file.copy"`
+- `"file.delete"`
+- `"file.rename"`
 
 ### Name Templates
 
-- `File {{sentry.category}}`
-- `File IO`
+- `"File {{sentry.category}}"`
+- `"File IO"`
 
 ### Examples
 
@@ -68,3 +68,4 @@ Names for this category of span **are not** specified in OpenTelemetry Semantic 
 - `"File read"`
 - `"File IO"`
 
+{% endraw %}
