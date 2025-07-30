@@ -71,6 +71,31 @@ Establishing a secure connection via a cryptographic handshake. NOTE: Names for 
 
 - `"TLS/SSL"`
 
+## `cache`
+
+### Cache Operations
+
+Operations done against data in the cache (e.g., setting and getting cache key values). NOTE: Names for this category of span are **not** specified in OpenTelemetry Semantic Conventions.
+
+#### Affected `op`s
+
+- `"cache.get"`
+- `"cache.get_item"`
+- `"cache.clear"`
+- `"cache.delete_item"`
+- `"cache.save"`
+
+#### Templates
+
+- `"Cache {{cache.operation}}"`
+- `"Cache operation"`
+
+#### Examples
+
+- `"Cache set"`
+- `"Cache get"`
+- `"Cache clear"`
+
 ## `db`
 
 ### Database Queries
