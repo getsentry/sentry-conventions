@@ -1,19 +1,41 @@
 {
-  "brief": "A description of an operation performed against a database.",
-  "is_in_otel": true,
-  "op": ["db", "db.query"],
-  "template": [
-    "{{db.query.summary}}",
-    "{{db.operation.name}} {{db.collection.name}}",
-    "{{db.operation.name}} {{db.stored_procedure.name}}",
-    "{{db.operation.name}} {{db.namespace}}",
-    "{{db.operation.name}} {{server.address}}:{{server.port}}",
-    "{{db.collection.name}}",
-    "{{db.stored_procedure.name}}",
-    "{{db.namespace}}",
-    "{{server.address}}:{{server.port}}",
-    "{{db.system.name}}",
-    "Database operation"
-  ],
-  "example": ["SELECT users", "findAndModify products", "users", "postgres"]
+  "brief": "Operations performed against a database.",
+  "operations": [
+    {
+      "name": "Database Queries",
+      "brief": "Database queries. Any operation that acts on the data in a database. Includes operations like fetching data, updating records. Does not include operations like connecting to the database, or updating permissions.",
+      "is_in_otel": true,
+      "ops": [
+        "db",
+        "db.query",
+        "db.sql.query",
+        "db.sql.prisma",
+        "db.sql.active_record",
+        "db.sql.execute",
+        "db.sql.room",
+        "db.sql.transaction"
+      ],
+      "templates": [
+        "{{db.query.summary}}",
+        "{{db.operation.name}} {{db.collection.name}}",
+        "{{db.operation.name}} {{db.stored_procedure.name}}",
+        "{{db.operation.name}} {{db.namespace}}",
+        "{{db.operation.name}} {{server.address}}:{{server.port}}",
+        "{{db.collection.name}}",
+        "{{db.stored_procedure.name}}",
+        "{{db.namespace}}",
+        "{{server.address}}:{{server.port}}",
+        "{{db.system.name}}",
+        "Database operation"
+      ],
+      "examples": ["SELECT users", "findAndModify products", "users", "postgres"]
+    },
+    {
+      "name": "Database Network",
+      "brief": "Database network operations. Any operation that deals with database network communication.",
+      "is_in_otel": false,
+      "ops": ["db.connection"],
+      "templates": ["Database connection"]
+    }
+  ]
 }

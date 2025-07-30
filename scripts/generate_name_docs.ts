@@ -3,10 +3,14 @@ import * as path from 'node:path';
 
 interface NameJson {
   brief: string;
-  is_in_otel: boolean;
-  op: string[];
-  template: string[];
-  example?: string[];
+  operations: Array<{
+    name: string;
+    brief: string;
+    is_in_otel: boolean;
+    ops: string[];
+    templates: string[];
+    examples?: string[];
+  }>;
 }
 
 // Main function to generate all markdown docs
@@ -40,13 +44,13 @@ export async function generateNameDocs() {
   // Create index.md file that links to all categories
   let indexContent = '<!-- THIS FILE IS AUTO-GENERATED. DO NOT EDIT DIRECTLY. -->\n\n';
   indexContent += '{% raw %}\n'; // GitHub pages use Jekyll which parsed and interpolates `"{{"` and `"}}"`. Since we're using double curlies to indicate placeholder in our template, we need to wrap the document in Jekyll Liquid escape tags
-  indexContent += '# Name Documentation\n\n';
+  indexContent += '# Span Name Documentation\n\n';
   indexContent +=
-    "This page contains documentation for known span names. You can use this documentation to understand how to create the `name` attribute for a span, when you have the span's other attributes. This is useful for SDK development, as well as in-product when deriving the span name.\n\n";
+    "This page contains documentation for known span names. You can use this documentation to understand how to create the `name` attribute for a span, when you have the span's other attributes. This is useful for SDK development, as well as in-product when deriving the span name. The documentation is organized by general category of work that spans represent, and further broken down by specific kinds of work.\n\n";
 
   indexContent += '## Generating Names\n\n';
   indexContent +=
-    "Span names are generated via string template. Each span category has a set of templates for the span name. Curly brackets in the template indicate that the contents inside the curly brackets should be replaced with the contents of the span attribute of the name within the brackets. The templates should be evaluated in order of appearance. At least one template must be provided that doesn't require any attributes.\n\n";
+    "Span names are generated via string template. Each span category of work has a set of templates for the span name. Curly brackets in the template indicate that the contents inside the curly brackets should be replaced with the contents of the span attribute of the name within the brackets. The templates should be evaluated in order of appearance. At least one template must be provided that doesn't require any attributes.\n\n";
 
   // Generate documentation for each category
   for (const category of Object.keys(categories).sort()) {
@@ -77,38 +81,41 @@ function readJsonFile(filePath: string): NameJson {
 function generateCategoryDocs(nameJSON: NameJson): string {
   let content = '';
 
-  content += `${nameJSON.brief}`;
+  for (const operation of nameJSON.operations) {
+    content += `### ${operation.name}\n\n`;
+    content += `${operation.brief}`;
 
-  if (!nameJSON.is_in_otel) {
-    content += ' NOTE: Names for this category of span are **not** specified in OpenTelemetry Semantic Conventions.';
-  }
+    if (!operation.is_in_otel) {
+      content += ' NOTE: Names for this category of span are **not** specified in OpenTelemetry Semantic Conventions.';
+    }
 
-  content += '\n\n';
+    content += '\n\n';
 
-  content += '### Affected `op`s\n\n';
+    content += '#### Affected `op`s\n\n';
 
-  for (const op of nameJSON.op) {
-    content += `- \`"${op}"\`\n`;
-  }
-
-  content += '\n';
-
-  content += '### Name Templates\n\n';
-
-  for (const template of nameJSON.template) {
-    content += `- \`"${template}"\`\n`;
-  }
-
-  content += '\n';
-
-  if (nameJSON.example?.length) {
-    content += '### Examples\n\n';
-
-    for (const example of nameJSON.example) {
-      content += `- \`"${example}"\`\n`;
+    for (const op of operation.ops) {
+      content += `- \`"${op}"\`\n`;
     }
 
     content += '\n';
+
+    content += '#### Templates\n\n';
+
+    for (const template of operation.templates) {
+      content += `- \`"${template}"\`\n`;
+    }
+
+    content += '\n';
+
+    if (operation.examples?.length) {
+      content += '#### Examples\n\n';
+
+      for (const example of operation.examples) {
+        content += `- \`"${example}"\`\n`;
+      }
+
+      content += '\n';
+    }
   }
 
   return content;

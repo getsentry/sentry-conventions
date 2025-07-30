@@ -10,31 +10,52 @@
         "brief": {
           "type": "string"
         },
+        "operations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SpanOperation",
+            "minItems": 1
+          }
+        }
+      },
+      "required": ["brief", "operations"]
+    },
+    "SpanOperation": {
+      "title": "SpanOperation",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "brief": {
+          "type": "string"
+        },
         "is_in_otel": {
           "type": "boolean"
         },
-        "op": {
+        "ops": {
           "type": "array",
           "items": {
             "type": "string",
             "minItems": 1
           }
         },
-        "template": {
+        "templates": {
           "type": "array",
           "items": {
             "type": "string",
             "minItems": 1
           }
         },
-        "example": {
+        "examples": {
           "type": "array",
           "items": {
             "type": "string"
           }
         }
       },
-      "required": ["brief", "is_in_otel", "op", "template"]
+      "required": ["brief", "is_in_otel", "ops", "templates"]
     }
   }
 }
