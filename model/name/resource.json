@@ -1,0 +1,33 @@
+{
+  "brief": "Resource loading",
+  "operations": [
+    {
+      "name": "Images",
+      "brief": "Operations that represent a browser or a mobile app downloading an image resource over the network.",
+      "is_in_otel": false,
+      "ops": ["resource.img"],
+      "templates": ["Image Resource"]
+    },
+    {
+      "name": "Scripts",
+      "brief": "Operations that represent a browser or a mobile app downloading a JavaScript resource over the network.",
+      "is_in_otel": false,
+      "ops": ["resource.js"],
+      "templates": ["JavaScript Resource"]
+    },
+    {
+      "name": "CSS",
+      "brief": "Operations that represent a browser or a mobile app downloading a CSS stylesheet resource over the network.",
+      "is_in_otel": false,
+      "ops": ["resource.css"],
+      "templates": ["CSS Resource"]
+    },
+    {
+      "name": "Links",
+      "brief": "Operations that represent a browser or a mobile app accessing a link resource.",
+      "is_in_otel": false,
+      "ops": ["resource.link"],
+      "templates": ["Link Resource"]
+    }
+  ]
+}

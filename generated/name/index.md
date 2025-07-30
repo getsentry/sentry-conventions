@@ -286,4 +286,54 @@ Operations that represent execution of web framework middleware (e.g., authentic
 
 - `"Middleware"`
 
+## `resource`
+
+### Images
+
+Operations that represent a browser or a mobile app downloading an image resource over the network. NOTE: Names for this category of span are **not** specified in OpenTelemetry Semantic Conventions.
+
+#### Affected `op`s
+
+- `"resource.img"`
+
+#### Templates
+
+- `"Image Resource"`
+
+### Scripts
+
+Operations that represent a browser or a mobile app downloading a JavaScript resource over the network. NOTE: Names for this category of span are **not** specified in OpenTelemetry Semantic Conventions.
+
+#### Affected `op`s
+
+- `"resource.js"`
+
+#### Templates
+
+- `"JavaScript Resource"`
+
+### CSS
+
+Operations that represent a browser or a mobile app downloading a CSS stylesheet resource over the network. NOTE: Names for this category of span are **not** specified in OpenTelemetry Semantic Conventions.
+
+#### Affected `op`s
+
+- `"resource.css"`
+
+#### Templates
+
+- `"CSS Resource"`
+
+### Links
+
+Operations that represent a browser or a mobile app accessing a link resource. NOTE: Names for this category of span are **not** specified in OpenTelemetry Semantic Conventions.
+
+#### Affected `op`s
+
+- `"resource.link"`
+
+#### Templates
+
+- `"Link Resource"`
+
 {% endraw %}
