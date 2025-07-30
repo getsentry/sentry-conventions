@@ -13,7 +13,9 @@
         "db.sql.active_record",
         "db.sql.execute",
         "db.sql.room",
-        "db.sql.transaction"
+        "db.sql.transaction",
+        "db.redis",
+        "redis"
       ],
       "templates": [
         "{{db.query.summary}}",

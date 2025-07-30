@@ -137,6 +137,8 @@ Database queries. Any operation that acts on the data in a database. Includes op
 - `"db.sql.execute"`
 - `"db.sql.room"`
 - `"db.sql.transaction"`
+- `"db.redis"`
+- `"redis"`
 
 #### Templates
 
