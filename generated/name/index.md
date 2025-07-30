@@ -349,6 +349,16 @@ Operations that represent working with messages on topics in streaming data syst
 - `"topic.send"`
 - `"topic.receive"`
 - `"topic.process"`
+- `"queue"`
+- `"queue.task"`
+- `"queue.task.celery"`
+- `"queue.task.rq"`
+- `"queue.task.delayed_job"`
+- `"queue.task.active_job"`
+- `"queue.submit"`
+- `"queue.submit.celery"`
+- `"queue.resque"`
+- `"queue.sidekiq"`
 
 #### Templates
 

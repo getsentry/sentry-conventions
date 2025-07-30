@@ -5,7 +5,22 @@
       "name": "Messaging",
       "brief": "Operations that represent working with messages on topics in streaming data systems (e.g., producing and consuming messages in Kafka).",
       "is_in_otel": true,
-      "ops": ["topic", "topic.send", "topic.receive", "topic.process"],
+      "ops": [
+        "topic",
+        "topic.send",
+        "topic.receive",
+        "topic.process",
+        "queue",
+        "queue.task",
+        "queue.task.celery",
+        "queue.task.rq",
+        "queue.task.delayed_job",
+        "queue.task.active_job",
+        "queue.submit",
+        "queue.submit.celery",
+        "queue.resque",
+        "queue.sidekiq"
+      ],
       "templates": [
         "{{messaging.operation.type}} {{messaging.destination.name}}",
         "{{messaging.operation.type}} {{server.address}}:{{server.port}}",
