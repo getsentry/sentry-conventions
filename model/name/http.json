@@ -1,0 +1,31 @@
+{
+  "brief": "HTTP",
+  "operations": [
+    {
+      "name": "HTTP Client Spans",
+      "brief": "Operations that represent outgoing HTTP requests.",
+      "is_in_otel": true,
+      "ops": ["http.client"],
+      "templates": [
+        "{{http.request.method}} {{http.route}}",
+        "{{http.request.method}} {{url.template}}",
+        "{{http.request.method}}",
+        "HTTP"
+      ],
+      "examples": ["GET /users/:id", "GET"]
+    },
+    {
+      "name": "HTTP Server Spans",
+      "brief": "Operations that represent processing incoming HTTP requests in a web server.",
+      "is_in_otel": true,
+      "ops": ["http.server"],
+      "templates": [
+        "{{http.request.method}} {{http.route}}",
+        "{{http.request.method}} {{url.template}}",
+        "{{http.request.method}}",
+        "HTTP"
+      ],
+      "examples": ["GET /users/:id", "GET"]
+    }
+  ]
+}

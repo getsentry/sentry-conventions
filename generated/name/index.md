@@ -268,6 +268,48 @@ Any and all operations that fall under GraphQL
 - `"mutation"`
 - `"query"`
 
+## `http`
+
+### HTTP Client Spans
+
+Operations that represent outgoing HTTP requests.
+
+#### Affected `op`s
+
+- `"http.client"`
+
+#### Templates
+
+- `"{{http.request.method}} {{http.route}}"`
+- `"{{http.request.method}} {{url.template}}"`
+- `"{{http.request.method}}"`
+- `"HTTP"`
+
+#### Examples
+
+- `"GET /users/:id"`
+- `"GET"`
+
+### HTTP Server Spans
+
+Operations that represent processing incoming HTTP requests in a web server.
+
+#### Affected `op`s
+
+- `"http.server"`
+
+#### Templates
+
+- `"{{http.request.method}} {{http.route}}"`
+- `"{{http.request.method}} {{url.template}}"`
+- `"{{http.request.method}}"`
+- `"HTTP"`
+
+#### Examples
+
+- `"GET /users/:id"`
+- `"GET"`
+
 ## `middleware`
 
 ### Middleware functions
@@ -281,6 +323,7 @@ Operations that represent execution of web framework middleware (e.g., authentic
 - `"middleware.express"`
 - `"middleware.django"`
 - `"middleware.starlette"`
+- `"http.server.middleware"`
 
 #### Templates
 
