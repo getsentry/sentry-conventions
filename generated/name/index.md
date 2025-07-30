@@ -310,6 +310,31 @@ Operations that represent processing incoming HTTP requests in a web server.
 - `"GET /users/:id"`
 - `"GET"`
 
+## `messaging`
+
+### Messaging
+
+Operations that represent working with messages on topics in streaming data systems (e.g., producing and consuming messages in Kafka).
+
+#### Affected `op`s
+
+- `"topic"`
+- `"topic.send"`
+- `"topic.receive"`
+- `"topic.process"`
+
+#### Templates
+
+- `"{{messaging.operation.type}} {{messaging.destination.name}}"`
+- `"{{messaging.operation.type}} {{server.address}}:{{server.port}}"`
+- `"{{messaging.operation.type}}"`
+- `"Messaging"`
+
+#### Examples
+
+- `"send user.data"`
+- `"publish"`
+
 ## `middleware`
 
 ### Middleware functions

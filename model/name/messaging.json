@@ -1,0 +1,18 @@
+{
+  "brief": "Messaging",
+  "operations": [
+    {
+      "name": "Messaging",
+      "brief": "Operations that represent working with messages on topics in streaming data systems (e.g., producing and consuming messages in Kafka).",
+      "is_in_otel": true,
+      "ops": ["topic", "topic.send", "topic.receive", "topic.process"],
+      "templates": [
+        "{{messaging.operation.type}} {{messaging.destination.name}}",
+        "{{messaging.operation.type}} {{server.address}}:{{server.port}}",
+        "{{messaging.operation.type}}",
+        "Messaging"
+      ],
+      "examples": ["send user.data", "publish"]
+    }
+  ]
+}
