@@ -172,6 +172,24 @@ Operations on individual files. NOTE: Names for this category of span are **not*
 - `"File read"`
 - `"File IO"`
 
+## `function`
+
+### FAAS Function Execution
+
+Operations that represent invoking a Function as a Service function (e.g., AWS Lambda).
+
+#### Affected `op`s
+
+- `"function.gcp"`
+- `"function.aws"`
+- `"function.azure"`
+- `"function.remix"`
+- `"function.nextjs"`
+
+#### Templates
+
+- `"FAAS Function"`
+
 ## `gen_ai`
 
 ### Agent operations
