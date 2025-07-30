@@ -336,4 +336,156 @@ Operations that represent a browser or a mobile app accessing a link resource. N
 
 - `"Link Resource"`
 
+## `ui`
+
+### UI Lifecycle
+
+Operations that represent the loading of a UI. NOTE: Names for this category of span are **not** specified in OpenTelemetry Semantic Conventions.
+
+#### Affected `op`s
+
+- `"ui.load"`
+- `"ui.render"`
+- `"ui.initial_display"`
+- `"ui.full_display"`
+
+#### Templates
+
+- `"UI {{span.action}}"`
+
+#### Examples
+
+- `"UI load"`
+- `"UI initial_display"`
+
+### Actions
+
+Operations that represent UI actions that are initiated by the user (e.g., mouse clicks). NOTE: Names for this category of span are **not** specified in OpenTelemetry Semantic Conventions.
+
+#### Affected `op`s
+
+- `"ui.action"`
+- `"ui.action.click"`
+- `"ui.action.scroll"`
+- `"ui.action.swap"`
+
+#### Templates
+
+- `"UI Action"`
+
+### Tasks
+
+Operations that represent generic UI tasks that might be affecting performance on the UI thread. NOTE: Names for this category of span are **not** specified in OpenTelemetry Semantic Conventions.
+
+#### Affected `op`s
+
+- `"ui.task"`
+- `"ui.long-task"`
+- `"ui.long-animation-frame"`
+
+#### Templates
+
+- `"UI Task"`
+
+### React
+
+Operations that represent work done by the React UI framework. NOTE: Names for this category of span are **not** specified in OpenTelemetry Semantic Conventions.
+
+#### Affected `op`s
+
+- `"ui.react"`
+- `"ui.react.mount"`
+- `"ui.react.render"`
+- `"ui.react.update"`
+
+#### Templates
+
+- `"React {{span.subaction}}"`
+- `"React"`
+
+#### Examples
+
+- `"React mount"`
+
+### Vue
+
+Operations that represent work done by the Vue UI framework. NOTE: Names for this category of span are **not** specified in OpenTelemetry Semantic Conventions.
+
+#### Affected `op`s
+
+- `"ui.vue"`
+- `"ui.vue.activate"`
+- `"ui.vue.create"`
+- `"ui.vue.destroy"`
+- `"ui.vue.mount"`
+- `"ui.vue.update"`
+
+#### Templates
+
+- `"Vue {{span.subaction}}"`
+- `"Vue"`
+
+#### Examples
+
+- `"Vue destroy"`
+
+### Svelte
+
+Operations that represent work done by the Svete UI framework. NOTE: Names for this category of span are **not** specified in OpenTelemetry Semantic Conventions.
+
+#### Affected `op`s
+
+- `"ui.svelte"`
+- `"ui.svelte.init"`
+- `"ui.svelte.update"`
+
+#### Templates
+
+- `"Svelte {{span.subaction}}"`
+- `"Svelte"`
+
+#### Examples
+
+- `"Svelte init"`
+
+### Angular
+
+Operations that represent work done by the Angular UI framework. NOTE: Names for this category of span are **not** specified in OpenTelemetry Semantic Conventions.
+
+#### Affected `op`s
+
+- `"ui.angular"`
+- `"ui.angular.init"`
+- `"ui.angular.routing"`
+
+#### Templates
+
+- `"Angular {{span.subaction}}"`
+- `"Angular"`
+
+#### Examples
+
+- `"Angular init"`
+
+### Ember
+
+Operations that represent work done by the Ember UI framework. NOTE: Names for this category of span are **not** specified in OpenTelemetry Semantic Conventions.
+
+#### Affected `op`s
+
+- `"ui.ember"`
+- `"ui.ember.route.before_model"`
+- `"ui.ember.model"`
+- `"ui.ember.route.after_model"`
+- `"ui.ember.route.setup_controller"`
+
+#### Templates
+
+- `"Ember {{span.subaction}}"`
+- `"Ember"`
+
+#### Examples
+
+- `"Angular route.before_model"`
+
 {% endraw %}
