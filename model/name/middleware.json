@@ -1,0 +1,12 @@
+{
+  "brief": "Middleware",
+  "operations": [
+    {
+      "name": "Middleware functions",
+      "brief": "Operations that represent execution of web framework middleware (e.g., authentication middleware in a framework like Django).",
+      "is_in_otel": false,
+      "ops": ["middlware", "middleware.handle", "middleware.express", "middleware.django", "middleware.starlette"],
+      "templates": ["Middleware"]
+    }
+  ]
+}

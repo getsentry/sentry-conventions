@@ -268,4 +268,22 @@ Any and all operations that fall under GraphQL
 - `"mutation"`
 - `"query"`
 
+## `middleware`
+
+### Middleware functions
+
+Operations that represent execution of web framework middleware (e.g., authentication middleware in a framework like Django). NOTE: Names for this category of span are **not** specified in OpenTelemetry Semantic Conventions.
+
+#### Affected `op`s
+
+- `"middlware"`
+- `"middleware.handle"`
+- `"middleware.express"`
+- `"middleware.django"`
+- `"middleware.starlette"`
+
+#### Templates
+
+- `"Middleware"`
+
 {% endraw %}
