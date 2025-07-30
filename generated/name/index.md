@@ -42,10 +42,35 @@ Flushing pending UI changes to the screen. NOTE: Names for this category of span
 #### Affected `op`s
 
 - `"browser.paint"`
+- `"paint"`
 
 #### Templates
 
 - `"Browser Paint"`
+
+### Navigation
+
+Updating the current UI via a URL change without a full reload. NOTE: Names for this category of span are **not** specified in OpenTelemetry Semantic Conventions.
+
+#### Affected `op`s
+
+- `"navigation"`
+
+#### Templates
+
+- `"Navigation"`
+
+### Pageload
+
+Loading a new web page via a URL change with a full reload. NOTE: Names for this category of span are **not** specified in OpenTelemetry Semantic Conventions.
+
+#### Affected `op`s
+
+- `"pageload"`
+
+#### Templates
+
+- `"Pageload"`
 
 ### DNS
 
