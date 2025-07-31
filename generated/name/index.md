@@ -9,7 +9,7 @@ This page contains documentation for known span names. You can use this document
 
 Span names are generated via string template. Each span category of work has a set of templates for the span name. Curly brackets in the template indicate that the contents inside the curly brackets should be replaced with the contents of the span attribute of the name within the brackets. The templates should be evaluated in order of appearance. The final template should be a static string, to be used as a fallback.
 
-## `db`
+## Database
 
 ### Queries
 
@@ -49,7 +49,7 @@ Operations that act on the data in a database. Includes operations like fetching
 - `"users"`
 - `"postgres"`
 
-## `gen_ai`
+## Generative AI
 
 ### Agent
 
@@ -95,7 +95,7 @@ Generative AI inference operations. Requests to a generative AI model to perform
 - `"chat claude-opus-4"`
 - `"chat"`
 
-## `graphql`
+## GraphQL
 
 ### GraphQL
 
@@ -127,7 +127,7 @@ Any and all operations that fall under GraphQL
 - `"mutation"`
 - `"query"`
 
-## `http`
+## HTTP
 
 ### Client
 
@@ -169,7 +169,7 @@ Operations that represent processing incoming HTTP requests in a web server.
 - `"GET /users/:id"`
 - `"GET"`
 
-## `messaging`
+## Messaging
 
 ### Messaging
 

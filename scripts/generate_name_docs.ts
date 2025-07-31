@@ -54,7 +54,6 @@ export async function generateNameDocs() {
 
   // Generate documentation for each category
   for (const category of Object.keys(categories).sort()) {
-    indexContent += `## \`${category}\`\n\n`;
     const nameJSON = categories[category];
     if (nameJSON) {
       indexContent += `${generateCategoryDocs(nameJSON)}`;
@@ -80,6 +79,8 @@ function readJsonFile(filePath: string): NameJson {
 // Function to generate text content for a category
 function generateCategoryDocs(nameJSON: NameJson): string {
   let content = '';
+
+  content += `## ${nameJSON.brief}\n\n`;
 
   for (const operation of nameJSON.operations) {
     content += `### ${operation.name}\n\n`;
