@@ -7,10 +7,7 @@ This page contains documentation for known span names. You can use this document
 
 ## Generating Names
 
-Span names are generated via string template. Each span category of work has a set of templates for the span name. Curly brackets in the template indicate that the contents inside the curly brackets should be replaced with the contents of the span attribute of the name within the brackets. The templates should be evaluated in order of appearance. A few notes:
-
-1. An `op` string is period-delimited, and usually has 2-3 parts. The first part is called the "category". The second part is the called the "action". The third part is called the "subaction". e.g., in `"db.query"` the "category" is `"db"`, the "action" is `"query"`. In `"ui.react.mount"` the "category" is `"ui"`, the "action" is `"react"`, and the "subaction" is `"mount"`. In `"ui.ember.route.before_model"` the "category" is `"ui"`, the "action" is `"ember"`, and the "subaction" is `"route.before_model"`. References to `"span.action"` imply the action of the span, which should have been extracted to an attribute.
-2. The last template in the list should not require any attributes. This is meant to be a failsafe fallback, in case attributes are not available, which could happen for a number of reasons (e.g., truncation due to span size).
+Span names are generated via string template. Each span category of work has a set of templates for the span name. Curly brackets in the template indicate that the contents inside the curly brackets should be replaced with the contents of the span attribute of the name within the brackets. The templates should be evaluated in order of appearance. The final template should be a static string, to be used as a fallback.
 
 ## `db`
 
