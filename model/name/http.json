@@ -2,7 +2,7 @@
   "brief": "HTTP",
   "operations": [
     {
-      "name": "HTTP Client Spans",
+      "name": "Client",
       "brief": "Operations that represent outgoing HTTP requests.",
       "is_in_otel": true,
       "ops": ["http.client"],
@@ -15,7 +15,7 @@
       "examples": ["GET /users/:id", "GET"]
     },
     {
-      "name": "HTTP Server Spans",
+      "name": "Server",
       "brief": "Operations that represent processing incoming HTTP requests in a web server.",
       "is_in_otel": true,
       "ops": ["http.server"],

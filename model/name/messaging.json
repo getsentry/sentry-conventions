@@ -3,7 +3,7 @@
   "operations": [
     {
       "name": "Messaging",
-      "brief": "Operations that represent working with messages on topics in streaming data systems (e.g., producing and consuming messages in Kafka).",
+      "brief": "Operations that represent working with messages on topics in streaming data systems and queues (e.g., producing and consuming messages in Kafka, RabbitMQ).",
       "is_in_otel": true,
       "ops": [
         "topic",

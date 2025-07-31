@@ -1,9 +1,9 @@
 {
-  "brief": "Operations performed against a database.",
+  "brief": "Database",
   "operations": [
     {
-      "name": "Database Queries",
-      "brief": "Database queries. Any operation that acts on the data in a database. Includes operations like fetching data, updating records. Does not include operations like connecting to the database, or updating permissions.",
+      "name": "Queries",
+      "brief": "Operations that act on the data in a database. Includes operations like fetching, updating, and deleting records. Does not include operations like connecting to the database server.",
       "is_in_otel": true,
       "ops": [
         "db",

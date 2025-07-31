@@ -14,9 +14,9 @@ Span names are generated via string template. Each span category of work has a s
 
 ## `db`
 
-### Database Queries
+### Queries
 
-Database queries. Any operation that acts on the data in a database. Includes operations like fetching data, updating records. Does not include operations like connecting to the database, or updating permissions.
+Operations that act on the data in a database. Includes operations like fetching, updating, and deleting records. Does not include operations like connecting to the database server.
 
 #### Affected `op`s
 
@@ -52,27 +52,9 @@ Database queries. Any operation that acts on the data in a database. Includes op
 - `"users"`
 - `"postgres"`
 
-## `function`
-
-### FAAS Function Execution
-
-Operations that represent invoking a Function as a Service function (e.g., AWS Lambda).
-
-#### Affected `op`s
-
-- `"function.gcp"`
-- `"function.aws"`
-- `"function.azure"`
-- `"function.remix"`
-- `"function.nextjs"`
-
-#### Templates
-
-- `"FAAS Function"`
-
 ## `gen_ai`
 
-### Agent operations
+### Agent
 
 Generative AI agent operations (e.g., spawning a new agent, an agent performing an action on behalf of a user, and agent handing off work to another agent).
 
@@ -95,7 +77,7 @@ Generative AI agent operations (e.g., spawning a new agent, an agent performing 
 
 ### Inference
 
-Generative AI inference operations. Request to a generative AI model to perform some unit of work (e.g., autocomplete, translation, chat completion, response to a query).
+Generative AI inference operations. Requests to a generative AI model to perform some unit of work (e.g., autocomplete, translation, chat completion, response to a query).
 
 #### Affected `op`s
 
@@ -118,7 +100,7 @@ Generative AI inference operations. Request to a generative AI model to perform 
 
 ## `graphql`
 
-### General GraphQL
+### GraphQL
 
 Any and all operations that fall under GraphQL
 
@@ -150,7 +132,7 @@ Any and all operations that fall under GraphQL
 
 ## `http`
 
-### HTTP Client Spans
+### Client
 
 Operations that represent outgoing HTTP requests.
 
@@ -170,7 +152,7 @@ Operations that represent outgoing HTTP requests.
 - `"GET /users/:id"`
 - `"GET"`
 
-### HTTP Server Spans
+### Server
 
 Operations that represent processing incoming HTTP requests in a web server.
 
@@ -194,7 +176,7 @@ Operations that represent processing incoming HTTP requests in a web server.
 
 ### Messaging
 
-Operations that represent working with messages on topics in streaming data systems (e.g., producing and consuming messages in Kafka).
+Operations that represent working with messages on topics in streaming data systems and queues (e.g., producing and consuming messages in Kafka, RabbitMQ).
 
 #### Affected `op`s
 

@@ -2,7 +2,7 @@
   "brief": "GraphQL",
   "operations": [
     {
-      "name": "General GraphQL",
+      "name": "GraphQL",
       "brief": "Any and all operations that fall under GraphQL",
       "is_in_otel": true,
       "ops": [
