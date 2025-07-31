@@ -31,13 +31,6 @@
         "Database operation"
       ],
       "examples": ["SELECT users", "findAndModify products", "users", "postgres"]
-    },
-    {
-      "name": "Database Network",
-      "brief": "Database network operations. Any operation that deals with database network communication.",
-      "is_in_otel": false,
-      "ops": ["db.connection"],
-      "templates": ["Database connection"]
     }
   ]
 }
