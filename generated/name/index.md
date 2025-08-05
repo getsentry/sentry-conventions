@@ -54,6 +54,7 @@ Operations that act on the data in a database. Includes operations like fetching
 ### Agent
 
 Generative AI agent operations (e.g., spawning a new agent, an agent performing an action on behalf of a user, and agent handing off work to another agent).
+NOTE: Our definition differs from OpenTelemetry. The "gen_ai.handoff" operation is not present in OpenTelemetry.
 
 #### Affected `op`s
 
@@ -100,6 +101,7 @@ Generative AI inference operations. Requests to a generative AI model to perform
 ### GraphQL
 
 Any and all operations that fall under GraphQL
+NOTE: Our definition differs from OpenTelemetry. Unlike OTel, we prefix GraphQL operations with the word "GraphQL" (e.g., "GraphQL mutation" vs. "mutation".
 
 #### Affected `op`s
 

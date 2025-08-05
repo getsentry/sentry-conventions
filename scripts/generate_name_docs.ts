@@ -7,6 +7,7 @@ interface NameJson {
     name: string;
     brief: string;
     is_in_otel: boolean;
+    otel_notes?: string;
     ops: string[];
     templates: string[];
     examples?: string[];
@@ -86,8 +87,10 @@ function generateCategoryDocs(nameJSON: NameJson): string {
     content += `### ${operation.name}\n\n`;
     content += `${operation.brief}`;
 
-    if (!operation.is_in_otel) {
-      content += ' NOTE: Names for this category of span are **not** specified in OpenTelemetry Semantic Conventions.';
+    if (operation.is_in_otel && operation.otel_notes) {
+      content += `\nNOTE: Our definition differs from OpenTelemetry. ${operation.otel_notes}`;
+    } else if (!operation.is_in_otel) {
+      content += '\nNOTE: Names for this category of span are **not** specified in OpenTelemetry Semantic Conventions.';
     }
 
     content += '\n\n';
