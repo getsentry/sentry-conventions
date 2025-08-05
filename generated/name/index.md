@@ -119,7 +119,7 @@ Any and all operations that fall under GraphQL
 
 #### Templates
 
-- `"{{graphql.operation.type}}"`
+- `"GraphQL {{graphql.operation.type}}"`
 - `"GraphQL Operation"`
 
 #### Examples
