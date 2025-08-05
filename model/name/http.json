@@ -5,6 +5,7 @@
       "name": "Client",
       "brief": "Operations that represent outgoing HTTP requests.",
       "is_in_otel": true,
+      "otel_notes": "",
       "ops": ["http.client"],
       "templates": [
         "{{http.request.method}} {{http.route}}",
@@ -18,6 +19,7 @@
       "name": "Server",
       "brief": "Operations that represent processing incoming HTTP requests in a web server.",
       "is_in_otel": true,
+      "otel_notes": "",
       "ops": ["http.server"],
       "templates": [
         "{{http.request.method}} {{http.route}}",

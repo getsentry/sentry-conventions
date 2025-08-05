@@ -5,6 +5,7 @@
       "name": "GraphQL",
       "brief": "Any and all operations that fall under GraphQL",
       "is_in_otel": true,
+      "otel_notes": "Unlike OTel, we prefix GraphQL operations with the word \"GraphQL\" (e.g., \"GraphQL mutation\" vs. \"mutation\".",
       "ops": [
         "http.graphql",
         "http.graphql.query",

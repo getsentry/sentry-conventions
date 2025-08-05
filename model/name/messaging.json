@@ -5,6 +5,7 @@
       "name": "Messaging",
       "brief": "Operations that represent working with messages on topics in streaming data systems and queues (e.g., producing and consuming messages in Kafka, RabbitMQ).",
       "is_in_otel": true,
+      "otel_notes": "",
       "ops": [
         "topic",
         "topic.send",

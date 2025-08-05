@@ -5,6 +5,7 @@
       "name": "Agent",
       "brief": "Generative AI agent operations (e.g., spawning a new agent, an agent performing an action on behalf of a user, and agent handing off work to another agent).",
       "is_in_otel": true,
+      "otel_notes": "The \"gen_ai.handoff\" operation is not present in OpenTelemetry.",
       "ops": ["gen_ai.handoff", "gen_ai.invoke_agent"],
       "templates": [
         "{{gen_ai.operation.name}} {{gen_ai.agent.name}}",
@@ -17,6 +18,7 @@
       "name": "Inference",
       "brief": "Generative AI inference operations. Requests to a generative AI model to perform some unit of work (e.g., autocomplete, translation, chat completion, response to a query).",
       "is_in_otel": true,
+      "otel_notes": "",
       "ops": ["gen_ai", "gen_ai.chat", "gen_ai.execute_tool"],
       "templates": [
         "{{gen_ai.operation.name}} {{gen_ai.request.model}}",
