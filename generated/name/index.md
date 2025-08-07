@@ -7,13 +7,13 @@ This page contains documentation for known span names. You can use this document
 
 ## Generating Names
 
-Span names are generated via string template. Each span category of work has a set of templates for the span name. Curly brackets in the template indicate that the contents inside the curly brackets should be replaced with the contents of the span attribute of the name within the brackets. The templates should be evaluated in order of appearance. At least one template must be provided that doesn't require any attributes.
+Span names are generated via string template. Each span category of work has a set of templates for the span name. Curly brackets in the template indicate that the contents inside the curly brackets should be replaced with the contents of the span attribute of the name within the brackets. The templates should be evaluated in order of appearance. The final template should be a static string, to be used as a fallback.
 
-## `db`
+## Database
 
-### Database Queries
+### Queries
 
-Database queries. Any operation that acts on the data in a database. Includes operations like fetching data, updating records. Does not include operations like connecting to the database, or updating permissions.
+Operations that act on the data in a database. Includes operations like fetching, updating, and deleting records. Does not include operations like connecting to the database server.
 
 #### Affected `op`s
 
@@ -25,6 +25,8 @@ Database queries. Any operation that acts on the data in a database. Includes op
 - `"db.sql.execute"`
 - `"db.sql.room"`
 - `"db.sql.transaction"`
+- `"db.redis"`
+- `"redis"`
 
 #### Templates
 
@@ -47,42 +49,161 @@ Database queries. Any operation that acts on the data in a database. Includes op
 - `"users"`
 - `"postgres"`
 
-### Database Network
+## Generative AI
 
-Database network operations. Any operation that deals with database network communication. NOTE: Names for this category of span are **not** specified in OpenTelemetry Semantic Conventions.
+### Agent
 
-#### Affected `op`s
-
-- `"db.connection"`
-
-#### Templates
-
-- `"Database connection"`
-
-## `file`
-
-### File Operations
-
-Operations on individual files. NOTE: Names for this category of span are **not** specified in OpenTelemetry Semantic Conventions.
+Generative AI agent operations (e.g., spawning a new agent, an agent performing an action on behalf of a user, and agent handing off work to another agent).
+NOTE: Our definition differs from OpenTelemetry. The "gen_ai.handoff" operation is not present in OpenTelemetry.
 
 #### Affected `op`s
 
-- `"file.open"`
-- `"file.read"`
-- `"file.write"`
-- `"file.copy"`
-- `"file.delete"`
-- `"file.rename"`
+- `"gen_ai.handoff"`
+- `"gen_ai.invoke_agent"`
 
 #### Templates
 
-- `"File {{sentry.category}}"`
-- `"File IO"`
+- `"{{gen_ai.operation.name}} {{gen_ai.agent.name}}"`
+- `"{{gen_ai.operation.name}}"`
+- `"Generative AI agent operation"`
 
 #### Examples
 
-- `"File open"`
-- `"File read"`
-- `"File IO"`
+- `"text_completion Zed"`
+- `"text_completion Claude Code"`
+- `"embeddings"`
+
+### Inference
+
+Generative AI inference operations. Requests to a generative AI model to perform some unit of work (e.g., autocomplete, translation, chat completion, response to a query).
+
+#### Affected `op`s
+
+- `"gen_ai"`
+- `"gen_ai.chat"`
+- `"gen_ai.execute_tool"`
+
+#### Templates
+
+- `"{{gen_ai.operation.name}} {{gen_ai.request.model}}"`
+- `"{{gen_ai.operation.name}}"`
+- `"Generative AI model operation"`
+
+#### Examples
+
+- `"text_completion gpt-4"`
+- `"embeddings huggingface"`
+- `"chat claude-opus-4"`
+- `"chat"`
+
+## GraphQL
+
+### GraphQL
+
+Any and all operations that fall under GraphQL
+NOTE: Our definition differs from OpenTelemetry. Unlike OTel, we prefix GraphQL operations with the word "GraphQL" (e.g., "GraphQL mutation" vs. "mutation".
+
+#### Affected `op`s
+
+- `"http.graphql"`
+- `"http.graphql.query"`
+- `"http.graphql.mutation"`
+- `"http.graphql.subscription"`
+- `"graphql.execute"`
+- `"graphql.execute"`
+- `"graphql.parse"`
+- `"graphql.resolve"`
+- `"graphql.request"`
+- `"graphql.query"`
+- `"graphql.mutation"`
+- `"graphql.subscription"`
+- `"graphql.validate"`
+
+#### Templates
+
+- `"GraphQL {{graphql.operation.type}}"`
+- `"GraphQL Operation"`
+
+#### Examples
+
+- `"mutation"`
+- `"query"`
+
+## HTTP
+
+### Client
+
+Operations that represent outgoing HTTP requests.
+
+#### Affected `op`s
+
+- `"http.client"`
+
+#### Templates
+
+- `"{{http.request.method}} {{http.route}}"`
+- `"{{http.request.method}} {{url.template}}"`
+- `"{{http.request.method}}"`
+- `"HTTP"`
+
+#### Examples
+
+- `"GET /users/:id"`
+- `"GET"`
+
+### Server
+
+Operations that represent processing incoming HTTP requests in a web server.
+
+#### Affected `op`s
+
+- `"http.server"`
+
+#### Templates
+
+- `"{{http.request.method}} {{http.route}}"`
+- `"{{http.request.method}} {{url.template}}"`
+- `"{{http.request.method}}"`
+- `"HTTP"`
+
+#### Examples
+
+- `"GET /users/:id"`
+- `"GET"`
+
+## Messaging
+
+### Messaging
+
+Operations that represent working with messages on topics in streaming data systems and queues (e.g., producing and consuming messages in Kafka, RabbitMQ).
+
+#### Affected `op`s
+
+- `"topic"`
+- `"topic.send"`
+- `"topic.receive"`
+- `"topic.process"`
+- `"queue"`
+- `"queue.task"`
+- `"queue.task.celery"`
+- `"queue.task.rq"`
+- `"queue.task.delayed_job"`
+- `"queue.task.active_job"`
+- `"queue.submit"`
+- `"queue.submit.celery"`
+- `"queue.resque"`
+- `"queue.sidekiq"`
+
+#### Templates
+
+- `"{{messaging.operation.type}} {{messaging.destination.name}}"`
+- `"{{messaging.operation.type}} {{server.address}}:{{server.port}}"`
+- `"{{messaging.operation.type}}"`
+- `"Messaging"`
+
+#### Examples
+
+- `"send user.data"`
+- `"publish"`
 
 {% endraw %}

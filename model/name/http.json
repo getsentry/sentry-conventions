@@ -1,0 +1,33 @@
+{
+  "brief": "HTTP",
+  "operations": [
+    {
+      "name": "Client",
+      "brief": "Operations that represent outgoing HTTP requests.",
+      "is_in_otel": true,
+      "otel_notes": "",
+      "ops": ["http.client"],
+      "templates": [
+        "{{http.request.method}} {{http.route}}",
+        "{{http.request.method}} {{url.template}}",
+        "{{http.request.method}}",
+        "HTTP"
+      ],
+      "examples": ["GET /users/:id", "GET"]
+    },
+    {
+      "name": "Server",
+      "brief": "Operations that represent processing incoming HTTP requests in a web server.",
+      "is_in_otel": true,
+      "otel_notes": "",
+      "ops": ["http.server"],
+      "templates": [
+        "{{http.request.method}} {{http.route}}",
+        "{{http.request.method}} {{url.template}}",
+        "{{http.request.method}}",
+        "HTTP"
+      ],
+      "examples": ["GET /users/:id", "GET"]
+    }
+  ]
+}

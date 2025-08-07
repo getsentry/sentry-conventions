@@ -7,6 +7,7 @@ interface NameJson {
     name: string;
     brief: string;
     is_in_otel: boolean;
+    otel_notes?: string;
     ops: string[];
     templates: string[];
     examples?: string[];
@@ -50,11 +51,10 @@ export async function generateNameDocs() {
 
   indexContent += '## Generating Names\n\n';
   indexContent +=
-    "Span names are generated via string template. Each span category of work has a set of templates for the span name. Curly brackets in the template indicate that the contents inside the curly brackets should be replaced with the contents of the span attribute of the name within the brackets. The templates should be evaluated in order of appearance. At least one template must be provided that doesn't require any attributes.\n\n";
+    'Span names are generated via string template. Each span category of work has a set of templates for the span name. Curly brackets in the template indicate that the contents inside the curly brackets should be replaced with the contents of the span attribute of the name within the brackets. The templates should be evaluated in order of appearance. The final template should be a static string, to be used as a fallback.\n\n';
 
   // Generate documentation for each category
   for (const category of Object.keys(categories).sort()) {
-    indexContent += `## \`${category}\`\n\n`;
     const nameJSON = categories[category];
     if (nameJSON) {
       indexContent += `${generateCategoryDocs(nameJSON)}`;
@@ -81,12 +81,16 @@ function readJsonFile(filePath: string): NameJson {
 function generateCategoryDocs(nameJSON: NameJson): string {
   let content = '';
 
+  content += `## ${nameJSON.brief}\n\n`;
+
   for (const operation of nameJSON.operations) {
     content += `### ${operation.name}\n\n`;
     content += `${operation.brief}`;
 
-    if (!operation.is_in_otel) {
-      content += ' NOTE: Names for this category of span are **not** specified in OpenTelemetry Semantic Conventions.';
+    if (operation.is_in_otel && operation.otel_notes) {
+      content += `\nNOTE: Our definition differs from OpenTelemetry. ${operation.otel_notes}`;
+    } else if (!operation.is_in_otel) {
+      content += '\nNOTE: Names for this category of span are **not** specified in OpenTelemetry Semantic Conventions.';
     }
 
     content += '\n\n';

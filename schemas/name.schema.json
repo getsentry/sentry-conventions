@@ -34,6 +34,9 @@
         "is_in_otel": {
           "type": "boolean"
         },
+        "otel_notes": {
+          "type": "string"
+        },
         "ops": {
           "type": "array",
           "items": {
@@ -55,7 +58,17 @@
           }
         }
       },
-      "required": ["brief", "is_in_otel", "ops", "templates"]
+      "required": ["brief", "is_in_otel", "ops", "templates"],
+      "if": {
+        "properties": {
+          "is_in_otel": {
+            "const": true
+          }
+        }
+      },
+      "then": {
+        "required": ["otel_notes"]
+      }
     }
   }
 }

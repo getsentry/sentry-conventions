@@ -1,0 +1,34 @@
+{
+  "brief": "Messaging",
+  "operations": [
+    {
+      "name": "Messaging",
+      "brief": "Operations that represent working with messages on topics in streaming data systems and queues (e.g., producing and consuming messages in Kafka, RabbitMQ).",
+      "is_in_otel": true,
+      "otel_notes": "",
+      "ops": [
+        "topic",
+        "topic.send",
+        "topic.receive",
+        "topic.process",
+        "queue",
+        "queue.task",
+        "queue.task.celery",
+        "queue.task.rq",
+        "queue.task.delayed_job",
+        "queue.task.active_job",
+        "queue.submit",
+        "queue.submit.celery",
+        "queue.resque",
+        "queue.sidekiq"
+      ],
+      "templates": [
+        "{{messaging.operation.type}} {{messaging.destination.name}}",
+        "{{messaging.operation.type}} {{server.address}}:{{server.port}}",
+        "{{messaging.operation.type}}",
+        "Messaging"
+      ],
+      "examples": ["send user.data", "publish"]
+    }
+  ]
+}
