@@ -17,7 +17,7 @@ Used by the span buffer to record the segment ID of the original span in the inc
 | Type | `string` |
 | Has PII | false |
 | Exists in OpenTelemetry | No |
-| Example | `["same","different"]` |
+| Example | `same` |
 
 ### __sentry_internal_span_buffer_outcome
 
@@ -28,5 +28,5 @@ Used by the span buffer to indicate whether reconstructing the segment resulted 
 | Type | `string` |
 | Has PII | false |
 | Exists in OpenTelemetry | No |
-| Example | `["same","different"]` |
+| Example | `55467cd258e1c` |
 

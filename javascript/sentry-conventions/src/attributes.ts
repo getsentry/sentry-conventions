@@ -11,7 +11,7 @@
  *
  * Attribute defined in OTEL: No
  *
- * @example ["same","different"]
+ * @example "same"
  */
 export const __SENTRY_INTERNAL_OLD_SEGMENT_ID = '__sentry_internal_old_segment_id';
 
@@ -31,7 +31,7 @@ export type __SENTRY_INTERNAL_OLD_SEGMENT_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
- * @example ["same","different"]
+ * @example "55467cd258e1c"
  */
 export const __SENTRY_INTERNAL_SPAN_BUFFER_OUTCOME = '__sentry_internal_span_buffer_outcome';
 
