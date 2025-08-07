@@ -1,5 +1,45 @@
 // This is an auto-generated file. Do not edit!
 
+// Path: model/attributes/__sentry_internal/__sentry_internal_old_segment_id.json
+
+/**
+ * Used by the span buffer to record the segment ID of the original span in the incoming transaction before reconstruction. `__sentry_internal_old_segment_id`
+ *
+ * Attribute Value Type: `string` {@link __SENTRY_INTERNAL_OLD_SEGMENT_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example ["same","different"]
+ */
+export const __SENTRY_INTERNAL_OLD_SEGMENT_ID = '__sentry_internal_old_segment_id';
+
+/**
+ * Type for {@link __SENTRY_INTERNAL_OLD_SEGMENT_ID} __sentry_internal_old_segment_id
+ */
+export type __SENTRY_INTERNAL_OLD_SEGMENT_ID_TYPE = string;
+
+// Path: model/attributes/__sentry_internal/__sentry_internal_span_buffer_outcome.json
+
+/**
+ * Used by the span buffer to indicate whether reconstructing the segment resulted in the same segment ID as the original transaction. `__sentry_internal_span_buffer_outcome`
+ *
+ * Attribute Value Type: `string` {@link __SENTRY_INTERNAL_SPAN_BUFFER_OUTCOME_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example ["same","different"]
+ */
+export const __SENTRY_INTERNAL_SPAN_BUFFER_OUTCOME = '__sentry_internal_span_buffer_outcome';
+
+/**
+ * Type for {@link __SENTRY_INTERNAL_SPAN_BUFFER_OUTCOME} __sentry_internal_span_buffer_outcome
+ */
+export type __SENTRY_INTERNAL_SPAN_BUFFER_OUTCOME_TYPE = string;
+
 // Path: model/attributes/ai/ai__citations.json
 
 /**
@@ -6197,6 +6237,8 @@ export type USER_AGENT_ORIGINAL_TYPE = string;
 export type AttributeValue = string | number | boolean | Array<string> | Array<number> | Array<boolean>;
 
 export type Attributes = {
+  [__SENTRY_INTERNAL_OLD_SEGMENT_ID]?: __SENTRY_INTERNAL_OLD_SEGMENT_ID_TYPE;
+  [__SENTRY_INTERNAL_SPAN_BUFFER_OUTCOME]?: __SENTRY_INTERNAL_SPAN_BUFFER_OUTCOME_TYPE;
   [AI_CITATIONS]?: AI_CITATIONS_TYPE;
   [AI_DOCUMENTS]?: AI_DOCUMENTS_TYPE;
   [AI_IS_SEARCH_REQUIRED]?: AI_IS_SEARCH_REQUIRED_TYPE;
@@ -6428,6 +6470,8 @@ export type Attributes = {
 } & Record<string, AttributeValue | undefined>;
 
 export type FullAttributes = {
+  [__SENTRY_INTERNAL_OLD_SEGMENT_ID]?: __SENTRY_INTERNAL_OLD_SEGMENT_ID_TYPE;
+  [__SENTRY_INTERNAL_SPAN_BUFFER_OUTCOME]?: __SENTRY_INTERNAL_SPAN_BUFFER_OUTCOME_TYPE;
   [AI_CITATIONS]?: AI_CITATIONS_TYPE;
   [AI_COMPLETION_TOKENS_USED]?: AI_COMPLETION_TOKENS_USED_TYPE;
   [AI_DOCUMENTS]?: AI_DOCUMENTS_TYPE;
