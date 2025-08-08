@@ -5207,6 +5207,8 @@ export type SENTRY_IDLE_SPAN_FINISH_REASON_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link _SENTRY_INTERNAL_OLD_SEGMENT_ID} `__sentry_internal_old_segment_id`
+ *
  * @example "same"
  */
 export const SENTRY_INTERNAL_SPAN_BUFFER_OLD_SEGMENT_ID = 'sentry.internal.span_buffer_old_segment_id';
@@ -5226,6 +5228,8 @@ export type SENTRY_INTERNAL_SPAN_BUFFER_OLD_SEGMENT_ID_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link _SENTRY_INTERNAL_SPAN_BUFFER_OUTCOME} `__sentry_internal_span_buffer_outcome`
  *
  * @example "55467cd258e1c"
  */

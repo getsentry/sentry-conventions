@@ -106,6 +106,7 @@ Used by the span buffer to record the segment ID of the original span in the inc
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `same` |
+| Aliases | `__sentry_internal_old_segment_id` |
 
 ### sentry.internal.span_buffer_segment_id_outcome
 
@@ -117,6 +118,7 @@ Used by the span buffer to indicate whether reconstructing the segment resulted 
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `55467cd258e1c` |
+| Aliases | `__sentry_internal_span_buffer_outcome` |
 
 ### sentry.module.\<key\>
 
