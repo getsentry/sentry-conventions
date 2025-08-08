@@ -1,5 +1,5 @@
 {
-  "key": "sentry.internal.span_buffer_old_segment_id",
+  "key": "sentry._internal.span_buffer_old_segment_id",
   "brief": "Used by the span buffer to record the segment ID of the original span in the incoming transaction before reconstruction.",
   "type": "string",
   "pii": {

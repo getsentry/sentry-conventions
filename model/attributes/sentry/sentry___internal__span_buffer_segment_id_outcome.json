@@ -1,5 +1,5 @@
 {
-  "key": "sentry.internal.span_buffer_segment_id_outcome",
+  "key": "sentry._internal.span_buffer_segment_id_outcome",
   "brief": "Used by the span buffer to indicate whether reconstructing the segment resulted in the same segment ID as the original transaction.",
   "type": "string",
   "pii": {

@@ -3,14 +3,14 @@
 # Sentry Attributes
 
 - [Stable Attributes](#stable-attributes)
+  - [sentry._internal.span_buffer_old_segment_id](#sentry_internalspan_buffer_old_segment_id)
+  - [sentry._internal.span_buffer_segment_id_outcome](#sentry_internalspan_buffer_segment_id_outcome)
   - [sentry.cancellation_reason](#sentrycancellation_reason)
   - [sentry.dist](#sentrydist)
   - [sentry.environment](#sentryenvironment)
   - [sentry.exclusive_time](#sentryexclusive_time)
   - [sentry.http.prefetch](#sentryhttpprefetch)
   - [sentry.idle_span_finish_reason](#sentryidle_span_finish_reason)
-  - [sentry.internal.span_buffer_old_segment_id](#sentryinternalspan_buffer_old_segment_id)
-  - [sentry.internal.span_buffer_segment_id_outcome](#sentryinternalspan_buffer_segment_id_outcome)
   - [sentry.module.\<key\>](#sentrymodulekey)
   - [sentry.nextjs.ssr.function.route](#sentrynextjsssrfunctionroute)
   - [sentry.nextjs.ssr.function.type](#sentrynextjsssrfunctiontype)
@@ -28,6 +28,30 @@
   - [sentry.transaction](#sentrytransaction)
 
 ## Stable Attributes
+
+### sentry._internal.span_buffer_old_segment_id
+
+Used by the span buffer to record the segment ID of the original span in the incoming transaction before reconstruction.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `same` |
+| Aliases | `__sentry_internal_old_segment_id` |
+
+### sentry._internal.span_buffer_segment_id_outcome
+
+Used by the span buffer to indicate whether reconstructing the segment resulted in the same segment ID as the original transaction.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `55467cd258e1c` |
+| Aliases | `__sentry_internal_span_buffer_outcome` |
 
 ### sentry.cancellation_reason
 
@@ -95,30 +119,6 @@ The reason why an idle span ended early.
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `idleTimeout` |
-
-### sentry.internal.span_buffer_old_segment_id
-
-Used by the span buffer to record the segment ID of the original span in the incoming transaction before reconstruction.
-
-| Property | Value |
-| --- | --- |
-| Type | `string` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `same` |
-| Aliases | `__sentry_internal_old_segment_id` |
-
-### sentry.internal.span_buffer_segment_id_outcome
-
-Used by the span buffer to indicate whether reconstructing the segment resulted in the same segment ID as the original transaction.
-
-| Property | Value |
-| --- | --- |
-| Type | `string` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `55467cd258e1c` |
-| Aliases | `__sentry_internal_span_buffer_outcome` |
 
 ### sentry.module.\<key\>
 
