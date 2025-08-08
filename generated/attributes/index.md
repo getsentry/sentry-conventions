@@ -6,7 +6,6 @@ This directory contains documentation for all available attributes.
 
 ## Available Categories
 
-- [`__sentry_internal` Attributes](./__sentry_internal.md)
 - [`ai` Attributes](./ai.md)
 - [`browser` Attributes](./browser.md)
 - [`cache` Attributes](./cache.md)

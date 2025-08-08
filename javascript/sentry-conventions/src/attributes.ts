@@ -1,45 +1,5 @@
 // This is an auto-generated file. Do not edit!
 
-// Path: model/attributes/__sentry_internal/__sentry_internal_old_segment_id.json
-
-/**
- * Used by the span buffer to record the segment ID of the original span in the incoming transaction before reconstruction. `__sentry_internal_old_segment_id`
- *
- * Attribute Value Type: `string` {@link __SENTRY_INTERNAL_OLD_SEGMENT_ID_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * @example "same"
- */
-export const __SENTRY_INTERNAL_OLD_SEGMENT_ID = '__sentry_internal_old_segment_id';
-
-/**
- * Type for {@link __SENTRY_INTERNAL_OLD_SEGMENT_ID} __sentry_internal_old_segment_id
- */
-export type __SENTRY_INTERNAL_OLD_SEGMENT_ID_TYPE = string;
-
-// Path: model/attributes/__sentry_internal/__sentry_internal_span_buffer_outcome.json
-
-/**
- * Used by the span buffer to indicate whether reconstructing the segment resulted in the same segment ID as the original transaction. `__sentry_internal_span_buffer_outcome`
- *
- * Attribute Value Type: `string` {@link __SENTRY_INTERNAL_SPAN_BUFFER_OUTCOME_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * @example "55467cd258e1c"
- */
-export const __SENTRY_INTERNAL_SPAN_BUFFER_OUTCOME = '__sentry_internal_span_buffer_outcome';
-
-/**
- * Type for {@link __SENTRY_INTERNAL_SPAN_BUFFER_OUTCOME} __sentry_internal_span_buffer_outcome
- */
-export type __SENTRY_INTERNAL_SPAN_BUFFER_OUTCOME_TYPE = string;
-
 // Path: model/attributes/ai/ai__citations.json
 
 /**
@@ -5236,6 +5196,46 @@ export const SENTRY_IDLE_SPAN_FINISH_REASON = 'sentry.idle_span_finish_reason';
  */
 export type SENTRY_IDLE_SPAN_FINISH_REASON_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__internal__span_buffer_old_segment_id.json
+
+/**
+ * Used by the span buffer to record the segment ID of the original span in the incoming transaction before reconstruction. `sentry.internal.span_buffer_old_segment_id`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_INTERNAL_SPAN_BUFFER_OLD_SEGMENT_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "same"
+ */
+export const SENTRY_INTERNAL_SPAN_BUFFER_OLD_SEGMENT_ID = 'sentry.internal.span_buffer_old_segment_id';
+
+/**
+ * Type for {@link SENTRY_INTERNAL_SPAN_BUFFER_OLD_SEGMENT_ID} sentry.internal.span_buffer_old_segment_id
+ */
+export type SENTRY_INTERNAL_SPAN_BUFFER_OLD_SEGMENT_ID_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__internal__span_buffer_segment_id_outcome.json
+
+/**
+ * Used by the span buffer to indicate whether reconstructing the segment resulted in the same segment ID as the original transaction. `sentry.internal.span_buffer_segment_id_outcome`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_INTERNAL_SPAN_BUFFER_SEGMENT_ID_OUTCOME_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "55467cd258e1c"
+ */
+export const SENTRY_INTERNAL_SPAN_BUFFER_SEGMENT_ID_OUTCOME = 'sentry.internal.span_buffer_segment_id_outcome';
+
+/**
+ * Type for {@link SENTRY_INTERNAL_SPAN_BUFFER_SEGMENT_ID_OUTCOME} sentry.internal.span_buffer_segment_id_outcome
+ */
+export type SENTRY_INTERNAL_SPAN_BUFFER_SEGMENT_ID_OUTCOME_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__module__<key>.json
 
 /**
@@ -6237,8 +6237,6 @@ export type USER_AGENT_ORIGINAL_TYPE = string;
 export type AttributeValue = string | number | boolean | Array<string> | Array<number> | Array<boolean>;
 
 export type Attributes = {
-  [__SENTRY_INTERNAL_OLD_SEGMENT_ID]?: __SENTRY_INTERNAL_OLD_SEGMENT_ID_TYPE;
-  [__SENTRY_INTERNAL_SPAN_BUFFER_OUTCOME]?: __SENTRY_INTERNAL_SPAN_BUFFER_OUTCOME_TYPE;
   [AI_CITATIONS]?: AI_CITATIONS_TYPE;
   [AI_DOCUMENTS]?: AI_DOCUMENTS_TYPE;
   [AI_IS_SEARCH_REQUIRED]?: AI_IS_SEARCH_REQUIRED_TYPE;
@@ -6421,6 +6419,8 @@ export type Attributes = {
   [SENTRY_EXCLUSIVE_TIME]?: SENTRY_EXCLUSIVE_TIME_TYPE;
   [SENTRY_HTTP_PREFETCH]?: SENTRY_HTTP_PREFETCH_TYPE;
   [SENTRY_IDLE_SPAN_FINISH_REASON]?: SENTRY_IDLE_SPAN_FINISH_REASON_TYPE;
+  [SENTRY_INTERNAL_SPAN_BUFFER_OLD_SEGMENT_ID]?: SENTRY_INTERNAL_SPAN_BUFFER_OLD_SEGMENT_ID_TYPE;
+  [SENTRY_INTERNAL_SPAN_BUFFER_SEGMENT_ID_OUTCOME]?: SENTRY_INTERNAL_SPAN_BUFFER_SEGMENT_ID_OUTCOME_TYPE;
   [SENTRY_MODULE_KEY]?: SENTRY_MODULE_KEY_TYPE;
   [SENTRY_NEXTJS_SSR_FUNCTION_ROUTE]?: SENTRY_NEXTJS_SSR_FUNCTION_ROUTE_TYPE;
   [SENTRY_NEXTJS_SSR_FUNCTION_TYPE]?: SENTRY_NEXTJS_SSR_FUNCTION_TYPE_TYPE;
@@ -6470,8 +6470,6 @@ export type Attributes = {
 } & Record<string, AttributeValue | undefined>;
 
 export type FullAttributes = {
-  [__SENTRY_INTERNAL_OLD_SEGMENT_ID]?: __SENTRY_INTERNAL_OLD_SEGMENT_ID_TYPE;
-  [__SENTRY_INTERNAL_SPAN_BUFFER_OUTCOME]?: __SENTRY_INTERNAL_SPAN_BUFFER_OUTCOME_TYPE;
   [AI_CITATIONS]?: AI_CITATIONS_TYPE;
   [AI_COMPLETION_TOKENS_USED]?: AI_COMPLETION_TOKENS_USED_TYPE;
   [AI_DOCUMENTS]?: AI_DOCUMENTS_TYPE;
@@ -6720,6 +6718,8 @@ export type FullAttributes = {
   [SENTRY_EXCLUSIVE_TIME]?: SENTRY_EXCLUSIVE_TIME_TYPE;
   [SENTRY_HTTP_PREFETCH]?: SENTRY_HTTP_PREFETCH_TYPE;
   [SENTRY_IDLE_SPAN_FINISH_REASON]?: SENTRY_IDLE_SPAN_FINISH_REASON_TYPE;
+  [SENTRY_INTERNAL_SPAN_BUFFER_OLD_SEGMENT_ID]?: SENTRY_INTERNAL_SPAN_BUFFER_OLD_SEGMENT_ID_TYPE;
+  [SENTRY_INTERNAL_SPAN_BUFFER_SEGMENT_ID_OUTCOME]?: SENTRY_INTERNAL_SPAN_BUFFER_SEGMENT_ID_OUTCOME_TYPE;
   [SENTRY_MODULE_KEY]?: SENTRY_MODULE_KEY_TYPE;
   [SENTRY_NEXTJS_SSR_FUNCTION_ROUTE]?: SENTRY_NEXTJS_SSR_FUNCTION_ROUTE_TYPE;
   [SENTRY_NEXTJS_SSR_FUNCTION_TYPE]?: SENTRY_NEXTJS_SSR_FUNCTION_TYPE_TYPE;
