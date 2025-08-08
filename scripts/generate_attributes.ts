@@ -34,9 +34,7 @@ async function getAllJsonFiles(dir: string): Promise<string[]> {
   const allFiles: string[] = [];
 
   async function scanDir(currentDir: string, relativePath = '') {
-    const entries = await fs.promises.readdir(currentDir, {
-      withFileTypes: true,
-    });
+    const entries = await fs.promises.readdir(currentDir, { withFileTypes: true });
 
     for (const entry of entries) {
       const entryPath = path.join(currentDir, entry.name);
@@ -162,7 +160,7 @@ function getConstantName(key: string): string {
     .replaceAll('-', '_')
     .replaceAll('<', '__') // Replace opening angle bracket with underscore
     .replaceAll('>', '') // Remove closing angle bracket
-    .replace(/(.)__+(.)/g, '$1_$2'); // Replace multiple consecutive underscores with a single one unless it's at the beginning or end
+    .replace(/__+/g, '_'); // Replace multiple consecutive underscores with a single one
 
   constantNameMemo.set(key, constantName);
   return constantName;
