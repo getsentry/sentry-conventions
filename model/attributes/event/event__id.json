@@ -1,0 +1,10 @@
+{
+  "key": "event.id",
+  "brief": "The unique identifier for this event (log record)",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 1234567890
+}

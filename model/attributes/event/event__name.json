@@ -1,0 +1,10 @@
+{
+  "key": "event.name",
+  "brief": "The name that uniquely identifies this event (log record)",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "Process Payload"
+}

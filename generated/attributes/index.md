@@ -14,6 +14,7 @@ This directory contains documentation for all available attributes.
 - [`code` Attributes](./code.md)
 - [`db` Attributes](./db.md)
 - [`error` Attributes](./error.md)
+- [`event` Attributes](./event.md)
 - [`exception` Attributes](./exception.md)
 - [`faas` Attributes](./faas.md)
 - [`flag` Attributes](./flag.md)

@@ -1594,6 +1594,46 @@ export const ERROR_TYPE = 'error.type';
  */
 export type ERROR_TYPE_TYPE = string;
 
+// Path: model/attributes/event/event__id.json
+
+/**
+ * The unique identifier for this event (log record) `event.id`
+ *
+ * Attribute Value Type: `number` {@link EVENT_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 1234567890
+ */
+export const EVENT_ID = 'event.id';
+
+/**
+ * Type for {@link EVENT_ID} event.id
+ */
+export type EVENT_ID_TYPE = number;
+
+// Path: model/attributes/event/event__name.json
+
+/**
+ * The name that uniquely identifies this event (log record) `event.name`
+ *
+ * Attribute Value Type: `string` {@link EVENT_NAME_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "Process Payload"
+ */
+export const EVENT_NAME = 'event.name';
+
+/**
+ * Type for {@link EVENT_NAME} event.name
+ */
+export type EVENT_NAME_TYPE = string;
+
 // Path: model/attributes/exception/exception__escaped.json
 
 /**
@@ -6287,6 +6327,8 @@ export type Attributes = {
   [DB_SYSTEM_NAME]?: DB_SYSTEM_NAME_TYPE;
   [DB_USER]?: DB_USER_TYPE;
   [ERROR_TYPE]?: ERROR_TYPE_TYPE;
+  [EVENT_ID]?: EVENT_ID_TYPE;
+  [EVENT_NAME]?: EVENT_NAME_TYPE;
   [EXCEPTION_ESCAPED]?: EXCEPTION_ESCAPED_TYPE;
   [EXCEPTION_MESSAGE]?: EXCEPTION_MESSAGE_TYPE;
   [EXCEPTION_STACKTRACE]?: EXCEPTION_STACKTRACE_TYPE;
@@ -6550,6 +6592,8 @@ export type FullAttributes = {
   [DB_USER]?: DB_USER_TYPE;
   [ENVIRONMENT]?: ENVIRONMENT_TYPE;
   [ERROR_TYPE]?: ERROR_TYPE_TYPE;
+  [EVENT_ID]?: EVENT_ID_TYPE;
+  [EVENT_NAME]?: EVENT_NAME_TYPE;
   [EXCEPTION_ESCAPED]?: EXCEPTION_ESCAPED_TYPE;
   [EXCEPTION_MESSAGE]?: EXCEPTION_MESSAGE_TYPE;
   [EXCEPTION_STACKTRACE]?: EXCEPTION_STACKTRACE_TYPE;
