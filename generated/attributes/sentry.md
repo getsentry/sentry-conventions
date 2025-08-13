@@ -21,7 +21,6 @@
   - [sentry.profile_id](#sentryprofile_id)
   - [sentry.release](#sentryrelease)
   - [sentry.replay_id](#sentryreplay_id)
-  - [sentry.sample_rate](#sentrysample_rate)
   - [sentry.sdk.integrations](#sentrysdkintegrations)
   - [sentry.sdk.name](#sentrysdkname)
   - [sentry.sdk.version](#sentrysdkversion)
@@ -237,17 +236,6 @@ The id of the sentry replay.
 | Exists in OpenTelemetry | No |
 | Example | `123e4567e89b12d3a456426614174000` |
 | Aliases | `replay_id` |
-
-### sentry.sample_rate
-
-The sample rate of the span.
-
-| Property | Value |
-| --- | --- |
-| Type | `double` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `0.5` |
 
 ### sentry.sdk.integrations
 

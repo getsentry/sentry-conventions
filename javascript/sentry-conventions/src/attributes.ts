@@ -5492,26 +5492,6 @@ export const SENTRY_REPLAY_ID = 'sentry.replay_id';
  */
 export type SENTRY_REPLAY_ID_TYPE = string;
 
-// Path: model/attributes/sentry/sentry__sample_rate.json
-
-/**
- * The sample rate of the span. `sentry.sample_rate`
- *
- * Attribute Value Type: `number` {@link SENTRY_SAMPLE_RATE_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * @example 0.5
- */
-export const SENTRY_SAMPLE_RATE = 'sentry.sample_rate';
-
-/**
- * Type for {@link SENTRY_SAMPLE_RATE} sentry.sample_rate
- */
-export type SENTRY_SAMPLE_RATE_TYPE = number;
-
 // Path: model/attributes/sentry/sentry__sdk__integrations.json
 
 /**
@@ -6517,7 +6497,6 @@ export type Attributes = {
   [SENTRY_PROFILE_ID]?: SENTRY_PROFILE_ID_TYPE;
   [SENTRY_RELEASE]?: SENTRY_RELEASE_TYPE;
   [SENTRY_REPLAY_ID]?: SENTRY_REPLAY_ID_TYPE;
-  [SENTRY_SAMPLE_RATE]?: SENTRY_SAMPLE_RATE_TYPE;
   [SENTRY_SDK_INTEGRATIONS]?: SENTRY_SDK_INTEGRATIONS_TYPE;
   [SENTRY_SDK_NAME]?: SENTRY_SDK_NAME_TYPE;
   [SENTRY_SDK_VERSION]?: SENTRY_SDK_VERSION_TYPE;
@@ -6820,7 +6799,6 @@ export type FullAttributes = {
   [SENTRY_PROFILE_ID]?: SENTRY_PROFILE_ID_TYPE;
   [SENTRY_RELEASE]?: SENTRY_RELEASE_TYPE;
   [SENTRY_REPLAY_ID]?: SENTRY_REPLAY_ID_TYPE;
-  [SENTRY_SAMPLE_RATE]?: SENTRY_SAMPLE_RATE_TYPE;
   [SENTRY_SDK_INTEGRATIONS]?: SENTRY_SDK_INTEGRATIONS_TYPE;
   [SENTRY_SDK_NAME]?: SENTRY_SDK_NAME_TYPE;
   [SENTRY_SDK_VERSION]?: SENTRY_SDK_VERSION_TYPE;
