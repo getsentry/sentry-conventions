@@ -66,7 +66,7 @@ describe('attribute json', async () => {
 
       it('should follow the correct naming convention', () => {
         expect(name.replaceAll('__', '.').replaceAll('[', '<').replaceAll(']', '>').replace('.json', '')).toMatch(
-          content.key
+          content.key,
         );
       });
     });
