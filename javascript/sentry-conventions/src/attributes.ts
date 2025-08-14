@@ -5178,6 +5178,26 @@ export const SENTRY_CANCELLATION_REASON = 'sentry.cancellation_reason';
  */
 export type SENTRY_CANCELLATION_REASON_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__client_sample_rate.json
+
+/**
+ * Rate at which a span was sampled in the SDK. `sentry.client_sample_rate`
+ *
+ * Attribute Value Type: `number` {@link SENTRY_CLIENT_SAMPLE_RATE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 0.5
+ */
+export const SENTRY_CLIENT_SAMPLE_RATE = 'sentry.client_sample_rate';
+
+/**
+ * Type for {@link SENTRY_CLIENT_SAMPLE_RATE} sentry.client_sample_rate
+ */
+export type SENTRY_CLIENT_SAMPLE_RATE_TYPE = number;
+
 // Path: model/attributes/sentry/sentry__dist.json
 
 /**
@@ -5472,26 +5492,6 @@ export const SENTRY_REPLAY_ID = 'sentry.replay_id';
  */
 export type SENTRY_REPLAY_ID_TYPE = string;
 
-// Path: model/attributes/sentry/sentry__sample_rate.json
-
-/**
- * The sample rate of the span. `sentry.sample_rate`
- *
- * Attribute Value Type: `number` {@link SENTRY_SAMPLE_RATE_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * @example 0.5
- */
-export const SENTRY_SAMPLE_RATE = 'sentry.sample_rate';
-
-/**
- * Type for {@link SENTRY_SAMPLE_RATE} sentry.sample_rate
- */
-export type SENTRY_SAMPLE_RATE_TYPE = number;
-
 // Path: model/attributes/sentry/sentry__sdk__integrations.json
 
 /**
@@ -5551,6 +5551,26 @@ export const SENTRY_SDK_VERSION = 'sentry.sdk.version';
  * Type for {@link SENTRY_SDK_VERSION} sentry.sdk.version
  */
 export type SENTRY_SDK_VERSION_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__server_sample_rate.json
+
+/**
+ * Rate at which a span was sampled in Relay. `sentry.server_sample_rate`
+ *
+ * Attribute Value Type: `number` {@link SENTRY_SERVER_SAMPLE_RATE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 0.5
+ */
+export const SENTRY_SERVER_SAMPLE_RATE = 'sentry.server_sample_rate';
+
+/**
+ * Type for {@link SENTRY_SERVER_SAMPLE_RATE} sentry.server_sample_rate
+ */
+export type SENTRY_SERVER_SAMPLE_RATE_TYPE = number;
 
 // Path: model/attributes/sentry/sentry__span__source.json
 
@@ -6462,6 +6482,7 @@ export type Attributes = {
   [SENTRY_INTERNAL_SPAN_BUFFER_OLD_SEGMENT_ID]?: SENTRY_INTERNAL_SPAN_BUFFER_OLD_SEGMENT_ID_TYPE;
   [SENTRY_INTERNAL_SPAN_BUFFER_SEGMENT_ID_OUTCOME]?: SENTRY_INTERNAL_SPAN_BUFFER_SEGMENT_ID_OUTCOME_TYPE;
   [SENTRY_CANCELLATION_REASON]?: SENTRY_CANCELLATION_REASON_TYPE;
+  [SENTRY_CLIENT_SAMPLE_RATE]?: SENTRY_CLIENT_SAMPLE_RATE_TYPE;
   [SENTRY_DIST]?: SENTRY_DIST_TYPE;
   [SENTRY_ENVIRONMENT]?: SENTRY_ENVIRONMENT_TYPE;
   [SENTRY_EXCLUSIVE_TIME]?: SENTRY_EXCLUSIVE_TIME_TYPE;
@@ -6476,10 +6497,10 @@ export type Attributes = {
   [SENTRY_PROFILE_ID]?: SENTRY_PROFILE_ID_TYPE;
   [SENTRY_RELEASE]?: SENTRY_RELEASE_TYPE;
   [SENTRY_REPLAY_ID]?: SENTRY_REPLAY_ID_TYPE;
-  [SENTRY_SAMPLE_RATE]?: SENTRY_SAMPLE_RATE_TYPE;
   [SENTRY_SDK_INTEGRATIONS]?: SENTRY_SDK_INTEGRATIONS_TYPE;
   [SENTRY_SDK_NAME]?: SENTRY_SDK_NAME_TYPE;
   [SENTRY_SDK_VERSION]?: SENTRY_SDK_VERSION_TYPE;
+  [SENTRY_SERVER_SAMPLE_RATE]?: SENTRY_SERVER_SAMPLE_RATE_TYPE;
   [SENTRY_SPAN_SOURCE]?: SENTRY_SPAN_SOURCE_TYPE;
   [SENTRY_TRANSACTION]?: SENTRY_TRANSACTION_TYPE;
   [SERVER_ADDRESS]?: SERVER_ADDRESS_TYPE;
@@ -6763,6 +6784,7 @@ export type FullAttributes = {
   [SENTRY_INTERNAL_SPAN_BUFFER_OLD_SEGMENT_ID]?: SENTRY_INTERNAL_SPAN_BUFFER_OLD_SEGMENT_ID_TYPE;
   [SENTRY_INTERNAL_SPAN_BUFFER_SEGMENT_ID_OUTCOME]?: SENTRY_INTERNAL_SPAN_BUFFER_SEGMENT_ID_OUTCOME_TYPE;
   [SENTRY_CANCELLATION_REASON]?: SENTRY_CANCELLATION_REASON_TYPE;
+  [SENTRY_CLIENT_SAMPLE_RATE]?: SENTRY_CLIENT_SAMPLE_RATE_TYPE;
   [SENTRY_DIST]?: SENTRY_DIST_TYPE;
   [SENTRY_ENVIRONMENT]?: SENTRY_ENVIRONMENT_TYPE;
   [SENTRY_EXCLUSIVE_TIME]?: SENTRY_EXCLUSIVE_TIME_TYPE;
@@ -6777,10 +6799,10 @@ export type FullAttributes = {
   [SENTRY_PROFILE_ID]?: SENTRY_PROFILE_ID_TYPE;
   [SENTRY_RELEASE]?: SENTRY_RELEASE_TYPE;
   [SENTRY_REPLAY_ID]?: SENTRY_REPLAY_ID_TYPE;
-  [SENTRY_SAMPLE_RATE]?: SENTRY_SAMPLE_RATE_TYPE;
   [SENTRY_SDK_INTEGRATIONS]?: SENTRY_SDK_INTEGRATIONS_TYPE;
   [SENTRY_SDK_NAME]?: SENTRY_SDK_NAME_TYPE;
   [SENTRY_SDK_VERSION]?: SENTRY_SDK_VERSION_TYPE;
+  [SENTRY_SERVER_SAMPLE_RATE]?: SENTRY_SERVER_SAMPLE_RATE_TYPE;
   [SENTRY_SPAN_SOURCE]?: SENTRY_SPAN_SOURCE_TYPE;
   [SENTRY_TRANSACTION]?: SENTRY_TRANSACTION_TYPE;
   [SERVER_ADDRESS]?: SERVER_ADDRESS_TYPE;

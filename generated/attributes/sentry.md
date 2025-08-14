@@ -6,6 +6,7 @@
   - [sentry._internal.span_buffer_old_segment_id](#sentry_internalspan_buffer_old_segment_id)
   - [sentry._internal.span_buffer_segment_id_outcome](#sentry_internalspan_buffer_segment_id_outcome)
   - [sentry.cancellation_reason](#sentrycancellation_reason)
+  - [sentry.client_sample_rate](#sentryclient_sample_rate)
   - [sentry.dist](#sentrydist)
   - [sentry.environment](#sentryenvironment)
   - [sentry.exclusive_time](#sentryexclusive_time)
@@ -20,10 +21,10 @@
   - [sentry.profile_id](#sentryprofile_id)
   - [sentry.release](#sentryrelease)
   - [sentry.replay_id](#sentryreplay_id)
-  - [sentry.sample_rate](#sentrysample_rate)
   - [sentry.sdk.integrations](#sentrysdkintegrations)
   - [sentry.sdk.name](#sentrysdkname)
   - [sentry.sdk.version](#sentrysdkversion)
+  - [sentry.server_sample_rate](#sentryserver_sample_rate)
   - [sentry.span.source](#sentryspansource)
   - [sentry.transaction](#sentrytransaction)
 
@@ -63,6 +64,17 @@ The reason why a span ended early.
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `document.hidden` |
+
+### sentry.client_sample_rate
+
+Rate at which a span was sampled in the SDK.
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `0.5` |
 
 ### sentry.dist
 
@@ -225,17 +237,6 @@ The id of the sentry replay.
 | Example | `123e4567e89b12d3a456426614174000` |
 | Aliases | `replay_id` |
 
-### sentry.sample_rate
-
-The sample rate of the span.
-
-| Property | Value |
-| --- | --- |
-| Type | `double` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `0.5` |
-
 ### sentry.sdk.integrations
 
 A list of names identifying enabled integrations. The list shouldhave all enabled integrations, including default integrations. Defaultintegrations are included because different SDK releases may contain differentdefault integrations.
@@ -268,6 +269,17 @@ The sentry sdk version.
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `7.0.0` |
+
+### sentry.server_sample_rate
+
+Rate at which a span was sampled in Relay.
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `0.5` |
 
 ### sentry.span.source
 
