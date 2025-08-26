@@ -24,6 +24,7 @@
   - [sentry.sdk.integrations](#sentrysdkintegrations)
   - [sentry.sdk.name](#sentrysdkname)
   - [sentry.sdk.version](#sentrysdkversion)
+  - [sentry.segment.name](#sentrysegmentname)
   - [sentry.server_sample_rate](#sentryserver_sample_rate)
   - [sentry.span.source](#sentryspansource)
   - [sentry.transaction](#sentrytransaction)
@@ -269,6 +270,17 @@ The sentry sdk version.
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `7.0.0` |
+
+### sentry.segment.name
+
+The segment name of a span
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `GET /user` |
 
 ### sentry.server_sample_rate
 
