@@ -5559,7 +5559,7 @@ export type SENTRY_SDK_VERSION_TYPE = string;
  *
  * Attribute Value Type: `string` {@link SENTRY_SEGMENT_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *

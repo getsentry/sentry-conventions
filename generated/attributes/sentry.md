@@ -278,7 +278,7 @@ The segment name of a span
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `GET /user` |
 
