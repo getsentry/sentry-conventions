@@ -5552,6 +5552,26 @@ export const SENTRY_SDK_VERSION = 'sentry.sdk.version';
  */
 export type SENTRY_SDK_VERSION_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__segment__name.json
+
+/**
+ * The segment name of a span `sentry.segment.name`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_SEGMENT_NAME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "GET /user"
+ */
+export const SENTRY_SEGMENT_NAME = 'sentry.segment.name';
+
+/**
+ * Type for {@link SENTRY_SEGMENT_NAME} sentry.segment.name
+ */
+export type SENTRY_SEGMENT_NAME_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__server_sample_rate.json
 
 /**
@@ -6500,6 +6520,7 @@ export type Attributes = {
   [SENTRY_SDK_INTEGRATIONS]?: SENTRY_SDK_INTEGRATIONS_TYPE;
   [SENTRY_SDK_NAME]?: SENTRY_SDK_NAME_TYPE;
   [SENTRY_SDK_VERSION]?: SENTRY_SDK_VERSION_TYPE;
+  [SENTRY_SEGMENT_NAME]?: SENTRY_SEGMENT_NAME_TYPE;
   [SENTRY_SERVER_SAMPLE_RATE]?: SENTRY_SERVER_SAMPLE_RATE_TYPE;
   [SENTRY_SPAN_SOURCE]?: SENTRY_SPAN_SOURCE_TYPE;
   [SENTRY_TRANSACTION]?: SENTRY_TRANSACTION_TYPE;
@@ -6802,6 +6823,7 @@ export type FullAttributes = {
   [SENTRY_SDK_INTEGRATIONS]?: SENTRY_SDK_INTEGRATIONS_TYPE;
   [SENTRY_SDK_NAME]?: SENTRY_SDK_NAME_TYPE;
   [SENTRY_SDK_VERSION]?: SENTRY_SDK_VERSION_TYPE;
+  [SENTRY_SEGMENT_NAME]?: SENTRY_SEGMENT_NAME_TYPE;
   [SENTRY_SERVER_SAMPLE_RATE]?: SENTRY_SERVER_SAMPLE_RATE_TYPE;
   [SENTRY_SPAN_SOURCE]?: SENTRY_SPAN_SOURCE_TYPE;
   [SENTRY_TRANSACTION]?: SENTRY_TRANSACTION_TYPE;
