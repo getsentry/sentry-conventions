@@ -32,7 +32,11 @@ function generateAttributeTable(attribute: AttributeJson): string {
   }
 
   if (attribute.deprecation) {
-    table += `| Deprecated | Yes, use \`${attribute.deprecation.replacement}\` instead |\n`;
+    if (attribute.deprecation.replacement) {
+      table += `| Deprecated | Yes, use \`${attribute.deprecation.replacement}\` instead |\n`;
+    } else {
+      table += '| Deprecated | Yes, no replacement exists at this time |\n';
+    }
     if (attribute.deprecation.reason) {
       table += `| Deprecation Reason | ${attribute.deprecation.reason} |\n`;
     }

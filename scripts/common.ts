@@ -10,7 +10,7 @@ export interface AttributeJson {
   is_in_otel: boolean;
   example?: string | boolean | number | string[] | boolean[] | number[];
   deprecation?: {
-    replacement: string;
+    replacement?: string;
     reason?: string;
     _status?: string;
   };

@@ -4369,7 +4369,7 @@ export type NET_SOCK_PEER_ADDR_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  *
- * @deprecated Use {@link } () instead - Deprecated, no replacement at this time
+ * @deprecated No replacement exists at this time - Deprecated in OTEL
  * @example "/var/my.sock"
  */
 export const NET_SOCK_PEER_NAME = 'net.sock.peer.name';

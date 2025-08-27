@@ -189,8 +189,8 @@ Peer address of the network connection - Unix domain socket name
 | Has PII | false |
 | Exists in OpenTelemetry | Yes |
 | Example | `/var/my.sock` |
-| Deprecated | Yes, use `` instead |
-| Deprecation Reason | Deprecated, no replacement at this time |
+| Deprecated | Yes, no replacement exists at this time |
+| Deprecation Reason | Deprecated in OTEL |
 
 ### net.sock.peer.port
 
