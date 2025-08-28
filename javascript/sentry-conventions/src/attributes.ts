@@ -5114,50 +5114,6 @@ export const RPC_SERVICE = 'rpc.service';
  */
 export type RPC_SERVICE_TYPE = string;
 
-// Path: model/attributes/sentry/sentry___internal__span_buffer_old_segment_id.json
-
-/**
- * Used by the span buffer to record the segment ID of the original span in the incoming transaction before reconstruction. `sentry._internal.span_buffer_old_segment_id`
- *
- * Attribute Value Type: `string` {@link SENTRY_INTERNAL_SPAN_BUFFER_OLD_SEGMENT_ID_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * Aliases: {@link _SENTRY_INTERNAL_OLD_SEGMENT_ID} `__sentry_internal_old_segment_id`
- *
- * @example "same"
- */
-export const SENTRY_INTERNAL_SPAN_BUFFER_OLD_SEGMENT_ID = 'sentry._internal.span_buffer_old_segment_id';
-
-/**
- * Type for {@link SENTRY_INTERNAL_SPAN_BUFFER_OLD_SEGMENT_ID} sentry._internal.span_buffer_old_segment_id
- */
-export type SENTRY_INTERNAL_SPAN_BUFFER_OLD_SEGMENT_ID_TYPE = string;
-
-// Path: model/attributes/sentry/sentry___internal__span_buffer_segment_id_outcome.json
-
-/**
- * Used by the span buffer to indicate whether reconstructing the segment resulted in the same segment ID as the original transaction. `sentry._internal.span_buffer_segment_id_outcome`
- *
- * Attribute Value Type: `string` {@link SENTRY_INTERNAL_SPAN_BUFFER_SEGMENT_ID_OUTCOME_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * Aliases: {@link _SENTRY_INTERNAL_SPAN_BUFFER_OUTCOME} `__sentry_internal_span_buffer_outcome`
- *
- * @example "55467cd258e1c"
- */
-export const SENTRY_INTERNAL_SPAN_BUFFER_SEGMENT_ID_OUTCOME = 'sentry._internal.span_buffer_segment_id_outcome';
-
-/**
- * Type for {@link SENTRY_INTERNAL_SPAN_BUFFER_SEGMENT_ID_OUTCOME} sentry._internal.span_buffer_segment_id_outcome
- */
-export type SENTRY_INTERNAL_SPAN_BUFFER_SEGMENT_ID_OUTCOME_TYPE = string;
-
 // Path: model/attributes/sentry/sentry__cancellation_reason.json
 
 /**
@@ -5177,6 +5133,26 @@ export const SENTRY_CANCELLATION_REASON = 'sentry.cancellation_reason';
  * Type for {@link SENTRY_CANCELLATION_REASON} sentry.cancellation_reason
  */
 export type SENTRY_CANCELLATION_REASON_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__client_sample_rate.json
+
+/**
+ * Rate at which a span was sampled in the SDK. `sentry.client_sample_rate`
+ *
+ * Attribute Value Type: `number` {@link SENTRY_CLIENT_SAMPLE_RATE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 0.5
+ */
+export const SENTRY_CLIENT_SAMPLE_RATE = 'sentry.client_sample_rate';
+
+/**
+ * Type for {@link SENTRY_CLIENT_SAMPLE_RATE} sentry.client_sample_rate
+ */
+export type SENTRY_CLIENT_SAMPLE_RATE_TYPE = number;
 
 // Path: model/attributes/sentry/sentry__dist.json
 
@@ -5472,26 +5448,6 @@ export const SENTRY_REPLAY_ID = 'sentry.replay_id';
  */
 export type SENTRY_REPLAY_ID_TYPE = string;
 
-// Path: model/attributes/sentry/sentry__sample_rate.json
-
-/**
- * The sample rate of the span. `sentry.sample_rate`
- *
- * Attribute Value Type: `number` {@link SENTRY_SAMPLE_RATE_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * @example 0.5
- */
-export const SENTRY_SAMPLE_RATE = 'sentry.sample_rate';
-
-/**
- * Type for {@link SENTRY_SAMPLE_RATE} sentry.sample_rate
- */
-export type SENTRY_SAMPLE_RATE_TYPE = number;
-
 // Path: model/attributes/sentry/sentry__sdk__integrations.json
 
 /**
@@ -5551,6 +5507,46 @@ export const SENTRY_SDK_VERSION = 'sentry.sdk.version';
  * Type for {@link SENTRY_SDK_VERSION} sentry.sdk.version
  */
 export type SENTRY_SDK_VERSION_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__segment__name.json
+
+/**
+ * The segment name of a span `sentry.segment.name`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_SEGMENT_NAME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "GET /user"
+ */
+export const SENTRY_SEGMENT_NAME = 'sentry.segment.name';
+
+/**
+ * Type for {@link SENTRY_SEGMENT_NAME} sentry.segment.name
+ */
+export type SENTRY_SEGMENT_NAME_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__server_sample_rate.json
+
+/**
+ * Rate at which a span was sampled in Relay. `sentry.server_sample_rate`
+ *
+ * Attribute Value Type: `number` {@link SENTRY_SERVER_SAMPLE_RATE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 0.5
+ */
+export const SENTRY_SERVER_SAMPLE_RATE = 'sentry.server_sample_rate';
+
+/**
+ * Type for {@link SENTRY_SERVER_SAMPLE_RATE} sentry.server_sample_rate
+ */
+export type SENTRY_SERVER_SAMPLE_RATE_TYPE = number;
 
 // Path: model/attributes/sentry/sentry__span__source.json
 
@@ -6459,9 +6455,8 @@ export type Attributes = {
   [RESOURCE_RENDER_BLOCKING_STATUS]?: RESOURCE_RENDER_BLOCKING_STATUS_TYPE;
   [RPC_GRPC_STATUS_CODE]?: RPC_GRPC_STATUS_CODE_TYPE;
   [RPC_SERVICE]?: RPC_SERVICE_TYPE;
-  [SENTRY_INTERNAL_SPAN_BUFFER_OLD_SEGMENT_ID]?: SENTRY_INTERNAL_SPAN_BUFFER_OLD_SEGMENT_ID_TYPE;
-  [SENTRY_INTERNAL_SPAN_BUFFER_SEGMENT_ID_OUTCOME]?: SENTRY_INTERNAL_SPAN_BUFFER_SEGMENT_ID_OUTCOME_TYPE;
   [SENTRY_CANCELLATION_REASON]?: SENTRY_CANCELLATION_REASON_TYPE;
+  [SENTRY_CLIENT_SAMPLE_RATE]?: SENTRY_CLIENT_SAMPLE_RATE_TYPE;
   [SENTRY_DIST]?: SENTRY_DIST_TYPE;
   [SENTRY_ENVIRONMENT]?: SENTRY_ENVIRONMENT_TYPE;
   [SENTRY_EXCLUSIVE_TIME]?: SENTRY_EXCLUSIVE_TIME_TYPE;
@@ -6476,10 +6471,11 @@ export type Attributes = {
   [SENTRY_PROFILE_ID]?: SENTRY_PROFILE_ID_TYPE;
   [SENTRY_RELEASE]?: SENTRY_RELEASE_TYPE;
   [SENTRY_REPLAY_ID]?: SENTRY_REPLAY_ID_TYPE;
-  [SENTRY_SAMPLE_RATE]?: SENTRY_SAMPLE_RATE_TYPE;
   [SENTRY_SDK_INTEGRATIONS]?: SENTRY_SDK_INTEGRATIONS_TYPE;
   [SENTRY_SDK_NAME]?: SENTRY_SDK_NAME_TYPE;
   [SENTRY_SDK_VERSION]?: SENTRY_SDK_VERSION_TYPE;
+  [SENTRY_SEGMENT_NAME]?: SENTRY_SEGMENT_NAME_TYPE;
+  [SENTRY_SERVER_SAMPLE_RATE]?: SENTRY_SERVER_SAMPLE_RATE_TYPE;
   [SENTRY_SPAN_SOURCE]?: SENTRY_SPAN_SOURCE_TYPE;
   [SENTRY_TRANSACTION]?: SENTRY_TRANSACTION_TYPE;
   [SERVER_ADDRESS]?: SERVER_ADDRESS_TYPE;
@@ -6760,9 +6756,8 @@ export type FullAttributes = {
   [ROUTE]?: ROUTE_TYPE;
   [RPC_GRPC_STATUS_CODE]?: RPC_GRPC_STATUS_CODE_TYPE;
   [RPC_SERVICE]?: RPC_SERVICE_TYPE;
-  [SENTRY_INTERNAL_SPAN_BUFFER_OLD_SEGMENT_ID]?: SENTRY_INTERNAL_SPAN_BUFFER_OLD_SEGMENT_ID_TYPE;
-  [SENTRY_INTERNAL_SPAN_BUFFER_SEGMENT_ID_OUTCOME]?: SENTRY_INTERNAL_SPAN_BUFFER_SEGMENT_ID_OUTCOME_TYPE;
   [SENTRY_CANCELLATION_REASON]?: SENTRY_CANCELLATION_REASON_TYPE;
+  [SENTRY_CLIENT_SAMPLE_RATE]?: SENTRY_CLIENT_SAMPLE_RATE_TYPE;
   [SENTRY_DIST]?: SENTRY_DIST_TYPE;
   [SENTRY_ENVIRONMENT]?: SENTRY_ENVIRONMENT_TYPE;
   [SENTRY_EXCLUSIVE_TIME]?: SENTRY_EXCLUSIVE_TIME_TYPE;
@@ -6777,10 +6772,11 @@ export type FullAttributes = {
   [SENTRY_PROFILE_ID]?: SENTRY_PROFILE_ID_TYPE;
   [SENTRY_RELEASE]?: SENTRY_RELEASE_TYPE;
   [SENTRY_REPLAY_ID]?: SENTRY_REPLAY_ID_TYPE;
-  [SENTRY_SAMPLE_RATE]?: SENTRY_SAMPLE_RATE_TYPE;
   [SENTRY_SDK_INTEGRATIONS]?: SENTRY_SDK_INTEGRATIONS_TYPE;
   [SENTRY_SDK_NAME]?: SENTRY_SDK_NAME_TYPE;
   [SENTRY_SDK_VERSION]?: SENTRY_SDK_VERSION_TYPE;
+  [SENTRY_SEGMENT_NAME]?: SENTRY_SEGMENT_NAME_TYPE;
+  [SENTRY_SERVER_SAMPLE_RATE]?: SENTRY_SERVER_SAMPLE_RATE_TYPE;
   [SENTRY_SPAN_SOURCE]?: SENTRY_SPAN_SOURCE_TYPE;
   [SENTRY_TRANSACTION]?: SENTRY_TRANSACTION_TYPE;
   [SERVER_ADDRESS]?: SERVER_ADDRESS_TYPE;
