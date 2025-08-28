@@ -145,6 +145,7 @@ const createAttribute = async () => {
     validateSchema(attribute);
 
     // Create the directory structure based on the key
+    key = key.replace('<key>', '$key$');
     const parts = key.split('.');
     let filePath: string;
 
