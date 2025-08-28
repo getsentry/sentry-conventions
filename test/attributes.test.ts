@@ -206,7 +206,7 @@ describe('alias group consistency', async () => {
         })
         .join('\n\n');
 
-      throw new Error(`Alias group validation failed:\n\n${errorMessages}`);
+      throw new Error(`Attribute alias relationship should be symmetric:\n\n${errorMessages}`);
     }
   });
 });
