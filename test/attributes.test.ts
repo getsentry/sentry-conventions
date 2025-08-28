@@ -209,4 +209,73 @@ describe('alias group consistency', async () => {
       throw new Error(`Attribute alias relationship should be symmetric:\n\n${errorMessages}`);
     }
   });
+
+  it('should have only one non-deprecated attribute per alias group', () => {
+    // Build alias groups: if X has aliases [Y, Z], then the group is [X, Y, Z]
+    const aliasGroups = new Map<string, Set<string>>();
+    const processedKeys = new Set<string>();
+
+    for (const [key, content] of attributes) {
+      if (processedKeys.has(key)) continue;
+
+      if (!content.alias || content.alias.length === 0) continue;
+
+      // Create the group with the current key and all its aliases
+      const group = new Set([key, ...content.alias]);
+
+      // Mark all keys in this group as processed
+      for (const groupKey of group) {
+        processedKeys.add(groupKey);
+      }
+
+      // Store the group using a canonical key (sorted first key)
+      const canonicalKey = Array.from(group).sort()[0] as string;
+      aliasGroups.set(canonicalKey, group);
+    }
+
+    const failedGroups: Array<{ group: string[]; nonDeprecatedAttributes: string[] }> = [];
+
+    // Validate each group has only one non-deprecated attribute
+    for (const [canonicalKey, group] of aliasGroups) {
+      const groupArray = Array.from(group).sort();
+      const nonDeprecatedAttributes: string[] = [];
+
+      for (const key of groupArray) {
+        const attribute = attributes.get(key);
+        if (!attribute) {
+          // Key doesn't exist, skip validation for this key
+          continue;
+        }
+
+        // If the attribute doesn't have deprecation, it's canonical
+        if (!attribute.deprecation) {
+          nonDeprecatedAttributes.push(key);
+        }
+      }
+
+      if (nonDeprecatedAttributes.length !== 1) {
+        failedGroups.push({
+          group: groupArray,
+          nonDeprecatedAttributes,
+        });
+      }
+    }
+
+    if (failedGroups.length > 0) {
+      const errorMessages = failedGroups
+        .map(({ group, nonDeprecatedAttributes }) => {
+          const groupStr = `[${group.join(', ')}]`;
+          const nonDeprecatedStr =
+            nonDeprecatedAttributes.length === 0
+              ? 'no non-deprecated attributes'
+              : `${nonDeprecatedAttributes.length} non-deprecated attributes: [${nonDeprecatedAttributes.join(', ')}]`;
+          return `Group ${groupStr}\nhas ${nonDeprecatedStr}`;
+        })
+        .join('\n');
+
+      throw new Error(
+        `Each group of attributes that alias to eachother should contain a single non-deprecated attribute.\n\n${errorMessages}`,
+      );
+    }
+  });
 });
