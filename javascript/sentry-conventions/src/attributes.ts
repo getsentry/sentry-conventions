@@ -1,6 +1,6 @@
 // This is an auto-generated file. Do not edit!
 
-// Path: model/attributes/ai/ai__citations.json
+// Path: model/attributes/ai/ai.citations.json
 
 /**
  * References or sources cited by the AI model in its response. `ai.citations`
@@ -20,7 +20,7 @@ export const AI_CITATIONS = 'ai.citations';
  */
 export type AI_CITATIONS_TYPE = Array<string>;
 
-// Path: model/attributes/ai/ai__completion_tokens__used.json
+// Path: model/attributes/ai/ai.completion_tokens.used.json
 
 /**
  * The number of tokens used to respond to the message. `ai.completion_tokens.used`
@@ -43,7 +43,7 @@ export const AI_COMPLETION_TOKENS_USED = 'ai.completion_tokens.used';
  */
 export type AI_COMPLETION_TOKENS_USED_TYPE = number;
 
-// Path: model/attributes/ai/ai__documents.json
+// Path: model/attributes/ai/ai.documents.json
 
 /**
  * Documents or content chunks used as context for the AI model. `ai.documents`
@@ -63,7 +63,7 @@ export const AI_DOCUMENTS = 'ai.documents';
  */
 export type AI_DOCUMENTS_TYPE = Array<string>;
 
-// Path: model/attributes/ai/ai__finish_reason.json
+// Path: model/attributes/ai/ai.finish_reason.json
 
 /**
  * The reason why the model stopped generating. `ai.finish_reason`
@@ -84,7 +84,7 @@ export const AI_FINISH_REASON = 'ai.finish_reason';
  */
 export type AI_FINISH_REASON_TYPE = string;
 
-// Path: model/attributes/ai/ai__frequency_penalty.json
+// Path: model/attributes/ai/ai.frequency_penalty.json
 
 /**
  * Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation. `ai.frequency_penalty`
@@ -105,7 +105,7 @@ export const AI_FREQUENCY_PENALTY = 'ai.frequency_penalty';
  */
 export type AI_FREQUENCY_PENALTY_TYPE = number;
 
-// Path: model/attributes/ai/ai__function_call.json
+// Path: model/attributes/ai/ai.function_call.json
 
 /**
  * For an AI model call, the function that was called. This is deprecated for OpenAI, and replaced by tool_calls `ai.function_call`
@@ -126,7 +126,7 @@ export const AI_FUNCTION_CALL = 'ai.function_call';
  */
 export type AI_FUNCTION_CALL_TYPE = string;
 
-// Path: model/attributes/ai/ai__generation_id.json
+// Path: model/attributes/ai/ai.generation_id.json
 
 /**
  * Unique identifier for the completion. `ai.generation_id`
@@ -147,7 +147,7 @@ export const AI_GENERATION_ID = 'ai.generation_id';
  */
 export type AI_GENERATION_ID_TYPE = string;
 
-// Path: model/attributes/ai/ai__input_messages.json
+// Path: model/attributes/ai/ai.input_messages.json
 
 /**
  * The input messages sent to the model `ai.input_messages`
@@ -170,7 +170,7 @@ export const AI_INPUT_MESSAGES = 'ai.input_messages';
  */
 export type AI_INPUT_MESSAGES_TYPE = string;
 
-// Path: model/attributes/ai/ai__is_search_required.json
+// Path: model/attributes/ai/ai.is_search_required.json
 
 /**
  * Boolean indicating if the model needs to perform a search. `ai.is_search_required`
@@ -190,7 +190,7 @@ export const AI_IS_SEARCH_REQUIRED = 'ai.is_search_required';
  */
 export type AI_IS_SEARCH_REQUIRED_TYPE = boolean;
 
-// Path: model/attributes/ai/ai__metadata.json
+// Path: model/attributes/ai/ai.metadata.json
 
 /**
  * Extra metadata passed to an AI pipeline step. `ai.metadata`
@@ -210,7 +210,7 @@ export const AI_METADATA = 'ai.metadata';
  */
 export type AI_METADATA_TYPE = string;
 
-// Path: model/attributes/ai/ai__model__provider.json
+// Path: model/attributes/ai/ai.model.provider.json
 
 /**
  * The provider of the model. `ai.model.provider`
@@ -231,7 +231,7 @@ export const AI_MODEL_PROVIDER = 'ai.model.provider';
  */
 export type AI_MODEL_PROVIDER_TYPE = string;
 
-// Path: model/attributes/ai/ai__model_id.json
+// Path: model/attributes/ai/ai.model_id.json
 
 /**
  * The vendor-specific ID of the model used. `ai.model_id`
@@ -254,7 +254,7 @@ export const AI_MODEL_ID = 'ai.model_id';
  */
 export type AI_MODEL_ID_TYPE = string;
 
-// Path: model/attributes/ai/ai__pipeline__name.json
+// Path: model/attributes/ai/ai.pipeline.name.json
 
 /**
  * The name of the AI pipeline. `ai.pipeline.name`
@@ -275,7 +275,7 @@ export const AI_PIPELINE_NAME = 'ai.pipeline.name';
  */
 export type AI_PIPELINE_NAME_TYPE = string;
 
-// Path: model/attributes/ai/ai__preamble.json
+// Path: model/attributes/ai/ai.preamble.json
 
 /**
  * For an AI model call, the preamble parameter. Preambles are a part of the prompt used to adjust the model's overall behavior and conversation style. `ai.preamble`
@@ -295,7 +295,7 @@ export const AI_PREAMBLE = 'ai.preamble';
  */
 export type AI_PREAMBLE_TYPE = string;
 
-// Path: model/attributes/ai/ai__presence_penalty.json
+// Path: model/attributes/ai/ai.presence_penalty.json
 
 /**
  * Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies. `ai.presence_penalty`
@@ -316,7 +316,7 @@ export const AI_PRESENCE_PENALTY = 'ai.presence_penalty';
  */
 export type AI_PRESENCE_PENALTY_TYPE = number;
 
-// Path: model/attributes/ai/ai__prompt_tokens__used.json
+// Path: model/attributes/ai/ai.prompt_tokens.used.json
 
 /**
  * The number of tokens used to process just the prompt. `ai.prompt_tokens.used`
@@ -339,7 +339,7 @@ export const AI_PROMPT_TOKENS_USED = 'ai.prompt_tokens.used';
  */
 export type AI_PROMPT_TOKENS_USED_TYPE = number;
 
-// Path: model/attributes/ai/ai__raw_prompting.json
+// Path: model/attributes/ai/ai.raw_prompting.json
 
 /**
  * When enabled, the user’s prompt will be sent to the model without any pre-processing. `ai.raw_prompting`
@@ -359,7 +359,7 @@ export const AI_RAW_PROMPTING = 'ai.raw_prompting';
  */
 export type AI_RAW_PROMPTING_TYPE = boolean;
 
-// Path: model/attributes/ai/ai__response_format.json
+// Path: model/attributes/ai/ai.response_format.json
 
 /**
  * For an AI model call, the format of the response `ai.response_format`
@@ -379,7 +379,7 @@ export const AI_RESPONSE_FORMAT = 'ai.response_format';
  */
 export type AI_RESPONSE_FORMAT_TYPE = string;
 
-// Path: model/attributes/ai/ai__responses.json
+// Path: model/attributes/ai/ai.responses.json
 
 /**
  * The response messages sent back by the AI model. `ai.responses`
@@ -400,7 +400,7 @@ export const AI_RESPONSES = 'ai.responses';
  */
 export type AI_RESPONSES_TYPE = Array<string>;
 
-// Path: model/attributes/ai/ai__search_queries.json
+// Path: model/attributes/ai/ai.search_queries.json
 
 /**
  * Queries used to search for relevant context or documents. `ai.search_queries`
@@ -420,7 +420,7 @@ export const AI_SEARCH_QUERIES = 'ai.search_queries';
  */
 export type AI_SEARCH_QUERIES_TYPE = Array<string>;
 
-// Path: model/attributes/ai/ai__search_results.json
+// Path: model/attributes/ai/ai.search_results.json
 
 /**
  * Results returned from search queries for context. `ai.search_results`
@@ -440,7 +440,7 @@ export const AI_SEARCH_RESULTS = 'ai.search_results';
  */
 export type AI_SEARCH_RESULTS_TYPE = Array<string>;
 
-// Path: model/attributes/ai/ai__seed.json
+// Path: model/attributes/ai/ai.seed.json
 
 /**
  * The seed, ideally models given the same seed and same other parameters will produce the exact same output. `ai.seed`
@@ -461,7 +461,7 @@ export const AI_SEED = 'ai.seed';
  */
 export type AI_SEED_TYPE = string;
 
-// Path: model/attributes/ai/ai__streaming.json
+// Path: model/attributes/ai/ai.streaming.json
 
 /**
  * Whether the request was streamed back. `ai.streaming`
@@ -482,7 +482,7 @@ export const AI_STREAMING = 'ai.streaming';
  */
 export type AI_STREAMING_TYPE = boolean;
 
-// Path: model/attributes/ai/ai__tags.json
+// Path: model/attributes/ai/ai.tags.json
 
 /**
  * Tags that describe an AI pipeline step. `ai.tags`
@@ -502,7 +502,7 @@ export const AI_TAGS = 'ai.tags';
  */
 export type AI_TAGS_TYPE = string;
 
-// Path: model/attributes/ai/ai__temperature.json
+// Path: model/attributes/ai/ai.temperature.json
 
 /**
  * For an AI model call, the temperature parameter. Temperature essentially means how random the output will be. `ai.temperature`
@@ -523,7 +523,7 @@ export const AI_TEMPERATURE = 'ai.temperature';
  */
 export type AI_TEMPERATURE_TYPE = number;
 
-// Path: model/attributes/ai/ai__texts.json
+// Path: model/attributes/ai/ai.texts.json
 
 /**
  * Raw text inputs provided to the model. `ai.texts`
@@ -543,7 +543,7 @@ export const AI_TEXTS = 'ai.texts';
  */
 export type AI_TEXTS_TYPE = Array<string>;
 
-// Path: model/attributes/ai/ai__tool_calls.json
+// Path: model/attributes/ai/ai.tool_calls.json
 
 /**
  * For an AI model call, the tool calls that were made. `ai.tool_calls`
@@ -564,7 +564,7 @@ export const AI_TOOL_CALLS = 'ai.tool_calls';
  */
 export type AI_TOOL_CALLS_TYPE = Array<string>;
 
-// Path: model/attributes/ai/ai__tools.json
+// Path: model/attributes/ai/ai.tools.json
 
 /**
  * For an AI model call, the functions that are available `ai.tools`
@@ -585,7 +585,7 @@ export const AI_TOOLS = 'ai.tools';
  */
 export type AI_TOOLS_TYPE = Array<string>;
 
-// Path: model/attributes/ai/ai__top_k.json
+// Path: model/attributes/ai/ai.top_k.json
 
 /**
  * Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered). `ai.top_k`
@@ -606,7 +606,7 @@ export const AI_TOP_K = 'ai.top_k';
  */
 export type AI_TOP_K_TYPE = number;
 
-// Path: model/attributes/ai/ai__top_p.json
+// Path: model/attributes/ai/ai.top_p.json
 
 /**
  * Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered). `ai.top_p`
@@ -627,7 +627,7 @@ export const AI_TOP_P = 'ai.top_p';
  */
 export type AI_TOP_P_TYPE = number;
 
-// Path: model/attributes/ai/ai__total_cost.json
+// Path: model/attributes/ai/ai.total_cost.json
 
 /**
  * The total cost for the tokens used. `ai.total_cost`
@@ -647,7 +647,7 @@ export const AI_TOTAL_COST = 'ai.total_cost';
  */
 export type AI_TOTAL_COST_TYPE = number;
 
-// Path: model/attributes/ai/ai__total_tokens__used.json
+// Path: model/attributes/ai/ai.total_tokens.used.json
 
 /**
  * The total number of tokens used to process the prompt. `ai.total_tokens.used`
@@ -668,7 +668,7 @@ export const AI_TOTAL_TOKENS_USED = 'ai.total_tokens.used';
  */
 export type AI_TOTAL_TOKENS_USED_TYPE = number;
 
-// Path: model/attributes/ai/ai__warnings.json
+// Path: model/attributes/ai/ai.warnings.json
 
 /**
  * Warning messages generated during model execution. `ai.warnings`
@@ -728,7 +728,7 @@ export const BLOCKED_MAIN_THREAD = 'blocked_main_thread';
  */
 export type BLOCKED_MAIN_THREAD_TYPE = boolean;
 
-// Path: model/attributes/browser/browser__name.json
+// Path: model/attributes/browser/browser.name.json
 
 /**
  * The name of the browser. `browser.name`
@@ -748,7 +748,7 @@ export const BROWSER_NAME = 'browser.name';
  */
 export type BROWSER_NAME_TYPE = string;
 
-// Path: model/attributes/browser/browser__report__type.json
+// Path: model/attributes/browser/browser.report.type.json
 
 /**
  * A browser report sent via reporting API.. `browser.report.type`
@@ -768,7 +768,7 @@ export const BROWSER_REPORT_TYPE = 'browser.report.type';
  */
 export type BROWSER_REPORT_TYPE_TYPE = string;
 
-// Path: model/attributes/browser/browser__script__invoker.json
+// Path: model/attributes/browser/browser.script.invoker.json
 
 /**
  * How a script was called in the browser. `browser.script.invoker`
@@ -788,7 +788,7 @@ export const BROWSER_SCRIPT_INVOKER = 'browser.script.invoker';
  */
 export type BROWSER_SCRIPT_INVOKER_TYPE = string;
 
-// Path: model/attributes/browser/browser__script__invoker_type.json
+// Path: model/attributes/browser/browser.script.invoker_type.json
 
 /**
  * Browser script entry point type. `browser.script.invoker_type`
@@ -808,7 +808,7 @@ export const BROWSER_SCRIPT_INVOKER_TYPE = 'browser.script.invoker_type';
  */
 export type BROWSER_SCRIPT_INVOKER_TYPE_TYPE = string;
 
-// Path: model/attributes/browser/browser__script__source_char_position.json
+// Path: model/attributes/browser/browser.script.source_char_position.json
 
 /**
  * A number representing the script character position of the script. `browser.script.source_char_position`
@@ -828,7 +828,7 @@ export const BROWSER_SCRIPT_SOURCE_CHAR_POSITION = 'browser.script.source_char_p
  */
 export type BROWSER_SCRIPT_SOURCE_CHAR_POSITION_TYPE = number;
 
-// Path: model/attributes/browser/browser__version.json
+// Path: model/attributes/browser/browser.version.json
 
 /**
  * The version of the browser. `browser.version`
@@ -848,7 +848,7 @@ export const BROWSER_VERSION = 'browser.version';
  */
 export type BROWSER_VERSION_TYPE = string;
 
-// Path: model/attributes/cache/cache__hit.json
+// Path: model/attributes/cache/cache.hit.json
 
 /**
  * If the cache was hit during this span. `cache.hit`
@@ -868,7 +868,7 @@ export const CACHE_HIT = 'cache.hit';
  */
 export type CACHE_HIT_TYPE = boolean;
 
-// Path: model/attributes/cache/cache__item_size.json
+// Path: model/attributes/cache/cache.item_size.json
 
 /**
  * The size of the requested item in the cache. In bytes. `cache.item_size`
@@ -888,7 +888,7 @@ export const CACHE_ITEM_SIZE = 'cache.item_size';
  */
 export type CACHE_ITEM_SIZE_TYPE = number;
 
-// Path: model/attributes/cache/cache__key.json
+// Path: model/attributes/cache/cache.key.json
 
 /**
  * The key of the cache accessed. `cache.key`
@@ -908,7 +908,7 @@ export const CACHE_KEY = 'cache.key';
  */
 export type CACHE_KEY_TYPE = Array<string>;
 
-// Path: model/attributes/cache/cache__operation.json
+// Path: model/attributes/cache/cache.operation.json
 
 /**
  * The operation being performed on the cache. `cache.operation`
@@ -928,7 +928,7 @@ export const CACHE_OPERATION = 'cache.operation';
  */
 export type CACHE_OPERATION_TYPE = string;
 
-// Path: model/attributes/cache/cache__ttl.json
+// Path: model/attributes/cache/cache.ttl.json
 
 /**
  * The ttl of the cache in seconds `cache.ttl`
@@ -968,7 +968,7 @@ export const CHANNEL = 'channel';
  */
 export type CHANNEL_TYPE = string;
 
-// Path: model/attributes/client/client__address.json
+// Path: model/attributes/client/client.address.json
 
 /**
  * Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name. `client.address`
@@ -990,7 +990,7 @@ export const CLIENT_ADDRESS = 'client.address';
  */
 export type CLIENT_ADDRESS_TYPE = string;
 
-// Path: model/attributes/client/client__port.json
+// Path: model/attributes/client/client.port.json
 
 /**
  * Client port number. `client.port`
@@ -1010,7 +1010,7 @@ export const CLIENT_PORT = 'client.port';
  */
 export type CLIENT_PORT_TYPE = number;
 
-// Path: model/attributes/cloudflare/cloudflare__d1__duration.json
+// Path: model/attributes/cloudflare/cloudflare.d1.duration.json
 
 /**
  * The duration of a Cloudflare D1 operation. `cloudflare.d1.duration`
@@ -1030,7 +1030,7 @@ export const CLOUDFLARE_D1_DURATION = 'cloudflare.d1.duration';
  */
 export type CLOUDFLARE_D1_DURATION_TYPE = number;
 
-// Path: model/attributes/cloudflare/cloudflare__d1__rows_read.json
+// Path: model/attributes/cloudflare/cloudflare.d1.rows_read.json
 
 /**
  * The number of rows read in a Cloudflare D1 operation. `cloudflare.d1.rows_read`
@@ -1050,7 +1050,7 @@ export const CLOUDFLARE_D1_ROWS_READ = 'cloudflare.d1.rows_read';
  */
 export type CLOUDFLARE_D1_ROWS_READ_TYPE = number;
 
-// Path: model/attributes/cloudflare/cloudflare__d1__rows_written.json
+// Path: model/attributes/cloudflare/cloudflare.d1.rows_written.json
 
 /**
  * The number of rows written in a Cloudflare D1 operation. `cloudflare.d1.rows_written`
@@ -1070,7 +1070,7 @@ export const CLOUDFLARE_D1_ROWS_WRITTEN = 'cloudflare.d1.rows_written';
  */
 export type CLOUDFLARE_D1_ROWS_WRITTEN_TYPE = number;
 
-// Path: model/attributes/code/code__file__path.json
+// Path: model/attributes/code/code.file.path.json
 
 /**
  * The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path). `code.file.path`
@@ -1092,7 +1092,7 @@ export const CODE_FILE_PATH = 'code.file.path';
  */
 export type CODE_FILE_PATH_TYPE = string;
 
-// Path: model/attributes/code/code__filepath.json
+// Path: model/attributes/code/code.filepath.json
 
 /**
  * The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path). `code.filepath`
@@ -1115,7 +1115,7 @@ export const CODE_FILEPATH = 'code.filepath';
  */
 export type CODE_FILEPATH_TYPE = string;
 
-// Path: model/attributes/code/code__function.json
+// Path: model/attributes/code/code.function.json
 
 /**
  * The method or function name, or equivalent (usually rightmost part of the code unit's name). `code.function`
@@ -1138,7 +1138,7 @@ export const CODE_FUNCTION = 'code.function';
  */
 export type CODE_FUNCTION_TYPE = string;
 
-// Path: model/attributes/code/code__function__name.json
+// Path: model/attributes/code/code.function.name.json
 
 /**
  * The method or function name, or equivalent (usually rightmost part of the code unit's name). `code.function.name`
@@ -1160,7 +1160,7 @@ export const CODE_FUNCTION_NAME = 'code.function.name';
  */
 export type CODE_FUNCTION_NAME_TYPE = string;
 
-// Path: model/attributes/code/code__line__number.json
+// Path: model/attributes/code/code.line.number.json
 
 /**
  * The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function `code.line.number`
@@ -1182,7 +1182,7 @@ export const CODE_LINE_NUMBER = 'code.line.number';
  */
 export type CODE_LINE_NUMBER_TYPE = number;
 
-// Path: model/attributes/code/code__lineno.json
+// Path: model/attributes/code/code.lineno.json
 
 /**
  * The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function `code.lineno`
@@ -1205,7 +1205,7 @@ export const CODE_LINENO = 'code.lineno';
  */
 export type CODE_LINENO_TYPE = number;
 
-// Path: model/attributes/code/code__namespace.json
+// Path: model/attributes/code/code.namespace.json
 
 /**
  * The 'namespace' within which code.function is defined. Usually the qualified class or module name, such that code.namespace + some separator + code.function form a unique identifier for the code unit. `code.namespace`
@@ -1226,7 +1226,7 @@ export const CODE_NAMESPACE = 'code.namespace';
  */
 export type CODE_NAMESPACE_TYPE = string;
 
-// Path: model/attributes/db/db__collection__name.json
+// Path: model/attributes/db/db.collection.name.json
 
 /**
  * The name of a collection (table, container) within the database. `db.collection.name`
@@ -1248,7 +1248,7 @@ export const DB_COLLECTION_NAME = 'db.collection.name';
  */
 export type DB_COLLECTION_NAME_TYPE = string;
 
-// Path: model/attributes/db/db__name.json
+// Path: model/attributes/db/db.name.json
 
 /**
  * The name of the database being accessed. `db.name`
@@ -1271,7 +1271,7 @@ export const DB_NAME = 'db.name';
  */
 export type DB_NAME_TYPE = string;
 
-// Path: model/attributes/db/db__namespace.json
+// Path: model/attributes/db/db.namespace.json
 
 /**
  * The name of the database being accessed. `db.namespace`
@@ -1293,7 +1293,7 @@ export const DB_NAMESPACE = 'db.namespace';
  */
 export type DB_NAMESPACE_TYPE = string;
 
-// Path: model/attributes/db/db__operation.json
+// Path: model/attributes/db/db.operation.json
 
 /**
  * The name of the operation being executed. `db.operation`
@@ -1316,7 +1316,7 @@ export const DB_OPERATION = 'db.operation';
  */
 export type DB_OPERATION_TYPE = string;
 
-// Path: model/attributes/db/db__operation__name.json
+// Path: model/attributes/db/db.operation.name.json
 
 /**
  * The name of the operation being executed. `db.operation.name`
@@ -1338,7 +1338,7 @@ export const DB_OPERATION_NAME = 'db.operation.name';
  */
 export type DB_OPERATION_NAME_TYPE = string;
 
-// Path: model/attributes/db/db__query__parameter__$key$.json
+// Path: model/attributes/db/db.query.parameter.$key$.json
 
 /**
  * A query parameter used in db.query.text, with <key> being the parameter name, and the attribute value being a string representation of the parameter value. `db.query.parameter.<key>`
@@ -1360,7 +1360,7 @@ export const DB_QUERY_PARAMETER_KEY = 'db.query.parameter.<key>';
  */
 export type DB_QUERY_PARAMETER_KEY_TYPE = string;
 
-// Path: model/attributes/db/db__query__summary.json
+// Path: model/attributes/db/db.query.summary.json
 
 /**
  * A database query being executed. Should be paramaterized. The full version of the query is in `db.query.text`. `db.query.summary`
@@ -1380,7 +1380,7 @@ export const DB_QUERY_SUMMARY = 'db.query.summary';
  */
 export type DB_QUERY_SUMMARY_TYPE = string;
 
-// Path: model/attributes/db/db__query__text.json
+// Path: model/attributes/db/db.query.text.json
 
 /**
  * The database query being executed. Should be the full query, not a parameterized version. The parameterized version is in `db.query.summary`. `db.query.text`
@@ -1402,7 +1402,7 @@ export const DB_QUERY_TEXT = 'db.query.text';
  */
 export type DB_QUERY_TEXT_TYPE = string;
 
-// Path: model/attributes/db/db__redis__connection.json
+// Path: model/attributes/db/db.redis.connection.json
 
 /**
  * The redis connection name. `db.redis.connection`
@@ -1422,7 +1422,7 @@ export const DB_REDIS_CONNECTION = 'db.redis.connection';
  */
 export type DB_REDIS_CONNECTION_TYPE = string;
 
-// Path: model/attributes/db/db__redis__parameters.json
+// Path: model/attributes/db/db.redis.parameters.json
 
 /**
  * The array of command parameters given to a redis command. `db.redis.parameters`
@@ -1442,7 +1442,7 @@ export const DB_REDIS_PARAMETERS = 'db.redis.parameters';
  */
 export type DB_REDIS_PARAMETERS_TYPE = Array<string>;
 
-// Path: model/attributes/db/db__sql__bindings.json
+// Path: model/attributes/db/db.sql.bindings.json
 
 /**
  * The array of query bindings. `db.sql.bindings`
@@ -1463,7 +1463,7 @@ export const DB_SQL_BINDINGS = 'db.sql.bindings';
  */
 export type DB_SQL_BINDINGS_TYPE = Array<string>;
 
-// Path: model/attributes/db/db__statement.json
+// Path: model/attributes/db/db.statement.json
 
 /**
  * The database statement being executed. `db.statement`
@@ -1486,7 +1486,7 @@ export const DB_STATEMENT = 'db.statement';
  */
 export type DB_STATEMENT_TYPE = string;
 
-// Path: model/attributes/db/db__system.json
+// Path: model/attributes/db/db.system.json
 
 /**
  * An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers. `db.system`
@@ -1509,7 +1509,7 @@ export const DB_SYSTEM = 'db.system';
  */
 export type DB_SYSTEM_TYPE = string;
 
-// Path: model/attributes/db/db__system__name.json
+// Path: model/attributes/db/db.system.name.json
 
 /**
  * An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers. `db.system.name`
@@ -1531,7 +1531,7 @@ export const DB_SYSTEM_NAME = 'db.system.name';
  */
 export type DB_SYSTEM_NAME_TYPE = string;
 
-// Path: model/attributes/db/db__user.json
+// Path: model/attributes/db/db.user.json
 
 /**
  * The database user. `db.user`
@@ -1574,7 +1574,7 @@ export const ENVIRONMENT = 'environment';
  */
 export type ENVIRONMENT_TYPE = string;
 
-// Path: model/attributes/error/error__type.json
+// Path: model/attributes/error/error.type.json
 
 /**
  * Describes a class of error the operation ended with. `error.type`
@@ -1594,7 +1594,7 @@ export const ERROR_TYPE = 'error.type';
  */
 export type ERROR_TYPE_TYPE = string;
 
-// Path: model/attributes/event/event__id.json
+// Path: model/attributes/event/event.id.json
 
 /**
  * The unique identifier for this event (log record) `event.id`
@@ -1614,7 +1614,7 @@ export const EVENT_ID = 'event.id';
  */
 export type EVENT_ID_TYPE = number;
 
-// Path: model/attributes/event/event__name.json
+// Path: model/attributes/event/event.name.json
 
 /**
  * The name that uniquely identifies this event (log record) `event.name`
@@ -1634,7 +1634,7 @@ export const EVENT_NAME = 'event.name';
  */
 export type EVENT_NAME_TYPE = string;
 
-// Path: model/attributes/exception/exception__escaped.json
+// Path: model/attributes/exception/exception.escaped.json
 
 /**
  * SHOULD be set to true if the exception event is recorded at a point where it is known that the exception is escaping the scope of the span. `exception.escaped`
@@ -1654,7 +1654,7 @@ export const EXCEPTION_ESCAPED = 'exception.escaped';
  */
 export type EXCEPTION_ESCAPED_TYPE = boolean;
 
-// Path: model/attributes/exception/exception__message.json
+// Path: model/attributes/exception/exception.message.json
 
 /**
  * The error message. `exception.message`
@@ -1674,7 +1674,7 @@ export const EXCEPTION_MESSAGE = 'exception.message';
  */
 export type EXCEPTION_MESSAGE_TYPE = string;
 
-// Path: model/attributes/exception/exception__stacktrace.json
+// Path: model/attributes/exception/exception.stacktrace.json
 
 /**
  * A stacktrace as a string in the natural representation for the language runtime. The representation is to be determined and documented by each language SIG. `exception.stacktrace`
@@ -1694,7 +1694,7 @@ export const EXCEPTION_STACKTRACE = 'exception.stacktrace';
  */
 export type EXCEPTION_STACKTRACE_TYPE = string;
 
-// Path: model/attributes/exception/exception__type.json
+// Path: model/attributes/exception/exception.type.json
 
 /**
  * The type of the exception (its fully-qualified class name, if applicable). The dynamic type of the exception should be preferred over the static type in languages that support it. `exception.type`
@@ -1714,7 +1714,7 @@ export const EXCEPTION_TYPE = 'exception.type';
  */
 export type EXCEPTION_TYPE_TYPE = string;
 
-// Path: model/attributes/faas/faas__coldstart.json
+// Path: model/attributes/faas/faas.coldstart.json
 
 /**
  * A boolean that is true if the serverless function is executed for the first time (aka cold-start). `faas.coldstart`
@@ -1734,7 +1734,7 @@ export const FAAS_COLDSTART = 'faas.coldstart';
  */
 export type FAAS_COLDSTART_TYPE = boolean;
 
-// Path: model/attributes/faas/faas__cron.json
+// Path: model/attributes/faas/faas.cron.json
 
 /**
  * A string containing the schedule period as Cron Expression. `faas.cron`
@@ -1754,7 +1754,7 @@ export const FAAS_CRON = 'faas.cron';
  */
 export type FAAS_CRON_TYPE = string;
 
-// Path: model/attributes/faas/faas__time.json
+// Path: model/attributes/faas/faas.time.json
 
 /**
  * A string containing the function invocation time in the ISO 8601 format expressed in UTC. `faas.time`
@@ -1774,7 +1774,7 @@ export const FAAS_TIME = 'faas.time';
  */
 export type FAAS_TIME_TYPE = string;
 
-// Path: model/attributes/faas/faas__trigger.json
+// Path: model/attributes/faas/faas.trigger.json
 
 /**
  * Type of the trigger which caused this function invocation. `faas.trigger`
@@ -1794,7 +1794,7 @@ export const FAAS_TRIGGER = 'faas.trigger';
  */
 export type FAAS_TRIGGER_TYPE = string;
 
-// Path: model/attributes/flag/flag__evaluation__$key$.json
+// Path: model/attributes/flag/flag.evaluation.$key$.json
 
 /**
  * An instance of a feature flag evaluation. The value of this attribute is the boolean representing the evaluation result. The <key> suffix is the name of the feature flag. `flag.evaluation.<key>`
@@ -1816,7 +1816,7 @@ export const FLAG_EVALUATION_KEY = 'flag.evaluation.<key>';
  */
 export type FLAG_EVALUATION_KEY_TYPE = boolean;
 
-// Path: model/attributes/frames/frames__delay.json
+// Path: model/attributes/frames/frames.delay.json
 
 /**
  * The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/). `frames.delay`
@@ -1836,7 +1836,7 @@ export const FRAMES_DELAY = 'frames.delay';
  */
 export type FRAMES_DELAY_TYPE = number;
 
-// Path: model/attributes/frames/frames__frozen.json
+// Path: model/attributes/frames/frames.frozen.json
 
 /**
  * The number of frozen frames rendered during the lifetime of the span. `frames.frozen`
@@ -1856,7 +1856,7 @@ export const FRAMES_FROZEN = 'frames.frozen';
  */
 export type FRAMES_FROZEN_TYPE = number;
 
-// Path: model/attributes/frames/frames__slow.json
+// Path: model/attributes/frames/frames.slow.json
 
 /**
  * The number of slow frames rendered during the lifetime of the span. `frames.slow`
@@ -1876,7 +1876,7 @@ export const FRAMES_SLOW = 'frames.slow';
  */
 export type FRAMES_SLOW_TYPE = number;
 
-// Path: model/attributes/frames/frames__total.json
+// Path: model/attributes/frames/frames.total.json
 
 /**
  * The number of total frames rendered during the lifetime of the span. `frames.total`
@@ -1917,7 +1917,7 @@ export const FS_ERROR = 'fs_error';
  */
 export type FS_ERROR_TYPE = string;
 
-// Path: model/attributes/gen_ai/gen_ai__agent__name.json
+// Path: model/attributes/gen_ai/gen_ai.agent.name.json
 
 /**
  * The name of the agent being used. `gen_ai.agent.name`
@@ -1937,7 +1937,7 @@ export const GEN_AI_AGENT_NAME = 'gen_ai.agent.name';
  */
 export type GEN_AI_AGENT_NAME_TYPE = string;
 
-// Path: model/attributes/gen_ai/gen_ai__assistant__message.json
+// Path: model/attributes/gen_ai/gen_ai.assistant.message.json
 
 /**
  * The assistant message passed to the model. `gen_ai.assistant.message`
@@ -1957,7 +1957,7 @@ export const GEN_AI_ASSISTANT_MESSAGE = 'gen_ai.assistant.message';
  */
 export type GEN_AI_ASSISTANT_MESSAGE_TYPE = string;
 
-// Path: model/attributes/gen_ai/gen_ai__choice.json
+// Path: model/attributes/gen_ai/gen_ai.choice.json
 
 /**
  * The model's response message. `gen_ai.choice`
@@ -1977,7 +1977,7 @@ export const GEN_AI_CHOICE = 'gen_ai.choice';
  */
 export type GEN_AI_CHOICE_TYPE = string;
 
-// Path: model/attributes/gen_ai/gen_ai__operation__name.json
+// Path: model/attributes/gen_ai/gen_ai.operation.name.json
 
 /**
  * The name of the operation being performed. `gen_ai.operation.name`
@@ -1997,7 +1997,7 @@ export const GEN_AI_OPERATION_NAME = 'gen_ai.operation.name';
  */
 export type GEN_AI_OPERATION_NAME_TYPE = string;
 
-// Path: model/attributes/gen_ai/gen_ai__pipeline__name.json
+// Path: model/attributes/gen_ai/gen_ai.pipeline.name.json
 
 /**
  * Name of the AI pipeline or chain being executed. `gen_ai.pipeline.name`
@@ -2019,7 +2019,7 @@ export const GEN_AI_PIPELINE_NAME = 'gen_ai.pipeline.name';
  */
 export type GEN_AI_PIPELINE_NAME_TYPE = string;
 
-// Path: model/attributes/gen_ai/gen_ai__prompt.json
+// Path: model/attributes/gen_ai/gen_ai.prompt.json
 
 /**
  * The input messages sent to the model `gen_ai.prompt`
@@ -2039,7 +2039,7 @@ export const GEN_AI_PROMPT = 'gen_ai.prompt';
  */
 export type GEN_AI_PROMPT_TYPE = string;
 
-// Path: model/attributes/gen_ai/gen_ai__request__available_tools.json
+// Path: model/attributes/gen_ai/gen_ai.request.available_tools.json
 
 /**
  * The available tools for the model. It has to be a stringified version of an array of objects. `gen_ai.request.available_tools`
@@ -2059,7 +2059,7 @@ export const GEN_AI_REQUEST_AVAILABLE_TOOLS = 'gen_ai.request.available_tools';
  */
 export type GEN_AI_REQUEST_AVAILABLE_TOOLS_TYPE = string;
 
-// Path: model/attributes/gen_ai/gen_ai__request__frequency_penalty.json
+// Path: model/attributes/gen_ai/gen_ai.request.frequency_penalty.json
 
 /**
  * Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation. `gen_ai.request.frequency_penalty`
@@ -2081,7 +2081,7 @@ export const GEN_AI_REQUEST_FREQUENCY_PENALTY = 'gen_ai.request.frequency_penalt
  */
 export type GEN_AI_REQUEST_FREQUENCY_PENALTY_TYPE = number;
 
-// Path: model/attributes/gen_ai/gen_ai__request__max_tokens.json
+// Path: model/attributes/gen_ai/gen_ai.request.max_tokens.json
 
 /**
  * The maximum number of tokens to generate in the response. `gen_ai.request.max_tokens`
@@ -2101,7 +2101,7 @@ export const GEN_AI_REQUEST_MAX_TOKENS = 'gen_ai.request.max_tokens';
  */
 export type GEN_AI_REQUEST_MAX_TOKENS_TYPE = number;
 
-// Path: model/attributes/gen_ai/gen_ai__request__messages.json
+// Path: model/attributes/gen_ai/gen_ai.request.messages.json
 
 /**
  * The messages passed to the model. It has to be a stringified version of an array of objects. The "content" can be a string or an array of objects. `gen_ai.request.messages`
@@ -2121,7 +2121,7 @@ export const GEN_AI_REQUEST_MESSAGES = 'gen_ai.request.messages';
  */
 export type GEN_AI_REQUEST_MESSAGES_TYPE = string;
 
-// Path: model/attributes/gen_ai/gen_ai__request__model.json
+// Path: model/attributes/gen_ai/gen_ai.request.model.json
 
 /**
  * The model identifier being used for the request. `gen_ai.request.model`
@@ -2141,7 +2141,7 @@ export const GEN_AI_REQUEST_MODEL = 'gen_ai.request.model';
  */
 export type GEN_AI_REQUEST_MODEL_TYPE = string;
 
-// Path: model/attributes/gen_ai/gen_ai__request__presence_penalty.json
+// Path: model/attributes/gen_ai/gen_ai.request.presence_penalty.json
 
 /**
  * Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies. `gen_ai.request.presence_penalty`
@@ -2163,7 +2163,7 @@ export const GEN_AI_REQUEST_PRESENCE_PENALTY = 'gen_ai.request.presence_penalty'
  */
 export type GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE = number;
 
-// Path: model/attributes/gen_ai/gen_ai__request__seed.json
+// Path: model/attributes/gen_ai/gen_ai.request.seed.json
 
 /**
  * The seed, ideally models given the same seed and same other parameters will produce the exact same output. `gen_ai.request.seed`
@@ -2185,7 +2185,7 @@ export const GEN_AI_REQUEST_SEED = 'gen_ai.request.seed';
  */
 export type GEN_AI_REQUEST_SEED_TYPE = string;
 
-// Path: model/attributes/gen_ai/gen_ai__request__temperature.json
+// Path: model/attributes/gen_ai/gen_ai.request.temperature.json
 
 /**
  * For an AI model call, the temperature parameter. Temperature essentially means how random the output will be. `gen_ai.request.temperature`
@@ -2207,7 +2207,7 @@ export const GEN_AI_REQUEST_TEMPERATURE = 'gen_ai.request.temperature';
  */
 export type GEN_AI_REQUEST_TEMPERATURE_TYPE = number;
 
-// Path: model/attributes/gen_ai/gen_ai__request__top_k.json
+// Path: model/attributes/gen_ai/gen_ai.request.top_k.json
 
 /**
  * Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered). `gen_ai.request.top_k`
@@ -2229,7 +2229,7 @@ export const GEN_AI_REQUEST_TOP_K = 'gen_ai.request.top_k';
  */
 export type GEN_AI_REQUEST_TOP_K_TYPE = number;
 
-// Path: model/attributes/gen_ai/gen_ai__request__top_p.json
+// Path: model/attributes/gen_ai/gen_ai.request.top_p.json
 
 /**
  * Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered). `gen_ai.request.top_p`
@@ -2251,7 +2251,7 @@ export const GEN_AI_REQUEST_TOP_P = 'gen_ai.request.top_p';
  */
 export type GEN_AI_REQUEST_TOP_P_TYPE = number;
 
-// Path: model/attributes/gen_ai/gen_ai__response__finish_reasons.json
+// Path: model/attributes/gen_ai/gen_ai.response.finish_reasons.json
 
 /**
  * The reason why the model stopped generating. `gen_ai.response.finish_reasons`
@@ -2273,7 +2273,7 @@ export const GEN_AI_RESPONSE_FINISH_REASONS = 'gen_ai.response.finish_reasons';
  */
 export type GEN_AI_RESPONSE_FINISH_REASONS_TYPE = string;
 
-// Path: model/attributes/gen_ai/gen_ai__response__id.json
+// Path: model/attributes/gen_ai/gen_ai.response.id.json
 
 /**
  * Unique identifier for the completion. `gen_ai.response.id`
@@ -2295,7 +2295,7 @@ export const GEN_AI_RESPONSE_ID = 'gen_ai.response.id';
  */
 export type GEN_AI_RESPONSE_ID_TYPE = string;
 
-// Path: model/attributes/gen_ai/gen_ai__response__model.json
+// Path: model/attributes/gen_ai/gen_ai.response.model.json
 
 /**
  * The vendor-specific ID of the model used. `gen_ai.response.model`
@@ -2317,7 +2317,7 @@ export const GEN_AI_RESPONSE_MODEL = 'gen_ai.response.model';
  */
 export type GEN_AI_RESPONSE_MODEL_TYPE = string;
 
-// Path: model/attributes/gen_ai/gen_ai__response__streaming.json
+// Path: model/attributes/gen_ai/gen_ai.response.streaming.json
 
 /**
  * Whether or not the AI model call's response was streamed back asynchronously `gen_ai.response.streaming`
@@ -2339,7 +2339,7 @@ export const GEN_AI_RESPONSE_STREAMING = 'gen_ai.response.streaming';
  */
 export type GEN_AI_RESPONSE_STREAMING_TYPE = boolean;
 
-// Path: model/attributes/gen_ai/gen_ai__response__text.json
+// Path: model/attributes/gen_ai/gen_ai.response.text.json
 
 /**
  * The model's response text messages. It has to be a stringified version of an array of response text messages. `gen_ai.response.text`
@@ -2359,7 +2359,7 @@ export const GEN_AI_RESPONSE_TEXT = 'gen_ai.response.text';
  */
 export type GEN_AI_RESPONSE_TEXT_TYPE = string;
 
-// Path: model/attributes/gen_ai/gen_ai__response__tokens_per_second.json
+// Path: model/attributes/gen_ai/gen_ai.response.tokens_per_second.json
 
 /**
  * The total output tokens per seconds throughput `gen_ai.response.tokens_per_second`
@@ -2379,7 +2379,7 @@ export const GEN_AI_RESPONSE_TOKENS_PER_SECOND = 'gen_ai.response.tokens_per_sec
  */
 export type GEN_AI_RESPONSE_TOKENS_PER_SECOND_TYPE = number;
 
-// Path: model/attributes/gen_ai/gen_ai__response__tool_calls.json
+// Path: model/attributes/gen_ai/gen_ai.response.tool_calls.json
 
 /**
  * The tool calls in the model's response. It has to be a stringified version of an array of objects. `gen_ai.response.tool_calls`
@@ -2399,7 +2399,7 @@ export const GEN_AI_RESPONSE_TOOL_CALLS = 'gen_ai.response.tool_calls';
  */
 export type GEN_AI_RESPONSE_TOOL_CALLS_TYPE = string;
 
-// Path: model/attributes/gen_ai/gen_ai__system.json
+// Path: model/attributes/gen_ai/gen_ai.system.json
 
 /**
  * The provider of the model. `gen_ai.system`
@@ -2421,7 +2421,7 @@ export const GEN_AI_SYSTEM = 'gen_ai.system';
  */
 export type GEN_AI_SYSTEM_TYPE = string;
 
-// Path: model/attributes/gen_ai/gen_ai__system__message.json
+// Path: model/attributes/gen_ai/gen_ai.system.message.json
 
 /**
  * The system instructions passed to the model. `gen_ai.system.message`
@@ -2441,7 +2441,7 @@ export const GEN_AI_SYSTEM_MESSAGE = 'gen_ai.system.message';
  */
 export type GEN_AI_SYSTEM_MESSAGE_TYPE = string;
 
-// Path: model/attributes/gen_ai/gen_ai__tool__description.json
+// Path: model/attributes/gen_ai/gen_ai.tool.description.json
 
 /**
  * The description of the tool being used. `gen_ai.tool.description`
@@ -2461,7 +2461,7 @@ export const GEN_AI_TOOL_DESCRIPTION = 'gen_ai.tool.description';
  */
 export type GEN_AI_TOOL_DESCRIPTION_TYPE = string;
 
-// Path: model/attributes/gen_ai/gen_ai__tool__input.json
+// Path: model/attributes/gen_ai/gen_ai.tool.input.json
 
 /**
  * The input of the tool being used. It has to be a stringified version of the input to the tool. `gen_ai.tool.input`
@@ -2481,7 +2481,7 @@ export const GEN_AI_TOOL_INPUT = 'gen_ai.tool.input';
  */
 export type GEN_AI_TOOL_INPUT_TYPE = string;
 
-// Path: model/attributes/gen_ai/gen_ai__tool__message.json
+// Path: model/attributes/gen_ai/gen_ai.tool.message.json
 
 /**
  * The response from a tool or function call passed to the model. `gen_ai.tool.message`
@@ -2501,7 +2501,7 @@ export const GEN_AI_TOOL_MESSAGE = 'gen_ai.tool.message';
  */
 export type GEN_AI_TOOL_MESSAGE_TYPE = string;
 
-// Path: model/attributes/gen_ai/gen_ai__tool__name.json
+// Path: model/attributes/gen_ai/gen_ai.tool.name.json
 
 /**
  * Name of the tool utilized by the agent. `gen_ai.tool.name`
@@ -2523,7 +2523,7 @@ export const GEN_AI_TOOL_NAME = 'gen_ai.tool.name';
  */
 export type GEN_AI_TOOL_NAME_TYPE = string;
 
-// Path: model/attributes/gen_ai/gen_ai__tool__output.json
+// Path: model/attributes/gen_ai/gen_ai.tool.output.json
 
 /**
  * The output of the tool being used. It has to be a stringified version of the output of the tool. `gen_ai.tool.output`
@@ -2543,7 +2543,7 @@ export const GEN_AI_TOOL_OUTPUT = 'gen_ai.tool.output';
  */
 export type GEN_AI_TOOL_OUTPUT_TYPE = string;
 
-// Path: model/attributes/gen_ai/gen_ai__tool__type.json
+// Path: model/attributes/gen_ai/gen_ai.tool.type.json
 
 /**
  * The type of tool being used. `gen_ai.tool.type`
@@ -2563,7 +2563,7 @@ export const GEN_AI_TOOL_TYPE = 'gen_ai.tool.type';
  */
 export type GEN_AI_TOOL_TYPE_TYPE = string;
 
-// Path: model/attributes/gen_ai/gen_ai__usage__completion_tokens.json
+// Path: model/attributes/gen_ai/gen_ai.usage.completion_tokens.json
 
 /**
  * The number of tokens used in the GenAI response (completion). `gen_ai.usage.completion_tokens`
@@ -2586,7 +2586,27 @@ export const GEN_AI_USAGE_COMPLETION_TOKENS = 'gen_ai.usage.completion_tokens';
  */
 export type GEN_AI_USAGE_COMPLETION_TOKENS_TYPE = number;
 
-// Path: model/attributes/gen_ai/gen_ai__usage__input_tokens.json
+// Path: model/attributes/gen_ai/gen_ai.usage.input_tokens.cached.json
+
+/**
+ * The number of cached tokens in the input. `gen_ai.usage.input_tokens.cached`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 50
+ */
+export const GEN_AI_USAGE_INPUT_TOKENS_CACHED = 'gen_ai.usage.input_tokens.cached';
+
+/**
+ * Type for {@link GEN_AI_USAGE_INPUT_TOKENS_CACHED} gen_ai.usage.input_tokens.cached
+ */
+export type GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai.usage.input_tokens.json
 
 /**
  * The number of tokens used in the GenAI input (prompt). `gen_ai.usage.input_tokens`
@@ -2608,27 +2628,7 @@ export const GEN_AI_USAGE_INPUT_TOKENS = 'gen_ai.usage.input_tokens';
  */
 export type GEN_AI_USAGE_INPUT_TOKENS_TYPE = number;
 
-// Path: model/attributes/gen_ai/gen_ai__usage__input_tokens__cached.json
-
-/**
- * The number of cached tokens in the input. `gen_ai.usage.input_tokens.cached`
- *
- * Attribute Value Type: `number` {@link GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * @example 50
- */
-export const GEN_AI_USAGE_INPUT_TOKENS_CACHED = 'gen_ai.usage.input_tokens.cached';
-
-/**
- * Type for {@link GEN_AI_USAGE_INPUT_TOKENS_CACHED} gen_ai.usage.input_tokens.cached
- */
-export type GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE = number;
-
-// Path: model/attributes/gen_ai/gen_ai__usage__output_tokens.json
+// Path: model/attributes/gen_ai/gen_ai.usage.output_tokens.json
 
 /**
  * The number of tokens used in the GenAI response (completion). `gen_ai.usage.output_tokens`
@@ -2650,7 +2650,7 @@ export const GEN_AI_USAGE_OUTPUT_TOKENS = 'gen_ai.usage.output_tokens';
  */
 export type GEN_AI_USAGE_OUTPUT_TOKENS_TYPE = number;
 
-// Path: model/attributes/gen_ai/gen_ai__usage__output_tokens__reasoning.json
+// Path: model/attributes/gen_ai/gen_ai.usage.output_tokens.reasoning.json
 
 /**
  * The number of tokens used for reasoning in the output. `gen_ai.usage.output_tokens.reasoning`
@@ -2670,7 +2670,7 @@ export const GEN_AI_USAGE_OUTPUT_TOKENS_REASONING = 'gen_ai.usage.output_tokens.
  */
 export type GEN_AI_USAGE_OUTPUT_TOKENS_REASONING_TYPE = number;
 
-// Path: model/attributes/gen_ai/gen_ai__usage__prompt_tokens.json
+// Path: model/attributes/gen_ai/gen_ai.usage.prompt_tokens.json
 
 /**
  * The number of tokens used in the GenAI input (prompt). `gen_ai.usage.prompt_tokens`
@@ -2693,7 +2693,7 @@ export const GEN_AI_USAGE_PROMPT_TOKENS = 'gen_ai.usage.prompt_tokens';
  */
 export type GEN_AI_USAGE_PROMPT_TOKENS_TYPE = number;
 
-// Path: model/attributes/gen_ai/gen_ai__usage__total_cost.json
+// Path: model/attributes/gen_ai/gen_ai.usage.total_cost.json
 
 /**
  * The total cost for the tokens used. `gen_ai.usage.total_cost`
@@ -2713,7 +2713,7 @@ export const GEN_AI_USAGE_TOTAL_COST = 'gen_ai.usage.total_cost';
  */
 export type GEN_AI_USAGE_TOTAL_COST_TYPE = number;
 
-// Path: model/attributes/gen_ai/gen_ai__usage__total_tokens.json
+// Path: model/attributes/gen_ai/gen_ai.usage.total_tokens.json
 
 /**
  * The total number of tokens used to process the prompt. (input tokens plus output todkens) `gen_ai.usage.total_tokens`
@@ -2735,7 +2735,7 @@ export const GEN_AI_USAGE_TOTAL_TOKENS = 'gen_ai.usage.total_tokens';
  */
 export type GEN_AI_USAGE_TOTAL_TOKENS_TYPE = number;
 
-// Path: model/attributes/gen_ai/gen_ai__user__message.json
+// Path: model/attributes/gen_ai/gen_ai.user.message.json
 
 /**
  * The user message passed to the model. `gen_ai.user.message`
@@ -2755,7 +2755,7 @@ export const GEN_AI_USER_MESSAGE = 'gen_ai.user.message';
  */
 export type GEN_AI_USER_MESSAGE_TYPE = string;
 
-// Path: model/attributes/graphql/graphql__operation__name.json
+// Path: model/attributes/graphql/graphql.operation.name.json
 
 /**
  * The name of the operation being executed. `graphql.operation.name`
@@ -2775,7 +2775,7 @@ export const GRAPHQL_OPERATION_NAME = 'graphql.operation.name';
  */
 export type GRAPHQL_OPERATION_NAME_TYPE = string;
 
-// Path: model/attributes/graphql/graphql__operation__type.json
+// Path: model/attributes/graphql/graphql.operation.type.json
 
 /**
  * The type of the operation being executed. `graphql.operation.type`
@@ -2795,7 +2795,7 @@ export const GRAPHQL_OPERATION_TYPE = 'graphql.operation.type';
  */
 export type GRAPHQL_OPERATION_TYPE_TYPE = string;
 
-// Path: model/attributes/http/http__client_ip.json
+// Path: model/attributes/http/http.client_ip.json
 
 /**
  * Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name. `http.client_ip`
@@ -2818,7 +2818,7 @@ export const HTTP_CLIENT_IP = 'http.client_ip';
  */
 export type HTTP_CLIENT_IP_TYPE = string;
 
-// Path: model/attributes/http/http__decoded_response_content_length.json
+// Path: model/attributes/http/http.decoded_response_content_length.json
 
 /**
  * The decoded body size of the response (in bytes). `http.decoded_response_content_length`
@@ -2838,7 +2838,7 @@ export const HTTP_DECODED_RESPONSE_CONTENT_LENGTH = 'http.decoded_response_conte
  */
 export type HTTP_DECODED_RESPONSE_CONTENT_LENGTH_TYPE = number;
 
-// Path: model/attributes/http/http__flavor.json
+// Path: model/attributes/http/http.flavor.json
 
 /**
  * The actual version of the protocol used for network communication. `http.flavor`
@@ -2861,7 +2861,7 @@ export const HTTP_FLAVOR = 'http.flavor';
  */
 export type HTTP_FLAVOR_TYPE = string;
 
-// Path: model/attributes/http/http__fragment.json
+// Path: model/attributes/http/http.fragment.json
 
 /**
  * The fragments present in the URI. Note that this contains the leading # character, while the `url.fragment` attribute does not. `http.fragment`
@@ -2881,7 +2881,7 @@ export const HTTP_FRAGMENT = 'http.fragment';
  */
 export type HTTP_FRAGMENT_TYPE = string;
 
-// Path: model/attributes/http/http__host.json
+// Path: model/attributes/http/http.host.json
 
 /**
  * The domain name. `http.host`
@@ -2904,7 +2904,7 @@ export const HTTP_HOST = 'http.host';
  */
 export type HTTP_HOST_TYPE = string;
 
-// Path: model/attributes/http/http__method.json
+// Path: model/attributes/http/http.method.json
 
 /**
  * The HTTP method used. `http.method`
@@ -2927,7 +2927,7 @@ export const HTTP_METHOD = 'http.method';
  */
 export type HTTP_METHOD_TYPE = string;
 
-// Path: model/attributes/http/http__query.json
+// Path: model/attributes/http/http.query.json
 
 /**
  * The query string present in the URL. Note that this contains the leading ? character, while the `url.query` attribute does not. `http.query`
@@ -2947,7 +2947,7 @@ export const HTTP_QUERY = 'http.query';
  */
 export type HTTP_QUERY_TYPE = string;
 
-// Path: model/attributes/http/http__request__connect_start.json
+// Path: model/attributes/http/http.request.connect_start.json
 
 /**
  * The UNIX timestamp representing the time immediately before the user agent starts establishing the connection to the server to retrieve the resource. `http.request.connect_start`
@@ -2967,7 +2967,7 @@ export const HTTP_REQUEST_CONNECT_START = 'http.request.connect_start';
  */
 export type HTTP_REQUEST_CONNECT_START_TYPE = number;
 
-// Path: model/attributes/http/http__request__connection_end.json
+// Path: model/attributes/http/http.request.connection_end.json
 
 /**
  * The UNIX timestamp representing the time immediately after the browser finishes establishing the connection to the server to retrieve the resource. The timestamp value includes the time interval to establish the transport connection, as well as other time intervals such as TLS handshake and SOCKS authentication. `http.request.connection_end`
@@ -2987,7 +2987,7 @@ export const HTTP_REQUEST_CONNECTION_END = 'http.request.connection_end';
  */
 export type HTTP_REQUEST_CONNECTION_END_TYPE = number;
 
-// Path: model/attributes/http/http__request__domain_lookup_end.json
+// Path: model/attributes/http/http.request.domain_lookup_end.json
 
 /**
  * The UNIX timestamp representing the time immediately after the browser finishes the domain-name lookup for the resource. `http.request.domain_lookup_end`
@@ -3007,7 +3007,7 @@ export const HTTP_REQUEST_DOMAIN_LOOKUP_END = 'http.request.domain_lookup_end';
  */
 export type HTTP_REQUEST_DOMAIN_LOOKUP_END_TYPE = number;
 
-// Path: model/attributes/http/http__request__domain_lookup_start.json
+// Path: model/attributes/http/http.request.domain_lookup_start.json
 
 /**
  * The UNIX timestamp representing the time immediately before the browser starts the domain name lookup for the resource. `http.request.domain_lookup_start`
@@ -3027,7 +3027,7 @@ export const HTTP_REQUEST_DOMAIN_LOOKUP_START = 'http.request.domain_lookup_star
  */
 export type HTTP_REQUEST_DOMAIN_LOOKUP_START_TYPE = number;
 
-// Path: model/attributes/http/http__request__fetch_start.json
+// Path: model/attributes/http/http.request.fetch_start.json
 
 /**
  * The UNIX timestamp representing the time immediately before the browser starts to fetch the resource. `http.request.fetch_start`
@@ -3047,7 +3047,7 @@ export const HTTP_REQUEST_FETCH_START = 'http.request.fetch_start';
  */
 export type HTTP_REQUEST_FETCH_START_TYPE = number;
 
-// Path: model/attributes/http/http__request__header__$key$.json
+// Path: model/attributes/http/http.request.header.$key$.json
 
 /**
  * HTTP request headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values. `http.request.header.<key>`
@@ -3069,7 +3069,7 @@ export const HTTP_REQUEST_HEADER_KEY = 'http.request.header.<key>';
  */
 export type HTTP_REQUEST_HEADER_KEY_TYPE = Array<string>;
 
-// Path: model/attributes/http/http__request__method.json
+// Path: model/attributes/http/http.request.method.json
 
 /**
  * The HTTP method used. `http.request.method`
@@ -3091,7 +3091,7 @@ export const HTTP_REQUEST_METHOD = 'http.request.method';
  */
 export type HTTP_REQUEST_METHOD_TYPE = string;
 
-// Path: model/attributes/http/http__request__redirect_start.json
+// Path: model/attributes/http/http.request.redirect_start.json
 
 /**
  * The UNIX timestamp representing the start time of the fetch which that initiates the redirect. `http.request.redirect_start`
@@ -3111,7 +3111,7 @@ export const HTTP_REQUEST_REDIRECT_START = 'http.request.redirect_start';
  */
 export type HTTP_REQUEST_REDIRECT_START_TYPE = number;
 
-// Path: model/attributes/http/http__request__request_start.json
+// Path: model/attributes/http/http.request.request_start.json
 
 /**
  * The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request. `http.request.request_start`
@@ -3131,7 +3131,7 @@ export const HTTP_REQUEST_REQUEST_START = 'http.request.request_start';
  */
 export type HTTP_REQUEST_REQUEST_START_TYPE = number;
 
-// Path: model/attributes/http/http__request__resend_count.json
+// Path: model/attributes/http/http.request.resend_count.json
 
 /**
  * The ordinal number of request resending attempt (for any reason, including redirects). `http.request.resend_count`
@@ -3151,7 +3151,7 @@ export const HTTP_REQUEST_RESEND_COUNT = 'http.request.resend_count';
  */
 export type HTTP_REQUEST_RESEND_COUNT_TYPE = number;
 
-// Path: model/attributes/http/http__request__response_end.json
+// Path: model/attributes/http/http.request.response_end.json
 
 /**
  * The UNIX timestamp representing the time immediately after the browser receives the last byte of the resource or immediately before the transport connection is closed, whichever comes first. `http.request.response_end`
@@ -3171,7 +3171,7 @@ export const HTTP_REQUEST_RESPONSE_END = 'http.request.response_end';
  */
 export type HTTP_REQUEST_RESPONSE_END_TYPE = number;
 
-// Path: model/attributes/http/http__request__response_start.json
+// Path: model/attributes/http/http.request.response_start.json
 
 /**
  * The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request. `http.request.response_start`
@@ -3191,7 +3191,7 @@ export const HTTP_REQUEST_RESPONSE_START = 'http.request.response_start';
  */
 export type HTTP_REQUEST_RESPONSE_START_TYPE = number;
 
-// Path: model/attributes/http/http__request__secure_connection_start.json
+// Path: model/attributes/http/http.request.secure_connection_start.json
 
 /**
  * The UNIX timestamp representing the time immediately before the browser starts the handshake process to secure the current connection. If a secure connection is not used, the property returns zero. `http.request.secure_connection_start`
@@ -3211,7 +3211,7 @@ export const HTTP_REQUEST_SECURE_CONNECTION_START = 'http.request.secure_connect
  */
 export type HTTP_REQUEST_SECURE_CONNECTION_START_TYPE = number;
 
-// Path: model/attributes/http/http__response__body__size.json
+// Path: model/attributes/http/http.response.body.size.json
 
 /**
  * The encoded body size of the response (in bytes). `http.response.body.size`
@@ -3233,7 +3233,7 @@ export const HTTP_RESPONSE_BODY_SIZE = 'http.response.body.size';
  */
 export type HTTP_RESPONSE_BODY_SIZE_TYPE = number;
 
-// Path: model/attributes/http/http__response__header__$key$.json
+// Path: model/attributes/http/http.response.header.$key$.json
 
 /**
  * HTTP response headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values. `http.response.header.<key>`
@@ -3255,7 +3255,7 @@ export const HTTP_RESPONSE_HEADER_KEY = 'http.response.header.<key>';
  */
 export type HTTP_RESPONSE_HEADER_KEY_TYPE = Array<string>;
 
-// Path: model/attributes/http/http__response__header__content-length.json
+// Path: model/attributes/http/http.response.header.content-length.json
 
 /**
  * The size of the message body sent to the recipient (in bytes) `http.response.header.content-length`
@@ -3277,7 +3277,7 @@ export const HTTP_RESPONSE_HEADER_CONTENT_LENGTH = 'http.response.header.content
  */
 export type HTTP_RESPONSE_HEADER_CONTENT_LENGTH_TYPE = string;
 
-// Path: model/attributes/http/http__response__size.json
+// Path: model/attributes/http/http.response.size.json
 
 /**
  * The transfer size of the response (in bytes). `http.response.size`
@@ -3299,7 +3299,7 @@ export const HTTP_RESPONSE_SIZE = 'http.response.size';
  */
 export type HTTP_RESPONSE_SIZE_TYPE = number;
 
-// Path: model/attributes/http/http__response__status_code.json
+// Path: model/attributes/http/http.response.status_code.json
 
 /**
  * The status code of the HTTP response. `http.response.status_code`
@@ -3321,7 +3321,7 @@ export const HTTP_RESPONSE_STATUS_CODE = 'http.response.status_code';
  */
 export type HTTP_RESPONSE_STATUS_CODE_TYPE = number;
 
-// Path: model/attributes/http/http__response_content_length.json
+// Path: model/attributes/http/http.response_content_length.json
 
 /**
  * The encoded body size of the response (in bytes). `http.response_content_length`
@@ -3344,7 +3344,7 @@ export const HTTP_RESPONSE_CONTENT_LENGTH = 'http.response_content_length';
  */
 export type HTTP_RESPONSE_CONTENT_LENGTH_TYPE = number;
 
-// Path: model/attributes/http/http__response_transfer_size.json
+// Path: model/attributes/http/http.response_transfer_size.json
 
 /**
  * The transfer size of the response (in bytes). `http.response_transfer_size`
@@ -3367,7 +3367,7 @@ export const HTTP_RESPONSE_TRANSFER_SIZE = 'http.response_transfer_size';
  */
 export type HTTP_RESPONSE_TRANSFER_SIZE_TYPE = number;
 
-// Path: model/attributes/http/http__route.json
+// Path: model/attributes/http/http.route.json
 
 /**
  * The matched route, that is, the path template in the format used by the respective server framework. `http.route`
@@ -3389,7 +3389,7 @@ export const HTTP_ROUTE = 'http.route';
  */
 export type HTTP_ROUTE_TYPE = string;
 
-// Path: model/attributes/http/http__scheme.json
+// Path: model/attributes/http/http.scheme.json
 
 /**
  * The URI scheme component identifying the used protocol. `http.scheme`
@@ -3412,7 +3412,7 @@ export const HTTP_SCHEME = 'http.scheme';
  */
 export type HTTP_SCHEME_TYPE = string;
 
-// Path: model/attributes/http/http__server_name.json
+// Path: model/attributes/http/http.server_name.json
 
 /**
  * The server domain name `http.server_name`
@@ -3435,7 +3435,7 @@ export const HTTP_SERVER_NAME = 'http.server_name';
  */
 export type HTTP_SERVER_NAME_TYPE = string;
 
-// Path: model/attributes/http/http__status_code.json
+// Path: model/attributes/http/http.status_code.json
 
 /**
  * The status code of the HTTP response. `http.status_code`
@@ -3458,7 +3458,7 @@ export const HTTP_STATUS_CODE = 'http.status_code';
  */
 export type HTTP_STATUS_CODE_TYPE = number;
 
-// Path: model/attributes/http/http__target.json
+// Path: model/attributes/http/http.target.json
 
 /**
  * The pathname and query string of the URL. `http.target`
@@ -3479,7 +3479,7 @@ export const HTTP_TARGET = 'http.target';
  */
 export type HTTP_TARGET_TYPE = string;
 
-// Path: model/attributes/http/http__url.json
+// Path: model/attributes/http/http.url.json
 
 /**
  * The URL of the resource that was fetched. `http.url`
@@ -3502,7 +3502,7 @@ export const HTTP_URL = 'http.url';
  */
 export type HTTP_URL_TYPE = string;
 
-// Path: model/attributes/http/http__user_agent.json
+// Path: model/attributes/http/http.user_agent.json
 
 /**
  * Value of the HTTP User-Agent header sent by the client. `http.user_agent`
@@ -3545,7 +3545,7 @@ export const ID = 'id';
  */
 export type ID_TYPE = string;
 
-// Path: model/attributes/jvm/jvm__gc__action.json
+// Path: model/attributes/jvm/jvm.gc.action.json
 
 /**
  * Name of the garbage collector action. `jvm.gc.action`
@@ -3565,7 +3565,7 @@ export const JVM_GC_ACTION = 'jvm.gc.action';
  */
 export type JVM_GC_ACTION_TYPE = string;
 
-// Path: model/attributes/jvm/jvm__gc__name.json
+// Path: model/attributes/jvm/jvm.gc.name.json
 
 /**
  * Name of the garbage collector. `jvm.gc.name`
@@ -3585,7 +3585,7 @@ export const JVM_GC_NAME = 'jvm.gc.name';
  */
 export type JVM_GC_NAME_TYPE = string;
 
-// Path: model/attributes/jvm/jvm__memory__pool__name.json
+// Path: model/attributes/jvm/jvm.memory.pool.name.json
 
 /**
  * Name of the memory pool. `jvm.memory.pool.name`
@@ -3605,7 +3605,7 @@ export const JVM_MEMORY_POOL_NAME = 'jvm.memory.pool.name';
  */
 export type JVM_MEMORY_POOL_NAME_TYPE = string;
 
-// Path: model/attributes/jvm/jvm__memory__type.json
+// Path: model/attributes/jvm/jvm.memory.type.json
 
 /**
  * Name of the memory pool. `jvm.memory.type`
@@ -3625,7 +3625,7 @@ export const JVM_MEMORY_TYPE = 'jvm.memory.type';
  */
 export type JVM_MEMORY_TYPE_TYPE = string;
 
-// Path: model/attributes/jvm/jvm__thread__daemon.json
+// Path: model/attributes/jvm/jvm.thread.daemon.json
 
 /**
  * Whether the thread is daemon or not. `jvm.thread.daemon`
@@ -3645,7 +3645,7 @@ export const JVM_THREAD_DAEMON = 'jvm.thread.daemon';
  */
 export type JVM_THREAD_DAEMON_TYPE = boolean;
 
-// Path: model/attributes/jvm/jvm__thread__state.json
+// Path: model/attributes/jvm/jvm.thread.state.json
 
 /**
  * State of the thread. `jvm.thread.state`
@@ -3665,7 +3665,7 @@ export const JVM_THREAD_STATE = 'jvm.thread.state';
  */
 export type JVM_THREAD_STATE_TYPE = string;
 
-// Path: model/attributes/lcp/lcp__element.json
+// Path: model/attributes/lcp/lcp.element.json
 
 /**
  * The dom element responsible for the largest contentful paint. `lcp.element`
@@ -3685,7 +3685,7 @@ export const LCP_ELEMENT = 'lcp.element';
  */
 export type LCP_ELEMENT_TYPE = string;
 
-// Path: model/attributes/lcp/lcp__id.json
+// Path: model/attributes/lcp/lcp.id.json
 
 /**
  * The id of the dom element responsible for the largest contentful paint. `lcp.id`
@@ -3705,7 +3705,7 @@ export const LCP_ID = 'lcp.id';
  */
 export type LCP_ID_TYPE = string;
 
-// Path: model/attributes/lcp/lcp__size.json
+// Path: model/attributes/lcp/lcp.size.json
 
 /**
  * The size of the largest contentful paint element. `lcp.size`
@@ -3725,7 +3725,7 @@ export const LCP_SIZE = 'lcp.size';
  */
 export type LCP_SIZE_TYPE = number;
 
-// Path: model/attributes/lcp/lcp__url.json
+// Path: model/attributes/lcp/lcp.url.json
 
 /**
  * The url of the dom element responsible for the largest contentful paint. `lcp.url`
@@ -3745,7 +3745,7 @@ export const LCP_URL = 'lcp.url';
  */
 export type LCP_URL_TYPE = string;
 
-// Path: model/attributes/logger/logger__name.json
+// Path: model/attributes/logger/logger.name.json
 
 /**
  * The name of the logger that generated this event. `logger.name`
@@ -3765,7 +3765,7 @@ export const LOGGER_NAME = 'logger.name';
  */
 export type LOGGER_NAME_TYPE = string;
 
-// Path: model/attributes/messaging/messaging__destination__connection.json
+// Path: model/attributes/messaging/messaging.destination.connection.json
 
 /**
  * The message destination connection. `messaging.destination.connection`
@@ -3785,7 +3785,7 @@ export const MESSAGING_DESTINATION_CONNECTION = 'messaging.destination.connectio
  */
 export type MESSAGING_DESTINATION_CONNECTION_TYPE = string;
 
-// Path: model/attributes/messaging/messaging__destination__name.json
+// Path: model/attributes/messaging/messaging.destination.name.json
 
 /**
  * The message destination name. `messaging.destination.name`
@@ -3805,7 +3805,7 @@ export const MESSAGING_DESTINATION_NAME = 'messaging.destination.name';
  */
 export type MESSAGING_DESTINATION_NAME_TYPE = string;
 
-// Path: model/attributes/messaging/messaging__message__body__size.json
+// Path: model/attributes/messaging/messaging.message.body.size.json
 
 /**
  * The size of the message body in bytes. `messaging.message.body.size`
@@ -3825,7 +3825,7 @@ export const MESSAGING_MESSAGE_BODY_SIZE = 'messaging.message.body.size';
  */
 export type MESSAGING_MESSAGE_BODY_SIZE_TYPE = number;
 
-// Path: model/attributes/messaging/messaging__message__envelope__size.json
+// Path: model/attributes/messaging/messaging.message.envelope.size.json
 
 /**
  * The size of the message body and metadata in bytes. `messaging.message.envelope.size`
@@ -3845,7 +3845,7 @@ export const MESSAGING_MESSAGE_ENVELOPE_SIZE = 'messaging.message.envelope.size'
  */
 export type MESSAGING_MESSAGE_ENVELOPE_SIZE_TYPE = number;
 
-// Path: model/attributes/messaging/messaging__message__id.json
+// Path: model/attributes/messaging/messaging.message.id.json
 
 /**
  * A value used by the messaging system as an identifier for the message, represented as a string. `messaging.message.id`
@@ -3865,7 +3865,7 @@ export const MESSAGING_MESSAGE_ID = 'messaging.message.id';
  */
 export type MESSAGING_MESSAGE_ID_TYPE = string;
 
-// Path: model/attributes/messaging/messaging__message__receive__latency.json
+// Path: model/attributes/messaging/messaging.message.receive.latency.json
 
 /**
  * The latency between when the message was published and received. `messaging.message.receive.latency`
@@ -3885,7 +3885,7 @@ export const MESSAGING_MESSAGE_RECEIVE_LATENCY = 'messaging.message.receive.late
  */
 export type MESSAGING_MESSAGE_RECEIVE_LATENCY_TYPE = number;
 
-// Path: model/attributes/messaging/messaging__message__retry__count.json
+// Path: model/attributes/messaging/messaging.message.retry.count.json
 
 /**
  * The amount of attempts to send the message. `messaging.message.retry.count`
@@ -3905,7 +3905,7 @@ export const MESSAGING_MESSAGE_RETRY_COUNT = 'messaging.message.retry.count';
  */
 export type MESSAGING_MESSAGE_RETRY_COUNT_TYPE = number;
 
-// Path: model/attributes/messaging/messaging__operation__type.json
+// Path: model/attributes/messaging/messaging.operation.type.json
 
 /**
  * A string identifying the type of the messaging operation `messaging.operation.type`
@@ -3925,7 +3925,7 @@ export const MESSAGING_OPERATION_TYPE = 'messaging.operation.type';
  */
 export type MESSAGING_OPERATION_TYPE_TYPE = string;
 
-// Path: model/attributes/messaging/messaging__system.json
+// Path: model/attributes/messaging/messaging.system.json
 
 /**
  * The messaging system as identified by the client instrumentation. `messaging.system`
@@ -3968,7 +3968,7 @@ export const METHOD = 'method';
  */
 export type METHOD_TYPE = string;
 
-// Path: model/attributes/navigation/navigation__type.json
+// Path: model/attributes/navigation/navigation.type.json
 
 /**
  * The type of navigation done by a client-side router. `navigation.type`
@@ -3988,7 +3988,7 @@ export const NAVIGATION_TYPE = 'navigation.type';
  */
 export type NAVIGATION_TYPE_TYPE = string;
 
-// Path: model/attributes/nel/nel__elapsed_time.json
+// Path: model/attributes/nel/nel.elapsed_time.json
 
 /**
  * The elapsed number of milliseconds between the start of the resource fetch and when it was completed or aborted by the user agent. `nel.elapsed_time`
@@ -4008,7 +4008,7 @@ export const NEL_ELAPSED_TIME = 'nel.elapsed_time';
  */
 export type NEL_ELAPSED_TIME_TYPE = number;
 
-// Path: model/attributes/nel/nel__phase.json
+// Path: model/attributes/nel/nel.phase.json
 
 /**
  * If request failed, the phase of its network error. If request succeeded, "application". `nel.phase`
@@ -4028,7 +4028,7 @@ export const NEL_PHASE = 'nel.phase';
  */
 export type NEL_PHASE_TYPE = string;
 
-// Path: model/attributes/nel/nel__referrer.json
+// Path: model/attributes/nel/nel.referrer.json
 
 /**
  * request's referrer, as determined by the referrer policy associated with its client. `nel.referrer`
@@ -4048,7 +4048,7 @@ export const NEL_REFERRER = 'nel.referrer';
  */
 export type NEL_REFERRER_TYPE = string;
 
-// Path: model/attributes/nel/nel__sampling_function.json
+// Path: model/attributes/nel/nel.sampling_function.json
 
 /**
  * The sampling function used to determine if the request should be sampled. `nel.sampling_function`
@@ -4068,7 +4068,7 @@ export const NEL_SAMPLING_FUNCTION = 'nel.sampling_function';
  */
 export type NEL_SAMPLING_FUNCTION_TYPE = number;
 
-// Path: model/attributes/nel/nel__type.json
+// Path: model/attributes/nel/nel.type.json
 
 /**
  * If request failed, the type of its network error. If request succeeded, "ok". `nel.type`
@@ -4088,7 +4088,7 @@ export const NEL_TYPE = 'nel.type';
  */
 export type NEL_TYPE_TYPE = string;
 
-// Path: model/attributes/net/net__host__ip.json
+// Path: model/attributes/net/net.host.ip.json
 
 /**
  * Local address of the network connection - IP address or Unix domain socket name. `net.host.ip`
@@ -4111,7 +4111,7 @@ export const NET_HOST_IP = 'net.host.ip';
  */
 export type NET_HOST_IP_TYPE = string;
 
-// Path: model/attributes/net/net__host__name.json
+// Path: model/attributes/net/net.host.name.json
 
 /**
  * Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name. `net.host.name`
@@ -4134,7 +4134,7 @@ export const NET_HOST_NAME = 'net.host.name';
  */
 export type NET_HOST_NAME_TYPE = string;
 
-// Path: model/attributes/net/net__host__port.json
+// Path: model/attributes/net/net.host.port.json
 
 /**
  * Server port number. `net.host.port`
@@ -4157,7 +4157,7 @@ export const NET_HOST_PORT = 'net.host.port';
  */
 export type NET_HOST_PORT_TYPE = number;
 
-// Path: model/attributes/net/net__peer__ip.json
+// Path: model/attributes/net/net.peer.ip.json
 
 /**
  * Peer address of the network connection - IP address or Unix domain socket name. `net.peer.ip`
@@ -4180,7 +4180,7 @@ export const NET_PEER_IP = 'net.peer.ip';
  */
 export type NET_PEER_IP_TYPE = string;
 
-// Path: model/attributes/net/net__peer__name.json
+// Path: model/attributes/net/net.peer.name.json
 
 /**
  * Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name. `net.peer.name`
@@ -4201,7 +4201,7 @@ export const NET_PEER_NAME = 'net.peer.name';
  */
 export type NET_PEER_NAME_TYPE = string;
 
-// Path: model/attributes/net/net__peer__port.json
+// Path: model/attributes/net/net.peer.port.json
 
 /**
  * Peer port number. `net.peer.port`
@@ -4222,7 +4222,7 @@ export const NET_PEER_PORT = 'net.peer.port';
  */
 export type NET_PEER_PORT_TYPE = number;
 
-// Path: model/attributes/net/net__protocol__name.json
+// Path: model/attributes/net/net.protocol.name.json
 
 /**
  * OSI application layer or non-OSI equivalent. `net.protocol.name`
@@ -4245,7 +4245,7 @@ export const NET_PROTOCOL_NAME = 'net.protocol.name';
  */
 export type NET_PROTOCOL_NAME_TYPE = string;
 
-// Path: model/attributes/net/net__protocol__version.json
+// Path: model/attributes/net/net.protocol.version.json
 
 /**
  * The actual version of the protocol used for network communication. `net.protocol.version`
@@ -4268,7 +4268,7 @@ export const NET_PROTOCOL_VERSION = 'net.protocol.version';
  */
 export type NET_PROTOCOL_VERSION_TYPE = string;
 
-// Path: model/attributes/net/net__sock__family.json
+// Path: model/attributes/net/net.sock.family.json
 
 /**
  * OSI transport and network layer `net.sock.family`
@@ -4289,7 +4289,7 @@ export const NET_SOCK_FAMILY = 'net.sock.family';
  */
 export type NET_SOCK_FAMILY_TYPE = string;
 
-// Path: model/attributes/net/net__sock__host__addr.json
+// Path: model/attributes/net/net.sock.host.addr.json
 
 /**
  * Local address of the network connection mapping to Unix domain socket name. `net.sock.host.addr`
@@ -4312,7 +4312,7 @@ export const NET_SOCK_HOST_ADDR = 'net.sock.host.addr';
  */
 export type NET_SOCK_HOST_ADDR_TYPE = string;
 
-// Path: model/attributes/net/net__sock__host__port.json
+// Path: model/attributes/net/net.sock.host.port.json
 
 /**
  * Local port number of the network connection. `net.sock.host.port`
@@ -4335,7 +4335,7 @@ export const NET_SOCK_HOST_PORT = 'net.sock.host.port';
  */
 export type NET_SOCK_HOST_PORT_TYPE = number;
 
-// Path: model/attributes/net/net__sock__peer__addr.json
+// Path: model/attributes/net/net.sock.peer.addr.json
 
 /**
  * Peer address of the network connection - IP address `net.sock.peer.addr`
@@ -4358,7 +4358,7 @@ export const NET_SOCK_PEER_ADDR = 'net.sock.peer.addr';
  */
 export type NET_SOCK_PEER_ADDR_TYPE = string;
 
-// Path: model/attributes/net/net__sock__peer__name.json
+// Path: model/attributes/net/net.sock.peer.name.json
 
 /**
  * Peer address of the network connection - Unix domain socket name `net.sock.peer.name`
@@ -4379,7 +4379,7 @@ export const NET_SOCK_PEER_NAME = 'net.sock.peer.name';
  */
 export type NET_SOCK_PEER_NAME_TYPE = string;
 
-// Path: model/attributes/net/net__sock__peer__port.json
+// Path: model/attributes/net/net.sock.peer.port.json
 
 /**
  * Peer port number of the network connection. `net.sock.peer.port`
@@ -4400,7 +4400,7 @@ export const NET_SOCK_PEER_PORT = 'net.sock.peer.port';
  */
 export type NET_SOCK_PEER_PORT_TYPE = number;
 
-// Path: model/attributes/net/net__transport.json
+// Path: model/attributes/net/net.transport.json
 
 /**
  * OSI transport layer or inter-process communication method. `net.transport`
@@ -4423,7 +4423,7 @@ export const NET_TRANSPORT = 'net.transport';
  */
 export type NET_TRANSPORT_TYPE = string;
 
-// Path: model/attributes/network/network__local__address.json
+// Path: model/attributes/network/network.local.address.json
 
 /**
  * Local address of the network connection - IP address or Unix domain socket name. `network.local.address`
@@ -4445,7 +4445,7 @@ export const NETWORK_LOCAL_ADDRESS = 'network.local.address';
  */
 export type NETWORK_LOCAL_ADDRESS_TYPE = string;
 
-// Path: model/attributes/network/network__local__port.json
+// Path: model/attributes/network/network.local.port.json
 
 /**
  * Local port number of the network connection. `network.local.port`
@@ -4467,7 +4467,7 @@ export const NETWORK_LOCAL_PORT = 'network.local.port';
  */
 export type NETWORK_LOCAL_PORT_TYPE = number;
 
-// Path: model/attributes/network/network__peer__address.json
+// Path: model/attributes/network/network.peer.address.json
 
 /**
  * Peer address of the network connection - IP address or Unix domain socket name. `network.peer.address`
@@ -4487,7 +4487,7 @@ export const NETWORK_PEER_ADDRESS = 'network.peer.address';
  */
 export type NETWORK_PEER_ADDRESS_TYPE = string;
 
-// Path: model/attributes/network/network__peer__port.json
+// Path: model/attributes/network/network.peer.port.json
 
 /**
  * Peer port number of the network connection. `network.peer.port`
@@ -4507,7 +4507,7 @@ export const NETWORK_PEER_PORT = 'network.peer.port';
  */
 export type NETWORK_PEER_PORT_TYPE = number;
 
-// Path: model/attributes/network/network__protocol__name.json
+// Path: model/attributes/network/network.protocol.name.json
 
 /**
  * OSI application layer or non-OSI equivalent. `network.protocol.name`
@@ -4529,7 +4529,7 @@ export const NETWORK_PROTOCOL_NAME = 'network.protocol.name';
  */
 export type NETWORK_PROTOCOL_NAME_TYPE = string;
 
-// Path: model/attributes/network/network__protocol__version.json
+// Path: model/attributes/network/network.protocol.version.json
 
 /**
  * The actual version of the protocol used for network communication. `network.protocol.version`
@@ -4551,7 +4551,7 @@ export const NETWORK_PROTOCOL_VERSION = 'network.protocol.version';
  */
 export type NETWORK_PROTOCOL_VERSION_TYPE = string;
 
-// Path: model/attributes/network/network__transport.json
+// Path: model/attributes/network/network.transport.json
 
 /**
  * OSI transport layer or inter-process communication method. `network.transport`
@@ -4573,7 +4573,7 @@ export const NETWORK_TRANSPORT = 'network.transport';
  */
 export type NETWORK_TRANSPORT_TYPE = string;
 
-// Path: model/attributes/network/network__type.json
+// Path: model/attributes/network/network.type.json
 
 /**
  * OSI network layer or non-OSI equivalent. `network.type`
@@ -4593,7 +4593,7 @@ export const NETWORK_TYPE = 'network.type';
  */
 export type NETWORK_TYPE_TYPE = string;
 
-// Path: model/attributes/os/os__build_id.json
+// Path: model/attributes/os/os.build_id.json
 
 /**
  * The build ID of the operating system. `os.build_id`
@@ -4613,7 +4613,7 @@ export const OS_BUILD_ID = 'os.build_id';
  */
 export type OS_BUILD_ID_TYPE = string;
 
-// Path: model/attributes/os/os__description.json
+// Path: model/attributes/os/os.description.json
 
 /**
  * Human readable (not intended to be parsed) OS version information, like e.g. reported by ver or lsb_release -a commands. `os.description`
@@ -4633,7 +4633,7 @@ export const OS_DESCRIPTION = 'os.description';
  */
 export type OS_DESCRIPTION_TYPE = string;
 
-// Path: model/attributes/os/os__name.json
+// Path: model/attributes/os/os.name.json
 
 /**
  * Human readable operating system name. `os.name`
@@ -4653,7 +4653,7 @@ export const OS_NAME = 'os.name';
  */
 export type OS_NAME_TYPE = string;
 
-// Path: model/attributes/os/os__type.json
+// Path: model/attributes/os/os.type.json
 
 /**
  * The operating system type. `os.type`
@@ -4673,7 +4673,7 @@ export const OS_TYPE = 'os.type';
  */
 export type OS_TYPE_TYPE = string;
 
-// Path: model/attributes/os/os__version.json
+// Path: model/attributes/os/os.version.json
 
 /**
  * The version of the operating system. `os.version`
@@ -4693,7 +4693,7 @@ export const OS_VERSION = 'os.version';
  */
 export type OS_VERSION_TYPE = string;
 
-// Path: model/attributes/otel/otel__scope__name.json
+// Path: model/attributes/otel/otel.scope.name.json
 
 /**
  * The name of the instrumentation scope - (InstrumentationScope.Name in OTLP). `otel.scope.name`
@@ -4713,7 +4713,7 @@ export const OTEL_SCOPE_NAME = 'otel.scope.name';
  */
 export type OTEL_SCOPE_NAME_TYPE = string;
 
-// Path: model/attributes/otel/otel__scope__version.json
+// Path: model/attributes/otel/otel.scope.version.json
 
 /**
  * The version of the instrumentation scope - (InstrumentationScope.Version in OTLP). `otel.scope.version`
@@ -4733,7 +4733,7 @@ export const OTEL_SCOPE_VERSION = 'otel.scope.version';
  */
 export type OTEL_SCOPE_VERSION_TYPE = string;
 
-// Path: model/attributes/otel/otel__status_code.json
+// Path: model/attributes/otel/otel.status_code.json
 
 /**
  * Name of the code, either “OK” or “ERROR”. MUST NOT be set if the status code is UNSET. `otel.status_code`
@@ -4753,7 +4753,7 @@ export const OTEL_STATUS_CODE = 'otel.status_code';
  */
 export type OTEL_STATUS_CODE_TYPE = string;
 
-// Path: model/attributes/otel/otel__status_description.json
+// Path: model/attributes/otel/otel.status_description.json
 
 /**
  * Description of the Status if it has a value, otherwise not set. `otel.status_description`
@@ -4773,7 +4773,7 @@ export const OTEL_STATUS_DESCRIPTION = 'otel.status_description';
  */
 export type OTEL_STATUS_DESCRIPTION_TYPE = string;
 
-// Path: model/attributes/params/params__$key$.json
+// Path: model/attributes/params/params.$key$.json
 
 /**
  * Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router. `params.<key>`
@@ -4817,7 +4817,7 @@ export const PREVIOUS_ROUTE = 'previous_route';
  */
 export type PREVIOUS_ROUTE_TYPE = string;
 
-// Path: model/attributes/process/process__executable__name.json
+// Path: model/attributes/process/process.executable.name.json
 
 /**
  * The name of the executable that started the process. `process.executable.name`
@@ -4837,7 +4837,7 @@ export const PROCESS_EXECUTABLE_NAME = 'process.executable.name';
  */
 export type PROCESS_EXECUTABLE_NAME_TYPE = string;
 
-// Path: model/attributes/process/process__pid.json
+// Path: model/attributes/process/process.pid.json
 
 /**
  * The process ID of the running process. `process.pid`
@@ -4857,7 +4857,7 @@ export const PROCESS_PID = 'process.pid';
  */
 export type PROCESS_PID_TYPE = number;
 
-// Path: model/attributes/process/process__runtime__description.json
+// Path: model/attributes/process/process.runtime.description.json
 
 /**
  * An additional description about the runtime of the process, for example a specific vendor customization of the runtime environment. Equivalent to `raw_description` in the Sentry runtime context. `process.runtime.description`
@@ -4877,7 +4877,7 @@ export const PROCESS_RUNTIME_DESCRIPTION = 'process.runtime.description';
  */
 export type PROCESS_RUNTIME_DESCRIPTION_TYPE = string;
 
-// Path: model/attributes/process/process__runtime__name.json
+// Path: model/attributes/process/process.runtime.name.json
 
 /**
  * The name of the runtime. Equivalent to `name` in the Sentry runtime context. `process.runtime.name`
@@ -4897,7 +4897,7 @@ export const PROCESS_RUNTIME_NAME = 'process.runtime.name';
  */
 export type PROCESS_RUNTIME_NAME_TYPE = string;
 
-// Path: model/attributes/process/process__runtime__version.json
+// Path: model/attributes/process/process.runtime.version.json
 
 /**
  * The version of the runtime of this process, as returned by the runtime without modification. Equivalent to `version` in the Sentry runtime context. `process.runtime.version`
@@ -4940,7 +4940,7 @@ export const PROFILE_ID = 'profile_id';
  */
 export type PROFILE_ID_TYPE = string;
 
-// Path: model/attributes/query/query__$key$.json
+// Path: model/attributes/query/query.$key$.json
 
 /**
  * An item in a query string. Usually added by client-side routing frameworks like vue-router. `query.<key>`
@@ -4986,7 +4986,7 @@ export const RELEASE = 'release';
  */
 export type RELEASE_TYPE = string;
 
-// Path: model/attributes/remix/remix__action_form_data__$key$.json
+// Path: model/attributes/remix/remix.action_form_data.$key$.json
 
 /**
  * Remix form data, <key> being the form data key, the value being the form data value. `remix.action_form_data.<key>`
@@ -5031,7 +5031,7 @@ export const REPLAY_ID = 'replay_id';
  */
 export type REPLAY_ID_TYPE = string;
 
-// Path: model/attributes/resource/resource__render_blocking_status.json
+// Path: model/attributes/resource/resource.render_blocking_status.json
 
 /**
  * The render blocking status of the resource. `resource.render_blocking_status`
@@ -5074,7 +5074,7 @@ export const ROUTE = 'route';
  */
 export type ROUTE_TYPE = string;
 
-// Path: model/attributes/rpc/rpc__grpc__status_code.json
+// Path: model/attributes/rpc/rpc.grpc.status_code.json
 
 /**
  * The numeric status code of the gRPC request. `rpc.grpc.status_code`
@@ -5094,7 +5094,7 @@ export const RPC_GRPC_STATUS_CODE = 'rpc.grpc.status_code';
  */
 export type RPC_GRPC_STATUS_CODE_TYPE = number;
 
-// Path: model/attributes/rpc/rpc__service.json
+// Path: model/attributes/rpc/rpc.service.json
 
 /**
  * The full (logical) name of the service being called, including its package name, if applicable. `rpc.service`
@@ -5114,7 +5114,7 @@ export const RPC_SERVICE = 'rpc.service';
  */
 export type RPC_SERVICE_TYPE = string;
 
-// Path: model/attributes/sentry/sentry___internal__span_buffer_old_segment_id.json
+// Path: model/attributes/sentry/sentry._internal.span_buffer_old_segment_id.json
 
 /**
  * Used by the span buffer to record the segment ID of the original span in the incoming transaction before reconstruction. `sentry._internal.span_buffer_old_segment_id`
@@ -5136,7 +5136,7 @@ export const SENTRY_INTERNAL_SPAN_BUFFER_OLD_SEGMENT_ID = 'sentry._internal.span
  */
 export type SENTRY_INTERNAL_SPAN_BUFFER_OLD_SEGMENT_ID_TYPE = string;
 
-// Path: model/attributes/sentry/sentry___internal__span_buffer_segment_id_outcome.json
+// Path: model/attributes/sentry/sentry._internal.span_buffer_segment_id_outcome.json
 
 /**
  * Used by the span buffer to indicate whether reconstructing the segment resulted in the same segment ID as the original transaction. `sentry._internal.span_buffer_segment_id_outcome`
@@ -5158,7 +5158,7 @@ export const SENTRY_INTERNAL_SPAN_BUFFER_SEGMENT_ID_OUTCOME = 'sentry._internal.
  */
 export type SENTRY_INTERNAL_SPAN_BUFFER_SEGMENT_ID_OUTCOME_TYPE = string;
 
-// Path: model/attributes/sentry/sentry__cancellation_reason.json
+// Path: model/attributes/sentry/sentry.cancellation_reason.json
 
 /**
  * The reason why a span ended early. `sentry.cancellation_reason`
@@ -5178,7 +5178,7 @@ export const SENTRY_CANCELLATION_REASON = 'sentry.cancellation_reason';
  */
 export type SENTRY_CANCELLATION_REASON_TYPE = string;
 
-// Path: model/attributes/sentry/sentry__client_sample_rate.json
+// Path: model/attributes/sentry/sentry.client_sample_rate.json
 
 /**
  * Rate at which a span was sampled in the SDK. `sentry.client_sample_rate`
@@ -5198,7 +5198,7 @@ export const SENTRY_CLIENT_SAMPLE_RATE = 'sentry.client_sample_rate';
  */
 export type SENTRY_CLIENT_SAMPLE_RATE_TYPE = number;
 
-// Path: model/attributes/sentry/sentry__dist.json
+// Path: model/attributes/sentry/sentry.dist.json
 
 /**
  * The sentry dist. `sentry.dist`
@@ -5218,7 +5218,7 @@ export const SENTRY_DIST = 'sentry.dist';
  */
 export type SENTRY_DIST_TYPE = string;
 
-// Path: model/attributes/sentry/sentry__environment.json
+// Path: model/attributes/sentry/sentry.environment.json
 
 /**
  * The sentry environment. `sentry.environment`
@@ -5240,7 +5240,7 @@ export const SENTRY_ENVIRONMENT = 'sentry.environment';
  */
 export type SENTRY_ENVIRONMENT_TYPE = string;
 
-// Path: model/attributes/sentry/sentry__exclusive_time.json
+// Path: model/attributes/sentry/sentry.exclusive_time.json
 
 /**
  * The exclusive time duration of the span. `sentry.exclusive_time`
@@ -5260,7 +5260,7 @@ export const SENTRY_EXCLUSIVE_TIME = 'sentry.exclusive_time';
  */
 export type SENTRY_EXCLUSIVE_TIME_TYPE = number;
 
-// Path: model/attributes/sentry/sentry__http__prefetch.json
+// Path: model/attributes/sentry/sentry.http.prefetch.json
 
 /**
  * If an http request was a prefetch request. `sentry.http.prefetch`
@@ -5280,7 +5280,7 @@ export const SENTRY_HTTP_PREFETCH = 'sentry.http.prefetch';
  */
 export type SENTRY_HTTP_PREFETCH_TYPE = boolean;
 
-// Path: model/attributes/sentry/sentry__idle_span_finish_reason.json
+// Path: model/attributes/sentry/sentry.idle_span_finish_reason.json
 
 /**
  * The reason why an idle span ended early. `sentry.idle_span_finish_reason`
@@ -5300,7 +5300,7 @@ export const SENTRY_IDLE_SPAN_FINISH_REASON = 'sentry.idle_span_finish_reason';
  */
 export type SENTRY_IDLE_SPAN_FINISH_REASON_TYPE = string;
 
-// Path: model/attributes/sentry/sentry__module__$key$.json
+// Path: model/attributes/sentry/sentry.module.$key$.json
 
 /**
  * A module that was loaded in the process. The key is the name of the module. `sentry.module.<key>`
@@ -5322,7 +5322,7 @@ export const SENTRY_MODULE_KEY = 'sentry.module.<key>';
  */
 export type SENTRY_MODULE_KEY_TYPE = string;
 
-// Path: model/attributes/sentry/sentry__nextjs__ssr__function__route.json
+// Path: model/attributes/sentry/sentry.nextjs.ssr.function.route.json
 
 /**
  * A parameterized route for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions when the file location of the function is known. `sentry.nextjs.ssr.function.route`
@@ -5344,7 +5344,7 @@ export const SENTRY_NEXTJS_SSR_FUNCTION_ROUTE = 'sentry.nextjs.ssr.function.rout
  */
 export type SENTRY_NEXTJS_SSR_FUNCTION_ROUTE_TYPE = string;
 
-// Path: model/attributes/sentry/sentry__nextjs__ssr__function__type.json
+// Path: model/attributes/sentry/sentry.nextjs.ssr.function.type.json
 
 /**
  * A descriptor for a for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions. `sentry.nextjs.ssr.function.type`
@@ -5366,7 +5366,7 @@ export const SENTRY_NEXTJS_SSR_FUNCTION_TYPE = 'sentry.nextjs.ssr.function.type'
  */
 export type SENTRY_NEXTJS_SSR_FUNCTION_TYPE_TYPE = string;
 
-// Path: model/attributes/sentry/sentry__op.json
+// Path: model/attributes/sentry/sentry.op.json
 
 /**
  * The operation of a span. `sentry.op`
@@ -5386,7 +5386,7 @@ export const SENTRY_OP = 'sentry.op';
  */
 export type SENTRY_OP_TYPE = string;
 
-// Path: model/attributes/sentry/sentry__origin.json
+// Path: model/attributes/sentry/sentry.origin.json
 
 /**
  * The origin of the instrumentation (e.g. span, log, etc.) `sentry.origin`
@@ -5406,7 +5406,7 @@ export const SENTRY_ORIGIN = 'sentry.origin';
  */
 export type SENTRY_ORIGIN_TYPE = string;
 
-// Path: model/attributes/sentry/sentry__platform.json
+// Path: model/attributes/sentry/sentry.platform.json
 
 /**
  * The sdk platform that generated the event. `sentry.platform`
@@ -5426,7 +5426,7 @@ export const SENTRY_PLATFORM = 'sentry.platform';
  */
 export type SENTRY_PLATFORM_TYPE = string;
 
-// Path: model/attributes/sentry/sentry__profile_id.json
+// Path: model/attributes/sentry/sentry.profile_id.json
 
 /**
  * The id of the sentry profile. `sentry.profile_id`
@@ -5448,7 +5448,7 @@ export const SENTRY_PROFILE_ID = 'sentry.profile_id';
  */
 export type SENTRY_PROFILE_ID_TYPE = string;
 
-// Path: model/attributes/sentry/sentry__release.json
+// Path: model/attributes/sentry/sentry.release.json
 
 /**
  * The sentry release. `sentry.release`
@@ -5470,7 +5470,7 @@ export const SENTRY_RELEASE = 'sentry.release';
  */
 export type SENTRY_RELEASE_TYPE = string;
 
-// Path: model/attributes/sentry/sentry__replay_id.json
+// Path: model/attributes/sentry/sentry.replay_id.json
 
 /**
  * The id of the sentry replay. `sentry.replay_id`
@@ -5492,7 +5492,7 @@ export const SENTRY_REPLAY_ID = 'sentry.replay_id';
  */
 export type SENTRY_REPLAY_ID_TYPE = string;
 
-// Path: model/attributes/sentry/sentry__sdk__integrations.json
+// Path: model/attributes/sentry/sentry.sdk.integrations.json
 
 /**
  * A list of names identifying enabled integrations. The list shouldhave all enabled integrations, including default integrations. Defaultintegrations are included because different SDK releases may contain differentdefault integrations. `sentry.sdk.integrations`
@@ -5512,7 +5512,7 @@ export const SENTRY_SDK_INTEGRATIONS = 'sentry.sdk.integrations';
  */
 export type SENTRY_SDK_INTEGRATIONS_TYPE = Array<string>;
 
-// Path: model/attributes/sentry/sentry__sdk__name.json
+// Path: model/attributes/sentry/sentry.sdk.name.json
 
 /**
  * The sentry sdk name. `sentry.sdk.name`
@@ -5532,7 +5532,7 @@ export const SENTRY_SDK_NAME = 'sentry.sdk.name';
  */
 export type SENTRY_SDK_NAME_TYPE = string;
 
-// Path: model/attributes/sentry/sentry__sdk__version.json
+// Path: model/attributes/sentry/sentry.sdk.version.json
 
 /**
  * The sentry sdk version. `sentry.sdk.version`
@@ -5552,7 +5552,7 @@ export const SENTRY_SDK_VERSION = 'sentry.sdk.version';
  */
 export type SENTRY_SDK_VERSION_TYPE = string;
 
-// Path: model/attributes/sentry/sentry__segment__name.json
+// Path: model/attributes/sentry/sentry.segment.name.json
 
 /**
  * The segment name of a span `sentry.segment.name`
@@ -5572,7 +5572,7 @@ export const SENTRY_SEGMENT_NAME = 'sentry.segment.name';
  */
 export type SENTRY_SEGMENT_NAME_TYPE = string;
 
-// Path: model/attributes/sentry/sentry__server_sample_rate.json
+// Path: model/attributes/sentry/sentry.server_sample_rate.json
 
 /**
  * Rate at which a span was sampled in Relay. `sentry.server_sample_rate`
@@ -5592,7 +5592,7 @@ export const SENTRY_SERVER_SAMPLE_RATE = 'sentry.server_sample_rate';
  */
 export type SENTRY_SERVER_SAMPLE_RATE_TYPE = number;
 
-// Path: model/attributes/sentry/sentry__span__source.json
+// Path: model/attributes/sentry/sentry.span.source.json
 
 /**
  * The source of a span, also referred to as transaction source. `sentry.span.source`
@@ -5612,7 +5612,7 @@ export const SENTRY_SPAN_SOURCE = 'sentry.span.source';
  */
 export type SENTRY_SPAN_SOURCE_TYPE = string;
 
-// Path: model/attributes/sentry/sentry__transaction.json
+// Path: model/attributes/sentry/sentry.transaction.json
 
 /**
  * The sentry transaction (segment name). `sentry.transaction`
@@ -5634,7 +5634,7 @@ export const SENTRY_TRANSACTION = 'sentry.transaction';
  */
 export type SENTRY_TRANSACTION_TYPE = string;
 
-// Path: model/attributes/server/server__address.json
+// Path: model/attributes/server/server.address.json
 
 /**
  * Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name. `server.address`
@@ -5656,7 +5656,7 @@ export const SERVER_ADDRESS = 'server.address';
  */
 export type SERVER_ADDRESS_TYPE = string;
 
-// Path: model/attributes/server/server__port.json
+// Path: model/attributes/server/server.port.json
 
 /**
  * Server port number. `server.port`
@@ -5678,7 +5678,7 @@ export const SERVER_PORT = 'server.port';
  */
 export type SERVER_PORT_TYPE = number;
 
-// Path: model/attributes/service/service__name.json
+// Path: model/attributes/service/service.name.json
 
 /**
  * Logical name of the service. `service.name`
@@ -5698,7 +5698,7 @@ export const SERVICE_NAME = 'service.name';
  */
 export type SERVICE_NAME_TYPE = string;
 
-// Path: model/attributes/service/service__version.json
+// Path: model/attributes/service/service.version.json
 
 /**
  * The version string of the service API or implementation. The format is not defined by these conventions. `service.version`
@@ -5720,7 +5720,7 @@ export const SERVICE_VERSION = 'service.version';
  */
 export type SERVICE_VERSION_TYPE = string;
 
-// Path: model/attributes/thread/thread__id.json
+// Path: model/attributes/thread/thread.id.json
 
 /**
  * Current “managed” thread ID. `thread.id`
@@ -5740,7 +5740,7 @@ export const THREAD_ID = 'thread.id';
  */
 export type THREAD_ID_TYPE = number;
 
-// Path: model/attributes/thread/thread__name.json
+// Path: model/attributes/thread/thread.name.json
 
 /**
  * Current thread name. `thread.name`
@@ -5803,7 +5803,7 @@ export const TYPE = 'type';
  */
 export type TYPE_TYPE = string;
 
-// Path: model/attributes/ui/ui__component_name.json
+// Path: model/attributes/ui/ui.component_name.json
 
 /**
  * The name of the associated component. `ui.component_name`
@@ -5823,7 +5823,7 @@ export const UI_COMPONENT_NAME = 'ui.component_name';
  */
 export type UI_COMPONENT_NAME_TYPE = string;
 
-// Path: model/attributes/ui/ui__contributes_to_ttfd.json
+// Path: model/attributes/ui/ui.contributes_to_ttfd.json
 
 /**
  * Whether the span execution contributed to the TTFD (time to fully drawn) metric. `ui.contributes_to_ttfd`
@@ -5843,7 +5843,7 @@ export const UI_CONTRIBUTES_TO_TTFD = 'ui.contributes_to_ttfd';
  */
 export type UI_CONTRIBUTES_TO_TTFD_TYPE = boolean;
 
-// Path: model/attributes/ui/ui__contributes_to_ttid.json
+// Path: model/attributes/ui/ui.contributes_to_ttid.json
 
 /**
  * Whether the span execution contributed to the TTID (time to initial display) metric. `ui.contributes_to_ttid`
@@ -5863,7 +5863,7 @@ export const UI_CONTRIBUTES_TO_TTID = 'ui.contributes_to_ttid';
  */
 export type UI_CONTRIBUTES_TO_TTID_TYPE = boolean;
 
-// Path: model/attributes/url/url__domain.json
+// Path: model/attributes/url/url.domain.json
 
 /**
  * Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name. `url.domain`
@@ -5883,7 +5883,7 @@ export const URL_DOMAIN = 'url.domain';
  */
 export type URL_DOMAIN_TYPE = string;
 
-// Path: model/attributes/url/url__fragment.json
+// Path: model/attributes/url/url.fragment.json
 
 /**
  * The fragments present in the URI. Note that this does not contain the leading # character, while the `http.fragment` attribute does. `url.fragment`
@@ -5903,7 +5903,7 @@ export const URL_FRAGMENT = 'url.fragment';
  */
 export type URL_FRAGMENT_TYPE = string;
 
-// Path: model/attributes/url/url__full.json
+// Path: model/attributes/url/url.full.json
 
 /**
  * The URL of the resource that was fetched. `url.full`
@@ -5925,7 +5925,7 @@ export const URL_FULL = 'url.full';
  */
 export type URL_FULL_TYPE = string;
 
-// Path: model/attributes/url/url__path.json
+// Path: model/attributes/url/url.path.json
 
 /**
  * The URI path component. `url.path`
@@ -5945,7 +5945,7 @@ export const URL_PATH = 'url.path';
  */
 export type URL_PATH_TYPE = string;
 
-// Path: model/attributes/url/url__path__parameter__$key$.json
+// Path: model/attributes/url/url.path.parameter.$key$.json
 
 /**
  * Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router. `url.path.parameter.<key>`
@@ -5969,7 +5969,7 @@ export const URL_PATH_PARAMETER_KEY = 'url.path.parameter.<key>';
  */
 export type URL_PATH_PARAMETER_KEY_TYPE = string;
 
-// Path: model/attributes/url/url__port.json
+// Path: model/attributes/url/url.port.json
 
 /**
  * Server port number. `url.port`
@@ -5989,7 +5989,7 @@ export const URL_PORT = 'url.port';
  */
 export type URL_PORT_TYPE = number;
 
-// Path: model/attributes/url/url__query.json
+// Path: model/attributes/url/url.query.json
 
 /**
  * The query string present in the URL. Note that this does not contain the leading ? character, while the `http.query` attribute does. `url.query`
@@ -6009,7 +6009,7 @@ export const URL_QUERY = 'url.query';
  */
 export type URL_QUERY_TYPE = string;
 
-// Path: model/attributes/url/url__scheme.json
+// Path: model/attributes/url/url.scheme.json
 
 /**
  * The URI scheme component identifying the used protocol. `url.scheme`
@@ -6031,7 +6031,7 @@ export const URL_SCHEME = 'url.scheme';
  */
 export type URL_SCHEME_TYPE = string;
 
-// Path: model/attributes/url/url__template.json
+// Path: model/attributes/url/url.template.json
 
 /**
  * The low-cardinality template of an absolute path reference. `url.template`
@@ -6076,7 +6076,7 @@ export const URL = 'url';
  */
 export type URL_TYPE = string;
 
-// Path: model/attributes/user/user__email.json
+// Path: model/attributes/user/user.email.json
 
 /**
  * User email address. `user.email`
@@ -6096,7 +6096,7 @@ export const USER_EMAIL = 'user.email';
  */
 export type USER_EMAIL_TYPE = string;
 
-// Path: model/attributes/user/user__full_name.json
+// Path: model/attributes/user/user.full_name.json
 
 /**
  * User's full name. `user.full_name`
@@ -6116,7 +6116,7 @@ export const USER_FULL_NAME = 'user.full_name';
  */
 export type USER_FULL_NAME_TYPE = string;
 
-// Path: model/attributes/user/user__geo__city.json
+// Path: model/attributes/user/user.geo.city.json
 
 /**
  * Human readable city name. `user.geo.city`
@@ -6136,7 +6136,7 @@ export const USER_GEO_CITY = 'user.geo.city';
  */
 export type USER_GEO_CITY_TYPE = string;
 
-// Path: model/attributes/user/user__geo__country_code.json
+// Path: model/attributes/user/user.geo.country_code.json
 
 /**
  * Two-letter country code (ISO 3166-1 alpha-2). `user.geo.country_code`
@@ -6156,7 +6156,7 @@ export const USER_GEO_COUNTRY_CODE = 'user.geo.country_code';
  */
 export type USER_GEO_COUNTRY_CODE_TYPE = string;
 
-// Path: model/attributes/user/user__geo__region.json
+// Path: model/attributes/user/user.geo.region.json
 
 /**
  * Human readable region name or code. `user.geo.region`
@@ -6176,7 +6176,7 @@ export const USER_GEO_REGION = 'user.geo.region';
  */
 export type USER_GEO_REGION_TYPE = string;
 
-// Path: model/attributes/user/user__geo__subdivision.json
+// Path: model/attributes/user/user.geo.subdivision.json
 
 /**
  * Human readable subdivision name. `user.geo.subdivision`
@@ -6196,7 +6196,7 @@ export const USER_GEO_SUBDIVISION = 'user.geo.subdivision';
  */
 export type USER_GEO_SUBDIVISION_TYPE = string;
 
-// Path: model/attributes/user/user__hash.json
+// Path: model/attributes/user/user.hash.json
 
 /**
  * Unique user hash to correlate information for a user in anonymized form. `user.hash`
@@ -6216,7 +6216,7 @@ export const USER_HASH = 'user.hash';
  */
 export type USER_HASH_TYPE = string;
 
-// Path: model/attributes/user/user__id.json
+// Path: model/attributes/user/user.id.json
 
 /**
  * Unique identifier of the user. `user.id`
@@ -6236,7 +6236,7 @@ export const USER_ID = 'user.id';
  */
 export type USER_ID_TYPE = string;
 
-// Path: model/attributes/user/user__ip_address.json
+// Path: model/attributes/user/user.ip_address.json
 
 /**
  * The IP address of the user. `user.ip_address`
@@ -6256,7 +6256,7 @@ export const USER_IP_ADDRESS = 'user.ip_address';
  */
 export type USER_IP_ADDRESS_TYPE = string;
 
-// Path: model/attributes/user/user__name.json
+// Path: model/attributes/user/user.name.json
 
 /**
  * Short name or login/username of the user. `user.name`
@@ -6276,7 +6276,7 @@ export const USER_NAME = 'user.name';
  */
 export type USER_NAME_TYPE = string;
 
-// Path: model/attributes/user/user__roles.json
+// Path: model/attributes/user/user.roles.json
 
 /**
  * Array of user roles at the time of the event. `user.roles`
@@ -6296,7 +6296,7 @@ export const USER_ROLES = 'user.roles';
  */
 export type USER_ROLES_TYPE = Array<string>;
 
-// Path: model/attributes/user_agent/user_agent__original.json
+// Path: model/attributes/user_agent/user_agent.original.json
 
 /**
  * Value of the HTTP User-Agent header sent by the client. `user_agent.original`
@@ -6413,8 +6413,8 @@ export type Attributes = {
   [GEN_AI_TOOL_NAME]?: GEN_AI_TOOL_NAME_TYPE;
   [GEN_AI_TOOL_OUTPUT]?: GEN_AI_TOOL_OUTPUT_TYPE;
   [GEN_AI_TOOL_TYPE]?: GEN_AI_TOOL_TYPE_TYPE;
-  [GEN_AI_USAGE_INPUT_TOKENS]?: GEN_AI_USAGE_INPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_INPUT_TOKENS_CACHED]?: GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE;
+  [GEN_AI_USAGE_INPUT_TOKENS]?: GEN_AI_USAGE_INPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_OUTPUT_TOKENS]?: GEN_AI_USAGE_OUTPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_OUTPUT_TOKENS_REASONING]?: GEN_AI_USAGE_OUTPUT_TOKENS_REASONING_TYPE;
   [GEN_AI_USAGE_TOTAL_COST]?: GEN_AI_USAGE_TOTAL_COST_TYPE;
@@ -6682,8 +6682,8 @@ export type FullAttributes = {
   [GEN_AI_TOOL_OUTPUT]?: GEN_AI_TOOL_OUTPUT_TYPE;
   [GEN_AI_TOOL_TYPE]?: GEN_AI_TOOL_TYPE_TYPE;
   [GEN_AI_USAGE_COMPLETION_TOKENS]?: GEN_AI_USAGE_COMPLETION_TOKENS_TYPE;
-  [GEN_AI_USAGE_INPUT_TOKENS]?: GEN_AI_USAGE_INPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_INPUT_TOKENS_CACHED]?: GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE;
+  [GEN_AI_USAGE_INPUT_TOKENS]?: GEN_AI_USAGE_INPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_OUTPUT_TOKENS]?: GEN_AI_USAGE_OUTPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_OUTPUT_TOKENS_REASONING]?: GEN_AI_USAGE_OUTPUT_TOKENS_REASONING_TYPE;
   [GEN_AI_USAGE_PROMPT_TOKENS]?: GEN_AI_USAGE_PROMPT_TOKENS_TYPE;
