@@ -5313,8 +5313,6 @@ export type SENTRY_MODULE_KEY_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link SENTRY_NEXTJS_FUNCTION_ROUTE} `sentry.nextjs.function.route`
- *
  * @example "/posts/[id]/layout"
  */
 export const SENTRY_NEXTJS_SSR_FUNCTION_ROUTE = 'sentry.nextjs.ssr.function.route';
@@ -5334,8 +5332,6 @@ export type SENTRY_NEXTJS_SSR_FUNCTION_ROUTE_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
- *
- * Aliases: {@link SENTRY_NEXTJS_FUNCTION_TYPE} `sentry.nextjs.function.type`
  *
  * @example "generateMetadata"
  */
