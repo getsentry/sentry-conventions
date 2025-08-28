@@ -73,6 +73,28 @@ describe('attribute json', async () => {
         expect(fileNameToAttributeKey(name)).toMatch(content.key);
       });
 
+      it('its replacement should exist', async () => {
+        if (!content.deprecation?.replacement) {
+          return;
+        }
+        const replacement = content.deprecation?.replacement;
+        const replacementFileName = attributeKeyToFileName(replacement);
+        let replacementFilePath: string;
+
+        if (replacement.includes('.')) {
+          const namespace = replacement.split('.')[0] as string;
+          replacementFilePath = path.join(traceFolders, namespace, replacementFileName);
+        } else {
+          replacementFilePath = path.join(traceFolders, replacementFileName);
+        }
+
+        const replacementExists = await fs.promises
+          .access(replacementFilePath, fs.constants.F_OK)
+          .then(() => true)
+          .catch(() => false);
+        expect(replacementExists);
+      });
+
       it('all of its aliases should exist', async () => {
         if (!content.alias || content.alias.length === 0) {
           return;
