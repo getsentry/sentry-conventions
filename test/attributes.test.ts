@@ -128,3 +128,83 @@ describe('attribute json', async () => {
     });
   }
 });
+
+describe('alias group consistency', async () => {
+  const filesIterator = await fs.promises.glob(`${traceFolders}/**/*.json`);
+  const files = await Array.fromAsync(filesIterator);
+
+  // Load all attributes
+  const attributes = new Map<string, AttributeJson>();
+  for (const file of files) {
+    const content: AttributeJson = JSON.parse(await fs.promises.readFile(file, 'utf-8'));
+    attributes.set(content.key, content);
+  }
+
+  it('should have consistent alias groups', () => {
+    // Build alias groups: if X has aliases [Y, Z], then the group is [X, Y, Z]
+    const aliasGroups = new Map<string, Set<string>>();
+    const processedKeys = new Set<string>();
+
+    for (const [key, content] of attributes) {
+      if (processedKeys.has(key)) continue;
+
+      if (!content.alias || content.alias.length === 0) continue;
+
+      // Create the group with the current key and all its aliases
+      const group = new Set([key, ...content.alias]);
+      
+      // Mark all keys in this group as processed
+      for (const groupKey of group) {
+        processedKeys.add(groupKey);
+      }
+
+      // Store the group using a canonical key (sorted first key)
+      const canonicalKey = Array.from(group).sort()[0];
+      aliasGroups.set(canonicalKey!, group);
+    }
+
+    const failedGroups: Array<{ group: string[], missingAliases: Array<{ key: string, missing: string[] }> }> = [];
+
+    // Validate each group
+    for (const [canonicalKey, group] of aliasGroups) {
+      const groupArray = Array.from(group).sort();
+      const missingAliases: Array<{ key: string, missing: string[] }> = [];
+
+      for (const key of groupArray) {
+        const attribute = attributes.get(key);
+        if (!attribute) {
+          // Key doesn't exist, skip validation for this key
+          continue;
+        }
+
+        const expectedAliases = groupArray.filter(k => k !== key).sort();
+        const actualAliases = (attribute.alias || []).sort();
+
+        const missing = expectedAliases.filter(alias => !actualAliases.includes(alias));
+        
+        if (missing.length > 0) {
+          missingAliases.push({ key, missing });
+        }
+      }
+
+      if (missingAliases.length > 0) {
+        failedGroups.push({
+          group: groupArray,
+          missingAliases
+        });
+      }
+    }
+
+    if (failedGroups.length > 0) {
+      const errorMessages = failedGroups.map(({ group, missingAliases }) => {
+        const groupStr = `[${group.join(', ')}]`;
+        const missingStr = missingAliases.map(({ key, missing }) => 
+          `  ${key} is missing aliases: [${missing.join(', ')}]`
+        ).join('\n');
+        return `Group ${groupStr}:\n${missingStr}`;
+      }).join('\n\n');
+
+      throw new Error(`Alias group validation failed:\n\n${errorMessages}`);
+    }
+  });
+});
