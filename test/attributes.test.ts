@@ -78,6 +78,8 @@ describe('attribute json', async () => {
           return;
         }
 
+        const missingAliases: string[] = [];
+
         for (const alias of content.alias) {
           const aliasFileName = attributeKeyToFileName(alias);
           let aliasFilePath: string;
@@ -94,8 +96,12 @@ describe('attribute json', async () => {
             .then(() => true)
             .catch(() => false);
 
-          expect(aliasExists).toBe(true);
+          if (!aliasExists) {
+            missingAliases.push(alias);
+          }
         }
+
+        expect(missingAliases).toEqual([]);
       });
     });
   }
