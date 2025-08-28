@@ -5,6 +5,7 @@ import Ajv from 'ajv';
 import { describe, expect, it } from 'vitest';
 
 import schema from '../schemas/attribute.schema.json';
+import { fileNameToAttributeKey } from '../scripts/utils';
 
 const traceFolders = path.resolve(__dirname, '../model/attributes');
 
@@ -65,7 +66,7 @@ describe('attribute json', async () => {
       });
 
       it('should follow the correct naming convention', () => {
-        expect(name.replaceAll('__', '.').replace('$key$', '<key>').replace('.json', '')).toMatch(content.key);
+        expect(fileNameToAttributeKey(name)).toMatch(content.key);
       });
     });
   }

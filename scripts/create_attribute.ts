@@ -4,6 +4,7 @@ import path from 'node:path';
 import readline from 'node:readline';
 import { parseArgs } from 'node:util';
 import Ajv from 'ajv';
+import { attributeKeyToFileName } from './utils';
 
 const HELP_TEXT = `
 Usage: yarn create:attribute [options]
@@ -145,22 +146,20 @@ const createAttribute = async () => {
     validateSchema(attribute);
 
     // Create the directory structure based on the key
-    key = key.replace('<key>', '$key$');
-    const parts = key.split('.');
+    const fileName = attributeKeyToFileName(key);
+    const parts = key.replace('<key>', '$key$').split('.');
     let filePath: string;
 
     if (parts.length === 1) {
       // Handle simple keys like 'replay_id'
-      filePath = path.join('model', 'attributes', `${key}.json`);
+      filePath = path.join('model', 'attributes', fileName);
     } else {
       // Handle dotted keys like 'http.route'
       const dirPath = path.join('model', 'attributes', parts[0] ?? '');
       if (!fs.existsSync(dirPath)) {
         fs.mkdirSync(dirPath, { recursive: true });
       }
-      // Convert rest parts to use double underscores instead of dots
-      const fileName = parts.join('__');
-      filePath = path.join(dirPath, `${fileName}.json`);
+      filePath = path.join(dirPath, fileName);
     }
 
     fs.writeFileSync(filePath, `${JSON.stringify(attribute, null, 2)}\n`);
