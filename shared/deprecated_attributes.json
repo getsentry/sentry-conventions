@@ -168,7 +168,8 @@
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.response.finish_reason"
-      }
+      },
+      "alias": ["gen_ai.response.finish_reasons"]
     },
     {
       "key": "ai.frequency_penalty",
@@ -182,7 +183,8 @@
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.request.frequency_penalty"
-      }
+      },
+      "alias": ["gen_ai.request.frequency_penalty"]
     },
     {
       "key": "ai.function_call",
@@ -196,7 +198,8 @@
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.tool.name"
-      }
+      },
+      "alias": ["gen_ai.tool.name"]
     },
     {
       "key": "ai.generation_id",
@@ -210,7 +213,8 @@
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.response.id"
-      }
+      },
+      "alias": ["gen_ai.response.id"]
     },
     {
       "key": "ai.input_messages",
@@ -240,7 +244,8 @@
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.system"
-      }
+      },
+      "alias": ["gen_ai.system"]
     },
     {
       "key": "ai.model_id",
@@ -270,7 +275,8 @@
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.pipeline.name"
-      }
+      },
+      "alias": ["gen_ai.pipeline.name"]
     },
     {
       "key": "ai.presence_penalty",
@@ -284,7 +290,8 @@
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.request.presence_penalty"
-      }
+      },
+      "alias": ["gen_ai.request.presence_penalty"]
     },
     {
       "key": "ai.prompt_tokens.used",
@@ -329,7 +336,8 @@
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.request.seed"
-      }
+      },
+      "alias": ["gen_ai.request.seed"]
     },
     {
       "key": "ai.streaming",
@@ -344,7 +352,8 @@
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.response.streaming"
-      }
+      },
+      "alias": ["gen_ai.response.streaming"]
     },
     {
       "key": "ai.temperature",
@@ -358,7 +367,8 @@
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.request.temperature"
-      }
+      },
+      "alias": ["gen_ai.request.temperature"]
     },
     {
       "key": "ai.tool_calls",
@@ -400,7 +410,8 @@
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.request.top_k"
-      }
+      },
+      "alias": ["gen_ai.request.top_k"]
     },
     {
       "key": "ai.top_p",
@@ -414,7 +425,8 @@
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.request.top_p"
-      }
+      },
+      "alias": ["gen_ai.request.top_p"]
     },
     {
       "key": "ai.total_tokens.used",
@@ -429,7 +441,8 @@
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.usage.total_tokens"
-      }
+      },
+      "alias": ["gen_ai.usage.total_tokens"]
     },
     {
       "key": "code.filepath",
@@ -474,7 +487,7 @@
         "_status": null,
         "replacement": "code.line.number"
       },
-      "alias": ["code.lineno"]
+      "alias": ["code.lineno", "code.line.number"]
     },
     {
       "key": "code.namespace",
@@ -625,7 +638,7 @@
         "_status": null,
         "replacement": "network.protocol.version"
       },
-      "alias": ["network.protocol.version"]
+      "alias": ["network.protocol.version", "net.protocol.version"]
     },
     {
       "key": "http.host",
@@ -641,7 +654,7 @@
         "replacement": "server.address",
         "reason": "Deprecated, use one of `server.address` or `client.address`, depending on the usage"
       },
-      "alias": ["server.address", "client.address"]
+      "alias": ["server.address", "client.address", "http.server_name", "net.host.name"]
     },
     {
       "key": "http.method",
@@ -716,7 +729,7 @@
         "_status": null,
         "replacement": "server.address"
       },
-      "alias": ["server.address"]
+      "alias": ["server.address", "net.host.name", "http.host"]
     },
     {
       "key": "http.status_code",
@@ -761,7 +774,7 @@
         "_status": null,
         "replacement": "url.full"
       },
-      "alias": ["url.full", "http.url"]
+      "alias": ["url.full", "http.url", "url"]
     },
     {
       "key": "http.user_agent",
@@ -791,7 +804,7 @@
         "_status": null,
         "replacement": "network.local.address"
       },
-      "alias": ["network.local.address"]
+      "alias": ["network.local.address", "net.sock.host.addr"]
     },
     {
       "key": "net.host.name",
@@ -806,7 +819,7 @@
         "_status": null,
         "replacement": "server.address"
       },
-      "alias": ["server.address"]
+      "alias": ["server.address", "http.server_name", "http.host"]
     },
     {
       "key": "net.host.port",
@@ -836,7 +849,7 @@
         "_status": null,
         "replacement": "network.peer.address"
       },
-      "alias": ["network.peer.address"]
+      "alias": ["network.peer.address", "net.sock.peer.addr"]
     },
     {
       "key": "net.peer.name",
@@ -896,7 +909,7 @@
         "_status": null,
         "replacement": "network.protocol.version"
       },
-      "alias": ["network.protocol.version"]
+      "alias": ["network.protocol.version", "http.flavor"]
     },
     {
       "key": "net.sock.family",
@@ -926,7 +939,7 @@
         "_status": null,
         "replacement": "network.local.address"
       },
-      "alias": ["network.local.address"]
+      "alias": ["network.local.address", "net.host.ip"]
     },
     {
       "key": "net.sock.host.port",
@@ -956,7 +969,7 @@
         "_status": null,
         "replacement": "network.peer.address"
       },
-      "alias": ["network.peer.address"]
+      "alias": ["network.peer.address", "net.peer.ip"]
     },
     {
       "key": "net.sock.peer.name",

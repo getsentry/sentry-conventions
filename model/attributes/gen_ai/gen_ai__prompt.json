@@ -6,5 +6,6 @@
     "key": "maybe"
   },
   "is_in_otel": true,
-  "example": "[{\"role\": \"user\", \"message\": \"hello\"}]"
+  "example": "[{\"role\": \"user\", \"message\": \"hello\"}]",
+  "alias": ["ai.input_messages", "gen_ai.request.messages"]
 }

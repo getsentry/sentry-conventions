@@ -140,7 +140,7 @@ describe('alias group consistency', async () => {
     attributes.set(content.key, content);
   }
 
-  it('should have consistent alias groups', () => {
+  it('aliases should be symmetric', () => {
     // Build alias groups: if X has aliases [Y, Z], then the group is [X, Y, Z]
     const aliasGroups = new Map<string, Set<string>>();
     const processedKeys = new Set<string>();
