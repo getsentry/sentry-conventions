@@ -74,6 +74,8 @@ export type AI_DOCUMENTS_TYPE = Array<string>;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link GEN_AI_RESPONSE_FINISH_REASONS} `gen_ai.response.finish_reasons`
+ *
  * @deprecated Use {@link GEN_AI_RESPONSE_FINISH_REASON} (gen_ai.response.finish_reason) instead
  * @example "COMPLETE"
  */
@@ -94,6 +96,8 @@ export type AI_FINISH_REASON_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link GEN_AI_REQUEST_FREQUENCY_PENALTY} `gen_ai.request.frequency_penalty`
  *
  * @deprecated Use {@link GEN_AI_REQUEST_FREQUENCY_PENALTY} (gen_ai.request.frequency_penalty) instead
  * @example 0.5
@@ -116,6 +120,8 @@ export type AI_FREQUENCY_PENALTY_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link GEN_AI_TOOL_NAME} `gen_ai.tool.name`
+ *
  * @deprecated Use {@link GEN_AI_TOOL_NAME} (gen_ai.tool.name) instead
  * @example "function_name"
  */
@@ -136,6 +142,8 @@ export type AI_FUNCTION_CALL_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link GEN_AI_RESPONSE_ID} `gen_ai.response.id`
  *
  * @deprecated Use {@link GEN_AI_RESPONSE_ID} (gen_ai.response.id) instead
  * @example "gen_123abc"
@@ -221,6 +229,8 @@ export type AI_METADATA_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link GEN_AI_SYSTEM} `gen_ai.system`
+ *
  * @deprecated Use {@link GEN_AI_SYSTEM} (gen_ai.system) instead
  * @example "openai"
  */
@@ -265,6 +275,8 @@ export type AI_MODEL_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link GEN_AI_PIPELINE_NAME} `gen_ai.pipeline.name`
+ *
  * @deprecated Use {@link GEN_AI_PIPELINE_NAME} (gen_ai.pipeline.name) instead
  * @example "Autofix Pipeline"
  */
@@ -305,6 +317,8 @@ export type AI_PREAMBLE_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link GEN_AI_REQUEST_PRESENCE_PENALTY} `gen_ai.request.presence_penalty`
  *
  * @deprecated Use {@link GEN_AI_REQUEST_PRESENCE_PENALTY} (gen_ai.request.presence_penalty) instead
  * @example 0.5
@@ -451,6 +465,8 @@ export type AI_SEARCH_RESULTS_TYPE = Array<string>;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link GEN_AI_REQUEST_SEED} `gen_ai.request.seed`
+ *
  * @deprecated Use {@link GEN_AI_REQUEST_SEED} (gen_ai.request.seed) instead
  * @example "1234567890"
  */
@@ -471,6 +487,8 @@ export type AI_SEED_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link GEN_AI_RESPONSE_STREAMING} `gen_ai.response.streaming`
  *
  * @deprecated Use {@link GEN_AI_RESPONSE_STREAMING} (gen_ai.response.streaming) instead
  * @example true
@@ -512,6 +530,8 @@ export type AI_TAGS_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link GEN_AI_REQUEST_TEMPERATURE} `gen_ai.request.temperature`
  *
  * @deprecated Use {@link GEN_AI_REQUEST_TEMPERATURE} (gen_ai.request.temperature) instead
  * @example 0.1
@@ -596,6 +616,8 @@ export type AI_TOOLS_TYPE = Array<string>;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link GEN_AI_REQUEST_TOP_K} `gen_ai.request.top_k`
+ *
  * @deprecated Use {@link GEN_AI_REQUEST_TOP_K} (gen_ai.request.top_k) instead
  * @example 35
  */
@@ -616,6 +638,8 @@ export type AI_TOP_K_TYPE = number;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link GEN_AI_REQUEST_TOP_P} `gen_ai.request.top_p`
  *
  * @deprecated Use {@link GEN_AI_REQUEST_TOP_P} (gen_ai.request.top_p) instead
  * @example 0.7
@@ -657,6 +681,8 @@ export type AI_TOTAL_COST_TYPE = number;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link GEN_AI_USAGE_TOTAL_TOKENS} `gen_ai.usage.total_tokens`
  *
  * @deprecated Use {@link GEN_AI_USAGE_TOTAL_TOKENS} (gen_ai.usage.total_tokens) instead
  * @example 30
@@ -979,7 +1005,7 @@ export type CHANNEL_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link HTTP_CLIENT_ID} `http.client_id`
+ * Aliases: {@link HTTP_CLIENT_ID} `http.client_id`, {@link HTTP_HOST} `http.host`, {@link HTTP_CLIENT_IP} `http.client_ip`
  *
  * @example "example.com"
  */
@@ -1193,7 +1219,7 @@ export type CODE_LINE_NUMBER_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link CODE_LINENO} `code.lineno`
+ * Aliases: {@link CODE_LINENO} `code.lineno`, {@link CODE_LINE_NUMBER} `code.line.number`
  *
  * @deprecated Use {@link CODE_LINE_NUMBER} (code.line.number) instead
  * @example 42
@@ -2030,6 +2056,8 @@ export type GEN_AI_PIPELINE_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  *
+ * Aliases: {@link AI_INPUT_MESSAGES} `ai.input_messages`, {@link GEN_AI_REQUEST_MESSAGES} `gen_ai.request.messages`
+ *
  * @example "[{\"role\": \"user\", \"message\": \"hello\"}]"
  */
 export const GEN_AI_PROMPT = 'gen_ai.prompt';
@@ -2111,6 +2139,8 @@ export type GEN_AI_REQUEST_MAX_TOKENS_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link AI_INPUT_MESSAGES} `ai.input_messages`, {@link GEN_AI_PROMPT} `gen_ai.prompt`
  *
  * @example "[{\"role\": \"system\", \"content\": \"Generate a random number.\"}, {\"role\": \"user\", \"content\": [{\"text\": \"Generate a random number between 0 and 10.\", \"type\": \"text\"}]}]"
  */
@@ -2849,7 +2879,7 @@ export type HTTP_DECODED_RESPONSE_CONTENT_LENGTH_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link NETWORK_PROTOCOL_VERSION} `network.protocol.version`
+ * Aliases: {@link NETWORK_PROTOCOL_VERSION} `network.protocol.version`, {@link NET_PROTOCOL_VERSION} `net.protocol.version`
  *
  * @deprecated Use {@link NETWORK_PROTOCOL_VERSION} (network.protocol.version) instead
  * @example "1.1"
@@ -2892,7 +2922,7 @@ export type HTTP_FRAGMENT_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link CLIENT_ADDRESS} `client.address`
+ * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link CLIENT_ADDRESS} `client.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - Deprecated, use one of `server.address` or `client.address`, depending on the usage
  * @example "example.com"
@@ -3222,7 +3252,7 @@ export type HTTP_REQUEST_SECURE_CONNECTION_START_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link HTTP_RESPONSE_CONTENT_LENGTH} `http.response_content_length`, {@link HTTP_RESPONSE_HEADER_CONTENT_LENGTH} `http.response.header.content-length`, {@link HTTP_RESPONSE_HEADER['CONTENT_LENGTH']} `http.response.header['content-length']`
+ * Aliases: {@link HTTP_RESPONSE_CONTENT_LENGTH} `http.response_content_length`, {@link HTTP_RESPONSE_HEADER_CONTENT_LENGTH} `http.response.header.content-length`
  *
  * @example 123
  */
@@ -3332,7 +3362,7 @@ export type HTTP_RESPONSE_STATUS_CODE_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link HTTP_RESPONSE_BODY_SIZE} `http.response.body.size`, {@link HTTP_RESPONSE_HEADER_CONTENT_LENGTH} `http.response.header.content-length`, {@link HTTP_RESPONSE_HEADER['CONTENT_LENGTH']} `http.response.header['content-length']`
+ * Aliases: {@link HTTP_RESPONSE_BODY_SIZE} `http.response.body.size`, {@link HTTP_RESPONSE_HEADER_CONTENT_LENGTH} `http.response.header.content-length`
  *
  * @deprecated Use {@link HTTP_RESPONSE_BODY_SIZE} (http.response.body.size) instead
  * @example 123
@@ -3423,7 +3453,7 @@ export type HTTP_SCHEME_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link SERVER_ADDRESS} `server.address`
+ * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead
  * @example "example.com"
@@ -3490,7 +3520,7 @@ export type HTTP_TARGET_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`
+ * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link URL} `url`
  *
  * @deprecated Use {@link URL_FULL} (url.full) instead
  * @example "https://example.com/test?foo=bar#buzz"
@@ -4099,7 +4129,7 @@ export type NEL_TYPE_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link NETWORK_LOCAL_ADDRESS} `network.local.address`
+ * Aliases: {@link NETWORK_LOCAL_ADDRESS} `network.local.address`, {@link NET_SOCK_HOST_ADDR} `net.sock.host.addr`
  *
  * @deprecated Use {@link NETWORK_LOCAL_ADDRESS} (network.local.address) instead
  * @example "192.168.0.1"
@@ -4122,7 +4152,7 @@ export type NET_HOST_IP_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link SERVER_ADDRESS} `server.address`
+ * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link HTTP_HOST} `http.host`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead
  * @example "example.com"
@@ -4168,7 +4198,7 @@ export type NET_HOST_PORT_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link NETWORK_PEER_ADDRESS} `network.peer.address`
+ * Aliases: {@link NETWORK_PEER_ADDRESS} `network.peer.address`, {@link NET_SOCK_PEER_ADDR} `net.sock.peer.addr`
  *
  * @deprecated Use {@link NETWORK_PEER_ADDRESS} (network.peer.address) instead
  * @example "192.168.0.1"
@@ -4256,7 +4286,7 @@ export type NET_PROTOCOL_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link NETWORK_PROTOCOL_VERSION} `network.protocol.version`
+ * Aliases: {@link NETWORK_PROTOCOL_VERSION} `network.protocol.version`, {@link HTTP_FLAVOR} `http.flavor`
  *
  * @deprecated Use {@link NETWORK_PROTOCOL_VERSION} (network.protocol.version) instead
  * @example "1.1"
@@ -4300,7 +4330,7 @@ export type NET_SOCK_FAMILY_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link NETWORK_LOCAL_ADDRESS} `network.local.address`
+ * Aliases: {@link NETWORK_LOCAL_ADDRESS} `network.local.address`, {@link NET_HOST_IP} `net.host.ip`
  *
  * @deprecated Use {@link NETWORK_LOCAL_ADDRESS} (network.local.address) instead
  * @example "/var/my.sock"
@@ -4346,7 +4376,7 @@ export type NET_SOCK_HOST_PORT_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link NETWORK_PEER_ADDRESS} `network.peer.address`
+ * Aliases: {@link NETWORK_PEER_ADDRESS} `network.peer.address`, {@link NET_PEER_IP} `net.peer.ip`
  *
  * @deprecated Use {@link NETWORK_PEER_ADDRESS} (network.peer.address) instead
  * @example "192.168.0.1"
@@ -4477,6 +4507,8 @@ export type NETWORK_LOCAL_PORT_TYPE = number;
  * Contains PII: false
  *
  * Attribute defined in OTEL: Yes
+ *
+ * Aliases: {@link NET_PEER_IP} `net.peer.ip`, {@link NET_SOCK_PEER_ADDR} `net.sock.peer.addr`
  *
  * @example "10.1.2.80"
  */
@@ -5114,50 +5146,6 @@ export const RPC_SERVICE = 'rpc.service';
  */
 export type RPC_SERVICE_TYPE = string;
 
-// Path: model/attributes/sentry/sentry___internal__span_buffer_old_segment_id.json
-
-/**
- * Used by the span buffer to record the segment ID of the original span in the incoming transaction before reconstruction. `sentry._internal.span_buffer_old_segment_id`
- *
- * Attribute Value Type: `string` {@link SENTRY_INTERNAL_SPAN_BUFFER_OLD_SEGMENT_ID_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * Aliases: {@link _SENTRY_INTERNAL_OLD_SEGMENT_ID} `__sentry_internal_old_segment_id`
- *
- * @example "same"
- */
-export const SENTRY_INTERNAL_SPAN_BUFFER_OLD_SEGMENT_ID = 'sentry._internal.span_buffer_old_segment_id';
-
-/**
- * Type for {@link SENTRY_INTERNAL_SPAN_BUFFER_OLD_SEGMENT_ID} sentry._internal.span_buffer_old_segment_id
- */
-export type SENTRY_INTERNAL_SPAN_BUFFER_OLD_SEGMENT_ID_TYPE = string;
-
-// Path: model/attributes/sentry/sentry___internal__span_buffer_segment_id_outcome.json
-
-/**
- * Used by the span buffer to indicate whether reconstructing the segment resulted in the same segment ID as the original transaction. `sentry._internal.span_buffer_segment_id_outcome`
- *
- * Attribute Value Type: `string` {@link SENTRY_INTERNAL_SPAN_BUFFER_SEGMENT_ID_OUTCOME_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * Aliases: {@link _SENTRY_INTERNAL_SPAN_BUFFER_OUTCOME} `__sentry_internal_span_buffer_outcome`
- *
- * @example "55467cd258e1c"
- */
-export const SENTRY_INTERNAL_SPAN_BUFFER_SEGMENT_ID_OUTCOME = 'sentry._internal.span_buffer_segment_id_outcome';
-
-/**
- * Type for {@link SENTRY_INTERNAL_SPAN_BUFFER_SEGMENT_ID_OUTCOME} sentry._internal.span_buffer_segment_id_outcome
- */
-export type SENTRY_INTERNAL_SPAN_BUFFER_SEGMENT_ID_OUTCOME_TYPE = string;
-
 // Path: model/attributes/sentry/sentry__cancellation_reason.json
 
 /**
@@ -5177,6 +5165,26 @@ export const SENTRY_CANCELLATION_REASON = 'sentry.cancellation_reason';
  * Type for {@link SENTRY_CANCELLATION_REASON} sentry.cancellation_reason
  */
 export type SENTRY_CANCELLATION_REASON_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__client_sample_rate.json
+
+/**
+ * Rate at which a span was sampled in the SDK. `sentry.client_sample_rate`
+ *
+ * Attribute Value Type: `number` {@link SENTRY_CLIENT_SAMPLE_RATE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 0.5
+ */
+export const SENTRY_CLIENT_SAMPLE_RATE = 'sentry.client_sample_rate';
+
+/**
+ * Type for {@link SENTRY_CLIENT_SAMPLE_RATE} sentry.client_sample_rate
+ */
+export type SENTRY_CLIENT_SAMPLE_RATE_TYPE = number;
 
 // Path: model/attributes/sentry/sentry__dist.json
 
@@ -5468,26 +5476,6 @@ export const SENTRY_REPLAY_ID = 'sentry.replay_id';
  */
 export type SENTRY_REPLAY_ID_TYPE = string;
 
-// Path: model/attributes/sentry/sentry__sample_rate.json
-
-/**
- * The sample rate of the span. `sentry.sample_rate`
- *
- * Attribute Value Type: `number` {@link SENTRY_SAMPLE_RATE_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * @example 0.5
- */
-export const SENTRY_SAMPLE_RATE = 'sentry.sample_rate';
-
-/**
- * Type for {@link SENTRY_SAMPLE_RATE} sentry.sample_rate
- */
-export type SENTRY_SAMPLE_RATE_TYPE = number;
-
 // Path: model/attributes/sentry/sentry__sdk__integrations.json
 
 /**
@@ -5548,6 +5536,46 @@ export const SENTRY_SDK_VERSION = 'sentry.sdk.version';
  */
 export type SENTRY_SDK_VERSION_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__segment__name.json
+
+/**
+ * The segment name of a span `sentry.segment.name`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_SEGMENT_NAME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "GET /user"
+ */
+export const SENTRY_SEGMENT_NAME = 'sentry.segment.name';
+
+/**
+ * Type for {@link SENTRY_SEGMENT_NAME} sentry.segment.name
+ */
+export type SENTRY_SEGMENT_NAME_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__server_sample_rate.json
+
+/**
+ * Rate at which a span was sampled in Relay. `sentry.server_sample_rate`
+ *
+ * Attribute Value Type: `number` {@link SENTRY_SERVER_SAMPLE_RATE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 0.5
+ */
+export const SENTRY_SERVER_SAMPLE_RATE = 'sentry.server_sample_rate';
+
+/**
+ * Type for {@link SENTRY_SERVER_SAMPLE_RATE} sentry.server_sample_rate
+ */
+export type SENTRY_SERVER_SAMPLE_RATE_TYPE = number;
+
 // Path: model/attributes/sentry/sentry__span__source.json
 
 /**
@@ -5601,7 +5629,7 @@ export type SENTRY_TRANSACTION_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`
+ * Aliases: {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`
  *
  * @example "example.com"
  */
@@ -6455,9 +6483,8 @@ export type Attributes = {
   [RESOURCE_RENDER_BLOCKING_STATUS]?: RESOURCE_RENDER_BLOCKING_STATUS_TYPE;
   [RPC_GRPC_STATUS_CODE]?: RPC_GRPC_STATUS_CODE_TYPE;
   [RPC_SERVICE]?: RPC_SERVICE_TYPE;
-  [SENTRY_INTERNAL_SPAN_BUFFER_OLD_SEGMENT_ID]?: SENTRY_INTERNAL_SPAN_BUFFER_OLD_SEGMENT_ID_TYPE;
-  [SENTRY_INTERNAL_SPAN_BUFFER_SEGMENT_ID_OUTCOME]?: SENTRY_INTERNAL_SPAN_BUFFER_SEGMENT_ID_OUTCOME_TYPE;
   [SENTRY_CANCELLATION_REASON]?: SENTRY_CANCELLATION_REASON_TYPE;
+  [SENTRY_CLIENT_SAMPLE_RATE]?: SENTRY_CLIENT_SAMPLE_RATE_TYPE;
   [SENTRY_DIST]?: SENTRY_DIST_TYPE;
   [SENTRY_ENVIRONMENT]?: SENTRY_ENVIRONMENT_TYPE;
   [SENTRY_EXCLUSIVE_TIME]?: SENTRY_EXCLUSIVE_TIME_TYPE;
@@ -6472,10 +6499,11 @@ export type Attributes = {
   [SENTRY_PROFILE_ID]?: SENTRY_PROFILE_ID_TYPE;
   [SENTRY_RELEASE]?: SENTRY_RELEASE_TYPE;
   [SENTRY_REPLAY_ID]?: SENTRY_REPLAY_ID_TYPE;
-  [SENTRY_SAMPLE_RATE]?: SENTRY_SAMPLE_RATE_TYPE;
   [SENTRY_SDK_INTEGRATIONS]?: SENTRY_SDK_INTEGRATIONS_TYPE;
   [SENTRY_SDK_NAME]?: SENTRY_SDK_NAME_TYPE;
   [SENTRY_SDK_VERSION]?: SENTRY_SDK_VERSION_TYPE;
+  [SENTRY_SEGMENT_NAME]?: SENTRY_SEGMENT_NAME_TYPE;
+  [SENTRY_SERVER_SAMPLE_RATE]?: SENTRY_SERVER_SAMPLE_RATE_TYPE;
   [SENTRY_SPAN_SOURCE]?: SENTRY_SPAN_SOURCE_TYPE;
   [SENTRY_TRANSACTION]?: SENTRY_TRANSACTION_TYPE;
   [SERVER_ADDRESS]?: SERVER_ADDRESS_TYPE;
@@ -6756,9 +6784,8 @@ export type FullAttributes = {
   [ROUTE]?: ROUTE_TYPE;
   [RPC_GRPC_STATUS_CODE]?: RPC_GRPC_STATUS_CODE_TYPE;
   [RPC_SERVICE]?: RPC_SERVICE_TYPE;
-  [SENTRY_INTERNAL_SPAN_BUFFER_OLD_SEGMENT_ID]?: SENTRY_INTERNAL_SPAN_BUFFER_OLD_SEGMENT_ID_TYPE;
-  [SENTRY_INTERNAL_SPAN_BUFFER_SEGMENT_ID_OUTCOME]?: SENTRY_INTERNAL_SPAN_BUFFER_SEGMENT_ID_OUTCOME_TYPE;
   [SENTRY_CANCELLATION_REASON]?: SENTRY_CANCELLATION_REASON_TYPE;
+  [SENTRY_CLIENT_SAMPLE_RATE]?: SENTRY_CLIENT_SAMPLE_RATE_TYPE;
   [SENTRY_DIST]?: SENTRY_DIST_TYPE;
   [SENTRY_ENVIRONMENT]?: SENTRY_ENVIRONMENT_TYPE;
   [SENTRY_EXCLUSIVE_TIME]?: SENTRY_EXCLUSIVE_TIME_TYPE;
@@ -6773,10 +6800,11 @@ export type FullAttributes = {
   [SENTRY_PROFILE_ID]?: SENTRY_PROFILE_ID_TYPE;
   [SENTRY_RELEASE]?: SENTRY_RELEASE_TYPE;
   [SENTRY_REPLAY_ID]?: SENTRY_REPLAY_ID_TYPE;
-  [SENTRY_SAMPLE_RATE]?: SENTRY_SAMPLE_RATE_TYPE;
   [SENTRY_SDK_INTEGRATIONS]?: SENTRY_SDK_INTEGRATIONS_TYPE;
   [SENTRY_SDK_NAME]?: SENTRY_SDK_NAME_TYPE;
   [SENTRY_SDK_VERSION]?: SENTRY_SDK_VERSION_TYPE;
+  [SENTRY_SEGMENT_NAME]?: SENTRY_SEGMENT_NAME_TYPE;
+  [SENTRY_SERVER_SAMPLE_RATE]?: SENTRY_SERVER_SAMPLE_RATE_TYPE;
   [SENTRY_SPAN_SOURCE]?: SENTRY_SPAN_SOURCE_TYPE;
   [SENTRY_TRANSACTION]?: SENTRY_TRANSACTION_TYPE;
   [SERVER_ADDRESS]?: SERVER_ADDRESS_TYPE;

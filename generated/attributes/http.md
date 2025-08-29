@@ -229,7 +229,7 @@ The encoded body size of the response (in bytes).
 | Has PII | false |
 | Exists in OpenTelemetry | Yes |
 | Example | `123` |
-| Aliases | `http.response_content_length`, `http.response.header.content-length`, `http.response.header['content-length']` |
+| Aliases | `http.response_content_length`, `http.response.header.content-length` |
 
 ### http.response.header.\<key\>
 
@@ -319,7 +319,7 @@ The actual version of the protocol used for network communication.
 | Exists in OpenTelemetry | Yes |
 | Example | `1.1` |
 | Deprecated | Yes, use `network.protocol.version` instead |
-| Aliases | `network.protocol.version` |
+| Aliases | `network.protocol.version`, `net.protocol.version` |
 
 ### http.host
 
@@ -333,7 +333,7 @@ The domain name.
 | Example | `example.com` |
 | Deprecated | Yes, use `server.address` instead |
 | Deprecation Reason | Deprecated, use one of `server.address` or `client.address`, depending on the usage |
-| Aliases | `server.address`, `client.address` |
+| Aliases | `server.address`, `client.address`, `http.server_name`, `net.host.name` |
 
 ### http.method
 
@@ -359,7 +359,7 @@ The encoded body size of the response (in bytes).
 | Exists in OpenTelemetry | Yes |
 | Example | `123` |
 | Deprecated | Yes, use `http.response.body.size` instead |
-| Aliases | `http.response.body.size`, `http.response.header.content-length`, `http.response.header['content-length']` |
+| Aliases | `http.response.body.size`, `http.response.header.content-length` |
 
 ### http.response_transfer_size
 
@@ -398,7 +398,7 @@ The server domain name
 | Exists in OpenTelemetry | Yes |
 | Example | `example.com` |
 | Deprecated | Yes, use `server.address` instead |
-| Aliases | `server.address` |
+| Aliases | `server.address`, `net.host.name`, `http.host` |
 
 ### http.status_code
 
@@ -437,7 +437,7 @@ The URL of the resource that was fetched.
 | Exists in OpenTelemetry | Yes |
 | Example | `https://example.com/test?foo=bar#buzz` |
 | Deprecated | Yes, use `url.full` instead |
-| Aliases | `url.full`, `http.url` |
+| Aliases | `url.full`, `http.url`, `url` |
 
 ### http.user_agent
 
