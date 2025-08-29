@@ -3222,7 +3222,7 @@ export type HTTP_REQUEST_SECURE_CONNECTION_START_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link HTTP_RESPONSE_CONTENT_LENGTH} `http.response_content_length`, {@link HTTP_RESPONSE_HEADER_CONTENT_LENGTH} `http.response.header.content-length`, {@link HTTP_RESPONSE_HEADER['CONTENT_LENGTH']} `http.response.header['content-length']`
+ * Aliases: {@link HTTP_RESPONSE_CONTENT_LENGTH} `http.response_content_length`, {@link HTTP_RESPONSE_HEADER_CONTENT_LENGTH} `http.response.header.content-length`
  *
  * @example 123
  */

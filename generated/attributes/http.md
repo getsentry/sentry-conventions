@@ -229,7 +229,7 @@ The encoded body size of the response (in bytes).
 | Has PII | false |
 | Exists in OpenTelemetry | Yes |
 | Example | `123` |
-| Aliases | `http.response_content_length`, `http.response.header.content-length`, `http.response.header['content-length']` |
+| Aliases | `http.response_content_length`, `http.response.header.content-length` |
 
 ### http.response.header.\<key\>
 
