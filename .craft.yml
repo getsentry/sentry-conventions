@@ -7,7 +7,7 @@ targets:
     id: "@sentry/conventions"
     includeNames: /^sentry-conventions-\d.*\.tgz$/
 
-  # pypi Release Target
+  # pypi Release Targets
   - name: pypi
   - name: sentry-pypi
     internalPypiRepo: getsentry/pypi
