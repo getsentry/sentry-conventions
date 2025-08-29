@@ -7,6 +7,11 @@ targets:
     id: "@sentry/conventions"
     includeNames: /^sentry-conventions-\d.*\.tgz$/
 
+  # pypi Release Targets
+  - name: pypi
+  - name: sentry-pypi
+    internalPypiRepo: getsentry/pypi
+
   # Google Cloud Storage Target
   # TODO: Uncomment this when we have a bucket for the model conventions json
   # - name: gcs

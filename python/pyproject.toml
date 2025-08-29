@@ -1,0 +1,21 @@
+[project]
+name = "sentry-conventions"
+version = "0.1.0"
+description = "Sentry Semantic Conventions"
+license = "MIT"
+readme = "README.md"
+requires-python = ">=3.11.11"
+dependencies = []
+
+[project.urls]
+Homepage = "https://sentry.io"
+Repository = "https://github.com/getsentry/sentry-conventions.git"
+Issues = "https://github.com/getsentry/sentry-conventions/issues"
+
+[dependency-groups]
+dev = [
+    "black>=25.1.0",
+    "isort>=6.0.1",
+    "mypy>=1.17.1",
+    "pyflakes>=3.4.0",
+]

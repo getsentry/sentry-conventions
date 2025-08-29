@@ -19,6 +19,9 @@ jobs:
         with:
           node-version-file: "package.json"
 
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+
       - name: Install node modules
         run: yarn install --frozen-lockfile
 
@@ -28,8 +31,11 @@ jobs:
       - name: Generate tarball artifact
         run: yarn build:tarball
 
-      - name: Run linter
+      - name: Lint JS
         run: yarn lint
+
+      - name: Lint Python
+        run: "cd python && uv run pyflakes src/ && uv run black src/ && uv run isort src/ && uv run mypy ."
 
       - name: Run tests
         run: yarn test
@@ -53,5 +59,7 @@ jobs:
           name: ${{ github.sha }}
           path: |
             javascript/**/*.tgz
+            python/**/*.tgz
+            python/**/*.whl
             model/**/*.tgz
           if-no-files-found: error
