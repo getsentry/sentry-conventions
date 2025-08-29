@@ -7,8 +7,5 @@
   },
   "is_in_otel": true,
   "example": 123,
-  "alias": [
-    "http.response_content_length",
-    "http.response.header.content-length"
-  ]
+  "alias": ["http.response_content_length", "http.response.header.content-length"]
 }
