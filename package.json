@@ -12,7 +12,7 @@
 
     "build:js": "(cd javascript/sentry-conventions && yarn build)",
 
-    "lint:python": "(cd python && uv run black src/ && uv run isort src/ && uv run mypy .)",
+    "lint:python": "(cd python && uv run pyflakes src/ && uv run black src/ && uv run isort src/ && uv run mypy .)",
     "build:python": "(cd python && uv build)",
 
     "build:tarball": "yarn build:tarball:js && yarn build:python && yarn build:tarball:model",
