@@ -7,6 +7,5 @@
   },
   "is_in_otel": false,
   "example": "generateMetadata",
-  "alias": ["sentry.nextjs.function.type"],
   "sdks": ["javascript"]
 }

@@ -3222,7 +3222,7 @@ export type HTTP_REQUEST_SECURE_CONNECTION_START_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link HTTP_RESPONSE_CONTENT_LENGTH} `http.response_content_length`, {@link HTTP_RESPONSE_HEADER_CONTENT_LENGTH} `http.response.header.content-length`, {@link HTTP_RESPONSE_HEADER['CONTENT_LENGTH']} `http.response.header['content-length']`
+ * Aliases: {@link HTTP_RESPONSE_CONTENT_LENGTH} `http.response_content_length`, {@link HTTP_RESPONSE_HEADER_CONTENT_LENGTH} `http.response.header.content-length`
  *
  * @example 123
  */
@@ -3332,7 +3332,7 @@ export type HTTP_RESPONSE_STATUS_CODE_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link HTTP_RESPONSE_BODY_SIZE} `http.response.body.size`, {@link HTTP_RESPONSE_HEADER_CONTENT_LENGTH} `http.response.header.content-length`, {@link HTTP_RESPONSE_HEADER['CONTENT_LENGTH']} `http.response.header['content-length']`
+ * Aliases: {@link HTTP_RESPONSE_BODY_SIZE} `http.response.body.size`, {@link HTTP_RESPONSE_HEADER_CONTENT_LENGTH} `http.response.header.content-length`
  *
  * @deprecated Use {@link HTTP_RESPONSE_BODY_SIZE} (http.response.body.size) instead
  * @example 123
@@ -5289,8 +5289,6 @@ export type SENTRY_MODULE_KEY_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link SENTRY_NEXTJS_FUNCTION_ROUTE} `sentry.nextjs.function.route`
- *
  * @example "/posts/[id]/layout"
  */
 export const SENTRY_NEXTJS_SSR_FUNCTION_ROUTE = 'sentry.nextjs.ssr.function.route';
@@ -5310,8 +5308,6 @@ export type SENTRY_NEXTJS_SSR_FUNCTION_ROUTE_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
- *
- * Aliases: {@link SENTRY_NEXTJS_FUNCTION_TYPE} `sentry.nextjs.function.type`
  *
  * @example "generateMetadata"
  */

@@ -130,7 +130,6 @@ A parameterized route for a function in Next.js that contributes to Server-Side 
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `/posts/[id]/layout` |
-| Aliases | `sentry.nextjs.function.route` |
 
 ### sentry.nextjs.ssr.function.type
 
@@ -142,7 +141,6 @@ A descriptor for a for a function in Next.js that contributes to Server-Side Ren
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `generateMetadata` |
-| Aliases | `sentry.nextjs.function.type` |
 
 ### sentry.op
 

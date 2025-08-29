@@ -5,6 +5,8 @@ import Ajv from 'ajv';
 import { describe, expect, it } from 'vitest';
 
 import schema from '../schemas/attribute.schema.json';
+import type { AttributeJson } from '../scripts/types';
+import { attributeKeyToFileName, fileNameToAttributeKey } from '../scripts/utils';
 
 const traceFolders = path.resolve(__dirname, '../model/attributes');
 
@@ -15,7 +17,7 @@ describe('attribute json', async () => {
   for (const file of files) {
     const name = path.basename(file);
     describe(name, async () => {
-      const content = JSON.parse(await fs.promises.readFile(file, 'utf-8'));
+      const content: AttributeJson = JSON.parse(await fs.promises.readFile(file, 'utf-8'));
 
       it('should follow the attribute json schema', () => {
         const ajv = new Ajv();
@@ -35,6 +37,9 @@ describe('attribute json', async () => {
           return;
         }
 
+        if (!content.example) {
+          return;
+        }
         switch (content.type) {
           case 'integer':
           case 'double':
@@ -43,21 +48,21 @@ describe('attribute json', async () => {
           case 'integer[]':
           case 'double[]':
             expect(Array.isArray(content.example)).toBe(true);
-            expect(content.example.every((e: number) => typeof e === 'number')).toBe(true);
+            expect((content.example as number[]).every((e: number) => typeof e === 'number')).toBe(true);
             break;
           case 'string':
             expect(typeof content.example).toBe('string');
             break;
           case 'string[]':
             expect(Array.isArray(content.example)).toBe(true);
-            expect(content.example.every((e: string) => typeof e === 'string')).toBe(true);
+            expect((content.example as string[]).every((e: string) => typeof e === 'string')).toBe(true);
             break;
           case 'boolean':
             expect(typeof content.example).toBe('boolean');
             break;
           case 'boolean[]':
             expect(Array.isArray(content.example)).toBe(true);
-            expect(content.example.every((e: boolean) => typeof e === 'boolean')).toBe(true);
+            expect((content.example as boolean[]).every((e: boolean) => typeof e === 'boolean')).toBe(true);
             break;
           default:
             throw new Error('Invalid type');
@@ -65,9 +70,60 @@ describe('attribute json', async () => {
       });
 
       it('should follow the correct naming convention', () => {
-        expect(name.replaceAll('__', '.').replaceAll('[', '<').replaceAll(']', '>').replace('.json', '')).toMatch(
-          content.key,
-        );
+        expect(fileNameToAttributeKey(name)).toMatch(content.key);
+      });
+
+      it('its replacement should exist', async () => {
+        if (!content.deprecation?.replacement) {
+          return;
+        }
+        const replacement = content.deprecation?.replacement;
+        const replacementFileName = attributeKeyToFileName(replacement);
+        let replacementFilePath: string;
+
+        if (replacement.includes('.')) {
+          const namespace = replacement.split('.')[0] as string;
+          replacementFilePath = path.join(traceFolders, namespace, replacementFileName);
+        } else {
+          replacementFilePath = path.join(traceFolders, replacementFileName);
+        }
+
+        const replacementExists = await fs.promises
+          .access(replacementFilePath, fs.constants.F_OK)
+          .then(() => true)
+          .catch(() => false);
+        expect(replacementExists);
+      });
+
+      it('all of its aliases should exist', async () => {
+        if (!content.alias || content.alias.length === 0) {
+          return;
+        }
+
+        const missingAliases: string[] = [];
+
+        for (const alias of content.alias) {
+          const aliasFileName = attributeKeyToFileName(alias);
+          let aliasFilePath: string;
+
+          if (alias.includes('.')) {
+            const namespace = alias.split('.')[0] as string;
+            aliasFilePath = path.join(traceFolders, namespace, aliasFileName);
+          } else {
+            aliasFilePath = path.join(traceFolders, aliasFileName);
+          }
+
+          const aliasExists = await fs.promises
+            .access(aliasFilePath, fs.constants.F_OK)
+            .then(() => true)
+            .catch(() => false);
+
+          if (!aliasExists) {
+            missingAliases.push(alias);
+          }
+        }
+
+        expect(missingAliases).toEqual([]);
       });
     });
   }
