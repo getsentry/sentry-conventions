@@ -11,5 +11,5 @@
     "_status": null,
     "replacement": "code.line.number"
   },
-  "alias": ["code.lineno"]
+  "alias": ["code.lineno", "code.line.number"]
 }

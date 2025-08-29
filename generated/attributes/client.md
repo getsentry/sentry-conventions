@@ -18,7 +18,7 @@ Client address - domain name if available without reverse DNS lookup; otherwise,
 | Has PII | false |
 | Exists in OpenTelemetry | Yes |
 | Example | `example.com` |
-| Aliases | `http.client_id` |
+| Aliases | `http.client_id`, `http.host`, `http.client_ip` |
 
 ### client.port
 

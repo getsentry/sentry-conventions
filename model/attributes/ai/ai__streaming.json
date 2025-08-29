@@ -11,5 +11,6 @@
   "deprecation": {
     "_status": null,
     "replacement": "gen_ai.response.streaming"
-  }
+  },
+  "alias": ["gen_ai.response.streaming"]
 }

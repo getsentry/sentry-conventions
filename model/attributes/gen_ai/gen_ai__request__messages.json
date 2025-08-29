@@ -7,5 +7,5 @@
   },
   "is_in_otel": false,
   "example": "[{\"role\": \"system\", \"content\": \"Generate a random number.\"}, {\"role\": \"user\", \"content\": [{\"text\": \"Generate a random number between 0 and 10.\", \"type\": \"text\"}]}]",
-  "alias": []
+  "alias": ["ai.input_messages", "gen_ai.prompt"]
 }

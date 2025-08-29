@@ -48,6 +48,7 @@ Peer address of the network connection - IP address or Unix domain socket name.
 | Has PII | false |
 | Exists in OpenTelemetry | Yes |
 | Example | `10.1.2.80` |
+| Aliases | `net.peer.ip`, `net.sock.peer.addr` |
 
 ### network.peer.port
 

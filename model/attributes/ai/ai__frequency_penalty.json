@@ -10,5 +10,6 @@
   "deprecation": {
     "_status": null,
     "replacement": "gen_ai.request.frequency_penalty"
-  }
+  },
+  "alias": ["gen_ai.request.frequency_penalty"]
 }

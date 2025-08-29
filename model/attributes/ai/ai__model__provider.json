@@ -10,5 +10,6 @@
   "deprecation": {
     "_status": null,
     "replacement": "gen_ai.system"
-  }
+  },
+  "alias": ["gen_ai.system"]
 }
