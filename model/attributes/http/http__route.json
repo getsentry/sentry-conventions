@@ -6,5 +6,6 @@
     "key": "false"
   },
   "is_in_otel": true,
-  "example": "/users/:id"
+  "example": "/users/:id",
+  "alias": ["route"]
 }
