@@ -155,7 +155,7 @@ The sentry release.
 | Exists in OpenTelemetry | No |
 | Example | `production` |
 | Deprecated | Yes, use `sentry.release` instead |
-| Aliases | `sentry.release` |
+| Aliases | `sentry.release`, `service.version` |
 
 ### replay_id
 

@@ -7,7 +7,7 @@
   },
   "is_in_otel": true,
   "example": "http.response.header.custom-header=['foo', 'bar']",
-  "deprecation": { 
+  "deprecation": {
     "_status": "normalize",
     "replacement": "http.response.body.size"
   },
