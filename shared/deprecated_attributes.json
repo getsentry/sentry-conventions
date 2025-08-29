@@ -671,11 +671,7 @@
         "_status": "backfill",
         "replacement": "http.response.body.size"
       },
-      "alias": [
-        "http.response.body.size",
-        "http.response.header.content-length",
-        "http.response.header['content-length']"
-      ]
+      "alias": ["http.response.body.size", "http.response.header.content-length"]
     },
     {
       "key": "http.response_transfer_size",

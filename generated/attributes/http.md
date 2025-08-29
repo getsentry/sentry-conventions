@@ -359,7 +359,7 @@ The encoded body size of the response (in bytes).
 | Exists in OpenTelemetry | Yes |
 | Example | `123` |
 | Deprecated | Yes, use `http.response.body.size` instead |
-| Aliases | `http.response.body.size`, `http.response.header.content-length`, `http.response.header['content-length']` |
+| Aliases | `http.response.body.size`, `http.response.header.content-length` |
 
 ### http.response_transfer_size
 

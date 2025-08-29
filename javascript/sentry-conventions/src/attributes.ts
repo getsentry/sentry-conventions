@@ -3332,7 +3332,7 @@ export type HTTP_RESPONSE_STATUS_CODE_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link HTTP_RESPONSE_BODY_SIZE} `http.response.body.size`, {@link HTTP_RESPONSE_HEADER_CONTENT_LENGTH} `http.response.header.content-length`, {@link HTTP_RESPONSE_HEADER['CONTENT_LENGTH']} `http.response.header['content-length']`
+ * Aliases: {@link HTTP_RESPONSE_BODY_SIZE} `http.response.body.size`, {@link HTTP_RESPONSE_HEADER_CONTENT_LENGTH} `http.response.header.content-length`
  *
  * @deprecated Use {@link HTTP_RESPONSE_BODY_SIZE} (http.response.body.size) instead
  * @example 123
