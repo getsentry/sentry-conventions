@@ -1,0 +1,10 @@
+{
+  "key": "sentry.segment.name",
+  "brief": "The segment name of a span",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "GET /user"
+}

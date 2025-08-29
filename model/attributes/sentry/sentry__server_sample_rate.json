@@ -1,6 +1,6 @@
 {
-  "key": "sentry.sample_rate",
-  "brief": "The sample rate of the span.",
+  "key": "sentry.server_sample_rate",
+  "brief": "Rate at which a span was sampled in Relay.",
   "type": "double",
   "pii": {
     "key": "false"
