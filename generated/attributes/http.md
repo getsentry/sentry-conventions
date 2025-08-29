@@ -21,7 +21,6 @@
   - [http.request.secure_connection_start](#httprequestsecure_connection_start)
   - [http.response.body.size](#httpresponsebodysize)
   - [http.response.header.\<key\>](#httpresponseheaderkey)
-  - [http.response.header.content-length](#httpresponseheadercontentlength)
   - [http.response.size](#httpresponsesize)
   - [http.response.status_code](#httpresponsestatus_code)
   - [http.route](#httproute)
@@ -32,6 +31,7 @@
   - [http.method](#httpmethod)
   - [http.response_content_length](#httpresponse_content_length)
   - [http.response_transfer_size](#httpresponse_transfer_size)
+  - [http.response.header.content-length](#httpresponseheadercontentlength)
   - [http.scheme](#httpscheme)
   - [http.server_name](#httpserver_name)
   - [http.status_code](#httpstatus_code)
@@ -243,18 +243,6 @@ HTTP response headers, \<key\> being the normalized HTTP Header name (lowercase)
 | Has dynamic suffix | Yes |
 | Example | `http.response.header.custom-header=['foo', 'bar']` |
 
-### http.response.header.content-length
-
-The size of the message body sent to the recipient (in bytes)
-
-| Property | Value |
-| --- | --- |
-| Type | `string` |
-| Has PII | false |
-| Exists in OpenTelemetry | Yes |
-| Example | `http.response.header.custom-header=['foo', 'bar']` |
-| Aliases | `http.response_content_length`, `http.response.body.size` |
-
 ### http.response.size
 
 The transfer size of the response (in bytes).
@@ -289,7 +277,7 @@ The matched route, that is, the path template in the format used by the respecti
 | Has PII | false |
 | Exists in OpenTelemetry | Yes |
 | Example | `/users/:id` |
-| Aliases | `url.template` |
+| Aliases | `route` |
 
 ## Deprecated Attributes
 
@@ -373,6 +361,19 @@ The transfer size of the response (in bytes).
 | Example | `456` |
 | Deprecated | Yes, use `http.response.size` instead |
 | Aliases | `http.response.size` |
+
+### http.response.header.content-length
+
+The size of the message body sent to the recipient (in bytes)
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | Yes |
+| Example | `http.response.header.custom-header=['foo', 'bar']` |
+| Deprecated | Yes, use `http.response.body.size` instead |
+| Aliases | `http.response_content_length`, `http.response.body.size` |
 
 ### http.scheme
 

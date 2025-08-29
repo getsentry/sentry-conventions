@@ -17,7 +17,6 @@
   - [sentry.origin](#sentryorigin)
   - [sentry.platform](#sentryplatform)
   - [sentry.profile_id](#sentryprofile_id)
-  - [sentry.release](#sentryrelease)
   - [sentry.replay_id](#sentryreplay_id)
   - [sentry.sdk.integrations](#sentrysdkintegrations)
   - [sentry.sdk.name](#sentrysdkname)
@@ -26,6 +25,8 @@
   - [sentry.server_sample_rate](#sentryserver_sample_rate)
   - [sentry.span.source](#sentryspansource)
   - [sentry.transaction](#sentrytransaction)
+- [Deprecated Attributes](#deprecated-attributes)
+  - [sentry.release](#sentryrelease)
 
 ## Stable Attributes
 
@@ -186,18 +187,6 @@ The id of the sentry profile.
 | Example | `123e4567e89b12d3a456426614174000` |
 | Aliases | `profile_id` |
 
-### sentry.release
-
-The sentry release.
-
-| Property | Value |
-| --- | --- |
-| Type | `string` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `7.0.0` |
-| Aliases | `service.version`, `release` |
-
 ### sentry.replay_id
 
 The id of the sentry replay.
@@ -287,4 +276,21 @@ The sentry transaction (segment name).
 | Exists in OpenTelemetry | No |
 | Example | `GET /` |
 | Aliases | `transaction` |
+
+## Deprecated Attributes
+
+These attributes are deprecated and will be removed in a future version. Please use the recommended replacements.
+
+### sentry.release
+
+The sentry release.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `7.0.0` |
+| Deprecated | Yes, use `service.version` instead |
+| Aliases | `service.version`, `release` |
 

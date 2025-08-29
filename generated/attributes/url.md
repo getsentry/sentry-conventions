@@ -109,7 +109,7 @@ The URI scheme component identifying the used protocol.
 
 ### url.template
 
-The low-cardinality template of an absolute path reference.
+The low-cardinality template of an [absolute path reference](https://www.rfc-editor.org/rfc/rfc3986#section-4.2).
 
 | Property | Value |
 | --- | --- |
@@ -117,5 +117,4 @@ The low-cardinality template of an absolute path reference.
 | Has PII | false |
 | Exists in OpenTelemetry | Yes |
 | Example | `/users/:id` |
-| Aliases | `http.route` |
 

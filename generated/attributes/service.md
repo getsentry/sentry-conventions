@@ -29,5 +29,5 @@ The version string of the service API or implementation. The format is not defin
 | Has PII | false |
 | Exists in OpenTelemetry | Yes |
 | Example | `5.0.0` |
-| Aliases | `sentry.release` |
+| Aliases | `sentry.release`, `release` |
 

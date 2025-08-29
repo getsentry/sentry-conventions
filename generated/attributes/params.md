@@ -2,10 +2,12 @@
 
 # Params Attributes
 
-- [Stable Attributes](#stable-attributes)
+- [Deprecated Attributes](#deprecated-attributes)
   - [params.\<key\>](#paramskey)
 
-## Stable Attributes
+## Deprecated Attributes
+
+These attributes are deprecated and will be removed in a future version. Please use the recommended replacements.
 
 ### params.\<key\>
 
@@ -18,5 +20,6 @@ Decoded parameters extracted from a URL path. Usually added by client-side routi
 | Exists in OpenTelemetry | No |
 | Has dynamic suffix | Yes |
 | Example | `params.id='123'` |
+| Deprecated | Yes, use `url.path.parameter.\<key\>` instead |
 | Aliases | `url.path.parameter.\<key\>` |
 

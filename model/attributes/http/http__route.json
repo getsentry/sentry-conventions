@@ -7,5 +7,5 @@
   },
   "is_in_otel": true,
   "example": "/users/:id",
-  "alias": ["url.template"]
+  "alias": ["route"]
 }
