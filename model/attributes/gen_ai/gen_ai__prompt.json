@@ -6,6 +6,11 @@
     "key": "maybe"
   },
   "is_in_otel": true,
+  "deprecation": {
+      "_status": null,
+      "replacement": "gen_ai.request.messages",
+      "reason": "Deprecated, use gen_ai.request.messages with the new format instead."
+  },
   "example": "[{\"role\": \"user\", \"message\": \"hello\"}]",
   "alias": ["ai.input_messages", "gen_ai.request.messages"]
 }
