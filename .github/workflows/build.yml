@@ -35,7 +35,7 @@ jobs:
         run: yarn lint
 
       - name: Lint Python
-        run: "cd python && uv run pyflakes src/ && uv run black src/ && uv run isort src/ && uv run mypy ."
+        run: yarn lint:python
 
       - name: Run tests
         run: yarn test
