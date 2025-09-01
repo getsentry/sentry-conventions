@@ -522,3 +522,4 @@ The number of tokens used in the GenAI input (prompt).
 | Example | `20` |
 | Deprecated | Yes, use `gen_ai.usage.input_tokens` instead |
 | Aliases | `ai.prompt_tokens.used`, `gen_ai.usage.input_tokens` |
+
