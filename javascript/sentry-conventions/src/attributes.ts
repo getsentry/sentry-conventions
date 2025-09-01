@@ -1338,7 +1338,7 @@ export const DB_OPERATION_NAME = 'db.operation.name';
  */
 export type DB_OPERATION_NAME_TYPE = string;
 
-// Path: model/attributes/db/db__query__parameter__<key>.json
+// Path: model/attributes/db/db__query__parameter__[key].json
 
 /**
  * A query parameter used in db.query.text, with <key> being the parameter name, and the attribute value being a string representation of the parameter value. `db.query.parameter.<key>`
@@ -1794,7 +1794,7 @@ export const FAAS_TRIGGER = 'faas.trigger';
  */
 export type FAAS_TRIGGER_TYPE = string;
 
-// Path: model/attributes/flag/flag__evaluation__<key>.json
+// Path: model/attributes/flag/flag__evaluation__[key].json
 
 /**
  * An instance of a feature flag evaluation. The value of this attribute is the boolean representing the evaluation result. The <key> suffix is the name of the feature flag. `flag.evaluation.<key>`
@@ -3047,7 +3047,7 @@ export const HTTP_REQUEST_FETCH_START = 'http.request.fetch_start';
  */
 export type HTTP_REQUEST_FETCH_START_TYPE = number;
 
-// Path: model/attributes/http/http__request__header__<key>.json
+// Path: model/attributes/http/http__request__header__[key].json
 
 /**
  * HTTP request headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values. `http.request.header.<key>`
@@ -3233,7 +3233,7 @@ export const HTTP_RESPONSE_BODY_SIZE = 'http.response.body.size';
  */
 export type HTTP_RESPONSE_BODY_SIZE_TYPE = number;
 
-// Path: model/attributes/http/http__response__header__<key>.json
+// Path: model/attributes/http/http__response__header__[key].json
 
 /**
  * HTTP response headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values. `http.response.header.<key>`
@@ -4773,7 +4773,7 @@ export const OTEL_STATUS_DESCRIPTION = 'otel.status_description';
  */
 export type OTEL_STATUS_DESCRIPTION_TYPE = string;
 
-// Path: model/attributes/params/params__<key>.json
+// Path: model/attributes/params/params__[key].json
 
 /**
  * Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router. `params.<key>`
@@ -4940,7 +4940,7 @@ export const PROFILE_ID = 'profile_id';
  */
 export type PROFILE_ID_TYPE = string;
 
-// Path: model/attributes/query/query__<key>.json
+// Path: model/attributes/query/query__[key].json
 
 /**
  * An item in a query string. Usually added by client-side routing frameworks like vue-router. `query.<key>`
@@ -4986,7 +4986,7 @@ export const RELEASE = 'release';
  */
 export type RELEASE_TYPE = string;
 
-// Path: model/attributes/remix/remix__action_form_data__<key>.json
+// Path: model/attributes/remix/remix__action_form_data__[key].json
 
 /**
  * Remix form data, <key> being the form data key, the value being the form data value. `remix.action_form_data.<key>`
@@ -5113,50 +5113,6 @@ export const RPC_SERVICE = 'rpc.service';
  * Type for {@link RPC_SERVICE} rpc.service
  */
 export type RPC_SERVICE_TYPE = string;
-
-// Path: model/attributes/sentry/sentry___internal__span_buffer_old_segment_id.json
-
-/**
- * Used by the span buffer to record the segment ID of the original span in the incoming transaction before reconstruction. `sentry._internal.span_buffer_old_segment_id`
- *
- * Attribute Value Type: `string` {@link SENTRY_INTERNAL_SPAN_BUFFER_OLD_SEGMENT_ID_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * Aliases: {@link _SENTRY_INTERNAL_OLD_SEGMENT_ID} `__sentry_internal_old_segment_id`
- *
- * @example "same"
- */
-export const SENTRY_INTERNAL_SPAN_BUFFER_OLD_SEGMENT_ID = 'sentry._internal.span_buffer_old_segment_id';
-
-/**
- * Type for {@link SENTRY_INTERNAL_SPAN_BUFFER_OLD_SEGMENT_ID} sentry._internal.span_buffer_old_segment_id
- */
-export type SENTRY_INTERNAL_SPAN_BUFFER_OLD_SEGMENT_ID_TYPE = string;
-
-// Path: model/attributes/sentry/sentry___internal__span_buffer_segment_id_outcome.json
-
-/**
- * Used by the span buffer to indicate whether reconstructing the segment resulted in the same segment ID as the original transaction. `sentry._internal.span_buffer_segment_id_outcome`
- *
- * Attribute Value Type: `string` {@link SENTRY_INTERNAL_SPAN_BUFFER_SEGMENT_ID_OUTCOME_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * Aliases: {@link _SENTRY_INTERNAL_SPAN_BUFFER_OUTCOME} `__sentry_internal_span_buffer_outcome`
- *
- * @example "55467cd258e1c"
- */
-export const SENTRY_INTERNAL_SPAN_BUFFER_SEGMENT_ID_OUTCOME = 'sentry._internal.span_buffer_segment_id_outcome';
-
-/**
- * Type for {@link SENTRY_INTERNAL_SPAN_BUFFER_SEGMENT_ID_OUTCOME} sentry._internal.span_buffer_segment_id_outcome
- */
-export type SENTRY_INTERNAL_SPAN_BUFFER_SEGMENT_ID_OUTCOME_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__cancellation_reason.json
 
@@ -5300,7 +5256,7 @@ export const SENTRY_IDLE_SPAN_FINISH_REASON = 'sentry.idle_span_finish_reason';
  */
 export type SENTRY_IDLE_SPAN_FINISH_REASON_TYPE = string;
 
-// Path: model/attributes/sentry/sentry__module__<key>.json
+// Path: model/attributes/sentry/sentry__module__[key].json
 
 /**
  * A module that was loaded in the process. The key is the name of the module. `sentry.module.<key>`
@@ -5551,6 +5507,26 @@ export const SENTRY_SDK_VERSION = 'sentry.sdk.version';
  * Type for {@link SENTRY_SDK_VERSION} sentry.sdk.version
  */
 export type SENTRY_SDK_VERSION_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__segment__id.json
+
+/**
+ * The segment ID of a span `sentry.segment.id`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_SEGMENT_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "051581bf3cb55c13"
+ */
+export const SENTRY_SEGMENT_ID = 'sentry.segment.id';
+
+/**
+ * Type for {@link SENTRY_SEGMENT_ID} sentry.segment.id
+ */
+export type SENTRY_SEGMENT_ID_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__segment__name.json
 
@@ -5945,7 +5921,7 @@ export const URL_PATH = 'url.path';
  */
 export type URL_PATH_TYPE = string;
 
-// Path: model/attributes/url/url__path__parameter__<key>.json
+// Path: model/attributes/url/url__path__parameter__[key].json
 
 /**
  * Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router. `url.path.parameter.<key>`
@@ -6499,8 +6475,6 @@ export type Attributes = {
   [RESOURCE_RENDER_BLOCKING_STATUS]?: RESOURCE_RENDER_BLOCKING_STATUS_TYPE;
   [RPC_GRPC_STATUS_CODE]?: RPC_GRPC_STATUS_CODE_TYPE;
   [RPC_SERVICE]?: RPC_SERVICE_TYPE;
-  [SENTRY_INTERNAL_SPAN_BUFFER_OLD_SEGMENT_ID]?: SENTRY_INTERNAL_SPAN_BUFFER_OLD_SEGMENT_ID_TYPE;
-  [SENTRY_INTERNAL_SPAN_BUFFER_SEGMENT_ID_OUTCOME]?: SENTRY_INTERNAL_SPAN_BUFFER_SEGMENT_ID_OUTCOME_TYPE;
   [SENTRY_CANCELLATION_REASON]?: SENTRY_CANCELLATION_REASON_TYPE;
   [SENTRY_CLIENT_SAMPLE_RATE]?: SENTRY_CLIENT_SAMPLE_RATE_TYPE;
   [SENTRY_DIST]?: SENTRY_DIST_TYPE;
@@ -6520,6 +6494,7 @@ export type Attributes = {
   [SENTRY_SDK_INTEGRATIONS]?: SENTRY_SDK_INTEGRATIONS_TYPE;
   [SENTRY_SDK_NAME]?: SENTRY_SDK_NAME_TYPE;
   [SENTRY_SDK_VERSION]?: SENTRY_SDK_VERSION_TYPE;
+  [SENTRY_SEGMENT_ID]?: SENTRY_SEGMENT_ID_TYPE;
   [SENTRY_SEGMENT_NAME]?: SENTRY_SEGMENT_NAME_TYPE;
   [SENTRY_SERVER_SAMPLE_RATE]?: SENTRY_SERVER_SAMPLE_RATE_TYPE;
   [SENTRY_SPAN_SOURCE]?: SENTRY_SPAN_SOURCE_TYPE;
@@ -6802,8 +6777,6 @@ export type FullAttributes = {
   [ROUTE]?: ROUTE_TYPE;
   [RPC_GRPC_STATUS_CODE]?: RPC_GRPC_STATUS_CODE_TYPE;
   [RPC_SERVICE]?: RPC_SERVICE_TYPE;
-  [SENTRY_INTERNAL_SPAN_BUFFER_OLD_SEGMENT_ID]?: SENTRY_INTERNAL_SPAN_BUFFER_OLD_SEGMENT_ID_TYPE;
-  [SENTRY_INTERNAL_SPAN_BUFFER_SEGMENT_ID_OUTCOME]?: SENTRY_INTERNAL_SPAN_BUFFER_SEGMENT_ID_OUTCOME_TYPE;
   [SENTRY_CANCELLATION_REASON]?: SENTRY_CANCELLATION_REASON_TYPE;
   [SENTRY_CLIENT_SAMPLE_RATE]?: SENTRY_CLIENT_SAMPLE_RATE_TYPE;
   [SENTRY_DIST]?: SENTRY_DIST_TYPE;
@@ -6823,6 +6796,7 @@ export type FullAttributes = {
   [SENTRY_SDK_INTEGRATIONS]?: SENTRY_SDK_INTEGRATIONS_TYPE;
   [SENTRY_SDK_NAME]?: SENTRY_SDK_NAME_TYPE;
   [SENTRY_SDK_VERSION]?: SENTRY_SDK_VERSION_TYPE;
+  [SENTRY_SEGMENT_ID]?: SENTRY_SEGMENT_ID_TYPE;
   [SENTRY_SEGMENT_NAME]?: SENTRY_SEGMENT_NAME_TYPE;
   [SENTRY_SERVER_SAMPLE_RATE]?: SENTRY_SERVER_SAMPLE_RATE_TYPE;
   [SENTRY_SPAN_SOURCE]?: SENTRY_SPAN_SOURCE_TYPE;

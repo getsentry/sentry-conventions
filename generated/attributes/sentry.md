@@ -3,8 +3,6 @@
 # Sentry Attributes
 
 - [Stable Attributes](#stable-attributes)
-  - [sentry._internal.span_buffer_old_segment_id](#sentry_internalspan_buffer_old_segment_id)
-  - [sentry._internal.span_buffer_segment_id_outcome](#sentry_internalspan_buffer_segment_id_outcome)
   - [sentry.cancellation_reason](#sentrycancellation_reason)
   - [sentry.client_sample_rate](#sentryclient_sample_rate)
   - [sentry.dist](#sentrydist)
@@ -24,36 +22,13 @@
   - [sentry.sdk.integrations](#sentrysdkintegrations)
   - [sentry.sdk.name](#sentrysdkname)
   - [sentry.sdk.version](#sentrysdkversion)
+  - [sentry.segment.id](#sentrysegmentid)
   - [sentry.segment.name](#sentrysegmentname)
   - [sentry.server_sample_rate](#sentryserver_sample_rate)
   - [sentry.span.source](#sentryspansource)
   - [sentry.transaction](#sentrytransaction)
 
 ## Stable Attributes
-
-### sentry._internal.span_buffer_old_segment_id
-
-Used by the span buffer to record the segment ID of the original span in the incoming transaction before reconstruction.
-
-| Property | Value |
-| --- | --- |
-| Type | `string` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `same` |
-| Aliases | `__sentry_internal_old_segment_id` |
-
-### sentry._internal.span_buffer_segment_id_outcome
-
-Used by the span buffer to indicate whether reconstructing the segment resulted in the same segment ID as the original transaction.
-
-| Property | Value |
-| --- | --- |
-| Type | `string` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `55467cd258e1c` |
-| Aliases | `__sentry_internal_span_buffer_outcome` |
 
 ### sentry.cancellation_reason
 
@@ -270,6 +245,17 @@ The sentry sdk version.
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `7.0.0` |
+
+### sentry.segment.id
+
+The segment ID of a span
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `051581bf3cb55c13` |
 
 ### sentry.segment.name
 

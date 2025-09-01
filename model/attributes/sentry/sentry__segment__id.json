@@ -1,0 +1,10 @@
+{
+  "key": "sentry.segment.id",
+  "brief": "The segment ID of a span",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "051581bf3cb55c13"
+}
