@@ -305,7 +305,7 @@ Client address - domain name if available without reverse DNS lookup; otherwise,
 | Has PII | false |
 | Exists in OpenTelemetry | Yes |
 | Example | `example.com` |
-| Deprecated | Yes, use `http.client_ip` instead |
+| Deprecated | Yes, use `client.address` instead |
 | Aliases | `client.address` |
 
 ### http.flavor

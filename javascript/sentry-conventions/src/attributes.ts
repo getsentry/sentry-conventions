@@ -979,7 +979,7 @@ export type CHANNEL_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link HTTP_CLIENT_ID} `http.client_id`
+ * Aliases: {@link HTTP_CLIENT_IP} `http.client_ip`
  *
  * @example "example.com"
  */
@@ -1236,8 +1236,6 @@ export type CODE_NAMESPACE_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: Yes
- *
- * Aliases: {@link DB_COLLECTION} `db.collection`
  *
  * @example "users"
  */
@@ -2808,7 +2806,7 @@ export type GRAPHQL_OPERATION_TYPE_TYPE = string;
  *
  * Aliases: {@link CLIENT_ADDRESS} `client.address`
  *
- * @deprecated Use {@link HTTP_CLIENT_IP} (http.client_ip) instead
+ * @deprecated Use {@link CLIENT_ADDRESS} (client.address) instead
  * @example "example.com"
  */
 export const HTTP_CLIENT_IP = 'http.client_ip';
