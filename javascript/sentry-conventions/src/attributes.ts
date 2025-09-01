@@ -2000,7 +2000,7 @@ export type GEN_AI_OPERATION_NAME_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__operation__type.json
 
 /**
- * The type of AI operation. Must be one of 'agent', 'ai_client', 'tool', 'handoff', 'guardrail'. `gen_ai.operation.type`
+ * The type of AI operation. Must be one of 'agent', 'ai_client', 'tool', 'handoff', 'guardrail'. Makes querying for spans in the UI easier. `gen_ai.operation.type`
  *
  * Attribute Value Type: `string` {@link GEN_AI_OPERATION_TYPE_TYPE}
  *

@@ -1,6 +1,6 @@
 {
   "key": "gen_ai.operation.type",
-  "brief": "The type of AI operation. Must be one of 'agent', 'ai_client', 'tool', 'handoff', 'guardrail'.",
+  "brief": "The type of AI operation. Must be one of 'agent', 'ai_client', 'tool', 'handoff', 'guardrail'. Makes querying for spans in the UI easier.",
   "type": "string",
   "pii": {
     "key": "false"

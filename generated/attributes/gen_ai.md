@@ -94,7 +94,7 @@ The name of the operation being performed.
 
 ### gen_ai.operation.type
 
-The type of AI operation. Must be one of 'agent', 'ai_client', 'tool', 'handoff', 'guardrail'.
+The type of AI operation. Must be one of 'agent', 'ai_client', 'tool', 'handoff', 'guardrail'. Makes querying for spans in the UI easier.
 
 | Property | Value |
 | --- | --- |
@@ -522,4 +522,3 @@ The number of tokens used in the GenAI input (prompt).
 | Example | `20` |
 | Deprecated | Yes, use `gen_ai.usage.input_tokens` instead |
 | Aliases | `ai.prompt_tokens.used`, `gen_ai.usage.input_tokens` |
-
