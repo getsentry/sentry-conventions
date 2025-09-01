@@ -1997,6 +1997,26 @@ export const GEN_AI_OPERATION_NAME = 'gen_ai.operation.name';
  */
 export type GEN_AI_OPERATION_NAME_TYPE = string;
 
+// Path: model/attributes/gen_ai/gen_ai__operation__type.json
+
+/**
+ * The type of AI operation. Must be one of 'agent', 'ai_client', 'tool', 'handoff', 'guardrail'. `gen_ai.operation.type`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_OPERATION_TYPE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "tool"
+ */
+export const GEN_AI_OPERATION_TYPE = 'gen_ai.operation.type';
+
+/**
+ * Type for {@link GEN_AI_OPERATION_TYPE} gen_ai.operation.type
+ */
+export type GEN_AI_OPERATION_TYPE_TYPE = string;
+
 // Path: model/attributes/gen_ai/gen_ai__pipeline__name.json
 
 /**
@@ -6362,6 +6382,7 @@ export type Attributes = {
   [GEN_AI_ASSISTANT_MESSAGE]?: GEN_AI_ASSISTANT_MESSAGE_TYPE;
   [GEN_AI_CHOICE]?: GEN_AI_CHOICE_TYPE;
   [GEN_AI_OPERATION_NAME]?: GEN_AI_OPERATION_NAME_TYPE;
+  [GEN_AI_OPERATION_TYPE]?: GEN_AI_OPERATION_TYPE_TYPE;
   [GEN_AI_PIPELINE_NAME]?: GEN_AI_PIPELINE_NAME_TYPE;
   [GEN_AI_PROMPT]?: GEN_AI_PROMPT_TYPE;
   [GEN_AI_REQUEST_AVAILABLE_TOOLS]?: GEN_AI_REQUEST_AVAILABLE_TOOLS_TYPE;
@@ -6629,6 +6650,7 @@ export type FullAttributes = {
   [GEN_AI_ASSISTANT_MESSAGE]?: GEN_AI_ASSISTANT_MESSAGE_TYPE;
   [GEN_AI_CHOICE]?: GEN_AI_CHOICE_TYPE;
   [GEN_AI_OPERATION_NAME]?: GEN_AI_OPERATION_NAME_TYPE;
+  [GEN_AI_OPERATION_TYPE]?: GEN_AI_OPERATION_TYPE_TYPE;
   [GEN_AI_PIPELINE_NAME]?: GEN_AI_PIPELINE_NAME_TYPE;
   [GEN_AI_PROMPT]?: GEN_AI_PROMPT_TYPE;
   [GEN_AI_REQUEST_AVAILABLE_TOOLS]?: GEN_AI_REQUEST_AVAILABLE_TOOLS_TYPE;
