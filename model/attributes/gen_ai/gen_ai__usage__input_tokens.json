@@ -1,6 +1,6 @@
 {
   "key": "gen_ai.usage.input_tokens",
-  "brief": "The number of tokens used in the GenAI input (prompt).",
+  "brief": "The number of tokens used to process the AI input (prompt) without cached input tokens.",
   "type": "integer",
   "pii": {
     "key": "false"

@@ -1005,7 +1005,7 @@ export type CHANNEL_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link HTTP_CLIENT_ID} `http.client_id`, {@link HTTP_HOST} `http.host`, {@link HTTP_CLIENT_IP} `http.client_ip`
+ * Aliases: {@link HTTP_CLIENT_IP} `http.client_ip`
  *
  * @example "example.com"
  */
@@ -1262,8 +1262,6 @@ export type CODE_NAMESPACE_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: Yes
- *
- * Aliases: {@link DB_COLLECTION} `db.collection`
  *
  * @example "users"
  */
@@ -2003,6 +2001,86 @@ export const GEN_AI_CHOICE = 'gen_ai.choice';
  */
 export type GEN_AI_CHOICE_TYPE = string;
 
+// Path: model/attributes/gen_ai/gen_ai__cost__input_tokens.json
+
+/**
+ * The cost of tokens used to process the AI input (prompt) in USD (without cached input tokens). `gen_ai.cost.input_tokens`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_COST_INPUT_TOKENS_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 123.45
+ */
+export const GEN_AI_COST_INPUT_TOKENS = 'gen_ai.cost.input_tokens';
+
+/**
+ * Type for {@link GEN_AI_COST_INPUT_TOKENS} gen_ai.cost.input_tokens
+ */
+export type GEN_AI_COST_INPUT_TOKENS_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__cost__input_tokens__cached.json
+
+/**
+ * The cost of cached tokens used to process the AI input (prompt) in USD. `gen_ai.cost.input_tokens.cached`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_COST_INPUT_TOKENS_CACHED_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 123.45
+ */
+export const GEN_AI_COST_INPUT_TOKENS_CACHED = 'gen_ai.cost.input_tokens.cached';
+
+/**
+ * Type for {@link GEN_AI_COST_INPUT_TOKENS_CACHED} gen_ai.cost.input_tokens.cached
+ */
+export type GEN_AI_COST_INPUT_TOKENS_CACHED_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__cost__output_tokens.json
+
+/**
+ * The cost of tokens used for creating the AI output in USD (without reasoning tokens). `gen_ai.cost.output_tokens`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_COST_OUTPUT_TOKENS_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 123.45
+ */
+export const GEN_AI_COST_OUTPUT_TOKENS = 'gen_ai.cost.output_tokens';
+
+/**
+ * Type for {@link GEN_AI_COST_OUTPUT_TOKENS} gen_ai.cost.output_tokens
+ */
+export type GEN_AI_COST_OUTPUT_TOKENS_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__cost__output_tokens__reasoning.json
+
+/**
+ * The cost of tokens used for reasoning to create the AI output in USD. `gen_ai.cost.output_tokens.reasoning`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_COST_OUTPUT_TOKENS_REASONING_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 123.45
+ */
+export const GEN_AI_COST_OUTPUT_TOKENS_REASONING = 'gen_ai.cost.output_tokens.reasoning';
+
+/**
+ * Type for {@link GEN_AI_COST_OUTPUT_TOKENS_REASONING} gen_ai.cost.output_tokens.reasoning
+ */
+export type GEN_AI_COST_OUTPUT_TOKENS_REASONING_TYPE = number;
+
 // Path: model/attributes/gen_ai/gen_ai__operation__name.json
 
 /**
@@ -2022,6 +2100,26 @@ export const GEN_AI_OPERATION_NAME = 'gen_ai.operation.name';
  * Type for {@link GEN_AI_OPERATION_NAME} gen_ai.operation.name
  */
 export type GEN_AI_OPERATION_NAME_TYPE = string;
+
+// Path: model/attributes/gen_ai/gen_ai__operation__type.json
+
+/**
+ * The type of AI operation. Must be one of 'agent', 'ai_client', 'tool', 'handoff', 'guardrail'. Makes querying for spans in the UI easier. `gen_ai.operation.type`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_OPERATION_TYPE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "tool"
+ */
+export const GEN_AI_OPERATION_TYPE = 'gen_ai.operation.type';
+
+/**
+ * Type for {@link GEN_AI_OPERATION_TYPE} gen_ai.operation.type
+ */
+export type GEN_AI_OPERATION_TYPE_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__pipeline__name.json
 
@@ -2619,7 +2717,7 @@ export type GEN_AI_USAGE_COMPLETION_TOKENS_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__usage__input_tokens.json
 
 /**
- * The number of tokens used in the GenAI input (prompt). `gen_ai.usage.input_tokens`
+ * The number of tokens used to process the AI input (prompt) without cached input tokens. `gen_ai.usage.input_tokens`
  *
  * Attribute Value Type: `number` {@link GEN_AI_USAGE_INPUT_TOKENS_TYPE}
  *
@@ -2641,7 +2739,7 @@ export type GEN_AI_USAGE_INPUT_TOKENS_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__usage__input_tokens__cached.json
 
 /**
- * The number of cached tokens in the input. `gen_ai.usage.input_tokens.cached`
+ * The number of cached tokens used to process the AI input (prompt). `gen_ai.usage.input_tokens.cached`
  *
  * Attribute Value Type: `number` {@link GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE}
  *
@@ -2661,7 +2759,7 @@ export type GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__usage__output_tokens.json
 
 /**
- * The number of tokens used in the GenAI response (completion). `gen_ai.usage.output_tokens`
+ * The number of tokens used for creating the AI output (without reasoning tokens). `gen_ai.usage.output_tokens`
  *
  * Attribute Value Type: `number` {@link GEN_AI_USAGE_OUTPUT_TOKENS_TYPE}
  *
@@ -2683,7 +2781,7 @@ export type GEN_AI_USAGE_OUTPUT_TOKENS_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__usage__output_tokens__reasoning.json
 
 /**
- * The number of tokens used for reasoning in the output. `gen_ai.usage.output_tokens.reasoning`
+ * The number of tokens used for reasoning to create the AI output. `gen_ai.usage.output_tokens.reasoning`
  *
  * Attribute Value Type: `number` {@link GEN_AI_USAGE_OUTPUT_TOKENS_REASONING_TYPE}
  *
@@ -2838,7 +2936,7 @@ export type GRAPHQL_OPERATION_TYPE_TYPE = string;
  *
  * Aliases: {@link CLIENT_ADDRESS} `client.address`
  *
- * @deprecated Use {@link HTTP_CLIENT_IP} (http.client_ip) instead
+ * @deprecated Use {@link CLIENT_ADDRESS} (client.address) instead
  * @example "example.com"
  */
 export const HTTP_CLIENT_IP = 'http.client_ip';
@@ -5536,6 +5634,26 @@ export const SENTRY_SDK_VERSION = 'sentry.sdk.version';
  */
 export type SENTRY_SDK_VERSION_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__segment__id.json
+
+/**
+ * The segment ID of a span `sentry.segment.id`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_SEGMENT_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "051581bf3cb55c13"
+ */
+export const SENTRY_SEGMENT_ID = 'sentry.segment.id';
+
+/**
+ * Type for {@link SENTRY_SEGMENT_ID} sentry.segment.id
+ */
+export type SENTRY_SEGMENT_ID_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__segment__name.json
 
 /**
@@ -6369,7 +6487,12 @@ export type Attributes = {
   [GEN_AI_AGENT_NAME]?: GEN_AI_AGENT_NAME_TYPE;
   [GEN_AI_ASSISTANT_MESSAGE]?: GEN_AI_ASSISTANT_MESSAGE_TYPE;
   [GEN_AI_CHOICE]?: GEN_AI_CHOICE_TYPE;
+  [GEN_AI_COST_INPUT_TOKENS]?: GEN_AI_COST_INPUT_TOKENS_TYPE;
+  [GEN_AI_COST_INPUT_TOKENS_CACHED]?: GEN_AI_COST_INPUT_TOKENS_CACHED_TYPE;
+  [GEN_AI_COST_OUTPUT_TOKENS]?: GEN_AI_COST_OUTPUT_TOKENS_TYPE;
+  [GEN_AI_COST_OUTPUT_TOKENS_REASONING]?: GEN_AI_COST_OUTPUT_TOKENS_REASONING_TYPE;
   [GEN_AI_OPERATION_NAME]?: GEN_AI_OPERATION_NAME_TYPE;
+  [GEN_AI_OPERATION_TYPE]?: GEN_AI_OPERATION_TYPE_TYPE;
   [GEN_AI_PIPELINE_NAME]?: GEN_AI_PIPELINE_NAME_TYPE;
   [GEN_AI_PROMPT]?: GEN_AI_PROMPT_TYPE;
   [GEN_AI_REQUEST_AVAILABLE_TOOLS]?: GEN_AI_REQUEST_AVAILABLE_TOOLS_TYPE;
@@ -6502,6 +6625,7 @@ export type Attributes = {
   [SENTRY_SDK_INTEGRATIONS]?: SENTRY_SDK_INTEGRATIONS_TYPE;
   [SENTRY_SDK_NAME]?: SENTRY_SDK_NAME_TYPE;
   [SENTRY_SDK_VERSION]?: SENTRY_SDK_VERSION_TYPE;
+  [SENTRY_SEGMENT_ID]?: SENTRY_SEGMENT_ID_TYPE;
   [SENTRY_SEGMENT_NAME]?: SENTRY_SEGMENT_NAME_TYPE;
   [SENTRY_SERVER_SAMPLE_RATE]?: SENTRY_SERVER_SAMPLE_RATE_TYPE;
   [SENTRY_SPAN_SOURCE]?: SENTRY_SPAN_SOURCE_TYPE;
@@ -6635,7 +6759,12 @@ export type FullAttributes = {
   [GEN_AI_AGENT_NAME]?: GEN_AI_AGENT_NAME_TYPE;
   [GEN_AI_ASSISTANT_MESSAGE]?: GEN_AI_ASSISTANT_MESSAGE_TYPE;
   [GEN_AI_CHOICE]?: GEN_AI_CHOICE_TYPE;
+  [GEN_AI_COST_INPUT_TOKENS]?: GEN_AI_COST_INPUT_TOKENS_TYPE;
+  [GEN_AI_COST_INPUT_TOKENS_CACHED]?: GEN_AI_COST_INPUT_TOKENS_CACHED_TYPE;
+  [GEN_AI_COST_OUTPUT_TOKENS]?: GEN_AI_COST_OUTPUT_TOKENS_TYPE;
+  [GEN_AI_COST_OUTPUT_TOKENS_REASONING]?: GEN_AI_COST_OUTPUT_TOKENS_REASONING_TYPE;
   [GEN_AI_OPERATION_NAME]?: GEN_AI_OPERATION_NAME_TYPE;
+  [GEN_AI_OPERATION_TYPE]?: GEN_AI_OPERATION_TYPE_TYPE;
   [GEN_AI_PIPELINE_NAME]?: GEN_AI_PIPELINE_NAME_TYPE;
   [GEN_AI_PROMPT]?: GEN_AI_PROMPT_TYPE;
   [GEN_AI_REQUEST_AVAILABLE_TOOLS]?: GEN_AI_REQUEST_AVAILABLE_TOOLS_TYPE;
@@ -6803,6 +6932,7 @@ export type FullAttributes = {
   [SENTRY_SDK_INTEGRATIONS]?: SENTRY_SDK_INTEGRATIONS_TYPE;
   [SENTRY_SDK_NAME]?: SENTRY_SDK_NAME_TYPE;
   [SENTRY_SDK_VERSION]?: SENTRY_SDK_VERSION_TYPE;
+  [SENTRY_SEGMENT_ID]?: SENTRY_SEGMENT_ID_TYPE;
   [SENTRY_SEGMENT_NAME]?: SENTRY_SEGMENT_NAME_TYPE;
   [SENTRY_SERVER_SAMPLE_RATE]?: SENTRY_SERVER_SAMPLE_RATE_TYPE;
   [SENTRY_SPAN_SOURCE]?: SENTRY_SPAN_SOURCE_TYPE;

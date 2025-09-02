@@ -1,6 +1,6 @@
 {
   "key": "gen_ai.usage.input_tokens.cached",
-  "brief": "The number of cached tokens in the input.",
+  "brief": "The number of cached tokens used to process the AI input (prompt).",
   "type": "integer",
   "pii": {
     "key": "false"
