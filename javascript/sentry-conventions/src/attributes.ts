@@ -1977,6 +1977,86 @@ export const GEN_AI_CHOICE = 'gen_ai.choice';
  */
 export type GEN_AI_CHOICE_TYPE = string;
 
+// Path: model/attributes/gen_ai/gen_ai__cost__input_tokens.json
+
+/**
+ * The cost of tokens used to process the AI input (prompt) in USD (without cached input tokens). `gen_ai.cost.input_tokens`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_COST_INPUT_TOKENS_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 123.45
+ */
+export const GEN_AI_COST_INPUT_TOKENS = 'gen_ai.cost.input_tokens';
+
+/**
+ * Type for {@link GEN_AI_COST_INPUT_TOKENS} gen_ai.cost.input_tokens
+ */
+export type GEN_AI_COST_INPUT_TOKENS_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__cost__input_tokens__cached.json
+
+/**
+ * The cost of cached tokens used to process the AI input (prompt) in USD. `gen_ai.cost.input_tokens.cached`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_COST_INPUT_TOKENS_CACHED_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 123.45
+ */
+export const GEN_AI_COST_INPUT_TOKENS_CACHED = 'gen_ai.cost.input_tokens.cached';
+
+/**
+ * Type for {@link GEN_AI_COST_INPUT_TOKENS_CACHED} gen_ai.cost.input_tokens.cached
+ */
+export type GEN_AI_COST_INPUT_TOKENS_CACHED_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__cost__output_tokens.json
+
+/**
+ * The cost of tokens used for creating the AI output in USD (without reasoning tokens). `gen_ai.cost.output_tokens`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_COST_OUTPUT_TOKENS_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 123.45
+ */
+export const GEN_AI_COST_OUTPUT_TOKENS = 'gen_ai.cost.output_tokens';
+
+/**
+ * Type for {@link GEN_AI_COST_OUTPUT_TOKENS} gen_ai.cost.output_tokens
+ */
+export type GEN_AI_COST_OUTPUT_TOKENS_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__cost__output_tokens__reasoning.json
+
+/**
+ * The cost of tokens used for reasoning to create the AI output in USD. `gen_ai.cost.output_tokens.reasoning`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_COST_OUTPUT_TOKENS_REASONING_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 123.45
+ */
+export const GEN_AI_COST_OUTPUT_TOKENS_REASONING = 'gen_ai.cost.output_tokens.reasoning';
+
+/**
+ * Type for {@link GEN_AI_COST_OUTPUT_TOKENS_REASONING} gen_ai.cost.output_tokens.reasoning
+ */
+export type GEN_AI_COST_OUTPUT_TOKENS_REASONING_TYPE = number;
+
 // Path: model/attributes/gen_ai/gen_ai__operation__name.json
 
 /**
@@ -2609,7 +2689,7 @@ export type GEN_AI_USAGE_COMPLETION_TOKENS_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__usage__input_tokens.json
 
 /**
- * The number of tokens used in the GenAI input (prompt). `gen_ai.usage.input_tokens`
+ * The number of tokens used to process the AI input (prompt) without cached input tokens. `gen_ai.usage.input_tokens`
  *
  * Attribute Value Type: `number` {@link GEN_AI_USAGE_INPUT_TOKENS_TYPE}
  *
@@ -2631,7 +2711,7 @@ export type GEN_AI_USAGE_INPUT_TOKENS_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__usage__input_tokens__cached.json
 
 /**
- * The number of cached tokens in the input. `gen_ai.usage.input_tokens.cached`
+ * The number of cached tokens used to process the AI input (prompt). `gen_ai.usage.input_tokens.cached`
  *
  * Attribute Value Type: `number` {@link GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE}
  *
@@ -2651,7 +2731,7 @@ export type GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__usage__output_tokens.json
 
 /**
- * The number of tokens used in the GenAI response (completion). `gen_ai.usage.output_tokens`
+ * The number of tokens used for creating the AI output (without reasoning tokens). `gen_ai.usage.output_tokens`
  *
  * Attribute Value Type: `number` {@link GEN_AI_USAGE_OUTPUT_TOKENS_TYPE}
  *
@@ -2673,7 +2753,7 @@ export type GEN_AI_USAGE_OUTPUT_TOKENS_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__usage__output_tokens__reasoning.json
 
 /**
- * The number of tokens used for reasoning in the output. `gen_ai.usage.output_tokens.reasoning`
+ * The number of tokens used for reasoning to create the AI output. `gen_ai.usage.output_tokens.reasoning`
  *
  * Attribute Value Type: `number` {@link GEN_AI_USAGE_OUTPUT_TOKENS_REASONING_TYPE}
  *
@@ -6381,6 +6461,10 @@ export type Attributes = {
   [GEN_AI_AGENT_NAME]?: GEN_AI_AGENT_NAME_TYPE;
   [GEN_AI_ASSISTANT_MESSAGE]?: GEN_AI_ASSISTANT_MESSAGE_TYPE;
   [GEN_AI_CHOICE]?: GEN_AI_CHOICE_TYPE;
+  [GEN_AI_COST_INPUT_TOKENS]?: GEN_AI_COST_INPUT_TOKENS_TYPE;
+  [GEN_AI_COST_INPUT_TOKENS_CACHED]?: GEN_AI_COST_INPUT_TOKENS_CACHED_TYPE;
+  [GEN_AI_COST_OUTPUT_TOKENS]?: GEN_AI_COST_OUTPUT_TOKENS_TYPE;
+  [GEN_AI_COST_OUTPUT_TOKENS_REASONING]?: GEN_AI_COST_OUTPUT_TOKENS_REASONING_TYPE;
   [GEN_AI_OPERATION_NAME]?: GEN_AI_OPERATION_NAME_TYPE;
   [GEN_AI_OPERATION_TYPE]?: GEN_AI_OPERATION_TYPE_TYPE;
   [GEN_AI_PIPELINE_NAME]?: GEN_AI_PIPELINE_NAME_TYPE;
@@ -6649,6 +6733,10 @@ export type FullAttributes = {
   [GEN_AI_AGENT_NAME]?: GEN_AI_AGENT_NAME_TYPE;
   [GEN_AI_ASSISTANT_MESSAGE]?: GEN_AI_ASSISTANT_MESSAGE_TYPE;
   [GEN_AI_CHOICE]?: GEN_AI_CHOICE_TYPE;
+  [GEN_AI_COST_INPUT_TOKENS]?: GEN_AI_COST_INPUT_TOKENS_TYPE;
+  [GEN_AI_COST_INPUT_TOKENS_CACHED]?: GEN_AI_COST_INPUT_TOKENS_CACHED_TYPE;
+  [GEN_AI_COST_OUTPUT_TOKENS]?: GEN_AI_COST_OUTPUT_TOKENS_TYPE;
+  [GEN_AI_COST_OUTPUT_TOKENS_REASONING]?: GEN_AI_COST_OUTPUT_TOKENS_REASONING_TYPE;
   [GEN_AI_OPERATION_NAME]?: GEN_AI_OPERATION_NAME_TYPE;
   [GEN_AI_OPERATION_TYPE]?: GEN_AI_OPERATION_TYPE_TYPE;
   [GEN_AI_PIPELINE_NAME]?: GEN_AI_PIPELINE_NAME_TYPE;
