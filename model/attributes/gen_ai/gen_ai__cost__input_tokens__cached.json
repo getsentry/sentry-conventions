@@ -1,6 +1,6 @@
 {
   "key": "gen_ai.cost.input_tokens.cached",
-  "brief": "The cost of tokens used in the GenAI input (prompt) in USD.",
+  "brief": "The cost of cached tokens used in the AI input (prompt) in USD.",
   "type": "double",
   "pii": {
     "key": "false"

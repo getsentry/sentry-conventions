@@ -1980,7 +1980,7 @@ export type GEN_AI_CHOICE_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__cost__input_tokens.json
 
 /**
- * The cost of cached tokens in the input in USD. `gen_ai.cost.input_tokens`
+ * The cost of tokens used in the AI input (prompt) in USD (without cached input tokens). `gen_ai.cost.input_tokens`
  *
  * Attribute Value Type: `number` {@link GEN_AI_COST_INPUT_TOKENS_TYPE}
  *
@@ -2000,7 +2000,7 @@ export type GEN_AI_COST_INPUT_TOKENS_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__cost__input_tokens__cached.json
 
 /**
- * The cost of tokens used in the GenAI input (prompt) in USD. `gen_ai.cost.input_tokens.cached`
+ * The cost of cached tokens used in the AI input (prompt) in USD. `gen_ai.cost.input_tokens.cached`
  *
  * Attribute Value Type: `number` {@link GEN_AI_COST_INPUT_TOKENS_CACHED_TYPE}
  *
@@ -2020,7 +2020,7 @@ export type GEN_AI_COST_INPUT_TOKENS_CACHED_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__cost__output_tokens.json
 
 /**
- * The cost of tokens used for reasoning in the output in USD. `gen_ai.cost.output_tokens`
+ * The cost of tokens used for creating the AI output in USD (without reasoning tokens). `gen_ai.cost.output_tokens`
  *
  * Attribute Value Type: `number` {@link GEN_AI_COST_OUTPUT_TOKENS_TYPE}
  *
@@ -2040,7 +2040,7 @@ export type GEN_AI_COST_OUTPUT_TOKENS_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__cost__output_tokens__reasoning.json
 
 /**
- * The cost of the used gen_ai.usage.output_tokens.reasoning in USD. `gen_ai.cost.output_tokens.reasoning`
+ * The cost of tokens used for reasoning to create the AI output in USD. `gen_ai.cost.output_tokens.reasoning`
  *
  * Attribute Value Type: `number` {@link GEN_AI_COST_OUTPUT_TOKENS_REASONING_TYPE}
  *

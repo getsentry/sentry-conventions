@@ -1,6 +1,6 @@
 {
   "key": "gen_ai.cost.output_tokens.reasoning",
-  "brief": "The cost of the used gen_ai.usage.output_tokens.reasoning in USD.",
+  "brief": "The cost of tokens used for reasoning to create the AI output in USD.",
   "type": "double",
   "pii": {
     "key": "false"

@@ -86,7 +86,7 @@ The model's response message.
 
 ### gen_ai.cost.input_tokens
 
-The cost of cached tokens in the input in USD.
+The cost of tokens used in the AI input (prompt) in USD (without cached input tokens).
 
 | Property | Value |
 | --- | --- |
@@ -97,7 +97,7 @@ The cost of cached tokens in the input in USD.
 
 ### gen_ai.cost.input_tokens.cached
 
-The cost of tokens used in the GenAI input (prompt) in USD.
+The cost of cached tokens used in the AI input (prompt) in USD.
 
 | Property | Value |
 | --- | --- |
@@ -108,7 +108,7 @@ The cost of tokens used in the GenAI input (prompt) in USD.
 
 ### gen_ai.cost.output_tokens
 
-The cost of tokens used for reasoning in the output in USD.
+The cost of tokens used for creating the AI output in USD (without reasoning tokens).
 
 | Property | Value |
 | --- | --- |
@@ -119,7 +119,7 @@ The cost of tokens used for reasoning in the output in USD.
 
 ### gen_ai.cost.output_tokens.reasoning
 
-The cost of the used gen_ai.usage.output_tokens.reasoning in USD.
+The cost of tokens used for reasoning to create the AI output in USD.
 
 | Property | Value |
 | --- | --- |
