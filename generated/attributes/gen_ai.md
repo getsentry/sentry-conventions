@@ -6,7 +6,12 @@
   - [gen_ai.agent.name](#gen_aiagentname)
   - [gen_ai.assistant.message](#gen_aiassistantmessage)
   - [gen_ai.choice](#gen_aichoice)
+  - [gen_ai.cost.input_tokens](#gen_aicostinput_tokens)
+  - [gen_ai.cost.input_tokens.cached](#gen_aicostinput_tokenscached)
+  - [gen_ai.cost.output_tokens](#gen_aicostoutput_tokens)
+  - [gen_ai.cost.output_tokens.reasoning](#gen_aicostoutput_tokensreasoning)
   - [gen_ai.operation.name](#gen_aioperationname)
+  - [gen_ai.operation.type](#gen_aioperationtype)
   - [gen_ai.pipeline.name](#gen_aipipelinename)
   - [gen_ai.prompt](#gen_aiprompt)
   - [gen_ai.request.available_tools](#gen_airequestavailable_tools)
@@ -80,6 +85,50 @@ The model's response message.
 | Exists in OpenTelemetry | No |
 | Example | `The weather in Paris is rainy and overcast, with temperatures around 57°F` |
 
+### gen_ai.cost.input_tokens
+
+The cost of tokens used to process the AI input (prompt) in USD (without cached input tokens).
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `123.45` |
+
+### gen_ai.cost.input_tokens.cached
+
+The cost of cached tokens used to process the AI input (prompt) in USD.
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `123.45` |
+
+### gen_ai.cost.output_tokens
+
+The cost of tokens used for creating the AI output in USD (without reasoning tokens).
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `123.45` |
+
+### gen_ai.cost.output_tokens.reasoning
+
+The cost of tokens used for reasoning to create the AI output in USD.
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `123.45` |
+
 ### gen_ai.operation.name
 
 The name of the operation being performed.
@@ -90,6 +139,17 @@ The name of the operation being performed.
 | Has PII | false |
 | Exists in OpenTelemetry | Yes |
 | Example | `chat` |
+
+### gen_ai.operation.type
+
+The type of AI operation. Must be one of 'agent', 'ai_client', 'tool', 'handoff', 'guardrail'. Makes querying for spans in the UI easier.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `tool` |
 
 ### gen_ai.pipeline.name
 
@@ -403,7 +463,7 @@ The type of tool being used.
 
 ### gen_ai.usage.input_tokens
 
-The number of tokens used in the GenAI input (prompt).
+The number of tokens used to process the AI input (prompt) without cached input tokens.
 
 | Property | Value |
 | --- | --- |
@@ -415,7 +475,7 @@ The number of tokens used in the GenAI input (prompt).
 
 ### gen_ai.usage.input_tokens.cached
 
-The number of cached tokens in the input.
+The number of cached tokens used to process the AI input (prompt).
 
 | Property | Value |
 | --- | --- |
@@ -426,7 +486,7 @@ The number of cached tokens in the input.
 
 ### gen_ai.usage.output_tokens
 
-The number of tokens used in the GenAI response (completion).
+The number of tokens used for creating the AI output (without reasoning tokens).
 
 | Property | Value |
 | --- | --- |
@@ -438,7 +498,7 @@ The number of tokens used in the GenAI response (completion).
 
 ### gen_ai.usage.output_tokens.reasoning
 
-The number of tokens used for reasoning in the output.
+The number of tokens used for reasoning to create the AI output.
 
 | Property | Value |
 | --- | --- |

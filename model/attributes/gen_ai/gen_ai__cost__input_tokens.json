@@ -1,0 +1,10 @@
+{
+  "key": "gen_ai.cost.input_tokens",
+  "brief": "The cost of tokens used to process the AI input (prompt) in USD (without cached input tokens).",
+  "type": "double",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 123.45
+}
