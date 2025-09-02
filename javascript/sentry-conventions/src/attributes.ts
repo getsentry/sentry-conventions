@@ -1980,7 +1980,7 @@ export type GEN_AI_CHOICE_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__cost__input_tokens.json
 
 /**
- * The cost of tokens used in the AI input (prompt) in USD (without cached input tokens). `gen_ai.cost.input_tokens`
+ * The cost of tokens used to process the AI input (prompt) in USD (without cached input tokens). `gen_ai.cost.input_tokens`
  *
  * Attribute Value Type: `number` {@link GEN_AI_COST_INPUT_TOKENS_TYPE}
  *
@@ -2000,7 +2000,7 @@ export type GEN_AI_COST_INPUT_TOKENS_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__cost__input_tokens__cached.json
 
 /**
- * The cost of cached tokens used in the AI input (prompt) in USD. `gen_ai.cost.input_tokens.cached`
+ * The cost of cached tokens used to process the AI input (prompt) in USD. `gen_ai.cost.input_tokens.cached`
  *
  * Attribute Value Type: `number` {@link GEN_AI_COST_INPUT_TOKENS_CACHED_TYPE}
  *
@@ -2669,7 +2669,7 @@ export type GEN_AI_USAGE_COMPLETION_TOKENS_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__usage__input_tokens.json
 
 /**
- * The number of tokens used in the GenAI input (prompt). `gen_ai.usage.input_tokens`
+ * The number of tokens used to process the AI input (prompt) without cached input tokens. `gen_ai.usage.input_tokens`
  *
  * Attribute Value Type: `number` {@link GEN_AI_USAGE_INPUT_TOKENS_TYPE}
  *
@@ -2691,7 +2691,7 @@ export type GEN_AI_USAGE_INPUT_TOKENS_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__usage__input_tokens__cached.json
 
 /**
- * The number of cached tokens in the input. `gen_ai.usage.input_tokens.cached`
+ * The number of cached tokens used to process the AI input (prompt). `gen_ai.usage.input_tokens.cached`
  *
  * Attribute Value Type: `number` {@link GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE}
  *
@@ -2711,7 +2711,7 @@ export type GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__usage__output_tokens.json
 
 /**
- * The number of tokens used in the GenAI response (completion). `gen_ai.usage.output_tokens`
+ * The number of tokens used for creating the AI output (without reasoning tokens). `gen_ai.usage.output_tokens`
  *
  * Attribute Value Type: `number` {@link GEN_AI_USAGE_OUTPUT_TOKENS_TYPE}
  *
@@ -2733,7 +2733,7 @@ export type GEN_AI_USAGE_OUTPUT_TOKENS_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__usage__output_tokens__reasoning.json
 
 /**
- * The number of tokens used for reasoning in the output. `gen_ai.usage.output_tokens.reasoning`
+ * The number of tokens used for reasoning to create the AI output. `gen_ai.usage.output_tokens.reasoning`
  *
  * Attribute Value Type: `number` {@link GEN_AI_USAGE_OUTPUT_TOKENS_REASONING_TYPE}
  *

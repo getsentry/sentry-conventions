@@ -86,7 +86,7 @@ The model's response message.
 
 ### gen_ai.cost.input_tokens
 
-The cost of tokens used in the AI input (prompt) in USD (without cached input tokens).
+The cost of tokens used to process the AI input (prompt) in USD (without cached input tokens).
 
 | Property | Value |
 | --- | --- |
@@ -97,7 +97,7 @@ The cost of tokens used in the AI input (prompt) in USD (without cached input to
 
 ### gen_ai.cost.input_tokens.cached
 
-The cost of cached tokens used in the AI input (prompt) in USD.
+The cost of cached tokens used to process the AI input (prompt) in USD.
 
 | Property | Value |
 | --- | --- |
@@ -451,7 +451,7 @@ The type of tool being used.
 
 ### gen_ai.usage.input_tokens
 
-The number of tokens used in the GenAI input (prompt).
+The number of tokens used to process the AI input (prompt) without cached input tokens.
 
 | Property | Value |
 | --- | --- |
@@ -463,7 +463,7 @@ The number of tokens used in the GenAI input (prompt).
 
 ### gen_ai.usage.input_tokens.cached
 
-The number of cached tokens in the input.
+The number of cached tokens used to process the AI input (prompt).
 
 | Property | Value |
 | --- | --- |
@@ -474,7 +474,7 @@ The number of cached tokens in the input.
 
 ### gen_ai.usage.output_tokens
 
-The number of tokens used in the GenAI response (completion).
+The number of tokens used for creating the AI output (without reasoning tokens).
 
 | Property | Value |
 | --- | --- |
@@ -486,7 +486,7 @@ The number of tokens used in the GenAI response (completion).
 
 ### gen_ai.usage.output_tokens.reasoning
 
-The number of tokens used for reasoning in the output.
+The number of tokens used for reasoning to create the AI output.
 
 | Property | Value |
 | --- | --- |

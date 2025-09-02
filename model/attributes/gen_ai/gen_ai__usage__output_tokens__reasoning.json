@@ -1,6 +1,6 @@
 {
   "key": "gen_ai.usage.output_tokens.reasoning",
-  "brief": "The number of tokens used for reasoning in the output.",
+  "brief": "The number of tokens used for reasoning to create the AI output.",
   "type": "integer",
   "pii": {
     "key": "false"
