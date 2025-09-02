@@ -125,6 +125,23 @@ describe('attribute json', async () => {
 
         expect(missingAliases).toEqual([]);
       });
+
+      it('should not be a replacement of itself', async () => {
+        if (!content.deprecation?.replacement) {
+          return;
+        }
+        const replacement = content.deprecation?.replacement;
+        expect(content.key !== replacement);
+      });
+
+      it('should not alias itself', async () => {
+        if (!content.alias || content.alias.length === 0) {
+          return;
+        }
+        for (const alias of content.alias) {
+          expect(content.key !== alias);
+        }
+      });
     });
   }
 });
