@@ -32,7 +32,6 @@ The name of a collection (table, container) within the database.
 | Has PII | false |
 | Exists in OpenTelemetry | Yes |
 | Example | `users` |
-| Aliases | `db.collection` |
 
 ### db.namespace
 

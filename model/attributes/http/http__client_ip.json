@@ -9,7 +9,7 @@
   "example": "example.com",
   "deprecation": {
     "_status": null,
-    "replacement": "http.client_ip"
+    "replacement": "client.address"
   },
   "alias": ["client.address"]
 }

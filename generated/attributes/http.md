@@ -229,7 +229,7 @@ The encoded body size of the response (in bytes).
 | Has PII | false |
 | Exists in OpenTelemetry | Yes |
 | Example | `123` |
-| Aliases | `http.response_content_length`, `http.response.header.content-length`, `http.response.header['content-length']` |
+| Aliases | `http.response_content_length`, `http.response.header.content-length` |
 
 ### http.response.header.\<key\>
 
@@ -305,7 +305,7 @@ Client address - domain name if available without reverse DNS lookup; otherwise,
 | Has PII | false |
 | Exists in OpenTelemetry | Yes |
 | Example | `example.com` |
-| Deprecated | Yes, use `http.client_ip` instead |
+| Deprecated | Yes, use `client.address` instead |
 | Aliases | `client.address` |
 
 ### http.flavor
@@ -359,7 +359,7 @@ The encoded body size of the response (in bytes).
 | Exists in OpenTelemetry | Yes |
 | Example | `123` |
 | Deprecated | Yes, use `http.response.body.size` instead |
-| Aliases | `http.response.body.size`, `http.response.header.content-length`, `http.response.header['content-length']` |
+| Aliases | `http.response.body.size`, `http.response.header.content-length` |
 
 ### http.response_transfer_size
 

@@ -7,5 +7,5 @@
   },
   "is_in_otel": true,
   "example": "example.com",
-  "alias": ["http.client_id"]
+  "alias": ["http.client_ip"]
 }
