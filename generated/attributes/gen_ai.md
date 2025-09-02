@@ -7,6 +7,7 @@
   - [gen_ai.assistant.message](#gen_aiassistantmessage)
   - [gen_ai.choice](#gen_aichoice)
   - [gen_ai.operation.name](#gen_aioperationname)
+  - [gen_ai.operation.type](#gen_aioperationtype)
   - [gen_ai.pipeline.name](#gen_aipipelinename)
   - [gen_ai.prompt](#gen_aiprompt)
   - [gen_ai.request.available_tools](#gen_airequestavailable_tools)
@@ -90,6 +91,17 @@ The name of the operation being performed.
 | Has PII | false |
 | Exists in OpenTelemetry | Yes |
 | Example | `chat` |
+
+### gen_ai.operation.type
+
+The type of AI operation. Must be one of 'agent', 'ai_client', 'tool', 'handoff', 'guardrail'. Makes querying for spans in the UI easier.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `tool` |
 
 ### gen_ai.pipeline.name
 
