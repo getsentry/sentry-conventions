@@ -1549,6 +1549,66 @@ export const DB_USER = 'db.user';
  */
 export type DB_USER_TYPE = string;
 
+// Path: model/attributes/device/device__brand.json
+
+/**
+ * The brand of the device. `device.brand`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_BRAND_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "Apple"
+ */
+export const DEVICE_BRAND = 'device.brand';
+
+/**
+ * Type for {@link DEVICE_BRAND} device.brand
+ */
+export type DEVICE_BRAND_TYPE = string;
+
+// Path: model/attributes/device/device__family.json
+
+/**
+ * The family of the device. `device.family`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_FAMILY_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "iPhone"
+ */
+export const DEVICE_FAMILY = 'device.family';
+
+/**
+ * Type for {@link DEVICE_FAMILY} device.family
+ */
+export type DEVICE_FAMILY_TYPE = string;
+
+// Path: model/attributes/device/device__model.json
+
+/**
+ * The model of the device. `device.model`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_MODEL_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "iPhone 15 Pro Max"
+ */
+export const DEVICE_MODEL = 'device.model';
+
+/**
+ * Type for {@link DEVICE_MODEL} device.model
+ */
+export type DEVICE_MODEL_TYPE = string;
+
 // Path: model/attributes/environment.json
 
 /**
@@ -5354,6 +5414,46 @@ export const SENTRY_IDLE_SPAN_FINISH_REASON = 'sentry.idle_span_finish_reason';
  */
 export type SENTRY_IDLE_SPAN_FINISH_REASON_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__message__parameter__[key].json
+
+/**
+ * A parameter used in the message template. <key> can either be the number that represent the parameter's position in the template string (sentry.message.parameter.0, sentry.message.parameter.1, etc) or the parameter's name (sentry.message.parameter.item_id, sentry.message.parameter.user_id, etc) `sentry.message.parameter.<key>`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_MESSAGE_PARAMETER_KEY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "sentry.message.parameter.0='123'"
+ */
+export const SENTRY_MESSAGE_PARAMETER_KEY = 'sentry.message.parameter.<key>';
+
+/**
+ * Type for {@link SENTRY_MESSAGE_PARAMETER_KEY} sentry.message.parameter.<key>
+ */
+export type SENTRY_MESSAGE_PARAMETER_KEY_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__message__template.json
+
+/**
+ * The parameterized template string. `sentry.message.template`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_MESSAGE_TEMPLATE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "Hello, {name}!"
+ */
+export const SENTRY_MESSAGE_TEMPLATE = 'sentry.message.template';
+
+/**
+ * Type for {@link SENTRY_MESSAGE_TEMPLATE} sentry.message.template
+ */
+export type SENTRY_MESSAGE_TEMPLATE_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__module__[key].json
 
 /**
@@ -5681,6 +5781,26 @@ export const SENTRY_SPAN_SOURCE = 'sentry.span.source';
  * Type for {@link SENTRY_SPAN_SOURCE} sentry.span.source
  */
 export type SENTRY_SPAN_SOURCE_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__trace__parent_span_id.json
+
+/**
+ * The span id of the span that was active when the log was collected. This should not be set if there was no active span. `sentry.trace.parent_span_id`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_TRACE_PARENT_SPAN_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "b0e6f15b45c36b12"
+ */
+export const SENTRY_TRACE_PARENT_SPAN_ID = 'sentry.trace.parent_span_id';
+
+/**
+ * Type for {@link SENTRY_TRACE_PARENT_SPAN_ID} sentry.trace.parent_span_id
+ */
+export type SENTRY_TRACE_PARENT_SPAN_ID_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__transaction.json
 
@@ -6436,6 +6556,9 @@ export type Attributes = {
   [DB_REDIS_PARAMETERS]?: DB_REDIS_PARAMETERS_TYPE;
   [DB_SYSTEM_NAME]?: DB_SYSTEM_NAME_TYPE;
   [DB_USER]?: DB_USER_TYPE;
+  [DEVICE_BRAND]?: DEVICE_BRAND_TYPE;
+  [DEVICE_FAMILY]?: DEVICE_FAMILY_TYPE;
+  [DEVICE_MODEL]?: DEVICE_MODEL_TYPE;
   [ERROR_TYPE]?: ERROR_TYPE_TYPE;
   [EVENT_ID]?: EVENT_ID_TYPE;
   [EVENT_NAME]?: EVENT_NAME_TYPE;
@@ -6581,6 +6704,8 @@ export type Attributes = {
   [SENTRY_EXCLUSIVE_TIME]?: SENTRY_EXCLUSIVE_TIME_TYPE;
   [SENTRY_HTTP_PREFETCH]?: SENTRY_HTTP_PREFETCH_TYPE;
   [SENTRY_IDLE_SPAN_FINISH_REASON]?: SENTRY_IDLE_SPAN_FINISH_REASON_TYPE;
+  [SENTRY_MESSAGE_PARAMETER_KEY]?: SENTRY_MESSAGE_PARAMETER_KEY_TYPE;
+  [SENTRY_MESSAGE_TEMPLATE]?: SENTRY_MESSAGE_TEMPLATE_TYPE;
   [SENTRY_MODULE_KEY]?: SENTRY_MODULE_KEY_TYPE;
   [SENTRY_NEXTJS_SSR_FUNCTION_ROUTE]?: SENTRY_NEXTJS_SSR_FUNCTION_ROUTE_TYPE;
   [SENTRY_NEXTJS_SSR_FUNCTION_TYPE]?: SENTRY_NEXTJS_SSR_FUNCTION_TYPE_TYPE;
@@ -6597,6 +6722,7 @@ export type Attributes = {
   [SENTRY_SEGMENT_NAME]?: SENTRY_SEGMENT_NAME_TYPE;
   [SENTRY_SERVER_SAMPLE_RATE]?: SENTRY_SERVER_SAMPLE_RATE_TYPE;
   [SENTRY_SPAN_SOURCE]?: SENTRY_SPAN_SOURCE_TYPE;
+  [SENTRY_TRACE_PARENT_SPAN_ID]?: SENTRY_TRACE_PARENT_SPAN_ID_TYPE;
   [SENTRY_TRANSACTION]?: SENTRY_TRANSACTION_TYPE;
   [SERVER_ADDRESS]?: SERVER_ADDRESS_TYPE;
   [SERVER_PORT]?: SERVER_PORT_TYPE;
@@ -6706,6 +6832,9 @@ export type FullAttributes = {
   [DB_SYSTEM]?: DB_SYSTEM_TYPE;
   [DB_SYSTEM_NAME]?: DB_SYSTEM_NAME_TYPE;
   [DB_USER]?: DB_USER_TYPE;
+  [DEVICE_BRAND]?: DEVICE_BRAND_TYPE;
+  [DEVICE_FAMILY]?: DEVICE_FAMILY_TYPE;
+  [DEVICE_MODEL]?: DEVICE_MODEL_TYPE;
   [ENVIRONMENT]?: ENVIRONMENT_TYPE;
   [ERROR_TYPE]?: ERROR_TYPE_TYPE;
   [EVENT_ID]?: EVENT_ID_TYPE;
@@ -6888,6 +7017,8 @@ export type FullAttributes = {
   [SENTRY_EXCLUSIVE_TIME]?: SENTRY_EXCLUSIVE_TIME_TYPE;
   [SENTRY_HTTP_PREFETCH]?: SENTRY_HTTP_PREFETCH_TYPE;
   [SENTRY_IDLE_SPAN_FINISH_REASON]?: SENTRY_IDLE_SPAN_FINISH_REASON_TYPE;
+  [SENTRY_MESSAGE_PARAMETER_KEY]?: SENTRY_MESSAGE_PARAMETER_KEY_TYPE;
+  [SENTRY_MESSAGE_TEMPLATE]?: SENTRY_MESSAGE_TEMPLATE_TYPE;
   [SENTRY_MODULE_KEY]?: SENTRY_MODULE_KEY_TYPE;
   [SENTRY_NEXTJS_SSR_FUNCTION_ROUTE]?: SENTRY_NEXTJS_SSR_FUNCTION_ROUTE_TYPE;
   [SENTRY_NEXTJS_SSR_FUNCTION_TYPE]?: SENTRY_NEXTJS_SSR_FUNCTION_TYPE_TYPE;
@@ -6904,6 +7035,7 @@ export type FullAttributes = {
   [SENTRY_SEGMENT_NAME]?: SENTRY_SEGMENT_NAME_TYPE;
   [SENTRY_SERVER_SAMPLE_RATE]?: SENTRY_SERVER_SAMPLE_RATE_TYPE;
   [SENTRY_SPAN_SOURCE]?: SENTRY_SPAN_SOURCE_TYPE;
+  [SENTRY_TRACE_PARENT_SPAN_ID]?: SENTRY_TRACE_PARENT_SPAN_ID_TYPE;
   [SENTRY_TRANSACTION]?: SENTRY_TRANSACTION_TYPE;
   [SERVER_ADDRESS]?: SERVER_ADDRESS_TYPE;
   [SERVER_PORT]?: SERVER_PORT_TYPE;
