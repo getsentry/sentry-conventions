@@ -1219,7 +1219,7 @@ export type CODE_LINE_NUMBER_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link CODE_LINENO} `code.lineno`, {@link CODE_LINE_NUMBER} `code.line.number`
+ * Aliases: {@link CODE_LINE_NUMBER} `code.line.number`
  *
  * @deprecated Use {@link CODE_LINE_NUMBER} (code.line.number) instead
  * @example 42
@@ -6016,7 +6016,7 @@ export type URL_FRAGMENT_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link URL} `url`, {@link HTTP_URL} `http.url`
+ * Aliases: {@link HTTP_URL} `http.url`
  *
  * @example "https://example.com/test?foo=bar#buzz"
  */
@@ -6154,29 +6154,6 @@ export const URL_TEMPLATE = 'url.template';
  * Type for {@link URL_TEMPLATE} url.template
  */
 export type URL_TEMPLATE_TYPE = string;
-
-// Path: model/attributes/url.json
-
-/**
- * The URL of the resource that was fetched. `url`
- *
- * Attribute Value Type: `string` {@link URL_TYPE}
- *
- * Contains PII: maybe
- *
- * Attribute defined in OTEL: No
- *
- * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`
- *
- * @deprecated Use {@link URL_FULL} (url.full) instead
- * @example "https://example.com/test?foo=bar#buzz"
- */
-export const URL = 'url';
-
-/**
- * Type for {@link URL} url
- */
-export type URL_TYPE = string;
 
 // Path: model/attributes/user/user__email.json
 
@@ -6957,7 +6934,6 @@ export type FullAttributes = {
   [URL_QUERY]?: URL_QUERY_TYPE;
   [URL_SCHEME]?: URL_SCHEME_TYPE;
   [URL_TEMPLATE]?: URL_TEMPLATE_TYPE;
-  [URL]?: URL_TYPE;
   [USER_EMAIL]?: USER_EMAIL_TYPE;
   [USER_FULL_NAME]?: USER_FULL_NAME_TYPE;
   [USER_GEO_CITY]?: USER_GEO_CITY_TYPE;

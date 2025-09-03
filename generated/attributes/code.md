@@ -91,7 +91,7 @@ The line number in code.filepath best representing the operation. It SHOULD poin
 | Exists in OpenTelemetry | Yes |
 | Example | `42` |
 | Deprecated | Yes, use `code.line.number` instead |
-| Aliases | `code.lineno`, `code.line.number` |
+| Aliases | `code.line.number` |
 
 ### code.namespace
 
