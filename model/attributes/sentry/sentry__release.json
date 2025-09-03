@@ -6,6 +6,10 @@
     "key": "false"
   },
   "is_in_otel": false,
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "service.version"
+  },
   "example": "7.0.0",
   "alias": ["service.version", "release"]
 }

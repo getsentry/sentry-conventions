@@ -13,7 +13,6 @@
   - [gen_ai.operation.name](#gen_aioperationname)
   - [gen_ai.operation.type](#gen_aioperationtype)
   - [gen_ai.pipeline.name](#gen_aipipelinename)
-  - [gen_ai.prompt](#gen_aiprompt)
   - [gen_ai.request.available_tools](#gen_airequestavailable_tools)
   - [gen_ai.request.frequency_penalty](#gen_airequestfrequency_penalty)
   - [gen_ai.request.max_tokens](#gen_airequestmax_tokens)
@@ -47,6 +46,7 @@
   - [gen_ai.usage.total_tokens](#gen_aiusagetotal_tokens)
   - [gen_ai.user.message](#gen_aiusermessage)
 - [Deprecated Attributes](#deprecated-attributes)
+  - [gen_ai.prompt](#gen_aiprompt)
   - [gen_ai.usage.completion_tokens](#gen_aiusagecompletion_tokens)
   - [gen_ai.usage.prompt_tokens](#gen_aiusageprompt_tokens)
 
@@ -162,18 +162,6 @@ Name of the AI pipeline or chain being executed.
 | Exists in OpenTelemetry | No |
 | Example | `Autofix Pipeline` |
 | Aliases | `ai.pipeline.name` |
-
-### gen_ai.prompt
-
-The input messages sent to the model
-
-| Property | Value |
-| --- | --- |
-| Type | `string` |
-| Has PII | maybe |
-| Exists in OpenTelemetry | Yes |
-| Example | `[{"role": "user", "message": "hello"}]` |
-| Aliases | `ai.input_messages`, `gen_ai.request.messages` |
 
 ### gen_ai.request.available_tools
 
@@ -546,6 +534,20 @@ The user message passed to the model.
 ## Deprecated Attributes
 
 These attributes are deprecated and will be removed in a future version. Please use the recommended replacements.
+
+### gen_ai.prompt
+
+The input messages sent to the model
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | Yes |
+| Example | `[{"role": "user", "message": "hello"}]` |
+| Deprecated | Yes, use `gen_ai.request.messages` instead |
+| Deprecation Reason | Deprecated, use gen_ai.request.messages with the new format instead. |
+| Aliases | `ai.input_messages`, `gen_ai.request.messages` |
 
 ### gen_ai.usage.completion_tokens
 

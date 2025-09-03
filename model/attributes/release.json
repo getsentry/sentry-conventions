@@ -11,5 +11,5 @@
     "_status": null,
     "replacement": "sentry.release"
   },
-  "alias": ["sentry.release"]
+  "alias": ["sentry.release", "service.version"]
 }

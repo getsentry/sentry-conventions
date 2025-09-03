@@ -18,6 +18,7 @@
   - [replay_id](#replay_id)
   - [route](#route)
   - [transaction](#transaction)
+  - [url](#url)
 
 ## Stable Attributes
 
@@ -154,7 +155,7 @@ The sentry release.
 | Exists in OpenTelemetry | No |
 | Example | `production` |
 | Deprecated | Yes, use `sentry.release` instead |
-| Aliases | `sentry.release` |
+| Aliases | `sentry.release`, `service.version` |
 
 ### replay_id
 
@@ -194,4 +195,17 @@ The sentry transaction (segment name).
 | Example | `GET /` |
 | Deprecated | Yes, use `sentry.transaction` instead |
 | Aliases | `sentry.transaction` |
+
+### url
+
+The URL of the resource that was fetched.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `https://example.com/test?foo=bar#buzz` |
+| Deprecated | Yes, use `url.full` instead |
+| Aliases | `url.full`, `http.url` |
 

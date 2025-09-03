@@ -7,5 +7,5 @@
   },
   "is_in_otel": true,
   "example": "https://example.com/test?foo=bar#buzz",
-  "alias": ["http.url"]
+  "alias": ["http.url", "url"]
 }

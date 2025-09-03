@@ -76,7 +76,7 @@
         "_status": null,
         "replacement": "sentry.release"
       },
-      "alias": ["sentry.release"]
+      "alias": ["sentry.release", "service.version"]
     },
     {
       "key": "replay_id",
@@ -123,6 +123,22 @@
         "replacement": "sentry.transaction"
       },
       "alias": ["sentry.transaction"]
+    },
+    {
+      "key": "url",
+      "brief": "The URL of the resource that was fetched.",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "https://example.com/test?foo=bar#buzz",
+      "deprecation": {
+        "_status": null,
+        "replacement": "url.full"
+      },
+      "alias": ["url.full", "http.url"],
+      "sdks": ["javascript-browser", "javascript-node"]
     },
     {
       "key": "ai.completion_tokens.used",
@@ -565,6 +581,22 @@
       "alias": ["db.system.name"]
     },
     {
+      "key": "gen_ai.prompt",
+      "brief": "The input messages sent to the model",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": true,
+      "deprecation": {
+        "_status": null,
+        "replacement": "gen_ai.request.messages",
+        "reason": "Deprecated, use gen_ai.request.messages with the new format instead."
+      },
+      "example": "[{\"role\": \"user\", \"message\": \"hello\"}]",
+      "alias": ["ai.input_messages", "gen_ai.request.messages"]
+    },
+    {
       "key": "gen_ai.usage.completion_tokens",
       "brief": "The number of tokens used in the GenAI response (completion).",
       "type": "integer",
@@ -654,6 +686,21 @@
         "replacement": "http.request.method"
       },
       "alias": ["http.request.method"]
+    },
+    {
+      "key": "http.response.header.content-length",
+      "brief": "The size of the message body sent to the recipient (in bytes)",
+      "type": "string",
+      "pii": {
+        "key": "false"
+      },
+      "is_in_otel": true,
+      "example": "http.response.header.custom-header=['foo', 'bar']",
+      "deprecation": {
+        "_status": "normalize",
+        "replacement": "http.response.body.size"
+      },
+      "alias": ["http.response_content_length", "http.response.body.size"]
     },
     {
       "key": "http.response_content_length",
@@ -758,7 +805,7 @@
         "_status": null,
         "replacement": "url.full"
       },
-      "alias": ["url.full"]
+      "alias": ["url.full", "url"]
     },
     {
       "key": "http.user_agent",
@@ -1000,6 +1047,22 @@
       "alias": ["network.transport"]
     },
     {
+      "key": "params.<key>",
+      "brief": "Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.",
+      "has_dynamic_suffix": true,
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "deprecation": {
+        "_status": "normalize",
+        "replacement": "url.path.parameter.<key>"
+      },
+      "example": "params.id='123'",
+      "alias": ["url.path.parameter.<key>"]
+    },
+    {
       "key": "query.<key>",
       "brief": "An item in a query string. Usually added by client-side routing frameworks like vue-router.",
       "has_dynamic_suffix": true,
@@ -1014,6 +1077,21 @@
         "reason": "Instead of sending items individually in query.<key>, they should be sent all together with url.query."
       },
       "example": "query.id='123'"
+    },
+    {
+      "key": "sentry.release",
+      "brief": "The sentry release.",
+      "type": "string",
+      "pii": {
+        "key": "false"
+      },
+      "is_in_otel": false,
+      "deprecation": {
+        "_status": "backfill",
+        "replacement": "service.version"
+      },
+      "example": "7.0.0",
+      "alias": ["service.version", "release"]
     }
   ]
 }

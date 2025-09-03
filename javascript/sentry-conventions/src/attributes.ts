@@ -2156,6 +2156,7 @@ export type GEN_AI_PIPELINE_NAME_TYPE = string;
  *
  * Aliases: {@link AI_INPUT_MESSAGES} `ai.input_messages`, {@link GEN_AI_REQUEST_MESSAGES} `gen_ai.request.messages`
  *
+ * @deprecated Use {@link GEN_AI_REQUEST_MESSAGES} (gen_ai.request.messages) instead - Deprecated, use gen_ai.request.messages with the new format instead.
  * @example "[{\"role\": \"user\", \"message\": \"hello\"}]"
  */
 export const GEN_AI_PROMPT = 'gen_ai.prompt';
@@ -3396,6 +3397,7 @@ export type HTTP_RESPONSE_HEADER_KEY_TYPE = Array<string>;
  *
  * Aliases: {@link HTTP_RESPONSE_CONTENT_LENGTH} `http.response_content_length`, {@link HTTP_RESPONSE_BODY_SIZE} `http.response.body.size`
  *
+ * @deprecated Use {@link HTTP_RESPONSE_BODY_SIZE} (http.response.body.size) instead
  * @example "http.response.header.custom-header=['foo', 'bar']"
  */
 export const HTTP_RESPONSE_HEADER_CONTENT_LENGTH = 'http.response.header.content-length';
@@ -3506,7 +3508,7 @@ export type HTTP_RESPONSE_TRANSFER_SIZE_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link URL_TEMPLATE} `url.template`
+ * Aliases: {@link ROUTE} `route`
  *
  * @example "/users/:id"
  */
@@ -3618,7 +3620,7 @@ export type HTTP_TARGET_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link URL_FULL} `url.full`
+ * Aliases: {@link URL_FULL} `url.full`, {@link URL} `url`
  *
  * @deprecated Use {@link URL_FULL} (url.full) instead
  * @example "https://example.com/test?foo=bar#buzz"
@@ -4918,6 +4920,7 @@ export type OTEL_STATUS_DESCRIPTION_TYPE = string;
  *
  * Aliases: {@link URL_PATH_PARAMETER_KEY} `url.path.parameter.<key>`
  *
+ * @deprecated Use {@link URL_PATH_PARAMETER_KEY} (url.path.parameter.<key>) instead
  * @example "params.id='123'"
  */
 export const PARAMS_KEY = 'params.<key>';
@@ -5104,7 +5107,7 @@ export type QUERY_KEY_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link SENTRY_RELEASE} `sentry.release`
+ * Aliases: {@link SENTRY_RELEASE} `sentry.release`, {@link SERVICE_VERSION} `service.version`
  *
  * @deprecated Use {@link SENTRY_RELEASE} (sentry.release) instead
  * @example "production"
@@ -5543,6 +5546,7 @@ export type SENTRY_PROFILE_ID_TYPE = string;
  *
  * Aliases: {@link SERVICE_VERSION} `service.version`, {@link RELEASE} `release`
  *
+ * @deprecated Use {@link SERVICE_VERSION} (service.version) instead
  * @example "7.0.0"
  */
 export const SENTRY_RELEASE = 'sentry.release';
@@ -5811,7 +5815,7 @@ export type SERVICE_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link SENTRY_RELEASE} `sentry.release`
+ * Aliases: {@link SENTRY_RELEASE} `sentry.release`, {@link RELEASE} `release`
  *
  * @example "5.0.0"
  */
@@ -6016,7 +6020,7 @@ export type URL_FRAGMENT_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link HTTP_URL} `http.url`
+ * Aliases: {@link HTTP_URL} `http.url`, {@link URL} `url`
  *
  * @example "https://example.com/test?foo=bar#buzz"
  */
@@ -6136,15 +6140,13 @@ export type URL_SCHEME_TYPE = string;
 // Path: model/attributes/url/url__template.json
 
 /**
- * The low-cardinality template of an absolute path reference. `url.template`
+ * The low-cardinality template of an [absolute path reference](https://www.rfc-editor.org/rfc/rfc3986#section-4.2). `url.template`
  *
  * Attribute Value Type: `string` {@link URL_TEMPLATE_TYPE}
  *
  * Contains PII: false
  *
  * Attribute defined in OTEL: Yes
- *
- * Aliases: {@link HTTP_ROUTE} `http.route`
  *
  * @example "/users/:id"
  */
@@ -6154,6 +6156,29 @@ export const URL_TEMPLATE = 'url.template';
  * Type for {@link URL_TEMPLATE} url.template
  */
 export type URL_TEMPLATE_TYPE = string;
+
+// Path: model/attributes/url.json
+
+/**
+ * The URL of the resource that was fetched. `url`
+ *
+ * Attribute Value Type: `string` {@link URL_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`
+ *
+ * @deprecated Use {@link URL_FULL} (url.full) instead
+ * @example "https://example.com/test?foo=bar#buzz"
+ */
+export const URL = 'url';
+
+/**
+ * Type for {@link URL} url
+ */
+export type URL_TYPE = string;
 
 // Path: model/attributes/user/user__email.json
 
@@ -6471,7 +6496,6 @@ export type Attributes = {
   [GEN_AI_OPERATION_NAME]?: GEN_AI_OPERATION_NAME_TYPE;
   [GEN_AI_OPERATION_TYPE]?: GEN_AI_OPERATION_TYPE_TYPE;
   [GEN_AI_PIPELINE_NAME]?: GEN_AI_PIPELINE_NAME_TYPE;
-  [GEN_AI_PROMPT]?: GEN_AI_PROMPT_TYPE;
   [GEN_AI_REQUEST_AVAILABLE_TOOLS]?: GEN_AI_REQUEST_AVAILABLE_TOOLS_TYPE;
   [GEN_AI_REQUEST_FREQUENCY_PENALTY]?: GEN_AI_REQUEST_FREQUENCY_PENALTY_TYPE;
   [GEN_AI_REQUEST_MAX_TOKENS]?: GEN_AI_REQUEST_MAX_TOKENS_TYPE;
@@ -6524,7 +6548,6 @@ export type Attributes = {
   [HTTP_REQUEST_SECURE_CONNECTION_START]?: HTTP_REQUEST_SECURE_CONNECTION_START_TYPE;
   [HTTP_RESPONSE_BODY_SIZE]?: HTTP_RESPONSE_BODY_SIZE_TYPE;
   [HTTP_RESPONSE_HEADER_KEY]?: HTTP_RESPONSE_HEADER_KEY_TYPE;
-  [HTTP_RESPONSE_HEADER_CONTENT_LENGTH]?: HTTP_RESPONSE_HEADER_CONTENT_LENGTH_TYPE;
   [HTTP_RESPONSE_SIZE]?: HTTP_RESPONSE_SIZE_TYPE;
   [HTTP_RESPONSE_STATUS_CODE]?: HTTP_RESPONSE_STATUS_CODE_TYPE;
   [HTTP_ROUTE]?: HTTP_ROUTE_TYPE;
@@ -6572,7 +6595,6 @@ export type Attributes = {
   [OTEL_SCOPE_VERSION]?: OTEL_SCOPE_VERSION_TYPE;
   [OTEL_STATUS_CODE]?: OTEL_STATUS_CODE_TYPE;
   [OTEL_STATUS_DESCRIPTION]?: OTEL_STATUS_DESCRIPTION_TYPE;
-  [PARAMS_KEY]?: PARAMS_KEY_TYPE;
   [PREVIOUS_ROUTE]?: PREVIOUS_ROUTE_TYPE;
   [PROCESS_EXECUTABLE_NAME]?: PROCESS_EXECUTABLE_NAME_TYPE;
   [PROCESS_PID]?: PROCESS_PID_TYPE;
@@ -6597,7 +6619,6 @@ export type Attributes = {
   [SENTRY_ORIGIN]?: SENTRY_ORIGIN_TYPE;
   [SENTRY_PLATFORM]?: SENTRY_PLATFORM_TYPE;
   [SENTRY_PROFILE_ID]?: SENTRY_PROFILE_ID_TYPE;
-  [SENTRY_RELEASE]?: SENTRY_RELEASE_TYPE;
   [SENTRY_REPLAY_ID]?: SENTRY_REPLAY_ID_TYPE;
   [SENTRY_SDK_INTEGRATIONS]?: SENTRY_SDK_INTEGRATIONS_TYPE;
   [SENTRY_SDK_NAME]?: SENTRY_SDK_NAME_TYPE;
@@ -6934,6 +6955,7 @@ export type FullAttributes = {
   [URL_QUERY]?: URL_QUERY_TYPE;
   [URL_SCHEME]?: URL_SCHEME_TYPE;
   [URL_TEMPLATE]?: URL_TEMPLATE_TYPE;
+  [URL]?: URL_TYPE;
   [USER_EMAIL]?: USER_EMAIL_TYPE;
   [USER_FULL_NAME]?: USER_FULL_NAME_TYPE;
   [USER_GEO_CITY]?: USER_GEO_CITY_TYPE;

@@ -7,6 +7,10 @@
     "key": "maybe"
   },
   "is_in_otel": false,
+  "deprecation": {
+    "_status": "normalize",
+    "replacement": "url.path.parameter.<key>"
+  },
   "example": "params.id='123'",
   "alias": ["url.path.parameter.<key>"]
 }
