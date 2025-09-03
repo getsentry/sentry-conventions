@@ -13,6 +13,7 @@ This directory contains documentation for all available attributes.
 - [`cloudflare` Attributes](./cloudflare.md)
 - [`code` Attributes](./code.md)
 - [`db` Attributes](./db.md)
+- [`device` Attributes](./device.md)
 - [`error` Attributes](./error.md)
 - [`event` Attributes](./event.md)
 - [`exception` Attributes](./exception.md)

@@ -1,0 +1,10 @@
+{
+  "key": "sentry.message.template",
+  "brief": "The parameterized template string.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "Hello, {name}!"
+}
