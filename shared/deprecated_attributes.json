@@ -125,6 +125,22 @@
       "alias": ["sentry.transaction"]
     },
     {
+      "key": "url",
+      "brief": "The URL of the resource that was fetched.",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "https://example.com/test?foo=bar#buzz",
+      "deprecation": {
+        "_status": null,
+        "replacement": "url.full"
+      },
+      "alias": ["url.full", "http.url"],
+      "sdks": ["javascript-browser", "javascript-node"]
+    },
+    {
       "key": "ai.completion_tokens.used",
       "brief": "The number of tokens used to respond to the message.",
       "type": "integer",
@@ -789,7 +805,7 @@
         "_status": null,
         "replacement": "url.full"
       },
-      "alias": ["url.full"]
+      "alias": ["url.full", "url"]
     },
     {
       "key": "http.user_agent",
