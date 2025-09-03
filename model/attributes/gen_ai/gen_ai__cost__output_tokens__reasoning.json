@@ -1,0 +1,10 @@
+{
+  "key": "gen_ai.cost.output_tokens.reasoning",
+  "brief": "The cost of tokens used for reasoning to create the AI output in USD.",
+  "type": "double",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 123.45
+}

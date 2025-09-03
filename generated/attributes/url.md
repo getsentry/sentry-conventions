@@ -47,7 +47,7 @@ The URL of the resource that was fetched.
 | Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `https://example.com/test?foo=bar#buzz` |
-| Aliases | `url`, `http.url` |
+| Aliases | `http.url` |
 
 ### url.path
 

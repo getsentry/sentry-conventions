@@ -293,7 +293,7 @@ Client address - domain name if available without reverse DNS lookup; otherwise,
 | Has PII | false |
 | Exists in OpenTelemetry | Yes |
 | Example | `example.com` |
-| Deprecated | Yes, use `http.client_ip` instead |
+| Deprecated | Yes, use `client.address` instead |
 | Aliases | `client.address` |
 
 ### http.flavor
@@ -438,7 +438,7 @@ The URL of the resource that was fetched.
 | Exists in OpenTelemetry | Yes |
 | Example | `https://example.com/test?foo=bar#buzz` |
 | Deprecated | Yes, use `url.full` instead |
-| Aliases | `url.full`, `http.url`, `url` |
+| Aliases | `url.full` |
 
 ### http.user_agent
 

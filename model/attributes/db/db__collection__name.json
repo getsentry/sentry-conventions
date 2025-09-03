@@ -6,6 +6,5 @@
     "key": "false"
   },
   "is_in_otel": true,
-  "example": "users",
-  "alias": ["db.collection"]
+  "example": "users"
 }
