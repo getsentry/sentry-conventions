@@ -86,7 +86,7 @@
           "enum": [null, "backfill", "normalize"]
         }
       },
-      "required": ["replacement", "_status"]
+      "required": ["_status"]
     },
     "alias": {
       "description": "If there are attributes that alias to this attribute",
