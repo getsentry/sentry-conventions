@@ -758,7 +758,7 @@
         "_status": null,
         "replacement": "url.full"
       },
-      "alias": ["url.full", "http.url", "url"]
+      "alias": ["url.full"]
     },
     {
       "key": "http.user_agent",

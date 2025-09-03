@@ -437,7 +437,7 @@ The URL of the resource that was fetched.
 | Exists in OpenTelemetry | Yes |
 | Example | `https://example.com/test?foo=bar#buzz` |
 | Deprecated | Yes, use `url.full` instead |
-| Aliases | `url.full`, `http.url`, `url` |
+| Aliases | `url.full` |
 
 ### http.user_agent
 

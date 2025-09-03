@@ -3618,7 +3618,7 @@ export type HTTP_TARGET_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link URL} `url`
+ * Aliases: {@link URL_FULL} `url.full`
  *
  * @deprecated Use {@link URL_FULL} (url.full) instead
  * @example "https://example.com/test?foo=bar#buzz"
