@@ -211,6 +211,7 @@ The reason why the model stopped generating.
 | Exists in OpenTelemetry | No |
 | Example | `COMPLETE` |
 | Deprecated | Yes, use `gen_ai.response.finish_reason` instead |
+| Aliases | `gen_ai.response.finish_reasons` |
 
 ### ai.frequency_penalty
 
@@ -223,6 +224,7 @@ Used to reduce repetitiveness of generated tokens. The higher the value, the str
 | Exists in OpenTelemetry | No |
 | Example | `0.5` |
 | Deprecated | Yes, use `gen_ai.request.frequency_penalty` instead |
+| Aliases | `gen_ai.request.frequency_penalty` |
 
 ### ai.function_call
 
@@ -235,6 +237,7 @@ For an AI model call, the function that was called. This is deprecated for OpenA
 | Exists in OpenTelemetry | No |
 | Example | `function_name` |
 | Deprecated | Yes, use `gen_ai.tool.name` instead |
+| Aliases | `gen_ai.tool.name` |
 
 ### ai.generation_id
 
@@ -247,6 +250,7 @@ Unique identifier for the completion.
 | Exists in OpenTelemetry | No |
 | Example | `gen_123abc` |
 | Deprecated | Yes, use `gen_ai.response.id` instead |
+| Aliases | `gen_ai.response.id` |
 
 ### ai.input_messages
 
@@ -285,6 +289,7 @@ The provider of the model.
 | Exists in OpenTelemetry | No |
 | Example | `openai` |
 | Deprecated | Yes, use `gen_ai.system` instead |
+| Aliases | `gen_ai.system` |
 
 ### ai.pipeline.name
 
@@ -297,6 +302,7 @@ The name of the AI pipeline.
 | Exists in OpenTelemetry | No |
 | Example | `Autofix Pipeline` |
 | Deprecated | Yes, use `gen_ai.pipeline.name` instead |
+| Aliases | `gen_ai.pipeline.name` |
 
 ### ai.presence_penalty
 
@@ -309,6 +315,7 @@ Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty,
 | Exists in OpenTelemetry | No |
 | Example | `0.5` |
 | Deprecated | Yes, use `gen_ai.request.presence_penalty` instead |
+| Aliases | `gen_ai.request.presence_penalty` |
 
 ### ai.prompt_tokens.used
 
@@ -346,6 +353,7 @@ The seed, ideally models given the same seed and same other parameters will prod
 | Exists in OpenTelemetry | No |
 | Example | `1234567890` |
 | Deprecated | Yes, use `gen_ai.request.seed` instead |
+| Aliases | `gen_ai.request.seed` |
 
 ### ai.streaming
 
@@ -358,6 +366,7 @@ Whether the request was streamed back.
 | Exists in OpenTelemetry | No |
 | Example | `true` |
 | Deprecated | Yes, use `gen_ai.response.streaming` instead |
+| Aliases | `gen_ai.response.streaming` |
 
 ### ai.temperature
 
@@ -370,6 +379,7 @@ For an AI model call, the temperature parameter. Temperature essentially means h
 | Exists in OpenTelemetry | No |
 | Example | `0.1` |
 | Deprecated | Yes, use `gen_ai.request.temperature` instead |
+| Aliases | `gen_ai.request.temperature` |
 
 ### ai.tool_calls
 
@@ -406,6 +416,7 @@ Limits the model to only consider the K most likely next tokens, where K is an i
 | Exists in OpenTelemetry | No |
 | Example | `35` |
 | Deprecated | Yes, use `gen_ai.request.top_k` instead |
+| Aliases | `gen_ai.request.top_k` |
 
 ### ai.top_p
 
@@ -418,6 +429,7 @@ Limits the model to only consider tokens whose cumulative probability mass adds 
 | Exists in OpenTelemetry | No |
 | Example | `0.7` |
 | Deprecated | Yes, use `gen_ai.request.top_p` instead |
+| Aliases | `gen_ai.request.top_p` |
 
 ### ai.total_tokens.used
 
@@ -430,4 +442,5 @@ The total number of tokens used to process the prompt.
 | Exists in OpenTelemetry | No |
 | Example | `30` |
 | Deprecated | Yes, use `gen_ai.usage.total_tokens` instead |
+| Aliases | `gen_ai.usage.total_tokens` |
 

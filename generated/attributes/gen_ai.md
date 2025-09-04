@@ -173,6 +173,7 @@ The input messages sent to the model
 | Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `[{"role": "user", "message": "hello"}]` |
+| Aliases | `ai.input_messages`, `gen_ai.request.messages` |
 
 ### gen_ai.request.available_tools
 
@@ -218,6 +219,7 @@ The messages passed to the model. It has to be a stringified version of an array
 | Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `[{"role": "system", "content": "Generate a random number."}, {"role": "user", "content": [{"text": "Generate a random number between 0 and 10.", "type": "text"}]}]` |
+| Aliases | `ai.input_messages`, `gen_ai.prompt` |
 
 ### gen_ai.request.model
 

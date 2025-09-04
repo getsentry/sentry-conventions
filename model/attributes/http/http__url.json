@@ -11,5 +11,5 @@
     "_status": null,
     "replacement": "url.full"
   },
-  "alias": ["url.full", "http.url"]
+  "alias": ["url.full", "url"]
 }

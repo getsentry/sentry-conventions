@@ -11,5 +11,6 @@
   "deprecation": {
     "_status": null,
     "replacement": "gen_ai.usage.total_tokens"
-  }
+  },
+  "alias": ["gen_ai.usage.total_tokens"]
 }
