@@ -380,7 +380,7 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
   content += `A dictionary that maps each attribute's name to its metadata.\n`;
   content +=
     'If a key is not present in this dictionary, it means that attribute is not defined in the Sentry Semantic Conventions.\n';
-  content += '"""\n';
+  content += '"""\n\n';
 
   // Add __all__ list for exports
   content += '__all__ = [\n';
