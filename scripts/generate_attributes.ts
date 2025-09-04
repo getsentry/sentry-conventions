@@ -10,6 +10,9 @@ export async function generateAttributes() {
 
   // Generate and write JavaScript code
   writeToJs(attributesDir, attributeFiles);
+
+  // Generate and write Python code
+  writeToPython(attributesDir, attributeFiles);
 }
 
 async function getAllJsonFiles(dir: string): Promise<string[]> {
@@ -169,4 +172,302 @@ function getTsType(type: AttributeJson['type']): string {
     default:
       throw new Error(`Unknown attribute type: ${type}`);
   }
+}
+
+function writeToPython(attributesDir: string, attributeFiles: string[]) {
+  let content = '# This is an auto-generated file. Do not edit!\n\n';
+  content += 'from dataclasses import dataclass\n';
+  content += 'from enum import Enum\n';
+  content += 'from typing import List, Union, TypedDict, Literal, Optional, Dict\n\n';
+
+  content += 'AttributeValue = Union[str, int, float, bool, List[str], List[int], List[float], List[bool]]\n\n';
+
+  content +=
+    'AttributeType = Literal["string", "boolean", "integer", "double", "string[]", "boolean[]", "integer[]", "double[]"]\n\n';
+
+  content += 'class IsPii(Enum):\n';
+  content += '    """PII status enumeration."""\n';
+  content += '    TRUE = "true"\n';
+  content += '    FALSE = "false"\n';
+  content += '    MAYBE = "maybe"\n\n';
+
+  content += '@dataclass\n';
+  content += 'class PiiInfo:\n';
+  content += '    """PII information structure."""\n';
+  content += '    isPii: IsPii\n';
+  content += '    reason: Optional[str] = None\n\n';
+
+  content += 'class DeprecationStatus(Enum):\n';
+  content += '    BACKFILL = "backfill"\n';
+  content += '    NORMALIZE = "normalize"\n\n';
+
+  content += '@dataclass\n';
+  content += 'class DeprecationInfo:\n';
+  content += '    """Deprecation information structure."""\n';
+  content += '    replacement: Optional[str] = None\n';
+  content += '    reason: Optional[str] = None\n';
+  content += '    status: Optional[DeprecationStatus] = None\n\n';
+
+  content += '@dataclass\n';
+  content += 'class AttributeMetadata:\n';
+  content += '    """Structured metadata for an attribute."""\n';
+  content += '    brief: str\n';
+  content += '    type: AttributeType\n';
+  content += '    pii: PiiInfo\n';
+  content += '    is_in_otel: bool\n';
+  content += '    has_dynamic_suffix: Optional[bool] = None\n';
+  content += '    example: Optional[AttributeValue] = None\n';
+  content += '    deprecation: Optional[DeprecationInfo] = None\n';
+  content += '    aliases: Optional[List[str]] = None\n';
+  content += '    sdks: Optional[List[str]] = None\n\n';
+
+  let attributesTypeMembers = '';
+  let deprecatedAttributesTypeMembers = '';
+  let fullAttributesTypeMembers = '';
+  let metadataDict = '';
+  const attributeNames: string[] = [];
+
+  for (const file of attributeFiles) {
+    const attributePath = path.join(attributesDir, file);
+    const attributeJson = JSON.parse(fs.readFileSync(attributePath, 'utf-8')) as AttributeJson;
+
+    const { key, brief, type, pii, is_in_otel, example, has_dynamic_suffix, deprecation, alias } = attributeJson;
+
+    // Convert attribute key to a valid Python constant name
+    const constantName = getConstantName(key);
+    const pythonType = getPythonType(type);
+
+    content += `# Path: model/attributes/${file}\n\n`;
+
+    content += `${constantName}: Literal["${key}"] = "${key}"\n`;
+    content += `"""${brief}\n\n`;
+    content += `Type: ${pythonType}\n`;
+    content += `Contains PII: ${pii.key}${pii.reason ? ` - ${pii.reason}` : ''}\n`;
+    content += `Defined in OTEL: ${is_in_otel ? 'Yes' : 'No'}\n`;
+
+    if (has_dynamic_suffix) {
+      content += 'Has Dynamic Suffix: true\n';
+    }
+
+    if (alias && alias.length > 0) {
+      content += `Aliases: ${alias.join(', ')}\n`;
+    }
+
+    if (deprecation) {
+      content += `DEPRECATED: Use ${deprecation.replacement} instead${deprecation.reason ? ` - ${deprecation.reason}` : ''}\n`;
+    }
+
+    if (example !== undefined) {
+      content += `Example: ${JSON.stringify(example)}\n`;
+    }
+
+    content += '"""\n\n';
+
+    // Collect attribute names for the literal type
+    attributeNames.push(constantName);
+
+    // Build type members - using hardcoded types
+    const typeMember = `    ${constantName}: ${pythonType}`;
+
+    if (deprecation) {
+      deprecatedAttributesTypeMembers += `${typeMember}\n`;
+    } else {
+      attributesTypeMembers += `${typeMember}\n`;
+    }
+    fullAttributesTypeMembers += `${typeMember}\n`;
+
+    // Build metadata dictionary entry with structured types
+    metadataDict += `    ${constantName}: AttributeMetadata(\n`;
+    metadataDict += `        brief=${JSON.stringify(brief)},\n`;
+    metadataDict += `        type=${JSON.stringify(type)},\n`;
+
+    // Build PII info structure
+    const piiStatus = pii.key === 'true' ? 'IsPii.TRUE' : pii.key === 'false' ? 'IsPii.FALSE' : 'IsPii.MAYBE';
+    metadataDict += '        pii=PiiInfo(\n';
+    metadataDict += `            isPii=${piiStatus}`;
+    if (pii.reason) {
+      metadataDict += `,\n            reason=${JSON.stringify(pii.reason)}`;
+    }
+    metadataDict += '\n        ),\n';
+
+    metadataDict += `        is_in_otel=${is_in_otel ? 'True' : 'False'},\n`;
+
+    if (has_dynamic_suffix) {
+      metadataDict += '        has_dynamic_suffix=True,\n';
+    }
+
+    if (example !== undefined) {
+      const pythonExample = convertToPythonLiteral(example);
+      metadataDict += `        example=${pythonExample},\n`;
+    }
+
+    // Build deprecation info structure if present
+    if (deprecation) {
+      metadataDict += '        deprecation=DeprecationInfo(';
+      const deprecationFields: string[] = [];
+      if (deprecation.replacement) {
+        deprecationFields.push(`\n            replacement=${JSON.stringify(deprecation.replacement)}`);
+      }
+      if (deprecation.reason) {
+        deprecationFields.push(`\n            reason=${JSON.stringify(deprecation.reason)}`);
+      }
+      if (deprecation._status) {
+        const deprecationStatus =
+          deprecation._status === 'backfill' ? 'DeprecationStatus.BACKFILL' : 'DeprecationStatus.NORMALIZE';
+        deprecationFields.push(`\n            status=${deprecationStatus}`);
+      }
+      if (deprecationFields.length > 0) {
+        metadataDict += deprecationFields.join(',');
+        metadataDict += '\n        ),\n';
+      } else {
+        metadataDict += '),\n';
+      }
+    }
+
+    if (alias && alias.length > 0) {
+      metadataDict += `        aliases=${JSON.stringify(alias)},\n`;
+    }
+
+    if (attributeJson.sdks && attributeJson.sdks.length > 0) {
+      metadataDict += `        sdks=${JSON.stringify(attributeJson.sdks)},\n`;
+    }
+
+    metadataDict += '    ),\n';
+  }
+
+  // Add AttributeName literal type first
+  content += '# Literal type for all possible attribute names\n';
+  content += 'AttributeName = Literal[\n';
+  attributeNames.sort(); // Sort for consistent output
+  for (let i = 0; i < attributeNames.length; i++) {
+    const isLast = i === attributeNames.length - 1;
+    // Use the actual string values for the Literal type
+    content += `    "${attributeNames[i]}"${isLast ? '' : ','}\n`;
+  }
+  content += ']\n\n';
+
+  // Add ATTRIBUTES constant - list of all attribute names
+  content += '# List of all attribute names\n';
+  content += 'ATTRIBUTES: List[str] = [\n';
+  for (let i = 0; i < attributeNames.length; i++) {
+    const isLast = i === attributeNames.length - 1;
+    content += `    ${attributeNames[i]}${isLast ? '' : ','}\n`;
+  }
+  content += ']\n\n';
+
+  // Add __all__ list for exports
+  content += '# Exports control\n';
+  content += '__all__ = [\n';
+
+  // Add all individual attribute names
+  for (let i = 0; i < attributeNames.length; i++) {
+    const isLast = i === attributeNames.length - 1;
+    content += `    "${attributeNames[i]}"${isLast && attributeNames.length > 0 ? ',' : ','}\n`;
+  }
+
+  // Add the TypedDict classes and constants
+  content += '    "Attributes",\n';
+  content += '    "DeprecatedAttributes",\n';
+  content += '    "FullAttributes",\n';
+  content += '    "ATTRIBUTES",\n';
+  content += '    "_ATTRIBUTE_METADATA",\n';
+  content += ']\n\n';
+
+  // Add type definitions
+  content += '# Type definitions\n\n';
+
+  content += 'class Attributes(TypedDict, total=False):\n';
+  content += '    """Typed dictionary for non-deprecated attributes."""\n';
+  if (attributesTypeMembers) {
+    content += attributesTypeMembers;
+  } else {
+    content += '    pass\n';
+  }
+  content += '\n';
+
+  content += 'class DeprecatedAttributes(TypedDict, total=False):\n';
+  content += '    """Typed dictionary for deprecated attributes."""\n';
+  if (deprecatedAttributesTypeMembers) {
+    content += deprecatedAttributesTypeMembers;
+  } else {
+    content += '    pass\n';
+  }
+  content += '\n';
+
+  content += 'class FullAttributes(TypedDict, total=False):\n';
+  content += '    """Typed dictionary for all attributes (including deprecated)."""\n';
+  if (fullAttributesTypeMembers) {
+    content += fullAttributesTypeMembers;
+  } else {
+    content += '    pass\n';
+  }
+  content += '\n';
+
+  // Create a literal union type for all attribute keys for type safety
+  content += '# Create union type of all attribute names for type safety\n';
+  content += 'AttributeKey = Literal[\n';
+
+  // We need to map constant names back to their actual string values
+  const constantToKey = new Map<string, string>();
+  for (const file of attributeFiles) {
+    const attributePath = path.join(attributesDir, file);
+    const attributeJson = JSON.parse(fs.readFileSync(attributePath, 'utf-8')) as AttributeJson;
+    const { key } = attributeJson;
+    const constantName = getConstantName(key);
+    constantToKey.set(constantName, key);
+  }
+
+  for (let i = 0; i < attributeNames.length; i++) {
+    const constantName = attributeNames[i];
+    const key = constantToKey.get(constantName);
+    const isLast = i === attributeNames.length - 1;
+    content += `    ${JSON.stringify(key)}${isLast ? '' : ','}\n`;
+  }
+  content += ']\n\n';
+
+  // Add metadata dictionary
+  content += '# Metadata dictionary - keys are constrained to valid attribute names\n';
+  content += '_ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {\n';
+  content += metadataDict;
+  content += '}\n\n';
+  // Write the generated content to the file
+  const outputFilePath = path.join(__dirname, '..', 'python', 'src', 'sentry_conventions', 'attributes.py');
+  fs.writeFileSync(outputFilePath, content);
+
+  console.log(`Generated Python attributes file at: ${outputFilePath}`);
+}
+
+function getPythonType(type: AttributeJson['type']): string {
+  switch (type) {
+    case 'string':
+      return 'str';
+    case 'boolean':
+      return 'bool';
+    case 'integer':
+      return 'int';
+    case 'double':
+      return 'float';
+    case 'string[]':
+      return 'List[str]';
+    case 'boolean[]':
+      return 'List[bool]';
+    case 'integer[]':
+      return 'List[int]';
+    case 'double[]':
+      return 'List[float]';
+    default:
+      throw new Error(`Unknown attribute type: ${type}`);
+  }
+}
+
+function convertToPythonLiteral(value: AttributeJson['example']): string {
+  if (value === null) return 'None';
+  if (typeof value === 'boolean') return value ? 'True' : 'False';
+  if (typeof value === 'string') return JSON.stringify(value);
+  if (typeof value === 'number') return value.toString();
+  if (Array.isArray(value)) {
+    const items = value.map(convertToPythonLiteral);
+    return `[${items.join(', ')}]`;
+  }
+  return JSON.stringify(value);
 }
