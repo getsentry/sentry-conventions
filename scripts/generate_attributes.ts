@@ -94,7 +94,11 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
 
     // Add deprecation info if present
     if (deprecation) {
-      attributesContent += ` * @deprecated Use {@link ${getConstantName(deprecation.replacement)}} (${deprecation.replacement}) instead${deprecation.reason ? ` - ${deprecation.reason}` : ''}\n`;
+      let replacement = '';
+      if (deprecation.replacement) {
+        replacement = `Use {@link ${getConstantName(deprecation.replacement)}} (${deprecation.replacement}) instead`;
+      }
+      attributesContent += ` * @deprecated ${replacement}${deprecation.reason ? ` - ${deprecation.reason}` : ''}\n`;
       fullAttributeTypeMap += `\n  [${constantName}]?: ${typeConstantName};`;
     } else {
       fullAttributeTypeMap += `\n  [${constantName}]?: ${typeConstantName};`;
