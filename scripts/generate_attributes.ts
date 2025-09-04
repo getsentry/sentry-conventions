@@ -182,7 +182,7 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
   content += '# This is an auto-generated file. Do not edit!\n\n';
   content += 'from dataclasses import dataclass\n';
   content += 'from enum import Enum\n';
-  content += 'from typing import List, Union, TypedDict, Literal, Optional, Dict\n\n';
+  content += 'from typing import List, Union, Literal, Optional, Dict\n\n';
 
   content += 'AttributeValue = Union[str, int, float, bool, List[str], List[int], List[float], List[bool]]\n\n';
 
@@ -257,6 +257,10 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
   let metadataDict = '';
   const attributeNames: string[] = [];
 
+  // Start the ATTRIBUTE_NAMES class
+  content += 'class ATTRIBUTE_NAMES:\n';
+  content += '    """Contains all attribute names as class attributes with their documentation."""\n\n';
+
   for (const file of attributeFiles) {
     const attributePath = path.join(attributesDir, file);
     const attributeJson = JSON.parse(fs.readFileSync(attributePath, 'utf-8')) as AttributeJson;
@@ -267,31 +271,31 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
     const constantName = getConstantName(key);
     const pythonType = getPythonType(type);
 
-    content += `# Path: model/attributes/${file}\n\n`;
+    content += `    # Path: model/attributes/${file}\n`;
 
-    content += `${constantName}: Literal["${key}"] = "${key}"\n`;
-    content += `"""${brief}\n\n`;
-    content += `Type: ${pythonType}\n`;
-    content += `Contains PII: ${pii.key}${pii.reason ? ` - ${pii.reason}` : ''}\n`;
-    content += `Defined in OTEL: ${is_in_otel ? 'Yes' : 'No'}\n`;
+    content += `    ${constantName}: Literal["${key}"] = "${key}"\n`;
+    content += `    """${brief}\n\n`;
+    content += `    Type: ${pythonType}\n`;
+    content += `    Contains PII: ${pii.key}${pii.reason ? ` - ${pii.reason}` : ''}\n`;
+    content += `    Defined in OTEL: ${is_in_otel ? 'Yes' : 'No'}\n`;
 
     if (has_dynamic_suffix) {
-      content += 'Has Dynamic Suffix: true\n';
+      content += '    Has Dynamic Suffix: true\n';
     }
 
     if (alias && alias.length > 0) {
-      content += `Aliases: ${alias.join(', ')}\n`;
+      content += `    Aliases: ${alias.join(', ')}\n`;
     }
 
     if (deprecation) {
-      content += `DEPRECATED: Use ${deprecation.replacement} instead${deprecation.reason ? ` - ${deprecation.reason}` : ''}\n`;
+      content += `    DEPRECATED: Use ${deprecation.replacement} instead${deprecation.reason ? ` - ${deprecation.reason}` : ''}\n`;
     }
 
     if (example !== undefined) {
-      content += `Example: ${JSON.stringify(example)}\n`;
+      content += `    Example: ${JSON.stringify(example)}\n`;
     }
 
-    content += '"""\n\n';
+    content += '    """\n\n';
 
     // Collect attribute names for the literal type
     attributeNames.push(constantName);
@@ -307,7 +311,7 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
     fullAttributesTypeMembers += `${typeMember}\n`;
 
     // Build metadata dictionary entry with structured types
-    metadataDict += `    ${constantName}: AttributeMetadata(\n`;
+    metadataDict += `    ATTRIBUTE_NAMES.${constantName}: AttributeMetadata(\n`;
     metadataDict += `        brief=${JSON.stringify(brief)},\n`;
     metadataDict += `        type=${getAttributeTypeEnum(type)},\n`;
 
@@ -365,51 +369,7 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
     metadataDict += '    ),\n';
   }
 
-  // Add __all__ list for exports
-  content += '# Exports control\n';
-  content += '__all__ = [\n';
-
-  // Add all individual attribute names
-  for (let i = 0; i < attributeNames.length; i++) {
-    const isLast = i === attributeNames.length - 1;
-    content += `    "${attributeNames[i]}"${isLast && attributeNames.length > 0 ? ',' : ','}\n`;
-  }
-
-  // Add the TypedDict classes and constants
-  content += '    "Attributes",\n';
-  content += '    "DeprecatedAttributes",\n';
-  content += '    "FullAttributes",\n';
-  content += '    "_ATTRIBUTE_METADATA",\n';
-  content += ']\n\n';
-
-  // Add type definitions
-  content += '# Type definitions\n\n';
-
-  content += 'class Attributes(TypedDict, total=False):\n';
-  content += '    """Typed dictionary for non-deprecated attributes."""\n';
-  if (attributesTypeMembers) {
-    content += attributesTypeMembers;
-  } else {
-    content += '    pass\n';
-  }
-  content += '\n';
-
-  content += 'class DeprecatedAttributes(TypedDict, total=False):\n';
-  content += '    """Typed dictionary for deprecated attributes."""\n';
-  if (deprecatedAttributesTypeMembers) {
-    content += deprecatedAttributesTypeMembers;
-  } else {
-    content += '    pass\n';
-  }
-  content += '\n';
-
-  content += 'class FullAttributes(TypedDict, total=False):\n';
-  content += '    """Typed dictionary for all attributes (including deprecated)."""\n';
-  if (fullAttributesTypeMembers) {
-    content += fullAttributesTypeMembers;
-  } else {
-    content += '    pass\n';
-  }
+  // Close the ATTRIBUTE_NAMES class
   content += '\n';
 
   // Add metadata dictionary
@@ -418,8 +378,15 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
   content += '}\n\n';
   content += '"""\n';
   content += `A dictionary that maps each attribute's name to its metadata.\n`;
-  content += `If a key is not present in this dictionary, it means that attribute is not defined in the Sentry Semantic Conventions.\n`;
+  content +=
+    'If a key is not present in this dictionary, it means that attribute is not defined in the Sentry Semantic Conventions.\n';
   content += '"""\n';
+
+  // Add __all__ list for exports
+  content += '__all__ = [\n';
+  content += '    "ATTRIBUTE_NAMES",\n';
+  content += '    "_ATTRIBUTE_METADATA",\n';
+  content += ']\n\n';
 
   // Write the generated content to the file
   const outputFilePath = path.join(__dirname, '..', 'python', 'src', 'sentry_conventions', 'attributes.py');
