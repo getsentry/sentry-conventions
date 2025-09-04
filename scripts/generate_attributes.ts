@@ -292,7 +292,11 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
     }
 
     if (deprecation) {
-      content += `    DEPRECATED: Use ${deprecation.replacement} instead${deprecation.reason ? ` - ${deprecation.reason}` : ''}\n`;
+      if (deprecation.replacement) {
+        content += `    DEPRECATED: Use ${deprecation.replacement} instead${deprecation.reason ? ` - ${deprecation.reason}` : ''}\n`;
+      } else {
+        content += `    DEPRECATED: No replacement at this time${deprecation.reason ? ` - ${deprecation.reason}` : ''}\n`;
+      }
     }
 
     if (example !== undefined) {

@@ -1231,7 +1231,7 @@ class ATTRIBUTE_NAMES:
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
-    DEPRECATED: Use undefined instead - Deprecated from OTEL, use gen_ai.input.messages with the new format instead.
+    DEPRECATED: No replacement at this time - Deprecated from OTEL, use gen_ai.input.messages with the new format instead.
     Example: "[{\"role\": \"user\", \"message\": \"hello\"}]"
     """
 
@@ -2506,7 +2506,7 @@ class ATTRIBUTE_NAMES:
     Type: str
     Contains PII: false
     Defined in OTEL: Yes
-    DEPRECATED: Use undefined instead - Deprecated from OTEL, no replacement at this time
+    DEPRECATED: No replacement at this time - Deprecated from OTEL, no replacement at this time
     Example: "/var/my.sock"
     """
 
