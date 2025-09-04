@@ -34,7 +34,7 @@ Local address of the network connection - IP address or Unix domain socket name.
 | Exists in OpenTelemetry | Yes |
 | Example | `192.168.0.1` |
 | Deprecated | Yes, use `network.local.address` instead |
-| Aliases | `network.local.address` |
+| Aliases | `network.local.address`, `net.sock.host.addr` |
 
 ### net.host.name
 
@@ -47,7 +47,7 @@ Server domain name if available without reverse DNS lookup; otherwise, IP addres
 | Exists in OpenTelemetry | Yes |
 | Example | `example.com` |
 | Deprecated | Yes, use `server.address` instead |
-| Aliases | `server.address` |
+| Aliases | `server.address`, `http.server_name`, `http.host` |
 
 ### net.host.port
 
@@ -73,7 +73,7 @@ Peer address of the network connection - IP address or Unix domain socket name.
 | Exists in OpenTelemetry | Yes |
 | Example | `192.168.0.1` |
 | Deprecated | Yes, use `network.peer.address` instead |
-| Aliases | `network.peer.address` |
+| Aliases | `network.peer.address`, `net.sock.peer.addr` |
 
 ### net.peer.name
 
@@ -125,7 +125,7 @@ The actual version of the protocol used for network communication.
 | Exists in OpenTelemetry | Yes |
 | Example | `1.1` |
 | Deprecated | Yes, use `network.protocol.version` instead |
-| Aliases | `network.protocol.version` |
+| Aliases | `network.protocol.version`, `http.flavor` |
 
 ### net.sock.family
 
@@ -151,7 +151,7 @@ Local address of the network connection mapping to Unix domain socket name.
 | Exists in OpenTelemetry | Yes |
 | Example | `/var/my.sock` |
 | Deprecated | Yes, use `network.local.address` instead |
-| Aliases | `network.local.address` |
+| Aliases | `network.local.address`, `net.host.ip` |
 
 ### net.sock.host.port
 
@@ -177,7 +177,7 @@ Peer address of the network connection - IP address
 | Exists in OpenTelemetry | Yes |
 | Example | `192.168.0.1` |
 | Deprecated | Yes, use `network.peer.address` instead |
-| Aliases | `network.peer.address` |
+| Aliases | `network.peer.address`, `net.peer.ip` |
 
 ### net.sock.peer.name
 

@@ -1,0 +1,10 @@
+{
+  "key": "sentry.trace.parent_span_id",
+  "brief": "The span id of the span that was active when the log was collected. This should not be set if there was no active span.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "b0e6f15b45c36b12"
+}

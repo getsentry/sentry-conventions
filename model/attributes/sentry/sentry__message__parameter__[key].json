@@ -1,0 +1,10 @@
+{
+  "key": "sentry.message.parameter.<key>",
+  "brief": "A parameter used in the message template. <key> can either be the number that represent the parameter's position in the template string (sentry.message.parameter.0, sentry.message.parameter.1, etc) or the parameter's name (sentry.message.parameter.item_id, sentry.message.parameter.user_id, etc)",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "sentry.message.parameter.0='123'"
+}
