@@ -145,7 +145,7 @@ describe('attribute json', async () => {
 
       it('should be allowed to have pii: false only if in the sentry namespace', () => {
         if (content.pii.key === 'false') {
-          expect(content.key.startsWith('sentry.')).toBe(true);
+          expect(content.key.startsWith('sentry.'), `Attribute "${content.key}" has pii: false but is not in the sentry.* namespace.`).toBe(true);
         }
       });
     });
