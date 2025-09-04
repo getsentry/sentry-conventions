@@ -174,7 +174,7 @@ class ATTRIBUTE_NAMES:
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: gen_ai.prompt, gen_ai.request.messages
+    Aliases: gen_ai.request.messages
     DEPRECATED: Use gen_ai.request.messages instead
     Example: "[{\"role\": \"user\", \"message\": \"hello\"}]"
     """
@@ -1231,7 +1231,7 @@ class ATTRIBUTE_NAMES:
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
-    Aliases: ai.input_messages, gen_ai.request.messages
+    DEPRECATED: Use undefined instead - Deprecated from OTEL, use gen_ai.input.messages with the new format instead.
     Example: "[{\"role\": \"user\", \"message\": \"hello\"}]"
     """
 
@@ -1281,7 +1281,7 @@ class ATTRIBUTE_NAMES:
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: ai.input_messages, gen_ai.prompt
+    Aliases: ai.input_messages
     Example: "[{\"role\": \"system\", \"content\": \"Generate a random number.\"}, {\"role\": \"user\", \"content\": [{\"text\": \"Generate a random number between 0 and 10.\", \"type\": \"text\"}]}]"
     """
 
@@ -2506,7 +2506,7 @@ class ATTRIBUTE_NAMES:
     Type: str
     Contains PII: false
     Defined in OTEL: Yes
-    DEPRECATED: Use  instead - Deprecated, no replacement at this time
+    DEPRECATED: Use undefined instead - Deprecated from OTEL, no replacement at this time
     Example: "/var/my.sock"
     """
 
@@ -3606,7 +3606,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example='[{"role": "user", "message": "hello"}]',
         deprecation=DeprecationInfo(replacement="gen_ai.request.messages"),
-        aliases=["gen_ai.prompt", "gen_ai.request.messages"],
+        aliases=["gen_ai.request.messages"],
         sdks=["python"],
     ),
     ATTRIBUTE_NAMES.AI_IS_SEARCH_REQUIRED: AttributeMetadata(
@@ -4378,7 +4378,9 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example='[{"role": "user", "message": "hello"}]',
-        aliases=["ai.input_messages", "gen_ai.request.messages"],
+        deprecation=DeprecationInfo(
+            reason="Deprecated from OTEL, use gen_ai.input.messages with the new format instead."
+        ),
     ),
     ATTRIBUTE_NAMES.GEN_AI_REQUEST_AVAILABLE_TOOLS: AttributeMetadata(
         brief="The available tools for the model. It has to be a stringified version of an array of objects.",
@@ -4408,7 +4410,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example='[{"role": "system", "content": "Generate a random number."}, {"role": "user", "content": [{"text": "Generate a random number between 0 and 10.", "type": "text"}]}]',
-        aliases=["ai.input_messages", "gen_ai.prompt"],
+        aliases=["ai.input_messages"],
     ),
     ATTRIBUTE_NAMES.GEN_AI_REQUEST_MODEL: AttributeMetadata(
         brief="The model identifier being used for the request.",
@@ -5278,7 +5280,9 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
         example="/var/my.sock",
-        deprecation=DeprecationInfo(reason="Deprecated, no replacement at this time"),
+        deprecation=DeprecationInfo(
+            reason="Deprecated from OTEL, no replacement at this time"
+        ),
     ),
     ATTRIBUTE_NAMES.NET_SOCK_PEER_PORT: AttributeMetadata(
         brief="Peer port number of the network connection.",
