@@ -1,4 +1,4 @@
-"""A collection of attribute names with helpers to retrieve attribute's metadata, as defined in the Sentry Semantic Conventions registry."""
+"""A collection of attribute names with helpers to retrieve an attribute's metadata, as defined in the Sentry Semantic Conventions registry."""
 
 # This is an auto-generated file. Do not edit!
 
