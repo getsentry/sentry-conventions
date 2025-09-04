@@ -1,0 +1,10 @@
+{
+  "key": "device.family",
+  "brief": "The family of the device.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "iPhone"
+}

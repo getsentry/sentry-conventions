@@ -1,0 +1,10 @@
+{
+  "key": "device.brand",
+  "brief": "The brand of the device.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "Apple"
+}

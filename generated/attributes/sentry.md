@@ -10,6 +10,8 @@
   - [sentry.exclusive_time](#sentryexclusive_time)
   - [sentry.http.prefetch](#sentryhttpprefetch)
   - [sentry.idle_span_finish_reason](#sentryidle_span_finish_reason)
+  - [sentry.message.parameter.\<key\>](#sentrymessageparameterkey)
+  - [sentry.message.template](#sentrymessagetemplate)
   - [sentry.module.\<key\>](#sentrymodulekey)
   - [sentry.nextjs.ssr.function.route](#sentrynextjsssrfunctionroute)
   - [sentry.nextjs.ssr.function.type](#sentrynextjsssrfunctiontype)
@@ -26,6 +28,7 @@
   - [sentry.segment.name](#sentrysegmentname)
   - [sentry.server_sample_rate](#sentryserver_sample_rate)
   - [sentry.span.source](#sentryspansource)
+  - [sentry.trace.parent_span_id](#sentrytraceparent_span_id)
   - [sentry.transaction](#sentrytransaction)
 
 ## Stable Attributes
@@ -107,6 +110,28 @@ The reason why an idle span ended early.
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `idleTimeout` |
+
+### sentry.message.parameter.\<key\>
+
+A parameter used in the message template. \<key\> can either be the number that represent the parameter's position in the template string (sentry.message.parameter.0, sentry.message.parameter.1, etc) or the parameter's name (sentry.message.parameter.item_id, sentry.message.parameter.user_id, etc)
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `sentry.message.parameter.0='123'` |
+
+### sentry.message.template
+
+The parameterized template string.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `Hello, {name}!` |
 
 ### sentry.module.\<key\>
 
@@ -287,6 +312,17 @@ The source of a span, also referred to as transaction source.
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `route` |
+
+### sentry.trace.parent_span_id
+
+The span id of the span that was active when the log was collected. This should not be set if there was no active span.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `b0e6f15b45c36b12` |
 
 ### sentry.transaction
 
