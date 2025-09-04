@@ -182,18 +182,24 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
 
   content += 'AttributeValue = Union[str, int, float, bool, List[str], List[int], List[float], List[bool]]\n\n';
 
-  content +=
-    'AttributeType = Literal["string", "boolean", "integer", "double", "string[]", "boolean[]", "integer[]", "double[]"]\n\n';
+  content += 'class AttributeType(Enum):\n';
+  content += '    STRING = "string"\n';
+  content += '    BOOLEAN = "boolean"\n';
+  content += '    INTEGER = "integer"\n';
+  content += '    DOUBLE = "double"\n';
+  content += '    STRING_ARRAY = "string[]"\n';
+  content += '    BOOLEAN_ARRAY = "boolean[]"\n';
+  content += '    INTEGER_ARRAY = "integer[]"\n';
+  content += '    DOUBLE_ARRAY = "double[]"\n\n';
 
   content += 'class IsPii(Enum):\n';
-  content += '    """PII status enumeration."""\n';
   content += '    TRUE = "true"\n';
   content += '    FALSE = "false"\n';
   content += '    MAYBE = "maybe"\n\n';
 
   content += '@dataclass\n';
   content += 'class PiiInfo:\n';
-  content += '    """PII information structure."""\n';
+  content += `    """Holds information about PII in an attribute's values."""\n`;
   content += '    isPii: IsPii\n';
   content += '    reason: Optional[str] = None\n\n';
 
@@ -203,14 +209,14 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
 
   content += '@dataclass\n';
   content += 'class DeprecationInfo:\n';
-  content += '    """Deprecation information structure."""\n';
+  content += '    """Holds information about a deprecation."""\n';
   content += '    replacement: Optional[str] = None\n';
   content += '    reason: Optional[str] = None\n';
   content += '    status: Optional[DeprecationStatus] = None\n\n';
 
   content += '@dataclass\n';
   content += 'class AttributeMetadata:\n';
-  content += '    """Structured metadata for an attribute."""\n';
+  content += '    """The metadata for an attribute."""\n';
   content += '    brief: str\n';
   content += '    type: AttributeType\n';
   content += '    pii: PiiInfo\n';
@@ -279,7 +285,7 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
     // Build metadata dictionary entry with structured types
     metadataDict += `    ${constantName}: AttributeMetadata(\n`;
     metadataDict += `        brief=${JSON.stringify(brief)},\n`;
-    metadataDict += `        type=${JSON.stringify(type)},\n`;
+    metadataDict += `        type=${getAttributeTypeEnum(type)},\n`;
 
     // Build PII info structure
     const piiStatus = pii.key === 'true' ? 'IsPii.TRUE' : pii.key === 'false' ? 'IsPii.FALSE' : 'IsPii.MAYBE';
@@ -455,6 +461,29 @@ function getPythonType(type: AttributeJson['type']): string {
       return 'List[int]';
     case 'double[]':
       return 'List[float]';
+    default:
+      throw new Error(`Unknown attribute type: ${type}`);
+  }
+}
+
+function getAttributeTypeEnum(type: AttributeJson['type']): string {
+  switch (type) {
+    case 'string':
+      return 'AttributeType.STRING';
+    case 'boolean':
+      return 'AttributeType.BOOLEAN';
+    case 'integer':
+      return 'AttributeType.INTEGER';
+    case 'double':
+      return 'AttributeType.DOUBLE';
+    case 'string[]':
+      return 'AttributeType.STRING_ARRAY';
+    case 'boolean[]':
+      return 'AttributeType.BOOLEAN_ARRAY';
+    case 'integer[]':
+      return 'AttributeType.INTEGER_ARRAY';
+    case 'double[]':
+      return 'AttributeType.DOUBLE_ARRAY';
     default:
       throw new Error(`Unknown attribute type: ${type}`);
   }

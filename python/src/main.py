@@ -4,7 +4,8 @@ attr_str = "ai.responses"
 
 metadata = attributes._ATTRIBUTE_METADATA.get(attr_str)
 ty = metadata.type if metadata else None
-print(ty)  # "string[]"
+print(ty)  # attributes.AttributeType.STRING_ARRAY
+
 deprecation = metadata.deprecation if metadata else None
 replacement = deprecation.replacement if deprecation else None
 print(replacement)  # "gen_ai.response.text"
