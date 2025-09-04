@@ -175,7 +175,11 @@ function getTsType(type: AttributeJson['type']): string {
 }
 
 function writeToPython(attributesDir: string, attributeFiles: string[]) {
-  let content = '# This is an auto-generated file. Do not edit!\n\n';
+  let content = `"""`;
+  content +=
+    "A collection of attribute names with helpers to retrieve attribute's metadata, as defined in the Sentry Semantic Conventions registry.";
+  content += '"""\n\n';
+  content += '# This is an auto-generated file. Do not edit!\n\n';
   content += 'from dataclasses import dataclass\n';
   content += 'from enum import Enum\n';
   content += 'from typing import List, Union, TypedDict, Literal, Optional, Dict\n\n';
@@ -216,16 +220,36 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
 
   content += '@dataclass\n';
   content += 'class AttributeMetadata:\n';
-  content += '    """The metadata for an attribute."""\n';
+  content += '    """The metadata for an attribute."""\n\n';
   content += '    brief: str\n';
+  content += '    """A description of the attribute"""\n';
+  content += '    \n';
   content += '    type: AttributeType\n';
+  content += '    """The type of the attribute value"""\n';
+  content += '    \n';
   content += '    pii: PiiInfo\n';
+  content +=
+    '    """If an attribute can have pii. Is either true, false or maybe. Optionally include a reason about why it has PII or not"""\n';
+  content += '    \n';
   content += '    is_in_otel: bool\n';
+  content += '    """Whether the attribute is defined in OpenTelemetry Semantic Conventions"""\n';
+  content += '    \n';
   content += '    has_dynamic_suffix: Optional[bool] = None\n';
+  content +=
+    '    """If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"""\n';
+  content += '    \n';
   content += '    example: Optional[AttributeValue] = None\n';
+  content += '    """An example value of the attribute"""\n';
+  content += '    \n';
   content += '    deprecation: Optional[DeprecationInfo] = None\n';
+  content += '    """If an attribute was deprecated, and what it was replaced with"""\n';
+  content += '    \n';
   content += '    aliases: Optional[List[str]] = None\n';
-  content += '    sdks: Optional[List[str]] = None\n\n';
+  content += '    """If there are attributes that alias to this attribute"""\n';
+  content += '    \n';
+  content += '    sdks: Optional[List[str]] = None\n';
+  content +=
+    '    """If an attribute is SDK specific, list the SDKs that use this attribute. This is not an exhaustive list, there might be SDKs that send this attribute that are is not documented here."""\n\n';
 
   let attributesTypeMembers = '';
   let deprecatedAttributesTypeMembers = '';
@@ -341,26 +365,6 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
     metadataDict += '    ),\n';
   }
 
-  // Add AttributeName literal type first
-  content += '# Literal type for all possible attribute names\n';
-  content += 'AttributeName = Literal[\n';
-  attributeNames.sort(); // Sort for consistent output
-  for (let i = 0; i < attributeNames.length; i++) {
-    const isLast = i === attributeNames.length - 1;
-    // Use the actual string values for the Literal type
-    content += `    "${attributeNames[i]}"${isLast ? '' : ','}\n`;
-  }
-  content += ']\n\n';
-
-  // Add ATTRIBUTES constant - list of all attribute names
-  content += '# List of all attribute names\n';
-  content += 'ATTRIBUTES: List[str] = [\n';
-  for (let i = 0; i < attributeNames.length; i++) {
-    const isLast = i === attributeNames.length - 1;
-    content += `    ${attributeNames[i]}${isLast ? '' : ','}\n`;
-  }
-  content += ']\n\n';
-
   // Add __all__ list for exports
   content += '# Exports control\n';
   content += '__all__ = [\n';
@@ -375,7 +379,6 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
   content += '    "Attributes",\n';
   content += '    "DeprecatedAttributes",\n';
   content += '    "FullAttributes",\n';
-  content += '    "ATTRIBUTES",\n';
   content += '    "_ATTRIBUTE_METADATA",\n';
   content += ']\n\n';
 
@@ -409,33 +412,15 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
   }
   content += '\n';
 
-  // Create a literal union type for all attribute keys for type safety
-  content += '# Create union type of all attribute names for type safety\n';
-  content += 'AttributeKey = Literal[\n';
-
-  // We need to map constant names back to their actual string values
-  const constantToKey = new Map<string, string>();
-  for (const file of attributeFiles) {
-    const attributePath = path.join(attributesDir, file);
-    const attributeJson = JSON.parse(fs.readFileSync(attributePath, 'utf-8')) as AttributeJson;
-    const { key } = attributeJson;
-    const constantName = getConstantName(key);
-    constantToKey.set(constantName, key);
-  }
-
-  for (let i = 0; i < attributeNames.length; i++) {
-    const constantName = attributeNames[i];
-    const key = constantToKey.get(constantName);
-    const isLast = i === attributeNames.length - 1;
-    content += `    ${JSON.stringify(key)}${isLast ? '' : ','}\n`;
-  }
-  content += ']\n\n';
-
   // Add metadata dictionary
-  content += '# Metadata dictionary - keys are constrained to valid attribute names\n';
   content += '_ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {\n';
   content += metadataDict;
   content += '}\n\n';
+  content += '"""\n';
+  content += `A dictionary that maps each attribute's name to its metadata.\n`;
+  content += `If a key is not present in this dictionary, it means that attribute is not defined in the Sentry Semantic Conventions.\n`;
+  content += '"""\n';
+
   // Write the generated content to the file
   const outputFilePath = path.join(__dirname, '..', 'python', 'src', 'sentry_conventions', 'attributes.py');
   fs.writeFileSync(outputFilePath, content);
