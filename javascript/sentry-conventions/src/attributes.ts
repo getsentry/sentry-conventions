@@ -166,7 +166,7 @@ export type AI_GENERATION_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link GEN_AI_PROMPT} `gen_ai.prompt`, {@link GEN_AI_REQUEST_MESSAGES} `gen_ai.request.messages`
+ * Aliases: {@link GEN_AI_REQUEST_MESSAGES} `gen_ai.request.messages`
  *
  * @deprecated Use {@link GEN_AI_REQUEST_MESSAGES} (gen_ai.request.messages) instead
  * @example "[{\"role\": \"user\", \"message\": \"hello\"}]"
@@ -2214,8 +2214,7 @@ export type GEN_AI_PIPELINE_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link AI_INPUT_MESSAGES} `ai.input_messages`, {@link GEN_AI_REQUEST_MESSAGES} `gen_ai.request.messages`
- *
+ * @deprecated  - Deprecated from OTEL, use gen_ai.input.messages with the new format instead.
  * @example "[{\"role\": \"user\", \"message\": \"hello\"}]"
  */
 export const GEN_AI_PROMPT = 'gen_ai.prompt';
@@ -2298,7 +2297,7 @@ export type GEN_AI_REQUEST_MAX_TOKENS_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link AI_INPUT_MESSAGES} `ai.input_messages`, {@link GEN_AI_PROMPT} `gen_ai.prompt`
+ * Aliases: {@link AI_INPUT_MESSAGES} `ai.input_messages`
  *
  * @example "[{\"role\": \"system\", \"content\": \"Generate a random number.\"}, {\"role\": \"user\", \"content\": [{\"text\": \"Generate a random number between 0 and 10.\", \"type\": \"text\"}]}]"
  */
@@ -4557,7 +4556,7 @@ export type NET_SOCK_PEER_ADDR_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  *
- * @deprecated Use {@link } () instead - Deprecated, no replacement at this time
+ * @deprecated  - Deprecated from OTEL, no replacement at this time
  * @example "/var/my.sock"
  */
 export const NET_SOCK_PEER_NAME = 'net.sock.peer.name';
@@ -6617,7 +6616,6 @@ export type Attributes = {
   [GEN_AI_OPERATION_NAME]?: GEN_AI_OPERATION_NAME_TYPE;
   [GEN_AI_OPERATION_TYPE]?: GEN_AI_OPERATION_TYPE_TYPE;
   [GEN_AI_PIPELINE_NAME]?: GEN_AI_PIPELINE_NAME_TYPE;
-  [GEN_AI_PROMPT]?: GEN_AI_PROMPT_TYPE;
   [GEN_AI_REQUEST_AVAILABLE_TOOLS]?: GEN_AI_REQUEST_AVAILABLE_TOOLS_TYPE;
   [GEN_AI_REQUEST_FREQUENCY_PENALTY]?: GEN_AI_REQUEST_FREQUENCY_PENALTY_TYPE;
   [GEN_AI_REQUEST_MAX_TOKENS]?: GEN_AI_REQUEST_MAX_TOKENS_TYPE;
