@@ -2,7 +2,7 @@
 name = "sentry-conventions"
 version = "0.1.0"
 description = "Sentry Semantic Conventions"
-license = "MIT"
+license = { "text": "MIT" }
 readme = "README.md"
 requires-python = ">=3.8"
 dependencies = []
