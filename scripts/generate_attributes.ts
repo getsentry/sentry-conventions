@@ -186,7 +186,8 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
   content += '# This is an auto-generated file. Do not edit!\n\n';
   content += 'from dataclasses import dataclass\n';
   content += 'from enum import Enum\n';
-  content += 'from typing import List, Union, Literal, Optional, Dict\n\n';
+  content += 'from typing import List, Union, Literal, Optional, Dict\n';
+  content += 'import warnings\n\n';
 
   content += 'AttributeValue = Union[str, int, float, bool, List[str], List[int], List[float], List[bool]]\n\n';
 
@@ -260,9 +261,44 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
   let fullAttributesTypeMembers = '';
   let metadataDict = '';
   const attributeNames: string[] = [];
+  const deprecatedAttributes: { name: string; replacement?: string }[] = [];
+
+  // First pass: collect deprecated attributes
+  for (const file of attributeFiles) {
+    const attributePath = path.join(attributesDir, file);
+    const attributeJson = JSON.parse(fs.readFileSync(attributePath, 'utf-8')) as AttributeJson;
+
+    if (attributeJson.deprecation) {
+      const constantName = getConstantName(attributeJson.key);
+      deprecatedAttributes.push({
+        name: constantName,
+        replacement: attributeJson.deprecation.replacement,
+      });
+    }
+  }
+
+  // Generate the metaclass
+  content += 'class _AttributeNamesMeta(type):\n';
+  content += '    _deprecated_names = {\n';
+
+  for (const dep of deprecatedAttributes) {
+    content += `        "${dep.name}",\n`;
+  }
+
+  content += '    }\n\n';
+  content += '    def __getattribute__(cls, name: str):\n';
+  content += '        if name == "_deprecated_names":\n';
+  content += '            return super().__getattribute__(name)\n';
+  content += '        if name in cls._deprecated_names:\n';
+  content += '            warnings.warn(\n';
+  content += '                f"{cls.__name__}.{name} is deprecated.",\n';
+  content += '                DeprecationWarning,\n';
+  content += '                stacklevel=2,\n';
+  content += '            )\n';
+  content += '        return super().__getattribute__(name)\n\n';
 
   // Start the ATTRIBUTE_NAMES class
-  content += 'class ATTRIBUTE_NAMES:\n';
+  content += 'class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):\n';
   content += '    """Contains all attribute names as class attributes with their documentation."""\n\n';
 
   for (const file of attributeFiles) {

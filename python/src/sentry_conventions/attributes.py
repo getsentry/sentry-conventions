@@ -2,6 +2,7 @@
 
 # This is an auto-generated file. Do not edit!
 
+import warnings
 from dataclasses import dataclass
 from enum import Enum
 from typing import Dict, List, Literal, Optional, Union
@@ -82,7 +83,92 @@ class AttributeMetadata:
     """If an attribute is SDK specific, list the SDKs that use this attribute. This is not an exhaustive list, there might be SDKs that send this attribute that are is not documented here."""
 
 
-class ATTRIBUTE_NAMES:
+class _AttributeNamesMeta(type):
+    _deprecated_names = {
+        "AI_COMPLETION_TOKENS_USED",
+        "AI_FINISH_REASON",
+        "AI_FREQUENCY_PENALTY",
+        "AI_FUNCTION_CALL",
+        "AI_GENERATION_ID",
+        "AI_INPUT_MESSAGES",
+        "AI_MODEL_PROVIDER",
+        "AI_MODEL_ID",
+        "AI_PIPELINE_NAME",
+        "AI_PRESENCE_PENALTY",
+        "AI_PROMPT_TOKENS_USED",
+        "AI_RESPONSES",
+        "AI_SEED",
+        "AI_STREAMING",
+        "AI_TEMPERATURE",
+        "AI_TOOL_CALLS",
+        "AI_TOOLS",
+        "AI_TOP_K",
+        "AI_TOP_P",
+        "AI_TOTAL_TOKENS_USED",
+        "CODE_FILEPATH",
+        "CODE_FUNCTION",
+        "CODE_LINENO",
+        "CODE_NAMESPACE",
+        "DB_NAME",
+        "DB_OPERATION",
+        "DB_SQL_BINDINGS",
+        "DB_STATEMENT",
+        "DB_SYSTEM",
+        "ENVIRONMENT",
+        "FS_ERROR",
+        "GEN_AI_PROMPT",
+        "GEN_AI_USAGE_COMPLETION_TOKENS",
+        "GEN_AI_USAGE_PROMPT_TOKENS",
+        "HTTP_CLIENT_IP",
+        "HTTP_FLAVOR",
+        "HTTP_HOST",
+        "HTTP_METHOD",
+        "HTTP_RESPONSE_CONTENT_LENGTH",
+        "HTTP_RESPONSE_TRANSFER_SIZE",
+        "HTTP_SCHEME",
+        "HTTP_SERVER_NAME",
+        "HTTP_STATUS_CODE",
+        "HTTP_TARGET",
+        "HTTP_URL",
+        "HTTP_USER_AGENT",
+        "METHOD",
+        "NET_HOST_IP",
+        "NET_HOST_NAME",
+        "NET_HOST_PORT",
+        "NET_PEER_IP",
+        "NET_PEER_NAME",
+        "NET_PEER_PORT",
+        "NET_PROTOCOL_NAME",
+        "NET_PROTOCOL_VERSION",
+        "NET_SOCK_FAMILY",
+        "NET_SOCK_HOST_ADDR",
+        "NET_SOCK_HOST_PORT",
+        "NET_SOCK_PEER_ADDR",
+        "NET_SOCK_PEER_NAME",
+        "NET_SOCK_PEER_PORT",
+        "NET_TRANSPORT",
+        "PROFILE_ID",
+        "QUERY_KEY",
+        "RELEASE",
+        "REPLAY_ID",
+        "ROUTE",
+        "TRANSACTION",
+        "URL",
+    }
+
+    def __getattribute__(cls, name: str):
+        if name == "_deprecated_names":
+            return super().__getattribute__(name)
+        if name in cls._deprecated_names:
+            warnings.warn(
+                f"{cls.__name__}.{name} is deprecated.",
+                DeprecationWarning,
+                stacklevel=2,
+            )
+        return super().__getattribute__(name)
+
+
+class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Contains all attribute names as class attributes with their documentation."""
 
     # Path: model/attributes/ai/ai__citations.json
