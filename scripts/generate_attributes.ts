@@ -177,7 +177,7 @@ function getTsType(type: AttributeJson['type']): string {
 function writeToPython(attributesDir: string, attributeFiles: string[]) {
   let content = `"""`;
   content +=
-    "A collection of attribute names with helpers to retrieve attribute's metadata, as defined in the Sentry Semantic Conventions registry.";
+    "A collection of attribute names with helpers to retrieve an attribute's metadata, as defined in the Sentry Semantic Conventions registry.";
   content += '"""\n\n';
   content += '# This is an auto-generated file. Do not edit!\n\n';
   content += 'from dataclasses import dataclass\n';
