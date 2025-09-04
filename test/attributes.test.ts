@@ -142,6 +142,12 @@ describe('attribute json', async () => {
           expect(content.key !== alias);
         }
       });
+
+      it('should be allowed to have pii: false only if in the sentry namespace', () => {
+        if (content.pii.key === 'false') {
+          expect(content.key.startsWith('sentry.')).toBe(true);
+        }
+      });
     });
   }
 });
