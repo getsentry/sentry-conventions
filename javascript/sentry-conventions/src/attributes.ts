@@ -5773,6 +5773,29 @@ export const SENTRY_SEGMENT_NAME = 'sentry.segment.name';
  */
 export type SENTRY_SEGMENT_NAME_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__segment_id.json
+
+/**
+ * The segment ID of a span `sentry.segment_id`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_SEGMENT_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link SENTRY_SEGMENT_ID} `sentry.segment.id`
+ *
+ * @deprecated Use {@link SENTRY_SEGMENT_ID} (sentry.segment.id) instead
+ * @example "051581bf3cb55c13"
+ */
+export const SENTRY_SEGMENT_ID = 'sentry.segment_id';
+
+/**
+ * Type for {@link SENTRY_SEGMENT_ID} sentry.segment_id
+ */
+export type SENTRY_SEGMENT_ID_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__server_sample_rate.json
 
 /**
@@ -7063,6 +7086,7 @@ export type FullAttributes = {
   [SENTRY_SDK_VERSION]?: SENTRY_SDK_VERSION_TYPE;
   [SENTRY_SEGMENT_ID]?: SENTRY_SEGMENT_ID_TYPE;
   [SENTRY_SEGMENT_NAME]?: SENTRY_SEGMENT_NAME_TYPE;
+  [SENTRY_SEGMENT_ID]?: SENTRY_SEGMENT_ID_TYPE;
   [SENTRY_SERVER_SAMPLE_RATE]?: SENTRY_SERVER_SAMPLE_RATE_TYPE;
   [SENTRY_SPAN_SOURCE]?: SENTRY_SPAN_SOURCE_TYPE;
   [SENTRY_TRACE_PARENT_SPAN_ID]?: SENTRY_TRACE_PARENT_SPAN_ID_TYPE;
