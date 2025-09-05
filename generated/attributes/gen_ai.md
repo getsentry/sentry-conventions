@@ -282,15 +282,14 @@ Limits the model to only consider tokens whose cumulative probability mass adds 
 
 ### gen_ai.response.finish_reasons
 
-The reason why the model stopped generating.
+Array of reasons the model stopped generating tokens, corresponding to each generation received.
 
 | Property | Value |
 | --- | --- |
-| Type | `string` |
+| Type | `string[]` |
 | Has PII | false |
 | Exists in OpenTelemetry | Yes |
-| Example | `COMPLETE` |
-| Aliases | `ai.finish_reason` |
+| Example | `["stop","length"]` |
 
 ### gen_ai.response.id
 

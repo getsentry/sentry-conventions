@@ -74,9 +74,7 @@ export type AI_DOCUMENTS_TYPE = Array<string>;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link GEN_AI_RESPONSE_FINISH_REASONS} `gen_ai.response.finish_reasons`
- *
- * @deprecated Use {@link GEN_AI_RESPONSE_FINISH_REASON} (gen_ai.response.finish_reason) instead
+ * @deprecated 
  * @example "COMPLETE"
  */
 export const AI_FINISH_REASON = 'ai.finish_reason';
@@ -2441,24 +2439,22 @@ export type GEN_AI_REQUEST_TOP_P_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__response__finish_reasons.json
 
 /**
- * The reason why the model stopped generating. `gen_ai.response.finish_reasons`
+ * Array of reasons the model stopped generating tokens, corresponding to each generation received. `gen_ai.response.finish_reasons`
  *
- * Attribute Value Type: `string` {@link GEN_AI_RESPONSE_FINISH_REASONS_TYPE}
+ * Attribute Value Type: `Array<string>` {@link GEN_AI_RESPONSE_FINISH_REASONS_TYPE}
  *
  * Contains PII: false
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link AI_FINISH_REASON} `ai.finish_reason`
- *
- * @example "COMPLETE"
+ * @example ["stop","length"]
  */
 export const GEN_AI_RESPONSE_FINISH_REASONS = 'gen_ai.response.finish_reasons';
 
 /**
  * Type for {@link GEN_AI_RESPONSE_FINISH_REASONS} gen_ai.response.finish_reasons
  */
-export type GEN_AI_RESPONSE_FINISH_REASONS_TYPE = string;
+export type GEN_AI_RESPONSE_FINISH_REASONS_TYPE = Array<string>;
 
 // Path: model/attributes/gen_ai/gen_ai__response__id.json
 
