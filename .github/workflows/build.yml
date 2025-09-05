@@ -34,6 +34,9 @@ jobs:
       - name: Run generate
         run: yarn run generate
 
+      - name: Run fix
+        run: yarn run fix
+
       - name: Run tests
         run: yarn test
 
