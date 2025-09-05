@@ -74,7 +74,7 @@ export type AI_DOCUMENTS_TYPE = Array<string>;
  *
  * Attribute defined in OTEL: No
  *
- * @deprecated 
+ * @deprecated
  * @example "COMPLETE"
  */
 export const AI_FINISH_REASON = 'ai.finish_reason';
