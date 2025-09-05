@@ -3,7 +3,7 @@
   "brief": "The channel name that is being used.",
   "type": "string",
   "pii": {
-    "key": "maybe"
+    "key": "false"
   },
   "is_in_otel": false,
   "example": "mail",
