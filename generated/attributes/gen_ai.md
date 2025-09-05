@@ -199,14 +199,14 @@ The maximum number of tokens to generate in the response.
 
 ### gen_ai.request.messages
 
-The messages passed to the model. It has to be a stringified version of an array of objects. The "content" can be a string or an array of objects.
+The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.
 
 | Property | Value |
 | --- | --- |
 | Type | `string` |
 | Has PII | maybe |
 | Exists in OpenTelemetry | No |
-| Example | `[{"role": "system", "content": "Generate a random number."}, {"role": "user", "content": [{"text": "Generate a random number between 0 and 10.", "type": "text"}]}]` |
+| Example | `[{"role": "system", "content": "Generate a random number."}, {"role": "user", "content": [{"text": "Generate a random number between 0 and 10.", "type": "text"}]}, {"role": "tool", "content": {"toolCallId": "1", "toolName": "Weather", "output": "rainy"}}]` |
 | Aliases | `ai.input_messages` |
 
 ### gen_ai.request.model
