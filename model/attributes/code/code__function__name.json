@@ -3,9 +3,11 @@
   "brief": "The method or function name, or equivalent (usually rightmost part of the code unit's name).",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "server_request",
-  "alias": ["code.function"]
+  "alias": [
+    "code.function"
+  ]
 }

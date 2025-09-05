@@ -3,9 +3,11 @@
   "brief": "The vendor-specific ID of the model used.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "gpt-4",
-  "alias": ["ai.model_id"]
+  "alias": [
+    "ai.model_id"
+  ]
 }

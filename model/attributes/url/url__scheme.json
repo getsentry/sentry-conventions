@@ -3,9 +3,11 @@
   "brief": "The URI scheme component identifying the used protocol.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "https",
-  "alias": ["http.scheme"]
+  "alias": [
+    "http.scheme"
+  ]
 }

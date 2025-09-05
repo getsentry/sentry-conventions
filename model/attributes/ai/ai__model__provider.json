@@ -3,7 +3,7 @@
   "brief": "The provider of the model.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "openai",
@@ -11,5 +11,7 @@
     "_status": null,
     "replacement": "gen_ai.system"
   },
-  "alias": ["gen_ai.system"]
+  "alias": [
+    "gen_ai.system"
+  ]
 }

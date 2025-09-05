@@ -3,7 +3,7 @@
   "brief": "Peer address of the network connection - Unix domain socket name",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "/var/my.sock",

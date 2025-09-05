@@ -3,9 +3,11 @@
   "brief": "The message destination name.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "BestTopic",
-  "sdks": ["php-laravel"]
+  "sdks": [
+    "php-laravel"
+  ]
 }

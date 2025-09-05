@@ -3,12 +3,16 @@
   "brief": "The vendor-specific ID of the model used.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "gpt-4",
-  "alias": ["gen_ai.response.model"],
-  "sdks": ["python"],
+  "alias": [
+    "gen_ai.response.model"
+  ],
+  "sdks": [
+    "python"
+  ],
   "deprecation": {
     "_status": null,
     "replacement": "gen_ai.response.model"

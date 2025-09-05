@@ -3,7 +3,7 @@
   "brief": "The error message of a file system error.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "deprecation": {
@@ -12,5 +12,7 @@
     "reason": "This attribute is not part of the OpenTelemetry specification and error.type fits much better."
   },
   "example": "ENOENT: no such file or directory",
-  "sdks": ["javascript-node"]
+  "sdks": [
+    "javascript-node"
+  ]
 }

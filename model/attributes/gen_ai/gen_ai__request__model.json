@@ -3,7 +3,7 @@
   "brief": "The model identifier being used for the request.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "gpt-4-turbo-preview"

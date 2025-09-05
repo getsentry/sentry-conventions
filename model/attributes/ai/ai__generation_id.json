@@ -3,7 +3,7 @@
   "brief": "Unique identifier for the completion.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "gen_123abc",
@@ -11,5 +11,7 @@
     "_status": null,
     "replacement": "gen_ai.response.id"
   },
-  "alias": ["gen_ai.response.id"]
+  "alias": [
+    "gen_ai.response.id"
+  ]
 }

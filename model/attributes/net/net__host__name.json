@@ -3,7 +3,7 @@
   "brief": "Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "example.com",
@@ -11,5 +11,9 @@
     "_status": null,
     "replacement": "server.address"
   },
-  "alias": ["server.address", "http.server_name", "http.host"]
+  "alias": [
+    "server.address",
+    "http.server_name",
+    "http.host"
+  ]
 }

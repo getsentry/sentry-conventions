@@ -3,7 +3,7 @@
   "brief": "Peer address of the network connection - IP address or Unix domain socket name.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "192.168.0.1",
@@ -11,5 +11,8 @@
     "_status": null,
     "replacement": "network.peer.address"
   },
-  "alias": ["network.peer.address", "net.sock.peer.addr"]
+  "alias": [
+    "network.peer.address",
+    "net.sock.peer.addr"
+  ]
 }

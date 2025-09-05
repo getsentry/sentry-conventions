@@ -3,9 +3,11 @@
   "brief": "The message destination connection.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "BestTopic",
-  "sdks": ["php-laravel"]
+  "sdks": [
+    "php-laravel"
+  ]
 }

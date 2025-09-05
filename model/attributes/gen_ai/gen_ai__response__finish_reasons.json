@@ -3,9 +3,11 @@
   "brief": "The reason why the model stopped generating.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "COMPLETE",
-  "alias": ["ai.finish_reason"]
+  "alias": [
+    "ai.finish_reason"
+  ]
 }

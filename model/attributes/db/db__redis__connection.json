@@ -3,9 +3,11 @@
   "brief": "The redis connection name.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "my-redis-instance",
-  "sdks": ["php-laravel"]
+  "sdks": [
+    "php-laravel"
+  ]
 }

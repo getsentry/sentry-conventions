@@ -3,7 +3,7 @@
   "brief": "The name of the AI pipeline.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "Autofix Pipeline",
@@ -11,5 +11,7 @@
     "_status": null,
     "replacement": "gen_ai.pipeline.name"
   },
-  "alias": ["gen_ai.pipeline.name"]
+  "alias": [
+    "gen_ai.pipeline.name"
+  ]
 }

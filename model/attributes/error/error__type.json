@@ -3,7 +3,7 @@
   "brief": "Describes a class of error the operation ended with.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "timeout"

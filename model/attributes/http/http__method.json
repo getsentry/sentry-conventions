@@ -3,7 +3,7 @@
   "brief": "The HTTP method used.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "GET",
@@ -11,5 +11,7 @@
     "_status": null,
     "replacement": "http.request.method"
   },
-  "alias": ["http.request.method"]
+  "alias": [
+    "http.request.method"
+  ]
 }

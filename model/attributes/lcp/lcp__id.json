@@ -3,7 +3,7 @@
   "brief": "The id of the dom element responsible for the largest contentful paint.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "#hero"

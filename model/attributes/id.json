@@ -3,9 +3,11 @@
   "brief": "A unique identifier for the span.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "f47ac10b58cc4372a5670e02b2c3d479",
-  "sdks": ["php-laravel"]
+  "sdks": [
+    "php-laravel"
+  ]
 }

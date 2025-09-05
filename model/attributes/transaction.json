@@ -3,7 +3,7 @@
   "brief": "The sentry transaction (segment name).",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "GET /",
@@ -11,5 +11,7 @@
     "_status": null,
     "replacement": "sentry.transaction"
   },
-  "alias": ["sentry.transaction"]
+  "alias": [
+    "sentry.transaction"
+  ]
 }

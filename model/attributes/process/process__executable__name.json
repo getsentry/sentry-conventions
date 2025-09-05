@@ -3,7 +3,7 @@
   "brief": "The name of the executable that started the process.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "getsentry"

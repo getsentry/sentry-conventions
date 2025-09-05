@@ -3,7 +3,7 @@
   "brief": "The name of the instrumentation scope - (InstrumentationScope.Name in OTLP).",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "io.opentelemetry.contrib.mongodb"

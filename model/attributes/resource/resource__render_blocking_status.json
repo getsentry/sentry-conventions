@@ -3,9 +3,11 @@
   "brief": "The render blocking status of the resource.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "non-blocking",
-  "sdks": ["javascript-browser"]
+  "sdks": [
+    "javascript-browser"
+  ]
 }

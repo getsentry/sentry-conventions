@@ -3,7 +3,7 @@
   "brief": "The domain name.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "example.com",
@@ -12,5 +12,10 @@
     "replacement": "server.address",
     "reason": "Deprecated, use one of `server.address` or `client.address`, depending on the usage"
   },
-  "alias": ["server.address", "client.address", "http.server_name", "net.host.name"]
+  "alias": [
+    "server.address",
+    "client.address",
+    "http.server_name",
+    "net.host.name"
+  ]
 }

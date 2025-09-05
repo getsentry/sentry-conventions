@@ -3,7 +3,7 @@
   "brief": "Extra metadata passed to an AI pipeline step.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "{\"user_id\": 123, \"session_id\": \"abc123\"}"

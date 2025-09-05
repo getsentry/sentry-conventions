@@ -3,7 +3,7 @@
   "brief": "Current thread name.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "main"

@@ -3,9 +3,11 @@
   "brief": "How a script was called in the browser.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "Window.requestAnimationFrame",
-  "sdks": ["browser"]
+  "sdks": [
+    "browser"
+  ]
 }

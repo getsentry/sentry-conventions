@@ -3,7 +3,7 @@
   "brief": "The server domain name",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "example.com",
@@ -11,5 +11,9 @@
     "_status": null,
     "replacement": "server.address"
   },
-  "alias": ["server.address", "net.host.name", "http.host"]
+  "alias": [
+    "server.address",
+    "net.host.name",
+    "http.host"
+  ]
 }

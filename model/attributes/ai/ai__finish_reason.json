@@ -3,7 +3,7 @@
   "brief": "The reason why the model stopped generating.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "COMPLETE",
@@ -11,5 +11,7 @@
     "_status": null,
     "replacement": "gen_ai.response.finish_reason"
   },
-  "alias": ["gen_ai.response.finish_reasons"]
+  "alias": [
+    "gen_ai.response.finish_reasons"
+  ]
 }

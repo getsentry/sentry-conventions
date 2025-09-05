@@ -3,9 +3,11 @@
   "brief": "The name of the database being accessed.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "customers",
-  "alias": ["db.name"]
+  "alias": [
+    "db.name"
+  ]
 }

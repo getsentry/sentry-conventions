@@ -3,11 +3,16 @@
   "brief": "The response messages sent back by the AI model.",
   "type": "string[]",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
-  "example": ["hello", "world"],
-  "sdks": ["python"],
+  "example": [
+    "hello",
+    "world"
+  ],
+  "sdks": [
+    "python"
+  ],
   "deprecation": {
     "_status": null,
     "replacement": "gen_ai.response.text"

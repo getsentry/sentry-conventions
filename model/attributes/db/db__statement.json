@@ -3,7 +3,7 @@
   "brief": "The database statement being executed.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "SELECT * FROM users",
@@ -11,5 +11,7 @@
     "_status": null,
     "replacement": "db.query.text"
   },
-  "alias": ["db.query.text"]
+  "alias": [
+    "db.query.text"
+  ]
 }

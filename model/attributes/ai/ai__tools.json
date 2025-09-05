@@ -3,10 +3,13 @@
   "brief": "For an AI model call, the functions that are available",
   "type": "string[]",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
-  "example": ["function_1", "function_2"],
+  "example": [
+    "function_1",
+    "function_2"
+  ],
   "deprecation": {
     "_status": null,
     "replacement": "gen_ai.request.available_tools"

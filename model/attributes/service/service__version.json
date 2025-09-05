@@ -3,9 +3,11 @@
   "brief": "The version string of the service API or implementation. The format is not defined by these conventions.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "5.0.0",
-  "alias": ["sentry.release"]
+  "alias": [
+    "sentry.release"
+  ]
 }

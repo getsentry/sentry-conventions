@@ -3,7 +3,7 @@
   "brief": "OSI application layer or non-OSI equivalent.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "http",
@@ -11,5 +11,7 @@
     "_status": null,
     "replacement": "network.protocol.name"
   },
-  "alias": ["network.protocol.name"]
+  "alias": [
+    "network.protocol.name"
+  ]
 }

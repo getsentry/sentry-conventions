@@ -3,7 +3,7 @@
   "brief": "Local address of the network connection mapping to Unix domain socket name.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "/var/my.sock",
@@ -11,5 +11,8 @@
     "_status": null,
     "replacement": "network.local.address"
   },
-  "alias": ["network.local.address", "net.host.ip"]
+  "alias": [
+    "network.local.address",
+    "net.host.ip"
+  ]
 }

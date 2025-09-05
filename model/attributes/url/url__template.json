@@ -3,9 +3,11 @@
   "brief": "The low-cardinality template of an absolute path reference.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "/users/:id",
-  "alias": ["http.route"]
+  "alias": [
+    "http.route"
+  ]
 }
