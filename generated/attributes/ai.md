@@ -210,8 +210,7 @@ The reason why the model stopped generating.
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `COMPLETE` |
-| Deprecated | Yes, use `gen_ai.response.finish_reason` instead |
-| Aliases | `gen_ai.response.finish_reasons` |
+| Deprecated | Yes, no replacement at this time |
 
 ### ai.frequency_penalty
 

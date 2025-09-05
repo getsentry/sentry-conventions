@@ -8,8 +8,6 @@
   "is_in_otel": false,
   "example": "COMPLETE",
   "deprecation": {
-    "_status": null,
-    "replacement": "gen_ai.response.finish_reason"
-  },
-  "alias": ["gen_ai.response.finish_reasons"]
+    "_status": null
+  }
 }

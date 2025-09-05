@@ -92,7 +92,7 @@ describe('attribute json', async () => {
           .access(replacementFilePath, fs.constants.F_OK)
           .then(() => true)
           .catch(() => false);
-        expect(replacementExists);
+        expect(replacementExists).toBe(true);
       });
 
       it('all of its aliases should exist', async () => {
@@ -131,7 +131,7 @@ describe('attribute json', async () => {
           return;
         }
         const replacement = content.deprecation?.replacement;
-        expect(content.key !== replacement);
+        expect(content.key !== replacement).toBe(true);
       });
 
       it('should not alias itself', async () => {
@@ -139,7 +139,7 @@ describe('attribute json', async () => {
           return;
         }
         for (const alias of content.alias) {
-          expect(content.key !== alias);
+          expect(content.key !== alias).toBe(true);
         }
       });
     });
