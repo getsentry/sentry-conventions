@@ -30,6 +30,8 @@
   - [sentry.span.source](#sentryspansource)
   - [sentry.trace.parent_span_id](#sentrytraceparent_span_id)
   - [sentry.transaction](#sentrytransaction)
+- [Deprecated Attributes](#deprecated-attributes)
+  - [sentry.segment_id](#sentrysegment_id)
 
 ## Stable Attributes
 
@@ -335,4 +337,21 @@ The sentry transaction (segment name).
 | Exists in OpenTelemetry | No |
 | Example | `GET /` |
 | Aliases | `transaction` |
+
+## Deprecated Attributes
+
+These attributes are deprecated and will be removed in a future version. Please use the recommended replacements.
+
+### sentry.segment_id
+
+The segment ID of a span
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `051581bf3cb55c13` |
+| Deprecated | Yes, use `sentry.segment.id` instead |
+| Aliases | `sentry.segment.id` |
 
