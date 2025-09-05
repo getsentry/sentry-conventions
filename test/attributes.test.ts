@@ -143,9 +143,14 @@ describe('attribute json', async () => {
         }
       });
 
-      it('should be allowed to have pii: false only if in the sentry namespace', () => {
+      it('should be allowed to have pii: false only if in the sentry namespace or not string/string[] type', () => {
         if (content.pii.key === 'false') {
-          expect(content.key.startsWith('sentry.'), `Attribute "${content.key}" has pii: false but is not in the sentry.* namespace.`).toBe(true);
+          const isInSentryNamespace = content.key.startsWith('sentry.');
+          const isNonStringType = content.type !== 'string' && content.type !== 'string[]';
+          expect(
+            isInSentryNamespace || isNonStringType,
+            `Invalid PII definition for "${content.key}". string/string[] attributes are are allowed to have pii: false only in the sentry.* namespace.`,
+          ).toBe(true);
         }
       });
     });
