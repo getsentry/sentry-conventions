@@ -31,18 +31,18 @@ jobs:
       - name: Generate tarball artifact
         run: yarn build:tarball
 
+      - name: Run generate
+        run: yarn run generate
+
+      - name: Run tests
+        run: yarn test
+
       - name: Lint JS
         run: yarn lint
 
       - name: Lint Python
         run: yarn lint:python
 
-      - name: Run tests
-        run: yarn test
-      
-      - name: Run generate
-        run: yarn run generate
-  
       - name: Check for changes
         id: verify-changed-files
         run: |
