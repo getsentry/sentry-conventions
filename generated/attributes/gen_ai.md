@@ -7,9 +7,7 @@
   - [gen_ai.assistant.message](#gen_aiassistantmessage)
   - [gen_ai.choice](#gen_aichoice)
   - [gen_ai.cost.input_tokens](#gen_aicostinput_tokens)
-  - [gen_ai.cost.input_tokens.cached](#gen_aicostinput_tokenscached)
   - [gen_ai.cost.output_tokens](#gen_aicostoutput_tokens)
-  - [gen_ai.cost.output_tokens.reasoning](#gen_aicostoutput_tokensreasoning)
   - [gen_ai.operation.name](#gen_aioperationname)
   - [gen_ai.operation.type](#gen_aioperationtype)
   - [gen_ai.pipeline.name](#gen_aipipelinename)
@@ -96,31 +94,9 @@ The cost of tokens used to process the AI input (prompt) in USD (without cached 
 | Exists in OpenTelemetry | No |
 | Example | `123.45` |
 
-### gen_ai.cost.input_tokens.cached
-
-The cost of cached tokens used to process the AI input (prompt) in USD.
-
-| Property | Value |
-| --- | --- |
-| Type | `double` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `123.45` |
-
 ### gen_ai.cost.output_tokens
 
 The cost of tokens used for creating the AI output in USD (without reasoning tokens).
-
-| Property | Value |
-| --- | --- |
-| Type | `double` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `123.45` |
-
-### gen_ai.cost.output_tokens.reasoning
-
-The cost of tokens used for reasoning to create the AI output in USD.
 
 | Property | Value |
 | --- | --- |
