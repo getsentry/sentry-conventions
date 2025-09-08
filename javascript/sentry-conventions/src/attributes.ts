@@ -2101,6 +2101,26 @@ export const GEN_AI_COST_OUTPUT_TOKENS = 'gen_ai.cost.output_tokens';
  */
 export type GEN_AI_COST_OUTPUT_TOKENS_TYPE = number;
 
+// Path: model/attributes/gen_ai/gen_ai__cost__total_tokens.json
+
+/**
+ * The total cost for the tokens used. `gen_ai.cost.total_tokens`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_COST_TOTAL_TOKENS_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 12.34
+ */
+export const GEN_AI_COST_TOTAL_TOKENS = 'gen_ai.cost.total_tokens';
+
+/**
+ * Type for {@link GEN_AI_COST_TOTAL_TOKENS} gen_ai.cost.total_tokens
+ */
+export type GEN_AI_COST_TOTAL_TOKENS_TYPE = number;
+
 // Path: model/attributes/gen_ai/gen_ai__operation__name.json
 
 /**
@@ -2851,6 +2871,7 @@ export type GEN_AI_USAGE_PROMPT_TOKENS_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
+ * @deprecated Use {@link GEN_AI_COST_TOTAL_TOKENS} (gen_ai.cost.total_tokens) instead
  * @example 12.34
  */
 export const GEN_AI_USAGE_TOTAL_COST = 'gen_ai.usage.total_cost';
@@ -6571,6 +6592,7 @@ export type Attributes = {
   [GEN_AI_CHOICE]?: GEN_AI_CHOICE_TYPE;
   [GEN_AI_COST_INPUT_TOKENS]?: GEN_AI_COST_INPUT_TOKENS_TYPE;
   [GEN_AI_COST_OUTPUT_TOKENS]?: GEN_AI_COST_OUTPUT_TOKENS_TYPE;
+  [GEN_AI_COST_TOTAL_TOKENS]?: GEN_AI_COST_TOTAL_TOKENS_TYPE;
   [GEN_AI_OPERATION_NAME]?: GEN_AI_OPERATION_NAME_TYPE;
   [GEN_AI_OPERATION_TYPE]?: GEN_AI_OPERATION_TYPE_TYPE;
   [GEN_AI_PIPELINE_NAME]?: GEN_AI_PIPELINE_NAME_TYPE;
@@ -6603,7 +6625,6 @@ export type Attributes = {
   [GEN_AI_USAGE_INPUT_TOKENS_CACHED]?: GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE;
   [GEN_AI_USAGE_OUTPUT_TOKENS]?: GEN_AI_USAGE_OUTPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_OUTPUT_TOKENS_REASONING]?: GEN_AI_USAGE_OUTPUT_TOKENS_REASONING_TYPE;
-  [GEN_AI_USAGE_TOTAL_COST]?: GEN_AI_USAGE_TOTAL_COST_TYPE;
   [GEN_AI_USAGE_TOTAL_TOKENS]?: GEN_AI_USAGE_TOTAL_TOKENS_TYPE;
   [GEN_AI_USER_MESSAGE]?: GEN_AI_USER_MESSAGE_TYPE;
   [GRAPHQL_OPERATION_NAME]?: GRAPHQL_OPERATION_NAME_TYPE;
@@ -6846,6 +6867,7 @@ export type FullAttributes = {
   [GEN_AI_CHOICE]?: GEN_AI_CHOICE_TYPE;
   [GEN_AI_COST_INPUT_TOKENS]?: GEN_AI_COST_INPUT_TOKENS_TYPE;
   [GEN_AI_COST_OUTPUT_TOKENS]?: GEN_AI_COST_OUTPUT_TOKENS_TYPE;
+  [GEN_AI_COST_TOTAL_TOKENS]?: GEN_AI_COST_TOTAL_TOKENS_TYPE;
   [GEN_AI_OPERATION_NAME]?: GEN_AI_OPERATION_NAME_TYPE;
   [GEN_AI_OPERATION_TYPE]?: GEN_AI_OPERATION_TYPE_TYPE;
   [GEN_AI_PIPELINE_NAME]?: GEN_AI_PIPELINE_NAME_TYPE;

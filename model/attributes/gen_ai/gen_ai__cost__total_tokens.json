@@ -1,0 +1,10 @@
+{
+  "key": "gen_ai.cost.total_tokens",
+  "brief": "The total cost for the tokens used.",
+  "type": "double",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 12.34
+}
