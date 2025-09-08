@@ -7,13 +7,10 @@
   - [gen_ai.assistant.message](#gen_aiassistantmessage)
   - [gen_ai.choice](#gen_aichoice)
   - [gen_ai.cost.input_tokens](#gen_aicostinput_tokens)
-  - [gen_ai.cost.input_tokens.cached](#gen_aicostinput_tokenscached)
   - [gen_ai.cost.output_tokens](#gen_aicostoutput_tokens)
-  - [gen_ai.cost.output_tokens.reasoning](#gen_aicostoutput_tokensreasoning)
   - [gen_ai.operation.name](#gen_aioperationname)
   - [gen_ai.operation.type](#gen_aioperationtype)
   - [gen_ai.pipeline.name](#gen_aipipelinename)
-  - [gen_ai.prompt](#gen_aiprompt)
   - [gen_ai.request.available_tools](#gen_airequestavailable_tools)
   - [gen_ai.request.frequency_penalty](#gen_airequestfrequency_penalty)
   - [gen_ai.request.max_tokens](#gen_airequestmax_tokens)
@@ -47,6 +44,7 @@
   - [gen_ai.usage.total_tokens](#gen_aiusagetotal_tokens)
   - [gen_ai.user.message](#gen_aiusermessage)
 - [Deprecated Attributes](#deprecated-attributes)
+  - [gen_ai.prompt](#gen_aiprompt)
   - [gen_ai.usage.completion_tokens](#gen_aiusagecompletion_tokens)
   - [gen_ai.usage.prompt_tokens](#gen_aiusageprompt_tokens)
 
@@ -96,31 +94,9 @@ The cost of tokens used to process the AI input (prompt) in USD (without cached 
 | Exists in OpenTelemetry | No |
 | Example | `123.45` |
 
-### gen_ai.cost.input_tokens.cached
-
-The cost of cached tokens used to process the AI input (prompt) in USD.
-
-| Property | Value |
-| --- | --- |
-| Type | `double` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `123.45` |
-
 ### gen_ai.cost.output_tokens
 
 The cost of tokens used for creating the AI output in USD (without reasoning tokens).
-
-| Property | Value |
-| --- | --- |
-| Type | `double` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `123.45` |
-
-### gen_ai.cost.output_tokens.reasoning
-
-The cost of tokens used for reasoning to create the AI output in USD.
 
 | Property | Value |
 | --- | --- |
@@ -163,18 +139,6 @@ Name of the AI pipeline or chain being executed.
 | Example | `Autofix Pipeline` |
 | Aliases | `ai.pipeline.name` |
 
-### gen_ai.prompt
-
-The input messages sent to the model
-
-| Property | Value |
-| --- | --- |
-| Type | `string` |
-| Has PII | maybe |
-| Exists in OpenTelemetry | Yes |
-| Example | `[{"role": "user", "message": "hello"}]` |
-| Aliases | `ai.input_messages`, `gen_ai.request.messages` |
-
 ### gen_ai.request.available_tools
 
 The available tools for the model. It has to be a stringified version of an array of objects.
@@ -211,15 +175,15 @@ The maximum number of tokens to generate in the response.
 
 ### gen_ai.request.messages
 
-The messages passed to the model. It has to be a stringified version of an array of objects. The "content" can be a string or an array of objects.
+The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.
 
 | Property | Value |
 | --- | --- |
 | Type | `string` |
 | Has PII | maybe |
 | Exists in OpenTelemetry | No |
-| Example | `[{"role": "system", "content": "Generate a random number."}, {"role": "user", "content": [{"text": "Generate a random number between 0 and 10.", "type": "text"}]}]` |
-| Aliases | `ai.input_messages`, `gen_ai.prompt` |
+| Example | `[{"role": "system", "content": "Generate a random number."}, {"role": "user", "content": [{"text": "Generate a random number between 0 and 10.", "type": "text"}]}, {"role": "tool", "content": {"toolCallId": "1", "toolName": "Weather", "output": "rainy"}}]` |
+| Aliases | `ai.input_messages` |
 
 ### gen_ai.request.model
 
@@ -546,6 +510,19 @@ The user message passed to the model.
 ## Deprecated Attributes
 
 These attributes are deprecated and will be removed in a future version. Please use the recommended replacements.
+
+### gen_ai.prompt
+
+The input messages sent to the model
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | Yes |
+| Example | `[{"role": "user", "message": "hello"}]` |
+| Deprecated | Yes, no replacement at this time |
+| Deprecation Reason | Deprecated from OTEL, use gen_ai.input.messages with the new format instead. |
 
 ### gen_ai.usage.completion_tokens
 
