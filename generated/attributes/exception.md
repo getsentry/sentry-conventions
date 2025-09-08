@@ -28,7 +28,7 @@ The error message.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `ENOENT: no such file or directory` |
 
@@ -39,7 +39,7 @@ A stacktrace as a string in the natural representation for the language runtime.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `Exception in thread "main" java.lang.RuntimeException: Test exception
  at com.example.GenerateTrace.methodB(GenerateTrace.java:13)
@@ -53,7 +53,7 @@ The type of the exception (its fully-qualified class name, if applicable). The d
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `OSError` |
 

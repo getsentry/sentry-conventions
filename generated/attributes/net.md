@@ -30,7 +30,7 @@ Local address of the network connection - IP address or Unix domain socket name.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `192.168.0.1` |
 | Deprecated | Yes, use `network.local.address` instead |
@@ -43,7 +43,7 @@ Server domain name if available without reverse DNS lookup; otherwise, IP addres
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `example.com` |
 | Deprecated | Yes, use `server.address` instead |
@@ -69,7 +69,7 @@ Peer address of the network connection - IP address or Unix domain socket name.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `192.168.0.1` |
 | Deprecated | Yes, use `network.peer.address` instead |
@@ -82,7 +82,7 @@ Server domain name if available without reverse DNS lookup; otherwise, IP addres
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `example.com` |
 | Deprecated | Yes, use `server.address` instead |
@@ -108,7 +108,7 @@ OSI application layer or non-OSI equivalent.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `http` |
 | Deprecated | Yes, use `network.protocol.name` instead |
@@ -121,7 +121,7 @@ The actual version of the protocol used for network communication.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `1.1` |
 | Deprecated | Yes, use `network.protocol.version` instead |
@@ -134,7 +134,7 @@ OSI transport and network layer
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `inet` |
 | Deprecated | Yes, use `network.transport` instead |
@@ -147,7 +147,7 @@ Local address of the network connection mapping to Unix domain socket name.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `/var/my.sock` |
 | Deprecated | Yes, use `network.local.address` instead |
@@ -173,7 +173,7 @@ Peer address of the network connection - IP address
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `192.168.0.1` |
 | Deprecated | Yes, use `network.peer.address` instead |
@@ -186,7 +186,7 @@ Peer address of the network connection - Unix domain socket name
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `/var/my.sock` |
 | Deprecated | Yes, use `` instead |
@@ -211,7 +211,7 @@ OSI transport layer or inter-process communication method.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `tcp` |
 | Deprecated | Yes, use `network.transport` instead |

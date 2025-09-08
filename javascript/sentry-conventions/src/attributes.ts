@@ -70,7 +70,7 @@ export type AI_DOCUMENTS_TYPE = Array<string>;
  *
  * Attribute Value Type: `string` {@link AI_FINISH_REASON_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -139,7 +139,7 @@ export type AI_FUNCTION_CALL_TYPE = string;
  *
  * Attribute Value Type: `string` {@link AI_GENERATION_ID_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -205,7 +205,7 @@ export type AI_IS_SEARCH_REQUIRED_TYPE = boolean;
  *
  * Attribute Value Type: `string` {@link AI_METADATA_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -225,7 +225,7 @@ export type AI_METADATA_TYPE = string;
  *
  * Attribute Value Type: `string` {@link AI_MODEL_PROVIDER_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -248,7 +248,7 @@ export type AI_MODEL_PROVIDER_TYPE = string;
  *
  * Attribute Value Type: `string` {@link AI_MODEL_ID_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -271,7 +271,7 @@ export type AI_MODEL_ID_TYPE = string;
  *
  * Attribute Value Type: `string` {@link AI_PIPELINE_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -380,7 +380,7 @@ export type AI_RAW_PROMPTING_TYPE = boolean;
  *
  * Attribute Value Type: `string` {@link AI_RESPONSE_FORMAT_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -400,7 +400,7 @@ export type AI_RESPONSE_FORMAT_TYPE = string;
  *
  * Attribute Value Type: `Array<string>` {@link AI_RESPONSES_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -461,7 +461,7 @@ export type AI_SEARCH_RESULTS_TYPE = Array<string>;
  *
  * Attribute Value Type: `string` {@link AI_SEED_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -507,7 +507,7 @@ export type AI_STREAMING_TYPE = boolean;
  *
  * Attribute Value Type: `string` {@link AI_TAGS_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -591,7 +591,7 @@ export type AI_TOOL_CALLS_TYPE = Array<string>;
  *
  * Attribute Value Type: `Array<string>` {@link AI_TOOLS_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -721,7 +721,7 @@ export type AI_WARNINGS_TYPE = Array<string>;
  *
  * Attribute Value Type: `string` {@link APP_START_TYPE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -761,7 +761,7 @@ export type BLOCKED_MAIN_THREAD_TYPE = boolean;
  *
  * Attribute Value Type: `string` {@link BROWSER_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -781,7 +781,7 @@ export type BROWSER_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link BROWSER_REPORT_TYPE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -801,7 +801,7 @@ export type BROWSER_REPORT_TYPE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link BROWSER_SCRIPT_INVOKER_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -821,7 +821,7 @@ export type BROWSER_SCRIPT_INVOKER_TYPE = string;
  *
  * Attribute Value Type: `string` {@link BROWSER_SCRIPT_INVOKER_TYPE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -861,7 +861,7 @@ export type BROWSER_SCRIPT_SOURCE_CHAR_POSITION_TYPE = number;
  *
  * Attribute Value Type: `string` {@link BROWSER_VERSION_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -941,7 +941,7 @@ export type CACHE_KEY_TYPE = Array<string>;
  *
  * Attribute Value Type: `string` {@link CACHE_OPERATION_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -981,7 +981,7 @@ export type CACHE_TTL_TYPE = number;
  *
  * Attribute Value Type: `string` {@link CHANNEL_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -1001,7 +1001,7 @@ export type CHANNEL_TYPE = string;
  *
  * Attribute Value Type: `string` {@link CLIENT_ADDRESS_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -1171,7 +1171,7 @@ export type CODE_FUNCTION_TYPE = string;
  *
  * Attribute Value Type: `string` {@link CODE_FUNCTION_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -1259,7 +1259,7 @@ export type CODE_NAMESPACE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link DB_COLLECTION_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -1279,7 +1279,7 @@ export type DB_COLLECTION_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link DB_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -1302,7 +1302,7 @@ export type DB_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link DB_NAMESPACE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -1324,7 +1324,7 @@ export type DB_NAMESPACE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link DB_OPERATION_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -1347,7 +1347,7 @@ export type DB_OPERATION_TYPE = string;
  *
  * Attribute Value Type: `string` {@link DB_OPERATION_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -1369,7 +1369,7 @@ export type DB_OPERATION_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link DB_QUERY_PARAMETER_KEY_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -1391,7 +1391,7 @@ export type DB_QUERY_PARAMETER_KEY_TYPE = string;
  *
  * Attribute Value Type: `string` {@link DB_QUERY_SUMMARY_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -1411,7 +1411,7 @@ export type DB_QUERY_SUMMARY_TYPE = string;
  *
  * Attribute Value Type: `string` {@link DB_QUERY_TEXT_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -1433,7 +1433,7 @@ export type DB_QUERY_TEXT_TYPE = string;
  *
  * Attribute Value Type: `string` {@link DB_REDIS_CONNECTION_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -1494,7 +1494,7 @@ export type DB_SQL_BINDINGS_TYPE = Array<string>;
  *
  * Attribute Value Type: `string` {@link DB_STATEMENT_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -1517,7 +1517,7 @@ export type DB_STATEMENT_TYPE = string;
  *
  * Attribute Value Type: `string` {@link DB_SYSTEM_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -1540,7 +1540,7 @@ export type DB_SYSTEM_TYPE = string;
  *
  * Attribute Value Type: `string` {@link DB_SYSTEM_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -1582,7 +1582,7 @@ export type DB_USER_TYPE = string;
  *
  * Attribute Value Type: `string` {@link DEVICE_BRAND_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -1602,7 +1602,7 @@ export type DEVICE_BRAND_TYPE = string;
  *
  * Attribute Value Type: `string` {@link DEVICE_FAMILY_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -1622,7 +1622,7 @@ export type DEVICE_FAMILY_TYPE = string;
  *
  * Attribute Value Type: `string` {@link DEVICE_MODEL_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -1642,7 +1642,7 @@ export type DEVICE_MODEL_TYPE = string;
  *
  * Attribute Value Type: `string` {@link ENVIRONMENT_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -1665,7 +1665,7 @@ export type ENVIRONMENT_TYPE = string;
  *
  * Attribute Value Type: `string` {@link ERROR_TYPE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -1705,7 +1705,7 @@ export type EVENT_ID_TYPE = number;
  *
  * Attribute Value Type: `string` {@link EVENT_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -1745,7 +1745,7 @@ export type EXCEPTION_ESCAPED_TYPE = boolean;
  *
  * Attribute Value Type: `string` {@link EXCEPTION_MESSAGE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -1765,7 +1765,7 @@ export type EXCEPTION_MESSAGE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link EXCEPTION_STACKTRACE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -1785,7 +1785,7 @@ export type EXCEPTION_STACKTRACE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link EXCEPTION_TYPE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -1825,7 +1825,7 @@ export type FAAS_COLDSTART_TYPE = boolean;
  *
  * Attribute Value Type: `string` {@link FAAS_CRON_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -1845,7 +1845,7 @@ export type FAAS_CRON_TYPE = string;
  *
  * Attribute Value Type: `string` {@link FAAS_TIME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -1865,7 +1865,7 @@ export type FAAS_TIME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link FAAS_TRIGGER_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -1987,7 +1987,7 @@ export type FRAMES_TOTAL_TYPE = number;
  *
  * Attribute Value Type: `string` {@link FS_ERROR_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -2008,7 +2008,7 @@ export type FS_ERROR_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GEN_AI_AGENT_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -2148,7 +2148,7 @@ export type GEN_AI_COST_OUTPUT_TOKENS_REASONING_TYPE = number;
  *
  * Attribute Value Type: `string` {@link GEN_AI_OPERATION_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -2168,7 +2168,7 @@ export type GEN_AI_OPERATION_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GEN_AI_OPERATION_TYPE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -2188,7 +2188,7 @@ export type GEN_AI_OPERATION_TYPE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GEN_AI_PIPELINE_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -2232,7 +2232,7 @@ export type GEN_AI_PROMPT_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GEN_AI_REQUEST_AVAILABLE_TOOLS_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -2316,7 +2316,7 @@ export type GEN_AI_REQUEST_MESSAGES_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GEN_AI_REQUEST_MODEL_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -2358,7 +2358,7 @@ export type GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE = number;
  *
  * Attribute Value Type: `string` {@link GEN_AI_REQUEST_SEED_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -2446,7 +2446,7 @@ export type GEN_AI_REQUEST_TOP_P_TYPE = number;
  *
  * Attribute Value Type: `string` {@link GEN_AI_RESPONSE_FINISH_REASONS_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -2468,7 +2468,7 @@ export type GEN_AI_RESPONSE_FINISH_REASONS_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GEN_AI_RESPONSE_ID_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -2490,7 +2490,7 @@ export type GEN_AI_RESPONSE_ID_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GEN_AI_RESPONSE_MODEL_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -2594,7 +2594,7 @@ export type GEN_AI_RESPONSE_TOOL_CALLS_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GEN_AI_SYSTEM_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -2636,7 +2636,7 @@ export type GEN_AI_SYSTEM_MESSAGE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GEN_AI_TOOL_DESCRIPTION_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -2696,7 +2696,7 @@ export type GEN_AI_TOOL_MESSAGE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GEN_AI_TOOL_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -2738,7 +2738,7 @@ export type GEN_AI_TOOL_OUTPUT_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GEN_AI_TOOL_TYPE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -2950,7 +2950,7 @@ export type GEN_AI_USER_MESSAGE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GRAPHQL_OPERATION_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -2970,7 +2970,7 @@ export type GRAPHQL_OPERATION_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GRAPHQL_OPERATION_TYPE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -2990,7 +2990,7 @@ export type GRAPHQL_OPERATION_TYPE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link HTTP_CLIENT_IP_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -3033,7 +3033,7 @@ export type HTTP_DECODED_RESPONSE_CONTENT_LENGTH_TYPE = number;
  *
  * Attribute Value Type: `string` {@link HTTP_FLAVOR_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -3076,7 +3076,7 @@ export type HTTP_FRAGMENT_TYPE = string;
  *
  * Attribute Value Type: `string` {@link HTTP_HOST_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -3099,7 +3099,7 @@ export type HTTP_HOST_TYPE = string;
  *
  * Attribute Value Type: `string` {@link HTTP_METHOD_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -3264,7 +3264,7 @@ export type HTTP_REQUEST_HEADER_KEY_TYPE = Array<string>;
  *
  * Attribute Value Type: `string` {@link HTTP_REQUEST_METHOD_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -3450,7 +3450,7 @@ export type HTTP_RESPONSE_HEADER_KEY_TYPE = Array<string>;
  *
  * Attribute Value Type: `string` {@link HTTP_RESPONSE_HEADER_CONTENT_LENGTH_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -3562,7 +3562,7 @@ export type HTTP_RESPONSE_TRANSFER_SIZE_TYPE = number;
  *
  * Attribute Value Type: `string` {@link HTTP_ROUTE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -3584,7 +3584,7 @@ export type HTTP_ROUTE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link HTTP_SCHEME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -3607,7 +3607,7 @@ export type HTTP_SCHEME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link HTTP_SERVER_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -3697,7 +3697,7 @@ export type HTTP_URL_TYPE = string;
  *
  * Attribute Value Type: `string` {@link HTTP_USER_AGENT_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -3720,7 +3720,7 @@ export type HTTP_USER_AGENT_TYPE = string;
  *
  * Attribute Value Type: `string` {@link ID_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -3740,7 +3740,7 @@ export type ID_TYPE = string;
  *
  * Attribute Value Type: `string` {@link JVM_GC_ACTION_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -3760,7 +3760,7 @@ export type JVM_GC_ACTION_TYPE = string;
  *
  * Attribute Value Type: `string` {@link JVM_GC_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -3780,7 +3780,7 @@ export type JVM_GC_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link JVM_MEMORY_POOL_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -3800,7 +3800,7 @@ export type JVM_MEMORY_POOL_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link JVM_MEMORY_TYPE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -3840,7 +3840,7 @@ export type JVM_THREAD_DAEMON_TYPE = boolean;
  *
  * Attribute Value Type: `string` {@link JVM_THREAD_STATE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -3860,7 +3860,7 @@ export type JVM_THREAD_STATE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link LCP_ELEMENT_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -3880,7 +3880,7 @@ export type LCP_ELEMENT_TYPE = string;
  *
  * Attribute Value Type: `string` {@link LCP_ID_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -3920,7 +3920,7 @@ export type LCP_SIZE_TYPE = number;
  *
  * Attribute Value Type: `string` {@link LCP_URL_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -3940,7 +3940,7 @@ export type LCP_URL_TYPE = string;
  *
  * Attribute Value Type: `string` {@link LOGGER_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -3960,7 +3960,7 @@ export type LOGGER_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link MESSAGING_DESTINATION_CONNECTION_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -3980,7 +3980,7 @@ export type MESSAGING_DESTINATION_CONNECTION_TYPE = string;
  *
  * Attribute Value Type: `string` {@link MESSAGING_DESTINATION_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -4040,7 +4040,7 @@ export type MESSAGING_MESSAGE_ENVELOPE_SIZE_TYPE = number;
  *
  * Attribute Value Type: `string` {@link MESSAGING_MESSAGE_ID_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -4100,7 +4100,7 @@ export type MESSAGING_MESSAGE_RETRY_COUNT_TYPE = number;
  *
  * Attribute Value Type: `string` {@link MESSAGING_OPERATION_TYPE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -4120,7 +4120,7 @@ export type MESSAGING_OPERATION_TYPE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link MESSAGING_SYSTEM_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -4140,7 +4140,7 @@ export type MESSAGING_SYSTEM_TYPE = string;
  *
  * Attribute Value Type: `string` {@link METHOD_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -4163,7 +4163,7 @@ export type METHOD_TYPE = string;
  *
  * Attribute Value Type: `string` {@link NAVIGATION_TYPE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -4203,7 +4203,7 @@ export type NEL_ELAPSED_TIME_TYPE = number;
  *
  * Attribute Value Type: `string` {@link NEL_PHASE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -4223,7 +4223,7 @@ export type NEL_PHASE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link NEL_REFERRER_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -4263,7 +4263,7 @@ export type NEL_SAMPLING_FUNCTION_TYPE = number;
  *
  * Attribute Value Type: `string` {@link NEL_TYPE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -4283,7 +4283,7 @@ export type NEL_TYPE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link NET_HOST_IP_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -4306,7 +4306,7 @@ export type NET_HOST_IP_TYPE = string;
  *
  * Attribute Value Type: `string` {@link NET_HOST_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -4352,7 +4352,7 @@ export type NET_HOST_PORT_TYPE = number;
  *
  * Attribute Value Type: `string` {@link NET_PEER_IP_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -4375,7 +4375,7 @@ export type NET_PEER_IP_TYPE = string;
  *
  * Attribute Value Type: `string` {@link NET_PEER_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -4417,7 +4417,7 @@ export type NET_PEER_PORT_TYPE = number;
  *
  * Attribute Value Type: `string` {@link NET_PROTOCOL_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -4440,7 +4440,7 @@ export type NET_PROTOCOL_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link NET_PROTOCOL_VERSION_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -4463,7 +4463,7 @@ export type NET_PROTOCOL_VERSION_TYPE = string;
  *
  * Attribute Value Type: `string` {@link NET_SOCK_FAMILY_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -4484,7 +4484,7 @@ export type NET_SOCK_FAMILY_TYPE = string;
  *
  * Attribute Value Type: `string` {@link NET_SOCK_HOST_ADDR_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -4530,7 +4530,7 @@ export type NET_SOCK_HOST_PORT_TYPE = number;
  *
  * Attribute Value Type: `string` {@link NET_SOCK_PEER_ADDR_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -4553,7 +4553,7 @@ export type NET_SOCK_PEER_ADDR_TYPE = string;
  *
  * Attribute Value Type: `string` {@link NET_SOCK_PEER_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -4595,7 +4595,7 @@ export type NET_SOCK_PEER_PORT_TYPE = number;
  *
  * Attribute Value Type: `string` {@link NET_TRANSPORT_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -4618,7 +4618,7 @@ export type NET_TRANSPORT_TYPE = string;
  *
  * Attribute Value Type: `string` {@link NETWORK_LOCAL_ADDRESS_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -4662,7 +4662,7 @@ export type NETWORK_LOCAL_PORT_TYPE = number;
  *
  * Attribute Value Type: `string` {@link NETWORK_PEER_ADDRESS_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -4704,7 +4704,7 @@ export type NETWORK_PEER_PORT_TYPE = number;
  *
  * Attribute Value Type: `string` {@link NETWORK_PROTOCOL_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -4726,7 +4726,7 @@ export type NETWORK_PROTOCOL_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link NETWORK_PROTOCOL_VERSION_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -4748,7 +4748,7 @@ export type NETWORK_PROTOCOL_VERSION_TYPE = string;
  *
  * Attribute Value Type: `string` {@link NETWORK_TRANSPORT_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -4770,7 +4770,7 @@ export type NETWORK_TRANSPORT_TYPE = string;
  *
  * Attribute Value Type: `string` {@link NETWORK_TYPE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -4790,7 +4790,7 @@ export type NETWORK_TYPE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link OS_BUILD_ID_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -4810,7 +4810,7 @@ export type OS_BUILD_ID_TYPE = string;
  *
  * Attribute Value Type: `string` {@link OS_DESCRIPTION_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -4830,7 +4830,7 @@ export type OS_DESCRIPTION_TYPE = string;
  *
  * Attribute Value Type: `string` {@link OS_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -4850,7 +4850,7 @@ export type OS_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link OS_TYPE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -4870,7 +4870,7 @@ export type OS_TYPE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link OS_VERSION_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -4890,7 +4890,7 @@ export type OS_VERSION_TYPE = string;
  *
  * Attribute Value Type: `string` {@link OTEL_SCOPE_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -4910,7 +4910,7 @@ export type OTEL_SCOPE_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link OTEL_SCOPE_VERSION_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -4930,7 +4930,7 @@ export type OTEL_SCOPE_VERSION_TYPE = string;
  *
  * Attribute Value Type: `string` {@link OTEL_STATUS_CODE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -4950,7 +4950,7 @@ export type OTEL_STATUS_CODE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link OTEL_STATUS_DESCRIPTION_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -5014,7 +5014,7 @@ export type PREVIOUS_ROUTE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link PROCESS_EXECUTABLE_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -5054,7 +5054,7 @@ export type PROCESS_PID_TYPE = number;
  *
  * Attribute Value Type: `string` {@link PROCESS_RUNTIME_DESCRIPTION_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -5074,7 +5074,7 @@ export type PROCESS_RUNTIME_DESCRIPTION_TYPE = string;
  *
  * Attribute Value Type: `string` {@link PROCESS_RUNTIME_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -5094,7 +5094,7 @@ export type PROCESS_RUNTIME_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link PROCESS_RUNTIME_VERSION_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -5114,7 +5114,7 @@ export type PROCESS_RUNTIME_VERSION_TYPE = string;
  *
  * Attribute Value Type: `string` {@link PROFILE_ID_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -5160,7 +5160,7 @@ export type QUERY_KEY_TYPE = string;
  *
  * Attribute Value Type: `string` {@link RELEASE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -5205,7 +5205,7 @@ export type REMIX_ACTION_FORM_DATA_KEY_TYPE = string;
  *
  * Attribute Value Type: `string` {@link REPLAY_ID_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -5228,7 +5228,7 @@ export type REPLAY_ID_TYPE = string;
  *
  * Attribute Value Type: `string` {@link RESOURCE_RENDER_BLOCKING_STATUS_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -5291,7 +5291,7 @@ export type RPC_GRPC_STATUS_CODE_TYPE = number;
  *
  * Attribute Value Type: `string` {@link RPC_SERVICE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -5863,7 +5863,7 @@ export type SENTRY_TRANSACTION_TYPE = string;
  *
  * Attribute Value Type: `string` {@link SERVER_ADDRESS_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -5907,7 +5907,7 @@ export type SERVER_PORT_TYPE = number;
  *
  * Attribute Value Type: `string` {@link SERVICE_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -5927,7 +5927,7 @@ export type SERVICE_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link SERVICE_VERSION_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -5969,7 +5969,7 @@ export type THREAD_ID_TYPE = number;
  *
  * Attribute Value Type: `string` {@link THREAD_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -5989,7 +5989,7 @@ export type THREAD_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link TRANSACTION_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -6012,7 +6012,7 @@ export type TRANSACTION_TYPE = string;
  *
  * Attribute Value Type: `string` {@link TYPE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -6032,7 +6032,7 @@ export type TYPE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link UI_COMPONENT_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -6092,7 +6092,7 @@ export type UI_CONTRIBUTES_TO_TTID_TYPE = boolean;
  *
  * Attribute Value Type: `string` {@link URL_DOMAIN_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -6238,7 +6238,7 @@ export type URL_QUERY_TYPE = string;
  *
  * Attribute Value Type: `string` {@link URL_SCHEME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -6260,7 +6260,7 @@ export type URL_SCHEME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link URL_TEMPLATE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -6525,7 +6525,7 @@ export type USER_ROLES_TYPE = Array<string>;
  *
  * Attribute Value Type: `string` {@link USER_AGENT_ORIGINAL_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *

@@ -29,7 +29,7 @@ Mobile app start variant. Either cold or warm.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `cold` |
 
@@ -51,7 +51,7 @@ The channel name that is being used.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `mail` |
 
@@ -62,7 +62,7 @@ A unique identifier for the span.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `f47ac10b58cc4372a5670e02b2c3d479` |
 
@@ -84,7 +84,7 @@ More granular type of the operation happening.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `fetch` |
 
@@ -99,7 +99,7 @@ The sentry environment.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `production` |
 | Deprecated | Yes, use `sentry.environment` instead |
@@ -112,7 +112,7 @@ The error message of a file system error.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `ENOENT: no such file or directory` |
 | Deprecated | Yes, use `error.type` instead |
@@ -125,7 +125,7 @@ The HTTP method used.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `GET` |
 | Deprecated | Yes, use `http.request.method` instead |
@@ -138,7 +138,7 @@ The id of the sentry profile.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `123e4567e89b12d3a456426614174000` |
 | Deprecated | Yes, use `sentry.profile_id` instead |
@@ -151,7 +151,7 @@ The sentry release.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `production` |
 | Deprecated | Yes, use `sentry.release` instead |
@@ -164,7 +164,7 @@ The id of the sentry replay.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `123e4567e89b12d3a456426614174000` |
 | Deprecated | Yes, use `sentry.replay_id` instead |
@@ -190,7 +190,7 @@ The sentry transaction (segment name).
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `GET /` |
 | Deprecated | Yes, use `sentry.transaction` instead |

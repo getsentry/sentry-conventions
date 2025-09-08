@@ -28,7 +28,7 @@ A string containing the schedule period as Cron Expression.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `0/5 * * * ? *` |
 
@@ -39,7 +39,7 @@ A string containing the function invocation time in the ISO 8601 format expresse
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `2020-01-23T13:47:06Z` |
 
@@ -50,7 +50,7 @@ Type of the trigger which caused this function invocation.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `timer` |
 

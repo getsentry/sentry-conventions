@@ -59,7 +59,7 @@ The name of the agent being used.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `ResearchAssistant` |
 
@@ -136,7 +136,7 @@ The name of the operation being performed.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `chat` |
 
@@ -147,7 +147,7 @@ The type of AI operation. Must be one of 'agent', 'ai_client', 'tool', 'handoff'
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `tool` |
 
@@ -158,7 +158,7 @@ Name of the AI pipeline or chain being executed.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `Autofix Pipeline` |
 | Aliases | `ai.pipeline.name` |
@@ -182,7 +182,7 @@ The available tools for the model. It has to be a stringified version of an arra
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `[{"name": "get_weather", "description": "Get the weather for a given location"}, {"name": "get_news", "description": "Get the news for a given topic"}]` |
 
@@ -228,7 +228,7 @@ The model identifier being used for the request.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `gpt-4-turbo-preview` |
 
@@ -251,7 +251,7 @@ The seed, ideally models given the same seed and same other parameters will prod
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `1234567890` |
 | Aliases | `ai.seed` |
@@ -299,7 +299,7 @@ The reason why the model stopped generating.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `COMPLETE` |
 | Aliases | `ai.finish_reason` |
@@ -311,7 +311,7 @@ Unique identifier for the completion.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `gen_123abc` |
 | Aliases | `ai.generation_id` |
@@ -323,7 +323,7 @@ The vendor-specific ID of the model used.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `gpt-4` |
 | Aliases | `ai.model_id` |
@@ -380,7 +380,7 @@ The provider of the model.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `openai` |
 | Aliases | `ai.model.provider` |
@@ -403,7 +403,7 @@ The description of the tool being used.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `Searches the web for current information about a topic` |
 
@@ -436,7 +436,7 @@ Name of the tool utilized by the agent.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `Flights` |
 | Aliases | `ai.function_call` |
@@ -459,7 +459,7 @@ The type of tool being used.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `function` |
 
