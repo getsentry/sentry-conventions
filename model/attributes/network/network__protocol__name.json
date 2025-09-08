@@ -7,7 +7,5 @@
   },
   "is_in_otel": true,
   "example": "http",
-  "alias": [
-    "net.protocol.name"
-  ]
+  "alias": ["net.protocol.name"]
 }

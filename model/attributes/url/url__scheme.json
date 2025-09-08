@@ -7,7 +7,5 @@
   },
   "is_in_otel": true,
   "example": "https",
-  "alias": [
-    "http.scheme"
-  ]
+  "alias": ["http.scheme"]
 }

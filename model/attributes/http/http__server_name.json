@@ -11,9 +11,5 @@
     "_status": null,
     "replacement": "server.address"
   },
-  "alias": [
-    "server.address",
-    "net.host.name",
-    "http.host"
-  ]
+  "alias": ["server.address", "net.host.name", "http.host"]
 }

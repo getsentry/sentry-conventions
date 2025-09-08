@@ -11,11 +11,6 @@
     "_status": null,
     "replacement": "http.request.method"
   },
-  "alias": [
-    "http.request.method"
-  ],
-  "sdks": [
-    "javascript-browser",
-    "javascript-node"
-  ]
+  "alias": ["http.request.method"],
+  "sdks": ["javascript-browser", "javascript-node"]
 }

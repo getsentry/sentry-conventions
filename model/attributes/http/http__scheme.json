@@ -11,7 +11,5 @@
     "_status": null,
     "replacement": "url.scheme"
   },
-  "alias": [
-    "url.scheme"
-  ]
+  "alias": ["url.scheme"]
 }

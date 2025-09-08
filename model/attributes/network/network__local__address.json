@@ -7,8 +7,5 @@
   },
   "is_in_otel": true,
   "example": "10.1.2.80",
-  "alias": [
-    "net.host.ip",
-    "net.sock.host.addr"
-  ]
+  "alias": ["net.host.ip", "net.sock.host.addr"]
 }

@@ -7,8 +7,5 @@
   },
   "is_in_otel": false,
   "example": "fetch",
-  "sdks": [
-    "javascript-browser",
-    "javascript-node"
-  ]
+  "sdks": ["javascript-browser", "javascript-node"]
 }

@@ -7,8 +7,5 @@
   },
   "is_in_otel": true,
   "example": "GET",
-  "alias": [
-    "method",
-    "http.method"
-  ]
+  "alias": ["method", "http.method"]
 }

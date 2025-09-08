@@ -7,7 +7,5 @@
   },
   "is_in_otel": false,
   "example": "Autofix Pipeline",
-  "alias": [
-    "ai.pipeline.name"
-  ]
+  "alias": ["ai.pipeline.name"]
 }

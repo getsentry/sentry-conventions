@@ -11,7 +11,5 @@
     "_status": null,
     "replacement": "gen_ai.response.finish_reason"
   },
-  "alias": [
-    "gen_ai.response.finish_reasons"
-  ]
+  "alias": ["gen_ai.response.finish_reasons"]
 }

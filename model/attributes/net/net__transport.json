@@ -11,7 +11,5 @@
     "_status": null,
     "replacement": "network.transport"
   },
-  "alias": [
-    "network.transport"
-  ]
+  "alias": ["network.transport"]
 }

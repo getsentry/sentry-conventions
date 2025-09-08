@@ -7,7 +7,5 @@
   },
   "is_in_otel": true,
   "example": "5.0.0",
-  "alias": [
-    "sentry.release"
-  ]
+  "alias": ["sentry.release"]
 }

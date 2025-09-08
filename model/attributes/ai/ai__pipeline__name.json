@@ -11,7 +11,5 @@
     "_status": null,
     "replacement": "gen_ai.pipeline.name"
   },
-  "alias": [
-    "gen_ai.pipeline.name"
-  ]
+  "alias": ["gen_ai.pipeline.name"]
 }

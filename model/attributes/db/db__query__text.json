@@ -7,7 +7,5 @@
   },
   "is_in_otel": true,
   "example": "SELECT * FROM users",
-  "alias": [
-    "db.statement"
-  ]
+  "alias": ["db.statement"]
 }

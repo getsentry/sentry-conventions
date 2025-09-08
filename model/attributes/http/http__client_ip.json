@@ -11,7 +11,5 @@
     "_status": null,
     "replacement": "client.address"
   },
-  "alias": [
-    "client.address"
-  ]
+  "alias": ["client.address"]
 }

@@ -11,8 +11,5 @@
     "_status": null,
     "replacement": "network.protocol.version"
   },
-  "alias": [
-    "network.protocol.version",
-    "net.protocol.version"
-  ]
+  "alias": ["network.protocol.version", "net.protocol.version"]
 }

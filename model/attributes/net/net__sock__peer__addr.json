@@ -11,8 +11,5 @@
     "_status": null,
     "replacement": "network.peer.address"
   },
-  "alias": [
-    "network.peer.address",
-    "net.peer.ip"
-  ]
+  "alias": ["network.peer.address", "net.peer.ip"]
 }

@@ -11,7 +11,5 @@
     "_status": null,
     "replacement": "sentry.replay_id"
   },
-  "alias": [
-    "sentry.replay_id"
-  ]
+  "alias": ["sentry.replay_id"]
 }

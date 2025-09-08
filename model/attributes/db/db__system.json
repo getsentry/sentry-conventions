@@ -11,7 +11,5 @@
     "_status": null,
     "replacement": "db.system.name"
   },
-  "alias": [
-    "db.system.name"
-  ]
+  "alias": ["db.system.name"]
 }

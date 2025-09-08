@@ -11,7 +11,5 @@
     "_status": null,
     "replacement": "network.protocol.name"
   },
-  "alias": [
-    "network.protocol.name"
-  ]
+  "alias": ["network.protocol.name"]
 }

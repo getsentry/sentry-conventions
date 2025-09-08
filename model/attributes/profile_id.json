@@ -11,7 +11,5 @@
     "_status": null,
     "replacement": "sentry.profile_id"
   },
-  "alias": [
-    "sentry.profile_id"
-  ]
+  "alias": ["sentry.profile_id"]
 }

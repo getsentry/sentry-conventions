@@ -7,7 +7,5 @@
   },
   "is_in_otel": true,
   "example": "server_request",
-  "alias": [
-    "code.function"
-  ]
+  "alias": ["code.function"]
 }

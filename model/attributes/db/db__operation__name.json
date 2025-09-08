@@ -7,7 +7,5 @@
   },
   "is_in_otel": true,
   "example": "SELECT",
-  "alias": [
-    "db.operation"
-  ]
+  "alias": ["db.operation"]
 }

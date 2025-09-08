@@ -11,7 +11,5 @@
     "_status": null,
     "replacement": "http.request.method"
   },
-  "alias": [
-    "http.request.method"
-  ]
+  "alias": ["http.request.method"]
 }

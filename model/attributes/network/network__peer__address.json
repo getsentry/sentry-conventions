@@ -7,8 +7,5 @@
   },
   "is_in_otel": true,
   "example": "10.1.2.80",
-  "alias": [
-    "net.peer.ip",
-    "net.sock.peer.addr"
-  ]
+  "alias": ["net.peer.ip", "net.sock.peer.addr"]
 }

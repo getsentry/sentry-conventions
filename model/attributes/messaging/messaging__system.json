@@ -7,7 +7,5 @@
   },
   "is_in_otel": true,
   "example": "activemq",
-  "sdks": [
-    "php-laravel"
-  ]
+  "sdks": ["php-laravel"]
 }
