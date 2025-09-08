@@ -149,7 +149,7 @@ describe('attribute json', async () => {
           const isNonStringType = content.type !== 'string' && content.type !== 'string[]';
           expect(
             isInSentryNamespace || isNonStringType,
-            `Invalid PII definition for "${content.key}". string/string[] attributes are are allowed to have pii: false only in the sentry.* namespace.`,
+            `Invalid PII definition for "${content.key}". string/string[] attributes are allowed to have pii: false only in the sentry.* namespace.`,
           ).toBe(true);
         }
       });
