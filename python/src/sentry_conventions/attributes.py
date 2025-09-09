@@ -2997,16 +2997,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "frontend@e8211be71b214afab5b85de4b4c54be3714952bb"
     """
 
-    # Path: model/attributes/sentry/sentry__dsc__replay_id.json
-    SENTRY_DSC_REPLAY_ID: Literal["sentry.dsc.replay_id"] = "sentry.dsc.replay_id"
-    """The replay ID from the dynamic sampling context.
-
-    Type: str
-    Contains PII: false
-    Defined in OTEL: No
-    Example: "abc123def456"
-    """
-
     # Path: model/attributes/sentry/sentry__dsc__sample_rand.json
     SENTRY_DSC_SAMPLE_RAND: Literal["sentry.dsc.sample_rand"] = "sentry.dsc.sample_rand"
     """The random sampling value from the dynamic sampling context.
@@ -6443,15 +6433,6 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="frontend@e8211be71b214afab5b85de4b4c54be3714952bb",
     ),
-    "sentry.dsc.replay_id": AttributeMetadata(
-        brief="The replay ID from the dynamic sampling context.",
-        type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
-        is_in_otel=False,
-        example="abc123def456",
-    ),
     "sentry.dsc.sample_rand": AttributeMetadata(
         brief="The random sampling value from the dynamic sampling context.",
         type=AttributeType.STRING,
@@ -7340,7 +7321,6 @@ Attributes = TypedDict("Attributes", {
     "sentry.dsc.org_id": str,
     "sentry.dsc.public_key": str,
     "sentry.dsc.release": str,
-    "sentry.dsc.replay_id": str,
     "sentry.dsc.sample_rand": str,
     "sentry.dsc.sample_rate": str,
     "sentry.dsc.sampled": bool,

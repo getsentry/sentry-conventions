@@ -13,7 +13,6 @@
   - [sentry.dsc.org_id](#sentrydscorg_id)
   - [sentry.dsc.public_key](#sentrydscpublic_key)
   - [sentry.dsc.release](#sentrydscrelease)
-  - [sentry.dsc.replay_id](#sentrydscreplay_id)
   - [sentry.dsc.sample_rand](#sentrydscsample_rand)
   - [sentry.dsc.sample_rate](#sentrydscsample_rate)
   - [sentry.dsc.sampled](#sentrydscsampled)
@@ -161,17 +160,6 @@ The release identifier from the dynamic sampling context.
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `frontend@e8211be71b214afab5b85de4b4c54be3714952bb` |
-
-### sentry.dsc.replay_id
-
-The replay ID from the dynamic sampling context.
-
-| Property | Value |
-| --- | --- |
-| Type | `string` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `abc123def456` |
 
 ### sentry.dsc.sample_rand
 

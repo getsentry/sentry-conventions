@@ -5596,26 +5596,6 @@ export const SENTRY_DSC_RELEASE = 'sentry.dsc.release';
  */
 export type SENTRY_DSC_RELEASE_TYPE = string;
 
-// Path: model/attributes/sentry/sentry__dsc__replay_id.json
-
-/**
- * The replay ID from the dynamic sampling context. `sentry.dsc.replay_id`
- *
- * Attribute Value Type: `string` {@link SENTRY_DSC_REPLAY_ID_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * @example "abc123def456"
- */
-export const SENTRY_DSC_REPLAY_ID = 'sentry.dsc.replay_id';
-
-/**
- * Type for {@link SENTRY_DSC_REPLAY_ID} sentry.dsc.replay_id
- */
-export type SENTRY_DSC_REPLAY_ID_TYPE = string;
-
 // Path: model/attributes/sentry/sentry__dsc__sample_rand.json
 
 /**
@@ -7209,7 +7189,6 @@ export type Attributes = {
   [SENTRY_DSC_ORG_ID]?: SENTRY_DSC_ORG_ID_TYPE;
   [SENTRY_DSC_PUBLIC_KEY]?: SENTRY_DSC_PUBLIC_KEY_TYPE;
   [SENTRY_DSC_RELEASE]?: SENTRY_DSC_RELEASE_TYPE;
-  [SENTRY_DSC_REPLAY_ID]?: SENTRY_DSC_REPLAY_ID_TYPE;
   [SENTRY_DSC_SAMPLE_RAND]?: SENTRY_DSC_SAMPLE_RAND_TYPE;
   [SENTRY_DSC_SAMPLE_RATE]?: SENTRY_DSC_SAMPLE_RATE_TYPE;
   [SENTRY_DSC_SAMPLED]?: SENTRY_DSC_SAMPLED_TYPE;
