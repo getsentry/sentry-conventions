@@ -9,6 +9,16 @@
   - [sentry.client_sample_rate](#sentryclient_sample_rate)
   - [sentry.description](#sentrydescription)
   - [sentry.dist](#sentrydist)
+  - [sentry.dsc.environment](#sentrydscenvironment)
+  - [sentry.dsc.org_id](#sentrydscorg_id)
+  - [sentry.dsc.public_key](#sentrydscpublic_key)
+  - [sentry.dsc.release](#sentrydscrelease)
+  - [sentry.dsc.replay_id](#sentrydscreplay_id)
+  - [sentry.dsc.sample_rand](#sentrydscsample_rand)
+  - [sentry.dsc.sample_rate](#sentrydscsample_rate)
+  - [sentry.dsc.sampled](#sentrydscsampled)
+  - [sentry.dsc.trace_id](#sentrydsctrace_id)
+  - [sentry.dsc.transaction](#sentrydsctransaction)
   - [sentry.environment](#sentryenvironment)
   - [sentry.exclusive_time](#sentryexclusive_time)
   - [sentry.http.prefetch](#sentryhttpprefetch)
@@ -107,6 +117,116 @@ The sentry dist.
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `1.0` |
+
+### sentry.dsc.environment
+
+The environment from the dynamic sampling context.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `prod` |
+
+### sentry.dsc.org_id
+
+The organization ID from the dynamic sampling context.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `1` |
+
+### sentry.dsc.public_key
+
+The public key from the dynamic sampling context.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `c51734c603c4430eb57cb0a5728a479d` |
+
+### sentry.dsc.release
+
+The release identifier from the dynamic sampling context.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `frontend@e8211be71b214afab5b85de4b4c54be3714952bb` |
+
+### sentry.dsc.replay_id
+
+The replay ID from the dynamic sampling context.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `abc123def456` |
+
+### sentry.dsc.sample_rand
+
+The random sampling value from the dynamic sampling context.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `0.8286147972820134` |
+
+### sentry.dsc.sample_rate
+
+The sample rate from the dynamic sampling context.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `1.0` |
+
+### sentry.dsc.sampled
+
+Whether the event was sampled according to the dynamic sampling context.
+
+| Property | Value |
+| --- | --- |
+| Type | `boolean` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `true` |
+
+### sentry.dsc.trace_id
+
+The trace ID from the dynamic sampling context.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `047372980460430cbc78d9779df33a46` |
+
+### sentry.dsc.transaction
+
+The transaction name from the dynamic sampling context.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `/issues/errors-outages/` |
 
 ### sentry.environment
 
