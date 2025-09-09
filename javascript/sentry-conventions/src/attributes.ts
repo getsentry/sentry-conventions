@@ -1001,7 +1001,7 @@ export type CHANNEL_TYPE = string;
  *
  * Attribute Value Type: `string` {@link CLIENT_ADDRESS_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: Yes
  *
