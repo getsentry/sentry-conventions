@@ -8,6 +8,7 @@
   - [gen_ai.choice](#gen_aichoice)
   - [gen_ai.cost.input_tokens](#gen_aicostinput_tokens)
   - [gen_ai.cost.output_tokens](#gen_aicostoutput_tokens)
+  - [gen_ai.cost.total_tokens](#gen_aicosttotal_tokens)
   - [gen_ai.operation.name](#gen_aioperationname)
   - [gen_ai.operation.type](#gen_aioperationtype)
   - [gen_ai.pipeline.name](#gen_aipipelinename)
@@ -40,13 +41,13 @@
   - [gen_ai.usage.input_tokens.cached](#gen_aiusageinput_tokenscached)
   - [gen_ai.usage.output_tokens](#gen_aiusageoutput_tokens)
   - [gen_ai.usage.output_tokens.reasoning](#gen_aiusageoutput_tokensreasoning)
-  - [gen_ai.usage.total_cost](#gen_aiusagetotal_cost)
   - [gen_ai.usage.total_tokens](#gen_aiusagetotal_tokens)
   - [gen_ai.user.message](#gen_aiusermessage)
 - [Deprecated Attributes](#deprecated-attributes)
   - [gen_ai.prompt](#gen_aiprompt)
   - [gen_ai.usage.completion_tokens](#gen_aiusagecompletion_tokens)
   - [gen_ai.usage.prompt_tokens](#gen_aiusageprompt_tokens)
+  - [gen_ai.usage.total_cost](#gen_aiusagetotal_cost)
 
 ## Stable Attributes
 
@@ -104,6 +105,17 @@ The cost of tokens used for creating the AI output in USD (without reasoning tok
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `123.45` |
+
+### gen_ai.cost.total_tokens
+
+The total cost for the tokens used.
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `12.34` |
 
 ### gen_ai.operation.name
 
@@ -473,17 +485,6 @@ The number of tokens used for reasoning to create the AI output.
 | Exists in OpenTelemetry | No |
 | Example | `75` |
 
-### gen_ai.usage.total_cost
-
-The total cost for the tokens used.
-
-| Property | Value |
-| --- | --- |
-| Type | `double` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `12.34` |
-
 ### gen_ai.usage.total_tokens
 
 The total number of tokens used to process the prompt. (input tokens plus output todkens)
@@ -549,4 +550,16 @@ The number of tokens used in the GenAI input (prompt).
 | Example | `20` |
 | Deprecated | Yes, use `gen_ai.usage.input_tokens` instead |
 | Aliases | `ai.prompt_tokens.used`, `gen_ai.usage.input_tokens` |
+
+### gen_ai.usage.total_cost
+
+The total cost for the tokens used.
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `12.34` |
+| Deprecated | Yes, use `gen_ai.cost.total_tokens` instead |
 
