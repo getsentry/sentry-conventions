@@ -1,0 +1,10 @@
+{
+  "key": "sentry.dsc.sample_rand",
+  "brief": "The random sampling value from the dynamic sampling context.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "0.8286147972820134"
+}
