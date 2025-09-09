@@ -1,9 +1,9 @@
 import { execSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
-import readline from 'node:readline';
 import { parseArgs } from 'node:util';
 import Ajv from 'ajv';
+import { text, select, confirm, isCancel, intro, log, outro } from '@clack/prompts'
 
 const HELP_TEXT = `
 Usage: yarn create:attribute [options]
@@ -28,17 +28,6 @@ Examples:
   # Non-interactive mode
   yarn run create:attribute --key http.route --description "The route pattern of the request" --type string --has_pii false --is_in_otel true --example "/users/:id" --alias "url.template"
 `;
-
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
-
-const question = (query: string): Promise<string> => {
-  return new Promise((resolve) => {
-    rl.question(query, resolve);
-  });
-};
 
 const validateSchema = (data: unknown) => {
   const schema = JSON.parse(fs.readFileSync('schemas/attribute.schema.json', 'utf-8'));
@@ -74,6 +63,8 @@ const createAttribute = async () => {
       process.exit(0);
     }
 
+    intro('Create new attribute')
+
     // If any required option is provided, we'll use non-interactive mode
     const isInteractive = !(values.key || values.description || values.type || values.has_pii || values.is_in_otel);
 
@@ -87,14 +78,14 @@ const createAttribute = async () => {
     let sdks: string | undefined;
 
     if (isInteractive) {
-      key = await question('Enter the attribute key (e.g. http.route): ');
-      description = await question('Enter a description: ');
-      type = await question('Enter the type (string/boolean/integer/double/string[]/boolean[]/integer[]/double[]): ');
-      piiKey = await question('Does this attribute contain PII? (true/maybe/false): ');
-      isInOtel = await question('Is this attribute in OpenTelemetry? (true/false): ');
-      example = await question('Enter an example value (optional): ');
-      alias = await question('Enter attributes that alias to this attribute (comma-separated, optional): ');
-      sdks = await question('Enter SDKs that use this attribute (comma-separated, optional): ');
+      key = await askForAttributeName();
+      description = await askForAttributeDescription();
+      type = await askForAttributeType();
+      piiKey = await askForAttributePii();
+      isInOtel = String(await askForAttributeIsInOtel());
+      example = await askForAttributeExample();
+      alias = await askForAttributeAlias();
+      sdks = await askForAttributeSdks();
     } else {
       key = values.key;
       description = values.description;
@@ -163,26 +154,124 @@ const createAttribute = async () => {
     }
 
     fs.writeFileSync(filePath, `${JSON.stringify(attribute, null, 2)}\n`);
-    console.log(`Successfully created attribute file at: ${filePath}`);
+    log.success(`Successfully created attribute file at: ${filePath}`);
 
     // Ask if user wants to generate docs
-    const generateDocs = await question('\nWould you like to generate documentation? (y/n): ');
-    if (generateDocs.toLowerCase() === 'y') {
-      console.log('Generating documentation...');
+    const generateDocs = await askForGenerateDocs();
+    if (generateDocs) {
+      log.info('Generating documentation...');
       try {
         execSync('yarn run generate', { stdio: 'inherit' });
-        console.log('Documentation generated successfully!');
+        log.success('Documentation generated successfully!');
       } catch (error) {
-        console.error('Error generating documentation:', error);
+        log.error(`Error generating documentation: ${error}`);
         process.exit(1);
       }
     }
   } catch (error) {
-    console.error('Error creating attribute:', error);
+    log.error(`Error creating attribute: ${error}`);
     process.exit(1);
   } finally {
-    rl.close();
+    outro('Attribute creation done!')
   }
 };
 
 createAttribute();
+
+async function askForAttributeName() {
+  return abortIfCancelled(text({
+    message: 'Enter the attribute key',
+    placeholder: 'http.route',
+    validate: (value) => {
+      if (!value) {
+        return 'Attribute key is required';
+      }
+      return undefined;
+    },
+  }));
+}
+
+async function askForAttributeDescription() {
+  return abortIfCancelled(text({
+    message: 'Enter the attribute description',
+    placeholder: 'The route pattern of the request',
+    validate: (value) => {
+      if (!value) {
+        return 'Attribute description is required';
+      }
+      return undefined;
+    },
+  }));
+}
+
+async function askForAttributeType() {
+  return abortIfCancelled(select({
+    message: 'Enter the type',
+    options: [
+      { value: 'string', label: 'String' },
+      { value: 'integer', label: 'Integer' },
+      { value: 'boolean', label: 'Boolean' },
+      { value: 'double', label: 'Double' },
+      { value: 'string[]', label: 'String Array' },
+      { value: 'integer[]', label: 'Integer Array' },
+      { value: 'boolean[]', label: 'Boolean Array' },
+      { value: 'double[]', label: 'Double Array' },
+    ],
+  }));
+}
+
+async function askForAttributePii() {
+  return abortIfCancelled(select({
+    message: 'Does the attribute contain PII?',
+    options: [
+      { value: 'true', label: 'Yes' },
+      { value: 'false', label: 'No' },
+      { value: 'maybe', label: 'Maybe' },
+    ],
+  }));
+}
+
+async function askForAttributeIsInOtel() {
+  return abortIfCancelled(confirm({
+    message: 'Is the attribute in OpenTelemetry?',
+    initialValue: true,
+  }));
+}
+
+async function askForAttributeExample() {
+  return abortIfCancelled(text({
+    message: 'Enter an example value (optional)',
+    placeholder: 'GET /users/:id',
+  }));
+}
+
+async function askForAttributeAlias() {
+  return abortIfCancelled(text({
+    message: 'Enter attributes that alias to this attribute (comma-separated, optional)',
+    placeholder: 'url.route,http.routename',
+  }));
+}
+
+async function askForAttributeSdks() {
+  return abortIfCancelled(text({
+    message: 'Enter SDKs that use this attribute (comma-separated, optional)',
+    placeholder: 'javascript-browser,javascript-node',
+  }));
+}
+
+async function askForGenerateDocs() {
+  return abortIfCancelled(confirm({
+    message: 'Would you like to generate documentation?',
+    initialValue: true,
+  }));
+}
+
+async function abortIfCancelled<T>(
+  input: T | Promise<T>,
+): Promise<Exclude<T, symbol>> {
+  if (isCancel(await input)) {
+    process.exit(0);
+  } else {
+    return input as Exclude<T, symbol>;
+  }
+}
