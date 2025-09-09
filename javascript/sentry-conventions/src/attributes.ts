@@ -2949,7 +2949,7 @@ export type GRAPHQL_OPERATION_TYPE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link HTTP_CLIENT_IP_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: Yes
  *
@@ -3679,7 +3679,7 @@ export type HTTP_USER_AGENT_TYPE = string;
  *
  * Attribute Value Type: `string` {@link ID_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: false
  *
  * Attribute defined in OTEL: No
  *
@@ -5073,7 +5073,7 @@ export type PROCESS_RUNTIME_VERSION_TYPE = string;
  *
  * Attribute Value Type: `string` {@link PROFILE_ID_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: false
  *
  * Attribute defined in OTEL: No
  *
@@ -5164,7 +5164,7 @@ export type REMIX_ACTION_FORM_DATA_KEY_TYPE = string;
  *
  * Attribute Value Type: `string` {@link REPLAY_ID_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: false
  *
  * Attribute defined in OTEL: No
  *
@@ -5971,7 +5971,7 @@ export type TRANSACTION_TYPE = string;
  *
  * Attribute Value Type: `string` {@link TYPE_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: false
  *
  * Attribute defined in OTEL: No
  *

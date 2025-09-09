@@ -53,7 +53,7 @@
       "brief": "The id of the sentry profile.",
       "type": "string",
       "pii": {
-        "key": "maybe"
+        "key": "false"
       },
       "is_in_otel": false,
       "example": "123e4567e89b12d3a456426614174000",
@@ -83,7 +83,7 @@
       "brief": "The id of the sentry replay.",
       "type": "string",
       "pii": {
-        "key": "maybe"
+        "key": "false"
       },
       "is_in_otel": false,
       "example": "123e4567e89b12d3a456426614174000",
@@ -629,7 +629,7 @@
       "brief": "Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
       "type": "string",
       "pii": {
-        "key": "maybe"
+        "key": "true"
       },
       "is_in_otel": true,
       "example": "example.com",
