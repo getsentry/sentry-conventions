@@ -3,7 +3,7 @@
   "brief": "The id of the sentry replay.",
   "type": "string",
   "pii": {
-    "key": "maybe"
+    "key": "false"
   },
   "is_in_otel": false,
   "example": "123e4567e89b12d3a456426614174000",
