@@ -1,5 +1,5 @@
 {
-  "key": "sentry.dsc.org_id",
+  "key": "sentry._internal.dsc.org_id",
   "brief": "The organization ID from the dynamic sampling context.",
   "type": "string",
   "pii": {

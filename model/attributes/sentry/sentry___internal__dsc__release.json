@@ -1,5 +1,5 @@
 {
-  "key": "sentry.dsc.release",
+  "key": "sentry._internal.dsc.release",
   "brief": "The release identifier from the dynamic sampling context.",
   "type": "string",
   "pii": {

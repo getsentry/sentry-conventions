@@ -1,5 +1,5 @@
 {
-  "key": "sentry.dsc.environment",
+  "key": "sentry._internal.dsc.environment",
   "brief": "The environment from the dynamic sampling context.",
   "type": "string",
   "pii": {
