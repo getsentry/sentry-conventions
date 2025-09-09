@@ -1,0 +1,13 @@
+{
+  "key": "http.request.time_to_first_byte",
+  "brief": "The time in seconds from the browser's timeorigin to when the first byte of the request's response was received. See https://web.dev/articles/ttfb#measure-resource-requests",
+  "type": "double",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 1.032,
+  "sdks": [
+    "javascript-browser"
+  ]
+}

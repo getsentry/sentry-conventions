@@ -19,6 +19,7 @@
   - [http.request.response_end](#httprequestresponse_end)
   - [http.request.response_start](#httprequestresponse_start)
   - [http.request.secure_connection_start](#httprequestsecure_connection_start)
+  - [http.request.time_to_first_byte](#httprequesttime_to_first_byte)
   - [http.response.body.size](#httpresponsebodysize)
   - [http.response.header.\<key\>](#httpresponseheaderkey)
   - [http.response.header.content-length](#httpresponseheadercontentlength)
@@ -218,6 +219,17 @@ The UNIX timestamp representing the time immediately before the browser starts t
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `1732829555` |
+
+### http.request.time_to_first_byte
+
+The time in seconds from the browser's timeorigin to when the first byte of the request's response was received. See https://web.dev/articles/ttfb#measure-resource-requests
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `1.032` |
 
 ### http.response.body.size
 
