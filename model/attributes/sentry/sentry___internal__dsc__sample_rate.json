@@ -1,5 +1,5 @@
 {
-  "key": "sentry.dsc.sample_rate",
+  "key": "sentry._internal.dsc.sample_rate",
   "brief": "The sample rate from the dynamic sampling context.",
   "type": "string",
   "pii": {

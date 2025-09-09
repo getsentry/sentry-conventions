@@ -1,5 +1,5 @@
 {
-  "key": "sentry.dsc.sampled",
+  "key": "sentry._internal.dsc.sampled",
   "brief": "Whether the event was sampled according to the dynamic sampling context.",
   "type": "boolean",
   "pii": {

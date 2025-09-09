@@ -1,5 +1,5 @@
 {
-  "key": "sentry.dsc.sample_rand",
+  "key": "sentry._internal.dsc.sample_rand",
   "brief": "The random sampling value from the dynamic sampling context.",
   "type": "string",
   "pii": {

@@ -1,5 +1,5 @@
 {
-  "key": "sentry.dsc.transaction",
+  "key": "sentry._internal.dsc.transaction",
   "brief": "The transaction name from the dynamic sampling context.",
   "type": "string",
   "pii": {
