@@ -634,7 +634,7 @@
       "is_in_otel": false,
       "example": 12.34,
       "deprecation": {
-        "_status": null,
+        "_status": "backfill",
         "replacement": "gen_ai.cost.total_tokens"
       }
     },
