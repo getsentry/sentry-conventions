@@ -7,7 +7,5 @@
   },
   "is_in_otel": false,
   "example": 1.032,
-  "sdks": [
-    "javascript-browser"
-  ]
+  "sdks": ["javascript-browser"]
 }
