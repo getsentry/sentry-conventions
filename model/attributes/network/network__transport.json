@@ -3,7 +3,7 @@
   "brief": "OSI transport layer or inter-process communication method.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "tcp",

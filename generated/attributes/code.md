@@ -33,7 +33,7 @@ The method or function name, or equivalent (usually rightmost part of the code u
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `server_request` |
 | Aliases | `code.function` |

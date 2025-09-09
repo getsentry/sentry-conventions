@@ -6,7 +6,7 @@
       "brief": "The sentry environment.",
       "type": "string",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": false,
       "example": "production",
@@ -21,7 +21,7 @@
       "brief": "The error message of a file system error.",
       "type": "string",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": false,
       "deprecation": {
@@ -37,7 +37,7 @@
       "brief": "The HTTP method used.",
       "type": "string",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": false,
       "example": "GET",
@@ -68,7 +68,7 @@
       "brief": "The sentry release.",
       "type": "string",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": false,
       "example": "production",
@@ -114,7 +114,7 @@
       "brief": "The sentry transaction (segment name).",
       "type": "string",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": false,
       "example": "GET /",
@@ -161,7 +161,7 @@
       "brief": "The reason why the model stopped generating.",
       "type": "string",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": false,
       "example": "COMPLETE",
@@ -206,7 +206,7 @@
       "brief": "Unique identifier for the completion.",
       "type": "string",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": false,
       "example": "gen_123abc",
@@ -237,7 +237,7 @@
       "brief": "The provider of the model.",
       "type": "string",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": false,
       "example": "openai",
@@ -252,7 +252,7 @@
       "brief": "The vendor-specific ID of the model used.",
       "type": "string",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": false,
       "example": "gpt-4",
@@ -268,7 +268,7 @@
       "brief": "The name of the AI pipeline.",
       "type": "string",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": false,
       "example": "Autofix Pipeline",
@@ -314,7 +314,7 @@
       "brief": "The response messages sent back by the AI model.",
       "type": "string[]",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": false,
       "example": ["hello", "world"],
@@ -329,7 +329,7 @@
       "brief": "The seed, ideally models given the same seed and same other parameters will produce the exact same output.",
       "type": "string",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": false,
       "example": "1234567890",
@@ -389,7 +389,7 @@
       "brief": "For an AI model call, the functions that are available",
       "type": "string[]",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": false,
       "example": ["function_1", "function_2"],
@@ -509,7 +509,7 @@
       "brief": "The name of the database being accessed.",
       "type": "string",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": true,
       "example": "customers",
@@ -524,7 +524,7 @@
       "brief": "The name of the operation being executed.",
       "type": "string",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": true,
       "example": "SELECT",
@@ -555,7 +555,7 @@
       "brief": "The database statement being executed.",
       "type": "string",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": true,
       "example": "SELECT * FROM users",
@@ -570,7 +570,7 @@
       "brief": "An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers.",
       "type": "string",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": true,
       "example": "postgresql",
@@ -629,7 +629,7 @@
       "brief": "Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
       "type": "string",
       "pii": {
-        "key": "false"
+        "key": "true"
       },
       "is_in_otel": true,
       "example": "example.com",
@@ -644,7 +644,7 @@
       "brief": "The actual version of the protocol used for network communication.",
       "type": "string",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": true,
       "example": "1.1",
@@ -659,7 +659,7 @@
       "brief": "The domain name.",
       "type": "string",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": true,
       "example": "example.com",
@@ -675,7 +675,7 @@
       "brief": "The HTTP method used.",
       "type": "string",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": true,
       "example": "GET",
@@ -720,7 +720,7 @@
       "brief": "The URI scheme component identifying the used protocol.",
       "type": "string",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": true,
       "example": "https",
@@ -735,7 +735,7 @@
       "brief": "The server domain name",
       "type": "string",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": true,
       "example": "example.com",
@@ -795,7 +795,7 @@
       "brief": "Value of the HTTP User-Agent header sent by the client.",
       "type": "string",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": true,
       "example": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1",
@@ -810,7 +810,7 @@
       "brief": "Local address of the network connection - IP address or Unix domain socket name.",
       "type": "string",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": true,
       "example": "192.168.0.1",
@@ -825,7 +825,7 @@
       "brief": "Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
       "type": "string",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": true,
       "example": "example.com",
@@ -855,7 +855,7 @@
       "brief": "Peer address of the network connection - IP address or Unix domain socket name.",
       "type": "string",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": true,
       "example": "192.168.0.1",
@@ -870,7 +870,7 @@
       "brief": "Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
       "type": "string",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": true,
       "example": "example.com",
@@ -900,7 +900,7 @@
       "brief": "OSI application layer or non-OSI equivalent.",
       "type": "string",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": true,
       "example": "http",
@@ -915,7 +915,7 @@
       "brief": "The actual version of the protocol used for network communication.",
       "type": "string",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": true,
       "example": "1.1",
@@ -930,7 +930,7 @@
       "brief": "OSI transport and network layer",
       "type": "string",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": true,
       "example": "inet",
@@ -945,7 +945,7 @@
       "brief": "Local address of the network connection mapping to Unix domain socket name.",
       "type": "string",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": true,
       "example": "/var/my.sock",
@@ -975,7 +975,7 @@
       "brief": "Peer address of the network connection - IP address",
       "type": "string",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": true,
       "example": "192.168.0.1",
@@ -990,7 +990,7 @@
       "brief": "Peer address of the network connection - Unix domain socket name",
       "type": "string",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": true,
       "example": "/var/my.sock",
@@ -1018,7 +1018,7 @@
       "brief": "OSI transport layer or inter-process communication method.",
       "type": "string",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": true,
       "example": "tcp",

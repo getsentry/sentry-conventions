@@ -3,7 +3,7 @@
   "brief": "Logical name of the service.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "omegastar"

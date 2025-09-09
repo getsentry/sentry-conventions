@@ -18,7 +18,7 @@ The build ID of the operating system.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `1234567890` |
 
@@ -29,7 +29,7 @@ Human readable (not intended to be parsed) OS version information, like e.g. rep
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `Ubuntu 18.04.1 LTS` |
 
@@ -40,7 +40,7 @@ Human readable operating system name.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `Ubuntu` |
 
@@ -51,7 +51,7 @@ The operating system type.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `linux` |
 
@@ -62,7 +62,7 @@ The version of the operating system.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `18.04.2` |
 

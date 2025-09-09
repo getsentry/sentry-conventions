@@ -16,7 +16,7 @@ The brand of the device.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `Apple` |
 
@@ -27,7 +27,7 @@ The family of the device.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `iPhone` |
 
@@ -38,7 +38,7 @@ The model of the device.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `iPhone 15 Pro Max` |
 

@@ -4,7 +4,7 @@
   "has_dynamic_suffix": true,
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "db.query.parameter.foo='123'"

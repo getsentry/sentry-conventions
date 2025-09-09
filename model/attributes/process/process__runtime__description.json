@@ -3,7 +3,7 @@
   "brief": "An additional description about the runtime of the process, for example a specific vendor customization of the runtime environment. Equivalent to `raw_description` in the Sentry runtime context.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "Eclipse OpenJ9 VM openj9-0.21.0"

@@ -80,7 +80,7 @@ Extra metadata passed to an AI pipeline step.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `{"user_id": 123, "session_id": "abc123"}` |
 
@@ -113,7 +113,7 @@ For an AI model call, the format of the response
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `json_object` |
 
@@ -146,7 +146,7 @@ Tags that describe an AI pipeline step.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `{"executed_function": "add_integers"}` |
 
@@ -207,7 +207,7 @@ The reason why the model stopped generating.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `COMPLETE` |
 | Deprecated | Yes, use `gen_ai.response.finish_reason` instead |
@@ -246,7 +246,7 @@ Unique identifier for the completion.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `gen_123abc` |
 | Deprecated | Yes, use `gen_ai.response.id` instead |
@@ -272,7 +272,7 @@ The vendor-specific ID of the model used.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `gpt-4` |
 | Deprecated | Yes, use `gen_ai.response.model` instead |
@@ -285,7 +285,7 @@ The provider of the model.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `openai` |
 | Deprecated | Yes, use `gen_ai.system` instead |
@@ -298,7 +298,7 @@ The name of the AI pipeline.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `Autofix Pipeline` |
 | Deprecated | Yes, use `gen_ai.pipeline.name` instead |
@@ -337,7 +337,7 @@ The response messages sent back by the AI model.
 | Property | Value |
 | --- | --- |
 | Type | `string[]` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `["hello","world"]` |
 | Deprecated | Yes, use `gen_ai.response.text` instead |
@@ -349,7 +349,7 @@ The seed, ideally models given the same seed and same other parameters will prod
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `1234567890` |
 | Deprecated | Yes, use `gen_ai.request.seed` instead |
@@ -400,7 +400,7 @@ For an AI model call, the functions that are available
 | Property | Value |
 | --- | --- |
 | Type | `string[]` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `["function_1","function_2"]` |
 | Deprecated | Yes, use `gen_ai.request.available_tools` instead |

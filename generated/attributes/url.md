@@ -22,7 +22,7 @@ Server domain name if available without reverse DNS lookup; otherwise, IP addres
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `example.com` |
 
@@ -102,7 +102,7 @@ The URI scheme component identifying the used protocol.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `https` |
 | Aliases | `http.scheme` |
@@ -114,7 +114,7 @@ The low-cardinality template of an absolute path reference.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `/users/:id` |
 | Aliases | `http.route` |

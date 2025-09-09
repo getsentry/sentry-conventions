@@ -15,7 +15,7 @@ Server domain name if available without reverse DNS lookup; otherwise, IP addres
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `example.com` |
 | Aliases | `http.server_name`, `net.host.name`, `http.host` |

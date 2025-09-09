@@ -3,7 +3,7 @@
   "brief": "The type of navigation done by a client-side router.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "router.push"

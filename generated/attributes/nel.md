@@ -29,7 +29,7 @@ If request failed, the phase of its network error. If request succeeded, "applic
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `application` |
 
@@ -40,7 +40,7 @@ request's referrer, as determined by the referrer policy associated with its cli
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `https://example.com/foo?bar=baz` |
 
@@ -62,7 +62,7 @@ If request failed, the type of its network error. If request succeeded, "ok".
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `dns.unreachable` |
 

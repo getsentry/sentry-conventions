@@ -3,7 +3,7 @@
   "brief": "The full (logical) name of the service being called, including its package name, if applicable.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "myService.BestService"

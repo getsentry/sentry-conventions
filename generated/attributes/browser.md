@@ -19,7 +19,7 @@ The name of the browser.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `Chrome` |
 
@@ -30,7 +30,7 @@ A browser report sent via reporting API..
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `network-error` |
 
@@ -41,7 +41,7 @@ How a script was called in the browser.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `Window.requestAnimationFrame` |
 
@@ -52,7 +52,7 @@ Browser script entry point type.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `event-listener` |
 
@@ -74,7 +74,7 @@ The version of the browser.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `120.0.6099.130` |
 

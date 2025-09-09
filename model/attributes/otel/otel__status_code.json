@@ -3,7 +3,7 @@
   "brief": "Name of the code, either “OK” or “ERROR”. MUST NOT be set if the status code is UNSET.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "OK"

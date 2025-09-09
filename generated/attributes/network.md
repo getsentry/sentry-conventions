@@ -21,7 +21,7 @@ Local address of the network connection - IP address or Unix domain socket name.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `10.1.2.80` |
 | Aliases | `net.host.ip`, `net.sock.host.addr` |
@@ -45,7 +45,7 @@ Peer address of the network connection - IP address or Unix domain socket name.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `10.1.2.80` |
 | Aliases | `net.peer.ip`, `net.sock.peer.addr` |
@@ -68,7 +68,7 @@ OSI application layer or non-OSI equivalent.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `http` |
 | Aliases | `net.protocol.name` |
@@ -80,7 +80,7 @@ The actual version of the protocol used for network communication.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `1.1` |
 | Aliases | `http.flavor`, `net.protocol.version` |
@@ -92,7 +92,7 @@ OSI transport layer or inter-process communication method.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `tcp` |
 | Aliases | `net.transport` |
@@ -104,7 +104,7 @@ OSI network layer or non-OSI equivalent.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `ipv4` |
 

@@ -3,7 +3,7 @@
   "brief": "Type of the trigger which caused this function invocation.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "timer"

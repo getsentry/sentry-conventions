@@ -17,7 +17,7 @@ The name of the instrumentation scope - (InstrumentationScope.Name in OTLP).
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `io.opentelemetry.contrib.mongodb` |
 
@@ -28,7 +28,7 @@ The version of the instrumentation scope - (InstrumentationScope.Version in OTLP
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `2.4.5` |
 
@@ -39,7 +39,7 @@ Name of the code, either “OK” or “ERROR”. MUST NOT be set if the status 
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `OK` |
 
@@ -50,7 +50,7 @@ Description of the Status if it has a value, otherwise not set.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `resource not found` |
 

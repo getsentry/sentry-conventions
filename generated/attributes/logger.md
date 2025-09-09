@@ -14,7 +14,7 @@ The name of the logger that generated this event.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `myLogger` |
 

@@ -14,7 +14,7 @@ The type of navigation done by a client-side router.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `router.push` |
 

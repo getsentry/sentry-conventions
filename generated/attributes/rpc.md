@@ -26,7 +26,7 @@ The full (logical) name of the service being called, including its package name,
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `myService.BestService` |
 
