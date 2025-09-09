@@ -2,8 +2,8 @@ import { execSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
+import { confirm, intro, isCancel, log, outro, select, text } from '@clack/prompts';
 import Ajv from 'ajv';
-import { text, select, confirm, isCancel, intro, log, outro } from '@clack/prompts'
 
 const HELP_TEXT = `
 Usage: yarn create:attribute [options]
@@ -63,7 +63,7 @@ const createAttribute = async () => {
       process.exit(0);
     }
 
-    intro('Create new attribute')
+    intro('Create new attribute');
 
     // If any required option is provided, we'll use non-interactive mode
     const isInteractive = !(values.key || values.description || values.type || values.has_pii || values.is_in_otel);
@@ -172,103 +172,119 @@ const createAttribute = async () => {
     log.error(`Error creating attribute: ${error}`);
     process.exit(1);
   } finally {
-    outro('Attribute creation done!')
+    outro('Attribute creation done!');
   }
 };
 
 createAttribute();
 
 async function askForAttributeName() {
-  return abortIfCancelled(text({
-    message: 'Enter the attribute key',
-    placeholder: 'http.route',
-    validate: (value) => {
-      if (!value) {
-        return 'Attribute key is required';
-      }
-      return undefined;
-    },
-  }));
+  return abortIfCancelled(
+    text({
+      message: 'Enter the attribute key',
+      placeholder: 'http.route',
+      validate: (value) => {
+        if (!value) {
+          return 'Attribute key is required';
+        }
+        return undefined;
+      },
+    }),
+  );
 }
 
 async function askForAttributeDescription() {
-  return abortIfCancelled(text({
-    message: 'Enter the attribute description',
-    placeholder: 'The route pattern of the request',
-    validate: (value) => {
-      if (!value) {
-        return 'Attribute description is required';
-      }
-      return undefined;
-    },
-  }));
+  return abortIfCancelled(
+    text({
+      message: 'Enter the attribute description',
+      placeholder: 'The route pattern of the request',
+      validate: (value) => {
+        if (!value) {
+          return 'Attribute description is required';
+        }
+        return undefined;
+      },
+    }),
+  );
 }
 
 async function askForAttributeType() {
-  return abortIfCancelled(select({
-    message: 'Enter the type',
-    options: [
-      { value: 'string', label: 'String' },
-      { value: 'integer', label: 'Integer' },
-      { value: 'boolean', label: 'Boolean' },
-      { value: 'double', label: 'Double' },
-      { value: 'string[]', label: 'String Array' },
-      { value: 'integer[]', label: 'Integer Array' },
-      { value: 'boolean[]', label: 'Boolean Array' },
-      { value: 'double[]', label: 'Double Array' },
-    ],
-  }));
+  return abortIfCancelled(
+    select({
+      message: 'Enter the type',
+      options: [
+        { value: 'string', label: 'String' },
+        { value: 'integer', label: 'Integer' },
+        { value: 'boolean', label: 'Boolean' },
+        { value: 'double', label: 'Double' },
+        { value: 'string[]', label: 'String Array' },
+        { value: 'integer[]', label: 'Integer Array' },
+        { value: 'boolean[]', label: 'Boolean Array' },
+        { value: 'double[]', label: 'Double Array' },
+      ],
+    }),
+  );
 }
 
 async function askForAttributePii() {
-  return abortIfCancelled(select({
-    message: 'Does the attribute contain PII?',
-    options: [
-      { value: 'true', label: 'Yes' },
-      { value: 'false', label: 'No' },
-      { value: 'maybe', label: 'Maybe' },
-    ],
-  }));
+  return abortIfCancelled(
+    select({
+      message: 'Does the attribute contain PII?',
+      options: [
+        { value: 'true', label: 'Yes' },
+        { value: 'false', label: 'No' },
+        { value: 'maybe', label: 'Maybe' },
+      ],
+    }),
+  );
 }
 
 async function askForAttributeIsInOtel() {
-  return abortIfCancelled(confirm({
-    message: 'Is the attribute in OpenTelemetry?',
-    initialValue: true,
-  }));
+  return abortIfCancelled(
+    confirm({
+      message: 'Is the attribute in OpenTelemetry?',
+      initialValue: true,
+    }),
+  );
 }
 
 async function askForAttributeExample() {
-  return abortIfCancelled(text({
-    message: 'Enter an example value (optional)',
-    placeholder: 'GET /users/:id',
-  }));
+  return abortIfCancelled(
+    text({
+      message: 'Enter an example value (optional)',
+      placeholder: 'GET /users/:id',
+    }),
+  );
 }
 
 async function askForAttributeAlias() {
-  return abortIfCancelled(text({
-    message: 'Enter attributes that alias to this attribute (comma-separated, optional)',
-    placeholder: 'url.route,http.routename',
-  }));
+  return abortIfCancelled(
+    text({
+      message: 'Enter attributes that alias to this attribute (comma-separated, optional)',
+      placeholder: 'url.route,http.routename',
+    }),
+  );
 }
 
 async function askForAttributeSdks() {
-  return abortIfCancelled(text({
-    message: 'Enter SDKs that use this attribute (comma-separated, optional)',
-    placeholder: 'javascript-browser,javascript-node',
-  }));
+  return abortIfCancelled(
+    text({
+      message: 'Enter SDKs that use this attribute (comma-separated, optional)',
+      placeholder: 'javascript-browser,javascript-node',
+    }),
+  );
 }
 
 async function askForGenerateDocs() {
-  return abortIfCancelled(confirm({
-    message: 'Would you like to generate documentation?',
-    initialValue: true,
-  }));
+  return abortIfCancelled(
+    confirm({
+      message: 'Would you like to generate documentation?',
+      initialValue: true,
+    }),
+  );
 }
 
-async function abortIfCancelled<T>(
-  input: T | Promise<T>,
-): Promise<Exclude<T, symbol>> {
+async function abortIfCancelled<T>(input: T | Promise<T>): Promise<Exclude<T, symbol>> {
   if (isCancel(await input)) {
     process.exit(0);
   } else {
