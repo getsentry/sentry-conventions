@@ -153,7 +153,7 @@ function getConstantName(key: string, isDeprecated: boolean): string {
   // If this key is deprecated and there's another key that maps to the same name, append underscores
   if (isDeprecated) {
     while (usedConstantNames.has(constantName)) {
-      constantName = `${constantName}_`;
+      constantName = `_${constantName}`;
     }
   }
 
