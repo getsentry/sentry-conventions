@@ -166,7 +166,7 @@ export type AI_GENERATION_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link GEN_AI_PROMPT} `gen_ai.prompt`, {@link GEN_AI_REQUEST_MESSAGES} `gen_ai.request.messages`
+ * Aliases: {@link GEN_AI_REQUEST_MESSAGES} `gen_ai.request.messages`
  *
  * @deprecated Use {@link GEN_AI_REQUEST_MESSAGES} (gen_ai.request.messages) instead
  * @example "[{\"role\": \"user\", \"message\": \"hello\"}]"
@@ -2081,26 +2081,6 @@ export const GEN_AI_COST_INPUT_TOKENS = 'gen_ai.cost.input_tokens';
  */
 export type GEN_AI_COST_INPUT_TOKENS_TYPE = number;
 
-// Path: model/attributes/gen_ai/gen_ai__cost__input_tokens__cached.json
-
-/**
- * The cost of cached tokens used to process the AI input (prompt) in USD. `gen_ai.cost.input_tokens.cached`
- *
- * Attribute Value Type: `number` {@link GEN_AI_COST_INPUT_TOKENS_CACHED_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * @example 123.45
- */
-export const GEN_AI_COST_INPUT_TOKENS_CACHED = 'gen_ai.cost.input_tokens.cached';
-
-/**
- * Type for {@link GEN_AI_COST_INPUT_TOKENS_CACHED} gen_ai.cost.input_tokens.cached
- */
-export type GEN_AI_COST_INPUT_TOKENS_CACHED_TYPE = number;
-
 // Path: model/attributes/gen_ai/gen_ai__cost__output_tokens.json
 
 /**
@@ -2120,26 +2100,6 @@ export const GEN_AI_COST_OUTPUT_TOKENS = 'gen_ai.cost.output_tokens';
  * Type for {@link GEN_AI_COST_OUTPUT_TOKENS} gen_ai.cost.output_tokens
  */
 export type GEN_AI_COST_OUTPUT_TOKENS_TYPE = number;
-
-// Path: model/attributes/gen_ai/gen_ai__cost__output_tokens__reasoning.json
-
-/**
- * The cost of tokens used for reasoning to create the AI output in USD. `gen_ai.cost.output_tokens.reasoning`
- *
- * Attribute Value Type: `number` {@link GEN_AI_COST_OUTPUT_TOKENS_REASONING_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * @example 123.45
- */
-export const GEN_AI_COST_OUTPUT_TOKENS_REASONING = 'gen_ai.cost.output_tokens.reasoning';
-
-/**
- * Type for {@link GEN_AI_COST_OUTPUT_TOKENS_REASONING} gen_ai.cost.output_tokens.reasoning
- */
-export type GEN_AI_COST_OUTPUT_TOKENS_REASONING_TYPE = number;
 
 // Path: model/attributes/gen_ai/gen_ai__operation__name.json
 
@@ -2214,8 +2174,7 @@ export type GEN_AI_PIPELINE_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link AI_INPUT_MESSAGES} `ai.input_messages`, {@link GEN_AI_REQUEST_MESSAGES} `gen_ai.request.messages`
- *
+ * @deprecated  - Deprecated from OTEL, use gen_ai.input.messages with the new format instead.
  * @example "[{\"role\": \"user\", \"message\": \"hello\"}]"
  */
 export const GEN_AI_PROMPT = 'gen_ai.prompt';
@@ -2290,7 +2249,7 @@ export type GEN_AI_REQUEST_MAX_TOKENS_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__request__messages.json
 
 /**
- * The messages passed to the model. It has to be a stringified version of an array of objects. The "content" can be a string or an array of objects. `gen_ai.request.messages`
+ * The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. `gen_ai.request.messages`
  *
  * Attribute Value Type: `string` {@link GEN_AI_REQUEST_MESSAGES_TYPE}
  *
@@ -2298,9 +2257,9 @@ export type GEN_AI_REQUEST_MAX_TOKENS_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link AI_INPUT_MESSAGES} `ai.input_messages`, {@link GEN_AI_PROMPT} `gen_ai.prompt`
+ * Aliases: {@link AI_INPUT_MESSAGES} `ai.input_messages`
  *
- * @example "[{\"role\": \"system\", \"content\": \"Generate a random number.\"}, {\"role\": \"user\", \"content\": [{\"text\": \"Generate a random number between 0 and 10.\", \"type\": \"text\"}]}]"
+ * @example "[{\"role\": \"system\", \"content\": \"Generate a random number.\"}, {\"role\": \"user\", \"content\": [{\"text\": \"Generate a random number between 0 and 10.\", \"type\": \"text\"}]}, {\"role\": \"tool\", \"content\": {\"toolCallId\": \"1\", \"toolName\": \"Weather\", \"output\": \"rainy\"}}]"
  */
 export const GEN_AI_REQUEST_MESSAGES = 'gen_ai.request.messages';
 
@@ -4557,7 +4516,7 @@ export type NET_SOCK_PEER_ADDR_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  *
- * @deprecated Use {@link } () instead - Deprecated, no replacement at this time
+ * @deprecated  - Deprecated from OTEL, no replacement at this time
  * @example "/var/my.sock"
  */
 export const NET_SOCK_PEER_NAME = 'net.sock.peer.name';
@@ -6611,13 +6570,10 @@ export type Attributes = {
   [GEN_AI_ASSISTANT_MESSAGE]?: GEN_AI_ASSISTANT_MESSAGE_TYPE;
   [GEN_AI_CHOICE]?: GEN_AI_CHOICE_TYPE;
   [GEN_AI_COST_INPUT_TOKENS]?: GEN_AI_COST_INPUT_TOKENS_TYPE;
-  [GEN_AI_COST_INPUT_TOKENS_CACHED]?: GEN_AI_COST_INPUT_TOKENS_CACHED_TYPE;
   [GEN_AI_COST_OUTPUT_TOKENS]?: GEN_AI_COST_OUTPUT_TOKENS_TYPE;
-  [GEN_AI_COST_OUTPUT_TOKENS_REASONING]?: GEN_AI_COST_OUTPUT_TOKENS_REASONING_TYPE;
   [GEN_AI_OPERATION_NAME]?: GEN_AI_OPERATION_NAME_TYPE;
   [GEN_AI_OPERATION_TYPE]?: GEN_AI_OPERATION_TYPE_TYPE;
   [GEN_AI_PIPELINE_NAME]?: GEN_AI_PIPELINE_NAME_TYPE;
-  [GEN_AI_PROMPT]?: GEN_AI_PROMPT_TYPE;
   [GEN_AI_REQUEST_AVAILABLE_TOOLS]?: GEN_AI_REQUEST_AVAILABLE_TOOLS_TYPE;
   [GEN_AI_REQUEST_FREQUENCY_PENALTY]?: GEN_AI_REQUEST_FREQUENCY_PENALTY_TYPE;
   [GEN_AI_REQUEST_MAX_TOKENS]?: GEN_AI_REQUEST_MAX_TOKENS_TYPE;
@@ -6889,9 +6845,7 @@ export type FullAttributes = {
   [GEN_AI_ASSISTANT_MESSAGE]?: GEN_AI_ASSISTANT_MESSAGE_TYPE;
   [GEN_AI_CHOICE]?: GEN_AI_CHOICE_TYPE;
   [GEN_AI_COST_INPUT_TOKENS]?: GEN_AI_COST_INPUT_TOKENS_TYPE;
-  [GEN_AI_COST_INPUT_TOKENS_CACHED]?: GEN_AI_COST_INPUT_TOKENS_CACHED_TYPE;
   [GEN_AI_COST_OUTPUT_TOKENS]?: GEN_AI_COST_OUTPUT_TOKENS_TYPE;
-  [GEN_AI_COST_OUTPUT_TOKENS_REASONING]?: GEN_AI_COST_OUTPUT_TOKENS_REASONING_TYPE;
   [GEN_AI_OPERATION_NAME]?: GEN_AI_OPERATION_NAME_TYPE;
   [GEN_AI_OPERATION_TYPE]?: GEN_AI_OPERATION_TYPE_TYPE;
   [GEN_AI_PIPELINE_NAME]?: GEN_AI_PIPELINE_NAME_TYPE;

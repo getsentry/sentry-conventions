@@ -7,5 +7,8 @@
   },
   "is_in_otel": true,
   "example": "[{\"role\": \"user\", \"message\": \"hello\"}]",
-  "alias": ["ai.input_messages", "gen_ai.request.messages"]
+  "deprecation": {
+    "_status": null,
+    "reason": "Deprecated from OTEL, use gen_ai.input.messages with the new format instead."
+  }
 }

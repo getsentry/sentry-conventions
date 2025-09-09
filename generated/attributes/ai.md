@@ -263,7 +263,7 @@ The input messages sent to the model
 | Exists in OpenTelemetry | No |
 | Example | `[{"role": "user", "message": "hello"}]` |
 | Deprecated | Yes, use `gen_ai.request.messages` instead |
-| Aliases | `gen_ai.prompt`, `gen_ai.request.messages` |
+| Aliases | `gen_ai.request.messages` |
 
 ### ai.model_id
 
