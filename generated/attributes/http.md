@@ -13,6 +13,7 @@
   - [http.request.fetch_start](#httprequestfetch_start)
   - [http.request.header.\<key\>](#httprequestheaderkey)
   - [http.request.method](#httprequestmethod)
+  - [http.request.redirect_end](#httprequestredirect_end)
   - [http.request.redirect_start](#httprequestredirect_start)
   - [http.request.request_start](#httprequestrequest_start)
   - [http.request.resend_count](#httprequestresend_count)
@@ -152,6 +153,17 @@ The HTTP method used.
 | Exists in OpenTelemetry | Yes |
 | Example | `GET` |
 | Aliases | `method`, `http.method` |
+
+### http.request.redirect_end
+
+The UNIX timestamp representing the timestamp immediately after receiving the last byte of the response of the last redirect
+
+| Property | Value |
+| --- | --- |
+| Type | `integer` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `1732829558` |
 
 ### http.request.redirect_start
 
