@@ -1,7 +1,7 @@
 {
   "key": "http.request.redirect_end",
   "brief": "The UNIX timestamp representing the timestamp immediately after receiving the last byte of the response of the last redirect",
-  "type": "integer",
+  "type": "double",
   "pii": {
     "key": "false"
   },
