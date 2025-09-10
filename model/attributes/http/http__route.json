@@ -3,7 +3,7 @@
   "brief": "The matched route, that is, the path template in the format used by the respective server framework.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "/users/:id",

@@ -3,7 +3,7 @@
   "brief": "Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "true"
   },
   "is_in_otel": true,
   "example": "example.com",

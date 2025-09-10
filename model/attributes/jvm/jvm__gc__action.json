@@ -3,7 +3,7 @@
   "brief": "Name of the garbage collector action.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "end of minor GC"

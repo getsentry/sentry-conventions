@@ -7,9 +7,8 @@
   - [gen_ai.assistant.message](#gen_aiassistantmessage)
   - [gen_ai.choice](#gen_aichoice)
   - [gen_ai.cost.input_tokens](#gen_aicostinput_tokens)
-  - [gen_ai.cost.input_tokens.cached](#gen_aicostinput_tokenscached)
   - [gen_ai.cost.output_tokens](#gen_aicostoutput_tokens)
-  - [gen_ai.cost.output_tokens.reasoning](#gen_aicostoutput_tokensreasoning)
+  - [gen_ai.cost.total_tokens](#gen_aicosttotal_tokens)
   - [gen_ai.operation.name](#gen_aioperationname)
   - [gen_ai.operation.type](#gen_aioperationtype)
   - [gen_ai.pipeline.name](#gen_aipipelinename)
@@ -42,13 +41,13 @@
   - [gen_ai.usage.input_tokens.cached](#gen_aiusageinput_tokenscached)
   - [gen_ai.usage.output_tokens](#gen_aiusageoutput_tokens)
   - [gen_ai.usage.output_tokens.reasoning](#gen_aiusageoutput_tokensreasoning)
-  - [gen_ai.usage.total_cost](#gen_aiusagetotal_cost)
   - [gen_ai.usage.total_tokens](#gen_aiusagetotal_tokens)
   - [gen_ai.user.message](#gen_aiusermessage)
 - [Deprecated Attributes](#deprecated-attributes)
   - [gen_ai.prompt](#gen_aiprompt)
   - [gen_ai.usage.completion_tokens](#gen_aiusagecompletion_tokens)
   - [gen_ai.usage.prompt_tokens](#gen_aiusageprompt_tokens)
+  - [gen_ai.usage.total_cost](#gen_aiusagetotal_cost)
 
 ## Stable Attributes
 
@@ -59,7 +58,7 @@ The name of the agent being used.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `ResearchAssistant` |
 
@@ -96,17 +95,6 @@ The cost of tokens used to process the AI input (prompt) in USD (without cached 
 | Exists in OpenTelemetry | No |
 | Example | `123.45` |
 
-### gen_ai.cost.input_tokens.cached
-
-The cost of cached tokens used to process the AI input (prompt) in USD.
-
-| Property | Value |
-| --- | --- |
-| Type | `double` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `123.45` |
-
 ### gen_ai.cost.output_tokens
 
 The cost of tokens used for creating the AI output in USD (without reasoning tokens).
@@ -118,16 +106,16 @@ The cost of tokens used for creating the AI output in USD (without reasoning tok
 | Exists in OpenTelemetry | No |
 | Example | `123.45` |
 
-### gen_ai.cost.output_tokens.reasoning
+### gen_ai.cost.total_tokens
 
-The cost of tokens used for reasoning to create the AI output in USD.
+The total cost for the tokens used.
 
 | Property | Value |
 | --- | --- |
 | Type | `double` |
 | Has PII | false |
 | Exists in OpenTelemetry | No |
-| Example | `123.45` |
+| Example | `12.34` |
 
 ### gen_ai.operation.name
 
@@ -136,7 +124,7 @@ The name of the operation being performed.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `chat` |
 
@@ -147,7 +135,7 @@ The type of AI operation. Must be one of 'agent', 'ai_client', 'tool', 'handoff'
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `tool` |
 
@@ -158,7 +146,7 @@ Name of the AI pipeline or chain being executed.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `Autofix Pipeline` |
 | Aliases | `ai.pipeline.name` |
@@ -170,7 +158,7 @@ The available tools for the model. It has to be a stringified version of an arra
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `[{"name": "get_weather", "description": "Get the weather for a given location"}, {"name": "get_news", "description": "Get the news for a given topic"}]` |
 
@@ -199,14 +187,14 @@ The maximum number of tokens to generate in the response.
 
 ### gen_ai.request.messages
 
-The messages passed to the model. It has to be a stringified version of an array of objects. The "content" can be a string or an array of objects.
+The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.
 
 | Property | Value |
 | --- | --- |
 | Type | `string` |
 | Has PII | maybe |
 | Exists in OpenTelemetry | No |
-| Example | `[{"role": "system", "content": "Generate a random number."}, {"role": "user", "content": [{"text": "Generate a random number between 0 and 10.", "type": "text"}]}]` |
+| Example | `[{"role": "system", "content": "Generate a random number."}, {"role": "user", "content": [{"text": "Generate a random number between 0 and 10.", "type": "text"}]}, {"role": "tool", "content": {"toolCallId": "1", "toolName": "Weather", "output": "rainy"}}]` |
 | Aliases | `ai.input_messages` |
 
 ### gen_ai.request.model
@@ -216,7 +204,7 @@ The model identifier being used for the request.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `gpt-4-turbo-preview` |
 
@@ -239,7 +227,7 @@ The seed, ideally models given the same seed and same other parameters will prod
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `1234567890` |
 | Aliases | `ai.seed` |
@@ -287,7 +275,7 @@ The reason why the model stopped generating.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `COMPLETE` |
 | Aliases | `ai.finish_reason` |
@@ -299,7 +287,7 @@ Unique identifier for the completion.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `gen_123abc` |
 | Aliases | `ai.generation_id` |
@@ -311,7 +299,7 @@ The vendor-specific ID of the model used.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `gpt-4` |
 | Aliases | `ai.model_id` |
@@ -368,7 +356,7 @@ The provider of the model.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `openai` |
 | Aliases | `ai.model.provider` |
@@ -391,7 +379,7 @@ The description of the tool being used.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `Searches the web for current information about a topic` |
 
@@ -424,7 +412,7 @@ Name of the tool utilized by the agent.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `Flights` |
 | Aliases | `ai.function_call` |
@@ -447,7 +435,7 @@ The type of tool being used.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `function` |
 
@@ -496,17 +484,6 @@ The number of tokens used for reasoning to create the AI output.
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `75` |
-
-### gen_ai.usage.total_cost
-
-The total cost for the tokens used.
-
-| Property | Value |
-| --- | --- |
-| Type | `double` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `12.34` |
 
 ### gen_ai.usage.total_tokens
 
@@ -573,4 +550,16 @@ The number of tokens used in the GenAI input (prompt).
 | Example | `20` |
 | Deprecated | Yes, use `gen_ai.usage.input_tokens` instead |
 | Aliases | `ai.prompt_tokens.used`, `gen_ai.usage.input_tokens` |
+
+### gen_ai.usage.total_cost
+
+The total cost for the tokens used.
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `12.34` |
+| Deprecated | Yes, use `gen_ai.cost.total_tokens` instead |
 

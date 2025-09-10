@@ -3,7 +3,7 @@
   "brief": "The size of the message body sent to the recipient (in bytes)",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "http.response.header.custom-header=['foo', 'bar']",

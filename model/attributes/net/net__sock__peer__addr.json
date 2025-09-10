@@ -3,7 +3,7 @@
   "brief": "Peer address of the network connection - IP address",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "192.168.0.1",

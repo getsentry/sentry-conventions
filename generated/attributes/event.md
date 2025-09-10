@@ -26,7 +26,7 @@ The name that uniquely identifies this event (log record)
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `Process Payload` |
 

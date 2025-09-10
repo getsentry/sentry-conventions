@@ -18,7 +18,7 @@ The name of the executable that started the process.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `getsentry` |
 
@@ -40,7 +40,7 @@ An additional description about the runtime of the process, for example a specif
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `Eclipse OpenJ9 VM openj9-0.21.0` |
 
@@ -51,7 +51,7 @@ The name of the runtime. Equivalent to `name` in the Sentry runtime context.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `node` |
 
@@ -62,7 +62,7 @@ The version of the runtime of this process, as returned by the runtime without m
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `18.04.2` |
 

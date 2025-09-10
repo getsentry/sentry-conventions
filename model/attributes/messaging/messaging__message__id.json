@@ -3,7 +3,7 @@
   "brief": "A value used by the messaging system as an identifier for the message, represented as a string.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "f47ac10b58cc4372a5670e02b2c3d479",

@@ -14,7 +14,7 @@ The render blocking status of the resource.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `non-blocking` |
 

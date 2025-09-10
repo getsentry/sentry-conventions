@@ -16,7 +16,7 @@ The name of the associated component.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `HomeButton` |
 

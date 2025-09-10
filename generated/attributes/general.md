@@ -29,7 +29,7 @@ Mobile app start variant. Either cold or warm.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `cold` |
 
@@ -51,7 +51,7 @@ The channel name that is being used.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `mail` |
 
@@ -99,7 +99,7 @@ The sentry environment.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `production` |
 | Deprecated | Yes, use `sentry.environment` instead |
@@ -112,7 +112,7 @@ The error message of a file system error.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `ENOENT: no such file or directory` |
 | Deprecated | Yes, use `error.type` instead |
@@ -125,7 +125,7 @@ The HTTP method used.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `GET` |
 | Deprecated | Yes, use `http.request.method` instead |
@@ -151,7 +151,7 @@ The sentry release.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `production` |
 | Deprecated | Yes, use `sentry.release` instead |
@@ -190,7 +190,7 @@ The sentry transaction (segment name).
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `GET /` |
 | Deprecated | Yes, use `sentry.transaction` instead |

@@ -3,7 +3,7 @@
   "brief": "The messaging system as identified by the client instrumentation.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "activemq",

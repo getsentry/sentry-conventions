@@ -3,7 +3,7 @@
   "brief": "Name of the garbage collector.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "G1 Young Generation"

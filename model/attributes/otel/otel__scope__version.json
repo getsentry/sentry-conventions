@@ -3,7 +3,7 @@
   "brief": "The version of the instrumentation scope - (InstrumentationScope.Version in OTLP).",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "2.4.5"

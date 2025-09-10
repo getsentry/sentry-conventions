@@ -3,7 +3,7 @@
   "brief": "Description of the Status if it has a value, otherwise not set.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "resource not found"

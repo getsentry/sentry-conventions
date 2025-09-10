@@ -3,7 +3,7 @@
   "brief": "Peer address of the network connection - IP address or Unix domain socket name.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "10.1.2.80",

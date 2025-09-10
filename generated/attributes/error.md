@@ -14,7 +14,7 @@ Describes a class of error the operation ended with.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `timeout` |
 

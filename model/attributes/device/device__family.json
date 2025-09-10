@@ -3,7 +3,7 @@
   "brief": "The family of the device.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "iPhone"
