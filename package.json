@@ -11,7 +11,7 @@
     "build:js": "(cd javascript/sentry-conventions && yarn build)",
     "lint:python": "(cd python && uv run pyflakes src/ && uv run black src/ && uv run isort src/ && uv run mypy .)",
     "build:python": "(cd python && uv build)",
-    "test:python": "(cd python && uv run pytest)",
+    "test:python": "(cd python && uv pip install -e . && uv run pytest)",
     "build:tarball": "yarn build:tarball:js && yarn build:python && yarn build:tarball:model",
     "build:tarball:js": "(cd javascript/sentry-conventions && yarn build:tarball)",
     "build:tarball:model": "tsx scripts/gzip_folder.ts model model/sentry-conventions-json.tgz",
