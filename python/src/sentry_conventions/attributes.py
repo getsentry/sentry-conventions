@@ -119,6 +119,7 @@ class _AttributeNamesMeta(type):
         "GEN_AI_PROMPT",
         "GEN_AI_USAGE_COMPLETION_TOKENS",
         "GEN_AI_USAGE_PROMPT_TOKENS",
+        "GEN_AI_USAGE_TOTAL_COST",
         "HTTP_CLIENT_IP",
         "HTTP_FLAVOR",
         "HTTP_HOST",
@@ -210,7 +211,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The reason why the model stopped generating.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Aliases: gen_ai.response.finish_reasons
     DEPRECATED: Use gen_ai.response.finish_reason instead
@@ -246,7 +247,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Unique identifier for the completion.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Aliases: gen_ai.response.id
     DEPRECATED: Use gen_ai.response.id instead
@@ -280,7 +281,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Extra metadata passed to an AI pipeline step.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "{\"user_id\": 123, \"session_id\": \"abc123\"}"
     """
@@ -290,7 +291,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The provider of the model.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Aliases: gen_ai.system
     DEPRECATED: Use gen_ai.system instead
@@ -302,7 +303,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The vendor-specific ID of the model used.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Aliases: gen_ai.response.model
     DEPRECATED: Use gen_ai.response.model instead
@@ -314,7 +315,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the AI pipeline.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Aliases: gen_ai.pipeline.name
     DEPRECATED: Use gen_ai.pipeline.name instead
@@ -370,7 +371,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """For an AI model call, the format of the response
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "json_object"
     """
@@ -380,7 +381,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The response messages sent back by the AI model.
 
     Type: List[str]
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     DEPRECATED: Use gen_ai.response.text instead
     Example: ["hello","world"]
@@ -411,7 +412,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The seed, ideally models given the same seed and same other parameters will produce the exact same output.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Aliases: gen_ai.request.seed
     DEPRECATED: Use gen_ai.request.seed instead
@@ -435,7 +436,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Tags that describe an AI pipeline step.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "{\"executed_function\": \"add_integers\"}"
     """
@@ -478,7 +479,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """For an AI model call, the functions that are available
 
     Type: List[str]
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     DEPRECATED: Use gen_ai.request.available_tools instead
     Example: ["function_1","function_2"]
@@ -545,7 +546,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Mobile app start variant. Either cold or warm.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "cold"
     """
@@ -565,7 +566,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the browser.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "Chrome"
     """
@@ -575,7 +576,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """A browser report sent via reporting API..
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "network-error"
     """
@@ -585,7 +586,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """How a script was called in the browser.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "Window.requestAnimationFrame"
     """
@@ -597,7 +598,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Browser script entry point type.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "event-listener"
     """
@@ -619,7 +620,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The version of the browser.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "120.0.6099.130"
     """
@@ -659,7 +660,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The operation being performed on the cache.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "get"
     """
@@ -679,7 +680,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The channel name that is being used.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "mail"
     """
@@ -689,7 +690,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
 
     Type: str
-    Contains PII: false
+    Contains PII: true
     Defined in OTEL: Yes
     Aliases: http.client_ip
     Example: "example.com"
@@ -779,7 +780,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The method or function name, or equivalent (usually rightmost part of the code unit's name).
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: code.function
     Example: "server_request"
@@ -824,7 +825,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of a collection (table, container) within the database.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "users"
     """
@@ -834,7 +835,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the database being accessed.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: db.namespace
     DEPRECATED: Use db.namespace instead
@@ -846,7 +847,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the database being accessed.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: db.name
     Example: "customers"
@@ -857,7 +858,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the operation being executed.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: db.operation.name
     DEPRECATED: Use db.operation.name instead
@@ -869,7 +870,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the operation being executed.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: db.operation
     Example: "SELECT"
@@ -882,7 +883,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """A query parameter used in db.query.text, with <key> being the parameter name, and the attribute value being a string representation of the parameter value.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Has Dynamic Suffix: true
     Example: "db.query.parameter.foo='123'"
@@ -893,7 +894,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """A database query being executed. Should be paramaterized. The full version of the query is in `db.query.text`.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "SELECT * FROM users"
     """
@@ -903,7 +904,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The database query being executed. Should be the full query, not a parameterized version. The parameterized version is in `db.query.summary`.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: db.statement
     Example: "SELECT * FROM users"
@@ -914,7 +915,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The redis connection name.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "my-redis-instance"
     """
@@ -945,7 +946,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The database statement being executed.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: db.query.text
     DEPRECATED: Use db.query.text instead
@@ -957,7 +958,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: db.system.name
     DEPRECATED: Use db.system.name instead
@@ -969,7 +970,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: db.system
     Example: "postgresql"
@@ -990,7 +991,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The brand of the device.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "Apple"
     """
@@ -1000,7 +1001,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The family of the device.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "iPhone"
     """
@@ -1010,7 +1011,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The model of the device.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "iPhone 15 Pro Max"
     """
@@ -1020,7 +1021,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The sentry environment.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Aliases: sentry.environment
     DEPRECATED: Use sentry.environment instead
@@ -1032,7 +1033,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Describes a class of error the operation ended with.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "timeout"
     """
@@ -1052,7 +1053,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name that uniquely identifies this event (log record)
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "Process Payload"
     """
@@ -1072,7 +1073,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The error message.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "ENOENT: no such file or directory"
     """
@@ -1082,7 +1083,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """A stacktrace as a string in the natural representation for the language runtime. The representation is to be determined and documented by each language SIG.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "Exception in thread \"main\" java.lang.RuntimeException: Test exception\n at com.example.GenerateTrace.methodB(GenerateTrace.java:13)\n at com.example.GenerateTrace.methodA(GenerateTrace.java:9)\n at com.example.GenerateTrace.main(GenerateTrace.java:5)"
     """
@@ -1092,7 +1093,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The type of the exception (its fully-qualified class name, if applicable). The dynamic type of the exception should be preferred over the static type in languages that support it.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "OSError"
     """
@@ -1112,7 +1113,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """A string containing the schedule period as Cron Expression.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "0/5 * * * ? *"
     """
@@ -1122,7 +1123,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """A string containing the function invocation time in the ISO 8601 format expressed in UTC.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "2020-01-23T13:47:06Z"
     """
@@ -1132,7 +1133,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Type of the trigger which caused this function invocation.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "timer"
     """
@@ -1193,7 +1194,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The error message of a file system error.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     DEPRECATED: Use error.type instead - This attribute is not part of the OpenTelemetry specification and error.type fits much better.
     Example: "ENOENT: no such file or directory"
@@ -1204,7 +1205,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the agent being used.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "ResearchAssistant"
     """
@@ -1243,18 +1244,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 123.45
     """
 
-    # Path: model/attributes/gen_ai/gen_ai__cost__input_tokens__cached.json
-    GEN_AI_COST_INPUT_TOKENS_CACHED: Literal["gen_ai.cost.input_tokens.cached"] = (
-        "gen_ai.cost.input_tokens.cached"
-    )
-    """The cost of cached tokens used to process the AI input (prompt) in USD.
-
-    Type: float
-    Contains PII: false
-    Defined in OTEL: No
-    Example: 123.45
-    """
-
     # Path: model/attributes/gen_ai/gen_ai__cost__output_tokens.json
     GEN_AI_COST_OUTPUT_TOKENS: Literal["gen_ai.cost.output_tokens"] = (
         "gen_ai.cost.output_tokens"
@@ -1267,16 +1256,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 123.45
     """
 
-    # Path: model/attributes/gen_ai/gen_ai__cost__output_tokens__reasoning.json
-    GEN_AI_COST_OUTPUT_TOKENS_REASONING: Literal[
-        "gen_ai.cost.output_tokens.reasoning"
-    ] = "gen_ai.cost.output_tokens.reasoning"
-    """The cost of tokens used for reasoning to create the AI output in USD.
+    # Path: model/attributes/gen_ai/gen_ai__cost__total_tokens.json
+    GEN_AI_COST_TOTAL_TOKENS: Literal["gen_ai.cost.total_tokens"] = (
+        "gen_ai.cost.total_tokens"
+    )
+    """The total cost for the tokens used.
 
     Type: float
     Contains PII: false
     Defined in OTEL: No
-    Example: 123.45
+    Example: 12.34
     """
 
     # Path: model/attributes/gen_ai/gen_ai__operation__name.json
@@ -1284,7 +1273,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the operation being performed.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "chat"
     """
@@ -1294,7 +1283,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The type of AI operation. Must be one of 'agent', 'ai_client', 'tool', 'handoff', 'guardrail'. Makes querying for spans in the UI easier.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "tool"
     """
@@ -1304,7 +1293,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Name of the AI pipeline or chain being executed.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Aliases: ai.pipeline.name
     Example: "Autofix Pipeline"
@@ -1328,7 +1317,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The available tools for the model. It has to be a stringified version of an array of objects.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "[{\"name\": \"get_weather\", \"description\": \"Get the weather for a given location\"}, {\"name\": \"get_news\", \"description\": \"Get the news for a given topic\"}]"
     """
@@ -1362,13 +1351,13 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     GEN_AI_REQUEST_MESSAGES: Literal["gen_ai.request.messages"] = (
         "gen_ai.request.messages"
     )
-    """The messages passed to the model. It has to be a stringified version of an array of objects. The "content" can be a string or an array of objects.
+    """The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.
 
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
     Aliases: ai.input_messages
-    Example: "[{\"role\": \"system\", \"content\": \"Generate a random number.\"}, {\"role\": \"user\", \"content\": [{\"text\": \"Generate a random number between 0 and 10.\", \"type\": \"text\"}]}]"
+    Example: "[{\"role\": \"system\", \"content\": \"Generate a random number.\"}, {\"role\": \"user\", \"content\": [{\"text\": \"Generate a random number between 0 and 10.\", \"type\": \"text\"}]}, {\"role\": \"tool\", \"content\": {\"toolCallId\": \"1\", \"toolName\": \"Weather\", \"output\": \"rainy\"}}]"
     """
 
     # Path: model/attributes/gen_ai/gen_ai__request__model.json
@@ -1376,7 +1365,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The model identifier being used for the request.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "gpt-4-turbo-preview"
     """
@@ -1399,7 +1388,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The seed, ideally models given the same seed and same other parameters will produce the exact same output.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: ai.seed
     Example: "1234567890"
@@ -1447,7 +1436,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The reason why the model stopped generating.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: ai.finish_reason
     Example: "COMPLETE"
@@ -1458,7 +1447,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Unique identifier for the completion.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: ai.generation_id
     Example: "gen_123abc"
@@ -1469,7 +1458,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The vendor-specific ID of the model used.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: ai.model_id
     Example: "gpt-4"
@@ -1527,7 +1516,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The provider of the model.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: ai.model.provider
     Example: "openai"
@@ -1550,7 +1539,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The description of the tool being used.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "Searches the web for current information about a topic"
     """
@@ -1580,7 +1569,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Name of the tool utilized by the agent.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: ai.function_call
     Example: "Flights"
@@ -1601,7 +1590,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The type of tool being used.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "function"
     """
@@ -1693,6 +1682,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: false
     Defined in OTEL: No
+    DEPRECATED: Use gen_ai.cost.total_tokens instead
     Example: 12.34
     """
 
@@ -1724,7 +1714,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the operation being executed.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "findBookById"
     """
@@ -1734,7 +1724,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The type of the operation being executed.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "query"
     """
@@ -1744,7 +1734,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
 
     Type: str
-    Contains PII: false
+    Contains PII: true
     Defined in OTEL: Yes
     Aliases: client.address
     DEPRECATED: Use client.address instead
@@ -1768,7 +1758,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The actual version of the protocol used for network communication.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: network.protocol.version, net.protocol.version
     DEPRECATED: Use network.protocol.version instead
@@ -1790,7 +1780,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The domain name.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: server.address, client.address, http.server_name, net.host.name
     DEPRECATED: Use server.address instead - Deprecated, use one of `server.address` or `client.address`, depending on the usage
@@ -1802,7 +1792,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The HTTP method used.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: http.request.method
     DEPRECATED: Use http.request.method instead
@@ -1897,7 +1887,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The HTTP method used.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: method, http.method
     Example: "GET"
@@ -2008,7 +1998,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The size of the message body sent to the recipient (in bytes)
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: http.response_content_length, http.response.body.size
     Example: "http.response.header.custom-header=['foo', 'bar']"
@@ -2071,7 +2061,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The matched route, that is, the path template in the format used by the respective server framework.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: url.template
     Example: "/users/:id"
@@ -2082,7 +2072,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The URI scheme component identifying the used protocol.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: url.scheme
     DEPRECATED: Use url.scheme instead
@@ -2094,7 +2084,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The server domain name
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: server.address, net.host.name, http.host
     DEPRECATED: Use server.address instead
@@ -2141,7 +2131,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Value of the HTTP User-Agent header sent by the client.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: user_agent.original
     DEPRECATED: Use user_agent.original instead
@@ -2163,7 +2153,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Name of the garbage collector action.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "end of minor GC"
     """
@@ -2173,7 +2163,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Name of the garbage collector.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "G1 Young Generation"
     """
@@ -2183,7 +2173,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Name of the memory pool.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "G1 Old Gen"
     """
@@ -2193,7 +2183,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Name of the memory pool.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "G1 Old Gen"
     """
@@ -2213,7 +2203,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """State of the thread.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "blocked"
     """
@@ -2223,7 +2213,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The dom element responsible for the largest contentful paint.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "img"
     """
@@ -2233,7 +2223,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The id of the dom element responsible for the largest contentful paint.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "#hero"
     """
@@ -2253,7 +2243,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The url of the dom element responsible for the largest contentful paint.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "https://example.com"
     """
@@ -2263,7 +2253,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the logger that generated this event.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "myLogger"
     """
@@ -2275,7 +2265,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The message destination connection.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "BestTopic"
     """
@@ -2287,7 +2277,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The message destination name.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "BestTopic"
     """
@@ -2321,7 +2311,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """A value used by the messaging system as an identifier for the message, represented as a string.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "f47ac10b58cc4372a5670e02b2c3d479"
     """
@@ -2357,7 +2347,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """A string identifying the type of the messaging operation
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "create"
     """
@@ -2367,7 +2357,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The messaging system as identified by the client instrumentation.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "activemq"
     """
@@ -2377,7 +2367,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The HTTP method used.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Aliases: http.request.method
     DEPRECATED: Use http.request.method instead
@@ -2389,7 +2379,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The type of navigation done by a client-side router.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "router.push"
     """
@@ -2409,7 +2399,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """If request failed, the phase of its network error. If request succeeded, "application".
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "application"
     """
@@ -2419,7 +2409,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """request's referrer, as determined by the referrer policy associated with its client.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "https://example.com/foo?bar=baz"
     """
@@ -2439,7 +2429,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """If request failed, the type of its network error. If request succeeded, "ok".
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "dns.unreachable"
     """
@@ -2449,7 +2439,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Local address of the network connection - IP address or Unix domain socket name.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: network.local.address, net.sock.host.addr
     DEPRECATED: Use network.local.address instead
@@ -2461,7 +2451,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: server.address, http.server_name, http.host
     DEPRECATED: Use server.address instead
@@ -2485,7 +2475,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Peer address of the network connection - IP address or Unix domain socket name.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: network.peer.address, net.sock.peer.addr
     DEPRECATED: Use network.peer.address instead
@@ -2497,7 +2487,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     DEPRECATED: Use server.address instead - Deprecated, use server.address on client spans and client.address on server spans.
     Example: "example.com"
@@ -2519,7 +2509,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """OSI application layer or non-OSI equivalent.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: network.protocol.name
     DEPRECATED: Use network.protocol.name instead
@@ -2531,7 +2521,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The actual version of the protocol used for network communication.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: network.protocol.version, http.flavor
     DEPRECATED: Use network.protocol.version instead
@@ -2543,7 +2533,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """OSI transport and network layer
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     DEPRECATED: Use network.transport instead - Deprecated, use network.transport and network.type.
     Example: "inet"
@@ -2554,7 +2544,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Local address of the network connection mapping to Unix domain socket name.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: network.local.address, net.host.ip
     DEPRECATED: Use network.local.address instead
@@ -2578,7 +2568,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Peer address of the network connection - IP address
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: network.peer.address, net.peer.ip
     DEPRECATED: Use network.peer.address instead
@@ -2590,7 +2580,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Peer address of the network connection - Unix domain socket name
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     DEPRECATED: No replacement at this time - Deprecated from OTEL, no replacement at this time
     Example: "/var/my.sock"
@@ -2612,7 +2602,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """OSI transport layer or inter-process communication method.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: network.transport
     DEPRECATED: Use network.transport instead
@@ -2624,7 +2614,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Local address of the network connection - IP address or Unix domain socket name.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: net.host.ip, net.sock.host.addr
     Example: "10.1.2.80"
@@ -2646,7 +2636,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Peer address of the network connection - IP address or Unix domain socket name.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: net.peer.ip, net.sock.peer.addr
     Example: "10.1.2.80"
@@ -2667,7 +2657,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """OSI application layer or non-OSI equivalent.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: net.protocol.name
     Example: "http"
@@ -2680,7 +2670,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The actual version of the protocol used for network communication.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: http.flavor, net.protocol.version
     Example: "1.1"
@@ -2691,7 +2681,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """OSI transport layer or inter-process communication method.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: net.transport
     Example: "tcp"
@@ -2702,7 +2692,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """OSI network layer or non-OSI equivalent.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "ipv4"
     """
@@ -2712,7 +2702,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The build ID of the operating system.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "1234567890"
     """
@@ -2722,7 +2712,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Human readable (not intended to be parsed) OS version information, like e.g. reported by ver or lsb_release -a commands.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "Ubuntu 18.04.1 LTS"
     """
@@ -2732,7 +2722,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Human readable operating system name.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "Ubuntu"
     """
@@ -2742,7 +2732,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The operating system type.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "linux"
     """
@@ -2752,7 +2742,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The version of the operating system.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "18.04.2"
     """
@@ -2762,7 +2752,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the instrumentation scope - (InstrumentationScope.Name in OTLP).
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "io.opentelemetry.contrib.mongodb"
     """
@@ -2772,7 +2762,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The version of the instrumentation scope - (InstrumentationScope.Version in OTLP).
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "2.4.5"
     """
@@ -2782,7 +2772,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Name of the code, either “OK” or “ERROR”. MUST NOT be set if the status code is UNSET.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "OK"
     """
@@ -2794,7 +2784,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Description of the Status if it has a value, otherwise not set.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "resource not found"
     """
@@ -2828,7 +2818,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the executable that started the process.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "getsentry"
     """
@@ -2850,7 +2840,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """An additional description about the runtime of the process, for example a specific vendor customization of the runtime environment. Equivalent to `raw_description` in the Sentry runtime context.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "Eclipse OpenJ9 VM openj9-0.21.0"
     """
@@ -2860,7 +2850,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the runtime. Equivalent to `name` in the Sentry runtime context.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "node"
     """
@@ -2872,7 +2862,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The version of the runtime of this process, as returned by the runtime without modification. Equivalent to `version` in the Sentry runtime context.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "18.04.2"
     """
@@ -2906,7 +2896,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The sentry release.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Aliases: sentry.release
     DEPRECATED: Use sentry.release instead
@@ -2945,7 +2935,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The render blocking status of the resource.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "non-blocking"
     """
@@ -2977,7 +2967,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The full (logical) name of the service being called, including its package name, if applicable.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "myService.BestService"
     """
@@ -3283,7 +3273,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: http.server_name, net.host.name, http.host
     Example: "example.com"
@@ -3305,7 +3295,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Logical name of the service.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "omegastar"
     """
@@ -3315,7 +3305,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The version string of the service API or implementation. The format is not defined by these conventions.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: sentry.release
     Example: "5.0.0"
@@ -3336,7 +3326,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Current thread name.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "main"
     """
@@ -3346,7 +3336,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The sentry transaction (segment name).
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Aliases: sentry.transaction
     DEPRECATED: Use sentry.transaction instead
@@ -3368,7 +3358,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the associated component.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "HomeButton"
     """
@@ -3398,7 +3388,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "example.com"
     """
@@ -3473,7 +3463,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The URI scheme component identifying the used protocol.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: http.scheme
     Example: "https"
@@ -3484,7 +3474,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The low-cardinality template of an absolute path reference.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: http.route
     Example: "/users/:id"
@@ -3617,7 +3607,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Value of the HTTP User-Agent header sent by the client.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: http.user_agent
     Example: "Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1"
@@ -3652,7 +3642,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.AI_FINISH_REASON: AttributeMetadata(
         brief="The reason why the model stopped generating.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="COMPLETE",
         deprecation=DeprecationInfo(replacement="gen_ai.response.finish_reason"),
@@ -3679,7 +3669,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.AI_GENERATION_ID: AttributeMetadata(
         brief="Unique identifier for the completion.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="gen_123abc",
         deprecation=DeprecationInfo(replacement="gen_ai.response.id"),
@@ -3705,14 +3695,14 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.AI_METADATA: AttributeMetadata(
         brief="Extra metadata passed to an AI pipeline step.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example='{"user_id": 123, "session_id": "abc123"}',
     ),
     ATTRIBUTE_NAMES.AI_MODEL_PROVIDER: AttributeMetadata(
         brief="The provider of the model.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="openai",
         deprecation=DeprecationInfo(replacement="gen_ai.system"),
@@ -3721,7 +3711,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.AI_MODEL_ID: AttributeMetadata(
         brief="The vendor-specific ID of the model used.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="gpt-4",
         deprecation=DeprecationInfo(replacement="gen_ai.response.model"),
@@ -3731,7 +3721,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.AI_PIPELINE_NAME: AttributeMetadata(
         brief="The name of the AI pipeline.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="Autofix Pipeline",
         deprecation=DeprecationInfo(replacement="gen_ai.pipeline.name"),
@@ -3773,14 +3763,14 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.AI_RESPONSE_FORMAT: AttributeMetadata(
         brief="For an AI model call, the format of the response",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="json_object",
     ),
     ATTRIBUTE_NAMES.AI_RESPONSES: AttributeMetadata(
         brief="The response messages sent back by the AI model.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=["hello", "world"],
         deprecation=DeprecationInfo(replacement="gen_ai.response.text"),
@@ -3803,7 +3793,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.AI_SEED: AttributeMetadata(
         brief="The seed, ideally models given the same seed and same other parameters will produce the exact same output.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="1234567890",
         deprecation=DeprecationInfo(replacement="gen_ai.request.seed"),
@@ -3822,7 +3812,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.AI_TAGS: AttributeMetadata(
         brief="Tags that describe an AI pipeline step.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example='{"executed_function": "add_integers"}',
     ),
@@ -3853,7 +3843,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.AI_TOOLS: AttributeMetadata(
         brief="For an AI model call, the functions that are available",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=["function_1", "function_2"],
         deprecation=DeprecationInfo(replacement="gen_ai.request.available_tools"),
@@ -3903,7 +3893,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.APP_START_TYPE: AttributeMetadata(
         brief="Mobile app start variant. Either cold or warm.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="cold",
     ),
@@ -3917,21 +3907,21 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.BROWSER_NAME: AttributeMetadata(
         brief="The name of the browser.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="Chrome",
     ),
     ATTRIBUTE_NAMES.BROWSER_REPORT_TYPE: AttributeMetadata(
         brief="A browser report sent via reporting API..",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="network-error",
     ),
     ATTRIBUTE_NAMES.BROWSER_SCRIPT_INVOKER: AttributeMetadata(
         brief="How a script was called in the browser.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="Window.requestAnimationFrame",
         sdks=["browser"],
@@ -3939,7 +3929,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.BROWSER_SCRIPT_INVOKER_TYPE: AttributeMetadata(
         brief="Browser script entry point type.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="event-listener",
         sdks=["browser"],
@@ -3955,7 +3945,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.BROWSER_VERSION: AttributeMetadata(
         brief="The version of the browser.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="120.0.6099.130",
     ),
@@ -3985,7 +3975,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.CACHE_OPERATION: AttributeMetadata(
         brief="The operation being performed on the cache.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="get",
         sdks=["php-laravel"],
@@ -4001,7 +3991,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.CHANNEL: AttributeMetadata(
         brief="The channel name that is being used.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="mail",
         sdks=["php-laravel"],
@@ -4009,7 +3999,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.CLIENT_ADDRESS: AttributeMetadata(
         brief="Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         example="example.com",
         aliases=["http.client_ip"],
@@ -4074,7 +4064,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.CODE_FUNCTION_NAME: AttributeMetadata(
         brief="The method or function name, or equivalent (usually rightmost part of the code unit's name).",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="server_request",
         aliases=["code.function"],
@@ -4110,14 +4100,14 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.DB_COLLECTION_NAME: AttributeMetadata(
         brief="The name of a collection (table, container) within the database.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="users",
     ),
     ATTRIBUTE_NAMES.DB_NAME: AttributeMetadata(
         brief="The name of the database being accessed.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="customers",
         deprecation=DeprecationInfo(replacement="db.namespace"),
@@ -4126,7 +4116,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.DB_NAMESPACE: AttributeMetadata(
         brief="The name of the database being accessed.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="customers",
         aliases=["db.name"],
@@ -4134,7 +4124,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.DB_OPERATION: AttributeMetadata(
         brief="The name of the operation being executed.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="SELECT",
         deprecation=DeprecationInfo(replacement="db.operation.name"),
@@ -4143,7 +4133,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.DB_OPERATION_NAME: AttributeMetadata(
         brief="The name of the operation being executed.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="SELECT",
         aliases=["db.operation"],
@@ -4151,7 +4141,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.DB_QUERY_PARAMETER_KEY: AttributeMetadata(
         brief="A query parameter used in db.query.text, with <key> being the parameter name, and the attribute value being a string representation of the parameter value.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         has_dynamic_suffix=True,
         example="db.query.parameter.foo='123'",
@@ -4159,14 +4149,14 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.DB_QUERY_SUMMARY: AttributeMetadata(
         brief="A database query being executed. Should be paramaterized. The full version of the query is in `db.query.text`.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="SELECT * FROM users",
     ),
     ATTRIBUTE_NAMES.DB_QUERY_TEXT: AttributeMetadata(
         brief="The database query being executed. Should be the full query, not a parameterized version. The parameterized version is in `db.query.summary`.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="SELECT * FROM users",
         aliases=["db.statement"],
@@ -4174,7 +4164,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.DB_REDIS_CONNECTION: AttributeMetadata(
         brief="The redis connection name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="my-redis-instance",
         sdks=["php-laravel"],
@@ -4202,7 +4192,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.DB_STATEMENT: AttributeMetadata(
         brief="The database statement being executed.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="SELECT * FROM users",
         deprecation=DeprecationInfo(replacement="db.query.text"),
@@ -4211,7 +4201,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.DB_SYSTEM: AttributeMetadata(
         brief="An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="postgresql",
         deprecation=DeprecationInfo(replacement="db.system.name"),
@@ -4220,7 +4210,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.DB_SYSTEM_NAME: AttributeMetadata(
         brief="An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="postgresql",
         aliases=["db.system"],
@@ -4235,28 +4225,28 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.DEVICE_BRAND: AttributeMetadata(
         brief="The brand of the device.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="Apple",
     ),
     ATTRIBUTE_NAMES.DEVICE_FAMILY: AttributeMetadata(
         brief="The family of the device.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="iPhone",
     ),
     ATTRIBUTE_NAMES.DEVICE_MODEL: AttributeMetadata(
         brief="The model of the device.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="iPhone 15 Pro Max",
     ),
     ATTRIBUTE_NAMES.ENVIRONMENT: AttributeMetadata(
         brief="The sentry environment.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="production",
         deprecation=DeprecationInfo(replacement="sentry.environment"),
@@ -4265,7 +4255,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.ERROR_TYPE: AttributeMetadata(
         brief="Describes a class of error the operation ended with.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="timeout",
     ),
@@ -4279,7 +4269,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.EVENT_NAME: AttributeMetadata(
         brief="The name that uniquely identifies this event (log record)",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="Process Payload",
     ),
@@ -4293,21 +4283,21 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.EXCEPTION_MESSAGE: AttributeMetadata(
         brief="The error message.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="ENOENT: no such file or directory",
     ),
     ATTRIBUTE_NAMES.EXCEPTION_STACKTRACE: AttributeMetadata(
         brief="A stacktrace as a string in the natural representation for the language runtime. The representation is to be determined and documented by each language SIG.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example='Exception in thread "main" java.lang.RuntimeException: Test exception\n at com.example.GenerateTrace.methodB(GenerateTrace.java:13)\n at com.example.GenerateTrace.methodA(GenerateTrace.java:9)\n at com.example.GenerateTrace.main(GenerateTrace.java:5)',
     ),
     ATTRIBUTE_NAMES.EXCEPTION_TYPE: AttributeMetadata(
         brief="The type of the exception (its fully-qualified class name, if applicable). The dynamic type of the exception should be preferred over the static type in languages that support it.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="OSError",
     ),
@@ -4321,21 +4311,21 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.FAAS_CRON: AttributeMetadata(
         brief="A string containing the schedule period as Cron Expression.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="0/5 * * * ? *",
     ),
     ATTRIBUTE_NAMES.FAAS_TIME: AttributeMetadata(
         brief="A string containing the function invocation time in the ISO 8601 format expressed in UTC.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="2020-01-23T13:47:06Z",
     ),
     ATTRIBUTE_NAMES.FAAS_TRIGGER: AttributeMetadata(
         brief="Type of the trigger which caused this function invocation.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="timer",
     ),
@@ -4378,7 +4368,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.FS_ERROR: AttributeMetadata(
         brief="The error message of a file system error.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="ENOENT: no such file or directory",
         deprecation=DeprecationInfo(
@@ -4390,7 +4380,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.GEN_AI_AGENT_NAME: AttributeMetadata(
         brief="The name of the agent being used.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="ResearchAssistant",
     ),
@@ -4415,13 +4405,6 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=123.45,
     ),
-    ATTRIBUTE_NAMES.GEN_AI_COST_INPUT_TOKENS_CACHED: AttributeMetadata(
-        brief="The cost of cached tokens used to process the AI input (prompt) in USD.",
-        type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=False,
-        example=123.45,
-    ),
     ATTRIBUTE_NAMES.GEN_AI_COST_OUTPUT_TOKENS: AttributeMetadata(
         brief="The cost of tokens used for creating the AI output in USD (without reasoning tokens).",
         type=AttributeType.DOUBLE,
@@ -4429,31 +4412,31 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=123.45,
     ),
-    ATTRIBUTE_NAMES.GEN_AI_COST_OUTPUT_TOKENS_REASONING: AttributeMetadata(
-        brief="The cost of tokens used for reasoning to create the AI output in USD.",
+    ATTRIBUTE_NAMES.GEN_AI_COST_TOTAL_TOKENS: AttributeMetadata(
+        brief="The total cost for the tokens used.",
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
-        example=123.45,
+        example=12.34,
     ),
     ATTRIBUTE_NAMES.GEN_AI_OPERATION_NAME: AttributeMetadata(
         brief="The name of the operation being performed.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="chat",
     ),
     ATTRIBUTE_NAMES.GEN_AI_OPERATION_TYPE: AttributeMetadata(
         brief="The type of AI operation. Must be one of 'agent', 'ai_client', 'tool', 'handoff', 'guardrail'. Makes querying for spans in the UI easier.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="tool",
     ),
     ATTRIBUTE_NAMES.GEN_AI_PIPELINE_NAME: AttributeMetadata(
         brief="Name of the AI pipeline or chain being executed.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="Autofix Pipeline",
         aliases=["ai.pipeline.name"],
@@ -4471,7 +4454,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.GEN_AI_REQUEST_AVAILABLE_TOOLS: AttributeMetadata(
         brief="The available tools for the model. It has to be a stringified version of an array of objects.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example='[{"name": "get_weather", "description": "Get the weather for a given location"}, {"name": "get_news", "description": "Get the news for a given topic"}]',
     ),
@@ -4491,17 +4474,17 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=2048,
     ),
     ATTRIBUTE_NAMES.GEN_AI_REQUEST_MESSAGES: AttributeMetadata(
-        brief='The messages passed to the model. It has to be a stringified version of an array of objects. The "content" can be a string or an array of objects.',
+        brief='The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.',
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
-        example='[{"role": "system", "content": "Generate a random number."}, {"role": "user", "content": [{"text": "Generate a random number between 0 and 10.", "type": "text"}]}]',
+        example='[{"role": "system", "content": "Generate a random number."}, {"role": "user", "content": [{"text": "Generate a random number between 0 and 10.", "type": "text"}]}, {"role": "tool", "content": {"toolCallId": "1", "toolName": "Weather", "output": "rainy"}}]',
         aliases=["ai.input_messages"],
     ),
     ATTRIBUTE_NAMES.GEN_AI_REQUEST_MODEL: AttributeMetadata(
         brief="The model identifier being used for the request.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="gpt-4-turbo-preview",
     ),
@@ -4516,7 +4499,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.GEN_AI_REQUEST_SEED: AttributeMetadata(
         brief="The seed, ideally models given the same seed and same other parameters will produce the exact same output.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="1234567890",
         aliases=["ai.seed"],
@@ -4548,7 +4531,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.GEN_AI_RESPONSE_FINISH_REASONS: AttributeMetadata(
         brief="The reason why the model stopped generating.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="COMPLETE",
         aliases=["ai.finish_reason"],
@@ -4556,7 +4539,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.GEN_AI_RESPONSE_ID: AttributeMetadata(
         brief="Unique identifier for the completion.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="gen_123abc",
         aliases=["ai.generation_id"],
@@ -4564,7 +4547,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.GEN_AI_RESPONSE_MODEL: AttributeMetadata(
         brief="The vendor-specific ID of the model used.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="gpt-4",
         aliases=["ai.model_id"],
@@ -4601,7 +4584,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.GEN_AI_SYSTEM: AttributeMetadata(
         brief="The provider of the model.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="openai",
         aliases=["ai.model.provider"],
@@ -4616,7 +4599,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.GEN_AI_TOOL_DESCRIPTION: AttributeMetadata(
         brief="The description of the tool being used.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="Searches the web for current information about a topic",
     ),
@@ -4637,7 +4620,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.GEN_AI_TOOL_NAME: AttributeMetadata(
         brief="Name of the tool utilized by the agent.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="Flights",
         aliases=["ai.function_call"],
@@ -4652,7 +4635,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.GEN_AI_TOOL_TYPE: AttributeMetadata(
         brief="The type of tool being used.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="function",
     ),
@@ -4710,6 +4693,9 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=12.34,
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.cost.total_tokens", status=DeprecationStatus.BACKFILL
+        ),
     ),
     ATTRIBUTE_NAMES.GEN_AI_USAGE_TOTAL_TOKENS: AttributeMetadata(
         brief="The total number of tokens used to process the prompt. (input tokens plus output todkens)",
@@ -4729,21 +4715,21 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.GRAPHQL_OPERATION_NAME: AttributeMetadata(
         brief="The name of the operation being executed.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="findBookById",
     ),
     ATTRIBUTE_NAMES.GRAPHQL_OPERATION_TYPE: AttributeMetadata(
         brief="The type of the operation being executed.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="query",
     ),
     ATTRIBUTE_NAMES.HTTP_CLIENT_IP: AttributeMetadata(
         brief="Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         example="example.com",
         deprecation=DeprecationInfo(replacement="client.address"),
@@ -4760,7 +4746,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.HTTP_FLAVOR: AttributeMetadata(
         brief="The actual version of the protocol used for network communication.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="1.1",
         deprecation=DeprecationInfo(replacement="network.protocol.version"),
@@ -4776,7 +4762,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.HTTP_HOST: AttributeMetadata(
         brief="The domain name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="example.com",
         deprecation=DeprecationInfo(
@@ -4793,7 +4779,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.HTTP_METHOD: AttributeMetadata(
         brief="The HTTP method used.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="GET",
         deprecation=DeprecationInfo(replacement="http.request.method"),
@@ -4860,7 +4846,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.HTTP_REQUEST_METHOD: AttributeMetadata(
         brief="The HTTP method used.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="GET",
         aliases=["method", "http.method"],
@@ -4931,7 +4917,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.HTTP_RESPONSE_HEADER_CONTENT_LENGTH: AttributeMetadata(
         brief="The size of the message body sent to the recipient (in bytes)",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="http.response.header.custom-header=['foo', 'bar']",
         aliases=["http.response_content_length", "http.response.body.size"],
@@ -4977,7 +4963,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.HTTP_ROUTE: AttributeMetadata(
         brief="The matched route, that is, the path template in the format used by the respective server framework.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="/users/:id",
         aliases=["url.template"],
@@ -4985,7 +4971,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.HTTP_SCHEME: AttributeMetadata(
         brief="The URI scheme component identifying the used protocol.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="https",
         deprecation=DeprecationInfo(replacement="url.scheme"),
@@ -4994,7 +4980,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.HTTP_SERVER_NAME: AttributeMetadata(
         brief="The server domain name",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="example.com",
         deprecation=DeprecationInfo(replacement="server.address"),
@@ -5032,7 +5018,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.HTTP_USER_AGENT: AttributeMetadata(
         brief="Value of the HTTP User-Agent header sent by the client.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1",
         deprecation=DeprecationInfo(replacement="user_agent.original"),
@@ -5049,28 +5035,28 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.JVM_GC_ACTION: AttributeMetadata(
         brief="Name of the garbage collector action.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="end of minor GC",
     ),
     ATTRIBUTE_NAMES.JVM_GC_NAME: AttributeMetadata(
         brief="Name of the garbage collector.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="G1 Young Generation",
     ),
     ATTRIBUTE_NAMES.JVM_MEMORY_POOL_NAME: AttributeMetadata(
         brief="Name of the memory pool.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="G1 Old Gen",
     ),
     ATTRIBUTE_NAMES.JVM_MEMORY_TYPE: AttributeMetadata(
         brief="Name of the memory pool.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="G1 Old Gen",
     ),
@@ -5084,21 +5070,21 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.JVM_THREAD_STATE: AttributeMetadata(
         brief="State of the thread.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="blocked",
     ),
     ATTRIBUTE_NAMES.LCP_ELEMENT: AttributeMetadata(
         brief="The dom element responsible for the largest contentful paint.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="img",
     ),
     ATTRIBUTE_NAMES.LCP_ID: AttributeMetadata(
         brief="The id of the dom element responsible for the largest contentful paint.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="#hero",
     ),
@@ -5112,21 +5098,21 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.LCP_URL: AttributeMetadata(
         brief="The url of the dom element responsible for the largest contentful paint.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="https://example.com",
     ),
     ATTRIBUTE_NAMES.LOGGER_NAME: AttributeMetadata(
         brief="The name of the logger that generated this event.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="myLogger",
     ),
     ATTRIBUTE_NAMES.MESSAGING_DESTINATION_CONNECTION: AttributeMetadata(
         brief="The message destination connection.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="BestTopic",
         sdks=["php-laravel"],
@@ -5134,7 +5120,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.MESSAGING_DESTINATION_NAME: AttributeMetadata(
         brief="The message destination name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="BestTopic",
         sdks=["php-laravel"],
@@ -5158,7 +5144,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.MESSAGING_MESSAGE_ID: AttributeMetadata(
         brief="A value used by the messaging system as an identifier for the message, represented as a string.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="f47ac10b58cc4372a5670e02b2c3d479",
         sdks=["php-laravel"],
@@ -5182,14 +5168,14 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.MESSAGING_OPERATION_TYPE: AttributeMetadata(
         brief="A string identifying the type of the messaging operation",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="create",
     ),
     ATTRIBUTE_NAMES.MESSAGING_SYSTEM: AttributeMetadata(
         brief="The messaging system as identified by the client instrumentation.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="activemq",
         sdks=["php-laravel"],
@@ -5197,7 +5183,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.METHOD: AttributeMetadata(
         brief="The HTTP method used.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="GET",
         deprecation=DeprecationInfo(replacement="http.request.method"),
@@ -5207,7 +5193,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.NAVIGATION_TYPE: AttributeMetadata(
         brief="The type of navigation done by a client-side router.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="router.push",
     ),
@@ -5221,14 +5207,14 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.NEL_PHASE: AttributeMetadata(
         brief='If request failed, the phase of its network error. If request succeeded, "application".',
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="application",
     ),
     ATTRIBUTE_NAMES.NEL_REFERRER: AttributeMetadata(
         brief="request's referrer, as determined by the referrer policy associated with its client.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="https://example.com/foo?bar=baz",
     ),
@@ -5242,14 +5228,14 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.NEL_TYPE: AttributeMetadata(
         brief='If request failed, the type of its network error. If request succeeded, "ok".',
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="dns.unreachable",
     ),
     ATTRIBUTE_NAMES.NET_HOST_IP: AttributeMetadata(
         brief="Local address of the network connection - IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="192.168.0.1",
         deprecation=DeprecationInfo(replacement="network.local.address"),
@@ -5258,7 +5244,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.NET_HOST_NAME: AttributeMetadata(
         brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="example.com",
         deprecation=DeprecationInfo(replacement="server.address"),
@@ -5276,7 +5262,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.NET_PEER_IP: AttributeMetadata(
         brief="Peer address of the network connection - IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="192.168.0.1",
         deprecation=DeprecationInfo(replacement="network.peer.address"),
@@ -5285,7 +5271,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.NET_PEER_NAME: AttributeMetadata(
         brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="example.com",
         deprecation=DeprecationInfo(
@@ -5307,7 +5293,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.NET_PROTOCOL_NAME: AttributeMetadata(
         brief="OSI application layer or non-OSI equivalent.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="http",
         deprecation=DeprecationInfo(replacement="network.protocol.name"),
@@ -5316,7 +5302,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.NET_PROTOCOL_VERSION: AttributeMetadata(
         brief="The actual version of the protocol used for network communication.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="1.1",
         deprecation=DeprecationInfo(replacement="network.protocol.version"),
@@ -5325,7 +5311,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.NET_SOCK_FAMILY: AttributeMetadata(
         brief="OSI transport and network layer",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="inet",
         deprecation=DeprecationInfo(
@@ -5336,7 +5322,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.NET_SOCK_HOST_ADDR: AttributeMetadata(
         brief="Local address of the network connection mapping to Unix domain socket name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="/var/my.sock",
         deprecation=DeprecationInfo(replacement="network.local.address"),
@@ -5354,7 +5340,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.NET_SOCK_PEER_ADDR: AttributeMetadata(
         brief="Peer address of the network connection - IP address",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="192.168.0.1",
         deprecation=DeprecationInfo(replacement="network.peer.address"),
@@ -5363,7 +5349,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.NET_SOCK_PEER_NAME: AttributeMetadata(
         brief="Peer address of the network connection - Unix domain socket name",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="/var/my.sock",
         deprecation=DeprecationInfo(
@@ -5381,7 +5367,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.NET_TRANSPORT: AttributeMetadata(
         brief="OSI transport layer or inter-process communication method.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="tcp",
         deprecation=DeprecationInfo(replacement="network.transport"),
@@ -5390,7 +5376,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.NETWORK_LOCAL_ADDRESS: AttributeMetadata(
         brief="Local address of the network connection - IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="10.1.2.80",
         aliases=["net.host.ip", "net.sock.host.addr"],
@@ -5406,7 +5392,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.NETWORK_PEER_ADDRESS: AttributeMetadata(
         brief="Peer address of the network connection - IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="10.1.2.80",
         aliases=["net.peer.ip", "net.sock.peer.addr"],
@@ -5421,7 +5407,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.NETWORK_PROTOCOL_NAME: AttributeMetadata(
         brief="OSI application layer or non-OSI equivalent.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="http",
         aliases=["net.protocol.name"],
@@ -5429,7 +5415,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.NETWORK_PROTOCOL_VERSION: AttributeMetadata(
         brief="The actual version of the protocol used for network communication.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="1.1",
         aliases=["http.flavor", "net.protocol.version"],
@@ -5437,7 +5423,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.NETWORK_TRANSPORT: AttributeMetadata(
         brief="OSI transport layer or inter-process communication method.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="tcp",
         aliases=["net.transport"],
@@ -5445,70 +5431,70 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.NETWORK_TYPE: AttributeMetadata(
         brief="OSI network layer or non-OSI equivalent.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="ipv4",
     ),
     ATTRIBUTE_NAMES.OS_BUILD_ID: AttributeMetadata(
         brief="The build ID of the operating system.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="1234567890",
     ),
     ATTRIBUTE_NAMES.OS_DESCRIPTION: AttributeMetadata(
         brief="Human readable (not intended to be parsed) OS version information, like e.g. reported by ver or lsb_release -a commands.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="Ubuntu 18.04.1 LTS",
     ),
     ATTRIBUTE_NAMES.OS_NAME: AttributeMetadata(
         brief="Human readable operating system name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="Ubuntu",
     ),
     ATTRIBUTE_NAMES.OS_TYPE: AttributeMetadata(
         brief="The operating system type.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="linux",
     ),
     ATTRIBUTE_NAMES.OS_VERSION: AttributeMetadata(
         brief="The version of the operating system.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="18.04.2",
     ),
     ATTRIBUTE_NAMES.OTEL_SCOPE_NAME: AttributeMetadata(
         brief="The name of the instrumentation scope - (InstrumentationScope.Name in OTLP).",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="io.opentelemetry.contrib.mongodb",
     ),
     ATTRIBUTE_NAMES.OTEL_SCOPE_VERSION: AttributeMetadata(
         brief="The version of the instrumentation scope - (InstrumentationScope.Version in OTLP).",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="2.4.5",
     ),
     ATTRIBUTE_NAMES.OTEL_STATUS_CODE: AttributeMetadata(
         brief="Name of the code, either “OK” or “ERROR”. MUST NOT be set if the status code is UNSET.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="OK",
     ),
     ATTRIBUTE_NAMES.OTEL_STATUS_DESCRIPTION: AttributeMetadata(
         brief="Description of the Status if it has a value, otherwise not set.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="resource not found",
     ),
@@ -5532,7 +5518,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.PROCESS_EXECUTABLE_NAME: AttributeMetadata(
         brief="The name of the executable that started the process.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="getsentry",
     ),
@@ -5546,21 +5532,21 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.PROCESS_RUNTIME_DESCRIPTION: AttributeMetadata(
         brief="An additional description about the runtime of the process, for example a specific vendor customization of the runtime environment. Equivalent to `raw_description` in the Sentry runtime context.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="Eclipse OpenJ9 VM openj9-0.21.0",
     ),
     ATTRIBUTE_NAMES.PROCESS_RUNTIME_NAME: AttributeMetadata(
         brief="The name of the runtime. Equivalent to `name` in the Sentry runtime context.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="node",
     ),
     ATTRIBUTE_NAMES.PROCESS_RUNTIME_VERSION: AttributeMetadata(
         brief="The version of the runtime of this process, as returned by the runtime without modification. Equivalent to `version` in the Sentry runtime context.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="18.04.2",
     ),
@@ -5588,7 +5574,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.RELEASE: AttributeMetadata(
         brief="The sentry release.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="production",
         deprecation=DeprecationInfo(replacement="sentry.release"),
@@ -5615,7 +5601,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.RESOURCE_RENDER_BLOCKING_STATUS: AttributeMetadata(
         brief="The render blocking status of the resource.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="non-blocking",
         sdks=["javascript-browser"],
@@ -5640,7 +5626,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.RPC_SERVICE: AttributeMetadata(
         brief="The full (logical) name of the service being called, including its package name, if applicable.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="myService.BestService",
     ),
@@ -5849,7 +5835,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.SERVER_ADDRESS: AttributeMetadata(
         brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="example.com",
         aliases=["http.server_name", "net.host.name", "http.host"],
@@ -5865,14 +5851,14 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.SERVICE_NAME: AttributeMetadata(
         brief="Logical name of the service.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="omegastar",
     ),
     ATTRIBUTE_NAMES.SERVICE_VERSION: AttributeMetadata(
         brief="The version string of the service API or implementation. The format is not defined by these conventions.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="5.0.0",
         aliases=["sentry.release"],
@@ -5887,14 +5873,14 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.THREAD_NAME: AttributeMetadata(
         brief="Current thread name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="main",
     ),
     ATTRIBUTE_NAMES.TRANSACTION: AttributeMetadata(
         brief="The sentry transaction (segment name).",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="GET /",
         deprecation=DeprecationInfo(replacement="sentry.transaction"),
@@ -5911,7 +5897,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.UI_COMPONENT_NAME: AttributeMetadata(
         brief="The name of the associated component.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="HomeButton",
     ),
@@ -5932,7 +5918,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.URL_DOMAIN: AttributeMetadata(
         brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="example.com",
     ),
@@ -5987,7 +5973,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.URL_SCHEME: AttributeMetadata(
         brief="The URI scheme component identifying the used protocol.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="https",
         aliases=["http.scheme"],
@@ -5995,7 +5981,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.URL_TEMPLATE: AttributeMetadata(
         brief="The low-cardinality template of an absolute path reference.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="/users/:id",
         aliases=["http.route"],
@@ -6090,7 +6076,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ATTRIBUTE_NAMES.USER_AGENT_ORIGINAL: AttributeMetadata(
         brief="Value of the HTTP User-Agent header sent by the client.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1",
         aliases=["http.user_agent"],
