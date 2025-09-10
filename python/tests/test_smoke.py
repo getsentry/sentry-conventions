@@ -5,7 +5,6 @@ import pytest
 from sentry_conventions.attributes import (
     ATTRIBUTE_NAMES,
     Attributes,
-    FullAttributes,
 )
 
 
@@ -33,7 +32,7 @@ def test_attributes_typeddict() -> None:
 
 def test_full_attributes_typeddict() -> None:
     with pytest.warns(DeprecationWarning, match="TOKENS_USED"):
-        attributes = FullAttributes(
+        attributes = Attributes(
             {
                 ATTRIBUTE_NAMES.AI_COMPLETION_TOKENS_USED: 10,
             }
