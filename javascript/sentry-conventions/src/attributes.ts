@@ -3259,6 +3259,26 @@ export const HTTP_REQUEST_METHOD = 'http.request.method';
  */
 export type HTTP_REQUEST_METHOD_TYPE = string;
 
+// Path: model/attributes/http/http__request__redirect_end.json
+
+/**
+ * The UNIX timestamp representing the timestamp immediately after receiving the last byte of the response of the last redirect `http.request.redirect_end`
+ *
+ * Attribute Value Type: `number` {@link HTTP_REQUEST_REDIRECT_END_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 1732829558
+ */
+export const HTTP_REQUEST_REDIRECT_END = 'http.request.redirect_end';
+
+/**
+ * Type for {@link HTTP_REQUEST_REDIRECT_END} http.request.redirect_end
+ */
+export type HTTP_REQUEST_REDIRECT_END_TYPE = number;
+
 // Path: model/attributes/http/http__request__redirect_start.json
 
 /**
@@ -3378,6 +3398,26 @@ export const HTTP_REQUEST_SECURE_CONNECTION_START = 'http.request.secure_connect
  * Type for {@link HTTP_REQUEST_SECURE_CONNECTION_START} http.request.secure_connection_start
  */
 export type HTTP_REQUEST_SECURE_CONNECTION_START_TYPE = number;
+
+// Path: model/attributes/http/http__request__worker_start.json
+
+/**
+ * The UNIX timestamp representing the timestamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running. `http.request.worker_start`
+ *
+ * Attribute Value Type: `number` {@link HTTP_REQUEST_WORKER_START_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 1732829553
+ */
+export const HTTP_REQUEST_WORKER_START = 'http.request.worker_start';
+
+/**
+ * Type for {@link HTTP_REQUEST_WORKER_START} http.request.worker_start
+ */
+export type HTTP_REQUEST_WORKER_START_TYPE = number;
 
 // Path: model/attributes/http/http__response__body__size.json
 
@@ -6639,12 +6679,14 @@ export type Attributes = {
   [HTTP_REQUEST_FETCH_START]?: HTTP_REQUEST_FETCH_START_TYPE;
   [HTTP_REQUEST_HEADER_KEY]?: HTTP_REQUEST_HEADER_KEY_TYPE;
   [HTTP_REQUEST_METHOD]?: HTTP_REQUEST_METHOD_TYPE;
+  [HTTP_REQUEST_REDIRECT_END]?: HTTP_REQUEST_REDIRECT_END_TYPE;
   [HTTP_REQUEST_REDIRECT_START]?: HTTP_REQUEST_REDIRECT_START_TYPE;
   [HTTP_REQUEST_REQUEST_START]?: HTTP_REQUEST_REQUEST_START_TYPE;
   [HTTP_REQUEST_RESEND_COUNT]?: HTTP_REQUEST_RESEND_COUNT_TYPE;
   [HTTP_REQUEST_RESPONSE_END]?: HTTP_REQUEST_RESPONSE_END_TYPE;
   [HTTP_REQUEST_RESPONSE_START]?: HTTP_REQUEST_RESPONSE_START_TYPE;
   [HTTP_REQUEST_SECURE_CONNECTION_START]?: HTTP_REQUEST_SECURE_CONNECTION_START_TYPE;
+  [HTTP_REQUEST_WORKER_START]?: HTTP_REQUEST_WORKER_START_TYPE;
   [HTTP_RESPONSE_BODY_SIZE]?: HTTP_RESPONSE_BODY_SIZE_TYPE;
   [HTTP_RESPONSE_HEADER_KEY]?: HTTP_RESPONSE_HEADER_KEY_TYPE;
   [HTTP_RESPONSE_HEADER_CONTENT_LENGTH]?: HTTP_RESPONSE_HEADER_CONTENT_LENGTH_TYPE;
@@ -6922,12 +6964,14 @@ export type FullAttributes = {
   [HTTP_REQUEST_FETCH_START]?: HTTP_REQUEST_FETCH_START_TYPE;
   [HTTP_REQUEST_HEADER_KEY]?: HTTP_REQUEST_HEADER_KEY_TYPE;
   [HTTP_REQUEST_METHOD]?: HTTP_REQUEST_METHOD_TYPE;
+  [HTTP_REQUEST_REDIRECT_END]?: HTTP_REQUEST_REDIRECT_END_TYPE;
   [HTTP_REQUEST_REDIRECT_START]?: HTTP_REQUEST_REDIRECT_START_TYPE;
   [HTTP_REQUEST_REQUEST_START]?: HTTP_REQUEST_REQUEST_START_TYPE;
   [HTTP_REQUEST_RESEND_COUNT]?: HTTP_REQUEST_RESEND_COUNT_TYPE;
   [HTTP_REQUEST_RESPONSE_END]?: HTTP_REQUEST_RESPONSE_END_TYPE;
   [HTTP_REQUEST_RESPONSE_START]?: HTTP_REQUEST_RESPONSE_START_TYPE;
   [HTTP_REQUEST_SECURE_CONNECTION_START]?: HTTP_REQUEST_SECURE_CONNECTION_START_TYPE;
+  [HTTP_REQUEST_WORKER_START]?: HTTP_REQUEST_WORKER_START_TYPE;
   [HTTP_RESPONSE_BODY_SIZE]?: HTTP_RESPONSE_BODY_SIZE_TYPE;
   [HTTP_RESPONSE_HEADER_KEY]?: HTTP_RESPONSE_HEADER_KEY_TYPE;
   [HTTP_RESPONSE_HEADER_CONTENT_LENGTH]?: HTTP_RESPONSE_HEADER_CONTENT_LENGTH_TYPE;
