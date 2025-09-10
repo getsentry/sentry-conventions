@@ -430,22 +430,15 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
 
   // Add TypedDict definitions using hardcoded string keys
   content += 'Attributes = TypedDict("Attributes", {\n';
-  content += attributesTypeMembers;
-  content += '}, total=False)\n';
-  content +=
-    '"""TypedDict that represents a collection of non-deprecated attributes. If access to deprecated attributes is needed, use `FullAttributes` instead."""\n\n';
-
-  content += 'FullAttributes = TypedDict("FullAttributes", {\n';
   content += fullAttributesTypeMembers;
   content += '}, total=False)\n';
   content +=
-    '"""TypedDict representing a collection of attributes, including deprecated and non-deprecated ones. If only access to non-deprecated attributes is required, use `Attributes` instead."""\n\n';
+    '"""TypedDict representing a collection of attributes, including deprecated and non-deprecated ones."""\n\n';
 
   // Add __all__ list for exports
   content += '__all__ = [\n';
   content += '    "_ATTRIBUTE_METADATA",\n';
   content += '    "Attributes",\n';
-  content += '    "FullAttributes",\n';
   content += '    "ATTRIBUTE_NAMES",\n';
   content += ']\n\n';
 
