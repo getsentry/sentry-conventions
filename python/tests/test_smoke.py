@@ -1,6 +1,4 @@
-"""Smoke test to verify TypedDict functionality and metadata access."""
-
-from typing import cast
+"""Smoke test to verify package functionality."""
 
 import pytest
 
@@ -11,7 +9,7 @@ from sentry_conventions.attributes import (
 )
 
 
-def test_attributes_typeddict_creation_and_access() -> None:
+def test_attributes_typeddict() -> None:
     attributes = Attributes(
         {
             ATTRIBUTE_NAMES.AI_CITATIONS: ["source1", "source2"],
@@ -33,7 +31,7 @@ def test_attributes_typeddict_creation_and_access() -> None:
     assert port is None
 
 
-def test_attributes_typeddict_with_deprecated() -> None:
+def test_full_attributes_typeddict() -> None:
     with pytest.warns(DeprecationWarning, match="TOKENS_USED"):
         attributes = FullAttributes(
             {
@@ -43,4 +41,3 @@ def test_attributes_typeddict_with_deprecated() -> None:
 
         tokens_used = attributes.get(ATTRIBUTE_NAMES.AI_COMPLETION_TOKENS_USED)
         assert tokens_used == 10
-
