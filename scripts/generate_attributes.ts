@@ -184,10 +184,10 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
     "A collection of attribute names with helpers to retrieve an attribute's metadata, as defined in the Sentry Semantic Conventions registry.";
   content += '"""\n\n';
   content += '# This is an auto-generated file. Do not edit!\n\n';
+  content += 'import warnings\n';
   content += 'from dataclasses import dataclass\n';
   content += 'from enum import Enum\n';
-  content += 'from typing import List, Union, Literal, Optional, Dict\n';
-  content += 'import warnings\n\n';
+  content += 'from typing import List, Union, Literal, Optional, Dict, TypedDict\n\n';
 
   content += 'AttributeValue = Union[str, int, float, bool, List[str], List[int], List[float], List[bool]]\n\n';
 
@@ -277,12 +277,13 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
     }
   }
 
-  // Generate the metaclass
+  // Generate metaclass for deprecation warnings
   content += 'class _AttributeNamesMeta(type):\n';
   content += '    _deprecated_names = {\n';
 
-  for (const dep of deprecatedAttributes) {
-    content += `        "${dep.name}",\n`;
+  // Generate the set of deprecated attribute names
+  for (const deprecatedAttr of deprecatedAttributes) {
+    content += `        "${deprecatedAttr.name}",\n`;
   }
 
   content += '    }\n\n';
@@ -297,10 +298,11 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
   content += '            )\n';
   content += '        return super().__getattribute__(name)\n\n';
 
-  // Start the ATTRIBUTE_NAMES class
+  // Generate ATTRIBUTE_NAMES class
   content += 'class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):\n';
   content += '    """Contains all attribute names as class attributes with their documentation."""\n\n';
 
+  // Generate class attributes instead of top-level constants
   for (const file of attributeFiles) {
     const attributePath = path.join(attributesDir, file);
     const attributeJson = JSON.parse(fs.readFileSync(attributePath, 'utf-8')) as AttributeJson;
@@ -344,18 +346,18 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
     // Collect attribute names for the literal type
     attributeNames.push(constantName);
 
-    // Build type members - using hardcoded types
-    const typeMember = `    ${constantName}: ${pythonType}`;
+    // Build type members using ATTRIBUTE_NAMES class attributes for TypedDict
+    const typeMember = `    "${key}": ${pythonType}`;
 
     if (deprecation) {
-      deprecatedAttributesTypeMembers += `${typeMember}\n`;
+      deprecatedAttributesTypeMembers += `${typeMember},\n`;
     } else {
-      attributesTypeMembers += `${typeMember}\n`;
+      attributesTypeMembers += `${typeMember},\n`;
     }
-    fullAttributesTypeMembers += `${typeMember}\n`;
+    fullAttributesTypeMembers += `${typeMember},\n`;
 
-    // Build metadata dictionary entry with structured types
-    metadataDict += `    ATTRIBUTE_NAMES.${constantName}: AttributeMetadata(\n`;
+    // Build metadata dictionary entry using hardcoded string keys
+    metadataDict += `    "${key}": AttributeMetadata(\n`;
     metadataDict += `        brief=${JSON.stringify(brief)},\n`;
     metadataDict += `        type=${getAttributeTypeEnum(type)},\n`;
 
@@ -413,7 +415,7 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
     metadataDict += '    ),\n';
   }
 
-  // Close the ATTRIBUTE_NAMES class
+  // All attribute constants are now defined in the ATTRIBUTE_NAMES class
   content += '\n';
 
   // Add metadata dictionary
@@ -426,10 +428,25 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
     'If a key is not present in this dictionary, it means that attribute is not defined in the Sentry Semantic Conventions.\n';
   content += '"""\n\n';
 
+  // Add TypedDict definitions using hardcoded string keys
+  content += 'Attributes = TypedDict("Attributes", {\n';
+  content += attributesTypeMembers;
+  content += '}, total=False)\n';
+  content +=
+    '"""TypedDict that represents a collection of non-deprecated attributes. If access to deprecated attributes is needed, use `FullAttributes` instead."""\n\n';
+
+  content += 'FullAttributes = TypedDict("FullAttributes", {\n';
+  content += fullAttributesTypeMembers;
+  content += '}, total=False)\n';
+  content +=
+    '"""TypedDict representing a collection of attributes, including deprecated and non-deprecated ones. If only access to non-deprecated attributes is required, use `Attributes` instead."""\n\n';
+
   // Add __all__ list for exports
   content += '__all__ = [\n';
-  content += '    "ATTRIBUTE_NAMES",\n';
   content += '    "_ATTRIBUTE_METADATA",\n';
+  content += '    "Attributes",\n';
+  content += '    "FullAttributes",\n';
+  content += '    "ATTRIBUTE_NAMES",\n';
   content += ']\n\n';
 
   // Write the generated content to the file
