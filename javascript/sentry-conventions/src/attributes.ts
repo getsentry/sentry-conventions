@@ -765,6 +765,8 @@ export type BLOCKED_MAIN_THREAD_TYPE = boolean;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link SENTRY_BROWSER_NAME} `sentry.browser.name`
+ *
  * @example "Chrome"
  */
 export const BROWSER_NAME = 'browser.name';
@@ -5324,6 +5326,29 @@ export const RPC_SERVICE = 'rpc.service';
  */
 export type RPC_SERVICE_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__browser__name.json
+
+/**
+ * The name of the browser. `sentry.browser.name`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_BROWSER_NAME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link BROWSER_NAME} `browser.name`
+ *
+ * @deprecated Use {@link BROWSER_NAME} (browser.name) instead
+ * @example "Chrome"
+ */
+export const SENTRY_BROWSER_NAME = 'sentry.browser.name';
+
+/**
+ * Type for {@link SENTRY_BROWSER_NAME} sentry.browser.name
+ */
+export type SENTRY_BROWSER_NAME_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__cancellation_reason.json
 
 /**
@@ -7108,6 +7133,7 @@ export type FullAttributes = {
   [ROUTE]?: ROUTE_TYPE;
   [RPC_GRPC_STATUS_CODE]?: RPC_GRPC_STATUS_CODE_TYPE;
   [RPC_SERVICE]?: RPC_SERVICE_TYPE;
+  [SENTRY_BROWSER_NAME]?: SENTRY_BROWSER_NAME_TYPE;
   [SENTRY_CANCELLATION_REASON]?: SENTRY_CANCELLATION_REASON_TYPE;
   [SENTRY_CLIENT_SAMPLE_RATE]?: SENTRY_CLIENT_SAMPLE_RATE_TYPE;
   [SENTRY_DESCRIPTION]?: SENTRY_DESCRIPTION_TYPE;

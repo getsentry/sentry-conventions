@@ -22,6 +22,7 @@ The name of the browser.
 | Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `Chrome` |
+| Aliases | `sentry.browser.name` |
 
 ### browser.report.type
 
