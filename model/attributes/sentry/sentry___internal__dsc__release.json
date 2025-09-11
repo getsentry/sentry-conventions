@@ -1,0 +1,10 @@
+{
+  "key": "sentry._internal.dsc.release",
+  "brief": "The release identifier from the dynamic sampling context.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "frontend@e8211be71b214afab5b85de4b4c54be3714952bb"
+}
