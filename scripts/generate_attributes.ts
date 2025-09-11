@@ -279,7 +279,7 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
     const attributeJson = JSON.parse(fs.readFileSync(attributePath, 'utf-8')) as AttributeJson;
 
     if (attributeJson.deprecation) {
-      const constantName = getConstantName(attributeJson.key);
+      const constantName = getConstantName(attributeJson.key, true);
       deprecatedAttributes.push({
         name: constantName,
         replacement: attributeJson.deprecation.replacement,
@@ -320,7 +320,8 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
     const { key, brief, type, pii, is_in_otel, example, has_dynamic_suffix, deprecation, alias } = attributeJson;
 
     // Convert attribute key to a valid Python constant name
-    const constantName = getConstantName(key);
+    const isDeprecated = !!deprecation;
+    const constantName = getConstantName(key, isDeprecated);
     const pythonType = getPythonType(type);
 
     content += `    # Path: model/attributes/${file}\n`;
