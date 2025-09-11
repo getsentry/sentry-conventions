@@ -17,6 +17,7 @@
   - [sentry.module.\<key\>](#sentrymodulekey)
   - [sentry.nextjs.ssr.function.route](#sentrynextjsssrfunctionroute)
   - [sentry.nextjs.ssr.function.type](#sentrynextjsssrfunctiontype)
+  - [sentry.observed_timestamp_nanos](#sentryobserved_timestamp_nanos)
   - [sentry.op](#sentryop)
   - [sentry.origin](#sentryorigin)
   - [sentry.platform](#sentryplatform)
@@ -194,6 +195,17 @@ A descriptor for a for a function in Next.js that contributes to Server-Side Ren
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `generateMetadata` |
+
+### sentry.observed_timestamp_nanos
+
+The timestamp at which an envelope was received by Relay, in nanoseconds.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `1544712660300000000` |
 
 ### sentry.op
 
