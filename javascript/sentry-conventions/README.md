@@ -15,7 +15,13 @@
 [![npm version](https://img.shields.io/npm/v/@sentry/conventions.svg)](https://www.npmjs.com/package/@sentry/conventions)
 [![npm dm](https://img.shields.io/npm/dm/@sentry/conventions.svg)](https://www.npmjs.com/package/@sentry/conventions)
 [![npm dt](https://img.shields.io/npm/dt/@sentry/conventions.svg)](https://www.npmjs.com/package/@sentry/conventions)
-[![Discord Chat](https://img.shields.io/discord/621778831602221064.svg)](https://discord.gg/Ww9hbqr)
+[![Discord Chat](https://img.shields.io/discord/621778831602221064.svg)](https://discord.gg/sentry)
 
 ![GitHub Actions](https://github.com/getsentry/sentry-conventions/actions/workflows/build.yml/badge.svg)
 [![Codecov](https://codecov.io/gh/getsentry/sentry-conventions/graph/badge.svg?token=fQNlGihNOf)](https://codecov.io/gh/getsentry/sentry-conventions)
+
+The package exports:
+
+- `attributes`: contains constants for all attribute names and their types, as defined in the Sentry semantic conventions
+- `attributes.Attributes`: represents a bag of typed attributes
+- `op`: contains constants for span operations used in Sentry
