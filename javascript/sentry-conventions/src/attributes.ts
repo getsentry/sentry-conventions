@@ -3259,6 +3259,26 @@ export const HTTP_REQUEST_METHOD = 'http.request.method';
  */
 export type HTTP_REQUEST_METHOD_TYPE = string;
 
+// Path: model/attributes/http/http__request__redirect_end.json
+
+/**
+ * The UNIX timestamp representing the timestamp immediately after receiving the last byte of the response of the last redirect `http.request.redirect_end`
+ *
+ * Attribute Value Type: `number` {@link HTTP_REQUEST_REDIRECT_END_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 1732829558
+ */
+export const HTTP_REQUEST_REDIRECT_END = 'http.request.redirect_end';
+
+/**
+ * Type for {@link HTTP_REQUEST_REDIRECT_END} http.request.redirect_end
+ */
+export type HTTP_REQUEST_REDIRECT_END_TYPE = number;
+
 // Path: model/attributes/http/http__request__redirect_start.json
 
 /**
@@ -3378,6 +3398,26 @@ export const HTTP_REQUEST_SECURE_CONNECTION_START = 'http.request.secure_connect
  * Type for {@link HTTP_REQUEST_SECURE_CONNECTION_START} http.request.secure_connection_start
  */
 export type HTTP_REQUEST_SECURE_CONNECTION_START_TYPE = number;
+
+// Path: model/attributes/http/http__request__worker_start.json
+
+/**
+ * The UNIX timestamp representing the timestamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running. `http.request.worker_start`
+ *
+ * Attribute Value Type: `number` {@link HTTP_REQUEST_WORKER_START_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 1732829553
+ */
+export const HTTP_REQUEST_WORKER_START = 'http.request.worker_start';
+
+/**
+ * Type for {@link HTTP_REQUEST_WORKER_START} http.request.worker_start
+ */
+export type HTTP_REQUEST_WORKER_START_TYPE = number;
 
 // Path: model/attributes/http/http__response__body__size.json
 
@@ -5324,6 +5364,26 @@ export const SENTRY_CLIENT_SAMPLE_RATE = 'sentry.client_sample_rate';
  */
 export type SENTRY_CLIENT_SAMPLE_RATE_TYPE = number;
 
+// Path: model/attributes/sentry/sentry__description.json
+
+/**
+ * The human-readable description of a span. `sentry.description`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_DESCRIPTION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "index view query"
+ */
+export const SENTRY_DESCRIPTION = 'sentry.description';
+
+/**
+ * Type for {@link SENTRY_DESCRIPTION} sentry.description
+ */
+export type SENTRY_DESCRIPTION_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__dist.json
 
 /**
@@ -5725,6 +5785,8 @@ export type SENTRY_SDK_VERSION_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link _SENTRY_SEGMENT_ID} `sentry.segment_id`
+ *
  * @example "051581bf3cb55c13"
  */
 export const SENTRY_SEGMENT_ID = 'sentry.segment.id';
@@ -5753,6 +5815,29 @@ export const SENTRY_SEGMENT_NAME = 'sentry.segment.name';
  * Type for {@link SENTRY_SEGMENT_NAME} sentry.segment.name
  */
 export type SENTRY_SEGMENT_NAME_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__segment_id.json
+
+/**
+ * The segment ID of a span `sentry.segment_id`
+ *
+ * Attribute Value Type: `string` {@link _SENTRY_SEGMENT_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link SENTRY_SEGMENT_ID} `sentry.segment.id`
+ *
+ * @deprecated Use {@link SENTRY_SEGMENT_ID} (sentry.segment.id) instead
+ * @example "051581bf3cb55c13"
+ */
+export const _SENTRY_SEGMENT_ID = 'sentry.segment_id';
+
+/**
+ * Type for {@link _SENTRY_SEGMENT_ID} sentry.segment_id
+ */
+export type _SENTRY_SEGMENT_ID_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__server_sample_rate.json
 
@@ -6639,12 +6724,14 @@ export type Attributes = {
   [HTTP_REQUEST_FETCH_START]?: HTTP_REQUEST_FETCH_START_TYPE;
   [HTTP_REQUEST_HEADER_KEY]?: HTTP_REQUEST_HEADER_KEY_TYPE;
   [HTTP_REQUEST_METHOD]?: HTTP_REQUEST_METHOD_TYPE;
+  [HTTP_REQUEST_REDIRECT_END]?: HTTP_REQUEST_REDIRECT_END_TYPE;
   [HTTP_REQUEST_REDIRECT_START]?: HTTP_REQUEST_REDIRECT_START_TYPE;
   [HTTP_REQUEST_REQUEST_START]?: HTTP_REQUEST_REQUEST_START_TYPE;
   [HTTP_REQUEST_RESEND_COUNT]?: HTTP_REQUEST_RESEND_COUNT_TYPE;
   [HTTP_REQUEST_RESPONSE_END]?: HTTP_REQUEST_RESPONSE_END_TYPE;
   [HTTP_REQUEST_RESPONSE_START]?: HTTP_REQUEST_RESPONSE_START_TYPE;
   [HTTP_REQUEST_SECURE_CONNECTION_START]?: HTTP_REQUEST_SECURE_CONNECTION_START_TYPE;
+  [HTTP_REQUEST_WORKER_START]?: HTTP_REQUEST_WORKER_START_TYPE;
   [HTTP_RESPONSE_BODY_SIZE]?: HTTP_RESPONSE_BODY_SIZE_TYPE;
   [HTTP_RESPONSE_HEADER_KEY]?: HTTP_RESPONSE_HEADER_KEY_TYPE;
   [HTTP_RESPONSE_HEADER_CONTENT_LENGTH]?: HTTP_RESPONSE_HEADER_CONTENT_LENGTH_TYPE;
@@ -6708,6 +6795,7 @@ export type Attributes = {
   [RPC_SERVICE]?: RPC_SERVICE_TYPE;
   [SENTRY_CANCELLATION_REASON]?: SENTRY_CANCELLATION_REASON_TYPE;
   [SENTRY_CLIENT_SAMPLE_RATE]?: SENTRY_CLIENT_SAMPLE_RATE_TYPE;
+  [SENTRY_DESCRIPTION]?: SENTRY_DESCRIPTION_TYPE;
   [SENTRY_DIST]?: SENTRY_DIST_TYPE;
   [SENTRY_ENVIRONMENT]?: SENTRY_ENVIRONMENT_TYPE;
   [SENTRY_EXCLUSIVE_TIME]?: SENTRY_EXCLUSIVE_TIME_TYPE;
@@ -6922,12 +7010,14 @@ export type FullAttributes = {
   [HTTP_REQUEST_FETCH_START]?: HTTP_REQUEST_FETCH_START_TYPE;
   [HTTP_REQUEST_HEADER_KEY]?: HTTP_REQUEST_HEADER_KEY_TYPE;
   [HTTP_REQUEST_METHOD]?: HTTP_REQUEST_METHOD_TYPE;
+  [HTTP_REQUEST_REDIRECT_END]?: HTTP_REQUEST_REDIRECT_END_TYPE;
   [HTTP_REQUEST_REDIRECT_START]?: HTTP_REQUEST_REDIRECT_START_TYPE;
   [HTTP_REQUEST_REQUEST_START]?: HTTP_REQUEST_REQUEST_START_TYPE;
   [HTTP_REQUEST_RESEND_COUNT]?: HTTP_REQUEST_RESEND_COUNT_TYPE;
   [HTTP_REQUEST_RESPONSE_END]?: HTTP_REQUEST_RESPONSE_END_TYPE;
   [HTTP_REQUEST_RESPONSE_START]?: HTTP_REQUEST_RESPONSE_START_TYPE;
   [HTTP_REQUEST_SECURE_CONNECTION_START]?: HTTP_REQUEST_SECURE_CONNECTION_START_TYPE;
+  [HTTP_REQUEST_WORKER_START]?: HTTP_REQUEST_WORKER_START_TYPE;
   [HTTP_RESPONSE_BODY_SIZE]?: HTTP_RESPONSE_BODY_SIZE_TYPE;
   [HTTP_RESPONSE_HEADER_KEY]?: HTTP_RESPONSE_HEADER_KEY_TYPE;
   [HTTP_RESPONSE_HEADER_CONTENT_LENGTH]?: HTTP_RESPONSE_HEADER_CONTENT_LENGTH_TYPE;
@@ -7020,6 +7110,7 @@ export type FullAttributes = {
   [RPC_SERVICE]?: RPC_SERVICE_TYPE;
   [SENTRY_CANCELLATION_REASON]?: SENTRY_CANCELLATION_REASON_TYPE;
   [SENTRY_CLIENT_SAMPLE_RATE]?: SENTRY_CLIENT_SAMPLE_RATE_TYPE;
+  [SENTRY_DESCRIPTION]?: SENTRY_DESCRIPTION_TYPE;
   [SENTRY_DIST]?: SENTRY_DIST_TYPE;
   [SENTRY_ENVIRONMENT]?: SENTRY_ENVIRONMENT_TYPE;
   [SENTRY_EXCLUSIVE_TIME]?: SENTRY_EXCLUSIVE_TIME_TYPE;
@@ -7041,6 +7132,7 @@ export type FullAttributes = {
   [SENTRY_SDK_VERSION]?: SENTRY_SDK_VERSION_TYPE;
   [SENTRY_SEGMENT_ID]?: SENTRY_SEGMENT_ID_TYPE;
   [SENTRY_SEGMENT_NAME]?: SENTRY_SEGMENT_NAME_TYPE;
+  [_SENTRY_SEGMENT_ID]?: _SENTRY_SEGMENT_ID_TYPE;
   [SENTRY_SERVER_SAMPLE_RATE]?: SENTRY_SERVER_SAMPLE_RATE_TYPE;
   [SENTRY_SPAN_SOURCE]?: SENTRY_SPAN_SOURCE_TYPE;
   [SENTRY_TRACE_PARENT_SPAN_ID]?: SENTRY_TRACE_PARENT_SPAN_ID_TYPE;

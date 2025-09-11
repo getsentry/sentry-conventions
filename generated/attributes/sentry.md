@@ -5,6 +5,7 @@
 - [Stable Attributes](#stable-attributes)
   - [sentry.cancellation_reason](#sentrycancellation_reason)
   - [sentry.client_sample_rate](#sentryclient_sample_rate)
+  - [sentry.description](#sentrydescription)
   - [sentry.dist](#sentrydist)
   - [sentry.environment](#sentryenvironment)
   - [sentry.exclusive_time](#sentryexclusive_time)
@@ -30,6 +31,8 @@
   - [sentry.span.source](#sentryspansource)
   - [sentry.trace.parent_span_id](#sentrytraceparent_span_id)
   - [sentry.transaction](#sentrytransaction)
+- [Deprecated Attributes](#deprecated-attributes)
+  - [sentry.segment_id](#sentrysegment_id)
 
 ## Stable Attributes
 
@@ -54,6 +57,17 @@ Rate at which a span was sampled in the SDK.
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `0.5` |
+
+### sentry.description
+
+The human-readable description of a span.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `index view query` |
 
 ### sentry.dist
 
@@ -279,6 +293,7 @@ The segment ID of a span
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `051581bf3cb55c13` |
+| Aliases | `sentry.segment_id` |
 
 ### sentry.segment.name
 
@@ -335,4 +350,21 @@ The sentry transaction (segment name).
 | Exists in OpenTelemetry | No |
 | Example | `GET /` |
 | Aliases | `transaction` |
+
+## Deprecated Attributes
+
+These attributes are deprecated and will be removed in a future version. Please use the recommended replacements.
+
+### sentry.segment_id
+
+The segment ID of a span
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `051581bf3cb55c13` |
+| Deprecated | Yes, use `sentry.segment.id` instead |
+| Aliases | `sentry.segment.id` |
 

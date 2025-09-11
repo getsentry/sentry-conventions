@@ -42,11 +42,11 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
   for (const file of attributeFiles) {
     const attributePath = path.join(attributesDir, file);
     const attributeJson = JSON.parse(fs.readFileSync(attributePath, 'utf-8')) as AttributeJson;
-
     const { key, brief, type, pii, is_in_otel, example, has_dynamic_suffix, deprecation, alias } = attributeJson;
 
     // Convert attribute key to a valid JavaScript constant name
-    const constantName = getConstantName(key);
+    const isDeprecated = !!deprecation;
+    const constantName = getConstantName(key, isDeprecated);
     const typeConstantName = `${constantName}_TYPE`;
 
     attributesContent += `// Path: model/attributes/${file}\n\n`;
@@ -83,7 +83,7 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
     if (alias && alias.length > 0) {
       attributesContent += ' *\n';
 
-      attributesContent += ` * Aliases: ${alias.map((alias) => `{@link ${getConstantName(alias)}} \`${alias}\``).join(', ')}\n`;
+      attributesContent += ` * Aliases: ${alias.map((alias) => `{@link ${getConstantName(alias, !isDeprecated)}} \`${alias}\``).join(', ')}\n`;
     }
 
     attributesContent += ' *\n';
@@ -92,7 +92,7 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
     if (deprecation) {
       let replacement = '';
       if (deprecation.replacement) {
-        replacement = `Use {@link ${getConstantName(deprecation.replacement)}} (${deprecation.replacement}) instead`;
+        replacement = `Use {@link ${getConstantName(deprecation.replacement, false)}} (${deprecation.replacement}) instead`;
       }
       attributesContent += ` * @deprecated ${replacement}${deprecation.reason ? ` - ${deprecation.reason}` : ''}\n`;
     }
@@ -130,12 +130,14 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
 }
 
 const constantNameMemo = new Map<string, string>();
-function getConstantName(key: string): string {
+const usedConstantNames = new Set<string>();
+
+function getConstantName(key: string, isDeprecated: boolean): string {
   if (constantNameMemo.has(key)) {
     return constantNameMemo.get(key) as string;
   }
 
-  const constantName = key
+  let constantName = key
     .toUpperCase()
     .replaceAll('.', '_')
     .replaceAll('-', '_')
@@ -143,7 +145,15 @@ function getConstantName(key: string): string {
     .replaceAll('>', '') // Remove closing angle bracket
     .replace(/__+/g, '_'); // Replace multiple consecutive underscores with a single one
 
+  // If this key is deprecated and there's another key that maps to the same name, append underscores
+  if (isDeprecated) {
+    while (usedConstantNames.has(constantName)) {
+      constantName = `_${constantName}`;
+    }
+  }
+
   constantNameMemo.set(key, constantName);
+  usedConstantNames.add(constantName);
   return constantName;
 }
 
