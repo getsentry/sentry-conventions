@@ -3130,7 +3130,7 @@ export type HTTP_QUERY_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
- * @example 1732829555
+ * @example 1732829555.111
  */
 export const HTTP_REQUEST_CONNECT_START = 'http.request.connect_start';
 
@@ -3150,7 +3150,7 @@ export type HTTP_REQUEST_CONNECT_START_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
- * @example 1732829555
+ * @example 1732829555.15
  */
 export const HTTP_REQUEST_CONNECTION_END = 'http.request.connection_end';
 
@@ -3170,7 +3170,7 @@ export type HTTP_REQUEST_CONNECTION_END_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
- * @example 1732829555
+ * @example 1732829555.201
  */
 export const HTTP_REQUEST_DOMAIN_LOOKUP_END = 'http.request.domain_lookup_end';
 
@@ -3190,7 +3190,7 @@ export type HTTP_REQUEST_DOMAIN_LOOKUP_END_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
- * @example 1732829555
+ * @example 1732829555.322
  */
 export const HTTP_REQUEST_DOMAIN_LOOKUP_START = 'http.request.domain_lookup_start';
 
@@ -3210,7 +3210,7 @@ export type HTTP_REQUEST_DOMAIN_LOOKUP_START_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
- * @example 1732829555
+ * @example 1732829555.389
  */
 export const HTTP_REQUEST_FETCH_START = 'http.request.fetch_start';
 
@@ -3274,7 +3274,7 @@ export type HTTP_REQUEST_METHOD_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
- * @example 1732829558
+ * @example 1732829558.502
  */
 export const HTTP_REQUEST_REDIRECT_END = 'http.request.redirect_end';
 
@@ -3294,7 +3294,7 @@ export type HTTP_REQUEST_REDIRECT_END_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
- * @example 1732829555
+ * @example 1732829555.495
  */
 export const HTTP_REQUEST_REDIRECT_START = 'http.request.redirect_start';
 
@@ -3314,7 +3314,7 @@ export type HTTP_REQUEST_REDIRECT_START_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
- * @example 1732829555
+ * @example 1732829555.51
  */
 export const HTTP_REQUEST_REQUEST_START = 'http.request.request_start';
 
@@ -3354,7 +3354,7 @@ export type HTTP_REQUEST_RESEND_COUNT_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
- * @example 1732829555
+ * @example 1732829555.89
  */
 export const HTTP_REQUEST_RESPONSE_END = 'http.request.response_end';
 
@@ -3374,7 +3374,7 @@ export type HTTP_REQUEST_RESPONSE_END_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
- * @example 1732829555
+ * @example 1732829555.7
  */
 export const HTTP_REQUEST_RESPONSE_START = 'http.request.response_start';
 
@@ -3394,7 +3394,7 @@ export type HTTP_REQUEST_RESPONSE_START_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
- * @example 1732829555
+ * @example 1732829555.73
  */
 export const HTTP_REQUEST_SECURE_CONNECTION_START = 'http.request.secure_connection_start';
 
@@ -3414,7 +3414,7 @@ export type HTTP_REQUEST_SECURE_CONNECTION_START_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
- * @example 1732829553
+ * @example 1732829553.68
  */
 export const HTTP_REQUEST_WORKER_START = 'http.request.worker_start';
 
