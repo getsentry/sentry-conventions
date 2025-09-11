@@ -153,6 +153,7 @@ class _AttributeNamesMeta(type):
         "RELEASE",
         "REPLAY_ID",
         "ROUTE",
+        "_SENTRY_SEGMENT_ID",
         "TRANSACTION",
         "URL",
     }
@@ -3234,6 +3235,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Aliases: sentry.segment_id
     Example: "051581bf3cb55c13"
     """
 
@@ -3245,6 +3247,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Example: "GET /user"
+    """
+
+    # Path: model/attributes/sentry/sentry__segment_id.json
+    _SENTRY_SEGMENT_ID: Literal["sentry.segment_id"] = "sentry.segment_id"
+    """The segment ID of a span
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Aliases: sentry.segment.id
+    DEPRECATED: Use sentry.segment.id instead
+    Example: "051581bf3cb55c13"
     """
 
     # Path: model/attributes/sentry/sentry__server_sample_rate.json
@@ -5835,6 +5849,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="051581bf3cb55c13",
+        aliases=["sentry.segment_id"],
     ),
     "sentry.segment.name": AttributeMetadata(
         brief="The segment name of a span",
@@ -5842,6 +5857,15 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="GET /user",
+    ),
+    "sentry.segment_id": AttributeMetadata(
+        brief="The segment ID of a span",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="051581bf3cb55c13",
+        deprecation=DeprecationInfo(replacement="sentry.segment.id"),
+        aliases=["sentry.segment.id"],
     ),
     "sentry.server_sample_rate": AttributeMetadata(
         brief="Rate at which a span was sampled in Relay.",
@@ -6407,6 +6431,7 @@ Attributes = TypedDict(
         "sentry.sdk.version": str,
         "sentry.segment.id": str,
         "sentry.segment.name": str,
+        "sentry.segment_id": str,
         "sentry.server_sample_rate": float,
         "sentry.span.source": str,
         "sentry.trace.parent_span_id": str,
