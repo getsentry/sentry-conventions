@@ -4,7 +4,7 @@
   "license": "MIT",
   "version": "1.0.0",
   "scripts": {
-    "lint": "biome check",
+    "lint": "biome check && yarn lint:python",
     "fix": "biome check --write",
     "test": "vitest && yarn test:python",
     "build": "yarn build:js && yarn build:python && yarn build:tarball",
