@@ -84,7 +84,7 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
     if (alias && alias.length > 0) {
       attributesContent += ' *\n';
 
-      attributesContent += ` * Aliases: ${alias.map((alias) => `{@link ${getConstantName(alias, false)}} \`${alias}\``).join(', ')}\n`;
+      attributesContent += ` * Aliases: ${alias.map((alias) => `{@link ${getConstantName(alias, !isDeprecated)}} \`${alias}\``).join(', ')}\n`;
     }
 
     attributesContent += ' *\n';

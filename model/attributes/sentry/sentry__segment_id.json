@@ -1,5 +1,5 @@
 {
-  "key": "sentry.segment.id",
+  "key": "sentry.segment_id",
   "brief": "The segment ID of a span",
   "type": "string",
   "pii": {
@@ -7,5 +7,9 @@
   },
   "is_in_otel": false,
   "example": "051581bf3cb55c13",
-  "alias": ["sentry.segment_id"]
+  "alias": ["sentry.segment.id"],
+  "deprecation": {
+    "_status": null,
+    "replacement": "sentry.segment.id"
+  }
 }
