@@ -13,12 +13,14 @@
   - [http.request.fetch_start](#httprequestfetch_start)
   - [http.request.header.\<key\>](#httprequestheaderkey)
   - [http.request.method](#httprequestmethod)
+  - [http.request.redirect_end](#httprequestredirect_end)
   - [http.request.redirect_start](#httprequestredirect_start)
   - [http.request.request_start](#httprequestrequest_start)
   - [http.request.resend_count](#httprequestresend_count)
   - [http.request.response_end](#httprequestresponse_end)
   - [http.request.response_start](#httprequestresponse_start)
   - [http.request.secure_connection_start](#httprequestsecure_connection_start)
+  - [http.request.worker_start](#httprequestworker_start)
   - [http.response.body.size](#httpresponsebodysize)
   - [http.response.header.\<key\>](#httpresponseheaderkey)
   - [http.response.header.content-length](#httpresponseheadercontentlength)
@@ -153,6 +155,17 @@ The HTTP method used.
 | Example | `GET` |
 | Aliases | `method`, `http.method` |
 
+### http.request.redirect_end
+
+The UNIX timestamp representing the timestamp immediately after receiving the last byte of the response of the last redirect
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `1732829558` |
+
 ### http.request.redirect_start
 
 The UNIX timestamp representing the start time of the fetch which that initiates the redirect.
@@ -218,6 +231,17 @@ The UNIX timestamp representing the time immediately before the browser starts t
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `1732829555` |
+
+### http.request.worker_start
+
+The UNIX timestamp representing the timestamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running.
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `1732829553` |
 
 ### http.response.body.size
 
