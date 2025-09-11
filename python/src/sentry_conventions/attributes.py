@@ -1893,6 +1893,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "GET"
     """
 
+    # Path: model/attributes/http/http__request__redirect_end.json
+    HTTP_REQUEST_REDIRECT_END: Literal["http.request.redirect_end"] = (
+        "http.request.redirect_end"
+    )
+    """The UNIX timestamp representing the timestamp immediately after receiving the last byte of the response of the last redirect
+
+    Type: float
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 1732829558
+    """
+
     # Path: model/attributes/http/http__request__redirect_start.json
     HTTP_REQUEST_REDIRECT_START: Literal["http.request.redirect_start"] = (
         "http.request.redirect_start"
@@ -1963,6 +1975,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: false
     Defined in OTEL: No
     Example: 1732829555
+    """
+
+    # Path: model/attributes/http/http__request__worker_start.json
+    HTTP_REQUEST_WORKER_START: Literal["http.request.worker_start"] = (
+        "http.request.worker_start"
+    )
+    """The UNIX timestamp representing the timestamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running.
+
+    Type: float
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 1732829553
     """
 
     # Path: model/attributes/http/http__response__body__size.json
@@ -4851,6 +4875,14 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="GET",
         aliases=["method", "http.method"],
     ),
+    "http.request.redirect_end": AttributeMetadata(
+        brief="The UNIX timestamp representing the timestamp immediately after receiving the last byte of the response of the last redirect",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=1732829558,
+        sdks=["javascript-browser"],
+    ),
     "http.request.redirect_start": AttributeMetadata(
         brief="The UNIX timestamp representing the start time of the fetch which that initiates the redirect.",
         type=AttributeType.INTEGER,
@@ -4896,6 +4928,14 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=1732829555,
+        sdks=["javascript-browser"],
+    ),
+    "http.request.worker_start": AttributeMetadata(
+        brief="The UNIX timestamp representing the timestamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running.",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=1732829553,
         sdks=["javascript-browser"],
     ),
     "http.response.body.size": AttributeMetadata(
@@ -6246,12 +6286,14 @@ Attributes = TypedDict(
         "http.request.fetch_start": int,
         "http.request.header.<key>": List[str],
         "http.request.method": str,
+        "http.request.redirect_end": float,
         "http.request.redirect_start": int,
         "http.request.request_start": int,
         "http.request.resend_count": int,
         "http.request.response_end": int,
         "http.request.response_start": int,
         "http.request.secure_connection_start": int,
+        "http.request.worker_start": float,
         "http.response.body.size": int,
         "http.response.header.<key>": List[str],
         "http.response.header.content-length": str,
