@@ -22,6 +22,7 @@ The name of the browser.
 | Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `Chrome` |
+| Aliases | `sentry.browser.name` |
 
 ### browser.report.type
 
@@ -77,4 +78,5 @@ The version of the browser.
 | Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `120.0.6099.130` |
+| Aliases | `sentry.browser.version` |
 

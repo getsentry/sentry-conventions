@@ -1,0 +1,11 @@
+{
+  "key": "http.request.worker_start",
+  "brief": "The UNIX timestamp representing the timestamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running.",
+  "type": "double",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 1732829553.68,
+  "sdks": ["javascript-browser"]
+}

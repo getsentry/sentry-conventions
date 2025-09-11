@@ -13,6 +13,7 @@
   - [http.request.fetch_start](#httprequestfetch_start)
   - [http.request.header.\<key\>](#httprequestheaderkey)
   - [http.request.method](#httprequestmethod)
+  - [http.request.redirect_end](#httprequestredirect_end)
   - [http.request.redirect_start](#httprequestredirect_start)
   - [http.request.request_start](#httprequestrequest_start)
   - [http.request.resend_count](#httprequestresend_count)
@@ -20,6 +21,7 @@
   - [http.request.response_start](#httprequestresponse_start)
   - [http.request.secure_connection_start](#httprequestsecure_connection_start)
   - [http.request.time_to_first_byte](#httprequesttime_to_first_byte)
+  - [http.request.worker_start](#httprequestworker_start)
   - [http.response.body.size](#httpresponsebodysize)
   - [http.response.header.\<key\>](#httpresponseheaderkey)
   - [http.response.header.content-length](#httpresponseheadercontentlength)
@@ -81,10 +83,10 @@ The UNIX timestamp representing the time immediately before the user agent start
 
 | Property | Value |
 | --- | --- |
-| Type | `integer` |
+| Type | `double` |
 | Has PII | false |
 | Exists in OpenTelemetry | No |
-| Example | `1732829555` |
+| Example | `1732829555.111` |
 
 ### http.request.connection_end
 
@@ -92,10 +94,10 @@ The UNIX timestamp representing the time immediately after the browser finishes 
 
 | Property | Value |
 | --- | --- |
-| Type | `integer` |
+| Type | `double` |
 | Has PII | false |
 | Exists in OpenTelemetry | No |
-| Example | `1732829555` |
+| Example | `1732829555.15` |
 
 ### http.request.domain_lookup_end
 
@@ -103,10 +105,10 @@ The UNIX timestamp representing the time immediately after the browser finishes 
 
 | Property | Value |
 | --- | --- |
-| Type | `integer` |
+| Type | `double` |
 | Has PII | false |
 | Exists in OpenTelemetry | No |
-| Example | `1732829555` |
+| Example | `1732829555.201` |
 
 ### http.request.domain_lookup_start
 
@@ -114,10 +116,10 @@ The UNIX timestamp representing the time immediately before the browser starts t
 
 | Property | Value |
 | --- | --- |
-| Type | `integer` |
+| Type | `double` |
 | Has PII | false |
 | Exists in OpenTelemetry | No |
-| Example | `1732829555` |
+| Example | `1732829555.322` |
 
 ### http.request.fetch_start
 
@@ -125,10 +127,10 @@ The UNIX timestamp representing the time immediately before the browser starts t
 
 | Property | Value |
 | --- | --- |
-| Type | `integer` |
+| Type | `double` |
 | Has PII | false |
 | Exists in OpenTelemetry | No |
-| Example | `1732829555` |
+| Example | `1732829555.389` |
 
 ### http.request.header.\<key\>
 
@@ -154,16 +156,27 @@ The HTTP method used.
 | Example | `GET` |
 | Aliases | `method`, `http.method` |
 
+### http.request.redirect_end
+
+The UNIX timestamp representing the timestamp immediately after receiving the last byte of the response of the last redirect
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `1732829558.502` |
+
 ### http.request.redirect_start
 
 The UNIX timestamp representing the start time of the fetch which that initiates the redirect.
 
 | Property | Value |
 | --- | --- |
-| Type | `integer` |
+| Type | `double` |
 | Has PII | false |
 | Exists in OpenTelemetry | No |
-| Example | `1732829555` |
+| Example | `1732829555.495` |
 
 ### http.request.request_start
 
@@ -171,10 +184,10 @@ The UNIX timestamp representing the time immediately before the browser starts r
 
 | Property | Value |
 | --- | --- |
-| Type | `integer` |
+| Type | `double` |
 | Has PII | false |
 | Exists in OpenTelemetry | No |
-| Example | `1732829555` |
+| Example | `1732829555.51` |
 
 ### http.request.resend_count
 
@@ -193,10 +206,10 @@ The UNIX timestamp representing the time immediately after the browser receives 
 
 | Property | Value |
 | --- | --- |
-| Type | `integer` |
+| Type | `double` |
 | Has PII | false |
 | Exists in OpenTelemetry | No |
-| Example | `1732829555` |
+| Example | `1732829555.89` |
 
 ### http.request.response_start
 
@@ -204,10 +217,10 @@ The UNIX timestamp representing the time immediately before the browser starts r
 
 | Property | Value |
 | --- | --- |
-| Type | `integer` |
+| Type | `double` |
 | Has PII | false |
 | Exists in OpenTelemetry | No |
-| Example | `1732829555` |
+| Example | `1732829555.7` |
 
 ### http.request.secure_connection_start
 
@@ -215,10 +228,21 @@ The UNIX timestamp representing the time immediately before the browser starts t
 
 | Property | Value |
 | --- | --- |
-| Type | `integer` |
+| Type | `double` |
 | Has PII | false |
 | Exists in OpenTelemetry | No |
-| Example | `1732829555` |
+| Example | `1732829555.73` |
+
+### http.request.worker_start
+
+The UNIX timestamp representing the timestamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running.
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `1732829553.68` |
 
 ### http.request.time_to_first_byte
 

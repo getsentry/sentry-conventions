@@ -1,11 +1,11 @@
 {
   "key": "http.request.domain_lookup_start",
   "brief": "The UNIX timestamp representing the time immediately before the browser starts the domain name lookup for the resource.",
-  "type": "integer",
+  "type": "double",
   "pii": {
     "key": "false"
   },
   "is_in_otel": false,
-  "example": 1732829555,
+  "example": 1732829555.322,
   "sdks": ["javascript-browser"]
 }

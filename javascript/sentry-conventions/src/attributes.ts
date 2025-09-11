@@ -765,6 +765,8 @@ export type BLOCKED_MAIN_THREAD_TYPE = boolean;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link SENTRY_BROWSER_NAME} `sentry.browser.name`
+ *
  * @example "Chrome"
  */
 export const BROWSER_NAME = 'browser.name';
@@ -864,6 +866,8 @@ export type BROWSER_SCRIPT_SOURCE_CHAR_POSITION_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link SENTRY_BROWSER_VERSION} `sentry.browser.version`
  *
  * @example "120.0.6099.130"
  */
@@ -2101,6 +2105,26 @@ export const GEN_AI_COST_OUTPUT_TOKENS = 'gen_ai.cost.output_tokens';
  */
 export type GEN_AI_COST_OUTPUT_TOKENS_TYPE = number;
 
+// Path: model/attributes/gen_ai/gen_ai__cost__total_tokens.json
+
+/**
+ * The total cost for the tokens used. `gen_ai.cost.total_tokens`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_COST_TOTAL_TOKENS_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 12.34
+ */
+export const GEN_AI_COST_TOTAL_TOKENS = 'gen_ai.cost.total_tokens';
+
+/**
+ * Type for {@link GEN_AI_COST_TOTAL_TOKENS} gen_ai.cost.total_tokens
+ */
+export type GEN_AI_COST_TOTAL_TOKENS_TYPE = number;
+
 // Path: model/attributes/gen_ai/gen_ai__operation__name.json
 
 /**
@@ -2851,6 +2875,7 @@ export type GEN_AI_USAGE_PROMPT_TOKENS_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
+ * @deprecated Use {@link GEN_AI_COST_TOTAL_TOKENS} (gen_ai.cost.total_tokens) instead
  * @example 12.34
  */
 export const GEN_AI_USAGE_TOTAL_COST = 'gen_ai.usage.total_cost';
@@ -3105,7 +3130,7 @@ export type HTTP_QUERY_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
- * @example 1732829555
+ * @example 1732829555.111
  */
 export const HTTP_REQUEST_CONNECT_START = 'http.request.connect_start';
 
@@ -3125,7 +3150,7 @@ export type HTTP_REQUEST_CONNECT_START_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
- * @example 1732829555
+ * @example 1732829555.15
  */
 export const HTTP_REQUEST_CONNECTION_END = 'http.request.connection_end';
 
@@ -3145,7 +3170,7 @@ export type HTTP_REQUEST_CONNECTION_END_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
- * @example 1732829555
+ * @example 1732829555.201
  */
 export const HTTP_REQUEST_DOMAIN_LOOKUP_END = 'http.request.domain_lookup_end';
 
@@ -3165,7 +3190,7 @@ export type HTTP_REQUEST_DOMAIN_LOOKUP_END_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
- * @example 1732829555
+ * @example 1732829555.322
  */
 export const HTTP_REQUEST_DOMAIN_LOOKUP_START = 'http.request.domain_lookup_start';
 
@@ -3185,7 +3210,7 @@ export type HTTP_REQUEST_DOMAIN_LOOKUP_START_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
- * @example 1732829555
+ * @example 1732829555.389
  */
 export const HTTP_REQUEST_FETCH_START = 'http.request.fetch_start';
 
@@ -3238,6 +3263,26 @@ export const HTTP_REQUEST_METHOD = 'http.request.method';
  */
 export type HTTP_REQUEST_METHOD_TYPE = string;
 
+// Path: model/attributes/http/http__request__redirect_end.json
+
+/**
+ * The UNIX timestamp representing the timestamp immediately after receiving the last byte of the response of the last redirect `http.request.redirect_end`
+ *
+ * Attribute Value Type: `number` {@link HTTP_REQUEST_REDIRECT_END_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 1732829558.502
+ */
+export const HTTP_REQUEST_REDIRECT_END = 'http.request.redirect_end';
+
+/**
+ * Type for {@link HTTP_REQUEST_REDIRECT_END} http.request.redirect_end
+ */
+export type HTTP_REQUEST_REDIRECT_END_TYPE = number;
+
 // Path: model/attributes/http/http__request__redirect_start.json
 
 /**
@@ -3249,7 +3294,7 @@ export type HTTP_REQUEST_METHOD_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
- * @example 1732829555
+ * @example 1732829555.495
  */
 export const HTTP_REQUEST_REDIRECT_START = 'http.request.redirect_start';
 
@@ -3269,7 +3314,7 @@ export type HTTP_REQUEST_REDIRECT_START_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
- * @example 1732829555
+ * @example 1732829555.51
  */
 export const HTTP_REQUEST_REQUEST_START = 'http.request.request_start';
 
@@ -3309,7 +3354,7 @@ export type HTTP_REQUEST_RESEND_COUNT_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
- * @example 1732829555
+ * @example 1732829555.89
  */
 export const HTTP_REQUEST_RESPONSE_END = 'http.request.response_end';
 
@@ -3329,7 +3374,7 @@ export type HTTP_REQUEST_RESPONSE_END_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
- * @example 1732829555
+ * @example 1732829555.7
  */
 export const HTTP_REQUEST_RESPONSE_START = 'http.request.response_start';
 
@@ -3349,7 +3394,7 @@ export type HTTP_REQUEST_RESPONSE_START_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
- * @example 1732829555
+ * @example 1732829555.73
  */
 export const HTTP_REQUEST_SECURE_CONNECTION_START = 'http.request.secure_connection_start';
 
@@ -3364,6 +3409,12 @@ export type HTTP_REQUEST_SECURE_CONNECTION_START_TYPE = number;
  * The time in seconds from the browser's timeorigin to when the first byte of the request's response was received. See https://web.dev/articles/ttfb#measure-resource-requests `http.request.time_to_first_byte`
  *
  * Attribute Value Type: `number` {@link HTTP_REQUEST_TIME_TO_FIRST_BYTE_TYPE}
+// Path: model/attributes/http/http__request__worker_start.json
+
+/**
+ * The UNIX timestamp representing the timestamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running. `http.request.worker_start`
+ *
+ * Attribute Value Type: `number` {@link HTTP_REQUEST_WORKER_START_TYPE}
  *
  * Contains PII: false
  *
@@ -3377,6 +3428,14 @@ export const HTTP_REQUEST_TIME_TO_FIRST_BYTE = 'http.request.time_to_first_byte'
  * Type for {@link HTTP_REQUEST_TIME_TO_FIRST_BYTE} http.request.time_to_first_byte
  */
 export type HTTP_REQUEST_TIME_TO_FIRST_BYTE_TYPE = number;
+ * @example 1732829553.68
+ */
+export const HTTP_REQUEST_WORKER_START = 'http.request.worker_start';
+
+/**
+ * Type for {@link HTTP_REQUEST_WORKER_START} http.request.worker_start
+ */
+export type HTTP_REQUEST_WORKER_START_TYPE = number;
 
 // Path: model/attributes/http/http__response__body__size.json
 
@@ -5283,6 +5342,52 @@ export const RPC_SERVICE = 'rpc.service';
  */
 export type RPC_SERVICE_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__browser__name.json
+
+/**
+ * The name of the browser. `sentry.browser.name`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_BROWSER_NAME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link BROWSER_NAME} `browser.name`
+ *
+ * @deprecated Use {@link BROWSER_NAME} (browser.name) instead
+ * @example "Chrome"
+ */
+export const SENTRY_BROWSER_NAME = 'sentry.browser.name';
+
+/**
+ * Type for {@link SENTRY_BROWSER_NAME} sentry.browser.name
+ */
+export type SENTRY_BROWSER_NAME_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__browser__version.json
+
+/**
+ * The version of the browser. `sentry.browser.version`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_BROWSER_VERSION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link BROWSER_VERSION} `browser.version`
+ *
+ * @deprecated Use {@link BROWSER_VERSION} (browser.version) instead
+ * @example "120.0.6099.130"
+ */
+export const SENTRY_BROWSER_VERSION = 'sentry.browser.version';
+
+/**
+ * Type for {@link SENTRY_BROWSER_VERSION} sentry.browser.version
+ */
+export type SENTRY_BROWSER_VERSION_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__cancellation_reason.json
 
 /**
@@ -5322,6 +5427,26 @@ export const SENTRY_CLIENT_SAMPLE_RATE = 'sentry.client_sample_rate';
  * Type for {@link SENTRY_CLIENT_SAMPLE_RATE} sentry.client_sample_rate
  */
 export type SENTRY_CLIENT_SAMPLE_RATE_TYPE = number;
+
+// Path: model/attributes/sentry/sentry__description.json
+
+/**
+ * The human-readable description of a span. `sentry.description`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_DESCRIPTION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "index view query"
+ */
+export const SENTRY_DESCRIPTION = 'sentry.description';
+
+/**
+ * Type for {@link SENTRY_DESCRIPTION} sentry.description
+ */
+export type SENTRY_DESCRIPTION_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__dist.json
 
@@ -5724,6 +5849,8 @@ export type SENTRY_SDK_VERSION_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link _SENTRY_SEGMENT_ID} `sentry.segment_id`
+ *
  * @example "051581bf3cb55c13"
  */
 export const SENTRY_SEGMENT_ID = 'sentry.segment.id';
@@ -5752,6 +5879,29 @@ export const SENTRY_SEGMENT_NAME = 'sentry.segment.name';
  * Type for {@link SENTRY_SEGMENT_NAME} sentry.segment.name
  */
 export type SENTRY_SEGMENT_NAME_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__segment_id.json
+
+/**
+ * The segment ID of a span `sentry.segment_id`
+ *
+ * Attribute Value Type: `string` {@link _SENTRY_SEGMENT_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link SENTRY_SEGMENT_ID} `sentry.segment.id`
+ *
+ * @deprecated Use {@link SENTRY_SEGMENT_ID} (sentry.segment.id) instead
+ * @example "051581bf3cb55c13"
+ */
+export const _SENTRY_SEGMENT_ID = 'sentry.segment_id';
+
+/**
+ * Type for {@link _SENTRY_SEGMENT_ID} sentry.segment_id
+ */
+export type _SENTRY_SEGMENT_ID_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__server_sample_rate.json
 
@@ -6591,6 +6741,7 @@ export type Attributes = {
   [GEN_AI_CHOICE]?: GEN_AI_CHOICE_TYPE;
   [GEN_AI_COST_INPUT_TOKENS]?: GEN_AI_COST_INPUT_TOKENS_TYPE;
   [GEN_AI_COST_OUTPUT_TOKENS]?: GEN_AI_COST_OUTPUT_TOKENS_TYPE;
+  [GEN_AI_COST_TOTAL_TOKENS]?: GEN_AI_COST_TOTAL_TOKENS_TYPE;
   [GEN_AI_OPERATION_NAME]?: GEN_AI_OPERATION_NAME_TYPE;
   [GEN_AI_OPERATION_TYPE]?: GEN_AI_OPERATION_TYPE_TYPE;
   [GEN_AI_PIPELINE_NAME]?: GEN_AI_PIPELINE_NAME_TYPE;
@@ -6623,7 +6774,6 @@ export type Attributes = {
   [GEN_AI_USAGE_INPUT_TOKENS_CACHED]?: GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE;
   [GEN_AI_USAGE_OUTPUT_TOKENS]?: GEN_AI_USAGE_OUTPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_OUTPUT_TOKENS_REASONING]?: GEN_AI_USAGE_OUTPUT_TOKENS_REASONING_TYPE;
-  [GEN_AI_USAGE_TOTAL_COST]?: GEN_AI_USAGE_TOTAL_COST_TYPE;
   [GEN_AI_USAGE_TOTAL_TOKENS]?: GEN_AI_USAGE_TOTAL_TOKENS_TYPE;
   [GEN_AI_USER_MESSAGE]?: GEN_AI_USER_MESSAGE_TYPE;
   [GRAPHQL_OPERATION_NAME]?: GRAPHQL_OPERATION_NAME_TYPE;
@@ -6638,6 +6788,7 @@ export type Attributes = {
   [HTTP_REQUEST_FETCH_START]?: HTTP_REQUEST_FETCH_START_TYPE;
   [HTTP_REQUEST_HEADER_KEY]?: HTTP_REQUEST_HEADER_KEY_TYPE;
   [HTTP_REQUEST_METHOD]?: HTTP_REQUEST_METHOD_TYPE;
+  [HTTP_REQUEST_REDIRECT_END]?: HTTP_REQUEST_REDIRECT_END_TYPE;
   [HTTP_REQUEST_REDIRECT_START]?: HTTP_REQUEST_REDIRECT_START_TYPE;
   [HTTP_REQUEST_REQUEST_START]?: HTTP_REQUEST_REQUEST_START_TYPE;
   [HTTP_REQUEST_RESEND_COUNT]?: HTTP_REQUEST_RESEND_COUNT_TYPE;
@@ -6645,6 +6796,7 @@ export type Attributes = {
   [HTTP_REQUEST_RESPONSE_START]?: HTTP_REQUEST_RESPONSE_START_TYPE;
   [HTTP_REQUEST_SECURE_CONNECTION_START]?: HTTP_REQUEST_SECURE_CONNECTION_START_TYPE;
   [HTTP_REQUEST_TIME_TO_FIRST_BYTE]?: HTTP_REQUEST_TIME_TO_FIRST_BYTE_TYPE;
+  [HTTP_REQUEST_WORKER_START]?: HTTP_REQUEST_WORKER_START_TYPE;
   [HTTP_RESPONSE_BODY_SIZE]?: HTTP_RESPONSE_BODY_SIZE_TYPE;
   [HTTP_RESPONSE_HEADER_KEY]?: HTTP_RESPONSE_HEADER_KEY_TYPE;
   [HTTP_RESPONSE_HEADER_CONTENT_LENGTH]?: HTTP_RESPONSE_HEADER_CONTENT_LENGTH_TYPE;
@@ -6708,6 +6860,7 @@ export type Attributes = {
   [RPC_SERVICE]?: RPC_SERVICE_TYPE;
   [SENTRY_CANCELLATION_REASON]?: SENTRY_CANCELLATION_REASON_TYPE;
   [SENTRY_CLIENT_SAMPLE_RATE]?: SENTRY_CLIENT_SAMPLE_RATE_TYPE;
+  [SENTRY_DESCRIPTION]?: SENTRY_DESCRIPTION_TYPE;
   [SENTRY_DIST]?: SENTRY_DIST_TYPE;
   [SENTRY_ENVIRONMENT]?: SENTRY_ENVIRONMENT_TYPE;
   [SENTRY_EXCLUSIVE_TIME]?: SENTRY_EXCLUSIVE_TIME_TYPE;
@@ -6867,6 +7020,7 @@ export type FullAttributes = {
   [GEN_AI_CHOICE]?: GEN_AI_CHOICE_TYPE;
   [GEN_AI_COST_INPUT_TOKENS]?: GEN_AI_COST_INPUT_TOKENS_TYPE;
   [GEN_AI_COST_OUTPUT_TOKENS]?: GEN_AI_COST_OUTPUT_TOKENS_TYPE;
+  [GEN_AI_COST_TOTAL_TOKENS]?: GEN_AI_COST_TOTAL_TOKENS_TYPE;
   [GEN_AI_OPERATION_NAME]?: GEN_AI_OPERATION_NAME_TYPE;
   [GEN_AI_OPERATION_TYPE]?: GEN_AI_OPERATION_TYPE_TYPE;
   [GEN_AI_PIPELINE_NAME]?: GEN_AI_PIPELINE_NAME_TYPE;
@@ -6921,6 +7075,7 @@ export type FullAttributes = {
   [HTTP_REQUEST_FETCH_START]?: HTTP_REQUEST_FETCH_START_TYPE;
   [HTTP_REQUEST_HEADER_KEY]?: HTTP_REQUEST_HEADER_KEY_TYPE;
   [HTTP_REQUEST_METHOD]?: HTTP_REQUEST_METHOD_TYPE;
+  [HTTP_REQUEST_REDIRECT_END]?: HTTP_REQUEST_REDIRECT_END_TYPE;
   [HTTP_REQUEST_REDIRECT_START]?: HTTP_REQUEST_REDIRECT_START_TYPE;
   [HTTP_REQUEST_REQUEST_START]?: HTTP_REQUEST_REQUEST_START_TYPE;
   [HTTP_REQUEST_RESEND_COUNT]?: HTTP_REQUEST_RESEND_COUNT_TYPE;
@@ -6928,6 +7083,7 @@ export type FullAttributes = {
   [HTTP_REQUEST_RESPONSE_START]?: HTTP_REQUEST_RESPONSE_START_TYPE;
   [HTTP_REQUEST_SECURE_CONNECTION_START]?: HTTP_REQUEST_SECURE_CONNECTION_START_TYPE;
   [HTTP_REQUEST_TIME_TO_FIRST_BYTE]?: HTTP_REQUEST_TIME_TO_FIRST_BYTE_TYPE;
+  [HTTP_REQUEST_WORKER_START]?: HTTP_REQUEST_WORKER_START_TYPE;
   [HTTP_RESPONSE_BODY_SIZE]?: HTTP_RESPONSE_BODY_SIZE_TYPE;
   [HTTP_RESPONSE_HEADER_KEY]?: HTTP_RESPONSE_HEADER_KEY_TYPE;
   [HTTP_RESPONSE_HEADER_CONTENT_LENGTH]?: HTTP_RESPONSE_HEADER_CONTENT_LENGTH_TYPE;
@@ -7018,8 +7174,11 @@ export type FullAttributes = {
   [ROUTE]?: ROUTE_TYPE;
   [RPC_GRPC_STATUS_CODE]?: RPC_GRPC_STATUS_CODE_TYPE;
   [RPC_SERVICE]?: RPC_SERVICE_TYPE;
+  [SENTRY_BROWSER_NAME]?: SENTRY_BROWSER_NAME_TYPE;
+  [SENTRY_BROWSER_VERSION]?: SENTRY_BROWSER_VERSION_TYPE;
   [SENTRY_CANCELLATION_REASON]?: SENTRY_CANCELLATION_REASON_TYPE;
   [SENTRY_CLIENT_SAMPLE_RATE]?: SENTRY_CLIENT_SAMPLE_RATE_TYPE;
+  [SENTRY_DESCRIPTION]?: SENTRY_DESCRIPTION_TYPE;
   [SENTRY_DIST]?: SENTRY_DIST_TYPE;
   [SENTRY_ENVIRONMENT]?: SENTRY_ENVIRONMENT_TYPE;
   [SENTRY_EXCLUSIVE_TIME]?: SENTRY_EXCLUSIVE_TIME_TYPE;
@@ -7041,6 +7200,7 @@ export type FullAttributes = {
   [SENTRY_SDK_VERSION]?: SENTRY_SDK_VERSION_TYPE;
   [SENTRY_SEGMENT_ID]?: SENTRY_SEGMENT_ID_TYPE;
   [SENTRY_SEGMENT_NAME]?: SENTRY_SEGMENT_NAME_TYPE;
+  [_SENTRY_SEGMENT_ID]?: _SENTRY_SEGMENT_ID_TYPE;
   [SENTRY_SERVER_SAMPLE_RATE]?: SENTRY_SERVER_SAMPLE_RATE_TYPE;
   [SENTRY_SPAN_SOURCE]?: SENTRY_SPAN_SOURCE_TYPE;
   [SENTRY_TRACE_PARENT_SPAN_ID]?: SENTRY_TRACE_PARENT_SPAN_ID_TYPE;
