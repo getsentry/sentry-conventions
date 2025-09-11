@@ -3,7 +3,7 @@
   "brief": "Name of the AI pipeline or chain being executed.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "Autofix Pipeline",

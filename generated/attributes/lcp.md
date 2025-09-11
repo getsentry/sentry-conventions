@@ -17,7 +17,7 @@ The dom element responsible for the largest contentful paint.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `img` |
 
@@ -28,7 +28,7 @@ The id of the dom element responsible for the largest contentful paint.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `#hero` |
 
@@ -50,7 +50,7 @@ The url of the dom element responsible for the largest contentful paint.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `https://example.com` |
 

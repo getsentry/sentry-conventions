@@ -15,7 +15,7 @@ Logical name of the service.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `omegastar` |
 
@@ -26,7 +26,7 @@ The version string of the service API or implementation. The format is not defin
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `5.0.0` |
 | Aliases | `sentry.release` |

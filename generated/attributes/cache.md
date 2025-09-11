@@ -51,7 +51,7 @@ The operation being performed on the cache.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `get` |
 

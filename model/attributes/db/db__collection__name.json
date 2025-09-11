@@ -3,7 +3,7 @@
   "brief": "The name of a collection (table, container) within the database.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "users"

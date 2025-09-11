@@ -22,7 +22,7 @@ The message destination connection.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `BestTopic` |
 
@@ -33,7 +33,7 @@ The message destination name.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `BestTopic` |
 
@@ -66,7 +66,7 @@ A value used by the messaging system as an identifier for the message, represent
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `f47ac10b58cc4372a5670e02b2c3d479` |
 
@@ -99,7 +99,7 @@ A string identifying the type of the messaging operation
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `create` |
 
@@ -110,7 +110,7 @@ The messaging system as identified by the client instrumentation.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `activemq` |
 

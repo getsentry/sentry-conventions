@@ -19,7 +19,7 @@ Name of the garbage collector action.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `end of minor GC` |
 
@@ -30,7 +30,7 @@ Name of the garbage collector.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `G1 Young Generation` |
 
@@ -41,7 +41,7 @@ Name of the memory pool.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `G1 Old Gen` |
 
@@ -52,7 +52,7 @@ Name of the memory pool.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `G1 Old Gen` |
 
@@ -74,7 +74,7 @@ State of the thread.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `blocked` |
 

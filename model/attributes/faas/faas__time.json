@@ -3,7 +3,7 @@
   "brief": "A string containing the function invocation time in the ISO 8601 format expressed in UTC.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "2020-01-23T13:47:06Z"

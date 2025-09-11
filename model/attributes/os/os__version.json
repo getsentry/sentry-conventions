@@ -3,7 +3,7 @@
   "brief": "The version of the operating system.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "18.04.2"

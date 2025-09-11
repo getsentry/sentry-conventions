@@ -3,7 +3,7 @@
   "brief": "A database query being executed. Should be paramaterized. The full version of the query is in `db.query.text`.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "SELECT * FROM users"

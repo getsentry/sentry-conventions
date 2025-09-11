@@ -29,7 +29,7 @@ The name of a collection (table, container) within the database.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `users` |
 
@@ -40,7 +40,7 @@ The name of the database being accessed.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `customers` |
 | Aliases | `db.name` |
@@ -52,7 +52,7 @@ The name of the operation being executed.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `SELECT` |
 | Aliases | `db.operation` |
@@ -64,7 +64,7 @@ A query parameter used in db.query.text, with \<key\> being the parameter name, 
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Has dynamic suffix | Yes |
 | Example | `db.query.parameter.foo='123'` |
@@ -76,7 +76,7 @@ A database query being executed. Should be paramaterized. The full version of th
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `SELECT * FROM users` |
 
@@ -87,7 +87,7 @@ The database query being executed. Should be the full query, not a parameterized
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `SELECT * FROM users` |
 | Aliases | `db.statement` |
@@ -99,7 +99,7 @@ The redis connection name.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `my-redis-instance` |
 
@@ -121,7 +121,7 @@ An identifier for the database management system (DBMS) product being used. See 
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `postgresql` |
 | Aliases | `db.system` |
@@ -148,7 +148,7 @@ The name of the database being accessed.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `customers` |
 | Deprecated | Yes, use `db.namespace` instead |
@@ -161,7 +161,7 @@ The name of the operation being executed.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `SELECT` |
 | Deprecated | Yes, use `db.operation.name` instead |
@@ -187,7 +187,7 @@ The database statement being executed.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `SELECT * FROM users` |
 | Deprecated | Yes, use `db.query.text` instead |
@@ -200,7 +200,7 @@ An identifier for the database management system (DBMS) product being used. See 
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `postgresql` |
 | Deprecated | Yes, use `db.system.name` instead |

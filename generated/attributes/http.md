@@ -13,12 +13,14 @@
   - [http.request.fetch_start](#httprequestfetch_start)
   - [http.request.header.\<key\>](#httprequestheaderkey)
   - [http.request.method](#httprequestmethod)
+  - [http.request.redirect_end](#httprequestredirect_end)
   - [http.request.redirect_start](#httprequestredirect_start)
   - [http.request.request_start](#httprequestrequest_start)
   - [http.request.resend_count](#httprequestresend_count)
   - [http.request.response_end](#httprequestresponse_end)
   - [http.request.response_start](#httprequestresponse_start)
   - [http.request.secure_connection_start](#httprequestsecure_connection_start)
+  - [http.request.worker_start](#httprequestworker_start)
   - [http.response.body.size](#httpresponsebodysize)
   - [http.response.header.\<key\>](#httpresponseheaderkey)
   - [http.response.header.content-length](#httpresponseheadercontentlength)
@@ -148,10 +150,21 @@ The HTTP method used.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `GET` |
 | Aliases | `method`, `http.method` |
+
+### http.request.redirect_end
+
+The UNIX timestamp representing the timestamp immediately after receiving the last byte of the response of the last redirect
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `1732829558` |
 
 ### http.request.redirect_start
 
@@ -219,6 +232,17 @@ The UNIX timestamp representing the time immediately before the browser starts t
 | Exists in OpenTelemetry | No |
 | Example | `1732829555` |
 
+### http.request.worker_start
+
+The UNIX timestamp representing the timestamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running.
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `1732829553` |
+
 ### http.response.body.size
 
 The encoded body size of the response (in bytes).
@@ -250,7 +274,7 @@ The size of the message body sent to the recipient (in bytes)
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `http.response.header.custom-header=['foo', 'bar']` |
 | Aliases | `http.response_content_length`, `http.response.body.size` |
@@ -286,7 +310,7 @@ The matched route, that is, the path template in the format used by the respecti
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `/users/:id` |
 | Aliases | `url.template` |
@@ -302,7 +326,7 @@ Client address - domain name if available without reverse DNS lookup; otherwise,
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | true |
 | Exists in OpenTelemetry | Yes |
 | Example | `example.com` |
 | Deprecated | Yes, use `client.address` instead |
@@ -315,7 +339,7 @@ The actual version of the protocol used for network communication.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `1.1` |
 | Deprecated | Yes, use `network.protocol.version` instead |
@@ -328,7 +352,7 @@ The domain name.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `example.com` |
 | Deprecated | Yes, use `server.address` instead |
@@ -342,7 +366,7 @@ The HTTP method used.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `GET` |
 | Deprecated | Yes, use `http.request.method` instead |
@@ -381,7 +405,7 @@ The URI scheme component identifying the used protocol.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `https` |
 | Deprecated | Yes, use `url.scheme` instead |
@@ -394,7 +418,7 @@ The server domain name
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `example.com` |
 | Deprecated | Yes, use `server.address` instead |
@@ -446,7 +470,7 @@ Value of the HTTP User-Agent header sent by the client.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1` |
 | Deprecated | Yes, use `user_agent.original` instead |

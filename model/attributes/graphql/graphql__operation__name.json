@@ -3,7 +3,7 @@
   "brief": "The name of the operation being executed.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "findBookById"

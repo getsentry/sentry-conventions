@@ -3,7 +3,7 @@
   "brief": "The database query being executed. Should be the full query, not a parameterized version. The parameterized version is in `db.query.summary`.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "SELECT * FROM users",
