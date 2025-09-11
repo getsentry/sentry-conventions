@@ -7,7 +7,5 @@
   },
   "is_in_otel": false,
   "example": "Chrome",
-  "alias": [
-    "sentry.browser.name"
-  ]
+  "alias": ["sentry.browser.name"]
 }

@@ -1071,9 +1071,7 @@
         "_status": null,
         "replacement": "browser.name"
       },
-      "alias": [
-        "browser.name"
-      ]
+      "alias": ["browser.name"]
     },
     {
       "key": "sentry.browser.version",
@@ -1088,9 +1086,7 @@
         "_status": null,
         "replacement": "browser.version"
       },
-      "alias": [
-        "browser.version"
-      ]
+      "alias": ["browser.version"]
     },
     {
       "key": "sentry.segment_id",
