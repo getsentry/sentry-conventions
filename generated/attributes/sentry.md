@@ -281,6 +281,7 @@ The segment ID of a span
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `051581bf3cb55c13` |
+| Aliases | `sentry.segment_id` |
 
 ### sentry.segment.name
 

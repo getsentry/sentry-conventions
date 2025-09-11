@@ -5765,6 +5765,8 @@ export type SENTRY_SDK_VERSION_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link SENTRY_SEGMENT_ID} `sentry.segment_id`
+ *
  * @example "051581bf3cb55c13"
  */
 export const SENTRY_SEGMENT_ID = 'sentry.segment.id';
@@ -5799,7 +5801,7 @@ export type SENTRY_SEGMENT_NAME_TYPE = string;
 /**
  * The segment ID of a span `sentry.segment_id`
  *
- * Attribute Value Type: `string` {@link _SENTRY_SEGMENT_ID_TYPE}
+ * Attribute Value Type: `string` {@link SENTRY_SEGMENT_ID_TYPE}
  *
  * Contains PII: false
  *
@@ -5810,12 +5812,12 @@ export type SENTRY_SEGMENT_NAME_TYPE = string;
  * @deprecated Use {@link SENTRY_SEGMENT_ID} (sentry.segment.id) instead
  * @example "051581bf3cb55c13"
  */
-export const _SENTRY_SEGMENT_ID = 'sentry.segment_id';
+export const SENTRY_SEGMENT_ID = 'sentry.segment_id';
 
 /**
- * Type for {@link _SENTRY_SEGMENT_ID} sentry.segment_id
+ * Type for {@link SENTRY_SEGMENT_ID} sentry.segment_id
  */
-export type _SENTRY_SEGMENT_ID_TYPE = string;
+export type SENTRY_SEGMENT_ID_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__server_sample_rate.json
 
@@ -7108,7 +7110,7 @@ export type FullAttributes = {
   [SENTRY_SDK_VERSION]?: SENTRY_SDK_VERSION_TYPE;
   [SENTRY_SEGMENT_ID]?: SENTRY_SEGMENT_ID_TYPE;
   [SENTRY_SEGMENT_NAME]?: SENTRY_SEGMENT_NAME_TYPE;
-  [_SENTRY_SEGMENT_ID]?: _SENTRY_SEGMENT_ID_TYPE;
+  [SENTRY_SEGMENT_ID]?: SENTRY_SEGMENT_ID_TYPE;
   [SENTRY_SERVER_SAMPLE_RATE]?: SENTRY_SERVER_SAMPLE_RATE_TYPE;
   [SENTRY_SPAN_SOURCE]?: SENTRY_SPAN_SOURCE_TYPE;
   [SENTRY_TRACE_PARENT_SPAN_ID]?: SENTRY_TRACE_PARENT_SPAN_ID_TYPE;
