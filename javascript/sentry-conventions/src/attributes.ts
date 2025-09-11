@@ -765,6 +765,8 @@ export type BLOCKED_MAIN_THREAD_TYPE = boolean;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link SENTRY_BROWSER_NAME} `sentry.browser.name`
+ *
  * @example "Chrome"
  */
 export const BROWSER_NAME = 'browser.name';
@@ -864,6 +866,8 @@ export type BROWSER_SCRIPT_SOURCE_CHAR_POSITION_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link SENTRY_BROWSER_VERSION} `sentry.browser.version`
  *
  * @example "120.0.6099.130"
  */
@@ -5324,6 +5328,52 @@ export const RPC_SERVICE = 'rpc.service';
  */
 export type RPC_SERVICE_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__browser__name.json
+
+/**
+ * The name of the browser. `sentry.browser.name`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_BROWSER_NAME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link BROWSER_NAME} `browser.name`
+ *
+ * @deprecated Use {@link BROWSER_NAME} (browser.name) instead
+ * @example "Chrome"
+ */
+export const SENTRY_BROWSER_NAME = 'sentry.browser.name';
+
+/**
+ * Type for {@link SENTRY_BROWSER_NAME} sentry.browser.name
+ */
+export type SENTRY_BROWSER_NAME_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__browser__version.json
+
+/**
+ * The version of the browser. `sentry.browser.version`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_BROWSER_VERSION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link BROWSER_VERSION} `browser.version`
+ *
+ * @deprecated Use {@link BROWSER_VERSION} (browser.version) instead
+ * @example "120.0.6099.130"
+ */
+export const SENTRY_BROWSER_VERSION = 'sentry.browser.version';
+
+/**
+ * Type for {@link SENTRY_BROWSER_VERSION} sentry.browser.version
+ */
+export type SENTRY_BROWSER_VERSION_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__cancellation_reason.json
 
 /**
@@ -5363,6 +5413,26 @@ export const SENTRY_CLIENT_SAMPLE_RATE = 'sentry.client_sample_rate';
  * Type for {@link SENTRY_CLIENT_SAMPLE_RATE} sentry.client_sample_rate
  */
 export type SENTRY_CLIENT_SAMPLE_RATE_TYPE = number;
+
+// Path: model/attributes/sentry/sentry__description.json
+
+/**
+ * The human-readable description of a span. `sentry.description`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_DESCRIPTION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "index view query"
+ */
+export const SENTRY_DESCRIPTION = 'sentry.description';
+
+/**
+ * Type for {@link SENTRY_DESCRIPTION} sentry.description
+ */
+export type SENTRY_DESCRIPTION_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__dist.json
 
@@ -5765,6 +5835,8 @@ export type SENTRY_SDK_VERSION_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link _SENTRY_SEGMENT_ID} `sentry.segment_id`
+ *
  * @example "051581bf3cb55c13"
  */
 export const SENTRY_SEGMENT_ID = 'sentry.segment.id';
@@ -5793,6 +5865,29 @@ export const SENTRY_SEGMENT_NAME = 'sentry.segment.name';
  * Type for {@link SENTRY_SEGMENT_NAME} sentry.segment.name
  */
 export type SENTRY_SEGMENT_NAME_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__segment_id.json
+
+/**
+ * The segment ID of a span `sentry.segment_id`
+ *
+ * Attribute Value Type: `string` {@link _SENTRY_SEGMENT_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link SENTRY_SEGMENT_ID} `sentry.segment.id`
+ *
+ * @deprecated Use {@link SENTRY_SEGMENT_ID} (sentry.segment.id) instead
+ * @example "051581bf3cb55c13"
+ */
+export const _SENTRY_SEGMENT_ID = 'sentry.segment_id';
+
+/**
+ * Type for {@link _SENTRY_SEGMENT_ID} sentry.segment_id
+ */
+export type _SENTRY_SEGMENT_ID_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__server_sample_rate.json
 
@@ -6750,6 +6845,7 @@ export type Attributes = {
   [RPC_SERVICE]?: RPC_SERVICE_TYPE;
   [SENTRY_CANCELLATION_REASON]?: SENTRY_CANCELLATION_REASON_TYPE;
   [SENTRY_CLIENT_SAMPLE_RATE]?: SENTRY_CLIENT_SAMPLE_RATE_TYPE;
+  [SENTRY_DESCRIPTION]?: SENTRY_DESCRIPTION_TYPE;
   [SENTRY_DIST]?: SENTRY_DIST_TYPE;
   [SENTRY_ENVIRONMENT]?: SENTRY_ENVIRONMENT_TYPE;
   [SENTRY_EXCLUSIVE_TIME]?: SENTRY_EXCLUSIVE_TIME_TYPE;
@@ -7062,8 +7158,11 @@ export type FullAttributes = {
   [ROUTE]?: ROUTE_TYPE;
   [RPC_GRPC_STATUS_CODE]?: RPC_GRPC_STATUS_CODE_TYPE;
   [RPC_SERVICE]?: RPC_SERVICE_TYPE;
+  [SENTRY_BROWSER_NAME]?: SENTRY_BROWSER_NAME_TYPE;
+  [SENTRY_BROWSER_VERSION]?: SENTRY_BROWSER_VERSION_TYPE;
   [SENTRY_CANCELLATION_REASON]?: SENTRY_CANCELLATION_REASON_TYPE;
   [SENTRY_CLIENT_SAMPLE_RATE]?: SENTRY_CLIENT_SAMPLE_RATE_TYPE;
+  [SENTRY_DESCRIPTION]?: SENTRY_DESCRIPTION_TYPE;
   [SENTRY_DIST]?: SENTRY_DIST_TYPE;
   [SENTRY_ENVIRONMENT]?: SENTRY_ENVIRONMENT_TYPE;
   [SENTRY_EXCLUSIVE_TIME]?: SENTRY_EXCLUSIVE_TIME_TYPE;
@@ -7085,6 +7184,7 @@ export type FullAttributes = {
   [SENTRY_SDK_VERSION]?: SENTRY_SDK_VERSION_TYPE;
   [SENTRY_SEGMENT_ID]?: SENTRY_SEGMENT_ID_TYPE;
   [SENTRY_SEGMENT_NAME]?: SENTRY_SEGMENT_NAME_TYPE;
+  [_SENTRY_SEGMENT_ID]?: _SENTRY_SEGMENT_ID_TYPE;
   [SENTRY_SERVER_SAMPLE_RATE]?: SENTRY_SERVER_SAMPLE_RATE_TYPE;
   [SENTRY_SPAN_SOURCE]?: SENTRY_SPAN_SOURCE_TYPE;
   [SENTRY_TRACE_PARENT_SPAN_ID]?: SENTRY_TRACE_PARENT_SPAN_ID_TYPE;

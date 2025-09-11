@@ -1,5 +1,5 @@
 {
-  "key": "browser.name",
+  "key": "sentry.browser.name",
   "brief": "The name of the browser.",
   "type": "string",
   "pii": {
@@ -7,5 +7,9 @@
   },
   "is_in_otel": false,
   "example": "Chrome",
-  "alias": ["sentry.browser.name"]
+  "deprecation": {
+    "_status": null,
+    "replacement": "browser.name"
+  },
+  "alias": ["browser.name"]
 }

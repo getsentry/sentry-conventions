@@ -1,5 +1,5 @@
 {
-  "key": "browser.version",
+  "key": "sentry.browser.version",
   "brief": "The version of the browser.",
   "type": "string",
   "pii": {
@@ -7,5 +7,9 @@
   },
   "is_in_otel": false,
   "example": "120.0.6099.130",
-  "alias": ["sentry.browser.version"]
+  "deprecation": {
+    "_status": null,
+    "replacement": "browser.version"
+  },
+  "alias": ["browser.version"]
 }

@@ -1057,6 +1057,51 @@
         "reason": "Instead of sending items individually in query.<key>, they should be sent all together with url.query."
       },
       "example": "query.id='123'"
+    },
+    {
+      "key": "sentry.browser.name",
+      "brief": "The name of the browser.",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "Chrome",
+      "deprecation": {
+        "_status": null,
+        "replacement": "browser.name"
+      },
+      "alias": ["browser.name"]
+    },
+    {
+      "key": "sentry.browser.version",
+      "brief": "The version of the browser.",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "120.0.6099.130",
+      "deprecation": {
+        "_status": null,
+        "replacement": "browser.version"
+      },
+      "alias": ["browser.version"]
+    },
+    {
+      "key": "sentry.segment_id",
+      "brief": "The segment ID of a span",
+      "type": "string",
+      "pii": {
+        "key": "false"
+      },
+      "is_in_otel": false,
+      "example": "051581bf3cb55c13",
+      "alias": ["sentry.segment.id"],
+      "deprecation": {
+        "_status": null,
+        "replacement": "sentry.segment.id"
+      }
     }
   ]
 }
