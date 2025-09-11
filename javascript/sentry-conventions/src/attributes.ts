@@ -3409,12 +3409,6 @@ export type HTTP_REQUEST_SECURE_CONNECTION_START_TYPE = number;
  * The time in seconds from the browser's timeorigin to when the first byte of the request's response was received. See https://web.dev/articles/ttfb#measure-resource-requests `http.request.time_to_first_byte`
  *
  * Attribute Value Type: `number` {@link HTTP_REQUEST_TIME_TO_FIRST_BYTE_TYPE}
-// Path: model/attributes/http/http__request__worker_start.json
-
-/**
- * The UNIX timestamp representing the timestamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running. `http.request.worker_start`
- *
- * Attribute Value Type: `number` {@link HTTP_REQUEST_WORKER_START_TYPE}
  *
  * Contains PII: false
  *
@@ -3428,6 +3422,18 @@ export const HTTP_REQUEST_TIME_TO_FIRST_BYTE = 'http.request.time_to_first_byte'
  * Type for {@link HTTP_REQUEST_TIME_TO_FIRST_BYTE} http.request.time_to_first_byte
  */
 export type HTTP_REQUEST_TIME_TO_FIRST_BYTE_TYPE = number;
+
+// Path: model/attributes/http/http__request__worker_start.json
+
+/**
+ * The UNIX timestamp representing the timestamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running. `http.request.worker_start`
+ *
+ * Attribute Value Type: `number` {@link HTTP_REQUEST_WORKER_START_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
  * @example 1732829553.68
  */
 export const HTTP_REQUEST_WORKER_START = 'http.request.worker_start';

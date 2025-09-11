@@ -233,17 +233,6 @@ The UNIX timestamp representing the time immediately before the browser starts t
 | Exists in OpenTelemetry | No |
 | Example | `1732829555.73` |
 
-### http.request.worker_start
-
-The UNIX timestamp representing the timestamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running.
-
-| Property | Value |
-| --- | --- |
-| Type | `double` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `1732829553.68` |
-
 ### http.request.time_to_first_byte
 
 The time in seconds from the browser's timeorigin to when the first byte of the request's response was received. See https://web.dev/articles/ttfb#measure-resource-requests
@@ -254,6 +243,17 @@ The time in seconds from the browser's timeorigin to when the first byte of the 
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `1.032` |
+
+### http.request.worker_start
+
+The UNIX timestamp representing the timestamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running.
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `1732829553.68` |
 
 ### http.response.body.size
 
