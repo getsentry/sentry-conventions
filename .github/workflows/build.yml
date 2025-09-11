@@ -33,6 +33,10 @@ jobs:
 
       - name: Run lints
         run: yarn lint
+
+      - name: Output changes
+        id: output-changed-files
+        run: git diff
   
       - name: Check for changes
         id: verify-changed-files
