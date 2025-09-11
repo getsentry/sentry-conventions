@@ -153,6 +153,8 @@ class _AttributeNamesMeta(type):
         "RELEASE",
         "REPLAY_ID",
         "ROUTE",
+        "SENTRY_BROWSER_NAME",
+        "SENTRY_BROWSER_VERSION",
         "_SENTRY_SEGMENT_ID",
         "TRANSACTION",
         "URL",
@@ -569,6 +571,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Aliases: sentry.browser.name
     Example: "Chrome"
     """
 
@@ -623,6 +626,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Aliases: sentry.browser.version
     Example: "120.0.6099.130"
     """
 
@@ -1816,10 +1820,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     )
     """The UNIX timestamp representing the time immediately before the user agent starts establishing the connection to the server to retrieve the resource.
 
-    Type: int
+    Type: float
     Contains PII: false
     Defined in OTEL: No
-    Example: 1732829555
+    Example: 1732829555.111
     """
 
     # Path: model/attributes/http/http__request__connection_end.json
@@ -1828,10 +1832,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     )
     """The UNIX timestamp representing the time immediately after the browser finishes establishing the connection to the server to retrieve the resource. The timestamp value includes the time interval to establish the transport connection, as well as other time intervals such as TLS handshake and SOCKS authentication.
 
-    Type: int
+    Type: float
     Contains PII: false
     Defined in OTEL: No
-    Example: 1732829555
+    Example: 1732829555.15
     """
 
     # Path: model/attributes/http/http__request__domain_lookup_end.json
@@ -1840,10 +1844,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     )
     """The UNIX timestamp representing the time immediately after the browser finishes the domain-name lookup for the resource.
 
-    Type: int
+    Type: float
     Contains PII: false
     Defined in OTEL: No
-    Example: 1732829555
+    Example: 1732829555.201
     """
 
     # Path: model/attributes/http/http__request__domain_lookup_start.json
@@ -1852,10 +1856,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     )
     """The UNIX timestamp representing the time immediately before the browser starts the domain name lookup for the resource.
 
-    Type: int
+    Type: float
     Contains PII: false
     Defined in OTEL: No
-    Example: 1732829555
+    Example: 1732829555.322
     """
 
     # Path: model/attributes/http/http__request__fetch_start.json
@@ -1864,10 +1868,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     )
     """The UNIX timestamp representing the time immediately before the browser starts to fetch the resource.
 
-    Type: int
+    Type: float
     Contains PII: false
     Defined in OTEL: No
-    Example: 1732829555
+    Example: 1732829555.389
     """
 
     # Path: model/attributes/http/http__request__header__[key].json
@@ -1903,7 +1907,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: false
     Defined in OTEL: No
-    Example: 1732829558
+    Example: 1732829558.502
     """
 
     # Path: model/attributes/http/http__request__redirect_start.json
@@ -1912,10 +1916,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     )
     """The UNIX timestamp representing the start time of the fetch which that initiates the redirect.
 
-    Type: int
+    Type: float
     Contains PII: false
     Defined in OTEL: No
-    Example: 1732829555
+    Example: 1732829555.495
     """
 
     # Path: model/attributes/http/http__request__request_start.json
@@ -1924,10 +1928,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     )
     """The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.
 
-    Type: int
+    Type: float
     Contains PII: false
     Defined in OTEL: No
-    Example: 1732829555
+    Example: 1732829555.51
     """
 
     # Path: model/attributes/http/http__request__resend_count.json
@@ -1948,10 +1952,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     )
     """The UNIX timestamp representing the time immediately after the browser receives the last byte of the resource or immediately before the transport connection is closed, whichever comes first.
 
-    Type: int
+    Type: float
     Contains PII: false
     Defined in OTEL: No
-    Example: 1732829555
+    Example: 1732829555.89
     """
 
     # Path: model/attributes/http/http__request__response_start.json
@@ -1960,10 +1964,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     )
     """The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.
 
-    Type: int
+    Type: float
     Contains PII: false
     Defined in OTEL: No
-    Example: 1732829555
+    Example: 1732829555.7
     """
 
     # Path: model/attributes/http/http__request__secure_connection_start.json
@@ -1972,10 +1976,22 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     ] = "http.request.secure_connection_start"
     """The UNIX timestamp representing the time immediately before the browser starts the handshake process to secure the current connection. If a secure connection is not used, the property returns zero.
 
-    Type: int
+    Type: float
     Contains PII: false
     Defined in OTEL: No
-    Example: 1732829555
+    Example: 1732829555.73
+    """
+
+    # Path: model/attributes/http/http__request__time_to_first_byte.json
+    HTTP_REQUEST_TIME_TO_FIRST_BYTE: Literal["http.request.time_to_first_byte"] = (
+        "http.request.time_to_first_byte"
+    )
+    """The time in seconds from the browser's timeorigin to when the first byte of the request's response was received. See https://web.dev/articles/ttfb#measure-resource-requests
+
+    Type: float
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 1.032
     """
 
     # Path: model/attributes/http/http__request__worker_start.json
@@ -1987,7 +2003,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: false
     Defined in OTEL: No
-    Example: 1732829553
+    Example: 1732829553.68
     """
 
     # Path: model/attributes/http/http__response__body__size.json
@@ -2997,6 +3013,30 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "myService.BestService"
     """
 
+    # Path: model/attributes/sentry/sentry__browser__name.json
+    SENTRY_BROWSER_NAME: Literal["sentry.browser.name"] = "sentry.browser.name"
+    """The name of the browser.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: browser.name
+    DEPRECATED: Use browser.name instead
+    Example: "Chrome"
+    """
+
+    # Path: model/attributes/sentry/sentry__browser__version.json
+    SENTRY_BROWSER_VERSION: Literal["sentry.browser.version"] = "sentry.browser.version"
+    """The version of the browser.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: browser.version
+    DEPRECATED: Use browser.version instead
+    Example: "120.0.6099.130"
+    """
+
     # Path: model/attributes/sentry/sentry__cancellation_reason.json
     SENTRY_CANCELLATION_REASON: Literal["sentry.cancellation_reason"] = (
         "sentry.cancellation_reason"
@@ -3019,6 +3059,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: false
     Defined in OTEL: No
     Example: 0.5
+    """
+
+    # Path: model/attributes/sentry/sentry__description.json
+    SENTRY_DESCRIPTION: Literal["sentry.description"] = "sentry.description"
+    """The human-readable description of a span.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "index view query"
     """
 
     # Path: model/attributes/sentry/sentry__dist.json
@@ -3948,6 +3998,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="Chrome",
+        aliases=["sentry.browser.name"],
     ),
     "browser.report.type": AttributeMetadata(
         brief="A browser report sent via reporting API..",
@@ -3986,6 +4037,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="120.0.6099.130",
+        aliases=["sentry.browser.version"],
     ),
     "cache.hit": AttributeMetadata(
         brief="If the cache was hit during this span.",
@@ -4835,42 +4887,42 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ),
     "http.request.connect_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the user agent starts establishing the connection to the server to retrieve the resource.",
-        type=AttributeType.INTEGER,
+        type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
-        example=1732829555,
+        example=1732829555.111,
         sdks=["javascript-browser"],
     ),
     "http.request.connection_end": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately after the browser finishes establishing the connection to the server to retrieve the resource. The timestamp value includes the time interval to establish the transport connection, as well as other time intervals such as TLS handshake and SOCKS authentication.",
-        type=AttributeType.INTEGER,
+        type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
-        example=1732829555,
+        example=1732829555.15,
         sdks=["javascript-browser"],
     ),
     "http.request.domain_lookup_end": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately after the browser finishes the domain-name lookup for the resource.",
-        type=AttributeType.INTEGER,
+        type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
-        example=1732829555,
+        example=1732829555.201,
         sdks=["javascript-browser"],
     ),
     "http.request.domain_lookup_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the browser starts the domain name lookup for the resource.",
-        type=AttributeType.INTEGER,
+        type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
-        example=1732829555,
+        example=1732829555.322,
         sdks=["javascript-browser"],
     ),
     "http.request.fetch_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the browser starts to fetch the resource.",
-        type=AttributeType.INTEGER,
+        type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
-        example=1732829555,
+        example=1732829555.389,
         sdks=["javascript-browser"],
     ),
     "http.request.header.<key>": AttributeMetadata(
@@ -4894,23 +4946,23 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
-        example=1732829558,
+        example=1732829558.502,
         sdks=["javascript-browser"],
     ),
     "http.request.redirect_start": AttributeMetadata(
         brief="The UNIX timestamp representing the start time of the fetch which that initiates the redirect.",
-        type=AttributeType.INTEGER,
+        type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
-        example=1732829555,
+        example=1732829555.495,
         sdks=["javascript-browser"],
     ),
     "http.request.request_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.",
-        type=AttributeType.INTEGER,
+        type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
-        example=1732829555,
+        example=1732829555.51,
         sdks=["javascript-browser"],
     ),
     "http.request.resend_count": AttributeMetadata(
@@ -4922,26 +4974,34 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ),
     "http.request.response_end": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately after the browser receives the last byte of the resource or immediately before the transport connection is closed, whichever comes first.",
-        type=AttributeType.INTEGER,
+        type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
-        example=1732829555,
+        example=1732829555.89,
         sdks=["javascript-browser"],
     ),
     "http.request.response_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.",
-        type=AttributeType.INTEGER,
+        type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
-        example=1732829555,
+        example=1732829555.7,
         sdks=["javascript-browser"],
     ),
     "http.request.secure_connection_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the browser starts the handshake process to secure the current connection. If a secure connection is not used, the property returns zero.",
-        type=AttributeType.INTEGER,
+        type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
-        example=1732829555,
+        example=1732829555.73,
+        sdks=["javascript-browser"],
+    ),
+    "http.request.time_to_first_byte": AttributeMetadata(
+        brief="The time in seconds from the browser's timeorigin to when the first byte of the request's response was received. See https://web.dev/articles/ttfb#measure-resource-requests",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=1.032,
         sdks=["javascript-browser"],
     ),
     "http.request.worker_start": AttributeMetadata(
@@ -4949,7 +5009,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
-        example=1732829553,
+        example=1732829553.68,
         sdks=["javascript-browser"],
     ),
     "http.response.body.size": AttributeMetadata(
@@ -5684,6 +5744,24 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="myService.BestService",
     ),
+    "sentry.browser.name": AttributeMetadata(
+        brief="The name of the browser.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="Chrome",
+        deprecation=DeprecationInfo(replacement="browser.name"),
+        aliases=["browser.name"],
+    ),
+    "sentry.browser.version": AttributeMetadata(
+        brief="The version of the browser.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="120.0.6099.130",
+        deprecation=DeprecationInfo(replacement="browser.version"),
+        aliases=["browser.version"],
+    ),
     "sentry.cancellation_reason": AttributeMetadata(
         brief="The reason why a span ended early.",
         type=AttributeType.STRING,
@@ -5697,6 +5775,13 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=0.5,
+    ),
+    "sentry.description": AttributeMetadata(
+        brief="The human-readable description of a span.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="index view query",
     ),
     "sentry.dist": AttributeMetadata(
         brief="The sentry dist.",
@@ -6303,20 +6388,21 @@ Attributes = TypedDict(
         "http.host": str,
         "http.method": str,
         "http.query": str,
-        "http.request.connect_start": int,
-        "http.request.connection_end": int,
-        "http.request.domain_lookup_end": int,
-        "http.request.domain_lookup_start": int,
-        "http.request.fetch_start": int,
+        "http.request.connect_start": float,
+        "http.request.connection_end": float,
+        "http.request.domain_lookup_end": float,
+        "http.request.domain_lookup_start": float,
+        "http.request.fetch_start": float,
         "http.request.header.<key>": List[str],
         "http.request.method": str,
         "http.request.redirect_end": float,
-        "http.request.redirect_start": int,
-        "http.request.request_start": int,
+        "http.request.redirect_start": float,
+        "http.request.request_start": float,
         "http.request.resend_count": int,
-        "http.request.response_end": int,
-        "http.request.response_start": int,
-        "http.request.secure_connection_start": int,
+        "http.request.response_end": float,
+        "http.request.response_start": float,
+        "http.request.secure_connection_start": float,
+        "http.request.time_to_first_byte": float,
         "http.request.worker_start": float,
         "http.response.body.size": int,
         "http.response.header.<key>": List[str],
@@ -6408,8 +6494,11 @@ Attributes = TypedDict(
         "route": str,
         "rpc.grpc.status_code": int,
         "rpc.service": str,
+        "sentry.browser.name": str,
+        "sentry.browser.version": str,
         "sentry.cancellation_reason": str,
         "sentry.client_sample_rate": float,
+        "sentry.description": str,
         "sentry.dist": str,
         "sentry.environment": str,
         "sentry.exclusive_time": int,
