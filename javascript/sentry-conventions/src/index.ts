@@ -1,1 +1,1 @@
-export type { AttributeValue, Attributes, FullAttributes } from './attributes';
+export type { AttributeValue, Attributes } from './attributes';

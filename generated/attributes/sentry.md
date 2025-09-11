@@ -5,6 +5,7 @@
 - [Stable Attributes](#stable-attributes)
   - [sentry.cancellation_reason](#sentrycancellation_reason)
   - [sentry.client_sample_rate](#sentryclient_sample_rate)
+  - [sentry.description](#sentrydescription)
   - [sentry.dist](#sentrydist)
   - [sentry.environment](#sentryenvironment)
   - [sentry.exclusive_time](#sentryexclusive_time)
@@ -31,6 +32,8 @@
   - [sentry.trace.parent_span_id](#sentrytraceparent_span_id)
   - [sentry.transaction](#sentrytransaction)
 - [Deprecated Attributes](#deprecated-attributes)
+  - [sentry.browser.name](#sentrybrowsername)
+  - [sentry.browser.version](#sentrybrowserversion)
   - [sentry.segment_id](#sentrysegment_id)
 
 ## Stable Attributes
@@ -56,6 +59,17 @@ Rate at which a span was sampled in the SDK.
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `0.5` |
+
+### sentry.description
+
+The human-readable description of a span.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `index view query` |
 
 ### sentry.dist
 
@@ -342,6 +356,32 @@ The sentry transaction (segment name).
 ## Deprecated Attributes
 
 These attributes are deprecated and will be removed in a future version. Please use the recommended replacements.
+
+### sentry.browser.name
+
+The name of the browser.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `Chrome` |
+| Deprecated | Yes, use `browser.name` instead |
+| Aliases | `browser.name` |
+
+### sentry.browser.version
+
+The version of the browser.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `120.0.6099.130` |
+| Deprecated | Yes, use `browser.version` instead |
+| Aliases | `browser.version` |
 
 ### sentry.segment_id
 

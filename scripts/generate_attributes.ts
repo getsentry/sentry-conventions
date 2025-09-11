@@ -41,7 +41,6 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
   let attributesContent = '// This is an auto-generated file. Do not edit!\n\n';
 
   let attributeTypeMap = '';
-  let fullAttributeTypeMap = '';
 
   for (const file of attributeFiles) {
     const attributePath = path.join(attributesDir, file);
@@ -99,11 +98,10 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
         replacement = `Use {@link ${getConstantName(deprecation.replacement, false)}} (${deprecation.replacement}) instead`;
       }
       attributesContent += ` * @deprecated ${replacement}${deprecation.reason ? ` - ${deprecation.reason}` : ''}\n`;
-      fullAttributeTypeMap += `\n  [${constantName}]?: ${typeConstantName};`;
-    } else {
-      fullAttributeTypeMap += `\n  [${constantName}]?: ${typeConstantName};`;
-      attributeTypeMap += `\n  [${constantName}]?: ${typeConstantName};`;
     }
+
+    // Add all attributes (both deprecated and non-deprecated) to the Attributes type
+    attributeTypeMap += `\n  [${constantName}]?: ${typeConstantName};`;
 
     // Add example if present
     if (example !== undefined) {
@@ -125,9 +123,6 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
     'export type AttributeValue = string | number | boolean | Array<string> | Array<number> | Array<boolean>;\n\n';
 
   attributesContent += `export type Attributes = {${attributeTypeMap}
-} & Record<string, AttributeValue | undefined>;\n\n`;
-
-  attributesContent += `export type FullAttributes = {${fullAttributeTypeMap}
 } & Record<string, AttributeValue | undefined>;\n`;
 
   // Write the generated content to the file

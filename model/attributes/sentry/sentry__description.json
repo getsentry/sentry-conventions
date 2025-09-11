@@ -1,0 +1,10 @@
+{
+  "key": "sentry.description",
+  "brief": "The human-readable description of a span.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "index view query"
+}
