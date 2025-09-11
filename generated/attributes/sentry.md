@@ -5,6 +5,7 @@
 - [Stable Attributes](#stable-attributes)
   - [sentry.cancellation_reason](#sentrycancellation_reason)
   - [sentry.client_sample_rate](#sentryclient_sample_rate)
+  - [sentry.description](#sentrydescription)
   - [sentry.dist](#sentrydist)
   - [sentry.environment](#sentryenvironment)
   - [sentry.exclusive_time](#sentryexclusive_time)
@@ -56,6 +57,17 @@ Rate at which a span was sampled in the SDK.
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `0.5` |
+
+### sentry.description
+
+The human-readable description of a span.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `index view query` |
 
 ### sentry.dist
 
