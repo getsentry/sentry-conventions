@@ -9,8 +9,10 @@ targets:
 
   # pypi Release Targets
   - name: pypi
-  - name: sentry-pypi
-    internalPypiRepo: getsentry/pypi
+  
+  # TODO: Uncomment after release to normal pypi
+  # - name: sentry-pypi
+  #  internalPypiRepo: getsentry/pypi
 
   # Google Cloud Storage Target
   # TODO: Uncomment this when we have a bucket for the model conventions json
