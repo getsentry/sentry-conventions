@@ -25,14 +25,8 @@ jobs:
       - name: Install node modules
         run: yarn install --frozen-lockfile
 
-      - name: Build Packages
-        run: yarn build
-
-      - name: Generate tarball artifact
-        run: yarn build:tarball
-      
       - name: Run generate
-        run: yarn run generate
+        run: yarn generate
 
       - name: Run tests
         run: yarn test
@@ -49,6 +43,12 @@ jobs:
           else
             exit 0
           fi
+
+      - name: Build Packages
+        run: yarn build
+
+      - name: Generate tarball artifact
+        run: yarn build:tarball
 
       - name: Upload artifacts for release via getsentry/craft
         uses: actions/upload-artifact@v4
