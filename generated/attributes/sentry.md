@@ -33,6 +33,7 @@
   - [sentry.transaction](#sentrytransaction)
 - [Deprecated Attributes](#deprecated-attributes)
   - [sentry.browser.name](#sentrybrowsername)
+  - [sentry.browser.version](#sentrybrowserversion)
   - [sentry.segment_id](#sentrysegment_id)
 
 ## Stable Attributes
@@ -368,6 +369,19 @@ The name of the browser.
 | Example | `Chrome` |
 | Deprecated | Yes, use `browser.name` instead |
 | Aliases | `browser.name` |
+
+### sentry.browser.version
+
+The version of the browser.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `120.0.6099.130` |
+| Deprecated | Yes, use `browser.version` instead |
+| Aliases | `browser.version` |
 
 ### sentry.segment_id
 
