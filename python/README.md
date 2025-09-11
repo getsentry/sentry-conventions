@@ -14,7 +14,13 @@
 
 [![PyPI version](https://img.shields.io/pypi/v/sentry-conventions.svg)](https://pypi.org/project/sentry-conventions/)
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/sentry-conventions.svg)](https://pypi.org/project/sentry-conventions/)
-[![Discord Chat](https://img.shields.io/discord/621778831602221064.svg)](https://discord.gg/Ww9hbqr)
+[![Discord Chat](https://img.shields.io/discord/621778831602221064.svg)](https://discord.gg/sentry)
 
 ![GitHub Actions](https://github.com/getsentry/sentry-conventions/actions/workflows/build.yml/badge.svg)
 [![Codecov](https://codecov.io/gh/getsentry/sentry-conventions/graph/badge.svg?token=fQNlGihNOf)](https://codecov.io/gh/getsentry/sentry-conventions)
+
+The package exports:
+
+- `attributes.ATTRIBUTE_NAMES`: contains constants for all attribute names and their types, as defined in the Sentry semantic conventions
+- `attributes.Attributes`: represents a bag of typed attributes
+- `attributes._ATTRIBUTE_METADATA`: provides metadata about attributes, such as their type, PII definition, and deprecation info
