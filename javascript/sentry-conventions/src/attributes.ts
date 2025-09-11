@@ -5364,6 +5364,26 @@ export const SENTRY_CLIENT_SAMPLE_RATE = 'sentry.client_sample_rate';
  */
 export type SENTRY_CLIENT_SAMPLE_RATE_TYPE = number;
 
+// Path: model/attributes/sentry/sentry__description.json
+
+/**
+ * The human-readable description of a span. `sentry.description`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_DESCRIPTION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "index view query"
+ */
+export const SENTRY_DESCRIPTION = 'sentry.description';
+
+/**
+ * Type for {@link SENTRY_DESCRIPTION} sentry.description
+ */
+export type SENTRY_DESCRIPTION_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__dist.json
 
 /**
@@ -6775,6 +6795,7 @@ export type Attributes = {
   [RPC_SERVICE]?: RPC_SERVICE_TYPE;
   [SENTRY_CANCELLATION_REASON]?: SENTRY_CANCELLATION_REASON_TYPE;
   [SENTRY_CLIENT_SAMPLE_RATE]?: SENTRY_CLIENT_SAMPLE_RATE_TYPE;
+  [SENTRY_DESCRIPTION]?: SENTRY_DESCRIPTION_TYPE;
   [SENTRY_DIST]?: SENTRY_DIST_TYPE;
   [SENTRY_ENVIRONMENT]?: SENTRY_ENVIRONMENT_TYPE;
   [SENTRY_EXCLUSIVE_TIME]?: SENTRY_EXCLUSIVE_TIME_TYPE;
@@ -7089,6 +7110,7 @@ export type FullAttributes = {
   [RPC_SERVICE]?: RPC_SERVICE_TYPE;
   [SENTRY_CANCELLATION_REASON]?: SENTRY_CANCELLATION_REASON_TYPE;
   [SENTRY_CLIENT_SAMPLE_RATE]?: SENTRY_CLIENT_SAMPLE_RATE_TYPE;
+  [SENTRY_DESCRIPTION]?: SENTRY_DESCRIPTION_TYPE;
   [SENTRY_DIST]?: SENTRY_DIST_TYPE;
   [SENTRY_ENVIRONMENT]?: SENTRY_ENVIRONMENT_TYPE;
   [SENTRY_EXCLUSIVE_TIME]?: SENTRY_EXCLUSIVE_TIME_TYPE;
