@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eux
 
-ROOT_DIR="$(dirname "$0")/.."
+ROOT_DIR="$(realpath $(dirname "$0")/..)"
 
 OLD_VERSION="${1}"
 NEW_VERSION="${2}"
