@@ -5,4 +5,4 @@ NEW_VERSION="${2}"
 
 # Do not tag and commit changes made by "npm version"
 export npm_config_git_tag_version=false
-(cd javascript/sentry-conventions && yarn version "${NEW_VERSION}")
+(cd javascript/sentry-conventions && yarn --version "${NEW_VERSION}")
