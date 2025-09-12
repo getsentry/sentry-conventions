@@ -5,11 +5,11 @@ targets:
   # NPM Release Target
   - name: npm
     id: "@sentry/conventions"
-    includeNames: /^javascript\/sentry-conventions\/sentry-conventions.*\.tgz$/
+    includeNames: /sentry-conventions-v.*\.tgz$/
 
   # pypi Release Targets
   - name: pypi
-    includeNames: /^python\/dist\/.*\.whl$/
+    includeNames: /sentry_conventions.*\.whl$/
   
   # TODO: Uncomment after release to normal pypi
   # - name: sentry-pypi
@@ -28,4 +28,3 @@ targets:
 
   # Github Release Target
   - name: github
-    includeNames: /^(javascript\/.*\.tgz|python\/dist\/.*\.whl|model\/.*\.tgz)$/
