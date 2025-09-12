@@ -5,10 +5,11 @@ targets:
   # NPM Release Target
   - name: npm
     id: "@sentry/conventions"
-    includeNames: /^sentry-conventions-\d.*\.tgz$/
+    includeNames: /^javascript\/sentry-conventions\/sentry-conventions-v.*\.tgz$/
 
   # pypi Release Targets
   - name: pypi
+    includeNames: /^python\/dist\/.*\.whl$/
   
   # TODO: Uncomment after release to normal pypi
   # - name: sentry-pypi
@@ -18,7 +19,7 @@ targets:
   # TODO: Uncomment this when we have a bucket for the model conventions json
   # - name: gcs
   #   id: "model-conventions-json"
-  #   includeNames: /.*\.tgz$/
+  #   includeNames: /^model\/.*\.tgz$/
   #   bucket: sentry-conventions
   #   paths:
   #     - path: /{{version}}/
@@ -27,4 +28,4 @@ targets:
 
   # Github Release Target
   - name: github
-    includeNames: /^sentry-.*$/
+    includeNames: /^(javascript\/.*\.tgz|python\/dist\/.*\.whl|model\/.*\.tgz)$/

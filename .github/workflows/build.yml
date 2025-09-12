@@ -56,7 +56,6 @@ jobs:
           name: ${{ github.sha }}
           path: |
             javascript/**/*.tgz
-            python/**/*.tgz
             python/**/*.whl
             model/**/*.tgz
           if-no-files-found: error
