@@ -1,9 +1,7 @@
 #!/bin/bash
 set -eux
 
-# Move to the project root
-SCRIPT_DIR="$(dirname "$0")"
-cd $SCRIPT_DIR/..
+ROOT_DIR="$(dirname "$0")/.."
 
 OLD_VERSION="${1}"
 NEW_VERSION="${2}"
@@ -13,6 +11,7 @@ echo "Bumping to version: $NEW_VERSION"
 
 # ==================== JS ====================
 
+cd $ROOT_DIR
 cd javascript/sentry-conventions
 
 # Do not tag and commit changes made by "npm version"
@@ -22,7 +21,7 @@ npm version "${NEW_VERSION}"
 
 # ==================== PY ====================
 
-cd ..
+cd $ROOT_DIR
 cd python
 
 uv version "$NEW_VERSION"
