@@ -40,5 +40,8 @@
   "bugs": {
     "url": "https://github.com/getsentry/sentry-conventions/issues"
   },
-  "homepage": "https://github.com/getsentry/sentry-conventions#readme"
+  "homepage": "https://github.com/getsentry/sentry-conventions#readme",
+  "publishConfig": {
+    "access": "public"
+  }
 }
