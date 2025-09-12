@@ -5,7 +5,7 @@ targets:
   # NPM Release Target
   - name: npm
     id: "@sentry/conventions"
-    includeNames: /^javascript\/sentry-conventions\/sentry-conventions-v.*\.tgz$/
+    includeNames: /^javascript\/sentry-conventions\/sentry-conventions.*\.tgz$/
 
   # pypi Release Targets
   - name: pypi
