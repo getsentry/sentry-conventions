@@ -3,6 +3,7 @@
 # Sentry Attributes
 
 - [Stable Attributes](#stable-attributes)
+  - [sentry._internal.segment.contains_gen_ai_spans](#sentry_internalsegmentcontains_gen_ai_spans)
   - [sentry.cancellation_reason](#sentrycancellation_reason)
   - [sentry.client_sample_rate](#sentryclient_sample_rate)
   - [sentry.description](#sentrydescription)
@@ -37,6 +38,17 @@
   - [sentry.segment_id](#sentrysegment_id)
 
 ## Stable Attributes
+
+### sentry._internal.segment.contains_gen_ai_spans
+
+True if any of the spans in the segment contain gen_ai attributes. This attribute is only set on the main segment span.
+
+| Property | Value |
+| --- | --- |
+| Type | `boolean` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `true` |
 
 ### sentry.cancellation_reason
 

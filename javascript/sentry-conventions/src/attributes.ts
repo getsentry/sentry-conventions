@@ -5348,6 +5348,26 @@ export const RPC_SERVICE = 'rpc.service';
  */
 export type RPC_SERVICE_TYPE = string;
 
+// Path: model/attributes/sentry/sentry___internal__segment__contains_gen_ai_spans.json
+
+/**
+ * True if any of the spans in the segment contain gen_ai attributes. This attribute is only set on the main segment span. `sentry._internal.segment.contains_gen_ai_spans`
+ *
+ * Attribute Value Type: `boolean` {@link SENTRY_INTERNAL_SEGMENT_CONTAINS_GEN_AI_SPANS_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example true
+ */
+export const SENTRY_INTERNAL_SEGMENT_CONTAINS_GEN_AI_SPANS = 'sentry._internal.segment.contains_gen_ai_spans';
+
+/**
+ * Type for {@link SENTRY_INTERNAL_SEGMENT_CONTAINS_GEN_AI_SPANS} sentry._internal.segment.contains_gen_ai_spans
+ */
+export type SENTRY_INTERNAL_SEGMENT_CONTAINS_GEN_AI_SPANS_TYPE = boolean;
+
 // Path: model/attributes/sentry/sentry__browser__name.json
 
 /**
@@ -6932,6 +6952,7 @@ export type Attributes = {
   [ROUTE]?: ROUTE_TYPE;
   [RPC_GRPC_STATUS_CODE]?: RPC_GRPC_STATUS_CODE_TYPE;
   [RPC_SERVICE]?: RPC_SERVICE_TYPE;
+  [SENTRY_INTERNAL_SEGMENT_CONTAINS_GEN_AI_SPANS]?: SENTRY_INTERNAL_SEGMENT_CONTAINS_GEN_AI_SPANS_TYPE;
   [SENTRY_BROWSER_NAME]?: SENTRY_BROWSER_NAME_TYPE;
   [SENTRY_BROWSER_VERSION]?: SENTRY_BROWSER_VERSION_TYPE;
   [SENTRY_CANCELLATION_REASON]?: SENTRY_CANCELLATION_REASON_TYPE;
