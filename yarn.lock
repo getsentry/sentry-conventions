@@ -128,7 +128,7 @@
   integrity sha512-XiK5z70PEFEFqcNj3/zRSz/qX4bp4QIraTy9QjwJAb/Z8GM7kVUsD0Uk8maIPeTyPCP03ChdI+VVmJriKYbRHQ==
 
 "@sentry/conventions@file:/home/runner/work/sentry-conventions/sentry-conventions/javascript/sentry-conventions":
-  version "0.1.0"
+  version "0.1.1"
   resolved "file:javascript/sentry-conventions"
 
 "@trysound/sax@0.2.0":

@@ -1,6 +1,6 @@
 [project]
 name = "sentry-conventions"
-version = "0.1.0"
+version = "0.1.1"
 description = "Sentry Semantic Conventions"
 license = { "text" = "MIT" }
 readme = "README.md"
