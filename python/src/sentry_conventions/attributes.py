@@ -5919,7 +5919,8 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="1544712660300000000",
         deprecation=DeprecationInfo(
-            replacement="sentry._internal.observed_timestamp_nanos"
+            replacement="sentry._internal.observed_timestamp_nanos",
+            status=DeprecationStatus.BACKFILL,
         ),
         aliases=["sentry._internal.observed_timestamp_nanos"],
     ),
