@@ -5,9 +5,12 @@
 import warnings
 from dataclasses import dataclass
 from enum import Enum
-from typing import List, Union, Literal, Optional, Dict, TypedDict
+from typing import Dict, List, Literal, Optional, TypedDict, Union
 
-AttributeValue = Union[str, int, float, bool, List[str], List[int], List[float], List[bool]]
+AttributeValue = Union[
+    str, int, float, bool, List[str], List[int], List[float], List[bool]
+]
+
 
 class AttributeType(Enum):
     STRING = "string"
@@ -19,27 +22,34 @@ class AttributeType(Enum):
     INTEGER_ARRAY = "integer[]"
     DOUBLE_ARRAY = "double[]"
 
+
 class IsPii(Enum):
     TRUE = "true"
     FALSE = "false"
     MAYBE = "maybe"
 
+
 @dataclass
 class PiiInfo:
     """Holds information about PII in an attribute's values."""
+
     isPii: IsPii
     reason: Optional[str] = None
+
 
 class DeprecationStatus(Enum):
     BACKFILL = "backfill"
     NORMALIZE = "normalize"
 
+
 @dataclass
 class DeprecationInfo:
     """Holds information about a deprecation."""
+
     replacement: Optional[str] = None
     reason: Optional[str] = None
     status: Optional[DeprecationStatus] = None
+
 
 @dataclass
 class AttributeMetadata:
@@ -47,30 +57,31 @@ class AttributeMetadata:
 
     brief: str
     """A description of the attribute"""
-    
+
     type: AttributeType
     """The type of the attribute value"""
-    
+
     pii: PiiInfo
     """If an attribute can have pii. Is either true, false or maybe. Optionally include a reason about why it has PII or not"""
-    
+
     is_in_otel: bool
     """Whether the attribute is defined in OpenTelemetry Semantic Conventions"""
-    
+
     has_dynamic_suffix: Optional[bool] = None
     """If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"""
-    
+
     example: Optional[AttributeValue] = None
     """An example value of the attribute"""
-    
+
     deprecation: Optional[DeprecationInfo] = None
     """If an attribute was deprecated, and what it was replaced with"""
-    
+
     aliases: Optional[List[str]] = None
     """If there are attributes that alias to this attribute"""
-    
+
     sdks: Optional[List[str]] = None
     """If an attribute is SDK specific, list the SDKs that use this attribute. This is not an exhaustive list, there might be SDKs that send this attribute that are is not documented here."""
+
 
 class _AttributeNamesMeta(type):
     _deprecated_names = {
@@ -161,6 +172,7 @@ class _AttributeNamesMeta(type):
             )
         return super().__getattribute__(name)
 
+
 class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Contains all attribute names as class attributes with their documentation."""
 
@@ -175,7 +187,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__completion_tokens__used.json
-    AI_COMPLETION_TOKENS_USED: Literal["ai.completion_tokens.used"] = "ai.completion_tokens.used"
+    AI_COMPLETION_TOKENS_USED: Literal["ai.completion_tokens.used"] = (
+        "ai.completion_tokens.used"
+    )
     """The number of tokens used to respond to the message.
 
     Type: int
@@ -583,7 +597,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__script__invoker_type.json
-    BROWSER_SCRIPT_INVOKER_TYPE: Literal["browser.script.invoker_type"] = "browser.script.invoker_type"
+    BROWSER_SCRIPT_INVOKER_TYPE: Literal["browser.script.invoker_type"] = (
+        "browser.script.invoker_type"
+    )
     """Browser script entry point type.
 
     Type: str
@@ -593,7 +609,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__script__source_char_position.json
-    BROWSER_SCRIPT_SOURCE_CHAR_POSITION: Literal["browser.script.source_char_position"] = "browser.script.source_char_position"
+    BROWSER_SCRIPT_SOURCE_CHAR_POSITION: Literal[
+        "browser.script.source_char_position"
+    ] = "browser.script.source_char_position"
     """A number representing the script character position of the script.
 
     Type: int
@@ -705,7 +723,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/cloudflare/cloudflare__d1__rows_read.json
-    CLOUDFLARE_D1_ROWS_READ: Literal["cloudflare.d1.rows_read"] = "cloudflare.d1.rows_read"
+    CLOUDFLARE_D1_ROWS_READ: Literal["cloudflare.d1.rows_read"] = (
+        "cloudflare.d1.rows_read"
+    )
     """The number of rows read in a Cloudflare D1 operation.
 
     Type: int
@@ -715,7 +735,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/cloudflare/cloudflare__d1__rows_written.json
-    CLOUDFLARE_D1_ROWS_WRITTEN: Literal["cloudflare.d1.rows_written"] = "cloudflare.d1.rows_written"
+    CLOUDFLARE_D1_ROWS_WRITTEN: Literal["cloudflare.d1.rows_written"] = (
+        "cloudflare.d1.rows_written"
+    )
     """The number of rows written in a Cloudflare D1 operation.
 
     Type: int
@@ -861,7 +883,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/db/db__query__parameter__[key].json
-    DB_QUERY_PARAMETER_KEY: Literal["db.query.parameter.<key>"] = "db.query.parameter.<key>"
+    DB_QUERY_PARAMETER_KEY: Literal["db.query.parameter.<key>"] = (
+        "db.query.parameter.<key>"
+    )
     """A query parameter used in db.query.text, with <key> being the parameter name, and the attribute value being a string representation of the parameter value.
 
     Type: str
@@ -1193,7 +1217,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__assistant__message.json
-    GEN_AI_ASSISTANT_MESSAGE: Literal["gen_ai.assistant.message"] = "gen_ai.assistant.message"
+    GEN_AI_ASSISTANT_MESSAGE: Literal["gen_ai.assistant.message"] = (
+        "gen_ai.assistant.message"
+    )
     """The assistant message passed to the model.
 
     Type: str
@@ -1213,7 +1239,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__cost__input_tokens.json
-    GEN_AI_COST_INPUT_TOKENS: Literal["gen_ai.cost.input_tokens"] = "gen_ai.cost.input_tokens"
+    GEN_AI_COST_INPUT_TOKENS: Literal["gen_ai.cost.input_tokens"] = (
+        "gen_ai.cost.input_tokens"
+    )
     """The cost of tokens used to process the AI input (prompt) in USD (without cached input tokens).
 
     Type: float
@@ -1223,7 +1251,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__cost__output_tokens.json
-    GEN_AI_COST_OUTPUT_TOKENS: Literal["gen_ai.cost.output_tokens"] = "gen_ai.cost.output_tokens"
+    GEN_AI_COST_OUTPUT_TOKENS: Literal["gen_ai.cost.output_tokens"] = (
+        "gen_ai.cost.output_tokens"
+    )
     """The cost of tokens used for creating the AI output in USD (without reasoning tokens).
 
     Type: float
@@ -1233,7 +1263,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__cost__total_tokens.json
-    GEN_AI_COST_TOTAL_TOKENS: Literal["gen_ai.cost.total_tokens"] = "gen_ai.cost.total_tokens"
+    GEN_AI_COST_TOTAL_TOKENS: Literal["gen_ai.cost.total_tokens"] = (
+        "gen_ai.cost.total_tokens"
+    )
     """The total cost for the tokens used.
 
     Type: float
@@ -1285,7 +1317,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__request__available_tools.json
-    GEN_AI_REQUEST_AVAILABLE_TOOLS: Literal["gen_ai.request.available_tools"] = "gen_ai.request.available_tools"
+    GEN_AI_REQUEST_AVAILABLE_TOOLS: Literal["gen_ai.request.available_tools"] = (
+        "gen_ai.request.available_tools"
+    )
     """The available tools for the model. It has to be a stringified version of an array of objects.
 
     Type: str
@@ -1295,7 +1329,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__request__frequency_penalty.json
-    GEN_AI_REQUEST_FREQUENCY_PENALTY: Literal["gen_ai.request.frequency_penalty"] = "gen_ai.request.frequency_penalty"
+    GEN_AI_REQUEST_FREQUENCY_PENALTY: Literal["gen_ai.request.frequency_penalty"] = (
+        "gen_ai.request.frequency_penalty"
+    )
     """Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.
 
     Type: float
@@ -1306,7 +1342,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__request__max_tokens.json
-    GEN_AI_REQUEST_MAX_TOKENS: Literal["gen_ai.request.max_tokens"] = "gen_ai.request.max_tokens"
+    GEN_AI_REQUEST_MAX_TOKENS: Literal["gen_ai.request.max_tokens"] = (
+        "gen_ai.request.max_tokens"
+    )
     """The maximum number of tokens to generate in the response.
 
     Type: int
@@ -1316,7 +1354,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__request__messages.json
-    GEN_AI_REQUEST_MESSAGES: Literal["gen_ai.request.messages"] = "gen_ai.request.messages"
+    GEN_AI_REQUEST_MESSAGES: Literal["gen_ai.request.messages"] = (
+        "gen_ai.request.messages"
+    )
     """The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.
 
     Type: str
@@ -1337,7 +1377,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__request__presence_penalty.json
-    GEN_AI_REQUEST_PRESENCE_PENALTY: Literal["gen_ai.request.presence_penalty"] = "gen_ai.request.presence_penalty"
+    GEN_AI_REQUEST_PRESENCE_PENALTY: Literal["gen_ai.request.presence_penalty"] = (
+        "gen_ai.request.presence_penalty"
+    )
     """Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.
 
     Type: float
@@ -1359,7 +1401,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__request__temperature.json
-    GEN_AI_REQUEST_TEMPERATURE: Literal["gen_ai.request.temperature"] = "gen_ai.request.temperature"
+    GEN_AI_REQUEST_TEMPERATURE: Literal["gen_ai.request.temperature"] = (
+        "gen_ai.request.temperature"
+    )
     """For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.
 
     Type: float
@@ -1392,7 +1436,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__response__finish_reasons.json
-    GEN_AI_RESPONSE_FINISH_REASONS: Literal["gen_ai.response.finish_reasons"] = "gen_ai.response.finish_reasons"
+    GEN_AI_RESPONSE_FINISH_REASONS: Literal["gen_ai.response.finish_reasons"] = (
+        "gen_ai.response.finish_reasons"
+    )
     """The reason why the model stopped generating.
 
     Type: str
@@ -1425,7 +1471,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__response__streaming.json
-    GEN_AI_RESPONSE_STREAMING: Literal["gen_ai.response.streaming"] = "gen_ai.response.streaming"
+    GEN_AI_RESPONSE_STREAMING: Literal["gen_ai.response.streaming"] = (
+        "gen_ai.response.streaming"
+    )
     """Whether or not the AI model call's response was streamed back asynchronously
 
     Type: bool
@@ -1446,7 +1494,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__response__tokens_per_second.json
-    GEN_AI_RESPONSE_TOKENS_PER_SECOND: Literal["gen_ai.response.tokens_per_second"] = "gen_ai.response.tokens_per_second"
+    GEN_AI_RESPONSE_TOKENS_PER_SECOND: Literal["gen_ai.response.tokens_per_second"] = (
+        "gen_ai.response.tokens_per_second"
+    )
     """The total output tokens per seconds throughput
 
     Type: float
@@ -1456,7 +1506,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__response__tool_calls.json
-    GEN_AI_RESPONSE_TOOL_CALLS: Literal["gen_ai.response.tool_calls"] = "gen_ai.response.tool_calls"
+    GEN_AI_RESPONSE_TOOL_CALLS: Literal["gen_ai.response.tool_calls"] = (
+        "gen_ai.response.tool_calls"
+    )
     """The tool calls in the model's response. It has to be a stringified version of an array of objects.
 
     Type: str
@@ -1487,7 +1539,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__tool__description.json
-    GEN_AI_TOOL_DESCRIPTION: Literal["gen_ai.tool.description"] = "gen_ai.tool.description"
+    GEN_AI_TOOL_DESCRIPTION: Literal["gen_ai.tool.description"] = (
+        "gen_ai.tool.description"
+    )
     """The description of the tool being used.
 
     Type: str
@@ -1548,7 +1602,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__usage__completion_tokens.json
-    GEN_AI_USAGE_COMPLETION_TOKENS: Literal["gen_ai.usage.completion_tokens"] = "gen_ai.usage.completion_tokens"
+    GEN_AI_USAGE_COMPLETION_TOKENS: Literal["gen_ai.usage.completion_tokens"] = (
+        "gen_ai.usage.completion_tokens"
+    )
     """The number of tokens used in the GenAI response (completion).
 
     Type: int
@@ -1560,7 +1616,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__usage__input_tokens.json
-    GEN_AI_USAGE_INPUT_TOKENS: Literal["gen_ai.usage.input_tokens"] = "gen_ai.usage.input_tokens"
+    GEN_AI_USAGE_INPUT_TOKENS: Literal["gen_ai.usage.input_tokens"] = (
+        "gen_ai.usage.input_tokens"
+    )
     """The number of tokens used to process the AI input (prompt) without cached input tokens.
 
     Type: int
@@ -1571,7 +1629,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__usage__input_tokens__cached.json
-    GEN_AI_USAGE_INPUT_TOKENS_CACHED: Literal["gen_ai.usage.input_tokens.cached"] = "gen_ai.usage.input_tokens.cached"
+    GEN_AI_USAGE_INPUT_TOKENS_CACHED: Literal["gen_ai.usage.input_tokens.cached"] = (
+        "gen_ai.usage.input_tokens.cached"
+    )
     """The number of cached tokens used to process the AI input (prompt).
 
     Type: int
@@ -1581,7 +1641,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__usage__output_tokens.json
-    GEN_AI_USAGE_OUTPUT_TOKENS: Literal["gen_ai.usage.output_tokens"] = "gen_ai.usage.output_tokens"
+    GEN_AI_USAGE_OUTPUT_TOKENS: Literal["gen_ai.usage.output_tokens"] = (
+        "gen_ai.usage.output_tokens"
+    )
     """The number of tokens used for creating the AI output (without reasoning tokens).
 
     Type: int
@@ -1592,7 +1654,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__usage__output_tokens__reasoning.json
-    GEN_AI_USAGE_OUTPUT_TOKENS_REASONING: Literal["gen_ai.usage.output_tokens.reasoning"] = "gen_ai.usage.output_tokens.reasoning"
+    GEN_AI_USAGE_OUTPUT_TOKENS_REASONING: Literal[
+        "gen_ai.usage.output_tokens.reasoning"
+    ] = "gen_ai.usage.output_tokens.reasoning"
     """The number of tokens used for reasoning to create the AI output.
 
     Type: int
@@ -1602,7 +1666,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__usage__prompt_tokens.json
-    GEN_AI_USAGE_PROMPT_TOKENS: Literal["gen_ai.usage.prompt_tokens"] = "gen_ai.usage.prompt_tokens"
+    GEN_AI_USAGE_PROMPT_TOKENS: Literal["gen_ai.usage.prompt_tokens"] = (
+        "gen_ai.usage.prompt_tokens"
+    )
     """The number of tokens used in the GenAI input (prompt).
 
     Type: int
@@ -1614,7 +1680,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__usage__total_cost.json
-    GEN_AI_USAGE_TOTAL_COST: Literal["gen_ai.usage.total_cost"] = "gen_ai.usage.total_cost"
+    GEN_AI_USAGE_TOTAL_COST: Literal["gen_ai.usage.total_cost"] = (
+        "gen_ai.usage.total_cost"
+    )
     """The total cost for the tokens used.
 
     Type: float
@@ -1625,7 +1693,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__usage__total_tokens.json
-    GEN_AI_USAGE_TOTAL_TOKENS: Literal["gen_ai.usage.total_tokens"] = "gen_ai.usage.total_tokens"
+    GEN_AI_USAGE_TOTAL_TOKENS: Literal["gen_ai.usage.total_tokens"] = (
+        "gen_ai.usage.total_tokens"
+    )
     """The total number of tokens used to process the prompt. (input tokens plus output todkens)
 
     Type: int
@@ -1678,7 +1748,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__decoded_response_content_length.json
-    HTTP_DECODED_RESPONSE_CONTENT_LENGTH: Literal["http.decoded_response_content_length"] = "http.decoded_response_content_length"
+    HTTP_DECODED_RESPONSE_CONTENT_LENGTH: Literal[
+        "http.decoded_response_content_length"
+    ] = "http.decoded_response_content_length"
     """The decoded body size of the response (in bytes).
 
     Type: int
@@ -1744,7 +1816,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__request__connect_start.json
-    HTTP_REQUEST_CONNECT_START: Literal["http.request.connect_start"] = "http.request.connect_start"
+    HTTP_REQUEST_CONNECT_START: Literal["http.request.connect_start"] = (
+        "http.request.connect_start"
+    )
     """The UNIX timestamp representing the time immediately before the user agent starts establishing the connection to the server to retrieve the resource.
 
     Type: float
@@ -1754,7 +1828,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__request__connection_end.json
-    HTTP_REQUEST_CONNECTION_END: Literal["http.request.connection_end"] = "http.request.connection_end"
+    HTTP_REQUEST_CONNECTION_END: Literal["http.request.connection_end"] = (
+        "http.request.connection_end"
+    )
     """The UNIX timestamp representing the time immediately after the browser finishes establishing the connection to the server to retrieve the resource. The timestamp value includes the time interval to establish the transport connection, as well as other time intervals such as TLS handshake and SOCKS authentication.
 
     Type: float
@@ -1764,7 +1840,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__request__domain_lookup_end.json
-    HTTP_REQUEST_DOMAIN_LOOKUP_END: Literal["http.request.domain_lookup_end"] = "http.request.domain_lookup_end"
+    HTTP_REQUEST_DOMAIN_LOOKUP_END: Literal["http.request.domain_lookup_end"] = (
+        "http.request.domain_lookup_end"
+    )
     """The UNIX timestamp representing the time immediately after the browser finishes the domain-name lookup for the resource.
 
     Type: float
@@ -1774,7 +1852,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__request__domain_lookup_start.json
-    HTTP_REQUEST_DOMAIN_LOOKUP_START: Literal["http.request.domain_lookup_start"] = "http.request.domain_lookup_start"
+    HTTP_REQUEST_DOMAIN_LOOKUP_START: Literal["http.request.domain_lookup_start"] = (
+        "http.request.domain_lookup_start"
+    )
     """The UNIX timestamp representing the time immediately before the browser starts the domain name lookup for the resource.
 
     Type: float
@@ -1784,7 +1864,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__request__fetch_start.json
-    HTTP_REQUEST_FETCH_START: Literal["http.request.fetch_start"] = "http.request.fetch_start"
+    HTTP_REQUEST_FETCH_START: Literal["http.request.fetch_start"] = (
+        "http.request.fetch_start"
+    )
     """The UNIX timestamp representing the time immediately before the browser starts to fetch the resource.
 
     Type: float
@@ -1794,7 +1876,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__request__header__[key].json
-    HTTP_REQUEST_HEADER_KEY: Literal["http.request.header.<key>"] = "http.request.header.<key>"
+    HTTP_REQUEST_HEADER_KEY: Literal["http.request.header.<key>"] = (
+        "http.request.header.<key>"
+    )
     """HTTP request headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.
 
     Type: List[str]
@@ -1816,7 +1900,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__request__redirect_end.json
-    HTTP_REQUEST_REDIRECT_END: Literal["http.request.redirect_end"] = "http.request.redirect_end"
+    HTTP_REQUEST_REDIRECT_END: Literal["http.request.redirect_end"] = (
+        "http.request.redirect_end"
+    )
     """The UNIX timestamp representing the timestamp immediately after receiving the last byte of the response of the last redirect
 
     Type: float
@@ -1826,7 +1912,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__request__redirect_start.json
-    HTTP_REQUEST_REDIRECT_START: Literal["http.request.redirect_start"] = "http.request.redirect_start"
+    HTTP_REQUEST_REDIRECT_START: Literal["http.request.redirect_start"] = (
+        "http.request.redirect_start"
+    )
     """The UNIX timestamp representing the start time of the fetch which that initiates the redirect.
 
     Type: float
@@ -1836,7 +1924,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__request__request_start.json
-    HTTP_REQUEST_REQUEST_START: Literal["http.request.request_start"] = "http.request.request_start"
+    HTTP_REQUEST_REQUEST_START: Literal["http.request.request_start"] = (
+        "http.request.request_start"
+    )
     """The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.
 
     Type: float
@@ -1846,7 +1936,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__request__resend_count.json
-    HTTP_REQUEST_RESEND_COUNT: Literal["http.request.resend_count"] = "http.request.resend_count"
+    HTTP_REQUEST_RESEND_COUNT: Literal["http.request.resend_count"] = (
+        "http.request.resend_count"
+    )
     """The ordinal number of request resending attempt (for any reason, including redirects).
 
     Type: int
@@ -1856,7 +1948,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__request__response_end.json
-    HTTP_REQUEST_RESPONSE_END: Literal["http.request.response_end"] = "http.request.response_end"
+    HTTP_REQUEST_RESPONSE_END: Literal["http.request.response_end"] = (
+        "http.request.response_end"
+    )
     """The UNIX timestamp representing the time immediately after the browser receives the last byte of the resource or immediately before the transport connection is closed, whichever comes first.
 
     Type: float
@@ -1866,7 +1960,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__request__response_start.json
-    HTTP_REQUEST_RESPONSE_START: Literal["http.request.response_start"] = "http.request.response_start"
+    HTTP_REQUEST_RESPONSE_START: Literal["http.request.response_start"] = (
+        "http.request.response_start"
+    )
     """The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.
 
     Type: float
@@ -1876,7 +1972,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__request__secure_connection_start.json
-    HTTP_REQUEST_SECURE_CONNECTION_START: Literal["http.request.secure_connection_start"] = "http.request.secure_connection_start"
+    HTTP_REQUEST_SECURE_CONNECTION_START: Literal[
+        "http.request.secure_connection_start"
+    ] = "http.request.secure_connection_start"
     """The UNIX timestamp representing the time immediately before the browser starts the handshake process to secure the current connection. If a secure connection is not used, the property returns zero.
 
     Type: float
@@ -1886,7 +1984,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__request__time_to_first_byte.json
-    HTTP_REQUEST_TIME_TO_FIRST_BYTE: Literal["http.request.time_to_first_byte"] = "http.request.time_to_first_byte"
+    HTTP_REQUEST_TIME_TO_FIRST_BYTE: Literal["http.request.time_to_first_byte"] = (
+        "http.request.time_to_first_byte"
+    )
     """The time in seconds from the browser's timeorigin to when the first byte of the request's response was received. See https://web.dev/articles/ttfb#measure-resource-requests
 
     Type: float
@@ -1896,7 +1996,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__request__worker_start.json
-    HTTP_REQUEST_WORKER_START: Literal["http.request.worker_start"] = "http.request.worker_start"
+    HTTP_REQUEST_WORKER_START: Literal["http.request.worker_start"] = (
+        "http.request.worker_start"
+    )
     """The UNIX timestamp representing the timestamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running.
 
     Type: float
@@ -1906,7 +2008,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__response__body__size.json
-    HTTP_RESPONSE_BODY_SIZE: Literal["http.response.body.size"] = "http.response.body.size"
+    HTTP_RESPONSE_BODY_SIZE: Literal["http.response.body.size"] = (
+        "http.response.body.size"
+    )
     """The encoded body size of the response (in bytes).
 
     Type: int
@@ -1917,7 +2021,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__response__header__[key].json
-    HTTP_RESPONSE_HEADER_KEY: Literal["http.response.header.<key>"] = "http.response.header.<key>"
+    HTTP_RESPONSE_HEADER_KEY: Literal["http.response.header.<key>"] = (
+        "http.response.header.<key>"
+    )
     """HTTP response headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.
 
     Type: List[str]
@@ -1928,7 +2034,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__response__header__content-length.json
-    HTTP_RESPONSE_HEADER_CONTENT_LENGTH: Literal["http.response.header.content-length"] = "http.response.header.content-length"
+    HTTP_RESPONSE_HEADER_CONTENT_LENGTH: Literal[
+        "http.response.header.content-length"
+    ] = "http.response.header.content-length"
     """The size of the message body sent to the recipient (in bytes)
 
     Type: str
@@ -1950,7 +2058,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__response__status_code.json
-    HTTP_RESPONSE_STATUS_CODE: Literal["http.response.status_code"] = "http.response.status_code"
+    HTTP_RESPONSE_STATUS_CODE: Literal["http.response.status_code"] = (
+        "http.response.status_code"
+    )
     """The status code of the HTTP response.
 
     Type: int
@@ -1961,7 +2071,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__response_content_length.json
-    HTTP_RESPONSE_CONTENT_LENGTH: Literal["http.response_content_length"] = "http.response_content_length"
+    HTTP_RESPONSE_CONTENT_LENGTH: Literal["http.response_content_length"] = (
+        "http.response_content_length"
+    )
     """The encoded body size of the response (in bytes).
 
     Type: int
@@ -1973,7 +2085,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__response_transfer_size.json
-    HTTP_RESPONSE_TRANSFER_SIZE: Literal["http.response_transfer_size"] = "http.response_transfer_size"
+    HTTP_RESPONSE_TRANSFER_SIZE: Literal["http.response_transfer_size"] = (
+        "http.response_transfer_size"
+    )
     """The transfer size of the response (in bytes).
 
     Type: int
@@ -2187,7 +2301,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__destination__connection.json
-    MESSAGING_DESTINATION_CONNECTION: Literal["messaging.destination.connection"] = "messaging.destination.connection"
+    MESSAGING_DESTINATION_CONNECTION: Literal["messaging.destination.connection"] = (
+        "messaging.destination.connection"
+    )
     """The message destination connection.
 
     Type: str
@@ -2197,7 +2313,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__destination__name.json
-    MESSAGING_DESTINATION_NAME: Literal["messaging.destination.name"] = "messaging.destination.name"
+    MESSAGING_DESTINATION_NAME: Literal["messaging.destination.name"] = (
+        "messaging.destination.name"
+    )
     """The message destination name.
 
     Type: str
@@ -2207,7 +2325,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__message__body__size.json
-    MESSAGING_MESSAGE_BODY_SIZE: Literal["messaging.message.body.size"] = "messaging.message.body.size"
+    MESSAGING_MESSAGE_BODY_SIZE: Literal["messaging.message.body.size"] = (
+        "messaging.message.body.size"
+    )
     """The size of the message body in bytes.
 
     Type: int
@@ -2217,7 +2337,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__message__envelope__size.json
-    MESSAGING_MESSAGE_ENVELOPE_SIZE: Literal["messaging.message.envelope.size"] = "messaging.message.envelope.size"
+    MESSAGING_MESSAGE_ENVELOPE_SIZE: Literal["messaging.message.envelope.size"] = (
+        "messaging.message.envelope.size"
+    )
     """The size of the message body and metadata in bytes.
 
     Type: int
@@ -2237,7 +2359,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__message__receive__latency.json
-    MESSAGING_MESSAGE_RECEIVE_LATENCY: Literal["messaging.message.receive.latency"] = "messaging.message.receive.latency"
+    MESSAGING_MESSAGE_RECEIVE_LATENCY: Literal["messaging.message.receive.latency"] = (
+        "messaging.message.receive.latency"
+    )
     """The latency between when the message was published and received.
 
     Type: int
@@ -2247,7 +2371,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__message__retry__count.json
-    MESSAGING_MESSAGE_RETRY_COUNT: Literal["messaging.message.retry.count"] = "messaging.message.retry.count"
+    MESSAGING_MESSAGE_RETRY_COUNT: Literal["messaging.message.retry.count"] = (
+        "messaging.message.retry.count"
+    )
     """The amount of attempts to send the message.
 
     Type: int
@@ -2257,7 +2383,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__operation__type.json
-    MESSAGING_OPERATION_TYPE: Literal["messaging.operation.type"] = "messaging.operation.type"
+    MESSAGING_OPERATION_TYPE: Literal["messaging.operation.type"] = (
+        "messaging.operation.type"
+    )
     """A string identifying the type of the messaging operation
 
     Type: str
@@ -2578,7 +2706,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/network/network__protocol__version.json
-    NETWORK_PROTOCOL_VERSION: Literal["network.protocol.version"] = "network.protocol.version"
+    NETWORK_PROTOCOL_VERSION: Literal["network.protocol.version"] = (
+        "network.protocol.version"
+    )
     """The actual version of the protocol used for network communication.
 
     Type: str
@@ -2690,7 +2820,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/otel/otel__status_description.json
-    OTEL_STATUS_DESCRIPTION: Literal["otel.status_description"] = "otel.status_description"
+    OTEL_STATUS_DESCRIPTION: Literal["otel.status_description"] = (
+        "otel.status_description"
+    )
     """Description of the Status if it has a value, otherwise not set.
 
     Type: str
@@ -2722,7 +2854,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/process/process__executable__name.json
-    PROCESS_EXECUTABLE_NAME: Literal["process.executable.name"] = "process.executable.name"
+    PROCESS_EXECUTABLE_NAME: Literal["process.executable.name"] = (
+        "process.executable.name"
+    )
     """The name of the executable that started the process.
 
     Type: str
@@ -2742,7 +2876,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/process/process__runtime__description.json
-    PROCESS_RUNTIME_DESCRIPTION: Literal["process.runtime.description"] = "process.runtime.description"
+    PROCESS_RUNTIME_DESCRIPTION: Literal["process.runtime.description"] = (
+        "process.runtime.description"
+    )
     """An additional description about the runtime of the process, for example a specific vendor customization of the runtime environment. Equivalent to `raw_description` in the Sentry runtime context.
 
     Type: str
@@ -2762,7 +2898,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/process/process__runtime__version.json
-    PROCESS_RUNTIME_VERSION: Literal["process.runtime.version"] = "process.runtime.version"
+    PROCESS_RUNTIME_VERSION: Literal["process.runtime.version"] = (
+        "process.runtime.version"
+    )
     """The version of the runtime of this process, as returned by the runtime without modification. Equivalent to `version` in the Sentry runtime context.
 
     Type: str
@@ -2808,7 +2946,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/remix/remix__action_form_data__[key].json
-    REMIX_ACTION_FORM_DATA_KEY: Literal["remix.action_form_data.<key>"] = "remix.action_form_data.<key>"
+    REMIX_ACTION_FORM_DATA_KEY: Literal["remix.action_form_data.<key>"] = (
+        "remix.action_form_data.<key>"
+    )
     """Remix form data, <key> being the form data key, the value being the form data value.
 
     Type: str
@@ -2831,7 +2971,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/resource/resource__render_blocking_status.json
-    RESOURCE_RENDER_BLOCKING_STATUS: Literal["resource.render_blocking_status"] = "resource.render_blocking_status"
+    RESOURCE_RENDER_BLOCKING_STATUS: Literal["resource.render_blocking_status"] = (
+        "resource.render_blocking_status"
+    )
     """The render blocking status of the resource.
 
     Type: str
@@ -2873,7 +3015,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry___internal__observed_timestamp_nanos.json
-    SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS: Literal["sentry._internal.observed_timestamp_nanos"] = "sentry._internal.observed_timestamp_nanos"
+    SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS: Literal[
+        "sentry._internal.observed_timestamp_nanos"
+    ] = "sentry._internal.observed_timestamp_nanos"
     """The timestamp at which an envelope was received by Relay, in nanoseconds.
 
     Type: str
@@ -2884,7 +3028,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry___internal__segment__contains_gen_ai_spans.json
-    SENTRY_INTERNAL_SEGMENT_CONTAINS_GEN_AI_SPANS: Literal["sentry._internal.segment.contains_gen_ai_spans"] = "sentry._internal.segment.contains_gen_ai_spans"
+    SENTRY_INTERNAL_SEGMENT_CONTAINS_GEN_AI_SPANS: Literal[
+        "sentry._internal.segment.contains_gen_ai_spans"
+    ] = "sentry._internal.segment.contains_gen_ai_spans"
     """True if any of the spans in the segment contain gen_ai attributes. This attribute is only set on the main segment span.
 
     Type: bool
@@ -2918,7 +3064,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__cancellation_reason.json
-    SENTRY_CANCELLATION_REASON: Literal["sentry.cancellation_reason"] = "sentry.cancellation_reason"
+    SENTRY_CANCELLATION_REASON: Literal["sentry.cancellation_reason"] = (
+        "sentry.cancellation_reason"
+    )
     """The reason why a span ended early.
 
     Type: str
@@ -2928,7 +3076,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__client_sample_rate.json
-    SENTRY_CLIENT_SAMPLE_RATE: Literal["sentry.client_sample_rate"] = "sentry.client_sample_rate"
+    SENTRY_CLIENT_SAMPLE_RATE: Literal["sentry.client_sample_rate"] = (
+        "sentry.client_sample_rate"
+    )
     """Rate at which a span was sampled in the SDK.
 
     Type: float
@@ -2989,7 +3139,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__idle_span_finish_reason.json
-    SENTRY_IDLE_SPAN_FINISH_REASON: Literal["sentry.idle_span_finish_reason"] = "sentry.idle_span_finish_reason"
+    SENTRY_IDLE_SPAN_FINISH_REASON: Literal["sentry.idle_span_finish_reason"] = (
+        "sentry.idle_span_finish_reason"
+    )
     """The reason why an idle span ended early.
 
     Type: str
@@ -2999,7 +3151,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__message__parameter__[key].json
-    SENTRY_MESSAGE_PARAMETER_KEY: Literal["sentry.message.parameter.<key>"] = "sentry.message.parameter.<key>"
+    SENTRY_MESSAGE_PARAMETER_KEY: Literal["sentry.message.parameter.<key>"] = (
+        "sentry.message.parameter.<key>"
+    )
     """A parameter used in the message template. <key> can either be the number that represent the parameter's position in the template string (sentry.message.parameter.0, sentry.message.parameter.1, etc) or the parameter's name (sentry.message.parameter.item_id, sentry.message.parameter.user_id, etc)
 
     Type: str
@@ -3009,7 +3163,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__message__template.json
-    SENTRY_MESSAGE_TEMPLATE: Literal["sentry.message.template"] = "sentry.message.template"
+    SENTRY_MESSAGE_TEMPLATE: Literal["sentry.message.template"] = (
+        "sentry.message.template"
+    )
     """The parameterized template string.
 
     Type: str
@@ -3030,7 +3186,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__nextjs__ssr__function__route.json
-    SENTRY_NEXTJS_SSR_FUNCTION_ROUTE: Literal["sentry.nextjs.ssr.function.route"] = "sentry.nextjs.ssr.function.route"
+    SENTRY_NEXTJS_SSR_FUNCTION_ROUTE: Literal["sentry.nextjs.ssr.function.route"] = (
+        "sentry.nextjs.ssr.function.route"
+    )
     """A parameterized route for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions when the file location of the function is known.
 
     Type: str
@@ -3040,7 +3198,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__nextjs__ssr__function__type.json
-    SENTRY_NEXTJS_SSR_FUNCTION_TYPE: Literal["sentry.nextjs.ssr.function.type"] = "sentry.nextjs.ssr.function.type"
+    SENTRY_NEXTJS_SSR_FUNCTION_TYPE: Literal["sentry.nextjs.ssr.function.type"] = (
+        "sentry.nextjs.ssr.function.type"
+    )
     """A descriptor for a for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions.
 
     Type: str
@@ -3050,7 +3210,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__observed_timestamp_nanos.json
-    SENTRY_OBSERVED_TIMESTAMP_NANOS: Literal["sentry.observed_timestamp_nanos"] = "sentry.observed_timestamp_nanos"
+    SENTRY_OBSERVED_TIMESTAMP_NANOS: Literal["sentry.observed_timestamp_nanos"] = (
+        "sentry.observed_timestamp_nanos"
+    )
     """The timestamp at which an envelope was received by Relay, in nanoseconds.
 
     Type: str
@@ -3125,7 +3287,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__sdk__integrations.json
-    SENTRY_SDK_INTEGRATIONS: Literal["sentry.sdk.integrations"] = "sentry.sdk.integrations"
+    SENTRY_SDK_INTEGRATIONS: Literal["sentry.sdk.integrations"] = (
+        "sentry.sdk.integrations"
+    )
     """A list of names identifying enabled integrations. The list shouldhave all enabled integrations, including default integrations. Defaultintegrations are included because different SDK releases may contain differentdefault integrations.
 
     Type: List[str]
@@ -3188,7 +3352,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__server_sample_rate.json
-    SENTRY_SERVER_SAMPLE_RATE: Literal["sentry.server_sample_rate"] = "sentry.server_sample_rate"
+    SENTRY_SERVER_SAMPLE_RATE: Literal["sentry.server_sample_rate"] = (
+        "sentry.server_sample_rate"
+    )
     """Rate at which a span was sampled in Relay.
 
     Type: float
@@ -3208,7 +3374,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__trace__parent_span_id.json
-    SENTRY_TRACE_PARENT_SPAN_ID: Literal["sentry.trace.parent_span_id"] = "sentry.trace.parent_span_id"
+    SENTRY_TRACE_PARENT_SPAN_ID: Literal["sentry.trace.parent_span_id"] = (
+        "sentry.trace.parent_span_id"
+    )
     """The span id of the span that was active when the log was collected. This should not be set if there was no active span.
 
     Type: str
@@ -3385,7 +3553,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/url/url__path__parameter__[key].json
-    URL_PATH_PARAMETER_KEY: Literal["url.path.parameter.<key>"] = "url.path.parameter.<key>"
+    URL_PATH_PARAMETER_KEY: Literal["url.path.parameter.<key>"] = (
+        "url.path.parameter.<key>"
+    )
     """Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.
 
     Type: str
@@ -3576,408 +3746,296 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.citations": AttributeMetadata(
         brief="References or sources cited by the AI model in its response.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(
-            isPii=IsPii.TRUE
-        ),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         example=["Citation 1", "Citation 2"],
     ),
     "ai.completion_tokens.used": AttributeMetadata(
         brief="The number of tokens used to respond to the message.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=10,
-        deprecation=DeprecationInfo(
-            replacement="gen_ai.usage.output_tokens"
-        ),
-        aliases=["gen_ai.usage.output_tokens","gen_ai.usage.completion_tokens"],
+        deprecation=DeprecationInfo(replacement="gen_ai.usage.output_tokens"),
+        aliases=["gen_ai.usage.output_tokens", "gen_ai.usage.completion_tokens"],
         sdks=["python"],
     ),
     "ai.documents": AttributeMetadata(
         brief="Documents or content chunks used as context for the AI model.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(
-            isPii=IsPii.TRUE
-        ),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         example=["document1.txt", "document2.pdf"],
     ),
     "ai.finish_reason": AttributeMetadata(
         brief="The reason why the model stopped generating.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="COMPLETE",
-        deprecation=DeprecationInfo(
-            replacement="gen_ai.response.finish_reason"
-        ),
+        deprecation=DeprecationInfo(replacement="gen_ai.response.finish_reason"),
         aliases=["gen_ai.response.finish_reasons"],
     ),
     "ai.frequency_penalty": AttributeMetadata(
         brief="Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=0.5,
-        deprecation=DeprecationInfo(
-            replacement="gen_ai.request.frequency_penalty"
-        ),
+        deprecation=DeprecationInfo(replacement="gen_ai.request.frequency_penalty"),
         aliases=["gen_ai.request.frequency_penalty"],
     ),
     "ai.function_call": AttributeMetadata(
         brief="For an AI model call, the function that was called. This is deprecated for OpenAI, and replaced by tool_calls",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.TRUE
-        ),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         example="function_name",
-        deprecation=DeprecationInfo(
-            replacement="gen_ai.tool.name"
-        ),
+        deprecation=DeprecationInfo(replacement="gen_ai.tool.name"),
         aliases=["gen_ai.tool.name"],
     ),
     "ai.generation_id": AttributeMetadata(
         brief="Unique identifier for the completion.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="gen_123abc",
-        deprecation=DeprecationInfo(
-            replacement="gen_ai.response.id"
-        ),
+        deprecation=DeprecationInfo(replacement="gen_ai.response.id"),
         aliases=["gen_ai.response.id"],
     ),
     "ai.input_messages": AttributeMetadata(
         brief="The input messages sent to the model",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
-        example="[{\"role\": \"user\", \"message\": \"hello\"}]",
-        deprecation=DeprecationInfo(
-            replacement="gen_ai.request.messages"
-        ),
+        example='[{"role": "user", "message": "hello"}]',
+        deprecation=DeprecationInfo(replacement="gen_ai.request.messages"),
         aliases=["gen_ai.request.messages"],
         sdks=["python"],
     ),
     "ai.is_search_required": AttributeMetadata(
         brief="Boolean indicating if the model needs to perform a search.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=False,
     ),
     "ai.metadata": AttributeMetadata(
         brief="Extra metadata passed to an AI pipeline step.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
-        example="{\"user_id\": 123, \"session_id\": \"abc123\"}",
+        example='{"user_id": 123, "session_id": "abc123"}',
     ),
     "ai.model.provider": AttributeMetadata(
         brief="The provider of the model.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="openai",
-        deprecation=DeprecationInfo(
-            replacement="gen_ai.system"
-        ),
+        deprecation=DeprecationInfo(replacement="gen_ai.system"),
         aliases=["gen_ai.system"],
     ),
     "ai.model_id": AttributeMetadata(
         brief="The vendor-specific ID of the model used.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="gpt-4",
-        deprecation=DeprecationInfo(
-            replacement="gen_ai.response.model"
-        ),
+        deprecation=DeprecationInfo(replacement="gen_ai.response.model"),
         aliases=["gen_ai.response.model"],
         sdks=["python"],
     ),
     "ai.pipeline.name": AttributeMetadata(
         brief="The name of the AI pipeline.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="Autofix Pipeline",
-        deprecation=DeprecationInfo(
-            replacement="gen_ai.pipeline.name"
-        ),
+        deprecation=DeprecationInfo(replacement="gen_ai.pipeline.name"),
         aliases=["gen_ai.pipeline.name"],
     ),
     "ai.preamble": AttributeMetadata(
         brief="For an AI model call, the preamble parameter. Preambles are a part of the prompt used to adjust the model's overall behavior and conversation style.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.TRUE
-        ),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         example="You are now a clown.",
     ),
     "ai.presence_penalty": AttributeMetadata(
         brief="Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=0.5,
-        deprecation=DeprecationInfo(
-            replacement="gen_ai.request.presence_penalty"
-        ),
+        deprecation=DeprecationInfo(replacement="gen_ai.request.presence_penalty"),
         aliases=["gen_ai.request.presence_penalty"],
     ),
     "ai.prompt_tokens.used": AttributeMetadata(
         brief="The number of tokens used to process just the prompt.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=20,
-        deprecation=DeprecationInfo(
-            replacement="gen_ai.usage.input_tokens"
-        ),
-        aliases=["gen_ai.usage.prompt_tokens","gen_ai.usage.input_tokens"],
+        deprecation=DeprecationInfo(replacement="gen_ai.usage.input_tokens"),
+        aliases=["gen_ai.usage.prompt_tokens", "gen_ai.usage.input_tokens"],
         sdks=["python"],
     ),
     "ai.raw_prompting": AttributeMetadata(
         brief="When enabled, the user’s prompt will be sent to the model without any pre-processing.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=True,
     ),
     "ai.response_format": AttributeMetadata(
         brief="For an AI model call, the format of the response",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="json_object",
     ),
     "ai.responses": AttributeMetadata(
         brief="The response messages sent back by the AI model.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=["hello", "world"],
-        deprecation=DeprecationInfo(
-            replacement="gen_ai.response.text"
-        ),
+        deprecation=DeprecationInfo(replacement="gen_ai.response.text"),
         sdks=["python"],
     ),
     "ai.search_queries": AttributeMetadata(
         brief="Queries used to search for relevant context or documents.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(
-            isPii=IsPii.TRUE
-        ),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         example=["climate change effects", "renewable energy"],
     ),
     "ai.search_results": AttributeMetadata(
         brief="Results returned from search queries for context.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(
-            isPii=IsPii.TRUE
-        ),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         example=["search_result_1, search_result_2"],
     ),
     "ai.seed": AttributeMetadata(
         brief="The seed, ideally models given the same seed and same other parameters will produce the exact same output.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="1234567890",
-        deprecation=DeprecationInfo(
-            replacement="gen_ai.request.seed"
-        ),
+        deprecation=DeprecationInfo(replacement="gen_ai.request.seed"),
         aliases=["gen_ai.request.seed"],
     ),
     "ai.streaming": AttributeMetadata(
         brief="Whether the request was streamed back.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=True,
-        deprecation=DeprecationInfo(
-            replacement="gen_ai.response.streaming"
-        ),
+        deprecation=DeprecationInfo(replacement="gen_ai.response.streaming"),
         aliases=["gen_ai.response.streaming"],
         sdks=["python"],
     ),
     "ai.tags": AttributeMetadata(
         brief="Tags that describe an AI pipeline step.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
-        example="{\"executed_function\": \"add_integers\"}",
+        example='{"executed_function": "add_integers"}',
     ),
     "ai.temperature": AttributeMetadata(
         brief="For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=0.1,
-        deprecation=DeprecationInfo(
-            replacement="gen_ai.request.temperature"
-        ),
+        deprecation=DeprecationInfo(replacement="gen_ai.request.temperature"),
         aliases=["gen_ai.request.temperature"],
     ),
     "ai.texts": AttributeMetadata(
         brief="Raw text inputs provided to the model.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(
-            isPii=IsPii.TRUE
-        ),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         example=["Hello, how are you?", "What is the capital of France?"],
     ),
     "ai.tool_calls": AttributeMetadata(
         brief="For an AI model call, the tool calls that were made.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(
-            isPii=IsPii.TRUE
-        ),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         example=["tool_call_1", "tool_call_2"],
-        deprecation=DeprecationInfo(
-            replacement="gen_ai.response.tool_calls"
-        ),
+        deprecation=DeprecationInfo(replacement="gen_ai.response.tool_calls"),
     ),
     "ai.tools": AttributeMetadata(
         brief="For an AI model call, the functions that are available",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=["function_1", "function_2"],
-        deprecation=DeprecationInfo(
-            replacement="gen_ai.request.available_tools"
-        ),
+        deprecation=DeprecationInfo(replacement="gen_ai.request.available_tools"),
     ),
     "ai.top_k": AttributeMetadata(
         brief="Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=35,
-        deprecation=DeprecationInfo(
-            replacement="gen_ai.request.top_k"
-        ),
+        deprecation=DeprecationInfo(replacement="gen_ai.request.top_k"),
         aliases=["gen_ai.request.top_k"],
     ),
     "ai.top_p": AttributeMetadata(
         brief="Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=0.7,
-        deprecation=DeprecationInfo(
-            replacement="gen_ai.request.top_p"
-        ),
+        deprecation=DeprecationInfo(replacement="gen_ai.request.top_p"),
         aliases=["gen_ai.request.top_p"],
     ),
     "ai.total_cost": AttributeMetadata(
         brief="The total cost for the tokens used.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=12.34,
     ),
     "ai.total_tokens.used": AttributeMetadata(
         brief="The total number of tokens used to process the prompt.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=30,
-        deprecation=DeprecationInfo(
-            replacement="gen_ai.usage.total_tokens"
-        ),
+        deprecation=DeprecationInfo(replacement="gen_ai.usage.total_tokens"),
         aliases=["gen_ai.usage.total_tokens"],
         sdks=["python"],
     ),
     "ai.warnings": AttributeMetadata(
         brief="Warning messages generated during model execution.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(
-            isPii=IsPii.TRUE
-        ),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         example=["Token limit exceeded"],
     ),
     "app_start_type": AttributeMetadata(
         brief="Mobile app start variant. Either cold or warm.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="cold",
     ),
     "blocked_main_thread": AttributeMetadata(
         brief="Whether the main thread was blocked by the span.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=True,
     ),
     "browser.name": AttributeMetadata(
         brief="The name of the browser.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="Chrome",
         aliases=["sentry.browser.name"],
@@ -3985,18 +4043,14 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.report.type": AttributeMetadata(
         brief="A browser report sent via reporting API..",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="network-error",
     ),
     "browser.script.invoker": AttributeMetadata(
         brief="How a script was called in the browser.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="Window.requestAnimationFrame",
         sdks=["browser"],
@@ -4004,9 +4058,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.script.invoker_type": AttributeMetadata(
         brief="Browser script entry point type.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="event-listener",
         sdks=["browser"],
@@ -4014,9 +4066,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.script.source_char_position": AttributeMetadata(
         brief="A number representing the script character position of the script.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=678,
         sdks=["browser"],
@@ -4024,9 +4074,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.version": AttributeMetadata(
         brief="The version of the browser.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="120.0.6099.130",
         aliases=["sentry.browser.version"],
@@ -4034,9 +4082,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cache.hit": AttributeMetadata(
         brief="If the cache was hit during this span.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=True,
         sdks=["php-laravel"],
@@ -4044,18 +4090,14 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cache.item_size": AttributeMetadata(
         brief="The size of the requested item in the cache. In bytes.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=58,
     ),
     "cache.key": AttributeMetadata(
         brief="The key of the cache accessed.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=["my-cache-key", "my-other-cache-key"],
         sdks=["php-laravel"],
@@ -4063,9 +4105,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cache.operation": AttributeMetadata(
         brief="The operation being performed on the cache.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="get",
         sdks=["php-laravel"],
@@ -4073,9 +4113,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cache.ttl": AttributeMetadata(
         brief="The ttl of the cache in seconds",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=120,
         sdks=["php-laravel"],
@@ -4083,9 +4121,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "channel": AttributeMetadata(
         brief="The channel name that is being used.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="mail",
         sdks=["php-laravel"],
@@ -4093,9 +4129,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "client.address": AttributeMetadata(
         brief="Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.TRUE
-        ),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         example="example.com",
         aliases=["http.client_ip"],
@@ -4103,18 +4137,14 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "client.port": AttributeMetadata(
         brief="Client port number.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
         example=5432,
     ),
     "cloudflare.d1.duration": AttributeMetadata(
         brief="The duration of a Cloudflare D1 operation.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=543,
         sdks=["javascript-cloudflare"],
@@ -4122,9 +4152,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.d1.rows_read": AttributeMetadata(
         brief="The number of rows read in a Cloudflare D1 operation.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=12,
         sdks=["javascript-cloudflare"],
@@ -4132,9 +4160,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.d1.rows_written": AttributeMetadata(
         brief="The number of rows written in a Cloudflare D1 operation.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=12,
         sdks=["javascript-cloudflare"],
@@ -4142,9 +4168,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "code.file.path": AttributeMetadata(
         brief="The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="/app/myapplication/http/handler/server.py",
         aliases=["code.filepath"],
@@ -4152,35 +4176,25 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "code.filepath": AttributeMetadata(
         brief="The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="/app/myapplication/http/handler/server.py",
-        deprecation=DeprecationInfo(
-            replacement="code.file.path"
-        ),
+        deprecation=DeprecationInfo(replacement="code.file.path"),
         aliases=["code.file.path"],
     ),
     "code.function": AttributeMetadata(
         brief="The method or function name, or equivalent (usually rightmost part of the code unit's name).",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="server_request",
-        deprecation=DeprecationInfo(
-            replacement="code.function.name"
-        ),
+        deprecation=DeprecationInfo(replacement="code.function.name"),
         aliases=["code.function.name"],
     ),
     "code.function.name": AttributeMetadata(
         brief="The method or function name, or equivalent (usually rightmost part of the code unit's name).",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="server_request",
         aliases=["code.function"],
@@ -4188,9 +4202,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "code.line.number": AttributeMetadata(
         brief="The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
         example=42,
         aliases=["code.lineno"],
@@ -4198,57 +4210,43 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "code.lineno": AttributeMetadata(
         brief="The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
         example=42,
-        deprecation=DeprecationInfo(
-            replacement="code.line.number"
-        ),
+        deprecation=DeprecationInfo(replacement="code.line.number"),
         aliases=["code.line.number"],
     ),
     "code.namespace": AttributeMetadata(
         brief="The 'namespace' within which code.function is defined. Usually the qualified class or module name, such that code.namespace + some separator + code.function form a unique identifier for the code unit.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="http.handler",
         deprecation=DeprecationInfo(
             replacement="code.function.name",
-            reason="code.function.name should include the namespace."
+            reason="code.function.name should include the namespace.",
         ),
     ),
     "db.collection.name": AttributeMetadata(
         brief="The name of a collection (table, container) within the database.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="users",
     ),
     "db.name": AttributeMetadata(
         brief="The name of the database being accessed.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="customers",
-        deprecation=DeprecationInfo(
-            replacement="db.namespace"
-        ),
+        deprecation=DeprecationInfo(replacement="db.namespace"),
         aliases=["db.namespace"],
     ),
     "db.namespace": AttributeMetadata(
         brief="The name of the database being accessed.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="customers",
         aliases=["db.name"],
@@ -4256,22 +4254,16 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.operation": AttributeMetadata(
         brief="The name of the operation being executed.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="SELECT",
-        deprecation=DeprecationInfo(
-            replacement="db.operation.name"
-        ),
+        deprecation=DeprecationInfo(replacement="db.operation.name"),
         aliases=["db.operation.name"],
     ),
     "db.operation.name": AttributeMetadata(
         brief="The name of the operation being executed.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="SELECT",
         aliases=["db.operation"],
@@ -4279,9 +4271,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.query.parameter.<key>": AttributeMetadata(
         brief="A query parameter used in db.query.text, with <key> being the parameter name, and the attribute value being a string representation of the parameter value.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         has_dynamic_suffix=True,
         example="db.query.parameter.foo='123'",
@@ -4289,18 +4279,14 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.query.summary": AttributeMetadata(
         brief="A database query being executed. Should be paramaterized. The full version of the query is in `db.query.text`.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="SELECT * FROM users",
     ),
     "db.query.text": AttributeMetadata(
         brief="The database query being executed. Should be the full query, not a parameterized version. The parameterized version is in `db.query.summary`.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="SELECT * FROM users",
         aliases=["db.statement"],
@@ -4308,9 +4294,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.redis.connection": AttributeMetadata(
         brief="The redis connection name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="my-redis-instance",
         sdks=["php-laravel"],
@@ -4318,9 +4302,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.redis.parameters": AttributeMetadata(
         brief="The array of command parameters given to a redis command.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=["test", "*"],
         sdks=["php-laravel"],
@@ -4328,49 +4310,37 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.sql.bindings": AttributeMetadata(
         brief="The array of query bindings.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=["1", "foo"],
         deprecation=DeprecationInfo(
             replacement="db.query.parameter.<key>",
-            reason="Instead of adding every binding in the db.sql.bindings attribute, add them as individual entires with db.query.parameter.<key>."
+            reason="Instead of adding every binding in the db.sql.bindings attribute, add them as individual entires with db.query.parameter.<key>.",
         ),
         sdks=["php-laravel"],
     ),
     "db.statement": AttributeMetadata(
         brief="The database statement being executed.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="SELECT * FROM users",
-        deprecation=DeprecationInfo(
-            replacement="db.query.text"
-        ),
+        deprecation=DeprecationInfo(replacement="db.query.text"),
         aliases=["db.query.text"],
     ),
     "db.system": AttributeMetadata(
         brief="An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="postgresql",
-        deprecation=DeprecationInfo(
-            replacement="db.system.name"
-        ),
+        deprecation=DeprecationInfo(replacement="db.system.name"),
         aliases=["db.system.name"],
     ),
     "db.system.name": AttributeMetadata(
         brief="An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="postgresql",
         aliases=["db.system"],
@@ -4378,157 +4348,121 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.user": AttributeMetadata(
         brief="The database user.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.TRUE
-        ),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         example="fancy_user",
     ),
     "device.brand": AttributeMetadata(
         brief="The brand of the device.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="Apple",
     ),
     "device.family": AttributeMetadata(
         brief="The family of the device.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="iPhone",
     ),
     "device.model": AttributeMetadata(
         brief="The model of the device.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="iPhone 15 Pro Max",
     ),
     "environment": AttributeMetadata(
         brief="The sentry environment.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="production",
-        deprecation=DeprecationInfo(
-            replacement="sentry.environment"
-        ),
+        deprecation=DeprecationInfo(replacement="sentry.environment"),
         aliases=["sentry.environment"],
     ),
     "error.type": AttributeMetadata(
         brief="Describes a class of error the operation ended with.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="timeout",
     ),
     "event.id": AttributeMetadata(
         brief="The unique identifier for this event (log record)",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=1234567890,
     ),
     "event.name": AttributeMetadata(
         brief="The name that uniquely identifies this event (log record)",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="Process Payload",
     ),
     "exception.escaped": AttributeMetadata(
         brief="SHOULD be set to true if the exception event is recorded at a point where it is known that the exception is escaping the scope of the span.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
         example=True,
     ),
     "exception.message": AttributeMetadata(
         brief="The error message.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="ENOENT: no such file or directory",
     ),
     "exception.stacktrace": AttributeMetadata(
         brief="A stacktrace as a string in the natural representation for the language runtime. The representation is to be determined and documented by each language SIG.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
-        example="Exception in thread \"main\" java.lang.RuntimeException: Test exception\n at com.example.GenerateTrace.methodB(GenerateTrace.java:13)\n at com.example.GenerateTrace.methodA(GenerateTrace.java:9)\n at com.example.GenerateTrace.main(GenerateTrace.java:5)",
+        example='Exception in thread "main" java.lang.RuntimeException: Test exception\n at com.example.GenerateTrace.methodB(GenerateTrace.java:13)\n at com.example.GenerateTrace.methodA(GenerateTrace.java:9)\n at com.example.GenerateTrace.main(GenerateTrace.java:5)',
     ),
     "exception.type": AttributeMetadata(
         brief="The type of the exception (its fully-qualified class name, if applicable). The dynamic type of the exception should be preferred over the static type in languages that support it.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="OSError",
     ),
     "faas.coldstart": AttributeMetadata(
         brief="A boolean that is true if the serverless function is executed for the first time (aka cold-start).",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
         example=True,
     ),
     "faas.cron": AttributeMetadata(
         brief="A string containing the schedule period as Cron Expression.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="0/5 * * * ? *",
     ),
     "faas.time": AttributeMetadata(
         brief="A string containing the function invocation time in the ISO 8601 format expressed in UTC.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="2020-01-23T13:47:06Z",
     ),
     "faas.trigger": AttributeMetadata(
         brief="Type of the trigger which caused this function invocation.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="timer",
     ),
     "flag.evaluation.<key>": AttributeMetadata(
         brief="An instance of a feature flag evaluation. The value of this attribute is the boolean representing the evaluation result. The <key> suffix is the name of the feature flag.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         has_dynamic_suffix=True,
         example="flag.evaluation.is_new_ui=true",
@@ -4536,131 +4470,103 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "frames.delay": AttributeMetadata(
         brief="The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=5,
     ),
     "frames.frozen": AttributeMetadata(
         brief="The number of frozen frames rendered during the lifetime of the span.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=3,
     ),
     "frames.slow": AttributeMetadata(
         brief="The number of slow frames rendered during the lifetime of the span.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=1,
     ),
     "frames.total": AttributeMetadata(
         brief="The number of total frames rendered during the lifetime of the span.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=60,
     ),
     "fs_error": AttributeMetadata(
         brief="The error message of a file system error.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="ENOENT: no such file or directory",
         deprecation=DeprecationInfo(
             replacement="error.type",
-            reason="This attribute is not part of the OpenTelemetry specification and error.type fits much better."
+            reason="This attribute is not part of the OpenTelemetry specification and error.type fits much better.",
         ),
         sdks=["javascript-node"],
     ),
     "gen_ai.agent.name": AttributeMetadata(
         brief="The name of the agent being used.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="ResearchAssistant",
     ),
     "gen_ai.assistant.message": AttributeMetadata(
         brief="The assistant message passed to the model.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.TRUE
-        ),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         example="get_weather tool call",
     ),
     "gen_ai.choice": AttributeMetadata(
         brief="The model's response message.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.TRUE
-        ),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         example="The weather in Paris is rainy and overcast, with temperatures around 57°F",
     ),
     "gen_ai.cost.input_tokens": AttributeMetadata(
         brief="The cost of tokens used to process the AI input (prompt) in USD (without cached input tokens).",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=123.45,
     ),
     "gen_ai.cost.output_tokens": AttributeMetadata(
         brief="The cost of tokens used for creating the AI output in USD (without reasoning tokens).",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=123.45,
     ),
     "gen_ai.cost.total_tokens": AttributeMetadata(
         brief="The total cost for the tokens used.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=12.34,
     ),
     "gen_ai.operation.name": AttributeMetadata(
         brief="The name of the operation being performed.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="chat",
     ),
     "gen_ai.operation.type": AttributeMetadata(
         brief="The type of AI operation. Must be one of 'agent', 'ai_client', 'tool', 'handoff', 'guardrail'. Makes querying for spans in the UI easier.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="tool",
     ),
     "gen_ai.pipeline.name": AttributeMetadata(
         brief="Name of the AI pipeline or chain being executed.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="Autofix Pipeline",
         aliases=["ai.pipeline.name"],
@@ -4668,11 +4574,9 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.prompt": AttributeMetadata(
         brief="The input messages sent to the model",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
-        example="[{\"role\": \"user\", \"message\": \"hello\"}]",
+        example='[{"role": "user", "message": "hello"}]',
         deprecation=DeprecationInfo(
             reason="Deprecated from OTEL, use gen_ai.input.messages with the new format instead."
         ),
@@ -4680,18 +4584,14 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.request.available_tools": AttributeMetadata(
         brief="The available tools for the model. It has to be a stringified version of an array of objects.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
-        example="[{\"name\": \"get_weather\", \"description\": \"Get the weather for a given location\"}, {\"name\": \"get_news\", \"description\": \"Get the news for a given topic\"}]",
+        example='[{"name": "get_weather", "description": "Get the weather for a given location"}, {"name": "get_news", "description": "Get the news for a given topic"}]',
     ),
     "gen_ai.request.frequency_penalty": AttributeMetadata(
         brief="Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
         example=0.5,
         aliases=["ai.frequency_penalty"],
@@ -4699,37 +4599,29 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.request.max_tokens": AttributeMetadata(
         brief="The maximum number of tokens to generate in the response.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
         example=2048,
     ),
     "gen_ai.request.messages": AttributeMetadata(
-        brief="The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `\"user\"`, `\"assistant\"`, `\"tool\"`, or `\"system\"`. For messages of the role `\"tool\"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: \"text\", text:\"...\"}`.",
+        brief='The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.',
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
-        example="[{\"role\": \"system\", \"content\": \"Generate a random number.\"}, {\"role\": \"user\", \"content\": [{\"text\": \"Generate a random number between 0 and 10.\", \"type\": \"text\"}]}, {\"role\": \"tool\", \"content\": {\"toolCallId\": \"1\", \"toolName\": \"Weather\", \"output\": \"rainy\"}}]",
+        example='[{"role": "system", "content": "Generate a random number."}, {"role": "user", "content": [{"text": "Generate a random number between 0 and 10.", "type": "text"}]}, {"role": "tool", "content": {"toolCallId": "1", "toolName": "Weather", "output": "rainy"}}]',
         aliases=["ai.input_messages"],
     ),
     "gen_ai.request.model": AttributeMetadata(
         brief="The model identifier being used for the request.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="gpt-4-turbo-preview",
     ),
     "gen_ai.request.presence_penalty": AttributeMetadata(
         brief="Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
         example=0.5,
         aliases=["ai.presence_penalty"],
@@ -4737,9 +4629,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.request.seed": AttributeMetadata(
         brief="The seed, ideally models given the same seed and same other parameters will produce the exact same output.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="1234567890",
         aliases=["ai.seed"],
@@ -4747,9 +4637,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.request.temperature": AttributeMetadata(
         brief="For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
         example=0.1,
         aliases=["ai.temperature"],
@@ -4757,9 +4645,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.request.top_k": AttributeMetadata(
         brief="Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
         example=35,
         aliases=["ai.top_k"],
@@ -4767,9 +4653,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.request.top_p": AttributeMetadata(
         brief="Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
         example=0.7,
         aliases=["ai.top_p"],
@@ -4777,9 +4661,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.response.finish_reasons": AttributeMetadata(
         brief="The reason why the model stopped generating.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="COMPLETE",
         aliases=["ai.finish_reason"],
@@ -4787,9 +4669,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.response.id": AttributeMetadata(
         brief="Unique identifier for the completion.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="gen_123abc",
         aliases=["ai.generation_id"],
@@ -4797,9 +4677,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.response.model": AttributeMetadata(
         brief="The vendor-specific ID of the model used.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="gpt-4",
         aliases=["ai.model_id"],
@@ -4807,9 +4685,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.response.streaming": AttributeMetadata(
         brief="Whether or not the AI model call's response was streamed back asynchronously",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=True,
         aliases=["ai.streaming"],
@@ -4817,36 +4693,28 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.response.text": AttributeMetadata(
         brief="The model's response text messages. It has to be a stringified version of an array of response text messages.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
-        example="[\"The weather in Paris is rainy and overcast, with temperatures around 57°F\", \"The weather in London is sunny and warm, with temperatures around 65°F\"]",
+        example='["The weather in Paris is rainy and overcast, with temperatures around 57°F", "The weather in London is sunny and warm, with temperatures around 65°F"]',
     ),
     "gen_ai.response.tokens_per_second": AttributeMetadata(
         brief="The total output tokens per seconds throughput",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=12345.67,
     ),
     "gen_ai.response.tool_calls": AttributeMetadata(
         brief="The tool calls in the model's response. It has to be a stringified version of an array of objects.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
-        example="[{\"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]",
+        example='[{"name": "get_weather", "arguments": {"location": "Paris"}}]',
     ),
     "gen_ai.system": AttributeMetadata(
         brief="The provider of the model.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="openai",
         aliases=["ai.model.provider"],
@@ -4854,45 +4722,35 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.system.message": AttributeMetadata(
         brief="The system instructions passed to the model.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.TRUE
-        ),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         example="You are a helpful assistant",
     ),
     "gen_ai.tool.description": AttributeMetadata(
         brief="The description of the tool being used.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="Searches the web for current information about a topic",
     ),
     "gen_ai.tool.input": AttributeMetadata(
         brief="The input of the tool being used. It has to be a stringified version of the input to the tool.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
-        example="{\"location\": \"Paris\"}",
+        example='{"location": "Paris"}',
     ),
     "gen_ai.tool.message": AttributeMetadata(
         brief="The response from a tool or function call passed to the model.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.TRUE
-        ),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         example="rainy, 57°F",
     ),
     "gen_ai.tool.name": AttributeMetadata(
         brief="Name of the tool utilized by the agent.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="Flights",
         aliases=["ai.function_call"],
@@ -4900,104 +4758,79 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.tool.output": AttributeMetadata(
         brief="The output of the tool being used. It has to be a stringified version of the output of the tool.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="rainy, 57°F",
     ),
     "gen_ai.tool.type": AttributeMetadata(
         brief="The type of tool being used.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="function",
     ),
     "gen_ai.usage.completion_tokens": AttributeMetadata(
         brief="The number of tokens used in the GenAI response (completion).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
         example=10,
-        deprecation=DeprecationInfo(
-            replacement="gen_ai.usage.output_tokens"
-        ),
-        aliases=["ai.completion_tokens.used","gen_ai.usage.output_tokens"],
+        deprecation=DeprecationInfo(replacement="gen_ai.usage.output_tokens"),
+        aliases=["ai.completion_tokens.used", "gen_ai.usage.output_tokens"],
     ),
     "gen_ai.usage.input_tokens": AttributeMetadata(
         brief="The number of tokens used to process the AI input (prompt) without cached input tokens.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
         example=10,
-        aliases=["ai.prompt_tokens.used","gen_ai.usage.prompt_tokens"],
+        aliases=["ai.prompt_tokens.used", "gen_ai.usage.prompt_tokens"],
     ),
     "gen_ai.usage.input_tokens.cached": AttributeMetadata(
         brief="The number of cached tokens used to process the AI input (prompt).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=50,
     ),
     "gen_ai.usage.output_tokens": AttributeMetadata(
         brief="The number of tokens used for creating the AI output (without reasoning tokens).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
         example=10,
-        aliases=["ai.completion_tokens.used","gen_ai.usage.completion_tokens"],
+        aliases=["ai.completion_tokens.used", "gen_ai.usage.completion_tokens"],
     ),
     "gen_ai.usage.output_tokens.reasoning": AttributeMetadata(
         brief="The number of tokens used for reasoning to create the AI output.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=75,
     ),
     "gen_ai.usage.prompt_tokens": AttributeMetadata(
         brief="The number of tokens used in the GenAI input (prompt).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
         example=20,
-        deprecation=DeprecationInfo(
-            replacement="gen_ai.usage.input_tokens"
-        ),
-        aliases=["ai.prompt_tokens.used","gen_ai.usage.input_tokens"],
+        deprecation=DeprecationInfo(replacement="gen_ai.usage.input_tokens"),
+        aliases=["ai.prompt_tokens.used", "gen_ai.usage.input_tokens"],
     ),
     "gen_ai.usage.total_cost": AttributeMetadata(
         brief="The total cost for the tokens used.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=12.34,
         deprecation=DeprecationInfo(
-            replacement="gen_ai.cost.total_tokens",
-            status=DeprecationStatus.BACKFILL
+            replacement="gen_ai.cost.total_tokens", status=DeprecationStatus.BACKFILL
         ),
     ),
     "gen_ai.usage.total_tokens": AttributeMetadata(
         brief="The total number of tokens used to process the prompt. (input tokens plus output todkens)",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=20,
         aliases=["ai.total_tokens.used"],
@@ -5005,49 +4838,37 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.user.message": AttributeMetadata(
         brief="The user message passed to the model.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.TRUE
-        ),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         example="What's the weather in Paris?",
     ),
     "graphql.operation.name": AttributeMetadata(
         brief="The name of the operation being executed.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="findBookById",
     ),
     "graphql.operation.type": AttributeMetadata(
         brief="The type of the operation being executed.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="query",
     ),
     "http.client_ip": AttributeMetadata(
         brief="Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.TRUE
-        ),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         example="example.com",
-        deprecation=DeprecationInfo(
-            replacement="client.address"
-        ),
+        deprecation=DeprecationInfo(replacement="client.address"),
         aliases=["client.address"],
     ),
     "http.decoded_response_content_length": AttributeMetadata(
         brief="The decoded body size of the response (in bytes).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=456,
         sdks=["javascript-browser"],
@@ -5055,50 +4876,43 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.flavor": AttributeMetadata(
         brief="The actual version of the protocol used for network communication.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="1.1",
-        deprecation=DeprecationInfo(
-            replacement="network.protocol.version"
-        ),
-        aliases=["network.protocol.version","net.protocol.version"],
+        deprecation=DeprecationInfo(replacement="network.protocol.version"),
+        aliases=["network.protocol.version", "net.protocol.version"],
     ),
     "http.fragment": AttributeMetadata(
         brief="The fragments present in the URI. Note that this contains the leading # character, while the `url.fragment` attribute does not.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="#details",
     ),
     "http.host": AttributeMetadata(
         brief="The domain name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="example.com",
         deprecation=DeprecationInfo(
             replacement="server.address",
-            reason="Deprecated, use one of `server.address` or `client.address`, depending on the usage"
+            reason="Deprecated, use one of `server.address` or `client.address`, depending on the usage",
         ),
-        aliases=["server.address","client.address","http.server_name","net.host.name"],
+        aliases=[
+            "server.address",
+            "client.address",
+            "http.server_name",
+            "net.host.name",
+        ],
     ),
     "http.method": AttributeMetadata(
         brief="The HTTP method used.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="GET",
-        deprecation=DeprecationInfo(
-            replacement="http.request.method"
-        ),
+        deprecation=DeprecationInfo(replacement="http.request.method"),
         aliases=["http.request.method"],
     ),
     "http.query": AttributeMetadata(
@@ -5106,7 +4920,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(
             isPii=IsPii.MAYBE,
-            reason="Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information."
+            reason="Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.",
         ),
         is_in_otel=False,
         example="?foo=bar&bar=baz",
@@ -5114,9 +4928,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.connect_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the user agent starts establishing the connection to the server to retrieve the resource.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=1732829555.111,
         sdks=["javascript-browser"],
@@ -5124,9 +4936,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.connection_end": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately after the browser finishes establishing the connection to the server to retrieve the resource. The timestamp value includes the time interval to establish the transport connection, as well as other time intervals such as TLS handshake and SOCKS authentication.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=1732829555.15,
         sdks=["javascript-browser"],
@@ -5134,9 +4944,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.domain_lookup_end": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately after the browser finishes the domain-name lookup for the resource.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=1732829555.201,
         sdks=["javascript-browser"],
@@ -5144,9 +4952,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.domain_lookup_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the browser starts the domain name lookup for the resource.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=1732829555.322,
         sdks=["javascript-browser"],
@@ -5154,9 +4960,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.fetch_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the browser starts to fetch the resource.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=1732829555.389,
         sdks=["javascript-browser"],
@@ -5164,9 +4968,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.header.<key>": AttributeMetadata(
         brief="HTTP request headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         has_dynamic_suffix=True,
         example="http.request.header.custom-header=['foo', 'bar']",
@@ -5174,19 +4976,15 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.method": AttributeMetadata(
         brief="The HTTP method used.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="GET",
-        aliases=["method","http.method"],
+        aliases=["method", "http.method"],
     ),
     "http.request.redirect_end": AttributeMetadata(
         brief="The UNIX timestamp representing the timestamp immediately after receiving the last byte of the response of the last redirect",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=1732829558.502,
         sdks=["javascript-browser"],
@@ -5194,9 +4992,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.redirect_start": AttributeMetadata(
         brief="The UNIX timestamp representing the start time of the fetch which that initiates the redirect.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=1732829555.495,
         sdks=["javascript-browser"],
@@ -5204,9 +5000,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.request_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=1732829555.51,
         sdks=["javascript-browser"],
@@ -5214,18 +5008,14 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.resend_count": AttributeMetadata(
         brief="The ordinal number of request resending attempt (for any reason, including redirects).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=2,
     ),
     "http.request.response_end": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately after the browser receives the last byte of the resource or immediately before the transport connection is closed, whichever comes first.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=1732829555.89,
         sdks=["javascript-browser"],
@@ -5233,9 +5023,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.response_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=1732829555.7,
         sdks=["javascript-browser"],
@@ -5243,9 +5031,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.secure_connection_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the browser starts the handshake process to secure the current connection. If a secure connection is not used, the property returns zero.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=1732829555.73,
         sdks=["javascript-browser"],
@@ -5253,9 +5039,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.time_to_first_byte": AttributeMetadata(
         brief="The time in seconds from the browser's timeorigin to when the first byte of the request's response was received. See https://web.dev/articles/ttfb#measure-resource-requests",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=1.032,
         sdks=["javascript-browser"],
@@ -5263,9 +5047,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.worker_start": AttributeMetadata(
         brief="The UNIX timestamp representing the timestamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=1732829553.68,
         sdks=["javascript-browser"],
@@ -5273,19 +5055,15 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.response.body.size": AttributeMetadata(
         brief="The encoded body size of the response (in bytes).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
         example=123,
-        aliases=["http.response_content_length","http.response.header.content-length"],
+        aliases=["http.response_content_length", "http.response.header.content-length"],
     ),
     "http.response.header.<key>": AttributeMetadata(
         brief="HTTP response headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         has_dynamic_suffix=True,
         example="http.response.header.custom-header=['foo', 'bar']",
@@ -5293,19 +5071,15 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.response.header.content-length": AttributeMetadata(
         brief="The size of the message body sent to the recipient (in bytes)",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="http.response.header.custom-header=['foo', 'bar']",
-        aliases=["http.response_content_length","http.response.body.size"],
+        aliases=["http.response_content_length", "http.response.body.size"],
     ),
     "http.response.size": AttributeMetadata(
         brief="The transfer size of the response (in bytes).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
         example=456,
         aliases=["http.response_transfer_size"],
@@ -5313,9 +5087,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.response.status_code": AttributeMetadata(
         brief="The status code of the HTTP response.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
         example=404,
         aliases=["http.status_code"],
@@ -5323,37 +5095,29 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.response_content_length": AttributeMetadata(
         brief="The encoded body size of the response (in bytes).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
         example=123,
         deprecation=DeprecationInfo(
-            replacement="http.response.body.size",
-            status=DeprecationStatus.BACKFILL
+            replacement="http.response.body.size", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["http.response.body.size","http.response.header.content-length"],
+        aliases=["http.response.body.size", "http.response.header.content-length"],
     ),
     "http.response_transfer_size": AttributeMetadata(
         brief="The transfer size of the response (in bytes).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=456,
         deprecation=DeprecationInfo(
-            replacement="http.response.size",
-            status=DeprecationStatus.BACKFILL
+            replacement="http.response.size", status=DeprecationStatus.BACKFILL
         ),
         aliases=["http.response.size"],
     ),
     "http.route": AttributeMetadata(
         brief="The matched route, that is, the path template in the format used by the respective server framework.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="/users/:id",
         aliases=["url.template"],
@@ -5361,87 +5125,63 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.scheme": AttributeMetadata(
         brief="The URI scheme component identifying the used protocol.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="https",
-        deprecation=DeprecationInfo(
-            replacement="url.scheme"
-        ),
+        deprecation=DeprecationInfo(replacement="url.scheme"),
         aliases=["url.scheme"],
     ),
     "http.server_name": AttributeMetadata(
         brief="The server domain name",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="example.com",
-        deprecation=DeprecationInfo(
-            replacement="server.address"
-        ),
-        aliases=["server.address","net.host.name","http.host"],
+        deprecation=DeprecationInfo(replacement="server.address"),
+        aliases=["server.address", "net.host.name", "http.host"],
     ),
     "http.status_code": AttributeMetadata(
         brief="The status code of the HTTP response.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
         example=404,
-        deprecation=DeprecationInfo(
-            replacement="http.response.status_code"
-        ),
+        deprecation=DeprecationInfo(replacement="http.response.status_code"),
         aliases=["http.response.status_code"],
     ),
     "http.target": AttributeMetadata(
         brief="The pathname and query string of the URL.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="/test?foo=bar#buzz",
         deprecation=DeprecationInfo(
             replacement="url.path",
-            reason="This attribute is being deprecated in favor of url.path and url.query"
+            reason="This attribute is being deprecated in favor of url.path and url.query",
         ),
     ),
     "http.url": AttributeMetadata(
         brief="The URL of the resource that was fetched.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="https://example.com/test?foo=bar#buzz",
-        deprecation=DeprecationInfo(
-            replacement="url.full"
-        ),
-        aliases=["url.full","url"],
+        deprecation=DeprecationInfo(replacement="url.full"),
+        aliases=["url.full", "url"],
     ),
     "http.user_agent": AttributeMetadata(
         brief="Value of the HTTP User-Agent header sent by the client.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1",
-        deprecation=DeprecationInfo(
-            replacement="user_agent.original"
-        ),
+        deprecation=DeprecationInfo(replacement="user_agent.original"),
         aliases=["user_agent.original"],
     ),
     "id": AttributeMetadata(
         brief="A unique identifier for the span.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="f47ac10b58cc4372a5670e02b2c3d479",
         sdks=["php-laravel"],
@@ -5449,108 +5189,84 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "jvm.gc.action": AttributeMetadata(
         brief="Name of the garbage collector action.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="end of minor GC",
     ),
     "jvm.gc.name": AttributeMetadata(
         brief="Name of the garbage collector.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="G1 Young Generation",
     ),
     "jvm.memory.pool.name": AttributeMetadata(
         brief="Name of the memory pool.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="G1 Old Gen",
     ),
     "jvm.memory.type": AttributeMetadata(
         brief="Name of the memory pool.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="G1 Old Gen",
     ),
     "jvm.thread.daemon": AttributeMetadata(
         brief="Whether the thread is daemon or not.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
         example=True,
     ),
     "jvm.thread.state": AttributeMetadata(
         brief="State of the thread.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="blocked",
     ),
     "lcp.element": AttributeMetadata(
         brief="The dom element responsible for the largest contentful paint.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="img",
     ),
     "lcp.id": AttributeMetadata(
         brief="The id of the dom element responsible for the largest contentful paint.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="#hero",
     ),
     "lcp.size": AttributeMetadata(
         brief="The size of the largest contentful paint element.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=1234,
     ),
     "lcp.url": AttributeMetadata(
         brief="The url of the dom element responsible for the largest contentful paint.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="https://example.com",
     ),
     "logger.name": AttributeMetadata(
         brief="The name of the logger that generated this event.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="myLogger",
     ),
     "messaging.destination.connection": AttributeMetadata(
         brief="The message destination connection.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="BestTopic",
         sdks=["php-laravel"],
@@ -5558,9 +5274,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.destination.name": AttributeMetadata(
         brief="The message destination name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="BestTopic",
         sdks=["php-laravel"],
@@ -5568,9 +5282,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.message.body.size": AttributeMetadata(
         brief="The size of the message body in bytes.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
         example=839,
         sdks=["php-laravel"],
@@ -5578,9 +5290,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.message.envelope.size": AttributeMetadata(
         brief="The size of the message body and metadata in bytes.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
         example=1045,
         sdks=["php-laravel"],
@@ -5588,9 +5298,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.message.id": AttributeMetadata(
         brief="A value used by the messaging system as an identifier for the message, represented as a string.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="f47ac10b58cc4372a5670e02b2c3d479",
         sdks=["php-laravel"],
@@ -5598,9 +5306,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.message.receive.latency": AttributeMetadata(
         brief="The latency between when the message was published and received.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=1732847252,
         sdks=["php-laravel"],
@@ -5608,9 +5314,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.message.retry.count": AttributeMetadata(
         brief="The amount of attempts to send the message.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=2,
         sdks=["php-laravel"],
@@ -5618,18 +5322,14 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.operation.type": AttributeMetadata(
         brief="A string identifying the type of the messaging operation",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="create",
     ),
     "messaging.system": AttributeMetadata(
         brief="The messaging system as identified by the client instrumentation.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="activemq",
         sdks=["php-laravel"],
@@ -5637,233 +5337,173 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "method": AttributeMetadata(
         brief="The HTTP method used.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="GET",
-        deprecation=DeprecationInfo(
-            replacement="http.request.method"
-        ),
+        deprecation=DeprecationInfo(replacement="http.request.method"),
         aliases=["http.request.method"],
-        sdks=["javascript-browser","javascript-node"],
+        sdks=["javascript-browser", "javascript-node"],
     ),
     "navigation.type": AttributeMetadata(
         brief="The type of navigation done by a client-side router.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="router.push",
     ),
     "nel.elapsed_time": AttributeMetadata(
         brief="The elapsed number of milliseconds between the start of the resource fetch and when it was completed or aborted by the user agent.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=100,
     ),
     "nel.phase": AttributeMetadata(
-        brief="If request failed, the phase of its network error. If request succeeded, \"application\".",
+        brief='If request failed, the phase of its network error. If request succeeded, "application".',
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="application",
     ),
     "nel.referrer": AttributeMetadata(
         brief="request's referrer, as determined by the referrer policy associated with its client.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="https://example.com/foo?bar=baz",
     ),
     "nel.sampling_function": AttributeMetadata(
         brief="The sampling function used to determine if the request should be sampled.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=0.5,
     ),
     "nel.type": AttributeMetadata(
-        brief="If request failed, the type of its network error. If request succeeded, \"ok\".",
+        brief='If request failed, the type of its network error. If request succeeded, "ok".',
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="dns.unreachable",
     ),
     "net.host.ip": AttributeMetadata(
         brief="Local address of the network connection - IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="192.168.0.1",
-        deprecation=DeprecationInfo(
-            replacement="network.local.address"
-        ),
-        aliases=["network.local.address","net.sock.host.addr"],
+        deprecation=DeprecationInfo(replacement="network.local.address"),
+        aliases=["network.local.address", "net.sock.host.addr"],
     ),
     "net.host.name": AttributeMetadata(
         brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="example.com",
-        deprecation=DeprecationInfo(
-            replacement="server.address"
-        ),
-        aliases=["server.address","http.server_name","http.host"],
+        deprecation=DeprecationInfo(replacement="server.address"),
+        aliases=["server.address", "http.server_name", "http.host"],
     ),
     "net.host.port": AttributeMetadata(
         brief="Server port number.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
         example=1337,
-        deprecation=DeprecationInfo(
-            replacement="server.port"
-        ),
+        deprecation=DeprecationInfo(replacement="server.port"),
         aliases=["server.port"],
     ),
     "net.peer.ip": AttributeMetadata(
         brief="Peer address of the network connection - IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="192.168.0.1",
-        deprecation=DeprecationInfo(
-            replacement="network.peer.address"
-        ),
-        aliases=["network.peer.address","net.sock.peer.addr"],
+        deprecation=DeprecationInfo(replacement="network.peer.address"),
+        aliases=["network.peer.address", "net.sock.peer.addr"],
     ),
     "net.peer.name": AttributeMetadata(
         brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="example.com",
         deprecation=DeprecationInfo(
             replacement="server.address",
-            reason="Deprecated, use server.address on client spans and client.address on server spans."
+            reason="Deprecated, use server.address on client spans and client.address on server spans.",
         ),
     ),
     "net.peer.port": AttributeMetadata(
         brief="Peer port number.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
         example=1337,
         deprecation=DeprecationInfo(
             replacement="server.port",
-            reason="Deprecated, use server.port on client spans and client.port on server spans."
+            reason="Deprecated, use server.port on client spans and client.port on server spans.",
         ),
     ),
     "net.protocol.name": AttributeMetadata(
         brief="OSI application layer or non-OSI equivalent.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="http",
-        deprecation=DeprecationInfo(
-            replacement="network.protocol.name"
-        ),
+        deprecation=DeprecationInfo(replacement="network.protocol.name"),
         aliases=["network.protocol.name"],
     ),
     "net.protocol.version": AttributeMetadata(
         brief="The actual version of the protocol used for network communication.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="1.1",
-        deprecation=DeprecationInfo(
-            replacement="network.protocol.version"
-        ),
-        aliases=["network.protocol.version","http.flavor"],
+        deprecation=DeprecationInfo(replacement="network.protocol.version"),
+        aliases=["network.protocol.version", "http.flavor"],
     ),
     "net.sock.family": AttributeMetadata(
         brief="OSI transport and network layer",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="inet",
         deprecation=DeprecationInfo(
             replacement="network.transport",
-            reason="Deprecated, use network.transport and network.type."
+            reason="Deprecated, use network.transport and network.type.",
         ),
     ),
     "net.sock.host.addr": AttributeMetadata(
         brief="Local address of the network connection mapping to Unix domain socket name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="/var/my.sock",
-        deprecation=DeprecationInfo(
-            replacement="network.local.address"
-        ),
-        aliases=["network.local.address","net.host.ip"],
+        deprecation=DeprecationInfo(replacement="network.local.address"),
+        aliases=["network.local.address", "net.host.ip"],
     ),
     "net.sock.host.port": AttributeMetadata(
         brief="Local port number of the network connection.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
         example=8080,
-        deprecation=DeprecationInfo(
-            replacement="network.local.port"
-        ),
+        deprecation=DeprecationInfo(replacement="network.local.port"),
         aliases=["network.local.port"],
     ),
     "net.sock.peer.addr": AttributeMetadata(
         brief="Peer address of the network connection - IP address",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="192.168.0.1",
-        deprecation=DeprecationInfo(
-            replacement="network.peer.address"
-        ),
-        aliases=["network.peer.address","net.peer.ip"],
+        deprecation=DeprecationInfo(replacement="network.peer.address"),
+        aliases=["network.peer.address", "net.peer.ip"],
     ),
     "net.sock.peer.name": AttributeMetadata(
         brief="Peer address of the network connection - Unix domain socket name",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="/var/my.sock",
         deprecation=DeprecationInfo(
@@ -5873,44 +5513,32 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.sock.peer.port": AttributeMetadata(
         brief="Peer port number of the network connection.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
         example=8080,
-        deprecation=DeprecationInfo(
-            replacement="network.peer.port"
-        ),
+        deprecation=DeprecationInfo(replacement="network.peer.port"),
     ),
     "net.transport": AttributeMetadata(
         brief="OSI transport layer or inter-process communication method.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="tcp",
-        deprecation=DeprecationInfo(
-            replacement="network.transport"
-        ),
+        deprecation=DeprecationInfo(replacement="network.transport"),
         aliases=["network.transport"],
     ),
     "network.local.address": AttributeMetadata(
         brief="Local address of the network connection - IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="10.1.2.80",
-        aliases=["net.host.ip","net.sock.host.addr"],
+        aliases=["net.host.ip", "net.sock.host.addr"],
     ),
     "network.local.port": AttributeMetadata(
         brief="Local port number of the network connection.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
         example=65400,
         aliases=["net.sock.host.port"],
@@ -5918,28 +5546,22 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "network.peer.address": AttributeMetadata(
         brief="Peer address of the network connection - IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="10.1.2.80",
-        aliases=["net.peer.ip","net.sock.peer.addr"],
+        aliases=["net.peer.ip", "net.sock.peer.addr"],
     ),
     "network.peer.port": AttributeMetadata(
         brief="Peer port number of the network connection.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
         example=65400,
     ),
     "network.protocol.name": AttributeMetadata(
         brief="OSI application layer or non-OSI equivalent.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="http",
         aliases=["net.protocol.name"],
@@ -5947,19 +5569,15 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "network.protocol.version": AttributeMetadata(
         brief="The actual version of the protocol used for network communication.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="1.1",
-        aliases=["http.flavor","net.protocol.version"],
+        aliases=["http.flavor", "net.protocol.version"],
     ),
     "network.transport": AttributeMetadata(
         brief="OSI transport layer or inter-process communication method.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="tcp",
         aliases=["net.transport"],
@@ -5967,99 +5585,77 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "network.type": AttributeMetadata(
         brief="OSI network layer or non-OSI equivalent.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="ipv4",
     ),
     "os.build_id": AttributeMetadata(
         brief="The build ID of the operating system.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="1234567890",
     ),
     "os.description": AttributeMetadata(
         brief="Human readable (not intended to be parsed) OS version information, like e.g. reported by ver or lsb_release -a commands.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="Ubuntu 18.04.1 LTS",
     ),
     "os.name": AttributeMetadata(
         brief="Human readable operating system name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="Ubuntu",
     ),
     "os.type": AttributeMetadata(
         brief="The operating system type.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="linux",
     ),
     "os.version": AttributeMetadata(
         brief="The version of the operating system.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="18.04.2",
     ),
     "otel.scope.name": AttributeMetadata(
         brief="The name of the instrumentation scope - (InstrumentationScope.Name in OTLP).",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="io.opentelemetry.contrib.mongodb",
     ),
     "otel.scope.version": AttributeMetadata(
         brief="The version of the instrumentation scope - (InstrumentationScope.Version in OTLP).",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="2.4.5",
     ),
     "otel.status_code": AttributeMetadata(
         brief="Name of the code, either “OK” or “ERROR”. MUST NOT be set if the status code is UNSET.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="OK",
     ),
     "otel.status_description": AttributeMetadata(
         brief="Description of the Status if it has a value, otherwise not set.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="resource not found",
     ),
     "params.<key>": AttributeMetadata(
         brief="Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         has_dynamic_suffix=True,
         example="params.id='123'",
@@ -6068,9 +5664,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "previous_route": AttributeMetadata(
         brief="Also used by mobile SDKs to indicate the previous route in the application.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="HomeScreen",
         sdks=["javascript-reactnative"],
@@ -6078,94 +5672,72 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "process.executable.name": AttributeMetadata(
         brief="The name of the executable that started the process.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="getsentry",
     ),
     "process.pid": AttributeMetadata(
         brief="The process ID of the running process.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
         example=12345,
     ),
     "process.runtime.description": AttributeMetadata(
         brief="An additional description about the runtime of the process, for example a specific vendor customization of the runtime environment. Equivalent to `raw_description` in the Sentry runtime context.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="Eclipse OpenJ9 VM openj9-0.21.0",
     ),
     "process.runtime.name": AttributeMetadata(
         brief="The name of the runtime. Equivalent to `name` in the Sentry runtime context.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="node",
     ),
     "process.runtime.version": AttributeMetadata(
         brief="The version of the runtime of this process, as returned by the runtime without modification. Equivalent to `version` in the Sentry runtime context.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="18.04.2",
     ),
     "profile_id": AttributeMetadata(
         brief="The id of the sentry profile.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="123e4567e89b12d3a456426614174000",
-        deprecation=DeprecationInfo(
-            replacement="sentry.profile_id"
-        ),
+        deprecation=DeprecationInfo(replacement="sentry.profile_id"),
         aliases=["sentry.profile_id"],
     ),
     "query.<key>": AttributeMetadata(
         brief="An item in a query string. Usually added by client-side routing frameworks like vue-router.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         has_dynamic_suffix=True,
         example="query.id='123'",
         deprecation=DeprecationInfo(
             replacement="url.query",
-            reason="Instead of sending items individually in query.<key>, they should be sent all together with url.query."
+            reason="Instead of sending items individually in query.<key>, they should be sent all together with url.query.",
         ),
     ),
     "release": AttributeMetadata(
         brief="The sentry release.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="production",
-        deprecation=DeprecationInfo(
-            replacement="sentry.release"
-        ),
+        deprecation=DeprecationInfo(replacement="sentry.release"),
         aliases=["sentry.release"],
     ),
     "remix.action_form_data.<key>": AttributeMetadata(
         brief="Remix form data, <key> being the form data key, the value being the form data value.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         has_dynamic_suffix=True,
         example="http.response.header.text='test'",
@@ -6174,22 +5746,16 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "replay_id": AttributeMetadata(
         brief="The id of the sentry replay.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="123e4567e89b12d3a456426614174000",
-        deprecation=DeprecationInfo(
-            replacement="sentry.replay_id"
-        ),
+        deprecation=DeprecationInfo(replacement="sentry.replay_id"),
         aliases=["sentry.replay_id"],
     ),
     "resource.render_blocking_status": AttributeMetadata(
         brief="The render blocking status of the resource.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="non-blocking",
         sdks=["javascript-browser"],
@@ -6197,41 +5763,31 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "route": AttributeMetadata(
         brief="The matched route, that is, the path template in the format used by the respective server framework. Also used by mobile SDKs to indicate the current route in the application.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="App\\Controller::indexAction",
-        deprecation=DeprecationInfo(
-            replacement="http.route"
-        ),
+        deprecation=DeprecationInfo(replacement="http.route"),
         aliases=["http.route"],
-        sdks=["php-laravel","javascript-reactnative"],
+        sdks=["php-laravel", "javascript-reactnative"],
     ),
     "rpc.grpc.status_code": AttributeMetadata(
         brief="The numeric status code of the gRPC request.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
         example=2,
     ),
     "rpc.service": AttributeMetadata(
         brief="The full (logical) name of the service being called, including its package name, if applicable.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="myService.BestService",
     ),
     "sentry._internal.observed_timestamp_nanos": AttributeMetadata(
         brief="The timestamp at which an envelope was received by Relay, in nanoseconds.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="1544712660300000000",
         aliases=["sentry.observed_timestamp_nanos"],
@@ -6239,80 +5795,60 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry._internal.segment.contains_gen_ai_spans": AttributeMetadata(
         brief="True if any of the spans in the segment contain gen_ai attributes. This attribute is only set on the main segment span.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=True,
     ),
     "sentry.browser.name": AttributeMetadata(
         brief="The name of the browser.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="Chrome",
-        deprecation=DeprecationInfo(
-            replacement="browser.name"
-        ),
+        deprecation=DeprecationInfo(replacement="browser.name"),
         aliases=["browser.name"],
     ),
     "sentry.browser.version": AttributeMetadata(
         brief="The version of the browser.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="120.0.6099.130",
-        deprecation=DeprecationInfo(
-            replacement="browser.version"
-        ),
+        deprecation=DeprecationInfo(replacement="browser.version"),
         aliases=["browser.version"],
     ),
     "sentry.cancellation_reason": AttributeMetadata(
         brief="The reason why a span ended early.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="document.hidden",
     ),
     "sentry.client_sample_rate": AttributeMetadata(
         brief="Rate at which a span was sampled in the SDK.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=0.5,
     ),
     "sentry.description": AttributeMetadata(
         brief="The human-readable description of a span.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="index view query",
     ),
     "sentry.dist": AttributeMetadata(
         brief="The sentry dist.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="1.0",
     ),
     "sentry.environment": AttributeMetadata(
         brief="The sentry environment.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="production",
         aliases=["environment"],
@@ -6320,54 +5856,42 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.exclusive_time": AttributeMetadata(
         brief="The exclusive time duration of the span.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=1234,
     ),
     "sentry.http.prefetch": AttributeMetadata(
         brief="If an http request was a prefetch request.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=True,
     ),
     "sentry.idle_span_finish_reason": AttributeMetadata(
         brief="The reason why an idle span ended early.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="idleTimeout",
     ),
     "sentry.message.parameter.<key>": AttributeMetadata(
         brief="A parameter used in the message template. <key> can either be the number that represent the parameter's position in the template string (sentry.message.parameter.0, sentry.message.parameter.1, etc) or the parameter's name (sentry.message.parameter.item_id, sentry.message.parameter.user_id, etc)",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="sentry.message.parameter.0='123'",
     ),
     "sentry.message.template": AttributeMetadata(
         brief="The parameterized template string.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="Hello, {name}!",
     ),
     "sentry.module.<key>": AttributeMetadata(
         brief="A module that was loaded in the process. The key is the name of the module.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         has_dynamic_suffix=True,
         example="sentry.module.brianium/paratest='v7.7.0'",
@@ -6375,9 +5899,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.nextjs.ssr.function.route": AttributeMetadata(
         brief="A parameterized route for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions when the file location of the function is known.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="/posts/[id]/layout",
         sdks=["javascript"],
@@ -6385,9 +5907,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.nextjs.ssr.function.type": AttributeMetadata(
         brief="A descriptor for a for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="generateMetadata",
         sdks=["javascript"],
@@ -6395,9 +5915,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.observed_timestamp_nanos": AttributeMetadata(
         brief="The timestamp at which an envelope was received by Relay, in nanoseconds.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="1544712660300000000",
         deprecation=DeprecationInfo(
@@ -6408,36 +5926,28 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.op": AttributeMetadata(
         brief="The operation of a span.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="http.client",
     ),
     "sentry.origin": AttributeMetadata(
         brief="The origin of the instrumentation (e.g. span, log, etc.)",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="auto.http.otel.fastify",
     ),
     "sentry.platform": AttributeMetadata(
         brief="The sdk platform that generated the event.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="php",
     ),
     "sentry.profile_id": AttributeMetadata(
         brief="The id of the sentry profile.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="123e4567e89b12d3a456426614174000",
         aliases=["profile_id"],
@@ -6445,19 +5955,15 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.release": AttributeMetadata(
         brief="The sentry release.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="7.0.0",
-        aliases=["service.version","release"],
+        aliases=["service.version", "release"],
     ),
     "sentry.replay_id": AttributeMetadata(
         brief="The id of the sentry replay.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="123e4567e89b12d3a456426614174000",
         aliases=["replay_id"],
@@ -6465,36 +5971,33 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.sdk.integrations": AttributeMetadata(
         brief="A list of names identifying enabled integrations. The list shouldhave all enabled integrations, including default integrations. Defaultintegrations are included because different SDK releases may contain differentdefault integrations.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
-        example=["InboundFilters", "FunctionToString", "BrowserApiErrors", "Breadcrumbs"],
+        example=[
+            "InboundFilters",
+            "FunctionToString",
+            "BrowserApiErrors",
+            "Breadcrumbs",
+        ],
     ),
     "sentry.sdk.name": AttributeMetadata(
         brief="The sentry sdk name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="@sentry/react",
     ),
     "sentry.sdk.version": AttributeMetadata(
         brief="The sentry sdk version.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="7.0.0",
     ),
     "sentry.segment.id": AttributeMetadata(
         brief="The segment ID of a span",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="051581bf3cb55c13",
         aliases=["sentry.segment_id"],
@@ -6502,58 +6005,44 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.segment.name": AttributeMetadata(
         brief="The segment name of a span",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="GET /user",
     ),
     "sentry.segment_id": AttributeMetadata(
         brief="The segment ID of a span",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="051581bf3cb55c13",
-        deprecation=DeprecationInfo(
-            replacement="sentry.segment.id"
-        ),
+        deprecation=DeprecationInfo(replacement="sentry.segment.id"),
         aliases=["sentry.segment.id"],
     ),
     "sentry.server_sample_rate": AttributeMetadata(
         brief="Rate at which a span was sampled in Relay.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=0.5,
     ),
     "sentry.span.source": AttributeMetadata(
         brief="The source of a span, also referred to as transaction source.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="route",
     ),
     "sentry.trace.parent_span_id": AttributeMetadata(
         brief="The span id of the span that was active when the log was collected. This should not be set if there was no active span.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="b0e6f15b45c36b12",
     ),
     "sentry.transaction": AttributeMetadata(
         brief="The sentry transaction (segment name).",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="GET /",
         aliases=["transaction"],
@@ -6561,19 +6050,15 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "server.address": AttributeMetadata(
         brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="example.com",
-        aliases=["http.server_name","net.host.name","http.host"],
+        aliases=["http.server_name", "net.host.name", "http.host"],
     ),
     "server.port": AttributeMetadata(
         brief="Server port number.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
         example=1337,
         aliases=["net.host.port"],
@@ -6581,18 +6066,14 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "service.name": AttributeMetadata(
         brief="Logical name of the service.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="omegastar",
     ),
     "service.version": AttributeMetadata(
         brief="The version string of the service API or implementation. The format is not defined by these conventions.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="5.0.0",
         aliases=["sentry.release"],
@@ -6600,114 +6081,88 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "thread.id": AttributeMetadata(
         brief="Current “managed” thread ID.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
         example=56,
     ),
     "thread.name": AttributeMetadata(
         brief="Current thread name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="main",
     ),
     "transaction": AttributeMetadata(
         brief="The sentry transaction (segment name).",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="GET /",
-        deprecation=DeprecationInfo(
-            replacement="sentry.transaction"
-        ),
+        deprecation=DeprecationInfo(replacement="sentry.transaction"),
         aliases=["sentry.transaction"],
     ),
     "type": AttributeMetadata(
         brief="More granular type of the operation happening.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="fetch",
-        sdks=["javascript-browser","javascript-node"],
+        sdks=["javascript-browser", "javascript-node"],
     ),
     "ui.component_name": AttributeMetadata(
         brief="The name of the associated component.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="HomeButton",
     ),
     "ui.contributes_to_ttfd": AttributeMetadata(
         brief="Whether the span execution contributed to the TTFD (time to fully drawn) metric.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=True,
     ),
     "ui.contributes_to_ttid": AttributeMetadata(
         brief="Whether the span execution contributed to the TTID (time to initial display) metric.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=True,
     ),
     "url.domain": AttributeMetadata(
         brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="example.com",
     ),
     "url.fragment": AttributeMetadata(
         brief="The fragments present in the URI. Note that this does not contain the leading # character, while the `http.fragment` attribute does.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="details",
     ),
     "url.full": AttributeMetadata(
         brief="The URL of the resource that was fetched.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="https://example.com/test?foo=bar#buzz",
-        aliases=["http.url","url"],
+        aliases=["http.url", "url"],
     ),
     "url.path": AttributeMetadata(
         brief="The URI path component.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="/foo",
     ),
     "url.path.parameter.<key>": AttributeMetadata(
         brief="Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         has_dynamic_suffix=True,
         example="url.path.parameter.id='123'",
@@ -6716,9 +6171,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "url.port": AttributeMetadata(
         brief="Server port number.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(
-            isPii=IsPii.FALSE
-        ),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
         example=1337,
     ),
@@ -6727,7 +6180,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(
             isPii=IsPii.MAYBE,
-            reason="Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information."
+            reason="Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.",
         ),
         is_in_otel=True,
         example="foo=bar&bar=baz",
@@ -6735,9 +6188,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "url.scheme": AttributeMetadata(
         brief="The URI scheme component identifying the used protocol.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="https",
         aliases=["http.scheme"],
@@ -6745,9 +6196,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "url.template": AttributeMetadata(
         brief="The low-cardinality template of an absolute path reference.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="/users/:id",
         aliases=["http.route"],
@@ -6755,122 +6204,94 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "url": AttributeMetadata(
         brief="The URL of the resource that was fetched.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="https://example.com/test?foo=bar#buzz",
-        deprecation=DeprecationInfo(
-            replacement="url.full"
-        ),
-        aliases=["url.full","http.url"],
-        sdks=["javascript-browser","javascript-node"],
+        deprecation=DeprecationInfo(replacement="url.full"),
+        aliases=["url.full", "http.url"],
+        sdks=["javascript-browser", "javascript-node"],
     ),
     "user.email": AttributeMetadata(
         brief="User email address.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.TRUE
-        ),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         example="test@example.com",
     ),
     "user.full_name": AttributeMetadata(
         brief="User's full name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.TRUE
-        ),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         example="John Smith",
     ),
     "user.geo.city": AttributeMetadata(
         brief="Human readable city name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="Toronto",
     ),
     "user.geo.country_code": AttributeMetadata(
         brief="Two-letter country code (ISO 3166-1 alpha-2).",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="CA",
     ),
     "user.geo.region": AttributeMetadata(
         brief="Human readable region name or code.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="Canada",
     ),
     "user.geo.subdivision": AttributeMetadata(
         brief="Human readable subdivision name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="Ontario",
     ),
     "user.hash": AttributeMetadata(
         brief="Unique user hash to correlate information for a user in anonymized form.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.TRUE
-        ),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         example="8ae4c2993e0f4f3b8b2d1b1f3b5e8f4d",
     ),
     "user.id": AttributeMetadata(
         brief="Unique identifier of the user.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.TRUE
-        ),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         example="S-1-5-21-202424912787-2692429404-2351956786-1000",
     ),
     "user.ip_address": AttributeMetadata(
         brief="The IP address of the user.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.TRUE
-        ),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         example="192.168.1.1",
     ),
     "user.name": AttributeMetadata(
         brief="Short name or login/username of the user.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.TRUE
-        ),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         example="j.smith",
     ),
     "user.roles": AttributeMetadata(
         brief="Array of user roles at the time of the event.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(
-            isPii=IsPii.TRUE
-        ),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         example=["admin", "editor"],
     ),
     "user_agent.original": AttributeMetadata(
         brief="Value of the HTTP User-Agent header sent by the client.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE
-        ),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1",
         aliases=["http.user_agent"],
@@ -6882,329 +6303,333 @@ A dictionary that maps each attribute's name to its metadata.
 If a key is not present in this dictionary, it means that attribute is not defined in the Sentry Semantic Conventions.
 """
 
-Attributes = TypedDict("Attributes", {
-    "ai.citations": List[str],
-    "ai.completion_tokens.used": int,
-    "ai.documents": List[str],
-    "ai.finish_reason": str,
-    "ai.frequency_penalty": float,
-    "ai.function_call": str,
-    "ai.generation_id": str,
-    "ai.input_messages": str,
-    "ai.is_search_required": bool,
-    "ai.metadata": str,
-    "ai.model.provider": str,
-    "ai.model_id": str,
-    "ai.pipeline.name": str,
-    "ai.preamble": str,
-    "ai.presence_penalty": float,
-    "ai.prompt_tokens.used": int,
-    "ai.raw_prompting": bool,
-    "ai.response_format": str,
-    "ai.responses": List[str],
-    "ai.search_queries": List[str],
-    "ai.search_results": List[str],
-    "ai.seed": str,
-    "ai.streaming": bool,
-    "ai.tags": str,
-    "ai.temperature": float,
-    "ai.texts": List[str],
-    "ai.tool_calls": List[str],
-    "ai.tools": List[str],
-    "ai.top_k": int,
-    "ai.top_p": float,
-    "ai.total_cost": float,
-    "ai.total_tokens.used": int,
-    "ai.warnings": List[str],
-    "app_start_type": str,
-    "blocked_main_thread": bool,
-    "browser.name": str,
-    "browser.report.type": str,
-    "browser.script.invoker": str,
-    "browser.script.invoker_type": str,
-    "browser.script.source_char_position": int,
-    "browser.version": str,
-    "cache.hit": bool,
-    "cache.item_size": int,
-    "cache.key": List[str],
-    "cache.operation": str,
-    "cache.ttl": int,
-    "channel": str,
-    "client.address": str,
-    "client.port": int,
-    "cloudflare.d1.duration": int,
-    "cloudflare.d1.rows_read": int,
-    "cloudflare.d1.rows_written": int,
-    "code.file.path": str,
-    "code.filepath": str,
-    "code.function": str,
-    "code.function.name": str,
-    "code.line.number": int,
-    "code.lineno": int,
-    "code.namespace": str,
-    "db.collection.name": str,
-    "db.name": str,
-    "db.namespace": str,
-    "db.operation": str,
-    "db.operation.name": str,
-    "db.query.parameter.<key>": str,
-    "db.query.summary": str,
-    "db.query.text": str,
-    "db.redis.connection": str,
-    "db.redis.parameters": List[str],
-    "db.sql.bindings": List[str],
-    "db.statement": str,
-    "db.system": str,
-    "db.system.name": str,
-    "db.user": str,
-    "device.brand": str,
-    "device.family": str,
-    "device.model": str,
-    "environment": str,
-    "error.type": str,
-    "event.id": int,
-    "event.name": str,
-    "exception.escaped": bool,
-    "exception.message": str,
-    "exception.stacktrace": str,
-    "exception.type": str,
-    "faas.coldstart": bool,
-    "faas.cron": str,
-    "faas.time": str,
-    "faas.trigger": str,
-    "flag.evaluation.<key>": bool,
-    "frames.delay": int,
-    "frames.frozen": int,
-    "frames.slow": int,
-    "frames.total": int,
-    "fs_error": str,
-    "gen_ai.agent.name": str,
-    "gen_ai.assistant.message": str,
-    "gen_ai.choice": str,
-    "gen_ai.cost.input_tokens": float,
-    "gen_ai.cost.output_tokens": float,
-    "gen_ai.cost.total_tokens": float,
-    "gen_ai.operation.name": str,
-    "gen_ai.operation.type": str,
-    "gen_ai.pipeline.name": str,
-    "gen_ai.prompt": str,
-    "gen_ai.request.available_tools": str,
-    "gen_ai.request.frequency_penalty": float,
-    "gen_ai.request.max_tokens": int,
-    "gen_ai.request.messages": str,
-    "gen_ai.request.model": str,
-    "gen_ai.request.presence_penalty": float,
-    "gen_ai.request.seed": str,
-    "gen_ai.request.temperature": float,
-    "gen_ai.request.top_k": int,
-    "gen_ai.request.top_p": float,
-    "gen_ai.response.finish_reasons": str,
-    "gen_ai.response.id": str,
-    "gen_ai.response.model": str,
-    "gen_ai.response.streaming": bool,
-    "gen_ai.response.text": str,
-    "gen_ai.response.tokens_per_second": float,
-    "gen_ai.response.tool_calls": str,
-    "gen_ai.system": str,
-    "gen_ai.system.message": str,
-    "gen_ai.tool.description": str,
-    "gen_ai.tool.input": str,
-    "gen_ai.tool.message": str,
-    "gen_ai.tool.name": str,
-    "gen_ai.tool.output": str,
-    "gen_ai.tool.type": str,
-    "gen_ai.usage.completion_tokens": int,
-    "gen_ai.usage.input_tokens": int,
-    "gen_ai.usage.input_tokens.cached": int,
-    "gen_ai.usage.output_tokens": int,
-    "gen_ai.usage.output_tokens.reasoning": int,
-    "gen_ai.usage.prompt_tokens": int,
-    "gen_ai.usage.total_cost": float,
-    "gen_ai.usage.total_tokens": int,
-    "gen_ai.user.message": str,
-    "graphql.operation.name": str,
-    "graphql.operation.type": str,
-    "http.client_ip": str,
-    "http.decoded_response_content_length": int,
-    "http.flavor": str,
-    "http.fragment": str,
-    "http.host": str,
-    "http.method": str,
-    "http.query": str,
-    "http.request.connect_start": float,
-    "http.request.connection_end": float,
-    "http.request.domain_lookup_end": float,
-    "http.request.domain_lookup_start": float,
-    "http.request.fetch_start": float,
-    "http.request.header.<key>": List[str],
-    "http.request.method": str,
-    "http.request.redirect_end": float,
-    "http.request.redirect_start": float,
-    "http.request.request_start": float,
-    "http.request.resend_count": int,
-    "http.request.response_end": float,
-    "http.request.response_start": float,
-    "http.request.secure_connection_start": float,
-    "http.request.time_to_first_byte": float,
-    "http.request.worker_start": float,
-    "http.response.body.size": int,
-    "http.response.header.<key>": List[str],
-    "http.response.header.content-length": str,
-    "http.response.size": int,
-    "http.response.status_code": int,
-    "http.response_content_length": int,
-    "http.response_transfer_size": int,
-    "http.route": str,
-    "http.scheme": str,
-    "http.server_name": str,
-    "http.status_code": int,
-    "http.target": str,
-    "http.url": str,
-    "http.user_agent": str,
-    "id": str,
-    "jvm.gc.action": str,
-    "jvm.gc.name": str,
-    "jvm.memory.pool.name": str,
-    "jvm.memory.type": str,
-    "jvm.thread.daemon": bool,
-    "jvm.thread.state": str,
-    "lcp.element": str,
-    "lcp.id": str,
-    "lcp.size": int,
-    "lcp.url": str,
-    "logger.name": str,
-    "messaging.destination.connection": str,
-    "messaging.destination.name": str,
-    "messaging.message.body.size": int,
-    "messaging.message.envelope.size": int,
-    "messaging.message.id": str,
-    "messaging.message.receive.latency": int,
-    "messaging.message.retry.count": int,
-    "messaging.operation.type": str,
-    "messaging.system": str,
-    "method": str,
-    "navigation.type": str,
-    "nel.elapsed_time": int,
-    "nel.phase": str,
-    "nel.referrer": str,
-    "nel.sampling_function": float,
-    "nel.type": str,
-    "net.host.ip": str,
-    "net.host.name": str,
-    "net.host.port": int,
-    "net.peer.ip": str,
-    "net.peer.name": str,
-    "net.peer.port": int,
-    "net.protocol.name": str,
-    "net.protocol.version": str,
-    "net.sock.family": str,
-    "net.sock.host.addr": str,
-    "net.sock.host.port": int,
-    "net.sock.peer.addr": str,
-    "net.sock.peer.name": str,
-    "net.sock.peer.port": int,
-    "net.transport": str,
-    "network.local.address": str,
-    "network.local.port": int,
-    "network.peer.address": str,
-    "network.peer.port": int,
-    "network.protocol.name": str,
-    "network.protocol.version": str,
-    "network.transport": str,
-    "network.type": str,
-    "os.build_id": str,
-    "os.description": str,
-    "os.name": str,
-    "os.type": str,
-    "os.version": str,
-    "otel.scope.name": str,
-    "otel.scope.version": str,
-    "otel.status_code": str,
-    "otel.status_description": str,
-    "params.<key>": str,
-    "previous_route": str,
-    "process.executable.name": str,
-    "process.pid": int,
-    "process.runtime.description": str,
-    "process.runtime.name": str,
-    "process.runtime.version": str,
-    "profile_id": str,
-    "query.<key>": str,
-    "release": str,
-    "remix.action_form_data.<key>": str,
-    "replay_id": str,
-    "resource.render_blocking_status": str,
-    "route": str,
-    "rpc.grpc.status_code": int,
-    "rpc.service": str,
-    "sentry._internal.observed_timestamp_nanos": str,
-    "sentry._internal.segment.contains_gen_ai_spans": bool,
-    "sentry.browser.name": str,
-    "sentry.browser.version": str,
-    "sentry.cancellation_reason": str,
-    "sentry.client_sample_rate": float,
-    "sentry.description": str,
-    "sentry.dist": str,
-    "sentry.environment": str,
-    "sentry.exclusive_time": int,
-    "sentry.http.prefetch": bool,
-    "sentry.idle_span_finish_reason": str,
-    "sentry.message.parameter.<key>": str,
-    "sentry.message.template": str,
-    "sentry.module.<key>": str,
-    "sentry.nextjs.ssr.function.route": str,
-    "sentry.nextjs.ssr.function.type": str,
-    "sentry.observed_timestamp_nanos": str,
-    "sentry.op": str,
-    "sentry.origin": str,
-    "sentry.platform": str,
-    "sentry.profile_id": str,
-    "sentry.release": str,
-    "sentry.replay_id": str,
-    "sentry.sdk.integrations": List[str],
-    "sentry.sdk.name": str,
-    "sentry.sdk.version": str,
-    "sentry.segment.id": str,
-    "sentry.segment.name": str,
-    "sentry.segment_id": str,
-    "sentry.server_sample_rate": float,
-    "sentry.span.source": str,
-    "sentry.trace.parent_span_id": str,
-    "sentry.transaction": str,
-    "server.address": str,
-    "server.port": int,
-    "service.name": str,
-    "service.version": str,
-    "thread.id": int,
-    "thread.name": str,
-    "transaction": str,
-    "type": str,
-    "ui.component_name": str,
-    "ui.contributes_to_ttfd": bool,
-    "ui.contributes_to_ttid": bool,
-    "url.domain": str,
-    "url.fragment": str,
-    "url.full": str,
-    "url.path": str,
-    "url.path.parameter.<key>": str,
-    "url.port": int,
-    "url.query": str,
-    "url.scheme": str,
-    "url.template": str,
-    "url": str,
-    "user.email": str,
-    "user.full_name": str,
-    "user.geo.city": str,
-    "user.geo.country_code": str,
-    "user.geo.region": str,
-    "user.geo.subdivision": str,
-    "user.hash": str,
-    "user.id": str,
-    "user.ip_address": str,
-    "user.name": str,
-    "user.roles": List[str],
-    "user_agent.original": str,
-}, total=False)
+Attributes = TypedDict(
+    "Attributes",
+    {
+        "ai.citations": List[str],
+        "ai.completion_tokens.used": int,
+        "ai.documents": List[str],
+        "ai.finish_reason": str,
+        "ai.frequency_penalty": float,
+        "ai.function_call": str,
+        "ai.generation_id": str,
+        "ai.input_messages": str,
+        "ai.is_search_required": bool,
+        "ai.metadata": str,
+        "ai.model.provider": str,
+        "ai.model_id": str,
+        "ai.pipeline.name": str,
+        "ai.preamble": str,
+        "ai.presence_penalty": float,
+        "ai.prompt_tokens.used": int,
+        "ai.raw_prompting": bool,
+        "ai.response_format": str,
+        "ai.responses": List[str],
+        "ai.search_queries": List[str],
+        "ai.search_results": List[str],
+        "ai.seed": str,
+        "ai.streaming": bool,
+        "ai.tags": str,
+        "ai.temperature": float,
+        "ai.texts": List[str],
+        "ai.tool_calls": List[str],
+        "ai.tools": List[str],
+        "ai.top_k": int,
+        "ai.top_p": float,
+        "ai.total_cost": float,
+        "ai.total_tokens.used": int,
+        "ai.warnings": List[str],
+        "app_start_type": str,
+        "blocked_main_thread": bool,
+        "browser.name": str,
+        "browser.report.type": str,
+        "browser.script.invoker": str,
+        "browser.script.invoker_type": str,
+        "browser.script.source_char_position": int,
+        "browser.version": str,
+        "cache.hit": bool,
+        "cache.item_size": int,
+        "cache.key": List[str],
+        "cache.operation": str,
+        "cache.ttl": int,
+        "channel": str,
+        "client.address": str,
+        "client.port": int,
+        "cloudflare.d1.duration": int,
+        "cloudflare.d1.rows_read": int,
+        "cloudflare.d1.rows_written": int,
+        "code.file.path": str,
+        "code.filepath": str,
+        "code.function": str,
+        "code.function.name": str,
+        "code.line.number": int,
+        "code.lineno": int,
+        "code.namespace": str,
+        "db.collection.name": str,
+        "db.name": str,
+        "db.namespace": str,
+        "db.operation": str,
+        "db.operation.name": str,
+        "db.query.parameter.<key>": str,
+        "db.query.summary": str,
+        "db.query.text": str,
+        "db.redis.connection": str,
+        "db.redis.parameters": List[str],
+        "db.sql.bindings": List[str],
+        "db.statement": str,
+        "db.system": str,
+        "db.system.name": str,
+        "db.user": str,
+        "device.brand": str,
+        "device.family": str,
+        "device.model": str,
+        "environment": str,
+        "error.type": str,
+        "event.id": int,
+        "event.name": str,
+        "exception.escaped": bool,
+        "exception.message": str,
+        "exception.stacktrace": str,
+        "exception.type": str,
+        "faas.coldstart": bool,
+        "faas.cron": str,
+        "faas.time": str,
+        "faas.trigger": str,
+        "flag.evaluation.<key>": bool,
+        "frames.delay": int,
+        "frames.frozen": int,
+        "frames.slow": int,
+        "frames.total": int,
+        "fs_error": str,
+        "gen_ai.agent.name": str,
+        "gen_ai.assistant.message": str,
+        "gen_ai.choice": str,
+        "gen_ai.cost.input_tokens": float,
+        "gen_ai.cost.output_tokens": float,
+        "gen_ai.cost.total_tokens": float,
+        "gen_ai.operation.name": str,
+        "gen_ai.operation.type": str,
+        "gen_ai.pipeline.name": str,
+        "gen_ai.prompt": str,
+        "gen_ai.request.available_tools": str,
+        "gen_ai.request.frequency_penalty": float,
+        "gen_ai.request.max_tokens": int,
+        "gen_ai.request.messages": str,
+        "gen_ai.request.model": str,
+        "gen_ai.request.presence_penalty": float,
+        "gen_ai.request.seed": str,
+        "gen_ai.request.temperature": float,
+        "gen_ai.request.top_k": int,
+        "gen_ai.request.top_p": float,
+        "gen_ai.response.finish_reasons": str,
+        "gen_ai.response.id": str,
+        "gen_ai.response.model": str,
+        "gen_ai.response.streaming": bool,
+        "gen_ai.response.text": str,
+        "gen_ai.response.tokens_per_second": float,
+        "gen_ai.response.tool_calls": str,
+        "gen_ai.system": str,
+        "gen_ai.system.message": str,
+        "gen_ai.tool.description": str,
+        "gen_ai.tool.input": str,
+        "gen_ai.tool.message": str,
+        "gen_ai.tool.name": str,
+        "gen_ai.tool.output": str,
+        "gen_ai.tool.type": str,
+        "gen_ai.usage.completion_tokens": int,
+        "gen_ai.usage.input_tokens": int,
+        "gen_ai.usage.input_tokens.cached": int,
+        "gen_ai.usage.output_tokens": int,
+        "gen_ai.usage.output_tokens.reasoning": int,
+        "gen_ai.usage.prompt_tokens": int,
+        "gen_ai.usage.total_cost": float,
+        "gen_ai.usage.total_tokens": int,
+        "gen_ai.user.message": str,
+        "graphql.operation.name": str,
+        "graphql.operation.type": str,
+        "http.client_ip": str,
+        "http.decoded_response_content_length": int,
+        "http.flavor": str,
+        "http.fragment": str,
+        "http.host": str,
+        "http.method": str,
+        "http.query": str,
+        "http.request.connect_start": float,
+        "http.request.connection_end": float,
+        "http.request.domain_lookup_end": float,
+        "http.request.domain_lookup_start": float,
+        "http.request.fetch_start": float,
+        "http.request.header.<key>": List[str],
+        "http.request.method": str,
+        "http.request.redirect_end": float,
+        "http.request.redirect_start": float,
+        "http.request.request_start": float,
+        "http.request.resend_count": int,
+        "http.request.response_end": float,
+        "http.request.response_start": float,
+        "http.request.secure_connection_start": float,
+        "http.request.time_to_first_byte": float,
+        "http.request.worker_start": float,
+        "http.response.body.size": int,
+        "http.response.header.<key>": List[str],
+        "http.response.header.content-length": str,
+        "http.response.size": int,
+        "http.response.status_code": int,
+        "http.response_content_length": int,
+        "http.response_transfer_size": int,
+        "http.route": str,
+        "http.scheme": str,
+        "http.server_name": str,
+        "http.status_code": int,
+        "http.target": str,
+        "http.url": str,
+        "http.user_agent": str,
+        "id": str,
+        "jvm.gc.action": str,
+        "jvm.gc.name": str,
+        "jvm.memory.pool.name": str,
+        "jvm.memory.type": str,
+        "jvm.thread.daemon": bool,
+        "jvm.thread.state": str,
+        "lcp.element": str,
+        "lcp.id": str,
+        "lcp.size": int,
+        "lcp.url": str,
+        "logger.name": str,
+        "messaging.destination.connection": str,
+        "messaging.destination.name": str,
+        "messaging.message.body.size": int,
+        "messaging.message.envelope.size": int,
+        "messaging.message.id": str,
+        "messaging.message.receive.latency": int,
+        "messaging.message.retry.count": int,
+        "messaging.operation.type": str,
+        "messaging.system": str,
+        "method": str,
+        "navigation.type": str,
+        "nel.elapsed_time": int,
+        "nel.phase": str,
+        "nel.referrer": str,
+        "nel.sampling_function": float,
+        "nel.type": str,
+        "net.host.ip": str,
+        "net.host.name": str,
+        "net.host.port": int,
+        "net.peer.ip": str,
+        "net.peer.name": str,
+        "net.peer.port": int,
+        "net.protocol.name": str,
+        "net.protocol.version": str,
+        "net.sock.family": str,
+        "net.sock.host.addr": str,
+        "net.sock.host.port": int,
+        "net.sock.peer.addr": str,
+        "net.sock.peer.name": str,
+        "net.sock.peer.port": int,
+        "net.transport": str,
+        "network.local.address": str,
+        "network.local.port": int,
+        "network.peer.address": str,
+        "network.peer.port": int,
+        "network.protocol.name": str,
+        "network.protocol.version": str,
+        "network.transport": str,
+        "network.type": str,
+        "os.build_id": str,
+        "os.description": str,
+        "os.name": str,
+        "os.type": str,
+        "os.version": str,
+        "otel.scope.name": str,
+        "otel.scope.version": str,
+        "otel.status_code": str,
+        "otel.status_description": str,
+        "params.<key>": str,
+        "previous_route": str,
+        "process.executable.name": str,
+        "process.pid": int,
+        "process.runtime.description": str,
+        "process.runtime.name": str,
+        "process.runtime.version": str,
+        "profile_id": str,
+        "query.<key>": str,
+        "release": str,
+        "remix.action_form_data.<key>": str,
+        "replay_id": str,
+        "resource.render_blocking_status": str,
+        "route": str,
+        "rpc.grpc.status_code": int,
+        "rpc.service": str,
+        "sentry._internal.observed_timestamp_nanos": str,
+        "sentry._internal.segment.contains_gen_ai_spans": bool,
+        "sentry.browser.name": str,
+        "sentry.browser.version": str,
+        "sentry.cancellation_reason": str,
+        "sentry.client_sample_rate": float,
+        "sentry.description": str,
+        "sentry.dist": str,
+        "sentry.environment": str,
+        "sentry.exclusive_time": int,
+        "sentry.http.prefetch": bool,
+        "sentry.idle_span_finish_reason": str,
+        "sentry.message.parameter.<key>": str,
+        "sentry.message.template": str,
+        "sentry.module.<key>": str,
+        "sentry.nextjs.ssr.function.route": str,
+        "sentry.nextjs.ssr.function.type": str,
+        "sentry.observed_timestamp_nanos": str,
+        "sentry.op": str,
+        "sentry.origin": str,
+        "sentry.platform": str,
+        "sentry.profile_id": str,
+        "sentry.release": str,
+        "sentry.replay_id": str,
+        "sentry.sdk.integrations": List[str],
+        "sentry.sdk.name": str,
+        "sentry.sdk.version": str,
+        "sentry.segment.id": str,
+        "sentry.segment.name": str,
+        "sentry.segment_id": str,
+        "sentry.server_sample_rate": float,
+        "sentry.span.source": str,
+        "sentry.trace.parent_span_id": str,
+        "sentry.transaction": str,
+        "server.address": str,
+        "server.port": int,
+        "service.name": str,
+        "service.version": str,
+        "thread.id": int,
+        "thread.name": str,
+        "transaction": str,
+        "type": str,
+        "ui.component_name": str,
+        "ui.contributes_to_ttfd": bool,
+        "ui.contributes_to_ttid": bool,
+        "url.domain": str,
+        "url.fragment": str,
+        "url.full": str,
+        "url.path": str,
+        "url.path.parameter.<key>": str,
+        "url.port": int,
+        "url.query": str,
+        "url.scheme": str,
+        "url.template": str,
+        "url": str,
+        "user.email": str,
+        "user.full_name": str,
+        "user.geo.city": str,
+        "user.geo.country_code": str,
+        "user.geo.region": str,
+        "user.geo.subdivision": str,
+        "user.hash": str,
+        "user.id": str,
+        "user.ip_address": str,
+        "user.name": str,
+        "user.roles": List[str],
+        "user_agent.original": str,
+    },
+    total=False,
+)
 """TypedDict representing a collection of attributes, including deprecated and non-deprecated ones."""
 
 __all__ = [
@@ -7212,4 +6637,3 @@ __all__ = [
     "Attributes",
     "ATTRIBUTE_NAMES",
 ]
-
