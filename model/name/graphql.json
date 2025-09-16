@@ -12,7 +12,6 @@
         "http.graphql.mutation",
         "http.graphql.subscription",
         "graphql.execute",
-        "graphql.execute",
         "graphql.parse",
         "graphql.resolve",
         "graphql.request",

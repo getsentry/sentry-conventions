@@ -110,7 +110,6 @@ NOTE: Our definition differs from OpenTelemetry. Unlike OTel, we prefix GraphQL 
 - `"http.graphql.mutation"`
 - `"http.graphql.subscription"`
 - `"graphql.execute"`
-- `"graphql.execute"`
 - `"graphql.parse"`
 - `"graphql.resolve"`
 - `"graphql.request"`
