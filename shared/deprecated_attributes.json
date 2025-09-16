@@ -14,7 +14,9 @@
         "_status": null,
         "replacement": "sentry.environment"
       },
-      "alias": ["sentry.environment"]
+      "alias": [
+        "sentry.environment"
+      ]
     },
     {
       "key": "fs_error",
@@ -30,7 +32,9 @@
         "reason": "This attribute is not part of the OpenTelemetry specification and error.type fits much better."
       },
       "example": "ENOENT: no such file or directory",
-      "sdks": ["javascript-node"]
+      "sdks": [
+        "javascript-node"
+      ]
     },
     {
       "key": "method",
@@ -45,8 +49,13 @@
         "_status": null,
         "replacement": "http.request.method"
       },
-      "alias": ["http.request.method"],
-      "sdks": ["javascript-browser", "javascript-node"]
+      "alias": [
+        "http.request.method"
+      ],
+      "sdks": [
+        "javascript-browser",
+        "javascript-node"
+      ]
     },
     {
       "key": "profile_id",
@@ -61,7 +70,9 @@
         "_status": null,
         "replacement": "sentry.profile_id"
       },
-      "alias": ["sentry.profile_id"]
+      "alias": [
+        "sentry.profile_id"
+      ]
     },
     {
       "key": "release",
@@ -76,7 +87,9 @@
         "_status": null,
         "replacement": "sentry.release"
       },
-      "alias": ["sentry.release"]
+      "alias": [
+        "sentry.release"
+      ]
     },
     {
       "key": "replay_id",
@@ -91,7 +104,9 @@
         "_status": null,
         "replacement": "sentry.replay_id"
       },
-      "alias": ["sentry.replay_id"]
+      "alias": [
+        "sentry.replay_id"
+      ]
     },
     {
       "key": "route",
@@ -106,8 +121,13 @@
         "_status": null,
         "replacement": "http.route"
       },
-      "alias": ["http.route"],
-      "sdks": ["php-laravel", "javascript-reactnative"]
+      "alias": [
+        "http.route"
+      ],
+      "sdks": [
+        "php-laravel",
+        "javascript-reactnative"
+      ]
     },
     {
       "key": "transaction",
@@ -122,7 +142,9 @@
         "_status": null,
         "replacement": "sentry.transaction"
       },
-      "alias": ["sentry.transaction"]
+      "alias": [
+        "sentry.transaction"
+      ]
     },
     {
       "key": "url",
@@ -137,8 +159,14 @@
         "_status": null,
         "replacement": "url.full"
       },
-      "alias": ["url.full", "http.url"],
-      "sdks": ["javascript-browser", "javascript-node"]
+      "alias": [
+        "url.full",
+        "http.url"
+      ],
+      "sdks": [
+        "javascript-browser",
+        "javascript-node"
+      ]
     },
     {
       "key": "ai.completion_tokens.used",
@@ -149,8 +177,13 @@
       },
       "is_in_otel": false,
       "example": 10,
-      "alias": ["gen_ai.usage.output_tokens", "gen_ai.usage.completion_tokens"],
-      "sdks": ["python"],
+      "alias": [
+        "gen_ai.usage.output_tokens",
+        "gen_ai.usage.completion_tokens"
+      ],
+      "sdks": [
+        "python"
+      ],
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.usage.output_tokens"
@@ -169,7 +202,9 @@
         "_status": null,
         "replacement": "gen_ai.response.finish_reason"
       },
-      "alias": ["gen_ai.response.finish_reasons"]
+      "alias": [
+        "gen_ai.response.finish_reasons"
+      ]
     },
     {
       "key": "ai.frequency_penalty",
@@ -184,7 +219,9 @@
         "_status": null,
         "replacement": "gen_ai.request.frequency_penalty"
       },
-      "alias": ["gen_ai.request.frequency_penalty"]
+      "alias": [
+        "gen_ai.request.frequency_penalty"
+      ]
     },
     {
       "key": "ai.function_call",
@@ -199,7 +236,9 @@
         "_status": null,
         "replacement": "gen_ai.tool.name"
       },
-      "alias": ["gen_ai.tool.name"]
+      "alias": [
+        "gen_ai.tool.name"
+      ]
     },
     {
       "key": "ai.generation_id",
@@ -214,7 +253,9 @@
         "_status": null,
         "replacement": "gen_ai.response.id"
       },
-      "alias": ["gen_ai.response.id"]
+      "alias": [
+        "gen_ai.response.id"
+      ]
     },
     {
       "key": "ai.input_messages",
@@ -225,8 +266,12 @@
       },
       "is_in_otel": false,
       "example": "[{\"role\": \"user\", \"message\": \"hello\"}]",
-      "alias": ["gen_ai.request.messages"],
-      "sdks": ["python"],
+      "alias": [
+        "gen_ai.request.messages"
+      ],
+      "sdks": [
+        "python"
+      ],
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.request.messages"
@@ -245,7 +290,9 @@
         "_status": null,
         "replacement": "gen_ai.system"
       },
-      "alias": ["gen_ai.system"]
+      "alias": [
+        "gen_ai.system"
+      ]
     },
     {
       "key": "ai.model_id",
@@ -256,8 +303,12 @@
       },
       "is_in_otel": false,
       "example": "gpt-4",
-      "alias": ["gen_ai.response.model"],
-      "sdks": ["python"],
+      "alias": [
+        "gen_ai.response.model"
+      ],
+      "sdks": [
+        "python"
+      ],
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.response.model"
@@ -276,7 +327,9 @@
         "_status": null,
         "replacement": "gen_ai.pipeline.name"
       },
-      "alias": ["gen_ai.pipeline.name"]
+      "alias": [
+        "gen_ai.pipeline.name"
+      ]
     },
     {
       "key": "ai.presence_penalty",
@@ -291,7 +344,9 @@
         "_status": null,
         "replacement": "gen_ai.request.presence_penalty"
       },
-      "alias": ["gen_ai.request.presence_penalty"]
+      "alias": [
+        "gen_ai.request.presence_penalty"
+      ]
     },
     {
       "key": "ai.prompt_tokens.used",
@@ -302,8 +357,13 @@
       },
       "is_in_otel": false,
       "example": 20,
-      "alias": ["gen_ai.usage.prompt_tokens", "gen_ai.usage.input_tokens"],
-      "sdks": ["python"],
+      "alias": [
+        "gen_ai.usage.prompt_tokens",
+        "gen_ai.usage.input_tokens"
+      ],
+      "sdks": [
+        "python"
+      ],
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.usage.input_tokens"
@@ -317,8 +377,13 @@
         "key": "maybe"
       },
       "is_in_otel": false,
-      "example": ["hello", "world"],
-      "sdks": ["python"],
+      "example": [
+        "hello",
+        "world"
+      ],
+      "sdks": [
+        "python"
+      ],
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.response.text"
@@ -337,7 +402,9 @@
         "_status": null,
         "replacement": "gen_ai.request.seed"
       },
-      "alias": ["gen_ai.request.seed"]
+      "alias": [
+        "gen_ai.request.seed"
+      ]
     },
     {
       "key": "ai.streaming",
@@ -348,12 +415,16 @@
       },
       "is_in_otel": false,
       "example": true,
-      "sdks": ["python"],
+      "sdks": [
+        "python"
+      ],
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.response.streaming"
       },
-      "alias": ["gen_ai.response.streaming"]
+      "alias": [
+        "gen_ai.response.streaming"
+      ]
     },
     {
       "key": "ai.temperature",
@@ -368,7 +439,9 @@
         "_status": null,
         "replacement": "gen_ai.request.temperature"
       },
-      "alias": ["gen_ai.request.temperature"]
+      "alias": [
+        "gen_ai.request.temperature"
+      ]
     },
     {
       "key": "ai.tool_calls",
@@ -378,7 +451,10 @@
         "key": "true"
       },
       "is_in_otel": false,
-      "example": ["tool_call_1", "tool_call_2"],
+      "example": [
+        "tool_call_1",
+        "tool_call_2"
+      ],
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.response.tool_calls"
@@ -392,7 +468,10 @@
         "key": "maybe"
       },
       "is_in_otel": false,
-      "example": ["function_1", "function_2"],
+      "example": [
+        "function_1",
+        "function_2"
+      ],
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.request.available_tools"
@@ -411,7 +490,9 @@
         "_status": null,
         "replacement": "gen_ai.request.top_k"
       },
-      "alias": ["gen_ai.request.top_k"]
+      "alias": [
+        "gen_ai.request.top_k"
+      ]
     },
     {
       "key": "ai.top_p",
@@ -426,7 +507,9 @@
         "_status": null,
         "replacement": "gen_ai.request.top_p"
       },
-      "alias": ["gen_ai.request.top_p"]
+      "alias": [
+        "gen_ai.request.top_p"
+      ]
     },
     {
       "key": "ai.total_tokens.used",
@@ -437,12 +520,16 @@
       },
       "is_in_otel": false,
       "example": 30,
-      "sdks": ["python"],
+      "sdks": [
+        "python"
+      ],
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.usage.total_tokens"
       },
-      "alias": ["gen_ai.usage.total_tokens"]
+      "alias": [
+        "gen_ai.usage.total_tokens"
+      ]
     },
     {
       "key": "code.filepath",
@@ -457,7 +544,9 @@
         "_status": null,
         "replacement": "code.file.path"
       },
-      "alias": ["code.file.path"]
+      "alias": [
+        "code.file.path"
+      ]
     },
     {
       "key": "code.function",
@@ -472,7 +561,9 @@
         "_status": null,
         "replacement": "code.function.name"
       },
-      "alias": ["code.function.name"]
+      "alias": [
+        "code.function.name"
+      ]
     },
     {
       "key": "code.lineno",
@@ -487,7 +578,9 @@
         "_status": null,
         "replacement": "code.line.number"
       },
-      "alias": ["code.line.number"]
+      "alias": [
+        "code.line.number"
+      ]
     },
     {
       "key": "code.namespace",
@@ -517,7 +610,9 @@
         "_status": null,
         "replacement": "db.namespace"
       },
-      "alias": ["db.namespace"]
+      "alias": [
+        "db.namespace"
+      ]
     },
     {
       "key": "db.operation",
@@ -532,7 +627,9 @@
         "_status": null,
         "replacement": "db.operation.name"
       },
-      "alias": ["db.operation.name"]
+      "alias": [
+        "db.operation.name"
+      ]
     },
     {
       "key": "db.sql.bindings",
@@ -547,8 +644,13 @@
         "replacement": "db.query.parameter.<key>",
         "reason": "Instead of adding every binding in the db.sql.bindings attribute, add them as individual entires with db.query.parameter.<key>."
       },
-      "example": ["1", "foo"],
-      "sdks": ["php-laravel"]
+      "example": [
+        "1",
+        "foo"
+      ],
+      "sdks": [
+        "php-laravel"
+      ]
     },
     {
       "key": "db.statement",
@@ -563,7 +665,9 @@
         "_status": null,
         "replacement": "db.query.text"
       },
-      "alias": ["db.query.text"]
+      "alias": [
+        "db.query.text"
+      ]
     },
     {
       "key": "db.system",
@@ -578,7 +682,9 @@
         "_status": null,
         "replacement": "db.system.name"
       },
-      "alias": ["db.system.name"]
+      "alias": [
+        "db.system.name"
+      ]
     },
     {
       "key": "gen_ai.prompt",
@@ -607,7 +713,10 @@
         "_status": null,
         "replacement": "gen_ai.usage.output_tokens"
       },
-      "alias": ["ai.completion_tokens.used", "gen_ai.usage.output_tokens"]
+      "alias": [
+        "ai.completion_tokens.used",
+        "gen_ai.usage.output_tokens"
+      ]
     },
     {
       "key": "gen_ai.usage.prompt_tokens",
@@ -622,7 +731,10 @@
         "_status": null,
         "replacement": "gen_ai.usage.input_tokens"
       },
-      "alias": ["ai.prompt_tokens.used", "gen_ai.usage.input_tokens"]
+      "alias": [
+        "ai.prompt_tokens.used",
+        "gen_ai.usage.input_tokens"
+      ]
     },
     {
       "key": "gen_ai.usage.total_cost",
@@ -651,7 +763,9 @@
         "_status": null,
         "replacement": "client.address"
       },
-      "alias": ["client.address"]
+      "alias": [
+        "client.address"
+      ]
     },
     {
       "key": "http.flavor",
@@ -666,7 +780,10 @@
         "_status": null,
         "replacement": "network.protocol.version"
       },
-      "alias": ["network.protocol.version", "net.protocol.version"]
+      "alias": [
+        "network.protocol.version",
+        "net.protocol.version"
+      ]
     },
     {
       "key": "http.host",
@@ -682,7 +799,12 @@
         "replacement": "server.address",
         "reason": "Deprecated, use one of `server.address` or `client.address`, depending on the usage"
       },
-      "alias": ["server.address", "client.address", "http.server_name", "net.host.name"]
+      "alias": [
+        "server.address",
+        "client.address",
+        "http.server_name",
+        "net.host.name"
+      ]
     },
     {
       "key": "http.method",
@@ -697,7 +819,9 @@
         "_status": null,
         "replacement": "http.request.method"
       },
-      "alias": ["http.request.method"]
+      "alias": [
+        "http.request.method"
+      ]
     },
     {
       "key": "http.response_content_length",
@@ -712,7 +836,10 @@
         "_status": "backfill",
         "replacement": "http.response.body.size"
       },
-      "alias": ["http.response.body.size", "http.response.header.content-length"]
+      "alias": [
+        "http.response.body.size",
+        "http.response.header.content-length"
+      ]
     },
     {
       "key": "http.response_transfer_size",
@@ -727,7 +854,9 @@
         "_status": "backfill",
         "replacement": "http.response.size"
       },
-      "alias": ["http.response.size"]
+      "alias": [
+        "http.response.size"
+      ]
     },
     {
       "key": "http.scheme",
@@ -742,7 +871,9 @@
         "_status": null,
         "replacement": "url.scheme"
       },
-      "alias": ["url.scheme"]
+      "alias": [
+        "url.scheme"
+      ]
     },
     {
       "key": "http.server_name",
@@ -757,7 +888,11 @@
         "_status": null,
         "replacement": "server.address"
       },
-      "alias": ["server.address", "net.host.name", "http.host"]
+      "alias": [
+        "server.address",
+        "net.host.name",
+        "http.host"
+      ]
     },
     {
       "key": "http.status_code",
@@ -772,7 +907,9 @@
         "_status": null,
         "replacement": "http.response.status_code"
       },
-      "alias": ["http.response.status_code"]
+      "alias": [
+        "http.response.status_code"
+      ]
     },
     {
       "key": "http.target",
@@ -802,7 +939,10 @@
         "_status": null,
         "replacement": "url.full"
       },
-      "alias": ["url.full", "url"]
+      "alias": [
+        "url.full",
+        "url"
+      ]
     },
     {
       "key": "http.user_agent",
@@ -817,7 +957,9 @@
         "_status": null,
         "replacement": "user_agent.original"
       },
-      "alias": ["user_agent.original"]
+      "alias": [
+        "user_agent.original"
+      ]
     },
     {
       "key": "net.host.ip",
@@ -832,7 +974,10 @@
         "_status": null,
         "replacement": "network.local.address"
       },
-      "alias": ["network.local.address", "net.sock.host.addr"]
+      "alias": [
+        "network.local.address",
+        "net.sock.host.addr"
+      ]
     },
     {
       "key": "net.host.name",
@@ -847,7 +992,11 @@
         "_status": null,
         "replacement": "server.address"
       },
-      "alias": ["server.address", "http.server_name", "http.host"]
+      "alias": [
+        "server.address",
+        "http.server_name",
+        "http.host"
+      ]
     },
     {
       "key": "net.host.port",
@@ -862,7 +1011,9 @@
         "_status": null,
         "replacement": "server.port"
       },
-      "alias": ["server.port"]
+      "alias": [
+        "server.port"
+      ]
     },
     {
       "key": "net.peer.ip",
@@ -877,7 +1028,10 @@
         "_status": null,
         "replacement": "network.peer.address"
       },
-      "alias": ["network.peer.address", "net.sock.peer.addr"]
+      "alias": [
+        "network.peer.address",
+        "net.sock.peer.addr"
+      ]
     },
     {
       "key": "net.peer.name",
@@ -922,7 +1076,9 @@
         "_status": null,
         "replacement": "network.protocol.name"
       },
-      "alias": ["network.protocol.name"]
+      "alias": [
+        "network.protocol.name"
+      ]
     },
     {
       "key": "net.protocol.version",
@@ -937,7 +1093,10 @@
         "_status": null,
         "replacement": "network.protocol.version"
       },
-      "alias": ["network.protocol.version", "http.flavor"]
+      "alias": [
+        "network.protocol.version",
+        "http.flavor"
+      ]
     },
     {
       "key": "net.sock.family",
@@ -967,7 +1126,10 @@
         "_status": null,
         "replacement": "network.local.address"
       },
-      "alias": ["network.local.address", "net.host.ip"]
+      "alias": [
+        "network.local.address",
+        "net.host.ip"
+      ]
     },
     {
       "key": "net.sock.host.port",
@@ -982,7 +1144,9 @@
         "_status": null,
         "replacement": "network.local.port"
       },
-      "alias": ["network.local.port"]
+      "alias": [
+        "network.local.port"
+      ]
     },
     {
       "key": "net.sock.peer.addr",
@@ -997,7 +1161,10 @@
         "_status": null,
         "replacement": "network.peer.address"
       },
-      "alias": ["network.peer.address", "net.peer.ip"]
+      "alias": [
+        "network.peer.address",
+        "net.peer.ip"
+      ]
     },
     {
       "key": "net.sock.peer.name",
@@ -1040,7 +1207,9 @@
         "_status": null,
         "replacement": "network.transport"
       },
-      "alias": ["network.transport"]
+      "alias": [
+        "network.transport"
+      ]
     },
     {
       "key": "query.<key>",
@@ -1071,7 +1240,9 @@
         "_status": null,
         "replacement": "browser.name"
       },
-      "alias": ["browser.name"]
+      "alias": [
+        "browser.name"
+      ]
     },
     {
       "key": "sentry.browser.version",
@@ -1086,7 +1257,26 @@
         "_status": null,
         "replacement": "browser.version"
       },
-      "alias": ["browser.version"]
+      "alias": [
+        "browser.version"
+      ]
+    },
+    {
+      "key": "sentry.observed_timestamp_nanos",
+      "brief": "The timestamp at which an envelope was received by Relay, in nanoseconds.",
+      "type": "string",
+      "pii": {
+        "key": "false"
+      },
+      "is_in_otel": false,
+      "example": "1544712660300000000",
+      "deprecation": {
+        "_status": null,
+        "replacement": "sentry._internal.observed_timestamp_nanos"
+      },
+      "alias": [
+        "sentry._internal.observed_timestamp_nanos"
+      ]
     },
     {
       "key": "sentry.segment_id",
@@ -1097,7 +1287,9 @@
       },
       "is_in_otel": false,
       "example": "051581bf3cb55c13",
-      "alias": ["sentry.segment.id"],
+      "alias": [
+        "sentry.segment.id"
+      ],
       "deprecation": {
         "_status": null,
         "replacement": "sentry.segment.id"
