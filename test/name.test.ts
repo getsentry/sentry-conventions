@@ -31,6 +31,7 @@ describe('Name JSON', async () => {
         }
       });
 
+      // This invariant is important for the span-to-name code generation inside Relay.
       it('should fall back to a template without attributes', () => {
         for (const operation of content.operations) {
           for (const nameTemplate of operation.templates.slice(0, -1)) {
