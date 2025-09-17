@@ -30,6 +30,18 @@ describe('Name JSON', async () => {
           expect(new Set(operation.ops).size).toBe(operation.ops.length);
         }
       });
+
+      // This invariant is important for the span-to-name code generation inside Relay.
+      it('should fall back to a template without attributes', () => {
+        for (const operation of content.operations) {
+          for (const nameTemplate of operation.templates.slice(0, -1)) {
+            expect(nameTemplate, 'all but the last template should reference an attribute').toContain('{{');
+          }
+
+          const lastNameTemplate = operation.templates.at(-1);
+          expect(lastNameTemplate, "the last template shouldn't reference any attributes").not.toContain('{{');
+        }
+      });
     });
   }
 });
