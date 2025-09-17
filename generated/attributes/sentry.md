@@ -3,6 +3,7 @@
 # Sentry Attributes
 
 - [Stable Attributes](#stable-attributes)
+  - [sentry._internal.observed_timestamp_nanos](#sentry_internalobserved_timestamp_nanos)
   - [sentry._internal.segment.contains_gen_ai_spans](#sentry_internalsegmentcontains_gen_ai_spans)
   - [sentry.cancellation_reason](#sentrycancellation_reason)
   - [sentry.client_sample_rate](#sentryclient_sample_rate)
@@ -35,9 +36,22 @@
 - [Deprecated Attributes](#deprecated-attributes)
   - [sentry.browser.name](#sentrybrowsername)
   - [sentry.browser.version](#sentrybrowserversion)
+  - [sentry.observed_timestamp_nanos](#sentryobserved_timestamp_nanos)
   - [sentry.segment_id](#sentrysegment_id)
 
 ## Stable Attributes
+
+### sentry._internal.observed_timestamp_nanos
+
+The timestamp at which an envelope was received by Relay, in nanoseconds.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `1544712660300000000` |
+| Aliases | `sentry.observed_timestamp_nanos` |
 
 ### sentry._internal.segment.contains_gen_ai_spans
 
@@ -394,6 +408,19 @@ The version of the browser.
 | Example | `120.0.6099.130` |
 | Deprecated | Yes, use `browser.version` instead |
 | Aliases | `browser.version` |
+
+### sentry.observed_timestamp_nanos
+
+The timestamp at which an envelope was received by Relay, in nanoseconds.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `1544712660300000000` |
+| Deprecated | Yes, use `sentry._internal.observed_timestamp_nanos` instead |
+| Aliases | `sentry._internal.observed_timestamp_nanos` |
 
 ### sentry.segment_id
 

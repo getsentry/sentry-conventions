@@ -155,6 +155,7 @@ class _AttributeNamesMeta(type):
         "ROUTE",
         "SENTRY_BROWSER_NAME",
         "SENTRY_BROWSER_VERSION",
+        "SENTRY_OBSERVED_TIMESTAMP_NANOS",
         "_SENTRY_SEGMENT_ID",
         "TRANSACTION",
         "URL",
@@ -3013,6 +3014,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "myService.BestService"
     """
 
+    # Path: model/attributes/sentry/sentry___internal__observed_timestamp_nanos.json
+    SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS: Literal[
+        "sentry._internal.observed_timestamp_nanos"
+    ] = "sentry._internal.observed_timestamp_nanos"
+    """The timestamp at which an envelope was received by Relay, in nanoseconds.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Aliases: sentry.observed_timestamp_nanos
+    Example: "1544712660300000000"
+    """
+
     # Path: model/attributes/sentry/sentry___internal__segment__contains_gen_ai_spans.json
     SENTRY_INTERNAL_SEGMENT_CONTAINS_GEN_AI_SPANS: Literal[
         "sentry._internal.segment.contains_gen_ai_spans"
@@ -3193,6 +3207,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: false
     Defined in OTEL: No
     Example: "generateMetadata"
+    """
+
+    # Path: model/attributes/sentry/sentry__observed_timestamp_nanos.json
+    SENTRY_OBSERVED_TIMESTAMP_NANOS: Literal["sentry.observed_timestamp_nanos"] = (
+        "sentry.observed_timestamp_nanos"
+    )
+    """The timestamp at which an envelope was received by Relay, in nanoseconds.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Aliases: sentry._internal.observed_timestamp_nanos
+    DEPRECATED: Use sentry._internal.observed_timestamp_nanos instead
+    Example: "1544712660300000000"
     """
 
     # Path: model/attributes/sentry/sentry__op.json
@@ -5756,6 +5784,14 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="myService.BestService",
     ),
+    "sentry._internal.observed_timestamp_nanos": AttributeMetadata(
+        brief="The timestamp at which an envelope was received by Relay, in nanoseconds.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="1544712660300000000",
+        aliases=["sentry.observed_timestamp_nanos"],
+    ),
     "sentry._internal.segment.contains_gen_ai_spans": AttributeMetadata(
         brief="True if any of the spans in the segment contain gen_ai attributes. This attribute is only set on the main segment span.",
         type=AttributeType.BOOLEAN,
@@ -5875,6 +5911,18 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="generateMetadata",
         sdks=["javascript"],
+    ),
+    "sentry.observed_timestamp_nanos": AttributeMetadata(
+        brief="The timestamp at which an envelope was received by Relay, in nanoseconds.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="1544712660300000000",
+        deprecation=DeprecationInfo(
+            replacement="sentry._internal.observed_timestamp_nanos",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["sentry._internal.observed_timestamp_nanos"],
     ),
     "sentry.op": AttributeMetadata(
         brief="The operation of a span.",
@@ -6513,6 +6561,7 @@ Attributes = TypedDict(
         "route": str,
         "rpc.grpc.status_code": int,
         "rpc.service": str,
+        "sentry._internal.observed_timestamp_nanos": str,
         "sentry._internal.segment.contains_gen_ai_spans": bool,
         "sentry.browser.name": str,
         "sentry.browser.version": str,
@@ -6529,6 +6578,7 @@ Attributes = TypedDict(
         "sentry.module.<key>": str,
         "sentry.nextjs.ssr.function.route": str,
         "sentry.nextjs.ssr.function.type": str,
+        "sentry.observed_timestamp_nanos": str,
         "sentry.op": str,
         "sentry.origin": str,
         "sentry.platform": str,

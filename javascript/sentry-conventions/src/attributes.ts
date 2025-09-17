@@ -5348,6 +5348,28 @@ export const RPC_SERVICE = 'rpc.service';
  */
 export type RPC_SERVICE_TYPE = string;
 
+// Path: model/attributes/sentry/sentry___internal__observed_timestamp_nanos.json
+
+/**
+ * The timestamp at which an envelope was received by Relay, in nanoseconds. `sentry._internal.observed_timestamp_nanos`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link SENTRY_OBSERVED_TIMESTAMP_NANOS} `sentry.observed_timestamp_nanos`
+ *
+ * @example "1544712660300000000"
+ */
+export const SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS = 'sentry._internal.observed_timestamp_nanos';
+
+/**
+ * Type for {@link SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS} sentry._internal.observed_timestamp_nanos
+ */
+export type SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS_TYPE = string;
+
 // Path: model/attributes/sentry/sentry___internal__segment__contains_gen_ai_spans.json
 
 /**
@@ -5677,6 +5699,29 @@ export const SENTRY_NEXTJS_SSR_FUNCTION_TYPE = 'sentry.nextjs.ssr.function.type'
  * Type for {@link SENTRY_NEXTJS_SSR_FUNCTION_TYPE} sentry.nextjs.ssr.function.type
  */
 export type SENTRY_NEXTJS_SSR_FUNCTION_TYPE_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__observed_timestamp_nanos.json
+
+/**
+ * The timestamp at which an envelope was received by Relay, in nanoseconds. `sentry.observed_timestamp_nanos`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_OBSERVED_TIMESTAMP_NANOS_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS} `sentry._internal.observed_timestamp_nanos`
+ *
+ * @deprecated Use {@link SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS} (sentry._internal.observed_timestamp_nanos) instead
+ * @example "1544712660300000000"
+ */
+export const SENTRY_OBSERVED_TIMESTAMP_NANOS = 'sentry.observed_timestamp_nanos';
+
+/**
+ * Type for {@link SENTRY_OBSERVED_TIMESTAMP_NANOS} sentry.observed_timestamp_nanos
+ */
+export type SENTRY_OBSERVED_TIMESTAMP_NANOS_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__op.json
 
@@ -6952,6 +6997,7 @@ export type Attributes = {
   [ROUTE]?: ROUTE_TYPE;
   [RPC_GRPC_STATUS_CODE]?: RPC_GRPC_STATUS_CODE_TYPE;
   [RPC_SERVICE]?: RPC_SERVICE_TYPE;
+  [SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS]?: SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS_TYPE;
   [SENTRY_INTERNAL_SEGMENT_CONTAINS_GEN_AI_SPANS]?: SENTRY_INTERNAL_SEGMENT_CONTAINS_GEN_AI_SPANS_TYPE;
   [SENTRY_BROWSER_NAME]?: SENTRY_BROWSER_NAME_TYPE;
   [SENTRY_BROWSER_VERSION]?: SENTRY_BROWSER_VERSION_TYPE;
@@ -6968,6 +7014,7 @@ export type Attributes = {
   [SENTRY_MODULE_KEY]?: SENTRY_MODULE_KEY_TYPE;
   [SENTRY_NEXTJS_SSR_FUNCTION_ROUTE]?: SENTRY_NEXTJS_SSR_FUNCTION_ROUTE_TYPE;
   [SENTRY_NEXTJS_SSR_FUNCTION_TYPE]?: SENTRY_NEXTJS_SSR_FUNCTION_TYPE_TYPE;
+  [SENTRY_OBSERVED_TIMESTAMP_NANOS]?: SENTRY_OBSERVED_TIMESTAMP_NANOS_TYPE;
   [SENTRY_OP]?: SENTRY_OP_TYPE;
   [SENTRY_ORIGIN]?: SENTRY_ORIGIN_TYPE;
   [SENTRY_PLATFORM]?: SENTRY_PLATFORM_TYPE;
