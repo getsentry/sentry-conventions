@@ -3135,18 +3135,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "1544712660300000000"
     """
 
-    # Path: model/attributes/sentry/sentry___internal__segment__contains_gen_ai_spans.json
-    SENTRY_INTERNAL_SEGMENT_CONTAINS_GEN_AI_SPANS: Literal[
-        "sentry._internal.segment.contains_gen_ai_spans"
-    ] = "sentry._internal.segment.contains_gen_ai_spans"
-    """True if any of the spans in the segment contain gen_ai attributes. This attribute is only set on the main segment span.
-
-    Type: bool
-    Contains PII: false
-    Defined in OTEL: No
-    Example: true
-    """
-
     # Path: model/attributes/sentry/sentry__browser__name.json
     SENTRY_BROWSER_NAME: Literal["sentry.browser.name"] = "sentry.browser.name"
     """The name of the browser.
@@ -5963,13 +5951,6 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="1544712660300000000",
         aliases=["sentry.observed_timestamp_nanos"],
     ),
-    "sentry._internal.segment.contains_gen_ai_spans": AttributeMetadata(
-        brief="True if any of the spans in the segment contain gen_ai attributes. This attribute is only set on the main segment span.",
-        type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=False,
-        example=True,
-    ),
     "sentry.browser.name": AttributeMetadata(
         brief="The name of the browser.",
         type=AttributeType.STRING,
@@ -6742,7 +6723,6 @@ Attributes = TypedDict(
         "sentry._internal.dsc.trace_id": str,
         "sentry._internal.dsc.transaction": str,
         "sentry._internal.observed_timestamp_nanos": str,
-        "sentry._internal.segment.contains_gen_ai_spans": bool,
         "sentry.browser.name": str,
         "sentry.browser.version": str,
         "sentry.cancellation_reason": str,

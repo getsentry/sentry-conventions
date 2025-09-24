@@ -13,7 +13,6 @@
   - [sentry._internal.dsc.trace_id](#sentry_internaldsctrace_id)
   - [sentry._internal.dsc.transaction](#sentry_internaldsctransaction)
   - [sentry._internal.observed_timestamp_nanos](#sentry_internalobserved_timestamp_nanos)
-  - [sentry._internal.segment.contains_gen_ai_spans](#sentry_internalsegmentcontains_gen_ai_spans)
   - [sentry.cancellation_reason](#sentrycancellation_reason)
   - [sentry.client_sample_rate](#sentryclient_sample_rate)
   - [sentry.description](#sentrydescription)
@@ -160,17 +159,6 @@ The timestamp at which an envelope was received by Relay, in nanoseconds.
 | Exists in OpenTelemetry | No |
 | Example | `1544712660300000000` |
 | Aliases | `sentry.observed_timestamp_nanos` |
-
-### sentry._internal.segment.contains_gen_ai_spans
-
-True if any of the spans in the segment contain gen_ai attributes. This attribute is only set on the main segment span.
-
-| Property | Value |
-| --- | --- |
-| Type | `boolean` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `true` |
 
 ### sentry.cancellation_reason
 
