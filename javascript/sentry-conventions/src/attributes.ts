@@ -5550,6 +5550,26 @@ export const SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS = 'sentry._internal.observ
  */
 export type SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS_TYPE = string;
 
+// Path: model/attributes/sentry/sentry___internal__replay_is_buffering.json
+
+/**
+ * A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate). `sentry._internal.replay_is_buffering`
+ *
+ * Attribute Value Type: `boolean` {@link SENTRY_INTERNAL_REPLAY_IS_BUFFERING_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example true
+ */
+export const SENTRY_INTERNAL_REPLAY_IS_BUFFERING = 'sentry._internal.replay_is_buffering';
+
+/**
+ * Type for {@link SENTRY_INTERNAL_REPLAY_IS_BUFFERING} sentry._internal.replay_is_buffering
+ */
+export type SENTRY_INTERNAL_REPLAY_IS_BUFFERING_TYPE = boolean;
+
 // Path: model/attributes/sentry/sentry__browser__name.json
 
 /**
@@ -7167,6 +7187,7 @@ export type Attributes = {
   [SENTRY_INTERNAL_DSC_TRACE_ID]?: SENTRY_INTERNAL_DSC_TRACE_ID_TYPE;
   [SENTRY_INTERNAL_DSC_TRANSACTION]?: SENTRY_INTERNAL_DSC_TRANSACTION_TYPE;
   [SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS]?: SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS_TYPE;
+  [SENTRY_INTERNAL_REPLAY_IS_BUFFERING]?: SENTRY_INTERNAL_REPLAY_IS_BUFFERING_TYPE;
   [SENTRY_BROWSER_NAME]?: SENTRY_BROWSER_NAME_TYPE;
   [SENTRY_BROWSER_VERSION]?: SENTRY_BROWSER_VERSION_TYPE;
   [SENTRY_CANCELLATION_REASON]?: SENTRY_CANCELLATION_REASON_TYPE;

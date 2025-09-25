@@ -1,0 +1,10 @@
+{
+  "key": "sentry._internal.replay_is_buffering",
+  "brief": "A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate).",
+  "type": "boolean",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": true
+}
