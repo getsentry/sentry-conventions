@@ -1,7 +1,7 @@
 {
   "key": "sentry.exclusive_time",
-  "brief": "The exclusive time duration of the span.",
-  "type": "integer",
+  "brief": "The exclusive time duration of the span in milliseconds.",
+  "type": "double",
   "pii": {
     "key": "false"
   },
