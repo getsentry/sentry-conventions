@@ -32,7 +32,7 @@ jobs:
         run: yarn test
 
       - name: Run lints
-        run: yarn lint
+        run: yarn fix && yarn lint
   
       - name: Check for changes
         id: verify-changed-files
