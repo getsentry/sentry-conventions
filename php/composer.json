@@ -1,0 +1,34 @@
+{
+  "name": "sentry/conventions",
+  "description": "Sentry Semantic Conventions",
+  "type": "library",
+  "license": "MIT",
+  "require": {
+    "php": ">=7.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Sentry\\Conventions\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Sentry\\Conventions\\Tests\\": "tests/"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^8.0 || ^9.0 || ^10.0"
+  },
+  "authors": [
+    {
+      "name": "Sentry",
+      "homepage": "https://sentry.io"
+    }
+  ],
+  "homepage": "https://github.com/getsentry/sentry-conventions",
+  "support": {
+    "issues": "https://github.com/getsentry/sentry-conventions/issues",
+    "source": "https://github.com/getsentry/sentry-conventions"
+  }
+}
+

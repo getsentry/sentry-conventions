@@ -13,6 +13,9 @@ export async function generateAttributes() {
 
   // Generate and write Python code
   writeToPython(attributesDir, attributeFiles);
+
+  // Generate and write PHP code
+  writeToPhp(attributesDir, attributeFiles);
 }
 
 async function getAllJsonFiles(dir: string): Promise<string[]> {
@@ -508,6 +511,115 @@ function convertToPythonLiteral(value: AttributeJson['example']): string {
   if (typeof value === 'number') return value.toString();
   if (Array.isArray(value)) {
     const items = value.map(convertToPythonLiteral);
+    return `[${items.join(', ')}]`;
+  }
+  return JSON.stringify(value);
+}
+
+function writeToPhp(attributesDir: string, attributeFiles: string[]) {
+  let content = '<?php\n\n';
+  content += 'declare(strict_types=1);\n\n';
+  content += 'namespace Sentry\\Conventions;\n\n';
+  content += '// This is an auto-generated file. Do not edit!\n\n';
+  content += '/**\n';
+  content += ' * A collection of attribute names with their constants, as defined in the Sentry Semantic Conventions registry.\n';
+  content += ' */\n';
+  content += 'final class Attributes\n';
+  content += '{\n';
+
+  // Generate constants for each attribute
+  for (const file of attributeFiles) {
+    const attributePath = path.join(attributesDir, file);
+    const attributeJson = JSON.parse(fs.readFileSync(attributePath, 'utf-8')) as AttributeJson;
+
+    const { key, brief, type, pii, is_in_otel, example, has_dynamic_suffix, deprecation, alias } = attributeJson;
+
+    const isDeprecated = !!deprecation;
+    const constantName = getConstantName(key, isDeprecated);
+    const phpType = getPhpType(type);
+
+    content += `    /**\n`;
+    content += `     * ${brief}\n`;
+    content += `     *\n`;
+    content += `     * Attribute: \`${key}\`\n`;
+    content += `     *\n`;
+    content += `     * Type: ${phpType}\n`;
+    content += `     *\n`;
+    content += `     * Contains PII: ${pii.key}${pii.reason ? ` - ${pii.reason}` : ''}\n`;
+    content += `     *\n`;
+    content += `     * Defined in OTEL: ${is_in_otel ? 'Yes' : 'No'}\n`;
+
+    if (has_dynamic_suffix) {
+      content += `     *\n`;
+      content += `     * Has Dynamic Suffix: true\n`;
+    }
+
+    if (alias && alias.length > 0) {
+      content += `     *\n`;
+      content += `     * Aliases: ${alias.join(', ')}\n`;
+    }
+
+    if (deprecation) {
+      content += `     *\n`;
+      let deprecationText = '@deprecated';
+      if (deprecation.replacement) {
+        deprecationText += ` Use ${deprecation.replacement} instead`;
+      }
+      if (deprecation.reason) {
+        deprecationText += ` - ${deprecation.reason}`;
+      }
+      content += `     * ${deprecationText}\n`;
+    }
+
+    if (example !== undefined) {
+      const phpExample = convertToPhpLiteral(example);
+      content += `     *\n`;
+      content += `     * @example ${phpExample}\n`;
+    }
+
+    content += `     */\n`;
+    content += `    public const ${constantName} = '${key}';\n\n`;
+  }
+
+  content += '}\n';
+
+  // Write the generated content to the file
+  const outputFilePath = path.join(__dirname, '..', 'php', 'src', 'Attributes.php');
+  fs.writeFileSync(outputFilePath, content);
+
+  console.log(`Generated PHP attributes file at: ${outputFilePath}`);
+}
+
+function getPhpType(type: AttributeJson['type']): string {
+  switch (type) {
+    case 'string':
+      return 'string';
+    case 'boolean':
+      return 'bool';
+    case 'integer':
+      return 'int';
+    case 'double':
+      return 'float';
+    case 'string[]':
+      return 'array<string>';
+    case 'boolean[]':
+      return 'array<bool>';
+    case 'integer[]':
+      return 'array<int>';
+    case 'double[]':
+      return 'array<float>';
+    default:
+      throw new Error(`Unknown attribute type: ${type}`);
+  }
+}
+
+function convertToPhpLiteral(value: AttributeJson['example']): string {
+  if (value === null) return 'null';
+  if (typeof value === 'boolean') return value ? 'true' : 'false';
+  if (typeof value === 'string') return JSON.stringify(value);
+  if (typeof value === 'number') return value.toString();
+  if (Array.isArray(value)) {
+    const items = value.map(convertToPhpLiteral);
     return `[${items.join(', ')}]`;
   }
   return JSON.stringify(value);
