@@ -7,6 +7,7 @@ export async function generateOps() {
   const opFiles = await fs.promises.readdir(opDir);
   writeToJs(opDir, opFiles);
   writeToRust(opDir, opFiles);
+  writeToPhp(opDir, opFiles);
 }
 
 function writeToRust(opDir: string, opFiles: string[]) {
@@ -74,4 +75,47 @@ function writeToJs(opDir: string, opFiles: string[]) {
   const opFilePath = path.join(__dirname, '..', 'javascript', 'sentry-conventions', 'src', 'op.ts');
 
   fs.writeFileSync(opFilePath, opContent);
+}
+
+function writeToPhp(opDir: string, opFiles: string[]) {
+  let content = '<?php\n\n';
+  content += 'declare(strict_types=1);\n\n';
+  content += 'namespace Sentry\\Conventions;\n\n';
+  content += '// This is an auto-generated file. Do not edit!\n\n';
+  content += '/**\n';
+  content += ' * Contains constants for span operations used in Sentry.\n';
+  content += ' */\n';
+  content += 'final class Op\n';
+  content += '{\n';
+
+  for (const file of opFiles) {
+    const opPath = path.join(opDir, file);
+    const opJson = JSON.parse(fs.readFileSync(opPath, 'utf-8'));
+
+    const { name, description, fields } = opJson;
+
+    content += `    // Path: model/op/${file}\n`;
+    content += `    // Name: ${name}\n`;
+    if (description) {
+      content += `    // Description: ${description}\n`;
+    }
+    content += '\n';
+
+    for (const field of fields) {
+      if (field.description) {
+        content += '    /**\n';
+        content += `     * ${field.description}\n`;
+        content += '     */\n';
+      }
+      const constantName = `${name.toUpperCase().replaceAll('.', '_')}_${field.name.toUpperCase().replaceAll('.', '_')}_SPAN_OP`;
+      content += `    public const ${constantName} = '${field.name}';\n\n`;
+    }
+  }
+
+  content += '}\n';
+
+  const opFilePath = path.join(__dirname, '..', 'php', 'src', 'Op.php');
+  fs.writeFileSync(opFilePath, content);
+
+  console.log(`Generated PHP op file at: ${opFilePath}`);
 }
