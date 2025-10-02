@@ -40,7 +40,18 @@ async function getAllJsonFiles(dir: string): Promise<string[]> {
 function writeToJs(attributesDir: string, attributeFiles: string[]) {
   let attributesContent = '// This is an auto-generated file. Do not edit!\n\n';
 
-  const attributeTypeMap = '';
+  let attributeTypeMap = '';
+
+  // Build the explicit type map for Attributes
+  for (const file of attributeFiles) {
+    const attributePath = path.join(attributesDir, file);
+    const attributeJson = JSON.parse(fs.readFileSync(attributePath, 'utf-8')) as AttributeJson;
+    const { key, type, deprecation } = attributeJson;
+
+    const constantName = getConstantName(key, !!deprecation);
+    const tsType = getTsType(type);
+    attributeTypeMap += `\n  [AttributeName.${constantName}]?: ${tsType};`;
+  }
 
   // Generate metadata types and interfaces
   attributesContent += generateMetadataTypes();
@@ -51,18 +62,8 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
   attributesContent +=
     'export type AttributeValue = string | number | boolean | Array<string> | Array<number> | Array<boolean>;\n\n';
 
-  // Generate a mapped type for Attributes based on ATTRIBUTE_TYPE
-  attributesContent += 'export type Attributes = {\n';
-  attributesContent += '  [K in AttributeName]?: ATTRIBUTE_TYPE[K] extends AttributeType.STRING ? string :\n';
-  attributesContent += '    ATTRIBUTE_TYPE[K] extends AttributeType.BOOLEAN ? boolean :\n';
-  attributesContent += '    ATTRIBUTE_TYPE[K] extends AttributeType.INTEGER ? number :\n';
-  attributesContent += '    ATTRIBUTE_TYPE[K] extends AttributeType.DOUBLE ? number :\n';
-  attributesContent += '    ATTRIBUTE_TYPE[K] extends AttributeType.STRING_ARRAY ? Array<string> :\n';
-  attributesContent += '    ATTRIBUTE_TYPE[K] extends AttributeType.BOOLEAN_ARRAY ? Array<boolean> :\n';
-  attributesContent += '    ATTRIBUTE_TYPE[K] extends AttributeType.INTEGER_ARRAY ? Array<number> :\n';
-  attributesContent += '    ATTRIBUTE_TYPE[K] extends AttributeType.DOUBLE_ARRAY ? Array<number> :\n';
-  attributesContent += '    never;\n';
-  attributesContent += '} & Record<string, AttributeValue | undefined>;\n\n';
+  attributesContent += `export type Attributes = {${attributeTypeMap}
+} & Record<string, AttributeValue | undefined>;\n\n`;
 
   // Write the generated content to the file
   const outputFilePath = path.join(__dirname, '..', 'javascript', 'sentry-conventions', 'src', 'attributes.ts');
