@@ -578,7 +578,14 @@ function generateMetadataDict(attributesDir: string, attributeFiles: string[]): 
     }
 
     if (alias && alias.length > 0) {
-      metadataDict += `    aliases: ${JSON.stringify(alias)},\n`;
+      // Convert string aliases to AttributeName enum references
+      const enumAliases = alias
+        .map((aliasKey) => {
+          const aliasConstantName = getConstantName(aliasKey, false);
+          return `AttributeName.${aliasConstantName}`;
+        })
+        .join(', ');
+      metadataDict += `    aliases: [${enumAliases}],\n`;
     }
 
     if (attributeJson.sdks && attributeJson.sdks.length > 0) {

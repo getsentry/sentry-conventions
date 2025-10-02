@@ -739,7 +739,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.usage.output_tokens',
     },
-    aliases: ['gen_ai.usage.output_tokens', 'gen_ai.usage.completion_tokens'],
+    aliases: [AttributeName.GEN_AI_USAGE_OUTPUT_TOKENS, AttributeName.GEN_AI_USAGE_COMPLETION_TOKENS],
     sdks: ['python'],
   },
   [AttributeName.AI_DOCUMENTS]: {
@@ -762,7 +762,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.response.finish_reason',
     },
-    aliases: ['gen_ai.response.finish_reasons'],
+    aliases: [AttributeName.GEN_AI_RESPONSE_FINISH_REASONS],
   },
   [AttributeName.AI_FREQUENCY_PENALTY]: {
     brief:
@@ -776,7 +776,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.request.frequency_penalty',
     },
-    aliases: ['gen_ai.request.frequency_penalty'],
+    aliases: [AttributeName.GEN_AI_REQUEST_FREQUENCY_PENALTY],
   },
   [AttributeName.AI_FUNCTION_CALL]: {
     brief:
@@ -790,7 +790,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.tool.name',
     },
-    aliases: ['gen_ai.tool.name'],
+    aliases: [AttributeName.GEN_AI_TOOL_NAME],
   },
   [AttributeName.AI_GENERATION_ID]: {
     brief: 'Unique identifier for the completion.',
@@ -803,7 +803,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.response.id',
     },
-    aliases: ['gen_ai.response.id'],
+    aliases: [AttributeName.GEN_AI_RESPONSE_ID],
   },
   [AttributeName.AI_INPUT_MESSAGES]: {
     brief: 'The input messages sent to the model',
@@ -816,7 +816,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.request.messages',
     },
-    aliases: ['gen_ai.request.messages'],
+    aliases: [AttributeName.GEN_AI_REQUEST_MESSAGES],
     sdks: ['python'],
   },
   [AttributeName.AI_IS_SEARCH_REQUIRED]: {
@@ -848,7 +848,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.system',
     },
-    aliases: ['gen_ai.system'],
+    aliases: [AttributeName.GEN_AI_SYSTEM],
   },
   [AttributeName.AI_MODEL_ID]: {
     brief: 'The vendor-specific ID of the model used.',
@@ -861,7 +861,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.response.model',
     },
-    aliases: ['gen_ai.response.model'],
+    aliases: [AttributeName.GEN_AI_RESPONSE_MODEL],
     sdks: ['python'],
   },
   [AttributeName.AI_PIPELINE_NAME]: {
@@ -875,7 +875,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.pipeline.name',
     },
-    aliases: ['gen_ai.pipeline.name'],
+    aliases: [AttributeName.GEN_AI_PIPELINE_NAME],
   },
   [AttributeName.AI_PREAMBLE]: {
     brief:
@@ -899,7 +899,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.request.presence_penalty',
     },
-    aliases: ['gen_ai.request.presence_penalty'],
+    aliases: [AttributeName.GEN_AI_REQUEST_PRESENCE_PENALTY],
   },
   [AttributeName.AI_PROMPT_TOKENS_USED]: {
     brief: 'The number of tokens used to process just the prompt.',
@@ -912,7 +912,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.usage.input_tokens',
     },
-    aliases: ['gen_ai.usage.prompt_tokens', 'gen_ai.usage.input_tokens'],
+    aliases: [AttributeName.GEN_AI_USAGE_PROMPT_TOKENS, AttributeName.GEN_AI_USAGE_INPUT_TOKENS],
     sdks: ['python'],
   },
   [AttributeName.AI_RAW_PROMPTING]: {
@@ -975,7 +975,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.request.seed',
     },
-    aliases: ['gen_ai.request.seed'],
+    aliases: [AttributeName.GEN_AI_REQUEST_SEED],
   },
   [AttributeName.AI_STREAMING]: {
     brief: 'Whether the request was streamed back.',
@@ -988,7 +988,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.response.streaming',
     },
-    aliases: ['gen_ai.response.streaming'],
+    aliases: [AttributeName.GEN_AI_RESPONSE_STREAMING],
     sdks: ['python'],
   },
   [AttributeName.AI_TAGS]: {
@@ -1012,7 +1012,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.request.temperature',
     },
-    aliases: ['gen_ai.request.temperature'],
+    aliases: [AttributeName.GEN_AI_REQUEST_TEMPERATURE],
   },
   [AttributeName.AI_TEXTS]: {
     brief: 'Raw text inputs provided to the model.',
@@ -1059,7 +1059,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.request.top_k',
     },
-    aliases: ['gen_ai.request.top_k'],
+    aliases: [AttributeName.GEN_AI_REQUEST_TOP_K],
   },
   [AttributeName.AI_TOP_P]: {
     brief:
@@ -1073,7 +1073,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.request.top_p',
     },
-    aliases: ['gen_ai.request.top_p'],
+    aliases: [AttributeName.GEN_AI_REQUEST_TOP_P],
   },
   [AttributeName.AI_TOTAL_COST]: {
     brief: 'The total cost for the tokens used.',
@@ -1095,7 +1095,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.usage.total_tokens',
     },
-    aliases: ['gen_ai.usage.total_tokens'],
+    aliases: [AttributeName.GEN_AI_USAGE_TOTAL_TOKENS],
     sdks: ['python'],
   },
   [AttributeName.AI_WARNINGS]: {
@@ -1133,7 +1133,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'Chrome',
-    aliases: ['sentry.browser.name'],
+    aliases: [AttributeName.SENTRY_BROWSER_NAME],
   },
   [AttributeName.BROWSER_REPORT_TYPE]: {
     brief: 'A browser report sent via reporting API..',
@@ -1182,7 +1182,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '120.0.6099.130',
-    aliases: ['sentry.browser.version'],
+    aliases: [AttributeName.SENTRY_BROWSER_VERSION],
   },
   [AttributeName.CACHE_HIT]: {
     brief: 'If the cache was hit during this span.',
@@ -1252,7 +1252,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'example.com',
-    aliases: ['http.client_ip'],
+    aliases: [AttributeName.HTTP_CLIENT_IP],
   },
   [AttributeName.CLIENT_PORT]: {
     brief: 'Client port number.',
@@ -1302,7 +1302,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: '/app/myapplication/http/handler/server.py',
-    aliases: ['code.filepath'],
+    aliases: [AttributeName.CODE_FILEPATH],
   },
   [AttributeName.CODE_FILEPATH]: {
     brief:
@@ -1316,7 +1316,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'code.file.path',
     },
-    aliases: ['code.file.path'],
+    aliases: [AttributeName.CODE_FILE_PATH],
   },
   [AttributeName.CODE_FUNCTION]: {
     brief: "The method or function name, or equivalent (usually rightmost part of the code unit's name).",
@@ -1329,7 +1329,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'code.function.name',
     },
-    aliases: ['code.function.name'],
+    aliases: [AttributeName.CODE_FUNCTION_NAME],
   },
   [AttributeName.CODE_FUNCTION_NAME]: {
     brief: "The method or function name, or equivalent (usually rightmost part of the code unit's name).",
@@ -1339,7 +1339,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'server_request',
-    aliases: ['code.function'],
+    aliases: [AttributeName.CODE_FUNCTION],
   },
   [AttributeName.CODE_LINE_NUMBER]: {
     brief:
@@ -1350,7 +1350,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 42,
-    aliases: ['code.lineno'],
+    aliases: [AttributeName.CODE_LINENO],
   },
   [AttributeName.CODE_LINENO]: {
     brief:
@@ -1364,7 +1364,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'code.line.number',
     },
-    aliases: ['code.line.number'],
+    aliases: [AttributeName.CODE_LINE_NUMBER],
   },
   [AttributeName.CODE_NAMESPACE]: {
     brief:
@@ -1400,7 +1400,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'db.namespace',
     },
-    aliases: ['db.namespace'],
+    aliases: [AttributeName.DB_NAMESPACE],
   },
   [AttributeName.DB_NAMESPACE]: {
     brief: 'The name of the database being accessed.',
@@ -1410,7 +1410,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'customers',
-    aliases: ['db.name'],
+    aliases: [AttributeName.DB_NAME],
   },
   [AttributeName.DB_OPERATION]: {
     brief: 'The name of the operation being executed.',
@@ -1423,7 +1423,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'db.operation.name',
     },
-    aliases: ['db.operation.name'],
+    aliases: [AttributeName.DB_OPERATION_NAME],
   },
   [AttributeName.DB_OPERATION_NAME]: {
     brief: 'The name of the operation being executed.',
@@ -1433,7 +1433,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'SELECT',
-    aliases: ['db.operation'],
+    aliases: [AttributeName.DB_OPERATION],
   },
   [AttributeName.DB_QUERY_PARAMETER_KEY]: {
     brief:
@@ -1465,7 +1465,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'SELECT * FROM users',
-    aliases: ['db.statement'],
+    aliases: [AttributeName.DB_STATEMENT],
   },
   [AttributeName.DB_REDIS_CONNECTION]: {
     brief: 'The redis connection name.',
@@ -1513,7 +1513,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'db.query.text',
     },
-    aliases: ['db.query.text'],
+    aliases: [AttributeName.DB_QUERY_TEXT],
   },
   [AttributeName.DB_SYSTEM]: {
     brief:
@@ -1527,7 +1527,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'db.system.name',
     },
-    aliases: ['db.system.name'],
+    aliases: [AttributeName.DB_SYSTEM_NAME],
   },
   [AttributeName.DB_SYSTEM_NAME]: {
     brief:
@@ -1538,7 +1538,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'postgresql',
-    aliases: ['db.system'],
+    aliases: [AttributeName.DB_SYSTEM],
   },
   [AttributeName.DB_USER]: {
     brief: 'The database user.',
@@ -1587,7 +1587,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'sentry.environment',
     },
-    aliases: ['sentry.environment'],
+    aliases: [AttributeName.SENTRY_ENVIRONMENT],
   },
   [AttributeName.ERROR_TYPE]: {
     brief: 'Describes a class of error the operation ended with.',
@@ -1835,7 +1835,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'Autofix Pipeline',
-    aliases: ['ai.pipeline.name'],
+    aliases: [AttributeName.AI_PIPELINE_NAME],
   },
   [AttributeName.GEN_AI_PROMPT]: {
     brief: 'The input messages sent to the model',
@@ -1868,7 +1868,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 0.5,
-    aliases: ['ai.frequency_penalty'],
+    aliases: [AttributeName.AI_FREQUENCY_PENALTY],
   },
   [AttributeName.GEN_AI_REQUEST_MAX_TOKENS]: {
     brief: 'The maximum number of tokens to generate in the response.',
@@ -1889,7 +1889,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example:
       '[{"role": "system", "content": "Generate a random number."}, {"role": "user", "content": [{"text": "Generate a random number between 0 and 10.", "type": "text"}]}, {"role": "tool", "content": {"toolCallId": "1", "toolName": "Weather", "output": "rainy"}}]',
-    aliases: ['ai.input_messages'],
+    aliases: [AttributeName.AI_INPUT_MESSAGES],
   },
   [AttributeName.GEN_AI_REQUEST_MODEL]: {
     brief: 'The model identifier being used for the request.',
@@ -1909,7 +1909,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 0.5,
-    aliases: ['ai.presence_penalty'],
+    aliases: [AttributeName.AI_PRESENCE_PENALTY],
   },
   [AttributeName.GEN_AI_REQUEST_SEED]: {
     brief: 'The seed, ideally models given the same seed and same other parameters will produce the exact same output.',
@@ -1919,7 +1919,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: '1234567890',
-    aliases: ['ai.seed'],
+    aliases: [AttributeName.AI_SEED],
   },
   [AttributeName.GEN_AI_REQUEST_TEMPERATURE]: {
     brief:
@@ -1930,7 +1930,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 0.1,
-    aliases: ['ai.temperature'],
+    aliases: [AttributeName.AI_TEMPERATURE],
   },
   [AttributeName.GEN_AI_REQUEST_TOP_K]: {
     brief:
@@ -1941,7 +1941,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 35,
-    aliases: ['ai.top_k'],
+    aliases: [AttributeName.AI_TOP_K],
   },
   [AttributeName.GEN_AI_REQUEST_TOP_P]: {
     brief:
@@ -1952,7 +1952,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 0.7,
-    aliases: ['ai.top_p'],
+    aliases: [AttributeName.AI_TOP_P],
   },
   [AttributeName.GEN_AI_RESPONSE_FINISH_REASONS]: {
     brief: 'The reason why the model stopped generating.',
@@ -1962,7 +1962,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'COMPLETE',
-    aliases: ['ai.finish_reason'],
+    aliases: [AttributeName.AI_FINISH_REASON],
   },
   [AttributeName.GEN_AI_RESPONSE_ID]: {
     brief: 'Unique identifier for the completion.',
@@ -1972,7 +1972,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'gen_123abc',
-    aliases: ['ai.generation_id'],
+    aliases: [AttributeName.AI_GENERATION_ID],
   },
   [AttributeName.GEN_AI_RESPONSE_MODEL]: {
     brief: 'The vendor-specific ID of the model used.',
@@ -1982,7 +1982,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'gpt-4',
-    aliases: ['ai.model_id'],
+    aliases: [AttributeName.AI_MODEL_ID],
   },
   [AttributeName.GEN_AI_RESPONSE_STREAMING]: {
     brief: "Whether or not the AI model call's response was streamed back asynchronously",
@@ -1992,7 +1992,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: true,
-    aliases: ['ai.streaming'],
+    aliases: [AttributeName.AI_STREAMING],
   },
   [AttributeName.GEN_AI_RESPONSE_TEXT]: {
     brief:
@@ -2031,7 +2031,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'openai',
-    aliases: ['ai.model.provider'],
+    aliases: [AttributeName.AI_MODEL_PROVIDER],
   },
   [AttributeName.GEN_AI_SYSTEM_MESSAGE]: {
     brief: 'The system instructions passed to the model.',
@@ -2077,7 +2077,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'Flights',
-    aliases: ['ai.function_call'],
+    aliases: [AttributeName.AI_FUNCTION_CALL],
   },
   [AttributeName.GEN_AI_TOOL_OUTPUT]: {
     brief: 'The output of the tool being used. It has to be a stringified version of the output of the tool.',
@@ -2108,7 +2108,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.usage.output_tokens',
     },
-    aliases: ['ai.completion_tokens.used', 'gen_ai.usage.output_tokens'],
+    aliases: [AttributeName.AI_COMPLETION_TOKENS_USED, AttributeName.GEN_AI_USAGE_OUTPUT_TOKENS],
   },
   [AttributeName.GEN_AI_USAGE_INPUT_TOKENS]: {
     brief: 'The number of tokens used to process the AI input (prompt) without cached input tokens.',
@@ -2118,7 +2118,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 10,
-    aliases: ['ai.prompt_tokens.used', 'gen_ai.usage.prompt_tokens'],
+    aliases: [AttributeName.AI_PROMPT_TOKENS_USED, AttributeName.GEN_AI_USAGE_PROMPT_TOKENS],
   },
   [AttributeName.GEN_AI_USAGE_INPUT_TOKENS_CACHED]: {
     brief: 'The number of cached tokens used to process the AI input (prompt).',
@@ -2137,7 +2137,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 10,
-    aliases: ['ai.completion_tokens.used', 'gen_ai.usage.completion_tokens'],
+    aliases: [AttributeName.AI_COMPLETION_TOKENS_USED, AttributeName.GEN_AI_USAGE_COMPLETION_TOKENS],
   },
   [AttributeName.GEN_AI_USAGE_OUTPUT_TOKENS_REASONING]: {
     brief: 'The number of tokens used for reasoning to create the AI output.',
@@ -2159,7 +2159,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.usage.input_tokens',
     },
-    aliases: ['ai.prompt_tokens.used', 'gen_ai.usage.input_tokens'],
+    aliases: [AttributeName.AI_PROMPT_TOKENS_USED, AttributeName.GEN_AI_USAGE_INPUT_TOKENS],
   },
   [AttributeName.GEN_AI_USAGE_TOTAL_COST]: {
     brief: 'The total cost for the tokens used.',
@@ -2181,7 +2181,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 20,
-    aliases: ['ai.total_tokens.used'],
+    aliases: [AttributeName.AI_TOTAL_TOKENS_USED],
   },
   [AttributeName.GEN_AI_USER_MESSAGE]: {
     brief: 'The user message passed to the model.',
@@ -2222,7 +2222,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'client.address',
     },
-    aliases: ['client.address'],
+    aliases: [AttributeName.CLIENT_ADDRESS],
   },
   [AttributeName.HTTP_DECODED_RESPONSE_CONTENT_LENGTH]: {
     brief: 'The decoded body size of the response (in bytes).',
@@ -2245,7 +2245,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'network.protocol.version',
     },
-    aliases: ['network.protocol.version', 'net.protocol.version'],
+    aliases: [AttributeName.NETWORK_PROTOCOL_VERSION, AttributeName.NET_PROTOCOL_VERSION],
   },
   [AttributeName.HTTP_FRAGMENT]: {
     brief:
@@ -2269,7 +2269,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'server.address',
       reason: 'Deprecated, use one of `server.address` or `client.address`, depending on the usage',
     },
-    aliases: ['server.address', 'client.address', 'http.server_name', 'net.host.name'],
+    aliases: [
+      AttributeName.SERVER_ADDRESS,
+      AttributeName.CLIENT_ADDRESS,
+      AttributeName.HTTP_SERVER_NAME,
+      AttributeName.NET_HOST_NAME,
+    ],
   },
   [AttributeName.HTTP_METHOD]: {
     brief: 'The HTTP method used.',
@@ -2282,7 +2287,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'http.request.method',
     },
-    aliases: ['http.request.method'],
+    aliases: [AttributeName.HTTP_REQUEST_METHOD],
   },
   [AttributeName.HTTP_QUERY]: {
     brief:
@@ -2369,7 +2374,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'GET',
-    aliases: ['method', 'http.method'],
+    aliases: [AttributeName.METHOD, AttributeName.HTTP_METHOD],
   },
   [AttributeName.HTTP_REQUEST_REDIRECT_END]: {
     brief:
@@ -2475,7 +2480,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 123,
-    aliases: ['http.response_content_length', 'http.response.header.content-length'],
+    aliases: [AttributeName.HTTP_RESPONSE_CONTENT_LENGTH, AttributeName.HTTP_RESPONSE_HEADER_CONTENT_LENGTH],
   },
   [AttributeName.HTTP_RESPONSE_HEADER_KEY]: {
     brief:
@@ -2496,7 +2501,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: "http.response.header.custom-header=['foo', 'bar']",
-    aliases: ['http.response_content_length', 'http.response.body.size'],
+    aliases: [AttributeName.HTTP_RESPONSE_CONTENT_LENGTH, AttributeName.HTTP_RESPONSE_BODY_SIZE],
   },
   [AttributeName.HTTP_RESPONSE_SIZE]: {
     brief: 'The transfer size of the response (in bytes).',
@@ -2506,7 +2511,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 456,
-    aliases: ['http.response_transfer_size'],
+    aliases: [AttributeName.HTTP_RESPONSE_TRANSFER_SIZE],
   },
   [AttributeName.HTTP_RESPONSE_STATUS_CODE]: {
     brief: 'The status code of the HTTP response.',
@@ -2516,7 +2521,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 404,
-    aliases: ['http.status_code'],
+    aliases: [AttributeName.HTTP_STATUS_CODE],
   },
   [AttributeName.HTTP_RESPONSE_CONTENT_LENGTH]: {
     brief: 'The encoded body size of the response (in bytes).',
@@ -2529,7 +2534,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'http.response.body.size',
     },
-    aliases: ['http.response.body.size', 'http.response.header.content-length'],
+    aliases: [AttributeName.HTTP_RESPONSE_BODY_SIZE, AttributeName.HTTP_RESPONSE_HEADER_CONTENT_LENGTH],
   },
   [AttributeName.HTTP_RESPONSE_TRANSFER_SIZE]: {
     brief: 'The transfer size of the response (in bytes).',
@@ -2542,7 +2547,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'http.response.size',
     },
-    aliases: ['http.response.size'],
+    aliases: [AttributeName.HTTP_RESPONSE_SIZE],
   },
   [AttributeName.HTTP_ROUTE]: {
     brief: 'The matched route, that is, the path template in the format used by the respective server framework.',
@@ -2552,7 +2557,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: '/users/:id',
-    aliases: ['url.template'],
+    aliases: [AttributeName.URL_TEMPLATE],
   },
   [AttributeName.HTTP_SCHEME]: {
     brief: 'The URI scheme component identifying the used protocol.',
@@ -2565,7 +2570,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'url.scheme',
     },
-    aliases: ['url.scheme'],
+    aliases: [AttributeName.URL_SCHEME],
   },
   [AttributeName.HTTP_SERVER_NAME]: {
     brief: 'The server domain name',
@@ -2578,7 +2583,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'server.address',
     },
-    aliases: ['server.address', 'net.host.name', 'http.host'],
+    aliases: [AttributeName.SERVER_ADDRESS, AttributeName.NET_HOST_NAME, AttributeName.HTTP_HOST],
   },
   [AttributeName.HTTP_STATUS_CODE]: {
     brief: 'The status code of the HTTP response.',
@@ -2591,7 +2596,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'http.response.status_code',
     },
-    aliases: ['http.response.status_code'],
+    aliases: [AttributeName.HTTP_RESPONSE_STATUS_CODE],
   },
   [AttributeName.HTTP_TARGET]: {
     brief: 'The pathname and query string of the URL.',
@@ -2617,7 +2622,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'url.full',
     },
-    aliases: ['url.full', 'url'],
+    aliases: [AttributeName.URL_FULL, AttributeName.URL],
   },
   [AttributeName.HTTP_USER_AGENT]: {
     brief: 'Value of the HTTP User-Agent header sent by the client.',
@@ -2631,7 +2636,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'user_agent.original',
     },
-    aliases: ['user_agent.original'],
+    aliases: [AttributeName.USER_AGENT_ORIGINAL],
   },
   [AttributeName.ID]: {
     brief: 'A unique identifier for the span.',
@@ -2842,7 +2847,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'http.request.method',
     },
-    aliases: ['http.request.method'],
+    aliases: [AttributeName.HTTP_REQUEST_METHOD],
     sdks: ['javascript-browser', 'javascript-node'],
   },
   [AttributeName.NAVIGATION_TYPE]: {
@@ -2911,7 +2916,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'network.local.address',
     },
-    aliases: ['network.local.address', 'net.sock.host.addr'],
+    aliases: [AttributeName.NETWORK_LOCAL_ADDRESS, AttributeName.NET_SOCK_HOST_ADDR],
   },
   [AttributeName.NET_HOST_NAME]: {
     brief:
@@ -2925,7 +2930,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'server.address',
     },
-    aliases: ['server.address', 'http.server_name', 'http.host'],
+    aliases: [AttributeName.SERVER_ADDRESS, AttributeName.HTTP_SERVER_NAME, AttributeName.HTTP_HOST],
   },
   [AttributeName.NET_HOST_PORT]: {
     brief: 'Server port number.',
@@ -2938,7 +2943,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'server.port',
     },
-    aliases: ['server.port'],
+    aliases: [AttributeName.SERVER_PORT],
   },
   [AttributeName.NET_PEER_IP]: {
     brief: 'Peer address of the network connection - IP address or Unix domain socket name.',
@@ -2951,7 +2956,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'network.peer.address',
     },
-    aliases: ['network.peer.address', 'net.sock.peer.addr'],
+    aliases: [AttributeName.NETWORK_PEER_ADDRESS, AttributeName.NET_SOCK_PEER_ADDR],
   },
   [AttributeName.NET_PEER_NAME]: {
     brief:
@@ -2991,7 +2996,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'network.protocol.name',
     },
-    aliases: ['network.protocol.name'],
+    aliases: [AttributeName.NETWORK_PROTOCOL_NAME],
   },
   [AttributeName.NET_PROTOCOL_VERSION]: {
     brief: 'The actual version of the protocol used for network communication.',
@@ -3004,7 +3009,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'network.protocol.version',
     },
-    aliases: ['network.protocol.version', 'http.flavor'],
+    aliases: [AttributeName.NETWORK_PROTOCOL_VERSION, AttributeName.HTTP_FLAVOR],
   },
   [AttributeName.NET_SOCK_FAMILY]: {
     brief: 'OSI transport and network layer',
@@ -3030,7 +3035,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'network.local.address',
     },
-    aliases: ['network.local.address', 'net.host.ip'],
+    aliases: [AttributeName.NETWORK_LOCAL_ADDRESS, AttributeName.NET_HOST_IP],
   },
   [AttributeName.NET_SOCK_HOST_PORT]: {
     brief: 'Local port number of the network connection.',
@@ -3043,7 +3048,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'network.local.port',
     },
-    aliases: ['network.local.port'],
+    aliases: [AttributeName.NETWORK_LOCAL_PORT],
   },
   [AttributeName.NET_SOCK_PEER_ADDR]: {
     brief: 'Peer address of the network connection - IP address',
@@ -3056,7 +3061,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'network.peer.address',
     },
-    aliases: ['network.peer.address', 'net.peer.ip'],
+    aliases: [AttributeName.NETWORK_PEER_ADDRESS, AttributeName.NET_PEER_IP],
   },
   [AttributeName.NET_SOCK_PEER_NAME]: {
     brief: 'Peer address of the network connection - Unix domain socket name',
@@ -3093,7 +3098,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'network.transport',
     },
-    aliases: ['network.transport'],
+    aliases: [AttributeName.NETWORK_TRANSPORT],
   },
   [AttributeName.NETWORK_LOCAL_ADDRESS]: {
     brief: 'Local address of the network connection - IP address or Unix domain socket name.',
@@ -3103,7 +3108,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: '10.1.2.80',
-    aliases: ['net.host.ip', 'net.sock.host.addr'],
+    aliases: [AttributeName.NET_HOST_IP, AttributeName.NET_SOCK_HOST_ADDR],
   },
   [AttributeName.NETWORK_LOCAL_PORT]: {
     brief: 'Local port number of the network connection.',
@@ -3113,7 +3118,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 65400,
-    aliases: ['net.sock.host.port'],
+    aliases: [AttributeName.NET_SOCK_HOST_PORT],
   },
   [AttributeName.NETWORK_PEER_ADDRESS]: {
     brief: 'Peer address of the network connection - IP address or Unix domain socket name.',
@@ -3123,7 +3128,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: '10.1.2.80',
-    aliases: ['net.peer.ip', 'net.sock.peer.addr'],
+    aliases: [AttributeName.NET_PEER_IP, AttributeName.NET_SOCK_PEER_ADDR],
   },
   [AttributeName.NETWORK_PEER_PORT]: {
     brief: 'Peer port number of the network connection.',
@@ -3142,7 +3147,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'http',
-    aliases: ['net.protocol.name'],
+    aliases: [AttributeName.NET_PROTOCOL_NAME],
   },
   [AttributeName.NETWORK_PROTOCOL_VERSION]: {
     brief: 'The actual version of the protocol used for network communication.',
@@ -3152,7 +3157,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: '1.1',
-    aliases: ['http.flavor', 'net.protocol.version'],
+    aliases: [AttributeName.HTTP_FLAVOR, AttributeName.NET_PROTOCOL_VERSION],
   },
   [AttributeName.NETWORK_TRANSPORT]: {
     brief: 'OSI transport layer or inter-process communication method.',
@@ -3162,7 +3167,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'tcp',
-    aliases: ['net.transport'],
+    aliases: [AttributeName.NET_TRANSPORT],
   },
   [AttributeName.NETWORK_TYPE]: {
     brief: 'OSI network layer or non-OSI equivalent.',
@@ -3265,7 +3270,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     hasDynamicSuffix: true,
     example: "params.id='123'",
-    aliases: ['url.path.parameter.<key>'],
+    aliases: [AttributeName.URL_PATH_PARAMETER_KEY],
   },
   [AttributeName.PREVIOUS_ROUTE]: {
     brief: 'Also used by mobile SDKs to indicate the previous route in the application.',
@@ -3335,7 +3340,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'sentry.profile_id',
     },
-    aliases: ['sentry.profile_id'],
+    aliases: [AttributeName.SENTRY_PROFILE_ID],
   },
   [AttributeName.QUERY_KEY]: {
     brief: 'An item in a query string. Usually added by client-side routing frameworks like vue-router.',
@@ -3362,7 +3367,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'sentry.release',
     },
-    aliases: ['sentry.release'],
+    aliases: [AttributeName.SENTRY_RELEASE],
   },
   [AttributeName.REMIX_ACTION_FORM_DATA_KEY]: {
     brief: 'Remix form data, <key> being the form data key, the value being the form data value.',
@@ -3386,7 +3391,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'sentry.replay_id',
     },
-    aliases: ['sentry.replay_id'],
+    aliases: [AttributeName.SENTRY_REPLAY_ID],
   },
   [AttributeName.RESOURCE_RENDER_BLOCKING_STATUS]: {
     brief: 'The render blocking status of the resource.',
@@ -3410,7 +3415,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'http.route',
     },
-    aliases: ['http.route'],
+    aliases: [AttributeName.HTTP_ROUTE],
     sdks: ['php-laravel', 'javascript-reactnative'],
   },
   [AttributeName.RPC_GRPC_STATUS_CODE]: {
@@ -3520,7 +3525,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '1544712660300000000',
-    aliases: ['sentry.observed_timestamp_nanos'],
+    aliases: [AttributeName.SENTRY_OBSERVED_TIMESTAMP_NANOS],
   },
   [AttributeName.SENTRY_INTERNAL_REPLAY_IS_BUFFERING]: {
     brief:
@@ -3543,7 +3548,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.name',
     },
-    aliases: ['browser.name'],
+    aliases: [AttributeName.BROWSER_NAME],
   },
   [AttributeName.SENTRY_BROWSER_VERSION]: {
     brief: 'The version of the browser.',
@@ -3556,7 +3561,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.version',
     },
-    aliases: ['browser.version'],
+    aliases: [AttributeName.BROWSER_VERSION],
   },
   [AttributeName.SENTRY_CANCELLATION_REASON]: {
     brief: 'The reason why a span ended early.',
@@ -3602,7 +3607,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'production',
-    aliases: ['environment'],
+    aliases: [AttributeName.ENVIRONMENT],
   },
   [AttributeName.SENTRY_EXCLUSIVE_TIME]: {
     brief: 'The exclusive time duration of the span.',
@@ -3693,7 +3698,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'sentry._internal.observed_timestamp_nanos',
     },
-    aliases: ['sentry._internal.observed_timestamp_nanos'],
+    aliases: [AttributeName.SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS],
   },
   [AttributeName.SENTRY_OP]: {
     brief: 'The operation of a span.',
@@ -3730,7 +3735,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '123e4567e89b12d3a456426614174000',
-    aliases: ['profile_id'],
+    aliases: [AttributeName.PROFILE_ID],
   },
   [AttributeName.SENTRY_RELEASE]: {
     brief: 'The sentry release.',
@@ -3740,7 +3745,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '7.0.0',
-    aliases: ['service.version', 'release'],
+    aliases: [AttributeName.SERVICE_VERSION, AttributeName.RELEASE],
   },
   [AttributeName.SENTRY_REPLAY_ID]: {
     brief: 'The id of the sentry replay.',
@@ -3750,7 +3755,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '123e4567e89b12d3a456426614174000',
-    aliases: ['replay_id'],
+    aliases: [AttributeName.REPLAY_ID],
   },
   [AttributeName.SENTRY_SDK_INTEGRATIONS]: {
     brief:
@@ -3788,7 +3793,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '051581bf3cb55c13',
-    aliases: ['sentry.segment_id'],
+    aliases: [AttributeName._SENTRY_SEGMENT_ID],
   },
   [AttributeName.SENTRY_SEGMENT_NAME]: {
     brief: 'The segment name of a span',
@@ -3810,7 +3815,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'sentry.segment.id',
     },
-    aliases: ['sentry.segment.id'],
+    aliases: [AttributeName.SENTRY_SEGMENT_ID],
   },
   [AttributeName.SENTRY_SERVER_SAMPLE_RATE]: {
     brief: 'Rate at which a span was sampled in Relay.',
@@ -3848,7 +3853,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'GET /',
-    aliases: ['transaction'],
+    aliases: [AttributeName.TRANSACTION],
   },
   [AttributeName.SERVER_ADDRESS]: {
     brief:
@@ -3859,7 +3864,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'example.com',
-    aliases: ['http.server_name', 'net.host.name', 'http.host'],
+    aliases: [AttributeName.HTTP_SERVER_NAME, AttributeName.NET_HOST_NAME, AttributeName.HTTP_HOST],
   },
   [AttributeName.SERVER_PORT]: {
     brief: 'Server port number.',
@@ -3869,7 +3874,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 1337,
-    aliases: ['net.host.port'],
+    aliases: [AttributeName.NET_HOST_PORT],
   },
   [AttributeName.SERVICE_NAME]: {
     brief: 'Logical name of the service.',
@@ -3888,7 +3893,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: '5.0.0',
-    aliases: ['sentry.release'],
+    aliases: [AttributeName.SENTRY_RELEASE],
   },
   [AttributeName.THREAD_ID]: {
     brief: 'Current “managed” thread ID.',
@@ -3919,7 +3924,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'sentry.transaction',
     },
-    aliases: ['sentry.transaction'],
+    aliases: [AttributeName.SENTRY_TRANSACTION],
   },
   [AttributeName.TYPE]: {
     brief: 'More granular type of the operation happening.',
@@ -3986,7 +3991,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'https://example.com/test?foo=bar#buzz',
-    aliases: ['http.url', 'url'],
+    aliases: [AttributeName.HTTP_URL, AttributeName.URL],
   },
   [AttributeName.URL_PATH]: {
     brief: 'The URI path component.',
@@ -4007,7 +4012,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     hasDynamicSuffix: true,
     example: "url.path.parameter.id='123'",
-    aliases: ['params.<key>'],
+    aliases: [AttributeName.PARAMS_KEY],
   },
   [AttributeName.URL_PORT]: {
     brief: 'Server port number.',
@@ -4038,7 +4043,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'https',
-    aliases: ['http.scheme'],
+    aliases: [AttributeName.HTTP_SCHEME],
   },
   [AttributeName.URL_TEMPLATE]: {
     brief: 'The low-cardinality template of an absolute path reference.',
@@ -4048,7 +4053,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: '/users/:id',
-    aliases: ['http.route'],
+    aliases: [AttributeName.HTTP_ROUTE],
   },
   [AttributeName.URL]: {
     brief: 'The URL of the resource that was fetched.',
@@ -4061,7 +4066,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'url.full',
     },
-    aliases: ['url.full', 'http.url'],
+    aliases: [AttributeName.URL_FULL, AttributeName.HTTP_URL],
     sdks: ['javascript-browser', 'javascript-node'],
   },
   [AttributeName.USER_EMAIL]: {
@@ -4172,7 +4177,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example:
       'Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1',
-    aliases: ['http.user_agent'],
+    aliases: [AttributeName.HTTP_USER_AGENT],
   },
 };
 
