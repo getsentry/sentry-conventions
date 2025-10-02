@@ -6944,11 +6944,6 @@ export interface PiiInfo {
   reason?: string;
 }
 
-export enum DeprecationStatus {
-  BACKFILL = 'backfill',
-  NORMALIZE = 'normalize',
-}
-
 export interface DeprecationInfo {
   /** What this attribute was replaced with */
   replacement?: string;
