@@ -40,7 +40,7 @@ async function getAllJsonFiles(dir: string): Promise<string[]> {
 function writeToJs(attributesDir: string, attributeFiles: string[]) {
   let attributesContent = '// This is an auto-generated file. Do not edit!\n\n';
 
-  let attributeTypeMap = '';
+  const attributeTypeMap = '';
 
   for (const file of attributeFiles) {
     const attributePath = path.join(attributesDir, file);
@@ -100,23 +100,12 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
       attributesContent += ` * @deprecated ${replacement}${deprecation.reason ? ` - ${deprecation.reason}` : ''}\n`;
     }
 
-    // Add all attributes (both deprecated and non-deprecated) to the Attributes type
-    attributeTypeMap += `\n  [AttributeName.${constantName}]?: ${typeConstantName};`;
-
     // Add example if present
     if (example !== undefined) {
       attributesContent += ` * @example ${JSON.stringify(example)}\n`;
     }
 
-    attributesContent += ' */\n';
-
-    attributesContent += `export const ${constantName} = '${key}';\n\n`;
-
-    attributesContent += '/**\n';
-    attributesContent += ` * Type for {@link ${constantName}} ${key}\n`;
-    attributesContent += ' */\n';
-
-    attributesContent += `export type ${constantName}_TYPE = ${tsType};\n\n`;
+    attributesContent += ' */\n\n';
   }
 
   // Generate metadata types and interfaces
@@ -128,8 +117,18 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
   attributesContent +=
     'export type AttributeValue = string | number | boolean | Array<string> | Array<number> | Array<boolean>;\n\n';
 
-  attributesContent += `export type Attributes = {${attributeTypeMap}
-} & Record<string, AttributeValue | undefined>;\n`;
+  // Generate a mapped type for Attributes based on ATTRIBUTE_TYPE
+  attributesContent += 'export type Attributes = {\n';
+  attributesContent += '  [K in AttributeName]?: ATTRIBUTE_TYPE[K] extends AttributeType.STRING ? string :\n';
+  attributesContent += '    ATTRIBUTE_TYPE[K] extends AttributeType.BOOLEAN ? boolean :\n';
+  attributesContent += '    ATTRIBUTE_TYPE[K] extends AttributeType.INTEGER ? number :\n';
+  attributesContent += '    ATTRIBUTE_TYPE[K] extends AttributeType.DOUBLE ? number :\n';
+  attributesContent += '    ATTRIBUTE_TYPE[K] extends AttributeType.STRING_ARRAY ? Array<string> :\n';
+  attributesContent += '    ATTRIBUTE_TYPE[K] extends AttributeType.BOOLEAN_ARRAY ? Array<boolean> :\n';
+  attributesContent += '    ATTRIBUTE_TYPE[K] extends AttributeType.INTEGER_ARRAY ? Array<number> :\n';
+  attributesContent += '    ATTRIBUTE_TYPE[K] extends AttributeType.DOUBLE_ARRAY ? Array<number> :\n';
+  attributesContent += '    never;\n';
+  attributesContent += '} & Record<string, AttributeValue | undefined>;\n\n';
 
   // Write the generated content to the file
   const outputFilePath = path.join(__dirname, '..', 'javascript', 'sentry-conventions', 'src', 'attributes.ts');
@@ -579,7 +578,7 @@ export interface AttributeMetadata {
 function generateMetadataDict(attributesDir: string, attributeFiles: string[]): string {
   // First, generate the AttributeName enum
   let attributeNameEnum = 'export enum AttributeName {\n';
-  let attributeTypeMap = 'export const ATTRIBUTE_TYPES: Record<AttributeName, AttributeType> = {\n';
+  let attributeTypeMap = 'export const ATTRIBUTE_TYPE: Record<AttributeName, AttributeType> = {\n';
 
   for (const file of attributeFiles) {
     const attributePath = path.join(attributesDir, file);

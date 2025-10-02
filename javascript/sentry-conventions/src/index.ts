@@ -8,5 +8,5 @@ export type {
   DeprecationInfo,
   AttributeMetadata,
   ATTRIBUTE_METADATA,
-  ATTRIBUTE_TYPES,
+  ATTRIBUTE_TYPE,
 } from './attributes';

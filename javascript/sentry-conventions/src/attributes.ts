@@ -13,12 +13,6 @@
  *
  * @example ["Citation 1","Citation 2"]
  */
-export const AI_CITATIONS = 'ai.citations';
-
-/**
- * Type for {@link AI_CITATIONS} ai.citations
- */
-export type AI_CITATIONS_TYPE = Array<string>;
 
 // Path: model/attributes/ai/ai__completion_tokens__used.json
 
@@ -36,12 +30,6 @@ export type AI_CITATIONS_TYPE = Array<string>;
  * @deprecated Use {@link GEN_AI_USAGE_OUTPUT_TOKENS} (gen_ai.usage.output_tokens) instead
  * @example 10
  */
-export const AI_COMPLETION_TOKENS_USED = 'ai.completion_tokens.used';
-
-/**
- * Type for {@link AI_COMPLETION_TOKENS_USED} ai.completion_tokens.used
- */
-export type AI_COMPLETION_TOKENS_USED_TYPE = number;
 
 // Path: model/attributes/ai/ai__documents.json
 
@@ -56,12 +44,6 @@ export type AI_COMPLETION_TOKENS_USED_TYPE = number;
  *
  * @example ["document1.txt","document2.pdf"]
  */
-export const AI_DOCUMENTS = 'ai.documents';
-
-/**
- * Type for {@link AI_DOCUMENTS} ai.documents
- */
-export type AI_DOCUMENTS_TYPE = Array<string>;
 
 // Path: model/attributes/ai/ai__finish_reason.json
 
@@ -79,12 +61,6 @@ export type AI_DOCUMENTS_TYPE = Array<string>;
  * @deprecated Use {@link GEN_AI_RESPONSE_FINISH_REASON} (gen_ai.response.finish_reason) instead
  * @example "COMPLETE"
  */
-export const AI_FINISH_REASON = 'ai.finish_reason';
-
-/**
- * Type for {@link AI_FINISH_REASON} ai.finish_reason
- */
-export type AI_FINISH_REASON_TYPE = string;
 
 // Path: model/attributes/ai/ai__frequency_penalty.json
 
@@ -102,12 +78,6 @@ export type AI_FINISH_REASON_TYPE = string;
  * @deprecated Use {@link GEN_AI_REQUEST_FREQUENCY_PENALTY} (gen_ai.request.frequency_penalty) instead
  * @example 0.5
  */
-export const AI_FREQUENCY_PENALTY = 'ai.frequency_penalty';
-
-/**
- * Type for {@link AI_FREQUENCY_PENALTY} ai.frequency_penalty
- */
-export type AI_FREQUENCY_PENALTY_TYPE = number;
 
 // Path: model/attributes/ai/ai__function_call.json
 
@@ -125,12 +95,6 @@ export type AI_FREQUENCY_PENALTY_TYPE = number;
  * @deprecated Use {@link GEN_AI_TOOL_NAME} (gen_ai.tool.name) instead
  * @example "function_name"
  */
-export const AI_FUNCTION_CALL = 'ai.function_call';
-
-/**
- * Type for {@link AI_FUNCTION_CALL} ai.function_call
- */
-export type AI_FUNCTION_CALL_TYPE = string;
 
 // Path: model/attributes/ai/ai__generation_id.json
 
@@ -148,12 +112,6 @@ export type AI_FUNCTION_CALL_TYPE = string;
  * @deprecated Use {@link GEN_AI_RESPONSE_ID} (gen_ai.response.id) instead
  * @example "gen_123abc"
  */
-export const AI_GENERATION_ID = 'ai.generation_id';
-
-/**
- * Type for {@link AI_GENERATION_ID} ai.generation_id
- */
-export type AI_GENERATION_ID_TYPE = string;
 
 // Path: model/attributes/ai/ai__input_messages.json
 
@@ -171,12 +129,6 @@ export type AI_GENERATION_ID_TYPE = string;
  * @deprecated Use {@link GEN_AI_REQUEST_MESSAGES} (gen_ai.request.messages) instead
  * @example "[{\"role\": \"user\", \"message\": \"hello\"}]"
  */
-export const AI_INPUT_MESSAGES = 'ai.input_messages';
-
-/**
- * Type for {@link AI_INPUT_MESSAGES} ai.input_messages
- */
-export type AI_INPUT_MESSAGES_TYPE = string;
 
 // Path: model/attributes/ai/ai__is_search_required.json
 
@@ -191,12 +143,6 @@ export type AI_INPUT_MESSAGES_TYPE = string;
  *
  * @example false
  */
-export const AI_IS_SEARCH_REQUIRED = 'ai.is_search_required';
-
-/**
- * Type for {@link AI_IS_SEARCH_REQUIRED} ai.is_search_required
- */
-export type AI_IS_SEARCH_REQUIRED_TYPE = boolean;
 
 // Path: model/attributes/ai/ai__metadata.json
 
@@ -211,12 +157,6 @@ export type AI_IS_SEARCH_REQUIRED_TYPE = boolean;
  *
  * @example "{\"user_id\": 123, \"session_id\": \"abc123\"}"
  */
-export const AI_METADATA = 'ai.metadata';
-
-/**
- * Type for {@link AI_METADATA} ai.metadata
- */
-export type AI_METADATA_TYPE = string;
 
 // Path: model/attributes/ai/ai__model__provider.json
 
@@ -234,12 +174,6 @@ export type AI_METADATA_TYPE = string;
  * @deprecated Use {@link GEN_AI_SYSTEM} (gen_ai.system) instead
  * @example "openai"
  */
-export const AI_MODEL_PROVIDER = 'ai.model.provider';
-
-/**
- * Type for {@link AI_MODEL_PROVIDER} ai.model.provider
- */
-export type AI_MODEL_PROVIDER_TYPE = string;
 
 // Path: model/attributes/ai/ai__model_id.json
 
@@ -257,12 +191,6 @@ export type AI_MODEL_PROVIDER_TYPE = string;
  * @deprecated Use {@link GEN_AI_RESPONSE_MODEL} (gen_ai.response.model) instead
  * @example "gpt-4"
  */
-export const AI_MODEL_ID = 'ai.model_id';
-
-/**
- * Type for {@link AI_MODEL_ID} ai.model_id
- */
-export type AI_MODEL_ID_TYPE = string;
 
 // Path: model/attributes/ai/ai__pipeline__name.json
 
@@ -280,12 +208,6 @@ export type AI_MODEL_ID_TYPE = string;
  * @deprecated Use {@link GEN_AI_PIPELINE_NAME} (gen_ai.pipeline.name) instead
  * @example "Autofix Pipeline"
  */
-export const AI_PIPELINE_NAME = 'ai.pipeline.name';
-
-/**
- * Type for {@link AI_PIPELINE_NAME} ai.pipeline.name
- */
-export type AI_PIPELINE_NAME_TYPE = string;
 
 // Path: model/attributes/ai/ai__preamble.json
 
@@ -300,12 +222,6 @@ export type AI_PIPELINE_NAME_TYPE = string;
  *
  * @example "You are now a clown."
  */
-export const AI_PREAMBLE = 'ai.preamble';
-
-/**
- * Type for {@link AI_PREAMBLE} ai.preamble
- */
-export type AI_PREAMBLE_TYPE = string;
 
 // Path: model/attributes/ai/ai__presence_penalty.json
 
@@ -323,12 +239,6 @@ export type AI_PREAMBLE_TYPE = string;
  * @deprecated Use {@link GEN_AI_REQUEST_PRESENCE_PENALTY} (gen_ai.request.presence_penalty) instead
  * @example 0.5
  */
-export const AI_PRESENCE_PENALTY = 'ai.presence_penalty';
-
-/**
- * Type for {@link AI_PRESENCE_PENALTY} ai.presence_penalty
- */
-export type AI_PRESENCE_PENALTY_TYPE = number;
 
 // Path: model/attributes/ai/ai__prompt_tokens__used.json
 
@@ -346,12 +256,6 @@ export type AI_PRESENCE_PENALTY_TYPE = number;
  * @deprecated Use {@link GEN_AI_USAGE_INPUT_TOKENS} (gen_ai.usage.input_tokens) instead
  * @example 20
  */
-export const AI_PROMPT_TOKENS_USED = 'ai.prompt_tokens.used';
-
-/**
- * Type for {@link AI_PROMPT_TOKENS_USED} ai.prompt_tokens.used
- */
-export type AI_PROMPT_TOKENS_USED_TYPE = number;
 
 // Path: model/attributes/ai/ai__raw_prompting.json
 
@@ -366,12 +270,6 @@ export type AI_PROMPT_TOKENS_USED_TYPE = number;
  *
  * @example true
  */
-export const AI_RAW_PROMPTING = 'ai.raw_prompting';
-
-/**
- * Type for {@link AI_RAW_PROMPTING} ai.raw_prompting
- */
-export type AI_RAW_PROMPTING_TYPE = boolean;
 
 // Path: model/attributes/ai/ai__response_format.json
 
@@ -386,12 +284,6 @@ export type AI_RAW_PROMPTING_TYPE = boolean;
  *
  * @example "json_object"
  */
-export const AI_RESPONSE_FORMAT = 'ai.response_format';
-
-/**
- * Type for {@link AI_RESPONSE_FORMAT} ai.response_format
- */
-export type AI_RESPONSE_FORMAT_TYPE = string;
 
 // Path: model/attributes/ai/ai__responses.json
 
@@ -407,12 +299,6 @@ export type AI_RESPONSE_FORMAT_TYPE = string;
  * @deprecated Use {@link GEN_AI_RESPONSE_TEXT} (gen_ai.response.text) instead
  * @example ["hello","world"]
  */
-export const AI_RESPONSES = 'ai.responses';
-
-/**
- * Type for {@link AI_RESPONSES} ai.responses
- */
-export type AI_RESPONSES_TYPE = Array<string>;
 
 // Path: model/attributes/ai/ai__search_queries.json
 
@@ -427,12 +313,6 @@ export type AI_RESPONSES_TYPE = Array<string>;
  *
  * @example ["climate change effects","renewable energy"]
  */
-export const AI_SEARCH_QUERIES = 'ai.search_queries';
-
-/**
- * Type for {@link AI_SEARCH_QUERIES} ai.search_queries
- */
-export type AI_SEARCH_QUERIES_TYPE = Array<string>;
 
 // Path: model/attributes/ai/ai__search_results.json
 
@@ -447,12 +327,6 @@ export type AI_SEARCH_QUERIES_TYPE = Array<string>;
  *
  * @example ["search_result_1, search_result_2"]
  */
-export const AI_SEARCH_RESULTS = 'ai.search_results';
-
-/**
- * Type for {@link AI_SEARCH_RESULTS} ai.search_results
- */
-export type AI_SEARCH_RESULTS_TYPE = Array<string>;
 
 // Path: model/attributes/ai/ai__seed.json
 
@@ -470,12 +344,6 @@ export type AI_SEARCH_RESULTS_TYPE = Array<string>;
  * @deprecated Use {@link GEN_AI_REQUEST_SEED} (gen_ai.request.seed) instead
  * @example "1234567890"
  */
-export const AI_SEED = 'ai.seed';
-
-/**
- * Type for {@link AI_SEED} ai.seed
- */
-export type AI_SEED_TYPE = string;
 
 // Path: model/attributes/ai/ai__streaming.json
 
@@ -493,12 +361,6 @@ export type AI_SEED_TYPE = string;
  * @deprecated Use {@link GEN_AI_RESPONSE_STREAMING} (gen_ai.response.streaming) instead
  * @example true
  */
-export const AI_STREAMING = 'ai.streaming';
-
-/**
- * Type for {@link AI_STREAMING} ai.streaming
- */
-export type AI_STREAMING_TYPE = boolean;
 
 // Path: model/attributes/ai/ai__tags.json
 
@@ -513,12 +375,6 @@ export type AI_STREAMING_TYPE = boolean;
  *
  * @example "{\"executed_function\": \"add_integers\"}"
  */
-export const AI_TAGS = 'ai.tags';
-
-/**
- * Type for {@link AI_TAGS} ai.tags
- */
-export type AI_TAGS_TYPE = string;
 
 // Path: model/attributes/ai/ai__temperature.json
 
@@ -536,12 +392,6 @@ export type AI_TAGS_TYPE = string;
  * @deprecated Use {@link GEN_AI_REQUEST_TEMPERATURE} (gen_ai.request.temperature) instead
  * @example 0.1
  */
-export const AI_TEMPERATURE = 'ai.temperature';
-
-/**
- * Type for {@link AI_TEMPERATURE} ai.temperature
- */
-export type AI_TEMPERATURE_TYPE = number;
 
 // Path: model/attributes/ai/ai__texts.json
 
@@ -556,12 +406,6 @@ export type AI_TEMPERATURE_TYPE = number;
  *
  * @example ["Hello, how are you?","What is the capital of France?"]
  */
-export const AI_TEXTS = 'ai.texts';
-
-/**
- * Type for {@link AI_TEXTS} ai.texts
- */
-export type AI_TEXTS_TYPE = Array<string>;
 
 // Path: model/attributes/ai/ai__tool_calls.json
 
@@ -577,12 +421,6 @@ export type AI_TEXTS_TYPE = Array<string>;
  * @deprecated Use {@link GEN_AI_RESPONSE_TOOL_CALLS} (gen_ai.response.tool_calls) instead
  * @example ["tool_call_1","tool_call_2"]
  */
-export const AI_TOOL_CALLS = 'ai.tool_calls';
-
-/**
- * Type for {@link AI_TOOL_CALLS} ai.tool_calls
- */
-export type AI_TOOL_CALLS_TYPE = Array<string>;
 
 // Path: model/attributes/ai/ai__tools.json
 
@@ -598,12 +436,6 @@ export type AI_TOOL_CALLS_TYPE = Array<string>;
  * @deprecated Use {@link GEN_AI_REQUEST_AVAILABLE_TOOLS} (gen_ai.request.available_tools) instead
  * @example ["function_1","function_2"]
  */
-export const AI_TOOLS = 'ai.tools';
-
-/**
- * Type for {@link AI_TOOLS} ai.tools
- */
-export type AI_TOOLS_TYPE = Array<string>;
 
 // Path: model/attributes/ai/ai__top_k.json
 
@@ -621,12 +453,6 @@ export type AI_TOOLS_TYPE = Array<string>;
  * @deprecated Use {@link GEN_AI_REQUEST_TOP_K} (gen_ai.request.top_k) instead
  * @example 35
  */
-export const AI_TOP_K = 'ai.top_k';
-
-/**
- * Type for {@link AI_TOP_K} ai.top_k
- */
-export type AI_TOP_K_TYPE = number;
 
 // Path: model/attributes/ai/ai__top_p.json
 
@@ -644,12 +470,6 @@ export type AI_TOP_K_TYPE = number;
  * @deprecated Use {@link GEN_AI_REQUEST_TOP_P} (gen_ai.request.top_p) instead
  * @example 0.7
  */
-export const AI_TOP_P = 'ai.top_p';
-
-/**
- * Type for {@link AI_TOP_P} ai.top_p
- */
-export type AI_TOP_P_TYPE = number;
 
 // Path: model/attributes/ai/ai__total_cost.json
 
@@ -664,12 +484,6 @@ export type AI_TOP_P_TYPE = number;
  *
  * @example 12.34
  */
-export const AI_TOTAL_COST = 'ai.total_cost';
-
-/**
- * Type for {@link AI_TOTAL_COST} ai.total_cost
- */
-export type AI_TOTAL_COST_TYPE = number;
 
 // Path: model/attributes/ai/ai__total_tokens__used.json
 
@@ -687,12 +501,6 @@ export type AI_TOTAL_COST_TYPE = number;
  * @deprecated Use {@link GEN_AI_USAGE_TOTAL_TOKENS} (gen_ai.usage.total_tokens) instead
  * @example 30
  */
-export const AI_TOTAL_TOKENS_USED = 'ai.total_tokens.used';
-
-/**
- * Type for {@link AI_TOTAL_TOKENS_USED} ai.total_tokens.used
- */
-export type AI_TOTAL_TOKENS_USED_TYPE = number;
 
 // Path: model/attributes/ai/ai__warnings.json
 
@@ -707,12 +515,6 @@ export type AI_TOTAL_TOKENS_USED_TYPE = number;
  *
  * @example ["Token limit exceeded"]
  */
-export const AI_WARNINGS = 'ai.warnings';
-
-/**
- * Type for {@link AI_WARNINGS} ai.warnings
- */
-export type AI_WARNINGS_TYPE = Array<string>;
 
 // Path: model/attributes/app_start_type.json
 
@@ -727,12 +529,6 @@ export type AI_WARNINGS_TYPE = Array<string>;
  *
  * @example "cold"
  */
-export const APP_START_TYPE = 'app_start_type';
-
-/**
- * Type for {@link APP_START_TYPE} app_start_type
- */
-export type APP_START_TYPE_TYPE = string;
 
 // Path: model/attributes/blocked_main_thread.json
 
@@ -747,12 +543,6 @@ export type APP_START_TYPE_TYPE = string;
  *
  * @example true
  */
-export const BLOCKED_MAIN_THREAD = 'blocked_main_thread';
-
-/**
- * Type for {@link BLOCKED_MAIN_THREAD} blocked_main_thread
- */
-export type BLOCKED_MAIN_THREAD_TYPE = boolean;
 
 // Path: model/attributes/browser/browser__name.json
 
@@ -769,12 +559,6 @@ export type BLOCKED_MAIN_THREAD_TYPE = boolean;
  *
  * @example "Chrome"
  */
-export const BROWSER_NAME = 'browser.name';
-
-/**
- * Type for {@link BROWSER_NAME} browser.name
- */
-export type BROWSER_NAME_TYPE = string;
 
 // Path: model/attributes/browser/browser__report__type.json
 
@@ -789,12 +573,6 @@ export type BROWSER_NAME_TYPE = string;
  *
  * @example "network-error"
  */
-export const BROWSER_REPORT_TYPE = 'browser.report.type';
-
-/**
- * Type for {@link BROWSER_REPORT_TYPE} browser.report.type
- */
-export type BROWSER_REPORT_TYPE_TYPE = string;
 
 // Path: model/attributes/browser/browser__script__invoker.json
 
@@ -809,12 +587,6 @@ export type BROWSER_REPORT_TYPE_TYPE = string;
  *
  * @example "Window.requestAnimationFrame"
  */
-export const BROWSER_SCRIPT_INVOKER = 'browser.script.invoker';
-
-/**
- * Type for {@link BROWSER_SCRIPT_INVOKER} browser.script.invoker
- */
-export type BROWSER_SCRIPT_INVOKER_TYPE = string;
 
 // Path: model/attributes/browser/browser__script__invoker_type.json
 
@@ -829,12 +601,6 @@ export type BROWSER_SCRIPT_INVOKER_TYPE = string;
  *
  * @example "event-listener"
  */
-export const BROWSER_SCRIPT_INVOKER_TYPE = 'browser.script.invoker_type';
-
-/**
- * Type for {@link BROWSER_SCRIPT_INVOKER_TYPE} browser.script.invoker_type
- */
-export type BROWSER_SCRIPT_INVOKER_TYPE_TYPE = string;
 
 // Path: model/attributes/browser/browser__script__source_char_position.json
 
@@ -849,12 +615,6 @@ export type BROWSER_SCRIPT_INVOKER_TYPE_TYPE = string;
  *
  * @example 678
  */
-export const BROWSER_SCRIPT_SOURCE_CHAR_POSITION = 'browser.script.source_char_position';
-
-/**
- * Type for {@link BROWSER_SCRIPT_SOURCE_CHAR_POSITION} browser.script.source_char_position
- */
-export type BROWSER_SCRIPT_SOURCE_CHAR_POSITION_TYPE = number;
 
 // Path: model/attributes/browser/browser__version.json
 
@@ -871,12 +631,6 @@ export type BROWSER_SCRIPT_SOURCE_CHAR_POSITION_TYPE = number;
  *
  * @example "120.0.6099.130"
  */
-export const BROWSER_VERSION = 'browser.version';
-
-/**
- * Type for {@link BROWSER_VERSION} browser.version
- */
-export type BROWSER_VERSION_TYPE = string;
 
 // Path: model/attributes/cache/cache__hit.json
 
@@ -891,12 +645,6 @@ export type BROWSER_VERSION_TYPE = string;
  *
  * @example true
  */
-export const CACHE_HIT = 'cache.hit';
-
-/**
- * Type for {@link CACHE_HIT} cache.hit
- */
-export type CACHE_HIT_TYPE = boolean;
 
 // Path: model/attributes/cache/cache__item_size.json
 
@@ -911,12 +659,6 @@ export type CACHE_HIT_TYPE = boolean;
  *
  * @example 58
  */
-export const CACHE_ITEM_SIZE = 'cache.item_size';
-
-/**
- * Type for {@link CACHE_ITEM_SIZE} cache.item_size
- */
-export type CACHE_ITEM_SIZE_TYPE = number;
 
 // Path: model/attributes/cache/cache__key.json
 
@@ -931,12 +673,6 @@ export type CACHE_ITEM_SIZE_TYPE = number;
  *
  * @example ["my-cache-key","my-other-cache-key"]
  */
-export const CACHE_KEY = 'cache.key';
-
-/**
- * Type for {@link CACHE_KEY} cache.key
- */
-export type CACHE_KEY_TYPE = Array<string>;
 
 // Path: model/attributes/cache/cache__operation.json
 
@@ -951,12 +687,6 @@ export type CACHE_KEY_TYPE = Array<string>;
  *
  * @example "get"
  */
-export const CACHE_OPERATION = 'cache.operation';
-
-/**
- * Type for {@link CACHE_OPERATION} cache.operation
- */
-export type CACHE_OPERATION_TYPE = string;
 
 // Path: model/attributes/cache/cache__ttl.json
 
@@ -971,12 +701,6 @@ export type CACHE_OPERATION_TYPE = string;
  *
  * @example 120
  */
-export const CACHE_TTL = 'cache.ttl';
-
-/**
- * Type for {@link CACHE_TTL} cache.ttl
- */
-export type CACHE_TTL_TYPE = number;
 
 // Path: model/attributes/channel.json
 
@@ -991,12 +715,6 @@ export type CACHE_TTL_TYPE = number;
  *
  * @example "mail"
  */
-export const CHANNEL = 'channel';
-
-/**
- * Type for {@link CHANNEL} channel
- */
-export type CHANNEL_TYPE = string;
 
 // Path: model/attributes/client/client__address.json
 
@@ -1013,12 +731,6 @@ export type CHANNEL_TYPE = string;
  *
  * @example "example.com"
  */
-export const CLIENT_ADDRESS = 'client.address';
-
-/**
- * Type for {@link CLIENT_ADDRESS} client.address
- */
-export type CLIENT_ADDRESS_TYPE = string;
 
 // Path: model/attributes/client/client__port.json
 
@@ -1033,12 +745,6 @@ export type CLIENT_ADDRESS_TYPE = string;
  *
  * @example 5432
  */
-export const CLIENT_PORT = 'client.port';
-
-/**
- * Type for {@link CLIENT_PORT} client.port
- */
-export type CLIENT_PORT_TYPE = number;
 
 // Path: model/attributes/cloudflare/cloudflare__d1__duration.json
 
@@ -1053,12 +759,6 @@ export type CLIENT_PORT_TYPE = number;
  *
  * @example 543
  */
-export const CLOUDFLARE_D1_DURATION = 'cloudflare.d1.duration';
-
-/**
- * Type for {@link CLOUDFLARE_D1_DURATION} cloudflare.d1.duration
- */
-export type CLOUDFLARE_D1_DURATION_TYPE = number;
 
 // Path: model/attributes/cloudflare/cloudflare__d1__rows_read.json
 
@@ -1073,12 +773,6 @@ export type CLOUDFLARE_D1_DURATION_TYPE = number;
  *
  * @example 12
  */
-export const CLOUDFLARE_D1_ROWS_READ = 'cloudflare.d1.rows_read';
-
-/**
- * Type for {@link CLOUDFLARE_D1_ROWS_READ} cloudflare.d1.rows_read
- */
-export type CLOUDFLARE_D1_ROWS_READ_TYPE = number;
 
 // Path: model/attributes/cloudflare/cloudflare__d1__rows_written.json
 
@@ -1093,12 +787,6 @@ export type CLOUDFLARE_D1_ROWS_READ_TYPE = number;
  *
  * @example 12
  */
-export const CLOUDFLARE_D1_ROWS_WRITTEN = 'cloudflare.d1.rows_written';
-
-/**
- * Type for {@link CLOUDFLARE_D1_ROWS_WRITTEN} cloudflare.d1.rows_written
- */
-export type CLOUDFLARE_D1_ROWS_WRITTEN_TYPE = number;
 
 // Path: model/attributes/code/code__file__path.json
 
@@ -1115,12 +803,6 @@ export type CLOUDFLARE_D1_ROWS_WRITTEN_TYPE = number;
  *
  * @example "/app/myapplication/http/handler/server.py"
  */
-export const CODE_FILE_PATH = 'code.file.path';
-
-/**
- * Type for {@link CODE_FILE_PATH} code.file.path
- */
-export type CODE_FILE_PATH_TYPE = string;
 
 // Path: model/attributes/code/code__filepath.json
 
@@ -1138,12 +820,6 @@ export type CODE_FILE_PATH_TYPE = string;
  * @deprecated Use {@link CODE_FILE_PATH} (code.file.path) instead
  * @example "/app/myapplication/http/handler/server.py"
  */
-export const CODE_FILEPATH = 'code.filepath';
-
-/**
- * Type for {@link CODE_FILEPATH} code.filepath
- */
-export type CODE_FILEPATH_TYPE = string;
 
 // Path: model/attributes/code/code__function.json
 
@@ -1161,12 +837,6 @@ export type CODE_FILEPATH_TYPE = string;
  * @deprecated Use {@link CODE_FUNCTION_NAME} (code.function.name) instead
  * @example "server_request"
  */
-export const CODE_FUNCTION = 'code.function';
-
-/**
- * Type for {@link CODE_FUNCTION} code.function
- */
-export type CODE_FUNCTION_TYPE = string;
 
 // Path: model/attributes/code/code__function__name.json
 
@@ -1183,12 +853,6 @@ export type CODE_FUNCTION_TYPE = string;
  *
  * @example "server_request"
  */
-export const CODE_FUNCTION_NAME = 'code.function.name';
-
-/**
- * Type for {@link CODE_FUNCTION_NAME} code.function.name
- */
-export type CODE_FUNCTION_NAME_TYPE = string;
 
 // Path: model/attributes/code/code__line__number.json
 
@@ -1205,12 +869,6 @@ export type CODE_FUNCTION_NAME_TYPE = string;
  *
  * @example 42
  */
-export const CODE_LINE_NUMBER = 'code.line.number';
-
-/**
- * Type for {@link CODE_LINE_NUMBER} code.line.number
- */
-export type CODE_LINE_NUMBER_TYPE = number;
 
 // Path: model/attributes/code/code__lineno.json
 
@@ -1228,12 +886,6 @@ export type CODE_LINE_NUMBER_TYPE = number;
  * @deprecated Use {@link CODE_LINE_NUMBER} (code.line.number) instead
  * @example 42
  */
-export const CODE_LINENO = 'code.lineno';
-
-/**
- * Type for {@link CODE_LINENO} code.lineno
- */
-export type CODE_LINENO_TYPE = number;
 
 // Path: model/attributes/code/code__namespace.json
 
@@ -1249,12 +901,6 @@ export type CODE_LINENO_TYPE = number;
  * @deprecated Use {@link CODE_FUNCTION_NAME} (code.function.name) instead - code.function.name should include the namespace.
  * @example "http.handler"
  */
-export const CODE_NAMESPACE = 'code.namespace';
-
-/**
- * Type for {@link CODE_NAMESPACE} code.namespace
- */
-export type CODE_NAMESPACE_TYPE = string;
 
 // Path: model/attributes/db/db__collection__name.json
 
@@ -1269,12 +915,6 @@ export type CODE_NAMESPACE_TYPE = string;
  *
  * @example "users"
  */
-export const DB_COLLECTION_NAME = 'db.collection.name';
-
-/**
- * Type for {@link DB_COLLECTION_NAME} db.collection.name
- */
-export type DB_COLLECTION_NAME_TYPE = string;
 
 // Path: model/attributes/db/db__name.json
 
@@ -1292,12 +932,6 @@ export type DB_COLLECTION_NAME_TYPE = string;
  * @deprecated Use {@link DB_NAMESPACE} (db.namespace) instead
  * @example "customers"
  */
-export const DB_NAME = 'db.name';
-
-/**
- * Type for {@link DB_NAME} db.name
- */
-export type DB_NAME_TYPE = string;
 
 // Path: model/attributes/db/db__namespace.json
 
@@ -1314,12 +948,6 @@ export type DB_NAME_TYPE = string;
  *
  * @example "customers"
  */
-export const DB_NAMESPACE = 'db.namespace';
-
-/**
- * Type for {@link DB_NAMESPACE} db.namespace
- */
-export type DB_NAMESPACE_TYPE = string;
 
 // Path: model/attributes/db/db__operation.json
 
@@ -1337,12 +965,6 @@ export type DB_NAMESPACE_TYPE = string;
  * @deprecated Use {@link DB_OPERATION_NAME} (db.operation.name) instead
  * @example "SELECT"
  */
-export const DB_OPERATION = 'db.operation';
-
-/**
- * Type for {@link DB_OPERATION} db.operation
- */
-export type DB_OPERATION_TYPE = string;
 
 // Path: model/attributes/db/db__operation__name.json
 
@@ -1359,12 +981,6 @@ export type DB_OPERATION_TYPE = string;
  *
  * @example "SELECT"
  */
-export const DB_OPERATION_NAME = 'db.operation.name';
-
-/**
- * Type for {@link DB_OPERATION_NAME} db.operation.name
- */
-export type DB_OPERATION_NAME_TYPE = string;
 
 // Path: model/attributes/db/db__query__parameter__[key].json
 
@@ -1381,12 +997,6 @@ export type DB_OPERATION_NAME_TYPE = string;
  *
  * @example "db.query.parameter.foo='123'"
  */
-export const DB_QUERY_PARAMETER_KEY = 'db.query.parameter.<key>';
-
-/**
- * Type for {@link DB_QUERY_PARAMETER_KEY} db.query.parameter.<key>
- */
-export type DB_QUERY_PARAMETER_KEY_TYPE = string;
 
 // Path: model/attributes/db/db__query__summary.json
 
@@ -1401,12 +1011,6 @@ export type DB_QUERY_PARAMETER_KEY_TYPE = string;
  *
  * @example "SELECT * FROM users"
  */
-export const DB_QUERY_SUMMARY = 'db.query.summary';
-
-/**
- * Type for {@link DB_QUERY_SUMMARY} db.query.summary
- */
-export type DB_QUERY_SUMMARY_TYPE = string;
 
 // Path: model/attributes/db/db__query__text.json
 
@@ -1423,12 +1027,6 @@ export type DB_QUERY_SUMMARY_TYPE = string;
  *
  * @example "SELECT * FROM users"
  */
-export const DB_QUERY_TEXT = 'db.query.text';
-
-/**
- * Type for {@link DB_QUERY_TEXT} db.query.text
- */
-export type DB_QUERY_TEXT_TYPE = string;
 
 // Path: model/attributes/db/db__redis__connection.json
 
@@ -1443,12 +1041,6 @@ export type DB_QUERY_TEXT_TYPE = string;
  *
  * @example "my-redis-instance"
  */
-export const DB_REDIS_CONNECTION = 'db.redis.connection';
-
-/**
- * Type for {@link DB_REDIS_CONNECTION} db.redis.connection
- */
-export type DB_REDIS_CONNECTION_TYPE = string;
 
 // Path: model/attributes/db/db__redis__parameters.json
 
@@ -1463,12 +1055,6 @@ export type DB_REDIS_CONNECTION_TYPE = string;
  *
  * @example ["test","*"]
  */
-export const DB_REDIS_PARAMETERS = 'db.redis.parameters';
-
-/**
- * Type for {@link DB_REDIS_PARAMETERS} db.redis.parameters
- */
-export type DB_REDIS_PARAMETERS_TYPE = Array<string>;
 
 // Path: model/attributes/db/db__sql__bindings.json
 
@@ -1484,12 +1070,6 @@ export type DB_REDIS_PARAMETERS_TYPE = Array<string>;
  * @deprecated Use {@link DB_QUERY_PARAMETER_KEY} (db.query.parameter.<key>) instead - Instead of adding every binding in the db.sql.bindings attribute, add them as individual entires with db.query.parameter.<key>.
  * @example ["1","foo"]
  */
-export const DB_SQL_BINDINGS = 'db.sql.bindings';
-
-/**
- * Type for {@link DB_SQL_BINDINGS} db.sql.bindings
- */
-export type DB_SQL_BINDINGS_TYPE = Array<string>;
 
 // Path: model/attributes/db/db__statement.json
 
@@ -1507,12 +1087,6 @@ export type DB_SQL_BINDINGS_TYPE = Array<string>;
  * @deprecated Use {@link DB_QUERY_TEXT} (db.query.text) instead
  * @example "SELECT * FROM users"
  */
-export const DB_STATEMENT = 'db.statement';
-
-/**
- * Type for {@link DB_STATEMENT} db.statement
- */
-export type DB_STATEMENT_TYPE = string;
 
 // Path: model/attributes/db/db__system.json
 
@@ -1530,12 +1104,6 @@ export type DB_STATEMENT_TYPE = string;
  * @deprecated Use {@link DB_SYSTEM_NAME} (db.system.name) instead
  * @example "postgresql"
  */
-export const DB_SYSTEM = 'db.system';
-
-/**
- * Type for {@link DB_SYSTEM} db.system
- */
-export type DB_SYSTEM_TYPE = string;
 
 // Path: model/attributes/db/db__system__name.json
 
@@ -1552,12 +1120,6 @@ export type DB_SYSTEM_TYPE = string;
  *
  * @example "postgresql"
  */
-export const DB_SYSTEM_NAME = 'db.system.name';
-
-/**
- * Type for {@link DB_SYSTEM_NAME} db.system.name
- */
-export type DB_SYSTEM_NAME_TYPE = string;
 
 // Path: model/attributes/db/db__user.json
 
@@ -1572,12 +1134,6 @@ export type DB_SYSTEM_NAME_TYPE = string;
  *
  * @example "fancy_user"
  */
-export const DB_USER = 'db.user';
-
-/**
- * Type for {@link DB_USER} db.user
- */
-export type DB_USER_TYPE = string;
 
 // Path: model/attributes/device/device__brand.json
 
@@ -1592,12 +1148,6 @@ export type DB_USER_TYPE = string;
  *
  * @example "Apple"
  */
-export const DEVICE_BRAND = 'device.brand';
-
-/**
- * Type for {@link DEVICE_BRAND} device.brand
- */
-export type DEVICE_BRAND_TYPE = string;
 
 // Path: model/attributes/device/device__family.json
 
@@ -1612,12 +1162,6 @@ export type DEVICE_BRAND_TYPE = string;
  *
  * @example "iPhone"
  */
-export const DEVICE_FAMILY = 'device.family';
-
-/**
- * Type for {@link DEVICE_FAMILY} device.family
- */
-export type DEVICE_FAMILY_TYPE = string;
 
 // Path: model/attributes/device/device__model.json
 
@@ -1632,12 +1176,6 @@ export type DEVICE_FAMILY_TYPE = string;
  *
  * @example "iPhone 15 Pro Max"
  */
-export const DEVICE_MODEL = 'device.model';
-
-/**
- * Type for {@link DEVICE_MODEL} device.model
- */
-export type DEVICE_MODEL_TYPE = string;
 
 // Path: model/attributes/environment.json
 
@@ -1655,12 +1193,6 @@ export type DEVICE_MODEL_TYPE = string;
  * @deprecated Use {@link SENTRY_ENVIRONMENT} (sentry.environment) instead
  * @example "production"
  */
-export const ENVIRONMENT = 'environment';
-
-/**
- * Type for {@link ENVIRONMENT} environment
- */
-export type ENVIRONMENT_TYPE = string;
 
 // Path: model/attributes/error/error__type.json
 
@@ -1675,12 +1207,6 @@ export type ENVIRONMENT_TYPE = string;
  *
  * @example "timeout"
  */
-export const ERROR_TYPE = 'error.type';
-
-/**
- * Type for {@link ERROR_TYPE} error.type
- */
-export type ERROR_TYPE_TYPE = string;
 
 // Path: model/attributes/event/event__id.json
 
@@ -1695,12 +1221,6 @@ export type ERROR_TYPE_TYPE = string;
  *
  * @example 1234567890
  */
-export const EVENT_ID = 'event.id';
-
-/**
- * Type for {@link EVENT_ID} event.id
- */
-export type EVENT_ID_TYPE = number;
 
 // Path: model/attributes/event/event__name.json
 
@@ -1715,12 +1235,6 @@ export type EVENT_ID_TYPE = number;
  *
  * @example "Process Payload"
  */
-export const EVENT_NAME = 'event.name';
-
-/**
- * Type for {@link EVENT_NAME} event.name
- */
-export type EVENT_NAME_TYPE = string;
 
 // Path: model/attributes/exception/exception__escaped.json
 
@@ -1735,12 +1249,6 @@ export type EVENT_NAME_TYPE = string;
  *
  * @example true
  */
-export const EXCEPTION_ESCAPED = 'exception.escaped';
-
-/**
- * Type for {@link EXCEPTION_ESCAPED} exception.escaped
- */
-export type EXCEPTION_ESCAPED_TYPE = boolean;
 
 // Path: model/attributes/exception/exception__message.json
 
@@ -1755,12 +1263,6 @@ export type EXCEPTION_ESCAPED_TYPE = boolean;
  *
  * @example "ENOENT: no such file or directory"
  */
-export const EXCEPTION_MESSAGE = 'exception.message';
-
-/**
- * Type for {@link EXCEPTION_MESSAGE} exception.message
- */
-export type EXCEPTION_MESSAGE_TYPE = string;
 
 // Path: model/attributes/exception/exception__stacktrace.json
 
@@ -1775,12 +1277,6 @@ export type EXCEPTION_MESSAGE_TYPE = string;
  *
  * @example "Exception in thread \"main\" java.lang.RuntimeException: Test exception\n at com.example.GenerateTrace.methodB(GenerateTrace.java:13)\n at com.example.GenerateTrace.methodA(GenerateTrace.java:9)\n at com.example.GenerateTrace.main(GenerateTrace.java:5)"
  */
-export const EXCEPTION_STACKTRACE = 'exception.stacktrace';
-
-/**
- * Type for {@link EXCEPTION_STACKTRACE} exception.stacktrace
- */
-export type EXCEPTION_STACKTRACE_TYPE = string;
 
 // Path: model/attributes/exception/exception__type.json
 
@@ -1795,12 +1291,6 @@ export type EXCEPTION_STACKTRACE_TYPE = string;
  *
  * @example "OSError"
  */
-export const EXCEPTION_TYPE = 'exception.type';
-
-/**
- * Type for {@link EXCEPTION_TYPE} exception.type
- */
-export type EXCEPTION_TYPE_TYPE = string;
 
 // Path: model/attributes/faas/faas__coldstart.json
 
@@ -1815,12 +1305,6 @@ export type EXCEPTION_TYPE_TYPE = string;
  *
  * @example true
  */
-export const FAAS_COLDSTART = 'faas.coldstart';
-
-/**
- * Type for {@link FAAS_COLDSTART} faas.coldstart
- */
-export type FAAS_COLDSTART_TYPE = boolean;
 
 // Path: model/attributes/faas/faas__cron.json
 
@@ -1835,12 +1319,6 @@ export type FAAS_COLDSTART_TYPE = boolean;
  *
  * @example "0/5 * * * ? *"
  */
-export const FAAS_CRON = 'faas.cron';
-
-/**
- * Type for {@link FAAS_CRON} faas.cron
- */
-export type FAAS_CRON_TYPE = string;
 
 // Path: model/attributes/faas/faas__time.json
 
@@ -1855,12 +1333,6 @@ export type FAAS_CRON_TYPE = string;
  *
  * @example "2020-01-23T13:47:06Z"
  */
-export const FAAS_TIME = 'faas.time';
-
-/**
- * Type for {@link FAAS_TIME} faas.time
- */
-export type FAAS_TIME_TYPE = string;
 
 // Path: model/attributes/faas/faas__trigger.json
 
@@ -1875,12 +1347,6 @@ export type FAAS_TIME_TYPE = string;
  *
  * @example "timer"
  */
-export const FAAS_TRIGGER = 'faas.trigger';
-
-/**
- * Type for {@link FAAS_TRIGGER} faas.trigger
- */
-export type FAAS_TRIGGER_TYPE = string;
 
 // Path: model/attributes/flag/flag__evaluation__[key].json
 
@@ -1897,12 +1363,6 @@ export type FAAS_TRIGGER_TYPE = string;
  *
  * @example "flag.evaluation.is_new_ui=true"
  */
-export const FLAG_EVALUATION_KEY = 'flag.evaluation.<key>';
-
-/**
- * Type for {@link FLAG_EVALUATION_KEY} flag.evaluation.<key>
- */
-export type FLAG_EVALUATION_KEY_TYPE = boolean;
 
 // Path: model/attributes/frames/frames__delay.json
 
@@ -1917,12 +1377,6 @@ export type FLAG_EVALUATION_KEY_TYPE = boolean;
  *
  * @example 5
  */
-export const FRAMES_DELAY = 'frames.delay';
-
-/**
- * Type for {@link FRAMES_DELAY} frames.delay
- */
-export type FRAMES_DELAY_TYPE = number;
 
 // Path: model/attributes/frames/frames__frozen.json
 
@@ -1937,12 +1391,6 @@ export type FRAMES_DELAY_TYPE = number;
  *
  * @example 3
  */
-export const FRAMES_FROZEN = 'frames.frozen';
-
-/**
- * Type for {@link FRAMES_FROZEN} frames.frozen
- */
-export type FRAMES_FROZEN_TYPE = number;
 
 // Path: model/attributes/frames/frames__slow.json
 
@@ -1957,12 +1405,6 @@ export type FRAMES_FROZEN_TYPE = number;
  *
  * @example 1
  */
-export const FRAMES_SLOW = 'frames.slow';
-
-/**
- * Type for {@link FRAMES_SLOW} frames.slow
- */
-export type FRAMES_SLOW_TYPE = number;
 
 // Path: model/attributes/frames/frames__total.json
 
@@ -1977,12 +1419,6 @@ export type FRAMES_SLOW_TYPE = number;
  *
  * @example 60
  */
-export const FRAMES_TOTAL = 'frames.total';
-
-/**
- * Type for {@link FRAMES_TOTAL} frames.total
- */
-export type FRAMES_TOTAL_TYPE = number;
 
 // Path: model/attributes/fs_error.json
 
@@ -1998,12 +1434,6 @@ export type FRAMES_TOTAL_TYPE = number;
  * @deprecated Use {@link ERROR_TYPE} (error.type) instead - This attribute is not part of the OpenTelemetry specification and error.type fits much better.
  * @example "ENOENT: no such file or directory"
  */
-export const FS_ERROR = 'fs_error';
-
-/**
- * Type for {@link FS_ERROR} fs_error
- */
-export type FS_ERROR_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__agent__name.json
 
@@ -2018,12 +1448,6 @@ export type FS_ERROR_TYPE = string;
  *
  * @example "ResearchAssistant"
  */
-export const GEN_AI_AGENT_NAME = 'gen_ai.agent.name';
-
-/**
- * Type for {@link GEN_AI_AGENT_NAME} gen_ai.agent.name
- */
-export type GEN_AI_AGENT_NAME_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__assistant__message.json
 
@@ -2038,12 +1462,6 @@ export type GEN_AI_AGENT_NAME_TYPE = string;
  *
  * @example "get_weather tool call"
  */
-export const GEN_AI_ASSISTANT_MESSAGE = 'gen_ai.assistant.message';
-
-/**
- * Type for {@link GEN_AI_ASSISTANT_MESSAGE} gen_ai.assistant.message
- */
-export type GEN_AI_ASSISTANT_MESSAGE_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__choice.json
 
@@ -2058,12 +1476,6 @@ export type GEN_AI_ASSISTANT_MESSAGE_TYPE = string;
  *
  * @example "The weather in Paris is rainy and overcast, with temperatures around 57°F"
  */
-export const GEN_AI_CHOICE = 'gen_ai.choice';
-
-/**
- * Type for {@link GEN_AI_CHOICE} gen_ai.choice
- */
-export type GEN_AI_CHOICE_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__cost__input_tokens.json
 
@@ -2078,12 +1490,6 @@ export type GEN_AI_CHOICE_TYPE = string;
  *
  * @example 123.45
  */
-export const GEN_AI_COST_INPUT_TOKENS = 'gen_ai.cost.input_tokens';
-
-/**
- * Type for {@link GEN_AI_COST_INPUT_TOKENS} gen_ai.cost.input_tokens
- */
-export type GEN_AI_COST_INPUT_TOKENS_TYPE = number;
 
 // Path: model/attributes/gen_ai/gen_ai__cost__output_tokens.json
 
@@ -2098,12 +1504,6 @@ export type GEN_AI_COST_INPUT_TOKENS_TYPE = number;
  *
  * @example 123.45
  */
-export const GEN_AI_COST_OUTPUT_TOKENS = 'gen_ai.cost.output_tokens';
-
-/**
- * Type for {@link GEN_AI_COST_OUTPUT_TOKENS} gen_ai.cost.output_tokens
- */
-export type GEN_AI_COST_OUTPUT_TOKENS_TYPE = number;
 
 // Path: model/attributes/gen_ai/gen_ai__cost__total_tokens.json
 
@@ -2118,12 +1518,6 @@ export type GEN_AI_COST_OUTPUT_TOKENS_TYPE = number;
  *
  * @example 12.34
  */
-export const GEN_AI_COST_TOTAL_TOKENS = 'gen_ai.cost.total_tokens';
-
-/**
- * Type for {@link GEN_AI_COST_TOTAL_TOKENS} gen_ai.cost.total_tokens
- */
-export type GEN_AI_COST_TOTAL_TOKENS_TYPE = number;
 
 // Path: model/attributes/gen_ai/gen_ai__operation__name.json
 
@@ -2138,12 +1532,6 @@ export type GEN_AI_COST_TOTAL_TOKENS_TYPE = number;
  *
  * @example "chat"
  */
-export const GEN_AI_OPERATION_NAME = 'gen_ai.operation.name';
-
-/**
- * Type for {@link GEN_AI_OPERATION_NAME} gen_ai.operation.name
- */
-export type GEN_AI_OPERATION_NAME_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__operation__type.json
 
@@ -2158,12 +1546,6 @@ export type GEN_AI_OPERATION_NAME_TYPE = string;
  *
  * @example "tool"
  */
-export const GEN_AI_OPERATION_TYPE = 'gen_ai.operation.type';
-
-/**
- * Type for {@link GEN_AI_OPERATION_TYPE} gen_ai.operation.type
- */
-export type GEN_AI_OPERATION_TYPE_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__pipeline__name.json
 
@@ -2180,12 +1562,6 @@ export type GEN_AI_OPERATION_TYPE_TYPE = string;
  *
  * @example "Autofix Pipeline"
  */
-export const GEN_AI_PIPELINE_NAME = 'gen_ai.pipeline.name';
-
-/**
- * Type for {@link GEN_AI_PIPELINE_NAME} gen_ai.pipeline.name
- */
-export type GEN_AI_PIPELINE_NAME_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__prompt.json
 
@@ -2201,12 +1577,6 @@ export type GEN_AI_PIPELINE_NAME_TYPE = string;
  * @deprecated  - Deprecated from OTEL, use gen_ai.input.messages with the new format instead.
  * @example "[{\"role\": \"user\", \"message\": \"hello\"}]"
  */
-export const GEN_AI_PROMPT = 'gen_ai.prompt';
-
-/**
- * Type for {@link GEN_AI_PROMPT} gen_ai.prompt
- */
-export type GEN_AI_PROMPT_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__request__available_tools.json
 
@@ -2221,12 +1591,6 @@ export type GEN_AI_PROMPT_TYPE = string;
  *
  * @example "[{\"name\": \"get_weather\", \"description\": \"Get the weather for a given location\"}, {\"name\": \"get_news\", \"description\": \"Get the news for a given topic\"}]"
  */
-export const GEN_AI_REQUEST_AVAILABLE_TOOLS = 'gen_ai.request.available_tools';
-
-/**
- * Type for {@link GEN_AI_REQUEST_AVAILABLE_TOOLS} gen_ai.request.available_tools
- */
-export type GEN_AI_REQUEST_AVAILABLE_TOOLS_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__request__frequency_penalty.json
 
@@ -2243,12 +1607,6 @@ export type GEN_AI_REQUEST_AVAILABLE_TOOLS_TYPE = string;
  *
  * @example 0.5
  */
-export const GEN_AI_REQUEST_FREQUENCY_PENALTY = 'gen_ai.request.frequency_penalty';
-
-/**
- * Type for {@link GEN_AI_REQUEST_FREQUENCY_PENALTY} gen_ai.request.frequency_penalty
- */
-export type GEN_AI_REQUEST_FREQUENCY_PENALTY_TYPE = number;
 
 // Path: model/attributes/gen_ai/gen_ai__request__max_tokens.json
 
@@ -2263,12 +1621,6 @@ export type GEN_AI_REQUEST_FREQUENCY_PENALTY_TYPE = number;
  *
  * @example 2048
  */
-export const GEN_AI_REQUEST_MAX_TOKENS = 'gen_ai.request.max_tokens';
-
-/**
- * Type for {@link GEN_AI_REQUEST_MAX_TOKENS} gen_ai.request.max_tokens
- */
-export type GEN_AI_REQUEST_MAX_TOKENS_TYPE = number;
 
 // Path: model/attributes/gen_ai/gen_ai__request__messages.json
 
@@ -2285,12 +1637,6 @@ export type GEN_AI_REQUEST_MAX_TOKENS_TYPE = number;
  *
  * @example "[{\"role\": \"system\", \"content\": \"Generate a random number.\"}, {\"role\": \"user\", \"content\": [{\"text\": \"Generate a random number between 0 and 10.\", \"type\": \"text\"}]}, {\"role\": \"tool\", \"content\": {\"toolCallId\": \"1\", \"toolName\": \"Weather\", \"output\": \"rainy\"}}]"
  */
-export const GEN_AI_REQUEST_MESSAGES = 'gen_ai.request.messages';
-
-/**
- * Type for {@link GEN_AI_REQUEST_MESSAGES} gen_ai.request.messages
- */
-export type GEN_AI_REQUEST_MESSAGES_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__request__model.json
 
@@ -2305,12 +1651,6 @@ export type GEN_AI_REQUEST_MESSAGES_TYPE = string;
  *
  * @example "gpt-4-turbo-preview"
  */
-export const GEN_AI_REQUEST_MODEL = 'gen_ai.request.model';
-
-/**
- * Type for {@link GEN_AI_REQUEST_MODEL} gen_ai.request.model
- */
-export type GEN_AI_REQUEST_MODEL_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__request__presence_penalty.json
 
@@ -2327,12 +1667,6 @@ export type GEN_AI_REQUEST_MODEL_TYPE = string;
  *
  * @example 0.5
  */
-export const GEN_AI_REQUEST_PRESENCE_PENALTY = 'gen_ai.request.presence_penalty';
-
-/**
- * Type for {@link GEN_AI_REQUEST_PRESENCE_PENALTY} gen_ai.request.presence_penalty
- */
-export type GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE = number;
 
 // Path: model/attributes/gen_ai/gen_ai__request__seed.json
 
@@ -2349,12 +1683,6 @@ export type GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE = number;
  *
  * @example "1234567890"
  */
-export const GEN_AI_REQUEST_SEED = 'gen_ai.request.seed';
-
-/**
- * Type for {@link GEN_AI_REQUEST_SEED} gen_ai.request.seed
- */
-export type GEN_AI_REQUEST_SEED_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__request__temperature.json
 
@@ -2371,12 +1699,6 @@ export type GEN_AI_REQUEST_SEED_TYPE = string;
  *
  * @example 0.1
  */
-export const GEN_AI_REQUEST_TEMPERATURE = 'gen_ai.request.temperature';
-
-/**
- * Type for {@link GEN_AI_REQUEST_TEMPERATURE} gen_ai.request.temperature
- */
-export type GEN_AI_REQUEST_TEMPERATURE_TYPE = number;
 
 // Path: model/attributes/gen_ai/gen_ai__request__top_k.json
 
@@ -2393,12 +1715,6 @@ export type GEN_AI_REQUEST_TEMPERATURE_TYPE = number;
  *
  * @example 35
  */
-export const GEN_AI_REQUEST_TOP_K = 'gen_ai.request.top_k';
-
-/**
- * Type for {@link GEN_AI_REQUEST_TOP_K} gen_ai.request.top_k
- */
-export type GEN_AI_REQUEST_TOP_K_TYPE = number;
 
 // Path: model/attributes/gen_ai/gen_ai__request__top_p.json
 
@@ -2415,12 +1731,6 @@ export type GEN_AI_REQUEST_TOP_K_TYPE = number;
  *
  * @example 0.7
  */
-export const GEN_AI_REQUEST_TOP_P = 'gen_ai.request.top_p';
-
-/**
- * Type for {@link GEN_AI_REQUEST_TOP_P} gen_ai.request.top_p
- */
-export type GEN_AI_REQUEST_TOP_P_TYPE = number;
 
 // Path: model/attributes/gen_ai/gen_ai__response__finish_reasons.json
 
@@ -2437,12 +1747,6 @@ export type GEN_AI_REQUEST_TOP_P_TYPE = number;
  *
  * @example "COMPLETE"
  */
-export const GEN_AI_RESPONSE_FINISH_REASONS = 'gen_ai.response.finish_reasons';
-
-/**
- * Type for {@link GEN_AI_RESPONSE_FINISH_REASONS} gen_ai.response.finish_reasons
- */
-export type GEN_AI_RESPONSE_FINISH_REASONS_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__response__id.json
 
@@ -2459,12 +1763,6 @@ export type GEN_AI_RESPONSE_FINISH_REASONS_TYPE = string;
  *
  * @example "gen_123abc"
  */
-export const GEN_AI_RESPONSE_ID = 'gen_ai.response.id';
-
-/**
- * Type for {@link GEN_AI_RESPONSE_ID} gen_ai.response.id
- */
-export type GEN_AI_RESPONSE_ID_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__response__model.json
 
@@ -2481,12 +1779,6 @@ export type GEN_AI_RESPONSE_ID_TYPE = string;
  *
  * @example "gpt-4"
  */
-export const GEN_AI_RESPONSE_MODEL = 'gen_ai.response.model';
-
-/**
- * Type for {@link GEN_AI_RESPONSE_MODEL} gen_ai.response.model
- */
-export type GEN_AI_RESPONSE_MODEL_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__response__streaming.json
 
@@ -2503,12 +1795,6 @@ export type GEN_AI_RESPONSE_MODEL_TYPE = string;
  *
  * @example true
  */
-export const GEN_AI_RESPONSE_STREAMING = 'gen_ai.response.streaming';
-
-/**
- * Type for {@link GEN_AI_RESPONSE_STREAMING} gen_ai.response.streaming
- */
-export type GEN_AI_RESPONSE_STREAMING_TYPE = boolean;
 
 // Path: model/attributes/gen_ai/gen_ai__response__text.json
 
@@ -2523,12 +1809,6 @@ export type GEN_AI_RESPONSE_STREAMING_TYPE = boolean;
  *
  * @example "[\"The weather in Paris is rainy and overcast, with temperatures around 57°F\", \"The weather in London is sunny and warm, with temperatures around 65°F\"]"
  */
-export const GEN_AI_RESPONSE_TEXT = 'gen_ai.response.text';
-
-/**
- * Type for {@link GEN_AI_RESPONSE_TEXT} gen_ai.response.text
- */
-export type GEN_AI_RESPONSE_TEXT_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__response__tokens_per_second.json
 
@@ -2543,12 +1823,6 @@ export type GEN_AI_RESPONSE_TEXT_TYPE = string;
  *
  * @example 12345.67
  */
-export const GEN_AI_RESPONSE_TOKENS_PER_SECOND = 'gen_ai.response.tokens_per_second';
-
-/**
- * Type for {@link GEN_AI_RESPONSE_TOKENS_PER_SECOND} gen_ai.response.tokens_per_second
- */
-export type GEN_AI_RESPONSE_TOKENS_PER_SECOND_TYPE = number;
 
 // Path: model/attributes/gen_ai/gen_ai__response__tool_calls.json
 
@@ -2563,12 +1837,6 @@ export type GEN_AI_RESPONSE_TOKENS_PER_SECOND_TYPE = number;
  *
  * @example "[{\"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]"
  */
-export const GEN_AI_RESPONSE_TOOL_CALLS = 'gen_ai.response.tool_calls';
-
-/**
- * Type for {@link GEN_AI_RESPONSE_TOOL_CALLS} gen_ai.response.tool_calls
- */
-export type GEN_AI_RESPONSE_TOOL_CALLS_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__system.json
 
@@ -2585,12 +1853,6 @@ export type GEN_AI_RESPONSE_TOOL_CALLS_TYPE = string;
  *
  * @example "openai"
  */
-export const GEN_AI_SYSTEM = 'gen_ai.system';
-
-/**
- * Type for {@link GEN_AI_SYSTEM} gen_ai.system
- */
-export type GEN_AI_SYSTEM_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__system__message.json
 
@@ -2605,12 +1867,6 @@ export type GEN_AI_SYSTEM_TYPE = string;
  *
  * @example "You are a helpful assistant"
  */
-export const GEN_AI_SYSTEM_MESSAGE = 'gen_ai.system.message';
-
-/**
- * Type for {@link GEN_AI_SYSTEM_MESSAGE} gen_ai.system.message
- */
-export type GEN_AI_SYSTEM_MESSAGE_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__tool__description.json
 
@@ -2625,12 +1881,6 @@ export type GEN_AI_SYSTEM_MESSAGE_TYPE = string;
  *
  * @example "Searches the web for current information about a topic"
  */
-export const GEN_AI_TOOL_DESCRIPTION = 'gen_ai.tool.description';
-
-/**
- * Type for {@link GEN_AI_TOOL_DESCRIPTION} gen_ai.tool.description
- */
-export type GEN_AI_TOOL_DESCRIPTION_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__tool__input.json
 
@@ -2645,12 +1895,6 @@ export type GEN_AI_TOOL_DESCRIPTION_TYPE = string;
  *
  * @example "{\"location\": \"Paris\"}"
  */
-export const GEN_AI_TOOL_INPUT = 'gen_ai.tool.input';
-
-/**
- * Type for {@link GEN_AI_TOOL_INPUT} gen_ai.tool.input
- */
-export type GEN_AI_TOOL_INPUT_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__tool__message.json
 
@@ -2665,12 +1909,6 @@ export type GEN_AI_TOOL_INPUT_TYPE = string;
  *
  * @example "rainy, 57°F"
  */
-export const GEN_AI_TOOL_MESSAGE = 'gen_ai.tool.message';
-
-/**
- * Type for {@link GEN_AI_TOOL_MESSAGE} gen_ai.tool.message
- */
-export type GEN_AI_TOOL_MESSAGE_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__tool__name.json
 
@@ -2687,12 +1925,6 @@ export type GEN_AI_TOOL_MESSAGE_TYPE = string;
  *
  * @example "Flights"
  */
-export const GEN_AI_TOOL_NAME = 'gen_ai.tool.name';
-
-/**
- * Type for {@link GEN_AI_TOOL_NAME} gen_ai.tool.name
- */
-export type GEN_AI_TOOL_NAME_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__tool__output.json
 
@@ -2707,12 +1939,6 @@ export type GEN_AI_TOOL_NAME_TYPE = string;
  *
  * @example "rainy, 57°F"
  */
-export const GEN_AI_TOOL_OUTPUT = 'gen_ai.tool.output';
-
-/**
- * Type for {@link GEN_AI_TOOL_OUTPUT} gen_ai.tool.output
- */
-export type GEN_AI_TOOL_OUTPUT_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__tool__type.json
 
@@ -2727,12 +1953,6 @@ export type GEN_AI_TOOL_OUTPUT_TYPE = string;
  *
  * @example "function"
  */
-export const GEN_AI_TOOL_TYPE = 'gen_ai.tool.type';
-
-/**
- * Type for {@link GEN_AI_TOOL_TYPE} gen_ai.tool.type
- */
-export type GEN_AI_TOOL_TYPE_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__usage__completion_tokens.json
 
@@ -2750,12 +1970,6 @@ export type GEN_AI_TOOL_TYPE_TYPE = string;
  * @deprecated Use {@link GEN_AI_USAGE_OUTPUT_TOKENS} (gen_ai.usage.output_tokens) instead
  * @example 10
  */
-export const GEN_AI_USAGE_COMPLETION_TOKENS = 'gen_ai.usage.completion_tokens';
-
-/**
- * Type for {@link GEN_AI_USAGE_COMPLETION_TOKENS} gen_ai.usage.completion_tokens
- */
-export type GEN_AI_USAGE_COMPLETION_TOKENS_TYPE = number;
 
 // Path: model/attributes/gen_ai/gen_ai__usage__input_tokens.json
 
@@ -2772,12 +1986,6 @@ export type GEN_AI_USAGE_COMPLETION_TOKENS_TYPE = number;
  *
  * @example 10
  */
-export const GEN_AI_USAGE_INPUT_TOKENS = 'gen_ai.usage.input_tokens';
-
-/**
- * Type for {@link GEN_AI_USAGE_INPUT_TOKENS} gen_ai.usage.input_tokens
- */
-export type GEN_AI_USAGE_INPUT_TOKENS_TYPE = number;
 
 // Path: model/attributes/gen_ai/gen_ai__usage__input_tokens__cached.json
 
@@ -2792,12 +2000,6 @@ export type GEN_AI_USAGE_INPUT_TOKENS_TYPE = number;
  *
  * @example 50
  */
-export const GEN_AI_USAGE_INPUT_TOKENS_CACHED = 'gen_ai.usage.input_tokens.cached';
-
-/**
- * Type for {@link GEN_AI_USAGE_INPUT_TOKENS_CACHED} gen_ai.usage.input_tokens.cached
- */
-export type GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE = number;
 
 // Path: model/attributes/gen_ai/gen_ai__usage__output_tokens.json
 
@@ -2814,12 +2016,6 @@ export type GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE = number;
  *
  * @example 10
  */
-export const GEN_AI_USAGE_OUTPUT_TOKENS = 'gen_ai.usage.output_tokens';
-
-/**
- * Type for {@link GEN_AI_USAGE_OUTPUT_TOKENS} gen_ai.usage.output_tokens
- */
-export type GEN_AI_USAGE_OUTPUT_TOKENS_TYPE = number;
 
 // Path: model/attributes/gen_ai/gen_ai__usage__output_tokens__reasoning.json
 
@@ -2834,12 +2030,6 @@ export type GEN_AI_USAGE_OUTPUT_TOKENS_TYPE = number;
  *
  * @example 75
  */
-export const GEN_AI_USAGE_OUTPUT_TOKENS_REASONING = 'gen_ai.usage.output_tokens.reasoning';
-
-/**
- * Type for {@link GEN_AI_USAGE_OUTPUT_TOKENS_REASONING} gen_ai.usage.output_tokens.reasoning
- */
-export type GEN_AI_USAGE_OUTPUT_TOKENS_REASONING_TYPE = number;
 
 // Path: model/attributes/gen_ai/gen_ai__usage__prompt_tokens.json
 
@@ -2857,12 +2047,6 @@ export type GEN_AI_USAGE_OUTPUT_TOKENS_REASONING_TYPE = number;
  * @deprecated Use {@link GEN_AI_USAGE_INPUT_TOKENS} (gen_ai.usage.input_tokens) instead
  * @example 20
  */
-export const GEN_AI_USAGE_PROMPT_TOKENS = 'gen_ai.usage.prompt_tokens';
-
-/**
- * Type for {@link GEN_AI_USAGE_PROMPT_TOKENS} gen_ai.usage.prompt_tokens
- */
-export type GEN_AI_USAGE_PROMPT_TOKENS_TYPE = number;
 
 // Path: model/attributes/gen_ai/gen_ai__usage__total_cost.json
 
@@ -2878,12 +2062,6 @@ export type GEN_AI_USAGE_PROMPT_TOKENS_TYPE = number;
  * @deprecated Use {@link GEN_AI_COST_TOTAL_TOKENS} (gen_ai.cost.total_tokens) instead
  * @example 12.34
  */
-export const GEN_AI_USAGE_TOTAL_COST = 'gen_ai.usage.total_cost';
-
-/**
- * Type for {@link GEN_AI_USAGE_TOTAL_COST} gen_ai.usage.total_cost
- */
-export type GEN_AI_USAGE_TOTAL_COST_TYPE = number;
 
 // Path: model/attributes/gen_ai/gen_ai__usage__total_tokens.json
 
@@ -2900,12 +2078,6 @@ export type GEN_AI_USAGE_TOTAL_COST_TYPE = number;
  *
  * @example 20
  */
-export const GEN_AI_USAGE_TOTAL_TOKENS = 'gen_ai.usage.total_tokens';
-
-/**
- * Type for {@link GEN_AI_USAGE_TOTAL_TOKENS} gen_ai.usage.total_tokens
- */
-export type GEN_AI_USAGE_TOTAL_TOKENS_TYPE = number;
 
 // Path: model/attributes/gen_ai/gen_ai__user__message.json
 
@@ -2920,12 +2092,6 @@ export type GEN_AI_USAGE_TOTAL_TOKENS_TYPE = number;
  *
  * @example "What's the weather in Paris?"
  */
-export const GEN_AI_USER_MESSAGE = 'gen_ai.user.message';
-
-/**
- * Type for {@link GEN_AI_USER_MESSAGE} gen_ai.user.message
- */
-export type GEN_AI_USER_MESSAGE_TYPE = string;
 
 // Path: model/attributes/graphql/graphql__operation__name.json
 
@@ -2940,12 +2106,6 @@ export type GEN_AI_USER_MESSAGE_TYPE = string;
  *
  * @example "findBookById"
  */
-export const GRAPHQL_OPERATION_NAME = 'graphql.operation.name';
-
-/**
- * Type for {@link GRAPHQL_OPERATION_NAME} graphql.operation.name
- */
-export type GRAPHQL_OPERATION_NAME_TYPE = string;
 
 // Path: model/attributes/graphql/graphql__operation__type.json
 
@@ -2960,12 +2120,6 @@ export type GRAPHQL_OPERATION_NAME_TYPE = string;
  *
  * @example "query"
  */
-export const GRAPHQL_OPERATION_TYPE = 'graphql.operation.type';
-
-/**
- * Type for {@link GRAPHQL_OPERATION_TYPE} graphql.operation.type
- */
-export type GRAPHQL_OPERATION_TYPE_TYPE = string;
 
 // Path: model/attributes/http/http__client_ip.json
 
@@ -2983,12 +2137,6 @@ export type GRAPHQL_OPERATION_TYPE_TYPE = string;
  * @deprecated Use {@link CLIENT_ADDRESS} (client.address) instead
  * @example "example.com"
  */
-export const HTTP_CLIENT_IP = 'http.client_ip';
-
-/**
- * Type for {@link HTTP_CLIENT_IP} http.client_ip
- */
-export type HTTP_CLIENT_IP_TYPE = string;
 
 // Path: model/attributes/http/http__decoded_response_content_length.json
 
@@ -3003,12 +2151,6 @@ export type HTTP_CLIENT_IP_TYPE = string;
  *
  * @example 456
  */
-export const HTTP_DECODED_RESPONSE_CONTENT_LENGTH = 'http.decoded_response_content_length';
-
-/**
- * Type for {@link HTTP_DECODED_RESPONSE_CONTENT_LENGTH} http.decoded_response_content_length
- */
-export type HTTP_DECODED_RESPONSE_CONTENT_LENGTH_TYPE = number;
 
 // Path: model/attributes/http/http__flavor.json
 
@@ -3026,12 +2168,6 @@ export type HTTP_DECODED_RESPONSE_CONTENT_LENGTH_TYPE = number;
  * @deprecated Use {@link NETWORK_PROTOCOL_VERSION} (network.protocol.version) instead
  * @example "1.1"
  */
-export const HTTP_FLAVOR = 'http.flavor';
-
-/**
- * Type for {@link HTTP_FLAVOR} http.flavor
- */
-export type HTTP_FLAVOR_TYPE = string;
 
 // Path: model/attributes/http/http__fragment.json
 
@@ -3046,12 +2182,6 @@ export type HTTP_FLAVOR_TYPE = string;
  *
  * @example "#details"
  */
-export const HTTP_FRAGMENT = 'http.fragment';
-
-/**
- * Type for {@link HTTP_FRAGMENT} http.fragment
- */
-export type HTTP_FRAGMENT_TYPE = string;
 
 // Path: model/attributes/http/http__host.json
 
@@ -3069,12 +2199,6 @@ export type HTTP_FRAGMENT_TYPE = string;
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - Deprecated, use one of `server.address` or `client.address`, depending on the usage
  * @example "example.com"
  */
-export const HTTP_HOST = 'http.host';
-
-/**
- * Type for {@link HTTP_HOST} http.host
- */
-export type HTTP_HOST_TYPE = string;
 
 // Path: model/attributes/http/http__method.json
 
@@ -3092,12 +2216,6 @@ export type HTTP_HOST_TYPE = string;
  * @deprecated Use {@link HTTP_REQUEST_METHOD} (http.request.method) instead
  * @example "GET"
  */
-export const HTTP_METHOD = 'http.method';
-
-/**
- * Type for {@link HTTP_METHOD} http.method
- */
-export type HTTP_METHOD_TYPE = string;
 
 // Path: model/attributes/http/http__query.json
 
@@ -3112,12 +2230,6 @@ export type HTTP_METHOD_TYPE = string;
  *
  * @example "?foo=bar&bar=baz"
  */
-export const HTTP_QUERY = 'http.query';
-
-/**
- * Type for {@link HTTP_QUERY} http.query
- */
-export type HTTP_QUERY_TYPE = string;
 
 // Path: model/attributes/http/http__request__connect_start.json
 
@@ -3132,12 +2244,6 @@ export type HTTP_QUERY_TYPE = string;
  *
  * @example 1732829555.111
  */
-export const HTTP_REQUEST_CONNECT_START = 'http.request.connect_start';
-
-/**
- * Type for {@link HTTP_REQUEST_CONNECT_START} http.request.connect_start
- */
-export type HTTP_REQUEST_CONNECT_START_TYPE = number;
 
 // Path: model/attributes/http/http__request__connection_end.json
 
@@ -3152,12 +2258,6 @@ export type HTTP_REQUEST_CONNECT_START_TYPE = number;
  *
  * @example 1732829555.15
  */
-export const HTTP_REQUEST_CONNECTION_END = 'http.request.connection_end';
-
-/**
- * Type for {@link HTTP_REQUEST_CONNECTION_END} http.request.connection_end
- */
-export type HTTP_REQUEST_CONNECTION_END_TYPE = number;
 
 // Path: model/attributes/http/http__request__domain_lookup_end.json
 
@@ -3172,12 +2272,6 @@ export type HTTP_REQUEST_CONNECTION_END_TYPE = number;
  *
  * @example 1732829555.201
  */
-export const HTTP_REQUEST_DOMAIN_LOOKUP_END = 'http.request.domain_lookup_end';
-
-/**
- * Type for {@link HTTP_REQUEST_DOMAIN_LOOKUP_END} http.request.domain_lookup_end
- */
-export type HTTP_REQUEST_DOMAIN_LOOKUP_END_TYPE = number;
 
 // Path: model/attributes/http/http__request__domain_lookup_start.json
 
@@ -3192,12 +2286,6 @@ export type HTTP_REQUEST_DOMAIN_LOOKUP_END_TYPE = number;
  *
  * @example 1732829555.322
  */
-export const HTTP_REQUEST_DOMAIN_LOOKUP_START = 'http.request.domain_lookup_start';
-
-/**
- * Type for {@link HTTP_REQUEST_DOMAIN_LOOKUP_START} http.request.domain_lookup_start
- */
-export type HTTP_REQUEST_DOMAIN_LOOKUP_START_TYPE = number;
 
 // Path: model/attributes/http/http__request__fetch_start.json
 
@@ -3212,12 +2300,6 @@ export type HTTP_REQUEST_DOMAIN_LOOKUP_START_TYPE = number;
  *
  * @example 1732829555.389
  */
-export const HTTP_REQUEST_FETCH_START = 'http.request.fetch_start';
-
-/**
- * Type for {@link HTTP_REQUEST_FETCH_START} http.request.fetch_start
- */
-export type HTTP_REQUEST_FETCH_START_TYPE = number;
 
 // Path: model/attributes/http/http__request__header__[key].json
 
@@ -3234,12 +2316,6 @@ export type HTTP_REQUEST_FETCH_START_TYPE = number;
  *
  * @example "http.request.header.custom-header=['foo', 'bar']"
  */
-export const HTTP_REQUEST_HEADER_KEY = 'http.request.header.<key>';
-
-/**
- * Type for {@link HTTP_REQUEST_HEADER_KEY} http.request.header.<key>
- */
-export type HTTP_REQUEST_HEADER_KEY_TYPE = Array<string>;
 
 // Path: model/attributes/http/http__request__method.json
 
@@ -3256,12 +2332,6 @@ export type HTTP_REQUEST_HEADER_KEY_TYPE = Array<string>;
  *
  * @example "GET"
  */
-export const HTTP_REQUEST_METHOD = 'http.request.method';
-
-/**
- * Type for {@link HTTP_REQUEST_METHOD} http.request.method
- */
-export type HTTP_REQUEST_METHOD_TYPE = string;
 
 // Path: model/attributes/http/http__request__redirect_end.json
 
@@ -3276,12 +2346,6 @@ export type HTTP_REQUEST_METHOD_TYPE = string;
  *
  * @example 1732829558.502
  */
-export const HTTP_REQUEST_REDIRECT_END = 'http.request.redirect_end';
-
-/**
- * Type for {@link HTTP_REQUEST_REDIRECT_END} http.request.redirect_end
- */
-export type HTTP_REQUEST_REDIRECT_END_TYPE = number;
 
 // Path: model/attributes/http/http__request__redirect_start.json
 
@@ -3296,12 +2360,6 @@ export type HTTP_REQUEST_REDIRECT_END_TYPE = number;
  *
  * @example 1732829555.495
  */
-export const HTTP_REQUEST_REDIRECT_START = 'http.request.redirect_start';
-
-/**
- * Type for {@link HTTP_REQUEST_REDIRECT_START} http.request.redirect_start
- */
-export type HTTP_REQUEST_REDIRECT_START_TYPE = number;
 
 // Path: model/attributes/http/http__request__request_start.json
 
@@ -3316,12 +2374,6 @@ export type HTTP_REQUEST_REDIRECT_START_TYPE = number;
  *
  * @example 1732829555.51
  */
-export const HTTP_REQUEST_REQUEST_START = 'http.request.request_start';
-
-/**
- * Type for {@link HTTP_REQUEST_REQUEST_START} http.request.request_start
- */
-export type HTTP_REQUEST_REQUEST_START_TYPE = number;
 
 // Path: model/attributes/http/http__request__resend_count.json
 
@@ -3336,12 +2388,6 @@ export type HTTP_REQUEST_REQUEST_START_TYPE = number;
  *
  * @example 2
  */
-export const HTTP_REQUEST_RESEND_COUNT = 'http.request.resend_count';
-
-/**
- * Type for {@link HTTP_REQUEST_RESEND_COUNT} http.request.resend_count
- */
-export type HTTP_REQUEST_RESEND_COUNT_TYPE = number;
 
 // Path: model/attributes/http/http__request__response_end.json
 
@@ -3356,12 +2402,6 @@ export type HTTP_REQUEST_RESEND_COUNT_TYPE = number;
  *
  * @example 1732829555.89
  */
-export const HTTP_REQUEST_RESPONSE_END = 'http.request.response_end';
-
-/**
- * Type for {@link HTTP_REQUEST_RESPONSE_END} http.request.response_end
- */
-export type HTTP_REQUEST_RESPONSE_END_TYPE = number;
 
 // Path: model/attributes/http/http__request__response_start.json
 
@@ -3376,12 +2416,6 @@ export type HTTP_REQUEST_RESPONSE_END_TYPE = number;
  *
  * @example 1732829555.7
  */
-export const HTTP_REQUEST_RESPONSE_START = 'http.request.response_start';
-
-/**
- * Type for {@link HTTP_REQUEST_RESPONSE_START} http.request.response_start
- */
-export type HTTP_REQUEST_RESPONSE_START_TYPE = number;
 
 // Path: model/attributes/http/http__request__secure_connection_start.json
 
@@ -3396,12 +2430,6 @@ export type HTTP_REQUEST_RESPONSE_START_TYPE = number;
  *
  * @example 1732829555.73
  */
-export const HTTP_REQUEST_SECURE_CONNECTION_START = 'http.request.secure_connection_start';
-
-/**
- * Type for {@link HTTP_REQUEST_SECURE_CONNECTION_START} http.request.secure_connection_start
- */
-export type HTTP_REQUEST_SECURE_CONNECTION_START_TYPE = number;
 
 // Path: model/attributes/http/http__request__time_to_first_byte.json
 
@@ -3416,12 +2444,6 @@ export type HTTP_REQUEST_SECURE_CONNECTION_START_TYPE = number;
  *
  * @example 1.032
  */
-export const HTTP_REQUEST_TIME_TO_FIRST_BYTE = 'http.request.time_to_first_byte';
-
-/**
- * Type for {@link HTTP_REQUEST_TIME_TO_FIRST_BYTE} http.request.time_to_first_byte
- */
-export type HTTP_REQUEST_TIME_TO_FIRST_BYTE_TYPE = number;
 
 // Path: model/attributes/http/http__request__worker_start.json
 
@@ -3436,12 +2458,6 @@ export type HTTP_REQUEST_TIME_TO_FIRST_BYTE_TYPE = number;
  *
  * @example 1732829553.68
  */
-export const HTTP_REQUEST_WORKER_START = 'http.request.worker_start';
-
-/**
- * Type for {@link HTTP_REQUEST_WORKER_START} http.request.worker_start
- */
-export type HTTP_REQUEST_WORKER_START_TYPE = number;
 
 // Path: model/attributes/http/http__response__body__size.json
 
@@ -3458,12 +2474,6 @@ export type HTTP_REQUEST_WORKER_START_TYPE = number;
  *
  * @example 123
  */
-export const HTTP_RESPONSE_BODY_SIZE = 'http.response.body.size';
-
-/**
- * Type for {@link HTTP_RESPONSE_BODY_SIZE} http.response.body.size
- */
-export type HTTP_RESPONSE_BODY_SIZE_TYPE = number;
 
 // Path: model/attributes/http/http__response__header__[key].json
 
@@ -3480,12 +2490,6 @@ export type HTTP_RESPONSE_BODY_SIZE_TYPE = number;
  *
  * @example "http.response.header.custom-header=['foo', 'bar']"
  */
-export const HTTP_RESPONSE_HEADER_KEY = 'http.response.header.<key>';
-
-/**
- * Type for {@link HTTP_RESPONSE_HEADER_KEY} http.response.header.<key>
- */
-export type HTTP_RESPONSE_HEADER_KEY_TYPE = Array<string>;
 
 // Path: model/attributes/http/http__response__header__content-length.json
 
@@ -3502,12 +2506,6 @@ export type HTTP_RESPONSE_HEADER_KEY_TYPE = Array<string>;
  *
  * @example "http.response.header.custom-header=['foo', 'bar']"
  */
-export const HTTP_RESPONSE_HEADER_CONTENT_LENGTH = 'http.response.header.content-length';
-
-/**
- * Type for {@link HTTP_RESPONSE_HEADER_CONTENT_LENGTH} http.response.header.content-length
- */
-export type HTTP_RESPONSE_HEADER_CONTENT_LENGTH_TYPE = string;
 
 // Path: model/attributes/http/http__response__size.json
 
@@ -3524,12 +2522,6 @@ export type HTTP_RESPONSE_HEADER_CONTENT_LENGTH_TYPE = string;
  *
  * @example 456
  */
-export const HTTP_RESPONSE_SIZE = 'http.response.size';
-
-/**
- * Type for {@link HTTP_RESPONSE_SIZE} http.response.size
- */
-export type HTTP_RESPONSE_SIZE_TYPE = number;
 
 // Path: model/attributes/http/http__response__status_code.json
 
@@ -3546,12 +2538,6 @@ export type HTTP_RESPONSE_SIZE_TYPE = number;
  *
  * @example 404
  */
-export const HTTP_RESPONSE_STATUS_CODE = 'http.response.status_code';
-
-/**
- * Type for {@link HTTP_RESPONSE_STATUS_CODE} http.response.status_code
- */
-export type HTTP_RESPONSE_STATUS_CODE_TYPE = number;
 
 // Path: model/attributes/http/http__response_content_length.json
 
@@ -3569,12 +2555,6 @@ export type HTTP_RESPONSE_STATUS_CODE_TYPE = number;
  * @deprecated Use {@link HTTP_RESPONSE_BODY_SIZE} (http.response.body.size) instead
  * @example 123
  */
-export const HTTP_RESPONSE_CONTENT_LENGTH = 'http.response_content_length';
-
-/**
- * Type for {@link HTTP_RESPONSE_CONTENT_LENGTH} http.response_content_length
- */
-export type HTTP_RESPONSE_CONTENT_LENGTH_TYPE = number;
 
 // Path: model/attributes/http/http__response_transfer_size.json
 
@@ -3592,12 +2572,6 @@ export type HTTP_RESPONSE_CONTENT_LENGTH_TYPE = number;
  * @deprecated Use {@link HTTP_RESPONSE_SIZE} (http.response.size) instead
  * @example 456
  */
-export const HTTP_RESPONSE_TRANSFER_SIZE = 'http.response_transfer_size';
-
-/**
- * Type for {@link HTTP_RESPONSE_TRANSFER_SIZE} http.response_transfer_size
- */
-export type HTTP_RESPONSE_TRANSFER_SIZE_TYPE = number;
 
 // Path: model/attributes/http/http__route.json
 
@@ -3614,12 +2588,6 @@ export type HTTP_RESPONSE_TRANSFER_SIZE_TYPE = number;
  *
  * @example "/users/:id"
  */
-export const HTTP_ROUTE = 'http.route';
-
-/**
- * Type for {@link HTTP_ROUTE} http.route
- */
-export type HTTP_ROUTE_TYPE = string;
 
 // Path: model/attributes/http/http__scheme.json
 
@@ -3637,12 +2605,6 @@ export type HTTP_ROUTE_TYPE = string;
  * @deprecated Use {@link URL_SCHEME} (url.scheme) instead
  * @example "https"
  */
-export const HTTP_SCHEME = 'http.scheme';
-
-/**
- * Type for {@link HTTP_SCHEME} http.scheme
- */
-export type HTTP_SCHEME_TYPE = string;
 
 // Path: model/attributes/http/http__server_name.json
 
@@ -3660,12 +2622,6 @@ export type HTTP_SCHEME_TYPE = string;
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead
  * @example "example.com"
  */
-export const HTTP_SERVER_NAME = 'http.server_name';
-
-/**
- * Type for {@link HTTP_SERVER_NAME} http.server_name
- */
-export type HTTP_SERVER_NAME_TYPE = string;
 
 // Path: model/attributes/http/http__status_code.json
 
@@ -3683,12 +2639,6 @@ export type HTTP_SERVER_NAME_TYPE = string;
  * @deprecated Use {@link HTTP_RESPONSE_STATUS_CODE} (http.response.status_code) instead
  * @example 404
  */
-export const HTTP_STATUS_CODE = 'http.status_code';
-
-/**
- * Type for {@link HTTP_STATUS_CODE} http.status_code
- */
-export type HTTP_STATUS_CODE_TYPE = number;
 
 // Path: model/attributes/http/http__target.json
 
@@ -3704,12 +2654,6 @@ export type HTTP_STATUS_CODE_TYPE = number;
  * @deprecated Use {@link URL_PATH} (url.path) instead - This attribute is being deprecated in favor of url.path and url.query
  * @example "/test?foo=bar#buzz"
  */
-export const HTTP_TARGET = 'http.target';
-
-/**
- * Type for {@link HTTP_TARGET} http.target
- */
-export type HTTP_TARGET_TYPE = string;
 
 // Path: model/attributes/http/http__url.json
 
@@ -3727,12 +2671,6 @@ export type HTTP_TARGET_TYPE = string;
  * @deprecated Use {@link URL_FULL} (url.full) instead
  * @example "https://example.com/test?foo=bar#buzz"
  */
-export const HTTP_URL = 'http.url';
-
-/**
- * Type for {@link HTTP_URL} http.url
- */
-export type HTTP_URL_TYPE = string;
 
 // Path: model/attributes/http/http__user_agent.json
 
@@ -3750,12 +2688,6 @@ export type HTTP_URL_TYPE = string;
  * @deprecated Use {@link USER_AGENT_ORIGINAL} (user_agent.original) instead
  * @example "Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1"
  */
-export const HTTP_USER_AGENT = 'http.user_agent';
-
-/**
- * Type for {@link HTTP_USER_AGENT} http.user_agent
- */
-export type HTTP_USER_AGENT_TYPE = string;
 
 // Path: model/attributes/id.json
 
@@ -3770,12 +2702,6 @@ export type HTTP_USER_AGENT_TYPE = string;
  *
  * @example "f47ac10b58cc4372a5670e02b2c3d479"
  */
-export const ID = 'id';
-
-/**
- * Type for {@link ID} id
- */
-export type ID_TYPE = string;
 
 // Path: model/attributes/jvm/jvm__gc__action.json
 
@@ -3790,12 +2716,6 @@ export type ID_TYPE = string;
  *
  * @example "end of minor GC"
  */
-export const JVM_GC_ACTION = 'jvm.gc.action';
-
-/**
- * Type for {@link JVM_GC_ACTION} jvm.gc.action
- */
-export type JVM_GC_ACTION_TYPE = string;
 
 // Path: model/attributes/jvm/jvm__gc__name.json
 
@@ -3810,12 +2730,6 @@ export type JVM_GC_ACTION_TYPE = string;
  *
  * @example "G1 Young Generation"
  */
-export const JVM_GC_NAME = 'jvm.gc.name';
-
-/**
- * Type for {@link JVM_GC_NAME} jvm.gc.name
- */
-export type JVM_GC_NAME_TYPE = string;
 
 // Path: model/attributes/jvm/jvm__memory__pool__name.json
 
@@ -3830,12 +2744,6 @@ export type JVM_GC_NAME_TYPE = string;
  *
  * @example "G1 Old Gen"
  */
-export const JVM_MEMORY_POOL_NAME = 'jvm.memory.pool.name';
-
-/**
- * Type for {@link JVM_MEMORY_POOL_NAME} jvm.memory.pool.name
- */
-export type JVM_MEMORY_POOL_NAME_TYPE = string;
 
 // Path: model/attributes/jvm/jvm__memory__type.json
 
@@ -3850,12 +2758,6 @@ export type JVM_MEMORY_POOL_NAME_TYPE = string;
  *
  * @example "G1 Old Gen"
  */
-export const JVM_MEMORY_TYPE = 'jvm.memory.type';
-
-/**
- * Type for {@link JVM_MEMORY_TYPE} jvm.memory.type
- */
-export type JVM_MEMORY_TYPE_TYPE = string;
 
 // Path: model/attributes/jvm/jvm__thread__daemon.json
 
@@ -3870,12 +2772,6 @@ export type JVM_MEMORY_TYPE_TYPE = string;
  *
  * @example true
  */
-export const JVM_THREAD_DAEMON = 'jvm.thread.daemon';
-
-/**
- * Type for {@link JVM_THREAD_DAEMON} jvm.thread.daemon
- */
-export type JVM_THREAD_DAEMON_TYPE = boolean;
 
 // Path: model/attributes/jvm/jvm__thread__state.json
 
@@ -3890,12 +2786,6 @@ export type JVM_THREAD_DAEMON_TYPE = boolean;
  *
  * @example "blocked"
  */
-export const JVM_THREAD_STATE = 'jvm.thread.state';
-
-/**
- * Type for {@link JVM_THREAD_STATE} jvm.thread.state
- */
-export type JVM_THREAD_STATE_TYPE = string;
 
 // Path: model/attributes/lcp/lcp__element.json
 
@@ -3910,12 +2800,6 @@ export type JVM_THREAD_STATE_TYPE = string;
  *
  * @example "img"
  */
-export const LCP_ELEMENT = 'lcp.element';
-
-/**
- * Type for {@link LCP_ELEMENT} lcp.element
- */
-export type LCP_ELEMENT_TYPE = string;
 
 // Path: model/attributes/lcp/lcp__id.json
 
@@ -3930,12 +2814,6 @@ export type LCP_ELEMENT_TYPE = string;
  *
  * @example "#hero"
  */
-export const LCP_ID = 'lcp.id';
-
-/**
- * Type for {@link LCP_ID} lcp.id
- */
-export type LCP_ID_TYPE = string;
 
 // Path: model/attributes/lcp/lcp__size.json
 
@@ -3950,12 +2828,6 @@ export type LCP_ID_TYPE = string;
  *
  * @example 1234
  */
-export const LCP_SIZE = 'lcp.size';
-
-/**
- * Type for {@link LCP_SIZE} lcp.size
- */
-export type LCP_SIZE_TYPE = number;
 
 // Path: model/attributes/lcp/lcp__url.json
 
@@ -3970,12 +2842,6 @@ export type LCP_SIZE_TYPE = number;
  *
  * @example "https://example.com"
  */
-export const LCP_URL = 'lcp.url';
-
-/**
- * Type for {@link LCP_URL} lcp.url
- */
-export type LCP_URL_TYPE = string;
 
 // Path: model/attributes/logger/logger__name.json
 
@@ -3990,12 +2856,6 @@ export type LCP_URL_TYPE = string;
  *
  * @example "myLogger"
  */
-export const LOGGER_NAME = 'logger.name';
-
-/**
- * Type for {@link LOGGER_NAME} logger.name
- */
-export type LOGGER_NAME_TYPE = string;
 
 // Path: model/attributes/messaging/messaging__destination__connection.json
 
@@ -4010,12 +2870,6 @@ export type LOGGER_NAME_TYPE = string;
  *
  * @example "BestTopic"
  */
-export const MESSAGING_DESTINATION_CONNECTION = 'messaging.destination.connection';
-
-/**
- * Type for {@link MESSAGING_DESTINATION_CONNECTION} messaging.destination.connection
- */
-export type MESSAGING_DESTINATION_CONNECTION_TYPE = string;
 
 // Path: model/attributes/messaging/messaging__destination__name.json
 
@@ -4030,12 +2884,6 @@ export type MESSAGING_DESTINATION_CONNECTION_TYPE = string;
  *
  * @example "BestTopic"
  */
-export const MESSAGING_DESTINATION_NAME = 'messaging.destination.name';
-
-/**
- * Type for {@link MESSAGING_DESTINATION_NAME} messaging.destination.name
- */
-export type MESSAGING_DESTINATION_NAME_TYPE = string;
 
 // Path: model/attributes/messaging/messaging__message__body__size.json
 
@@ -4050,12 +2898,6 @@ export type MESSAGING_DESTINATION_NAME_TYPE = string;
  *
  * @example 839
  */
-export const MESSAGING_MESSAGE_BODY_SIZE = 'messaging.message.body.size';
-
-/**
- * Type for {@link MESSAGING_MESSAGE_BODY_SIZE} messaging.message.body.size
- */
-export type MESSAGING_MESSAGE_BODY_SIZE_TYPE = number;
 
 // Path: model/attributes/messaging/messaging__message__envelope__size.json
 
@@ -4070,12 +2912,6 @@ export type MESSAGING_MESSAGE_BODY_SIZE_TYPE = number;
  *
  * @example 1045
  */
-export const MESSAGING_MESSAGE_ENVELOPE_SIZE = 'messaging.message.envelope.size';
-
-/**
- * Type for {@link MESSAGING_MESSAGE_ENVELOPE_SIZE} messaging.message.envelope.size
- */
-export type MESSAGING_MESSAGE_ENVELOPE_SIZE_TYPE = number;
 
 // Path: model/attributes/messaging/messaging__message__id.json
 
@@ -4090,12 +2926,6 @@ export type MESSAGING_MESSAGE_ENVELOPE_SIZE_TYPE = number;
  *
  * @example "f47ac10b58cc4372a5670e02b2c3d479"
  */
-export const MESSAGING_MESSAGE_ID = 'messaging.message.id';
-
-/**
- * Type for {@link MESSAGING_MESSAGE_ID} messaging.message.id
- */
-export type MESSAGING_MESSAGE_ID_TYPE = string;
 
 // Path: model/attributes/messaging/messaging__message__receive__latency.json
 
@@ -4110,12 +2940,6 @@ export type MESSAGING_MESSAGE_ID_TYPE = string;
  *
  * @example 1732847252
  */
-export const MESSAGING_MESSAGE_RECEIVE_LATENCY = 'messaging.message.receive.latency';
-
-/**
- * Type for {@link MESSAGING_MESSAGE_RECEIVE_LATENCY} messaging.message.receive.latency
- */
-export type MESSAGING_MESSAGE_RECEIVE_LATENCY_TYPE = number;
 
 // Path: model/attributes/messaging/messaging__message__retry__count.json
 
@@ -4130,12 +2954,6 @@ export type MESSAGING_MESSAGE_RECEIVE_LATENCY_TYPE = number;
  *
  * @example 2
  */
-export const MESSAGING_MESSAGE_RETRY_COUNT = 'messaging.message.retry.count';
-
-/**
- * Type for {@link MESSAGING_MESSAGE_RETRY_COUNT} messaging.message.retry.count
- */
-export type MESSAGING_MESSAGE_RETRY_COUNT_TYPE = number;
 
 // Path: model/attributes/messaging/messaging__operation__type.json
 
@@ -4150,12 +2968,6 @@ export type MESSAGING_MESSAGE_RETRY_COUNT_TYPE = number;
  *
  * @example "create"
  */
-export const MESSAGING_OPERATION_TYPE = 'messaging.operation.type';
-
-/**
- * Type for {@link MESSAGING_OPERATION_TYPE} messaging.operation.type
- */
-export type MESSAGING_OPERATION_TYPE_TYPE = string;
 
 // Path: model/attributes/messaging/messaging__system.json
 
@@ -4170,12 +2982,6 @@ export type MESSAGING_OPERATION_TYPE_TYPE = string;
  *
  * @example "activemq"
  */
-export const MESSAGING_SYSTEM = 'messaging.system';
-
-/**
- * Type for {@link MESSAGING_SYSTEM} messaging.system
- */
-export type MESSAGING_SYSTEM_TYPE = string;
 
 // Path: model/attributes/method.json
 
@@ -4193,12 +2999,6 @@ export type MESSAGING_SYSTEM_TYPE = string;
  * @deprecated Use {@link HTTP_REQUEST_METHOD} (http.request.method) instead
  * @example "GET"
  */
-export const METHOD = 'method';
-
-/**
- * Type for {@link METHOD} method
- */
-export type METHOD_TYPE = string;
 
 // Path: model/attributes/navigation/navigation__type.json
 
@@ -4213,12 +3013,6 @@ export type METHOD_TYPE = string;
  *
  * @example "router.push"
  */
-export const NAVIGATION_TYPE = 'navigation.type';
-
-/**
- * Type for {@link NAVIGATION_TYPE} navigation.type
- */
-export type NAVIGATION_TYPE_TYPE = string;
 
 // Path: model/attributes/nel/nel__elapsed_time.json
 
@@ -4233,12 +3027,6 @@ export type NAVIGATION_TYPE_TYPE = string;
  *
  * @example 100
  */
-export const NEL_ELAPSED_TIME = 'nel.elapsed_time';
-
-/**
- * Type for {@link NEL_ELAPSED_TIME} nel.elapsed_time
- */
-export type NEL_ELAPSED_TIME_TYPE = number;
 
 // Path: model/attributes/nel/nel__phase.json
 
@@ -4253,12 +3041,6 @@ export type NEL_ELAPSED_TIME_TYPE = number;
  *
  * @example "application"
  */
-export const NEL_PHASE = 'nel.phase';
-
-/**
- * Type for {@link NEL_PHASE} nel.phase
- */
-export type NEL_PHASE_TYPE = string;
 
 // Path: model/attributes/nel/nel__referrer.json
 
@@ -4273,12 +3055,6 @@ export type NEL_PHASE_TYPE = string;
  *
  * @example "https://example.com/foo?bar=baz"
  */
-export const NEL_REFERRER = 'nel.referrer';
-
-/**
- * Type for {@link NEL_REFERRER} nel.referrer
- */
-export type NEL_REFERRER_TYPE = string;
 
 // Path: model/attributes/nel/nel__sampling_function.json
 
@@ -4293,12 +3069,6 @@ export type NEL_REFERRER_TYPE = string;
  *
  * @example 0.5
  */
-export const NEL_SAMPLING_FUNCTION = 'nel.sampling_function';
-
-/**
- * Type for {@link NEL_SAMPLING_FUNCTION} nel.sampling_function
- */
-export type NEL_SAMPLING_FUNCTION_TYPE = number;
 
 // Path: model/attributes/nel/nel__type.json
 
@@ -4313,12 +3083,6 @@ export type NEL_SAMPLING_FUNCTION_TYPE = number;
  *
  * @example "dns.unreachable"
  */
-export const NEL_TYPE = 'nel.type';
-
-/**
- * Type for {@link NEL_TYPE} nel.type
- */
-export type NEL_TYPE_TYPE = string;
 
 // Path: model/attributes/net/net__host__ip.json
 
@@ -4336,12 +3100,6 @@ export type NEL_TYPE_TYPE = string;
  * @deprecated Use {@link NETWORK_LOCAL_ADDRESS} (network.local.address) instead
  * @example "192.168.0.1"
  */
-export const NET_HOST_IP = 'net.host.ip';
-
-/**
- * Type for {@link NET_HOST_IP} net.host.ip
- */
-export type NET_HOST_IP_TYPE = string;
 
 // Path: model/attributes/net/net__host__name.json
 
@@ -4359,12 +3117,6 @@ export type NET_HOST_IP_TYPE = string;
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead
  * @example "example.com"
  */
-export const NET_HOST_NAME = 'net.host.name';
-
-/**
- * Type for {@link NET_HOST_NAME} net.host.name
- */
-export type NET_HOST_NAME_TYPE = string;
 
 // Path: model/attributes/net/net__host__port.json
 
@@ -4382,12 +3134,6 @@ export type NET_HOST_NAME_TYPE = string;
  * @deprecated Use {@link SERVER_PORT} (server.port) instead
  * @example 1337
  */
-export const NET_HOST_PORT = 'net.host.port';
-
-/**
- * Type for {@link NET_HOST_PORT} net.host.port
- */
-export type NET_HOST_PORT_TYPE = number;
 
 // Path: model/attributes/net/net__peer__ip.json
 
@@ -4405,12 +3151,6 @@ export type NET_HOST_PORT_TYPE = number;
  * @deprecated Use {@link NETWORK_PEER_ADDRESS} (network.peer.address) instead
  * @example "192.168.0.1"
  */
-export const NET_PEER_IP = 'net.peer.ip';
-
-/**
- * Type for {@link NET_PEER_IP} net.peer.ip
- */
-export type NET_PEER_IP_TYPE = string;
 
 // Path: model/attributes/net/net__peer__name.json
 
@@ -4426,12 +3166,6 @@ export type NET_PEER_IP_TYPE = string;
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - Deprecated, use server.address on client spans and client.address on server spans.
  * @example "example.com"
  */
-export const NET_PEER_NAME = 'net.peer.name';
-
-/**
- * Type for {@link NET_PEER_NAME} net.peer.name
- */
-export type NET_PEER_NAME_TYPE = string;
 
 // Path: model/attributes/net/net__peer__port.json
 
@@ -4447,12 +3181,6 @@ export type NET_PEER_NAME_TYPE = string;
  * @deprecated Use {@link SERVER_PORT} (server.port) instead - Deprecated, use server.port on client spans and client.port on server spans.
  * @example 1337
  */
-export const NET_PEER_PORT = 'net.peer.port';
-
-/**
- * Type for {@link NET_PEER_PORT} net.peer.port
- */
-export type NET_PEER_PORT_TYPE = number;
 
 // Path: model/attributes/net/net__protocol__name.json
 
@@ -4470,12 +3198,6 @@ export type NET_PEER_PORT_TYPE = number;
  * @deprecated Use {@link NETWORK_PROTOCOL_NAME} (network.protocol.name) instead
  * @example "http"
  */
-export const NET_PROTOCOL_NAME = 'net.protocol.name';
-
-/**
- * Type for {@link NET_PROTOCOL_NAME} net.protocol.name
- */
-export type NET_PROTOCOL_NAME_TYPE = string;
 
 // Path: model/attributes/net/net__protocol__version.json
 
@@ -4493,12 +3215,6 @@ export type NET_PROTOCOL_NAME_TYPE = string;
  * @deprecated Use {@link NETWORK_PROTOCOL_VERSION} (network.protocol.version) instead
  * @example "1.1"
  */
-export const NET_PROTOCOL_VERSION = 'net.protocol.version';
-
-/**
- * Type for {@link NET_PROTOCOL_VERSION} net.protocol.version
- */
-export type NET_PROTOCOL_VERSION_TYPE = string;
 
 // Path: model/attributes/net/net__sock__family.json
 
@@ -4514,12 +3230,6 @@ export type NET_PROTOCOL_VERSION_TYPE = string;
  * @deprecated Use {@link NETWORK_TRANSPORT} (network.transport) instead - Deprecated, use network.transport and network.type.
  * @example "inet"
  */
-export const NET_SOCK_FAMILY = 'net.sock.family';
-
-/**
- * Type for {@link NET_SOCK_FAMILY} net.sock.family
- */
-export type NET_SOCK_FAMILY_TYPE = string;
 
 // Path: model/attributes/net/net__sock__host__addr.json
 
@@ -4537,12 +3247,6 @@ export type NET_SOCK_FAMILY_TYPE = string;
  * @deprecated Use {@link NETWORK_LOCAL_ADDRESS} (network.local.address) instead
  * @example "/var/my.sock"
  */
-export const NET_SOCK_HOST_ADDR = 'net.sock.host.addr';
-
-/**
- * Type for {@link NET_SOCK_HOST_ADDR} net.sock.host.addr
- */
-export type NET_SOCK_HOST_ADDR_TYPE = string;
 
 // Path: model/attributes/net/net__sock__host__port.json
 
@@ -4560,12 +3264,6 @@ export type NET_SOCK_HOST_ADDR_TYPE = string;
  * @deprecated Use {@link NETWORK_LOCAL_PORT} (network.local.port) instead
  * @example 8080
  */
-export const NET_SOCK_HOST_PORT = 'net.sock.host.port';
-
-/**
- * Type for {@link NET_SOCK_HOST_PORT} net.sock.host.port
- */
-export type NET_SOCK_HOST_PORT_TYPE = number;
 
 // Path: model/attributes/net/net__sock__peer__addr.json
 
@@ -4583,12 +3281,6 @@ export type NET_SOCK_HOST_PORT_TYPE = number;
  * @deprecated Use {@link NETWORK_PEER_ADDRESS} (network.peer.address) instead
  * @example "192.168.0.1"
  */
-export const NET_SOCK_PEER_ADDR = 'net.sock.peer.addr';
-
-/**
- * Type for {@link NET_SOCK_PEER_ADDR} net.sock.peer.addr
- */
-export type NET_SOCK_PEER_ADDR_TYPE = string;
 
 // Path: model/attributes/net/net__sock__peer__name.json
 
@@ -4604,12 +3296,6 @@ export type NET_SOCK_PEER_ADDR_TYPE = string;
  * @deprecated  - Deprecated from OTEL, no replacement at this time
  * @example "/var/my.sock"
  */
-export const NET_SOCK_PEER_NAME = 'net.sock.peer.name';
-
-/**
- * Type for {@link NET_SOCK_PEER_NAME} net.sock.peer.name
- */
-export type NET_SOCK_PEER_NAME_TYPE = string;
 
 // Path: model/attributes/net/net__sock__peer__port.json
 
@@ -4625,12 +3311,6 @@ export type NET_SOCK_PEER_NAME_TYPE = string;
  * @deprecated Use {@link NETWORK_PEER_PORT} (network.peer.port) instead
  * @example 8080
  */
-export const NET_SOCK_PEER_PORT = 'net.sock.peer.port';
-
-/**
- * Type for {@link NET_SOCK_PEER_PORT} net.sock.peer.port
- */
-export type NET_SOCK_PEER_PORT_TYPE = number;
 
 // Path: model/attributes/net/net__transport.json
 
@@ -4648,12 +3328,6 @@ export type NET_SOCK_PEER_PORT_TYPE = number;
  * @deprecated Use {@link NETWORK_TRANSPORT} (network.transport) instead
  * @example "tcp"
  */
-export const NET_TRANSPORT = 'net.transport';
-
-/**
- * Type for {@link NET_TRANSPORT} net.transport
- */
-export type NET_TRANSPORT_TYPE = string;
 
 // Path: model/attributes/network/network__local__address.json
 
@@ -4670,12 +3344,6 @@ export type NET_TRANSPORT_TYPE = string;
  *
  * @example "10.1.2.80"
  */
-export const NETWORK_LOCAL_ADDRESS = 'network.local.address';
-
-/**
- * Type for {@link NETWORK_LOCAL_ADDRESS} network.local.address
- */
-export type NETWORK_LOCAL_ADDRESS_TYPE = string;
 
 // Path: model/attributes/network/network__local__port.json
 
@@ -4692,12 +3360,6 @@ export type NETWORK_LOCAL_ADDRESS_TYPE = string;
  *
  * @example 65400
  */
-export const NETWORK_LOCAL_PORT = 'network.local.port';
-
-/**
- * Type for {@link NETWORK_LOCAL_PORT} network.local.port
- */
-export type NETWORK_LOCAL_PORT_TYPE = number;
 
 // Path: model/attributes/network/network__peer__address.json
 
@@ -4714,12 +3376,6 @@ export type NETWORK_LOCAL_PORT_TYPE = number;
  *
  * @example "10.1.2.80"
  */
-export const NETWORK_PEER_ADDRESS = 'network.peer.address';
-
-/**
- * Type for {@link NETWORK_PEER_ADDRESS} network.peer.address
- */
-export type NETWORK_PEER_ADDRESS_TYPE = string;
 
 // Path: model/attributes/network/network__peer__port.json
 
@@ -4734,12 +3390,6 @@ export type NETWORK_PEER_ADDRESS_TYPE = string;
  *
  * @example 65400
  */
-export const NETWORK_PEER_PORT = 'network.peer.port';
-
-/**
- * Type for {@link NETWORK_PEER_PORT} network.peer.port
- */
-export type NETWORK_PEER_PORT_TYPE = number;
 
 // Path: model/attributes/network/network__protocol__name.json
 
@@ -4756,12 +3406,6 @@ export type NETWORK_PEER_PORT_TYPE = number;
  *
  * @example "http"
  */
-export const NETWORK_PROTOCOL_NAME = 'network.protocol.name';
-
-/**
- * Type for {@link NETWORK_PROTOCOL_NAME} network.protocol.name
- */
-export type NETWORK_PROTOCOL_NAME_TYPE = string;
 
 // Path: model/attributes/network/network__protocol__version.json
 
@@ -4778,12 +3422,6 @@ export type NETWORK_PROTOCOL_NAME_TYPE = string;
  *
  * @example "1.1"
  */
-export const NETWORK_PROTOCOL_VERSION = 'network.protocol.version';
-
-/**
- * Type for {@link NETWORK_PROTOCOL_VERSION} network.protocol.version
- */
-export type NETWORK_PROTOCOL_VERSION_TYPE = string;
 
 // Path: model/attributes/network/network__transport.json
 
@@ -4800,12 +3438,6 @@ export type NETWORK_PROTOCOL_VERSION_TYPE = string;
  *
  * @example "tcp"
  */
-export const NETWORK_TRANSPORT = 'network.transport';
-
-/**
- * Type for {@link NETWORK_TRANSPORT} network.transport
- */
-export type NETWORK_TRANSPORT_TYPE = string;
 
 // Path: model/attributes/network/network__type.json
 
@@ -4820,12 +3452,6 @@ export type NETWORK_TRANSPORT_TYPE = string;
  *
  * @example "ipv4"
  */
-export const NETWORK_TYPE = 'network.type';
-
-/**
- * Type for {@link NETWORK_TYPE} network.type
- */
-export type NETWORK_TYPE_TYPE = string;
 
 // Path: model/attributes/os/os__build_id.json
 
@@ -4840,12 +3466,6 @@ export type NETWORK_TYPE_TYPE = string;
  *
  * @example "1234567890"
  */
-export const OS_BUILD_ID = 'os.build_id';
-
-/**
- * Type for {@link OS_BUILD_ID} os.build_id
- */
-export type OS_BUILD_ID_TYPE = string;
 
 // Path: model/attributes/os/os__description.json
 
@@ -4860,12 +3480,6 @@ export type OS_BUILD_ID_TYPE = string;
  *
  * @example "Ubuntu 18.04.1 LTS"
  */
-export const OS_DESCRIPTION = 'os.description';
-
-/**
- * Type for {@link OS_DESCRIPTION} os.description
- */
-export type OS_DESCRIPTION_TYPE = string;
 
 // Path: model/attributes/os/os__name.json
 
@@ -4880,12 +3494,6 @@ export type OS_DESCRIPTION_TYPE = string;
  *
  * @example "Ubuntu"
  */
-export const OS_NAME = 'os.name';
-
-/**
- * Type for {@link OS_NAME} os.name
- */
-export type OS_NAME_TYPE = string;
 
 // Path: model/attributes/os/os__type.json
 
@@ -4900,12 +3508,6 @@ export type OS_NAME_TYPE = string;
  *
  * @example "linux"
  */
-export const OS_TYPE = 'os.type';
-
-/**
- * Type for {@link OS_TYPE} os.type
- */
-export type OS_TYPE_TYPE = string;
 
 // Path: model/attributes/os/os__version.json
 
@@ -4920,12 +3522,6 @@ export type OS_TYPE_TYPE = string;
  *
  * @example "18.04.2"
  */
-export const OS_VERSION = 'os.version';
-
-/**
- * Type for {@link OS_VERSION} os.version
- */
-export type OS_VERSION_TYPE = string;
 
 // Path: model/attributes/otel/otel__scope__name.json
 
@@ -4940,12 +3536,6 @@ export type OS_VERSION_TYPE = string;
  *
  * @example "io.opentelemetry.contrib.mongodb"
  */
-export const OTEL_SCOPE_NAME = 'otel.scope.name';
-
-/**
- * Type for {@link OTEL_SCOPE_NAME} otel.scope.name
- */
-export type OTEL_SCOPE_NAME_TYPE = string;
 
 // Path: model/attributes/otel/otel__scope__version.json
 
@@ -4960,12 +3550,6 @@ export type OTEL_SCOPE_NAME_TYPE = string;
  *
  * @example "2.4.5"
  */
-export const OTEL_SCOPE_VERSION = 'otel.scope.version';
-
-/**
- * Type for {@link OTEL_SCOPE_VERSION} otel.scope.version
- */
-export type OTEL_SCOPE_VERSION_TYPE = string;
 
 // Path: model/attributes/otel/otel__status_code.json
 
@@ -4980,12 +3564,6 @@ export type OTEL_SCOPE_VERSION_TYPE = string;
  *
  * @example "OK"
  */
-export const OTEL_STATUS_CODE = 'otel.status_code';
-
-/**
- * Type for {@link OTEL_STATUS_CODE} otel.status_code
- */
-export type OTEL_STATUS_CODE_TYPE = string;
 
 // Path: model/attributes/otel/otel__status_description.json
 
@@ -5000,12 +3578,6 @@ export type OTEL_STATUS_CODE_TYPE = string;
  *
  * @example "resource not found"
  */
-export const OTEL_STATUS_DESCRIPTION = 'otel.status_description';
-
-/**
- * Type for {@link OTEL_STATUS_DESCRIPTION} otel.status_description
- */
-export type OTEL_STATUS_DESCRIPTION_TYPE = string;
 
 // Path: model/attributes/params/params__[key].json
 
@@ -5024,12 +3596,6 @@ export type OTEL_STATUS_DESCRIPTION_TYPE = string;
  *
  * @example "params.id='123'"
  */
-export const PARAMS_KEY = 'params.<key>';
-
-/**
- * Type for {@link PARAMS_KEY} params.<key>
- */
-export type PARAMS_KEY_TYPE = string;
 
 // Path: model/attributes/previous_route.json
 
@@ -5044,12 +3610,6 @@ export type PARAMS_KEY_TYPE = string;
  *
  * @example "HomeScreen"
  */
-export const PREVIOUS_ROUTE = 'previous_route';
-
-/**
- * Type for {@link PREVIOUS_ROUTE} previous_route
- */
-export type PREVIOUS_ROUTE_TYPE = string;
 
 // Path: model/attributes/process/process__executable__name.json
 
@@ -5064,12 +3624,6 @@ export type PREVIOUS_ROUTE_TYPE = string;
  *
  * @example "getsentry"
  */
-export const PROCESS_EXECUTABLE_NAME = 'process.executable.name';
-
-/**
- * Type for {@link PROCESS_EXECUTABLE_NAME} process.executable.name
- */
-export type PROCESS_EXECUTABLE_NAME_TYPE = string;
 
 // Path: model/attributes/process/process__pid.json
 
@@ -5084,12 +3638,6 @@ export type PROCESS_EXECUTABLE_NAME_TYPE = string;
  *
  * @example 12345
  */
-export const PROCESS_PID = 'process.pid';
-
-/**
- * Type for {@link PROCESS_PID} process.pid
- */
-export type PROCESS_PID_TYPE = number;
 
 // Path: model/attributes/process/process__runtime__description.json
 
@@ -5104,12 +3652,6 @@ export type PROCESS_PID_TYPE = number;
  *
  * @example "Eclipse OpenJ9 VM openj9-0.21.0"
  */
-export const PROCESS_RUNTIME_DESCRIPTION = 'process.runtime.description';
-
-/**
- * Type for {@link PROCESS_RUNTIME_DESCRIPTION} process.runtime.description
- */
-export type PROCESS_RUNTIME_DESCRIPTION_TYPE = string;
 
 // Path: model/attributes/process/process__runtime__name.json
 
@@ -5124,12 +3666,6 @@ export type PROCESS_RUNTIME_DESCRIPTION_TYPE = string;
  *
  * @example "node"
  */
-export const PROCESS_RUNTIME_NAME = 'process.runtime.name';
-
-/**
- * Type for {@link PROCESS_RUNTIME_NAME} process.runtime.name
- */
-export type PROCESS_RUNTIME_NAME_TYPE = string;
 
 // Path: model/attributes/process/process__runtime__version.json
 
@@ -5144,12 +3680,6 @@ export type PROCESS_RUNTIME_NAME_TYPE = string;
  *
  * @example "18.04.2"
  */
-export const PROCESS_RUNTIME_VERSION = 'process.runtime.version';
-
-/**
- * Type for {@link PROCESS_RUNTIME_VERSION} process.runtime.version
- */
-export type PROCESS_RUNTIME_VERSION_TYPE = string;
 
 // Path: model/attributes/profile_id.json
 
@@ -5167,12 +3697,6 @@ export type PROCESS_RUNTIME_VERSION_TYPE = string;
  * @deprecated Use {@link SENTRY_PROFILE_ID} (sentry.profile_id) instead
  * @example "123e4567e89b12d3a456426614174000"
  */
-export const PROFILE_ID = 'profile_id';
-
-/**
- * Type for {@link PROFILE_ID} profile_id
- */
-export type PROFILE_ID_TYPE = string;
 
 // Path: model/attributes/query/query__[key].json
 
@@ -5190,12 +3714,6 @@ export type PROFILE_ID_TYPE = string;
  * @deprecated Use {@link URL_QUERY} (url.query) instead - Instead of sending items individually in query.<key>, they should be sent all together with url.query.
  * @example "query.id='123'"
  */
-export const QUERY_KEY = 'query.<key>';
-
-/**
- * Type for {@link QUERY_KEY} query.<key>
- */
-export type QUERY_KEY_TYPE = string;
 
 // Path: model/attributes/release.json
 
@@ -5213,12 +3731,6 @@ export type QUERY_KEY_TYPE = string;
  * @deprecated Use {@link SENTRY_RELEASE} (sentry.release) instead
  * @example "production"
  */
-export const RELEASE = 'release';
-
-/**
- * Type for {@link RELEASE} release
- */
-export type RELEASE_TYPE = string;
 
 // Path: model/attributes/remix/remix__action_form_data__[key].json
 
@@ -5235,12 +3747,6 @@ export type RELEASE_TYPE = string;
  *
  * @example "http.response.header.text='test'"
  */
-export const REMIX_ACTION_FORM_DATA_KEY = 'remix.action_form_data.<key>';
-
-/**
- * Type for {@link REMIX_ACTION_FORM_DATA_KEY} remix.action_form_data.<key>
- */
-export type REMIX_ACTION_FORM_DATA_KEY_TYPE = string;
 
 // Path: model/attributes/replay_id.json
 
@@ -5258,12 +3764,6 @@ export type REMIX_ACTION_FORM_DATA_KEY_TYPE = string;
  * @deprecated Use {@link SENTRY_REPLAY_ID} (sentry.replay_id) instead
  * @example "123e4567e89b12d3a456426614174000"
  */
-export const REPLAY_ID = 'replay_id';
-
-/**
- * Type for {@link REPLAY_ID} replay_id
- */
-export type REPLAY_ID_TYPE = string;
 
 // Path: model/attributes/resource/resource__render_blocking_status.json
 
@@ -5278,12 +3778,6 @@ export type REPLAY_ID_TYPE = string;
  *
  * @example "non-blocking"
  */
-export const RESOURCE_RENDER_BLOCKING_STATUS = 'resource.render_blocking_status';
-
-/**
- * Type for {@link RESOURCE_RENDER_BLOCKING_STATUS} resource.render_blocking_status
- */
-export type RESOURCE_RENDER_BLOCKING_STATUS_TYPE = string;
 
 // Path: model/attributes/route.json
 
@@ -5301,12 +3795,6 @@ export type RESOURCE_RENDER_BLOCKING_STATUS_TYPE = string;
  * @deprecated Use {@link HTTP_ROUTE} (http.route) instead
  * @example "App\\Controller::indexAction"
  */
-export const ROUTE = 'route';
-
-/**
- * Type for {@link ROUTE} route
- */
-export type ROUTE_TYPE = string;
 
 // Path: model/attributes/rpc/rpc__grpc__status_code.json
 
@@ -5321,12 +3809,6 @@ export type ROUTE_TYPE = string;
  *
  * @example 2
  */
-export const RPC_GRPC_STATUS_CODE = 'rpc.grpc.status_code';
-
-/**
- * Type for {@link RPC_GRPC_STATUS_CODE} rpc.grpc.status_code
- */
-export type RPC_GRPC_STATUS_CODE_TYPE = number;
 
 // Path: model/attributes/rpc/rpc__service.json
 
@@ -5341,12 +3823,6 @@ export type RPC_GRPC_STATUS_CODE_TYPE = number;
  *
  * @example "myService.BestService"
  */
-export const RPC_SERVICE = 'rpc.service';
-
-/**
- * Type for {@link RPC_SERVICE} rpc.service
- */
-export type RPC_SERVICE_TYPE = string;
 
 // Path: model/attributes/sentry/sentry___internal__dsc__environment.json
 
@@ -5361,12 +3837,6 @@ export type RPC_SERVICE_TYPE = string;
  *
  * @example "prod"
  */
-export const SENTRY_INTERNAL_DSC_ENVIRONMENT = 'sentry._internal.dsc.environment';
-
-/**
- * Type for {@link SENTRY_INTERNAL_DSC_ENVIRONMENT} sentry._internal.dsc.environment
- */
-export type SENTRY_INTERNAL_DSC_ENVIRONMENT_TYPE = string;
 
 // Path: model/attributes/sentry/sentry___internal__dsc__org_id.json
 
@@ -5381,12 +3851,6 @@ export type SENTRY_INTERNAL_DSC_ENVIRONMENT_TYPE = string;
  *
  * @example "1"
  */
-export const SENTRY_INTERNAL_DSC_ORG_ID = 'sentry._internal.dsc.org_id';
-
-/**
- * Type for {@link SENTRY_INTERNAL_DSC_ORG_ID} sentry._internal.dsc.org_id
- */
-export type SENTRY_INTERNAL_DSC_ORG_ID_TYPE = string;
 
 // Path: model/attributes/sentry/sentry___internal__dsc__public_key.json
 
@@ -5401,12 +3865,6 @@ export type SENTRY_INTERNAL_DSC_ORG_ID_TYPE = string;
  *
  * @example "c51734c603c4430eb57cb0a5728a479d"
  */
-export const SENTRY_INTERNAL_DSC_PUBLIC_KEY = 'sentry._internal.dsc.public_key';
-
-/**
- * Type for {@link SENTRY_INTERNAL_DSC_PUBLIC_KEY} sentry._internal.dsc.public_key
- */
-export type SENTRY_INTERNAL_DSC_PUBLIC_KEY_TYPE = string;
 
 // Path: model/attributes/sentry/sentry___internal__dsc__release.json
 
@@ -5421,12 +3879,6 @@ export type SENTRY_INTERNAL_DSC_PUBLIC_KEY_TYPE = string;
  *
  * @example "frontend@e8211be71b214afab5b85de4b4c54be3714952bb"
  */
-export const SENTRY_INTERNAL_DSC_RELEASE = 'sentry._internal.dsc.release';
-
-/**
- * Type for {@link SENTRY_INTERNAL_DSC_RELEASE} sentry._internal.dsc.release
- */
-export type SENTRY_INTERNAL_DSC_RELEASE_TYPE = string;
 
 // Path: model/attributes/sentry/sentry___internal__dsc__sample_rand.json
 
@@ -5441,12 +3893,6 @@ export type SENTRY_INTERNAL_DSC_RELEASE_TYPE = string;
  *
  * @example "0.8286147972820134"
  */
-export const SENTRY_INTERNAL_DSC_SAMPLE_RAND = 'sentry._internal.dsc.sample_rand';
-
-/**
- * Type for {@link SENTRY_INTERNAL_DSC_SAMPLE_RAND} sentry._internal.dsc.sample_rand
- */
-export type SENTRY_INTERNAL_DSC_SAMPLE_RAND_TYPE = string;
 
 // Path: model/attributes/sentry/sentry___internal__dsc__sample_rate.json
 
@@ -5461,12 +3907,6 @@ export type SENTRY_INTERNAL_DSC_SAMPLE_RAND_TYPE = string;
  *
  * @example "1.0"
  */
-export const SENTRY_INTERNAL_DSC_SAMPLE_RATE = 'sentry._internal.dsc.sample_rate';
-
-/**
- * Type for {@link SENTRY_INTERNAL_DSC_SAMPLE_RATE} sentry._internal.dsc.sample_rate
- */
-export type SENTRY_INTERNAL_DSC_SAMPLE_RATE_TYPE = string;
 
 // Path: model/attributes/sentry/sentry___internal__dsc__sampled.json
 
@@ -5481,12 +3921,6 @@ export type SENTRY_INTERNAL_DSC_SAMPLE_RATE_TYPE = string;
  *
  * @example true
  */
-export const SENTRY_INTERNAL_DSC_SAMPLED = 'sentry._internal.dsc.sampled';
-
-/**
- * Type for {@link SENTRY_INTERNAL_DSC_SAMPLED} sentry._internal.dsc.sampled
- */
-export type SENTRY_INTERNAL_DSC_SAMPLED_TYPE = boolean;
 
 // Path: model/attributes/sentry/sentry___internal__dsc__trace_id.json
 
@@ -5501,12 +3935,6 @@ export type SENTRY_INTERNAL_DSC_SAMPLED_TYPE = boolean;
  *
  * @example "047372980460430cbc78d9779df33a46"
  */
-export const SENTRY_INTERNAL_DSC_TRACE_ID = 'sentry._internal.dsc.trace_id';
-
-/**
- * Type for {@link SENTRY_INTERNAL_DSC_TRACE_ID} sentry._internal.dsc.trace_id
- */
-export type SENTRY_INTERNAL_DSC_TRACE_ID_TYPE = string;
 
 // Path: model/attributes/sentry/sentry___internal__dsc__transaction.json
 
@@ -5521,12 +3949,6 @@ export type SENTRY_INTERNAL_DSC_TRACE_ID_TYPE = string;
  *
  * @example "/issues/errors-outages/"
  */
-export const SENTRY_INTERNAL_DSC_TRANSACTION = 'sentry._internal.dsc.transaction';
-
-/**
- * Type for {@link SENTRY_INTERNAL_DSC_TRANSACTION} sentry._internal.dsc.transaction
- */
-export type SENTRY_INTERNAL_DSC_TRANSACTION_TYPE = string;
 
 // Path: model/attributes/sentry/sentry___internal__observed_timestamp_nanos.json
 
@@ -5543,12 +3965,6 @@ export type SENTRY_INTERNAL_DSC_TRANSACTION_TYPE = string;
  *
  * @example "1544712660300000000"
  */
-export const SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS = 'sentry._internal.observed_timestamp_nanos';
-
-/**
- * Type for {@link SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS} sentry._internal.observed_timestamp_nanos
- */
-export type SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS_TYPE = string;
 
 // Path: model/attributes/sentry/sentry___internal__replay_is_buffering.json
 
@@ -5563,12 +3979,6 @@ export type SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS_TYPE = string;
  *
  * @example true
  */
-export const SENTRY_INTERNAL_REPLAY_IS_BUFFERING = 'sentry._internal.replay_is_buffering';
-
-/**
- * Type for {@link SENTRY_INTERNAL_REPLAY_IS_BUFFERING} sentry._internal.replay_is_buffering
- */
-export type SENTRY_INTERNAL_REPLAY_IS_BUFFERING_TYPE = boolean;
 
 // Path: model/attributes/sentry/sentry__browser__name.json
 
@@ -5586,12 +3996,6 @@ export type SENTRY_INTERNAL_REPLAY_IS_BUFFERING_TYPE = boolean;
  * @deprecated Use {@link BROWSER_NAME} (browser.name) instead
  * @example "Chrome"
  */
-export const SENTRY_BROWSER_NAME = 'sentry.browser.name';
-
-/**
- * Type for {@link SENTRY_BROWSER_NAME} sentry.browser.name
- */
-export type SENTRY_BROWSER_NAME_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__browser__version.json
 
@@ -5609,12 +4013,6 @@ export type SENTRY_BROWSER_NAME_TYPE = string;
  * @deprecated Use {@link BROWSER_VERSION} (browser.version) instead
  * @example "120.0.6099.130"
  */
-export const SENTRY_BROWSER_VERSION = 'sentry.browser.version';
-
-/**
- * Type for {@link SENTRY_BROWSER_VERSION} sentry.browser.version
- */
-export type SENTRY_BROWSER_VERSION_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__cancellation_reason.json
 
@@ -5629,12 +4027,6 @@ export type SENTRY_BROWSER_VERSION_TYPE = string;
  *
  * @example "document.hidden"
  */
-export const SENTRY_CANCELLATION_REASON = 'sentry.cancellation_reason';
-
-/**
- * Type for {@link SENTRY_CANCELLATION_REASON} sentry.cancellation_reason
- */
-export type SENTRY_CANCELLATION_REASON_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__client_sample_rate.json
 
@@ -5649,12 +4041,6 @@ export type SENTRY_CANCELLATION_REASON_TYPE = string;
  *
  * @example 0.5
  */
-export const SENTRY_CLIENT_SAMPLE_RATE = 'sentry.client_sample_rate';
-
-/**
- * Type for {@link SENTRY_CLIENT_SAMPLE_RATE} sentry.client_sample_rate
- */
-export type SENTRY_CLIENT_SAMPLE_RATE_TYPE = number;
 
 // Path: model/attributes/sentry/sentry__description.json
 
@@ -5669,12 +4055,6 @@ export type SENTRY_CLIENT_SAMPLE_RATE_TYPE = number;
  *
  * @example "index view query"
  */
-export const SENTRY_DESCRIPTION = 'sentry.description';
-
-/**
- * Type for {@link SENTRY_DESCRIPTION} sentry.description
- */
-export type SENTRY_DESCRIPTION_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__dist.json
 
@@ -5689,12 +4069,6 @@ export type SENTRY_DESCRIPTION_TYPE = string;
  *
  * @example "1.0"
  */
-export const SENTRY_DIST = 'sentry.dist';
-
-/**
- * Type for {@link SENTRY_DIST} sentry.dist
- */
-export type SENTRY_DIST_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__environment.json
 
@@ -5711,12 +4085,6 @@ export type SENTRY_DIST_TYPE = string;
  *
  * @example "production"
  */
-export const SENTRY_ENVIRONMENT = 'sentry.environment';
-
-/**
- * Type for {@link SENTRY_ENVIRONMENT} sentry.environment
- */
-export type SENTRY_ENVIRONMENT_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__exclusive_time.json
 
@@ -5731,12 +4099,6 @@ export type SENTRY_ENVIRONMENT_TYPE = string;
  *
  * @example 1234
  */
-export const SENTRY_EXCLUSIVE_TIME = 'sentry.exclusive_time';
-
-/**
- * Type for {@link SENTRY_EXCLUSIVE_TIME} sentry.exclusive_time
- */
-export type SENTRY_EXCLUSIVE_TIME_TYPE = number;
 
 // Path: model/attributes/sentry/sentry__http__prefetch.json
 
@@ -5751,12 +4113,6 @@ export type SENTRY_EXCLUSIVE_TIME_TYPE = number;
  *
  * @example true
  */
-export const SENTRY_HTTP_PREFETCH = 'sentry.http.prefetch';
-
-/**
- * Type for {@link SENTRY_HTTP_PREFETCH} sentry.http.prefetch
- */
-export type SENTRY_HTTP_PREFETCH_TYPE = boolean;
 
 // Path: model/attributes/sentry/sentry__idle_span_finish_reason.json
 
@@ -5771,12 +4127,6 @@ export type SENTRY_HTTP_PREFETCH_TYPE = boolean;
  *
  * @example "idleTimeout"
  */
-export const SENTRY_IDLE_SPAN_FINISH_REASON = 'sentry.idle_span_finish_reason';
-
-/**
- * Type for {@link SENTRY_IDLE_SPAN_FINISH_REASON} sentry.idle_span_finish_reason
- */
-export type SENTRY_IDLE_SPAN_FINISH_REASON_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__message__parameter__[key].json
 
@@ -5791,12 +4141,6 @@ export type SENTRY_IDLE_SPAN_FINISH_REASON_TYPE = string;
  *
  * @example "sentry.message.parameter.0='123'"
  */
-export const SENTRY_MESSAGE_PARAMETER_KEY = 'sentry.message.parameter.<key>';
-
-/**
- * Type for {@link SENTRY_MESSAGE_PARAMETER_KEY} sentry.message.parameter.<key>
- */
-export type SENTRY_MESSAGE_PARAMETER_KEY_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__message__template.json
 
@@ -5811,12 +4155,6 @@ export type SENTRY_MESSAGE_PARAMETER_KEY_TYPE = string;
  *
  * @example "Hello, {name}!"
  */
-export const SENTRY_MESSAGE_TEMPLATE = 'sentry.message.template';
-
-/**
- * Type for {@link SENTRY_MESSAGE_TEMPLATE} sentry.message.template
- */
-export type SENTRY_MESSAGE_TEMPLATE_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__module__[key].json
 
@@ -5833,12 +4171,6 @@ export type SENTRY_MESSAGE_TEMPLATE_TYPE = string;
  *
  * @example "sentry.module.brianium/paratest='v7.7.0'"
  */
-export const SENTRY_MODULE_KEY = 'sentry.module.<key>';
-
-/**
- * Type for {@link SENTRY_MODULE_KEY} sentry.module.<key>
- */
-export type SENTRY_MODULE_KEY_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__nextjs__ssr__function__route.json
 
@@ -5853,12 +4185,6 @@ export type SENTRY_MODULE_KEY_TYPE = string;
  *
  * @example "/posts/[id]/layout"
  */
-export const SENTRY_NEXTJS_SSR_FUNCTION_ROUTE = 'sentry.nextjs.ssr.function.route';
-
-/**
- * Type for {@link SENTRY_NEXTJS_SSR_FUNCTION_ROUTE} sentry.nextjs.ssr.function.route
- */
-export type SENTRY_NEXTJS_SSR_FUNCTION_ROUTE_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__nextjs__ssr__function__type.json
 
@@ -5873,12 +4199,6 @@ export type SENTRY_NEXTJS_SSR_FUNCTION_ROUTE_TYPE = string;
  *
  * @example "generateMetadata"
  */
-export const SENTRY_NEXTJS_SSR_FUNCTION_TYPE = 'sentry.nextjs.ssr.function.type';
-
-/**
- * Type for {@link SENTRY_NEXTJS_SSR_FUNCTION_TYPE} sentry.nextjs.ssr.function.type
- */
-export type SENTRY_NEXTJS_SSR_FUNCTION_TYPE_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__observed_timestamp_nanos.json
 
@@ -5896,12 +4216,6 @@ export type SENTRY_NEXTJS_SSR_FUNCTION_TYPE_TYPE = string;
  * @deprecated Use {@link SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS} (sentry._internal.observed_timestamp_nanos) instead
  * @example "1544712660300000000"
  */
-export const SENTRY_OBSERVED_TIMESTAMP_NANOS = 'sentry.observed_timestamp_nanos';
-
-/**
- * Type for {@link SENTRY_OBSERVED_TIMESTAMP_NANOS} sentry.observed_timestamp_nanos
- */
-export type SENTRY_OBSERVED_TIMESTAMP_NANOS_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__op.json
 
@@ -5916,12 +4230,6 @@ export type SENTRY_OBSERVED_TIMESTAMP_NANOS_TYPE = string;
  *
  * @example "http.client"
  */
-export const SENTRY_OP = 'sentry.op';
-
-/**
- * Type for {@link SENTRY_OP} sentry.op
- */
-export type SENTRY_OP_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__origin.json
 
@@ -5936,12 +4244,6 @@ export type SENTRY_OP_TYPE = string;
  *
  * @example "auto.http.otel.fastify"
  */
-export const SENTRY_ORIGIN = 'sentry.origin';
-
-/**
- * Type for {@link SENTRY_ORIGIN} sentry.origin
- */
-export type SENTRY_ORIGIN_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__platform.json
 
@@ -5956,12 +4258,6 @@ export type SENTRY_ORIGIN_TYPE = string;
  *
  * @example "php"
  */
-export const SENTRY_PLATFORM = 'sentry.platform';
-
-/**
- * Type for {@link SENTRY_PLATFORM} sentry.platform
- */
-export type SENTRY_PLATFORM_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__profile_id.json
 
@@ -5978,12 +4274,6 @@ export type SENTRY_PLATFORM_TYPE = string;
  *
  * @example "123e4567e89b12d3a456426614174000"
  */
-export const SENTRY_PROFILE_ID = 'sentry.profile_id';
-
-/**
- * Type for {@link SENTRY_PROFILE_ID} sentry.profile_id
- */
-export type SENTRY_PROFILE_ID_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__release.json
 
@@ -6000,12 +4290,6 @@ export type SENTRY_PROFILE_ID_TYPE = string;
  *
  * @example "7.0.0"
  */
-export const SENTRY_RELEASE = 'sentry.release';
-
-/**
- * Type for {@link SENTRY_RELEASE} sentry.release
- */
-export type SENTRY_RELEASE_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__replay_id.json
 
@@ -6022,12 +4306,6 @@ export type SENTRY_RELEASE_TYPE = string;
  *
  * @example "123e4567e89b12d3a456426614174000"
  */
-export const SENTRY_REPLAY_ID = 'sentry.replay_id';
-
-/**
- * Type for {@link SENTRY_REPLAY_ID} sentry.replay_id
- */
-export type SENTRY_REPLAY_ID_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__sdk__integrations.json
 
@@ -6042,12 +4320,6 @@ export type SENTRY_REPLAY_ID_TYPE = string;
  *
  * @example ["InboundFilters","FunctionToString","BrowserApiErrors","Breadcrumbs"]
  */
-export const SENTRY_SDK_INTEGRATIONS = 'sentry.sdk.integrations';
-
-/**
- * Type for {@link SENTRY_SDK_INTEGRATIONS} sentry.sdk.integrations
- */
-export type SENTRY_SDK_INTEGRATIONS_TYPE = Array<string>;
 
 // Path: model/attributes/sentry/sentry__sdk__name.json
 
@@ -6062,12 +4334,6 @@ export type SENTRY_SDK_INTEGRATIONS_TYPE = Array<string>;
  *
  * @example "@sentry/react"
  */
-export const SENTRY_SDK_NAME = 'sentry.sdk.name';
-
-/**
- * Type for {@link SENTRY_SDK_NAME} sentry.sdk.name
- */
-export type SENTRY_SDK_NAME_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__sdk__version.json
 
@@ -6082,12 +4348,6 @@ export type SENTRY_SDK_NAME_TYPE = string;
  *
  * @example "7.0.0"
  */
-export const SENTRY_SDK_VERSION = 'sentry.sdk.version';
-
-/**
- * Type for {@link SENTRY_SDK_VERSION} sentry.sdk.version
- */
-export type SENTRY_SDK_VERSION_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__segment__id.json
 
@@ -6104,12 +4364,6 @@ export type SENTRY_SDK_VERSION_TYPE = string;
  *
  * @example "051581bf3cb55c13"
  */
-export const SENTRY_SEGMENT_ID = 'sentry.segment.id';
-
-/**
- * Type for {@link SENTRY_SEGMENT_ID} sentry.segment.id
- */
-export type SENTRY_SEGMENT_ID_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__segment__name.json
 
@@ -6124,12 +4378,6 @@ export type SENTRY_SEGMENT_ID_TYPE = string;
  *
  * @example "GET /user"
  */
-export const SENTRY_SEGMENT_NAME = 'sentry.segment.name';
-
-/**
- * Type for {@link SENTRY_SEGMENT_NAME} sentry.segment.name
- */
-export type SENTRY_SEGMENT_NAME_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__segment_id.json
 
@@ -6147,12 +4395,6 @@ export type SENTRY_SEGMENT_NAME_TYPE = string;
  * @deprecated Use {@link SENTRY_SEGMENT_ID} (sentry.segment.id) instead
  * @example "051581bf3cb55c13"
  */
-export const _SENTRY_SEGMENT_ID = 'sentry.segment_id';
-
-/**
- * Type for {@link _SENTRY_SEGMENT_ID} sentry.segment_id
- */
-export type _SENTRY_SEGMENT_ID_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__server_sample_rate.json
 
@@ -6167,12 +4409,6 @@ export type _SENTRY_SEGMENT_ID_TYPE = string;
  *
  * @example 0.5
  */
-export const SENTRY_SERVER_SAMPLE_RATE = 'sentry.server_sample_rate';
-
-/**
- * Type for {@link SENTRY_SERVER_SAMPLE_RATE} sentry.server_sample_rate
- */
-export type SENTRY_SERVER_SAMPLE_RATE_TYPE = number;
 
 // Path: model/attributes/sentry/sentry__span__source.json
 
@@ -6187,12 +4423,6 @@ export type SENTRY_SERVER_SAMPLE_RATE_TYPE = number;
  *
  * @example "route"
  */
-export const SENTRY_SPAN_SOURCE = 'sentry.span.source';
-
-/**
- * Type for {@link SENTRY_SPAN_SOURCE} sentry.span.source
- */
-export type SENTRY_SPAN_SOURCE_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__trace__parent_span_id.json
 
@@ -6207,12 +4437,6 @@ export type SENTRY_SPAN_SOURCE_TYPE = string;
  *
  * @example "b0e6f15b45c36b12"
  */
-export const SENTRY_TRACE_PARENT_SPAN_ID = 'sentry.trace.parent_span_id';
-
-/**
- * Type for {@link SENTRY_TRACE_PARENT_SPAN_ID} sentry.trace.parent_span_id
- */
-export type SENTRY_TRACE_PARENT_SPAN_ID_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__transaction.json
 
@@ -6229,12 +4453,6 @@ export type SENTRY_TRACE_PARENT_SPAN_ID_TYPE = string;
  *
  * @example "GET /"
  */
-export const SENTRY_TRANSACTION = 'sentry.transaction';
-
-/**
- * Type for {@link SENTRY_TRANSACTION} sentry.transaction
- */
-export type SENTRY_TRANSACTION_TYPE = string;
 
 // Path: model/attributes/server/server__address.json
 
@@ -6251,12 +4469,6 @@ export type SENTRY_TRANSACTION_TYPE = string;
  *
  * @example "example.com"
  */
-export const SERVER_ADDRESS = 'server.address';
-
-/**
- * Type for {@link SERVER_ADDRESS} server.address
- */
-export type SERVER_ADDRESS_TYPE = string;
 
 // Path: model/attributes/server/server__port.json
 
@@ -6273,12 +4485,6 @@ export type SERVER_ADDRESS_TYPE = string;
  *
  * @example 1337
  */
-export const SERVER_PORT = 'server.port';
-
-/**
- * Type for {@link SERVER_PORT} server.port
- */
-export type SERVER_PORT_TYPE = number;
 
 // Path: model/attributes/service/service__name.json
 
@@ -6293,12 +4499,6 @@ export type SERVER_PORT_TYPE = number;
  *
  * @example "omegastar"
  */
-export const SERVICE_NAME = 'service.name';
-
-/**
- * Type for {@link SERVICE_NAME} service.name
- */
-export type SERVICE_NAME_TYPE = string;
 
 // Path: model/attributes/service/service__version.json
 
@@ -6315,12 +4515,6 @@ export type SERVICE_NAME_TYPE = string;
  *
  * @example "5.0.0"
  */
-export const SERVICE_VERSION = 'service.version';
-
-/**
- * Type for {@link SERVICE_VERSION} service.version
- */
-export type SERVICE_VERSION_TYPE = string;
 
 // Path: model/attributes/thread/thread__id.json
 
@@ -6335,12 +4529,6 @@ export type SERVICE_VERSION_TYPE = string;
  *
  * @example 56
  */
-export const THREAD_ID = 'thread.id';
-
-/**
- * Type for {@link THREAD_ID} thread.id
- */
-export type THREAD_ID_TYPE = number;
 
 // Path: model/attributes/thread/thread__name.json
 
@@ -6355,12 +4543,6 @@ export type THREAD_ID_TYPE = number;
  *
  * @example "main"
  */
-export const THREAD_NAME = 'thread.name';
-
-/**
- * Type for {@link THREAD_NAME} thread.name
- */
-export type THREAD_NAME_TYPE = string;
 
 // Path: model/attributes/transaction.json
 
@@ -6378,12 +4560,6 @@ export type THREAD_NAME_TYPE = string;
  * @deprecated Use {@link SENTRY_TRANSACTION} (sentry.transaction) instead
  * @example "GET /"
  */
-export const TRANSACTION = 'transaction';
-
-/**
- * Type for {@link TRANSACTION} transaction
- */
-export type TRANSACTION_TYPE = string;
 
 // Path: model/attributes/type.json
 
@@ -6398,12 +4574,6 @@ export type TRANSACTION_TYPE = string;
  *
  * @example "fetch"
  */
-export const TYPE = 'type';
-
-/**
- * Type for {@link TYPE} type
- */
-export type TYPE_TYPE = string;
 
 // Path: model/attributes/ui/ui__component_name.json
 
@@ -6418,12 +4588,6 @@ export type TYPE_TYPE = string;
  *
  * @example "HomeButton"
  */
-export const UI_COMPONENT_NAME = 'ui.component_name';
-
-/**
- * Type for {@link UI_COMPONENT_NAME} ui.component_name
- */
-export type UI_COMPONENT_NAME_TYPE = string;
 
 // Path: model/attributes/ui/ui__contributes_to_ttfd.json
 
@@ -6438,12 +4602,6 @@ export type UI_COMPONENT_NAME_TYPE = string;
  *
  * @example true
  */
-export const UI_CONTRIBUTES_TO_TTFD = 'ui.contributes_to_ttfd';
-
-/**
- * Type for {@link UI_CONTRIBUTES_TO_TTFD} ui.contributes_to_ttfd
- */
-export type UI_CONTRIBUTES_TO_TTFD_TYPE = boolean;
 
 // Path: model/attributes/ui/ui__contributes_to_ttid.json
 
@@ -6458,12 +4616,6 @@ export type UI_CONTRIBUTES_TO_TTFD_TYPE = boolean;
  *
  * @example true
  */
-export const UI_CONTRIBUTES_TO_TTID = 'ui.contributes_to_ttid';
-
-/**
- * Type for {@link UI_CONTRIBUTES_TO_TTID} ui.contributes_to_ttid
- */
-export type UI_CONTRIBUTES_TO_TTID_TYPE = boolean;
 
 // Path: model/attributes/url/url__domain.json
 
@@ -6478,12 +4630,6 @@ export type UI_CONTRIBUTES_TO_TTID_TYPE = boolean;
  *
  * @example "example.com"
  */
-export const URL_DOMAIN = 'url.domain';
-
-/**
- * Type for {@link URL_DOMAIN} url.domain
- */
-export type URL_DOMAIN_TYPE = string;
 
 // Path: model/attributes/url/url__fragment.json
 
@@ -6498,12 +4644,6 @@ export type URL_DOMAIN_TYPE = string;
  *
  * @example "details"
  */
-export const URL_FRAGMENT = 'url.fragment';
-
-/**
- * Type for {@link URL_FRAGMENT} url.fragment
- */
-export type URL_FRAGMENT_TYPE = string;
 
 // Path: model/attributes/url/url__full.json
 
@@ -6520,12 +4660,6 @@ export type URL_FRAGMENT_TYPE = string;
  *
  * @example "https://example.com/test?foo=bar#buzz"
  */
-export const URL_FULL = 'url.full';
-
-/**
- * Type for {@link URL_FULL} url.full
- */
-export type URL_FULL_TYPE = string;
 
 // Path: model/attributes/url/url__path.json
 
@@ -6540,12 +4674,6 @@ export type URL_FULL_TYPE = string;
  *
  * @example "/foo"
  */
-export const URL_PATH = 'url.path';
-
-/**
- * Type for {@link URL_PATH} url.path
- */
-export type URL_PATH_TYPE = string;
 
 // Path: model/attributes/url/url__path__parameter__[key].json
 
@@ -6564,12 +4692,6 @@ export type URL_PATH_TYPE = string;
  *
  * @example "url.path.parameter.id='123'"
  */
-export const URL_PATH_PARAMETER_KEY = 'url.path.parameter.<key>';
-
-/**
- * Type for {@link URL_PATH_PARAMETER_KEY} url.path.parameter.<key>
- */
-export type URL_PATH_PARAMETER_KEY_TYPE = string;
 
 // Path: model/attributes/url/url__port.json
 
@@ -6584,12 +4706,6 @@ export type URL_PATH_PARAMETER_KEY_TYPE = string;
  *
  * @example 1337
  */
-export const URL_PORT = 'url.port';
-
-/**
- * Type for {@link URL_PORT} url.port
- */
-export type URL_PORT_TYPE = number;
 
 // Path: model/attributes/url/url__query.json
 
@@ -6604,12 +4720,6 @@ export type URL_PORT_TYPE = number;
  *
  * @example "foo=bar&bar=baz"
  */
-export const URL_QUERY = 'url.query';
-
-/**
- * Type for {@link URL_QUERY} url.query
- */
-export type URL_QUERY_TYPE = string;
 
 // Path: model/attributes/url/url__scheme.json
 
@@ -6626,12 +4736,6 @@ export type URL_QUERY_TYPE = string;
  *
  * @example "https"
  */
-export const URL_SCHEME = 'url.scheme';
-
-/**
- * Type for {@link URL_SCHEME} url.scheme
- */
-export type URL_SCHEME_TYPE = string;
 
 // Path: model/attributes/url/url__template.json
 
@@ -6648,12 +4752,6 @@ export type URL_SCHEME_TYPE = string;
  *
  * @example "/users/:id"
  */
-export const URL_TEMPLATE = 'url.template';
-
-/**
- * Type for {@link URL_TEMPLATE} url.template
- */
-export type URL_TEMPLATE_TYPE = string;
 
 // Path: model/attributes/url.json
 
@@ -6671,12 +4769,6 @@ export type URL_TEMPLATE_TYPE = string;
  * @deprecated Use {@link URL_FULL} (url.full) instead
  * @example "https://example.com/test?foo=bar#buzz"
  */
-export const URL = 'url';
-
-/**
- * Type for {@link URL} url
- */
-export type URL_TYPE = string;
 
 // Path: model/attributes/user/user__email.json
 
@@ -6691,12 +4783,6 @@ export type URL_TYPE = string;
  *
  * @example "test@example.com"
  */
-export const USER_EMAIL = 'user.email';
-
-/**
- * Type for {@link USER_EMAIL} user.email
- */
-export type USER_EMAIL_TYPE = string;
 
 // Path: model/attributes/user/user__full_name.json
 
@@ -6711,12 +4797,6 @@ export type USER_EMAIL_TYPE = string;
  *
  * @example "John Smith"
  */
-export const USER_FULL_NAME = 'user.full_name';
-
-/**
- * Type for {@link USER_FULL_NAME} user.full_name
- */
-export type USER_FULL_NAME_TYPE = string;
 
 // Path: model/attributes/user/user__geo__city.json
 
@@ -6731,12 +4811,6 @@ export type USER_FULL_NAME_TYPE = string;
  *
  * @example "Toronto"
  */
-export const USER_GEO_CITY = 'user.geo.city';
-
-/**
- * Type for {@link USER_GEO_CITY} user.geo.city
- */
-export type USER_GEO_CITY_TYPE = string;
 
 // Path: model/attributes/user/user__geo__country_code.json
 
@@ -6751,12 +4825,6 @@ export type USER_GEO_CITY_TYPE = string;
  *
  * @example "CA"
  */
-export const USER_GEO_COUNTRY_CODE = 'user.geo.country_code';
-
-/**
- * Type for {@link USER_GEO_COUNTRY_CODE} user.geo.country_code
- */
-export type USER_GEO_COUNTRY_CODE_TYPE = string;
 
 // Path: model/attributes/user/user__geo__region.json
 
@@ -6771,12 +4839,6 @@ export type USER_GEO_COUNTRY_CODE_TYPE = string;
  *
  * @example "Canada"
  */
-export const USER_GEO_REGION = 'user.geo.region';
-
-/**
- * Type for {@link USER_GEO_REGION} user.geo.region
- */
-export type USER_GEO_REGION_TYPE = string;
 
 // Path: model/attributes/user/user__geo__subdivision.json
 
@@ -6791,12 +4853,6 @@ export type USER_GEO_REGION_TYPE = string;
  *
  * @example "Ontario"
  */
-export const USER_GEO_SUBDIVISION = 'user.geo.subdivision';
-
-/**
- * Type for {@link USER_GEO_SUBDIVISION} user.geo.subdivision
- */
-export type USER_GEO_SUBDIVISION_TYPE = string;
 
 // Path: model/attributes/user/user__hash.json
 
@@ -6811,12 +4867,6 @@ export type USER_GEO_SUBDIVISION_TYPE = string;
  *
  * @example "8ae4c2993e0f4f3b8b2d1b1f3b5e8f4d"
  */
-export const USER_HASH = 'user.hash';
-
-/**
- * Type for {@link USER_HASH} user.hash
- */
-export type USER_HASH_TYPE = string;
 
 // Path: model/attributes/user/user__id.json
 
@@ -6831,12 +4881,6 @@ export type USER_HASH_TYPE = string;
  *
  * @example "S-1-5-21-202424912787-2692429404-2351956786-1000"
  */
-export const USER_ID = 'user.id';
-
-/**
- * Type for {@link USER_ID} user.id
- */
-export type USER_ID_TYPE = string;
 
 // Path: model/attributes/user/user__ip_address.json
 
@@ -6851,12 +4895,6 @@ export type USER_ID_TYPE = string;
  *
  * @example "192.168.1.1"
  */
-export const USER_IP_ADDRESS = 'user.ip_address';
-
-/**
- * Type for {@link USER_IP_ADDRESS} user.ip_address
- */
-export type USER_IP_ADDRESS_TYPE = string;
 
 // Path: model/attributes/user/user__name.json
 
@@ -6871,12 +4909,6 @@ export type USER_IP_ADDRESS_TYPE = string;
  *
  * @example "j.smith"
  */
-export const USER_NAME = 'user.name';
-
-/**
- * Type for {@link USER_NAME} user.name
- */
-export type USER_NAME_TYPE = string;
 
 // Path: model/attributes/user/user__roles.json
 
@@ -6891,12 +4923,6 @@ export type USER_NAME_TYPE = string;
  *
  * @example ["admin","editor"]
  */
-export const USER_ROLES = 'user.roles';
-
-/**
- * Type for {@link USER_ROLES} user.roles
- */
-export type USER_ROLES_TYPE = Array<string>;
 
 // Path: model/attributes/user_agent/user_agent__original.json
 
@@ -6913,12 +4939,6 @@ export type USER_ROLES_TYPE = Array<string>;
  *
  * @example "Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1"
  */
-export const USER_AGENT_ORIGINAL = 'user_agent.original';
-
-/**
- * Type for {@link USER_AGENT_ORIGINAL} user_agent.original
- */
-export type USER_AGENT_ORIGINAL_TYPE = string;
 
 export enum AttributeType {
   STRING = 'string',
@@ -7305,7 +5325,7 @@ export enum AttributeName {
   USER_AGENT_ORIGINAL = 'user_agent.original',
 }
 
-export const ATTRIBUTE_TYPES: Record<AttributeName, AttributeType> = {
+export const ATTRIBUTE_TYPE: Record<AttributeName, AttributeType> = {
   [AttributeName.AI_CITATIONS]: AttributeType.STRING_ARRAY,
   [AttributeName.AI_COMPLETION_TOKENS_USED]: AttributeType.INTEGER,
   [AttributeName.AI_DOCUMENTS]: AttributeType.STRING_ARRAY,
@@ -11099,334 +9119,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
 export type AttributeValue = string | number | boolean | Array<string> | Array<number> | Array<boolean>;
 
 export type Attributes = {
-  [AttributeName.AI_CITATIONS]?: AI_CITATIONS_TYPE;
-  [AttributeName.AI_COMPLETION_TOKENS_USED]?: AI_COMPLETION_TOKENS_USED_TYPE;
-  [AttributeName.AI_DOCUMENTS]?: AI_DOCUMENTS_TYPE;
-  [AttributeName.AI_FINISH_REASON]?: AI_FINISH_REASON_TYPE;
-  [AttributeName.AI_FREQUENCY_PENALTY]?: AI_FREQUENCY_PENALTY_TYPE;
-  [AttributeName.AI_FUNCTION_CALL]?: AI_FUNCTION_CALL_TYPE;
-  [AttributeName.AI_GENERATION_ID]?: AI_GENERATION_ID_TYPE;
-  [AttributeName.AI_INPUT_MESSAGES]?: AI_INPUT_MESSAGES_TYPE;
-  [AttributeName.AI_IS_SEARCH_REQUIRED]?: AI_IS_SEARCH_REQUIRED_TYPE;
-  [AttributeName.AI_METADATA]?: AI_METADATA_TYPE;
-  [AttributeName.AI_MODEL_PROVIDER]?: AI_MODEL_PROVIDER_TYPE;
-  [AttributeName.AI_MODEL_ID]?: AI_MODEL_ID_TYPE;
-  [AttributeName.AI_PIPELINE_NAME]?: AI_PIPELINE_NAME_TYPE;
-  [AttributeName.AI_PREAMBLE]?: AI_PREAMBLE_TYPE;
-  [AttributeName.AI_PRESENCE_PENALTY]?: AI_PRESENCE_PENALTY_TYPE;
-  [AttributeName.AI_PROMPT_TOKENS_USED]?: AI_PROMPT_TOKENS_USED_TYPE;
-  [AttributeName.AI_RAW_PROMPTING]?: AI_RAW_PROMPTING_TYPE;
-  [AttributeName.AI_RESPONSE_FORMAT]?: AI_RESPONSE_FORMAT_TYPE;
-  [AttributeName.AI_RESPONSES]?: AI_RESPONSES_TYPE;
-  [AttributeName.AI_SEARCH_QUERIES]?: AI_SEARCH_QUERIES_TYPE;
-  [AttributeName.AI_SEARCH_RESULTS]?: AI_SEARCH_RESULTS_TYPE;
-  [AttributeName.AI_SEED]?: AI_SEED_TYPE;
-  [AttributeName.AI_STREAMING]?: AI_STREAMING_TYPE;
-  [AttributeName.AI_TAGS]?: AI_TAGS_TYPE;
-  [AttributeName.AI_TEMPERATURE]?: AI_TEMPERATURE_TYPE;
-  [AttributeName.AI_TEXTS]?: AI_TEXTS_TYPE;
-  [AttributeName.AI_TOOL_CALLS]?: AI_TOOL_CALLS_TYPE;
-  [AttributeName.AI_TOOLS]?: AI_TOOLS_TYPE;
-  [AttributeName.AI_TOP_K]?: AI_TOP_K_TYPE;
-  [AttributeName.AI_TOP_P]?: AI_TOP_P_TYPE;
-  [AttributeName.AI_TOTAL_COST]?: AI_TOTAL_COST_TYPE;
-  [AttributeName.AI_TOTAL_TOKENS_USED]?: AI_TOTAL_TOKENS_USED_TYPE;
-  [AttributeName.AI_WARNINGS]?: AI_WARNINGS_TYPE;
-  [AttributeName.APP_START_TYPE]?: APP_START_TYPE_TYPE;
-  [AttributeName.BLOCKED_MAIN_THREAD]?: BLOCKED_MAIN_THREAD_TYPE;
-  [AttributeName.BROWSER_NAME]?: BROWSER_NAME_TYPE;
-  [AttributeName.BROWSER_REPORT_TYPE]?: BROWSER_REPORT_TYPE_TYPE;
-  [AttributeName.BROWSER_SCRIPT_INVOKER]?: BROWSER_SCRIPT_INVOKER_TYPE;
-  [AttributeName.BROWSER_SCRIPT_INVOKER_TYPE]?: BROWSER_SCRIPT_INVOKER_TYPE_TYPE;
-  [AttributeName.BROWSER_SCRIPT_SOURCE_CHAR_POSITION]?: BROWSER_SCRIPT_SOURCE_CHAR_POSITION_TYPE;
-  [AttributeName.BROWSER_VERSION]?: BROWSER_VERSION_TYPE;
-  [AttributeName.CACHE_HIT]?: CACHE_HIT_TYPE;
-  [AttributeName.CACHE_ITEM_SIZE]?: CACHE_ITEM_SIZE_TYPE;
-  [AttributeName.CACHE_KEY]?: CACHE_KEY_TYPE;
-  [AttributeName.CACHE_OPERATION]?: CACHE_OPERATION_TYPE;
-  [AttributeName.CACHE_TTL]?: CACHE_TTL_TYPE;
-  [AttributeName.CHANNEL]?: CHANNEL_TYPE;
-  [AttributeName.CLIENT_ADDRESS]?: CLIENT_ADDRESS_TYPE;
-  [AttributeName.CLIENT_PORT]?: CLIENT_PORT_TYPE;
-  [AttributeName.CLOUDFLARE_D1_DURATION]?: CLOUDFLARE_D1_DURATION_TYPE;
-  [AttributeName.CLOUDFLARE_D1_ROWS_READ]?: CLOUDFLARE_D1_ROWS_READ_TYPE;
-  [AttributeName.CLOUDFLARE_D1_ROWS_WRITTEN]?: CLOUDFLARE_D1_ROWS_WRITTEN_TYPE;
-  [AttributeName.CODE_FILE_PATH]?: CODE_FILE_PATH_TYPE;
-  [AttributeName.CODE_FILEPATH]?: CODE_FILEPATH_TYPE;
-  [AttributeName.CODE_FUNCTION]?: CODE_FUNCTION_TYPE;
-  [AttributeName.CODE_FUNCTION_NAME]?: CODE_FUNCTION_NAME_TYPE;
-  [AttributeName.CODE_LINE_NUMBER]?: CODE_LINE_NUMBER_TYPE;
-  [AttributeName.CODE_LINENO]?: CODE_LINENO_TYPE;
-  [AttributeName.CODE_NAMESPACE]?: CODE_NAMESPACE_TYPE;
-  [AttributeName.DB_COLLECTION_NAME]?: DB_COLLECTION_NAME_TYPE;
-  [AttributeName.DB_NAME]?: DB_NAME_TYPE;
-  [AttributeName.DB_NAMESPACE]?: DB_NAMESPACE_TYPE;
-  [AttributeName.DB_OPERATION]?: DB_OPERATION_TYPE;
-  [AttributeName.DB_OPERATION_NAME]?: DB_OPERATION_NAME_TYPE;
-  [AttributeName.DB_QUERY_PARAMETER_KEY]?: DB_QUERY_PARAMETER_KEY_TYPE;
-  [AttributeName.DB_QUERY_SUMMARY]?: DB_QUERY_SUMMARY_TYPE;
-  [AttributeName.DB_QUERY_TEXT]?: DB_QUERY_TEXT_TYPE;
-  [AttributeName.DB_REDIS_CONNECTION]?: DB_REDIS_CONNECTION_TYPE;
-  [AttributeName.DB_REDIS_PARAMETERS]?: DB_REDIS_PARAMETERS_TYPE;
-  [AttributeName.DB_SQL_BINDINGS]?: DB_SQL_BINDINGS_TYPE;
-  [AttributeName.DB_STATEMENT]?: DB_STATEMENT_TYPE;
-  [AttributeName.DB_SYSTEM]?: DB_SYSTEM_TYPE;
-  [AttributeName.DB_SYSTEM_NAME]?: DB_SYSTEM_NAME_TYPE;
-  [AttributeName.DB_USER]?: DB_USER_TYPE;
-  [AttributeName.DEVICE_BRAND]?: DEVICE_BRAND_TYPE;
-  [AttributeName.DEVICE_FAMILY]?: DEVICE_FAMILY_TYPE;
-  [AttributeName.DEVICE_MODEL]?: DEVICE_MODEL_TYPE;
-  [AttributeName.ENVIRONMENT]?: ENVIRONMENT_TYPE;
-  [AttributeName.ERROR_TYPE]?: ERROR_TYPE_TYPE;
-  [AttributeName.EVENT_ID]?: EVENT_ID_TYPE;
-  [AttributeName.EVENT_NAME]?: EVENT_NAME_TYPE;
-  [AttributeName.EXCEPTION_ESCAPED]?: EXCEPTION_ESCAPED_TYPE;
-  [AttributeName.EXCEPTION_MESSAGE]?: EXCEPTION_MESSAGE_TYPE;
-  [AttributeName.EXCEPTION_STACKTRACE]?: EXCEPTION_STACKTRACE_TYPE;
-  [AttributeName.EXCEPTION_TYPE]?: EXCEPTION_TYPE_TYPE;
-  [AttributeName.FAAS_COLDSTART]?: FAAS_COLDSTART_TYPE;
-  [AttributeName.FAAS_CRON]?: FAAS_CRON_TYPE;
-  [AttributeName.FAAS_TIME]?: FAAS_TIME_TYPE;
-  [AttributeName.FAAS_TRIGGER]?: FAAS_TRIGGER_TYPE;
-  [AttributeName.FLAG_EVALUATION_KEY]?: FLAG_EVALUATION_KEY_TYPE;
-  [AttributeName.FRAMES_DELAY]?: FRAMES_DELAY_TYPE;
-  [AttributeName.FRAMES_FROZEN]?: FRAMES_FROZEN_TYPE;
-  [AttributeName.FRAMES_SLOW]?: FRAMES_SLOW_TYPE;
-  [AttributeName.FRAMES_TOTAL]?: FRAMES_TOTAL_TYPE;
-  [AttributeName.FS_ERROR]?: FS_ERROR_TYPE;
-  [AttributeName.GEN_AI_AGENT_NAME]?: GEN_AI_AGENT_NAME_TYPE;
-  [AttributeName.GEN_AI_ASSISTANT_MESSAGE]?: GEN_AI_ASSISTANT_MESSAGE_TYPE;
-  [AttributeName.GEN_AI_CHOICE]?: GEN_AI_CHOICE_TYPE;
-  [AttributeName.GEN_AI_COST_INPUT_TOKENS]?: GEN_AI_COST_INPUT_TOKENS_TYPE;
-  [AttributeName.GEN_AI_COST_OUTPUT_TOKENS]?: GEN_AI_COST_OUTPUT_TOKENS_TYPE;
-  [AttributeName.GEN_AI_COST_TOTAL_TOKENS]?: GEN_AI_COST_TOTAL_TOKENS_TYPE;
-  [AttributeName.GEN_AI_OPERATION_NAME]?: GEN_AI_OPERATION_NAME_TYPE;
-  [AttributeName.GEN_AI_OPERATION_TYPE]?: GEN_AI_OPERATION_TYPE_TYPE;
-  [AttributeName.GEN_AI_PIPELINE_NAME]?: GEN_AI_PIPELINE_NAME_TYPE;
-  [AttributeName.GEN_AI_PROMPT]?: GEN_AI_PROMPT_TYPE;
-  [AttributeName.GEN_AI_REQUEST_AVAILABLE_TOOLS]?: GEN_AI_REQUEST_AVAILABLE_TOOLS_TYPE;
-  [AttributeName.GEN_AI_REQUEST_FREQUENCY_PENALTY]?: GEN_AI_REQUEST_FREQUENCY_PENALTY_TYPE;
-  [AttributeName.GEN_AI_REQUEST_MAX_TOKENS]?: GEN_AI_REQUEST_MAX_TOKENS_TYPE;
-  [AttributeName.GEN_AI_REQUEST_MESSAGES]?: GEN_AI_REQUEST_MESSAGES_TYPE;
-  [AttributeName.GEN_AI_REQUEST_MODEL]?: GEN_AI_REQUEST_MODEL_TYPE;
-  [AttributeName.GEN_AI_REQUEST_PRESENCE_PENALTY]?: GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE;
-  [AttributeName.GEN_AI_REQUEST_SEED]?: GEN_AI_REQUEST_SEED_TYPE;
-  [AttributeName.GEN_AI_REQUEST_TEMPERATURE]?: GEN_AI_REQUEST_TEMPERATURE_TYPE;
-  [AttributeName.GEN_AI_REQUEST_TOP_K]?: GEN_AI_REQUEST_TOP_K_TYPE;
-  [AttributeName.GEN_AI_REQUEST_TOP_P]?: GEN_AI_REQUEST_TOP_P_TYPE;
-  [AttributeName.GEN_AI_RESPONSE_FINISH_REASONS]?: GEN_AI_RESPONSE_FINISH_REASONS_TYPE;
-  [AttributeName.GEN_AI_RESPONSE_ID]?: GEN_AI_RESPONSE_ID_TYPE;
-  [AttributeName.GEN_AI_RESPONSE_MODEL]?: GEN_AI_RESPONSE_MODEL_TYPE;
-  [AttributeName.GEN_AI_RESPONSE_STREAMING]?: GEN_AI_RESPONSE_STREAMING_TYPE;
-  [AttributeName.GEN_AI_RESPONSE_TEXT]?: GEN_AI_RESPONSE_TEXT_TYPE;
-  [AttributeName.GEN_AI_RESPONSE_TOKENS_PER_SECOND]?: GEN_AI_RESPONSE_TOKENS_PER_SECOND_TYPE;
-  [AttributeName.GEN_AI_RESPONSE_TOOL_CALLS]?: GEN_AI_RESPONSE_TOOL_CALLS_TYPE;
-  [AttributeName.GEN_AI_SYSTEM]?: GEN_AI_SYSTEM_TYPE;
-  [AttributeName.GEN_AI_SYSTEM_MESSAGE]?: GEN_AI_SYSTEM_MESSAGE_TYPE;
-  [AttributeName.GEN_AI_TOOL_DESCRIPTION]?: GEN_AI_TOOL_DESCRIPTION_TYPE;
-  [AttributeName.GEN_AI_TOOL_INPUT]?: GEN_AI_TOOL_INPUT_TYPE;
-  [AttributeName.GEN_AI_TOOL_MESSAGE]?: GEN_AI_TOOL_MESSAGE_TYPE;
-  [AttributeName.GEN_AI_TOOL_NAME]?: GEN_AI_TOOL_NAME_TYPE;
-  [AttributeName.GEN_AI_TOOL_OUTPUT]?: GEN_AI_TOOL_OUTPUT_TYPE;
-  [AttributeName.GEN_AI_TOOL_TYPE]?: GEN_AI_TOOL_TYPE_TYPE;
-  [AttributeName.GEN_AI_USAGE_COMPLETION_TOKENS]?: GEN_AI_USAGE_COMPLETION_TOKENS_TYPE;
-  [AttributeName.GEN_AI_USAGE_INPUT_TOKENS]?: GEN_AI_USAGE_INPUT_TOKENS_TYPE;
-  [AttributeName.GEN_AI_USAGE_INPUT_TOKENS_CACHED]?: GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE;
-  [AttributeName.GEN_AI_USAGE_OUTPUT_TOKENS]?: GEN_AI_USAGE_OUTPUT_TOKENS_TYPE;
-  [AttributeName.GEN_AI_USAGE_OUTPUT_TOKENS_REASONING]?: GEN_AI_USAGE_OUTPUT_TOKENS_REASONING_TYPE;
-  [AttributeName.GEN_AI_USAGE_PROMPT_TOKENS]?: GEN_AI_USAGE_PROMPT_TOKENS_TYPE;
-  [AttributeName.GEN_AI_USAGE_TOTAL_COST]?: GEN_AI_USAGE_TOTAL_COST_TYPE;
-  [AttributeName.GEN_AI_USAGE_TOTAL_TOKENS]?: GEN_AI_USAGE_TOTAL_TOKENS_TYPE;
-  [AttributeName.GEN_AI_USER_MESSAGE]?: GEN_AI_USER_MESSAGE_TYPE;
-  [AttributeName.GRAPHQL_OPERATION_NAME]?: GRAPHQL_OPERATION_NAME_TYPE;
-  [AttributeName.GRAPHQL_OPERATION_TYPE]?: GRAPHQL_OPERATION_TYPE_TYPE;
-  [AttributeName.HTTP_CLIENT_IP]?: HTTP_CLIENT_IP_TYPE;
-  [AttributeName.HTTP_DECODED_RESPONSE_CONTENT_LENGTH]?: HTTP_DECODED_RESPONSE_CONTENT_LENGTH_TYPE;
-  [AttributeName.HTTP_FLAVOR]?: HTTP_FLAVOR_TYPE;
-  [AttributeName.HTTP_FRAGMENT]?: HTTP_FRAGMENT_TYPE;
-  [AttributeName.HTTP_HOST]?: HTTP_HOST_TYPE;
-  [AttributeName.HTTP_METHOD]?: HTTP_METHOD_TYPE;
-  [AttributeName.HTTP_QUERY]?: HTTP_QUERY_TYPE;
-  [AttributeName.HTTP_REQUEST_CONNECT_START]?: HTTP_REQUEST_CONNECT_START_TYPE;
-  [AttributeName.HTTP_REQUEST_CONNECTION_END]?: HTTP_REQUEST_CONNECTION_END_TYPE;
-  [AttributeName.HTTP_REQUEST_DOMAIN_LOOKUP_END]?: HTTP_REQUEST_DOMAIN_LOOKUP_END_TYPE;
-  [AttributeName.HTTP_REQUEST_DOMAIN_LOOKUP_START]?: HTTP_REQUEST_DOMAIN_LOOKUP_START_TYPE;
-  [AttributeName.HTTP_REQUEST_FETCH_START]?: HTTP_REQUEST_FETCH_START_TYPE;
-  [AttributeName.HTTP_REQUEST_HEADER_KEY]?: HTTP_REQUEST_HEADER_KEY_TYPE;
-  [AttributeName.HTTP_REQUEST_METHOD]?: HTTP_REQUEST_METHOD_TYPE;
-  [AttributeName.HTTP_REQUEST_REDIRECT_END]?: HTTP_REQUEST_REDIRECT_END_TYPE;
-  [AttributeName.HTTP_REQUEST_REDIRECT_START]?: HTTP_REQUEST_REDIRECT_START_TYPE;
-  [AttributeName.HTTP_REQUEST_REQUEST_START]?: HTTP_REQUEST_REQUEST_START_TYPE;
-  [AttributeName.HTTP_REQUEST_RESEND_COUNT]?: HTTP_REQUEST_RESEND_COUNT_TYPE;
-  [AttributeName.HTTP_REQUEST_RESPONSE_END]?: HTTP_REQUEST_RESPONSE_END_TYPE;
-  [AttributeName.HTTP_REQUEST_RESPONSE_START]?: HTTP_REQUEST_RESPONSE_START_TYPE;
-  [AttributeName.HTTP_REQUEST_SECURE_CONNECTION_START]?: HTTP_REQUEST_SECURE_CONNECTION_START_TYPE;
-  [AttributeName.HTTP_REQUEST_TIME_TO_FIRST_BYTE]?: HTTP_REQUEST_TIME_TO_FIRST_BYTE_TYPE;
-  [AttributeName.HTTP_REQUEST_WORKER_START]?: HTTP_REQUEST_WORKER_START_TYPE;
-  [AttributeName.HTTP_RESPONSE_BODY_SIZE]?: HTTP_RESPONSE_BODY_SIZE_TYPE;
-  [AttributeName.HTTP_RESPONSE_HEADER_KEY]?: HTTP_RESPONSE_HEADER_KEY_TYPE;
-  [AttributeName.HTTP_RESPONSE_HEADER_CONTENT_LENGTH]?: HTTP_RESPONSE_HEADER_CONTENT_LENGTH_TYPE;
-  [AttributeName.HTTP_RESPONSE_SIZE]?: HTTP_RESPONSE_SIZE_TYPE;
-  [AttributeName.HTTP_RESPONSE_STATUS_CODE]?: HTTP_RESPONSE_STATUS_CODE_TYPE;
-  [AttributeName.HTTP_RESPONSE_CONTENT_LENGTH]?: HTTP_RESPONSE_CONTENT_LENGTH_TYPE;
-  [AttributeName.HTTP_RESPONSE_TRANSFER_SIZE]?: HTTP_RESPONSE_TRANSFER_SIZE_TYPE;
-  [AttributeName.HTTP_ROUTE]?: HTTP_ROUTE_TYPE;
-  [AttributeName.HTTP_SCHEME]?: HTTP_SCHEME_TYPE;
-  [AttributeName.HTTP_SERVER_NAME]?: HTTP_SERVER_NAME_TYPE;
-  [AttributeName.HTTP_STATUS_CODE]?: HTTP_STATUS_CODE_TYPE;
-  [AttributeName.HTTP_TARGET]?: HTTP_TARGET_TYPE;
-  [AttributeName.HTTP_URL]?: HTTP_URL_TYPE;
-  [AttributeName.HTTP_USER_AGENT]?: HTTP_USER_AGENT_TYPE;
-  [AttributeName.ID]?: ID_TYPE;
-  [AttributeName.JVM_GC_ACTION]?: JVM_GC_ACTION_TYPE;
-  [AttributeName.JVM_GC_NAME]?: JVM_GC_NAME_TYPE;
-  [AttributeName.JVM_MEMORY_POOL_NAME]?: JVM_MEMORY_POOL_NAME_TYPE;
-  [AttributeName.JVM_MEMORY_TYPE]?: JVM_MEMORY_TYPE_TYPE;
-  [AttributeName.JVM_THREAD_DAEMON]?: JVM_THREAD_DAEMON_TYPE;
-  [AttributeName.JVM_THREAD_STATE]?: JVM_THREAD_STATE_TYPE;
-  [AttributeName.LCP_ELEMENT]?: LCP_ELEMENT_TYPE;
-  [AttributeName.LCP_ID]?: LCP_ID_TYPE;
-  [AttributeName.LCP_SIZE]?: LCP_SIZE_TYPE;
-  [AttributeName.LCP_URL]?: LCP_URL_TYPE;
-  [AttributeName.LOGGER_NAME]?: LOGGER_NAME_TYPE;
-  [AttributeName.MESSAGING_DESTINATION_CONNECTION]?: MESSAGING_DESTINATION_CONNECTION_TYPE;
-  [AttributeName.MESSAGING_DESTINATION_NAME]?: MESSAGING_DESTINATION_NAME_TYPE;
-  [AttributeName.MESSAGING_MESSAGE_BODY_SIZE]?: MESSAGING_MESSAGE_BODY_SIZE_TYPE;
-  [AttributeName.MESSAGING_MESSAGE_ENVELOPE_SIZE]?: MESSAGING_MESSAGE_ENVELOPE_SIZE_TYPE;
-  [AttributeName.MESSAGING_MESSAGE_ID]?: MESSAGING_MESSAGE_ID_TYPE;
-  [AttributeName.MESSAGING_MESSAGE_RECEIVE_LATENCY]?: MESSAGING_MESSAGE_RECEIVE_LATENCY_TYPE;
-  [AttributeName.MESSAGING_MESSAGE_RETRY_COUNT]?: MESSAGING_MESSAGE_RETRY_COUNT_TYPE;
-  [AttributeName.MESSAGING_OPERATION_TYPE]?: MESSAGING_OPERATION_TYPE_TYPE;
-  [AttributeName.MESSAGING_SYSTEM]?: MESSAGING_SYSTEM_TYPE;
-  [AttributeName.METHOD]?: METHOD_TYPE;
-  [AttributeName.NAVIGATION_TYPE]?: NAVIGATION_TYPE_TYPE;
-  [AttributeName.NEL_ELAPSED_TIME]?: NEL_ELAPSED_TIME_TYPE;
-  [AttributeName.NEL_PHASE]?: NEL_PHASE_TYPE;
-  [AttributeName.NEL_REFERRER]?: NEL_REFERRER_TYPE;
-  [AttributeName.NEL_SAMPLING_FUNCTION]?: NEL_SAMPLING_FUNCTION_TYPE;
-  [AttributeName.NEL_TYPE]?: NEL_TYPE_TYPE;
-  [AttributeName.NET_HOST_IP]?: NET_HOST_IP_TYPE;
-  [AttributeName.NET_HOST_NAME]?: NET_HOST_NAME_TYPE;
-  [AttributeName.NET_HOST_PORT]?: NET_HOST_PORT_TYPE;
-  [AttributeName.NET_PEER_IP]?: NET_PEER_IP_TYPE;
-  [AttributeName.NET_PEER_NAME]?: NET_PEER_NAME_TYPE;
-  [AttributeName.NET_PEER_PORT]?: NET_PEER_PORT_TYPE;
-  [AttributeName.NET_PROTOCOL_NAME]?: NET_PROTOCOL_NAME_TYPE;
-  [AttributeName.NET_PROTOCOL_VERSION]?: NET_PROTOCOL_VERSION_TYPE;
-  [AttributeName.NET_SOCK_FAMILY]?: NET_SOCK_FAMILY_TYPE;
-  [AttributeName.NET_SOCK_HOST_ADDR]?: NET_SOCK_HOST_ADDR_TYPE;
-  [AttributeName.NET_SOCK_HOST_PORT]?: NET_SOCK_HOST_PORT_TYPE;
-  [AttributeName.NET_SOCK_PEER_ADDR]?: NET_SOCK_PEER_ADDR_TYPE;
-  [AttributeName.NET_SOCK_PEER_NAME]?: NET_SOCK_PEER_NAME_TYPE;
-  [AttributeName.NET_SOCK_PEER_PORT]?: NET_SOCK_PEER_PORT_TYPE;
-  [AttributeName.NET_TRANSPORT]?: NET_TRANSPORT_TYPE;
-  [AttributeName.NETWORK_LOCAL_ADDRESS]?: NETWORK_LOCAL_ADDRESS_TYPE;
-  [AttributeName.NETWORK_LOCAL_PORT]?: NETWORK_LOCAL_PORT_TYPE;
-  [AttributeName.NETWORK_PEER_ADDRESS]?: NETWORK_PEER_ADDRESS_TYPE;
-  [AttributeName.NETWORK_PEER_PORT]?: NETWORK_PEER_PORT_TYPE;
-  [AttributeName.NETWORK_PROTOCOL_NAME]?: NETWORK_PROTOCOL_NAME_TYPE;
-  [AttributeName.NETWORK_PROTOCOL_VERSION]?: NETWORK_PROTOCOL_VERSION_TYPE;
-  [AttributeName.NETWORK_TRANSPORT]?: NETWORK_TRANSPORT_TYPE;
-  [AttributeName.NETWORK_TYPE]?: NETWORK_TYPE_TYPE;
-  [AttributeName.OS_BUILD_ID]?: OS_BUILD_ID_TYPE;
-  [AttributeName.OS_DESCRIPTION]?: OS_DESCRIPTION_TYPE;
-  [AttributeName.OS_NAME]?: OS_NAME_TYPE;
-  [AttributeName.OS_TYPE]?: OS_TYPE_TYPE;
-  [AttributeName.OS_VERSION]?: OS_VERSION_TYPE;
-  [AttributeName.OTEL_SCOPE_NAME]?: OTEL_SCOPE_NAME_TYPE;
-  [AttributeName.OTEL_SCOPE_VERSION]?: OTEL_SCOPE_VERSION_TYPE;
-  [AttributeName.OTEL_STATUS_CODE]?: OTEL_STATUS_CODE_TYPE;
-  [AttributeName.OTEL_STATUS_DESCRIPTION]?: OTEL_STATUS_DESCRIPTION_TYPE;
-  [AttributeName.PARAMS_KEY]?: PARAMS_KEY_TYPE;
-  [AttributeName.PREVIOUS_ROUTE]?: PREVIOUS_ROUTE_TYPE;
-  [AttributeName.PROCESS_EXECUTABLE_NAME]?: PROCESS_EXECUTABLE_NAME_TYPE;
-  [AttributeName.PROCESS_PID]?: PROCESS_PID_TYPE;
-  [AttributeName.PROCESS_RUNTIME_DESCRIPTION]?: PROCESS_RUNTIME_DESCRIPTION_TYPE;
-  [AttributeName.PROCESS_RUNTIME_NAME]?: PROCESS_RUNTIME_NAME_TYPE;
-  [AttributeName.PROCESS_RUNTIME_VERSION]?: PROCESS_RUNTIME_VERSION_TYPE;
-  [AttributeName.PROFILE_ID]?: PROFILE_ID_TYPE;
-  [AttributeName.QUERY_KEY]?: QUERY_KEY_TYPE;
-  [AttributeName.RELEASE]?: RELEASE_TYPE;
-  [AttributeName.REMIX_ACTION_FORM_DATA_KEY]?: REMIX_ACTION_FORM_DATA_KEY_TYPE;
-  [AttributeName.REPLAY_ID]?: REPLAY_ID_TYPE;
-  [AttributeName.RESOURCE_RENDER_BLOCKING_STATUS]?: RESOURCE_RENDER_BLOCKING_STATUS_TYPE;
-  [AttributeName.ROUTE]?: ROUTE_TYPE;
-  [AttributeName.RPC_GRPC_STATUS_CODE]?: RPC_GRPC_STATUS_CODE_TYPE;
-  [AttributeName.RPC_SERVICE]?: RPC_SERVICE_TYPE;
-  [AttributeName.SENTRY_INTERNAL_DSC_ENVIRONMENT]?: SENTRY_INTERNAL_DSC_ENVIRONMENT_TYPE;
-  [AttributeName.SENTRY_INTERNAL_DSC_ORG_ID]?: SENTRY_INTERNAL_DSC_ORG_ID_TYPE;
-  [AttributeName.SENTRY_INTERNAL_DSC_PUBLIC_KEY]?: SENTRY_INTERNAL_DSC_PUBLIC_KEY_TYPE;
-  [AttributeName.SENTRY_INTERNAL_DSC_RELEASE]?: SENTRY_INTERNAL_DSC_RELEASE_TYPE;
-  [AttributeName.SENTRY_INTERNAL_DSC_SAMPLE_RAND]?: SENTRY_INTERNAL_DSC_SAMPLE_RAND_TYPE;
-  [AttributeName.SENTRY_INTERNAL_DSC_SAMPLE_RATE]?: SENTRY_INTERNAL_DSC_SAMPLE_RATE_TYPE;
-  [AttributeName.SENTRY_INTERNAL_DSC_SAMPLED]?: SENTRY_INTERNAL_DSC_SAMPLED_TYPE;
-  [AttributeName.SENTRY_INTERNAL_DSC_TRACE_ID]?: SENTRY_INTERNAL_DSC_TRACE_ID_TYPE;
-  [AttributeName.SENTRY_INTERNAL_DSC_TRANSACTION]?: SENTRY_INTERNAL_DSC_TRANSACTION_TYPE;
-  [AttributeName.SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS]?: SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS_TYPE;
-  [AttributeName.SENTRY_INTERNAL_REPLAY_IS_BUFFERING]?: SENTRY_INTERNAL_REPLAY_IS_BUFFERING_TYPE;
-  [AttributeName.SENTRY_BROWSER_NAME]?: SENTRY_BROWSER_NAME_TYPE;
-  [AttributeName.SENTRY_BROWSER_VERSION]?: SENTRY_BROWSER_VERSION_TYPE;
-  [AttributeName.SENTRY_CANCELLATION_REASON]?: SENTRY_CANCELLATION_REASON_TYPE;
-  [AttributeName.SENTRY_CLIENT_SAMPLE_RATE]?: SENTRY_CLIENT_SAMPLE_RATE_TYPE;
-  [AttributeName.SENTRY_DESCRIPTION]?: SENTRY_DESCRIPTION_TYPE;
-  [AttributeName.SENTRY_DIST]?: SENTRY_DIST_TYPE;
-  [AttributeName.SENTRY_ENVIRONMENT]?: SENTRY_ENVIRONMENT_TYPE;
-  [AttributeName.SENTRY_EXCLUSIVE_TIME]?: SENTRY_EXCLUSIVE_TIME_TYPE;
-  [AttributeName.SENTRY_HTTP_PREFETCH]?: SENTRY_HTTP_PREFETCH_TYPE;
-  [AttributeName.SENTRY_IDLE_SPAN_FINISH_REASON]?: SENTRY_IDLE_SPAN_FINISH_REASON_TYPE;
-  [AttributeName.SENTRY_MESSAGE_PARAMETER_KEY]?: SENTRY_MESSAGE_PARAMETER_KEY_TYPE;
-  [AttributeName.SENTRY_MESSAGE_TEMPLATE]?: SENTRY_MESSAGE_TEMPLATE_TYPE;
-  [AttributeName.SENTRY_MODULE_KEY]?: SENTRY_MODULE_KEY_TYPE;
-  [AttributeName.SENTRY_NEXTJS_SSR_FUNCTION_ROUTE]?: SENTRY_NEXTJS_SSR_FUNCTION_ROUTE_TYPE;
-  [AttributeName.SENTRY_NEXTJS_SSR_FUNCTION_TYPE]?: SENTRY_NEXTJS_SSR_FUNCTION_TYPE_TYPE;
-  [AttributeName.SENTRY_OBSERVED_TIMESTAMP_NANOS]?: SENTRY_OBSERVED_TIMESTAMP_NANOS_TYPE;
-  [AttributeName.SENTRY_OP]?: SENTRY_OP_TYPE;
-  [AttributeName.SENTRY_ORIGIN]?: SENTRY_ORIGIN_TYPE;
-  [AttributeName.SENTRY_PLATFORM]?: SENTRY_PLATFORM_TYPE;
-  [AttributeName.SENTRY_PROFILE_ID]?: SENTRY_PROFILE_ID_TYPE;
-  [AttributeName.SENTRY_RELEASE]?: SENTRY_RELEASE_TYPE;
-  [AttributeName.SENTRY_REPLAY_ID]?: SENTRY_REPLAY_ID_TYPE;
-  [AttributeName.SENTRY_SDK_INTEGRATIONS]?: SENTRY_SDK_INTEGRATIONS_TYPE;
-  [AttributeName.SENTRY_SDK_NAME]?: SENTRY_SDK_NAME_TYPE;
-  [AttributeName.SENTRY_SDK_VERSION]?: SENTRY_SDK_VERSION_TYPE;
-  [AttributeName.SENTRY_SEGMENT_ID]?: SENTRY_SEGMENT_ID_TYPE;
-  [AttributeName.SENTRY_SEGMENT_NAME]?: SENTRY_SEGMENT_NAME_TYPE;
-  [AttributeName._SENTRY_SEGMENT_ID]?: _SENTRY_SEGMENT_ID_TYPE;
-  [AttributeName.SENTRY_SERVER_SAMPLE_RATE]?: SENTRY_SERVER_SAMPLE_RATE_TYPE;
-  [AttributeName.SENTRY_SPAN_SOURCE]?: SENTRY_SPAN_SOURCE_TYPE;
-  [AttributeName.SENTRY_TRACE_PARENT_SPAN_ID]?: SENTRY_TRACE_PARENT_SPAN_ID_TYPE;
-  [AttributeName.SENTRY_TRANSACTION]?: SENTRY_TRANSACTION_TYPE;
-  [AttributeName.SERVER_ADDRESS]?: SERVER_ADDRESS_TYPE;
-  [AttributeName.SERVER_PORT]?: SERVER_PORT_TYPE;
-  [AttributeName.SERVICE_NAME]?: SERVICE_NAME_TYPE;
-  [AttributeName.SERVICE_VERSION]?: SERVICE_VERSION_TYPE;
-  [AttributeName.THREAD_ID]?: THREAD_ID_TYPE;
-  [AttributeName.THREAD_NAME]?: THREAD_NAME_TYPE;
-  [AttributeName.TRANSACTION]?: TRANSACTION_TYPE;
-  [AttributeName.TYPE]?: TYPE_TYPE;
-  [AttributeName.UI_COMPONENT_NAME]?: UI_COMPONENT_NAME_TYPE;
-  [AttributeName.UI_CONTRIBUTES_TO_TTFD]?: UI_CONTRIBUTES_TO_TTFD_TYPE;
-  [AttributeName.UI_CONTRIBUTES_TO_TTID]?: UI_CONTRIBUTES_TO_TTID_TYPE;
-  [AttributeName.URL_DOMAIN]?: URL_DOMAIN_TYPE;
-  [AttributeName.URL_FRAGMENT]?: URL_FRAGMENT_TYPE;
-  [AttributeName.URL_FULL]?: URL_FULL_TYPE;
-  [AttributeName.URL_PATH]?: URL_PATH_TYPE;
-  [AttributeName.URL_PATH_PARAMETER_KEY]?: URL_PATH_PARAMETER_KEY_TYPE;
-  [AttributeName.URL_PORT]?: URL_PORT_TYPE;
-  [AttributeName.URL_QUERY]?: URL_QUERY_TYPE;
-  [AttributeName.URL_SCHEME]?: URL_SCHEME_TYPE;
-  [AttributeName.URL_TEMPLATE]?: URL_TEMPLATE_TYPE;
-  [AttributeName.URL]?: URL_TYPE;
-  [AttributeName.USER_EMAIL]?: USER_EMAIL_TYPE;
-  [AttributeName.USER_FULL_NAME]?: USER_FULL_NAME_TYPE;
-  [AttributeName.USER_GEO_CITY]?: USER_GEO_CITY_TYPE;
-  [AttributeName.USER_GEO_COUNTRY_CODE]?: USER_GEO_COUNTRY_CODE_TYPE;
-  [AttributeName.USER_GEO_REGION]?: USER_GEO_REGION_TYPE;
-  [AttributeName.USER_GEO_SUBDIVISION]?: USER_GEO_SUBDIVISION_TYPE;
-  [AttributeName.USER_HASH]?: USER_HASH_TYPE;
-  [AttributeName.USER_ID]?: USER_ID_TYPE;
-  [AttributeName.USER_IP_ADDRESS]?: USER_IP_ADDRESS_TYPE;
-  [AttributeName.USER_NAME]?: USER_NAME_TYPE;
-  [AttributeName.USER_ROLES]?: USER_ROLES_TYPE;
-  [AttributeName.USER_AGENT_ORIGINAL]?: USER_AGENT_ORIGINAL_TYPE;
+  [K in AttributeName]?: ATTRIBUTE_TYPE[K] extends AttributeType.STRING
+    ? string
+    : ATTRIBUTE_TYPE[K] extends AttributeType.BOOLEAN
+      ? boolean
+      : ATTRIBUTE_TYPE[K] extends AttributeType.INTEGER
+        ? number
+        : ATTRIBUTE_TYPE[K] extends AttributeType.DOUBLE
+          ? number
+          : ATTRIBUTE_TYPE[K] extends AttributeType.STRING_ARRAY
+            ? Array<string>
+            : ATTRIBUTE_TYPE[K] extends AttributeType.BOOLEAN_ARRAY
+              ? Array<boolean>
+              : ATTRIBUTE_TYPE[K] extends AttributeType.INTEGER_ARRAY
+                ? Array<number>
+                : ATTRIBUTE_TYPE[K] extends AttributeType.DOUBLE_ARRAY
+                  ? Array<number>
+                  : never;
 } & Record<string, AttributeValue | undefined>;
