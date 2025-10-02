@@ -1,0 +1,16 @@
+{
+  "name": "sentry-conventions-demo",
+  "version": "1.0.0",
+  "description": "Demo package showing usage of @sentry/conventions",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@sentry/conventions": "file:../sentry-conventions"
+  },
+  "keywords": ["sentry", "conventions", "demo"],
+  "author": "",
+  "license": "MIT"
+}

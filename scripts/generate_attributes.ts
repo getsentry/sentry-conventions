@@ -101,7 +101,7 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
     }
 
     // Add all attributes (both deprecated and non-deprecated) to the Attributes type
-    attributeTypeMap += `\n  [${constantName}]?: ${typeConstantName};`;
+    attributeTypeMap += `\n  [AttributeName.${constantName}]?: ${typeConstantName};`;
 
     // Add example if present
     if (example !== undefined) {
@@ -584,19 +584,21 @@ export interface AttributeMetadata {
 function generateMetadataDict(attributesDir: string, attributeFiles: string[]): string {
   // First, generate the AttributeName enum
   let attributeNameEnum = 'export enum AttributeName {\n';
-  const attributeKeys: string[] = [];
+  let attributeTypeMap = 'export const ATTRIBUTE_TYPES: Record<AttributeName, AttributeType> = {\n';
 
   for (const file of attributeFiles) {
     const attributePath = path.join(attributesDir, file);
     const attributeJson = JSON.parse(fs.readFileSync(attributePath, 'utf-8')) as AttributeJson;
-    const { key } = attributeJson;
+    const { key, type } = attributeJson;
     const constantName = getConstantName(key, !!attributeJson.deprecation);
+
     attributeNameEnum += `  ${constantName} = "${key}",\n`;
-    attributeKeys.push(key);
+    attributeTypeMap += `  [AttributeName.${constantName}]: ${getAttributeTypeEnumJs(type)},\n`;
   }
   attributeNameEnum += '}\n\n';
+  attributeTypeMap += '};\n\n';
 
-  let metadataDict = attributeNameEnum;
+  let metadataDict = attributeNameEnum + attributeTypeMap;
   metadataDict += 'export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {\n';
 
   for (const file of attributeFiles) {
