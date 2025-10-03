@@ -1,0 +1,10 @@
+{
+  "key": "vercel.proxy.path_type",
+  "brief": "How the request was served based on its path and project configuration",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "func"
+}

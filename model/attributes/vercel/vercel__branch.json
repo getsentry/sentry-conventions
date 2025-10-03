@@ -1,0 +1,10 @@
+{
+  "key": "vercel.branch",
+  "brief": "Git branch name for Vercel project",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "main"
+}

@@ -1,0 +1,10 @@
+{
+  "key": "vercel.proxy.referer",
+  "brief": "Referer of the request",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "*.vercel.app"
+}
