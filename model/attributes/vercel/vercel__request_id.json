@@ -1,0 +1,10 @@
+{
+  "key": "vercel.request_id",
+  "brief": "Identifier of the Vercel request",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "643af4e3-975a-4cc7-9e7a-1eda11539d90"
+}

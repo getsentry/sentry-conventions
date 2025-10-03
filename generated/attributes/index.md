@@ -48,3 +48,4 @@ This directory contains documentation for all available attributes.
 - [`url` Attributes](./url.md)
 - [`user` Attributes](./user.md)
 - [`user_agent` Attributes](./user_agent.md)
+- [`vercel` Attributes](./vercel.md)

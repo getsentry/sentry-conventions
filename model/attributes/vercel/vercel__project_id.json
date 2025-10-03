@@ -1,0 +1,10 @@
+{
+  "key": "vercel.project_id",
+  "brief": "Identifier for the Vercel project",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "gdufoJxB6b9b1fEqr1jUtFkyavUU"
+}

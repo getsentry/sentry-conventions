@@ -1,0 +1,10 @@
+{
+  "key": "vercel.id",
+  "brief": "Unique identifier for the log entry in Vercel",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "1573817187330377061717300000"
+}

@@ -1,0 +1,10 @@
+{
+  "key": "vercel.log_type",
+  "brief": "Vercel log output type",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "stdout"
+}

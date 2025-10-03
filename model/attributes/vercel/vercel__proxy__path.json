@@ -1,0 +1,10 @@
+{
+  "key": "vercel.proxy.path",
+  "brief": "Request path with query parameters",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "/dynamic/some-value.json?route=some-value"
+}

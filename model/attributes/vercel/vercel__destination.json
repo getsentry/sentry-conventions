@@ -1,0 +1,10 @@
+{
+  "key": "vercel.destination",
+  "brief": "Origin of the external content in Vercel (only on external logs)",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "https://vitals.vercel-insights.com/v1"
+}

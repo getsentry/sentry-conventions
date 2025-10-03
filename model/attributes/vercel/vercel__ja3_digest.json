@@ -1,0 +1,10 @@
+{
+  "key": "vercel.ja3_digest",
+  "brief": "JA3 fingerprint digest of Vercel request",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "769,47-53-5-10-49161-49162-49171-49172-50-56-19-4,0-10-11,23-24-25,0"
+}

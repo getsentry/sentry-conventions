@@ -1,0 +1,10 @@
+{
+  "key": "vercel.deployment_id",
+  "brief": "Identifier for the Vercel deployment",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "dpl_233NRGRjVZX1caZrXWtz5g1TAksD"
+}

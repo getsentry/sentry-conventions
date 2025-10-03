@@ -1,0 +1,10 @@
+{
+  "key": "vercel.proxy.cache_id",
+  "brief": "Original request ID when request is served from cache",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "pdx1::v8g4b-1744143786684-93dafbc0f70d"
+}

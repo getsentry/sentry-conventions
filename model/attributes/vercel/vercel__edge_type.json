@@ -1,0 +1,10 @@
+{
+  "key": "vercel.edge_type",
+  "brief": "Type of edge runtime in Vercel",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "edge-function"
+}
