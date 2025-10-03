@@ -4,17 +4,26 @@
   "license": "MIT",
   "version": "1.0.0",
   "scripts": {
-    "lint": "biome check && yarn lint:python",
-    "fix": "biome check --write",
-    "test": "vitest && yarn test:python",
+    "format": "yarn format:js && yarn format:python",
+    "format:js": "biome format . --write",
+    "format:python": "(cd python && uv run black src/ && uv run isort src/)",
+
+    "lint": "yarn lint:js && yarn lint:python",
+    "lint:js": "biome format . && biome lint .",
+    "lint:python": "(cd python && uv run pyflakes src/ && uv run mypy .)",
+
+    "test": "yarn test:js && yarn test:python",
+    "test:js": "vitest",
+    "test:python": "(cd python && uv venv && uv pip install -e . && uv run pytest)",
+
     "build": "yarn build:js && yarn build:python && yarn build:tarball",
     "build:js": "(cd javascript/sentry-conventions && yarn build)",
-    "lint:python": "(cd python && uv run pyflakes src/ && uv run black src/ && uv run isort src/ && uv run mypy .)",
     "build:python": "(cd python && uv build)",
-    "test:python": "(cd python && uv venv && uv pip install -e . && uv run pytest)",
-    "build:tarball": "yarn build:tarball:js && yarn build:python && yarn build:tarball:model",
+    "build:tarball": "yarn build:tarball:js && yarn build:tarball:python && yarn build:tarball:model",
     "build:tarball:js": "(cd javascript/sentry-conventions && yarn build:tarball)",
+    "build:tarball:python": "yarn build:python",
     "build:tarball:model": "tsx scripts/gzip_folder.ts model model/sentry-conventions-json.tgz",
+
     "create:attribute": "tsx scripts/create_attribute.ts",
     "generate": "tsx scripts/generate.ts"
   },
