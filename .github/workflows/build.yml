@@ -28,6 +28,9 @@ jobs:
       - name: Run generate
         run: yarn generate
 
+      - name: Format generated code
+        run: yarn format
+
       - name: Run tests
         run: yarn test
 

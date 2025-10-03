@@ -42,88 +42,28 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
 
   let attributeTypeMap = '';
 
+  // Build the explicit type map for Attributes
   for (const file of attributeFiles) {
     const attributePath = path.join(attributesDir, file);
     const attributeJson = JSON.parse(fs.readFileSync(attributePath, 'utf-8')) as AttributeJson;
-    const { key, brief, type, pii, is_in_otel, example, has_dynamic_suffix, deprecation, alias } = attributeJson;
+    const { key, type, deprecation } = attributeJson;
 
-    // Convert attribute key to a valid JavaScript constant name
-    const isDeprecated = !!deprecation;
-    const constantName = getConstantName(key, isDeprecated);
-    const typeConstantName = `${constantName}_TYPE`;
-
-    attributesContent += `// Path: model/attributes/${file}\n\n`;
-
-    attributesContent += '/**\n';
-    attributesContent += ` * ${brief} \`${key}\`\n`;
-
-    attributesContent += ' *\n';
-
-    // Add type information for the attribute
+    const constantName = getConstantName(key, !!deprecation);
     const tsType = getTsType(type);
-
-    // Add type information
-    attributesContent += ` * Attribute Value Type: \`${tsType}\` {@link ${typeConstantName}}\n`;
-
-    attributesContent += ' *\n';
-
-    // Add PII information
-    attributesContent += ` * Contains PII: ${pii.key}${pii.reason ? ` - ${pii.reason}` : ''}\n`;
-
-    attributesContent += ' *\n';
-
-    // Add OTEL information
-    attributesContent += ` * Attribute defined in OTEL: ${is_in_otel ? 'Yes' : 'No'}\n`;
-
-    // Add has_dynamic_suffix if present
-    if (has_dynamic_suffix) {
-      attributesContent += ' *\n';
-
-      attributesContent += ' * Has Dynamic Suffix: true\n';
-    }
-
-    // Add aliases if present
-    if (alias && alias.length > 0) {
-      attributesContent += ' *\n';
-
-      attributesContent += ` * Aliases: ${alias.map((alias) => `{@link ${getConstantName(alias, !isDeprecated)}} \`${alias}\``).join(', ')}\n`;
-    }
-
-    attributesContent += ' *\n';
-
-    // Add deprecation info if present
-    if (deprecation) {
-      let replacement = '';
-      if (deprecation.replacement) {
-        replacement = `Use {@link ${getConstantName(deprecation.replacement, false)}} (${deprecation.replacement}) instead`;
-      }
-      attributesContent += ` * @deprecated ${replacement}${deprecation.reason ? ` - ${deprecation.reason}` : ''}\n`;
-    }
-
-    // Add all attributes (both deprecated and non-deprecated) to the Attributes type
-    attributeTypeMap += `\n  [${constantName}]?: ${typeConstantName};`;
-
-    // Add example if present
-    if (example !== undefined) {
-      attributesContent += ` * @example ${JSON.stringify(example)}\n`;
-    }
-
-    attributesContent += ' */\n';
-
-    attributesContent += `export const ${constantName} = '${key}';\n\n`;
-
-    attributesContent += '/**\n';
-    attributesContent += ` * Type for {@link ${constantName}} ${key}\n`;
-    attributesContent += ' */\n';
-
-    attributesContent += `export type ${constantName}_TYPE = ${tsType};\n\n`;
+    attributeTypeMap += `\n  [AttributeName.${constantName}]?: ${tsType};`;
   }
+
+  // Generate metadata types and interfaces
+  attributesContent += generateMetadataTypes();
+
+  // Generate metadata dictionary
+  attributesContent += generateMetadataDict(attributesDir, attributeFiles);
 
   attributesContent +=
     'export type AttributeValue = string | number | boolean | Array<string> | Array<number> | Array<boolean>;\n\n';
 
   attributesContent += `export type Attributes = {${attributeTypeMap}
-} & Record<string, AttributeValue | undefined>;\n`;
+} & Record<string, AttributeValue | undefined>;\n\n`;
 
   // Write the generated content to the file
   const outputFilePath = path.join(__dirname, '..', 'javascript', 'sentry-conventions', 'src', 'attributes.ts');
@@ -511,4 +451,174 @@ function convertToPythonLiteral(value: AttributeJson['example']): string {
     return `[${items.join(', ')}]`;
   }
   return JSON.stringify(value);
+}
+
+function generateMetadataTypes(): string {
+  return `
+export enum AttributeType {
+  STRING = "string",
+  BOOLEAN = "boolean",
+  INTEGER = "integer",
+  DOUBLE = "double",
+  STRING_ARRAY = "string[]",
+  BOOLEAN_ARRAY = "boolean[]",
+  INTEGER_ARRAY = "integer[]",
+  DOUBLE_ARRAY = "double[]",
+}
+
+export enum IsPii {
+  TRUE = "true",
+  FALSE = "false",
+  MAYBE = "maybe",
+}
+
+export interface PiiInfo {
+  /** Whether the attribute contains PII */
+  isPii: IsPii;
+  /** Reason why it has PII or not */
+  reason?: string;
+}
+
+export interface DeprecationInfo {
+  /** What this attribute was replaced with */
+  replacement?: string;
+  /** Reason for deprecation */
+  reason?: string;
+}
+
+export interface AttributeMetadata {
+  /** A description of the attribute */
+  brief: string;
+  /** The type of the attribute value */
+  type: AttributeType;
+  /** If an attribute can have PII */
+  pii: PiiInfo;
+  /** Whether the attribute is defined in OpenTelemetry Semantic Conventions */
+  isInOtel: boolean;
+  /** If an attribute has a dynamic suffix */
+  hasDynamicSuffix?: boolean;
+  /** An example value of the attribute */
+  example?: AttributeValue;
+  /** If an attribute was deprecated, and what it was replaced with */
+  deprecation?: DeprecationInfo;
+  /** If there are attributes that alias to this attribute */
+  aliases?: AttributeName[];
+  /** If an attribute is SDK specific, list the SDKs that use this attribute */
+  sdks?: string[];
+}
+
+`;
+}
+
+function generateMetadataDict(attributesDir: string, attributeFiles: string[]): string {
+  // First, generate the AttributeName enum
+  let attributeNameEnum = 'export enum AttributeName {\n';
+  let attributeTypeMap = 'export const ATTRIBUTE_TYPE: Record<AttributeName, AttributeType> = {\n';
+
+  for (const file of attributeFiles) {
+    const attributePath = path.join(attributesDir, file);
+    const attributeJson = JSON.parse(fs.readFileSync(attributePath, 'utf-8')) as AttributeJson;
+    const { key, type } = attributeJson;
+    const constantName = getConstantName(key, !!attributeJson.deprecation);
+
+    attributeNameEnum += `  ${constantName} = "${key}",\n`;
+    attributeTypeMap += `  [AttributeName.${constantName}]: ${getAttributeTypeEnumJs(type)},\n`;
+  }
+  attributeNameEnum += '}\n\n';
+  attributeTypeMap += '};\n\n';
+
+  let metadataDict = attributeNameEnum + attributeTypeMap;
+  metadataDict += 'export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {\n';
+
+  for (const file of attributeFiles) {
+    const attributePath = path.join(attributesDir, file);
+    const attributeJson = JSON.parse(fs.readFileSync(attributePath, 'utf-8')) as AttributeJson;
+    const { key, brief, type, pii, is_in_otel, example, has_dynamic_suffix, deprecation, alias } = attributeJson;
+
+    const constantName = getConstantName(key, !!deprecation);
+    metadataDict += `  [AttributeName.${constantName}]: {\n`;
+    metadataDict += `    brief: ${JSON.stringify(brief)},\n`;
+    metadataDict += `    type: ${getAttributeTypeEnumJs(type)},\n`;
+
+    // Build PII info structure
+    const piiStatus = pii.key === 'true' ? 'IsPii.TRUE' : pii.key === 'false' ? 'IsPii.FALSE' : 'IsPii.MAYBE';
+    metadataDict += '    pii: {\n';
+    metadataDict += `      isPii: ${piiStatus}`;
+    if (pii.reason) {
+      metadataDict += `,\n      reason: ${JSON.stringify(pii.reason)}`;
+    }
+    metadataDict += '\n    },\n';
+
+    metadataDict += `    isInOtel: ${is_in_otel},\n`;
+
+    if (has_dynamic_suffix) {
+      metadataDict += '    hasDynamicSuffix: true,\n';
+    }
+
+    if (example !== undefined) {
+      metadataDict += `    example: ${JSON.stringify(example)},\n`;
+    }
+
+    // Build deprecation info structure if present
+    if (deprecation) {
+      metadataDict += '    deprecation: {';
+      const deprecationFields: string[] = [];
+      if (deprecation.replacement) {
+        deprecationFields.push(`\n      replacement: ${JSON.stringify(deprecation.replacement)}`);
+      }
+      if (deprecation.reason) {
+        deprecationFields.push(`\n      reason: ${JSON.stringify(deprecation.reason)}`);
+      }
+      if (deprecationFields.length > 0) {
+        metadataDict += deprecationFields.join(',');
+        metadataDict += '\n    },\n';
+      } else {
+        metadataDict += '},\n';
+      }
+    }
+
+    if (alias && alias.length > 0) {
+      // Convert string aliases to AttributeName enum references
+      const enumAliases = alias
+        .map((aliasKey) => {
+          const aliasConstantName = getConstantName(aliasKey, false);
+          return `AttributeName.${aliasConstantName}`;
+        })
+        .join(', ');
+      metadataDict += `    aliases: [${enumAliases}],\n`;
+    }
+
+    if (attributeJson.sdks && attributeJson.sdks.length > 0) {
+      metadataDict += `    sdks: ${JSON.stringify(attributeJson.sdks)},\n`;
+    }
+
+    metadataDict += '  },\n';
+  }
+
+  metadataDict += '};\n\n';
+
+  return metadataDict;
+}
+
+function getAttributeTypeEnumJs(type: AttributeJson['type']): string {
+  switch (type) {
+    case 'string':
+      return 'AttributeType.STRING';
+    case 'boolean':
+      return 'AttributeType.BOOLEAN';
+    case 'integer':
+      return 'AttributeType.INTEGER';
+    case 'double':
+      return 'AttributeType.DOUBLE';
+    case 'string[]':
+      return 'AttributeType.STRING_ARRAY';
+    case 'boolean[]':
+      return 'AttributeType.BOOLEAN_ARRAY';
+    case 'integer[]':
+      return 'AttributeType.INTEGER_ARRAY';
+    case 'double[]':
+      return 'AttributeType.DOUBLE_ARRAY';
+    default:
+      throw new Error(`Unknown attribute type: ${type}`);
+  }
 }
