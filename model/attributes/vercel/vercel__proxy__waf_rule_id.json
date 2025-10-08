@@ -1,0 +1,10 @@
+{
+  "key": "vercel.proxy.waf_rule_id",
+  "brief": "ID of the firewall rule that matched",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "rule_gAHz8jtSB1Gy"
+}
