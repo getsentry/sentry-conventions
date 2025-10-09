@@ -1,0 +1,12 @@
+{
+  "key": "mcp.prompt.result",
+  "brief": "The content of the prompt result.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "",
+  "alias": []
+}
+    
