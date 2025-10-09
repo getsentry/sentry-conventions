@@ -3997,6 +3997,46 @@ export const LOGGER_NAME = 'logger.name';
  */
 export type LOGGER_NAME_TYPE = string;
 
+// Path: model/attributes/mcp/mcp__prompt__result.json
+
+/**
+ * The content of the prompt result. `mcp.prompt.result`
+ *
+ * Attribute Value Type: `string` {@link MCP_PROMPT_RESULT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "An example prompt result!"
+ */
+export const MCP_PROMPT_RESULT = 'mcp.prompt.result';
+
+/**
+ * Type for {@link MCP_PROMPT_RESULT} mcp.prompt.result
+ */
+export type MCP_PROMPT_RESULT_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__tool__result__content.json
+
+/**
+ * The content of the tool result. `mcp.tool.result.content`
+ *
+ * Attribute Value Type: `string` {@link MCP_TOOL_RESULT_CONTENT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "{\"output\": \"rainy\", \"toolCallId\": \"1\"}"
+ */
+export const MCP_TOOL_RESULT_CONTENT = 'mcp.tool.result.content';
+
+/**
+ * Type for {@link MCP_TOOL_RESULT_CONTENT} mcp.tool.result.content
+ */
+export type MCP_TOOL_RESULT_CONTENT_TYPE = string;
+
 // Path: model/attributes/messaging/messaging__destination__connection.json
 
 /**
@@ -7813,6 +7853,8 @@ export type Attributes = {
   [LCP_SIZE]?: LCP_SIZE_TYPE;
   [LCP_URL]?: LCP_URL_TYPE;
   [LOGGER_NAME]?: LOGGER_NAME_TYPE;
+  [MCP_PROMPT_RESULT]?: MCP_PROMPT_RESULT_TYPE;
+  [MCP_TOOL_RESULT_CONTENT]?: MCP_TOOL_RESULT_CONTENT_TYPE;
   [MESSAGING_DESTINATION_CONNECTION]?: MESSAGING_DESTINATION_CONNECTION_TYPE;
   [MESSAGING_DESTINATION_NAME]?: MESSAGING_DESTINATION_NAME_TYPE;
   [MESSAGING_MESSAGE_BODY_SIZE]?: MESSAGING_MESSAGE_BODY_SIZE_TYPE;

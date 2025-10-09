@@ -2300,6 +2300,28 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "myLogger"
     """
 
+    # Path: model/attributes/mcp/mcp__prompt__result.json
+    MCP_PROMPT_RESULT: Literal["mcp.prompt.result"] = "mcp.prompt.result"
+    """The content of the prompt result.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "An example prompt result!"
+    """
+
+    # Path: model/attributes/mcp/mcp__tool__result__content.json
+    MCP_TOOL_RESULT_CONTENT: Literal["mcp.tool.result.content"] = (
+        "mcp.tool.result.content"
+    )
+    """The content of the tool result.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "{\"output\": \"rainy\", \"toolCallId\": \"1\"}"
+    """
+
     # Path: model/attributes/messaging/messaging__destination__connection.json
     MESSAGING_DESTINATION_CONNECTION: Literal["messaging.destination.connection"] = (
         "messaging.destination.connection"
@@ -5739,6 +5761,20 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="myLogger",
     ),
+    "mcp.prompt.result": AttributeMetadata(
+        brief="The content of the prompt result.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="An example prompt result!",
+    ),
+    "mcp.tool.result.content": AttributeMetadata(
+        brief="The content of the tool result.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example='{"output": "rainy", "toolCallId": "1"}',
+    ),
     "messaging.destination.connection": AttributeMetadata(
         brief="The message destination connection.",
         type=AttributeType.STRING,
@@ -7281,6 +7317,8 @@ Attributes = TypedDict(
         "lcp.size": int,
         "lcp.url": str,
         "logger.name": str,
+        "mcp.prompt.result": str,
+        "mcp.tool.result.content": str,
         "messaging.destination.connection": str,
         "messaging.destination.name": str,
         "messaging.message.body.size": int,
