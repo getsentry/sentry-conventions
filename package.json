@@ -12,6 +12,8 @@
     "lint:js": "biome format . && biome lint .",
     "lint:python": "(cd python && uv run pyflakes src/ && uv run mypy .)",
 
+    "lint-fix": "biome lint . --write",
+
     "test": "yarn test:js && yarn test:python",
     "test:js": "vitest",
     "test:python": "(cd python && uv venv && uv pip install -e . && uv run pytest)",
