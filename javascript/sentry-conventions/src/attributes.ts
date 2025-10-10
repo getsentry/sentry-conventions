@@ -11,9 +11,6 @@
  *
  * Attribute defined in OTEL: No
  * @example ["Citation 1","Citation 2"]
- */
-export const AI_CITATIONS = 'ai.citations';
-
 /**
  * Type for {@link AI_CITATIONS} ai.citations
  */
@@ -30,9 +27,6 @@ export type AI_CITATIONS_TYPE = Array<string>;
  *
  * Attribute defined in OTEL: No
  * @example ["document1.txt","document2.pdf"]
- */
-export const AI_DOCUMENTS = 'ai.documents';
-
 /**
  * Type for {@link AI_DOCUMENTS} ai.documents
  */
@@ -49,9 +43,6 @@ export type AI_DOCUMENTS_TYPE = Array<string>;
  *
  * Attribute defined in OTEL: No
  * @example false
- */
-export const AI_IS_SEARCH_REQUIRED = 'ai.is_search_required';
-
 /**
  * Type for {@link AI_IS_SEARCH_REQUIRED} ai.is_search_required
  */
@@ -68,9 +59,6 @@ export type AI_IS_SEARCH_REQUIRED_TYPE = boolean;
  *
  * Attribute defined in OTEL: No
  * @example "{\"user_id\": 123, \"session_id\": \"abc123\"}"
- */
-export const AI_METADATA = 'ai.metadata';
-
 /**
  * Type for {@link AI_METADATA} ai.metadata
  */
@@ -87,9 +75,6 @@ export type AI_METADATA_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "You are now a clown."
- */
-export const AI_PREAMBLE = 'ai.preamble';
-
 /**
  * Type for {@link AI_PREAMBLE} ai.preamble
  */
@@ -106,9 +91,6 @@ export type AI_PREAMBLE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example true
- */
-export const AI_RAW_PROMPTING = 'ai.raw_prompting';
-
 /**
  * Type for {@link AI_RAW_PROMPTING} ai.raw_prompting
  */
@@ -125,9 +107,6 @@ export type AI_RAW_PROMPTING_TYPE = boolean;
  *
  * Attribute defined in OTEL: No
  * @example "json_object"
- */
-export const AI_RESPONSE_FORMAT = 'ai.response_format';
-
 /**
  * Type for {@link AI_RESPONSE_FORMAT} ai.response_format
  */
@@ -144,9 +123,6 @@ export type AI_RESPONSE_FORMAT_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example ["climate change effects","renewable energy"]
- */
-export const AI_SEARCH_QUERIES = 'ai.search_queries';
-
 /**
  * Type for {@link AI_SEARCH_QUERIES} ai.search_queries
  */
@@ -163,9 +139,6 @@ export type AI_SEARCH_QUERIES_TYPE = Array<string>;
  *
  * Attribute defined in OTEL: No
  * @example ["search_result_1, search_result_2"]
- */
-export const AI_SEARCH_RESULTS = 'ai.search_results';
-
 /**
  * Type for {@link AI_SEARCH_RESULTS} ai.search_results
  */
@@ -182,9 +155,6 @@ export type AI_SEARCH_RESULTS_TYPE = Array<string>;
  *
  * Attribute defined in OTEL: No
  * @example "{\"executed_function\": \"add_integers\"}"
- */
-export const AI_TAGS = 'ai.tags';
-
 /**
  * Type for {@link AI_TAGS} ai.tags
  */
@@ -201,9 +171,6 @@ export type AI_TAGS_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example ["Hello, how are you?","What is the capital of France?"]
- */
-export const AI_TEXTS = 'ai.texts';
-
 /**
  * Type for {@link AI_TEXTS} ai.texts
  */
@@ -220,9 +187,6 @@ export type AI_TEXTS_TYPE = Array<string>;
  *
  * Attribute defined in OTEL: No
  * @example 12.34
- */
-export const AI_TOTAL_COST = 'ai.total_cost';
-
 /**
  * Type for {@link AI_TOTAL_COST} ai.total_cost
  */
@@ -239,9 +203,6 @@ export type AI_TOTAL_COST_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * @example ["Token limit exceeded"]
- */
-export const AI_WARNINGS = 'ai.warnings';
-
 /**
  * Type for {@link AI_WARNINGS} ai.warnings
  */
@@ -258,9 +219,6 @@ export type AI_WARNINGS_TYPE = Array<string>;
  *
  * Attribute defined in OTEL: No
  * @example "cold"
- */
-export const APP_START_TYPE = 'app_start_type';
-
 /**
  * Type for {@link APP_START_TYPE} app_start_type
  */
@@ -277,9 +235,6 @@ export type APP_START_TYPE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example true
- */
-export const BLOCKED_MAIN_THREAD = 'blocked_main_thread';
-
 /**
  * Type for {@link BLOCKED_MAIN_THREAD} blocked_main_thread
  */
@@ -298,9 +253,6 @@ export type BLOCKED_MAIN_THREAD_TYPE = boolean;
  *
  * Aliases: {@link SENTRY_BROWSER_NAME} `sentry.browser.name`
  * @example "Chrome"
- */
-export const BROWSER_NAME = 'browser.name';
-
 /**
  * Type for {@link BROWSER_NAME} browser.name
  */
@@ -317,9 +269,6 @@ export type BROWSER_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "network-error"
- */
-export const BROWSER_REPORT_TYPE = 'browser.report.type';
-
 /**
  * Type for {@link BROWSER_REPORT_TYPE} browser.report.type
  */
@@ -336,11 +285,6 @@ export type BROWSER_REPORT_TYPE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "Window.requestAnimationFrame"
- *
- * SDK specific: browser
- */
-export const BROWSER_SCRIPT_INVOKER = 'browser.script.invoker';
-
 /**
  * Type for {@link BROWSER_SCRIPT_INVOKER} browser.script.invoker
  */
@@ -357,11 +301,6 @@ export type BROWSER_SCRIPT_INVOKER_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "event-listener"
- *
- * SDK specific: browser
- */
-export const BROWSER_SCRIPT_INVOKER_TYPE = 'browser.script.invoker_type';
-
 /**
  * Type for {@link BROWSER_SCRIPT_INVOKER_TYPE} browser.script.invoker_type
  */
@@ -378,11 +317,6 @@ export type BROWSER_SCRIPT_INVOKER_TYPE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example 678
- *
- * SDK specific: browser
- */
-export const BROWSER_SCRIPT_SOURCE_CHAR_POSITION = 'browser.script.source_char_position';
-
 /**
  * Type for {@link BROWSER_SCRIPT_SOURCE_CHAR_POSITION} browser.script.source_char_position
  */
@@ -401,9 +335,6 @@ export type BROWSER_SCRIPT_SOURCE_CHAR_POSITION_TYPE = number;
  *
  * Aliases: {@link SENTRY_BROWSER_VERSION} `sentry.browser.version`
  * @example "120.0.6099.130"
- */
-export const BROWSER_VERSION = 'browser.version';
-
 /**
  * Type for {@link BROWSER_VERSION} browser.version
  */
@@ -420,11 +351,6 @@ export type BROWSER_VERSION_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example true
- *
- * SDK specific: php-laravel
- */
-export const CACHE_HIT = 'cache.hit';
-
 /**
  * Type for {@link CACHE_HIT} cache.hit
  */
@@ -441,9 +367,6 @@ export type CACHE_HIT_TYPE = boolean;
  *
  * Attribute defined in OTEL: No
  * @example 58
- */
-export const CACHE_ITEM_SIZE = 'cache.item_size';
-
 /**
  * Type for {@link CACHE_ITEM_SIZE} cache.item_size
  */
@@ -460,11 +383,6 @@ export type CACHE_ITEM_SIZE_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * @example ["my-cache-key","my-other-cache-key"]
- *
- * SDK specific: php-laravel
- */
-export const CACHE_KEY = 'cache.key';
-
 /**
  * Type for {@link CACHE_KEY} cache.key
  */
@@ -481,11 +399,6 @@ export type CACHE_KEY_TYPE = Array<string>;
  *
  * Attribute defined in OTEL: No
  * @example "get"
- *
- * SDK specific: php-laravel
- */
-export const CACHE_OPERATION = 'cache.operation';
-
 /**
  * Type for {@link CACHE_OPERATION} cache.operation
  */
@@ -502,11 +415,6 @@ export type CACHE_OPERATION_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example 120
- *
- * SDK specific: php-laravel
- */
-export const CACHE_TTL = 'cache.ttl';
-
 /**
  * Type for {@link CACHE_TTL} cache.ttl
  */
@@ -523,11 +431,6 @@ export type CACHE_TTL_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * @example "mail"
- *
- * SDK specific: php-laravel
- */
-export const CHANNEL = 'channel';
-
 /**
  * Type for {@link CHANNEL} channel
  */
@@ -546,9 +449,6 @@ export type CHANNEL_TYPE = string;
  *
  * Aliases: {@link HTTP_CLIENT_IP} `http.client_ip`
  * @example "example.com"
- */
-export const CLIENT_ADDRESS = 'client.address';
-
 /**
  * Type for {@link CLIENT_ADDRESS} client.address
  */
@@ -565,9 +465,6 @@ export type CLIENT_ADDRESS_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example 5432
- */
-export const CLIENT_PORT = 'client.port';
-
 /**
  * Type for {@link CLIENT_PORT} client.port
  */
@@ -584,11 +481,6 @@ export type CLIENT_PORT_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * @example 543
- *
- * SDK specific: javascript-cloudflare
- */
-export const CLOUDFLARE_D1_DURATION = 'cloudflare.d1.duration';
-
 /**
  * Type for {@link CLOUDFLARE_D1_DURATION} cloudflare.d1.duration
  */
@@ -605,11 +497,6 @@ export type CLOUDFLARE_D1_DURATION_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * @example 12
- *
- * SDK specific: javascript-cloudflare
- */
-export const CLOUDFLARE_D1_ROWS_READ = 'cloudflare.d1.rows_read';
-
 /**
  * Type for {@link CLOUDFLARE_D1_ROWS_READ} cloudflare.d1.rows_read
  */
@@ -626,11 +513,6 @@ export type CLOUDFLARE_D1_ROWS_READ_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * @example 12
- *
- * SDK specific: javascript-cloudflare
- */
-export const CLOUDFLARE_D1_ROWS_WRITTEN = 'cloudflare.d1.rows_written';
-
 /**
  * Type for {@link CLOUDFLARE_D1_ROWS_WRITTEN} cloudflare.d1.rows_written
  */
@@ -649,9 +531,6 @@ export type CLOUDFLARE_D1_ROWS_WRITTEN_TYPE = number;
  *
  * Aliases: {@link CODE_FILEPATH} `code.filepath`
  * @example "/app/myapplication/http/handler/server.py"
- */
-export const CODE_FILE_PATH = 'code.file.path';
-
 /**
  * Type for {@link CODE_FILE_PATH} code.file.path
  */
@@ -670,9 +549,6 @@ export type CODE_FILE_PATH_TYPE = string;
  *
  * Aliases: {@link CODE_FUNCTION} `code.function`
  * @example "server_request"
- */
-export const CODE_FUNCTION_NAME = 'code.function.name';
-
 /**
  * Type for {@link CODE_FUNCTION_NAME} code.function.name
  */
@@ -691,9 +567,6 @@ export type CODE_FUNCTION_NAME_TYPE = string;
  *
  * Aliases: {@link CODE_LINENO} `code.lineno`
  * @example 42
- */
-export const CODE_LINE_NUMBER = 'code.line.number';
-
 /**
  * Type for {@link CODE_LINE_NUMBER} code.line.number
  */
@@ -710,9 +583,6 @@ export type CODE_LINE_NUMBER_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  * @example "users"
- */
-export const DB_COLLECTION_NAME = 'db.collection.name';
-
 /**
  * Type for {@link DB_COLLECTION_NAME} db.collection.name
  */
@@ -731,9 +601,6 @@ export type DB_COLLECTION_NAME_TYPE = string;
  *
  * Aliases: {@link DB_NAME} `db.name`
  * @example "customers"
- */
-export const DB_NAMESPACE = 'db.namespace';
-
 /**
  * Type for {@link DB_NAMESPACE} db.namespace
  */
@@ -752,9 +619,6 @@ export type DB_NAMESPACE_TYPE = string;
  *
  * Aliases: {@link DB_OPERATION} `db.operation`
  * @example "SELECT"
- */
-export const DB_OPERATION_NAME = 'db.operation.name';
-
 /**
  * Type for {@link DB_OPERATION_NAME} db.operation.name
  */
@@ -773,9 +637,6 @@ export type DB_OPERATION_NAME_TYPE = string;
  *
  * Has Dynamic Suffix: true
  * @example "db.query.parameter.foo='123'"
- */
-export const DB_QUERY_PARAMETER_KEY = 'db.query.parameter.<key>';
-
 /**
  * Type for {@link DB_QUERY_PARAMETER_KEY} db.query.parameter.<key>
  */
@@ -792,9 +653,6 @@ export type DB_QUERY_PARAMETER_KEY_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example "SELECT * FROM users"
- */
-export const DB_QUERY_SUMMARY = 'db.query.summary';
-
 /**
  * Type for {@link DB_QUERY_SUMMARY} db.query.summary
  */
@@ -813,9 +671,6 @@ export type DB_QUERY_SUMMARY_TYPE = string;
  *
  * Aliases: {@link DB_STATEMENT} `db.statement`
  * @example "SELECT * FROM users"
- */
-export const DB_QUERY_TEXT = 'db.query.text';
-
 /**
  * Type for {@link DB_QUERY_TEXT} db.query.text
  */
@@ -832,11 +687,6 @@ export type DB_QUERY_TEXT_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "my-redis-instance"
- *
- * SDK specific: php-laravel
- */
-export const DB_REDIS_CONNECTION = 'db.redis.connection';
-
 /**
  * Type for {@link DB_REDIS_CONNECTION} db.redis.connection
  */
@@ -853,11 +703,6 @@ export type DB_REDIS_CONNECTION_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example ["test","*"]
- *
- * SDK specific: php-laravel
- */
-export const DB_REDIS_PARAMETERS = 'db.redis.parameters';
-
 /**
  * Type for {@link DB_REDIS_PARAMETERS} db.redis.parameters
  */
@@ -876,9 +721,6 @@ export type DB_REDIS_PARAMETERS_TYPE = Array<string>;
  *
  * Aliases: {@link DB_SYSTEM} `db.system`
  * @example "postgresql"
- */
-export const DB_SYSTEM_NAME = 'db.system.name';
-
 /**
  * Type for {@link DB_SYSTEM_NAME} db.system.name
  */
@@ -895,9 +737,6 @@ export type DB_SYSTEM_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example "fancy_user"
- */
-export const DB_USER = 'db.user';
-
 /**
  * Type for {@link DB_USER} db.user
  */
@@ -914,9 +753,6 @@ export type DB_USER_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "Apple"
- */
-export const DEVICE_BRAND = 'device.brand';
-
 /**
  * Type for {@link DEVICE_BRAND} device.brand
  */
@@ -933,9 +769,6 @@ export type DEVICE_BRAND_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "iPhone"
- */
-export const DEVICE_FAMILY = 'device.family';
-
 /**
  * Type for {@link DEVICE_FAMILY} device.family
  */
@@ -952,9 +785,6 @@ export type DEVICE_FAMILY_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "iPhone 15 Pro Max"
- */
-export const DEVICE_MODEL = 'device.model';
-
 /**
  * Type for {@link DEVICE_MODEL} device.model
  */
@@ -971,9 +801,6 @@ export type DEVICE_MODEL_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example "timeout"
- */
-export const ERROR_TYPE = 'error.type';
-
 /**
  * Type for {@link ERROR_TYPE} error.type
  */
@@ -990,9 +817,6 @@ export type ERROR_TYPE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example 1234567890
- */
-export const EVENT_ID = 'event.id';
-
 /**
  * Type for {@link EVENT_ID} event.id
  */
@@ -1009,9 +833,6 @@ export type EVENT_ID_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * @example "Process Payload"
- */
-export const EVENT_NAME = 'event.name';
-
 /**
  * Type for {@link EVENT_NAME} event.name
  */
@@ -1028,9 +849,6 @@ export type EVENT_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example true
- */
-export const EXCEPTION_ESCAPED = 'exception.escaped';
-
 /**
  * Type for {@link EXCEPTION_ESCAPED} exception.escaped
  */
@@ -1047,9 +865,6 @@ export type EXCEPTION_ESCAPED_TYPE = boolean;
  *
  * Attribute defined in OTEL: Yes
  * @example "ENOENT: no such file or directory"
- */
-export const EXCEPTION_MESSAGE = 'exception.message';
-
 /**
  * Type for {@link EXCEPTION_MESSAGE} exception.message
  */
@@ -1066,9 +881,6 @@ export type EXCEPTION_MESSAGE_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example "Exception in thread \"main\" java.lang.RuntimeException: Test exception\n at com.example.GenerateTrace.methodB(GenerateTrace.java:13)\n at com.example.GenerateTrace.methodA(GenerateTrace.java:9)\n at com.example.GenerateTrace.main(GenerateTrace.java:5)"
- */
-export const EXCEPTION_STACKTRACE = 'exception.stacktrace';
-
 /**
  * Type for {@link EXCEPTION_STACKTRACE} exception.stacktrace
  */
@@ -1085,9 +897,6 @@ export type EXCEPTION_STACKTRACE_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example "OSError"
- */
-export const EXCEPTION_TYPE = 'exception.type';
-
 /**
  * Type for {@link EXCEPTION_TYPE} exception.type
  */
@@ -1104,9 +913,6 @@ export type EXCEPTION_TYPE_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example true
- */
-export const FAAS_COLDSTART = 'faas.coldstart';
-
 /**
  * Type for {@link FAAS_COLDSTART} faas.coldstart
  */
@@ -1123,9 +929,6 @@ export type FAAS_COLDSTART_TYPE = boolean;
  *
  * Attribute defined in OTEL: Yes
  * @example "0/5 * * * ? *"
- */
-export const FAAS_CRON = 'faas.cron';
-
 /**
  * Type for {@link FAAS_CRON} faas.cron
  */
@@ -1142,9 +945,6 @@ export type FAAS_CRON_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example "2020-01-23T13:47:06Z"
- */
-export const FAAS_TIME = 'faas.time';
-
 /**
  * Type for {@link FAAS_TIME} faas.time
  */
@@ -1161,9 +961,6 @@ export type FAAS_TIME_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example "timer"
- */
-export const FAAS_TRIGGER = 'faas.trigger';
-
 /**
  * Type for {@link FAAS_TRIGGER} faas.trigger
  */
@@ -1182,9 +979,6 @@ export type FAAS_TRIGGER_TYPE = string;
  *
  * Has Dynamic Suffix: true
  * @example "flag.evaluation.is_new_ui=true"
- */
-export const FLAG_EVALUATION_KEY = 'flag.evaluation.<key>';
-
 /**
  * Type for {@link FLAG_EVALUATION_KEY} flag.evaluation.<key>
  */
@@ -1201,9 +995,6 @@ export type FLAG_EVALUATION_KEY_TYPE = boolean;
  *
  * Attribute defined in OTEL: No
  * @example 5
- */
-export const FRAMES_DELAY = 'frames.delay';
-
 /**
  * Type for {@link FRAMES_DELAY} frames.delay
  */
@@ -1220,9 +1011,6 @@ export type FRAMES_DELAY_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * @example 3
- */
-export const FRAMES_FROZEN = 'frames.frozen';
-
 /**
  * Type for {@link FRAMES_FROZEN} frames.frozen
  */
@@ -1239,9 +1027,6 @@ export type FRAMES_FROZEN_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * @example 1
- */
-export const FRAMES_SLOW = 'frames.slow';
-
 /**
  * Type for {@link FRAMES_SLOW} frames.slow
  */
@@ -1258,9 +1043,6 @@ export type FRAMES_SLOW_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * @example 60
- */
-export const FRAMES_TOTAL = 'frames.total';
-
 /**
  * Type for {@link FRAMES_TOTAL} frames.total
  */
@@ -1277,9 +1059,6 @@ export type FRAMES_TOTAL_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  * @example "ResearchAssistant"
- */
-export const GEN_AI_AGENT_NAME = 'gen_ai.agent.name';
-
 /**
  * Type for {@link GEN_AI_AGENT_NAME} gen_ai.agent.name
  */
@@ -1296,9 +1075,6 @@ export type GEN_AI_AGENT_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "get_weather tool call"
- */
-export const GEN_AI_ASSISTANT_MESSAGE = 'gen_ai.assistant.message';
-
 /**
  * Type for {@link GEN_AI_ASSISTANT_MESSAGE} gen_ai.assistant.message
  */
@@ -1315,9 +1091,6 @@ export type GEN_AI_ASSISTANT_MESSAGE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "The weather in Paris is rainy and overcast, with temperatures around 57°F"
- */
-export const GEN_AI_CHOICE = 'gen_ai.choice';
-
 /**
  * Type for {@link GEN_AI_CHOICE} gen_ai.choice
  */
@@ -1334,9 +1107,6 @@ export type GEN_AI_CHOICE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example 123.45
- */
-export const GEN_AI_COST_INPUT_TOKENS = 'gen_ai.cost.input_tokens';
-
 /**
  * Type for {@link GEN_AI_COST_INPUT_TOKENS} gen_ai.cost.input_tokens
  */
@@ -1353,9 +1123,6 @@ export type GEN_AI_COST_INPUT_TOKENS_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * @example 123.45
- */
-export const GEN_AI_COST_OUTPUT_TOKENS = 'gen_ai.cost.output_tokens';
-
 /**
  * Type for {@link GEN_AI_COST_OUTPUT_TOKENS} gen_ai.cost.output_tokens
  */
@@ -1372,9 +1139,6 @@ export type GEN_AI_COST_OUTPUT_TOKENS_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * @example 12.34
- */
-export const GEN_AI_COST_TOTAL_TOKENS = 'gen_ai.cost.total_tokens';
-
 /**
  * Type for {@link GEN_AI_COST_TOTAL_TOKENS} gen_ai.cost.total_tokens
  */
@@ -1391,9 +1155,6 @@ export type GEN_AI_COST_TOTAL_TOKENS_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  * @example "chat"
- */
-export const GEN_AI_OPERATION_NAME = 'gen_ai.operation.name';
-
 /**
  * Type for {@link GEN_AI_OPERATION_NAME} gen_ai.operation.name
  */
@@ -1410,9 +1171,6 @@ export type GEN_AI_OPERATION_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "tool"
- */
-export const GEN_AI_OPERATION_TYPE = 'gen_ai.operation.type';
-
 /**
  * Type for {@link GEN_AI_OPERATION_TYPE} gen_ai.operation.type
  */
@@ -1431,9 +1189,6 @@ export type GEN_AI_OPERATION_TYPE_TYPE = string;
  *
  * Aliases: {@link AI_PIPELINE_NAME} `ai.pipeline.name`
  * @example "Autofix Pipeline"
- */
-export const GEN_AI_PIPELINE_NAME = 'gen_ai.pipeline.name';
-
 /**
  * Type for {@link GEN_AI_PIPELINE_NAME} gen_ai.pipeline.name
  */
@@ -1450,9 +1205,6 @@ export type GEN_AI_PIPELINE_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "[{\"name\": \"get_weather\", \"description\": \"Get the weather for a given location\"}, {\"name\": \"get_news\", \"description\": \"Get the news for a given topic\"}]"
- */
-export const GEN_AI_REQUEST_AVAILABLE_TOOLS = 'gen_ai.request.available_tools';
-
 /**
  * Type for {@link GEN_AI_REQUEST_AVAILABLE_TOOLS} gen_ai.request.available_tools
  */
@@ -1471,9 +1223,6 @@ export type GEN_AI_REQUEST_AVAILABLE_TOOLS_TYPE = string;
  *
  * Aliases: {@link AI_FREQUENCY_PENALTY} `ai.frequency_penalty`
  * @example 0.5
- */
-export const GEN_AI_REQUEST_FREQUENCY_PENALTY = 'gen_ai.request.frequency_penalty';
-
 /**
  * Type for {@link GEN_AI_REQUEST_FREQUENCY_PENALTY} gen_ai.request.frequency_penalty
  */
@@ -1490,9 +1239,6 @@ export type GEN_AI_REQUEST_FREQUENCY_PENALTY_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  * @example 2048
- */
-export const GEN_AI_REQUEST_MAX_TOKENS = 'gen_ai.request.max_tokens';
-
 /**
  * Type for {@link GEN_AI_REQUEST_MAX_TOKENS} gen_ai.request.max_tokens
  */
@@ -1511,9 +1257,6 @@ export type GEN_AI_REQUEST_MAX_TOKENS_TYPE = number;
  *
  * Aliases: {@link AI_INPUT_MESSAGES} `ai.input_messages`
  * @example "[{\"role\": \"system\", \"content\": \"Generate a random number.\"}, {\"role\": \"user\", \"content\": [{\"text\": \"Generate a random number between 0 and 10.\", \"type\": \"text\"}]}, {\"role\": \"tool\", \"content\": {\"toolCallId\": \"1\", \"toolName\": \"Weather\", \"output\": \"rainy\"}}]"
- */
-export const GEN_AI_REQUEST_MESSAGES = 'gen_ai.request.messages';
-
 /**
  * Type for {@link GEN_AI_REQUEST_MESSAGES} gen_ai.request.messages
  */
@@ -1530,9 +1273,6 @@ export type GEN_AI_REQUEST_MESSAGES_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example "gpt-4-turbo-preview"
- */
-export const GEN_AI_REQUEST_MODEL = 'gen_ai.request.model';
-
 /**
  * Type for {@link GEN_AI_REQUEST_MODEL} gen_ai.request.model
  */
@@ -1551,9 +1291,6 @@ export type GEN_AI_REQUEST_MODEL_TYPE = string;
  *
  * Aliases: {@link AI_PRESENCE_PENALTY} `ai.presence_penalty`
  * @example 0.5
- */
-export const GEN_AI_REQUEST_PRESENCE_PENALTY = 'gen_ai.request.presence_penalty';
-
 /**
  * Type for {@link GEN_AI_REQUEST_PRESENCE_PENALTY} gen_ai.request.presence_penalty
  */
@@ -1572,9 +1309,6 @@ export type GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE = number;
  *
  * Aliases: {@link AI_SEED} `ai.seed`
  * @example "1234567890"
- */
-export const GEN_AI_REQUEST_SEED = 'gen_ai.request.seed';
-
 /**
  * Type for {@link GEN_AI_REQUEST_SEED} gen_ai.request.seed
  */
@@ -1593,9 +1327,6 @@ export type GEN_AI_REQUEST_SEED_TYPE = string;
  *
  * Aliases: {@link AI_TEMPERATURE} `ai.temperature`
  * @example 0.1
- */
-export const GEN_AI_REQUEST_TEMPERATURE = 'gen_ai.request.temperature';
-
 /**
  * Type for {@link GEN_AI_REQUEST_TEMPERATURE} gen_ai.request.temperature
  */
@@ -1614,9 +1345,6 @@ export type GEN_AI_REQUEST_TEMPERATURE_TYPE = number;
  *
  * Aliases: {@link AI_TOP_K} `ai.top_k`
  * @example 35
- */
-export const GEN_AI_REQUEST_TOP_K = 'gen_ai.request.top_k';
-
 /**
  * Type for {@link GEN_AI_REQUEST_TOP_K} gen_ai.request.top_k
  */
@@ -1635,9 +1363,6 @@ export type GEN_AI_REQUEST_TOP_K_TYPE = number;
  *
  * Aliases: {@link AI_TOP_P} `ai.top_p`
  * @example 0.7
- */
-export const GEN_AI_REQUEST_TOP_P = 'gen_ai.request.top_p';
-
 /**
  * Type for {@link GEN_AI_REQUEST_TOP_P} gen_ai.request.top_p
  */
@@ -1656,9 +1381,6 @@ export type GEN_AI_REQUEST_TOP_P_TYPE = number;
  *
  * Aliases: {@link AI_FINISH_REASON} `ai.finish_reason`
  * @example "COMPLETE"
- */
-export const GEN_AI_RESPONSE_FINISH_REASONS = 'gen_ai.response.finish_reasons';
-
 /**
  * Type for {@link GEN_AI_RESPONSE_FINISH_REASONS} gen_ai.response.finish_reasons
  */
@@ -1677,9 +1399,6 @@ export type GEN_AI_RESPONSE_FINISH_REASONS_TYPE = string;
  *
  * Aliases: {@link AI_GENERATION_ID} `ai.generation_id`
  * @example "gen_123abc"
- */
-export const GEN_AI_RESPONSE_ID = 'gen_ai.response.id';
-
 /**
  * Type for {@link GEN_AI_RESPONSE_ID} gen_ai.response.id
  */
@@ -1698,9 +1417,6 @@ export type GEN_AI_RESPONSE_ID_TYPE = string;
  *
  * Aliases: {@link AI_MODEL_ID} `ai.model_id`
  * @example "gpt-4"
- */
-export const GEN_AI_RESPONSE_MODEL = 'gen_ai.response.model';
-
 /**
  * Type for {@link GEN_AI_RESPONSE_MODEL} gen_ai.response.model
  */
@@ -1719,9 +1435,6 @@ export type GEN_AI_RESPONSE_MODEL_TYPE = string;
  *
  * Aliases: {@link AI_STREAMING} `ai.streaming`
  * @example true
- */
-export const GEN_AI_RESPONSE_STREAMING = 'gen_ai.response.streaming';
-
 /**
  * Type for {@link GEN_AI_RESPONSE_STREAMING} gen_ai.response.streaming
  */
@@ -1738,9 +1451,6 @@ export type GEN_AI_RESPONSE_STREAMING_TYPE = boolean;
  *
  * Attribute defined in OTEL: No
  * @example "[\"The weather in Paris is rainy and overcast, with temperatures around 57°F\", \"The weather in London is sunny and warm, with temperatures around 65°F\"]"
- */
-export const GEN_AI_RESPONSE_TEXT = 'gen_ai.response.text';
-
 /**
  * Type for {@link GEN_AI_RESPONSE_TEXT} gen_ai.response.text
  */
@@ -1757,9 +1467,6 @@ export type GEN_AI_RESPONSE_TEXT_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example 12345.67
- */
-export const GEN_AI_RESPONSE_TOKENS_PER_SECOND = 'gen_ai.response.tokens_per_second';
-
 /**
  * Type for {@link GEN_AI_RESPONSE_TOKENS_PER_SECOND} gen_ai.response.tokens_per_second
  */
@@ -1776,9 +1483,6 @@ export type GEN_AI_RESPONSE_TOKENS_PER_SECOND_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * @example "[{\"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]"
- */
-export const GEN_AI_RESPONSE_TOOL_CALLS = 'gen_ai.response.tool_calls';
-
 /**
  * Type for {@link GEN_AI_RESPONSE_TOOL_CALLS} gen_ai.response.tool_calls
  */
@@ -1797,9 +1501,6 @@ export type GEN_AI_RESPONSE_TOOL_CALLS_TYPE = string;
  *
  * Aliases: {@link AI_MODEL_PROVIDER} `ai.model.provider`
  * @example "openai"
- */
-export const GEN_AI_SYSTEM = 'gen_ai.system';
-
 /**
  * Type for {@link GEN_AI_SYSTEM} gen_ai.system
  */
@@ -1816,9 +1517,6 @@ export type GEN_AI_SYSTEM_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "You are a helpful assistant"
- */
-export const GEN_AI_SYSTEM_MESSAGE = 'gen_ai.system.message';
-
 /**
  * Type for {@link GEN_AI_SYSTEM_MESSAGE} gen_ai.system.message
  */
@@ -1835,9 +1533,6 @@ export type GEN_AI_SYSTEM_MESSAGE_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example "Searches the web for current information about a topic"
- */
-export const GEN_AI_TOOL_DESCRIPTION = 'gen_ai.tool.description';
-
 /**
  * Type for {@link GEN_AI_TOOL_DESCRIPTION} gen_ai.tool.description
  */
@@ -1854,9 +1549,6 @@ export type GEN_AI_TOOL_DESCRIPTION_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "{\"location\": \"Paris\"}"
- */
-export const GEN_AI_TOOL_INPUT = 'gen_ai.tool.input';
-
 /**
  * Type for {@link GEN_AI_TOOL_INPUT} gen_ai.tool.input
  */
@@ -1873,9 +1565,6 @@ export type GEN_AI_TOOL_INPUT_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "rainy, 57°F"
- */
-export const GEN_AI_TOOL_MESSAGE = 'gen_ai.tool.message';
-
 /**
  * Type for {@link GEN_AI_TOOL_MESSAGE} gen_ai.tool.message
  */
@@ -1894,9 +1583,6 @@ export type GEN_AI_TOOL_MESSAGE_TYPE = string;
  *
  * Aliases: {@link AI_FUNCTION_CALL} `ai.function_call`
  * @example "Flights"
- */
-export const GEN_AI_TOOL_NAME = 'gen_ai.tool.name';
-
 /**
  * Type for {@link GEN_AI_TOOL_NAME} gen_ai.tool.name
  */
@@ -1913,9 +1599,6 @@ export type GEN_AI_TOOL_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "rainy, 57°F"
- */
-export const GEN_AI_TOOL_OUTPUT = 'gen_ai.tool.output';
-
 /**
  * Type for {@link GEN_AI_TOOL_OUTPUT} gen_ai.tool.output
  */
@@ -1932,9 +1615,6 @@ export type GEN_AI_TOOL_OUTPUT_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example "function"
- */
-export const GEN_AI_TOOL_TYPE = 'gen_ai.tool.type';
-
 /**
  * Type for {@link GEN_AI_TOOL_TYPE} gen_ai.tool.type
  */
@@ -1953,9 +1633,6 @@ export type GEN_AI_TOOL_TYPE_TYPE = string;
  *
  * Aliases: {@link AI_PROMPT_TOKENS_USED} `ai.prompt_tokens.used`, {@link GEN_AI_USAGE_PROMPT_TOKENS} `gen_ai.usage.prompt_tokens`
  * @example 10
- */
-export const GEN_AI_USAGE_INPUT_TOKENS = 'gen_ai.usage.input_tokens';
-
 /**
  * Type for {@link GEN_AI_USAGE_INPUT_TOKENS} gen_ai.usage.input_tokens
  */
@@ -1972,9 +1649,6 @@ export type GEN_AI_USAGE_INPUT_TOKENS_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * @example 50
- */
-export const GEN_AI_USAGE_INPUT_TOKENS_CACHED = 'gen_ai.usage.input_tokens.cached';
-
 /**
  * Type for {@link GEN_AI_USAGE_INPUT_TOKENS_CACHED} gen_ai.usage.input_tokens.cached
  */
@@ -1993,9 +1667,6 @@ export type GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE = number;
  *
  * Aliases: {@link AI_COMPLETION_TOKENS_USED} `ai.completion_tokens.used`, {@link GEN_AI_USAGE_COMPLETION_TOKENS} `gen_ai.usage.completion_tokens`
  * @example 10
- */
-export const GEN_AI_USAGE_OUTPUT_TOKENS = 'gen_ai.usage.output_tokens';
-
 /**
  * Type for {@link GEN_AI_USAGE_OUTPUT_TOKENS} gen_ai.usage.output_tokens
  */
@@ -2012,9 +1683,6 @@ export type GEN_AI_USAGE_OUTPUT_TOKENS_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * @example 75
- */
-export const GEN_AI_USAGE_OUTPUT_TOKENS_REASONING = 'gen_ai.usage.output_tokens.reasoning';
-
 /**
  * Type for {@link GEN_AI_USAGE_OUTPUT_TOKENS_REASONING} gen_ai.usage.output_tokens.reasoning
  */
@@ -2033,9 +1701,6 @@ export type GEN_AI_USAGE_OUTPUT_TOKENS_REASONING_TYPE = number;
  *
  * Aliases: {@link AI_TOTAL_TOKENS_USED} `ai.total_tokens.used`
  * @example 20
- */
-export const GEN_AI_USAGE_TOTAL_TOKENS = 'gen_ai.usage.total_tokens';
-
 /**
  * Type for {@link GEN_AI_USAGE_TOTAL_TOKENS} gen_ai.usage.total_tokens
  */
@@ -2052,9 +1717,6 @@ export type GEN_AI_USAGE_TOTAL_TOKENS_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * @example "What's the weather in Paris?"
- */
-export const GEN_AI_USER_MESSAGE = 'gen_ai.user.message';
-
 /**
  * Type for {@link GEN_AI_USER_MESSAGE} gen_ai.user.message
  */
@@ -2071,9 +1733,6 @@ export type GEN_AI_USER_MESSAGE_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example "findBookById"
- */
-export const GRAPHQL_OPERATION_NAME = 'graphql.operation.name';
-
 /**
  * Type for {@link GRAPHQL_OPERATION_NAME} graphql.operation.name
  */
@@ -2090,9 +1749,6 @@ export type GRAPHQL_OPERATION_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example "query"
- */
-export const GRAPHQL_OPERATION_TYPE = 'graphql.operation.type';
-
 /**
  * Type for {@link GRAPHQL_OPERATION_TYPE} graphql.operation.type
  */
@@ -2109,11 +1765,6 @@ export type GRAPHQL_OPERATION_TYPE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example 456
- *
- * SDK specific: javascript-browser
- */
-export const HTTP_DECODED_RESPONSE_CONTENT_LENGTH = 'http.decoded_response_content_length';
-
 /**
  * Type for {@link HTTP_DECODED_RESPONSE_CONTENT_LENGTH} http.decoded_response_content_length
  */
@@ -2130,9 +1781,6 @@ export type HTTP_DECODED_RESPONSE_CONTENT_LENGTH_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * @example "#details"
- */
-export const HTTP_FRAGMENT = 'http.fragment';
-
 /**
  * Type for {@link HTTP_FRAGMENT} http.fragment
  */
@@ -2149,9 +1797,6 @@ export type HTTP_FRAGMENT_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "?foo=bar&bar=baz"
- */
-export const HTTP_QUERY = 'http.query';
-
 /**
  * Type for {@link HTTP_QUERY} http.query
  */
@@ -2168,11 +1813,6 @@ export type HTTP_QUERY_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example 1732829555.111
- *
- * SDK specific: javascript-browser
- */
-export const HTTP_REQUEST_CONNECT_START = 'http.request.connect_start';
-
 /**
  * Type for {@link HTTP_REQUEST_CONNECT_START} http.request.connect_start
  */
@@ -2189,11 +1829,6 @@ export type HTTP_REQUEST_CONNECT_START_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * @example 1732829555.15
- *
- * SDK specific: javascript-browser
- */
-export const HTTP_REQUEST_CONNECTION_END = 'http.request.connection_end';
-
 /**
  * Type for {@link HTTP_REQUEST_CONNECTION_END} http.request.connection_end
  */
@@ -2210,11 +1845,6 @@ export type HTTP_REQUEST_CONNECTION_END_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * @example 1732829555.201
- *
- * SDK specific: javascript-browser
- */
-export const HTTP_REQUEST_DOMAIN_LOOKUP_END = 'http.request.domain_lookup_end';
-
 /**
  * Type for {@link HTTP_REQUEST_DOMAIN_LOOKUP_END} http.request.domain_lookup_end
  */
@@ -2231,11 +1861,6 @@ export type HTTP_REQUEST_DOMAIN_LOOKUP_END_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * @example 1732829555.322
- *
- * SDK specific: javascript-browser
- */
-export const HTTP_REQUEST_DOMAIN_LOOKUP_START = 'http.request.domain_lookup_start';
-
 /**
  * Type for {@link HTTP_REQUEST_DOMAIN_LOOKUP_START} http.request.domain_lookup_start
  */
@@ -2252,11 +1877,6 @@ export type HTTP_REQUEST_DOMAIN_LOOKUP_START_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * @example 1732829555.389
- *
- * SDK specific: javascript-browser
- */
-export const HTTP_REQUEST_FETCH_START = 'http.request.fetch_start';
-
 /**
  * Type for {@link HTTP_REQUEST_FETCH_START} http.request.fetch_start
  */
@@ -2275,9 +1895,6 @@ export type HTTP_REQUEST_FETCH_START_TYPE = number;
  *
  * Has Dynamic Suffix: true
  * @example "http.request.header.custom-header=['foo', 'bar']"
- */
-export const HTTP_REQUEST_HEADER_KEY = 'http.request.header.<key>';
-
 /**
  * Type for {@link HTTP_REQUEST_HEADER_KEY} http.request.header.<key>
  */
@@ -2296,9 +1913,6 @@ export type HTTP_REQUEST_HEADER_KEY_TYPE = Array<string>;
  *
  * Aliases: {@link METHOD} `method`, {@link HTTP_METHOD} `http.method`
  * @example "GET"
- */
-export const HTTP_REQUEST_METHOD = 'http.request.method';
-
 /**
  * Type for {@link HTTP_REQUEST_METHOD} http.request.method
  */
@@ -2315,11 +1929,6 @@ export type HTTP_REQUEST_METHOD_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example 1732829558.502
- *
- * SDK specific: javascript-browser
- */
-export const HTTP_REQUEST_REDIRECT_END = 'http.request.redirect_end';
-
 /**
  * Type for {@link HTTP_REQUEST_REDIRECT_END} http.request.redirect_end
  */
@@ -2336,11 +1945,6 @@ export type HTTP_REQUEST_REDIRECT_END_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * @example 1732829555.495
- *
- * SDK specific: javascript-browser
- */
-export const HTTP_REQUEST_REDIRECT_START = 'http.request.redirect_start';
-
 /**
  * Type for {@link HTTP_REQUEST_REDIRECT_START} http.request.redirect_start
  */
@@ -2357,11 +1961,6 @@ export type HTTP_REQUEST_REDIRECT_START_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * @example 1732829555.51
- *
- * SDK specific: javascript-browser
- */
-export const HTTP_REQUEST_REQUEST_START = 'http.request.request_start';
-
 /**
  * Type for {@link HTTP_REQUEST_REQUEST_START} http.request.request_start
  */
@@ -2378,9 +1977,6 @@ export type HTTP_REQUEST_REQUEST_START_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * @example 2
- */
-export const HTTP_REQUEST_RESEND_COUNT = 'http.request.resend_count';
-
 /**
  * Type for {@link HTTP_REQUEST_RESEND_COUNT} http.request.resend_count
  */
@@ -2397,11 +1993,6 @@ export type HTTP_REQUEST_RESEND_COUNT_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * @example 1732829555.89
- *
- * SDK specific: javascript-browser
- */
-export const HTTP_REQUEST_RESPONSE_END = 'http.request.response_end';
-
 /**
  * Type for {@link HTTP_REQUEST_RESPONSE_END} http.request.response_end
  */
@@ -2418,11 +2009,6 @@ export type HTTP_REQUEST_RESPONSE_END_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * @example 1732829555.7
- *
- * SDK specific: javascript-browser
- */
-export const HTTP_REQUEST_RESPONSE_START = 'http.request.response_start';
-
 /**
  * Type for {@link HTTP_REQUEST_RESPONSE_START} http.request.response_start
  */
@@ -2439,11 +2025,6 @@ export type HTTP_REQUEST_RESPONSE_START_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * @example 1732829555.73
- *
- * SDK specific: javascript-browser
- */
-export const HTTP_REQUEST_SECURE_CONNECTION_START = 'http.request.secure_connection_start';
-
 /**
  * Type for {@link HTTP_REQUEST_SECURE_CONNECTION_START} http.request.secure_connection_start
  */
@@ -2460,11 +2041,6 @@ export type HTTP_REQUEST_SECURE_CONNECTION_START_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * @example 1.032
- *
- * SDK specific: javascript-browser
- */
-export const HTTP_REQUEST_TIME_TO_FIRST_BYTE = 'http.request.time_to_first_byte';
-
 /**
  * Type for {@link HTTP_REQUEST_TIME_TO_FIRST_BYTE} http.request.time_to_first_byte
  */
@@ -2481,11 +2057,6 @@ export type HTTP_REQUEST_TIME_TO_FIRST_BYTE_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * @example 1732829553.68
- *
- * SDK specific: javascript-browser
- */
-export const HTTP_REQUEST_WORKER_START = 'http.request.worker_start';
-
 /**
  * Type for {@link HTTP_REQUEST_WORKER_START} http.request.worker_start
  */
@@ -2504,9 +2075,6 @@ export type HTTP_REQUEST_WORKER_START_TYPE = number;
  *
  * Aliases: {@link HTTP_RESPONSE_CONTENT_LENGTH} `http.response_content_length`, {@link HTTP_RESPONSE_HEADER_CONTENT_LENGTH} `http.response.header.content-length`
  * @example 123
- */
-export const HTTP_RESPONSE_BODY_SIZE = 'http.response.body.size';
-
 /**
  * Type for {@link HTTP_RESPONSE_BODY_SIZE} http.response.body.size
  */
@@ -2525,9 +2093,6 @@ export type HTTP_RESPONSE_BODY_SIZE_TYPE = number;
  *
  * Has Dynamic Suffix: true
  * @example "http.response.header.custom-header=['foo', 'bar']"
- */
-export const HTTP_RESPONSE_HEADER_KEY = 'http.response.header.<key>';
-
 /**
  * Type for {@link HTTP_RESPONSE_HEADER_KEY} http.response.header.<key>
  */
@@ -2546,9 +2111,6 @@ export type HTTP_RESPONSE_HEADER_KEY_TYPE = Array<string>;
  *
  * Aliases: {@link HTTP_RESPONSE_CONTENT_LENGTH} `http.response_content_length`, {@link HTTP_RESPONSE_BODY_SIZE} `http.response.body.size`
  * @example "http.response.header.custom-header=['foo', 'bar']"
- */
-export const HTTP_RESPONSE_HEADER_CONTENT_LENGTH = 'http.response.header.content-length';
-
 /**
  * Type for {@link HTTP_RESPONSE_HEADER_CONTENT_LENGTH} http.response.header.content-length
  */
@@ -2567,9 +2129,6 @@ export type HTTP_RESPONSE_HEADER_CONTENT_LENGTH_TYPE = string;
  *
  * Aliases: {@link HTTP_RESPONSE_TRANSFER_SIZE} `http.response_transfer_size`
  * @example 456
- */
-export const HTTP_RESPONSE_SIZE = 'http.response.size';
-
 /**
  * Type for {@link HTTP_RESPONSE_SIZE} http.response.size
  */
@@ -2588,9 +2147,6 @@ export type HTTP_RESPONSE_SIZE_TYPE = number;
  *
  * Aliases: {@link HTTP_STATUS_CODE} `http.status_code`
  * @example 404
- */
-export const HTTP_RESPONSE_STATUS_CODE = 'http.response.status_code';
-
 /**
  * Type for {@link HTTP_RESPONSE_STATUS_CODE} http.response.status_code
  */
@@ -2609,9 +2165,6 @@ export type HTTP_RESPONSE_STATUS_CODE_TYPE = number;
  *
  * Aliases: {@link URL_TEMPLATE} `url.template`
  * @example "/users/:id"
- */
-export const HTTP_ROUTE = 'http.route';
-
 /**
  * Type for {@link HTTP_ROUTE} http.route
  */
@@ -2628,11 +2181,6 @@ export type HTTP_ROUTE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "f47ac10b58cc4372a5670e02b2c3d479"
- *
- * SDK specific: php-laravel
- */
-export const ID = 'id';
-
 /**
  * Type for {@link ID} id
  */
@@ -2649,9 +2197,6 @@ export type ID_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example "end of minor GC"
- */
-export const JVM_GC_ACTION = 'jvm.gc.action';
-
 /**
  * Type for {@link JVM_GC_ACTION} jvm.gc.action
  */
@@ -2668,9 +2213,6 @@ export type JVM_GC_ACTION_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example "G1 Young Generation"
- */
-export const JVM_GC_NAME = 'jvm.gc.name';
-
 /**
  * Type for {@link JVM_GC_NAME} jvm.gc.name
  */
@@ -2687,9 +2229,6 @@ export type JVM_GC_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example "G1 Old Gen"
- */
-export const JVM_MEMORY_POOL_NAME = 'jvm.memory.pool.name';
-
 /**
  * Type for {@link JVM_MEMORY_POOL_NAME} jvm.memory.pool.name
  */
@@ -2706,9 +2245,6 @@ export type JVM_MEMORY_POOL_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example "G1 Old Gen"
- */
-export const JVM_MEMORY_TYPE = 'jvm.memory.type';
-
 /**
  * Type for {@link JVM_MEMORY_TYPE} jvm.memory.type
  */
@@ -2725,9 +2261,6 @@ export type JVM_MEMORY_TYPE_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example true
- */
-export const JVM_THREAD_DAEMON = 'jvm.thread.daemon';
-
 /**
  * Type for {@link JVM_THREAD_DAEMON} jvm.thread.daemon
  */
@@ -2744,9 +2277,6 @@ export type JVM_THREAD_DAEMON_TYPE = boolean;
  *
  * Attribute defined in OTEL: Yes
  * @example "blocked"
- */
-export const JVM_THREAD_STATE = 'jvm.thread.state';
-
 /**
  * Type for {@link JVM_THREAD_STATE} jvm.thread.state
  */
@@ -2763,9 +2293,6 @@ export type JVM_THREAD_STATE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "img"
- */
-export const LCP_ELEMENT = 'lcp.element';
-
 /**
  * Type for {@link LCP_ELEMENT} lcp.element
  */
@@ -2782,9 +2309,6 @@ export type LCP_ELEMENT_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "#hero"
- */
-export const LCP_ID = 'lcp.id';
-
 /**
  * Type for {@link LCP_ID} lcp.id
  */
@@ -2801,9 +2325,6 @@ export type LCP_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example 1234
- */
-export const LCP_SIZE = 'lcp.size';
-
 /**
  * Type for {@link LCP_SIZE} lcp.size
  */
@@ -2820,9 +2341,6 @@ export type LCP_SIZE_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * @example "https://example.com"
- */
-export const LCP_URL = 'lcp.url';
-
 /**
  * Type for {@link LCP_URL} lcp.url
  */
@@ -2839,9 +2357,6 @@ export type LCP_URL_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "myLogger"
- */
-export const LOGGER_NAME = 'logger.name';
-
 /**
  * Type for {@link LOGGER_NAME} logger.name
  */
@@ -2858,9 +2373,6 @@ export type LOGGER_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "An example prompt result!"
- */
-export const MCP_PROMPT_RESULT = 'mcp.prompt.result';
-
 /**
  * Type for {@link MCP_PROMPT_RESULT} mcp.prompt.result
  */
@@ -2877,9 +2389,6 @@ export type MCP_PROMPT_RESULT_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "{\"output\": \"rainy\", \"toolCallId\": \"1\"}"
- */
-export const MCP_TOOL_RESULT_CONTENT = 'mcp.tool.result.content';
-
 /**
  * Type for {@link MCP_TOOL_RESULT_CONTENT} mcp.tool.result.content
  */
@@ -2896,11 +2405,6 @@ export type MCP_TOOL_RESULT_CONTENT_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "BestTopic"
- *
- * SDK specific: php-laravel
- */
-export const MESSAGING_DESTINATION_CONNECTION = 'messaging.destination.connection';
-
 /**
  * Type for {@link MESSAGING_DESTINATION_CONNECTION} messaging.destination.connection
  */
@@ -2917,11 +2421,6 @@ export type MESSAGING_DESTINATION_CONNECTION_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example "BestTopic"
- *
- * SDK specific: php-laravel
- */
-export const MESSAGING_DESTINATION_NAME = 'messaging.destination.name';
-
 /**
  * Type for {@link MESSAGING_DESTINATION_NAME} messaging.destination.name
  */
@@ -2938,11 +2437,6 @@ export type MESSAGING_DESTINATION_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example 839
- *
- * SDK specific: php-laravel
- */
-export const MESSAGING_MESSAGE_BODY_SIZE = 'messaging.message.body.size';
-
 /**
  * Type for {@link MESSAGING_MESSAGE_BODY_SIZE} messaging.message.body.size
  */
@@ -2959,11 +2453,6 @@ export type MESSAGING_MESSAGE_BODY_SIZE_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  * @example 1045
- *
- * SDK specific: php-laravel
- */
-export const MESSAGING_MESSAGE_ENVELOPE_SIZE = 'messaging.message.envelope.size';
-
 /**
  * Type for {@link MESSAGING_MESSAGE_ENVELOPE_SIZE} messaging.message.envelope.size
  */
@@ -2980,11 +2469,6 @@ export type MESSAGING_MESSAGE_ENVELOPE_SIZE_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  * @example "f47ac10b58cc4372a5670e02b2c3d479"
- *
- * SDK specific: php-laravel
- */
-export const MESSAGING_MESSAGE_ID = 'messaging.message.id';
-
 /**
  * Type for {@link MESSAGING_MESSAGE_ID} messaging.message.id
  */
@@ -3001,11 +2485,6 @@ export type MESSAGING_MESSAGE_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example 1732847252
- *
- * SDK specific: php-laravel
- */
-export const MESSAGING_MESSAGE_RECEIVE_LATENCY = 'messaging.message.receive.latency';
-
 /**
  * Type for {@link MESSAGING_MESSAGE_RECEIVE_LATENCY} messaging.message.receive.latency
  */
@@ -3022,11 +2501,6 @@ export type MESSAGING_MESSAGE_RECEIVE_LATENCY_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * @example 2
- *
- * SDK specific: php-laravel
- */
-export const MESSAGING_MESSAGE_RETRY_COUNT = 'messaging.message.retry.count';
-
 /**
  * Type for {@link MESSAGING_MESSAGE_RETRY_COUNT} messaging.message.retry.count
  */
@@ -3043,9 +2517,6 @@ export type MESSAGING_MESSAGE_RETRY_COUNT_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  * @example "create"
- */
-export const MESSAGING_OPERATION_TYPE = 'messaging.operation.type';
-
 /**
  * Type for {@link MESSAGING_OPERATION_TYPE} messaging.operation.type
  */
@@ -3062,11 +2533,6 @@ export type MESSAGING_OPERATION_TYPE_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example "activemq"
- *
- * SDK specific: php-laravel
- */
-export const MESSAGING_SYSTEM = 'messaging.system';
-
 /**
  * Type for {@link MESSAGING_SYSTEM} messaging.system
  */
@@ -3083,9 +2549,6 @@ export type MESSAGING_SYSTEM_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "router.push"
- */
-export const NAVIGATION_TYPE = 'navigation.type';
-
 /**
  * Type for {@link NAVIGATION_TYPE} navigation.type
  */
@@ -3102,9 +2565,6 @@ export type NAVIGATION_TYPE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example 100
- */
-export const NEL_ELAPSED_TIME = 'nel.elapsed_time';
-
 /**
  * Type for {@link NEL_ELAPSED_TIME} nel.elapsed_time
  */
@@ -3121,9 +2581,6 @@ export type NEL_ELAPSED_TIME_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * @example "application"
- */
-export const NEL_PHASE = 'nel.phase';
-
 /**
  * Type for {@link NEL_PHASE} nel.phase
  */
@@ -3140,9 +2597,6 @@ export type NEL_PHASE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "https://example.com/foo?bar=baz"
- */
-export const NEL_REFERRER = 'nel.referrer';
-
 /**
  * Type for {@link NEL_REFERRER} nel.referrer
  */
@@ -3159,9 +2613,6 @@ export type NEL_REFERRER_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example 0.5
- */
-export const NEL_SAMPLING_FUNCTION = 'nel.sampling_function';
-
 /**
  * Type for {@link NEL_SAMPLING_FUNCTION} nel.sampling_function
  */
@@ -3178,9 +2629,6 @@ export type NEL_SAMPLING_FUNCTION_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * @example "dns.unreachable"
- */
-export const NEL_TYPE = 'nel.type';
-
 /**
  * Type for {@link NEL_TYPE} nel.type
  */
@@ -3199,9 +2647,6 @@ export type NEL_TYPE_TYPE = string;
  *
  * Aliases: {@link NET_HOST_IP} `net.host.ip`, {@link NET_SOCK_HOST_ADDR} `net.sock.host.addr`
  * @example "10.1.2.80"
- */
-export const NETWORK_LOCAL_ADDRESS = 'network.local.address';
-
 /**
  * Type for {@link NETWORK_LOCAL_ADDRESS} network.local.address
  */
@@ -3220,9 +2665,6 @@ export type NETWORK_LOCAL_ADDRESS_TYPE = string;
  *
  * Aliases: {@link NET_SOCK_HOST_PORT} `net.sock.host.port`
  * @example 65400
- */
-export const NETWORK_LOCAL_PORT = 'network.local.port';
-
 /**
  * Type for {@link NETWORK_LOCAL_PORT} network.local.port
  */
@@ -3241,9 +2683,6 @@ export type NETWORK_LOCAL_PORT_TYPE = number;
  *
  * Aliases: {@link NET_PEER_IP} `net.peer.ip`, {@link NET_SOCK_PEER_ADDR} `net.sock.peer.addr`
  * @example "10.1.2.80"
- */
-export const NETWORK_PEER_ADDRESS = 'network.peer.address';
-
 /**
  * Type for {@link NETWORK_PEER_ADDRESS} network.peer.address
  */
@@ -3260,9 +2699,6 @@ export type NETWORK_PEER_ADDRESS_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example 65400
- */
-export const NETWORK_PEER_PORT = 'network.peer.port';
-
 /**
  * Type for {@link NETWORK_PEER_PORT} network.peer.port
  */
@@ -3281,9 +2717,6 @@ export type NETWORK_PEER_PORT_TYPE = number;
  *
  * Aliases: {@link NET_PROTOCOL_NAME} `net.protocol.name`
  * @example "http"
- */
-export const NETWORK_PROTOCOL_NAME = 'network.protocol.name';
-
 /**
  * Type for {@link NETWORK_PROTOCOL_NAME} network.protocol.name
  */
@@ -3302,9 +2735,6 @@ export type NETWORK_PROTOCOL_NAME_TYPE = string;
  *
  * Aliases: {@link HTTP_FLAVOR} `http.flavor`, {@link NET_PROTOCOL_VERSION} `net.protocol.version`
  * @example "1.1"
- */
-export const NETWORK_PROTOCOL_VERSION = 'network.protocol.version';
-
 /**
  * Type for {@link NETWORK_PROTOCOL_VERSION} network.protocol.version
  */
@@ -3323,9 +2753,6 @@ export type NETWORK_PROTOCOL_VERSION_TYPE = string;
  *
  * Aliases: {@link NET_TRANSPORT} `net.transport`
  * @example "tcp"
- */
-export const NETWORK_TRANSPORT = 'network.transport';
-
 /**
  * Type for {@link NETWORK_TRANSPORT} network.transport
  */
@@ -3342,9 +2769,6 @@ export type NETWORK_TRANSPORT_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example "ipv4"
- */
-export const NETWORK_TYPE = 'network.type';
-
 /**
  * Type for {@link NETWORK_TYPE} network.type
  */
@@ -3361,9 +2785,6 @@ export type NETWORK_TYPE_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example "1234567890"
- */
-export const OS_BUILD_ID = 'os.build_id';
-
 /**
  * Type for {@link OS_BUILD_ID} os.build_id
  */
@@ -3380,9 +2801,6 @@ export type OS_BUILD_ID_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example "Ubuntu 18.04.1 LTS"
- */
-export const OS_DESCRIPTION = 'os.description';
-
 /**
  * Type for {@link OS_DESCRIPTION} os.description
  */
@@ -3399,9 +2817,6 @@ export type OS_DESCRIPTION_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example "Ubuntu"
- */
-export const OS_NAME = 'os.name';
-
 /**
  * Type for {@link OS_NAME} os.name
  */
@@ -3418,9 +2833,6 @@ export type OS_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example "linux"
- */
-export const OS_TYPE = 'os.type';
-
 /**
  * Type for {@link OS_TYPE} os.type
  */
@@ -3437,9 +2849,6 @@ export type OS_TYPE_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example "18.04.2"
- */
-export const OS_VERSION = 'os.version';
-
 /**
  * Type for {@link OS_VERSION} os.version
  */
@@ -3456,9 +2865,6 @@ export type OS_VERSION_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example "io.opentelemetry.contrib.mongodb"
- */
-export const OTEL_SCOPE_NAME = 'otel.scope.name';
-
 /**
  * Type for {@link OTEL_SCOPE_NAME} otel.scope.name
  */
@@ -3475,9 +2881,6 @@ export type OTEL_SCOPE_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example "2.4.5"
- */
-export const OTEL_SCOPE_VERSION = 'otel.scope.version';
-
 /**
  * Type for {@link OTEL_SCOPE_VERSION} otel.scope.version
  */
@@ -3494,9 +2897,6 @@ export type OTEL_SCOPE_VERSION_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example "OK"
- */
-export const OTEL_STATUS_CODE = 'otel.status_code';
-
 /**
  * Type for {@link OTEL_STATUS_CODE} otel.status_code
  */
@@ -3513,9 +2913,6 @@ export type OTEL_STATUS_CODE_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example "resource not found"
- */
-export const OTEL_STATUS_DESCRIPTION = 'otel.status_description';
-
 /**
  * Type for {@link OTEL_STATUS_DESCRIPTION} otel.status_description
  */
@@ -3536,9 +2933,6 @@ export type OTEL_STATUS_DESCRIPTION_TYPE = string;
  *
  * Aliases: {@link URL_PATH_PARAMETER_KEY} `url.path.parameter.<key>`
  * @example "params.id='123'"
- */
-export const PARAMS_KEY = 'params.<key>';
-
 /**
  * Type for {@link PARAMS_KEY} params.<key>
  */
@@ -3555,11 +2949,6 @@ export type PARAMS_KEY_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "HomeScreen"
- *
- * SDK specific: javascript-reactnative
- */
-export const PREVIOUS_ROUTE = 'previous_route';
-
 /**
  * Type for {@link PREVIOUS_ROUTE} previous_route
  */
@@ -3576,9 +2965,6 @@ export type PREVIOUS_ROUTE_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example "getsentry"
- */
-export const PROCESS_EXECUTABLE_NAME = 'process.executable.name';
-
 /**
  * Type for {@link PROCESS_EXECUTABLE_NAME} process.executable.name
  */
@@ -3595,9 +2981,6 @@ export type PROCESS_EXECUTABLE_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example 12345
- */
-export const PROCESS_PID = 'process.pid';
-
 /**
  * Type for {@link PROCESS_PID} process.pid
  */
@@ -3614,9 +2997,6 @@ export type PROCESS_PID_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  * @example "Eclipse OpenJ9 VM openj9-0.21.0"
- */
-export const PROCESS_RUNTIME_DESCRIPTION = 'process.runtime.description';
-
 /**
  * Type for {@link PROCESS_RUNTIME_DESCRIPTION} process.runtime.description
  */
@@ -3633,9 +3013,6 @@ export type PROCESS_RUNTIME_DESCRIPTION_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example "node"
- */
-export const PROCESS_RUNTIME_NAME = 'process.runtime.name';
-
 /**
  * Type for {@link PROCESS_RUNTIME_NAME} process.runtime.name
  */
@@ -3652,9 +3029,6 @@ export type PROCESS_RUNTIME_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example "18.04.2"
- */
-export const PROCESS_RUNTIME_VERSION = 'process.runtime.version';
-
 /**
  * Type for {@link PROCESS_RUNTIME_VERSION} process.runtime.version
  */
@@ -3673,11 +3047,6 @@ export type PROCESS_RUNTIME_VERSION_TYPE = string;
  *
  * Has Dynamic Suffix: true
  * @example "http.response.header.text='test'"
- *
- * SDK specific: javascript-remix
- */
-export const REMIX_ACTION_FORM_DATA_KEY = 'remix.action_form_data.<key>';
-
 /**
  * Type for {@link REMIX_ACTION_FORM_DATA_KEY} remix.action_form_data.<key>
  */
@@ -3694,11 +3063,6 @@ export type REMIX_ACTION_FORM_DATA_KEY_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "non-blocking"
- *
- * SDK specific: javascript-browser
- */
-export const RESOURCE_RENDER_BLOCKING_STATUS = 'resource.render_blocking_status';
-
 /**
  * Type for {@link RESOURCE_RENDER_BLOCKING_STATUS} resource.render_blocking_status
  */
@@ -3715,9 +3079,6 @@ export type RESOURCE_RENDER_BLOCKING_STATUS_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example 2
- */
-export const RPC_GRPC_STATUS_CODE = 'rpc.grpc.status_code';
-
 /**
  * Type for {@link RPC_GRPC_STATUS_CODE} rpc.grpc.status_code
  */
@@ -3734,9 +3095,6 @@ export type RPC_GRPC_STATUS_CODE_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  * @example "myService.BestService"
- */
-export const RPC_SERVICE = 'rpc.service';
-
 /**
  * Type for {@link RPC_SERVICE} rpc.service
  */
@@ -3753,9 +3111,6 @@ export type RPC_SERVICE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "prod"
- */
-export const SENTRY_INTERNAL_DSC_ENVIRONMENT = 'sentry._internal.dsc.environment';
-
 /**
  * Type for {@link SENTRY_INTERNAL_DSC_ENVIRONMENT} sentry._internal.dsc.environment
  */
@@ -3772,9 +3127,6 @@ export type SENTRY_INTERNAL_DSC_ENVIRONMENT_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "1"
- */
-export const SENTRY_INTERNAL_DSC_ORG_ID = 'sentry._internal.dsc.org_id';
-
 /**
  * Type for {@link SENTRY_INTERNAL_DSC_ORG_ID} sentry._internal.dsc.org_id
  */
@@ -3791,9 +3143,6 @@ export type SENTRY_INTERNAL_DSC_ORG_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "c51734c603c4430eb57cb0a5728a479d"
- */
-export const SENTRY_INTERNAL_DSC_PUBLIC_KEY = 'sentry._internal.dsc.public_key';
-
 /**
  * Type for {@link SENTRY_INTERNAL_DSC_PUBLIC_KEY} sentry._internal.dsc.public_key
  */
@@ -3810,9 +3159,6 @@ export type SENTRY_INTERNAL_DSC_PUBLIC_KEY_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "frontend@e8211be71b214afab5b85de4b4c54be3714952bb"
- */
-export const SENTRY_INTERNAL_DSC_RELEASE = 'sentry._internal.dsc.release';
-
 /**
  * Type for {@link SENTRY_INTERNAL_DSC_RELEASE} sentry._internal.dsc.release
  */
@@ -3829,9 +3175,6 @@ export type SENTRY_INTERNAL_DSC_RELEASE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "0.8286147972820134"
- */
-export const SENTRY_INTERNAL_DSC_SAMPLE_RAND = 'sentry._internal.dsc.sample_rand';
-
 /**
  * Type for {@link SENTRY_INTERNAL_DSC_SAMPLE_RAND} sentry._internal.dsc.sample_rand
  */
@@ -3848,9 +3191,6 @@ export type SENTRY_INTERNAL_DSC_SAMPLE_RAND_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "1.0"
- */
-export const SENTRY_INTERNAL_DSC_SAMPLE_RATE = 'sentry._internal.dsc.sample_rate';
-
 /**
  * Type for {@link SENTRY_INTERNAL_DSC_SAMPLE_RATE} sentry._internal.dsc.sample_rate
  */
@@ -3867,9 +3207,6 @@ export type SENTRY_INTERNAL_DSC_SAMPLE_RATE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example true
- */
-export const SENTRY_INTERNAL_DSC_SAMPLED = 'sentry._internal.dsc.sampled';
-
 /**
  * Type for {@link SENTRY_INTERNAL_DSC_SAMPLED} sentry._internal.dsc.sampled
  */
@@ -3886,9 +3223,6 @@ export type SENTRY_INTERNAL_DSC_SAMPLED_TYPE = boolean;
  *
  * Attribute defined in OTEL: No
  * @example "047372980460430cbc78d9779df33a46"
- */
-export const SENTRY_INTERNAL_DSC_TRACE_ID = 'sentry._internal.dsc.trace_id';
-
 /**
  * Type for {@link SENTRY_INTERNAL_DSC_TRACE_ID} sentry._internal.dsc.trace_id
  */
@@ -3905,9 +3239,6 @@ export type SENTRY_INTERNAL_DSC_TRACE_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "/issues/errors-outages/"
- */
-export const SENTRY_INTERNAL_DSC_TRANSACTION = 'sentry._internal.dsc.transaction';
-
 /**
  * Type for {@link SENTRY_INTERNAL_DSC_TRANSACTION} sentry._internal.dsc.transaction
  */
@@ -3926,9 +3257,6 @@ export type SENTRY_INTERNAL_DSC_TRANSACTION_TYPE = string;
  *
  * Aliases: {@link SENTRY_OBSERVED_TIMESTAMP_NANOS} `sentry.observed_timestamp_nanos`
  * @example "1544712660300000000"
- */
-export const SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS = 'sentry._internal.observed_timestamp_nanos';
-
 /**
  * Type for {@link SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS} sentry._internal.observed_timestamp_nanos
  */
@@ -3945,9 +3273,6 @@ export type SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example true
- */
-export const SENTRY_INTERNAL_REPLAY_IS_BUFFERING = 'sentry._internal.replay_is_buffering';
-
 /**
  * Type for {@link SENTRY_INTERNAL_REPLAY_IS_BUFFERING} sentry._internal.replay_is_buffering
  */
@@ -3964,9 +3289,6 @@ export type SENTRY_INTERNAL_REPLAY_IS_BUFFERING_TYPE = boolean;
  *
  * Attribute defined in OTEL: No
  * @example "document.hidden"
- */
-export const SENTRY_CANCELLATION_REASON = 'sentry.cancellation_reason';
-
 /**
  * Type for {@link SENTRY_CANCELLATION_REASON} sentry.cancellation_reason
  */
@@ -3983,9 +3305,6 @@ export type SENTRY_CANCELLATION_REASON_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example 0.5
- */
-export const SENTRY_CLIENT_SAMPLE_RATE = 'sentry.client_sample_rate';
-
 /**
  * Type for {@link SENTRY_CLIENT_SAMPLE_RATE} sentry.client_sample_rate
  */
@@ -4002,9 +3321,6 @@ export type SENTRY_CLIENT_SAMPLE_RATE_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * @example "index view query"
- */
-export const SENTRY_DESCRIPTION = 'sentry.description';
-
 /**
  * Type for {@link SENTRY_DESCRIPTION} sentry.description
  */
@@ -4021,9 +3337,6 @@ export type SENTRY_DESCRIPTION_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "1.0"
- */
-export const SENTRY_DIST = 'sentry.dist';
-
 /**
  * Type for {@link SENTRY_DIST} sentry.dist
  */
@@ -4042,9 +3355,6 @@ export type SENTRY_DIST_TYPE = string;
  *
  * Aliases: {@link ENVIRONMENT} `environment`
  * @example "production"
- */
-export const SENTRY_ENVIRONMENT = 'sentry.environment';
-
 /**
  * Type for {@link SENTRY_ENVIRONMENT} sentry.environment
  */
@@ -4061,9 +3371,6 @@ export type SENTRY_ENVIRONMENT_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example 1234
- */
-export const SENTRY_EXCLUSIVE_TIME = 'sentry.exclusive_time';
-
 /**
  * Type for {@link SENTRY_EXCLUSIVE_TIME} sentry.exclusive_time
  */
@@ -4080,9 +3387,6 @@ export type SENTRY_EXCLUSIVE_TIME_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * @example true
- */
-export const SENTRY_HTTP_PREFETCH = 'sentry.http.prefetch';
-
 /**
  * Type for {@link SENTRY_HTTP_PREFETCH} sentry.http.prefetch
  */
@@ -4099,9 +3403,6 @@ export type SENTRY_HTTP_PREFETCH_TYPE = boolean;
  *
  * Attribute defined in OTEL: No
  * @example "idleTimeout"
- */
-export const SENTRY_IDLE_SPAN_FINISH_REASON = 'sentry.idle_span_finish_reason';
-
 /**
  * Type for {@link SENTRY_IDLE_SPAN_FINISH_REASON} sentry.idle_span_finish_reason
  */
@@ -4118,9 +3419,6 @@ export type SENTRY_IDLE_SPAN_FINISH_REASON_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "sentry.message.parameter.0='123'"
- */
-export const SENTRY_MESSAGE_PARAMETER_KEY = 'sentry.message.parameter.<key>';
-
 /**
  * Type for {@link SENTRY_MESSAGE_PARAMETER_KEY} sentry.message.parameter.<key>
  */
@@ -4137,9 +3435,6 @@ export type SENTRY_MESSAGE_PARAMETER_KEY_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "Hello, {name}!"
- */
-export const SENTRY_MESSAGE_TEMPLATE = 'sentry.message.template';
-
 /**
  * Type for {@link SENTRY_MESSAGE_TEMPLATE} sentry.message.template
  */
@@ -4158,9 +3453,6 @@ export type SENTRY_MESSAGE_TEMPLATE_TYPE = string;
  *
  * Has Dynamic Suffix: true
  * @example "sentry.module.brianium/paratest='v7.7.0'"
- */
-export const SENTRY_MODULE_KEY = 'sentry.module.<key>';
-
 /**
  * Type for {@link SENTRY_MODULE_KEY} sentry.module.<key>
  */
@@ -4177,11 +3469,6 @@ export type SENTRY_MODULE_KEY_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "/posts/[id]/layout"
- *
- * SDK specific: javascript
- */
-export const SENTRY_NEXTJS_SSR_FUNCTION_ROUTE = 'sentry.nextjs.ssr.function.route';
-
 /**
  * Type for {@link SENTRY_NEXTJS_SSR_FUNCTION_ROUTE} sentry.nextjs.ssr.function.route
  */
@@ -4198,11 +3485,6 @@ export type SENTRY_NEXTJS_SSR_FUNCTION_ROUTE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "generateMetadata"
- *
- * SDK specific: javascript
- */
-export const SENTRY_NEXTJS_SSR_FUNCTION_TYPE = 'sentry.nextjs.ssr.function.type';
-
 /**
  * Type for {@link SENTRY_NEXTJS_SSR_FUNCTION_TYPE} sentry.nextjs.ssr.function.type
  */
@@ -4219,9 +3501,6 @@ export type SENTRY_NEXTJS_SSR_FUNCTION_TYPE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "http.client"
- */
-export const SENTRY_OP = 'sentry.op';
-
 /**
  * Type for {@link SENTRY_OP} sentry.op
  */
@@ -4238,9 +3517,6 @@ export type SENTRY_OP_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "auto.http.otel.fastify"
- */
-export const SENTRY_ORIGIN = 'sentry.origin';
-
 /**
  * Type for {@link SENTRY_ORIGIN} sentry.origin
  */
@@ -4257,9 +3533,6 @@ export type SENTRY_ORIGIN_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "php"
- */
-export const SENTRY_PLATFORM = 'sentry.platform';
-
 /**
  * Type for {@link SENTRY_PLATFORM} sentry.platform
  */
@@ -4278,9 +3551,6 @@ export type SENTRY_PLATFORM_TYPE = string;
  *
  * Aliases: {@link PROFILE_ID} `profile_id`
  * @example "123e4567e89b12d3a456426614174000"
- */
-export const SENTRY_PROFILE_ID = 'sentry.profile_id';
-
 /**
  * Type for {@link SENTRY_PROFILE_ID} sentry.profile_id
  */
@@ -4299,9 +3569,6 @@ export type SENTRY_PROFILE_ID_TYPE = string;
  *
  * Aliases: {@link SERVICE_VERSION} `service.version`, {@link RELEASE} `release`
  * @example "7.0.0"
- */
-export const SENTRY_RELEASE = 'sentry.release';
-
 /**
  * Type for {@link SENTRY_RELEASE} sentry.release
  */
@@ -4320,9 +3587,6 @@ export type SENTRY_RELEASE_TYPE = string;
  *
  * Aliases: {@link REPLAY_ID} `replay_id`
  * @example "123e4567e89b12d3a456426614174000"
- */
-export const SENTRY_REPLAY_ID = 'sentry.replay_id';
-
 /**
  * Type for {@link SENTRY_REPLAY_ID} sentry.replay_id
  */
@@ -4339,9 +3603,6 @@ export type SENTRY_REPLAY_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example ["InboundFilters","FunctionToString","BrowserApiErrors","Breadcrumbs"]
- */
-export const SENTRY_SDK_INTEGRATIONS = 'sentry.sdk.integrations';
-
 /**
  * Type for {@link SENTRY_SDK_INTEGRATIONS} sentry.sdk.integrations
  */
@@ -4358,9 +3619,6 @@ export type SENTRY_SDK_INTEGRATIONS_TYPE = Array<string>;
  *
  * Attribute defined in OTEL: No
  * @example "@sentry/react"
- */
-export const SENTRY_SDK_NAME = 'sentry.sdk.name';
-
 /**
  * Type for {@link SENTRY_SDK_NAME} sentry.sdk.name
  */
@@ -4377,9 +3635,6 @@ export type SENTRY_SDK_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "7.0.0"
- */
-export const SENTRY_SDK_VERSION = 'sentry.sdk.version';
-
 /**
  * Type for {@link SENTRY_SDK_VERSION} sentry.sdk.version
  */
@@ -4398,9 +3653,6 @@ export type SENTRY_SDK_VERSION_TYPE = string;
  *
  * Aliases: {@link _SENTRY_SEGMENT_ID} `sentry.segment_id`
  * @example "051581bf3cb55c13"
- */
-export const SENTRY_SEGMENT_ID = 'sentry.segment.id';
-
 /**
  * Type for {@link SENTRY_SEGMENT_ID} sentry.segment.id
  */
@@ -4417,9 +3669,6 @@ export type SENTRY_SEGMENT_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "GET /user"
- */
-export const SENTRY_SEGMENT_NAME = 'sentry.segment.name';
-
 /**
  * Type for {@link SENTRY_SEGMENT_NAME} sentry.segment.name
  */
@@ -4436,9 +3685,6 @@ export type SENTRY_SEGMENT_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example 0.5
- */
-export const SENTRY_SERVER_SAMPLE_RATE = 'sentry.server_sample_rate';
-
 /**
  * Type for {@link SENTRY_SERVER_SAMPLE_RATE} sentry.server_sample_rate
  */
@@ -4455,9 +3701,6 @@ export type SENTRY_SERVER_SAMPLE_RATE_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * @example "route"
- */
-export const SENTRY_SPAN_SOURCE = 'sentry.span.source';
-
 /**
  * Type for {@link SENTRY_SPAN_SOURCE} sentry.span.source
  */
@@ -4474,9 +3717,6 @@ export type SENTRY_SPAN_SOURCE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "b0e6f15b45c36b12"
- */
-export const SENTRY_TRACE_PARENT_SPAN_ID = 'sentry.trace.parent_span_id';
-
 /**
  * Type for {@link SENTRY_TRACE_PARENT_SPAN_ID} sentry.trace.parent_span_id
  */
@@ -4495,9 +3735,6 @@ export type SENTRY_TRACE_PARENT_SPAN_ID_TYPE = string;
  *
  * Aliases: {@link TRANSACTION} `transaction`
  * @example "GET /"
- */
-export const SENTRY_TRANSACTION = 'sentry.transaction';
-
 /**
  * Type for {@link SENTRY_TRANSACTION} sentry.transaction
  */
@@ -4516,9 +3753,6 @@ export type SENTRY_TRANSACTION_TYPE = string;
  *
  * Aliases: {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`
  * @example "example.com"
- */
-export const SERVER_ADDRESS = 'server.address';
-
 /**
  * Type for {@link SERVER_ADDRESS} server.address
  */
@@ -4537,9 +3771,6 @@ export type SERVER_ADDRESS_TYPE = string;
  *
  * Aliases: {@link NET_HOST_PORT} `net.host.port`
  * @example 1337
- */
-export const SERVER_PORT = 'server.port';
-
 /**
  * Type for {@link SERVER_PORT} server.port
  */
@@ -4556,9 +3787,6 @@ export type SERVER_PORT_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  * @example "omegastar"
- */
-export const SERVICE_NAME = 'service.name';
-
 /**
  * Type for {@link SERVICE_NAME} service.name
  */
@@ -4577,9 +3805,6 @@ export type SERVICE_NAME_TYPE = string;
  *
  * Aliases: {@link SENTRY_RELEASE} `sentry.release`
  * @example "5.0.0"
- */
-export const SERVICE_VERSION = 'service.version';
-
 /**
  * Type for {@link SERVICE_VERSION} service.version
  */
@@ -4596,9 +3821,6 @@ export type SERVICE_VERSION_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example 56
- */
-export const THREAD_ID = 'thread.id';
-
 /**
  * Type for {@link THREAD_ID} thread.id
  */
@@ -4615,9 +3837,6 @@ export type THREAD_ID_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  * @example "main"
- */
-export const THREAD_NAME = 'thread.name';
-
 /**
  * Type for {@link THREAD_NAME} thread.name
  */
@@ -4634,11 +3853,6 @@ export type THREAD_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "fetch"
- *
- * SDK specific: javascript-browser, javascript-node
- */
-export const TYPE = 'type';
-
 /**
  * Type for {@link TYPE} type
  */
@@ -4655,9 +3869,6 @@ export type TYPE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "HomeButton"
- */
-export const UI_COMPONENT_NAME = 'ui.component_name';
-
 /**
  * Type for {@link UI_COMPONENT_NAME} ui.component_name
  */
@@ -4674,9 +3885,6 @@ export type UI_COMPONENT_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example true
- */
-export const UI_CONTRIBUTES_TO_TTFD = 'ui.contributes_to_ttfd';
-
 /**
  * Type for {@link UI_CONTRIBUTES_TO_TTFD} ui.contributes_to_ttfd
  */
@@ -4693,9 +3901,6 @@ export type UI_CONTRIBUTES_TO_TTFD_TYPE = boolean;
  *
  * Attribute defined in OTEL: No
  * @example true
- */
-export const UI_CONTRIBUTES_TO_TTID = 'ui.contributes_to_ttid';
-
 /**
  * Type for {@link UI_CONTRIBUTES_TO_TTID} ui.contributes_to_ttid
  */
@@ -4712,9 +3917,6 @@ export type UI_CONTRIBUTES_TO_TTID_TYPE = boolean;
  *
  * Attribute defined in OTEL: Yes
  * @example "example.com"
- */
-export const URL_DOMAIN = 'url.domain';
-
 /**
  * Type for {@link URL_DOMAIN} url.domain
  */
@@ -4731,9 +3933,6 @@ export type URL_DOMAIN_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example "details"
- */
-export const URL_FRAGMENT = 'url.fragment';
-
 /**
  * Type for {@link URL_FRAGMENT} url.fragment
  */
@@ -4752,9 +3951,6 @@ export type URL_FRAGMENT_TYPE = string;
  *
  * Aliases: {@link HTTP_URL} `http.url`, {@link URL} `url`
  * @example "https://example.com/test?foo=bar#buzz"
- */
-export const URL_FULL = 'url.full';
-
 /**
  * Type for {@link URL_FULL} url.full
  */
@@ -4771,9 +3967,6 @@ export type URL_FULL_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example "/foo"
- */
-export const URL_PATH = 'url.path';
-
 /**
  * Type for {@link URL_PATH} url.path
  */
@@ -4794,9 +3987,6 @@ export type URL_PATH_TYPE = string;
  *
  * Aliases: {@link PARAMS_KEY} `params.<key>`
  * @example "url.path.parameter.id='123'"
- */
-export const URL_PATH_PARAMETER_KEY = 'url.path.parameter.<key>';
-
 /**
  * Type for {@link URL_PATH_PARAMETER_KEY} url.path.parameter.<key>
  */
@@ -4813,9 +4003,6 @@ export type URL_PATH_PARAMETER_KEY_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example 1337
- */
-export const URL_PORT = 'url.port';
-
 /**
  * Type for {@link URL_PORT} url.port
  */
@@ -4832,9 +4019,6 @@ export type URL_PORT_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  * @example "foo=bar&bar=baz"
- */
-export const URL_QUERY = 'url.query';
-
 /**
  * Type for {@link URL_QUERY} url.query
  */
@@ -4853,9 +4037,6 @@ export type URL_QUERY_TYPE = string;
  *
  * Aliases: {@link HTTP_SCHEME} `http.scheme`
  * @example "https"
- */
-export const URL_SCHEME = 'url.scheme';
-
 /**
  * Type for {@link URL_SCHEME} url.scheme
  */
@@ -4874,9 +4055,6 @@ export type URL_SCHEME_TYPE = string;
  *
  * Aliases: {@link HTTP_ROUTE} `http.route`
  * @example "/users/:id"
- */
-export const URL_TEMPLATE = 'url.template';
-
 /**
  * Type for {@link URL_TEMPLATE} url.template
  */
@@ -4893,9 +4071,6 @@ export type URL_TEMPLATE_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example "test@example.com"
- */
-export const USER_EMAIL = 'user.email';
-
 /**
  * Type for {@link USER_EMAIL} user.email
  */
@@ -4912,9 +4087,6 @@ export type USER_EMAIL_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example "John Smith"
- */
-export const USER_FULL_NAME = 'user.full_name';
-
 /**
  * Type for {@link USER_FULL_NAME} user.full_name
  */
@@ -4931,9 +4103,6 @@ export type USER_FULL_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "Toronto"
- */
-export const USER_GEO_CITY = 'user.geo.city';
-
 /**
  * Type for {@link USER_GEO_CITY} user.geo.city
  */
@@ -4950,9 +4119,6 @@ export type USER_GEO_CITY_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "CA"
- */
-export const USER_GEO_COUNTRY_CODE = 'user.geo.country_code';
-
 /**
  * Type for {@link USER_GEO_COUNTRY_CODE} user.geo.country_code
  */
@@ -4969,9 +4135,6 @@ export type USER_GEO_COUNTRY_CODE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "Canada"
- */
-export const USER_GEO_REGION = 'user.geo.region';
-
 /**
  * Type for {@link USER_GEO_REGION} user.geo.region
  */
@@ -4988,9 +4151,6 @@ export type USER_GEO_REGION_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "Ontario"
- */
-export const USER_GEO_SUBDIVISION = 'user.geo.subdivision';
-
 /**
  * Type for {@link USER_GEO_SUBDIVISION} user.geo.subdivision
  */
@@ -5007,9 +4167,6 @@ export type USER_GEO_SUBDIVISION_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example "8ae4c2993e0f4f3b8b2d1b1f3b5e8f4d"
- */
-export const USER_HASH = 'user.hash';
-
 /**
  * Type for {@link USER_HASH} user.hash
  */
@@ -5026,9 +4183,6 @@ export type USER_HASH_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example "S-1-5-21-202424912787-2692429404-2351956786-1000"
- */
-export const USER_ID = 'user.id';
-
 /**
  * Type for {@link USER_ID} user.id
  */
@@ -5045,9 +4199,6 @@ export type USER_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "192.168.1.1"
- */
-export const USER_IP_ADDRESS = 'user.ip_address';
-
 /**
  * Type for {@link USER_IP_ADDRESS} user.ip_address
  */
@@ -5064,9 +4215,6 @@ export type USER_IP_ADDRESS_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example "j.smith"
- */
-export const USER_NAME = 'user.name';
-
 /**
  * Type for {@link USER_NAME} user.name
  */
@@ -5083,9 +4231,6 @@ export type USER_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * @example ["admin","editor"]
- */
-export const USER_ROLES = 'user.roles';
-
 /**
  * Type for {@link USER_ROLES} user.roles
  */
@@ -5104,9 +4249,6 @@ export type USER_ROLES_TYPE = Array<string>;
  *
  * Aliases: {@link HTTP_USER_AGENT} `http.user_agent`
  * @example "Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1"
- */
-export const USER_AGENT_ORIGINAL = 'user_agent.original';
-
 /**
  * Type for {@link USER_AGENT_ORIGINAL} user_agent.original
  */
@@ -5123,9 +4265,6 @@ export type USER_AGENT_ORIGINAL_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "main"
- */
-export const VERCEL_BRANCH = 'vercel.branch';
-
 /**
  * Type for {@link VERCEL_BRANCH} vercel.branch
  */
@@ -5142,9 +4281,6 @@ export type VERCEL_BRANCH_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "bld_cotnkcr76"
- */
-export const VERCEL_BUILD_ID = 'vercel.build_id';
-
 /**
  * Type for {@link VERCEL_BUILD_ID} vercel.build_id
  */
@@ -5161,9 +4297,6 @@ export type VERCEL_BUILD_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "dpl_233NRGRjVZX1caZrXWtz5g1TAksD"
- */
-export const VERCEL_DEPLOYMENT_ID = 'vercel.deployment_id';
-
 /**
  * Type for {@link VERCEL_DEPLOYMENT_ID} vercel.deployment_id
  */
@@ -5180,9 +4313,6 @@ export type VERCEL_DEPLOYMENT_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "https://vitals.vercel-insights.com/v1"
- */
-export const VERCEL_DESTINATION = 'vercel.destination';
-
 /**
  * Type for {@link VERCEL_DESTINATION} vercel.destination
  */
@@ -5199,9 +4329,6 @@ export type VERCEL_DESTINATION_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "edge-function"
- */
-export const VERCEL_EDGE_TYPE = 'vercel.edge_type';
-
 /**
  * Type for {@link VERCEL_EDGE_TYPE} vercel.edge_type
  */
@@ -5218,9 +4345,6 @@ export type VERCEL_EDGE_TYPE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "api/index.js"
- */
-export const VERCEL_ENTRYPOINT = 'vercel.entrypoint';
-
 /**
  * Type for {@link VERCEL_ENTRYPOINT} vercel.entrypoint
  */
@@ -5237,9 +4361,6 @@ export type VERCEL_ENTRYPOINT_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "sfo1"
- */
-export const VERCEL_EXECUTION_REGION = 'vercel.execution_region';
-
 /**
  * Type for {@link VERCEL_EXECUTION_REGION} vercel.execution_region
  */
@@ -5256,9 +4377,6 @@ export type VERCEL_EXECUTION_REGION_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "1573817187330377061717300000"
- */
-export const VERCEL_ID = 'vercel.id';
-
 /**
  * Type for {@link VERCEL_ID} vercel.id
  */
@@ -5275,9 +4393,6 @@ export type VERCEL_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "769,47-53-5-10-49161-49162-49171-49172-50-56-19-4,0-10-11,23-24-25,0"
- */
-export const VERCEL_JA3_DIGEST = 'vercel.ja3_digest';
-
 /**
  * Type for {@link VERCEL_JA3_DIGEST} vercel.ja3_digest
  */
@@ -5294,9 +4409,6 @@ export type VERCEL_JA3_DIGEST_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "t13d1516h2_8daaf6152771_02713d6af862"
- */
-export const VERCEL_JA4_DIGEST = 'vercel.ja4_digest';
-
 /**
  * Type for {@link VERCEL_JA4_DIGEST} vercel.ja4_digest
  */
@@ -5313,9 +4425,6 @@ export type VERCEL_JA4_DIGEST_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "stdout"
- */
-export const VERCEL_LOG_TYPE = 'vercel.log_type';
-
 /**
  * Type for {@link VERCEL_LOG_TYPE} vercel.log_type
  */
@@ -5332,9 +4441,6 @@ export type VERCEL_LOG_TYPE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "gdufoJxB6b9b1fEqr1jUtFkyavUU"
- */
-export const VERCEL_PROJECT_ID = 'vercel.project_id';
-
 /**
  * Type for {@link VERCEL_PROJECT_ID} vercel.project_id
  */
@@ -5351,9 +4457,6 @@ export type VERCEL_PROJECT_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "my-app"
- */
-export const VERCEL_PROJECT_NAME = 'vercel.project_name';
-
 /**
  * Type for {@link VERCEL_PROJECT_NAME} vercel.project_name
  */
@@ -5370,9 +4473,6 @@ export type VERCEL_PROJECT_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "pdx1::v8g4b-1744143786684-93dafbc0f70d"
- */
-export const VERCEL_PROXY_CACHE_ID = 'vercel.proxy.cache_id';
-
 /**
  * Type for {@link VERCEL_PROXY_CACHE_ID} vercel.proxy.cache_id
  */
@@ -5389,9 +4489,6 @@ export type VERCEL_PROXY_CACHE_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "120.75.16.101"
- */
-export const VERCEL_PROXY_CLIENT_IP = 'vercel.proxy.client_ip';
-
 /**
  * Type for {@link VERCEL_PROXY_CLIENT_IP} vercel.proxy.client_ip
  */
@@ -5408,9 +4505,6 @@ export type VERCEL_PROXY_CLIENT_IP_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "test.vercel.app"
- */
-export const VERCEL_PROXY_HOST = 'vercel.proxy.host';
-
 /**
  * Type for {@link VERCEL_PROXY_HOST} vercel.proxy.host
  */
@@ -5427,9 +4521,6 @@ export type VERCEL_PROXY_HOST_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "sfo1"
- */
-export const VERCEL_PROXY_LAMBDA_REGION = 'vercel.proxy.lambda_region';
-
 /**
  * Type for {@link VERCEL_PROXY_LAMBDA_REGION} vercel.proxy.lambda_region
  */
@@ -5446,9 +4537,6 @@ export type VERCEL_PROXY_LAMBDA_REGION_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "GET"
- */
-export const VERCEL_PROXY_METHOD = 'vercel.proxy.method';
-
 /**
  * Type for {@link VERCEL_PROXY_METHOD} vercel.proxy.method
  */
@@ -5465,9 +4553,6 @@ export type VERCEL_PROXY_METHOD_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "/dynamic/some-value.json?route=some-value"
- */
-export const VERCEL_PROXY_PATH = 'vercel.proxy.path';
-
 /**
  * Type for {@link VERCEL_PROXY_PATH} vercel.proxy.path
  */
@@ -5484,9 +4569,6 @@ export type VERCEL_PROXY_PATH_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "func"
- */
-export const VERCEL_PROXY_PATH_TYPE = 'vercel.proxy.path_type';
-
 /**
  * Type for {@link VERCEL_PROXY_PATH_TYPE} vercel.proxy.path_type
  */
@@ -5503,9 +4585,6 @@ export type VERCEL_PROXY_PATH_TYPE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "api"
- */
-export const VERCEL_PROXY_PATH_TYPE_VARIANT = 'vercel.proxy.path_type_variant';
-
 /**
  * Type for {@link VERCEL_PROXY_PATH_TYPE_VARIANT} vercel.proxy.path_type_variant
  */
@@ -5522,9 +4601,6 @@ export type VERCEL_PROXY_PATH_TYPE_VARIANT_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "*.vercel.app"
- */
-export const VERCEL_PROXY_REFERER = 'vercel.proxy.referer';
-
 /**
  * Type for {@link VERCEL_PROXY_REFERER} vercel.proxy.referer
  */
@@ -5541,9 +4617,6 @@ export type VERCEL_PROXY_REFERER_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "sfo1"
- */
-export const VERCEL_PROXY_REGION = 'vercel.proxy.region';
-
 /**
  * Type for {@link VERCEL_PROXY_REGION} vercel.proxy.region
  */
@@ -5560,9 +4633,6 @@ export type VERCEL_PROXY_REGION_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example 1024
- */
-export const VERCEL_PROXY_RESPONSE_BYTE_SIZE = 'vercel.proxy.response_byte_size';
-
 /**
  * Type for {@link VERCEL_PROXY_RESPONSE_BYTE_SIZE} vercel.proxy.response_byte_size
  */
@@ -5579,9 +4649,6 @@ export type VERCEL_PROXY_RESPONSE_BYTE_SIZE_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * @example "https"
- */
-export const VERCEL_PROXY_SCHEME = 'vercel.proxy.scheme';
-
 /**
  * Type for {@link VERCEL_PROXY_SCHEME} vercel.proxy.scheme
  */
@@ -5598,9 +4665,6 @@ export type VERCEL_PROXY_SCHEME_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example 200
- */
-export const VERCEL_PROXY_STATUS_CODE = 'vercel.proxy.status_code';
-
 /**
  * Type for {@link VERCEL_PROXY_STATUS_CODE} vercel.proxy.status_code
  */
@@ -5617,9 +4681,6 @@ export type VERCEL_PROXY_STATUS_CODE_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * @example 1573817250172
- */
-export const VERCEL_PROXY_TIMESTAMP = 'vercel.proxy.timestamp';
-
 /**
  * Type for {@link VERCEL_PROXY_TIMESTAMP} vercel.proxy.timestamp
  */
@@ -5636,9 +4697,6 @@ export type VERCEL_PROXY_TIMESTAMP_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * @example ["Mozilla/5.0..."]
- */
-export const VERCEL_PROXY_USER_AGENT = 'vercel.proxy.user_agent';
-
 /**
  * Type for {@link VERCEL_PROXY_USER_AGENT} vercel.proxy.user_agent
  */
@@ -5655,9 +4713,6 @@ export type VERCEL_PROXY_USER_AGENT_TYPE = Array<string>;
  *
  * Attribute defined in OTEL: No
  * @example "REVALIDATED"
- */
-export const VERCEL_PROXY_VERCEL_CACHE = 'vercel.proxy.vercel_cache';
-
 /**
  * Type for {@link VERCEL_PROXY_VERCEL_CACHE} vercel.proxy.vercel_cache
  */
@@ -5674,9 +4729,6 @@ export type VERCEL_PROXY_VERCEL_CACHE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "sfo1::abc123"
- */
-export const VERCEL_PROXY_VERCEL_ID = 'vercel.proxy.vercel_id';
-
 /**
  * Type for {@link VERCEL_PROXY_VERCEL_ID} vercel.proxy.vercel_id
  */
@@ -5693,9 +4745,6 @@ export type VERCEL_PROXY_VERCEL_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "deny"
- */
-export const VERCEL_PROXY_WAF_ACTION = 'vercel.proxy.waf_action';
-
 /**
  * Type for {@link VERCEL_PROXY_WAF_ACTION} vercel.proxy.waf_action
  */
@@ -5712,9 +4761,6 @@ export type VERCEL_PROXY_WAF_ACTION_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "rule_gAHz8jtSB1Gy"
- */
-export const VERCEL_PROXY_WAF_RULE_ID = 'vercel.proxy.waf_rule_id';
-
 /**
  * Type for {@link VERCEL_PROXY_WAF_RULE_ID} vercel.proxy.waf_rule_id
  */
@@ -5731,9 +4777,6 @@ export type VERCEL_PROXY_WAF_RULE_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "643af4e3-975a-4cc7-9e7a-1eda11539d90"
- */
-export const VERCEL_REQUEST_ID = 'vercel.request_id';
-
 /**
  * Type for {@link VERCEL_REQUEST_ID} vercel.request_id
  */
@@ -5750,9 +4793,6 @@ export type VERCEL_REQUEST_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example "build"
- */
-export const VERCEL_SOURCE = 'vercel.source';
-
 /**
  * Type for {@link VERCEL_SOURCE} vercel.source
  */
@@ -5769,9 +4809,6 @@ export type VERCEL_SOURCE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * @example 200
- */
-export const VERCEL_STATUS_CODE = 'vercel.status_code';
-
 /**
  * Type for {@link VERCEL_STATUS_CODE} vercel.status_code
  */
@@ -5792,11 +4829,6 @@ export type VERCEL_STATUS_CODE_TYPE = number;
  *
  * @deprecated Use {@link GEN_AI_USAGE_OUTPUT_TOKENS} (gen_ai.usage.output_tokens) instead
  * @example 10
- *
- * SDK specific: python
- */
-export const AI_COMPLETION_TOKENS_USED = 'ai.completion_tokens.used';
-
 /**
  * Type for {@link AI_COMPLETION_TOKENS_USED} ai.completion_tokens.used
  */
@@ -5817,9 +4849,6 @@ export type AI_COMPLETION_TOKENS_USED_TYPE = number;
  *
  * @deprecated Use {@link GEN_AI_RESPONSE_FINISH_REASON} (gen_ai.response.finish_reason) instead
  * @example "COMPLETE"
- */
-export const AI_FINISH_REASON = 'ai.finish_reason';
-
 /**
  * Type for {@link AI_FINISH_REASON} ai.finish_reason
  */
@@ -5840,9 +4869,6 @@ export type AI_FINISH_REASON_TYPE = string;
  *
  * @deprecated Use {@link GEN_AI_REQUEST_FREQUENCY_PENALTY} (gen_ai.request.frequency_penalty) instead
  * @example 0.5
- */
-export const AI_FREQUENCY_PENALTY = 'ai.frequency_penalty';
-
 /**
  * Type for {@link AI_FREQUENCY_PENALTY} ai.frequency_penalty
  */
@@ -5863,9 +4889,6 @@ export type AI_FREQUENCY_PENALTY_TYPE = number;
  *
  * @deprecated Use {@link GEN_AI_TOOL_NAME} (gen_ai.tool.name) instead
  * @example "function_name"
- */
-export const AI_FUNCTION_CALL = 'ai.function_call';
-
 /**
  * Type for {@link AI_FUNCTION_CALL} ai.function_call
  */
@@ -5886,9 +4909,6 @@ export type AI_FUNCTION_CALL_TYPE = string;
  *
  * @deprecated Use {@link GEN_AI_RESPONSE_ID} (gen_ai.response.id) instead
  * @example "gen_123abc"
- */
-export const AI_GENERATION_ID = 'ai.generation_id';
-
 /**
  * Type for {@link AI_GENERATION_ID} ai.generation_id
  */
@@ -5909,11 +4929,6 @@ export type AI_GENERATION_ID_TYPE = string;
  *
  * @deprecated Use {@link GEN_AI_REQUEST_MESSAGES} (gen_ai.request.messages) instead
  * @example "[{\"role\": \"user\", \"message\": \"hello\"}]"
- *
- * SDK specific: python
- */
-export const AI_INPUT_MESSAGES = 'ai.input_messages';
-
 /**
  * Type for {@link AI_INPUT_MESSAGES} ai.input_messages
  */
@@ -5934,9 +4949,6 @@ export type AI_INPUT_MESSAGES_TYPE = string;
  *
  * @deprecated Use {@link GEN_AI_SYSTEM} (gen_ai.system) instead
  * @example "openai"
- */
-export const AI_MODEL_PROVIDER = 'ai.model.provider';
-
 /**
  * Type for {@link AI_MODEL_PROVIDER} ai.model.provider
  */
@@ -5957,11 +4969,6 @@ export type AI_MODEL_PROVIDER_TYPE = string;
  *
  * @deprecated Use {@link GEN_AI_RESPONSE_MODEL} (gen_ai.response.model) instead
  * @example "gpt-4"
- *
- * SDK specific: python
- */
-export const AI_MODEL_ID = 'ai.model_id';
-
 /**
  * Type for {@link AI_MODEL_ID} ai.model_id
  */
@@ -5982,9 +4989,6 @@ export type AI_MODEL_ID_TYPE = string;
  *
  * @deprecated Use {@link GEN_AI_PIPELINE_NAME} (gen_ai.pipeline.name) instead
  * @example "Autofix Pipeline"
- */
-export const AI_PIPELINE_NAME = 'ai.pipeline.name';
-
 /**
  * Type for {@link AI_PIPELINE_NAME} ai.pipeline.name
  */
@@ -6005,9 +5009,6 @@ export type AI_PIPELINE_NAME_TYPE = string;
  *
  * @deprecated Use {@link GEN_AI_REQUEST_PRESENCE_PENALTY} (gen_ai.request.presence_penalty) instead
  * @example 0.5
- */
-export const AI_PRESENCE_PENALTY = 'ai.presence_penalty';
-
 /**
  * Type for {@link AI_PRESENCE_PENALTY} ai.presence_penalty
  */
@@ -6028,11 +5029,6 @@ export type AI_PRESENCE_PENALTY_TYPE = number;
  *
  * @deprecated Use {@link GEN_AI_USAGE_INPUT_TOKENS} (gen_ai.usage.input_tokens) instead
  * @example 20
- *
- * SDK specific: python
- */
-export const AI_PROMPT_TOKENS_USED = 'ai.prompt_tokens.used';
-
 /**
  * Type for {@link AI_PROMPT_TOKENS_USED} ai.prompt_tokens.used
  */
@@ -6051,11 +5047,6 @@ export type AI_PROMPT_TOKENS_USED_TYPE = number;
  *
  * @deprecated Use {@link GEN_AI_RESPONSE_TEXT} (gen_ai.response.text) instead
  * @example ["hello","world"]
- *
- * SDK specific: python
- */
-export const AI_RESPONSES = 'ai.responses';
-
 /**
  * Type for {@link AI_RESPONSES} ai.responses
  */
@@ -6076,9 +5067,6 @@ export type AI_RESPONSES_TYPE = Array<string>;
  *
  * @deprecated Use {@link GEN_AI_REQUEST_SEED} (gen_ai.request.seed) instead
  * @example "1234567890"
- */
-export const AI_SEED = 'ai.seed';
-
 /**
  * Type for {@link AI_SEED} ai.seed
  */
@@ -6099,11 +5087,6 @@ export type AI_SEED_TYPE = string;
  *
  * @deprecated Use {@link GEN_AI_RESPONSE_STREAMING} (gen_ai.response.streaming) instead
  * @example true
- *
- * SDK specific: python
- */
-export const AI_STREAMING = 'ai.streaming';
-
 /**
  * Type for {@link AI_STREAMING} ai.streaming
  */
@@ -6124,9 +5107,6 @@ export type AI_STREAMING_TYPE = boolean;
  *
  * @deprecated Use {@link GEN_AI_REQUEST_TEMPERATURE} (gen_ai.request.temperature) instead
  * @example 0.1
- */
-export const AI_TEMPERATURE = 'ai.temperature';
-
 /**
  * Type for {@link AI_TEMPERATURE} ai.temperature
  */
@@ -6145,9 +5125,6 @@ export type AI_TEMPERATURE_TYPE = number;
  *
  * @deprecated Use {@link GEN_AI_RESPONSE_TOOL_CALLS} (gen_ai.response.tool_calls) instead
  * @example ["tool_call_1","tool_call_2"]
- */
-export const AI_TOOL_CALLS = 'ai.tool_calls';
-
 /**
  * Type for {@link AI_TOOL_CALLS} ai.tool_calls
  */
@@ -6166,9 +5143,6 @@ export type AI_TOOL_CALLS_TYPE = Array<string>;
  *
  * @deprecated Use {@link GEN_AI_REQUEST_AVAILABLE_TOOLS} (gen_ai.request.available_tools) instead
  * @example ["function_1","function_2"]
- */
-export const AI_TOOLS = 'ai.tools';
-
 /**
  * Type for {@link AI_TOOLS} ai.tools
  */
@@ -6189,9 +5163,6 @@ export type AI_TOOLS_TYPE = Array<string>;
  *
  * @deprecated Use {@link GEN_AI_REQUEST_TOP_K} (gen_ai.request.top_k) instead
  * @example 35
- */
-export const AI_TOP_K = 'ai.top_k';
-
 /**
  * Type for {@link AI_TOP_K} ai.top_k
  */
@@ -6212,9 +5183,6 @@ export type AI_TOP_K_TYPE = number;
  *
  * @deprecated Use {@link GEN_AI_REQUEST_TOP_P} (gen_ai.request.top_p) instead
  * @example 0.7
- */
-export const AI_TOP_P = 'ai.top_p';
-
 /**
  * Type for {@link AI_TOP_P} ai.top_p
  */
@@ -6235,11 +5203,6 @@ export type AI_TOP_P_TYPE = number;
  *
  * @deprecated Use {@link GEN_AI_USAGE_TOTAL_TOKENS} (gen_ai.usage.total_tokens) instead
  * @example 30
- *
- * SDK specific: python
- */
-export const AI_TOTAL_TOKENS_USED = 'ai.total_tokens.used';
-
 /**
  * Type for {@link AI_TOTAL_TOKENS_USED} ai.total_tokens.used
  */
@@ -6260,9 +5223,6 @@ export type AI_TOTAL_TOKENS_USED_TYPE = number;
  *
  * @deprecated Use {@link CODE_FILE_PATH} (code.file.path) instead
  * @example "/app/myapplication/http/handler/server.py"
- */
-export const CODE_FILEPATH = 'code.filepath';
-
 /**
  * Type for {@link CODE_FILEPATH} code.filepath
  */
@@ -6283,9 +5243,6 @@ export type CODE_FILEPATH_TYPE = string;
  *
  * @deprecated Use {@link CODE_FUNCTION_NAME} (code.function.name) instead
  * @example "server_request"
- */
-export const CODE_FUNCTION = 'code.function';
-
 /**
  * Type for {@link CODE_FUNCTION} code.function
  */
@@ -6306,9 +5263,6 @@ export type CODE_FUNCTION_TYPE = string;
  *
  * @deprecated Use {@link CODE_LINE_NUMBER} (code.line.number) instead
  * @example 42
- */
-export const CODE_LINENO = 'code.lineno';
-
 /**
  * Type for {@link CODE_LINENO} code.lineno
  */
@@ -6327,9 +5281,6 @@ export type CODE_LINENO_TYPE = number;
  *
  * @deprecated Use {@link CODE_FUNCTION_NAME} (code.function.name) instead - code.function.name should include the namespace.
  * @example "http.handler"
- */
-export const CODE_NAMESPACE = 'code.namespace';
-
 /**
  * Type for {@link CODE_NAMESPACE} code.namespace
  */
@@ -6350,9 +5301,6 @@ export type CODE_NAMESPACE_TYPE = string;
  *
  * @deprecated Use {@link DB_NAMESPACE} (db.namespace) instead
  * @example "customers"
- */
-export const DB_NAME = 'db.name';
-
 /**
  * Type for {@link DB_NAME} db.name
  */
@@ -6373,9 +5321,6 @@ export type DB_NAME_TYPE = string;
  *
  * @deprecated Use {@link DB_OPERATION_NAME} (db.operation.name) instead
  * @example "SELECT"
- */
-export const DB_OPERATION = 'db.operation';
-
 /**
  * Type for {@link DB_OPERATION} db.operation
  */
@@ -6394,11 +5339,6 @@ export type DB_OPERATION_TYPE = string;
  *
  * @deprecated Use {@link DB_QUERY_PARAMETER_KEY} (db.query.parameter.<key>) instead - Instead of adding every binding in the db.sql.bindings attribute, add them as individual entires with db.query.parameter.<key>.
  * @example ["1","foo"]
- *
- * SDK specific: php-laravel
- */
-export const DB_SQL_BINDINGS = 'db.sql.bindings';
-
 /**
  * Type for {@link DB_SQL_BINDINGS} db.sql.bindings
  */
@@ -6419,9 +5359,6 @@ export type DB_SQL_BINDINGS_TYPE = Array<string>;
  *
  * @deprecated Use {@link DB_QUERY_TEXT} (db.query.text) instead
  * @example "SELECT * FROM users"
- */
-export const DB_STATEMENT = 'db.statement';
-
 /**
  * Type for {@link DB_STATEMENT} db.statement
  */
@@ -6442,9 +5379,6 @@ export type DB_STATEMENT_TYPE = string;
  *
  * @deprecated Use {@link DB_SYSTEM_NAME} (db.system.name) instead
  * @example "postgresql"
- */
-export const DB_SYSTEM = 'db.system';
-
 /**
  * Type for {@link DB_SYSTEM} db.system
  */
@@ -6465,9 +5399,6 @@ export type DB_SYSTEM_TYPE = string;
  *
  * @deprecated Use {@link SENTRY_ENVIRONMENT} (sentry.environment) instead
  * @example "production"
- */
-export const ENVIRONMENT = 'environment';
-
 /**
  * Type for {@link ENVIRONMENT} environment
  */
@@ -6486,11 +5417,6 @@ export type ENVIRONMENT_TYPE = string;
  *
  * @deprecated Use {@link ERROR_TYPE} (error.type) instead - This attribute is not part of the OpenTelemetry specification and error.type fits much better.
  * @example "ENOENT: no such file or directory"
- *
- * SDK specific: javascript-node
- */
-export const FS_ERROR = 'fs_error';
-
 /**
  * Type for {@link FS_ERROR} fs_error
  */
@@ -6509,9 +5435,6 @@ export type FS_ERROR_TYPE = string;
  *
  * @deprecated No replacement at this time - Deprecated from OTEL, use gen_ai.input.messages with the new format instead.
  * @example "[{\"role\": \"user\", \"message\": \"hello\"}]"
- */
-export const GEN_AI_PROMPT = 'gen_ai.prompt';
-
 /**
  * Type for {@link GEN_AI_PROMPT} gen_ai.prompt
  */
@@ -6532,9 +5455,6 @@ export type GEN_AI_PROMPT_TYPE = string;
  *
  * @deprecated Use {@link GEN_AI_USAGE_OUTPUT_TOKENS} (gen_ai.usage.output_tokens) instead
  * @example 10
- */
-export const GEN_AI_USAGE_COMPLETION_TOKENS = 'gen_ai.usage.completion_tokens';
-
 /**
  * Type for {@link GEN_AI_USAGE_COMPLETION_TOKENS} gen_ai.usage.completion_tokens
  */
@@ -6555,9 +5475,6 @@ export type GEN_AI_USAGE_COMPLETION_TOKENS_TYPE = number;
  *
  * @deprecated Use {@link GEN_AI_USAGE_INPUT_TOKENS} (gen_ai.usage.input_tokens) instead
  * @example 20
- */
-export const GEN_AI_USAGE_PROMPT_TOKENS = 'gen_ai.usage.prompt_tokens';
-
 /**
  * Type for {@link GEN_AI_USAGE_PROMPT_TOKENS} gen_ai.usage.prompt_tokens
  */
@@ -6576,9 +5493,6 @@ export type GEN_AI_USAGE_PROMPT_TOKENS_TYPE = number;
  *
  * @deprecated Use {@link GEN_AI_COST_TOTAL_TOKENS} (gen_ai.cost.total_tokens) instead
  * @example 12.34
- */
-export const GEN_AI_USAGE_TOTAL_COST = 'gen_ai.usage.total_cost';
-
 /**
  * Type for {@link GEN_AI_USAGE_TOTAL_COST} gen_ai.usage.total_cost
  */
@@ -6599,9 +5513,6 @@ export type GEN_AI_USAGE_TOTAL_COST_TYPE = number;
  *
  * @deprecated Use {@link CLIENT_ADDRESS} (client.address) instead
  * @example "example.com"
- */
-export const HTTP_CLIENT_IP = 'http.client_ip';
-
 /**
  * Type for {@link HTTP_CLIENT_IP} http.client_ip
  */
@@ -6622,9 +5533,6 @@ export type HTTP_CLIENT_IP_TYPE = string;
  *
  * @deprecated Use {@link NETWORK_PROTOCOL_VERSION} (network.protocol.version) instead
  * @example "1.1"
- */
-export const HTTP_FLAVOR = 'http.flavor';
-
 /**
  * Type for {@link HTTP_FLAVOR} http.flavor
  */
@@ -6645,9 +5553,6 @@ export type HTTP_FLAVOR_TYPE = string;
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - Deprecated, use one of `server.address` or `client.address`, depending on the usage
  * @example "example.com"
- */
-export const HTTP_HOST = 'http.host';
-
 /**
  * Type for {@link HTTP_HOST} http.host
  */
@@ -6668,9 +5573,6 @@ export type HTTP_HOST_TYPE = string;
  *
  * @deprecated Use {@link HTTP_REQUEST_METHOD} (http.request.method) instead
  * @example "GET"
- */
-export const HTTP_METHOD = 'http.method';
-
 /**
  * Type for {@link HTTP_METHOD} http.method
  */
@@ -6691,9 +5593,6 @@ export type HTTP_METHOD_TYPE = string;
  *
  * @deprecated Use {@link HTTP_RESPONSE_BODY_SIZE} (http.response.body.size) instead
  * @example 123
- */
-export const HTTP_RESPONSE_CONTENT_LENGTH = 'http.response_content_length';
-
 /**
  * Type for {@link HTTP_RESPONSE_CONTENT_LENGTH} http.response_content_length
  */
@@ -6714,9 +5613,6 @@ export type HTTP_RESPONSE_CONTENT_LENGTH_TYPE = number;
  *
  * @deprecated Use {@link HTTP_RESPONSE_SIZE} (http.response.size) instead
  * @example 456
- */
-export const HTTP_RESPONSE_TRANSFER_SIZE = 'http.response_transfer_size';
-
 /**
  * Type for {@link HTTP_RESPONSE_TRANSFER_SIZE} http.response_transfer_size
  */
@@ -6737,9 +5633,6 @@ export type HTTP_RESPONSE_TRANSFER_SIZE_TYPE = number;
  *
  * @deprecated Use {@link URL_SCHEME} (url.scheme) instead
  * @example "https"
- */
-export const HTTP_SCHEME = 'http.scheme';
-
 /**
  * Type for {@link HTTP_SCHEME} http.scheme
  */
@@ -6760,9 +5653,6 @@ export type HTTP_SCHEME_TYPE = string;
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead
  * @example "example.com"
- */
-export const HTTP_SERVER_NAME = 'http.server_name';
-
 /**
  * Type for {@link HTTP_SERVER_NAME} http.server_name
  */
@@ -6783,9 +5673,6 @@ export type HTTP_SERVER_NAME_TYPE = string;
  *
  * @deprecated Use {@link HTTP_RESPONSE_STATUS_CODE} (http.response.status_code) instead
  * @example 404
- */
-export const HTTP_STATUS_CODE = 'http.status_code';
-
 /**
  * Type for {@link HTTP_STATUS_CODE} http.status_code
  */
@@ -6804,9 +5691,6 @@ export type HTTP_STATUS_CODE_TYPE = number;
  *
  * @deprecated Use {@link URL_PATH} (url.path) instead - This attribute is being deprecated in favor of url.path and url.query
  * @example "/test?foo=bar#buzz"
- */
-export const HTTP_TARGET = 'http.target';
-
 /**
  * Type for {@link HTTP_TARGET} http.target
  */
@@ -6827,9 +5711,6 @@ export type HTTP_TARGET_TYPE = string;
  *
  * @deprecated Use {@link URL_FULL} (url.full) instead
  * @example "https://example.com/test?foo=bar#buzz"
- */
-export const HTTP_URL = 'http.url';
-
 /**
  * Type for {@link HTTP_URL} http.url
  */
@@ -6850,9 +5731,6 @@ export type HTTP_URL_TYPE = string;
  *
  * @deprecated Use {@link USER_AGENT_ORIGINAL} (user_agent.original) instead
  * @example "Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1"
- */
-export const HTTP_USER_AGENT = 'http.user_agent';
-
 /**
  * Type for {@link HTTP_USER_AGENT} http.user_agent
  */
@@ -6873,11 +5751,6 @@ export type HTTP_USER_AGENT_TYPE = string;
  *
  * @deprecated Use {@link HTTP_REQUEST_METHOD} (http.request.method) instead
  * @example "GET"
- *
- * SDK specific: javascript-browser, javascript-node
- */
-export const METHOD = 'method';
-
 /**
  * Type for {@link METHOD} method
  */
@@ -6898,9 +5771,6 @@ export type METHOD_TYPE = string;
  *
  * @deprecated Use {@link NETWORK_LOCAL_ADDRESS} (network.local.address) instead
  * @example "192.168.0.1"
- */
-export const NET_HOST_IP = 'net.host.ip';
-
 /**
  * Type for {@link NET_HOST_IP} net.host.ip
  */
@@ -6921,9 +5791,6 @@ export type NET_HOST_IP_TYPE = string;
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead
  * @example "example.com"
- */
-export const NET_HOST_NAME = 'net.host.name';
-
 /**
  * Type for {@link NET_HOST_NAME} net.host.name
  */
@@ -6944,9 +5811,6 @@ export type NET_HOST_NAME_TYPE = string;
  *
  * @deprecated Use {@link SERVER_PORT} (server.port) instead
  * @example 1337
- */
-export const NET_HOST_PORT = 'net.host.port';
-
 /**
  * Type for {@link NET_HOST_PORT} net.host.port
  */
@@ -6967,9 +5831,6 @@ export type NET_HOST_PORT_TYPE = number;
  *
  * @deprecated Use {@link NETWORK_PEER_ADDRESS} (network.peer.address) instead
  * @example "192.168.0.1"
- */
-export const NET_PEER_IP = 'net.peer.ip';
-
 /**
  * Type for {@link NET_PEER_IP} net.peer.ip
  */
@@ -6988,9 +5849,6 @@ export type NET_PEER_IP_TYPE = string;
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - Deprecated, use server.address on client spans and client.address on server spans.
  * @example "example.com"
- */
-export const NET_PEER_NAME = 'net.peer.name';
-
 /**
  * Type for {@link NET_PEER_NAME} net.peer.name
  */
@@ -7009,9 +5867,6 @@ export type NET_PEER_NAME_TYPE = string;
  *
  * @deprecated Use {@link SERVER_PORT} (server.port) instead - Deprecated, use server.port on client spans and client.port on server spans.
  * @example 1337
- */
-export const NET_PEER_PORT = 'net.peer.port';
-
 /**
  * Type for {@link NET_PEER_PORT} net.peer.port
  */
@@ -7032,9 +5887,6 @@ export type NET_PEER_PORT_TYPE = number;
  *
  * @deprecated Use {@link NETWORK_PROTOCOL_NAME} (network.protocol.name) instead
  * @example "http"
- */
-export const NET_PROTOCOL_NAME = 'net.protocol.name';
-
 /**
  * Type for {@link NET_PROTOCOL_NAME} net.protocol.name
  */
@@ -7055,9 +5907,6 @@ export type NET_PROTOCOL_NAME_TYPE = string;
  *
  * @deprecated Use {@link NETWORK_PROTOCOL_VERSION} (network.protocol.version) instead
  * @example "1.1"
- */
-export const NET_PROTOCOL_VERSION = 'net.protocol.version';
-
 /**
  * Type for {@link NET_PROTOCOL_VERSION} net.protocol.version
  */
@@ -7076,9 +5925,6 @@ export type NET_PROTOCOL_VERSION_TYPE = string;
  *
  * @deprecated Use {@link NETWORK_TRANSPORT} (network.transport) instead - Deprecated, use network.transport and network.type.
  * @example "inet"
- */
-export const NET_SOCK_FAMILY = 'net.sock.family';
-
 /**
  * Type for {@link NET_SOCK_FAMILY} net.sock.family
  */
@@ -7099,9 +5945,6 @@ export type NET_SOCK_FAMILY_TYPE = string;
  *
  * @deprecated Use {@link NETWORK_LOCAL_ADDRESS} (network.local.address) instead
  * @example "/var/my.sock"
- */
-export const NET_SOCK_HOST_ADDR = 'net.sock.host.addr';
-
 /**
  * Type for {@link NET_SOCK_HOST_ADDR} net.sock.host.addr
  */
@@ -7122,9 +5965,6 @@ export type NET_SOCK_HOST_ADDR_TYPE = string;
  *
  * @deprecated Use {@link NETWORK_LOCAL_PORT} (network.local.port) instead
  * @example 8080
- */
-export const NET_SOCK_HOST_PORT = 'net.sock.host.port';
-
 /**
  * Type for {@link NET_SOCK_HOST_PORT} net.sock.host.port
  */
@@ -7145,9 +5985,6 @@ export type NET_SOCK_HOST_PORT_TYPE = number;
  *
  * @deprecated Use {@link NETWORK_PEER_ADDRESS} (network.peer.address) instead
  * @example "192.168.0.1"
- */
-export const NET_SOCK_PEER_ADDR = 'net.sock.peer.addr';
-
 /**
  * Type for {@link NET_SOCK_PEER_ADDR} net.sock.peer.addr
  */
@@ -7166,9 +6003,6 @@ export type NET_SOCK_PEER_ADDR_TYPE = string;
  *
  * @deprecated No replacement at this time - Deprecated from OTEL, no replacement at this time
  * @example "/var/my.sock"
- */
-export const NET_SOCK_PEER_NAME = 'net.sock.peer.name';
-
 /**
  * Type for {@link NET_SOCK_PEER_NAME} net.sock.peer.name
  */
@@ -7187,9 +6021,6 @@ export type NET_SOCK_PEER_NAME_TYPE = string;
  *
  * @deprecated Use {@link NETWORK_PEER_PORT} (network.peer.port) instead
  * @example 8080
- */
-export const NET_SOCK_PEER_PORT = 'net.sock.peer.port';
-
 /**
  * Type for {@link NET_SOCK_PEER_PORT} net.sock.peer.port
  */
@@ -7210,9 +6041,6 @@ export type NET_SOCK_PEER_PORT_TYPE = number;
  *
  * @deprecated Use {@link NETWORK_TRANSPORT} (network.transport) instead
  * @example "tcp"
- */
-export const NET_TRANSPORT = 'net.transport';
-
 /**
  * Type for {@link NET_TRANSPORT} net.transport
  */
@@ -7233,9 +6061,6 @@ export type NET_TRANSPORT_TYPE = string;
  *
  * @deprecated Use {@link SENTRY_PROFILE_ID} (sentry.profile_id) instead
  * @example "123e4567e89b12d3a456426614174000"
- */
-export const PROFILE_ID = 'profile_id';
-
 /**
  * Type for {@link PROFILE_ID} profile_id
  */
@@ -7256,9 +6081,6 @@ export type PROFILE_ID_TYPE = string;
  *
  * @deprecated Use {@link URL_QUERY} (url.query) instead - Instead of sending items individually in query.<key>, they should be sent all together with url.query.
  * @example "query.id='123'"
- */
-export const QUERY_KEY = 'query.<key>';
-
 /**
  * Type for {@link QUERY_KEY} query.<key>
  */
@@ -7279,9 +6101,6 @@ export type QUERY_KEY_TYPE = string;
  *
  * @deprecated Use {@link SENTRY_RELEASE} (sentry.release) instead
  * @example "production"
- */
-export const RELEASE = 'release';
-
 /**
  * Type for {@link RELEASE} release
  */
@@ -7302,9 +6121,6 @@ export type RELEASE_TYPE = string;
  *
  * @deprecated Use {@link SENTRY_REPLAY_ID} (sentry.replay_id) instead
  * @example "123e4567e89b12d3a456426614174000"
- */
-export const REPLAY_ID = 'replay_id';
-
 /**
  * Type for {@link REPLAY_ID} replay_id
  */
@@ -7325,11 +6141,6 @@ export type REPLAY_ID_TYPE = string;
  *
  * @deprecated Use {@link HTTP_ROUTE} (http.route) instead
  * @example "App\\Controller::indexAction"
- *
- * SDK specific: php-laravel, javascript-reactnative
- */
-export const ROUTE = 'route';
-
 /**
  * Type for {@link ROUTE} route
  */
@@ -7350,9 +6161,6 @@ export type ROUTE_TYPE = string;
  *
  * @deprecated Use {@link BROWSER_NAME} (browser.name) instead
  * @example "Chrome"
- */
-export const SENTRY_BROWSER_NAME = 'sentry.browser.name';
-
 /**
  * Type for {@link SENTRY_BROWSER_NAME} sentry.browser.name
  */
@@ -7373,9 +6181,6 @@ export type SENTRY_BROWSER_NAME_TYPE = string;
  *
  * @deprecated Use {@link BROWSER_VERSION} (browser.version) instead
  * @example "120.0.6099.130"
- */
-export const SENTRY_BROWSER_VERSION = 'sentry.browser.version';
-
 /**
  * Type for {@link SENTRY_BROWSER_VERSION} sentry.browser.version
  */
@@ -7396,9 +6201,6 @@ export type SENTRY_BROWSER_VERSION_TYPE = string;
  *
  * @deprecated Use {@link SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS} (sentry._internal.observed_timestamp_nanos) instead
  * @example "1544712660300000000"
- */
-export const SENTRY_OBSERVED_TIMESTAMP_NANOS = 'sentry.observed_timestamp_nanos';
-
 /**
  * Type for {@link SENTRY_OBSERVED_TIMESTAMP_NANOS} sentry.observed_timestamp_nanos
  */
@@ -7419,9 +6221,6 @@ export type SENTRY_OBSERVED_TIMESTAMP_NANOS_TYPE = string;
  *
  * @deprecated Use {@link SENTRY_SEGMENT_ID} (sentry.segment.id) instead
  * @example "051581bf3cb55c13"
- */
-export const _SENTRY_SEGMENT_ID = 'sentry.segment_id';
-
 /**
  * Type for {@link _SENTRY_SEGMENT_ID} sentry.segment_id
  */
@@ -7442,9 +6241,6 @@ export type _SENTRY_SEGMENT_ID_TYPE = string;
  *
  * @deprecated Use {@link SENTRY_TRANSACTION} (sentry.transaction) instead
  * @example "GET /"
- */
-export const TRANSACTION = 'transaction';
-
 /**
  * Type for {@link TRANSACTION} transaction
  */
@@ -7465,11 +6261,6 @@ export type TRANSACTION_TYPE = string;
  *
  * @deprecated Use {@link URL_FULL} (url.full) instead
  * @example "https://example.com/test?foo=bar#buzz"
- *
- * SDK specific: javascript-browser, javascript-node
- */
-export const URL = 'url';
-
 /**
  * Type for {@link URL} url
  */

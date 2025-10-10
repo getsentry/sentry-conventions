@@ -153,15 +153,6 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
       individualConstants += ` * @example ${JSON.stringify(example)}\n`;
     }
 
-    // SDKs
-    if (sdks && sdks.length > 0) {
-      individualConstants += ' *\n';
-      individualConstants += ` * SDK specific: ${sdks.join(', ')}\n`;
-    }
-
-    individualConstants += ' */\n';
-    individualConstants += `export const ${constantName} = '${key}';\n\n`;
-
     // Generate type constant
     individualConstants += '/**\n';
     individualConstants += ` * Type for {@link ${constantName}} ${key}\n`;
