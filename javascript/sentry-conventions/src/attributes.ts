@@ -8267,7 +8267,7 @@ export type AttributeName =
   | typeof URL;
 
 export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
-  ['ai.citations']: {
+  [AI_CITATIONS]: {
     brief: 'References or sources cited by the AI model in its response.',
     type: AttributeType.STRING_ARRAY,
     pii: {
@@ -8276,7 +8276,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: ['Citation 1', 'Citation 2'],
   },
-  ['ai.documents']: {
+  [AI_DOCUMENTS]: {
     brief: 'Documents or content chunks used as context for the AI model.',
     type: AttributeType.STRING_ARRAY,
     pii: {
@@ -8285,7 +8285,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: ['document1.txt', 'document2.pdf'],
   },
-  ['ai.is_search_required']: {
+  [AI_IS_SEARCH_REQUIRED]: {
     brief: 'Boolean indicating if the model needs to perform a search.',
     type: AttributeType.BOOLEAN,
     pii: {
@@ -8294,7 +8294,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: false,
   },
-  ['ai.metadata']: {
+  [AI_METADATA]: {
     brief: 'Extra metadata passed to an AI pipeline step.',
     type: AttributeType.STRING,
     pii: {
@@ -8303,7 +8303,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '{"user_id": 123, "session_id": "abc123"}',
   },
-  ['ai.preamble']: {
+  [AI_PREAMBLE]: {
     brief:
       "For an AI model call, the preamble parameter. Preambles are a part of the prompt used to adjust the model's overall behavior and conversation style.",
     type: AttributeType.STRING,
@@ -8313,7 +8313,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'You are now a clown.',
   },
-  ['ai.raw_prompting']: {
+  [AI_RAW_PROMPTING]: {
     brief: 'When enabled, the user’s prompt will be sent to the model without any pre-processing.',
     type: AttributeType.BOOLEAN,
     pii: {
@@ -8322,7 +8322,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: true,
   },
-  ['ai.response_format']: {
+  [AI_RESPONSE_FORMAT]: {
     brief: 'For an AI model call, the format of the response',
     type: AttributeType.STRING,
     pii: {
@@ -8331,7 +8331,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'json_object',
   },
-  ['ai.search_queries']: {
+  [AI_SEARCH_QUERIES]: {
     brief: 'Queries used to search for relevant context or documents.',
     type: AttributeType.STRING_ARRAY,
     pii: {
@@ -8340,7 +8340,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: ['climate change effects', 'renewable energy'],
   },
-  ['ai.search_results']: {
+  [AI_SEARCH_RESULTS]: {
     brief: 'Results returned from search queries for context.',
     type: AttributeType.STRING_ARRAY,
     pii: {
@@ -8349,7 +8349,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: ['search_result_1, search_result_2'],
   },
-  ['ai.tags']: {
+  [AI_TAGS]: {
     brief: 'Tags that describe an AI pipeline step.',
     type: AttributeType.STRING,
     pii: {
@@ -8358,7 +8358,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '{"executed_function": "add_integers"}',
   },
-  ['ai.texts']: {
+  [AI_TEXTS]: {
     brief: 'Raw text inputs provided to the model.',
     type: AttributeType.STRING_ARRAY,
     pii: {
@@ -8367,7 +8367,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: ['Hello, how are you?', 'What is the capital of France?'],
   },
-  ['ai.total_cost']: {
+  [AI_TOTAL_COST]: {
     brief: 'The total cost for the tokens used.',
     type: AttributeType.DOUBLE,
     pii: {
@@ -8376,7 +8376,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 12.34,
   },
-  ['ai.warnings']: {
+  [AI_WARNINGS]: {
     brief: 'Warning messages generated during model execution.',
     type: AttributeType.STRING_ARRAY,
     pii: {
@@ -8385,7 +8385,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: ['Token limit exceeded'],
   },
-  ['app_start_type']: {
+  [APP_START_TYPE]: {
     brief: 'Mobile app start variant. Either cold or warm.',
     type: AttributeType.STRING,
     pii: {
@@ -8394,7 +8394,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'cold',
   },
-  ['blocked_main_thread']: {
+  [BLOCKED_MAIN_THREAD]: {
     brief: 'Whether the main thread was blocked by the span.',
     type: AttributeType.BOOLEAN,
     pii: {
@@ -8403,7 +8403,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: true,
   },
-  ['browser.name']: {
+  [BROWSER_NAME]: {
     brief: 'The name of the browser.',
     type: AttributeType.STRING,
     pii: {
@@ -8413,7 +8413,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'Chrome',
     aliases: [SENTRY_BROWSER_NAME],
   },
-  ['browser.report.type']: {
+  [BROWSER_REPORT_TYPE]: {
     brief: 'A browser report sent via reporting API..',
     type: AttributeType.STRING,
     pii: {
@@ -8422,7 +8422,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'network-error',
   },
-  ['browser.script.invoker']: {
+  [BROWSER_SCRIPT_INVOKER]: {
     brief: 'How a script was called in the browser.',
     type: AttributeType.STRING,
     pii: {
@@ -8432,7 +8432,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'Window.requestAnimationFrame',
     sdks: ['browser'],
   },
-  ['browser.script.invoker_type']: {
+  [BROWSER_SCRIPT_INVOKER_TYPE]: {
     brief: 'Browser script entry point type.',
     type: AttributeType.STRING,
     pii: {
@@ -8442,7 +8442,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'event-listener',
     sdks: ['browser'],
   },
-  ['browser.script.source_char_position']: {
+  [BROWSER_SCRIPT_SOURCE_CHAR_POSITION]: {
     brief: 'A number representing the script character position of the script.',
     type: AttributeType.INTEGER,
     pii: {
@@ -8452,7 +8452,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 678,
     sdks: ['browser'],
   },
-  ['browser.version']: {
+  [BROWSER_VERSION]: {
     brief: 'The version of the browser.',
     type: AttributeType.STRING,
     pii: {
@@ -8462,7 +8462,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '120.0.6099.130',
     aliases: [SENTRY_BROWSER_VERSION],
   },
-  ['cache.hit']: {
+  [CACHE_HIT]: {
     brief: 'If the cache was hit during this span.',
     type: AttributeType.BOOLEAN,
     pii: {
@@ -8472,7 +8472,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: true,
     sdks: ['php-laravel'],
   },
-  ['cache.item_size']: {
+  [CACHE_ITEM_SIZE]: {
     brief: 'The size of the requested item in the cache. In bytes.',
     type: AttributeType.INTEGER,
     pii: {
@@ -8481,7 +8481,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 58,
   },
-  ['cache.key']: {
+  [CACHE_KEY]: {
     brief: 'The key of the cache accessed.',
     type: AttributeType.STRING_ARRAY,
     pii: {
@@ -8491,7 +8491,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: ['my-cache-key', 'my-other-cache-key'],
     sdks: ['php-laravel'],
   },
-  ['cache.operation']: {
+  [CACHE_OPERATION]: {
     brief: 'The operation being performed on the cache.',
     type: AttributeType.STRING,
     pii: {
@@ -8501,7 +8501,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'get',
     sdks: ['php-laravel'],
   },
-  ['cache.ttl']: {
+  [CACHE_TTL]: {
     brief: 'The ttl of the cache in seconds',
     type: AttributeType.INTEGER,
     pii: {
@@ -8511,7 +8511,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 120,
     sdks: ['php-laravel'],
   },
-  ['channel']: {
+  [CHANNEL]: {
     brief: 'The channel name that is being used.',
     type: AttributeType.STRING,
     pii: {
@@ -8521,7 +8521,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'mail',
     sdks: ['php-laravel'],
   },
-  ['client.address']: {
+  [CLIENT_ADDRESS]: {
     brief:
       'Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     type: AttributeType.STRING,
@@ -8532,7 +8532,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'example.com',
     aliases: [HTTP_CLIENT_IP],
   },
-  ['client.port']: {
+  [CLIENT_PORT]: {
     brief: 'Client port number.',
     type: AttributeType.INTEGER,
     pii: {
@@ -8541,7 +8541,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 5432,
   },
-  ['cloudflare.d1.duration']: {
+  [CLOUDFLARE_D1_DURATION]: {
     brief: 'The duration of a Cloudflare D1 operation.',
     type: AttributeType.INTEGER,
     pii: {
@@ -8551,7 +8551,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 543,
     sdks: ['javascript-cloudflare'],
   },
-  ['cloudflare.d1.rows_read']: {
+  [CLOUDFLARE_D1_ROWS_READ]: {
     brief: 'The number of rows read in a Cloudflare D1 operation.',
     type: AttributeType.INTEGER,
     pii: {
@@ -8561,7 +8561,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 12,
     sdks: ['javascript-cloudflare'],
   },
-  ['cloudflare.d1.rows_written']: {
+  [CLOUDFLARE_D1_ROWS_WRITTEN]: {
     brief: 'The number of rows written in a Cloudflare D1 operation.',
     type: AttributeType.INTEGER,
     pii: {
@@ -8571,7 +8571,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 12,
     sdks: ['javascript-cloudflare'],
   },
-  ['code.file.path']: {
+  [CODE_FILE_PATH]: {
     brief:
       'The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).',
     type: AttributeType.STRING,
@@ -8582,7 +8582,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '/app/myapplication/http/handler/server.py',
     aliases: [CODE_FILEPATH],
   },
-  ['code.function.name']: {
+  [CODE_FUNCTION_NAME]: {
     brief: "The method or function name, or equivalent (usually rightmost part of the code unit's name).",
     type: AttributeType.STRING,
     pii: {
@@ -8592,7 +8592,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'server_request',
     aliases: [CODE_FUNCTION],
   },
-  ['code.line.number']: {
+  [CODE_LINE_NUMBER]: {
     brief:
       'The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function',
     type: AttributeType.INTEGER,
@@ -8603,7 +8603,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 42,
     aliases: [CODE_LINENO],
   },
-  ['db.collection.name']: {
+  [DB_COLLECTION_NAME]: {
     brief: 'The name of a collection (table, container) within the database.',
     type: AttributeType.STRING,
     pii: {
@@ -8612,7 +8612,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'users',
   },
-  ['db.namespace']: {
+  [DB_NAMESPACE]: {
     brief: 'The name of the database being accessed.',
     type: AttributeType.STRING,
     pii: {
@@ -8622,7 +8622,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'customers',
     aliases: [DB_NAME],
   },
-  ['db.operation.name']: {
+  [DB_OPERATION_NAME]: {
     brief: 'The name of the operation being executed.',
     type: AttributeType.STRING,
     pii: {
@@ -8632,7 +8632,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'SELECT',
     aliases: [DB_OPERATION],
   },
-  ['db.query.parameter.<key>']: {
+  [DB_QUERY_PARAMETER_KEY]: {
     brief:
       'A query parameter used in db.query.text, with <key> being the parameter name, and the attribute value being a string representation of the parameter value.',
     type: AttributeType.STRING,
@@ -8643,7 +8643,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     hasDynamicSuffix: true,
     example: "db.query.parameter.foo='123'",
   },
-  ['db.query.summary']: {
+  [DB_QUERY_SUMMARY]: {
     brief:
       'A database query being executed. Should be paramaterized. The full version of the query is in `db.query.text`.',
     type: AttributeType.STRING,
@@ -8653,7 +8653,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'SELECT * FROM users',
   },
-  ['db.query.text']: {
+  [DB_QUERY_TEXT]: {
     brief:
       'The database query being executed. Should be the full query, not a parameterized version. The parameterized version is in `db.query.summary`.',
     type: AttributeType.STRING,
@@ -8664,7 +8664,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'SELECT * FROM users',
     aliases: [DB_STATEMENT],
   },
-  ['db.redis.connection']: {
+  [DB_REDIS_CONNECTION]: {
     brief: 'The redis connection name.',
     type: AttributeType.STRING,
     pii: {
@@ -8674,7 +8674,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'my-redis-instance',
     sdks: ['php-laravel'],
   },
-  ['db.redis.parameters']: {
+  [DB_REDIS_PARAMETERS]: {
     brief: 'The array of command parameters given to a redis command.',
     type: AttributeType.STRING_ARRAY,
     pii: {
@@ -8684,7 +8684,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: ['test', '*'],
     sdks: ['php-laravel'],
   },
-  ['db.system.name']: {
+  [DB_SYSTEM_NAME]: {
     brief:
       'An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers.',
     type: AttributeType.STRING,
@@ -8695,7 +8695,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'postgresql',
     aliases: [DB_SYSTEM],
   },
-  ['db.user']: {
+  [DB_USER]: {
     brief: 'The database user.',
     type: AttributeType.STRING,
     pii: {
@@ -8704,7 +8704,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'fancy_user',
   },
-  ['device.brand']: {
+  [DEVICE_BRAND]: {
     brief: 'The brand of the device.',
     type: AttributeType.STRING,
     pii: {
@@ -8713,7 +8713,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'Apple',
   },
-  ['device.family']: {
+  [DEVICE_FAMILY]: {
     brief: 'The family of the device.',
     type: AttributeType.STRING,
     pii: {
@@ -8722,7 +8722,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'iPhone',
   },
-  ['device.model']: {
+  [DEVICE_MODEL]: {
     brief: 'The model of the device.',
     type: AttributeType.STRING,
     pii: {
@@ -8731,7 +8731,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'iPhone 15 Pro Max',
   },
-  ['error.type']: {
+  [ERROR_TYPE]: {
     brief: 'Describes a class of error the operation ended with.',
     type: AttributeType.STRING,
     pii: {
@@ -8740,7 +8740,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'timeout',
   },
-  ['event.id']: {
+  [EVENT_ID]: {
     brief: 'The unique identifier for this event (log record)',
     type: AttributeType.INTEGER,
     pii: {
@@ -8749,7 +8749,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 1234567890,
   },
-  ['event.name']: {
+  [EVENT_NAME]: {
     brief: 'The name that uniquely identifies this event (log record)',
     type: AttributeType.STRING,
     pii: {
@@ -8758,7 +8758,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'Process Payload',
   },
-  ['exception.escaped']: {
+  [EXCEPTION_ESCAPED]: {
     brief:
       'SHOULD be set to true if the exception event is recorded at a point where it is known that the exception is escaping the scope of the span.',
     type: AttributeType.BOOLEAN,
@@ -8768,7 +8768,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: true,
   },
-  ['exception.message']: {
+  [EXCEPTION_MESSAGE]: {
     brief: 'The error message.',
     type: AttributeType.STRING,
     pii: {
@@ -8777,7 +8777,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'ENOENT: no such file or directory',
   },
-  ['exception.stacktrace']: {
+  [EXCEPTION_STACKTRACE]: {
     brief:
       'A stacktrace as a string in the natural representation for the language runtime. The representation is to be determined and documented by each language SIG.',
     type: AttributeType.STRING,
@@ -8788,7 +8788,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example:
       'Exception in thread "main" java.lang.RuntimeException: Test exception\n at com.example.GenerateTrace.methodB(GenerateTrace.java:13)\n at com.example.GenerateTrace.methodA(GenerateTrace.java:9)\n at com.example.GenerateTrace.main(GenerateTrace.java:5)',
   },
-  ['exception.type']: {
+  [EXCEPTION_TYPE]: {
     brief:
       'The type of the exception (its fully-qualified class name, if applicable). The dynamic type of the exception should be preferred over the static type in languages that support it.',
     type: AttributeType.STRING,
@@ -8798,7 +8798,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'OSError',
   },
-  ['faas.coldstart']: {
+  [FAAS_COLDSTART]: {
     brief: 'A boolean that is true if the serverless function is executed for the first time (aka cold-start).',
     type: AttributeType.BOOLEAN,
     pii: {
@@ -8807,7 +8807,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: true,
   },
-  ['faas.cron']: {
+  [FAAS_CRON]: {
     brief: 'A string containing the schedule period as Cron Expression.',
     type: AttributeType.STRING,
     pii: {
@@ -8816,7 +8816,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: '0/5 * * * ? *',
   },
-  ['faas.time']: {
+  [FAAS_TIME]: {
     brief: 'A string containing the function invocation time in the ISO 8601 format expressed in UTC.',
     type: AttributeType.STRING,
     pii: {
@@ -8825,7 +8825,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: '2020-01-23T13:47:06Z',
   },
-  ['faas.trigger']: {
+  [FAAS_TRIGGER]: {
     brief: 'Type of the trigger which caused this function invocation.',
     type: AttributeType.STRING,
     pii: {
@@ -8834,7 +8834,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'timer',
   },
-  ['flag.evaluation.<key>']: {
+  [FLAG_EVALUATION_KEY]: {
     brief:
       'An instance of a feature flag evaluation. The value of this attribute is the boolean representing the evaluation result. The <key> suffix is the name of the feature flag.',
     type: AttributeType.BOOLEAN,
@@ -8845,7 +8845,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     hasDynamicSuffix: true,
     example: 'flag.evaluation.is_new_ui=true',
   },
-  ['frames.delay']: {
+  [FRAMES_DELAY]: {
     brief:
       'The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).',
     type: AttributeType.INTEGER,
@@ -8855,7 +8855,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 5,
   },
-  ['frames.frozen']: {
+  [FRAMES_FROZEN]: {
     brief: 'The number of frozen frames rendered during the lifetime of the span.',
     type: AttributeType.INTEGER,
     pii: {
@@ -8864,7 +8864,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 3,
   },
-  ['frames.slow']: {
+  [FRAMES_SLOW]: {
     brief: 'The number of slow frames rendered during the lifetime of the span.',
     type: AttributeType.INTEGER,
     pii: {
@@ -8873,7 +8873,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 1,
   },
-  ['frames.total']: {
+  [FRAMES_TOTAL]: {
     brief: 'The number of total frames rendered during the lifetime of the span.',
     type: AttributeType.INTEGER,
     pii: {
@@ -8882,7 +8882,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 60,
   },
-  ['gen_ai.agent.name']: {
+  [GEN_AI_AGENT_NAME]: {
     brief: 'The name of the agent being used.',
     type: AttributeType.STRING,
     pii: {
@@ -8891,7 +8891,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'ResearchAssistant',
   },
-  ['gen_ai.assistant.message']: {
+  [GEN_AI_ASSISTANT_MESSAGE]: {
     brief: 'The assistant message passed to the model.',
     type: AttributeType.STRING,
     pii: {
@@ -8900,7 +8900,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'get_weather tool call',
   },
-  ['gen_ai.choice']: {
+  [GEN_AI_CHOICE]: {
     brief: "The model's response message.",
     type: AttributeType.STRING,
     pii: {
@@ -8909,7 +8909,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'The weather in Paris is rainy and overcast, with temperatures around 57°F',
   },
-  ['gen_ai.cost.input_tokens']: {
+  [GEN_AI_COST_INPUT_TOKENS]: {
     brief: 'The cost of tokens used to process the AI input (prompt) in USD (without cached input tokens).',
     type: AttributeType.DOUBLE,
     pii: {
@@ -8918,7 +8918,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 123.45,
   },
-  ['gen_ai.cost.output_tokens']: {
+  [GEN_AI_COST_OUTPUT_TOKENS]: {
     brief: 'The cost of tokens used for creating the AI output in USD (without reasoning tokens).',
     type: AttributeType.DOUBLE,
     pii: {
@@ -8927,7 +8927,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 123.45,
   },
-  ['gen_ai.cost.total_tokens']: {
+  [GEN_AI_COST_TOTAL_TOKENS]: {
     brief: 'The total cost for the tokens used.',
     type: AttributeType.DOUBLE,
     pii: {
@@ -8936,7 +8936,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 12.34,
   },
-  ['gen_ai.operation.name']: {
+  [GEN_AI_OPERATION_NAME]: {
     brief: 'The name of the operation being performed.',
     type: AttributeType.STRING,
     pii: {
@@ -8945,7 +8945,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'chat',
   },
-  ['gen_ai.operation.type']: {
+  [GEN_AI_OPERATION_TYPE]: {
     brief:
       "The type of AI operation. Must be one of 'agent', 'ai_client', 'tool', 'handoff', 'guardrail'. Makes querying for spans in the UI easier.",
     type: AttributeType.STRING,
@@ -8955,7 +8955,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'tool',
   },
-  ['gen_ai.pipeline.name']: {
+  [GEN_AI_PIPELINE_NAME]: {
     brief: 'Name of the AI pipeline or chain being executed.',
     type: AttributeType.STRING,
     pii: {
@@ -8965,7 +8965,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'Autofix Pipeline',
     aliases: [AI_PIPELINE_NAME],
   },
-  ['gen_ai.request.available_tools']: {
+  [GEN_AI_REQUEST_AVAILABLE_TOOLS]: {
     brief: 'The available tools for the model. It has to be a stringified version of an array of objects.',
     type: AttributeType.STRING,
     pii: {
@@ -8975,7 +8975,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example:
       '[{"name": "get_weather", "description": "Get the weather for a given location"}, {"name": "get_news", "description": "Get the news for a given topic"}]',
   },
-  ['gen_ai.request.frequency_penalty']: {
+  [GEN_AI_REQUEST_FREQUENCY_PENALTY]: {
     brief:
       'Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.',
     type: AttributeType.DOUBLE,
@@ -8986,7 +8986,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 0.5,
     aliases: [AI_FREQUENCY_PENALTY],
   },
-  ['gen_ai.request.max_tokens']: {
+  [GEN_AI_REQUEST_MAX_TOKENS]: {
     brief: 'The maximum number of tokens to generate in the response.',
     type: AttributeType.INTEGER,
     pii: {
@@ -8995,7 +8995,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 2048,
   },
-  ['gen_ai.request.messages']: {
+  [GEN_AI_REQUEST_MESSAGES]: {
     brief:
       'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.',
     type: AttributeType.STRING,
@@ -9007,7 +9007,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       '[{"role": "system", "content": "Generate a random number."}, {"role": "user", "content": [{"text": "Generate a random number between 0 and 10.", "type": "text"}]}, {"role": "tool", "content": {"toolCallId": "1", "toolName": "Weather", "output": "rainy"}}]',
     aliases: [AI_INPUT_MESSAGES],
   },
-  ['gen_ai.request.model']: {
+  [GEN_AI_REQUEST_MODEL]: {
     brief: 'The model identifier being used for the request.',
     type: AttributeType.STRING,
     pii: {
@@ -9016,7 +9016,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'gpt-4-turbo-preview',
   },
-  ['gen_ai.request.presence_penalty']: {
+  [GEN_AI_REQUEST_PRESENCE_PENALTY]: {
     brief:
       'Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.',
     type: AttributeType.DOUBLE,
@@ -9027,7 +9027,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 0.5,
     aliases: [AI_PRESENCE_PENALTY],
   },
-  ['gen_ai.request.seed']: {
+  [GEN_AI_REQUEST_SEED]: {
     brief: 'The seed, ideally models given the same seed and same other parameters will produce the exact same output.',
     type: AttributeType.STRING,
     pii: {
@@ -9037,7 +9037,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '1234567890',
     aliases: [AI_SEED],
   },
-  ['gen_ai.request.temperature']: {
+  [GEN_AI_REQUEST_TEMPERATURE]: {
     brief:
       'For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.',
     type: AttributeType.DOUBLE,
@@ -9048,7 +9048,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 0.1,
     aliases: [AI_TEMPERATURE],
   },
-  ['gen_ai.request.top_k']: {
+  [GEN_AI_REQUEST_TOP_K]: {
     brief:
       'Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).',
     type: AttributeType.INTEGER,
@@ -9059,7 +9059,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 35,
     aliases: [AI_TOP_K],
   },
-  ['gen_ai.request.top_p']: {
+  [GEN_AI_REQUEST_TOP_P]: {
     brief:
       'Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).',
     type: AttributeType.DOUBLE,
@@ -9070,7 +9070,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 0.7,
     aliases: [AI_TOP_P],
   },
-  ['gen_ai.response.finish_reasons']: {
+  [GEN_AI_RESPONSE_FINISH_REASONS]: {
     brief: 'The reason why the model stopped generating.',
     type: AttributeType.STRING,
     pii: {
@@ -9080,7 +9080,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'COMPLETE',
     aliases: [AI_FINISH_REASON],
   },
-  ['gen_ai.response.id']: {
+  [GEN_AI_RESPONSE_ID]: {
     brief: 'Unique identifier for the completion.',
     type: AttributeType.STRING,
     pii: {
@@ -9090,7 +9090,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'gen_123abc',
     aliases: [AI_GENERATION_ID],
   },
-  ['gen_ai.response.model']: {
+  [GEN_AI_RESPONSE_MODEL]: {
     brief: 'The vendor-specific ID of the model used.',
     type: AttributeType.STRING,
     pii: {
@@ -9100,7 +9100,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'gpt-4',
     aliases: [AI_MODEL_ID],
   },
-  ['gen_ai.response.streaming']: {
+  [GEN_AI_RESPONSE_STREAMING]: {
     brief: "Whether or not the AI model call's response was streamed back asynchronously",
     type: AttributeType.BOOLEAN,
     pii: {
@@ -9110,7 +9110,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: true,
     aliases: [AI_STREAMING],
   },
-  ['gen_ai.response.text']: {
+  [GEN_AI_RESPONSE_TEXT]: {
     brief:
       "The model's response text messages. It has to be a stringified version of an array of response text messages.",
     type: AttributeType.STRING,
@@ -9121,7 +9121,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example:
       '["The weather in Paris is rainy and overcast, with temperatures around 57°F", "The weather in London is sunny and warm, with temperatures around 65°F"]',
   },
-  ['gen_ai.response.tokens_per_second']: {
+  [GEN_AI_RESPONSE_TOKENS_PER_SECOND]: {
     brief: 'The total output tokens per seconds throughput',
     type: AttributeType.DOUBLE,
     pii: {
@@ -9130,7 +9130,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 12345.67,
   },
-  ['gen_ai.response.tool_calls']: {
+  [GEN_AI_RESPONSE_TOOL_CALLS]: {
     brief: "The tool calls in the model's response. It has to be a stringified version of an array of objects.",
     type: AttributeType.STRING,
     pii: {
@@ -9139,7 +9139,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '[{"name": "get_weather", "arguments": {"location": "Paris"}}]',
   },
-  ['gen_ai.system']: {
+  [GEN_AI_SYSTEM]: {
     brief: 'The provider of the model.',
     type: AttributeType.STRING,
     pii: {
@@ -9149,7 +9149,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'openai',
     aliases: [AI_MODEL_PROVIDER],
   },
-  ['gen_ai.system.message']: {
+  [GEN_AI_SYSTEM_MESSAGE]: {
     brief: 'The system instructions passed to the model.',
     type: AttributeType.STRING,
     pii: {
@@ -9158,7 +9158,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'You are a helpful assistant',
   },
-  ['gen_ai.tool.description']: {
+  [GEN_AI_TOOL_DESCRIPTION]: {
     brief: 'The description of the tool being used.',
     type: AttributeType.STRING,
     pii: {
@@ -9167,7 +9167,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'Searches the web for current information about a topic',
   },
-  ['gen_ai.tool.input']: {
+  [GEN_AI_TOOL_INPUT]: {
     brief: 'The input of the tool being used. It has to be a stringified version of the input to the tool.',
     type: AttributeType.STRING,
     pii: {
@@ -9176,7 +9176,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '{"location": "Paris"}',
   },
-  ['gen_ai.tool.message']: {
+  [GEN_AI_TOOL_MESSAGE]: {
     brief: 'The response from a tool or function call passed to the model.',
     type: AttributeType.STRING,
     pii: {
@@ -9185,7 +9185,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'rainy, 57°F',
   },
-  ['gen_ai.tool.name']: {
+  [GEN_AI_TOOL_NAME]: {
     brief: 'Name of the tool utilized by the agent.',
     type: AttributeType.STRING,
     pii: {
@@ -9195,7 +9195,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'Flights',
     aliases: [AI_FUNCTION_CALL],
   },
-  ['gen_ai.tool.output']: {
+  [GEN_AI_TOOL_OUTPUT]: {
     brief: 'The output of the tool being used. It has to be a stringified version of the output of the tool.',
     type: AttributeType.STRING,
     pii: {
@@ -9204,7 +9204,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'rainy, 57°F',
   },
-  ['gen_ai.tool.type']: {
+  [GEN_AI_TOOL_TYPE]: {
     brief: 'The type of tool being used.',
     type: AttributeType.STRING,
     pii: {
@@ -9213,7 +9213,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'function',
   },
-  ['gen_ai.usage.input_tokens']: {
+  [GEN_AI_USAGE_INPUT_TOKENS]: {
     brief: 'The number of tokens used to process the AI input (prompt) without cached input tokens.',
     type: AttributeType.INTEGER,
     pii: {
@@ -9223,7 +9223,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 10,
     aliases: [AI_PROMPT_TOKENS_USED, GEN_AI_USAGE_PROMPT_TOKENS],
   },
-  ['gen_ai.usage.input_tokens.cached']: {
+  [GEN_AI_USAGE_INPUT_TOKENS_CACHED]: {
     brief: 'The number of cached tokens used to process the AI input (prompt).',
     type: AttributeType.INTEGER,
     pii: {
@@ -9232,7 +9232,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 50,
   },
-  ['gen_ai.usage.output_tokens']: {
+  [GEN_AI_USAGE_OUTPUT_TOKENS]: {
     brief: 'The number of tokens used for creating the AI output (without reasoning tokens).',
     type: AttributeType.INTEGER,
     pii: {
@@ -9242,7 +9242,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 10,
     aliases: [AI_COMPLETION_TOKENS_USED, GEN_AI_USAGE_COMPLETION_TOKENS],
   },
-  ['gen_ai.usage.output_tokens.reasoning']: {
+  [GEN_AI_USAGE_OUTPUT_TOKENS_REASONING]: {
     brief: 'The number of tokens used for reasoning to create the AI output.',
     type: AttributeType.INTEGER,
     pii: {
@@ -9251,7 +9251,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 75,
   },
-  ['gen_ai.usage.total_tokens']: {
+  [GEN_AI_USAGE_TOTAL_TOKENS]: {
     brief: 'The total number of tokens used to process the prompt. (input tokens plus output todkens)',
     type: AttributeType.INTEGER,
     pii: {
@@ -9261,7 +9261,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 20,
     aliases: [AI_TOTAL_TOKENS_USED],
   },
-  ['gen_ai.user.message']: {
+  [GEN_AI_USER_MESSAGE]: {
     brief: 'The user message passed to the model.',
     type: AttributeType.STRING,
     pii: {
@@ -9270,7 +9270,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: "What's the weather in Paris?",
   },
-  ['graphql.operation.name']: {
+  [GRAPHQL_OPERATION_NAME]: {
     brief: 'The name of the operation being executed.',
     type: AttributeType.STRING,
     pii: {
@@ -9279,7 +9279,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'findBookById',
   },
-  ['graphql.operation.type']: {
+  [GRAPHQL_OPERATION_TYPE]: {
     brief: 'The type of the operation being executed.',
     type: AttributeType.STRING,
     pii: {
@@ -9288,7 +9288,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'query',
   },
-  ['http.decoded_response_content_length']: {
+  [HTTP_DECODED_RESPONSE_CONTENT_LENGTH]: {
     brief: 'The decoded body size of the response (in bytes).',
     type: AttributeType.INTEGER,
     pii: {
@@ -9298,7 +9298,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 456,
     sdks: ['javascript-browser'],
   },
-  ['http.fragment']: {
+  [HTTP_FRAGMENT]: {
     brief:
       'The fragments present in the URI. Note that this contains the leading # character, while the `url.fragment` attribute does not.',
     type: AttributeType.STRING,
@@ -9308,7 +9308,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '#details',
   },
-  ['http.query']: {
+  [HTTP_QUERY]: {
     brief:
       'The query string present in the URL. Note that this contains the leading ? character, while the `url.query` attribute does not.',
     type: AttributeType.STRING,
@@ -9320,7 +9320,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '?foo=bar&bar=baz',
   },
-  ['http.request.connect_start']: {
+  [HTTP_REQUEST_CONNECT_START]: {
     brief:
       'The UNIX timestamp representing the time immediately before the user agent starts establishing the connection to the server to retrieve the resource.',
     type: AttributeType.DOUBLE,
@@ -9331,7 +9331,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1732829555.111,
     sdks: ['javascript-browser'],
   },
-  ['http.request.connection_end']: {
+  [HTTP_REQUEST_CONNECTION_END]: {
     brief:
       'The UNIX timestamp representing the time immediately after the browser finishes establishing the connection to the server to retrieve the resource. The timestamp value includes the time interval to establish the transport connection, as well as other time intervals such as TLS handshake and SOCKS authentication.',
     type: AttributeType.DOUBLE,
@@ -9342,7 +9342,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1732829555.15,
     sdks: ['javascript-browser'],
   },
-  ['http.request.domain_lookup_end']: {
+  [HTTP_REQUEST_DOMAIN_LOOKUP_END]: {
     brief:
       'The UNIX timestamp representing the time immediately after the browser finishes the domain-name lookup for the resource.',
     type: AttributeType.DOUBLE,
@@ -9353,7 +9353,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1732829555.201,
     sdks: ['javascript-browser'],
   },
-  ['http.request.domain_lookup_start']: {
+  [HTTP_REQUEST_DOMAIN_LOOKUP_START]: {
     brief:
       'The UNIX timestamp representing the time immediately before the browser starts the domain name lookup for the resource.',
     type: AttributeType.DOUBLE,
@@ -9364,7 +9364,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1732829555.322,
     sdks: ['javascript-browser'],
   },
-  ['http.request.fetch_start']: {
+  [HTTP_REQUEST_FETCH_START]: {
     brief: 'The UNIX timestamp representing the time immediately before the browser starts to fetch the resource.',
     type: AttributeType.DOUBLE,
     pii: {
@@ -9374,7 +9374,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1732829555.389,
     sdks: ['javascript-browser'],
   },
-  ['http.request.header.<key>']: {
+  [HTTP_REQUEST_HEADER_KEY]: {
     brief:
       'HTTP request headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.',
     type: AttributeType.STRING_ARRAY,
@@ -9385,7 +9385,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     hasDynamicSuffix: true,
     example: "http.request.header.custom-header=['foo', 'bar']",
   },
-  ['http.request.method']: {
+  [HTTP_REQUEST_METHOD]: {
     brief: 'The HTTP method used.',
     type: AttributeType.STRING,
     pii: {
@@ -9395,7 +9395,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'GET',
     aliases: [METHOD, HTTP_METHOD],
   },
-  ['http.request.redirect_end']: {
+  [HTTP_REQUEST_REDIRECT_END]: {
     brief:
       'The UNIX timestamp representing the timestamp immediately after receiving the last byte of the response of the last redirect',
     type: AttributeType.DOUBLE,
@@ -9406,7 +9406,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1732829558.502,
     sdks: ['javascript-browser'],
   },
-  ['http.request.redirect_start']: {
+  [HTTP_REQUEST_REDIRECT_START]: {
     brief: 'The UNIX timestamp representing the start time of the fetch which that initiates the redirect.',
     type: AttributeType.DOUBLE,
     pii: {
@@ -9416,7 +9416,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1732829555.495,
     sdks: ['javascript-browser'],
   },
-  ['http.request.request_start']: {
+  [HTTP_REQUEST_REQUEST_START]: {
     brief:
       'The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.',
     type: AttributeType.DOUBLE,
@@ -9427,7 +9427,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1732829555.51,
     sdks: ['javascript-browser'],
   },
-  ['http.request.resend_count']: {
+  [HTTP_REQUEST_RESEND_COUNT]: {
     brief: 'The ordinal number of request resending attempt (for any reason, including redirects).',
     type: AttributeType.INTEGER,
     pii: {
@@ -9436,7 +9436,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 2,
   },
-  ['http.request.response_end']: {
+  [HTTP_REQUEST_RESPONSE_END]: {
     brief:
       'The UNIX timestamp representing the time immediately after the browser receives the last byte of the resource or immediately before the transport connection is closed, whichever comes first.',
     type: AttributeType.DOUBLE,
@@ -9447,7 +9447,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1732829555.89,
     sdks: ['javascript-browser'],
   },
-  ['http.request.response_start']: {
+  [HTTP_REQUEST_RESPONSE_START]: {
     brief:
       'The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.',
     type: AttributeType.DOUBLE,
@@ -9458,7 +9458,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1732829555.7,
     sdks: ['javascript-browser'],
   },
-  ['http.request.secure_connection_start']: {
+  [HTTP_REQUEST_SECURE_CONNECTION_START]: {
     brief:
       'The UNIX timestamp representing the time immediately before the browser starts the handshake process to secure the current connection. If a secure connection is not used, the property returns zero.',
     type: AttributeType.DOUBLE,
@@ -9469,7 +9469,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1732829555.73,
     sdks: ['javascript-browser'],
   },
-  ['http.request.time_to_first_byte']: {
+  [HTTP_REQUEST_TIME_TO_FIRST_BYTE]: {
     brief:
       "The time in seconds from the browser's timeorigin to when the first byte of the request's response was received. See https://web.dev/articles/ttfb#measure-resource-requests",
     type: AttributeType.DOUBLE,
@@ -9480,7 +9480,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1.032,
     sdks: ['javascript-browser'],
   },
-  ['http.request.worker_start']: {
+  [HTTP_REQUEST_WORKER_START]: {
     brief:
       'The UNIX timestamp representing the timestamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running.',
     type: AttributeType.DOUBLE,
@@ -9491,7 +9491,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1732829553.68,
     sdks: ['javascript-browser'],
   },
-  ['http.response.body.size']: {
+  [HTTP_RESPONSE_BODY_SIZE]: {
     brief: 'The encoded body size of the response (in bytes).',
     type: AttributeType.INTEGER,
     pii: {
@@ -9501,7 +9501,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 123,
     aliases: [HTTP_RESPONSE_CONTENT_LENGTH, HTTP_RESPONSE_HEADER_CONTENT_LENGTH],
   },
-  ['http.response.header.<key>']: {
+  [HTTP_RESPONSE_HEADER_KEY]: {
     brief:
       'HTTP response headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.',
     type: AttributeType.STRING_ARRAY,
@@ -9512,7 +9512,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     hasDynamicSuffix: true,
     example: "http.response.header.custom-header=['foo', 'bar']",
   },
-  ['http.response.header.content-length']: {
+  [HTTP_RESPONSE_HEADER_CONTENT_LENGTH]: {
     brief: 'The size of the message body sent to the recipient (in bytes)',
     type: AttributeType.STRING,
     pii: {
@@ -9522,7 +9522,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: "http.response.header.custom-header=['foo', 'bar']",
     aliases: [HTTP_RESPONSE_CONTENT_LENGTH, HTTP_RESPONSE_BODY_SIZE],
   },
-  ['http.response.size']: {
+  [HTTP_RESPONSE_SIZE]: {
     brief: 'The transfer size of the response (in bytes).',
     type: AttributeType.INTEGER,
     pii: {
@@ -9532,7 +9532,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 456,
     aliases: [HTTP_RESPONSE_TRANSFER_SIZE],
   },
-  ['http.response.status_code']: {
+  [HTTP_RESPONSE_STATUS_CODE]: {
     brief: 'The status code of the HTTP response.',
     type: AttributeType.INTEGER,
     pii: {
@@ -9542,7 +9542,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 404,
     aliases: [HTTP_STATUS_CODE],
   },
-  ['http.route']: {
+  [HTTP_ROUTE]: {
     brief: 'The matched route, that is, the path template in the format used by the respective server framework.',
     type: AttributeType.STRING,
     pii: {
@@ -9552,7 +9552,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '/users/:id',
     aliases: [URL_TEMPLATE],
   },
-  ['id']: {
+  [ID]: {
     brief: 'A unique identifier for the span.',
     type: AttributeType.STRING,
     pii: {
@@ -9562,7 +9562,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'f47ac10b58cc4372a5670e02b2c3d479',
     sdks: ['php-laravel'],
   },
-  ['jvm.gc.action']: {
+  [JVM_GC_ACTION]: {
     brief: 'Name of the garbage collector action.',
     type: AttributeType.STRING,
     pii: {
@@ -9571,7 +9571,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'end of minor GC',
   },
-  ['jvm.gc.name']: {
+  [JVM_GC_NAME]: {
     brief: 'Name of the garbage collector.',
     type: AttributeType.STRING,
     pii: {
@@ -9580,7 +9580,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'G1 Young Generation',
   },
-  ['jvm.memory.pool.name']: {
+  [JVM_MEMORY_POOL_NAME]: {
     brief: 'Name of the memory pool.',
     type: AttributeType.STRING,
     pii: {
@@ -9589,7 +9589,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'G1 Old Gen',
   },
-  ['jvm.memory.type']: {
+  [JVM_MEMORY_TYPE]: {
     brief: 'Name of the memory pool.',
     type: AttributeType.STRING,
     pii: {
@@ -9598,7 +9598,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'G1 Old Gen',
   },
-  ['jvm.thread.daemon']: {
+  [JVM_THREAD_DAEMON]: {
     brief: 'Whether the thread is daemon or not.',
     type: AttributeType.BOOLEAN,
     pii: {
@@ -9607,7 +9607,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: true,
   },
-  ['jvm.thread.state']: {
+  [JVM_THREAD_STATE]: {
     brief: 'State of the thread.',
     type: AttributeType.STRING,
     pii: {
@@ -9616,7 +9616,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'blocked',
   },
-  ['lcp.element']: {
+  [LCP_ELEMENT]: {
     brief: 'The dom element responsible for the largest contentful paint.',
     type: AttributeType.STRING,
     pii: {
@@ -9625,7 +9625,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'img',
   },
-  ['lcp.id']: {
+  [LCP_ID]: {
     brief: 'The id of the dom element responsible for the largest contentful paint.',
     type: AttributeType.STRING,
     pii: {
@@ -9634,7 +9634,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '#hero',
   },
-  ['lcp.size']: {
+  [LCP_SIZE]: {
     brief: 'The size of the largest contentful paint element.',
     type: AttributeType.INTEGER,
     pii: {
@@ -9643,7 +9643,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 1234,
   },
-  ['lcp.url']: {
+  [LCP_URL]: {
     brief: 'The url of the dom element responsible for the largest contentful paint.',
     type: AttributeType.STRING,
     pii: {
@@ -9652,7 +9652,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'https://example.com',
   },
-  ['logger.name']: {
+  [LOGGER_NAME]: {
     brief: 'The name of the logger that generated this event.',
     type: AttributeType.STRING,
     pii: {
@@ -9661,7 +9661,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'myLogger',
   },
-  ['mcp.prompt.result']: {
+  [MCP_PROMPT_RESULT]: {
     brief: 'The content of the prompt result.',
     type: AttributeType.STRING,
     pii: {
@@ -9670,7 +9670,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'An example prompt result!',
   },
-  ['mcp.tool.result.content']: {
+  [MCP_TOOL_RESULT_CONTENT]: {
     brief: 'The content of the tool result.',
     type: AttributeType.STRING,
     pii: {
@@ -9679,7 +9679,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '{"output": "rainy", "toolCallId": "1"}',
   },
-  ['messaging.destination.connection']: {
+  [MESSAGING_DESTINATION_CONNECTION]: {
     brief: 'The message destination connection.',
     type: AttributeType.STRING,
     pii: {
@@ -9689,7 +9689,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'BestTopic',
     sdks: ['php-laravel'],
   },
-  ['messaging.destination.name']: {
+  [MESSAGING_DESTINATION_NAME]: {
     brief: 'The message destination name.',
     type: AttributeType.STRING,
     pii: {
@@ -9699,7 +9699,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'BestTopic',
     sdks: ['php-laravel'],
   },
-  ['messaging.message.body.size']: {
+  [MESSAGING_MESSAGE_BODY_SIZE]: {
     brief: 'The size of the message body in bytes.',
     type: AttributeType.INTEGER,
     pii: {
@@ -9709,7 +9709,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 839,
     sdks: ['php-laravel'],
   },
-  ['messaging.message.envelope.size']: {
+  [MESSAGING_MESSAGE_ENVELOPE_SIZE]: {
     brief: 'The size of the message body and metadata in bytes.',
     type: AttributeType.INTEGER,
     pii: {
@@ -9719,7 +9719,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1045,
     sdks: ['php-laravel'],
   },
-  ['messaging.message.id']: {
+  [MESSAGING_MESSAGE_ID]: {
     brief: 'A value used by the messaging system as an identifier for the message, represented as a string.',
     type: AttributeType.STRING,
     pii: {
@@ -9729,7 +9729,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'f47ac10b58cc4372a5670e02b2c3d479',
     sdks: ['php-laravel'],
   },
-  ['messaging.message.receive.latency']: {
+  [MESSAGING_MESSAGE_RECEIVE_LATENCY]: {
     brief: 'The latency between when the message was published and received.',
     type: AttributeType.INTEGER,
     pii: {
@@ -9739,7 +9739,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1732847252,
     sdks: ['php-laravel'],
   },
-  ['messaging.message.retry.count']: {
+  [MESSAGING_MESSAGE_RETRY_COUNT]: {
     brief: 'The amount of attempts to send the message.',
     type: AttributeType.INTEGER,
     pii: {
@@ -9749,7 +9749,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 2,
     sdks: ['php-laravel'],
   },
-  ['messaging.operation.type']: {
+  [MESSAGING_OPERATION_TYPE]: {
     brief: 'A string identifying the type of the messaging operation',
     type: AttributeType.STRING,
     pii: {
@@ -9758,7 +9758,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'create',
   },
-  ['messaging.system']: {
+  [MESSAGING_SYSTEM]: {
     brief: 'The messaging system as identified by the client instrumentation.',
     type: AttributeType.STRING,
     pii: {
@@ -9768,7 +9768,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'activemq',
     sdks: ['php-laravel'],
   },
-  ['navigation.type']: {
+  [NAVIGATION_TYPE]: {
     brief: 'The type of navigation done by a client-side router.',
     type: AttributeType.STRING,
     pii: {
@@ -9777,7 +9777,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'router.push',
   },
-  ['nel.elapsed_time']: {
+  [NEL_ELAPSED_TIME]: {
     brief:
       'The elapsed number of milliseconds between the start of the resource fetch and when it was completed or aborted by the user agent.',
     type: AttributeType.INTEGER,
@@ -9787,7 +9787,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 100,
   },
-  ['nel.phase']: {
+  [NEL_PHASE]: {
     brief: 'If request failed, the phase of its network error. If request succeeded, "application".',
     type: AttributeType.STRING,
     pii: {
@@ -9796,7 +9796,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'application',
   },
-  ['nel.referrer']: {
+  [NEL_REFERRER]: {
     brief: "request's referrer, as determined by the referrer policy associated with its client.",
     type: AttributeType.STRING,
     pii: {
@@ -9805,7 +9805,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'https://example.com/foo?bar=baz',
   },
-  ['nel.sampling_function']: {
+  [NEL_SAMPLING_FUNCTION]: {
     brief: 'The sampling function used to determine if the request should be sampled.',
     type: AttributeType.DOUBLE,
     pii: {
@@ -9814,7 +9814,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 0.5,
   },
-  ['nel.type']: {
+  [NEL_TYPE]: {
     brief: 'If request failed, the type of its network error. If request succeeded, "ok".',
     type: AttributeType.STRING,
     pii: {
@@ -9823,7 +9823,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'dns.unreachable',
   },
-  ['network.local.address']: {
+  [NETWORK_LOCAL_ADDRESS]: {
     brief: 'Local address of the network connection - IP address or Unix domain socket name.',
     type: AttributeType.STRING,
     pii: {
@@ -9833,7 +9833,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '10.1.2.80',
     aliases: [NET_HOST_IP, NET_SOCK_HOST_ADDR],
   },
-  ['network.local.port']: {
+  [NETWORK_LOCAL_PORT]: {
     brief: 'Local port number of the network connection.',
     type: AttributeType.INTEGER,
     pii: {
@@ -9843,7 +9843,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 65400,
     aliases: [NET_SOCK_HOST_PORT],
   },
-  ['network.peer.address']: {
+  [NETWORK_PEER_ADDRESS]: {
     brief: 'Peer address of the network connection - IP address or Unix domain socket name.',
     type: AttributeType.STRING,
     pii: {
@@ -9853,7 +9853,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '10.1.2.80',
     aliases: [NET_PEER_IP, NET_SOCK_PEER_ADDR],
   },
-  ['network.peer.port']: {
+  [NETWORK_PEER_PORT]: {
     brief: 'Peer port number of the network connection.',
     type: AttributeType.INTEGER,
     pii: {
@@ -9862,7 +9862,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 65400,
   },
-  ['network.protocol.name']: {
+  [NETWORK_PROTOCOL_NAME]: {
     brief: 'OSI application layer or non-OSI equivalent.',
     type: AttributeType.STRING,
     pii: {
@@ -9872,7 +9872,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'http',
     aliases: [NET_PROTOCOL_NAME],
   },
-  ['network.protocol.version']: {
+  [NETWORK_PROTOCOL_VERSION]: {
     brief: 'The actual version of the protocol used for network communication.',
     type: AttributeType.STRING,
     pii: {
@@ -9882,7 +9882,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '1.1',
     aliases: [HTTP_FLAVOR, NET_PROTOCOL_VERSION],
   },
-  ['network.transport']: {
+  [NETWORK_TRANSPORT]: {
     brief: 'OSI transport layer or inter-process communication method.',
     type: AttributeType.STRING,
     pii: {
@@ -9892,7 +9892,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'tcp',
     aliases: [NET_TRANSPORT],
   },
-  ['network.type']: {
+  [NETWORK_TYPE]: {
     brief: 'OSI network layer or non-OSI equivalent.',
     type: AttributeType.STRING,
     pii: {
@@ -9901,7 +9901,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'ipv4',
   },
-  ['os.build_id']: {
+  [OS_BUILD_ID]: {
     brief: 'The build ID of the operating system.',
     type: AttributeType.STRING,
     pii: {
@@ -9910,7 +9910,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: '1234567890',
   },
-  ['os.description']: {
+  [OS_DESCRIPTION]: {
     brief:
       'Human readable (not intended to be parsed) OS version information, like e.g. reported by ver or lsb_release -a commands.',
     type: AttributeType.STRING,
@@ -9920,7 +9920,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'Ubuntu 18.04.1 LTS',
   },
-  ['os.name']: {
+  [OS_NAME]: {
     brief: 'Human readable operating system name.',
     type: AttributeType.STRING,
     pii: {
@@ -9929,7 +9929,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'Ubuntu',
   },
-  ['os.type']: {
+  [OS_TYPE]: {
     brief: 'The operating system type.',
     type: AttributeType.STRING,
     pii: {
@@ -9938,7 +9938,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'linux',
   },
-  ['os.version']: {
+  [OS_VERSION]: {
     brief: 'The version of the operating system.',
     type: AttributeType.STRING,
     pii: {
@@ -9947,7 +9947,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: '18.04.2',
   },
-  ['otel.scope.name']: {
+  [OTEL_SCOPE_NAME]: {
     brief: 'The name of the instrumentation scope - (InstrumentationScope.Name in OTLP).',
     type: AttributeType.STRING,
     pii: {
@@ -9956,7 +9956,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'io.opentelemetry.contrib.mongodb',
   },
-  ['otel.scope.version']: {
+  [OTEL_SCOPE_VERSION]: {
     brief: 'The version of the instrumentation scope - (InstrumentationScope.Version in OTLP).',
     type: AttributeType.STRING,
     pii: {
@@ -9965,7 +9965,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: '2.4.5',
   },
-  ['otel.status_code']: {
+  [OTEL_STATUS_CODE]: {
     brief: 'Name of the code, either “OK” or “ERROR”. MUST NOT be set if the status code is UNSET.',
     type: AttributeType.STRING,
     pii: {
@@ -9974,7 +9974,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'OK',
   },
-  ['otel.status_description']: {
+  [OTEL_STATUS_DESCRIPTION]: {
     brief: 'Description of the Status if it has a value, otherwise not set.',
     type: AttributeType.STRING,
     pii: {
@@ -9983,7 +9983,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'resource not found',
   },
-  ['params.<key>']: {
+  [PARAMS_KEY]: {
     brief:
       'Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.',
     type: AttributeType.STRING,
@@ -9995,7 +9995,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: "params.id='123'",
     aliases: [URL_PATH_PARAMETER_KEY],
   },
-  ['previous_route']: {
+  [PREVIOUS_ROUTE]: {
     brief: 'Also used by mobile SDKs to indicate the previous route in the application.',
     type: AttributeType.STRING,
     pii: {
@@ -10005,7 +10005,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'HomeScreen',
     sdks: ['javascript-reactnative'],
   },
-  ['process.executable.name']: {
+  [PROCESS_EXECUTABLE_NAME]: {
     brief: 'The name of the executable that started the process.',
     type: AttributeType.STRING,
     pii: {
@@ -10014,7 +10014,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'getsentry',
   },
-  ['process.pid']: {
+  [PROCESS_PID]: {
     brief: 'The process ID of the running process.',
     type: AttributeType.INTEGER,
     pii: {
@@ -10023,7 +10023,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 12345,
   },
-  ['process.runtime.description']: {
+  [PROCESS_RUNTIME_DESCRIPTION]: {
     brief:
       'An additional description about the runtime of the process, for example a specific vendor customization of the runtime environment. Equivalent to `raw_description` in the Sentry runtime context.',
     type: AttributeType.STRING,
@@ -10033,7 +10033,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'Eclipse OpenJ9 VM openj9-0.21.0',
   },
-  ['process.runtime.name']: {
+  [PROCESS_RUNTIME_NAME]: {
     brief: 'The name of the runtime. Equivalent to `name` in the Sentry runtime context.',
     type: AttributeType.STRING,
     pii: {
@@ -10042,7 +10042,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'node',
   },
-  ['process.runtime.version']: {
+  [PROCESS_RUNTIME_VERSION]: {
     brief:
       'The version of the runtime of this process, as returned by the runtime without modification. Equivalent to `version` in the Sentry runtime context.',
     type: AttributeType.STRING,
@@ -10052,7 +10052,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: '18.04.2',
   },
-  ['remix.action_form_data.<key>']: {
+  [REMIX_ACTION_FORM_DATA_KEY]: {
     brief: 'Remix form data, <key> being the form data key, the value being the form data value.',
     type: AttributeType.STRING,
     pii: {
@@ -10063,7 +10063,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: "http.response.header.text='test'",
     sdks: ['javascript-remix'],
   },
-  ['resource.render_blocking_status']: {
+  [RESOURCE_RENDER_BLOCKING_STATUS]: {
     brief: 'The render blocking status of the resource.',
     type: AttributeType.STRING,
     pii: {
@@ -10073,7 +10073,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'non-blocking',
     sdks: ['javascript-browser'],
   },
-  ['rpc.grpc.status_code']: {
+  [RPC_GRPC_STATUS_CODE]: {
     brief: 'The numeric status code of the gRPC request.',
     type: AttributeType.INTEGER,
     pii: {
@@ -10082,7 +10082,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 2,
   },
-  ['rpc.service']: {
+  [RPC_SERVICE]: {
     brief: 'The full (logical) name of the service being called, including its package name, if applicable.',
     type: AttributeType.STRING,
     pii: {
@@ -10091,7 +10091,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'myService.BestService',
   },
-  ['sentry._internal.dsc.environment']: {
+  [SENTRY_INTERNAL_DSC_ENVIRONMENT]: {
     brief: 'The environment from the dynamic sampling context.',
     type: AttributeType.STRING,
     pii: {
@@ -10100,7 +10100,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'prod',
   },
-  ['sentry._internal.dsc.org_id']: {
+  [SENTRY_INTERNAL_DSC_ORG_ID]: {
     brief: 'The organization ID from the dynamic sampling context.',
     type: AttributeType.STRING,
     pii: {
@@ -10109,7 +10109,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '1',
   },
-  ['sentry._internal.dsc.public_key']: {
+  [SENTRY_INTERNAL_DSC_PUBLIC_KEY]: {
     brief: 'The public key from the dynamic sampling context.',
     type: AttributeType.STRING,
     pii: {
@@ -10118,7 +10118,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'c51734c603c4430eb57cb0a5728a479d',
   },
-  ['sentry._internal.dsc.release']: {
+  [SENTRY_INTERNAL_DSC_RELEASE]: {
     brief: 'The release identifier from the dynamic sampling context.',
     type: AttributeType.STRING,
     pii: {
@@ -10127,7 +10127,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'frontend@e8211be71b214afab5b85de4b4c54be3714952bb',
   },
-  ['sentry._internal.dsc.sample_rand']: {
+  [SENTRY_INTERNAL_DSC_SAMPLE_RAND]: {
     brief: 'The random sampling value from the dynamic sampling context.',
     type: AttributeType.STRING,
     pii: {
@@ -10136,7 +10136,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '0.8286147972820134',
   },
-  ['sentry._internal.dsc.sample_rate']: {
+  [SENTRY_INTERNAL_DSC_SAMPLE_RATE]: {
     brief: 'The sample rate from the dynamic sampling context.',
     type: AttributeType.STRING,
     pii: {
@@ -10145,7 +10145,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '1.0',
   },
-  ['sentry._internal.dsc.sampled']: {
+  [SENTRY_INTERNAL_DSC_SAMPLED]: {
     brief: 'Whether the event was sampled according to the dynamic sampling context.',
     type: AttributeType.BOOLEAN,
     pii: {
@@ -10154,7 +10154,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: true,
   },
-  ['sentry._internal.dsc.trace_id']: {
+  [SENTRY_INTERNAL_DSC_TRACE_ID]: {
     brief: 'The trace ID from the dynamic sampling context.',
     type: AttributeType.STRING,
     pii: {
@@ -10163,7 +10163,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '047372980460430cbc78d9779df33a46',
   },
-  ['sentry._internal.dsc.transaction']: {
+  [SENTRY_INTERNAL_DSC_TRANSACTION]: {
     brief: 'The transaction name from the dynamic sampling context.',
     type: AttributeType.STRING,
     pii: {
@@ -10172,7 +10172,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '/issues/errors-outages/',
   },
-  ['sentry._internal.observed_timestamp_nanos']: {
+  [SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS]: {
     brief: 'The timestamp at which an envelope was received by Relay, in nanoseconds.',
     type: AttributeType.STRING,
     pii: {
@@ -10182,7 +10182,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '1544712660300000000',
     aliases: [SENTRY_OBSERVED_TIMESTAMP_NANOS],
   },
-  ['sentry._internal.replay_is_buffering']: {
+  [SENTRY_INTERNAL_REPLAY_IS_BUFFERING]: {
     brief:
       'A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate).',
     type: AttributeType.BOOLEAN,
@@ -10192,7 +10192,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: true,
   },
-  ['sentry.cancellation_reason']: {
+  [SENTRY_CANCELLATION_REASON]: {
     brief: 'The reason why a span ended early.',
     type: AttributeType.STRING,
     pii: {
@@ -10201,7 +10201,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'document.hidden',
   },
-  ['sentry.client_sample_rate']: {
+  [SENTRY_CLIENT_SAMPLE_RATE]: {
     brief: 'Rate at which a span was sampled in the SDK.',
     type: AttributeType.DOUBLE,
     pii: {
@@ -10210,7 +10210,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 0.5,
   },
-  ['sentry.description']: {
+  [SENTRY_DESCRIPTION]: {
     brief: 'The human-readable description of a span.',
     type: AttributeType.STRING,
     pii: {
@@ -10219,7 +10219,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'index view query',
   },
-  ['sentry.dist']: {
+  [SENTRY_DIST]: {
     brief: 'The sentry dist.',
     type: AttributeType.STRING,
     pii: {
@@ -10228,7 +10228,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '1.0',
   },
-  ['sentry.environment']: {
+  [SENTRY_ENVIRONMENT]: {
     brief: 'The sentry environment.',
     type: AttributeType.STRING,
     pii: {
@@ -10238,7 +10238,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'production',
     aliases: [ENVIRONMENT],
   },
-  ['sentry.exclusive_time']: {
+  [SENTRY_EXCLUSIVE_TIME]: {
     brief: 'The exclusive time duration of the span.',
     type: AttributeType.INTEGER,
     pii: {
@@ -10247,7 +10247,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 1234,
   },
-  ['sentry.http.prefetch']: {
+  [SENTRY_HTTP_PREFETCH]: {
     brief: 'If an http request was a prefetch request.',
     type: AttributeType.BOOLEAN,
     pii: {
@@ -10256,7 +10256,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: true,
   },
-  ['sentry.idle_span_finish_reason']: {
+  [SENTRY_IDLE_SPAN_FINISH_REASON]: {
     brief: 'The reason why an idle span ended early.',
     type: AttributeType.STRING,
     pii: {
@@ -10265,7 +10265,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'idleTimeout',
   },
-  ['sentry.message.parameter.<key>']: {
+  [SENTRY_MESSAGE_PARAMETER_KEY]: {
     brief:
       "A parameter used in the message template. <key> can either be the number that represent the parameter's position in the template string (sentry.message.parameter.0, sentry.message.parameter.1, etc) or the parameter's name (sentry.message.parameter.item_id, sentry.message.parameter.user_id, etc)",
     type: AttributeType.STRING,
@@ -10275,7 +10275,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: "sentry.message.parameter.0='123'",
   },
-  ['sentry.message.template']: {
+  [SENTRY_MESSAGE_TEMPLATE]: {
     brief: 'The parameterized template string.',
     type: AttributeType.STRING,
     pii: {
@@ -10284,7 +10284,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'Hello, {name}!',
   },
-  ['sentry.module.<key>']: {
+  [SENTRY_MODULE_KEY]: {
     brief: 'A module that was loaded in the process. The key is the name of the module.',
     type: AttributeType.STRING,
     pii: {
@@ -10294,7 +10294,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     hasDynamicSuffix: true,
     example: "sentry.module.brianium/paratest='v7.7.0'",
   },
-  ['sentry.nextjs.ssr.function.route']: {
+  [SENTRY_NEXTJS_SSR_FUNCTION_ROUTE]: {
     brief:
       'A parameterized route for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions when the file location of the function is known.',
     type: AttributeType.STRING,
@@ -10305,7 +10305,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '/posts/[id]/layout',
     sdks: ['javascript'],
   },
-  ['sentry.nextjs.ssr.function.type']: {
+  [SENTRY_NEXTJS_SSR_FUNCTION_TYPE]: {
     brief:
       'A descriptor for a for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions.',
     type: AttributeType.STRING,
@@ -10316,7 +10316,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'generateMetadata',
     sdks: ['javascript'],
   },
-  ['sentry.op']: {
+  [SENTRY_OP]: {
     brief: 'The operation of a span.',
     type: AttributeType.STRING,
     pii: {
@@ -10325,7 +10325,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'http.client',
   },
-  ['sentry.origin']: {
+  [SENTRY_ORIGIN]: {
     brief: 'The origin of the instrumentation (e.g. span, log, etc.)',
     type: AttributeType.STRING,
     pii: {
@@ -10334,7 +10334,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'auto.http.otel.fastify',
   },
-  ['sentry.platform']: {
+  [SENTRY_PLATFORM]: {
     brief: 'The sdk platform that generated the event.',
     type: AttributeType.STRING,
     pii: {
@@ -10343,7 +10343,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'php',
   },
-  ['sentry.profile_id']: {
+  [SENTRY_PROFILE_ID]: {
     brief: 'The id of the sentry profile.',
     type: AttributeType.STRING,
     pii: {
@@ -10353,7 +10353,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '123e4567e89b12d3a456426614174000',
     aliases: [PROFILE_ID],
   },
-  ['sentry.release']: {
+  [SENTRY_RELEASE]: {
     brief: 'The sentry release.',
     type: AttributeType.STRING,
     pii: {
@@ -10363,7 +10363,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '7.0.0',
     aliases: [SERVICE_VERSION, RELEASE],
   },
-  ['sentry.replay_id']: {
+  [SENTRY_REPLAY_ID]: {
     brief: 'The id of the sentry replay.',
     type: AttributeType.STRING,
     pii: {
@@ -10373,7 +10373,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '123e4567e89b12d3a456426614174000',
     aliases: [REPLAY_ID],
   },
-  ['sentry.sdk.integrations']: {
+  [SENTRY_SDK_INTEGRATIONS]: {
     brief:
       'A list of names identifying enabled integrations. The list shouldhave all enabled integrations, including default integrations. Defaultintegrations are included because different SDK releases may contain differentdefault integrations.',
     type: AttributeType.STRING_ARRAY,
@@ -10383,7 +10383,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: ['InboundFilters', 'FunctionToString', 'BrowserApiErrors', 'Breadcrumbs'],
   },
-  ['sentry.sdk.name']: {
+  [SENTRY_SDK_NAME]: {
     brief: 'The sentry sdk name.',
     type: AttributeType.STRING,
     pii: {
@@ -10392,7 +10392,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '@sentry/react',
   },
-  ['sentry.sdk.version']: {
+  [SENTRY_SDK_VERSION]: {
     brief: 'The sentry sdk version.',
     type: AttributeType.STRING,
     pii: {
@@ -10401,7 +10401,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '7.0.0',
   },
-  ['sentry.segment.id']: {
+  [SENTRY_SEGMENT_ID]: {
     brief: 'The segment ID of a span',
     type: AttributeType.STRING,
     pii: {
@@ -10411,7 +10411,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '051581bf3cb55c13',
     aliases: [_SENTRY_SEGMENT_ID],
   },
-  ['sentry.segment.name']: {
+  [SENTRY_SEGMENT_NAME]: {
     brief: 'The segment name of a span',
     type: AttributeType.STRING,
     pii: {
@@ -10420,7 +10420,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'GET /user',
   },
-  ['sentry.server_sample_rate']: {
+  [SENTRY_SERVER_SAMPLE_RATE]: {
     brief: 'Rate at which a span was sampled in Relay.',
     type: AttributeType.DOUBLE,
     pii: {
@@ -10429,7 +10429,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 0.5,
   },
-  ['sentry.span.source']: {
+  [SENTRY_SPAN_SOURCE]: {
     brief: 'The source of a span, also referred to as transaction source.',
     type: AttributeType.STRING,
     pii: {
@@ -10438,7 +10438,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'route',
   },
-  ['sentry.trace.parent_span_id']: {
+  [SENTRY_TRACE_PARENT_SPAN_ID]: {
     brief:
       'The span id of the span that was active when the log was collected. This should not be set if there was no active span.',
     type: AttributeType.STRING,
@@ -10448,7 +10448,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'b0e6f15b45c36b12',
   },
-  ['sentry.transaction']: {
+  [SENTRY_TRANSACTION]: {
     brief: 'The sentry transaction (segment name).',
     type: AttributeType.STRING,
     pii: {
@@ -10458,7 +10458,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'GET /',
     aliases: [TRANSACTION],
   },
-  ['server.address']: {
+  [SERVER_ADDRESS]: {
     brief:
       'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     type: AttributeType.STRING,
@@ -10469,7 +10469,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'example.com',
     aliases: [HTTP_SERVER_NAME, NET_HOST_NAME, HTTP_HOST],
   },
-  ['server.port']: {
+  [SERVER_PORT]: {
     brief: 'Server port number.',
     type: AttributeType.INTEGER,
     pii: {
@@ -10479,7 +10479,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1337,
     aliases: [NET_HOST_PORT],
   },
-  ['service.name']: {
+  [SERVICE_NAME]: {
     brief: 'Logical name of the service.',
     type: AttributeType.STRING,
     pii: {
@@ -10488,7 +10488,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'omegastar',
   },
-  ['service.version']: {
+  [SERVICE_VERSION]: {
     brief: 'The version string of the service API or implementation. The format is not defined by these conventions.',
     type: AttributeType.STRING,
     pii: {
@@ -10498,7 +10498,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '5.0.0',
     aliases: [SENTRY_RELEASE],
   },
-  ['thread.id']: {
+  [THREAD_ID]: {
     brief: 'Current “managed” thread ID.',
     type: AttributeType.INTEGER,
     pii: {
@@ -10507,7 +10507,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 56,
   },
-  ['thread.name']: {
+  [THREAD_NAME]: {
     brief: 'Current thread name.',
     type: AttributeType.STRING,
     pii: {
@@ -10516,7 +10516,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'main',
   },
-  ['type']: {
+  [TYPE]: {
     brief: 'More granular type of the operation happening.',
     type: AttributeType.STRING,
     pii: {
@@ -10526,7 +10526,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'fetch',
     sdks: ['javascript-browser', 'javascript-node'],
   },
-  ['ui.component_name']: {
+  [UI_COMPONENT_NAME]: {
     brief: 'The name of the associated component.',
     type: AttributeType.STRING,
     pii: {
@@ -10535,7 +10535,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'HomeButton',
   },
-  ['ui.contributes_to_ttfd']: {
+  [UI_CONTRIBUTES_TO_TTFD]: {
     brief: 'Whether the span execution contributed to the TTFD (time to fully drawn) metric.',
     type: AttributeType.BOOLEAN,
     pii: {
@@ -10544,7 +10544,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: true,
   },
-  ['ui.contributes_to_ttid']: {
+  [UI_CONTRIBUTES_TO_TTID]: {
     brief: 'Whether the span execution contributed to the TTID (time to initial display) metric.',
     type: AttributeType.BOOLEAN,
     pii: {
@@ -10553,7 +10553,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: true,
   },
-  ['url.domain']: {
+  [URL_DOMAIN]: {
     brief:
       'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     type: AttributeType.STRING,
@@ -10563,7 +10563,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'example.com',
   },
-  ['url.fragment']: {
+  [URL_FRAGMENT]: {
     brief:
       'The fragments present in the URI. Note that this does not contain the leading # character, while the `http.fragment` attribute does.',
     type: AttributeType.STRING,
@@ -10573,7 +10573,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'details',
   },
-  ['url.full']: {
+  [URL_FULL]: {
     brief: 'The URL of the resource that was fetched.',
     type: AttributeType.STRING,
     pii: {
@@ -10583,7 +10583,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'https://example.com/test?foo=bar#buzz',
     aliases: [HTTP_URL, URL],
   },
-  ['url.path']: {
+  [URL_PATH]: {
     brief: 'The URI path component.',
     type: AttributeType.STRING,
     pii: {
@@ -10592,7 +10592,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: '/foo',
   },
-  ['url.path.parameter.<key>']: {
+  [URL_PATH_PARAMETER_KEY]: {
     brief:
       'Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.',
     type: AttributeType.STRING,
@@ -10604,7 +10604,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: "url.path.parameter.id='123'",
     aliases: [PARAMS_KEY],
   },
-  ['url.port']: {
+  [URL_PORT]: {
     brief: 'Server port number.',
     type: AttributeType.INTEGER,
     pii: {
@@ -10613,7 +10613,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 1337,
   },
-  ['url.query']: {
+  [URL_QUERY]: {
     brief:
       'The query string present in the URL. Note that this does not contain the leading ? character, while the `http.query` attribute does.',
     type: AttributeType.STRING,
@@ -10625,7 +10625,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'foo=bar&bar=baz',
   },
-  ['url.scheme']: {
+  [URL_SCHEME]: {
     brief: 'The URI scheme component identifying the used protocol.',
     type: AttributeType.STRING,
     pii: {
@@ -10635,7 +10635,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'https',
     aliases: [HTTP_SCHEME],
   },
-  ['url.template']: {
+  [URL_TEMPLATE]: {
     brief: 'The low-cardinality template of an absolute path reference.',
     type: AttributeType.STRING,
     pii: {
@@ -10645,7 +10645,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '/users/:id',
     aliases: [HTTP_ROUTE],
   },
-  ['user.email']: {
+  [USER_EMAIL]: {
     brief: 'User email address.',
     type: AttributeType.STRING,
     pii: {
@@ -10654,7 +10654,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'test@example.com',
   },
-  ['user.full_name']: {
+  [USER_FULL_NAME]: {
     brief: "User's full name.",
     type: AttributeType.STRING,
     pii: {
@@ -10663,7 +10663,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'John Smith',
   },
-  ['user.geo.city']: {
+  [USER_GEO_CITY]: {
     brief: 'Human readable city name.',
     type: AttributeType.STRING,
     pii: {
@@ -10672,7 +10672,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'Toronto',
   },
-  ['user.geo.country_code']: {
+  [USER_GEO_COUNTRY_CODE]: {
     brief: 'Two-letter country code (ISO 3166-1 alpha-2).',
     type: AttributeType.STRING,
     pii: {
@@ -10681,7 +10681,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'CA',
   },
-  ['user.geo.region']: {
+  [USER_GEO_REGION]: {
     brief: 'Human readable region name or code.',
     type: AttributeType.STRING,
     pii: {
@@ -10690,7 +10690,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'Canada',
   },
-  ['user.geo.subdivision']: {
+  [USER_GEO_SUBDIVISION]: {
     brief: 'Human readable subdivision name.',
     type: AttributeType.STRING,
     pii: {
@@ -10699,7 +10699,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'Ontario',
   },
-  ['user.hash']: {
+  [USER_HASH]: {
     brief: 'Unique user hash to correlate information for a user in anonymized form.',
     type: AttributeType.STRING,
     pii: {
@@ -10708,7 +10708,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: '8ae4c2993e0f4f3b8b2d1b1f3b5e8f4d',
   },
-  ['user.id']: {
+  [USER_ID]: {
     brief: 'Unique identifier of the user.',
     type: AttributeType.STRING,
     pii: {
@@ -10717,7 +10717,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'S-1-5-21-202424912787-2692429404-2351956786-1000',
   },
-  ['user.ip_address']: {
+  [USER_IP_ADDRESS]: {
     brief: 'The IP address of the user.',
     type: AttributeType.STRING,
     pii: {
@@ -10726,7 +10726,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '192.168.1.1',
   },
-  ['user.name']: {
+  [USER_NAME]: {
     brief: 'Short name or login/username of the user.',
     type: AttributeType.STRING,
     pii: {
@@ -10735,7 +10735,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'j.smith',
   },
-  ['user.roles']: {
+  [USER_ROLES]: {
     brief: 'Array of user roles at the time of the event.',
     type: AttributeType.STRING_ARRAY,
     pii: {
@@ -10744,7 +10744,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: ['admin', 'editor'],
   },
-  ['user_agent.original']: {
+  [USER_AGENT_ORIGINAL]: {
     brief: 'Value of the HTTP User-Agent header sent by the client.',
     type: AttributeType.STRING,
     pii: {
@@ -10755,7 +10755,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1',
     aliases: [HTTP_USER_AGENT],
   },
-  ['vercel.branch']: {
+  [VERCEL_BRANCH]: {
     brief: 'Git branch name for Vercel project',
     type: AttributeType.STRING,
     pii: {
@@ -10764,7 +10764,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'main',
   },
-  ['vercel.build_id']: {
+  [VERCEL_BUILD_ID]: {
     brief: 'Identifier for the Vercel build (only present on build logs)',
     type: AttributeType.STRING,
     pii: {
@@ -10773,7 +10773,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'bld_cotnkcr76',
   },
-  ['vercel.deployment_id']: {
+  [VERCEL_DEPLOYMENT_ID]: {
     brief: 'Identifier for the Vercel deployment',
     type: AttributeType.STRING,
     pii: {
@@ -10782,7 +10782,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'dpl_233NRGRjVZX1caZrXWtz5g1TAksD',
   },
-  ['vercel.destination']: {
+  [VERCEL_DESTINATION]: {
     brief: 'Origin of the external content in Vercel (only on external logs)',
     type: AttributeType.STRING,
     pii: {
@@ -10791,7 +10791,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'https://vitals.vercel-insights.com/v1',
   },
-  ['vercel.edge_type']: {
+  [VERCEL_EDGE_TYPE]: {
     brief: 'Type of edge runtime in Vercel',
     type: AttributeType.STRING,
     pii: {
@@ -10800,7 +10800,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'edge-function',
   },
-  ['vercel.entrypoint']: {
+  [VERCEL_ENTRYPOINT]: {
     brief: 'Entrypoint for the request in Vercel',
     type: AttributeType.STRING,
     pii: {
@@ -10809,7 +10809,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'api/index.js',
   },
-  ['vercel.execution_region']: {
+  [VERCEL_EXECUTION_REGION]: {
     brief: 'Region where the request is executed',
     type: AttributeType.STRING,
     pii: {
@@ -10818,7 +10818,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'sfo1',
   },
-  ['vercel.id']: {
+  [VERCEL_ID]: {
     brief: 'Unique identifier for the log entry in Vercel',
     type: AttributeType.STRING,
     pii: {
@@ -10827,7 +10827,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '1573817187330377061717300000',
   },
-  ['vercel.ja3_digest']: {
+  [VERCEL_JA3_DIGEST]: {
     brief: 'JA3 fingerprint digest of Vercel request',
     type: AttributeType.STRING,
     pii: {
@@ -10836,7 +10836,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '769,47-53-5-10-49161-49162-49171-49172-50-56-19-4,0-10-11,23-24-25,0',
   },
-  ['vercel.ja4_digest']: {
+  [VERCEL_JA4_DIGEST]: {
     brief: 'JA4 fingerprint digest',
     type: AttributeType.STRING,
     pii: {
@@ -10845,7 +10845,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 't13d1516h2_8daaf6152771_02713d6af862',
   },
-  ['vercel.log_type']: {
+  [VERCEL_LOG_TYPE]: {
     brief: 'Vercel log output type',
     type: AttributeType.STRING,
     pii: {
@@ -10854,7 +10854,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'stdout',
   },
-  ['vercel.project_id']: {
+  [VERCEL_PROJECT_ID]: {
     brief: 'Identifier for the Vercel project',
     type: AttributeType.STRING,
     pii: {
@@ -10863,7 +10863,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'gdufoJxB6b9b1fEqr1jUtFkyavUU',
   },
-  ['vercel.project_name']: {
+  [VERCEL_PROJECT_NAME]: {
     brief: 'Name of the Vercel project',
     type: AttributeType.STRING,
     pii: {
@@ -10872,7 +10872,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'my-app',
   },
-  ['vercel.proxy.cache_id']: {
+  [VERCEL_PROXY_CACHE_ID]: {
     brief: 'Original request ID when request is served from cache',
     type: AttributeType.STRING,
     pii: {
@@ -10881,7 +10881,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'pdx1::v8g4b-1744143786684-93dafbc0f70d',
   },
-  ['vercel.proxy.client_ip']: {
+  [VERCEL_PROXY_CLIENT_IP]: {
     brief: 'Client IP address',
     type: AttributeType.STRING,
     pii: {
@@ -10890,7 +10890,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '120.75.16.101',
   },
-  ['vercel.proxy.host']: {
+  [VERCEL_PROXY_HOST]: {
     brief: 'Hostname of the request',
     type: AttributeType.STRING,
     pii: {
@@ -10899,7 +10899,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'test.vercel.app',
   },
-  ['vercel.proxy.lambda_region']: {
+  [VERCEL_PROXY_LAMBDA_REGION]: {
     brief: 'Region where lambda function executed',
     type: AttributeType.STRING,
     pii: {
@@ -10908,7 +10908,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'sfo1',
   },
-  ['vercel.proxy.method']: {
+  [VERCEL_PROXY_METHOD]: {
     brief: 'HTTP method of the request',
     type: AttributeType.STRING,
     pii: {
@@ -10917,7 +10917,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'GET',
   },
-  ['vercel.proxy.path']: {
+  [VERCEL_PROXY_PATH]: {
     brief: 'Request path with query parameters',
     type: AttributeType.STRING,
     pii: {
@@ -10926,7 +10926,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '/dynamic/some-value.json?route=some-value',
   },
-  ['vercel.proxy.path_type']: {
+  [VERCEL_PROXY_PATH_TYPE]: {
     brief: 'How the request was served based on its path and project configuration',
     type: AttributeType.STRING,
     pii: {
@@ -10935,7 +10935,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'func',
   },
-  ['vercel.proxy.path_type_variant']: {
+  [VERCEL_PROXY_PATH_TYPE_VARIANT]: {
     brief: 'Variant of the path type',
     type: AttributeType.STRING,
     pii: {
@@ -10944,7 +10944,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'api',
   },
-  ['vercel.proxy.referer']: {
+  [VERCEL_PROXY_REFERER]: {
     brief: 'Referer of the request',
     type: AttributeType.STRING,
     pii: {
@@ -10953,7 +10953,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '*.vercel.app',
   },
-  ['vercel.proxy.region']: {
+  [VERCEL_PROXY_REGION]: {
     brief: 'Region where the request is processed',
     type: AttributeType.STRING,
     pii: {
@@ -10962,7 +10962,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'sfo1',
   },
-  ['vercel.proxy.response_byte_size']: {
+  [VERCEL_PROXY_RESPONSE_BYTE_SIZE]: {
     brief: 'Size of the response in bytes',
     type: AttributeType.INTEGER,
     pii: {
@@ -10971,7 +10971,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 1024,
   },
-  ['vercel.proxy.scheme']: {
+  [VERCEL_PROXY_SCHEME]: {
     brief: 'Protocol of the request',
     type: AttributeType.STRING,
     pii: {
@@ -10980,7 +10980,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'https',
   },
-  ['vercel.proxy.status_code']: {
+  [VERCEL_PROXY_STATUS_CODE]: {
     brief: 'HTTP status code of the proxy request',
     type: AttributeType.INTEGER,
     pii: {
@@ -10989,7 +10989,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 200,
   },
-  ['vercel.proxy.timestamp']: {
+  [VERCEL_PROXY_TIMESTAMP]: {
     brief: 'Unix timestamp when the proxy request was made',
     type: AttributeType.INTEGER,
     pii: {
@@ -10998,7 +10998,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 1573817250172,
   },
-  ['vercel.proxy.user_agent']: {
+  [VERCEL_PROXY_USER_AGENT]: {
     brief: 'User agent strings of the request',
     type: AttributeType.STRING_ARRAY,
     pii: {
@@ -11007,7 +11007,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: ['Mozilla/5.0...'],
   },
-  ['vercel.proxy.vercel_cache']: {
+  [VERCEL_PROXY_VERCEL_CACHE]: {
     brief: 'Cache status sent to the browser',
     type: AttributeType.STRING,
     pii: {
@@ -11016,7 +11016,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'REVALIDATED',
   },
-  ['vercel.proxy.vercel_id']: {
+  [VERCEL_PROXY_VERCEL_ID]: {
     brief: 'Vercel-specific identifier',
     type: AttributeType.STRING,
     pii: {
@@ -11025,7 +11025,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'sfo1::abc123',
   },
-  ['vercel.proxy.waf_action']: {
+  [VERCEL_PROXY_WAF_ACTION]: {
     brief: 'Action taken by firewall rules',
     type: AttributeType.STRING,
     pii: {
@@ -11034,7 +11034,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'deny',
   },
-  ['vercel.proxy.waf_rule_id']: {
+  [VERCEL_PROXY_WAF_RULE_ID]: {
     brief: 'ID of the firewall rule that matched',
     type: AttributeType.STRING,
     pii: {
@@ -11043,7 +11043,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'rule_gAHz8jtSB1Gy',
   },
-  ['vercel.request_id']: {
+  [VERCEL_REQUEST_ID]: {
     brief: 'Identifier of the Vercel request',
     type: AttributeType.STRING,
     pii: {
@@ -11052,7 +11052,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '643af4e3-975a-4cc7-9e7a-1eda11539d90',
   },
-  ['vercel.source']: {
+  [VERCEL_SOURCE]: {
     brief: 'Origin of the Vercel log (build, edge, lambda, static, external, or firewall)',
     type: AttributeType.STRING,
     pii: {
@@ -11061,7 +11061,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'build',
   },
-  ['vercel.status_code']: {
+  [VERCEL_STATUS_CODE]: {
     brief: 'HTTP status code of the request (-1 means no response returned and the lambda crashed)',
     type: AttributeType.INTEGER,
     pii: {
@@ -11070,7 +11070,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 200,
   },
-  ['ai.completion_tokens.used']: {
+  [AI_COMPLETION_TOKENS_USED]: {
     brief: 'The number of tokens used to respond to the message.',
     type: AttributeType.INTEGER,
     pii: {
@@ -11084,7 +11084,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [GEN_AI_USAGE_OUTPUT_TOKENS, GEN_AI_USAGE_COMPLETION_TOKENS],
     sdks: ['python'],
   },
-  ['ai.finish_reason']: {
+  [AI_FINISH_REASON]: {
     brief: 'The reason why the model stopped generating.',
     type: AttributeType.STRING,
     pii: {
@@ -11097,7 +11097,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [GEN_AI_RESPONSE_FINISH_REASONS],
   },
-  ['ai.frequency_penalty']: {
+  [AI_FREQUENCY_PENALTY]: {
     brief:
       'Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.',
     type: AttributeType.DOUBLE,
@@ -11111,7 +11111,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [GEN_AI_REQUEST_FREQUENCY_PENALTY],
   },
-  ['ai.function_call']: {
+  [AI_FUNCTION_CALL]: {
     brief:
       'For an AI model call, the function that was called. This is deprecated for OpenAI, and replaced by tool_calls',
     type: AttributeType.STRING,
@@ -11125,7 +11125,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [GEN_AI_TOOL_NAME],
   },
-  ['ai.generation_id']: {
+  [AI_GENERATION_ID]: {
     brief: 'Unique identifier for the completion.',
     type: AttributeType.STRING,
     pii: {
@@ -11138,7 +11138,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [GEN_AI_RESPONSE_ID],
   },
-  ['ai.input_messages']: {
+  [AI_INPUT_MESSAGES]: {
     brief: 'The input messages sent to the model',
     type: AttributeType.STRING,
     pii: {
@@ -11152,7 +11152,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [GEN_AI_REQUEST_MESSAGES],
     sdks: ['python'],
   },
-  ['ai.model.provider']: {
+  [AI_MODEL_PROVIDER]: {
     brief: 'The provider of the model.',
     type: AttributeType.STRING,
     pii: {
@@ -11165,7 +11165,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [GEN_AI_SYSTEM],
   },
-  ['ai.model_id']: {
+  [AI_MODEL_ID]: {
     brief: 'The vendor-specific ID of the model used.',
     type: AttributeType.STRING,
     pii: {
@@ -11179,7 +11179,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [GEN_AI_RESPONSE_MODEL],
     sdks: ['python'],
   },
-  ['ai.pipeline.name']: {
+  [AI_PIPELINE_NAME]: {
     brief: 'The name of the AI pipeline.',
     type: AttributeType.STRING,
     pii: {
@@ -11192,7 +11192,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [GEN_AI_PIPELINE_NAME],
   },
-  ['ai.presence_penalty']: {
+  [AI_PRESENCE_PENALTY]: {
     brief:
       'Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.',
     type: AttributeType.DOUBLE,
@@ -11206,7 +11206,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [GEN_AI_REQUEST_PRESENCE_PENALTY],
   },
-  ['ai.prompt_tokens.used']: {
+  [AI_PROMPT_TOKENS_USED]: {
     brief: 'The number of tokens used to process just the prompt.',
     type: AttributeType.INTEGER,
     pii: {
@@ -11220,7 +11220,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [GEN_AI_USAGE_PROMPT_TOKENS, GEN_AI_USAGE_INPUT_TOKENS],
     sdks: ['python'],
   },
-  ['ai.responses']: {
+  [AI_RESPONSES]: {
     brief: 'The response messages sent back by the AI model.',
     type: AttributeType.STRING_ARRAY,
     pii: {
@@ -11233,7 +11233,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     sdks: ['python'],
   },
-  ['ai.seed']: {
+  [AI_SEED]: {
     brief: 'The seed, ideally models given the same seed and same other parameters will produce the exact same output.',
     type: AttributeType.STRING,
     pii: {
@@ -11246,7 +11246,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [GEN_AI_REQUEST_SEED],
   },
-  ['ai.streaming']: {
+  [AI_STREAMING]: {
     brief: 'Whether the request was streamed back.',
     type: AttributeType.BOOLEAN,
     pii: {
@@ -11260,7 +11260,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [GEN_AI_RESPONSE_STREAMING],
     sdks: ['python'],
   },
-  ['ai.temperature']: {
+  [AI_TEMPERATURE]: {
     brief:
       'For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.',
     type: AttributeType.DOUBLE,
@@ -11274,7 +11274,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [GEN_AI_REQUEST_TEMPERATURE],
   },
-  ['ai.tool_calls']: {
+  [AI_TOOL_CALLS]: {
     brief: 'For an AI model call, the tool calls that were made.',
     type: AttributeType.STRING_ARRAY,
     pii: {
@@ -11286,7 +11286,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.response.tool_calls',
     },
   },
-  ['ai.tools']: {
+  [AI_TOOLS]: {
     brief: 'For an AI model call, the functions that are available',
     type: AttributeType.STRING_ARRAY,
     pii: {
@@ -11298,7 +11298,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.request.available_tools',
     },
   },
-  ['ai.top_k']: {
+  [AI_TOP_K]: {
     brief:
       'Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).',
     type: AttributeType.INTEGER,
@@ -11312,7 +11312,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [GEN_AI_REQUEST_TOP_K],
   },
-  ['ai.top_p']: {
+  [AI_TOP_P]: {
     brief:
       'Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).',
     type: AttributeType.DOUBLE,
@@ -11326,7 +11326,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [GEN_AI_REQUEST_TOP_P],
   },
-  ['ai.total_tokens.used']: {
+  [AI_TOTAL_TOKENS_USED]: {
     brief: 'The total number of tokens used to process the prompt.',
     type: AttributeType.INTEGER,
     pii: {
@@ -11340,7 +11340,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [GEN_AI_USAGE_TOTAL_TOKENS],
     sdks: ['python'],
   },
-  ['code.filepath']: {
+  [CODE_FILEPATH]: {
     brief:
       'The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).',
     type: AttributeType.STRING,
@@ -11354,7 +11354,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [CODE_FILE_PATH],
   },
-  ['code.function']: {
+  [CODE_FUNCTION]: {
     brief: "The method or function name, or equivalent (usually rightmost part of the code unit's name).",
     type: AttributeType.STRING,
     pii: {
@@ -11367,7 +11367,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [CODE_FUNCTION_NAME],
   },
-  ['code.lineno']: {
+  [CODE_LINENO]: {
     brief:
       'The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function',
     type: AttributeType.INTEGER,
@@ -11381,7 +11381,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [CODE_LINE_NUMBER],
   },
-  ['code.namespace']: {
+  [CODE_NAMESPACE]: {
     brief:
       "The 'namespace' within which code.function is defined. Usually the qualified class or module name, such that code.namespace + some separator + code.function form a unique identifier for the code unit.",
     type: AttributeType.STRING,
@@ -11395,7 +11395,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'code.function.name should include the namespace.',
     },
   },
-  ['db.name']: {
+  [DB_NAME]: {
     brief: 'The name of the database being accessed.',
     type: AttributeType.STRING,
     pii: {
@@ -11408,7 +11408,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [DB_NAMESPACE],
   },
-  ['db.operation']: {
+  [DB_OPERATION]: {
     brief: 'The name of the operation being executed.',
     type: AttributeType.STRING,
     pii: {
@@ -11421,7 +11421,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [DB_OPERATION_NAME],
   },
-  ['db.sql.bindings']: {
+  [DB_SQL_BINDINGS]: {
     brief: 'The array of query bindings.',
     type: AttributeType.STRING_ARRAY,
     pii: {
@@ -11436,7 +11436,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     sdks: ['php-laravel'],
   },
-  ['db.statement']: {
+  [DB_STATEMENT]: {
     brief: 'The database statement being executed.',
     type: AttributeType.STRING,
     pii: {
@@ -11449,7 +11449,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [DB_QUERY_TEXT],
   },
-  ['db.system']: {
+  [DB_SYSTEM]: {
     brief:
       'An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers.',
     type: AttributeType.STRING,
@@ -11463,7 +11463,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [DB_SYSTEM_NAME],
   },
-  ['environment']: {
+  [ENVIRONMENT]: {
     brief: 'The sentry environment.',
     type: AttributeType.STRING,
     pii: {
@@ -11476,7 +11476,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [SENTRY_ENVIRONMENT],
   },
-  ['fs_error']: {
+  [FS_ERROR]: {
     brief: 'The error message of a file system error.',
     type: AttributeType.STRING,
     pii: {
@@ -11490,7 +11490,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     sdks: ['javascript-node'],
   },
-  ['gen_ai.prompt']: {
+  [GEN_AI_PROMPT]: {
     brief: 'The input messages sent to the model',
     type: AttributeType.STRING,
     pii: {
@@ -11502,7 +11502,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Deprecated from OTEL, use gen_ai.input.messages with the new format instead.',
     },
   },
-  ['gen_ai.usage.completion_tokens']: {
+  [GEN_AI_USAGE_COMPLETION_TOKENS]: {
     brief: 'The number of tokens used in the GenAI response (completion).',
     type: AttributeType.INTEGER,
     pii: {
@@ -11515,7 +11515,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [AI_COMPLETION_TOKENS_USED, GEN_AI_USAGE_OUTPUT_TOKENS],
   },
-  ['gen_ai.usage.prompt_tokens']: {
+  [GEN_AI_USAGE_PROMPT_TOKENS]: {
     brief: 'The number of tokens used in the GenAI input (prompt).',
     type: AttributeType.INTEGER,
     pii: {
@@ -11528,7 +11528,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [AI_PROMPT_TOKENS_USED, GEN_AI_USAGE_INPUT_TOKENS],
   },
-  ['gen_ai.usage.total_cost']: {
+  [GEN_AI_USAGE_TOTAL_COST]: {
     brief: 'The total cost for the tokens used.',
     type: AttributeType.DOUBLE,
     pii: {
@@ -11540,7 +11540,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.cost.total_tokens',
     },
   },
-  ['http.client_ip']: {
+  [HTTP_CLIENT_IP]: {
     brief:
       'Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     type: AttributeType.STRING,
@@ -11554,7 +11554,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [CLIENT_ADDRESS],
   },
-  ['http.flavor']: {
+  [HTTP_FLAVOR]: {
     brief: 'The actual version of the protocol used for network communication.',
     type: AttributeType.STRING,
     pii: {
@@ -11567,7 +11567,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [NETWORK_PROTOCOL_VERSION, NET_PROTOCOL_VERSION],
   },
-  ['http.host']: {
+  [HTTP_HOST]: {
     brief: 'The domain name.',
     type: AttributeType.STRING,
     pii: {
@@ -11581,7 +11581,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [SERVER_ADDRESS, CLIENT_ADDRESS, HTTP_SERVER_NAME, NET_HOST_NAME],
   },
-  ['http.method']: {
+  [HTTP_METHOD]: {
     brief: 'The HTTP method used.',
     type: AttributeType.STRING,
     pii: {
@@ -11594,7 +11594,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [HTTP_REQUEST_METHOD],
   },
-  ['http.response_content_length']: {
+  [HTTP_RESPONSE_CONTENT_LENGTH]: {
     brief: 'The encoded body size of the response (in bytes).',
     type: AttributeType.INTEGER,
     pii: {
@@ -11607,7 +11607,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [HTTP_RESPONSE_BODY_SIZE, HTTP_RESPONSE_HEADER_CONTENT_LENGTH],
   },
-  ['http.response_transfer_size']: {
+  [HTTP_RESPONSE_TRANSFER_SIZE]: {
     brief: 'The transfer size of the response (in bytes).',
     type: AttributeType.INTEGER,
     pii: {
@@ -11620,7 +11620,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [HTTP_RESPONSE_SIZE],
   },
-  ['http.scheme']: {
+  [HTTP_SCHEME]: {
     brief: 'The URI scheme component identifying the used protocol.',
     type: AttributeType.STRING,
     pii: {
@@ -11633,7 +11633,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [URL_SCHEME],
   },
-  ['http.server_name']: {
+  [HTTP_SERVER_NAME]: {
     brief: 'The server domain name',
     type: AttributeType.STRING,
     pii: {
@@ -11646,7 +11646,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [SERVER_ADDRESS, NET_HOST_NAME, HTTP_HOST],
   },
-  ['http.status_code']: {
+  [HTTP_STATUS_CODE]: {
     brief: 'The status code of the HTTP response.',
     type: AttributeType.INTEGER,
     pii: {
@@ -11659,7 +11659,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [HTTP_RESPONSE_STATUS_CODE],
   },
-  ['http.target']: {
+  [HTTP_TARGET]: {
     brief: 'The pathname and query string of the URL.',
     type: AttributeType.STRING,
     pii: {
@@ -11672,7 +11672,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'This attribute is being deprecated in favor of url.path and url.query',
     },
   },
-  ['http.url']: {
+  [HTTP_URL]: {
     brief: 'The URL of the resource that was fetched.',
     type: AttributeType.STRING,
     pii: {
@@ -11685,7 +11685,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [URL_FULL, URL],
   },
-  ['http.user_agent']: {
+  [HTTP_USER_AGENT]: {
     brief: 'Value of the HTTP User-Agent header sent by the client.',
     type: AttributeType.STRING,
     pii: {
@@ -11699,7 +11699,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [USER_AGENT_ORIGINAL],
   },
-  ['method']: {
+  [METHOD]: {
     brief: 'The HTTP method used.',
     type: AttributeType.STRING,
     pii: {
@@ -11713,7 +11713,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [HTTP_REQUEST_METHOD],
     sdks: ['javascript-browser', 'javascript-node'],
   },
-  ['net.host.ip']: {
+  [NET_HOST_IP]: {
     brief: 'Local address of the network connection - IP address or Unix domain socket name.',
     type: AttributeType.STRING,
     pii: {
@@ -11726,7 +11726,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [NETWORK_LOCAL_ADDRESS, NET_SOCK_HOST_ADDR],
   },
-  ['net.host.name']: {
+  [NET_HOST_NAME]: {
     brief:
       'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     type: AttributeType.STRING,
@@ -11740,7 +11740,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [SERVER_ADDRESS, HTTP_SERVER_NAME, HTTP_HOST],
   },
-  ['net.host.port']: {
+  [NET_HOST_PORT]: {
     brief: 'Server port number.',
     type: AttributeType.INTEGER,
     pii: {
@@ -11753,7 +11753,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [SERVER_PORT],
   },
-  ['net.peer.ip']: {
+  [NET_PEER_IP]: {
     brief: 'Peer address of the network connection - IP address or Unix domain socket name.',
     type: AttributeType.STRING,
     pii: {
@@ -11766,7 +11766,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [NETWORK_PEER_ADDRESS, NET_SOCK_PEER_ADDR],
   },
-  ['net.peer.name']: {
+  [NET_PEER_NAME]: {
     brief:
       'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     type: AttributeType.STRING,
@@ -11780,7 +11780,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Deprecated, use server.address on client spans and client.address on server spans.',
     },
   },
-  ['net.peer.port']: {
+  [NET_PEER_PORT]: {
     brief: 'Peer port number.',
     type: AttributeType.INTEGER,
     pii: {
@@ -11793,7 +11793,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Deprecated, use server.port on client spans and client.port on server spans.',
     },
   },
-  ['net.protocol.name']: {
+  [NET_PROTOCOL_NAME]: {
     brief: 'OSI application layer or non-OSI equivalent.',
     type: AttributeType.STRING,
     pii: {
@@ -11806,7 +11806,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [NETWORK_PROTOCOL_NAME],
   },
-  ['net.protocol.version']: {
+  [NET_PROTOCOL_VERSION]: {
     brief: 'The actual version of the protocol used for network communication.',
     type: AttributeType.STRING,
     pii: {
@@ -11819,7 +11819,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [NETWORK_PROTOCOL_VERSION, HTTP_FLAVOR],
   },
-  ['net.sock.family']: {
+  [NET_SOCK_FAMILY]: {
     brief: 'OSI transport and network layer',
     type: AttributeType.STRING,
     pii: {
@@ -11832,7 +11832,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Deprecated, use network.transport and network.type.',
     },
   },
-  ['net.sock.host.addr']: {
+  [NET_SOCK_HOST_ADDR]: {
     brief: 'Local address of the network connection mapping to Unix domain socket name.',
     type: AttributeType.STRING,
     pii: {
@@ -11845,7 +11845,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [NETWORK_LOCAL_ADDRESS, NET_HOST_IP],
   },
-  ['net.sock.host.port']: {
+  [NET_SOCK_HOST_PORT]: {
     brief: 'Local port number of the network connection.',
     type: AttributeType.INTEGER,
     pii: {
@@ -11858,7 +11858,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [NETWORK_LOCAL_PORT],
   },
-  ['net.sock.peer.addr']: {
+  [NET_SOCK_PEER_ADDR]: {
     brief: 'Peer address of the network connection - IP address',
     type: AttributeType.STRING,
     pii: {
@@ -11871,7 +11871,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [NETWORK_PEER_ADDRESS, NET_PEER_IP],
   },
-  ['net.sock.peer.name']: {
+  [NET_SOCK_PEER_NAME]: {
     brief: 'Peer address of the network connection - Unix domain socket name',
     type: AttributeType.STRING,
     pii: {
@@ -11883,7 +11883,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Deprecated from OTEL, no replacement at this time',
     },
   },
-  ['net.sock.peer.port']: {
+  [NET_SOCK_PEER_PORT]: {
     brief: 'Peer port number of the network connection.',
     type: AttributeType.INTEGER,
     pii: {
@@ -11895,7 +11895,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'network.peer.port',
     },
   },
-  ['net.transport']: {
+  [NET_TRANSPORT]: {
     brief: 'OSI transport layer or inter-process communication method.',
     type: AttributeType.STRING,
     pii: {
@@ -11908,7 +11908,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [NETWORK_TRANSPORT],
   },
-  ['profile_id']: {
+  [PROFILE_ID]: {
     brief: 'The id of the sentry profile.',
     type: AttributeType.STRING,
     pii: {
@@ -11921,7 +11921,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [SENTRY_PROFILE_ID],
   },
-  ['query.<key>']: {
+  [QUERY_KEY]: {
     brief: 'An item in a query string. Usually added by client-side routing frameworks like vue-router.',
     type: AttributeType.STRING,
     pii: {
@@ -11935,7 +11935,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Instead of sending items individually in query.<key>, they should be sent all together with url.query.',
     },
   },
-  ['release']: {
+  [RELEASE]: {
     brief: 'The sentry release.',
     type: AttributeType.STRING,
     pii: {
@@ -11948,7 +11948,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [SENTRY_RELEASE],
   },
-  ['replay_id']: {
+  [REPLAY_ID]: {
     brief: 'The id of the sentry replay.',
     type: AttributeType.STRING,
     pii: {
@@ -11961,7 +11961,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [SENTRY_REPLAY_ID],
   },
-  ['route']: {
+  [ROUTE]: {
     brief:
       'The matched route, that is, the path template in the format used by the respective server framework. Also used by mobile SDKs to indicate the current route in the application.',
     type: AttributeType.STRING,
@@ -11976,7 +11976,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [HTTP_ROUTE],
     sdks: ['php-laravel', 'javascript-reactnative'],
   },
-  ['sentry.browser.name']: {
+  [SENTRY_BROWSER_NAME]: {
     brief: 'The name of the browser.',
     type: AttributeType.STRING,
     pii: {
@@ -11989,7 +11989,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [BROWSER_NAME],
   },
-  ['sentry.browser.version']: {
+  [SENTRY_BROWSER_VERSION]: {
     brief: 'The version of the browser.',
     type: AttributeType.STRING,
     pii: {
@@ -12002,7 +12002,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [BROWSER_VERSION],
   },
-  ['sentry.observed_timestamp_nanos']: {
+  [SENTRY_OBSERVED_TIMESTAMP_NANOS]: {
     brief: 'The timestamp at which an envelope was received by Relay, in nanoseconds.',
     type: AttributeType.STRING,
     pii: {
@@ -12015,7 +12015,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS],
   },
-  ['sentry.segment_id']: {
+  [_SENTRY_SEGMENT_ID]: {
     brief: 'The segment ID of a span',
     type: AttributeType.STRING,
     pii: {
@@ -12028,7 +12028,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [SENTRY_SEGMENT_ID],
   },
-  ['transaction']: {
+  [TRANSACTION]: {
     brief: 'The sentry transaction (segment name).',
     type: AttributeType.STRING,
     pii: {
@@ -12041,7 +12041,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [SENTRY_TRANSACTION],
   },
-  ['url']: {
+  [URL]: {
     brief: 'The URL of the resource that was fetched.',
     type: AttributeType.STRING,
     pii: {

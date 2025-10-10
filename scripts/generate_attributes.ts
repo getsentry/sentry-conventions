@@ -94,11 +94,11 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
 
     // Generate individual constant with documentation
     individualConstants += `// Path: model/attributes/${file}\n\n`;
-    individualConstants += `/**\n`;
+    individualConstants += '/**\n';
     individualConstants += ` * ${brief} \`${key}\`\n`;
-    individualConstants += ` *\n`;
+    individualConstants += ' *\n';
     individualConstants += ` * Attribute Value Type: \`${tsType}\` {@link ${constantName}_TYPE}\n`;
-    individualConstants += ` *\n`;
+    individualConstants += ' *\n';
 
     // PII info
     const piiText = pii.key === 'true' ? 'true' : pii.key === 'false' ? 'false' : 'maybe';
@@ -106,18 +106,18 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
     if (pii.reason) {
       individualConstants += ` - ${pii.reason}`;
     }
-    individualConstants += `\n`;
-    individualConstants += ` *\n`;
+    individualConstants += '\n';
+    individualConstants += ' *\n';
     individualConstants += ` * Attribute defined in OTEL: ${is_in_otel ? 'Yes' : 'No'}\n`;
 
     if (has_dynamic_suffix) {
-      individualConstants += ` *\n`;
-      individualConstants += ` * Has Dynamic Suffix: true\n`;
+      individualConstants += ' *\n';
+      individualConstants += ' * Has Dynamic Suffix: true\n';
     }
 
     // Aliases
     if (alias && alias.length > 0) {
-      individualConstants += ` *\n`;
+      individualConstants += ' *\n';
       const aliasLinks = alias
         .map((aliasKey) => {
           // Find the constant name for this alias from our processed attributes
@@ -131,7 +131,7 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
 
     // Deprecation
     if (deprecation) {
-      individualConstants += ` *\n`;
+      individualConstants += ' *\n';
       if (deprecation.replacement) {
         // Find the constant name for the replacement from our processed attributes
         const replacementAttr = allAttributes.find((attr) => attr.key === deprecation.replacement);
@@ -140,12 +140,12 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
           : getConstantName(deprecation.replacement, false);
         individualConstants += ` * @deprecated Use {@link ${replacementConstantName}} (${deprecation.replacement}) instead`;
       } else {
-        individualConstants += ` * @deprecated No replacement at this time`;
+        individualConstants += ' * @deprecated No replacement at this time';
       }
       if (deprecation.reason) {
         individualConstants += ` - ${deprecation.reason}`;
       }
-      individualConstants += `\n`;
+      individualConstants += '\n';
     }
 
     // Example
@@ -155,17 +155,17 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
 
     // SDKs
     if (sdks && sdks.length > 0) {
-      individualConstants += ` *\n`;
+      individualConstants += ' *\n';
       individualConstants += ` * SDK specific: ${sdks.join(', ')}\n`;
     }
 
-    individualConstants += ` */\n`;
+    individualConstants += ' */\n';
     individualConstants += `export const ${constantName} = '${key}';\n\n`;
 
     // Generate type constant
-    individualConstants += `/**\n`;
+    individualConstants += '/**\n';
     individualConstants += ` * Type for {@link ${constantName}} ${key}\n`;
-    individualConstants += ` */\n`;
+    individualConstants += ' */\n';
     individualConstants += `export type ${constantName}_TYPE = ${tsType};\n\n`;
   }
 
@@ -660,8 +660,9 @@ function generateMetadataDict(
 
   for (const { key, attributeJson } of allAttributes) {
     const { brief, type, pii, is_in_otel, example, has_dynamic_suffix, deprecation, alias } = attributeJson;
+    const constantName = getConstantName(key);
 
-    metadataDict += `  [${JSON.stringify(key)}]: {\n`;
+    metadataDict += `  [${constantName}]: {\n`;
     metadataDict += `    brief: ${JSON.stringify(brief)},\n`;
     metadataDict += `    type: ${getAttributeTypeEnumJs(type)},\n`;
 
