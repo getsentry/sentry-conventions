@@ -40,24 +40,143 @@ async function getAllJsonFiles(dir: string): Promise<string[]> {
 function writeToJs(attributesDir: string, attributeFiles: string[]) {
   let attributesContent = '// This is an auto-generated file. Do not edit!\n\n';
 
-  let attributeTypeMap = '';
+  // Reset memoization for fresh calculation
+  constantNameMemo.clear();
+  usedConstantNames.clear();
 
-  // Build the explicit type map for Attributes
-  for (const file of attributeFiles) {
+  // First pass: collect all attributes and determine names (non-deprecated first to avoid collisions)
+  const allAttributes: Array<{
+    file: string;
+    key: string;
+    constantName: string;
+    attributeJson: AttributeJson;
+    isDeprecated: boolean;
+  }> = [];
+
+  // Sort files so non-deprecated attributes are processed first
+  const sortedFiles = [...attributeFiles].sort((a, b) => {
+    const aPath = path.join(attributesDir, a);
+    const bPath = path.join(attributesDir, b);
+    const aJson = JSON.parse(fs.readFileSync(aPath, 'utf-8')) as AttributeJson;
+    const bJson = JSON.parse(fs.readFileSync(bPath, 'utf-8')) as AttributeJson;
+
+    // Non-deprecated first (false comes before true)
+    const aDeprecated = !!aJson.deprecation;
+    const bDeprecated = !!bJson.deprecation;
+
+    return Number(aDeprecated) - Number(bDeprecated);
+  });
+
+  for (const file of sortedFiles) {
     const attributePath = path.join(attributesDir, file);
     const attributeJson = JSON.parse(fs.readFileSync(attributePath, 'utf-8')) as AttributeJson;
-    const { key, type, deprecation } = attributeJson;
+    const isDeprecated = !!attributeJson.deprecation;
+    const constantName = getConstantName(attributeJson.key, isDeprecated);
 
-    const constantName = getConstantName(key, !!deprecation);
-    const tsType = getTsType(type);
-    attributeTypeMap += `\n  [AttributeName.${constantName}]?: ${tsType};`;
+    allAttributes.push({
+      file,
+      key: attributeJson.key,
+      constantName,
+      attributeJson,
+      isDeprecated,
+    });
   }
+
+  let attributeTypeMap = '';
+  let individualConstants = '';
+
+  // Generate individual attribute constants with documentation AND build the explicit type map
+  for (const { file, key, constantName, attributeJson, isDeprecated } of allAttributes) {
+    const { brief, type, pii, is_in_otel, example, has_dynamic_suffix, deprecation, alias, sdks } = attributeJson;
+
+    const tsType = getTsType(type);
+    attributeTypeMap += `\n  [${constantName}]?: ${tsType};`;
+
+    // Generate individual constant with documentation
+    individualConstants += `// Path: model/attributes/${file}\n\n`;
+    individualConstants += `/**\n`;
+    individualConstants += ` * ${brief} \`${key}\`\n`;
+    individualConstants += ` *\n`;
+    individualConstants += ` * Attribute Value Type: \`${tsType}\` {@link ${constantName}_TYPE}\n`;
+    individualConstants += ` *\n`;
+
+    // PII info
+    const piiText = pii.key === 'true' ? 'true' : pii.key === 'false' ? 'false' : 'maybe';
+    individualConstants += ` * Contains PII: ${piiText}`;
+    if (pii.reason) {
+      individualConstants += ` - ${pii.reason}`;
+    }
+    individualConstants += `\n`;
+    individualConstants += ` *\n`;
+    individualConstants += ` * Attribute defined in OTEL: ${is_in_otel ? 'Yes' : 'No'}\n`;
+
+    if (has_dynamic_suffix) {
+      individualConstants += ` *\n`;
+      individualConstants += ` * Has Dynamic Suffix: true\n`;
+    }
+
+    // Aliases
+    if (alias && alias.length > 0) {
+      individualConstants += ` *\n`;
+      const aliasLinks = alias
+        .map((aliasKey) => {
+          // Find the constant name for this alias from our processed attributes
+          const aliasAttr = allAttributes.find((attr) => attr.key === aliasKey);
+          const aliasConstantName = aliasAttr ? aliasAttr.constantName : getConstantName(aliasKey, false);
+          return `{@link ${aliasConstantName}} \`${aliasKey}\``;
+        })
+        .join(', ');
+      individualConstants += ` * Aliases: ${aliasLinks}\n`;
+    }
+
+    // Deprecation
+    if (deprecation) {
+      individualConstants += ` *\n`;
+      if (deprecation.replacement) {
+        // Find the constant name for the replacement from our processed attributes
+        const replacementAttr = allAttributes.find((attr) => attr.key === deprecation.replacement);
+        const replacementConstantName = replacementAttr
+          ? replacementAttr.constantName
+          : getConstantName(deprecation.replacement, false);
+        individualConstants += ` * @deprecated Use {@link ${replacementConstantName}} (${deprecation.replacement}) instead`;
+      } else {
+        individualConstants += ` * @deprecated No replacement at this time`;
+      }
+      if (deprecation.reason) {
+        individualConstants += ` - ${deprecation.reason}`;
+      }
+      individualConstants += `\n`;
+    }
+
+    // Example
+    if (example !== undefined) {
+      individualConstants += ` * @example ${JSON.stringify(example)}\n`;
+    }
+
+    // SDKs
+    if (sdks && sdks.length > 0) {
+      individualConstants += ` *\n`;
+      individualConstants += ` * SDK specific: ${sdks.join(', ')}\n`;
+    }
+
+    individualConstants += ` */\n`;
+    individualConstants += `export const ${constantName} = '${key}';\n\n`;
+
+    // Generate type constant
+    individualConstants += `/**\n`;
+    individualConstants += ` * Type for {@link ${constantName}} ${key}\n`;
+    individualConstants += ` */\n`;
+    individualConstants += `export type ${constantName}_TYPE = ${tsType};\n\n`;
+  }
+
+  // Add individual constants first
+  attributesContent += individualConstants;
 
   // Generate metadata types and interfaces
   attributesContent += generateMetadataTypes();
 
   // Generate metadata dictionary
-  attributesContent += generateMetadataDict(attributesDir, attributeFiles);
+  attributesContent += generateMetadataDict(attributesDir, attributeFiles, allAttributes);
 
   attributesContent +=
     'export type AttributeValue = string | number | boolean | Array<string> | Array<number> | Array<boolean>;\n\n';
@@ -510,33 +629,39 @@ export interface AttributeMetadata {
 `;
 }
 
-function generateMetadataDict(attributesDir: string, attributeFiles: string[]): string {
-  // First, generate the AttributeName enum
-  let attributeNameEnum = 'export enum AttributeName {\n';
-  let attributeTypeMap = 'export const ATTRIBUTE_TYPE: Record<AttributeName, AttributeType> = {\n';
+function generateMetadataDict(
+  attributesDir: string,
+  attributeFiles: string[],
+  allAttributes: Array<{
+    file: string;
+    key: string;
+    constantName: string;
+    attributeJson: AttributeJson;
+    isDeprecated: boolean;
+  }>,
+): string {
+  // Generate ATTRIBUTE_TYPE using individual constants
+  let attributeTypeMap = 'export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {\n';
 
-  for (const file of attributeFiles) {
-    const attributePath = path.join(attributesDir, file);
-    const attributeJson = JSON.parse(fs.readFileSync(attributePath, 'utf-8')) as AttributeJson;
-    const { key, type } = attributeJson;
-    const constantName = getConstantName(key, !!attributeJson.deprecation);
+  for (const { key, constantName, attributeJson } of allAttributes) {
+    const { type } = attributeJson;
 
-    attributeNameEnum += `  ${constantName} = "${key}",\n`;
-    attributeTypeMap += `  [AttributeName.${constantName}]: ${getAttributeTypeEnumJs(type)},\n`;
+    attributeTypeMap += `  [${constantName}]: ${getAttributeTypeEnumJs(type)},\n`;
   }
-  attributeNameEnum += '}\n\n';
+
   attributeTypeMap += '};\n\n';
 
-  let metadataDict = attributeNameEnum + attributeTypeMap;
+  // Generate type for the attribute names from the individual constants
+  const allConstantNames = allAttributes.map((attr) => attr.constantName);
+  const attributeNameType = `export type AttributeName = ${allConstantNames.map((name) => `typeof ${name}`).join(' | ')};\n\n`;
+
+  let metadataDict = attributeTypeMap + attributeNameType;
   metadataDict += 'export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {\n';
 
-  for (const file of attributeFiles) {
-    const attributePath = path.join(attributesDir, file);
-    const attributeJson = JSON.parse(fs.readFileSync(attributePath, 'utf-8')) as AttributeJson;
-    const { key, brief, type, pii, is_in_otel, example, has_dynamic_suffix, deprecation, alias } = attributeJson;
+  for (const { key, attributeJson } of allAttributes) {
+    const { brief, type, pii, is_in_otel, example, has_dynamic_suffix, deprecation, alias } = attributeJson;
 
-    const constantName = getConstantName(key, !!deprecation);
-    metadataDict += `  [AttributeName.${constantName}]: {\n`;
+    metadataDict += `  [${JSON.stringify(key)}]: {\n`;
     metadataDict += `    brief: ${JSON.stringify(brief)},\n`;
     metadataDict += `    type: ${getAttributeTypeEnumJs(type)},\n`;
 
@@ -578,14 +703,9 @@ function generateMetadataDict(attributesDir: string, attributeFiles: string[]): 
     }
 
     if (alias && alias.length > 0) {
-      // Convert string aliases to AttributeName enum references
-      const enumAliases = alias
-        .map((aliasKey) => {
-          const aliasConstantName = getConstantName(aliasKey, false);
-          return `AttributeName.${aliasConstantName}`;
-        })
-        .join(', ');
-      metadataDict += `    aliases: [${enumAliases}],\n`;
+      // Use constant names for aliases
+      const constantAliases = alias.map((aliasKey) => getConstantName(aliasKey)).join(', ');
+      metadataDict += `    aliases: [${constantAliases}],\n`;
     }
 
     if (attributeJson.sdks && attributeJson.sdks.length > 0) {
