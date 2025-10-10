@@ -4464,6 +4464,47 @@ export const SENTRY_SPAN_SOURCE = 'sentry.span.source';
 export type SENTRY_SPAN_SOURCE_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__trace__parent_span_id.json
+// Path: model/attributes/mcp/mcp__prompt__result.json
+
+/**
+ * The content of the prompt result. `mcp.prompt.result`
+ *
+ * Attribute Value Type: `string` {@link MCP_PROMPT_RESULT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "An example prompt result!"
+ */
+export const MCP_PROMPT_RESULT = 'mcp.prompt.result';
+
+/**
+ * Type for {@link MCP_PROMPT_RESULT} mcp.prompt.result
+ */
+export type MCP_PROMPT_RESULT_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__tool__result__content.json
+
+/**
+ * The content of the tool result. `mcp.tool.result.content`
+ *
+ * Attribute Value Type: `string` {@link MCP_TOOL_RESULT_CONTENT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "{\"output\": \"rainy\", \"toolCallId\": \"1\"}"
+ */
+export const MCP_TOOL_RESULT_CONTENT = 'mcp.tool.result.content';
+
+/**
+ * Type for {@link MCP_TOOL_RESULT_CONTENT} mcp.tool.result.content
+ */
+export type MCP_TOOL_RESULT_CONTENT_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__destination__connection.json
 
 /**
  * The span id of the span that was active when the log was collected. This should not be set if there was no active span. `sentry.trace.parent_span_id`
@@ -12057,6 +12098,706 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
 };
 
+// Path: model/attributes/vercel/vercel__branch.json
+
+/**
+ * Git branch name for Vercel project `vercel.branch`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_BRANCH_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "main"
+ */
+export const VERCEL_BRANCH = 'vercel.branch';
+
+/**
+ * Type for {@link VERCEL_BRANCH} vercel.branch
+ */
+export type VERCEL_BRANCH_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__build_id.json
+
+/**
+ * Identifier for the Vercel build (only present on build logs) `vercel.build_id`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_BUILD_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "bld_cotnkcr76"
+ */
+export const VERCEL_BUILD_ID = 'vercel.build_id';
+
+/**
+ * Type for {@link VERCEL_BUILD_ID} vercel.build_id
+ */
+export type VERCEL_BUILD_ID_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__deployment_id.json
+
+/**
+ * Identifier for the Vercel deployment `vercel.deployment_id`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_DEPLOYMENT_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "dpl_233NRGRjVZX1caZrXWtz5g1TAksD"
+ */
+export const VERCEL_DEPLOYMENT_ID = 'vercel.deployment_id';
+
+/**
+ * Type for {@link VERCEL_DEPLOYMENT_ID} vercel.deployment_id
+ */
+export type VERCEL_DEPLOYMENT_ID_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__destination.json
+
+/**
+ * Origin of the external content in Vercel (only on external logs) `vercel.destination`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_DESTINATION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "https://vitals.vercel-insights.com/v1"
+ */
+export const VERCEL_DESTINATION = 'vercel.destination';
+
+/**
+ * Type for {@link VERCEL_DESTINATION} vercel.destination
+ */
+export type VERCEL_DESTINATION_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__edge_type.json
+
+/**
+ * Type of edge runtime in Vercel `vercel.edge_type`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_EDGE_TYPE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "edge-function"
+ */
+export const VERCEL_EDGE_TYPE = 'vercel.edge_type';
+
+/**
+ * Type for {@link VERCEL_EDGE_TYPE} vercel.edge_type
+ */
+export type VERCEL_EDGE_TYPE_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__entrypoint.json
+
+/**
+ * Entrypoint for the request in Vercel `vercel.entrypoint`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_ENTRYPOINT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "api/index.js"
+ */
+export const VERCEL_ENTRYPOINT = 'vercel.entrypoint';
+
+/**
+ * Type for {@link VERCEL_ENTRYPOINT} vercel.entrypoint
+ */
+export type VERCEL_ENTRYPOINT_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__execution_region.json
+
+/**
+ * Region where the request is executed `vercel.execution_region`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_EXECUTION_REGION_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "sfo1"
+ */
+export const VERCEL_EXECUTION_REGION = 'vercel.execution_region';
+
+/**
+ * Type for {@link VERCEL_EXECUTION_REGION} vercel.execution_region
+ */
+export type VERCEL_EXECUTION_REGION_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__id.json
+
+/**
+ * Unique identifier for the log entry in Vercel `vercel.id`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "1573817187330377061717300000"
+ */
+export const VERCEL_ID = 'vercel.id';
+
+/**
+ * Type for {@link VERCEL_ID} vercel.id
+ */
+export type VERCEL_ID_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__ja3_digest.json
+
+/**
+ * JA3 fingerprint digest of Vercel request `vercel.ja3_digest`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_JA3_DIGEST_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "769,47-53-5-10-49161-49162-49171-49172-50-56-19-4,0-10-11,23-24-25,0"
+ */
+export const VERCEL_JA3_DIGEST = 'vercel.ja3_digest';
+
+/**
+ * Type for {@link VERCEL_JA3_DIGEST} vercel.ja3_digest
+ */
+export type VERCEL_JA3_DIGEST_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__ja4_digest.json
+
+/**
+ * JA4 fingerprint digest `vercel.ja4_digest`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_JA4_DIGEST_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "t13d1516h2_8daaf6152771_02713d6af862"
+ */
+export const VERCEL_JA4_DIGEST = 'vercel.ja4_digest';
+
+/**
+ * Type for {@link VERCEL_JA4_DIGEST} vercel.ja4_digest
+ */
+export type VERCEL_JA4_DIGEST_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__log_type.json
+
+/**
+ * Vercel log output type `vercel.log_type`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_LOG_TYPE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "stdout"
+ */
+export const VERCEL_LOG_TYPE = 'vercel.log_type';
+
+/**
+ * Type for {@link VERCEL_LOG_TYPE} vercel.log_type
+ */
+export type VERCEL_LOG_TYPE_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__project_id.json
+
+/**
+ * Identifier for the Vercel project `vercel.project_id`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_PROJECT_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "gdufoJxB6b9b1fEqr1jUtFkyavUU"
+ */
+export const VERCEL_PROJECT_ID = 'vercel.project_id';
+
+/**
+ * Type for {@link VERCEL_PROJECT_ID} vercel.project_id
+ */
+export type VERCEL_PROJECT_ID_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__project_name.json
+
+/**
+ * Name of the Vercel project `vercel.project_name`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_PROJECT_NAME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "my-app"
+ */
+export const VERCEL_PROJECT_NAME = 'vercel.project_name';
+
+/**
+ * Type for {@link VERCEL_PROJECT_NAME} vercel.project_name
+ */
+export type VERCEL_PROJECT_NAME_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__proxy__cache_id.json
+
+/**
+ * Original request ID when request is served from cache `vercel.proxy.cache_id`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_PROXY_CACHE_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "pdx1::v8g4b-1744143786684-93dafbc0f70d"
+ */
+export const VERCEL_PROXY_CACHE_ID = 'vercel.proxy.cache_id';
+
+/**
+ * Type for {@link VERCEL_PROXY_CACHE_ID} vercel.proxy.cache_id
+ */
+export type VERCEL_PROXY_CACHE_ID_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__proxy__client_ip.json
+
+/**
+ * Client IP address `vercel.proxy.client_ip`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_PROXY_CLIENT_IP_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "120.75.16.101"
+ */
+export const VERCEL_PROXY_CLIENT_IP = 'vercel.proxy.client_ip';
+
+/**
+ * Type for {@link VERCEL_PROXY_CLIENT_IP} vercel.proxy.client_ip
+ */
+export type VERCEL_PROXY_CLIENT_IP_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__proxy__host.json
+
+/**
+ * Hostname of the request `vercel.proxy.host`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_PROXY_HOST_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "test.vercel.app"
+ */
+export const VERCEL_PROXY_HOST = 'vercel.proxy.host';
+
+/**
+ * Type for {@link VERCEL_PROXY_HOST} vercel.proxy.host
+ */
+export type VERCEL_PROXY_HOST_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__proxy__lambda_region.json
+
+/**
+ * Region where lambda function executed `vercel.proxy.lambda_region`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_PROXY_LAMBDA_REGION_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "sfo1"
+ */
+export const VERCEL_PROXY_LAMBDA_REGION = 'vercel.proxy.lambda_region';
+
+/**
+ * Type for {@link VERCEL_PROXY_LAMBDA_REGION} vercel.proxy.lambda_region
+ */
+export type VERCEL_PROXY_LAMBDA_REGION_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__proxy__method.json
+
+/**
+ * HTTP method of the request `vercel.proxy.method`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_PROXY_METHOD_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "GET"
+ */
+export const VERCEL_PROXY_METHOD = 'vercel.proxy.method';
+
+/**
+ * Type for {@link VERCEL_PROXY_METHOD} vercel.proxy.method
+ */
+export type VERCEL_PROXY_METHOD_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__proxy__path.json
+
+/**
+ * Request path with query parameters `vercel.proxy.path`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_PROXY_PATH_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "/dynamic/some-value.json?route=some-value"
+ */
+export const VERCEL_PROXY_PATH = 'vercel.proxy.path';
+
+/**
+ * Type for {@link VERCEL_PROXY_PATH} vercel.proxy.path
+ */
+export type VERCEL_PROXY_PATH_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__proxy__path_type.json
+
+/**
+ * How the request was served based on its path and project configuration `vercel.proxy.path_type`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_PROXY_PATH_TYPE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "func"
+ */
+export const VERCEL_PROXY_PATH_TYPE = 'vercel.proxy.path_type';
+
+/**
+ * Type for {@link VERCEL_PROXY_PATH_TYPE} vercel.proxy.path_type
+ */
+export type VERCEL_PROXY_PATH_TYPE_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__proxy__path_type_variant.json
+
+/**
+ * Variant of the path type `vercel.proxy.path_type_variant`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_PROXY_PATH_TYPE_VARIANT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "api"
+ */
+export const VERCEL_PROXY_PATH_TYPE_VARIANT = 'vercel.proxy.path_type_variant';
+
+/**
+ * Type for {@link VERCEL_PROXY_PATH_TYPE_VARIANT} vercel.proxy.path_type_variant
+ */
+export type VERCEL_PROXY_PATH_TYPE_VARIANT_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__proxy__referer.json
+
+/**
+ * Referer of the request `vercel.proxy.referer`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_PROXY_REFERER_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "*.vercel.app"
+ */
+export const VERCEL_PROXY_REFERER = 'vercel.proxy.referer';
+
+/**
+ * Type for {@link VERCEL_PROXY_REFERER} vercel.proxy.referer
+ */
+export type VERCEL_PROXY_REFERER_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__proxy__region.json
+
+/**
+ * Region where the request is processed `vercel.proxy.region`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_PROXY_REGION_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "sfo1"
+ */
+export const VERCEL_PROXY_REGION = 'vercel.proxy.region';
+
+/**
+ * Type for {@link VERCEL_PROXY_REGION} vercel.proxy.region
+ */
+export type VERCEL_PROXY_REGION_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__proxy__response_byte_size.json
+
+/**
+ * Size of the response in bytes `vercel.proxy.response_byte_size`
+ *
+ * Attribute Value Type: `number` {@link VERCEL_PROXY_RESPONSE_BYTE_SIZE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 1024
+ */
+export const VERCEL_PROXY_RESPONSE_BYTE_SIZE = 'vercel.proxy.response_byte_size';
+
+/**
+ * Type for {@link VERCEL_PROXY_RESPONSE_BYTE_SIZE} vercel.proxy.response_byte_size
+ */
+export type VERCEL_PROXY_RESPONSE_BYTE_SIZE_TYPE = number;
+
+// Path: model/attributes/vercel/vercel__proxy__scheme.json
+
+/**
+ * Protocol of the request `vercel.proxy.scheme`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_PROXY_SCHEME_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "https"
+ */
+export const VERCEL_PROXY_SCHEME = 'vercel.proxy.scheme';
+
+/**
+ * Type for {@link VERCEL_PROXY_SCHEME} vercel.proxy.scheme
+ */
+export type VERCEL_PROXY_SCHEME_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__proxy__status_code.json
+
+/**
+ * HTTP status code of the proxy request `vercel.proxy.status_code`
+ *
+ * Attribute Value Type: `number` {@link VERCEL_PROXY_STATUS_CODE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 200
+ */
+export const VERCEL_PROXY_STATUS_CODE = 'vercel.proxy.status_code';
+
+/**
+ * Type for {@link VERCEL_PROXY_STATUS_CODE} vercel.proxy.status_code
+ */
+export type VERCEL_PROXY_STATUS_CODE_TYPE = number;
+
+// Path: model/attributes/vercel/vercel__proxy__timestamp.json
+
+/**
+ * Unix timestamp when the proxy request was made `vercel.proxy.timestamp`
+ *
+ * Attribute Value Type: `number` {@link VERCEL_PROXY_TIMESTAMP_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 1573817250172
+ */
+export const VERCEL_PROXY_TIMESTAMP = 'vercel.proxy.timestamp';
+
+/**
+ * Type for {@link VERCEL_PROXY_TIMESTAMP} vercel.proxy.timestamp
+ */
+export type VERCEL_PROXY_TIMESTAMP_TYPE = number;
+
+// Path: model/attributes/vercel/vercel__proxy__user_agent.json
+
+/**
+ * User agent strings of the request `vercel.proxy.user_agent`
+ *
+ * Attribute Value Type: `Array<string>` {@link VERCEL_PROXY_USER_AGENT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example ["Mozilla/5.0..."]
+ */
+export const VERCEL_PROXY_USER_AGENT = 'vercel.proxy.user_agent';
+
+/**
+ * Type for {@link VERCEL_PROXY_USER_AGENT} vercel.proxy.user_agent
+ */
+export type VERCEL_PROXY_USER_AGENT_TYPE = Array<string>;
+
+// Path: model/attributes/vercel/vercel__proxy__vercel_cache.json
+
+/**
+ * Cache status sent to the browser `vercel.proxy.vercel_cache`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_PROXY_VERCEL_CACHE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "REVALIDATED"
+ */
+export const VERCEL_PROXY_VERCEL_CACHE = 'vercel.proxy.vercel_cache';
+
+/**
+ * Type for {@link VERCEL_PROXY_VERCEL_CACHE} vercel.proxy.vercel_cache
+ */
+export type VERCEL_PROXY_VERCEL_CACHE_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__proxy__vercel_id.json
+
+/**
+ * Vercel-specific identifier `vercel.proxy.vercel_id`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_PROXY_VERCEL_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "sfo1::abc123"
+ */
+export const VERCEL_PROXY_VERCEL_ID = 'vercel.proxy.vercel_id';
+
+/**
+ * Type for {@link VERCEL_PROXY_VERCEL_ID} vercel.proxy.vercel_id
+ */
+export type VERCEL_PROXY_VERCEL_ID_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__proxy__waf_action.json
+
+/**
+ * Action taken by firewall rules `vercel.proxy.waf_action`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_PROXY_WAF_ACTION_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "deny"
+ */
+export const VERCEL_PROXY_WAF_ACTION = 'vercel.proxy.waf_action';
+
+/**
+ * Type for {@link VERCEL_PROXY_WAF_ACTION} vercel.proxy.waf_action
+ */
+export type VERCEL_PROXY_WAF_ACTION_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__proxy__waf_rule_id.json
+
+/**
+ * ID of the firewall rule that matched `vercel.proxy.waf_rule_id`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_PROXY_WAF_RULE_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "rule_gAHz8jtSB1Gy"
+ */
+export const VERCEL_PROXY_WAF_RULE_ID = 'vercel.proxy.waf_rule_id';
+
+/**
+ * Type for {@link VERCEL_PROXY_WAF_RULE_ID} vercel.proxy.waf_rule_id
+ */
+export type VERCEL_PROXY_WAF_RULE_ID_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__request_id.json
+
+/**
+ * Identifier of the Vercel request `vercel.request_id`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_REQUEST_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "643af4e3-975a-4cc7-9e7a-1eda11539d90"
+ */
+export const VERCEL_REQUEST_ID = 'vercel.request_id';
+
+/**
+ * Type for {@link VERCEL_REQUEST_ID} vercel.request_id
+ */
+export type VERCEL_REQUEST_ID_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__source.json
+
+/**
+ * Origin of the Vercel log (build, edge, lambda, static, external, or firewall) `vercel.source`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_SOURCE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "build"
+ */
+export const VERCEL_SOURCE = 'vercel.source';
+
+/**
+ * Type for {@link VERCEL_SOURCE} vercel.source
+ */
+export type VERCEL_SOURCE_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__status_code.json
+
+/**
+ * HTTP status code of the request (-1 means no response returned and the lambda crashed) `vercel.status_code`
+ *
+ * Attribute Value Type: `number` {@link VERCEL_STATUS_CODE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 200
+ */
+export const VERCEL_STATUS_CODE = 'vercel.status_code';
+
+/**
+ * Type for {@link VERCEL_STATUS_CODE} vercel.status_code
+ */
+export type VERCEL_STATUS_CODE_TYPE = number;
+
 export type AttributeValue = string | number | boolean | Array<string> | Array<number> | Array<boolean>;
 
 export type Attributes = {
@@ -12427,4 +13168,371 @@ export type Attributes = {
   [_SENTRY_SEGMENT_ID]?: string;
   [TRANSACTION]?: string;
   [URL]?: string;
+  [AI_CITATIONS]?: AI_CITATIONS_TYPE;
+  [AI_COMPLETION_TOKENS_USED]?: AI_COMPLETION_TOKENS_USED_TYPE;
+  [AI_DOCUMENTS]?: AI_DOCUMENTS_TYPE;
+  [AI_FINISH_REASON]?: AI_FINISH_REASON_TYPE;
+  [AI_FREQUENCY_PENALTY]?: AI_FREQUENCY_PENALTY_TYPE;
+  [AI_FUNCTION_CALL]?: AI_FUNCTION_CALL_TYPE;
+  [AI_GENERATION_ID]?: AI_GENERATION_ID_TYPE;
+  [AI_INPUT_MESSAGES]?: AI_INPUT_MESSAGES_TYPE;
+  [AI_IS_SEARCH_REQUIRED]?: AI_IS_SEARCH_REQUIRED_TYPE;
+  [AI_METADATA]?: AI_METADATA_TYPE;
+  [AI_MODEL_PROVIDER]?: AI_MODEL_PROVIDER_TYPE;
+  [AI_MODEL_ID]?: AI_MODEL_ID_TYPE;
+  [AI_PIPELINE_NAME]?: AI_PIPELINE_NAME_TYPE;
+  [AI_PREAMBLE]?: AI_PREAMBLE_TYPE;
+  [AI_PRESENCE_PENALTY]?: AI_PRESENCE_PENALTY_TYPE;
+  [AI_PROMPT_TOKENS_USED]?: AI_PROMPT_TOKENS_USED_TYPE;
+  [AI_RAW_PROMPTING]?: AI_RAW_PROMPTING_TYPE;
+  [AI_RESPONSE_FORMAT]?: AI_RESPONSE_FORMAT_TYPE;
+  [AI_RESPONSES]?: AI_RESPONSES_TYPE;
+  [AI_SEARCH_QUERIES]?: AI_SEARCH_QUERIES_TYPE;
+  [AI_SEARCH_RESULTS]?: AI_SEARCH_RESULTS_TYPE;
+  [AI_SEED]?: AI_SEED_TYPE;
+  [AI_STREAMING]?: AI_STREAMING_TYPE;
+  [AI_TAGS]?: AI_TAGS_TYPE;
+  [AI_TEMPERATURE]?: AI_TEMPERATURE_TYPE;
+  [AI_TEXTS]?: AI_TEXTS_TYPE;
+  [AI_TOOL_CALLS]?: AI_TOOL_CALLS_TYPE;
+  [AI_TOOLS]?: AI_TOOLS_TYPE;
+  [AI_TOP_K]?: AI_TOP_K_TYPE;
+  [AI_TOP_P]?: AI_TOP_P_TYPE;
+  [AI_TOTAL_COST]?: AI_TOTAL_COST_TYPE;
+  [AI_TOTAL_TOKENS_USED]?: AI_TOTAL_TOKENS_USED_TYPE;
+  [AI_WARNINGS]?: AI_WARNINGS_TYPE;
+  [APP_START_TYPE]?: APP_START_TYPE_TYPE;
+  [BLOCKED_MAIN_THREAD]?: BLOCKED_MAIN_THREAD_TYPE;
+  [BROWSER_NAME]?: BROWSER_NAME_TYPE;
+  [BROWSER_REPORT_TYPE]?: BROWSER_REPORT_TYPE_TYPE;
+  [BROWSER_SCRIPT_INVOKER]?: BROWSER_SCRIPT_INVOKER_TYPE;
+  [BROWSER_SCRIPT_INVOKER_TYPE]?: BROWSER_SCRIPT_INVOKER_TYPE_TYPE;
+  [BROWSER_SCRIPT_SOURCE_CHAR_POSITION]?: BROWSER_SCRIPT_SOURCE_CHAR_POSITION_TYPE;
+  [BROWSER_VERSION]?: BROWSER_VERSION_TYPE;
+  [CACHE_HIT]?: CACHE_HIT_TYPE;
+  [CACHE_ITEM_SIZE]?: CACHE_ITEM_SIZE_TYPE;
+  [CACHE_KEY]?: CACHE_KEY_TYPE;
+  [CACHE_OPERATION]?: CACHE_OPERATION_TYPE;
+  [CACHE_TTL]?: CACHE_TTL_TYPE;
+  [CHANNEL]?: CHANNEL_TYPE;
+  [CLIENT_ADDRESS]?: CLIENT_ADDRESS_TYPE;
+  [CLIENT_PORT]?: CLIENT_PORT_TYPE;
+  [CLOUDFLARE_D1_DURATION]?: CLOUDFLARE_D1_DURATION_TYPE;
+  [CLOUDFLARE_D1_ROWS_READ]?: CLOUDFLARE_D1_ROWS_READ_TYPE;
+  [CLOUDFLARE_D1_ROWS_WRITTEN]?: CLOUDFLARE_D1_ROWS_WRITTEN_TYPE;
+  [CODE_FILE_PATH]?: CODE_FILE_PATH_TYPE;
+  [CODE_FILEPATH]?: CODE_FILEPATH_TYPE;
+  [CODE_FUNCTION]?: CODE_FUNCTION_TYPE;
+  [CODE_FUNCTION_NAME]?: CODE_FUNCTION_NAME_TYPE;
+  [CODE_LINE_NUMBER]?: CODE_LINE_NUMBER_TYPE;
+  [CODE_LINENO]?: CODE_LINENO_TYPE;
+  [CODE_NAMESPACE]?: CODE_NAMESPACE_TYPE;
+  [DB_COLLECTION_NAME]?: DB_COLLECTION_NAME_TYPE;
+  [DB_NAME]?: DB_NAME_TYPE;
+  [DB_NAMESPACE]?: DB_NAMESPACE_TYPE;
+  [DB_OPERATION]?: DB_OPERATION_TYPE;
+  [DB_OPERATION_NAME]?: DB_OPERATION_NAME_TYPE;
+  [DB_QUERY_PARAMETER_KEY]?: DB_QUERY_PARAMETER_KEY_TYPE;
+  [DB_QUERY_SUMMARY]?: DB_QUERY_SUMMARY_TYPE;
+  [DB_QUERY_TEXT]?: DB_QUERY_TEXT_TYPE;
+  [DB_REDIS_CONNECTION]?: DB_REDIS_CONNECTION_TYPE;
+  [DB_REDIS_PARAMETERS]?: DB_REDIS_PARAMETERS_TYPE;
+  [DB_SQL_BINDINGS]?: DB_SQL_BINDINGS_TYPE;
+  [DB_STATEMENT]?: DB_STATEMENT_TYPE;
+  [DB_SYSTEM]?: DB_SYSTEM_TYPE;
+  [DB_SYSTEM_NAME]?: DB_SYSTEM_NAME_TYPE;
+  [DB_USER]?: DB_USER_TYPE;
+  [DEVICE_BRAND]?: DEVICE_BRAND_TYPE;
+  [DEVICE_FAMILY]?: DEVICE_FAMILY_TYPE;
+  [DEVICE_MODEL]?: DEVICE_MODEL_TYPE;
+  [ENVIRONMENT]?: ENVIRONMENT_TYPE;
+  [ERROR_TYPE]?: ERROR_TYPE_TYPE;
+  [EVENT_ID]?: EVENT_ID_TYPE;
+  [EVENT_NAME]?: EVENT_NAME_TYPE;
+  [EXCEPTION_ESCAPED]?: EXCEPTION_ESCAPED_TYPE;
+  [EXCEPTION_MESSAGE]?: EXCEPTION_MESSAGE_TYPE;
+  [EXCEPTION_STACKTRACE]?: EXCEPTION_STACKTRACE_TYPE;
+  [EXCEPTION_TYPE]?: EXCEPTION_TYPE_TYPE;
+  [FAAS_COLDSTART]?: FAAS_COLDSTART_TYPE;
+  [FAAS_CRON]?: FAAS_CRON_TYPE;
+  [FAAS_TIME]?: FAAS_TIME_TYPE;
+  [FAAS_TRIGGER]?: FAAS_TRIGGER_TYPE;
+  [FLAG_EVALUATION_KEY]?: FLAG_EVALUATION_KEY_TYPE;
+  [FRAMES_DELAY]?: FRAMES_DELAY_TYPE;
+  [FRAMES_FROZEN]?: FRAMES_FROZEN_TYPE;
+  [FRAMES_SLOW]?: FRAMES_SLOW_TYPE;
+  [FRAMES_TOTAL]?: FRAMES_TOTAL_TYPE;
+  [FS_ERROR]?: FS_ERROR_TYPE;
+  [GEN_AI_AGENT_NAME]?: GEN_AI_AGENT_NAME_TYPE;
+  [GEN_AI_ASSISTANT_MESSAGE]?: GEN_AI_ASSISTANT_MESSAGE_TYPE;
+  [GEN_AI_CHOICE]?: GEN_AI_CHOICE_TYPE;
+  [GEN_AI_COST_INPUT_TOKENS]?: GEN_AI_COST_INPUT_TOKENS_TYPE;
+  [GEN_AI_COST_OUTPUT_TOKENS]?: GEN_AI_COST_OUTPUT_TOKENS_TYPE;
+  [GEN_AI_COST_TOTAL_TOKENS]?: GEN_AI_COST_TOTAL_TOKENS_TYPE;
+  [GEN_AI_OPERATION_NAME]?: GEN_AI_OPERATION_NAME_TYPE;
+  [GEN_AI_OPERATION_TYPE]?: GEN_AI_OPERATION_TYPE_TYPE;
+  [GEN_AI_PIPELINE_NAME]?: GEN_AI_PIPELINE_NAME_TYPE;
+  [GEN_AI_PROMPT]?: GEN_AI_PROMPT_TYPE;
+  [GEN_AI_REQUEST_AVAILABLE_TOOLS]?: GEN_AI_REQUEST_AVAILABLE_TOOLS_TYPE;
+  [GEN_AI_REQUEST_FREQUENCY_PENALTY]?: GEN_AI_REQUEST_FREQUENCY_PENALTY_TYPE;
+  [GEN_AI_REQUEST_MAX_TOKENS]?: GEN_AI_REQUEST_MAX_TOKENS_TYPE;
+  [GEN_AI_REQUEST_MESSAGES]?: GEN_AI_REQUEST_MESSAGES_TYPE;
+  [GEN_AI_REQUEST_MODEL]?: GEN_AI_REQUEST_MODEL_TYPE;
+  [GEN_AI_REQUEST_PRESENCE_PENALTY]?: GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE;
+  [GEN_AI_REQUEST_SEED]?: GEN_AI_REQUEST_SEED_TYPE;
+  [GEN_AI_REQUEST_TEMPERATURE]?: GEN_AI_REQUEST_TEMPERATURE_TYPE;
+  [GEN_AI_REQUEST_TOP_K]?: GEN_AI_REQUEST_TOP_K_TYPE;
+  [GEN_AI_REQUEST_TOP_P]?: GEN_AI_REQUEST_TOP_P_TYPE;
+  [GEN_AI_RESPONSE_FINISH_REASONS]?: GEN_AI_RESPONSE_FINISH_REASONS_TYPE;
+  [GEN_AI_RESPONSE_ID]?: GEN_AI_RESPONSE_ID_TYPE;
+  [GEN_AI_RESPONSE_MODEL]?: GEN_AI_RESPONSE_MODEL_TYPE;
+  [GEN_AI_RESPONSE_STREAMING]?: GEN_AI_RESPONSE_STREAMING_TYPE;
+  [GEN_AI_RESPONSE_TEXT]?: GEN_AI_RESPONSE_TEXT_TYPE;
+  [GEN_AI_RESPONSE_TOKENS_PER_SECOND]?: GEN_AI_RESPONSE_TOKENS_PER_SECOND_TYPE;
+  [GEN_AI_RESPONSE_TOOL_CALLS]?: GEN_AI_RESPONSE_TOOL_CALLS_TYPE;
+  [GEN_AI_SYSTEM]?: GEN_AI_SYSTEM_TYPE;
+  [GEN_AI_SYSTEM_MESSAGE]?: GEN_AI_SYSTEM_MESSAGE_TYPE;
+  [GEN_AI_TOOL_DESCRIPTION]?: GEN_AI_TOOL_DESCRIPTION_TYPE;
+  [GEN_AI_TOOL_INPUT]?: GEN_AI_TOOL_INPUT_TYPE;
+  [GEN_AI_TOOL_MESSAGE]?: GEN_AI_TOOL_MESSAGE_TYPE;
+  [GEN_AI_TOOL_NAME]?: GEN_AI_TOOL_NAME_TYPE;
+  [GEN_AI_TOOL_OUTPUT]?: GEN_AI_TOOL_OUTPUT_TYPE;
+  [GEN_AI_TOOL_TYPE]?: GEN_AI_TOOL_TYPE_TYPE;
+  [GEN_AI_USAGE_COMPLETION_TOKENS]?: GEN_AI_USAGE_COMPLETION_TOKENS_TYPE;
+  [GEN_AI_USAGE_INPUT_TOKENS]?: GEN_AI_USAGE_INPUT_TOKENS_TYPE;
+  [GEN_AI_USAGE_INPUT_TOKENS_CACHED]?: GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE;
+  [GEN_AI_USAGE_OUTPUT_TOKENS]?: GEN_AI_USAGE_OUTPUT_TOKENS_TYPE;
+  [GEN_AI_USAGE_OUTPUT_TOKENS_REASONING]?: GEN_AI_USAGE_OUTPUT_TOKENS_REASONING_TYPE;
+  [GEN_AI_USAGE_PROMPT_TOKENS]?: GEN_AI_USAGE_PROMPT_TOKENS_TYPE;
+  [GEN_AI_USAGE_TOTAL_COST]?: GEN_AI_USAGE_TOTAL_COST_TYPE;
+  [GEN_AI_USAGE_TOTAL_TOKENS]?: GEN_AI_USAGE_TOTAL_TOKENS_TYPE;
+  [GEN_AI_USER_MESSAGE]?: GEN_AI_USER_MESSAGE_TYPE;
+  [GRAPHQL_OPERATION_NAME]?: GRAPHQL_OPERATION_NAME_TYPE;
+  [GRAPHQL_OPERATION_TYPE]?: GRAPHQL_OPERATION_TYPE_TYPE;
+  [HTTP_CLIENT_IP]?: HTTP_CLIENT_IP_TYPE;
+  [HTTP_DECODED_RESPONSE_CONTENT_LENGTH]?: HTTP_DECODED_RESPONSE_CONTENT_LENGTH_TYPE;
+  [HTTP_FLAVOR]?: HTTP_FLAVOR_TYPE;
+  [HTTP_FRAGMENT]?: HTTP_FRAGMENT_TYPE;
+  [HTTP_HOST]?: HTTP_HOST_TYPE;
+  [HTTP_METHOD]?: HTTP_METHOD_TYPE;
+  [HTTP_QUERY]?: HTTP_QUERY_TYPE;
+  [HTTP_REQUEST_CONNECT_START]?: HTTP_REQUEST_CONNECT_START_TYPE;
+  [HTTP_REQUEST_CONNECTION_END]?: HTTP_REQUEST_CONNECTION_END_TYPE;
+  [HTTP_REQUEST_DOMAIN_LOOKUP_END]?: HTTP_REQUEST_DOMAIN_LOOKUP_END_TYPE;
+  [HTTP_REQUEST_DOMAIN_LOOKUP_START]?: HTTP_REQUEST_DOMAIN_LOOKUP_START_TYPE;
+  [HTTP_REQUEST_FETCH_START]?: HTTP_REQUEST_FETCH_START_TYPE;
+  [HTTP_REQUEST_HEADER_KEY]?: HTTP_REQUEST_HEADER_KEY_TYPE;
+  [HTTP_REQUEST_METHOD]?: HTTP_REQUEST_METHOD_TYPE;
+  [HTTP_REQUEST_REDIRECT_END]?: HTTP_REQUEST_REDIRECT_END_TYPE;
+  [HTTP_REQUEST_REDIRECT_START]?: HTTP_REQUEST_REDIRECT_START_TYPE;
+  [HTTP_REQUEST_REQUEST_START]?: HTTP_REQUEST_REQUEST_START_TYPE;
+  [HTTP_REQUEST_RESEND_COUNT]?: HTTP_REQUEST_RESEND_COUNT_TYPE;
+  [HTTP_REQUEST_RESPONSE_END]?: HTTP_REQUEST_RESPONSE_END_TYPE;
+  [HTTP_REQUEST_RESPONSE_START]?: HTTP_REQUEST_RESPONSE_START_TYPE;
+  [HTTP_REQUEST_SECURE_CONNECTION_START]?: HTTP_REQUEST_SECURE_CONNECTION_START_TYPE;
+  [HTTP_REQUEST_TIME_TO_FIRST_BYTE]?: HTTP_REQUEST_TIME_TO_FIRST_BYTE_TYPE;
+  [HTTP_REQUEST_WORKER_START]?: HTTP_REQUEST_WORKER_START_TYPE;
+  [HTTP_RESPONSE_BODY_SIZE]?: HTTP_RESPONSE_BODY_SIZE_TYPE;
+  [HTTP_RESPONSE_HEADER_KEY]?: HTTP_RESPONSE_HEADER_KEY_TYPE;
+  [HTTP_RESPONSE_HEADER_CONTENT_LENGTH]?: HTTP_RESPONSE_HEADER_CONTENT_LENGTH_TYPE;
+  [HTTP_RESPONSE_SIZE]?: HTTP_RESPONSE_SIZE_TYPE;
+  [HTTP_RESPONSE_STATUS_CODE]?: HTTP_RESPONSE_STATUS_CODE_TYPE;
+  [HTTP_RESPONSE_CONTENT_LENGTH]?: HTTP_RESPONSE_CONTENT_LENGTH_TYPE;
+  [HTTP_RESPONSE_TRANSFER_SIZE]?: HTTP_RESPONSE_TRANSFER_SIZE_TYPE;
+  [HTTP_ROUTE]?: HTTP_ROUTE_TYPE;
+  [HTTP_SCHEME]?: HTTP_SCHEME_TYPE;
+  [HTTP_SERVER_NAME]?: HTTP_SERVER_NAME_TYPE;
+  [HTTP_STATUS_CODE]?: HTTP_STATUS_CODE_TYPE;
+  [HTTP_TARGET]?: HTTP_TARGET_TYPE;
+  [HTTP_URL]?: HTTP_URL_TYPE;
+  [HTTP_USER_AGENT]?: HTTP_USER_AGENT_TYPE;
+  [ID]?: ID_TYPE;
+  [JVM_GC_ACTION]?: JVM_GC_ACTION_TYPE;
+  [JVM_GC_NAME]?: JVM_GC_NAME_TYPE;
+  [JVM_MEMORY_POOL_NAME]?: JVM_MEMORY_POOL_NAME_TYPE;
+  [JVM_MEMORY_TYPE]?: JVM_MEMORY_TYPE_TYPE;
+  [JVM_THREAD_DAEMON]?: JVM_THREAD_DAEMON_TYPE;
+  [JVM_THREAD_STATE]?: JVM_THREAD_STATE_TYPE;
+  [LCP_ELEMENT]?: LCP_ELEMENT_TYPE;
+  [LCP_ID]?: LCP_ID_TYPE;
+  [LCP_SIZE]?: LCP_SIZE_TYPE;
+  [LCP_URL]?: LCP_URL_TYPE;
+  [LOGGER_NAME]?: LOGGER_NAME_TYPE;
+  [MCP_PROMPT_RESULT]?: MCP_PROMPT_RESULT_TYPE;
+  [MCP_TOOL_RESULT_CONTENT]?: MCP_TOOL_RESULT_CONTENT_TYPE;
+  [MESSAGING_DESTINATION_CONNECTION]?: MESSAGING_DESTINATION_CONNECTION_TYPE;
+  [MESSAGING_DESTINATION_NAME]?: MESSAGING_DESTINATION_NAME_TYPE;
+  [MESSAGING_MESSAGE_BODY_SIZE]?: MESSAGING_MESSAGE_BODY_SIZE_TYPE;
+  [MESSAGING_MESSAGE_ENVELOPE_SIZE]?: MESSAGING_MESSAGE_ENVELOPE_SIZE_TYPE;
+  [MESSAGING_MESSAGE_ID]?: MESSAGING_MESSAGE_ID_TYPE;
+  [MESSAGING_MESSAGE_RECEIVE_LATENCY]?: MESSAGING_MESSAGE_RECEIVE_LATENCY_TYPE;
+  [MESSAGING_MESSAGE_RETRY_COUNT]?: MESSAGING_MESSAGE_RETRY_COUNT_TYPE;
+  [MESSAGING_OPERATION_TYPE]?: MESSAGING_OPERATION_TYPE_TYPE;
+  [MESSAGING_SYSTEM]?: MESSAGING_SYSTEM_TYPE;
+  [METHOD]?: METHOD_TYPE;
+  [NAVIGATION_TYPE]?: NAVIGATION_TYPE_TYPE;
+  [NEL_ELAPSED_TIME]?: NEL_ELAPSED_TIME_TYPE;
+  [NEL_PHASE]?: NEL_PHASE_TYPE;
+  [NEL_REFERRER]?: NEL_REFERRER_TYPE;
+  [NEL_SAMPLING_FUNCTION]?: NEL_SAMPLING_FUNCTION_TYPE;
+  [NEL_TYPE]?: NEL_TYPE_TYPE;
+  [NET_HOST_IP]?: NET_HOST_IP_TYPE;
+  [NET_HOST_NAME]?: NET_HOST_NAME_TYPE;
+  [NET_HOST_PORT]?: NET_HOST_PORT_TYPE;
+  [NET_PEER_IP]?: NET_PEER_IP_TYPE;
+  [NET_PEER_NAME]?: NET_PEER_NAME_TYPE;
+  [NET_PEER_PORT]?: NET_PEER_PORT_TYPE;
+  [NET_PROTOCOL_NAME]?: NET_PROTOCOL_NAME_TYPE;
+  [NET_PROTOCOL_VERSION]?: NET_PROTOCOL_VERSION_TYPE;
+  [NET_SOCK_FAMILY]?: NET_SOCK_FAMILY_TYPE;
+  [NET_SOCK_HOST_ADDR]?: NET_SOCK_HOST_ADDR_TYPE;
+  [NET_SOCK_HOST_PORT]?: NET_SOCK_HOST_PORT_TYPE;
+  [NET_SOCK_PEER_ADDR]?: NET_SOCK_PEER_ADDR_TYPE;
+  [NET_SOCK_PEER_NAME]?: NET_SOCK_PEER_NAME_TYPE;
+  [NET_SOCK_PEER_PORT]?: NET_SOCK_PEER_PORT_TYPE;
+  [NET_TRANSPORT]?: NET_TRANSPORT_TYPE;
+  [NETWORK_LOCAL_ADDRESS]?: NETWORK_LOCAL_ADDRESS_TYPE;
+  [NETWORK_LOCAL_PORT]?: NETWORK_LOCAL_PORT_TYPE;
+  [NETWORK_PEER_ADDRESS]?: NETWORK_PEER_ADDRESS_TYPE;
+  [NETWORK_PEER_PORT]?: NETWORK_PEER_PORT_TYPE;
+  [NETWORK_PROTOCOL_NAME]?: NETWORK_PROTOCOL_NAME_TYPE;
+  [NETWORK_PROTOCOL_VERSION]?: NETWORK_PROTOCOL_VERSION_TYPE;
+  [NETWORK_TRANSPORT]?: NETWORK_TRANSPORT_TYPE;
+  [NETWORK_TYPE]?: NETWORK_TYPE_TYPE;
+  [OS_BUILD_ID]?: OS_BUILD_ID_TYPE;
+  [OS_DESCRIPTION]?: OS_DESCRIPTION_TYPE;
+  [OS_NAME]?: OS_NAME_TYPE;
+  [OS_TYPE]?: OS_TYPE_TYPE;
+  [OS_VERSION]?: OS_VERSION_TYPE;
+  [OTEL_SCOPE_NAME]?: OTEL_SCOPE_NAME_TYPE;
+  [OTEL_SCOPE_VERSION]?: OTEL_SCOPE_VERSION_TYPE;
+  [OTEL_STATUS_CODE]?: OTEL_STATUS_CODE_TYPE;
+  [OTEL_STATUS_DESCRIPTION]?: OTEL_STATUS_DESCRIPTION_TYPE;
+  [PARAMS_KEY]?: PARAMS_KEY_TYPE;
+  [PREVIOUS_ROUTE]?: PREVIOUS_ROUTE_TYPE;
+  [PROCESS_EXECUTABLE_NAME]?: PROCESS_EXECUTABLE_NAME_TYPE;
+  [PROCESS_PID]?: PROCESS_PID_TYPE;
+  [PROCESS_RUNTIME_DESCRIPTION]?: PROCESS_RUNTIME_DESCRIPTION_TYPE;
+  [PROCESS_RUNTIME_NAME]?: PROCESS_RUNTIME_NAME_TYPE;
+  [PROCESS_RUNTIME_VERSION]?: PROCESS_RUNTIME_VERSION_TYPE;
+  [PROFILE_ID]?: PROFILE_ID_TYPE;
+  [QUERY_KEY]?: QUERY_KEY_TYPE;
+  [RELEASE]?: RELEASE_TYPE;
+  [REMIX_ACTION_FORM_DATA_KEY]?: REMIX_ACTION_FORM_DATA_KEY_TYPE;
+  [REPLAY_ID]?: REPLAY_ID_TYPE;
+  [RESOURCE_RENDER_BLOCKING_STATUS]?: RESOURCE_RENDER_BLOCKING_STATUS_TYPE;
+  [ROUTE]?: ROUTE_TYPE;
+  [RPC_GRPC_STATUS_CODE]?: RPC_GRPC_STATUS_CODE_TYPE;
+  [RPC_SERVICE]?: RPC_SERVICE_TYPE;
+  [SENTRY_INTERNAL_DSC_ENVIRONMENT]?: SENTRY_INTERNAL_DSC_ENVIRONMENT_TYPE;
+  [SENTRY_INTERNAL_DSC_ORG_ID]?: SENTRY_INTERNAL_DSC_ORG_ID_TYPE;
+  [SENTRY_INTERNAL_DSC_PUBLIC_KEY]?: SENTRY_INTERNAL_DSC_PUBLIC_KEY_TYPE;
+  [SENTRY_INTERNAL_DSC_RELEASE]?: SENTRY_INTERNAL_DSC_RELEASE_TYPE;
+  [SENTRY_INTERNAL_DSC_SAMPLE_RAND]?: SENTRY_INTERNAL_DSC_SAMPLE_RAND_TYPE;
+  [SENTRY_INTERNAL_DSC_SAMPLE_RATE]?: SENTRY_INTERNAL_DSC_SAMPLE_RATE_TYPE;
+  [SENTRY_INTERNAL_DSC_SAMPLED]?: SENTRY_INTERNAL_DSC_SAMPLED_TYPE;
+  [SENTRY_INTERNAL_DSC_TRACE_ID]?: SENTRY_INTERNAL_DSC_TRACE_ID_TYPE;
+  [SENTRY_INTERNAL_DSC_TRANSACTION]?: SENTRY_INTERNAL_DSC_TRANSACTION_TYPE;
+  [SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS]?: SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS_TYPE;
+  [SENTRY_INTERNAL_REPLAY_IS_BUFFERING]?: SENTRY_INTERNAL_REPLAY_IS_BUFFERING_TYPE;
+  [SENTRY_BROWSER_NAME]?: SENTRY_BROWSER_NAME_TYPE;
+  [SENTRY_BROWSER_VERSION]?: SENTRY_BROWSER_VERSION_TYPE;
+  [SENTRY_CANCELLATION_REASON]?: SENTRY_CANCELLATION_REASON_TYPE;
+  [SENTRY_CLIENT_SAMPLE_RATE]?: SENTRY_CLIENT_SAMPLE_RATE_TYPE;
+  [SENTRY_DESCRIPTION]?: SENTRY_DESCRIPTION_TYPE;
+  [SENTRY_DIST]?: SENTRY_DIST_TYPE;
+  [SENTRY_ENVIRONMENT]?: SENTRY_ENVIRONMENT_TYPE;
+  [SENTRY_EXCLUSIVE_TIME]?: SENTRY_EXCLUSIVE_TIME_TYPE;
+  [SENTRY_HTTP_PREFETCH]?: SENTRY_HTTP_PREFETCH_TYPE;
+  [SENTRY_IDLE_SPAN_FINISH_REASON]?: SENTRY_IDLE_SPAN_FINISH_REASON_TYPE;
+  [SENTRY_MESSAGE_PARAMETER_KEY]?: SENTRY_MESSAGE_PARAMETER_KEY_TYPE;
+  [SENTRY_MESSAGE_TEMPLATE]?: SENTRY_MESSAGE_TEMPLATE_TYPE;
+  [SENTRY_MODULE_KEY]?: SENTRY_MODULE_KEY_TYPE;
+  [SENTRY_NEXTJS_SSR_FUNCTION_ROUTE]?: SENTRY_NEXTJS_SSR_FUNCTION_ROUTE_TYPE;
+  [SENTRY_NEXTJS_SSR_FUNCTION_TYPE]?: SENTRY_NEXTJS_SSR_FUNCTION_TYPE_TYPE;
+  [SENTRY_OBSERVED_TIMESTAMP_NANOS]?: SENTRY_OBSERVED_TIMESTAMP_NANOS_TYPE;
+  [SENTRY_OP]?: SENTRY_OP_TYPE;
+  [SENTRY_ORIGIN]?: SENTRY_ORIGIN_TYPE;
+  [SENTRY_PLATFORM]?: SENTRY_PLATFORM_TYPE;
+  [SENTRY_PROFILE_ID]?: SENTRY_PROFILE_ID_TYPE;
+  [SENTRY_RELEASE]?: SENTRY_RELEASE_TYPE;
+  [SENTRY_REPLAY_ID]?: SENTRY_REPLAY_ID_TYPE;
+  [SENTRY_SDK_INTEGRATIONS]?: SENTRY_SDK_INTEGRATIONS_TYPE;
+  [SENTRY_SDK_NAME]?: SENTRY_SDK_NAME_TYPE;
+  [SENTRY_SDK_VERSION]?: SENTRY_SDK_VERSION_TYPE;
+  [SENTRY_SEGMENT_ID]?: SENTRY_SEGMENT_ID_TYPE;
+  [SENTRY_SEGMENT_NAME]?: SENTRY_SEGMENT_NAME_TYPE;
+  [_SENTRY_SEGMENT_ID]?: _SENTRY_SEGMENT_ID_TYPE;
+  [SENTRY_SERVER_SAMPLE_RATE]?: SENTRY_SERVER_SAMPLE_RATE_TYPE;
+  [SENTRY_SPAN_SOURCE]?: SENTRY_SPAN_SOURCE_TYPE;
+  [SENTRY_TRACE_PARENT_SPAN_ID]?: SENTRY_TRACE_PARENT_SPAN_ID_TYPE;
+  [SENTRY_TRANSACTION]?: SENTRY_TRANSACTION_TYPE;
+  [SERVER_ADDRESS]?: SERVER_ADDRESS_TYPE;
+  [SERVER_PORT]?: SERVER_PORT_TYPE;
+  [SERVICE_NAME]?: SERVICE_NAME_TYPE;
+  [SERVICE_VERSION]?: SERVICE_VERSION_TYPE;
+  [THREAD_ID]?: THREAD_ID_TYPE;
+  [THREAD_NAME]?: THREAD_NAME_TYPE;
+  [TRANSACTION]?: TRANSACTION_TYPE;
+  [TYPE]?: TYPE_TYPE;
+  [UI_COMPONENT_NAME]?: UI_COMPONENT_NAME_TYPE;
+  [UI_CONTRIBUTES_TO_TTFD]?: UI_CONTRIBUTES_TO_TTFD_TYPE;
+  [UI_CONTRIBUTES_TO_TTID]?: UI_CONTRIBUTES_TO_TTID_TYPE;
+  [URL_DOMAIN]?: URL_DOMAIN_TYPE;
+  [URL_FRAGMENT]?: URL_FRAGMENT_TYPE;
+  [URL_FULL]?: URL_FULL_TYPE;
+  [URL_PATH]?: URL_PATH_TYPE;
+  [URL_PATH_PARAMETER_KEY]?: URL_PATH_PARAMETER_KEY_TYPE;
+  [URL_PORT]?: URL_PORT_TYPE;
+  [URL_QUERY]?: URL_QUERY_TYPE;
+  [URL_SCHEME]?: URL_SCHEME_TYPE;
+  [URL_TEMPLATE]?: URL_TEMPLATE_TYPE;
+  [URL]?: URL_TYPE;
+  [USER_EMAIL]?: USER_EMAIL_TYPE;
+  [USER_FULL_NAME]?: USER_FULL_NAME_TYPE;
+  [USER_GEO_CITY]?: USER_GEO_CITY_TYPE;
+  [USER_GEO_COUNTRY_CODE]?: USER_GEO_COUNTRY_CODE_TYPE;
+  [USER_GEO_REGION]?: USER_GEO_REGION_TYPE;
+  [USER_GEO_SUBDIVISION]?: USER_GEO_SUBDIVISION_TYPE;
+  [USER_HASH]?: USER_HASH_TYPE;
+  [USER_ID]?: USER_ID_TYPE;
+  [USER_IP_ADDRESS]?: USER_IP_ADDRESS_TYPE;
+  [USER_NAME]?: USER_NAME_TYPE;
+  [USER_ROLES]?: USER_ROLES_TYPE;
+  [USER_AGENT_ORIGINAL]?: USER_AGENT_ORIGINAL_TYPE;
+  [VERCEL_BRANCH]?: VERCEL_BRANCH_TYPE;
+  [VERCEL_BUILD_ID]?: VERCEL_BUILD_ID_TYPE;
+  [VERCEL_DEPLOYMENT_ID]?: VERCEL_DEPLOYMENT_ID_TYPE;
+  [VERCEL_DESTINATION]?: VERCEL_DESTINATION_TYPE;
+  [VERCEL_EDGE_TYPE]?: VERCEL_EDGE_TYPE_TYPE;
+  [VERCEL_ENTRYPOINT]?: VERCEL_ENTRYPOINT_TYPE;
+  [VERCEL_EXECUTION_REGION]?: VERCEL_EXECUTION_REGION_TYPE;
+  [VERCEL_ID]?: VERCEL_ID_TYPE;
+  [VERCEL_JA3_DIGEST]?: VERCEL_JA3_DIGEST_TYPE;
+  [VERCEL_JA4_DIGEST]?: VERCEL_JA4_DIGEST_TYPE;
+  [VERCEL_LOG_TYPE]?: VERCEL_LOG_TYPE_TYPE;
+  [VERCEL_PROJECT_ID]?: VERCEL_PROJECT_ID_TYPE;
+  [VERCEL_PROJECT_NAME]?: VERCEL_PROJECT_NAME_TYPE;
+  [VERCEL_PROXY_CACHE_ID]?: VERCEL_PROXY_CACHE_ID_TYPE;
+  [VERCEL_PROXY_CLIENT_IP]?: VERCEL_PROXY_CLIENT_IP_TYPE;
+  [VERCEL_PROXY_HOST]?: VERCEL_PROXY_HOST_TYPE;
+  [VERCEL_PROXY_LAMBDA_REGION]?: VERCEL_PROXY_LAMBDA_REGION_TYPE;
+  [VERCEL_PROXY_METHOD]?: VERCEL_PROXY_METHOD_TYPE;
+  [VERCEL_PROXY_PATH]?: VERCEL_PROXY_PATH_TYPE;
+  [VERCEL_PROXY_PATH_TYPE]?: VERCEL_PROXY_PATH_TYPE_TYPE;
+  [VERCEL_PROXY_PATH_TYPE_VARIANT]?: VERCEL_PROXY_PATH_TYPE_VARIANT_TYPE;
+  [VERCEL_PROXY_REFERER]?: VERCEL_PROXY_REFERER_TYPE;
+  [VERCEL_PROXY_REGION]?: VERCEL_PROXY_REGION_TYPE;
+  [VERCEL_PROXY_RESPONSE_BYTE_SIZE]?: VERCEL_PROXY_RESPONSE_BYTE_SIZE_TYPE;
+  [VERCEL_PROXY_SCHEME]?: VERCEL_PROXY_SCHEME_TYPE;
+  [VERCEL_PROXY_STATUS_CODE]?: VERCEL_PROXY_STATUS_CODE_TYPE;
+  [VERCEL_PROXY_TIMESTAMP]?: VERCEL_PROXY_TIMESTAMP_TYPE;
+  [VERCEL_PROXY_USER_AGENT]?: VERCEL_PROXY_USER_AGENT_TYPE;
+  [VERCEL_PROXY_VERCEL_CACHE]?: VERCEL_PROXY_VERCEL_CACHE_TYPE;
+  [VERCEL_PROXY_VERCEL_ID]?: VERCEL_PROXY_VERCEL_ID_TYPE;
+  [VERCEL_PROXY_WAF_ACTION]?: VERCEL_PROXY_WAF_ACTION_TYPE;
+  [VERCEL_PROXY_WAF_RULE_ID]?: VERCEL_PROXY_WAF_RULE_ID_TYPE;
+  [VERCEL_REQUEST_ID]?: VERCEL_REQUEST_ID_TYPE;
+  [VERCEL_SOURCE]?: VERCEL_SOURCE_TYPE;
+  [VERCEL_STATUS_CODE]?: VERCEL_STATUS_CODE_TYPE;
 } & Record<string, AttributeValue | undefined>;
