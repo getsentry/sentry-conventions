@@ -2300,6 +2300,28 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "myLogger"
     """
 
+    # Path: model/attributes/mcp/mcp__prompt__result.json
+    MCP_PROMPT_RESULT: Literal["mcp.prompt.result"] = "mcp.prompt.result"
+    """The content of the prompt result.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "An example prompt result!"
+    """
+
+    # Path: model/attributes/mcp/mcp__tool__result__content.json
+    MCP_TOOL_RESULT_CONTENT: Literal["mcp.tool.result.content"] = (
+        "mcp.tool.result.content"
+    )
+    """The content of the tool result.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "{\"output\": \"rainy\", \"toolCallId\": \"1\"}"
+    """
+
     # Path: model/attributes/messaging/messaging__destination__connection.json
     MESSAGING_DESTINATION_CONNECTION: Literal["messaging.destination.connection"] = (
         "messaging.destination.connection"
@@ -3849,6 +3871,374 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1"
     """
 
+    # Path: model/attributes/vercel/vercel__branch.json
+    VERCEL_BRANCH: Literal["vercel.branch"] = "vercel.branch"
+    """Git branch name for Vercel project
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "main"
+    """
+
+    # Path: model/attributes/vercel/vercel__build_id.json
+    VERCEL_BUILD_ID: Literal["vercel.build_id"] = "vercel.build_id"
+    """Identifier for the Vercel build (only present on build logs)
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "bld_cotnkcr76"
+    """
+
+    # Path: model/attributes/vercel/vercel__deployment_id.json
+    VERCEL_DEPLOYMENT_ID: Literal["vercel.deployment_id"] = "vercel.deployment_id"
+    """Identifier for the Vercel deployment
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "dpl_233NRGRjVZX1caZrXWtz5g1TAksD"
+    """
+
+    # Path: model/attributes/vercel/vercel__destination.json
+    VERCEL_DESTINATION: Literal["vercel.destination"] = "vercel.destination"
+    """Origin of the external content in Vercel (only on external logs)
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "https://vitals.vercel-insights.com/v1"
+    """
+
+    # Path: model/attributes/vercel/vercel__edge_type.json
+    VERCEL_EDGE_TYPE: Literal["vercel.edge_type"] = "vercel.edge_type"
+    """Type of edge runtime in Vercel
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "edge-function"
+    """
+
+    # Path: model/attributes/vercel/vercel__entrypoint.json
+    VERCEL_ENTRYPOINT: Literal["vercel.entrypoint"] = "vercel.entrypoint"
+    """Entrypoint for the request in Vercel
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "api/index.js"
+    """
+
+    # Path: model/attributes/vercel/vercel__execution_region.json
+    VERCEL_EXECUTION_REGION: Literal["vercel.execution_region"] = (
+        "vercel.execution_region"
+    )
+    """Region where the request is executed
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "sfo1"
+    """
+
+    # Path: model/attributes/vercel/vercel__id.json
+    VERCEL_ID: Literal["vercel.id"] = "vercel.id"
+    """Unique identifier for the log entry in Vercel
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "1573817187330377061717300000"
+    """
+
+    # Path: model/attributes/vercel/vercel__ja3_digest.json
+    VERCEL_JA3_DIGEST: Literal["vercel.ja3_digest"] = "vercel.ja3_digest"
+    """JA3 fingerprint digest of Vercel request
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "769,47-53-5-10-49161-49162-49171-49172-50-56-19-4,0-10-11,23-24-25,0"
+    """
+
+    # Path: model/attributes/vercel/vercel__ja4_digest.json
+    VERCEL_JA4_DIGEST: Literal["vercel.ja4_digest"] = "vercel.ja4_digest"
+    """JA4 fingerprint digest
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "t13d1516h2_8daaf6152771_02713d6af862"
+    """
+
+    # Path: model/attributes/vercel/vercel__log_type.json
+    VERCEL_LOG_TYPE: Literal["vercel.log_type"] = "vercel.log_type"
+    """Vercel log output type
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "stdout"
+    """
+
+    # Path: model/attributes/vercel/vercel__project_id.json
+    VERCEL_PROJECT_ID: Literal["vercel.project_id"] = "vercel.project_id"
+    """Identifier for the Vercel project
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "gdufoJxB6b9b1fEqr1jUtFkyavUU"
+    """
+
+    # Path: model/attributes/vercel/vercel__project_name.json
+    VERCEL_PROJECT_NAME: Literal["vercel.project_name"] = "vercel.project_name"
+    """Name of the Vercel project
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "my-app"
+    """
+
+    # Path: model/attributes/vercel/vercel__proxy__cache_id.json
+    VERCEL_PROXY_CACHE_ID: Literal["vercel.proxy.cache_id"] = "vercel.proxy.cache_id"
+    """Original request ID when request is served from cache
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "pdx1::v8g4b-1744143786684-93dafbc0f70d"
+    """
+
+    # Path: model/attributes/vercel/vercel__proxy__client_ip.json
+    VERCEL_PROXY_CLIENT_IP: Literal["vercel.proxy.client_ip"] = "vercel.proxy.client_ip"
+    """Client IP address
+
+    Type: str
+    Contains PII: true
+    Defined in OTEL: No
+    Example: "120.75.16.101"
+    """
+
+    # Path: model/attributes/vercel/vercel__proxy__host.json
+    VERCEL_PROXY_HOST: Literal["vercel.proxy.host"] = "vercel.proxy.host"
+    """Hostname of the request
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "test.vercel.app"
+    """
+
+    # Path: model/attributes/vercel/vercel__proxy__lambda_region.json
+    VERCEL_PROXY_LAMBDA_REGION: Literal["vercel.proxy.lambda_region"] = (
+        "vercel.proxy.lambda_region"
+    )
+    """Region where lambda function executed
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "sfo1"
+    """
+
+    # Path: model/attributes/vercel/vercel__proxy__method.json
+    VERCEL_PROXY_METHOD: Literal["vercel.proxy.method"] = "vercel.proxy.method"
+    """HTTP method of the request
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "GET"
+    """
+
+    # Path: model/attributes/vercel/vercel__proxy__path.json
+    VERCEL_PROXY_PATH: Literal["vercel.proxy.path"] = "vercel.proxy.path"
+    """Request path with query parameters
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "/dynamic/some-value.json?route=some-value"
+    """
+
+    # Path: model/attributes/vercel/vercel__proxy__path_type.json
+    VERCEL_PROXY_PATH_TYPE: Literal["vercel.proxy.path_type"] = "vercel.proxy.path_type"
+    """How the request was served based on its path and project configuration
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "func"
+    """
+
+    # Path: model/attributes/vercel/vercel__proxy__path_type_variant.json
+    VERCEL_PROXY_PATH_TYPE_VARIANT: Literal["vercel.proxy.path_type_variant"] = (
+        "vercel.proxy.path_type_variant"
+    )
+    """Variant of the path type
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "api"
+    """
+
+    # Path: model/attributes/vercel/vercel__proxy__referer.json
+    VERCEL_PROXY_REFERER: Literal["vercel.proxy.referer"] = "vercel.proxy.referer"
+    """Referer of the request
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "*.vercel.app"
+    """
+
+    # Path: model/attributes/vercel/vercel__proxy__region.json
+    VERCEL_PROXY_REGION: Literal["vercel.proxy.region"] = "vercel.proxy.region"
+    """Region where the request is processed
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "sfo1"
+    """
+
+    # Path: model/attributes/vercel/vercel__proxy__response_byte_size.json
+    VERCEL_PROXY_RESPONSE_BYTE_SIZE: Literal["vercel.proxy.response_byte_size"] = (
+        "vercel.proxy.response_byte_size"
+    )
+    """Size of the response in bytes
+
+    Type: int
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 1024
+    """
+
+    # Path: model/attributes/vercel/vercel__proxy__scheme.json
+    VERCEL_PROXY_SCHEME: Literal["vercel.proxy.scheme"] = "vercel.proxy.scheme"
+    """Protocol of the request
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "https"
+    """
+
+    # Path: model/attributes/vercel/vercel__proxy__status_code.json
+    VERCEL_PROXY_STATUS_CODE: Literal["vercel.proxy.status_code"] = (
+        "vercel.proxy.status_code"
+    )
+    """HTTP status code of the proxy request
+
+    Type: int
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 200
+    """
+
+    # Path: model/attributes/vercel/vercel__proxy__timestamp.json
+    VERCEL_PROXY_TIMESTAMP: Literal["vercel.proxy.timestamp"] = "vercel.proxy.timestamp"
+    """Unix timestamp when the proxy request was made
+
+    Type: int
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 1573817250172
+    """
+
+    # Path: model/attributes/vercel/vercel__proxy__user_agent.json
+    VERCEL_PROXY_USER_AGENT: Literal["vercel.proxy.user_agent"] = (
+        "vercel.proxy.user_agent"
+    )
+    """User agent strings of the request
+
+    Type: List[str]
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: ["Mozilla/5.0..."]
+    """
+
+    # Path: model/attributes/vercel/vercel__proxy__vercel_cache.json
+    VERCEL_PROXY_VERCEL_CACHE: Literal["vercel.proxy.vercel_cache"] = (
+        "vercel.proxy.vercel_cache"
+    )
+    """Cache status sent to the browser
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "REVALIDATED"
+    """
+
+    # Path: model/attributes/vercel/vercel__proxy__vercel_id.json
+    VERCEL_PROXY_VERCEL_ID: Literal["vercel.proxy.vercel_id"] = "vercel.proxy.vercel_id"
+    """Vercel-specific identifier
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "sfo1::abc123"
+    """
+
+    # Path: model/attributes/vercel/vercel__proxy__waf_action.json
+    VERCEL_PROXY_WAF_ACTION: Literal["vercel.proxy.waf_action"] = (
+        "vercel.proxy.waf_action"
+    )
+    """Action taken by firewall rules
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "deny"
+    """
+
+    # Path: model/attributes/vercel/vercel__proxy__waf_rule_id.json
+    VERCEL_PROXY_WAF_RULE_ID: Literal["vercel.proxy.waf_rule_id"] = (
+        "vercel.proxy.waf_rule_id"
+    )
+    """ID of the firewall rule that matched
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "rule_gAHz8jtSB1Gy"
+    """
+
+    # Path: model/attributes/vercel/vercel__request_id.json
+    VERCEL_REQUEST_ID: Literal["vercel.request_id"] = "vercel.request_id"
+    """Identifier of the Vercel request
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "643af4e3-975a-4cc7-9e7a-1eda11539d90"
+    """
+
+    # Path: model/attributes/vercel/vercel__source.json
+    VERCEL_SOURCE: Literal["vercel.source"] = "vercel.source"
+    """Origin of the Vercel log (build, edge, lambda, static, external, or firewall)
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "build"
+    """
+
+    # Path: model/attributes/vercel/vercel__status_code.json
+    VERCEL_STATUS_CODE: Literal["vercel.status_code"] = "vercel.status_code"
+    """HTTP status code of the request (-1 means no response returned and the lambda crashed)
+
+    Type: int
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 200
+    """
+
 
 _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.citations": AttributeMetadata(
@@ -5371,6 +5761,20 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="myLogger",
     ),
+    "mcp.prompt.result": AttributeMetadata(
+        brief="The content of the prompt result.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="An example prompt result!",
+    ),
+    "mcp.tool.result.content": AttributeMetadata(
+        brief="The content of the tool result.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example='{"output": "rainy", "toolCallId": "1"}',
+    ),
     "messaging.destination.connection": AttributeMetadata(
         brief="The message destination connection.",
         type=AttributeType.STRING,
@@ -6468,6 +6872,251 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1",
         aliases=["http.user_agent"],
     ),
+    "vercel.branch": AttributeMetadata(
+        brief="Git branch name for Vercel project",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="main",
+    ),
+    "vercel.build_id": AttributeMetadata(
+        brief="Identifier for the Vercel build (only present on build logs)",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="bld_cotnkcr76",
+    ),
+    "vercel.deployment_id": AttributeMetadata(
+        brief="Identifier for the Vercel deployment",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="dpl_233NRGRjVZX1caZrXWtz5g1TAksD",
+    ),
+    "vercel.destination": AttributeMetadata(
+        brief="Origin of the external content in Vercel (only on external logs)",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="https://vitals.vercel-insights.com/v1",
+    ),
+    "vercel.edge_type": AttributeMetadata(
+        brief="Type of edge runtime in Vercel",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="edge-function",
+    ),
+    "vercel.entrypoint": AttributeMetadata(
+        brief="Entrypoint for the request in Vercel",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="api/index.js",
+    ),
+    "vercel.execution_region": AttributeMetadata(
+        brief="Region where the request is executed",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="sfo1",
+    ),
+    "vercel.id": AttributeMetadata(
+        brief="Unique identifier for the log entry in Vercel",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="1573817187330377061717300000",
+    ),
+    "vercel.ja3_digest": AttributeMetadata(
+        brief="JA3 fingerprint digest of Vercel request",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="769,47-53-5-10-49161-49162-49171-49172-50-56-19-4,0-10-11,23-24-25,0",
+    ),
+    "vercel.ja4_digest": AttributeMetadata(
+        brief="JA4 fingerprint digest",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="t13d1516h2_8daaf6152771_02713d6af862",
+    ),
+    "vercel.log_type": AttributeMetadata(
+        brief="Vercel log output type",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="stdout",
+    ),
+    "vercel.project_id": AttributeMetadata(
+        brief="Identifier for the Vercel project",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="gdufoJxB6b9b1fEqr1jUtFkyavUU",
+    ),
+    "vercel.project_name": AttributeMetadata(
+        brief="Name of the Vercel project",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="my-app",
+    ),
+    "vercel.proxy.cache_id": AttributeMetadata(
+        brief="Original request ID when request is served from cache",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="pdx1::v8g4b-1744143786684-93dafbc0f70d",
+    ),
+    "vercel.proxy.client_ip": AttributeMetadata(
+        brief="Client IP address",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.TRUE),
+        is_in_otel=False,
+        example="120.75.16.101",
+    ),
+    "vercel.proxy.host": AttributeMetadata(
+        brief="Hostname of the request",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="test.vercel.app",
+    ),
+    "vercel.proxy.lambda_region": AttributeMetadata(
+        brief="Region where lambda function executed",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="sfo1",
+    ),
+    "vercel.proxy.method": AttributeMetadata(
+        brief="HTTP method of the request",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="GET",
+    ),
+    "vercel.proxy.path": AttributeMetadata(
+        brief="Request path with query parameters",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="/dynamic/some-value.json?route=some-value",
+    ),
+    "vercel.proxy.path_type": AttributeMetadata(
+        brief="How the request was served based on its path and project configuration",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="func",
+    ),
+    "vercel.proxy.path_type_variant": AttributeMetadata(
+        brief="Variant of the path type",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="api",
+    ),
+    "vercel.proxy.referer": AttributeMetadata(
+        brief="Referer of the request",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="*.vercel.app",
+    ),
+    "vercel.proxy.region": AttributeMetadata(
+        brief="Region where the request is processed",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="sfo1",
+    ),
+    "vercel.proxy.response_byte_size": AttributeMetadata(
+        brief="Size of the response in bytes",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=1024,
+    ),
+    "vercel.proxy.scheme": AttributeMetadata(
+        brief="Protocol of the request",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="https",
+    ),
+    "vercel.proxy.status_code": AttributeMetadata(
+        brief="HTTP status code of the proxy request",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=200,
+    ),
+    "vercel.proxy.timestamp": AttributeMetadata(
+        brief="Unix timestamp when the proxy request was made",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=1573817250172,
+    ),
+    "vercel.proxy.user_agent": AttributeMetadata(
+        brief="User agent strings of the request",
+        type=AttributeType.STRING_ARRAY,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=["Mozilla/5.0..."],
+    ),
+    "vercel.proxy.vercel_cache": AttributeMetadata(
+        brief="Cache status sent to the browser",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="REVALIDATED",
+    ),
+    "vercel.proxy.vercel_id": AttributeMetadata(
+        brief="Vercel-specific identifier",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="sfo1::abc123",
+    ),
+    "vercel.proxy.waf_action": AttributeMetadata(
+        brief="Action taken by firewall rules",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="deny",
+    ),
+    "vercel.proxy.waf_rule_id": AttributeMetadata(
+        brief="ID of the firewall rule that matched",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="rule_gAHz8jtSB1Gy",
+    ),
+    "vercel.request_id": AttributeMetadata(
+        brief="Identifier of the Vercel request",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="643af4e3-975a-4cc7-9e7a-1eda11539d90",
+    ),
+    "vercel.source": AttributeMetadata(
+        brief="Origin of the Vercel log (build, edge, lambda, static, external, or firewall)",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="build",
+    ),
+    "vercel.status_code": AttributeMetadata(
+        brief="HTTP status code of the request (-1 means no response returned and the lambda crashed)",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=200,
+    ),
 }
 
 """
@@ -6668,6 +7317,8 @@ Attributes = TypedDict(
         "lcp.size": int,
         "lcp.url": str,
         "logger.name": str,
+        "mcp.prompt.result": str,
+        "mcp.tool.result.content": str,
         "messaging.destination.connection": str,
         "messaging.destination.name": str,
         "messaging.message.body.size": int,
@@ -6808,6 +7459,41 @@ Attributes = TypedDict(
         "user.name": str,
         "user.roles": List[str],
         "user_agent.original": str,
+        "vercel.branch": str,
+        "vercel.build_id": str,
+        "vercel.deployment_id": str,
+        "vercel.destination": str,
+        "vercel.edge_type": str,
+        "vercel.entrypoint": str,
+        "vercel.execution_region": str,
+        "vercel.id": str,
+        "vercel.ja3_digest": str,
+        "vercel.ja4_digest": str,
+        "vercel.log_type": str,
+        "vercel.project_id": str,
+        "vercel.project_name": str,
+        "vercel.proxy.cache_id": str,
+        "vercel.proxy.client_ip": str,
+        "vercel.proxy.host": str,
+        "vercel.proxy.lambda_region": str,
+        "vercel.proxy.method": str,
+        "vercel.proxy.path": str,
+        "vercel.proxy.path_type": str,
+        "vercel.proxy.path_type_variant": str,
+        "vercel.proxy.referer": str,
+        "vercel.proxy.region": str,
+        "vercel.proxy.response_byte_size": int,
+        "vercel.proxy.scheme": str,
+        "vercel.proxy.status_code": int,
+        "vercel.proxy.timestamp": int,
+        "vercel.proxy.user_agent": List[str],
+        "vercel.proxy.vercel_cache": str,
+        "vercel.proxy.vercel_id": str,
+        "vercel.proxy.waf_action": str,
+        "vercel.proxy.waf_rule_id": str,
+        "vercel.request_id": str,
+        "vercel.source": str,
+        "vercel.status_code": int,
     },
     total=False,
 )

@@ -1,0 +1,10 @@
+{
+  "key": "vercel.project_name",
+  "brief": "Name of the Vercel project",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "my-app"
+}

@@ -1,0 +1,10 @@
+{
+  "key": "vercel.source",
+  "brief": "Origin of the Vercel log (build, edge, lambda, static, external, or firewall)",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "build"
+}

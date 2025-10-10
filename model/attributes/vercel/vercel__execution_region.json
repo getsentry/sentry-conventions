@@ -1,0 +1,10 @@
+{
+  "key": "vercel.execution_region",
+  "brief": "Region where the request is executed",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "sfo1"
+}
