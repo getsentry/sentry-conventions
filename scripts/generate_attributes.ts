@@ -118,20 +118,11 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
     // Deprecation
     if (deprecation) {
       individualConstants += ' *\n';
+      let replacement = '';
       if (deprecation.replacement) {
-        // Find the constant name for the replacement from our processed attributes
-        const replacementAttr = allAttributes.find((attr) => attr.key === deprecation.replacement);
-        const replacementConstantName = replacementAttr
-          ? replacementAttr.constantName
-          : getConstantName(deprecation.replacement, false);
-        individualConstants += ` * @deprecated Use {@link ${replacementConstantName}} (${deprecation.replacement}) instead`;
-      } else {
-        individualConstants += ' * @deprecated No replacement at this time';
+        replacement = `Use {@link ${getConstantName(deprecation.replacement, false)}} (${deprecation.replacement}) instead`;
       }
-      if (deprecation.reason) {
-        individualConstants += ` - ${deprecation.reason}`;
-      }
-      individualConstants += '\n';
+      individualConstants += ` * @deprecated ${replacement}${deprecation.reason ? ` - ${deprecation.reason}` : ''}\n`;
     }
 
     // Example

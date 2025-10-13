@@ -2198,7 +2198,7 @@ export type GEN_AI_PIPELINE_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  *
- * @deprecated No replacement at this time - Deprecated from OTEL, use gen_ai.input.messages with the new format instead.
+ * @deprecated  - Deprecated from OTEL, use gen_ai.input.messages with the new format instead.
  * @example "[{\"role\": \"user\", \"message\": \"hello\"}]"
  */
 export const GEN_AI_PROMPT = 'gen_ai.prompt';
@@ -4641,7 +4641,7 @@ export type NET_SOCK_PEER_ADDR_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  *
- * @deprecated No replacement at this time - Deprecated from OTEL, no replacement at this time
+ * @deprecated  - Deprecated from OTEL, no replacement at this time
  * @example "/var/my.sock"
  */
 export const NET_SOCK_PEER_NAME = 'net.sock.peer.name';
