@@ -53,21 +53,7 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
     isDeprecated: boolean;
   }> = [];
 
-  // Sort files so non-deprecated attributes are processed first
-  const sortedFiles = [...attributeFiles].sort((a, b) => {
-    const aPath = path.join(attributesDir, a);
-    const bPath = path.join(attributesDir, b);
-    const aJson = JSON.parse(fs.readFileSync(aPath, 'utf-8')) as AttributeJson;
-    const bJson = JSON.parse(fs.readFileSync(bPath, 'utf-8')) as AttributeJson;
-
-    // Non-deprecated first (false comes before true)
-    const aDeprecated = !!aJson.deprecation;
-    const bDeprecated = !!bJson.deprecation;
-
-    return Number(aDeprecated) - Number(bDeprecated);
-  });
-
-  for (const file of sortedFiles) {
+  for (const file of attributeFiles) {
     const attributePath = path.join(attributesDir, file);
     const attributeJson = JSON.parse(fs.readFileSync(attributePath, 'utf-8')) as AttributeJson;
     const isDeprecated = !!attributeJson.deprecation;
@@ -95,7 +81,9 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
     // Generate individual constant with documentation
     individualConstants += `// Path: model/attributes/${file}\n\n`;
     individualConstants += '/**\n';
-    individualConstants += ` * ${brief}\n`;
+    individualConstants += ` * ${brief} \`${key}\`\n`;
+    individualConstants += ' *\n';
+    individualConstants += ` * Attribute Value Type: \`${tsType}\` {@link ${constantName}_TYPE}\n`;
     individualConstants += ' *\n';
 
     // PII info
@@ -148,6 +136,9 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
 
     // Example
     if (example !== undefined) {
+      if (!deprecation) {
+        individualConstants += ' *\n';
+      }
       individualConstants += ` * @example ${JSON.stringify(example)}\n`;
     }
 
