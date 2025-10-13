@@ -95,9 +95,7 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
     // Generate individual constant with documentation
     individualConstants += `// Path: model/attributes/${file}\n\n`;
     individualConstants += '/**\n';
-    individualConstants += ` * ${brief} \`${key}\`\n`;
-    individualConstants += ' *\n';
-    individualConstants += ` * Attribute Value Type: \`${tsType}\` {@link ${constantName}_TYPE}\n`;
+    individualConstants += ` * ${brief}\n`;
     individualConstants += ' *\n';
 
     // PII info
@@ -152,6 +150,9 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
     if (example !== undefined) {
       individualConstants += ` * @example ${JSON.stringify(example)}\n`;
     }
+
+    individualConstants += ' */\n';
+    individualConstants += `export const ${constantName} = '${key}';\n\n`;
 
     // Generate type constant
     individualConstants += '/**\n';
