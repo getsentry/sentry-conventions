@@ -76,7 +76,7 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
     const { brief, type, pii, is_in_otel, example, has_dynamic_suffix, deprecation, alias, sdks } = attributeJson;
 
     const tsType = getTsType(type);
-    attributeTypeMap += `\n  [${constantName}]?: ${tsType};`;
+    attributeTypeMap += `\n  [${constantName}]?: ${constantName}_TYPE;`;
 
     // Generate individual constant with documentation
     individualConstants += `// Path: model/attributes/${file}\n\n`;
