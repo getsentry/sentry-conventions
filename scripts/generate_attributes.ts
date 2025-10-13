@@ -398,7 +398,7 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
     // Build metadata dictionary entry using hardcoded string keys
     metadataDict += `    "${key}": AttributeMetadata(\n`;
     metadataDict += `        brief=${JSON.stringify(brief)},\n`;
-    metadataDict += `        type=${getAttributeTypeEnum(type)},\n`;
+    metadataDict += `        type=AttributeType.${getAttributeTypeEnum(type)},\n`;
 
     // Build PII info structure
     const piiStatus = pii.key === 'true' ? 'IsPii.TRUE' : pii.key === 'false' ? 'IsPii.FALSE' : 'IsPii.MAYBE';
@@ -514,21 +514,21 @@ function getPythonType(type: AttributeJson['type']): string {
 function getAttributeTypeEnum(type: AttributeJson['type']): string {
   switch (type) {
     case 'string':
-      return 'AttributeType.STRING';
+      return 'STRING';
     case 'boolean':
-      return 'AttributeType.BOOLEAN';
+      return 'BOOLEAN';
     case 'integer':
-      return 'AttributeType.INTEGER';
+      return 'INTEGER';
     case 'double':
-      return 'AttributeType.DOUBLE';
+      return 'DOUBLE';
     case 'string[]':
-      return 'AttributeType.STRING_ARRAY';
+      return 'STRING_ARRAY';
     case 'boolean[]':
-      return 'AttributeType.BOOLEAN_ARRAY';
+      return 'BOOLEAN_ARRAY';
     case 'integer[]':
-      return 'AttributeType.INTEGER_ARRAY';
+      return 'INTEGER_ARRAY';
     case 'double[]':
-      return 'AttributeType.DOUBLE_ARRAY';
+      return 'DOUBLE_ARRAY';
     default:
       throw new Error(`Unknown attribute type: ${type}`);
   }
@@ -548,22 +548,20 @@ function convertToPythonLiteral(value: AttributeJson['example']): string {
 
 function generateMetadataTypes(): string {
   return `
-export enum AttributeType {
-  STRING = "string",
-  BOOLEAN = "boolean",
-  INTEGER = "integer",
-  DOUBLE = "double",
-  STRING_ARRAY = "string[]",
-  BOOLEAN_ARRAY = "boolean[]",
-  INTEGER_ARRAY = "integer[]",
-  DOUBLE_ARRAY = "double[]",
-}
+export type AttributeType = 
+  | 'string'
+  | 'boolean'
+  | 'integer'
+  | 'double'
+  | 'string[]'
+  | 'boolean[]'
+  | 'integer[]'
+  | 'double[]';
 
-export enum IsPii {
-  TRUE = "true",
-  FALSE = "false",
-  MAYBE = "maybe",
-}
+export type IsPii = 
+  | 'true'
+  | 'false'
+  | 'maybe';
 
 export interface PiiInfo {
   /** Whether the attribute contains PII */
@@ -620,7 +618,7 @@ function generateMetadataDict(
   for (const { key, constantName, attributeJson } of allAttributes) {
     const { type } = attributeJson;
 
-    attributeTypeMap += `  [${constantName}]: ${getAttributeTypeEnumJs(type)},\n`;
+    attributeTypeMap += `  [${constantName}]: '${type}',\n`;
   }
 
   attributeTypeMap += '};\n\n';
@@ -638,10 +636,10 @@ function generateMetadataDict(
 
     metadataDict += `  [${constantName}]: {\n`;
     metadataDict += `    brief: ${JSON.stringify(brief)},\n`;
-    metadataDict += `    type: ${getAttributeTypeEnumJs(type)},\n`;
+    metadataDict += `    type: '${type}',\n`;
 
     // Build PII info structure
-    const piiStatus = pii.key === 'true' ? 'IsPii.TRUE' : pii.key === 'false' ? 'IsPii.FALSE' : 'IsPii.MAYBE';
+    const piiStatus = pii.key === 'true' ? "'true'" : pii.key === 'false' ? "'false'" : "'maybe'";
     metadataDict += '    pii: {\n';
     metadataDict += `      isPii: ${piiStatus}`;
     if (pii.reason) {
@@ -693,27 +691,4 @@ function generateMetadataDict(
   metadataDict += '};\n\n';
 
   return metadataDict;
-}
-
-function getAttributeTypeEnumJs(type: AttributeJson['type']): string {
-  switch (type) {
-    case 'string':
-      return 'AttributeType.STRING';
-    case 'boolean':
-      return 'AttributeType.BOOLEAN';
-    case 'integer':
-      return 'AttributeType.INTEGER';
-    case 'double':
-      return 'AttributeType.DOUBLE';
-    case 'string[]':
-      return 'AttributeType.STRING_ARRAY';
-    case 'boolean[]':
-      return 'AttributeType.BOOLEAN_ARRAY';
-    case 'integer[]':
-      return 'AttributeType.INTEGER_ARRAY';
-    case 'double[]':
-      return 'AttributeType.DOUBLE_ARRAY';
-    default:
-      throw new Error(`Unknown attribute type: ${type}`);
-  }
 }

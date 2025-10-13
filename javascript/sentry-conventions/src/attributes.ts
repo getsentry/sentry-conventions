@@ -7660,22 +7660,17 @@ export const VERCEL_STATUS_CODE = 'vercel.status_code';
  */
 export type VERCEL_STATUS_CODE_TYPE = number;
 
-export enum AttributeType {
-  STRING = 'string',
-  BOOLEAN = 'boolean',
-  INTEGER = 'integer',
-  DOUBLE = 'double',
-  STRING_ARRAY = 'string[]',
-  BOOLEAN_ARRAY = 'boolean[]',
-  INTEGER_ARRAY = 'integer[]',
-  DOUBLE_ARRAY = 'double[]',
-}
+export type AttributeType =
+  | 'string'
+  | 'boolean'
+  | 'integer'
+  | 'double'
+  | 'string[]'
+  | 'boolean[]'
+  | 'integer[]'
+  | 'double[]';
 
-export enum IsPii {
-  TRUE = 'true',
-  FALSE = 'false',
-  MAYBE = 'maybe',
-}
+export type IsPii = 'true' | 'false' | 'maybe';
 
 export interface PiiInfo {
   /** Whether the attribute contains PII */
@@ -7713,373 +7708,373 @@ export interface AttributeMetadata {
 }
 
 export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
-  [AI_CITATIONS]: AttributeType.STRING_ARRAY,
-  [AI_COMPLETION_TOKENS_USED]: AttributeType.INTEGER,
-  [AI_DOCUMENTS]: AttributeType.STRING_ARRAY,
-  [AI_FINISH_REASON]: AttributeType.STRING,
-  [AI_FREQUENCY_PENALTY]: AttributeType.DOUBLE,
-  [AI_FUNCTION_CALL]: AttributeType.STRING,
-  [AI_GENERATION_ID]: AttributeType.STRING,
-  [AI_INPUT_MESSAGES]: AttributeType.STRING,
-  [AI_IS_SEARCH_REQUIRED]: AttributeType.BOOLEAN,
-  [AI_METADATA]: AttributeType.STRING,
-  [AI_MODEL_PROVIDER]: AttributeType.STRING,
-  [AI_MODEL_ID]: AttributeType.STRING,
-  [AI_PIPELINE_NAME]: AttributeType.STRING,
-  [AI_PREAMBLE]: AttributeType.STRING,
-  [AI_PRESENCE_PENALTY]: AttributeType.DOUBLE,
-  [AI_PROMPT_TOKENS_USED]: AttributeType.INTEGER,
-  [AI_RAW_PROMPTING]: AttributeType.BOOLEAN,
-  [AI_RESPONSE_FORMAT]: AttributeType.STRING,
-  [AI_RESPONSES]: AttributeType.STRING_ARRAY,
-  [AI_SEARCH_QUERIES]: AttributeType.STRING_ARRAY,
-  [AI_SEARCH_RESULTS]: AttributeType.STRING_ARRAY,
-  [AI_SEED]: AttributeType.STRING,
-  [AI_STREAMING]: AttributeType.BOOLEAN,
-  [AI_TAGS]: AttributeType.STRING,
-  [AI_TEMPERATURE]: AttributeType.DOUBLE,
-  [AI_TEXTS]: AttributeType.STRING_ARRAY,
-  [AI_TOOL_CALLS]: AttributeType.STRING_ARRAY,
-  [AI_TOOLS]: AttributeType.STRING_ARRAY,
-  [AI_TOP_K]: AttributeType.INTEGER,
-  [AI_TOP_P]: AttributeType.DOUBLE,
-  [AI_TOTAL_COST]: AttributeType.DOUBLE,
-  [AI_TOTAL_TOKENS_USED]: AttributeType.INTEGER,
-  [AI_WARNINGS]: AttributeType.STRING_ARRAY,
-  [APP_START_TYPE]: AttributeType.STRING,
-  [BLOCKED_MAIN_THREAD]: AttributeType.BOOLEAN,
-  [BROWSER_NAME]: AttributeType.STRING,
-  [BROWSER_REPORT_TYPE]: AttributeType.STRING,
-  [BROWSER_SCRIPT_INVOKER]: AttributeType.STRING,
-  [BROWSER_SCRIPT_INVOKER_TYPE]: AttributeType.STRING,
-  [BROWSER_SCRIPT_SOURCE_CHAR_POSITION]: AttributeType.INTEGER,
-  [BROWSER_VERSION]: AttributeType.STRING,
-  [CACHE_HIT]: AttributeType.BOOLEAN,
-  [CACHE_ITEM_SIZE]: AttributeType.INTEGER,
-  [CACHE_KEY]: AttributeType.STRING_ARRAY,
-  [CACHE_OPERATION]: AttributeType.STRING,
-  [CACHE_TTL]: AttributeType.INTEGER,
-  [CHANNEL]: AttributeType.STRING,
-  [CLIENT_ADDRESS]: AttributeType.STRING,
-  [CLIENT_PORT]: AttributeType.INTEGER,
-  [CLOUDFLARE_D1_DURATION]: AttributeType.INTEGER,
-  [CLOUDFLARE_D1_ROWS_READ]: AttributeType.INTEGER,
-  [CLOUDFLARE_D1_ROWS_WRITTEN]: AttributeType.INTEGER,
-  [CODE_FILE_PATH]: AttributeType.STRING,
-  [CODE_FILEPATH]: AttributeType.STRING,
-  [CODE_FUNCTION]: AttributeType.STRING,
-  [CODE_FUNCTION_NAME]: AttributeType.STRING,
-  [CODE_LINE_NUMBER]: AttributeType.INTEGER,
-  [CODE_LINENO]: AttributeType.INTEGER,
-  [CODE_NAMESPACE]: AttributeType.STRING,
-  [DB_COLLECTION_NAME]: AttributeType.STRING,
-  [DB_NAME]: AttributeType.STRING,
-  [DB_NAMESPACE]: AttributeType.STRING,
-  [DB_OPERATION]: AttributeType.STRING,
-  [DB_OPERATION_NAME]: AttributeType.STRING,
-  [DB_QUERY_PARAMETER_KEY]: AttributeType.STRING,
-  [DB_QUERY_SUMMARY]: AttributeType.STRING,
-  [DB_QUERY_TEXT]: AttributeType.STRING,
-  [DB_REDIS_CONNECTION]: AttributeType.STRING,
-  [DB_REDIS_PARAMETERS]: AttributeType.STRING_ARRAY,
-  [DB_SQL_BINDINGS]: AttributeType.STRING_ARRAY,
-  [DB_STATEMENT]: AttributeType.STRING,
-  [DB_SYSTEM]: AttributeType.STRING,
-  [DB_SYSTEM_NAME]: AttributeType.STRING,
-  [DB_USER]: AttributeType.STRING,
-  [DEVICE_BRAND]: AttributeType.STRING,
-  [DEVICE_FAMILY]: AttributeType.STRING,
-  [DEVICE_MODEL]: AttributeType.STRING,
-  [ENVIRONMENT]: AttributeType.STRING,
-  [ERROR_TYPE]: AttributeType.STRING,
-  [EVENT_ID]: AttributeType.INTEGER,
-  [EVENT_NAME]: AttributeType.STRING,
-  [EXCEPTION_ESCAPED]: AttributeType.BOOLEAN,
-  [EXCEPTION_MESSAGE]: AttributeType.STRING,
-  [EXCEPTION_STACKTRACE]: AttributeType.STRING,
-  [EXCEPTION_TYPE]: AttributeType.STRING,
-  [FAAS_COLDSTART]: AttributeType.BOOLEAN,
-  [FAAS_CRON]: AttributeType.STRING,
-  [FAAS_TIME]: AttributeType.STRING,
-  [FAAS_TRIGGER]: AttributeType.STRING,
-  [FLAG_EVALUATION_KEY]: AttributeType.BOOLEAN,
-  [FRAMES_DELAY]: AttributeType.INTEGER,
-  [FRAMES_FROZEN]: AttributeType.INTEGER,
-  [FRAMES_SLOW]: AttributeType.INTEGER,
-  [FRAMES_TOTAL]: AttributeType.INTEGER,
-  [FS_ERROR]: AttributeType.STRING,
-  [GEN_AI_AGENT_NAME]: AttributeType.STRING,
-  [GEN_AI_ASSISTANT_MESSAGE]: AttributeType.STRING,
-  [GEN_AI_CHOICE]: AttributeType.STRING,
-  [GEN_AI_COST_INPUT_TOKENS]: AttributeType.DOUBLE,
-  [GEN_AI_COST_OUTPUT_TOKENS]: AttributeType.DOUBLE,
-  [GEN_AI_COST_TOTAL_TOKENS]: AttributeType.DOUBLE,
-  [GEN_AI_OPERATION_NAME]: AttributeType.STRING,
-  [GEN_AI_OPERATION_TYPE]: AttributeType.STRING,
-  [GEN_AI_PIPELINE_NAME]: AttributeType.STRING,
-  [GEN_AI_PROMPT]: AttributeType.STRING,
-  [GEN_AI_REQUEST_AVAILABLE_TOOLS]: AttributeType.STRING,
-  [GEN_AI_REQUEST_FREQUENCY_PENALTY]: AttributeType.DOUBLE,
-  [GEN_AI_REQUEST_MAX_TOKENS]: AttributeType.INTEGER,
-  [GEN_AI_REQUEST_MESSAGES]: AttributeType.STRING,
-  [GEN_AI_REQUEST_MODEL]: AttributeType.STRING,
-  [GEN_AI_REQUEST_PRESENCE_PENALTY]: AttributeType.DOUBLE,
-  [GEN_AI_REQUEST_SEED]: AttributeType.STRING,
-  [GEN_AI_REQUEST_TEMPERATURE]: AttributeType.DOUBLE,
-  [GEN_AI_REQUEST_TOP_K]: AttributeType.INTEGER,
-  [GEN_AI_REQUEST_TOP_P]: AttributeType.DOUBLE,
-  [GEN_AI_RESPONSE_FINISH_REASONS]: AttributeType.STRING,
-  [GEN_AI_RESPONSE_ID]: AttributeType.STRING,
-  [GEN_AI_RESPONSE_MODEL]: AttributeType.STRING,
-  [GEN_AI_RESPONSE_STREAMING]: AttributeType.BOOLEAN,
-  [GEN_AI_RESPONSE_TEXT]: AttributeType.STRING,
-  [GEN_AI_RESPONSE_TOKENS_PER_SECOND]: AttributeType.DOUBLE,
-  [GEN_AI_RESPONSE_TOOL_CALLS]: AttributeType.STRING,
-  [GEN_AI_SYSTEM]: AttributeType.STRING,
-  [GEN_AI_SYSTEM_MESSAGE]: AttributeType.STRING,
-  [GEN_AI_TOOL_DESCRIPTION]: AttributeType.STRING,
-  [GEN_AI_TOOL_INPUT]: AttributeType.STRING,
-  [GEN_AI_TOOL_MESSAGE]: AttributeType.STRING,
-  [GEN_AI_TOOL_NAME]: AttributeType.STRING,
-  [GEN_AI_TOOL_OUTPUT]: AttributeType.STRING,
-  [GEN_AI_TOOL_TYPE]: AttributeType.STRING,
-  [GEN_AI_USAGE_COMPLETION_TOKENS]: AttributeType.INTEGER,
-  [GEN_AI_USAGE_INPUT_TOKENS]: AttributeType.INTEGER,
-  [GEN_AI_USAGE_INPUT_TOKENS_CACHED]: AttributeType.INTEGER,
-  [GEN_AI_USAGE_OUTPUT_TOKENS]: AttributeType.INTEGER,
-  [GEN_AI_USAGE_OUTPUT_TOKENS_REASONING]: AttributeType.INTEGER,
-  [GEN_AI_USAGE_PROMPT_TOKENS]: AttributeType.INTEGER,
-  [GEN_AI_USAGE_TOTAL_COST]: AttributeType.DOUBLE,
-  [GEN_AI_USAGE_TOTAL_TOKENS]: AttributeType.INTEGER,
-  [GEN_AI_USER_MESSAGE]: AttributeType.STRING,
-  [GRAPHQL_OPERATION_NAME]: AttributeType.STRING,
-  [GRAPHQL_OPERATION_TYPE]: AttributeType.STRING,
-  [HTTP_CLIENT_IP]: AttributeType.STRING,
-  [HTTP_DECODED_RESPONSE_CONTENT_LENGTH]: AttributeType.INTEGER,
-  [HTTP_FLAVOR]: AttributeType.STRING,
-  [HTTP_FRAGMENT]: AttributeType.STRING,
-  [HTTP_HOST]: AttributeType.STRING,
-  [HTTP_METHOD]: AttributeType.STRING,
-  [HTTP_QUERY]: AttributeType.STRING,
-  [HTTP_REQUEST_CONNECT_START]: AttributeType.DOUBLE,
-  [HTTP_REQUEST_CONNECTION_END]: AttributeType.DOUBLE,
-  [HTTP_REQUEST_DOMAIN_LOOKUP_END]: AttributeType.DOUBLE,
-  [HTTP_REQUEST_DOMAIN_LOOKUP_START]: AttributeType.DOUBLE,
-  [HTTP_REQUEST_FETCH_START]: AttributeType.DOUBLE,
-  [HTTP_REQUEST_HEADER_KEY]: AttributeType.STRING_ARRAY,
-  [HTTP_REQUEST_METHOD]: AttributeType.STRING,
-  [HTTP_REQUEST_REDIRECT_END]: AttributeType.DOUBLE,
-  [HTTP_REQUEST_REDIRECT_START]: AttributeType.DOUBLE,
-  [HTTP_REQUEST_REQUEST_START]: AttributeType.DOUBLE,
-  [HTTP_REQUEST_RESEND_COUNT]: AttributeType.INTEGER,
-  [HTTP_REQUEST_RESPONSE_END]: AttributeType.DOUBLE,
-  [HTTP_REQUEST_RESPONSE_START]: AttributeType.DOUBLE,
-  [HTTP_REQUEST_SECURE_CONNECTION_START]: AttributeType.DOUBLE,
-  [HTTP_REQUEST_TIME_TO_FIRST_BYTE]: AttributeType.DOUBLE,
-  [HTTP_REQUEST_WORKER_START]: AttributeType.DOUBLE,
-  [HTTP_RESPONSE_BODY_SIZE]: AttributeType.INTEGER,
-  [HTTP_RESPONSE_HEADER_KEY]: AttributeType.STRING_ARRAY,
-  [HTTP_RESPONSE_HEADER_CONTENT_LENGTH]: AttributeType.STRING,
-  [HTTP_RESPONSE_SIZE]: AttributeType.INTEGER,
-  [HTTP_RESPONSE_STATUS_CODE]: AttributeType.INTEGER,
-  [HTTP_RESPONSE_CONTENT_LENGTH]: AttributeType.INTEGER,
-  [HTTP_RESPONSE_TRANSFER_SIZE]: AttributeType.INTEGER,
-  [HTTP_ROUTE]: AttributeType.STRING,
-  [HTTP_SCHEME]: AttributeType.STRING,
-  [HTTP_SERVER_NAME]: AttributeType.STRING,
-  [HTTP_STATUS_CODE]: AttributeType.INTEGER,
-  [HTTP_TARGET]: AttributeType.STRING,
-  [HTTP_URL]: AttributeType.STRING,
-  [HTTP_USER_AGENT]: AttributeType.STRING,
-  [ID]: AttributeType.STRING,
-  [JVM_GC_ACTION]: AttributeType.STRING,
-  [JVM_GC_NAME]: AttributeType.STRING,
-  [JVM_MEMORY_POOL_NAME]: AttributeType.STRING,
-  [JVM_MEMORY_TYPE]: AttributeType.STRING,
-  [JVM_THREAD_DAEMON]: AttributeType.BOOLEAN,
-  [JVM_THREAD_STATE]: AttributeType.STRING,
-  [LCP_ELEMENT]: AttributeType.STRING,
-  [LCP_ID]: AttributeType.STRING,
-  [LCP_SIZE]: AttributeType.INTEGER,
-  [LCP_URL]: AttributeType.STRING,
-  [LOGGER_NAME]: AttributeType.STRING,
-  [MCP_PROMPT_RESULT]: AttributeType.STRING,
-  [MCP_TOOL_RESULT_CONTENT]: AttributeType.STRING,
-  [MESSAGING_DESTINATION_CONNECTION]: AttributeType.STRING,
-  [MESSAGING_DESTINATION_NAME]: AttributeType.STRING,
-  [MESSAGING_MESSAGE_BODY_SIZE]: AttributeType.INTEGER,
-  [MESSAGING_MESSAGE_ENVELOPE_SIZE]: AttributeType.INTEGER,
-  [MESSAGING_MESSAGE_ID]: AttributeType.STRING,
-  [MESSAGING_MESSAGE_RECEIVE_LATENCY]: AttributeType.INTEGER,
-  [MESSAGING_MESSAGE_RETRY_COUNT]: AttributeType.INTEGER,
-  [MESSAGING_OPERATION_TYPE]: AttributeType.STRING,
-  [MESSAGING_SYSTEM]: AttributeType.STRING,
-  [METHOD]: AttributeType.STRING,
-  [NAVIGATION_TYPE]: AttributeType.STRING,
-  [NEL_ELAPSED_TIME]: AttributeType.INTEGER,
-  [NEL_PHASE]: AttributeType.STRING,
-  [NEL_REFERRER]: AttributeType.STRING,
-  [NEL_SAMPLING_FUNCTION]: AttributeType.DOUBLE,
-  [NEL_TYPE]: AttributeType.STRING,
-  [NET_HOST_IP]: AttributeType.STRING,
-  [NET_HOST_NAME]: AttributeType.STRING,
-  [NET_HOST_PORT]: AttributeType.INTEGER,
-  [NET_PEER_IP]: AttributeType.STRING,
-  [NET_PEER_NAME]: AttributeType.STRING,
-  [NET_PEER_PORT]: AttributeType.INTEGER,
-  [NET_PROTOCOL_NAME]: AttributeType.STRING,
-  [NET_PROTOCOL_VERSION]: AttributeType.STRING,
-  [NET_SOCK_FAMILY]: AttributeType.STRING,
-  [NET_SOCK_HOST_ADDR]: AttributeType.STRING,
-  [NET_SOCK_HOST_PORT]: AttributeType.INTEGER,
-  [NET_SOCK_PEER_ADDR]: AttributeType.STRING,
-  [NET_SOCK_PEER_NAME]: AttributeType.STRING,
-  [NET_SOCK_PEER_PORT]: AttributeType.INTEGER,
-  [NET_TRANSPORT]: AttributeType.STRING,
-  [NETWORK_LOCAL_ADDRESS]: AttributeType.STRING,
-  [NETWORK_LOCAL_PORT]: AttributeType.INTEGER,
-  [NETWORK_PEER_ADDRESS]: AttributeType.STRING,
-  [NETWORK_PEER_PORT]: AttributeType.INTEGER,
-  [NETWORK_PROTOCOL_NAME]: AttributeType.STRING,
-  [NETWORK_PROTOCOL_VERSION]: AttributeType.STRING,
-  [NETWORK_TRANSPORT]: AttributeType.STRING,
-  [NETWORK_TYPE]: AttributeType.STRING,
-  [OS_BUILD_ID]: AttributeType.STRING,
-  [OS_DESCRIPTION]: AttributeType.STRING,
-  [OS_NAME]: AttributeType.STRING,
-  [OS_TYPE]: AttributeType.STRING,
-  [OS_VERSION]: AttributeType.STRING,
-  [OTEL_SCOPE_NAME]: AttributeType.STRING,
-  [OTEL_SCOPE_VERSION]: AttributeType.STRING,
-  [OTEL_STATUS_CODE]: AttributeType.STRING,
-  [OTEL_STATUS_DESCRIPTION]: AttributeType.STRING,
-  [PARAMS_KEY]: AttributeType.STRING,
-  [PREVIOUS_ROUTE]: AttributeType.STRING,
-  [PROCESS_EXECUTABLE_NAME]: AttributeType.STRING,
-  [PROCESS_PID]: AttributeType.INTEGER,
-  [PROCESS_RUNTIME_DESCRIPTION]: AttributeType.STRING,
-  [PROCESS_RUNTIME_NAME]: AttributeType.STRING,
-  [PROCESS_RUNTIME_VERSION]: AttributeType.STRING,
-  [PROFILE_ID]: AttributeType.STRING,
-  [QUERY_KEY]: AttributeType.STRING,
-  [RELEASE]: AttributeType.STRING,
-  [REMIX_ACTION_FORM_DATA_KEY]: AttributeType.STRING,
-  [REPLAY_ID]: AttributeType.STRING,
-  [RESOURCE_RENDER_BLOCKING_STATUS]: AttributeType.STRING,
-  [ROUTE]: AttributeType.STRING,
-  [RPC_GRPC_STATUS_CODE]: AttributeType.INTEGER,
-  [RPC_SERVICE]: AttributeType.STRING,
-  [SENTRY_INTERNAL_DSC_ENVIRONMENT]: AttributeType.STRING,
-  [SENTRY_INTERNAL_DSC_ORG_ID]: AttributeType.STRING,
-  [SENTRY_INTERNAL_DSC_PUBLIC_KEY]: AttributeType.STRING,
-  [SENTRY_INTERNAL_DSC_RELEASE]: AttributeType.STRING,
-  [SENTRY_INTERNAL_DSC_SAMPLE_RAND]: AttributeType.STRING,
-  [SENTRY_INTERNAL_DSC_SAMPLE_RATE]: AttributeType.STRING,
-  [SENTRY_INTERNAL_DSC_SAMPLED]: AttributeType.BOOLEAN,
-  [SENTRY_INTERNAL_DSC_TRACE_ID]: AttributeType.STRING,
-  [SENTRY_INTERNAL_DSC_TRANSACTION]: AttributeType.STRING,
-  [SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS]: AttributeType.STRING,
-  [SENTRY_INTERNAL_REPLAY_IS_BUFFERING]: AttributeType.BOOLEAN,
-  [SENTRY_BROWSER_NAME]: AttributeType.STRING,
-  [SENTRY_BROWSER_VERSION]: AttributeType.STRING,
-  [SENTRY_CANCELLATION_REASON]: AttributeType.STRING,
-  [SENTRY_CLIENT_SAMPLE_RATE]: AttributeType.DOUBLE,
-  [SENTRY_DESCRIPTION]: AttributeType.STRING,
-  [SENTRY_DIST]: AttributeType.STRING,
-  [SENTRY_ENVIRONMENT]: AttributeType.STRING,
-  [SENTRY_EXCLUSIVE_TIME]: AttributeType.INTEGER,
-  [SENTRY_HTTP_PREFETCH]: AttributeType.BOOLEAN,
-  [SENTRY_IDLE_SPAN_FINISH_REASON]: AttributeType.STRING,
-  [SENTRY_MESSAGE_PARAMETER_KEY]: AttributeType.STRING,
-  [SENTRY_MESSAGE_TEMPLATE]: AttributeType.STRING,
-  [SENTRY_MODULE_KEY]: AttributeType.STRING,
-  [SENTRY_NEXTJS_SSR_FUNCTION_ROUTE]: AttributeType.STRING,
-  [SENTRY_NEXTJS_SSR_FUNCTION_TYPE]: AttributeType.STRING,
-  [SENTRY_OBSERVED_TIMESTAMP_NANOS]: AttributeType.STRING,
-  [SENTRY_OP]: AttributeType.STRING,
-  [SENTRY_ORIGIN]: AttributeType.STRING,
-  [SENTRY_PLATFORM]: AttributeType.STRING,
-  [SENTRY_PROFILE_ID]: AttributeType.STRING,
-  [SENTRY_RELEASE]: AttributeType.STRING,
-  [SENTRY_REPLAY_ID]: AttributeType.STRING,
-  [SENTRY_SDK_INTEGRATIONS]: AttributeType.STRING_ARRAY,
-  [SENTRY_SDK_NAME]: AttributeType.STRING,
-  [SENTRY_SDK_VERSION]: AttributeType.STRING,
-  [SENTRY_SEGMENT_ID]: AttributeType.STRING,
-  [SENTRY_SEGMENT_NAME]: AttributeType.STRING,
-  [_SENTRY_SEGMENT_ID]: AttributeType.STRING,
-  [SENTRY_SERVER_SAMPLE_RATE]: AttributeType.DOUBLE,
-  [SENTRY_SPAN_SOURCE]: AttributeType.STRING,
-  [SENTRY_TRACE_PARENT_SPAN_ID]: AttributeType.STRING,
-  [SENTRY_TRANSACTION]: AttributeType.STRING,
-  [SERVER_ADDRESS]: AttributeType.STRING,
-  [SERVER_PORT]: AttributeType.INTEGER,
-  [SERVICE_NAME]: AttributeType.STRING,
-  [SERVICE_VERSION]: AttributeType.STRING,
-  [THREAD_ID]: AttributeType.INTEGER,
-  [THREAD_NAME]: AttributeType.STRING,
-  [TRANSACTION]: AttributeType.STRING,
-  [TYPE]: AttributeType.STRING,
-  [UI_COMPONENT_NAME]: AttributeType.STRING,
-  [UI_CONTRIBUTES_TO_TTFD]: AttributeType.BOOLEAN,
-  [UI_CONTRIBUTES_TO_TTID]: AttributeType.BOOLEAN,
-  [URL_DOMAIN]: AttributeType.STRING,
-  [URL_FRAGMENT]: AttributeType.STRING,
-  [URL_FULL]: AttributeType.STRING,
-  [URL_PATH]: AttributeType.STRING,
-  [URL_PATH_PARAMETER_KEY]: AttributeType.STRING,
-  [URL_PORT]: AttributeType.INTEGER,
-  [URL_QUERY]: AttributeType.STRING,
-  [URL_SCHEME]: AttributeType.STRING,
-  [URL_TEMPLATE]: AttributeType.STRING,
-  [URL]: AttributeType.STRING,
-  [USER_EMAIL]: AttributeType.STRING,
-  [USER_FULL_NAME]: AttributeType.STRING,
-  [USER_GEO_CITY]: AttributeType.STRING,
-  [USER_GEO_COUNTRY_CODE]: AttributeType.STRING,
-  [USER_GEO_REGION]: AttributeType.STRING,
-  [USER_GEO_SUBDIVISION]: AttributeType.STRING,
-  [USER_HASH]: AttributeType.STRING,
-  [USER_ID]: AttributeType.STRING,
-  [USER_IP_ADDRESS]: AttributeType.STRING,
-  [USER_NAME]: AttributeType.STRING,
-  [USER_ROLES]: AttributeType.STRING_ARRAY,
-  [USER_AGENT_ORIGINAL]: AttributeType.STRING,
-  [VERCEL_BRANCH]: AttributeType.STRING,
-  [VERCEL_BUILD_ID]: AttributeType.STRING,
-  [VERCEL_DEPLOYMENT_ID]: AttributeType.STRING,
-  [VERCEL_DESTINATION]: AttributeType.STRING,
-  [VERCEL_EDGE_TYPE]: AttributeType.STRING,
-  [VERCEL_ENTRYPOINT]: AttributeType.STRING,
-  [VERCEL_EXECUTION_REGION]: AttributeType.STRING,
-  [VERCEL_ID]: AttributeType.STRING,
-  [VERCEL_JA3_DIGEST]: AttributeType.STRING,
-  [VERCEL_JA4_DIGEST]: AttributeType.STRING,
-  [VERCEL_LOG_TYPE]: AttributeType.STRING,
-  [VERCEL_PROJECT_ID]: AttributeType.STRING,
-  [VERCEL_PROJECT_NAME]: AttributeType.STRING,
-  [VERCEL_PROXY_CACHE_ID]: AttributeType.STRING,
-  [VERCEL_PROXY_CLIENT_IP]: AttributeType.STRING,
-  [VERCEL_PROXY_HOST]: AttributeType.STRING,
-  [VERCEL_PROXY_LAMBDA_REGION]: AttributeType.STRING,
-  [VERCEL_PROXY_METHOD]: AttributeType.STRING,
-  [VERCEL_PROXY_PATH]: AttributeType.STRING,
-  [VERCEL_PROXY_PATH_TYPE]: AttributeType.STRING,
-  [VERCEL_PROXY_PATH_TYPE_VARIANT]: AttributeType.STRING,
-  [VERCEL_PROXY_REFERER]: AttributeType.STRING,
-  [VERCEL_PROXY_REGION]: AttributeType.STRING,
-  [VERCEL_PROXY_RESPONSE_BYTE_SIZE]: AttributeType.INTEGER,
-  [VERCEL_PROXY_SCHEME]: AttributeType.STRING,
-  [VERCEL_PROXY_STATUS_CODE]: AttributeType.INTEGER,
-  [VERCEL_PROXY_TIMESTAMP]: AttributeType.INTEGER,
-  [VERCEL_PROXY_USER_AGENT]: AttributeType.STRING_ARRAY,
-  [VERCEL_PROXY_VERCEL_CACHE]: AttributeType.STRING,
-  [VERCEL_PROXY_VERCEL_ID]: AttributeType.STRING,
-  [VERCEL_PROXY_WAF_ACTION]: AttributeType.STRING,
-  [VERCEL_PROXY_WAF_RULE_ID]: AttributeType.STRING,
-  [VERCEL_REQUEST_ID]: AttributeType.STRING,
-  [VERCEL_SOURCE]: AttributeType.STRING,
-  [VERCEL_STATUS_CODE]: AttributeType.INTEGER,
+  [AI_CITATIONS]: 'string[]',
+  [AI_COMPLETION_TOKENS_USED]: 'integer',
+  [AI_DOCUMENTS]: 'string[]',
+  [AI_FINISH_REASON]: 'string',
+  [AI_FREQUENCY_PENALTY]: 'double',
+  [AI_FUNCTION_CALL]: 'string',
+  [AI_GENERATION_ID]: 'string',
+  [AI_INPUT_MESSAGES]: 'string',
+  [AI_IS_SEARCH_REQUIRED]: 'boolean',
+  [AI_METADATA]: 'string',
+  [AI_MODEL_PROVIDER]: 'string',
+  [AI_MODEL_ID]: 'string',
+  [AI_PIPELINE_NAME]: 'string',
+  [AI_PREAMBLE]: 'string',
+  [AI_PRESENCE_PENALTY]: 'double',
+  [AI_PROMPT_TOKENS_USED]: 'integer',
+  [AI_RAW_PROMPTING]: 'boolean',
+  [AI_RESPONSE_FORMAT]: 'string',
+  [AI_RESPONSES]: 'string[]',
+  [AI_SEARCH_QUERIES]: 'string[]',
+  [AI_SEARCH_RESULTS]: 'string[]',
+  [AI_SEED]: 'string',
+  [AI_STREAMING]: 'boolean',
+  [AI_TAGS]: 'string',
+  [AI_TEMPERATURE]: 'double',
+  [AI_TEXTS]: 'string[]',
+  [AI_TOOL_CALLS]: 'string[]',
+  [AI_TOOLS]: 'string[]',
+  [AI_TOP_K]: 'integer',
+  [AI_TOP_P]: 'double',
+  [AI_TOTAL_COST]: 'double',
+  [AI_TOTAL_TOKENS_USED]: 'integer',
+  [AI_WARNINGS]: 'string[]',
+  [APP_START_TYPE]: 'string',
+  [BLOCKED_MAIN_THREAD]: 'boolean',
+  [BROWSER_NAME]: 'string',
+  [BROWSER_REPORT_TYPE]: 'string',
+  [BROWSER_SCRIPT_INVOKER]: 'string',
+  [BROWSER_SCRIPT_INVOKER_TYPE]: 'string',
+  [BROWSER_SCRIPT_SOURCE_CHAR_POSITION]: 'integer',
+  [BROWSER_VERSION]: 'string',
+  [CACHE_HIT]: 'boolean',
+  [CACHE_ITEM_SIZE]: 'integer',
+  [CACHE_KEY]: 'string[]',
+  [CACHE_OPERATION]: 'string',
+  [CACHE_TTL]: 'integer',
+  [CHANNEL]: 'string',
+  [CLIENT_ADDRESS]: 'string',
+  [CLIENT_PORT]: 'integer',
+  [CLOUDFLARE_D1_DURATION]: 'integer',
+  [CLOUDFLARE_D1_ROWS_READ]: 'integer',
+  [CLOUDFLARE_D1_ROWS_WRITTEN]: 'integer',
+  [CODE_FILE_PATH]: 'string',
+  [CODE_FILEPATH]: 'string',
+  [CODE_FUNCTION]: 'string',
+  [CODE_FUNCTION_NAME]: 'string',
+  [CODE_LINE_NUMBER]: 'integer',
+  [CODE_LINENO]: 'integer',
+  [CODE_NAMESPACE]: 'string',
+  [DB_COLLECTION_NAME]: 'string',
+  [DB_NAME]: 'string',
+  [DB_NAMESPACE]: 'string',
+  [DB_OPERATION]: 'string',
+  [DB_OPERATION_NAME]: 'string',
+  [DB_QUERY_PARAMETER_KEY]: 'string',
+  [DB_QUERY_SUMMARY]: 'string',
+  [DB_QUERY_TEXT]: 'string',
+  [DB_REDIS_CONNECTION]: 'string',
+  [DB_REDIS_PARAMETERS]: 'string[]',
+  [DB_SQL_BINDINGS]: 'string[]',
+  [DB_STATEMENT]: 'string',
+  [DB_SYSTEM]: 'string',
+  [DB_SYSTEM_NAME]: 'string',
+  [DB_USER]: 'string',
+  [DEVICE_BRAND]: 'string',
+  [DEVICE_FAMILY]: 'string',
+  [DEVICE_MODEL]: 'string',
+  [ENVIRONMENT]: 'string',
+  [ERROR_TYPE]: 'string',
+  [EVENT_ID]: 'integer',
+  [EVENT_NAME]: 'string',
+  [EXCEPTION_ESCAPED]: 'boolean',
+  [EXCEPTION_MESSAGE]: 'string',
+  [EXCEPTION_STACKTRACE]: 'string',
+  [EXCEPTION_TYPE]: 'string',
+  [FAAS_COLDSTART]: 'boolean',
+  [FAAS_CRON]: 'string',
+  [FAAS_TIME]: 'string',
+  [FAAS_TRIGGER]: 'string',
+  [FLAG_EVALUATION_KEY]: 'boolean',
+  [FRAMES_DELAY]: 'integer',
+  [FRAMES_FROZEN]: 'integer',
+  [FRAMES_SLOW]: 'integer',
+  [FRAMES_TOTAL]: 'integer',
+  [FS_ERROR]: 'string',
+  [GEN_AI_AGENT_NAME]: 'string',
+  [GEN_AI_ASSISTANT_MESSAGE]: 'string',
+  [GEN_AI_CHOICE]: 'string',
+  [GEN_AI_COST_INPUT_TOKENS]: 'double',
+  [GEN_AI_COST_OUTPUT_TOKENS]: 'double',
+  [GEN_AI_COST_TOTAL_TOKENS]: 'double',
+  [GEN_AI_OPERATION_NAME]: 'string',
+  [GEN_AI_OPERATION_TYPE]: 'string',
+  [GEN_AI_PIPELINE_NAME]: 'string',
+  [GEN_AI_PROMPT]: 'string',
+  [GEN_AI_REQUEST_AVAILABLE_TOOLS]: 'string',
+  [GEN_AI_REQUEST_FREQUENCY_PENALTY]: 'double',
+  [GEN_AI_REQUEST_MAX_TOKENS]: 'integer',
+  [GEN_AI_REQUEST_MESSAGES]: 'string',
+  [GEN_AI_REQUEST_MODEL]: 'string',
+  [GEN_AI_REQUEST_PRESENCE_PENALTY]: 'double',
+  [GEN_AI_REQUEST_SEED]: 'string',
+  [GEN_AI_REQUEST_TEMPERATURE]: 'double',
+  [GEN_AI_REQUEST_TOP_K]: 'integer',
+  [GEN_AI_REQUEST_TOP_P]: 'double',
+  [GEN_AI_RESPONSE_FINISH_REASONS]: 'string',
+  [GEN_AI_RESPONSE_ID]: 'string',
+  [GEN_AI_RESPONSE_MODEL]: 'string',
+  [GEN_AI_RESPONSE_STREAMING]: 'boolean',
+  [GEN_AI_RESPONSE_TEXT]: 'string',
+  [GEN_AI_RESPONSE_TOKENS_PER_SECOND]: 'double',
+  [GEN_AI_RESPONSE_TOOL_CALLS]: 'string',
+  [GEN_AI_SYSTEM]: 'string',
+  [GEN_AI_SYSTEM_MESSAGE]: 'string',
+  [GEN_AI_TOOL_DESCRIPTION]: 'string',
+  [GEN_AI_TOOL_INPUT]: 'string',
+  [GEN_AI_TOOL_MESSAGE]: 'string',
+  [GEN_AI_TOOL_NAME]: 'string',
+  [GEN_AI_TOOL_OUTPUT]: 'string',
+  [GEN_AI_TOOL_TYPE]: 'string',
+  [GEN_AI_USAGE_COMPLETION_TOKENS]: 'integer',
+  [GEN_AI_USAGE_INPUT_TOKENS]: 'integer',
+  [GEN_AI_USAGE_INPUT_TOKENS_CACHED]: 'integer',
+  [GEN_AI_USAGE_OUTPUT_TOKENS]: 'integer',
+  [GEN_AI_USAGE_OUTPUT_TOKENS_REASONING]: 'integer',
+  [GEN_AI_USAGE_PROMPT_TOKENS]: 'integer',
+  [GEN_AI_USAGE_TOTAL_COST]: 'double',
+  [GEN_AI_USAGE_TOTAL_TOKENS]: 'integer',
+  [GEN_AI_USER_MESSAGE]: 'string',
+  [GRAPHQL_OPERATION_NAME]: 'string',
+  [GRAPHQL_OPERATION_TYPE]: 'string',
+  [HTTP_CLIENT_IP]: 'string',
+  [HTTP_DECODED_RESPONSE_CONTENT_LENGTH]: 'integer',
+  [HTTP_FLAVOR]: 'string',
+  [HTTP_FRAGMENT]: 'string',
+  [HTTP_HOST]: 'string',
+  [HTTP_METHOD]: 'string',
+  [HTTP_QUERY]: 'string',
+  [HTTP_REQUEST_CONNECT_START]: 'double',
+  [HTTP_REQUEST_CONNECTION_END]: 'double',
+  [HTTP_REQUEST_DOMAIN_LOOKUP_END]: 'double',
+  [HTTP_REQUEST_DOMAIN_LOOKUP_START]: 'double',
+  [HTTP_REQUEST_FETCH_START]: 'double',
+  [HTTP_REQUEST_HEADER_KEY]: 'string[]',
+  [HTTP_REQUEST_METHOD]: 'string',
+  [HTTP_REQUEST_REDIRECT_END]: 'double',
+  [HTTP_REQUEST_REDIRECT_START]: 'double',
+  [HTTP_REQUEST_REQUEST_START]: 'double',
+  [HTTP_REQUEST_RESEND_COUNT]: 'integer',
+  [HTTP_REQUEST_RESPONSE_END]: 'double',
+  [HTTP_REQUEST_RESPONSE_START]: 'double',
+  [HTTP_REQUEST_SECURE_CONNECTION_START]: 'double',
+  [HTTP_REQUEST_TIME_TO_FIRST_BYTE]: 'double',
+  [HTTP_REQUEST_WORKER_START]: 'double',
+  [HTTP_RESPONSE_BODY_SIZE]: 'integer',
+  [HTTP_RESPONSE_HEADER_KEY]: 'string[]',
+  [HTTP_RESPONSE_HEADER_CONTENT_LENGTH]: 'string',
+  [HTTP_RESPONSE_SIZE]: 'integer',
+  [HTTP_RESPONSE_STATUS_CODE]: 'integer',
+  [HTTP_RESPONSE_CONTENT_LENGTH]: 'integer',
+  [HTTP_RESPONSE_TRANSFER_SIZE]: 'integer',
+  [HTTP_ROUTE]: 'string',
+  [HTTP_SCHEME]: 'string',
+  [HTTP_SERVER_NAME]: 'string',
+  [HTTP_STATUS_CODE]: 'integer',
+  [HTTP_TARGET]: 'string',
+  [HTTP_URL]: 'string',
+  [HTTP_USER_AGENT]: 'string',
+  [ID]: 'string',
+  [JVM_GC_ACTION]: 'string',
+  [JVM_GC_NAME]: 'string',
+  [JVM_MEMORY_POOL_NAME]: 'string',
+  [JVM_MEMORY_TYPE]: 'string',
+  [JVM_THREAD_DAEMON]: 'boolean',
+  [JVM_THREAD_STATE]: 'string',
+  [LCP_ELEMENT]: 'string',
+  [LCP_ID]: 'string',
+  [LCP_SIZE]: 'integer',
+  [LCP_URL]: 'string',
+  [LOGGER_NAME]: 'string',
+  [MCP_PROMPT_RESULT]: 'string',
+  [MCP_TOOL_RESULT_CONTENT]: 'string',
+  [MESSAGING_DESTINATION_CONNECTION]: 'string',
+  [MESSAGING_DESTINATION_NAME]: 'string',
+  [MESSAGING_MESSAGE_BODY_SIZE]: 'integer',
+  [MESSAGING_MESSAGE_ENVELOPE_SIZE]: 'integer',
+  [MESSAGING_MESSAGE_ID]: 'string',
+  [MESSAGING_MESSAGE_RECEIVE_LATENCY]: 'integer',
+  [MESSAGING_MESSAGE_RETRY_COUNT]: 'integer',
+  [MESSAGING_OPERATION_TYPE]: 'string',
+  [MESSAGING_SYSTEM]: 'string',
+  [METHOD]: 'string',
+  [NAVIGATION_TYPE]: 'string',
+  [NEL_ELAPSED_TIME]: 'integer',
+  [NEL_PHASE]: 'string',
+  [NEL_REFERRER]: 'string',
+  [NEL_SAMPLING_FUNCTION]: 'double',
+  [NEL_TYPE]: 'string',
+  [NET_HOST_IP]: 'string',
+  [NET_HOST_NAME]: 'string',
+  [NET_HOST_PORT]: 'integer',
+  [NET_PEER_IP]: 'string',
+  [NET_PEER_NAME]: 'string',
+  [NET_PEER_PORT]: 'integer',
+  [NET_PROTOCOL_NAME]: 'string',
+  [NET_PROTOCOL_VERSION]: 'string',
+  [NET_SOCK_FAMILY]: 'string',
+  [NET_SOCK_HOST_ADDR]: 'string',
+  [NET_SOCK_HOST_PORT]: 'integer',
+  [NET_SOCK_PEER_ADDR]: 'string',
+  [NET_SOCK_PEER_NAME]: 'string',
+  [NET_SOCK_PEER_PORT]: 'integer',
+  [NET_TRANSPORT]: 'string',
+  [NETWORK_LOCAL_ADDRESS]: 'string',
+  [NETWORK_LOCAL_PORT]: 'integer',
+  [NETWORK_PEER_ADDRESS]: 'string',
+  [NETWORK_PEER_PORT]: 'integer',
+  [NETWORK_PROTOCOL_NAME]: 'string',
+  [NETWORK_PROTOCOL_VERSION]: 'string',
+  [NETWORK_TRANSPORT]: 'string',
+  [NETWORK_TYPE]: 'string',
+  [OS_BUILD_ID]: 'string',
+  [OS_DESCRIPTION]: 'string',
+  [OS_NAME]: 'string',
+  [OS_TYPE]: 'string',
+  [OS_VERSION]: 'string',
+  [OTEL_SCOPE_NAME]: 'string',
+  [OTEL_SCOPE_VERSION]: 'string',
+  [OTEL_STATUS_CODE]: 'string',
+  [OTEL_STATUS_DESCRIPTION]: 'string',
+  [PARAMS_KEY]: 'string',
+  [PREVIOUS_ROUTE]: 'string',
+  [PROCESS_EXECUTABLE_NAME]: 'string',
+  [PROCESS_PID]: 'integer',
+  [PROCESS_RUNTIME_DESCRIPTION]: 'string',
+  [PROCESS_RUNTIME_NAME]: 'string',
+  [PROCESS_RUNTIME_VERSION]: 'string',
+  [PROFILE_ID]: 'string',
+  [QUERY_KEY]: 'string',
+  [RELEASE]: 'string',
+  [REMIX_ACTION_FORM_DATA_KEY]: 'string',
+  [REPLAY_ID]: 'string',
+  [RESOURCE_RENDER_BLOCKING_STATUS]: 'string',
+  [ROUTE]: 'string',
+  [RPC_GRPC_STATUS_CODE]: 'integer',
+  [RPC_SERVICE]: 'string',
+  [SENTRY_INTERNAL_DSC_ENVIRONMENT]: 'string',
+  [SENTRY_INTERNAL_DSC_ORG_ID]: 'string',
+  [SENTRY_INTERNAL_DSC_PUBLIC_KEY]: 'string',
+  [SENTRY_INTERNAL_DSC_RELEASE]: 'string',
+  [SENTRY_INTERNAL_DSC_SAMPLE_RAND]: 'string',
+  [SENTRY_INTERNAL_DSC_SAMPLE_RATE]: 'string',
+  [SENTRY_INTERNAL_DSC_SAMPLED]: 'boolean',
+  [SENTRY_INTERNAL_DSC_TRACE_ID]: 'string',
+  [SENTRY_INTERNAL_DSC_TRANSACTION]: 'string',
+  [SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS]: 'string',
+  [SENTRY_INTERNAL_REPLAY_IS_BUFFERING]: 'boolean',
+  [SENTRY_BROWSER_NAME]: 'string',
+  [SENTRY_BROWSER_VERSION]: 'string',
+  [SENTRY_CANCELLATION_REASON]: 'string',
+  [SENTRY_CLIENT_SAMPLE_RATE]: 'double',
+  [SENTRY_DESCRIPTION]: 'string',
+  [SENTRY_DIST]: 'string',
+  [SENTRY_ENVIRONMENT]: 'string',
+  [SENTRY_EXCLUSIVE_TIME]: 'integer',
+  [SENTRY_HTTP_PREFETCH]: 'boolean',
+  [SENTRY_IDLE_SPAN_FINISH_REASON]: 'string',
+  [SENTRY_MESSAGE_PARAMETER_KEY]: 'string',
+  [SENTRY_MESSAGE_TEMPLATE]: 'string',
+  [SENTRY_MODULE_KEY]: 'string',
+  [SENTRY_NEXTJS_SSR_FUNCTION_ROUTE]: 'string',
+  [SENTRY_NEXTJS_SSR_FUNCTION_TYPE]: 'string',
+  [SENTRY_OBSERVED_TIMESTAMP_NANOS]: 'string',
+  [SENTRY_OP]: 'string',
+  [SENTRY_ORIGIN]: 'string',
+  [SENTRY_PLATFORM]: 'string',
+  [SENTRY_PROFILE_ID]: 'string',
+  [SENTRY_RELEASE]: 'string',
+  [SENTRY_REPLAY_ID]: 'string',
+  [SENTRY_SDK_INTEGRATIONS]: 'string[]',
+  [SENTRY_SDK_NAME]: 'string',
+  [SENTRY_SDK_VERSION]: 'string',
+  [SENTRY_SEGMENT_ID]: 'string',
+  [SENTRY_SEGMENT_NAME]: 'string',
+  [_SENTRY_SEGMENT_ID]: 'string',
+  [SENTRY_SERVER_SAMPLE_RATE]: 'double',
+  [SENTRY_SPAN_SOURCE]: 'string',
+  [SENTRY_TRACE_PARENT_SPAN_ID]: 'string',
+  [SENTRY_TRANSACTION]: 'string',
+  [SERVER_ADDRESS]: 'string',
+  [SERVER_PORT]: 'integer',
+  [SERVICE_NAME]: 'string',
+  [SERVICE_VERSION]: 'string',
+  [THREAD_ID]: 'integer',
+  [THREAD_NAME]: 'string',
+  [TRANSACTION]: 'string',
+  [TYPE]: 'string',
+  [UI_COMPONENT_NAME]: 'string',
+  [UI_CONTRIBUTES_TO_TTFD]: 'boolean',
+  [UI_CONTRIBUTES_TO_TTID]: 'boolean',
+  [URL_DOMAIN]: 'string',
+  [URL_FRAGMENT]: 'string',
+  [URL_FULL]: 'string',
+  [URL_PATH]: 'string',
+  [URL_PATH_PARAMETER_KEY]: 'string',
+  [URL_PORT]: 'integer',
+  [URL_QUERY]: 'string',
+  [URL_SCHEME]: 'string',
+  [URL_TEMPLATE]: 'string',
+  [URL]: 'string',
+  [USER_EMAIL]: 'string',
+  [USER_FULL_NAME]: 'string',
+  [USER_GEO_CITY]: 'string',
+  [USER_GEO_COUNTRY_CODE]: 'string',
+  [USER_GEO_REGION]: 'string',
+  [USER_GEO_SUBDIVISION]: 'string',
+  [USER_HASH]: 'string',
+  [USER_ID]: 'string',
+  [USER_IP_ADDRESS]: 'string',
+  [USER_NAME]: 'string',
+  [USER_ROLES]: 'string[]',
+  [USER_AGENT_ORIGINAL]: 'string',
+  [VERCEL_BRANCH]: 'string',
+  [VERCEL_BUILD_ID]: 'string',
+  [VERCEL_DEPLOYMENT_ID]: 'string',
+  [VERCEL_DESTINATION]: 'string',
+  [VERCEL_EDGE_TYPE]: 'string',
+  [VERCEL_ENTRYPOINT]: 'string',
+  [VERCEL_EXECUTION_REGION]: 'string',
+  [VERCEL_ID]: 'string',
+  [VERCEL_JA3_DIGEST]: 'string',
+  [VERCEL_JA4_DIGEST]: 'string',
+  [VERCEL_LOG_TYPE]: 'string',
+  [VERCEL_PROJECT_ID]: 'string',
+  [VERCEL_PROJECT_NAME]: 'string',
+  [VERCEL_PROXY_CACHE_ID]: 'string',
+  [VERCEL_PROXY_CLIENT_IP]: 'string',
+  [VERCEL_PROXY_HOST]: 'string',
+  [VERCEL_PROXY_LAMBDA_REGION]: 'string',
+  [VERCEL_PROXY_METHOD]: 'string',
+  [VERCEL_PROXY_PATH]: 'string',
+  [VERCEL_PROXY_PATH_TYPE]: 'string',
+  [VERCEL_PROXY_PATH_TYPE_VARIANT]: 'string',
+  [VERCEL_PROXY_REFERER]: 'string',
+  [VERCEL_PROXY_REGION]: 'string',
+  [VERCEL_PROXY_RESPONSE_BYTE_SIZE]: 'integer',
+  [VERCEL_PROXY_SCHEME]: 'string',
+  [VERCEL_PROXY_STATUS_CODE]: 'integer',
+  [VERCEL_PROXY_TIMESTAMP]: 'integer',
+  [VERCEL_PROXY_USER_AGENT]: 'string[]',
+  [VERCEL_PROXY_VERCEL_CACHE]: 'string',
+  [VERCEL_PROXY_VERCEL_ID]: 'string',
+  [VERCEL_PROXY_WAF_ACTION]: 'string',
+  [VERCEL_PROXY_WAF_RULE_ID]: 'string',
+  [VERCEL_REQUEST_ID]: 'string',
+  [VERCEL_SOURCE]: 'string',
+  [VERCEL_STATUS_CODE]: 'integer',
 };
 
 export type AttributeName =
@@ -8454,18 +8449,18 @@ export type AttributeName =
 export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [AI_CITATIONS]: {
     brief: 'References or sources cited by the AI model in its response.',
-    type: AttributeType.STRING_ARRAY,
+    type: 'string[]',
     pii: {
-      isPii: IsPii.TRUE,
+      isPii: 'true',
     },
     isInOtel: false,
     example: ['Citation 1', 'Citation 2'],
   },
   [AI_COMPLETION_TOKENS_USED]: {
     brief: 'The number of tokens used to respond to the message.',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 10,
@@ -8477,18 +8472,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [AI_DOCUMENTS]: {
     brief: 'Documents or content chunks used as context for the AI model.',
-    type: AttributeType.STRING_ARRAY,
+    type: 'string[]',
     pii: {
-      isPii: IsPii.TRUE,
+      isPii: 'true',
     },
     isInOtel: false,
     example: ['document1.txt', 'document2.pdf'],
   },
   [AI_FINISH_REASON]: {
     brief: 'The reason why the model stopped generating.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'COMPLETE',
@@ -8500,9 +8495,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [AI_FREQUENCY_PENALTY]: {
     brief:
       'Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.',
-    type: AttributeType.DOUBLE,
+    type: 'double',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 0.5,
@@ -8514,9 +8509,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [AI_FUNCTION_CALL]: {
     brief:
       'For an AI model call, the function that was called. This is deprecated for OpenAI, and replaced by tool_calls',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.TRUE,
+      isPii: 'true',
     },
     isInOtel: false,
     example: 'function_name',
@@ -8527,9 +8522,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [AI_GENERATION_ID]: {
     brief: 'Unique identifier for the completion.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'gen_123abc',
@@ -8540,9 +8535,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [AI_INPUT_MESSAGES]: {
     brief: 'The input messages sent to the model',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: '[{"role": "user", "message": "hello"}]',
@@ -8554,27 +8549,27 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [AI_IS_SEARCH_REQUIRED]: {
     brief: 'Boolean indicating if the model needs to perform a search.',
-    type: AttributeType.BOOLEAN,
+    type: 'boolean',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: false,
   },
   [AI_METADATA]: {
     brief: 'Extra metadata passed to an AI pipeline step.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: '{"user_id": 123, "session_id": "abc123"}',
   },
   [AI_MODEL_PROVIDER]: {
     brief: 'The provider of the model.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'openai',
@@ -8585,9 +8580,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [AI_MODEL_ID]: {
     brief: 'The vendor-specific ID of the model used.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'gpt-4',
@@ -8599,9 +8594,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [AI_PIPELINE_NAME]: {
     brief: 'The name of the AI pipeline.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'Autofix Pipeline',
@@ -8613,9 +8608,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [AI_PREAMBLE]: {
     brief:
       "For an AI model call, the preamble parameter. Preambles are a part of the prompt used to adjust the model's overall behavior and conversation style.",
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.TRUE,
+      isPii: 'true',
     },
     isInOtel: false,
     example: 'You are now a clown.',
@@ -8623,9 +8618,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [AI_PRESENCE_PENALTY]: {
     brief:
       'Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.',
-    type: AttributeType.DOUBLE,
+    type: 'double',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 0.5,
@@ -8636,9 +8631,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [AI_PROMPT_TOKENS_USED]: {
     brief: 'The number of tokens used to process just the prompt.',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 20,
@@ -8650,27 +8645,27 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [AI_RAW_PROMPTING]: {
     brief: 'When enabled, the user’s prompt will be sent to the model without any pre-processing.',
-    type: AttributeType.BOOLEAN,
+    type: 'boolean',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: true,
   },
   [AI_RESPONSE_FORMAT]: {
     brief: 'For an AI model call, the format of the response',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'json_object',
   },
   [AI_RESPONSES]: {
     brief: 'The response messages sent back by the AI model.',
-    type: AttributeType.STRING_ARRAY,
+    type: 'string[]',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: ['hello', 'world'],
@@ -8681,27 +8676,27 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [AI_SEARCH_QUERIES]: {
     brief: 'Queries used to search for relevant context or documents.',
-    type: AttributeType.STRING_ARRAY,
+    type: 'string[]',
     pii: {
-      isPii: IsPii.TRUE,
+      isPii: 'true',
     },
     isInOtel: false,
     example: ['climate change effects', 'renewable energy'],
   },
   [AI_SEARCH_RESULTS]: {
     brief: 'Results returned from search queries for context.',
-    type: AttributeType.STRING_ARRAY,
+    type: 'string[]',
     pii: {
-      isPii: IsPii.TRUE,
+      isPii: 'true',
     },
     isInOtel: false,
     example: ['search_result_1, search_result_2'],
   },
   [AI_SEED]: {
     brief: 'The seed, ideally models given the same seed and same other parameters will produce the exact same output.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: '1234567890',
@@ -8712,9 +8707,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [AI_STREAMING]: {
     brief: 'Whether the request was streamed back.',
-    type: AttributeType.BOOLEAN,
+    type: 'boolean',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: true,
@@ -8726,9 +8721,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [AI_TAGS]: {
     brief: 'Tags that describe an AI pipeline step.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: '{"executed_function": "add_integers"}',
@@ -8736,9 +8731,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [AI_TEMPERATURE]: {
     brief:
       'For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.',
-    type: AttributeType.DOUBLE,
+    type: 'double',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 0.1,
@@ -8749,18 +8744,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [AI_TEXTS]: {
     brief: 'Raw text inputs provided to the model.',
-    type: AttributeType.STRING_ARRAY,
+    type: 'string[]',
     pii: {
-      isPii: IsPii.TRUE,
+      isPii: 'true',
     },
     isInOtel: false,
     example: ['Hello, how are you?', 'What is the capital of France?'],
   },
   [AI_TOOL_CALLS]: {
     brief: 'For an AI model call, the tool calls that were made.',
-    type: AttributeType.STRING_ARRAY,
+    type: 'string[]',
     pii: {
-      isPii: IsPii.TRUE,
+      isPii: 'true',
     },
     isInOtel: false,
     example: ['tool_call_1', 'tool_call_2'],
@@ -8770,9 +8765,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [AI_TOOLS]: {
     brief: 'For an AI model call, the functions that are available',
-    type: AttributeType.STRING_ARRAY,
+    type: 'string[]',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: ['function_1', 'function_2'],
@@ -8783,9 +8778,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [AI_TOP_K]: {
     brief:
       'Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 35,
@@ -8797,9 +8792,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [AI_TOP_P]: {
     brief:
       'Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).',
-    type: AttributeType.DOUBLE,
+    type: 'double',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 0.7,
@@ -8810,18 +8805,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [AI_TOTAL_COST]: {
     brief: 'The total cost for the tokens used.',
-    type: AttributeType.DOUBLE,
+    type: 'double',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 12.34,
   },
   [AI_TOTAL_TOKENS_USED]: {
     brief: 'The total number of tokens used to process the prompt.',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 30,
@@ -8833,36 +8828,36 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [AI_WARNINGS]: {
     brief: 'Warning messages generated during model execution.',
-    type: AttributeType.STRING_ARRAY,
+    type: 'string[]',
     pii: {
-      isPii: IsPii.TRUE,
+      isPii: 'true',
     },
     isInOtel: false,
     example: ['Token limit exceeded'],
   },
   [APP_START_TYPE]: {
     brief: 'Mobile app start variant. Either cold or warm.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'cold',
   },
   [BLOCKED_MAIN_THREAD]: {
     brief: 'Whether the main thread was blocked by the span.',
-    type: AttributeType.BOOLEAN,
+    type: 'boolean',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: true,
   },
   [BROWSER_NAME]: {
     brief: 'The name of the browser.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'Chrome',
@@ -8870,18 +8865,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [BROWSER_REPORT_TYPE]: {
     brief: 'A browser report sent via reporting API..',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'network-error',
   },
   [BROWSER_SCRIPT_INVOKER]: {
     brief: 'How a script was called in the browser.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'Window.requestAnimationFrame',
@@ -8889,9 +8884,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [BROWSER_SCRIPT_INVOKER_TYPE]: {
     brief: 'Browser script entry point type.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'event-listener',
@@ -8899,9 +8894,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [BROWSER_SCRIPT_SOURCE_CHAR_POSITION]: {
     brief: 'A number representing the script character position of the script.',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 678,
@@ -8909,9 +8904,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [BROWSER_VERSION]: {
     brief: 'The version of the browser.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: '120.0.6099.130',
@@ -8919,9 +8914,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [CACHE_HIT]: {
     brief: 'If the cache was hit during this span.',
-    type: AttributeType.BOOLEAN,
+    type: 'boolean',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: true,
@@ -8929,18 +8924,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [CACHE_ITEM_SIZE]: {
     brief: 'The size of the requested item in the cache. In bytes.',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 58,
   },
   [CACHE_KEY]: {
     brief: 'The key of the cache accessed.',
-    type: AttributeType.STRING_ARRAY,
+    type: 'string[]',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: ['my-cache-key', 'my-other-cache-key'],
@@ -8948,9 +8943,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [CACHE_OPERATION]: {
     brief: 'The operation being performed on the cache.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'get',
@@ -8958,9 +8953,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [CACHE_TTL]: {
     brief: 'The ttl of the cache in seconds',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 120,
@@ -8968,9 +8963,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [CHANNEL]: {
     brief: 'The channel name that is being used.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'mail',
@@ -8979,9 +8974,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [CLIENT_ADDRESS]: {
     brief:
       'Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.TRUE,
+      isPii: 'true',
     },
     isInOtel: true,
     example: 'example.com',
@@ -8989,18 +8984,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [CLIENT_PORT]: {
     brief: 'Client port number.',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: true,
     example: 5432,
   },
   [CLOUDFLARE_D1_DURATION]: {
     brief: 'The duration of a Cloudflare D1 operation.',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 543,
@@ -9008,9 +9003,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [CLOUDFLARE_D1_ROWS_READ]: {
     brief: 'The number of rows read in a Cloudflare D1 operation.',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 12,
@@ -9018,9 +9013,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [CLOUDFLARE_D1_ROWS_WRITTEN]: {
     brief: 'The number of rows written in a Cloudflare D1 operation.',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 12,
@@ -9029,9 +9024,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [CODE_FILE_PATH]: {
     brief:
       'The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: '/app/myapplication/http/handler/server.py',
@@ -9040,9 +9035,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [CODE_FILEPATH]: {
     brief:
       'The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: '/app/myapplication/http/handler/server.py',
@@ -9053,9 +9048,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [CODE_FUNCTION]: {
     brief: "The method or function name, or equivalent (usually rightmost part of the code unit's name).",
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'server_request',
@@ -9066,9 +9061,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [CODE_FUNCTION_NAME]: {
     brief: "The method or function name, or equivalent (usually rightmost part of the code unit's name).",
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'server_request',
@@ -9077,9 +9072,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [CODE_LINE_NUMBER]: {
     brief:
       'The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: true,
     example: 42,
@@ -9088,9 +9083,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [CODE_LINENO]: {
     brief:
       'The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: true,
     example: 42,
@@ -9102,9 +9097,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [CODE_NAMESPACE]: {
     brief:
       "The 'namespace' within which code.function is defined. Usually the qualified class or module name, such that code.namespace + some separator + code.function form a unique identifier for the code unit.",
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'http.handler',
@@ -9115,18 +9110,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [DB_COLLECTION_NAME]: {
     brief: 'The name of a collection (table, container) within the database.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'users',
   },
   [DB_NAME]: {
     brief: 'The name of the database being accessed.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'customers',
@@ -9137,9 +9132,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [DB_NAMESPACE]: {
     brief: 'The name of the database being accessed.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'customers',
@@ -9147,9 +9142,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [DB_OPERATION]: {
     brief: 'The name of the operation being executed.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'SELECT',
@@ -9160,9 +9155,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [DB_OPERATION_NAME]: {
     brief: 'The name of the operation being executed.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'SELECT',
@@ -9171,9 +9166,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [DB_QUERY_PARAMETER_KEY]: {
     brief:
       'A query parameter used in db.query.text, with <key> being the parameter name, and the attribute value being a string representation of the parameter value.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     hasDynamicSuffix: true,
@@ -9182,9 +9177,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [DB_QUERY_SUMMARY]: {
     brief:
       'A database query being executed. Should be paramaterized. The full version of the query is in `db.query.text`.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'SELECT * FROM users',
@@ -9192,9 +9187,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [DB_QUERY_TEXT]: {
     brief:
       'The database query being executed. Should be the full query, not a parameterized version. The parameterized version is in `db.query.summary`.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'SELECT * FROM users',
@@ -9202,9 +9197,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [DB_REDIS_CONNECTION]: {
     brief: 'The redis connection name.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'my-redis-instance',
@@ -9212,9 +9207,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [DB_REDIS_PARAMETERS]: {
     brief: 'The array of command parameters given to a redis command.',
-    type: AttributeType.STRING_ARRAY,
+    type: 'string[]',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: ['test', '*'],
@@ -9222,9 +9217,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [DB_SQL_BINDINGS]: {
     brief: 'The array of query bindings.',
-    type: AttributeType.STRING_ARRAY,
+    type: 'string[]',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: ['1', 'foo'],
@@ -9237,9 +9232,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [DB_STATEMENT]: {
     brief: 'The database statement being executed.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'SELECT * FROM users',
@@ -9251,9 +9246,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [DB_SYSTEM]: {
     brief:
       'An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'postgresql',
@@ -9265,9 +9260,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [DB_SYSTEM_NAME]: {
     brief:
       'An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'postgresql',
@@ -9275,45 +9270,45 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [DB_USER]: {
     brief: 'The database user.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.TRUE,
+      isPii: 'true',
     },
     isInOtel: true,
     example: 'fancy_user',
   },
   [DEVICE_BRAND]: {
     brief: 'The brand of the device.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'Apple',
   },
   [DEVICE_FAMILY]: {
     brief: 'The family of the device.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'iPhone',
   },
   [DEVICE_MODEL]: {
     brief: 'The model of the device.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'iPhone 15 Pro Max',
   },
   [ENVIRONMENT]: {
     brief: 'The sentry environment.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'production',
@@ -9324,27 +9319,27 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [ERROR_TYPE]: {
     brief: 'Describes a class of error the operation ended with.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'timeout',
   },
   [EVENT_ID]: {
     brief: 'The unique identifier for this event (log record)',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 1234567890,
   },
   [EVENT_NAME]: {
     brief: 'The name that uniquely identifies this event (log record)',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'Process Payload',
@@ -9352,18 +9347,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [EXCEPTION_ESCAPED]: {
     brief:
       'SHOULD be set to true if the exception event is recorded at a point where it is known that the exception is escaping the scope of the span.',
-    type: AttributeType.BOOLEAN,
+    type: 'boolean',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: true,
     example: true,
   },
   [EXCEPTION_MESSAGE]: {
     brief: 'The error message.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'ENOENT: no such file or directory',
@@ -9371,9 +9366,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [EXCEPTION_STACKTRACE]: {
     brief:
       'A stacktrace as a string in the natural representation for the language runtime. The representation is to be determined and documented by each language SIG.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example:
@@ -9382,45 +9377,45 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [EXCEPTION_TYPE]: {
     brief:
       'The type of the exception (its fully-qualified class name, if applicable). The dynamic type of the exception should be preferred over the static type in languages that support it.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'OSError',
   },
   [FAAS_COLDSTART]: {
     brief: 'A boolean that is true if the serverless function is executed for the first time (aka cold-start).',
-    type: AttributeType.BOOLEAN,
+    type: 'boolean',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: true,
     example: true,
   },
   [FAAS_CRON]: {
     brief: 'A string containing the schedule period as Cron Expression.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: '0/5 * * * ? *',
   },
   [FAAS_TIME]: {
     brief: 'A string containing the function invocation time in the ISO 8601 format expressed in UTC.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: '2020-01-23T13:47:06Z',
   },
   [FAAS_TRIGGER]: {
     brief: 'Type of the trigger which caused this function invocation.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'timer',
@@ -9428,9 +9423,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [FLAG_EVALUATION_KEY]: {
     brief:
       'An instance of a feature flag evaluation. The value of this attribute is the boolean representing the evaluation result. The <key> suffix is the name of the feature flag.',
-    type: AttributeType.BOOLEAN,
+    type: 'boolean',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     hasDynamicSuffix: true,
@@ -9439,45 +9434,45 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [FRAMES_DELAY]: {
     brief:
       'The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 5,
   },
   [FRAMES_FROZEN]: {
     brief: 'The number of frozen frames rendered during the lifetime of the span.',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 3,
   },
   [FRAMES_SLOW]: {
     brief: 'The number of slow frames rendered during the lifetime of the span.',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 1,
   },
   [FRAMES_TOTAL]: {
     brief: 'The number of total frames rendered during the lifetime of the span.',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 60,
   },
   [FS_ERROR]: {
     brief: 'The error message of a file system error.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'ENOENT: no such file or directory',
@@ -9489,63 +9484,63 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [GEN_AI_AGENT_NAME]: {
     brief: 'The name of the agent being used.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'ResearchAssistant',
   },
   [GEN_AI_ASSISTANT_MESSAGE]: {
     brief: 'The assistant message passed to the model.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.TRUE,
+      isPii: 'true',
     },
     isInOtel: false,
     example: 'get_weather tool call',
   },
   [GEN_AI_CHOICE]: {
     brief: "The model's response message.",
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.TRUE,
+      isPii: 'true',
     },
     isInOtel: false,
     example: 'The weather in Paris is rainy and overcast, with temperatures around 57°F',
   },
   [GEN_AI_COST_INPUT_TOKENS]: {
     brief: 'The cost of tokens used to process the AI input (prompt) in USD (without cached input tokens).',
-    type: AttributeType.DOUBLE,
+    type: 'double',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 123.45,
   },
   [GEN_AI_COST_OUTPUT_TOKENS]: {
     brief: 'The cost of tokens used for creating the AI output in USD (without reasoning tokens).',
-    type: AttributeType.DOUBLE,
+    type: 'double',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 123.45,
   },
   [GEN_AI_COST_TOTAL_TOKENS]: {
     brief: 'The total cost for the tokens used.',
-    type: AttributeType.DOUBLE,
+    type: 'double',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 12.34,
   },
   [GEN_AI_OPERATION_NAME]: {
     brief: 'The name of the operation being performed.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'chat',
@@ -9553,18 +9548,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [GEN_AI_OPERATION_TYPE]: {
     brief:
       "The type of AI operation. Must be one of 'agent', 'ai_client', 'tool', 'handoff', 'guardrail'. Makes querying for spans in the UI easier.",
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'tool',
   },
   [GEN_AI_PIPELINE_NAME]: {
     brief: 'Name of the AI pipeline or chain being executed.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'Autofix Pipeline',
@@ -9572,9 +9567,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [GEN_AI_PROMPT]: {
     brief: 'The input messages sent to the model',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: '[{"role": "user", "message": "hello"}]',
@@ -9584,9 +9579,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [GEN_AI_REQUEST_AVAILABLE_TOOLS]: {
     brief: 'The available tools for the model. It has to be a stringified version of an array of objects.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example:
@@ -9595,9 +9590,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [GEN_AI_REQUEST_FREQUENCY_PENALTY]: {
     brief:
       'Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.',
-    type: AttributeType.DOUBLE,
+    type: 'double',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: true,
     example: 0.5,
@@ -9605,9 +9600,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [GEN_AI_REQUEST_MAX_TOKENS]: {
     brief: 'The maximum number of tokens to generate in the response.',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: true,
     example: 2048,
@@ -9615,9 +9610,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [GEN_AI_REQUEST_MESSAGES]: {
     brief:
       'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example:
@@ -9626,9 +9621,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [GEN_AI_REQUEST_MODEL]: {
     brief: 'The model identifier being used for the request.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'gpt-4-turbo-preview',
@@ -9636,9 +9631,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [GEN_AI_REQUEST_PRESENCE_PENALTY]: {
     brief:
       'Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.',
-    type: AttributeType.DOUBLE,
+    type: 'double',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: true,
     example: 0.5,
@@ -9646,9 +9641,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [GEN_AI_REQUEST_SEED]: {
     brief: 'The seed, ideally models given the same seed and same other parameters will produce the exact same output.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: '1234567890',
@@ -9657,9 +9652,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [GEN_AI_REQUEST_TEMPERATURE]: {
     brief:
       'For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.',
-    type: AttributeType.DOUBLE,
+    type: 'double',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: true,
     example: 0.1,
@@ -9668,9 +9663,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [GEN_AI_REQUEST_TOP_K]: {
     brief:
       'Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: true,
     example: 35,
@@ -9679,9 +9674,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [GEN_AI_REQUEST_TOP_P]: {
     brief:
       'Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).',
-    type: AttributeType.DOUBLE,
+    type: 'double',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: true,
     example: 0.7,
@@ -9689,9 +9684,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [GEN_AI_RESPONSE_FINISH_REASONS]: {
     brief: 'The reason why the model stopped generating.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'COMPLETE',
@@ -9699,9 +9694,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [GEN_AI_RESPONSE_ID]: {
     brief: 'Unique identifier for the completion.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'gen_123abc',
@@ -9709,9 +9704,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [GEN_AI_RESPONSE_MODEL]: {
     brief: 'The vendor-specific ID of the model used.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'gpt-4',
@@ -9719,9 +9714,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [GEN_AI_RESPONSE_STREAMING]: {
     brief: "Whether or not the AI model call's response was streamed back asynchronously",
-    type: AttributeType.BOOLEAN,
+    type: 'boolean',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: true,
@@ -9730,9 +9725,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [GEN_AI_RESPONSE_TEXT]: {
     brief:
       "The model's response text messages. It has to be a stringified version of an array of response text messages.",
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example:
@@ -9740,27 +9735,27 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [GEN_AI_RESPONSE_TOKENS_PER_SECOND]: {
     brief: 'The total output tokens per seconds throughput',
-    type: AttributeType.DOUBLE,
+    type: 'double',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 12345.67,
   },
   [GEN_AI_RESPONSE_TOOL_CALLS]: {
     brief: "The tool calls in the model's response. It has to be a stringified version of an array of objects.",
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: '[{"name": "get_weather", "arguments": {"location": "Paris"}}]',
   },
   [GEN_AI_SYSTEM]: {
     brief: 'The provider of the model.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'openai',
@@ -9768,45 +9763,45 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [GEN_AI_SYSTEM_MESSAGE]: {
     brief: 'The system instructions passed to the model.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.TRUE,
+      isPii: 'true',
     },
     isInOtel: false,
     example: 'You are a helpful assistant',
   },
   [GEN_AI_TOOL_DESCRIPTION]: {
     brief: 'The description of the tool being used.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'Searches the web for current information about a topic',
   },
   [GEN_AI_TOOL_INPUT]: {
     brief: 'The input of the tool being used. It has to be a stringified version of the input to the tool.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: '{"location": "Paris"}',
   },
   [GEN_AI_TOOL_MESSAGE]: {
     brief: 'The response from a tool or function call passed to the model.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.TRUE,
+      isPii: 'true',
     },
     isInOtel: false,
     example: 'rainy, 57°F',
   },
   [GEN_AI_TOOL_NAME]: {
     brief: 'Name of the tool utilized by the agent.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'Flights',
@@ -9814,27 +9809,27 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [GEN_AI_TOOL_OUTPUT]: {
     brief: 'The output of the tool being used. It has to be a stringified version of the output of the tool.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'rainy, 57°F',
   },
   [GEN_AI_TOOL_TYPE]: {
     brief: 'The type of tool being used.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'function',
   },
   [GEN_AI_USAGE_COMPLETION_TOKENS]: {
     brief: 'The number of tokens used in the GenAI response (completion).',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: true,
     example: 10,
@@ -9845,9 +9840,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [GEN_AI_USAGE_INPUT_TOKENS]: {
     brief: 'The number of tokens used to process the AI input (prompt) without cached input tokens.',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: true,
     example: 10,
@@ -9855,18 +9850,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [GEN_AI_USAGE_INPUT_TOKENS_CACHED]: {
     brief: 'The number of cached tokens used to process the AI input (prompt).',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 50,
   },
   [GEN_AI_USAGE_OUTPUT_TOKENS]: {
     brief: 'The number of tokens used for creating the AI output (without reasoning tokens).',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: true,
     example: 10,
@@ -9874,18 +9869,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [GEN_AI_USAGE_OUTPUT_TOKENS_REASONING]: {
     brief: 'The number of tokens used for reasoning to create the AI output.',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 75,
   },
   [GEN_AI_USAGE_PROMPT_TOKENS]: {
     brief: 'The number of tokens used in the GenAI input (prompt).',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: true,
     example: 20,
@@ -9896,9 +9891,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [GEN_AI_USAGE_TOTAL_COST]: {
     brief: 'The total cost for the tokens used.',
-    type: AttributeType.DOUBLE,
+    type: 'double',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 12.34,
@@ -9908,9 +9903,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [GEN_AI_USAGE_TOTAL_TOKENS]: {
     brief: 'The total number of tokens used to process the prompt. (input tokens plus output todkens)',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 20,
@@ -9918,27 +9913,27 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [GEN_AI_USER_MESSAGE]: {
     brief: 'The user message passed to the model.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.TRUE,
+      isPii: 'true',
     },
     isInOtel: false,
     example: "What's the weather in Paris?",
   },
   [GRAPHQL_OPERATION_NAME]: {
     brief: 'The name of the operation being executed.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'findBookById',
   },
   [GRAPHQL_OPERATION_TYPE]: {
     brief: 'The type of the operation being executed.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'query',
@@ -9946,9 +9941,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [HTTP_CLIENT_IP]: {
     brief:
       'Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.TRUE,
+      isPii: 'true',
     },
     isInOtel: true,
     example: 'example.com',
@@ -9959,9 +9954,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [HTTP_DECODED_RESPONSE_CONTENT_LENGTH]: {
     brief: 'The decoded body size of the response (in bytes).',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 456,
@@ -9969,9 +9964,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [HTTP_FLAVOR]: {
     brief: 'The actual version of the protocol used for network communication.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: '1.1',
@@ -9983,18 +9978,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [HTTP_FRAGMENT]: {
     brief:
       'The fragments present in the URI. Note that this contains the leading # character, while the `url.fragment` attribute does not.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: '#details',
   },
   [HTTP_HOST]: {
     brief: 'The domain name.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'example.com',
@@ -10006,9 +10001,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [HTTP_METHOD]: {
     brief: 'The HTTP method used.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'GET',
@@ -10020,9 +10015,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [HTTP_QUERY]: {
     brief:
       'The query string present in the URL. Note that this contains the leading ? character, while the `url.query` attribute does not.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
       reason:
         'Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.',
     },
@@ -10032,9 +10027,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [HTTP_REQUEST_CONNECT_START]: {
     brief:
       'The UNIX timestamp representing the time immediately before the user agent starts establishing the connection to the server to retrieve the resource.',
-    type: AttributeType.DOUBLE,
+    type: 'double',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 1732829555.111,
@@ -10043,9 +10038,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [HTTP_REQUEST_CONNECTION_END]: {
     brief:
       'The UNIX timestamp representing the time immediately after the browser finishes establishing the connection to the server to retrieve the resource. The timestamp value includes the time interval to establish the transport connection, as well as other time intervals such as TLS handshake and SOCKS authentication.',
-    type: AttributeType.DOUBLE,
+    type: 'double',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 1732829555.15,
@@ -10054,9 +10049,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [HTTP_REQUEST_DOMAIN_LOOKUP_END]: {
     brief:
       'The UNIX timestamp representing the time immediately after the browser finishes the domain-name lookup for the resource.',
-    type: AttributeType.DOUBLE,
+    type: 'double',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 1732829555.201,
@@ -10065,9 +10060,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [HTTP_REQUEST_DOMAIN_LOOKUP_START]: {
     brief:
       'The UNIX timestamp representing the time immediately before the browser starts the domain name lookup for the resource.',
-    type: AttributeType.DOUBLE,
+    type: 'double',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 1732829555.322,
@@ -10075,9 +10070,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [HTTP_REQUEST_FETCH_START]: {
     brief: 'The UNIX timestamp representing the time immediately before the browser starts to fetch the resource.',
-    type: AttributeType.DOUBLE,
+    type: 'double',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 1732829555.389,
@@ -10086,9 +10081,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [HTTP_REQUEST_HEADER_KEY]: {
     brief:
       'HTTP request headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.',
-    type: AttributeType.STRING_ARRAY,
+    type: 'string[]',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     hasDynamicSuffix: true,
@@ -10096,9 +10091,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [HTTP_REQUEST_METHOD]: {
     brief: 'The HTTP method used.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'GET',
@@ -10107,9 +10102,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [HTTP_REQUEST_REDIRECT_END]: {
     brief:
       'The UNIX timestamp representing the timestamp immediately after receiving the last byte of the response of the last redirect',
-    type: AttributeType.DOUBLE,
+    type: 'double',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 1732829558.502,
@@ -10117,9 +10112,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [HTTP_REQUEST_REDIRECT_START]: {
     brief: 'The UNIX timestamp representing the start time of the fetch which that initiates the redirect.',
-    type: AttributeType.DOUBLE,
+    type: 'double',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 1732829555.495,
@@ -10128,9 +10123,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [HTTP_REQUEST_REQUEST_START]: {
     brief:
       'The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.',
-    type: AttributeType.DOUBLE,
+    type: 'double',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 1732829555.51,
@@ -10138,9 +10133,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [HTTP_REQUEST_RESEND_COUNT]: {
     brief: 'The ordinal number of request resending attempt (for any reason, including redirects).',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 2,
@@ -10148,9 +10143,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [HTTP_REQUEST_RESPONSE_END]: {
     brief:
       'The UNIX timestamp representing the time immediately after the browser receives the last byte of the resource or immediately before the transport connection is closed, whichever comes first.',
-    type: AttributeType.DOUBLE,
+    type: 'double',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 1732829555.89,
@@ -10159,9 +10154,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [HTTP_REQUEST_RESPONSE_START]: {
     brief:
       'The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.',
-    type: AttributeType.DOUBLE,
+    type: 'double',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 1732829555.7,
@@ -10170,9 +10165,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [HTTP_REQUEST_SECURE_CONNECTION_START]: {
     brief:
       'The UNIX timestamp representing the time immediately before the browser starts the handshake process to secure the current connection. If a secure connection is not used, the property returns zero.',
-    type: AttributeType.DOUBLE,
+    type: 'double',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 1732829555.73,
@@ -10181,9 +10176,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [HTTP_REQUEST_TIME_TO_FIRST_BYTE]: {
     brief:
       "The time in seconds from the browser's timeorigin to when the first byte of the request's response was received. See https://web.dev/articles/ttfb#measure-resource-requests",
-    type: AttributeType.DOUBLE,
+    type: 'double',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 1.032,
@@ -10192,9 +10187,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [HTTP_REQUEST_WORKER_START]: {
     brief:
       'The UNIX timestamp representing the timestamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running.',
-    type: AttributeType.DOUBLE,
+    type: 'double',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 1732829553.68,
@@ -10202,9 +10197,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [HTTP_RESPONSE_BODY_SIZE]: {
     brief: 'The encoded body size of the response (in bytes).',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: true,
     example: 123,
@@ -10213,9 +10208,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [HTTP_RESPONSE_HEADER_KEY]: {
     brief:
       'HTTP response headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.',
-    type: AttributeType.STRING_ARRAY,
+    type: 'string[]',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     hasDynamicSuffix: true,
@@ -10223,9 +10218,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [HTTP_RESPONSE_HEADER_CONTENT_LENGTH]: {
     brief: 'The size of the message body sent to the recipient (in bytes)',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: "http.response.header.custom-header=['foo', 'bar']",
@@ -10233,9 +10228,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [HTTP_RESPONSE_SIZE]: {
     brief: 'The transfer size of the response (in bytes).',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: true,
     example: 456,
@@ -10243,9 +10238,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [HTTP_RESPONSE_STATUS_CODE]: {
     brief: 'The status code of the HTTP response.',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: true,
     example: 404,
@@ -10253,9 +10248,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [HTTP_RESPONSE_CONTENT_LENGTH]: {
     brief: 'The encoded body size of the response (in bytes).',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: true,
     example: 123,
@@ -10266,9 +10261,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [HTTP_RESPONSE_TRANSFER_SIZE]: {
     brief: 'The transfer size of the response (in bytes).',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 456,
@@ -10279,9 +10274,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [HTTP_ROUTE]: {
     brief: 'The matched route, that is, the path template in the format used by the respective server framework.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: '/users/:id',
@@ -10289,9 +10284,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [HTTP_SCHEME]: {
     brief: 'The URI scheme component identifying the used protocol.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'https',
@@ -10302,9 +10297,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [HTTP_SERVER_NAME]: {
     brief: 'The server domain name',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'example.com',
@@ -10315,9 +10310,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [HTTP_STATUS_CODE]: {
     brief: 'The status code of the HTTP response.',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: true,
     example: 404,
@@ -10328,9 +10323,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [HTTP_TARGET]: {
     brief: 'The pathname and query string of the URL.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: '/test?foo=bar#buzz',
@@ -10341,9 +10336,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [HTTP_URL]: {
     brief: 'The URL of the resource that was fetched.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'https://example.com/test?foo=bar#buzz',
@@ -10354,9 +10349,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [HTTP_USER_AGENT]: {
     brief: 'Value of the HTTP User-Agent header sent by the client.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example:
@@ -10368,9 +10363,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [ID]: {
     brief: 'A unique identifier for the span.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 'f47ac10b58cc4372a5670e02b2c3d479',
@@ -10378,126 +10373,126 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [JVM_GC_ACTION]: {
     brief: 'Name of the garbage collector action.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'end of minor GC',
   },
   [JVM_GC_NAME]: {
     brief: 'Name of the garbage collector.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'G1 Young Generation',
   },
   [JVM_MEMORY_POOL_NAME]: {
     brief: 'Name of the memory pool.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'G1 Old Gen',
   },
   [JVM_MEMORY_TYPE]: {
     brief: 'Name of the memory pool.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'G1 Old Gen',
   },
   [JVM_THREAD_DAEMON]: {
     brief: 'Whether the thread is daemon or not.',
-    type: AttributeType.BOOLEAN,
+    type: 'boolean',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: true,
     example: true,
   },
   [JVM_THREAD_STATE]: {
     brief: 'State of the thread.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'blocked',
   },
   [LCP_ELEMENT]: {
     brief: 'The dom element responsible for the largest contentful paint.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'img',
   },
   [LCP_ID]: {
     brief: 'The id of the dom element responsible for the largest contentful paint.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: '#hero',
   },
   [LCP_SIZE]: {
     brief: 'The size of the largest contentful paint element.',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 1234,
   },
   [LCP_URL]: {
     brief: 'The url of the dom element responsible for the largest contentful paint.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'https://example.com',
   },
   [LOGGER_NAME]: {
     brief: 'The name of the logger that generated this event.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'myLogger',
   },
   [MCP_PROMPT_RESULT]: {
     brief: 'The content of the prompt result.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'An example prompt result!',
   },
   [MCP_TOOL_RESULT_CONTENT]: {
     brief: 'The content of the tool result.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: '{"output": "rainy", "toolCallId": "1"}',
   },
   [MESSAGING_DESTINATION_CONNECTION]: {
     brief: 'The message destination connection.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'BestTopic',
@@ -10505,9 +10500,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [MESSAGING_DESTINATION_NAME]: {
     brief: 'The message destination name.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'BestTopic',
@@ -10515,9 +10510,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [MESSAGING_MESSAGE_BODY_SIZE]: {
     brief: 'The size of the message body in bytes.',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: true,
     example: 839,
@@ -10525,9 +10520,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [MESSAGING_MESSAGE_ENVELOPE_SIZE]: {
     brief: 'The size of the message body and metadata in bytes.',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: true,
     example: 1045,
@@ -10535,9 +10530,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [MESSAGING_MESSAGE_ID]: {
     brief: 'A value used by the messaging system as an identifier for the message, represented as a string.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'f47ac10b58cc4372a5670e02b2c3d479',
@@ -10545,9 +10540,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [MESSAGING_MESSAGE_RECEIVE_LATENCY]: {
     brief: 'The latency between when the message was published and received.',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 1732847252,
@@ -10555,9 +10550,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [MESSAGING_MESSAGE_RETRY_COUNT]: {
     brief: 'The amount of attempts to send the message.',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 2,
@@ -10565,18 +10560,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [MESSAGING_OPERATION_TYPE]: {
     brief: 'A string identifying the type of the messaging operation',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'create',
   },
   [MESSAGING_SYSTEM]: {
     brief: 'The messaging system as identified by the client instrumentation.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'activemq',
@@ -10584,9 +10579,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [METHOD]: {
     brief: 'The HTTP method used.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'GET',
@@ -10598,9 +10593,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [NAVIGATION_TYPE]: {
     brief: 'The type of navigation done by a client-side router.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'router.push',
@@ -10608,54 +10603,54 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [NEL_ELAPSED_TIME]: {
     brief:
       'The elapsed number of milliseconds between the start of the resource fetch and when it was completed or aborted by the user agent.',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 100,
   },
   [NEL_PHASE]: {
     brief: 'If request failed, the phase of its network error. If request succeeded, "application".',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'application',
   },
   [NEL_REFERRER]: {
     brief: "request's referrer, as determined by the referrer policy associated with its client.",
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'https://example.com/foo?bar=baz',
   },
   [NEL_SAMPLING_FUNCTION]: {
     brief: 'The sampling function used to determine if the request should be sampled.',
-    type: AttributeType.DOUBLE,
+    type: 'double',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 0.5,
   },
   [NEL_TYPE]: {
     brief: 'If request failed, the type of its network error. If request succeeded, "ok".',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'dns.unreachable',
   },
   [NET_HOST_IP]: {
     brief: 'Local address of the network connection - IP address or Unix domain socket name.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: '192.168.0.1',
@@ -10667,9 +10662,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [NET_HOST_NAME]: {
     brief:
       'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'example.com',
@@ -10680,9 +10675,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [NET_HOST_PORT]: {
     brief: 'Server port number.',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: true,
     example: 1337,
@@ -10693,9 +10688,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [NET_PEER_IP]: {
     brief: 'Peer address of the network connection - IP address or Unix domain socket name.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: '192.168.0.1',
@@ -10707,9 +10702,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [NET_PEER_NAME]: {
     brief:
       'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'example.com',
@@ -10720,9 +10715,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [NET_PEER_PORT]: {
     brief: 'Peer port number.',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: true,
     example: 1337,
@@ -10733,9 +10728,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [NET_PROTOCOL_NAME]: {
     brief: 'OSI application layer or non-OSI equivalent.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'http',
@@ -10746,9 +10741,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [NET_PROTOCOL_VERSION]: {
     brief: 'The actual version of the protocol used for network communication.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: '1.1',
@@ -10759,9 +10754,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [NET_SOCK_FAMILY]: {
     brief: 'OSI transport and network layer',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'inet',
@@ -10772,9 +10767,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [NET_SOCK_HOST_ADDR]: {
     brief: 'Local address of the network connection mapping to Unix domain socket name.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: '/var/my.sock',
@@ -10785,9 +10780,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [NET_SOCK_HOST_PORT]: {
     brief: 'Local port number of the network connection.',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: true,
     example: 8080,
@@ -10798,9 +10793,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [NET_SOCK_PEER_ADDR]: {
     brief: 'Peer address of the network connection - IP address',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: '192.168.0.1',
@@ -10811,9 +10806,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [NET_SOCK_PEER_NAME]: {
     brief: 'Peer address of the network connection - Unix domain socket name',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: '/var/my.sock',
@@ -10823,9 +10818,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [NET_SOCK_PEER_PORT]: {
     brief: 'Peer port number of the network connection.',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: true,
     example: 8080,
@@ -10835,9 +10830,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [NET_TRANSPORT]: {
     brief: 'OSI transport layer or inter-process communication method.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'tcp',
@@ -10848,9 +10843,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [NETWORK_LOCAL_ADDRESS]: {
     brief: 'Local address of the network connection - IP address or Unix domain socket name.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: '10.1.2.80',
@@ -10858,9 +10853,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [NETWORK_LOCAL_PORT]: {
     brief: 'Local port number of the network connection.',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: true,
     example: 65400,
@@ -10868,9 +10863,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [NETWORK_PEER_ADDRESS]: {
     brief: 'Peer address of the network connection - IP address or Unix domain socket name.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: '10.1.2.80',
@@ -10878,18 +10873,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [NETWORK_PEER_PORT]: {
     brief: 'Peer port number of the network connection.',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: true,
     example: 65400,
   },
   [NETWORK_PROTOCOL_NAME]: {
     brief: 'OSI application layer or non-OSI equivalent.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'http',
@@ -10897,9 +10892,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [NETWORK_PROTOCOL_VERSION]: {
     brief: 'The actual version of the protocol used for network communication.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: '1.1',
@@ -10907,9 +10902,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [NETWORK_TRANSPORT]: {
     brief: 'OSI transport layer or inter-process communication method.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'tcp',
@@ -10917,18 +10912,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [NETWORK_TYPE]: {
     brief: 'OSI network layer or non-OSI equivalent.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'ipv4',
   },
   [OS_BUILD_ID]: {
     brief: 'The build ID of the operating system.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: '1234567890',
@@ -10936,72 +10931,72 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [OS_DESCRIPTION]: {
     brief:
       'Human readable (not intended to be parsed) OS version information, like e.g. reported by ver or lsb_release -a commands.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'Ubuntu 18.04.1 LTS',
   },
   [OS_NAME]: {
     brief: 'Human readable operating system name.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'Ubuntu',
   },
   [OS_TYPE]: {
     brief: 'The operating system type.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'linux',
   },
   [OS_VERSION]: {
     brief: 'The version of the operating system.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: '18.04.2',
   },
   [OTEL_SCOPE_NAME]: {
     brief: 'The name of the instrumentation scope - (InstrumentationScope.Name in OTLP).',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'io.opentelemetry.contrib.mongodb',
   },
   [OTEL_SCOPE_VERSION]: {
     brief: 'The version of the instrumentation scope - (InstrumentationScope.Version in OTLP).',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: '2.4.5',
   },
   [OTEL_STATUS_CODE]: {
     brief: 'Name of the code, either “OK” or “ERROR”. MUST NOT be set if the status code is UNSET.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'OK',
   },
   [OTEL_STATUS_DESCRIPTION]: {
     brief: 'Description of the Status if it has a value, otherwise not set.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'resource not found',
@@ -11009,9 +11004,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [PARAMS_KEY]: {
     brief:
       'Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     hasDynamicSuffix: true,
@@ -11020,9 +11015,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [PREVIOUS_ROUTE]: {
     brief: 'Also used by mobile SDKs to indicate the previous route in the application.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'HomeScreen',
@@ -11030,18 +11025,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [PROCESS_EXECUTABLE_NAME]: {
     brief: 'The name of the executable that started the process.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'getsentry',
   },
   [PROCESS_PID]: {
     brief: 'The process ID of the running process.',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: true,
     example: 12345,
@@ -11049,18 +11044,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [PROCESS_RUNTIME_DESCRIPTION]: {
     brief:
       'An additional description about the runtime of the process, for example a specific vendor customization of the runtime environment. Equivalent to `raw_description` in the Sentry runtime context.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'Eclipse OpenJ9 VM openj9-0.21.0',
   },
   [PROCESS_RUNTIME_NAME]: {
     brief: 'The name of the runtime. Equivalent to `name` in the Sentry runtime context.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'node',
@@ -11068,18 +11063,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [PROCESS_RUNTIME_VERSION]: {
     brief:
       'The version of the runtime of this process, as returned by the runtime without modification. Equivalent to `version` in the Sentry runtime context.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: '18.04.2',
   },
   [PROFILE_ID]: {
     brief: 'The id of the sentry profile.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: '123e4567e89b12d3a456426614174000',
@@ -11090,9 +11085,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [QUERY_KEY]: {
     brief: 'An item in a query string. Usually added by client-side routing frameworks like vue-router.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     hasDynamicSuffix: true,
@@ -11104,9 +11099,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [RELEASE]: {
     brief: 'The sentry release.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'production',
@@ -11117,9 +11112,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [REMIX_ACTION_FORM_DATA_KEY]: {
     brief: 'Remix form data, <key> being the form data key, the value being the form data value.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     hasDynamicSuffix: true,
@@ -11128,9 +11123,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [REPLAY_ID]: {
     brief: 'The id of the sentry replay.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: '123e4567e89b12d3a456426614174000',
@@ -11141,9 +11136,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [RESOURCE_RENDER_BLOCKING_STATUS]: {
     brief: 'The render blocking status of the resource.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'non-blocking',
@@ -11152,9 +11147,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [ROUTE]: {
     brief:
       'The matched route, that is, the path template in the format used by the respective server framework. Also used by mobile SDKs to indicate the current route in the application.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'App\\Controller::indexAction',
@@ -11166,108 +11161,108 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [RPC_GRPC_STATUS_CODE]: {
     brief: 'The numeric status code of the gRPC request.',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: true,
     example: 2,
   },
   [RPC_SERVICE]: {
     brief: 'The full (logical) name of the service being called, including its package name, if applicable.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'myService.BestService',
   },
   [SENTRY_INTERNAL_DSC_ENVIRONMENT]: {
     brief: 'The environment from the dynamic sampling context.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 'prod',
   },
   [SENTRY_INTERNAL_DSC_ORG_ID]: {
     brief: 'The organization ID from the dynamic sampling context.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: '1',
   },
   [SENTRY_INTERNAL_DSC_PUBLIC_KEY]: {
     brief: 'The public key from the dynamic sampling context.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'c51734c603c4430eb57cb0a5728a479d',
   },
   [SENTRY_INTERNAL_DSC_RELEASE]: {
     brief: 'The release identifier from the dynamic sampling context.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 'frontend@e8211be71b214afab5b85de4b4c54be3714952bb',
   },
   [SENTRY_INTERNAL_DSC_SAMPLE_RAND]: {
     brief: 'The random sampling value from the dynamic sampling context.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: '0.8286147972820134',
   },
   [SENTRY_INTERNAL_DSC_SAMPLE_RATE]: {
     brief: 'The sample rate from the dynamic sampling context.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: '1.0',
   },
   [SENTRY_INTERNAL_DSC_SAMPLED]: {
     brief: 'Whether the event was sampled according to the dynamic sampling context.',
-    type: AttributeType.BOOLEAN,
+    type: 'boolean',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: true,
   },
   [SENTRY_INTERNAL_DSC_TRACE_ID]: {
     brief: 'The trace ID from the dynamic sampling context.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: '047372980460430cbc78d9779df33a46',
   },
   [SENTRY_INTERNAL_DSC_TRANSACTION]: {
     brief: 'The transaction name from the dynamic sampling context.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: '/issues/errors-outages/',
   },
   [SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS]: {
     brief: 'The timestamp at which an envelope was received by Relay, in nanoseconds.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: '1544712660300000000',
@@ -11276,18 +11271,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [SENTRY_INTERNAL_REPLAY_IS_BUFFERING]: {
     brief:
       'A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate).',
-    type: AttributeType.BOOLEAN,
+    type: 'boolean',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: true,
   },
   [SENTRY_BROWSER_NAME]: {
     brief: 'The name of the browser.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'Chrome',
@@ -11298,9 +11293,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [SENTRY_BROWSER_VERSION]: {
     brief: 'The version of the browser.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: '120.0.6099.130',
@@ -11311,45 +11306,45 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [SENTRY_CANCELLATION_REASON]: {
     brief: 'The reason why a span ended early.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 'document.hidden',
   },
   [SENTRY_CLIENT_SAMPLE_RATE]: {
     brief: 'Rate at which a span was sampled in the SDK.',
-    type: AttributeType.DOUBLE,
+    type: 'double',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 0.5,
   },
   [SENTRY_DESCRIPTION]: {
     brief: 'The human-readable description of a span.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'index view query',
   },
   [SENTRY_DIST]: {
     brief: 'The sentry dist.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: '1.0',
   },
   [SENTRY_ENVIRONMENT]: {
     brief: 'The sentry environment.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 'production',
@@ -11357,27 +11352,27 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [SENTRY_EXCLUSIVE_TIME]: {
     brief: 'The exclusive time duration of the span.',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 1234,
   },
   [SENTRY_HTTP_PREFETCH]: {
     brief: 'If an http request was a prefetch request.',
-    type: AttributeType.BOOLEAN,
+    type: 'boolean',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: true,
   },
   [SENTRY_IDLE_SPAN_FINISH_REASON]: {
     brief: 'The reason why an idle span ended early.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 'idleTimeout',
@@ -11385,27 +11380,27 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [SENTRY_MESSAGE_PARAMETER_KEY]: {
     brief:
       "A parameter used in the message template. <key> can either be the number that represent the parameter's position in the template string (sentry.message.parameter.0, sentry.message.parameter.1, etc) or the parameter's name (sentry.message.parameter.item_id, sentry.message.parameter.user_id, etc)",
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: "sentry.message.parameter.0='123'",
   },
   [SENTRY_MESSAGE_TEMPLATE]: {
     brief: 'The parameterized template string.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'Hello, {name}!',
   },
   [SENTRY_MODULE_KEY]: {
     brief: 'A module that was loaded in the process. The key is the name of the module.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     hasDynamicSuffix: true,
@@ -11414,9 +11409,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [SENTRY_NEXTJS_SSR_FUNCTION_ROUTE]: {
     brief:
       'A parameterized route for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions when the file location of the function is known.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: '/posts/[id]/layout',
@@ -11425,9 +11420,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [SENTRY_NEXTJS_SSR_FUNCTION_TYPE]: {
     brief:
       'A descriptor for a for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 'generateMetadata',
@@ -11435,9 +11430,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [SENTRY_OBSERVED_TIMESTAMP_NANOS]: {
     brief: 'The timestamp at which an envelope was received by Relay, in nanoseconds.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: '1544712660300000000',
@@ -11448,36 +11443,36 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [SENTRY_OP]: {
     brief: 'The operation of a span.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 'http.client',
   },
   [SENTRY_ORIGIN]: {
     brief: 'The origin of the instrumentation (e.g. span, log, etc.)',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 'auto.http.otel.fastify',
   },
   [SENTRY_PLATFORM]: {
     brief: 'The sdk platform that generated the event.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 'php',
   },
   [SENTRY_PROFILE_ID]: {
     brief: 'The id of the sentry profile.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: '123e4567e89b12d3a456426614174000',
@@ -11485,9 +11480,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [SENTRY_RELEASE]: {
     brief: 'The sentry release.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: '7.0.0',
@@ -11495,9 +11490,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [SENTRY_REPLAY_ID]: {
     brief: 'The id of the sentry replay.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: '123e4567e89b12d3a456426614174000',
@@ -11506,36 +11501,36 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [SENTRY_SDK_INTEGRATIONS]: {
     brief:
       'A list of names identifying enabled integrations. The list shouldhave all enabled integrations, including default integrations. Defaultintegrations are included because different SDK releases may contain differentdefault integrations.',
-    type: AttributeType.STRING_ARRAY,
+    type: 'string[]',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: ['InboundFilters', 'FunctionToString', 'BrowserApiErrors', 'Breadcrumbs'],
   },
   [SENTRY_SDK_NAME]: {
     brief: 'The sentry sdk name.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: '@sentry/react',
   },
   [SENTRY_SDK_VERSION]: {
     brief: 'The sentry sdk version.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: '7.0.0',
   },
   [SENTRY_SEGMENT_ID]: {
     brief: 'The segment ID of a span',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: '051581bf3cb55c13',
@@ -11543,18 +11538,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [SENTRY_SEGMENT_NAME]: {
     brief: 'The segment name of a span',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'GET /user',
   },
   [_SENTRY_SEGMENT_ID]: {
     brief: 'The segment ID of a span',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: '051581bf3cb55c13',
@@ -11565,18 +11560,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [SENTRY_SERVER_SAMPLE_RATE]: {
     brief: 'Rate at which a span was sampled in Relay.',
-    type: AttributeType.DOUBLE,
+    type: 'double',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 0.5,
   },
   [SENTRY_SPAN_SOURCE]: {
     brief: 'The source of a span, also referred to as transaction source.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 'route',
@@ -11584,18 +11579,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [SENTRY_TRACE_PARENT_SPAN_ID]: {
     brief:
       'The span id of the span that was active when the log was collected. This should not be set if there was no active span.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 'b0e6f15b45c36b12',
   },
   [SENTRY_TRANSACTION]: {
     brief: 'The sentry transaction (segment name).',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 'GET /',
@@ -11604,9 +11599,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [SERVER_ADDRESS]: {
     brief:
       'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'example.com',
@@ -11614,9 +11609,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [SERVER_PORT]: {
     brief: 'Server port number.',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: true,
     example: 1337,
@@ -11624,18 +11619,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [SERVICE_NAME]: {
     brief: 'Logical name of the service.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'omegastar',
   },
   [SERVICE_VERSION]: {
     brief: 'The version string of the service API or implementation. The format is not defined by these conventions.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: '5.0.0',
@@ -11643,27 +11638,27 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [THREAD_ID]: {
     brief: 'Current “managed” thread ID.',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: true,
     example: 56,
   },
   [THREAD_NAME]: {
     brief: 'Current thread name.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'main',
   },
   [TRANSACTION]: {
     brief: 'The sentry transaction (segment name).',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'GET /',
@@ -11674,9 +11669,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [TYPE]: {
     brief: 'More granular type of the operation happening.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 'fetch',
@@ -11684,27 +11679,27 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [UI_COMPONENT_NAME]: {
     brief: 'The name of the associated component.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'HomeButton',
   },
   [UI_CONTRIBUTES_TO_TTFD]: {
     brief: 'Whether the span execution contributed to the TTFD (time to fully drawn) metric.',
-    type: AttributeType.BOOLEAN,
+    type: 'boolean',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: true,
   },
   [UI_CONTRIBUTES_TO_TTID]: {
     brief: 'Whether the span execution contributed to the TTID (time to initial display) metric.',
-    type: AttributeType.BOOLEAN,
+    type: 'boolean',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: true,
@@ -11712,9 +11707,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [URL_DOMAIN]: {
     brief:
       'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'example.com',
@@ -11722,18 +11717,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [URL_FRAGMENT]: {
     brief:
       'The fragments present in the URI. Note that this does not contain the leading # character, while the `http.fragment` attribute does.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'details',
   },
   [URL_FULL]: {
     brief: 'The URL of the resource that was fetched.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'https://example.com/test?foo=bar#buzz',
@@ -11741,9 +11736,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [URL_PATH]: {
     brief: 'The URI path component.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: '/foo',
@@ -11751,9 +11746,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [URL_PATH_PARAMETER_KEY]: {
     brief:
       'Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     hasDynamicSuffix: true,
@@ -11762,9 +11757,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [URL_PORT]: {
     brief: 'Server port number.',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: true,
     example: 1337,
@@ -11772,9 +11767,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [URL_QUERY]: {
     brief:
       'The query string present in the URL. Note that this does not contain the leading ? character, while the `http.query` attribute does.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
       reason:
         'Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.',
     },
@@ -11783,9 +11778,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [URL_SCHEME]: {
     brief: 'The URI scheme component identifying the used protocol.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'https',
@@ -11793,9 +11788,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [URL_TEMPLATE]: {
     brief: 'The low-cardinality template of an absolute path reference.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: '/users/:id',
@@ -11803,9 +11798,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [URL]: {
     brief: 'The URL of the resource that was fetched.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'https://example.com/test?foo=bar#buzz',
@@ -11817,108 +11812,108 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [USER_EMAIL]: {
     brief: 'User email address.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.TRUE,
+      isPii: 'true',
     },
     isInOtel: true,
     example: 'test@example.com',
   },
   [USER_FULL_NAME]: {
     brief: "User's full name.",
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.TRUE,
+      isPii: 'true',
     },
     isInOtel: true,
     example: 'John Smith',
   },
   [USER_GEO_CITY]: {
     brief: 'Human readable city name.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'Toronto',
   },
   [USER_GEO_COUNTRY_CODE]: {
     brief: 'Two-letter country code (ISO 3166-1 alpha-2).',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'CA',
   },
   [USER_GEO_REGION]: {
     brief: 'Human readable region name or code.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'Canada',
   },
   [USER_GEO_SUBDIVISION]: {
     brief: 'Human readable subdivision name.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'Ontario',
   },
   [USER_HASH]: {
     brief: 'Unique user hash to correlate information for a user in anonymized form.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.TRUE,
+      isPii: 'true',
     },
     isInOtel: true,
     example: '8ae4c2993e0f4f3b8b2d1b1f3b5e8f4d',
   },
   [USER_ID]: {
     brief: 'Unique identifier of the user.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.TRUE,
+      isPii: 'true',
     },
     isInOtel: true,
     example: 'S-1-5-21-202424912787-2692429404-2351956786-1000',
   },
   [USER_IP_ADDRESS]: {
     brief: 'The IP address of the user.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.TRUE,
+      isPii: 'true',
     },
     isInOtel: false,
     example: '192.168.1.1',
   },
   [USER_NAME]: {
     brief: 'Short name or login/username of the user.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.TRUE,
+      isPii: 'true',
     },
     isInOtel: true,
     example: 'j.smith',
   },
   [USER_ROLES]: {
     brief: 'Array of user roles at the time of the event.',
-    type: AttributeType.STRING_ARRAY,
+    type: 'string[]',
     pii: {
-      isPii: IsPii.TRUE,
+      isPii: 'true',
     },
     isInOtel: true,
     example: ['admin', 'editor'],
   },
   [USER_AGENT_ORIGINAL]: {
     brief: 'Value of the HTTP User-Agent header sent by the client.',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: true,
     example:
@@ -11927,315 +11922,315 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [VERCEL_BRANCH]: {
     brief: 'Git branch name for Vercel project',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 'main',
   },
   [VERCEL_BUILD_ID]: {
     brief: 'Identifier for the Vercel build (only present on build logs)',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 'bld_cotnkcr76',
   },
   [VERCEL_DEPLOYMENT_ID]: {
     brief: 'Identifier for the Vercel deployment',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 'dpl_233NRGRjVZX1caZrXWtz5g1TAksD',
   },
   [VERCEL_DESTINATION]: {
     brief: 'Origin of the external content in Vercel (only on external logs)',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'https://vitals.vercel-insights.com/v1',
   },
   [VERCEL_EDGE_TYPE]: {
     brief: 'Type of edge runtime in Vercel',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 'edge-function',
   },
   [VERCEL_ENTRYPOINT]: {
     brief: 'Entrypoint for the request in Vercel',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'api/index.js',
   },
   [VERCEL_EXECUTION_REGION]: {
     brief: 'Region where the request is executed',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 'sfo1',
   },
   [VERCEL_ID]: {
     brief: 'Unique identifier for the log entry in Vercel',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: '1573817187330377061717300000',
   },
   [VERCEL_JA3_DIGEST]: {
     brief: 'JA3 fingerprint digest of Vercel request',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: '769,47-53-5-10-49161-49162-49171-49172-50-56-19-4,0-10-11,23-24-25,0',
   },
   [VERCEL_JA4_DIGEST]: {
     brief: 'JA4 fingerprint digest',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 't13d1516h2_8daaf6152771_02713d6af862',
   },
   [VERCEL_LOG_TYPE]: {
     brief: 'Vercel log output type',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 'stdout',
   },
   [VERCEL_PROJECT_ID]: {
     brief: 'Identifier for the Vercel project',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 'gdufoJxB6b9b1fEqr1jUtFkyavUU',
   },
   [VERCEL_PROJECT_NAME]: {
     brief: 'Name of the Vercel project',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'my-app',
   },
   [VERCEL_PROXY_CACHE_ID]: {
     brief: 'Original request ID when request is served from cache',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 'pdx1::v8g4b-1744143786684-93dafbc0f70d',
   },
   [VERCEL_PROXY_CLIENT_IP]: {
     brief: 'Client IP address',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.TRUE,
+      isPii: 'true',
     },
     isInOtel: false,
     example: '120.75.16.101',
   },
   [VERCEL_PROXY_HOST]: {
     brief: 'Hostname of the request',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'test.vercel.app',
   },
   [VERCEL_PROXY_LAMBDA_REGION]: {
     brief: 'Region where lambda function executed',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 'sfo1',
   },
   [VERCEL_PROXY_METHOD]: {
     brief: 'HTTP method of the request',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 'GET',
   },
   [VERCEL_PROXY_PATH]: {
     brief: 'Request path with query parameters',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: '/dynamic/some-value.json?route=some-value',
   },
   [VERCEL_PROXY_PATH_TYPE]: {
     brief: 'How the request was served based on its path and project configuration',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 'func',
   },
   [VERCEL_PROXY_PATH_TYPE_VARIANT]: {
     brief: 'Variant of the path type',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'api',
   },
   [VERCEL_PROXY_REFERER]: {
     brief: 'Referer of the request',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: '*.vercel.app',
   },
   [VERCEL_PROXY_REGION]: {
     brief: 'Region where the request is processed',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 'sfo1',
   },
   [VERCEL_PROXY_RESPONSE_BYTE_SIZE]: {
     brief: 'Size of the response in bytes',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 1024,
   },
   [VERCEL_PROXY_SCHEME]: {
     brief: 'Protocol of the request',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 'https',
   },
   [VERCEL_PROXY_STATUS_CODE]: {
     brief: 'HTTP status code of the proxy request',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 200,
   },
   [VERCEL_PROXY_TIMESTAMP]: {
     brief: 'Unix timestamp when the proxy request was made',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 1573817250172,
   },
   [VERCEL_PROXY_USER_AGENT]: {
     brief: 'User agent strings of the request',
-    type: AttributeType.STRING_ARRAY,
+    type: 'string[]',
     pii: {
-      isPii: IsPii.MAYBE,
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: ['Mozilla/5.0...'],
   },
   [VERCEL_PROXY_VERCEL_CACHE]: {
     brief: 'Cache status sent to the browser',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 'REVALIDATED',
   },
   [VERCEL_PROXY_VERCEL_ID]: {
     brief: 'Vercel-specific identifier',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 'sfo1::abc123',
   },
   [VERCEL_PROXY_WAF_ACTION]: {
     brief: 'Action taken by firewall rules',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 'deny',
   },
   [VERCEL_PROXY_WAF_RULE_ID]: {
     brief: 'ID of the firewall rule that matched',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 'rule_gAHz8jtSB1Gy',
   },
   [VERCEL_REQUEST_ID]: {
     brief: 'Identifier of the Vercel request',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: '643af4e3-975a-4cc7-9e7a-1eda11539d90',
   },
   [VERCEL_SOURCE]: {
     brief: 'Origin of the Vercel log (build, edge, lambda, static, external, or firewall)',
-    type: AttributeType.STRING,
+    type: 'string',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 'build',
   },
   [VERCEL_STATUS_CODE]: {
     brief: 'HTTP status code of the request (-1 means no response returned and the lambda crashed)',
-    type: AttributeType.INTEGER,
+    type: 'integer',
     pii: {
-      isPii: IsPii.FALSE,
+      isPii: 'false',
     },
     isInOtel: false,
     example: 200,
