@@ -2322,6 +2322,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "{\"output\": \"rainy\", \"toolCallId\": \"1\"}"
     """
 
+    # Path: model/attributes/mdc/mdc__<key>.json
+    MDC_KEY: Literal["mdc.<key>"] = "mdc.<key>"
+    """Attributes from the Mapped Diagnostic Context (MDC) present at the moment the log record was created. The MDC is supported by all the most popular logging solutions in the Java ecosystem, and it's usually implemented as a thread-local map that stores context for e.g. a specific request.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Has Dynamic Suffix: true
+    """
+
     # Path: model/attributes/messaging/messaging__destination__connection.json
     MESSAGING_DESTINATION_CONNECTION: Literal["messaging.destination.connection"] = (
         "messaging.destination.connection"
@@ -5775,6 +5785,14 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example='{"output": "rainy", "toolCallId": "1"}',
     ),
+    "mdc.<key>": AttributeMetadata(
+        brief="Attributes from the Mapped Diagnostic Context (MDC) present at the moment the log record was created. The MDC is supported by all the most popular logging solutions in the Java ecosystem, and it's usually implemented as a thread-local map that stores context for e.g. a specific request.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        has_dynamic_suffix=True,
+        sdks=["java", "java.logback", "java.jul", "java.log4j2"],
+    ),
     "messaging.destination.connection": AttributeMetadata(
         brief="The message destination connection.",
         type=AttributeType.STRING,
@@ -7319,6 +7337,7 @@ Attributes = TypedDict(
         "logger.name": str,
         "mcp.prompt.result": str,
         "mcp.tool.result.content": str,
+        "mdc.<key>": str,
         "messaging.destination.connection": str,
         "messaging.destination.name": str,
         "messaging.message.body.size": int,

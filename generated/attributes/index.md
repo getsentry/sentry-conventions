@@ -28,6 +28,7 @@ This directory contains documentation for all available attributes.
 - [`lcp` Attributes](./lcp.md)
 - [`logger` Attributes](./logger.md)
 - [`mcp` Attributes](./mcp.md)
+- [`mdc` Attributes](./mdc.md)
 - [`messaging` Attributes](./messaging.md)
 - [`navigation` Attributes](./navigation.md)
 - [`nel` Attributes](./nel.md)
