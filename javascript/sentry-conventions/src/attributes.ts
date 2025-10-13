@@ -4050,6 +4050,7 @@ export type MCP_TOOL_RESULT_CONTENT_TYPE = string;
  *
  * Has Dynamic Suffix: true
  *
+ * @example "mdc.some_key='some_value'"
  */
 export const MDC_KEY = 'mdc.<key>';
 

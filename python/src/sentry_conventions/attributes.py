@@ -2330,6 +2330,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Has Dynamic Suffix: true
+    Example: "mdc.some_key='some_value'"
     """
 
     # Path: model/attributes/messaging/messaging__destination__connection.json
@@ -5791,6 +5792,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         has_dynamic_suffix=True,
+        example="mdc.some_key='some_value'",
         sdks=["java", "java.logback", "java.jul", "java.log4j2"],
     ),
     "messaging.destination.connection": AttributeMetadata(

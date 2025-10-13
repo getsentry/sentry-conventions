@@ -17,4 +17,5 @@ Attributes from the Mapped Diagnostic Context (MDC) present at the moment the lo
 | Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Has dynamic suffix | Yes |
+| Example | `mdc.some_key='some_value'` |
 
