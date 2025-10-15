@@ -7922,6 +7922,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [LOGGER_NAME]: 'string',
   [MCP_PROMPT_RESULT]: 'string',
   [MCP_TOOL_RESULT_CONTENT]: 'string',
+  [MDC_KEY]: 'string',
   [MESSAGING_DESTINATION_CONNECTION]: 'string',
   [MESSAGING_DESTINATION_NAME]: 'string',
   [MESSAGING_MESSAGE_BODY_SIZE]: 'integer',
@@ -8292,6 +8293,7 @@ export type AttributeName =
   | typeof LOGGER_NAME
   | typeof MCP_PROMPT_RESULT
   | typeof MCP_TOOL_RESULT_CONTENT
+  | typeof MDC_KEY
   | typeof MESSAGING_DESTINATION_CONNECTION
   | typeof MESSAGING_DESTINATION_NAME
   | typeof MESSAGING_MESSAGE_BODY_SIZE
@@ -10509,6 +10511,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '{"output": "rainy", "toolCallId": "1"}',
+  },
+  [MDC_KEY]: {
+    brief:
+      "Attributes from the Mapped Diagnostic Context (MDC) present at the moment the log record was created. The MDC is supported by all the most popular logging solutions in the Java ecosystem, and it's usually implemented as a thread-local map that stores context for e.g. a specific request.",
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    hasDynamicSuffix: true,
+    example: "mdc.some_key='some_value'",
+    sdks: ['java', 'java.logback', 'java.jul', 'java.log4j2'],
   },
   [MESSAGING_DESTINATION_CONNECTION]: {
     brief: 'The message destination connection.',
