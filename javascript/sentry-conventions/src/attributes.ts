@@ -4037,6 +4037,28 @@ export const MCP_TOOL_RESULT_CONTENT = 'mcp.tool.result.content';
  */
 export type MCP_TOOL_RESULT_CONTENT_TYPE = string;
 
+// Path: model/attributes/mdc/mdc__<key>.json
+
+/**
+ * Attributes from the Mapped Diagnostic Context (MDC) present at the moment the log record was created. The MDC is supported by all the most popular logging solutions in the Java ecosystem, and it's usually implemented as a thread-local map that stores context for e.g. a specific request. `mdc.<key>`
+ *
+ * Attribute Value Type: `string` {@link MDC_KEY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Has Dynamic Suffix: true
+ *
+ * @example "mdc.some_key='some_value'"
+ */
+export const MDC_KEY = 'mdc.<key>';
+
+/**
+ * Type for {@link MDC_KEY} mdc.<key>
+ */
+export type MDC_KEY_TYPE = string;
+
 // Path: model/attributes/messaging/messaging__destination__connection.json
 
 /**
@@ -12432,6 +12454,7 @@ export type Attributes = {
   [LOGGER_NAME]?: LOGGER_NAME_TYPE;
   [MCP_PROMPT_RESULT]?: MCP_PROMPT_RESULT_TYPE;
   [MCP_TOOL_RESULT_CONTENT]?: MCP_TOOL_RESULT_CONTENT_TYPE;
+  [MDC_KEY]?: MDC_KEY_TYPE;
   [MESSAGING_DESTINATION_CONNECTION]?: MESSAGING_DESTINATION_CONNECTION_TYPE;
   [MESSAGING_DESTINATION_NAME]?: MESSAGING_DESTINATION_NAME_TYPE;
   [MESSAGING_MESSAGE_BODY_SIZE]?: MESSAGING_MESSAGE_BODY_SIZE_TYPE;

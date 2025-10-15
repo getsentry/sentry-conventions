@@ -1,0 +1,12 @@
+{
+  "key": "mdc.<key>",
+  "brief": "Attributes from the Mapped Diagnostic Context (MDC) present at the moment the log record was created. The MDC is supported by all the most popular logging solutions in the Java ecosystem, and it's usually implemented as a thread-local map that stores context for e.g. a specific request.",
+  "has_dynamic_suffix": true,
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "mdc.some_key='some_value'",
+  "sdks": ["java", "java.logback", "java.jul", "java.log4j2"]
+}
