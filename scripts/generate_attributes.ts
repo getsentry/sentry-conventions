@@ -40,90 +40,123 @@ async function getAllJsonFiles(dir: string): Promise<string[]> {
 function writeToJs(attributesDir: string, attributeFiles: string[]) {
   let attributesContent = '// This is an auto-generated file. Do not edit!\n\n';
 
-  let attributeTypeMap = '';
+  // Reset memoization for fresh calculation
+  constantNameMemo.clear();
+  usedConstantNames.clear();
+
+  // First pass: collect all attributes and determine names (non-deprecated first to avoid collisions)
+  const allAttributes: Array<{
+    file: string;
+    key: string;
+    constantName: string;
+    attributeJson: AttributeJson;
+    isDeprecated: boolean;
+  }> = [];
 
   for (const file of attributeFiles) {
     const attributePath = path.join(attributesDir, file);
     const attributeJson = JSON.parse(fs.readFileSync(attributePath, 'utf-8')) as AttributeJson;
-    const { key, brief, type, pii, is_in_otel, example, has_dynamic_suffix, deprecation, alias } = attributeJson;
+    const isDeprecated = !!attributeJson.deprecation;
+    const constantName = getConstantName(attributeJson.key, isDeprecated);
 
-    // Convert attribute key to a valid JavaScript constant name
-    const isDeprecated = !!deprecation;
-    const constantName = getConstantName(key, isDeprecated);
-    const typeConstantName = `${constantName}_TYPE`;
+    allAttributes.push({
+      file,
+      key: attributeJson.key,
+      constantName,
+      attributeJson,
+      isDeprecated,
+    });
+  }
 
-    attributesContent += `// Path: model/attributes/${file}\n\n`;
+  let attributeTypeMap = '';
+  let individualConstants = '';
 
-    attributesContent += '/**\n';
-    attributesContent += ` * ${brief} \`${key}\`\n`;
+  // Generate individual attribute constants with documentation AND build the explicit type map
+  for (const { file, key, constantName, attributeJson, isDeprecated } of allAttributes) {
+    const { brief, type, pii, is_in_otel, example, has_dynamic_suffix, deprecation, alias, sdks } = attributeJson;
 
-    attributesContent += ' *\n';
-
-    // Add type information for the attribute
     const tsType = getTsType(type);
+    attributeTypeMap += `\n  [${constantName}]?: ${constantName}_TYPE;`;
 
-    // Add type information
-    attributesContent += ` * Attribute Value Type: \`${tsType}\` {@link ${typeConstantName}}\n`;
+    // Generate individual constant with documentation
+    individualConstants += `// Path: model/attributes/${file}\n\n`;
+    individualConstants += '/**\n';
+    individualConstants += ` * ${brief} \`${key}\`\n`;
+    individualConstants += ' *\n';
+    individualConstants += ` * Attribute Value Type: \`${tsType}\` {@link ${constantName}_TYPE}\n`;
+    individualConstants += ' *\n';
 
-    attributesContent += ' *\n';
+    // PII info
+    const piiText = pii.key === 'true' ? 'true' : pii.key === 'false' ? 'false' : 'maybe';
+    individualConstants += ` * Contains PII: ${piiText}`;
+    if (pii.reason) {
+      individualConstants += ` - ${pii.reason}`;
+    }
+    individualConstants += '\n';
+    individualConstants += ' *\n';
+    individualConstants += ` * Attribute defined in OTEL: ${is_in_otel ? 'Yes' : 'No'}\n`;
 
-    // Add PII information
-    attributesContent += ` * Contains PII: ${pii.key}${pii.reason ? ` - ${pii.reason}` : ''}\n`;
-
-    attributesContent += ' *\n';
-
-    // Add OTEL information
-    attributesContent += ` * Attribute defined in OTEL: ${is_in_otel ? 'Yes' : 'No'}\n`;
-
-    // Add has_dynamic_suffix if present
     if (has_dynamic_suffix) {
-      attributesContent += ' *\n';
-
-      attributesContent += ' * Has Dynamic Suffix: true\n';
+      individualConstants += ' *\n';
+      individualConstants += ' * Has Dynamic Suffix: true\n';
     }
 
-    // Add aliases if present
+    // Aliases
     if (alias && alias.length > 0) {
-      attributesContent += ' *\n';
-
-      attributesContent += ` * Aliases: ${alias.map((alias) => `{@link ${getConstantName(alias, !isDeprecated)}} \`${alias}\``).join(', ')}\n`;
+      individualConstants += ' *\n';
+      const aliasLinks = alias
+        .map((aliasKey) => {
+          // Find the constant name for this alias from our processed attributes
+          const aliasAttr = allAttributes.find((attr) => attr.key === aliasKey);
+          const aliasConstantName = aliasAttr ? aliasAttr.constantName : getConstantName(aliasKey, false);
+          return `{@link ${aliasConstantName}} \`${aliasKey}\``;
+        })
+        .join(', ');
+      individualConstants += ` * Aliases: ${aliasLinks}\n`;
     }
 
-    attributesContent += ' *\n';
-
-    // Add deprecation info if present
+    // Deprecation
     if (deprecation) {
+      individualConstants += ' *\n';
       let replacement = '';
       if (deprecation.replacement) {
         replacement = `Use {@link ${getConstantName(deprecation.replacement, false)}} (${deprecation.replacement}) instead`;
       }
-      attributesContent += ` * @deprecated ${replacement}${deprecation.reason ? ` - ${deprecation.reason}` : ''}\n`;
+      individualConstants += ` * @deprecated ${replacement}${deprecation.reason ? ` - ${deprecation.reason}` : ''}\n`;
     }
 
-    // Add all attributes (both deprecated and non-deprecated) to the Attributes type
-    attributeTypeMap += `\n  [${constantName}]?: ${typeConstantName};`;
-
-    // Add example if present
+    // Example
     if (example !== undefined) {
-      attributesContent += ` * @example ${JSON.stringify(example)}\n`;
+      if (!deprecation) {
+        individualConstants += ' *\n';
+      }
+      individualConstants += ` * @example ${JSON.stringify(example)}\n`;
     }
 
-    attributesContent += ' */\n';
+    individualConstants += ' */\n';
+    individualConstants += `export const ${constantName} = '${key}';\n\n`;
 
-    attributesContent += `export const ${constantName} = '${key}';\n\n`;
-
-    attributesContent += '/**\n';
-    attributesContent += ` * Type for {@link ${constantName}} ${key}\n`;
-    attributesContent += ' */\n';
-
-    attributesContent += `export type ${constantName}_TYPE = ${tsType};\n\n`;
+    // Generate type constant
+    individualConstants += '/**\n';
+    individualConstants += ` * Type for {@link ${constantName}} ${key}\n`;
+    individualConstants += ' */\n';
+    individualConstants += `export type ${constantName}_TYPE = ${tsType};\n\n`;
   }
+
+  // Add individual constants first
+  attributesContent += individualConstants;
+
+  // Generate metadata types and interfaces
+  attributesContent += generateMetadataTypes();
+
+  // Generate metadata dictionary
+  attributesContent += generateMetadataDict(attributesDir, attributeFiles, allAttributes);
 
   attributesContent +=
     'export type AttributeValue = string | number | boolean | Array<string> | Array<number> | Array<boolean>;\n\n';
 
   attributesContent += `export type Attributes = {${attributeTypeMap}
-} & Record<string, AttributeValue | undefined>;\n`;
+} & Record<string, AttributeValue | undefined>;\n\n`;
 
   // Write the generated content to the file
   const outputFilePath = path.join(__dirname, '..', 'javascript', 'sentry-conventions', 'src', 'attributes.ts');
@@ -365,7 +398,7 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
     // Build metadata dictionary entry using hardcoded string keys
     metadataDict += `    "${key}": AttributeMetadata(\n`;
     metadataDict += `        brief=${JSON.stringify(brief)},\n`;
-    metadataDict += `        type=${getAttributeTypeEnum(type)},\n`;
+    metadataDict += `        type=AttributeType.${getAttributeTypeEnum(type)},\n`;
 
     // Build PII info structure
     const piiStatus = pii.key === 'true' ? 'IsPii.TRUE' : pii.key === 'false' ? 'IsPii.FALSE' : 'IsPii.MAYBE';
@@ -481,21 +514,21 @@ function getPythonType(type: AttributeJson['type']): string {
 function getAttributeTypeEnum(type: AttributeJson['type']): string {
   switch (type) {
     case 'string':
-      return 'AttributeType.STRING';
+      return 'STRING';
     case 'boolean':
-      return 'AttributeType.BOOLEAN';
+      return 'BOOLEAN';
     case 'integer':
-      return 'AttributeType.INTEGER';
+      return 'INTEGER';
     case 'double':
-      return 'AttributeType.DOUBLE';
+      return 'DOUBLE';
     case 'string[]':
-      return 'AttributeType.STRING_ARRAY';
+      return 'STRING_ARRAY';
     case 'boolean[]':
-      return 'AttributeType.BOOLEAN_ARRAY';
+      return 'BOOLEAN_ARRAY';
     case 'integer[]':
-      return 'AttributeType.INTEGER_ARRAY';
+      return 'INTEGER_ARRAY';
     case 'double[]':
-      return 'AttributeType.DOUBLE_ARRAY';
+      return 'DOUBLE_ARRAY';
     default:
       throw new Error(`Unknown attribute type: ${type}`);
   }
@@ -511,4 +544,151 @@ function convertToPythonLiteral(value: AttributeJson['example']): string {
     return `[${items.join(', ')}]`;
   }
   return JSON.stringify(value);
+}
+
+function generateMetadataTypes(): string {
+  return `
+export type AttributeType = 
+  | 'string'
+  | 'boolean'
+  | 'integer'
+  | 'double'
+  | 'string[]'
+  | 'boolean[]'
+  | 'integer[]'
+  | 'double[]';
+
+export type IsPii = 
+  | 'true'
+  | 'false'
+  | 'maybe';
+
+export interface PiiInfo {
+  /** Whether the attribute contains PII */
+  isPii: IsPii;
+  /** Reason why it has PII or not */
+  reason?: string;
+}
+
+export interface DeprecationInfo {
+  /** What this attribute was replaced with */
+  replacement?: string;
+  /** Reason for deprecation */
+  reason?: string;
+}
+
+export interface AttributeMetadata {
+  /** A description of the attribute */
+  brief: string;
+  /** The type of the attribute value */
+  type: AttributeType;
+  /** If an attribute can have PII */
+  pii: PiiInfo;
+  /** Whether the attribute is defined in OpenTelemetry Semantic Conventions */
+  isInOtel: boolean;
+  /** If an attribute has a dynamic suffix */
+  hasDynamicSuffix?: boolean;
+  /** An example value of the attribute */
+  example?: AttributeValue;
+  /** If an attribute was deprecated, and what it was replaced with */
+  deprecation?: DeprecationInfo;
+  /** If there are attributes that alias to this attribute */
+  aliases?: AttributeName[];
+  /** If an attribute is SDK specific, list the SDKs that use this attribute */
+  sdks?: string[];
+}
+
+`;
+}
+
+function generateMetadataDict(
+  attributesDir: string,
+  attributeFiles: string[],
+  allAttributes: Array<{
+    file: string;
+    key: string;
+    constantName: string;
+    attributeJson: AttributeJson;
+    isDeprecated: boolean;
+  }>,
+): string {
+  // Generate ATTRIBUTE_TYPE using individual constants
+  let attributeTypeMap = 'export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {\n';
+
+  for (const { key, constantName, attributeJson } of allAttributes) {
+    const { type } = attributeJson;
+
+    attributeTypeMap += `  [${constantName}]: '${type}',\n`;
+  }
+
+  attributeTypeMap += '};\n\n';
+
+  // Generate type for the attribute names from the individual constants
+  const allConstantNames = allAttributes.map((attr) => attr.constantName);
+  const attributeNameType = `export type AttributeName = ${allConstantNames.map((name) => `typeof ${name}`).join(' | ')};\n\n`;
+
+  let metadataDict = attributeTypeMap + attributeNameType;
+  metadataDict += 'export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {\n';
+
+  for (const { key, attributeJson } of allAttributes) {
+    const { brief, type, pii, is_in_otel, example, has_dynamic_suffix, deprecation, alias } = attributeJson;
+    const constantName = getConstantName(key);
+
+    metadataDict += `  [${constantName}]: {\n`;
+    metadataDict += `    brief: ${JSON.stringify(brief)},\n`;
+    metadataDict += `    type: '${type}',\n`;
+
+    // Build PII info structure
+    const piiStatus = pii.key === 'true' ? "'true'" : pii.key === 'false' ? "'false'" : "'maybe'";
+    metadataDict += '    pii: {\n';
+    metadataDict += `      isPii: ${piiStatus}`;
+    if (pii.reason) {
+      metadataDict += `,\n      reason: ${JSON.stringify(pii.reason)}`;
+    }
+    metadataDict += '\n    },\n';
+
+    metadataDict += `    isInOtel: ${is_in_otel},\n`;
+
+    if (has_dynamic_suffix) {
+      metadataDict += '    hasDynamicSuffix: true,\n';
+    }
+
+    if (example !== undefined) {
+      metadataDict += `    example: ${JSON.stringify(example)},\n`;
+    }
+
+    // Build deprecation info structure if present
+    if (deprecation) {
+      metadataDict += '    deprecation: {';
+      const deprecationFields: string[] = [];
+      if (deprecation.replacement) {
+        deprecationFields.push(`\n      replacement: ${JSON.stringify(deprecation.replacement)}`);
+      }
+      if (deprecation.reason) {
+        deprecationFields.push(`\n      reason: ${JSON.stringify(deprecation.reason)}`);
+      }
+      if (deprecationFields.length > 0) {
+        metadataDict += deprecationFields.join(',');
+        metadataDict += '\n    },\n';
+      } else {
+        metadataDict += '},\n';
+      }
+    }
+
+    if (alias && alias.length > 0) {
+      // Use constant names for aliases
+      const constantAliases = alias.map((aliasKey) => getConstantName(aliasKey)).join(', ');
+      metadataDict += `    aliases: [${constantAliases}],\n`;
+    }
+
+    if (attributeJson.sdks && attributeJson.sdks.length > 0) {
+      metadataDict += `    sdks: ${JSON.stringify(attributeJson.sdks)},\n`;
+    }
+
+    metadataDict += '  },\n';
+  }
+
+  metadataDict += '};\n\n';
+
+  return metadataDict;
 }
