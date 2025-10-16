@@ -6,6 +6,6 @@
     "key": "true",
     "reason": "URIs can contain user file paths"
   },
-  "is_in_otel": true,
+  "is_in_otel": false,
   "example": "file:///path/to/resource"
 }

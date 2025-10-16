@@ -6,7 +6,7 @@
     "key": "true",
     "reason": "Arguments contain user input"
   },
-  "is_in_otel": true,
+  "is_in_otel": false,
   "has_dynamic_suffix": true,
   "example": "mcp.request.argument.query='weather in Paris'"
 }

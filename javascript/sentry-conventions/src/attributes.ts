@@ -4206,7 +4206,7 @@ export type MCP_LOGGING_MESSAGE_TYPE = string;
  *
  * Contains PII: false
  *
- * Attribute defined in OTEL: Yes
+ * Attribute defined in OTEL: No
  *
  * @example "tools/call"
  */
@@ -4326,7 +4326,7 @@ export type MCP_PROGRESS_TOTAL_TYPE = number;
  *
  * Contains PII: maybe - Prompt names may reveal user behavior patterns or sensitive operations
  *
- * Attribute defined in OTEL: Yes
+ * Attribute defined in OTEL: No
  *
  * @example "summarize"
  */
@@ -4466,7 +4466,7 @@ export type MCP_PROTOCOL_VERSION_TYPE = string;
  *
  * Contains PII: true - Arguments contain user input
  *
- * Attribute defined in OTEL: Yes
+ * Attribute defined in OTEL: No
  *
  * Has Dynamic Suffix: true
  *
@@ -4488,7 +4488,7 @@ export type MCP_REQUEST_ARGUMENT_KEY_TYPE = string;
  *
  * Contains PII: true - Prompt names can contain user input
  *
- * Attribute defined in OTEL: Yes
+ * Attribute defined in OTEL: No
  *
  * @example "summarize"
  */
@@ -4508,7 +4508,7 @@ export type MCP_REQUEST_ARGUMENT_NAME_TYPE = string;
  *
  * Contains PII: true - URIs can contain user file paths
  *
- * Attribute defined in OTEL: Yes
+ * Attribute defined in OTEL: No
  *
  * @example "file:///path/to/resource"
  */
@@ -4528,7 +4528,7 @@ export type MCP_REQUEST_ARGUMENT_URI_TYPE = string;
  *
  * Contains PII: false
  *
- * Attribute defined in OTEL: Yes
+ * Attribute defined in OTEL: No
  *
  * @example "1"
  */
@@ -4568,7 +4568,7 @@ export type MCP_RESOURCE_PROTOCOL_TYPE = string;
  *
  * Contains PII: true - URIs can contain sensitive file paths
  *
- * Attribute defined in OTEL: Yes
+ * Attribute defined in OTEL: No
  *
  * @example "file:///path/to/file.txt"
  */
@@ -4648,7 +4648,7 @@ export type MCP_SERVER_VERSION_TYPE = string;
  *
  * Contains PII: false
  *
- * Attribute defined in OTEL: Yes
+ * Attribute defined in OTEL: No
  *
  * @example "550e8400-e29b-41d4-a716-446655440000"
  */
@@ -4668,7 +4668,7 @@ export type MCP_SESSION_ID_TYPE = string;
  *
  * Contains PII: false
  *
- * Attribute defined in OTEL: Yes
+ * Attribute defined in OTEL: No
  *
  * @example "calculator"
  */
@@ -11388,7 +11388,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     pii: {
       isPii: 'false',
     },
-    isInOtel: true,
+    isInOtel: false,
     example: 'tools/call',
   },
   [MCP_PROGRESS_CURRENT]: {
@@ -11444,7 +11444,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
       reason: 'Prompt names may reveal user behavior patterns or sensitive operations',
     },
-    isInOtel: true,
+    isInOtel: false,
     example: 'summarize',
   },
   [MCP_PROMPT_RESULT_DESCRIPTION]: {
@@ -11509,7 +11509,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'true',
       reason: 'Arguments contain user input',
     },
-    isInOtel: true,
+    isInOtel: false,
     hasDynamicSuffix: true,
     example: "mcp.request.argument.query='weather in Paris'",
   },
@@ -11520,7 +11520,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'true',
       reason: 'Prompt names can contain user input',
     },
-    isInOtel: true,
+    isInOtel: false,
     example: 'summarize',
   },
   [MCP_REQUEST_ARGUMENT_URI]: {
@@ -11530,7 +11530,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'true',
       reason: 'URIs can contain user file paths',
     },
-    isInOtel: true,
+    isInOtel: false,
     example: 'file:///path/to/resource',
   },
   [MCP_REQUEST_ID]: {
@@ -11539,7 +11539,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     pii: {
       isPii: 'false',
     },
-    isInOtel: true,
+    isInOtel: false,
     example: '1',
   },
   [MCP_RESOURCE_PROTOCOL]: {
@@ -11558,7 +11558,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'true',
       reason: 'URIs can contain sensitive file paths',
     },
-    isInOtel: true,
+    isInOtel: false,
     example: 'file:///path/to/file.txt',
   },
   [MCP_SERVER_NAME]: {
@@ -11595,7 +11595,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     pii: {
       isPii: 'false',
     },
-    isInOtel: true,
+    isInOtel: false,
     example: '550e8400-e29b-41d4-a716-446655440000',
   },
   [MCP_TOOL_NAME]: {
@@ -11604,7 +11604,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     pii: {
       isPii: 'false',
     },
-    isInOtel: true,
+    isInOtel: false,
     example: 'calculator',
   },
   [MCP_TOOL_RESULT_CONTENT]: {

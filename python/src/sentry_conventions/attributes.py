@@ -2408,7 +2408,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     Type: str
     Contains PII: false
-    Defined in OTEL: Yes
+    Defined in OTEL: No
     Example: "tools/call"
     """
 
@@ -2470,7 +2470,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     Type: str
     Contains PII: maybe - Prompt names may reveal user behavior patterns or sensitive operations
-    Defined in OTEL: Yes
+    Defined in OTEL: No
     Example: "summarize"
     """
 
@@ -2550,7 +2550,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     Type: str
     Contains PII: true - Arguments contain user input
-    Defined in OTEL: Yes
+    Defined in OTEL: No
     Has Dynamic Suffix: true
     Example: "mcp.request.argument.query='weather in Paris'"
     """
@@ -2563,7 +2563,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     Type: str
     Contains PII: true - Prompt names can contain user input
-    Defined in OTEL: Yes
+    Defined in OTEL: No
     Example: "summarize"
     """
 
@@ -2575,7 +2575,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     Type: str
     Contains PII: true - URIs can contain user file paths
-    Defined in OTEL: Yes
+    Defined in OTEL: No
     Example: "file:///path/to/resource"
     """
 
@@ -2585,7 +2585,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     Type: str
     Contains PII: false
-    Defined in OTEL: Yes
+    Defined in OTEL: No
     Example: "1"
     """
 
@@ -2605,7 +2605,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     Type: str
     Contains PII: true - URIs can contain sensitive file paths
-    Defined in OTEL: Yes
+    Defined in OTEL: No
     Example: "file:///path/to/file.txt"
     """
 
@@ -2645,7 +2645,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     Type: str
     Contains PII: false
-    Defined in OTEL: Yes
+    Defined in OTEL: No
     Example: "550e8400-e29b-41d4-a716-446655440000"
     """
 
@@ -2655,7 +2655,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     Type: str
     Contains PII: false
-    Defined in OTEL: Yes
+    Defined in OTEL: No
     Example: "calculator"
     """
 
@@ -6238,7 +6238,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="The name of the MCP request or notification method being called.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=True,
+        is_in_otel=False,
         example="tools/call",
     ),
     "mcp.progress.current": AttributeMetadata(
@@ -6286,7 +6286,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             isPii=IsPii.MAYBE,
             reason="Prompt names may reveal user behavior patterns or sensitive operations",
         ),
-        is_in_otel=True,
+        is_in_otel=False,
         example="summarize",
     ),
     "mcp.prompt.result.description": AttributeMetadata(
@@ -6335,7 +6335,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="MCP request argument with dynamic key suffix. The <key> is replaced with the actual argument name. The value is a JSON-stringified representation of the argument value.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.TRUE, reason="Arguments contain user input"),
-        is_in_otel=True,
+        is_in_otel=False,
         has_dynamic_suffix=True,
         example="mcp.request.argument.query='weather in Paris'",
     ),
@@ -6343,21 +6343,21 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="Name argument from prompts/get MCP request.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.TRUE, reason="Prompt names can contain user input"),
-        is_in_otel=True,
+        is_in_otel=False,
         example="summarize",
     ),
     "mcp.request.argument.uri": AttributeMetadata(
         brief="URI argument from resources/read MCP request.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.TRUE, reason="URIs can contain user file paths"),
-        is_in_otel=True,
+        is_in_otel=False,
         example="file:///path/to/resource",
     ),
     "mcp.request.id": AttributeMetadata(
         brief="JSON-RPC request identifier for the MCP request. Unique within the MCP session.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=True,
+        is_in_otel=False,
         example="1",
     ),
     "mcp.resource.protocol": AttributeMetadata(
@@ -6371,7 +6371,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="The resource URI being accessed in an MCP operation.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.TRUE, reason="URIs can contain sensitive file paths"),
-        is_in_otel=True,
+        is_in_otel=False,
         example="file:///path/to/file.txt",
     ),
     "mcp.server.name": AttributeMetadata(
@@ -6402,14 +6402,14 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="Identifier for the MCP session.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=True,
+        is_in_otel=False,
         example="550e8400-e29b-41d4-a716-446655440000",
     ),
     "mcp.tool.name": AttributeMetadata(
         brief="Name of the MCP tool being called.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=True,
+        is_in_otel=False,
         example="calculator",
     ),
     "mcp.tool.result.content": AttributeMetadata(

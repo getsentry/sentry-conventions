@@ -162,7 +162,7 @@ The name of the MCP request or notification method being called.
 | --- | --- |
 | Type | `string` |
 | Has PII | false |
-| Exists in OpenTelemetry | Yes |
+| Exists in OpenTelemetry | No |
 | Example | `tools/call` |
 
 ### mcp.progress.current
@@ -228,7 +228,7 @@ Name of the MCP prompt template being used.
 | --- | --- |
 | Type | `string` |
 | Has PII | maybe (Prompt names may reveal user behavior patterns or sensitive operations) |
-| Exists in OpenTelemetry | Yes |
+| Exists in OpenTelemetry | No |
 | Example | `summarize` |
 
 ### mcp.prompt.result.description
@@ -305,7 +305,7 @@ MCP request argument with dynamic key suffix. The \<key\> is replaced with the a
 | --- | --- |
 | Type | `string` |
 | Has PII | true (Arguments contain user input) |
-| Exists in OpenTelemetry | Yes |
+| Exists in OpenTelemetry | No |
 | Has dynamic suffix | Yes |
 | Example | `mcp.request.argument.query='weather in Paris'` |
 
@@ -317,7 +317,7 @@ Name argument from prompts/get MCP request.
 | --- | --- |
 | Type | `string` |
 | Has PII | true (Prompt names can contain user input) |
-| Exists in OpenTelemetry | Yes |
+| Exists in OpenTelemetry | No |
 | Example | `summarize` |
 
 ### mcp.request.argument.uri
@@ -328,7 +328,7 @@ URI argument from resources/read MCP request.
 | --- | --- |
 | Type | `string` |
 | Has PII | true (URIs can contain user file paths) |
-| Exists in OpenTelemetry | Yes |
+| Exists in OpenTelemetry | No |
 | Example | `file:///path/to/resource` |
 
 ### mcp.request.id
@@ -339,7 +339,7 @@ JSON-RPC request identifier for the MCP request. Unique within the MCP session.
 | --- | --- |
 | Type | `string` |
 | Has PII | false |
-| Exists in OpenTelemetry | Yes |
+| Exists in OpenTelemetry | No |
 | Example | `1` |
 
 ### mcp.resource.protocol
@@ -361,7 +361,7 @@ The resource URI being accessed in an MCP operation.
 | --- | --- |
 | Type | `string` |
 | Has PII | true (URIs can contain sensitive file paths) |
-| Exists in OpenTelemetry | Yes |
+| Exists in OpenTelemetry | No |
 | Example | `file:///path/to/file.txt` |
 
 ### mcp.server.name
@@ -405,7 +405,7 @@ Identifier for the MCP session.
 | --- | --- |
 | Type | `string` |
 | Has PII | false |
-| Exists in OpenTelemetry | Yes |
+| Exists in OpenTelemetry | No |
 | Example | `550e8400-e29b-41d4-a716-446655440000` |
 
 ### mcp.tool.name
@@ -416,7 +416,7 @@ Name of the MCP tool being called.
 | --- | --- |
 | Type | `string` |
 | Has PII | false |
-| Exists in OpenTelemetry | Yes |
+| Exists in OpenTelemetry | No |
 | Example | `calculator` |
 
 ### mcp.tool.result.content
