@@ -1,0 +1,10 @@
+{
+  "key": "mcp.prompt.result.message_count",
+  "brief": "Number of messages in the prompt result.",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 3
+}

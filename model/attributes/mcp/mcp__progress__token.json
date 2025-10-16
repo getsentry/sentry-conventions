@@ -1,0 +1,10 @@
+{
+  "key": "mcp.progress.token",
+  "brief": "Token for tracking progress of an MCP operation.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "progress-token-123"
+}

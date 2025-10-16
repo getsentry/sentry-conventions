@@ -1,0 +1,11 @@
+{
+  "key": "mcp.request.argument.name",
+  "brief": "Name argument from prompts/get MCP request.",
+  "type": "string",
+  "pii": {
+    "key": "maybe",
+    "reason": "Prompt names may contain user-specific information"
+  },
+  "is_in_otel": true,
+  "example": "summarize"
+}

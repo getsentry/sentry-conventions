@@ -1,0 +1,10 @@
+{
+  "key": "mcp.prompt.name",
+  "brief": "Name of the MCP prompt template being used.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "summarize"
+}

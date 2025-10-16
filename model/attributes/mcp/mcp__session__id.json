@@ -1,0 +1,10 @@
+{
+  "key": "mcp.session.id",
+  "brief": "Identifier for the MCP session.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "550e8400-e29b-41d4-a716-446655440000"
+}

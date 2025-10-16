@@ -1,0 +1,10 @@
+{
+  "key": "mcp.cancelled.reason",
+  "brief": "Reason for the cancellation of an MCP operation.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "User cancelled the request"
+}

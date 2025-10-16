@@ -1,0 +1,10 @@
+{
+  "key": "mcp.method.name",
+  "brief": "The name of the MCP request or notification method being called.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "tools/call"
+}

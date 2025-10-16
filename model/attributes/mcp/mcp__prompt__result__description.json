@@ -1,0 +1,11 @@
+{
+  "key": "mcp.prompt.result.description",
+  "brief": "Description of the prompt result.",
+  "type": "string",
+  "pii": {
+    "key": "maybe",
+    "reason": "Description may contain user-specific or sensitive information"
+  },
+  "is_in_otel": false,
+  "example": "A summary of the requested information"
+}

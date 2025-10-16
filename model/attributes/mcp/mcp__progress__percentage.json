@@ -1,0 +1,10 @@
+{
+  "key": "mcp.progress.percentage",
+  "brief": "Calculated progress percentage of an MCP operation. Computed from current/total * 100.",
+  "type": "double",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 50.0
+}

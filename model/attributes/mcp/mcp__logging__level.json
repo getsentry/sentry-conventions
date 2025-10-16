@@ -1,0 +1,10 @@
+{
+  "key": "mcp.logging.level",
+  "brief": "Log level for MCP logging operations.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "info"
+}

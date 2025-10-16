@@ -3997,25 +3997,687 @@ export const LOGGER_NAME = 'logger.name';
  */
 export type LOGGER_NAME_TYPE = string;
 
-// Path: model/attributes/mcp/mcp__prompt__result.json
+// Path: model/attributes/mcp/mcp__cancelled__reason.json
 
 /**
- * The content of the prompt result. `mcp.prompt.result`
+ * Reason for the cancellation of an MCP operation. `mcp.cancelled.reason`
  *
- * Attribute Value Type: `string` {@link MCP_PROMPT_RESULT_TYPE}
+ * Attribute Value Type: `string` {@link MCP_CANCELLED_REASON_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: false
  *
  * Attribute defined in OTEL: No
  *
- * @example "An example prompt result!"
+ * @example "User cancelled the request"
  */
-export const MCP_PROMPT_RESULT = 'mcp.prompt.result';
+export const MCP_CANCELLED_REASON = 'mcp.cancelled.reason';
 
 /**
- * Type for {@link MCP_PROMPT_RESULT} mcp.prompt.result
+ * Type for {@link MCP_CANCELLED_REASON} mcp.cancelled.reason
  */
-export type MCP_PROMPT_RESULT_TYPE = string;
+export type MCP_CANCELLED_REASON_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__cancelled__request_id.json
+
+/**
+ * Request ID of the cancelled MCP operation. `mcp.cancelled.request_id`
+ *
+ * Attribute Value Type: `string` {@link MCP_CANCELLED_REQUEST_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "123"
+ */
+export const MCP_CANCELLED_REQUEST_ID = 'mcp.cancelled.request_id';
+
+/**
+ * Type for {@link MCP_CANCELLED_REQUEST_ID} mcp.cancelled.request_id
+ */
+export type MCP_CANCELLED_REQUEST_ID_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__client__name.json
+
+/**
+ * Name of the MCP client application. `mcp.client.name`
+ *
+ * Attribute Value Type: `string` {@link MCP_CLIENT_NAME_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "claude-desktop"
+ */
+export const MCP_CLIENT_NAME = 'mcp.client.name';
+
+/**
+ * Type for {@link MCP_CLIENT_NAME} mcp.client.name
+ */
+export type MCP_CLIENT_NAME_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__client__title.json
+
+/**
+ * Display title of the MCP client application. `mcp.client.title`
+ *
+ * Attribute Value Type: `string` {@link MCP_CLIENT_TITLE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "Claude Desktop"
+ */
+export const MCP_CLIENT_TITLE = 'mcp.client.title';
+
+/**
+ * Type for {@link MCP_CLIENT_TITLE} mcp.client.title
+ */
+export type MCP_CLIENT_TITLE_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__client__version.json
+
+/**
+ * Version of the MCP client application. `mcp.client.version`
+ *
+ * Attribute Value Type: `string` {@link MCP_CLIENT_VERSION_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "1.0.0"
+ */
+export const MCP_CLIENT_VERSION = 'mcp.client.version';
+
+/**
+ * Type for {@link MCP_CLIENT_VERSION} mcp.client.version
+ */
+export type MCP_CLIENT_VERSION_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__lifecycle__phase.json
+
+/**
+ * Lifecycle phase indicator for MCP operations. `mcp.lifecycle.phase`
+ *
+ * Attribute Value Type: `string` {@link MCP_LIFECYCLE_PHASE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "initialization_complete"
+ */
+export const MCP_LIFECYCLE_PHASE = 'mcp.lifecycle.phase';
+
+/**
+ * Type for {@link MCP_LIFECYCLE_PHASE} mcp.lifecycle.phase
+ */
+export type MCP_LIFECYCLE_PHASE_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__logging__data_type.json
+
+/**
+ * Data type of the logged message content. `mcp.logging.data_type`
+ *
+ * Attribute Value Type: `string` {@link MCP_LOGGING_DATA_TYPE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "string"
+ */
+export const MCP_LOGGING_DATA_TYPE = 'mcp.logging.data_type';
+
+/**
+ * Type for {@link MCP_LOGGING_DATA_TYPE} mcp.logging.data_type
+ */
+export type MCP_LOGGING_DATA_TYPE_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__logging__level.json
+
+/**
+ * Log level for MCP logging operations. `mcp.logging.level`
+ *
+ * Attribute Value Type: `string` {@link MCP_LOGGING_LEVEL_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "info"
+ */
+export const MCP_LOGGING_LEVEL = 'mcp.logging.level';
+
+/**
+ * Type for {@link MCP_LOGGING_LEVEL} mcp.logging.level
+ */
+export type MCP_LOGGING_LEVEL_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__logging__logger.json
+
+/**
+ * Logger name for MCP logging operations. `mcp.logging.logger`
+ *
+ * Attribute Value Type: `string` {@link MCP_LOGGING_LOGGER_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "mcp_server"
+ */
+export const MCP_LOGGING_LOGGER = 'mcp.logging.logger';
+
+/**
+ * Type for {@link MCP_LOGGING_LOGGER} mcp.logging.logger
+ */
+export type MCP_LOGGING_LOGGER_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__logging__message.json
+
+/**
+ * Log message content from MCP logging operations. `mcp.logging.message`
+ *
+ * Attribute Value Type: `string` {@link MCP_LOGGING_MESSAGE_TYPE}
+ *
+ * Contains PII: maybe - Log messages may contain user-specific or sensitive information
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "Tool execution completed successfully"
+ */
+export const MCP_LOGGING_MESSAGE = 'mcp.logging.message';
+
+/**
+ * Type for {@link MCP_LOGGING_MESSAGE} mcp.logging.message
+ */
+export type MCP_LOGGING_MESSAGE_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__method__name.json
+
+/**
+ * The name of the MCP request or notification method being called. `mcp.method.name`
+ *
+ * Attribute Value Type: `string` {@link MCP_METHOD_NAME_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "tools/call"
+ */
+export const MCP_METHOD_NAME = 'mcp.method.name';
+
+/**
+ * Type for {@link MCP_METHOD_NAME} mcp.method.name
+ */
+export type MCP_METHOD_NAME_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__progress__current.json
+
+/**
+ * Current progress value of an MCP operation. `mcp.progress.current`
+ *
+ * Attribute Value Type: `number` {@link MCP_PROGRESS_CURRENT_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 50
+ */
+export const MCP_PROGRESS_CURRENT = 'mcp.progress.current';
+
+/**
+ * Type for {@link MCP_PROGRESS_CURRENT} mcp.progress.current
+ */
+export type MCP_PROGRESS_CURRENT_TYPE = number;
+
+// Path: model/attributes/mcp/mcp__progress__message.json
+
+/**
+ * Progress message describing the current state of an MCP operation. `mcp.progress.message`
+ *
+ * Attribute Value Type: `string` {@link MCP_PROGRESS_MESSAGE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "Processing 50 of 100 items"
+ */
+export const MCP_PROGRESS_MESSAGE = 'mcp.progress.message';
+
+/**
+ * Type for {@link MCP_PROGRESS_MESSAGE} mcp.progress.message
+ */
+export type MCP_PROGRESS_MESSAGE_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__progress__percentage.json
+
+/**
+ * Calculated progress percentage of an MCP operation. Computed from current/total * 100. `mcp.progress.percentage`
+ *
+ * Attribute Value Type: `number` {@link MCP_PROGRESS_PERCENTAGE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 50
+ */
+export const MCP_PROGRESS_PERCENTAGE = 'mcp.progress.percentage';
+
+/**
+ * Type for {@link MCP_PROGRESS_PERCENTAGE} mcp.progress.percentage
+ */
+export type MCP_PROGRESS_PERCENTAGE_TYPE = number;
+
+// Path: model/attributes/mcp/mcp__progress__token.json
+
+/**
+ * Token for tracking progress of an MCP operation. `mcp.progress.token`
+ *
+ * Attribute Value Type: `string` {@link MCP_PROGRESS_TOKEN_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "progress-token-123"
+ */
+export const MCP_PROGRESS_TOKEN = 'mcp.progress.token';
+
+/**
+ * Type for {@link MCP_PROGRESS_TOKEN} mcp.progress.token
+ */
+export type MCP_PROGRESS_TOKEN_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__progress__total.json
+
+/**
+ * Total progress target value of an MCP operation. `mcp.progress.total`
+ *
+ * Attribute Value Type: `number` {@link MCP_PROGRESS_TOTAL_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 100
+ */
+export const MCP_PROGRESS_TOTAL = 'mcp.progress.total';
+
+/**
+ * Type for {@link MCP_PROGRESS_TOTAL} mcp.progress.total
+ */
+export type MCP_PROGRESS_TOTAL_TYPE = number;
+
+// Path: model/attributes/mcp/mcp__prompt__name.json
+
+/**
+ * Name of the MCP prompt template being used. `mcp.prompt.name`
+ *
+ * Attribute Value Type: `string` {@link MCP_PROMPT_NAME_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "summarize"
+ */
+export const MCP_PROMPT_NAME = 'mcp.prompt.name';
+
+/**
+ * Type for {@link MCP_PROMPT_NAME} mcp.prompt.name
+ */
+export type MCP_PROMPT_NAME_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__prompt__result__description.json
+
+/**
+ * Description of the prompt result. `mcp.prompt.result.description`
+ *
+ * Attribute Value Type: `string` {@link MCP_PROMPT_RESULT_DESCRIPTION_TYPE}
+ *
+ * Contains PII: maybe - Description may contain user-specific or sensitive information
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "A summary of the requested information"
+ */
+export const MCP_PROMPT_RESULT_DESCRIPTION = 'mcp.prompt.result.description';
+
+/**
+ * Type for {@link MCP_PROMPT_RESULT_DESCRIPTION} mcp.prompt.result.description
+ */
+export type MCP_PROMPT_RESULT_DESCRIPTION_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__prompt__result__message_content.json
+
+/**
+ * Content of the message in the prompt result. Used for single message results only. `mcp.prompt.result.message_content`
+ *
+ * Attribute Value Type: `string` {@link MCP_PROMPT_RESULT_MESSAGE_CONTENT_TYPE}
+ *
+ * Contains PII: maybe - Message content may contain user-specific or sensitive information
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "Please provide a summary of the document"
+ */
+export const MCP_PROMPT_RESULT_MESSAGE_CONTENT = 'mcp.prompt.result.message_content';
+
+/**
+ * Type for {@link MCP_PROMPT_RESULT_MESSAGE_CONTENT} mcp.prompt.result.message_content
+ */
+export type MCP_PROMPT_RESULT_MESSAGE_CONTENT_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__prompt__result__message_count.json
+
+/**
+ * Number of messages in the prompt result. `mcp.prompt.result.message_count`
+ *
+ * Attribute Value Type: `number` {@link MCP_PROMPT_RESULT_MESSAGE_COUNT_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 3
+ */
+export const MCP_PROMPT_RESULT_MESSAGE_COUNT = 'mcp.prompt.result.message_count';
+
+/**
+ * Type for {@link MCP_PROMPT_RESULT_MESSAGE_COUNT} mcp.prompt.result.message_count
+ */
+export type MCP_PROMPT_RESULT_MESSAGE_COUNT_TYPE = number;
+
+// Path: model/attributes/mcp/mcp__prompt__result__message_role.json
+
+/**
+ * Role of the message in the prompt result. Used for single message results only. `mcp.prompt.result.message_role`
+ *
+ * Attribute Value Type: `string` {@link MCP_PROMPT_RESULT_MESSAGE_ROLE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "user"
+ */
+export const MCP_PROMPT_RESULT_MESSAGE_ROLE = 'mcp.prompt.result.message_role';
+
+/**
+ * Type for {@link MCP_PROMPT_RESULT_MESSAGE_ROLE} mcp.prompt.result.message_role
+ */
+export type MCP_PROMPT_RESULT_MESSAGE_ROLE_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__protocol__ready.json
+
+/**
+ * Protocol readiness indicator for MCP session. Non-zero value indicates the protocol is ready. `mcp.protocol.ready`
+ *
+ * Attribute Value Type: `number` {@link MCP_PROTOCOL_READY_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 1
+ */
+export const MCP_PROTOCOL_READY = 'mcp.protocol.ready';
+
+/**
+ * Type for {@link MCP_PROTOCOL_READY} mcp.protocol.ready
+ */
+export type MCP_PROTOCOL_READY_TYPE = number;
+
+// Path: model/attributes/mcp/mcp__protocol__version.json
+
+/**
+ * MCP protocol version used in the session. `mcp.protocol.version`
+ *
+ * Attribute Value Type: `string` {@link MCP_PROTOCOL_VERSION_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "2024-11-05"
+ */
+export const MCP_PROTOCOL_VERSION = 'mcp.protocol.version';
+
+/**
+ * Type for {@link MCP_PROTOCOL_VERSION} mcp.protocol.version
+ */
+export type MCP_PROTOCOL_VERSION_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__request__argument__<key>.json
+
+/**
+ * MCP request argument with dynamic key suffix. The <key> is replaced with the actual argument name. The value is a JSON-stringified representation of the argument value. `mcp.request.argument.<key>`
+ *
+ * Attribute Value Type: `string` {@link MCP_REQUEST_ARGUMENT_KEY_TYPE}
+ *
+ * Contains PII: maybe - Arguments may contain user-specific or sensitive information
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * Has Dynamic Suffix: true
+ *
+ * @example "mcp.request.argument.query='weather in Paris'"
+ */
+export const MCP_REQUEST_ARGUMENT_KEY = 'mcp.request.argument.<key>';
+
+/**
+ * Type for {@link MCP_REQUEST_ARGUMENT_KEY} mcp.request.argument.<key>
+ */
+export type MCP_REQUEST_ARGUMENT_KEY_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__request__argument__name.json
+
+/**
+ * Name argument from prompts/get MCP request. `mcp.request.argument.name`
+ *
+ * Attribute Value Type: `string` {@link MCP_REQUEST_ARGUMENT_NAME_TYPE}
+ *
+ * Contains PII: maybe - Prompt names may contain user-specific information
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "summarize"
+ */
+export const MCP_REQUEST_ARGUMENT_NAME = 'mcp.request.argument.name';
+
+/**
+ * Type for {@link MCP_REQUEST_ARGUMENT_NAME} mcp.request.argument.name
+ */
+export type MCP_REQUEST_ARGUMENT_NAME_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__request__argument__uri.json
+
+/**
+ * URI argument from resources/read MCP request. `mcp.request.argument.uri`
+ *
+ * Attribute Value Type: `string` {@link MCP_REQUEST_ARGUMENT_URI_TYPE}
+ *
+ * Contains PII: maybe - URIs may contain sensitive file paths or user-specific information
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "file:///path/to/resource"
+ */
+export const MCP_REQUEST_ARGUMENT_URI = 'mcp.request.argument.uri';
+
+/**
+ * Type for {@link MCP_REQUEST_ARGUMENT_URI} mcp.request.argument.uri
+ */
+export type MCP_REQUEST_ARGUMENT_URI_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__request__id.json
+
+/**
+ * JSON-RPC request identifier for the MCP request. Unique within the MCP session. `mcp.request.id`
+ *
+ * Attribute Value Type: `string` {@link MCP_REQUEST_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "1"
+ */
+export const MCP_REQUEST_ID = 'mcp.request.id';
+
+/**
+ * Type for {@link MCP_REQUEST_ID} mcp.request.id
+ */
+export type MCP_REQUEST_ID_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__resource__protocol.json
+
+/**
+ * Protocol of the resource URI being accessed, extracted from the URI. `mcp.resource.protocol`
+ *
+ * Attribute Value Type: `string` {@link MCP_RESOURCE_PROTOCOL_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "file"
+ */
+export const MCP_RESOURCE_PROTOCOL = 'mcp.resource.protocol';
+
+/**
+ * Type for {@link MCP_RESOURCE_PROTOCOL} mcp.resource.protocol
+ */
+export type MCP_RESOURCE_PROTOCOL_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__resource__uri.json
+
+/**
+ * The resource URI being accessed in an MCP operation. `mcp.resource.uri`
+ *
+ * Attribute Value Type: `string` {@link MCP_RESOURCE_URI_TYPE}
+ *
+ * Contains PII: maybe - URIs may contain sensitive file paths or user-specific information
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "file:///path/to/file.txt"
+ */
+export const MCP_RESOURCE_URI = 'mcp.resource.uri';
+
+/**
+ * Type for {@link MCP_RESOURCE_URI} mcp.resource.uri
+ */
+export type MCP_RESOURCE_URI_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__server__name.json
+
+/**
+ * Name of the MCP server application. `mcp.server.name`
+ *
+ * Attribute Value Type: `string` {@link MCP_SERVER_NAME_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "sentry-mcp-server"
+ */
+export const MCP_SERVER_NAME = 'mcp.server.name';
+
+/**
+ * Type for {@link MCP_SERVER_NAME} mcp.server.name
+ */
+export type MCP_SERVER_NAME_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__server__title.json
+
+/**
+ * Display title of the MCP server application. `mcp.server.title`
+ *
+ * Attribute Value Type: `string` {@link MCP_SERVER_TITLE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "Sentry MCP Server"
+ */
+export const MCP_SERVER_TITLE = 'mcp.server.title';
+
+/**
+ * Type for {@link MCP_SERVER_TITLE} mcp.server.title
+ */
+export type MCP_SERVER_TITLE_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__server__version.json
+
+/**
+ * Version of the MCP server application. `mcp.server.version`
+ *
+ * Attribute Value Type: `string` {@link MCP_SERVER_VERSION_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "0.1.0"
+ */
+export const MCP_SERVER_VERSION = 'mcp.server.version';
+
+/**
+ * Type for {@link MCP_SERVER_VERSION} mcp.server.version
+ */
+export type MCP_SERVER_VERSION_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__session__id.json
+
+/**
+ * Identifier for the MCP session. `mcp.session.id`
+ *
+ * Attribute Value Type: `string` {@link MCP_SESSION_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "550e8400-e29b-41d4-a716-446655440000"
+ */
+export const MCP_SESSION_ID = 'mcp.session.id';
+
+/**
+ * Type for {@link MCP_SESSION_ID} mcp.session.id
+ */
+export type MCP_SESSION_ID_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__tool__name.json
+
+/**
+ * Name of the MCP tool being called. `mcp.tool.name`
+ *
+ * Attribute Value Type: `string` {@link MCP_TOOL_NAME_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "calculator"
+ */
+export const MCP_TOOL_NAME = 'mcp.tool.name';
+
+/**
+ * Type for {@link MCP_TOOL_NAME} mcp.tool.name
+ */
+export type MCP_TOOL_NAME_TYPE = string;
 
 // Path: model/attributes/mcp/mcp__tool__result__content.json
 
@@ -4036,6 +4698,66 @@ export const MCP_TOOL_RESULT_CONTENT = 'mcp.tool.result.content';
  * Type for {@link MCP_TOOL_RESULT_CONTENT} mcp.tool.result.content
  */
 export type MCP_TOOL_RESULT_CONTENT_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__tool__result__content_count.json
+
+/**
+ * Number of content items in the tool result. `mcp.tool.result.content_count`
+ *
+ * Attribute Value Type: `number` {@link MCP_TOOL_RESULT_CONTENT_COUNT_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 1
+ */
+export const MCP_TOOL_RESULT_CONTENT_COUNT = 'mcp.tool.result.content_count';
+
+/**
+ * Type for {@link MCP_TOOL_RESULT_CONTENT_COUNT} mcp.tool.result.content_count
+ */
+export type MCP_TOOL_RESULT_CONTENT_COUNT_TYPE = number;
+
+// Path: model/attributes/mcp/mcp__tool__result__is_error.json
+
+/**
+ * Whether a tool execution resulted in an error. `mcp.tool.result.is_error`
+ *
+ * Attribute Value Type: `boolean` {@link MCP_TOOL_RESULT_IS_ERROR_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example false
+ */
+export const MCP_TOOL_RESULT_IS_ERROR = 'mcp.tool.result.is_error';
+
+/**
+ * Type for {@link MCP_TOOL_RESULT_IS_ERROR} mcp.tool.result.is_error
+ */
+export type MCP_TOOL_RESULT_IS_ERROR_TYPE = boolean;
+
+// Path: model/attributes/mcp/mcp__transport.json
+
+/**
+ * Transport method used for MCP communication. `mcp.transport`
+ *
+ * Attribute Value Type: `string` {@link MCP_TRANSPORT_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "stdio"
+ */
+export const MCP_TRANSPORT = 'mcp.transport';
+
+/**
+ * Type for {@link MCP_TRANSPORT} mcp.transport
+ */
+export type MCP_TRANSPORT_TYPE = string;
 
 // Path: model/attributes/mdc/mdc__<key>.json
 
@@ -7920,8 +8642,44 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [LCP_SIZE]: 'integer',
   [LCP_URL]: 'string',
   [LOGGER_NAME]: 'string',
-  [MCP_PROMPT_RESULT]: 'string',
+  [MCP_CANCELLED_REASON]: 'string',
+  [MCP_CANCELLED_REQUEST_ID]: 'string',
+  [MCP_CLIENT_NAME]: 'string',
+  [MCP_CLIENT_TITLE]: 'string',
+  [MCP_CLIENT_VERSION]: 'string',
+  [MCP_LIFECYCLE_PHASE]: 'string',
+  [MCP_LOGGING_DATA_TYPE]: 'string',
+  [MCP_LOGGING_LEVEL]: 'string',
+  [MCP_LOGGING_LOGGER]: 'string',
+  [MCP_LOGGING_MESSAGE]: 'string',
+  [MCP_METHOD_NAME]: 'string',
+  [MCP_PROGRESS_CURRENT]: 'integer',
+  [MCP_PROGRESS_MESSAGE]: 'string',
+  [MCP_PROGRESS_PERCENTAGE]: 'double',
+  [MCP_PROGRESS_TOKEN]: 'string',
+  [MCP_PROGRESS_TOTAL]: 'integer',
+  [MCP_PROMPT_NAME]: 'string',
+  [MCP_PROMPT_RESULT_DESCRIPTION]: 'string',
+  [MCP_PROMPT_RESULT_MESSAGE_CONTENT]: 'string',
+  [MCP_PROMPT_RESULT_MESSAGE_COUNT]: 'integer',
+  [MCP_PROMPT_RESULT_MESSAGE_ROLE]: 'string',
+  [MCP_PROTOCOL_READY]: 'integer',
+  [MCP_PROTOCOL_VERSION]: 'string',
+  [MCP_REQUEST_ARGUMENT_KEY]: 'string',
+  [MCP_REQUEST_ARGUMENT_NAME]: 'string',
+  [MCP_REQUEST_ARGUMENT_URI]: 'string',
+  [MCP_REQUEST_ID]: 'string',
+  [MCP_RESOURCE_PROTOCOL]: 'string',
+  [MCP_RESOURCE_URI]: 'string',
+  [MCP_SERVER_NAME]: 'string',
+  [MCP_SERVER_TITLE]: 'string',
+  [MCP_SERVER_VERSION]: 'string',
+  [MCP_SESSION_ID]: 'string',
+  [MCP_TOOL_NAME]: 'string',
   [MCP_TOOL_RESULT_CONTENT]: 'string',
+  [MCP_TOOL_RESULT_CONTENT_COUNT]: 'integer',
+  [MCP_TOOL_RESULT_IS_ERROR]: 'boolean',
+  [MCP_TRANSPORT]: 'string',
   [MDC_KEY]: 'string',
   [MESSAGING_DESTINATION_CONNECTION]: 'string',
   [MESSAGING_DESTINATION_NAME]: 'string',
@@ -8291,8 +9049,44 @@ export type AttributeName =
   | typeof LCP_SIZE
   | typeof LCP_URL
   | typeof LOGGER_NAME
-  | typeof MCP_PROMPT_RESULT
+  | typeof MCP_CANCELLED_REASON
+  | typeof MCP_CANCELLED_REQUEST_ID
+  | typeof MCP_CLIENT_NAME
+  | typeof MCP_CLIENT_TITLE
+  | typeof MCP_CLIENT_VERSION
+  | typeof MCP_LIFECYCLE_PHASE
+  | typeof MCP_LOGGING_DATA_TYPE
+  | typeof MCP_LOGGING_LEVEL
+  | typeof MCP_LOGGING_LOGGER
+  | typeof MCP_LOGGING_MESSAGE
+  | typeof MCP_METHOD_NAME
+  | typeof MCP_PROGRESS_CURRENT
+  | typeof MCP_PROGRESS_MESSAGE
+  | typeof MCP_PROGRESS_PERCENTAGE
+  | typeof MCP_PROGRESS_TOKEN
+  | typeof MCP_PROGRESS_TOTAL
+  | typeof MCP_PROMPT_NAME
+  | typeof MCP_PROMPT_RESULT_DESCRIPTION
+  | typeof MCP_PROMPT_RESULT_MESSAGE_CONTENT
+  | typeof MCP_PROMPT_RESULT_MESSAGE_COUNT
+  | typeof MCP_PROMPT_RESULT_MESSAGE_ROLE
+  | typeof MCP_PROTOCOL_READY
+  | typeof MCP_PROTOCOL_VERSION
+  | typeof MCP_REQUEST_ARGUMENT_KEY
+  | typeof MCP_REQUEST_ARGUMENT_NAME
+  | typeof MCP_REQUEST_ARGUMENT_URI
+  | typeof MCP_REQUEST_ID
+  | typeof MCP_RESOURCE_PROTOCOL
+  | typeof MCP_RESOURCE_URI
+  | typeof MCP_SERVER_NAME
+  | typeof MCP_SERVER_TITLE
+  | typeof MCP_SERVER_VERSION
+  | typeof MCP_SESSION_ID
+  | typeof MCP_TOOL_NAME
   | typeof MCP_TOOL_RESULT_CONTENT
+  | typeof MCP_TOOL_RESULT_CONTENT_COUNT
+  | typeof MCP_TOOL_RESULT_IS_ERROR
+  | typeof MCP_TRANSPORT
   | typeof MDC_KEY
   | typeof MESSAGING_DESTINATION_CONNECTION
   | typeof MESSAGING_DESTINATION_NAME
@@ -10494,14 +11288,320 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'myLogger',
   },
-  [MCP_PROMPT_RESULT]: {
-    brief: 'The content of the prompt result.',
+  [MCP_CANCELLED_REASON]: {
+    brief: 'Reason for the cancellation of an MCP operation.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'User cancelled the request',
+  },
+  [MCP_CANCELLED_REQUEST_ID]: {
+    brief: 'Request ID of the cancelled MCP operation.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '123',
+  },
+  [MCP_CLIENT_NAME]: {
+    brief: 'Name of the MCP client application.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'claude-desktop',
+  },
+  [MCP_CLIENT_TITLE]: {
+    brief: 'Display title of the MCP client application.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'Claude Desktop',
+  },
+  [MCP_CLIENT_VERSION]: {
+    brief: 'Version of the MCP client application.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '1.0.0',
+  },
+  [MCP_LIFECYCLE_PHASE]: {
+    brief: 'Lifecycle phase indicator for MCP operations.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'initialization_complete',
+  },
+  [MCP_LOGGING_DATA_TYPE]: {
+    brief: 'Data type of the logged message content.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'string',
+  },
+  [MCP_LOGGING_LEVEL]: {
+    brief: 'Log level for MCP logging operations.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'info',
+  },
+  [MCP_LOGGING_LOGGER]: {
+    brief: 'Logger name for MCP logging operations.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'mcp_server',
+  },
+  [MCP_LOGGING_MESSAGE]: {
+    brief: 'Log message content from MCP logging operations.',
     type: 'string',
     pii: {
       isPii: 'maybe',
+      reason: 'Log messages may contain user-specific or sensitive information',
     },
     isInOtel: false,
-    example: 'An example prompt result!',
+    example: 'Tool execution completed successfully',
+  },
+  [MCP_METHOD_NAME]: {
+    brief: 'The name of the MCP request or notification method being called.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 'tools/call',
+  },
+  [MCP_PROGRESS_CURRENT]: {
+    brief: 'Current progress value of an MCP operation.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 50,
+  },
+  [MCP_PROGRESS_MESSAGE]: {
+    brief: 'Progress message describing the current state of an MCP operation.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'Processing 50 of 100 items',
+  },
+  [MCP_PROGRESS_PERCENTAGE]: {
+    brief: 'Calculated progress percentage of an MCP operation. Computed from current/total * 100.',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 50,
+  },
+  [MCP_PROGRESS_TOKEN]: {
+    brief: 'Token for tracking progress of an MCP operation.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'progress-token-123',
+  },
+  [MCP_PROGRESS_TOTAL]: {
+    brief: 'Total progress target value of an MCP operation.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 100,
+  },
+  [MCP_PROMPT_NAME]: {
+    brief: 'Name of the MCP prompt template being used.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 'summarize',
+  },
+  [MCP_PROMPT_RESULT_DESCRIPTION]: {
+    brief: 'Description of the prompt result.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+      reason: 'Description may contain user-specific or sensitive information',
+    },
+    isInOtel: false,
+    example: 'A summary of the requested information',
+  },
+  [MCP_PROMPT_RESULT_MESSAGE_CONTENT]: {
+    brief: 'Content of the message in the prompt result. Used for single message results only.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+      reason: 'Message content may contain user-specific or sensitive information',
+    },
+    isInOtel: false,
+    example: 'Please provide a summary of the document',
+  },
+  [MCP_PROMPT_RESULT_MESSAGE_COUNT]: {
+    brief: 'Number of messages in the prompt result.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 3,
+  },
+  [MCP_PROMPT_RESULT_MESSAGE_ROLE]: {
+    brief: 'Role of the message in the prompt result. Used for single message results only.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'user',
+  },
+  [MCP_PROTOCOL_READY]: {
+    brief: 'Protocol readiness indicator for MCP session. Non-zero value indicates the protocol is ready.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 1,
+  },
+  [MCP_PROTOCOL_VERSION]: {
+    brief: 'MCP protocol version used in the session.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '2024-11-05',
+  },
+  [MCP_REQUEST_ARGUMENT_KEY]: {
+    brief:
+      'MCP request argument with dynamic key suffix. The <key> is replaced with the actual argument name. The value is a JSON-stringified representation of the argument value.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+      reason: 'Arguments may contain user-specific or sensitive information',
+    },
+    isInOtel: true,
+    hasDynamicSuffix: true,
+    example: "mcp.request.argument.query='weather in Paris'",
+  },
+  [MCP_REQUEST_ARGUMENT_NAME]: {
+    brief: 'Name argument from prompts/get MCP request.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+      reason: 'Prompt names may contain user-specific information',
+    },
+    isInOtel: true,
+    example: 'summarize',
+  },
+  [MCP_REQUEST_ARGUMENT_URI]: {
+    brief: 'URI argument from resources/read MCP request.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+      reason: 'URIs may contain sensitive file paths or user-specific information',
+    },
+    isInOtel: true,
+    example: 'file:///path/to/resource',
+  },
+  [MCP_REQUEST_ID]: {
+    brief: 'JSON-RPC request identifier for the MCP request. Unique within the MCP session.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: '1',
+  },
+  [MCP_RESOURCE_PROTOCOL]: {
+    brief: 'Protocol of the resource URI being accessed, extracted from the URI.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'file',
+  },
+  [MCP_RESOURCE_URI]: {
+    brief: 'The resource URI being accessed in an MCP operation.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+      reason: 'URIs may contain sensitive file paths or user-specific information',
+    },
+    isInOtel: true,
+    example: 'file:///path/to/file.txt',
+  },
+  [MCP_SERVER_NAME]: {
+    brief: 'Name of the MCP server application.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'sentry-mcp-server',
+  },
+  [MCP_SERVER_TITLE]: {
+    brief: 'Display title of the MCP server application.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'Sentry MCP Server',
+  },
+  [MCP_SERVER_VERSION]: {
+    brief: 'Version of the MCP server application.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '0.1.0',
+  },
+  [MCP_SESSION_ID]: {
+    brief: 'Identifier for the MCP session.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: '550e8400-e29b-41d4-a716-446655440000',
+  },
+  [MCP_TOOL_NAME]: {
+    brief: 'Name of the MCP tool being called.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 'calculator',
   },
   [MCP_TOOL_RESULT_CONTENT]: {
     brief: 'The content of the tool result.',
@@ -10511,6 +11611,33 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '{"output": "rainy", "toolCallId": "1"}',
+  },
+  [MCP_TOOL_RESULT_CONTENT_COUNT]: {
+    brief: 'Number of content items in the tool result.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 1,
+  },
+  [MCP_TOOL_RESULT_IS_ERROR]: {
+    brief: 'Whether a tool execution resulted in an error.',
+    type: 'boolean',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: false,
+  },
+  [MCP_TRANSPORT]: {
+    brief: 'Transport method used for MCP communication.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'stdio',
   },
   [MDC_KEY]: {
     brief:
@@ -12466,8 +13593,44 @@ export type Attributes = {
   [LCP_SIZE]?: LCP_SIZE_TYPE;
   [LCP_URL]?: LCP_URL_TYPE;
   [LOGGER_NAME]?: LOGGER_NAME_TYPE;
-  [MCP_PROMPT_RESULT]?: MCP_PROMPT_RESULT_TYPE;
+  [MCP_CANCELLED_REASON]?: MCP_CANCELLED_REASON_TYPE;
+  [MCP_CANCELLED_REQUEST_ID]?: MCP_CANCELLED_REQUEST_ID_TYPE;
+  [MCP_CLIENT_NAME]?: MCP_CLIENT_NAME_TYPE;
+  [MCP_CLIENT_TITLE]?: MCP_CLIENT_TITLE_TYPE;
+  [MCP_CLIENT_VERSION]?: MCP_CLIENT_VERSION_TYPE;
+  [MCP_LIFECYCLE_PHASE]?: MCP_LIFECYCLE_PHASE_TYPE;
+  [MCP_LOGGING_DATA_TYPE]?: MCP_LOGGING_DATA_TYPE_TYPE;
+  [MCP_LOGGING_LEVEL]?: MCP_LOGGING_LEVEL_TYPE;
+  [MCP_LOGGING_LOGGER]?: MCP_LOGGING_LOGGER_TYPE;
+  [MCP_LOGGING_MESSAGE]?: MCP_LOGGING_MESSAGE_TYPE;
+  [MCP_METHOD_NAME]?: MCP_METHOD_NAME_TYPE;
+  [MCP_PROGRESS_CURRENT]?: MCP_PROGRESS_CURRENT_TYPE;
+  [MCP_PROGRESS_MESSAGE]?: MCP_PROGRESS_MESSAGE_TYPE;
+  [MCP_PROGRESS_PERCENTAGE]?: MCP_PROGRESS_PERCENTAGE_TYPE;
+  [MCP_PROGRESS_TOKEN]?: MCP_PROGRESS_TOKEN_TYPE;
+  [MCP_PROGRESS_TOTAL]?: MCP_PROGRESS_TOTAL_TYPE;
+  [MCP_PROMPT_NAME]?: MCP_PROMPT_NAME_TYPE;
+  [MCP_PROMPT_RESULT_DESCRIPTION]?: MCP_PROMPT_RESULT_DESCRIPTION_TYPE;
+  [MCP_PROMPT_RESULT_MESSAGE_CONTENT]?: MCP_PROMPT_RESULT_MESSAGE_CONTENT_TYPE;
+  [MCP_PROMPT_RESULT_MESSAGE_COUNT]?: MCP_PROMPT_RESULT_MESSAGE_COUNT_TYPE;
+  [MCP_PROMPT_RESULT_MESSAGE_ROLE]?: MCP_PROMPT_RESULT_MESSAGE_ROLE_TYPE;
+  [MCP_PROTOCOL_READY]?: MCP_PROTOCOL_READY_TYPE;
+  [MCP_PROTOCOL_VERSION]?: MCP_PROTOCOL_VERSION_TYPE;
+  [MCP_REQUEST_ARGUMENT_KEY]?: MCP_REQUEST_ARGUMENT_KEY_TYPE;
+  [MCP_REQUEST_ARGUMENT_NAME]?: MCP_REQUEST_ARGUMENT_NAME_TYPE;
+  [MCP_REQUEST_ARGUMENT_URI]?: MCP_REQUEST_ARGUMENT_URI_TYPE;
+  [MCP_REQUEST_ID]?: MCP_REQUEST_ID_TYPE;
+  [MCP_RESOURCE_PROTOCOL]?: MCP_RESOURCE_PROTOCOL_TYPE;
+  [MCP_RESOURCE_URI]?: MCP_RESOURCE_URI_TYPE;
+  [MCP_SERVER_NAME]?: MCP_SERVER_NAME_TYPE;
+  [MCP_SERVER_TITLE]?: MCP_SERVER_TITLE_TYPE;
+  [MCP_SERVER_VERSION]?: MCP_SERVER_VERSION_TYPE;
+  [MCP_SESSION_ID]?: MCP_SESSION_ID_TYPE;
+  [MCP_TOOL_NAME]?: MCP_TOOL_NAME_TYPE;
   [MCP_TOOL_RESULT_CONTENT]?: MCP_TOOL_RESULT_CONTENT_TYPE;
+  [MCP_TOOL_RESULT_CONTENT_COUNT]?: MCP_TOOL_RESULT_CONTENT_COUNT_TYPE;
+  [MCP_TOOL_RESULT_IS_ERROR]?: MCP_TOOL_RESULT_IS_ERROR_TYPE;
+  [MCP_TRANSPORT]?: MCP_TRANSPORT_TYPE;
   [MDC_KEY]?: MDC_KEY_TYPE;
   [MESSAGING_DESTINATION_CONNECTION]?: MESSAGING_DESTINATION_CONNECTION_TYPE;
   [MESSAGING_DESTINATION_NAME]?: MESSAGING_DESTINATION_NAME_TYPE;
