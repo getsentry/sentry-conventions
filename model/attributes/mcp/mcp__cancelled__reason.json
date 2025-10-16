@@ -3,7 +3,8 @@
   "brief": "Reason for the cancellation of an MCP operation.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe",
+    "reason": "Cancellation reasons may contain user-specific or sensitive information"
   },
   "is_in_otel": false,
   "example": "User cancelled the request"

@@ -3,7 +3,8 @@
   "brief": "Progress message describing the current state of an MCP operation.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe",
+    "reason": "Progress messages may contain user-specific or sensitive information"
   },
   "is_in_otel": false,
   "example": "Processing 50 of 100 items"

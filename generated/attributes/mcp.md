@@ -51,7 +51,7 @@ Reason for the cancellation of an MCP operation.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe (Cancellation reasons may contain user-specific or sensitive information) |
 | Exists in OpenTelemetry | No |
 | Example | `User cancelled the request` |
 
@@ -183,7 +183,7 @@ Progress message describing the current state of an MCP operation.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe (Progress messages may contain user-specific or sensitive information) |
 | Exists in OpenTelemetry | No |
 | Example | `Processing 50 of 100 items` |
 
@@ -227,7 +227,7 @@ Name of the MCP prompt template being used.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe (Prompt names may reveal user behavior patterns or sensitive operations) |
 | Exists in OpenTelemetry | Yes |
 | Example | `summarize` |
 

@@ -4004,7 +4004,7 @@ export type LOGGER_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link MCP_CANCELLED_REASON_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe - Cancellation reasons may contain user-specific or sensitive information
  *
  * Attribute defined in OTEL: No
  *
@@ -4244,7 +4244,7 @@ export type MCP_PROGRESS_CURRENT_TYPE = number;
  *
  * Attribute Value Type: `string` {@link MCP_PROGRESS_MESSAGE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe - Progress messages may contain user-specific or sensitive information
  *
  * Attribute defined in OTEL: No
  *
@@ -4324,7 +4324,7 @@ export type MCP_PROGRESS_TOTAL_TYPE = number;
  *
  * Attribute Value Type: `string` {@link MCP_PROMPT_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe - Prompt names may reveal user behavior patterns or sensitive operations
  *
  * Attribute defined in OTEL: Yes
  *
@@ -11292,7 +11292,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Reason for the cancellation of an MCP operation.',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
+      reason: 'Cancellation reasons may contain user-specific or sensitive information',
     },
     isInOtel: false,
     example: 'User cancelled the request',
@@ -11401,7 +11402,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Progress message describing the current state of an MCP operation.',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
+      reason: 'Progress messages may contain user-specific or sensitive information',
     },
     isInOtel: false,
     example: 'Processing 50 of 100 items',
@@ -11437,7 +11439,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Name of the MCP prompt template being used.',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
+      reason: 'Prompt names may reveal user behavior patterns or sensitive operations',
     },
     isInOtel: true,
     example: 'summarize',

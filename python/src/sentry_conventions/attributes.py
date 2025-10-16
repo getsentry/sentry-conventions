@@ -2191,7 +2191,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Reason for the cancellation of an MCP operation.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe - Cancellation reasons may contain user-specific or sensitive information
     Defined in OTEL: No
     Example: "User cancelled the request"
     """
@@ -2311,7 +2311,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Progress message describing the current state of an MCP operation.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe - Progress messages may contain user-specific or sensitive information
     Defined in OTEL: No
     Example: "Processing 50 of 100 items"
     """
@@ -2351,7 +2351,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Name of the MCP prompt template being used.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe - Prompt names may reveal user behavior patterns or sensitive operations
     Defined in OTEL: Yes
     Example: "summarize"
     """
@@ -6381,7 +6381,8 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="Reason for the cancellation of an MCP operation.",
         type=AttributeType.STRING,
         pii=PiiInfo(
-            isPii=IsPii.FALSE
+            isPii=IsPii.MAYBE,
+            reason="Cancellation reasons may contain user-specific or sensitive information"
         ),
         is_in_otel=False,
         example="User cancelled the request",
@@ -6490,7 +6491,8 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="Progress message describing the current state of an MCP operation.",
         type=AttributeType.STRING,
         pii=PiiInfo(
-            isPii=IsPii.FALSE
+            isPii=IsPii.MAYBE,
+            reason="Progress messages may contain user-specific or sensitive information"
         ),
         is_in_otel=False,
         example="Processing 50 of 100 items",
@@ -6526,7 +6528,8 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="Name of the MCP prompt template being used.",
         type=AttributeType.STRING,
         pii=PiiInfo(
-            isPii=IsPii.FALSE
+            isPii=IsPii.MAYBE,
+            reason="Prompt names may reveal user behavior patterns or sensitive operations"
         ),
         is_in_otel=True,
         example="summarize",

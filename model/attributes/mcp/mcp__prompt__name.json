@@ -3,7 +3,8 @@
   "brief": "Name of the MCP prompt template being used.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe",
+    "reason": "Prompt names may reveal user behavior patterns or sensitive operations"
   },
   "is_in_otel": true,
   "example": "summarize"
