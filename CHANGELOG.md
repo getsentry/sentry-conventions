@@ -1,3 +1,9 @@
+## Unreleased
+
+### Fixes
+
+- fix(js): Export constants correctly ([#172](https://github.com/getsentry/sentry-conventions/pull/172))
+
 ## 0.2.0
 
 ### Features
