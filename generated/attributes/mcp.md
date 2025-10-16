@@ -84,7 +84,7 @@ Display title of the MCP client application.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe (Client titles may reveal user-specific application configurations or custom setups) |
 | Exists in OpenTelemetry | No |
 | Example | `Claude Desktop` |
 
@@ -139,7 +139,7 @@ Logger name for MCP logging operations.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe (Logger names may be user-defined and could contain sensitive information) |
 | Exists in OpenTelemetry | No |
 | Example | `mcp_server` |
 
@@ -150,7 +150,7 @@ Log message content from MCP logging operations.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | maybe (Log messages may contain user-specific or sensitive information) |
+| Has PII | true (Log messages can contain user data) |
 | Exists in OpenTelemetry | No |
 | Example | `Tool execution completed successfully` |
 
@@ -238,7 +238,7 @@ Description of the prompt result.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | maybe (Description may contain user-specific or sensitive information) |
+| Has PII | true |
 | Exists in OpenTelemetry | No |
 | Example | `A summary of the requested information` |
 
@@ -249,7 +249,7 @@ Content of the message in the prompt result. Used for single message results onl
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | maybe (Message content may contain user-specific or sensitive information) |
+| Has PII | true |
 | Exists in OpenTelemetry | No |
 | Example | `Please provide a summary of the document` |
 
@@ -304,7 +304,7 @@ MCP request argument with dynamic key suffix. The \<key\> is replaced with the a
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | maybe (Arguments may contain user-specific or sensitive information) |
+| Has PII | true (Arguments contain user input) |
 | Exists in OpenTelemetry | Yes |
 | Has dynamic suffix | Yes |
 | Example | `mcp.request.argument.query='weather in Paris'` |
@@ -316,7 +316,7 @@ Name argument from prompts/get MCP request.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | maybe (Prompt names may contain user-specific information) |
+| Has PII | true (Prompt names can contain user input) |
 | Exists in OpenTelemetry | Yes |
 | Example | `summarize` |
 
@@ -327,7 +327,7 @@ URI argument from resources/read MCP request.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | maybe (URIs may contain sensitive file paths or user-specific information) |
+| Has PII | true (URIs can contain user file paths) |
 | Exists in OpenTelemetry | Yes |
 | Example | `file:///path/to/resource` |
 
@@ -360,7 +360,7 @@ The resource URI being accessed in an MCP operation.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | maybe (URIs may contain sensitive file paths or user-specific information) |
+| Has PII | true (URIs can contain sensitive file paths) |
 | Exists in OpenTelemetry | Yes |
 | Example | `file:///path/to/file.txt` |
 
@@ -382,7 +382,7 @@ Display title of the MCP server application.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe (Server titles may reveal user-specific application configurations or custom setups) |
 | Exists in OpenTelemetry | No |
 | Example | `Sentry MCP Server` |
 
@@ -426,7 +426,7 @@ The content of the tool result.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | maybe |
+| Has PII | true (Tool results can contain user data) |
 | Exists in OpenTelemetry | No |
 | Example | `{"output": "rainy", "toolCallId": "1"}` |
 

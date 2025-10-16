@@ -4064,7 +4064,7 @@ export type MCP_CLIENT_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link MCP_CLIENT_TITLE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe - Client titles may reveal user-specific application configurations or custom setups
  *
  * Attribute defined in OTEL: No
  *
@@ -4164,7 +4164,7 @@ export type MCP_LOGGING_LEVEL_TYPE = string;
  *
  * Attribute Value Type: `string` {@link MCP_LOGGING_LOGGER_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe - Logger names may be user-defined and could contain sensitive information
  *
  * Attribute defined in OTEL: No
  *
@@ -4184,7 +4184,7 @@ export type MCP_LOGGING_LOGGER_TYPE = string;
  *
  * Attribute Value Type: `string` {@link MCP_LOGGING_MESSAGE_TYPE}
  *
- * Contains PII: maybe - Log messages may contain user-specific or sensitive information
+ * Contains PII: true - Log messages can contain user data
  *
  * Attribute defined in OTEL: No
  *
@@ -4344,7 +4344,7 @@ export type MCP_PROMPT_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link MCP_PROMPT_RESULT_DESCRIPTION_TYPE}
  *
- * Contains PII: maybe - Description may contain user-specific or sensitive information
+ * Contains PII: true
  *
  * Attribute defined in OTEL: No
  *
@@ -4364,7 +4364,7 @@ export type MCP_PROMPT_RESULT_DESCRIPTION_TYPE = string;
  *
  * Attribute Value Type: `string` {@link MCP_PROMPT_RESULT_MESSAGE_CONTENT_TYPE}
  *
- * Contains PII: maybe - Message content may contain user-specific or sensitive information
+ * Contains PII: true
  *
  * Attribute defined in OTEL: No
  *
@@ -4464,7 +4464,7 @@ export type MCP_PROTOCOL_VERSION_TYPE = string;
  *
  * Attribute Value Type: `string` {@link MCP_REQUEST_ARGUMENT_KEY_TYPE}
  *
- * Contains PII: maybe - Arguments may contain user-specific or sensitive information
+ * Contains PII: true - Arguments contain user input
  *
  * Attribute defined in OTEL: Yes
  *
@@ -4486,7 +4486,7 @@ export type MCP_REQUEST_ARGUMENT_KEY_TYPE = string;
  *
  * Attribute Value Type: `string` {@link MCP_REQUEST_ARGUMENT_NAME_TYPE}
  *
- * Contains PII: maybe - Prompt names may contain user-specific information
+ * Contains PII: true - Prompt names can contain user input
  *
  * Attribute defined in OTEL: Yes
  *
@@ -4506,7 +4506,7 @@ export type MCP_REQUEST_ARGUMENT_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link MCP_REQUEST_ARGUMENT_URI_TYPE}
  *
- * Contains PII: maybe - URIs may contain sensitive file paths or user-specific information
+ * Contains PII: true - URIs can contain user file paths
  *
  * Attribute defined in OTEL: Yes
  *
@@ -4566,7 +4566,7 @@ export type MCP_RESOURCE_PROTOCOL_TYPE = string;
  *
  * Attribute Value Type: `string` {@link MCP_RESOURCE_URI_TYPE}
  *
- * Contains PII: maybe - URIs may contain sensitive file paths or user-specific information
+ * Contains PII: true - URIs can contain sensitive file paths
  *
  * Attribute defined in OTEL: Yes
  *
@@ -4606,7 +4606,7 @@ export type MCP_SERVER_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link MCP_SERVER_TITLE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe - Server titles may reveal user-specific application configurations or custom setups
  *
  * Attribute defined in OTEL: No
  *
@@ -4686,7 +4686,7 @@ export type MCP_TOOL_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link MCP_TOOL_RESULT_CONTENT_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true - Tool results can contain user data
  *
  * Attribute defined in OTEL: No
  *
@@ -11320,7 +11320,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Display title of the MCP client application.',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
+      reason: 'Client titles may reveal user-specific application configurations or custom setups',
     },
     isInOtel: false,
     example: 'Claude Desktop',
@@ -11365,7 +11366,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Logger name for MCP logging operations.',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
+      reason: 'Logger names may be user-defined and could contain sensitive information',
     },
     isInOtel: false,
     example: 'mcp_server',
@@ -11374,8 +11376,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Log message content from MCP logging operations.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
-      reason: 'Log messages may contain user-specific or sensitive information',
+      isPii: 'true',
+      reason: 'Log messages can contain user data',
     },
     isInOtel: false,
     example: 'Tool execution completed successfully',
@@ -11449,8 +11451,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Description of the prompt result.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
-      reason: 'Description may contain user-specific or sensitive information',
+      isPii: 'true',
     },
     isInOtel: false,
     example: 'A summary of the requested information',
@@ -11459,8 +11460,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Content of the message in the prompt result. Used for single message results only.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
-      reason: 'Message content may contain user-specific or sensitive information',
+      isPii: 'true',
     },
     isInOtel: false,
     example: 'Please provide a summary of the document',
@@ -11506,8 +11506,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'MCP request argument with dynamic key suffix. The <key> is replaced with the actual argument name. The value is a JSON-stringified representation of the argument value.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
-      reason: 'Arguments may contain user-specific or sensitive information',
+      isPii: 'true',
+      reason: 'Arguments contain user input',
     },
     isInOtel: true,
     hasDynamicSuffix: true,
@@ -11517,8 +11517,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Name argument from prompts/get MCP request.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
-      reason: 'Prompt names may contain user-specific information',
+      isPii: 'true',
+      reason: 'Prompt names can contain user input',
     },
     isInOtel: true,
     example: 'summarize',
@@ -11527,8 +11527,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'URI argument from resources/read MCP request.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
-      reason: 'URIs may contain sensitive file paths or user-specific information',
+      isPii: 'true',
+      reason: 'URIs can contain user file paths',
     },
     isInOtel: true,
     example: 'file:///path/to/resource',
@@ -11555,8 +11555,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The resource URI being accessed in an MCP operation.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
-      reason: 'URIs may contain sensitive file paths or user-specific information',
+      isPii: 'true',
+      reason: 'URIs can contain sensitive file paths',
     },
     isInOtel: true,
     example: 'file:///path/to/file.txt',
@@ -11574,7 +11574,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Display title of the MCP server application.',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
+      reason: 'Server titles may reveal user-specific application configurations or custom setups',
     },
     isInOtel: false,
     example: 'Sentry MCP Server',
@@ -11610,7 +11611,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The content of the tool result.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
+      reason: 'Tool results can contain user data',
     },
     isInOtel: false,
     example: '{"output": "rainy", "toolCallId": "1"}',

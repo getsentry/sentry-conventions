@@ -3,8 +3,8 @@
   "brief": "Name argument from prompts/get MCP request.",
   "type": "string",
   "pii": {
-    "key": "maybe",
-    "reason": "Prompt names may contain user-specific information"
+    "key": "true",
+    "reason": "Prompt names can contain user input"
   },
   "is_in_otel": true,
   "example": "summarize"

@@ -3,8 +3,8 @@
   "brief": "The resource URI being accessed in an MCP operation.",
   "type": "string",
   "pii": {
-    "key": "maybe",
-    "reason": "URIs may contain sensitive file paths or user-specific information"
+    "key": "true",
+    "reason": "URIs can contain sensitive file paths"
   },
   "is_in_otel": true,
   "example": "file:///path/to/file.txt"

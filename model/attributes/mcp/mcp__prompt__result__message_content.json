@@ -3,8 +3,7 @@
   "brief": "Content of the message in the prompt result. Used for single message results only.",
   "type": "string",
   "pii": {
-    "key": "maybe",
-    "reason": "Message content may contain user-specific or sensitive information"
+    "key": "true"
   },
   "is_in_otel": false,
   "example": "Please provide a summary of the document"

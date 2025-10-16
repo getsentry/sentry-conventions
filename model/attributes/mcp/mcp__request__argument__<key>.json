@@ -3,8 +3,8 @@
   "brief": "MCP request argument with dynamic key suffix. The <key> is replaced with the actual argument name. The value is a JSON-stringified representation of the argument value.",
   "type": "string",
   "pii": {
-    "key": "maybe",
-    "reason": "Arguments may contain user-specific or sensitive information"
+    "key": "true",
+    "reason": "Arguments contain user input"
   },
   "is_in_otel": true,
   "has_dynamic_suffix": true,
