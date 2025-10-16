@@ -7,6 +7,9 @@ export type {
   PiiInfo,
   DeprecationInfo,
   AttributeMetadata,
+} from './attributes';
+
+export {
   ATTRIBUTE_METADATA,
   ATTRIBUTE_TYPE,
 } from './attributes';
