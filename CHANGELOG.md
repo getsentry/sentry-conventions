@@ -5,6 +5,11 @@
 #### Changes to attributes
 
 - MCP attributes ([#171](https://github.com/getsentry/sentry-conventions/pull/171))
+## 0.2.1
+
+### Fixes
+
+- fix(js): Export constants correctly ([#172](https://github.com/getsentry/sentry-conventions/pull/172))
 
 ## 0.2.0
 
