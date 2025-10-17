@@ -1,0 +1,11 @@
+{
+  "key": "mcp.prompt.name",
+  "brief": "Name of the MCP prompt template being used.",
+  "type": "string",
+  "pii": {
+    "key": "maybe",
+    "reason": "Prompt names may reveal user behavior patterns or sensitive operations"
+  },
+  "is_in_otel": false,
+  "example": "summarize"
+}

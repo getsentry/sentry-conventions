@@ -2300,14 +2300,363 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "myLogger"
     """
 
-    # Path: model/attributes/mcp/mcp__prompt__result.json
-    MCP_PROMPT_RESULT: Literal["mcp.prompt.result"] = "mcp.prompt.result"
-    """The content of the prompt result.
+    # Path: model/attributes/mcp/mcp__cancelled__reason.json
+    MCP_CANCELLED_REASON: Literal["mcp.cancelled.reason"] = "mcp.cancelled.reason"
+    """Reason for the cancellation of an MCP operation.
 
     Type: str
-    Contains PII: maybe
+    Contains PII: maybe - Cancellation reasons may contain user-specific or sensitive information
     Defined in OTEL: No
-    Example: "An example prompt result!"
+    Example: "User cancelled the request"
+    """
+
+    # Path: model/attributes/mcp/mcp__cancelled__request_id.json
+    MCP_CANCELLED_REQUEST_ID: Literal["mcp.cancelled.request_id"] = (
+        "mcp.cancelled.request_id"
+    )
+    """Request ID of the cancelled MCP operation.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "123"
+    """
+
+    # Path: model/attributes/mcp/mcp__client__name.json
+    MCP_CLIENT_NAME: Literal["mcp.client.name"] = "mcp.client.name"
+    """Name of the MCP client application.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "claude-desktop"
+    """
+
+    # Path: model/attributes/mcp/mcp__client__title.json
+    MCP_CLIENT_TITLE: Literal["mcp.client.title"] = "mcp.client.title"
+    """Display title of the MCP client application.
+
+    Type: str
+    Contains PII: maybe - Client titles may reveal user-specific application configurations or custom setups
+    Defined in OTEL: No
+    Example: "Claude Desktop"
+    """
+
+    # Path: model/attributes/mcp/mcp__client__version.json
+    MCP_CLIENT_VERSION: Literal["mcp.client.version"] = "mcp.client.version"
+    """Version of the MCP client application.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "1.0.0"
+    """
+
+    # Path: model/attributes/mcp/mcp__lifecycle__phase.json
+    MCP_LIFECYCLE_PHASE: Literal["mcp.lifecycle.phase"] = "mcp.lifecycle.phase"
+    """Lifecycle phase indicator for MCP operations.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "initialization_complete"
+    """
+
+    # Path: model/attributes/mcp/mcp__logging__data_type.json
+    MCP_LOGGING_DATA_TYPE: Literal["mcp.logging.data_type"] = "mcp.logging.data_type"
+    """Data type of the logged message content.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "string"
+    """
+
+    # Path: model/attributes/mcp/mcp__logging__level.json
+    MCP_LOGGING_LEVEL: Literal["mcp.logging.level"] = "mcp.logging.level"
+    """Log level for MCP logging operations.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "info"
+    """
+
+    # Path: model/attributes/mcp/mcp__logging__logger.json
+    MCP_LOGGING_LOGGER: Literal["mcp.logging.logger"] = "mcp.logging.logger"
+    """Logger name for MCP logging operations.
+
+    Type: str
+    Contains PII: maybe - Logger names may be user-defined and could contain sensitive information
+    Defined in OTEL: No
+    Example: "mcp_server"
+    """
+
+    # Path: model/attributes/mcp/mcp__logging__message.json
+    MCP_LOGGING_MESSAGE: Literal["mcp.logging.message"] = "mcp.logging.message"
+    """Log message content from MCP logging operations.
+
+    Type: str
+    Contains PII: true - Log messages can contain user data
+    Defined in OTEL: No
+    Example: "Tool execution completed successfully"
+    """
+
+    # Path: model/attributes/mcp/mcp__method__name.json
+    MCP_METHOD_NAME: Literal["mcp.method.name"] = "mcp.method.name"
+    """The name of the MCP request or notification method being called.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "tools/call"
+    """
+
+    # Path: model/attributes/mcp/mcp__progress__current.json
+    MCP_PROGRESS_CURRENT: Literal["mcp.progress.current"] = "mcp.progress.current"
+    """Current progress value of an MCP operation.
+
+    Type: int
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 50
+    """
+
+    # Path: model/attributes/mcp/mcp__progress__message.json
+    MCP_PROGRESS_MESSAGE: Literal["mcp.progress.message"] = "mcp.progress.message"
+    """Progress message describing the current state of an MCP operation.
+
+    Type: str
+    Contains PII: maybe - Progress messages may contain user-specific or sensitive information
+    Defined in OTEL: No
+    Example: "Processing 50 of 100 items"
+    """
+
+    # Path: model/attributes/mcp/mcp__progress__percentage.json
+    MCP_PROGRESS_PERCENTAGE: Literal["mcp.progress.percentage"] = (
+        "mcp.progress.percentage"
+    )
+    """Calculated progress percentage of an MCP operation. Computed from current/total * 100.
+
+    Type: float
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 50
+    """
+
+    # Path: model/attributes/mcp/mcp__progress__token.json
+    MCP_PROGRESS_TOKEN: Literal["mcp.progress.token"] = "mcp.progress.token"
+    """Token for tracking progress of an MCP operation.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "progress-token-123"
+    """
+
+    # Path: model/attributes/mcp/mcp__progress__total.json
+    MCP_PROGRESS_TOTAL: Literal["mcp.progress.total"] = "mcp.progress.total"
+    """Total progress target value of an MCP operation.
+
+    Type: int
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 100
+    """
+
+    # Path: model/attributes/mcp/mcp__prompt__name.json
+    MCP_PROMPT_NAME: Literal["mcp.prompt.name"] = "mcp.prompt.name"
+    """Name of the MCP prompt template being used.
+
+    Type: str
+    Contains PII: maybe - Prompt names may reveal user behavior patterns or sensitive operations
+    Defined in OTEL: No
+    Example: "summarize"
+    """
+
+    # Path: model/attributes/mcp/mcp__prompt__result__description.json
+    MCP_PROMPT_RESULT_DESCRIPTION: Literal["mcp.prompt.result.description"] = (
+        "mcp.prompt.result.description"
+    )
+    """Description of the prompt result.
+
+    Type: str
+    Contains PII: true
+    Defined in OTEL: No
+    Example: "A summary of the requested information"
+    """
+
+    # Path: model/attributes/mcp/mcp__prompt__result__message_content.json
+    MCP_PROMPT_RESULT_MESSAGE_CONTENT: Literal["mcp.prompt.result.message_content"] = (
+        "mcp.prompt.result.message_content"
+    )
+    """Content of the message in the prompt result. Used for single message results only.
+
+    Type: str
+    Contains PII: true
+    Defined in OTEL: No
+    Example: "Please provide a summary of the document"
+    """
+
+    # Path: model/attributes/mcp/mcp__prompt__result__message_count.json
+    MCP_PROMPT_RESULT_MESSAGE_COUNT: Literal["mcp.prompt.result.message_count"] = (
+        "mcp.prompt.result.message_count"
+    )
+    """Number of messages in the prompt result.
+
+    Type: int
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 3
+    """
+
+    # Path: model/attributes/mcp/mcp__prompt__result__message_role.json
+    MCP_PROMPT_RESULT_MESSAGE_ROLE: Literal["mcp.prompt.result.message_role"] = (
+        "mcp.prompt.result.message_role"
+    )
+    """Role of the message in the prompt result. Used for single message results only.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "user"
+    """
+
+    # Path: model/attributes/mcp/mcp__protocol__ready.json
+    MCP_PROTOCOL_READY: Literal["mcp.protocol.ready"] = "mcp.protocol.ready"
+    """Protocol readiness indicator for MCP session. Non-zero value indicates the protocol is ready.
+
+    Type: int
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 1
+    """
+
+    # Path: model/attributes/mcp/mcp__protocol__version.json
+    MCP_PROTOCOL_VERSION: Literal["mcp.protocol.version"] = "mcp.protocol.version"
+    """MCP protocol version used in the session.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "2024-11-05"
+    """
+
+    # Path: model/attributes/mcp/mcp__request__argument__<key>.json
+    MCP_REQUEST_ARGUMENT_KEY: Literal["mcp.request.argument.<key>"] = (
+        "mcp.request.argument.<key>"
+    )
+    """MCP request argument with dynamic key suffix. The <key> is replaced with the actual argument name. The value is a JSON-stringified representation of the argument value.
+
+    Type: str
+    Contains PII: true - Arguments contain user input
+    Defined in OTEL: No
+    Has Dynamic Suffix: true
+    Example: "mcp.request.argument.query='weather in Paris'"
+    """
+
+    # Path: model/attributes/mcp/mcp__request__argument__name.json
+    MCP_REQUEST_ARGUMENT_NAME: Literal["mcp.request.argument.name"] = (
+        "mcp.request.argument.name"
+    )
+    """Name argument from prompts/get MCP request.
+
+    Type: str
+    Contains PII: true - Prompt names can contain user input
+    Defined in OTEL: No
+    Example: "summarize"
+    """
+
+    # Path: model/attributes/mcp/mcp__request__argument__uri.json
+    MCP_REQUEST_ARGUMENT_URI: Literal["mcp.request.argument.uri"] = (
+        "mcp.request.argument.uri"
+    )
+    """URI argument from resources/read MCP request.
+
+    Type: str
+    Contains PII: true - URIs can contain user file paths
+    Defined in OTEL: No
+    Example: "file:///path/to/resource"
+    """
+
+    # Path: model/attributes/mcp/mcp__request__id.json
+    MCP_REQUEST_ID: Literal["mcp.request.id"] = "mcp.request.id"
+    """JSON-RPC request identifier for the MCP request. Unique within the MCP session.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "1"
+    """
+
+    # Path: model/attributes/mcp/mcp__resource__protocol.json
+    MCP_RESOURCE_PROTOCOL: Literal["mcp.resource.protocol"] = "mcp.resource.protocol"
+    """Protocol of the resource URI being accessed, extracted from the URI.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "file"
+    """
+
+    # Path: model/attributes/mcp/mcp__resource__uri.json
+    MCP_RESOURCE_URI: Literal["mcp.resource.uri"] = "mcp.resource.uri"
+    """The resource URI being accessed in an MCP operation.
+
+    Type: str
+    Contains PII: true - URIs can contain sensitive file paths
+    Defined in OTEL: No
+    Example: "file:///path/to/file.txt"
+    """
+
+    # Path: model/attributes/mcp/mcp__server__name.json
+    MCP_SERVER_NAME: Literal["mcp.server.name"] = "mcp.server.name"
+    """Name of the MCP server application.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "sentry-mcp-server"
+    """
+
+    # Path: model/attributes/mcp/mcp__server__title.json
+    MCP_SERVER_TITLE: Literal["mcp.server.title"] = "mcp.server.title"
+    """Display title of the MCP server application.
+
+    Type: str
+    Contains PII: maybe - Server titles may reveal user-specific application configurations or custom setups
+    Defined in OTEL: No
+    Example: "Sentry MCP Server"
+    """
+
+    # Path: model/attributes/mcp/mcp__server__version.json
+    MCP_SERVER_VERSION: Literal["mcp.server.version"] = "mcp.server.version"
+    """Version of the MCP server application.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "0.1.0"
+    """
+
+    # Path: model/attributes/mcp/mcp__session__id.json
+    MCP_SESSION_ID: Literal["mcp.session.id"] = "mcp.session.id"
+    """Identifier for the MCP session.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "550e8400-e29b-41d4-a716-446655440000"
+    """
+
+    # Path: model/attributes/mcp/mcp__tool__name.json
+    MCP_TOOL_NAME: Literal["mcp.tool.name"] = "mcp.tool.name"
+    """Name of the MCP tool being called.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "calculator"
     """
 
     # Path: model/attributes/mcp/mcp__tool__result__content.json
@@ -2317,9 +2666,43 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The content of the tool result.
 
     Type: str
-    Contains PII: maybe
+    Contains PII: true - Tool results can contain user data
     Defined in OTEL: No
     Example: "{\"output\": \"rainy\", \"toolCallId\": \"1\"}"
+    """
+
+    # Path: model/attributes/mcp/mcp__tool__result__content_count.json
+    MCP_TOOL_RESULT_CONTENT_COUNT: Literal["mcp.tool.result.content_count"] = (
+        "mcp.tool.result.content_count"
+    )
+    """Number of content items in the tool result.
+
+    Type: int
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 1
+    """
+
+    # Path: model/attributes/mcp/mcp__tool__result__is_error.json
+    MCP_TOOL_RESULT_IS_ERROR: Literal["mcp.tool.result.is_error"] = (
+        "mcp.tool.result.is_error"
+    )
+    """Whether a tool execution resulted in an error.
+
+    Type: bool
+    Contains PII: false
+    Defined in OTEL: No
+    Example: false
+    """
+
+    # Path: model/attributes/mcp/mcp__transport.json
+    MCP_TRANSPORT: Literal["mcp.transport"] = "mcp.transport"
+    """Transport method used for MCP communication.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "stdio"
     """
 
     # Path: model/attributes/mdc/mdc__<key>.json
@@ -5772,19 +6155,290 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="myLogger",
     ),
-    "mcp.prompt.result": AttributeMetadata(
-        brief="The content of the prompt result.",
+    "mcp.cancelled.reason": AttributeMetadata(
+        brief="Reason for the cancellation of an MCP operation.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(
+            isPii=IsPii.MAYBE,
+            reason="Cancellation reasons may contain user-specific or sensitive information",
+        ),
         is_in_otel=False,
-        example="An example prompt result!",
+        example="User cancelled the request",
+    ),
+    "mcp.cancelled.request_id": AttributeMetadata(
+        brief="Request ID of the cancelled MCP operation.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="123",
+    ),
+    "mcp.client.name": AttributeMetadata(
+        brief="Name of the MCP client application.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="claude-desktop",
+    ),
+    "mcp.client.title": AttributeMetadata(
+        brief="Display title of the MCP client application.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(
+            isPii=IsPii.MAYBE,
+            reason="Client titles may reveal user-specific application configurations or custom setups",
+        ),
+        is_in_otel=False,
+        example="Claude Desktop",
+    ),
+    "mcp.client.version": AttributeMetadata(
+        brief="Version of the MCP client application.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="1.0.0",
+    ),
+    "mcp.lifecycle.phase": AttributeMetadata(
+        brief="Lifecycle phase indicator for MCP operations.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="initialization_complete",
+    ),
+    "mcp.logging.data_type": AttributeMetadata(
+        brief="Data type of the logged message content.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="string",
+    ),
+    "mcp.logging.level": AttributeMetadata(
+        brief="Log level for MCP logging operations.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="info",
+    ),
+    "mcp.logging.logger": AttributeMetadata(
+        brief="Logger name for MCP logging operations.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(
+            isPii=IsPii.MAYBE,
+            reason="Logger names may be user-defined and could contain sensitive information",
+        ),
+        is_in_otel=False,
+        example="mcp_server",
+    ),
+    "mcp.logging.message": AttributeMetadata(
+        brief="Log message content from MCP logging operations.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.TRUE, reason="Log messages can contain user data"),
+        is_in_otel=False,
+        example="Tool execution completed successfully",
+    ),
+    "mcp.method.name": AttributeMetadata(
+        brief="The name of the MCP request or notification method being called.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="tools/call",
+    ),
+    "mcp.progress.current": AttributeMetadata(
+        brief="Current progress value of an MCP operation.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=50,
+    ),
+    "mcp.progress.message": AttributeMetadata(
+        brief="Progress message describing the current state of an MCP operation.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(
+            isPii=IsPii.MAYBE,
+            reason="Progress messages may contain user-specific or sensitive information",
+        ),
+        is_in_otel=False,
+        example="Processing 50 of 100 items",
+    ),
+    "mcp.progress.percentage": AttributeMetadata(
+        brief="Calculated progress percentage of an MCP operation. Computed from current/total * 100.",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=50,
+    ),
+    "mcp.progress.token": AttributeMetadata(
+        brief="Token for tracking progress of an MCP operation.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="progress-token-123",
+    ),
+    "mcp.progress.total": AttributeMetadata(
+        brief="Total progress target value of an MCP operation.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=100,
+    ),
+    "mcp.prompt.name": AttributeMetadata(
+        brief="Name of the MCP prompt template being used.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(
+            isPii=IsPii.MAYBE,
+            reason="Prompt names may reveal user behavior patterns or sensitive operations",
+        ),
+        is_in_otel=False,
+        example="summarize",
+    ),
+    "mcp.prompt.result.description": AttributeMetadata(
+        brief="Description of the prompt result.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.TRUE),
+        is_in_otel=False,
+        example="A summary of the requested information",
+    ),
+    "mcp.prompt.result.message_content": AttributeMetadata(
+        brief="Content of the message in the prompt result. Used for single message results only.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.TRUE),
+        is_in_otel=False,
+        example="Please provide a summary of the document",
+    ),
+    "mcp.prompt.result.message_count": AttributeMetadata(
+        brief="Number of messages in the prompt result.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=3,
+    ),
+    "mcp.prompt.result.message_role": AttributeMetadata(
+        brief="Role of the message in the prompt result. Used for single message results only.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="user",
+    ),
+    "mcp.protocol.ready": AttributeMetadata(
+        brief="Protocol readiness indicator for MCP session. Non-zero value indicates the protocol is ready.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=1,
+    ),
+    "mcp.protocol.version": AttributeMetadata(
+        brief="MCP protocol version used in the session.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="2024-11-05",
+    ),
+    "mcp.request.argument.<key>": AttributeMetadata(
+        brief="MCP request argument with dynamic key suffix. The <key> is replaced with the actual argument name. The value is a JSON-stringified representation of the argument value.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.TRUE, reason="Arguments contain user input"),
+        is_in_otel=False,
+        has_dynamic_suffix=True,
+        example="mcp.request.argument.query='weather in Paris'",
+    ),
+    "mcp.request.argument.name": AttributeMetadata(
+        brief="Name argument from prompts/get MCP request.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.TRUE, reason="Prompt names can contain user input"),
+        is_in_otel=False,
+        example="summarize",
+    ),
+    "mcp.request.argument.uri": AttributeMetadata(
+        brief="URI argument from resources/read MCP request.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.TRUE, reason="URIs can contain user file paths"),
+        is_in_otel=False,
+        example="file:///path/to/resource",
+    ),
+    "mcp.request.id": AttributeMetadata(
+        brief="JSON-RPC request identifier for the MCP request. Unique within the MCP session.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="1",
+    ),
+    "mcp.resource.protocol": AttributeMetadata(
+        brief="Protocol of the resource URI being accessed, extracted from the URI.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="file",
+    ),
+    "mcp.resource.uri": AttributeMetadata(
+        brief="The resource URI being accessed in an MCP operation.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.TRUE, reason="URIs can contain sensitive file paths"),
+        is_in_otel=False,
+        example="file:///path/to/file.txt",
+    ),
+    "mcp.server.name": AttributeMetadata(
+        brief="Name of the MCP server application.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="sentry-mcp-server",
+    ),
+    "mcp.server.title": AttributeMetadata(
+        brief="Display title of the MCP server application.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(
+            isPii=IsPii.MAYBE,
+            reason="Server titles may reveal user-specific application configurations or custom setups",
+        ),
+        is_in_otel=False,
+        example="Sentry MCP Server",
+    ),
+    "mcp.server.version": AttributeMetadata(
+        brief="Version of the MCP server application.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="0.1.0",
+    ),
+    "mcp.session.id": AttributeMetadata(
+        brief="Identifier for the MCP session.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="550e8400-e29b-41d4-a716-446655440000",
+    ),
+    "mcp.tool.name": AttributeMetadata(
+        brief="Name of the MCP tool being called.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="calculator",
     ),
     "mcp.tool.result.content": AttributeMetadata(
         brief="The content of the tool result.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE, reason="Tool results can contain user data"),
         is_in_otel=False,
         example='{"output": "rainy", "toolCallId": "1"}',
+    ),
+    "mcp.tool.result.content_count": AttributeMetadata(
+        brief="Number of content items in the tool result.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=1,
+    ),
+    "mcp.tool.result.is_error": AttributeMetadata(
+        brief="Whether a tool execution resulted in an error.",
+        type=AttributeType.BOOLEAN,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=False,
+    ),
+    "mcp.transport": AttributeMetadata(
+        brief="Transport method used for MCP communication.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="stdio",
     ),
     "mdc.<key>": AttributeMetadata(
         brief="Attributes from the Mapped Diagnostic Context (MDC) present at the moment the log record was created. The MDC is supported by all the most popular logging solutions in the Java ecosystem, and it's usually implemented as a thread-local map that stores context for e.g. a specific request.",
@@ -7337,8 +7991,44 @@ Attributes = TypedDict(
         "lcp.size": int,
         "lcp.url": str,
         "logger.name": str,
-        "mcp.prompt.result": str,
+        "mcp.cancelled.reason": str,
+        "mcp.cancelled.request_id": str,
+        "mcp.client.name": str,
+        "mcp.client.title": str,
+        "mcp.client.version": str,
+        "mcp.lifecycle.phase": str,
+        "mcp.logging.data_type": str,
+        "mcp.logging.level": str,
+        "mcp.logging.logger": str,
+        "mcp.logging.message": str,
+        "mcp.method.name": str,
+        "mcp.progress.current": int,
+        "mcp.progress.message": str,
+        "mcp.progress.percentage": float,
+        "mcp.progress.token": str,
+        "mcp.progress.total": int,
+        "mcp.prompt.name": str,
+        "mcp.prompt.result.description": str,
+        "mcp.prompt.result.message_content": str,
+        "mcp.prompt.result.message_count": int,
+        "mcp.prompt.result.message_role": str,
+        "mcp.protocol.ready": int,
+        "mcp.protocol.version": str,
+        "mcp.request.argument.<key>": str,
+        "mcp.request.argument.name": str,
+        "mcp.request.argument.uri": str,
+        "mcp.request.id": str,
+        "mcp.resource.protocol": str,
+        "mcp.resource.uri": str,
+        "mcp.server.name": str,
+        "mcp.server.title": str,
+        "mcp.server.version": str,
+        "mcp.session.id": str,
+        "mcp.tool.name": str,
         "mcp.tool.result.content": str,
+        "mcp.tool.result.content_count": int,
+        "mcp.tool.result.is_error": bool,
+        "mcp.transport": str,
         "mdc.<key>": str,
         "messaging.destination.connection": str,
         "messaging.destination.name": str,

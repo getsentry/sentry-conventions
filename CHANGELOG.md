@@ -1,3 +1,10 @@
+## Unreleased
+
+### Features
+
+#### Changes to attributes
+
+- MCP attributes ([#171](https://github.com/getsentry/sentry-conventions/pull/171))
 ## 0.2.1
 
 ### Fixes
@@ -23,6 +30,7 @@
 - feat: Add vercel log drain attributes ([#163](https://github.com/getsentry/sentry-conventions/pull/163))
 - feat(attributes) add MCP related attributes ([#164](https://github.com/getsentry/sentry-conventions/pull/164))
 - feat(attributes): Add MDC log attributes ([#167](https://github.com/getsentry/sentry-conventions/pull/167))
+
 
 ### Fixes
 

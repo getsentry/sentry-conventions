@@ -1,0 +1,11 @@
+{
+  "key": "mcp.request.argument.uri",
+  "brief": "URI argument from resources/read MCP request.",
+  "type": "string",
+  "pii": {
+    "key": "true",
+    "reason": "URIs can contain user file paths"
+  },
+  "is_in_otel": false,
+  "example": "file:///path/to/resource"
+}

@@ -1,0 +1,10 @@
+{
+  "key": "mcp.client.name",
+  "brief": "Name of the MCP client application.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "claude-desktop"
+}

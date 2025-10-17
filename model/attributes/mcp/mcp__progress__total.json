@@ -1,0 +1,10 @@
+{
+  "key": "mcp.progress.total",
+  "brief": "Total progress target value of an MCP operation.",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 100
+}

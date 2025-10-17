@@ -1,0 +1,11 @@
+{
+  "key": "mcp.client.title",
+  "brief": "Display title of the MCP client application.",
+  "type": "string",
+  "pii": {
+    "key": "maybe",
+    "reason": "Client titles may reveal user-specific application configurations or custom setups"
+  },
+  "is_in_otel": false,
+  "example": "Claude Desktop"
+}

@@ -1,0 +1,10 @@
+{
+  "key": "mcp.cancelled.request_id",
+  "brief": "Request ID of the cancelled MCP operation.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "123"
+}

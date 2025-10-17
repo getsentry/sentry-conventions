@@ -1,0 +1,10 @@
+{
+  "key": "mcp.transport",
+  "brief": "Transport method used for MCP communication.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "stdio"
+}

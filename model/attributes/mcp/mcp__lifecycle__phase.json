@@ -1,0 +1,10 @@
+{
+  "key": "mcp.lifecycle.phase",
+  "brief": "Lifecycle phase indicator for MCP operations.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "initialization_complete"
+}

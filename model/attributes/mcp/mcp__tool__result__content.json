@@ -3,7 +3,8 @@
   "brief": "The content of the tool result.",
   "type": "string",
   "pii": {
-    "key": "maybe"
+    "key": "true",
+    "reason": "Tool results can contain user data"
   },
   "is_in_otel": false,
   "example": "{\"output\": \"rainy\", \"toolCallId\": \"1\"}",

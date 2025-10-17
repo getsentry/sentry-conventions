@@ -1,0 +1,10 @@
+{
+  "key": "mcp.resource.protocol",
+  "brief": "Protocol of the resource URI being accessed, extracted from the URI.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "file"
+}
