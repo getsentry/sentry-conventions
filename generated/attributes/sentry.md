@@ -12,7 +12,6 @@
   - [sentry._internal.dsc.sampled](#sentry_internaldscsampled)
   - [sentry._internal.dsc.trace_id](#sentry_internaldsctrace_id)
   - [sentry._internal.dsc.transaction](#sentry_internaldsctransaction)
-  - [sentry._internal.observed_timestamp_nanos](#sentry_internalobserved_timestamp_nanos)
   - [sentry._internal.replay_is_buffering](#sentry_internalreplay_is_buffering)
   - [sentry.cancellation_reason](#sentrycancellation_reason)
   - [sentry.client_sample_rate](#sentryclient_sample_rate)
@@ -27,6 +26,7 @@
   - [sentry.module.\<key\>](#sentrymodulekey)
   - [sentry.nextjs.ssr.function.route](#sentrynextjsssrfunctionroute)
   - [sentry.nextjs.ssr.function.type](#sentrynextjsssrfunctiontype)
+  - [sentry.observed_timestamp_nanos](#sentryobserved_timestamp_nanos)
   - [sentry.op](#sentryop)
   - [sentry.origin](#sentryorigin)
   - [sentry.platform](#sentryplatform)
@@ -45,7 +45,6 @@
 - [Deprecated Attributes](#deprecated-attributes)
   - [sentry.browser.name](#sentrybrowsername)
   - [sentry.browser.version](#sentrybrowserversion)
-  - [sentry.observed_timestamp_nanos](#sentryobserved_timestamp_nanos)
   - [sentry.segment_id](#sentrysegment_id)
 
 ## Stable Attributes
@@ -148,18 +147,6 @@ The transaction name from the dynamic sampling context.
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `/issues/errors-outages/` |
-
-### sentry._internal.observed_timestamp_nanos
-
-The timestamp at which an envelope was received by Relay, in nanoseconds.
-
-| Property | Value |
-| --- | --- |
-| Type | `string` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `1544712660300000000` |
-| Aliases | `sentry.observed_timestamp_nanos` |
 
 ### sentry._internal.replay_is_buffering
 
@@ -316,6 +303,17 @@ A descriptor for a for a function in Next.js that contributes to Server-Side Ren
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `generateMetadata` |
+
+### sentry.observed_timestamp_nanos
+
+The timestamp at which an envelope was received by Relay, in nanoseconds.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `1544712660300000000` |
 
 ### sentry.op
 
@@ -516,19 +514,6 @@ The version of the browser.
 | Example | `120.0.6099.130` |
 | Deprecated | Yes, use `browser.version` instead |
 | Aliases | `browser.version` |
-
-### sentry.observed_timestamp_nanos
-
-The timestamp at which an envelope was received by Relay, in nanoseconds.
-
-| Property | Value |
-| --- | --- |
-| Type | `string` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `1544712660300000000` |
-| Deprecated | Yes, use `sentry._internal.observed_timestamp_nanos` instead |
-| Aliases | `sentry._internal.observed_timestamp_nanos` |
 
 ### sentry.segment_id
 
