@@ -4457,7 +4457,7 @@ export const MCP_PROTOCOL_VERSION = 'mcp.protocol.version';
  */
 export type MCP_PROTOCOL_VERSION_TYPE = string;
 
-// Path: model/attributes/mcp/mcp__request__argument__<key>.json
+// Path: model/attributes/mcp/mcp__request__argument__[key].json
 
 /**
  * MCP request argument with dynamic key suffix. The <key> is replaced with the actual argument name. The value is a JSON-stringified representation of the argument value. `mcp.request.argument.<key>`
@@ -4759,7 +4759,7 @@ export const MCP_TRANSPORT = 'mcp.transport';
  */
 export type MCP_TRANSPORT_TYPE = string;
 
-// Path: model/attributes/mdc/mdc__<key>.json
+// Path: model/attributes/mdc/mdc__[key].json
 
 /**
  * Attributes from the Mapped Diagnostic Context (MDC) present at the moment the log record was created. The MDC is supported by all the most popular logging solutions in the Java ecosystem, and it's usually implemented as a thread-local map that stores context for e.g. a specific request. `mdc.<key>`
