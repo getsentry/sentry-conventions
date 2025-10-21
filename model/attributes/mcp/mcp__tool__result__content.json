@@ -1,0 +1,12 @@
+{
+  "key": "mcp.tool.result.content",
+  "brief": "The content of the tool result.",
+  "type": "string",
+  "pii": {
+    "key": "true",
+    "reason": "Tool results can contain user data"
+  },
+  "is_in_otel": false,
+  "example": "{\"output\": \"rainy\", \"toolCallId\": \"1\"}",
+  "alias": []
+}

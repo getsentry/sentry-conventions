@@ -27,6 +27,8 @@ This directory contains documentation for all available attributes.
 - [`jvm` Attributes](./jvm.md)
 - [`lcp` Attributes](./lcp.md)
 - [`logger` Attributes](./logger.md)
+- [`mcp` Attributes](./mcp.md)
+- [`mdc` Attributes](./mdc.md)
 - [`messaging` Attributes](./messaging.md)
 - [`navigation` Attributes](./navigation.md)
 - [`nel` Attributes](./nel.md)
@@ -48,3 +50,4 @@ This directory contains documentation for all available attributes.
 - [`url` Attributes](./url.md)
 - [`user` Attributes](./user.md)
 - [`user_agent` Attributes](./user_agent.md)
+- [`vercel` Attributes](./vercel.md)

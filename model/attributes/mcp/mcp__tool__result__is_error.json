@@ -1,0 +1,10 @@
+{
+  "key": "mcp.tool.result.is_error",
+  "brief": "Whether a tool execution resulted in an error.",
+  "type": "boolean",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": false
+}

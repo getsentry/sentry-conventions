@@ -1,0 +1,11 @@
+{
+  "key": "mcp.server.title",
+  "brief": "Display title of the MCP server application.",
+  "type": "string",
+  "pii": {
+    "key": "maybe",
+    "reason": "Server titles may reveal user-specific application configurations or custom setups"
+  },
+  "is_in_otel": false,
+  "example": "Sentry MCP Server"
+}

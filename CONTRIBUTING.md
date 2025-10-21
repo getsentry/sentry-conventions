@@ -48,11 +48,25 @@ Remember to run `yarn run generate` after editing or creating a `name` conventio
 
 ## Code and Docs Generation
 
-After you edit an attribute or add a new one, you can run `yarn run generate` to generate the auto-generated code and docs from the json files stored in the `model` directly.
+After you edit an attribute or add a new one, you should run `yarn run generate && yarn run format` to generate and format the code and docs, which are generated from the json files stored in the `model` directory.
+
+# Policies
+
+## Attributes
+
+Here's a list of policies that any newly added attributes MUST follow. Most of these are automatically enforced by the test suite.
+- The attribute MUST be namespaced. Example: `nextjs.function_id`, not `function_id`.
+- If the attribute shall not be visibile by end users, it MUST be in the `sentry._internal` namespace.
+- The `pii` field in the attribute definition MUST be `maybe` or `true` (if the attribute can contain sensitive data). It SHOULD be `false` only if scrubbing the attribute value for PII would potentially break product features. For example, `sentry.replay_id` should have `pii` set to `false`.
+- When an attribute is added that deprecates an old one:
+  - The old one should be marked as deprecated, and it MUST point to the new one using the `deprecation.replacement` field.
+  - For both the new and the old attribute, and any existing aliases of the old attribute, the new and old names MUST be added to the `aliases` list.
+  - The deprecation status of the old one SHOULD be set to `backfill` for at least 90 days, and then set to `normalize`.
 
 # Testing
 
 This repo uses [Vitest](https://vitest.dev/) for testing. To run the tests, run `yarn test`.
+The tests enforce logical correctness as well as policies that the model should follow.
 
 ```bash
 yarn test
@@ -60,20 +74,8 @@ yarn test
 
 # Linting
 
-This repo uses [Biome](https://biome.sh/) for linting. To run the linting, run `yarn lint`.
+This repo uses [Biome](https://biome.sh/) and other platform-specific tools for linting. To run the linting, run `yarn lint`.
 
 ```bash
 yarn lint
-```
-
-If you want to fix the linting errors automatically, run `yarn fix`.
-
-```bash
-yarn fix
-```
-
-Some linting errors can only be automatically fixed if you use the `--unsafe` flag.
-
-```bash
-yarn lint --unsafe
 ```

@@ -1,0 +1,11 @@
+{
+  "key": "mcp.logging.message",
+  "brief": "Log message content from MCP logging operations.",
+  "type": "string",
+  "pii": {
+    "key": "true",
+    "reason": "Log messages can contain user data"
+  },
+  "is_in_otel": false,
+  "example": "Tool execution completed successfully"
+}

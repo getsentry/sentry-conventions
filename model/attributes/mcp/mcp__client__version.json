@@ -1,0 +1,10 @@
+{
+  "key": "mcp.client.version",
+  "brief": "Version of the MCP client application.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "1.0.0"
+}

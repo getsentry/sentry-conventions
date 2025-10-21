@@ -3997,6 +3997,790 @@ export const LOGGER_NAME = 'logger.name';
  */
 export type LOGGER_NAME_TYPE = string;
 
+// Path: model/attributes/mcp/mcp__cancelled__reason.json
+
+/**
+ * Reason for the cancellation of an MCP operation. `mcp.cancelled.reason`
+ *
+ * Attribute Value Type: `string` {@link MCP_CANCELLED_REASON_TYPE}
+ *
+ * Contains PII: maybe - Cancellation reasons may contain user-specific or sensitive information
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "User cancelled the request"
+ */
+export const MCP_CANCELLED_REASON = 'mcp.cancelled.reason';
+
+/**
+ * Type for {@link MCP_CANCELLED_REASON} mcp.cancelled.reason
+ */
+export type MCP_CANCELLED_REASON_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__cancelled__request_id.json
+
+/**
+ * Request ID of the cancelled MCP operation. `mcp.cancelled.request_id`
+ *
+ * Attribute Value Type: `string` {@link MCP_CANCELLED_REQUEST_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "123"
+ */
+export const MCP_CANCELLED_REQUEST_ID = 'mcp.cancelled.request_id';
+
+/**
+ * Type for {@link MCP_CANCELLED_REQUEST_ID} mcp.cancelled.request_id
+ */
+export type MCP_CANCELLED_REQUEST_ID_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__client__name.json
+
+/**
+ * Name of the MCP client application. `mcp.client.name`
+ *
+ * Attribute Value Type: `string` {@link MCP_CLIENT_NAME_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "claude-desktop"
+ */
+export const MCP_CLIENT_NAME = 'mcp.client.name';
+
+/**
+ * Type for {@link MCP_CLIENT_NAME} mcp.client.name
+ */
+export type MCP_CLIENT_NAME_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__client__title.json
+
+/**
+ * Display title of the MCP client application. `mcp.client.title`
+ *
+ * Attribute Value Type: `string` {@link MCP_CLIENT_TITLE_TYPE}
+ *
+ * Contains PII: maybe - Client titles may reveal user-specific application configurations or custom setups
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "Claude Desktop"
+ */
+export const MCP_CLIENT_TITLE = 'mcp.client.title';
+
+/**
+ * Type for {@link MCP_CLIENT_TITLE} mcp.client.title
+ */
+export type MCP_CLIENT_TITLE_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__client__version.json
+
+/**
+ * Version of the MCP client application. `mcp.client.version`
+ *
+ * Attribute Value Type: `string` {@link MCP_CLIENT_VERSION_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "1.0.0"
+ */
+export const MCP_CLIENT_VERSION = 'mcp.client.version';
+
+/**
+ * Type for {@link MCP_CLIENT_VERSION} mcp.client.version
+ */
+export type MCP_CLIENT_VERSION_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__lifecycle__phase.json
+
+/**
+ * Lifecycle phase indicator for MCP operations. `mcp.lifecycle.phase`
+ *
+ * Attribute Value Type: `string` {@link MCP_LIFECYCLE_PHASE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "initialization_complete"
+ */
+export const MCP_LIFECYCLE_PHASE = 'mcp.lifecycle.phase';
+
+/**
+ * Type for {@link MCP_LIFECYCLE_PHASE} mcp.lifecycle.phase
+ */
+export type MCP_LIFECYCLE_PHASE_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__logging__data_type.json
+
+/**
+ * Data type of the logged message content. `mcp.logging.data_type`
+ *
+ * Attribute Value Type: `string` {@link MCP_LOGGING_DATA_TYPE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "string"
+ */
+export const MCP_LOGGING_DATA_TYPE = 'mcp.logging.data_type';
+
+/**
+ * Type for {@link MCP_LOGGING_DATA_TYPE} mcp.logging.data_type
+ */
+export type MCP_LOGGING_DATA_TYPE_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__logging__level.json
+
+/**
+ * Log level for MCP logging operations. `mcp.logging.level`
+ *
+ * Attribute Value Type: `string` {@link MCP_LOGGING_LEVEL_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "info"
+ */
+export const MCP_LOGGING_LEVEL = 'mcp.logging.level';
+
+/**
+ * Type for {@link MCP_LOGGING_LEVEL} mcp.logging.level
+ */
+export type MCP_LOGGING_LEVEL_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__logging__logger.json
+
+/**
+ * Logger name for MCP logging operations. `mcp.logging.logger`
+ *
+ * Attribute Value Type: `string` {@link MCP_LOGGING_LOGGER_TYPE}
+ *
+ * Contains PII: maybe - Logger names may be user-defined and could contain sensitive information
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "mcp_server"
+ */
+export const MCP_LOGGING_LOGGER = 'mcp.logging.logger';
+
+/**
+ * Type for {@link MCP_LOGGING_LOGGER} mcp.logging.logger
+ */
+export type MCP_LOGGING_LOGGER_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__logging__message.json
+
+/**
+ * Log message content from MCP logging operations. `mcp.logging.message`
+ *
+ * Attribute Value Type: `string` {@link MCP_LOGGING_MESSAGE_TYPE}
+ *
+ * Contains PII: true - Log messages can contain user data
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "Tool execution completed successfully"
+ */
+export const MCP_LOGGING_MESSAGE = 'mcp.logging.message';
+
+/**
+ * Type for {@link MCP_LOGGING_MESSAGE} mcp.logging.message
+ */
+export type MCP_LOGGING_MESSAGE_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__method__name.json
+
+/**
+ * The name of the MCP request or notification method being called. `mcp.method.name`
+ *
+ * Attribute Value Type: `string` {@link MCP_METHOD_NAME_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "tools/call"
+ */
+export const MCP_METHOD_NAME = 'mcp.method.name';
+
+/**
+ * Type for {@link MCP_METHOD_NAME} mcp.method.name
+ */
+export type MCP_METHOD_NAME_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__progress__current.json
+
+/**
+ * Current progress value of an MCP operation. `mcp.progress.current`
+ *
+ * Attribute Value Type: `number` {@link MCP_PROGRESS_CURRENT_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 50
+ */
+export const MCP_PROGRESS_CURRENT = 'mcp.progress.current';
+
+/**
+ * Type for {@link MCP_PROGRESS_CURRENT} mcp.progress.current
+ */
+export type MCP_PROGRESS_CURRENT_TYPE = number;
+
+// Path: model/attributes/mcp/mcp__progress__message.json
+
+/**
+ * Progress message describing the current state of an MCP operation. `mcp.progress.message`
+ *
+ * Attribute Value Type: `string` {@link MCP_PROGRESS_MESSAGE_TYPE}
+ *
+ * Contains PII: maybe - Progress messages may contain user-specific or sensitive information
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "Processing 50 of 100 items"
+ */
+export const MCP_PROGRESS_MESSAGE = 'mcp.progress.message';
+
+/**
+ * Type for {@link MCP_PROGRESS_MESSAGE} mcp.progress.message
+ */
+export type MCP_PROGRESS_MESSAGE_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__progress__percentage.json
+
+/**
+ * Calculated progress percentage of an MCP operation. Computed from current/total * 100. `mcp.progress.percentage`
+ *
+ * Attribute Value Type: `number` {@link MCP_PROGRESS_PERCENTAGE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 50
+ */
+export const MCP_PROGRESS_PERCENTAGE = 'mcp.progress.percentage';
+
+/**
+ * Type for {@link MCP_PROGRESS_PERCENTAGE} mcp.progress.percentage
+ */
+export type MCP_PROGRESS_PERCENTAGE_TYPE = number;
+
+// Path: model/attributes/mcp/mcp__progress__token.json
+
+/**
+ * Token for tracking progress of an MCP operation. `mcp.progress.token`
+ *
+ * Attribute Value Type: `string` {@link MCP_PROGRESS_TOKEN_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "progress-token-123"
+ */
+export const MCP_PROGRESS_TOKEN = 'mcp.progress.token';
+
+/**
+ * Type for {@link MCP_PROGRESS_TOKEN} mcp.progress.token
+ */
+export type MCP_PROGRESS_TOKEN_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__progress__total.json
+
+/**
+ * Total progress target value of an MCP operation. `mcp.progress.total`
+ *
+ * Attribute Value Type: `number` {@link MCP_PROGRESS_TOTAL_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 100
+ */
+export const MCP_PROGRESS_TOTAL = 'mcp.progress.total';
+
+/**
+ * Type for {@link MCP_PROGRESS_TOTAL} mcp.progress.total
+ */
+export type MCP_PROGRESS_TOTAL_TYPE = number;
+
+// Path: model/attributes/mcp/mcp__prompt__name.json
+
+/**
+ * Name of the MCP prompt template being used. `mcp.prompt.name`
+ *
+ * Attribute Value Type: `string` {@link MCP_PROMPT_NAME_TYPE}
+ *
+ * Contains PII: maybe - Prompt names may reveal user behavior patterns or sensitive operations
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "summarize"
+ */
+export const MCP_PROMPT_NAME = 'mcp.prompt.name';
+
+/**
+ * Type for {@link MCP_PROMPT_NAME} mcp.prompt.name
+ */
+export type MCP_PROMPT_NAME_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__prompt__result__description.json
+
+/**
+ * Description of the prompt result. `mcp.prompt.result.description`
+ *
+ * Attribute Value Type: `string` {@link MCP_PROMPT_RESULT_DESCRIPTION_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "A summary of the requested information"
+ */
+export const MCP_PROMPT_RESULT_DESCRIPTION = 'mcp.prompt.result.description';
+
+/**
+ * Type for {@link MCP_PROMPT_RESULT_DESCRIPTION} mcp.prompt.result.description
+ */
+export type MCP_PROMPT_RESULT_DESCRIPTION_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__prompt__result__message_content.json
+
+/**
+ * Content of the message in the prompt result. Used for single message results only. `mcp.prompt.result.message_content`
+ *
+ * Attribute Value Type: `string` {@link MCP_PROMPT_RESULT_MESSAGE_CONTENT_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "Please provide a summary of the document"
+ */
+export const MCP_PROMPT_RESULT_MESSAGE_CONTENT = 'mcp.prompt.result.message_content';
+
+/**
+ * Type for {@link MCP_PROMPT_RESULT_MESSAGE_CONTENT} mcp.prompt.result.message_content
+ */
+export type MCP_PROMPT_RESULT_MESSAGE_CONTENT_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__prompt__result__message_count.json
+
+/**
+ * Number of messages in the prompt result. `mcp.prompt.result.message_count`
+ *
+ * Attribute Value Type: `number` {@link MCP_PROMPT_RESULT_MESSAGE_COUNT_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 3
+ */
+export const MCP_PROMPT_RESULT_MESSAGE_COUNT = 'mcp.prompt.result.message_count';
+
+/**
+ * Type for {@link MCP_PROMPT_RESULT_MESSAGE_COUNT} mcp.prompt.result.message_count
+ */
+export type MCP_PROMPT_RESULT_MESSAGE_COUNT_TYPE = number;
+
+// Path: model/attributes/mcp/mcp__prompt__result__message_role.json
+
+/**
+ * Role of the message in the prompt result. Used for single message results only. `mcp.prompt.result.message_role`
+ *
+ * Attribute Value Type: `string` {@link MCP_PROMPT_RESULT_MESSAGE_ROLE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "user"
+ */
+export const MCP_PROMPT_RESULT_MESSAGE_ROLE = 'mcp.prompt.result.message_role';
+
+/**
+ * Type for {@link MCP_PROMPT_RESULT_MESSAGE_ROLE} mcp.prompt.result.message_role
+ */
+export type MCP_PROMPT_RESULT_MESSAGE_ROLE_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__protocol__ready.json
+
+/**
+ * Protocol readiness indicator for MCP session. Non-zero value indicates the protocol is ready. `mcp.protocol.ready`
+ *
+ * Attribute Value Type: `number` {@link MCP_PROTOCOL_READY_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 1
+ */
+export const MCP_PROTOCOL_READY = 'mcp.protocol.ready';
+
+/**
+ * Type for {@link MCP_PROTOCOL_READY} mcp.protocol.ready
+ */
+export type MCP_PROTOCOL_READY_TYPE = number;
+
+// Path: model/attributes/mcp/mcp__protocol__version.json
+
+/**
+ * MCP protocol version used in the session. `mcp.protocol.version`
+ *
+ * Attribute Value Type: `string` {@link MCP_PROTOCOL_VERSION_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "2024-11-05"
+ */
+export const MCP_PROTOCOL_VERSION = 'mcp.protocol.version';
+
+/**
+ * Type for {@link MCP_PROTOCOL_VERSION} mcp.protocol.version
+ */
+export type MCP_PROTOCOL_VERSION_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__request__argument__<key>.json
+
+/**
+ * MCP request argument with dynamic key suffix. The <key> is replaced with the actual argument name. The value is a JSON-stringified representation of the argument value. `mcp.request.argument.<key>`
+ *
+ * Attribute Value Type: `string` {@link MCP_REQUEST_ARGUMENT_KEY_TYPE}
+ *
+ * Contains PII: true - Arguments contain user input
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Has Dynamic Suffix: true
+ *
+ * @example "mcp.request.argument.query='weather in Paris'"
+ */
+export const MCP_REQUEST_ARGUMENT_KEY = 'mcp.request.argument.<key>';
+
+/**
+ * Type for {@link MCP_REQUEST_ARGUMENT_KEY} mcp.request.argument.<key>
+ */
+export type MCP_REQUEST_ARGUMENT_KEY_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__request__argument__name.json
+
+/**
+ * Name argument from prompts/get MCP request. `mcp.request.argument.name`
+ *
+ * Attribute Value Type: `string` {@link MCP_REQUEST_ARGUMENT_NAME_TYPE}
+ *
+ * Contains PII: true - Prompt names can contain user input
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "summarize"
+ */
+export const MCP_REQUEST_ARGUMENT_NAME = 'mcp.request.argument.name';
+
+/**
+ * Type for {@link MCP_REQUEST_ARGUMENT_NAME} mcp.request.argument.name
+ */
+export type MCP_REQUEST_ARGUMENT_NAME_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__request__argument__uri.json
+
+/**
+ * URI argument from resources/read MCP request. `mcp.request.argument.uri`
+ *
+ * Attribute Value Type: `string` {@link MCP_REQUEST_ARGUMENT_URI_TYPE}
+ *
+ * Contains PII: true - URIs can contain user file paths
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "file:///path/to/resource"
+ */
+export const MCP_REQUEST_ARGUMENT_URI = 'mcp.request.argument.uri';
+
+/**
+ * Type for {@link MCP_REQUEST_ARGUMENT_URI} mcp.request.argument.uri
+ */
+export type MCP_REQUEST_ARGUMENT_URI_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__request__id.json
+
+/**
+ * JSON-RPC request identifier for the MCP request. Unique within the MCP session. `mcp.request.id`
+ *
+ * Attribute Value Type: `string` {@link MCP_REQUEST_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "1"
+ */
+export const MCP_REQUEST_ID = 'mcp.request.id';
+
+/**
+ * Type for {@link MCP_REQUEST_ID} mcp.request.id
+ */
+export type MCP_REQUEST_ID_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__resource__protocol.json
+
+/**
+ * Protocol of the resource URI being accessed, extracted from the URI. `mcp.resource.protocol`
+ *
+ * Attribute Value Type: `string` {@link MCP_RESOURCE_PROTOCOL_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "file"
+ */
+export const MCP_RESOURCE_PROTOCOL = 'mcp.resource.protocol';
+
+/**
+ * Type for {@link MCP_RESOURCE_PROTOCOL} mcp.resource.protocol
+ */
+export type MCP_RESOURCE_PROTOCOL_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__resource__uri.json
+
+/**
+ * The resource URI being accessed in an MCP operation. `mcp.resource.uri`
+ *
+ * Attribute Value Type: `string` {@link MCP_RESOURCE_URI_TYPE}
+ *
+ * Contains PII: true - URIs can contain sensitive file paths
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "file:///path/to/file.txt"
+ */
+export const MCP_RESOURCE_URI = 'mcp.resource.uri';
+
+/**
+ * Type for {@link MCP_RESOURCE_URI} mcp.resource.uri
+ */
+export type MCP_RESOURCE_URI_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__server__name.json
+
+/**
+ * Name of the MCP server application. `mcp.server.name`
+ *
+ * Attribute Value Type: `string` {@link MCP_SERVER_NAME_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "sentry-mcp-server"
+ */
+export const MCP_SERVER_NAME = 'mcp.server.name';
+
+/**
+ * Type for {@link MCP_SERVER_NAME} mcp.server.name
+ */
+export type MCP_SERVER_NAME_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__server__title.json
+
+/**
+ * Display title of the MCP server application. `mcp.server.title`
+ *
+ * Attribute Value Type: `string` {@link MCP_SERVER_TITLE_TYPE}
+ *
+ * Contains PII: maybe - Server titles may reveal user-specific application configurations or custom setups
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "Sentry MCP Server"
+ */
+export const MCP_SERVER_TITLE = 'mcp.server.title';
+
+/**
+ * Type for {@link MCP_SERVER_TITLE} mcp.server.title
+ */
+export type MCP_SERVER_TITLE_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__server__version.json
+
+/**
+ * Version of the MCP server application. `mcp.server.version`
+ *
+ * Attribute Value Type: `string` {@link MCP_SERVER_VERSION_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "0.1.0"
+ */
+export const MCP_SERVER_VERSION = 'mcp.server.version';
+
+/**
+ * Type for {@link MCP_SERVER_VERSION} mcp.server.version
+ */
+export type MCP_SERVER_VERSION_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__session__id.json
+
+/**
+ * Identifier for the MCP session. `mcp.session.id`
+ *
+ * Attribute Value Type: `string` {@link MCP_SESSION_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "550e8400-e29b-41d4-a716-446655440000"
+ */
+export const MCP_SESSION_ID = 'mcp.session.id';
+
+/**
+ * Type for {@link MCP_SESSION_ID} mcp.session.id
+ */
+export type MCP_SESSION_ID_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__tool__name.json
+
+/**
+ * Name of the MCP tool being called. `mcp.tool.name`
+ *
+ * Attribute Value Type: `string` {@link MCP_TOOL_NAME_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "calculator"
+ */
+export const MCP_TOOL_NAME = 'mcp.tool.name';
+
+/**
+ * Type for {@link MCP_TOOL_NAME} mcp.tool.name
+ */
+export type MCP_TOOL_NAME_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__tool__result__content.json
+
+/**
+ * The content of the tool result. `mcp.tool.result.content`
+ *
+ * Attribute Value Type: `string` {@link MCP_TOOL_RESULT_CONTENT_TYPE}
+ *
+ * Contains PII: true - Tool results can contain user data
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "{\"output\": \"rainy\", \"toolCallId\": \"1\"}"
+ */
+export const MCP_TOOL_RESULT_CONTENT = 'mcp.tool.result.content';
+
+/**
+ * Type for {@link MCP_TOOL_RESULT_CONTENT} mcp.tool.result.content
+ */
+export type MCP_TOOL_RESULT_CONTENT_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__tool__result__content_count.json
+
+/**
+ * Number of content items in the tool result. `mcp.tool.result.content_count`
+ *
+ * Attribute Value Type: `number` {@link MCP_TOOL_RESULT_CONTENT_COUNT_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 1
+ */
+export const MCP_TOOL_RESULT_CONTENT_COUNT = 'mcp.tool.result.content_count';
+
+/**
+ * Type for {@link MCP_TOOL_RESULT_CONTENT_COUNT} mcp.tool.result.content_count
+ */
+export type MCP_TOOL_RESULT_CONTENT_COUNT_TYPE = number;
+
+// Path: model/attributes/mcp/mcp__tool__result__is_error.json
+
+/**
+ * Whether a tool execution resulted in an error. `mcp.tool.result.is_error`
+ *
+ * Attribute Value Type: `boolean` {@link MCP_TOOL_RESULT_IS_ERROR_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example false
+ */
+export const MCP_TOOL_RESULT_IS_ERROR = 'mcp.tool.result.is_error';
+
+/**
+ * Type for {@link MCP_TOOL_RESULT_IS_ERROR} mcp.tool.result.is_error
+ */
+export type MCP_TOOL_RESULT_IS_ERROR_TYPE = boolean;
+
+// Path: model/attributes/mcp/mcp__transport.json
+
+/**
+ * Transport method used for MCP communication. `mcp.transport`
+ *
+ * Attribute Value Type: `string` {@link MCP_TRANSPORT_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "stdio"
+ */
+export const MCP_TRANSPORT = 'mcp.transport';
+
+/**
+ * Type for {@link MCP_TRANSPORT} mcp.transport
+ */
+export type MCP_TRANSPORT_TYPE = string;
+
+// Path: model/attributes/mdc/mdc__<key>.json
+
+/**
+ * Attributes from the Mapped Diagnostic Context (MDC) present at the moment the log record was created. The MDC is supported by all the most popular logging solutions in the Java ecosystem, and it's usually implemented as a thread-local map that stores context for e.g. a specific request. `mdc.<key>`
+ *
+ * Attribute Value Type: `string` {@link MDC_KEY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Has Dynamic Suffix: true
+ *
+ * @example "mdc.some_key='some_value'"
+ */
+export const MDC_KEY = 'mdc.<key>';
+
+/**
+ * Type for {@link MDC_KEY} mdc.<key>
+ */
+export type MDC_KEY_TYPE = string;
+
 // Path: model/attributes/messaging/messaging__destination__connection.json
 
 /**
@@ -6920,6 +7704,5707 @@ export const USER_AGENT_ORIGINAL = 'user_agent.original';
  */
 export type USER_AGENT_ORIGINAL_TYPE = string;
 
+// Path: model/attributes/vercel/vercel__branch.json
+
+/**
+ * Git branch name for Vercel project `vercel.branch`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_BRANCH_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "main"
+ */
+export const VERCEL_BRANCH = 'vercel.branch';
+
+/**
+ * Type for {@link VERCEL_BRANCH} vercel.branch
+ */
+export type VERCEL_BRANCH_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__build_id.json
+
+/**
+ * Identifier for the Vercel build (only present on build logs) `vercel.build_id`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_BUILD_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "bld_cotnkcr76"
+ */
+export const VERCEL_BUILD_ID = 'vercel.build_id';
+
+/**
+ * Type for {@link VERCEL_BUILD_ID} vercel.build_id
+ */
+export type VERCEL_BUILD_ID_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__deployment_id.json
+
+/**
+ * Identifier for the Vercel deployment `vercel.deployment_id`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_DEPLOYMENT_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "dpl_233NRGRjVZX1caZrXWtz5g1TAksD"
+ */
+export const VERCEL_DEPLOYMENT_ID = 'vercel.deployment_id';
+
+/**
+ * Type for {@link VERCEL_DEPLOYMENT_ID} vercel.deployment_id
+ */
+export type VERCEL_DEPLOYMENT_ID_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__destination.json
+
+/**
+ * Origin of the external content in Vercel (only on external logs) `vercel.destination`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_DESTINATION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "https://vitals.vercel-insights.com/v1"
+ */
+export const VERCEL_DESTINATION = 'vercel.destination';
+
+/**
+ * Type for {@link VERCEL_DESTINATION} vercel.destination
+ */
+export type VERCEL_DESTINATION_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__edge_type.json
+
+/**
+ * Type of edge runtime in Vercel `vercel.edge_type`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_EDGE_TYPE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "edge-function"
+ */
+export const VERCEL_EDGE_TYPE = 'vercel.edge_type';
+
+/**
+ * Type for {@link VERCEL_EDGE_TYPE} vercel.edge_type
+ */
+export type VERCEL_EDGE_TYPE_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__entrypoint.json
+
+/**
+ * Entrypoint for the request in Vercel `vercel.entrypoint`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_ENTRYPOINT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "api/index.js"
+ */
+export const VERCEL_ENTRYPOINT = 'vercel.entrypoint';
+
+/**
+ * Type for {@link VERCEL_ENTRYPOINT} vercel.entrypoint
+ */
+export type VERCEL_ENTRYPOINT_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__execution_region.json
+
+/**
+ * Region where the request is executed `vercel.execution_region`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_EXECUTION_REGION_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "sfo1"
+ */
+export const VERCEL_EXECUTION_REGION = 'vercel.execution_region';
+
+/**
+ * Type for {@link VERCEL_EXECUTION_REGION} vercel.execution_region
+ */
+export type VERCEL_EXECUTION_REGION_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__id.json
+
+/**
+ * Unique identifier for the log entry in Vercel `vercel.id`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "1573817187330377061717300000"
+ */
+export const VERCEL_ID = 'vercel.id';
+
+/**
+ * Type for {@link VERCEL_ID} vercel.id
+ */
+export type VERCEL_ID_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__ja3_digest.json
+
+/**
+ * JA3 fingerprint digest of Vercel request `vercel.ja3_digest`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_JA3_DIGEST_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "769,47-53-5-10-49161-49162-49171-49172-50-56-19-4,0-10-11,23-24-25,0"
+ */
+export const VERCEL_JA3_DIGEST = 'vercel.ja3_digest';
+
+/**
+ * Type for {@link VERCEL_JA3_DIGEST} vercel.ja3_digest
+ */
+export type VERCEL_JA3_DIGEST_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__ja4_digest.json
+
+/**
+ * JA4 fingerprint digest `vercel.ja4_digest`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_JA4_DIGEST_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "t13d1516h2_8daaf6152771_02713d6af862"
+ */
+export const VERCEL_JA4_DIGEST = 'vercel.ja4_digest';
+
+/**
+ * Type for {@link VERCEL_JA4_DIGEST} vercel.ja4_digest
+ */
+export type VERCEL_JA4_DIGEST_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__log_type.json
+
+/**
+ * Vercel log output type `vercel.log_type`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_LOG_TYPE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "stdout"
+ */
+export const VERCEL_LOG_TYPE = 'vercel.log_type';
+
+/**
+ * Type for {@link VERCEL_LOG_TYPE} vercel.log_type
+ */
+export type VERCEL_LOG_TYPE_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__project_id.json
+
+/**
+ * Identifier for the Vercel project `vercel.project_id`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_PROJECT_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "gdufoJxB6b9b1fEqr1jUtFkyavUU"
+ */
+export const VERCEL_PROJECT_ID = 'vercel.project_id';
+
+/**
+ * Type for {@link VERCEL_PROJECT_ID} vercel.project_id
+ */
+export type VERCEL_PROJECT_ID_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__project_name.json
+
+/**
+ * Name of the Vercel project `vercel.project_name`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_PROJECT_NAME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "my-app"
+ */
+export const VERCEL_PROJECT_NAME = 'vercel.project_name';
+
+/**
+ * Type for {@link VERCEL_PROJECT_NAME} vercel.project_name
+ */
+export type VERCEL_PROJECT_NAME_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__proxy__cache_id.json
+
+/**
+ * Original request ID when request is served from cache `vercel.proxy.cache_id`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_PROXY_CACHE_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "pdx1::v8g4b-1744143786684-93dafbc0f70d"
+ */
+export const VERCEL_PROXY_CACHE_ID = 'vercel.proxy.cache_id';
+
+/**
+ * Type for {@link VERCEL_PROXY_CACHE_ID} vercel.proxy.cache_id
+ */
+export type VERCEL_PROXY_CACHE_ID_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__proxy__client_ip.json
+
+/**
+ * Client IP address `vercel.proxy.client_ip`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_PROXY_CLIENT_IP_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "120.75.16.101"
+ */
+export const VERCEL_PROXY_CLIENT_IP = 'vercel.proxy.client_ip';
+
+/**
+ * Type for {@link VERCEL_PROXY_CLIENT_IP} vercel.proxy.client_ip
+ */
+export type VERCEL_PROXY_CLIENT_IP_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__proxy__host.json
+
+/**
+ * Hostname of the request `vercel.proxy.host`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_PROXY_HOST_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "test.vercel.app"
+ */
+export const VERCEL_PROXY_HOST = 'vercel.proxy.host';
+
+/**
+ * Type for {@link VERCEL_PROXY_HOST} vercel.proxy.host
+ */
+export type VERCEL_PROXY_HOST_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__proxy__lambda_region.json
+
+/**
+ * Region where lambda function executed `vercel.proxy.lambda_region`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_PROXY_LAMBDA_REGION_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "sfo1"
+ */
+export const VERCEL_PROXY_LAMBDA_REGION = 'vercel.proxy.lambda_region';
+
+/**
+ * Type for {@link VERCEL_PROXY_LAMBDA_REGION} vercel.proxy.lambda_region
+ */
+export type VERCEL_PROXY_LAMBDA_REGION_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__proxy__method.json
+
+/**
+ * HTTP method of the request `vercel.proxy.method`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_PROXY_METHOD_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "GET"
+ */
+export const VERCEL_PROXY_METHOD = 'vercel.proxy.method';
+
+/**
+ * Type for {@link VERCEL_PROXY_METHOD} vercel.proxy.method
+ */
+export type VERCEL_PROXY_METHOD_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__proxy__path.json
+
+/**
+ * Request path with query parameters `vercel.proxy.path`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_PROXY_PATH_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "/dynamic/some-value.json?route=some-value"
+ */
+export const VERCEL_PROXY_PATH = 'vercel.proxy.path';
+
+/**
+ * Type for {@link VERCEL_PROXY_PATH} vercel.proxy.path
+ */
+export type VERCEL_PROXY_PATH_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__proxy__path_type.json
+
+/**
+ * How the request was served based on its path and project configuration `vercel.proxy.path_type`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_PROXY_PATH_TYPE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "func"
+ */
+export const VERCEL_PROXY_PATH_TYPE = 'vercel.proxy.path_type';
+
+/**
+ * Type for {@link VERCEL_PROXY_PATH_TYPE} vercel.proxy.path_type
+ */
+export type VERCEL_PROXY_PATH_TYPE_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__proxy__path_type_variant.json
+
+/**
+ * Variant of the path type `vercel.proxy.path_type_variant`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_PROXY_PATH_TYPE_VARIANT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "api"
+ */
+export const VERCEL_PROXY_PATH_TYPE_VARIANT = 'vercel.proxy.path_type_variant';
+
+/**
+ * Type for {@link VERCEL_PROXY_PATH_TYPE_VARIANT} vercel.proxy.path_type_variant
+ */
+export type VERCEL_PROXY_PATH_TYPE_VARIANT_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__proxy__referer.json
+
+/**
+ * Referer of the request `vercel.proxy.referer`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_PROXY_REFERER_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "*.vercel.app"
+ */
+export const VERCEL_PROXY_REFERER = 'vercel.proxy.referer';
+
+/**
+ * Type for {@link VERCEL_PROXY_REFERER} vercel.proxy.referer
+ */
+export type VERCEL_PROXY_REFERER_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__proxy__region.json
+
+/**
+ * Region where the request is processed `vercel.proxy.region`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_PROXY_REGION_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "sfo1"
+ */
+export const VERCEL_PROXY_REGION = 'vercel.proxy.region';
+
+/**
+ * Type for {@link VERCEL_PROXY_REGION} vercel.proxy.region
+ */
+export type VERCEL_PROXY_REGION_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__proxy__response_byte_size.json
+
+/**
+ * Size of the response in bytes `vercel.proxy.response_byte_size`
+ *
+ * Attribute Value Type: `number` {@link VERCEL_PROXY_RESPONSE_BYTE_SIZE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 1024
+ */
+export const VERCEL_PROXY_RESPONSE_BYTE_SIZE = 'vercel.proxy.response_byte_size';
+
+/**
+ * Type for {@link VERCEL_PROXY_RESPONSE_BYTE_SIZE} vercel.proxy.response_byte_size
+ */
+export type VERCEL_PROXY_RESPONSE_BYTE_SIZE_TYPE = number;
+
+// Path: model/attributes/vercel/vercel__proxy__scheme.json
+
+/**
+ * Protocol of the request `vercel.proxy.scheme`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_PROXY_SCHEME_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "https"
+ */
+export const VERCEL_PROXY_SCHEME = 'vercel.proxy.scheme';
+
+/**
+ * Type for {@link VERCEL_PROXY_SCHEME} vercel.proxy.scheme
+ */
+export type VERCEL_PROXY_SCHEME_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__proxy__status_code.json
+
+/**
+ * HTTP status code of the proxy request `vercel.proxy.status_code`
+ *
+ * Attribute Value Type: `number` {@link VERCEL_PROXY_STATUS_CODE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 200
+ */
+export const VERCEL_PROXY_STATUS_CODE = 'vercel.proxy.status_code';
+
+/**
+ * Type for {@link VERCEL_PROXY_STATUS_CODE} vercel.proxy.status_code
+ */
+export type VERCEL_PROXY_STATUS_CODE_TYPE = number;
+
+// Path: model/attributes/vercel/vercel__proxy__timestamp.json
+
+/**
+ * Unix timestamp when the proxy request was made `vercel.proxy.timestamp`
+ *
+ * Attribute Value Type: `number` {@link VERCEL_PROXY_TIMESTAMP_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 1573817250172
+ */
+export const VERCEL_PROXY_TIMESTAMP = 'vercel.proxy.timestamp';
+
+/**
+ * Type for {@link VERCEL_PROXY_TIMESTAMP} vercel.proxy.timestamp
+ */
+export type VERCEL_PROXY_TIMESTAMP_TYPE = number;
+
+// Path: model/attributes/vercel/vercel__proxy__user_agent.json
+
+/**
+ * User agent strings of the request `vercel.proxy.user_agent`
+ *
+ * Attribute Value Type: `Array<string>` {@link VERCEL_PROXY_USER_AGENT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example ["Mozilla/5.0..."]
+ */
+export const VERCEL_PROXY_USER_AGENT = 'vercel.proxy.user_agent';
+
+/**
+ * Type for {@link VERCEL_PROXY_USER_AGENT} vercel.proxy.user_agent
+ */
+export type VERCEL_PROXY_USER_AGENT_TYPE = Array<string>;
+
+// Path: model/attributes/vercel/vercel__proxy__vercel_cache.json
+
+/**
+ * Cache status sent to the browser `vercel.proxy.vercel_cache`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_PROXY_VERCEL_CACHE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "REVALIDATED"
+ */
+export const VERCEL_PROXY_VERCEL_CACHE = 'vercel.proxy.vercel_cache';
+
+/**
+ * Type for {@link VERCEL_PROXY_VERCEL_CACHE} vercel.proxy.vercel_cache
+ */
+export type VERCEL_PROXY_VERCEL_CACHE_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__proxy__vercel_id.json
+
+/**
+ * Vercel-specific identifier `vercel.proxy.vercel_id`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_PROXY_VERCEL_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "sfo1::abc123"
+ */
+export const VERCEL_PROXY_VERCEL_ID = 'vercel.proxy.vercel_id';
+
+/**
+ * Type for {@link VERCEL_PROXY_VERCEL_ID} vercel.proxy.vercel_id
+ */
+export type VERCEL_PROXY_VERCEL_ID_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__proxy__waf_action.json
+
+/**
+ * Action taken by firewall rules `vercel.proxy.waf_action`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_PROXY_WAF_ACTION_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "deny"
+ */
+export const VERCEL_PROXY_WAF_ACTION = 'vercel.proxy.waf_action';
+
+/**
+ * Type for {@link VERCEL_PROXY_WAF_ACTION} vercel.proxy.waf_action
+ */
+export type VERCEL_PROXY_WAF_ACTION_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__proxy__waf_rule_id.json
+
+/**
+ * ID of the firewall rule that matched `vercel.proxy.waf_rule_id`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_PROXY_WAF_RULE_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "rule_gAHz8jtSB1Gy"
+ */
+export const VERCEL_PROXY_WAF_RULE_ID = 'vercel.proxy.waf_rule_id';
+
+/**
+ * Type for {@link VERCEL_PROXY_WAF_RULE_ID} vercel.proxy.waf_rule_id
+ */
+export type VERCEL_PROXY_WAF_RULE_ID_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__request_id.json
+
+/**
+ * Identifier of the Vercel request `vercel.request_id`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_REQUEST_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "643af4e3-975a-4cc7-9e7a-1eda11539d90"
+ */
+export const VERCEL_REQUEST_ID = 'vercel.request_id';
+
+/**
+ * Type for {@link VERCEL_REQUEST_ID} vercel.request_id
+ */
+export type VERCEL_REQUEST_ID_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__source.json
+
+/**
+ * Origin of the Vercel log (build, edge, lambda, static, external, or firewall) `vercel.source`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_SOURCE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "build"
+ */
+export const VERCEL_SOURCE = 'vercel.source';
+
+/**
+ * Type for {@link VERCEL_SOURCE} vercel.source
+ */
+export type VERCEL_SOURCE_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__status_code.json
+
+/**
+ * HTTP status code of the request (-1 means no response returned and the lambda crashed) `vercel.status_code`
+ *
+ * Attribute Value Type: `number` {@link VERCEL_STATUS_CODE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 200
+ */
+export const VERCEL_STATUS_CODE = 'vercel.status_code';
+
+/**
+ * Type for {@link VERCEL_STATUS_CODE} vercel.status_code
+ */
+export type VERCEL_STATUS_CODE_TYPE = number;
+
+export type AttributeType =
+  | 'string'
+  | 'boolean'
+  | 'integer'
+  | 'double'
+  | 'string[]'
+  | 'boolean[]'
+  | 'integer[]'
+  | 'double[]';
+
+export type IsPii = 'true' | 'false' | 'maybe';
+
+export interface PiiInfo {
+  /** Whether the attribute contains PII */
+  isPii: IsPii;
+  /** Reason why it has PII or not */
+  reason?: string;
+}
+
+export interface DeprecationInfo {
+  /** What this attribute was replaced with */
+  replacement?: string;
+  /** Reason for deprecation */
+  reason?: string;
+}
+
+export interface AttributeMetadata {
+  /** A description of the attribute */
+  brief: string;
+  /** The type of the attribute value */
+  type: AttributeType;
+  /** If an attribute can have PII */
+  pii: PiiInfo;
+  /** Whether the attribute is defined in OpenTelemetry Semantic Conventions */
+  isInOtel: boolean;
+  /** If an attribute has a dynamic suffix */
+  hasDynamicSuffix?: boolean;
+  /** An example value of the attribute */
+  example?: AttributeValue;
+  /** If an attribute was deprecated, and what it was replaced with */
+  deprecation?: DeprecationInfo;
+  /** If there are attributes that alias to this attribute */
+  aliases?: AttributeName[];
+  /** If an attribute is SDK specific, list the SDKs that use this attribute */
+  sdks?: string[];
+}
+
+export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
+  [AI_CITATIONS]: 'string[]',
+  [AI_COMPLETION_TOKENS_USED]: 'integer',
+  [AI_DOCUMENTS]: 'string[]',
+  [AI_FINISH_REASON]: 'string',
+  [AI_FREQUENCY_PENALTY]: 'double',
+  [AI_FUNCTION_CALL]: 'string',
+  [AI_GENERATION_ID]: 'string',
+  [AI_INPUT_MESSAGES]: 'string',
+  [AI_IS_SEARCH_REQUIRED]: 'boolean',
+  [AI_METADATA]: 'string',
+  [AI_MODEL_PROVIDER]: 'string',
+  [AI_MODEL_ID]: 'string',
+  [AI_PIPELINE_NAME]: 'string',
+  [AI_PREAMBLE]: 'string',
+  [AI_PRESENCE_PENALTY]: 'double',
+  [AI_PROMPT_TOKENS_USED]: 'integer',
+  [AI_RAW_PROMPTING]: 'boolean',
+  [AI_RESPONSE_FORMAT]: 'string',
+  [AI_RESPONSES]: 'string[]',
+  [AI_SEARCH_QUERIES]: 'string[]',
+  [AI_SEARCH_RESULTS]: 'string[]',
+  [AI_SEED]: 'string',
+  [AI_STREAMING]: 'boolean',
+  [AI_TAGS]: 'string',
+  [AI_TEMPERATURE]: 'double',
+  [AI_TEXTS]: 'string[]',
+  [AI_TOOL_CALLS]: 'string[]',
+  [AI_TOOLS]: 'string[]',
+  [AI_TOP_K]: 'integer',
+  [AI_TOP_P]: 'double',
+  [AI_TOTAL_COST]: 'double',
+  [AI_TOTAL_TOKENS_USED]: 'integer',
+  [AI_WARNINGS]: 'string[]',
+  [APP_START_TYPE]: 'string',
+  [BLOCKED_MAIN_THREAD]: 'boolean',
+  [BROWSER_NAME]: 'string',
+  [BROWSER_REPORT_TYPE]: 'string',
+  [BROWSER_SCRIPT_INVOKER]: 'string',
+  [BROWSER_SCRIPT_INVOKER_TYPE]: 'string',
+  [BROWSER_SCRIPT_SOURCE_CHAR_POSITION]: 'integer',
+  [BROWSER_VERSION]: 'string',
+  [CACHE_HIT]: 'boolean',
+  [CACHE_ITEM_SIZE]: 'integer',
+  [CACHE_KEY]: 'string[]',
+  [CACHE_OPERATION]: 'string',
+  [CACHE_TTL]: 'integer',
+  [CHANNEL]: 'string',
+  [CLIENT_ADDRESS]: 'string',
+  [CLIENT_PORT]: 'integer',
+  [CLOUDFLARE_D1_DURATION]: 'integer',
+  [CLOUDFLARE_D1_ROWS_READ]: 'integer',
+  [CLOUDFLARE_D1_ROWS_WRITTEN]: 'integer',
+  [CODE_FILE_PATH]: 'string',
+  [CODE_FILEPATH]: 'string',
+  [CODE_FUNCTION]: 'string',
+  [CODE_FUNCTION_NAME]: 'string',
+  [CODE_LINE_NUMBER]: 'integer',
+  [CODE_LINENO]: 'integer',
+  [CODE_NAMESPACE]: 'string',
+  [DB_COLLECTION_NAME]: 'string',
+  [DB_NAME]: 'string',
+  [DB_NAMESPACE]: 'string',
+  [DB_OPERATION]: 'string',
+  [DB_OPERATION_NAME]: 'string',
+  [DB_QUERY_PARAMETER_KEY]: 'string',
+  [DB_QUERY_SUMMARY]: 'string',
+  [DB_QUERY_TEXT]: 'string',
+  [DB_REDIS_CONNECTION]: 'string',
+  [DB_REDIS_PARAMETERS]: 'string[]',
+  [DB_SQL_BINDINGS]: 'string[]',
+  [DB_STATEMENT]: 'string',
+  [DB_SYSTEM]: 'string',
+  [DB_SYSTEM_NAME]: 'string',
+  [DB_USER]: 'string',
+  [DEVICE_BRAND]: 'string',
+  [DEVICE_FAMILY]: 'string',
+  [DEVICE_MODEL]: 'string',
+  [ENVIRONMENT]: 'string',
+  [ERROR_TYPE]: 'string',
+  [EVENT_ID]: 'integer',
+  [EVENT_NAME]: 'string',
+  [EXCEPTION_ESCAPED]: 'boolean',
+  [EXCEPTION_MESSAGE]: 'string',
+  [EXCEPTION_STACKTRACE]: 'string',
+  [EXCEPTION_TYPE]: 'string',
+  [FAAS_COLDSTART]: 'boolean',
+  [FAAS_CRON]: 'string',
+  [FAAS_TIME]: 'string',
+  [FAAS_TRIGGER]: 'string',
+  [FLAG_EVALUATION_KEY]: 'boolean',
+  [FRAMES_DELAY]: 'integer',
+  [FRAMES_FROZEN]: 'integer',
+  [FRAMES_SLOW]: 'integer',
+  [FRAMES_TOTAL]: 'integer',
+  [FS_ERROR]: 'string',
+  [GEN_AI_AGENT_NAME]: 'string',
+  [GEN_AI_ASSISTANT_MESSAGE]: 'string',
+  [GEN_AI_CHOICE]: 'string',
+  [GEN_AI_COST_INPUT_TOKENS]: 'double',
+  [GEN_AI_COST_OUTPUT_TOKENS]: 'double',
+  [GEN_AI_COST_TOTAL_TOKENS]: 'double',
+  [GEN_AI_OPERATION_NAME]: 'string',
+  [GEN_AI_OPERATION_TYPE]: 'string',
+  [GEN_AI_PIPELINE_NAME]: 'string',
+  [GEN_AI_PROMPT]: 'string',
+  [GEN_AI_REQUEST_AVAILABLE_TOOLS]: 'string',
+  [GEN_AI_REQUEST_FREQUENCY_PENALTY]: 'double',
+  [GEN_AI_REQUEST_MAX_TOKENS]: 'integer',
+  [GEN_AI_REQUEST_MESSAGES]: 'string',
+  [GEN_AI_REQUEST_MODEL]: 'string',
+  [GEN_AI_REQUEST_PRESENCE_PENALTY]: 'double',
+  [GEN_AI_REQUEST_SEED]: 'string',
+  [GEN_AI_REQUEST_TEMPERATURE]: 'double',
+  [GEN_AI_REQUEST_TOP_K]: 'integer',
+  [GEN_AI_REQUEST_TOP_P]: 'double',
+  [GEN_AI_RESPONSE_FINISH_REASONS]: 'string',
+  [GEN_AI_RESPONSE_ID]: 'string',
+  [GEN_AI_RESPONSE_MODEL]: 'string',
+  [GEN_AI_RESPONSE_STREAMING]: 'boolean',
+  [GEN_AI_RESPONSE_TEXT]: 'string',
+  [GEN_AI_RESPONSE_TOKENS_PER_SECOND]: 'double',
+  [GEN_AI_RESPONSE_TOOL_CALLS]: 'string',
+  [GEN_AI_SYSTEM]: 'string',
+  [GEN_AI_SYSTEM_MESSAGE]: 'string',
+  [GEN_AI_TOOL_DESCRIPTION]: 'string',
+  [GEN_AI_TOOL_INPUT]: 'string',
+  [GEN_AI_TOOL_MESSAGE]: 'string',
+  [GEN_AI_TOOL_NAME]: 'string',
+  [GEN_AI_TOOL_OUTPUT]: 'string',
+  [GEN_AI_TOOL_TYPE]: 'string',
+  [GEN_AI_USAGE_COMPLETION_TOKENS]: 'integer',
+  [GEN_AI_USAGE_INPUT_TOKENS]: 'integer',
+  [GEN_AI_USAGE_INPUT_TOKENS_CACHED]: 'integer',
+  [GEN_AI_USAGE_OUTPUT_TOKENS]: 'integer',
+  [GEN_AI_USAGE_OUTPUT_TOKENS_REASONING]: 'integer',
+  [GEN_AI_USAGE_PROMPT_TOKENS]: 'integer',
+  [GEN_AI_USAGE_TOTAL_COST]: 'double',
+  [GEN_AI_USAGE_TOTAL_TOKENS]: 'integer',
+  [GEN_AI_USER_MESSAGE]: 'string',
+  [GRAPHQL_OPERATION_NAME]: 'string',
+  [GRAPHQL_OPERATION_TYPE]: 'string',
+  [HTTP_CLIENT_IP]: 'string',
+  [HTTP_DECODED_RESPONSE_CONTENT_LENGTH]: 'integer',
+  [HTTP_FLAVOR]: 'string',
+  [HTTP_FRAGMENT]: 'string',
+  [HTTP_HOST]: 'string',
+  [HTTP_METHOD]: 'string',
+  [HTTP_QUERY]: 'string',
+  [HTTP_REQUEST_CONNECT_START]: 'double',
+  [HTTP_REQUEST_CONNECTION_END]: 'double',
+  [HTTP_REQUEST_DOMAIN_LOOKUP_END]: 'double',
+  [HTTP_REQUEST_DOMAIN_LOOKUP_START]: 'double',
+  [HTTP_REQUEST_FETCH_START]: 'double',
+  [HTTP_REQUEST_HEADER_KEY]: 'string[]',
+  [HTTP_REQUEST_METHOD]: 'string',
+  [HTTP_REQUEST_REDIRECT_END]: 'double',
+  [HTTP_REQUEST_REDIRECT_START]: 'double',
+  [HTTP_REQUEST_REQUEST_START]: 'double',
+  [HTTP_REQUEST_RESEND_COUNT]: 'integer',
+  [HTTP_REQUEST_RESPONSE_END]: 'double',
+  [HTTP_REQUEST_RESPONSE_START]: 'double',
+  [HTTP_REQUEST_SECURE_CONNECTION_START]: 'double',
+  [HTTP_REQUEST_TIME_TO_FIRST_BYTE]: 'double',
+  [HTTP_REQUEST_WORKER_START]: 'double',
+  [HTTP_RESPONSE_BODY_SIZE]: 'integer',
+  [HTTP_RESPONSE_HEADER_KEY]: 'string[]',
+  [HTTP_RESPONSE_HEADER_CONTENT_LENGTH]: 'string',
+  [HTTP_RESPONSE_SIZE]: 'integer',
+  [HTTP_RESPONSE_STATUS_CODE]: 'integer',
+  [HTTP_RESPONSE_CONTENT_LENGTH]: 'integer',
+  [HTTP_RESPONSE_TRANSFER_SIZE]: 'integer',
+  [HTTP_ROUTE]: 'string',
+  [HTTP_SCHEME]: 'string',
+  [HTTP_SERVER_NAME]: 'string',
+  [HTTP_STATUS_CODE]: 'integer',
+  [HTTP_TARGET]: 'string',
+  [HTTP_URL]: 'string',
+  [HTTP_USER_AGENT]: 'string',
+  [ID]: 'string',
+  [JVM_GC_ACTION]: 'string',
+  [JVM_GC_NAME]: 'string',
+  [JVM_MEMORY_POOL_NAME]: 'string',
+  [JVM_MEMORY_TYPE]: 'string',
+  [JVM_THREAD_DAEMON]: 'boolean',
+  [JVM_THREAD_STATE]: 'string',
+  [LCP_ELEMENT]: 'string',
+  [LCP_ID]: 'string',
+  [LCP_SIZE]: 'integer',
+  [LCP_URL]: 'string',
+  [LOGGER_NAME]: 'string',
+  [MCP_CANCELLED_REASON]: 'string',
+  [MCP_CANCELLED_REQUEST_ID]: 'string',
+  [MCP_CLIENT_NAME]: 'string',
+  [MCP_CLIENT_TITLE]: 'string',
+  [MCP_CLIENT_VERSION]: 'string',
+  [MCP_LIFECYCLE_PHASE]: 'string',
+  [MCP_LOGGING_DATA_TYPE]: 'string',
+  [MCP_LOGGING_LEVEL]: 'string',
+  [MCP_LOGGING_LOGGER]: 'string',
+  [MCP_LOGGING_MESSAGE]: 'string',
+  [MCP_METHOD_NAME]: 'string',
+  [MCP_PROGRESS_CURRENT]: 'integer',
+  [MCP_PROGRESS_MESSAGE]: 'string',
+  [MCP_PROGRESS_PERCENTAGE]: 'double',
+  [MCP_PROGRESS_TOKEN]: 'string',
+  [MCP_PROGRESS_TOTAL]: 'integer',
+  [MCP_PROMPT_NAME]: 'string',
+  [MCP_PROMPT_RESULT_DESCRIPTION]: 'string',
+  [MCP_PROMPT_RESULT_MESSAGE_CONTENT]: 'string',
+  [MCP_PROMPT_RESULT_MESSAGE_COUNT]: 'integer',
+  [MCP_PROMPT_RESULT_MESSAGE_ROLE]: 'string',
+  [MCP_PROTOCOL_READY]: 'integer',
+  [MCP_PROTOCOL_VERSION]: 'string',
+  [MCP_REQUEST_ARGUMENT_KEY]: 'string',
+  [MCP_REQUEST_ARGUMENT_NAME]: 'string',
+  [MCP_REQUEST_ARGUMENT_URI]: 'string',
+  [MCP_REQUEST_ID]: 'string',
+  [MCP_RESOURCE_PROTOCOL]: 'string',
+  [MCP_RESOURCE_URI]: 'string',
+  [MCP_SERVER_NAME]: 'string',
+  [MCP_SERVER_TITLE]: 'string',
+  [MCP_SERVER_VERSION]: 'string',
+  [MCP_SESSION_ID]: 'string',
+  [MCP_TOOL_NAME]: 'string',
+  [MCP_TOOL_RESULT_CONTENT]: 'string',
+  [MCP_TOOL_RESULT_CONTENT_COUNT]: 'integer',
+  [MCP_TOOL_RESULT_IS_ERROR]: 'boolean',
+  [MCP_TRANSPORT]: 'string',
+  [MDC_KEY]: 'string',
+  [MESSAGING_DESTINATION_CONNECTION]: 'string',
+  [MESSAGING_DESTINATION_NAME]: 'string',
+  [MESSAGING_MESSAGE_BODY_SIZE]: 'integer',
+  [MESSAGING_MESSAGE_ENVELOPE_SIZE]: 'integer',
+  [MESSAGING_MESSAGE_ID]: 'string',
+  [MESSAGING_MESSAGE_RECEIVE_LATENCY]: 'integer',
+  [MESSAGING_MESSAGE_RETRY_COUNT]: 'integer',
+  [MESSAGING_OPERATION_TYPE]: 'string',
+  [MESSAGING_SYSTEM]: 'string',
+  [METHOD]: 'string',
+  [NAVIGATION_TYPE]: 'string',
+  [NEL_ELAPSED_TIME]: 'integer',
+  [NEL_PHASE]: 'string',
+  [NEL_REFERRER]: 'string',
+  [NEL_SAMPLING_FUNCTION]: 'double',
+  [NEL_TYPE]: 'string',
+  [NET_HOST_IP]: 'string',
+  [NET_HOST_NAME]: 'string',
+  [NET_HOST_PORT]: 'integer',
+  [NET_PEER_IP]: 'string',
+  [NET_PEER_NAME]: 'string',
+  [NET_PEER_PORT]: 'integer',
+  [NET_PROTOCOL_NAME]: 'string',
+  [NET_PROTOCOL_VERSION]: 'string',
+  [NET_SOCK_FAMILY]: 'string',
+  [NET_SOCK_HOST_ADDR]: 'string',
+  [NET_SOCK_HOST_PORT]: 'integer',
+  [NET_SOCK_PEER_ADDR]: 'string',
+  [NET_SOCK_PEER_NAME]: 'string',
+  [NET_SOCK_PEER_PORT]: 'integer',
+  [NET_TRANSPORT]: 'string',
+  [NETWORK_LOCAL_ADDRESS]: 'string',
+  [NETWORK_LOCAL_PORT]: 'integer',
+  [NETWORK_PEER_ADDRESS]: 'string',
+  [NETWORK_PEER_PORT]: 'integer',
+  [NETWORK_PROTOCOL_NAME]: 'string',
+  [NETWORK_PROTOCOL_VERSION]: 'string',
+  [NETWORK_TRANSPORT]: 'string',
+  [NETWORK_TYPE]: 'string',
+  [OS_BUILD_ID]: 'string',
+  [OS_DESCRIPTION]: 'string',
+  [OS_NAME]: 'string',
+  [OS_TYPE]: 'string',
+  [OS_VERSION]: 'string',
+  [OTEL_SCOPE_NAME]: 'string',
+  [OTEL_SCOPE_VERSION]: 'string',
+  [OTEL_STATUS_CODE]: 'string',
+  [OTEL_STATUS_DESCRIPTION]: 'string',
+  [PARAMS_KEY]: 'string',
+  [PREVIOUS_ROUTE]: 'string',
+  [PROCESS_EXECUTABLE_NAME]: 'string',
+  [PROCESS_PID]: 'integer',
+  [PROCESS_RUNTIME_DESCRIPTION]: 'string',
+  [PROCESS_RUNTIME_NAME]: 'string',
+  [PROCESS_RUNTIME_VERSION]: 'string',
+  [PROFILE_ID]: 'string',
+  [QUERY_KEY]: 'string',
+  [RELEASE]: 'string',
+  [REMIX_ACTION_FORM_DATA_KEY]: 'string',
+  [REPLAY_ID]: 'string',
+  [RESOURCE_RENDER_BLOCKING_STATUS]: 'string',
+  [ROUTE]: 'string',
+  [RPC_GRPC_STATUS_CODE]: 'integer',
+  [RPC_SERVICE]: 'string',
+  [SENTRY_INTERNAL_DSC_ENVIRONMENT]: 'string',
+  [SENTRY_INTERNAL_DSC_ORG_ID]: 'string',
+  [SENTRY_INTERNAL_DSC_PUBLIC_KEY]: 'string',
+  [SENTRY_INTERNAL_DSC_RELEASE]: 'string',
+  [SENTRY_INTERNAL_DSC_SAMPLE_RAND]: 'string',
+  [SENTRY_INTERNAL_DSC_SAMPLE_RATE]: 'string',
+  [SENTRY_INTERNAL_DSC_SAMPLED]: 'boolean',
+  [SENTRY_INTERNAL_DSC_TRACE_ID]: 'string',
+  [SENTRY_INTERNAL_DSC_TRANSACTION]: 'string',
+  [SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS]: 'string',
+  [SENTRY_INTERNAL_REPLAY_IS_BUFFERING]: 'boolean',
+  [SENTRY_BROWSER_NAME]: 'string',
+  [SENTRY_BROWSER_VERSION]: 'string',
+  [SENTRY_CANCELLATION_REASON]: 'string',
+  [SENTRY_CLIENT_SAMPLE_RATE]: 'double',
+  [SENTRY_DESCRIPTION]: 'string',
+  [SENTRY_DIST]: 'string',
+  [SENTRY_ENVIRONMENT]: 'string',
+  [SENTRY_EXCLUSIVE_TIME]: 'integer',
+  [SENTRY_HTTP_PREFETCH]: 'boolean',
+  [SENTRY_IDLE_SPAN_FINISH_REASON]: 'string',
+  [SENTRY_MESSAGE_PARAMETER_KEY]: 'string',
+  [SENTRY_MESSAGE_TEMPLATE]: 'string',
+  [SENTRY_MODULE_KEY]: 'string',
+  [SENTRY_NEXTJS_SSR_FUNCTION_ROUTE]: 'string',
+  [SENTRY_NEXTJS_SSR_FUNCTION_TYPE]: 'string',
+  [SENTRY_OBSERVED_TIMESTAMP_NANOS]: 'string',
+  [SENTRY_OP]: 'string',
+  [SENTRY_ORIGIN]: 'string',
+  [SENTRY_PLATFORM]: 'string',
+  [SENTRY_PROFILE_ID]: 'string',
+  [SENTRY_RELEASE]: 'string',
+  [SENTRY_REPLAY_ID]: 'string',
+  [SENTRY_SDK_INTEGRATIONS]: 'string[]',
+  [SENTRY_SDK_NAME]: 'string',
+  [SENTRY_SDK_VERSION]: 'string',
+  [SENTRY_SEGMENT_ID]: 'string',
+  [SENTRY_SEGMENT_NAME]: 'string',
+  [_SENTRY_SEGMENT_ID]: 'string',
+  [SENTRY_SERVER_SAMPLE_RATE]: 'double',
+  [SENTRY_SPAN_SOURCE]: 'string',
+  [SENTRY_TRACE_PARENT_SPAN_ID]: 'string',
+  [SENTRY_TRANSACTION]: 'string',
+  [SERVER_ADDRESS]: 'string',
+  [SERVER_PORT]: 'integer',
+  [SERVICE_NAME]: 'string',
+  [SERVICE_VERSION]: 'string',
+  [THREAD_ID]: 'integer',
+  [THREAD_NAME]: 'string',
+  [TRANSACTION]: 'string',
+  [TYPE]: 'string',
+  [UI_COMPONENT_NAME]: 'string',
+  [UI_CONTRIBUTES_TO_TTFD]: 'boolean',
+  [UI_CONTRIBUTES_TO_TTID]: 'boolean',
+  [URL_DOMAIN]: 'string',
+  [URL_FRAGMENT]: 'string',
+  [URL_FULL]: 'string',
+  [URL_PATH]: 'string',
+  [URL_PATH_PARAMETER_KEY]: 'string',
+  [URL_PORT]: 'integer',
+  [URL_QUERY]: 'string',
+  [URL_SCHEME]: 'string',
+  [URL_TEMPLATE]: 'string',
+  [URL]: 'string',
+  [USER_EMAIL]: 'string',
+  [USER_FULL_NAME]: 'string',
+  [USER_GEO_CITY]: 'string',
+  [USER_GEO_COUNTRY_CODE]: 'string',
+  [USER_GEO_REGION]: 'string',
+  [USER_GEO_SUBDIVISION]: 'string',
+  [USER_HASH]: 'string',
+  [USER_ID]: 'string',
+  [USER_IP_ADDRESS]: 'string',
+  [USER_NAME]: 'string',
+  [USER_ROLES]: 'string[]',
+  [USER_AGENT_ORIGINAL]: 'string',
+  [VERCEL_BRANCH]: 'string',
+  [VERCEL_BUILD_ID]: 'string',
+  [VERCEL_DEPLOYMENT_ID]: 'string',
+  [VERCEL_DESTINATION]: 'string',
+  [VERCEL_EDGE_TYPE]: 'string',
+  [VERCEL_ENTRYPOINT]: 'string',
+  [VERCEL_EXECUTION_REGION]: 'string',
+  [VERCEL_ID]: 'string',
+  [VERCEL_JA3_DIGEST]: 'string',
+  [VERCEL_JA4_DIGEST]: 'string',
+  [VERCEL_LOG_TYPE]: 'string',
+  [VERCEL_PROJECT_ID]: 'string',
+  [VERCEL_PROJECT_NAME]: 'string',
+  [VERCEL_PROXY_CACHE_ID]: 'string',
+  [VERCEL_PROXY_CLIENT_IP]: 'string',
+  [VERCEL_PROXY_HOST]: 'string',
+  [VERCEL_PROXY_LAMBDA_REGION]: 'string',
+  [VERCEL_PROXY_METHOD]: 'string',
+  [VERCEL_PROXY_PATH]: 'string',
+  [VERCEL_PROXY_PATH_TYPE]: 'string',
+  [VERCEL_PROXY_PATH_TYPE_VARIANT]: 'string',
+  [VERCEL_PROXY_REFERER]: 'string',
+  [VERCEL_PROXY_REGION]: 'string',
+  [VERCEL_PROXY_RESPONSE_BYTE_SIZE]: 'integer',
+  [VERCEL_PROXY_SCHEME]: 'string',
+  [VERCEL_PROXY_STATUS_CODE]: 'integer',
+  [VERCEL_PROXY_TIMESTAMP]: 'integer',
+  [VERCEL_PROXY_USER_AGENT]: 'string[]',
+  [VERCEL_PROXY_VERCEL_CACHE]: 'string',
+  [VERCEL_PROXY_VERCEL_ID]: 'string',
+  [VERCEL_PROXY_WAF_ACTION]: 'string',
+  [VERCEL_PROXY_WAF_RULE_ID]: 'string',
+  [VERCEL_REQUEST_ID]: 'string',
+  [VERCEL_SOURCE]: 'string',
+  [VERCEL_STATUS_CODE]: 'integer',
+};
+
+export type AttributeName =
+  | typeof AI_CITATIONS
+  | typeof AI_COMPLETION_TOKENS_USED
+  | typeof AI_DOCUMENTS
+  | typeof AI_FINISH_REASON
+  | typeof AI_FREQUENCY_PENALTY
+  | typeof AI_FUNCTION_CALL
+  | typeof AI_GENERATION_ID
+  | typeof AI_INPUT_MESSAGES
+  | typeof AI_IS_SEARCH_REQUIRED
+  | typeof AI_METADATA
+  | typeof AI_MODEL_PROVIDER
+  | typeof AI_MODEL_ID
+  | typeof AI_PIPELINE_NAME
+  | typeof AI_PREAMBLE
+  | typeof AI_PRESENCE_PENALTY
+  | typeof AI_PROMPT_TOKENS_USED
+  | typeof AI_RAW_PROMPTING
+  | typeof AI_RESPONSE_FORMAT
+  | typeof AI_RESPONSES
+  | typeof AI_SEARCH_QUERIES
+  | typeof AI_SEARCH_RESULTS
+  | typeof AI_SEED
+  | typeof AI_STREAMING
+  | typeof AI_TAGS
+  | typeof AI_TEMPERATURE
+  | typeof AI_TEXTS
+  | typeof AI_TOOL_CALLS
+  | typeof AI_TOOLS
+  | typeof AI_TOP_K
+  | typeof AI_TOP_P
+  | typeof AI_TOTAL_COST
+  | typeof AI_TOTAL_TOKENS_USED
+  | typeof AI_WARNINGS
+  | typeof APP_START_TYPE
+  | typeof BLOCKED_MAIN_THREAD
+  | typeof BROWSER_NAME
+  | typeof BROWSER_REPORT_TYPE
+  | typeof BROWSER_SCRIPT_INVOKER
+  | typeof BROWSER_SCRIPT_INVOKER_TYPE
+  | typeof BROWSER_SCRIPT_SOURCE_CHAR_POSITION
+  | typeof BROWSER_VERSION
+  | typeof CACHE_HIT
+  | typeof CACHE_ITEM_SIZE
+  | typeof CACHE_KEY
+  | typeof CACHE_OPERATION
+  | typeof CACHE_TTL
+  | typeof CHANNEL
+  | typeof CLIENT_ADDRESS
+  | typeof CLIENT_PORT
+  | typeof CLOUDFLARE_D1_DURATION
+  | typeof CLOUDFLARE_D1_ROWS_READ
+  | typeof CLOUDFLARE_D1_ROWS_WRITTEN
+  | typeof CODE_FILE_PATH
+  | typeof CODE_FILEPATH
+  | typeof CODE_FUNCTION
+  | typeof CODE_FUNCTION_NAME
+  | typeof CODE_LINE_NUMBER
+  | typeof CODE_LINENO
+  | typeof CODE_NAMESPACE
+  | typeof DB_COLLECTION_NAME
+  | typeof DB_NAME
+  | typeof DB_NAMESPACE
+  | typeof DB_OPERATION
+  | typeof DB_OPERATION_NAME
+  | typeof DB_QUERY_PARAMETER_KEY
+  | typeof DB_QUERY_SUMMARY
+  | typeof DB_QUERY_TEXT
+  | typeof DB_REDIS_CONNECTION
+  | typeof DB_REDIS_PARAMETERS
+  | typeof DB_SQL_BINDINGS
+  | typeof DB_STATEMENT
+  | typeof DB_SYSTEM
+  | typeof DB_SYSTEM_NAME
+  | typeof DB_USER
+  | typeof DEVICE_BRAND
+  | typeof DEVICE_FAMILY
+  | typeof DEVICE_MODEL
+  | typeof ENVIRONMENT
+  | typeof ERROR_TYPE
+  | typeof EVENT_ID
+  | typeof EVENT_NAME
+  | typeof EXCEPTION_ESCAPED
+  | typeof EXCEPTION_MESSAGE
+  | typeof EXCEPTION_STACKTRACE
+  | typeof EXCEPTION_TYPE
+  | typeof FAAS_COLDSTART
+  | typeof FAAS_CRON
+  | typeof FAAS_TIME
+  | typeof FAAS_TRIGGER
+  | typeof FLAG_EVALUATION_KEY
+  | typeof FRAMES_DELAY
+  | typeof FRAMES_FROZEN
+  | typeof FRAMES_SLOW
+  | typeof FRAMES_TOTAL
+  | typeof FS_ERROR
+  | typeof GEN_AI_AGENT_NAME
+  | typeof GEN_AI_ASSISTANT_MESSAGE
+  | typeof GEN_AI_CHOICE
+  | typeof GEN_AI_COST_INPUT_TOKENS
+  | typeof GEN_AI_COST_OUTPUT_TOKENS
+  | typeof GEN_AI_COST_TOTAL_TOKENS
+  | typeof GEN_AI_OPERATION_NAME
+  | typeof GEN_AI_OPERATION_TYPE
+  | typeof GEN_AI_PIPELINE_NAME
+  | typeof GEN_AI_PROMPT
+  | typeof GEN_AI_REQUEST_AVAILABLE_TOOLS
+  | typeof GEN_AI_REQUEST_FREQUENCY_PENALTY
+  | typeof GEN_AI_REQUEST_MAX_TOKENS
+  | typeof GEN_AI_REQUEST_MESSAGES
+  | typeof GEN_AI_REQUEST_MODEL
+  | typeof GEN_AI_REQUEST_PRESENCE_PENALTY
+  | typeof GEN_AI_REQUEST_SEED
+  | typeof GEN_AI_REQUEST_TEMPERATURE
+  | typeof GEN_AI_REQUEST_TOP_K
+  | typeof GEN_AI_REQUEST_TOP_P
+  | typeof GEN_AI_RESPONSE_FINISH_REASONS
+  | typeof GEN_AI_RESPONSE_ID
+  | typeof GEN_AI_RESPONSE_MODEL
+  | typeof GEN_AI_RESPONSE_STREAMING
+  | typeof GEN_AI_RESPONSE_TEXT
+  | typeof GEN_AI_RESPONSE_TOKENS_PER_SECOND
+  | typeof GEN_AI_RESPONSE_TOOL_CALLS
+  | typeof GEN_AI_SYSTEM
+  | typeof GEN_AI_SYSTEM_MESSAGE
+  | typeof GEN_AI_TOOL_DESCRIPTION
+  | typeof GEN_AI_TOOL_INPUT
+  | typeof GEN_AI_TOOL_MESSAGE
+  | typeof GEN_AI_TOOL_NAME
+  | typeof GEN_AI_TOOL_OUTPUT
+  | typeof GEN_AI_TOOL_TYPE
+  | typeof GEN_AI_USAGE_COMPLETION_TOKENS
+  | typeof GEN_AI_USAGE_INPUT_TOKENS
+  | typeof GEN_AI_USAGE_INPUT_TOKENS_CACHED
+  | typeof GEN_AI_USAGE_OUTPUT_TOKENS
+  | typeof GEN_AI_USAGE_OUTPUT_TOKENS_REASONING
+  | typeof GEN_AI_USAGE_PROMPT_TOKENS
+  | typeof GEN_AI_USAGE_TOTAL_COST
+  | typeof GEN_AI_USAGE_TOTAL_TOKENS
+  | typeof GEN_AI_USER_MESSAGE
+  | typeof GRAPHQL_OPERATION_NAME
+  | typeof GRAPHQL_OPERATION_TYPE
+  | typeof HTTP_CLIENT_IP
+  | typeof HTTP_DECODED_RESPONSE_CONTENT_LENGTH
+  | typeof HTTP_FLAVOR
+  | typeof HTTP_FRAGMENT
+  | typeof HTTP_HOST
+  | typeof HTTP_METHOD
+  | typeof HTTP_QUERY
+  | typeof HTTP_REQUEST_CONNECT_START
+  | typeof HTTP_REQUEST_CONNECTION_END
+  | typeof HTTP_REQUEST_DOMAIN_LOOKUP_END
+  | typeof HTTP_REQUEST_DOMAIN_LOOKUP_START
+  | typeof HTTP_REQUEST_FETCH_START
+  | typeof HTTP_REQUEST_HEADER_KEY
+  | typeof HTTP_REQUEST_METHOD
+  | typeof HTTP_REQUEST_REDIRECT_END
+  | typeof HTTP_REQUEST_REDIRECT_START
+  | typeof HTTP_REQUEST_REQUEST_START
+  | typeof HTTP_REQUEST_RESEND_COUNT
+  | typeof HTTP_REQUEST_RESPONSE_END
+  | typeof HTTP_REQUEST_RESPONSE_START
+  | typeof HTTP_REQUEST_SECURE_CONNECTION_START
+  | typeof HTTP_REQUEST_TIME_TO_FIRST_BYTE
+  | typeof HTTP_REQUEST_WORKER_START
+  | typeof HTTP_RESPONSE_BODY_SIZE
+  | typeof HTTP_RESPONSE_HEADER_KEY
+  | typeof HTTP_RESPONSE_HEADER_CONTENT_LENGTH
+  | typeof HTTP_RESPONSE_SIZE
+  | typeof HTTP_RESPONSE_STATUS_CODE
+  | typeof HTTP_RESPONSE_CONTENT_LENGTH
+  | typeof HTTP_RESPONSE_TRANSFER_SIZE
+  | typeof HTTP_ROUTE
+  | typeof HTTP_SCHEME
+  | typeof HTTP_SERVER_NAME
+  | typeof HTTP_STATUS_CODE
+  | typeof HTTP_TARGET
+  | typeof HTTP_URL
+  | typeof HTTP_USER_AGENT
+  | typeof ID
+  | typeof JVM_GC_ACTION
+  | typeof JVM_GC_NAME
+  | typeof JVM_MEMORY_POOL_NAME
+  | typeof JVM_MEMORY_TYPE
+  | typeof JVM_THREAD_DAEMON
+  | typeof JVM_THREAD_STATE
+  | typeof LCP_ELEMENT
+  | typeof LCP_ID
+  | typeof LCP_SIZE
+  | typeof LCP_URL
+  | typeof LOGGER_NAME
+  | typeof MCP_CANCELLED_REASON
+  | typeof MCP_CANCELLED_REQUEST_ID
+  | typeof MCP_CLIENT_NAME
+  | typeof MCP_CLIENT_TITLE
+  | typeof MCP_CLIENT_VERSION
+  | typeof MCP_LIFECYCLE_PHASE
+  | typeof MCP_LOGGING_DATA_TYPE
+  | typeof MCP_LOGGING_LEVEL
+  | typeof MCP_LOGGING_LOGGER
+  | typeof MCP_LOGGING_MESSAGE
+  | typeof MCP_METHOD_NAME
+  | typeof MCP_PROGRESS_CURRENT
+  | typeof MCP_PROGRESS_MESSAGE
+  | typeof MCP_PROGRESS_PERCENTAGE
+  | typeof MCP_PROGRESS_TOKEN
+  | typeof MCP_PROGRESS_TOTAL
+  | typeof MCP_PROMPT_NAME
+  | typeof MCP_PROMPT_RESULT_DESCRIPTION
+  | typeof MCP_PROMPT_RESULT_MESSAGE_CONTENT
+  | typeof MCP_PROMPT_RESULT_MESSAGE_COUNT
+  | typeof MCP_PROMPT_RESULT_MESSAGE_ROLE
+  | typeof MCP_PROTOCOL_READY
+  | typeof MCP_PROTOCOL_VERSION
+  | typeof MCP_REQUEST_ARGUMENT_KEY
+  | typeof MCP_REQUEST_ARGUMENT_NAME
+  | typeof MCP_REQUEST_ARGUMENT_URI
+  | typeof MCP_REQUEST_ID
+  | typeof MCP_RESOURCE_PROTOCOL
+  | typeof MCP_RESOURCE_URI
+  | typeof MCP_SERVER_NAME
+  | typeof MCP_SERVER_TITLE
+  | typeof MCP_SERVER_VERSION
+  | typeof MCP_SESSION_ID
+  | typeof MCP_TOOL_NAME
+  | typeof MCP_TOOL_RESULT_CONTENT
+  | typeof MCP_TOOL_RESULT_CONTENT_COUNT
+  | typeof MCP_TOOL_RESULT_IS_ERROR
+  | typeof MCP_TRANSPORT
+  | typeof MDC_KEY
+  | typeof MESSAGING_DESTINATION_CONNECTION
+  | typeof MESSAGING_DESTINATION_NAME
+  | typeof MESSAGING_MESSAGE_BODY_SIZE
+  | typeof MESSAGING_MESSAGE_ENVELOPE_SIZE
+  | typeof MESSAGING_MESSAGE_ID
+  | typeof MESSAGING_MESSAGE_RECEIVE_LATENCY
+  | typeof MESSAGING_MESSAGE_RETRY_COUNT
+  | typeof MESSAGING_OPERATION_TYPE
+  | typeof MESSAGING_SYSTEM
+  | typeof METHOD
+  | typeof NAVIGATION_TYPE
+  | typeof NEL_ELAPSED_TIME
+  | typeof NEL_PHASE
+  | typeof NEL_REFERRER
+  | typeof NEL_SAMPLING_FUNCTION
+  | typeof NEL_TYPE
+  | typeof NET_HOST_IP
+  | typeof NET_HOST_NAME
+  | typeof NET_HOST_PORT
+  | typeof NET_PEER_IP
+  | typeof NET_PEER_NAME
+  | typeof NET_PEER_PORT
+  | typeof NET_PROTOCOL_NAME
+  | typeof NET_PROTOCOL_VERSION
+  | typeof NET_SOCK_FAMILY
+  | typeof NET_SOCK_HOST_ADDR
+  | typeof NET_SOCK_HOST_PORT
+  | typeof NET_SOCK_PEER_ADDR
+  | typeof NET_SOCK_PEER_NAME
+  | typeof NET_SOCK_PEER_PORT
+  | typeof NET_TRANSPORT
+  | typeof NETWORK_LOCAL_ADDRESS
+  | typeof NETWORK_LOCAL_PORT
+  | typeof NETWORK_PEER_ADDRESS
+  | typeof NETWORK_PEER_PORT
+  | typeof NETWORK_PROTOCOL_NAME
+  | typeof NETWORK_PROTOCOL_VERSION
+  | typeof NETWORK_TRANSPORT
+  | typeof NETWORK_TYPE
+  | typeof OS_BUILD_ID
+  | typeof OS_DESCRIPTION
+  | typeof OS_NAME
+  | typeof OS_TYPE
+  | typeof OS_VERSION
+  | typeof OTEL_SCOPE_NAME
+  | typeof OTEL_SCOPE_VERSION
+  | typeof OTEL_STATUS_CODE
+  | typeof OTEL_STATUS_DESCRIPTION
+  | typeof PARAMS_KEY
+  | typeof PREVIOUS_ROUTE
+  | typeof PROCESS_EXECUTABLE_NAME
+  | typeof PROCESS_PID
+  | typeof PROCESS_RUNTIME_DESCRIPTION
+  | typeof PROCESS_RUNTIME_NAME
+  | typeof PROCESS_RUNTIME_VERSION
+  | typeof PROFILE_ID
+  | typeof QUERY_KEY
+  | typeof RELEASE
+  | typeof REMIX_ACTION_FORM_DATA_KEY
+  | typeof REPLAY_ID
+  | typeof RESOURCE_RENDER_BLOCKING_STATUS
+  | typeof ROUTE
+  | typeof RPC_GRPC_STATUS_CODE
+  | typeof RPC_SERVICE
+  | typeof SENTRY_INTERNAL_DSC_ENVIRONMENT
+  | typeof SENTRY_INTERNAL_DSC_ORG_ID
+  | typeof SENTRY_INTERNAL_DSC_PUBLIC_KEY
+  | typeof SENTRY_INTERNAL_DSC_RELEASE
+  | typeof SENTRY_INTERNAL_DSC_SAMPLE_RAND
+  | typeof SENTRY_INTERNAL_DSC_SAMPLE_RATE
+  | typeof SENTRY_INTERNAL_DSC_SAMPLED
+  | typeof SENTRY_INTERNAL_DSC_TRACE_ID
+  | typeof SENTRY_INTERNAL_DSC_TRANSACTION
+  | typeof SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS
+  | typeof SENTRY_INTERNAL_REPLAY_IS_BUFFERING
+  | typeof SENTRY_BROWSER_NAME
+  | typeof SENTRY_BROWSER_VERSION
+  | typeof SENTRY_CANCELLATION_REASON
+  | typeof SENTRY_CLIENT_SAMPLE_RATE
+  | typeof SENTRY_DESCRIPTION
+  | typeof SENTRY_DIST
+  | typeof SENTRY_ENVIRONMENT
+  | typeof SENTRY_EXCLUSIVE_TIME
+  | typeof SENTRY_HTTP_PREFETCH
+  | typeof SENTRY_IDLE_SPAN_FINISH_REASON
+  | typeof SENTRY_MESSAGE_PARAMETER_KEY
+  | typeof SENTRY_MESSAGE_TEMPLATE
+  | typeof SENTRY_MODULE_KEY
+  | typeof SENTRY_NEXTJS_SSR_FUNCTION_ROUTE
+  | typeof SENTRY_NEXTJS_SSR_FUNCTION_TYPE
+  | typeof SENTRY_OBSERVED_TIMESTAMP_NANOS
+  | typeof SENTRY_OP
+  | typeof SENTRY_ORIGIN
+  | typeof SENTRY_PLATFORM
+  | typeof SENTRY_PROFILE_ID
+  | typeof SENTRY_RELEASE
+  | typeof SENTRY_REPLAY_ID
+  | typeof SENTRY_SDK_INTEGRATIONS
+  | typeof SENTRY_SDK_NAME
+  | typeof SENTRY_SDK_VERSION
+  | typeof SENTRY_SEGMENT_ID
+  | typeof SENTRY_SEGMENT_NAME
+  | typeof _SENTRY_SEGMENT_ID
+  | typeof SENTRY_SERVER_SAMPLE_RATE
+  | typeof SENTRY_SPAN_SOURCE
+  | typeof SENTRY_TRACE_PARENT_SPAN_ID
+  | typeof SENTRY_TRANSACTION
+  | typeof SERVER_ADDRESS
+  | typeof SERVER_PORT
+  | typeof SERVICE_NAME
+  | typeof SERVICE_VERSION
+  | typeof THREAD_ID
+  | typeof THREAD_NAME
+  | typeof TRANSACTION
+  | typeof TYPE
+  | typeof UI_COMPONENT_NAME
+  | typeof UI_CONTRIBUTES_TO_TTFD
+  | typeof UI_CONTRIBUTES_TO_TTID
+  | typeof URL_DOMAIN
+  | typeof URL_FRAGMENT
+  | typeof URL_FULL
+  | typeof URL_PATH
+  | typeof URL_PATH_PARAMETER_KEY
+  | typeof URL_PORT
+  | typeof URL_QUERY
+  | typeof URL_SCHEME
+  | typeof URL_TEMPLATE
+  | typeof URL
+  | typeof USER_EMAIL
+  | typeof USER_FULL_NAME
+  | typeof USER_GEO_CITY
+  | typeof USER_GEO_COUNTRY_CODE
+  | typeof USER_GEO_REGION
+  | typeof USER_GEO_SUBDIVISION
+  | typeof USER_HASH
+  | typeof USER_ID
+  | typeof USER_IP_ADDRESS
+  | typeof USER_NAME
+  | typeof USER_ROLES
+  | typeof USER_AGENT_ORIGINAL
+  | typeof VERCEL_BRANCH
+  | typeof VERCEL_BUILD_ID
+  | typeof VERCEL_DEPLOYMENT_ID
+  | typeof VERCEL_DESTINATION
+  | typeof VERCEL_EDGE_TYPE
+  | typeof VERCEL_ENTRYPOINT
+  | typeof VERCEL_EXECUTION_REGION
+  | typeof VERCEL_ID
+  | typeof VERCEL_JA3_DIGEST
+  | typeof VERCEL_JA4_DIGEST
+  | typeof VERCEL_LOG_TYPE
+  | typeof VERCEL_PROJECT_ID
+  | typeof VERCEL_PROJECT_NAME
+  | typeof VERCEL_PROXY_CACHE_ID
+  | typeof VERCEL_PROXY_CLIENT_IP
+  | typeof VERCEL_PROXY_HOST
+  | typeof VERCEL_PROXY_LAMBDA_REGION
+  | typeof VERCEL_PROXY_METHOD
+  | typeof VERCEL_PROXY_PATH
+  | typeof VERCEL_PROXY_PATH_TYPE
+  | typeof VERCEL_PROXY_PATH_TYPE_VARIANT
+  | typeof VERCEL_PROXY_REFERER
+  | typeof VERCEL_PROXY_REGION
+  | typeof VERCEL_PROXY_RESPONSE_BYTE_SIZE
+  | typeof VERCEL_PROXY_SCHEME
+  | typeof VERCEL_PROXY_STATUS_CODE
+  | typeof VERCEL_PROXY_TIMESTAMP
+  | typeof VERCEL_PROXY_USER_AGENT
+  | typeof VERCEL_PROXY_VERCEL_CACHE
+  | typeof VERCEL_PROXY_VERCEL_ID
+  | typeof VERCEL_PROXY_WAF_ACTION
+  | typeof VERCEL_PROXY_WAF_RULE_ID
+  | typeof VERCEL_REQUEST_ID
+  | typeof VERCEL_SOURCE
+  | typeof VERCEL_STATUS_CODE;
+
+export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
+  [AI_CITATIONS]: {
+    brief: 'References or sources cited by the AI model in its response.',
+    type: 'string[]',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: false,
+    example: ['Citation 1', 'Citation 2'],
+  },
+  [AI_COMPLETION_TOKENS_USED]: {
+    brief: 'The number of tokens used to respond to the message.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 10,
+    deprecation: {
+      replacement: 'gen_ai.usage.output_tokens',
+    },
+    aliases: [GEN_AI_USAGE_OUTPUT_TOKENS, GEN_AI_USAGE_COMPLETION_TOKENS],
+    sdks: ['python'],
+  },
+  [AI_DOCUMENTS]: {
+    brief: 'Documents or content chunks used as context for the AI model.',
+    type: 'string[]',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: false,
+    example: ['document1.txt', 'document2.pdf'],
+  },
+  [AI_FINISH_REASON]: {
+    brief: 'The reason why the model stopped generating.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'COMPLETE',
+    deprecation: {
+      replacement: 'gen_ai.response.finish_reason',
+    },
+    aliases: [GEN_AI_RESPONSE_FINISH_REASONS],
+  },
+  [AI_FREQUENCY_PENALTY]: {
+    brief:
+      'Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 0.5,
+    deprecation: {
+      replacement: 'gen_ai.request.frequency_penalty',
+    },
+    aliases: [GEN_AI_REQUEST_FREQUENCY_PENALTY],
+  },
+  [AI_FUNCTION_CALL]: {
+    brief:
+      'For an AI model call, the function that was called. This is deprecated for OpenAI, and replaced by tool_calls',
+    type: 'string',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: false,
+    example: 'function_name',
+    deprecation: {
+      replacement: 'gen_ai.tool.name',
+    },
+    aliases: [GEN_AI_TOOL_NAME],
+  },
+  [AI_GENERATION_ID]: {
+    brief: 'Unique identifier for the completion.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'gen_123abc',
+    deprecation: {
+      replacement: 'gen_ai.response.id',
+    },
+    aliases: [GEN_AI_RESPONSE_ID],
+  },
+  [AI_INPUT_MESSAGES]: {
+    brief: 'The input messages sent to the model',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '[{"role": "user", "message": "hello"}]',
+    deprecation: {
+      replacement: 'gen_ai.request.messages',
+    },
+    aliases: [GEN_AI_REQUEST_MESSAGES],
+    sdks: ['python'],
+  },
+  [AI_IS_SEARCH_REQUIRED]: {
+    brief: 'Boolean indicating if the model needs to perform a search.',
+    type: 'boolean',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: false,
+  },
+  [AI_METADATA]: {
+    brief: 'Extra metadata passed to an AI pipeline step.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '{"user_id": 123, "session_id": "abc123"}',
+  },
+  [AI_MODEL_PROVIDER]: {
+    brief: 'The provider of the model.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'openai',
+    deprecation: {
+      replacement: 'gen_ai.system',
+    },
+    aliases: [GEN_AI_SYSTEM],
+  },
+  [AI_MODEL_ID]: {
+    brief: 'The vendor-specific ID of the model used.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'gpt-4',
+    deprecation: {
+      replacement: 'gen_ai.response.model',
+    },
+    aliases: [GEN_AI_RESPONSE_MODEL],
+    sdks: ['python'],
+  },
+  [AI_PIPELINE_NAME]: {
+    brief: 'The name of the AI pipeline.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'Autofix Pipeline',
+    deprecation: {
+      replacement: 'gen_ai.pipeline.name',
+    },
+    aliases: [GEN_AI_PIPELINE_NAME],
+  },
+  [AI_PREAMBLE]: {
+    brief:
+      "For an AI model call, the preamble parameter. Preambles are a part of the prompt used to adjust the model's overall behavior and conversation style.",
+    type: 'string',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: false,
+    example: 'You are now a clown.',
+  },
+  [AI_PRESENCE_PENALTY]: {
+    brief:
+      'Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 0.5,
+    deprecation: {
+      replacement: 'gen_ai.request.presence_penalty',
+    },
+    aliases: [GEN_AI_REQUEST_PRESENCE_PENALTY],
+  },
+  [AI_PROMPT_TOKENS_USED]: {
+    brief: 'The number of tokens used to process just the prompt.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 20,
+    deprecation: {
+      replacement: 'gen_ai.usage.input_tokens',
+    },
+    aliases: [GEN_AI_USAGE_PROMPT_TOKENS, GEN_AI_USAGE_INPUT_TOKENS],
+    sdks: ['python'],
+  },
+  [AI_RAW_PROMPTING]: {
+    brief: 'When enabled, the user’s prompt will be sent to the model without any pre-processing.',
+    type: 'boolean',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: true,
+  },
+  [AI_RESPONSE_FORMAT]: {
+    brief: 'For an AI model call, the format of the response',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'json_object',
+  },
+  [AI_RESPONSES]: {
+    brief: 'The response messages sent back by the AI model.',
+    type: 'string[]',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: ['hello', 'world'],
+    deprecation: {
+      replacement: 'gen_ai.response.text',
+    },
+    sdks: ['python'],
+  },
+  [AI_SEARCH_QUERIES]: {
+    brief: 'Queries used to search for relevant context or documents.',
+    type: 'string[]',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: false,
+    example: ['climate change effects', 'renewable energy'],
+  },
+  [AI_SEARCH_RESULTS]: {
+    brief: 'Results returned from search queries for context.',
+    type: 'string[]',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: false,
+    example: ['search_result_1, search_result_2'],
+  },
+  [AI_SEED]: {
+    brief: 'The seed, ideally models given the same seed and same other parameters will produce the exact same output.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '1234567890',
+    deprecation: {
+      replacement: 'gen_ai.request.seed',
+    },
+    aliases: [GEN_AI_REQUEST_SEED],
+  },
+  [AI_STREAMING]: {
+    brief: 'Whether the request was streamed back.',
+    type: 'boolean',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: true,
+    deprecation: {
+      replacement: 'gen_ai.response.streaming',
+    },
+    aliases: [GEN_AI_RESPONSE_STREAMING],
+    sdks: ['python'],
+  },
+  [AI_TAGS]: {
+    brief: 'Tags that describe an AI pipeline step.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '{"executed_function": "add_integers"}',
+  },
+  [AI_TEMPERATURE]: {
+    brief:
+      'For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 0.1,
+    deprecation: {
+      replacement: 'gen_ai.request.temperature',
+    },
+    aliases: [GEN_AI_REQUEST_TEMPERATURE],
+  },
+  [AI_TEXTS]: {
+    brief: 'Raw text inputs provided to the model.',
+    type: 'string[]',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: false,
+    example: ['Hello, how are you?', 'What is the capital of France?'],
+  },
+  [AI_TOOL_CALLS]: {
+    brief: 'For an AI model call, the tool calls that were made.',
+    type: 'string[]',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: false,
+    example: ['tool_call_1', 'tool_call_2'],
+    deprecation: {
+      replacement: 'gen_ai.response.tool_calls',
+    },
+  },
+  [AI_TOOLS]: {
+    brief: 'For an AI model call, the functions that are available',
+    type: 'string[]',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: ['function_1', 'function_2'],
+    deprecation: {
+      replacement: 'gen_ai.request.available_tools',
+    },
+  },
+  [AI_TOP_K]: {
+    brief:
+      'Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 35,
+    deprecation: {
+      replacement: 'gen_ai.request.top_k',
+    },
+    aliases: [GEN_AI_REQUEST_TOP_K],
+  },
+  [AI_TOP_P]: {
+    brief:
+      'Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 0.7,
+    deprecation: {
+      replacement: 'gen_ai.request.top_p',
+    },
+    aliases: [GEN_AI_REQUEST_TOP_P],
+  },
+  [AI_TOTAL_COST]: {
+    brief: 'The total cost for the tokens used.',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 12.34,
+  },
+  [AI_TOTAL_TOKENS_USED]: {
+    brief: 'The total number of tokens used to process the prompt.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 30,
+    deprecation: {
+      replacement: 'gen_ai.usage.total_tokens',
+    },
+    aliases: [GEN_AI_USAGE_TOTAL_TOKENS],
+    sdks: ['python'],
+  },
+  [AI_WARNINGS]: {
+    brief: 'Warning messages generated during model execution.',
+    type: 'string[]',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: false,
+    example: ['Token limit exceeded'],
+  },
+  [APP_START_TYPE]: {
+    brief: 'Mobile app start variant. Either cold or warm.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'cold',
+  },
+  [BLOCKED_MAIN_THREAD]: {
+    brief: 'Whether the main thread was blocked by the span.',
+    type: 'boolean',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: true,
+  },
+  [BROWSER_NAME]: {
+    brief: 'The name of the browser.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'Chrome',
+    aliases: [SENTRY_BROWSER_NAME],
+  },
+  [BROWSER_REPORT_TYPE]: {
+    brief: 'A browser report sent via reporting API..',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'network-error',
+  },
+  [BROWSER_SCRIPT_INVOKER]: {
+    brief: 'How a script was called in the browser.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'Window.requestAnimationFrame',
+    sdks: ['browser'],
+  },
+  [BROWSER_SCRIPT_INVOKER_TYPE]: {
+    brief: 'Browser script entry point type.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'event-listener',
+    sdks: ['browser'],
+  },
+  [BROWSER_SCRIPT_SOURCE_CHAR_POSITION]: {
+    brief: 'A number representing the script character position of the script.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 678,
+    sdks: ['browser'],
+  },
+  [BROWSER_VERSION]: {
+    brief: 'The version of the browser.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '120.0.6099.130',
+    aliases: [SENTRY_BROWSER_VERSION],
+  },
+  [CACHE_HIT]: {
+    brief: 'If the cache was hit during this span.',
+    type: 'boolean',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: true,
+    sdks: ['php-laravel'],
+  },
+  [CACHE_ITEM_SIZE]: {
+    brief: 'The size of the requested item in the cache. In bytes.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 58,
+  },
+  [CACHE_KEY]: {
+    brief: 'The key of the cache accessed.',
+    type: 'string[]',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: ['my-cache-key', 'my-other-cache-key'],
+    sdks: ['php-laravel'],
+  },
+  [CACHE_OPERATION]: {
+    brief: 'The operation being performed on the cache.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'get',
+    sdks: ['php-laravel'],
+  },
+  [CACHE_TTL]: {
+    brief: 'The ttl of the cache in seconds',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 120,
+    sdks: ['php-laravel'],
+  },
+  [CHANNEL]: {
+    brief: 'The channel name that is being used.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'mail',
+    sdks: ['php-laravel'],
+  },
+  [CLIENT_ADDRESS]: {
+    brief:
+      'Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
+    type: 'string',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: true,
+    example: 'example.com',
+    aliases: [HTTP_CLIENT_IP],
+  },
+  [CLIENT_PORT]: {
+    brief: 'Client port number.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 5432,
+  },
+  [CLOUDFLARE_D1_DURATION]: {
+    brief: 'The duration of a Cloudflare D1 operation.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 543,
+    sdks: ['javascript-cloudflare'],
+  },
+  [CLOUDFLARE_D1_ROWS_READ]: {
+    brief: 'The number of rows read in a Cloudflare D1 operation.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 12,
+    sdks: ['javascript-cloudflare'],
+  },
+  [CLOUDFLARE_D1_ROWS_WRITTEN]: {
+    brief: 'The number of rows written in a Cloudflare D1 operation.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 12,
+    sdks: ['javascript-cloudflare'],
+  },
+  [CODE_FILE_PATH]: {
+    brief:
+      'The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: '/app/myapplication/http/handler/server.py',
+    aliases: [CODE_FILEPATH],
+  },
+  [CODE_FILEPATH]: {
+    brief:
+      'The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: '/app/myapplication/http/handler/server.py',
+    deprecation: {
+      replacement: 'code.file.path',
+    },
+    aliases: [CODE_FILE_PATH],
+  },
+  [CODE_FUNCTION]: {
+    brief: "The method or function name, or equivalent (usually rightmost part of the code unit's name).",
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'server_request',
+    deprecation: {
+      replacement: 'code.function.name',
+    },
+    aliases: [CODE_FUNCTION_NAME],
+  },
+  [CODE_FUNCTION_NAME]: {
+    brief: "The method or function name, or equivalent (usually rightmost part of the code unit's name).",
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'server_request',
+    aliases: [CODE_FUNCTION],
+  },
+  [CODE_LINE_NUMBER]: {
+    brief:
+      'The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 42,
+    aliases: [CODE_LINENO],
+  },
+  [CODE_LINENO]: {
+    brief:
+      'The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 42,
+    deprecation: {
+      replacement: 'code.line.number',
+    },
+    aliases: [CODE_LINE_NUMBER],
+  },
+  [CODE_NAMESPACE]: {
+    brief:
+      "The 'namespace' within which code.function is defined. Usually the qualified class or module name, such that code.namespace + some separator + code.function form a unique identifier for the code unit.",
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'http.handler',
+    deprecation: {
+      replacement: 'code.function.name',
+      reason: 'code.function.name should include the namespace.',
+    },
+  },
+  [DB_COLLECTION_NAME]: {
+    brief: 'The name of a collection (table, container) within the database.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'users',
+  },
+  [DB_NAME]: {
+    brief: 'The name of the database being accessed.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'customers',
+    deprecation: {
+      replacement: 'db.namespace',
+    },
+    aliases: [DB_NAMESPACE],
+  },
+  [DB_NAMESPACE]: {
+    brief: 'The name of the database being accessed.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'customers',
+    aliases: [DB_NAME],
+  },
+  [DB_OPERATION]: {
+    brief: 'The name of the operation being executed.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'SELECT',
+    deprecation: {
+      replacement: 'db.operation.name',
+    },
+    aliases: [DB_OPERATION_NAME],
+  },
+  [DB_OPERATION_NAME]: {
+    brief: 'The name of the operation being executed.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'SELECT',
+    aliases: [DB_OPERATION],
+  },
+  [DB_QUERY_PARAMETER_KEY]: {
+    brief:
+      'A query parameter used in db.query.text, with <key> being the parameter name, and the attribute value being a string representation of the parameter value.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    hasDynamicSuffix: true,
+    example: "db.query.parameter.foo='123'",
+  },
+  [DB_QUERY_SUMMARY]: {
+    brief:
+      'A database query being executed. Should be paramaterized. The full version of the query is in `db.query.text`.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'SELECT * FROM users',
+  },
+  [DB_QUERY_TEXT]: {
+    brief:
+      'The database query being executed. Should be the full query, not a parameterized version. The parameterized version is in `db.query.summary`.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'SELECT * FROM users',
+    aliases: [DB_STATEMENT],
+  },
+  [DB_REDIS_CONNECTION]: {
+    brief: 'The redis connection name.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'my-redis-instance',
+    sdks: ['php-laravel'],
+  },
+  [DB_REDIS_PARAMETERS]: {
+    brief: 'The array of command parameters given to a redis command.',
+    type: 'string[]',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: ['test', '*'],
+    sdks: ['php-laravel'],
+  },
+  [DB_SQL_BINDINGS]: {
+    brief: 'The array of query bindings.',
+    type: 'string[]',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: ['1', 'foo'],
+    deprecation: {
+      replacement: 'db.query.parameter.<key>',
+      reason:
+        'Instead of adding every binding in the db.sql.bindings attribute, add them as individual entires with db.query.parameter.<key>.',
+    },
+    sdks: ['php-laravel'],
+  },
+  [DB_STATEMENT]: {
+    brief: 'The database statement being executed.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'SELECT * FROM users',
+    deprecation: {
+      replacement: 'db.query.text',
+    },
+    aliases: [DB_QUERY_TEXT],
+  },
+  [DB_SYSTEM]: {
+    brief:
+      'An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'postgresql',
+    deprecation: {
+      replacement: 'db.system.name',
+    },
+    aliases: [DB_SYSTEM_NAME],
+  },
+  [DB_SYSTEM_NAME]: {
+    brief:
+      'An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'postgresql',
+    aliases: [DB_SYSTEM],
+  },
+  [DB_USER]: {
+    brief: 'The database user.',
+    type: 'string',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: true,
+    example: 'fancy_user',
+  },
+  [DEVICE_BRAND]: {
+    brief: 'The brand of the device.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'Apple',
+  },
+  [DEVICE_FAMILY]: {
+    brief: 'The family of the device.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'iPhone',
+  },
+  [DEVICE_MODEL]: {
+    brief: 'The model of the device.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'iPhone 15 Pro Max',
+  },
+  [ENVIRONMENT]: {
+    brief: 'The sentry environment.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'production',
+    deprecation: {
+      replacement: 'sentry.environment',
+    },
+    aliases: [SENTRY_ENVIRONMENT],
+  },
+  [ERROR_TYPE]: {
+    brief: 'Describes a class of error the operation ended with.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'timeout',
+  },
+  [EVENT_ID]: {
+    brief: 'The unique identifier for this event (log record)',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 1234567890,
+  },
+  [EVENT_NAME]: {
+    brief: 'The name that uniquely identifies this event (log record)',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'Process Payload',
+  },
+  [EXCEPTION_ESCAPED]: {
+    brief:
+      'SHOULD be set to true if the exception event is recorded at a point where it is known that the exception is escaping the scope of the span.',
+    type: 'boolean',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: true,
+  },
+  [EXCEPTION_MESSAGE]: {
+    brief: 'The error message.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'ENOENT: no such file or directory',
+  },
+  [EXCEPTION_STACKTRACE]: {
+    brief:
+      'A stacktrace as a string in the natural representation for the language runtime. The representation is to be determined and documented by each language SIG.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example:
+      'Exception in thread "main" java.lang.RuntimeException: Test exception\n at com.example.GenerateTrace.methodB(GenerateTrace.java:13)\n at com.example.GenerateTrace.methodA(GenerateTrace.java:9)\n at com.example.GenerateTrace.main(GenerateTrace.java:5)',
+  },
+  [EXCEPTION_TYPE]: {
+    brief:
+      'The type of the exception (its fully-qualified class name, if applicable). The dynamic type of the exception should be preferred over the static type in languages that support it.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'OSError',
+  },
+  [FAAS_COLDSTART]: {
+    brief: 'A boolean that is true if the serverless function is executed for the first time (aka cold-start).',
+    type: 'boolean',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: true,
+  },
+  [FAAS_CRON]: {
+    brief: 'A string containing the schedule period as Cron Expression.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: '0/5 * * * ? *',
+  },
+  [FAAS_TIME]: {
+    brief: 'A string containing the function invocation time in the ISO 8601 format expressed in UTC.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: '2020-01-23T13:47:06Z',
+  },
+  [FAAS_TRIGGER]: {
+    brief: 'Type of the trigger which caused this function invocation.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'timer',
+  },
+  [FLAG_EVALUATION_KEY]: {
+    brief:
+      'An instance of a feature flag evaluation. The value of this attribute is the boolean representing the evaluation result. The <key> suffix is the name of the feature flag.',
+    type: 'boolean',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    hasDynamicSuffix: true,
+    example: 'flag.evaluation.is_new_ui=true',
+  },
+  [FRAMES_DELAY]: {
+    brief:
+      'The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 5,
+  },
+  [FRAMES_FROZEN]: {
+    brief: 'The number of frozen frames rendered during the lifetime of the span.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 3,
+  },
+  [FRAMES_SLOW]: {
+    brief: 'The number of slow frames rendered during the lifetime of the span.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 1,
+  },
+  [FRAMES_TOTAL]: {
+    brief: 'The number of total frames rendered during the lifetime of the span.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 60,
+  },
+  [FS_ERROR]: {
+    brief: 'The error message of a file system error.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'ENOENT: no such file or directory',
+    deprecation: {
+      replacement: 'error.type',
+      reason: 'This attribute is not part of the OpenTelemetry specification and error.type fits much better.',
+    },
+    sdks: ['javascript-node'],
+  },
+  [GEN_AI_AGENT_NAME]: {
+    brief: 'The name of the agent being used.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'ResearchAssistant',
+  },
+  [GEN_AI_ASSISTANT_MESSAGE]: {
+    brief: 'The assistant message passed to the model.',
+    type: 'string',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: false,
+    example: 'get_weather tool call',
+  },
+  [GEN_AI_CHOICE]: {
+    brief: "The model's response message.",
+    type: 'string',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: false,
+    example: 'The weather in Paris is rainy and overcast, with temperatures around 57°F',
+  },
+  [GEN_AI_COST_INPUT_TOKENS]: {
+    brief: 'The cost of tokens used to process the AI input (prompt) in USD (without cached input tokens).',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 123.45,
+  },
+  [GEN_AI_COST_OUTPUT_TOKENS]: {
+    brief: 'The cost of tokens used for creating the AI output in USD (without reasoning tokens).',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 123.45,
+  },
+  [GEN_AI_COST_TOTAL_TOKENS]: {
+    brief: 'The total cost for the tokens used.',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 12.34,
+  },
+  [GEN_AI_OPERATION_NAME]: {
+    brief: 'The name of the operation being performed.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'chat',
+  },
+  [GEN_AI_OPERATION_TYPE]: {
+    brief:
+      "The type of AI operation. Must be one of 'agent', 'ai_client', 'tool', 'handoff', 'guardrail'. Makes querying for spans in the UI easier.",
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'tool',
+  },
+  [GEN_AI_PIPELINE_NAME]: {
+    brief: 'Name of the AI pipeline or chain being executed.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'Autofix Pipeline',
+    aliases: [AI_PIPELINE_NAME],
+  },
+  [GEN_AI_PROMPT]: {
+    brief: 'The input messages sent to the model',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: '[{"role": "user", "message": "hello"}]',
+    deprecation: {
+      reason: 'Deprecated from OTEL, use gen_ai.input.messages with the new format instead.',
+    },
+  },
+  [GEN_AI_REQUEST_AVAILABLE_TOOLS]: {
+    brief: 'The available tools for the model. It has to be a stringified version of an array of objects.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example:
+      '[{"name": "get_weather", "description": "Get the weather for a given location"}, {"name": "get_news", "description": "Get the news for a given topic"}]',
+  },
+  [GEN_AI_REQUEST_FREQUENCY_PENALTY]: {
+    brief:
+      'Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 0.5,
+    aliases: [AI_FREQUENCY_PENALTY],
+  },
+  [GEN_AI_REQUEST_MAX_TOKENS]: {
+    brief: 'The maximum number of tokens to generate in the response.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 2048,
+  },
+  [GEN_AI_REQUEST_MESSAGES]: {
+    brief:
+      'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example:
+      '[{"role": "system", "content": "Generate a random number."}, {"role": "user", "content": [{"text": "Generate a random number between 0 and 10.", "type": "text"}]}, {"role": "tool", "content": {"toolCallId": "1", "toolName": "Weather", "output": "rainy"}}]',
+    aliases: [AI_INPUT_MESSAGES],
+  },
+  [GEN_AI_REQUEST_MODEL]: {
+    brief: 'The model identifier being used for the request.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'gpt-4-turbo-preview',
+  },
+  [GEN_AI_REQUEST_PRESENCE_PENALTY]: {
+    brief:
+      'Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 0.5,
+    aliases: [AI_PRESENCE_PENALTY],
+  },
+  [GEN_AI_REQUEST_SEED]: {
+    brief: 'The seed, ideally models given the same seed and same other parameters will produce the exact same output.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: '1234567890',
+    aliases: [AI_SEED],
+  },
+  [GEN_AI_REQUEST_TEMPERATURE]: {
+    brief:
+      'For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 0.1,
+    aliases: [AI_TEMPERATURE],
+  },
+  [GEN_AI_REQUEST_TOP_K]: {
+    brief:
+      'Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 35,
+    aliases: [AI_TOP_K],
+  },
+  [GEN_AI_REQUEST_TOP_P]: {
+    brief:
+      'Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 0.7,
+    aliases: [AI_TOP_P],
+  },
+  [GEN_AI_RESPONSE_FINISH_REASONS]: {
+    brief: 'The reason why the model stopped generating.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'COMPLETE',
+    aliases: [AI_FINISH_REASON],
+  },
+  [GEN_AI_RESPONSE_ID]: {
+    brief: 'Unique identifier for the completion.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'gen_123abc',
+    aliases: [AI_GENERATION_ID],
+  },
+  [GEN_AI_RESPONSE_MODEL]: {
+    brief: 'The vendor-specific ID of the model used.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'gpt-4',
+    aliases: [AI_MODEL_ID],
+  },
+  [GEN_AI_RESPONSE_STREAMING]: {
+    brief: "Whether or not the AI model call's response was streamed back asynchronously",
+    type: 'boolean',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: true,
+    aliases: [AI_STREAMING],
+  },
+  [GEN_AI_RESPONSE_TEXT]: {
+    brief:
+      "The model's response text messages. It has to be a stringified version of an array of response text messages.",
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example:
+      '["The weather in Paris is rainy and overcast, with temperatures around 57°F", "The weather in London is sunny and warm, with temperatures around 65°F"]',
+  },
+  [GEN_AI_RESPONSE_TOKENS_PER_SECOND]: {
+    brief: 'The total output tokens per seconds throughput',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 12345.67,
+  },
+  [GEN_AI_RESPONSE_TOOL_CALLS]: {
+    brief: "The tool calls in the model's response. It has to be a stringified version of an array of objects.",
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '[{"name": "get_weather", "arguments": {"location": "Paris"}}]',
+  },
+  [GEN_AI_SYSTEM]: {
+    brief: 'The provider of the model.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'openai',
+    aliases: [AI_MODEL_PROVIDER],
+  },
+  [GEN_AI_SYSTEM_MESSAGE]: {
+    brief: 'The system instructions passed to the model.',
+    type: 'string',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: false,
+    example: 'You are a helpful assistant',
+  },
+  [GEN_AI_TOOL_DESCRIPTION]: {
+    brief: 'The description of the tool being used.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'Searches the web for current information about a topic',
+  },
+  [GEN_AI_TOOL_INPUT]: {
+    brief: 'The input of the tool being used. It has to be a stringified version of the input to the tool.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '{"location": "Paris"}',
+  },
+  [GEN_AI_TOOL_MESSAGE]: {
+    brief: 'The response from a tool or function call passed to the model.',
+    type: 'string',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: false,
+    example: 'rainy, 57°F',
+  },
+  [GEN_AI_TOOL_NAME]: {
+    brief: 'Name of the tool utilized by the agent.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'Flights',
+    aliases: [AI_FUNCTION_CALL],
+  },
+  [GEN_AI_TOOL_OUTPUT]: {
+    brief: 'The output of the tool being used. It has to be a stringified version of the output of the tool.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'rainy, 57°F',
+  },
+  [GEN_AI_TOOL_TYPE]: {
+    brief: 'The type of tool being used.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'function',
+  },
+  [GEN_AI_USAGE_COMPLETION_TOKENS]: {
+    brief: 'The number of tokens used in the GenAI response (completion).',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 10,
+    deprecation: {
+      replacement: 'gen_ai.usage.output_tokens',
+    },
+    aliases: [AI_COMPLETION_TOKENS_USED, GEN_AI_USAGE_OUTPUT_TOKENS],
+  },
+  [GEN_AI_USAGE_INPUT_TOKENS]: {
+    brief: 'The number of tokens used to process the AI input (prompt) without cached input tokens.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 10,
+    aliases: [AI_PROMPT_TOKENS_USED, GEN_AI_USAGE_PROMPT_TOKENS],
+  },
+  [GEN_AI_USAGE_INPUT_TOKENS_CACHED]: {
+    brief: 'The number of cached tokens used to process the AI input (prompt).',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 50,
+  },
+  [GEN_AI_USAGE_OUTPUT_TOKENS]: {
+    brief: 'The number of tokens used for creating the AI output (without reasoning tokens).',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 10,
+    aliases: [AI_COMPLETION_TOKENS_USED, GEN_AI_USAGE_COMPLETION_TOKENS],
+  },
+  [GEN_AI_USAGE_OUTPUT_TOKENS_REASONING]: {
+    brief: 'The number of tokens used for reasoning to create the AI output.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 75,
+  },
+  [GEN_AI_USAGE_PROMPT_TOKENS]: {
+    brief: 'The number of tokens used in the GenAI input (prompt).',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 20,
+    deprecation: {
+      replacement: 'gen_ai.usage.input_tokens',
+    },
+    aliases: [AI_PROMPT_TOKENS_USED, GEN_AI_USAGE_INPUT_TOKENS],
+  },
+  [GEN_AI_USAGE_TOTAL_COST]: {
+    brief: 'The total cost for the tokens used.',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 12.34,
+    deprecation: {
+      replacement: 'gen_ai.cost.total_tokens',
+    },
+  },
+  [GEN_AI_USAGE_TOTAL_TOKENS]: {
+    brief: 'The total number of tokens used to process the prompt. (input tokens plus output todkens)',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 20,
+    aliases: [AI_TOTAL_TOKENS_USED],
+  },
+  [GEN_AI_USER_MESSAGE]: {
+    brief: 'The user message passed to the model.',
+    type: 'string',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: false,
+    example: "What's the weather in Paris?",
+  },
+  [GRAPHQL_OPERATION_NAME]: {
+    brief: 'The name of the operation being executed.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'findBookById',
+  },
+  [GRAPHQL_OPERATION_TYPE]: {
+    brief: 'The type of the operation being executed.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'query',
+  },
+  [HTTP_CLIENT_IP]: {
+    brief:
+      'Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
+    type: 'string',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: true,
+    example: 'example.com',
+    deprecation: {
+      replacement: 'client.address',
+    },
+    aliases: [CLIENT_ADDRESS],
+  },
+  [HTTP_DECODED_RESPONSE_CONTENT_LENGTH]: {
+    brief: 'The decoded body size of the response (in bytes).',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 456,
+    sdks: ['javascript-browser'],
+  },
+  [HTTP_FLAVOR]: {
+    brief: 'The actual version of the protocol used for network communication.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: '1.1',
+    deprecation: {
+      replacement: 'network.protocol.version',
+    },
+    aliases: [NETWORK_PROTOCOL_VERSION, NET_PROTOCOL_VERSION],
+  },
+  [HTTP_FRAGMENT]: {
+    brief:
+      'The fragments present in the URI. Note that this contains the leading # character, while the `url.fragment` attribute does not.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '#details',
+  },
+  [HTTP_HOST]: {
+    brief: 'The domain name.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'example.com',
+    deprecation: {
+      replacement: 'server.address',
+      reason: 'Deprecated, use one of `server.address` or `client.address`, depending on the usage',
+    },
+    aliases: [SERVER_ADDRESS, CLIENT_ADDRESS, HTTP_SERVER_NAME, NET_HOST_NAME],
+  },
+  [HTTP_METHOD]: {
+    brief: 'The HTTP method used.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'GET',
+    deprecation: {
+      replacement: 'http.request.method',
+    },
+    aliases: [HTTP_REQUEST_METHOD],
+  },
+  [HTTP_QUERY]: {
+    brief:
+      'The query string present in the URL. Note that this contains the leading ? character, while the `url.query` attribute does not.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+      reason:
+        'Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.',
+    },
+    isInOtel: false,
+    example: '?foo=bar&bar=baz',
+  },
+  [HTTP_REQUEST_CONNECT_START]: {
+    brief:
+      'The UNIX timestamp representing the time immediately before the user agent starts establishing the connection to the server to retrieve the resource.',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 1732829555.111,
+    sdks: ['javascript-browser'],
+  },
+  [HTTP_REQUEST_CONNECTION_END]: {
+    brief:
+      'The UNIX timestamp representing the time immediately after the browser finishes establishing the connection to the server to retrieve the resource. The timestamp value includes the time interval to establish the transport connection, as well as other time intervals such as TLS handshake and SOCKS authentication.',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 1732829555.15,
+    sdks: ['javascript-browser'],
+  },
+  [HTTP_REQUEST_DOMAIN_LOOKUP_END]: {
+    brief:
+      'The UNIX timestamp representing the time immediately after the browser finishes the domain-name lookup for the resource.',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 1732829555.201,
+    sdks: ['javascript-browser'],
+  },
+  [HTTP_REQUEST_DOMAIN_LOOKUP_START]: {
+    brief:
+      'The UNIX timestamp representing the time immediately before the browser starts the domain name lookup for the resource.',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 1732829555.322,
+    sdks: ['javascript-browser'],
+  },
+  [HTTP_REQUEST_FETCH_START]: {
+    brief: 'The UNIX timestamp representing the time immediately before the browser starts to fetch the resource.',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 1732829555.389,
+    sdks: ['javascript-browser'],
+  },
+  [HTTP_REQUEST_HEADER_KEY]: {
+    brief:
+      'HTTP request headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.',
+    type: 'string[]',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    hasDynamicSuffix: true,
+    example: "http.request.header.custom-header=['foo', 'bar']",
+  },
+  [HTTP_REQUEST_METHOD]: {
+    brief: 'The HTTP method used.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'GET',
+    aliases: [METHOD, HTTP_METHOD],
+  },
+  [HTTP_REQUEST_REDIRECT_END]: {
+    brief:
+      'The UNIX timestamp representing the timestamp immediately after receiving the last byte of the response of the last redirect',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 1732829558.502,
+    sdks: ['javascript-browser'],
+  },
+  [HTTP_REQUEST_REDIRECT_START]: {
+    brief: 'The UNIX timestamp representing the start time of the fetch which that initiates the redirect.',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 1732829555.495,
+    sdks: ['javascript-browser'],
+  },
+  [HTTP_REQUEST_REQUEST_START]: {
+    brief:
+      'The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 1732829555.51,
+    sdks: ['javascript-browser'],
+  },
+  [HTTP_REQUEST_RESEND_COUNT]: {
+    brief: 'The ordinal number of request resending attempt (for any reason, including redirects).',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 2,
+  },
+  [HTTP_REQUEST_RESPONSE_END]: {
+    brief:
+      'The UNIX timestamp representing the time immediately after the browser receives the last byte of the resource or immediately before the transport connection is closed, whichever comes first.',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 1732829555.89,
+    sdks: ['javascript-browser'],
+  },
+  [HTTP_REQUEST_RESPONSE_START]: {
+    brief:
+      'The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 1732829555.7,
+    sdks: ['javascript-browser'],
+  },
+  [HTTP_REQUEST_SECURE_CONNECTION_START]: {
+    brief:
+      'The UNIX timestamp representing the time immediately before the browser starts the handshake process to secure the current connection. If a secure connection is not used, the property returns zero.',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 1732829555.73,
+    sdks: ['javascript-browser'],
+  },
+  [HTTP_REQUEST_TIME_TO_FIRST_BYTE]: {
+    brief:
+      "The time in seconds from the browser's timeorigin to when the first byte of the request's response was received. See https://web.dev/articles/ttfb#measure-resource-requests",
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 1.032,
+    sdks: ['javascript-browser'],
+  },
+  [HTTP_REQUEST_WORKER_START]: {
+    brief:
+      'The UNIX timestamp representing the timestamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running.',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 1732829553.68,
+    sdks: ['javascript-browser'],
+  },
+  [HTTP_RESPONSE_BODY_SIZE]: {
+    brief: 'The encoded body size of the response (in bytes).',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 123,
+    aliases: [HTTP_RESPONSE_CONTENT_LENGTH, HTTP_RESPONSE_HEADER_CONTENT_LENGTH],
+  },
+  [HTTP_RESPONSE_HEADER_KEY]: {
+    brief:
+      'HTTP response headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.',
+    type: 'string[]',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    hasDynamicSuffix: true,
+    example: "http.response.header.custom-header=['foo', 'bar']",
+  },
+  [HTTP_RESPONSE_HEADER_CONTENT_LENGTH]: {
+    brief: 'The size of the message body sent to the recipient (in bytes)',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: "http.response.header.custom-header=['foo', 'bar']",
+    aliases: [HTTP_RESPONSE_CONTENT_LENGTH, HTTP_RESPONSE_BODY_SIZE],
+  },
+  [HTTP_RESPONSE_SIZE]: {
+    brief: 'The transfer size of the response (in bytes).',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 456,
+    aliases: [HTTP_RESPONSE_TRANSFER_SIZE],
+  },
+  [HTTP_RESPONSE_STATUS_CODE]: {
+    brief: 'The status code of the HTTP response.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 404,
+    aliases: [HTTP_STATUS_CODE],
+  },
+  [HTTP_RESPONSE_CONTENT_LENGTH]: {
+    brief: 'The encoded body size of the response (in bytes).',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 123,
+    deprecation: {
+      replacement: 'http.response.body.size',
+    },
+    aliases: [HTTP_RESPONSE_BODY_SIZE, HTTP_RESPONSE_HEADER_CONTENT_LENGTH],
+  },
+  [HTTP_RESPONSE_TRANSFER_SIZE]: {
+    brief: 'The transfer size of the response (in bytes).',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 456,
+    deprecation: {
+      replacement: 'http.response.size',
+    },
+    aliases: [HTTP_RESPONSE_SIZE],
+  },
+  [HTTP_ROUTE]: {
+    brief: 'The matched route, that is, the path template in the format used by the respective server framework.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: '/users/:id',
+    aliases: [URL_TEMPLATE],
+  },
+  [HTTP_SCHEME]: {
+    brief: 'The URI scheme component identifying the used protocol.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'https',
+    deprecation: {
+      replacement: 'url.scheme',
+    },
+    aliases: [URL_SCHEME],
+  },
+  [HTTP_SERVER_NAME]: {
+    brief: 'The server domain name',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'example.com',
+    deprecation: {
+      replacement: 'server.address',
+    },
+    aliases: [SERVER_ADDRESS, NET_HOST_NAME, HTTP_HOST],
+  },
+  [HTTP_STATUS_CODE]: {
+    brief: 'The status code of the HTTP response.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 404,
+    deprecation: {
+      replacement: 'http.response.status_code',
+    },
+    aliases: [HTTP_RESPONSE_STATUS_CODE],
+  },
+  [HTTP_TARGET]: {
+    brief: 'The pathname and query string of the URL.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: '/test?foo=bar#buzz',
+    deprecation: {
+      replacement: 'url.path',
+      reason: 'This attribute is being deprecated in favor of url.path and url.query',
+    },
+  },
+  [HTTP_URL]: {
+    brief: 'The URL of the resource that was fetched.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'https://example.com/test?foo=bar#buzz',
+    deprecation: {
+      replacement: 'url.full',
+    },
+    aliases: [URL_FULL, URL],
+  },
+  [HTTP_USER_AGENT]: {
+    brief: 'Value of the HTTP User-Agent header sent by the client.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example:
+      'Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1',
+    deprecation: {
+      replacement: 'user_agent.original',
+    },
+    aliases: [USER_AGENT_ORIGINAL],
+  },
+  [ID]: {
+    brief: 'A unique identifier for the span.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'f47ac10b58cc4372a5670e02b2c3d479',
+    sdks: ['php-laravel'],
+  },
+  [JVM_GC_ACTION]: {
+    brief: 'Name of the garbage collector action.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'end of minor GC',
+  },
+  [JVM_GC_NAME]: {
+    brief: 'Name of the garbage collector.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'G1 Young Generation',
+  },
+  [JVM_MEMORY_POOL_NAME]: {
+    brief: 'Name of the memory pool.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'G1 Old Gen',
+  },
+  [JVM_MEMORY_TYPE]: {
+    brief: 'Name of the memory pool.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'G1 Old Gen',
+  },
+  [JVM_THREAD_DAEMON]: {
+    brief: 'Whether the thread is daemon or not.',
+    type: 'boolean',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: true,
+  },
+  [JVM_THREAD_STATE]: {
+    brief: 'State of the thread.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'blocked',
+  },
+  [LCP_ELEMENT]: {
+    brief: 'The dom element responsible for the largest contentful paint.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'img',
+  },
+  [LCP_ID]: {
+    brief: 'The id of the dom element responsible for the largest contentful paint.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '#hero',
+  },
+  [LCP_SIZE]: {
+    brief: 'The size of the largest contentful paint element.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 1234,
+  },
+  [LCP_URL]: {
+    brief: 'The url of the dom element responsible for the largest contentful paint.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'https://example.com',
+  },
+  [LOGGER_NAME]: {
+    brief: 'The name of the logger that generated this event.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'myLogger',
+  },
+  [MCP_CANCELLED_REASON]: {
+    brief: 'Reason for the cancellation of an MCP operation.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+      reason: 'Cancellation reasons may contain user-specific or sensitive information',
+    },
+    isInOtel: false,
+    example: 'User cancelled the request',
+  },
+  [MCP_CANCELLED_REQUEST_ID]: {
+    brief: 'Request ID of the cancelled MCP operation.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '123',
+  },
+  [MCP_CLIENT_NAME]: {
+    brief: 'Name of the MCP client application.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'claude-desktop',
+  },
+  [MCP_CLIENT_TITLE]: {
+    brief: 'Display title of the MCP client application.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+      reason: 'Client titles may reveal user-specific application configurations or custom setups',
+    },
+    isInOtel: false,
+    example: 'Claude Desktop',
+  },
+  [MCP_CLIENT_VERSION]: {
+    brief: 'Version of the MCP client application.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '1.0.0',
+  },
+  [MCP_LIFECYCLE_PHASE]: {
+    brief: 'Lifecycle phase indicator for MCP operations.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'initialization_complete',
+  },
+  [MCP_LOGGING_DATA_TYPE]: {
+    brief: 'Data type of the logged message content.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'string',
+  },
+  [MCP_LOGGING_LEVEL]: {
+    brief: 'Log level for MCP logging operations.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'info',
+  },
+  [MCP_LOGGING_LOGGER]: {
+    brief: 'Logger name for MCP logging operations.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+      reason: 'Logger names may be user-defined and could contain sensitive information',
+    },
+    isInOtel: false,
+    example: 'mcp_server',
+  },
+  [MCP_LOGGING_MESSAGE]: {
+    brief: 'Log message content from MCP logging operations.',
+    type: 'string',
+    pii: {
+      isPii: 'true',
+      reason: 'Log messages can contain user data',
+    },
+    isInOtel: false,
+    example: 'Tool execution completed successfully',
+  },
+  [MCP_METHOD_NAME]: {
+    brief: 'The name of the MCP request or notification method being called.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'tools/call',
+  },
+  [MCP_PROGRESS_CURRENT]: {
+    brief: 'Current progress value of an MCP operation.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 50,
+  },
+  [MCP_PROGRESS_MESSAGE]: {
+    brief: 'Progress message describing the current state of an MCP operation.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+      reason: 'Progress messages may contain user-specific or sensitive information',
+    },
+    isInOtel: false,
+    example: 'Processing 50 of 100 items',
+  },
+  [MCP_PROGRESS_PERCENTAGE]: {
+    brief: 'Calculated progress percentage of an MCP operation. Computed from current/total * 100.',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 50,
+  },
+  [MCP_PROGRESS_TOKEN]: {
+    brief: 'Token for tracking progress of an MCP operation.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'progress-token-123',
+  },
+  [MCP_PROGRESS_TOTAL]: {
+    brief: 'Total progress target value of an MCP operation.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 100,
+  },
+  [MCP_PROMPT_NAME]: {
+    brief: 'Name of the MCP prompt template being used.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+      reason: 'Prompt names may reveal user behavior patterns or sensitive operations',
+    },
+    isInOtel: false,
+    example: 'summarize',
+  },
+  [MCP_PROMPT_RESULT_DESCRIPTION]: {
+    brief: 'Description of the prompt result.',
+    type: 'string',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: false,
+    example: 'A summary of the requested information',
+  },
+  [MCP_PROMPT_RESULT_MESSAGE_CONTENT]: {
+    brief: 'Content of the message in the prompt result. Used for single message results only.',
+    type: 'string',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: false,
+    example: 'Please provide a summary of the document',
+  },
+  [MCP_PROMPT_RESULT_MESSAGE_COUNT]: {
+    brief: 'Number of messages in the prompt result.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 3,
+  },
+  [MCP_PROMPT_RESULT_MESSAGE_ROLE]: {
+    brief: 'Role of the message in the prompt result. Used for single message results only.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'user',
+  },
+  [MCP_PROTOCOL_READY]: {
+    brief: 'Protocol readiness indicator for MCP session. Non-zero value indicates the protocol is ready.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 1,
+  },
+  [MCP_PROTOCOL_VERSION]: {
+    brief: 'MCP protocol version used in the session.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '2024-11-05',
+  },
+  [MCP_REQUEST_ARGUMENT_KEY]: {
+    brief:
+      'MCP request argument with dynamic key suffix. The <key> is replaced with the actual argument name. The value is a JSON-stringified representation of the argument value.',
+    type: 'string',
+    pii: {
+      isPii: 'true',
+      reason: 'Arguments contain user input',
+    },
+    isInOtel: false,
+    hasDynamicSuffix: true,
+    example: "mcp.request.argument.query='weather in Paris'",
+  },
+  [MCP_REQUEST_ARGUMENT_NAME]: {
+    brief: 'Name argument from prompts/get MCP request.',
+    type: 'string',
+    pii: {
+      isPii: 'true',
+      reason: 'Prompt names can contain user input',
+    },
+    isInOtel: false,
+    example: 'summarize',
+  },
+  [MCP_REQUEST_ARGUMENT_URI]: {
+    brief: 'URI argument from resources/read MCP request.',
+    type: 'string',
+    pii: {
+      isPii: 'true',
+      reason: 'URIs can contain user file paths',
+    },
+    isInOtel: false,
+    example: 'file:///path/to/resource',
+  },
+  [MCP_REQUEST_ID]: {
+    brief: 'JSON-RPC request identifier for the MCP request. Unique within the MCP session.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '1',
+  },
+  [MCP_RESOURCE_PROTOCOL]: {
+    brief: 'Protocol of the resource URI being accessed, extracted from the URI.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'file',
+  },
+  [MCP_RESOURCE_URI]: {
+    brief: 'The resource URI being accessed in an MCP operation.',
+    type: 'string',
+    pii: {
+      isPii: 'true',
+      reason: 'URIs can contain sensitive file paths',
+    },
+    isInOtel: false,
+    example: 'file:///path/to/file.txt',
+  },
+  [MCP_SERVER_NAME]: {
+    brief: 'Name of the MCP server application.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'sentry-mcp-server',
+  },
+  [MCP_SERVER_TITLE]: {
+    brief: 'Display title of the MCP server application.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+      reason: 'Server titles may reveal user-specific application configurations or custom setups',
+    },
+    isInOtel: false,
+    example: 'Sentry MCP Server',
+  },
+  [MCP_SERVER_VERSION]: {
+    brief: 'Version of the MCP server application.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '0.1.0',
+  },
+  [MCP_SESSION_ID]: {
+    brief: 'Identifier for the MCP session.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '550e8400-e29b-41d4-a716-446655440000',
+  },
+  [MCP_TOOL_NAME]: {
+    brief: 'Name of the MCP tool being called.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'calculator',
+  },
+  [MCP_TOOL_RESULT_CONTENT]: {
+    brief: 'The content of the tool result.',
+    type: 'string',
+    pii: {
+      isPii: 'true',
+      reason: 'Tool results can contain user data',
+    },
+    isInOtel: false,
+    example: '{"output": "rainy", "toolCallId": "1"}',
+  },
+  [MCP_TOOL_RESULT_CONTENT_COUNT]: {
+    brief: 'Number of content items in the tool result.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 1,
+  },
+  [MCP_TOOL_RESULT_IS_ERROR]: {
+    brief: 'Whether a tool execution resulted in an error.',
+    type: 'boolean',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: false,
+  },
+  [MCP_TRANSPORT]: {
+    brief: 'Transport method used for MCP communication.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'stdio',
+  },
+  [MDC_KEY]: {
+    brief:
+      "Attributes from the Mapped Diagnostic Context (MDC) present at the moment the log record was created. The MDC is supported by all the most popular logging solutions in the Java ecosystem, and it's usually implemented as a thread-local map that stores context for e.g. a specific request.",
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    hasDynamicSuffix: true,
+    example: "mdc.some_key='some_value'",
+    sdks: ['java', 'java.logback', 'java.jul', 'java.log4j2'],
+  },
+  [MESSAGING_DESTINATION_CONNECTION]: {
+    brief: 'The message destination connection.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'BestTopic',
+    sdks: ['php-laravel'],
+  },
+  [MESSAGING_DESTINATION_NAME]: {
+    brief: 'The message destination name.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'BestTopic',
+    sdks: ['php-laravel'],
+  },
+  [MESSAGING_MESSAGE_BODY_SIZE]: {
+    brief: 'The size of the message body in bytes.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 839,
+    sdks: ['php-laravel'],
+  },
+  [MESSAGING_MESSAGE_ENVELOPE_SIZE]: {
+    brief: 'The size of the message body and metadata in bytes.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 1045,
+    sdks: ['php-laravel'],
+  },
+  [MESSAGING_MESSAGE_ID]: {
+    brief: 'A value used by the messaging system as an identifier for the message, represented as a string.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'f47ac10b58cc4372a5670e02b2c3d479',
+    sdks: ['php-laravel'],
+  },
+  [MESSAGING_MESSAGE_RECEIVE_LATENCY]: {
+    brief: 'The latency between when the message was published and received.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 1732847252,
+    sdks: ['php-laravel'],
+  },
+  [MESSAGING_MESSAGE_RETRY_COUNT]: {
+    brief: 'The amount of attempts to send the message.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 2,
+    sdks: ['php-laravel'],
+  },
+  [MESSAGING_OPERATION_TYPE]: {
+    brief: 'A string identifying the type of the messaging operation',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'create',
+  },
+  [MESSAGING_SYSTEM]: {
+    brief: 'The messaging system as identified by the client instrumentation.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'activemq',
+    sdks: ['php-laravel'],
+  },
+  [METHOD]: {
+    brief: 'The HTTP method used.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'GET',
+    deprecation: {
+      replacement: 'http.request.method',
+    },
+    aliases: [HTTP_REQUEST_METHOD],
+    sdks: ['javascript-browser', 'javascript-node'],
+  },
+  [NAVIGATION_TYPE]: {
+    brief: 'The type of navigation done by a client-side router.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'router.push',
+  },
+  [NEL_ELAPSED_TIME]: {
+    brief:
+      'The elapsed number of milliseconds between the start of the resource fetch and when it was completed or aborted by the user agent.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 100,
+  },
+  [NEL_PHASE]: {
+    brief: 'If request failed, the phase of its network error. If request succeeded, "application".',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'application',
+  },
+  [NEL_REFERRER]: {
+    brief: "request's referrer, as determined by the referrer policy associated with its client.",
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'https://example.com/foo?bar=baz',
+  },
+  [NEL_SAMPLING_FUNCTION]: {
+    brief: 'The sampling function used to determine if the request should be sampled.',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 0.5,
+  },
+  [NEL_TYPE]: {
+    brief: 'If request failed, the type of its network error. If request succeeded, "ok".',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'dns.unreachable',
+  },
+  [NET_HOST_IP]: {
+    brief: 'Local address of the network connection - IP address or Unix domain socket name.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: '192.168.0.1',
+    deprecation: {
+      replacement: 'network.local.address',
+    },
+    aliases: [NETWORK_LOCAL_ADDRESS, NET_SOCK_HOST_ADDR],
+  },
+  [NET_HOST_NAME]: {
+    brief:
+      'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'example.com',
+    deprecation: {
+      replacement: 'server.address',
+    },
+    aliases: [SERVER_ADDRESS, HTTP_SERVER_NAME, HTTP_HOST],
+  },
+  [NET_HOST_PORT]: {
+    brief: 'Server port number.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 1337,
+    deprecation: {
+      replacement: 'server.port',
+    },
+    aliases: [SERVER_PORT],
+  },
+  [NET_PEER_IP]: {
+    brief: 'Peer address of the network connection - IP address or Unix domain socket name.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: '192.168.0.1',
+    deprecation: {
+      replacement: 'network.peer.address',
+    },
+    aliases: [NETWORK_PEER_ADDRESS, NET_SOCK_PEER_ADDR],
+  },
+  [NET_PEER_NAME]: {
+    brief:
+      'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'example.com',
+    deprecation: {
+      replacement: 'server.address',
+      reason: 'Deprecated, use server.address on client spans and client.address on server spans.',
+    },
+  },
+  [NET_PEER_PORT]: {
+    brief: 'Peer port number.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 1337,
+    deprecation: {
+      replacement: 'server.port',
+      reason: 'Deprecated, use server.port on client spans and client.port on server spans.',
+    },
+  },
+  [NET_PROTOCOL_NAME]: {
+    brief: 'OSI application layer or non-OSI equivalent.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'http',
+    deprecation: {
+      replacement: 'network.protocol.name',
+    },
+    aliases: [NETWORK_PROTOCOL_NAME],
+  },
+  [NET_PROTOCOL_VERSION]: {
+    brief: 'The actual version of the protocol used for network communication.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: '1.1',
+    deprecation: {
+      replacement: 'network.protocol.version',
+    },
+    aliases: [NETWORK_PROTOCOL_VERSION, HTTP_FLAVOR],
+  },
+  [NET_SOCK_FAMILY]: {
+    brief: 'OSI transport and network layer',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'inet',
+    deprecation: {
+      replacement: 'network.transport',
+      reason: 'Deprecated, use network.transport and network.type.',
+    },
+  },
+  [NET_SOCK_HOST_ADDR]: {
+    brief: 'Local address of the network connection mapping to Unix domain socket name.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: '/var/my.sock',
+    deprecation: {
+      replacement: 'network.local.address',
+    },
+    aliases: [NETWORK_LOCAL_ADDRESS, NET_HOST_IP],
+  },
+  [NET_SOCK_HOST_PORT]: {
+    brief: 'Local port number of the network connection.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 8080,
+    deprecation: {
+      replacement: 'network.local.port',
+    },
+    aliases: [NETWORK_LOCAL_PORT],
+  },
+  [NET_SOCK_PEER_ADDR]: {
+    brief: 'Peer address of the network connection - IP address',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: '192.168.0.1',
+    deprecation: {
+      replacement: 'network.peer.address',
+    },
+    aliases: [NETWORK_PEER_ADDRESS, NET_PEER_IP],
+  },
+  [NET_SOCK_PEER_NAME]: {
+    brief: 'Peer address of the network connection - Unix domain socket name',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: '/var/my.sock',
+    deprecation: {
+      reason: 'Deprecated from OTEL, no replacement at this time',
+    },
+  },
+  [NET_SOCK_PEER_PORT]: {
+    brief: 'Peer port number of the network connection.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 8080,
+    deprecation: {
+      replacement: 'network.peer.port',
+    },
+  },
+  [NET_TRANSPORT]: {
+    brief: 'OSI transport layer or inter-process communication method.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'tcp',
+    deprecation: {
+      replacement: 'network.transport',
+    },
+    aliases: [NETWORK_TRANSPORT],
+  },
+  [NETWORK_LOCAL_ADDRESS]: {
+    brief: 'Local address of the network connection - IP address or Unix domain socket name.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: '10.1.2.80',
+    aliases: [NET_HOST_IP, NET_SOCK_HOST_ADDR],
+  },
+  [NETWORK_LOCAL_PORT]: {
+    brief: 'Local port number of the network connection.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 65400,
+    aliases: [NET_SOCK_HOST_PORT],
+  },
+  [NETWORK_PEER_ADDRESS]: {
+    brief: 'Peer address of the network connection - IP address or Unix domain socket name.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: '10.1.2.80',
+    aliases: [NET_PEER_IP, NET_SOCK_PEER_ADDR],
+  },
+  [NETWORK_PEER_PORT]: {
+    brief: 'Peer port number of the network connection.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 65400,
+  },
+  [NETWORK_PROTOCOL_NAME]: {
+    brief: 'OSI application layer or non-OSI equivalent.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'http',
+    aliases: [NET_PROTOCOL_NAME],
+  },
+  [NETWORK_PROTOCOL_VERSION]: {
+    brief: 'The actual version of the protocol used for network communication.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: '1.1',
+    aliases: [HTTP_FLAVOR, NET_PROTOCOL_VERSION],
+  },
+  [NETWORK_TRANSPORT]: {
+    brief: 'OSI transport layer or inter-process communication method.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'tcp',
+    aliases: [NET_TRANSPORT],
+  },
+  [NETWORK_TYPE]: {
+    brief: 'OSI network layer or non-OSI equivalent.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'ipv4',
+  },
+  [OS_BUILD_ID]: {
+    brief: 'The build ID of the operating system.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: '1234567890',
+  },
+  [OS_DESCRIPTION]: {
+    brief:
+      'Human readable (not intended to be parsed) OS version information, like e.g. reported by ver or lsb_release -a commands.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'Ubuntu 18.04.1 LTS',
+  },
+  [OS_NAME]: {
+    brief: 'Human readable operating system name.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'Ubuntu',
+  },
+  [OS_TYPE]: {
+    brief: 'The operating system type.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'linux',
+  },
+  [OS_VERSION]: {
+    brief: 'The version of the operating system.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: '18.04.2',
+  },
+  [OTEL_SCOPE_NAME]: {
+    brief: 'The name of the instrumentation scope - (InstrumentationScope.Name in OTLP).',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'io.opentelemetry.contrib.mongodb',
+  },
+  [OTEL_SCOPE_VERSION]: {
+    brief: 'The version of the instrumentation scope - (InstrumentationScope.Version in OTLP).',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: '2.4.5',
+  },
+  [OTEL_STATUS_CODE]: {
+    brief: 'Name of the code, either “OK” or “ERROR”. MUST NOT be set if the status code is UNSET.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'OK',
+  },
+  [OTEL_STATUS_DESCRIPTION]: {
+    brief: 'Description of the Status if it has a value, otherwise not set.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'resource not found',
+  },
+  [PARAMS_KEY]: {
+    brief:
+      'Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    hasDynamicSuffix: true,
+    example: "params.id='123'",
+    aliases: [URL_PATH_PARAMETER_KEY],
+  },
+  [PREVIOUS_ROUTE]: {
+    brief: 'Also used by mobile SDKs to indicate the previous route in the application.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'HomeScreen',
+    sdks: ['javascript-reactnative'],
+  },
+  [PROCESS_EXECUTABLE_NAME]: {
+    brief: 'The name of the executable that started the process.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'getsentry',
+  },
+  [PROCESS_PID]: {
+    brief: 'The process ID of the running process.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 12345,
+  },
+  [PROCESS_RUNTIME_DESCRIPTION]: {
+    brief:
+      'An additional description about the runtime of the process, for example a specific vendor customization of the runtime environment. Equivalent to `raw_description` in the Sentry runtime context.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'Eclipse OpenJ9 VM openj9-0.21.0',
+  },
+  [PROCESS_RUNTIME_NAME]: {
+    brief: 'The name of the runtime. Equivalent to `name` in the Sentry runtime context.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'node',
+  },
+  [PROCESS_RUNTIME_VERSION]: {
+    brief:
+      'The version of the runtime of this process, as returned by the runtime without modification. Equivalent to `version` in the Sentry runtime context.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: '18.04.2',
+  },
+  [PROFILE_ID]: {
+    brief: 'The id of the sentry profile.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '123e4567e89b12d3a456426614174000',
+    deprecation: {
+      replacement: 'sentry.profile_id',
+    },
+    aliases: [SENTRY_PROFILE_ID],
+  },
+  [QUERY_KEY]: {
+    brief: 'An item in a query string. Usually added by client-side routing frameworks like vue-router.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    hasDynamicSuffix: true,
+    example: "query.id='123'",
+    deprecation: {
+      replacement: 'url.query',
+      reason: 'Instead of sending items individually in query.<key>, they should be sent all together with url.query.',
+    },
+  },
+  [RELEASE]: {
+    brief: 'The sentry release.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'production',
+    deprecation: {
+      replacement: 'sentry.release',
+    },
+    aliases: [SENTRY_RELEASE],
+  },
+  [REMIX_ACTION_FORM_DATA_KEY]: {
+    brief: 'Remix form data, <key> being the form data key, the value being the form data value.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    hasDynamicSuffix: true,
+    example: "http.response.header.text='test'",
+    sdks: ['javascript-remix'],
+  },
+  [REPLAY_ID]: {
+    brief: 'The id of the sentry replay.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '123e4567e89b12d3a456426614174000',
+    deprecation: {
+      replacement: 'sentry.replay_id',
+    },
+    aliases: [SENTRY_REPLAY_ID],
+  },
+  [RESOURCE_RENDER_BLOCKING_STATUS]: {
+    brief: 'The render blocking status of the resource.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'non-blocking',
+    sdks: ['javascript-browser'],
+  },
+  [ROUTE]: {
+    brief:
+      'The matched route, that is, the path template in the format used by the respective server framework. Also used by mobile SDKs to indicate the current route in the application.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'App\\Controller::indexAction',
+    deprecation: {
+      replacement: 'http.route',
+    },
+    aliases: [HTTP_ROUTE],
+    sdks: ['php-laravel', 'javascript-reactnative'],
+  },
+  [RPC_GRPC_STATUS_CODE]: {
+    brief: 'The numeric status code of the gRPC request.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 2,
+  },
+  [RPC_SERVICE]: {
+    brief: 'The full (logical) name of the service being called, including its package name, if applicable.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'myService.BestService',
+  },
+  [SENTRY_INTERNAL_DSC_ENVIRONMENT]: {
+    brief: 'The environment from the dynamic sampling context.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'prod',
+  },
+  [SENTRY_INTERNAL_DSC_ORG_ID]: {
+    brief: 'The organization ID from the dynamic sampling context.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '1',
+  },
+  [SENTRY_INTERNAL_DSC_PUBLIC_KEY]: {
+    brief: 'The public key from the dynamic sampling context.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'c51734c603c4430eb57cb0a5728a479d',
+  },
+  [SENTRY_INTERNAL_DSC_RELEASE]: {
+    brief: 'The release identifier from the dynamic sampling context.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'frontend@e8211be71b214afab5b85de4b4c54be3714952bb',
+  },
+  [SENTRY_INTERNAL_DSC_SAMPLE_RAND]: {
+    brief: 'The random sampling value from the dynamic sampling context.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '0.8286147972820134',
+  },
+  [SENTRY_INTERNAL_DSC_SAMPLE_RATE]: {
+    brief: 'The sample rate from the dynamic sampling context.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '1.0',
+  },
+  [SENTRY_INTERNAL_DSC_SAMPLED]: {
+    brief: 'Whether the event was sampled according to the dynamic sampling context.',
+    type: 'boolean',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: true,
+  },
+  [SENTRY_INTERNAL_DSC_TRACE_ID]: {
+    brief: 'The trace ID from the dynamic sampling context.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '047372980460430cbc78d9779df33a46',
+  },
+  [SENTRY_INTERNAL_DSC_TRANSACTION]: {
+    brief: 'The transaction name from the dynamic sampling context.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '/issues/errors-outages/',
+  },
+  [SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS]: {
+    brief: 'The timestamp at which an envelope was received by Relay, in nanoseconds.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '1544712660300000000',
+    aliases: [SENTRY_OBSERVED_TIMESTAMP_NANOS],
+  },
+  [SENTRY_INTERNAL_REPLAY_IS_BUFFERING]: {
+    brief:
+      'A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate).',
+    type: 'boolean',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: true,
+  },
+  [SENTRY_BROWSER_NAME]: {
+    brief: 'The name of the browser.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'Chrome',
+    deprecation: {
+      replacement: 'browser.name',
+    },
+    aliases: [BROWSER_NAME],
+  },
+  [SENTRY_BROWSER_VERSION]: {
+    brief: 'The version of the browser.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '120.0.6099.130',
+    deprecation: {
+      replacement: 'browser.version',
+    },
+    aliases: [BROWSER_VERSION],
+  },
+  [SENTRY_CANCELLATION_REASON]: {
+    brief: 'The reason why a span ended early.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'document.hidden',
+  },
+  [SENTRY_CLIENT_SAMPLE_RATE]: {
+    brief: 'Rate at which a span was sampled in the SDK.',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 0.5,
+  },
+  [SENTRY_DESCRIPTION]: {
+    brief: 'The human-readable description of a span.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'index view query',
+  },
+  [SENTRY_DIST]: {
+    brief: 'The sentry dist.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '1.0',
+  },
+  [SENTRY_ENVIRONMENT]: {
+    brief: 'The sentry environment.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'production',
+    aliases: [ENVIRONMENT],
+  },
+  [SENTRY_EXCLUSIVE_TIME]: {
+    brief: 'The exclusive time duration of the span.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 1234,
+  },
+  [SENTRY_HTTP_PREFETCH]: {
+    brief: 'If an http request was a prefetch request.',
+    type: 'boolean',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: true,
+  },
+  [SENTRY_IDLE_SPAN_FINISH_REASON]: {
+    brief: 'The reason why an idle span ended early.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'idleTimeout',
+  },
+  [SENTRY_MESSAGE_PARAMETER_KEY]: {
+    brief:
+      "A parameter used in the message template. <key> can either be the number that represent the parameter's position in the template string (sentry.message.parameter.0, sentry.message.parameter.1, etc) or the parameter's name (sentry.message.parameter.item_id, sentry.message.parameter.user_id, etc)",
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: "sentry.message.parameter.0='123'",
+  },
+  [SENTRY_MESSAGE_TEMPLATE]: {
+    brief: 'The parameterized template string.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'Hello, {name}!',
+  },
+  [SENTRY_MODULE_KEY]: {
+    brief: 'A module that was loaded in the process. The key is the name of the module.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    hasDynamicSuffix: true,
+    example: "sentry.module.brianium/paratest='v7.7.0'",
+  },
+  [SENTRY_NEXTJS_SSR_FUNCTION_ROUTE]: {
+    brief:
+      'A parameterized route for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions when the file location of the function is known.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '/posts/[id]/layout',
+    sdks: ['javascript'],
+  },
+  [SENTRY_NEXTJS_SSR_FUNCTION_TYPE]: {
+    brief:
+      'A descriptor for a for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'generateMetadata',
+    sdks: ['javascript'],
+  },
+  [SENTRY_OBSERVED_TIMESTAMP_NANOS]: {
+    brief: 'The timestamp at which an envelope was received by Relay, in nanoseconds.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '1544712660300000000',
+    deprecation: {
+      replacement: 'sentry._internal.observed_timestamp_nanos',
+    },
+    aliases: [SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS],
+  },
+  [SENTRY_OP]: {
+    brief: 'The operation of a span.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'http.client',
+  },
+  [SENTRY_ORIGIN]: {
+    brief: 'The origin of the instrumentation (e.g. span, log, etc.)',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'auto.http.otel.fastify',
+  },
+  [SENTRY_PLATFORM]: {
+    brief: 'The sdk platform that generated the event.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'php',
+  },
+  [SENTRY_PROFILE_ID]: {
+    brief: 'The id of the sentry profile.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '123e4567e89b12d3a456426614174000',
+    aliases: [PROFILE_ID],
+  },
+  [SENTRY_RELEASE]: {
+    brief: 'The sentry release.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '7.0.0',
+    aliases: [SERVICE_VERSION, RELEASE],
+  },
+  [SENTRY_REPLAY_ID]: {
+    brief: 'The id of the sentry replay.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '123e4567e89b12d3a456426614174000',
+    aliases: [REPLAY_ID],
+  },
+  [SENTRY_SDK_INTEGRATIONS]: {
+    brief:
+      'A list of names identifying enabled integrations. The list shouldhave all enabled integrations, including default integrations. Defaultintegrations are included because different SDK releases may contain differentdefault integrations.',
+    type: 'string[]',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: ['InboundFilters', 'FunctionToString', 'BrowserApiErrors', 'Breadcrumbs'],
+  },
+  [SENTRY_SDK_NAME]: {
+    brief: 'The sentry sdk name.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '@sentry/react',
+  },
+  [SENTRY_SDK_VERSION]: {
+    brief: 'The sentry sdk version.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '7.0.0',
+  },
+  [SENTRY_SEGMENT_ID]: {
+    brief: 'The segment ID of a span',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '051581bf3cb55c13',
+    aliases: [_SENTRY_SEGMENT_ID],
+  },
+  [SENTRY_SEGMENT_NAME]: {
+    brief: 'The segment name of a span',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'GET /user',
+  },
+  [_SENTRY_SEGMENT_ID]: {
+    brief: 'The segment ID of a span',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '051581bf3cb55c13',
+    deprecation: {
+      replacement: 'sentry.segment.id',
+    },
+    aliases: [SENTRY_SEGMENT_ID],
+  },
+  [SENTRY_SERVER_SAMPLE_RATE]: {
+    brief: 'Rate at which a span was sampled in Relay.',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 0.5,
+  },
+  [SENTRY_SPAN_SOURCE]: {
+    brief: 'The source of a span, also referred to as transaction source.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'route',
+  },
+  [SENTRY_TRACE_PARENT_SPAN_ID]: {
+    brief:
+      'The span id of the span that was active when the log was collected. This should not be set if there was no active span.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'b0e6f15b45c36b12',
+  },
+  [SENTRY_TRANSACTION]: {
+    brief: 'The sentry transaction (segment name).',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'GET /',
+    aliases: [TRANSACTION],
+  },
+  [SERVER_ADDRESS]: {
+    brief:
+      'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'example.com',
+    aliases: [HTTP_SERVER_NAME, NET_HOST_NAME, HTTP_HOST],
+  },
+  [SERVER_PORT]: {
+    brief: 'Server port number.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 1337,
+    aliases: [NET_HOST_PORT],
+  },
+  [SERVICE_NAME]: {
+    brief: 'Logical name of the service.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'omegastar',
+  },
+  [SERVICE_VERSION]: {
+    brief: 'The version string of the service API or implementation. The format is not defined by these conventions.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: '5.0.0',
+    aliases: [SENTRY_RELEASE],
+  },
+  [THREAD_ID]: {
+    brief: 'Current “managed” thread ID.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 56,
+  },
+  [THREAD_NAME]: {
+    brief: 'Current thread name.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'main',
+  },
+  [TRANSACTION]: {
+    brief: 'The sentry transaction (segment name).',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'GET /',
+    deprecation: {
+      replacement: 'sentry.transaction',
+    },
+    aliases: [SENTRY_TRANSACTION],
+  },
+  [TYPE]: {
+    brief: 'More granular type of the operation happening.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'fetch',
+    sdks: ['javascript-browser', 'javascript-node'],
+  },
+  [UI_COMPONENT_NAME]: {
+    brief: 'The name of the associated component.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'HomeButton',
+  },
+  [UI_CONTRIBUTES_TO_TTFD]: {
+    brief: 'Whether the span execution contributed to the TTFD (time to fully drawn) metric.',
+    type: 'boolean',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: true,
+  },
+  [UI_CONTRIBUTES_TO_TTID]: {
+    brief: 'Whether the span execution contributed to the TTID (time to initial display) metric.',
+    type: 'boolean',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: true,
+  },
+  [URL_DOMAIN]: {
+    brief:
+      'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'example.com',
+  },
+  [URL_FRAGMENT]: {
+    brief:
+      'The fragments present in the URI. Note that this does not contain the leading # character, while the `http.fragment` attribute does.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'details',
+  },
+  [URL_FULL]: {
+    brief: 'The URL of the resource that was fetched.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'https://example.com/test?foo=bar#buzz',
+    aliases: [HTTP_URL, URL],
+  },
+  [URL_PATH]: {
+    brief: 'The URI path component.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: '/foo',
+  },
+  [URL_PATH_PARAMETER_KEY]: {
+    brief:
+      'Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    hasDynamicSuffix: true,
+    example: "url.path.parameter.id='123'",
+    aliases: [PARAMS_KEY],
+  },
+  [URL_PORT]: {
+    brief: 'Server port number.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 1337,
+  },
+  [URL_QUERY]: {
+    brief:
+      'The query string present in the URL. Note that this does not contain the leading ? character, while the `http.query` attribute does.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+      reason:
+        'Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.',
+    },
+    isInOtel: true,
+    example: 'foo=bar&bar=baz',
+  },
+  [URL_SCHEME]: {
+    brief: 'The URI scheme component identifying the used protocol.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'https',
+    aliases: [HTTP_SCHEME],
+  },
+  [URL_TEMPLATE]: {
+    brief: 'The low-cardinality template of an absolute path reference.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: '/users/:id',
+    aliases: [HTTP_ROUTE],
+  },
+  [URL]: {
+    brief: 'The URL of the resource that was fetched.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'https://example.com/test?foo=bar#buzz',
+    deprecation: {
+      replacement: 'url.full',
+    },
+    aliases: [URL_FULL, HTTP_URL],
+    sdks: ['javascript-browser', 'javascript-node'],
+  },
+  [USER_EMAIL]: {
+    brief: 'User email address.',
+    type: 'string',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: true,
+    example: 'test@example.com',
+  },
+  [USER_FULL_NAME]: {
+    brief: "User's full name.",
+    type: 'string',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: true,
+    example: 'John Smith',
+  },
+  [USER_GEO_CITY]: {
+    brief: 'Human readable city name.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'Toronto',
+  },
+  [USER_GEO_COUNTRY_CODE]: {
+    brief: 'Two-letter country code (ISO 3166-1 alpha-2).',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'CA',
+  },
+  [USER_GEO_REGION]: {
+    brief: 'Human readable region name or code.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'Canada',
+  },
+  [USER_GEO_SUBDIVISION]: {
+    brief: 'Human readable subdivision name.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'Ontario',
+  },
+  [USER_HASH]: {
+    brief: 'Unique user hash to correlate information for a user in anonymized form.',
+    type: 'string',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: true,
+    example: '8ae4c2993e0f4f3b8b2d1b1f3b5e8f4d',
+  },
+  [USER_ID]: {
+    brief: 'Unique identifier of the user.',
+    type: 'string',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: true,
+    example: 'S-1-5-21-202424912787-2692429404-2351956786-1000',
+  },
+  [USER_IP_ADDRESS]: {
+    brief: 'The IP address of the user.',
+    type: 'string',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: false,
+    example: '192.168.1.1',
+  },
+  [USER_NAME]: {
+    brief: 'Short name or login/username of the user.',
+    type: 'string',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: true,
+    example: 'j.smith',
+  },
+  [USER_ROLES]: {
+    brief: 'Array of user roles at the time of the event.',
+    type: 'string[]',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: true,
+    example: ['admin', 'editor'],
+  },
+  [USER_AGENT_ORIGINAL]: {
+    brief: 'Value of the HTTP User-Agent header sent by the client.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example:
+      'Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1',
+    aliases: [HTTP_USER_AGENT],
+  },
+  [VERCEL_BRANCH]: {
+    brief: 'Git branch name for Vercel project',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'main',
+  },
+  [VERCEL_BUILD_ID]: {
+    brief: 'Identifier for the Vercel build (only present on build logs)',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'bld_cotnkcr76',
+  },
+  [VERCEL_DEPLOYMENT_ID]: {
+    brief: 'Identifier for the Vercel deployment',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'dpl_233NRGRjVZX1caZrXWtz5g1TAksD',
+  },
+  [VERCEL_DESTINATION]: {
+    brief: 'Origin of the external content in Vercel (only on external logs)',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'https://vitals.vercel-insights.com/v1',
+  },
+  [VERCEL_EDGE_TYPE]: {
+    brief: 'Type of edge runtime in Vercel',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'edge-function',
+  },
+  [VERCEL_ENTRYPOINT]: {
+    brief: 'Entrypoint for the request in Vercel',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'api/index.js',
+  },
+  [VERCEL_EXECUTION_REGION]: {
+    brief: 'Region where the request is executed',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'sfo1',
+  },
+  [VERCEL_ID]: {
+    brief: 'Unique identifier for the log entry in Vercel',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '1573817187330377061717300000',
+  },
+  [VERCEL_JA3_DIGEST]: {
+    brief: 'JA3 fingerprint digest of Vercel request',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '769,47-53-5-10-49161-49162-49171-49172-50-56-19-4,0-10-11,23-24-25,0',
+  },
+  [VERCEL_JA4_DIGEST]: {
+    brief: 'JA4 fingerprint digest',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 't13d1516h2_8daaf6152771_02713d6af862',
+  },
+  [VERCEL_LOG_TYPE]: {
+    brief: 'Vercel log output type',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'stdout',
+  },
+  [VERCEL_PROJECT_ID]: {
+    brief: 'Identifier for the Vercel project',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'gdufoJxB6b9b1fEqr1jUtFkyavUU',
+  },
+  [VERCEL_PROJECT_NAME]: {
+    brief: 'Name of the Vercel project',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'my-app',
+  },
+  [VERCEL_PROXY_CACHE_ID]: {
+    brief: 'Original request ID when request is served from cache',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'pdx1::v8g4b-1744143786684-93dafbc0f70d',
+  },
+  [VERCEL_PROXY_CLIENT_IP]: {
+    brief: 'Client IP address',
+    type: 'string',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: false,
+    example: '120.75.16.101',
+  },
+  [VERCEL_PROXY_HOST]: {
+    brief: 'Hostname of the request',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'test.vercel.app',
+  },
+  [VERCEL_PROXY_LAMBDA_REGION]: {
+    brief: 'Region where lambda function executed',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'sfo1',
+  },
+  [VERCEL_PROXY_METHOD]: {
+    brief: 'HTTP method of the request',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'GET',
+  },
+  [VERCEL_PROXY_PATH]: {
+    brief: 'Request path with query parameters',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '/dynamic/some-value.json?route=some-value',
+  },
+  [VERCEL_PROXY_PATH_TYPE]: {
+    brief: 'How the request was served based on its path and project configuration',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'func',
+  },
+  [VERCEL_PROXY_PATH_TYPE_VARIANT]: {
+    brief: 'Variant of the path type',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'api',
+  },
+  [VERCEL_PROXY_REFERER]: {
+    brief: 'Referer of the request',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '*.vercel.app',
+  },
+  [VERCEL_PROXY_REGION]: {
+    brief: 'Region where the request is processed',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'sfo1',
+  },
+  [VERCEL_PROXY_RESPONSE_BYTE_SIZE]: {
+    brief: 'Size of the response in bytes',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 1024,
+  },
+  [VERCEL_PROXY_SCHEME]: {
+    brief: 'Protocol of the request',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'https',
+  },
+  [VERCEL_PROXY_STATUS_CODE]: {
+    brief: 'HTTP status code of the proxy request',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 200,
+  },
+  [VERCEL_PROXY_TIMESTAMP]: {
+    brief: 'Unix timestamp when the proxy request was made',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 1573817250172,
+  },
+  [VERCEL_PROXY_USER_AGENT]: {
+    brief: 'User agent strings of the request',
+    type: 'string[]',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: ['Mozilla/5.0...'],
+  },
+  [VERCEL_PROXY_VERCEL_CACHE]: {
+    brief: 'Cache status sent to the browser',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'REVALIDATED',
+  },
+  [VERCEL_PROXY_VERCEL_ID]: {
+    brief: 'Vercel-specific identifier',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'sfo1::abc123',
+  },
+  [VERCEL_PROXY_WAF_ACTION]: {
+    brief: 'Action taken by firewall rules',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'deny',
+  },
+  [VERCEL_PROXY_WAF_RULE_ID]: {
+    brief: 'ID of the firewall rule that matched',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'rule_gAHz8jtSB1Gy',
+  },
+  [VERCEL_REQUEST_ID]: {
+    brief: 'Identifier of the Vercel request',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '643af4e3-975a-4cc7-9e7a-1eda11539d90',
+  },
+  [VERCEL_SOURCE]: {
+    brief: 'Origin of the Vercel log (build, edge, lambda, static, external, or firewall)',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'build',
+  },
+  [VERCEL_STATUS_CODE]: {
+    brief: 'HTTP status code of the request (-1 means no response returned and the lambda crashed)',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 200,
+  },
+};
+
 export type AttributeValue = string | number | boolean | Array<string> | Array<number> | Array<boolean>;
 
 export type Attributes = {
@@ -7113,6 +13598,45 @@ export type Attributes = {
   [LCP_SIZE]?: LCP_SIZE_TYPE;
   [LCP_URL]?: LCP_URL_TYPE;
   [LOGGER_NAME]?: LOGGER_NAME_TYPE;
+  [MCP_CANCELLED_REASON]?: MCP_CANCELLED_REASON_TYPE;
+  [MCP_CANCELLED_REQUEST_ID]?: MCP_CANCELLED_REQUEST_ID_TYPE;
+  [MCP_CLIENT_NAME]?: MCP_CLIENT_NAME_TYPE;
+  [MCP_CLIENT_TITLE]?: MCP_CLIENT_TITLE_TYPE;
+  [MCP_CLIENT_VERSION]?: MCP_CLIENT_VERSION_TYPE;
+  [MCP_LIFECYCLE_PHASE]?: MCP_LIFECYCLE_PHASE_TYPE;
+  [MCP_LOGGING_DATA_TYPE]?: MCP_LOGGING_DATA_TYPE_TYPE;
+  [MCP_LOGGING_LEVEL]?: MCP_LOGGING_LEVEL_TYPE;
+  [MCP_LOGGING_LOGGER]?: MCP_LOGGING_LOGGER_TYPE;
+  [MCP_LOGGING_MESSAGE]?: MCP_LOGGING_MESSAGE_TYPE;
+  [MCP_METHOD_NAME]?: MCP_METHOD_NAME_TYPE;
+  [MCP_PROGRESS_CURRENT]?: MCP_PROGRESS_CURRENT_TYPE;
+  [MCP_PROGRESS_MESSAGE]?: MCP_PROGRESS_MESSAGE_TYPE;
+  [MCP_PROGRESS_PERCENTAGE]?: MCP_PROGRESS_PERCENTAGE_TYPE;
+  [MCP_PROGRESS_TOKEN]?: MCP_PROGRESS_TOKEN_TYPE;
+  [MCP_PROGRESS_TOTAL]?: MCP_PROGRESS_TOTAL_TYPE;
+  [MCP_PROMPT_NAME]?: MCP_PROMPT_NAME_TYPE;
+  [MCP_PROMPT_RESULT_DESCRIPTION]?: MCP_PROMPT_RESULT_DESCRIPTION_TYPE;
+  [MCP_PROMPT_RESULT_MESSAGE_CONTENT]?: MCP_PROMPT_RESULT_MESSAGE_CONTENT_TYPE;
+  [MCP_PROMPT_RESULT_MESSAGE_COUNT]?: MCP_PROMPT_RESULT_MESSAGE_COUNT_TYPE;
+  [MCP_PROMPT_RESULT_MESSAGE_ROLE]?: MCP_PROMPT_RESULT_MESSAGE_ROLE_TYPE;
+  [MCP_PROTOCOL_READY]?: MCP_PROTOCOL_READY_TYPE;
+  [MCP_PROTOCOL_VERSION]?: MCP_PROTOCOL_VERSION_TYPE;
+  [MCP_REQUEST_ARGUMENT_KEY]?: MCP_REQUEST_ARGUMENT_KEY_TYPE;
+  [MCP_REQUEST_ARGUMENT_NAME]?: MCP_REQUEST_ARGUMENT_NAME_TYPE;
+  [MCP_REQUEST_ARGUMENT_URI]?: MCP_REQUEST_ARGUMENT_URI_TYPE;
+  [MCP_REQUEST_ID]?: MCP_REQUEST_ID_TYPE;
+  [MCP_RESOURCE_PROTOCOL]?: MCP_RESOURCE_PROTOCOL_TYPE;
+  [MCP_RESOURCE_URI]?: MCP_RESOURCE_URI_TYPE;
+  [MCP_SERVER_NAME]?: MCP_SERVER_NAME_TYPE;
+  [MCP_SERVER_TITLE]?: MCP_SERVER_TITLE_TYPE;
+  [MCP_SERVER_VERSION]?: MCP_SERVER_VERSION_TYPE;
+  [MCP_SESSION_ID]?: MCP_SESSION_ID_TYPE;
+  [MCP_TOOL_NAME]?: MCP_TOOL_NAME_TYPE;
+  [MCP_TOOL_RESULT_CONTENT]?: MCP_TOOL_RESULT_CONTENT_TYPE;
+  [MCP_TOOL_RESULT_CONTENT_COUNT]?: MCP_TOOL_RESULT_CONTENT_COUNT_TYPE;
+  [MCP_TOOL_RESULT_IS_ERROR]?: MCP_TOOL_RESULT_IS_ERROR_TYPE;
+  [MCP_TRANSPORT]?: MCP_TRANSPORT_TYPE;
+  [MDC_KEY]?: MDC_KEY_TYPE;
   [MESSAGING_DESTINATION_CONNECTION]?: MESSAGING_DESTINATION_CONNECTION_TYPE;
   [MESSAGING_DESTINATION_NAME]?: MESSAGING_DESTINATION_NAME_TYPE;
   [MESSAGING_MESSAGE_BODY_SIZE]?: MESSAGING_MESSAGE_BODY_SIZE_TYPE;
@@ -7253,4 +13777,39 @@ export type Attributes = {
   [USER_NAME]?: USER_NAME_TYPE;
   [USER_ROLES]?: USER_ROLES_TYPE;
   [USER_AGENT_ORIGINAL]?: USER_AGENT_ORIGINAL_TYPE;
+  [VERCEL_BRANCH]?: VERCEL_BRANCH_TYPE;
+  [VERCEL_BUILD_ID]?: VERCEL_BUILD_ID_TYPE;
+  [VERCEL_DEPLOYMENT_ID]?: VERCEL_DEPLOYMENT_ID_TYPE;
+  [VERCEL_DESTINATION]?: VERCEL_DESTINATION_TYPE;
+  [VERCEL_EDGE_TYPE]?: VERCEL_EDGE_TYPE_TYPE;
+  [VERCEL_ENTRYPOINT]?: VERCEL_ENTRYPOINT_TYPE;
+  [VERCEL_EXECUTION_REGION]?: VERCEL_EXECUTION_REGION_TYPE;
+  [VERCEL_ID]?: VERCEL_ID_TYPE;
+  [VERCEL_JA3_DIGEST]?: VERCEL_JA3_DIGEST_TYPE;
+  [VERCEL_JA4_DIGEST]?: VERCEL_JA4_DIGEST_TYPE;
+  [VERCEL_LOG_TYPE]?: VERCEL_LOG_TYPE_TYPE;
+  [VERCEL_PROJECT_ID]?: VERCEL_PROJECT_ID_TYPE;
+  [VERCEL_PROJECT_NAME]?: VERCEL_PROJECT_NAME_TYPE;
+  [VERCEL_PROXY_CACHE_ID]?: VERCEL_PROXY_CACHE_ID_TYPE;
+  [VERCEL_PROXY_CLIENT_IP]?: VERCEL_PROXY_CLIENT_IP_TYPE;
+  [VERCEL_PROXY_HOST]?: VERCEL_PROXY_HOST_TYPE;
+  [VERCEL_PROXY_LAMBDA_REGION]?: VERCEL_PROXY_LAMBDA_REGION_TYPE;
+  [VERCEL_PROXY_METHOD]?: VERCEL_PROXY_METHOD_TYPE;
+  [VERCEL_PROXY_PATH]?: VERCEL_PROXY_PATH_TYPE;
+  [VERCEL_PROXY_PATH_TYPE]?: VERCEL_PROXY_PATH_TYPE_TYPE;
+  [VERCEL_PROXY_PATH_TYPE_VARIANT]?: VERCEL_PROXY_PATH_TYPE_VARIANT_TYPE;
+  [VERCEL_PROXY_REFERER]?: VERCEL_PROXY_REFERER_TYPE;
+  [VERCEL_PROXY_REGION]?: VERCEL_PROXY_REGION_TYPE;
+  [VERCEL_PROXY_RESPONSE_BYTE_SIZE]?: VERCEL_PROXY_RESPONSE_BYTE_SIZE_TYPE;
+  [VERCEL_PROXY_SCHEME]?: VERCEL_PROXY_SCHEME_TYPE;
+  [VERCEL_PROXY_STATUS_CODE]?: VERCEL_PROXY_STATUS_CODE_TYPE;
+  [VERCEL_PROXY_TIMESTAMP]?: VERCEL_PROXY_TIMESTAMP_TYPE;
+  [VERCEL_PROXY_USER_AGENT]?: VERCEL_PROXY_USER_AGENT_TYPE;
+  [VERCEL_PROXY_VERCEL_CACHE]?: VERCEL_PROXY_VERCEL_CACHE_TYPE;
+  [VERCEL_PROXY_VERCEL_ID]?: VERCEL_PROXY_VERCEL_ID_TYPE;
+  [VERCEL_PROXY_WAF_ACTION]?: VERCEL_PROXY_WAF_ACTION_TYPE;
+  [VERCEL_PROXY_WAF_RULE_ID]?: VERCEL_PROXY_WAF_RULE_ID_TYPE;
+  [VERCEL_REQUEST_ID]?: VERCEL_REQUEST_ID_TYPE;
+  [VERCEL_SOURCE]?: VERCEL_SOURCE_TYPE;
+  [VERCEL_STATUS_CODE]?: VERCEL_STATUS_CODE_TYPE;
 } & Record<string, AttributeValue | undefined>;

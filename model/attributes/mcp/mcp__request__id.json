@@ -1,0 +1,10 @@
+{
+  "key": "mcp.request.id",
+  "brief": "JSON-RPC request identifier for the MCP request. Unique within the MCP session.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "1"
+}

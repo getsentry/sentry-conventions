@@ -2300,6 +2300,422 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "myLogger"
     """
 
+    # Path: model/attributes/mcp/mcp__cancelled__reason.json
+    MCP_CANCELLED_REASON: Literal["mcp.cancelled.reason"] = "mcp.cancelled.reason"
+    """Reason for the cancellation of an MCP operation.
+
+    Type: str
+    Contains PII: maybe - Cancellation reasons may contain user-specific or sensitive information
+    Defined in OTEL: No
+    Example: "User cancelled the request"
+    """
+
+    # Path: model/attributes/mcp/mcp__cancelled__request_id.json
+    MCP_CANCELLED_REQUEST_ID: Literal["mcp.cancelled.request_id"] = (
+        "mcp.cancelled.request_id"
+    )
+    """Request ID of the cancelled MCP operation.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "123"
+    """
+
+    # Path: model/attributes/mcp/mcp__client__name.json
+    MCP_CLIENT_NAME: Literal["mcp.client.name"] = "mcp.client.name"
+    """Name of the MCP client application.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "claude-desktop"
+    """
+
+    # Path: model/attributes/mcp/mcp__client__title.json
+    MCP_CLIENT_TITLE: Literal["mcp.client.title"] = "mcp.client.title"
+    """Display title of the MCP client application.
+
+    Type: str
+    Contains PII: maybe - Client titles may reveal user-specific application configurations or custom setups
+    Defined in OTEL: No
+    Example: "Claude Desktop"
+    """
+
+    # Path: model/attributes/mcp/mcp__client__version.json
+    MCP_CLIENT_VERSION: Literal["mcp.client.version"] = "mcp.client.version"
+    """Version of the MCP client application.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "1.0.0"
+    """
+
+    # Path: model/attributes/mcp/mcp__lifecycle__phase.json
+    MCP_LIFECYCLE_PHASE: Literal["mcp.lifecycle.phase"] = "mcp.lifecycle.phase"
+    """Lifecycle phase indicator for MCP operations.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "initialization_complete"
+    """
+
+    # Path: model/attributes/mcp/mcp__logging__data_type.json
+    MCP_LOGGING_DATA_TYPE: Literal["mcp.logging.data_type"] = "mcp.logging.data_type"
+    """Data type of the logged message content.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "string"
+    """
+
+    # Path: model/attributes/mcp/mcp__logging__level.json
+    MCP_LOGGING_LEVEL: Literal["mcp.logging.level"] = "mcp.logging.level"
+    """Log level for MCP logging operations.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "info"
+    """
+
+    # Path: model/attributes/mcp/mcp__logging__logger.json
+    MCP_LOGGING_LOGGER: Literal["mcp.logging.logger"] = "mcp.logging.logger"
+    """Logger name for MCP logging operations.
+
+    Type: str
+    Contains PII: maybe - Logger names may be user-defined and could contain sensitive information
+    Defined in OTEL: No
+    Example: "mcp_server"
+    """
+
+    # Path: model/attributes/mcp/mcp__logging__message.json
+    MCP_LOGGING_MESSAGE: Literal["mcp.logging.message"] = "mcp.logging.message"
+    """Log message content from MCP logging operations.
+
+    Type: str
+    Contains PII: true - Log messages can contain user data
+    Defined in OTEL: No
+    Example: "Tool execution completed successfully"
+    """
+
+    # Path: model/attributes/mcp/mcp__method__name.json
+    MCP_METHOD_NAME: Literal["mcp.method.name"] = "mcp.method.name"
+    """The name of the MCP request or notification method being called.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "tools/call"
+    """
+
+    # Path: model/attributes/mcp/mcp__progress__current.json
+    MCP_PROGRESS_CURRENT: Literal["mcp.progress.current"] = "mcp.progress.current"
+    """Current progress value of an MCP operation.
+
+    Type: int
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 50
+    """
+
+    # Path: model/attributes/mcp/mcp__progress__message.json
+    MCP_PROGRESS_MESSAGE: Literal["mcp.progress.message"] = "mcp.progress.message"
+    """Progress message describing the current state of an MCP operation.
+
+    Type: str
+    Contains PII: maybe - Progress messages may contain user-specific or sensitive information
+    Defined in OTEL: No
+    Example: "Processing 50 of 100 items"
+    """
+
+    # Path: model/attributes/mcp/mcp__progress__percentage.json
+    MCP_PROGRESS_PERCENTAGE: Literal["mcp.progress.percentage"] = (
+        "mcp.progress.percentage"
+    )
+    """Calculated progress percentage of an MCP operation. Computed from current/total * 100.
+
+    Type: float
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 50
+    """
+
+    # Path: model/attributes/mcp/mcp__progress__token.json
+    MCP_PROGRESS_TOKEN: Literal["mcp.progress.token"] = "mcp.progress.token"
+    """Token for tracking progress of an MCP operation.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "progress-token-123"
+    """
+
+    # Path: model/attributes/mcp/mcp__progress__total.json
+    MCP_PROGRESS_TOTAL: Literal["mcp.progress.total"] = "mcp.progress.total"
+    """Total progress target value of an MCP operation.
+
+    Type: int
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 100
+    """
+
+    # Path: model/attributes/mcp/mcp__prompt__name.json
+    MCP_PROMPT_NAME: Literal["mcp.prompt.name"] = "mcp.prompt.name"
+    """Name of the MCP prompt template being used.
+
+    Type: str
+    Contains PII: maybe - Prompt names may reveal user behavior patterns or sensitive operations
+    Defined in OTEL: No
+    Example: "summarize"
+    """
+
+    # Path: model/attributes/mcp/mcp__prompt__result__description.json
+    MCP_PROMPT_RESULT_DESCRIPTION: Literal["mcp.prompt.result.description"] = (
+        "mcp.prompt.result.description"
+    )
+    """Description of the prompt result.
+
+    Type: str
+    Contains PII: true
+    Defined in OTEL: No
+    Example: "A summary of the requested information"
+    """
+
+    # Path: model/attributes/mcp/mcp__prompt__result__message_content.json
+    MCP_PROMPT_RESULT_MESSAGE_CONTENT: Literal["mcp.prompt.result.message_content"] = (
+        "mcp.prompt.result.message_content"
+    )
+    """Content of the message in the prompt result. Used for single message results only.
+
+    Type: str
+    Contains PII: true
+    Defined in OTEL: No
+    Example: "Please provide a summary of the document"
+    """
+
+    # Path: model/attributes/mcp/mcp__prompt__result__message_count.json
+    MCP_PROMPT_RESULT_MESSAGE_COUNT: Literal["mcp.prompt.result.message_count"] = (
+        "mcp.prompt.result.message_count"
+    )
+    """Number of messages in the prompt result.
+
+    Type: int
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 3
+    """
+
+    # Path: model/attributes/mcp/mcp__prompt__result__message_role.json
+    MCP_PROMPT_RESULT_MESSAGE_ROLE: Literal["mcp.prompt.result.message_role"] = (
+        "mcp.prompt.result.message_role"
+    )
+    """Role of the message in the prompt result. Used for single message results only.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "user"
+    """
+
+    # Path: model/attributes/mcp/mcp__protocol__ready.json
+    MCP_PROTOCOL_READY: Literal["mcp.protocol.ready"] = "mcp.protocol.ready"
+    """Protocol readiness indicator for MCP session. Non-zero value indicates the protocol is ready.
+
+    Type: int
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 1
+    """
+
+    # Path: model/attributes/mcp/mcp__protocol__version.json
+    MCP_PROTOCOL_VERSION: Literal["mcp.protocol.version"] = "mcp.protocol.version"
+    """MCP protocol version used in the session.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "2024-11-05"
+    """
+
+    # Path: model/attributes/mcp/mcp__request__argument__<key>.json
+    MCP_REQUEST_ARGUMENT_KEY: Literal["mcp.request.argument.<key>"] = (
+        "mcp.request.argument.<key>"
+    )
+    """MCP request argument with dynamic key suffix. The <key> is replaced with the actual argument name. The value is a JSON-stringified representation of the argument value.
+
+    Type: str
+    Contains PII: true - Arguments contain user input
+    Defined in OTEL: No
+    Has Dynamic Suffix: true
+    Example: "mcp.request.argument.query='weather in Paris'"
+    """
+
+    # Path: model/attributes/mcp/mcp__request__argument__name.json
+    MCP_REQUEST_ARGUMENT_NAME: Literal["mcp.request.argument.name"] = (
+        "mcp.request.argument.name"
+    )
+    """Name argument from prompts/get MCP request.
+
+    Type: str
+    Contains PII: true - Prompt names can contain user input
+    Defined in OTEL: No
+    Example: "summarize"
+    """
+
+    # Path: model/attributes/mcp/mcp__request__argument__uri.json
+    MCP_REQUEST_ARGUMENT_URI: Literal["mcp.request.argument.uri"] = (
+        "mcp.request.argument.uri"
+    )
+    """URI argument from resources/read MCP request.
+
+    Type: str
+    Contains PII: true - URIs can contain user file paths
+    Defined in OTEL: No
+    Example: "file:///path/to/resource"
+    """
+
+    # Path: model/attributes/mcp/mcp__request__id.json
+    MCP_REQUEST_ID: Literal["mcp.request.id"] = "mcp.request.id"
+    """JSON-RPC request identifier for the MCP request. Unique within the MCP session.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "1"
+    """
+
+    # Path: model/attributes/mcp/mcp__resource__protocol.json
+    MCP_RESOURCE_PROTOCOL: Literal["mcp.resource.protocol"] = "mcp.resource.protocol"
+    """Protocol of the resource URI being accessed, extracted from the URI.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "file"
+    """
+
+    # Path: model/attributes/mcp/mcp__resource__uri.json
+    MCP_RESOURCE_URI: Literal["mcp.resource.uri"] = "mcp.resource.uri"
+    """The resource URI being accessed in an MCP operation.
+
+    Type: str
+    Contains PII: true - URIs can contain sensitive file paths
+    Defined in OTEL: No
+    Example: "file:///path/to/file.txt"
+    """
+
+    # Path: model/attributes/mcp/mcp__server__name.json
+    MCP_SERVER_NAME: Literal["mcp.server.name"] = "mcp.server.name"
+    """Name of the MCP server application.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "sentry-mcp-server"
+    """
+
+    # Path: model/attributes/mcp/mcp__server__title.json
+    MCP_SERVER_TITLE: Literal["mcp.server.title"] = "mcp.server.title"
+    """Display title of the MCP server application.
+
+    Type: str
+    Contains PII: maybe - Server titles may reveal user-specific application configurations or custom setups
+    Defined in OTEL: No
+    Example: "Sentry MCP Server"
+    """
+
+    # Path: model/attributes/mcp/mcp__server__version.json
+    MCP_SERVER_VERSION: Literal["mcp.server.version"] = "mcp.server.version"
+    """Version of the MCP server application.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "0.1.0"
+    """
+
+    # Path: model/attributes/mcp/mcp__session__id.json
+    MCP_SESSION_ID: Literal["mcp.session.id"] = "mcp.session.id"
+    """Identifier for the MCP session.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "550e8400-e29b-41d4-a716-446655440000"
+    """
+
+    # Path: model/attributes/mcp/mcp__tool__name.json
+    MCP_TOOL_NAME: Literal["mcp.tool.name"] = "mcp.tool.name"
+    """Name of the MCP tool being called.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "calculator"
+    """
+
+    # Path: model/attributes/mcp/mcp__tool__result__content.json
+    MCP_TOOL_RESULT_CONTENT: Literal["mcp.tool.result.content"] = (
+        "mcp.tool.result.content"
+    )
+    """The content of the tool result.
+
+    Type: str
+    Contains PII: true - Tool results can contain user data
+    Defined in OTEL: No
+    Example: "{\"output\": \"rainy\", \"toolCallId\": \"1\"}"
+    """
+
+    # Path: model/attributes/mcp/mcp__tool__result__content_count.json
+    MCP_TOOL_RESULT_CONTENT_COUNT: Literal["mcp.tool.result.content_count"] = (
+        "mcp.tool.result.content_count"
+    )
+    """Number of content items in the tool result.
+
+    Type: int
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 1
+    """
+
+    # Path: model/attributes/mcp/mcp__tool__result__is_error.json
+    MCP_TOOL_RESULT_IS_ERROR: Literal["mcp.tool.result.is_error"] = (
+        "mcp.tool.result.is_error"
+    )
+    """Whether a tool execution resulted in an error.
+
+    Type: bool
+    Contains PII: false
+    Defined in OTEL: No
+    Example: false
+    """
+
+    # Path: model/attributes/mcp/mcp__transport.json
+    MCP_TRANSPORT: Literal["mcp.transport"] = "mcp.transport"
+    """Transport method used for MCP communication.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "stdio"
+    """
+
+    # Path: model/attributes/mdc/mdc__<key>.json
+    MDC_KEY: Literal["mdc.<key>"] = "mdc.<key>"
+    """Attributes from the Mapped Diagnostic Context (MDC) present at the moment the log record was created. The MDC is supported by all the most popular logging solutions in the Java ecosystem, and it's usually implemented as a thread-local map that stores context for e.g. a specific request.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Has Dynamic Suffix: true
+    Example: "mdc.some_key='some_value'"
+    """
+
     # Path: model/attributes/messaging/messaging__destination__connection.json
     MESSAGING_DESTINATION_CONNECTION: Literal["messaging.destination.connection"] = (
         "messaging.destination.connection"
@@ -3849,6 +4265,374 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1"
     """
 
+    # Path: model/attributes/vercel/vercel__branch.json
+    VERCEL_BRANCH: Literal["vercel.branch"] = "vercel.branch"
+    """Git branch name for Vercel project
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "main"
+    """
+
+    # Path: model/attributes/vercel/vercel__build_id.json
+    VERCEL_BUILD_ID: Literal["vercel.build_id"] = "vercel.build_id"
+    """Identifier for the Vercel build (only present on build logs)
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "bld_cotnkcr76"
+    """
+
+    # Path: model/attributes/vercel/vercel__deployment_id.json
+    VERCEL_DEPLOYMENT_ID: Literal["vercel.deployment_id"] = "vercel.deployment_id"
+    """Identifier for the Vercel deployment
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "dpl_233NRGRjVZX1caZrXWtz5g1TAksD"
+    """
+
+    # Path: model/attributes/vercel/vercel__destination.json
+    VERCEL_DESTINATION: Literal["vercel.destination"] = "vercel.destination"
+    """Origin of the external content in Vercel (only on external logs)
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "https://vitals.vercel-insights.com/v1"
+    """
+
+    # Path: model/attributes/vercel/vercel__edge_type.json
+    VERCEL_EDGE_TYPE: Literal["vercel.edge_type"] = "vercel.edge_type"
+    """Type of edge runtime in Vercel
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "edge-function"
+    """
+
+    # Path: model/attributes/vercel/vercel__entrypoint.json
+    VERCEL_ENTRYPOINT: Literal["vercel.entrypoint"] = "vercel.entrypoint"
+    """Entrypoint for the request in Vercel
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "api/index.js"
+    """
+
+    # Path: model/attributes/vercel/vercel__execution_region.json
+    VERCEL_EXECUTION_REGION: Literal["vercel.execution_region"] = (
+        "vercel.execution_region"
+    )
+    """Region where the request is executed
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "sfo1"
+    """
+
+    # Path: model/attributes/vercel/vercel__id.json
+    VERCEL_ID: Literal["vercel.id"] = "vercel.id"
+    """Unique identifier for the log entry in Vercel
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "1573817187330377061717300000"
+    """
+
+    # Path: model/attributes/vercel/vercel__ja3_digest.json
+    VERCEL_JA3_DIGEST: Literal["vercel.ja3_digest"] = "vercel.ja3_digest"
+    """JA3 fingerprint digest of Vercel request
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "769,47-53-5-10-49161-49162-49171-49172-50-56-19-4,0-10-11,23-24-25,0"
+    """
+
+    # Path: model/attributes/vercel/vercel__ja4_digest.json
+    VERCEL_JA4_DIGEST: Literal["vercel.ja4_digest"] = "vercel.ja4_digest"
+    """JA4 fingerprint digest
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "t13d1516h2_8daaf6152771_02713d6af862"
+    """
+
+    # Path: model/attributes/vercel/vercel__log_type.json
+    VERCEL_LOG_TYPE: Literal["vercel.log_type"] = "vercel.log_type"
+    """Vercel log output type
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "stdout"
+    """
+
+    # Path: model/attributes/vercel/vercel__project_id.json
+    VERCEL_PROJECT_ID: Literal["vercel.project_id"] = "vercel.project_id"
+    """Identifier for the Vercel project
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "gdufoJxB6b9b1fEqr1jUtFkyavUU"
+    """
+
+    # Path: model/attributes/vercel/vercel__project_name.json
+    VERCEL_PROJECT_NAME: Literal["vercel.project_name"] = "vercel.project_name"
+    """Name of the Vercel project
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "my-app"
+    """
+
+    # Path: model/attributes/vercel/vercel__proxy__cache_id.json
+    VERCEL_PROXY_CACHE_ID: Literal["vercel.proxy.cache_id"] = "vercel.proxy.cache_id"
+    """Original request ID when request is served from cache
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "pdx1::v8g4b-1744143786684-93dafbc0f70d"
+    """
+
+    # Path: model/attributes/vercel/vercel__proxy__client_ip.json
+    VERCEL_PROXY_CLIENT_IP: Literal["vercel.proxy.client_ip"] = "vercel.proxy.client_ip"
+    """Client IP address
+
+    Type: str
+    Contains PII: true
+    Defined in OTEL: No
+    Example: "120.75.16.101"
+    """
+
+    # Path: model/attributes/vercel/vercel__proxy__host.json
+    VERCEL_PROXY_HOST: Literal["vercel.proxy.host"] = "vercel.proxy.host"
+    """Hostname of the request
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "test.vercel.app"
+    """
+
+    # Path: model/attributes/vercel/vercel__proxy__lambda_region.json
+    VERCEL_PROXY_LAMBDA_REGION: Literal["vercel.proxy.lambda_region"] = (
+        "vercel.proxy.lambda_region"
+    )
+    """Region where lambda function executed
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "sfo1"
+    """
+
+    # Path: model/attributes/vercel/vercel__proxy__method.json
+    VERCEL_PROXY_METHOD: Literal["vercel.proxy.method"] = "vercel.proxy.method"
+    """HTTP method of the request
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "GET"
+    """
+
+    # Path: model/attributes/vercel/vercel__proxy__path.json
+    VERCEL_PROXY_PATH: Literal["vercel.proxy.path"] = "vercel.proxy.path"
+    """Request path with query parameters
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "/dynamic/some-value.json?route=some-value"
+    """
+
+    # Path: model/attributes/vercel/vercel__proxy__path_type.json
+    VERCEL_PROXY_PATH_TYPE: Literal["vercel.proxy.path_type"] = "vercel.proxy.path_type"
+    """How the request was served based on its path and project configuration
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "func"
+    """
+
+    # Path: model/attributes/vercel/vercel__proxy__path_type_variant.json
+    VERCEL_PROXY_PATH_TYPE_VARIANT: Literal["vercel.proxy.path_type_variant"] = (
+        "vercel.proxy.path_type_variant"
+    )
+    """Variant of the path type
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "api"
+    """
+
+    # Path: model/attributes/vercel/vercel__proxy__referer.json
+    VERCEL_PROXY_REFERER: Literal["vercel.proxy.referer"] = "vercel.proxy.referer"
+    """Referer of the request
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "*.vercel.app"
+    """
+
+    # Path: model/attributes/vercel/vercel__proxy__region.json
+    VERCEL_PROXY_REGION: Literal["vercel.proxy.region"] = "vercel.proxy.region"
+    """Region where the request is processed
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "sfo1"
+    """
+
+    # Path: model/attributes/vercel/vercel__proxy__response_byte_size.json
+    VERCEL_PROXY_RESPONSE_BYTE_SIZE: Literal["vercel.proxy.response_byte_size"] = (
+        "vercel.proxy.response_byte_size"
+    )
+    """Size of the response in bytes
+
+    Type: int
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 1024
+    """
+
+    # Path: model/attributes/vercel/vercel__proxy__scheme.json
+    VERCEL_PROXY_SCHEME: Literal["vercel.proxy.scheme"] = "vercel.proxy.scheme"
+    """Protocol of the request
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "https"
+    """
+
+    # Path: model/attributes/vercel/vercel__proxy__status_code.json
+    VERCEL_PROXY_STATUS_CODE: Literal["vercel.proxy.status_code"] = (
+        "vercel.proxy.status_code"
+    )
+    """HTTP status code of the proxy request
+
+    Type: int
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 200
+    """
+
+    # Path: model/attributes/vercel/vercel__proxy__timestamp.json
+    VERCEL_PROXY_TIMESTAMP: Literal["vercel.proxy.timestamp"] = "vercel.proxy.timestamp"
+    """Unix timestamp when the proxy request was made
+
+    Type: int
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 1573817250172
+    """
+
+    # Path: model/attributes/vercel/vercel__proxy__user_agent.json
+    VERCEL_PROXY_USER_AGENT: Literal["vercel.proxy.user_agent"] = (
+        "vercel.proxy.user_agent"
+    )
+    """User agent strings of the request
+
+    Type: List[str]
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: ["Mozilla/5.0..."]
+    """
+
+    # Path: model/attributes/vercel/vercel__proxy__vercel_cache.json
+    VERCEL_PROXY_VERCEL_CACHE: Literal["vercel.proxy.vercel_cache"] = (
+        "vercel.proxy.vercel_cache"
+    )
+    """Cache status sent to the browser
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "REVALIDATED"
+    """
+
+    # Path: model/attributes/vercel/vercel__proxy__vercel_id.json
+    VERCEL_PROXY_VERCEL_ID: Literal["vercel.proxy.vercel_id"] = "vercel.proxy.vercel_id"
+    """Vercel-specific identifier
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "sfo1::abc123"
+    """
+
+    # Path: model/attributes/vercel/vercel__proxy__waf_action.json
+    VERCEL_PROXY_WAF_ACTION: Literal["vercel.proxy.waf_action"] = (
+        "vercel.proxy.waf_action"
+    )
+    """Action taken by firewall rules
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "deny"
+    """
+
+    # Path: model/attributes/vercel/vercel__proxy__waf_rule_id.json
+    VERCEL_PROXY_WAF_RULE_ID: Literal["vercel.proxy.waf_rule_id"] = (
+        "vercel.proxy.waf_rule_id"
+    )
+    """ID of the firewall rule that matched
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "rule_gAHz8jtSB1Gy"
+    """
+
+    # Path: model/attributes/vercel/vercel__request_id.json
+    VERCEL_REQUEST_ID: Literal["vercel.request_id"] = "vercel.request_id"
+    """Identifier of the Vercel request
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "643af4e3-975a-4cc7-9e7a-1eda11539d90"
+    """
+
+    # Path: model/attributes/vercel/vercel__source.json
+    VERCEL_SOURCE: Literal["vercel.source"] = "vercel.source"
+    """Origin of the Vercel log (build, edge, lambda, static, external, or firewall)
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "build"
+    """
+
+    # Path: model/attributes/vercel/vercel__status_code.json
+    VERCEL_STATUS_CODE: Literal["vercel.status_code"] = "vercel.status_code"
+    """HTTP status code of the request (-1 means no response returned and the lambda crashed)
+
+    Type: int
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 200
+    """
+
 
 _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.citations": AttributeMetadata(
@@ -5371,6 +6155,300 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="myLogger",
     ),
+    "mcp.cancelled.reason": AttributeMetadata(
+        brief="Reason for the cancellation of an MCP operation.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(
+            isPii=IsPii.MAYBE,
+            reason="Cancellation reasons may contain user-specific or sensitive information",
+        ),
+        is_in_otel=False,
+        example="User cancelled the request",
+    ),
+    "mcp.cancelled.request_id": AttributeMetadata(
+        brief="Request ID of the cancelled MCP operation.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="123",
+    ),
+    "mcp.client.name": AttributeMetadata(
+        brief="Name of the MCP client application.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="claude-desktop",
+    ),
+    "mcp.client.title": AttributeMetadata(
+        brief="Display title of the MCP client application.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(
+            isPii=IsPii.MAYBE,
+            reason="Client titles may reveal user-specific application configurations or custom setups",
+        ),
+        is_in_otel=False,
+        example="Claude Desktop",
+    ),
+    "mcp.client.version": AttributeMetadata(
+        brief="Version of the MCP client application.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="1.0.0",
+    ),
+    "mcp.lifecycle.phase": AttributeMetadata(
+        brief="Lifecycle phase indicator for MCP operations.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="initialization_complete",
+    ),
+    "mcp.logging.data_type": AttributeMetadata(
+        brief="Data type of the logged message content.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="string",
+    ),
+    "mcp.logging.level": AttributeMetadata(
+        brief="Log level for MCP logging operations.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="info",
+    ),
+    "mcp.logging.logger": AttributeMetadata(
+        brief="Logger name for MCP logging operations.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(
+            isPii=IsPii.MAYBE,
+            reason="Logger names may be user-defined and could contain sensitive information",
+        ),
+        is_in_otel=False,
+        example="mcp_server",
+    ),
+    "mcp.logging.message": AttributeMetadata(
+        brief="Log message content from MCP logging operations.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.TRUE, reason="Log messages can contain user data"),
+        is_in_otel=False,
+        example="Tool execution completed successfully",
+    ),
+    "mcp.method.name": AttributeMetadata(
+        brief="The name of the MCP request or notification method being called.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="tools/call",
+    ),
+    "mcp.progress.current": AttributeMetadata(
+        brief="Current progress value of an MCP operation.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=50,
+    ),
+    "mcp.progress.message": AttributeMetadata(
+        brief="Progress message describing the current state of an MCP operation.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(
+            isPii=IsPii.MAYBE,
+            reason="Progress messages may contain user-specific or sensitive information",
+        ),
+        is_in_otel=False,
+        example="Processing 50 of 100 items",
+    ),
+    "mcp.progress.percentage": AttributeMetadata(
+        brief="Calculated progress percentage of an MCP operation. Computed from current/total * 100.",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=50,
+    ),
+    "mcp.progress.token": AttributeMetadata(
+        brief="Token for tracking progress of an MCP operation.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="progress-token-123",
+    ),
+    "mcp.progress.total": AttributeMetadata(
+        brief="Total progress target value of an MCP operation.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=100,
+    ),
+    "mcp.prompt.name": AttributeMetadata(
+        brief="Name of the MCP prompt template being used.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(
+            isPii=IsPii.MAYBE,
+            reason="Prompt names may reveal user behavior patterns or sensitive operations",
+        ),
+        is_in_otel=False,
+        example="summarize",
+    ),
+    "mcp.prompt.result.description": AttributeMetadata(
+        brief="Description of the prompt result.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.TRUE),
+        is_in_otel=False,
+        example="A summary of the requested information",
+    ),
+    "mcp.prompt.result.message_content": AttributeMetadata(
+        brief="Content of the message in the prompt result. Used for single message results only.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.TRUE),
+        is_in_otel=False,
+        example="Please provide a summary of the document",
+    ),
+    "mcp.prompt.result.message_count": AttributeMetadata(
+        brief="Number of messages in the prompt result.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=3,
+    ),
+    "mcp.prompt.result.message_role": AttributeMetadata(
+        brief="Role of the message in the prompt result. Used for single message results only.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="user",
+    ),
+    "mcp.protocol.ready": AttributeMetadata(
+        brief="Protocol readiness indicator for MCP session. Non-zero value indicates the protocol is ready.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=1,
+    ),
+    "mcp.protocol.version": AttributeMetadata(
+        brief="MCP protocol version used in the session.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="2024-11-05",
+    ),
+    "mcp.request.argument.<key>": AttributeMetadata(
+        brief="MCP request argument with dynamic key suffix. The <key> is replaced with the actual argument name. The value is a JSON-stringified representation of the argument value.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.TRUE, reason="Arguments contain user input"),
+        is_in_otel=False,
+        has_dynamic_suffix=True,
+        example="mcp.request.argument.query='weather in Paris'",
+    ),
+    "mcp.request.argument.name": AttributeMetadata(
+        brief="Name argument from prompts/get MCP request.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.TRUE, reason="Prompt names can contain user input"),
+        is_in_otel=False,
+        example="summarize",
+    ),
+    "mcp.request.argument.uri": AttributeMetadata(
+        brief="URI argument from resources/read MCP request.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.TRUE, reason="URIs can contain user file paths"),
+        is_in_otel=False,
+        example="file:///path/to/resource",
+    ),
+    "mcp.request.id": AttributeMetadata(
+        brief="JSON-RPC request identifier for the MCP request. Unique within the MCP session.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="1",
+    ),
+    "mcp.resource.protocol": AttributeMetadata(
+        brief="Protocol of the resource URI being accessed, extracted from the URI.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="file",
+    ),
+    "mcp.resource.uri": AttributeMetadata(
+        brief="The resource URI being accessed in an MCP operation.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.TRUE, reason="URIs can contain sensitive file paths"),
+        is_in_otel=False,
+        example="file:///path/to/file.txt",
+    ),
+    "mcp.server.name": AttributeMetadata(
+        brief="Name of the MCP server application.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="sentry-mcp-server",
+    ),
+    "mcp.server.title": AttributeMetadata(
+        brief="Display title of the MCP server application.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(
+            isPii=IsPii.MAYBE,
+            reason="Server titles may reveal user-specific application configurations or custom setups",
+        ),
+        is_in_otel=False,
+        example="Sentry MCP Server",
+    ),
+    "mcp.server.version": AttributeMetadata(
+        brief="Version of the MCP server application.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="0.1.0",
+    ),
+    "mcp.session.id": AttributeMetadata(
+        brief="Identifier for the MCP session.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="550e8400-e29b-41d4-a716-446655440000",
+    ),
+    "mcp.tool.name": AttributeMetadata(
+        brief="Name of the MCP tool being called.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="calculator",
+    ),
+    "mcp.tool.result.content": AttributeMetadata(
+        brief="The content of the tool result.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.TRUE, reason="Tool results can contain user data"),
+        is_in_otel=False,
+        example='{"output": "rainy", "toolCallId": "1"}',
+    ),
+    "mcp.tool.result.content_count": AttributeMetadata(
+        brief="Number of content items in the tool result.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=1,
+    ),
+    "mcp.tool.result.is_error": AttributeMetadata(
+        brief="Whether a tool execution resulted in an error.",
+        type=AttributeType.BOOLEAN,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=False,
+    ),
+    "mcp.transport": AttributeMetadata(
+        brief="Transport method used for MCP communication.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="stdio",
+    ),
+    "mdc.<key>": AttributeMetadata(
+        brief="Attributes from the Mapped Diagnostic Context (MDC) present at the moment the log record was created. The MDC is supported by all the most popular logging solutions in the Java ecosystem, and it's usually implemented as a thread-local map that stores context for e.g. a specific request.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        has_dynamic_suffix=True,
+        example="mdc.some_key='some_value'",
+        sdks=["java", "java.logback", "java.jul", "java.log4j2"],
+    ),
     "messaging.destination.connection": AttributeMetadata(
         brief="The message destination connection.",
         type=AttributeType.STRING,
@@ -6468,6 +7546,251 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1",
         aliases=["http.user_agent"],
     ),
+    "vercel.branch": AttributeMetadata(
+        brief="Git branch name for Vercel project",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="main",
+    ),
+    "vercel.build_id": AttributeMetadata(
+        brief="Identifier for the Vercel build (only present on build logs)",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="bld_cotnkcr76",
+    ),
+    "vercel.deployment_id": AttributeMetadata(
+        brief="Identifier for the Vercel deployment",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="dpl_233NRGRjVZX1caZrXWtz5g1TAksD",
+    ),
+    "vercel.destination": AttributeMetadata(
+        brief="Origin of the external content in Vercel (only on external logs)",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="https://vitals.vercel-insights.com/v1",
+    ),
+    "vercel.edge_type": AttributeMetadata(
+        brief="Type of edge runtime in Vercel",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="edge-function",
+    ),
+    "vercel.entrypoint": AttributeMetadata(
+        brief="Entrypoint for the request in Vercel",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="api/index.js",
+    ),
+    "vercel.execution_region": AttributeMetadata(
+        brief="Region where the request is executed",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="sfo1",
+    ),
+    "vercel.id": AttributeMetadata(
+        brief="Unique identifier for the log entry in Vercel",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="1573817187330377061717300000",
+    ),
+    "vercel.ja3_digest": AttributeMetadata(
+        brief="JA3 fingerprint digest of Vercel request",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="769,47-53-5-10-49161-49162-49171-49172-50-56-19-4,0-10-11,23-24-25,0",
+    ),
+    "vercel.ja4_digest": AttributeMetadata(
+        brief="JA4 fingerprint digest",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="t13d1516h2_8daaf6152771_02713d6af862",
+    ),
+    "vercel.log_type": AttributeMetadata(
+        brief="Vercel log output type",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="stdout",
+    ),
+    "vercel.project_id": AttributeMetadata(
+        brief="Identifier for the Vercel project",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="gdufoJxB6b9b1fEqr1jUtFkyavUU",
+    ),
+    "vercel.project_name": AttributeMetadata(
+        brief="Name of the Vercel project",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="my-app",
+    ),
+    "vercel.proxy.cache_id": AttributeMetadata(
+        brief="Original request ID when request is served from cache",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="pdx1::v8g4b-1744143786684-93dafbc0f70d",
+    ),
+    "vercel.proxy.client_ip": AttributeMetadata(
+        brief="Client IP address",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.TRUE),
+        is_in_otel=False,
+        example="120.75.16.101",
+    ),
+    "vercel.proxy.host": AttributeMetadata(
+        brief="Hostname of the request",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="test.vercel.app",
+    ),
+    "vercel.proxy.lambda_region": AttributeMetadata(
+        brief="Region where lambda function executed",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="sfo1",
+    ),
+    "vercel.proxy.method": AttributeMetadata(
+        brief="HTTP method of the request",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="GET",
+    ),
+    "vercel.proxy.path": AttributeMetadata(
+        brief="Request path with query parameters",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="/dynamic/some-value.json?route=some-value",
+    ),
+    "vercel.proxy.path_type": AttributeMetadata(
+        brief="How the request was served based on its path and project configuration",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="func",
+    ),
+    "vercel.proxy.path_type_variant": AttributeMetadata(
+        brief="Variant of the path type",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="api",
+    ),
+    "vercel.proxy.referer": AttributeMetadata(
+        brief="Referer of the request",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="*.vercel.app",
+    ),
+    "vercel.proxy.region": AttributeMetadata(
+        brief="Region where the request is processed",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="sfo1",
+    ),
+    "vercel.proxy.response_byte_size": AttributeMetadata(
+        brief="Size of the response in bytes",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=1024,
+    ),
+    "vercel.proxy.scheme": AttributeMetadata(
+        brief="Protocol of the request",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="https",
+    ),
+    "vercel.proxy.status_code": AttributeMetadata(
+        brief="HTTP status code of the proxy request",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=200,
+    ),
+    "vercel.proxy.timestamp": AttributeMetadata(
+        brief="Unix timestamp when the proxy request was made",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=1573817250172,
+    ),
+    "vercel.proxy.user_agent": AttributeMetadata(
+        brief="User agent strings of the request",
+        type=AttributeType.STRING_ARRAY,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=["Mozilla/5.0..."],
+    ),
+    "vercel.proxy.vercel_cache": AttributeMetadata(
+        brief="Cache status sent to the browser",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="REVALIDATED",
+    ),
+    "vercel.proxy.vercel_id": AttributeMetadata(
+        brief="Vercel-specific identifier",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="sfo1::abc123",
+    ),
+    "vercel.proxy.waf_action": AttributeMetadata(
+        brief="Action taken by firewall rules",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="deny",
+    ),
+    "vercel.proxy.waf_rule_id": AttributeMetadata(
+        brief="ID of the firewall rule that matched",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="rule_gAHz8jtSB1Gy",
+    ),
+    "vercel.request_id": AttributeMetadata(
+        brief="Identifier of the Vercel request",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="643af4e3-975a-4cc7-9e7a-1eda11539d90",
+    ),
+    "vercel.source": AttributeMetadata(
+        brief="Origin of the Vercel log (build, edge, lambda, static, external, or firewall)",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="build",
+    ),
+    "vercel.status_code": AttributeMetadata(
+        brief="HTTP status code of the request (-1 means no response returned and the lambda crashed)",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=200,
+    ),
 }
 
 """
@@ -6668,6 +7991,45 @@ Attributes = TypedDict(
         "lcp.size": int,
         "lcp.url": str,
         "logger.name": str,
+        "mcp.cancelled.reason": str,
+        "mcp.cancelled.request_id": str,
+        "mcp.client.name": str,
+        "mcp.client.title": str,
+        "mcp.client.version": str,
+        "mcp.lifecycle.phase": str,
+        "mcp.logging.data_type": str,
+        "mcp.logging.level": str,
+        "mcp.logging.logger": str,
+        "mcp.logging.message": str,
+        "mcp.method.name": str,
+        "mcp.progress.current": int,
+        "mcp.progress.message": str,
+        "mcp.progress.percentage": float,
+        "mcp.progress.token": str,
+        "mcp.progress.total": int,
+        "mcp.prompt.name": str,
+        "mcp.prompt.result.description": str,
+        "mcp.prompt.result.message_content": str,
+        "mcp.prompt.result.message_count": int,
+        "mcp.prompt.result.message_role": str,
+        "mcp.protocol.ready": int,
+        "mcp.protocol.version": str,
+        "mcp.request.argument.<key>": str,
+        "mcp.request.argument.name": str,
+        "mcp.request.argument.uri": str,
+        "mcp.request.id": str,
+        "mcp.resource.protocol": str,
+        "mcp.resource.uri": str,
+        "mcp.server.name": str,
+        "mcp.server.title": str,
+        "mcp.server.version": str,
+        "mcp.session.id": str,
+        "mcp.tool.name": str,
+        "mcp.tool.result.content": str,
+        "mcp.tool.result.content_count": int,
+        "mcp.tool.result.is_error": bool,
+        "mcp.transport": str,
+        "mdc.<key>": str,
         "messaging.destination.connection": str,
         "messaging.destination.name": str,
         "messaging.message.body.size": int,
@@ -6808,6 +8170,41 @@ Attributes = TypedDict(
         "user.name": str,
         "user.roles": List[str],
         "user_agent.original": str,
+        "vercel.branch": str,
+        "vercel.build_id": str,
+        "vercel.deployment_id": str,
+        "vercel.destination": str,
+        "vercel.edge_type": str,
+        "vercel.entrypoint": str,
+        "vercel.execution_region": str,
+        "vercel.id": str,
+        "vercel.ja3_digest": str,
+        "vercel.ja4_digest": str,
+        "vercel.log_type": str,
+        "vercel.project_id": str,
+        "vercel.project_name": str,
+        "vercel.proxy.cache_id": str,
+        "vercel.proxy.client_ip": str,
+        "vercel.proxy.host": str,
+        "vercel.proxy.lambda_region": str,
+        "vercel.proxy.method": str,
+        "vercel.proxy.path": str,
+        "vercel.proxy.path_type": str,
+        "vercel.proxy.path_type_variant": str,
+        "vercel.proxy.referer": str,
+        "vercel.proxy.region": str,
+        "vercel.proxy.response_byte_size": int,
+        "vercel.proxy.scheme": str,
+        "vercel.proxy.status_code": int,
+        "vercel.proxy.timestamp": int,
+        "vercel.proxy.user_agent": List[str],
+        "vercel.proxy.vercel_cache": str,
+        "vercel.proxy.vercel_id": str,
+        "vercel.proxy.waf_action": str,
+        "vercel.proxy.waf_rule_id": str,
+        "vercel.request_id": str,
+        "vercel.source": str,
+        "vercel.status_code": int,
     },
     total=False,
 )

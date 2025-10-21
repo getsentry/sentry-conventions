@@ -1,0 +1,10 @@
+{
+  "key": "mcp.server.name",
+  "brief": "Name of the MCP server application.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "sentry-mcp-server"
+}

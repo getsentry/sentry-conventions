@@ -1,0 +1,10 @@
+{
+  "key": "vercel.proxy.vercel_cache",
+  "brief": "Cache status sent to the browser",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "REVALIDATED"
+}
