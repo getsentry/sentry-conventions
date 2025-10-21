@@ -6,10 +6,5 @@
     "key": "false"
   },
   "is_in_otel": false,
-  "example": "1544712660300000000",
-  "deprecation": {
-    "_status": "backfill",
-    "replacement": "sentry._internal.observed_timestamp_nanos"
-  },
-  "alias": ["sentry._internal.observed_timestamp_nanos"]
+  "example": "1544712660300000000"
 }
