@@ -45,7 +45,7 @@ jobs:
         id: verify-changed-files
         shell: pwsh
         run: |
-          git diff-index --quiet HEAD --    
+          git status --porcelain    
           if ($LASTEXITCODE -ne 0) {
             Write-Host "::error::Uncommitted changes found after build/script execution. Failing job."
             git status
