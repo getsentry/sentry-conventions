@@ -732,7 +732,7 @@ function generateMetadataDict(
         .map((aliasKey) => {
           const aliasConstantName = allAttributes.find((attr) => attr.key === aliasKey)?.constantName;
           if (aliasConstantName === null) {
-            throw new Error(`Alias with key ${aliasKey} not found in ${allAttributes}`);
+            throw new Error(`Alias with key ${aliasKey} not found in allAttributes`);
           }
           return aliasConstantName;
         })
