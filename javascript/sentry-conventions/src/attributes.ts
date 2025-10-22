@@ -218,29 +218,6 @@ export const AI_METADATA = 'ai.metadata';
  */
 export type AI_METADATA_TYPE = string;
 
-// Path: model/attributes/ai/ai__model__provider.json
-
-/**
- * The provider of the model. `ai.model.provider`
- *
- * Attribute Value Type: `string` {@link AI_MODEL_PROVIDER_TYPE}
- *
- * Contains PII: maybe
- *
- * Attribute defined in OTEL: No
- *
- * Aliases: {@link GEN_AI_SYSTEM} `gen_ai.system`
- *
- * @deprecated Use {@link GEN_AI_SYSTEM} (gen_ai.system) instead
- * @example "openai"
- */
-export const AI_MODEL_PROVIDER = 'ai.model.provider';
-
-/**
- * Type for {@link AI_MODEL_PROVIDER} ai.model.provider
- */
-export type AI_MODEL_PROVIDER_TYPE = string;
-
 // Path: model/attributes/ai/ai__model_id.json
 
 /**
@@ -263,6 +240,29 @@ export const AI_MODEL_ID = 'ai.model_id';
  * Type for {@link AI_MODEL_ID} ai.model_id
  */
 export type AI_MODEL_ID_TYPE = string;
+
+// Path: model/attributes/ai/ai__model__provider.json
+
+/**
+ * The provider of the model. `ai.model.provider`
+ *
+ * Attribute Value Type: `string` {@link AI_MODEL_PROVIDER_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link GEN_AI_SYSTEM} `gen_ai.system`
+ *
+ * @deprecated Use {@link GEN_AI_SYSTEM} (gen_ai.system) instead
+ * @example "openai"
+ */
+export const AI_MODEL_PROVIDER = 'ai.model.provider';
+
+/**
+ * Type for {@link AI_MODEL_PROVIDER} ai.model.provider
+ */
+export type AI_MODEL_PROVIDER_TYPE = string;
 
 // Path: model/attributes/ai/ai__pipeline__name.json
 
@@ -373,26 +373,6 @@ export const AI_RAW_PROMPTING = 'ai.raw_prompting';
  */
 export type AI_RAW_PROMPTING_TYPE = boolean;
 
-// Path: model/attributes/ai/ai__response_format.json
-
-/**
- * For an AI model call, the format of the response `ai.response_format`
- *
- * Attribute Value Type: `string` {@link AI_RESPONSE_FORMAT_TYPE}
- *
- * Contains PII: maybe
- *
- * Attribute defined in OTEL: No
- *
- * @example "json_object"
- */
-export const AI_RESPONSE_FORMAT = 'ai.response_format';
-
-/**
- * Type for {@link AI_RESPONSE_FORMAT} ai.response_format
- */
-export type AI_RESPONSE_FORMAT_TYPE = string;
-
 // Path: model/attributes/ai/ai__responses.json
 
 /**
@@ -413,6 +393,26 @@ export const AI_RESPONSES = 'ai.responses';
  * Type for {@link AI_RESPONSES} ai.responses
  */
 export type AI_RESPONSES_TYPE = Array<string>;
+
+// Path: model/attributes/ai/ai__response_format.json
+
+/**
+ * For an AI model call, the format of the response `ai.response_format`
+ *
+ * Attribute Value Type: `string` {@link AI_RESPONSE_FORMAT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "json_object"
+ */
+export const AI_RESPONSE_FORMAT = 'ai.response_format';
+
+/**
+ * Type for {@link AI_RESPONSE_FORMAT} ai.response_format
+ */
+export type AI_RESPONSE_FORMAT_TYPE = string;
 
 // Path: model/attributes/ai/ai__search_queries.json
 
@@ -563,27 +563,6 @@ export const AI_TEXTS = 'ai.texts';
  */
 export type AI_TEXTS_TYPE = Array<string>;
 
-// Path: model/attributes/ai/ai__tool_calls.json
-
-/**
- * For an AI model call, the tool calls that were made. `ai.tool_calls`
- *
- * Attribute Value Type: `Array<string>` {@link AI_TOOL_CALLS_TYPE}
- *
- * Contains PII: true
- *
- * Attribute defined in OTEL: No
- *
- * @deprecated Use {@link GEN_AI_RESPONSE_TOOL_CALLS} (gen_ai.response.tool_calls) instead
- * @example ["tool_call_1","tool_call_2"]
- */
-export const AI_TOOL_CALLS = 'ai.tool_calls';
-
-/**
- * Type for {@link AI_TOOL_CALLS} ai.tool_calls
- */
-export type AI_TOOL_CALLS_TYPE = Array<string>;
-
 // Path: model/attributes/ai/ai__tools.json
 
 /**
@@ -604,6 +583,27 @@ export const AI_TOOLS = 'ai.tools';
  * Type for {@link AI_TOOLS} ai.tools
  */
 export type AI_TOOLS_TYPE = Array<string>;
+
+// Path: model/attributes/ai/ai__tool_calls.json
+
+/**
+ * For an AI model call, the tool calls that were made. `ai.tool_calls`
+ *
+ * Attribute Value Type: `Array<string>` {@link AI_TOOL_CALLS_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @deprecated Use {@link GEN_AI_RESPONSE_TOOL_CALLS} (gen_ai.response.tool_calls) instead
+ * @example ["tool_call_1","tool_call_2"]
+ */
+export const AI_TOOL_CALLS = 'ai.tool_calls';
+
+/**
+ * Type for {@link AI_TOOL_CALLS} ai.tool_calls
+ */
+export type AI_TOOL_CALLS_TYPE = Array<string>;
 
 // Path: model/attributes/ai/ai__top_k.json
 
@@ -1100,28 +1100,6 @@ export const CLOUDFLARE_D1_ROWS_WRITTEN = 'cloudflare.d1.rows_written';
  */
 export type CLOUDFLARE_D1_ROWS_WRITTEN_TYPE = number;
 
-// Path: model/attributes/code/code__file__path.json
-
-/**
- * The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path). `code.file.path`
- *
- * Attribute Value Type: `string` {@link CODE_FILE_PATH_TYPE}
- *
- * Contains PII: maybe
- *
- * Attribute defined in OTEL: Yes
- *
- * Aliases: {@link CODE_FILEPATH} `code.filepath`
- *
- * @example "/app/myapplication/http/handler/server.py"
- */
-export const CODE_FILE_PATH = 'code.file.path';
-
-/**
- * Type for {@link CODE_FILE_PATH} code.file.path
- */
-export type CODE_FILE_PATH_TYPE = string;
-
 // Path: model/attributes/code/code__filepath.json
 
 /**
@@ -1144,6 +1122,28 @@ export const CODE_FILEPATH = 'code.filepath';
  * Type for {@link CODE_FILEPATH} code.filepath
  */
 export type CODE_FILEPATH_TYPE = string;
+
+// Path: model/attributes/code/code__file__path.json
+
+/**
+ * The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path). `code.file.path`
+ *
+ * Attribute Value Type: `string` {@link CODE_FILE_PATH_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * Aliases: {@link CODE_FILEPATH} `code.filepath`
+ *
+ * @example "/app/myapplication/http/handler/server.py"
+ */
+export const CODE_FILE_PATH = 'code.file.path';
+
+/**
+ * Type for {@link CODE_FILE_PATH} code.file.path
+ */
+export type CODE_FILE_PATH_TYPE = string;
 
 // Path: model/attributes/code/code__function.json
 
@@ -1190,28 +1190,6 @@ export const CODE_FUNCTION_NAME = 'code.function.name';
  */
 export type CODE_FUNCTION_NAME_TYPE = string;
 
-// Path: model/attributes/code/code__line__number.json
-
-/**
- * The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function `code.line.number`
- *
- * Attribute Value Type: `number` {@link CODE_LINE_NUMBER_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: Yes
- *
- * Aliases: {@link CODE_LINENO} `code.lineno`
- *
- * @example 42
- */
-export const CODE_LINE_NUMBER = 'code.line.number';
-
-/**
- * Type for {@link CODE_LINE_NUMBER} code.line.number
- */
-export type CODE_LINE_NUMBER_TYPE = number;
-
 // Path: model/attributes/code/code__lineno.json
 
 /**
@@ -1234,6 +1212,28 @@ export const CODE_LINENO = 'code.lineno';
  * Type for {@link CODE_LINENO} code.lineno
  */
 export type CODE_LINENO_TYPE = number;
+
+// Path: model/attributes/code/code__line__number.json
+
+/**
+ * The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function `code.line.number`
+ *
+ * Attribute Value Type: `number` {@link CODE_LINE_NUMBER_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * Aliases: {@link CODE_LINENO} `code.lineno`
+ *
+ * @example 42
+ */
+export const CODE_LINE_NUMBER = 'code.line.number';
+
+/**
+ * Type for {@link CODE_LINE_NUMBER} code.line.number
+ */
+export type CODE_LINE_NUMBER_TYPE = number;
 
 // Path: model/attributes/code/code__namespace.json
 
@@ -3119,26 +3119,6 @@ export const HTTP_QUERY = 'http.query';
  */
 export type HTTP_QUERY_TYPE = string;
 
-// Path: model/attributes/http/http__request__connect_start.json
-
-/**
- * The UNIX timestamp representing the time immediately before the user agent starts establishing the connection to the server to retrieve the resource. `http.request.connect_start`
- *
- * Attribute Value Type: `number` {@link HTTP_REQUEST_CONNECT_START_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * @example 1732829555.111
- */
-export const HTTP_REQUEST_CONNECT_START = 'http.request.connect_start';
-
-/**
- * Type for {@link HTTP_REQUEST_CONNECT_START} http.request.connect_start
- */
-export type HTTP_REQUEST_CONNECT_START_TYPE = number;
-
 // Path: model/attributes/http/http__request__connection_end.json
 
 /**
@@ -3158,6 +3138,26 @@ export const HTTP_REQUEST_CONNECTION_END = 'http.request.connection_end';
  * Type for {@link HTTP_REQUEST_CONNECTION_END} http.request.connection_end
  */
 export type HTTP_REQUEST_CONNECTION_END_TYPE = number;
+
+// Path: model/attributes/http/http__request__connect_start.json
+
+/**
+ * The UNIX timestamp representing the time immediately before the user agent starts establishing the connection to the server to retrieve the resource. `http.request.connect_start`
+ *
+ * Attribute Value Type: `number` {@link HTTP_REQUEST_CONNECT_START_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 1732829555.111
+ */
+export const HTTP_REQUEST_CONNECT_START = 'http.request.connect_start';
+
+/**
+ * Type for {@link HTTP_REQUEST_CONNECT_START} http.request.connect_start
+ */
+export type HTTP_REQUEST_CONNECT_START_TYPE = number;
 
 // Path: model/attributes/http/http__request__domain_lookup_end.json
 
@@ -3465,27 +3465,28 @@ export const HTTP_RESPONSE_BODY_SIZE = 'http.response.body.size';
  */
 export type HTTP_RESPONSE_BODY_SIZE_TYPE = number;
 
-// Path: model/attributes/http/http__response__header__[key].json
+// Path: model/attributes/http/http__response_content_length.json
 
 /**
- * HTTP response headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values. `http.response.header.<key>`
+ * The encoded body size of the response (in bytes). `http.response_content_length`
  *
- * Attribute Value Type: `Array<string>` {@link HTTP_RESPONSE_HEADER_KEY_TYPE}
+ * Attribute Value Type: `number` {@link HTTP_RESPONSE_CONTENT_LENGTH_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: false
  *
  * Attribute defined in OTEL: Yes
  *
- * Has Dynamic Suffix: true
+ * Aliases: {@link HTTP_RESPONSE_BODY_SIZE} `http.response.body.size`, {@link HTTP_RESPONSE_HEADER_CONTENT_LENGTH} `http.response.header.content-length`
  *
- * @example "http.response.header.custom-header=['foo', 'bar']"
+ * @deprecated Use {@link HTTP_RESPONSE_BODY_SIZE} (http.response.body.size) instead
+ * @example 123
  */
-export const HTTP_RESPONSE_HEADER_KEY = 'http.response.header.<key>';
+export const HTTP_RESPONSE_CONTENT_LENGTH = 'http.response_content_length';
 
 /**
- * Type for {@link HTTP_RESPONSE_HEADER_KEY} http.response.header.<key>
+ * Type for {@link HTTP_RESPONSE_CONTENT_LENGTH} http.response_content_length
  */
-export type HTTP_RESPONSE_HEADER_KEY_TYPE = Array<string>;
+export type HTTP_RESPONSE_CONTENT_LENGTH_TYPE = number;
 
 // Path: model/attributes/http/http__response__header__content-length.json
 
@@ -3508,6 +3509,28 @@ export const HTTP_RESPONSE_HEADER_CONTENT_LENGTH = 'http.response.header.content
  * Type for {@link HTTP_RESPONSE_HEADER_CONTENT_LENGTH} http.response.header.content-length
  */
 export type HTTP_RESPONSE_HEADER_CONTENT_LENGTH_TYPE = string;
+
+// Path: model/attributes/http/http__response__header__[key].json
+
+/**
+ * HTTP response headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values. `http.response.header.<key>`
+ *
+ * Attribute Value Type: `Array<string>` {@link HTTP_RESPONSE_HEADER_KEY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * Has Dynamic Suffix: true
+ *
+ * @example "http.response.header.custom-header=['foo', 'bar']"
+ */
+export const HTTP_RESPONSE_HEADER_KEY = 'http.response.header.<key>';
+
+/**
+ * Type for {@link HTTP_RESPONSE_HEADER_KEY} http.response.header.<key>
+ */
+export type HTTP_RESPONSE_HEADER_KEY_TYPE = Array<string>;
 
 // Path: model/attributes/http/http__response__size.json
 
@@ -3552,29 +3575,6 @@ export const HTTP_RESPONSE_STATUS_CODE = 'http.response.status_code';
  * Type for {@link HTTP_RESPONSE_STATUS_CODE} http.response.status_code
  */
 export type HTTP_RESPONSE_STATUS_CODE_TYPE = number;
-
-// Path: model/attributes/http/http__response_content_length.json
-
-/**
- * The encoded body size of the response (in bytes). `http.response_content_length`
- *
- * Attribute Value Type: `number` {@link HTTP_RESPONSE_CONTENT_LENGTH_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: Yes
- *
- * Aliases: {@link HTTP_RESPONSE_BODY_SIZE} `http.response.body.size`, {@link HTTP_RESPONSE_HEADER_CONTENT_LENGTH} `http.response.header.content-length`
- *
- * @deprecated Use {@link HTTP_RESPONSE_BODY_SIZE} (http.response.body.size) instead
- * @example 123
- */
-export const HTTP_RESPONSE_CONTENT_LENGTH = 'http.response_content_length';
-
-/**
- * Type for {@link HTTP_RESPONSE_CONTENT_LENGTH} http.response_content_length
- */
-export type HTTP_RESPONSE_CONTENT_LENGTH_TYPE = number;
 
 // Path: model/attributes/http/http__response_transfer_size.json
 
@@ -5104,6 +5104,178 @@ export const NEL_TYPE = 'nel.type';
  */
 export type NEL_TYPE_TYPE = string;
 
+// Path: model/attributes/network/network__local__address.json
+
+/**
+ * Local address of the network connection - IP address or Unix domain socket name. `network.local.address`
+ *
+ * Attribute Value Type: `string` {@link NETWORK_LOCAL_ADDRESS_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * Aliases: {@link NET_HOST_IP} `net.host.ip`, {@link NET_SOCK_HOST_ADDR} `net.sock.host.addr`
+ *
+ * @example "10.1.2.80"
+ */
+export const NETWORK_LOCAL_ADDRESS = 'network.local.address';
+
+/**
+ * Type for {@link NETWORK_LOCAL_ADDRESS} network.local.address
+ */
+export type NETWORK_LOCAL_ADDRESS_TYPE = string;
+
+// Path: model/attributes/network/network__local__port.json
+
+/**
+ * Local port number of the network connection. `network.local.port`
+ *
+ * Attribute Value Type: `number` {@link NETWORK_LOCAL_PORT_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * Aliases: {@link NET_SOCK_HOST_PORT} `net.sock.host.port`
+ *
+ * @example 65400
+ */
+export const NETWORK_LOCAL_PORT = 'network.local.port';
+
+/**
+ * Type for {@link NETWORK_LOCAL_PORT} network.local.port
+ */
+export type NETWORK_LOCAL_PORT_TYPE = number;
+
+// Path: model/attributes/network/network__peer__address.json
+
+/**
+ * Peer address of the network connection - IP address or Unix domain socket name. `network.peer.address`
+ *
+ * Attribute Value Type: `string` {@link NETWORK_PEER_ADDRESS_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * Aliases: {@link NET_PEER_IP} `net.peer.ip`, {@link NET_SOCK_PEER_ADDR} `net.sock.peer.addr`
+ *
+ * @example "10.1.2.80"
+ */
+export const NETWORK_PEER_ADDRESS = 'network.peer.address';
+
+/**
+ * Type for {@link NETWORK_PEER_ADDRESS} network.peer.address
+ */
+export type NETWORK_PEER_ADDRESS_TYPE = string;
+
+// Path: model/attributes/network/network__peer__port.json
+
+/**
+ * Peer port number of the network connection. `network.peer.port`
+ *
+ * Attribute Value Type: `number` {@link NETWORK_PEER_PORT_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example 65400
+ */
+export const NETWORK_PEER_PORT = 'network.peer.port';
+
+/**
+ * Type for {@link NETWORK_PEER_PORT} network.peer.port
+ */
+export type NETWORK_PEER_PORT_TYPE = number;
+
+// Path: model/attributes/network/network__protocol__name.json
+
+/**
+ * OSI application layer or non-OSI equivalent. `network.protocol.name`
+ *
+ * Attribute Value Type: `string` {@link NETWORK_PROTOCOL_NAME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * Aliases: {@link NET_PROTOCOL_NAME} `net.protocol.name`
+ *
+ * @example "http"
+ */
+export const NETWORK_PROTOCOL_NAME = 'network.protocol.name';
+
+/**
+ * Type for {@link NETWORK_PROTOCOL_NAME} network.protocol.name
+ */
+export type NETWORK_PROTOCOL_NAME_TYPE = string;
+
+// Path: model/attributes/network/network__protocol__version.json
+
+/**
+ * The actual version of the protocol used for network communication. `network.protocol.version`
+ *
+ * Attribute Value Type: `string` {@link NETWORK_PROTOCOL_VERSION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * Aliases: {@link HTTP_FLAVOR} `http.flavor`, {@link NET_PROTOCOL_VERSION} `net.protocol.version`
+ *
+ * @example "1.1"
+ */
+export const NETWORK_PROTOCOL_VERSION = 'network.protocol.version';
+
+/**
+ * Type for {@link NETWORK_PROTOCOL_VERSION} network.protocol.version
+ */
+export type NETWORK_PROTOCOL_VERSION_TYPE = string;
+
+// Path: model/attributes/network/network__transport.json
+
+/**
+ * OSI transport layer or inter-process communication method. `network.transport`
+ *
+ * Attribute Value Type: `string` {@link NETWORK_TRANSPORT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * Aliases: {@link NET_TRANSPORT} `net.transport`
+ *
+ * @example "tcp"
+ */
+export const NETWORK_TRANSPORT = 'network.transport';
+
+/**
+ * Type for {@link NETWORK_TRANSPORT} network.transport
+ */
+export type NETWORK_TRANSPORT_TYPE = string;
+
+// Path: model/attributes/network/network__type.json
+
+/**
+ * OSI network layer or non-OSI equivalent. `network.type`
+ *
+ * Attribute Value Type: `string` {@link NETWORK_TYPE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "ipv4"
+ */
+export const NETWORK_TYPE = 'network.type';
+
+/**
+ * Type for {@link NETWORK_TYPE} network.type
+ */
+export type NETWORK_TYPE_TYPE = string;
+
 // Path: model/attributes/net/net__host__ip.json
 
 /**
@@ -5438,178 +5610,6 @@ export const NET_TRANSPORT = 'net.transport';
  * Type for {@link NET_TRANSPORT} net.transport
  */
 export type NET_TRANSPORT_TYPE = string;
-
-// Path: model/attributes/network/network__local__address.json
-
-/**
- * Local address of the network connection - IP address or Unix domain socket name. `network.local.address`
- *
- * Attribute Value Type: `string` {@link NETWORK_LOCAL_ADDRESS_TYPE}
- *
- * Contains PII: maybe
- *
- * Attribute defined in OTEL: Yes
- *
- * Aliases: {@link NET_HOST_IP} `net.host.ip`, {@link NET_SOCK_HOST_ADDR} `net.sock.host.addr`
- *
- * @example "10.1.2.80"
- */
-export const NETWORK_LOCAL_ADDRESS = 'network.local.address';
-
-/**
- * Type for {@link NETWORK_LOCAL_ADDRESS} network.local.address
- */
-export type NETWORK_LOCAL_ADDRESS_TYPE = string;
-
-// Path: model/attributes/network/network__local__port.json
-
-/**
- * Local port number of the network connection. `network.local.port`
- *
- * Attribute Value Type: `number` {@link NETWORK_LOCAL_PORT_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: Yes
- *
- * Aliases: {@link NET_SOCK_HOST_PORT} `net.sock.host.port`
- *
- * @example 65400
- */
-export const NETWORK_LOCAL_PORT = 'network.local.port';
-
-/**
- * Type for {@link NETWORK_LOCAL_PORT} network.local.port
- */
-export type NETWORK_LOCAL_PORT_TYPE = number;
-
-// Path: model/attributes/network/network__peer__address.json
-
-/**
- * Peer address of the network connection - IP address or Unix domain socket name. `network.peer.address`
- *
- * Attribute Value Type: `string` {@link NETWORK_PEER_ADDRESS_TYPE}
- *
- * Contains PII: maybe
- *
- * Attribute defined in OTEL: Yes
- *
- * Aliases: {@link NET_PEER_IP} `net.peer.ip`, {@link NET_SOCK_PEER_ADDR} `net.sock.peer.addr`
- *
- * @example "10.1.2.80"
- */
-export const NETWORK_PEER_ADDRESS = 'network.peer.address';
-
-/**
- * Type for {@link NETWORK_PEER_ADDRESS} network.peer.address
- */
-export type NETWORK_PEER_ADDRESS_TYPE = string;
-
-// Path: model/attributes/network/network__peer__port.json
-
-/**
- * Peer port number of the network connection. `network.peer.port`
- *
- * Attribute Value Type: `number` {@link NETWORK_PEER_PORT_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: Yes
- *
- * @example 65400
- */
-export const NETWORK_PEER_PORT = 'network.peer.port';
-
-/**
- * Type for {@link NETWORK_PEER_PORT} network.peer.port
- */
-export type NETWORK_PEER_PORT_TYPE = number;
-
-// Path: model/attributes/network/network__protocol__name.json
-
-/**
- * OSI application layer or non-OSI equivalent. `network.protocol.name`
- *
- * Attribute Value Type: `string` {@link NETWORK_PROTOCOL_NAME_TYPE}
- *
- * Contains PII: maybe
- *
- * Attribute defined in OTEL: Yes
- *
- * Aliases: {@link NET_PROTOCOL_NAME} `net.protocol.name`
- *
- * @example "http"
- */
-export const NETWORK_PROTOCOL_NAME = 'network.protocol.name';
-
-/**
- * Type for {@link NETWORK_PROTOCOL_NAME} network.protocol.name
- */
-export type NETWORK_PROTOCOL_NAME_TYPE = string;
-
-// Path: model/attributes/network/network__protocol__version.json
-
-/**
- * The actual version of the protocol used for network communication. `network.protocol.version`
- *
- * Attribute Value Type: `string` {@link NETWORK_PROTOCOL_VERSION_TYPE}
- *
- * Contains PII: maybe
- *
- * Attribute defined in OTEL: Yes
- *
- * Aliases: {@link HTTP_FLAVOR} `http.flavor`, {@link NET_PROTOCOL_VERSION} `net.protocol.version`
- *
- * @example "1.1"
- */
-export const NETWORK_PROTOCOL_VERSION = 'network.protocol.version';
-
-/**
- * Type for {@link NETWORK_PROTOCOL_VERSION} network.protocol.version
- */
-export type NETWORK_PROTOCOL_VERSION_TYPE = string;
-
-// Path: model/attributes/network/network__transport.json
-
-/**
- * OSI transport layer or inter-process communication method. `network.transport`
- *
- * Attribute Value Type: `string` {@link NETWORK_TRANSPORT_TYPE}
- *
- * Contains PII: maybe
- *
- * Attribute defined in OTEL: Yes
- *
- * Aliases: {@link NET_TRANSPORT} `net.transport`
- *
- * @example "tcp"
- */
-export const NETWORK_TRANSPORT = 'network.transport';
-
-/**
- * Type for {@link NETWORK_TRANSPORT} network.transport
- */
-export type NETWORK_TRANSPORT_TYPE = string;
-
-// Path: model/attributes/network/network__type.json
-
-/**
- * OSI network layer or non-OSI equivalent. `network.type`
- *
- * Attribute Value Type: `string` {@link NETWORK_TYPE_TYPE}
- *
- * Contains PII: maybe
- *
- * Attribute defined in OTEL: Yes
- *
- * @example "ipv4"
- */
-export const NETWORK_TYPE = 'network.type';
-
-/**
- * Type for {@link NETWORK_TYPE} network.type
- */
-export type NETWORK_TYPE_TYPE = string;
 
 // Path: model/attributes/os/os__build_id.json
 
@@ -6132,228 +6132,6 @@ export const RPC_SERVICE = 'rpc.service';
  */
 export type RPC_SERVICE_TYPE = string;
 
-// Path: model/attributes/sentry/sentry___internal__dsc__environment.json
-
-/**
- * The environment from the dynamic sampling context. `sentry._internal.dsc.environment`
- *
- * Attribute Value Type: `string` {@link SENTRY_INTERNAL_DSC_ENVIRONMENT_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * @example "prod"
- */
-export const SENTRY_INTERNAL_DSC_ENVIRONMENT = 'sentry._internal.dsc.environment';
-
-/**
- * Type for {@link SENTRY_INTERNAL_DSC_ENVIRONMENT} sentry._internal.dsc.environment
- */
-export type SENTRY_INTERNAL_DSC_ENVIRONMENT_TYPE = string;
-
-// Path: model/attributes/sentry/sentry___internal__dsc__org_id.json
-
-/**
- * The organization ID from the dynamic sampling context. `sentry._internal.dsc.org_id`
- *
- * Attribute Value Type: `string` {@link SENTRY_INTERNAL_DSC_ORG_ID_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * @example "1"
- */
-export const SENTRY_INTERNAL_DSC_ORG_ID = 'sentry._internal.dsc.org_id';
-
-/**
- * Type for {@link SENTRY_INTERNAL_DSC_ORG_ID} sentry._internal.dsc.org_id
- */
-export type SENTRY_INTERNAL_DSC_ORG_ID_TYPE = string;
-
-// Path: model/attributes/sentry/sentry___internal__dsc__public_key.json
-
-/**
- * The public key from the dynamic sampling context. `sentry._internal.dsc.public_key`
- *
- * Attribute Value Type: `string` {@link SENTRY_INTERNAL_DSC_PUBLIC_KEY_TYPE}
- *
- * Contains PII: maybe
- *
- * Attribute defined in OTEL: No
- *
- * @example "c51734c603c4430eb57cb0a5728a479d"
- */
-export const SENTRY_INTERNAL_DSC_PUBLIC_KEY = 'sentry._internal.dsc.public_key';
-
-/**
- * Type for {@link SENTRY_INTERNAL_DSC_PUBLIC_KEY} sentry._internal.dsc.public_key
- */
-export type SENTRY_INTERNAL_DSC_PUBLIC_KEY_TYPE = string;
-
-// Path: model/attributes/sentry/sentry___internal__dsc__release.json
-
-/**
- * The release identifier from the dynamic sampling context. `sentry._internal.dsc.release`
- *
- * Attribute Value Type: `string` {@link SENTRY_INTERNAL_DSC_RELEASE_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * @example "frontend@e8211be71b214afab5b85de4b4c54be3714952bb"
- */
-export const SENTRY_INTERNAL_DSC_RELEASE = 'sentry._internal.dsc.release';
-
-/**
- * Type for {@link SENTRY_INTERNAL_DSC_RELEASE} sentry._internal.dsc.release
- */
-export type SENTRY_INTERNAL_DSC_RELEASE_TYPE = string;
-
-// Path: model/attributes/sentry/sentry___internal__dsc__sample_rand.json
-
-/**
- * The random sampling value from the dynamic sampling context. `sentry._internal.dsc.sample_rand`
- *
- * Attribute Value Type: `string` {@link SENTRY_INTERNAL_DSC_SAMPLE_RAND_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * @example "0.8286147972820134"
- */
-export const SENTRY_INTERNAL_DSC_SAMPLE_RAND = 'sentry._internal.dsc.sample_rand';
-
-/**
- * Type for {@link SENTRY_INTERNAL_DSC_SAMPLE_RAND} sentry._internal.dsc.sample_rand
- */
-export type SENTRY_INTERNAL_DSC_SAMPLE_RAND_TYPE = string;
-
-// Path: model/attributes/sentry/sentry___internal__dsc__sample_rate.json
-
-/**
- * The sample rate from the dynamic sampling context. `sentry._internal.dsc.sample_rate`
- *
- * Attribute Value Type: `string` {@link SENTRY_INTERNAL_DSC_SAMPLE_RATE_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * @example "1.0"
- */
-export const SENTRY_INTERNAL_DSC_SAMPLE_RATE = 'sentry._internal.dsc.sample_rate';
-
-/**
- * Type for {@link SENTRY_INTERNAL_DSC_SAMPLE_RATE} sentry._internal.dsc.sample_rate
- */
-export type SENTRY_INTERNAL_DSC_SAMPLE_RATE_TYPE = string;
-
-// Path: model/attributes/sentry/sentry___internal__dsc__sampled.json
-
-/**
- * Whether the event was sampled according to the dynamic sampling context. `sentry._internal.dsc.sampled`
- *
- * Attribute Value Type: `boolean` {@link SENTRY_INTERNAL_DSC_SAMPLED_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * @example true
- */
-export const SENTRY_INTERNAL_DSC_SAMPLED = 'sentry._internal.dsc.sampled';
-
-/**
- * Type for {@link SENTRY_INTERNAL_DSC_SAMPLED} sentry._internal.dsc.sampled
- */
-export type SENTRY_INTERNAL_DSC_SAMPLED_TYPE = boolean;
-
-// Path: model/attributes/sentry/sentry___internal__dsc__trace_id.json
-
-/**
- * The trace ID from the dynamic sampling context. `sentry._internal.dsc.trace_id`
- *
- * Attribute Value Type: `string` {@link SENTRY_INTERNAL_DSC_TRACE_ID_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * @example "047372980460430cbc78d9779df33a46"
- */
-export const SENTRY_INTERNAL_DSC_TRACE_ID = 'sentry._internal.dsc.trace_id';
-
-/**
- * Type for {@link SENTRY_INTERNAL_DSC_TRACE_ID} sentry._internal.dsc.trace_id
- */
-export type SENTRY_INTERNAL_DSC_TRACE_ID_TYPE = string;
-
-// Path: model/attributes/sentry/sentry___internal__dsc__transaction.json
-
-/**
- * The transaction name from the dynamic sampling context. `sentry._internal.dsc.transaction`
- *
- * Attribute Value Type: `string` {@link SENTRY_INTERNAL_DSC_TRANSACTION_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * @example "/issues/errors-outages/"
- */
-export const SENTRY_INTERNAL_DSC_TRANSACTION = 'sentry._internal.dsc.transaction';
-
-/**
- * Type for {@link SENTRY_INTERNAL_DSC_TRANSACTION} sentry._internal.dsc.transaction
- */
-export type SENTRY_INTERNAL_DSC_TRANSACTION_TYPE = string;
-
-// Path: model/attributes/sentry/sentry___internal__observed_timestamp_nanos.json
-
-/**
- * The timestamp at which an envelope was received by Relay, in nanoseconds. `sentry._internal.observed_timestamp_nanos`
- *
- * Attribute Value Type: `string` {@link SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * Aliases: {@link SENTRY_OBSERVED_TIMESTAMP_NANOS} `sentry.observed_timestamp_nanos`
- *
- * @example "1544712660300000000"
- */
-export const SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS = 'sentry._internal.observed_timestamp_nanos';
-
-/**
- * Type for {@link SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS} sentry._internal.observed_timestamp_nanos
- */
-export type SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS_TYPE = string;
-
-// Path: model/attributes/sentry/sentry___internal__replay_is_buffering.json
-
-/**
- * A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate). `sentry._internal.replay_is_buffering`
- *
- * Attribute Value Type: `boolean` {@link SENTRY_INTERNAL_REPLAY_IS_BUFFERING_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * @example true
- */
-export const SENTRY_INTERNAL_REPLAY_IS_BUFFERING = 'sentry._internal.replay_is_buffering';
-
-/**
- * Type for {@link SENTRY_INTERNAL_REPLAY_IS_BUFFERING} sentry._internal.replay_is_buffering
- */
-export type SENTRY_INTERNAL_REPLAY_IS_BUFFERING_TYPE = boolean;
-
 // Path: model/attributes/sentry/sentry__browser__name.json
 
 /**
@@ -6561,6 +6339,228 @@ export const SENTRY_IDLE_SPAN_FINISH_REASON = 'sentry.idle_span_finish_reason';
  * Type for {@link SENTRY_IDLE_SPAN_FINISH_REASON} sentry.idle_span_finish_reason
  */
 export type SENTRY_IDLE_SPAN_FINISH_REASON_TYPE = string;
+
+// Path: model/attributes/sentry/sentry___internal__dsc__environment.json
+
+/**
+ * The environment from the dynamic sampling context. `sentry._internal.dsc.environment`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_INTERNAL_DSC_ENVIRONMENT_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "prod"
+ */
+export const SENTRY_INTERNAL_DSC_ENVIRONMENT = 'sentry._internal.dsc.environment';
+
+/**
+ * Type for {@link SENTRY_INTERNAL_DSC_ENVIRONMENT} sentry._internal.dsc.environment
+ */
+export type SENTRY_INTERNAL_DSC_ENVIRONMENT_TYPE = string;
+
+// Path: model/attributes/sentry/sentry___internal__dsc__org_id.json
+
+/**
+ * The organization ID from the dynamic sampling context. `sentry._internal.dsc.org_id`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_INTERNAL_DSC_ORG_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "1"
+ */
+export const SENTRY_INTERNAL_DSC_ORG_ID = 'sentry._internal.dsc.org_id';
+
+/**
+ * Type for {@link SENTRY_INTERNAL_DSC_ORG_ID} sentry._internal.dsc.org_id
+ */
+export type SENTRY_INTERNAL_DSC_ORG_ID_TYPE = string;
+
+// Path: model/attributes/sentry/sentry___internal__dsc__public_key.json
+
+/**
+ * The public key from the dynamic sampling context. `sentry._internal.dsc.public_key`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_INTERNAL_DSC_PUBLIC_KEY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "c51734c603c4430eb57cb0a5728a479d"
+ */
+export const SENTRY_INTERNAL_DSC_PUBLIC_KEY = 'sentry._internal.dsc.public_key';
+
+/**
+ * Type for {@link SENTRY_INTERNAL_DSC_PUBLIC_KEY} sentry._internal.dsc.public_key
+ */
+export type SENTRY_INTERNAL_DSC_PUBLIC_KEY_TYPE = string;
+
+// Path: model/attributes/sentry/sentry___internal__dsc__release.json
+
+/**
+ * The release identifier from the dynamic sampling context. `sentry._internal.dsc.release`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_INTERNAL_DSC_RELEASE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "frontend@e8211be71b214afab5b85de4b4c54be3714952bb"
+ */
+export const SENTRY_INTERNAL_DSC_RELEASE = 'sentry._internal.dsc.release';
+
+/**
+ * Type for {@link SENTRY_INTERNAL_DSC_RELEASE} sentry._internal.dsc.release
+ */
+export type SENTRY_INTERNAL_DSC_RELEASE_TYPE = string;
+
+// Path: model/attributes/sentry/sentry___internal__dsc__sampled.json
+
+/**
+ * Whether the event was sampled according to the dynamic sampling context. `sentry._internal.dsc.sampled`
+ *
+ * Attribute Value Type: `boolean` {@link SENTRY_INTERNAL_DSC_SAMPLED_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example true
+ */
+export const SENTRY_INTERNAL_DSC_SAMPLED = 'sentry._internal.dsc.sampled';
+
+/**
+ * Type for {@link SENTRY_INTERNAL_DSC_SAMPLED} sentry._internal.dsc.sampled
+ */
+export type SENTRY_INTERNAL_DSC_SAMPLED_TYPE = boolean;
+
+// Path: model/attributes/sentry/sentry___internal__dsc__sample_rand.json
+
+/**
+ * The random sampling value from the dynamic sampling context. `sentry._internal.dsc.sample_rand`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_INTERNAL_DSC_SAMPLE_RAND_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "0.8286147972820134"
+ */
+export const SENTRY_INTERNAL_DSC_SAMPLE_RAND = 'sentry._internal.dsc.sample_rand';
+
+/**
+ * Type for {@link SENTRY_INTERNAL_DSC_SAMPLE_RAND} sentry._internal.dsc.sample_rand
+ */
+export type SENTRY_INTERNAL_DSC_SAMPLE_RAND_TYPE = string;
+
+// Path: model/attributes/sentry/sentry___internal__dsc__sample_rate.json
+
+/**
+ * The sample rate from the dynamic sampling context. `sentry._internal.dsc.sample_rate`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_INTERNAL_DSC_SAMPLE_RATE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "1.0"
+ */
+export const SENTRY_INTERNAL_DSC_SAMPLE_RATE = 'sentry._internal.dsc.sample_rate';
+
+/**
+ * Type for {@link SENTRY_INTERNAL_DSC_SAMPLE_RATE} sentry._internal.dsc.sample_rate
+ */
+export type SENTRY_INTERNAL_DSC_SAMPLE_RATE_TYPE = string;
+
+// Path: model/attributes/sentry/sentry___internal__dsc__trace_id.json
+
+/**
+ * The trace ID from the dynamic sampling context. `sentry._internal.dsc.trace_id`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_INTERNAL_DSC_TRACE_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "047372980460430cbc78d9779df33a46"
+ */
+export const SENTRY_INTERNAL_DSC_TRACE_ID = 'sentry._internal.dsc.trace_id';
+
+/**
+ * Type for {@link SENTRY_INTERNAL_DSC_TRACE_ID} sentry._internal.dsc.trace_id
+ */
+export type SENTRY_INTERNAL_DSC_TRACE_ID_TYPE = string;
+
+// Path: model/attributes/sentry/sentry___internal__dsc__transaction.json
+
+/**
+ * The transaction name from the dynamic sampling context. `sentry._internal.dsc.transaction`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_INTERNAL_DSC_TRANSACTION_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "/issues/errors-outages/"
+ */
+export const SENTRY_INTERNAL_DSC_TRANSACTION = 'sentry._internal.dsc.transaction';
+
+/**
+ * Type for {@link SENTRY_INTERNAL_DSC_TRANSACTION} sentry._internal.dsc.transaction
+ */
+export type SENTRY_INTERNAL_DSC_TRANSACTION_TYPE = string;
+
+// Path: model/attributes/sentry/sentry___internal__observed_timestamp_nanos.json
+
+/**
+ * The timestamp at which an envelope was received by Relay, in nanoseconds. `sentry._internal.observed_timestamp_nanos`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link SENTRY_OBSERVED_TIMESTAMP_NANOS} `sentry.observed_timestamp_nanos`
+ *
+ * @example "1544712660300000000"
+ */
+export const SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS = 'sentry._internal.observed_timestamp_nanos';
+
+/**
+ * Type for {@link SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS} sentry._internal.observed_timestamp_nanos
+ */
+export type SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS_TYPE = string;
+
+// Path: model/attributes/sentry/sentry___internal__replay_is_buffering.json
+
+/**
+ * A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate). `sentry._internal.replay_is_buffering`
+ *
+ * Attribute Value Type: `boolean` {@link SENTRY_INTERNAL_REPLAY_IS_BUFFERING_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example true
+ */
+export const SENTRY_INTERNAL_REPLAY_IS_BUFFERING = 'sentry._internal.replay_is_buffering';
+
+/**
+ * Type for {@link SENTRY_INTERNAL_REPLAY_IS_BUFFERING} sentry._internal.replay_is_buffering
+ */
+export type SENTRY_INTERNAL_REPLAY_IS_BUFFERING_TYPE = boolean;
 
 // Path: model/attributes/sentry/sentry__message__parameter__[key].json
 
@@ -6895,26 +6895,6 @@ export const SENTRY_SEGMENT_ID = 'sentry.segment.id';
  */
 export type SENTRY_SEGMENT_ID_TYPE = string;
 
-// Path: model/attributes/sentry/sentry__segment__name.json
-
-/**
- * The segment name of a span `sentry.segment.name`
- *
- * Attribute Value Type: `string` {@link SENTRY_SEGMENT_NAME_TYPE}
- *
- * Contains PII: maybe
- *
- * Attribute defined in OTEL: No
- *
- * @example "GET /user"
- */
-export const SENTRY_SEGMENT_NAME = 'sentry.segment.name';
-
-/**
- * Type for {@link SENTRY_SEGMENT_NAME} sentry.segment.name
- */
-export type SENTRY_SEGMENT_NAME_TYPE = string;
-
 // Path: model/attributes/sentry/sentry__segment_id.json
 
 /**
@@ -6937,6 +6917,26 @@ export const _SENTRY_SEGMENT_ID = 'sentry.segment_id';
  * Type for {@link _SENTRY_SEGMENT_ID} sentry.segment_id
  */
 export type _SENTRY_SEGMENT_ID_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__segment__name.json
+
+/**
+ * The segment name of a span `sentry.segment.name`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_SEGMENT_NAME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "GET /user"
+ */
+export const SENTRY_SEGMENT_NAME = 'sentry.segment.name';
+
+/**
+ * Type for {@link SENTRY_SEGMENT_NAME} sentry.segment.name
+ */
+export type SENTRY_SEGMENT_NAME_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__server_sample_rate.json
 
@@ -7249,6 +7249,29 @@ export const UI_CONTRIBUTES_TO_TTID = 'ui.contributes_to_ttid';
  */
 export type UI_CONTRIBUTES_TO_TTID_TYPE = boolean;
 
+// Path: model/attributes/url.json
+
+/**
+ * The URL of the resource that was fetched. `url`
+ *
+ * Attribute Value Type: `string` {@link URL_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`
+ *
+ * @deprecated Use {@link URL_FULL} (url.full) instead
+ * @example "https://example.com/test?foo=bar#buzz"
+ */
+export const URL = 'url';
+
+/**
+ * Type for {@link URL} url
+ */
+export type URL_TYPE = string;
+
 // Path: model/attributes/url/url__domain.json
 
 /**
@@ -7439,28 +7462,27 @@ export const URL_TEMPLATE = 'url.template';
  */
 export type URL_TEMPLATE_TYPE = string;
 
-// Path: model/attributes/url.json
+// Path: model/attributes/user_agent/user_agent__original.json
 
 /**
- * The URL of the resource that was fetched. `url`
+ * Value of the HTTP User-Agent header sent by the client. `user_agent.original`
  *
- * Attribute Value Type: `string` {@link URL_TYPE}
+ * Attribute Value Type: `string` {@link USER_AGENT_ORIGINAL_TYPE}
  *
  * Contains PII: maybe
  *
- * Attribute defined in OTEL: No
+ * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`
+ * Aliases: {@link HTTP_USER_AGENT} `http.user_agent`
  *
- * @deprecated Use {@link URL_FULL} (url.full) instead
- * @example "https://example.com/test?foo=bar#buzz"
+ * @example "Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1"
  */
-export const URL = 'url';
+export const USER_AGENT_ORIGINAL = 'user_agent.original';
 
 /**
- * Type for {@link URL} url
+ * Type for {@link USER_AGENT_ORIGINAL} user_agent.original
  */
-export type URL_TYPE = string;
+export type USER_AGENT_ORIGINAL_TYPE = string;
 
 // Path: model/attributes/user/user__email.json
 
@@ -7681,28 +7703,6 @@ export const USER_ROLES = 'user.roles';
  * Type for {@link USER_ROLES} user.roles
  */
 export type USER_ROLES_TYPE = Array<string>;
-
-// Path: model/attributes/user_agent/user_agent__original.json
-
-/**
- * Value of the HTTP User-Agent header sent by the client. `user_agent.original`
- *
- * Attribute Value Type: `string` {@link USER_AGENT_ORIGINAL_TYPE}
- *
- * Contains PII: maybe
- *
- * Attribute defined in OTEL: Yes
- *
- * Aliases: {@link HTTP_USER_AGENT} `http.user_agent`
- *
- * @example "Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1"
- */
-export const USER_AGENT_ORIGINAL = 'user_agent.original';
-
-/**
- * Type for {@link USER_AGENT_ORIGINAL} user_agent.original
- */
-export type USER_AGENT_ORIGINAL_TYPE = string;
 
 // Path: model/attributes/vercel/vercel__branch.json
 
@@ -8462,15 +8462,15 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [AI_INPUT_MESSAGES]: 'string',
   [AI_IS_SEARCH_REQUIRED]: 'boolean',
   [AI_METADATA]: 'string',
-  [AI_MODEL_PROVIDER]: 'string',
   [AI_MODEL_ID]: 'string',
+  [AI_MODEL_PROVIDER]: 'string',
   [AI_PIPELINE_NAME]: 'string',
   [AI_PREAMBLE]: 'string',
   [AI_PRESENCE_PENALTY]: 'double',
   [AI_PROMPT_TOKENS_USED]: 'integer',
   [AI_RAW_PROMPTING]: 'boolean',
-  [AI_RESPONSE_FORMAT]: 'string',
   [AI_RESPONSES]: 'string[]',
+  [AI_RESPONSE_FORMAT]: 'string',
   [AI_SEARCH_QUERIES]: 'string[]',
   [AI_SEARCH_RESULTS]: 'string[]',
   [AI_SEED]: 'string',
@@ -8478,8 +8478,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [AI_TAGS]: 'string',
   [AI_TEMPERATURE]: 'double',
   [AI_TEXTS]: 'string[]',
-  [AI_TOOL_CALLS]: 'string[]',
   [AI_TOOLS]: 'string[]',
+  [AI_TOOL_CALLS]: 'string[]',
   [AI_TOP_K]: 'integer',
   [AI_TOP_P]: 'double',
   [AI_TOTAL_COST]: 'double',
@@ -8504,12 +8504,12 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [CLOUDFLARE_D1_DURATION]: 'integer',
   [CLOUDFLARE_D1_ROWS_READ]: 'integer',
   [CLOUDFLARE_D1_ROWS_WRITTEN]: 'integer',
-  [CODE_FILE_PATH]: 'string',
   [CODE_FILEPATH]: 'string',
+  [CODE_FILE_PATH]: 'string',
   [CODE_FUNCTION]: 'string',
   [CODE_FUNCTION_NAME]: 'string',
-  [CODE_LINE_NUMBER]: 'integer',
   [CODE_LINENO]: 'integer',
+  [CODE_LINE_NUMBER]: 'integer',
   [CODE_NAMESPACE]: 'string',
   [DB_COLLECTION_NAME]: 'string',
   [DB_NAME]: 'string',
@@ -8600,8 +8600,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [HTTP_HOST]: 'string',
   [HTTP_METHOD]: 'string',
   [HTTP_QUERY]: 'string',
-  [HTTP_REQUEST_CONNECT_START]: 'double',
   [HTTP_REQUEST_CONNECTION_END]: 'double',
+  [HTTP_REQUEST_CONNECT_START]: 'double',
   [HTTP_REQUEST_DOMAIN_LOOKUP_END]: 'double',
   [HTTP_REQUEST_DOMAIN_LOOKUP_START]: 'double',
   [HTTP_REQUEST_FETCH_START]: 'double',
@@ -8617,11 +8617,11 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [HTTP_REQUEST_TIME_TO_FIRST_BYTE]: 'double',
   [HTTP_REQUEST_WORKER_START]: 'double',
   [HTTP_RESPONSE_BODY_SIZE]: 'integer',
-  [HTTP_RESPONSE_HEADER_KEY]: 'string[]',
+  [HTTP_RESPONSE_CONTENT_LENGTH]: 'integer',
   [HTTP_RESPONSE_HEADER_CONTENT_LENGTH]: 'string',
+  [HTTP_RESPONSE_HEADER_KEY]: 'string[]',
   [HTTP_RESPONSE_SIZE]: 'integer',
   [HTTP_RESPONSE_STATUS_CODE]: 'integer',
-  [HTTP_RESPONSE_CONTENT_LENGTH]: 'integer',
   [HTTP_RESPONSE_TRANSFER_SIZE]: 'integer',
   [HTTP_ROUTE]: 'string',
   [HTTP_SCHEME]: 'string',
@@ -8697,6 +8697,14 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [NEL_REFERRER]: 'string',
   [NEL_SAMPLING_FUNCTION]: 'double',
   [NEL_TYPE]: 'string',
+  [NETWORK_LOCAL_ADDRESS]: 'string',
+  [NETWORK_LOCAL_PORT]: 'integer',
+  [NETWORK_PEER_ADDRESS]: 'string',
+  [NETWORK_PEER_PORT]: 'integer',
+  [NETWORK_PROTOCOL_NAME]: 'string',
+  [NETWORK_PROTOCOL_VERSION]: 'string',
+  [NETWORK_TRANSPORT]: 'string',
+  [NETWORK_TYPE]: 'string',
   [NET_HOST_IP]: 'string',
   [NET_HOST_NAME]: 'string',
   [NET_HOST_PORT]: 'integer',
@@ -8712,14 +8720,6 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [NET_SOCK_PEER_NAME]: 'string',
   [NET_SOCK_PEER_PORT]: 'integer',
   [NET_TRANSPORT]: 'string',
-  [NETWORK_LOCAL_ADDRESS]: 'string',
-  [NETWORK_LOCAL_PORT]: 'integer',
-  [NETWORK_PEER_ADDRESS]: 'string',
-  [NETWORK_PEER_PORT]: 'integer',
-  [NETWORK_PROTOCOL_NAME]: 'string',
-  [NETWORK_PROTOCOL_VERSION]: 'string',
-  [NETWORK_TRANSPORT]: 'string',
-  [NETWORK_TYPE]: 'string',
   [OS_BUILD_ID]: 'string',
   [OS_DESCRIPTION]: 'string',
   [OS_NAME]: 'string',
@@ -8745,17 +8745,6 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [ROUTE]: 'string',
   [RPC_GRPC_STATUS_CODE]: 'integer',
   [RPC_SERVICE]: 'string',
-  [SENTRY_INTERNAL_DSC_ENVIRONMENT]: 'string',
-  [SENTRY_INTERNAL_DSC_ORG_ID]: 'string',
-  [SENTRY_INTERNAL_DSC_PUBLIC_KEY]: 'string',
-  [SENTRY_INTERNAL_DSC_RELEASE]: 'string',
-  [SENTRY_INTERNAL_DSC_SAMPLE_RAND]: 'string',
-  [SENTRY_INTERNAL_DSC_SAMPLE_RATE]: 'string',
-  [SENTRY_INTERNAL_DSC_SAMPLED]: 'boolean',
-  [SENTRY_INTERNAL_DSC_TRACE_ID]: 'string',
-  [SENTRY_INTERNAL_DSC_TRANSACTION]: 'string',
-  [SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS]: 'string',
-  [SENTRY_INTERNAL_REPLAY_IS_BUFFERING]: 'boolean',
   [SENTRY_BROWSER_NAME]: 'string',
   [SENTRY_BROWSER_VERSION]: 'string',
   [SENTRY_CANCELLATION_REASON]: 'string',
@@ -8766,6 +8755,17 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_EXCLUSIVE_TIME]: 'integer',
   [SENTRY_HTTP_PREFETCH]: 'boolean',
   [SENTRY_IDLE_SPAN_FINISH_REASON]: 'string',
+  [SENTRY_INTERNAL_DSC_ENVIRONMENT]: 'string',
+  [SENTRY_INTERNAL_DSC_ORG_ID]: 'string',
+  [SENTRY_INTERNAL_DSC_PUBLIC_KEY]: 'string',
+  [SENTRY_INTERNAL_DSC_RELEASE]: 'string',
+  [SENTRY_INTERNAL_DSC_SAMPLED]: 'boolean',
+  [SENTRY_INTERNAL_DSC_SAMPLE_RAND]: 'string',
+  [SENTRY_INTERNAL_DSC_SAMPLE_RATE]: 'string',
+  [SENTRY_INTERNAL_DSC_TRACE_ID]: 'string',
+  [SENTRY_INTERNAL_DSC_TRANSACTION]: 'string',
+  [SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS]: 'string',
+  [SENTRY_INTERNAL_REPLAY_IS_BUFFERING]: 'boolean',
   [SENTRY_MESSAGE_PARAMETER_KEY]: 'string',
   [SENTRY_MESSAGE_TEMPLATE]: 'string',
   [SENTRY_MODULE_KEY]: 'string',
@@ -8782,8 +8782,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_SDK_NAME]: 'string',
   [SENTRY_SDK_VERSION]: 'string',
   [SENTRY_SEGMENT_ID]: 'string',
-  [SENTRY_SEGMENT_NAME]: 'string',
   [_SENTRY_SEGMENT_ID]: 'string',
+  [SENTRY_SEGMENT_NAME]: 'string',
   [SENTRY_SERVER_SAMPLE_RATE]: 'double',
   [SENTRY_SPAN_SOURCE]: 'string',
   [SENTRY_TRACE_PARENT_SPAN_ID]: 'string',
@@ -8799,6 +8799,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [UI_COMPONENT_NAME]: 'string',
   [UI_CONTRIBUTES_TO_TTFD]: 'boolean',
   [UI_CONTRIBUTES_TO_TTID]: 'boolean',
+  [URL]: 'string',
   [URL_DOMAIN]: 'string',
   [URL_FRAGMENT]: 'string',
   [URL_FULL]: 'string',
@@ -8808,7 +8809,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [URL_QUERY]: 'string',
   [URL_SCHEME]: 'string',
   [URL_TEMPLATE]: 'string',
-  [URL]: 'string',
+  [USER_AGENT_ORIGINAL]: 'string',
   [USER_EMAIL]: 'string',
   [USER_FULL_NAME]: 'string',
   [USER_GEO_CITY]: 'string',
@@ -8820,7 +8821,6 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [USER_IP_ADDRESS]: 'string',
   [USER_NAME]: 'string',
   [USER_ROLES]: 'string[]',
-  [USER_AGENT_ORIGINAL]: 'string',
   [VERCEL_BRANCH]: 'string',
   [VERCEL_BUILD_ID]: 'string',
   [VERCEL_DEPLOYMENT_ID]: 'string',
@@ -8869,15 +8869,15 @@ export type AttributeName =
   | typeof AI_INPUT_MESSAGES
   | typeof AI_IS_SEARCH_REQUIRED
   | typeof AI_METADATA
-  | typeof AI_MODEL_PROVIDER
   | typeof AI_MODEL_ID
+  | typeof AI_MODEL_PROVIDER
   | typeof AI_PIPELINE_NAME
   | typeof AI_PREAMBLE
   | typeof AI_PRESENCE_PENALTY
   | typeof AI_PROMPT_TOKENS_USED
   | typeof AI_RAW_PROMPTING
-  | typeof AI_RESPONSE_FORMAT
   | typeof AI_RESPONSES
+  | typeof AI_RESPONSE_FORMAT
   | typeof AI_SEARCH_QUERIES
   | typeof AI_SEARCH_RESULTS
   | typeof AI_SEED
@@ -8885,8 +8885,8 @@ export type AttributeName =
   | typeof AI_TAGS
   | typeof AI_TEMPERATURE
   | typeof AI_TEXTS
-  | typeof AI_TOOL_CALLS
   | typeof AI_TOOLS
+  | typeof AI_TOOL_CALLS
   | typeof AI_TOP_K
   | typeof AI_TOP_P
   | typeof AI_TOTAL_COST
@@ -8911,12 +8911,12 @@ export type AttributeName =
   | typeof CLOUDFLARE_D1_DURATION
   | typeof CLOUDFLARE_D1_ROWS_READ
   | typeof CLOUDFLARE_D1_ROWS_WRITTEN
-  | typeof CODE_FILE_PATH
   | typeof CODE_FILEPATH
+  | typeof CODE_FILE_PATH
   | typeof CODE_FUNCTION
   | typeof CODE_FUNCTION_NAME
-  | typeof CODE_LINE_NUMBER
   | typeof CODE_LINENO
+  | typeof CODE_LINE_NUMBER
   | typeof CODE_NAMESPACE
   | typeof DB_COLLECTION_NAME
   | typeof DB_NAME
@@ -9007,8 +9007,8 @@ export type AttributeName =
   | typeof HTTP_HOST
   | typeof HTTP_METHOD
   | typeof HTTP_QUERY
-  | typeof HTTP_REQUEST_CONNECT_START
   | typeof HTTP_REQUEST_CONNECTION_END
+  | typeof HTTP_REQUEST_CONNECT_START
   | typeof HTTP_REQUEST_DOMAIN_LOOKUP_END
   | typeof HTTP_REQUEST_DOMAIN_LOOKUP_START
   | typeof HTTP_REQUEST_FETCH_START
@@ -9024,11 +9024,11 @@ export type AttributeName =
   | typeof HTTP_REQUEST_TIME_TO_FIRST_BYTE
   | typeof HTTP_REQUEST_WORKER_START
   | typeof HTTP_RESPONSE_BODY_SIZE
-  | typeof HTTP_RESPONSE_HEADER_KEY
+  | typeof HTTP_RESPONSE_CONTENT_LENGTH
   | typeof HTTP_RESPONSE_HEADER_CONTENT_LENGTH
+  | typeof HTTP_RESPONSE_HEADER_KEY
   | typeof HTTP_RESPONSE_SIZE
   | typeof HTTP_RESPONSE_STATUS_CODE
-  | typeof HTTP_RESPONSE_CONTENT_LENGTH
   | typeof HTTP_RESPONSE_TRANSFER_SIZE
   | typeof HTTP_ROUTE
   | typeof HTTP_SCHEME
@@ -9104,6 +9104,14 @@ export type AttributeName =
   | typeof NEL_REFERRER
   | typeof NEL_SAMPLING_FUNCTION
   | typeof NEL_TYPE
+  | typeof NETWORK_LOCAL_ADDRESS
+  | typeof NETWORK_LOCAL_PORT
+  | typeof NETWORK_PEER_ADDRESS
+  | typeof NETWORK_PEER_PORT
+  | typeof NETWORK_PROTOCOL_NAME
+  | typeof NETWORK_PROTOCOL_VERSION
+  | typeof NETWORK_TRANSPORT
+  | typeof NETWORK_TYPE
   | typeof NET_HOST_IP
   | typeof NET_HOST_NAME
   | typeof NET_HOST_PORT
@@ -9119,14 +9127,6 @@ export type AttributeName =
   | typeof NET_SOCK_PEER_NAME
   | typeof NET_SOCK_PEER_PORT
   | typeof NET_TRANSPORT
-  | typeof NETWORK_LOCAL_ADDRESS
-  | typeof NETWORK_LOCAL_PORT
-  | typeof NETWORK_PEER_ADDRESS
-  | typeof NETWORK_PEER_PORT
-  | typeof NETWORK_PROTOCOL_NAME
-  | typeof NETWORK_PROTOCOL_VERSION
-  | typeof NETWORK_TRANSPORT
-  | typeof NETWORK_TYPE
   | typeof OS_BUILD_ID
   | typeof OS_DESCRIPTION
   | typeof OS_NAME
@@ -9152,17 +9152,6 @@ export type AttributeName =
   | typeof ROUTE
   | typeof RPC_GRPC_STATUS_CODE
   | typeof RPC_SERVICE
-  | typeof SENTRY_INTERNAL_DSC_ENVIRONMENT
-  | typeof SENTRY_INTERNAL_DSC_ORG_ID
-  | typeof SENTRY_INTERNAL_DSC_PUBLIC_KEY
-  | typeof SENTRY_INTERNAL_DSC_RELEASE
-  | typeof SENTRY_INTERNAL_DSC_SAMPLE_RAND
-  | typeof SENTRY_INTERNAL_DSC_SAMPLE_RATE
-  | typeof SENTRY_INTERNAL_DSC_SAMPLED
-  | typeof SENTRY_INTERNAL_DSC_TRACE_ID
-  | typeof SENTRY_INTERNAL_DSC_TRANSACTION
-  | typeof SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS
-  | typeof SENTRY_INTERNAL_REPLAY_IS_BUFFERING
   | typeof SENTRY_BROWSER_NAME
   | typeof SENTRY_BROWSER_VERSION
   | typeof SENTRY_CANCELLATION_REASON
@@ -9173,6 +9162,17 @@ export type AttributeName =
   | typeof SENTRY_EXCLUSIVE_TIME
   | typeof SENTRY_HTTP_PREFETCH
   | typeof SENTRY_IDLE_SPAN_FINISH_REASON
+  | typeof SENTRY_INTERNAL_DSC_ENVIRONMENT
+  | typeof SENTRY_INTERNAL_DSC_ORG_ID
+  | typeof SENTRY_INTERNAL_DSC_PUBLIC_KEY
+  | typeof SENTRY_INTERNAL_DSC_RELEASE
+  | typeof SENTRY_INTERNAL_DSC_SAMPLED
+  | typeof SENTRY_INTERNAL_DSC_SAMPLE_RAND
+  | typeof SENTRY_INTERNAL_DSC_SAMPLE_RATE
+  | typeof SENTRY_INTERNAL_DSC_TRACE_ID
+  | typeof SENTRY_INTERNAL_DSC_TRANSACTION
+  | typeof SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS
+  | typeof SENTRY_INTERNAL_REPLAY_IS_BUFFERING
   | typeof SENTRY_MESSAGE_PARAMETER_KEY
   | typeof SENTRY_MESSAGE_TEMPLATE
   | typeof SENTRY_MODULE_KEY
@@ -9189,8 +9189,8 @@ export type AttributeName =
   | typeof SENTRY_SDK_NAME
   | typeof SENTRY_SDK_VERSION
   | typeof SENTRY_SEGMENT_ID
-  | typeof SENTRY_SEGMENT_NAME
   | typeof _SENTRY_SEGMENT_ID
+  | typeof SENTRY_SEGMENT_NAME
   | typeof SENTRY_SERVER_SAMPLE_RATE
   | typeof SENTRY_SPAN_SOURCE
   | typeof SENTRY_TRACE_PARENT_SPAN_ID
@@ -9206,6 +9206,7 @@ export type AttributeName =
   | typeof UI_COMPONENT_NAME
   | typeof UI_CONTRIBUTES_TO_TTFD
   | typeof UI_CONTRIBUTES_TO_TTID
+  | typeof URL
   | typeof URL_DOMAIN
   | typeof URL_FRAGMENT
   | typeof URL_FULL
@@ -9215,7 +9216,7 @@ export type AttributeName =
   | typeof URL_QUERY
   | typeof URL_SCHEME
   | typeof URL_TEMPLATE
-  | typeof URL
+  | typeof USER_AGENT_ORIGINAL
   | typeof USER_EMAIL
   | typeof USER_FULL_NAME
   | typeof USER_GEO_CITY
@@ -9227,7 +9228,6 @@ export type AttributeName =
   | typeof USER_IP_ADDRESS
   | typeof USER_NAME
   | typeof USER_ROLES
-  | typeof USER_AGENT_ORIGINAL
   | typeof VERCEL_BRANCH
   | typeof VERCEL_BUILD_ID
   | typeof VERCEL_DEPLOYMENT_ID
@@ -9383,19 +9383,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '{"user_id": 123, "session_id": "abc123"}',
   },
-  [AI_MODEL_PROVIDER]: {
-    brief: 'The provider of the model.',
-    type: 'string',
-    pii: {
-      isPii: 'maybe',
-    },
-    isInOtel: false,
-    example: 'openai',
-    deprecation: {
-      replacement: 'gen_ai.system',
-    },
-    aliases: [GEN_AI_SYSTEM],
-  },
   [AI_MODEL_ID]: {
     brief: 'The vendor-specific ID of the model used.',
     type: 'string',
@@ -9409,6 +9396,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [GEN_AI_RESPONSE_MODEL],
     sdks: ['python'],
+  },
+  [AI_MODEL_PROVIDER]: {
+    brief: 'The provider of the model.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'openai',
+    deprecation: {
+      replacement: 'gen_ai.system',
+    },
+    aliases: [GEN_AI_SYSTEM],
   },
   [AI_PIPELINE_NAME]: {
     brief: 'The name of the AI pipeline.',
@@ -9470,15 +9470,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: true,
   },
-  [AI_RESPONSE_FORMAT]: {
-    brief: 'For an AI model call, the format of the response',
-    type: 'string',
-    pii: {
-      isPii: 'maybe',
-    },
-    isInOtel: false,
-    example: 'json_object',
-  },
   [AI_RESPONSES]: {
     brief: 'The response messages sent back by the AI model.',
     type: 'string[]',
@@ -9491,6 +9482,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.response.text',
     },
     sdks: ['python'],
+  },
+  [AI_RESPONSE_FORMAT]: {
+    brief: 'For an AI model call, the format of the response',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'json_object',
   },
   [AI_SEARCH_QUERIES]: {
     brief: 'Queries used to search for relevant context or documents.',
@@ -9569,18 +9569,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: ['Hello, how are you?', 'What is the capital of France?'],
   },
-  [AI_TOOL_CALLS]: {
-    brief: 'For an AI model call, the tool calls that were made.',
-    type: 'string[]',
-    pii: {
-      isPii: 'true',
-    },
-    isInOtel: false,
-    example: ['tool_call_1', 'tool_call_2'],
-    deprecation: {
-      replacement: 'gen_ai.response.tool_calls',
-    },
-  },
   [AI_TOOLS]: {
     brief: 'For an AI model call, the functions that are available',
     type: 'string[]',
@@ -9591,6 +9579,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: ['function_1', 'function_2'],
     deprecation: {
       replacement: 'gen_ai.request.available_tools',
+    },
+  },
+  [AI_TOOL_CALLS]: {
+    brief: 'For an AI model call, the tool calls that were made.',
+    type: 'string[]',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: false,
+    example: ['tool_call_1', 'tool_call_2'],
+    deprecation: {
+      replacement: 'gen_ai.response.tool_calls',
     },
   },
   [AI_TOP_K]: {
@@ -9839,17 +9839,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 12,
     sdks: ['javascript-cloudflare'],
   },
-  [CODE_FILE_PATH]: {
-    brief:
-      'The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).',
-    type: 'string',
-    pii: {
-      isPii: 'maybe',
-    },
-    isInOtel: true,
-    example: '/app/myapplication/http/handler/server.py',
-    aliases: [CODE_FILEPATH],
-  },
   [CODE_FILEPATH]: {
     brief:
       'The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).',
@@ -9863,6 +9852,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'code.file.path',
     },
     aliases: [CODE_FILE_PATH],
+  },
+  [CODE_FILE_PATH]: {
+    brief:
+      'The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: '/app/myapplication/http/handler/server.py',
+    aliases: [CODE_FILEPATH],
   },
   [CODE_FUNCTION]: {
     brief: "The method or function name, or equivalent (usually rightmost part of the code unit's name).",
@@ -9887,17 +9887,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'server_request',
     aliases: [CODE_FUNCTION],
   },
-  [CODE_LINE_NUMBER]: {
-    brief:
-      'The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function',
-    type: 'integer',
-    pii: {
-      isPii: 'false',
-    },
-    isInOtel: true,
-    example: 42,
-    aliases: [CODE_LINENO],
-  },
   [CODE_LINENO]: {
     brief:
       'The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function',
@@ -9911,6 +9900,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'code.line.number',
     },
     aliases: [CODE_LINE_NUMBER],
+  },
+  [CODE_LINE_NUMBER]: {
+    brief:
+      'The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 42,
+    aliases: [CODE_LINENO],
   },
   [CODE_NAMESPACE]: {
     brief:
@@ -10842,17 +10842,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '?foo=bar&bar=baz',
   },
-  [HTTP_REQUEST_CONNECT_START]: {
-    brief:
-      'The UNIX timestamp representing the time immediately before the user agent starts establishing the connection to the server to retrieve the resource.',
-    type: 'double',
-    pii: {
-      isPii: 'false',
-    },
-    isInOtel: false,
-    example: 1732829555.111,
-    sdks: ['javascript-browser'],
-  },
   [HTTP_REQUEST_CONNECTION_END]: {
     brief:
       'The UNIX timestamp representing the time immediately after the browser finishes establishing the connection to the server to retrieve the resource. The timestamp value includes the time interval to establish the transport connection, as well as other time intervals such as TLS handshake and SOCKS authentication.',
@@ -10862,6 +10851,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 1732829555.15,
+    sdks: ['javascript-browser'],
+  },
+  [HTTP_REQUEST_CONNECT_START]: {
+    brief:
+      'The UNIX timestamp representing the time immediately before the user agent starts establishing the connection to the server to retrieve the resource.',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 1732829555.111,
     sdks: ['javascript-browser'],
   },
   [HTTP_REQUEST_DOMAIN_LOOKUP_END]: {
@@ -11023,16 +11023,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 123,
     aliases: [HTTP_RESPONSE_CONTENT_LENGTH, HTTP_RESPONSE_HEADER_CONTENT_LENGTH],
   },
-  [HTTP_RESPONSE_HEADER_KEY]: {
-    brief:
-      'HTTP response headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.',
-    type: 'string[]',
+  [HTTP_RESPONSE_CONTENT_LENGTH]: {
+    brief: 'The encoded body size of the response (in bytes).',
+    type: 'integer',
     pii: {
-      isPii: 'maybe',
+      isPii: 'false',
     },
     isInOtel: true,
-    hasDynamicSuffix: true,
-    example: "http.response.header.custom-header=['foo', 'bar']",
+    example: 123,
+    deprecation: {
+      replacement: 'http.response.body.size',
+    },
+    aliases: [HTTP_RESPONSE_BODY_SIZE, HTTP_RESPONSE_HEADER_CONTENT_LENGTH],
   },
   [HTTP_RESPONSE_HEADER_CONTENT_LENGTH]: {
     brief: 'The size of the message body sent to the recipient (in bytes)',
@@ -11043,6 +11045,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: "http.response.header.custom-header=['foo', 'bar']",
     aliases: [HTTP_RESPONSE_CONTENT_LENGTH, HTTP_RESPONSE_BODY_SIZE],
+  },
+  [HTTP_RESPONSE_HEADER_KEY]: {
+    brief:
+      'HTTP response headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.',
+    type: 'string[]',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    hasDynamicSuffix: true,
+    example: "http.response.header.custom-header=['foo', 'bar']",
   },
   [HTTP_RESPONSE_SIZE]: {
     brief: 'The transfer size of the response (in bytes).',
@@ -11063,19 +11076,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 404,
     aliases: [HTTP_STATUS_CODE],
-  },
-  [HTTP_RESPONSE_CONTENT_LENGTH]: {
-    brief: 'The encoded body size of the response (in bytes).',
-    type: 'integer',
-    pii: {
-      isPii: 'false',
-    },
-    isInOtel: true,
-    example: 123,
-    deprecation: {
-      replacement: 'http.response.body.size',
-    },
-    aliases: [HTTP_RESPONSE_BODY_SIZE, HTTP_RESPONSE_HEADER_CONTENT_LENGTH],
   },
   [HTTP_RESPONSE_TRANSFER_SIZE]: {
     brief: 'The transfer size of the response (in bytes).',
@@ -11814,6 +11814,84 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'dns.unreachable',
   },
+  [NETWORK_LOCAL_ADDRESS]: {
+    brief: 'Local address of the network connection - IP address or Unix domain socket name.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: '10.1.2.80',
+    aliases: [NET_HOST_IP, NET_SOCK_HOST_ADDR],
+  },
+  [NETWORK_LOCAL_PORT]: {
+    brief: 'Local port number of the network connection.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 65400,
+    aliases: [NET_SOCK_HOST_PORT],
+  },
+  [NETWORK_PEER_ADDRESS]: {
+    brief: 'Peer address of the network connection - IP address or Unix domain socket name.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: '10.1.2.80',
+    aliases: [NET_PEER_IP, NET_SOCK_PEER_ADDR],
+  },
+  [NETWORK_PEER_PORT]: {
+    brief: 'Peer port number of the network connection.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 65400,
+  },
+  [NETWORK_PROTOCOL_NAME]: {
+    brief: 'OSI application layer or non-OSI equivalent.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'http',
+    aliases: [NET_PROTOCOL_NAME],
+  },
+  [NETWORK_PROTOCOL_VERSION]: {
+    brief: 'The actual version of the protocol used for network communication.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: '1.1',
+    aliases: [HTTP_FLAVOR, NET_PROTOCOL_VERSION],
+  },
+  [NETWORK_TRANSPORT]: {
+    brief: 'OSI transport layer or inter-process communication method.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'tcp',
+    aliases: [NET_TRANSPORT],
+  },
+  [NETWORK_TYPE]: {
+    brief: 'OSI network layer or non-OSI equivalent.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'ipv4',
+  },
   [NET_HOST_IP]: {
     brief: 'Local address of the network connection - IP address or Unix domain socket name.',
     type: 'string',
@@ -12008,84 +12086,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'network.transport',
     },
     aliases: [NETWORK_TRANSPORT],
-  },
-  [NETWORK_LOCAL_ADDRESS]: {
-    brief: 'Local address of the network connection - IP address or Unix domain socket name.',
-    type: 'string',
-    pii: {
-      isPii: 'maybe',
-    },
-    isInOtel: true,
-    example: '10.1.2.80',
-    aliases: [NET_HOST_IP, NET_SOCK_HOST_ADDR],
-  },
-  [NETWORK_LOCAL_PORT]: {
-    brief: 'Local port number of the network connection.',
-    type: 'integer',
-    pii: {
-      isPii: 'false',
-    },
-    isInOtel: true,
-    example: 65400,
-    aliases: [NET_SOCK_HOST_PORT],
-  },
-  [NETWORK_PEER_ADDRESS]: {
-    brief: 'Peer address of the network connection - IP address or Unix domain socket name.',
-    type: 'string',
-    pii: {
-      isPii: 'maybe',
-    },
-    isInOtel: true,
-    example: '10.1.2.80',
-    aliases: [NET_PEER_IP, NET_SOCK_PEER_ADDR],
-  },
-  [NETWORK_PEER_PORT]: {
-    brief: 'Peer port number of the network connection.',
-    type: 'integer',
-    pii: {
-      isPii: 'false',
-    },
-    isInOtel: true,
-    example: 65400,
-  },
-  [NETWORK_PROTOCOL_NAME]: {
-    brief: 'OSI application layer or non-OSI equivalent.',
-    type: 'string',
-    pii: {
-      isPii: 'maybe',
-    },
-    isInOtel: true,
-    example: 'http',
-    aliases: [NET_PROTOCOL_NAME],
-  },
-  [NETWORK_PROTOCOL_VERSION]: {
-    brief: 'The actual version of the protocol used for network communication.',
-    type: 'string',
-    pii: {
-      isPii: 'maybe',
-    },
-    isInOtel: true,
-    example: '1.1',
-    aliases: [HTTP_FLAVOR, NET_PROTOCOL_VERSION],
-  },
-  [NETWORK_TRANSPORT]: {
-    brief: 'OSI transport layer or inter-process communication method.',
-    type: 'string',
-    pii: {
-      isPii: 'maybe',
-    },
-    isInOtel: true,
-    example: 'tcp',
-    aliases: [NET_TRANSPORT],
-  },
-  [NETWORK_TYPE]: {
-    brief: 'OSI network layer or non-OSI equivalent.',
-    type: 'string',
-    pii: {
-      isPii: 'maybe',
-    },
-    isInOtel: true,
-    example: 'ipv4',
   },
   [OS_BUILD_ID]: {
     brief: 'The build ID of the operating system.',
@@ -12345,107 +12345,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'myService.BestService',
   },
-  [SENTRY_INTERNAL_DSC_ENVIRONMENT]: {
-    brief: 'The environment from the dynamic sampling context.',
-    type: 'string',
-    pii: {
-      isPii: 'false',
-    },
-    isInOtel: false,
-    example: 'prod',
-  },
-  [SENTRY_INTERNAL_DSC_ORG_ID]: {
-    brief: 'The organization ID from the dynamic sampling context.',
-    type: 'string',
-    pii: {
-      isPii: 'false',
-    },
-    isInOtel: false,
-    example: '1',
-  },
-  [SENTRY_INTERNAL_DSC_PUBLIC_KEY]: {
-    brief: 'The public key from the dynamic sampling context.',
-    type: 'string',
-    pii: {
-      isPii: 'maybe',
-    },
-    isInOtel: false,
-    example: 'c51734c603c4430eb57cb0a5728a479d',
-  },
-  [SENTRY_INTERNAL_DSC_RELEASE]: {
-    brief: 'The release identifier from the dynamic sampling context.',
-    type: 'string',
-    pii: {
-      isPii: 'false',
-    },
-    isInOtel: false,
-    example: 'frontend@e8211be71b214afab5b85de4b4c54be3714952bb',
-  },
-  [SENTRY_INTERNAL_DSC_SAMPLE_RAND]: {
-    brief: 'The random sampling value from the dynamic sampling context.',
-    type: 'string',
-    pii: {
-      isPii: 'false',
-    },
-    isInOtel: false,
-    example: '0.8286147972820134',
-  },
-  [SENTRY_INTERNAL_DSC_SAMPLE_RATE]: {
-    brief: 'The sample rate from the dynamic sampling context.',
-    type: 'string',
-    pii: {
-      isPii: 'false',
-    },
-    isInOtel: false,
-    example: '1.0',
-  },
-  [SENTRY_INTERNAL_DSC_SAMPLED]: {
-    brief: 'Whether the event was sampled according to the dynamic sampling context.',
-    type: 'boolean',
-    pii: {
-      isPii: 'false',
-    },
-    isInOtel: false,
-    example: true,
-  },
-  [SENTRY_INTERNAL_DSC_TRACE_ID]: {
-    brief: 'The trace ID from the dynamic sampling context.',
-    type: 'string',
-    pii: {
-      isPii: 'false',
-    },
-    isInOtel: false,
-    example: '047372980460430cbc78d9779df33a46',
-  },
-  [SENTRY_INTERNAL_DSC_TRANSACTION]: {
-    brief: 'The transaction name from the dynamic sampling context.',
-    type: 'string',
-    pii: {
-      isPii: 'false',
-    },
-    isInOtel: false,
-    example: '/issues/errors-outages/',
-  },
-  [SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS]: {
-    brief: 'The timestamp at which an envelope was received by Relay, in nanoseconds.',
-    type: 'string',
-    pii: {
-      isPii: 'false',
-    },
-    isInOtel: false,
-    example: '1544712660300000000',
-    aliases: [SENTRY_OBSERVED_TIMESTAMP_NANOS],
-  },
-  [SENTRY_INTERNAL_REPLAY_IS_BUFFERING]: {
-    brief:
-      'A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate).',
-    type: 'boolean',
-    pii: {
-      isPii: 'false',
-    },
-    isInOtel: false,
-    example: true,
-  },
   [SENTRY_BROWSER_NAME]: {
     brief: 'The name of the browser.',
     type: 'string',
@@ -12544,6 +12443,107 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'idleTimeout',
+  },
+  [SENTRY_INTERNAL_DSC_ENVIRONMENT]: {
+    brief: 'The environment from the dynamic sampling context.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'prod',
+  },
+  [SENTRY_INTERNAL_DSC_ORG_ID]: {
+    brief: 'The organization ID from the dynamic sampling context.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '1',
+  },
+  [SENTRY_INTERNAL_DSC_PUBLIC_KEY]: {
+    brief: 'The public key from the dynamic sampling context.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'c51734c603c4430eb57cb0a5728a479d',
+  },
+  [SENTRY_INTERNAL_DSC_RELEASE]: {
+    brief: 'The release identifier from the dynamic sampling context.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'frontend@e8211be71b214afab5b85de4b4c54be3714952bb',
+  },
+  [SENTRY_INTERNAL_DSC_SAMPLED]: {
+    brief: 'Whether the event was sampled according to the dynamic sampling context.',
+    type: 'boolean',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: true,
+  },
+  [SENTRY_INTERNAL_DSC_SAMPLE_RAND]: {
+    brief: 'The random sampling value from the dynamic sampling context.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '0.8286147972820134',
+  },
+  [SENTRY_INTERNAL_DSC_SAMPLE_RATE]: {
+    brief: 'The sample rate from the dynamic sampling context.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '1.0',
+  },
+  [SENTRY_INTERNAL_DSC_TRACE_ID]: {
+    brief: 'The trace ID from the dynamic sampling context.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '047372980460430cbc78d9779df33a46',
+  },
+  [SENTRY_INTERNAL_DSC_TRANSACTION]: {
+    brief: 'The transaction name from the dynamic sampling context.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '/issues/errors-outages/',
+  },
+  [SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS]: {
+    brief: 'The timestamp at which an envelope was received by Relay, in nanoseconds.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '1544712660300000000',
+    aliases: [SENTRY_OBSERVED_TIMESTAMP_NANOS],
+  },
+  [SENTRY_INTERNAL_REPLAY_IS_BUFFERING]: {
+    brief:
+      'A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate).',
+    type: 'boolean',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: true,
   },
   [SENTRY_MESSAGE_PARAMETER_KEY]: {
     brief:
@@ -12704,15 +12704,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '051581bf3cb55c13',
     aliases: [_SENTRY_SEGMENT_ID],
   },
-  [SENTRY_SEGMENT_NAME]: {
-    brief: 'The segment name of a span',
-    type: 'string',
-    pii: {
-      isPii: 'maybe',
-    },
-    isInOtel: false,
-    example: 'GET /user',
-  },
   [_SENTRY_SEGMENT_ID]: {
     brief: 'The segment ID of a span',
     type: 'string',
@@ -12725,6 +12716,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'sentry.segment.id',
     },
     aliases: [SENTRY_SEGMENT_ID],
+  },
+  [SENTRY_SEGMENT_NAME]: {
+    brief: 'The segment name of a span',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'GET /user',
   },
   [SENTRY_SERVER_SAMPLE_RATE]: {
     brief: 'Rate at which a span was sampled in Relay.',
@@ -12872,6 +12872,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: true,
   },
+  [URL]: {
+    brief: 'The URL of the resource that was fetched.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'https://example.com/test?foo=bar#buzz',
+    deprecation: {
+      replacement: 'url.full',
+    },
+    aliases: [URL_FULL, HTTP_URL],
+    sdks: ['javascript-browser', 'javascript-node'],
+  },
   [URL_DOMAIN]: {
     brief:
       'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
@@ -12964,19 +12978,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '/users/:id',
     aliases: [HTTP_ROUTE],
   },
-  [URL]: {
-    brief: 'The URL of the resource that was fetched.',
+  [USER_AGENT_ORIGINAL]: {
+    brief: 'Value of the HTTP User-Agent header sent by the client.',
     type: 'string',
     pii: {
       isPii: 'maybe',
     },
-    isInOtel: false,
-    example: 'https://example.com/test?foo=bar#buzz',
-    deprecation: {
-      replacement: 'url.full',
-    },
-    aliases: [URL_FULL, HTTP_URL],
-    sdks: ['javascript-browser', 'javascript-node'],
+    isInOtel: true,
+    example:
+      'Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1',
+    aliases: [HTTP_USER_AGENT],
   },
   [USER_EMAIL]: {
     brief: 'User email address.',
@@ -13076,17 +13087,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: ['admin', 'editor'],
-  },
-  [USER_AGENT_ORIGINAL]: {
-    brief: 'Value of the HTTP User-Agent header sent by the client.',
-    type: 'string',
-    pii: {
-      isPii: 'maybe',
-    },
-    isInOtel: true,
-    example:
-      'Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1',
-    aliases: [HTTP_USER_AGENT],
   },
   [VERCEL_BRANCH]: {
     brief: 'Git branch name for Vercel project',
@@ -13418,15 +13418,15 @@ export type Attributes = {
   [AI_INPUT_MESSAGES]?: AI_INPUT_MESSAGES_TYPE;
   [AI_IS_SEARCH_REQUIRED]?: AI_IS_SEARCH_REQUIRED_TYPE;
   [AI_METADATA]?: AI_METADATA_TYPE;
-  [AI_MODEL_PROVIDER]?: AI_MODEL_PROVIDER_TYPE;
   [AI_MODEL_ID]?: AI_MODEL_ID_TYPE;
+  [AI_MODEL_PROVIDER]?: AI_MODEL_PROVIDER_TYPE;
   [AI_PIPELINE_NAME]?: AI_PIPELINE_NAME_TYPE;
   [AI_PREAMBLE]?: AI_PREAMBLE_TYPE;
   [AI_PRESENCE_PENALTY]?: AI_PRESENCE_PENALTY_TYPE;
   [AI_PROMPT_TOKENS_USED]?: AI_PROMPT_TOKENS_USED_TYPE;
   [AI_RAW_PROMPTING]?: AI_RAW_PROMPTING_TYPE;
-  [AI_RESPONSE_FORMAT]?: AI_RESPONSE_FORMAT_TYPE;
   [AI_RESPONSES]?: AI_RESPONSES_TYPE;
+  [AI_RESPONSE_FORMAT]?: AI_RESPONSE_FORMAT_TYPE;
   [AI_SEARCH_QUERIES]?: AI_SEARCH_QUERIES_TYPE;
   [AI_SEARCH_RESULTS]?: AI_SEARCH_RESULTS_TYPE;
   [AI_SEED]?: AI_SEED_TYPE;
@@ -13434,8 +13434,8 @@ export type Attributes = {
   [AI_TAGS]?: AI_TAGS_TYPE;
   [AI_TEMPERATURE]?: AI_TEMPERATURE_TYPE;
   [AI_TEXTS]?: AI_TEXTS_TYPE;
-  [AI_TOOL_CALLS]?: AI_TOOL_CALLS_TYPE;
   [AI_TOOLS]?: AI_TOOLS_TYPE;
+  [AI_TOOL_CALLS]?: AI_TOOL_CALLS_TYPE;
   [AI_TOP_K]?: AI_TOP_K_TYPE;
   [AI_TOP_P]?: AI_TOP_P_TYPE;
   [AI_TOTAL_COST]?: AI_TOTAL_COST_TYPE;
@@ -13460,12 +13460,12 @@ export type Attributes = {
   [CLOUDFLARE_D1_DURATION]?: CLOUDFLARE_D1_DURATION_TYPE;
   [CLOUDFLARE_D1_ROWS_READ]?: CLOUDFLARE_D1_ROWS_READ_TYPE;
   [CLOUDFLARE_D1_ROWS_WRITTEN]?: CLOUDFLARE_D1_ROWS_WRITTEN_TYPE;
-  [CODE_FILE_PATH]?: CODE_FILE_PATH_TYPE;
   [CODE_FILEPATH]?: CODE_FILEPATH_TYPE;
+  [CODE_FILE_PATH]?: CODE_FILE_PATH_TYPE;
   [CODE_FUNCTION]?: CODE_FUNCTION_TYPE;
   [CODE_FUNCTION_NAME]?: CODE_FUNCTION_NAME_TYPE;
-  [CODE_LINE_NUMBER]?: CODE_LINE_NUMBER_TYPE;
   [CODE_LINENO]?: CODE_LINENO_TYPE;
+  [CODE_LINE_NUMBER]?: CODE_LINE_NUMBER_TYPE;
   [CODE_NAMESPACE]?: CODE_NAMESPACE_TYPE;
   [DB_COLLECTION_NAME]?: DB_COLLECTION_NAME_TYPE;
   [DB_NAME]?: DB_NAME_TYPE;
@@ -13556,8 +13556,8 @@ export type Attributes = {
   [HTTP_HOST]?: HTTP_HOST_TYPE;
   [HTTP_METHOD]?: HTTP_METHOD_TYPE;
   [HTTP_QUERY]?: HTTP_QUERY_TYPE;
-  [HTTP_REQUEST_CONNECT_START]?: HTTP_REQUEST_CONNECT_START_TYPE;
   [HTTP_REQUEST_CONNECTION_END]?: HTTP_REQUEST_CONNECTION_END_TYPE;
+  [HTTP_REQUEST_CONNECT_START]?: HTTP_REQUEST_CONNECT_START_TYPE;
   [HTTP_REQUEST_DOMAIN_LOOKUP_END]?: HTTP_REQUEST_DOMAIN_LOOKUP_END_TYPE;
   [HTTP_REQUEST_DOMAIN_LOOKUP_START]?: HTTP_REQUEST_DOMAIN_LOOKUP_START_TYPE;
   [HTTP_REQUEST_FETCH_START]?: HTTP_REQUEST_FETCH_START_TYPE;
@@ -13573,11 +13573,11 @@ export type Attributes = {
   [HTTP_REQUEST_TIME_TO_FIRST_BYTE]?: HTTP_REQUEST_TIME_TO_FIRST_BYTE_TYPE;
   [HTTP_REQUEST_WORKER_START]?: HTTP_REQUEST_WORKER_START_TYPE;
   [HTTP_RESPONSE_BODY_SIZE]?: HTTP_RESPONSE_BODY_SIZE_TYPE;
-  [HTTP_RESPONSE_HEADER_KEY]?: HTTP_RESPONSE_HEADER_KEY_TYPE;
+  [HTTP_RESPONSE_CONTENT_LENGTH]?: HTTP_RESPONSE_CONTENT_LENGTH_TYPE;
   [HTTP_RESPONSE_HEADER_CONTENT_LENGTH]?: HTTP_RESPONSE_HEADER_CONTENT_LENGTH_TYPE;
+  [HTTP_RESPONSE_HEADER_KEY]?: HTTP_RESPONSE_HEADER_KEY_TYPE;
   [HTTP_RESPONSE_SIZE]?: HTTP_RESPONSE_SIZE_TYPE;
   [HTTP_RESPONSE_STATUS_CODE]?: HTTP_RESPONSE_STATUS_CODE_TYPE;
-  [HTTP_RESPONSE_CONTENT_LENGTH]?: HTTP_RESPONSE_CONTENT_LENGTH_TYPE;
   [HTTP_RESPONSE_TRANSFER_SIZE]?: HTTP_RESPONSE_TRANSFER_SIZE_TYPE;
   [HTTP_ROUTE]?: HTTP_ROUTE_TYPE;
   [HTTP_SCHEME]?: HTTP_SCHEME_TYPE;
@@ -13653,6 +13653,14 @@ export type Attributes = {
   [NEL_REFERRER]?: NEL_REFERRER_TYPE;
   [NEL_SAMPLING_FUNCTION]?: NEL_SAMPLING_FUNCTION_TYPE;
   [NEL_TYPE]?: NEL_TYPE_TYPE;
+  [NETWORK_LOCAL_ADDRESS]?: NETWORK_LOCAL_ADDRESS_TYPE;
+  [NETWORK_LOCAL_PORT]?: NETWORK_LOCAL_PORT_TYPE;
+  [NETWORK_PEER_ADDRESS]?: NETWORK_PEER_ADDRESS_TYPE;
+  [NETWORK_PEER_PORT]?: NETWORK_PEER_PORT_TYPE;
+  [NETWORK_PROTOCOL_NAME]?: NETWORK_PROTOCOL_NAME_TYPE;
+  [NETWORK_PROTOCOL_VERSION]?: NETWORK_PROTOCOL_VERSION_TYPE;
+  [NETWORK_TRANSPORT]?: NETWORK_TRANSPORT_TYPE;
+  [NETWORK_TYPE]?: NETWORK_TYPE_TYPE;
   [NET_HOST_IP]?: NET_HOST_IP_TYPE;
   [NET_HOST_NAME]?: NET_HOST_NAME_TYPE;
   [NET_HOST_PORT]?: NET_HOST_PORT_TYPE;
@@ -13668,14 +13676,6 @@ export type Attributes = {
   [NET_SOCK_PEER_NAME]?: NET_SOCK_PEER_NAME_TYPE;
   [NET_SOCK_PEER_PORT]?: NET_SOCK_PEER_PORT_TYPE;
   [NET_TRANSPORT]?: NET_TRANSPORT_TYPE;
-  [NETWORK_LOCAL_ADDRESS]?: NETWORK_LOCAL_ADDRESS_TYPE;
-  [NETWORK_LOCAL_PORT]?: NETWORK_LOCAL_PORT_TYPE;
-  [NETWORK_PEER_ADDRESS]?: NETWORK_PEER_ADDRESS_TYPE;
-  [NETWORK_PEER_PORT]?: NETWORK_PEER_PORT_TYPE;
-  [NETWORK_PROTOCOL_NAME]?: NETWORK_PROTOCOL_NAME_TYPE;
-  [NETWORK_PROTOCOL_VERSION]?: NETWORK_PROTOCOL_VERSION_TYPE;
-  [NETWORK_TRANSPORT]?: NETWORK_TRANSPORT_TYPE;
-  [NETWORK_TYPE]?: NETWORK_TYPE_TYPE;
   [OS_BUILD_ID]?: OS_BUILD_ID_TYPE;
   [OS_DESCRIPTION]?: OS_DESCRIPTION_TYPE;
   [OS_NAME]?: OS_NAME_TYPE;
@@ -13701,17 +13701,6 @@ export type Attributes = {
   [ROUTE]?: ROUTE_TYPE;
   [RPC_GRPC_STATUS_CODE]?: RPC_GRPC_STATUS_CODE_TYPE;
   [RPC_SERVICE]?: RPC_SERVICE_TYPE;
-  [SENTRY_INTERNAL_DSC_ENVIRONMENT]?: SENTRY_INTERNAL_DSC_ENVIRONMENT_TYPE;
-  [SENTRY_INTERNAL_DSC_ORG_ID]?: SENTRY_INTERNAL_DSC_ORG_ID_TYPE;
-  [SENTRY_INTERNAL_DSC_PUBLIC_KEY]?: SENTRY_INTERNAL_DSC_PUBLIC_KEY_TYPE;
-  [SENTRY_INTERNAL_DSC_RELEASE]?: SENTRY_INTERNAL_DSC_RELEASE_TYPE;
-  [SENTRY_INTERNAL_DSC_SAMPLE_RAND]?: SENTRY_INTERNAL_DSC_SAMPLE_RAND_TYPE;
-  [SENTRY_INTERNAL_DSC_SAMPLE_RATE]?: SENTRY_INTERNAL_DSC_SAMPLE_RATE_TYPE;
-  [SENTRY_INTERNAL_DSC_SAMPLED]?: SENTRY_INTERNAL_DSC_SAMPLED_TYPE;
-  [SENTRY_INTERNAL_DSC_TRACE_ID]?: SENTRY_INTERNAL_DSC_TRACE_ID_TYPE;
-  [SENTRY_INTERNAL_DSC_TRANSACTION]?: SENTRY_INTERNAL_DSC_TRANSACTION_TYPE;
-  [SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS]?: SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS_TYPE;
-  [SENTRY_INTERNAL_REPLAY_IS_BUFFERING]?: SENTRY_INTERNAL_REPLAY_IS_BUFFERING_TYPE;
   [SENTRY_BROWSER_NAME]?: SENTRY_BROWSER_NAME_TYPE;
   [SENTRY_BROWSER_VERSION]?: SENTRY_BROWSER_VERSION_TYPE;
   [SENTRY_CANCELLATION_REASON]?: SENTRY_CANCELLATION_REASON_TYPE;
@@ -13722,6 +13711,17 @@ export type Attributes = {
   [SENTRY_EXCLUSIVE_TIME]?: SENTRY_EXCLUSIVE_TIME_TYPE;
   [SENTRY_HTTP_PREFETCH]?: SENTRY_HTTP_PREFETCH_TYPE;
   [SENTRY_IDLE_SPAN_FINISH_REASON]?: SENTRY_IDLE_SPAN_FINISH_REASON_TYPE;
+  [SENTRY_INTERNAL_DSC_ENVIRONMENT]?: SENTRY_INTERNAL_DSC_ENVIRONMENT_TYPE;
+  [SENTRY_INTERNAL_DSC_ORG_ID]?: SENTRY_INTERNAL_DSC_ORG_ID_TYPE;
+  [SENTRY_INTERNAL_DSC_PUBLIC_KEY]?: SENTRY_INTERNAL_DSC_PUBLIC_KEY_TYPE;
+  [SENTRY_INTERNAL_DSC_RELEASE]?: SENTRY_INTERNAL_DSC_RELEASE_TYPE;
+  [SENTRY_INTERNAL_DSC_SAMPLED]?: SENTRY_INTERNAL_DSC_SAMPLED_TYPE;
+  [SENTRY_INTERNAL_DSC_SAMPLE_RAND]?: SENTRY_INTERNAL_DSC_SAMPLE_RAND_TYPE;
+  [SENTRY_INTERNAL_DSC_SAMPLE_RATE]?: SENTRY_INTERNAL_DSC_SAMPLE_RATE_TYPE;
+  [SENTRY_INTERNAL_DSC_TRACE_ID]?: SENTRY_INTERNAL_DSC_TRACE_ID_TYPE;
+  [SENTRY_INTERNAL_DSC_TRANSACTION]?: SENTRY_INTERNAL_DSC_TRANSACTION_TYPE;
+  [SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS]?: SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS_TYPE;
+  [SENTRY_INTERNAL_REPLAY_IS_BUFFERING]?: SENTRY_INTERNAL_REPLAY_IS_BUFFERING_TYPE;
   [SENTRY_MESSAGE_PARAMETER_KEY]?: SENTRY_MESSAGE_PARAMETER_KEY_TYPE;
   [SENTRY_MESSAGE_TEMPLATE]?: SENTRY_MESSAGE_TEMPLATE_TYPE;
   [SENTRY_MODULE_KEY]?: SENTRY_MODULE_KEY_TYPE;
@@ -13738,8 +13738,8 @@ export type Attributes = {
   [SENTRY_SDK_NAME]?: SENTRY_SDK_NAME_TYPE;
   [SENTRY_SDK_VERSION]?: SENTRY_SDK_VERSION_TYPE;
   [SENTRY_SEGMENT_ID]?: SENTRY_SEGMENT_ID_TYPE;
-  [SENTRY_SEGMENT_NAME]?: SENTRY_SEGMENT_NAME_TYPE;
   [_SENTRY_SEGMENT_ID]?: _SENTRY_SEGMENT_ID_TYPE;
+  [SENTRY_SEGMENT_NAME]?: SENTRY_SEGMENT_NAME_TYPE;
   [SENTRY_SERVER_SAMPLE_RATE]?: SENTRY_SERVER_SAMPLE_RATE_TYPE;
   [SENTRY_SPAN_SOURCE]?: SENTRY_SPAN_SOURCE_TYPE;
   [SENTRY_TRACE_PARENT_SPAN_ID]?: SENTRY_TRACE_PARENT_SPAN_ID_TYPE;
@@ -13755,6 +13755,7 @@ export type Attributes = {
   [UI_COMPONENT_NAME]?: UI_COMPONENT_NAME_TYPE;
   [UI_CONTRIBUTES_TO_TTFD]?: UI_CONTRIBUTES_TO_TTFD_TYPE;
   [UI_CONTRIBUTES_TO_TTID]?: UI_CONTRIBUTES_TO_TTID_TYPE;
+  [URL]?: URL_TYPE;
   [URL_DOMAIN]?: URL_DOMAIN_TYPE;
   [URL_FRAGMENT]?: URL_FRAGMENT_TYPE;
   [URL_FULL]?: URL_FULL_TYPE;
@@ -13764,7 +13765,7 @@ export type Attributes = {
   [URL_QUERY]?: URL_QUERY_TYPE;
   [URL_SCHEME]?: URL_SCHEME_TYPE;
   [URL_TEMPLATE]?: URL_TEMPLATE_TYPE;
-  [URL]?: URL_TYPE;
+  [USER_AGENT_ORIGINAL]?: USER_AGENT_ORIGINAL_TYPE;
   [USER_EMAIL]?: USER_EMAIL_TYPE;
   [USER_FULL_NAME]?: USER_FULL_NAME_TYPE;
   [USER_GEO_CITY]?: USER_GEO_CITY_TYPE;
@@ -13776,7 +13777,6 @@ export type Attributes = {
   [USER_IP_ADDRESS]?: USER_IP_ADDRESS_TYPE;
   [USER_NAME]?: USER_NAME_TYPE;
   [USER_ROLES]?: USER_ROLES_TYPE;
-  [USER_AGENT_ORIGINAL]?: USER_AGENT_ORIGINAL_TYPE;
   [VERCEL_BRANCH]?: VERCEL_BRANCH_TYPE;
   [VERCEL_BUILD_ID]?: VERCEL_BUILD_ID_TYPE;
   [VERCEL_DEPLOYMENT_ID]?: VERCEL_DEPLOYMENT_ID_TYPE;
