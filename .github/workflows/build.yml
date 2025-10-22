@@ -43,13 +43,17 @@ jobs:
   
       - name: Check for changes
         id: verify-changed-files
+        shell: pwsh
         run: |
-          if [ -n "$(git status --porcelain)" ]; then
+          git diff-index --quiet HEAD --    
+          if ($LASTEXITCODE -ne 0) {
+            Write-Host "::error::Uncommitted changes found after build/script execution. Failing job."
             git status
             exit 1
-          else
+          } else {
+            Write-Host "Working tree is clean. No uncommitted changes found."
             exit 0
-          fi
+          }
 
   build:
     name: Build
