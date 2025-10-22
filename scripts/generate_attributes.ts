@@ -46,7 +46,7 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
   usedConstantNames.clear();
 
   // First pass: collect all attributes
-  var allAttributesPartial: Array<{
+  const allAttributesPartial: Array<{
     file: string;
     key: string;
     attributeJson: AttributeJson;
@@ -72,17 +72,17 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
     const bName = getConstantNameInner(b.key);
     if (aName < bName) {
       return -1;
-    } else if (aName > bName) {
-      return 1;
-    } else {
-      if (a.isDeprecated === b.isDeprecated) {
-        return 0;
-      } else if (a.isDeprecated) {
-        return 1;
-      } else {
-        return -1;
-      }
     }
+    if (aName > bName) {
+      return 1;
+    }
+    if (a.isDeprecated === b.isDeprecated) {
+      return 0;
+    }
+    if (a.isDeprecated) {
+      return 1;
+    }
+    return -1;
   });
 
   // Second pass: compute constant names
@@ -213,7 +213,7 @@ function getConstantNameInner(key: string): string {
     return constantNameInnerMemo.get(key) as string;
   }
 
-  let constantName = key
+  const constantName = key
     .toUpperCase()
     .replaceAll('.', '_')
     .replaceAll('-', '_')
@@ -682,9 +682,8 @@ function generateMetadataDict(
   let metadataDict = attributeTypeMap + attributeNameType;
   metadataDict += 'export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {\n';
 
-  for (const { key, attributeJson } of allAttributes) {
+  for (const { key, attributeJson, constantName } of allAttributes) {
     const { brief, type, pii, is_in_otel, example, has_dynamic_suffix, deprecation, alias } = attributeJson;
-    const constantName = getConstantName(key);
 
     metadataDict += `  [${constantName}]: {\n`;
     metadataDict += `    brief: ${JSON.stringify(brief)},\n`;
@@ -729,7 +728,15 @@ function generateMetadataDict(
 
     if (alias && alias.length > 0) {
       // Use constant names for aliases
-      const constantAliases = alias.map((aliasKey) => getConstantName(aliasKey)).join(', ');
+      const constantAliases = alias
+        .map((aliasKey) => {
+          const aliasConstantName = allAttributes.find((attr) => attr.key === aliasKey)?.constantName;
+          if (aliasConstantName === null) {
+            throw new Error(`Alias with key ${aliasKey} not found in allAttributes`);
+          }
+          return aliasConstantName;
+        })
+        .join(', ');
       metadataDict += `    aliases: [${constantAliases}],\n`;
     }
 
