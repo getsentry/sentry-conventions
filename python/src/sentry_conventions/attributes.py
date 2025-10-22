@@ -2542,7 +2542,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "2024-11-05"
     """
 
-    # Path: model/attributes/mcp/mcp__request__argument__<key>.json
+    # Path: model/attributes/mcp/mcp__request__argument__[key].json
     MCP_REQUEST_ARGUMENT_KEY: Literal["mcp.request.argument.<key>"] = (
         "mcp.request.argument.<key>"
     )
@@ -2705,7 +2705,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "stdio"
     """
 
-    # Path: model/attributes/mdc/mdc__<key>.json
+    # Path: model/attributes/mdc/mdc__[key].json
     MDC_KEY: Literal["mdc.<key>"] = "mdc.<key>"
     """Attributes from the Mapped Diagnostic Context (MDC) present at the moment the log record was created. The MDC is supported by all the most popular logging solutions in the Java ecosystem, and it's usually implemented as a thread-local map that stores context for e.g. a specific request.
 
