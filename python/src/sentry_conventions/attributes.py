@@ -155,7 +155,6 @@ class _AttributeNamesMeta(type):
         "ROUTE",
         "SENTRY_BROWSER_NAME",
         "SENTRY_BROWSER_VERSION",
-        "SENTRY_OBSERVED_TIMESTAMP_NANOS",
         "_SENTRY_SEGMENT_ID",
         "TRANSACTION",
         "URL",
@@ -3538,19 +3537,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "/issues/errors-outages/"
     """
 
-    # Path: model/attributes/sentry/sentry___internal__observed_timestamp_nanos.json
-    SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS: Literal[
-        "sentry._internal.observed_timestamp_nanos"
-    ] = "sentry._internal.observed_timestamp_nanos"
-    """The timestamp at which an envelope was received by Relay, in nanoseconds.
-
-    Type: str
-    Contains PII: false
-    Defined in OTEL: No
-    Aliases: sentry.observed_timestamp_nanos
-    Example: "1544712660300000000"
-    """
-
     # Path: model/attributes/sentry/sentry___internal__replay_is_buffering.json
     SENTRY_INTERNAL_REPLAY_IS_BUFFERING: Literal[
         "sentry._internal.replay_is_buffering"
@@ -3742,8 +3728,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
-    Aliases: sentry._internal.observed_timestamp_nanos
-    DEPRECATED: Use sentry._internal.observed_timestamp_nanos instead
     Example: "1544712660300000000"
     """
 
@@ -7033,14 +7017,6 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="/issues/errors-outages/",
     ),
-    "sentry._internal.observed_timestamp_nanos": AttributeMetadata(
-        brief="The timestamp at which an envelope was received by Relay, in nanoseconds.",
-        type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=False,
-        example="1544712660300000000",
-        aliases=["sentry.observed_timestamp_nanos"],
-    ),
     "sentry._internal.replay_is_buffering": AttributeMetadata(
         brief="A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate).",
         type=AttributeType.BOOLEAN,
@@ -7167,11 +7143,6 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="1544712660300000000",
-        deprecation=DeprecationInfo(
-            replacement="sentry._internal.observed_timestamp_nanos",
-            status=DeprecationStatus.BACKFILL,
-        ),
-        aliases=["sentry._internal.observed_timestamp_nanos"],
     ),
     "sentry.op": AttributeMetadata(
         brief="The operation of a span.",
@@ -8103,7 +8074,6 @@ Attributes = TypedDict(
         "sentry._internal.dsc.sampled": bool,
         "sentry._internal.dsc.trace_id": str,
         "sentry._internal.dsc.transaction": str,
-        "sentry._internal.observed_timestamp_nanos": str,
         "sentry._internal.replay_is_buffering": bool,
         "sentry.browser.name": str,
         "sentry.browser.version": str,

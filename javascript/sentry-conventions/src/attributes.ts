@@ -6520,28 +6520,6 @@ export const SENTRY_INTERNAL_DSC_TRANSACTION = 'sentry._internal.dsc.transaction
  */
 export type SENTRY_INTERNAL_DSC_TRANSACTION_TYPE = string;
 
-// Path: model/attributes/sentry/sentry___internal__observed_timestamp_nanos.json
-
-/**
- * The timestamp at which an envelope was received by Relay, in nanoseconds. `sentry._internal.observed_timestamp_nanos`
- *
- * Attribute Value Type: `string` {@link SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * Aliases: {@link SENTRY_OBSERVED_TIMESTAMP_NANOS} `sentry.observed_timestamp_nanos`
- *
- * @example "1544712660300000000"
- */
-export const SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS = 'sentry._internal.observed_timestamp_nanos';
-
-/**
- * Type for {@link SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS} sentry._internal.observed_timestamp_nanos
- */
-export type SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS_TYPE = string;
-
 // Path: model/attributes/sentry/sentry___internal__replay_is_buffering.json
 
 /**
@@ -6675,9 +6653,6 @@ export type SENTRY_NEXTJS_SSR_FUNCTION_TYPE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS} `sentry._internal.observed_timestamp_nanos`
- *
- * @deprecated Use {@link SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS} (sentry._internal.observed_timestamp_nanos) instead
  * @example "1544712660300000000"
  */
 export const SENTRY_OBSERVED_TIMESTAMP_NANOS = 'sentry.observed_timestamp_nanos';
@@ -8764,7 +8739,6 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_INTERNAL_DSC_SAMPLE_RATE]: 'string',
   [SENTRY_INTERNAL_DSC_TRACE_ID]: 'string',
   [SENTRY_INTERNAL_DSC_TRANSACTION]: 'string',
-  [SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS]: 'string',
   [SENTRY_INTERNAL_REPLAY_IS_BUFFERING]: 'boolean',
   [SENTRY_MESSAGE_PARAMETER_KEY]: 'string',
   [SENTRY_MESSAGE_TEMPLATE]: 'string',
@@ -9171,7 +9145,6 @@ export type AttributeName =
   | typeof SENTRY_INTERNAL_DSC_SAMPLE_RATE
   | typeof SENTRY_INTERNAL_DSC_TRACE_ID
   | typeof SENTRY_INTERNAL_DSC_TRANSACTION
-  | typeof SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS
   | typeof SENTRY_INTERNAL_REPLAY_IS_BUFFERING
   | typeof SENTRY_MESSAGE_PARAMETER_KEY
   | typeof SENTRY_MESSAGE_TEMPLATE
@@ -12525,16 +12498,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '/issues/errors-outages/',
   },
-  [SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS]: {
-    brief: 'The timestamp at which an envelope was received by Relay, in nanoseconds.',
-    type: 'string',
-    pii: {
-      isPii: 'false',
-    },
-    isInOtel: false,
-    example: '1544712660300000000',
-    aliases: [SENTRY_OBSERVED_TIMESTAMP_NANOS],
-  },
   [SENTRY_INTERNAL_REPLAY_IS_BUFFERING]: {
     brief:
       'A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate).',
@@ -12604,10 +12567,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '1544712660300000000',
-    deprecation: {
-      replacement: 'sentry._internal.observed_timestamp_nanos',
-    },
-    aliases: [SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS],
   },
   [SENTRY_OP]: {
     brief: 'The operation of a span.',
@@ -13720,7 +13679,6 @@ export type Attributes = {
   [SENTRY_INTERNAL_DSC_SAMPLE_RATE]?: SENTRY_INTERNAL_DSC_SAMPLE_RATE_TYPE;
   [SENTRY_INTERNAL_DSC_TRACE_ID]?: SENTRY_INTERNAL_DSC_TRACE_ID_TYPE;
   [SENTRY_INTERNAL_DSC_TRANSACTION]?: SENTRY_INTERNAL_DSC_TRANSACTION_TYPE;
-  [SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS]?: SENTRY_INTERNAL_OBSERVED_TIMESTAMP_NANOS_TYPE;
   [SENTRY_INTERNAL_REPLAY_IS_BUFFERING]?: SENTRY_INTERNAL_REPLAY_IS_BUFFERING_TYPE;
   [SENTRY_MESSAGE_PARAMETER_KEY]?: SENTRY_MESSAGE_PARAMETER_KEY_TYPE;
   [SENTRY_MESSAGE_TEMPLATE]?: SENTRY_MESSAGE_TEMPLATE_TYPE;
