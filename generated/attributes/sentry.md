@@ -217,11 +217,11 @@ The sentry environment.
 
 ### sentry.exclusive_time
 
-The exclusive time duration of the span.
+The exclusive time duration of the span in milliseconds.
 
 | Property | Value |
 | --- | --- |
-| Type | `integer` |
+| Type | `double` |
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `1234` |
