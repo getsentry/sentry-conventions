@@ -42,13 +42,13 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
 
   // Reset memoization for fresh calculation
   constantNameMemo.clear();
+  constantNameInnerMemo.clear();
   usedConstantNames.clear();
 
-  // First pass: collect all attributes and determine names (non-deprecated first to avoid collisions)
-  const allAttributes: Array<{
+  // First pass: collect all attributes
+  const allAttributesPartial: Array<{
     file: string;
     key: string;
-    constantName: string;
     attributeJson: AttributeJson;
     isDeprecated: boolean;
   }> = [];
@@ -57,11 +57,49 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
     const attributePath = path.join(attributesDir, file);
     const attributeJson = JSON.parse(fs.readFileSync(attributePath, 'utf-8')) as AttributeJson;
     const isDeprecated = !!attributeJson.deprecation;
-    const constantName = getConstantName(attributeJson.key, isDeprecated);
+
+    allAttributesPartial.push({
+      file,
+      key: attributeJson.key,
+      attributeJson,
+      isDeprecated,
+    });
+  }
+
+  // Sort by what the constant name would be, but put non-deprecated attributes before deprecated ones
+  allAttributesPartial.sort((a, b) => {
+    const aName = getConstantNameInner(a.key);
+    const bName = getConstantNameInner(b.key);
+    if (aName < bName) {
+      return -1;
+    }
+    if (aName > bName) {
+      return 1;
+    }
+    if (a.isDeprecated === b.isDeprecated) {
+      return 0;
+    }
+    if (a.isDeprecated) {
+      return 1;
+    }
+    return -1;
+  });
+
+  // Second pass: compute constant names
+  const allAttributes: Array<{
+    file: string;
+    key: string;
+    constantName: string;
+    attributeJson: AttributeJson;
+    isDeprecated: boolean;
+  }> = [];
+
+  for (const { file, key, attributeJson, isDeprecated } of allAttributesPartial) {
+    const constantName = getConstantName(key, isDeprecated);
 
     allAttributes.push({
       file,
-      key: attributeJson.key,
+      key,
       constantName,
       attributeJson,
       isDeprecated,
@@ -166,20 +204,34 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
 }
 
 const constantNameMemo = new Map<string, string>();
+const constantNameInnerMemo = new Map<string, string>();
 const usedConstantNames = new Set<string>();
 
-function getConstantName(key: string, isDeprecated: boolean): string {
-  if (constantNameMemo.has(key)) {
-    return constantNameMemo.get(key) as string;
+// Computes a constant name for an attribute without regard for deprecation status.
+function getConstantNameInner(key: string): string {
+  if (constantNameInnerMemo.has(key)) {
+    return constantNameInnerMemo.get(key) as string;
   }
 
-  let constantName = key
+  const constantName = key
     .toUpperCase()
     .replaceAll('.', '_')
     .replaceAll('-', '_')
     .replaceAll('<', '__') // Replace opening angle bracket with underscore
     .replaceAll('>', '') // Remove closing angle bracket
     .replace(/__+/g, '_'); // Replace multiple consecutive underscores with a single one
+
+  constantNameInnerMemo.set(key, constantName);
+  return constantName;
+}
+
+// Computes a constant name for an attribute, taking deprecation status into account.
+function getConstantName(key: string, isDeprecated: boolean): string {
+  if (constantNameMemo.has(key)) {
+    return constantNameMemo.get(key) as string;
+  }
+
+  let constantName = getConstantNameInner(key);
 
   // If this key is deprecated and there's another key that maps to the same name, append underscores
   if (isDeprecated) {
@@ -630,9 +682,8 @@ function generateMetadataDict(
   let metadataDict = attributeTypeMap + attributeNameType;
   metadataDict += 'export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {\n';
 
-  for (const { key, attributeJson } of allAttributes) {
+  for (const { key, attributeJson, constantName } of allAttributes) {
     const { brief, type, pii, is_in_otel, example, has_dynamic_suffix, deprecation, alias } = attributeJson;
-    const constantName = getConstantName(key);
 
     metadataDict += `  [${constantName}]: {\n`;
     metadataDict += `    brief: ${JSON.stringify(brief)},\n`;
@@ -677,7 +728,15 @@ function generateMetadataDict(
 
     if (alias && alias.length > 0) {
       // Use constant names for aliases
-      const constantAliases = alias.map((aliasKey) => getConstantName(aliasKey)).join(', ');
+      const constantAliases = alias
+        .map((aliasKey) => {
+          const aliasConstantName = allAttributes.find((attr) => attr.key === aliasKey)?.constantName;
+          if (aliasConstantName === null) {
+            throw new Error(`Alias with key ${aliasKey} not found in allAttributes`);
+          }
+          return aliasConstantName;
+        })
+        .join(', ');
       metadataDict += `    aliases: [${constantAliases}],\n`;
     }
 

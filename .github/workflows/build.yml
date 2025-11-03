@@ -8,9 +8,13 @@ on:
   pull_request:
 
 jobs:
-  build:
-    name: Build & Test
-    runs-on: ubuntu-latest
+  test:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+
+    name: Test (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
 
@@ -38,14 +42,35 @@ jobs:
         run: yarn lint
   
       - name: Check for changes
+        if: matrix.os == 'ubuntu-latest'
         id: verify-changed-files
         run: |
-          if [ -n "$(git status --porcelain)" ]; then
+          changes=$(git status --porcelain)
+          if [ -n "$changes" ]; then
+            echo "Uncommitted changes found after build/script execution. Failing job."
             git status
             exit 1
           else
+            echo "Working tree is clean. No uncommitted changes found."
             exit 0
           fi
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: "package.json"
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+
+      - name: Install node modules
+        run: yarn install --frozen-lockfile
 
       - name: Build Packages
         run: yarn build
