@@ -7,7 +7,5 @@
   },
   "is_in_otel": false,
   "example": "MyTag",
-  "sdks": [
-    "sentry-android"
-  ]
+  "sdks": ["sentry-android"]
 }
