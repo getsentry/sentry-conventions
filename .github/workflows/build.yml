@@ -42,18 +42,18 @@ jobs:
         run: yarn lint
   
       - name: Check for changes
+        if: matrix.os == 'ubuntu-latest'
         id: verify-changed-files
-        shell: pwsh
         run: |
-          git status --porcelain    
-          if ($LASTEXITCODE -ne 0) {
-            Write-Host "::error::Uncommitted changes found after build/script execution. Failing job."
+          changes=$(git status --porcelain)
+          if [ -n "$changes" ]; then
+            echo "Uncommitted changes found after build/script execution. Failing job."
             git status
             exit 1
-          } else {
-            Write-Host "Working tree is clean. No uncommitted changes found."
+          else
+            echo "Working tree is clean. No uncommitted changes found."
             exit 0
-          }
+          fi
 
   build:
     name: Build
