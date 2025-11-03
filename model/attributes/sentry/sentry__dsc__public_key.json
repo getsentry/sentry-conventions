@@ -1,5 +1,5 @@
 {
-  "key": "sentry._internal.dsc.public_key",
+  "key": "sentry.dsc.public_key",
   "brief": "The public key from the dynamic sampling context.",
   "type": "string",
   "pii": {

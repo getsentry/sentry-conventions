@@ -1,5 +1,5 @@
 {
-  "key": "sentry._internal.dsc.trace_id",
+  "key": "sentry.dsc.trace_id",
   "brief": "The trace ID from the dynamic sampling context.",
   "type": "string",
   "pii": {

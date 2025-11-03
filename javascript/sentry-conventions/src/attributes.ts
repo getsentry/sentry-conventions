@@ -6258,6 +6258,186 @@ export const SENTRY_DIST = 'sentry.dist';
  */
 export type SENTRY_DIST_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__dsc__environment.json
+
+/**
+ * The environment from the dynamic sampling context. `sentry.dsc.environment`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_DSC_ENVIRONMENT_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "prod"
+ */
+export const SENTRY_DSC_ENVIRONMENT = 'sentry.dsc.environment';
+
+/**
+ * Type for {@link SENTRY_DSC_ENVIRONMENT} sentry.dsc.environment
+ */
+export type SENTRY_DSC_ENVIRONMENT_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__dsc__org_id.json
+
+/**
+ * The organization ID from the dynamic sampling context. `sentry.dsc.org_id`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_DSC_ORG_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "1"
+ */
+export const SENTRY_DSC_ORG_ID = 'sentry.dsc.org_id';
+
+/**
+ * Type for {@link SENTRY_DSC_ORG_ID} sentry.dsc.org_id
+ */
+export type SENTRY_DSC_ORG_ID_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__dsc__public_key.json
+
+/**
+ * The public key from the dynamic sampling context. `sentry.dsc.public_key`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_DSC_PUBLIC_KEY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "c51734c603c4430eb57cb0a5728a479d"
+ */
+export const SENTRY_DSC_PUBLIC_KEY = 'sentry.dsc.public_key';
+
+/**
+ * Type for {@link SENTRY_DSC_PUBLIC_KEY} sentry.dsc.public_key
+ */
+export type SENTRY_DSC_PUBLIC_KEY_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__dsc__release.json
+
+/**
+ * The release identifier from the dynamic sampling context. `sentry.dsc.release`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_DSC_RELEASE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "frontend@e8211be71b214afab5b85de4b4c54be3714952bb"
+ */
+export const SENTRY_DSC_RELEASE = 'sentry.dsc.release';
+
+/**
+ * Type for {@link SENTRY_DSC_RELEASE} sentry.dsc.release
+ */
+export type SENTRY_DSC_RELEASE_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__dsc__sampled.json
+
+/**
+ * Whether the event was sampled according to the dynamic sampling context. `sentry.dsc.sampled`
+ *
+ * Attribute Value Type: `boolean` {@link SENTRY_DSC_SAMPLED_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example true
+ */
+export const SENTRY_DSC_SAMPLED = 'sentry.dsc.sampled';
+
+/**
+ * Type for {@link SENTRY_DSC_SAMPLED} sentry.dsc.sampled
+ */
+export type SENTRY_DSC_SAMPLED_TYPE = boolean;
+
+// Path: model/attributes/sentry/sentry__dsc__sample_rand.json
+
+/**
+ * The random sampling value from the dynamic sampling context. `sentry.dsc.sample_rand`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_DSC_SAMPLE_RAND_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "0.8286147972820134"
+ */
+export const SENTRY_DSC_SAMPLE_RAND = 'sentry.dsc.sample_rand';
+
+/**
+ * Type for {@link SENTRY_DSC_SAMPLE_RAND} sentry.dsc.sample_rand
+ */
+export type SENTRY_DSC_SAMPLE_RAND_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__dsc__sample_rate.json
+
+/**
+ * The sample rate from the dynamic sampling context. `sentry.dsc.sample_rate`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_DSC_SAMPLE_RATE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "1.0"
+ */
+export const SENTRY_DSC_SAMPLE_RATE = 'sentry.dsc.sample_rate';
+
+/**
+ * Type for {@link SENTRY_DSC_SAMPLE_RATE} sentry.dsc.sample_rate
+ */
+export type SENTRY_DSC_SAMPLE_RATE_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__dsc__trace_id.json
+
+/**
+ * The trace ID from the dynamic sampling context. `sentry.dsc.trace_id`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_DSC_TRACE_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "047372980460430cbc78d9779df33a46"
+ */
+export const SENTRY_DSC_TRACE_ID = 'sentry.dsc.trace_id';
+
+/**
+ * Type for {@link SENTRY_DSC_TRACE_ID} sentry.dsc.trace_id
+ */
+export type SENTRY_DSC_TRACE_ID_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__dsc__transaction.json
+
+/**
+ * The transaction name from the dynamic sampling context. `sentry.dsc.transaction`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_DSC_TRANSACTION_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "/issues/errors-outages/"
+ */
+export const SENTRY_DSC_TRANSACTION = 'sentry.dsc.transaction';
+
+/**
+ * Type for {@link SENTRY_DSC_TRANSACTION} sentry.dsc.transaction
+ */
+export type SENTRY_DSC_TRANSACTION_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__environment.json
 
 /**
@@ -6339,206 +6519,6 @@ export const SENTRY_IDLE_SPAN_FINISH_REASON = 'sentry.idle_span_finish_reason';
  * Type for {@link SENTRY_IDLE_SPAN_FINISH_REASON} sentry.idle_span_finish_reason
  */
 export type SENTRY_IDLE_SPAN_FINISH_REASON_TYPE = string;
-
-// Path: model/attributes/sentry/sentry___internal__dsc__environment.json
-
-/**
- * The environment from the dynamic sampling context. `sentry._internal.dsc.environment`
- *
- * Attribute Value Type: `string` {@link SENTRY_INTERNAL_DSC_ENVIRONMENT_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * @example "prod"
- */
-export const SENTRY_INTERNAL_DSC_ENVIRONMENT = 'sentry._internal.dsc.environment';
-
-/**
- * Type for {@link SENTRY_INTERNAL_DSC_ENVIRONMENT} sentry._internal.dsc.environment
- */
-export type SENTRY_INTERNAL_DSC_ENVIRONMENT_TYPE = string;
-
-// Path: model/attributes/sentry/sentry___internal__dsc__org_id.json
-
-/**
- * The organization ID from the dynamic sampling context. `sentry._internal.dsc.org_id`
- *
- * Attribute Value Type: `string` {@link SENTRY_INTERNAL_DSC_ORG_ID_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * @example "1"
- */
-export const SENTRY_INTERNAL_DSC_ORG_ID = 'sentry._internal.dsc.org_id';
-
-/**
- * Type for {@link SENTRY_INTERNAL_DSC_ORG_ID} sentry._internal.dsc.org_id
- */
-export type SENTRY_INTERNAL_DSC_ORG_ID_TYPE = string;
-
-// Path: model/attributes/sentry/sentry___internal__dsc__public_key.json
-
-/**
- * The public key from the dynamic sampling context. `sentry._internal.dsc.public_key`
- *
- * Attribute Value Type: `string` {@link SENTRY_INTERNAL_DSC_PUBLIC_KEY_TYPE}
- *
- * Contains PII: maybe
- *
- * Attribute defined in OTEL: No
- *
- * @example "c51734c603c4430eb57cb0a5728a479d"
- */
-export const SENTRY_INTERNAL_DSC_PUBLIC_KEY = 'sentry._internal.dsc.public_key';
-
-/**
- * Type for {@link SENTRY_INTERNAL_DSC_PUBLIC_KEY} sentry._internal.dsc.public_key
- */
-export type SENTRY_INTERNAL_DSC_PUBLIC_KEY_TYPE = string;
-
-// Path: model/attributes/sentry/sentry___internal__dsc__release.json
-
-/**
- * The release identifier from the dynamic sampling context. `sentry._internal.dsc.release`
- *
- * Attribute Value Type: `string` {@link SENTRY_INTERNAL_DSC_RELEASE_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * @example "frontend@e8211be71b214afab5b85de4b4c54be3714952bb"
- */
-export const SENTRY_INTERNAL_DSC_RELEASE = 'sentry._internal.dsc.release';
-
-/**
- * Type for {@link SENTRY_INTERNAL_DSC_RELEASE} sentry._internal.dsc.release
- */
-export type SENTRY_INTERNAL_DSC_RELEASE_TYPE = string;
-
-// Path: model/attributes/sentry/sentry___internal__dsc__sampled.json
-
-/**
- * Whether the event was sampled according to the dynamic sampling context. `sentry._internal.dsc.sampled`
- *
- * Attribute Value Type: `boolean` {@link SENTRY_INTERNAL_DSC_SAMPLED_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * @example true
- */
-export const SENTRY_INTERNAL_DSC_SAMPLED = 'sentry._internal.dsc.sampled';
-
-/**
- * Type for {@link SENTRY_INTERNAL_DSC_SAMPLED} sentry._internal.dsc.sampled
- */
-export type SENTRY_INTERNAL_DSC_SAMPLED_TYPE = boolean;
-
-// Path: model/attributes/sentry/sentry___internal__dsc__sample_rand.json
-
-/**
- * The random sampling value from the dynamic sampling context. `sentry._internal.dsc.sample_rand`
- *
- * Attribute Value Type: `string` {@link SENTRY_INTERNAL_DSC_SAMPLE_RAND_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * @example "0.8286147972820134"
- */
-export const SENTRY_INTERNAL_DSC_SAMPLE_RAND = 'sentry._internal.dsc.sample_rand';
-
-/**
- * Type for {@link SENTRY_INTERNAL_DSC_SAMPLE_RAND} sentry._internal.dsc.sample_rand
- */
-export type SENTRY_INTERNAL_DSC_SAMPLE_RAND_TYPE = string;
-
-// Path: model/attributes/sentry/sentry___internal__dsc__sample_rate.json
-
-/**
- * The sample rate from the dynamic sampling context. `sentry._internal.dsc.sample_rate`
- *
- * Attribute Value Type: `string` {@link SENTRY_INTERNAL_DSC_SAMPLE_RATE_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * @example "1.0"
- */
-export const SENTRY_INTERNAL_DSC_SAMPLE_RATE = 'sentry._internal.dsc.sample_rate';
-
-/**
- * Type for {@link SENTRY_INTERNAL_DSC_SAMPLE_RATE} sentry._internal.dsc.sample_rate
- */
-export type SENTRY_INTERNAL_DSC_SAMPLE_RATE_TYPE = string;
-
-// Path: model/attributes/sentry/sentry___internal__dsc__trace_id.json
-
-/**
- * The trace ID from the dynamic sampling context. `sentry._internal.dsc.trace_id`
- *
- * Attribute Value Type: `string` {@link SENTRY_INTERNAL_DSC_TRACE_ID_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * @example "047372980460430cbc78d9779df33a46"
- */
-export const SENTRY_INTERNAL_DSC_TRACE_ID = 'sentry._internal.dsc.trace_id';
-
-/**
- * Type for {@link SENTRY_INTERNAL_DSC_TRACE_ID} sentry._internal.dsc.trace_id
- */
-export type SENTRY_INTERNAL_DSC_TRACE_ID_TYPE = string;
-
-// Path: model/attributes/sentry/sentry___internal__dsc__transaction.json
-
-/**
- * The transaction name from the dynamic sampling context. `sentry._internal.dsc.transaction`
- *
- * Attribute Value Type: `string` {@link SENTRY_INTERNAL_DSC_TRANSACTION_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * @example "/issues/errors-outages/"
- */
-export const SENTRY_INTERNAL_DSC_TRANSACTION = 'sentry._internal.dsc.transaction';
-
-/**
- * Type for {@link SENTRY_INTERNAL_DSC_TRANSACTION} sentry._internal.dsc.transaction
- */
-export type SENTRY_INTERNAL_DSC_TRANSACTION_TYPE = string;
-
-// Path: model/attributes/sentry/sentry___internal__replay_is_buffering.json
-
-/**
- * A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate). `sentry._internal.replay_is_buffering`
- *
- * Attribute Value Type: `boolean` {@link SENTRY_INTERNAL_REPLAY_IS_BUFFERING_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * @example true
- */
-export const SENTRY_INTERNAL_REPLAY_IS_BUFFERING = 'sentry._internal.replay_is_buffering';
-
-/**
- * Type for {@link SENTRY_INTERNAL_REPLAY_IS_BUFFERING} sentry._internal.replay_is_buffering
- */
-export type SENTRY_INTERNAL_REPLAY_IS_BUFFERING_TYPE = boolean;
 
 // Path: model/attributes/sentry/sentry__message__parameter__[key].json
 
@@ -6787,6 +6767,26 @@ export const SENTRY_REPLAY_ID = 'sentry.replay_id';
  * Type for {@link SENTRY_REPLAY_ID} sentry.replay_id
  */
 export type SENTRY_REPLAY_ID_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__replay_is_buffering.json
+
+/**
+ * A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate). `sentry.replay_is_buffering`
+ *
+ * Attribute Value Type: `boolean` {@link SENTRY_REPLAY_IS_BUFFERING_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example true
+ */
+export const SENTRY_REPLAY_IS_BUFFERING = 'sentry.replay_is_buffering';
+
+/**
+ * Type for {@link SENTRY_REPLAY_IS_BUFFERING} sentry.replay_is_buffering
+ */
+export type SENTRY_REPLAY_IS_BUFFERING_TYPE = boolean;
 
 // Path: model/attributes/sentry/sentry__sdk__integrations.json
 
@@ -8726,20 +8726,19 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_CLIENT_SAMPLE_RATE]: 'double',
   [SENTRY_DESCRIPTION]: 'string',
   [SENTRY_DIST]: 'string',
+  [SENTRY_DSC_ENVIRONMENT]: 'string',
+  [SENTRY_DSC_ORG_ID]: 'string',
+  [SENTRY_DSC_PUBLIC_KEY]: 'string',
+  [SENTRY_DSC_RELEASE]: 'string',
+  [SENTRY_DSC_SAMPLED]: 'boolean',
+  [SENTRY_DSC_SAMPLE_RAND]: 'string',
+  [SENTRY_DSC_SAMPLE_RATE]: 'string',
+  [SENTRY_DSC_TRACE_ID]: 'string',
+  [SENTRY_DSC_TRANSACTION]: 'string',
   [SENTRY_ENVIRONMENT]: 'string',
   [SENTRY_EXCLUSIVE_TIME]: 'integer',
   [SENTRY_HTTP_PREFETCH]: 'boolean',
   [SENTRY_IDLE_SPAN_FINISH_REASON]: 'string',
-  [SENTRY_INTERNAL_DSC_ENVIRONMENT]: 'string',
-  [SENTRY_INTERNAL_DSC_ORG_ID]: 'string',
-  [SENTRY_INTERNAL_DSC_PUBLIC_KEY]: 'string',
-  [SENTRY_INTERNAL_DSC_RELEASE]: 'string',
-  [SENTRY_INTERNAL_DSC_SAMPLED]: 'boolean',
-  [SENTRY_INTERNAL_DSC_SAMPLE_RAND]: 'string',
-  [SENTRY_INTERNAL_DSC_SAMPLE_RATE]: 'string',
-  [SENTRY_INTERNAL_DSC_TRACE_ID]: 'string',
-  [SENTRY_INTERNAL_DSC_TRANSACTION]: 'string',
-  [SENTRY_INTERNAL_REPLAY_IS_BUFFERING]: 'boolean',
   [SENTRY_MESSAGE_PARAMETER_KEY]: 'string',
   [SENTRY_MESSAGE_TEMPLATE]: 'string',
   [SENTRY_MODULE_KEY]: 'string',
@@ -8752,6 +8751,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_PROFILE_ID]: 'string',
   [SENTRY_RELEASE]: 'string',
   [SENTRY_REPLAY_ID]: 'string',
+  [SENTRY_REPLAY_IS_BUFFERING]: 'boolean',
   [SENTRY_SDK_INTEGRATIONS]: 'string[]',
   [SENTRY_SDK_NAME]: 'string',
   [SENTRY_SDK_VERSION]: 'string',
@@ -9132,20 +9132,19 @@ export type AttributeName =
   | typeof SENTRY_CLIENT_SAMPLE_RATE
   | typeof SENTRY_DESCRIPTION
   | typeof SENTRY_DIST
+  | typeof SENTRY_DSC_ENVIRONMENT
+  | typeof SENTRY_DSC_ORG_ID
+  | typeof SENTRY_DSC_PUBLIC_KEY
+  | typeof SENTRY_DSC_RELEASE
+  | typeof SENTRY_DSC_SAMPLED
+  | typeof SENTRY_DSC_SAMPLE_RAND
+  | typeof SENTRY_DSC_SAMPLE_RATE
+  | typeof SENTRY_DSC_TRACE_ID
+  | typeof SENTRY_DSC_TRANSACTION
   | typeof SENTRY_ENVIRONMENT
   | typeof SENTRY_EXCLUSIVE_TIME
   | typeof SENTRY_HTTP_PREFETCH
   | typeof SENTRY_IDLE_SPAN_FINISH_REASON
-  | typeof SENTRY_INTERNAL_DSC_ENVIRONMENT
-  | typeof SENTRY_INTERNAL_DSC_ORG_ID
-  | typeof SENTRY_INTERNAL_DSC_PUBLIC_KEY
-  | typeof SENTRY_INTERNAL_DSC_RELEASE
-  | typeof SENTRY_INTERNAL_DSC_SAMPLED
-  | typeof SENTRY_INTERNAL_DSC_SAMPLE_RAND
-  | typeof SENTRY_INTERNAL_DSC_SAMPLE_RATE
-  | typeof SENTRY_INTERNAL_DSC_TRACE_ID
-  | typeof SENTRY_INTERNAL_DSC_TRANSACTION
-  | typeof SENTRY_INTERNAL_REPLAY_IS_BUFFERING
   | typeof SENTRY_MESSAGE_PARAMETER_KEY
   | typeof SENTRY_MESSAGE_TEMPLATE
   | typeof SENTRY_MODULE_KEY
@@ -9158,6 +9157,7 @@ export type AttributeName =
   | typeof SENTRY_PROFILE_ID
   | typeof SENTRY_RELEASE
   | typeof SENTRY_REPLAY_ID
+  | typeof SENTRY_REPLAY_IS_BUFFERING
   | typeof SENTRY_SDK_INTEGRATIONS
   | typeof SENTRY_SDK_NAME
   | typeof SENTRY_SDK_VERSION
@@ -12380,6 +12380,87 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '1.0',
   },
+  [SENTRY_DSC_ENVIRONMENT]: {
+    brief: 'The environment from the dynamic sampling context.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'prod',
+  },
+  [SENTRY_DSC_ORG_ID]: {
+    brief: 'The organization ID from the dynamic sampling context.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '1',
+  },
+  [SENTRY_DSC_PUBLIC_KEY]: {
+    brief: 'The public key from the dynamic sampling context.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'c51734c603c4430eb57cb0a5728a479d',
+  },
+  [SENTRY_DSC_RELEASE]: {
+    brief: 'The release identifier from the dynamic sampling context.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'frontend@e8211be71b214afab5b85de4b4c54be3714952bb',
+  },
+  [SENTRY_DSC_SAMPLED]: {
+    brief: 'Whether the event was sampled according to the dynamic sampling context.',
+    type: 'boolean',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: true,
+  },
+  [SENTRY_DSC_SAMPLE_RAND]: {
+    brief: 'The random sampling value from the dynamic sampling context.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '0.8286147972820134',
+  },
+  [SENTRY_DSC_SAMPLE_RATE]: {
+    brief: 'The sample rate from the dynamic sampling context.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '1.0',
+  },
+  [SENTRY_DSC_TRACE_ID]: {
+    brief: 'The trace ID from the dynamic sampling context.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '047372980460430cbc78d9779df33a46',
+  },
+  [SENTRY_DSC_TRANSACTION]: {
+    brief: 'The transaction name from the dynamic sampling context.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '/issues/errors-outages/',
+  },
   [SENTRY_ENVIRONMENT]: {
     brief: 'The sentry environment.',
     type: 'string',
@@ -12416,97 +12497,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'idleTimeout',
-  },
-  [SENTRY_INTERNAL_DSC_ENVIRONMENT]: {
-    brief: 'The environment from the dynamic sampling context.',
-    type: 'string',
-    pii: {
-      isPii: 'false',
-    },
-    isInOtel: false,
-    example: 'prod',
-  },
-  [SENTRY_INTERNAL_DSC_ORG_ID]: {
-    brief: 'The organization ID from the dynamic sampling context.',
-    type: 'string',
-    pii: {
-      isPii: 'false',
-    },
-    isInOtel: false,
-    example: '1',
-  },
-  [SENTRY_INTERNAL_DSC_PUBLIC_KEY]: {
-    brief: 'The public key from the dynamic sampling context.',
-    type: 'string',
-    pii: {
-      isPii: 'maybe',
-    },
-    isInOtel: false,
-    example: 'c51734c603c4430eb57cb0a5728a479d',
-  },
-  [SENTRY_INTERNAL_DSC_RELEASE]: {
-    brief: 'The release identifier from the dynamic sampling context.',
-    type: 'string',
-    pii: {
-      isPii: 'false',
-    },
-    isInOtel: false,
-    example: 'frontend@e8211be71b214afab5b85de4b4c54be3714952bb',
-  },
-  [SENTRY_INTERNAL_DSC_SAMPLED]: {
-    brief: 'Whether the event was sampled according to the dynamic sampling context.',
-    type: 'boolean',
-    pii: {
-      isPii: 'false',
-    },
-    isInOtel: false,
-    example: true,
-  },
-  [SENTRY_INTERNAL_DSC_SAMPLE_RAND]: {
-    brief: 'The random sampling value from the dynamic sampling context.',
-    type: 'string',
-    pii: {
-      isPii: 'false',
-    },
-    isInOtel: false,
-    example: '0.8286147972820134',
-  },
-  [SENTRY_INTERNAL_DSC_SAMPLE_RATE]: {
-    brief: 'The sample rate from the dynamic sampling context.',
-    type: 'string',
-    pii: {
-      isPii: 'false',
-    },
-    isInOtel: false,
-    example: '1.0',
-  },
-  [SENTRY_INTERNAL_DSC_TRACE_ID]: {
-    brief: 'The trace ID from the dynamic sampling context.',
-    type: 'string',
-    pii: {
-      isPii: 'false',
-    },
-    isInOtel: false,
-    example: '047372980460430cbc78d9779df33a46',
-  },
-  [SENTRY_INTERNAL_DSC_TRANSACTION]: {
-    brief: 'The transaction name from the dynamic sampling context.',
-    type: 'string',
-    pii: {
-      isPii: 'false',
-    },
-    isInOtel: false,
-    example: '/issues/errors-outages/',
-  },
-  [SENTRY_INTERNAL_REPLAY_IS_BUFFERING]: {
-    brief:
-      'A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate).',
-    type: 'boolean',
-    pii: {
-      isPii: 'false',
-    },
-    isInOtel: false,
-    example: true,
   },
   [SENTRY_MESSAGE_PARAMETER_KEY]: {
     brief:
@@ -12624,6 +12614,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '123e4567e89b12d3a456426614174000',
     aliases: [REPLAY_ID],
+  },
+  [SENTRY_REPLAY_IS_BUFFERING]: {
+    brief:
+      'A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate).',
+    type: 'boolean',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: true,
   },
   [SENTRY_SDK_INTEGRATIONS]: {
     brief:
@@ -13666,20 +13666,19 @@ export type Attributes = {
   [SENTRY_CLIENT_SAMPLE_RATE]?: SENTRY_CLIENT_SAMPLE_RATE_TYPE;
   [SENTRY_DESCRIPTION]?: SENTRY_DESCRIPTION_TYPE;
   [SENTRY_DIST]?: SENTRY_DIST_TYPE;
+  [SENTRY_DSC_ENVIRONMENT]?: SENTRY_DSC_ENVIRONMENT_TYPE;
+  [SENTRY_DSC_ORG_ID]?: SENTRY_DSC_ORG_ID_TYPE;
+  [SENTRY_DSC_PUBLIC_KEY]?: SENTRY_DSC_PUBLIC_KEY_TYPE;
+  [SENTRY_DSC_RELEASE]?: SENTRY_DSC_RELEASE_TYPE;
+  [SENTRY_DSC_SAMPLED]?: SENTRY_DSC_SAMPLED_TYPE;
+  [SENTRY_DSC_SAMPLE_RAND]?: SENTRY_DSC_SAMPLE_RAND_TYPE;
+  [SENTRY_DSC_SAMPLE_RATE]?: SENTRY_DSC_SAMPLE_RATE_TYPE;
+  [SENTRY_DSC_TRACE_ID]?: SENTRY_DSC_TRACE_ID_TYPE;
+  [SENTRY_DSC_TRANSACTION]?: SENTRY_DSC_TRANSACTION_TYPE;
   [SENTRY_ENVIRONMENT]?: SENTRY_ENVIRONMENT_TYPE;
   [SENTRY_EXCLUSIVE_TIME]?: SENTRY_EXCLUSIVE_TIME_TYPE;
   [SENTRY_HTTP_PREFETCH]?: SENTRY_HTTP_PREFETCH_TYPE;
   [SENTRY_IDLE_SPAN_FINISH_REASON]?: SENTRY_IDLE_SPAN_FINISH_REASON_TYPE;
-  [SENTRY_INTERNAL_DSC_ENVIRONMENT]?: SENTRY_INTERNAL_DSC_ENVIRONMENT_TYPE;
-  [SENTRY_INTERNAL_DSC_ORG_ID]?: SENTRY_INTERNAL_DSC_ORG_ID_TYPE;
-  [SENTRY_INTERNAL_DSC_PUBLIC_KEY]?: SENTRY_INTERNAL_DSC_PUBLIC_KEY_TYPE;
-  [SENTRY_INTERNAL_DSC_RELEASE]?: SENTRY_INTERNAL_DSC_RELEASE_TYPE;
-  [SENTRY_INTERNAL_DSC_SAMPLED]?: SENTRY_INTERNAL_DSC_SAMPLED_TYPE;
-  [SENTRY_INTERNAL_DSC_SAMPLE_RAND]?: SENTRY_INTERNAL_DSC_SAMPLE_RAND_TYPE;
-  [SENTRY_INTERNAL_DSC_SAMPLE_RATE]?: SENTRY_INTERNAL_DSC_SAMPLE_RATE_TYPE;
-  [SENTRY_INTERNAL_DSC_TRACE_ID]?: SENTRY_INTERNAL_DSC_TRACE_ID_TYPE;
-  [SENTRY_INTERNAL_DSC_TRANSACTION]?: SENTRY_INTERNAL_DSC_TRANSACTION_TYPE;
-  [SENTRY_INTERNAL_REPLAY_IS_BUFFERING]?: SENTRY_INTERNAL_REPLAY_IS_BUFFERING_TYPE;
   [SENTRY_MESSAGE_PARAMETER_KEY]?: SENTRY_MESSAGE_PARAMETER_KEY_TYPE;
   [SENTRY_MESSAGE_TEMPLATE]?: SENTRY_MESSAGE_TEMPLATE_TYPE;
   [SENTRY_MODULE_KEY]?: SENTRY_MODULE_KEY_TYPE;
@@ -13692,6 +13691,7 @@ export type Attributes = {
   [SENTRY_PROFILE_ID]?: SENTRY_PROFILE_ID_TYPE;
   [SENTRY_RELEASE]?: SENTRY_RELEASE_TYPE;
   [SENTRY_REPLAY_ID]?: SENTRY_REPLAY_ID_TYPE;
+  [SENTRY_REPLAY_IS_BUFFERING]?: SENTRY_REPLAY_IS_BUFFERING_TYPE;
   [SENTRY_SDK_INTEGRATIONS]?: SENTRY_SDK_INTEGRATIONS_TYPE;
   [SENTRY_SDK_NAME]?: SENTRY_SDK_NAME_TYPE;
   [SENTRY_SDK_VERSION]?: SENTRY_SDK_VERSION_TYPE;
