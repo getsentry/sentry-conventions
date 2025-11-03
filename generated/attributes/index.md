@@ -46,6 +46,7 @@ This directory contains documentation for all available attributes.
 - [`server` Attributes](./server.md)
 - [`service` Attributes](./service.md)
 - [`thread` Attributes](./thread.md)
+- [`timber` Attributes](./timber.md)
 - [`ui` Attributes](./ui.md)
 - [`url` Attributes](./url.md)
 - [`user` Attributes](./user.md)

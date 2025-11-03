@@ -1,0 +1,13 @@
+{
+  "key": "timber.tag",
+  "brief": "The log tag provided by the timber logging framework.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "MyTag",
+  "sdks": [
+    "sentry-android"
+  ]
+}
