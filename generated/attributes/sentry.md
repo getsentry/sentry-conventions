@@ -3,20 +3,19 @@
 # Sentry Attributes
 
 - [Stable Attributes](#stable-attributes)
-  - [sentry._internal.dsc.environment](#sentry_internaldscenvironment)
-  - [sentry._internal.dsc.org_id](#sentry_internaldscorg_id)
-  - [sentry._internal.dsc.public_key](#sentry_internaldscpublic_key)
-  - [sentry._internal.dsc.release](#sentry_internaldscrelease)
-  - [sentry._internal.dsc.sample_rand](#sentry_internaldscsample_rand)
-  - [sentry._internal.dsc.sample_rate](#sentry_internaldscsample_rate)
-  - [sentry._internal.dsc.sampled](#sentry_internaldscsampled)
-  - [sentry._internal.dsc.trace_id](#sentry_internaldsctrace_id)
-  - [sentry._internal.dsc.transaction](#sentry_internaldsctransaction)
-  - [sentry._internal.replay_is_buffering](#sentry_internalreplay_is_buffering)
   - [sentry.cancellation_reason](#sentrycancellation_reason)
   - [sentry.client_sample_rate](#sentryclient_sample_rate)
   - [sentry.description](#sentrydescription)
   - [sentry.dist](#sentrydist)
+  - [sentry.dsc.environment](#sentrydscenvironment)
+  - [sentry.dsc.org_id](#sentrydscorg_id)
+  - [sentry.dsc.public_key](#sentrydscpublic_key)
+  - [sentry.dsc.release](#sentrydscrelease)
+  - [sentry.dsc.sample_rand](#sentrydscsample_rand)
+  - [sentry.dsc.sample_rate](#sentrydscsample_rate)
+  - [sentry.dsc.sampled](#sentrydscsampled)
+  - [sentry.dsc.trace_id](#sentrydsctrace_id)
+  - [sentry.dsc.transaction](#sentrydsctransaction)
   - [sentry.environment](#sentryenvironment)
   - [sentry.exclusive_time](#sentryexclusive_time)
   - [sentry.http.prefetch](#sentryhttpprefetch)
@@ -33,6 +32,7 @@
   - [sentry.profile_id](#sentryprofile_id)
   - [sentry.release](#sentryrelease)
   - [sentry.replay_id](#sentryreplay_id)
+  - [sentry.replay_is_buffering](#sentryreplay_is_buffering)
   - [sentry.sdk.integrations](#sentrysdkintegrations)
   - [sentry.sdk.name](#sentrysdkname)
   - [sentry.sdk.version](#sentrysdkversion)
@@ -48,116 +48,6 @@
   - [sentry.segment_id](#sentrysegment_id)
 
 ## Stable Attributes
-
-### sentry._internal.dsc.environment
-
-The environment from the dynamic sampling context.
-
-| Property | Value |
-| --- | --- |
-| Type | `string` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `prod` |
-
-### sentry._internal.dsc.org_id
-
-The organization ID from the dynamic sampling context.
-
-| Property | Value |
-| --- | --- |
-| Type | `string` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `1` |
-
-### sentry._internal.dsc.public_key
-
-The public key from the dynamic sampling context.
-
-| Property | Value |
-| --- | --- |
-| Type | `string` |
-| Has PII | maybe |
-| Exists in OpenTelemetry | No |
-| Example | `c51734c603c4430eb57cb0a5728a479d` |
-
-### sentry._internal.dsc.release
-
-The release identifier from the dynamic sampling context.
-
-| Property | Value |
-| --- | --- |
-| Type | `string` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `frontend@e8211be71b214afab5b85de4b4c54be3714952bb` |
-
-### sentry._internal.dsc.sample_rand
-
-The random sampling value from the dynamic sampling context.
-
-| Property | Value |
-| --- | --- |
-| Type | `string` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `0.8286147972820134` |
-
-### sentry._internal.dsc.sample_rate
-
-The sample rate from the dynamic sampling context.
-
-| Property | Value |
-| --- | --- |
-| Type | `string` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `1.0` |
-
-### sentry._internal.dsc.sampled
-
-Whether the event was sampled according to the dynamic sampling context.
-
-| Property | Value |
-| --- | --- |
-| Type | `boolean` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `true` |
-
-### sentry._internal.dsc.trace_id
-
-The trace ID from the dynamic sampling context.
-
-| Property | Value |
-| --- | --- |
-| Type | `string` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `047372980460430cbc78d9779df33a46` |
-
-### sentry._internal.dsc.transaction
-
-The transaction name from the dynamic sampling context.
-
-| Property | Value |
-| --- | --- |
-| Type | `string` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `/issues/errors-outages/` |
-
-### sentry._internal.replay_is_buffering
-
-A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate).
-
-| Property | Value |
-| --- | --- |
-| Type | `boolean` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `true` |
 
 ### sentry.cancellation_reason
 
@@ -202,6 +92,105 @@ The sentry dist.
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `1.0` |
+
+### sentry.dsc.environment
+
+The environment from the dynamic sampling context.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `prod` |
+
+### sentry.dsc.org_id
+
+The organization ID from the dynamic sampling context.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `1` |
+
+### sentry.dsc.public_key
+
+The public key from the dynamic sampling context.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `c51734c603c4430eb57cb0a5728a479d` |
+
+### sentry.dsc.release
+
+The release identifier from the dynamic sampling context.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `frontend@e8211be71b214afab5b85de4b4c54be3714952bb` |
+
+### sentry.dsc.sample_rand
+
+The random sampling value from the dynamic sampling context.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `0.8286147972820134` |
+
+### sentry.dsc.sample_rate
+
+The sample rate from the dynamic sampling context.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `1.0` |
+
+### sentry.dsc.sampled
+
+Whether the event was sampled according to the dynamic sampling context.
+
+| Property | Value |
+| --- | --- |
+| Type | `boolean` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `true` |
+
+### sentry.dsc.trace_id
+
+The trace ID from the dynamic sampling context.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `047372980460430cbc78d9779df33a46` |
+
+### sentry.dsc.transaction
+
+The transaction name from the dynamic sampling context.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `/issues/errors-outages/` |
 
 ### sentry.environment
 
@@ -383,6 +372,17 @@ The id of the sentry replay.
 | Exists in OpenTelemetry | No |
 | Example | `123e4567e89b12d3a456426614174000` |
 | Aliases | `replay_id` |
+
+### sentry.replay_is_buffering
+
+A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate).
+
+| Property | Value |
+| --- | --- |
+| Type | `boolean` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `true` |
 
 ### sentry.sdk.integrations
 

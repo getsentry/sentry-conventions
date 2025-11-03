@@ -3429,126 +3429,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "myService.BestService"
     """
 
-    # Path: model/attributes/sentry/sentry___internal__dsc__environment.json
-    SENTRY_INTERNAL_DSC_ENVIRONMENT: Literal["sentry._internal.dsc.environment"] = (
-        "sentry._internal.dsc.environment"
-    )
-    """The environment from the dynamic sampling context.
-
-    Type: str
-    Contains PII: false
-    Defined in OTEL: No
-    Example: "prod"
-    """
-
-    # Path: model/attributes/sentry/sentry___internal__dsc__org_id.json
-    SENTRY_INTERNAL_DSC_ORG_ID: Literal["sentry._internal.dsc.org_id"] = (
-        "sentry._internal.dsc.org_id"
-    )
-    """The organization ID from the dynamic sampling context.
-
-    Type: str
-    Contains PII: false
-    Defined in OTEL: No
-    Example: "1"
-    """
-
-    # Path: model/attributes/sentry/sentry___internal__dsc__public_key.json
-    SENTRY_INTERNAL_DSC_PUBLIC_KEY: Literal["sentry._internal.dsc.public_key"] = (
-        "sentry._internal.dsc.public_key"
-    )
-    """The public key from the dynamic sampling context.
-
-    Type: str
-    Contains PII: maybe
-    Defined in OTEL: No
-    Example: "c51734c603c4430eb57cb0a5728a479d"
-    """
-
-    # Path: model/attributes/sentry/sentry___internal__dsc__release.json
-    SENTRY_INTERNAL_DSC_RELEASE: Literal["sentry._internal.dsc.release"] = (
-        "sentry._internal.dsc.release"
-    )
-    """The release identifier from the dynamic sampling context.
-
-    Type: str
-    Contains PII: false
-    Defined in OTEL: No
-    Example: "frontend@e8211be71b214afab5b85de4b4c54be3714952bb"
-    """
-
-    # Path: model/attributes/sentry/sentry___internal__dsc__sample_rand.json
-    SENTRY_INTERNAL_DSC_SAMPLE_RAND: Literal["sentry._internal.dsc.sample_rand"] = (
-        "sentry._internal.dsc.sample_rand"
-    )
-    """The random sampling value from the dynamic sampling context.
-
-    Type: str
-    Contains PII: false
-    Defined in OTEL: No
-    Example: "0.8286147972820134"
-    """
-
-    # Path: model/attributes/sentry/sentry___internal__dsc__sample_rate.json
-    SENTRY_INTERNAL_DSC_SAMPLE_RATE: Literal["sentry._internal.dsc.sample_rate"] = (
-        "sentry._internal.dsc.sample_rate"
-    )
-    """The sample rate from the dynamic sampling context.
-
-    Type: str
-    Contains PII: false
-    Defined in OTEL: No
-    Example: "1.0"
-    """
-
-    # Path: model/attributes/sentry/sentry___internal__dsc__sampled.json
-    SENTRY_INTERNAL_DSC_SAMPLED: Literal["sentry._internal.dsc.sampled"] = (
-        "sentry._internal.dsc.sampled"
-    )
-    """Whether the event was sampled according to the dynamic sampling context.
-
-    Type: bool
-    Contains PII: false
-    Defined in OTEL: No
-    Example: true
-    """
-
-    # Path: model/attributes/sentry/sentry___internal__dsc__trace_id.json
-    SENTRY_INTERNAL_DSC_TRACE_ID: Literal["sentry._internal.dsc.trace_id"] = (
-        "sentry._internal.dsc.trace_id"
-    )
-    """The trace ID from the dynamic sampling context.
-
-    Type: str
-    Contains PII: false
-    Defined in OTEL: No
-    Example: "047372980460430cbc78d9779df33a46"
-    """
-
-    # Path: model/attributes/sentry/sentry___internal__dsc__transaction.json
-    SENTRY_INTERNAL_DSC_TRANSACTION: Literal["sentry._internal.dsc.transaction"] = (
-        "sentry._internal.dsc.transaction"
-    )
-    """The transaction name from the dynamic sampling context.
-
-    Type: str
-    Contains PII: false
-    Defined in OTEL: No
-    Example: "/issues/errors-outages/"
-    """
-
-    # Path: model/attributes/sentry/sentry___internal__replay_is_buffering.json
-    SENTRY_INTERNAL_REPLAY_IS_BUFFERING: Literal[
-        "sentry._internal.replay_is_buffering"
-    ] = "sentry._internal.replay_is_buffering"
-    """A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate).
-
-    Type: bool
-    Contains PII: false
-    Defined in OTEL: No
-    Example: true
-    """
-
     # Path: model/attributes/sentry/sentry__browser__name.json
     SENTRY_BROWSER_NAME: Literal["sentry.browser.name"] = "sentry.browser.name"
     """The name of the browser.
@@ -3615,6 +3495,96 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: false
     Defined in OTEL: No
     Example: "1.0"
+    """
+
+    # Path: model/attributes/sentry/sentry__dsc__environment.json
+    SENTRY_DSC_ENVIRONMENT: Literal["sentry.dsc.environment"] = "sentry.dsc.environment"
+    """The environment from the dynamic sampling context.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "prod"
+    """
+
+    # Path: model/attributes/sentry/sentry__dsc__org_id.json
+    SENTRY_DSC_ORG_ID: Literal["sentry.dsc.org_id"] = "sentry.dsc.org_id"
+    """The organization ID from the dynamic sampling context.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "1"
+    """
+
+    # Path: model/attributes/sentry/sentry__dsc__public_key.json
+    SENTRY_DSC_PUBLIC_KEY: Literal["sentry.dsc.public_key"] = "sentry.dsc.public_key"
+    """The public key from the dynamic sampling context.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "c51734c603c4430eb57cb0a5728a479d"
+    """
+
+    # Path: model/attributes/sentry/sentry__dsc__release.json
+    SENTRY_DSC_RELEASE: Literal["sentry.dsc.release"] = "sentry.dsc.release"
+    """The release identifier from the dynamic sampling context.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "frontend@e8211be71b214afab5b85de4b4c54be3714952bb"
+    """
+
+    # Path: model/attributes/sentry/sentry__dsc__sample_rand.json
+    SENTRY_DSC_SAMPLE_RAND: Literal["sentry.dsc.sample_rand"] = "sentry.dsc.sample_rand"
+    """The random sampling value from the dynamic sampling context.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "0.8286147972820134"
+    """
+
+    # Path: model/attributes/sentry/sentry__dsc__sample_rate.json
+    SENTRY_DSC_SAMPLE_RATE: Literal["sentry.dsc.sample_rate"] = "sentry.dsc.sample_rate"
+    """The sample rate from the dynamic sampling context.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "1.0"
+    """
+
+    # Path: model/attributes/sentry/sentry__dsc__sampled.json
+    SENTRY_DSC_SAMPLED: Literal["sentry.dsc.sampled"] = "sentry.dsc.sampled"
+    """Whether the event was sampled according to the dynamic sampling context.
+
+    Type: bool
+    Contains PII: false
+    Defined in OTEL: No
+    Example: true
+    """
+
+    # Path: model/attributes/sentry/sentry__dsc__trace_id.json
+    SENTRY_DSC_TRACE_ID: Literal["sentry.dsc.trace_id"] = "sentry.dsc.trace_id"
+    """The trace ID from the dynamic sampling context.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "047372980460430cbc78d9779df33a46"
+    """
+
+    # Path: model/attributes/sentry/sentry__dsc__transaction.json
+    SENTRY_DSC_TRANSACTION: Literal["sentry.dsc.transaction"] = "sentry.dsc.transaction"
+    """The transaction name from the dynamic sampling context.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "/issues/errors-outages/"
     """
 
     # Path: model/attributes/sentry/sentry__environment.json
@@ -3792,6 +3762,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Aliases: replay_id
     Example: "123e4567e89b12d3a456426614174000"
+    """
+
+    # Path: model/attributes/sentry/sentry__replay_is_buffering.json
+    SENTRY_REPLAY_IS_BUFFERING: Literal["sentry.replay_is_buffering"] = (
+        "sentry.replay_is_buffering"
+    )
+    """A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate).
+
+    Type: bool
+    Contains PII: false
+    Defined in OTEL: No
+    Example: true
     """
 
     # Path: model/attributes/sentry/sentry__sdk__integrations.json
@@ -6954,76 +6936,6 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="myService.BestService",
     ),
-    "sentry._internal.dsc.environment": AttributeMetadata(
-        brief="The environment from the dynamic sampling context.",
-        type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=False,
-        example="prod",
-    ),
-    "sentry._internal.dsc.org_id": AttributeMetadata(
-        brief="The organization ID from the dynamic sampling context.",
-        type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=False,
-        example="1",
-    ),
-    "sentry._internal.dsc.public_key": AttributeMetadata(
-        brief="The public key from the dynamic sampling context.",
-        type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
-        is_in_otel=False,
-        example="c51734c603c4430eb57cb0a5728a479d",
-    ),
-    "sentry._internal.dsc.release": AttributeMetadata(
-        brief="The release identifier from the dynamic sampling context.",
-        type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=False,
-        example="frontend@e8211be71b214afab5b85de4b4c54be3714952bb",
-    ),
-    "sentry._internal.dsc.sample_rand": AttributeMetadata(
-        brief="The random sampling value from the dynamic sampling context.",
-        type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=False,
-        example="0.8286147972820134",
-    ),
-    "sentry._internal.dsc.sample_rate": AttributeMetadata(
-        brief="The sample rate from the dynamic sampling context.",
-        type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=False,
-        example="1.0",
-    ),
-    "sentry._internal.dsc.sampled": AttributeMetadata(
-        brief="Whether the event was sampled according to the dynamic sampling context.",
-        type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=False,
-        example=True,
-    ),
-    "sentry._internal.dsc.trace_id": AttributeMetadata(
-        brief="The trace ID from the dynamic sampling context.",
-        type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=False,
-        example="047372980460430cbc78d9779df33a46",
-    ),
-    "sentry._internal.dsc.transaction": AttributeMetadata(
-        brief="The transaction name from the dynamic sampling context.",
-        type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=False,
-        example="/issues/errors-outages/",
-    ),
-    "sentry._internal.replay_is_buffering": AttributeMetadata(
-        brief="A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate).",
-        type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=False,
-        example=True,
-    ),
     "sentry.browser.name": AttributeMetadata(
         brief="The name of the browser.",
         type=AttributeType.STRING,
@@ -7069,6 +6981,69 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="1.0",
+    ),
+    "sentry.dsc.environment": AttributeMetadata(
+        brief="The environment from the dynamic sampling context.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="prod",
+    ),
+    "sentry.dsc.org_id": AttributeMetadata(
+        brief="The organization ID from the dynamic sampling context.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="1",
+    ),
+    "sentry.dsc.public_key": AttributeMetadata(
+        brief="The public key from the dynamic sampling context.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="c51734c603c4430eb57cb0a5728a479d",
+    ),
+    "sentry.dsc.release": AttributeMetadata(
+        brief="The release identifier from the dynamic sampling context.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="frontend@e8211be71b214afab5b85de4b4c54be3714952bb",
+    ),
+    "sentry.dsc.sample_rand": AttributeMetadata(
+        brief="The random sampling value from the dynamic sampling context.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="0.8286147972820134",
+    ),
+    "sentry.dsc.sample_rate": AttributeMetadata(
+        brief="The sample rate from the dynamic sampling context.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="1.0",
+    ),
+    "sentry.dsc.sampled": AttributeMetadata(
+        brief="Whether the event was sampled according to the dynamic sampling context.",
+        type=AttributeType.BOOLEAN,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=True,
+    ),
+    "sentry.dsc.trace_id": AttributeMetadata(
+        brief="The trace ID from the dynamic sampling context.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="047372980460430cbc78d9779df33a46",
+    ),
+    "sentry.dsc.transaction": AttributeMetadata(
+        brief="The transaction name from the dynamic sampling context.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="/issues/errors-outages/",
     ),
     "sentry.environment": AttributeMetadata(
         brief="The sentry environment.",
@@ -7188,6 +7163,13 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="123e4567e89b12d3a456426614174000",
         aliases=["replay_id"],
+    ),
+    "sentry.replay_is_buffering": AttributeMetadata(
+        brief="A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate).",
+        type=AttributeType.BOOLEAN,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=True,
     ),
     "sentry.sdk.integrations": AttributeMetadata(
         brief="A list of names identifying enabled integrations. The list shouldhave all enabled integrations, including default integrations. Defaultintegrations are included because different SDK releases may contain differentdefault integrations.",
@@ -8065,22 +8047,21 @@ Attributes = TypedDict(
         "route": str,
         "rpc.grpc.status_code": int,
         "rpc.service": str,
-        "sentry._internal.dsc.environment": str,
-        "sentry._internal.dsc.org_id": str,
-        "sentry._internal.dsc.public_key": str,
-        "sentry._internal.dsc.release": str,
-        "sentry._internal.dsc.sample_rand": str,
-        "sentry._internal.dsc.sample_rate": str,
-        "sentry._internal.dsc.sampled": bool,
-        "sentry._internal.dsc.trace_id": str,
-        "sentry._internal.dsc.transaction": str,
-        "sentry._internal.replay_is_buffering": bool,
         "sentry.browser.name": str,
         "sentry.browser.version": str,
         "sentry.cancellation_reason": str,
         "sentry.client_sample_rate": float,
         "sentry.description": str,
         "sentry.dist": str,
+        "sentry.dsc.environment": str,
+        "sentry.dsc.org_id": str,
+        "sentry.dsc.public_key": str,
+        "sentry.dsc.release": str,
+        "sentry.dsc.sample_rand": str,
+        "sentry.dsc.sample_rate": str,
+        "sentry.dsc.sampled": bool,
+        "sentry.dsc.trace_id": str,
+        "sentry.dsc.transaction": str,
         "sentry.environment": str,
         "sentry.exclusive_time": int,
         "sentry.http.prefetch": bool,
@@ -8097,6 +8078,7 @@ Attributes = TypedDict(
         "sentry.profile_id": str,
         "sentry.release": str,
         "sentry.replay_id": str,
+        "sentry.replay_is_buffering": bool,
         "sentry.sdk.integrations": List[str],
         "sentry.sdk.name": str,
         "sentry.sdk.version": str,

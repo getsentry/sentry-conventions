@@ -8,7 +8,6 @@
 
 If an attribute was added:
 - [ ] The attribute is in a namespace (e.g. `nextjs.function_id`, not `function_id`)
-- [ ] I've used the `sentry._internal` namespace if the attribute should not be visibile to end-users
 - [ ] I have used the correct value for `pii` (i.e. `maybe` or `true`. Use `false` only for values that should never be scrubbed such as IDs)
 
 If an attribute was deprecated:

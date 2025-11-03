@@ -56,7 +56,6 @@ After you edit an attribute or add a new one, you should run `yarn run generate 
 
 Here's a list of policies that any newly added attributes MUST follow. Most of these are automatically enforced by the test suite.
 - The attribute MUST be namespaced. Example: `nextjs.function_id`, not `function_id`.
-- If the attribute shall not be visibile by end users, it MUST be in the `sentry._internal` namespace.
 - The `pii` field in the attribute definition MUST be `maybe` or `true` (if the attribute can contain sensitive data). It SHOULD be `false` only if scrubbing the attribute value for PII would potentially break product features. For example, `sentry.replay_id` should have `pii` set to `false`.
 - When an attribute is added that deprecates an old one:
   - The old one should be marked as deprecated, and it MUST point to the new one using the `deprecation.replacement` field.
