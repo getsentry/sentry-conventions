@@ -4,6 +4,7 @@
 
 #### Changes to attributes
 
+- Timber logging attributes ([#183](https://github.com/getsentry/sentry-conventions/pull/183))
 - MCP attributes ([#171](https://github.com/getsentry/sentry-conventions/pull/171))
 ## 0.2.1
 
