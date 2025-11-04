@@ -7081,6 +7081,26 @@ export const THREAD_NAME = 'thread.name';
  */
 export type THREAD_NAME_TYPE = string;
 
+// Path: model/attributes/timber/timber__tag.json
+
+/**
+ * The log tag provided by the timber logging framework. `timber.tag`
+ *
+ * Attribute Value Type: `string` {@link TIMBER_TAG_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "MyTag"
+ */
+export const TIMBER_TAG = 'timber.tag';
+
+/**
+ * Type for {@link TIMBER_TAG} timber.tag
+ */
+export type TIMBER_TAG_TYPE = string;
+
 // Path: model/attributes/transaction.json
 
 /**
@@ -8726,6 +8746,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SERVICE_VERSION]: 'string',
   [THREAD_ID]: 'integer',
   [THREAD_NAME]: 'string',
+  [TIMBER_TAG]: 'string',
   [TRANSACTION]: 'string',
   [TYPE]: 'string',
   [UI_COMPONENT_NAME]: 'string',
@@ -9130,6 +9151,7 @@ export type AttributeName =
   | typeof SERVICE_VERSION
   | typeof THREAD_ID
   | typeof THREAD_NAME
+  | typeof TIMBER_TAG
   | typeof TRANSACTION
   | typeof TYPE
   | typeof UI_COMPONENT_NAME
@@ -12719,6 +12741,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'main',
   },
+  [TIMBER_TAG]: {
+    brief: 'The log tag provided by the timber logging framework.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'MyTag',
+    sdks: ['sentry.java.android'],
+  },
   [TRANSACTION]: {
     brief: 'The sentry transaction (segment name).',
     type: 'string',
@@ -13644,6 +13676,7 @@ export type Attributes = {
   [SERVICE_VERSION]?: SERVICE_VERSION_TYPE;
   [THREAD_ID]?: THREAD_ID_TYPE;
   [THREAD_NAME]?: THREAD_NAME_TYPE;
+  [TIMBER_TAG]?: TIMBER_TAG_TYPE;
   [TRANSACTION]?: TRANSACTION_TYPE;
   [TYPE]?: TYPE_TYPE;
   [UI_COMPONENT_NAME]?: UI_COMPONENT_NAME_TYPE;

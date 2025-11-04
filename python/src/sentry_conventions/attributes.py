@@ -3929,6 +3929,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "main"
     """
 
+    # Path: model/attributes/timber/timber__tag.json
+    TIMBER_TAG: Literal["timber.tag"] = "timber.tag"
+    """The log tag provided by the timber logging framework.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "MyTag"
+    """
+
     # Path: model/attributes/transaction.json
     TRANSACTION: Literal["transaction"] = "transaction"
     """The sentry transaction (segment name).
@@ -7261,6 +7271,14 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="main",
     ),
+    "timber.tag": AttributeMetadata(
+        brief="The log tag provided by the timber logging framework.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="MyTag",
+        sdks=["sentry.java.android"],
+    ),
     "transaction": AttributeMetadata(
         brief="The sentry transaction (segment name).",
         type=AttributeType.STRING,
@@ -8059,6 +8077,7 @@ Attributes = TypedDict(
         "service.version": str,
         "thread.id": int,
         "thread.name": str,
+        "timber.tag": str,
         "transaction": str,
         "type": str,
         "ui.component_name": str,
