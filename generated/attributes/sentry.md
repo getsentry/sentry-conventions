@@ -8,10 +8,8 @@
   - [sentry.description](#sentrydescription)
   - [sentry.dist](#sentrydist)
   - [sentry.dsc.environment](#sentrydscenvironment)
-  - [sentry.dsc.org_id](#sentrydscorg_id)
   - [sentry.dsc.public_key](#sentrydscpublic_key)
   - [sentry.dsc.release](#sentrydscrelease)
-  - [sentry.dsc.sample_rand](#sentrydscsample_rand)
   - [sentry.dsc.sample_rate](#sentrydscsample_rate)
   - [sentry.dsc.sampled](#sentrydscsampled)
   - [sentry.dsc.trace_id](#sentrydsctrace_id)
@@ -104,17 +102,6 @@ The environment from the dynamic sampling context.
 | Exists in OpenTelemetry | No |
 | Example | `prod` |
 
-### sentry.dsc.org_id
-
-The organization ID from the dynamic sampling context.
-
-| Property | Value |
-| --- | --- |
-| Type | `string` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `1` |
-
 ### sentry.dsc.public_key
 
 The public key from the dynamic sampling context.
@@ -136,17 +123,6 @@ The release identifier from the dynamic sampling context.
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `frontend@e8211be71b214afab5b85de4b4c54be3714952bb` |
-
-### sentry.dsc.sample_rand
-
-The random sampling value from the dynamic sampling context.
-
-| Property | Value |
-| --- | --- |
-| Type | `string` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `0.8286147972820134` |
 
 ### sentry.dsc.sample_rate
 
