@@ -3600,9 +3600,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/sentry/sentry__exclusive_time.json
     SENTRY_EXCLUSIVE_TIME: Literal["sentry.exclusive_time"] = "sentry.exclusive_time"
-    """The exclusive time duration of the span.
+    """The exclusive time duration of the span in milliseconds.
 
-    Type: int
+    Type: float
     Contains PII: false
     Defined in OTEL: No
     Example: 1234
@@ -7054,8 +7054,8 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["environment"],
     ),
     "sentry.exclusive_time": AttributeMetadata(
-        brief="The exclusive time duration of the span.",
-        type=AttributeType.INTEGER,
+        brief="The exclusive time duration of the span in milliseconds.",
+        type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=1234,
@@ -8063,7 +8063,7 @@ Attributes = TypedDict(
         "sentry.dsc.trace_id": str,
         "sentry.dsc.transaction": str,
         "sentry.environment": str,
-        "sentry.exclusive_time": int,
+        "sentry.exclusive_time": float,
         "sentry.http.prefetch": bool,
         "sentry.idle_span_finish_reason": str,
         "sentry.message.parameter.<key>": str,

@@ -5,6 +5,8 @@
 #### Changes to attributes
 
 - MCP attributes ([#171](https://github.com/getsentry/sentry-conventions/pull/171))
+- Make `sentry.exclusive_time` floating point milliseconds ([#160](https://github.com/getsentry/sentry-conventions/pull/160))
+
 ## 0.2.1
 
 ### Fixes

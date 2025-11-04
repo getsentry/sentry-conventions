@@ -6463,7 +6463,7 @@ export type SENTRY_ENVIRONMENT_TYPE = string;
 // Path: model/attributes/sentry/sentry__exclusive_time.json
 
 /**
- * The exclusive time duration of the span. `sentry.exclusive_time`
+ * The exclusive time duration of the span in milliseconds. `sentry.exclusive_time`
  *
  * Attribute Value Type: `number` {@link SENTRY_EXCLUSIVE_TIME_TYPE}
  *
@@ -8736,7 +8736,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_DSC_TRACE_ID]: 'string',
   [SENTRY_DSC_TRANSACTION]: 'string',
   [SENTRY_ENVIRONMENT]: 'string',
-  [SENTRY_EXCLUSIVE_TIME]: 'integer',
+  [SENTRY_EXCLUSIVE_TIME]: 'double',
   [SENTRY_HTTP_PREFETCH]: 'boolean',
   [SENTRY_IDLE_SPAN_FINISH_REASON]: 'string',
   [SENTRY_MESSAGE_PARAMETER_KEY]: 'string',
@@ -12472,8 +12472,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [ENVIRONMENT],
   },
   [SENTRY_EXCLUSIVE_TIME]: {
-    brief: 'The exclusive time duration of the span.',
-    type: 'integer',
+    brief: 'The exclusive time duration of the span in milliseconds.',
+    type: 'double',
     pii: {
       isPii: 'false',
     },
