@@ -7329,7 +7329,7 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="MyTag",
-        sdks=["sentry-android"],
+        sdks=["sentry.java.android"],
     ),
     "transaction": AttributeMetadata(
         brief="The sentry transaction (segment name).",

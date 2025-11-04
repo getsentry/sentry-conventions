@@ -12811,7 +12811,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'MyTag',
-    sdks: ['sentry-android'],
+    sdks: ['sentry.java.android'],
   },
   [TRANSACTION]: {
     brief: 'The sentry transaction (segment name).',
