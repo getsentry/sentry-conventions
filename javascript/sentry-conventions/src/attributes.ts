@@ -6278,26 +6278,6 @@ export const SENTRY_DSC_ENVIRONMENT = 'sentry.dsc.environment';
  */
 export type SENTRY_DSC_ENVIRONMENT_TYPE = string;
 
-// Path: model/attributes/sentry/sentry__dsc__org_id.json
-
-/**
- * The organization ID from the dynamic sampling context. `sentry.dsc.org_id`
- *
- * Attribute Value Type: `string` {@link SENTRY_DSC_ORG_ID_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * @example "1"
- */
-export const SENTRY_DSC_ORG_ID = 'sentry.dsc.org_id';
-
-/**
- * Type for {@link SENTRY_DSC_ORG_ID} sentry.dsc.org_id
- */
-export type SENTRY_DSC_ORG_ID_TYPE = string;
-
 // Path: model/attributes/sentry/sentry__dsc__public_key.json
 
 /**
@@ -6357,26 +6337,6 @@ export const SENTRY_DSC_SAMPLED = 'sentry.dsc.sampled';
  * Type for {@link SENTRY_DSC_SAMPLED} sentry.dsc.sampled
  */
 export type SENTRY_DSC_SAMPLED_TYPE = boolean;
-
-// Path: model/attributes/sentry/sentry__dsc__sample_rand.json
-
-/**
- * The random sampling value from the dynamic sampling context. `sentry.dsc.sample_rand`
- *
- * Attribute Value Type: `string` {@link SENTRY_DSC_SAMPLE_RAND_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * @example "0.8286147972820134"
- */
-export const SENTRY_DSC_SAMPLE_RAND = 'sentry.dsc.sample_rand';
-
-/**
- * Type for {@link SENTRY_DSC_SAMPLE_RAND} sentry.dsc.sample_rand
- */
-export type SENTRY_DSC_SAMPLE_RAND_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__dsc__sample_rate.json
 
@@ -8727,11 +8687,9 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_DESCRIPTION]: 'string',
   [SENTRY_DIST]: 'string',
   [SENTRY_DSC_ENVIRONMENT]: 'string',
-  [SENTRY_DSC_ORG_ID]: 'string',
   [SENTRY_DSC_PUBLIC_KEY]: 'string',
   [SENTRY_DSC_RELEASE]: 'string',
   [SENTRY_DSC_SAMPLED]: 'boolean',
-  [SENTRY_DSC_SAMPLE_RAND]: 'string',
   [SENTRY_DSC_SAMPLE_RATE]: 'string',
   [SENTRY_DSC_TRACE_ID]: 'string',
   [SENTRY_DSC_TRANSACTION]: 'string',
@@ -9133,11 +9091,9 @@ export type AttributeName =
   | typeof SENTRY_DESCRIPTION
   | typeof SENTRY_DIST
   | typeof SENTRY_DSC_ENVIRONMENT
-  | typeof SENTRY_DSC_ORG_ID
   | typeof SENTRY_DSC_PUBLIC_KEY
   | typeof SENTRY_DSC_RELEASE
   | typeof SENTRY_DSC_SAMPLED
-  | typeof SENTRY_DSC_SAMPLE_RAND
   | typeof SENTRY_DSC_SAMPLE_RATE
   | typeof SENTRY_DSC_TRACE_ID
   | typeof SENTRY_DSC_TRANSACTION
@@ -12389,15 +12345,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'prod',
   },
-  [SENTRY_DSC_ORG_ID]: {
-    brief: 'The organization ID from the dynamic sampling context.',
-    type: 'string',
-    pii: {
-      isPii: 'false',
-    },
-    isInOtel: false,
-    example: '1',
-  },
   [SENTRY_DSC_PUBLIC_KEY]: {
     brief: 'The public key from the dynamic sampling context.',
     type: 'string',
@@ -12424,15 +12371,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: true,
-  },
-  [SENTRY_DSC_SAMPLE_RAND]: {
-    brief: 'The random sampling value from the dynamic sampling context.',
-    type: 'string',
-    pii: {
-      isPii: 'false',
-    },
-    isInOtel: false,
-    example: '0.8286147972820134',
   },
   [SENTRY_DSC_SAMPLE_RATE]: {
     brief: 'The sample rate from the dynamic sampling context.',
@@ -13667,11 +13605,9 @@ export type Attributes = {
   [SENTRY_DESCRIPTION]?: SENTRY_DESCRIPTION_TYPE;
   [SENTRY_DIST]?: SENTRY_DIST_TYPE;
   [SENTRY_DSC_ENVIRONMENT]?: SENTRY_DSC_ENVIRONMENT_TYPE;
-  [SENTRY_DSC_ORG_ID]?: SENTRY_DSC_ORG_ID_TYPE;
   [SENTRY_DSC_PUBLIC_KEY]?: SENTRY_DSC_PUBLIC_KEY_TYPE;
   [SENTRY_DSC_RELEASE]?: SENTRY_DSC_RELEASE_TYPE;
   [SENTRY_DSC_SAMPLED]?: SENTRY_DSC_SAMPLED_TYPE;
-  [SENTRY_DSC_SAMPLE_RAND]?: SENTRY_DSC_SAMPLE_RAND_TYPE;
   [SENTRY_DSC_SAMPLE_RATE]?: SENTRY_DSC_SAMPLE_RATE_TYPE;
   [SENTRY_DSC_TRACE_ID]?: SENTRY_DSC_TRACE_ID_TYPE;
   [SENTRY_DSC_TRANSACTION]?: SENTRY_DSC_TRANSACTION_TYPE;

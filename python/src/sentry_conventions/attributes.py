@@ -3507,16 +3507,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "prod"
     """
 
-    # Path: model/attributes/sentry/sentry__dsc__org_id.json
-    SENTRY_DSC_ORG_ID: Literal["sentry.dsc.org_id"] = "sentry.dsc.org_id"
-    """The organization ID from the dynamic sampling context.
-
-    Type: str
-    Contains PII: false
-    Defined in OTEL: No
-    Example: "1"
-    """
-
     # Path: model/attributes/sentry/sentry__dsc__public_key.json
     SENTRY_DSC_PUBLIC_KEY: Literal["sentry.dsc.public_key"] = "sentry.dsc.public_key"
     """The public key from the dynamic sampling context.
@@ -3535,16 +3525,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: false
     Defined in OTEL: No
     Example: "frontend@e8211be71b214afab5b85de4b4c54be3714952bb"
-    """
-
-    # Path: model/attributes/sentry/sentry__dsc__sample_rand.json
-    SENTRY_DSC_SAMPLE_RAND: Literal["sentry.dsc.sample_rand"] = "sentry.dsc.sample_rand"
-    """The random sampling value from the dynamic sampling context.
-
-    Type: str
-    Contains PII: false
-    Defined in OTEL: No
-    Example: "0.8286147972820134"
     """
 
     # Path: model/attributes/sentry/sentry__dsc__sample_rate.json
@@ -6989,13 +6969,6 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="prod",
     ),
-    "sentry.dsc.org_id": AttributeMetadata(
-        brief="The organization ID from the dynamic sampling context.",
-        type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=False,
-        example="1",
-    ),
     "sentry.dsc.public_key": AttributeMetadata(
         brief="The public key from the dynamic sampling context.",
         type=AttributeType.STRING,
@@ -7009,13 +6982,6 @@ _ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="frontend@e8211be71b214afab5b85de4b4c54be3714952bb",
-    ),
-    "sentry.dsc.sample_rand": AttributeMetadata(
-        brief="The random sampling value from the dynamic sampling context.",
-        type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=False,
-        example="0.8286147972820134",
     ),
     "sentry.dsc.sample_rate": AttributeMetadata(
         brief="The sample rate from the dynamic sampling context.",
@@ -8054,10 +8020,8 @@ Attributes = TypedDict(
         "sentry.description": str,
         "sentry.dist": str,
         "sentry.dsc.environment": str,
-        "sentry.dsc.org_id": str,
         "sentry.dsc.public_key": str,
         "sentry.dsc.release": str,
-        "sentry.dsc.sample_rand": str,
         "sentry.dsc.sample_rate": str,
         "sentry.dsc.sampled": bool,
         "sentry.dsc.trace_id": str,
