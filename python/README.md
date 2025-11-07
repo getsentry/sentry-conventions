@@ -23,4 +23,4 @@ The package exports:
 
 - `attributes.ATTRIBUTE_NAMES`: contains constants for all attribute names and their types, as defined in the Sentry semantic conventions
 - `attributes.Attributes`: represents a bag of typed attributes
-- `attributes._ATTRIBUTE_METADATA`: provides metadata about attributes, such as their type, PII definition, and deprecation info
+- `attributes.ATTRIBUTE_METADATA`: provides metadata about attributes, such as their type, PII definition, and deprecation info

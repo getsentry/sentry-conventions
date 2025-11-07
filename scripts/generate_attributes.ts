@@ -510,7 +510,7 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
   content += '\n';
 
   // Add metadata dictionary
-  content += '_ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {\n';
+  content += 'ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {\n';
   content += metadataDict;
   content += '}\n\n';
   content += '"""\n';
@@ -528,7 +528,7 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
 
   // Add __all__ list for exports
   content += '__all__ = [\n';
-  content += '    "_ATTRIBUTE_METADATA",\n';
+  content += '    "ATTRIBUTE_METADATA",\n';
   content += '    "Attributes",\n';
   content += '    "ATTRIBUTE_NAMES",\n';
   content += ']\n\n';

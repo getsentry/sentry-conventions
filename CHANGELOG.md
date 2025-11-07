@@ -8,6 +8,10 @@
 - MCP attributes ([#171](https://github.com/getsentry/sentry-conventions/pull/171))
 - Make `sentry.exclusive_time` floating point milliseconds ([#160](https://github.com/getsentry/sentry-conventions/pull/160))
 
+#### Changes to generated packages
+
+- (Python) Make ATTRIBUTE_METADATA public ([#189](https://github.com/getsentry/sentry-conventions/pull/189))
+
 ## 0.2.1
 
 ### Fixes

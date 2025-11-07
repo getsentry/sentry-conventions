@@ -4590,7 +4590,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
 
-_ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
+ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.citations": AttributeMetadata(
         brief="References or sources cited by the AI model in its response.",
         type=AttributeType.STRING_ARRAY,
@@ -8146,7 +8146,7 @@ Attributes = TypedDict(
 """TypedDict representing a collection of attributes, including deprecated and non-deprecated ones."""
 
 __all__ = [
-    "_ATTRIBUTE_METADATA",
+    "ATTRIBUTE_METADATA",
     "Attributes",
     "ATTRIBUTE_NAMES",
 ]
