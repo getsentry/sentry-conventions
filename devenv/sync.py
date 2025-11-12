@@ -1,6 +1,5 @@
-from devenv.lib import config, uv
-
 from devenv import constants
+from devenv.lib import config, node, uv
 
 
 def main(context: dict[str, str]) -> int:
@@ -13,5 +12,14 @@ def main(context: dict[str, str]) -> int:
         cfg["uv"][f"{constants.SYSTEM_MACHINE}_sha256"],
         reporoot,
     )
+
+    node.install(
+        cfg["node"]["version"],
+        cfg["node"][constants.SYSTEM_MACHINE],
+        cfg["node"][f"{constants.SYSTEM_MACHINE}_sha256"],
+        reporoot,
+    )
+
+    node.install_yarn(cfg["yarn"]["version"], reporoot)
 
     return 0
