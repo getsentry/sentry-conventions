@@ -16,8 +16,11 @@
   - [sentry.dsc.transaction](#sentrydsctransaction)
   - [sentry.environment](#sentryenvironment)
   - [sentry.exclusive_time](#sentryexclusive_time)
+  - [sentry.graphql.operation](#sentrygraphqloperation)
   - [sentry.http.prefetch](#sentryhttpprefetch)
   - [sentry.idle_span_finish_reason](#sentryidle_span_finish_reason)
+  - [sentry.is_remote](#sentryis_remote)
+  - [sentry.kind](#sentrykind)
   - [sentry.message.parameter.\<key\>](#sentrymessageparameterkey)
   - [sentry.message.template](#sentrymessagetemplate)
   - [sentry.module.\<key\>](#sentrymodulekey)
@@ -38,6 +41,7 @@
   - [sentry.segment.name](#sentrysegmentname)
   - [sentry.server_sample_rate](#sentryserver_sample_rate)
   - [sentry.span.source](#sentryspansource)
+  - [sentry.status.message](#sentrystatusmessage)
   - [sentry.trace.parent_span_id](#sentrytraceparent_span_id)
   - [sentry.transaction](#sentrytransaction)
 - [Deprecated Attributes](#deprecated-attributes)
@@ -191,6 +195,17 @@ The exclusive time duration of the span in milliseconds.
 | Exists in OpenTelemetry | No |
 | Example | `1234` |
 
+### sentry.graphql.operation
+
+Indicates the type of graphql operation, emitted by the Javascript SDK.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `getUserById` |
+
 ### sentry.http.prefetch
 
 If an http request was a prefetch request.
@@ -212,6 +227,28 @@ The reason why an idle span ended early.
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `idleTimeout` |
+
+### sentry.is_remote
+
+Indicates whether a span's parent is remote.
+
+| Property | Value |
+| --- | --- |
+| Type | `boolean` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `true` |
+
+### sentry.kind
+
+Used to clarify the relationship between parents and children, or to distinguish between spans, e.g. a `server` and `client` span with the same name.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `server` |
 
 ### sentry.message.parameter.\<key\>
 
@@ -437,6 +474,17 @@ The source of a span, also referred to as transaction source.
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `route` |
+
+### sentry.status.message
+
+The from OTLP extracted status message.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `foobar` |
 
 ### sentry.trace.parent_span_id
 

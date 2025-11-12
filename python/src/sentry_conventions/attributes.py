@@ -3588,6 +3588,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 1234
     """
 
+    # Path: model/attributes/sentry/sentry__graphql__operation.json
+    SENTRY_GRAPHQL_OPERATION: Literal["sentry.graphql.operation"] = (
+        "sentry.graphql.operation"
+    )
+    """Indicates the type of graphql operation, emitted by the Javascript SDK.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "getUserById"
+    """
+
     # Path: model/attributes/sentry/sentry__http__prefetch.json
     SENTRY_HTTP_PREFETCH: Literal["sentry.http.prefetch"] = "sentry.http.prefetch"
     """If an http request was a prefetch request.
@@ -3608,6 +3620,26 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: false
     Defined in OTEL: No
     Example: "idleTimeout"
+    """
+
+    # Path: model/attributes/sentry/sentry__is_remote.json
+    SENTRY_IS_REMOTE: Literal["sentry.is_remote"] = "sentry.is_remote"
+    """Indicates whether a span's parent is remote.
+
+    Type: bool
+    Contains PII: false
+    Defined in OTEL: No
+    Example: true
+    """
+
+    # Path: model/attributes/sentry/sentry__kind.json
+    SENTRY_KIND: Literal["sentry.kind"] = "sentry.kind"
+    """Used to clarify the relationship between parents and children, or to distinguish between spans, e.g. a `server` and `client` span with the same name.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "server"
     """
 
     # Path: model/attributes/sentry/sentry__message__parameter__[key].json
@@ -3841,6 +3873,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: false
     Defined in OTEL: No
     Example: "route"
+    """
+
+    # Path: model/attributes/sentry/sentry__status__message.json
+    SENTRY_STATUS_MESSAGE: Literal["sentry.status.message"] = "sentry.status.message"
+    """The from OTLP extracted status message.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "foobar"
     """
 
     # Path: model/attributes/sentry/sentry__trace__parent_span_id.json
@@ -7036,6 +7078,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=1234,
     ),
+    "sentry.graphql.operation": AttributeMetadata(
+        brief="Indicates the type of graphql operation, emitted by the Javascript SDK.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="getUserById",
+    ),
     "sentry.http.prefetch": AttributeMetadata(
         brief="If an http request was a prefetch request.",
         type=AttributeType.BOOLEAN,
@@ -7049,6 +7098,20 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="idleTimeout",
+    ),
+    "sentry.is_remote": AttributeMetadata(
+        brief="Indicates whether a span's parent is remote.",
+        type=AttributeType.BOOLEAN,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=True,
+    ),
+    "sentry.kind": AttributeMetadata(
+        brief="Used to clarify the relationship between parents and children, or to distinguish between spans, e.g. a `server` and `client` span with the same name.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="server",
     ),
     "sentry.message.parameter.<key>": AttributeMetadata(
         brief="A parameter used in the message template. <key> can either be the number that represent the parameter's position in the template string (sentry.message.parameter.0, sentry.message.parameter.1, etc) or the parameter's name (sentry.message.parameter.item_id, sentry.message.parameter.user_id, etc)",
@@ -7210,6 +7273,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="route",
+    ),
+    "sentry.status.message": AttributeMetadata(
+        brief="The from OTLP extracted status message.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="foobar",
     ),
     "sentry.trace.parent_span_id": AttributeMetadata(
         brief="The span id of the span that was active when the log was collected. This should not be set if there was no active span.",
@@ -8046,8 +8116,11 @@ Attributes = TypedDict(
         "sentry.dsc.transaction": str,
         "sentry.environment": str,
         "sentry.exclusive_time": float,
+        "sentry.graphql.operation": str,
         "sentry.http.prefetch": bool,
         "sentry.idle_span_finish_reason": str,
+        "sentry.is_remote": bool,
+        "sentry.kind": str,
         "sentry.message.parameter.<key>": str,
         "sentry.message.template": str,
         "sentry.module.<key>": str,
@@ -8069,6 +8142,7 @@ Attributes = TypedDict(
         "sentry.segment_id": str,
         "sentry.server_sample_rate": float,
         "sentry.span.source": str,
+        "sentry.status.message": str,
         "sentry.trace.parent_span_id": str,
         "sentry.transaction": str,
         "server.address": str,

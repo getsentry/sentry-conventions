@@ -6440,6 +6440,26 @@ export const SENTRY_EXCLUSIVE_TIME = 'sentry.exclusive_time';
  */
 export type SENTRY_EXCLUSIVE_TIME_TYPE = number;
 
+// Path: model/attributes/sentry/sentry__graphql__operation.json
+
+/**
+ * Indicates the type of graphql operation, emitted by the Javascript SDK. `sentry.graphql.operation`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_GRAPHQL_OPERATION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "getUserById"
+ */
+export const SENTRY_GRAPHQL_OPERATION = 'sentry.graphql.operation';
+
+/**
+ * Type for {@link SENTRY_GRAPHQL_OPERATION} sentry.graphql.operation
+ */
+export type SENTRY_GRAPHQL_OPERATION_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__http__prefetch.json
 
 /**
@@ -6479,6 +6499,46 @@ export const SENTRY_IDLE_SPAN_FINISH_REASON = 'sentry.idle_span_finish_reason';
  * Type for {@link SENTRY_IDLE_SPAN_FINISH_REASON} sentry.idle_span_finish_reason
  */
 export type SENTRY_IDLE_SPAN_FINISH_REASON_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__is_remote.json
+
+/**
+ * Indicates whether a span's parent is remote. `sentry.is_remote`
+ *
+ * Attribute Value Type: `boolean` {@link SENTRY_IS_REMOTE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example true
+ */
+export const SENTRY_IS_REMOTE = 'sentry.is_remote';
+
+/**
+ * Type for {@link SENTRY_IS_REMOTE} sentry.is_remote
+ */
+export type SENTRY_IS_REMOTE_TYPE = boolean;
+
+// Path: model/attributes/sentry/sentry__kind.json
+
+/**
+ * Used to clarify the relationship between parents and children, or to distinguish between spans, e.g. a `server` and `client` span with the same name. `sentry.kind`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_KIND_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "server"
+ */
+export const SENTRY_KIND = 'sentry.kind';
+
+/**
+ * Type for {@link SENTRY_KIND} sentry.kind
+ */
+export type SENTRY_KIND_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__message__parameter__[key].json
 
@@ -6912,6 +6972,26 @@ export const SENTRY_SPAN_SOURCE = 'sentry.span.source';
  * Type for {@link SENTRY_SPAN_SOURCE} sentry.span.source
  */
 export type SENTRY_SPAN_SOURCE_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__status__message.json
+
+/**
+ * The from OTLP extracted status message. `sentry.status.message`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_STATUS_MESSAGE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "foobar"
+ */
+export const SENTRY_STATUS_MESSAGE = 'sentry.status.message';
+
+/**
+ * Type for {@link SENTRY_STATUS_MESSAGE} sentry.status.message
+ */
+export type SENTRY_STATUS_MESSAGE_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__trace__parent_span_id.json
 
@@ -8715,8 +8795,11 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_DSC_TRANSACTION]: 'string',
   [SENTRY_ENVIRONMENT]: 'string',
   [SENTRY_EXCLUSIVE_TIME]: 'double',
+  [SENTRY_GRAPHQL_OPERATION]: 'string',
   [SENTRY_HTTP_PREFETCH]: 'boolean',
   [SENTRY_IDLE_SPAN_FINISH_REASON]: 'string',
+  [SENTRY_IS_REMOTE]: 'boolean',
+  [SENTRY_KIND]: 'string',
   [SENTRY_MESSAGE_PARAMETER_KEY]: 'string',
   [SENTRY_MESSAGE_TEMPLATE]: 'string',
   [SENTRY_MODULE_KEY]: 'string',
@@ -8738,6 +8821,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_SEGMENT_NAME]: 'string',
   [SENTRY_SERVER_SAMPLE_RATE]: 'double',
   [SENTRY_SPAN_SOURCE]: 'string',
+  [SENTRY_STATUS_MESSAGE]: 'string',
   [SENTRY_TRACE_PARENT_SPAN_ID]: 'string',
   [SENTRY_TRANSACTION]: 'string',
   [SERVER_ADDRESS]: 'string',
@@ -9120,8 +9204,11 @@ export type AttributeName =
   | typeof SENTRY_DSC_TRANSACTION
   | typeof SENTRY_ENVIRONMENT
   | typeof SENTRY_EXCLUSIVE_TIME
+  | typeof SENTRY_GRAPHQL_OPERATION
   | typeof SENTRY_HTTP_PREFETCH
   | typeof SENTRY_IDLE_SPAN_FINISH_REASON
+  | typeof SENTRY_IS_REMOTE
+  | typeof SENTRY_KIND
   | typeof SENTRY_MESSAGE_PARAMETER_KEY
   | typeof SENTRY_MESSAGE_TEMPLATE
   | typeof SENTRY_MODULE_KEY
@@ -9143,6 +9230,7 @@ export type AttributeName =
   | typeof SENTRY_SEGMENT_NAME
   | typeof SENTRY_SERVER_SAMPLE_RATE
   | typeof SENTRY_SPAN_SOURCE
+  | typeof SENTRY_STATUS_MESSAGE
   | typeof SENTRY_TRACE_PARENT_SPAN_ID
   | typeof SENTRY_TRANSACTION
   | typeof SERVER_ADDRESS
@@ -12440,6 +12528,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 1234,
   },
+  [SENTRY_GRAPHQL_OPERATION]: {
+    brief: 'Indicates the type of graphql operation, emitted by the Javascript SDK.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'getUserById',
+  },
   [SENTRY_HTTP_PREFETCH]: {
     brief: 'If an http request was a prefetch request.',
     type: 'boolean',
@@ -12457,6 +12554,25 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'idleTimeout',
+  },
+  [SENTRY_IS_REMOTE]: {
+    brief: "Indicates whether a span's parent is remote.",
+    type: 'boolean',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: true,
+  },
+  [SENTRY_KIND]: {
+    brief:
+      'Used to clarify the relationship between parents and children, or to distinguish between spans, e.g. a `server` and `client` span with the same name.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'server',
   },
   [SENTRY_MESSAGE_PARAMETER_KEY]: {
     brief:
@@ -12662,6 +12778,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'route',
+  },
+  [SENTRY_STATUS_MESSAGE]: {
+    brief: 'The from OTLP extracted status message.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'foobar',
   },
   [SENTRY_TRACE_PARENT_SPAN_ID]: {
     brief:
@@ -13645,8 +13770,11 @@ export type Attributes = {
   [SENTRY_DSC_TRANSACTION]?: SENTRY_DSC_TRANSACTION_TYPE;
   [SENTRY_ENVIRONMENT]?: SENTRY_ENVIRONMENT_TYPE;
   [SENTRY_EXCLUSIVE_TIME]?: SENTRY_EXCLUSIVE_TIME_TYPE;
+  [SENTRY_GRAPHQL_OPERATION]?: SENTRY_GRAPHQL_OPERATION_TYPE;
   [SENTRY_HTTP_PREFETCH]?: SENTRY_HTTP_PREFETCH_TYPE;
   [SENTRY_IDLE_SPAN_FINISH_REASON]?: SENTRY_IDLE_SPAN_FINISH_REASON_TYPE;
+  [SENTRY_IS_REMOTE]?: SENTRY_IS_REMOTE_TYPE;
+  [SENTRY_KIND]?: SENTRY_KIND_TYPE;
   [SENTRY_MESSAGE_PARAMETER_KEY]?: SENTRY_MESSAGE_PARAMETER_KEY_TYPE;
   [SENTRY_MESSAGE_TEMPLATE]?: SENTRY_MESSAGE_TEMPLATE_TYPE;
   [SENTRY_MODULE_KEY]?: SENTRY_MODULE_KEY_TYPE;
@@ -13668,6 +13796,7 @@ export type Attributes = {
   [SENTRY_SEGMENT_NAME]?: SENTRY_SEGMENT_NAME_TYPE;
   [SENTRY_SERVER_SAMPLE_RATE]?: SENTRY_SERVER_SAMPLE_RATE_TYPE;
   [SENTRY_SPAN_SOURCE]?: SENTRY_SPAN_SOURCE_TYPE;
+  [SENTRY_STATUS_MESSAGE]?: SENTRY_STATUS_MESSAGE_TYPE;
   [SENTRY_TRACE_PARENT_SPAN_ID]?: SENTRY_TRACE_PARENT_SPAN_ID_TYPE;
   [SENTRY_TRANSACTION]?: SENTRY_TRANSACTION_TYPE;
   [SERVER_ADDRESS]?: SERVER_ADDRESS_TYPE;
