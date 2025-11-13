@@ -1,0 +1,10 @@
+{
+  "key": "sentry.is_remote",
+  "brief": "Indicates whether a span's parent is remote.",
+  "type": "boolean",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": true
+}

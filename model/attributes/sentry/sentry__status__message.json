@@ -1,0 +1,10 @@
+{
+  "key": "sentry.status.message",
+  "brief": "The from OTLP extracted status message.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "foobar"
+}
