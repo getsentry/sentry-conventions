@@ -26,6 +26,7 @@
   - [sentry.module.\<key\>](#sentrymodulekey)
   - [sentry.nextjs.ssr.function.route](#sentrynextjsssrfunctionroute)
   - [sentry.nextjs.ssr.function.type](#sentrynextjsssrfunctiontype)
+  - [sentry.normalized_db_query](#sentrynormalized_db_query)
   - [sentry.observed_timestamp_nanos](#sentryobserved_timestamp_nanos)
   - [sentry.op](#sentryop)
   - [sentry.origin](#sentryorigin)
@@ -305,6 +306,17 @@ A descriptor for a for a function in Next.js that contributes to Server-Side Ren
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `generateMetadata` |
+
+### sentry.normalized_db_query
+
+The normalized version of `db.query.text`.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `SELECT .. FROM sentry_project WHERE (project_id = %s)` |
 
 ### sentry.observed_timestamp_nanos
 

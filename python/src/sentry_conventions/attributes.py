@@ -5,7 +5,7 @@
 import warnings
 from dataclasses import dataclass
 from enum import Enum
-from typing import Dict, List, Literal, Optional, TypedDict, Union
+from typing import List, Union, Literal, Optional, Dict, TypedDict
 
 AttributeValue = Union[
     str, int, float, bool, List[str], List[int], List[float], List[bool]
@@ -3701,6 +3701,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "generateMetadata"
     """
 
+    # Path: model/attributes/sentry/sentry__normalized_db_query.json
+    SENTRY_NORMALIZED_DB_QUERY: Literal["sentry.normalized_db_query"] = (
+        "sentry.normalized_db_query"
+    )
+    """The normalized version of `db.query.text`.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "SELECT .. FROM sentry_project WHERE (project_id = %s)"
+    """
+
     # Path: model/attributes/sentry/sentry__observed_timestamp_nanos.json
     SENTRY_OBSERVED_TIMESTAMP_NANOS: Literal["sentry.observed_timestamp_nanos"] = (
         "sentry.observed_timestamp_nanos"
@@ -7151,6 +7163,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="generateMetadata",
         sdks=["javascript"],
     ),
+    "sentry.normalized_db_query": AttributeMetadata(
+        brief="The normalized version of `db.query.text`.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="SELECT .. FROM sentry_project WHERE (project_id = %s)",
+    ),
     "sentry.observed_timestamp_nanos": AttributeMetadata(
         brief="The timestamp at which an envelope was received by Relay, in nanoseconds.",
         type=AttributeType.STRING,
@@ -8126,6 +8145,7 @@ Attributes = TypedDict(
         "sentry.module.<key>": str,
         "sentry.nextjs.ssr.function.route": str,
         "sentry.nextjs.ssr.function.type": str,
+        "sentry.normalized_db_query": str,
         "sentry.observed_timestamp_nanos": str,
         "sentry.op": str,
         "sentry.origin": str,
