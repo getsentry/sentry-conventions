@@ -5,7 +5,7 @@
 import warnings
 from dataclasses import dataclass
 from enum import Enum
-from typing import List, Union, Literal, Optional, Dict, TypedDict
+from typing import Dict, List, Literal, Optional, TypedDict, Union
 
 AttributeValue = Union[
     str, int, float, bool, List[str], List[int], List[float], List[bool]
