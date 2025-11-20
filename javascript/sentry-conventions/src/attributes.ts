@@ -6642,6 +6642,26 @@ export const SENTRY_NEXTJS_SSR_FUNCTION_TYPE = 'sentry.nextjs.ssr.function.type'
  */
 export type SENTRY_NEXTJS_SSR_FUNCTION_TYPE_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__normalized_db_query.json
+
+/**
+ * The normalized version of `db.query.text`. `sentry.normalized_db_query`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_NORMALIZED_DB_QUERY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "SELECT .. FROM sentry_project WHERE (project_id = %s)"
+ */
+export const SENTRY_NORMALIZED_DB_QUERY = 'sentry.normalized_db_query';
+
+/**
+ * Type for {@link SENTRY_NORMALIZED_DB_QUERY} sentry.normalized_db_query
+ */
+export type SENTRY_NORMALIZED_DB_QUERY_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__observed_timestamp_nanos.json
 
 /**
@@ -8805,6 +8825,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_MODULE_KEY]: 'string',
   [SENTRY_NEXTJS_SSR_FUNCTION_ROUTE]: 'string',
   [SENTRY_NEXTJS_SSR_FUNCTION_TYPE]: 'string',
+  [SENTRY_NORMALIZED_DB_QUERY]: 'string',
   [SENTRY_OBSERVED_TIMESTAMP_NANOS]: 'string',
   [SENTRY_OP]: 'string',
   [SENTRY_ORIGIN]: 'string',
@@ -9214,6 +9235,7 @@ export type AttributeName =
   | typeof SENTRY_MODULE_KEY
   | typeof SENTRY_NEXTJS_SSR_FUNCTION_ROUTE
   | typeof SENTRY_NEXTJS_SSR_FUNCTION_TYPE
+  | typeof SENTRY_NORMALIZED_DB_QUERY
   | typeof SENTRY_OBSERVED_TIMESTAMP_NANOS
   | typeof SENTRY_OP
   | typeof SENTRY_ORIGIN
@@ -12625,6 +12647,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'generateMetadata',
     sdks: ['javascript'],
   },
+  [SENTRY_NORMALIZED_DB_QUERY]: {
+    brief: 'The normalized version of `db.query.text`.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'SELECT .. FROM sentry_project WHERE (project_id = %s)',
+  },
   [SENTRY_OBSERVED_TIMESTAMP_NANOS]: {
     brief: 'The timestamp at which an envelope was received by Relay, in nanoseconds.',
     type: 'string',
@@ -13780,6 +13811,7 @@ export type Attributes = {
   [SENTRY_MODULE_KEY]?: SENTRY_MODULE_KEY_TYPE;
   [SENTRY_NEXTJS_SSR_FUNCTION_ROUTE]?: SENTRY_NEXTJS_SSR_FUNCTION_ROUTE_TYPE;
   [SENTRY_NEXTJS_SSR_FUNCTION_TYPE]?: SENTRY_NEXTJS_SSR_FUNCTION_TYPE_TYPE;
+  [SENTRY_NORMALIZED_DB_QUERY]?: SENTRY_NORMALIZED_DB_QUERY_TYPE;
   [SENTRY_OBSERVED_TIMESTAMP_NANOS]?: SENTRY_OBSERVED_TIMESTAMP_NANOS_TYPE;
   [SENTRY_OP]?: SENTRY_OP_TYPE;
   [SENTRY_ORIGIN]?: SENTRY_ORIGIN_TYPE;
