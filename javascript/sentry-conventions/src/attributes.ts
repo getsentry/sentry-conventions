@@ -6049,6 +6049,27 @@ export const REPLAY_ID = 'replay_id';
  */
 export type REPLAY_ID_TYPE = string;
 
+// Path: model/attributes/resource/resource__deployment__environment__name.json
+
+/**
+ * The software deployment environment name. `resource.deployment.environment.name`
+ *
+ * Attribute Value Type: `string` {@link RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @deprecated Use {@link SENTRY_ENVIRONMENT} (sentry.environment) instead
+ * @example "production"
+ */
+export const RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME = 'resource.deployment.environment.name';
+
+/**
+ * Type for {@link RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME} resource.deployment.environment.name
+ */
+export type RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME_TYPE = string;
+
 // Path: model/attributes/resource/resource__render_blocking_status.json
 
 /**
@@ -8796,6 +8817,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [RELEASE]: 'string',
   [REMIX_ACTION_FORM_DATA_KEY]: 'string',
   [REPLAY_ID]: 'string',
+  [RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME]: 'string',
   [RESOURCE_RENDER_BLOCKING_STATUS]: 'string',
   [ROUTE]: 'string',
   [RPC_GRPC_STATUS_CODE]: 'integer',
@@ -9206,6 +9228,7 @@ export type AttributeName =
   | typeof RELEASE
   | typeof REMIX_ACTION_FORM_DATA_KEY
   | typeof REPLAY_ID
+  | typeof RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME
   | typeof RESOURCE_RENDER_BLOCKING_STATUS
   | typeof ROUTE
   | typeof RPC_GRPC_STATUS_CODE
@@ -12363,6 +12386,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [SENTRY_REPLAY_ID],
   },
+  [RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME]: {
+    brief: 'The software deployment environment name.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 'production',
+    deprecation: {
+      replacement: 'sentry.environment',
+    },
+  },
   [RESOURCE_RENDER_BLOCKING_STATUS]: {
     brief: 'The render blocking status of the resource.',
     type: 'string',
@@ -13782,6 +13817,7 @@ export type Attributes = {
   [RELEASE]?: RELEASE_TYPE;
   [REMIX_ACTION_FORM_DATA_KEY]?: REMIX_ACTION_FORM_DATA_KEY_TYPE;
   [REPLAY_ID]?: REPLAY_ID_TYPE;
+  [RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME]?: RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME_TYPE;
   [RESOURCE_RENDER_BLOCKING_STATUS]?: RESOURCE_RENDER_BLOCKING_STATUS_TYPE;
   [ROUTE]?: ROUTE_TYPE;
   [RPC_GRPC_STATUS_CODE]?: RPC_GRPC_STATUS_CODE_TYPE;

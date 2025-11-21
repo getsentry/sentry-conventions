@@ -1059,6 +1059,20 @@
       "example": "query.id='123'"
     },
     {
+      "key": "resource.deployment.environment.name",
+      "brief": "The software deployment environment name.",
+      "type": "string",
+      "pii": {
+        "key": "false"
+      },
+      "is_in_otel": true,
+      "example": "production",
+      "deprecation": {
+        "_status": "backfill",
+        "replacement": "sentry.environment"
+      }
+    },
+    {
       "key": "sentry.browser.name",
       "brief": "The name of the browser.",
       "type": "string",
