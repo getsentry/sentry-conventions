@@ -6,6 +6,5 @@
     "key": "maybe"
   },
   "is_in_otel": false,
-  "example": "What's the weather in Paris?",
-  "alias": []
+  "example": "What's the weather in Paris?"
 }
