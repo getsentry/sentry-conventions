@@ -1,0 +1,10 @@
+{
+  "key": "sentry.normalized_db_query",
+  "brief": "The normalized version of `db.query.text`.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "SELECT .. FROM sentry_project WHERE (project_id = %s)"
+}
