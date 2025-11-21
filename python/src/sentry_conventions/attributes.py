@@ -1273,6 +1273,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 12.34
     """
 
+    # Path: model/attributes/gen_ai/gen_ai__embeddings__input.json
+    GEN_AI_EMBEDDINGS_INPUT: Literal["gen_ai.embeddings.input"] = (
+        "gen_ai.embeddings.input"
+    )
+    """The input to the embeddings model.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "What's the weather in Paris?"
+    """
+
     # Path: model/attributes/gen_ai/gen_ai__operation__name.json
     GEN_AI_OPERATION_NAME: Literal["gen_ai.operation.name"] = "gen_ai.operation.name"
     """The name of the operation being performed.
@@ -5451,6 +5463,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=12.34,
     ),
+    "gen_ai.embeddings.input": AttributeMetadata(
+        brief="The input to the embeddings model.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="What's the weather in Paris?",
+    ),
     "gen_ai.operation.name": AttributeMetadata(
         brief="The name of the operation being performed.",
         type=AttributeType.STRING,
@@ -7928,6 +7947,7 @@ Attributes = TypedDict(
         "gen_ai.cost.input_tokens": float,
         "gen_ai.cost.output_tokens": float,
         "gen_ai.cost.total_tokens": float,
+        "gen_ai.embeddings.input": str,
         "gen_ai.operation.name": str,
         "gen_ai.operation.type": str,
         "gen_ai.pipeline.name": str,

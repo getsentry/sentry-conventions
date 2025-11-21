@@ -9,6 +9,7 @@
   - [gen_ai.cost.input_tokens](#gen_aicostinput_tokens)
   - [gen_ai.cost.output_tokens](#gen_aicostoutput_tokens)
   - [gen_ai.cost.total_tokens](#gen_aicosttotal_tokens)
+  - [gen_ai.embeddings.input](#gen_aiembeddingsinput)
   - [gen_ai.operation.name](#gen_aioperationname)
   - [gen_ai.operation.type](#gen_aioperationtype)
   - [gen_ai.pipeline.name](#gen_aipipelinename)
@@ -116,6 +117,17 @@ The total cost for the tokens used.
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `12.34` |
+
+### gen_ai.embeddings.input
+
+The input to the embeddings model.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `What's the weather in Paris?` |
 
 ### gen_ai.operation.name
 

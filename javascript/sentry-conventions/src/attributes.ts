@@ -2125,6 +2125,26 @@ export const GEN_AI_COST_TOTAL_TOKENS = 'gen_ai.cost.total_tokens';
  */
 export type GEN_AI_COST_TOTAL_TOKENS_TYPE = number;
 
+// Path: model/attributes/gen_ai/gen_ai__embeddings__input.json
+
+/**
+ * The input to the embeddings model. `gen_ai.embeddings.input`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_EMBEDDINGS_INPUT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "What's the weather in Paris?"
+ */
+export const GEN_AI_EMBEDDINGS_INPUT = 'gen_ai.embeddings.input';
+
+/**
+ * Type for {@link GEN_AI_EMBEDDINGS_INPUT} gen_ai.embeddings.input
+ */
+export type GEN_AI_EMBEDDINGS_INPUT_TYPE = string;
+
 // Path: model/attributes/gen_ai/gen_ai__operation__name.json
 
 /**
@@ -8608,6 +8628,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [GEN_AI_COST_INPUT_TOKENS]: 'double',
   [GEN_AI_COST_OUTPUT_TOKENS]: 'double',
   [GEN_AI_COST_TOTAL_TOKENS]: 'double',
+  [GEN_AI_EMBEDDINGS_INPUT]: 'string',
   [GEN_AI_OPERATION_NAME]: 'string',
   [GEN_AI_OPERATION_TYPE]: 'string',
   [GEN_AI_PIPELINE_NAME]: 'string',
@@ -9018,6 +9039,7 @@ export type AttributeName =
   | typeof GEN_AI_COST_INPUT_TOKENS
   | typeof GEN_AI_COST_OUTPUT_TOKENS
   | typeof GEN_AI_COST_TOTAL_TOKENS
+  | typeof GEN_AI_EMBEDDINGS_INPUT
   | typeof GEN_AI_OPERATION_NAME
   | typeof GEN_AI_OPERATION_TYPE
   | typeof GEN_AI_PIPELINE_NAME
@@ -10414,6 +10436,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 12.34,
+  },
+  [GEN_AI_EMBEDDINGS_INPUT]: {
+    brief: 'The input to the embeddings model.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: "What's the weather in Paris?",
   },
   [GEN_AI_OPERATION_NAME]: {
     brief: 'The name of the operation being performed.',
@@ -13594,6 +13625,7 @@ export type Attributes = {
   [GEN_AI_COST_INPUT_TOKENS]?: GEN_AI_COST_INPUT_TOKENS_TYPE;
   [GEN_AI_COST_OUTPUT_TOKENS]?: GEN_AI_COST_OUTPUT_TOKENS_TYPE;
   [GEN_AI_COST_TOTAL_TOKENS]?: GEN_AI_COST_TOTAL_TOKENS_TYPE;
+  [GEN_AI_EMBEDDINGS_INPUT]?: GEN_AI_EMBEDDINGS_INPUT_TYPE;
   [GEN_AI_OPERATION_NAME]?: GEN_AI_OPERATION_NAME_TYPE;
   [GEN_AI_OPERATION_TYPE]?: GEN_AI_OPERATION_TYPE_TYPE;
   [GEN_AI_PIPELINE_NAME]?: GEN_AI_PIPELINE_NAME_TYPE;
