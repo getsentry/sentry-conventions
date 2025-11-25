@@ -152,6 +152,7 @@ class _AttributeNamesMeta(type):
         "QUERY_KEY",
         "RELEASE",
         "REPLAY_ID",
+        "RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME",
         "ROUTE",
         "SENTRY_BROWSER_NAME",
         "SENTRY_BROWSER_VERSION",
@@ -3395,6 +3396,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Aliases: sentry.replay_id
     DEPRECATED: Use sentry.replay_id instead
     Example: "123e4567e89b12d3a456426614174000"
+    """
+
+    # Path: model/attributes/resource/resource__deployment__environment__name.json
+    RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME: Literal[
+        "resource.deployment.environment.name"
+    ] = "resource.deployment.environment.name"
+    """The software deployment environment name.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: Yes
+    DEPRECATED: Use sentry.environment instead
+    Example: "production"
     """
 
     # Path: model/attributes/resource/resource__render_blocking_status.json
@@ -6967,6 +6981,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="sentry.replay_id"),
         aliases=["sentry.replay_id"],
     ),
+    "resource.deployment.environment.name": AttributeMetadata(
+        brief="The software deployment environment name.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=True,
+        example="production",
+        deprecation=DeprecationInfo(
+            replacement="sentry.environment", status=DeprecationStatus.BACKFILL
+        ),
+    ),
     "resource.render_blocking_status": AttributeMetadata(
         brief="The render blocking status of the resource.",
         type=AttributeType.STRING,
@@ -8136,6 +8160,7 @@ Attributes = TypedDict(
         "release": str,
         "remix.action_form_data.<key>": str,
         "replay_id": str,
+        "resource.deployment.environment.name": str,
         "resource.render_blocking_status": str,
         "route": str,
         "rpc.grpc.status_code": int,
