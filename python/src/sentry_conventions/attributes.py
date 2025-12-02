@@ -5186,7 +5186,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="SELECT",
         deprecation=DeprecationInfo(
-            replacement="db.operation.name", status=DeprecationStatus.BACKFILL
+            replacement="db.operation.name", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["db.operation.name"],
     ),
@@ -5256,7 +5256,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="SELECT * FROM users",
         deprecation=DeprecationInfo(
-            replacement="db.query.text", status=DeprecationStatus.BACKFILL
+            replacement="db.query.text", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["db.query.text"],
     ),
@@ -5267,7 +5267,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="postgresql",
         deprecation=DeprecationInfo(
-            replacement="db.system.name", status=DeprecationStatus.BACKFILL
+            replacement="db.system.name", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["db.system.name"],
     ),
