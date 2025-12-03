@@ -1,3 +1,11 @@
+## Unreleased
+
+### Features
+
+#### Changes to attributes
+
+- feat(attributes): Add sentry.normalized_db_query.hash ([#200](https://github.com/getsentry/sentry-conventions/pull/200))
+
 ## 0.3.1
 
 ### Features
