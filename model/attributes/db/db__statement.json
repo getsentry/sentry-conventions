@@ -8,7 +8,7 @@
   "is_in_otel": true,
   "example": "SELECT * FROM users",
   "deprecation": {
-    "_status": null,
+    "_status": "normalize",
     "replacement": "db.query.text"
   },
   "alias": ["db.query.text"]
