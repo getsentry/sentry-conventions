@@ -6703,6 +6703,24 @@ export const SENTRY_NORMALIZED_DB_QUERY = 'sentry.normalized_db_query';
  */
 export type SENTRY_NORMALIZED_DB_QUERY_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__normalized_db_query__hash.json
+
+/**
+ * The hash of `sentry.normalized_db_query`. `sentry.normalized_db_query.hash`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_NORMALIZED_DB_QUERY_HASH_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ */
+export const SENTRY_NORMALIZED_DB_QUERY_HASH = 'sentry.normalized_db_query.hash';
+
+/**
+ * Type for {@link SENTRY_NORMALIZED_DB_QUERY_HASH} sentry.normalized_db_query.hash
+ */
+export type SENTRY_NORMALIZED_DB_QUERY_HASH_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__observed_timestamp_nanos.json
 
 /**
@@ -8869,6 +8887,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_NEXTJS_SSR_FUNCTION_ROUTE]: 'string',
   [SENTRY_NEXTJS_SSR_FUNCTION_TYPE]: 'string',
   [SENTRY_NORMALIZED_DB_QUERY]: 'string',
+  [SENTRY_NORMALIZED_DB_QUERY_HASH]: 'string',
   [SENTRY_OBSERVED_TIMESTAMP_NANOS]: 'string',
   [SENTRY_OP]: 'string',
   [SENTRY_ORIGIN]: 'string',
@@ -9281,6 +9300,7 @@ export type AttributeName =
   | typeof SENTRY_NEXTJS_SSR_FUNCTION_ROUTE
   | typeof SENTRY_NEXTJS_SSR_FUNCTION_TYPE
   | typeof SENTRY_NORMALIZED_DB_QUERY
+  | typeof SENTRY_NORMALIZED_DB_QUERY_HASH
   | typeof SENTRY_OBSERVED_TIMESTAMP_NANOS
   | typeof SENTRY_OP
   | typeof SENTRY_ORIGIN
@@ -12722,6 +12742,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'SELECT .. FROM sentry_project WHERE (project_id = %s)',
   },
+  [SENTRY_NORMALIZED_DB_QUERY_HASH]: {
+    brief: 'The hash of `sentry.normalized_db_query`.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+  },
   [SENTRY_OBSERVED_TIMESTAMP_NANOS]: {
     brief: 'The timestamp at which an envelope was received by Relay, in nanoseconds.',
     type: 'string',
@@ -13880,6 +13908,7 @@ export type Attributes = {
   [SENTRY_NEXTJS_SSR_FUNCTION_ROUTE]?: SENTRY_NEXTJS_SSR_FUNCTION_ROUTE_TYPE;
   [SENTRY_NEXTJS_SSR_FUNCTION_TYPE]?: SENTRY_NEXTJS_SSR_FUNCTION_TYPE_TYPE;
   [SENTRY_NORMALIZED_DB_QUERY]?: SENTRY_NORMALIZED_DB_QUERY_TYPE;
+  [SENTRY_NORMALIZED_DB_QUERY_HASH]?: SENTRY_NORMALIZED_DB_QUERY_HASH_TYPE;
   [SENTRY_OBSERVED_TIMESTAMP_NANOS]?: SENTRY_OBSERVED_TIMESTAMP_NANOS_TYPE;
   [SENTRY_OP]?: SENTRY_OP_TYPE;
   [SENTRY_ORIGIN]?: SENTRY_ORIGIN_TYPE;

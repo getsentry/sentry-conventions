@@ -3739,6 +3739,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "SELECT .. FROM sentry_project WHERE (project_id = %s)"
     """
 
+    # Path: model/attributes/sentry/sentry__normalized_db_query__hash.json
+    SENTRY_NORMALIZED_DB_QUERY_HASH: Literal["sentry.normalized_db_query.hash"] = (
+        "sentry.normalized_db_query.hash"
+    )
+    """The hash of `sentry.normalized_db_query`.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    """
+
     # Path: model/attributes/sentry/sentry__observed_timestamp_nanos.json
     SENTRY_OBSERVED_TIMESTAMP_NANOS: Literal["sentry.observed_timestamp_nanos"] = (
         "sentry.observed_timestamp_nanos"
@@ -7213,6 +7224,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="SELECT .. FROM sentry_project WHERE (project_id = %s)",
     ),
+    "sentry.normalized_db_query.hash": AttributeMetadata(
+        brief="The hash of `sentry.normalized_db_query`.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+    ),
     "sentry.observed_timestamp_nanos": AttributeMetadata(
         brief="The timestamp at which an envelope was received by Relay, in nanoseconds.",
         type=AttributeType.STRING,
@@ -8191,6 +8208,7 @@ Attributes = TypedDict(
         "sentry.nextjs.ssr.function.route": str,
         "sentry.nextjs.ssr.function.type": str,
         "sentry.normalized_db_query": str,
+        "sentry.normalized_db_query.hash": str,
         "sentry.observed_timestamp_nanos": str,
         "sentry.op": str,
         "sentry.origin": str,

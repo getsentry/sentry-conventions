@@ -1,0 +1,9 @@
+{
+  "key": "sentry.normalized_db_query.hash",
+  "brief": "The hash of `sentry.normalized_db_query`.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false
+}

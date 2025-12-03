@@ -27,6 +27,7 @@
   - [sentry.nextjs.ssr.function.route](#sentrynextjsssrfunctionroute)
   - [sentry.nextjs.ssr.function.type](#sentrynextjsssrfunctiontype)
   - [sentry.normalized_db_query](#sentrynormalized_db_query)
+  - [sentry.normalized_db_query.hash](#sentrynormalized_db_queryhash)
   - [sentry.observed_timestamp_nanos](#sentryobserved_timestamp_nanos)
   - [sentry.op](#sentryop)
   - [sentry.origin](#sentryorigin)
@@ -317,6 +318,16 @@ The normalized version of `db.query.text`.
 | Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `SELECT .. FROM sentry_project WHERE (project_id = %s)` |
+
+### sentry.normalized_db_query.hash
+
+The hash of `sentry.normalized_db_query`.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
 
 ### sentry.observed_timestamp_nanos
 
