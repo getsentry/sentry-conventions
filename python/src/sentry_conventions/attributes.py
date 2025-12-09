@@ -5196,7 +5196,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="SELECT",
-        deprecation=DeprecationInfo(replacement="db.operation.name"),
+        deprecation=DeprecationInfo(
+            replacement="db.operation.name", status=DeprecationStatus.NORMALIZE
+        ),
         aliases=["db.operation.name"],
     ),
     "db.operation.name": AttributeMetadata(
@@ -5264,7 +5266,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="SELECT * FROM users",
-        deprecation=DeprecationInfo(replacement="db.query.text"),
+        deprecation=DeprecationInfo(
+            replacement="db.query.text", status=DeprecationStatus.NORMALIZE
+        ),
         aliases=["db.query.text"],
     ),
     "db.system": AttributeMetadata(
@@ -5273,7 +5277,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="postgresql",
-        deprecation=DeprecationInfo(replacement="db.system.name"),
+        deprecation=DeprecationInfo(
+            replacement="db.system.name", status=DeprecationStatus.NORMALIZE
+        ),
         aliases=["db.system.name"],
     ),
     "db.system.name": AttributeMetadata(

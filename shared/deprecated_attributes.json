@@ -529,7 +529,7 @@
       "is_in_otel": true,
       "example": "SELECT",
       "deprecation": {
-        "_status": null,
+        "_status": "normalize",
         "replacement": "db.operation.name"
       },
       "alias": ["db.operation.name"]
@@ -560,7 +560,7 @@
       "is_in_otel": true,
       "example": "SELECT * FROM users",
       "deprecation": {
-        "_status": null,
+        "_status": "normalize",
         "replacement": "db.query.text"
       },
       "alias": ["db.query.text"]
@@ -575,7 +575,7 @@
       "is_in_otel": true,
       "example": "postgresql",
       "deprecation": {
-        "_status": null,
+        "_status": "normalize",
         "replacement": "db.system.name"
       },
       "alias": ["db.system.name"]
