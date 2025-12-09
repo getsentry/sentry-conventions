@@ -1894,7 +1894,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """HTTP request headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.
 
     Type: List[str]
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: Yes
     Has Dynamic Suffix: true
     Example: "http.request.header.custom-header=['foo', 'bar']"
@@ -2039,7 +2039,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """HTTP response headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.
 
     Type: List[str]
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: Yes
     Has Dynamic Suffix: true
     Example: "http.response.header.custom-header=['foo', 'bar']"
@@ -5914,7 +5914,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.header.<key>": AttributeMetadata(
         brief="HTTP request headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         has_dynamic_suffix=True,
         example="http.request.header.custom-header=['foo', 'bar']",
@@ -6009,7 +6009,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.response.header.<key>": AttributeMetadata(
         brief="HTTP response headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         has_dynamic_suffix=True,
         example="http.response.header.custom-header=['foo', 'bar']",
