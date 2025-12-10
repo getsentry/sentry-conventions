@@ -6,7 +6,7 @@ import { generateOps } from './generate_op';
 
 generateOps();
 generateAttributes();
-generateAttributeDocs();
-generateAllAttributesPage();
+const categories = generateAttributeDocs();
+generateAllAttributesPage(categories);
 generateDeprecatedAttributesJSON();
 generateNameDocs();

@@ -9,6 +9,41 @@ function readJsonFile(filePath: string): AttributeJson {
   return JSON.parse(fileContent) as AttributeJson;
 }
 
+// Function to load all attribute categories from JSON files
+function loadAttributeCategories(baseDir: string): Record<string, AttributeJson[]> {
+  const categories: Record<string, AttributeJson[]> = {};
+
+  // Process top-level files (they go into a "general" category)
+  const topLevelFiles = fs
+    .readdirSync(baseDir)
+    .filter((file) => file.endsWith('.json'))
+    .map((file) => path.join(baseDir, file));
+
+  if (topLevelFiles.length > 0) {
+    categories.general = topLevelFiles.map((file) => readJsonFile(file));
+  }
+
+  // Process subdirectories
+  const subdirs = fs
+    .readdirSync(baseDir, { withFileTypes: true })
+    .filter((dirent) => dirent.isDirectory())
+    .map((dirent) => dirent.name);
+
+  for (const subdir of subdirs) {
+    const categoryDir = path.join(baseDir, subdir);
+    const files = fs
+      .readdirSync(categoryDir)
+      .filter((file) => file.endsWith('.json'))
+      .map((file) => path.join(categoryDir, file));
+
+    if (files.length > 0) {
+      categories[subdir] = files.map((file) => readJsonFile(file));
+    }
+  }
+
+  return categories;
+}
+
 // Function to generate a markdown table for a single attribute
 function generateAttributeTable(attribute: AttributeJson): string {
   let table = `### ${attribute.key}\n\n`;
@@ -53,43 +88,17 @@ function generateAttributeTable(attribute: AttributeJson): string {
 }
 
 // Main function to generate all markdown docs
-export async function generateAttributeDocs() {
+export function generateAttributeDocs(): Record<string, AttributeJson[]> {
   const baseDir = 'model/attributes';
   const outputDir = 'generated/attributes';
-  const categories: Record<string, AttributeJson[]> = {};
 
   // Ensure output directory exists
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
   }
 
-  // Process top-level files (they go into a "general" category)
-  const topLevelFiles = fs
-    .readdirSync(baseDir)
-    .filter((file) => file.endsWith('.json'))
-    .map((file) => path.join(baseDir, file));
-
-  if (topLevelFiles.length > 0) {
-    categories.general = topLevelFiles.map((file) => readJsonFile(file));
-  }
-
-  // Process subdirectories
-  const subdirs = fs
-    .readdirSync(baseDir, { withFileTypes: true })
-    .filter((dirent) => dirent.isDirectory())
-    .map((dirent) => dirent.name);
-
-  for (const subdir of subdirs) {
-    const categoryDir = path.join(baseDir, subdir);
-    const files = fs
-      .readdirSync(categoryDir)
-      .filter((file) => file.endsWith('.json'))
-      .map((file) => path.join(categoryDir, file));
-
-    if (files.length > 0) {
-      categories[subdir] = files.map((file) => readJsonFile(file));
-    }
-  }
+  // Load all attribute categories
+  const categories = loadAttributeCategories(baseDir);
 
   // Generate markdown files for each category
   for (const [category, attributes] of Object.entries(categories)) {
@@ -167,46 +176,22 @@ export async function generateAttributeDocs() {
   console.log(`Generated index file: ${indexFile}`);
 
   console.log('Documentation generation complete!');
+
+  return categories;
 }
 
 // Function to generate a page listing all attributes
-export async function generateAllAttributesPage() {
+export function generateAllAttributesPage(categoriesInput?: Record<string, AttributeJson[]>) {
   const baseDir = 'model/attributes';
   const outputDir = 'generated/attributes';
-  const categories: Record<string, AttributeJson[]> = {};
 
   // Ensure output directory exists
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
   }
 
-  // Process top-level files (they go into a "general" category)
-  const topLevelFiles = fs
-    .readdirSync(baseDir)
-    .filter((file) => file.endsWith('.json'))
-    .map((file) => path.join(baseDir, file));
-
-  if (topLevelFiles.length > 0) {
-    categories.general = topLevelFiles.map((file) => readJsonFile(file));
-  }
-
-  // Process subdirectories
-  const subdirs = fs
-    .readdirSync(baseDir, { withFileTypes: true })
-    .filter((dirent) => dirent.isDirectory())
-    .map((dirent) => dirent.name);
-
-  for (const subdir of subdirs) {
-    const categoryDir = path.join(baseDir, subdir);
-    const files = fs
-      .readdirSync(categoryDir)
-      .filter((file) => file.endsWith('.json'))
-      .map((file) => path.join(categoryDir, file));
-
-    if (files.length > 0) {
-      categories[subdir] = files.map((file) => readJsonFile(file));
-    }
-  }
+  // Load all attribute categories (or use provided ones)
+  const categories = categoriesInput ?? loadAttributeCategories(baseDir);
 
   // Collect all attributes with their category information and brief description
   const allAttributes: Array<{ key: string; category: string; anchor: string; brief: string; deprecated: boolean }> =
