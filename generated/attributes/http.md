@@ -139,7 +139,7 @@ HTTP request headers, \<key\> being the normalized HTTP Header name (lowercase),
 | Property | Value |
 | --- | --- |
 | Type | `string[]` |
-| Has PII | true |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Has dynamic suffix | Yes |
 | Example | `http.request.header.custom-header=['foo', 'bar']` |
@@ -274,7 +274,7 @@ HTTP response headers, \<key\> being the normalized HTTP Header name (lowercase)
 | Property | Value |
 | --- | --- |
 | Type | `string[]` |
-| Has PII | true |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Has dynamic suffix | Yes |
 | Example | `http.response.header.custom-header=['foo', 'bar']` |
