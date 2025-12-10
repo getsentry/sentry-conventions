@@ -102,7 +102,6 @@ export function generateAttributeDocs(): Record<string, AttributeJson[]> {
     fs.mkdirSync(outputDir, { recursive: true });
   }
 
-  // Load all attribute categories
   const categories = loadAttributeCategories(baseDir);
 
   // Generate markdown files for each category
