@@ -349,80 +349,80 @@ Total attributes: 410
 
 ## Deprecated Attributes
 
-| Attribute | Description |
+| Attribute | Replacement |
 | --- | --- |
-| [`ai.completion_tokens.used`](./ai.md#aicompletion_tokensused) | The number of tokens used to respond to the message. |
-| [`ai.finish_reason`](./ai.md#aifinish_reason) | The reason why the model stopped generating. |
-| [`ai.frequency_penalty`](./ai.md#aifrequency_penalty) | Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation. |
-| [`ai.function_call`](./ai.md#aifunction_call) | For an AI model call, the function that was called. This is deprecated for OpenAI, and replaced by tool_calls |
-| [`ai.generation_id`](./ai.md#aigeneration_id) | Unique identifier for the completion. |
-| [`ai.input_messages`](./ai.md#aiinput_messages) | The input messages sent to the model |
-| [`ai.model_id`](./ai.md#aimodel_id) | The vendor-specific ID of the model used. |
-| [`ai.model.provider`](./ai.md#aimodelprovider) | The provider of the model. |
-| [`ai.pipeline.name`](./ai.md#aipipelinename) | The name of the AI pipeline. |
-| [`ai.presence_penalty`](./ai.md#aipresence_penalty) | Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies. |
-| [`ai.prompt_tokens.used`](./ai.md#aiprompt_tokensused) | The number of tokens used to process just the prompt. |
-| [`ai.responses`](./ai.md#airesponses) | The response messages sent back by the AI model. |
-| [`ai.seed`](./ai.md#aiseed) | The seed, ideally models given the same seed and same other parameters will produce the exact same output. |
-| [`ai.streaming`](./ai.md#aistreaming) | Whether the request was streamed back. |
-| [`ai.temperature`](./ai.md#aitemperature) | For an AI model call, the temperature parameter. Temperature essentially means how random the output will be. |
-| [`ai.tool_calls`](./ai.md#aitool_calls) | For an AI model call, the tool calls that were made. |
-| [`ai.tools`](./ai.md#aitools) | For an AI model call, the functions that are available |
-| [`ai.top_k`](./ai.md#aitop_k) | Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered). |
-| [`ai.top_p`](./ai.md#aitop_p) | Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered). |
-| [`ai.total_tokens.used`](./ai.md#aitotal_tokensused) | The total number of tokens used to process the prompt. |
-| [`code.filepath`](./code.md#codefilepath) | The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path). |
-| [`code.function`](./code.md#codefunction) | The method or function name, or equivalent (usually rightmost part of the code unit's name). |
-| [`code.lineno`](./code.md#codelineno) | The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function |
-| [`code.namespace`](./code.md#codenamespace) | The 'namespace' within which code.function is defined. Usually the qualified class or module name, such that code.namespace + some separator + code.function form a unique identifier for the code unit. |
-| [`db.name`](./db.md#dbname) | The name of the database being accessed. |
-| [`db.operation`](./db.md#dboperation) | The name of the operation being executed. |
-| [`db.sql.bindings`](./db.md#dbsqlbindings) | The array of query bindings. |
-| [`db.statement`](./db.md#dbstatement) | The database statement being executed. |
-| [`db.system`](./db.md#dbsystem) | An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers. |
-| [`environment`](./general.md#environment) | The sentry environment. |
-| [`fs_error`](./general.md#fs_error) | The error message of a file system error. |
-| [`gen_ai.prompt`](./gen_ai.md#gen_aiprompt) | The input messages sent to the model |
-| [`gen_ai.usage.completion_tokens`](./gen_ai.md#gen_aiusagecompletion_tokens) | The number of tokens used in the GenAI response (completion). |
-| [`gen_ai.usage.prompt_tokens`](./gen_ai.md#gen_aiusageprompt_tokens) | The number of tokens used in the GenAI input (prompt). |
-| [`gen_ai.usage.total_cost`](./gen_ai.md#gen_aiusagetotal_cost) | The total cost for the tokens used. |
-| [`http.client_ip`](./http.md#httpclient_ip) | Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name. |
-| [`http.flavor`](./http.md#httpflavor) | The actual version of the protocol used for network communication. |
-| [`http.host`](./http.md#httphost) | The domain name. |
-| [`http.method`](./http.md#httpmethod) | The HTTP method used. |
-| [`http.response_content_length`](./http.md#httpresponse_content_length) | The encoded body size of the response (in bytes). |
-| [`http.response_transfer_size`](./http.md#httpresponse_transfer_size) | The transfer size of the response (in bytes). |
-| [`http.scheme`](./http.md#httpscheme) | The URI scheme component identifying the used protocol. |
-| [`http.server_name`](./http.md#httpserver_name) | The server domain name |
-| [`http.status_code`](./http.md#httpstatus_code) | The status code of the HTTP response. |
-| [`http.target`](./http.md#httptarget) | The pathname and query string of the URL. |
-| [`http.url`](./http.md#httpurl) | The URL of the resource that was fetched. |
-| [`http.user_agent`](./http.md#httpuser_agent) | Value of the HTTP User-Agent header sent by the client. |
-| [`method`](./general.md#method) | The HTTP method used. |
-| [`net.host.ip`](./net.md#nethostip) | Local address of the network connection - IP address or Unix domain socket name. |
-| [`net.host.name`](./net.md#nethostname) | Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name. |
-| [`net.host.port`](./net.md#nethostport) | Server port number. |
-| [`net.peer.ip`](./net.md#netpeerip) | Peer address of the network connection - IP address or Unix domain socket name. |
-| [`net.peer.name`](./net.md#netpeername) | Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name. |
-| [`net.peer.port`](./net.md#netpeerport) | Peer port number. |
-| [`net.protocol.name`](./net.md#netprotocolname) | OSI application layer or non-OSI equivalent. |
-| [`net.protocol.version`](./net.md#netprotocolversion) | The actual version of the protocol used for network communication. |
-| [`net.sock.family`](./net.md#netsockfamily) | OSI transport and network layer |
-| [`net.sock.host.addr`](./net.md#netsockhostaddr) | Local address of the network connection mapping to Unix domain socket name. |
-| [`net.sock.host.port`](./net.md#netsockhostport) | Local port number of the network connection. |
-| [`net.sock.peer.addr`](./net.md#netsockpeeraddr) | Peer address of the network connection - IP address |
-| [`net.sock.peer.name`](./net.md#netsockpeername) | Peer address of the network connection - Unix domain socket name |
-| [`net.sock.peer.port`](./net.md#netsockpeerport) | Peer port number of the network connection. |
-| [`net.transport`](./net.md#nettransport) | OSI transport layer or inter-process communication method. |
-| [`profile_id`](./general.md#profile_id) | The id of the sentry profile. |
-| [`query.\<key\>`](./query.md#querykey) | An item in a query string. Usually added by client-side routing frameworks like vue-router. |
-| [`release`](./general.md#release) | The sentry release. |
-| [`replay_id`](./general.md#replay_id) | The id of the sentry replay. |
-| [`resource.deployment.environment.name`](./resource.md#resourcedeploymentenvironmentname) | The software deployment environment name. |
-| [`route`](./general.md#route) | The matched route, that is, the path template in the format used by the respective server framework. Also used by mobile SDKs to indicate the current route in the application. |
-| [`sentry.browser.name`](./sentry.md#sentrybrowsername) | The name of the browser. |
-| [`sentry.browser.version`](./sentry.md#sentrybrowserversion) | The version of the browser. |
-| [`sentry.segment_id`](./sentry.md#sentrysegment_id) | The segment ID of a span |
-| [`transaction`](./general.md#transaction) | The sentry transaction (segment name). |
-| [`url`](./general.md#url) | The URL of the resource that was fetched. |
+| [`ai.completion_tokens.used`](./ai.md#aicompletion_tokensused) | [`gen_ai.usage.output_tokens`](./gen_ai.md#gen_aiusageoutput_tokens) |
+| [`ai.finish_reason`](./ai.md#aifinish_reason) | `gen_ai.response.finish_reason` |
+| [`ai.frequency_penalty`](./ai.md#aifrequency_penalty) | [`gen_ai.request.frequency_penalty`](./gen_ai.md#gen_airequestfrequency_penalty) |
+| [`ai.function_call`](./ai.md#aifunction_call) | [`gen_ai.tool.name`](./gen_ai.md#gen_aitoolname) |
+| [`ai.generation_id`](./ai.md#aigeneration_id) | [`gen_ai.response.id`](./gen_ai.md#gen_airesponseid) |
+| [`ai.input_messages`](./ai.md#aiinput_messages) | [`gen_ai.request.messages`](./gen_ai.md#gen_airequestmessages) |
+| [`ai.model_id`](./ai.md#aimodel_id) | [`gen_ai.response.model`](./gen_ai.md#gen_airesponsemodel) |
+| [`ai.model.provider`](./ai.md#aimodelprovider) | [`gen_ai.system`](./gen_ai.md#gen_aisystem) |
+| [`ai.pipeline.name`](./ai.md#aipipelinename) | [`gen_ai.pipeline.name`](./gen_ai.md#gen_aipipelinename) |
+| [`ai.presence_penalty`](./ai.md#aipresence_penalty) | [`gen_ai.request.presence_penalty`](./gen_ai.md#gen_airequestpresence_penalty) |
+| [`ai.prompt_tokens.used`](./ai.md#aiprompt_tokensused) | [`gen_ai.usage.input_tokens`](./gen_ai.md#gen_aiusageinput_tokens) |
+| [`ai.responses`](./ai.md#airesponses) | [`gen_ai.response.text`](./gen_ai.md#gen_airesponsetext) |
+| [`ai.seed`](./ai.md#aiseed) | [`gen_ai.request.seed`](./gen_ai.md#gen_airequestseed) |
+| [`ai.streaming`](./ai.md#aistreaming) | [`gen_ai.response.streaming`](./gen_ai.md#gen_airesponsestreaming) |
+| [`ai.temperature`](./ai.md#aitemperature) | [`gen_ai.request.temperature`](./gen_ai.md#gen_airequesttemperature) |
+| [`ai.tool_calls`](./ai.md#aitool_calls) | [`gen_ai.response.tool_calls`](./gen_ai.md#gen_airesponsetool_calls) |
+| [`ai.tools`](./ai.md#aitools) | [`gen_ai.request.available_tools`](./gen_ai.md#gen_airequestavailable_tools) |
+| [`ai.top_k`](./ai.md#aitop_k) | [`gen_ai.request.top_k`](./gen_ai.md#gen_airequesttop_k) |
+| [`ai.top_p`](./ai.md#aitop_p) | [`gen_ai.request.top_p`](./gen_ai.md#gen_airequesttop_p) |
+| [`ai.total_tokens.used`](./ai.md#aitotal_tokensused) | [`gen_ai.usage.total_tokens`](./gen_ai.md#gen_aiusagetotal_tokens) |
+| [`code.filepath`](./code.md#codefilepath) | [`code.file.path`](./code.md#codefilepath) |
+| [`code.function`](./code.md#codefunction) | [`code.function.name`](./code.md#codefunctionname) |
+| [`code.lineno`](./code.md#codelineno) | [`code.line.number`](./code.md#codelinenumber) |
+| [`code.namespace`](./code.md#codenamespace) | [`code.function.name`](./code.md#codefunctionname) |
+| [`db.name`](./db.md#dbname) | [`db.namespace`](./db.md#dbnamespace) |
+| [`db.operation`](./db.md#dboperation) | [`db.operation.name`](./db.md#dboperationname) |
+| [`db.sql.bindings`](./db.md#dbsqlbindings) | [`db.query.parameter.\<key\>`](./db.md#dbqueryparameterkey) |
+| [`db.statement`](./db.md#dbstatement) | [`db.query.text`](./db.md#dbquerytext) |
+| [`db.system`](./db.md#dbsystem) | [`db.system.name`](./db.md#dbsystemname) |
+| [`environment`](./general.md#environment) | [`sentry.environment`](./sentry.md#sentryenvironment) |
+| [`fs_error`](./general.md#fs_error) | [`error.type`](./error.md#errortype) |
+| [`gen_ai.prompt`](./gen_ai.md#gen_aiprompt) | No replacement |
+| [`gen_ai.usage.completion_tokens`](./gen_ai.md#gen_aiusagecompletion_tokens) | [`gen_ai.usage.output_tokens`](./gen_ai.md#gen_aiusageoutput_tokens) |
+| [`gen_ai.usage.prompt_tokens`](./gen_ai.md#gen_aiusageprompt_tokens) | [`gen_ai.usage.input_tokens`](./gen_ai.md#gen_aiusageinput_tokens) |
+| [`gen_ai.usage.total_cost`](./gen_ai.md#gen_aiusagetotal_cost) | [`gen_ai.cost.total_tokens`](./gen_ai.md#gen_aicosttotal_tokens) |
+| [`http.client_ip`](./http.md#httpclient_ip) | [`client.address`](./client.md#clientaddress) |
+| [`http.flavor`](./http.md#httpflavor) | [`network.protocol.version`](./network.md#networkprotocolversion) |
+| [`http.host`](./http.md#httphost) | [`server.address`](./server.md#serveraddress) |
+| [`http.method`](./http.md#httpmethod) | [`http.request.method`](./http.md#httprequestmethod) |
+| [`http.response_content_length`](./http.md#httpresponse_content_length) | [`http.response.body.size`](./http.md#httpresponsebodysize) |
+| [`http.response_transfer_size`](./http.md#httpresponse_transfer_size) | [`http.response.size`](./http.md#httpresponsesize) |
+| [`http.scheme`](./http.md#httpscheme) | [`url.scheme`](./url.md#urlscheme) |
+| [`http.server_name`](./http.md#httpserver_name) | [`server.address`](./server.md#serveraddress) |
+| [`http.status_code`](./http.md#httpstatus_code) | [`http.response.status_code`](./http.md#httpresponsestatus_code) |
+| [`http.target`](./http.md#httptarget) | [`url.path`](./url.md#urlpath) |
+| [`http.url`](./http.md#httpurl) | [`url.full`](./url.md#urlfull) |
+| [`http.user_agent`](./http.md#httpuser_agent) | [`user_agent.original`](./user_agent.md#user_agentoriginal) |
+| [`method`](./general.md#method) | [`http.request.method`](./http.md#httprequestmethod) |
+| [`net.host.ip`](./net.md#nethostip) | [`network.local.address`](./network.md#networklocaladdress) |
+| [`net.host.name`](./net.md#nethostname) | [`server.address`](./server.md#serveraddress) |
+| [`net.host.port`](./net.md#nethostport) | [`server.port`](./server.md#serverport) |
+| [`net.peer.ip`](./net.md#netpeerip) | [`network.peer.address`](./network.md#networkpeeraddress) |
+| [`net.peer.name`](./net.md#netpeername) | [`server.address`](./server.md#serveraddress) |
+| [`net.peer.port`](./net.md#netpeerport) | [`server.port`](./server.md#serverport) |
+| [`net.protocol.name`](./net.md#netprotocolname) | [`network.protocol.name`](./network.md#networkprotocolname) |
+| [`net.protocol.version`](./net.md#netprotocolversion) | [`network.protocol.version`](./network.md#networkprotocolversion) |
+| [`net.sock.family`](./net.md#netsockfamily) | [`network.transport`](./network.md#networktransport) |
+| [`net.sock.host.addr`](./net.md#netsockhostaddr) | [`network.local.address`](./network.md#networklocaladdress) |
+| [`net.sock.host.port`](./net.md#netsockhostport) | [`network.local.port`](./network.md#networklocalport) |
+| [`net.sock.peer.addr`](./net.md#netsockpeeraddr) | [`network.peer.address`](./network.md#networkpeeraddress) |
+| [`net.sock.peer.name`](./net.md#netsockpeername) | No replacement |
+| [`net.sock.peer.port`](./net.md#netsockpeerport) | [`network.peer.port`](./network.md#networkpeerport) |
+| [`net.transport`](./net.md#nettransport) | [`network.transport`](./network.md#networktransport) |
+| [`profile_id`](./general.md#profile_id) | [`sentry.profile_id`](./sentry.md#sentryprofile_id) |
+| [`query.\<key\>`](./query.md#querykey) | [`url.query`](./url.md#urlquery) |
+| [`release`](./general.md#release) | [`sentry.release`](./sentry.md#sentryrelease) |
+| [`replay_id`](./general.md#replay_id) | [`sentry.replay_id`](./sentry.md#sentryreplay_id) |
+| [`resource.deployment.environment.name`](./resource.md#resourcedeploymentenvironmentname) | [`sentry.environment`](./sentry.md#sentryenvironment) |
+| [`route`](./general.md#route) | [`http.route`](./http.md#httproute) |
+| [`sentry.browser.name`](./sentry.md#sentrybrowsername) | [`browser.name`](./browser.md#browsername) |
+| [`sentry.browser.version`](./sentry.md#sentrybrowserversion) | [`browser.version`](./browser.md#browserversion) |
+| [`sentry.segment_id`](./sentry.md#sentrysegment_id) | [`sentry.segment.id`](./sentry.md#sentrysegmentid) |
+| [`transaction`](./general.md#transaction) | [`sentry.transaction`](./sentry.md#sentrytransaction) |
+| [`url`](./general.md#url) | [`url.full`](./url.md#urlfull) |
 

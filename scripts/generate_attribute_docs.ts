@@ -9,8 +9,12 @@ function readJsonFile(filePath: string): AttributeJson {
   return JSON.parse(fileContent) as AttributeJson;
 }
 
-// Function to load all attribute categories from JSON files
+let cachedCategories: Record<string, AttributeJson[]> | null = null;
 function loadAttributeCategories(baseDir: string): Record<string, AttributeJson[]> {
+  if (cachedCategories) {
+    return cachedCategories;
+  }
+
   const categories: Record<string, AttributeJson[]> = {};
 
   // Process top-level files (they go into a "general" category)
@@ -41,6 +45,7 @@ function loadAttributeCategories(baseDir: string): Record<string, AttributeJson[
     }
   }
 
+  cachedCategories = categories;
   return categories;
 }
 
@@ -180,32 +185,40 @@ export function generateAttributeDocs(): Record<string, AttributeJson[]> {
   return categories;
 }
 
-// Function to generate a page listing all attributes
-export function generateAllAttributesPage(categoriesInput?: Record<string, AttributeJson[]>) {
+export function generateAllAttributesPage() {
   const baseDir = 'model/attributes';
   const outputDir = 'generated/attributes';
 
-  // Ensure output directory exists
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
   }
 
-  // Load all attribute categories (or use provided ones)
-  const categories = categoriesInput ?? loadAttributeCategories(baseDir);
+  const categories = loadAttributeCategories(baseDir);
 
-  // Collect all attributes with their category information and brief description
-  const allAttributes: Array<{ key: string; category: string; anchor: string; brief: string; deprecated: boolean }> =
-    [];
+  const allAttributes: Array<{
+    key: string;
+    category: string;
+    anchor: string;
+    brief: string;
+    deprecated: boolean;
+    replacement?: string;
+  }> = [];
+
+  // Build a map of attribute keys to their category and anchor for linking
+  const attributeMap = new Map<string, { category: string; anchor: string }>();
 
   for (const [category, attributes] of Object.entries(categories)) {
     for (const attr of attributes) {
       const anchorLink = attr.key.toLowerCase().replaceAll('.', '').replaceAll('-', '').replaceAll('<key>', 'key');
+      attributeMap.set(attr.key, { category, anchor: anchorLink });
+
       allAttributes.push({
         key: attr.key,
         category: category,
         anchor: anchorLink,
         brief: attr.brief,
         deprecated: !!attr.deprecation,
+        replacement: attr.deprecation?.replacement,
       });
     }
   }
@@ -240,13 +253,26 @@ export function generateAllAttributesPage(categoriesInput?: Record<string, Attri
   // Generate deprecated attributes table
   if (deprecatedAttributes.length > 0) {
     allContent += '## Deprecated Attributes\n\n';
-    allContent += '| Attribute | Description |\n';
+    allContent += '| Attribute | Replacement |\n';
     allContent += '| --- | --- |\n';
 
     for (const attr of deprecatedAttributes) {
       const displayKey = attr.key.replaceAll('<key>', '\\<key\\>');
-      const displayBrief = attr.brief.replaceAll('\n', ' ').replaceAll('|', '\\|');
-      allContent += `| [\`${displayKey}\`](./${attr.category}.md#${attr.anchor}) | ${displayBrief} |\n`;
+      let replacementText = 'No replacement';
+
+      if (attr.replacement) {
+        const replacementInfo = attributeMap.get(attr.replacement);
+        if (replacementInfo) {
+          const displayReplacement = attr.replacement.replaceAll('<key>', '\\<key\\>');
+          replacementText = `[\`${displayReplacement}\`](./${replacementInfo.category}.md#${replacementInfo.anchor})`;
+        } else {
+          // Fallback if replacement not found in map
+          const displayReplacement = attr.replacement.replaceAll('<key>', '\\<key\\>');
+          replacementText = `\`${displayReplacement}\``;
+        }
+      }
+
+      allContent += `| [\`${displayKey}\`](./${attr.category}.md#${attr.anchor}) | ${replacementText} |\n`;
     }
 
     allContent += '\n';
