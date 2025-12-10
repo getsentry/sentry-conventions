@@ -5,6 +5,7 @@
 #### Changes to attributes
 
 - feat(attributes): Add sentry.normalized_db_query.hash ([#200](https://github.com/getsentry/sentry-conventions/pull/200))
+- fix: Change `http.request/response.header.<key>` to `pii: "true"` ([#201](https://github.com/getsentry/sentry-conventions/pull/201))
 
 ## 0.3.1
 

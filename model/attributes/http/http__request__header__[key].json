@@ -4,7 +4,7 @@
   "has_dynamic_suffix": true,
   "type": "string[]",
   "pii": {
-    "key": "maybe"
+    "key": "true"
   },
   "is_in_otel": true,
   "example": "http.request.header.custom-header=['foo', 'bar']"

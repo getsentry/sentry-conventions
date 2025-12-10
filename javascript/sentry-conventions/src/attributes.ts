@@ -3246,7 +3246,7 @@ export type HTTP_REQUEST_FETCH_START_TYPE = number;
  *
  * Attribute Value Type: `Array<string>` {@link HTTP_REQUEST_HEADER_KEY_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: Yes
  *
@@ -3537,7 +3537,7 @@ export type HTTP_RESPONSE_HEADER_CONTENT_LENGTH_TYPE = string;
  *
  * Attribute Value Type: `Array<string>` {@link HTTP_RESPONSE_HEADER_KEY_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: Yes
  *
@@ -11036,7 +11036,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'HTTP request headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.',
     type: 'string[]',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: true,
     hasDynamicSuffix: true,
@@ -11186,7 +11186,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'HTTP response headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.',
     type: 'string[]',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: true,
     hasDynamicSuffix: true,
