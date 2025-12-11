@@ -9,6 +9,46 @@ function readJsonFile(filePath: string): AttributeJson {
   return JSON.parse(fileContent) as AttributeJson;
 }
 
+let cachedCategories: Record<string, AttributeJson[]> | null = null;
+function loadAttributeCategories(baseDir: string): Record<string, AttributeJson[]> {
+  if (cachedCategories) {
+    return cachedCategories;
+  }
+
+  const categories: Record<string, AttributeJson[]> = {};
+
+  // Process top-level files (they go into a "general" category)
+  const topLevelFiles = fs
+    .readdirSync(baseDir)
+    .filter((file) => file.endsWith('.json'))
+    .map((file) => path.join(baseDir, file));
+
+  if (topLevelFiles.length > 0) {
+    categories.general = topLevelFiles.map((file) => readJsonFile(file));
+  }
+
+  // Process subdirectories
+  const subdirs = fs
+    .readdirSync(baseDir, { withFileTypes: true })
+    .filter((dirent) => dirent.isDirectory())
+    .map((dirent) => dirent.name);
+
+  for (const subdir of subdirs) {
+    const categoryDir = path.join(baseDir, subdir);
+    const files = fs
+      .readdirSync(categoryDir)
+      .filter((file) => file.endsWith('.json'))
+      .map((file) => path.join(categoryDir, file));
+
+    if (files.length > 0) {
+      categories[subdir] = files.map((file) => readJsonFile(file));
+    }
+  }
+
+  cachedCategories = categories;
+  return categories;
+}
+
 // Function to generate a markdown table for a single attribute
 function generateAttributeTable(attribute: AttributeJson): string {
   let table = `### ${attribute.key}\n\n`;
@@ -53,43 +93,16 @@ function generateAttributeTable(attribute: AttributeJson): string {
 }
 
 // Main function to generate all markdown docs
-export async function generateAttributeDocs() {
+export function generateAttributeDocs(): Record<string, AttributeJson[]> {
   const baseDir = 'model/attributes';
   const outputDir = 'generated/attributes';
-  const categories: Record<string, AttributeJson[]> = {};
 
   // Ensure output directory exists
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
   }
 
-  // Process top-level files (they go into a "general" category)
-  const topLevelFiles = fs
-    .readdirSync(baseDir)
-    .filter((file) => file.endsWith('.json'))
-    .map((file) => path.join(baseDir, file));
-
-  if (topLevelFiles.length > 0) {
-    categories.general = topLevelFiles.map((file) => readJsonFile(file));
-  }
-
-  // Process subdirectories
-  const subdirs = fs
-    .readdirSync(baseDir, { withFileTypes: true })
-    .filter((dirent) => dirent.isDirectory())
-    .map((dirent) => dirent.name);
-
-  for (const subdir of subdirs) {
-    const categoryDir = path.join(baseDir, subdir);
-    const files = fs
-      .readdirSync(categoryDir)
-      .filter((file) => file.endsWith('.json'))
-      .map((file) => path.join(categoryDir, file));
-
-    if (files.length > 0) {
-      categories[subdir] = files.map((file) => readJsonFile(file));
-    }
-  }
+  const categories = loadAttributeCategories(baseDir);
 
   // Generate markdown files for each category
   for (const [category, attributes] of Object.entries(categories)) {
@@ -153,6 +166,7 @@ export async function generateAttributeDocs() {
   let indexContent = '<!-- THIS FILE IS AUTO-GENERATED. DO NOT EDIT DIRECTLY. -->\n\n';
   indexContent += '# Attribute Documentation\n\n';
   indexContent += 'This directory contains documentation for all available attributes.\n\n';
+  indexContent += '- [📋 View All Attributes (alphabetical list)](./all.md)\n\n';
   indexContent += '## Available Categories\n\n';
 
   // Generate links to each category
@@ -166,4 +180,105 @@ export async function generateAttributeDocs() {
   console.log(`Generated index file: ${indexFile}`);
 
   console.log('Documentation generation complete!');
+
+  return categories;
+}
+
+export function generateAllAttributesPage() {
+  const baseDir = 'model/attributes';
+  const outputDir = 'generated/attributes';
+
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir, { recursive: true });
+  }
+
+  const categories = loadAttributeCategories(baseDir);
+
+  const allAttributes: Array<{
+    key: string;
+    category: string;
+    anchor: string;
+    brief: string;
+    deprecated: boolean;
+    replacement?: string;
+  }> = [];
+
+  // Build a map of attribute keys to their category and anchor for linking
+  const attributeMap = new Map<string, { category: string; anchor: string }>();
+
+  for (const [category, attributes] of Object.entries(categories)) {
+    for (const attr of attributes) {
+      const anchorLink = attr.key.toLowerCase().replaceAll('.', '').replaceAll('-', '').replaceAll('<key>', 'key');
+      attributeMap.set(attr.key, { category, anchor: anchorLink });
+
+      allAttributes.push({
+        key: attr.key,
+        category: category,
+        anchor: anchorLink,
+        brief: attr.brief,
+        deprecated: !!attr.deprecation,
+        replacement: attr.deprecation?.replacement,
+      });
+    }
+  }
+
+  // Split into stable and deprecated attributes
+  const stableAttributes = allAttributes.filter((attr) => !attr.deprecated).sort((a, b) => a.key.localeCompare(b.key));
+  const deprecatedAttributes = allAttributes
+    .filter((attr) => attr.deprecated)
+    .sort((a, b) => a.key.localeCompare(b.key));
+
+  // Generate the all attributes page
+  let allContent = '<!-- THIS FILE IS AUTO-GENERATED. DO NOT EDIT DIRECTLY. -->\n\n';
+  allContent += '# All Attributes\n\n';
+  allContent += 'This page lists all available attributes across all categories.\n\n';
+  allContent += `Total attributes: ${allAttributes.length}\n\n`;
+
+  // Generate stable attributes table
+  if (stableAttributes.length > 0) {
+    allContent += '## Stable Attributes\n\n';
+    allContent += '| Attribute | Description |\n';
+    allContent += '| --- | --- |\n';
+
+    for (const attr of stableAttributes) {
+      const displayKey = attr.key.replaceAll('<key>', '\\<key\\>');
+      const displayBrief = attr.brief.replaceAll('\n', ' ').replaceAll('|', '\\|');
+      allContent += `| [\`${displayKey}\`](./${attr.category}.md#${attr.anchor}) | ${displayBrief} |\n`;
+    }
+
+    allContent += '\n';
+  }
+
+  // Generate deprecated attributes table
+  if (deprecatedAttributes.length > 0) {
+    allContent += '## Deprecated Attributes\n\n';
+    allContent += '| Attribute | Replacement |\n';
+    allContent += '| --- | --- |\n';
+
+    for (const attr of deprecatedAttributes) {
+      const displayKey = attr.key.replaceAll('<key>', '\\<key\\>');
+      let replacementText = 'No replacement';
+
+      if (attr.replacement) {
+        const replacementInfo = attributeMap.get(attr.replacement);
+        if (replacementInfo) {
+          const displayReplacement = attr.replacement.replaceAll('<key>', '\\<key\\>');
+          replacementText = `[\`${displayReplacement}\`](./${replacementInfo.category}.md#${replacementInfo.anchor})`;
+        } else {
+          // Fallback if replacement not found in map
+          const displayReplacement = attr.replacement.replaceAll('<key>', '\\<key\\>');
+          replacementText = `\`${displayReplacement}\``;
+        }
+      }
+
+      allContent += `| [\`${displayKey}\`](./${attr.category}.md#${attr.anchor}) | ${replacementText} |\n`;
+    }
+
+    allContent += '\n';
+  }
+
+  // Write the all.md file
+  const allFile = path.join(outputDir, 'all.md');
+  fs.writeFileSync(allFile, allContent);
+  console.log(`Generated all attributes page: ${allFile}`);
 }

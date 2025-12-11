@@ -4,6 +4,8 @@
 
 This directory contains documentation for all available attributes.
 
+- [📋 View All Attributes (alphabetical list)](./all.md)
+
 ## Available Categories
 
 - [`ai` Attributes](./ai.md)

@@ -2,6 +2,8 @@
 
 ### Features
 
+- Add page listing all attributes ([#207](https://github.com/getsentry/sentry-conventions/pull/207))
+
 #### Changes to attributes
 
 - feat(attributes): Add sentry.normalized_db_query.hash ([#200](https://github.com/getsentry/sentry-conventions/pull/200))
