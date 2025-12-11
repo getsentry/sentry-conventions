@@ -2884,27 +2884,6 @@ export const GEN_AI_USAGE_PROMPT_TOKENS = 'gen_ai.usage.prompt_tokens';
  */
 export type GEN_AI_USAGE_PROMPT_TOKENS_TYPE = number;
 
-// Path: model/attributes/gen_ai/gen_ai__usage__total_cost.json
-
-/**
- * The total cost for the tokens used. `gen_ai.usage.total_cost`
- *
- * Attribute Value Type: `number` {@link GEN_AI_USAGE_TOTAL_COST_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * @deprecated Use {@link GEN_AI_COST_TOTAL_TOKENS} (gen_ai.cost.total_tokens) instead
- * @example 12.34
- */
-export const GEN_AI_USAGE_TOTAL_COST = 'gen_ai.usage.total_cost';
-
-/**
- * Type for {@link GEN_AI_USAGE_TOTAL_COST} gen_ai.usage.total_cost
- */
-export type GEN_AI_USAGE_TOTAL_COST_TYPE = number;
-
 // Path: model/attributes/gen_ai/gen_ai__usage__total_tokens.json
 
 /**
@@ -8703,7 +8682,6 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [GEN_AI_USAGE_OUTPUT_TOKENS]: 'integer',
   [GEN_AI_USAGE_OUTPUT_TOKENS_REASONING]: 'integer',
   [GEN_AI_USAGE_PROMPT_TOKENS]: 'integer',
-  [GEN_AI_USAGE_TOTAL_COST]: 'double',
   [GEN_AI_USAGE_TOTAL_TOKENS]: 'integer',
   [GEN_AI_USER_MESSAGE]: 'string',
   [GRAPHQL_OPERATION_NAME]: 'string',
@@ -9116,7 +9094,6 @@ export type AttributeName =
   | typeof GEN_AI_USAGE_OUTPUT_TOKENS
   | typeof GEN_AI_USAGE_OUTPUT_TOKENS_REASONING
   | typeof GEN_AI_USAGE_PROMPT_TOKENS
-  | typeof GEN_AI_USAGE_TOTAL_COST
   | typeof GEN_AI_USAGE_TOTAL_TOKENS
   | typeof GEN_AI_USER_MESSAGE
   | typeof GRAPHQL_OPERATION_NAME
@@ -10841,18 +10818,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.usage.input_tokens',
     },
     aliases: [AI_PROMPT_TOKENS_USED, GEN_AI_USAGE_INPUT_TOKENS],
-  },
-  [GEN_AI_USAGE_TOTAL_COST]: {
-    brief: 'The total cost for the tokens used.',
-    type: 'double',
-    pii: {
-      isPii: 'false',
-    },
-    isInOtel: false,
-    example: 12.34,
-    deprecation: {
-      replacement: 'gen_ai.cost.total_tokens',
-    },
   },
   [GEN_AI_USAGE_TOTAL_TOKENS]: {
     brief: 'The total number of tokens used to process the prompt. (input tokens plus output todkens)',
@@ -13724,7 +13689,6 @@ export type Attributes = {
   [GEN_AI_USAGE_OUTPUT_TOKENS]?: GEN_AI_USAGE_OUTPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_OUTPUT_TOKENS_REASONING]?: GEN_AI_USAGE_OUTPUT_TOKENS_REASONING_TYPE;
   [GEN_AI_USAGE_PROMPT_TOKENS]?: GEN_AI_USAGE_PROMPT_TOKENS_TYPE;
-  [GEN_AI_USAGE_TOTAL_COST]?: GEN_AI_USAGE_TOTAL_COST_TYPE;
   [GEN_AI_USAGE_TOTAL_TOKENS]?: GEN_AI_USAGE_TOTAL_TOKENS_TYPE;
   [GEN_AI_USER_MESSAGE]?: GEN_AI_USER_MESSAGE_TYPE;
   [GRAPHQL_OPERATION_NAME]?: GRAPHQL_OPERATION_NAME_TYPE;

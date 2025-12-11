@@ -119,7 +119,6 @@ class _AttributeNamesMeta(type):
         "GEN_AI_PROMPT",
         "GEN_AI_USAGE_COMPLETION_TOKENS",
         "GEN_AI_USAGE_PROMPT_TOKENS",
-        "GEN_AI_USAGE_TOTAL_COST",
         "HTTP_CLIENT_IP",
         "HTTP_FLAVOR",
         "HTTP_HOST",
@@ -1689,19 +1688,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Aliases: ai.prompt_tokens.used, gen_ai.usage.input_tokens
     DEPRECATED: Use gen_ai.usage.input_tokens instead
     Example: 20
-    """
-
-    # Path: model/attributes/gen_ai/gen_ai__usage__total_cost.json
-    GEN_AI_USAGE_TOTAL_COST: Literal["gen_ai.usage.total_cost"] = (
-        "gen_ai.usage.total_cost"
-    )
-    """The total cost for the tokens used.
-
-    Type: float
-    Contains PII: false
-    Defined in OTEL: No
-    DEPRECATED: Use gen_ai.cost.total_tokens instead
-    Example: 12.34
     """
 
     # Path: model/attributes/gen_ai/gen_ai__usage__total_tokens.json
@@ -5769,16 +5755,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.usage.input_tokens"),
         aliases=["ai.prompt_tokens.used", "gen_ai.usage.input_tokens"],
     ),
-    "gen_ai.usage.total_cost": AttributeMetadata(
-        brief="The total cost for the tokens used.",
-        type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=False,
-        example=12.34,
-        deprecation=DeprecationInfo(
-            replacement="gen_ai.cost.total_tokens", status=DeprecationStatus.BACKFILL
-        ),
-    ),
     "gen_ai.usage.total_tokens": AttributeMetadata(
         brief="The total number of tokens used to process the prompt. (input tokens plus output todkens)",
         type=AttributeType.INTEGER,
@@ -8030,7 +8006,6 @@ Attributes = TypedDict(
         "gen_ai.usage.output_tokens": int,
         "gen_ai.usage.output_tokens.reasoning": int,
         "gen_ai.usage.prompt_tokens": int,
-        "gen_ai.usage.total_cost": float,
         "gen_ai.usage.total_tokens": int,
         "gen_ai.user.message": str,
         "graphql.operation.name": str,

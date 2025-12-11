@@ -48,7 +48,6 @@
   - [gen_ai.prompt](#gen_aiprompt)
   - [gen_ai.usage.completion_tokens](#gen_aiusagecompletion_tokens)
   - [gen_ai.usage.prompt_tokens](#gen_aiusageprompt_tokens)
-  - [gen_ai.usage.total_cost](#gen_aiusagetotal_cost)
 
 ## Stable Attributes
 
@@ -562,16 +561,4 @@ The number of tokens used in the GenAI input (prompt).
 | Example | `20` |
 | Deprecated | Yes, use `gen_ai.usage.input_tokens` instead |
 | Aliases | `ai.prompt_tokens.used`, `gen_ai.usage.input_tokens` |
-
-### gen_ai.usage.total_cost
-
-The total cost for the tokens used.
-
-| Property | Value |
-| --- | --- |
-| Type | `double` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `12.34` |
-| Deprecated | Yes, use `gen_ai.cost.total_tokens` instead |
 
