@@ -71,25 +71,25 @@ A query parameter used in db.query.text, with \<key\> being the parameter name, 
 
 ### db.query.summary
 
-A database query being executed. Should be paramaterized. The full version of the query is in `db.query.text`.
+A shortened representation of operation(s) in the full query. This attribute must be low-cardinality and should only contain the operation table names.
 
 | Property | Value |
 | --- | --- |
 | Type | `string` |
 | Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
-| Example | `SELECT * FROM users` |
+| Example | `SELECT users;` |
 
 ### db.query.text
 
-The database query being executed. Should be the full query, not a parameterized version. The parameterized version is in `db.query.summary`.
+The database parameterized query being executed. Any parameter values (filters, insertion values, etc) should be replaced with parameter placeholders. If applicable, use `db.query.parameter.\<key\>` to add the parameter value.
 
 | Property | Value |
 | --- | --- |
 | Type | `string` |
 | Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
-| Example | `SELECT * FROM users` |
+| Example | `SELECT * FROM users WHERE id = $1` |
 | Aliases | `db.statement` |
 
 ### db.redis.connection
