@@ -4,7 +4,7 @@
 
 This page lists all available attributes across all categories.
 
-Total attributes: 410
+Total attributes: 409
 
 ## Stable Attributes
 
@@ -49,8 +49,8 @@ Total attributes: 410
 | [`db.namespace`](./db.md#dbnamespace) | The name of the database being accessed. |
 | [`db.operation.name`](./db.md#dboperationname) | The name of the operation being executed. |
 | [`db.query.parameter.\<key\>`](./db.md#dbqueryparameterkey) | A query parameter used in db.query.text, with <key> being the parameter name, and the attribute value being a string representation of the parameter value. |
-| [`db.query.summary`](./db.md#dbquerysummary) | A database query being executed. Should be paramaterized. The full version of the query is in `db.query.text`. |
-| [`db.query.text`](./db.md#dbquerytext) | The database query being executed. Should be the full query, not a parameterized version. The parameterized version is in `db.query.summary`. |
+| [`db.query.summary`](./db.md#dbquerysummary) | A shortened representation of operation(s) in the full query. This attribute must be low-cardinality and should only contain the operation table names. |
+| [`db.query.text`](./db.md#dbquerytext) | The database parameterized query being executed. Any parameter values (filters, insertion values, etc) should be replaced with parameter placeholders. If applicable, use `db.query.parameter.<key>` to add the parameter value. |
 | [`db.redis.connection`](./db.md#dbredisconnection) | The redis connection name. |
 | [`db.redis.parameters`](./db.md#dbredisparameters) | The array of command parameters given to a redis command. |
 | [`db.system.name`](./db.md#dbsystemname) | An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers. |
@@ -385,7 +385,6 @@ Total attributes: 410
 | [`gen_ai.prompt`](./gen_ai.md#gen_aiprompt) | No replacement |
 | [`gen_ai.usage.completion_tokens`](./gen_ai.md#gen_aiusagecompletion_tokens) | [`gen_ai.usage.output_tokens`](./gen_ai.md#gen_aiusageoutput_tokens) |
 | [`gen_ai.usage.prompt_tokens`](./gen_ai.md#gen_aiusageprompt_tokens) | [`gen_ai.usage.input_tokens`](./gen_ai.md#gen_aiusageinput_tokens) |
-| [`gen_ai.usage.total_cost`](./gen_ai.md#gen_aiusagetotal_cost) | [`gen_ai.cost.total_tokens`](./gen_ai.md#gen_aicosttotal_tokens) |
 | [`http.client_ip`](./http.md#httpclient_ip) | [`client.address`](./client.md#clientaddress) |
 | [`http.flavor`](./http.md#httpflavor) | [`network.protocol.version`](./network.md#networkprotocolversion) |
 | [`http.host`](./http.md#httphost) | [`server.address`](./server.md#serveraddress) |
