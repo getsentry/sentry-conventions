@@ -4,7 +4,7 @@
 
 This page lists all available attributes across all categories.
 
-Total attributes: 410
+Total attributes: 409
 
 ## Stable Attributes
 
@@ -385,7 +385,6 @@ Total attributes: 410
 | [`gen_ai.prompt`](./gen_ai.md#gen_aiprompt) | No replacement |
 | [`gen_ai.usage.completion_tokens`](./gen_ai.md#gen_aiusagecompletion_tokens) | [`gen_ai.usage.output_tokens`](./gen_ai.md#gen_aiusageoutput_tokens) |
 | [`gen_ai.usage.prompt_tokens`](./gen_ai.md#gen_aiusageprompt_tokens) | [`gen_ai.usage.input_tokens`](./gen_ai.md#gen_aiusageinput_tokens) |
-| [`gen_ai.usage.total_cost`](./gen_ai.md#gen_aiusagetotal_cost) | [`gen_ai.cost.total_tokens`](./gen_ai.md#gen_aicosttotal_tokens) |
 | [`http.client_ip`](./http.md#httpclient_ip) | [`client.address`](./client.md#clientaddress) |
 | [`http.flavor`](./http.md#httpflavor) | [`network.protocol.version`](./network.md#networkprotocolversion) |
 | [`http.host`](./http.md#httphost) | [`server.address`](./server.md#serveraddress) |
