@@ -4,7 +4,7 @@
 
 This page lists all available attributes across all categories.
 
-Total attributes: 410
+Total attributes: 411
 
 ## Stable Attributes
 
@@ -126,6 +126,7 @@ Total attributes: 410
 | [`http.request.domain_lookup_start`](./http.md#httprequestdomain_lookup_start) | The UNIX timestamp representing the time immediately before the browser starts the domain name lookup for the resource. |
 | [`http.request.fetch_start`](./http.md#httprequestfetch_start) | The UNIX timestamp representing the time immediately before the browser starts to fetch the resource. |
 | [`http.request.header.\<key\>`](./http.md#httprequestheaderkey) | HTTP request headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values. |
+| [`http.request.header.cookie.\<key\>`](./http.md#httprequestheadercookiekey) | Cookies included by the client in an HTTP request, where <key> is the cookie name and the value of the attribute is the cookie value. |
 | [`http.request.method`](./http.md#httprequestmethod) | The HTTP method used. |
 | [`http.request.redirect_end`](./http.md#httprequestredirect_end) | The UNIX timestamp representing the timestamp immediately after receiving the last byte of the response of the last redirect |
 | [`http.request.redirect_start`](./http.md#httprequestredirect_start) | The UNIX timestamp representing the start time of the fetch which that initiates the redirect. |
@@ -139,6 +140,7 @@ Total attributes: 410
 | [`http.response.body.size`](./http.md#httpresponsebodysize) | The encoded body size of the response (in bytes). |
 | [`http.response.header.\<key\>`](./http.md#httpresponseheaderkey) | HTTP response headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values. |
 | [`http.response.header.content-length`](./http.md#httpresponseheadercontentlength) | The size of the message body sent to the recipient (in bytes) |
+| [`http.response.header.cookie.\<key\>`](./http.md#httpresponseheadercookiekey) | Cookies returned by the server as part of an HTTP response using the "Set-Cookie" header, where <key> is the cookie name and the value of the attribute is the cookie value. Cookie attributes (e.g. "Secure; HttpOnly") shall not be included as part of the value. |
 | [`http.response.size`](./http.md#httpresponsesize) | The transfer size of the response (in bytes). |
 | [`http.response.status_code`](./http.md#httpresponsestatus_code) | The status code of the HTTP response. |
 | [`http.route`](./http.md#httproute) | The matched route, that is, the path template in the format used by the respective server framework. |
@@ -385,7 +387,6 @@ Total attributes: 410
 | [`gen_ai.prompt`](./gen_ai.md#gen_aiprompt) | No replacement |
 | [`gen_ai.usage.completion_tokens`](./gen_ai.md#gen_aiusagecompletion_tokens) | [`gen_ai.usage.output_tokens`](./gen_ai.md#gen_aiusageoutput_tokens) |
 | [`gen_ai.usage.prompt_tokens`](./gen_ai.md#gen_aiusageprompt_tokens) | [`gen_ai.usage.input_tokens`](./gen_ai.md#gen_aiusageinput_tokens) |
-| [`gen_ai.usage.total_cost`](./gen_ai.md#gen_aiusagetotal_cost) | [`gen_ai.cost.total_tokens`](./gen_ai.md#gen_aicosttotal_tokens) |
 | [`http.client_ip`](./http.md#httpclient_ip) | [`client.address`](./client.md#clientaddress) |
 | [`http.flavor`](./http.md#httpflavor) | [`network.protocol.version`](./network.md#networkprotocolversion) |
 | [`http.host`](./http.md#httphost) | [`server.address`](./server.md#serveraddress) |
