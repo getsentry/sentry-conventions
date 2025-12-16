@@ -7,6 +7,7 @@
 #### Changes to attributes
 
 - feat(attributes): Add sentry.normalized_db_query.hash ([#200](https://github.com/getsentry/sentry-conventions/pull/200))
+- feat: Add http.request/response.header.cookie.<key> ([#211](https://github.com/getsentry/sentry-conventions/pull/211))
 
 ## 0.3.1
 

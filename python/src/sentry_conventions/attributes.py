@@ -1886,6 +1886,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "http.request.header.custom-header=['foo', 'bar']"
     """
 
+    # Path: model/attributes/http/http__request__header__cookie__[key].json
+    HTTP_REQUEST_HEADER_COOKIE_KEY: Literal["http.request.header.cookie.<key>"] = (
+        "http.request.header.cookie.<key>"
+    )
+    """Cookies included by the client in an HTTP request, where <key> is the cookie name and the value of the attribute is the cookie value.
+
+    Type: str
+    Contains PII: true
+    Defined in OTEL: No
+    Has Dynamic Suffix: true
+    Example: "lang=en-US"
+    """
+
     # Path: model/attributes/http/http__request__method.json
     HTTP_REQUEST_METHOD: Literal["http.request.method"] = "http.request.method"
     """The HTTP method used.
@@ -2042,6 +2055,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Aliases: http.response_content_length, http.response.body.size
     Example: "http.response.header.custom-header=['foo', 'bar']"
+    """
+
+    # Path: model/attributes/http/http__response__header__cookie__[key].json
+    HTTP_RESPONSE_HEADER_COOKIE_KEY: Literal["http.response.header.cookie.<key>"] = (
+        "http.response.header.cookie.<key>"
+    )
+    """Cookies returned by the server as part of an HTTP response using the "Set-Cookie" header, where <key> is the cookie name and the value of the attribute is the cookie value. Cookie attributes (e.g. "Secure; HttpOnly") shall not be included as part of the value.
+
+    Type: str
+    Contains PII: true
+    Defined in OTEL: No
+    Has Dynamic Suffix: true
+    Example: "lang=en-US"
     """
 
     # Path: model/attributes/http/http__response__size.json
@@ -5901,6 +5927,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         has_dynamic_suffix=True,
         example="http.request.header.custom-header=['foo', 'bar']",
     ),
+    "http.request.header.cookie.<key>": AttributeMetadata(
+        brief="Cookies included by the client in an HTTP request, where <key> is the cookie name and the value of the attribute is the cookie value.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.TRUE),
+        is_in_otel=False,
+        has_dynamic_suffix=True,
+        example="lang=en-US",
+        sdks=["javascript"],
+    ),
     "http.request.method": AttributeMetadata(
         brief="The HTTP method used.",
         type=AttributeType.STRING,
@@ -6003,6 +6038,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="http.response.header.custom-header=['foo', 'bar']",
         aliases=["http.response_content_length", "http.response.body.size"],
+    ),
+    "http.response.header.cookie.<key>": AttributeMetadata(
+        brief='Cookies returned by the server as part of an HTTP response using the "Set-Cookie" header, where <key> is the cookie name and the value of the attribute is the cookie value. Cookie attributes (e.g. "Secure; HttpOnly") shall not be included as part of the value.',
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.TRUE),
+        is_in_otel=False,
+        has_dynamic_suffix=True,
+        example="lang=en-US",
+        sdks=["javascript"],
     ),
     "http.response.size": AttributeMetadata(
         brief="The transfer size of the response (in bytes).",
@@ -8023,6 +8067,7 @@ Attributes = TypedDict(
         "http.request.domain_lookup_start": float,
         "http.request.fetch_start": float,
         "http.request.header.<key>": List[str],
+        "http.request.header.cookie.<key>": str,
         "http.request.method": str,
         "http.request.redirect_end": float,
         "http.request.redirect_start": float,
@@ -8036,6 +8081,7 @@ Attributes = TypedDict(
         "http.response.body.size": int,
         "http.response.header.<key>": List[str],
         "http.response.header.content-length": str,
+        "http.response.header.cookie.<key>": str,
         "http.response.size": int,
         "http.response.status_code": int,
         "http.response_content_length": int,

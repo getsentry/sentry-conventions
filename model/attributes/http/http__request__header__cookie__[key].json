@@ -1,0 +1,12 @@
+{
+  "key": "http.request.header.cookie.<key>",
+  "brief": "Cookies included by the client in an HTTP request, where <key> is the cookie name and the value of the attribute is the cookie value.",
+  "has_dynamic_suffix": true,
+  "type": "string",
+  "pii": {
+    "key": "true"
+  },
+  "is_in_otel": false,
+  "example": "lang=en-US",
+  "sdks": ["javascript"]
+}

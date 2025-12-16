@@ -3218,6 +3218,28 @@ export const HTTP_REQUEST_FETCH_START = 'http.request.fetch_start';
  */
 export type HTTP_REQUEST_FETCH_START_TYPE = number;
 
+// Path: model/attributes/http/http__request__header__cookie__[key].json
+
+/**
+ * Cookies included by the client in an HTTP request, where <key> is the cookie name and the value of the attribute is the cookie value. `http.request.header.cookie.<key>`
+ *
+ * Attribute Value Type: `string` {@link HTTP_REQUEST_HEADER_COOKIE_KEY_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Has Dynamic Suffix: true
+ *
+ * @example "lang=en-US"
+ */
+export const HTTP_REQUEST_HEADER_COOKIE_KEY = 'http.request.header.cookie.<key>';
+
+/**
+ * Type for {@link HTTP_REQUEST_HEADER_COOKIE_KEY} http.request.header.cookie.<key>
+ */
+export type HTTP_REQUEST_HEADER_COOKIE_KEY_TYPE = string;
+
 // Path: model/attributes/http/http__request__header__[key].json
 
 /**
@@ -3508,6 +3530,28 @@ export const HTTP_RESPONSE_HEADER_CONTENT_LENGTH = 'http.response.header.content
  * Type for {@link HTTP_RESPONSE_HEADER_CONTENT_LENGTH} http.response.header.content-length
  */
 export type HTTP_RESPONSE_HEADER_CONTENT_LENGTH_TYPE = string;
+
+// Path: model/attributes/http/http__response__header__cookie__[key].json
+
+/**
+ * Cookies returned by the server as part of an HTTP response using the "Set-Cookie" header, where <key> is the cookie name and the value of the attribute is the cookie value. Cookie attributes (e.g. "Secure; HttpOnly") shall not be included as part of the value. `http.response.header.cookie.<key>`
+ *
+ * Attribute Value Type: `string` {@link HTTP_RESPONSE_HEADER_COOKIE_KEY_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Has Dynamic Suffix: true
+ *
+ * @example "lang=en-US"
+ */
+export const HTTP_RESPONSE_HEADER_COOKIE_KEY = 'http.response.header.cookie.<key>';
+
+/**
+ * Type for {@link HTTP_RESPONSE_HEADER_COOKIE_KEY} http.response.header.cookie.<key>
+ */
+export type HTTP_RESPONSE_HEADER_COOKIE_KEY_TYPE = string;
 
 // Path: model/attributes/http/http__response__header__[key].json
 
@@ -8698,6 +8742,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [HTTP_REQUEST_DOMAIN_LOOKUP_END]: 'double',
   [HTTP_REQUEST_DOMAIN_LOOKUP_START]: 'double',
   [HTTP_REQUEST_FETCH_START]: 'double',
+  [HTTP_REQUEST_HEADER_COOKIE_KEY]: 'string',
   [HTTP_REQUEST_HEADER_KEY]: 'string[]',
   [HTTP_REQUEST_METHOD]: 'string',
   [HTTP_REQUEST_REDIRECT_END]: 'double',
@@ -8712,6 +8757,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [HTTP_RESPONSE_BODY_SIZE]: 'integer',
   [HTTP_RESPONSE_CONTENT_LENGTH]: 'integer',
   [HTTP_RESPONSE_HEADER_CONTENT_LENGTH]: 'string',
+  [HTTP_RESPONSE_HEADER_COOKIE_KEY]: 'string',
   [HTTP_RESPONSE_HEADER_KEY]: 'string[]',
   [HTTP_RESPONSE_SIZE]: 'integer',
   [HTTP_RESPONSE_STATUS_CODE]: 'integer',
@@ -9110,6 +9156,7 @@ export type AttributeName =
   | typeof HTTP_REQUEST_DOMAIN_LOOKUP_END
   | typeof HTTP_REQUEST_DOMAIN_LOOKUP_START
   | typeof HTTP_REQUEST_FETCH_START
+  | typeof HTTP_REQUEST_HEADER_COOKIE_KEY
   | typeof HTTP_REQUEST_HEADER_KEY
   | typeof HTTP_REQUEST_METHOD
   | typeof HTTP_REQUEST_REDIRECT_END
@@ -9124,6 +9171,7 @@ export type AttributeName =
   | typeof HTTP_RESPONSE_BODY_SIZE
   | typeof HTTP_RESPONSE_CONTENT_LENGTH
   | typeof HTTP_RESPONSE_HEADER_CONTENT_LENGTH
+  | typeof HTTP_RESPONSE_HEADER_COOKIE_KEY
   | typeof HTTP_RESPONSE_HEADER_KEY
   | typeof HTTP_RESPONSE_SIZE
   | typeof HTTP_RESPONSE_STATUS_CODE
@@ -10996,6 +11044,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1732829555.389,
     sdks: ['javascript-browser'],
   },
+  [HTTP_REQUEST_HEADER_COOKIE_KEY]: {
+    brief:
+      'Cookies included by the client in an HTTP request, where <key> is the cookie name and the value of the attribute is the cookie value.',
+    type: 'string',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: false,
+    hasDynamicSuffix: true,
+    example: 'lang=en-US',
+    sdks: ['javascript'],
+  },
   [HTTP_REQUEST_HEADER_KEY]: {
     brief:
       'HTTP request headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.',
@@ -11145,6 +11205,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: "http.response.header.custom-header=['foo', 'bar']",
     aliases: [HTTP_RESPONSE_CONTENT_LENGTH, HTTP_RESPONSE_BODY_SIZE],
+  },
+  [HTTP_RESPONSE_HEADER_COOKIE_KEY]: {
+    brief:
+      'Cookies returned by the server as part of an HTTP response using the "Set-Cookie" header, where <key> is the cookie name and the value of the attribute is the cookie value. Cookie attributes (e.g. "Secure; HttpOnly") shall not be included as part of the value.',
+    type: 'string',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: false,
+    hasDynamicSuffix: true,
+    example: 'lang=en-US',
+    sdks: ['javascript'],
   },
   [HTTP_RESPONSE_HEADER_KEY]: {
     brief:
@@ -13705,6 +13777,7 @@ export type Attributes = {
   [HTTP_REQUEST_DOMAIN_LOOKUP_END]?: HTTP_REQUEST_DOMAIN_LOOKUP_END_TYPE;
   [HTTP_REQUEST_DOMAIN_LOOKUP_START]?: HTTP_REQUEST_DOMAIN_LOOKUP_START_TYPE;
   [HTTP_REQUEST_FETCH_START]?: HTTP_REQUEST_FETCH_START_TYPE;
+  [HTTP_REQUEST_HEADER_COOKIE_KEY]?: HTTP_REQUEST_HEADER_COOKIE_KEY_TYPE;
   [HTTP_REQUEST_HEADER_KEY]?: HTTP_REQUEST_HEADER_KEY_TYPE;
   [HTTP_REQUEST_METHOD]?: HTTP_REQUEST_METHOD_TYPE;
   [HTTP_REQUEST_REDIRECT_END]?: HTTP_REQUEST_REDIRECT_END_TYPE;
@@ -13719,6 +13792,7 @@ export type Attributes = {
   [HTTP_RESPONSE_BODY_SIZE]?: HTTP_RESPONSE_BODY_SIZE_TYPE;
   [HTTP_RESPONSE_CONTENT_LENGTH]?: HTTP_RESPONSE_CONTENT_LENGTH_TYPE;
   [HTTP_RESPONSE_HEADER_CONTENT_LENGTH]?: HTTP_RESPONSE_HEADER_CONTENT_LENGTH_TYPE;
+  [HTTP_RESPONSE_HEADER_COOKIE_KEY]?: HTTP_RESPONSE_HEADER_COOKIE_KEY_TYPE;
   [HTTP_RESPONSE_HEADER_KEY]?: HTTP_RESPONSE_HEADER_KEY_TYPE;
   [HTTP_RESPONSE_SIZE]?: HTTP_RESPONSE_SIZE_TYPE;
   [HTTP_RESPONSE_STATUS_CODE]?: HTTP_RESPONSE_STATUS_CODE_TYPE;

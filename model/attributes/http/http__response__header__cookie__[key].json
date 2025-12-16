@@ -1,0 +1,12 @@
+{
+  "key": "http.response.header.cookie.<key>",
+  "brief": "Cookies returned by the server as part of an HTTP response using the \"Set-Cookie\" header, where <key> is the cookie name and the value of the attribute is the cookie value. Cookie attributes (e.g. \"Secure; HttpOnly\") shall not be included as part of the value.",
+  "has_dynamic_suffix": true,
+  "type": "string",
+  "pii": {
+    "key": "true"
+  },
+  "is_in_otel": false,
+  "example": "lang=en-US",
+  "sdks": ["javascript"]
+}

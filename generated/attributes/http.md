@@ -12,6 +12,7 @@
   - [http.request.domain_lookup_start](#httprequestdomain_lookup_start)
   - [http.request.fetch_start](#httprequestfetch_start)
   - [http.request.header.\<key\>](#httprequestheaderkey)
+  - [http.request.header.cookie.\<key\>](#httprequestheadercookiekey)
   - [http.request.method](#httprequestmethod)
   - [http.request.redirect_end](#httprequestredirect_end)
   - [http.request.redirect_start](#httprequestredirect_start)
@@ -25,6 +26,7 @@
   - [http.response.body.size](#httpresponsebodysize)
   - [http.response.header.\<key\>](#httpresponseheaderkey)
   - [http.response.header.content-length](#httpresponseheadercontentlength)
+  - [http.response.header.cookie.\<key\>](#httpresponseheadercookiekey)
   - [http.response.size](#httpresponsesize)
   - [http.response.status_code](#httpresponsestatus_code)
   - [http.route](#httproute)
@@ -143,6 +145,18 @@ HTTP request headers, \<key\> being the normalized HTTP Header name (lowercase),
 | Exists in OpenTelemetry | Yes |
 | Has dynamic suffix | Yes |
 | Example | `http.request.header.custom-header=['foo', 'bar']` |
+
+### http.request.header.cookie.\<key\>
+
+Cookies included by the client in an HTTP request, where \<key\> is the cookie name and the value of the attribute is the cookie value.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | true |
+| Exists in OpenTelemetry | No |
+| Has dynamic suffix | Yes |
+| Example | `lang=en-US` |
 
 ### http.request.method
 
@@ -290,6 +304,18 @@ The size of the message body sent to the recipient (in bytes)
 | Exists in OpenTelemetry | Yes |
 | Example | `http.response.header.custom-header=['foo', 'bar']` |
 | Aliases | `http.response_content_length`, `http.response.body.size` |
+
+### http.response.header.cookie.\<key\>
+
+Cookies returned by the server as part of an HTTP response using the "Set-Cookie" header, where \<key\> is the cookie name and the value of the attribute is the cookie value. Cookie attributes (e.g. "Secure; HttpOnly") shall not be included as part of the value.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | true |
+| Exists in OpenTelemetry | No |
+| Has dynamic suffix | Yes |
+| Example | `lang=en-US` |
 
 ### http.response.size
 
