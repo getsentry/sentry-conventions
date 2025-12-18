@@ -3,10 +3,12 @@
 # Sentry Attributes
 
 - [Stable Attributes](#stable-attributes)
+  - [sentry.action](#sentryaction)
   - [sentry.cancellation_reason](#sentrycancellation_reason)
   - [sentry.client_sample_rate](#sentryclient_sample_rate)
   - [sentry.description](#sentrydescription)
   - [sentry.dist](#sentrydist)
+  - [sentry.domain](#sentrydomain)
   - [sentry.dsc.environment](#sentrydscenvironment)
   - [sentry.dsc.public_key](#sentrydscpublic_key)
   - [sentry.dsc.release](#sentrydscrelease)
@@ -17,6 +19,7 @@
   - [sentry.environment](#sentryenvironment)
   - [sentry.exclusive_time](#sentryexclusive_time)
   - [sentry.graphql.operation](#sentrygraphqloperation)
+  - [sentry.group](#sentrygroup)
   - [sentry.http.prefetch](#sentryhttpprefetch)
   - [sentry.idle_span_finish_reason](#sentryidle_span_finish_reason)
   - [sentry.is_remote](#sentryis_remote)
@@ -28,6 +31,7 @@
   - [sentry.nextjs.ssr.function.type](#sentrynextjsssrfunctiontype)
   - [sentry.normalized_db_query](#sentrynormalized_db_query)
   - [sentry.normalized_db_query.hash](#sentrynormalized_db_queryhash)
+  - [sentry.normalized_description](#sentrynormalized_description)
   - [sentry.observed_timestamp_nanos](#sentryobserved_timestamp_nanos)
   - [sentry.op](#sentryop)
   - [sentry.origin](#sentryorigin)
@@ -52,6 +56,17 @@
   - [sentry.segment_id](#sentrysegment_id)
 
 ## Stable Attributes
+
+### sentry.action
+
+Used as a generic attribute representing the action depending on the type of span. For instance, this is the database query operation for DB spans, and the request method for HTTP spans.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `SELECT` |
 
 ### sentry.cancellation_reason
 
@@ -96,6 +111,17 @@ The sentry dist.
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `1.0` |
+
+### sentry.domain
+
+Used as a generic attribute representing the domain depending on the type of span. For instance, this is the collection/table name for database spans, and the server address for HTTP spans.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `example.com` |
 
 ### sentry.dsc.environment
 
@@ -207,6 +233,16 @@ Indicates the type of graphql operation, emitted by the Javascript SDK.
 | Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `getUserById` |
+
+### sentry.group
+
+Stores the hash of `sentry.normalized_description`. This is primarily used for grouping spans in the product end.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
 
 ### sentry.http.prefetch
 
@@ -328,6 +364,17 @@ The hash of `sentry.normalized_db_query`.
 | Type | `string` |
 | Has PII | false |
 | Exists in OpenTelemetry | No |
+
+### sentry.normalized_description
+
+Used as a generic attribute representing the normalized `sentry.description`. This refers to the legacy use case of `sentry.description` where it holds relevant data depending on the type of span (e.g. database query, resource url, http request description, etc).
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `SELECT .. FROM sentry_project WHERE (project_id = %s)` |
 
 ### sentry.observed_timestamp_nanos
 

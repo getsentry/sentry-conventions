@@ -4,7 +4,7 @@
 
 This page lists all available attributes across all categories.
 
-Total attributes: 410
+Total attributes: 413
 
 ## Stable Attributes
 
@@ -236,10 +236,12 @@ Total attributes: 410
 | [`resource.render_blocking_status`](./resource.md#resourcerender_blocking_status) | The render blocking status of the resource. |
 | [`rpc.grpc.status_code`](./rpc.md#rpcgrpcstatus_code) | The numeric status code of the gRPC request. |
 | [`rpc.service`](./rpc.md#rpcservice) | The full (logical) name of the service being called, including its package name, if applicable. |
+| [`sentry.action`](./sentry.md#sentryaction) | Used as a generic attribute representing the action depending on the type of span. For instance, this is the database query operation for DB spans, and the request method for HTTP spans. |
 | [`sentry.cancellation_reason`](./sentry.md#sentrycancellation_reason) | The reason why a span ended early. |
 | [`sentry.client_sample_rate`](./sentry.md#sentryclient_sample_rate) | Rate at which a span was sampled in the SDK. |
 | [`sentry.description`](./sentry.md#sentrydescription) | The human-readable description of a span. |
 | [`sentry.dist`](./sentry.md#sentrydist) | The sentry dist. |
+| [`sentry.domain`](./sentry.md#sentrydomain) | Used as a generic attribute representing the domain depending on the type of span. For instance, this is the collection/table name for database spans, and the server address for HTTP spans. |
 | [`sentry.dsc.environment`](./sentry.md#sentrydscenvironment) | The environment from the dynamic sampling context. |
 | [`sentry.dsc.public_key`](./sentry.md#sentrydscpublic_key) | The public key from the dynamic sampling context. |
 | [`sentry.dsc.release`](./sentry.md#sentrydscrelease) | The release identifier from the dynamic sampling context. |
@@ -250,6 +252,7 @@ Total attributes: 410
 | [`sentry.environment`](./sentry.md#sentryenvironment) | The sentry environment. |
 | [`sentry.exclusive_time`](./sentry.md#sentryexclusive_time) | The exclusive time duration of the span in milliseconds. |
 | [`sentry.graphql.operation`](./sentry.md#sentrygraphqloperation) | Indicates the type of graphql operation, emitted by the Javascript SDK. |
+| [`sentry.group`](./sentry.md#sentrygroup) | Stores the hash of `sentry.normalized_description`. This is primarily used for grouping spans in the product end. |
 | [`sentry.http.prefetch`](./sentry.md#sentryhttpprefetch) | If an http request was a prefetch request. |
 | [`sentry.idle_span_finish_reason`](./sentry.md#sentryidle_span_finish_reason) | The reason why an idle span ended early. |
 | [`sentry.is_remote`](./sentry.md#sentryis_remote) | Indicates whether a span's parent is remote. |
@@ -261,6 +264,7 @@ Total attributes: 410
 | [`sentry.nextjs.ssr.function.type`](./sentry.md#sentrynextjsssrfunctiontype) | A descriptor for a for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions. |
 | [`sentry.normalized_db_query`](./sentry.md#sentrynormalized_db_query) | The normalized version of `db.query.text`. |
 | [`sentry.normalized_db_query.hash`](./sentry.md#sentrynormalized_db_queryhash) | The hash of `sentry.normalized_db_query`. |
+| [`sentry.normalized_description`](./sentry.md#sentrynormalized_description) | Used as a generic attribute representing the normalized `sentry.description`. This refers to the legacy use case of `sentry.description` where it holds relevant data depending on the type of span (e.g. database query, resource url, http request description, etc). |
 | [`sentry.observed_timestamp_nanos`](./sentry.md#sentryobserved_timestamp_nanos) | The timestamp at which an envelope was received by Relay, in nanoseconds. |
 | [`sentry.op`](./sentry.md#sentryop) | The operation of a span. |
 | [`sentry.origin`](./sentry.md#sentryorigin) | The origin of the instrumentation (e.g. span, log, etc.) |
@@ -385,7 +389,6 @@ Total attributes: 410
 | [`gen_ai.prompt`](./gen_ai.md#gen_aiprompt) | No replacement |
 | [`gen_ai.usage.completion_tokens`](./gen_ai.md#gen_aiusagecompletion_tokens) | [`gen_ai.usage.output_tokens`](./gen_ai.md#gen_aiusageoutput_tokens) |
 | [`gen_ai.usage.prompt_tokens`](./gen_ai.md#gen_aiusageprompt_tokens) | [`gen_ai.usage.input_tokens`](./gen_ai.md#gen_aiusageinput_tokens) |
-| [`gen_ai.usage.total_cost`](./gen_ai.md#gen_aiusagetotal_cost) | [`gen_ai.cost.total_tokens`](./gen_ai.md#gen_aicosttotal_tokens) |
 | [`http.client_ip`](./http.md#httpclient_ip) | [`client.address`](./client.md#clientaddress) |
 | [`http.flavor`](./http.md#httpflavor) | [`network.protocol.version`](./network.md#networkprotocolversion) |
 | [`http.host`](./http.md#httphost) | [`server.address`](./server.md#serveraddress) |

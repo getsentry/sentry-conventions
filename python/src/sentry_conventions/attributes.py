@@ -3441,6 +3441,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "myService.BestService"
     """
 
+    # Path: model/attributes/sentry/sentry__action.json
+    SENTRY_ACTION: Literal["sentry.action"] = "sentry.action"
+    """Used as a generic attribute representing the action depending on the type of span. For instance, this is the database query operation for DB spans, and the request method for HTTP spans.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "SELECT"
+    """
+
     # Path: model/attributes/sentry/sentry__browser__name.json
     SENTRY_BROWSER_NAME: Literal["sentry.browser.name"] = "sentry.browser.name"
     """The name of the browser.
@@ -3507,6 +3517,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: false
     Defined in OTEL: No
     Example: "1.0"
+    """
+
+    # Path: model/attributes/sentry/sentry__domain.json
+    SENTRY_DOMAIN: Literal["sentry.domain"] = "sentry.domain"
+    """Used as a generic attribute representing the domain depending on the type of span. For instance, this is the collection/table name for database spans, and the server address for HTTP spans.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "example.com"
     """
 
     # Path: model/attributes/sentry/sentry__dsc__environment.json
@@ -3610,6 +3630,15 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Example: "getUserById"
+    """
+
+    # Path: model/attributes/sentry/sentry__group.json
+    SENTRY_GROUP: Literal["sentry.group"] = "sentry.group"
+    """Stores the hash of `sentry.normalized_description`. This is primarily used for grouping spans in the product end.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
     """
 
     # Path: model/attributes/sentry/sentry__http__prefetch.json
@@ -3734,6 +3763,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    """
+
+    # Path: model/attributes/sentry/sentry__normalized_description.json
+    SENTRY_NORMALIZED_DESCRIPTION: Literal["sentry.normalized_description"] = (
+        "sentry.normalized_description"
+    )
+    """Used as a generic attribute representing the normalized `sentry.description`. This refers to the legacy use case of `sentry.description` where it holds relevant data depending on the type of span (e.g. database query, resource url, http request description, etc).
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "SELECT .. FROM sentry_project WHERE (project_id = %s)"
     """
 
     # Path: model/attributes/sentry/sentry__observed_timestamp_nanos.json
@@ -7016,6 +7057,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="myService.BestService",
     ),
+    "sentry.action": AttributeMetadata(
+        brief="Used as a generic attribute representing the action depending on the type of span. For instance, this is the database query operation for DB spans, and the request method for HTTP spans.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="SELECT",
+    ),
     "sentry.browser.name": AttributeMetadata(
         brief="The name of the browser.",
         type=AttributeType.STRING,
@@ -7061,6 +7109,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="1.0",
+    ),
+    "sentry.domain": AttributeMetadata(
+        brief="Used as a generic attribute representing the domain depending on the type of span. For instance, this is the collection/table name for database spans, and the server address for HTTP spans.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="example.com",
     ),
     "sentry.dsc.environment": AttributeMetadata(
         brief="The environment from the dynamic sampling context.",
@@ -7132,6 +7187,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="getUserById",
+    ),
+    "sentry.group": AttributeMetadata(
+        brief="Stores the hash of `sentry.normalized_description`. This is primarily used for grouping spans in the product end.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
     ),
     "sentry.http.prefetch": AttributeMetadata(
         brief="If an http request was a prefetch request.",
@@ -7211,6 +7272,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+    ),
+    "sentry.normalized_description": AttributeMetadata(
+        brief="Used as a generic attribute representing the normalized `sentry.description`. This refers to the legacy use case of `sentry.description` where it holds relevant data depending on the type of span (e.g. database query, resource url, http request description, etc).",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="SELECT .. FROM sentry_project WHERE (project_id = %s)",
     ),
     "sentry.observed_timestamp_nanos": AttributeMetadata(
         brief="The timestamp at which an envelope was received by Relay, in nanoseconds.",
@@ -8163,12 +8231,14 @@ Attributes = TypedDict(
         "route": str,
         "rpc.grpc.status_code": int,
         "rpc.service": str,
+        "sentry.action": str,
         "sentry.browser.name": str,
         "sentry.browser.version": str,
         "sentry.cancellation_reason": str,
         "sentry.client_sample_rate": float,
         "sentry.description": str,
         "sentry.dist": str,
+        "sentry.domain": str,
         "sentry.dsc.environment": str,
         "sentry.dsc.public_key": str,
         "sentry.dsc.release": str,
@@ -8179,6 +8249,7 @@ Attributes = TypedDict(
         "sentry.environment": str,
         "sentry.exclusive_time": float,
         "sentry.graphql.operation": str,
+        "sentry.group": str,
         "sentry.http.prefetch": bool,
         "sentry.idle_span_finish_reason": str,
         "sentry.is_remote": bool,
@@ -8190,6 +8261,7 @@ Attributes = TypedDict(
         "sentry.nextjs.ssr.function.type": str,
         "sentry.normalized_db_query": str,
         "sentry.normalized_db_query.hash": str,
+        "sentry.normalized_description": str,
         "sentry.observed_timestamp_nanos": str,
         "sentry.op": str,
         "sentry.origin": str,
