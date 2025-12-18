@@ -123,7 +123,6 @@ class _AttributeNamesMeta(type):
         "HTTP_FLAVOR",
         "HTTP_HOST",
         "HTTP_METHOD",
-        "HTTP_REQUEST_METHOD_OLD",
         "HTTP_RESPONSE_CONTENT_LENGTH",
         "HTTP_RESPONSE_TRANSFER_SIZE",
         "HTTP_SCHEME",
@@ -2004,18 +2003,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: false
     Defined in OTEL: No
     Example: 1732829553.68
-    """
-
-    # Path: model/attributes/http/http__request_method.json
-    HTTP_REQUEST_METHOD_OLD: Literal["http.request_method"] = "http.request_method"
-    """The HTTP method used. This is a Sentry attribute that is not part of the OpenTelemetry specification.
-
-    Type: str
-    Contains PII: false
-    Defined in OTEL: No
-    Aliases: http.request.method
-    DEPRECATED: Use http.request.method instead
-    Example: "GET"
     """
 
     # Path: model/attributes/http/http__response__body__size.json
@@ -5993,17 +5980,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=1732829553.68,
         sdks=["javascript-browser"],
     ),
-    "http.request_method": AttributeMetadata(
-        brief="The HTTP method used. This is a Sentry attribute that is not part of the OpenTelemetry specification.",
-        type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=False,
-        example="GET",
-        deprecation=DeprecationInfo(
-            replacement="http.request.method", status=DeprecationStatus.BACKFILL
-        ),
-        aliases=["http.request.method"],
-    ),
     "http.response.body.size": AttributeMetadata(
         brief="The encoded body size of the response (in bytes).",
         type=AttributeType.INTEGER,
@@ -8057,7 +8033,6 @@ Attributes = TypedDict(
         "http.request.secure_connection_start": float,
         "http.request.time_to_first_byte": float,
         "http.request.worker_start": float,
-        "http.request_method": str,
         "http.response.body.size": int,
         "http.response.header.<key>": List[str],
         "http.response.header.content-length": str,
