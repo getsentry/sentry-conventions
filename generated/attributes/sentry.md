@@ -64,7 +64,7 @@ Used as a generic attribute representing the action depending on the type of spa
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `SELECT` |
 
