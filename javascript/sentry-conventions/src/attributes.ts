@@ -3262,6 +3262,29 @@ export const HTTP_REQUEST_METHOD = 'http.request.method';
  */
 export type HTTP_REQUEST_METHOD_TYPE = string;
 
+// Path: model/attributes/http/http__request_method.json
+
+/**
+ * The HTTP method used. This is a Sentry attribute that is not part of the OpenTelemetry specification. `http.request_method.old`
+ *
+ * Attribute Value Type: `string` {@link HTTP_REQUEST_METHOD_OLD_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link HTTP_REQUEST_METHOD} `http.request.method`
+ *
+ * @deprecated Use {@link HTTP_REQUEST_METHOD} (http.request.method) instead
+ * @example "GET"
+ */
+export const HTTP_REQUEST_METHOD_OLD = 'http.request_method';
+
+/**
+ * Type for {@link HTTP_REQUEST_METHOD_OLD} http.request_method.old
+ */
+export type HTTP_REQUEST_METHOD_OLD_TYPE = string;
+
 // Path: model/attributes/http/http__request__redirect_end.json
 
 /**
@@ -8700,6 +8723,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [HTTP_REQUEST_FETCH_START]: 'double',
   [HTTP_REQUEST_HEADER_KEY]: 'string[]',
   [HTTP_REQUEST_METHOD]: 'string',
+  [HTTP_REQUEST_METHOD_OLD]: 'string',
   [HTTP_REQUEST_REDIRECT_END]: 'double',
   [HTTP_REQUEST_REDIRECT_START]: 'double',
   [HTTP_REQUEST_REQUEST_START]: 'double',
@@ -9112,6 +9136,7 @@ export type AttributeName =
   | typeof HTTP_REQUEST_FETCH_START
   | typeof HTTP_REQUEST_HEADER_KEY
   | typeof HTTP_REQUEST_METHOD
+  | typeof HTTP_REQUEST_METHOD_OLD
   | typeof HTTP_REQUEST_REDIRECT_END
   | typeof HTTP_REQUEST_REDIRECT_START
   | typeof HTTP_REQUEST_REQUEST_START
@@ -11016,6 +11041,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'GET',
     aliases: [METHOD, HTTP_METHOD],
+  },
+  [HTTP_REQUEST_METHOD_OLD]: {
+    brief: 'The HTTP method used. This is a Sentry attribute that is not part of the OpenTelemetry specification.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'GET',
+    deprecation: {
+      replacement: 'http.request.method',
+    },
+    aliases: [HTTP_REQUEST_METHOD],
   },
   [HTTP_REQUEST_REDIRECT_END]: {
     brief:
@@ -13707,6 +13745,7 @@ export type Attributes = {
   [HTTP_REQUEST_FETCH_START]?: HTTP_REQUEST_FETCH_START_TYPE;
   [HTTP_REQUEST_HEADER_KEY]?: HTTP_REQUEST_HEADER_KEY_TYPE;
   [HTTP_REQUEST_METHOD]?: HTTP_REQUEST_METHOD_TYPE;
+  [HTTP_REQUEST_METHOD_OLD]?: HTTP_REQUEST_METHOD_OLD_TYPE;
   [HTTP_REQUEST_REDIRECT_END]?: HTTP_REQUEST_REDIRECT_END_TYPE;
   [HTTP_REQUEST_REDIRECT_START]?: HTTP_REQUEST_REDIRECT_START_TYPE;
   [HTTP_REQUEST_REQUEST_START]?: HTTP_REQUEST_REQUEST_START_TYPE;

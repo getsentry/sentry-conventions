@@ -390,6 +390,7 @@ Total attributes: 410
 | [`http.flavor`](./http.md#httpflavor) | [`network.protocol.version`](./network.md#networkprotocolversion) |
 | [`http.host`](./http.md#httphost) | [`server.address`](./server.md#serveraddress) |
 | [`http.method`](./http.md#httpmethod) | [`http.request.method`](./http.md#httprequestmethod) |
+| [`http.request_method`](./http.md#httprequest_method) | [`http.request.method`](./http.md#httprequestmethod) |
 | [`http.response_content_length`](./http.md#httpresponse_content_length) | [`http.response.body.size`](./http.md#httpresponsebodysize) |
 | [`http.response_transfer_size`](./http.md#httpresponse_transfer_size) | [`http.response.size`](./http.md#httpresponsesize) |
 | [`http.scheme`](./http.md#httpscheme) | [`url.scheme`](./url.md#urlscheme) |

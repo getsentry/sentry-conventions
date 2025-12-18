@@ -33,6 +33,7 @@
   - [http.flavor](#httpflavor)
   - [http.host](#httphost)
   - [http.method](#httpmethod)
+  - [http.request_method](#httprequest_method)
   - [http.response_content_length](#httpresponse_content_length)
   - [http.response_transfer_size](#httpresponse_transfer_size)
   - [http.scheme](#httpscheme)
@@ -380,6 +381,19 @@ The HTTP method used.
 | Type | `string` |
 | Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
+| Example | `GET` |
+| Deprecated | Yes, use `http.request.method` instead |
+| Aliases | `http.request.method` |
+
+### http.request_method
+
+The HTTP method used. This is a Sentry attribute that is not part of the OpenTelemetry specification.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
 | Example | `GET` |
 | Deprecated | Yes, use `http.request.method` instead |
 | Aliases | `http.request.method` |

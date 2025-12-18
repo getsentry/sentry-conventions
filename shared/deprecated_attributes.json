@@ -686,6 +686,21 @@
       "alias": ["http.request.method"]
     },
     {
+      "key": "http.request_method",
+      "brief": "The HTTP method used. This is a Sentry attribute that is not part of the OpenTelemetry specification.",
+      "type": "string",
+      "pii": {
+        "key": "false"
+      },
+      "is_in_otel": false,
+      "example": "GET",
+      "deprecation": {
+        "_status": "backfill",
+        "replacement": "http.request.method"
+      },
+      "alias": ["http.request.method"]
+    },
+    {
       "key": "http.response_content_length",
       "brief": "The encoded body size of the response (in bytes).",
       "type": "integer",
