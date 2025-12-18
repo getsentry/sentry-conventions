@@ -1,0 +1,10 @@
+{
+  "key": "sentry.normalized_description",
+  "brief": "Used as a generic attribute representing the normalized `sentry.description`. This refers to the legacy use case of `sentry.description` where it holds relevant data depending on the type of span (e.g. database query, resource url, http request description, etc).",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "SELECT .. FROM sentry_project WHERE (project_id = %s)"
+}

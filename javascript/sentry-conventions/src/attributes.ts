@@ -6152,6 +6152,26 @@ export const RPC_SERVICE = 'rpc.service';
  */
 export type RPC_SERVICE_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__action.json
+
+/**
+ * Used as a generic attribute representing the action depending on the type of span. For instance, this is the database query operation for DB spans, and the request method for HTTP spans. `sentry.action`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_ACTION_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "SELECT"
+ */
+export const SENTRY_ACTION = 'sentry.action';
+
+/**
+ * Type for {@link SENTRY_ACTION} sentry.action
+ */
+export type SENTRY_ACTION_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__browser__name.json
 
 /**
@@ -6277,6 +6297,26 @@ export const SENTRY_DIST = 'sentry.dist';
  * Type for {@link SENTRY_DIST} sentry.dist
  */
 export type SENTRY_DIST_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__domain.json
+
+/**
+ * Used as a generic attribute representing the domain depending on the type of span. For instance, this is the collection/table name for database spans, and the server address for HTTP spans. `sentry.domain`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_DOMAIN_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "example.com"
+ */
+export const SENTRY_DOMAIN = 'sentry.domain';
+
+/**
+ * Type for {@link SENTRY_DOMAIN} sentry.domain
+ */
+export type SENTRY_DOMAIN_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__dsc__environment.json
 
@@ -6479,6 +6519,24 @@ export const SENTRY_GRAPHQL_OPERATION = 'sentry.graphql.operation';
  * Type for {@link SENTRY_GRAPHQL_OPERATION} sentry.graphql.operation
  */
 export type SENTRY_GRAPHQL_OPERATION_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__group.json
+
+/**
+ * Stores the hash of `sentry.normalized_description`. This is primarily used for grouping spans in the product end. `sentry.group`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_GROUP_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ */
+export const SENTRY_GROUP = 'sentry.group';
+
+/**
+ * Type for {@link SENTRY_GROUP} sentry.group
+ */
+export type SENTRY_GROUP_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__http__prefetch.json
 
@@ -6699,6 +6757,26 @@ export const SENTRY_NORMALIZED_DB_QUERY_HASH = 'sentry.normalized_db_query.hash'
  * Type for {@link SENTRY_NORMALIZED_DB_QUERY_HASH} sentry.normalized_db_query.hash
  */
 export type SENTRY_NORMALIZED_DB_QUERY_HASH_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__normalized_description.json
+
+/**
+ * Used as a generic attribute representing the normalized `sentry.description`. This refers to the legacy use case of `sentry.description` where it holds relevant data depending on the type of span (e.g. database query, resource url, http request description, etc). `sentry.normalized_description`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_NORMALIZED_DESCRIPTION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "SELECT .. FROM sentry_project WHERE (project_id = %s)"
+ */
+export const SENTRY_NORMALIZED_DESCRIPTION = 'sentry.normalized_description';
+
+/**
+ * Type for {@link SENTRY_NORMALIZED_DESCRIPTION} sentry.normalized_description
+ */
+export type SENTRY_NORMALIZED_DESCRIPTION_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__observed_timestamp_nanos.json
 
@@ -8839,12 +8917,14 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [ROUTE]: 'string',
   [RPC_GRPC_STATUS_CODE]: 'integer',
   [RPC_SERVICE]: 'string',
+  [SENTRY_ACTION]: 'string',
   [SENTRY_BROWSER_NAME]: 'string',
   [SENTRY_BROWSER_VERSION]: 'string',
   [SENTRY_CANCELLATION_REASON]: 'string',
   [SENTRY_CLIENT_SAMPLE_RATE]: 'double',
   [SENTRY_DESCRIPTION]: 'string',
   [SENTRY_DIST]: 'string',
+  [SENTRY_DOMAIN]: 'string',
   [SENTRY_DSC_ENVIRONMENT]: 'string',
   [SENTRY_DSC_PUBLIC_KEY]: 'string',
   [SENTRY_DSC_RELEASE]: 'string',
@@ -8855,6 +8935,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_ENVIRONMENT]: 'string',
   [SENTRY_EXCLUSIVE_TIME]: 'double',
   [SENTRY_GRAPHQL_OPERATION]: 'string',
+  [SENTRY_GROUP]: 'string',
   [SENTRY_HTTP_PREFETCH]: 'boolean',
   [SENTRY_IDLE_SPAN_FINISH_REASON]: 'string',
   [SENTRY_IS_REMOTE]: 'boolean',
@@ -8866,6 +8947,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_NEXTJS_SSR_FUNCTION_TYPE]: 'string',
   [SENTRY_NORMALIZED_DB_QUERY]: 'string',
   [SENTRY_NORMALIZED_DB_QUERY_HASH]: 'string',
+  [SENTRY_NORMALIZED_DESCRIPTION]: 'string',
   [SENTRY_OBSERVED_TIMESTAMP_NANOS]: 'string',
   [SENTRY_OP]: 'string',
   [SENTRY_ORIGIN]: 'string',
@@ -9251,12 +9333,14 @@ export type AttributeName =
   | typeof ROUTE
   | typeof RPC_GRPC_STATUS_CODE
   | typeof RPC_SERVICE
+  | typeof SENTRY_ACTION
   | typeof SENTRY_BROWSER_NAME
   | typeof SENTRY_BROWSER_VERSION
   | typeof SENTRY_CANCELLATION_REASON
   | typeof SENTRY_CLIENT_SAMPLE_RATE
   | typeof SENTRY_DESCRIPTION
   | typeof SENTRY_DIST
+  | typeof SENTRY_DOMAIN
   | typeof SENTRY_DSC_ENVIRONMENT
   | typeof SENTRY_DSC_PUBLIC_KEY
   | typeof SENTRY_DSC_RELEASE
@@ -9267,6 +9351,7 @@ export type AttributeName =
   | typeof SENTRY_ENVIRONMENT
   | typeof SENTRY_EXCLUSIVE_TIME
   | typeof SENTRY_GRAPHQL_OPERATION
+  | typeof SENTRY_GROUP
   | typeof SENTRY_HTTP_PREFETCH
   | typeof SENTRY_IDLE_SPAN_FINISH_REASON
   | typeof SENTRY_IS_REMOTE
@@ -9278,6 +9363,7 @@ export type AttributeName =
   | typeof SENTRY_NEXTJS_SSR_FUNCTION_TYPE
   | typeof SENTRY_NORMALIZED_DB_QUERY
   | typeof SENTRY_NORMALIZED_DB_QUERY_HASH
+  | typeof SENTRY_NORMALIZED_DESCRIPTION
   | typeof SENTRY_OBSERVED_TIMESTAMP_NANOS
   | typeof SENTRY_OP
   | typeof SENTRY_ORIGIN
@@ -12457,6 +12543,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'myService.BestService',
   },
+  [SENTRY_ACTION]: {
+    brief:
+      'Used as a generic attribute representing the action depending on the type of span. For instance, this is the database query operation for DB spans, and the request method for HTTP spans.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'SELECT',
+  },
   [SENTRY_BROWSER_NAME]: {
     brief: 'The name of the browser.',
     type: 'string',
@@ -12518,6 +12614,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '1.0',
+  },
+  [SENTRY_DOMAIN]: {
+    brief:
+      'Used as a generic attribute representing the domain depending on the type of span. For instance, this is the collection/table name for database spans, and the server address for HTTP spans.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'example.com',
   },
   [SENTRY_DSC_ENVIRONMENT]: {
     brief: 'The environment from the dynamic sampling context.',
@@ -12609,6 +12715,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'getUserById',
+  },
+  [SENTRY_GROUP]: {
+    brief:
+      'Stores the hash of `sentry.normalized_description`. This is primarily used for grouping spans in the product end.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
   },
   [SENTRY_HTTP_PREFETCH]: {
     brief: 'If an http request was a prefetch request.',
@@ -12714,6 +12829,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+  },
+  [SENTRY_NORMALIZED_DESCRIPTION]: {
+    brief:
+      'Used as a generic attribute representing the normalized `sentry.description`. This refers to the legacy use case of `sentry.description` where it holds relevant data depending on the type of span (e.g. database query, resource url, http request description, etc).',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'SELECT .. FROM sentry_project WHERE (project_id = %s)',
   },
   [SENTRY_OBSERVED_TIMESTAMP_NANOS]: {
     brief: 'The timestamp at which an envelope was received by Relay, in nanoseconds.',
@@ -13846,12 +13971,14 @@ export type Attributes = {
   [ROUTE]?: ROUTE_TYPE;
   [RPC_GRPC_STATUS_CODE]?: RPC_GRPC_STATUS_CODE_TYPE;
   [RPC_SERVICE]?: RPC_SERVICE_TYPE;
+  [SENTRY_ACTION]?: SENTRY_ACTION_TYPE;
   [SENTRY_BROWSER_NAME]?: SENTRY_BROWSER_NAME_TYPE;
   [SENTRY_BROWSER_VERSION]?: SENTRY_BROWSER_VERSION_TYPE;
   [SENTRY_CANCELLATION_REASON]?: SENTRY_CANCELLATION_REASON_TYPE;
   [SENTRY_CLIENT_SAMPLE_RATE]?: SENTRY_CLIENT_SAMPLE_RATE_TYPE;
   [SENTRY_DESCRIPTION]?: SENTRY_DESCRIPTION_TYPE;
   [SENTRY_DIST]?: SENTRY_DIST_TYPE;
+  [SENTRY_DOMAIN]?: SENTRY_DOMAIN_TYPE;
   [SENTRY_DSC_ENVIRONMENT]?: SENTRY_DSC_ENVIRONMENT_TYPE;
   [SENTRY_DSC_PUBLIC_KEY]?: SENTRY_DSC_PUBLIC_KEY_TYPE;
   [SENTRY_DSC_RELEASE]?: SENTRY_DSC_RELEASE_TYPE;
@@ -13862,6 +13989,7 @@ export type Attributes = {
   [SENTRY_ENVIRONMENT]?: SENTRY_ENVIRONMENT_TYPE;
   [SENTRY_EXCLUSIVE_TIME]?: SENTRY_EXCLUSIVE_TIME_TYPE;
   [SENTRY_GRAPHQL_OPERATION]?: SENTRY_GRAPHQL_OPERATION_TYPE;
+  [SENTRY_GROUP]?: SENTRY_GROUP_TYPE;
   [SENTRY_HTTP_PREFETCH]?: SENTRY_HTTP_PREFETCH_TYPE;
   [SENTRY_IDLE_SPAN_FINISH_REASON]?: SENTRY_IDLE_SPAN_FINISH_REASON_TYPE;
   [SENTRY_IS_REMOTE]?: SENTRY_IS_REMOTE_TYPE;
@@ -13873,6 +14001,7 @@ export type Attributes = {
   [SENTRY_NEXTJS_SSR_FUNCTION_TYPE]?: SENTRY_NEXTJS_SSR_FUNCTION_TYPE_TYPE;
   [SENTRY_NORMALIZED_DB_QUERY]?: SENTRY_NORMALIZED_DB_QUERY_TYPE;
   [SENTRY_NORMALIZED_DB_QUERY_HASH]?: SENTRY_NORMALIZED_DB_QUERY_HASH_TYPE;
+  [SENTRY_NORMALIZED_DESCRIPTION]?: SENTRY_NORMALIZED_DESCRIPTION_TYPE;
   [SENTRY_OBSERVED_TIMESTAMP_NANOS]?: SENTRY_OBSERVED_TIMESTAMP_NANOS_TYPE;
   [SENTRY_OP]?: SENTRY_OP_TYPE;
   [SENTRY_ORIGIN]?: SENTRY_ORIGIN_TYPE;
