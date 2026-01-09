@@ -3943,7 +3943,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/sentry/sentry__span__source.json
     SENTRY_SPAN_SOURCE: Literal["sentry.span.source"] = "sentry.span.source"
-    """The source of a span, also referred to as transaction source.
+    """The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.
 
     Type: str
     Contains PII: false
@@ -7397,7 +7397,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=0.5,
     ),
     "sentry.span.source": AttributeMetadata(
-        brief="The source of a span, also referred to as transaction source.",
+        brief="The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,

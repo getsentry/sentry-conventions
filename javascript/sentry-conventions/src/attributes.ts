@@ -7092,7 +7092,7 @@ export type SENTRY_SERVER_SAMPLE_RATE_TYPE = number;
 // Path: model/attributes/sentry/sentry__span__source.json
 
 /**
- * The source of a span, also referred to as transaction source. `sentry.span.source`
+ * The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. `sentry.span.source`
  *
  * Attribute Value Type: `string` {@link SENTRY_SPAN_SOURCE_TYPE}
  *
@@ -12986,7 +12986,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 0.5,
   },
   [SENTRY_SPAN_SOURCE]: {
-    brief: 'The source of a span, also referred to as transaction source.',
+    brief:
+      "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.",
     type: 'string',
     pii: {
       isPii: 'false',

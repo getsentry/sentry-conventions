@@ -536,7 +536,7 @@ Rate at which a span was sampled in Relay.
 
 ### sentry.span.source
 
-The source of a span, also referred to as transaction source.
+The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.
 
 | Property | Value |
 | --- | --- |

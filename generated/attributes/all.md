@@ -279,7 +279,7 @@ Total attributes: 413
 | [`sentry.segment.id`](./sentry.md#sentrysegmentid) | The segment ID of a span |
 | [`sentry.segment.name`](./sentry.md#sentrysegmentname) | The segment name of a span |
 | [`sentry.server_sample_rate`](./sentry.md#sentryserver_sample_rate) | Rate at which a span was sampled in Relay. |
-| [`sentry.span.source`](./sentry.md#sentryspansource) | The source of a span, also referred to as transaction source. |
+| [`sentry.span.source`](./sentry.md#sentryspansource) | The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. |
 | [`sentry.status.message`](./sentry.md#sentrystatusmessage) | The from OTLP extracted status message. |
 | [`sentry.trace.parent_span_id`](./sentry.md#sentrytraceparent_span_id) | The span id of the span that was active when the log was collected. This should not be set if there was no active span. |
 | [`sentry.transaction`](./sentry.md#sentrytransaction) | The sentry transaction (segment name). |
