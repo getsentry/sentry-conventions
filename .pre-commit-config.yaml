@@ -1,0 +1,15 @@
+repos:
+  - repo: local
+    hooks:
+      - id: format
+        name: format
+        description: yarn format
+        entry: yarn format
+        language: system
+        pass_filenames: false
+      - id: lint
+        name: lint
+        description: yarn lint
+        entry: yarn lint
+        language: system
+        pass_filenames: false
