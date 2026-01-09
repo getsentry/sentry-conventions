@@ -1,0 +1,318 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+// Get counts for the stats
+const attributes = await getCollection('attributes');
+const names = await getCollection('names');
+
+const totalAttributes = attributes.length;
+const stableAttributes = attributes.filter(a => !a.data.deprecation).length;
+const deprecatedAttributes = totalAttributes - stableAttributes;
+
+// Get unique categories
+const categories = new Set(attributes.map(a => {
+  const parts = a.id.split('/');
+  return parts.length > 1 ? parts[0] : 'general';
+}));
+---
+
+<BaseLayout title="Home">
+  <div class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        Sentry Semantic Conventions
+      </h1>
+      <p class="hero-description">
+        This repository contains the Sentry Semantic Conventions as defined by <a href="https://github.com/getsentry/rfcs/blob/main/text/0116-sentry-semantic-conventions.md" target="_blank" rel="noopener">RFC #116</a>.
+      </p>
+      <p class="hero-description">
+        Sentry's semantic conventions align with <a href="https://opentelemetry.io/docs/concepts/semantic-conventions/" target="_blank" rel="noopener">OpenTelemetry's semantic conventions</a>, and currently apply to span, breadcrumb and log attributes (<code>span.data</code> and <code>breadcrumb.data</code> for backwards compatibility).
+      </p>
+      <p class="hero-description">
+        These will be a standardized naming scheme for operations and data that will be shared across the SDKs, ingest, and the product. This allows us to have a single source of truth for the semantic conventions, and also allows us to generate code for all parts of the stack (ingest, frontend, backend, data pipelines) that need to be aware of this.
+      </p>
+      <p class="hero-description">
+        Conventions may also map attributes from OpenTelemetry resource attributes into Sentry's semantic attributes. Such OpenTelemetry resource attributes are ingested into Sentry as regular attributes prefixed with <code>resource.</code>.
+      </p>
+      <div class="hero-actions">
+        <a href={`${import.meta.env.BASE_URL}attributes/`} class="btn btn-primary">
+          Browse Attributes
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+        <a href="https://github.com/getsentry/sentry-conventions" class="btn btn-secondary" target="_blank" rel="noopener">
+          View on GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="stats">
+    <div class="stat-card">
+      <span class="stat-value">{totalAttributes}</span>
+      <span class="stat-label">Total Attributes</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-value">{stableAttributes}</span>
+      <span class="stat-label">Stable</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-value">{deprecatedAttributes}</span>
+      <span class="stat-label">Deprecated</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-value">{categories.size}</span>
+      <span class="stat-label">Categories</span>
+    </div>
+  </div>
+  
+  <section class="features">
+    <h2>What's Inside</h2>
+    <div class="feature-grid">
+      <a href={`${import.meta.env.BASE_URL}attributes/`} class="feature-card">
+        <div class="feature-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 7V4h16v3M9 20h6M12 4v16"/>
+          </svg>
+        </div>
+        <h3>Attributes</h3>
+        <p>Browse all {totalAttributes} span and breadcrumb attributes organized by category, with PII information and type definitions.</p>
+      </a>
+      
+      <a href={`${import.meta.env.BASE_URL}names/`} class="feature-card">
+        <div class="feature-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+            <polyline points="14,2 14,8 20,8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <polyline points="10,9 9,9 8,9"/>
+          </svg>
+        </div>
+        <h3>Span Names</h3>
+        <p>Learn how to construct span names using templates and attributes for different operation types.</p>
+      </a>
+      
+      <a href="https://github.com/getsentry/sentry-conventions/blob/main/CONTRIBUTING.md" class="feature-card" target="_blank" rel="noopener">
+        <div class="feature-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/>
+            <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>
+          </svg>
+        </div>
+        <h3>Contributing</h3>
+        <p>Add new attributes, propose changes, or help improve the documentation. Open to contributions!</p>
+      </a>
+    </div>
+  </section>
+  
+  <section class="quick-links">
+    <h2>Quick Links</h2>
+    <div class="link-grid">
+      <a href={`${import.meta.env.BASE_URL}attributes/http/`}>HTTP Attributes</a>
+      <a href={`${import.meta.env.BASE_URL}attributes/db/`}>Database Attributes</a>
+      <a href={`${import.meta.env.BASE_URL}attributes/gen_ai/`}>Gen AI Attributes</a>
+      <a href={`${import.meta.env.BASE_URL}attributes/user/`}>User Attributes</a>
+      <a href={`${import.meta.env.BASE_URL}attributes/sentry/`}>Sentry-specific</a>
+      <a href={`${import.meta.env.BASE_URL}attributes/?deprecated=true`}>Deprecated Attributes</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding: var(--space-8) 0;
+    margin-bottom: var(--space-8);
+  }
+  
+  .hero-title {
+    font-size: var(--text-3xl);
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: var(--space-6);
+  }
+  
+  .hero-description {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+    max-width: 720px;
+    line-height: 1.7;
+  }
+  
+  .hero-description code {
+    font-size: var(--text-sm);
+  }
+  
+  .hero-actions {
+    display: flex;
+    gap: var(--space-3);
+    margin-top: var(--space-6);
+  }
+  
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+  }
+  
+  .btn-primary {
+    background: var(--color-accent);
+    color: white;
+  }
+  
+  .btn-primary:hover {
+    background: var(--color-accent-hover);
+    color: white;
+  }
+  
+  .btn-secondary {
+    background: var(--color-bg-elevated);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
+  }
+  
+  .btn-secondary:hover {
+    background: var(--color-bg-hover);
+    border-color: var(--color-border-light);
+  }
+  
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-4);
+    margin-bottom: var(--space-12);
+  }
+  
+  .stat-card {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+    text-align: center;
+  }
+  
+  .stat-value {
+    display: block;
+    font-size: var(--text-2xl);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-1);
+  }
+  
+  .stat-label {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .features {
+    margin-bottom: var(--space-12);
+  }
+  
+  .features h2 {
+    margin-bottom: var(--space-6);
+    font-size: var(--text-xl);
+  }
+  
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+  }
+  
+  .feature-card {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-5);
+    transition: all var(--transition-fast);
+    color: inherit;
+  }
+  
+  .feature-card:hover {
+    border-color: var(--color-border-light);
+  }
+  
+  .feature-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--color-bg-elevated);
+    border-radius: var(--radius-md);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-3);
+  }
+  
+  .feature-card h3 {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-2);
+  }
+  
+  .feature-card p {
+    font-size: var(--text-sm);
+    margin: 0;
+    color: var(--color-text-muted);
+  }
+  
+  .quick-links h2 {
+    margin-bottom: var(--space-4);
+    font-size: var(--text-xl);
+  }
+  
+  .link-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  
+  .link-grid a {
+    padding: var(--space-2) var(--space-3);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    transition: all var(--transition-fast);
+  }
+  
+  .link-grid a:hover {
+    border-color: var(--color-border-light);
+    color: var(--color-text-primary);
+  }
+  
+  @media (max-width: 1024px) {
+    .feature-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: var(--text-2xl);
+    }
+    
+    .stats {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .hero-actions {
+      flex-direction: column;
+    }
+    
+    .btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>

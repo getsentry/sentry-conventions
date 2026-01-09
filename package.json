@@ -27,7 +27,12 @@
     "build:tarball:model": "tsx scripts/gzip_folder.ts model model/sentry-conventions-json.tgz",
 
     "create:attribute": "tsx scripts/create_attribute.ts",
-    "generate": "tsx scripts/generate.ts && yarn format"
+
+    "generate": "tsx scripts/generate.ts && yarn format",
+
+    "docs:dev": "yarn workspace docs dev",
+    "docs:build": "yarn workspace docs build",
+    "docs:preview": "yarn workspace docs preview"
   },
   "engines": {
     "node": ">=22"
@@ -42,7 +47,7 @@
     "tsx": "^4.19.4",
     "vitest": "^3.1.2"
   },
-  "workspaces": ["javascript/*", "python/*", "rust/*"],
+  "workspaces": ["javascript/*", "python/*", "rust/*", "docs"],
   "packageManager": "yarn@1.22.22",
   "volta": {
     "node": "22.15.0",

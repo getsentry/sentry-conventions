@@ -146,4 +146,7 @@ dist
 # Turborepo
 .turbo
 
+# Playwright MCP temporary files
+.playwright-mcp/
+
 .DS_Store
