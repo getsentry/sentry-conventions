@@ -55,66 +55,123 @@ const categoryTitle = category!.charAt(0).toUpperCase() + category!.slice(1);
   title={`${categoryTitle} Attributes`} 
   description={`Browse ${totalCount} ${category} attributes in Sentry semantic conventions`}
 >
-  <nav class="breadcrumb">
-    <a href={`${import.meta.env.BASE_URL}attributes/`}>Attributes</a>
-    <span class="separator">/</span>
-    <span class="current">{category}</span>
-  </nav>
-  
-  <div class="page-header">
-    <h1>{categoryTitle} Attributes</h1>
-    <p class="page-description">
-      {totalCount} attribute{totalCount !== 1 ? 's' : ''} in this category.
-      {stableCount > 0 && <span class="stat-stable">{stableCount} stable</span>}
-      {stableCount > 0 && deprecatedCount > 0 && <span class="stat-separator">·</span>}
-      {deprecatedCount > 0 && <span class="stat-deprecated">{deprecatedCount} deprecated</span>}
-    </p>
-  </div>
-  
-  <div class="category-sidebar">
-    <h3>Categories</h3>
-    <nav class="category-list">
-      {allCategories.map(cat => (
-        <a 
-          href={`${import.meta.env.BASE_URL}attributes/${cat}/`}
-          class:list={['category-link', { active: cat === category }]}
-        >
-          {cat}
-        </a>
-      ))}
-    </nav>
-  </div>
-  
-  <div class="content">
-    {stableAttributes.length > 0 && (
-      <section class="attributes-section">
-        <h2>Stable Attributes</h2>
-        <div class="attribute-list">
-          {stableAttributes.map(attr => (
-            <AttributeCard attribute={attr.data} id={attr.id} />
-          ))}
-        </div>
-      </section>
-    )}
+  <div class="page-layout">
+    <aside class="category-sidebar">
+      <h3>Categories</h3>
+      <nav class="category-list">
+        {allCategories.map(cat => (
+          <a 
+            href={`${import.meta.env.BASE_URL}attributes/${cat}/`}
+            class:list={['category-link', { active: cat === category }]}
+          >
+            {cat}
+          </a>
+        ))}
+      </nav>
+    </aside>
     
-    {deprecatedAttributes.length > 0 && (
-      <section class="attributes-section deprecated-section">
-        <h2>Deprecated Attributes</h2>
-        <p class="section-description">
-          These attributes are deprecated and should not be used in new code. 
-          See each attribute for migration guidance.
+    <div class="page-content">
+      <nav class="breadcrumb">
+        <a href={`${import.meta.env.BASE_URL}attributes/`}>Attributes</a>
+        <span class="separator">/</span>
+        <span class="current">{category}</span>
+      </nav>
+      
+      <div class="page-header">
+        <h1>{categoryTitle} Attributes</h1>
+        <p class="page-description">
+          {totalCount} attribute{totalCount !== 1 ? 's' : ''} in this category.
+          {stableCount > 0 && <span class="stat-stable">{stableCount} stable</span>}
+          {stableCount > 0 && deprecatedCount > 0 && <span class="stat-separator">·</span>}
+          {deprecatedCount > 0 && <span class="stat-deprecated">{deprecatedCount} deprecated</span>}
         </p>
-        <div class="attribute-list">
-          {deprecatedAttributes.map(attr => (
-            <AttributeCard attribute={attr.data} id={attr.id} />
-          ))}
-        </div>
-      </section>
-    )}
+      </div>
+      
+      <div class="content">
+        {stableAttributes.length > 0 && (
+          <section class="attributes-section">
+            <h2>Stable Attributes</h2>
+            <div class="attribute-list">
+              {stableAttributes.map(attr => (
+                <AttributeCard attribute={attr.data} id={attr.id} />
+              ))}
+            </div>
+          </section>
+        )}
+        
+        {deprecatedAttributes.length > 0 && (
+          <section class="attributes-section deprecated-section">
+            <h2>Deprecated Attributes</h2>
+            <p class="section-description">
+              These attributes are deprecated and should not be used in new code. 
+              See each attribute for migration guidance.
+            </p>
+            <div class="attribute-list">
+              {deprecatedAttributes.map(attr => (
+                <AttributeCard attribute={attr.data} id={attr.id} />
+              ))}
+            </div>
+          </section>
+        )}
+      </div>
+    </div>
   </div>
 </BaseLayout>
 
 <style>
+  .page-layout {
+    display: flex;
+    gap: var(--space-8);
+  }
+  
+  .category-sidebar {
+    display: none;
+    flex-shrink: 0;
+    width: 160px;
+    position: sticky;
+    top: calc(var(--header-height) + var(--space-6));
+    max-height: calc(100vh - var(--header-height) - var(--space-12));
+    overflow-y: auto;
+    align-self: flex-start;
+  }
+  
+  .category-sidebar h3 {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-3);
+  }
+  
+  .category-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+  
+  .category-link {
+    font-size: var(--text-sm);
+    padding: var(--space-1) var(--space-2);
+    color: var(--color-text-secondary);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+  }
+  
+  .category-link:hover {
+    background: var(--color-bg-hover);
+    color: var(--color-text-primary);
+  }
+  
+  .category-link.active {
+    background: var(--color-accent-soft);
+    color: var(--color-accent);
+  }
+  
+  .page-content {
+    flex: 1;
+    min-width: 0;
+  }
+  
   .breadcrumb {
     display: flex;
     align-items: center;
@@ -165,47 +222,6 @@ const categoryTitle = category!.charAt(0).toUpperCase() + category!.slice(1);
     color: var(--color-text-muted);
   }
   
-  .category-sidebar {
-    position: fixed;
-    left: max(calc((100vw - var(--max-width)) / 2 - 200px), var(--space-4));
-    top: calc(var(--header-height) + var(--space-8));
-    width: 160px;
-    max-height: calc(100vh - var(--header-height) - var(--space-16));
-    overflow-y: auto;
-  }
-  
-  .category-sidebar h3 {
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: var(--space-3);
-  }
-  
-  .category-list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-1);
-  }
-  
-  .category-link {
-    font-size: var(--text-sm);
-    padding: var(--space-1) var(--space-2);
-    color: var(--color-text-secondary);
-    border-radius: var(--radius-sm);
-    transition: all var(--transition-fast);
-  }
-  
-  .category-link:hover {
-    background: var(--color-bg-hover);
-    color: var(--color-text-primary);
-  }
-  
-  .category-link.active {
-    background: var(--color-accent-soft);
-    color: var(--color-accent);
-  }
-  
   .content {
     display: flex;
     flex-direction: column;
@@ -238,9 +254,10 @@ const categoryTitle = category!.charAt(0).toUpperCase() + category!.slice(1);
     color: var(--color-text-muted);
   }
   
-  @media (max-width: 1400px) {
+  /* Show sidebar on large screens (1024px+) */
+  @media (min-width: 1024px) {
     .category-sidebar {
-      display: none;
+      display: block;
     }
   }
 </style>
