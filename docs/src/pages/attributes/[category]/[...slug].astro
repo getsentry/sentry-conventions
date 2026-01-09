@@ -1,0 +1,720 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PiiBadge from '../../../components/PiiBadge.astro';
+import TypeBadge from '../../../components/TypeBadge.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const allAttributes = await getCollection('attributes');
+  
+  return allAttributes.map((attr) => {
+    const parts = attr.id.split('/');
+    const category = parts.length > 1 ? parts[0] : 'general';
+    const slug = parts.length > 1 ? parts.slice(1).join('/') : attr.id;
+    
+    return {
+      params: { category, slug },
+      props: { attribute: attr },
+    };
+  });
+}
+
+interface Props {
+  attribute: Awaited<ReturnType<typeof getCollection<'attributes'>>>[number];
+}
+
+const { category, slug } = Astro.params;
+const { attribute } = Astro.props;
+const attr = attribute.data;
+const isDeprecated = !!attr.deprecation;
+
+// Raw JSON for the toggle view
+const rawJson = JSON.stringify(attr, null, 2);
+---
+
+<BaseLayout 
+  title={attr.key} 
+  description={attr.brief}
+>
+  <div class="detail-page">
+    <nav class="breadcrumb">
+      <a href={`${import.meta.env.BASE_URL}attributes/`}>Attributes</a>
+      <span class="separator">/</span>
+      <a href={`${import.meta.env.BASE_URL}attributes/${category}/`}>{category}</a>
+      <span class="separator">/</span>
+      <span class="current">{attr.key}</span>
+    </nav>
+    
+    <header class="page-header">
+      <div class="header-top">
+        <h1 class="attribute-key">
+          <code>{attr.key}</code>
+          {isDeprecated && <span class="deprecated-badge">Deprecated</span>}
+        </h1>
+        <div class="view-toggle">
+          <button class="toggle-btn active" data-view="pretty" type="button">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="7" height="7" rx="1"/>
+              <rect x="14" y="3" width="7" height="7" rx="1"/>
+              <rect x="14" y="14" width="7" height="7" rx="1"/>
+              <rect x="3" y="14" width="7" height="7" rx="1"/>
+            </svg>
+            <span>Prettified</span>
+          </button>
+          <button class="toggle-btn" data-view="raw" type="button">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="16,18 22,12 16,6"/>
+              <polyline points="8,6 2,12 8,18"/>
+            </svg>
+            <span>Raw JSON</span>
+          </button>
+        </div>
+      </div>
+      
+      <div class="meta-badges">
+        <TypeBadge type={attr.type} />
+        <PiiBadge pii={attr.pii.key} reason={attr.pii.reason} />
+        {attr.is_in_otel && (
+          <span class="otel-badge" title="Defined in OpenTelemetry Semantic Conventions">OTel</span>
+        )}
+        {attr.has_dynamic_suffix && (
+          <span class="dynamic-badge" title="This attribute has a dynamic suffix">Dynamic</span>
+        )}
+      </div>
+      
+      <p class="brief">{attr.brief}</p>
+    </header>
+    
+    <!-- Prettified View -->
+    <div class="view-content pretty-view active" id="pretty-view">
+      <table class="properties-table">
+        <tbody>
+          <tr>
+            <td class="prop-name">type</td>
+            <td class="prop-value">
+              <span class="value-enum">{attr.type}</span>
+            </td>
+          </tr>
+          
+          <tr>
+            <td class="prop-name">pii</td>
+            <td class="prop-value">
+              <span class:list={['pii-value', `pii-${attr.pii.key}`]}>{attr.pii.key}</span>
+              {attr.pii.reason && (
+                <span class="pii-reason">— {attr.pii.reason}</span>
+              )}
+            </td>
+          </tr>
+          
+          <tr>
+            <td class="prop-name">is_in_otel</td>
+            <td class="prop-value">
+              <span class:list={['value-boolean', attr.is_in_otel ? 'true' : 'false']}>
+                {attr.is_in_otel ? 'true' : 'false'}
+              </span>
+            </td>
+          </tr>
+          
+          {attr.has_dynamic_suffix !== undefined && (
+            <tr>
+              <td class="prop-name">has_dynamic_suffix</td>
+              <td class="prop-value">
+                <span class:list={['value-boolean', attr.has_dynamic_suffix ? 'true' : 'false']}>
+                  {attr.has_dynamic_suffix ? 'true' : 'false'}
+                </span>
+              </td>
+            </tr>
+          )}
+          
+          {attr.example !== undefined && (
+            <tr>
+              <td class="prop-name">example</td>
+              <td class="prop-value">
+                {Array.isArray(attr.example) ? (
+                  <span class="value-array">
+                    {attr.example.map((item, i) => (
+                      <code class="array-item">{typeof item === 'string' ? `"${item}"` : String(item)}</code>
+                    ))}
+                  </span>
+                ) : typeof attr.example === 'string' ? (
+                  <code class="value-string">"{attr.example}"</code>
+                ) : (
+                  <code class="value-primitive">{String(attr.example)}</code>
+                )}
+              </td>
+            </tr>
+          )}
+          
+          {attr.alias && attr.alias.length > 0 && (
+            <tr>
+              <td class="prop-name">alias</td>
+              <td class="prop-value">
+                <span class="value-array">
+                  {attr.alias.map((a) => (
+                    <code class="array-item">"{a}"</code>
+                  ))}
+                </span>
+              </td>
+            </tr>
+          )}
+          
+          {attr.sdks && attr.sdks.length > 0 && (
+            <tr>
+              <td class="prop-name">sdks</td>
+              <td class="prop-value">
+                <span class="sdk-tags">
+                  {attr.sdks.map((sdk) => (
+                    <span class="sdk-tag">{sdk}</span>
+                  ))}
+                </span>
+              </td>
+            </tr>
+          )}
+        </tbody>
+      </table>
+      
+      {attr.deprecation && (
+        <div class="deprecation-section">
+          <h3 class="deprecation-title">Deprecation</h3>
+          <table class="properties-table deprecation-table">
+            <tbody>
+              {attr.deprecation.replacement && (
+                <tr>
+                  <td class="prop-name">replacement</td>
+                  <td class="prop-value">
+                    <a href={`${import.meta.env.BASE_URL}attributes/${category}/${attr.deprecation.replacement.replace(/\./g, '__')}/`} class="replacement-link">
+                      <code>{attr.deprecation.replacement}</code>
+                    </a>
+                  </td>
+                </tr>
+              )}
+              {attr.deprecation.reason && (
+                <tr>
+                  <td class="prop-name">reason</td>
+                  <td class="prop-value deprecation-reason">{attr.deprecation.reason}</td>
+                </tr>
+              )}
+              <tr>
+                <td class="prop-name">_status</td>
+                <td class="prop-value">
+                  <span class:list={['status-value', attr.deprecation._status || 'null']}>
+                    {attr.deprecation._status ?? 'null'}
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      )}
+    </div>
+    
+    <!-- Raw JSON View -->
+    <div class="view-content raw-view" id="raw-view">
+      <div class="json-container">
+        <button class="copy-btn" type="button" title="Copy JSON">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+          </svg>
+          <span>Copy</span>
+        </button>
+        <pre><code class="json-code">{rawJson}</code></pre>
+      </div>
+    </div>
+    
+    <!-- Back link -->
+    <div class="back-nav">
+      <a href={`${import.meta.env.BASE_URL}attributes/${category}/`} class="back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Back to {category} attributes
+      </a>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  // View toggle functionality
+  const toggleBtns = document.querySelectorAll('.toggle-btn');
+  const prettyView = document.getElementById('pretty-view');
+  const rawView = document.getElementById('raw-view');
+  
+  toggleBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const view = btn.getAttribute('data-view');
+      
+      // Update button states
+      toggleBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      
+      // Update view visibility
+      if (view === 'pretty') {
+        prettyView?.classList.add('active');
+        rawView?.classList.remove('active');
+      } else {
+        prettyView?.classList.remove('active');
+        rawView?.classList.add('active');
+      }
+    });
+  });
+  
+  // Copy button functionality
+  const copyBtn = document.querySelector('.copy-btn');
+  const jsonCode = document.querySelector('.json-code');
+  
+  copyBtn?.addEventListener('click', async () => {
+    const text = jsonCode?.textContent;
+    if (text) {
+      await navigator.clipboard.writeText(text);
+      const span = copyBtn.querySelector('span');
+      if (span) {
+        span.textContent = 'Copied!';
+        setTimeout(() => {
+          span.textContent = 'Copy';
+        }, 2000);
+      }
+    }
+  });
+</script>
+
+<style>
+  .detail-page {
+    max-width: 900px;
+  }
+  
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-6);
+  }
+  
+  .breadcrumb a {
+    color: var(--color-text-secondary);
+  }
+  
+  .breadcrumb a:hover {
+    color: var(--color-accent);
+  }
+  
+  .separator {
+    color: var(--color-border-light);
+  }
+  
+  .current {
+    color: var(--color-text-primary);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+  }
+  
+  .page-header {
+    margin-bottom: var(--space-8);
+    padding-bottom: var(--space-6);
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  .header-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-4);
+    margin-bottom: var(--space-4);
+  }
+  
+  .attribute-key {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin: 0;
+    font-size: var(--text-2xl);
+  }
+  
+  .attribute-key code {
+    font-size: var(--text-2xl);
+    padding: 0;
+    background: none;
+    border: none;
+    color: var(--color-accent);
+  }
+  
+  .deprecated-badge {
+    font-size: var(--text-xs);
+    font-weight: 500;
+    padding: var(--space-1) var(--space-2);
+    background: rgba(244, 67, 54, 0.15);
+    color: var(--color-error);
+    border-radius: var(--radius-sm);
+    text-transform: uppercase;
+  }
+  
+  .view-toggle {
+    display: flex;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+  
+  .toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    background: transparent;
+    border: none;
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+    font-family: var(--font-sans);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+  
+  .toggle-btn:hover {
+    color: var(--color-text-secondary);
+    background: var(--color-bg-hover);
+  }
+  
+  .toggle-btn.active {
+    color: var(--color-accent);
+    background: var(--color-accent-soft);
+  }
+  
+  .meta-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+  }
+  
+  .otel-badge,
+  .dynamic-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-1) var(--space-2);
+    font-size: var(--text-xs);
+    font-weight: 500;
+    border-radius: var(--radius-sm);
+    text-transform: uppercase;
+  }
+  
+  .otel-badge {
+    background: rgba(33, 150, 243, 0.15);
+    color: var(--color-info);
+  }
+  
+  .dynamic-badge {
+    background: rgba(212, 167, 44, 0.15);
+    color: var(--color-warning);
+  }
+  
+  .brief {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    margin: 0;
+    line-height: 1.6;
+  }
+  
+  /* View content */
+  .view-content {
+    display: none;
+  }
+  
+  .view-content.active {
+    display: block;
+  }
+  
+  /* Properties table */
+  .properties-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin: 0;
+  }
+  
+  .properties-table tr {
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  .properties-table tr:last-child {
+    border-bottom: none;
+  }
+  
+  .properties-table tr:hover {
+    background: var(--color-bg-hover);
+  }
+  
+  .prop-name {
+    width: 160px;
+    padding: var(--space-3) var(--space-4);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-text-muted);
+    background: var(--color-bg-elevated);
+    border-right: 1px solid var(--color-border);
+    vertical-align: top;
+  }
+  
+  .prop-value {
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+  }
+  
+  .value-enum {
+    display: inline-block;
+    padding: 2px var(--space-2);
+    background: var(--color-accent-soft);
+    color: var(--color-accent);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+  }
+  
+  .value-boolean {
+    display: inline-block;
+    padding: 2px var(--space-2);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    font-weight: 500;
+  }
+  
+  .value-boolean.true {
+    background: rgba(80, 160, 96, 0.15);
+    color: var(--color-success);
+  }
+  
+  .value-boolean.false {
+    background: rgba(194, 84, 80, 0.15);
+    color: var(--color-error);
+  }
+  
+  .value-string {
+    color: #98c379;
+    font-size: var(--text-sm);
+  }
+  
+  .value-primitive {
+    color: #d19a66;
+    font-size: var(--text-sm);
+  }
+  
+  .value-array {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  
+  .array-item {
+    font-size: var(--text-sm);
+    color: #98c379;
+    background: var(--color-bg-elevated);
+    padding: 2px var(--space-2);
+    border-radius: var(--radius-sm);
+  }
+  
+  .pii-value {
+    display: inline-block;
+    padding: 2px var(--space-2);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    font-weight: 500;
+  }
+  
+  .pii-value.pii-true {
+    background: rgba(194, 84, 80, 0.15);
+    color: var(--color-pii-true);
+  }
+  
+  .pii-value.pii-maybe {
+    background: rgba(212, 167, 44, 0.15);
+    color: var(--color-pii-maybe);
+  }
+  
+  .pii-value.pii-false {
+    background: rgba(80, 160, 96, 0.15);
+    color: var(--color-pii-false);
+  }
+  
+  .pii-reason {
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+    margin-left: var(--space-2);
+  }
+  
+  /* Deprecation section */
+  .deprecation-section {
+    margin-top: var(--space-6);
+  }
+  
+  .deprecation-title {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-error);
+    margin-bottom: var(--space-3);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .deprecation-table {
+    border-color: rgba(244, 67, 54, 0.3);
+  }
+  
+  .deprecation-table .prop-name {
+    background: rgba(244, 67, 54, 0.05);
+  }
+  
+  .deprecation-reason {
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+  }
+  
+  .status-value {
+    display: inline-block;
+    padding: 2px var(--space-2);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+  }
+  
+  .status-value.null {
+    color: var(--color-text-muted);
+    background: var(--color-bg-elevated);
+  }
+  
+  .status-value.backfill,
+  .status-value.normalize {
+    background: rgba(212, 167, 44, 0.15);
+    color: var(--color-warning);
+  }
+  
+  .replacement-link code {
+    color: var(--color-accent);
+    font-size: var(--text-sm);
+    background: none;
+    padding: 0;
+    border: none;
+  }
+  
+  .replacement-link:hover code {
+    text-decoration: underline;
+  }
+  
+  /* SDK tags */
+  .sdk-tags {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  
+  .sdk-tag {
+    padding: 2px var(--space-2);
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+  }
+  
+  /* Raw JSON view */
+  .json-container {
+    position: relative;
+  }
+  
+  .copy-btn {
+    position: absolute;
+    top: var(--space-3);
+    right: var(--space-3);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-text-muted);
+    font-size: var(--text-xs);
+    font-family: var(--font-sans);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    z-index: 1;
+  }
+  
+  .copy-btn:hover {
+    color: var(--color-text-secondary);
+    border-color: var(--color-border-light);
+  }
+  
+  .json-container pre {
+    margin: 0;
+    padding: var(--space-6);
+    padding-top: calc(var(--space-6) + 40px);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow-x: auto;
+  }
+  
+  .json-code {
+    font-size: var(--text-sm);
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+  }
+  
+  /* Back navigation */
+  .back-nav {
+    margin-top: var(--space-8);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--color-border);
+  }
+  
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    transition: color var(--transition-fast);
+  }
+  
+  .back-link:hover {
+    color: var(--color-accent);
+  }
+  
+  @media (max-width: 640px) {
+    .header-top {
+      flex-direction: column;
+    }
+    
+    .attribute-key {
+      font-size: var(--text-xl);
+    }
+    
+    .attribute-key code {
+      font-size: var(--text-xl);
+    }
+    
+    .toggle-btn span {
+      display: none;
+    }
+    
+    .prop-name {
+      width: 120px;
+      padding: var(--space-2) var(--space-3);
+      font-size: var(--text-xs);
+    }
+    
+    .prop-value {
+      padding: var(--space-2) var(--space-3);
+    }
+  }
+</style>

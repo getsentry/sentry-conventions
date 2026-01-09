@@ -13,7 +13,9 @@ const { attribute, id, showCategory = false } = Astro.props;
 
 // Extract category from id (e.g., "http/http__request__method" -> "http")
 const category = id.includes('/') ? id.split('/')[0] : 'general';
+const slug = id.includes('/') ? id.split('/').slice(1).join('/') : id;
 const isDeprecated = !!attribute.deprecation;
+const detailUrl = `${import.meta.env.BASE_URL}attributes/${category}/${slug}/`;
 ---
 
 <article 
@@ -24,16 +26,13 @@ const isDeprecated = !!attribute.deprecation;
   <div class="attribute-header">
     <h3 class="attribute-key" data-pagefind-meta="title">
       <a 
-        href={`#${attribute.key.replace(/\./g, '-').replace(/</g, '').replace(/>/g, '')}`} 
-        class="anchor-link"
-        aria-label={`Link to ${attribute.key}`}
+        href={detailUrl} 
+        class="detail-link"
+        aria-label={`View details for ${attribute.key}`}
+        title="View attribute details"
       >
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
-          <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
-        </svg>
+        <code data-pagefind-index-attrs="data-key" data-key={attribute.key}>{attribute.key}</code>
       </a>
-      <code data-pagefind-index-attrs="data-key" data-key={attribute.key}>{attribute.key}</code>
       {isDeprecated && <span class="deprecated-badge">Deprecated</span>}
     </h3>
     <div class="attribute-meta">
@@ -87,6 +86,13 @@ const isDeprecated = !!attribute.deprecation;
       </div>
     )}
   </div>
+  
+  <a href={detailUrl} class="view-details-link">
+    View details
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M5 12h14M12 5l7 7-7 7"/>
+    </svg>
+  </a>
 </article>
 
 <style>
@@ -129,22 +135,25 @@ const isDeprecated = !!attribute.deprecation;
     margin: 0;
   }
   
-  .anchor-link {
+  .detail-link {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    opacity: 0;
-    color: var(--color-text-muted);
-    transition: opacity var(--transition-fast), color var(--transition-fast);
-    flex-shrink: 0;
+    transition: color var(--transition-fast);
   }
   
-  .attribute-card:hover .anchor-link {
-    opacity: 1;
-  }
-  
-  .anchor-link:hover {
+  .detail-link code {
+    font-size: var(--text-base);
+    padding: 0;
+    background: none;
+    border: none;
     color: var(--color-accent);
+    transition: all var(--transition-fast);
+  }
+  
+  .detail-link:hover code {
+    color: var(--color-accent-hover);
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
   
   .attribute-key code {
@@ -253,5 +262,29 @@ const isDeprecated = !!attribute.deprecation;
   .deprecation-reason {
     margin-top: var(--space-2) !important;
     color: var(--color-text-muted);
+  }
+  
+  .view-details-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    margin-top: var(--space-4);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--color-border);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    transition: color var(--transition-fast);
+  }
+  
+  .view-details-link:hover {
+    color: var(--color-accent);
+  }
+  
+  .view-details-link svg {
+    transition: transform var(--transition-fast);
+  }
+  
+  .view-details-link:hover svg {
+    transform: translateX(3px);
   }
 </style>
