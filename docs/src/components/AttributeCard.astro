@@ -96,6 +96,7 @@ const isDeprecated = !!attribute.deprecation;
     border-radius: var(--radius-lg);
     padding: var(--space-5);
     transition: border-color var(--transition-fast);
+    scroll-margin-top: calc(var(--header-height) + var(--space-6));
   }
   
   .attribute-card:hover {
@@ -135,8 +136,7 @@ const isDeprecated = !!attribute.deprecation;
     opacity: 0;
     color: var(--color-text-muted);
     transition: opacity var(--transition-fast), color var(--transition-fast);
-    margin-left: calc(-1 * var(--space-6));
-    padding-right: var(--space-2);
+    flex-shrink: 0;
   }
   
   .attribute-card:hover .anchor-link {

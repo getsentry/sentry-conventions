@@ -23,38 +23,78 @@ interface SearchResult {
   excerpt: string;
 }
 
+interface AttributeIndex {
+  key: string;
+  brief: string;
+  type: string;
+  category: string;
+  url: string;
+  deprecated: boolean;
+}
+
 declare global {
   interface Window {
     pagefind?: {
       search: (query: string) => Promise<PagefindSearchResponse>;
       init: () => Promise<void>;
     };
+    attributeIndex?: AttributeIndex[];
   }
+}
+
+// Highlight the matching portion of the attribute key
+function highlightMatch(key: string, query: string): React.ReactNode {
+  const lowerKey = key.toLowerCase();
+  const lowerQuery = query.toLowerCase();
+  const index = lowerKey.indexOf(lowerQuery);
+  
+  if (index === -1) return key;
+  
+  return (
+    <>
+      {key.slice(0, index)}
+      <mark>{key.slice(index, index + query.length)}</mark>
+      {key.slice(index + query.length)}
+    </>
+  );
 }
 
 export default function SearchModal() {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState<SearchResult[]>([]);
+  const [attributeResults, setAttributeResults] = useState<AttributeIndex[]>([]);
+  const [pageResults, setPageResults] = useState<SearchResult[]>([]);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const resultsRef = useRef<HTMLDivElement>(null);
+
+  // Total number of results for keyboard navigation
+  const totalResults = attributeResults.length + pageResults.length;
+
+  // Load attribute index
+  const loadAttributeIndex = useCallback(async () => {
+    if (window.attributeIndex) return;
+    
+    try {
+      const baseUrl = import.meta.env.BASE_URL || '/';
+      const response = await fetch(`${baseUrl}api/attributes.json`);
+      window.attributeIndex = await response.json();
+    } catch (e) {
+      console.error('Failed to load attribute index:', e);
+      window.attributeIndex = [];
+    }
+  }, []);
 
   // Load Pagefind on first open
   const loadPagefind = useCallback(async () => {
     if (window.pagefind) return;
     
     try {
-      // Pagefind is loaded dynamically at runtime
-      // Use Function constructor to bypass Vite's static import analysis
       const baseUrl = import.meta.env.BASE_URL || '/';
       const pagefindPath = `${baseUrl}pagefind/pagefind.js`;
-      
-      // Dynamic import that Vite won't analyze
       const importFn = new Function('path', 'return import(path)');
       const pagefind = await importFn(pagefindPath);
-      
       await pagefind.init();
       window.pagefind = pagefind;
     } catch (e) {
@@ -65,13 +105,10 @@ export default function SearchModal() {
   // Handle keyboard shortcuts
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Open modal on cmd+k or ctrl+k
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         e.preventDefault();
         setIsOpen(true);
       }
-      
-      // Close on escape
       if (e.key === 'Escape') {
         setIsOpen(false);
       }
@@ -84,46 +121,86 @@ export default function SearchModal() {
   // Focus input when modal opens
   useEffect(() => {
     if (isOpen) {
+      loadAttributeIndex();
       loadPagefind();
       inputRef.current?.focus();
       setQuery('');
-      setResults([]);
+      setAttributeResults([]);
+      setPageResults([]);
       setSelectedIndex(0);
     }
-  }, [isOpen, loadPagefind]);
+  }, [isOpen, loadAttributeIndex, loadPagefind]);
 
   // Search when query changes
   useEffect(() => {
     const search = async () => {
-      if (!query.trim() || !window.pagefind) {
-        setResults([]);
+      const trimmedQuery = query.trim().toLowerCase();
+      
+      if (!trimmedQuery) {
+        setAttributeResults([]);
+        setPageResults([]);
         return;
       }
 
       setIsLoading(true);
-      try {
-        const response = await window.pagefind.search(query);
-        const searchResults = await Promise.all(
-          response.results.slice(0, 10).map(async (result) => {
-            const data = await result.data();
-            return {
-              id: result.id,
-              url: data.url,
-              title: data.meta?.title || 'Untitled',
-              excerpt: data.excerpt,
-            };
+
+      // Search attributes (instant, client-side)
+      if (window.attributeIndex) {
+        const matches = window.attributeIndex
+          .filter(attr => {
+            const key = attr.key.toLowerCase();
+            // Prioritize prefix matches, but also include substring matches
+            return key.includes(trimmedQuery);
           })
-        );
-        setResults(searchResults);
-        setSelectedIndex(0);
-      } catch (e) {
-        console.error('Search failed:', e);
-        setResults([]);
+          .sort((a, b) => {
+            const aKey = a.key.toLowerCase();
+            const bKey = b.key.toLowerCase();
+            const aStartsWith = aKey.startsWith(trimmedQuery);
+            const bStartsWith = bKey.startsWith(trimmedQuery);
+            
+            // Prefix matches come first
+            if (aStartsWith && !bStartsWith) return -1;
+            if (!aStartsWith && bStartsWith) return 1;
+            
+            // Then by position of match (earlier = better)
+            const aIndex = aKey.indexOf(trimmedQuery);
+            const bIndex = bKey.indexOf(trimmedQuery);
+            if (aIndex !== bIndex) return aIndex - bIndex;
+            
+            // Then alphabetically
+            return a.key.localeCompare(b.key);
+          })
+          .slice(0, 10);
+        
+        setAttributeResults(matches);
       }
+
+      // Search pages with Pagefind (async)
+      if (window.pagefind) {
+        try {
+          const response = await window.pagefind.search(query);
+          const searchResults = await Promise.all(
+            response.results.slice(0, 5).map(async (result) => {
+              const data = await result.data();
+              return {
+                id: result.id,
+                url: data.url,
+                title: data.meta?.title || 'Untitled',
+                excerpt: data.excerpt,
+              };
+            })
+          );
+          setPageResults(searchResults);
+        } catch (e) {
+          console.error('Search failed:', e);
+          setPageResults([]);
+        }
+      }
+
       setIsLoading(false);
     };
 
-    const debounce = setTimeout(search, 150);
+    const debounce = setTimeout(search, 100);
     return () => clearTimeout(debounce);
   }, [query]);
 
@@ -131,25 +208,44 @@ export default function SearchModal() {
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'ArrowDown') {
       e.preventDefault();
-      setSelectedIndex((i) => Math.min(i + 1, results.length - 1));
+      setSelectedIndex((i) => Math.min(i + 1, totalResults - 1));
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();
       setSelectedIndex((i) => Math.max(i - 1, 0));
-    } else if (e.key === 'Enter' && results[selectedIndex]) {
+    } else if (e.key === 'Enter') {
       e.preventDefault();
-      navigateToResult(results[selectedIndex]);
+      navigateToSelected();
     }
+  };
+
+  const navigateToSelected = () => {
+    if (selectedIndex < attributeResults.length) {
+      const attr = attributeResults[selectedIndex];
+      setIsOpen(false);
+      window.location.href = attr.url;
+    } else {
+      const pageIndex = selectedIndex - attributeResults.length;
+      const result = pageResults[pageIndex];
+      if (result) {
+        setIsOpen(false);
+        window.location.href = result.url;
+      }
+    }
+  };
+
+  const navigateToAttribute = (attr: AttributeIndex) => {
+    setIsOpen(false);
+    window.location.href = attr.url;
   };
 
   const navigateToResult = (result: SearchResult) => {
     setIsOpen(false);
-    // Use the base URL from the environment
     window.location.href = result.url;
   };
 
   // Scroll selected result into view
   useEffect(() => {
-    const selectedElement = resultsRef.current?.children[selectedIndex] as HTMLElement;
+    const selectedElement = resultsRef.current?.querySelector('.selected') as HTMLElement;
     selectedElement?.scrollIntoView({ block: 'nearest' });
   }, [selectedIndex]);
 
@@ -163,6 +259,9 @@ export default function SearchModal() {
 
   if (!isOpen) return null;
 
+  const hasResults = attributeResults.length > 0 || pageResults.length > 0;
+  const noResults = query && !isLoading && !hasResults;
+
   return (
     <div className="search-overlay" onClick={() => setIsOpen(false)}>
       <div className="search-modal" onClick={(e) => e.stopPropagation()}>
@@ -175,7 +274,7 @@ export default function SearchModal() {
             ref={inputRef}
             type="text"
             className="search-input"
-            placeholder="Search attributes, names..."
+            placeholder="Search attributes (e.g., sentry.op, http.)"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={handleKeyDown}
@@ -188,30 +287,70 @@ export default function SearchModal() {
             <div className="search-loading">Searching...</div>
           )}
           
-          {!isLoading && query && results.length === 0 && (
+          {noResults && (
             <div className="search-empty">
               No results found for "{query}"
             </div>
           )}
           
-          {!isLoading && results.map((result, index) => (
-            <button
-              key={result.id}
-              className={`search-result ${index === selectedIndex ? 'selected' : ''}`}
-              onClick={() => navigateToResult(result)}
-              onMouseEnter={() => setSelectedIndex(index)}
-            >
-              <span className="result-title">{result.title}</span>
-              <span 
-                className="result-excerpt" 
-                dangerouslySetInnerHTML={{ __html: result.excerpt }}
-              />
-            </button>
-          ))}
+          {/* Attribute results */}
+          {!isLoading && attributeResults.length > 0 && (
+            <div className="results-section">
+              <div className="section-header">Attributes</div>
+              {attributeResults.map((attr, index) => (
+                <button
+                  key={attr.key}
+                  className={`search-result attribute-result ${index === selectedIndex ? 'selected' : ''}`}
+                  onClick={() => navigateToAttribute(attr)}
+                  onMouseEnter={() => setSelectedIndex(index)}
+                >
+                  <div className="attribute-result-header">
+                    <code className="attribute-key">{highlightMatch(attr.key, query)}</code>
+                    <div className="attribute-badges">
+                      <span className="type-badge">{attr.type}</span>
+                      <span className="category-badge">{attr.category}</span>
+                      {attr.deprecated && <span className="deprecated-badge">deprecated</span>}
+                    </div>
+                  </div>
+                  <span className="result-excerpt">{attr.brief}</span>
+                </button>
+              ))}
+            </div>
+          )}
+          
+          {/* Page results from Pagefind */}
+          {!isLoading && pageResults.length > 0 && (
+            <div className="results-section">
+              <div className="section-header">Pages</div>
+              {pageResults.map((result, index) => {
+                const actualIndex = attributeResults.length + index;
+                return (
+                  <button
+                    key={result.id}
+                    className={`search-result ${actualIndex === selectedIndex ? 'selected' : ''}`}
+                    onClick={() => navigateToResult(result)}
+                    onMouseEnter={() => setSelectedIndex(actualIndex)}
+                  >
+                    <span className="result-title">{result.title}</span>
+                    <span 
+                      className="result-excerpt" 
+                      dangerouslySetInnerHTML={{ __html: result.excerpt }}
+                    />
+                  </button>
+                );
+              })}
+            </div>
+          )}
           
           {!query && (
             <div className="search-hints">
-              <p>Start typing to search attributes and documentation.</p>
+              <p>Search for attributes by name or browse documentation.</p>
+              <div className="search-examples">
+                <span>Try: </span>
+                <code>sentry.</code>
+                <code>http.request</code>
+                <code>db.system</code>
+              </div>
               <div className="keyboard-hints">
                 <span><kbd>↑</kbd><kbd>↓</kbd> to navigate</span>
                 <span><kbd>↵</kbd> to select</span>
@@ -237,7 +376,7 @@ export default function SearchModal() {
         
         .search-modal {
           width: 100%;
-          max-width: 600px;
+          max-width: 640px;
           background: var(--color-bg-secondary);
           border: 1px solid var(--color-border);
           border-radius: var(--radius-lg);
@@ -283,7 +422,7 @@ export default function SearchModal() {
         }
         
         .search-results {
-          max-height: 400px;
+          max-height: 450px;
           overflow-y: auto;
         }
         
@@ -293,6 +432,25 @@ export default function SearchModal() {
           text-align: center;
           color: var(--color-text-muted);
           font-size: var(--text-sm);
+        }
+        
+        .results-section {
+          border-bottom: 1px solid var(--color-border);
+        }
+        
+        .results-section:last-child {
+          border-bottom: none;
+        }
+        
+        .section-header {
+          padding: var(--space-2) var(--space-4);
+          font-size: var(--text-xs);
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          color: var(--color-text-muted);
+          background: var(--color-bg-elevated);
+          border-bottom: 1px solid var(--color-border);
         }
         
         .search-result {
@@ -322,6 +480,66 @@ export default function SearchModal() {
           background: var(--color-accent-soft);
         }
         
+        .attribute-result-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: var(--space-3);
+          flex-wrap: wrap;
+        }
+        
+        .attribute-key {
+          font-family: var(--font-mono);
+          font-size: var(--text-sm);
+          font-weight: 500;
+          color: var(--color-accent);
+          background: none;
+          padding: 0;
+          border: none;
+        }
+        
+        .attribute-key mark {
+          background: var(--color-accent-soft);
+          color: var(--color-accent);
+          padding: 0 2px;
+          border-radius: 2px;
+          font-weight: 600;
+        }
+        
+        .search-result.selected .attribute-key {
+          color: var(--color-accent);
+        }
+        
+        .attribute-badges {
+          display: flex;
+          align-items: center;
+          gap: var(--space-2);
+        }
+        
+        .type-badge,
+        .category-badge,
+        .deprecated-badge {
+          font-size: var(--text-xs);
+          padding: 2px var(--space-2);
+          border-radius: var(--radius-sm);
+          font-family: var(--font-sans);
+        }
+        
+        .type-badge {
+          background: var(--color-bg-elevated);
+          color: var(--color-text-muted);
+        }
+        
+        .category-badge {
+          background: var(--color-bg-elevated);
+          color: var(--color-text-secondary);
+        }
+        
+        .deprecated-badge {
+          background: rgba(244, 67, 54, 0.15);
+          color: var(--color-error);
+        }
+        
         .result-title {
           font-size: var(--text-sm);
           font-weight: 500;
@@ -336,6 +554,11 @@ export default function SearchModal() {
           font-size: var(--text-xs);
           color: var(--color-text-muted);
           line-height: 1.5;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
         }
         
         .result-excerpt mark {
@@ -354,6 +577,32 @@ export default function SearchModal() {
           color: var(--color-text-muted);
           font-size: var(--text-sm);
           margin-bottom: var(--space-4);
+        }
+        
+        .search-examples {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: var(--space-2);
+          font-size: var(--text-sm);
+          color: var(--color-text-muted);
+          margin-bottom: var(--space-4);
+        }
+        
+        .search-examples code {
+          padding: var(--space-1) var(--space-2);
+          background: var(--color-bg-elevated);
+          border: 1px solid var(--color-border);
+          border-radius: var(--radius-sm);
+          font-family: var(--font-mono);
+          font-size: var(--text-xs);
+          color: var(--color-accent);
+          cursor: pointer;
+        }
+        
+        .search-examples code:hover {
+          background: var(--color-accent-soft);
+          border-color: var(--color-accent);
         }
         
         .keyboard-hints {
@@ -383,6 +632,12 @@ export default function SearchModal() {
           
           .keyboard-hints {
             display: none;
+          }
+          
+          .attribute-result-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: var(--space-2);
           }
         }
       `}</style>
