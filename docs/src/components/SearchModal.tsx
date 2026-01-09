@@ -53,7 +53,7 @@ function highlightMatch(key: string, query: string): React.ReactNode {
   return (
     <>
       {key.slice(0, index)}
-      <mark>{key.slice(index, index + query.length)}</mark>
+      <mark className="bg-accent-soft text-accent px-0.5 rounded-sm font-semibold">{key.slice(index, index + query.length)}</mark>
       {key.slice(index + query.length)}
     </>
   );
@@ -263,56 +263,70 @@ export default function SearchModal() {
   const noResults = query && !isLoading && !hasResults;
 
   return (
-    <div className="search-overlay" onClick={() => setIsOpen(false)}>
-      <div className="search-modal" onClick={(e) => e.stopPropagation()}>
-        <div className="search-header">
-          <svg className="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <div 
+      className="fixed inset-0 bg-black/70 backdrop-blur-sm z-[1000] flex items-start justify-center pt-[10vh]"
+      onClick={() => setIsOpen(false)}
+    >
+      <div 
+        className="w-full max-w-2xl bg-bg-secondary border border-border rounded-lg shadow-lg overflow-hidden mx-4"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex items-center gap-3 p-4 border-b border-border">
+          <svg className="text-text-muted flex-shrink-0" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <circle cx="11" cy="11" r="8"/>
             <path d="M21 21l-4.35-4.35"/>
           </svg>
           <input
             ref={inputRef}
             type="text"
-            className="search-input"
+            className="flex-1 bg-transparent border-none outline-none text-lg text-text-primary font-sans placeholder:text-text-muted"
             placeholder="Search attributes (e.g., sentry.op, http.)"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={handleKeyDown}
           />
-          <kbd className="escape-hint">ESC</kbd>
+          <kbd className="px-2 py-1 bg-bg-elevated border border-border rounded-sm text-xs text-text-muted font-sans">ESC</kbd>
         </div>
         
-        <div className="search-results" ref={resultsRef}>
+        <div className="max-h-[450px] overflow-y-auto" ref={resultsRef}>
           {isLoading && (
-            <div className="search-loading">Searching...</div>
+            <div className="py-8 text-center text-text-muted text-sm">Searching...</div>
           )}
           
           {noResults && (
-            <div className="search-empty">
+            <div className="py-8 text-center text-text-muted text-sm">
               No results found for "{query}"
             </div>
           )}
           
           {/* Attribute results */}
           {!isLoading && attributeResults.length > 0 && (
-            <div className="results-section">
-              <div className="section-header">Attributes</div>
+            <div className="border-b border-border last:border-b-0">
+              <div className="px-4 py-2 text-xs font-semibold uppercase tracking-wider text-text-muted bg-bg-elevated border-b border-border">
+                Attributes
+              </div>
               {attributeResults.map((attr, index) => (
                 <button
                   key={attr.key}
-                  className={`search-result attribute-result ${index === selectedIndex ? 'selected' : ''}`}
+                  className={`flex flex-col gap-1 w-full px-4 py-3 bg-transparent border-none border-b border-border last:border-b-0 text-left cursor-pointer transition-colors duration-fast ${
+                    index === selectedIndex ? 'bg-accent-soft selected' : 'hover:bg-bg-hover'
+                  }`}
                   onClick={() => navigateToAttribute(attr)}
                   onMouseEnter={() => setSelectedIndex(index)}
                 >
-                  <div className="attribute-result-header">
-                    <code className="attribute-key">{highlightMatch(attr.key, query)}</code>
-                    <div className="attribute-badges">
-                      <span className="type-badge">{attr.type}</span>
-                      <span className="category-badge">{attr.category}</span>
-                      {attr.deprecated && <span className="deprecated-badge">deprecated</span>}
+                  <div className="flex items-center justify-between gap-3 flex-wrap">
+                    <code className={`font-mono text-sm font-medium bg-transparent p-0 border-none ${
+                      index === selectedIndex ? 'text-accent' : 'text-accent'
+                    }`}>
+                      {highlightMatch(attr.key, query)}
+                    </code>
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs px-2 py-0.5 rounded-sm font-sans bg-bg-elevated text-text-muted">{attr.type}</span>
+                      <span className="text-xs px-2 py-0.5 rounded-sm font-sans bg-bg-elevated text-text-secondary">{attr.category}</span>
+                      {attr.deprecated && <span className="text-xs px-2 py-0.5 rounded-sm font-sans bg-error/15 text-error">deprecated</span>}
                     </div>
                   </div>
-                  <span className="result-excerpt">{attr.brief}</span>
+                  <span className="text-xs text-text-muted leading-relaxed line-clamp-2">{attr.brief}</span>
                 </button>
               ))}
             </div>
@@ -320,20 +334,26 @@ export default function SearchModal() {
           
           {/* Page results from Pagefind */}
           {!isLoading && pageResults.length > 0 && (
-            <div className="results-section">
-              <div className="section-header">Pages</div>
+            <div className="border-b border-border last:border-b-0">
+              <div className="px-4 py-2 text-xs font-semibold uppercase tracking-wider text-text-muted bg-bg-elevated border-b border-border">
+                Pages
+              </div>
               {pageResults.map((result, index) => {
                 const actualIndex = attributeResults.length + index;
                 return (
                   <button
                     key={result.id}
-                    className={`search-result ${actualIndex === selectedIndex ? 'selected' : ''}`}
+                    className={`flex flex-col gap-1 w-full px-4 py-3 bg-transparent border-none border-b border-border last:border-b-0 text-left cursor-pointer transition-colors duration-fast ${
+                      actualIndex === selectedIndex ? 'bg-accent-soft selected' : 'hover:bg-bg-hover'
+                    }`}
                     onClick={() => navigateToResult(result)}
                     onMouseEnter={() => setSelectedIndex(actualIndex)}
                   >
-                    <span className="result-title">{result.title}</span>
+                    <span className={`text-sm font-medium ${actualIndex === selectedIndex ? 'text-accent' : 'text-text-primary'}`}>
+                      {result.title}
+                    </span>
                     <span 
-                      className="result-excerpt" 
+                      className="text-xs text-text-muted leading-relaxed line-clamp-2 [&_mark]:bg-accent-soft [&_mark]:text-accent [&_mark]:px-0.5 [&_mark]:rounded-sm" 
                       dangerouslySetInnerHTML={{ __html: result.excerpt }}
                     />
                   </button>
@@ -343,304 +363,23 @@ export default function SearchModal() {
           )}
           
           {!query && (
-            <div className="search-hints">
-              <p>Search for attributes by name or browse documentation.</p>
-              <div className="search-examples">
+            <div className="py-8 px-4 text-center">
+              <p className="text-text-muted text-sm mb-4">Search for attributes by name or browse documentation.</p>
+              <div className="flex items-center justify-center gap-2 text-sm text-text-muted mb-4">
                 <span>Try: </span>
-                <code>sentry.</code>
-                <code>http.request</code>
-                <code>db.system</code>
+                <code className="px-2 py-1 bg-bg-elevated border border-border rounded-sm font-mono text-xs text-accent cursor-pointer hover:bg-accent-soft hover:border-accent">sentry.</code>
+                <code className="px-2 py-1 bg-bg-elevated border border-border rounded-sm font-mono text-xs text-accent cursor-pointer hover:bg-accent-soft hover:border-accent">http.request</code>
+                <code className="px-2 py-1 bg-bg-elevated border border-border rounded-sm font-mono text-xs text-accent cursor-pointer hover:bg-accent-soft hover:border-accent">db.system</code>
               </div>
-              <div className="keyboard-hints">
-                <span><kbd>↑</kbd><kbd>↓</kbd> to navigate</span>
-                <span><kbd>↵</kbd> to select</span>
-                <span><kbd>esc</kbd> to close</span>
+              <div className="flex justify-center gap-6 text-xs text-text-muted">
+                <span><kbd className="px-1 py-0.5 bg-bg-elevated border border-border rounded-sm font-sans min-w-[20px] inline-block text-center">↑</kbd><kbd className="px-1 py-0.5 bg-bg-elevated border border-border rounded-sm font-sans min-w-[20px] inline-block text-center">↓</kbd> to navigate</span>
+                <span><kbd className="px-1 py-0.5 bg-bg-elevated border border-border rounded-sm font-sans min-w-[20px] inline-block text-center">↵</kbd> to select</span>
+                <span><kbd className="px-1 py-0.5 bg-bg-elevated border border-border rounded-sm font-sans min-w-[20px] inline-block text-center">esc</kbd> to close</span>
               </div>
             </div>
           )}
         </div>
       </div>
-      
-      <style>{`
-        .search-overlay {
-          position: fixed;
-          inset: 0;
-          background: rgba(0, 0, 0, 0.7);
-          backdrop-filter: blur(4px);
-          z-index: 1000;
-          display: flex;
-          align-items: flex-start;
-          justify-content: center;
-          padding-top: 10vh;
-        }
-        
-        .search-modal {
-          width: 100%;
-          max-width: 640px;
-          background: var(--color-bg-secondary);
-          border: 1px solid var(--color-border);
-          border-radius: var(--radius-lg);
-          box-shadow: var(--shadow-lg);
-          overflow: hidden;
-        }
-        
-        .search-header {
-          display: flex;
-          align-items: center;
-          gap: var(--space-3);
-          padding: var(--space-4);
-          border-bottom: 1px solid var(--color-border);
-        }
-        
-        .search-icon {
-          color: var(--color-text-muted);
-          flex-shrink: 0;
-        }
-        
-        .search-input {
-          flex: 1;
-          background: transparent;
-          border: none;
-          outline: none;
-          font-size: var(--text-lg);
-          color: var(--color-text-primary);
-          font-family: var(--font-sans);
-        }
-        
-        .search-input::placeholder {
-          color: var(--color-text-muted);
-        }
-        
-        .escape-hint {
-          padding: var(--space-1) var(--space-2);
-          background: var(--color-bg-elevated);
-          border: 1px solid var(--color-border);
-          border-radius: var(--radius-sm);
-          font-size: var(--text-xs);
-          color: var(--color-text-muted);
-          font-family: var(--font-sans);
-        }
-        
-        .search-results {
-          max-height: 450px;
-          overflow-y: auto;
-        }
-        
-        .search-loading,
-        .search-empty {
-          padding: var(--space-8);
-          text-align: center;
-          color: var(--color-text-muted);
-          font-size: var(--text-sm);
-        }
-        
-        .results-section {
-          border-bottom: 1px solid var(--color-border);
-        }
-        
-        .results-section:last-child {
-          border-bottom: none;
-        }
-        
-        .section-header {
-          padding: var(--space-2) var(--space-4);
-          font-size: var(--text-xs);
-          font-weight: 600;
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
-          color: var(--color-text-muted);
-          background: var(--color-bg-elevated);
-          border-bottom: 1px solid var(--color-border);
-        }
-        
-        .search-result {
-          display: flex;
-          flex-direction: column;
-          gap: var(--space-1);
-          width: 100%;
-          padding: var(--space-3) var(--space-4);
-          background: transparent;
-          border: none;
-          border-bottom: 1px solid var(--color-border);
-          text-align: left;
-          cursor: pointer;
-          transition: background var(--transition-fast);
-        }
-        
-        .search-result:last-child {
-          border-bottom: none;
-        }
-        
-        .search-result:hover,
-        .search-result.selected {
-          background: var(--color-bg-hover);
-        }
-        
-        .search-result.selected {
-          background: var(--color-accent-soft);
-        }
-        
-        .attribute-result-header {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: var(--space-3);
-          flex-wrap: wrap;
-        }
-        
-        .attribute-key {
-          font-family: var(--font-mono);
-          font-size: var(--text-sm);
-          font-weight: 500;
-          color: var(--color-accent);
-          background: none;
-          padding: 0;
-          border: none;
-        }
-        
-        .attribute-key mark {
-          background: var(--color-accent-soft);
-          color: var(--color-accent);
-          padding: 0 2px;
-          border-radius: 2px;
-          font-weight: 600;
-        }
-        
-        .search-result.selected .attribute-key {
-          color: var(--color-accent);
-        }
-        
-        .attribute-badges {
-          display: flex;
-          align-items: center;
-          gap: var(--space-2);
-        }
-        
-        .type-badge,
-        .category-badge,
-        .deprecated-badge {
-          font-size: var(--text-xs);
-          padding: 2px var(--space-2);
-          border-radius: var(--radius-sm);
-          font-family: var(--font-sans);
-        }
-        
-        .type-badge {
-          background: var(--color-bg-elevated);
-          color: var(--color-text-muted);
-        }
-        
-        .category-badge {
-          background: var(--color-bg-elevated);
-          color: var(--color-text-secondary);
-        }
-        
-        .deprecated-badge {
-          background: rgba(244, 67, 54, 0.15);
-          color: var(--color-error);
-        }
-        
-        .result-title {
-          font-size: var(--text-sm);
-          font-weight: 500;
-          color: var(--color-text-primary);
-        }
-        
-        .search-result.selected .result-title {
-          color: var(--color-accent);
-        }
-        
-        .result-excerpt {
-          font-size: var(--text-xs);
-          color: var(--color-text-muted);
-          line-height: 1.5;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          display: -webkit-box;
-          -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
-        }
-        
-        .result-excerpt mark {
-          background: var(--color-accent-soft);
-          color: var(--color-accent);
-          padding: 0 2px;
-          border-radius: 2px;
-        }
-        
-        .search-hints {
-          padding: var(--space-8) var(--space-4);
-          text-align: center;
-        }
-        
-        .search-hints p {
-          color: var(--color-text-muted);
-          font-size: var(--text-sm);
-          margin-bottom: var(--space-4);
-        }
-        
-        .search-examples {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: var(--space-2);
-          font-size: var(--text-sm);
-          color: var(--color-text-muted);
-          margin-bottom: var(--space-4);
-        }
-        
-        .search-examples code {
-          padding: var(--space-1) var(--space-2);
-          background: var(--color-bg-elevated);
-          border: 1px solid var(--color-border);
-          border-radius: var(--radius-sm);
-          font-family: var(--font-mono);
-          font-size: var(--text-xs);
-          color: var(--color-accent);
-          cursor: pointer;
-        }
-        
-        .search-examples code:hover {
-          background: var(--color-accent-soft);
-          border-color: var(--color-accent);
-        }
-        
-        .keyboard-hints {
-          display: flex;
-          justify-content: center;
-          gap: var(--space-6);
-          font-size: var(--text-xs);
-          color: var(--color-text-muted);
-        }
-        
-        .keyboard-hints kbd {
-          padding: var(--space-1) var(--space-1);
-          background: var(--color-bg-elevated);
-          border: 1px solid var(--color-border);
-          border-radius: var(--radius-sm);
-          font-family: var(--font-sans);
-          min-width: 20px;
-          display: inline-block;
-          text-align: center;
-        }
-        
-        @media (max-width: 640px) {
-          .search-overlay {
-            padding: var(--space-4);
-            padding-top: var(--space-4);
-          }
-          
-          .keyboard-hints {
-            display: none;
-          }
-          
-          .attribute-result-header {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: var(--space-2);
-          }
-        }
-      `}</style>
     </div>
   );
 }

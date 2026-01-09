@@ -36,23 +36,23 @@ const rawJson = JSON.stringify(attr, null, 2);
   title={attr.key} 
   description={attr.brief}
 >
-  <div class="detail-page">
+  <div class="max-w-4xl">
     <nav class="breadcrumb">
       <a href={`${import.meta.env.BASE_URL}attributes/`}>Attributes</a>
       <span class="separator">/</span>
       <a href={`${import.meta.env.BASE_URL}attributes/${category}/`}>{category}</a>
       <span class="separator">/</span>
-      <span class="current">{attr.key}</span>
+      <span class="current font-mono text-xs">{attr.key}</span>
     </nav>
     
-    <header class="page-header">
-      <div class="header-top">
-        <h1 class="attribute-key">
-          <code>{attr.key}</code>
-          {isDeprecated && <span class="deprecated-badge">Deprecated</span>}
+    <header class="mb-8 pb-6 border-b border-border">
+      <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
+        <h1 class="flex items-center gap-3 m-0 text-2xl">
+          <code class="text-2xl p-0 bg-transparent border-none text-accent">{attr.key}</code>
+          {isDeprecated && <span class="badge badge-deprecated">Deprecated</span>}
         </h1>
-        <div class="view-toggle">
-          <button class="toggle-btn active" data-view="pretty" type="button">
+        <div class="flex bg-bg-secondary border border-border rounded-md overflow-hidden">
+          <button class="toggle-btn active flex items-center gap-2 px-3 py-2 bg-transparent border-none text-text-muted text-sm font-sans cursor-pointer transition-all duration-fast hover:text-text-secondary hover:bg-bg-hover" data-view="pretty" type="button">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <rect x="3" y="3" width="7" height="7" rx="1"/>
               <rect x="14" y="3" width="7" height="7" rx="1"/>
@@ -61,7 +61,7 @@ const rawJson = JSON.stringify(attr, null, 2);
             </svg>
             <span>Prettified</span>
           </button>
-          <button class="toggle-btn" data-view="raw" type="button">
+          <button class="toggle-btn flex items-center gap-2 px-3 py-2 bg-transparent border-none text-text-muted text-sm font-sans cursor-pointer transition-all duration-fast hover:text-text-secondary hover:bg-bg-hover" data-view="raw" type="button">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="16,18 22,12 16,6"/>
               <polyline points="8,6 2,12 8,18"/>
@@ -71,55 +71,66 @@ const rawJson = JSON.stringify(attr, null, 2);
         </div>
       </div>
       
-      <div class="meta-badges">
+      <div class="flex flex-wrap gap-2 mb-4">
         <TypeBadge type={attr.type} />
         <PiiBadge pii={attr.pii.key} reason={attr.pii.reason} />
         {attr.is_in_otel && (
-          <span class="otel-badge" title="Defined in OpenTelemetry Semantic Conventions">OTel</span>
+          <span class="badge badge-otel" title="Defined in OpenTelemetry Semantic Conventions">OTel</span>
         )}
         {attr.has_dynamic_suffix && (
-          <span class="dynamic-badge" title="This attribute has a dynamic suffix">Dynamic</span>
+          <span class="badge badge-dynamic" title="This attribute has a dynamic suffix">Dynamic</span>
         )}
       </div>
       
-      <p class="brief">{attr.brief}</p>
+      <p class="text-lg text-text-secondary m-0 leading-relaxed">{attr.brief}</p>
     </header>
     
     <!-- Prettified View -->
     <div class="view-content pretty-view active" id="pretty-view">
-      <table class="properties-table">
+      <table class="w-full border-collapse bg-bg-secondary border border-border rounded-lg overflow-hidden m-0">
         <tbody>
-          <tr>
-            <td class="prop-name">type</td>
-            <td class="prop-value">
-              <span class="value-enum">{attr.type}</span>
+          <tr class="border-b border-border hover:bg-bg-hover">
+            <td class="w-40 py-3 px-4 font-mono text-sm font-medium text-text-muted bg-bg-elevated border-r border-border align-top">type</td>
+            <td class="py-3 px-4 text-sm text-text-secondary">
+              <span class="inline-block px-2 py-0.5 bg-accent-soft text-accent rounded-sm font-mono text-sm">{attr.type}</span>
             </td>
           </tr>
           
-          <tr>
-            <td class="prop-name">pii</td>
-            <td class="prop-value">
-              <span class:list={['pii-value', `pii-${attr.pii.key}`]}>{attr.pii.key}</span>
+          <tr class="border-b border-border hover:bg-bg-hover">
+            <td class="w-40 py-3 px-4 font-mono text-sm font-medium text-text-muted bg-bg-elevated border-r border-border align-top">pii</td>
+            <td class="py-3 px-4 text-sm text-text-secondary">
+              <span class:list={[
+                "inline-block px-2 py-0.5 rounded-sm font-mono text-sm font-medium",
+                attr.pii.key === 'true' ? 'bg-pii-true/15 text-pii-true' : 
+                attr.pii.key === 'maybe' ? 'bg-pii-maybe/15 text-pii-maybe' : 
+                'bg-pii-false/15 text-pii-false'
+              ]}>{attr.pii.key}</span>
               {attr.pii.reason && (
-                <span class="pii-reason">— {attr.pii.reason}</span>
+                <span class="text-text-muted text-sm ml-2">— {attr.pii.reason}</span>
               )}
             </td>
           </tr>
           
-          <tr>
-            <td class="prop-name">is_in_otel</td>
-            <td class="prop-value">
-              <span class:list={['value-boolean', attr.is_in_otel ? 'true' : 'false']}>
+          <tr class="border-b border-border hover:bg-bg-hover">
+            <td class="w-40 py-3 px-4 font-mono text-sm font-medium text-text-muted bg-bg-elevated border-r border-border align-top">is_in_otel</td>
+            <td class="py-3 px-4 text-sm text-text-secondary">
+              <span class:list={[
+                "inline-block px-2 py-0.5 rounded-sm font-mono text-sm font-medium",
+                attr.is_in_otel ? 'bg-success/15 text-success' : 'bg-error/15 text-error'
+              ]}>
                 {attr.is_in_otel ? 'true' : 'false'}
               </span>
             </td>
           </tr>
           
           {attr.has_dynamic_suffix !== undefined && (
-            <tr>
-              <td class="prop-name">has_dynamic_suffix</td>
-              <td class="prop-value">
-                <span class:list={['value-boolean', attr.has_dynamic_suffix ? 'true' : 'false']}>
+            <tr class="border-b border-border hover:bg-bg-hover">
+              <td class="w-40 py-3 px-4 font-mono text-sm font-medium text-text-muted bg-bg-elevated border-r border-border align-top">has_dynamic_suffix</td>
+              <td class="py-3 px-4 text-sm text-text-secondary">
+                <span class:list={[
+                  "inline-block px-2 py-0.5 rounded-sm font-mono text-sm font-medium",
+                  attr.has_dynamic_suffix ? 'bg-success/15 text-success' : 'bg-error/15 text-error'
+                ]}>
                   {attr.has_dynamic_suffix ? 'true' : 'false'}
                 </span>
               </td>
@@ -127,31 +138,31 @@ const rawJson = JSON.stringify(attr, null, 2);
           )}
           
           {attr.example !== undefined && (
-            <tr>
-              <td class="prop-name">example</td>
-              <td class="prop-value">
+            <tr class="border-b border-border hover:bg-bg-hover">
+              <td class="w-40 py-3 px-4 font-mono text-sm font-medium text-text-muted bg-bg-elevated border-r border-border align-top">example</td>
+              <td class="py-3 px-4 text-sm text-text-secondary">
                 {Array.isArray(attr.example) ? (
-                  <span class="value-array">
+                  <span class="inline-flex flex-wrap gap-2">
                     {attr.example.map((item, i) => (
-                      <code class="array-item">{typeof item === 'string' ? `"${item}"` : String(item)}</code>
+                      <code class="text-sm text-[#98c379] bg-bg-elevated px-2 py-0.5 rounded-sm">{typeof item === 'string' ? `"${item}"` : String(item)}</code>
                     ))}
                   </span>
                 ) : typeof attr.example === 'string' ? (
-                  <code class="value-string">"{attr.example}"</code>
+                  <code class="text-sm text-[#98c379]">"{attr.example}"</code>
                 ) : (
-                  <code class="value-primitive">{String(attr.example)}</code>
+                  <code class="text-sm text-[#d19a66]">{String(attr.example)}</code>
                 )}
               </td>
             </tr>
           )}
           
           {attr.alias && attr.alias.length > 0 && (
-            <tr>
-              <td class="prop-name">alias</td>
-              <td class="prop-value">
-                <span class="value-array">
+            <tr class="border-b border-border hover:bg-bg-hover">
+              <td class="w-40 py-3 px-4 font-mono text-sm font-medium text-text-muted bg-bg-elevated border-r border-border align-top">alias</td>
+              <td class="py-3 px-4 text-sm text-text-secondary">
+                <span class="inline-flex flex-wrap gap-2">
                   {attr.alias.map((a) => (
-                    <code class="array-item">"{a}"</code>
+                    <code class="text-sm text-[#98c379] bg-bg-elevated px-2 py-0.5 rounded-sm">"{a}"</code>
                   ))}
                 </span>
               </td>
@@ -159,12 +170,12 @@ const rawJson = JSON.stringify(attr, null, 2);
           )}
           
           {attr.sdks && attr.sdks.length > 0 && (
-            <tr>
-              <td class="prop-name">sdks</td>
-              <td class="prop-value">
-                <span class="sdk-tags">
+            <tr class="border-b border-border last:border-b-0 hover:bg-bg-hover">
+              <td class="w-40 py-3 px-4 font-mono text-sm font-medium text-text-muted bg-bg-elevated border-r border-border align-top">sdks</td>
+              <td class="py-3 px-4 text-sm text-text-secondary">
+                <span class="inline-flex flex-wrap gap-2">
                   {attr.sdks.map((sdk) => (
-                    <span class="sdk-tag">{sdk}</span>
+                    <span class="px-2 py-0.5 bg-bg-elevated border border-border rounded-sm text-sm text-text-secondary">{sdk}</span>
                   ))}
                 </span>
               </td>
@@ -174,30 +185,33 @@ const rawJson = JSON.stringify(attr, null, 2);
       </table>
       
       {attr.deprecation && (
-        <div class="deprecation-section">
-          <h3 class="deprecation-title">Deprecation</h3>
-          <table class="properties-table deprecation-table">
+        <div class="mt-6">
+          <h3 class="text-sm font-semibold text-error mb-3 uppercase tracking-wider">Deprecation</h3>
+          <table class="w-full border-collapse bg-bg-secondary border border-error/30 rounded-lg overflow-hidden m-0">
             <tbody>
               {attr.deprecation.replacement && (
-                <tr>
-                  <td class="prop-name">replacement</td>
-                  <td class="prop-value">
-                    <a href={`${import.meta.env.BASE_URL}attributes/${category}/${attr.deprecation.replacement.replace(/\./g, '__')}/`} class="replacement-link">
-                      <code>{attr.deprecation.replacement}</code>
+                <tr class="border-b border-border hover:bg-bg-hover">
+                  <td class="w-40 py-3 px-4 font-mono text-sm font-medium text-text-muted bg-error/5 border-r border-border align-top">replacement</td>
+                  <td class="py-3 px-4 text-sm text-text-secondary">
+                    <a href={`${import.meta.env.BASE_URL}attributes/${category}/${attr.deprecation.replacement.replace(/\./g, '__')}/`} class="text-accent hover:underline">
+                      <code class="text-sm bg-transparent p-0 border-none">{attr.deprecation.replacement}</code>
                     </a>
                   </td>
                 </tr>
               )}
               {attr.deprecation.reason && (
-                <tr>
-                  <td class="prop-name">reason</td>
-                  <td class="prop-value deprecation-reason">{attr.deprecation.reason}</td>
+                <tr class="border-b border-border hover:bg-bg-hover">
+                  <td class="w-40 py-3 px-4 font-mono text-sm font-medium text-text-muted bg-error/5 border-r border-border align-top">reason</td>
+                  <td class="py-3 px-4 text-sm text-text-secondary leading-relaxed">{attr.deprecation.reason}</td>
                 </tr>
               )}
-              <tr>
-                <td class="prop-name">_status</td>
-                <td class="prop-value">
-                  <span class:list={['status-value', attr.deprecation._status || 'null']}>
+              <tr class="hover:bg-bg-hover">
+                <td class="w-40 py-3 px-4 font-mono text-sm font-medium text-text-muted bg-error/5 border-r border-border align-top">_status</td>
+                <td class="py-3 px-4 text-sm text-text-secondary">
+                  <span class:list={[
+                    "inline-block px-2 py-0.5 rounded-sm font-mono text-sm",
+                    attr.deprecation._status ? 'bg-warning/15 text-warning' : 'text-text-muted bg-bg-elevated'
+                  ]}>
                     {attr.deprecation._status ?? 'null'}
                   </span>
                 </td>
@@ -209,22 +223,22 @@ const rawJson = JSON.stringify(attr, null, 2);
     </div>
     
     <!-- Raw JSON View -->
-    <div class="view-content raw-view" id="raw-view">
-      <div class="json-container">
-        <button class="copy-btn" type="button" title="Copy JSON">
+    <div class="view-content raw-view hidden" id="raw-view">
+      <div class="relative">
+        <button class="copy-btn absolute top-3 right-3 flex items-center gap-2 px-3 py-2 bg-bg-secondary border border-border rounded-md text-text-muted text-xs font-sans cursor-pointer transition-all duration-fast z-10 hover:text-text-secondary hover:border-border-light" type="button" title="Copy JSON">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
             <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
           </svg>
           <span>Copy</span>
         </button>
-        <pre><code class="json-code">{rawJson}</code></pre>
+        <pre class="m-0 p-6 pt-16 bg-bg-secondary border border-border rounded-lg overflow-x-auto"><code class="json-code text-sm leading-relaxed text-text-secondary">{rawJson}</code></pre>
       </div>
     </div>
     
     <!-- Back link -->
-    <div class="back-nav">
-      <a href={`${import.meta.env.BASE_URL}attributes/${category}/`} class="back-link">
+    <div class="mt-8 pt-6 border-t border-border">
+      <a href={`${import.meta.env.BASE_URL}attributes/${category}/`} class="inline-flex items-center gap-2 text-sm text-text-secondary transition-colors duration-fast hover:text-accent">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M19 12H5M12 19l-7-7 7-7"/>
         </svg>
@@ -245,19 +259,28 @@ const rawJson = JSON.stringify(attr, null, 2);
       const view = btn.getAttribute('data-view');
       
       // Update button states
-      toggleBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+      toggleBtns.forEach(b => {
+        b.classList.remove('active');
+        b.classList.remove('text-accent', 'bg-accent-soft');
+        b.classList.add('text-text-muted');
+      });
+      btn.classList.add('active', 'text-accent', 'bg-accent-soft');
+      btn.classList.remove('text-text-muted');
       
       // Update view visibility
       if (view === 'pretty') {
-        prettyView?.classList.add('active');
-        rawView?.classList.remove('active');
+        prettyView?.classList.remove('hidden');
+        rawView?.classList.add('hidden');
       } else {
-        prettyView?.classList.remove('active');
-        rawView?.classList.add('active');
+        prettyView?.classList.add('hidden');
+        rawView?.classList.remove('hidden');
       }
     });
   });
+
+  // Initialize active state
+  document.querySelector('.toggle-btn.active')?.classList.add('text-accent', 'bg-accent-soft');
+  document.querySelector('.toggle-btn.active')?.classList.remove('text-text-muted');
   
   // Copy button functionality
   const copyBtn = document.querySelector('.copy-btn');
@@ -277,444 +300,3 @@ const rawJson = JSON.stringify(attr, null, 2);
     }
   });
 </script>
-
-<style>
-  .detail-page {
-    max-width: 900px;
-  }
-  
-  .breadcrumb {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
-    margin-bottom: var(--space-6);
-  }
-  
-  .breadcrumb a {
-    color: var(--color-text-secondary);
-  }
-  
-  .breadcrumb a:hover {
-    color: var(--color-accent);
-  }
-  
-  .separator {
-    color: var(--color-border-light);
-  }
-  
-  .current {
-    color: var(--color-text-primary);
-    font-family: var(--font-mono);
-    font-size: var(--text-xs);
-  }
-  
-  .page-header {
-    margin-bottom: var(--space-8);
-    padding-bottom: var(--space-6);
-    border-bottom: 1px solid var(--color-border);
-  }
-  
-  .header-top {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: var(--space-4);
-    margin-bottom: var(--space-4);
-  }
-  
-  .attribute-key {
-    display: flex;
-    align-items: center;
-    gap: var(--space-3);
-    margin: 0;
-    font-size: var(--text-2xl);
-  }
-  
-  .attribute-key code {
-    font-size: var(--text-2xl);
-    padding: 0;
-    background: none;
-    border: none;
-    color: var(--color-accent);
-  }
-  
-  .deprecated-badge {
-    font-size: var(--text-xs);
-    font-weight: 500;
-    padding: var(--space-1) var(--space-2);
-    background: rgba(244, 67, 54, 0.15);
-    color: var(--color-error);
-    border-radius: var(--radius-sm);
-    text-transform: uppercase;
-  }
-  
-  .view-toggle {
-    display: flex;
-    background: var(--color-bg-secondary);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    overflow: hidden;
-  }
-  
-  .toggle-btn {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    padding: var(--space-2) var(--space-3);
-    background: transparent;
-    border: none;
-    color: var(--color-text-muted);
-    font-size: var(--text-sm);
-    font-family: var(--font-sans);
-    cursor: pointer;
-    transition: all var(--transition-fast);
-  }
-  
-  .toggle-btn:hover {
-    color: var(--color-text-secondary);
-    background: var(--color-bg-hover);
-  }
-  
-  .toggle-btn.active {
-    color: var(--color-accent);
-    background: var(--color-accent-soft);
-  }
-  
-  .meta-badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
-    margin-bottom: var(--space-4);
-  }
-  
-  .otel-badge,
-  .dynamic-badge {
-    display: inline-flex;
-    align-items: center;
-    padding: var(--space-1) var(--space-2);
-    font-size: var(--text-xs);
-    font-weight: 500;
-    border-radius: var(--radius-sm);
-    text-transform: uppercase;
-  }
-  
-  .otel-badge {
-    background: rgba(33, 150, 243, 0.15);
-    color: var(--color-info);
-  }
-  
-  .dynamic-badge {
-    background: rgba(212, 167, 44, 0.15);
-    color: var(--color-warning);
-  }
-  
-  .brief {
-    font-size: var(--text-lg);
-    color: var(--color-text-secondary);
-    margin: 0;
-    line-height: 1.6;
-  }
-  
-  /* View content */
-  .view-content {
-    display: none;
-  }
-  
-  .view-content.active {
-    display: block;
-  }
-  
-  /* Properties table */
-  .properties-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: var(--color-bg-secondary);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    margin: 0;
-  }
-  
-  .properties-table tr {
-    border-bottom: 1px solid var(--color-border);
-  }
-  
-  .properties-table tr:last-child {
-    border-bottom: none;
-  }
-  
-  .properties-table tr:hover {
-    background: var(--color-bg-hover);
-  }
-  
-  .prop-name {
-    width: 160px;
-    padding: var(--space-3) var(--space-4);
-    font-family: var(--font-mono);
-    font-size: var(--text-sm);
-    font-weight: 500;
-    color: var(--color-text-muted);
-    background: var(--color-bg-elevated);
-    border-right: 1px solid var(--color-border);
-    vertical-align: top;
-  }
-  
-  .prop-value {
-    padding: var(--space-3) var(--space-4);
-    font-size: var(--text-sm);
-    color: var(--color-text-secondary);
-  }
-  
-  .value-enum {
-    display: inline-block;
-    padding: 2px var(--space-2);
-    background: var(--color-accent-soft);
-    color: var(--color-accent);
-    border-radius: var(--radius-sm);
-    font-family: var(--font-mono);
-    font-size: var(--text-sm);
-  }
-  
-  .value-boolean {
-    display: inline-block;
-    padding: 2px var(--space-2);
-    border-radius: var(--radius-sm);
-    font-family: var(--font-mono);
-    font-size: var(--text-sm);
-    font-weight: 500;
-  }
-  
-  .value-boolean.true {
-    background: rgba(80, 160, 96, 0.15);
-    color: var(--color-success);
-  }
-  
-  .value-boolean.false {
-    background: rgba(194, 84, 80, 0.15);
-    color: var(--color-error);
-  }
-  
-  .value-string {
-    color: #98c379;
-    font-size: var(--text-sm);
-  }
-  
-  .value-primitive {
-    color: #d19a66;
-    font-size: var(--text-sm);
-  }
-  
-  .value-array {
-    display: inline-flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
-  }
-  
-  .array-item {
-    font-size: var(--text-sm);
-    color: #98c379;
-    background: var(--color-bg-elevated);
-    padding: 2px var(--space-2);
-    border-radius: var(--radius-sm);
-  }
-  
-  .pii-value {
-    display: inline-block;
-    padding: 2px var(--space-2);
-    border-radius: var(--radius-sm);
-    font-family: var(--font-mono);
-    font-size: var(--text-sm);
-    font-weight: 500;
-  }
-  
-  .pii-value.pii-true {
-    background: rgba(194, 84, 80, 0.15);
-    color: var(--color-pii-true);
-  }
-  
-  .pii-value.pii-maybe {
-    background: rgba(212, 167, 44, 0.15);
-    color: var(--color-pii-maybe);
-  }
-  
-  .pii-value.pii-false {
-    background: rgba(80, 160, 96, 0.15);
-    color: var(--color-pii-false);
-  }
-  
-  .pii-reason {
-    color: var(--color-text-muted);
-    font-size: var(--text-sm);
-    margin-left: var(--space-2);
-  }
-  
-  /* Deprecation section */
-  .deprecation-section {
-    margin-top: var(--space-6);
-  }
-  
-  .deprecation-title {
-    font-size: var(--text-sm);
-    font-weight: 600;
-    color: var(--color-error);
-    margin-bottom: var(--space-3);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-  
-  .deprecation-table {
-    border-color: rgba(244, 67, 54, 0.3);
-  }
-  
-  .deprecation-table .prop-name {
-    background: rgba(244, 67, 54, 0.05);
-  }
-  
-  .deprecation-reason {
-    color: var(--color-text-secondary);
-    line-height: 1.5;
-  }
-  
-  .status-value {
-    display: inline-block;
-    padding: 2px var(--space-2);
-    border-radius: var(--radius-sm);
-    font-family: var(--font-mono);
-    font-size: var(--text-sm);
-  }
-  
-  .status-value.null {
-    color: var(--color-text-muted);
-    background: var(--color-bg-elevated);
-  }
-  
-  .status-value.backfill,
-  .status-value.normalize {
-    background: rgba(212, 167, 44, 0.15);
-    color: var(--color-warning);
-  }
-  
-  .replacement-link code {
-    color: var(--color-accent);
-    font-size: var(--text-sm);
-    background: none;
-    padding: 0;
-    border: none;
-  }
-  
-  .replacement-link:hover code {
-    text-decoration: underline;
-  }
-  
-  /* SDK tags */
-  .sdk-tags {
-    display: inline-flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
-  }
-  
-  .sdk-tag {
-    padding: 2px var(--space-2);
-    background: var(--color-bg-elevated);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    font-size: var(--text-sm);
-    color: var(--color-text-secondary);
-  }
-  
-  /* Raw JSON view */
-  .json-container {
-    position: relative;
-  }
-  
-  .copy-btn {
-    position: absolute;
-    top: var(--space-3);
-    right: var(--space-3);
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    padding: var(--space-2) var(--space-3);
-    background: var(--color-bg-secondary);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    color: var(--color-text-muted);
-    font-size: var(--text-xs);
-    font-family: var(--font-sans);
-    cursor: pointer;
-    transition: all var(--transition-fast);
-    z-index: 1;
-  }
-  
-  .copy-btn:hover {
-    color: var(--color-text-secondary);
-    border-color: var(--color-border-light);
-  }
-  
-  .json-container pre {
-    margin: 0;
-    padding: var(--space-6);
-    padding-top: calc(var(--space-6) + 40px);
-    background: var(--color-bg-secondary);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    overflow-x: auto;
-  }
-  
-  .json-code {
-    font-size: var(--text-sm);
-    line-height: 1.7;
-    color: var(--color-text-secondary);
-  }
-  
-  /* Back navigation */
-  .back-nav {
-    margin-top: var(--space-8);
-    padding-top: var(--space-6);
-    border-top: 1px solid var(--color-border);
-  }
-  
-  .back-link {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    font-size: var(--text-sm);
-    color: var(--color-text-secondary);
-    transition: color var(--transition-fast);
-  }
-  
-  .back-link:hover {
-    color: var(--color-accent);
-  }
-  
-  @media (max-width: 640px) {
-    .header-top {
-      flex-direction: column;
-    }
-    
-    .attribute-key {
-      font-size: var(--text-xl);
-    }
-    
-    .attribute-key code {
-      font-size: var(--text-xl);
-    }
-    
-    .toggle-btn span {
-      display: none;
-    }
-    
-    .prop-name {
-      width: 120px;
-      padding: var(--space-2) var(--space-3);
-      font-size: var(--text-xs);
-    }
-    
-    .prop-value {
-      padding: var(--space-2) var(--space-3);
-    }
-  }
-</style>

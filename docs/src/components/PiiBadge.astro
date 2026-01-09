@@ -11,36 +11,20 @@ const labels = {
   maybe: 'Maybe PII',
   false: 'No PII',
 };
+
+const colorClasses = {
+  true: 'bg-pii-true/15 text-pii-true',
+  maybe: 'bg-pii-maybe/15 text-pii-maybe',
+  false: 'bg-pii-false/15 text-pii-false',
+};
 ---
 
-<span class:list={['pii-badge', `pii-${pii}`]} title={reason}>
+<span 
+  class:list={[
+    "inline-flex items-center px-2 py-1 text-xs font-medium rounded-sm uppercase tracking-wide",
+    colorClasses[pii]
+  ]} 
+  title={reason}
+>
   {labels[pii]}
 </span>
-
-<style>
-  .pii-badge {
-    display: inline-flex;
-    align-items: center;
-    padding: var(--space-1) var(--space-2);
-    font-size: var(--text-xs);
-    font-weight: 500;
-    border-radius: var(--radius-sm);
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-  }
-  
-  .pii-true {
-    background: rgba(239, 83, 80, 0.15);
-    color: var(--color-pii-true);
-  }
-  
-  .pii-maybe {
-    background: rgba(255, 152, 0, 0.15);
-    color: var(--color-pii-maybe);
-  }
-  
-  .pii-false {
-    background: rgba(102, 187, 106, 0.15);
-    color: var(--color-pii-false);
-  }
-</style>

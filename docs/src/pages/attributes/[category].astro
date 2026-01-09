@@ -55,14 +55,19 @@ const categoryTitle = category!.charAt(0).toUpperCase() + category!.slice(1);
   title={`${categoryTitle} Attributes`} 
   description={`Browse ${totalCount} ${category} attributes in Sentry semantic conventions`}
 >
-  <div class="page-layout">
-    <aside class="category-sidebar">
-      <h3>Categories</h3>
-      <nav class="category-list">
+  <div class="flex gap-8">
+    <aside class="hidden lg:block flex-shrink-0 w-40 sticky top-[calc(64px+1.5rem)] max-h-[calc(100vh-64px-3rem)] overflow-y-auto self-start">
+      <h3 class="text-sm text-text-muted uppercase tracking-wider mb-3">Categories</h3>
+      <nav class="flex flex-col gap-1">
         {allCategories.map(cat => (
           <a 
             href={`${import.meta.env.BASE_URL}attributes/${cat}/`}
-            class:list={['category-link', { active: cat === category }]}
+            class:list={[
+              "text-sm px-2 py-1 rounded-sm transition-all duration-fast",
+              cat === category 
+                ? "bg-accent-soft text-accent" 
+                : "text-text-secondary hover:bg-bg-hover hover:text-text-primary"
+            ]}
           >
             {cat}
           </a>
@@ -70,28 +75,28 @@ const categoryTitle = category!.charAt(0).toUpperCase() + category!.slice(1);
       </nav>
     </aside>
     
-    <div class="page-content">
+    <div class="flex-1 min-w-0">
       <nav class="breadcrumb">
         <a href={`${import.meta.env.BASE_URL}attributes/`}>Attributes</a>
         <span class="separator">/</span>
         <span class="current">{category}</span>
       </nav>
       
-      <div class="page-header">
+      <div class="mb-8">
         <h1>{categoryTitle} Attributes</h1>
-        <p class="page-description">
+        <p class="text-lg text-text-secondary flex items-center gap-2 flex-wrap">
           {totalCount} attribute{totalCount !== 1 ? 's' : ''} in this category.
-          {stableCount > 0 && <span class="stat-stable">{stableCount} stable</span>}
-          {stableCount > 0 && deprecatedCount > 0 && <span class="stat-separator">·</span>}
-          {deprecatedCount > 0 && <span class="stat-deprecated">{deprecatedCount} deprecated</span>}
+          {stableCount > 0 && <span class="text-pii-false">{stableCount} stable</span>}
+          {stableCount > 0 && deprecatedCount > 0 && <span class="text-text-muted">·</span>}
+          {deprecatedCount > 0 && <span class="text-text-muted">{deprecatedCount} deprecated</span>}
         </p>
       </div>
       
-      <div class="content">
+      <div class="flex flex-col gap-12">
         {stableAttributes.length > 0 && (
-          <section class="attributes-section">
-            <h2>Stable Attributes</h2>
-            <div class="attribute-list">
+          <section>
+            <h2 class="mb-4 pb-3 border-b border-border">Stable Attributes</h2>
+            <div class="flex flex-col gap-4">
               {stableAttributes.map(attr => (
                 <AttributeCard attribute={attr.data} id={attr.id} />
               ))}
@@ -100,13 +105,13 @@ const categoryTitle = category!.charAt(0).toUpperCase() + category!.slice(1);
         )}
         
         {deprecatedAttributes.length > 0 && (
-          <section class="attributes-section deprecated-section">
-            <h2>Deprecated Attributes</h2>
-            <p class="section-description">
+          <section class="opacity-90">
+            <h2 class="mb-4 pb-3 border-b border-border text-text-muted">Deprecated Attributes</h2>
+            <p class="text-sm text-text-muted mb-6">
               These attributes are deprecated and should not be used in new code. 
               See each attribute for migration guidance.
             </p>
-            <div class="attribute-list">
+            <div class="flex flex-col gap-4">
               {deprecatedAttributes.map(attr => (
                 <AttributeCard attribute={attr.data} id={attr.id} />
               ))}
@@ -117,147 +122,3 @@ const categoryTitle = category!.charAt(0).toUpperCase() + category!.slice(1);
     </div>
   </div>
 </BaseLayout>
-
-<style>
-  .page-layout {
-    display: flex;
-    gap: var(--space-8);
-  }
-  
-  .category-sidebar {
-    display: none;
-    flex-shrink: 0;
-    width: 160px;
-    position: sticky;
-    top: calc(var(--header-height) + var(--space-6));
-    max-height: calc(100vh - var(--header-height) - var(--space-12));
-    overflow-y: auto;
-    align-self: flex-start;
-  }
-  
-  .category-sidebar h3 {
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: var(--space-3);
-  }
-  
-  .category-list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-1);
-  }
-  
-  .category-link {
-    font-size: var(--text-sm);
-    padding: var(--space-1) var(--space-2);
-    color: var(--color-text-secondary);
-    border-radius: var(--radius-sm);
-    transition: all var(--transition-fast);
-  }
-  
-  .category-link:hover {
-    background: var(--color-bg-hover);
-    color: var(--color-text-primary);
-  }
-  
-  .category-link.active {
-    background: var(--color-accent-soft);
-    color: var(--color-accent);
-  }
-  
-  .page-content {
-    flex: 1;
-    min-width: 0;
-  }
-  
-  .breadcrumb {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
-    margin-bottom: var(--space-6);
-  }
-  
-  .breadcrumb a {
-    color: var(--color-text-secondary);
-  }
-  
-  .breadcrumb a:hover {
-    color: var(--color-accent);
-  }
-  
-  .separator {
-    color: var(--color-border-light);
-  }
-  
-  .current {
-    color: var(--color-text-primary);
-  }
-  
-  .page-header {
-    margin-bottom: var(--space-8);
-  }
-  
-  .page-description {
-    font-size: var(--text-lg);
-    color: var(--color-text-secondary);
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    flex-wrap: wrap;
-  }
-  
-  .stat-stable {
-    color: var(--color-pii-false);
-  }
-  
-  .stat-deprecated {
-    color: var(--color-text-muted);
-  }
-  
-  .stat-separator {
-    color: var(--color-text-muted);
-  }
-  
-  .content {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-12);
-  }
-  
-  .attributes-section h2 {
-    margin-bottom: var(--space-4);
-    padding-bottom: var(--space-3);
-    border-bottom: 1px solid var(--color-border);
-  }
-  
-  .section-description {
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
-    margin-bottom: var(--space-6);
-  }
-  
-  .attribute-list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-4);
-  }
-  
-  .deprecated-section {
-    opacity: 0.9;
-  }
-  
-  .deprecated-section h2 {
-    color: var(--color-text-muted);
-  }
-  
-  /* Show sidebar on large screens (1024px+) */
-  @media (min-width: 1024px) {
-    .category-sidebar {
-      display: block;
-    }
-  }
-</style>

@@ -13,24 +13,24 @@ import AttributeForm from '../../components/AttributeForm';
     <span class="current">New</span>
   </nav>
   
-  <div class="page-header">
+  <div class="mb-6">
     <h1>Create New Attribute</h1>
-    <p class="page-description">
+    <p class="text-lg text-text-secondary max-w-xl">
       Fill out the form below to create a new attribute. When you submit, you'll be 
       redirected to GitHub to create a pull request with the new attribute file.
     </p>
   </div>
   
-  <div class="info-box">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+  <div class="flex gap-4 p-4 bg-info/10 border border-info/30 rounded-lg mb-8">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="flex-shrink-0 text-info mt-0.5">
       <circle cx="12" cy="12" r="10"/>
       <path d="M12 16v-4M12 8h.01"/>
     </svg>
     <div>
-      <strong>How this works:</strong>
-      <p>
+      <strong class="block text-sm text-text-primary mb-2">How this works:</strong>
+      <p class="text-sm text-text-secondary m-0 leading-relaxed">
         This form generates a JSON file following the 
-        <a href="https://github.com/getsentry/sentry-conventions/blob/main/schemas/attribute.schema.json" target="_blank" rel="noopener">attribute schema</a>. 
+        <a href="https://github.com/getsentry/sentry-conventions/blob/main/schemas/attribute.schema.json" target="_blank" rel="noopener" class="text-accent hover:text-accent-hover">attribute schema</a>. 
         When you click "Create on GitHub", you'll be redirected to GitHub's file creation 
         interface with the content pre-filled. You'll need to be signed in to GitHub to 
         create the pull request.
@@ -40,74 +40,3 @@ import AttributeForm from '../../components/AttributeForm';
   
   <AttributeForm client:load />
 </BaseLayout>
-
-<style>
-  .breadcrumb {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
-    margin-bottom: var(--space-6);
-  }
-  
-  .breadcrumb a {
-    color: var(--color-text-secondary);
-  }
-  
-  .breadcrumb a:hover {
-    color: var(--color-accent);
-  }
-  
-  .separator {
-    color: var(--color-border-light);
-  }
-  
-  .current {
-    color: var(--color-text-primary);
-  }
-  
-  .page-header {
-    margin-bottom: var(--space-6);
-  }
-  
-  .page-description {
-    font-size: var(--text-lg);
-    color: var(--color-text-secondary);
-    max-width: 600px;
-  }
-  
-  .info-box {
-    display: flex;
-    gap: var(--space-4);
-    padding: var(--space-4);
-    background: rgba(33, 150, 243, 0.1);
-    border: 1px solid rgba(33, 150, 243, 0.3);
-    border-radius: var(--radius-lg);
-    margin-bottom: var(--space-8);
-  }
-  
-  .info-box svg {
-    flex-shrink: 0;
-    color: var(--color-info);
-    margin-top: 2px;
-  }
-  
-  .info-box strong {
-    display: block;
-    font-size: var(--text-sm);
-    color: var(--color-text-primary);
-    margin-bottom: var(--space-2);
-  }
-  
-  .info-box p {
-    font-size: var(--text-sm);
-    color: var(--color-text-secondary);
-    margin: 0;
-    line-height: 1.6;
-  }
-  
-  .info-box a {
-    color: var(--color-accent);
-  }
-</style>

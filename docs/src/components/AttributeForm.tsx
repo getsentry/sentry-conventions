@@ -171,61 +171,65 @@ export default function AttributeForm() {
     window.open(githubUrl.toString(), '_blank');
   }, [validate, generateJson, formData]);
 
+  const inputClasses = "w-full p-3 bg-bg-elevated border border-border rounded-md text-sm text-text-primary font-sans transition-colors duration-fast focus:outline-none focus:border-accent";
+  const errorInputClasses = "w-full p-3 bg-bg-elevated border border-error rounded-md text-sm text-text-primary font-sans transition-colors duration-fast focus:outline-none focus:border-accent";
+
   return (
-    <div className="attribute-form">
-      <div className="form-section">
-        <h3>Basic Information</h3>
+    <div className="max-w-[700px]">
+      <div className="bg-bg-secondary border border-border rounded-lg p-6 mb-6">
+        <h3 className="text-lg mb-5 pb-3 border-b border-border">Basic Information</h3>
         
-        <div className="form-group">
-          <label htmlFor="category">Category *</label>
+        <div className="mb-4">
+          <label htmlFor="category" className="block text-sm font-medium text-text-primary mb-2">Category *</label>
           <select
             id="category"
             value={formData.category}
             onChange={(e) => updateField('category', e.target.value)}
-            className={errors.category ? 'error' : ''}
+            className={errors.category ? errorInputClasses : inputClasses}
           >
             <option value="">Select a category...</option>
             {CATEGORIES.map(cat => (
               <option key={cat} value={cat}>{cat}</option>
             ))}
           </select>
-          {errors.category && <span className="error-message">{errors.category}</span>}
+          {errors.category && <span className="block text-xs text-error mt-1">{errors.category}</span>}
         </div>
 
-        <div className="form-group">
-          <label htmlFor="key">Attribute Key *</label>
+        <div className="mb-4">
+          <label htmlFor="key" className="block text-sm font-medium text-text-primary mb-2">Attribute Key *</label>
           <input
             id="key"
             type="text"
             placeholder="e.g., http.request.method"
             value={formData.key}
             onChange={(e) => updateField('key', e.target.value)}
-            className={errors.key ? 'error' : ''}
+            className={errors.key ? errorInputClasses : inputClasses}
           />
-          <span className="hint">Use lowercase with dots. For dynamic keys, use &lt;key&gt;.</span>
-          {errors.key && <span className="error-message">{errors.key}</span>}
+          <span className="block text-xs text-text-muted mt-1">Use lowercase with dots. For dynamic keys, use &lt;key&gt;.</span>
+          {errors.key && <span className="block text-xs text-error mt-1">{errors.key}</span>}
         </div>
 
-        <div className="form-group">
-          <label htmlFor="brief">Description *</label>
+        <div className="mb-4">
+          <label htmlFor="brief" className="block text-sm font-medium text-text-primary mb-2">Description *</label>
           <textarea
             id="brief"
             placeholder="A brief description of what this attribute represents"
             value={formData.brief}
             onChange={(e) => updateField('brief', e.target.value)}
             rows={3}
-            className={errors.brief ? 'error' : ''}
+            className={errors.brief ? errorInputClasses : inputClasses}
           />
-          {errors.brief && <span className="error-message">{errors.brief}</span>}
+          {errors.brief && <span className="block text-xs text-error mt-1">{errors.brief}</span>}
         </div>
 
-        <div className="form-row">
-          <div className="form-group">
-            <label htmlFor="type">Type *</label>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="mb-4">
+            <label htmlFor="type" className="block text-sm font-medium text-text-primary mb-2">Type *</label>
             <select
               id="type"
               value={formData.type}
               onChange={(e) => updateField('type', e.target.value)}
+              className={inputClasses}
             >
               {ATTRIBUTE_TYPES.map(type => (
                 <option key={type} value={type}>{type}</option>
@@ -233,29 +237,31 @@ export default function AttributeForm() {
             </select>
           </div>
 
-          <div className="form-group">
-            <label htmlFor="example">Example Value</label>
+          <div className="mb-4">
+            <label htmlFor="example" className="block text-sm font-medium text-text-primary mb-2">Example Value</label>
             <input
               id="example"
               type="text"
               placeholder="e.g., GET"
               value={formData.example}
               onChange={(e) => updateField('example', e.target.value)}
+              className={inputClasses}
             />
           </div>
         </div>
       </div>
 
-      <div className="form-section">
-        <h3>PII Information</h3>
+      <div className="bg-bg-secondary border border-border rounded-lg p-6 mb-6">
+        <h3 className="text-lg mb-5 pb-3 border-b border-border">PII Information</h3>
         
-        <div className="form-row">
-          <div className="form-group">
-            <label htmlFor="piiKey">Contains PII? *</label>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="mb-4">
+            <label htmlFor="piiKey" className="block text-sm font-medium text-text-primary mb-2">Contains PII? *</label>
             <select
               id="piiKey"
               value={formData.piiKey}
               onChange={(e) => updateField('piiKey', e.target.value as 'true' | 'maybe' | 'false')}
+              className={inputClasses}
             >
               <option value="false">No - never contains PII</option>
               <option value="maybe">Maybe - could contain PII</option>
@@ -263,62 +269,74 @@ export default function AttributeForm() {
             </select>
           </div>
 
-          <div className="form-group">
-            <label htmlFor="piiReason">PII Reason</label>
+          <div className="mb-4">
+            <label htmlFor="piiReason" className="block text-sm font-medium text-text-primary mb-2">PII Reason</label>
             <input
               id="piiReason"
               type="text"
               placeholder="Optional explanation"
               value={formData.piiReason}
               onChange={(e) => updateField('piiReason', e.target.value)}
+              className={inputClasses}
             />
           </div>
         </div>
       </div>
 
-      <div className="form-section">
-        <h3>Additional Options</h3>
+      <div className="bg-bg-secondary border border-border rounded-lg p-6 mb-6">
+        <h3 className="text-lg mb-5 pb-3 border-b border-border">Additional Options</h3>
         
-        <div className="checkbox-group">
-          <label>
+        <div className="mb-3">
+          <label className="flex items-center gap-2 text-sm text-text-secondary cursor-pointer">
             <input
               type="checkbox"
               checked={formData.isInOtel}
               onChange={(e) => updateField('isInOtel', e.target.checked)}
+              className="w-[18px] h-[18px] accent-accent"
             />
             <span>Defined in OpenTelemetry Semantic Conventions</span>
           </label>
         </div>
 
-        <div className="checkbox-group">
-          <label>
+        <div className="mb-3">
+          <label className="flex items-center gap-2 text-sm text-text-secondary cursor-pointer">
             <input
               type="checkbox"
               checked={formData.hasDynamicSuffix}
               onChange={(e) => updateField('hasDynamicSuffix', e.target.checked)}
+              className="w-[18px] h-[18px] accent-accent"
             />
             <span>Has dynamic suffix (e.g., http.response.header.&lt;key&gt;)</span>
           </label>
         </div>
 
-        <div className="form-group">
-          <label htmlFor="aliases">Aliases</label>
+        <div className="mb-4">
+          <label htmlFor="aliases" className="block text-sm font-medium text-text-primary mb-2">Aliases</label>
           <input
             id="aliases"
             type="text"
             placeholder="Comma-separated list of aliases"
             value={formData.aliases}
             onChange={(e) => updateField('aliases', e.target.value)}
+            className={inputClasses}
           />
-          <span className="hint">Other attribute names that map to this one</span>
+          <span className="block text-xs text-text-muted mt-1">Other attribute names that map to this one</span>
         </div>
       </div>
 
-      <div className="form-actions">
-        <button type="button" className="btn-secondary" onClick={handlePreview}>
+      <div className="flex gap-3 justify-end flex-col sm:flex-row">
+        <button 
+          type="button" 
+          className="btn btn-secondary justify-center"
+          onClick={handlePreview}
+        >
           Preview JSON
         </button>
-        <button type="button" className="btn-primary" onClick={handleSubmit}>
+        <button 
+          type="button" 
+          className="btn btn-primary justify-center"
+          onClick={handleSubmit}
+        >
           Create on GitHub
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
@@ -327,186 +345,11 @@ export default function AttributeForm() {
       </div>
 
       {jsonPreview && (
-        <div className="json-preview">
-          <h4>JSON Preview</h4>
-          <pre><code>{jsonPreview}</code></pre>
+        <div className="bg-bg-secondary border border-border rounded-lg p-4 mt-6">
+          <h4 className="text-sm mb-3 text-text-muted">JSON Preview</h4>
+          <pre className="m-0 bg-bg-elevated"><code>{jsonPreview}</code></pre>
         </div>
       )}
-
-      <style>{`
-        .attribute-form {
-          max-width: 700px;
-        }
-        
-        .form-section {
-          background: var(--color-bg-secondary);
-          border: 1px solid var(--color-border);
-          border-radius: var(--radius-lg);
-          padding: var(--space-6);
-          margin-bottom: var(--space-6);
-        }
-        
-        .form-section h3 {
-          font-size: var(--text-lg);
-          margin-bottom: var(--space-5);
-          padding-bottom: var(--space-3);
-          border-bottom: 1px solid var(--color-border);
-        }
-        
-        .form-group {
-          margin-bottom: var(--space-4);
-        }
-        
-        .form-group label {
-          display: block;
-          font-size: var(--text-sm);
-          font-weight: 500;
-          color: var(--color-text-primary);
-          margin-bottom: var(--space-2);
-        }
-        
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-          width: 100%;
-          padding: var(--space-3);
-          background: var(--color-bg-elevated);
-          border: 1px solid var(--color-border);
-          border-radius: var(--radius-md);
-          font-size: var(--text-sm);
-          color: var(--color-text-primary);
-          font-family: var(--font-sans);
-          transition: border-color var(--transition-fast);
-        }
-        
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-          outline: none;
-          border-color: var(--color-accent);
-        }
-        
-        .form-group input.error,
-        .form-group select.error,
-        .form-group textarea.error {
-          border-color: var(--color-error);
-        }
-        
-        .form-group .hint {
-          display: block;
-          font-size: var(--text-xs);
-          color: var(--color-text-muted);
-          margin-top: var(--space-1);
-        }
-        
-        .error-message {
-          display: block;
-          font-size: var(--text-xs);
-          color: var(--color-error);
-          margin-top: var(--space-1);
-        }
-        
-        .form-row {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: var(--space-4);
-        }
-        
-        .checkbox-group {
-          margin-bottom: var(--space-3);
-        }
-        
-        .checkbox-group label {
-          display: flex;
-          align-items: center;
-          gap: var(--space-2);
-          font-size: var(--text-sm);
-          color: var(--color-text-secondary);
-          cursor: pointer;
-        }
-        
-        .checkbox-group input[type="checkbox"] {
-          width: 18px;
-          height: 18px;
-          accent-color: var(--color-accent);
-        }
-        
-        .form-actions {
-          display: flex;
-          gap: var(--space-3);
-          justify-content: flex-end;
-        }
-        
-        .btn-primary,
-        .btn-secondary {
-          display: inline-flex;
-          align-items: center;
-          gap: var(--space-2);
-          padding: var(--space-3) var(--space-5);
-          font-size: var(--text-sm);
-          font-weight: 600;
-          border-radius: var(--radius-md);
-          border: none;
-          cursor: pointer;
-          transition: all var(--transition-fast);
-          font-family: var(--font-sans);
-        }
-        
-        .btn-primary {
-          background: var(--color-accent);
-          color: white;
-        }
-        
-        .btn-primary:hover {
-          background: var(--color-accent-hover);
-        }
-        
-        .btn-secondary {
-          background: var(--color-bg-elevated);
-          color: var(--color-text-primary);
-          border: 1px solid var(--color-border);
-        }
-        
-        .btn-secondary:hover {
-          background: var(--color-bg-hover);
-          border-color: var(--color-border-light);
-        }
-        
-        .json-preview {
-          background: var(--color-bg-secondary);
-          border: 1px solid var(--color-border);
-          border-radius: var(--radius-lg);
-          padding: var(--space-4);
-          margin-top: var(--space-6);
-        }
-        
-        .json-preview h4 {
-          font-size: var(--text-sm);
-          margin-bottom: var(--space-3);
-          color: var(--color-text-muted);
-        }
-        
-        .json-preview pre {
-          margin: 0;
-          background: var(--color-bg-elevated);
-        }
-        
-        @media (max-width: 640px) {
-          .form-row {
-            grid-template-columns: 1fr;
-          }
-          
-          .form-actions {
-            flex-direction: column;
-          }
-          
-          .btn-primary,
-          .btn-secondary {
-            width: 100%;
-            justify-content: center;
-          }
-        }
-      `}</style>
     </div>
   );
 }
