@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import SearchModal from '../components/SearchModal';
+import SearchModal from '../components/SearchModal.svelte';
 
 interface Props {
   title: string;
@@ -112,7 +112,7 @@ const currentPath = Astro.url.pathname;
       </footer>
     </div>
     
-    <!-- Search modal - React island -->
+    <!-- Search modal - Svelte island -->
     <SearchModal client:load />
   </body>
 </html>
