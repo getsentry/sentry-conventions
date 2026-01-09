@@ -38,20 +38,20 @@ const deprecatedCount = totalAttributes - stableCount;
 ---
 
 <BaseLayout title="Attributes" description="Browse all Sentry semantic convention attributes">
-  <div class="page-header">
-    <div class="page-header-row">
+  <div class="mb-8">
+    <div class="flex items-start justify-between gap-6 flex-wrap">
       <div>
         <h1>Attributes</h1>
-        <p class="page-description">
+        <p class="text-lg text-text-secondary">
           Browse all {totalAttributes} span and breadcrumb attributes. 
-          <span class="stats-inline">
-            <span class="stat-stable">{stableCount} stable</span>
-            <span class="stat-separator">·</span>
-            <span class="stat-deprecated">{deprecatedCount} deprecated</span>
+          <span class="inline-flex items-center gap-2 ml-2">
+            <span class="text-pii-false">{stableCount} stable</span>
+            <span class="text-text-muted">·</span>
+            <span class="text-text-muted">{deprecatedCount} deprecated</span>
           </span>
         </p>
       </div>
-      <a href={`${import.meta.env.BASE_URL}attributes/new/`} class="create-btn">
+      <a href={`${import.meta.env.BASE_URL}attributes/new/`} class="btn btn-primary whitespace-nowrap">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M12 5v14M5 12h14"/>
         </svg>
@@ -60,35 +60,35 @@ const deprecatedCount = totalAttributes - stableCount;
     </div>
   </div>
   
-  <nav class="category-nav">
-    <span class="nav-label">Jump to:</span>
-    <div class="category-links">
+  <nav class="flex items-start gap-4 p-4 bg-bg-secondary border border-border rounded-lg mb-8 flex-col md:flex-row">
+    <span class="text-sm text-text-muted whitespace-nowrap pt-1">Jump to:</span>
+    <div class="flex flex-wrap gap-2">
       {sortedCategories.map(category => (
         <a href={`#${category}`} class="category-chip">
           {category}
-          <span class="count">{categoryMap.get(category)?.length}</span>
+          <span class="text-xs px-1 bg-bg-primary rounded-full text-text-muted">{categoryMap.get(category)?.length}</span>
         </a>
       ))}
     </div>
   </nav>
   
-  <div class="categories">
+  <div class="flex flex-col gap-12">
     {sortedCategories.map(category => {
       const attributes = categoryMap.get(category) || [];
       const stableAttrs = attributes.filter(a => !a.data.deprecation);
       const deprecatedAttrs = attributes.filter(a => a.data.deprecation);
       
       return (
-        <section class="category-section" id={category}>
-          <div class="category-header">
-            <h2>
-              <a href={`${import.meta.env.BASE_URL}attributes/${category}/`}>{category}</a>
+        <section class="scroll-mt-20" id={category}>
+          <div class="flex items-baseline gap-4 mb-6 pb-3 border-b border-border">
+            <h2 class="m-0 text-2xl">
+              <a href={`${import.meta.env.BASE_URL}attributes/${category}/`} class="text-text-primary hover:text-accent">{category}</a>
             </h2>
-            <span class="attribute-count">{attributes.length} attributes</span>
+            <span class="text-sm text-text-muted">{attributes.length} attributes</span>
           </div>
           
           {stableAttrs.length > 0 && (
-            <div class="attribute-grid">
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
               {stableAttrs.slice(0, 6).map(attr => (
                 <AttributeCard attribute={attr.data} id={attr.id} />
               ))}
@@ -96,19 +96,19 @@ const deprecatedCount = totalAttributes - stableCount;
           )}
           
           {stableAttrs.length > 6 && (
-            <a href={`${import.meta.env.BASE_URL}attributes/${category}/`} class="view-all-link">
+            <a href={`${import.meta.env.BASE_URL}attributes/${category}/`} class="inline-block mt-4 text-sm text-accent hover:text-accent-hover">
               View all {attributes.length} {category} attributes →
             </a>
           )}
           
           {stableAttrs.length <= 6 && deprecatedAttrs.length > 0 && (
-            <details class="deprecated-section">
-              <summary>
-                <span class="deprecated-toggle">
+            <details class="mt-6 group">
+              <summary class="cursor-pointer list-none">
+                <span class="inline-flex items-center gap-2 px-4 py-2 bg-bg-secondary border border-dashed border-border rounded-md text-sm text-text-muted transition-all duration-fast hover:border-border-light hover:text-text-secondary group-open:mb-4">
                   {deprecatedAttrs.length} deprecated attribute{deprecatedAttrs.length > 1 ? 's' : ''}
                 </span>
               </summary>
-              <div class="attribute-grid deprecated-grid">
+              <div class="grid grid-cols-1 xl:grid-cols-2 gap-4 opacity-80">
                 {deprecatedAttrs.map(attr => (
                   <AttributeCard attribute={attr.data} id={attr.id} />
                 ))}
@@ -120,215 +120,3 @@ const deprecatedCount = totalAttributes - stableCount;
     })}
   </div>
 </BaseLayout>
-
-<style>
-  .page-header {
-    margin-bottom: var(--space-8);
-  }
-  
-  .page-header-row {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: var(--space-6);
-    flex-wrap: wrap;
-  }
-  
-  .create-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    padding: var(--space-2) var(--space-4);
-    background: var(--color-accent);
-    color: white;
-    font-size: var(--text-sm);
-    font-weight: 600;
-    border-radius: var(--radius-md);
-    transition: background var(--transition-fast);
-    white-space: nowrap;
-  }
-  
-  .create-btn:hover {
-    background: var(--color-accent-hover);
-    color: white;
-  }
-  
-  .page-description {
-    font-size: var(--text-lg);
-    color: var(--color-text-secondary);
-  }
-  
-  .stats-inline {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    margin-left: var(--space-2);
-  }
-  
-  .stat-stable {
-    color: var(--color-pii-false);
-  }
-  
-  .stat-deprecated {
-    color: var(--color-text-muted);
-  }
-  
-  .stat-separator {
-    color: var(--color-text-muted);
-  }
-  
-  .category-nav {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--space-4);
-    padding: var(--space-4);
-    background: var(--color-bg-secondary);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    margin-bottom: var(--space-8);
-  }
-  
-  .nav-label {
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
-    white-space: nowrap;
-    padding-top: var(--space-1);
-  }
-  
-  .category-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
-  }
-  
-  .category-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    padding: var(--space-1) var(--space-3);
-    background: var(--color-bg-elevated);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-full);
-    font-size: var(--text-sm);
-    color: var(--color-text-secondary);
-    transition: all var(--transition-fast);
-  }
-  
-  .category-chip:hover {
-    background: var(--color-accent-soft);
-    border-color: var(--color-accent);
-    color: var(--color-accent);
-  }
-  
-  .category-chip .count {
-    font-size: var(--text-xs);
-    padding: 0 var(--space-1);
-    background: var(--color-bg-primary);
-    border-radius: var(--radius-full);
-    color: var(--color-text-muted);
-  }
-  
-  .categories {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-12);
-  }
-  
-  .category-section {
-    scroll-margin-top: calc(var(--header-height) + var(--space-4));
-  }
-  
-  .category-header {
-    display: flex;
-    align-items: baseline;
-    gap: var(--space-4);
-    margin-bottom: var(--space-6);
-    padding-bottom: var(--space-3);
-    border-bottom: 1px solid var(--color-border);
-  }
-  
-  .category-header h2 {
-    margin: 0;
-    font-size: var(--text-2xl);
-  }
-  
-  .category-header h2 a {
-    color: var(--color-text-primary);
-  }
-  
-  .category-header h2 a:hover {
-    color: var(--color-accent);
-  }
-  
-  .attribute-count {
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
-  }
-  
-  .attribute-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-    gap: var(--space-4);
-  }
-  
-  .view-all-link {
-    display: inline-block;
-    margin-top: var(--space-4);
-    font-size: var(--text-sm);
-    color: var(--color-accent);
-  }
-  
-  .view-all-link:hover {
-    color: var(--color-accent-hover);
-  }
-  
-  .deprecated-section {
-    margin-top: var(--space-6);
-  }
-  
-  .deprecated-section summary {
-    cursor: pointer;
-    list-style: none;
-  }
-  
-  .deprecated-section summary::-webkit-details-marker {
-    display: none;
-  }
-  
-  .deprecated-toggle {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    padding: var(--space-2) var(--space-4);
-    background: var(--color-bg-secondary);
-    border: 1px dashed var(--color-border);
-    border-radius: var(--radius-md);
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
-    transition: all var(--transition-fast);
-  }
-  
-  .deprecated-toggle:hover {
-    border-color: var(--color-border-light);
-    color: var(--color-text-secondary);
-  }
-  
-  .deprecated-section[open] .deprecated-toggle {
-    margin-bottom: var(--space-4);
-  }
-  
-  .deprecated-grid {
-    opacity: 0.8;
-  }
-  
-  @media (max-width: 768px) {
-    .category-nav {
-      flex-direction: column;
-      gap: var(--space-2);
-    }
-    
-    .attribute-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>

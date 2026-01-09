@@ -19,272 +19,81 @@ const detailUrl = `${import.meta.env.BASE_URL}attributes/${category}/${slug}/`;
 ---
 
 <article 
-  class:list={['attribute-card', { deprecated: isDeprecated }]} 
+  class:list={[
+    'bg-bg-secondary border border-border rounded-lg p-5 transition-colors duration-fast scroll-mt-24 hover:border-border-light',
+    { 'opacity-70 border-dashed hover:opacity-100': isDeprecated }
+  ]} 
   id={attribute.key.replace(/\./g, '-').replace(/</g, '').replace(/>/g, '')}
   data-pagefind-body
 >
-  <div class="attribute-header">
-    <h3 class="attribute-key" data-pagefind-meta="title">
+  <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
+    <h3 class="flex items-center gap-2 text-base m-0" data-pagefind-meta="title">
       <a 
         href={detailUrl} 
-        class="detail-link"
+        class="inline-flex items-center transition-colors duration-fast"
         aria-label={`View details for ${attribute.key}`}
         title="View attribute details"
       >
-        <code data-pagefind-index-attrs="data-key" data-key={attribute.key}>{attribute.key}</code>
+        <code class="text-base p-0 bg-transparent border-none text-accent transition-all duration-fast hover:text-accent-hover hover:underline hover:underline-offset-2" data-pagefind-index-attrs="data-key" data-key={attribute.key}>{attribute.key}</code>
       </a>
-      {isDeprecated && <span class="deprecated-badge">Deprecated</span>}
+      {isDeprecated && <span class="badge badge-deprecated">Deprecated</span>}
     </h3>
-    <div class="attribute-meta">
+    <div class="flex flex-wrap items-center gap-2">
       <TypeBadge type={attribute.type} />
       <PiiBadge pii={attribute.pii.key} reason={attribute.pii.reason} />
       {attribute.is_in_otel && (
-        <span class="otel-badge" title="Defined in OpenTelemetry Semantic Conventions">OTel</span>
+        <span class="badge badge-otel" title="Defined in OpenTelemetry Semantic Conventions">OTel</span>
       )}
       {showCategory && (
-        <a href={`${import.meta.env.BASE_URL}attributes/${category}/`} class="category-link">{category}</a>
+        <a href={`${import.meta.env.BASE_URL}attributes/${category}/`} class="text-xs px-2 py-1 bg-bg-elevated rounded-sm text-text-muted hover:text-accent hover:bg-accent-soft">{category}</a>
       )}
     </div>
   </div>
   
-  <p class="attribute-brief">{attribute.brief}</p>
+  <p class="text-sm text-text-secondary mb-4 leading-relaxed">{attribute.brief}</p>
   
-  <div class="attribute-details">
+  <div class="flex flex-col gap-2">
     {attribute.example !== undefined && (
-      <div class="detail-row">
-        <span class="detail-label">Example</span>
-        <code class="detail-value">{typeof attribute.example === 'object' ? JSON.stringify(attribute.example) : String(attribute.example)}</code>
+      <div class="flex items-baseline gap-3 text-sm">
+        <span class="text-text-muted min-w-[100px] flex-shrink-0">Example</span>
+        <code class="text-xs mr-1">{typeof attribute.example === 'object' ? JSON.stringify(attribute.example) : String(attribute.example)}</code>
       </div>
     )}
     
     {attribute.alias && attribute.alias.length > 0 && (
-      <div class="detail-row">
-        <span class="detail-label">Aliases</span>
-        <span class="detail-value aliases">
-          {attribute.alias.map((a) => <code>{a}</code>)}
+      <div class="flex items-baseline gap-3 text-sm">
+        <span class="text-text-muted min-w-[100px] flex-shrink-0">Aliases</span>
+        <span class="text-text-secondary">
+          {attribute.alias.map((a) => <code class="text-xs mr-1">{a}</code>)}
         </span>
       </div>
     )}
     
     {attribute.has_dynamic_suffix && (
-      <div class="detail-row">
-        <span class="detail-label">Dynamic Suffix</span>
-        <span class="detail-value">Yes - the key contains dynamic parts</span>
+      <div class="flex items-baseline gap-3 text-sm">
+        <span class="text-text-muted min-w-[100px] flex-shrink-0">Dynamic Suffix</span>
+        <span class="text-text-secondary">Yes - the key contains dynamic parts</span>
       </div>
     )}
     
     {isDeprecated && (
-      <div class="deprecation-info">
+      <div class="mt-3 p-3 bg-error/10 rounded-md border-l-[3px] border-error">
         {attribute.deprecation?.replacement ? (
-          <p>Use <code>{attribute.deprecation.replacement}</code> instead.</p>
+          <p class="text-sm m-0">Use <code class="text-accent">{attribute.deprecation.replacement}</code> instead.</p>
         ) : (
-          <p>No replacement available at this time.</p>
+          <p class="text-sm m-0">No replacement available at this time.</p>
         )}
         {attribute.deprecation?.reason && (
-          <p class="deprecation-reason">{attribute.deprecation.reason}</p>
+          <p class="mt-2 text-text-muted text-sm m-0">{attribute.deprecation.reason}</p>
         )}
       </div>
     )}
   </div>
   
-  <a href={detailUrl} class="view-details-link">
+  <a href={detailUrl} class="inline-flex items-center gap-1 mt-4 pt-3 border-t border-border text-sm text-text-muted transition-colors duration-fast hover:text-accent group">
     View details
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform duration-fast group-hover:translate-x-[3px]">
       <path d="M5 12h14M12 5l7 7-7 7"/>
     </svg>
   </a>
 </article>
-
-<style>
-  .attribute-card {
-    background: var(--color-bg-secondary);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    padding: var(--space-5);
-    transition: border-color var(--transition-fast);
-    scroll-margin-top: calc(var(--header-height) + var(--space-6));
-  }
-  
-  .attribute-card:hover {
-    border-color: var(--color-border-light);
-  }
-  
-  .attribute-card.deprecated {
-    opacity: 0.7;
-    border-style: dashed;
-  }
-  
-  .attribute-card.deprecated:hover {
-    opacity: 1;
-  }
-  
-  .attribute-header {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: var(--space-3);
-    margin-bottom: var(--space-3);
-  }
-  
-  .attribute-key {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    font-size: var(--text-base);
-    margin: 0;
-  }
-  
-  .detail-link {
-    display: inline-flex;
-    align-items: center;
-    transition: color var(--transition-fast);
-  }
-  
-  .detail-link code {
-    font-size: var(--text-base);
-    padding: 0;
-    background: none;
-    border: none;
-    color: var(--color-accent);
-    transition: all var(--transition-fast);
-  }
-  
-  .detail-link:hover code {
-    color: var(--color-accent-hover);
-    text-decoration: underline;
-    text-underline-offset: 3px;
-  }
-  
-  .attribute-key code {
-    font-size: var(--text-base);
-    padding: 0;
-    background: none;
-    border: none;
-    color: var(--color-accent);
-  }
-  
-  .deprecated-badge {
-    font-size: var(--text-xs);
-    font-weight: 500;
-    padding: var(--space-1) var(--space-2);
-    background: rgba(244, 67, 54, 0.15);
-    color: var(--color-error);
-    border-radius: var(--radius-sm);
-    text-transform: uppercase;
-  }
-  
-  .attribute-meta {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: var(--space-2);
-  }
-  
-  .otel-badge {
-    display: inline-flex;
-    align-items: center;
-    padding: var(--space-1) var(--space-2);
-    font-size: var(--text-xs);
-    font-weight: 500;
-    background: rgba(33, 150, 243, 0.15);
-    color: var(--color-info);
-    border-radius: var(--radius-sm);
-    text-transform: uppercase;
-  }
-  
-  .category-link {
-    font-size: var(--text-xs);
-    padding: var(--space-1) var(--space-2);
-    background: var(--color-bg-elevated);
-    border-radius: var(--radius-sm);
-    color: var(--color-text-muted);
-  }
-  
-  .category-link:hover {
-    color: var(--color-accent);
-    background: var(--color-accent-soft);
-  }
-  
-  .attribute-brief {
-    font-size: var(--text-sm);
-    color: var(--color-text-secondary);
-    margin-bottom: var(--space-4);
-    line-height: 1.6;
-  }
-  
-  .attribute-details {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
-  }
-  
-  .detail-row {
-    display: flex;
-    align-items: baseline;
-    gap: var(--space-3);
-    font-size: var(--text-sm);
-  }
-  
-  .detail-label {
-    color: var(--color-text-muted);
-    min-width: 100px;
-    flex-shrink: 0;
-  }
-  
-  .detail-value {
-    color: var(--color-text-secondary);
-  }
-  
-  .detail-value code,
-  .detail-value.aliases code {
-    font-size: var(--text-xs);
-    margin-right: var(--space-1);
-  }
-  
-  .deprecation-info {
-    margin-top: var(--space-3);
-    padding: var(--space-3);
-    background: rgba(244, 67, 54, 0.1);
-    border-radius: var(--radius-md);
-    border-left: 3px solid var(--color-error);
-  }
-  
-  .deprecation-info p {
-    font-size: var(--text-sm);
-    margin: 0;
-  }
-  
-  .deprecation-info code {
-    color: var(--color-accent);
-  }
-  
-  .deprecation-reason {
-    margin-top: var(--space-2) !important;
-    color: var(--color-text-muted);
-  }
-  
-  .view-details-link {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-1);
-    margin-top: var(--space-4);
-    padding-top: var(--space-3);
-    border-top: 1px solid var(--color-border);
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
-    transition: color var(--transition-fast);
-  }
-  
-  .view-details-link:hover {
-    color: var(--color-accent);
-  }
-  
-  .view-details-link svg {
-    transition: transform var(--transition-fast);
-  }
-  
-  .view-details-link:hover svg {
-    transform: translateX(3px);
-  }
-</style>
