@@ -1,0 +1,257 @@
+---
+import PiiBadge from './PiiBadge.astro';
+import TypeBadge from './TypeBadge.astro';
+import type { Attribute } from '../content.config';
+
+interface Props {
+  attribute: Attribute;
+  id: string;
+  showCategory?: boolean;
+}
+
+const { attribute, id, showCategory = false } = Astro.props;
+
+// Extract category from id (e.g., "http/http__request__method" -> "http")
+const category = id.includes('/') ? id.split('/')[0] : 'general';
+const isDeprecated = !!attribute.deprecation;
+---
+
+<article 
+  class:list={['attribute-card', { deprecated: isDeprecated }]} 
+  id={attribute.key.replace(/\./g, '-').replace(/</g, '').replace(/>/g, '')}
+  data-pagefind-body
+>
+  <div class="attribute-header">
+    <h3 class="attribute-key" data-pagefind-meta="title">
+      <a 
+        href={`#${attribute.key.replace(/\./g, '-').replace(/</g, '').replace(/>/g, '')}`} 
+        class="anchor-link"
+        aria-label={`Link to ${attribute.key}`}
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+          <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+        </svg>
+      </a>
+      <code data-pagefind-index-attrs="data-key" data-key={attribute.key}>{attribute.key}</code>
+      {isDeprecated && <span class="deprecated-badge">Deprecated</span>}
+    </h3>
+    <div class="attribute-meta">
+      <TypeBadge type={attribute.type} />
+      <PiiBadge pii={attribute.pii.key} reason={attribute.pii.reason} />
+      {attribute.is_in_otel && (
+        <span class="otel-badge" title="Defined in OpenTelemetry Semantic Conventions">OTel</span>
+      )}
+      {showCategory && (
+        <a href={`${import.meta.env.BASE_URL}attributes/${category}/`} class="category-link">{category}</a>
+      )}
+    </div>
+  </div>
+  
+  <p class="attribute-brief">{attribute.brief}</p>
+  
+  <div class="attribute-details">
+    {attribute.example !== undefined && (
+      <div class="detail-row">
+        <span class="detail-label">Example</span>
+        <code class="detail-value">{typeof attribute.example === 'object' ? JSON.stringify(attribute.example) : String(attribute.example)}</code>
+      </div>
+    )}
+    
+    {attribute.alias && attribute.alias.length > 0 && (
+      <div class="detail-row">
+        <span class="detail-label">Aliases</span>
+        <span class="detail-value aliases">
+          {attribute.alias.map((a) => <code>{a}</code>)}
+        </span>
+      </div>
+    )}
+    
+    {attribute.has_dynamic_suffix && (
+      <div class="detail-row">
+        <span class="detail-label">Dynamic Suffix</span>
+        <span class="detail-value">Yes - the key contains dynamic parts</span>
+      </div>
+    )}
+    
+    {isDeprecated && (
+      <div class="deprecation-info">
+        {attribute.deprecation?.replacement ? (
+          <p>Use <code>{attribute.deprecation.replacement}</code> instead.</p>
+        ) : (
+          <p>No replacement available at this time.</p>
+        )}
+        {attribute.deprecation?.reason && (
+          <p class="deprecation-reason">{attribute.deprecation.reason}</p>
+        )}
+      </div>
+    )}
+  </div>
+</article>
+
+<style>
+  .attribute-card {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    transition: border-color var(--transition-fast);
+  }
+  
+  .attribute-card:hover {
+    border-color: var(--color-border-light);
+  }
+  
+  .attribute-card.deprecated {
+    opacity: 0.7;
+    border-style: dashed;
+  }
+  
+  .attribute-card.deprecated:hover {
+    opacity: 1;
+  }
+  
+  .attribute-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+  }
+  
+  .attribute-key {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-base);
+    margin: 0;
+  }
+  
+  .anchor-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    color: var(--color-text-muted);
+    transition: opacity var(--transition-fast), color var(--transition-fast);
+    margin-left: calc(-1 * var(--space-6));
+    padding-right: var(--space-2);
+  }
+  
+  .attribute-card:hover .anchor-link {
+    opacity: 1;
+  }
+  
+  .anchor-link:hover {
+    color: var(--color-accent);
+  }
+  
+  .attribute-key code {
+    font-size: var(--text-base);
+    padding: 0;
+    background: none;
+    border: none;
+    color: var(--color-accent);
+  }
+  
+  .deprecated-badge {
+    font-size: var(--text-xs);
+    font-weight: 500;
+    padding: var(--space-1) var(--space-2);
+    background: rgba(244, 67, 54, 0.15);
+    color: var(--color-error);
+    border-radius: var(--radius-sm);
+    text-transform: uppercase;
+  }
+  
+  .attribute-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+  }
+  
+  .otel-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-1) var(--space-2);
+    font-size: var(--text-xs);
+    font-weight: 500;
+    background: rgba(33, 150, 243, 0.15);
+    color: var(--color-info);
+    border-radius: var(--radius-sm);
+    text-transform: uppercase;
+  }
+  
+  .category-link {
+    font-size: var(--text-xs);
+    padding: var(--space-1) var(--space-2);
+    background: var(--color-bg-elevated);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-muted);
+  }
+  
+  .category-link:hover {
+    color: var(--color-accent);
+    background: var(--color-accent-soft);
+  }
+  
+  .attribute-brief {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+    line-height: 1.6;
+  }
+  
+  .attribute-details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+  
+  .detail-row {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-3);
+    font-size: var(--text-sm);
+  }
+  
+  .detail-label {
+    color: var(--color-text-muted);
+    min-width: 100px;
+    flex-shrink: 0;
+  }
+  
+  .detail-value {
+    color: var(--color-text-secondary);
+  }
+  
+  .detail-value code,
+  .detail-value.aliases code {
+    font-size: var(--text-xs);
+    margin-right: var(--space-1);
+  }
+  
+  .deprecation-info {
+    margin-top: var(--space-3);
+    padding: var(--space-3);
+    background: rgba(244, 67, 54, 0.1);
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--color-error);
+  }
+  
+  .deprecation-info p {
+    font-size: var(--text-sm);
+    margin: 0;
+  }
+  
+  .deprecation-info code {
+    color: var(--color-accent);
+  }
+  
+  .deprecation-reason {
+    margin-top: var(--space-2) !important;
+    color: var(--color-text-muted);
+  }
+</style>

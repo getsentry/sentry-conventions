@@ -1,0 +1,46 @@
+---
+interface Props {
+  pii: 'true' | 'maybe' | 'false';
+  reason?: string;
+}
+
+const { pii, reason } = Astro.props;
+
+const labels = {
+  true: 'Has PII',
+  maybe: 'Maybe PII',
+  false: 'No PII',
+};
+---
+
+<span class:list={['pii-badge', `pii-${pii}`]} title={reason}>
+  {labels[pii]}
+</span>
+
+<style>
+  .pii-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-1) var(--space-2);
+    font-size: var(--text-xs);
+    font-weight: 500;
+    border-radius: var(--radius-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  
+  .pii-true {
+    background: rgba(239, 83, 80, 0.15);
+    color: var(--color-pii-true);
+  }
+  
+  .pii-maybe {
+    background: rgba(255, 152, 0, 0.15);
+    color: var(--color-pii-maybe);
+  }
+  
+  .pii-false {
+    background: rgba(102, 187, 106, 0.15);
+    color: var(--color-pii-false);
+  }
+</style>

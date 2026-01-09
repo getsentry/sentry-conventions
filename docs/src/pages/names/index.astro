@@ -1,0 +1,403 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+// Get all name definitions
+const allNames = await getCollection('names');
+
+// Sort by brief (category name)
+allNames.sort((a, b) => a.data.brief.localeCompare(b.data.brief));
+
+// Count total operations
+const totalOperations = allNames.reduce((acc, name) => acc + name.data.operations.length, 0);
+---
+
+<BaseLayout 
+  title="Span Names" 
+  description="Learn how to construct span names using templates and attributes"
+>
+  <div class="page-header">
+    <h1>Span Name Documentation</h1>
+    <p class="page-description">
+      This page contains documentation for known span names. You can use this documentation to understand 
+      how to create the <code>name</code> attribute for a span, when you have the span's other attributes.
+    </p>
+  </div>
+  
+  <section class="intro-section">
+    <h2>Generating Names</h2>
+    <p>
+      Span names are generated via string template. Each span category of work has a set of templates 
+      for the span name. Curly brackets in the template indicate that the contents inside the curly 
+      brackets should be replaced with the contents of the span attribute of the name within the brackets.
+    </p>
+    <p>
+      The templates should be evaluated <strong>in order of appearance</strong>. The final template 
+      should be a static string, to be used as a fallback when none of the attribute-based templates 
+      can be satisfied.
+    </p>
+    
+    <div class="example-box">
+      <h4>Example</h4>
+      <p>Given templates:</p>
+      <ol>
+        <li><code>{"{{http.request.method}} {{http.route}}"}</code></li>
+        <li><code>{"{{http.request.method}}"}</code></li>
+        <li><code>HTTP</code></li>
+      </ol>
+      <p>And attributes <code>http.request.method = "GET"</code>, <code>http.route = "/users/:id"</code>:</p>
+      <p>Result: <code>"GET /users/:id"</code></p>
+    </div>
+  </section>
+  
+  <nav class="category-nav">
+    <span class="nav-label">Categories ({allNames.length}):</span>
+    <div class="category-links">
+      {allNames.map(name => (
+        <a href={`#${name.id}`} class="category-chip">
+          {name.data.brief}
+          <span class="count">{name.data.operations.length}</span>
+        </a>
+      ))}
+    </div>
+  </nav>
+  
+  <div class="categories">
+    {allNames.map(name => (
+      <section class="category-section" id={name.id}>
+        <h2>{name.data.brief}</h2>
+        
+        <div class="operations">
+          {name.data.operations.map(op => (
+            <article class="operation-card">
+              <h3>{op.name || op.brief}</h3>
+              <p class="operation-brief">{op.brief}</p>
+              
+              {!op.is_in_otel && (
+                <div class="otel-note warning">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                  <span>Names for this category are <strong>not</strong> specified in OpenTelemetry Semantic Conventions.</span>
+                </div>
+              )}
+              
+              {op.is_in_otel && op.otel_notes && (
+                <div class="otel-note info">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 16v-4M12 8h.01"/>
+                  </svg>
+                  <span>Our definition differs from OpenTelemetry. {op.otel_notes}</span>
+                </div>
+              )}
+              
+              <div class="operation-details">
+                <div class="detail-section">
+                  <h4>Affected <code>op</code>s</h4>
+                  <div class="op-list">
+                    {op.ops.map(opValue => (
+                      <code class="op-tag">{opValue}</code>
+                    ))}
+                  </div>
+                </div>
+                
+                <div class="detail-section">
+                  <h4>Templates</h4>
+                  <ol class="template-list">
+                    {op.templates.map((template, index) => (
+                      <li class:list={['template-item', { fallback: index === op.templates.length - 1 && !template.includes('{{') }]}>
+                        <code>{template}</code>
+                        {index === op.templates.length - 1 && !template.includes('{{') && (
+                          <span class="fallback-badge">fallback</span>
+                        )}
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+                
+                {op.examples && op.examples.length > 0 && (
+                  <div class="detail-section">
+                    <h4>Examples</h4>
+                    <div class="example-list">
+                      {op.examples.map(example => (
+                        <code class="example-tag">{example}</code>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    ))}
+  </div>
+</BaseLayout>
+
+<style>
+  .page-header {
+    margin-bottom: var(--space-8);
+  }
+  
+  .page-description {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    max-width: 800px;
+  }
+  
+  .page-description code {
+    color: var(--color-accent);
+  }
+  
+  .intro-section {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    margin-bottom: var(--space-8);
+  }
+  
+  .intro-section h2 {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-4);
+  }
+  
+  .intro-section p {
+    font-size: var(--text-sm);
+    max-width: 700px;
+  }
+  
+  .example-box {
+    margin-top: var(--space-6);
+    padding: var(--space-4);
+    background: var(--color-bg-elevated);
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--color-accent);
+  }
+  
+  .example-box h4 {
+    font-size: var(--text-sm);
+    color: var(--color-accent);
+    margin-bottom: var(--space-3);
+  }
+  
+  .example-box p {
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-2);
+  }
+  
+  .example-box ol {
+    margin-left: var(--space-4);
+    margin-bottom: var(--space-3);
+    font-size: var(--text-sm);
+  }
+  
+  .example-box li {
+    margin-bottom: var(--space-1);
+  }
+  
+  .category-nav {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-4);
+    padding: var(--space-4);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-8);
+  }
+  
+  .nav-label {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    white-space: nowrap;
+    padding-top: var(--space-1);
+  }
+  
+  .category-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  
+  .category-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-1) var(--space-3);
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    transition: all var(--transition-fast);
+  }
+  
+  .category-chip:hover {
+    background: var(--color-accent-soft);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+  
+  .category-chip .count {
+    font-size: var(--text-xs);
+    padding: 0 var(--space-1);
+    background: var(--color-bg-primary);
+    border-radius: var(--radius-full);
+    color: var(--color-text-muted);
+  }
+  
+  .categories {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-12);
+  }
+  
+  .category-section {
+    scroll-margin-top: calc(var(--header-height) + var(--space-4));
+  }
+  
+  .category-section h2 {
+    margin-bottom: var(--space-6);
+    padding-bottom: var(--space-3);
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  .operations {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+  
+  .operation-card {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+  }
+  
+  .operation-card h3 {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-2);
+  }
+  
+  .operation-brief {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+  }
+  
+  .otel-note {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2);
+    padding: var(--space-3);
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-4);
+  }
+  
+  .otel-note svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  
+  .otel-note.warning {
+    background: rgba(255, 193, 7, 0.1);
+    border: 1px solid rgba(255, 193, 7, 0.3);
+    color: var(--color-warning);
+  }
+  
+  .otel-note.info {
+    background: rgba(33, 150, 243, 0.1);
+    border: 1px solid rgba(33, 150, 243, 0.3);
+    color: var(--color-info);
+  }
+  
+  .operation-details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+  
+  .detail-section h4 {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-2);
+  }
+  
+  .detail-section h4 code {
+    color: var(--color-accent);
+  }
+  
+  .op-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  
+  .op-tag {
+    padding: var(--space-1) var(--space-2);
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-xs);
+    color: var(--color-text-secondary);
+  }
+  
+  .template-list {
+    margin: 0;
+    padding-left: var(--space-5);
+    list-style-position: inside;
+  }
+  
+  .template-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-2);
+    font-size: var(--text-sm);
+  }
+  
+  .template-item code {
+    padding: var(--space-1) var(--space-2);
+    background: var(--color-bg-elevated);
+    font-size: var(--text-xs);
+  }
+  
+  .template-item.fallback code {
+    border-color: var(--color-accent);
+  }
+  
+  .fallback-badge {
+    font-size: var(--text-xs);
+    padding: var(--space-1) var(--space-2);
+    background: var(--color-accent-soft);
+    color: var(--color-accent);
+    border-radius: var(--radius-sm);
+  }
+  
+  .example-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  
+  .example-tag {
+    padding: var(--space-1) var(--space-3);
+    background: var(--color-accent-soft);
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    font-size: var(--text-xs);
+    color: var(--color-accent);
+  }
+  
+  @media (max-width: 768px) {
+    .category-nav {
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+  }
+</style>
