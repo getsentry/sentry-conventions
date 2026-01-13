@@ -6,6 +6,7 @@
 
 #### Changes to attributes
 
+- feat(ai): Add gen_ai.usage.input_tokens.cache_write ([#217](https://github.com/getsentry/sentry-conventions/pull/217))
 - feat(attributes): Add sentry.normalized_db_query.hash ([#200](https://github.com/getsentry/sentry-conventions/pull/200))
 
 ## 0.3.1

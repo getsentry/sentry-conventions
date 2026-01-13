@@ -1639,6 +1639,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 10
     """
 
+    # Path: model/attributes/gen_ai/gen_ai__usage__input_tokens__cache_write.json
+    GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE: Literal[
+        "gen_ai.usage.input_tokens.cache_write"
+    ] = "gen_ai.usage.input_tokens.cache_write"
+    """The number of tokens written to the cache when processing the AI input (prompt).
+
+    Type: int
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 100
+    """
+
     # Path: model/attributes/gen_ai/gen_ai__usage__input_tokens__cached.json
     GEN_AI_USAGE_INPUT_TOKENS_CACHED: Literal["gen_ai.usage.input_tokens.cached"] = (
         "gen_ai.usage.input_tokens.cached"
@@ -5765,6 +5777,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=10,
         aliases=["ai.prompt_tokens.used", "gen_ai.usage.prompt_tokens"],
     ),
+    "gen_ai.usage.input_tokens.cache_write": AttributeMetadata(
+        brief="The number of tokens written to the cache when processing the AI input (prompt).",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=100,
+    ),
     "gen_ai.usage.input_tokens.cached": AttributeMetadata(
         brief="The number of cached tokens used to process the AI input (prompt).",
         type=AttributeType.INTEGER,
@@ -8070,6 +8089,7 @@ Attributes = TypedDict(
         "gen_ai.tool.type": str,
         "gen_ai.usage.completion_tokens": int,
         "gen_ai.usage.input_tokens": int,
+        "gen_ai.usage.input_tokens.cache_write": int,
         "gen_ai.usage.input_tokens.cached": int,
         "gen_ai.usage.output_tokens": int,
         "gen_ai.usage.output_tokens.reasoning": int,

@@ -2819,6 +2819,26 @@ export const GEN_AI_USAGE_INPUT_TOKENS_CACHED = 'gen_ai.usage.input_tokens.cache
  */
 export type GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE = number;
 
+// Path: model/attributes/gen_ai/gen_ai__usage__input_tokens__cache_write.json
+
+/**
+ * The number of tokens written to the cache when processing the AI input (prompt). `gen_ai.usage.input_tokens.cache_write`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 100
+ */
+export const GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE = 'gen_ai.usage.input_tokens.cache_write';
+
+/**
+ * Type for {@link GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE} gen_ai.usage.input_tokens.cache_write
+ */
+export type GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE_TYPE = number;
+
 // Path: model/attributes/gen_ai/gen_ai__usage__output_tokens.json
 
 /**
@@ -8757,6 +8777,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [GEN_AI_USAGE_COMPLETION_TOKENS]: 'integer',
   [GEN_AI_USAGE_INPUT_TOKENS]: 'integer',
   [GEN_AI_USAGE_INPUT_TOKENS_CACHED]: 'integer',
+  [GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE]: 'integer',
   [GEN_AI_USAGE_OUTPUT_TOKENS]: 'integer',
   [GEN_AI_USAGE_OUTPUT_TOKENS_REASONING]: 'integer',
   [GEN_AI_USAGE_PROMPT_TOKENS]: 'integer',
@@ -9173,6 +9194,7 @@ export type AttributeName =
   | typeof GEN_AI_USAGE_COMPLETION_TOKENS
   | typeof GEN_AI_USAGE_INPUT_TOKENS
   | typeof GEN_AI_USAGE_INPUT_TOKENS_CACHED
+  | typeof GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE
   | typeof GEN_AI_USAGE_OUTPUT_TOKENS
   | typeof GEN_AI_USAGE_OUTPUT_TOKENS_REASONING
   | typeof GEN_AI_USAGE_PROMPT_TOKENS
@@ -10872,6 +10894,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 50,
+  },
+  [GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE]: {
+    brief: 'The number of tokens written to the cache when processing the AI input (prompt).',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 100,
   },
   [GEN_AI_USAGE_OUTPUT_TOKENS]: {
     brief: 'The number of tokens used for creating the AI output (without reasoning tokens).',
@@ -13812,6 +13843,7 @@ export type Attributes = {
   [GEN_AI_USAGE_COMPLETION_TOKENS]?: GEN_AI_USAGE_COMPLETION_TOKENS_TYPE;
   [GEN_AI_USAGE_INPUT_TOKENS]?: GEN_AI_USAGE_INPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_INPUT_TOKENS_CACHED]?: GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE;
+  [GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE]?: GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE_TYPE;
   [GEN_AI_USAGE_OUTPUT_TOKENS]?: GEN_AI_USAGE_OUTPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_OUTPUT_TOKENS_REASONING]?: GEN_AI_USAGE_OUTPUT_TOKENS_REASONING_TYPE;
   [GEN_AI_USAGE_PROMPT_TOKENS]?: GEN_AI_USAGE_PROMPT_TOKENS_TYPE;
