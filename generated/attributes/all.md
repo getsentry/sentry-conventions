@@ -4,7 +4,7 @@
 
 This page lists all available attributes across all categories.
 
-Total attributes: 413
+Total attributes: 414
 
 ## Stable Attributes
 
@@ -110,6 +110,7 @@ Total attributes: 413
 | [`gen_ai.tool.output`](./gen_ai.md#gen_aitooloutput) | The output of the tool being used. It has to be a stringified version of the output of the tool. |
 | [`gen_ai.tool.type`](./gen_ai.md#gen_aitooltype) | The type of tool being used. |
 | [`gen_ai.usage.input_tokens`](./gen_ai.md#gen_aiusageinput_tokens) | The number of tokens used to process the AI input (prompt) without cached input tokens. |
+| [`gen_ai.usage.input_tokens.cache_write`](./gen_ai.md#gen_aiusageinput_tokenscache_write) | The number of tokens written to the cache when processing the AI input (prompt). |
 | [`gen_ai.usage.input_tokens.cached`](./gen_ai.md#gen_aiusageinput_tokenscached) | The number of cached tokens used to process the AI input (prompt). |
 | [`gen_ai.usage.output_tokens`](./gen_ai.md#gen_aiusageoutput_tokens) | The number of tokens used for creating the AI output (without reasoning tokens). |
 | [`gen_ai.usage.output_tokens.reasoning`](./gen_ai.md#gen_aiusageoutput_tokensreasoning) | The number of tokens used for reasoning to create the AI output. |

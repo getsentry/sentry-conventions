@@ -39,6 +39,7 @@
   - [gen_ai.tool.output](#gen_aitooloutput)
   - [gen_ai.tool.type](#gen_aitooltype)
   - [gen_ai.usage.input_tokens](#gen_aiusageinput_tokens)
+  - [gen_ai.usage.input_tokens.cache_write](#gen_aiusageinput_tokenscache_write)
   - [gen_ai.usage.input_tokens.cached](#gen_aiusageinput_tokenscached)
   - [gen_ai.usage.output_tokens](#gen_aiusageoutput_tokens)
   - [gen_ai.usage.output_tokens.reasoning](#gen_aiusageoutput_tokensreasoning)
@@ -461,6 +462,17 @@ The number of tokens used to process the AI input (prompt) without cached input 
 | Exists in OpenTelemetry | Yes |
 | Example | `10` |
 | Aliases | `ai.prompt_tokens.used`, `gen_ai.usage.prompt_tokens` |
+
+### gen_ai.usage.input_tokens.cache_write
+
+The number of tokens written to the cache when processing the AI input (prompt).
+
+| Property | Value |
+| --- | --- |
+| Type | `integer` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `100` |
 
 ### gen_ai.usage.input_tokens.cached
 
