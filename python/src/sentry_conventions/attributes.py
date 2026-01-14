@@ -3499,6 +3499,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "document.hidden"
     """
 
+    # Path: model/attributes/sentry/sentry__category.json
+    SENTRY_CATEGORY: Literal["sentry.category"] = "sentry.category"
+    """The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI). Known values include: 'ai', 'ai.pipeline', 'app', 'browser', 'cache', 'console', 'db', 'event', 'file', 'function.aws', 'function.azure', 'function.gpc', 'function.nextjs', 'function.remix', 'graphql', 'grpc', 'http', 'measure', 'middleware', 'navigation', 'pageload', 'queue', 'resource', 'rpc', 'serialize', 'subprocess', 'template', 'topic', 'ui', 'ui.angular', 'ui.ember', 'ui.react', 'ui.svelte', 'ui.vue', 'view', 'websocket'.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "db"
+    """
+
     # Path: model/attributes/sentry/sentry__client_sample_rate.json
     SENTRY_CLIENT_SAMPLE_RATE: Literal["sentry.client_sample_rate"] = (
         "sentry.client_sample_rate"
@@ -7108,6 +7118,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="document.hidden",
     ),
+    "sentry.category": AttributeMetadata(
+        brief="The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI). Known values include: 'ai', 'ai.pipeline', 'app', 'browser', 'cache', 'console', 'db', 'event', 'file', 'function.aws', 'function.azure', 'function.gpc', 'function.nextjs', 'function.remix', 'graphql', 'grpc', 'http', 'measure', 'middleware', 'navigation', 'pageload', 'queue', 'resource', 'rpc', 'serialize', 'subprocess', 'template', 'topic', 'ui', 'ui.angular', 'ui.ember', 'ui.react', 'ui.svelte', 'ui.vue', 'view', 'websocket'.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="db",
+    ),
     "sentry.client_sample_rate": AttributeMetadata(
         brief="Rate at which a span was sampled in the SDK.",
         type=AttributeType.DOUBLE,
@@ -8255,6 +8272,7 @@ Attributes = TypedDict(
         "sentry.browser.name": str,
         "sentry.browser.version": str,
         "sentry.cancellation_reason": str,
+        "sentry.category": str,
         "sentry.client_sample_rate": float,
         "sentry.description": str,
         "sentry.dist": str,
