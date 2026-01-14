@@ -8,6 +8,7 @@
 
 - feat(ai): Add gen_ai.usage.input_tokens.cache_write ([#217](https://github.com/getsentry/sentry-conventions/pull/217))
 - feat(attributes): Add sentry.normalized_db_query.hash ([#200](https://github.com/getsentry/sentry-conventions/pull/200))
+- feat(attributes): Add sentry.category attribute ([#218](https://github.com/getsentry/sentry-conventions/pull/218))
 
 ## 0.3.1
 

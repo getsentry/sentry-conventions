@@ -6258,6 +6258,26 @@ export const SENTRY_CANCELLATION_REASON = 'sentry.cancellation_reason';
  */
 export type SENTRY_CANCELLATION_REASON_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__category.json
+
+/**
+ * The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI). Known values include: 'ai', 'ai.pipeline', 'app', 'browser', 'cache', 'console', 'db', 'event', 'file', 'function.aws', 'function.azure', 'function.gcp', 'function.nextjs', 'function.remix', 'graphql', 'grpc', 'http', 'measure', 'middleware', 'navigation', 'pageload', 'queue', 'resource', 'rpc', 'serialize', 'subprocess', 'template', 'topic', 'ui', 'ui.angular', 'ui.ember', 'ui.react', 'ui.svelte', 'ui.vue', 'view', 'websocket'. `sentry.category`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_CATEGORY_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "db"
+ */
+export const SENTRY_CATEGORY = 'sentry.category';
+
+/**
+ * Type for {@link SENTRY_CATEGORY} sentry.category
+ */
+export type SENTRY_CATEGORY_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__client_sample_rate.json
 
 /**
@@ -8942,6 +8962,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_BROWSER_NAME]: 'string',
   [SENTRY_BROWSER_VERSION]: 'string',
   [SENTRY_CANCELLATION_REASON]: 'string',
+  [SENTRY_CATEGORY]: 'string',
   [SENTRY_CLIENT_SAMPLE_RATE]: 'double',
   [SENTRY_DESCRIPTION]: 'string',
   [SENTRY_DIST]: 'string',
@@ -9359,6 +9380,7 @@ export type AttributeName =
   | typeof SENTRY_BROWSER_NAME
   | typeof SENTRY_BROWSER_VERSION
   | typeof SENTRY_CANCELLATION_REASON
+  | typeof SENTRY_CATEGORY
   | typeof SENTRY_CLIENT_SAMPLE_RATE
   | typeof SENTRY_DESCRIPTION
   | typeof SENTRY_DIST
@@ -12619,6 +12641,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'document.hidden',
   },
+  [SENTRY_CATEGORY]: {
+    brief:
+      "The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI). Known values include: 'ai', 'ai.pipeline', 'app', 'browser', 'cache', 'console', 'db', 'event', 'file', 'function.aws', 'function.azure', 'function.gcp', 'function.nextjs', 'function.remix', 'graphql', 'grpc', 'http', 'measure', 'middleware', 'navigation', 'pageload', 'queue', 'resource', 'rpc', 'serialize', 'subprocess', 'template', 'topic', 'ui', 'ui.angular', 'ui.ember', 'ui.react', 'ui.svelte', 'ui.vue', 'view', 'websocket'.",
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'db',
+  },
   [SENTRY_CLIENT_SAMPLE_RATE]: {
     brief: 'Rate at which a span was sampled in the SDK.',
     type: 'double',
@@ -14008,6 +14040,7 @@ export type Attributes = {
   [SENTRY_BROWSER_NAME]?: SENTRY_BROWSER_NAME_TYPE;
   [SENTRY_BROWSER_VERSION]?: SENTRY_BROWSER_VERSION_TYPE;
   [SENTRY_CANCELLATION_REASON]?: SENTRY_CANCELLATION_REASON_TYPE;
+  [SENTRY_CATEGORY]?: SENTRY_CATEGORY_TYPE;
   [SENTRY_CLIENT_SAMPLE_RATE]?: SENTRY_CLIENT_SAMPLE_RATE_TYPE;
   [SENTRY_DESCRIPTION]?: SENTRY_DESCRIPTION_TYPE;
   [SENTRY_DIST]?: SENTRY_DIST_TYPE;
