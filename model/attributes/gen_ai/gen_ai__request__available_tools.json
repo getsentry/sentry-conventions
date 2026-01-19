@@ -7,5 +7,9 @@
   },
   "is_in_otel": false,
   "example": "[{\"name\": \"get_weather\", \"description\": \"Get the weather for a given location\"}, {\"name\": \"get_news\", \"description\": \"Get the news for a given topic\"}]",
-  "alias": []
+  "alias": [],
+  "deprecation": {
+    "_status": null,
+    "replacement": "gen_ai.tool.definitions"
+  }
 }

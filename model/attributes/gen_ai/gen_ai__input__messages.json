@@ -1,15 +1,11 @@
 {
-  "key": "gen_ai.request.messages",
+  "key": "gen_ai.input.messages",
   "brief": "The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `\"user\"`, `\"assistant\"`, `\"tool\"`, or `\"system\"`. For messages of the role `\"tool\"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: \"text\", text:\"...\"}`.",
   "type": "string",
+  "format": "",
   "pii": {
     "key": "maybe"
   },
   "is_in_otel": false,
-  "example": "[{\"role\": \"system\", \"content\": \"Generate a random number.\"}, {\"role\": \"user\", \"content\": [{\"text\": \"Generate a random number between 0 and 10.\", \"type\": \"text\"}]}, {\"role\": \"tool\", \"content\": {\"toolCallId\": \"1\", \"toolName\": \"Weather\", \"output\": \"rainy\"}}]",
-  "alias": ["ai.input_messages"],
-  "deprecation": {
-    "_status": null,
-    "replacement": "gen_ai.input.messages"
-  }
+  "example": "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"What is the weather in Paris?\"}]}]"
 }

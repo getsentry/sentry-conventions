@@ -1,0 +1,11 @@
+{
+  "key": "gen_ai.tool.call.arguments",
+  "brief": "The arguments of the tool call. It has to be a stringified version of the arguments to the tool.",
+  "type": "string",
+  "format": "",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "{\"location\": \"Paris\"}"
+}

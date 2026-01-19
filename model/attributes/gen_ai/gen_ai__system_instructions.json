@@ -1,0 +1,11 @@
+{
+  "key": "gen_ai.system_instructions",
+  "brief": "The system instructions passed to the model.",
+  "type": "string",
+  "format": "",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "You are a helpful assistant"
+}

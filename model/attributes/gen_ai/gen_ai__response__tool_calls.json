@@ -7,5 +7,9 @@
   },
   "is_in_otel": false,
   "example": "[{\"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]",
-  "alias": []
+  "alias": [],
+  "deprecation": {
+    "_status": null,
+    "replacement": "gen_ai.output.messages"
+  }
 }
