@@ -2,7 +2,6 @@
   "key": "gen_ai.system_instructions",
   "brief": "The system instructions passed to the model.",
   "type": "string",
-  "format": "",
   "pii": {
     "key": "maybe"
   },

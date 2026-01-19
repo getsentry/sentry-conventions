@@ -2,7 +2,6 @@
   "key": "gen_ai.output.messages",
   "brief": "The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls.",
   "type": "string",
-  "format": "",
   "pii": {
     "key": "maybe"
   },

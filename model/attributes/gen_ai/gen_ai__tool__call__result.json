@@ -2,7 +2,6 @@
   "key": "gen_ai.tool.call.result",
   "brief": "The result of the tool call. It has to be a stringified version of the result of the tool.",
   "type": "string",
-  "format": "",
   "pii": {
     "key": "maybe"
   },

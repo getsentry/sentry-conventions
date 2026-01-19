@@ -2,7 +2,6 @@
   "key": "gen_ai.tool.definitions",
   "brief": "The list of source system tool definitions available to the GenAI agent or model.",
   "type": "string",
-  "format": "",
   "pii": {
     "key": "maybe"
   },
