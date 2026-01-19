@@ -1296,7 +1296,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     Type: str
     Contains PII: maybe
-    Defined in OTEL: No
+    Defined in OTEL: Yes
     Example: "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"What is the weather in Paris?\"}]}]"
     """
 
@@ -1326,7 +1326,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     Type: str
     Contains PII: maybe
-    Defined in OTEL: No
+    Defined in OTEL: Yes
     Example: "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"text\", \"content\": \"The weather in Paris is currently rainy with a temperature of 57°F.\"}], \"finish_reason\": \"stop\"}]"
     """
 
@@ -1587,7 +1587,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     Type: str
     Contains PII: maybe
-    Defined in OTEL: No
+    Defined in OTEL: Yes
     Example: "You are a helpful assistant"
     """
 
@@ -1599,7 +1599,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     Type: str
     Contains PII: maybe
-    Defined in OTEL: No
+    Defined in OTEL: Yes
     Example: "{\"location\": \"Paris\"}"
     """
 
@@ -1611,7 +1611,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     Type: str
     Contains PII: maybe
-    Defined in OTEL: No
+    Defined in OTEL: Yes
     Example: "rainy, 57°F"
     """
 
@@ -1623,7 +1623,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     Type: str
     Contains PII: maybe
-    Defined in OTEL: No
+    Defined in OTEL: Yes
     Example: "[{\"type\": \"function\", \"name\": \"get_current_weather\", \"description\": \"Get the current weather in a given location\", \"parameters\": {\"type\": \"object\", \"properties\": {\"location\": {\"type\": \"string\", \"description\": \"The city and state, e.g. San Francisco, CA\"}, \"unit\": {\"type\": \"string\", \"enum\": [\"celsius\", \"fahrenheit\"]}}, \"required\": [\"location\", \"unit\"]}}]"
     """
 
@@ -5632,7 +5632,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief='The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.',
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
-        is_in_otel=False,
+        is_in_otel=True,
         example='[{"role": "user", "parts": [{"type": "text", "content": "What is the weather in Paris?"}]}]',
     ),
     "gen_ai.operation.name": AttributeMetadata(
@@ -5653,7 +5653,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
-        is_in_otel=False,
+        is_in_otel=True,
         example='[{"role": "assistant", "parts": [{"type": "text", "content": "The weather in Paris is currently rainy with a temperature of 57°F."}], "finish_reason": "stop"}]',
     ),
     "gen_ai.pipeline.name": AttributeMetadata(
@@ -5828,28 +5828,28 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="The system instructions passed to the model.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
-        is_in_otel=False,
+        is_in_otel=True,
         example="You are a helpful assistant",
     ),
     "gen_ai.tool.call.arguments": AttributeMetadata(
         brief="The arguments of the tool call. It has to be a stringified version of the arguments to the tool.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
-        is_in_otel=False,
+        is_in_otel=True,
         example='{"location": "Paris"}',
     ),
     "gen_ai.tool.call.result": AttributeMetadata(
         brief="The result of the tool call. It has to be a stringified version of the result of the tool.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
-        is_in_otel=False,
+        is_in_otel=True,
         example="rainy, 57°F",
     ),
     "gen_ai.tool.definitions": AttributeMetadata(
         brief="The list of source system tool definitions available to the GenAI agent or model.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
-        is_in_otel=False,
+        is_in_otel=True,
         example='[{"type": "function", "name": "get_current_weather", "description": "Get the current weather in a given location", "parameters": {"type": "object", "properties": {"location": {"type": "string", "description": "The city and state, e.g. San Francisco, CA"}, "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]}}, "required": ["location", "unit"]}}]',
     ),
     "gen_ai.tool.description": AttributeMetadata(

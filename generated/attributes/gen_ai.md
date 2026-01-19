@@ -143,7 +143,7 @@ The messages passed to the model. It has to be a stringified version of an array
 | --- | --- |
 | Type | `string` |
 | Has PII | maybe |
-| Exists in OpenTelemetry | No |
+| Exists in OpenTelemetry | Yes |
 | Example | `[{"role": "user", "parts": [{"type": "text", "content": "What is the weather in Paris?"}]}]` |
 
 ### gen_ai.operation.name
@@ -176,7 +176,7 @@ The model's response messages. It has to be a stringified version of an array of
 | --- | --- |
 | Type | `string` |
 | Has PII | maybe |
-| Exists in OpenTelemetry | No |
+| Exists in OpenTelemetry | Yes |
 | Example | `[{"role": "assistant", "parts": [{"type": "text", "content": "The weather in Paris is currently rainy with a temperature of 57°F."}], "finish_reason": "stop"}]` |
 
 ### gen_ai.pipeline.name
@@ -364,7 +364,7 @@ The system instructions passed to the model.
 | --- | --- |
 | Type | `string` |
 | Has PII | maybe |
-| Exists in OpenTelemetry | No |
+| Exists in OpenTelemetry | Yes |
 | Example | `You are a helpful assistant` |
 
 ### gen_ai.tool.call.arguments
@@ -375,7 +375,7 @@ The arguments of the tool call. It has to be a stringified version of the argume
 | --- | --- |
 | Type | `string` |
 | Has PII | maybe |
-| Exists in OpenTelemetry | No |
+| Exists in OpenTelemetry | Yes |
 | Example | `{"location": "Paris"}` |
 
 ### gen_ai.tool.call.result
@@ -386,7 +386,7 @@ The result of the tool call. It has to be a stringified version of the result of
 | --- | --- |
 | Type | `string` |
 | Has PII | maybe |
-| Exists in OpenTelemetry | No |
+| Exists in OpenTelemetry | Yes |
 | Example | `rainy, 57°F` |
 
 ### gen_ai.tool.definitions
@@ -397,7 +397,7 @@ The list of source system tool definitions available to the GenAI agent or model
 | --- | --- |
 | Type | `string` |
 | Has PII | maybe |
-| Exists in OpenTelemetry | No |
+| Exists in OpenTelemetry | Yes |
 | Example | `[{"type": "function", "name": "get_current_weather", "description": "Get the current weather in a given location", "parameters": {"type": "object", "properties": {"location": {"type": "string", "description": "The city and state, e.g. San Francisco, CA"}, "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]}}, "required": ["location", "unit"]}}]` |
 
 ### gen_ai.tool.description

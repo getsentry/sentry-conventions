@@ -5,6 +5,6 @@
   "pii": {
     "key": "maybe"
   },
-  "is_in_otel": false,
+  "is_in_otel": true,
   "example": "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"What is the weather in Paris?\"}]}]"
 }

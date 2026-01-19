@@ -2154,7 +2154,7 @@ export type GEN_AI_EMBEDDINGS_INPUT_TYPE = string;
  *
  * Contains PII: maybe
  *
- * Attribute defined in OTEL: No
+ * Attribute defined in OTEL: Yes
  *
  * @example "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"What is the weather in Paris?\"}]}]"
  */
@@ -2214,7 +2214,7 @@ export type GEN_AI_OPERATION_TYPE_TYPE = string;
  *
  * Contains PII: maybe
  *
- * Attribute defined in OTEL: No
+ * Attribute defined in OTEL: Yes
  *
  * @example "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"text\", \"content\": \"The weather in Paris is currently rainy with a temperature of 57°F.\"}], \"finish_reason\": \"stop\"}]"
  */
@@ -2665,7 +2665,7 @@ export type GEN_AI_SYSTEM_TYPE = string;
  *
  * Contains PII: maybe
  *
- * Attribute defined in OTEL: No
+ * Attribute defined in OTEL: Yes
  *
  * @example "You are a helpful assistant"
  */
@@ -2706,7 +2706,7 @@ export type GEN_AI_SYSTEM_MESSAGE_TYPE = string;
  *
  * Contains PII: maybe
  *
- * Attribute defined in OTEL: No
+ * Attribute defined in OTEL: Yes
  *
  * @example "{\"location\": \"Paris\"}"
  */
@@ -2726,7 +2726,7 @@ export type GEN_AI_TOOL_CALL_ARGUMENTS_TYPE = string;
  *
  * Contains PII: maybe
  *
- * Attribute defined in OTEL: No
+ * Attribute defined in OTEL: Yes
  *
  * @example "rainy, 57°F"
  */
@@ -2746,7 +2746,7 @@ export type GEN_AI_TOOL_CALL_RESULT_TYPE = string;
  *
  * Contains PII: maybe
  *
- * Attribute defined in OTEL: No
+ * Attribute defined in OTEL: Yes
  *
  * @example "[{\"type\": \"function\", \"name\": \"get_current_weather\", \"description\": \"Get the current weather in a given location\", \"parameters\": {\"type\": \"object\", \"properties\": {\"location\": {\"type\": \"string\", \"description\": \"The city and state, e.g. San Francisco, CA\"}, \"unit\": {\"type\": \"string\", \"enum\": [\"celsius\", \"fahrenheit\"]}}, \"required\": [\"location\", \"unit\"]}}]"
  */
@@ -10740,7 +10740,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     pii: {
       isPii: 'maybe',
     },
-    isInOtel: false,
+    isInOtel: true,
     example: '[{"role": "user", "parts": [{"type": "text", "content": "What is the weather in Paris?"}]}]',
   },
   [GEN_AI_OPERATION_NAME]: {
@@ -10769,7 +10769,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     pii: {
       isPii: 'maybe',
     },
-    isInOtel: false,
+    isInOtel: true,
     example:
       '[{"role": "assistant", "parts": [{"type": "text", "content": "The weather in Paris is currently rainy with a temperature of 57°F."}], "finish_reason": "stop"}]',
   },
@@ -10997,7 +10997,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     pii: {
       isPii: 'maybe',
     },
-    isInOtel: false,
+    isInOtel: true,
     example: 'You are a helpful assistant',
   },
   [GEN_AI_SYSTEM_MESSAGE]: {
@@ -11018,7 +11018,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     pii: {
       isPii: 'maybe',
     },
-    isInOtel: false,
+    isInOtel: true,
     example: '{"location": "Paris"}',
   },
   [GEN_AI_TOOL_CALL_RESULT]: {
@@ -11027,7 +11027,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     pii: {
       isPii: 'maybe',
     },
-    isInOtel: false,
+    isInOtel: true,
     example: 'rainy, 57°F',
   },
   [GEN_AI_TOOL_DEFINITIONS]: {
@@ -11036,7 +11036,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     pii: {
       isPii: 'maybe',
     },
-    isInOtel: false,
+    isInOtel: true,
     example:
       '[{"type": "function", "name": "get_current_weather", "description": "Get the current weather in a given location", "parameters": {"type": "object", "properties": {"location": {"type": "string", "description": "The city and state, e.g. San Francisco, CA"}, "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]}}, "required": ["location", "unit"]}}]',
   },
