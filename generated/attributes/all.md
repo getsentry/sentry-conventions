@@ -4,7 +4,7 @@
 
 This page lists all available attributes across all categories.
 
-Total attributes: 421
+Total attributes: 422
 
 ## Stable Attributes
 
@@ -283,6 +283,7 @@ Total attributes: 421
 | [`sentry.segment.name`](./sentry.md#sentrysegmentname) | The segment name of a span |
 | [`sentry.server_sample_rate`](./sentry.md#sentryserver_sample_rate) | Rate at which a span was sampled in Relay. |
 | [`sentry.span.source`](./sentry.md#sentryspansource) | The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. |
+| [`sentry.status_code`](./sentry.md#sentrystatus_code) | The HTTP status code used in Sentry Insights. Typically set by Sentry during ingestion, rather than by clients. |
 | [`sentry.status.message`](./sentry.md#sentrystatusmessage) | The from OTLP extracted status message. |
 | [`sentry.trace.parent_span_id`](./sentry.md#sentrytraceparent_span_id) | The span id of the span that was active when the log was collected. This should not be set if there was no active span. |
 | [`sentry.transaction`](./sentry.md#sentrytransaction) | The sentry transaction (segment name). |

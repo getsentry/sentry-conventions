@@ -48,6 +48,7 @@
   - [sentry.segment.name](#sentrysegmentname)
   - [sentry.server_sample_rate](#sentryserver_sample_rate)
   - [sentry.span.source](#sentryspansource)
+  - [sentry.status_code](#sentrystatus_code)
   - [sentry.status.message](#sentrystatusmessage)
   - [sentry.trace.parent_span_id](#sentrytraceparent_span_id)
   - [sentry.transaction](#sentrytransaction)
@@ -556,6 +557,17 @@ The source of a span, also referred to as transaction source. Known values are: 
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `route` |
+
+### sentry.status_code
+
+The HTTP status code used in Sentry Insights. Typically set by Sentry during ingestion, rather than by clients.
+
+| Property | Value |
+| --- | --- |
+| Type | `integer` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `200` |
 
 ### sentry.status.message
 
