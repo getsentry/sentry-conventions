@@ -5405,7 +5405,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="postgresql",
         deprecation=DeprecationInfo(
-            replacement="db.system.name", status=DeprecationStatus.NORMALIZE
+            replacement="db.system.name", status=DeprecationStatus.BACKFILL
         ),
         aliases=["db.system.name"],
     ),
