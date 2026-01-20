@@ -7274,6 +7274,26 @@ export const SENTRY_SPAN_SOURCE = 'sentry.span.source';
  */
 export type SENTRY_SPAN_SOURCE_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__status_code.json
+
+/**
+ * The HTTP status code used in Sentry Insights. Typically set by Sentry during ingestion, rather than by clients. `sentry.status_code`
+ *
+ * Attribute Value Type: `number` {@link SENTRY_STATUS_CODE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 200
+ */
+export const SENTRY_STATUS_CODE = 'sentry.status_code';
+
+/**
+ * Type for {@link SENTRY_STATUS_CODE} sentry.status_code
+ */
+export type SENTRY_STATUS_CODE_TYPE = number;
+
 // Path: model/attributes/sentry/sentry__status__message.json
 
 /**
@@ -9137,6 +9157,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_SEGMENT_NAME]: 'string',
   [SENTRY_SERVER_SAMPLE_RATE]: 'double',
   [SENTRY_SPAN_SOURCE]: 'string',
+  [SENTRY_STATUS_CODE]: 'integer',
   [SENTRY_STATUS_MESSAGE]: 'string',
   [SENTRY_TRACE_PARENT_SPAN_ID]: 'string',
   [SENTRY_TRANSACTION]: 'string',
@@ -9561,6 +9582,7 @@ export type AttributeName =
   | typeof SENTRY_SEGMENT_NAME
   | typeof SENTRY_SERVER_SAMPLE_RATE
   | typeof SENTRY_SPAN_SOURCE
+  | typeof SENTRY_STATUS_CODE
   | typeof SENTRY_STATUS_MESSAGE
   | typeof SENTRY_TRACE_PARENT_SPAN_ID
   | typeof SENTRY_TRANSACTION
@@ -13269,6 +13291,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'route',
   },
+  [SENTRY_STATUS_CODE]: {
+    brief:
+      'The HTTP status code used in Sentry Insights. Typically set by Sentry during ingestion, rather than by clients.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 200,
+  },
   [SENTRY_STATUS_MESSAGE]: {
     brief: 'The from OTLP extracted status message.',
     type: 'string',
@@ -14301,6 +14333,7 @@ export type Attributes = {
   [SENTRY_SEGMENT_NAME]?: SENTRY_SEGMENT_NAME_TYPE;
   [SENTRY_SERVER_SAMPLE_RATE]?: SENTRY_SERVER_SAMPLE_RATE_TYPE;
   [SENTRY_SPAN_SOURCE]?: SENTRY_SPAN_SOURCE_TYPE;
+  [SENTRY_STATUS_CODE]?: SENTRY_STATUS_CODE_TYPE;
   [SENTRY_STATUS_MESSAGE]?: SENTRY_STATUS_MESSAGE_TYPE;
   [SENTRY_TRACE_PARENT_SPAN_ID]?: SENTRY_TRACE_PARENT_SPAN_ID_TYPE;
   [SENTRY_TRANSACTION]?: SENTRY_TRANSACTION_TYPE;

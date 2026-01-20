@@ -4061,6 +4061,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "foobar"
     """
 
+    # Path: model/attributes/sentry/sentry__status_code.json
+    SENTRY_STATUS_CODE: Literal["sentry.status_code"] = "sentry.status_code"
+    """The HTTP status code used in Sentry Insights. Typically set by Sentry during ingestion, rather than by clients.
+
+    Type: int
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 200
+    """
+
     # Path: model/attributes/sentry/sentry__trace__parent_span_id.json
     SENTRY_TRACE_PARENT_SPAN_ID: Literal["sentry.trace.parent_span_id"] = (
         "sentry.trace.parent_span_id"
@@ -7571,6 +7581,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="foobar",
     ),
+    "sentry.status_code": AttributeMetadata(
+        brief="The HTTP status code used in Sentry Insights. Typically set by Sentry during ingestion, rather than by clients.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=200,
+    ),
     "sentry.trace.parent_span_id": AttributeMetadata(
         brief="The span id of the span that was active when the log was collected. This should not be set if there was no active span.",
         type=AttributeType.STRING,
@@ -8448,6 +8465,7 @@ Attributes = TypedDict(
         "sentry.server_sample_rate": float,
         "sentry.span.source": str,
         "sentry.status.message": str,
+        "sentry.status_code": int,
         "sentry.trace.parent_span_id": str,
         "sentry.transaction": str,
         "server.address": str,
