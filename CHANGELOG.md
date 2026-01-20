@@ -10,6 +10,7 @@
 - feat(attributes): Add sentry.normalized_db_query.hash ([#200](https://github.com/getsentry/sentry-conventions/pull/200))
 - feat(attributes): Add sentry.category attribute ([#218](https://github.com/getsentry/sentry-conventions/pull/218))
 - Add new Gen AI attributes ([#221](https://github.com/getsentry/sentry-conventions/pull/221))
+- Backfill `db.system` attribute ([#224](https://github.com/getsentry/sentry-conventions/pull/224))
 
 ## 0.3.1
 
