@@ -595,6 +595,80 @@
       }
     },
     {
+      "key": "gen_ai.request.available_tools",
+      "brief": "The available tools for the model. It has to be a stringified version of an array of objects.",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "[{\"name\": \"get_weather\", \"description\": \"Get the weather for a given location\"}, {\"name\": \"get_news\", \"description\": \"Get the news for a given topic\"}]",
+      "alias": [],
+      "deprecation": {
+        "_status": null,
+        "replacement": "gen_ai.tool.definitions"
+      }
+    },
+    {
+      "key": "gen_ai.request.messages",
+      "brief": "The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `\"user\"`, `\"assistant\"`, `\"tool\"`, or `\"system\"`. For messages of the role `\"tool\"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: \"text\", text:\"...\"}`.",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "[{\"role\": \"system\", \"content\": \"Generate a random number.\"}, {\"role\": \"user\", \"content\": [{\"text\": \"Generate a random number between 0 and 10.\", \"type\": \"text\"}]}, {\"role\": \"tool\", \"content\": {\"toolCallId\": \"1\", \"toolName\": \"Weather\", \"output\": \"rainy\"}}]",
+      "alias": ["ai.input_messages"],
+      "deprecation": {
+        "_status": null,
+        "replacement": "gen_ai.input.messages"
+      }
+    },
+    {
+      "key": "gen_ai.response.text",
+      "brief": "The model's response text messages. It has to be a stringified version of an array of response text messages.",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "[\"The weather in Paris is rainy and overcast, with temperatures around 57°F\", \"The weather in London is sunny and warm, with temperatures around 65°F\"]",
+      "alias": [],
+      "deprecation": {
+        "_status": null,
+        "replacement": "gen_ai.output.messages"
+      }
+    },
+    {
+      "key": "gen_ai.response.tool_calls",
+      "brief": "The tool calls in the model's response. It has to be a stringified version of an array of objects.",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "[{\"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]",
+      "alias": [],
+      "deprecation": {
+        "_status": null,
+        "replacement": "gen_ai.output.messages"
+      }
+    },
+    {
+      "key": "gen_ai.system.message",
+      "brief": "The system instructions passed to the model.",
+      "type": "string",
+      "pii": {
+        "key": "true"
+      },
+      "is_in_otel": false,
+      "example": "You are a helpful assistant",
+      "deprecation": {
+        "_status": null,
+        "replacement": "gen_ai.system_instructions"
+      }
+    },
+    {
       "key": "gen_ai.usage.completion_tokens",
       "brief": "The number of tokens used in the GenAI response (completion).",
       "type": "integer",

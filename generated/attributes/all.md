@@ -4,7 +4,7 @@
 
 This page lists all available attributes across all categories.
 
-Total attributes: 415
+Total attributes: 421
 
 ## Stable Attributes
 
@@ -81,13 +81,13 @@ Total attributes: 415
 | [`gen_ai.cost.output_tokens`](./gen_ai.md#gen_aicostoutput_tokens) | The cost of tokens used for creating the AI output in USD (without reasoning tokens). |
 | [`gen_ai.cost.total_tokens`](./gen_ai.md#gen_aicosttotal_tokens) | The total cost for the tokens used. |
 | [`gen_ai.embeddings.input`](./gen_ai.md#gen_aiembeddingsinput) | The input to the embeddings model. |
+| [`gen_ai.input.messages`](./gen_ai.md#gen_aiinputmessages) | The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. |
 | [`gen_ai.operation.name`](./gen_ai.md#gen_aioperationname) | The name of the operation being performed. |
 | [`gen_ai.operation.type`](./gen_ai.md#gen_aioperationtype) | The type of AI operation. Must be one of 'agent', 'ai_client', 'tool', 'handoff', 'guardrail'. Makes querying for spans in the UI easier. |
+| [`gen_ai.output.messages`](./gen_ai.md#gen_aioutputmessages) | The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. |
 | [`gen_ai.pipeline.name`](./gen_ai.md#gen_aipipelinename) | Name of the AI pipeline or chain being executed. |
-| [`gen_ai.request.available_tools`](./gen_ai.md#gen_airequestavailable_tools) | The available tools for the model. It has to be a stringified version of an array of objects. |
 | [`gen_ai.request.frequency_penalty`](./gen_ai.md#gen_airequestfrequency_penalty) | Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation. |
 | [`gen_ai.request.max_tokens`](./gen_ai.md#gen_airequestmax_tokens) | The maximum number of tokens to generate in the response. |
-| [`gen_ai.request.messages`](./gen_ai.md#gen_airequestmessages) | The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. |
 | [`gen_ai.request.model`](./gen_ai.md#gen_airequestmodel) | The model identifier being used for the request. |
 | [`gen_ai.request.presence_penalty`](./gen_ai.md#gen_airequestpresence_penalty) | Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies. |
 | [`gen_ai.request.seed`](./gen_ai.md#gen_airequestseed) | The seed, ideally models given the same seed and same other parameters will produce the exact same output. |
@@ -98,11 +98,12 @@ Total attributes: 415
 | [`gen_ai.response.id`](./gen_ai.md#gen_airesponseid) | Unique identifier for the completion. |
 | [`gen_ai.response.model`](./gen_ai.md#gen_airesponsemodel) | The vendor-specific ID of the model used. |
 | [`gen_ai.response.streaming`](./gen_ai.md#gen_airesponsestreaming) | Whether or not the AI model call's response was streamed back asynchronously |
-| [`gen_ai.response.text`](./gen_ai.md#gen_airesponsetext) | The model's response text messages. It has to be a stringified version of an array of response text messages. |
 | [`gen_ai.response.tokens_per_second`](./gen_ai.md#gen_airesponsetokens_per_second) | The total output tokens per seconds throughput |
-| [`gen_ai.response.tool_calls`](./gen_ai.md#gen_airesponsetool_calls) | The tool calls in the model's response. It has to be a stringified version of an array of objects. |
 | [`gen_ai.system`](./gen_ai.md#gen_aisystem) | The provider of the model. |
-| [`gen_ai.system.message`](./gen_ai.md#gen_aisystemmessage) | The system instructions passed to the model. |
+| [`gen_ai.system_instructions`](./gen_ai.md#gen_aisystem_instructions) | The system instructions passed to the model. |
+| [`gen_ai.tool.call.arguments`](./gen_ai.md#gen_aitoolcallarguments) | The arguments of the tool call. It has to be a stringified version of the arguments to the tool. |
+| [`gen_ai.tool.call.result`](./gen_ai.md#gen_aitoolcallresult) | The result of the tool call. It has to be a stringified version of the result of the tool. |
+| [`gen_ai.tool.definitions`](./gen_ai.md#gen_aitooldefinitions) | The list of source system tool definitions available to the GenAI agent or model. |
 | [`gen_ai.tool.description`](./gen_ai.md#gen_aitooldescription) | The description of the tool being used. |
 | [`gen_ai.tool.input`](./gen_ai.md#gen_aitoolinput) | The input of the tool being used. It has to be a stringified version of the input to the tool. |
 | [`gen_ai.tool.message`](./gen_ai.md#gen_aitoolmessage) | The response from a tool or function call passed to the model. |
@@ -389,6 +390,11 @@ Total attributes: 415
 | [`environment`](./general.md#environment) | [`sentry.environment`](./sentry.md#sentryenvironment) |
 | [`fs_error`](./general.md#fs_error) | [`error.type`](./error.md#errortype) |
 | [`gen_ai.prompt`](./gen_ai.md#gen_aiprompt) | No replacement |
+| [`gen_ai.request.available_tools`](./gen_ai.md#gen_airequestavailable_tools) | [`gen_ai.tool.definitions`](./gen_ai.md#gen_aitooldefinitions) |
+| [`gen_ai.request.messages`](./gen_ai.md#gen_airequestmessages) | [`gen_ai.input.messages`](./gen_ai.md#gen_aiinputmessages) |
+| [`gen_ai.response.text`](./gen_ai.md#gen_airesponsetext) | [`gen_ai.output.messages`](./gen_ai.md#gen_aioutputmessages) |
+| [`gen_ai.response.tool_calls`](./gen_ai.md#gen_airesponsetool_calls) | [`gen_ai.output.messages`](./gen_ai.md#gen_aioutputmessages) |
+| [`gen_ai.system.message`](./gen_ai.md#gen_aisystemmessage) | [`gen_ai.system_instructions`](./gen_ai.md#gen_aisystem_instructions) |
 | [`gen_ai.usage.completion_tokens`](./gen_ai.md#gen_aiusagecompletion_tokens) | [`gen_ai.usage.output_tokens`](./gen_ai.md#gen_aiusageoutput_tokens) |
 | [`gen_ai.usage.prompt_tokens`](./gen_ai.md#gen_aiusageprompt_tokens) | [`gen_ai.usage.input_tokens`](./gen_ai.md#gen_aiusageinput_tokens) |
 | [`http.client_ip`](./http.md#httpclient_ip) | [`client.address`](./client.md#clientaddress) |

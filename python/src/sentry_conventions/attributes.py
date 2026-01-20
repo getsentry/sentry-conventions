@@ -117,6 +117,11 @@ class _AttributeNamesMeta(type):
         "ENVIRONMENT",
         "FS_ERROR",
         "GEN_AI_PROMPT",
+        "GEN_AI_REQUEST_AVAILABLE_TOOLS",
+        "GEN_AI_REQUEST_MESSAGES",
+        "GEN_AI_RESPONSE_TEXT",
+        "GEN_AI_RESPONSE_TOOL_CALLS",
+        "GEN_AI_SYSTEM_MESSAGE",
         "GEN_AI_USAGE_COMPLETION_TOKENS",
         "GEN_AI_USAGE_PROMPT_TOKENS",
         "HTTP_CLIENT_IP",
@@ -1285,6 +1290,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "What's the weather in Paris?"
     """
 
+    # Path: model/attributes/gen_ai/gen_ai__input__messages.json
+    GEN_AI_INPUT_MESSAGES: Literal["gen_ai.input.messages"] = "gen_ai.input.messages"
+    """The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: Yes
+    Example: "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"Weather in Paris?\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"result\": \"rainy, 57°F\"}]}]"
+    """
+
     # Path: model/attributes/gen_ai/gen_ai__operation__name.json
     GEN_AI_OPERATION_NAME: Literal["gen_ai.operation.name"] = "gen_ai.operation.name"
     """The name of the operation being performed.
@@ -1303,6 +1318,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Example: "tool"
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__output__messages.json
+    GEN_AI_OUTPUT_MESSAGES: Literal["gen_ai.output.messages"] = "gen_ai.output.messages"
+    """The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: Yes
+    Example: "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"text\", \"content\": \"The weather in Paris is currently rainy with a temperature of 57°F.\"}], \"finish_reason\": \"stop\"}]"
     """
 
     # Path: model/attributes/gen_ai/gen_ai__pipeline__name.json
@@ -1336,6 +1361,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    DEPRECATED: Use gen_ai.tool.definitions instead
     Example: "[{\"name\": \"get_weather\", \"description\": \"Get the weather for a given location\"}, {\"name\": \"get_news\", \"description\": \"Get the news for a given topic\"}]"
     """
 
@@ -1374,6 +1400,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Aliases: ai.input_messages
+    DEPRECATED: Use gen_ai.input.messages instead
     Example: "[{\"role\": \"system\", \"content\": \"Generate a random number.\"}, {\"role\": \"user\", \"content\": [{\"text\": \"Generate a random number between 0 and 10.\", \"type\": \"text\"}]}, {\"role\": \"tool\", \"content\": {\"toolCallId\": \"1\", \"toolName\": \"Weather\", \"output\": \"rainy\"}}]"
     """
 
@@ -1501,6 +1528,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    DEPRECATED: Use gen_ai.output.messages instead
     Example: "[\"The weather in Paris is rainy and overcast, with temperatures around 57°F\", \"The weather in London is sunny and warm, with temperatures around 65°F\"]"
     """
 
@@ -1525,6 +1553,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    DEPRECATED: Use gen_ai.output.messages instead
     Example: "[{\"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]"
     """
 
@@ -1546,7 +1575,56 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: true
     Defined in OTEL: No
+    DEPRECATED: Use gen_ai.system_instructions instead
     Example: "You are a helpful assistant"
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__system_instructions.json
+    GEN_AI_SYSTEM_INSTRUCTIONS: Literal["gen_ai.system_instructions"] = (
+        "gen_ai.system_instructions"
+    )
+    """The system instructions passed to the model.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: Yes
+    Example: "You are a helpful assistant"
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__tool__call__arguments.json
+    GEN_AI_TOOL_CALL_ARGUMENTS: Literal["gen_ai.tool.call.arguments"] = (
+        "gen_ai.tool.call.arguments"
+    )
+    """The arguments of the tool call. It has to be a stringified version of the arguments to the tool.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: Yes
+    Example: "{\"location\": \"Paris\"}"
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__tool__call__result.json
+    GEN_AI_TOOL_CALL_RESULT: Literal["gen_ai.tool.call.result"] = (
+        "gen_ai.tool.call.result"
+    )
+    """The result of the tool call. It has to be a stringified version of the result of the tool.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: Yes
+    Example: "rainy, 57°F"
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__tool__definitions.json
+    GEN_AI_TOOL_DEFINITIONS: Literal["gen_ai.tool.definitions"] = (
+        "gen_ai.tool.definitions"
+    )
+    """The list of source system tool definitions available to the GenAI agent or model.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: Yes
+    Example: "[{\"type\": \"function\", \"name\": \"get_current_weather\", \"description\": \"Get the current weather in a given location\", \"parameters\": {\"type\": \"object\", \"properties\": {\"location\": {\"type\": \"string\", \"description\": \"The city and state, e.g. San Francisco, CA\"}, \"unit\": {\"type\": \"string\", \"enum\": [\"celsius\", \"fahrenheit\"]}}, \"required\": [\"location\", \"unit\"]}}]"
     """
 
     # Path: model/attributes/gen_ai/gen_ai__tool__description.json
@@ -5550,6 +5628,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="What's the weather in Paris?",
     ),
+    "gen_ai.input.messages": AttributeMetadata(
+        brief='The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.',
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=True,
+        example='[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
+    ),
     "gen_ai.operation.name": AttributeMetadata(
         brief="The name of the operation being performed.",
         type=AttributeType.STRING,
@@ -5563,6 +5648,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="tool",
+    ),
+    "gen_ai.output.messages": AttributeMetadata(
+        brief="The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=True,
+        example='[{"role": "assistant", "parts": [{"type": "text", "content": "The weather in Paris is currently rainy with a temperature of 57°F."}], "finish_reason": "stop"}]',
     ),
     "gen_ai.pipeline.name": AttributeMetadata(
         brief="Name of the AI pipeline or chain being executed.",
@@ -5588,6 +5680,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example='[{"name": "get_weather", "description": "Get the weather for a given location"}, {"name": "get_news", "description": "Get the news for a given topic"}]',
+        deprecation=DeprecationInfo(replacement="gen_ai.tool.definitions"),
     ),
     "gen_ai.request.frequency_penalty": AttributeMetadata(
         brief="Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.",
@@ -5610,6 +5703,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example='[{"role": "system", "content": "Generate a random number."}, {"role": "user", "content": [{"text": "Generate a random number between 0 and 10.", "type": "text"}]}, {"role": "tool", "content": {"toolCallId": "1", "toolName": "Weather", "output": "rainy"}}]',
+        deprecation=DeprecationInfo(replacement="gen_ai.input.messages"),
         aliases=["ai.input_messages"],
     ),
     "gen_ai.request.model": AttributeMetadata(
@@ -5697,6 +5791,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example='["The weather in Paris is rainy and overcast, with temperatures around 57°F", "The weather in London is sunny and warm, with temperatures around 65°F"]',
+        deprecation=DeprecationInfo(replacement="gen_ai.output.messages"),
     ),
     "gen_ai.response.tokens_per_second": AttributeMetadata(
         brief="The total output tokens per seconds throughput",
@@ -5711,6 +5806,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example='[{"name": "get_weather", "arguments": {"location": "Paris"}}]',
+        deprecation=DeprecationInfo(replacement="gen_ai.output.messages"),
     ),
     "gen_ai.system": AttributeMetadata(
         brief="The provider of the model.",
@@ -5726,6 +5822,35 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         example="You are a helpful assistant",
+        deprecation=DeprecationInfo(replacement="gen_ai.system_instructions"),
+    ),
+    "gen_ai.system_instructions": AttributeMetadata(
+        brief="The system instructions passed to the model.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=True,
+        example="You are a helpful assistant",
+    ),
+    "gen_ai.tool.call.arguments": AttributeMetadata(
+        brief="The arguments of the tool call. It has to be a stringified version of the arguments to the tool.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=True,
+        example='{"location": "Paris"}',
+    ),
+    "gen_ai.tool.call.result": AttributeMetadata(
+        brief="The result of the tool call. It has to be a stringified version of the result of the tool.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=True,
+        example="rainy, 57°F",
+    ),
+    "gen_ai.tool.definitions": AttributeMetadata(
+        brief="The list of source system tool definitions available to the GenAI agent or model.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=True,
+        example='[{"type": "function", "name": "get_current_weather", "description": "Get the current weather in a given location", "parameters": {"type": "object", "properties": {"location": {"type": "string", "description": "The city and state, e.g. San Francisco, CA"}, "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]}}, "required": ["location", "unit"]}}]',
     ),
     "gen_ai.tool.description": AttributeMetadata(
         brief="The description of the tool being used.",
@@ -8075,8 +8200,10 @@ Attributes = TypedDict(
         "gen_ai.cost.output_tokens": float,
         "gen_ai.cost.total_tokens": float,
         "gen_ai.embeddings.input": str,
+        "gen_ai.input.messages": str,
         "gen_ai.operation.name": str,
         "gen_ai.operation.type": str,
+        "gen_ai.output.messages": str,
         "gen_ai.pipeline.name": str,
         "gen_ai.prompt": str,
         "gen_ai.request.available_tools": str,
@@ -8098,6 +8225,10 @@ Attributes = TypedDict(
         "gen_ai.response.tool_calls": str,
         "gen_ai.system": str,
         "gen_ai.system.message": str,
+        "gen_ai.system_instructions": str,
+        "gen_ai.tool.call.arguments": str,
+        "gen_ai.tool.call.result": str,
+        "gen_ai.tool.definitions": str,
         "gen_ai.tool.description": str,
         "gen_ai.tool.input": str,
         "gen_ai.tool.message": str,

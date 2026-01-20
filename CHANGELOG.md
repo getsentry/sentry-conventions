@@ -9,6 +9,7 @@
 - feat(ai): Add gen_ai.usage.input_tokens.cache_write ([#217](https://github.com/getsentry/sentry-conventions/pull/217))
 - feat(attributes): Add sentry.normalized_db_query.hash ([#200](https://github.com/getsentry/sentry-conventions/pull/200))
 - feat(attributes): Add sentry.category attribute ([#218](https://github.com/getsentry/sentry-conventions/pull/218))
+- Add new Gen AI attributes ([#221](https://github.com/getsentry/sentry-conventions/pull/221))
 
 ## 0.3.1
 
@@ -55,11 +56,10 @@
 - feat(sentry): Add sentry.observed_timestamp_nanos ([#137](https://github.com/getsentry/sentry-conventions/pull/137))
 - dynamic-sampling: add field conventions for dynamic sampling context ([#128](https://github.com/getsentry/sentry-conventions/pull/128))
 - chore(ai): Clean up of `sentry._internal.segment.contains_gen_ai_spans` ([#155](https://github.com/getsentry/sentry-conventions/pull/155))
-- feat(attributes): Add sentry._internal.replay_is_buffering ([#159](https://github.com/getsentry/sentry-conventions/pull/159))
+- feat(attributes): Add sentry.\_internal.replay_is_buffering ([#159](https://github.com/getsentry/sentry-conventions/pull/159))
 - feat: Add vercel log drain attributes ([#163](https://github.com/getsentry/sentry-conventions/pull/163))
 - feat(attributes) add MCP related attributes ([#164](https://github.com/getsentry/sentry-conventions/pull/164))
 - feat(attributes): Add MDC log attributes ([#167](https://github.com/getsentry/sentry-conventions/pull/167))
-
 
 ### Fixes
 
