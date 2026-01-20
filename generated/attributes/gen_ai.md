@@ -144,7 +144,7 @@ The messages passed to the model. It has to be a stringified version of an array
 | Type | `string` |
 | Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
-| Example | `[{"role": "user", "parts": [{"type": "text", "content": "What is the weather in Paris?"}]}]` |
+| Example | `[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]` |
 
 ### gen_ai.operation.name
 

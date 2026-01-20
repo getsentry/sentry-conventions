@@ -2156,7 +2156,7 @@ export type GEN_AI_EMBEDDINGS_INPUT_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  *
- * @example "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"What is the weather in Paris?\"}]}]"
+ * @example "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"Weather in Paris?\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"result\": \"rainy, 57°F\"}]}]"
  */
 export const GEN_AI_INPUT_MESSAGES = 'gen_ai.input.messages';
 
@@ -10741,7 +10741,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
-    example: '[{"role": "user", "parts": [{"type": "text", "content": "What is the weather in Paris?"}]}]',
+    example:
+      '[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
   },
   [GEN_AI_OPERATION_NAME]: {
     brief: 'The name of the operation being performed.',
