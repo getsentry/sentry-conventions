@@ -148,7 +148,7 @@ The messages passed to the model. It has to be a stringified version of an array
 
 ### gen_ai.operation.name
 
-The name of the operation being performed.
+The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'embeddings', 'execute_tool', 'generate_content', 'invoke_agent', 'text_completion'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used.
 
 | Property | Value |
 | --- | --- |

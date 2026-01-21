@@ -2168,7 +2168,7 @@ export type GEN_AI_INPUT_MESSAGES_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__operation__name.json
 
 /**
- * The name of the operation being performed. `gen_ai.operation.name`
+ * The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'embeddings', 'execute_tool', 'generate_content', 'invoke_agent', 'text_completion'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used. `gen_ai.operation.name`
  *
  * Attribute Value Type: `string` {@link GEN_AI_OPERATION_NAME_TYPE}
  *
@@ -10767,7 +10767,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       '[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
   },
   [GEN_AI_OPERATION_NAME]: {
-    brief: 'The name of the operation being performed.',
+    brief:
+      "The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'embeddings', 'execute_tool', 'generate_content', 'invoke_agent', 'text_completion'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used.",
     type: 'string',
     pii: {
       isPii: 'maybe',
