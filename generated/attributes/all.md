@@ -82,7 +82,7 @@ Total attributes: 422
 | [`gen_ai.cost.total_tokens`](./gen_ai.md#gen_aicosttotal_tokens) | The total cost for the tokens used. |
 | [`gen_ai.embeddings.input`](./gen_ai.md#gen_aiembeddingsinput) | The input to the embeddings model. |
 | [`gen_ai.input.messages`](./gen_ai.md#gen_aiinputmessages) | The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. |
-| [`gen_ai.operation.name`](./gen_ai.md#gen_aioperationname) | The name of the operation being performed. |
+| [`gen_ai.operation.name`](./gen_ai.md#gen_aioperationname) | The name of the operation being performed. It has a following list of well-known values: 'chat', 'create_agent', 'embeddings', 'execute_tool', 'generate_content', 'invoke_agent', 'text_completion'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used. |
 | [`gen_ai.operation.type`](./gen_ai.md#gen_aioperationtype) | The type of AI operation. Must be one of 'agent', 'ai_client', 'tool', 'handoff', 'guardrail'. Makes querying for spans in the UI easier. |
 | [`gen_ai.output.messages`](./gen_ai.md#gen_aioutputmessages) | The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. |
 | [`gen_ai.pipeline.name`](./gen_ai.md#gen_aipipelinename) | Name of the AI pipeline or chain being executed. |
