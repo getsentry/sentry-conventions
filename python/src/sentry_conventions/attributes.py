@@ -105,6 +105,7 @@ class _AttributeNamesMeta(type):
         "AI_TOP_K",
         "AI_TOP_P",
         "AI_TOTAL_TOKENS_USED",
+        "CLS",
         "CODE_FILEPATH",
         "CODE_FUNCTION",
         "CODE_LINENO",
@@ -635,6 +636,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "120.0.6099.130"
     """
 
+    # Path: model/attributes/browser/browser__web_vital__cls__value.json
+    BROWSER_WEB_VITAL_CLS_VALUE: Literal["browser.web_vital.cls.value"] = (
+        "browser.web_vital.cls.value"
+    )
+    """The value of the recorded Cumulative Layout Shift (CLS) web vital
+
+    Type: float
+    Contains PII: false
+    Defined in OTEL: No
+    Aliases: cls
+    Example: 0.2361
+    """
+
     # Path: model/attributes/cache/cache__hit.json
     CACHE_HIT: Literal["cache.hit"] = "cache.hit"
     """If the cache was hit during this span.
@@ -748,6 +762,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Example: 12
+    """
+
+    # Path: model/attributes/cls.json
+    CLS: Literal["cls"] = "cls"
+    """The value of the recorded Cumulative Layout Shift (CLS) web vital
+
+    Type: float
+    Contains PII: false
+    Defined in OTEL: No
+    Aliases: browser.web_vital.cls.value
+    DEPRECATED: Use browser.web_vital.cls.value instead - The CLS web vital is now recorded as a browser.web_vital.cls.value attribute.
+    Example: 0.2361
     """
 
     # Path: model/attributes/code/code__file__path.json
@@ -5155,6 +5181,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="120.0.6099.130",
         aliases=["sentry.browser.version"],
     ),
+    "browser.web_vital.cls.value": AttributeMetadata(
+        brief="The value of the recorded Cumulative Layout Shift (CLS) web vital",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=0.2361,
+        aliases=["cls"],
+        sdks=["javascript-browser"],
+    ),
     "cache.hit": AttributeMetadata(
         brief="If the cache was hit during this span.",
         type=AttributeType.BOOLEAN,
@@ -5240,6 +5275,20 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=12,
         sdks=["javascript-cloudflare"],
+    ),
+    "cls": AttributeMetadata(
+        brief="The value of the recorded Cumulative Layout Shift (CLS) web vital",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=0.2361,
+        deprecation=DeprecationInfo(
+            replacement="browser.web_vital.cls.value",
+            reason="The CLS web vital is now recorded as a browser.web_vital.cls.value attribute.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["browser.web_vital.cls.value"],
+        sdks=["javascript-browser"],
     ),
     "code.file.path": AttributeMetadata(
         brief="The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).",
@@ -8156,6 +8205,7 @@ Attributes = TypedDict(
         "browser.script.invoker_type": str,
         "browser.script.source_char_position": int,
         "browser.version": str,
+        "browser.web_vital.cls.value": float,
         "cache.hit": bool,
         "cache.item_size": int,
         "cache.key": List[str],
@@ -8167,6 +8217,7 @@ Attributes = TypedDict(
         "cloudflare.d1.duration": int,
         "cloudflare.d1.rows_read": int,
         "cloudflare.d1.rows_written": int,
+        "cls": float,
         "code.file.path": str,
         "code.filepath": str,
         "code.function": str,

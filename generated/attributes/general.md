@@ -10,6 +10,7 @@
   - [previous_route](#previous_route)
   - [type](#type)
 - [Deprecated Attributes](#deprecated-attributes)
+  - [cls](#cls)
   - [environment](#environment)
   - [fs_error](#fs_error)
   - [method](#method)
@@ -91,6 +92,20 @@ More granular type of the operation happening.
 ## Deprecated Attributes
 
 These attributes are deprecated and will be removed in a future version. Please use the recommended replacements.
+
+### cls
+
+The value of the recorded Cumulative Layout Shift (CLS) web vital
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `0.2361` |
+| Deprecated | Yes, use `browser.web_vital.cls.value` instead |
+| Deprecation Reason | The CLS web vital is now recorded as a browser.web_vital.cls.value attribute. |
+| Aliases | `browser.web_vital.cls.value` |
 
 ### environment
 

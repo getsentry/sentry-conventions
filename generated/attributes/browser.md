@@ -9,6 +9,7 @@
   - [browser.script.invoker_type](#browserscriptinvoker_type)
   - [browser.script.source_char_position](#browserscriptsource_char_position)
   - [browser.version](#browserversion)
+  - [browser.web_vital.cls.value](#browserweb_vitalclsvalue)
 
 ## Stable Attributes
 
@@ -79,4 +80,16 @@ The version of the browser.
 | Exists in OpenTelemetry | No |
 | Example | `120.0.6099.130` |
 | Aliases | `sentry.browser.version` |
+
+### browser.web_vital.cls.value
+
+The value of the recorded Cumulative Layout Shift (CLS) web vital
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `0.2361` |
+| Aliases | `cls` |
 

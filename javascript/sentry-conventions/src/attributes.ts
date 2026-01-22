@@ -878,6 +878,28 @@ export const BROWSER_VERSION = 'browser.version';
  */
 export type BROWSER_VERSION_TYPE = string;
 
+// Path: model/attributes/browser/browser__web_vital__cls__value.json
+
+/**
+ * The value of the recorded Cumulative Layout Shift (CLS) web vital `browser.web_vital.cls.value`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_CLS_VALUE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link CLS} `cls`
+ *
+ * @example 0.2361
+ */
+export const BROWSER_WEB_VITAL_CLS_VALUE = 'browser.web_vital.cls.value';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_CLS_VALUE} browser.web_vital.cls.value
+ */
+export type BROWSER_WEB_VITAL_CLS_VALUE_TYPE = number;
+
 // Path: model/attributes/cache/cache__hit.json
 
 /**
@@ -1099,6 +1121,29 @@ export const CLOUDFLARE_D1_ROWS_WRITTEN = 'cloudflare.d1.rows_written';
  * Type for {@link CLOUDFLARE_D1_ROWS_WRITTEN} cloudflare.d1.rows_written
  */
 export type CLOUDFLARE_D1_ROWS_WRITTEN_TYPE = number;
+
+// Path: model/attributes/cls.json
+
+/**
+ * The value of the recorded Cumulative Layout Shift (CLS) web vital `cls`
+ *
+ * Attribute Value Type: `number` {@link CLS_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link BROWSER_WEB_VITAL_CLS_VALUE} `browser.web_vital.cls.value`
+ *
+ * @deprecated Use {@link BROWSER_WEB_VITAL_CLS_VALUE} (browser.web_vital.cls.value) instead - The CLS web vital is now recorded as a browser.web_vital.cls.value attribute.
+ * @example 0.2361
+ */
+export const CLS = 'cls';
+
+/**
+ * Type for {@link CLS} cls
+ */
+export type CLS_TYPE = number;
 
 // Path: model/attributes/code/code__filepath.json
 
@@ -8849,6 +8894,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [BROWSER_SCRIPT_INVOKER_TYPE]: 'string',
   [BROWSER_SCRIPT_SOURCE_CHAR_POSITION]: 'integer',
   [BROWSER_VERSION]: 'string',
+  [BROWSER_WEB_VITAL_CLS_VALUE]: 'double',
   [CACHE_HIT]: 'boolean',
   [CACHE_ITEM_SIZE]: 'integer',
   [CACHE_KEY]: 'string[]',
@@ -8860,6 +8906,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [CLOUDFLARE_D1_DURATION]: 'integer',
   [CLOUDFLARE_D1_ROWS_READ]: 'integer',
   [CLOUDFLARE_D1_ROWS_WRITTEN]: 'integer',
+  [CLS]: 'double',
   [CODE_FILEPATH]: 'string',
   [CODE_FILE_PATH]: 'string',
   [CODE_FUNCTION]: 'string',
@@ -9274,6 +9321,7 @@ export type AttributeName =
   | typeof BROWSER_SCRIPT_INVOKER_TYPE
   | typeof BROWSER_SCRIPT_SOURCE_CHAR_POSITION
   | typeof BROWSER_VERSION
+  | typeof BROWSER_WEB_VITAL_CLS_VALUE
   | typeof CACHE_HIT
   | typeof CACHE_ITEM_SIZE
   | typeof CACHE_KEY
@@ -9285,6 +9333,7 @@ export type AttributeName =
   | typeof CLOUDFLARE_D1_DURATION
   | typeof CLOUDFLARE_D1_ROWS_READ
   | typeof CLOUDFLARE_D1_ROWS_WRITTEN
+  | typeof CLS
   | typeof CODE_FILEPATH
   | typeof CODE_FILE_PATH
   | typeof CODE_FUNCTION
@@ -10122,6 +10171,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '120.0.6099.130',
     aliases: [SENTRY_BROWSER_VERSION],
   },
+  [BROWSER_WEB_VITAL_CLS_VALUE]: {
+    brief: 'The value of the recorded Cumulative Layout Shift (CLS) web vital',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 0.2361,
+    aliases: [CLS],
+    sdks: ['javascript-browser'],
+  },
   [CACHE_HIT]: {
     brief: 'If the cache was hit during this span.',
     type: 'boolean',
@@ -10230,6 +10290,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 12,
     sdks: ['javascript-cloudflare'],
+  },
+  [CLS]: {
+    brief: 'The value of the recorded Cumulative Layout Shift (CLS) web vital',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 0.2361,
+    deprecation: {
+      replacement: 'browser.web_vital.cls.value',
+      reason: 'The CLS web vital is now recorded as a browser.web_vital.cls.value attribute.',
+    },
+    aliases: [BROWSER_WEB_VITAL_CLS_VALUE],
+    sdks: ['javascript-browser'],
   },
   [CODE_FILEPATH]: {
     brief:
@@ -14026,6 +14101,7 @@ export type Attributes = {
   [BROWSER_SCRIPT_INVOKER_TYPE]?: BROWSER_SCRIPT_INVOKER_TYPE_TYPE;
   [BROWSER_SCRIPT_SOURCE_CHAR_POSITION]?: BROWSER_SCRIPT_SOURCE_CHAR_POSITION_TYPE;
   [BROWSER_VERSION]?: BROWSER_VERSION_TYPE;
+  [BROWSER_WEB_VITAL_CLS_VALUE]?: BROWSER_WEB_VITAL_CLS_VALUE_TYPE;
   [CACHE_HIT]?: CACHE_HIT_TYPE;
   [CACHE_ITEM_SIZE]?: CACHE_ITEM_SIZE_TYPE;
   [CACHE_KEY]?: CACHE_KEY_TYPE;
@@ -14037,6 +14113,7 @@ export type Attributes = {
   [CLOUDFLARE_D1_DURATION]?: CLOUDFLARE_D1_DURATION_TYPE;
   [CLOUDFLARE_D1_ROWS_READ]?: CLOUDFLARE_D1_ROWS_READ_TYPE;
   [CLOUDFLARE_D1_ROWS_WRITTEN]?: CLOUDFLARE_D1_ROWS_WRITTEN_TYPE;
+  [CLS]?: CLS_TYPE;
   [CODE_FILEPATH]?: CODE_FILEPATH_TYPE;
   [CODE_FILE_PATH]?: CODE_FILE_PATH_TYPE;
   [CODE_FUNCTION]?: CODE_FUNCTION_TYPE;
