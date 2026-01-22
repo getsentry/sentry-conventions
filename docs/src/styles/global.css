@@ -41,9 +41,6 @@
     @apply text-accent transition-colors duration-fast;
   }
 
-  a:hover {
-    @apply text-accent-hover;
-  }
 
   code {
     @apply font-mono text-[0.9em] px-2 py-1 bg-bg-elevated rounded-sm border border-border;
@@ -104,6 +101,20 @@
     @apply bg-bg-elevated text-text-primary border border-border hover:bg-bg-hover hover:border-border-light;
   }
 
+  /* Form inputs */
+  .form-input {
+    @apply w-full p-3 bg-bg-elevated border border-border rounded-md text-sm text-text-primary font-sans transition-colors duration-fast focus:outline-none focus:border-accent;
+  }
+
+  .form-input-error {
+    @apply border-error;
+  }
+
+  /* Navigation links */
+  .nav-link {
+    @apply inline-flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-md transition-all duration-fast;
+  }
+
   /* Badges */
   .badge {
     @apply inline-flex items-center px-2 py-1 text-xs font-medium rounded-sm uppercase tracking-wide;
@@ -119,6 +130,10 @@
 
   .badge-dynamic {
     @apply bg-warning/15 text-warning;
+  }
+
+  .badge-type {
+    @apply text-xs px-2 py-0.5 rounded-sm font-sans bg-bg-elevated text-text-muted;
   }
 
   /* Cards */
@@ -162,6 +177,10 @@
   .visually-hidden {
     @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
     clip: rect(0, 0, 0, 0);
+  }
+
+  .transition-fast {
+    @apply transition-all duration-fast;
   }
 }
 

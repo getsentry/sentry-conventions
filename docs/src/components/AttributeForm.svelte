@@ -167,11 +167,9 @@
     window.open(githubUrl.toString(), '_blank');
   }
 
-  $: inputClasses = "w-full p-3 bg-bg-elevated border border-border rounded-md text-sm text-text-primary font-sans transition-colors duration-fast focus:outline-none focus:border-accent";
-  $: errorInputClasses = "w-full p-3 bg-bg-elevated border border-error rounded-md text-sm text-text-primary font-sans transition-colors duration-fast focus:outline-none focus:border-accent";
 </script>
 
-<div class="max-w-[700px]">
+<div class="max-w-form">
   <div class="bg-bg-secondary border border-border rounded-lg p-6 mb-6">
     <h3 class="text-lg mb-5 pb-3 border-b border-border">Basic Information</h3>
     
@@ -181,7 +179,7 @@
         id="category"
         bind:value={formData.category}
         on:change={() => errors = { ...errors, category: undefined }}
-        class={errors.category ? errorInputClasses : inputClasses}
+        class={errors.category ? "form-input form-input-error" : "form-input"}
       >
         <option value="">Select a category...</option>
         {#each CATEGORIES as cat}
@@ -201,7 +199,7 @@
         placeholder="e.g., http.request.method"
         bind:value={formData.key}
         on:input={() => errors = { ...errors, key: undefined }}
-        class={errors.key ? errorInputClasses : inputClasses}
+        class={errors.key ? "form-input form-input-error" : "form-input"}
       />
       <span class="block text-xs text-text-muted mt-1">Use lowercase with dots. For dynamic keys, use &lt;key&gt;.</span>
       {#if errors.key}
@@ -217,7 +215,7 @@
         bind:value={formData.brief}
         on:input={() => errors = { ...errors, brief: undefined }}
         rows="3"
-        class={errors.brief ? errorInputClasses : inputClasses}
+        class={errors.brief ? "form-input form-input-error" : "form-input"}
       ></textarea>
       {#if errors.brief}
         <span class="block text-xs text-error mt-1">{errors.brief}</span>
@@ -230,7 +228,7 @@
         <select
           id="type"
           bind:value={formData.type}
-          class={inputClasses}
+          class="form-input"
         >
           {#each ATTRIBUTE_TYPES as type}
             <option value={type}>{type}</option>
@@ -245,7 +243,7 @@
           type="text"
           placeholder="e.g., GET"
           bind:value={formData.example}
-          class={inputClasses}
+          class="form-input"
         />
       </div>
     </div>
@@ -260,7 +258,7 @@
         <select
           id="piiKey"
           bind:value={formData.piiKey}
-          class={inputClasses}
+          class="form-input"
         >
           <option value="false">No - never contains PII</option>
           <option value="maybe">Maybe - could contain PII</option>
@@ -275,7 +273,7 @@
           type="text"
           placeholder="Optional explanation"
           bind:value={formData.piiReason}
-          class={inputClasses}
+          class="form-input"
         />
       </div>
     </div>
@@ -313,7 +311,7 @@
         type="text"
         placeholder="Comma-separated list of aliases"
         bind:value={formData.aliases}
-        class={inputClasses}
+        class="form-input"
       />
       <span class="block text-xs text-text-muted mt-1">Other attribute names that map to this one</span>
     </div>

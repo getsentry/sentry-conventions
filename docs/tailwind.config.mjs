@@ -34,6 +34,10 @@ export default {
         error: '#c25450',
         info: '#5c9fd4',
 
+        // Code syntax highlighting
+        'code-string': '#98c379',
+        'code-number': '#d19a66',
+
         // PII indicator colors
         pii: {
           true: '#c25450',
@@ -61,6 +65,9 @@ export default {
       },
       maxWidth: {
         content: '1280px',
+        form: '700px',
+        page: '768px',
+        'content-wide': '896px',
       },
       borderRadius: {
         sm: '4px',
