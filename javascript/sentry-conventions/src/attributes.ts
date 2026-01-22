@@ -919,6 +919,28 @@ export const BROWSER_WEB_VITAL_CLS_VALUE = 'browser.web_vital.cls.value';
  */
 export type BROWSER_WEB_VITAL_CLS_VALUE_TYPE = number;
 
+// Path: model/attributes/browser/browser__web_vital__lcp__value.json
+
+/**
+ * The value of the recorded Largest Contentful Paint (LCP) web vital `browser.web_vital.lcp.value`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_LCP_VALUE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link LCP} `lcp`
+ *
+ * @example 2500
+ */
+export const BROWSER_WEB_VITAL_LCP_VALUE = 'browser.web_vital.lcp.value';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_LCP_VALUE} browser.web_vital.lcp.value
+ */
+export type BROWSER_WEB_VITAL_LCP_VALUE_TYPE = number;
+
 // Path: model/attributes/cache/cache__hit.json
 
 /**
@@ -4246,6 +4268,29 @@ export const JVM_THREAD_STATE = 'jvm.thread.state';
  * Type for {@link JVM_THREAD_STATE} jvm.thread.state
  */
 export type JVM_THREAD_STATE_TYPE = string;
+
+// Path: model/attributes/lcp.json
+
+/**
+ * The value of the recorded Largest Contentful Paint (LCP) web vital `lcp`
+ *
+ * Attribute Value Type: `number` {@link LCP_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link BROWSER_WEB_VITAL_LCP_VALUE} `browser.web_vital.lcp.value`
+ *
+ * @deprecated Use {@link BROWSER_WEB_VITAL_LCP_VALUE} (browser.web_vital.lcp.value) instead - The LCP web vital is now recorded as a browser.web_vital.lcp.value attribute.
+ * @example 2500
+ */
+export const LCP = 'lcp';
+
+/**
+ * Type for {@link LCP} lcp
+ */
+export type LCP_TYPE = number;
 
 // Path: model/attributes/lcp/lcp__element.json
 
@@ -9084,6 +9129,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [BROWSER_SCRIPT_SOURCE_CHAR_POSITION]: 'integer',
   [BROWSER_VERSION]: 'string',
   [BROWSER_WEB_VITAL_CLS_VALUE]: 'double',
+  [BROWSER_WEB_VITAL_LCP_VALUE]: 'double',
   [CACHE_HIT]: 'boolean',
   [CACHE_ITEM_SIZE]: 'integer',
   [CACHE_KEY]: 'string[]',
@@ -9242,6 +9288,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [JVM_MEMORY_TYPE]: 'string',
   [JVM_THREAD_DAEMON]: 'boolean',
   [JVM_THREAD_STATE]: 'string',
+  [LCP]: 'double',
   [LCP_ELEMENT]: 'string',
   [LCP_ID]: 'string',
   [LCP_SIZE]: 'integer',
@@ -9518,6 +9565,7 @@ export type AttributeName =
   | typeof BROWSER_SCRIPT_SOURCE_CHAR_POSITION
   | typeof BROWSER_VERSION
   | typeof BROWSER_WEB_VITAL_CLS_VALUE
+  | typeof BROWSER_WEB_VITAL_LCP_VALUE
   | typeof CACHE_HIT
   | typeof CACHE_ITEM_SIZE
   | typeof CACHE_KEY
@@ -9676,6 +9724,7 @@ export type AttributeName =
   | typeof JVM_MEMORY_TYPE
   | typeof JVM_THREAD_DAEMON
   | typeof JVM_THREAD_STATE
+  | typeof LCP
   | typeof LCP_ELEMENT
   | typeof LCP_ID
   | typeof LCP_SIZE
@@ -10504,6 +10553,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 0.2361,
     aliases: [CLS],
+    sdks: ['javascript-browser'],
+  },
+  [BROWSER_WEB_VITAL_LCP_VALUE]: {
+    brief: 'The value of the recorded Largest Contentful Paint (LCP) web vital',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 2500,
+    aliases: [LCP],
     sdks: ['javascript-browser'],
   },
   [CACHE_HIT]: {
@@ -12459,6 +12519,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'blocked',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+  },
+  [LCP]: {
+    brief: 'The value of the recorded Largest Contentful Paint (LCP) web vital',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 2500,
+    deprecation: {
+      replacement: 'browser.web_vital.lcp.value',
+      reason: 'The LCP web vital is now recorded as a browser.web_vital.lcp.value attribute.',
+    },
+    aliases: [BROWSER_WEB_VITAL_LCP_VALUE],
+    sdks: ['javascript-browser'],
   },
   [LCP_ELEMENT]: {
     brief: 'The dom element responsible for the largest contentful paint.',
@@ -15052,6 +15127,7 @@ export type Attributes = {
   [BROWSER_SCRIPT_SOURCE_CHAR_POSITION]?: BROWSER_SCRIPT_SOURCE_CHAR_POSITION_TYPE;
   [BROWSER_VERSION]?: BROWSER_VERSION_TYPE;
   [BROWSER_WEB_VITAL_CLS_VALUE]?: BROWSER_WEB_VITAL_CLS_VALUE_TYPE;
+  [BROWSER_WEB_VITAL_LCP_VALUE]?: BROWSER_WEB_VITAL_LCP_VALUE_TYPE;
   [CACHE_HIT]?: CACHE_HIT_TYPE;
   [CACHE_ITEM_SIZE]?: CACHE_ITEM_SIZE_TYPE;
   [CACHE_KEY]?: CACHE_KEY_TYPE;
@@ -15210,6 +15286,7 @@ export type Attributes = {
   [JVM_MEMORY_TYPE]?: JVM_MEMORY_TYPE_TYPE;
   [JVM_THREAD_DAEMON]?: JVM_THREAD_DAEMON_TYPE;
   [JVM_THREAD_STATE]?: JVM_THREAD_STATE_TYPE;
+  [LCP]?: LCP_TYPE;
   [LCP_ELEMENT]?: LCP_ELEMENT_TYPE;
   [LCP_ID]?: LCP_ID_TYPE;
   [LCP_SIZE]?: LCP_SIZE_TYPE;
