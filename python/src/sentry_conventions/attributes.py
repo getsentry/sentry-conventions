@@ -1532,6 +1532,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "[\"The weather in Paris is rainy and overcast, with temperatures around 57°F\", \"The weather in London is sunny and warm, with temperatures around 65°F\"]"
     """
 
+    # Path: model/attributes/gen_ai/gen_ai__response__time_to_first_token.json
+    GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN: Literal[
+        "gen_ai.response.time_to_first_token"
+    ] = "gen_ai.response.time_to_first_token"
+    """Time in seconds when the first response content chunk arrived in streaming responses.
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: 0.6853435
+    """
+
     # Path: model/attributes/gen_ai/gen_ai__response__tokens_per_second.json
     GEN_AI_RESPONSE_TOKENS_PER_SECOND: Literal["gen_ai.response.tokens_per_second"] = (
         "gen_ai.response.tokens_per_second"
@@ -5803,6 +5815,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example='["The weather in Paris is rainy and overcast, with temperatures around 57°F", "The weather in London is sunny and warm, with temperatures around 65°F"]',
         deprecation=DeprecationInfo(replacement="gen_ai.output.messages"),
     ),
+    "gen_ai.response.time_to_first_token": AttributeMetadata(
+        brief="Time in seconds when the first response content chunk arrived in streaming responses.",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=0.6853435,
+    ),
     "gen_ai.response.tokens_per_second": AttributeMetadata(
         brief="The total output tokens per seconds throughput",
         type=AttributeType.DOUBLE,
@@ -8238,6 +8257,7 @@ Attributes = TypedDict(
         "gen_ai.response.model": str,
         "gen_ai.response.streaming": bool,
         "gen_ai.response.text": str,
+        "gen_ai.response.time_to_first_token": float,
         "gen_ai.response.tokens_per_second": float,
         "gen_ai.response.tool_calls": str,
         "gen_ai.system": str,

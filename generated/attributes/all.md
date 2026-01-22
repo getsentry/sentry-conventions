@@ -4,7 +4,7 @@
 
 This page lists all available attributes across all categories.
 
-Total attributes: 422
+Total attributes: 423
 
 ## Stable Attributes
 
@@ -98,6 +98,7 @@ Total attributes: 422
 | [`gen_ai.response.id`](./gen_ai.md#gen_airesponseid) | Unique identifier for the completion. |
 | [`gen_ai.response.model`](./gen_ai.md#gen_airesponsemodel) | The vendor-specific ID of the model used. |
 | [`gen_ai.response.streaming`](./gen_ai.md#gen_airesponsestreaming) | Whether or not the AI model call's response was streamed back asynchronously |
+| [`gen_ai.response.time_to_first_token`](./gen_ai.md#gen_airesponsetime_to_first_token) | Time in seconds when the first response content chunk arrived in streaming responses. |
 | [`gen_ai.response.tokens_per_second`](./gen_ai.md#gen_airesponsetokens_per_second) | The total output tokens per seconds throughput |
 | [`gen_ai.system`](./gen_ai.md#gen_aisystem) | The provider of the model. |
 | [`gen_ai.system_instructions`](./gen_ai.md#gen_aisystem_instructions) | The system instructions passed to the model. |

@@ -1,0 +1,10 @@
+{
+  "key": "gen_ai.response.time_to_first_token",
+  "brief": "Time in seconds when the first response content chunk arrived in streaming responses.",
+  "type": "double",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": 0.6853435
+}

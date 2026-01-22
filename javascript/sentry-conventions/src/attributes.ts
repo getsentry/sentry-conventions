@@ -2593,6 +2593,26 @@ export const GEN_AI_RESPONSE_TEXT = 'gen_ai.response.text';
  */
 export type GEN_AI_RESPONSE_TEXT_TYPE = string;
 
+// Path: model/attributes/gen_ai/gen_ai__response__time_to_first_token.json
+
+/**
+ * Time in seconds when the first response content chunk arrived in streaming responses. `gen_ai.response.time_to_first_token`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 0.6853435
+ */
+export const GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN = 'gen_ai.response.time_to_first_token';
+
+/**
+ * Type for {@link GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN} gen_ai.response.time_to_first_token
+ */
+export type GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN_TYPE = number;
+
 // Path: model/attributes/gen_ai/gen_ai__response__tokens_per_second.json
 
 /**
@@ -8931,6 +8951,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [GEN_AI_RESPONSE_MODEL]: 'string',
   [GEN_AI_RESPONSE_STREAMING]: 'boolean',
   [GEN_AI_RESPONSE_TEXT]: 'string',
+  [GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN]: 'double',
   [GEN_AI_RESPONSE_TOKENS_PER_SECOND]: 'double',
   [GEN_AI_RESPONSE_TOOL_CALLS]: 'string',
   [GEN_AI_SYSTEM]: 'string',
@@ -9356,6 +9377,7 @@ export type AttributeName =
   | typeof GEN_AI_RESPONSE_MODEL
   | typeof GEN_AI_RESPONSE_STREAMING
   | typeof GEN_AI_RESPONSE_TEXT
+  | typeof GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN
   | typeof GEN_AI_RESPONSE_TOKENS_PER_SECOND
   | typeof GEN_AI_RESPONSE_TOOL_CALLS
   | typeof GEN_AI_SYSTEM
@@ -10983,6 +11005,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.output.messages',
     },
+  },
+  [GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN]: {
+    brief: 'Time in seconds when the first response content chunk arrived in streaming responses.',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 0.6853435,
   },
   [GEN_AI_RESPONSE_TOKENS_PER_SECOND]: {
     brief: 'The total output tokens per seconds throughput',
@@ -14108,6 +14139,7 @@ export type Attributes = {
   [GEN_AI_RESPONSE_MODEL]?: GEN_AI_RESPONSE_MODEL_TYPE;
   [GEN_AI_RESPONSE_STREAMING]?: GEN_AI_RESPONSE_STREAMING_TYPE;
   [GEN_AI_RESPONSE_TEXT]?: GEN_AI_RESPONSE_TEXT_TYPE;
+  [GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN]?: GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN_TYPE;
   [GEN_AI_RESPONSE_TOKENS_PER_SECOND]?: GEN_AI_RESPONSE_TOKENS_PER_SECOND_TYPE;
   [GEN_AI_RESPONSE_TOOL_CALLS]?: GEN_AI_RESPONSE_TOOL_CALLS_TYPE;
   [GEN_AI_SYSTEM]?: GEN_AI_SYSTEM_TYPE;
