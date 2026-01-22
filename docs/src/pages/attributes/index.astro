@@ -1,7 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AttributeCard from '../../components/AttributeCard.astro';
+import CategoryChip from '../../components/CategoryChip.astro';
 import { getCollection } from 'astro:content';
+import { parseAttributeId } from '../../utils/category';
 
 // Get all attributes
 const allAttributes = await getCollection('attributes');
@@ -10,8 +12,7 @@ const allAttributes = await getCollection('attributes');
 const categoryMap = new Map<string, typeof allAttributes>();
 
 for (const attr of allAttributes) {
-  const parts = attr.id.split('/');
-  const category = parts.length > 1 ? parts[0] : 'general';
+  const { category } = parseAttributeId(attr.id);
   
   if (!categoryMap.has(category)) {
     categoryMap.set(category, []);
@@ -64,10 +65,11 @@ const deprecatedCount = totalAttributes - stableCount;
     <span class="text-sm text-text-muted whitespace-nowrap pt-1">Jump to:</span>
     <div class="flex flex-wrap gap-2">
       {sortedCategories.map(category => (
-        <a href={`#${category}`} class="category-chip">
-          {category}
-          <span class="text-xs px-1 bg-bg-primary rounded-full text-text-muted">{categoryMap.get(category)?.length}</span>
-        </a>
+        <CategoryChip
+          name={category}
+          count={categoryMap.get(category)?.length || 0}
+          href={`#${category}`}
+        />
       ))}
     </div>
   </nav>

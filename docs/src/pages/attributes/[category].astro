@@ -2,16 +2,16 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AttributeCard from '../../components/AttributeCard.astro';
 import { getCollection } from 'astro:content';
+import { parseAttributeId } from '../../utils/category';
 
 export async function getStaticPaths() {
   const allAttributes = await getCollection('attributes');
-  
+
   // Build category map
   const categoryMap = new Map<string, typeof allAttributes>();
-  
+
   for (const attr of allAttributes) {
-    const parts = attr.id.split('/');
-    const category = parts.length > 1 ? parts[0] : 'general';
+    const { category } = parseAttributeId(attr.id);
     
     if (!categoryMap.has(category)) {
       categoryMap.set(category, []);
@@ -63,9 +63,9 @@ const categoryTitle = category!.charAt(0).toUpperCase() + category!.slice(1);
           <a 
             href={`${import.meta.env.BASE_URL}attributes/${cat}/`}
             class:list={[
-              "text-sm px-2 py-1 rounded-sm transition-all duration-fast",
-              cat === category 
-                ? "bg-accent-soft text-accent" 
+              "text-sm px-2 py-1 rounded-sm transition-fast",
+              cat === category
+                ? "bg-accent-soft text-accent"
                 : "text-text-secondary hover:bg-bg-hover hover:text-text-primary"
             ]}
           >

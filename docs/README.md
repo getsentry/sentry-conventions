@@ -7,7 +7,8 @@ This is the Astro-based documentation site for Sentry Semantic Conventions.
 - **Static Site Generation** - Built with [Astro](https://astro.build) for fast, static pages
 - **Instant Search** - cmd+k / ctrl+k search powered by [Pagefind](https://pagefind.app)
 - **Type-Safe Content** - Content collections with Zod schema validation
-- **Interactive Components** - React islands for search and forms
+- **Interactive Components** - Svelte components for search and forms
+- **Tailwind CSS** - Utility-first CSS framework for styling
 - **Attribute Creation** - Form-based attribute creation with GitHub PR integration
 
 ## Development
@@ -32,33 +33,6 @@ Or from within the `docs/` directory:
 yarn dev
 yarn build
 yarn preview
-```
-
-## Project Structure
-
-```
-docs/
-├── src/
-│   ├── components/       # Astro and React components
-│   │   ├── AttributeCard.astro
-│   │   ├── AttributeForm.tsx
-│   │   ├── PiiBadge.astro
-│   │   ├── SearchModal.tsx
-│   │   └── TypeBadge.astro
-│   ├── content.config.ts # Content collection schemas
-│   ├── layouts/
-│   │   └── BaseLayout.astro
-│   ├── pages/
-│   │   ├── index.astro
-│   │   ├── attributes/   # Attribute documentation
-│   │   └── names/        # Span name documentation
-│   └── styles/
-│       └── global.css
-├── public/
-│   ├── favicon.svg
-│   └── .nojekyll
-├── astro.config.mjs
-└── package.json
 ```
 
 ## Content Collections
@@ -90,11 +64,11 @@ Create a new `.astro` file in `src/pages/`. The file path determines the URL:
 
 ### Adding interactive components
 
-For client-side interactivity, create a React component (`.tsx`) and use the `client:load` directive:
+For client-side interactivity, create a Svelte component (`.svelte`) and use the `client:load` directive:
 
 ```astro
 ---
-import MyComponent from '../components/MyComponent';
+import MyComponent from '../components/MyComponent.svelte';
 ---
 
 <MyComponent client:load />
@@ -102,4 +76,8 @@ import MyComponent from '../components/MyComponent';
 
 ### Styling
 
-Global styles are in `src/styles/global.css` using CSS custom properties. Component-specific styles use Astro's scoped `<style>` blocks.
+The project uses Tailwind CSS with a custom design system:
+
+- **Global styles**: `src/styles/global.css` contains Tailwind directives, base styles, and custom component classes
+- **Tailwind config**: `tailwind.config.mjs` defines the design tokens (colors, spacing, etc.)
+- **Component styles**: Use Tailwind utility classes in Astro/Svelte components, or Astro's scoped `<style>` blocks for component-specific styles

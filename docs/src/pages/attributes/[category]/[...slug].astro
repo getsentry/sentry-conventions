@@ -3,14 +3,13 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import PiiBadge from '../../../components/PiiBadge.astro';
 import TypeBadge from '../../../components/TypeBadge.astro';
 import { getCollection } from 'astro:content';
+import { parseAttributeId } from '../../../utils/category';
 
 export async function getStaticPaths() {
   const allAttributes = await getCollection('attributes');
-  
+
   return allAttributes.map((attr) => {
-    const parts = attr.id.split('/');
-    const category = parts.length > 1 ? parts[0] : 'general';
-    const slug = parts.length > 1 ? parts.slice(1).join('/') : attr.id;
+    const { category, slug } = parseAttributeId(attr.id);
     
     return {
       params: { category, slug },
@@ -144,13 +143,13 @@ const rawJson = JSON.stringify(attr, null, 2);
                 {Array.isArray(attr.example) ? (
                   <span class="inline-flex flex-wrap gap-2">
                     {attr.example.map((item, i) => (
-                      <code class="text-sm text-[#98c379] bg-bg-elevated px-2 py-0.5 rounded-sm">{typeof item === 'string' ? `"${item}"` : String(item)}</code>
+                      <code class="text-sm text-code-string bg-bg-elevated px-2 py-0.5 rounded-sm">{typeof item === 'string' ? `"${item}"` : String(item)}</code>
                     ))}
                   </span>
                 ) : typeof attr.example === 'string' ? (
-                  <code class="text-sm text-[#98c379]">"{attr.example}"</code>
+                  <code class="text-sm text-code-string">"{attr.example}"</code>
                 ) : (
-                  <code class="text-sm text-[#d19a66]">{String(attr.example)}</code>
+                  <code class="text-sm text-code-number">{String(attr.example)}</code>
                 )}
               </td>
             </tr>
@@ -162,7 +161,7 @@ const rawJson = JSON.stringify(attr, null, 2);
               <td class="py-3 px-4 text-sm text-text-secondary">
                 <span class="inline-flex flex-wrap gap-2">
                   {attr.alias.map((a) => (
-                    <code class="text-sm text-[#98c379] bg-bg-elevated px-2 py-0.5 rounded-sm">"{a}"</code>
+                    <code class="text-sm text-code-string bg-bg-elevated px-2 py-0.5 rounded-sm">"{a}"</code>
                   ))}
                 </span>
               </td>

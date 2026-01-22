@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import CategoryChip from '../../components/CategoryChip.astro';
 import { getCollection } from 'astro:content';
 
 // Get all name definitions
@@ -54,10 +55,11 @@ const totalOperations = allNames.reduce((acc, name) => acc + name.data.operation
     <span class="text-sm text-text-muted whitespace-nowrap pt-1">Categories ({allNames.length}):</span>
     <div class="flex flex-wrap gap-2">
       {allNames.map(name => (
-        <a href={`#${name.id}`} class="category-chip">
-          {name.data.brief}
-          <span class="text-xs px-1 bg-bg-primary rounded-full text-text-muted">{name.data.operations.length}</span>
-        </a>
+        <CategoryChip
+          name={name.data.brief}
+          count={name.data.operations.length}
+          href={`#${name.id}`}
+        />
       ))}
     </div>
   </nav>
