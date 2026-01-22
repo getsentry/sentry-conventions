@@ -1,0 +1,17 @@
+{
+  "key": "inp",
+  "brief": "The value of the recorded Interaction to Next Paint (INP) web vital",
+  "type": "double",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 200.0,
+  "sdks": ["javascript-browser"],
+  "deprecation": {
+    "replacement": "browser.web_vital.inp.value",
+    "reason": "The INP web vital is now recorded as a browser.web_vital.inp.value attribute.",
+    "_status": "backfill"
+  },
+  "alias": ["browser.web_vital.inp.value"]
+}

@@ -4010,6 +4010,29 @@ export const ID = 'id';
  */
 export type ID_TYPE = string;
 
+// Path: model/attributes/inp.json
+
+/**
+ * The value of the recorded Interaction to Next Paint (INP) web vital `inp`
+ *
+ * Attribute Value Type: `number` {@link INP_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link BROWSER_WEB_VITAL_INP_VALUE} `browser.web_vital.inp.value`
+ *
+ * @deprecated Use {@link BROWSER_WEB_VITAL_INP_VALUE} (browser.web_vital.inp.value) instead - The INP web vital is now recorded as a browser.web_vital.inp.value attribute.
+ * @example 200
+ */
+export const INP = 'inp';
+
+/**
+ * Type for {@link INP} inp
+ */
+export type INP_TYPE = number;
+
 // Path: model/attributes/jvm/jvm__gc__action.json
 
 /**
@@ -9110,6 +9133,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [HTTP_URL]: 'string',
   [HTTP_USER_AGENT]: 'string',
   [ID]: 'string',
+  [INP]: 'double',
   [JVM_GC_ACTION]: 'string',
   [JVM_GC_NAME]: 'string',
   [JVM_MEMORY_POOL_NAME]: 'string',
@@ -9540,6 +9564,7 @@ export type AttributeName =
   | typeof HTTP_URL
   | typeof HTTP_USER_AGENT
   | typeof ID
+  | typeof INP
   | typeof JVM_GC_ACTION
   | typeof JVM_GC_NAME
   | typeof JVM_MEMORY_POOL_NAME
@@ -10263,7 +10288,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 200,
-    aliases: [],
+    aliases: [INP],
     sdks: ['javascript-browser'],
   },
   [BROWSER_WEB_VITAL_LCP_VALUE]: {
@@ -11831,6 +11856,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'f47ac10b58cc4372a5670e02b2c3d479',
     sdks: ['php-laravel'],
+  },
+  [INP]: {
+    brief: 'The value of the recorded Interaction to Next Paint (INP) web vital',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 200,
+    deprecation: {
+      replacement: 'browser.web_vital.inp.value',
+      reason: 'The INP web vital is now recorded as a browser.web_vital.inp.value attribute.',
+    },
+    aliases: [BROWSER_WEB_VITAL_INP_VALUE],
+    sdks: ['javascript-browser'],
   },
   [JVM_GC_ACTION]: {
     brief: 'Name of the garbage collector action.',
@@ -14360,6 +14400,7 @@ export type Attributes = {
   [HTTP_URL]?: HTTP_URL_TYPE;
   [HTTP_USER_AGENT]?: HTTP_USER_AGENT_TYPE;
   [ID]?: ID_TYPE;
+  [INP]?: INP_TYPE;
   [JVM_GC_ACTION]?: JVM_GC_ACTION_TYPE;
   [JVM_GC_NAME]?: JVM_GC_NAME_TYPE;
   [JVM_MEMORY_POOL_NAME]?: JVM_MEMORY_POOL_NAME_TYPE;
