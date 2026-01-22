@@ -172,7 +172,7 @@ Current progress value of an MCP operation.
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `50` |
 
@@ -194,7 +194,7 @@ Calculated progress percentage of an MCP operation. Computed from current/total 
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `50` |
 
@@ -216,7 +216,7 @@ Total progress target value of an MCP operation.
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `100` |
 
@@ -260,7 +260,7 @@ Number of messages in the prompt result.
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `3` |
 
@@ -282,7 +282,7 @@ Protocol readiness indicator for MCP session. Non-zero value indicates the proto
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `1` |
 
@@ -437,7 +437,7 @@ Number of content items in the tool result.
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `1` |
 

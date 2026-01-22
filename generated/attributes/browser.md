@@ -64,7 +64,7 @@ A number representing the script character position of the script.
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `678` |
 

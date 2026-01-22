@@ -56,7 +56,7 @@ Server port number.
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `1337` |
 | Deprecated | Yes, use `server.port` instead |
@@ -95,7 +95,7 @@ Peer port number.
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `1337` |
 | Deprecated | Yes, use `server.port` instead |
@@ -160,7 +160,7 @@ Local port number of the network connection.
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `8080` |
 | Deprecated | Yes, use `network.local.port` instead |
@@ -199,7 +199,7 @@ Peer port number of the network connection.
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `8080` |
 | Deprecated | Yes, use `network.peer.port` instead |

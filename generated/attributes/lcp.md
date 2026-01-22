@@ -39,7 +39,7 @@ The size of the largest contentful paint element.
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `1234` |
 

@@ -51,7 +51,7 @@ The decoded body size of the response (in bytes).
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `456` |
 
@@ -84,7 +84,7 @@ The UNIX timestamp representing the time immediately before the user agent start
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `1732829555.111` |
 
@@ -95,7 +95,7 @@ The UNIX timestamp representing the time immediately after the browser finishes 
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `1732829555.15` |
 
@@ -106,7 +106,7 @@ The UNIX timestamp representing the time immediately after the browser finishes 
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `1732829555.201` |
 
@@ -117,7 +117,7 @@ The UNIX timestamp representing the time immediately before the browser starts t
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `1732829555.322` |
 
@@ -128,7 +128,7 @@ The UNIX timestamp representing the time immediately before the browser starts t
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `1732829555.389` |
 
@@ -163,7 +163,7 @@ The UNIX timestamp representing the timestamp immediately after receiving the la
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `1732829558.502` |
 
@@ -174,7 +174,7 @@ The UNIX timestamp representing the start time of the fetch which that initiates
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `1732829555.495` |
 
@@ -185,7 +185,7 @@ The UNIX timestamp representing the time immediately before the browser starts r
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `1732829555.51` |
 
@@ -196,7 +196,7 @@ The ordinal number of request resending attempt (for any reason, including redir
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `2` |
 
@@ -207,7 +207,7 @@ The UNIX timestamp representing the time immediately after the browser receives 
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `1732829555.89` |
 
@@ -218,7 +218,7 @@ The UNIX timestamp representing the time immediately before the browser starts r
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `1732829555.7` |
 
@@ -229,7 +229,7 @@ The UNIX timestamp representing the time immediately before the browser starts t
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `1732829555.73` |
 
@@ -240,7 +240,7 @@ The time in seconds from the browser's timeorigin to when the first byte of the 
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `1.032` |
 
@@ -251,7 +251,7 @@ The UNIX timestamp representing the timestamp immediately before dispatching the
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `1732829553.68` |
 
@@ -262,7 +262,7 @@ The encoded body size of the response (in bytes).
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `123` |
 | Aliases | `http.response_content_length`, `http.response.header.content-length` |
@@ -298,7 +298,7 @@ The transfer size of the response (in bytes).
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `456` |
 | Aliases | `http.response_transfer_size` |
@@ -310,7 +310,7 @@ The status code of the HTTP response.
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `404` |
 | Aliases | `http.status_code` |
@@ -391,7 +391,7 @@ The encoded body size of the response (in bytes).
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `123` |
 | Deprecated | Yes, use `http.response.body.size` instead |
@@ -404,7 +404,7 @@ The transfer size of the response (in bytes).
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `456` |
 | Deprecated | Yes, use `http.response.size` instead |
@@ -443,7 +443,7 @@ The status code of the HTTP response.
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `404` |
 | Deprecated | Yes, use `http.response.status_code` instead |
