@@ -3,7 +3,7 @@
   "brief": "The amount of attempts to send the message.",
   "type": "integer",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": 2,

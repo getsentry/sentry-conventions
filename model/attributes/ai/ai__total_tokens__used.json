@@ -3,7 +3,7 @@
   "brief": "The total number of tokens used to process the prompt.",
   "type": "integer",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": 30,

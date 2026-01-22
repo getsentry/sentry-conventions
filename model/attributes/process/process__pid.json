@@ -3,7 +3,7 @@
   "brief": "The process ID of the running process.",
   "type": "integer",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": 12345

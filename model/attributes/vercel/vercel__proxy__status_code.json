@@ -3,7 +3,7 @@
   "brief": "HTTP status code of the proxy request",
   "type": "integer",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": 200

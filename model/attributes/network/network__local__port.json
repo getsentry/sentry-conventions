@@ -3,7 +3,7 @@
   "brief": "Local port number of the network connection.",
   "type": "integer",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": 65400,

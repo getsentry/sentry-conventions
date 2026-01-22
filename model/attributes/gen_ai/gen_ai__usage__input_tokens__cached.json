@@ -3,7 +3,7 @@
   "brief": "The number of cached tokens used to process the AI input (prompt).",
   "type": "integer",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": 50
