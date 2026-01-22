@@ -10,6 +10,7 @@
   - [browser.script.source_char_position](#browserscriptsource_char_position)
   - [browser.version](#browserversion)
   - [browser.web_vital.cls.value](#browserweb_vitalclsvalue)
+  - [browser.web_vital.inp.value](#browserweb_vitalinpvalue)
   - [browser.web_vital.lcp.value](#browserweb_vitallcpvalue)
 
 ## Stable Attributes
@@ -93,6 +94,18 @@ The value of the recorded Cumulative Layout Shift (CLS) web vital
 | Exists in OpenTelemetry | No |
 | Example | `0.2361` |
 | Aliases | `cls` |
+
+### browser.web_vital.inp.value
+
+The value of the recorded Interaction to Next Paint (INP) web vital
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `200` |
+| Aliases | `inp` |
 
 ### browser.web_vital.lcp.value
 

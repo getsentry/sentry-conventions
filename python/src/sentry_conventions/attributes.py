@@ -701,6 +701,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 0.2361
     """
 
+    # Path: model/attributes/browser/browser__web_vital__inp__value.json
+    BROWSER_WEB_VITAL_INP_VALUE: Literal["browser.web_vital.inp.value"] = (
+        "browser.web_vital.inp.value"
+    )
+    """The value of the recorded Interaction to Next Paint (INP) web vital
+
+    Type: float
+    Contains PII: false
+    Defined in OTEL: No
+    Aliases: inp
+    Example: 200
+    """
+
     # Path: model/attributes/browser/browser__web_vital__lcp__value.json
     BROWSER_WEB_VITAL_LCP_VALUE: Literal["browser.web_vital.lcp.value"] = (
         "browser.web_vital.lcp.value"
@@ -5530,6 +5543,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["cls"],
         sdks=["javascript-browser"],
     ),
+    "browser.web_vital.inp.value": AttributeMetadata(
+        brief="The value of the recorded Interaction to Next Paint (INP) web vital",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=200,
+        aliases=["inp"],
+        sdks=["javascript-browser"],
+    ),
     "browser.web_vital.lcp.value": AttributeMetadata(
         brief="The value of the recorded Largest Contentful Paint (LCP) web vital",
         type=AttributeType.DOUBLE,
@@ -10034,6 +10056,7 @@ Attributes = TypedDict(
         "browser.script.source_char_position": int,
         "browser.version": str,
         "browser.web_vital.cls.value": float,
+        "browser.web_vital.inp.value": float,
         "browser.web_vital.lcp.value": float,
         "cache.hit": bool,
         "cache.item_size": int,

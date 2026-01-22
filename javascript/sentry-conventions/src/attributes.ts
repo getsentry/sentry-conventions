@@ -919,6 +919,28 @@ export const BROWSER_WEB_VITAL_CLS_VALUE = 'browser.web_vital.cls.value';
  */
 export type BROWSER_WEB_VITAL_CLS_VALUE_TYPE = number;
 
+// Path: model/attributes/browser/browser__web_vital__inp__value.json
+
+/**
+ * The value of the recorded Interaction to Next Paint (INP) web vital `browser.web_vital.inp.value`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_INP_VALUE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link INP} `inp`
+ *
+ * @example 200
+ */
+export const BROWSER_WEB_VITAL_INP_VALUE = 'browser.web_vital.inp.value';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_INP_VALUE} browser.web_vital.inp.value
+ */
+export type BROWSER_WEB_VITAL_INP_VALUE_TYPE = number;
+
 // Path: model/attributes/browser/browser__web_vital__lcp__value.json
 
 /**
@@ -9129,6 +9151,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [BROWSER_SCRIPT_SOURCE_CHAR_POSITION]: 'integer',
   [BROWSER_VERSION]: 'string',
   [BROWSER_WEB_VITAL_CLS_VALUE]: 'double',
+  [BROWSER_WEB_VITAL_INP_VALUE]: 'double',
   [BROWSER_WEB_VITAL_LCP_VALUE]: 'double',
   [CACHE_HIT]: 'boolean',
   [CACHE_ITEM_SIZE]: 'integer',
@@ -9565,6 +9588,7 @@ export type AttributeName =
   | typeof BROWSER_SCRIPT_SOURCE_CHAR_POSITION
   | typeof BROWSER_VERSION
   | typeof BROWSER_WEB_VITAL_CLS_VALUE
+  | typeof BROWSER_WEB_VITAL_INP_VALUE
   | typeof BROWSER_WEB_VITAL_LCP_VALUE
   | typeof CACHE_HIT
   | typeof CACHE_ITEM_SIZE
@@ -10553,6 +10577,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 0.2361,
     aliases: [CLS],
+    sdks: ['javascript-browser'],
+  },
+  [BROWSER_WEB_VITAL_INP_VALUE]: {
+    brief: 'The value of the recorded Interaction to Next Paint (INP) web vital',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 200,
+    aliases: [],
     sdks: ['javascript-browser'],
   },
   [BROWSER_WEB_VITAL_LCP_VALUE]: {
@@ -15127,6 +15162,7 @@ export type Attributes = {
   [BROWSER_SCRIPT_SOURCE_CHAR_POSITION]?: BROWSER_SCRIPT_SOURCE_CHAR_POSITION_TYPE;
   [BROWSER_VERSION]?: BROWSER_VERSION_TYPE;
   [BROWSER_WEB_VITAL_CLS_VALUE]?: BROWSER_WEB_VITAL_CLS_VALUE_TYPE;
+  [BROWSER_WEB_VITAL_INP_VALUE]?: BROWSER_WEB_VITAL_INP_VALUE_TYPE;
   [BROWSER_WEB_VITAL_LCP_VALUE]?: BROWSER_WEB_VITAL_LCP_VALUE_TYPE;
   [CACHE_HIT]?: CACHE_HIT_TYPE;
   [CACHE_ITEM_SIZE]?: CACHE_ITEM_SIZE_TYPE;

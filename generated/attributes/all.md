@@ -4,7 +4,7 @@
 
 This page lists all available attributes across all categories.
 
-Total attributes: 426
+Total attributes: 427
 
 ## Stable Attributes
 
@@ -32,6 +32,7 @@ Total attributes: 426
 | [`browser.script.source_char_position`](./browser.md#browserscriptsource_char_position) | A number representing the script character position of the script. |
 | [`browser.version`](./browser.md#browserversion) | The version of the browser. |
 | [`browser.web_vital.cls.value`](./browser.md#browserweb_vitalclsvalue) | The value of the recorded Cumulative Layout Shift (CLS) web vital |
+| [`browser.web_vital.inp.value`](./browser.md#browserweb_vitalinpvalue) | The value of the recorded Interaction to Next Paint (INP) web vital |
 | [`browser.web_vital.lcp.value`](./browser.md#browserweb_vitallcpvalue) | The value of the recorded Largest Contentful Paint (LCP) web vital |
 | [`cache.hit`](./cache.md#cachehit) | If the cache was hit during this span. |
 | [`cache.item_size`](./cache.md#cacheitem_size) | The size of the requested item in the cache. In bytes. |
