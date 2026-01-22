@@ -4,7 +4,7 @@
 
 This page lists all available attributes across all categories.
 
-Total attributes: 424
+Total attributes: 426
 
 ## Stable Attributes
 
@@ -32,6 +32,7 @@ Total attributes: 424
 | [`browser.script.source_char_position`](./browser.md#browserscriptsource_char_position) | A number representing the script character position of the script. |
 | [`browser.version`](./browser.md#browserversion) | The version of the browser. |
 | [`browser.web_vital.cls.value`](./browser.md#browserweb_vitalclsvalue) | The value of the recorded Cumulative Layout Shift (CLS) web vital |
+| [`browser.web_vital.lcp.value`](./browser.md#browserweb_vitallcpvalue) | The value of the recorded Largest Contentful Paint (LCP) web vital |
 | [`cache.hit`](./cache.md#cachehit) | If the cache was hit during this span. |
 | [`cache.item_size`](./cache.md#cacheitem_size) | The size of the requested item in the cache. In bytes. |
 | [`cache.key`](./cache.md#cachekey) | The key of the cache accessed. |
@@ -412,6 +413,7 @@ Total attributes: 424
 | [`http.target`](./http.md#httptarget) | [`url.path`](./url.md#urlpath) |
 | [`http.url`](./http.md#httpurl) | [`url.full`](./url.md#urlfull) |
 | [`http.user_agent`](./http.md#httpuser_agent) | [`user_agent.original`](./user_agent.md#user_agentoriginal) |
+| [`lcp`](./general.md#lcp) | [`browser.web_vital.lcp.value`](./browser.md#browserweb_vitallcpvalue) |
 | [`method`](./general.md#method) | [`http.request.method`](./http.md#httprequestmethod) |
 | [`net.host.ip`](./net.md#nethostip) | [`network.local.address`](./network.md#networklocaladdress) |
 | [`net.host.name`](./net.md#nethostname) | [`server.address`](./server.md#serveraddress) |

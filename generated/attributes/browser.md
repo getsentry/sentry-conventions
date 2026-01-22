@@ -10,6 +10,7 @@
   - [browser.script.source_char_position](#browserscriptsource_char_position)
   - [browser.version](#browserversion)
   - [browser.web_vital.cls.value](#browserweb_vitalclsvalue)
+  - [browser.web_vital.lcp.value](#browserweb_vitallcpvalue)
 
 ## Stable Attributes
 
@@ -92,4 +93,16 @@ The value of the recorded Cumulative Layout Shift (CLS) web vital
 | Exists in OpenTelemetry | No |
 | Example | `0.2361` |
 | Aliases | `cls` |
+
+### browser.web_vital.lcp.value
+
+The value of the recorded Largest Contentful Paint (LCP) web vital
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `2500` |
+| Aliases | `lcp` |
 

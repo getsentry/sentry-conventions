@@ -137,6 +137,7 @@ class _AttributeNamesMeta(type):
         "HTTP_TARGET",
         "HTTP_URL",
         "HTTP_USER_AGENT",
+        "LCP",
         "METHOD",
         "NET_HOST_IP",
         "NET_HOST_NAME",
@@ -647,6 +648,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Aliases: cls
     Example: 0.2361
+    """
+
+    # Path: model/attributes/browser/browser__web_vital__lcp__value.json
+    BROWSER_WEB_VITAL_LCP_VALUE: Literal["browser.web_vital.lcp.value"] = (
+        "browser.web_vital.lcp.value"
+    )
+    """The value of the recorded Largest Contentful Paint (LCP) web vital
+
+    Type: float
+    Contains PII: false
+    Defined in OTEL: No
+    Aliases: lcp
+    Example: 2500
     """
 
     # Path: model/attributes/cache/cache__hit.json
@@ -2402,6 +2416,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Example: "https://example.com"
+    """
+
+    # Path: model/attributes/lcp.json
+    LCP: Literal["lcp"] = "lcp"
+    """The value of the recorded Largest Contentful Paint (LCP) web vital
+
+    Type: float
+    Contains PII: false
+    Defined in OTEL: No
+    Aliases: browser.web_vital.lcp.value
+    DEPRECATED: Use browser.web_vital.lcp.value instead - The LCP web vital is now recorded as a browser.web_vital.lcp.value attribute.
+    Example: 2500
     """
 
     # Path: model/attributes/logger/logger__name.json
@@ -5190,6 +5216,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["cls"],
         sdks=["javascript-browser"],
     ),
+    "browser.web_vital.lcp.value": AttributeMetadata(
+        brief="The value of the recorded Largest Contentful Paint (LCP) web vital",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=2500,
+        aliases=["lcp"],
+        sdks=["javascript-browser"],
+    ),
     "cache.hit": AttributeMetadata(
         brief="If the cache was hit during this span.",
         type=AttributeType.BOOLEAN,
@@ -6437,6 +6472,20 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="https://example.com",
+    ),
+    "lcp": AttributeMetadata(
+        brief="The value of the recorded Largest Contentful Paint (LCP) web vital",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=2500,
+        deprecation=DeprecationInfo(
+            replacement="browser.web_vital.lcp.value",
+            reason="The LCP web vital is now recorded as a browser.web_vital.lcp.value attribute.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["browser.web_vital.lcp.value"],
+        sdks=["javascript-browser"],
     ),
     "logger.name": AttributeMetadata(
         brief="The name of the logger that generated this event.",
@@ -8206,6 +8255,7 @@ Attributes = TypedDict(
         "browser.script.source_char_position": int,
         "browser.version": str,
         "browser.web_vital.cls.value": float,
+        "browser.web_vital.lcp.value": float,
         "cache.hit": bool,
         "cache.item_size": int,
         "cache.key": List[str],
@@ -8362,6 +8412,7 @@ Attributes = TypedDict(
         "lcp.id": str,
         "lcp.size": int,
         "lcp.url": str,
+        "lcp": float,
         "logger.name": str,
         "mcp.cancelled.reason": str,
         "mcp.cancelled.request_id": str,
