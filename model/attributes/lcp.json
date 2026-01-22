@@ -1,0 +1,17 @@
+{
+  "key": "lcp",
+  "brief": "The value of the recorded Largest Contentful Paint (LCP) web vital",
+  "type": "double",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 2500.0,
+  "sdks": ["javascript-browser"],
+  "deprecation": {
+    "replacement": "browser.web_vital.lcp.value",
+    "reason": "The LCP web vital is now recorded as a browser.web_vital.lcp.value attribute.",
+    "_status": "backfill"
+  },
+  "alias": ["browser.web_vital.lcp.value"]
+}
