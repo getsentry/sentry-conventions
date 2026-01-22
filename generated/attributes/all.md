@@ -4,7 +4,7 @@
 
 This page lists all available attributes across all categories.
 
-Total attributes: 427
+Total attributes: 428
 
 ## Stable Attributes
 
@@ -414,6 +414,7 @@ Total attributes: 427
 | [`http.target`](./http.md#httptarget) | [`url.path`](./url.md#urlpath) |
 | [`http.url`](./http.md#httpurl) | [`url.full`](./url.md#urlfull) |
 | [`http.user_agent`](./http.md#httpuser_agent) | [`user_agent.original`](./user_agent.md#user_agentoriginal) |
+| [`inp`](./general.md#inp) | [`browser.web_vital.inp.value`](./browser.md#browserweb_vitalinpvalue) |
 | [`lcp`](./general.md#lcp) | [`browser.web_vital.lcp.value`](./browser.md#browserweb_vitallcpvalue) |
 | [`method`](./general.md#method) | [`http.request.method`](./http.md#httprequestmethod) |
 | [`net.host.ip`](./net.md#nethostip) | [`network.local.address`](./network.md#networklocaladdress) |

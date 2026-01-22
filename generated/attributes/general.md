@@ -13,6 +13,7 @@
   - [cls](#cls)
   - [environment](#environment)
   - [fs_error](#fs_error)
+  - [inp](#inp)
   - [lcp](#lcp)
   - [method](#method)
   - [profile_id](#profile_id)
@@ -133,6 +134,20 @@ The error message of a file system error.
 | Example | `ENOENT: no such file or directory` |
 | Deprecated | Yes, use `error.type` instead |
 | Deprecation Reason | This attribute is not part of the OpenTelemetry specification and error.type fits much better. |
+
+### inp
+
+The value of the recorded Interaction to Next Paint (INP) web vital
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `200` |
+| Deprecated | Yes, use `browser.web_vital.inp.value` instead |
+| Deprecation Reason | The INP web vital is now recorded as a browser.web_vital.inp.value attribute. |
+| Aliases | `browser.web_vital.inp.value` |
 
 ### lcp
 

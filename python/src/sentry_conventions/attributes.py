@@ -172,6 +172,7 @@ class _AttributeNamesMeta(type):
         "HTTP_TARGET",
         "HTTP_URL",
         "HTTP_USER_AGENT",
+        "INP",
         "LCP",
         "METHOD",
         "NET_HOST_IP",
@@ -2457,6 +2458,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: false
     Defined in OTEL: No
     Example: "f47ac10b58cc4372a5670e02b2c3d479"
+    """
+
+    # Path: model/attributes/inp.json
+    INP: Literal["inp"] = "inp"
+    """The value of the recorded Interaction to Next Paint (INP) web vital
+
+    Type: float
+    Contains PII: false
+    Defined in OTEL: No
+    Aliases: browser.web_vital.inp.value
+    DEPRECATED: Use browser.web_vital.inp.value instead - The INP web vital is now recorded as a browser.web_vital.inp.value attribute.
+    Example: 200
     """
 
     # Path: model/attributes/jvm/jvm__gc__action.json
@@ -7386,6 +7399,20 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "inp": AttributeMetadata(
+        brief="The value of the recorded Interaction to Next Paint (INP) web vital",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=200,
+        deprecation=DeprecationInfo(
+            replacement="browser.web_vital.inp.value",
+            reason="The INP web vital is now recorded as a browser.web_vital.inp.value attribute.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["browser.web_vital.inp.value"],
+        sdks=["javascript-browser"],
+    ),
     "jvm.gc.action": AttributeMetadata(
         brief="Name of the garbage collector action.",
         type=AttributeType.STRING,
@@ -10210,6 +10237,7 @@ Attributes = TypedDict(
         "http.url": str,
         "http.user_agent": str,
         "id": str,
+        "inp": float,
         "jvm.gc.action": str,
         "jvm.gc.name": str,
         "jvm.memory.pool.name": str,
