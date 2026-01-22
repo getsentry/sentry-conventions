@@ -2,6 +2,23 @@
   "_generated": "This file is generated. Do not modify it directly. See scripts/generate_deprecated_attributes_json.ts",
   "attributes": [
     {
+      "key": "cls",
+      "brief": "The value of the recorded Cumulative Layout Shift (CLS) web vital",
+      "type": "double",
+      "pii": {
+        "key": "false"
+      },
+      "is_in_otel": false,
+      "example": 0.2361,
+      "sdks": ["javascript-browser"],
+      "deprecation": {
+        "replacement": "browser.web_vital.cls.value",
+        "reason": "The CLS web vital is now recorded as a browser.web_vital.cls.value attribute.",
+        "_status": "backfill"
+      },
+      "alias": ["browser.web_vital.cls.value"]
+    },
+    {
       "key": "environment",
       "brief": "The sentry environment.",
       "type": "string",
