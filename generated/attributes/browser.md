@@ -3,6 +3,7 @@
 # Browser Attributes
 
 - [Stable Attributes](#stable-attributes)
+  - [browser.connection.rtt](#browserconnectionrtt)
   - [browser.name](#browsername)
   - [browser.report.type](#browserreporttype)
   - [browser.script.invoker](#browserscriptinvoker)
@@ -11,6 +12,18 @@
   - [browser.version](#browserversion)
 
 ## Stable Attributes
+
+### browser.connection.rtt
+
+The estimated request round trip time (RTT) in milliseconds based on the current connection's quality. Values are always multiples of 25 milliseconds.
+
+| Property | Value |
+| --- | --- |
+| Type | `integer` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `50` |
+| Aliases | `connection.rtt` |
 
 ### browser.name
 

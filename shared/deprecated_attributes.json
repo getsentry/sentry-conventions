@@ -505,6 +505,22 @@
       }
     },
     {
+      "key": "connection.rtt",
+      "brief": "The estimated request round trip time (RTT) in milliseconds based on the current connection's quality. Values are always multiples of 25 milliseconds.",
+      "type": "integer",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": 50,
+      "deprecation": {
+        "_status": "backfill",
+        "replacement": "browser.connection.rtt",
+        "reason": "This attribute is being deprecated in favor of browser.connection.rtt"
+      },
+      "alias": ["browser.connection.rtt"]
+    },
+    {
       "key": "db.name",
       "brief": "The name of the database being accessed.",
       "type": "string",

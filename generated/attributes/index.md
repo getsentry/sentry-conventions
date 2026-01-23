@@ -14,6 +14,7 @@ This directory contains documentation for all available attributes.
 - [`client` Attributes](./client.md)
 - [`cloudflare` Attributes](./cloudflare.md)
 - [`code` Attributes](./code.md)
+- [`connection` Attributes](./connection.md)
 - [`db` Attributes](./db.md)
 - [`device` Attributes](./device.md)
 - [`error` Attributes](./error.md)

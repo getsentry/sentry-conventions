@@ -754,6 +754,28 @@ export const BLOCKED_MAIN_THREAD = 'blocked_main_thread';
  */
 export type BLOCKED_MAIN_THREAD_TYPE = boolean;
 
+// Path: model/attributes/browser/browser__connection__rtt.json
+
+/**
+ * The estimated request round trip time (RTT) in milliseconds based on the current connection's quality. Values are always multiples of 25 milliseconds. `browser.connection.rtt`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_CONNECTION_RTT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link CONNECTION_RTT} `connection.rtt`
+ *
+ * @example 50
+ */
+export const BROWSER_CONNECTION_RTT = 'browser.connection.rtt';
+
+/**
+ * Type for {@link BROWSER_CONNECTION_RTT} browser.connection.rtt
+ */
+export type BROWSER_CONNECTION_RTT_TYPE = number;
+
 // Path: model/attributes/browser/browser__name.json
 
 /**
@@ -1255,6 +1277,29 @@ export const CODE_NAMESPACE = 'code.namespace';
  * Type for {@link CODE_NAMESPACE} code.namespace
  */
 export type CODE_NAMESPACE_TYPE = string;
+
+// Path: model/attributes/connection/connection__rtt.json
+
+/**
+ * The estimated request round trip time (RTT) in milliseconds based on the current connection's quality. Values are always multiples of 25 milliseconds. `connection.rtt`
+ *
+ * Attribute Value Type: `number` {@link CONNECTION_RTT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link BROWSER_CONNECTION_RTT} `browser.connection.rtt`
+ *
+ * @deprecated Use {@link BROWSER_CONNECTION_RTT} (browser.connection.rtt) instead - This attribute is being deprecated in favor of browser.connection.rtt
+ * @example 50
+ */
+export const CONNECTION_RTT = 'connection.rtt';
+
+/**
+ * Type for {@link CONNECTION_RTT} connection.rtt
+ */
+export type CONNECTION_RTT_TYPE = number;
 
 // Path: model/attributes/db/db__collection__name.json
 
@@ -8863,6 +8908,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [AI_WARNINGS]: 'string[]',
   [APP_START_TYPE]: 'string',
   [BLOCKED_MAIN_THREAD]: 'boolean',
+  [BROWSER_CONNECTION_RTT]: 'integer',
   [BROWSER_NAME]: 'string',
   [BROWSER_REPORT_TYPE]: 'string',
   [BROWSER_SCRIPT_INVOKER]: 'string',
@@ -8887,6 +8933,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [CODE_LINENO]: 'integer',
   [CODE_LINE_NUMBER]: 'integer',
   [CODE_NAMESPACE]: 'string',
+  [CONNECTION_RTT]: 'integer',
   [DB_COLLECTION_NAME]: 'string',
   [DB_NAME]: 'string',
   [DB_NAMESPACE]: 'string',
@@ -9289,6 +9336,7 @@ export type AttributeName =
   | typeof AI_WARNINGS
   | typeof APP_START_TYPE
   | typeof BLOCKED_MAIN_THREAD
+  | typeof BROWSER_CONNECTION_RTT
   | typeof BROWSER_NAME
   | typeof BROWSER_REPORT_TYPE
   | typeof BROWSER_SCRIPT_INVOKER
@@ -9313,6 +9361,7 @@ export type AttributeName =
   | typeof CODE_LINENO
   | typeof CODE_LINE_NUMBER
   | typeof CODE_NAMESPACE
+  | typeof CONNECTION_RTT
   | typeof DB_COLLECTION_NAME
   | typeof DB_NAME
   | typeof DB_NAMESPACE
@@ -10085,6 +10134,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: true,
   },
+  [BROWSER_CONNECTION_RTT]: {
+    brief:
+      "The estimated request round trip time (RTT) in milliseconds based on the current connection's quality. Values are always multiples of 25 milliseconds.",
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 50,
+    aliases: [CONNECTION_RTT],
+    sdks: ['javascript-browser'],
+  },
   [BROWSER_NAME]: {
     brief: 'The name of the browser.',
     type: 'string',
@@ -10339,6 +10400,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'code.function.name',
       reason: 'code.function.name should include the namespace.',
     },
+  },
+  [CONNECTION_RTT]: {
+    brief:
+      "The estimated request round trip time (RTT) in milliseconds based on the current connection's quality. Values are always multiples of 25 milliseconds.",
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 50,
+    deprecation: {
+      replacement: 'browser.connection.rtt',
+      reason: 'This attribute is being deprecated in favor of browser.connection.rtt',
+    },
+    aliases: [BROWSER_CONNECTION_RTT],
   },
   [DB_COLLECTION_NAME]: {
     brief: 'The name of a collection (table, container) within the database.',
@@ -14051,6 +14127,7 @@ export type Attributes = {
   [AI_WARNINGS]?: AI_WARNINGS_TYPE;
   [APP_START_TYPE]?: APP_START_TYPE_TYPE;
   [BLOCKED_MAIN_THREAD]?: BLOCKED_MAIN_THREAD_TYPE;
+  [BROWSER_CONNECTION_RTT]?: BROWSER_CONNECTION_RTT_TYPE;
   [BROWSER_NAME]?: BROWSER_NAME_TYPE;
   [BROWSER_REPORT_TYPE]?: BROWSER_REPORT_TYPE_TYPE;
   [BROWSER_SCRIPT_INVOKER]?: BROWSER_SCRIPT_INVOKER_TYPE;
@@ -14075,6 +14152,7 @@ export type Attributes = {
   [CODE_LINENO]?: CODE_LINENO_TYPE;
   [CODE_LINE_NUMBER]?: CODE_LINE_NUMBER_TYPE;
   [CODE_NAMESPACE]?: CODE_NAMESPACE_TYPE;
+  [CONNECTION_RTT]?: CONNECTION_RTT_TYPE;
   [DB_COLLECTION_NAME]?: DB_COLLECTION_NAME_TYPE;
   [DB_NAME]?: DB_NAME_TYPE;
   [DB_NAMESPACE]?: DB_NAMESPACE_TYPE;

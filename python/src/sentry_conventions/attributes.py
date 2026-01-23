@@ -109,6 +109,7 @@ class _AttributeNamesMeta(type):
         "CODE_FUNCTION",
         "CODE_LINENO",
         "CODE_NAMESPACE",
+        "CONNECTION_RTT",
         "DB_NAME",
         "DB_OPERATION",
         "DB_SQL_BINDINGS",
@@ -569,6 +570,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: true
     """
 
+    # Path: model/attributes/browser/browser__connection__rtt.json
+    BROWSER_CONNECTION_RTT: Literal["browser.connection.rtt"] = "browser.connection.rtt"
+    """The estimated request round trip time (RTT) in milliseconds based on the current connection's quality. Values are always multiples of 25 milliseconds.
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: connection.rtt
+    Example: 50
+    """
+
     # Path: model/attributes/browser/browser__name.json
     BROWSER_NAME: Literal["browser.name"] = "browser.name"
     """The name of the browser.
@@ -828,6 +840,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     DEPRECATED: Use code.function.name instead - code.function.name should include the namespace.
     Example: "http.handler"
+    """
+
+    # Path: model/attributes/connection/connection__rtt.json
+    CONNECTION_RTT: Literal["connection.rtt"] = "connection.rtt"
+    """The estimated request round trip time (RTT) in milliseconds based on the current connection's quality. Values are always multiples of 25 milliseconds.
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: browser.connection.rtt
+    DEPRECATED: Use browser.connection.rtt instead - This attribute is being deprecated in favor of browser.connection.rtt
+    Example: 50
     """
 
     # Path: model/attributes/db/db__collection__name.json
@@ -5120,6 +5144,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=True,
     ),
+    "browser.connection.rtt": AttributeMetadata(
+        brief="The estimated request round trip time (RTT) in milliseconds based on the current connection's quality. Values are always multiples of 25 milliseconds.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=50,
+        aliases=["connection.rtt"],
+        sdks=["javascript-browser"],
+    ),
     "browser.name": AttributeMetadata(
         brief="The name of the browser.",
         type=AttributeType.STRING,
@@ -5314,6 +5347,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             replacement="code.function.name",
             reason="code.function.name should include the namespace.",
         ),
+    ),
+    "connection.rtt": AttributeMetadata(
+        brief="The estimated request round trip time (RTT) in milliseconds based on the current connection's quality. Values are always multiples of 25 milliseconds.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=50,
+        deprecation=DeprecationInfo(
+            replacement="browser.connection.rtt",
+            reason="This attribute is being deprecated in favor of browser.connection.rtt",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["browser.connection.rtt"],
     ),
     "db.collection.name": AttributeMetadata(
         brief="The name of a collection (table, container) within the database.",
@@ -8169,6 +8215,7 @@ Attributes = TypedDict(
         "ai.warnings": List[str],
         "app_start_type": str,
         "blocked_main_thread": bool,
+        "browser.connection.rtt": int,
         "browser.name": str,
         "browser.report.type": str,
         "browser.script.invoker": str,
@@ -8193,6 +8240,7 @@ Attributes = TypedDict(
         "code.line.number": int,
         "code.lineno": int,
         "code.namespace": str,
+        "connection.rtt": int,
         "db.collection.name": str,
         "db.name": str,
         "db.namespace": str,
