@@ -3,7 +3,7 @@
   "brief": "The cost of tokens used for creating the AI output in USD (without reasoning tokens).",
   "type": "double",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": 123.45

@@ -3,7 +3,7 @@
   "brief": "The maximum number of tokens to generate in the response.",
   "type": "integer",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": 2048

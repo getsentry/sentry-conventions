@@ -17,7 +17,7 @@ The sum of all delayed frame durations in seconds during the lifetime of the spa
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `5` |
 
@@ -28,7 +28,7 @@ The number of frozen frames rendered during the lifetime of the span.
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `3` |
 
@@ -39,7 +39,7 @@ The number of slow frames rendered during the lifetime of the span.
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `1` |
 
@@ -50,7 +50,7 @@ The number of total frames rendered during the lifetime of the span.
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `60` |
 

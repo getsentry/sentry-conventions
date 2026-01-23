@@ -197,7 +197,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The number of tokens used to respond to the message.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Aliases: gen_ai.usage.output_tokens, gen_ai.usage.completion_tokens
     DEPRECATED: Use gen_ai.usage.output_tokens instead
@@ -231,7 +231,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Aliases: gen_ai.request.frequency_penalty
     DEPRECATED: Use gen_ai.request.frequency_penalty instead
@@ -345,7 +345,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Aliases: gen_ai.request.presence_penalty
     DEPRECATED: Use gen_ai.request.presence_penalty instead
@@ -357,7 +357,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The number of tokens used to process just the prompt.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Aliases: gen_ai.usage.prompt_tokens, gen_ai.usage.input_tokens
     DEPRECATED: Use gen_ai.usage.input_tokens instead
@@ -454,7 +454,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Aliases: gen_ai.request.temperature
     DEPRECATED: Use gen_ai.request.temperature instead
@@ -498,7 +498,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Aliases: gen_ai.request.top_k
     DEPRECATED: Use gen_ai.request.top_k instead
@@ -510,7 +510,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Aliases: gen_ai.request.top_p
     DEPRECATED: Use gen_ai.request.top_p instead
@@ -522,7 +522,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The total cost for the tokens used.
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 12.34
     """
@@ -532,7 +532,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The total number of tokens used to process the prompt.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Aliases: gen_ai.usage.total_tokens
     DEPRECATED: Use gen_ai.usage.total_tokens instead
@@ -619,7 +619,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """A number representing the script character position of the script.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 678
     """
@@ -650,7 +650,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The size of the requested item in the cache. In bytes.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 58
     """
@@ -680,7 +680,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The ttl of the cache in seconds
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 120
     """
@@ -711,7 +711,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Client port number.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: 5432
     """
@@ -721,7 +721,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The duration of a Cloudflare D1 operation.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 543
     """
@@ -733,7 +733,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The number of rows read in a Cloudflare D1 operation.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 12
     """
@@ -745,7 +745,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The number of rows written in a Cloudflare D1 operation.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 12
     """
@@ -801,7 +801,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: code.lineno
     Example: 42
@@ -812,7 +812,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: code.line.number
     DEPRECATED: Use code.line.number instead
@@ -1164,7 +1164,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 5
     """
@@ -1174,7 +1174,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The number of frozen frames rendered during the lifetime of the span.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 3
     """
@@ -1184,7 +1184,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The number of slow frames rendered during the lifetime of the span.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 1
     """
@@ -1194,7 +1194,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The number of total frames rendered during the lifetime of the span.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 60
     """
@@ -1249,7 +1249,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The cost of tokens used to process the AI input (prompt) in USD (without cached input tokens).
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 123.45
     """
@@ -1261,7 +1261,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The cost of tokens used for creating the AI output in USD (without reasoning tokens).
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 123.45
     """
@@ -1273,7 +1273,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The total cost for the tokens used.
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 12.34
     """
@@ -1372,7 +1372,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: ai.frequency_penalty
     Example: 0.5
@@ -1385,7 +1385,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The maximum number of tokens to generate in the response.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: 2048
     """
@@ -1421,7 +1421,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: ai.presence_penalty
     Example: 0.5
@@ -1445,7 +1445,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: ai.temperature
     Example: 0.1
@@ -1456,7 +1456,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: ai.top_k
     Example: 35
@@ -1467,7 +1467,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: ai.top_p
     Example: 0.7
@@ -1551,7 +1551,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The total output tokens per seconds throughput
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 12345.67
     """
@@ -1709,7 +1709,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The number of tokens used in the GenAI response (completion).
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: ai.completion_tokens.used, gen_ai.usage.output_tokens
     DEPRECATED: Use gen_ai.usage.output_tokens instead
@@ -1723,7 +1723,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The number of tokens used to process the AI input (prompt) without cached input tokens.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: ai.prompt_tokens.used, gen_ai.usage.prompt_tokens
     Example: 10
@@ -1736,7 +1736,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The number of tokens written to the cache when processing the AI input (prompt).
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 100
     """
@@ -1748,7 +1748,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The number of cached tokens used to process the AI input (prompt).
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 50
     """
@@ -1760,7 +1760,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The number of tokens used for creating the AI output (without reasoning tokens).
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: ai.completion_tokens.used, gen_ai.usage.completion_tokens
     Example: 10
@@ -1773,7 +1773,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The number of tokens used for reasoning to create the AI output.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 75
     """
@@ -1785,7 +1785,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The number of tokens used in the GenAI input (prompt).
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: ai.prompt_tokens.used, gen_ai.usage.input_tokens
     DEPRECATED: Use gen_ai.usage.input_tokens instead
@@ -1799,7 +1799,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The total number of tokens used to process the prompt. (input tokens plus output todkens)
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Aliases: ai.total_tokens.used
     Example: 20
@@ -1854,7 +1854,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The decoded body size of the response (in bytes).
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 456
     """
@@ -1922,7 +1922,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The UNIX timestamp representing the time immediately before the user agent starts establishing the connection to the server to retrieve the resource.
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 1732829555.111
     """
@@ -1934,7 +1934,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The UNIX timestamp representing the time immediately after the browser finishes establishing the connection to the server to retrieve the resource. The timestamp value includes the time interval to establish the transport connection, as well as other time intervals such as TLS handshake and SOCKS authentication.
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 1732829555.15
     """
@@ -1946,7 +1946,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The UNIX timestamp representing the time immediately after the browser finishes the domain-name lookup for the resource.
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 1732829555.201
     """
@@ -1958,7 +1958,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The UNIX timestamp representing the time immediately before the browser starts the domain name lookup for the resource.
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 1732829555.322
     """
@@ -1970,7 +1970,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The UNIX timestamp representing the time immediately before the browser starts to fetch the resource.
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 1732829555.389
     """
@@ -2006,7 +2006,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The UNIX timestamp representing the timestamp immediately after receiving the last byte of the response of the last redirect
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 1732829558.502
     """
@@ -2018,7 +2018,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The UNIX timestamp representing the start time of the fetch which that initiates the redirect.
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 1732829555.495
     """
@@ -2030,7 +2030,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 1732829555.51
     """
@@ -2042,7 +2042,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The ordinal number of request resending attempt (for any reason, including redirects).
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 2
     """
@@ -2054,7 +2054,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The UNIX timestamp representing the time immediately after the browser receives the last byte of the resource or immediately before the transport connection is closed, whichever comes first.
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 1732829555.89
     """
@@ -2066,7 +2066,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 1732829555.7
     """
@@ -2078,7 +2078,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The UNIX timestamp representing the time immediately before the browser starts the handshake process to secure the current connection. If a secure connection is not used, the property returns zero.
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 1732829555.73
     """
@@ -2090,7 +2090,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The time in seconds from the browser's timeorigin to when the first byte of the request's response was received. See https://web.dev/articles/ttfb#measure-resource-requests
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 1.032
     """
@@ -2102,7 +2102,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The UNIX timestamp representing the timestamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running.
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 1732829553.68
     """
@@ -2114,7 +2114,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The encoded body size of the response (in bytes).
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: http.response_content_length, http.response.header.content-length
     Example: 123
@@ -2151,7 +2151,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The transfer size of the response (in bytes).
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: http.response_transfer_size
     Example: 456
@@ -2164,7 +2164,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The status code of the HTTP response.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: http.status_code
     Example: 404
@@ -2177,7 +2177,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The encoded body size of the response (in bytes).
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: http.response.body.size, http.response.header.content-length
     DEPRECATED: Use http.response.body.size instead
@@ -2191,7 +2191,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The transfer size of the response (in bytes).
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Aliases: http.response.size
     DEPRECATED: Use http.response.size instead
@@ -2238,7 +2238,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The status code of the HTTP response.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: http.response.status_code
     DEPRECATED: Use http.response.status_code instead
@@ -2375,7 +2375,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The size of the largest contentful paint element.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 1234
     """
@@ -2517,7 +2517,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Current progress value of an MCP operation.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 50
     """
@@ -2539,7 +2539,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Calculated progress percentage of an MCP operation. Computed from current/total * 100.
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 50
     """
@@ -2559,7 +2559,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Total progress target value of an MCP operation.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 100
     """
@@ -2605,7 +2605,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Number of messages in the prompt result.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 3
     """
@@ -2627,7 +2627,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Protocol readiness indicator for MCP session. Non-zero value indicates the protocol is ready.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 1
     """
@@ -2778,7 +2778,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Number of content items in the tool result.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 1
     """
@@ -2847,7 +2847,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The size of the message body in bytes.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: 839
     """
@@ -2859,7 +2859,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The size of the message body and metadata in bytes.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: 1045
     """
@@ -2881,7 +2881,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The latency between when the message was published and received.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 1732847252
     """
@@ -2893,7 +2893,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The amount of attempts to send the message.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 2
     """
@@ -2947,7 +2947,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The elapsed number of milliseconds between the start of the resource fetch and when it was completed or aborted by the user agent.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 100
     """
@@ -2977,7 +2977,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The sampling function used to determine if the request should be sampled.
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 0.5
     """
@@ -3021,7 +3021,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Server port number.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: server.port
     DEPRECATED: Use server.port instead
@@ -3056,7 +3056,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Peer port number.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     DEPRECATED: Use server.port instead - Deprecated, use server.port on client spans and client.port on server spans.
     Example: 1337
@@ -3114,7 +3114,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Local port number of the network connection.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: network.local.port
     DEPRECATED: Use network.local.port instead
@@ -3149,7 +3149,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Peer port number of the network connection.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     DEPRECATED: Use network.peer.port instead
     Example: 8080
@@ -3183,7 +3183,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Local port number of the network connection.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: net.sock.host.port
     Example: 65400
@@ -3205,7 +3205,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Peer port number of the network connection.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: 65400
     """
@@ -3386,7 +3386,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The process ID of the running process.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: 12345
     """
@@ -3528,7 +3528,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The numeric status code of the gRPC request.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: 2
     """
@@ -3727,7 +3727,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The exclusive time duration of the span in milliseconds.
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 1234
     """
@@ -4078,7 +4078,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The HTTP status code used in Sentry Insights. Typically set by Sentry during ingestion, rather than by clients.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 200
     """
@@ -4122,7 +4122,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Server port number.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: net.host.port
     Example: 1337
@@ -4291,7 +4291,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Server port number.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: 1337
     """
@@ -4704,7 +4704,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Size of the response in bytes
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 1024
     """
@@ -4726,7 +4726,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """HTTP status code of the proxy request
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 200
     """
@@ -4736,7 +4736,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Unix timestamp when the proxy request was made
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 1573817250172
     """
@@ -4824,7 +4824,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """HTTP status code of the request (-1 means no response returned and the lambda crashed)
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 200
     """
@@ -4841,7 +4841,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.completion_tokens.used": AttributeMetadata(
         brief="The number of tokens used to respond to the message.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=10,
         deprecation=DeprecationInfo(replacement="gen_ai.usage.output_tokens"),
@@ -4867,7 +4867,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.frequency_penalty": AttributeMetadata(
         brief="Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=0.5,
         deprecation=DeprecationInfo(replacement="gen_ai.request.frequency_penalty"),
@@ -4953,7 +4953,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.presence_penalty": AttributeMetadata(
         brief="Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=0.5,
         deprecation=DeprecationInfo(replacement="gen_ai.request.presence_penalty"),
@@ -4962,7 +4962,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.prompt_tokens.used": AttributeMetadata(
         brief="The number of tokens used to process just the prompt.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=20,
         deprecation=DeprecationInfo(replacement="gen_ai.usage.input_tokens"),
@@ -5035,7 +5035,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.temperature": AttributeMetadata(
         brief="For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=0.1,
         deprecation=DeprecationInfo(replacement="gen_ai.request.temperature"),
@@ -5067,7 +5067,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.top_k": AttributeMetadata(
         brief="Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=35,
         deprecation=DeprecationInfo(replacement="gen_ai.request.top_k"),
@@ -5076,7 +5076,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.top_p": AttributeMetadata(
         brief="Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=0.7,
         deprecation=DeprecationInfo(replacement="gen_ai.request.top_p"),
@@ -5085,14 +5085,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.total_cost": AttributeMetadata(
         brief="The total cost for the tokens used.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=12.34,
     ),
     "ai.total_tokens.used": AttributeMetadata(
         brief="The total number of tokens used to process the prompt.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=30,
         deprecation=DeprecationInfo(replacement="gen_ai.usage.total_tokens"),
@@ -5154,7 +5154,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.script.source_char_position": AttributeMetadata(
         brief="A number representing the script character position of the script.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=678,
         sdks=["browser"],
@@ -5178,7 +5178,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cache.item_size": AttributeMetadata(
         brief="The size of the requested item in the cache. In bytes.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=58,
     ),
@@ -5201,7 +5201,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cache.ttl": AttributeMetadata(
         brief="The ttl of the cache in seconds",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=120,
         sdks=["php-laravel"],
@@ -5225,14 +5225,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "client.port": AttributeMetadata(
         brief="Client port number.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example=5432,
     ),
     "cloudflare.d1.duration": AttributeMetadata(
         brief="The duration of a Cloudflare D1 operation.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=543,
         sdks=["javascript-cloudflare"],
@@ -5240,7 +5240,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.d1.rows_read": AttributeMetadata(
         brief="The number of rows read in a Cloudflare D1 operation.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=12,
         sdks=["javascript-cloudflare"],
@@ -5248,7 +5248,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.d1.rows_written": AttributeMetadata(
         brief="The number of rows written in a Cloudflare D1 operation.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=12,
         sdks=["javascript-cloudflare"],
@@ -5290,7 +5290,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "code.line.number": AttributeMetadata(
         brief="The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example=42,
         aliases=["code.lineno"],
@@ -5298,7 +5298,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "code.lineno": AttributeMetadata(
         brief="The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example=42,
         deprecation=DeprecationInfo(replacement="code.line.number"),
@@ -5564,28 +5564,28 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "frames.delay": AttributeMetadata(
         brief="The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=5,
     ),
     "frames.frozen": AttributeMetadata(
         brief="The number of frozen frames rendered during the lifetime of the span.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=3,
     ),
     "frames.slow": AttributeMetadata(
         brief="The number of slow frames rendered during the lifetime of the span.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1,
     ),
     "frames.total": AttributeMetadata(
         brief="The number of total frames rendered during the lifetime of the span.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=60,
     ),
@@ -5625,21 +5625,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.cost.input_tokens": AttributeMetadata(
         brief="The cost of tokens used to process the AI input (prompt) in USD (without cached input tokens).",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=123.45,
     ),
     "gen_ai.cost.output_tokens": AttributeMetadata(
         brief="The cost of tokens used for creating the AI output in USD (without reasoning tokens).",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=123.45,
     ),
     "gen_ai.cost.total_tokens": AttributeMetadata(
         brief="The total cost for the tokens used.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=12.34,
     ),
@@ -5707,7 +5707,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.request.frequency_penalty": AttributeMetadata(
         brief="Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example=0.5,
         aliases=["ai.frequency_penalty"],
@@ -5715,7 +5715,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.request.max_tokens": AttributeMetadata(
         brief="The maximum number of tokens to generate in the response.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example=2048,
     ),
@@ -5738,7 +5738,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.request.presence_penalty": AttributeMetadata(
         brief="Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example=0.5,
         aliases=["ai.presence_penalty"],
@@ -5754,7 +5754,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.request.temperature": AttributeMetadata(
         brief="For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example=0.1,
         aliases=["ai.temperature"],
@@ -5762,7 +5762,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.request.top_k": AttributeMetadata(
         brief="Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example=35,
         aliases=["ai.top_k"],
@@ -5770,7 +5770,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.request.top_p": AttributeMetadata(
         brief="Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example=0.7,
         aliases=["ai.top_p"],
@@ -5825,7 +5825,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.response.tokens_per_second": AttributeMetadata(
         brief="The total output tokens per seconds throughput",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=12345.67,
     ),
@@ -5927,7 +5927,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.usage.completion_tokens": AttributeMetadata(
         brief="The number of tokens used in the GenAI response (completion).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example=10,
         deprecation=DeprecationInfo(replacement="gen_ai.usage.output_tokens"),
@@ -5936,7 +5936,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.usage.input_tokens": AttributeMetadata(
         brief="The number of tokens used to process the AI input (prompt) without cached input tokens.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example=10,
         aliases=["ai.prompt_tokens.used", "gen_ai.usage.prompt_tokens"],
@@ -5944,21 +5944,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.usage.input_tokens.cache_write": AttributeMetadata(
         brief="The number of tokens written to the cache when processing the AI input (prompt).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=100,
     ),
     "gen_ai.usage.input_tokens.cached": AttributeMetadata(
         brief="The number of cached tokens used to process the AI input (prompt).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=50,
     ),
     "gen_ai.usage.output_tokens": AttributeMetadata(
         brief="The number of tokens used for creating the AI output (without reasoning tokens).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example=10,
         aliases=["ai.completion_tokens.used", "gen_ai.usage.completion_tokens"],
@@ -5966,14 +5966,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.usage.output_tokens.reasoning": AttributeMetadata(
         brief="The number of tokens used for reasoning to create the AI output.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=75,
     ),
     "gen_ai.usage.prompt_tokens": AttributeMetadata(
         brief="The number of tokens used in the GenAI input (prompt).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example=20,
         deprecation=DeprecationInfo(replacement="gen_ai.usage.input_tokens"),
@@ -5982,7 +5982,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.usage.total_tokens": AttributeMetadata(
         brief="The total number of tokens used to process the prompt. (input tokens plus output todkens)",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=20,
         aliases=["ai.total_tokens.used"],
@@ -6020,7 +6020,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.decoded_response_content_length": AttributeMetadata(
         brief="The decoded body size of the response (in bytes).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=456,
         sdks=["javascript-browser"],
@@ -6080,7 +6080,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.connect_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the user agent starts establishing the connection to the server to retrieve the resource.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1732829555.111,
         sdks=["javascript-browser"],
@@ -6088,7 +6088,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.connection_end": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately after the browser finishes establishing the connection to the server to retrieve the resource. The timestamp value includes the time interval to establish the transport connection, as well as other time intervals such as TLS handshake and SOCKS authentication.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1732829555.15,
         sdks=["javascript-browser"],
@@ -6096,7 +6096,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.domain_lookup_end": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately after the browser finishes the domain-name lookup for the resource.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1732829555.201,
         sdks=["javascript-browser"],
@@ -6104,7 +6104,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.domain_lookup_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the browser starts the domain name lookup for the resource.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1732829555.322,
         sdks=["javascript-browser"],
@@ -6112,7 +6112,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.fetch_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the browser starts to fetch the resource.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1732829555.389,
         sdks=["javascript-browser"],
@@ -6136,7 +6136,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.redirect_end": AttributeMetadata(
         brief="The UNIX timestamp representing the timestamp immediately after receiving the last byte of the response of the last redirect",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1732829558.502,
         sdks=["javascript-browser"],
@@ -6144,7 +6144,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.redirect_start": AttributeMetadata(
         brief="The UNIX timestamp representing the start time of the fetch which that initiates the redirect.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1732829555.495,
         sdks=["javascript-browser"],
@@ -6152,7 +6152,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.request_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1732829555.51,
         sdks=["javascript-browser"],
@@ -6160,14 +6160,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.resend_count": AttributeMetadata(
         brief="The ordinal number of request resending attempt (for any reason, including redirects).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=2,
     ),
     "http.request.response_end": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately after the browser receives the last byte of the resource or immediately before the transport connection is closed, whichever comes first.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1732829555.89,
         sdks=["javascript-browser"],
@@ -6175,7 +6175,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.response_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1732829555.7,
         sdks=["javascript-browser"],
@@ -6183,7 +6183,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.secure_connection_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the browser starts the handshake process to secure the current connection. If a secure connection is not used, the property returns zero.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1732829555.73,
         sdks=["javascript-browser"],
@@ -6191,7 +6191,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.time_to_first_byte": AttributeMetadata(
         brief="The time in seconds from the browser's timeorigin to when the first byte of the request's response was received. See https://web.dev/articles/ttfb#measure-resource-requests",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1.032,
         sdks=["javascript-browser"],
@@ -6199,7 +6199,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.worker_start": AttributeMetadata(
         brief="The UNIX timestamp representing the timestamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1732829553.68,
         sdks=["javascript-browser"],
@@ -6207,7 +6207,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.response.body.size": AttributeMetadata(
         brief="The encoded body size of the response (in bytes).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example=123,
         aliases=["http.response_content_length", "http.response.header.content-length"],
@@ -6231,7 +6231,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.response.size": AttributeMetadata(
         brief="The transfer size of the response (in bytes).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example=456,
         aliases=["http.response_transfer_size"],
@@ -6239,7 +6239,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.response.status_code": AttributeMetadata(
         brief="The status code of the HTTP response.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example=404,
         aliases=["http.status_code"],
@@ -6247,7 +6247,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.response_content_length": AttributeMetadata(
         brief="The encoded body size of the response (in bytes).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example=123,
         deprecation=DeprecationInfo(
@@ -6258,7 +6258,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.response_transfer_size": AttributeMetadata(
         brief="The transfer size of the response (in bytes).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=456,
         deprecation=DeprecationInfo(
@@ -6295,7 +6295,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.status_code": AttributeMetadata(
         brief="The status code of the HTTP response.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example=404,
         deprecation=DeprecationInfo(replacement="http.response.status_code"),
@@ -6397,7 +6397,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "lcp.size": AttributeMetadata(
         brief="The size of the largest contentful paint element.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1234,
     ),
@@ -6504,7 +6504,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.progress.current": AttributeMetadata(
         brief="Current progress value of an MCP operation.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=50,
     ),
@@ -6521,7 +6521,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.progress.percentage": AttributeMetadata(
         brief="Calculated progress percentage of an MCP operation. Computed from current/total * 100.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=50,
     ),
@@ -6535,7 +6535,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.progress.total": AttributeMetadata(
         brief="Total progress target value of an MCP operation.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=100,
     ),
@@ -6566,7 +6566,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.prompt.result.message_count": AttributeMetadata(
         brief="Number of messages in the prompt result.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=3,
     ),
@@ -6580,7 +6580,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.protocol.ready": AttributeMetadata(
         brief="Protocol readiness indicator for MCP session. Non-zero value indicates the protocol is ready.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1,
     ),
@@ -6682,7 +6682,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.tool.result.content_count": AttributeMetadata(
         brief="Number of content items in the tool result.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1,
     ),
@@ -6728,7 +6728,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.message.body.size": AttributeMetadata(
         brief="The size of the message body in bytes.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example=839,
         sdks=["php-laravel"],
@@ -6736,7 +6736,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.message.envelope.size": AttributeMetadata(
         brief="The size of the message body and metadata in bytes.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example=1045,
         sdks=["php-laravel"],
@@ -6752,7 +6752,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.message.receive.latency": AttributeMetadata(
         brief="The latency between when the message was published and received.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1732847252,
         sdks=["php-laravel"],
@@ -6760,7 +6760,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.message.retry.count": AttributeMetadata(
         brief="The amount of attempts to send the message.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=2,
         sdks=["php-laravel"],
@@ -6800,7 +6800,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "nel.elapsed_time": AttributeMetadata(
         brief="The elapsed number of milliseconds between the start of the resource fetch and when it was completed or aborted by the user agent.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=100,
     ),
@@ -6821,7 +6821,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "nel.sampling_function": AttributeMetadata(
         brief="The sampling function used to determine if the request should be sampled.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=0.5,
     ),
@@ -6853,7 +6853,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.host.port": AttributeMetadata(
         brief="Server port number.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example=1337,
         deprecation=DeprecationInfo(replacement="server.port"),
@@ -6882,7 +6882,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.peer.port": AttributeMetadata(
         brief="Peer port number.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example=1337,
         deprecation=DeprecationInfo(
@@ -6931,7 +6931,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.sock.host.port": AttributeMetadata(
         brief="Local port number of the network connection.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example=8080,
         deprecation=DeprecationInfo(replacement="network.local.port"),
@@ -6959,7 +6959,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.sock.peer.port": AttributeMetadata(
         brief="Peer port number of the network connection.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example=8080,
         deprecation=DeprecationInfo(replacement="network.peer.port"),
@@ -6984,7 +6984,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "network.local.port": AttributeMetadata(
         brief="Local port number of the network connection.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example=65400,
         aliases=["net.sock.host.port"],
@@ -7000,7 +7000,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "network.peer.port": AttributeMetadata(
         brief="Peer port number of the network connection.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example=65400,
     ),
@@ -7125,7 +7125,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "process.pid": AttributeMetadata(
         brief="The process ID of the running process.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example=12345,
     ),
@@ -7229,7 +7229,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "rpc.grpc.status_code": AttributeMetadata(
         brief="The numeric status code of the gRPC request.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example=2,
     ),
@@ -7367,7 +7367,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.exclusive_time": AttributeMetadata(
         brief="The exclusive time duration of the span in milliseconds.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1234,
     ),
@@ -7603,7 +7603,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.status_code": AttributeMetadata(
         brief="The HTTP status code used in Sentry Insights. Typically set by Sentry during ingestion, rather than by clients.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=200,
     ),
@@ -7633,7 +7633,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "server.port": AttributeMetadata(
         brief="Server port number.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example=1337,
         aliases=["net.host.port"],
@@ -7754,7 +7754,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "url.port": AttributeMetadata(
         brief="Server port number.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example=1337,
     ),
@@ -8043,7 +8043,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.response_byte_size": AttributeMetadata(
         brief="Size of the response in bytes",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1024,
     ),
@@ -8057,14 +8057,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.status_code": AttributeMetadata(
         brief="HTTP status code of the proxy request",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=200,
     ),
     "vercel.proxy.timestamp": AttributeMetadata(
         brief="Unix timestamp when the proxy request was made",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1573817250172,
     ),
@@ -8120,7 +8120,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.status_code": AttributeMetadata(
         brief="HTTP status code of the request (-1 means no response returned and the lambda crashed)",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=200,
     ),

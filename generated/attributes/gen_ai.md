@@ -99,7 +99,7 @@ The cost of tokens used to process the AI input (prompt) in USD (without cached 
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `123.45` |
 
@@ -110,7 +110,7 @@ The cost of tokens used for creating the AI output in USD (without reasoning tok
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `123.45` |
 
@@ -121,7 +121,7 @@ The total cost for the tokens used.
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `12.34` |
 
@@ -199,7 +199,7 @@ Used to reduce repetitiveness of generated tokens. The higher the value, the str
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `0.5` |
 | Aliases | `ai.frequency_penalty` |
@@ -211,7 +211,7 @@ The maximum number of tokens to generate in the response.
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `2048` |
 
@@ -233,7 +233,7 @@ Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty,
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `0.5` |
 | Aliases | `ai.presence_penalty` |
@@ -257,7 +257,7 @@ For an AI model call, the temperature parameter. Temperature essentially means h
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `0.1` |
 | Aliases | `ai.temperature` |
@@ -269,7 +269,7 @@ Limits the model to only consider the K most likely next tokens, where K is an i
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `35` |
 | Aliases | `ai.top_k` |
@@ -281,7 +281,7 @@ Limits the model to only consider tokens whose cumulative probability mass adds 
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `0.7` |
 | Aliases | `ai.top_p` |
@@ -352,7 +352,7 @@ The total output tokens per seconds throughput
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `12345.67` |
 
@@ -486,7 +486,7 @@ The number of tokens used to process the AI input (prompt) without cached input 
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `10` |
 | Aliases | `ai.prompt_tokens.used`, `gen_ai.usage.prompt_tokens` |
@@ -498,7 +498,7 @@ The number of tokens written to the cache when processing the AI input (prompt).
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `100` |
 
@@ -509,7 +509,7 @@ The number of cached tokens used to process the AI input (prompt).
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `50` |
 
@@ -520,7 +520,7 @@ The number of tokens used for creating the AI output (without reasoning tokens).
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `10` |
 | Aliases | `ai.completion_tokens.used`, `gen_ai.usage.completion_tokens` |
@@ -532,7 +532,7 @@ The number of tokens used for reasoning to create the AI output.
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `75` |
 
@@ -543,7 +543,7 @@ The total number of tokens used to process the prompt. (input tokens plus output
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `20` |
 | Aliases | `ai.total_tokens.used` |
@@ -644,7 +644,7 @@ The number of tokens used in the GenAI response (completion).
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `10` |
 | Deprecated | Yes, use `gen_ai.usage.output_tokens` instead |
@@ -657,7 +657,7 @@ The number of tokens used in the GenAI input (prompt).
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `20` |
 | Deprecated | Yes, use `gen_ai.usage.input_tokens` instead |

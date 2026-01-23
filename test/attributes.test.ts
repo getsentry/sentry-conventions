@@ -25,12 +25,6 @@ describe('attribute json', async () => {
         expect(ajv.errors).toBe(null);
       });
 
-      it('should set pii to false if type is not string or string[]', () => {
-        if (content.type !== 'string' && content.type !== 'string[]') {
-          expect(content.pii.key).toBe('false');
-        }
-      });
-
       it('should have an example that follows the type set unless has_dynamic_suffix is true', () => {
         if (content.has_dynamic_suffix) {
           expect(typeof content.example).toBe('string');

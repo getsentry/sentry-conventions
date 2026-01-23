@@ -27,7 +27,7 @@
     "build:tarball:model": "tsx scripts/gzip_folder.ts model model/sentry-conventions-json.tgz",
 
     "create:attribute": "tsx scripts/create_attribute.ts",
-    "generate": "tsx scripts/generate.ts"
+    "generate": "tsx scripts/generate.ts && yarn format"
   },
   "engines": {
     "node": ">=22"
@@ -38,7 +38,7 @@
     "@types/node": "^22.15.3",
     "@types/tar": "^6.1.13",
     "ajv": "^8.17.1",
-    "tar": "^7.5.3",
+    "tar": "^7.5.4",
     "tsx": "^4.19.4",
     "vitest": "^3.1.2"
   },

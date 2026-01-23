@@ -5,6 +5,10 @@
 - Add page listing all attributes ([#207](https://github.com/getsentry/sentry-conventions/pull/207))
 - add attribute `gen_ai.response.time_to_first_token` ([#227](https://github.com/getsentry/sentry-conventions/pull/227))
 
+### Fixes
+
+- migrating several numeric fields to `pii=maybe` ([#228](https://github.com/getsentry/sentry-conventions/pull/228))
+
 #### Changes to attributes
 
 - fix(attributes): improve gen_ai.operation.name description ([#225](https://github.com/getsentry/sentry-conventions/pull/225))
@@ -14,6 +18,7 @@
 - Add new Gen AI attributes ([#221](https://github.com/getsentry/sentry-conventions/pull/221))
 - Add sentry.status_code attribute ([#223](https://github.com/getsentry/sentry-conventions/pull/223))
 - Backfill `db.system` attribute ([#224](https://github.com/getsentry/sentry-conventions/pull/224))
+- Set PII to `maybe` for numeric attributes
 
 ## 0.3.1
 

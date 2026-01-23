@@ -3,7 +3,7 @@
   "brief": "The status code of the HTTP response.",
   "type": "integer",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": 404,

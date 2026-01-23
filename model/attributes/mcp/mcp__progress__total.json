@@ -3,7 +3,7 @@
   "brief": "Total progress target value of an MCP operation.",
   "type": "integer",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": 100

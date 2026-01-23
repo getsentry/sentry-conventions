@@ -3,7 +3,7 @@
   "brief": "The number of tokens used in the GenAI input (prompt).",
   "type": "integer",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": 20,

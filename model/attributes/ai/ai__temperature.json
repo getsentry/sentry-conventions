@@ -3,7 +3,7 @@
   "brief": "For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.",
   "type": "double",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": 0.1,

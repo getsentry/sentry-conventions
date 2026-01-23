@@ -3,7 +3,7 @@
   "brief": "The duration of a Cloudflare D1 operation.",
   "type": "integer",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": 543,

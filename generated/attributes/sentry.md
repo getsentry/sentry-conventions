@@ -232,7 +232,7 @@ The exclusive time duration of the span in milliseconds.
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `1234` |
 
@@ -565,7 +565,7 @@ The HTTP status code used in Sentry Insights. Typically set by Sentry during ing
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `200` |
 

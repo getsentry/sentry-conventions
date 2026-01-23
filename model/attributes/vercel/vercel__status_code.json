@@ -3,7 +3,7 @@
   "brief": "HTTP status code of the request (-1 means no response returned and the lambda crashed)",
   "type": "integer",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": 200
