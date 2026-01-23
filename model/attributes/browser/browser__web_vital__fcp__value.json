@@ -7,10 +7,6 @@
   },
   "is_in_otel": false,
   "example": 547.6951,
-  "alias": [
-    "fcp"
-  ],
-  "sdks": [
-    "javascript-browser"
-  ]
+  "alias": ["fcp"],
+  "sdks": ["javascript-browser"]
 }

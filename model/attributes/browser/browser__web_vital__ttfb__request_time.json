@@ -7,10 +7,6 @@
   },
   "is_in_otel": false,
   "example": 1554.5814,
-  "alias": [
-    "ttfb.requestTime"
-  ],
-  "sdks": [
-    "javascript-browser"
-  ]
+  "alias": ["ttfb.requestTime"],
+  "sdks": ["javascript-browser"]
 }

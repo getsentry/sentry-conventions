@@ -4,7 +4,7 @@
 
 This page lists all available attributes across all categories.
 
-Total attributes: 422
+Total attributes: 430
 
 ## Stable Attributes
 
@@ -31,6 +31,10 @@ Total attributes: 422
 | [`browser.script.invoker_type`](./browser.md#browserscriptinvoker_type) | Browser script entry point type. |
 | [`browser.script.source_char_position`](./browser.md#browserscriptsource_char_position) | A number representing the script character position of the script. |
 | [`browser.version`](./browser.md#browserversion) | The version of the browser. |
+| [`browser.web_vital.fcp.value`](./browser.md#browserweb_vitalfcpvalue) | The time it takes for the browser to render the first piece of meaningful content on the screen |
+| [`browser.web_vital.fp.value`](./browser.md#browserweb_vitalfpvalue) | The time in milliseconds it takes for the browser to render the first pixel on the screen |
+| [`browser.web_vital.ttfb.request_time`](./browser.md#browserweb_vitalttfbrequest_time) | The time it takes for the server to process the initial request and send the first byte of a response to the user's browser |
+| [`browser.web_vital.ttfb.value`](./browser.md#browserweb_vitalttfbvalue) | The value of the recorded Time To First Byte (TTFB) web vital in Milliseconds |
 | [`cache.hit`](./cache.md#cachehit) | If the cache was hit during this span. |
 | [`cache.item_size`](./cache.md#cacheitem_size) | The size of the requested item in the cache. In bytes. |
 | [`cache.key`](./cache.md#cachekey) | The key of the cache accessed. |
@@ -389,6 +393,8 @@ Total attributes: 422
 | [`db.statement`](./db.md#dbstatement) | [`db.query.text`](./db.md#dbquerytext) |
 | [`db.system`](./db.md#dbsystem) | [`db.system.name`](./db.md#dbsystemname) |
 | [`environment`](./general.md#environment) | [`sentry.environment`](./sentry.md#sentryenvironment) |
+| [`fcp`](./general.md#fcp) | [`browser.web_vital.fcp.value`](./browser.md#browserweb_vitalfcpvalue) |
+| [`fp`](./general.md#fp) | [`browser.web_vital.fp.value`](./browser.md#browserweb_vitalfpvalue) |
 | [`fs_error`](./general.md#fs_error) | [`error.type`](./error.md#errortype) |
 | [`gen_ai.prompt`](./gen_ai.md#gen_aiprompt) | No replacement |
 | [`gen_ai.request.available_tools`](./gen_ai.md#gen_airequestavailable_tools) | [`gen_ai.tool.definitions`](./gen_ai.md#gen_aitooldefinitions) |
@@ -436,5 +442,7 @@ Total attributes: 422
 | [`sentry.browser.version`](./sentry.md#sentrybrowserversion) | [`browser.version`](./browser.md#browserversion) |
 | [`sentry.segment_id`](./sentry.md#sentrysegment_id) | [`sentry.segment.id`](./sentry.md#sentrysegmentid) |
 | [`transaction`](./general.md#transaction) | [`sentry.transaction`](./sentry.md#sentrytransaction) |
+| [`ttfb`](./general.md#ttfb) | [`http.request.time_to_first_byte`](./http.md#httprequesttime_to_first_byte) |
+| [`ttfb.requestTime`](./ttfb.md#ttfbrequesttime) | [`browser.web_vital.ttfb.request_time`](./browser.md#browserweb_vitalttfbrequest_time) |
 | [`url`](./general.md#url) | [`url.full`](./url.md#urlfull) |
 

@@ -49,6 +49,7 @@ This directory contains documentation for all available attributes.
 - [`service` Attributes](./service.md)
 - [`thread` Attributes](./thread.md)
 - [`timber` Attributes](./timber.md)
+- [`ttfb` Attributes](./ttfb.md)
 - [`ui` Attributes](./ui.md)
 - [`url` Attributes](./url.md)
 - [`user` Attributes](./user.md)

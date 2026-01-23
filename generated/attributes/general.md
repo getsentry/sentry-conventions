@@ -11,6 +11,8 @@
   - [type](#type)
 - [Deprecated Attributes](#deprecated-attributes)
   - [environment](#environment)
+  - [fcp](#fcp)
+  - [fp](#fp)
   - [fs_error](#fs_error)
   - [method](#method)
   - [profile_id](#profile_id)
@@ -18,6 +20,7 @@
   - [replay_id](#replay_id)
   - [route](#route)
   - [transaction](#transaction)
+  - [ttfb](#ttfb)
   - [url](#url)
 
 ## Stable Attributes
@@ -104,6 +107,34 @@ The sentry environment.
 | Example | `production` |
 | Deprecated | Yes, use `sentry.environment` instead |
 | Aliases | `sentry.environment` |
+
+### fcp
+
+The time it takes for the browser to render the first piece of meaningful content on the screen
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `547.6951` |
+| Deprecated | Yes, use `browser.web_vital.fcp.value` instead |
+| Deprecation Reason | This attribute is being deprecated in favor of browser.web_vital.fcp.value |
+| Aliases | `browser.web_vital.fcp.value` |
+
+### fp
+
+The time it takes for the browser to render the first pixel on the screen
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `477.1926` |
+| Deprecated | Yes, use `browser.web_vital.fp.value` instead |
+| Deprecation Reason | This attribute is being deprecated in favor of browser.web_vital.fp.value |
+| Aliases | `browser.web_vital.fp.value` |
 
 ### fs_error
 
@@ -195,6 +226,20 @@ The sentry transaction (segment name).
 | Example | `GET /` |
 | Deprecated | Yes, use `sentry.transaction` instead |
 | Aliases | `sentry.transaction` |
+
+### ttfb
+
+The value of the recorded Time To First Byte (TTFB) web vital in Milliseconds
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `194` |
+| Deprecated | Yes, use `http.request.time_to_first_byte` instead |
+| Deprecation Reason | This attribute is being deprecated in favor of http.request.time_to_first_byte |
+| Aliases | `browser.web_vital.ttfb.value` |
 
 ### url
 

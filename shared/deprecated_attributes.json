@@ -17,6 +17,40 @@
       "alias": ["sentry.environment"]
     },
     {
+      "key": "fcp",
+      "brief": "The time it takes for the browser to render the first piece of meaningful content on the screen",
+      "type": "double",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": 547.6951,
+      "sdks": ["javascript-browser"],
+      "deprecation": {
+        "_status": "backfill",
+        "replacement": "browser.web_vital.fcp.value",
+        "reason": "This attribute is being deprecated in favor of browser.web_vital.fcp.value"
+      },
+      "alias": ["browser.web_vital.fcp.value"]
+    },
+    {
+      "key": "fp",
+      "brief": "The time it takes for the browser to render the first pixel on the screen",
+      "type": "double",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": 477.1926,
+      "sdks": ["javascript-browser"],
+      "deprecation": {
+        "_status": "backfill",
+        "replacement": "browser.web_vital.fp.value",
+        "reason": "This attribute is being deprecated in favor of browser.web_vital.fp.value"
+      },
+      "alias": ["browser.web_vital.fp.value"]
+    },
+    {
       "key": "fs_error",
       "brief": "The error message of a file system error.",
       "type": "string",
@@ -123,6 +157,23 @@
         "replacement": "sentry.transaction"
       },
       "alias": ["sentry.transaction"]
+    },
+    {
+      "key": "ttfb",
+      "brief": "The value of the recorded Time To First Byte (TTFB) web vital in Milliseconds",
+      "type": "double",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": 194,
+      "alias": ["browser.web_vital.ttfb.value"],
+      "sdks": ["javascript-browser"],
+      "deprecation": {
+        "_status": "backfill",
+        "replacement": "http.request.time_to_first_byte",
+        "reason": "This attribute is being deprecated in favor of http.request.time_to_first_byte"
+      }
     },
     {
       "key": "url",
@@ -1176,6 +1227,23 @@
         "_status": null,
         "replacement": "sentry.segment.id"
       }
+    },
+    {
+      "key": "ttfb.requestTime",
+      "brief": "The time it takes for the server to process the initial request and send the first byte of a response to the user's browser",
+      "type": "double",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": 1554.5814,
+      "sdks": ["javascript-browser"],
+      "deprecation": {
+        "_status": "backfill",
+        "replacement": "browser.web_vital.ttfb.request_time",
+        "reason": "This attribute is being deprecated in favor of browser.web_vital.ttfb.request_time"
+      },
+      "alias": ["browser.web_vital.ttfb.request_time"]
     }
   ]
 }
