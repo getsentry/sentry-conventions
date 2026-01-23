@@ -1,0 +1,12 @@
+{
+  "key": "browser.web_vital.cls.source.<index>",
+  "brief": "The HTML elements or components responsible for the layout shift. <index> is a numeric index from 1 to N",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "body > div#app",
+  "alias": ["cls.source.<index>"],
+  "sdks": ["javascript-browser"]
+}

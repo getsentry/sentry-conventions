@@ -4,7 +4,7 @@
 
 This page lists all available attributes across all categories.
 
-Total attributes: 422
+Total attributes: 424
 
 ## Stable Attributes
 
@@ -31,6 +31,7 @@ Total attributes: 422
 | [`browser.script.invoker_type`](./browser.md#browserscriptinvoker_type) | Browser script entry point type. |
 | [`browser.script.source_char_position`](./browser.md#browserscriptsource_char_position) | A number representing the script character position of the script. |
 | [`browser.version`](./browser.md#browserversion) | The version of the browser. |
+| [`browser.web_vital.cls.source.<index>`](./browser.md#browserweb_vitalclssource<index>) | The HTML elements or components responsible for the layout shift. <index> is a numeric index from 1 to N |
 | [`cache.hit`](./cache.md#cachehit) | If the cache was hit during this span. |
 | [`cache.item_size`](./cache.md#cacheitem_size) | The size of the requested item in the cache. In bytes. |
 | [`cache.key`](./cache.md#cachekey) | The key of the cache accessed. |
@@ -42,6 +43,7 @@ Total attributes: 422
 | [`cloudflare.d1.duration`](./cloudflare.md#cloudflared1duration) | The duration of a Cloudflare D1 operation. |
 | [`cloudflare.d1.rows_read`](./cloudflare.md#cloudflared1rows_read) | The number of rows read in a Cloudflare D1 operation. |
 | [`cloudflare.d1.rows_written`](./cloudflare.md#cloudflared1rows_written) | The number of rows written in a Cloudflare D1 operation. |
+| [`cls.source.<index>`](./cls.md#clssource<index>) | The HTML elements or components responsible for the layout shift. <index> is a numeric index from 1 to N |
 | [`code.file.path`](./code.md#codefilepath) | The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path). |
 | [`code.function.name`](./code.md#codefunctionname) | The method or function name, or equivalent (usually rightmost part of the code unit's name). |
 | [`code.line.number`](./code.md#codelinenumber) | The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function |

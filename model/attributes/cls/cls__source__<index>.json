@@ -1,0 +1,17 @@
+{
+  "key": "cls.source.<index>",
+  "brief": "The HTML elements or components responsible for the layout shift. <index> is a numeric index from 1 to N",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "body > div#app",
+  "sdks": ["javascript-browser"],
+  "deprecation": {
+    "replacement": "browser.web_vital.cls.source.<index>",
+    "reason": "The CLS source is now recorded as a browser.web_vital.cls.source.<index> attribute.",
+    "_status": "backfill"
+  },
+  "alias": ["browser.web_vital.cls.source.<index>"]
+}

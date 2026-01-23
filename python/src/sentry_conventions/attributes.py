@@ -635,6 +635,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "120.0.6099.130"
     """
 
+    # Path: model/attributes/browser/browser__web_vital__cls__source__<index>.json
+    BROWSER_WEB_VITAL_CLS_SOURCE_INDEX: Literal[
+        "browser.web_vital.cls.source.<index>"
+    ] = "browser.web_vital.cls.source.<index>"
+    """The HTML elements or components responsible for the layout shift. <index> is a numeric index from 1 to N
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: cls.source.<index>
+    Example: "body > div#app"
+    """
+
     # Path: model/attributes/cache/cache__hit.json
     CACHE_HIT: Literal["cache.hit"] = "cache.hit"
     """If the cache was hit during this span.
@@ -748,6 +761,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Example: 12
+    """
+
+    # Path: model/attributes/cls/cls__source__<index>.json
+    CLS_SOURCE_INDEX: Literal["cls.source.<index>"] = "cls.source.<index>"
+    """The HTML elements or components responsible for the layout shift. <index> is a numeric index from 1 to N
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: browser.web_vital.cls.source.<index>
+    Example: "body > div#app"
     """
 
     # Path: model/attributes/code/code__file__path.json
@@ -5155,6 +5179,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="120.0.6099.130",
         aliases=["sentry.browser.version"],
     ),
+    "browser.web_vital.cls.source.<index>": AttributeMetadata(
+        brief="The HTML elements or components responsible for the layout shift. <index> is a numeric index from 1 to N",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="body > div#app",
+        aliases=["cls.source.<index>"],
+        sdks=["javascript-browser"],
+    ),
     "cache.hit": AttributeMetadata(
         brief="If the cache was hit during this span.",
         type=AttributeType.BOOLEAN,
@@ -5240,6 +5273,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=12,
         sdks=["javascript-cloudflare"],
+    ),
+    "cls.source.<index>": AttributeMetadata(
+        brief="The HTML elements or components responsible for the layout shift. <index> is a numeric index from 1 to N",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="body > div#app",
+        aliases=["browser.web_vital.cls.source.<index>"],
+        sdks=["javascript-browser"],
     ),
     "code.file.path": AttributeMetadata(
         brief="The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).",
@@ -8156,6 +8198,7 @@ Attributes = TypedDict(
         "browser.script.invoker_type": str,
         "browser.script.source_char_position": int,
         "browser.version": str,
+        "browser.web_vital.cls.source.<index>": str,
         "cache.hit": bool,
         "cache.item_size": int,
         "cache.key": List[str],
@@ -8167,6 +8210,7 @@ Attributes = TypedDict(
         "cloudflare.d1.duration": int,
         "cloudflare.d1.rows_read": int,
         "cloudflare.d1.rows_written": int,
+        "cls.source.<index>": str,
         "code.file.path": str,
         "code.filepath": str,
         "code.function": str,
