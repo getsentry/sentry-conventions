@@ -105,6 +105,7 @@ class _AttributeNamesMeta(type):
         "AI_TOP_K",
         "AI_TOP_P",
         "AI_TOTAL_TOKENS_USED",
+        "CLS_SOURCE_KEY",
         "CODE_FILEPATH",
         "CODE_FUNCTION",
         "CODE_LINENO",
@@ -635,16 +636,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "120.0.6099.130"
     """
 
-    # Path: model/attributes/browser/browser__web_vital__cls__source__<index>.json
-    BROWSER_WEB_VITAL_CLS_SOURCE_INDEX: Literal[
-        "browser.web_vital.cls.source.<index>"
-    ] = "browser.web_vital.cls.source.<index>"
-    """The HTML elements or components responsible for the layout shift. <index> is a numeric index from 1 to N
+    # Path: model/attributes/browser/browser__web_vital__cls__source__[key].json
+    BROWSER_WEB_VITAL_CLS_SOURCE_KEY: Literal["browser.web_vital.cls.source.<key>"] = (
+        "browser.web_vital.cls.source.<key>"
+    )
+    """The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N
 
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: cls.source.<index>
+    Aliases: cls.source.<key>
     Example: "body > div#app"
     """
 
@@ -763,14 +764,15 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 12
     """
 
-    # Path: model/attributes/cls/cls__source__<index>.json
-    CLS_SOURCE_INDEX: Literal["cls.source.<index>"] = "cls.source.<index>"
-    """The HTML elements or components responsible for the layout shift. <index> is a numeric index from 1 to N
+    # Path: model/attributes/cls/cls__source__[key].json
+    CLS_SOURCE_KEY: Literal["cls.source.<key>"] = "cls.source.<key>"
+    """The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N
 
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: browser.web_vital.cls.source.<index>
+    Aliases: browser.web_vital.cls.source.<key>
+    DEPRECATED: Use browser.web_vital.cls.source.<key> instead - The CLS source is now recorded as a browser.web_vital.cls.source.<key> attribute.
     Example: "body > div#app"
     """
 
@@ -5179,13 +5181,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="120.0.6099.130",
         aliases=["sentry.browser.version"],
     ),
-    "browser.web_vital.cls.source.<index>": AttributeMetadata(
-        brief="The HTML elements or components responsible for the layout shift. <index> is a numeric index from 1 to N",
+    "browser.web_vital.cls.source.<key>": AttributeMetadata(
+        brief="The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="body > div#app",
-        aliases=["cls.source.<index>"],
+        aliases=["cls.source.<key>"],
         sdks=["javascript-browser"],
     ),
     "cache.hit": AttributeMetadata(
@@ -5274,13 +5276,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=12,
         sdks=["javascript-cloudflare"],
     ),
-    "cls.source.<index>": AttributeMetadata(
-        brief="The HTML elements or components responsible for the layout shift. <index> is a numeric index from 1 to N",
+    "cls.source.<key>": AttributeMetadata(
+        brief="The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="body > div#app",
-        aliases=["browser.web_vital.cls.source.<index>"],
+        deprecation=DeprecationInfo(
+            replacement="browser.web_vital.cls.source.<key>",
+            reason="The CLS source is now recorded as a browser.web_vital.cls.source.<key> attribute.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["browser.web_vital.cls.source.<key>"],
         sdks=["javascript-browser"],
     ),
     "code.file.path": AttributeMetadata(
@@ -8198,7 +8205,7 @@ Attributes = TypedDict(
         "browser.script.invoker_type": str,
         "browser.script.source_char_position": int,
         "browser.version": str,
-        "browser.web_vital.cls.source.<index>": str,
+        "browser.web_vital.cls.source.<key>": str,
         "cache.hit": bool,
         "cache.item_size": int,
         "cache.key": List[str],
@@ -8210,7 +8217,7 @@ Attributes = TypedDict(
         "cloudflare.d1.duration": int,
         "cloudflare.d1.rows_read": int,
         "cloudflare.d1.rows_written": int,
-        "cls.source.<index>": str,
+        "cls.source.<key>": str,
         "code.file.path": str,
         "code.filepath": str,
         "code.function": str,

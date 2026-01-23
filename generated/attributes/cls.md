@@ -2,14 +2,16 @@
 
 # Cls Attributes
 
-- [Stable Attributes](#stable-attributes)
-  - [cls.source.<index>](#clssource<index>)
+- [Deprecated Attributes](#deprecated-attributes)
+  - [cls.source.\<key\>](#clssourcekey)
 
-## Stable Attributes
+## Deprecated Attributes
 
-### cls.source.<index>
+These attributes are deprecated and will be removed in a future version. Please use the recommended replacements.
 
-The HTML elements or components responsible for the layout shift. <index> is a numeric index from 1 to N
+### cls.source.\<key\>
+
+The HTML elements or components responsible for the layout shift. \<key\> is a numeric index from 1 to N
 
 | Property | Value |
 | --- | --- |
@@ -17,5 +19,7 @@ The HTML elements or components responsible for the layout shift. <index> is a n
 | Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `body > div#app` |
-| Aliases | `browser.web_vital.cls.source.<index>` |
+| Deprecated | Yes, use `browser.web_vital.cls.source.\<key\>` instead |
+| Deprecation Reason | The CLS source is now recorded as a browser.web_vital.cls.source.\<key\> attribute. |
+| Aliases | `browser.web_vital.cls.source.\<key\>` |
 

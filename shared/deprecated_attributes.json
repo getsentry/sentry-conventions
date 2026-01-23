@@ -445,6 +445,23 @@
       "alias": ["gen_ai.usage.total_tokens"]
     },
     {
+      "key": "cls.source.<key>",
+      "brief": "The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "body > div#app",
+      "sdks": ["javascript-browser"],
+      "deprecation": {
+        "replacement": "browser.web_vital.cls.source.<key>",
+        "reason": "The CLS source is now recorded as a browser.web_vital.cls.source.<key> attribute.",
+        "_status": "backfill"
+      },
+      "alias": ["browser.web_vital.cls.source.<key>"]
+    },
+    {
       "key": "code.filepath",
       "brief": "The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).",
       "type": "string",
