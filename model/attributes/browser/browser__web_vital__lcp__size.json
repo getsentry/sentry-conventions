@@ -1,0 +1,12 @@
+{
+  "key": "browser.web_vital.lcp.size",
+  "brief": "The size of the largest contentful paint element",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 1024,
+  "alias": ["lcp.size"],
+  "sdks": ["javascript-browser"]
+}

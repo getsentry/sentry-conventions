@@ -922,6 +922,28 @@ export const BROWSER_WEB_VITAL_LCP_ID = 'browser.web_vital.lcp.id';
  */
 export type BROWSER_WEB_VITAL_LCP_ID_TYPE = string;
 
+// Path: model/attributes/browser/browser__web_vital__lcp__size.json
+
+/**
+ * The size of the largest contentful paint element `browser.web_vital.lcp.size`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_LCP_SIZE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link LCP_SIZE} `lcp.size`
+ *
+ * @example 1024
+ */
+export const BROWSER_WEB_VITAL_LCP_SIZE = 'browser.web_vital.lcp.size';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_LCP_SIZE} browser.web_vital.lcp.size
+ */
+export type BROWSER_WEB_VITAL_LCP_SIZE_TYPE = number;
+
 // Path: model/attributes/browser/browser__web_vital__lcp__url.json
 
 /**
@@ -4164,6 +4186,9 @@ export type LCP_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link BROWSER_WEB_VITAL_LCP_SIZE} `browser.web_vital.lcp.size`
+ *
+ * @deprecated Use {@link BROWSER_WEB_VITAL_LCP_SIZE} (browser.web_vital.lcp.size) instead - The LCP size is now recorded as a browser.web_vital.lcp.size attribute.
  * @example 1234
  */
 export const LCP_SIZE = 'lcp.size';
@@ -8926,6 +8951,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [BROWSER_VERSION]: 'string',
   [BROWSER_WEB_VITAL_LCP_ELEMENT]: 'string',
   [BROWSER_WEB_VITAL_LCP_ID]: 'string',
+  [BROWSER_WEB_VITAL_LCP_SIZE]: 'integer',
   [BROWSER_WEB_VITAL_LCP_URL]: 'string',
   [CACHE_HIT]: 'boolean',
   [CACHE_ITEM_SIZE]: 'integer',
@@ -9354,6 +9380,7 @@ export type AttributeName =
   | typeof BROWSER_VERSION
   | typeof BROWSER_WEB_VITAL_LCP_ELEMENT
   | typeof BROWSER_WEB_VITAL_LCP_ID
+  | typeof BROWSER_WEB_VITAL_LCP_SIZE
   | typeof BROWSER_WEB_VITAL_LCP_URL
   | typeof CACHE_HIT
   | typeof CACHE_ITEM_SIZE
@@ -10223,6 +10250,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '#gero',
     aliases: [LCP_ID],
+    sdks: ['javascript-browser'],
+  },
+  [BROWSER_WEB_VITAL_LCP_SIZE]: {
+    brief: 'The size of the largest contentful paint element',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 1024,
+    aliases: [LCP_SIZE],
     sdks: ['javascript-browser'],
   },
   [BROWSER_WEB_VITAL_LCP_URL]: {
@@ -11866,6 +11904,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 1234,
+    deprecation: {
+      replacement: 'browser.web_vital.lcp.size',
+      reason: 'The LCP size is now recorded as a browser.web_vital.lcp.size attribute.',
+    },
+    aliases: [BROWSER_WEB_VITAL_LCP_SIZE],
   },
   [LCP_URL]: {
     brief: 'The url of the dom element responsible for the largest contentful paint.',
@@ -14157,6 +14200,7 @@ export type Attributes = {
   [BROWSER_VERSION]?: BROWSER_VERSION_TYPE;
   [BROWSER_WEB_VITAL_LCP_ELEMENT]?: BROWSER_WEB_VITAL_LCP_ELEMENT_TYPE;
   [BROWSER_WEB_VITAL_LCP_ID]?: BROWSER_WEB_VITAL_LCP_ID_TYPE;
+  [BROWSER_WEB_VITAL_LCP_SIZE]?: BROWSER_WEB_VITAL_LCP_SIZE_TYPE;
   [BROWSER_WEB_VITAL_LCP_URL]?: BROWSER_WEB_VITAL_LCP_URL_TYPE;
   [CACHE_HIT]?: CACHE_HIT_TYPE;
   [CACHE_ITEM_SIZE]?: CACHE_ITEM_SIZE_TYPE;

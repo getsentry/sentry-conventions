@@ -4,7 +4,11 @@
 
 This page lists all available attributes across all categories.
 
+<<<<<<< HEAD
 Total attributes: 425
+=======
+Total attributes: 432
+>>>>>>> fed074c (feat(attributes): Add `browser.web_vital.lcp.size` attribute)
 
 ## Stable Attributes
 
@@ -33,6 +37,7 @@ Total attributes: 425
 | [`browser.version`](./browser.md#browserversion) | The version of the browser. |
 | [`browser.web_vital.lcp.element`](./browser.md#browserweb_vitallcpelement) | The HTML element selector or component name for which LCP was reported |
 | [`browser.web_vital.lcp.id`](./browser.md#browserweb_vitallcpid) | The id of the dom element responsible for the largest contentful paint |
+| [`browser.web_vital.lcp.size`](./browser.md#browserweb_vitallcpsize) | The size of the largest contentful paint element |
 | [`browser.web_vital.lcp.url`](./browser.md#browserweb_vitallcpurl) | The url of the dom element responsible for the largest contentful paint |
 | [`cache.hit`](./cache.md#cachehit) | If the cache was hit during this span. |
 | [`cache.item_size`](./cache.md#cacheitem_size) | The size of the requested item in the cache. In bytes. |
@@ -154,7 +159,6 @@ Total attributes: 425
 | [`jvm.memory.type`](./jvm.md#jvmmemorytype) | Name of the memory pool. |
 | [`jvm.thread.daemon`](./jvm.md#jvmthreaddaemon) | Whether the thread is daemon or not. |
 | [`jvm.thread.state`](./jvm.md#jvmthreadstate) | State of the thread. |
-| [`lcp.size`](./lcp.md#lcpsize) | The size of the largest contentful paint element. |
 | [`logger.name`](./logger.md#loggername) | The name of the logger that generated this event. |
 | [`mcp.cancelled.reason`](./mcp.md#mcpcancelledreason) | Reason for the cancellation of an MCP operation. |
 | [`mcp.cancelled.request_id`](./mcp.md#mcpcancelledrequest_id) | Request ID of the cancelled MCP operation. |
@@ -412,6 +416,7 @@ Total attributes: 425
 | [`http.user_agent`](./http.md#httpuser_agent) | [`user_agent.original`](./user_agent.md#user_agentoriginal) |
 | [`lcp.element`](./lcp.md#lcpelement) | [`browser.web_vital.lcp.element`](./browser.md#browserweb_vitallcpelement) |
 | [`lcp.id`](./lcp.md#lcpid) | [`browser.web_vital.lcp.id`](./browser.md#browserweb_vitallcpid) |
+| [`lcp.size`](./lcp.md#lcpsize) | [`browser.web_vital.lcp.size`](./browser.md#browserweb_vitallcpsize) |
 | [`lcp.url`](./lcp.md#lcpurl) | [`browser.web_vital.lcp.url`](./browser.md#browserweb_vitallcpurl) |
 | [`method`](./general.md#method) | [`http.request.method`](./http.md#httprequestmethod) |
 | [`net.host.ip`](./net.md#nethostip) | [`network.local.address`](./network.md#networklocaladdress) |
