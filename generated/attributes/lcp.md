@@ -6,6 +6,7 @@
   - [lcp.element](#lcpelement)
   - [lcp.id](#lcpid)
   - [lcp.loadTime](#lcploadtime)
+  - [lcp.renderTime](#lcprendertime)
   - [lcp.size](#lcpsize)
   - [lcp.url](#lcpurl)
 
@@ -54,6 +55,20 @@ The time it took for the LCP element to be loaded
 | Deprecated | Yes, use `browser.web_vital.lcp.load_time` instead |
 | Deprecation Reason | The LCP load time is now recorded as a browser.web_vital.lcp.load_time attribute. |
 | Aliases | `browser.web_vital.lcp.load_time` |
+
+### lcp.renderTime
+
+The time it took for the LCP element to be rendered
+
+| Property | Value |
+| --- | --- |
+| Type | `integer` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `1685` |
+| Deprecated | Yes, use `browser.web_vital.lcp.render_time` instead |
+| Deprecation Reason | The LCP render time is now recorded as a browser.web_vital.lcp.render_time attribute. |
+| Aliases | `browser.web_vital.lcp.render_time` |
 
 ### lcp.size
 

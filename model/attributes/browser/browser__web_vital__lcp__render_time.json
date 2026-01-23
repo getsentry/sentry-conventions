@@ -1,0 +1,12 @@
+{
+  "key": "browser.web_vital.lcp.render_time",
+  "brief": "The time it took for the LCP element to be rendered",
+  "type": "integer",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": 1685,
+  "alias": ["lcp.renderTime"],
+  "sdks": ["javascript-browser"]
+}

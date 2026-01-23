@@ -4,7 +4,7 @@
 
 This page lists all available attributes across all categories.
 
-Total attributes: 428
+Total attributes: 430
 
 ## Stable Attributes
 
@@ -34,6 +34,7 @@ Total attributes: 428
 | [`browser.web_vital.lcp.element`](./browser.md#browserweb_vitallcpelement) | The HTML element selector or component name for which LCP was reported |
 | [`browser.web_vital.lcp.id`](./browser.md#browserweb_vitallcpid) | The id of the dom element responsible for the largest contentful paint |
 | [`browser.web_vital.lcp.load_time`](./browser.md#browserweb_vitallcpload_time) | The time it took for the LCP element to be loaded |
+| [`browser.web_vital.lcp.render_time`](./browser.md#browserweb_vitallcprender_time) | The time it took for the LCP element to be rendered |
 | [`browser.web_vital.lcp.size`](./browser.md#browserweb_vitallcpsize) | The size of the largest contentful paint element |
 | [`browser.web_vital.lcp.url`](./browser.md#browserweb_vitallcpurl) | The url of the dom element responsible for the largest contentful paint |
 | [`cache.hit`](./cache.md#cachehit) | If the cache was hit during this span. |
@@ -414,6 +415,7 @@ Total attributes: 428
 | [`lcp.element`](./lcp.md#lcpelement) | [`browser.web_vital.lcp.element`](./browser.md#browserweb_vitallcpelement) |
 | [`lcp.id`](./lcp.md#lcpid) | [`browser.web_vital.lcp.id`](./browser.md#browserweb_vitallcpid) |
 | [`lcp.loadTime`](./lcp.md#lcploadtime) | [`browser.web_vital.lcp.load_time`](./browser.md#browserweb_vitallcpload_time) |
+| [`lcp.renderTime`](./lcp.md#lcprendertime) | [`browser.web_vital.lcp.render_time`](./browser.md#browserweb_vitallcprender_time) |
 | [`lcp.size`](./lcp.md#lcpsize) | [`browser.web_vital.lcp.size`](./browser.md#browserweb_vitallcpsize) |
 | [`lcp.url`](./lcp.md#lcpurl) | [`browser.web_vital.lcp.url`](./browser.md#browserweb_vitallcpurl) |
 | [`method`](./general.md#method) | [`http.request.method`](./http.md#httprequestmethod) |

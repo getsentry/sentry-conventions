@@ -944,6 +944,28 @@ export const BROWSER_WEB_VITAL_LCP_LOAD_TIME = 'browser.web_vital.lcp.load_time'
  */
 export type BROWSER_WEB_VITAL_LCP_LOAD_TIME_TYPE = number;
 
+// Path: model/attributes/browser/browser__web_vital__lcp__render_time.json
+
+/**
+ * The time it took for the LCP element to be rendered `browser.web_vital.lcp.render_time`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_LCP_RENDER_TIME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link LCP_RENDERTIME} `lcp.renderTime`
+ *
+ * @example 1685
+ */
+export const BROWSER_WEB_VITAL_LCP_RENDER_TIME = 'browser.web_vital.lcp.render_time';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_LCP_RENDER_TIME} browser.web_vital.lcp.render_time
+ */
+export type BROWSER_WEB_VITAL_LCP_RENDER_TIME_TYPE = number;
+
 // Path: model/attributes/browser/browser__web_vital__lcp__size.json
 
 /**
@@ -4219,6 +4241,29 @@ export const LCP_LOADTIME = 'lcp.loadTime';
  * Type for {@link LCP_LOADTIME} lcp.loadTime
  */
 export type LCP_LOADTIME_TYPE = number;
+
+// Path: model/attributes/lcp/lcp__renderTime.json
+
+/**
+ * The time it took for the LCP element to be rendered `lcp.renderTime`
+ *
+ * Attribute Value Type: `number` {@link LCP_RENDERTIME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link BROWSER_WEB_VITAL_LCP_RENDER_TIME} `browser.web_vital.lcp.render_time`
+ *
+ * @deprecated Use {@link BROWSER_WEB_VITAL_LCP_RENDER_TIME} (browser.web_vital.lcp.render_time) instead - The LCP render time is now recorded as a browser.web_vital.lcp.render_time attribute.
+ * @example 1685
+ */
+export const LCP_RENDERTIME = 'lcp.renderTime';
+
+/**
+ * Type for {@link LCP_RENDERTIME} lcp.renderTime
+ */
+export type LCP_RENDERTIME_TYPE = number;
 
 // Path: model/attributes/lcp/lcp__size.json
 
@@ -8997,6 +9042,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [BROWSER_WEB_VITAL_LCP_ELEMENT]: 'string',
   [BROWSER_WEB_VITAL_LCP_ID]: 'string',
   [BROWSER_WEB_VITAL_LCP_LOAD_TIME]: 'integer',
+  [BROWSER_WEB_VITAL_LCP_RENDER_TIME]: 'integer',
   [BROWSER_WEB_VITAL_LCP_SIZE]: 'integer',
   [BROWSER_WEB_VITAL_LCP_URL]: 'string',
   [CACHE_HIT]: 'boolean',
@@ -9153,6 +9199,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [LCP_ELEMENT]: 'string',
   [LCP_ID]: 'string',
   [LCP_LOADTIME]: 'integer',
+  [LCP_RENDERTIME]: 'integer',
   [LCP_SIZE]: 'integer',
   [LCP_URL]: 'string',
   [LOGGER_NAME]: 'string',
@@ -9428,6 +9475,7 @@ export type AttributeName =
   | typeof BROWSER_WEB_VITAL_LCP_ELEMENT
   | typeof BROWSER_WEB_VITAL_LCP_ID
   | typeof BROWSER_WEB_VITAL_LCP_LOAD_TIME
+  | typeof BROWSER_WEB_VITAL_LCP_RENDER_TIME
   | typeof BROWSER_WEB_VITAL_LCP_SIZE
   | typeof BROWSER_WEB_VITAL_LCP_URL
   | typeof CACHE_HIT
@@ -9584,6 +9632,7 @@ export type AttributeName =
   | typeof LCP_ELEMENT
   | typeof LCP_ID
   | typeof LCP_LOADTIME
+  | typeof LCP_RENDERTIME
   | typeof LCP_SIZE
   | typeof LCP_URL
   | typeof LOGGER_NAME
@@ -10310,6 +10359,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 1402,
     aliases: [LCP_LOADTIME],
+    sdks: ['javascript-browser'],
+  },
+  [BROWSER_WEB_VITAL_LCP_RENDER_TIME]: {
+    brief: 'The time it took for the LCP element to be rendered',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1685,
+    aliases: [LCP_RENDERTIME],
     sdks: ['javascript-browser'],
   },
   [BROWSER_WEB_VITAL_LCP_SIZE]: {
@@ -11969,6 +12029,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'The LCP load time is now recorded as a browser.web_vital.lcp.load_time attribute.',
     },
     aliases: [BROWSER_WEB_VITAL_LCP_LOAD_TIME],
+    sdks: ['javascript-browser'],
+  },
+  [LCP_RENDERTIME]: {
+    brief: 'The time it took for the LCP element to be rendered',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1685,
+    deprecation: {
+      replacement: 'browser.web_vital.lcp.render_time',
+      reason: 'The LCP render time is now recorded as a browser.web_vital.lcp.render_time attribute.',
+    },
+    aliases: [BROWSER_WEB_VITAL_LCP_RENDER_TIME],
     sdks: ['javascript-browser'],
   },
   [LCP_SIZE]: {
@@ -14276,6 +14351,7 @@ export type Attributes = {
   [BROWSER_WEB_VITAL_LCP_ELEMENT]?: BROWSER_WEB_VITAL_LCP_ELEMENT_TYPE;
   [BROWSER_WEB_VITAL_LCP_ID]?: BROWSER_WEB_VITAL_LCP_ID_TYPE;
   [BROWSER_WEB_VITAL_LCP_LOAD_TIME]?: BROWSER_WEB_VITAL_LCP_LOAD_TIME_TYPE;
+  [BROWSER_WEB_VITAL_LCP_RENDER_TIME]?: BROWSER_WEB_VITAL_LCP_RENDER_TIME_TYPE;
   [BROWSER_WEB_VITAL_LCP_SIZE]?: BROWSER_WEB_VITAL_LCP_SIZE_TYPE;
   [BROWSER_WEB_VITAL_LCP_URL]?: BROWSER_WEB_VITAL_LCP_URL_TYPE;
   [CACHE_HIT]?: CACHE_HIT_TYPE;
@@ -14432,6 +14508,7 @@ export type Attributes = {
   [LCP_ELEMENT]?: LCP_ELEMENT_TYPE;
   [LCP_ID]?: LCP_ID_TYPE;
   [LCP_LOADTIME]?: LCP_LOADTIME_TYPE;
+  [LCP_RENDERTIME]?: LCP_RENDERTIME_TYPE;
   [LCP_SIZE]?: LCP_SIZE_TYPE;
   [LCP_URL]?: LCP_URL_TYPE;
   [LOGGER_NAME]?: LOGGER_NAME_TYPE;
