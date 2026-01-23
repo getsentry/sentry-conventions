@@ -7,5 +7,9 @@
   },
   "is_in_otel": false,
   "example": "[{\"role\": \"system\", \"content\": \"Generate a random number.\"}, {\"role\": \"user\", \"content\": [{\"text\": \"Generate a random number between 0 and 10.\", \"type\": \"text\"}]}, {\"role\": \"tool\", \"content\": {\"toolCallId\": \"1\", \"toolName\": \"Weather\", \"output\": \"rainy\"}}]",
-  "alias": ["ai.input_messages"]
+  "alias": ["ai.input_messages"],
+  "deprecation": {
+    "_status": null,
+    "replacement": "gen_ai.input.messages"
+  }
 }

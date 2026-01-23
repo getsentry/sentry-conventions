@@ -301,7 +301,7 @@ Size of the response in bytes
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `1024` |
 
@@ -323,7 +323,7 @@ HTTP status code of the proxy request
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `200` |
 
@@ -334,7 +334,7 @@ Unix timestamp when the proxy request was made
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `1573817250172` |
 
@@ -422,7 +422,7 @@ HTTP status code of the request (-1 means no response returned and the lambda cr
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `200` |
 

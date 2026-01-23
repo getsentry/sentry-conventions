@@ -6,5 +6,9 @@
     "key": "true"
   },
   "is_in_otel": false,
-  "example": "You are a helpful assistant"
+  "example": "You are a helpful assistant",
+  "deprecation": {
+    "_status": null,
+    "replacement": "gen_ai.system_instructions"
+  }
 }

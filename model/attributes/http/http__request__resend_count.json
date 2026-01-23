@@ -3,7 +3,7 @@
   "brief": "The ordinal number of request resending attempt (for any reason, including redirects).",
   "type": "integer",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": 2

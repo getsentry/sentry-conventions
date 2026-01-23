@@ -3,7 +3,7 @@
   "brief": "Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).",
   "type": "double",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": 0.7,

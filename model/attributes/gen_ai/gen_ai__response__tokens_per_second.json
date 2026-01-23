@@ -3,7 +3,7 @@
   "brief": "The total output tokens per seconds throughput",
   "type": "double",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": 12345.67

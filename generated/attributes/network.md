@@ -33,7 +33,7 @@ Local port number of the network connection.
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `65400` |
 | Aliases | `net.sock.host.port` |
@@ -57,7 +57,7 @@ Peer port number of the network connection.
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `65400` |
 

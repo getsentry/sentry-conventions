@@ -10,13 +10,13 @@
   - [gen_ai.cost.output_tokens](#gen_aicostoutput_tokens)
   - [gen_ai.cost.total_tokens](#gen_aicosttotal_tokens)
   - [gen_ai.embeddings.input](#gen_aiembeddingsinput)
+  - [gen_ai.input.messages](#gen_aiinputmessages)
   - [gen_ai.operation.name](#gen_aioperationname)
   - [gen_ai.operation.type](#gen_aioperationtype)
+  - [gen_ai.output.messages](#gen_aioutputmessages)
   - [gen_ai.pipeline.name](#gen_aipipelinename)
-  - [gen_ai.request.available_tools](#gen_airequestavailable_tools)
   - [gen_ai.request.frequency_penalty](#gen_airequestfrequency_penalty)
   - [gen_ai.request.max_tokens](#gen_airequestmax_tokens)
-  - [gen_ai.request.messages](#gen_airequestmessages)
   - [gen_ai.request.model](#gen_airequestmodel)
   - [gen_ai.request.presence_penalty](#gen_airequestpresence_penalty)
   - [gen_ai.request.seed](#gen_airequestseed)
@@ -27,11 +27,12 @@
   - [gen_ai.response.id](#gen_airesponseid)
   - [gen_ai.response.model](#gen_airesponsemodel)
   - [gen_ai.response.streaming](#gen_airesponsestreaming)
-  - [gen_ai.response.text](#gen_airesponsetext)
   - [gen_ai.response.tokens_per_second](#gen_airesponsetokens_per_second)
-  - [gen_ai.response.tool_calls](#gen_airesponsetool_calls)
   - [gen_ai.system](#gen_aisystem)
-  - [gen_ai.system.message](#gen_aisystemmessage)
+  - [gen_ai.system_instructions](#gen_aisystem_instructions)
+  - [gen_ai.tool.call.arguments](#gen_aitoolcallarguments)
+  - [gen_ai.tool.call.result](#gen_aitoolcallresult)
+  - [gen_ai.tool.definitions](#gen_aitooldefinitions)
   - [gen_ai.tool.description](#gen_aitooldescription)
   - [gen_ai.tool.input](#gen_aitoolinput)
   - [gen_ai.tool.message](#gen_aitoolmessage)
@@ -39,6 +40,7 @@
   - [gen_ai.tool.output](#gen_aitooloutput)
   - [gen_ai.tool.type](#gen_aitooltype)
   - [gen_ai.usage.input_tokens](#gen_aiusageinput_tokens)
+  - [gen_ai.usage.input_tokens.cache_write](#gen_aiusageinput_tokenscache_write)
   - [gen_ai.usage.input_tokens.cached](#gen_aiusageinput_tokenscached)
   - [gen_ai.usage.output_tokens](#gen_aiusageoutput_tokens)
   - [gen_ai.usage.output_tokens.reasoning](#gen_aiusageoutput_tokensreasoning)
@@ -46,6 +48,11 @@
   - [gen_ai.user.message](#gen_aiusermessage)
 - [Deprecated Attributes](#deprecated-attributes)
   - [gen_ai.prompt](#gen_aiprompt)
+  - [gen_ai.request.available_tools](#gen_airequestavailable_tools)
+  - [gen_ai.request.messages](#gen_airequestmessages)
+  - [gen_ai.response.text](#gen_airesponsetext)
+  - [gen_ai.response.tool_calls](#gen_airesponsetool_calls)
+  - [gen_ai.system.message](#gen_aisystemmessage)
   - [gen_ai.usage.completion_tokens](#gen_aiusagecompletion_tokens)
   - [gen_ai.usage.prompt_tokens](#gen_aiusageprompt_tokens)
 
@@ -91,7 +98,7 @@ The cost of tokens used to process the AI input (prompt) in USD (without cached 
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `123.45` |
 
@@ -102,7 +109,7 @@ The cost of tokens used for creating the AI output in USD (without reasoning tok
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `123.45` |
 
@@ -113,7 +120,7 @@ The total cost for the tokens used.
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `12.34` |
 
@@ -128,9 +135,20 @@ The input to the embeddings model.
 | Exists in OpenTelemetry | No |
 | Example | `What's the weather in Paris?` |
 
+### gen_ai.input.messages
+
+The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | Yes |
+| Example | `[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]` |
+
 ### gen_ai.operation.name
 
-The name of the operation being performed.
+The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'embeddings', 'execute_tool', 'generate_content', 'invoke_agent', 'text_completion'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used.
 
 | Property | Value |
 | --- | --- |
@@ -150,6 +168,17 @@ The type of AI operation. Must be one of 'agent', 'ai_client', 'tool', 'handoff'
 | Exists in OpenTelemetry | No |
 | Example | `tool` |
 
+### gen_ai.output.messages
+
+The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | Yes |
+| Example | `[{"role": "assistant", "parts": [{"type": "text", "content": "The weather in Paris is currently rainy with a temperature of 57°F."}], "finish_reason": "stop"}]` |
+
 ### gen_ai.pipeline.name
 
 Name of the AI pipeline or chain being executed.
@@ -162,17 +191,6 @@ Name of the AI pipeline or chain being executed.
 | Example | `Autofix Pipeline` |
 | Aliases | `ai.pipeline.name` |
 
-### gen_ai.request.available_tools
-
-The available tools for the model. It has to be a stringified version of an array of objects.
-
-| Property | Value |
-| --- | --- |
-| Type | `string` |
-| Has PII | maybe |
-| Exists in OpenTelemetry | No |
-| Example | `[{"name": "get_weather", "description": "Get the weather for a given location"}, {"name": "get_news", "description": "Get the news for a given topic"}]` |
-
 ### gen_ai.request.frequency_penalty
 
 Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.
@@ -180,7 +198,7 @@ Used to reduce repetitiveness of generated tokens. The higher the value, the str
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `0.5` |
 | Aliases | `ai.frequency_penalty` |
@@ -192,21 +210,9 @@ The maximum number of tokens to generate in the response.
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `2048` |
-
-### gen_ai.request.messages
-
-The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.
-
-| Property | Value |
-| --- | --- |
-| Type | `string` |
-| Has PII | maybe |
-| Exists in OpenTelemetry | No |
-| Example | `[{"role": "system", "content": "Generate a random number."}, {"role": "user", "content": [{"text": "Generate a random number between 0 and 10.", "type": "text"}]}, {"role": "tool", "content": {"toolCallId": "1", "toolName": "Weather", "output": "rainy"}}]` |
-| Aliases | `ai.input_messages` |
 
 ### gen_ai.request.model
 
@@ -226,7 +232,7 @@ Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty,
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `0.5` |
 | Aliases | `ai.presence_penalty` |
@@ -250,7 +256,7 @@ For an AI model call, the temperature parameter. Temperature essentially means h
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `0.1` |
 | Aliases | `ai.temperature` |
@@ -262,7 +268,7 @@ Limits the model to only consider the K most likely next tokens, where K is an i
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `35` |
 | Aliases | `ai.top_k` |
@@ -274,7 +280,7 @@ Limits the model to only consider tokens whose cumulative probability mass adds 
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `0.7` |
 | Aliases | `ai.top_p` |
@@ -327,17 +333,6 @@ Whether or not the AI model call's response was streamed back asynchronously
 | Example | `true` |
 | Aliases | `ai.streaming` |
 
-### gen_ai.response.text
-
-The model's response text messages. It has to be a stringified version of an array of response text messages.
-
-| Property | Value |
-| --- | --- |
-| Type | `string` |
-| Has PII | maybe |
-| Exists in OpenTelemetry | No |
-| Example | `["The weather in Paris is rainy and overcast, with temperatures around 57°F", "The weather in London is sunny and warm, with temperatures around 65°F"]` |
-
 ### gen_ai.response.tokens_per_second
 
 The total output tokens per seconds throughput
@@ -345,20 +340,9 @@ The total output tokens per seconds throughput
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
-| Exists in OpenTelemetry | No |
-| Example | `12345.67` |
-
-### gen_ai.response.tool_calls
-
-The tool calls in the model's response. It has to be a stringified version of an array of objects.
-
-| Property | Value |
-| --- | --- |
-| Type | `string` |
 | Has PII | maybe |
 | Exists in OpenTelemetry | No |
-| Example | `[{"name": "get_weather", "arguments": {"location": "Paris"}}]` |
+| Example | `12345.67` |
 
 ### gen_ai.system
 
@@ -372,16 +356,49 @@ The provider of the model.
 | Example | `openai` |
 | Aliases | `ai.model.provider` |
 
-### gen_ai.system.message
+### gen_ai.system_instructions
 
 The system instructions passed to the model.
 
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | true |
-| Exists in OpenTelemetry | No |
+| Has PII | maybe |
+| Exists in OpenTelemetry | Yes |
 | Example | `You are a helpful assistant` |
+
+### gen_ai.tool.call.arguments
+
+The arguments of the tool call. It has to be a stringified version of the arguments to the tool.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | Yes |
+| Example | `{"location": "Paris"}` |
+
+### gen_ai.tool.call.result
+
+The result of the tool call. It has to be a stringified version of the result of the tool.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | Yes |
+| Example | `rainy, 57°F` |
+
+### gen_ai.tool.definitions
+
+The list of source system tool definitions available to the GenAI agent or model.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | Yes |
+| Example | `[{"type": "function", "name": "get_current_weather", "description": "Get the current weather in a given location", "parameters": {"type": "object", "properties": {"location": {"type": "string", "description": "The city and state, e.g. San Francisco, CA"}, "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]}}, "required": ["location", "unit"]}}]` |
 
 ### gen_ai.tool.description
 
@@ -457,10 +474,21 @@ The number of tokens used to process the AI input (prompt) without cached input 
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `10` |
 | Aliases | `ai.prompt_tokens.used`, `gen_ai.usage.prompt_tokens` |
+
+### gen_ai.usage.input_tokens.cache_write
+
+The number of tokens written to the cache when processing the AI input (prompt).
+
+| Property | Value |
+| --- | --- |
+| Type | `integer` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `100` |
 
 ### gen_ai.usage.input_tokens.cached
 
@@ -469,7 +497,7 @@ The number of cached tokens used to process the AI input (prompt).
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `50` |
 
@@ -480,7 +508,7 @@ The number of tokens used for creating the AI output (without reasoning tokens).
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `10` |
 | Aliases | `ai.completion_tokens.used`, `gen_ai.usage.completion_tokens` |
@@ -492,7 +520,7 @@ The number of tokens used for reasoning to create the AI output.
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `75` |
 
@@ -503,7 +531,7 @@ The total number of tokens used to process the prompt. (input tokens plus output
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `20` |
 | Aliases | `ai.total_tokens.used` |
@@ -536,6 +564,67 @@ The input messages sent to the model
 | Deprecated | Yes, no replacement at this time |
 | Deprecation Reason | Deprecated from OTEL, use gen_ai.input.messages with the new format instead. |
 
+### gen_ai.request.available_tools
+
+The available tools for the model. It has to be a stringified version of an array of objects.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `[{"name": "get_weather", "description": "Get the weather for a given location"}, {"name": "get_news", "description": "Get the news for a given topic"}]` |
+| Deprecated | Yes, use `gen_ai.tool.definitions` instead |
+
+### gen_ai.request.messages
+
+The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `[{"role": "system", "content": "Generate a random number."}, {"role": "user", "content": [{"text": "Generate a random number between 0 and 10.", "type": "text"}]}, {"role": "tool", "content": {"toolCallId": "1", "toolName": "Weather", "output": "rainy"}}]` |
+| Deprecated | Yes, use `gen_ai.input.messages` instead |
+| Aliases | `ai.input_messages` |
+
+### gen_ai.response.text
+
+The model's response text messages. It has to be a stringified version of an array of response text messages.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `["The weather in Paris is rainy and overcast, with temperatures around 57°F", "The weather in London is sunny and warm, with temperatures around 65°F"]` |
+| Deprecated | Yes, use `gen_ai.output.messages` instead |
+
+### gen_ai.response.tool_calls
+
+The tool calls in the model's response. It has to be a stringified version of an array of objects.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `[{"name": "get_weather", "arguments": {"location": "Paris"}}]` |
+| Deprecated | Yes, use `gen_ai.output.messages` instead |
+
+### gen_ai.system.message
+
+The system instructions passed to the model.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | true |
+| Exists in OpenTelemetry | No |
+| Example | `You are a helpful assistant` |
+| Deprecated | Yes, use `gen_ai.system_instructions` instead |
+
 ### gen_ai.usage.completion_tokens
 
 The number of tokens used in the GenAI response (completion).
@@ -543,7 +632,7 @@ The number of tokens used in the GenAI response (completion).
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `10` |
 | Deprecated | Yes, use `gen_ai.usage.output_tokens` instead |
@@ -556,7 +645,7 @@ The number of tokens used in the GenAI input (prompt).
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `20` |
 | Deprecated | Yes, use `gen_ai.usage.input_tokens` instead |

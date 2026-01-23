@@ -44,7 +44,7 @@ The size of the message body in bytes.
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `839` |
 
@@ -55,7 +55,7 @@ The size of the message body and metadata in bytes.
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `1045` |
 
@@ -77,7 +77,7 @@ The latency between when the message was published and received.
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `1732847252` |
 
@@ -88,7 +88,7 @@ The amount of attempts to send the message.
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `2` |
 

@@ -3,7 +3,7 @@
   "brief": "Unix timestamp when the proxy request was made",
   "type": "integer",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": 1573817250172

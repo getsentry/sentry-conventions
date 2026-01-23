@@ -3,7 +3,7 @@
   "brief": "Client port number.",
   "type": "integer",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": 5432

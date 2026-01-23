@@ -3,7 +3,7 @@
   "brief": "Calculated progress percentage of an MCP operation. Computed from current/total * 100.",
   "type": "double",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": 50.0

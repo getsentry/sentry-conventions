@@ -3,7 +3,7 @@
   "brief": "The total cost for the tokens used.",
   "type": "double",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": 12.34

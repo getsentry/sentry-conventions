@@ -3,7 +3,7 @@
   "brief": "The size of the requested item in the cache. In bytes.",
   "type": "integer",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": 58

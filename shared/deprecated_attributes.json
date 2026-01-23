@@ -145,7 +145,7 @@
       "brief": "The number of tokens used to respond to the message.",
       "type": "integer",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": false,
       "example": 10,
@@ -176,7 +176,7 @@
       "brief": "Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.",
       "type": "double",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": false,
       "example": 0.5,
@@ -283,7 +283,7 @@
       "brief": "Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.",
       "type": "double",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": false,
       "example": 0.5,
@@ -298,7 +298,7 @@
       "brief": "The number of tokens used to process just the prompt.",
       "type": "integer",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": false,
       "example": 20,
@@ -360,7 +360,7 @@
       "brief": "For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.",
       "type": "double",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": false,
       "example": 0.1,
@@ -403,7 +403,7 @@
       "brief": "Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).",
       "type": "integer",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": false,
       "example": 35,
@@ -418,7 +418,7 @@
       "brief": "Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).",
       "type": "double",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": false,
       "example": 0.7,
@@ -433,7 +433,7 @@
       "brief": "The total number of tokens used to process the prompt.",
       "type": "integer",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": false,
       "example": 30,
@@ -479,7 +479,7 @@
       "brief": "The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function",
       "type": "integer",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": true,
       "example": 42,
@@ -575,7 +575,7 @@
       "is_in_otel": true,
       "example": "postgresql",
       "deprecation": {
-        "_status": "normalize",
+        "_status": "backfill",
         "replacement": "db.system.name"
       },
       "alias": ["db.system.name"]
@@ -595,11 +595,85 @@
       }
     },
     {
+      "key": "gen_ai.request.available_tools",
+      "brief": "The available tools for the model. It has to be a stringified version of an array of objects.",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "[{\"name\": \"get_weather\", \"description\": \"Get the weather for a given location\"}, {\"name\": \"get_news\", \"description\": \"Get the news for a given topic\"}]",
+      "alias": [],
+      "deprecation": {
+        "_status": null,
+        "replacement": "gen_ai.tool.definitions"
+      }
+    },
+    {
+      "key": "gen_ai.request.messages",
+      "brief": "The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `\"user\"`, `\"assistant\"`, `\"tool\"`, or `\"system\"`. For messages of the role `\"tool\"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: \"text\", text:\"...\"}`.",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "[{\"role\": \"system\", \"content\": \"Generate a random number.\"}, {\"role\": \"user\", \"content\": [{\"text\": \"Generate a random number between 0 and 10.\", \"type\": \"text\"}]}, {\"role\": \"tool\", \"content\": {\"toolCallId\": \"1\", \"toolName\": \"Weather\", \"output\": \"rainy\"}}]",
+      "alias": ["ai.input_messages"],
+      "deprecation": {
+        "_status": null,
+        "replacement": "gen_ai.input.messages"
+      }
+    },
+    {
+      "key": "gen_ai.response.text",
+      "brief": "The model's response text messages. It has to be a stringified version of an array of response text messages.",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "[\"The weather in Paris is rainy and overcast, with temperatures around 57°F\", \"The weather in London is sunny and warm, with temperatures around 65°F\"]",
+      "alias": [],
+      "deprecation": {
+        "_status": null,
+        "replacement": "gen_ai.output.messages"
+      }
+    },
+    {
+      "key": "gen_ai.response.tool_calls",
+      "brief": "The tool calls in the model's response. It has to be a stringified version of an array of objects.",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "[{\"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]",
+      "alias": [],
+      "deprecation": {
+        "_status": null,
+        "replacement": "gen_ai.output.messages"
+      }
+    },
+    {
+      "key": "gen_ai.system.message",
+      "brief": "The system instructions passed to the model.",
+      "type": "string",
+      "pii": {
+        "key": "true"
+      },
+      "is_in_otel": false,
+      "example": "You are a helpful assistant",
+      "deprecation": {
+        "_status": null,
+        "replacement": "gen_ai.system_instructions"
+      }
+    },
+    {
       "key": "gen_ai.usage.completion_tokens",
       "brief": "The number of tokens used in the GenAI response (completion).",
       "type": "integer",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": true,
       "example": 10,
@@ -614,7 +688,7 @@
       "brief": "The number of tokens used in the GenAI input (prompt).",
       "type": "integer",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": true,
       "example": 20,
@@ -690,7 +764,7 @@
       "brief": "The encoded body size of the response (in bytes).",
       "type": "integer",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": true,
       "example": 123,
@@ -705,7 +779,7 @@
       "brief": "The transfer size of the response (in bytes).",
       "type": "integer",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": false,
       "example": 456,
@@ -750,7 +824,7 @@
       "brief": "The status code of the HTTP response.",
       "type": "integer",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": true,
       "example": 404,
@@ -840,7 +914,7 @@
       "brief": "Server port number.",
       "type": "integer",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": true,
       "example": 1337,
@@ -885,7 +959,7 @@
       "brief": "Peer port number.",
       "type": "integer",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": true,
       "example": 1337,
@@ -960,7 +1034,7 @@
       "brief": "Local port number of the network connection.",
       "type": "integer",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": true,
       "example": 8080,
@@ -1004,7 +1078,7 @@
       "brief": "Peer port number of the network connection.",
       "type": "integer",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": true,
       "example": 8080,

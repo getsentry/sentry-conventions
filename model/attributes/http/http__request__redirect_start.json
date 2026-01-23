@@ -3,7 +3,7 @@
   "brief": "The UNIX timestamp representing the start time of the fetch which that initiates the redirect.",
   "type": "double",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": 1732829555.495,

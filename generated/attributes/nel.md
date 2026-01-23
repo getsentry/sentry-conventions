@@ -18,7 +18,7 @@ The elapsed number of milliseconds between the start of the resource fetch and w
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `100` |
 
@@ -51,7 +51,7 @@ The sampling function used to determine if the request should be sampled.
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `0.5` |
 

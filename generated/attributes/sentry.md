@@ -5,6 +5,7 @@
 - [Stable Attributes](#stable-attributes)
   - [sentry.action](#sentryaction)
   - [sentry.cancellation_reason](#sentrycancellation_reason)
+  - [sentry.category](#sentrycategory)
   - [sentry.client_sample_rate](#sentryclient_sample_rate)
   - [sentry.description](#sentrydescription)
   - [sentry.dist](#sentrydist)
@@ -47,6 +48,7 @@
   - [sentry.segment.name](#sentrysegmentname)
   - [sentry.server_sample_rate](#sentryserver_sample_rate)
   - [sentry.span.source](#sentryspansource)
+  - [sentry.status_code](#sentrystatus_code)
   - [sentry.status.message](#sentrystatusmessage)
   - [sentry.trace.parent_span_id](#sentrytraceparent_span_id)
   - [sentry.transaction](#sentrytransaction)
@@ -78,6 +80,17 @@ The reason why a span ended early.
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `document.hidden` |
+
+### sentry.category
+
+The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI). Known values include: 'ai', 'ai.pipeline', 'app', 'browser', 'cache', 'console', 'db', 'event', 'file', 'function.aws', 'function.azure', 'function.gcp', 'function.nextjs', 'function.remix', 'graphql', 'grpc', 'http', 'measure', 'middleware', 'navigation', 'pageload', 'queue', 'resource', 'rpc', 'serialize', 'subprocess', 'template', 'topic', 'ui', 'ui.angular', 'ui.ember', 'ui.react', 'ui.svelte', 'ui.vue', 'view', 'websocket'.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `db` |
 
 ### sentry.client_sample_rate
 
@@ -219,7 +232,7 @@ The exclusive time duration of the span in milliseconds.
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `1234` |
 
@@ -544,6 +557,17 @@ The source of a span, also referred to as transaction source. Known values are: 
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `route` |
+
+### sentry.status_code
+
+The HTTP status code used in Sentry Insights. Typically set by Sentry during ingestion, rather than by clients.
+
+| Property | Value |
+| --- | --- |
+| Type | `integer` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `200` |
 
 ### sentry.status.message
 

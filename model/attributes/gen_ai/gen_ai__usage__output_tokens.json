@@ -3,7 +3,7 @@
   "brief": "The number of tokens used for creating the AI output (without reasoning tokens).",
   "type": "integer",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": 10,

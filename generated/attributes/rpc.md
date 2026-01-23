@@ -15,7 +15,7 @@ The numeric status code of the gRPC request.
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `2` |
 
