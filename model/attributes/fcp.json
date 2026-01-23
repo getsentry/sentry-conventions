@@ -1,0 +1,17 @@
+{
+  "key": "fcp",
+  "brief": "The time it takes for the browser to render the first piece of meaningful content on the screen",
+  "type": "double",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": 547.6951,
+  "sdks": ["javascript-browser"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "browser.web_vital.fcp.value",
+    "reason": "This attribute is being deprecated in favor of browser.web_vital.fcp.value"
+  },
+  "alias": ["browser.web_vital.fcp.value"]
+}

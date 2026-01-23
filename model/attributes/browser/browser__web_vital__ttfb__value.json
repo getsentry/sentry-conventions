@@ -1,0 +1,12 @@
+{
+  "key": "browser.web_vital.ttfb.value",
+  "brief": "The value of the recorded Time To First Byte (TTFB) web vital in Milliseconds",
+  "type": "double",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": 194.3322,
+  "alias": ["ttfb"],
+  "sdks": ["javascript-browser"]
+}

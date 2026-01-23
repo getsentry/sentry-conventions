@@ -1,0 +1,16 @@
+{
+  "key": "browser.web_vital.fcp.value",
+  "brief": "The time it takes for the browser to render the first piece of meaningful content on the screen",
+  "type": "double",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": 547.6951,
+  "alias": [
+    "fcp"
+  ],
+  "sdks": [
+    "javascript-browser"
+  ]
+}
