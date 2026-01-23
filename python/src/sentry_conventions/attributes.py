@@ -635,6 +635,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "120.0.6099.130"
     """
 
+    # Path: model/attributes/browser/browser__web_vital__lcp__element.json
+    BROWSER_WEB_VITAL_LCP_ELEMENT: Literal["browser.web_vital.lcp.element"] = (
+        "browser.web_vital.lcp.element"
+    )
+    """The HTML element selector or component name for which LCP was reported
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Aliases: lcp.element
+    Example: "body > div#app > div#container > div"
+    """
+
     # Path: model/attributes/cache/cache__hit.json
     CACHE_HIT: Literal["cache.hit"] = "cache.hit"
     """If the cache was hit during this span.
@@ -5155,6 +5168,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="120.0.6099.130",
         aliases=["sentry.browser.version"],
     ),
+    "browser.web_vital.lcp.element": AttributeMetadata(
+        brief="The HTML element selector or component name for which LCP was reported",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="body > div#app > div#container > div",
+        aliases=["lcp.element"],
+        sdks=["javascript-browser"],
+    ),
     "cache.hit": AttributeMetadata(
         brief="If the cache was hit during this span.",
         type=AttributeType.BOOLEAN,
@@ -8156,6 +8178,7 @@ Attributes = TypedDict(
         "browser.script.invoker_type": str,
         "browser.script.source_char_position": int,
         "browser.version": str,
+        "browser.web_vital.lcp.element": str,
         "cache.hit": bool,
         "cache.item_size": int,
         "cache.key": List[str],

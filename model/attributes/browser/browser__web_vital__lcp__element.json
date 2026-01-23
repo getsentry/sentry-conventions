@@ -1,0 +1,12 @@
+{
+  "key": "browser.web_vital.lcp.element",
+  "brief": "The HTML element selector or component name for which LCP was reported",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "body > div#app > div#container > div",
+  "alias": ["lcp.element"],
+  "sdks": ["javascript-browser"]
+}

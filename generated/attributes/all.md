@@ -4,7 +4,7 @@
 
 This page lists all available attributes across all categories.
 
-Total attributes: 422
+Total attributes: 423
 
 ## Stable Attributes
 
@@ -31,6 +31,7 @@ Total attributes: 422
 | [`browser.script.invoker_type`](./browser.md#browserscriptinvoker_type) | Browser script entry point type. |
 | [`browser.script.source_char_position`](./browser.md#browserscriptsource_char_position) | A number representing the script character position of the script. |
 | [`browser.version`](./browser.md#browserversion) | The version of the browser. |
+| [`browser.web_vital.lcp.element`](./browser.md#browserweb_vitallcpelement) | The HTML element selector or component name for which LCP was reported |
 | [`cache.hit`](./cache.md#cachehit) | If the cache was hit during this span. |
 | [`cache.item_size`](./cache.md#cacheitem_size) | The size of the requested item in the cache. In bytes. |
 | [`cache.key`](./cache.md#cachekey) | The key of the cache accessed. |

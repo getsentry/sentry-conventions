@@ -878,6 +878,28 @@ export const BROWSER_VERSION = 'browser.version';
  */
 export type BROWSER_VERSION_TYPE = string;
 
+// Path: model/attributes/browser/browser__web_vital__lcp__element.json
+
+/**
+ * The HTML element selector or component name for which LCP was reported `browser.web_vital.lcp.element`
+ *
+ * Attribute Value Type: `string` {@link BROWSER_WEB_VITAL_LCP_ELEMENT_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link LCP_ELEMENT} `lcp.element`
+ *
+ * @example "body > div#app > div#container > div"
+ */
+export const BROWSER_WEB_VITAL_LCP_ELEMENT = 'browser.web_vital.lcp.element';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_LCP_ELEMENT} browser.web_vital.lcp.element
+ */
+export type BROWSER_WEB_VITAL_LCP_ELEMENT_TYPE = string;
+
 // Path: model/attributes/cache/cache__hit.json
 
 /**
@@ -8849,6 +8871,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [BROWSER_SCRIPT_INVOKER_TYPE]: 'string',
   [BROWSER_SCRIPT_SOURCE_CHAR_POSITION]: 'integer',
   [BROWSER_VERSION]: 'string',
+  [BROWSER_WEB_VITAL_LCP_ELEMENT]: 'string',
   [CACHE_HIT]: 'boolean',
   [CACHE_ITEM_SIZE]: 'integer',
   [CACHE_KEY]: 'string[]',
@@ -9274,6 +9297,7 @@ export type AttributeName =
   | typeof BROWSER_SCRIPT_INVOKER_TYPE
   | typeof BROWSER_SCRIPT_SOURCE_CHAR_POSITION
   | typeof BROWSER_VERSION
+  | typeof BROWSER_WEB_VITAL_LCP_ELEMENT
   | typeof CACHE_HIT
   | typeof CACHE_ITEM_SIZE
   | typeof CACHE_KEY
@@ -10121,6 +10145,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '120.0.6099.130',
     aliases: [SENTRY_BROWSER_VERSION],
+  },
+  [BROWSER_WEB_VITAL_LCP_ELEMENT]: {
+    brief: 'The HTML element selector or component name for which LCP was reported',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'body > div#app > div#container > div',
+    aliases: [LCP_ELEMENT],
+    sdks: ['javascript-browser'],
   },
   [CACHE_HIT]: {
     brief: 'If the cache was hit during this span.',
@@ -14026,6 +14061,7 @@ export type Attributes = {
   [BROWSER_SCRIPT_INVOKER_TYPE]?: BROWSER_SCRIPT_INVOKER_TYPE_TYPE;
   [BROWSER_SCRIPT_SOURCE_CHAR_POSITION]?: BROWSER_SCRIPT_SOURCE_CHAR_POSITION_TYPE;
   [BROWSER_VERSION]?: BROWSER_VERSION_TYPE;
+  [BROWSER_WEB_VITAL_LCP_ELEMENT]?: BROWSER_WEB_VITAL_LCP_ELEMENT_TYPE;
   [CACHE_HIT]?: CACHE_HIT_TYPE;
   [CACHE_ITEM_SIZE]?: CACHE_ITEM_SIZE_TYPE;
   [CACHE_KEY]?: CACHE_KEY_TYPE;

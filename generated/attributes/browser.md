@@ -9,6 +9,7 @@
   - [browser.script.invoker_type](#browserscriptinvoker_type)
   - [browser.script.source_char_position](#browserscriptsource_char_position)
   - [browser.version](#browserversion)
+  - [browser.web_vital.lcp.element](#browserweb_vitallcpelement)
 
 ## Stable Attributes
 
@@ -79,4 +80,16 @@ The version of the browser.
 | Exists in OpenTelemetry | No |
 | Example | `120.0.6099.130` |
 | Aliases | `sentry.browser.version` |
+
+### browser.web_vital.lcp.element
+
+The HTML element selector or component name for which LCP was reported
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `body > div#app > div#container > div` |
+| Aliases | `lcp.element` |
 
