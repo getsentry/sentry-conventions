@@ -889,6 +889,8 @@ export type BROWSER_VERSION_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
+ * Has Dynamic Suffix: true
+ *
  * Aliases: {@link CLS_SOURCE_KEY} `cls.source.<key>`
  *
  * @example "body > div#app"
@@ -1132,6 +1134,8 @@ export type CLOUDFLARE_D1_ROWS_WRITTEN_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ *
+ * Has Dynamic Suffix: true
  *
  * Aliases: {@link BROWSER_WEB_VITAL_CLS_SOURCE_KEY} `browser.web_vital.cls.source.<key>`
  *
@@ -10178,6 +10182,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    hasDynamicSuffix: true,
     example: 'body > div#app',
     aliases: [CLS_SOURCE_KEY],
     sdks: ['javascript-browser'],
@@ -10298,6 +10303,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    hasDynamicSuffix: true,
     example: 'body > div#app',
     deprecation: {
       replacement: 'browser.web_vital.cls.source.<key>',

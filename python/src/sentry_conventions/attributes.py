@@ -645,6 +645,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Has Dynamic Suffix: true
     Aliases: cls.source.<key>
     Example: "body > div#app"
     """
@@ -771,6 +772,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Has Dynamic Suffix: true
     Aliases: browser.web_vital.cls.source.<key>
     DEPRECATED: Use browser.web_vital.cls.source.<key> instead - The CLS source is now recorded as a browser.web_vital.cls.source.<key> attribute.
     Example: "body > div#app"
@@ -5186,6 +5188,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        has_dynamic_suffix=True,
         example="body > div#app",
         aliases=["cls.source.<key>"],
         sdks=["javascript-browser"],
@@ -5281,6 +5284,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        has_dynamic_suffix=True,
         example="body > div#app",
         deprecation=DeprecationInfo(
             replacement="browser.web_vital.cls.source.<key>",

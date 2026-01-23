@@ -90,6 +90,7 @@ The HTML elements or components responsible for the layout shift. \<key\> is a n
 | Type | `string` |
 | Has PII | maybe |
 | Exists in OpenTelemetry | No |
+| Has dynamic suffix | Yes |
 | Example | `body > div#app` |
 | Aliases | `cls.source.\<key\>` |
 

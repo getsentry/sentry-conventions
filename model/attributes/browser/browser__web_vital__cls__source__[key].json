@@ -8,5 +8,6 @@
   "is_in_otel": false,
   "example": "body > div#app",
   "alias": ["cls.source.<key>"],
-  "sdks": ["javascript-browser"]
+  "sdks": ["javascript-browser"],
+  "has_dynamic_suffix": true
 }

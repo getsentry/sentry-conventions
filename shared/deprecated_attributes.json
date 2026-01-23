@@ -459,6 +459,7 @@
         "reason": "The CLS source is now recorded as a browser.web_vital.cls.source.<key> attribute.",
         "_status": "backfill"
       },
+      "has_dynamic_suffix": true,
       "alias": ["browser.web_vital.cls.source.<key>"]
     },
     {
