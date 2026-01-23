@@ -885,7 +885,7 @@ export type BROWSER_VERSION_TYPE = string;
  *
  * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_CLS_VALUE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -907,7 +907,7 @@ export type BROWSER_WEB_VITAL_CLS_VALUE_TYPE = number;
  *
  * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_INP_VALUE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -929,7 +929,7 @@ export type BROWSER_WEB_VITAL_INP_VALUE_TYPE = number;
  *
  * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_LCP_VALUE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -1173,7 +1173,7 @@ export type CLOUDFLARE_D1_ROWS_WRITTEN_TYPE = number;
  *
  * Attribute Value Type: `number` {@link CLS_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -4017,7 +4017,7 @@ export type ID_TYPE = string;
  *
  * Attribute Value Type: `number` {@link INP_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -4160,7 +4160,7 @@ export type JVM_THREAD_STATE_TYPE = string;
  *
  * Attribute Value Type: `number` {@link LCP_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -10273,7 +10273,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The value of the recorded Cumulative Layout Shift (CLS) web vital',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 0.2361,
@@ -10284,7 +10284,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The value of the recorded Interaction to Next Paint (INP) web vital',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 200,
@@ -10295,7 +10295,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The value of the recorded Largest Contentful Paint (LCP) web vital',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 2500,
@@ -10415,7 +10415,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The value of the recorded Cumulative Layout Shift (CLS) web vital',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 0.2361,
@@ -11861,7 +11861,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The value of the recorded Interaction to Next Paint (INP) web vital',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 200,
@@ -11930,7 +11930,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The value of the recorded Largest Contentful Paint (LCP) web vital',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 2500,

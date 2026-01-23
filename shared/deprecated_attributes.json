@@ -6,7 +6,7 @@
       "brief": "The value of the recorded Cumulative Layout Shift (CLS) web vital",
       "type": "double",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": false,
       "example": 0.2361,
@@ -54,7 +54,7 @@
       "brief": "The value of the recorded Interaction to Next Paint (INP) web vital",
       "type": "double",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": false,
       "example": 200,
@@ -71,7 +71,7 @@
       "brief": "The value of the recorded Largest Contentful Paint (LCP) web vital",
       "type": "double",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": false,
       "example": 2500,
