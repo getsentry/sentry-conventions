@@ -88,7 +88,7 @@ The HTML element selector or component name for which LCP was reported
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `body > div#app > div#container > div` |
 | Aliases | `lcp.element` |

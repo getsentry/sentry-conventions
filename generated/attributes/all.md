@@ -152,7 +152,6 @@ Total attributes: 423
 | [`jvm.memory.type`](./jvm.md#jvmmemorytype) | Name of the memory pool. |
 | [`jvm.thread.daemon`](./jvm.md#jvmthreaddaemon) | Whether the thread is daemon or not. |
 | [`jvm.thread.state`](./jvm.md#jvmthreadstate) | State of the thread. |
-| [`lcp.element`](./lcp.md#lcpelement) | The dom element responsible for the largest contentful paint. |
 | [`lcp.id`](./lcp.md#lcpid) | The id of the dom element responsible for the largest contentful paint. |
 | [`lcp.size`](./lcp.md#lcpsize) | The size of the largest contentful paint element. |
 | [`lcp.url`](./lcp.md#lcpurl) | The url of the dom element responsible for the largest contentful paint. |
@@ -411,6 +410,7 @@ Total attributes: 423
 | [`http.target`](./http.md#httptarget) | [`url.path`](./url.md#urlpath) |
 | [`http.url`](./http.md#httpurl) | [`url.full`](./url.md#urlfull) |
 | [`http.user_agent`](./http.md#httpuser_agent) | [`user_agent.original`](./user_agent.md#user_agentoriginal) |
+| [`lcp.element`](./lcp.md#lcpelement) | [`browser.web_vital.lcp.element`](./browser.md#browserweb_vitallcpelement) |
 | [`method`](./general.md#method) | [`http.request.method`](./http.md#httprequestmethod) |
 | [`net.host.ip`](./net.md#nethostip) | [`network.local.address`](./network.md#networklocaladdress) |
 | [`net.host.name`](./net.md#nethostname) | [`server.address`](./server.md#serveraddress) |

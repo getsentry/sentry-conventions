@@ -136,6 +136,7 @@ class _AttributeNamesMeta(type):
         "HTTP_TARGET",
         "HTTP_URL",
         "HTTP_USER_AGENT",
+        "LCP_ELEMENT",
         "METHOD",
         "NET_HOST_IP",
         "NET_HOST_NAME",
@@ -642,7 +643,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The HTML element selector or component name for which LCP was reported
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Aliases: lcp.element
     Example: "body > div#app > div#container > div"
@@ -2358,6 +2359,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Aliases: browser.web_vital.lcp.element
+    DEPRECATED: Use browser.web_vital.lcp.element instead - The LCP element is now recorded as a browser.web_vital.lcp.element attribute.
     Example: "img"
     """
 
@@ -5171,7 +5174,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.web_vital.lcp.element": AttributeMetadata(
         brief="The HTML element selector or component name for which LCP was reported",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="body > div#app > div#container > div",
         aliases=["lcp.element"],
@@ -6389,6 +6392,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="img",
+        deprecation=DeprecationInfo(
+            replacement="browser.web_vital.lcp.element",
+            reason="The LCP element is now recorded as a browser.web_vital.lcp.element attribute.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["browser.web_vital.lcp.element"],
     ),
     "lcp.id": AttributeMetadata(
         brief="The id of the dom element responsible for the largest contentful paint.",

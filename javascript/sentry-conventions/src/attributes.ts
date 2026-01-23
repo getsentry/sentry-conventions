@@ -885,7 +885,7 @@ export type BROWSER_VERSION_TYPE = string;
  *
  * Attribute Value Type: `string` {@link BROWSER_WEB_VITAL_LCP_ELEMENT_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -4074,6 +4074,9 @@ export type JVM_THREAD_STATE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link BROWSER_WEB_VITAL_LCP_ELEMENT} `browser.web_vital.lcp.element`
+ *
+ * @deprecated Use {@link BROWSER_WEB_VITAL_LCP_ELEMENT} (browser.web_vital.lcp.element) instead - The LCP element is now recorded as a browser.web_vital.lcp.element attribute.
  * @example "img"
  */
 export const LCP_ELEMENT = 'lcp.element';
@@ -10150,7 +10153,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The HTML element selector or component name for which LCP was reported',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'body > div#app > div#container > div',
@@ -11759,6 +11762,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'img',
+    deprecation: {
+      replacement: 'browser.web_vital.lcp.element',
+      reason: 'The LCP element is now recorded as a browser.web_vital.lcp.element attribute.',
+    },
+    aliases: [BROWSER_WEB_VITAL_LCP_ELEMENT],
   },
   [LCP_ID]: {
     brief: 'The id of the dom element responsible for the largest contentful paint.',

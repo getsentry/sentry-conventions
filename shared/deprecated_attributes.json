@@ -880,6 +880,22 @@
       "alias": ["user_agent.original"]
     },
     {
+      "key": "lcp.element",
+      "brief": "The dom element responsible for the largest contentful paint.",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "img",
+      "deprecation": {
+        "replacement": "browser.web_vital.lcp.element",
+        "reason": "The LCP element is now recorded as a browser.web_vital.lcp.element attribute.",
+        "_status": "backfill"
+      },
+      "alias": ["browser.web_vital.lcp.element"]
+    },
+    {
       "key": "net.host.ip",
       "brief": "Local address of the network connection - IP address or Unix domain socket name.",
       "type": "string",
