@@ -2,13 +2,17 @@
 
 # Lcp Attributes
 
-- [Stable Attributes](#stable-attributes)
+- [Deprecated Attributes](#deprecated-attributes)
   - [lcp.element](#lcpelement)
   - [lcp.id](#lcpid)
+  - [lcp.loadTime](#lcploadtime)
+  - [lcp.renderTime](#lcprendertime)
   - [lcp.size](#lcpsize)
   - [lcp.url](#lcpurl)
 
-## Stable Attributes
+## Deprecated Attributes
+
+These attributes are deprecated and will be removed in a future version. Please use the recommended replacements.
 
 ### lcp.element
 
@@ -20,6 +24,9 @@ The dom element responsible for the largest contentful paint.
 | Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `img` |
+| Deprecated | Yes, use `browser.web_vital.lcp.element` instead |
+| Deprecation Reason | The LCP element is now recorded as a browser.web_vital.lcp.element attribute. |
+| Aliases | `browser.web_vital.lcp.element` |
 
 ### lcp.id
 
@@ -31,6 +38,37 @@ The id of the dom element responsible for the largest contentful paint.
 | Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `#hero` |
+| Deprecated | Yes, use `browser.web_vital.lcp.id` instead |
+| Deprecation Reason | The LCP id is now recorded as a browser.web_vital.lcp.id attribute. |
+| Aliases | `browser.web_vital.lcp.id` |
+
+### lcp.loadTime
+
+The time it took for the LCP element to be loaded
+
+| Property | Value |
+| --- | --- |
+| Type | `integer` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `1402` |
+| Deprecated | Yes, use `browser.web_vital.lcp.load_time` instead |
+| Deprecation Reason | The LCP load time is now recorded as a browser.web_vital.lcp.load_time attribute. |
+| Aliases | `browser.web_vital.lcp.load_time` |
+
+### lcp.renderTime
+
+The time it took for the LCP element to be rendered
+
+| Property | Value |
+| --- | --- |
+| Type | `integer` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `1685` |
+| Deprecated | Yes, use `browser.web_vital.lcp.render_time` instead |
+| Deprecation Reason | The LCP render time is now recorded as a browser.web_vital.lcp.render_time attribute. |
+| Aliases | `browser.web_vital.lcp.render_time` |
 
 ### lcp.size
 
@@ -42,6 +80,9 @@ The size of the largest contentful paint element.
 | Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `1234` |
+| Deprecated | Yes, use `browser.web_vital.lcp.size` instead |
+| Deprecation Reason | The LCP size is now recorded as a browser.web_vital.lcp.size attribute. |
+| Aliases | `browser.web_vital.lcp.size` |
 
 ### lcp.url
 
@@ -53,4 +94,7 @@ The url of the dom element responsible for the largest contentful paint.
 | Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `https://example.com` |
+| Deprecated | Yes, use `browser.web_vital.lcp.url` instead |
+| Deprecation Reason | The LCP url is now recorded as a browser.web_vital.lcp.url attribute. |
+| Aliases | `browser.web_vital.lcp.url` |
 

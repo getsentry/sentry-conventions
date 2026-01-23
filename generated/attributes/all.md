@@ -4,7 +4,7 @@
 
 This page lists all available attributes across all categories.
 
-Total attributes: 422
+Total attributes: 430
 
 ## Stable Attributes
 
@@ -31,6 +31,12 @@ Total attributes: 422
 | [`browser.script.invoker_type`](./browser.md#browserscriptinvoker_type) | Browser script entry point type. |
 | [`browser.script.source_char_position`](./browser.md#browserscriptsource_char_position) | A number representing the script character position of the script. |
 | [`browser.version`](./browser.md#browserversion) | The version of the browser. |
+| [`browser.web_vital.lcp.element`](./browser.md#browserweb_vitallcpelement) | The HTML element selector or component name for which LCP was reported |
+| [`browser.web_vital.lcp.id`](./browser.md#browserweb_vitallcpid) | The id of the dom element responsible for the largest contentful paint |
+| [`browser.web_vital.lcp.load_time`](./browser.md#browserweb_vitallcpload_time) | The time it took for the LCP element to be loaded |
+| [`browser.web_vital.lcp.render_time`](./browser.md#browserweb_vitallcprender_time) | The time it took for the LCP element to be rendered |
+| [`browser.web_vital.lcp.size`](./browser.md#browserweb_vitallcpsize) | The size of the largest contentful paint element |
+| [`browser.web_vital.lcp.url`](./browser.md#browserweb_vitallcpurl) | The url of the dom element responsible for the largest contentful paint |
 | [`cache.hit`](./cache.md#cachehit) | If the cache was hit during this span. |
 | [`cache.item_size`](./cache.md#cacheitem_size) | The size of the requested item in the cache. In bytes. |
 | [`cache.key`](./cache.md#cachekey) | The key of the cache accessed. |
@@ -151,10 +157,6 @@ Total attributes: 422
 | [`jvm.memory.type`](./jvm.md#jvmmemorytype) | Name of the memory pool. |
 | [`jvm.thread.daemon`](./jvm.md#jvmthreaddaemon) | Whether the thread is daemon or not. |
 | [`jvm.thread.state`](./jvm.md#jvmthreadstate) | State of the thread. |
-| [`lcp.element`](./lcp.md#lcpelement) | The dom element responsible for the largest contentful paint. |
-| [`lcp.id`](./lcp.md#lcpid) | The id of the dom element responsible for the largest contentful paint. |
-| [`lcp.size`](./lcp.md#lcpsize) | The size of the largest contentful paint element. |
-| [`lcp.url`](./lcp.md#lcpurl) | The url of the dom element responsible for the largest contentful paint. |
 | [`logger.name`](./logger.md#loggername) | The name of the logger that generated this event. |
 | [`mcp.cancelled.reason`](./mcp.md#mcpcancelledreason) | Reason for the cancellation of an MCP operation. |
 | [`mcp.cancelled.request_id`](./mcp.md#mcpcancelledrequest_id) | Request ID of the cancelled MCP operation. |
@@ -410,6 +412,12 @@ Total attributes: 422
 | [`http.target`](./http.md#httptarget) | [`url.path`](./url.md#urlpath) |
 | [`http.url`](./http.md#httpurl) | [`url.full`](./url.md#urlfull) |
 | [`http.user_agent`](./http.md#httpuser_agent) | [`user_agent.original`](./user_agent.md#user_agentoriginal) |
+| [`lcp.element`](./lcp.md#lcpelement) | [`browser.web_vital.lcp.element`](./browser.md#browserweb_vitallcpelement) |
+| [`lcp.id`](./lcp.md#lcpid) | [`browser.web_vital.lcp.id`](./browser.md#browserweb_vitallcpid) |
+| [`lcp.loadTime`](./lcp.md#lcploadtime) | [`browser.web_vital.lcp.load_time`](./browser.md#browserweb_vitallcpload_time) |
+| [`lcp.renderTime`](./lcp.md#lcprendertime) | [`browser.web_vital.lcp.render_time`](./browser.md#browserweb_vitallcprender_time) |
+| [`lcp.size`](./lcp.md#lcpsize) | [`browser.web_vital.lcp.size`](./browser.md#browserweb_vitallcpsize) |
+| [`lcp.url`](./lcp.md#lcpurl) | [`browser.web_vital.lcp.url`](./browser.md#browserweb_vitallcpurl) |
 | [`method`](./general.md#method) | [`http.request.method`](./http.md#httprequestmethod) |
 | [`net.host.ip`](./net.md#nethostip) | [`network.local.address`](./network.md#networklocaladdress) |
 | [`net.host.name`](./net.md#nethostname) | [`server.address`](./server.md#serveraddress) |

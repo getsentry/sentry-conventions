@@ -9,6 +9,12 @@
   - [browser.script.invoker_type](#browserscriptinvoker_type)
   - [browser.script.source_char_position](#browserscriptsource_char_position)
   - [browser.version](#browserversion)
+  - [browser.web_vital.lcp.element](#browserweb_vitallcpelement)
+  - [browser.web_vital.lcp.id](#browserweb_vitallcpid)
+  - [browser.web_vital.lcp.load_time](#browserweb_vitallcpload_time)
+  - [browser.web_vital.lcp.render_time](#browserweb_vitallcprender_time)
+  - [browser.web_vital.lcp.size](#browserweb_vitallcpsize)
+  - [browser.web_vital.lcp.url](#browserweb_vitallcpurl)
 
 ## Stable Attributes
 
@@ -79,4 +85,76 @@ The version of the browser.
 | Exists in OpenTelemetry | No |
 | Example | `120.0.6099.130` |
 | Aliases | `sentry.browser.version` |
+
+### browser.web_vital.lcp.element
+
+The HTML element selector or component name for which LCP was reported
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `body > div#app > div#container > div` |
+| Aliases | `lcp.element` |
+
+### browser.web_vital.lcp.id
+
+The id of the dom element responsible for the largest contentful paint
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `#gero` |
+| Aliases | `lcp.id` |
+
+### browser.web_vital.lcp.load_time
+
+The time it took for the LCP element to be loaded
+
+| Property | Value |
+| --- | --- |
+| Type | `integer` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `1402` |
+| Aliases | `lcp.loadTime` |
+
+### browser.web_vital.lcp.render_time
+
+The time it took for the LCP element to be rendered
+
+| Property | Value |
+| --- | --- |
+| Type | `integer` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `1685` |
+| Aliases | `lcp.renderTime` |
+
+### browser.web_vital.lcp.size
+
+The size of the largest contentful paint element
+
+| Property | Value |
+| --- | --- |
+| Type | `integer` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `1024` |
+| Aliases | `lcp.size` |
+
+### browser.web_vital.lcp.url
+
+The url of the dom element responsible for the largest contentful paint
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `https://example.com/static/img.png` |
+| Aliases | `lcp.url` |
 

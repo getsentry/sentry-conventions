@@ -1,0 +1,17 @@
+{
+  "key": "lcp.renderTime",
+  "brief": "The time it took for the LCP element to be rendered",
+  "type": "integer",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": 1685,
+  "sdks": ["javascript-browser"],
+  "deprecation": {
+    "replacement": "browser.web_vital.lcp.render_time",
+    "reason": "The LCP render time is now recorded as a browser.web_vital.lcp.render_time attribute.",
+    "_status": "backfill"
+  },
+  "alias": ["browser.web_vital.lcp.render_time"]
+}
