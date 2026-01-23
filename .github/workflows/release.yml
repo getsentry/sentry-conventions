@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: Version to release (or "auto")
-        required: false
+        description: Version to release
+        required: true
       force:
         description: Force a release even when there are release-blockers (optional)
         required: false
