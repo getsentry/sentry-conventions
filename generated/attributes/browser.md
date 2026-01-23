@@ -10,6 +10,7 @@
   - [browser.script.source_char_position](#browserscriptsource_char_position)
   - [browser.version](#browserversion)
   - [browser.web_vital.lcp.element](#browserweb_vitallcpelement)
+  - [browser.web_vital.lcp.id](#browserweb_vitallcpid)
 
 ## Stable Attributes
 
@@ -92,4 +93,16 @@ The HTML element selector or component name for which LCP was reported
 | Exists in OpenTelemetry | No |
 | Example | `body > div#app > div#container > div` |
 | Aliases | `lcp.element` |
+
+### browser.web_vital.lcp.id
+
+The id of the dom element responsible for the largest contentful paint
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `#gero` |
+| Aliases | `lcp.id` |
 

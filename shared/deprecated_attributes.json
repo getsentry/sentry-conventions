@@ -896,6 +896,22 @@
       "alias": ["browser.web_vital.lcp.element"]
     },
     {
+      "key": "lcp.id",
+      "brief": "The id of the dom element responsible for the largest contentful paint.",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "#hero",
+      "deprecation": {
+        "replacement": "browser.web_vital.lcp.id",
+        "reason": "The LCP id is now recorded as a browser.web_vital.lcp.id attribute.",
+        "_status": "backfill"
+      },
+      "alias": ["browser.web_vital.lcp.id"]
+    },
+    {
       "key": "net.host.ip",
       "brief": "Local address of the network connection - IP address or Unix domain socket name.",
       "type": "string",

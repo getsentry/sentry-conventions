@@ -6,5 +6,11 @@
     "key": "maybe"
   },
   "is_in_otel": false,
-  "example": "#hero"
+  "example": "#hero",
+  "deprecation": {
+    "replacement": "browser.web_vital.lcp.id",
+    "reason": "The LCP id is now recorded as a browser.web_vital.lcp.id attribute.",
+    "_status": "backfill"
+  },
+  "alias": ["browser.web_vital.lcp.id"]
 }

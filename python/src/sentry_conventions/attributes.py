@@ -137,6 +137,7 @@ class _AttributeNamesMeta(type):
         "HTTP_URL",
         "HTTP_USER_AGENT",
         "LCP_ELEMENT",
+        "LCP_ID",
         "METHOD",
         "NET_HOST_IP",
         "NET_HOST_NAME",
@@ -647,6 +648,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Aliases: lcp.element
     Example: "body > div#app > div#container > div"
+    """
+
+    # Path: model/attributes/browser/browser__web_vital__lcp__id.json
+    BROWSER_WEB_VITAL_LCP_ID: Literal["browser.web_vital.lcp.id"] = (
+        "browser.web_vital.lcp.id"
+    )
+    """The id of the dom element responsible for the largest contentful paint
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: lcp.id
+    Example: "#gero"
     """
 
     # Path: model/attributes/cache/cache__hit.json
@@ -2371,6 +2385,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Aliases: browser.web_vital.lcp.id
+    DEPRECATED: Use browser.web_vital.lcp.id instead - The LCP id is now recorded as a browser.web_vital.lcp.id attribute.
     Example: "#hero"
     """
 
@@ -5180,6 +5196,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["lcp.element"],
         sdks=["javascript-browser"],
     ),
+    "browser.web_vital.lcp.id": AttributeMetadata(
+        brief="The id of the dom element responsible for the largest contentful paint",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="#gero",
+        aliases=["lcp.id"],
+        sdks=["javascript-browser"],
+    ),
     "cache.hit": AttributeMetadata(
         brief="If the cache was hit during this span.",
         type=AttributeType.BOOLEAN,
@@ -6405,6 +6430,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="#hero",
+        deprecation=DeprecationInfo(
+            replacement="browser.web_vital.lcp.id",
+            reason="The LCP id is now recorded as a browser.web_vital.lcp.id attribute.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["browser.web_vital.lcp.id"],
     ),
     "lcp.size": AttributeMetadata(
         brief="The size of the largest contentful paint element.",
@@ -8188,6 +8219,7 @@ Attributes = TypedDict(
         "browser.script.source_char_position": int,
         "browser.version": str,
         "browser.web_vital.lcp.element": str,
+        "browser.web_vital.lcp.id": str,
         "cache.hit": bool,
         "cache.item_size": int,
         "cache.key": List[str],

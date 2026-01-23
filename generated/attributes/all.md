@@ -4,7 +4,7 @@
 
 This page lists all available attributes across all categories.
 
-Total attributes: 423
+Total attributes: 424
 
 ## Stable Attributes
 
@@ -32,6 +32,7 @@ Total attributes: 423
 | [`browser.script.source_char_position`](./browser.md#browserscriptsource_char_position) | A number representing the script character position of the script. |
 | [`browser.version`](./browser.md#browserversion) | The version of the browser. |
 | [`browser.web_vital.lcp.element`](./browser.md#browserweb_vitallcpelement) | The HTML element selector or component name for which LCP was reported |
+| [`browser.web_vital.lcp.id`](./browser.md#browserweb_vitallcpid) | The id of the dom element responsible for the largest contentful paint |
 | [`cache.hit`](./cache.md#cachehit) | If the cache was hit during this span. |
 | [`cache.item_size`](./cache.md#cacheitem_size) | The size of the requested item in the cache. In bytes. |
 | [`cache.key`](./cache.md#cachekey) | The key of the cache accessed. |
@@ -152,7 +153,6 @@ Total attributes: 423
 | [`jvm.memory.type`](./jvm.md#jvmmemorytype) | Name of the memory pool. |
 | [`jvm.thread.daemon`](./jvm.md#jvmthreaddaemon) | Whether the thread is daemon or not. |
 | [`jvm.thread.state`](./jvm.md#jvmthreadstate) | State of the thread. |
-| [`lcp.id`](./lcp.md#lcpid) | The id of the dom element responsible for the largest contentful paint. |
 | [`lcp.size`](./lcp.md#lcpsize) | The size of the largest contentful paint element. |
 | [`lcp.url`](./lcp.md#lcpurl) | The url of the dom element responsible for the largest contentful paint. |
 | [`logger.name`](./logger.md#loggername) | The name of the logger that generated this event. |
@@ -411,6 +411,7 @@ Total attributes: 423
 | [`http.url`](./http.md#httpurl) | [`url.full`](./url.md#urlfull) |
 | [`http.user_agent`](./http.md#httpuser_agent) | [`user_agent.original`](./user_agent.md#user_agentoriginal) |
 | [`lcp.element`](./lcp.md#lcpelement) | [`browser.web_vital.lcp.element`](./browser.md#browserweb_vitallcpelement) |
+| [`lcp.id`](./lcp.md#lcpid) | [`browser.web_vital.lcp.id`](./browser.md#browserweb_vitallcpid) |
 | [`method`](./general.md#method) | [`http.request.method`](./http.md#httprequestmethod) |
 | [`net.host.ip`](./net.md#nethostip) | [`network.local.address`](./network.md#networklocaladdress) |
 | [`net.host.name`](./net.md#nethostname) | [`server.address`](./server.md#serveraddress) |
