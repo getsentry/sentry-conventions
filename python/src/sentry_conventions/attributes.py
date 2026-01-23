@@ -138,6 +138,7 @@ class _AttributeNamesMeta(type):
         "HTTP_USER_AGENT",
         "LCP_ELEMENT",
         "LCP_ID",
+        "LCP_LOADTIME",
         "LCP_SIZE",
         "LCP_URL",
         "METHOD",
@@ -665,6 +666,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "#gero"
     """
 
+    # Path: model/attributes/browser/browser__web_vital__lcp__load_time.json
+    BROWSER_WEB_VITAL_LCP_LOAD_TIME: Literal["browser.web_vital.lcp.load_time"] = (
+        "browser.web_vital.lcp.load_time"
+    )
+    """The time it took for the LCP element to be loaded
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: lcp.loadTime
+    Example: 1402
+    """
+
     # Path: model/attributes/browser/browser__web_vital__lcp__size.json
     BROWSER_WEB_VITAL_LCP_SIZE: Literal["browser.web_vital.lcp.size"] = (
         "browser.web_vital.lcp.size"
@@ -672,7 +686,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The size of the largest contentful paint element
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Aliases: lcp.size
     Example: 1024
@@ -2416,6 +2430,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Aliases: browser.web_vital.lcp.id
     DEPRECATED: Use browser.web_vital.lcp.id instead - The LCP id is now recorded as a browser.web_vital.lcp.id attribute.
     Example: "#hero"
+    """
+
+    # Path: model/attributes/lcp/lcp__loadTime.json
+    LCP_LOADTIME: Literal["lcp.loadTime"] = "lcp.loadTime"
+    """The time it took for the LCP element to be loaded
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: browser.web_vital.lcp.load_time
+    DEPRECATED: Use browser.web_vital.lcp.load_time instead - The LCP load time is now recorded as a browser.web_vital.lcp.load_time attribute.
+    Example: 1402
     """
 
     # Path: model/attributes/lcp/lcp__size.json
@@ -5237,10 +5263,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["lcp.id"],
         sdks=["javascript-browser"],
     ),
+    "browser.web_vital.lcp.load_time": AttributeMetadata(
+        brief="The time it took for the LCP element to be loaded",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=1402,
+        aliases=["lcp.loadTime"],
+        sdks=["javascript-browser"],
+    ),
     "browser.web_vital.lcp.size": AttributeMetadata(
         brief="The size of the largest contentful paint element",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1024,
         aliases=["lcp.size"],
@@ -6486,6 +6521,20 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             status=DeprecationStatus.BACKFILL,
         ),
         aliases=["browser.web_vital.lcp.id"],
+    ),
+    "lcp.loadTime": AttributeMetadata(
+        brief="The time it took for the LCP element to be loaded",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=1402,
+        deprecation=DeprecationInfo(
+            replacement="browser.web_vital.lcp.load_time",
+            reason="The LCP load time is now recorded as a browser.web_vital.lcp.load_time attribute.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["browser.web_vital.lcp.load_time"],
+        sdks=["javascript-browser"],
     ),
     "lcp.size": AttributeMetadata(
         brief="The size of the largest contentful paint element.",
@@ -8282,6 +8331,7 @@ Attributes = TypedDict(
         "browser.version": str,
         "browser.web_vital.lcp.element": str,
         "browser.web_vital.lcp.id": str,
+        "browser.web_vital.lcp.load_time": int,
         "browser.web_vital.lcp.size": int,
         "browser.web_vital.lcp.url": str,
         "cache.hit": bool,
@@ -8437,6 +8487,7 @@ Attributes = TypedDict(
         "jvm.thread.state": str,
         "lcp.element": str,
         "lcp.id": str,
+        "lcp.loadTime": int,
         "lcp.size": int,
         "lcp.url": str,
         "logger.name": str,

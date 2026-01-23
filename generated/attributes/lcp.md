@@ -5,25 +5,10 @@
 - [Deprecated Attributes](#deprecated-attributes)
   - [lcp.element](#lcpelement)
   - [lcp.id](#lcpid)
+  - [lcp.loadTime](#lcploadtime)
   - [lcp.size](#lcpsize)
   - [lcp.url](#lcpurl)
 
-<<<<<<< HEAD
-## Stable Attributes
-
-### lcp.size
-
-The size of the largest contentful paint element.
-
-| Property | Value |
-| --- | --- |
-| Type | `integer` |
-| Has PII | maybe |
-| Exists in OpenTelemetry | No |
-| Example | `1234` |
-
-=======
->>>>>>> fed074c (feat(attributes): Add `browser.web_vital.lcp.size` attribute)
 ## Deprecated Attributes
 
 These attributes are deprecated and will be removed in a future version. Please use the recommended replacements.
@@ -56,6 +41,20 @@ The id of the dom element responsible for the largest contentful paint.
 | Deprecation Reason | The LCP id is now recorded as a browser.web_vital.lcp.id attribute. |
 | Aliases | `browser.web_vital.lcp.id` |
 
+### lcp.loadTime
+
+The time it took for the LCP element to be loaded
+
+| Property | Value |
+| --- | --- |
+| Type | `integer` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `1402` |
+| Deprecated | Yes, use `browser.web_vital.lcp.load_time` instead |
+| Deprecation Reason | The LCP load time is now recorded as a browser.web_vital.lcp.load_time attribute. |
+| Aliases | `browser.web_vital.lcp.load_time` |
+
 ### lcp.size
 
 The size of the largest contentful paint element.
@@ -63,7 +62,7 @@ The size of the largest contentful paint element.
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `1234` |
 | Deprecated | Yes, use `browser.web_vital.lcp.size` instead |

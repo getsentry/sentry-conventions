@@ -1,0 +1,17 @@
+{
+  "key": "lcp.loadTime",
+  "brief": "The time it took for the LCP element to be loaded",
+  "type": "integer",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": 1402,
+  "sdks": ["javascript-browser"],
+  "deprecation": {
+    "replacement": "browser.web_vital.lcp.load_time",
+    "reason": "The LCP load time is now recorded as a browser.web_vital.lcp.load_time attribute.",
+    "_status": "backfill"
+  },
+  "alias": ["browser.web_vital.lcp.load_time"]
+}

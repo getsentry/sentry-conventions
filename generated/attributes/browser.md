@@ -11,6 +11,7 @@
   - [browser.version](#browserversion)
   - [browser.web_vital.lcp.element](#browserweb_vitallcpelement)
   - [browser.web_vital.lcp.id](#browserweb_vitallcpid)
+  - [browser.web_vital.lcp.load_time](#browserweb_vitallcpload_time)
   - [browser.web_vital.lcp.size](#browserweb_vitallcpsize)
   - [browser.web_vital.lcp.url](#browserweb_vitallcpurl)
 
@@ -108,6 +109,18 @@ The id of the dom element responsible for the largest contentful paint
 | Example | `#gero` |
 | Aliases | `lcp.id` |
 
+### browser.web_vital.lcp.load_time
+
+The time it took for the LCP element to be loaded
+
+| Property | Value |
+| --- | --- |
+| Type | `integer` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `1402` |
+| Aliases | `lcp.loadTime` |
+
 ### browser.web_vital.lcp.size
 
 The size of the largest contentful paint element
@@ -115,7 +128,7 @@ The size of the largest contentful paint element
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `1024` |
 | Aliases | `lcp.size` |

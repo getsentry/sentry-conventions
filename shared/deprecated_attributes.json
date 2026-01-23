@@ -912,11 +912,28 @@
       "alias": ["browser.web_vital.lcp.id"]
     },
     {
+      "key": "lcp.loadTime",
+      "brief": "The time it took for the LCP element to be loaded",
+      "type": "integer",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": 1402,
+      "sdks": ["javascript-browser"],
+      "deprecation": {
+        "replacement": "browser.web_vital.lcp.load_time",
+        "reason": "The LCP load time is now recorded as a browser.web_vital.lcp.load_time attribute.",
+        "_status": "backfill"
+      },
+      "alias": ["browser.web_vital.lcp.load_time"]
+    },
+    {
       "key": "lcp.size",
       "brief": "The size of the largest contentful paint element.",
       "type": "integer",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": false,
       "example": 1234,
