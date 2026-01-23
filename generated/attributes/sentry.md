@@ -99,7 +99,7 @@ Rate at which a span was sampled in the SDK.
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | maybe |
+| Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `0.5` |
 
@@ -543,7 +543,7 @@ Rate at which a span was sampled in Relay.
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | maybe |
+| Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `0.5` |
 

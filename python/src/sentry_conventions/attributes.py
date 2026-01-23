@@ -3594,7 +3594,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Rate at which a span was sampled in the SDK.
 
     Type: float
-    Contains PII: maybe
+    Contains PII: false
     Defined in OTEL: No
     Example: 0.5
     """
@@ -4036,7 +4036,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Rate at which a span was sampled in Relay.
 
     Type: float
-    Contains PII: maybe
+    Contains PII: false
     Defined in OTEL: No
     Example: 0.5
     """
@@ -7263,7 +7263,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.client_sample_rate": AttributeMetadata(
         brief="Rate at which a span was sampled in the SDK.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=0.5,
     ),
@@ -7563,7 +7563,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.server_sample_rate": AttributeMetadata(
         brief="Rate at which a span was sampled in Relay.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=0.5,
     ),

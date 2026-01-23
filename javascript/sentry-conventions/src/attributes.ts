@@ -6410,7 +6410,7 @@ export type SENTRY_CATEGORY_TYPE = string;
  *
  * Attribute Value Type: `number` {@link SENTRY_CLIENT_SAMPLE_RATE_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: false
  *
  * Attribute defined in OTEL: No
  *
@@ -7241,7 +7241,7 @@ export type SENTRY_SEGMENT_NAME_TYPE = string;
  *
  * Attribute Value Type: `number` {@link SENTRY_SERVER_SAMPLE_RATE_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: false
  *
  * Attribute defined in OTEL: No
  *
@@ -12889,7 +12889,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Rate at which a span was sampled in the SDK.',
     type: 'double',
     pii: {
-      isPii: 'maybe',
+      isPii: 'false',
     },
     isInOtel: false,
     example: 0.5,
@@ -13277,7 +13277,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Rate at which a span was sampled in Relay.',
     type: 'double',
     pii: {
-      isPii: 'maybe',
+      isPii: 'false',
     },
     isInOtel: false,
     example: 0.5,
