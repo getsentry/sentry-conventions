@@ -6,5 +6,11 @@
     "key": "maybe"
   },
   "is_in_otel": false,
-  "example": "https://example.com"
+  "example": "https://example.com",
+  "deprecation": {
+    "replacement": "browser.web_vital.lcp.url",
+    "reason": "The LCP url is now recorded as a browser.web_vital.lcp.url attribute.",
+    "_status": "backfill"
+  },
+  "alias": ["browser.web_vital.lcp.url"]
 }

@@ -922,6 +922,28 @@ export const BROWSER_WEB_VITAL_LCP_ID = 'browser.web_vital.lcp.id';
  */
 export type BROWSER_WEB_VITAL_LCP_ID_TYPE = string;
 
+// Path: model/attributes/browser/browser__web_vital__lcp__url.json
+
+/**
+ * The url of the dom element responsible for the largest contentful paint `browser.web_vital.lcp.url`
+ *
+ * Attribute Value Type: `string` {@link BROWSER_WEB_VITAL_LCP_URL_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link LCP_URL} `lcp.url`
+ *
+ * @example "https://example.com/static/img.png"
+ */
+export const BROWSER_WEB_VITAL_LCP_URL = 'browser.web_vital.lcp.url';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_LCP_URL} browser.web_vital.lcp.url
+ */
+export type BROWSER_WEB_VITAL_LCP_URL_TYPE = string;
+
 // Path: model/attributes/cache/cache__hit.json
 
 /**
@@ -4162,6 +4184,9 @@ export type LCP_SIZE_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link BROWSER_WEB_VITAL_LCP_URL} `browser.web_vital.lcp.url`
+ *
+ * @deprecated Use {@link BROWSER_WEB_VITAL_LCP_URL} (browser.web_vital.lcp.url) instead - The LCP url is now recorded as a browser.web_vital.lcp.url attribute.
  * @example "https://example.com"
  */
 export const LCP_URL = 'lcp.url';
@@ -8901,6 +8926,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [BROWSER_VERSION]: 'string',
   [BROWSER_WEB_VITAL_LCP_ELEMENT]: 'string',
   [BROWSER_WEB_VITAL_LCP_ID]: 'string',
+  [BROWSER_WEB_VITAL_LCP_URL]: 'string',
   [CACHE_HIT]: 'boolean',
   [CACHE_ITEM_SIZE]: 'integer',
   [CACHE_KEY]: 'string[]',
@@ -9328,6 +9354,7 @@ export type AttributeName =
   | typeof BROWSER_VERSION
   | typeof BROWSER_WEB_VITAL_LCP_ELEMENT
   | typeof BROWSER_WEB_VITAL_LCP_ID
+  | typeof BROWSER_WEB_VITAL_LCP_URL
   | typeof CACHE_HIT
   | typeof CACHE_ITEM_SIZE
   | typeof CACHE_KEY
@@ -10196,6 +10223,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '#gero',
     aliases: [LCP_ID],
+    sdks: ['javascript-browser'],
+  },
+  [BROWSER_WEB_VITAL_LCP_URL]: {
+    brief: 'The url of the dom element responsible for the largest contentful paint',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'https://example.com/static/img.png',
+    aliases: [LCP_URL],
     sdks: ['javascript-browser'],
   },
   [CACHE_HIT]: {
@@ -11837,6 +11875,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'https://example.com',
+    deprecation: {
+      replacement: 'browser.web_vital.lcp.url',
+      reason: 'The LCP url is now recorded as a browser.web_vital.lcp.url attribute.',
+    },
+    aliases: [BROWSER_WEB_VITAL_LCP_URL],
   },
   [LOGGER_NAME]: {
     brief: 'The name of the logger that generated this event.',
@@ -14114,6 +14157,7 @@ export type Attributes = {
   [BROWSER_VERSION]?: BROWSER_VERSION_TYPE;
   [BROWSER_WEB_VITAL_LCP_ELEMENT]?: BROWSER_WEB_VITAL_LCP_ELEMENT_TYPE;
   [BROWSER_WEB_VITAL_LCP_ID]?: BROWSER_WEB_VITAL_LCP_ID_TYPE;
+  [BROWSER_WEB_VITAL_LCP_URL]?: BROWSER_WEB_VITAL_LCP_URL_TYPE;
   [CACHE_HIT]?: CACHE_HIT_TYPE;
   [CACHE_ITEM_SIZE]?: CACHE_ITEM_SIZE_TYPE;
   [CACHE_KEY]?: CACHE_KEY_TYPE;

@@ -138,6 +138,7 @@ class _AttributeNamesMeta(type):
         "HTTP_USER_AGENT",
         "LCP_ELEMENT",
         "LCP_ID",
+        "LCP_URL",
         "METHOD",
         "NET_HOST_IP",
         "NET_HOST_NAME",
@@ -661,6 +662,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Aliases: lcp.id
     Example: "#gero"
+    """
+
+    # Path: model/attributes/browser/browser__web_vital__lcp__url.json
+    BROWSER_WEB_VITAL_LCP_URL: Literal["browser.web_vital.lcp.url"] = (
+        "browser.web_vital.lcp.url"
+    )
+    """The url of the dom element responsible for the largest contentful paint
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: lcp.url
+    Example: "https://example.com/static/img.png"
     """
 
     # Path: model/attributes/cache/cache__hit.json
@@ -2407,6 +2421,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Aliases: browser.web_vital.lcp.url
+    DEPRECATED: Use browser.web_vital.lcp.url instead - The LCP url is now recorded as a browser.web_vital.lcp.url attribute.
     Example: "https://example.com"
     """
 
@@ -5205,6 +5221,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["lcp.id"],
         sdks=["javascript-browser"],
     ),
+    "browser.web_vital.lcp.url": AttributeMetadata(
+        brief="The url of the dom element responsible for the largest contentful paint",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="https://example.com/static/img.png",
+        aliases=["lcp.url"],
+        sdks=["javascript-browser"],
+    ),
     "cache.hit": AttributeMetadata(
         brief="If the cache was hit during this span.",
         type=AttributeType.BOOLEAN,
@@ -6450,6 +6475,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="https://example.com",
+        deprecation=DeprecationInfo(
+            replacement="browser.web_vital.lcp.url",
+            reason="The LCP url is now recorded as a browser.web_vital.lcp.url attribute.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["browser.web_vital.lcp.url"],
     ),
     "logger.name": AttributeMetadata(
         brief="The name of the logger that generated this event.",
@@ -8220,6 +8251,7 @@ Attributes = TypedDict(
         "browser.version": str,
         "browser.web_vital.lcp.element": str,
         "browser.web_vital.lcp.id": str,
+        "browser.web_vital.lcp.url": str,
         "cache.hit": bool,
         "cache.item_size": int,
         "cache.key": List[str],

@@ -11,6 +11,7 @@
   - [browser.version](#browserversion)
   - [browser.web_vital.lcp.element](#browserweb_vitallcpelement)
   - [browser.web_vital.lcp.id](#browserweb_vitallcpid)
+  - [browser.web_vital.lcp.url](#browserweb_vitallcpurl)
 
 ## Stable Attributes
 
@@ -105,4 +106,16 @@ The id of the dom element responsible for the largest contentful paint
 | Exists in OpenTelemetry | No |
 | Example | `#gero` |
 | Aliases | `lcp.id` |
+
+### browser.web_vital.lcp.url
+
+The url of the dom element responsible for the largest contentful paint
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `https://example.com/static/img.png` |
+| Aliases | `lcp.url` |
 

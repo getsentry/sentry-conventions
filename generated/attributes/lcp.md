@@ -4,10 +4,10 @@
 
 - [Stable Attributes](#stable-attributes)
   - [lcp.size](#lcpsize)
-  - [lcp.url](#lcpurl)
 - [Deprecated Attributes](#deprecated-attributes)
   - [lcp.element](#lcpelement)
   - [lcp.id](#lcpid)
+  - [lcp.url](#lcpurl)
 
 ## Stable Attributes
 
@@ -21,17 +21,6 @@ The size of the largest contentful paint element.
 | Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `1234` |
-
-### lcp.url
-
-The url of the dom element responsible for the largest contentful paint.
-
-| Property | Value |
-| --- | --- |
-| Type | `string` |
-| Has PII | maybe |
-| Exists in OpenTelemetry | No |
-| Example | `https://example.com` |
 
 ## Deprecated Attributes
 
@@ -64,4 +53,18 @@ The id of the dom element responsible for the largest contentful paint.
 | Deprecated | Yes, use `browser.web_vital.lcp.id` instead |
 | Deprecation Reason | The LCP id is now recorded as a browser.web_vital.lcp.id attribute. |
 | Aliases | `browser.web_vital.lcp.id` |
+
+### lcp.url
+
+The url of the dom element responsible for the largest contentful paint.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `https://example.com` |
+| Deprecated | Yes, use `browser.web_vital.lcp.url` instead |
+| Deprecation Reason | The LCP url is now recorded as a browser.web_vital.lcp.url attribute. |
+| Aliases | `browser.web_vital.lcp.url` |
 

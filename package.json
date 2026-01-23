@@ -15,7 +15,7 @@
     "lint-fix": "biome lint . --write",
 
     "test": "yarn test:js && yarn test:python",
-    "test:js": "vitest",
+    "test:js": "vitest --run",
     "test:python": "(cd python && uv venv && uv pip install -e . && uv run pytest)",
 
     "build": "yarn build:js && yarn build:python && yarn build:tarball",
