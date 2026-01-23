@@ -1391,7 +1391,7 @@ export type DB_QUERY_PARAMETER_KEY_TYPE = string;
 // Path: model/attributes/db/db__query__summary.json
 
 /**
- * A database query being executed. Should be paramaterized. The full version of the query is in `db.query.text`. `db.query.summary`
+ * A shortened representation of operation(s) in the full query. This attribute must be low-cardinality and should only contain the operation table names. `db.query.summary`
  *
  * Attribute Value Type: `string` {@link DB_QUERY_SUMMARY_TYPE}
  *
@@ -1399,7 +1399,7 @@ export type DB_QUERY_PARAMETER_KEY_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  *
- * @example "SELECT * FROM users"
+ * @example "SELECT users;"
  */
 export const DB_QUERY_SUMMARY = 'db.query.summary';
 
@@ -1411,7 +1411,7 @@ export type DB_QUERY_SUMMARY_TYPE = string;
 // Path: model/attributes/db/db__query__text.json
 
 /**
- * The database query being executed. Should be the full query, not a parameterized version. The parameterized version is in `db.query.summary`. `db.query.text`
+ * The database parameterized query being executed. Any parameter values (filters, insertion values, etc) should be replaced with parameter placeholders. If applicable, use `db.query.parameter.<key>` to add the parameter value. `db.query.text`
  *
  * Attribute Value Type: `string` {@link DB_QUERY_TEXT_TYPE}
  *
@@ -1421,7 +1421,7 @@ export type DB_QUERY_SUMMARY_TYPE = string;
  *
  * Aliases: {@link DB_STATEMENT} `db.statement`
  *
- * @example "SELECT * FROM users"
+ * @example "SELECT * FROM users WHERE id = $1"
  */
 export const DB_QUERY_TEXT = 'db.query.text';
 
@@ -10408,23 +10408,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [DB_QUERY_SUMMARY]: {
     brief:
-      'A database query being executed. Should be paramaterized. The full version of the query is in `db.query.text`.',
+      'A shortened representation of operation(s) in the full query. This attribute must be low-cardinality and should only contain the operation table names.',
     type: 'string',
     pii: {
       isPii: 'maybe',
     },
     isInOtel: true,
-    example: 'SELECT * FROM users',
+    example: 'SELECT users;',
   },
   [DB_QUERY_TEXT]: {
     brief:
-      'The database query being executed. Should be the full query, not a parameterized version. The parameterized version is in `db.query.summary`.',
+      'The database parameterized query being executed. Any parameter values (filters, insertion values, etc) should be replaced with parameter placeholders. If applicable, use `db.query.parameter.<key>` to add the parameter value.',
     type: 'string',
     pii: {
       isPii: 'maybe',
     },
     isInOtel: true,
-    example: 'SELECT * FROM users',
+    example: 'SELECT * FROM users WHERE id = $1',
     aliases: [DB_STATEMENT],
   },
   [DB_REDIS_CONNECTION]: {
