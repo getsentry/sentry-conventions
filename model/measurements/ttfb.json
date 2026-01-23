@@ -3,11 +3,5 @@
   "full_name": "Time to First Byte",
   "brief": "The time it takes for the first byte of a response from the server to reach the user's browser after a request is made",
   "unit": "millisecond",
-  "platform": "web",
-  "deprecation": {
-    "_status": "backfill",
-    "replacement": "http.request.time_to_first_byte",
-    "reason": "This measurement is being deprecated in favor of http.request.time_to_first_byte"
-  },
-  "alias": ["http.request.time_to_first_byte"]
+  "platform": "web"
 }

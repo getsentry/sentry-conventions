@@ -1,0 +1,17 @@
+{
+  "key": "ttfb.requestTime",
+  "brief": "The time it takes for the server to process the initial request and send the first byte of a response to the user's browser",
+  "type": "double",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": 1554.5814,
+  "sdks": ["javascript-browser"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "browser.web_vital.ttfb.request_time",
+    "reason": "This attribute is being deprecated in favor of browser.web_vital.ttfb.request_time"
+  },
+  "alias": ["browser.web_vital.ttfb.request_time"]
+}
