@@ -4,7 +4,7 @@
 
 This page lists all available attributes across all categories.
 
-Total attributes: 423
+Total attributes: 425
 
 ## Stable Attributes
 
@@ -25,6 +25,7 @@ Total attributes: 423
 | [`ai.warnings`](./ai.md#aiwarnings) | Warning messages generated during model execution. |
 | [`app_start_type`](./general.md#app_start_type) | Mobile app start variant. Either cold or warm. |
 | [`blocked_main_thread`](./general.md#blocked_main_thread) | Whether the main thread was blocked by the span. |
+| [`browser.connection.rtt`](./browser.md#browserconnectionrtt) | The estimated request round trip time (RTT) in milliseconds based on the current connection's quality. Values are always multiples of 25 milliseconds. |
 | [`browser.name`](./browser.md#browsername) | The name of the browser. |
 | [`browser.report.type`](./browser.md#browserreporttype) | A browser report sent via reporting API.. |
 | [`browser.script.invoker`](./browser.md#browserscriptinvoker) | How a script was called in the browser. |
@@ -384,6 +385,7 @@ Total attributes: 423
 | [`code.function`](./code.md#codefunction) | [`code.function.name`](./code.md#codefunctionname) |
 | [`code.lineno`](./code.md#codelineno) | [`code.line.number`](./code.md#codelinenumber) |
 | [`code.namespace`](./code.md#codenamespace) | [`code.function.name`](./code.md#codefunctionname) |
+| [`connection.rtt`](./connection.md#connectionrtt) | [`browser.connection.rtt`](./browser.md#browserconnectionrtt) |
 | [`db.name`](./db.md#dbname) | [`db.namespace`](./db.md#dbnamespace) |
 | [`db.operation`](./db.md#dboperation) | [`db.operation.name`](./db.md#dboperationname) |
 | [`db.sql.bindings`](./db.md#dbsqlbindings) | [`db.query.parameter.\<key\>`](./db.md#dbqueryparameterkey) |

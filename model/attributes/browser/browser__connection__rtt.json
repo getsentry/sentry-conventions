@@ -1,0 +1,12 @@
+{
+  "key": "browser.connection.rtt",
+  "brief": "The estimated request round trip time (RTT) in milliseconds based on the current connection's quality. Values are always multiples of 25 milliseconds.",
+  "type": "integer",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": 50,
+  "alias": ["connection.rtt"],
+  "sdks": ["javascript-browser"]
+}
