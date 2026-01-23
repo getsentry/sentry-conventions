@@ -13,6 +13,7 @@ This directory contains documentation for all available attributes.
 - [`cache` Attributes](./cache.md)
 - [`client` Attributes](./client.md)
 - [`cloudflare` Attributes](./cloudflare.md)
+- [`cls` Attributes](./cls.md)
 - [`code` Attributes](./code.md)
 - [`db` Attributes](./db.md)
 - [`device` Attributes](./device.md)
