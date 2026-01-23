@@ -27,6 +27,7 @@
   - [gen_ai.response.id](#gen_airesponseid)
   - [gen_ai.response.model](#gen_airesponsemodel)
   - [gen_ai.response.streaming](#gen_airesponsestreaming)
+  - [gen_ai.response.time_to_first_token](#gen_airesponsetime_to_first_token)
   - [gen_ai.response.tokens_per_second](#gen_airesponsetokens_per_second)
   - [gen_ai.system](#gen_aisystem)
   - [gen_ai.system_instructions](#gen_aisystem_instructions)
@@ -332,6 +333,17 @@ Whether or not the AI model call's response was streamed back asynchronously
 | Exists in OpenTelemetry | No |
 | Example | `true` |
 | Aliases | `ai.streaming` |
+
+### gen_ai.response.time_to_first_token
+
+Time in seconds when the first response content chunk arrived in streaming responses.
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `0.6853435` |
 
 ### gen_ai.response.tokens_per_second
 

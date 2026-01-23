@@ -3,6 +3,7 @@
 ### Features
 
 - Add page listing all attributes ([#207](https://github.com/getsentry/sentry-conventions/pull/207))
+- add attribute `gen_ai.response.time_to_first_token` ([#227](https://github.com/getsentry/sentry-conventions/pull/227))
 
 ### Fixes
 
