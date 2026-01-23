@@ -90,7 +90,7 @@ The value of the recorded Cumulative Layout Shift (CLS) web vital
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `0.2361` |
 | Aliases | `cls` |
@@ -102,7 +102,7 @@ The value of the recorded Interaction to Next Paint (INP) web vital
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `200` |
 | Aliases | `inp` |
@@ -114,7 +114,7 @@ The value of the recorded Largest Contentful Paint (LCP) web vital
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `2500` |
 | Aliases | `lcp` |

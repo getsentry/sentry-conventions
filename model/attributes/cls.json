@@ -3,7 +3,7 @@
   "brief": "The value of the recorded Cumulative Layout Shift (CLS) web vital",
   "type": "double",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": 0.2361,

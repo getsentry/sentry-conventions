@@ -3,7 +3,7 @@
   "brief": "The value of the recorded Interaction to Next Paint (INP) web vital",
   "type": "double",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": 200.0,

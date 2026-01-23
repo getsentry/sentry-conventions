@@ -696,7 +696,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The value of the recorded Cumulative Layout Shift (CLS) web vital
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Aliases: cls
     Example: 0.2361
@@ -709,7 +709,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The value of the recorded Interaction to Next Paint (INP) web vital
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Aliases: inp
     Example: 200
@@ -722,7 +722,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The value of the recorded Largest Contentful Paint (LCP) web vital
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Aliases: lcp
     Example: 2500
@@ -848,7 +848,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The value of the recorded Cumulative Layout Shift (CLS) web vital
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Aliases: browser.web_vital.cls.value
     DEPRECATED: Use browser.web_vital.cls.value instead - The CLS web vital is now recorded as a browser.web_vital.cls.value attribute.
@@ -2465,7 +2465,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The value of the recorded Interaction to Next Paint (INP) web vital
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Aliases: browser.web_vital.inp.value
     DEPRECATED: Use browser.web_vital.inp.value instead - The INP web vital is now recorded as a browser.web_vital.inp.value attribute.
@@ -2577,7 +2577,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The value of the recorded Largest Contentful Paint (LCP) web vital
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Aliases: browser.web_vital.lcp.value
     DEPRECATED: Use browser.web_vital.lcp.value instead - The LCP web vital is now recorded as a browser.web_vital.lcp.value attribute.
@@ -5550,7 +5550,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.web_vital.cls.value": AttributeMetadata(
         brief="The value of the recorded Cumulative Layout Shift (CLS) web vital",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=0.2361,
         aliases=["cls"],
@@ -5559,7 +5559,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.web_vital.inp.value": AttributeMetadata(
         brief="The value of the recorded Interaction to Next Paint (INP) web vital",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=200,
         aliases=["inp"],
@@ -5568,7 +5568,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.web_vital.lcp.value": AttributeMetadata(
         brief="The value of the recorded Largest Contentful Paint (LCP) web vital",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=2500,
         aliases=["lcp"],
@@ -5705,7 +5705,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cls": AttributeMetadata(
         brief="The value of the recorded Cumulative Layout Shift (CLS) web vital",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=0.2361,
         deprecation=DeprecationInfo(
@@ -7402,7 +7402,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "inp": AttributeMetadata(
         brief="The value of the recorded Interaction to Next Paint (INP) web vital",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=200,
         deprecation=DeprecationInfo(
@@ -7525,7 +7525,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "lcp": AttributeMetadata(
         brief="The value of the recorded Largest Contentful Paint (LCP) web vital",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=2500,
         deprecation=DeprecationInfo(
