@@ -1,0 +1,12 @@
+{
+  "key": "browser.web_vital.fp.value",
+  "brief": "The time in milliseconds it takes for the browser to render the first pixel on the screen",
+  "type": "double",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": 477.1926,
+  "alias": ["fp"],
+  "sdks": ["javascript-browser"]
+}
