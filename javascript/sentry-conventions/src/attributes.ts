@@ -878,6 +878,72 @@ export const BROWSER_VERSION = 'browser.version';
  */
 export type BROWSER_VERSION_TYPE = string;
 
+// Path: model/attributes/browser/browser__web_vital__cls__value.json
+
+/**
+ * The value of the recorded Cumulative Layout Shift (CLS) web vital `browser.web_vital.cls.value`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_CLS_VALUE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link CLS} `cls`
+ *
+ * @example 0.2361
+ */
+export const BROWSER_WEB_VITAL_CLS_VALUE = 'browser.web_vital.cls.value';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_CLS_VALUE} browser.web_vital.cls.value
+ */
+export type BROWSER_WEB_VITAL_CLS_VALUE_TYPE = number;
+
+// Path: model/attributes/browser/browser__web_vital__inp__value.json
+
+/**
+ * The value of the recorded Interaction to Next Paint (INP) web vital `browser.web_vital.inp.value`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_INP_VALUE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link INP} `inp`
+ *
+ * @example 200
+ */
+export const BROWSER_WEB_VITAL_INP_VALUE = 'browser.web_vital.inp.value';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_INP_VALUE} browser.web_vital.inp.value
+ */
+export type BROWSER_WEB_VITAL_INP_VALUE_TYPE = number;
+
+// Path: model/attributes/browser/browser__web_vital__lcp__value.json
+
+/**
+ * The value of the recorded Largest Contentful Paint (LCP) web vital `browser.web_vital.lcp.value`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_LCP_VALUE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link LCP} `lcp`
+ *
+ * @example 2500
+ */
+export const BROWSER_WEB_VITAL_LCP_VALUE = 'browser.web_vital.lcp.value';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_LCP_VALUE} browser.web_vital.lcp.value
+ */
+export type BROWSER_WEB_VITAL_LCP_VALUE_TYPE = number;
+
 // Path: model/attributes/cache/cache__hit.json
 
 /**
@@ -1099,6 +1165,29 @@ export const CLOUDFLARE_D1_ROWS_WRITTEN = 'cloudflare.d1.rows_written';
  * Type for {@link CLOUDFLARE_D1_ROWS_WRITTEN} cloudflare.d1.rows_written
  */
 export type CLOUDFLARE_D1_ROWS_WRITTEN_TYPE = number;
+
+// Path: model/attributes/cls.json
+
+/**
+ * The value of the recorded Cumulative Layout Shift (CLS) web vital `cls`
+ *
+ * Attribute Value Type: `number` {@link CLS_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link BROWSER_WEB_VITAL_CLS_VALUE} `browser.web_vital.cls.value`
+ *
+ * @deprecated Use {@link BROWSER_WEB_VITAL_CLS_VALUE} (browser.web_vital.cls.value) instead - The CLS web vital is now recorded as a browser.web_vital.cls.value attribute.
+ * @example 0.2361
+ */
+export const CLS = 'cls';
+
+/**
+ * Type for {@link CLS} cls
+ */
+export type CLS_TYPE = number;
 
 // Path: model/attributes/code/code__filepath.json
 
@@ -3921,6 +4010,29 @@ export const ID = 'id';
  */
 export type ID_TYPE = string;
 
+// Path: model/attributes/inp.json
+
+/**
+ * The value of the recorded Interaction to Next Paint (INP) web vital `inp`
+ *
+ * Attribute Value Type: `number` {@link INP_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link BROWSER_WEB_VITAL_INP_VALUE} `browser.web_vital.inp.value`
+ *
+ * @deprecated Use {@link BROWSER_WEB_VITAL_INP_VALUE} (browser.web_vital.inp.value) instead - The INP web vital is now recorded as a browser.web_vital.inp.value attribute.
+ * @example 200
+ */
+export const INP = 'inp';
+
+/**
+ * Type for {@link INP} inp
+ */
+export type INP_TYPE = number;
+
 // Path: model/attributes/jvm/jvm__gc__action.json
 
 /**
@@ -4040,6 +4152,29 @@ export const JVM_THREAD_STATE = 'jvm.thread.state';
  * Type for {@link JVM_THREAD_STATE} jvm.thread.state
  */
 export type JVM_THREAD_STATE_TYPE = string;
+
+// Path: model/attributes/lcp.json
+
+/**
+ * The value of the recorded Largest Contentful Paint (LCP) web vital `lcp`
+ *
+ * Attribute Value Type: `number` {@link LCP_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link BROWSER_WEB_VITAL_LCP_VALUE} `browser.web_vital.lcp.value`
+ *
+ * @deprecated Use {@link BROWSER_WEB_VITAL_LCP_VALUE} (browser.web_vital.lcp.value) instead - The LCP web vital is now recorded as a browser.web_vital.lcp.value attribute.
+ * @example 2500
+ */
+export const LCP = 'lcp';
+
+/**
+ * Type for {@link LCP} lcp
+ */
+export type LCP_TYPE = number;
 
 // Path: model/attributes/lcp/lcp__element.json
 
@@ -8849,6 +8984,9 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [BROWSER_SCRIPT_INVOKER_TYPE]: 'string',
   [BROWSER_SCRIPT_SOURCE_CHAR_POSITION]: 'integer',
   [BROWSER_VERSION]: 'string',
+  [BROWSER_WEB_VITAL_CLS_VALUE]: 'double',
+  [BROWSER_WEB_VITAL_INP_VALUE]: 'double',
+  [BROWSER_WEB_VITAL_LCP_VALUE]: 'double',
   [CACHE_HIT]: 'boolean',
   [CACHE_ITEM_SIZE]: 'integer',
   [CACHE_KEY]: 'string[]',
@@ -8860,6 +8998,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [CLOUDFLARE_D1_DURATION]: 'integer',
   [CLOUDFLARE_D1_ROWS_READ]: 'integer',
   [CLOUDFLARE_D1_ROWS_WRITTEN]: 'integer',
+  [CLS]: 'double',
   [CODE_FILEPATH]: 'string',
   [CODE_FILE_PATH]: 'string',
   [CODE_FUNCTION]: 'string',
@@ -8994,12 +9133,14 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [HTTP_URL]: 'string',
   [HTTP_USER_AGENT]: 'string',
   [ID]: 'string',
+  [INP]: 'double',
   [JVM_GC_ACTION]: 'string',
   [JVM_GC_NAME]: 'string',
   [JVM_MEMORY_POOL_NAME]: 'string',
   [JVM_MEMORY_TYPE]: 'string',
   [JVM_THREAD_DAEMON]: 'boolean',
   [JVM_THREAD_STATE]: 'string',
+  [LCP]: 'double',
   [LCP_ELEMENT]: 'string',
   [LCP_ID]: 'string',
   [LCP_SIZE]: 'integer',
@@ -9274,6 +9415,9 @@ export type AttributeName =
   | typeof BROWSER_SCRIPT_INVOKER_TYPE
   | typeof BROWSER_SCRIPT_SOURCE_CHAR_POSITION
   | typeof BROWSER_VERSION
+  | typeof BROWSER_WEB_VITAL_CLS_VALUE
+  | typeof BROWSER_WEB_VITAL_INP_VALUE
+  | typeof BROWSER_WEB_VITAL_LCP_VALUE
   | typeof CACHE_HIT
   | typeof CACHE_ITEM_SIZE
   | typeof CACHE_KEY
@@ -9285,6 +9429,7 @@ export type AttributeName =
   | typeof CLOUDFLARE_D1_DURATION
   | typeof CLOUDFLARE_D1_ROWS_READ
   | typeof CLOUDFLARE_D1_ROWS_WRITTEN
+  | typeof CLS
   | typeof CODE_FILEPATH
   | typeof CODE_FILE_PATH
   | typeof CODE_FUNCTION
@@ -9419,12 +9564,14 @@ export type AttributeName =
   | typeof HTTP_URL
   | typeof HTTP_USER_AGENT
   | typeof ID
+  | typeof INP
   | typeof JVM_GC_ACTION
   | typeof JVM_GC_NAME
   | typeof JVM_MEMORY_POOL_NAME
   | typeof JVM_MEMORY_TYPE
   | typeof JVM_THREAD_DAEMON
   | typeof JVM_THREAD_STATE
+  | typeof LCP
   | typeof LCP_ELEMENT
   | typeof LCP_ID
   | typeof LCP_SIZE
@@ -10122,6 +10269,39 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '120.0.6099.130',
     aliases: [SENTRY_BROWSER_VERSION],
   },
+  [BROWSER_WEB_VITAL_CLS_VALUE]: {
+    brief: 'The value of the recorded Cumulative Layout Shift (CLS) web vital',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 0.2361,
+    aliases: [CLS],
+    sdks: ['javascript-browser'],
+  },
+  [BROWSER_WEB_VITAL_INP_VALUE]: {
+    brief: 'The value of the recorded Interaction to Next Paint (INP) web vital',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 200,
+    aliases: [INP],
+    sdks: ['javascript-browser'],
+  },
+  [BROWSER_WEB_VITAL_LCP_VALUE]: {
+    brief: 'The value of the recorded Largest Contentful Paint (LCP) web vital',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 2500,
+    aliases: [LCP],
+    sdks: ['javascript-browser'],
+  },
   [CACHE_HIT]: {
     brief: 'If the cache was hit during this span.',
     type: 'boolean',
@@ -10230,6 +10410,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 12,
     sdks: ['javascript-cloudflare'],
+  },
+  [CLS]: {
+    brief: 'The value of the recorded Cumulative Layout Shift (CLS) web vital',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 0.2361,
+    deprecation: {
+      replacement: 'browser.web_vital.cls.value',
+      reason: 'The CLS web vital is now recorded as a browser.web_vital.cls.value attribute.',
+    },
+    aliases: [BROWSER_WEB_VITAL_CLS_VALUE],
+    sdks: ['javascript-browser'],
   },
   [CODE_FILEPATH]: {
     brief:
@@ -11662,6 +11857,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'f47ac10b58cc4372a5670e02b2c3d479',
     sdks: ['php-laravel'],
   },
+  [INP]: {
+    brief: 'The value of the recorded Interaction to Next Paint (INP) web vital',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 200,
+    deprecation: {
+      replacement: 'browser.web_vital.inp.value',
+      reason: 'The INP web vital is now recorded as a browser.web_vital.inp.value attribute.',
+    },
+    aliases: [BROWSER_WEB_VITAL_INP_VALUE],
+    sdks: ['javascript-browser'],
+  },
   [JVM_GC_ACTION]: {
     brief: 'Name of the garbage collector action.',
     type: 'string',
@@ -11715,6 +11925,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'blocked',
+  },
+  [LCP]: {
+    brief: 'The value of the recorded Largest Contentful Paint (LCP) web vital',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 2500,
+    deprecation: {
+      replacement: 'browser.web_vital.lcp.value',
+      reason: 'The LCP web vital is now recorded as a browser.web_vital.lcp.value attribute.',
+    },
+    aliases: [BROWSER_WEB_VITAL_LCP_VALUE],
+    sdks: ['javascript-browser'],
   },
   [LCP_ELEMENT]: {
     brief: 'The dom element responsible for the largest contentful paint.',
@@ -14026,6 +14251,9 @@ export type Attributes = {
   [BROWSER_SCRIPT_INVOKER_TYPE]?: BROWSER_SCRIPT_INVOKER_TYPE_TYPE;
   [BROWSER_SCRIPT_SOURCE_CHAR_POSITION]?: BROWSER_SCRIPT_SOURCE_CHAR_POSITION_TYPE;
   [BROWSER_VERSION]?: BROWSER_VERSION_TYPE;
+  [BROWSER_WEB_VITAL_CLS_VALUE]?: BROWSER_WEB_VITAL_CLS_VALUE_TYPE;
+  [BROWSER_WEB_VITAL_INP_VALUE]?: BROWSER_WEB_VITAL_INP_VALUE_TYPE;
+  [BROWSER_WEB_VITAL_LCP_VALUE]?: BROWSER_WEB_VITAL_LCP_VALUE_TYPE;
   [CACHE_HIT]?: CACHE_HIT_TYPE;
   [CACHE_ITEM_SIZE]?: CACHE_ITEM_SIZE_TYPE;
   [CACHE_KEY]?: CACHE_KEY_TYPE;
@@ -14037,6 +14265,7 @@ export type Attributes = {
   [CLOUDFLARE_D1_DURATION]?: CLOUDFLARE_D1_DURATION_TYPE;
   [CLOUDFLARE_D1_ROWS_READ]?: CLOUDFLARE_D1_ROWS_READ_TYPE;
   [CLOUDFLARE_D1_ROWS_WRITTEN]?: CLOUDFLARE_D1_ROWS_WRITTEN_TYPE;
+  [CLS]?: CLS_TYPE;
   [CODE_FILEPATH]?: CODE_FILEPATH_TYPE;
   [CODE_FILE_PATH]?: CODE_FILE_PATH_TYPE;
   [CODE_FUNCTION]?: CODE_FUNCTION_TYPE;
@@ -14171,12 +14400,14 @@ export type Attributes = {
   [HTTP_URL]?: HTTP_URL_TYPE;
   [HTTP_USER_AGENT]?: HTTP_USER_AGENT_TYPE;
   [ID]?: ID_TYPE;
+  [INP]?: INP_TYPE;
   [JVM_GC_ACTION]?: JVM_GC_ACTION_TYPE;
   [JVM_GC_NAME]?: JVM_GC_NAME_TYPE;
   [JVM_MEMORY_POOL_NAME]?: JVM_MEMORY_POOL_NAME_TYPE;
   [JVM_MEMORY_TYPE]?: JVM_MEMORY_TYPE_TYPE;
   [JVM_THREAD_DAEMON]?: JVM_THREAD_DAEMON_TYPE;
   [JVM_THREAD_STATE]?: JVM_THREAD_STATE_TYPE;
+  [LCP]?: LCP_TYPE;
   [LCP_ELEMENT]?: LCP_ELEMENT_TYPE;
   [LCP_ID]?: LCP_ID_TYPE;
   [LCP_SIZE]?: LCP_SIZE_TYPE;

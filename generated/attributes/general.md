@@ -10,8 +10,11 @@
   - [previous_route](#previous_route)
   - [type](#type)
 - [Deprecated Attributes](#deprecated-attributes)
+  - [cls](#cls)
   - [environment](#environment)
   - [fs_error](#fs_error)
+  - [inp](#inp)
+  - [lcp](#lcp)
   - [method](#method)
   - [profile_id](#profile_id)
   - [release](#release)
@@ -92,6 +95,20 @@ More granular type of the operation happening.
 
 These attributes are deprecated and will be removed in a future version. Please use the recommended replacements.
 
+### cls
+
+The value of the recorded Cumulative Layout Shift (CLS) web vital
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `0.2361` |
+| Deprecated | Yes, use `browser.web_vital.cls.value` instead |
+| Deprecation Reason | The CLS web vital is now recorded as a browser.web_vital.cls.value attribute. |
+| Aliases | `browser.web_vital.cls.value` |
+
 ### environment
 
 The sentry environment.
@@ -117,6 +134,34 @@ The error message of a file system error.
 | Example | `ENOENT: no such file or directory` |
 | Deprecated | Yes, use `error.type` instead |
 | Deprecation Reason | This attribute is not part of the OpenTelemetry specification and error.type fits much better. |
+
+### inp
+
+The value of the recorded Interaction to Next Paint (INP) web vital
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `200` |
+| Deprecated | Yes, use `browser.web_vital.inp.value` instead |
+| Deprecation Reason | The INP web vital is now recorded as a browser.web_vital.inp.value attribute. |
+| Aliases | `browser.web_vital.inp.value` |
+
+### lcp
+
+The value of the recorded Largest Contentful Paint (LCP) web vital
+
+| Property | Value |
+| --- | --- |
+| Type | `double` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Example | `2500` |
+| Deprecated | Yes, use `browser.web_vital.lcp.value` instead |
+| Deprecation Reason | The LCP web vital is now recorded as a browser.web_vital.lcp.value attribute. |
+| Aliases | `browser.web_vital.lcp.value` |
 
 ### method
 
