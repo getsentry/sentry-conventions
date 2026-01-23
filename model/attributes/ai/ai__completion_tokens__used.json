@@ -3,7 +3,7 @@
   "brief": "The number of tokens used to respond to the message.",
   "type": "integer",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": 10,

@@ -27,7 +27,7 @@ export type AI_CITATIONS_TYPE = Array<string>;
  *
  * Attribute Value Type: `number` {@link AI_COMPLETION_TOKENS_USED_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -93,7 +93,7 @@ export type AI_FINISH_REASON_TYPE = string;
  *
  * Attribute Value Type: `number` {@link AI_FREQUENCY_PENALTY_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -314,7 +314,7 @@ export type AI_PREAMBLE_TYPE = string;
  *
  * Attribute Value Type: `number` {@link AI_PRESENCE_PENALTY_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -337,7 +337,7 @@ export type AI_PRESENCE_PENALTY_TYPE = number;
  *
  * Attribute Value Type: `number` {@link AI_PROMPT_TOKENS_USED_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -527,7 +527,7 @@ export type AI_TAGS_TYPE = string;
  *
  * Attribute Value Type: `number` {@link AI_TEMPERATURE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -612,7 +612,7 @@ export type AI_TOOL_CALLS_TYPE = Array<string>;
  *
  * Attribute Value Type: `number` {@link AI_TOP_K_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -635,7 +635,7 @@ export type AI_TOP_K_TYPE = number;
  *
  * Attribute Value Type: `number` {@link AI_TOP_P_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -658,7 +658,7 @@ export type AI_TOP_P_TYPE = number;
  *
  * Attribute Value Type: `number` {@link AI_TOTAL_COST_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -678,7 +678,7 @@ export type AI_TOTAL_COST_TYPE = number;
  *
  * Attribute Value Type: `number` {@link AI_TOTAL_TOKENS_USED_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -843,7 +843,7 @@ export type BROWSER_SCRIPT_INVOKER_TYPE_TYPE = string;
  *
  * Attribute Value Type: `number` {@link BROWSER_SCRIPT_SOURCE_CHAR_POSITION_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -905,7 +905,7 @@ export type CACHE_HIT_TYPE = boolean;
  *
  * Attribute Value Type: `number` {@link CACHE_ITEM_SIZE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -965,7 +965,7 @@ export type CACHE_OPERATION_TYPE = string;
  *
  * Attribute Value Type: `number` {@link CACHE_TTL_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -1027,7 +1027,7 @@ export type CLIENT_ADDRESS_TYPE = string;
  *
  * Attribute Value Type: `number` {@link CLIENT_PORT_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -1047,7 +1047,7 @@ export type CLIENT_PORT_TYPE = number;
  *
  * Attribute Value Type: `number` {@link CLOUDFLARE_D1_DURATION_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -1067,7 +1067,7 @@ export type CLOUDFLARE_D1_DURATION_TYPE = number;
  *
  * Attribute Value Type: `number` {@link CLOUDFLARE_D1_ROWS_READ_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -1087,7 +1087,7 @@ export type CLOUDFLARE_D1_ROWS_READ_TYPE = number;
  *
  * Attribute Value Type: `number` {@link CLOUDFLARE_D1_ROWS_WRITTEN_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -1197,7 +1197,7 @@ export type CODE_FUNCTION_NAME_TYPE = string;
  *
  * Attribute Value Type: `number` {@link CODE_LINENO_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -1220,7 +1220,7 @@ export type CODE_LINENO_TYPE = number;
  *
  * Attribute Value Type: `number` {@link CODE_LINE_NUMBER_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -1911,7 +1911,7 @@ export type FLAG_EVALUATION_KEY_TYPE = boolean;
  *
  * Attribute Value Type: `number` {@link FRAMES_DELAY_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -1931,7 +1931,7 @@ export type FRAMES_DELAY_TYPE = number;
  *
  * Attribute Value Type: `number` {@link FRAMES_FROZEN_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -1951,7 +1951,7 @@ export type FRAMES_FROZEN_TYPE = number;
  *
  * Attribute Value Type: `number` {@link FRAMES_SLOW_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -1971,7 +1971,7 @@ export type FRAMES_SLOW_TYPE = number;
  *
  * Attribute Value Type: `number` {@link FRAMES_TOTAL_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -2072,7 +2072,7 @@ export type GEN_AI_CHOICE_TYPE = string;
  *
  * Attribute Value Type: `number` {@link GEN_AI_COST_INPUT_TOKENS_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -2092,7 +2092,7 @@ export type GEN_AI_COST_INPUT_TOKENS_TYPE = number;
  *
  * Attribute Value Type: `number` {@link GEN_AI_COST_OUTPUT_TOKENS_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -2112,7 +2112,7 @@ export type GEN_AI_COST_OUTPUT_TOKENS_TYPE = number;
  *
  * Attribute Value Type: `number` {@link GEN_AI_COST_TOTAL_TOKENS_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -2296,7 +2296,7 @@ export type GEN_AI_REQUEST_AVAILABLE_TOOLS_TYPE = string;
  *
  * Attribute Value Type: `number` {@link GEN_AI_REQUEST_FREQUENCY_PENALTY_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -2318,7 +2318,7 @@ export type GEN_AI_REQUEST_FREQUENCY_PENALTY_TYPE = number;
  *
  * Attribute Value Type: `number` {@link GEN_AI_REQUEST_MAX_TOKENS_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -2381,7 +2381,7 @@ export type GEN_AI_REQUEST_MODEL_TYPE = string;
  *
  * Attribute Value Type: `number` {@link GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -2425,7 +2425,7 @@ export type GEN_AI_REQUEST_SEED_TYPE = string;
  *
  * Attribute Value Type: `number` {@link GEN_AI_REQUEST_TEMPERATURE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -2447,7 +2447,7 @@ export type GEN_AI_REQUEST_TEMPERATURE_TYPE = number;
  *
  * Attribute Value Type: `number` {@link GEN_AI_REQUEST_TOP_K_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -2469,7 +2469,7 @@ export type GEN_AI_REQUEST_TOP_K_TYPE = number;
  *
  * Attribute Value Type: `number` {@link GEN_AI_REQUEST_TOP_P_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -2600,7 +2600,7 @@ export type GEN_AI_RESPONSE_TEXT_TYPE = string;
  *
  * Attribute Value Type: `number` {@link GEN_AI_RESPONSE_TOKENS_PER_SECOND_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -2886,7 +2886,7 @@ export type GEN_AI_TOOL_TYPE_TYPE = string;
  *
  * Attribute Value Type: `number` {@link GEN_AI_USAGE_COMPLETION_TOKENS_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -2909,7 +2909,7 @@ export type GEN_AI_USAGE_COMPLETION_TOKENS_TYPE = number;
  *
  * Attribute Value Type: `number` {@link GEN_AI_USAGE_INPUT_TOKENS_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -2931,7 +2931,7 @@ export type GEN_AI_USAGE_INPUT_TOKENS_TYPE = number;
  *
  * Attribute Value Type: `number` {@link GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -2951,7 +2951,7 @@ export type GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE = number;
  *
  * Attribute Value Type: `number` {@link GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -2971,7 +2971,7 @@ export type GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE_TYPE = number;
  *
  * Attribute Value Type: `number` {@link GEN_AI_USAGE_OUTPUT_TOKENS_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -2993,7 +2993,7 @@ export type GEN_AI_USAGE_OUTPUT_TOKENS_TYPE = number;
  *
  * Attribute Value Type: `number` {@link GEN_AI_USAGE_OUTPUT_TOKENS_REASONING_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -3013,7 +3013,7 @@ export type GEN_AI_USAGE_OUTPUT_TOKENS_REASONING_TYPE = number;
  *
  * Attribute Value Type: `number` {@link GEN_AI_USAGE_PROMPT_TOKENS_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -3036,7 +3036,7 @@ export type GEN_AI_USAGE_PROMPT_TOKENS_TYPE = number;
  *
  * Attribute Value Type: `number` {@link GEN_AI_USAGE_TOTAL_TOKENS_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -3141,7 +3141,7 @@ export type HTTP_CLIENT_IP_TYPE = string;
  *
  * Attribute Value Type: `number` {@link HTTP_DECODED_RESPONSE_CONTENT_LENGTH_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -3270,7 +3270,7 @@ export type HTTP_QUERY_TYPE = string;
  *
  * Attribute Value Type: `number` {@link HTTP_REQUEST_CONNECTION_END_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -3290,7 +3290,7 @@ export type HTTP_REQUEST_CONNECTION_END_TYPE = number;
  *
  * Attribute Value Type: `number` {@link HTTP_REQUEST_CONNECT_START_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -3310,7 +3310,7 @@ export type HTTP_REQUEST_CONNECT_START_TYPE = number;
  *
  * Attribute Value Type: `number` {@link HTTP_REQUEST_DOMAIN_LOOKUP_END_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -3330,7 +3330,7 @@ export type HTTP_REQUEST_DOMAIN_LOOKUP_END_TYPE = number;
  *
  * Attribute Value Type: `number` {@link HTTP_REQUEST_DOMAIN_LOOKUP_START_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -3350,7 +3350,7 @@ export type HTTP_REQUEST_DOMAIN_LOOKUP_START_TYPE = number;
  *
  * Attribute Value Type: `number` {@link HTTP_REQUEST_FETCH_START_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -3414,7 +3414,7 @@ export type HTTP_REQUEST_METHOD_TYPE = string;
  *
  * Attribute Value Type: `number` {@link HTTP_REQUEST_REDIRECT_END_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -3434,7 +3434,7 @@ export type HTTP_REQUEST_REDIRECT_END_TYPE = number;
  *
  * Attribute Value Type: `number` {@link HTTP_REQUEST_REDIRECT_START_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -3454,7 +3454,7 @@ export type HTTP_REQUEST_REDIRECT_START_TYPE = number;
  *
  * Attribute Value Type: `number` {@link HTTP_REQUEST_REQUEST_START_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -3474,7 +3474,7 @@ export type HTTP_REQUEST_REQUEST_START_TYPE = number;
  *
  * Attribute Value Type: `number` {@link HTTP_REQUEST_RESEND_COUNT_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -3494,7 +3494,7 @@ export type HTTP_REQUEST_RESEND_COUNT_TYPE = number;
  *
  * Attribute Value Type: `number` {@link HTTP_REQUEST_RESPONSE_END_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -3514,7 +3514,7 @@ export type HTTP_REQUEST_RESPONSE_END_TYPE = number;
  *
  * Attribute Value Type: `number` {@link HTTP_REQUEST_RESPONSE_START_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -3534,7 +3534,7 @@ export type HTTP_REQUEST_RESPONSE_START_TYPE = number;
  *
  * Attribute Value Type: `number` {@link HTTP_REQUEST_SECURE_CONNECTION_START_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -3554,7 +3554,7 @@ export type HTTP_REQUEST_SECURE_CONNECTION_START_TYPE = number;
  *
  * Attribute Value Type: `number` {@link HTTP_REQUEST_TIME_TO_FIRST_BYTE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -3574,7 +3574,7 @@ export type HTTP_REQUEST_TIME_TO_FIRST_BYTE_TYPE = number;
  *
  * Attribute Value Type: `number` {@link HTTP_REQUEST_WORKER_START_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -3594,7 +3594,7 @@ export type HTTP_REQUEST_WORKER_START_TYPE = number;
  *
  * Attribute Value Type: `number` {@link HTTP_RESPONSE_BODY_SIZE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -3616,7 +3616,7 @@ export type HTTP_RESPONSE_BODY_SIZE_TYPE = number;
  *
  * Attribute Value Type: `number` {@link HTTP_RESPONSE_CONTENT_LENGTH_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -3683,7 +3683,7 @@ export type HTTP_RESPONSE_HEADER_KEY_TYPE = Array<string>;
  *
  * Attribute Value Type: `number` {@link HTTP_RESPONSE_SIZE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -3705,7 +3705,7 @@ export type HTTP_RESPONSE_SIZE_TYPE = number;
  *
  * Attribute Value Type: `number` {@link HTTP_RESPONSE_STATUS_CODE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -3727,7 +3727,7 @@ export type HTTP_RESPONSE_STATUS_CODE_TYPE = number;
  *
  * Attribute Value Type: `number` {@link HTTP_RESPONSE_TRANSFER_SIZE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -3818,7 +3818,7 @@ export type HTTP_SERVER_NAME_TYPE = string;
  *
  * Attribute Value Type: `number` {@link HTTP_STATUS_CODE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -4088,7 +4088,7 @@ export type LCP_ID_TYPE = string;
  *
  * Attribute Value Type: `number` {@link LCP_SIZE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -4368,7 +4368,7 @@ export type MCP_METHOD_NAME_TYPE = string;
  *
  * Attribute Value Type: `number` {@link MCP_PROGRESS_CURRENT_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -4408,7 +4408,7 @@ export type MCP_PROGRESS_MESSAGE_TYPE = string;
  *
  * Attribute Value Type: `number` {@link MCP_PROGRESS_PERCENTAGE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -4448,7 +4448,7 @@ export type MCP_PROGRESS_TOKEN_TYPE = string;
  *
  * Attribute Value Type: `number` {@link MCP_PROGRESS_TOTAL_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -4528,7 +4528,7 @@ export type MCP_PROMPT_RESULT_MESSAGE_CONTENT_TYPE = string;
  *
  * Attribute Value Type: `number` {@link MCP_PROMPT_RESULT_MESSAGE_COUNT_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -4568,7 +4568,7 @@ export type MCP_PROMPT_RESULT_MESSAGE_ROLE_TYPE = string;
  *
  * Attribute Value Type: `number` {@link MCP_PROTOCOL_READY_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -4850,7 +4850,7 @@ export type MCP_TOOL_RESULT_CONTENT_TYPE = string;
  *
  * Attribute Value Type: `number` {@link MCP_TOOL_RESULT_CONTENT_COUNT_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -4972,7 +4972,7 @@ export type MESSAGING_DESTINATION_NAME_TYPE = string;
  *
  * Attribute Value Type: `number` {@link MESSAGING_MESSAGE_BODY_SIZE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -4992,7 +4992,7 @@ export type MESSAGING_MESSAGE_BODY_SIZE_TYPE = number;
  *
  * Attribute Value Type: `number` {@link MESSAGING_MESSAGE_ENVELOPE_SIZE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -5032,7 +5032,7 @@ export type MESSAGING_MESSAGE_ID_TYPE = string;
  *
  * Attribute Value Type: `number` {@link MESSAGING_MESSAGE_RECEIVE_LATENCY_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -5052,7 +5052,7 @@ export type MESSAGING_MESSAGE_RECEIVE_LATENCY_TYPE = number;
  *
  * Attribute Value Type: `number` {@link MESSAGING_MESSAGE_RETRY_COUNT_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -5155,7 +5155,7 @@ export type NAVIGATION_TYPE_TYPE = string;
  *
  * Attribute Value Type: `number` {@link NEL_ELAPSED_TIME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -5215,7 +5215,7 @@ export type NEL_REFERRER_TYPE = string;
  *
  * Attribute Value Type: `number` {@link NEL_SAMPLING_FUNCTION_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -5277,7 +5277,7 @@ export type NETWORK_LOCAL_ADDRESS_TYPE = string;
  *
  * Attribute Value Type: `number` {@link NETWORK_LOCAL_PORT_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -5321,7 +5321,7 @@ export type NETWORK_PEER_ADDRESS_TYPE = string;
  *
  * Attribute Value Type: `number` {@link NETWORK_PEER_PORT_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -5473,7 +5473,7 @@ export type NET_HOST_NAME_TYPE = string;
  *
  * Attribute Value Type: `number` {@link NET_HOST_PORT_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -5540,7 +5540,7 @@ export type NET_PEER_NAME_TYPE = string;
  *
  * Attribute Value Type: `number` {@link NET_PEER_PORT_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -5651,7 +5651,7 @@ export type NET_SOCK_HOST_ADDR_TYPE = string;
  *
  * Attribute Value Type: `number` {@link NET_SOCK_HOST_PORT_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -5718,7 +5718,7 @@ export type NET_SOCK_PEER_NAME_TYPE = string;
  *
  * Attribute Value Type: `number` {@link NET_SOCK_PEER_PORT_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -6006,7 +6006,7 @@ export type PROCESS_EXECUTABLE_NAME_TYPE = string;
  *
  * Attribute Value Type: `number` {@link PROCESS_PID_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -6264,7 +6264,7 @@ export type ROUTE_TYPE = string;
  *
  * Attribute Value Type: `number` {@link RPC_GRPC_STATUS_CODE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -6652,7 +6652,7 @@ export type SENTRY_ENVIRONMENT_TYPE = string;
  *
  * Attribute Value Type: `number` {@link SENTRY_EXCLUSIVE_TIME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -7281,7 +7281,7 @@ export type SENTRY_SPAN_SOURCE_TYPE = string;
  *
  * Attribute Value Type: `number` {@link SENTRY_STATUS_CODE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -7385,7 +7385,7 @@ export type SERVER_ADDRESS_TYPE = string;
  *
  * Attribute Value Type: `number` {@link SERVER_PORT_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -7741,7 +7741,7 @@ export type URL_PATH_PARAMETER_KEY_TYPE = string;
  *
  * Attribute Value Type: `number` {@link URL_PORT_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -8527,7 +8527,7 @@ export type VERCEL_PROXY_REGION_TYPE = string;
  *
  * Attribute Value Type: `number` {@link VERCEL_PROXY_RESPONSE_BYTE_SIZE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -8567,7 +8567,7 @@ export type VERCEL_PROXY_SCHEME_TYPE = string;
  *
  * Attribute Value Type: `number` {@link VERCEL_PROXY_STATUS_CODE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -8587,7 +8587,7 @@ export type VERCEL_PROXY_STATUS_CODE_TYPE = number;
  *
  * Attribute Value Type: `number` {@link VERCEL_PROXY_TIMESTAMP_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -8747,7 +8747,7 @@ export type VERCEL_SOURCE_TYPE = string;
  *
  * Attribute Value Type: `number` {@link VERCEL_STATUS_CODE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -9670,7 +9670,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The number of tokens used to respond to the message.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 10,
@@ -9707,7 +9707,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 0.5,
@@ -9830,7 +9830,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 0.5,
@@ -9843,7 +9843,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The number of tokens used to process just the prompt.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 20,
@@ -9943,7 +9943,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 0.1,
@@ -9990,7 +9990,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 35,
@@ -10004,7 +10004,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 0.7,
@@ -10017,7 +10017,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The total cost for the tokens used.',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 12.34,
@@ -10026,7 +10026,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The total number of tokens used to process the prompt.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 30,
@@ -10106,7 +10106,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'A number representing the script character position of the script.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 678,
@@ -10136,7 +10136,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The size of the requested item in the cache. In bytes.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 58,
@@ -10165,7 +10165,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The ttl of the cache in seconds',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 120,
@@ -10196,7 +10196,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Client port number.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 5432,
@@ -10205,7 +10205,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The duration of a Cloudflare D1 operation.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 543,
@@ -10215,7 +10215,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The number of rows read in a Cloudflare D1 operation.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 12,
@@ -10225,7 +10225,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The number of rows written in a Cloudflare D1 operation.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 12,
@@ -10284,7 +10284,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 42,
@@ -10298,7 +10298,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 42,
@@ -10646,7 +10646,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 5,
@@ -10655,7 +10655,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The number of frozen frames rendered during the lifetime of the span.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 3,
@@ -10664,7 +10664,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The number of slow frames rendered during the lifetime of the span.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 1,
@@ -10673,7 +10673,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The number of total frames rendered during the lifetime of the span.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 60,
@@ -10723,7 +10723,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The cost of tokens used to process the AI input (prompt) in USD (without cached input tokens).',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 123.45,
@@ -10732,7 +10732,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The cost of tokens used for creating the AI output in USD (without reasoning tokens).',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 123.45,
@@ -10741,7 +10741,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The total cost for the tokens used.',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 12.34,
@@ -10837,7 +10837,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 0.5,
@@ -10847,7 +10847,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The maximum number of tokens to generate in the response.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 2048,
@@ -10881,7 +10881,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 0.5,
@@ -10902,7 +10902,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 0.1,
@@ -10913,7 +10913,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 35,
@@ -10924,7 +10924,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 0.7,
@@ -10988,7 +10988,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The total output tokens per seconds throughput',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 12345.67,
@@ -11123,7 +11123,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The number of tokens used in the GenAI response (completion).',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 10,
@@ -11136,7 +11136,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The number of tokens used to process the AI input (prompt) without cached input tokens.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 10,
@@ -11146,7 +11146,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The number of cached tokens used to process the AI input (prompt).',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 50,
@@ -11155,7 +11155,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The number of tokens written to the cache when processing the AI input (prompt).',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 100,
@@ -11164,7 +11164,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The number of tokens used for creating the AI output (without reasoning tokens).',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 10,
@@ -11174,7 +11174,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The number of tokens used for reasoning to create the AI output.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 75,
@@ -11183,7 +11183,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The number of tokens used in the GenAI input (prompt).',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 20,
@@ -11196,7 +11196,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The total number of tokens used to process the prompt. (input tokens plus output todkens)',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 20,
@@ -11247,7 +11247,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The decoded body size of the response (in bytes).',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 456,
@@ -11320,7 +11320,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'The UNIX timestamp representing the time immediately after the browser finishes establishing the connection to the server to retrieve the resource. The timestamp value includes the time interval to establish the transport connection, as well as other time intervals such as TLS handshake and SOCKS authentication.',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 1732829555.15,
@@ -11331,7 +11331,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'The UNIX timestamp representing the time immediately before the user agent starts establishing the connection to the server to retrieve the resource.',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 1732829555.111,
@@ -11342,7 +11342,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'The UNIX timestamp representing the time immediately after the browser finishes the domain-name lookup for the resource.',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 1732829555.201,
@@ -11353,7 +11353,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'The UNIX timestamp representing the time immediately before the browser starts the domain name lookup for the resource.',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 1732829555.322,
@@ -11363,7 +11363,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The UNIX timestamp representing the time immediately before the browser starts to fetch the resource.',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 1732829555.389,
@@ -11395,7 +11395,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'The UNIX timestamp representing the timestamp immediately after receiving the last byte of the response of the last redirect',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 1732829558.502,
@@ -11405,7 +11405,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The UNIX timestamp representing the start time of the fetch which that initiates the redirect.',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 1732829555.495,
@@ -11416,7 +11416,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 1732829555.51,
@@ -11426,7 +11426,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The ordinal number of request resending attempt (for any reason, including redirects).',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 2,
@@ -11436,7 +11436,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'The UNIX timestamp representing the time immediately after the browser receives the last byte of the resource or immediately before the transport connection is closed, whichever comes first.',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 1732829555.89,
@@ -11447,7 +11447,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 1732829555.7,
@@ -11458,7 +11458,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'The UNIX timestamp representing the time immediately before the browser starts the handshake process to secure the current connection. If a secure connection is not used, the property returns zero.',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 1732829555.73,
@@ -11469,7 +11469,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       "The time in seconds from the browser's timeorigin to when the first byte of the request's response was received. See https://web.dev/articles/ttfb#measure-resource-requests",
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 1.032,
@@ -11480,7 +11480,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'The UNIX timestamp representing the timestamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running.',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 1732829553.68,
@@ -11490,7 +11490,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The encoded body size of the response (in bytes).',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 123,
@@ -11500,7 +11500,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The encoded body size of the response (in bytes).',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 123,
@@ -11534,7 +11534,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The transfer size of the response (in bytes).',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 456,
@@ -11544,7 +11544,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The status code of the HTTP response.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 404,
@@ -11554,7 +11554,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The transfer size of the response (in bytes).',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 456,
@@ -11603,7 +11603,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The status code of the HTTP response.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 404,
@@ -11738,7 +11738,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The size of the largest contentful paint element.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 1234,
@@ -11868,7 +11868,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Current progress value of an MCP operation.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 50,
@@ -11887,7 +11887,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Calculated progress percentage of an MCP operation. Computed from current/total * 100.',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 50,
@@ -11905,7 +11905,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Total progress target value of an MCP operation.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 100,
@@ -11942,7 +11942,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Number of messages in the prompt result.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 3,
@@ -11960,7 +11960,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Protocol readiness indicator for MCP session. Non-zero value indicates the protocol is ready.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 1,
@@ -12094,7 +12094,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Number of content items in the tool result.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 1,
@@ -12153,7 +12153,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The size of the message body in bytes.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 839,
@@ -12163,7 +12163,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The size of the message body and metadata in bytes.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 1045,
@@ -12183,7 +12183,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The latency between when the message was published and received.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 1732847252,
@@ -12193,7 +12193,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The amount of attempts to send the message.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 2,
@@ -12246,7 +12246,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'The elapsed number of milliseconds between the start of the resource fetch and when it was completed or aborted by the user agent.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 100,
@@ -12273,7 +12273,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The sampling function used to determine if the request should be sampled.',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 0.5,
@@ -12301,7 +12301,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Local port number of the network connection.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 65400,
@@ -12321,7 +12321,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Peer port number of the network connection.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 65400,
@@ -12396,7 +12396,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Server port number.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 1337,
@@ -12436,7 +12436,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Peer port number.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 1337,
@@ -12501,7 +12501,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Local port number of the network connection.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 8080,
@@ -12539,7 +12539,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Peer port number of the network connection.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 8080,
@@ -12677,7 +12677,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The process ID of the running process.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 12345,
@@ -12816,7 +12816,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The numeric status code of the gRPC request.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 2,
@@ -12999,7 +12999,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The exclusive time duration of the span in milliseconds.',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 1234,
@@ -13297,7 +13297,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'The HTTP status code used in Sentry Insights. Typically set by Sentry during ingestion, rather than by clients.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 200,
@@ -13346,7 +13346,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Server port number.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 1337,
@@ -13518,7 +13518,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Server port number.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 1337,
@@ -13876,7 +13876,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Size of the response in bytes',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 1024,
@@ -13894,7 +13894,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'HTTP status code of the proxy request',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 200,
@@ -13903,7 +13903,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Unix timestamp when the proxy request was made',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 1573817250172,
@@ -13975,7 +13975,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'HTTP status code of the request (-1 means no response returned and the lambda crashed)',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 200,

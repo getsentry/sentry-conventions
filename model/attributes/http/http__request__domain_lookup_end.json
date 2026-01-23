@@ -3,7 +3,7 @@
   "brief": "The UNIX timestamp representing the time immediately after the browser finishes the domain-name lookup for the resource.",
   "type": "double",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": 1732829555.201,

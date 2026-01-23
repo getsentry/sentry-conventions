@@ -16,7 +16,7 @@ The duration of a Cloudflare D1 operation.
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `543` |
 
@@ -27,7 +27,7 @@ The number of rows read in a Cloudflare D1 operation.
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `12` |
 
@@ -38,7 +38,7 @@ The number of rows written in a Cloudflare D1 operation.
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `12` |
 

@@ -29,7 +29,7 @@ The size of the requested item in the cache. In bytes.
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `58` |
 
@@ -62,7 +62,7 @@ The ttl of the cache in seconds
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `120` |
 

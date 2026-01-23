@@ -3,7 +3,7 @@
   "brief": "The ttl of the cache in seconds",
   "type": "integer",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": 120,

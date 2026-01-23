@@ -3,7 +3,7 @@
   "brief": "Size of the response in bytes",
   "type": "integer",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": 1024

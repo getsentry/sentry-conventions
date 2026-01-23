@@ -3,7 +3,7 @@
   "brief": "Protocol readiness indicator for MCP session. Non-zero value indicates the protocol is ready.",
   "type": "integer",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": 1

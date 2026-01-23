@@ -45,7 +45,7 @@ The line number in code.filepath best representing the operation. It SHOULD poin
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `42` |
 | Aliases | `code.lineno` |
@@ -87,7 +87,7 @@ The line number in code.filepath best representing the operation. It SHOULD poin
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | Yes |
 | Example | `42` |
 | Deprecated | Yes, use `code.line.number` instead |

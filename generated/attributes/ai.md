@@ -168,7 +168,7 @@ The total cost for the tokens used.
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `12.34` |
 
@@ -194,7 +194,7 @@ The number of tokens used to respond to the message.
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `10` |
 | Deprecated | Yes, use `gen_ai.usage.output_tokens` instead |
@@ -220,7 +220,7 @@ Used to reduce repetitiveness of generated tokens. The higher the value, the str
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `0.5` |
 | Deprecated | Yes, use `gen_ai.request.frequency_penalty` instead |
@@ -311,7 +311,7 @@ Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty,
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `0.5` |
 | Deprecated | Yes, use `gen_ai.request.presence_penalty` instead |
@@ -324,7 +324,7 @@ The number of tokens used to process just the prompt.
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `20` |
 | Deprecated | Yes, use `gen_ai.usage.input_tokens` instead |
@@ -375,7 +375,7 @@ For an AI model call, the temperature parameter. Temperature essentially means h
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `0.1` |
 | Deprecated | Yes, use `gen_ai.request.temperature` instead |
@@ -412,7 +412,7 @@ Limits the model to only consider the K most likely next tokens, where K is an i
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `35` |
 | Deprecated | Yes, use `gen_ai.request.top_k` instead |
@@ -425,7 +425,7 @@ Limits the model to only consider tokens whose cumulative probability mass adds 
 | Property | Value |
 | --- | --- |
 | Type | `double` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `0.7` |
 | Deprecated | Yes, use `gen_ai.request.top_p` instead |
@@ -438,7 +438,7 @@ The total number of tokens used to process the prompt.
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `30` |
 | Deprecated | Yes, use `gen_ai.usage.total_tokens` instead |

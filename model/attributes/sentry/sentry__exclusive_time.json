@@ -3,7 +3,7 @@
   "brief": "The exclusive time duration of the span in milliseconds.",
   "type": "double",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": 1234

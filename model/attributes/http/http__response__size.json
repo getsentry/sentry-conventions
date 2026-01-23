@@ -3,7 +3,7 @@
   "brief": "The transfer size of the response (in bytes).",
   "type": "integer",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": 456,

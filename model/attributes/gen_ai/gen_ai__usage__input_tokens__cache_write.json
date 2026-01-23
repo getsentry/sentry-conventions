@@ -3,7 +3,7 @@
   "brief": "The number of tokens written to the cache when processing the AI input (prompt).",
   "type": "integer",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": 100
