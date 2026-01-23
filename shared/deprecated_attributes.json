@@ -160,7 +160,7 @@
     },
     {
       "key": "ttfb",
-      "brief": "The value of the recorded Time To First Byte (TTFB) web vital in Milliseconds",
+      "brief": "The value of the recorded Time To First Byte (TTFB) web vital in milliseconds",
       "type": "double",
       "pii": {
         "key": "maybe"
@@ -171,8 +171,8 @@
       "sdks": ["javascript-browser"],
       "deprecation": {
         "_status": "backfill",
-        "replacement": "http.request.time_to_first_byte",
-        "reason": "This attribute is being deprecated in favor of http.request.time_to_first_byte"
+        "replacement": "browser.web_vital.ttfb.value",
+        "reason": "This attribute is being deprecated in favor of browser.web_vital.ttfb.value"
       }
     },
     {

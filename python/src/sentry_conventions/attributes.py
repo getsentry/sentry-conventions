@@ -4273,13 +4273,13 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/ttfb.json
     TTFB: Literal["ttfb"] = "ttfb"
-    """The value of the recorded Time To First Byte (TTFB) web vital in Milliseconds
+    """The value of the recorded Time To First Byte (TTFB) web vital in milliseconds
 
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
     Aliases: browser.web_vital.ttfb.value
-    DEPRECATED: Use http.request.time_to_first_byte instead - This attribute is being deprecated in favor of http.request.time_to_first_byte
+    DEPRECATED: Use browser.web_vital.ttfb.value instead - This attribute is being deprecated in favor of browser.web_vital.ttfb.value
     Example: 194
     """
 
@@ -7848,14 +7848,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["javascript-browser"],
     ),
     "ttfb": AttributeMetadata(
-        brief="The value of the recorded Time To First Byte (TTFB) web vital in Milliseconds",
+        brief="The value of the recorded Time To First Byte (TTFB) web vital in milliseconds",
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=194,
         deprecation=DeprecationInfo(
-            replacement="http.request.time_to_first_byte",
-            reason="This attribute is being deprecated in favor of http.request.time_to_first_byte",
+            replacement="browser.web_vital.ttfb.value",
+            reason="This attribute is being deprecated in favor of browser.web_vital.ttfb.value",
             status=DeprecationStatus.BACKFILL,
         ),
         aliases=["browser.web_vital.ttfb.value"],

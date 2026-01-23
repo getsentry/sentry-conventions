@@ -7662,7 +7662,7 @@ export type TRANSACTION_TYPE = string;
 // Path: model/attributes/ttfb.json
 
 /**
- * The value of the recorded Time To First Byte (TTFB) web vital in Milliseconds `ttfb`
+ * The value of the recorded Time To First Byte (TTFB) web vital in milliseconds `ttfb`
  *
  * Attribute Value Type: `number` {@link TTFB_TYPE}
  *
@@ -7672,7 +7672,7 @@ export type TRANSACTION_TYPE = string;
  *
  * Aliases: {@link BROWSER_WEB_VITAL_TTFB_VALUE} `browser.web_vital.ttfb.value`
  *
- * @deprecated Use {@link HTTP_REQUEST_TIME_TO_FIRST_BYTE} (http.request.time_to_first_byte) instead - This attribute is being deprecated in favor of http.request.time_to_first_byte
+ * @deprecated Use {@link BROWSER_WEB_VITAL_TTFB_VALUE} (browser.web_vital.ttfb.value) instead - This attribute is being deprecated in favor of browser.web_vital.ttfb.value
  * @example 194
  */
 export const TTFB = 'ttfb';
@@ -13684,7 +13684,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [SENTRY_TRANSACTION],
   },
   [TTFB]: {
-    brief: 'The value of the recorded Time To First Byte (TTFB) web vital in Milliseconds',
+    brief: 'The value of the recorded Time To First Byte (TTFB) web vital in milliseconds',
     type: 'double',
     pii: {
       isPii: 'maybe',
@@ -13692,8 +13692,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 194,
     deprecation: {
-      replacement: 'http.request.time_to_first_byte',
-      reason: 'This attribute is being deprecated in favor of http.request.time_to_first_byte',
+      replacement: 'browser.web_vital.ttfb.value',
+      reason: 'This attribute is being deprecated in favor of browser.web_vital.ttfb.value',
     },
     aliases: [BROWSER_WEB_VITAL_TTFB_VALUE],
     sdks: ['javascript-browser'],

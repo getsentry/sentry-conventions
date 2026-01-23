@@ -229,7 +229,7 @@ The sentry transaction (segment name).
 
 ### ttfb
 
-The value of the recorded Time To First Byte (TTFB) web vital in Milliseconds
+The value of the recorded Time To First Byte (TTFB) web vital in milliseconds
 
 | Property | Value |
 | --- | --- |
@@ -237,8 +237,8 @@ The value of the recorded Time To First Byte (TTFB) web vital in Milliseconds
 | Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `194` |
-| Deprecated | Yes, use `http.request.time_to_first_byte` instead |
-| Deprecation Reason | This attribute is being deprecated in favor of http.request.time_to_first_byte |
+| Deprecated | Yes, use `browser.web_vital.ttfb.value` instead |
+| Deprecation Reason | This attribute is being deprecated in favor of browser.web_vital.ttfb.value |
 | Aliases | `browser.web_vital.ttfb.value` |
 
 ### url

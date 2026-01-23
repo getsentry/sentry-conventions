@@ -442,7 +442,7 @@ Total attributes: 430
 | [`sentry.browser.version`](./sentry.md#sentrybrowserversion) | [`browser.version`](./browser.md#browserversion) |
 | [`sentry.segment_id`](./sentry.md#sentrysegment_id) | [`sentry.segment.id`](./sentry.md#sentrysegmentid) |
 | [`transaction`](./general.md#transaction) | [`sentry.transaction`](./sentry.md#sentrytransaction) |
-| [`ttfb`](./general.md#ttfb) | [`http.request.time_to_first_byte`](./http.md#httprequesttime_to_first_byte) |
+| [`ttfb`](./general.md#ttfb) | [`browser.web_vital.ttfb.value`](./browser.md#browserweb_vitalttfbvalue) |
 | [`ttfb.requestTime`](./ttfb.md#ttfbrequesttime) | [`browser.web_vital.ttfb.request_time`](./browser.md#browserweb_vitalttfbrequest_time) |
 | [`url`](./general.md#url) | [`url.full`](./url.md#urlfull) |
 
