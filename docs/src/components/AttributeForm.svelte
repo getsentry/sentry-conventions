@@ -1,172 +1,168 @@
 <script lang="ts">
-  interface FormData {
-    category: string;
-    key: string;
-    brief: string;
-    type: string;
-    piiKey: 'true' | 'maybe' | 'false';
-    piiReason: string;
-    isInOtel: boolean;
-    example: string;
-    hasDynamicSuffix: boolean;
-    aliases: string;
-  }
+interface FormData {
+  category: string;
+  key: string;
+  brief: string;
+  type: string;
+  piiKey: 'true' | 'maybe' | 'false';
+  piiReason: string;
+  isInOtel: boolean;
+  example: string;
+  hasDynamicSuffix: boolean;
+  aliases: string;
+}
 
-  const ATTRIBUTE_TYPES = [
-    'string',
-    'boolean',
-    'integer',
-    'double',
-    'string[]',
-    'boolean[]',
-    'integer[]',
-    'double[]',
-  ];
+const ATTRIBUTE_TYPES = ['string', 'boolean', 'integer', 'double', 'string[]', 'boolean[]', 'integer[]', 'double[]'];
 
-  const CATEGORIES = [
-    'ai',
-    'browser',
-    'cache',
-    'client',
-    'cloudflare',
-    'code',
-    'db',
-    'device',
-    'error',
-    'event',
-    'exception',
-    'faas',
-    'flag',
-    'frames',
-    'gen_ai',
-    'graphql',
-    'http',
-    'jvm',
-    'lcp',
-    'logger',
-    'mcp',
-    'mdc',
-    'messaging',
-    'navigation',
-    'nel',
-    'net',
-    'network',
-    'os',
-    'otel',
-    'params',
-    'process',
-    'query',
-    'remix',
-    'resource',
-    'rpc',
-    'sentry',
-    'server',
-    'service',
-    'thread',
-    'timber',
-    'ui',
-    'url',
-    'user',
-    'user_agent',
-    'vercel',
-  ];
+const CATEGORIES = [
+  'ai',
+  'browser',
+  'cache',
+  'client',
+  'cloudflare',
+  'code',
+  'db',
+  'device',
+  'error',
+  'event',
+  'exception',
+  'faas',
+  'flag',
+  'frames',
+  'gen_ai',
+  'graphql',
+  'http',
+  'jvm',
+  'lcp',
+  'logger',
+  'mcp',
+  'mdc',
+  'messaging',
+  'navigation',
+  'nel',
+  'net',
+  'network',
+  'os',
+  'otel',
+  'params',
+  'process',
+  'query',
+  'remix',
+  'resource',
+  'rpc',
+  'sentry',
+  'server',
+  'service',
+  'thread',
+  'timber',
+  'ui',
+  'url',
+  'user',
+  'user_agent',
+  'vercel',
+];
 
-  let formData: FormData = {
-    category: '',
-    key: '',
-    brief: '',
-    type: 'string',
-    piiKey: 'false',
-    piiReason: '',
-    isInOtel: false,
-    example: '',
-    hasDynamicSuffix: false,
-    aliases: '',
+let formData: FormData = {
+  category: '',
+  key: '',
+  brief: '',
+  type: 'string',
+  piiKey: 'false',
+  piiReason: '',
+  isInOtel: false,
+  example: '',
+  hasDynamicSuffix: false,
+  aliases: '',
+};
+
+let errors: Partial<Record<keyof FormData, string>> = {};
+let jsonPreview = '';
+
+function updateField(field: keyof FormData, value: string | boolean) {
+  formData = { ...formData, [field]: value };
+  errors = { ...errors, [field]: undefined };
+}
+
+function generateJson(): string {
+  const json: Record<string, unknown> = {
+    key: formData.key,
+    brief: formData.brief,
+    type: formData.type,
+    pii: {
+      key: formData.piiKey,
+      ...(formData.piiReason && { reason: formData.piiReason }),
+    },
+    is_in_otel: formData.isInOtel,
   };
 
-  let errors: Partial<Record<keyof FormData, string>> = {};
-  let jsonPreview = '';
-
-  function updateField(field: keyof FormData, value: string | boolean) {
-    formData = { ...formData, [field]: value };
-    errors = { ...errors, [field]: undefined };
+  if (formData.hasDynamicSuffix) {
+    json.has_dynamic_suffix = true;
   }
 
-  function generateJson(): string {
-    const json: Record<string, unknown> = {
-      key: formData.key,
-      brief: formData.brief,
-      type: formData.type,
-      pii: {
-        key: formData.piiKey,
-        ...(formData.piiReason && { reason: formData.piiReason }),
-      },
-      is_in_otel: formData.isInOtel,
-    };
-
-    if (formData.hasDynamicSuffix) {
-      json.has_dynamic_suffix = true;
-    }
-
-    if (formData.example) {
-      try {
-        const parsed = JSON.parse(formData.example);
-        json.example = parsed;
-      } catch {
-        json.example = formData.example;
-      }
-    }
-
-    if (formData.aliases.trim()) {
-      json.alias = formData.aliases.split(',').map(a => a.trim()).filter(Boolean);
-    }
-
-    return JSON.stringify(json, null, 2);
-  }
-
-  function validate(): boolean {
-    const newErrors: Partial<Record<keyof FormData, string>> = {};
-
-    if (!formData.category) {
-      newErrors.category = 'Category is required';
-    }
-
-    if (!formData.key) {
-      newErrors.key = 'Key is required';
-    } else if (!/^[a-z][a-z0-9_.]*$/.test(formData.key.replace(/<key>/g, ''))) {
-      newErrors.key = 'Key must be lowercase with dots, e.g., http.request.method';
-    }
-
-    if (!formData.brief) {
-      newErrors.brief = 'Description is required';
-    }
-
-    errors = newErrors;
-    return Object.keys(newErrors).length === 0;
-  }
-
-  function handlePreview() {
-    if (validate()) {
-      jsonPreview = generateJson();
+  if (formData.example) {
+    try {
+      const parsed = JSON.parse(formData.example);
+      json.example = parsed;
+    } catch {
+      json.example = formData.example;
     }
   }
 
-  function handleSubmit() {
-    if (!validate()) return;
-
-    const json = generateJson();
-    const filename = formData.key.replace(/\./g, '__').replace(/<key>/g, '_key_') + '.json';
-    const filePath = `model/attributes/${formData.category}/${filename}`;
-    
-    const githubUrl = new URL('https://github.com/getsentry/sentry-conventions/new/main');
-    githubUrl.searchParams.set('filename', filePath);
-    githubUrl.searchParams.set('value', json);
-    githubUrl.searchParams.set('message', `feat(attributes): Add ${formData.key} attribute`);
-    githubUrl.searchParams.set('description', `Adds the \`${formData.key}\` attribute to the ${formData.category} category.\n\n${formData.brief}`);
-
-    window.open(githubUrl.toString(), '_blank');
+  if (formData.aliases.trim()) {
+    json.alias = formData.aliases
+      .split(',')
+      .map((a) => a.trim())
+      .filter(Boolean);
   }
 
+  return JSON.stringify(json, null, 2);
+}
+
+function validate(): boolean {
+  const newErrors: Partial<Record<keyof FormData, string>> = {};
+
+  if (!formData.category) {
+    newErrors.category = 'Category is required';
+  }
+
+  if (!formData.key) {
+    newErrors.key = 'Key is required';
+  } else if (!/^[a-z][a-z0-9_.]*$/.test(formData.key.replace(/<key>/g, ''))) {
+    newErrors.key = 'Key must be lowercase with dots, e.g., http.request.method';
+  }
+
+  if (!formData.brief) {
+    newErrors.brief = 'Description is required';
+  }
+
+  errors = newErrors;
+  return Object.keys(newErrors).length === 0;
+}
+
+function handlePreview() {
+  if (validate()) {
+    jsonPreview = generateJson();
+  }
+}
+
+function handleSubmit() {
+  if (!validate()) return;
+
+  const json = generateJson();
+  const filename = formData.key.replace(/\./g, '__').replace(/<key>/g, '_key_') + '.json';
+  const filePath = `model/attributes/${formData.category}/${filename}`;
+
+  const githubUrl = new URL('https://github.com/getsentry/sentry-conventions/new/main');
+  githubUrl.searchParams.set('filename', filePath);
+  githubUrl.searchParams.set('value', json);
+  githubUrl.searchParams.set('message', `feat(attributes): Add ${formData.key} attribute`);
+  githubUrl.searchParams.set(
+    'description',
+    `Adds the \`${formData.key}\` attribute to the ${formData.category} category.\n\n${formData.brief}`,
+  );
+
+  window.open(githubUrl.toString(), '_blank');
+}
 </script>
 
 <div class="max-w-form">

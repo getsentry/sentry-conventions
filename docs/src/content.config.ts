@@ -12,19 +12,16 @@ const attributeSchema = z.object({
     reason: z.string().optional(),
   }),
   is_in_otel: z.boolean(),
-  example: z.union([
-    z.string(),
-    z.boolean(),
-    z.number(),
-    z.array(z.string()),
-    z.array(z.boolean()),
-    z.array(z.number()),
-  ]).optional(),
-  deprecation: z.object({
-    replacement: z.string().optional(),
-    reason: z.string().optional(),
-    _status: z.enum(['backfill', 'normalize']).nullable(),
-  }).optional(),
+  example: z
+    .union([z.string(), z.boolean(), z.number(), z.array(z.string()), z.array(z.boolean()), z.array(z.number())])
+    .optional(),
+  deprecation: z
+    .object({
+      replacement: z.string().optional(),
+      reason: z.string().optional(),
+      _status: z.enum(['backfill', 'normalize']).nullable(),
+    })
+    .optional(),
   alias: z.array(z.string()).optional(),
   sdks: z.array(z.string()).optional(),
 });

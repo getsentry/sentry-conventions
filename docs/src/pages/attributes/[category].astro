@@ -12,13 +12,13 @@ export async function getStaticPaths() {
 
   for (const attr of allAttributes) {
     const { category } = parseAttributeId(attr.id);
-    
+
     if (!categoryMap.has(category)) {
       categoryMap.set(category, []);
     }
     categoryMap.get(category)!.push(attr);
   }
-  
+
   // Generate paths for each category
   return Array.from(categoryMap.entries()).map(([category, attributes]) => ({
     params: { category },
@@ -36,11 +36,11 @@ const { attributes, allCategories } = Astro.props;
 
 // Sort attributes: stable first, then deprecated, both alphabetically
 const stableAttributes = attributes
-  .filter(a => !a.data.deprecation)
+  .filter((a) => !a.data.deprecation)
   .sort((a, b) => a.data.key.localeCompare(b.data.key));
 
 const deprecatedAttributes = attributes
-  .filter(a => a.data.deprecation)
+  .filter((a) => a.data.deprecation)
   .sort((a, b) => a.data.key.localeCompare(b.data.key));
 
 const totalCount = attributes.length;

@@ -1,248 +1,248 @@
 <script lang="ts">
-  import { onMount, onDestroy } from 'svelte';
+import { onMount, onDestroy } from 'svelte';
 
-  interface PagefindResult {
-    id: string;
-    data: () => Promise<{
-      url: string;
-      meta: {
-        title?: string;
-      };
-      excerpt: string;
-      content: string;
-    }>;
-  }
-
-  interface PagefindSearchResponse {
-    results: PagefindResult[];
-  }
-
-  interface SearchResult {
-    id: string;
+interface PagefindResult {
+  id: string;
+  data: () => Promise<{
     url: string;
-    title: string;
+    meta: {
+      title?: string;
+    };
     excerpt: string;
+    content: string;
+  }>;
+}
+
+interface PagefindSearchResponse {
+  results: PagefindResult[];
+}
+
+interface SearchResult {
+  id: string;
+  url: string;
+  title: string;
+  excerpt: string;
+}
+
+interface AttributeIndex {
+  key: string;
+  brief: string;
+  type: string;
+  category: string;
+  url: string;
+  deprecated: boolean;
+}
+
+declare global {
+  interface Window {
+    pagefind?: {
+      search: (query: string) => Promise<PagefindSearchResponse>;
+      init: () => Promise<void>;
+    };
+    attributeIndex?: AttributeIndex[];
   }
+}
 
-  interface AttributeIndex {
-    key: string;
-    brief: string;
-    type: string;
-    category: string;
-    url: string;
-    deprecated: boolean;
+let isOpen = false;
+let query = '';
+let attributeResults: AttributeIndex[] = [];
+let pageResults: SearchResult[] = [];
+let selectedIndex = 0;
+let isLoading = false;
+let inputEl: HTMLInputElement;
+let resultsEl: HTMLDivElement;
+
+$: totalResults = attributeResults.length + pageResults.length;
+$: hasResults = attributeResults.length > 0 || pageResults.length > 0;
+$: noResults = query && !isLoading && !hasResults;
+
+async function loadAttributeIndex() {
+  if (window.attributeIndex) return;
+
+  try {
+    const baseUrl = import.meta.env.BASE_URL || '/';
+    const response = await fetch(`${baseUrl}api/attributes.json`);
+    window.attributeIndex = await response.json();
+  } catch (e) {
+    console.error('Failed to load attribute index:', e);
+    window.attributeIndex = [];
   }
+}
 
-  declare global {
-    interface Window {
-      pagefind?: {
-        search: (query: string) => Promise<PagefindSearchResponse>;
-        init: () => Promise<void>;
-      };
-      attributeIndex?: AttributeIndex[];
-    }
+async function loadPagefind() {
+  if (window.pagefind) return;
+
+  try {
+    const baseUrl = import.meta.env.BASE_URL || '/';
+    const pagefindPath = `${baseUrl}pagefind/pagefind.js`;
+    const importFn = new Function('path', 'return import(path)');
+    const pagefind = await importFn(pagefindPath);
+    await pagefind.init();
+    window.pagefind = pagefind;
+  } catch (e) {
+    console.error('Failed to load pagefind:', e);
   }
+}
 
-  let isOpen = false;
-  let query = '';
-  let attributeResults: AttributeIndex[] = [];
-  let pageResults: SearchResult[] = [];
-  let selectedIndex = 0;
-  let isLoading = false;
-  let inputEl: HTMLInputElement;
-  let resultsEl: HTMLDivElement;
-
-  $: totalResults = attributeResults.length + pageResults.length;
-  $: hasResults = attributeResults.length > 0 || pageResults.length > 0;
-  $: noResults = query && !isLoading && !hasResults;
-
-  async function loadAttributeIndex() {
-    if (window.attributeIndex) return;
-    
-    try {
-      const baseUrl = import.meta.env.BASE_URL || '/';
-      const response = await fetch(`${baseUrl}api/attributes.json`);
-      window.attributeIndex = await response.json();
-    } catch (e) {
-      console.error('Failed to load attribute index:', e);
-      window.attributeIndex = [];
-    }
-  }
-
-  async function loadPagefind() {
-    if (window.pagefind) return;
-    
-    try {
-      const baseUrl = import.meta.env.BASE_URL || '/';
-      const pagefindPath = `${baseUrl}pagefind/pagefind.js`;
-      const importFn = new Function('path', 'return import(path)');
-      const pagefind = await importFn(pagefindPath);
-      await pagefind.init();
-      window.pagefind = pagefind;
-    } catch (e) {
-      console.error('Failed to load pagefind:', e);
-    }
-  }
-
-  function handleGlobalKeyDown(e: KeyboardEvent) {
-    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-      e.preventDefault();
-      isOpen = true;
-    }
-    if (e.key === 'Escape') {
-      isOpen = false;
-    }
-  }
-
-  function handleTriggerClick() {
+function handleGlobalKeyDown(e: KeyboardEvent) {
+  if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+    e.preventDefault();
     isOpen = true;
   }
-
-  onMount(() => {
-    document.addEventListener('keydown', handleGlobalKeyDown);
-    const trigger = document.getElementById('search-trigger');
-    trigger?.addEventListener('click', handleTriggerClick);
-    
-    return () => {
-      document.removeEventListener('keydown', handleGlobalKeyDown);
-      trigger?.removeEventListener('click', handleTriggerClick);
-    };
-  });
-
-  $: if (isOpen) {
-    loadAttributeIndex();
-    loadPagefind();
-    query = '';
-    attributeResults = [];
-    pageResults = [];
-    selectedIndex = 0;
-    setTimeout(() => inputEl?.focus(), 0);
+  if (e.key === 'Escape') {
+    isOpen = false;
   }
+}
 
-  let searchTimeout: ReturnType<typeof setTimeout>;
+function handleTriggerClick() {
+  isOpen = true;
+}
 
-  $: {
-    clearTimeout(searchTimeout);
-    searchTimeout = setTimeout(async () => {
-      const trimmedQuery = query.trim().toLowerCase();
-      
-      if (!trimmedQuery) {
-        attributeResults = [];
+onMount(() => {
+  document.addEventListener('keydown', handleGlobalKeyDown);
+  const trigger = document.getElementById('search-trigger');
+  trigger?.addEventListener('click', handleTriggerClick);
+
+  return () => {
+    document.removeEventListener('keydown', handleGlobalKeyDown);
+    trigger?.removeEventListener('click', handleTriggerClick);
+  };
+});
+
+$: if (isOpen) {
+  loadAttributeIndex();
+  loadPagefind();
+  query = '';
+  attributeResults = [];
+  pageResults = [];
+  selectedIndex = 0;
+  setTimeout(() => inputEl?.focus(), 0);
+}
+
+let searchTimeout: ReturnType<typeof setTimeout>;
+
+$: {
+  clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(async () => {
+    const trimmedQuery = query.trim().toLowerCase();
+
+    if (!trimmedQuery) {
+      attributeResults = [];
+      pageResults = [];
+      return;
+    }
+
+    isLoading = true;
+
+    // Search attributes (instant, client-side)
+    if (window.attributeIndex) {
+      const matches = window.attributeIndex
+        .filter((attr) => {
+          const key = attr.key.toLowerCase();
+          return key.includes(trimmedQuery);
+        })
+        .sort((a, b) => {
+          const aKey = a.key.toLowerCase();
+          const bKey = b.key.toLowerCase();
+          const aStartsWith = aKey.startsWith(trimmedQuery);
+          const bStartsWith = bKey.startsWith(trimmedQuery);
+
+          if (aStartsWith && !bStartsWith) return -1;
+          if (!aStartsWith && bStartsWith) return 1;
+
+          const aIndex = aKey.indexOf(trimmedQuery);
+          const bIndex = bKey.indexOf(trimmedQuery);
+          if (aIndex !== bIndex) return aIndex - bIndex;
+
+          return a.key.localeCompare(b.key);
+        })
+        .slice(0, 10);
+
+      attributeResults = matches;
+    }
+
+    // Search pages with Pagefind (async)
+    if (window.pagefind) {
+      try {
+        const response = await window.pagefind.search(query);
+        const searchResults = await Promise.all(
+          response.results.slice(0, 5).map(async (result) => {
+            const data = await result.data();
+            return {
+              id: result.id,
+              url: data.url,
+              title: data.meta?.title || 'Untitled',
+              excerpt: data.excerpt,
+            };
+          }),
+        );
+        pageResults = searchResults;
+      } catch (e) {
+        console.error('Search failed:', e);
         pageResults = [];
-        return;
-      }
-
-      isLoading = true;
-
-      // Search attributes (instant, client-side)
-      if (window.attributeIndex) {
-        const matches = window.attributeIndex
-          .filter(attr => {
-            const key = attr.key.toLowerCase();
-            return key.includes(trimmedQuery);
-          })
-          .sort((a, b) => {
-            const aKey = a.key.toLowerCase();
-            const bKey = b.key.toLowerCase();
-            const aStartsWith = aKey.startsWith(trimmedQuery);
-            const bStartsWith = bKey.startsWith(trimmedQuery);
-            
-            if (aStartsWith && !bStartsWith) return -1;
-            if (!aStartsWith && bStartsWith) return 1;
-            
-            const aIndex = aKey.indexOf(trimmedQuery);
-            const bIndex = bKey.indexOf(trimmedQuery);
-            if (aIndex !== bIndex) return aIndex - bIndex;
-            
-            return a.key.localeCompare(b.key);
-          })
-          .slice(0, 10);
-        
-        attributeResults = matches;
-      }
-
-      // Search pages with Pagefind (async)
-      if (window.pagefind) {
-        try {
-          const response = await window.pagefind.search(query);
-          const searchResults = await Promise.all(
-            response.results.slice(0, 5).map(async (result) => {
-              const data = await result.data();
-              return {
-                id: result.id,
-                url: data.url,
-                title: data.meta?.title || 'Untitled',
-                excerpt: data.excerpt,
-              };
-            })
-          );
-          pageResults = searchResults;
-        } catch (e) {
-          console.error('Search failed:', e);
-          pageResults = [];
-        }
-      }
-
-      isLoading = false;
-    }, 100);
-  }
-
-  function handleKeyDown(e: KeyboardEvent) {
-    if (e.key === 'ArrowDown') {
-      e.preventDefault();
-      selectedIndex = Math.min(selectedIndex + 1, totalResults - 1);
-    } else if (e.key === 'ArrowUp') {
-      e.preventDefault();
-      selectedIndex = Math.max(selectedIndex - 1, 0);
-    } else if (e.key === 'Enter') {
-      e.preventDefault();
-      navigateToSelected();
-    }
-  }
-
-  function navigateToSelected() {
-    if (selectedIndex < attributeResults.length) {
-      const attr = attributeResults[selectedIndex];
-      isOpen = false;
-      window.location.href = attr.url;
-    } else {
-      const pageIndex = selectedIndex - attributeResults.length;
-      const result = pageResults[pageIndex];
-      if (result) {
-        isOpen = false;
-        window.location.href = result.url;
       }
     }
-  }
 
-  function navigateToAttribute(attr: AttributeIndex) {
+    isLoading = false;
+  }, 100);
+}
+
+function handleKeyDown(e: KeyboardEvent) {
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    selectedIndex = Math.min(selectedIndex + 1, totalResults - 1);
+  } else if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    selectedIndex = Math.max(selectedIndex - 1, 0);
+  } else if (e.key === 'Enter') {
+    e.preventDefault();
+    navigateToSelected();
+  }
+}
+
+function navigateToSelected() {
+  if (selectedIndex < attributeResults.length) {
+    const attr = attributeResults[selectedIndex];
     isOpen = false;
     window.location.href = attr.url;
+  } else {
+    const pageIndex = selectedIndex - attributeResults.length;
+    const result = pageResults[pageIndex];
+    if (result) {
+      isOpen = false;
+      window.location.href = result.url;
+    }
   }
+}
 
-  function navigateToResult(result: SearchResult) {
-    isOpen = false;
-    window.location.href = result.url;
-  }
+function navigateToAttribute(attr: AttributeIndex) {
+  isOpen = false;
+  window.location.href = attr.url;
+}
 
-  $: if (resultsEl && selectedIndex >= 0) {
-    const selectedElement = resultsEl.querySelector('.selected') as HTMLElement;
-    selectedElement?.scrollIntoView({ block: 'nearest' });
-  }
+function navigateToResult(result: SearchResult) {
+  isOpen = false;
+  window.location.href = result.url;
+}
 
-  function highlightMatch(key: string, searchQuery: string): { before: string; match: string; after: string } | null {
-    const lowerKey = key.toLowerCase();
-    const lowerQuery = searchQuery.toLowerCase();
-    const index = lowerKey.indexOf(lowerQuery);
-    
-    if (index === -1) return null;
-    
-    return {
-      before: key.slice(0, index),
-      match: key.slice(index, index + searchQuery.length),
-      after: key.slice(index + searchQuery.length)
-    };
-  }
+$: if (resultsEl && selectedIndex >= 0) {
+  const selectedElement = resultsEl.querySelector('.selected') as HTMLElement;
+  selectedElement?.scrollIntoView({ block: 'nearest' });
+}
+
+function highlightMatch(key: string, searchQuery: string): { before: string; match: string; after: string } | null {
+  const lowerKey = key.toLowerCase();
+  const lowerQuery = searchQuery.toLowerCase();
+  const index = lowerKey.indexOf(lowerQuery);
+
+  if (index === -1) return null;
+
+  return {
+    before: key.slice(0, index),
+    match: key.slice(index, index + searchQuery.length),
+    after: key.slice(index + searchQuery.length),
+  };
+}
 </script>
 
 {#if isOpen}
@@ -292,7 +292,7 @@
             {#each attributeResults as attr, index}
               {@const highlighted = highlightMatch(attr.key, query)}
               <button
-                class="flex flex-col gap-1 w-full px-4 py-3 bg-transparent border-none border-b border-border last:border-b-0 text-left cursor-pointer transition-colors duration-fast {index === selectedIndex ? 'bg-accent-soft selected' : 'hover:bg-bg-hover'}"
+                class="flex flex-col gap-1 w-full px-4 py-3 bg-transparent border-none border-b border-border last:border-b-0 text-left cursor-pointer transition-all duration-fast border-l-2 {index === selectedIndex ? 'bg-accent/15 border-l-accent selected shadow-[inset_0_0_0_1px_rgba(149,128,255,0.2)]' : 'border-l-transparent hover:bg-bg-hover hover:border-l-border-light'}"
                 on:click={() => navigateToAttribute(attr)}
                 on:mouseenter={() => selectedIndex = index}
               >
@@ -327,7 +327,7 @@
             {#each pageResults as result, index}
               {@const actualIndex = attributeResults.length + index}
               <button
-                class="flex flex-col gap-1 w-full px-4 py-3 bg-transparent border-none border-b border-border last:border-b-0 text-left cursor-pointer transition-colors duration-fast {actualIndex === selectedIndex ? 'bg-accent-soft selected' : 'hover:bg-bg-hover'}"
+                class="flex flex-col gap-1 w-full px-4 py-3 bg-transparent border-none border-b border-border last:border-b-0 text-left cursor-pointer transition-all duration-fast border-l-2 {actualIndex === selectedIndex ? 'bg-accent/15 border-l-accent selected shadow-[inset_0_0_0_1px_rgba(149,128,255,0.2)]' : 'border-l-transparent hover:bg-bg-hover hover:border-l-border-light'}"
                 on:click={() => navigateToResult(result)}
                 on:mouseenter={() => selectedIndex = actualIndex}
               >
