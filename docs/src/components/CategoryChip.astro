@@ -1,0 +1,14 @@
+---
+interface Props {
+  name: string;
+  count: number;
+  href: string;
+}
+
+const { name, count, href } = Astro.props;
+---
+
+<a href={href} class="category-chip">
+  <span>{name}</span>
+  <span class="text-xs text-text-muted">({count})</span>
+</a>
