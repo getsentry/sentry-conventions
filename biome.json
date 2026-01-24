@@ -3,7 +3,7 @@
   "vcs": { "enabled": false, "clientKind": "git", "useIgnoreFile": false },
   "files": {
     "ignoreUnknown": false,
-    "ignore": ["dist/*", "javascript/sentry-conventions/package.json", "rust/*", "python/*", ".claude/*"]
+    "ignore": ["dist/*", "javascript/sentry-conventions/package.json", "rust/*", "python/*", ".claude/*", ".astro/*"]
   },
   "formatter": {
     "enabled": true,
