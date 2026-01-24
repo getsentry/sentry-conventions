@@ -16,7 +16,7 @@ export async function getStaticPaths() {
     if (!categoryMap.has(category)) {
       categoryMap.set(category, []);
     }
-    categoryMap.get(category)!.push(attr);
+    categoryMap.get(category)?.push(attr);
   }
 
   // Generate paths for each category
@@ -48,7 +48,7 @@ const stableCount = stableAttributes.length;
 const deprecatedCount = deprecatedAttributes.length;
 
 // Format category name for display
-const categoryTitle = category!.charAt(0).toUpperCase() + category!.slice(1);
+const categoryTitle = category.charAt(0).toUpperCase() + category.slice(1);
 ---
 
 <BaseLayout 
