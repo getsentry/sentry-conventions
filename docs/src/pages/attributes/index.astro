@@ -13,7 +13,7 @@ const categoryMap = new Map<string, typeof allAttributes>();
 
 for (const attr of allAttributes) {
   const { category } = parseAttributeId(attr.id);
-  
+
   if (!categoryMap.has(category)) {
     categoryMap.set(category, []);
   }
@@ -34,7 +34,7 @@ for (const [category, attrs] of categoryMap) {
 
 // Stats
 const totalAttributes = allAttributes.length;
-const stableCount = allAttributes.filter(a => !a.data.deprecation).length;
+const stableCount = allAttributes.filter((a) => !a.data.deprecation).length;
 const deprecatedCount = totalAttributes - stableCount;
 ---
 

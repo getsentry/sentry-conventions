@@ -10,7 +10,7 @@ export async function getStaticPaths() {
 
   return allAttributes.map((attr) => {
     const { category, slug } = parseAttributeId(attr.id);
-    
+
     return {
       params: { category, slug },
       props: { attribute: attr },

@@ -13,7 +13,12 @@
   }
 
   /* Typography */
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-semibold leading-tight text-text-primary;
   }
 
@@ -41,7 +46,6 @@
     @apply text-accent transition-colors duration-fast;
   }
 
-
   code {
     @apply font-mono text-[0.9em] px-2 py-1 bg-bg-elevated rounded-sm border border-border;
   }
@@ -55,7 +59,8 @@
   }
 
   /* Lists */
-  ul, ol {
+  ul,
+  ol {
     @apply mb-4 pl-6;
   }
 
@@ -68,7 +73,8 @@
     @apply w-full border-collapse mb-6 text-sm;
   }
 
-  th, td {
+  th,
+  td {
     @apply py-3 px-4 text-left border-b border-border;
   }
 

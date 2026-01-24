@@ -7,14 +7,16 @@ const attributes = await getCollection('attributes');
 const names = await getCollection('names');
 
 const totalAttributes = attributes.length;
-const stableAttributes = attributes.filter(a => !a.data.deprecation).length;
+const stableAttributes = attributes.filter((a) => !a.data.deprecation).length;
 const deprecatedAttributes = totalAttributes - stableAttributes;
 
 // Get unique categories
-const categories = new Set(attributes.map(a => {
-  const parts = a.id.split('/');
-  return parts.length > 1 ? parts[0] : 'general';
-}));
+const categories = new Set(
+  attributes.map((a) => {
+    const parts = a.id.split('/');
+    return parts.length > 1 ? parts[0] : 'general';
+  }),
+);
 ---
 
 <BaseLayout title="Home">
