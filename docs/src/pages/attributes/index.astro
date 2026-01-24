@@ -17,7 +17,7 @@ for (const attr of allAttributes) {
   if (!categoryMap.has(category)) {
     categoryMap.set(category, []);
   }
-  categoryMap.get(category)!.push(attr);
+  categoryMap.get(category)?.push(attr);
 }
 
 // Sort categories alphabetically, but put 'general' first

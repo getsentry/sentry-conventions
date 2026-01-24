@@ -149,7 +149,7 @@ function handleSubmit() {
   if (!validate()) return;
 
   const json = generateJson();
-  const filename = formData.key.replace(/\./g, '__').replace(/<key>/g, '_key_') + '.json';
+  const filename = `${formData.key.replace(/\./g, '__').replace(/<key>/g, '_key_')}.json`;
   const filePath = `model/attributes/${formData.category}/${filename}`;
 
   const githubUrl = new URL('https://github.com/getsentry/sentry-conventions/new/main');
