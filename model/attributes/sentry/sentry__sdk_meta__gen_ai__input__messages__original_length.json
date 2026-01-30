@@ -1,0 +1,10 @@
+{
+  "key": "sentry.sdk_meta.gen_ai.input.messages.original_length",
+  "brief": "The original length of gen_ai.input.messages before any truncation or modification.",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 5
+}

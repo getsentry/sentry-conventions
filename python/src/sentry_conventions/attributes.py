@@ -4008,6 +4008,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "7.0.0"
     """
 
+    # Path: model/attributes/sentry/sentry__sdk_meta__gen_ai__input__messages__original_length.json
+    SENTRY_SDK_META_GEN_AI_INPUT_MESSAGES_ORIGINAL_LENGTH: Literal[
+        "sentry.sdk_meta.gen_ai.input.messages.original_length"
+    ] = "sentry.sdk_meta.gen_ai.input.messages.original_length"
+    """The original length of gen_ai.input.messages before any truncation or modification.
+
+    Type: int
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 5
+    """
+
     # Path: model/attributes/sentry/sentry__segment__id.json
     SENTRY_SEGMENT_ID: Literal["sentry.segment.id"] = "sentry.segment.id"
     """The segment ID of a span
@@ -7555,6 +7567,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="7.0.0",
     ),
+    "sentry.sdk_meta.gen_ai.input.messages.original_length": AttributeMetadata(
+        brief="The original length of gen_ai.input.messages before any truncation or modification.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=5,
+    ),
     "sentry.segment.id": AttributeMetadata(
         brief="The segment ID of a span",
         type=AttributeType.STRING,
@@ -8479,6 +8498,7 @@ Attributes = TypedDict(
         "sentry.sdk.integrations": List[str],
         "sentry.sdk.name": str,
         "sentry.sdk.version": str,
+        "sentry.sdk_meta.gen_ai.input.messages.original_length": int,
         "sentry.segment.id": str,
         "sentry.segment.name": str,
         "sentry.segment_id": str,

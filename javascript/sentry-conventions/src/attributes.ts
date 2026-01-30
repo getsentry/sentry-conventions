@@ -7149,6 +7149,27 @@ export const SENTRY_SDK_INTEGRATIONS = 'sentry.sdk.integrations';
  */
 export type SENTRY_SDK_INTEGRATIONS_TYPE = Array<string>;
 
+// Path: model/attributes/sentry/sentry__sdk_meta__gen_ai__input__messages__original_length.json
+
+/**
+ * The original length of gen_ai.input.messages before any truncation or modification. `sentry.sdk_meta.gen_ai.input.messages.original_length`
+ *
+ * Attribute Value Type: `number` {@link SENTRY_SDK_META_GEN_AI_INPUT_MESSAGES_ORIGINAL_LENGTH_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 5
+ */
+export const SENTRY_SDK_META_GEN_AI_INPUT_MESSAGES_ORIGINAL_LENGTH =
+  'sentry.sdk_meta.gen_ai.input.messages.original_length';
+
+/**
+ * Type for {@link SENTRY_SDK_META_GEN_AI_INPUT_MESSAGES_ORIGINAL_LENGTH} sentry.sdk_meta.gen_ai.input.messages.original_length
+ */
+export type SENTRY_SDK_META_GEN_AI_INPUT_MESSAGES_ORIGINAL_LENGTH_TYPE = number;
+
 // Path: model/attributes/sentry/sentry__sdk__name.json
 
 /**
@@ -9171,6 +9192,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_REPLAY_ID]: 'string',
   [SENTRY_REPLAY_IS_BUFFERING]: 'boolean',
   [SENTRY_SDK_INTEGRATIONS]: 'string[]',
+  [SENTRY_SDK_META_GEN_AI_INPUT_MESSAGES_ORIGINAL_LENGTH]: 'integer',
   [SENTRY_SDK_NAME]: 'string',
   [SENTRY_SDK_VERSION]: 'string',
   [SENTRY_SEGMENT_ID]: 'string',
@@ -9597,6 +9619,7 @@ export type AttributeName =
   | typeof SENTRY_REPLAY_ID
   | typeof SENTRY_REPLAY_IS_BUFFERING
   | typeof SENTRY_SDK_INTEGRATIONS
+  | typeof SENTRY_SDK_META_GEN_AI_INPUT_MESSAGES_ORIGINAL_LENGTH
   | typeof SENTRY_SDK_NAME
   | typeof SENTRY_SDK_VERSION
   | typeof SENTRY_SEGMENT_ID
@@ -13254,6 +13277,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: ['InboundFilters', 'FunctionToString', 'BrowserApiErrors', 'Breadcrumbs'],
   },
+  [SENTRY_SDK_META_GEN_AI_INPUT_MESSAGES_ORIGINAL_LENGTH]: {
+    brief: 'The original length of gen_ai.input.messages before any truncation or modification.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 5,
+  },
   [SENTRY_SDK_NAME]: {
     brief: 'The sentry sdk name.',
     type: 'string',
@@ -14359,6 +14391,7 @@ export type Attributes = {
   [SENTRY_REPLAY_ID]?: SENTRY_REPLAY_ID_TYPE;
   [SENTRY_REPLAY_IS_BUFFERING]?: SENTRY_REPLAY_IS_BUFFERING_TYPE;
   [SENTRY_SDK_INTEGRATIONS]?: SENTRY_SDK_INTEGRATIONS_TYPE;
+  [SENTRY_SDK_META_GEN_AI_INPUT_MESSAGES_ORIGINAL_LENGTH]?: SENTRY_SDK_META_GEN_AI_INPUT_MESSAGES_ORIGINAL_LENGTH_TYPE;
   [SENTRY_SDK_NAME]?: SENTRY_SDK_NAME_TYPE;
   [SENTRY_SDK_VERSION]?: SENTRY_SDK_VERSION_TYPE;
   [SENTRY_SEGMENT_ID]?: SENTRY_SEGMENT_ID_TYPE;

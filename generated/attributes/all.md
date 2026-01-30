@@ -4,7 +4,7 @@
 
 This page lists all available attributes across all categories.
 
-Total attributes: 423
+Total attributes: 424
 
 ## Stable Attributes
 
@@ -277,6 +277,7 @@ Total attributes: 423
 | [`sentry.release`](./sentry.md#sentryrelease) | The sentry release. |
 | [`sentry.replay_id`](./sentry.md#sentryreplay_id) | The id of the sentry replay. |
 | [`sentry.replay_is_buffering`](./sentry.md#sentryreplay_is_buffering) | A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate). |
+| [`sentry.sdk_meta.gen_ai.input.messages.original_length`](./sentry.md#sentrysdk_metagen_aiinputmessagesoriginal_length) | The original length of gen_ai.input.messages before any truncation or modification. |
 | [`sentry.sdk.integrations`](./sentry.md#sentrysdkintegrations) | A list of names identifying enabled integrations. The list shouldhave all enabled integrations, including default integrations. Defaultintegrations are included because different SDK releases may contain differentdefault integrations. |
 | [`sentry.sdk.name`](./sentry.md#sentrysdkname) | The sentry sdk name. |
 | [`sentry.sdk.version`](./sentry.md#sentrysdkversion) | The sentry sdk version. |

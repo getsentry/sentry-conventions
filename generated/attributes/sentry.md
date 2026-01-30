@@ -41,6 +41,7 @@
   - [sentry.release](#sentryrelease)
   - [sentry.replay_id](#sentryreplay_id)
   - [sentry.replay_is_buffering](#sentryreplay_is_buffering)
+  - [sentry.sdk_meta.gen_ai.input.messages.original_length](#sentrysdk_metagen_aiinputmessagesoriginal_length)
   - [sentry.sdk.integrations](#sentrysdkintegrations)
   - [sentry.sdk.name](#sentrysdkname)
   - [sentry.sdk.version](#sentrysdkversion)
@@ -479,6 +480,17 @@ A sentinel attribute on log events indicating whether the current Session Replay
 | Has PII | false |
 | Exists in OpenTelemetry | No |
 | Example | `true` |
+
+### sentry.sdk_meta.gen_ai.input.messages.original_length
+
+The original length of gen_ai.input.messages before any truncation or modification.
+
+| Property | Value |
+| --- | --- |
+| Type | `integer` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `5` |
 
 ### sentry.sdk.integrations
 
