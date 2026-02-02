@@ -4015,7 +4015,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The original length of gen_ai.input.messages before any truncation or modification. This refers to the amount of messages in the array, not the length of the message string(s).
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 5
     """
@@ -7570,7 +7570,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.sdk_meta.gen_ai.input.messages.original_length": AttributeMetadata(
         brief="The original length of gen_ai.input.messages before any truncation or modification. This refers to the amount of messages in the array, not the length of the message string(s).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=5,
     ),

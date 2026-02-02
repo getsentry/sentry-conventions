@@ -7156,7 +7156,7 @@ export type SENTRY_SDK_INTEGRATIONS_TYPE = Array<string>;
  *
  * Attribute Value Type: `number` {@link SENTRY_SDK_META_GEN_AI_INPUT_MESSAGES_ORIGINAL_LENGTH_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -13282,7 +13282,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'The original length of gen_ai.input.messages before any truncation or modification. This refers to the amount of messages in the array, not the length of the message string(s).',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 5,

@@ -488,7 +488,7 @@ The original length of gen_ai.input.messages before any truncation or modificati
 | Property | Value |
 | --- | --- |
 | Type | `integer` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `5` |
 
