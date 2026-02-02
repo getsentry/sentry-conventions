@@ -901,23 +901,23 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/db/db__query__summary.json
     DB_QUERY_SUMMARY: Literal["db.query.summary"] = "db.query.summary"
-    """A database query being executed. Should be paramaterized. The full version of the query is in `db.query.text`.
+    """A shortened representation of operation(s) in the full query. This attribute must be low-cardinality and should only contain the operation table names.
 
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
-    Example: "SELECT * FROM users"
+    Example: "SELECT users;"
     """
 
     # Path: model/attributes/db/db__query__text.json
     DB_QUERY_TEXT: Literal["db.query.text"] = "db.query.text"
-    """The database query being executed. Should be the full query, not a parameterized version. The parameterized version is in `db.query.summary`.
+    """The database parameterized query being executed. Any parameter values (filters, insertion values, etc) should be replaced with parameter placeholders. If applicable, use `db.query.parameter.<key>` to add the parameter value.
 
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: db.statement
-    Example: "SELECT * FROM users"
+    Example: "SELECT * FROM users WHERE id = $1"
     """
 
     # Path: model/attributes/db/db__redis__connection.json
@@ -5379,18 +5379,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="db.query.parameter.foo='123'",
     ),
     "db.query.summary": AttributeMetadata(
-        brief="A database query being executed. Should be paramaterized. The full version of the query is in `db.query.text`.",
+        brief="A shortened representation of operation(s) in the full query. This attribute must be low-cardinality and should only contain the operation table names.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
-        example="SELECT * FROM users",
+        example="SELECT users;",
     ),
     "db.query.text": AttributeMetadata(
-        brief="The database query being executed. Should be the full query, not a parameterized version. The parameterized version is in `db.query.summary`.",
+        brief="The database parameterized query being executed. Any parameter values (filters, insertion values, etc) should be replaced with parameter placeholders. If applicable, use `db.query.parameter.<key>` to add the parameter value.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
-        example="SELECT * FROM users",
+        example="SELECT * FROM users WHERE id = $1",
         aliases=["db.statement"],
     ),
     "db.redis.connection": AttributeMetadata(
