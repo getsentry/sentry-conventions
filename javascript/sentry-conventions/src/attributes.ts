@@ -7152,7 +7152,7 @@ export type SENTRY_SDK_INTEGRATIONS_TYPE = Array<string>;
 // Path: model/attributes/sentry/sentry__sdk_meta__gen_ai__input__messages__original_length.json
 
 /**
- * The original length of gen_ai.input.messages before any truncation or modification. `sentry.sdk_meta.gen_ai.input.messages.original_length`
+ * The original length of gen_ai.input.messages before any truncation or modification. This refers to the amount of messages in the array, not the length of the message string(s). `sentry.sdk_meta.gen_ai.input.messages.original_length`
  *
  * Attribute Value Type: `number` {@link SENTRY_SDK_META_GEN_AI_INPUT_MESSAGES_ORIGINAL_LENGTH_TYPE}
  *
@@ -13278,7 +13278,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: ['InboundFilters', 'FunctionToString', 'BrowserApiErrors', 'Breadcrumbs'],
   },
   [SENTRY_SDK_META_GEN_AI_INPUT_MESSAGES_ORIGINAL_LENGTH]: {
-    brief: 'The original length of gen_ai.input.messages before any truncation or modification.',
+    brief:
+      'The original length of gen_ai.input.messages before any truncation or modification. This refers to the amount of messages in the array, not the length of the message string(s).',
     type: 'integer',
     pii: {
       isPii: 'false',

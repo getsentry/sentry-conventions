@@ -1,6 +1,6 @@
 {
   "key": "sentry.sdk_meta.gen_ai.input.messages.original_length",
-  "brief": "The original length of gen_ai.input.messages before any truncation or modification.",
+  "brief": "The original length of gen_ai.input.messages before any truncation or modification. This refers to the amount of messages in the array, not the length of the message string(s).",
   "type": "integer",
   "pii": {
     "key": "false"
