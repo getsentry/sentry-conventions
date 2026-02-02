@@ -1,0 +1,10 @@
+{
+  "key": "sentry.profiler_id",
+  "brief": "The id of the currently running profiler (continuous profiling)",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "18779b64dd35d1a538e7ce2dd2d3fad3"
+}

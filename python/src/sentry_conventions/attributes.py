@@ -3942,6 +3942,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "123e4567e89b12d3a456426614174000"
     """
 
+    # Path: model/attributes/sentry/sentry__profiler_id.json
+    SENTRY_PROFILER_ID: Literal["sentry.profiler_id"] = "sentry.profiler_id"
+    """The id of the currently running profiler (continuous profiling)
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "18779b64dd35d1a538e7ce2dd2d3fad3"
+    """
+
     # Path: model/attributes/sentry/sentry__release.json
     SENTRY_RELEASE: Literal["sentry.release"] = "sentry.release"
     """The sentry release.
@@ -7506,6 +7516,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="123e4567e89b12d3a456426614174000",
         aliases=["profile_id"],
     ),
+    "sentry.profiler_id": AttributeMetadata(
+        brief="The id of the currently running profiler (continuous profiling)",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="18779b64dd35d1a538e7ce2dd2d3fad3",
+    ),
     "sentry.release": AttributeMetadata(
         brief="The sentry release.",
         type=AttributeType.STRING,
@@ -8473,6 +8490,7 @@ Attributes = TypedDict(
         "sentry.origin": str,
         "sentry.platform": str,
         "sentry.profile_id": str,
+        "sentry.profiler_id": str,
         "sentry.release": str,
         "sentry.replay_id": str,
         "sentry.replay_is_buffering": bool,
