@@ -483,7 +483,7 @@ A sentinel attribute on log events indicating whether the current Session Replay
 
 ### sentry.sdk_meta.gen_ai.input.messages.original_length
 
-The original length of gen_ai.input.messages before any truncation or modification. This refers to the amount of messages in the array, not the length of the message string(s).
+The original length of gen_ai.input.messages before any truncation or modification.
 
 | Property | Value |
 | --- | --- |
