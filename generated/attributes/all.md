@@ -4,7 +4,7 @@
 
 This page lists all available attributes across all categories.
 
-Total attributes: 424
+Total attributes: 425
 
 ## Stable Attributes
 
