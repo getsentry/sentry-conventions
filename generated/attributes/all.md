@@ -4,7 +4,7 @@
 
 This page lists all available attributes across all categories.
 
-Total attributes: 423
+Total attributes: 424
 
 ## Stable Attributes
 
@@ -274,6 +274,7 @@ Total attributes: 423
 | [`sentry.origin`](./sentry.md#sentryorigin) | The origin of the instrumentation (e.g. span, log, etc.) |
 | [`sentry.platform`](./sentry.md#sentryplatform) | The sdk platform that generated the event. |
 | [`sentry.profile_id`](./sentry.md#sentryprofile_id) | The id of the sentry profile. |
+| [`sentry.profiler_id`](./sentry.md#sentryprofiler_id) | The id of the currently running profiler (continuous profiling) |
 | [`sentry.release`](./sentry.md#sentryrelease) | The sentry release. |
 | [`sentry.replay_id`](./sentry.md#sentryreplay_id) | The id of the sentry replay. |
 | [`sentry.replay_is_buffering`](./sentry.md#sentryreplay_is_buffering) | A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate). |
