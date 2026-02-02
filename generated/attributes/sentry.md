@@ -38,6 +38,7 @@
   - [sentry.origin](#sentryorigin)
   - [sentry.platform](#sentryplatform)
   - [sentry.profile_id](#sentryprofile_id)
+  - [sentry.profiler_id](#sentryprofiler_id)
   - [sentry.release](#sentryrelease)
   - [sentry.replay_id](#sentryreplay_id)
   - [sentry.replay_is_buffering](#sentryreplay_is_buffering)
@@ -445,6 +446,17 @@ The id of the sentry profile.
 | Exists in OpenTelemetry | No |
 | Example | `123e4567e89b12d3a456426614174000` |
 | Aliases | `profile_id` |
+
+### sentry.profiler_id
+
+The id of the currently running profiler (continuous profiling)
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | false |
+| Exists in OpenTelemetry | No |
+| Example | `18779b64dd35d1a538e7ce2dd2d3fad3` |
 
 ### sentry.release
 

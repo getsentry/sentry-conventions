@@ -7043,6 +7043,26 @@ export const SENTRY_PLATFORM = 'sentry.platform';
  */
 export type SENTRY_PLATFORM_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__profiler_id.json
+
+/**
+ * The id of the currently running profiler (continuous profiling) `sentry.profiler_id`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_PROFILER_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "18779b64dd35d1a538e7ce2dd2d3fad3"
+ */
+export const SENTRY_PROFILER_ID = 'sentry.profiler_id';
+
+/**
+ * Type for {@link SENTRY_PROFILER_ID} sentry.profiler_id
+ */
+export type SENTRY_PROFILER_ID_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__profile_id.json
 
 /**
@@ -9187,6 +9207,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_OP]: 'string',
   [SENTRY_ORIGIN]: 'string',
   [SENTRY_PLATFORM]: 'string',
+  [SENTRY_PROFILER_ID]: 'string',
   [SENTRY_PROFILE_ID]: 'string',
   [SENTRY_RELEASE]: 'string',
   [SENTRY_REPLAY_ID]: 'string',
@@ -9614,6 +9635,7 @@ export type AttributeName =
   | typeof SENTRY_OP
   | typeof SENTRY_ORIGIN
   | typeof SENTRY_PLATFORM
+  | typeof SENTRY_PROFILER_ID
   | typeof SENTRY_PROFILE_ID
   | typeof SENTRY_RELEASE
   | typeof SENTRY_REPLAY_ID
@@ -13227,6 +13249,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'php',
   },
+  [SENTRY_PROFILER_ID]: {
+    brief: 'The id of the currently running profiler (continuous profiling)',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '18779b64dd35d1a538e7ce2dd2d3fad3',
+  },
   [SENTRY_PROFILE_ID]: {
     brief: 'The id of the sentry profile.',
     type: 'string',
@@ -14387,6 +14418,7 @@ export type Attributes = {
   [SENTRY_OP]?: SENTRY_OP_TYPE;
   [SENTRY_ORIGIN]?: SENTRY_ORIGIN_TYPE;
   [SENTRY_PLATFORM]?: SENTRY_PLATFORM_TYPE;
+  [SENTRY_PROFILER_ID]?: SENTRY_PROFILER_ID_TYPE;
   [SENTRY_PROFILE_ID]?: SENTRY_PROFILE_ID_TYPE;
   [SENTRY_RELEASE]?: SENTRY_RELEASE_TYPE;
   [SENTRY_REPLAY_ID]?: SENTRY_REPLAY_ID_TYPE;
