@@ -9,6 +9,7 @@
   - [browser.script.invoker_type](#browserscriptinvoker_type)
   - [browser.script.source_char_position](#browserscriptsource_char_position)
   - [browser.version](#browserversion)
+  - [browser.web_vital.cls.source.\<key\>](#browserweb_vitalclssourcekey)
 
 ## Stable Attributes
 
@@ -79,4 +80,17 @@ The version of the browser.
 | Exists in OpenTelemetry | No |
 | Example | `120.0.6099.130` |
 | Aliases | `sentry.browser.version` |
+
+### browser.web_vital.cls.source.\<key\>
+
+The HTML elements or components responsible for the layout shift. \<key\> is a numeric index from 1 to N
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | No |
+| Has dynamic suffix | Yes |
+| Example | `body > div#app` |
+| Aliases | `cls.source.\<key\>` |
 

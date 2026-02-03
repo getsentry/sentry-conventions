@@ -878,6 +878,30 @@ export const BROWSER_VERSION = 'browser.version';
  */
 export type BROWSER_VERSION_TYPE = string;
 
+// Path: model/attributes/browser/browser__web_vital__cls__source__[key].json
+
+/**
+ * The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N `browser.web_vital.cls.source.<key>`
+ *
+ * Attribute Value Type: `string` {@link BROWSER_WEB_VITAL_CLS_SOURCE_KEY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Has Dynamic Suffix: true
+ *
+ * Aliases: {@link CLS_SOURCE_KEY} `cls.source.<key>`
+ *
+ * @example "body > div#app"
+ */
+export const BROWSER_WEB_VITAL_CLS_SOURCE_KEY = 'browser.web_vital.cls.source.<key>';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_CLS_SOURCE_KEY} browser.web_vital.cls.source.<key>
+ */
+export type BROWSER_WEB_VITAL_CLS_SOURCE_KEY_TYPE = string;
+
 // Path: model/attributes/cache/cache__hit.json
 
 /**
@@ -1099,6 +1123,31 @@ export const CLOUDFLARE_D1_ROWS_WRITTEN = 'cloudflare.d1.rows_written';
  * Type for {@link CLOUDFLARE_D1_ROWS_WRITTEN} cloudflare.d1.rows_written
  */
 export type CLOUDFLARE_D1_ROWS_WRITTEN_TYPE = number;
+
+// Path: model/attributes/cls/cls__source__[key].json
+
+/**
+ * The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N `cls.source.<key>`
+ *
+ * Attribute Value Type: `string` {@link CLS_SOURCE_KEY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Has Dynamic Suffix: true
+ *
+ * Aliases: {@link BROWSER_WEB_VITAL_CLS_SOURCE_KEY} `browser.web_vital.cls.source.<key>`
+ *
+ * @deprecated Use {@link BROWSER_WEB_VITAL_CLS_SOURCE_KEY} (browser.web_vital.cls.source.<key>) instead - The CLS source is now recorded as a browser.web_vital.cls.source.<key> attribute.
+ * @example "body > div#app"
+ */
+export const CLS_SOURCE_KEY = 'cls.source.<key>';
+
+/**
+ * Type for {@link CLS_SOURCE_KEY} cls.source.<key>
+ */
+export type CLS_SOURCE_KEY_TYPE = string;
 
 // Path: model/attributes/code/code__filepath.json
 
@@ -8889,6 +8938,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [BROWSER_SCRIPT_INVOKER_TYPE]: 'string',
   [BROWSER_SCRIPT_SOURCE_CHAR_POSITION]: 'integer',
   [BROWSER_VERSION]: 'string',
+  [BROWSER_WEB_VITAL_CLS_SOURCE_KEY]: 'string',
   [CACHE_HIT]: 'boolean',
   [CACHE_ITEM_SIZE]: 'integer',
   [CACHE_KEY]: 'string[]',
@@ -8900,6 +8950,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [CLOUDFLARE_D1_DURATION]: 'integer',
   [CLOUDFLARE_D1_ROWS_READ]: 'integer',
   [CLOUDFLARE_D1_ROWS_WRITTEN]: 'integer',
+  [CLS_SOURCE_KEY]: 'string',
   [CODE_FILEPATH]: 'string',
   [CODE_FILE_PATH]: 'string',
   [CODE_FUNCTION]: 'string',
@@ -9316,6 +9367,7 @@ export type AttributeName =
   | typeof BROWSER_SCRIPT_INVOKER_TYPE
   | typeof BROWSER_SCRIPT_SOURCE_CHAR_POSITION
   | typeof BROWSER_VERSION
+  | typeof BROWSER_WEB_VITAL_CLS_SOURCE_KEY
   | typeof CACHE_HIT
   | typeof CACHE_ITEM_SIZE
   | typeof CACHE_KEY
@@ -9327,6 +9379,7 @@ export type AttributeName =
   | typeof CLOUDFLARE_D1_DURATION
   | typeof CLOUDFLARE_D1_ROWS_READ
   | typeof CLOUDFLARE_D1_ROWS_WRITTEN
+  | typeof CLS_SOURCE_KEY
   | typeof CODE_FILEPATH
   | typeof CODE_FILE_PATH
   | typeof CODE_FUNCTION
@@ -10166,6 +10219,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '120.0.6099.130',
     aliases: [SENTRY_BROWSER_VERSION],
   },
+  [BROWSER_WEB_VITAL_CLS_SOURCE_KEY]: {
+    brief: 'The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    hasDynamicSuffix: true,
+    example: 'body > div#app',
+    aliases: [CLS_SOURCE_KEY],
+    sdks: ['javascript-browser'],
+  },
   [CACHE_HIT]: {
     brief: 'If the cache was hit during this span.',
     type: 'boolean',
@@ -10274,6 +10339,22 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 12,
     sdks: ['javascript-cloudflare'],
+  },
+  [CLS_SOURCE_KEY]: {
+    brief: 'The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    hasDynamicSuffix: true,
+    example: 'body > div#app',
+    deprecation: {
+      replacement: 'browser.web_vital.cls.source.<key>',
+      reason: 'The CLS source is now recorded as a browser.web_vital.cls.source.<key> attribute.',
+    },
+    aliases: [BROWSER_WEB_VITAL_CLS_SOURCE_KEY],
+    sdks: ['javascript-browser'],
   },
   [CODE_FILEPATH]: {
     brief:
@@ -14088,6 +14169,7 @@ export type Attributes = {
   [BROWSER_SCRIPT_INVOKER_TYPE]?: BROWSER_SCRIPT_INVOKER_TYPE_TYPE;
   [BROWSER_SCRIPT_SOURCE_CHAR_POSITION]?: BROWSER_SCRIPT_SOURCE_CHAR_POSITION_TYPE;
   [BROWSER_VERSION]?: BROWSER_VERSION_TYPE;
+  [BROWSER_WEB_VITAL_CLS_SOURCE_KEY]?: BROWSER_WEB_VITAL_CLS_SOURCE_KEY_TYPE;
   [CACHE_HIT]?: CACHE_HIT_TYPE;
   [CACHE_ITEM_SIZE]?: CACHE_ITEM_SIZE_TYPE;
   [CACHE_KEY]?: CACHE_KEY_TYPE;
@@ -14099,6 +14181,7 @@ export type Attributes = {
   [CLOUDFLARE_D1_DURATION]?: CLOUDFLARE_D1_DURATION_TYPE;
   [CLOUDFLARE_D1_ROWS_READ]?: CLOUDFLARE_D1_ROWS_READ_TYPE;
   [CLOUDFLARE_D1_ROWS_WRITTEN]?: CLOUDFLARE_D1_ROWS_WRITTEN_TYPE;
+  [CLS_SOURCE_KEY]?: CLS_SOURCE_KEY_TYPE;
   [CODE_FILEPATH]?: CODE_FILEPATH_TYPE;
   [CODE_FILE_PATH]?: CODE_FILE_PATH_TYPE;
   [CODE_FUNCTION]?: CODE_FUNCTION_TYPE;

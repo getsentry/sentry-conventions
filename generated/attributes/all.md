@@ -31,6 +31,7 @@ Total attributes: 424
 | [`browser.script.invoker_type`](./browser.md#browserscriptinvoker_type) | Browser script entry point type. |
 | [`browser.script.source_char_position`](./browser.md#browserscriptsource_char_position) | A number representing the script character position of the script. |
 | [`browser.version`](./browser.md#browserversion) | The version of the browser. |
+| [`browser.web_vital.cls.source.\<key\>`](./browser.md#browserweb_vitalclssourcekey) | The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N |
 | [`cache.hit`](./cache.md#cachehit) | If the cache was hit during this span. |
 | [`cache.item_size`](./cache.md#cacheitem_size) | The size of the requested item in the cache. In bytes. |
 | [`cache.key`](./cache.md#cachekey) | The key of the cache accessed. |
@@ -381,6 +382,7 @@ Total attributes: 424
 | [`ai.top_k`](./ai.md#aitop_k) | [`gen_ai.request.top_k`](./gen_ai.md#gen_airequesttop_k) |
 | [`ai.top_p`](./ai.md#aitop_p) | [`gen_ai.request.top_p`](./gen_ai.md#gen_airequesttop_p) |
 | [`ai.total_tokens.used`](./ai.md#aitotal_tokensused) | [`gen_ai.usage.total_tokens`](./gen_ai.md#gen_aiusagetotal_tokens) |
+| [`cls.source.\<key\>`](./cls.md#clssourcekey) | [`browser.web_vital.cls.source.\<key\>`](./browser.md#browserweb_vitalclssourcekey) |
 | [`code.filepath`](./code.md#codefilepath) | [`code.file.path`](./code.md#codefilepath) |
 | [`code.function`](./code.md#codefunction) | [`code.function.name`](./code.md#codefunctionname) |
 | [`code.lineno`](./code.md#codelineno) | [`code.line.number`](./code.md#codelinenumber) |
