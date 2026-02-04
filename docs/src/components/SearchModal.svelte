@@ -47,6 +47,7 @@ let selectedIndex = 0;
 let isLoading = false;
 let inputEl: HTMLInputElement;
 let resultsEl: HTMLDivElement;
+let usingKeyboard = false;
 
 $: totalResults = attributeResults.length + pageResults.length;
 $: hasResults = attributeResults.length > 0 || pageResults.length > 0;
@@ -193,14 +194,26 @@ $: {
 function handleKeyDown(e: KeyboardEvent) {
   if (e.key === 'ArrowDown') {
     e.preventDefault();
+    usingKeyboard = true;
     selectedIndex = Math.min(selectedIndex + 1, totalResults - 1);
   } else if (e.key === 'ArrowUp') {
     e.preventDefault();
+    usingKeyboard = true;
     selectedIndex = Math.max(selectedIndex - 1, 0);
   } else if (e.key === 'Enter') {
     e.preventDefault();
     navigateToSelected();
   }
+}
+
+function handleMouseEnter(index: number) {
+  if (!usingKeyboard) {
+    selectedIndex = index;
+  }
+}
+
+function handleMouseMove() {
+  usingKeyboard = false;
 }
 
 function navigateToSelected() {
@@ -297,7 +310,8 @@ function highlightMatch(key: string, searchQuery: string): { before: string; mat
               <button
                 class="flex flex-col gap-1 w-full px-4 py-3 bg-transparent border-none border-b border-border last:border-b-0 text-left cursor-pointer transition-all duration-fast border-l-2 {index === selectedIndex ? 'bg-accent/15 border-l-accent selected shadow-[inset_0_0_0_1px_rgba(149,128,255,0.2)]' : 'border-l-transparent hover:bg-bg-hover hover:border-l-border-light'}"
                 on:click={() => navigateToAttribute(attr)}
-                on:mouseenter={() => selectedIndex = index}
+                on:mouseenter={() => handleMouseEnter(index)}
+                on:mousemove={handleMouseMove}
               >
                 <div class="flex items-center justify-between gap-3 flex-wrap">
                   <code class="font-mono text-sm font-medium bg-transparent p-0 border-none text-accent">
@@ -332,7 +346,8 @@ function highlightMatch(key: string, searchQuery: string): { before: string; mat
               <button
                 class="flex flex-col gap-1 w-full px-4 py-3 bg-transparent border-none border-b border-border last:border-b-0 text-left cursor-pointer transition-all duration-fast border-l-2 {actualIndex === selectedIndex ? 'bg-accent/15 border-l-accent selected shadow-[inset_0_0_0_1px_rgba(149,128,255,0.2)]' : 'border-l-transparent hover:bg-bg-hover hover:border-l-border-light'}"
                 on:click={() => navigateToResult(result)}
-                on:mouseenter={() => selectedIndex = actualIndex}
+                on:mouseenter={() => handleMouseEnter(actualIndex)}
+                on:mousemove={handleMouseMove}
               >
                 <span class="text-sm font-medium {actualIndex === selectedIndex ? 'text-accent' : 'text-text-primary'}">
                   {result.title}
