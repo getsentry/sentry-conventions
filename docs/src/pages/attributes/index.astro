@@ -39,34 +39,54 @@ const deprecatedCount = totalAttributes - stableCount;
 ---
 
 <BaseLayout title="Attributes" description="Browse all Sentry semantic convention attributes">
-  <div class="mb-8">
-    <div>
-      <h1>Attributes</h1>
-      <p class="text-lg text-text-secondary">
-        Browse all {totalAttributes} span and breadcrumb attributes. 
-        <span class="inline-flex items-center gap-2 ml-2">
-          <span class="text-pii-false">{stableCount} stable</span>
-          <span class="text-text-muted">·</span>
-          <span class="text-text-muted">{deprecatedCount} deprecated</span>
-        </span>
-      </p>
-    </div>
-  </div>
-  
-  <nav class="flex items-start gap-4 p-4 bg-bg-secondary border border-border rounded-lg mb-8 flex-col md:flex-row">
-    <span class="text-sm text-text-muted whitespace-nowrap pt-1">Jump to:</span>
-    <div class="flex flex-wrap gap-2">
-      {sortedCategories.map(category => (
-        <CategoryChip
-          name={category}
-          count={categoryMap.get(category)?.length || 0}
-          href={`#${category}`}
-        />
-      ))}
-    </div>
-  </nav>
-  
-  <div class="flex flex-col gap-12">
+  <div class="flex gap-8">
+    <aside class="hidden lg:block flex-shrink-0 w-40 sticky top-[calc(64px+1.5rem)] max-h-[calc(100vh-64px-3rem)] overflow-y-auto self-start">
+      <h3 class="text-sm text-text-muted uppercase tracking-wider mb-3">Categories</h3>
+      <nav class="flex flex-col gap-1">
+        <a 
+          href={`${import.meta.env.BASE_URL}attributes/`}
+          class="text-sm px-2 py-1 rounded-sm transition-fast bg-accent-soft text-accent"
+        >
+          All
+        </a>
+        {sortedCategories.map(cat => (
+          <a 
+            href={`${import.meta.env.BASE_URL}attributes/${cat}/`}
+            class="text-sm px-2 py-1 rounded-sm transition-fast text-text-secondary hover:bg-bg-hover hover:text-text-primary"
+          >
+            {cat}
+          </a>
+        ))}
+      </nav>
+    </aside>
+    
+    <div class="flex-1 min-w-0">
+      <div class="mb-8">
+        <h1>Attributes</h1>
+        <p class="text-lg text-text-secondary">
+          Browse all {totalAttributes} span and breadcrumb attributes. 
+          <span class="inline-flex items-center gap-2 ml-2">
+            <span class="text-pii-false">{stableCount} stable</span>
+            <span class="text-text-muted">·</span>
+            <span class="text-text-muted">{deprecatedCount} deprecated</span>
+          </span>
+        </p>
+      </div>
+      
+      <nav class="flex items-start gap-4 p-4 bg-bg-secondary border border-border rounded-lg mb-8 flex-col md:flex-row">
+        <span class="text-sm text-text-muted whitespace-nowrap pt-1">Jump to:</span>
+        <div class="flex flex-wrap gap-2">
+          {sortedCategories.map(category => (
+            <CategoryChip
+              name={category}
+              count={categoryMap.get(category)?.length || 0}
+              href={`#${category}`}
+            />
+          ))}
+        </div>
+      </nav>
+      
+      <div class="flex flex-col gap-12">
     {sortedCategories.map(category => {
       const attributes = categoryMap.get(category) || [];
       const stableAttrs = attributes.filter(a => !a.data.deprecation);
@@ -112,5 +132,7 @@ const deprecatedCount = totalAttributes - stableCount;
         </section>
       );
     })}
+      </div>
+    </div>
   </div>
 </BaseLayout>

@@ -19,10 +19,17 @@ export async function getStaticPaths() {
     categoryMap.get(category)?.push(attr);
   }
 
+  // Sort categories alphabetically, but put 'general' first
+  const sortedCategories = Array.from(categoryMap.keys()).sort((a, b) => {
+    if (a === 'general') return -1;
+    if (b === 'general') return 1;
+    return a.localeCompare(b);
+  });
+
   // Generate paths for each category
   return Array.from(categoryMap.entries()).map(([category, attributes]) => ({
     params: { category },
-    props: { attributes, allCategories: Array.from(categoryMap.keys()).sort() },
+    props: { attributes, allCategories: sortedCategories },
   }));
 }
 
@@ -59,6 +66,12 @@ const categoryTitle = category.charAt(0).toUpperCase() + category.slice(1);
     <aside class="hidden lg:block flex-shrink-0 w-40 sticky top-[calc(64px+1.5rem)] max-h-[calc(100vh-64px-3rem)] overflow-y-auto self-start">
       <h3 class="text-sm text-text-muted uppercase tracking-wider mb-3">Categories</h3>
       <nav class="flex flex-col gap-1">
+        <a 
+          href={`${import.meta.env.BASE_URL}attributes/`}
+          class="text-sm px-2 py-1 rounded-sm transition-fast text-text-secondary hover:bg-bg-hover hover:text-text-primary"
+        >
+          All
+        </a>
         {allCategories.map(cat => (
           <a 
             href={`${import.meta.env.BASE_URL}attributes/${cat}/`}
