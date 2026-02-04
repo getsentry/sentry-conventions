@@ -1,0 +1,126 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AttributeCard from '../../components/AttributeCard.astro';
+import CategoryChip from '../../components/CategoryChip.astro';
+import { getCollection } from 'astro:content';
+import { parseAttributeId } from '../../utils/category';
+
+// Get all attributes
+const allAttributes = await getCollection('attributes');
+
+// Build category map
+const categoryMap = new Map<string, typeof allAttributes>();
+
+for (const attr of allAttributes) {
+  const { category } = parseAttributeId(attr.id);
+
+  if (!categoryMap.has(category)) {
+    categoryMap.set(category, []);
+  }
+  categoryMap.get(category)?.push(attr);
+}
+
+// Sort categories alphabetically, but put 'general' first
+const sortedCategories = Array.from(categoryMap.keys()).sort((a, b) => {
+  if (a === 'general') return -1;
+  if (b === 'general') return 1;
+  return a.localeCompare(b);
+});
+
+// Sort attributes within each category
+for (const [category, attrs] of categoryMap) {
+  attrs.sort((a, b) => a.data.key.localeCompare(b.data.key));
+}
+
+// Stats
+const totalAttributes = allAttributes.length;
+const stableCount = allAttributes.filter((a) => !a.data.deprecation).length;
+const deprecatedCount = totalAttributes - stableCount;
+---
+
+<BaseLayout title="Attributes" description="Browse all Sentry semantic convention attributes">
+  <div class="flex gap-8">
+    <aside class="hidden lg:block flex-shrink-0 w-40 sticky top-[calc(64px+1.5rem)] max-h-[calc(100vh-64px-3rem)] overflow-y-auto self-start">
+      <h3 class="text-sm text-text-muted uppercase tracking-wider mb-3">Categories</h3>
+      <nav class="flex flex-col gap-1">
+        <a 
+          href={`${import.meta.env.BASE_URL}attributes/`}
+          class="text-sm px-2 py-1 rounded-sm transition-fast bg-accent-soft text-accent"
+        >
+          All
+        </a>
+        {sortedCategories.map(cat => (
+          <a 
+            href={`${import.meta.env.BASE_URL}attributes/${cat}/`}
+            class="text-sm px-2 py-1 rounded-sm transition-fast text-text-secondary hover:bg-bg-hover hover:text-text-primary"
+          >
+            {cat}
+          </a>
+        ))}
+      </nav>
+    </aside>
+    
+    <div class="flex-1 min-w-0">
+      <div class="mb-8">
+        <h1>Attributes</h1>
+        <p class="text-lg text-text-secondary">
+          Browse all {totalAttributes} span and breadcrumb attributes. 
+          <span class="inline-flex items-center gap-2 ml-2">
+            <span class="text-pii-false">{stableCount} stable</span>
+            <span class="text-text-muted">·</span>
+            <span class="text-text-muted">{deprecatedCount} deprecated</span>
+          </span>
+        </p>
+      </div>
+      
+      
+      <div class="flex flex-col gap-12">
+    {sortedCategories.map(category => {
+      const attributes = categoryMap.get(category) || [];
+      const stableAttrs = attributes.filter(a => !a.data.deprecation);
+      const deprecatedAttrs = attributes.filter(a => a.data.deprecation);
+      
+      return (
+        <section class="scroll-mt-20" id={category}>
+          <div class="flex items-baseline gap-4 mb-6 pb-3 border-b border-border">
+            <h2 class="m-0 text-2xl">
+              <a href={`${import.meta.env.BASE_URL}attributes/${category}/`} class="text-text-primary hover:text-accent">{category}</a>
+            </h2>
+            <span class="text-sm text-text-muted">{attributes.length} attributes</span>
+          </div>
+          
+          {stableAttrs.length > 0 && (
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
+              {stableAttrs.slice(0, 6).map(attr => (
+                <AttributeCard attribute={attr.data} id={attr.id} />
+              ))}
+            </div>
+          )}
+          
+          {stableAttrs.length > 6 && (
+            <a href={`${import.meta.env.BASE_URL}attributes/${category}/`} class="inline-block mt-4 text-sm text-accent hover:text-accent-hover">
+              View all {attributes.length} {category} attributes →
+            </a>
+          )}
+          
+          {stableAttrs.length <= 6 && deprecatedAttrs.length > 0 && (
+            <details class="mt-6 group">
+              <summary class="cursor-pointer list-none">
+                <span class="inline-flex items-center gap-2 px-4 py-2 bg-bg-secondary border border-dashed border-border rounded-md text-sm text-text-muted transition-all duration-fast hover:border-border-light hover:text-text-secondary group-open:mb-4">
+                  {deprecatedAttrs.length} deprecated attribute{deprecatedAttrs.length > 1 ? 's' : ''}
+                </span>
+              </summary>
+              <div class="grid grid-cols-1 xl:grid-cols-2 gap-4 opacity-80">
+                {deprecatedAttrs.map(attr => (
+                  <AttributeCard attribute={attr.data} id={attr.id} />
+                ))}
+              </div>
+            </details>
+          )}
+        </section>
+      );
+    })}
+      </div>
+    </div>
+  </div>
+</BaseLayout>

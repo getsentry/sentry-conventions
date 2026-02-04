@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+// Get counts for the stats
+const attributes = await getCollection('attributes');
+const names = await getCollection('names');
+
+const totalAttributes = attributes.length;
+const stableAttributes = attributes.filter((a) => !a.data.deprecation).length;
+const deprecatedAttributes = totalAttributes - stableAttributes;
+
+// Get unique categories
+const categories = new Set(
+  attributes.map((a) => {
+    const parts = a.id.split('/');
+    return parts.length > 1 ? parts[0] : 'general';
+  }),
+);
+---
+
+<BaseLayout title="Home">
+  <div class="py-8 mb-8">
+    <h1 class="text-3xl font-semibold leading-tight mb-6">
+      Sentry Semantic Conventions
+    </h1>
+    <p class="text-base text-text-secondary mb-4 max-w-3xl leading-relaxed">
+      This repository contains the Sentry Semantic Conventions as defined by <a href="https://github.com/getsentry/rfcs/blob/main/text/0116-sentry-semantic-conventions.md" target="_blank" rel="noopener" class="text-accent hover:text-accent-hover">RFC #116</a>.
+    </p>
+    <p class="text-base text-text-secondary mb-4 max-w-3xl leading-relaxed">
+      Sentry's semantic conventions align with and extend <a href="https://opentelemetry.io/docs/concepts/semantic-conventions/" target="_blank" rel="noopener" class="text-accent hover:text-accent-hover">OpenTelemetry's semantic conventions</a>. 
+      They currently apply to span, breadcrumb and log and metric attributes (<code class="text-sm">span.data</code> and <code class="text-sm">breadcrumb.data</code> for backwards compatibility).
+    </p>
+    <p class="text-base text-text-secondary mb-4 max-w-3xl leading-relaxed">
+      These will be a standardized naming scheme for operations and data that will be shared across the SDKs, ingest, and the product. 
+      This allows us to have a single source of truth for the semantic conventions, and also allows us to generate code for all parts of the stack (ingest, frontend, backend, data pipelines) that need to be aware of this.
+    </p>
+    <a class="text-base text-text-secondary mb-4 max-w-3xl leading-relaxed">
+      Conventions may also map attributes from OpenTelemetry resource attributes into Sentry's semantic attributes. 
+      Such OpenTelemetry resource attributes are ingested into Sentry as regular attributes under the <a href="attributes/resource"> <code class="text-sm">resource</code></a> <span class="text-text-secondary">category</span>.
+    </p>
+    <div class="flex gap-3 mt-6 flex-col sm:flex-row">
+      <a href={`${import.meta.env.BASE_URL}attributes/`} class="btn btn-primary justify-center">
+        Browse Attributes
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+      <a href="https://github.com/getsentry/sentry-conventions" class="btn btn-secondary justify-center" target="_blank" rel="noopener">
+        View on GitHub
+      </a>
+    </div>
+  </div>
+  
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+    <div class="card text-center">
+      <span class="block text-2xl font-semibold text-text-primary mb-1">{totalAttributes}</span>
+      <span class="text-xs text-text-muted uppercase tracking-wider">Total Attributes</span>
+    </div>
+    <div class="card text-center">
+      <span class="block text-2xl font-semibold text-text-primary mb-1">{stableAttributes}</span>
+      <span class="text-xs text-text-muted uppercase tracking-wider">Stable</span>
+    </div>
+    <div class="card text-center">
+      <span class="block text-2xl font-semibold text-text-primary mb-1">{deprecatedAttributes}</span>
+      <span class="text-xs text-text-muted uppercase tracking-wider">Deprecated</span>
+    </div>
+    <div class="card text-center">
+      <span class="block text-2xl font-semibold text-text-primary mb-1">{categories.size}</span>
+      <span class="text-xs text-text-muted uppercase tracking-wider">Categories</span>
+    </div>
+  </div>
+
+</BaseLayout>
