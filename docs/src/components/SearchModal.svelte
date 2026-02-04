@@ -1,5 +1,6 @@
 <script lang="ts">
 import { onMount } from 'svelte';
+import DOMPurify from 'dompurify';
 interface WindowWithPagefind {
   pagefind?: {
     search: (query: string) => Promise<PagefindSearchResponse>;
@@ -355,7 +356,7 @@ function highlightMatch(key: string, searchQuery: string): { before: string; mat
                 <span 
                   class="text-xs text-text-muted leading-relaxed line-clamp-2 [&_mark]:bg-accent-soft [&_mark]:text-accent [&_mark]:px-0.5 [&_mark]:rounded-sm"
                 >
-                  {@html result.excerpt}
+                  {@html DOMPurify.sanitize(result.excerpt, { ALLOWED_TAGS: ['mark'] })}
                 </span>
               </button>
             {/each}
