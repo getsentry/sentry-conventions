@@ -12,36 +12,33 @@ interface Props {
 
 const { attribute, id, showCategory = false } = Astro.props;
 
-const { category, slug } = parseAttributeId(id);
+const { category } = parseAttributeId(id);
 const isDeprecated = !!attribute.deprecation;
-const detailUrl = `${import.meta.env.BASE_URL}attributes/${category}/${slug}/`;
+const anchorId = attribute.key.replace(/\./g, '-').replace(/</g, '').replace(/>/g, '');
+const rawJson = JSON.stringify(attribute, null, 2);
 ---
 
 <article 
   class:list={[
-    'bg-bg-secondary border border-border rounded-lg p-5 transition-colors duration-fast scroll-mt-24 hover:border-border-light',
+    'attribute-card bg-bg-secondary border border-border rounded-lg p-5 transition-colors duration-fast scroll-mt-24 hover:border-border-light',
     { 'opacity-70 border-dashed hover:opacity-100': isDeprecated }
   ]} 
-  id={attribute.key.replace(/\./g, '-').replace(/</g, '').replace(/>/g, '')}
+  id={anchorId}
   data-pagefind-body
 >
   <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
     <h3 class="flex items-center gap-2 text-base m-0" data-pagefind-meta="title">
-      <a 
-        href={detailUrl} 
-        class="inline-flex items-center transition-colors duration-fast"
-        aria-label={`View details for ${attribute.key}`}
-        title="View attribute details"
-      >
-        <code class="text-base p-0 bg-transparent border-none text-accent transition-all duration-fast hover:text-accent-hover hover:underline hover:underline-offset-2" data-pagefind-index-attrs="data-key" data-key={attribute.key}>{attribute.key}</code>
-      </a>
+      <code class="text-base p-0 bg-transparent border-none text-accent" data-pagefind-index-attrs="data-key" data-key={attribute.key}>{attribute.key}</code>
       {isDeprecated && <span class="badge badge-deprecated">Deprecated</span>}
     </h3>
     <div class="flex flex-wrap items-center gap-2">
       <TypeBadge type={attribute.type} />
       <PiiBadge pii={attribute.pii.key} reason={attribute.pii.reason} />
-      {attribute.is_in_otel && (
-        <span class="badge badge-otel" title="Defined in OpenTelemetry Semantic Conventions">OTel</span>
+      {attribute.is_in_otel != null && (
+        <span class="badge badge-otel" title="Defined in OpenTelemetry Semantic Conventions">OTel: {attribute.is_in_otel ? 'True' : 'False'}</span>
+      )}
+      {attribute.has_dynamic_suffix && (
+        <span class="badge badge-dynamic" title="This attribute has a dynamic suffix">Dynamic</span>
       )}
       {showCategory && (
         <a href={`${import.meta.env.BASE_URL}attributes/${category}/`} class="text-xs px-2 py-1 bg-bg-elevated rounded-sm text-text-muted hover:text-accent hover:bg-accent-soft">{category}</a>
@@ -52,6 +49,13 @@ const detailUrl = `${import.meta.env.BASE_URL}attributes/${category}/${slug}/`;
   <p class="text-sm text-text-secondary mb-4 leading-relaxed">{attribute.brief}</p>
   
   <div class="flex flex-col gap-2">
+    {attribute.pii.reason && (
+      <div class="flex items-baseline gap-3 text-sm">
+        <span class="text-text-muted min-w-[100px] flex-shrink-0">PII Reason</span>
+        <span class="text-text-secondary">{attribute.pii.reason}</span>
+      </div>
+    )}
+    
     {attribute.example !== undefined && (
       <div class="flex items-baseline gap-3 text-sm">
         <span class="text-text-muted min-w-[100px] flex-shrink-0">Example</span>
@@ -64,6 +68,17 @@ const detailUrl = `${import.meta.env.BASE_URL}attributes/${category}/${slug}/`;
         <span class="text-text-muted min-w-[100px] flex-shrink-0">Aliases</span>
         <span class="text-text-secondary">
           {attribute.alias.map((a) => <code class="text-xs mr-1">{a}</code>)}
+        </span>
+      </div>
+    )}
+    
+    {attribute.sdks && attribute.sdks.length > 0 && (
+      <div class="flex items-baseline gap-3 text-sm">
+        <span class="text-text-muted min-w-[100px] flex-shrink-0">SDKs</span>
+        <span class="inline-flex flex-wrap gap-2">
+          {attribute.sdks.map((sdk) => (
+            <span class="px-2 py-0.5 bg-bg-elevated border border-border rounded-sm text-xs text-text-secondary">{sdk}</span>
+          ))}
         </span>
       </div>
     )}
@@ -85,14 +100,49 @@ const detailUrl = `${import.meta.env.BASE_URL}attributes/${category}/${slug}/`;
         {attribute.deprecation?.reason && (
           <p class="mt-2 text-text-muted text-sm m-0">{attribute.deprecation.reason}</p>
         )}
+        {attribute.deprecation?._status && (
+          <p class="mt-2 text-text-muted text-xs m-0">Status: <code class="text-xs">{attribute.deprecation._status}</code></p>
+        )}
       </div>
     )}
   </div>
   
-  <a href={detailUrl} class="inline-flex items-center gap-1 mt-4 pt-3 border-t border-border text-sm text-text-muted transition-colors duration-fast hover:text-accent group">
-    View details
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform duration-fast group-hover:translate-x-[3px]">
-      <path d="M5 12h14M12 5l7 7-7 7"/>
-    </svg>
-  </a>
+  <details class="mt-4 pt-3 border-t border-border group">
+    <summary class="cursor-pointer list-none flex items-center gap-2 text-sm text-text-muted transition-colors duration-fast hover:text-text-secondary">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform duration-fast group-open:rotate-90">
+        <path d="M9 18l6-6-6-6"/>
+      </svg>
+      Raw JSON
+    </summary>
+    <div class="relative mt-3">
+      <button class="copy-btn absolute top-2 right-2 flex items-center gap-1 px-2 py-1 bg-bg-elevated border border-border rounded text-text-muted text-xs cursor-pointer transition-all duration-fast z-10 hover:text-text-secondary hover:border-border-light" type="button" title="Copy JSON">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+          <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+        </svg>
+        <span>Copy</span>
+      </button>
+      <pre class="m-0 p-4 pt-10 bg-bg-elevated border border-border rounded-md overflow-x-auto text-xs"><code class="json-code text-text-secondary">{rawJson}</code></pre>
+    </div>
+  </details>
 </article>
+
+<script>
+  // Copy button functionality for all attribute cards
+  document.querySelectorAll('.attribute-card .copy-btn').forEach(copyBtn => {
+    copyBtn.addEventListener('click', async () => {
+      const jsonCode = copyBtn.closest('.relative')?.querySelector('.json-code');
+      const text = jsonCode?.textContent;
+      if (text) {
+        await navigator.clipboard.writeText(text);
+        const span = copyBtn.querySelector('span');
+        if (span) {
+          span.textContent = 'Copied!';
+          setTimeout(() => {
+            span.textContent = 'Copy';
+          }, 2000);
+        }
+      }
+    });
+  });
+</script>
