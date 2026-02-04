@@ -73,18 +73,6 @@ const deprecatedCount = totalAttributes - stableCount;
         </p>
       </div>
       
-      <nav class="flex items-start gap-4 p-4 bg-bg-secondary border border-border rounded-lg mb-8 flex-col md:flex-row">
-        <span class="text-sm text-text-muted whitespace-nowrap pt-1">Jump to:</span>
-        <div class="flex flex-wrap gap-2">
-          {sortedCategories.map(category => (
-            <CategoryChip
-              name={category}
-              count={categoryMap.get(category)?.length || 0}
-              href={`#${category}`}
-            />
-          ))}
-        </div>
-      </nav>
       
       <div class="flex flex-col gap-12">
     {sortedCategories.map(category => {
