@@ -5,7 +5,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && npm run postbuild",
+    "build": "astro build && yarn postbuild",
     "postbuild": "pagefind --site dist --output-subdir pagefind",
     "preview": "astro preview",
     "astro": "astro"

@@ -1,6 +1,12 @@
 <script lang="ts">
-import { onMount, onDestroy } from 'svelte';
-
+import { onMount } from 'svelte';
+interface WindowWithPagefind {
+  pagefind?: {
+    search: (query: string) => Promise<PagefindSearchResponse>;
+    init: () => Promise<void>;
+  };
+  attributeIndex?: AttributeIndex[];
+}
 interface PagefindResult {
   id: string;
   data: () => Promise<{
@@ -33,16 +39,6 @@ interface AttributeIndex {
   deprecated: boolean;
 }
 
-declare global {
-  interface Window {
-    pagefind?: {
-      search: (query: string) => Promise<PagefindSearchResponse>;
-      init: () => Promise<void>;
-    };
-    attributeIndex?: AttributeIndex[];
-  }
-}
-
 let isOpen = false;
 let query = '';
 let attributeResults: AttributeIndex[] = [];
@@ -57,28 +53,34 @@ $: hasResults = attributeResults.length > 0 || pageResults.length > 0;
 $: noResults = query && !isLoading && !hasResults;
 
 async function loadAttributeIndex() {
-  if (window.attributeIndex) return;
+  const windowWithPagefind = window as WindowWithPagefind;
+  if (windowWithPagefind.attributeIndex) {
+    return;
+  }
 
   try {
     const baseUrl = import.meta.env.BASE_URL || '/';
     const response = await fetch(`${baseUrl}api/attributes.json`);
-    window.attributeIndex = await response.json();
+    windowWithPagefind.attributeIndex = await response.json();
   } catch (e) {
     console.error('Failed to load attribute index:', e);
-    window.attributeIndex = [];
+    windowWithPagefind.attributeIndex = [];
   }
 }
 
 async function loadPagefind() {
-  if (window.pagefind) return;
+  const windowWithPagefind = window as WindowWithPagefind;
+  if (windowWithPagefind.pagefind) {
+    return;
+  }
 
   try {
     const baseUrl = import.meta.env.BASE_URL || '/';
     const pagefindPath = `${baseUrl}pagefind/pagefind.js`;
-    const importFn = new Function('path', 'return import(path)');
-    const pagefind = await importFn(pagefindPath);
+    // @vite-ignore tells Vite not to analyze this import (pagefind is generated at build time)
+    const pagefind = await import(/* @vite-ignore */ pagefindPath);
     await pagefind.init();
-    window.pagefind = pagefind;
+    windowWithPagefind.pagefind = pagefind;
   } catch (e) {
     console.error('Failed to load pagefind:', e);
   }
@@ -135,8 +137,9 @@ $: {
     isLoading = true;
 
     // Search attributes (instant, client-side)
-    if (window.attributeIndex) {
-      const matches = window.attributeIndex
+    const windowWithPagefind = window as WindowWithPagefind;
+    if (windowWithPagefind.attributeIndex) {
+      const matches = windowWithPagefind.attributeIndex
         .filter((attr) => {
           const key = attr.key.toLowerCase();
           return key.includes(trimmedQuery);
@@ -162,9 +165,9 @@ $: {
     }
 
     // Search pages with Pagefind (async)
-    if (window.pagefind) {
+    if (windowWithPagefind.pagefind) {
       try {
-        const response = await window.pagefind.search(query);
+        const response = await windowWithPagefind.pagefind.search(query);
         const searchResults = await Promise.all(
           response.results.slice(0, 5).map(async (result) => {
             const data = await result.data();
