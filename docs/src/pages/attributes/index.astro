@@ -40,24 +40,16 @@ const deprecatedCount = totalAttributes - stableCount;
 
 <BaseLayout title="Attributes" description="Browse all Sentry semantic convention attributes">
   <div class="mb-8">
-    <div class="flex items-start justify-between gap-6 flex-wrap">
-      <div>
-        <h1>Attributes</h1>
-        <p class="text-lg text-text-secondary">
-          Browse all {totalAttributes} span and breadcrumb attributes. 
-          <span class="inline-flex items-center gap-2 ml-2">
-            <span class="text-pii-false">{stableCount} stable</span>
-            <span class="text-text-muted">·</span>
-            <span class="text-text-muted">{deprecatedCount} deprecated</span>
-          </span>
-        </p>
-      </div>
-      <a href={`${import.meta.env.BASE_URL}attributes/new/`} class="btn btn-primary whitespace-nowrap">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M12 5v14M5 12h14"/>
-        </svg>
-        Create New
-      </a>
+    <div>
+      <h1>Attributes</h1>
+      <p class="text-lg text-text-secondary">
+        Browse all {totalAttributes} span and breadcrumb attributes. 
+        <span class="inline-flex items-center gap-2 ml-2">
+          <span class="text-pii-false">{stableCount} stable</span>
+          <span class="text-text-muted">·</span>
+          <span class="text-text-muted">{deprecatedCount} deprecated</span>
+        </span>
+      </p>
     </div>
   </div>
   
