@@ -1,0 +1,10 @@
+{
+  "key": "culture.timezone",
+  "brief": "The timezone of the culture, as a geographic timezone identifier.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "Europe/Vienna"
+}
