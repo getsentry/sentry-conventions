@@ -47,13 +47,15 @@ let attributeResults = $state<AttributeIndex[]>([]);
 let pageResults = $state<SearchResult[]>([]);
 let selectedIndex = $state(0);
 let isLoading = $state(false);
+// biome-ignore lint/style/useConst: <false flag by biome. We bind this state to an element and it needs to be mutable>
 let inputEl: HTMLInputElement | undefined = $state();
+// biome-ignore lint/style/useConst: <false flag by biome. We bind this state to an element and it needs to be mutable>
 let resultsEl: HTMLDivElement | undefined = $state();
 let usingKeyboard = $state(false);
 
-let totalResults = $derived(attributeResults.length + pageResults.length);
-let hasResults = $derived(attributeResults.length > 0 || pageResults.length > 0);
-let noResults = $derived(query && !isLoading && !hasResults);
+const totalResults = $derived(attributeResults.length + pageResults.length);
+const hasResults = $derived(attributeResults.length > 0 || pageResults.length > 0);
+const noResults = $derived(query && !isLoading && !hasResults);
 
 async function loadAttributeIndex() {
   const windowWithPagefind = window as WindowWithPagefind;
