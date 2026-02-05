@@ -1,3 +1,80 @@
+/* Theme CSS Custom Properties */
+:root {
+  /* Light theme (default) */
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f8f9fa;
+  --color-bg-elevated: #f0f1f3;
+  --color-bg-hover: #e8e9eb;
+
+  --color-text-primary: #1a1d23;
+  --color-text-secondary: #4a5568;
+  --color-text-muted: #718096;
+
+  --color-accent: #7c3aed;
+  --color-accent-hover: #6d28d9;
+  --color-accent-soft: rgba(124, 58, 237, 0.12);
+
+  --color-border: #e2e8f0;
+  --color-border-light: #cbd5e1;
+
+  --color-success: #22c55e;
+  --color-success-soft: rgba(34, 197, 94, 0.15);
+  --color-warning: #eab308;
+  --color-warning-soft: rgba(234, 179, 8, 0.15);
+  --color-error: #ef4444;
+  --color-error-soft: rgba(239, 68, 68, 0.15);
+  --color-info: #3b82f6;
+  --color-info-soft: rgba(59, 130, 246, 0.15);
+
+  --color-code-string: #16a34a;
+  --color-code-number: #ea580c;
+
+  --color-pii-true: #ef4444;
+  --color-pii-true-soft: rgba(239, 68, 68, 0.15);
+  --color-pii-maybe: #eab308;
+  --color-pii-maybe-soft: rgba(234, 179, 8, 0.15);
+  --color-pii-false: #22c55e;
+  --color-pii-false-soft: rgba(34, 197, 94, 0.15);
+}
+
+.dark {
+  /* Dark theme */
+  --color-bg-primary: #111318;
+  --color-bg-secondary: #181b21;
+  --color-bg-elevated: #1f2329;
+  --color-bg-hover: #262b33;
+
+  --color-text-primary: #d4d7db;
+  --color-text-secondary: #8b919a;
+  --color-text-muted: #5c6370;
+
+  --color-accent: #9580ff;
+  --color-accent-hover: #a899ff;
+  --color-accent-soft: rgba(149, 128, 255, 0.12);
+
+  --color-border: #282d36;
+  --color-border-light: #343a45;
+
+  --color-success: #50a060;
+  --color-success-soft: rgba(80, 160, 96, 0.15);
+  --color-warning: #d4a72c;
+  --color-warning-soft: rgba(212, 167, 44, 0.15);
+  --color-error: #c25450;
+  --color-error-soft: rgba(194, 84, 80, 0.15);
+  --color-info: #5c9fd4;
+  --color-info-soft: rgba(92, 159, 212, 0.15);
+
+  --color-code-string: #98c379;
+  --color-code-number: #d19a66;
+
+  --color-pii-true: #c25450;
+  --color-pii-true-soft: rgba(194, 84, 80, 0.15);
+  --color-pii-maybe: #d4a72c;
+  --color-pii-maybe-soft: rgba(212, 167, 44, 0.15);
+  --color-pii-false: #50a060;
+  --color-pii-false-soft: rgba(80, 160, 96, 0.15);
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -127,15 +204,15 @@
   }
 
   .badge-deprecated {
-    @apply bg-error/15 text-error;
+    @apply bg-error-soft text-error;
   }
 
   .badge-otel {
-    @apply bg-info/15 text-info;
+    @apply bg-info-soft text-info;
   }
 
   .badge-dynamic {
-    @apply bg-warning/15 text-warning;
+    @apply bg-warning-soft text-warning;
   }
 
   .badge-type {

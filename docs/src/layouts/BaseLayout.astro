@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import SearchModal from '../components/SearchModal.svelte';
+import ThemeToggle from '../components/ThemeToggle.svelte';
 import SearchIcon from '../components/icons/SearchIcon.astro';
 import ExternalLinkIcon from '../components/icons/ExternalLinkIcon.astro';
 
@@ -25,6 +26,14 @@ const currentPath = Astro.url.pathname;
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
     <title>{title} | Sentry Conventions</title>
+    <script is:inline>
+      // Initialize theme before render to prevent flash
+      const theme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (theme === 'dark' || (!theme && prefersDark)) {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
   </head>
   <body>
     <div class="flex flex-col min-h-screen">
@@ -80,17 +89,20 @@ const currentPath = Astro.url.pathname;
             </a>
           </nav>
           
-          <button
-            class="flex items-center gap-3 px-3 py-2 bg-bg-elevated border border-border rounded-md text-text-muted text-sm cursor-pointer transition-fast hover:border-border-light hover:text-text-secondary"
-            id="search-trigger"
-            aria-label="Search"
-          >
-            <SearchIcon />
-            <span class="hidden md:flex gap-1">
-              <kbd class="inline-flex items-center justify-center min-w-[20px] h-5 px-1 bg-bg-secondary border border-border rounded-sm font-sans text-xs font-medium">⌘</kbd>
-              <kbd class="inline-flex items-center justify-center min-w-[20px] h-5 px-1 bg-bg-secondary border border-border rounded-sm font-sans text-xs font-medium">K</kbd>
-            </span>
-          </button>
+          <div class="flex items-center gap-2">
+            <button
+              class="flex items-center gap-3 px-3 py-2 bg-bg-elevated border border-border rounded-md text-text-muted text-sm cursor-pointer transition-fast hover:border-border-light hover:text-text-secondary"
+              id="search-trigger"
+              aria-label="Search"
+            >
+              <SearchIcon />
+              <span class="hidden md:flex gap-1">
+                <kbd class="inline-flex items-center justify-center min-w-[20px] h-5 px-1 bg-bg-secondary border border-border rounded-sm font-sans text-xs font-medium">⌘</kbd>
+                <kbd class="inline-flex items-center justify-center min-w-[20px] h-5 px-1 bg-bg-secondary border border-border rounded-sm font-sans text-xs font-medium">K</kbd>
+              </span>
+            </button>
+            <ThemeToggle client:load />
+          </div>
         </div>
       </header>
       
