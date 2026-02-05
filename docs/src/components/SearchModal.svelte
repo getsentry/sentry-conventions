@@ -1,6 +1,6 @@
 <script lang="ts">
-import { onMount } from 'svelte';
 import DOMPurify from 'dompurify';
+
 interface WindowWithPagefind {
   pagefind?: {
     search: (query: string) => Promise<PagefindSearchResponse>;
@@ -8,6 +8,7 @@ interface WindowWithPagefind {
   };
   attributeIndex?: AttributeIndex[];
 }
+
 interface PagefindResult {
   id: string;
   data: () => Promise<{
@@ -40,19 +41,19 @@ interface AttributeIndex {
   deprecated: boolean;
 }
 
-let isOpen = false;
-let query = '';
-let attributeResults: AttributeIndex[] = [];
-let pageResults: SearchResult[] = [];
-let selectedIndex = 0;
-let isLoading = false;
-let inputEl: HTMLInputElement;
-let resultsEl: HTMLDivElement;
-let usingKeyboard = false;
+let isOpen = $state(false);
+let query = $state('');
+let attributeResults = $state<AttributeIndex[]>([]);
+let pageResults = $state<SearchResult[]>([]);
+let selectedIndex = $state(0);
+let isLoading = $state(false);
+let inputEl: HTMLInputElement | undefined = $state();
+let resultsEl: HTMLDivElement | undefined = $state();
+let usingKeyboard = $state(false);
 
-$: totalResults = attributeResults.length + pageResults.length;
-$: hasResults = attributeResults.length > 0 || pageResults.length > 0;
-$: noResults = query && !isLoading && !hasResults;
+let totalResults = $derived(attributeResults.length + pageResults.length);
+let hasResults = $derived(attributeResults.length > 0 || pageResults.length > 0);
+let noResults = $derived(query && !isLoading && !hasResults);
 
 async function loadAttributeIndex() {
   const windowWithPagefind = window as WindowWithPagefind;
@@ -102,7 +103,8 @@ function handleTriggerClick() {
   isOpen = true;
 }
 
-onMount(() => {
+// Setup global event listeners
+$effect(() => {
   document.addEventListener('keydown', handleGlobalKeyDown);
   const trigger = document.getElementById('search-trigger');
   trigger?.addEventListener('click', handleTriggerClick);
@@ -113,22 +115,28 @@ onMount(() => {
   };
 });
 
-$: if (isOpen) {
-  loadAttributeIndex();
-  loadPagefind();
-  query = '';
-  attributeResults = [];
-  pageResults = [];
-  selectedIndex = 0;
-  setTimeout(() => inputEl?.focus(), 0);
-}
+// Handle modal open
+$effect(() => {
+  if (isOpen) {
+    loadAttributeIndex();
+    loadPagefind();
+    query = '';
+    attributeResults = [];
+    pageResults = [];
+    selectedIndex = 0;
+    setTimeout(() => inputEl?.focus(), 0);
+  }
+});
 
+// Search effect
 let searchTimeout: ReturnType<typeof setTimeout>;
 
-$: {
+$effect(() => {
+  const currentQuery = query;
+
   clearTimeout(searchTimeout);
   searchTimeout = setTimeout(async () => {
-    const trimmedQuery = query.trim().toLowerCase();
+    const trimmedQuery = currentQuery.trim().toLowerCase();
 
     if (!trimmedQuery) {
       attributeResults = [];
@@ -169,7 +177,7 @@ $: {
     // Search pages with Pagefind (async)
     if (windowWithPagefind.pagefind) {
       try {
-        const response = await windowWithPagefind.pagefind.search(query);
+        const response = await windowWithPagefind.pagefind.search(currentQuery);
         const searchResults = await Promise.all(
           response.results.slice(0, 5).map(async (result) => {
             const data = await result.data();
@@ -190,7 +198,7 @@ $: {
 
     isLoading = false;
   }, 100);
-}
+});
 
 function handleKeyDown(e: KeyboardEvent) {
   if (e.key === 'ArrowDown') {
@@ -242,10 +250,13 @@ function navigateToResult(result: SearchResult) {
   window.location.href = result.url;
 }
 
-$: if (resultsEl && selectedIndex >= 0) {
-  const selectedElement = resultsEl.querySelector('.selected') as HTMLElement;
-  selectedElement?.scrollIntoView({ block: 'nearest' });
-}
+// Scroll selected item into view
+$effect(() => {
+  if (resultsEl && selectedIndex >= 0) {
+    const selectedElement = resultsEl.querySelector('.selected') as HTMLElement;
+    selectedElement?.scrollIntoView({ block: 'nearest' });
+  }
+});
 
 function highlightMatch(key: string, searchQuery: string): { before: string; match: string; after: string } | null {
   const lowerKey = key.toLowerCase();
@@ -266,12 +277,12 @@ function highlightMatch(key: string, searchQuery: string): { before: string; mat
   <!-- svelte-ignore a11y_click_events_have_key_events a11y_no_static_element_interactions -->
   <div 
     class="fixed inset-0 bg-black/70 backdrop-blur-sm z-[1000] flex items-start justify-center pt-[10vh]"
-    on:click={() => isOpen = false}
+    onclick={() => isOpen = false}
   >
     <!-- svelte-ignore a11y_click_events_have_key_events a11y_no_static_element_interactions -->
     <div 
       class="w-full max-w-2xl bg-bg-secondary border border-border rounded-lg shadow-lg overflow-hidden mx-4"
-      on:click|stopPropagation
+      onclick={(e) => e.stopPropagation()}
     >
       <div class="flex items-center gap-3 p-4 border-b border-border">
         <svg class="text-text-muted flex-shrink-0" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -284,7 +295,7 @@ function highlightMatch(key: string, searchQuery: string): { before: string; mat
           class="flex-1 bg-transparent border-none outline-none text-lg text-text-primary font-sans placeholder:text-text-muted"
           placeholder="Search attributes (e.g., sentry.op, http.)"
           bind:value={query}
-          on:keydown={handleKeyDown}
+          onkeydown={handleKeyDown}
         />
         <kbd class="px-2 py-1 bg-bg-elevated border border-border rounded-sm text-xs text-text-muted font-sans">ESC</kbd>
       </div>
@@ -310,9 +321,9 @@ function highlightMatch(key: string, searchQuery: string): { before: string; mat
               {@const highlighted = highlightMatch(attr.key, query)}
               <button
                 class="flex flex-col gap-1 w-full px-4 py-3 bg-transparent border-none border-b border-border last:border-b-0 text-left cursor-pointer transition-all duration-fast border-l-2 {index === selectedIndex ? 'bg-accent/15 border-l-accent selected shadow-[inset_0_0_0_1px_rgba(149,128,255,0.2)]' : 'border-l-transparent hover:bg-bg-hover hover:border-l-border-light'}"
-                on:click={() => navigateToAttribute(attr)}
-                on:mouseenter={() => handleMouseEnter(index)}
-                on:mousemove={handleMouseMove}
+                onclick={() => navigateToAttribute(attr)}
+                onmouseenter={() => handleMouseEnter(index)}
+                onmousemove={handleMouseMove}
               >
                 <div class="flex items-center justify-between gap-3 flex-wrap">
                   <code class="font-mono text-sm font-medium bg-transparent p-0 border-none text-accent">
@@ -346,9 +357,9 @@ function highlightMatch(key: string, searchQuery: string): { before: string; mat
               {@const actualIndex = attributeResults.length + index}
               <button
                 class="flex flex-col gap-1 w-full px-4 py-3 bg-transparent border-none border-b border-border last:border-b-0 text-left cursor-pointer transition-all duration-fast border-l-2 {actualIndex === selectedIndex ? 'bg-accent/15 border-l-accent selected shadow-[inset_0_0_0_1px_rgba(149,128,255,0.2)]' : 'border-l-transparent hover:bg-bg-hover hover:border-l-border-light'}"
-                on:click={() => navigateToResult(result)}
-                on:mouseenter={() => handleMouseEnter(actualIndex)}
-                on:mousemove={handleMouseMove}
+                onclick={() => navigateToResult(result)}
+                onmouseenter={() => handleMouseEnter(actualIndex)}
+                onmousemove={handleMouseMove}
               >
                 <span class="text-sm font-medium {actualIndex === selectedIndex ? 'text-accent' : 'text-text-primary'}">
                   {result.title}
