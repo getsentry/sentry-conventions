@@ -835,7 +835,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The calendar system used by the culture.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "GregorianCalendar"
     """
@@ -845,7 +845,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Human readable name of the culture.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "English (United States)"
     """
@@ -857,7 +857,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether the culture uses 24-hour time format.
 
     Type: bool
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: true
     """
@@ -867,7 +867,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The locale identifier following RFC 4646.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "en-US"
     """
@@ -877,7 +877,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The timezone of the culture, as a geographic timezone identifier.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "Europe/Vienna"
     """
@@ -5380,35 +5380,35 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "culture.calendar": AttributeMetadata(
         brief="The calendar system used by the culture.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="GregorianCalendar",
     ),
     "culture.display_name": AttributeMetadata(
         brief="Human readable name of the culture.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="English (United States)",
     ),
     "culture.is_24_hour_format": AttributeMetadata(
         brief="Whether the culture uses 24-hour time format.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=True,
     ),
     "culture.locale": AttributeMetadata(
         brief="The locale identifier following RFC 4646.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="en-US",
     ),
     "culture.timezone": AttributeMetadata(
         brief="The timezone of the culture, as a geographic timezone identifier.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="Europe/Vienna",
     ),

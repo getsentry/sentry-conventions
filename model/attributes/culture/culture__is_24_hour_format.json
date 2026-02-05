@@ -3,7 +3,7 @@
   "brief": "Whether the culture uses 24-hour time format.",
   "type": "boolean",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": true

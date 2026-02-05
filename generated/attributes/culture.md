@@ -18,7 +18,7 @@ The calendar system used by the culture.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `GregorianCalendar` |
 
@@ -29,7 +29,7 @@ Human readable name of the culture.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `English (United States)` |
 
@@ -40,7 +40,7 @@ Whether the culture uses 24-hour time format.
 | Property | Value |
 | --- | --- |
 | Type | `boolean` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `true` |
 
@@ -51,7 +51,7 @@ The locale identifier following RFC 4646.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `en-US` |
 
@@ -62,7 +62,7 @@ The timezone of the culture, as a geographic timezone identifier.
 | Property | Value |
 | --- | --- |
 | Type | `string` |
-| Has PII | false |
+| Has PII | maybe |
 | Exists in OpenTelemetry | No |
 | Example | `Europe/Vienna` |
 

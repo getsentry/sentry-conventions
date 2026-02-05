@@ -3,7 +3,7 @@
   "brief": "Human readable name of the culture.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "English (United States)"

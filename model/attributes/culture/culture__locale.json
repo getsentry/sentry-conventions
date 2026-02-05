@@ -3,7 +3,7 @@
   "brief": "The locale identifier following RFC 4646.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "en-US"

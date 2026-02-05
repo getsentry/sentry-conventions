@@ -1263,7 +1263,7 @@ export type CODE_NAMESPACE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link CULTURE_CALENDAR_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -1283,7 +1283,7 @@ export type CULTURE_CALENDAR_TYPE = string;
  *
  * Attribute Value Type: `string` {@link CULTURE_DISPLAY_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -1303,7 +1303,7 @@ export type CULTURE_DISPLAY_NAME_TYPE = string;
  *
  * Attribute Value Type: `boolean` {@link CULTURE_IS_24_HOUR_FORMAT_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -1323,7 +1323,7 @@ export type CULTURE_IS_24_HOUR_FORMAT_TYPE = boolean;
  *
  * Attribute Value Type: `string` {@link CULTURE_LOCALE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -1343,7 +1343,7 @@ export type CULTURE_LOCALE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link CULTURE_TIMEZONE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -10476,7 +10476,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The calendar system used by the culture.',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'GregorianCalendar',
@@ -10485,7 +10485,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Human readable name of the culture.',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'English (United States)',
@@ -10494,7 +10494,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Whether the culture uses 24-hour time format.',
     type: 'boolean',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: true,
@@ -10503,7 +10503,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The locale identifier following RFC 4646.',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'en-US',
@@ -10512,7 +10512,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The timezone of the culture, as a geographic timezone identifier.',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'Europe/Vienna',
