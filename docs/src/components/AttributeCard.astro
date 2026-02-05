@@ -28,7 +28,13 @@ const rawJson = JSON.stringify(attribute, null, 2);
 >
   <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
     <h3 class="flex items-center gap-2 text-base m-0" data-pagefind-meta="title">
-      <code class="text-base p-0 bg-transparent border-none text-accent" data-pagefind-index-attrs="data-key" data-key={attribute.key}>{attribute.key}</code>
+      <a href={`#${anchorId}`} class="anchor-link group/anchor flex items-center gap-1.5 no-underline">
+        <code class="text-base p-0 bg-transparent border-none text-accent" data-pagefind-index-attrs="data-key" data-key={attribute.key}>{attribute.key}</code>
+        <svg class="anchor-icon w-4 h-4 text-text-muted opacity-0 group-hover/anchor:opacity-100 transition-opacity" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+          <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+        </svg>
+      </a>
       {isDeprecated && <span class="badge badge-deprecated">Deprecated</span>}
     </h3>
     <div class="flex flex-wrap items-center gap-2">
