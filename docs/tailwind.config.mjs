@@ -5,44 +5,59 @@ export default {
     extend: {
       colors: {
         // Background colors
-        'bg-primary': '#111318',
-        'bg-secondary': '#181b21',
-        'bg-elevated': '#1f2329',
-        'bg-hover': '#262b33',
+        'bg-primary': 'var(--color-bg-primary)',
+        'bg-secondary': 'var(--color-bg-secondary)',
+        'bg-elevated': 'var(--color-bg-elevated)',
+        'bg-hover': 'var(--color-bg-hover)',
 
         // Text colors
-        'text-primary': '#d4d7db',
-        'text-secondary': '#8b919a',
-        'text-muted': '#5c6370',
+        'text-primary': 'var(--color-text-primary)',
+        'text-secondary': 'var(--color-text-secondary)',
+        'text-muted': 'var(--color-text-muted)',
 
         // Accent
         accent: {
-          DEFAULT: '#9580ff',
-          hover: '#a899ff',
-          soft: 'rgba(149, 128, 255, 0.12)',
+          DEFAULT: 'var(--color-accent)',
+          hover: 'var(--color-accent-hover)',
+          soft: 'var(--color-accent-soft)',
         },
 
         // Border colors
         border: {
-          DEFAULT: '#282d36',
-          light: '#343a45',
+          DEFAULT: 'var(--color-border)',
+          light: 'var(--color-border-light)',
         },
 
         // Semantic colors
-        success: '#50a060',
-        warning: '#d4a72c',
-        error: '#c25450',
-        info: '#5c9fd4',
+        success: {
+          DEFAULT: 'var(--color-success)',
+          soft: 'var(--color-success-soft)',
+        },
+        warning: {
+          DEFAULT: 'var(--color-warning)',
+          soft: 'var(--color-warning-soft)',
+        },
+        error: {
+          DEFAULT: 'var(--color-error)',
+          soft: 'var(--color-error-soft)',
+        },
+        info: {
+          DEFAULT: 'var(--color-info)',
+          soft: 'var(--color-info-soft)',
+        },
 
         // Code syntax highlighting
-        'code-string': '#98c379',
-        'code-number': '#d19a66',
+        'code-string': 'var(--color-code-string)',
+        'code-number': 'var(--color-code-number)',
 
         // PII indicator colors
         pii: {
-          true: '#c25450',
-          maybe: '#d4a72c',
-          false: '#50a060',
+          true: 'var(--color-pii-true)',
+          'true-soft': 'var(--color-pii-true-soft)',
+          maybe: 'var(--color-pii-maybe)',
+          'maybe-soft': 'var(--color-pii-maybe-soft)',
+          false: 'var(--color-pii-false)',
+          'false-soft': 'var(--color-pii-false-soft)',
         },
       },
       fontFamily: {

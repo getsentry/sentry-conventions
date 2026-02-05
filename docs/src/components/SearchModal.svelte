@@ -323,7 +323,7 @@ function highlightMatch(key: string, searchQuery: string): { before: string; mat
             {#each attributeResults as attr, index}
               {@const highlighted = highlightMatch(attr.key, query)}
               <button
-                class="flex flex-col gap-1 w-full px-4 py-3 bg-transparent border-none border-b border-border last:border-b-0 text-left cursor-pointer transition-all duration-fast border-l-2 {index === selectedIndex ? 'bg-accent/15 border-l-accent selected shadow-[inset_0_0_0_1px_rgba(149,128,255,0.2)]' : 'border-l-transparent hover:bg-bg-hover hover:border-l-border-light'}"
+                class="flex flex-col gap-1 w-full px-4 py-3 bg-transparent border-none border-b border-border last:border-b-0 text-left cursor-pointer transition-all duration-fast border-l-2 {index === selectedIndex ? 'bg-accent-soft border-l-accent selected shadow-[inset_0_0_0_1px_var(--color-accent-soft)]' : 'border-l-transparent hover:bg-bg-hover hover:border-l-border-light'}"
                 onclick={() => navigateToAttribute(attr)}
                 onmouseenter={() => handleMouseEnter(index)}
                 onmousemove={handleMouseMove}
@@ -340,7 +340,7 @@ function highlightMatch(key: string, searchQuery: string): { before: string; mat
                     <span class="text-xs px-2 py-0.5 rounded-sm font-sans bg-bg-elevated text-text-muted">{attr.type}</span>
                     <span class="text-xs px-2 py-0.5 rounded-sm font-sans bg-bg-elevated text-text-secondary">{attr.category}</span>
                     {#if attr.deprecated}
-                      <span class="text-xs px-2 py-0.5 rounded-sm font-sans bg-error/15 text-error">deprecated</span>
+                      <span class="text-xs px-2 py-0.5 rounded-sm font-sans bg-error-soft text-error">deprecated</span>
                     {/if}
                   </div>
                 </div>
@@ -359,7 +359,7 @@ function highlightMatch(key: string, searchQuery: string): { before: string; mat
             {#each pageResults as result, index}
               {@const actualIndex = attributeResults.length + index}
               <button
-                class="flex flex-col gap-1 w-full px-4 py-3 bg-transparent border-none border-b border-border last:border-b-0 text-left cursor-pointer transition-all duration-fast border-l-2 {actualIndex === selectedIndex ? 'bg-accent/15 border-l-accent selected shadow-[inset_0_0_0_1px_rgba(149,128,255,0.2)]' : 'border-l-transparent hover:bg-bg-hover hover:border-l-border-light'}"
+                class="flex flex-col gap-1 w-full px-4 py-3 bg-transparent border-none border-b border-border last:border-b-0 text-left cursor-pointer transition-all duration-fast border-l-2 {actualIndex === selectedIndex ? 'bg-accent-soft border-l-accent selected shadow-[inset_0_0_0_1px_var(--color-accent-soft)]' : 'border-l-transparent hover:bg-bg-hover hover:border-l-border-light'}"
                 onclick={() => navigateToResult(result)}
                 onmouseenter={() => handleMouseEnter(actualIndex)}
                 onmousemove={handleMouseMove}

@@ -91,7 +91,7 @@ const rawJson = JSON.stringify(attribute, null, 2);
     )}
     
     {isDeprecated && (
-      <div class="mt-3 p-3 bg-error/10 rounded-md border-l-[3px] border-error">
+      <div class="mt-3 p-3 bg-error-soft rounded-md border-l-[3px] border-error">
         {attribute.deprecation?.replacement ? (
           <p class="text-sm m-0">Use <code class="text-accent">{attribute.deprecation.replacement}</code> instead.</p>
         ) : (
