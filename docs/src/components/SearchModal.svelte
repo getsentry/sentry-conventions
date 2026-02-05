@@ -275,6 +275,7 @@ function highlightMatch(key: string, searchQuery: string): { before: string; mat
 
 {#if isOpen}
   <!-- svelte-ignore a11y_click_events_have_key_events a11y_no_static_element_interactions -->
+  <!-- svelte-ignore a11y_no_static_element_interactions -->
   <div 
     class="fixed inset-0 bg-black/70 backdrop-blur-sm z-[1000] flex items-start justify-center pt-[10vh]"
     onclick={() => isOpen = false}
