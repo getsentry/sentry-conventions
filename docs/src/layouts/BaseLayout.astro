@@ -4,6 +4,7 @@ import SearchModal from '../components/SearchModal.svelte';
 import ThemeToggle from '../components/ThemeToggle.svelte';
 import SearchIcon from '../components/icons/SearchIcon.astro';
 import ExternalLinkIcon from '../components/icons/ExternalLinkIcon.astro';
+import SentryLogo from '../components/icons/SentryLogo.astro';
 
 interface Props {
   title: string;
@@ -40,7 +41,7 @@ const currentPath = Astro.url.pathname;
       <header class="sticky top-0 z-50 h-header bg-bg-secondary border-b border-border backdrop-blur-sm">
         <div class="max-w-content mx-auto px-6 h-full flex items-center justify-between gap-8">
           <a href={`${import.meta.env.BASE_URL}`} class="flex items-center gap-3 text-text-primary font-semibold text-lg transition-colors duration-fast hover:text-accent">
-            <img src={`${import.meta.env.BASE_URL}sentry-glyph.svg`} alt="Sentry Logo" class="h-7 w-auto" width="28" height="28" />
+            <SentryLogo size={28} />
             <span class="hidden md:inline">Sentry Conventions</span>
           </a>
           
