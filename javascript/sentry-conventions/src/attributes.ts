@@ -2065,6 +2065,26 @@ export const GEN_AI_CHOICE = 'gen_ai.choice';
  */
 export type GEN_AI_CHOICE_TYPE = string;
 
+// Path: model/attributes/gen_ai/gen_ai__conversation__id.json
+
+/**
+ * The unique identifier for a conversation (session, thread), used to store and correlate messages within this conversation. `gen_ai.conversation.id`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_CONVERSATION_ID_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "conv_5j66UpCpwteGg4YSxUnt7lPY"
+ */
+export const GEN_AI_CONVERSATION_ID = 'gen_ai.conversation.id';
+
+/**
+ * Type for {@link GEN_AI_CONVERSATION_ID} gen_ai.conversation.id
+ */
+export type GEN_AI_CONVERSATION_ID_TYPE = string;
+
 // Path: model/attributes/gen_ai/gen_ai__cost__input_tokens.json
 
 /**
@@ -8946,6 +8966,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [GEN_AI_AGENT_NAME]: 'string',
   [GEN_AI_ASSISTANT_MESSAGE]: 'string',
   [GEN_AI_CHOICE]: 'string',
+  [GEN_AI_CONVERSATION_ID]: 'string',
   [GEN_AI_COST_INPUT_TOKENS]: 'double',
   [GEN_AI_COST_OUTPUT_TOKENS]: 'double',
   [GEN_AI_COST_TOTAL_TOKENS]: 'double',
@@ -9373,6 +9394,7 @@ export type AttributeName =
   | typeof GEN_AI_AGENT_NAME
   | typeof GEN_AI_ASSISTANT_MESSAGE
   | typeof GEN_AI_CHOICE
+  | typeof GEN_AI_CONVERSATION_ID
   | typeof GEN_AI_COST_INPUT_TOKENS
   | typeof GEN_AI_COST_OUTPUT_TOKENS
   | typeof GEN_AI_COST_TOTAL_TOKENS
@@ -10762,6 +10784,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'The weather in Paris is rainy and overcast, with temperatures around 57°F',
+  },
+  [GEN_AI_CONVERSATION_ID]: {
+    brief:
+      'The unique identifier for a conversation (session, thread), used to store and correlate messages within this conversation.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'conv_5j66UpCpwteGg4YSxUnt7lPY',
   },
   [GEN_AI_COST_INPUT_TOKENS]: {
     brief: 'The cost of tokens used to process the AI input (prompt) in USD (without cached input tokens).',
@@ -14145,6 +14177,7 @@ export type Attributes = {
   [GEN_AI_AGENT_NAME]?: GEN_AI_AGENT_NAME_TYPE;
   [GEN_AI_ASSISTANT_MESSAGE]?: GEN_AI_ASSISTANT_MESSAGE_TYPE;
   [GEN_AI_CHOICE]?: GEN_AI_CHOICE_TYPE;
+  [GEN_AI_CONVERSATION_ID]?: GEN_AI_CONVERSATION_ID_TYPE;
   [GEN_AI_COST_INPUT_TOKENS]?: GEN_AI_COST_INPUT_TOKENS_TYPE;
   [GEN_AI_COST_OUTPUT_TOKENS]?: GEN_AI_COST_OUTPUT_TOKENS_TYPE;
   [GEN_AI_COST_TOTAL_TOKENS]?: GEN_AI_COST_TOTAL_TOKENS_TYPE;
