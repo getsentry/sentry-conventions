@@ -1,0 +1,30 @@
+---
+interface Props {
+  pii: 'true' | 'maybe' | 'false';
+  reason?: string;
+}
+
+const { pii, reason } = Astro.props;
+
+const labels = {
+  true: 'PII: True',
+  maybe: 'PII: Maybe',
+  false: 'PII: False',
+};
+
+const colorClasses = {
+  true: 'bg-pii-true-soft text-pii-true',
+  maybe: 'bg-pii-maybe-soft text-pii-maybe',
+  false: 'bg-pii-false-soft text-pii-false',
+};
+---
+
+<span 
+  class:list={[
+    "inline-flex items-center px-2 py-1 text-xs font-medium rounded-sm uppercase tracking-wide",
+    colorClasses[pii]
+  ]} 
+  title={reason}
+>
+  {labels[pii]}
+</span>

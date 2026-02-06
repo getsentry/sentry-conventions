@@ -1,0 +1,129 @@
+---
+import '../styles/global.css';
+import SearchModal from '../components/SearchModal.svelte';
+import ThemeToggle from '../components/ThemeToggle.svelte';
+import SearchIcon from '../components/icons/SearchIcon.astro';
+import ExternalLinkIcon from '../components/icons/ExternalLinkIcon.astro';
+import SentryLogo from '../components/icons/SentryLogo.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Sentry Semantic Conventions - Standardized naming for attributes and spans' } =
+  Astro.props;
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}sentry-glyph.svg`} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <title>{title} | Sentry Conventions</title>
+    <script is:inline>
+      // Initialize theme before render to prevent flash
+      const theme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (theme === 'dark' || (!theme && prefersDark)) {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
+  </head>
+  <body>
+    <div class="flex flex-col min-h-screen">
+      <header class="sticky top-0 z-50 h-header bg-bg-secondary border-b border-border backdrop-blur-sm">
+        <div class="max-w-content mx-auto px-6 h-full flex items-center justify-between gap-8">
+          <a href={`${import.meta.env.BASE_URL}`} class="flex items-center gap-3 text-text-primary font-semibold text-lg transition-colors duration-fast hover:text-accent">
+            <SentryLogo size={28} />
+            <span class="hidden md:inline">Sentry Conventions</span>
+          </a>
+          
+          <nav class="flex items-center gap-2">
+            <a
+              href={`${import.meta.env.BASE_URL}`}
+              class:list={[
+                "nav-link",
+                currentPath === import.meta.env.BASE_URL || currentPath === import.meta.env.BASE_URL + '/'
+                  ? "text-accent bg-accent-soft"
+                  : "text-text-secondary hover:text-text-primary hover:bg-bg-hover"
+              ]}
+            >
+              Home
+            </a>
+            <a
+              href={`${import.meta.env.BASE_URL}attributes/`}
+              class:list={[
+                "nav-link",
+                currentPath.includes('/attributes')
+                  ? "text-accent bg-accent-soft"
+                  : "text-text-secondary hover:text-text-primary hover:bg-bg-hover"
+              ]}
+            >
+              Attributes
+            </a>
+            <a
+              href={`${import.meta.env.BASE_URL}names/`}
+              class:list={[
+                "nav-link",
+                currentPath.includes('/names')
+                  ? "text-accent bg-accent-soft"
+                  : "text-text-secondary hover:text-text-primary hover:bg-bg-hover"
+              ]}
+            >
+              Span Names
+            </a>
+            <a
+              href="https://github.com/getsentry/sentry-conventions"
+              class="nav-link text-text-secondary hover:text-text-primary hover:bg-bg-hover"
+              target="_blank"
+              rel="noopener"
+            >
+              GitHub
+              <ExternalLinkIcon />
+            </a>
+          </nav>
+          
+          <div class="flex items-center gap-2">
+            <button
+              class="flex items-center gap-3 px-3 py-2 bg-bg-elevated border border-border rounded-md text-text-muted text-sm cursor-pointer transition-fast hover:border-border-light hover:text-text-secondary"
+              id="search-trigger"
+              aria-label="Search"
+            >
+              <SearchIcon />
+              <span class="hidden md:flex gap-1">
+                <kbd class="inline-flex items-center justify-center min-w-[20px] h-5 px-1 bg-bg-secondary border border-border rounded-sm font-sans text-xs font-medium">⌘</kbd>
+                <kbd class="inline-flex items-center justify-center min-w-[20px] h-5 px-1 bg-bg-secondary border border-border rounded-sm font-sans text-xs font-medium">K</kbd>
+              </span>
+            </button>
+            <ThemeToggle client:load />
+          </div>
+        </div>
+      </header>
+      
+      <main class="flex-1 w-full max-w-content mx-auto py-8 px-6 md:px-6">
+        <slot />
+      </main>
+      
+      <footer class="mt-auto py-6 px-6 bg-bg-secondary border-t border-border">
+        <div class="max-w-content mx-auto text-center">
+          <p class="text-sm text-text-muted mb-2">&copy; {new Date().getFullYear()} Sentry. Licensed under MIT.</p>
+          <p class="flex items-center justify-center gap-2 text-sm">
+            <a href="https://github.com/getsentry/sentry-conventions/blob/main/CONTRIBUTING.md" class="text-text-secondary hover:text-accent" target="_blank" rel="noopener">Contributing</a>
+            <span class="text-text-muted">·</span>
+            <a href="https://github.com/getsentry/sentry-conventions/issues" class="text-text-secondary hover:text-accent" target="_blank" rel="noopener">Report Issue</a>
+          </p>
+        </div>
+      </footer>
+    </div>
+    
+    <!-- Search modal - Svelte island -->
+    <SearchModal client:load />
+  </body>
+</html>

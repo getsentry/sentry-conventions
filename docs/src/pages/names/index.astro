@@ -1,0 +1,141 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CategoryChip from '../../components/CategoryChip.astro';
+import { getCollection } from 'astro:content';
+
+// Get all name definitions
+const allNames = await getCollection('names');
+
+// Sort by brief (category name)
+allNames.sort((a, b) => a.data.brief.localeCompare(b.data.brief));
+
+// Count total operations
+const totalOperations = allNames.reduce((acc, name) => acc + name.data.operations.length, 0);
+---
+
+<BaseLayout 
+  title="Span Names" 
+  description="Learn how to construct span names using templates and attributes"
+>
+  <div class="mb-8">
+    <h1>Span Name Documentation</h1>
+    <p class="text-lg text-text-secondary max-w-3xl">
+      This page contains documentation for known span names. You can use this documentation to understand 
+      how to create the <code class="text-accent">name</code> attribute for a span, when you have the span's other attributes.
+    </p>
+  </div>
+  
+  <section class="bg-bg-secondary border border-border rounded-lg p-6 mb-8">
+    <h2 class="text-xl mb-4">Generating Names</h2>
+    <p class="text-sm max-w-2xl">
+      Span names are generated via string template. Each span category of work has a set of templates 
+      for the span name. Curly brackets in the template indicate that the contents inside the curly 
+      brackets should be replaced with the contents of the span attribute of the name within the brackets.
+    </p>
+    <p class="text-sm max-w-2xl">
+      The templates should be evaluated <strong>in order of appearance</strong>. The final template 
+      should be a static string, to be used as a fallback when none of the attribute-based templates 
+      can be satisfied.
+    </p>
+    
+    <div class="mt-6 p-4 bg-bg-elevated rounded-md border-l-[3px] border-accent">
+      <h4 class="text-sm text-accent mb-3">Example</h4>
+      <p class="text-sm mb-2">Given templates:</p>
+      <ol class="ml-4 mb-3 text-sm">
+        <li class="mb-1"><code>{"{{http.request.method}} {{http.route}}"}</code></li>
+        <li class="mb-1"><code>{"{{http.request.method}}"}</code></li>
+        <li class="mb-1"><code>HTTP</code></li>
+      </ol>
+      <p class="text-sm mb-2">And attributes <code>http.request.method = "GET"</code>, <code>http.route = "/users/:id"</code>:</p>
+      <p class="text-sm m-0">Result: <code>"GET /users/:id"</code></p>
+    </div>
+  </section>
+  
+  <nav class="flex items-start gap-4 p-4 bg-bg-secondary border border-border rounded-lg mb-8 flex-col md:flex-row">
+    <span class="text-sm text-text-muted whitespace-nowrap pt-1">Categories ({allNames.length}):</span>
+    <div class="flex flex-wrap gap-2">
+      {allNames.map(name => (
+        <CategoryChip
+          name={name.data.brief}
+          count={name.data.operations.length}
+          href={`#${name.id}`}
+        />
+      ))}
+    </div>
+  </nav>
+  
+  <div class="flex flex-col gap-12">
+    {allNames.map(name => (
+      <section class="scroll-mt-20" id={name.id}>
+        <h2 class="mb-6 pb-3 border-b border-border">{name.data.brief}</h2>
+        
+        <div class="flex flex-col gap-6">
+          {name.data.operations.map(op => (
+            <article class="card">
+              <h3 class="text-xl mb-2">{op.name || op.brief}</h3>
+              <p class="text-sm text-text-secondary mb-4">{op.brief}</p>
+              
+              {!op.is_in_otel && (
+                <div class="flex items-start gap-2 p-3 rounded-md text-sm mb-4 bg-warning-soft border border-warning text-warning">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="flex-shrink-0 mt-0.5">
+                    <path d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                  <span>Names for this category are <strong>not</strong> specified in OpenTelemetry Semantic Conventions.</span>
+                </div>
+              )}
+              
+              {op.is_in_otel && op.otel_notes && (
+                <div class="flex items-start gap-2 p-3 rounded-md text-sm mb-4 bg-info-soft border border-info text-info">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="flex-shrink-0 mt-0.5">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 16v-4M12 8h.01"/>
+                  </svg>
+                  <span>Our definition differs from OpenTelemetry. {op.otel_notes}</span>
+                </div>
+              )}
+              
+              <div class="flex flex-col gap-5">
+                <div>
+                  <h4 class="text-sm font-semibold text-text-muted mb-2">Affected <code class="text-accent">op</code>s</h4>
+                  <div class="flex flex-wrap gap-2">
+                    {op.ops.map(opValue => (
+                      <code class="px-2 py-1 bg-bg-elevated border border-border rounded-sm text-xs text-text-secondary">{opValue}</code>
+                    ))}
+                  </div>
+                </div>
+                
+                <div>
+                  <h4 class="text-sm font-semibold text-text-muted mb-2">Templates</h4>
+                  <ol class="m-0 pl-5 list-inside">
+                    {op.templates.map((template, index) => (
+                      <li class="flex items-center gap-2 mb-2 text-sm">
+                        <code class:list={[
+                          "px-2 py-1 bg-bg-elevated text-xs",
+                          index === op.templates.length - 1 && !template.includes('{{') ? 'border border-accent' : ''
+                        ]}>{template}</code>
+                        {index === op.templates.length - 1 && !template.includes('{{') && (
+                          <span class="text-xs px-2 py-1 bg-accent-soft text-accent rounded-sm">fallback</span>
+                        )}
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+                
+                {op.examples && op.examples.length > 0 && (
+                  <div>
+                    <h4 class="text-sm font-semibold text-text-muted mb-2">Examples</h4>
+                    <div class="flex flex-wrap gap-2">
+                      {op.examples.map(example => (
+                        <code class="px-3 py-1 bg-accent-soft border border-transparent rounded-sm text-xs text-accent">{example}</code>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    ))}
+  </div>
+</BaseLayout>

@@ -1,0 +1,285 @@
+/* Theme CSS Custom Properties */
+:root {
+  /* Light theme (default) */
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f8f9fa;
+  --color-bg-elevated: #f0f1f3;
+  --color-bg-hover: #e8e9eb;
+
+  --color-text-primary: #1a1d23;
+  --color-text-secondary: #4a5568;
+  --color-text-muted: #718096;
+
+  --color-accent: #7c3aed;
+  --color-accent-hover: #6d28d9;
+  --color-accent-soft: rgba(124, 58, 237, 0.12);
+
+  --color-border: #e2e8f0;
+  --color-border-light: #cbd5e1;
+
+  --color-success: #22c55e;
+  --color-success-soft: rgba(34, 197, 94, 0.15);
+  --color-warning: #eab308;
+  --color-warning-soft: rgba(234, 179, 8, 0.15);
+  --color-error: #ef4444;
+  --color-error-soft: rgba(239, 68, 68, 0.15);
+  --color-info: #3b82f6;
+  --color-info-soft: rgba(59, 130, 246, 0.15);
+
+  --color-code-string: #16a34a;
+  --color-code-number: #ea580c;
+
+  --color-pii-true: #ef4444;
+  --color-pii-true-soft: rgba(239, 68, 68, 0.15);
+  --color-pii-maybe: #eab308;
+  --color-pii-maybe-soft: rgba(234, 179, 8, 0.15);
+  --color-pii-false: #22c55e;
+  --color-pii-false-soft: rgba(34, 197, 94, 0.15);
+}
+
+.dark {
+  /* Dark theme */
+  --color-bg-primary: #111318;
+  --color-bg-secondary: #181b21;
+  --color-bg-elevated: #1f2329;
+  --color-bg-hover: #262b33;
+
+  --color-text-primary: #d4d7db;
+  --color-text-secondary: #8b919a;
+  --color-text-muted: #5c6370;
+
+  --color-accent: #9580ff;
+  --color-accent-hover: #a899ff;
+  --color-accent-soft: rgba(149, 128, 255, 0.12);
+
+  --color-border: #282d36;
+  --color-border-light: #343a45;
+
+  --color-success: #50a060;
+  --color-success-soft: rgba(80, 160, 96, 0.15);
+  --color-warning: #d4a72c;
+  --color-warning-soft: rgba(212, 167, 44, 0.15);
+  --color-error: #c25450;
+  --color-error-soft: rgba(194, 84, 80, 0.15);
+  --color-info: #5c9fd4;
+  --color-info-soft: rgba(92, 159, 212, 0.15);
+
+  --color-code-string: #98c379;
+  --color-code-number: #d19a66;
+
+  --color-pii-true: #c25450;
+  --color-pii-true-soft: rgba(194, 84, 80, 0.15);
+  --color-pii-maybe: #d4a72c;
+  --color-pii-maybe-soft: rgba(212, 167, 44, 0.15);
+  --color-pii-false: #50a060;
+  --color-pii-false-soft: rgba(80, 160, 96, 0.15);
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base layer for foundational styles */
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply font-sans text-base leading-relaxed text-text-primary bg-bg-primary min-h-screen antialiased;
+  }
+
+  /* Typography */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-semibold leading-tight text-text-primary;
+  }
+
+  h1 {
+    @apply text-4xl mb-6;
+  }
+
+  h2 {
+    @apply text-3xl mb-5;
+  }
+
+  h3 {
+    @apply text-2xl mb-4;
+  }
+
+  h4 {
+    @apply text-xl mb-3;
+  }
+
+  p {
+    @apply mb-4 text-text-secondary;
+  }
+
+  a {
+    @apply text-accent transition-colors duration-fast;
+  }
+
+  code {
+    @apply font-mono text-[0.9em] px-2 py-1 bg-bg-elevated rounded-sm border border-border;
+  }
+
+  pre {
+    @apply font-mono text-sm p-4 bg-bg-elevated rounded-md border border-border overflow-x-auto;
+  }
+
+  pre code {
+    @apply p-0 bg-transparent border-none;
+  }
+
+  /* Lists */
+  ul,
+  ol {
+    @apply mb-4 pl-6;
+  }
+
+  li {
+    @apply mb-2 text-text-secondary;
+  }
+
+  /* Tables */
+  table {
+    @apply w-full border-collapse mb-6 text-sm;
+  }
+
+  th,
+  td {
+    @apply py-3 px-4 text-left border-b border-border;
+  }
+
+  th {
+    @apply font-semibold text-text-primary bg-bg-secondary;
+  }
+
+  tr:hover {
+    @apply bg-bg-hover;
+  }
+
+  /* Focus styles */
+  :focus-visible {
+    @apply outline-2 outline outline-accent outline-offset-2;
+  }
+}
+
+/* Custom component classes */
+@layer components {
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-md transition-all duration-fast;
+  }
+
+  .btn-primary {
+    @apply bg-accent text-white hover:bg-accent-hover;
+  }
+
+  .btn-secondary {
+    @apply bg-bg-elevated text-text-primary border border-border hover:bg-bg-hover hover:border-border-light;
+  }
+
+  /* Form inputs */
+  .form-input {
+    @apply w-full p-3 bg-bg-elevated border border-border rounded-md text-sm text-text-primary font-sans transition-colors duration-fast focus:outline-none focus:border-accent;
+  }
+
+  .form-input-error {
+    @apply border-error;
+  }
+
+  /* Navigation links */
+  .nav-link {
+    @apply inline-flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-md transition-all duration-fast;
+  }
+
+  /* Badges */
+  .badge {
+    @apply inline-flex items-center px-2 py-1 text-xs font-medium rounded-sm uppercase tracking-wide;
+  }
+
+  .badge-deprecated {
+    @apply bg-error-soft text-error;
+  }
+
+  .badge-otel {
+    @apply bg-info-soft text-info;
+  }
+
+  .badge-dynamic {
+    @apply bg-warning-soft text-warning;
+  }
+
+  .badge-type {
+    @apply text-xs px-2 py-0.5 rounded-sm font-sans bg-bg-elevated text-text-muted;
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-bg-secondary border border-border rounded-lg p-5 transition-colors duration-fast;
+  }
+
+  .card:hover {
+    @apply border-border-light;
+  }
+
+  /* Category chips */
+  .category-chip {
+    @apply inline-flex items-center gap-2 px-3 py-1 bg-bg-elevated border border-border rounded-full text-sm text-text-secondary transition-all duration-fast;
+  }
+
+  .category-chip:hover {
+    @apply bg-accent-soft border-accent text-accent;
+  }
+
+  /* Breadcrumbs */
+  .breadcrumb {
+    @apply flex items-center gap-2 text-sm text-text-muted mb-6;
+  }
+
+  .breadcrumb a {
+    @apply text-text-secondary hover:text-accent;
+  }
+
+  .breadcrumb .separator {
+    @apply text-border-light;
+  }
+
+  .breadcrumb .current {
+    @apply text-text-primary;
+  }
+}
+
+/* Utility classes */
+@layer utilities {
+  .visually-hidden {
+    @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
+    clip: rect(0, 0, 0, 0);
+  }
+
+  .transition-fast {
+    @apply transition-all duration-fast;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  @apply w-2 h-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-bg-secondary;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-border-light rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-text-muted;
+}
