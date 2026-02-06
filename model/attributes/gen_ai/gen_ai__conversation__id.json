@@ -1,0 +1,10 @@
+{
+  "key": "gen_ai.conversation.id",
+  "brief": "The unique identifier for a conversation (session, thread), used to store and correlate messages within this conversation.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": true,
+  "example": "conv_5j66UpCpwteGg4YSxUnt7lPY"
+}

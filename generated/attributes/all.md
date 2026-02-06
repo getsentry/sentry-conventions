@@ -4,7 +4,7 @@
 
 This page lists all available attributes across all categories.
 
-Total attributes: 424
+Total attributes: 425
 
 ## Stable Attributes
 
@@ -77,6 +77,7 @@ Total attributes: 424
 | [`gen_ai.agent.name`](./gen_ai.md#gen_aiagentname) | The name of the agent being used. |
 | [`gen_ai.assistant.message`](./gen_ai.md#gen_aiassistantmessage) | The assistant message passed to the model. |
 | [`gen_ai.choice`](./gen_ai.md#gen_aichoice) | The model's response message. |
+| [`gen_ai.conversation.id`](./gen_ai.md#gen_aiconversationid) | The unique identifier for a conversation (session, thread), used to store and correlate messages within this conversation. |
 | [`gen_ai.cost.input_tokens`](./gen_ai.md#gen_aicostinput_tokens) | The cost of tokens used to process the AI input (prompt) in USD (without cached input tokens). |
 | [`gen_ai.cost.output_tokens`](./gen_ai.md#gen_aicostoutput_tokens) | The cost of tokens used for creating the AI output in USD (without reasoning tokens). |
 | [`gen_ai.cost.total_tokens`](./gen_ai.md#gen_aicosttotal_tokens) | The total cost for the tokens used. |

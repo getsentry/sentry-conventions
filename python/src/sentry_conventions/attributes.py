@@ -1242,6 +1242,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "The weather in Paris is rainy and overcast, with temperatures around 57°F"
     """
 
+    # Path: model/attributes/gen_ai/gen_ai__conversation__id.json
+    GEN_AI_CONVERSATION_ID: Literal["gen_ai.conversation.id"] = "gen_ai.conversation.id"
+    """The unique identifier for a conversation (session, thread), used to store and correlate messages within this conversation.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: Yes
+    Example: "conv_5j66UpCpwteGg4YSxUnt7lPY"
+    """
+
     # Path: model/attributes/gen_ai/gen_ai__cost__input_tokens.json
     GEN_AI_COST_INPUT_TOKENS: Literal["gen_ai.cost.input_tokens"] = (
         "gen_ai.cost.input_tokens"
@@ -5632,6 +5642,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="The weather in Paris is rainy and overcast, with temperatures around 57°F",
     ),
+    "gen_ai.conversation.id": AttributeMetadata(
+        brief="The unique identifier for a conversation (session, thread), used to store and correlate messages within this conversation.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=True,
+        example="conv_5j66UpCpwteGg4YSxUnt7lPY",
+    ),
     "gen_ai.cost.input_tokens": AttributeMetadata(
         brief="The cost of tokens used to process the AI input (prompt) in USD (without cached input tokens).",
         type=AttributeType.DOUBLE,
@@ -8249,6 +8266,7 @@ Attributes = TypedDict(
         "gen_ai.agent.name": str,
         "gen_ai.assistant.message": str,
         "gen_ai.choice": str,
+        "gen_ai.conversation.id": str,
         "gen_ai.cost.input_tokens": float,
         "gen_ai.cost.output_tokens": float,
         "gen_ai.cost.total_tokens": float,

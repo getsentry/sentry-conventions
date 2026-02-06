@@ -6,6 +6,7 @@
   - [gen_ai.agent.name](#gen_aiagentname)
   - [gen_ai.assistant.message](#gen_aiassistantmessage)
   - [gen_ai.choice](#gen_aichoice)
+  - [gen_ai.conversation.id](#gen_aiconversationid)
   - [gen_ai.cost.input_tokens](#gen_aicostinput_tokens)
   - [gen_ai.cost.output_tokens](#gen_aicostoutput_tokens)
   - [gen_ai.cost.total_tokens](#gen_aicosttotal_tokens)
@@ -91,6 +92,17 @@ The model's response message.
 | Has PII | true |
 | Exists in OpenTelemetry | No |
 | Example | `The weather in Paris is rainy and overcast, with temperatures around 57°F` |
+
+### gen_ai.conversation.id
+
+The unique identifier for a conversation (session, thread), used to store and correlate messages within this conversation.
+
+| Property | Value |
+| --- | --- |
+| Type | `string` |
+| Has PII | maybe |
+| Exists in OpenTelemetry | Yes |
+| Example | `conv_5j66UpCpwteGg4YSxUnt7lPY` |
 
 ### gen_ai.cost.input_tokens
 
