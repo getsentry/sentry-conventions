@@ -1256,6 +1256,106 @@ export const CODE_NAMESPACE = 'code.namespace';
  */
 export type CODE_NAMESPACE_TYPE = string;
 
+// Path: model/attributes/culture/culture__calendar.json
+
+/**
+ * The calendar system used by the culture. `culture.calendar`
+ *
+ * Attribute Value Type: `string` {@link CULTURE_CALENDAR_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "GregorianCalendar"
+ */
+export const CULTURE_CALENDAR = 'culture.calendar';
+
+/**
+ * Type for {@link CULTURE_CALENDAR} culture.calendar
+ */
+export type CULTURE_CALENDAR_TYPE = string;
+
+// Path: model/attributes/culture/culture__display_name.json
+
+/**
+ * Human readable name of the culture. `culture.display_name`
+ *
+ * Attribute Value Type: `string` {@link CULTURE_DISPLAY_NAME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "English (United States)"
+ */
+export const CULTURE_DISPLAY_NAME = 'culture.display_name';
+
+/**
+ * Type for {@link CULTURE_DISPLAY_NAME} culture.display_name
+ */
+export type CULTURE_DISPLAY_NAME_TYPE = string;
+
+// Path: model/attributes/culture/culture__is_24_hour_format.json
+
+/**
+ * Whether the culture uses 24-hour time format. `culture.is_24_hour_format`
+ *
+ * Attribute Value Type: `boolean` {@link CULTURE_IS_24_HOUR_FORMAT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example true
+ */
+export const CULTURE_IS_24_HOUR_FORMAT = 'culture.is_24_hour_format';
+
+/**
+ * Type for {@link CULTURE_IS_24_HOUR_FORMAT} culture.is_24_hour_format
+ */
+export type CULTURE_IS_24_HOUR_FORMAT_TYPE = boolean;
+
+// Path: model/attributes/culture/culture__locale.json
+
+/**
+ * The locale identifier following RFC 4646. `culture.locale`
+ *
+ * Attribute Value Type: `string` {@link CULTURE_LOCALE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "en-US"
+ */
+export const CULTURE_LOCALE = 'culture.locale';
+
+/**
+ * Type for {@link CULTURE_LOCALE} culture.locale
+ */
+export type CULTURE_LOCALE_TYPE = string;
+
+// Path: model/attributes/culture/culture__timezone.json
+
+/**
+ * The timezone of the culture, as a geographic timezone identifier. `culture.timezone`
+ *
+ * Attribute Value Type: `string` {@link CULTURE_TIMEZONE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "Europe/Vienna"
+ */
+export const CULTURE_TIMEZONE = 'culture.timezone';
+
+/**
+ * Type for {@link CULTURE_TIMEZONE} culture.timezone
+ */
+export type CULTURE_TIMEZONE_TYPE = string;
+
 // Path: model/attributes/db/db__collection__name.json
 
 /**
@@ -8927,6 +9027,11 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [CODE_LINENO]: 'integer',
   [CODE_LINE_NUMBER]: 'integer',
   [CODE_NAMESPACE]: 'string',
+  [CULTURE_CALENDAR]: 'string',
+  [CULTURE_DISPLAY_NAME]: 'string',
+  [CULTURE_IS_24_HOUR_FORMAT]: 'boolean',
+  [CULTURE_LOCALE]: 'string',
+  [CULTURE_TIMEZONE]: 'string',
   [DB_COLLECTION_NAME]: 'string',
   [DB_NAME]: 'string',
   [DB_NAMESPACE]: 'string',
@@ -9355,6 +9460,11 @@ export type AttributeName =
   | typeof CODE_LINENO
   | typeof CODE_LINE_NUMBER
   | typeof CODE_NAMESPACE
+  | typeof CULTURE_CALENDAR
+  | typeof CULTURE_DISPLAY_NAME
+  | typeof CULTURE_IS_24_HOUR_FORMAT
+  | typeof CULTURE_LOCALE
+  | typeof CULTURE_TIMEZONE
   | typeof DB_COLLECTION_NAME
   | typeof DB_NAME
   | typeof DB_NAMESPACE
@@ -10383,6 +10493,51 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'code.function.name',
       reason: 'code.function.name should include the namespace.',
     },
+  },
+  [CULTURE_CALENDAR]: {
+    brief: 'The calendar system used by the culture.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'GregorianCalendar',
+  },
+  [CULTURE_DISPLAY_NAME]: {
+    brief: 'Human readable name of the culture.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'English (United States)',
+  },
+  [CULTURE_IS_24_HOUR_FORMAT]: {
+    brief: 'Whether the culture uses 24-hour time format.',
+    type: 'boolean',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: true,
+  },
+  [CULTURE_LOCALE]: {
+    brief: 'The locale identifier following RFC 4646.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'en-US',
+  },
+  [CULTURE_TIMEZONE]: {
+    brief: 'The timezone of the culture, as a geographic timezone identifier.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'Europe/Vienna',
   },
   [DB_COLLECTION_NAME]: {
     brief: 'The name of a collection (table, container) within the database.',
@@ -14138,6 +14293,11 @@ export type Attributes = {
   [CODE_LINENO]?: CODE_LINENO_TYPE;
   [CODE_LINE_NUMBER]?: CODE_LINE_NUMBER_TYPE;
   [CODE_NAMESPACE]?: CODE_NAMESPACE_TYPE;
+  [CULTURE_CALENDAR]?: CULTURE_CALENDAR_TYPE;
+  [CULTURE_DISPLAY_NAME]?: CULTURE_DISPLAY_NAME_TYPE;
+  [CULTURE_IS_24_HOUR_FORMAT]?: CULTURE_IS_24_HOUR_FORMAT_TYPE;
+  [CULTURE_LOCALE]?: CULTURE_LOCALE_TYPE;
+  [CULTURE_TIMEZONE]?: CULTURE_TIMEZONE_TYPE;
   [DB_COLLECTION_NAME]?: DB_COLLECTION_NAME_TYPE;
   [DB_NAME]?: DB_NAME_TYPE;
   [DB_NAMESPACE]?: DB_NAMESPACE_TYPE;

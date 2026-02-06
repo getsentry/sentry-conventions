@@ -1,0 +1,10 @@
+{
+  "key": "culture.is_24_hour_format",
+  "brief": "Whether the culture uses 24-hour time format.",
+  "type": "boolean",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": true
+}

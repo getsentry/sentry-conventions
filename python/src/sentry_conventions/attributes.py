@@ -830,6 +830,58 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "http.handler"
     """
 
+    # Path: model/attributes/culture/culture__calendar.json
+    CULTURE_CALENDAR: Literal["culture.calendar"] = "culture.calendar"
+    """The calendar system used by the culture.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "GregorianCalendar"
+    """
+
+    # Path: model/attributes/culture/culture__display_name.json
+    CULTURE_DISPLAY_NAME: Literal["culture.display_name"] = "culture.display_name"
+    """Human readable name of the culture.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "English (United States)"
+    """
+
+    # Path: model/attributes/culture/culture__is_24_hour_format.json
+    CULTURE_IS_24_HOUR_FORMAT: Literal["culture.is_24_hour_format"] = (
+        "culture.is_24_hour_format"
+    )
+    """Whether the culture uses 24-hour time format.
+
+    Type: bool
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: true
+    """
+
+    # Path: model/attributes/culture/culture__locale.json
+    CULTURE_LOCALE: Literal["culture.locale"] = "culture.locale"
+    """The locale identifier following RFC 4646.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "en-US"
+    """
+
+    # Path: model/attributes/culture/culture__timezone.json
+    CULTURE_TIMEZONE: Literal["culture.timezone"] = "culture.timezone"
+    """The timezone of the culture, as a geographic timezone identifier.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "Europe/Vienna"
+    """
+
     # Path: model/attributes/db/db__collection__name.json
     DB_COLLECTION_NAME: Literal["db.collection.name"] = "db.collection.name"
     """The name of a collection (table, container) within the database.
@@ -5335,6 +5387,41 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="code.function.name should include the namespace.",
         ),
     ),
+    "culture.calendar": AttributeMetadata(
+        brief="The calendar system used by the culture.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="GregorianCalendar",
+    ),
+    "culture.display_name": AttributeMetadata(
+        brief="Human readable name of the culture.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="English (United States)",
+    ),
+    "culture.is_24_hour_format": AttributeMetadata(
+        brief="Whether the culture uses 24-hour time format.",
+        type=AttributeType.BOOLEAN,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=True,
+    ),
+    "culture.locale": AttributeMetadata(
+        brief="The locale identifier following RFC 4646.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="en-US",
+    ),
+    "culture.timezone": AttributeMetadata(
+        brief="The timezone of the culture, as a geographic timezone identifier.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="Europe/Vienna",
+    ),
     "db.collection.name": AttributeMetadata(
         brief="The name of a collection (table, container) within the database.",
         type=AttributeType.STRING,
@@ -8227,6 +8314,11 @@ Attributes = TypedDict(
         "code.line.number": int,
         "code.lineno": int,
         "code.namespace": str,
+        "culture.calendar": str,
+        "culture.display_name": str,
+        "culture.is_24_hour_format": bool,
+        "culture.locale": str,
+        "culture.timezone": str,
         "db.collection.name": str,
         "db.name": str,
         "db.namespace": str,

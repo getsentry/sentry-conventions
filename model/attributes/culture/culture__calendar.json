@@ -1,0 +1,10 @@
+{
+  "key": "culture.calendar",
+  "brief": "The calendar system used by the culture.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "GregorianCalendar"
+}
