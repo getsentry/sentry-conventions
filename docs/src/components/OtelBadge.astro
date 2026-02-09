@@ -1,0 +1,29 @@
+---
+interface Props {
+  isInOtel: boolean;
+}
+
+const { isInOtel } = Astro.props;
+
+const labels = {
+  true: 'OTel: True',
+  false: 'OTel: False',
+};
+
+const colorClasses = {
+  true: 'bg-otel-true-soft text-otel-true',
+  false: 'bg-otel-false-soft text-otel-false',
+};
+
+const valueKey = isInOtel ? 'true' : 'false';
+---
+
+<span
+  class:list={[
+    "inline-flex items-center px-2 py-1 text-xs font-medium rounded-sm uppercase tracking-wide",
+    colorClasses[valueKey]
+  ]}
+  title="Defined in OpenTelemetry Semantic Conventions"
+>
+  {labels[valueKey]}
+</span>
