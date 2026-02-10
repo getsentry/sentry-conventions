@@ -7,5 +7,9 @@
   },
   "is_in_otel": true,
   "example": "openai",
-  "alias": ["ai.model.provider"]
+  "deprecation": {
+    "_status": null,
+    "replacement": "gen_ai.provider.name"
+  },
+  "alias": ["ai.model.provider", "gen_ai.provider.name"]
 }

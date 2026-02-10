@@ -1,0 +1,11 @@
+{
+  "key": "gen_ai.provider.name",
+  "brief": "The Generative AI provider as identified by the client or server instrumentation.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": true,
+  "example": "openai",
+  "alias": ["ai.model.provider", "gen_ai.system"]
+}

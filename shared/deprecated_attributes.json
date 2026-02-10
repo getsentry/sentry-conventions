@@ -228,9 +228,9 @@
       "example": "openai",
       "deprecation": {
         "_status": null,
-        "replacement": "gen_ai.system"
+        "replacement": "gen_ai.provider.name"
       },
-      "alias": ["gen_ai.system"]
+      "alias": ["gen_ai.provider.name", "gen_ai.system"]
     },
     {
       "key": "ai.model_id",
@@ -638,6 +638,21 @@
         "_status": null,
         "replacement": "gen_ai.output.messages"
       }
+    },
+    {
+      "key": "gen_ai.system",
+      "brief": "The provider of the model.",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": true,
+      "example": "openai",
+      "deprecation": {
+        "_status": null,
+        "replacement": "gen_ai.provider.name"
+      },
+      "alias": ["ai.model.provider", "gen_ai.provider.name"]
     },
     {
       "key": "gen_ai.system.message",
