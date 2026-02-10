@@ -35,6 +35,11 @@
   --color-pii-maybe-soft: rgba(234, 179, 8, 0.15);
   --color-pii-false: #22c55e;
   --color-pii-false-soft: rgba(34, 197, 94, 0.15);
+
+  --color-otel-true: #22c55e;
+  --color-otel-true-soft: rgba(34, 197, 94, 0.15);
+  --color-otel-false: #64748b;
+  --color-otel-false-soft: rgba(100, 116, 139, 0.2);
 }
 
 .dark {
@@ -73,6 +78,11 @@
   --color-pii-maybe-soft: rgba(212, 167, 44, 0.15);
   --color-pii-false: #50a060;
   --color-pii-false-soft: rgba(80, 160, 96, 0.15);
+
+  --color-otel-true: #50a060;
+  --color-otel-true-soft: rgba(80, 160, 96, 0.15);
+  --color-otel-false: #6b7280;
+  --color-otel-false-soft: rgba(107, 114, 128, 0.2);
 }
 
 @tailwind base;
@@ -205,10 +215,6 @@
 
   .badge-deprecated {
     @apply bg-error-soft text-error;
-  }
-
-  .badge-otel {
-    @apply bg-info-soft text-info;
   }
 
   .badge-dynamic {

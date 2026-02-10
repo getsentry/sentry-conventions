@@ -1,5 +1,6 @@
 ---
 import PiiBadge from './PiiBadge.astro';
+import OtelBadge from './OtelBadge.astro';
 import TypeBadge from './TypeBadge.astro';
 import type { Attribute } from '../content.config';
 import { parseAttributeId } from '../utils/category';
@@ -41,7 +42,7 @@ const rawJson = JSON.stringify(attribute, null, 2);
       <TypeBadge type={attribute.type} />
       <PiiBadge pii={attribute.pii.key} reason={attribute.pii.reason} />
       {attribute.is_in_otel != null && (
-        <span class="badge badge-otel" title="Defined in OpenTelemetry Semantic Conventions">OTel: {attribute.is_in_otel ? 'True' : 'False'}</span>
+        <OtelBadge isInOtel={attribute.is_in_otel} />
       )}
       {attribute.has_dynamic_suffix && (
         <span class="badge badge-dynamic" title="This attribute has a dynamic suffix">Dynamic</span>

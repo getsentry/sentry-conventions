@@ -59,6 +59,14 @@ export default {
           false: 'var(--color-pii-false)',
           'false-soft': 'var(--color-pii-false-soft)',
         },
+
+        // OTEL indicator colors
+        otel: {
+          true: 'var(--color-otel-true)',
+          'true-soft': 'var(--color-otel-true-soft)',
+          false: 'var(--color-otel-false)',
+          'false-soft': 'var(--color-otel-false-soft)',
+        },
       },
       fontFamily: {
         sans: ['DM Sans', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
