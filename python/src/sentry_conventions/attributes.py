@@ -152,7 +152,6 @@ class _AttributeNamesMeta(type):
         "NET_SOCK_PEER_NAME",
         "NET_SOCK_PEER_PORT",
         "NET_TRANSPORT",
-        "PROFILE_ID",
         "QUERY_KEY",
         "RELEASE",
         "REPLAY_ID",
@@ -3487,18 +3486,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "18.04.2"
     """
 
-    # Path: model/attributes/profile_id.json
-    PROFILE_ID: Literal["profile_id"] = "profile_id"
-    """The id of the sentry profile.
-
-    Type: str
-    Contains PII: false
-    Defined in OTEL: No
-    Aliases: sentry.profile_id
-    DEPRECATED: Use sentry.profile_id instead
-    Example: "123e4567e89b12d3a456426614174000"
-    """
-
     # Path: model/attributes/query/query__[key].json
     QUERY_KEY: Literal["query.<key>"] = "query.<key>"
     """An item in a query string. Usually added by client-side routing frameworks like vue-router.
@@ -3991,17 +3978,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: false
     Defined in OTEL: No
     Example: "php"
-    """
-
-    # Path: model/attributes/sentry/sentry__profile_id.json
-    SENTRY_PROFILE_ID: Literal["sentry.profile_id"] = "sentry.profile_id"
-    """The id of the sentry profile.
-
-    Type: str
-    Contains PII: false
-    Defined in OTEL: No
-    Aliases: profile_id
-    Example: "123e4567e89b12d3a456426614174000"
     """
 
     # Path: model/attributes/sentry/sentry__profiler_id.json
@@ -7264,15 +7240,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="18.04.2",
     ),
-    "profile_id": AttributeMetadata(
-        brief="The id of the sentry profile.",
-        type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=False,
-        example="123e4567e89b12d3a456426614174000",
-        deprecation=DeprecationInfo(replacement="sentry.profile_id"),
-        aliases=["sentry.profile_id"],
-    ),
     "query.<key>": AttributeMetadata(
         brief="An item in a query string. Usually added by client-side routing frameworks like vue-router.",
         type=AttributeType.STRING,
@@ -7611,14 +7578,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="php",
-    ),
-    "sentry.profile_id": AttributeMetadata(
-        brief="The id of the sentry profile.",
-        type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=False,
-        example="123e4567e89b12d3a456426614174000",
-        aliases=["profile_id"],
     ),
     "sentry.profiler_id": AttributeMetadata(
         brief="The id of the currently running profiler (continuous profiling)",
@@ -8553,7 +8512,6 @@ Attributes = TypedDict(
         "process.runtime.description": str,
         "process.runtime.name": str,
         "process.runtime.version": str,
-        "profile_id": str,
         "query.<key>": str,
         "release": str,
         "remix.action_form_data.<key>": str,
@@ -8599,7 +8557,6 @@ Attributes = TypedDict(
         "sentry.op": str,
         "sentry.origin": str,
         "sentry.platform": str,
-        "sentry.profile_id": str,
         "sentry.profiler_id": str,
         "sentry.release": str,
         "sentry.replay_id": str,
