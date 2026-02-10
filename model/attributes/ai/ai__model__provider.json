@@ -9,7 +9,7 @@
   "example": "openai",
   "deprecation": {
     "_status": null,
-    "replacement": "gen_ai.system"
+    "replacement": "gen_ai.provider.name"
   },
-  "alias": ["gen_ai.system"]
+  "alias": ["gen_ai.provider.name", "gen_ai.system"]
 }

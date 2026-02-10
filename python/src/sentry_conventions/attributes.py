@@ -121,6 +121,7 @@ class _AttributeNamesMeta(type):
         "GEN_AI_REQUEST_MESSAGES",
         "GEN_AI_RESPONSE_TEXT",
         "GEN_AI_RESPONSE_TOOL_CALLS",
+        "GEN_AI_SYSTEM",
         "GEN_AI_SYSTEM_MESSAGE",
         "GEN_AI_USAGE_COMPLETION_TOKENS",
         "GEN_AI_USAGE_PROMPT_TOKENS",
@@ -301,8 +302,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: gen_ai.system
-    DEPRECATED: Use gen_ai.system instead
+    Aliases: gen_ai.provider.name, gen_ai.system
+    DEPRECATED: Use gen_ai.provider.name instead
     Example: "openai"
     """
 
@@ -1272,28 +1273,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "ResearchAssistant"
     """
 
-    # Path: model/attributes/gen_ai/gen_ai__assistant__message.json
-    GEN_AI_ASSISTANT_MESSAGE: Literal["gen_ai.assistant.message"] = (
-        "gen_ai.assistant.message"
-    )
-    """The assistant message passed to the model.
-
-    Type: str
-    Contains PII: true
-    Defined in OTEL: No
-    Example: "get_weather tool call"
-    """
-
-    # Path: model/attributes/gen_ai/gen_ai__choice.json
-    GEN_AI_CHOICE: Literal["gen_ai.choice"] = "gen_ai.choice"
-    """The model's response message.
-
-    Type: str
-    Contains PII: true
-    Defined in OTEL: No
-    Example: "The weather in Paris is rainy and overcast, with temperatures around 57°F"
-    """
-
     # Path: model/attributes/gen_ai/gen_ai__conversation__id.json
     GEN_AI_CONVERSATION_ID: Literal["gen_ai.conversation.id"] = "gen_ai.conversation.id"
     """The unique identifier for a conversation (session, thread), used to store and correlate messages within this conversation.
@@ -1412,6 +1391,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     DEPRECATED: No replacement at this time - Deprecated from OTEL, use gen_ai.input.messages with the new format instead.
     Example: "[{\"role\": \"user\", \"message\": \"hello\"}]"
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__provider__name.json
+    GEN_AI_PROVIDER_NAME: Literal["gen_ai.provider.name"] = "gen_ai.provider.name"
+    """The Generative AI provider as identified by the client or server instrumentation.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: Yes
+    Aliases: ai.model.provider, gen_ai.system
+    Example: "openai"
     """
 
     # Path: model/attributes/gen_ai/gen_ai__request__available_tools.json
@@ -1638,7 +1628,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
-    Aliases: ai.model.provider
+    Aliases: ai.model.provider, gen_ai.provider.name
+    DEPRECATED: Use gen_ai.provider.name instead
     Example: "openai"
     """
 
@@ -1865,16 +1856,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Aliases: ai.total_tokens.used
     Example: 20
-    """
-
-    # Path: model/attributes/gen_ai/gen_ai__user__message.json
-    GEN_AI_USER_MESSAGE: Literal["gen_ai.user.message"] = "gen_ai.user.message"
-    """The user message passed to the model.
-
-    Type: str
-    Contains PII: true
-    Defined in OTEL: No
-    Example: "What's the weather in Paris?"
     """
 
     # Path: model/attributes/graphql/graphql__operation__name.json
@@ -4993,8 +4974,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="openai",
-        deprecation=DeprecationInfo(replacement="gen_ai.system"),
-        aliases=["gen_ai.system"],
+        deprecation=DeprecationInfo(replacement="gen_ai.provider.name"),
+        aliases=["gen_ai.provider.name", "gen_ai.system"],
     ),
     "ai.model_id": AttributeMetadata(
         brief="The vendor-specific ID of the model used.",
@@ -5715,20 +5696,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="ResearchAssistant",
     ),
-    "gen_ai.assistant.message": AttributeMetadata(
-        brief="The assistant message passed to the model.",
-        type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
-        is_in_otel=False,
-        example="get_weather tool call",
-    ),
-    "gen_ai.choice": AttributeMetadata(
-        brief="The model's response message.",
-        type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
-        is_in_otel=False,
-        example="The weather in Paris is rainy and overcast, with temperatures around 57°F",
-    ),
     "gen_ai.conversation.id": AttributeMetadata(
         brief="The unique identifier for a conversation (session, thread), used to store and correlate messages within this conversation.",
         type=AttributeType.STRING,
@@ -5809,6 +5776,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             reason="Deprecated from OTEL, use gen_ai.input.messages with the new format instead."
         ),
+    ),
+    "gen_ai.provider.name": AttributeMetadata(
+        brief="The Generative AI provider as identified by the client or server instrumentation.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=True,
+        example="openai",
+        aliases=["ai.model.provider", "gen_ai.system"],
     ),
     "gen_ai.request.available_tools": AttributeMetadata(
         brief="The available tools for the model. It has to be a stringified version of an array of objects.",
@@ -5957,7 +5932,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="openai",
-        aliases=["ai.model.provider"],
+        deprecation=DeprecationInfo(replacement="gen_ai.provider.name"),
+        aliases=["ai.model.provider", "gen_ai.provider.name"],
     ),
     "gen_ai.system.message": AttributeMetadata(
         brief="The system instructions passed to the model.",
@@ -6100,13 +6076,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=20,
         aliases=["ai.total_tokens.used"],
-    ),
-    "gen_ai.user.message": AttributeMetadata(
-        brief="The user message passed to the model.",
-        type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
-        is_in_otel=False,
-        example="What's the weather in Paris?",
     ),
     "graphql.operation.name": AttributeMetadata(
         brief="The name of the operation being executed.",
@@ -8356,8 +8325,6 @@ Attributes = TypedDict(
         "frames.total": int,
         "fs_error": str,
         "gen_ai.agent.name": str,
-        "gen_ai.assistant.message": str,
-        "gen_ai.choice": str,
         "gen_ai.conversation.id": str,
         "gen_ai.cost.input_tokens": float,
         "gen_ai.cost.output_tokens": float,
@@ -8369,6 +8336,7 @@ Attributes = TypedDict(
         "gen_ai.output.messages": str,
         "gen_ai.pipeline.name": str,
         "gen_ai.prompt": str,
+        "gen_ai.provider.name": str,
         "gen_ai.request.available_tools": str,
         "gen_ai.request.frequency_penalty": float,
         "gen_ai.request.max_tokens": int,
@@ -8407,7 +8375,6 @@ Attributes = TypedDict(
         "gen_ai.usage.output_tokens.reasoning": int,
         "gen_ai.usage.prompt_tokens": int,
         "gen_ai.usage.total_tokens": int,
-        "gen_ai.user.message": str,
         "graphql.operation.name": str,
         "graphql.operation.type": str,
         "http.client_ip": str,
