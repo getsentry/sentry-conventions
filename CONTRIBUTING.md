@@ -2,7 +2,7 @@
 
 Running this repo requires the usage of [volta](https://volta.sh/). See instructions on installing volta on their documentation [here](https://docs.volta.sh/guide/getting-started). The repo requires Node v22 or higher to run.
 
-# Setup
+## Setup
 
 To install required dependencies, run `yarn install`.
 
@@ -10,7 +10,16 @@ To install required dependencies, run `yarn install`.
 yarn install
 ```
 
-# Usage
+## Process
+
+Before attributes are sent from SDKs, or attribute values change, the attributes MUST be defined in this repo. If the convention you need doesn't exist yet, open a PR there to propose it. Only after the convention has been merged, implement it in an SDK. This ensures all SDKs use consistent naming and semantics.
+
+The merge process for sentry-conventions PRs:
+
+1. Open a PR with the proposed convention ([Adding an Attribute](#adding-a-new-attribute)).
+2. Get an approval from at least one code owner.
+3. Wait for at least 3 business days after the first approval to give other code owners a chance to review.
+4. Merge your PR (alternatively, code owners may merge it after review)
 
 ## Adding a new attribute
 
@@ -48,13 +57,14 @@ Remember to run `yarn run generate` after editing or creating a `name` conventio
 
 ## Code and Docs Generation
 
-After you edit an attribute or add a new one, you should run `yarn run generate && yarn run format` to generate and format the code and docs, which are generated from the json files stored in the `model` directory.
+After you edit an attribute or add a new one, you need to run `yarn run generate` to generate and format the attribute library code, which is generated from the json files stored in the `model` directory.
 
-# Policies
+## Policies
 
-## Attributes
+### Attributes
 
 Here's a list of policies that any newly added attributes MUST follow. Most of these are automatically enforced by the test suite.
+
 - The attribute MUST be namespaced. Example: `nextjs.function_id`, not `function_id`.
 - The `pii` field in the attribute definition MUST be `maybe` or `true` (if the attribute can contain sensitive data). It SHOULD be `false` only if scrubbing the attribute value for PII would potentially break product features. For example, `sentry.replay_id` should have `pii` set to `false`.
 - When an attribute is added that deprecates an old one:
@@ -62,7 +72,7 @@ Here's a list of policies that any newly added attributes MUST follow. Most of t
   - For both the new and the old attribute, and any existing aliases of the old attribute, the new and old names MUST be added to the `aliases` list.
   - The deprecation status of the old one SHOULD be set to `backfill` for at least 90 days, and then set to `normalize`.
 
-# Testing
+## Testing
 
 This repo uses [Vitest](https://vitest.dev/) for testing. To run the tests, run `yarn test`.
 The tests enforce logical correctness as well as policies that the model should follow.
@@ -71,7 +81,7 @@ The tests enforce logical correctness as well as policies that the model should 
 yarn test
 ```
 
-# Linting
+## Linting
 
 This repo uses [Biome](https://biome.sh/) and other platform-specific tools for linting. To run the linting, run `yarn lint`.
 
