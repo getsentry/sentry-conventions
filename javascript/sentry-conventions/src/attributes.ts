@@ -6219,29 +6219,6 @@ export const PROCESS_RUNTIME_VERSION = 'process.runtime.version';
  */
 export type PROCESS_RUNTIME_VERSION_TYPE = string;
 
-// Path: model/attributes/profile_id.json
-
-/**
- * The id of the sentry profile. `profile_id`
- *
- * Attribute Value Type: `string` {@link PROFILE_ID_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * Aliases: {@link SENTRY_PROFILE_ID} `sentry.profile_id`
- *
- * @deprecated Use {@link SENTRY_PROFILE_ID} (sentry.profile_id) instead
- * @example "123e4567e89b12d3a456426614174000"
- */
-export const PROFILE_ID = 'profile_id';
-
-/**
- * Type for {@link PROFILE_ID} profile_id
- */
-export type PROFILE_ID_TYPE = string;
-
 // Path: model/attributes/query/query__[key].json
 
 /**
@@ -7182,28 +7159,6 @@ export const SENTRY_PROFILER_ID = 'sentry.profiler_id';
  * Type for {@link SENTRY_PROFILER_ID} sentry.profiler_id
  */
 export type SENTRY_PROFILER_ID_TYPE = string;
-
-// Path: model/attributes/sentry/sentry__profile_id.json
-
-/**
- * The id of the sentry profile. `sentry.profile_id`
- *
- * Attribute Value Type: `string` {@link SENTRY_PROFILE_ID_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * Aliases: {@link PROFILE_ID} `profile_id`
- *
- * @example "123e4567e89b12d3a456426614174000"
- */
-export const SENTRY_PROFILE_ID = 'sentry.profile_id';
-
-/**
- * Type for {@link SENTRY_PROFILE_ID} sentry.profile_id
- */
-export type SENTRY_PROFILE_ID_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__release.json
 
@@ -9266,7 +9221,6 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [PROCESS_RUNTIME_DESCRIPTION]: 'string',
   [PROCESS_RUNTIME_NAME]: 'string',
   [PROCESS_RUNTIME_VERSION]: 'string',
-  [PROFILE_ID]: 'string',
   [QUERY_KEY]: 'string',
   [RELEASE]: 'string',
   [REMIX_ACTION_FORM_DATA_KEY]: 'string',
@@ -9313,7 +9267,6 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_ORIGIN]: 'string',
   [SENTRY_PLATFORM]: 'string',
   [SENTRY_PROFILER_ID]: 'string',
-  [SENTRY_PROFILE_ID]: 'string',
   [SENTRY_RELEASE]: 'string',
   [SENTRY_REPLAY_ID]: 'string',
   [SENTRY_REPLAY_IS_BUFFERING]: 'boolean',
@@ -9699,7 +9652,6 @@ export type AttributeName =
   | typeof PROCESS_RUNTIME_DESCRIPTION
   | typeof PROCESS_RUNTIME_NAME
   | typeof PROCESS_RUNTIME_VERSION
-  | typeof PROFILE_ID
   | typeof QUERY_KEY
   | typeof RELEASE
   | typeof REMIX_ACTION_FORM_DATA_KEY
@@ -9746,7 +9698,6 @@ export type AttributeName =
   | typeof SENTRY_ORIGIN
   | typeof SENTRY_PLATFORM
   | typeof SENTRY_PROFILER_ID
-  | typeof SENTRY_PROFILE_ID
   | typeof SENTRY_RELEASE
   | typeof SENTRY_REPLAY_ID
   | typeof SENTRY_REPLAY_IS_BUFFERING
@@ -12951,19 +12902,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: '18.04.2',
   },
-  [PROFILE_ID]: {
-    brief: 'The id of the sentry profile.',
-    type: 'string',
-    pii: {
-      isPii: 'false',
-    },
-    isInOtel: false,
-    example: '123e4567e89b12d3a456426614174000',
-    deprecation: {
-      replacement: 'sentry.profile_id',
-    },
-    aliases: [SENTRY_PROFILE_ID],
-  },
   [QUERY_KEY]: {
     brief: 'An item in a query string. Usually added by client-side routing frameworks like vue-router.',
     type: 'string',
@@ -13421,16 +13359,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '18779b64dd35d1a538e7ce2dd2d3fad3',
-  },
-  [SENTRY_PROFILE_ID]: {
-    brief: 'The id of the sentry profile.',
-    type: 'string',
-    pii: {
-      isPii: 'false',
-    },
-    isInOtel: false,
-    example: '123e4567e89b12d3a456426614174000',
-    aliases: [PROFILE_ID],
   },
   [SENTRY_RELEASE]: {
     brief: 'The sentry release.',
@@ -14532,7 +14460,6 @@ export type Attributes = {
   [PROCESS_RUNTIME_DESCRIPTION]?: PROCESS_RUNTIME_DESCRIPTION_TYPE;
   [PROCESS_RUNTIME_NAME]?: PROCESS_RUNTIME_NAME_TYPE;
   [PROCESS_RUNTIME_VERSION]?: PROCESS_RUNTIME_VERSION_TYPE;
-  [PROFILE_ID]?: PROFILE_ID_TYPE;
   [QUERY_KEY]?: QUERY_KEY_TYPE;
   [RELEASE]?: RELEASE_TYPE;
   [REMIX_ACTION_FORM_DATA_KEY]?: REMIX_ACTION_FORM_DATA_KEY_TYPE;
@@ -14579,7 +14506,6 @@ export type Attributes = {
   [SENTRY_ORIGIN]?: SENTRY_ORIGIN_TYPE;
   [SENTRY_PLATFORM]?: SENTRY_PLATFORM_TYPE;
   [SENTRY_PROFILER_ID]?: SENTRY_PROFILER_ID_TYPE;
-  [SENTRY_PROFILE_ID]?: SENTRY_PROFILE_ID_TYPE;
   [SENTRY_RELEASE]?: SENTRY_RELEASE_TYPE;
   [SENTRY_REPLAY_ID]?: SENTRY_REPLAY_ID_TYPE;
   [SENTRY_REPLAY_IS_BUFFERING]?: SENTRY_REPLAY_IS_BUFFERING_TYPE;
