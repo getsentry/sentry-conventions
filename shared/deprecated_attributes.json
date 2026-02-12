@@ -49,21 +49,6 @@
       "sdks": ["javascript-browser", "javascript-node"]
     },
     {
-      "key": "profile_id",
-      "brief": "The id of the sentry profile.",
-      "type": "string",
-      "pii": {
-        "key": "false"
-      },
-      "is_in_otel": false,
-      "example": "123e4567e89b12d3a456426614174000",
-      "deprecation": {
-        "_status": null,
-        "replacement": "sentry.profile_id"
-      },
-      "alias": ["sentry.profile_id"]
-    },
-    {
       "key": "release",
       "brief": "The sentry release.",
       "type": "string",
@@ -243,9 +228,9 @@
       "example": "openai",
       "deprecation": {
         "_status": null,
-        "replacement": "gen_ai.system"
+        "replacement": "gen_ai.provider.name"
       },
-      "alias": ["gen_ai.system"]
+      "alias": ["gen_ai.provider.name", "gen_ai.system"]
     },
     {
       "key": "ai.model_id",
@@ -653,6 +638,21 @@
         "_status": null,
         "replacement": "gen_ai.output.messages"
       }
+    },
+    {
+      "key": "gen_ai.system",
+      "brief": "The provider of the model.",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": true,
+      "example": "openai",
+      "deprecation": {
+        "_status": null,
+        "replacement": "gen_ai.provider.name"
+      },
+      "alias": ["ai.model.provider", "gen_ai.provider.name"]
     },
     {
       "key": "gen_ai.system.message",

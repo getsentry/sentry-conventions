@@ -252,9 +252,9 @@ export type AI_MODEL_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link GEN_AI_SYSTEM} `gen_ai.system`
+ * Aliases: {@link GEN_AI_PROVIDER_NAME} `gen_ai.provider.name`, {@link GEN_AI_SYSTEM} `gen_ai.system`
  *
- * @deprecated Use {@link GEN_AI_SYSTEM} (gen_ai.system) instead
+ * @deprecated Use {@link GEN_AI_PROVIDER_NAME} (gen_ai.provider.name) instead
  * @example "openai"
  */
 export const AI_MODEL_PROVIDER = 'ai.model.provider';
@@ -2125,46 +2125,6 @@ export const GEN_AI_AGENT_NAME = 'gen_ai.agent.name';
  */
 export type GEN_AI_AGENT_NAME_TYPE = string;
 
-// Path: model/attributes/gen_ai/gen_ai__assistant__message.json
-
-/**
- * The assistant message passed to the model. `gen_ai.assistant.message`
- *
- * Attribute Value Type: `string` {@link GEN_AI_ASSISTANT_MESSAGE_TYPE}
- *
- * Contains PII: true
- *
- * Attribute defined in OTEL: No
- *
- * @example "get_weather tool call"
- */
-export const GEN_AI_ASSISTANT_MESSAGE = 'gen_ai.assistant.message';
-
-/**
- * Type for {@link GEN_AI_ASSISTANT_MESSAGE} gen_ai.assistant.message
- */
-export type GEN_AI_ASSISTANT_MESSAGE_TYPE = string;
-
-// Path: model/attributes/gen_ai/gen_ai__choice.json
-
-/**
- * The model's response message. `gen_ai.choice`
- *
- * Attribute Value Type: `string` {@link GEN_AI_CHOICE_TYPE}
- *
- * Contains PII: true
- *
- * Attribute defined in OTEL: No
- *
- * @example "The weather in Paris is rainy and overcast, with temperatures around 57°F"
- */
-export const GEN_AI_CHOICE = 'gen_ai.choice';
-
-/**
- * Type for {@link GEN_AI_CHOICE} gen_ai.choice
- */
-export type GEN_AI_CHOICE_TYPE = string;
-
 // Path: model/attributes/gen_ai/gen_ai__conversation__id.json
 
 /**
@@ -2387,6 +2347,28 @@ export const GEN_AI_PROMPT = 'gen_ai.prompt';
  * Type for {@link GEN_AI_PROMPT} gen_ai.prompt
  */
 export type GEN_AI_PROMPT_TYPE = string;
+
+// Path: model/attributes/gen_ai/gen_ai__provider__name.json
+
+/**
+ * The Generative AI provider as identified by the client or server instrumentation. `gen_ai.provider.name`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_PROVIDER_NAME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * Aliases: {@link AI_MODEL_PROVIDER} `ai.model.provider`, {@link GEN_AI_SYSTEM} `gen_ai.system`
+ *
+ * @example "openai"
+ */
+export const GEN_AI_PROVIDER_NAME = 'gen_ai.provider.name';
+
+/**
+ * Type for {@link GEN_AI_PROVIDER_NAME} gen_ai.provider.name
+ */
+export type GEN_AI_PROVIDER_NAME_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__request__available_tools.json
 
@@ -2785,8 +2767,9 @@ export type GEN_AI_RESPONSE_TOOL_CALLS_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link AI_MODEL_PROVIDER} `ai.model.provider`
+ * Aliases: {@link AI_MODEL_PROVIDER} `ai.model.provider`, {@link GEN_AI_PROVIDER_NAME} `gen_ai.provider.name`
  *
+ * @deprecated Use {@link GEN_AI_PROVIDER_NAME} (gen_ai.provider.name) instead
  * @example "openai"
  */
 export const GEN_AI_SYSTEM = 'gen_ai.system';
@@ -3190,26 +3173,6 @@ export const GEN_AI_USAGE_TOTAL_TOKENS = 'gen_ai.usage.total_tokens';
  * Type for {@link GEN_AI_USAGE_TOTAL_TOKENS} gen_ai.usage.total_tokens
  */
 export type GEN_AI_USAGE_TOTAL_TOKENS_TYPE = number;
-
-// Path: model/attributes/gen_ai/gen_ai__user__message.json
-
-/**
- * The user message passed to the model. `gen_ai.user.message`
- *
- * Attribute Value Type: `string` {@link GEN_AI_USER_MESSAGE_TYPE}
- *
- * Contains PII: true
- *
- * Attribute defined in OTEL: No
- *
- * @example "What's the weather in Paris?"
- */
-export const GEN_AI_USER_MESSAGE = 'gen_ai.user.message';
-
-/**
- * Type for {@link GEN_AI_USER_MESSAGE} gen_ai.user.message
- */
-export type GEN_AI_USER_MESSAGE_TYPE = string;
 
 // Path: model/attributes/graphql/graphql__operation__name.json
 
@@ -6219,29 +6182,6 @@ export const PROCESS_RUNTIME_VERSION = 'process.runtime.version';
  */
 export type PROCESS_RUNTIME_VERSION_TYPE = string;
 
-// Path: model/attributes/profile_id.json
-
-/**
- * The id of the sentry profile. `profile_id`
- *
- * Attribute Value Type: `string` {@link PROFILE_ID_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * Aliases: {@link SENTRY_PROFILE_ID} `sentry.profile_id`
- *
- * @deprecated Use {@link SENTRY_PROFILE_ID} (sentry.profile_id) instead
- * @example "123e4567e89b12d3a456426614174000"
- */
-export const PROFILE_ID = 'profile_id';
-
-/**
- * Type for {@link PROFILE_ID} profile_id
- */
-export type PROFILE_ID_TYPE = string;
-
 // Path: model/attributes/query/query__[key].json
 
 /**
@@ -7182,28 +7122,6 @@ export const SENTRY_PROFILER_ID = 'sentry.profiler_id';
  * Type for {@link SENTRY_PROFILER_ID} sentry.profiler_id
  */
 export type SENTRY_PROFILER_ID_TYPE = string;
-
-// Path: model/attributes/sentry/sentry__profile_id.json
-
-/**
- * The id of the sentry profile. `sentry.profile_id`
- *
- * Attribute Value Type: `string` {@link SENTRY_PROFILE_ID_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * Aliases: {@link PROFILE_ID} `profile_id`
- *
- * @example "123e4567e89b12d3a456426614174000"
- */
-export const SENTRY_PROFILE_ID = 'sentry.profile_id';
-
-/**
- * Type for {@link SENTRY_PROFILE_ID} sentry.profile_id
- */
-export type SENTRY_PROFILE_ID_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__release.json
 
@@ -9069,8 +8987,6 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [FRAMES_TOTAL]: 'integer',
   [FS_ERROR]: 'string',
   [GEN_AI_AGENT_NAME]: 'string',
-  [GEN_AI_ASSISTANT_MESSAGE]: 'string',
-  [GEN_AI_CHOICE]: 'string',
   [GEN_AI_CONVERSATION_ID]: 'string',
   [GEN_AI_COST_INPUT_TOKENS]: 'double',
   [GEN_AI_COST_OUTPUT_TOKENS]: 'double',
@@ -9082,6 +8998,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [GEN_AI_OUTPUT_MESSAGES]: 'string',
   [GEN_AI_PIPELINE_NAME]: 'string',
   [GEN_AI_PROMPT]: 'string',
+  [GEN_AI_PROVIDER_NAME]: 'string',
   [GEN_AI_REQUEST_AVAILABLE_TOOLS]: 'string',
   [GEN_AI_REQUEST_FREQUENCY_PENALTY]: 'double',
   [GEN_AI_REQUEST_MAX_TOKENS]: 'integer',
@@ -9120,7 +9037,6 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [GEN_AI_USAGE_OUTPUT_TOKENS_REASONING]: 'integer',
   [GEN_AI_USAGE_PROMPT_TOKENS]: 'integer',
   [GEN_AI_USAGE_TOTAL_TOKENS]: 'integer',
-  [GEN_AI_USER_MESSAGE]: 'string',
   [GRAPHQL_OPERATION_NAME]: 'string',
   [GRAPHQL_OPERATION_TYPE]: 'string',
   [HTTP_CLIENT_IP]: 'string',
@@ -9266,7 +9182,6 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [PROCESS_RUNTIME_DESCRIPTION]: 'string',
   [PROCESS_RUNTIME_NAME]: 'string',
   [PROCESS_RUNTIME_VERSION]: 'string',
-  [PROFILE_ID]: 'string',
   [QUERY_KEY]: 'string',
   [RELEASE]: 'string',
   [REMIX_ACTION_FORM_DATA_KEY]: 'string',
@@ -9313,7 +9228,6 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_ORIGIN]: 'string',
   [SENTRY_PLATFORM]: 'string',
   [SENTRY_PROFILER_ID]: 'string',
-  [SENTRY_PROFILE_ID]: 'string',
   [SENTRY_RELEASE]: 'string',
   [SENTRY_REPLAY_ID]: 'string',
   [SENTRY_REPLAY_IS_BUFFERING]: 'boolean',
@@ -9502,8 +9416,6 @@ export type AttributeName =
   | typeof FRAMES_TOTAL
   | typeof FS_ERROR
   | typeof GEN_AI_AGENT_NAME
-  | typeof GEN_AI_ASSISTANT_MESSAGE
-  | typeof GEN_AI_CHOICE
   | typeof GEN_AI_CONVERSATION_ID
   | typeof GEN_AI_COST_INPUT_TOKENS
   | typeof GEN_AI_COST_OUTPUT_TOKENS
@@ -9515,6 +9427,7 @@ export type AttributeName =
   | typeof GEN_AI_OUTPUT_MESSAGES
   | typeof GEN_AI_PIPELINE_NAME
   | typeof GEN_AI_PROMPT
+  | typeof GEN_AI_PROVIDER_NAME
   | typeof GEN_AI_REQUEST_AVAILABLE_TOOLS
   | typeof GEN_AI_REQUEST_FREQUENCY_PENALTY
   | typeof GEN_AI_REQUEST_MAX_TOKENS
@@ -9553,7 +9466,6 @@ export type AttributeName =
   | typeof GEN_AI_USAGE_OUTPUT_TOKENS_REASONING
   | typeof GEN_AI_USAGE_PROMPT_TOKENS
   | typeof GEN_AI_USAGE_TOTAL_TOKENS
-  | typeof GEN_AI_USER_MESSAGE
   | typeof GRAPHQL_OPERATION_NAME
   | typeof GRAPHQL_OPERATION_TYPE
   | typeof HTTP_CLIENT_IP
@@ -9699,7 +9611,6 @@ export type AttributeName =
   | typeof PROCESS_RUNTIME_DESCRIPTION
   | typeof PROCESS_RUNTIME_NAME
   | typeof PROCESS_RUNTIME_VERSION
-  | typeof PROFILE_ID
   | typeof QUERY_KEY
   | typeof RELEASE
   | typeof REMIX_ACTION_FORM_DATA_KEY
@@ -9746,7 +9657,6 @@ export type AttributeName =
   | typeof SENTRY_ORIGIN
   | typeof SENTRY_PLATFORM
   | typeof SENTRY_PROFILER_ID
-  | typeof SENTRY_PROFILE_ID
   | typeof SENTRY_RELEASE
   | typeof SENTRY_REPLAY_ID
   | typeof SENTRY_REPLAY_IS_BUFFERING
@@ -9974,9 +9884,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'openai',
     deprecation: {
-      replacement: 'gen_ai.system',
+      replacement: 'gen_ai.provider.name',
     },
-    aliases: [GEN_AI_SYSTEM],
+    aliases: [GEN_AI_PROVIDER_NAME, GEN_AI_SYSTEM],
   },
   [AI_PIPELINE_NAME]: {
     brief: 'The name of the AI pipeline.',
@@ -10922,24 +10832,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'ResearchAssistant',
   },
-  [GEN_AI_ASSISTANT_MESSAGE]: {
-    brief: 'The assistant message passed to the model.',
-    type: 'string',
-    pii: {
-      isPii: 'true',
-    },
-    isInOtel: false,
-    example: 'get_weather tool call',
-  },
-  [GEN_AI_CHOICE]: {
-    brief: "The model's response message.",
-    type: 'string',
-    pii: {
-      isPii: 'true',
-    },
-    isInOtel: false,
-    example: 'The weather in Paris is rainy and overcast, with temperatures around 57°F',
-  },
   [GEN_AI_CONVERSATION_ID]: {
     brief:
       'The unique identifier for a conversation (session, thread), used to store and correlate messages within this conversation.',
@@ -11049,6 +10941,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       reason: 'Deprecated from OTEL, use gen_ai.input.messages with the new format instead.',
     },
+  },
+  [GEN_AI_PROVIDER_NAME]: {
+    brief: 'The Generative AI provider as identified by the client or server instrumentation.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'openai',
+    aliases: [AI_MODEL_PROVIDER, GEN_AI_SYSTEM],
   },
   [GEN_AI_REQUEST_AVAILABLE_TOOLS]: {
     brief: 'The available tools for the model. It has to be a stringified version of an array of objects.',
@@ -11253,7 +11155,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'openai',
-    aliases: [AI_MODEL_PROVIDER],
+    deprecation: {
+      replacement: 'gen_ai.provider.name',
+    },
+    aliases: [AI_MODEL_PROVIDER, GEN_AI_PROVIDER_NAME],
   },
   [GEN_AI_SYSTEM_INSTRUCTIONS]: {
     brief: 'The system instructions passed to the model.',
@@ -11441,15 +11346,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 20,
     aliases: [AI_TOTAL_TOKENS_USED],
-  },
-  [GEN_AI_USER_MESSAGE]: {
-    brief: 'The user message passed to the model.',
-    type: 'string',
-    pii: {
-      isPii: 'true',
-    },
-    isInOtel: false,
-    example: "What's the weather in Paris?",
   },
   [GRAPHQL_OPERATION_NAME]: {
     brief: 'The name of the operation being executed.',
@@ -12951,19 +12847,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: '18.04.2',
   },
-  [PROFILE_ID]: {
-    brief: 'The id of the sentry profile.',
-    type: 'string',
-    pii: {
-      isPii: 'false',
-    },
-    isInOtel: false,
-    example: '123e4567e89b12d3a456426614174000',
-    deprecation: {
-      replacement: 'sentry.profile_id',
-    },
-    aliases: [SENTRY_PROFILE_ID],
-  },
   [QUERY_KEY]: {
     brief: 'An item in a query string. Usually added by client-side routing frameworks like vue-router.',
     type: 'string',
@@ -13421,16 +13304,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '18779b64dd35d1a538e7ce2dd2d3fad3',
-  },
-  [SENTRY_PROFILE_ID]: {
-    brief: 'The id of the sentry profile.',
-    type: 'string',
-    pii: {
-      isPii: 'false',
-    },
-    isInOtel: false,
-    example: '123e4567e89b12d3a456426614174000',
-    aliases: [PROFILE_ID],
   },
   [SENTRY_RELEASE]: {
     brief: 'The sentry release.',
@@ -14335,8 +14208,6 @@ export type Attributes = {
   [FRAMES_TOTAL]?: FRAMES_TOTAL_TYPE;
   [FS_ERROR]?: FS_ERROR_TYPE;
   [GEN_AI_AGENT_NAME]?: GEN_AI_AGENT_NAME_TYPE;
-  [GEN_AI_ASSISTANT_MESSAGE]?: GEN_AI_ASSISTANT_MESSAGE_TYPE;
-  [GEN_AI_CHOICE]?: GEN_AI_CHOICE_TYPE;
   [GEN_AI_CONVERSATION_ID]?: GEN_AI_CONVERSATION_ID_TYPE;
   [GEN_AI_COST_INPUT_TOKENS]?: GEN_AI_COST_INPUT_TOKENS_TYPE;
   [GEN_AI_COST_OUTPUT_TOKENS]?: GEN_AI_COST_OUTPUT_TOKENS_TYPE;
@@ -14348,6 +14219,7 @@ export type Attributes = {
   [GEN_AI_OUTPUT_MESSAGES]?: GEN_AI_OUTPUT_MESSAGES_TYPE;
   [GEN_AI_PIPELINE_NAME]?: GEN_AI_PIPELINE_NAME_TYPE;
   [GEN_AI_PROMPT]?: GEN_AI_PROMPT_TYPE;
+  [GEN_AI_PROVIDER_NAME]?: GEN_AI_PROVIDER_NAME_TYPE;
   [GEN_AI_REQUEST_AVAILABLE_TOOLS]?: GEN_AI_REQUEST_AVAILABLE_TOOLS_TYPE;
   [GEN_AI_REQUEST_FREQUENCY_PENALTY]?: GEN_AI_REQUEST_FREQUENCY_PENALTY_TYPE;
   [GEN_AI_REQUEST_MAX_TOKENS]?: GEN_AI_REQUEST_MAX_TOKENS_TYPE;
@@ -14386,7 +14258,6 @@ export type Attributes = {
   [GEN_AI_USAGE_OUTPUT_TOKENS_REASONING]?: GEN_AI_USAGE_OUTPUT_TOKENS_REASONING_TYPE;
   [GEN_AI_USAGE_PROMPT_TOKENS]?: GEN_AI_USAGE_PROMPT_TOKENS_TYPE;
   [GEN_AI_USAGE_TOTAL_TOKENS]?: GEN_AI_USAGE_TOTAL_TOKENS_TYPE;
-  [GEN_AI_USER_MESSAGE]?: GEN_AI_USER_MESSAGE_TYPE;
   [GRAPHQL_OPERATION_NAME]?: GRAPHQL_OPERATION_NAME_TYPE;
   [GRAPHQL_OPERATION_TYPE]?: GRAPHQL_OPERATION_TYPE_TYPE;
   [HTTP_CLIENT_IP]?: HTTP_CLIENT_IP_TYPE;
@@ -14532,7 +14403,6 @@ export type Attributes = {
   [PROCESS_RUNTIME_DESCRIPTION]?: PROCESS_RUNTIME_DESCRIPTION_TYPE;
   [PROCESS_RUNTIME_NAME]?: PROCESS_RUNTIME_NAME_TYPE;
   [PROCESS_RUNTIME_VERSION]?: PROCESS_RUNTIME_VERSION_TYPE;
-  [PROFILE_ID]?: PROFILE_ID_TYPE;
   [QUERY_KEY]?: QUERY_KEY_TYPE;
   [RELEASE]?: RELEASE_TYPE;
   [REMIX_ACTION_FORM_DATA_KEY]?: REMIX_ACTION_FORM_DATA_KEY_TYPE;
@@ -14579,7 +14449,6 @@ export type Attributes = {
   [SENTRY_ORIGIN]?: SENTRY_ORIGIN_TYPE;
   [SENTRY_PLATFORM]?: SENTRY_PLATFORM_TYPE;
   [SENTRY_PROFILER_ID]?: SENTRY_PROFILER_ID_TYPE;
-  [SENTRY_PROFILE_ID]?: SENTRY_PROFILE_ID_TYPE;
   [SENTRY_RELEASE]?: SENTRY_RELEASE_TYPE;
   [SENTRY_REPLAY_ID]?: SENTRY_REPLAY_ID_TYPE;
   [SENTRY_REPLAY_IS_BUFFERING]?: SENTRY_REPLAY_IS_BUFFERING_TYPE;
