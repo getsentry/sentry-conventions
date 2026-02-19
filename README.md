@@ -8,9 +8,9 @@ These will be a standardized naming scheme for operations and data that will be 
 
 Conventions may also map attributes from OpenTelemetry resource attributes into Sentry's semantic attributes. Such OpenTelemetry resource attributes are ingested into Sentry as regular attributes prefixed with `resource.`. For example, see definitions in [the `model/attributes/resource` directory](model/attributes/resource).
 
-To see the current list of attributes, see [the generated documentation for attributes](generated/attributes/index.md).
+To see the current list of attributes, see [the generated documentation for attributes](https://getsentry.github.io/sentry-conventions/attributes/).
 
-To learn about creating span `name` fields, see [the generated documentation for span `name`](generated/name/index.md)
+To learn about creating span `name` fields, see [the generated documentation for span `name`](https://getsentry.github.io/sentry-conventions/names/)
 
 # Contributing
 
