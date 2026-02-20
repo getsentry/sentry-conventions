@@ -1772,7 +1772,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     GEN_AI_USAGE_INPUT_TOKENS: Literal["gen_ai.usage.input_tokens"] = (
         "gen_ai.usage.input_tokens"
     )
-    """The number of tokens used to process the AI input (prompt) without cached input tokens.
+    """The number of tokens used to process the AI input (prompt) including cached input tokens.
 
     Type: int
     Contains PII: maybe
@@ -1809,7 +1809,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     GEN_AI_USAGE_OUTPUT_TOKENS: Literal["gen_ai.usage.output_tokens"] = (
         "gen_ai.usage.output_tokens"
     )
-    """The number of tokens used for creating the AI output (without reasoning tokens).
+    """The number of tokens used for creating the AI output (including reasoning tokens).
 
     Type: int
     Contains PII: maybe
@@ -6000,7 +6000,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.completion_tokens.used", "gen_ai.usage.output_tokens"],
     ),
     "gen_ai.usage.input_tokens": AttributeMetadata(
-        brief="The number of tokens used to process the AI input (prompt) without cached input tokens.",
+        brief="The number of tokens used to process the AI input (prompt) including cached input tokens.",
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
@@ -6022,7 +6022,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=50,
     ),
     "gen_ai.usage.output_tokens": AttributeMetadata(
-        brief="The number of tokens used for creating the AI output (without reasoning tokens).",
+        brief="The number of tokens used for creating the AI output (including reasoning tokens).",
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,

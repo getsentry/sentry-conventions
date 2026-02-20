@@ -3028,7 +3028,7 @@ export type GEN_AI_USAGE_COMPLETION_TOKENS_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__usage__input_tokens.json
 
 /**
- * The number of tokens used to process the AI input (prompt) without cached input tokens. `gen_ai.usage.input_tokens`
+ * The number of tokens used to process the AI input (prompt) including cached input tokens. `gen_ai.usage.input_tokens`
  *
  * Attribute Value Type: `number` {@link GEN_AI_USAGE_INPUT_TOKENS_TYPE}
  *
@@ -3090,7 +3090,7 @@ export type GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__usage__output_tokens.json
 
 /**
- * The number of tokens used for creating the AI output (without reasoning tokens). `gen_ai.usage.output_tokens`
+ * The number of tokens used for creating the AI output (including reasoning tokens). `gen_ai.usage.output_tokens`
  *
  * Attribute Value Type: `number` {@link GEN_AI_USAGE_OUTPUT_TOKENS_TYPE}
  *
@@ -11278,7 +11278,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [AI_COMPLETION_TOKENS_USED, GEN_AI_USAGE_OUTPUT_TOKENS],
   },
   [GEN_AI_USAGE_INPUT_TOKENS]: {
-    brief: 'The number of tokens used to process the AI input (prompt) without cached input tokens.',
+    brief: 'The number of tokens used to process the AI input (prompt) including cached input tokens.',
     type: 'integer',
     pii: {
       isPii: 'maybe',
@@ -11306,7 +11306,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 100,
   },
   [GEN_AI_USAGE_OUTPUT_TOKENS]: {
-    brief: 'The number of tokens used for creating the AI output (without reasoning tokens).',
+    brief: 'The number of tokens used for creating the AI output (including reasoning tokens).',
     type: 'integer',
     pii: {
       isPii: 'maybe',
