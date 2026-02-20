@@ -1,6 +1,6 @@
 {
   "key": "gen_ai.usage.output_tokens",
-  "brief": "The number of tokens used for creating the AI output (without reasoning tokens).",
+  "brief": "The number of tokens used for creating the AI output (including reasoning tokens).",
   "type": "integer",
   "pii": {
     "key": "maybe"
