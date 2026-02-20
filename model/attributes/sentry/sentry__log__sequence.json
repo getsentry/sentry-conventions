@@ -1,0 +1,10 @@
+{
+  "key": "sentry.log.sequence",
+  "brief": "A monotonically incrementing counter assigned to each log by the SDK, used to determine the correct ordering of logs when timestamps are identical.",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 42
+}
