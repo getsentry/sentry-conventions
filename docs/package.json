@@ -7,10 +7,12 @@
     "dev": "astro dev",
     "build": "astro build && yarn postbuild",
     "postbuild": "pagefind --site dist --output-subdir pagefind",
-    "preview": "astro preview",
+    "preview": "wrangler dev",
+    "deploy": "wrangler deploy",
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^12.0.0",
     "@astrojs/svelte": "^7.2.5",
     "@astrojs/tailwind": "^6.0.2",
     "astro": "^5.16.15",
@@ -20,7 +22,8 @@
   },
   "devDependencies": {
     "@types/dompurify": "^3.2.0",
-    "pagefind": "^1.4.0"
+    "pagefind": "^1.4.0",
+    "wrangler": "^4.67.0"
   },
   "volta": {
     "node": "22.15.0",

@@ -1,6 +1,6 @@
 # Sentry Conventions Documentation
 
-This is the Astro-based documentation site for Sentry Semantic Conventions.
+This is the Astro-based documentation site for Sentry Semantic Conventions, deployed on Cloudflare Workers.
 
 ## Features
 
@@ -10,6 +10,7 @@ This is the Astro-based documentation site for Sentry Semantic Conventions.
 - **Interactive Components** - Svelte components for search and forms
 - **Tailwind CSS** - Utility-first CSS framework for styling
 - **Attribute Creation** - Form-based attribute creation with GitHub PR integration
+- **Cloudflare Workers** - Deployed on Cloudflare's edge network for low latency
 
 ## Development
 
@@ -23,7 +24,7 @@ yarn workspace docs dev
 # Build for production
 yarn workspace docs build
 
-# Preview production build
+# Preview production build locally (uses wrangler)
 yarn workspace docs preview
 ```
 
@@ -46,21 +47,30 @@ Content is validated against Zod schemas matching the JSON schemas in `schemas/`
 
 ## Deployment
 
-The site is automatically deployed to GitHub Pages via the `.github/workflows/docs.yml` workflow:
+The site is deployed to Cloudflare Workers.
 
 1. On push to `main`, the workflow builds the Astro site
 2. Pagefind generates the search index
-3. The `dist/` folder is deployed to GitHub Pages
+3. The `dist/` folder is deployed to Cloudflare Workers
 
-The site is available at: https://getsentry.github.io/sentry-conventions/
+### Manual deployment
+
+```bash
+# Login to Cloudflare (first time only)
+wrangler login
+
+# Build and deploy
+yarn docs:build
+yarn docs:deploy
+```
 
 ## Adding New Features
 
 ### Adding a new page
 
 Create a new `.astro` file in `src/pages/`. The file path determines the URL:
-- `src/pages/foo.astro` → `/sentry-conventions/foo/`
-- `src/pages/bar/index.astro` → `/sentry-conventions/bar/`
+- `src/pages/foo.astro` → `/foo/`
+- `src/pages/bar/index.astro` → `/bar/`
 
 ### Adding interactive components
 

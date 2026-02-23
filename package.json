@@ -32,7 +32,8 @@
 
     "docs:dev": "yarn workspace docs dev",
     "docs:build": "yarn workspace docs build",
-    "docs:preview": "yarn workspace docs preview"
+    "docs:preview": "yarn workspace docs preview",
+    "docs:deploy": "yarn workspace docs deploy"
   },
   "engines": {
     "node": ">=22"
