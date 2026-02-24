@@ -6,5 +6,8 @@
     "key": "maybe"
   },
   "is_in_otel": false,
-  "example": "json_object"
+  "example": "json_object",
+  "deprecation": {
+    "_status": null
+  }
 }

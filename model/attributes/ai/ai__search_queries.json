@@ -6,5 +6,8 @@
     "key": "true"
   },
   "is_in_otel": false,
-  "example": ["climate change effects", "renewable energy"]
+  "example": ["climate change effects", "renewable energy"],
+  "deprecation": {
+    "_status": null
+  }
 }

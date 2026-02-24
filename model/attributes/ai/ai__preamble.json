@@ -6,5 +6,10 @@
     "key": "true"
   },
   "is_in_otel": false,
-  "example": "You are now a clown."
+  "example": "You are now a clown.",
+  "deprecation": {
+    "_status": null,
+    "replacement": "gen_ai.system_instructions"
+  },
+  "alias": ["gen_ai.system_instructions"]
 }

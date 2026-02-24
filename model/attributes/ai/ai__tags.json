@@ -6,5 +6,8 @@
     "key": "maybe"
   },
   "is_in_otel": false,
-  "example": "{\"executed_function\": \"add_integers\"}"
+  "example": "{\"executed_function\": \"add_integers\"}",
+  "deprecation": {
+    "_status": null
+  }
 }
