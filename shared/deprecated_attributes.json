@@ -669,6 +669,51 @@
       }
     },
     {
+      "key": "gen_ai.tool.input",
+      "brief": "The input of the tool being used. It has to be a stringified version of the input to the tool.",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "{\"location\": \"Paris\"}",
+      "alias": ["gen_ai.tool.call.arguments"],
+      "deprecation": {
+        "_status": null,
+        "replacement": "gen_ai.tool.call.arguments"
+      }
+    },
+    {
+      "key": "gen_ai.tool.message",
+      "brief": "The response from a tool or function call passed to the model.",
+      "type": "string",
+      "pii": {
+        "key": "true"
+      },
+      "is_in_otel": false,
+      "example": "rainy, 57°F",
+      "alias": ["gen_ai.tool.call.result", "gen_ai.tool.output"],
+      "deprecation": {
+        "_status": null,
+        "replacement": "gen_ai.tool.call.result"
+      }
+    },
+    {
+      "key": "gen_ai.tool.output",
+      "brief": "The output of the tool being used. It has to be a stringified version of the output of the tool.",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "rainy, 57°F",
+      "alias": ["gen_ai.tool.call.result", "gen_ai.tool.message"],
+      "deprecation": {
+        "_status": null,
+        "replacement": "gen_ai.tool.call.result"
+      }
+    },
+    {
       "key": "gen_ai.usage.completion_tokens",
       "brief": "The number of tokens used in the GenAI response (completion).",
       "type": "integer",

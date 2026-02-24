@@ -123,6 +123,9 @@ class _AttributeNamesMeta(type):
         "GEN_AI_RESPONSE_TOOL_CALLS",
         "GEN_AI_SYSTEM",
         "GEN_AI_SYSTEM_MESSAGE",
+        "GEN_AI_TOOL_INPUT",
+        "GEN_AI_TOOL_MESSAGE",
+        "GEN_AI_TOOL_OUTPUT",
         "GEN_AI_USAGE_COMPLETION_TOKENS",
         "GEN_AI_USAGE_PROMPT_TOKENS",
         "HTTP_CLIENT_IP",
@@ -1664,6 +1667,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Aliases: gen_ai.tool.input
     Example: "{\"location\": \"Paris\"}"
     """
 
@@ -1676,6 +1680,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Aliases: gen_ai.tool.output, gen_ai.tool.message
     Example: "rainy, 57°F"
     """
 
@@ -1710,6 +1715,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Aliases: gen_ai.tool.call.arguments
+    DEPRECATED: Use gen_ai.tool.call.arguments instead
     Example: "{\"location\": \"Paris\"}"
     """
 
@@ -1720,6 +1727,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: true
     Defined in OTEL: No
+    Aliases: gen_ai.tool.call.result, gen_ai.tool.output
+    DEPRECATED: Use gen_ai.tool.call.result instead
     Example: "rainy, 57°F"
     """
 
@@ -1741,6 +1750,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Aliases: gen_ai.tool.call.result, gen_ai.tool.message
+    DEPRECATED: Use gen_ai.tool.call.result instead
     Example: "rainy, 57°F"
     """
 
@@ -5932,6 +5943,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example='{"location": "Paris"}',
+        aliases=["gen_ai.tool.input"],
     ),
     "gen_ai.tool.call.result": AttributeMetadata(
         brief="The result of the tool call. It has to be a stringified version of the result of the tool.",
@@ -5939,6 +5951,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="rainy, 57°F",
+        aliases=["gen_ai.tool.output", "gen_ai.tool.message"],
     ),
     "gen_ai.tool.definitions": AttributeMetadata(
         brief="The list of source system tool definitions available to the GenAI agent or model.",
@@ -5960,6 +5973,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example='{"location": "Paris"}',
+        deprecation=DeprecationInfo(replacement="gen_ai.tool.call.arguments"),
+        aliases=["gen_ai.tool.call.arguments"],
     ),
     "gen_ai.tool.message": AttributeMetadata(
         brief="The response from a tool or function call passed to the model.",
@@ -5967,6 +5982,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         example="rainy, 57°F",
+        deprecation=DeprecationInfo(replacement="gen_ai.tool.call.result"),
+        aliases=["gen_ai.tool.call.result", "gen_ai.tool.output"],
     ),
     "gen_ai.tool.name": AttributeMetadata(
         brief="Name of the tool utilized by the agent.",
@@ -5982,6 +5999,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="rainy, 57°F",
+        deprecation=DeprecationInfo(replacement="gen_ai.tool.call.result"),
+        aliases=["gen_ai.tool.call.result", "gen_ai.tool.message"],
     ),
     "gen_ai.tool.type": AttributeMetadata(
         brief="The type of tool being used.",

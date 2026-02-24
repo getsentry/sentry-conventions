@@ -2831,6 +2831,8 @@ export type GEN_AI_SYSTEM_MESSAGE_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  *
+ * Aliases: {@link GEN_AI_TOOL_INPUT} `gen_ai.tool.input`
+ *
  * @example "{\"location\": \"Paris\"}"
  */
 export const GEN_AI_TOOL_CALL_ARGUMENTS = 'gen_ai.tool.call.arguments';
@@ -2850,6 +2852,8 @@ export type GEN_AI_TOOL_CALL_ARGUMENTS_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ *
+ * Aliases: {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`
  *
  * @example "rainy, 57°F"
  */
@@ -2911,6 +2915,9 @@ export type GEN_AI_TOOL_DESCRIPTION_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link GEN_AI_TOOL_CALL_ARGUMENTS} `gen_ai.tool.call.arguments`
+ *
+ * @deprecated Use {@link GEN_AI_TOOL_CALL_ARGUMENTS} (gen_ai.tool.call.arguments) instead
  * @example "{\"location\": \"Paris\"}"
  */
 export const GEN_AI_TOOL_INPUT = 'gen_ai.tool.input';
@@ -2931,6 +2938,9 @@ export type GEN_AI_TOOL_INPUT_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`
+ *
+ * @deprecated Use {@link GEN_AI_TOOL_CALL_RESULT} (gen_ai.tool.call.result) instead
  * @example "rainy, 57°F"
  */
 export const GEN_AI_TOOL_MESSAGE = 'gen_ai.tool.message';
@@ -2973,6 +2983,9 @@ export type GEN_AI_TOOL_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`
+ *
+ * @deprecated Use {@link GEN_AI_TOOL_CALL_RESULT} (gen_ai.tool.call.result) instead
  * @example "rainy, 57°F"
  */
 export const GEN_AI_TOOL_OUTPUT = 'gen_ai.tool.output';
@@ -11189,6 +11202,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: '{"location": "Paris"}',
+    aliases: [GEN_AI_TOOL_INPUT],
   },
   [GEN_AI_TOOL_CALL_RESULT]: {
     brief: 'The result of the tool call. It has to be a stringified version of the result of the tool.',
@@ -11198,6 +11212,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'rainy, 57°F',
+    aliases: [GEN_AI_TOOL_OUTPUT, GEN_AI_TOOL_MESSAGE],
   },
   [GEN_AI_TOOL_DEFINITIONS]: {
     brief: 'The list of source system tool definitions available to the GenAI agent or model.',
@@ -11226,6 +11241,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '{"location": "Paris"}',
+    deprecation: {
+      replacement: 'gen_ai.tool.call.arguments',
+    },
+    aliases: [GEN_AI_TOOL_CALL_ARGUMENTS],
   },
   [GEN_AI_TOOL_MESSAGE]: {
     brief: 'The response from a tool or function call passed to the model.',
@@ -11235,6 +11254,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'rainy, 57°F',
+    deprecation: {
+      replacement: 'gen_ai.tool.call.result',
+    },
+    aliases: [GEN_AI_TOOL_CALL_RESULT, GEN_AI_TOOL_OUTPUT],
   },
   [GEN_AI_TOOL_NAME]: {
     brief: 'Name of the tool utilized by the agent.',
@@ -11254,6 +11277,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'rainy, 57°F',
+    deprecation: {
+      replacement: 'gen_ai.tool.call.result',
+    },
+    aliases: [GEN_AI_TOOL_CALL_RESULT, GEN_AI_TOOL_MESSAGE],
   },
   [GEN_AI_TOOL_TYPE]: {
     brief: 'The type of tool being used.',

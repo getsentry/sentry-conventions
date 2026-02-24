@@ -7,5 +7,9 @@
   },
   "is_in_otel": false,
   "example": "{\"location\": \"Paris\"}",
-  "alias": []
+  "alias": ["gen_ai.tool.call.arguments"],
+  "deprecation": {
+    "_status": null,
+    "replacement": "gen_ai.tool.call.arguments"
+  }
 }
