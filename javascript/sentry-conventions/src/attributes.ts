@@ -11,6 +11,7 @@
  *
  * Attribute defined in OTEL: No
  *
+ * @deprecated
  * @example ["Citation 1","Citation 2"]
  */
 export const AI_CITATIONS = 'ai.citations';
@@ -54,6 +55,7 @@ export type AI_COMPLETION_TOKENS_USED_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
+ * @deprecated
  * @example ["document1.txt","document2.pdf"]
  */
 export const AI_DOCUMENTS = 'ai.documents';
@@ -189,6 +191,7 @@ export type AI_INPUT_MESSAGES_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
+ * @deprecated
  * @example false
  */
 export const AI_IS_SEARCH_REQUIRED = 'ai.is_search_required';
@@ -209,6 +212,7 @@ export type AI_IS_SEARCH_REQUIRED_TYPE = boolean;
  *
  * Attribute defined in OTEL: No
  *
+ * @deprecated
  * @example "{\"user_id\": 123, \"session_id\": \"abc123\"}"
  */
 export const AI_METADATA = 'ai.metadata';
@@ -298,6 +302,9 @@ export type AI_PIPELINE_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link GEN_AI_SYSTEM_INSTRUCTIONS} `gen_ai.system_instructions`
+ *
+ * @deprecated Use {@link GEN_AI_SYSTEM_INSTRUCTIONS} (gen_ai.system_instructions) instead
  * @example "You are now a clown."
  */
 export const AI_PREAMBLE = 'ai.preamble';
@@ -364,6 +371,7 @@ export type AI_PROMPT_TOKENS_USED_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
+ * @deprecated
  * @example true
  */
 export const AI_RAW_PROMPTING = 'ai.raw_prompting';
@@ -405,6 +413,7 @@ export type AI_RESPONSES_TYPE = Array<string>;
  *
  * Attribute defined in OTEL: No
  *
+ * @deprecated
  * @example "json_object"
  */
 export const AI_RESPONSE_FORMAT = 'ai.response_format';
@@ -425,6 +434,7 @@ export type AI_RESPONSE_FORMAT_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
+ * @deprecated
  * @example ["climate change effects","renewable energy"]
  */
 export const AI_SEARCH_QUERIES = 'ai.search_queries';
@@ -445,6 +455,7 @@ export type AI_SEARCH_QUERIES_TYPE = Array<string>;
  *
  * Attribute defined in OTEL: No
  *
+ * @deprecated
  * @example ["search_result_1, search_result_2"]
  */
 export const AI_SEARCH_RESULTS = 'ai.search_results';
@@ -511,6 +522,7 @@ export type AI_STREAMING_TYPE = boolean;
  *
  * Attribute defined in OTEL: No
  *
+ * @deprecated
  * @example "{\"executed_function\": \"add_integers\"}"
  */
 export const AI_TAGS = 'ai.tags';
@@ -554,6 +566,9 @@ export type AI_TEMPERATURE_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link GEN_AI_INPUT_MESSAGES} `gen_ai.input.messages`
+ *
+ * @deprecated Use {@link GEN_AI_INPUT_MESSAGES} (gen_ai.input.messages) instead
  * @example ["Hello, how are you?","What is the capital of France?"]
  */
 export const AI_TEXTS = 'ai.texts';
@@ -662,6 +677,9 @@ export type AI_TOP_P_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link GEN_AI_COST_TOTAL_TOKENS} `gen_ai.cost.total_tokens`
+ *
+ * @deprecated Use {@link GEN_AI_COST_TOTAL_TOKENS} (gen_ai.cost.total_tokens) instead
  * @example 12.34
  */
 export const AI_TOTAL_COST = 'ai.total_cost';
@@ -705,6 +723,7 @@ export type AI_TOTAL_TOKENS_USED_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
+ * @deprecated
  * @example ["Token limit exceeded"]
  */
 export const AI_WARNINGS = 'ai.warnings';
@@ -2196,6 +2215,8 @@ export type GEN_AI_COST_OUTPUT_TOKENS_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link AI_TOTAL_COST} `ai.total_cost`
+ *
  * @example 12.34
  */
 export const GEN_AI_COST_TOTAL_TOKENS = 'gen_ai.cost.total_tokens';
@@ -2235,6 +2256,8 @@ export type GEN_AI_EMBEDDINGS_INPUT_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ *
+ * Aliases: {@link AI_TEXTS} `ai.texts`
  *
  * @example "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"Weather in Paris?\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"result\": \"rainy, 57°F\"}]}]"
  */
@@ -2789,6 +2812,8 @@ export type GEN_AI_SYSTEM_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ *
+ * Aliases: {@link AI_PREAMBLE} `ai.preamble`
  *
  * @example "You are a helpful assistant"
  */
@@ -9751,6 +9776,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: ['Citation 1', 'Citation 2'],
+    deprecation: {},
   },
   [AI_COMPLETION_TOKENS_USED]: {
     brief: 'The number of tokens used to respond to the message.',
@@ -9774,6 +9800,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: ['document1.txt', 'document2.pdf'],
+    deprecation: {},
   },
   [AI_FINISH_REASON]: {
     brief: 'The reason why the model stopped generating.',
@@ -9851,6 +9878,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: false,
+    deprecation: {},
   },
   [AI_METADATA]: {
     brief: 'Extra metadata passed to an AI pipeline step.',
@@ -9860,6 +9888,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '{"user_id": 123, "session_id": "abc123"}',
+    deprecation: {},
   },
   [AI_MODEL_ID]: {
     brief: 'The vendor-specific ID of the model used.',
@@ -9910,6 +9939,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'You are now a clown.',
+    deprecation: {
+      replacement: 'gen_ai.system_instructions',
+    },
+    aliases: [GEN_AI_SYSTEM_INSTRUCTIONS],
   },
   [AI_PRESENCE_PENALTY]: {
     brief:
@@ -9947,6 +9980,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: true,
+    deprecation: {},
   },
   [AI_RESPONSES]: {
     brief: 'The response messages sent back by the AI model.',
@@ -9969,6 +10003,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'json_object',
+    deprecation: {},
   },
   [AI_SEARCH_QUERIES]: {
     brief: 'Queries used to search for relevant context or documents.',
@@ -9978,6 +10013,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: ['climate change effects', 'renewable energy'],
+    deprecation: {},
   },
   [AI_SEARCH_RESULTS]: {
     brief: 'Results returned from search queries for context.',
@@ -9987,6 +10023,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: ['search_result_1, search_result_2'],
+    deprecation: {},
   },
   [AI_SEED]: {
     brief: 'The seed, ideally models given the same seed and same other parameters will produce the exact same output.',
@@ -10023,6 +10060,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '{"executed_function": "add_integers"}',
+    deprecation: {},
   },
   [AI_TEMPERATURE]: {
     brief:
@@ -10046,6 +10084,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: ['Hello, how are you?', 'What is the capital of France?'],
+    deprecation: {
+      replacement: 'gen_ai.input.messages',
+    },
+    aliases: [GEN_AI_INPUT_MESSAGES],
   },
   [AI_TOOLS]: {
     brief: 'For an AI model call, the functions that are available',
@@ -10107,6 +10149,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 12.34,
+    deprecation: {
+      replacement: 'gen_ai.cost.total_tokens',
+    },
+    aliases: [GEN_AI_COST_TOTAL_TOKENS],
   },
   [AI_TOTAL_TOKENS_USED]: {
     brief: 'The total number of tokens used to process the prompt.',
@@ -10130,6 +10176,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: ['Token limit exceeded'],
+    deprecation: {},
   },
   [APP_START_TYPE]: {
     brief: 'Mobile app start variant. Either cold or warm.',
@@ -10868,6 +10915,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 12.34,
+    aliases: [AI_TOTAL_COST],
   },
   [GEN_AI_EMBEDDINGS_INPUT]: {
     brief: 'The input to the embeddings model.',
@@ -10888,6 +10936,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example:
       '[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
+    aliases: [AI_TEXTS],
   },
   [GEN_AI_OPERATION_NAME]: {
     brief:
@@ -11168,6 +11217,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'You are a helpful assistant',
+    aliases: [AI_PREAMBLE],
   },
   [GEN_AI_SYSTEM_MESSAGE]: {
     brief: 'The system instructions passed to the model.',

@@ -126,6 +126,19 @@
       "sdks": ["javascript-browser", "javascript-node"]
     },
     {
+      "key": "ai.citations",
+      "brief": "References or sources cited by the AI model in its response.",
+      "type": "string[]",
+      "pii": {
+        "key": "true"
+      },
+      "is_in_otel": false,
+      "example": ["Citation 1", "Citation 2"],
+      "deprecation": {
+        "_status": null
+      }
+    },
+    {
       "key": "ai.completion_tokens.used",
       "brief": "The number of tokens used to respond to the message.",
       "type": "integer",
@@ -139,6 +152,19 @@
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.usage.output_tokens"
+      }
+    },
+    {
+      "key": "ai.documents",
+      "brief": "Documents or content chunks used as context for the AI model.",
+      "type": "string[]",
+      "pii": {
+        "key": "true"
+      },
+      "is_in_otel": false,
+      "example": ["document1.txt", "document2.pdf"],
+      "deprecation": {
+        "_status": null
       }
     },
     {
@@ -218,6 +244,32 @@
       }
     },
     {
+      "key": "ai.is_search_required",
+      "brief": "Boolean indicating if the model needs to perform a search.",
+      "type": "boolean",
+      "pii": {
+        "key": "false"
+      },
+      "is_in_otel": false,
+      "example": false,
+      "deprecation": {
+        "_status": null
+      }
+    },
+    {
+      "key": "ai.metadata",
+      "brief": "Extra metadata passed to an AI pipeline step.",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "{\"user_id\": 123, \"session_id\": \"abc123\"}",
+      "deprecation": {
+        "_status": null
+      }
+    },
+    {
       "key": "ai.model.provider",
       "brief": "The provider of the model.",
       "type": "string",
@@ -264,6 +316,21 @@
       "alias": ["gen_ai.pipeline.name"]
     },
     {
+      "key": "ai.preamble",
+      "brief": "For an AI model call, the preamble parameter. Preambles are a part of the prompt used to adjust the model's overall behavior and conversation style.",
+      "type": "string",
+      "pii": {
+        "key": "true"
+      },
+      "is_in_otel": false,
+      "example": "You are now a clown.",
+      "deprecation": {
+        "_status": null,
+        "replacement": "gen_ai.system_instructions"
+      },
+      "alias": ["gen_ai.system_instructions"]
+    },
+    {
       "key": "ai.presence_penalty",
       "brief": "Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.",
       "type": "double",
@@ -295,6 +362,32 @@
       }
     },
     {
+      "key": "ai.raw_prompting",
+      "brief": "When enabled, the user’s prompt will be sent to the model without any pre-processing.",
+      "type": "boolean",
+      "pii": {
+        "key": "false"
+      },
+      "is_in_otel": false,
+      "example": true,
+      "deprecation": {
+        "_status": null
+      }
+    },
+    {
+      "key": "ai.response_format",
+      "brief": "For an AI model call, the format of the response",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "json_object",
+      "deprecation": {
+        "_status": null
+      }
+    },
+    {
       "key": "ai.responses",
       "brief": "The response messages sent back by the AI model.",
       "type": "string[]",
@@ -307,6 +400,32 @@
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.response.text"
+      }
+    },
+    {
+      "key": "ai.search_queries",
+      "brief": "Queries used to search for relevant context or documents.",
+      "type": "string[]",
+      "pii": {
+        "key": "true"
+      },
+      "is_in_otel": false,
+      "example": ["climate change effects", "renewable energy"],
+      "deprecation": {
+        "_status": null
+      }
+    },
+    {
+      "key": "ai.search_results",
+      "brief": "Results returned from search queries for context.",
+      "type": "string[]",
+      "pii": {
+        "key": "true"
+      },
+      "is_in_otel": false,
+      "example": ["search_result_1, search_result_2"],
+      "deprecation": {
+        "_status": null
       }
     },
     {
@@ -341,6 +460,19 @@
       "alias": ["gen_ai.response.streaming"]
     },
     {
+      "key": "ai.tags",
+      "brief": "Tags that describe an AI pipeline step.",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "{\"executed_function\": \"add_integers\"}",
+      "deprecation": {
+        "_status": null
+      }
+    },
+    {
       "key": "ai.temperature",
       "brief": "For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.",
       "type": "double",
@@ -354,6 +486,21 @@
         "replacement": "gen_ai.request.temperature"
       },
       "alias": ["gen_ai.request.temperature"]
+    },
+    {
+      "key": "ai.texts",
+      "brief": "Raw text inputs provided to the model.",
+      "type": "string[]",
+      "pii": {
+        "key": "true"
+      },
+      "is_in_otel": false,
+      "example": ["Hello, how are you?", "What is the capital of France?"],
+      "deprecation": {
+        "_status": null,
+        "replacement": "gen_ai.input.messages"
+      },
+      "alias": ["gen_ai.input.messages"]
     },
     {
       "key": "ai.tool_calls",
@@ -414,6 +561,21 @@
       "alias": ["gen_ai.request.top_p"]
     },
     {
+      "key": "ai.total_cost",
+      "brief": "The total cost for the tokens used.",
+      "type": "double",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": 12.34,
+      "deprecation": {
+        "_status": null,
+        "replacement": "gen_ai.cost.total_tokens"
+      },
+      "alias": ["gen_ai.cost.total_tokens"]
+    },
+    {
       "key": "ai.total_tokens.used",
       "brief": "The total number of tokens used to process the prompt.",
       "type": "integer",
@@ -428,6 +590,19 @@
         "replacement": "gen_ai.usage.total_tokens"
       },
       "alias": ["gen_ai.usage.total_tokens"]
+    },
+    {
+      "key": "ai.warnings",
+      "brief": "Warning messages generated during model execution.",
+      "type": "string[]",
+      "pii": {
+        "key": "true"
+      },
+      "is_in_otel": false,
+      "example": ["Token limit exceeded"],
+      "deprecation": {
+        "_status": null
+      }
     },
     {
       "key": "code.filepath",
