@@ -3914,6 +3914,26 @@ export const HTTP_SERVER_NAME = 'http.server_name';
  */
 export type HTTP_SERVER_NAME_TYPE = string;
 
+// Path: model/attributes/http/http__server__request__time_in_queue.json
+
+/**
+ * The time in milliseconds the request spent in the server queue before processing began. Measured from the X-Request-Start header set by reverse proxies (e.g., Nginx, HAProxy, Heroku) to when the application started handling the request. `http.server.request.time_in_queue`
+ *
+ * Attribute Value Type: `number` {@link HTTP_SERVER_REQUEST_TIME_IN_QUEUE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 50
+ */
+export const HTTP_SERVER_REQUEST_TIME_IN_QUEUE = 'http.server.request.time_in_queue';
+
+/**
+ * Type for {@link HTTP_SERVER_REQUEST_TIME_IN_QUEUE} http.server.request.time_in_queue
+ */
+export type HTTP_SERVER_REQUEST_TIME_IN_QUEUE_TYPE = number;
+
 // Path: model/attributes/http/http__status_code.json
 
 /**
@@ -9072,6 +9092,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [HTTP_ROUTE]: 'string',
   [HTTP_SCHEME]: 'string',
   [HTTP_SERVER_NAME]: 'string',
+  [HTTP_SERVER_REQUEST_TIME_IN_QUEUE]: 'double',
   [HTTP_STATUS_CODE]: 'integer',
   [HTTP_TARGET]: 'string',
   [HTTP_URL]: 'string',
@@ -9501,6 +9522,7 @@ export type AttributeName =
   | typeof HTTP_ROUTE
   | typeof HTTP_SCHEME
   | typeof HTTP_SERVER_NAME
+  | typeof HTTP_SERVER_REQUEST_TIME_IN_QUEUE
   | typeof HTTP_STATUS_CODE
   | typeof HTTP_TARGET
   | typeof HTTP_URL
@@ -11734,6 +11756,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'server.address',
     },
     aliases: [SERVER_ADDRESS, NET_HOST_NAME, HTTP_HOST],
+  },
+  [HTTP_SERVER_REQUEST_TIME_IN_QUEUE]: {
+    brief:
+      'The time in milliseconds the request spent in the server queue before processing began. Measured from the X-Request-Start header set by reverse proxies (e.g., Nginx, HAProxy, Heroku) to when the application started handling the request.',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 50,
+    sdks: ['ruby'],
   },
   [HTTP_STATUS_CODE]: {
     brief: 'The status code of the HTTP response.',
@@ -14293,6 +14326,7 @@ export type Attributes = {
   [HTTP_ROUTE]?: HTTP_ROUTE_TYPE;
   [HTTP_SCHEME]?: HTTP_SCHEME_TYPE;
   [HTTP_SERVER_NAME]?: HTTP_SERVER_NAME_TYPE;
+  [HTTP_SERVER_REQUEST_TIME_IN_QUEUE]?: HTTP_SERVER_REQUEST_TIME_IN_QUEUE_TYPE;
   [HTTP_STATUS_CODE]?: HTTP_STATUS_CODE_TYPE;
   [HTTP_TARGET]?: HTTP_TARGET_TYPE;
   [HTTP_URL]?: HTTP_URL_TYPE;
