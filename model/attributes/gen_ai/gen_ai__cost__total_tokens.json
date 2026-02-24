@@ -6,5 +6,6 @@
     "key": "maybe"
   },
   "is_in_otel": false,
-  "example": 12.34
+  "example": 12.34,
+  "alias": ["ai.total_cost"]
 }
