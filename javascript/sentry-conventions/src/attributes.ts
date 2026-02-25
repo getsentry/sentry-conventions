@@ -6883,6 +6883,26 @@ export const SENTRY_KIND = 'sentry.kind';
  */
 export type SENTRY_KIND_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__log__sequence.json
+
+/**
+ * A monotonically incrementing counter assigned to each log by the SDK, used to determine the correct ordering of logs when timestamps are identical. `sentry.log.sequence`
+ *
+ * Attribute Value Type: `number` {@link SENTRY_LOG_SEQUENCE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 42
+ */
+export const SENTRY_LOG_SEQUENCE = 'sentry.log.sequence';
+
+/**
+ * Type for {@link SENTRY_LOG_SEQUENCE} sentry.log.sequence
+ */
+export type SENTRY_LOG_SEQUENCE_TYPE = number;
+
 // Path: model/attributes/sentry/sentry__message__parameter__[key].json
 
 /**
@@ -9236,6 +9256,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_IDLE_SPAN_FINISH_REASON]: 'string',
   [SENTRY_IS_REMOTE]: 'boolean',
   [SENTRY_KIND]: 'string',
+  [SENTRY_LOG_SEQUENCE]: 'integer',
   [SENTRY_MESSAGE_PARAMETER_KEY]: 'string',
   [SENTRY_MESSAGE_TEMPLATE]: 'string',
   [SENTRY_MODULE_KEY]: 'string',
@@ -9666,6 +9687,7 @@ export type AttributeName =
   | typeof SENTRY_IDLE_SPAN_FINISH_REASON
   | typeof SENTRY_IS_REMOTE
   | typeof SENTRY_KIND
+  | typeof SENTRY_LOG_SEQUENCE
   | typeof SENTRY_MESSAGE_PARAMETER_KEY
   | typeof SENTRY_MESSAGE_TEMPLATE
   | typeof SENTRY_MODULE_KEY
@@ -13215,6 +13237,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'server',
   },
+  [SENTRY_LOG_SEQUENCE]: {
+    brief:
+      'A monotonically incrementing counter assigned to each log by the SDK, used to determine the correct ordering of logs when timestamps are identical.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 42,
+  },
   [SENTRY_MESSAGE_PARAMETER_KEY]: {
     brief:
       "A parameter used in the message template. <key> can either be the number that represent the parameter's position in the template string (sentry.message.parameter.0, sentry.message.parameter.1, etc) or the parameter's name (sentry.message.parameter.item_id, sentry.message.parameter.user_id, etc)",
@@ -14470,6 +14502,7 @@ export type Attributes = {
   [SENTRY_IDLE_SPAN_FINISH_REASON]?: SENTRY_IDLE_SPAN_FINISH_REASON_TYPE;
   [SENTRY_IS_REMOTE]?: SENTRY_IS_REMOTE_TYPE;
   [SENTRY_KIND]?: SENTRY_KIND_TYPE;
+  [SENTRY_LOG_SEQUENCE]?: SENTRY_LOG_SEQUENCE_TYPE;
   [SENTRY_MESSAGE_PARAMETER_KEY]?: SENTRY_MESSAGE_PARAMETER_KEY_TYPE;
   [SENTRY_MESSAGE_TEMPLATE]?: SENTRY_MESSAGE_TEMPLATE_TYPE;
   [SENTRY_MODULE_KEY]?: SENTRY_MODULE_KEY_TYPE;
