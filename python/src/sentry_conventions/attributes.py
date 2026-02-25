@@ -85,26 +85,39 @@ class AttributeMetadata:
 
 class _AttributeNamesMeta(type):
     _deprecated_names = {
+        "AI_CITATIONS",
         "AI_COMPLETION_TOKENS_USED",
+        "AI_DOCUMENTS",
         "AI_FINISH_REASON",
         "AI_FREQUENCY_PENALTY",
         "AI_FUNCTION_CALL",
         "AI_GENERATION_ID",
         "AI_INPUT_MESSAGES",
+        "AI_IS_SEARCH_REQUIRED",
+        "AI_METADATA",
         "AI_MODEL_PROVIDER",
         "AI_MODEL_ID",
         "AI_PIPELINE_NAME",
+        "AI_PREAMBLE",
         "AI_PRESENCE_PENALTY",
         "AI_PROMPT_TOKENS_USED",
+        "AI_RAW_PROMPTING",
+        "AI_RESPONSE_FORMAT",
         "AI_RESPONSES",
+        "AI_SEARCH_QUERIES",
+        "AI_SEARCH_RESULTS",
         "AI_SEED",
         "AI_STREAMING",
+        "AI_TAGS",
         "AI_TEMPERATURE",
+        "AI_TEXTS",
         "AI_TOOL_CALLS",
         "AI_TOOLS",
         "AI_TOP_K",
         "AI_TOP_P",
+        "AI_TOTAL_COST",
         "AI_TOTAL_TOKENS_USED",
+        "AI_WARNINGS",
         "CODE_FILEPATH",
         "CODE_FUNCTION",
         "CODE_LINENO",
@@ -190,6 +203,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: List[str]
     Contains PII: true
     Defined in OTEL: No
+    DEPRECATED: No replacement at this time
     Example: ["Citation 1","Citation 2"]
     """
 
@@ -214,6 +228,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: List[str]
     Contains PII: true
     Defined in OTEL: No
+    DEPRECATED: No replacement at this time
     Example: ["document1.txt","document2.pdf"]
     """
 
@@ -284,6 +299,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: bool
     Contains PII: false
     Defined in OTEL: No
+    DEPRECATED: No replacement at this time
     Example: false
     """
 
@@ -294,6 +310,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    DEPRECATED: No replacement at this time
     Example: "{\"user_id\": 123, \"session_id\": \"abc123\"}"
     """
 
@@ -340,6 +357,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: true
     Defined in OTEL: No
+    Aliases: gen_ai.system_instructions
+    DEPRECATED: Use gen_ai.system_instructions instead
     Example: "You are now a clown."
     """
 
@@ -374,6 +393,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: bool
     Contains PII: false
     Defined in OTEL: No
+    DEPRECATED: No replacement at this time
     Example: true
     """
 
@@ -384,6 +404,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    DEPRECATED: No replacement at this time
     Example: "json_object"
     """
 
@@ -405,6 +426,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: List[str]
     Contains PII: true
     Defined in OTEL: No
+    DEPRECATED: No replacement at this time
     Example: ["climate change effects","renewable energy"]
     """
 
@@ -415,6 +437,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: List[str]
     Contains PII: true
     Defined in OTEL: No
+    DEPRECATED: No replacement at this time
     Example: ["search_result_1, search_result_2"]
     """
 
@@ -449,6 +472,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    DEPRECATED: No replacement at this time
     Example: "{\"executed_function\": \"add_integers\"}"
     """
 
@@ -471,6 +495,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: List[str]
     Contains PII: true
     Defined in OTEL: No
+    Aliases: gen_ai.input.messages
+    DEPRECATED: Use gen_ai.input.messages instead
     Example: ["Hello, how are you?","What is the capital of France?"]
     """
 
@@ -527,6 +553,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Aliases: gen_ai.cost.total_tokens
+    DEPRECATED: Use gen_ai.cost.total_tokens instead
     Example: 12.34
     """
 
@@ -549,6 +577,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: List[str]
     Contains PII: true
     Defined in OTEL: No
+    DEPRECATED: No replacement at this time
     Example: ["Token limit exceeded"]
     """
 
@@ -1318,6 +1347,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Aliases: ai.total_cost
     Example: 12.34
     """
 
@@ -1340,6 +1370,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Aliases: ai.texts
     Example: "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"Weather in Paris?\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"result\": \"rainy, 57°F\"}]}]"
     """
 
@@ -1655,6 +1686,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Aliases: ai.preamble
     Example: "You are a helpful assistant"
     """
 
@@ -2272,6 +2304,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Aliases: url.scheme
     DEPRECATED: Use url.scheme instead
     Example: "https"
+    """
+
+    # Path: model/attributes/http/http__server__request__time_in_queue.json
+    HTTP_SERVER_REQUEST_TIME_IN_QUEUE: Literal["http.server.request.time_in_queue"] = (
+        "http.server.request.time_in_queue"
+    )
+    """The time in milliseconds the request spent in the server queue before processing began. Measured from the X-Request-Start header set by reverse proxies (e.g., Nginx, HAProxy, Heroku) to when the application started handling the request.
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: 50
     """
 
     # Path: model/attributes/http/http__server_name.json
@@ -4877,6 +4921,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         example=["Citation 1", "Citation 2"],
+        deprecation=DeprecationInfo(),
     ),
     "ai.completion_tokens.used": AttributeMetadata(
         brief="The number of tokens used to respond to the message.",
@@ -4894,6 +4939,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         example=["document1.txt", "document2.pdf"],
+        deprecation=DeprecationInfo(),
     ),
     "ai.finish_reason": AttributeMetadata(
         brief="The reason why the model stopped generating.",
@@ -4947,6 +4993,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=False,
+        deprecation=DeprecationInfo(),
     ),
     "ai.metadata": AttributeMetadata(
         brief="Extra metadata passed to an AI pipeline step.",
@@ -4954,6 +5001,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example='{"user_id": 123, "session_id": "abc123"}',
+        deprecation=DeprecationInfo(),
     ),
     "ai.model.provider": AttributeMetadata(
         brief="The provider of the model.",
@@ -4989,6 +5037,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         example="You are now a clown.",
+        deprecation=DeprecationInfo(replacement="gen_ai.system_instructions"),
+        aliases=["gen_ai.system_instructions"],
     ),
     "ai.presence_penalty": AttributeMetadata(
         brief="Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.",
@@ -5015,6 +5065,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=True,
+        deprecation=DeprecationInfo(),
     ),
     "ai.response_format": AttributeMetadata(
         brief="For an AI model call, the format of the response",
@@ -5022,6 +5073,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="json_object",
+        deprecation=DeprecationInfo(),
     ),
     "ai.responses": AttributeMetadata(
         brief="The response messages sent back by the AI model.",
@@ -5038,6 +5090,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         example=["climate change effects", "renewable energy"],
+        deprecation=DeprecationInfo(),
     ),
     "ai.search_results": AttributeMetadata(
         brief="Results returned from search queries for context.",
@@ -5045,6 +5098,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         example=["search_result_1, search_result_2"],
+        deprecation=DeprecationInfo(),
     ),
     "ai.seed": AttributeMetadata(
         brief="The seed, ideally models given the same seed and same other parameters will produce the exact same output.",
@@ -5071,6 +5125,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example='{"executed_function": "add_integers"}',
+        deprecation=DeprecationInfo(),
     ),
     "ai.temperature": AttributeMetadata(
         brief="For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.",
@@ -5087,6 +5142,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         example=["Hello, how are you?", "What is the capital of France?"],
+        deprecation=DeprecationInfo(replacement="gen_ai.input.messages"),
+        aliases=["gen_ai.input.messages"],
     ),
     "ai.tool_calls": AttributeMetadata(
         brief="For an AI model call, the tool calls that were made.",
@@ -5128,6 +5185,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=12.34,
+        deprecation=DeprecationInfo(replacement="gen_ai.cost.total_tokens"),
+        aliases=["gen_ai.cost.total_tokens"],
     ),
     "ai.total_tokens.used": AttributeMetadata(
         brief="The total number of tokens used to process the prompt.",
@@ -5145,6 +5204,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         example=["Token limit exceeded"],
+        deprecation=DeprecationInfo(),
     ),
     "app_start_type": AttributeMetadata(
         brief="Mobile app start variant. Either cold or warm.",
@@ -5710,6 +5770,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=12.34,
+        aliases=["ai.total_cost"],
     ),
     "gen_ai.embeddings.input": AttributeMetadata(
         brief="The input to the embeddings model.",
@@ -5724,6 +5785,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example='[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
+        aliases=["ai.texts"],
     ),
     "gen_ai.operation.name": AttributeMetadata(
         brief="The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'embeddings', 'execute_tool', 'generate_content', 'invoke_agent', 'text_completion'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used.",
@@ -5936,6 +5998,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="You are a helpful assistant",
+        aliases=["ai.preamble"],
     ),
     "gen_ai.tool.call.arguments": AttributeMetadata(
         brief="The arguments of the tool call. It has to be a stringified version of the arguments to the tool.",
@@ -6360,6 +6423,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="https",
         deprecation=DeprecationInfo(replacement="url.scheme"),
         aliases=["url.scheme"],
+    ),
+    "http.server.request.time_in_queue": AttributeMetadata(
+        brief="The time in milliseconds the request spent in the server queue before processing began. Measured from the X-Request-Start header set by reverse proxies (e.g., Nginx, HAProxy, Heroku) to when the application started handling the request.",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=50,
+        sdks=["ruby"],
     ),
     "http.server_name": AttributeMetadata(
         brief="The server domain name",
@@ -8387,6 +8458,7 @@ Attributes = TypedDict(
         "http.response_transfer_size": int,
         "http.route": str,
         "http.scheme": str,
+        "http.server.request.time_in_queue": float,
         "http.server_name": str,
         "http.status_code": int,
         "http.target": str,

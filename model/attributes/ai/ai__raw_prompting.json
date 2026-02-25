@@ -6,5 +6,8 @@
     "key": "false"
   },
   "is_in_otel": false,
-  "example": true
+  "example": true,
+  "deprecation": {
+    "_status": null
+  }
 }
