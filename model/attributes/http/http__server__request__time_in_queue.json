@@ -1,0 +1,11 @@
+{
+  "key": "http.server.request.time_in_queue",
+  "brief": "The time in milliseconds the request spent in the server queue before processing began. Measured from the X-Request-Start header set by reverse proxies (e.g., Nginx, HAProxy, Heroku) to when the application started handling the request.",
+  "type": "double",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": 50.0,
+  "sdks": ["ruby"]
+}

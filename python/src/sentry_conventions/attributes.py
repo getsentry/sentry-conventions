@@ -2263,6 +2263,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "https"
     """
 
+    # Path: model/attributes/http/http__server__request__time_in_queue.json
+    HTTP_SERVER_REQUEST_TIME_IN_QUEUE: Literal["http.server.request.time_in_queue"] = (
+        "http.server.request.time_in_queue"
+    )
+    """The time in milliseconds the request spent in the server queue before processing began. Measured from the X-Request-Start header set by reverse proxies (e.g., Nginx, HAProxy, Heroku) to when the application started handling the request.
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: 50
+    """
+
     # Path: model/attributes/http/http__server_name.json
     HTTP_SERVER_NAME: Literal["http.server_name"] = "http.server_name"
     """The server domain name
@@ -6342,6 +6354,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="url.scheme"),
         aliases=["url.scheme"],
     ),
+    "http.server.request.time_in_queue": AttributeMetadata(
+        brief="The time in milliseconds the request spent in the server queue before processing began. Measured from the X-Request-Start header set by reverse proxies (e.g., Nginx, HAProxy, Heroku) to when the application started handling the request.",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=50,
+        sdks=["ruby"],
+    ),
     "http.server_name": AttributeMetadata(
         brief="The server domain name",
         type=AttributeType.STRING,
@@ -8368,6 +8388,7 @@ Attributes = TypedDict(
         "http.response_transfer_size": int,
         "http.route": str,
         "http.scheme": str,
+        "http.server.request.time_in_queue": float,
         "http.server_name": str,
         "http.status_code": int,
         "http.target": str,
