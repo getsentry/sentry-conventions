@@ -6,5 +6,8 @@
     "key": "true"
   },
   "is_in_otel": false,
-  "example": ["Citation 1", "Citation 2"]
+  "example": ["Citation 1", "Citation 2"],
+  "deprecation": {
+    "_status": null
+  }
 }

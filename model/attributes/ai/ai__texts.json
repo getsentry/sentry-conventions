@@ -6,5 +6,10 @@
     "key": "true"
   },
   "is_in_otel": false,
-  "example": ["Hello, how are you?", "What is the capital of France?"]
+  "example": ["Hello, how are you?", "What is the capital of France?"],
+  "deprecation": {
+    "_status": null,
+    "replacement": "gen_ai.input.messages"
+  },
+  "alias": ["gen_ai.input.messages"]
 }
