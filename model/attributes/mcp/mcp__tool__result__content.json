@@ -8,5 +8,19 @@
   },
   "is_in_otel": false,
   "example": "{\"output\": \"rainy\", \"toolCallId\": \"1\"}",
-  "alias": []
+  "alias": [],
+  "changelog": [
+    {
+      "version": "0.3.0",
+      "prs": [
+        171
+      ]
+    },
+    {
+      "version": "0.2.0",
+      "prs": [
+        164
+      ]
+    }
+  ]
 }

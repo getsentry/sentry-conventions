@@ -7,5 +7,14 @@
     "key": "maybe"
   },
   "is_in_otel": true,
-  "example": "db.query.parameter.foo='123'"
+  "example": "db.query.parameter.foo='123'",
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [
+        103,
+        127
+      ]
+    }
+  ]
 }

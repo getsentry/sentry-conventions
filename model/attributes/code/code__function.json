@@ -11,5 +11,19 @@
     "_status": null,
     "replacement": "code.function.name"
   },
-  "alias": ["code.function.name"]
+  "alias": [
+    "code.function.name"
+  ],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [
+        61,
+        74
+      ]
+    },
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

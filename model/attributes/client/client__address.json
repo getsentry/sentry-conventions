@@ -7,5 +7,19 @@
   },
   "is_in_otel": true,
   "example": "example.com",
-  "alias": ["http.client_ip"]
+  "alias": [
+    "http.client_ip"
+  ],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [
+        106,
+        127
+      ]
+    },
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

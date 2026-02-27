@@ -11,5 +11,24 @@
     "_status": null,
     "replacement": "server.port"
   },
-  "alias": ["server.port"]
+  "alias": [
+    "server.port"
+  ],
+  "changelog": [
+    {
+      "version": "0.4.0",
+      "prs": [
+        228
+      ]
+    },
+    {
+      "version": "0.1.0",
+      "prs": [
+        61
+      ]
+    },
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

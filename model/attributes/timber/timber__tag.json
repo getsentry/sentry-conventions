@@ -7,5 +7,15 @@
   },
   "is_in_otel": false,
   "example": "MyTag",
-  "sdks": ["sentry.java.android"]
+  "sdks": [
+    "sentry.java.android"
+  ],
+  "changelog": [
+    {
+      "version": "0.3.0",
+      "prs": [
+        183
+      ]
+    }
+  ]
 }

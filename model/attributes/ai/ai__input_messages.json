@@ -7,10 +7,26 @@
   },
   "is_in_otel": false,
   "example": "[{\"role\": \"user\", \"message\": \"hello\"}]",
-  "alias": ["gen_ai.request.messages"],
-  "sdks": ["python"],
+  "alias": [
+    "gen_ai.request.messages"
+  ],
+  "sdks": [
+    "python"
+  ],
   "deprecation": {
     "_status": null,
     "replacement": "gen_ai.request.messages"
-  }
+  },
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [
+        65,
+        119
+      ]
+    },
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

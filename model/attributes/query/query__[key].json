@@ -12,5 +12,13 @@
     "replacement": "url.query",
     "reason": "Instead of sending items individually in query.<key>, they should be sent all together with url.query."
   },
-  "example": "query.id='123'"
+  "example": "query.id='123'",
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [
+        103
+      ]
+    }
+  ]
 }

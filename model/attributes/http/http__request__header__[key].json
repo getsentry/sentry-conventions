@@ -7,5 +7,20 @@
     "key": "maybe"
   },
   "is_in_otel": true,
-  "example": "http.request.header.custom-header=['foo', 'bar']"
+  "example": "http.request.header.custom-header=['foo', 'bar']",
+  "changelog": [
+    {
+      "version": "0.4.0",
+      "prs": [
+        201,
+        204
+      ]
+    },
+    {
+      "version": "0.1.0",
+      "prs": [
+        103
+      ]
+    }
+  ]
 }

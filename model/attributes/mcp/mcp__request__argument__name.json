@@ -7,5 +7,13 @@
     "reason": "Prompt names can contain user input"
   },
   "is_in_otel": false,
-  "example": "summarize"
+  "example": "summarize",
+  "changelog": [
+    {
+      "version": "0.3.0",
+      "prs": [
+        171
+      ]
+    }
+  ]
 }

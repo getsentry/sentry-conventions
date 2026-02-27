@@ -6,5 +6,13 @@
     "key": "false"
   },
   "is_in_otel": false,
-  "example": "047372980460430cbc78d9779df33a46"
+  "example": "047372980460430cbc78d9779df33a46",
+  "changelog": [
+    {
+      "version": "0.3.0",
+      "prs": [
+        185
+      ]
+    }
+  ]
 }

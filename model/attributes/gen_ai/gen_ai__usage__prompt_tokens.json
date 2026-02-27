@@ -11,5 +11,25 @@
     "_status": null,
     "replacement": "gen_ai.usage.input_tokens"
   },
-  "alias": ["ai.prompt_tokens.used", "gen_ai.usage.input_tokens"]
+  "alias": [
+    "ai.prompt_tokens.used",
+    "gen_ai.usage.input_tokens"
+  ],
+  "changelog": [
+    {
+      "version": "0.4.0",
+      "prs": [
+        228
+      ]
+    },
+    {
+      "version": "0.1.0",
+      "prs": [
+        61
+      ]
+    },
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

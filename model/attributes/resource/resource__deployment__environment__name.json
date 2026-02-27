@@ -10,5 +10,13 @@
   "deprecation": {
     "_status": "backfill",
     "replacement": "sentry.environment"
-  }
+  },
+  "changelog": [
+    {
+      "version": "0.3.1",
+      "prs": [
+        196
+      ]
+    }
+  ]
 }

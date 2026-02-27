@@ -52,6 +52,20 @@ class DeprecationInfo:
 
 
 @dataclass
+class ChangelogEntry:
+    """A changelog entry tracking a change to an attribute."""
+
+    version: str
+    """The sentry-conventions release version"""
+
+    prs: Optional[List[int]] = None
+    """GitHub PR numbers"""
+
+    description: Optional[str] = None
+    """Optional description of what changed"""
+
+
+@dataclass
 class AttributeMetadata:
     """The metadata for an attribute."""
 
@@ -81,6 +95,9 @@ class AttributeMetadata:
 
     sdks: Optional[List[str]] = None
     """If an attribute is SDK specific, list the SDKs that use this attribute. This is not an exhaustive list, there might be SDKs that send this attribute that are is not documented here."""
+
+    changelog: Optional[List[ChangelogEntry]] = None
+    """Changelog entries tracking how this attribute has changed across versions"""
 
 
 class _AttributeNamesMeta(type):
@@ -4922,6 +4939,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=["Citation 1", "Citation 2"],
         deprecation=DeprecationInfo(),
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[55]),
+        ],
     ),
     "ai.completion_tokens.used": AttributeMetadata(
         brief="The number of tokens used to respond to the message.",
@@ -4932,6 +4952,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.usage.output_tokens"),
         aliases=["gen_ai.usage.output_tokens", "gen_ai.usage.completion_tokens"],
         sdks=["python"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[57, 61]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "ai.documents": AttributeMetadata(
         brief="Documents or content chunks used as context for the AI model.",
@@ -4940,6 +4965,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=["document1.txt", "document2.pdf"],
         deprecation=DeprecationInfo(),
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[55]),
+        ],
     ),
     "ai.finish_reason": AttributeMetadata(
         brief="The reason why the model stopped generating.",
@@ -4949,6 +4977,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="COMPLETE",
         deprecation=DeprecationInfo(replacement="gen_ai.response.finish_reason"),
         aliases=["gen_ai.response.finish_reasons"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[55, 57, 61, 108, 127]),
+        ],
     ),
     "ai.frequency_penalty": AttributeMetadata(
         brief="Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.",
@@ -4958,6 +4989,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=0.5,
         deprecation=DeprecationInfo(replacement="gen_ai.request.frequency_penalty"),
         aliases=["gen_ai.request.frequency_penalty"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[55, 57, 61, 108]),
+        ],
     ),
     "ai.function_call": AttributeMetadata(
         brief="For an AI model call, the function that was called. This is deprecated for OpenAI, and replaced by tool_calls",
@@ -4967,6 +5002,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="function_name",
         deprecation=DeprecationInfo(replacement="gen_ai.tool.name"),
         aliases=["gen_ai.tool.name"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[55, 57, 61, 108]),
+        ],
     ),
     "ai.generation_id": AttributeMetadata(
         brief="Unique identifier for the completion.",
@@ -4976,6 +5014,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="gen_123abc",
         deprecation=DeprecationInfo(replacement="gen_ai.response.id"),
         aliases=["gen_ai.response.id"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[55, 57, 61, 108, 127]),
+        ],
     ),
     "ai.input_messages": AttributeMetadata(
         brief="The input messages sent to the model",
@@ -4986,6 +5027,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.request.messages"),
         aliases=["gen_ai.request.messages"],
         sdks=["python"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[65, 119]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "ai.is_search_required": AttributeMetadata(
         brief="Boolean indicating if the model needs to perform a search.",
@@ -4994,6 +5039,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=False,
         deprecation=DeprecationInfo(),
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[55]),
+        ],
     ),
     "ai.metadata": AttributeMetadata(
         brief="Extra metadata passed to an AI pipeline step.",
@@ -5002,6 +5050,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example='{"user_id": 123, "session_id": "abc123"}',
         deprecation=DeprecationInfo(),
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[55, 127]),
+        ],
     ),
     "ai.model.provider": AttributeMetadata(
         brief="The provider of the model.",
@@ -5011,6 +5062,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="openai",
         deprecation=DeprecationInfo(replacement="gen_ai.provider.name"),
         aliases=["gen_ai.provider.name", "gen_ai.system"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[253]),
+            ChangelogEntry(version="0.1.0", prs=[57, 61, 108, 127]),
+        ],
     ),
     "ai.model_id": AttributeMetadata(
         brief="The vendor-specific ID of the model used.",
@@ -5021,6 +5076,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.response.model"),
         aliases=["gen_ai.response.model"],
         sdks=["python"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[57, 61, 127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "ai.pipeline.name": AttributeMetadata(
         brief="The name of the AI pipeline.",
@@ -5030,6 +5089,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="Autofix Pipeline",
         deprecation=DeprecationInfo(replacement="gen_ai.pipeline.name"),
         aliases=["gen_ai.pipeline.name"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[53, 76, 108, 127]),
+        ],
     ),
     "ai.preamble": AttributeMetadata(
         brief="For an AI model call, the preamble parameter. Preambles are a part of the prompt used to adjust the model's overall behavior and conversation style.",
@@ -5039,6 +5101,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="You are now a clown.",
         deprecation=DeprecationInfo(replacement="gen_ai.system_instructions"),
         aliases=["gen_ai.system_instructions"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[55]),
+        ],
     ),
     "ai.presence_penalty": AttributeMetadata(
         brief="Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.",
@@ -5048,6 +5113,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=0.5,
         deprecation=DeprecationInfo(replacement="gen_ai.request.presence_penalty"),
         aliases=["gen_ai.request.presence_penalty"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[55, 57, 61, 108]),
+        ],
     ),
     "ai.prompt_tokens.used": AttributeMetadata(
         brief="The number of tokens used to process just the prompt.",
@@ -5058,6 +5127,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.usage.input_tokens"),
         aliases=["gen_ai.usage.prompt_tokens", "gen_ai.usage.input_tokens"],
         sdks=["python"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[57, 61]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "ai.raw_prompting": AttributeMetadata(
         brief="When enabled, the user’s prompt will be sent to the model without any pre-processing.",
@@ -5066,6 +5140,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=True,
         deprecation=DeprecationInfo(),
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[55]),
+        ],
     ),
     "ai.response_format": AttributeMetadata(
         brief="For an AI model call, the format of the response",
@@ -5074,6 +5151,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="json_object",
         deprecation=DeprecationInfo(),
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[55, 127]),
+        ],
     ),
     "ai.responses": AttributeMetadata(
         brief="The response messages sent back by the AI model.",
@@ -5083,6 +5163,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=["hello", "world"],
         deprecation=DeprecationInfo(replacement="gen_ai.response.text"),
         sdks=["python"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[65, 127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "ai.search_queries": AttributeMetadata(
         brief="Queries used to search for relevant context or documents.",
@@ -5091,6 +5175,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=["climate change effects", "renewable energy"],
         deprecation=DeprecationInfo(),
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[55]),
+        ],
     ),
     "ai.search_results": AttributeMetadata(
         brief="Results returned from search queries for context.",
@@ -5099,6 +5186,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=["search_result_1, search_result_2"],
         deprecation=DeprecationInfo(),
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[55]),
+        ],
     ),
     "ai.seed": AttributeMetadata(
         brief="The seed, ideally models given the same seed and same other parameters will produce the exact same output.",
@@ -5108,6 +5198,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="1234567890",
         deprecation=DeprecationInfo(replacement="gen_ai.request.seed"),
         aliases=["gen_ai.request.seed"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[55, 57, 61, 108, 127]),
+        ],
     ),
     "ai.streaming": AttributeMetadata(
         brief="Whether the request was streamed back.",
@@ -5118,6 +5211,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.response.streaming"),
         aliases=["gen_ai.response.streaming"],
         sdks=["python"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[76, 108]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "ai.tags": AttributeMetadata(
         brief="Tags that describe an AI pipeline step.",
@@ -5126,6 +5223,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example='{"executed_function": "add_integers"}',
         deprecation=DeprecationInfo(),
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[55, 127]),
+        ],
     ),
     "ai.temperature": AttributeMetadata(
         brief="For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.",
@@ -5135,6 +5235,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=0.1,
         deprecation=DeprecationInfo(replacement="gen_ai.request.temperature"),
         aliases=["gen_ai.request.temperature"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[55, 57, 61, 108]),
+        ],
     ),
     "ai.texts": AttributeMetadata(
         brief="Raw text inputs provided to the model.",
@@ -5144,6 +5248,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=["Hello, how are you?", "What is the capital of France?"],
         deprecation=DeprecationInfo(replacement="gen_ai.input.messages"),
         aliases=["gen_ai.input.messages"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[55]),
+        ],
     ),
     "ai.tool_calls": AttributeMetadata(
         brief="For an AI model call, the tool calls that were made.",
@@ -5152,6 +5259,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=["tool_call_1", "tool_call_2"],
         deprecation=DeprecationInfo(replacement="gen_ai.response.tool_calls"),
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[55, 65]),
+        ],
     ),
     "ai.tools": AttributeMetadata(
         brief="For an AI model call, the functions that are available",
@@ -5160,6 +5270,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=["function_1", "function_2"],
         deprecation=DeprecationInfo(replacement="gen_ai.request.available_tools"),
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[55, 65, 127]),
+        ],
     ),
     "ai.top_k": AttributeMetadata(
         brief="Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).",
@@ -5169,6 +5282,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=35,
         deprecation=DeprecationInfo(replacement="gen_ai.request.top_k"),
         aliases=["gen_ai.request.top_k"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[55, 57, 61, 108]),
+        ],
     ),
     "ai.top_p": AttributeMetadata(
         brief="Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).",
@@ -5178,6 +5295,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=0.7,
         deprecation=DeprecationInfo(replacement="gen_ai.request.top_p"),
         aliases=["gen_ai.request.top_p"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[55, 57, 61, 108]),
+        ],
     ),
     "ai.total_cost": AttributeMetadata(
         brief="The total cost for the tokens used.",
@@ -5187,6 +5308,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=12.34,
         deprecation=DeprecationInfo(replacement="gen_ai.cost.total_tokens"),
         aliases=["gen_ai.cost.total_tokens"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[53]),
+        ],
     ),
     "ai.total_tokens.used": AttributeMetadata(
         brief="The total number of tokens used to process the prompt.",
@@ -5197,6 +5322,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.usage.total_tokens"),
         aliases=["gen_ai.usage.total_tokens"],
         sdks=["python"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[57, 61, 108]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "ai.warnings": AttributeMetadata(
         brief="Warning messages generated during model execution.",
@@ -5205,6 +5335,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=["Token limit exceeded"],
         deprecation=DeprecationInfo(),
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[55]),
+        ],
     ),
     "app_start_type": AttributeMetadata(
         brief="Mobile app start variant. Either cold or warm.",
@@ -5212,6 +5345,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="cold",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "blocked_main_thread": AttributeMetadata(
         brief="Whether the main thread was blocked by the span.",
@@ -5219,6 +5356,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=True,
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "browser.name": AttributeMetadata(
         brief="The name of the browser.",
@@ -5227,6 +5367,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="Chrome",
         aliases=["sentry.browser.name"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127, 139]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "browser.report.type": AttributeMetadata(
         brief="A browser report sent via reporting API..",
@@ -5234,6 +5378,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="network-error",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[68, 127]),
+        ],
     ),
     "browser.script.invoker": AttributeMetadata(
         brief="How a script was called in the browser.",
@@ -5242,6 +5389,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="Window.requestAnimationFrame",
         sdks=["browser"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "browser.script.invoker_type": AttributeMetadata(
         brief="Browser script entry point type.",
@@ -5250,6 +5401,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="event-listener",
         sdks=["browser"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "browser.script.source_char_position": AttributeMetadata(
         brief="A number representing the script character position of the script.",
@@ -5258,6 +5413,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=678,
         sdks=["browser"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "browser.version": AttributeMetadata(
         brief="The version of the browser.",
@@ -5266,6 +5425,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="120.0.6099.130",
         aliases=["sentry.browser.version"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[59, 127, 139]),
+        ],
     ),
     "cache.hit": AttributeMetadata(
         brief="If the cache was hit during this span.",
@@ -5274,6 +5436,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=True,
         sdks=["php-laravel"],
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "cache.item_size": AttributeMetadata(
         brief="The size of the requested item in the cache. In bytes.",
@@ -5281,6 +5446,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=58,
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "cache.key": AttributeMetadata(
         brief="The key of the cache accessed.",
@@ -5289,6 +5458,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=["my-cache-key", "my-other-cache-key"],
         sdks=["php-laravel"],
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "cache.operation": AttributeMetadata(
         brief="The operation being performed on the cache.",
@@ -5297,6 +5469,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="get",
         sdks=["php-laravel"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "cache.ttl": AttributeMetadata(
         brief="The ttl of the cache in seconds",
@@ -5305,6 +5481,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=120,
         sdks=["php-laravel"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "channel": AttributeMetadata(
         brief="The channel name that is being used.",
@@ -5313,6 +5493,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="mail",
         sdks=["php-laravel"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "client.address": AttributeMetadata(
         brief="Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
@@ -5321,6 +5505,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="example.com",
         aliases=["http.client_ip"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[106, 127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "client.port": AttributeMetadata(
         brief="Client port number.",
@@ -5328,6 +5516,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example=5432,
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "cloudflare.d1.duration": AttributeMetadata(
         brief="The duration of a Cloudflare D1 operation.",
@@ -5336,6 +5528,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=543,
         sdks=["javascript-cloudflare"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "cloudflare.d1.rows_read": AttributeMetadata(
         brief="The number of rows read in a Cloudflare D1 operation.",
@@ -5344,6 +5540,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=12,
         sdks=["javascript-cloudflare"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "cloudflare.d1.rows_written": AttributeMetadata(
         brief="The number of rows written in a Cloudflare D1 operation.",
@@ -5352,6 +5552,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=12,
         sdks=["javascript-cloudflare"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "code.file.path": AttributeMetadata(
         brief="The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).",
@@ -5360,6 +5564,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="/app/myapplication/http/handler/server.py",
         aliases=["code.filepath"],
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "code.filepath": AttributeMetadata(
         brief="The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).",
@@ -5369,6 +5576,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="/app/myapplication/http/handler/server.py",
         deprecation=DeprecationInfo(replacement="code.file.path"),
         aliases=["code.file.path"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[61]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "code.function": AttributeMetadata(
         brief="The method or function name, or equivalent (usually rightmost part of the code unit's name).",
@@ -5378,6 +5589,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="server_request",
         deprecation=DeprecationInfo(replacement="code.function.name"),
         aliases=["code.function.name"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[61, 74]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "code.function.name": AttributeMetadata(
         brief="The method or function name, or equivalent (usually rightmost part of the code unit's name).",
@@ -5386,6 +5601,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="server_request",
         aliases=["code.function"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "code.line.number": AttributeMetadata(
         brief="The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function",
@@ -5394,6 +5613,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example=42,
         aliases=["code.lineno"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "code.lineno": AttributeMetadata(
         brief="The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function",
@@ -5403,6 +5626,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=42,
         deprecation=DeprecationInfo(replacement="code.line.number"),
         aliases=["code.line.number"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[61, 108]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "code.namespace": AttributeMetadata(
         brief="The 'namespace' within which code.function is defined. Usually the qualified class or module name, such that code.namespace + some separator + code.function form a unique identifier for the code unit.",
@@ -5414,6 +5642,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             replacement="code.function.name",
             reason="code.function.name should include the namespace.",
         ),
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[61, 74]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "culture.calendar": AttributeMetadata(
         brief="The calendar system used by the culture.",
@@ -5421,6 +5653,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="GregorianCalendar",
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[243]),
+        ],
     ),
     "culture.display_name": AttributeMetadata(
         brief="Human readable name of the culture.",
@@ -5428,6 +5663,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="English (United States)",
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[243]),
+        ],
     ),
     "culture.is_24_hour_format": AttributeMetadata(
         brief="Whether the culture uses 24-hour time format.",
@@ -5435,6 +5673,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=True,
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[243]),
+        ],
     ),
     "culture.locale": AttributeMetadata(
         brief="The locale identifier following RFC 4646.",
@@ -5442,6 +5683,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="en-US",
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[243]),
+        ],
     ),
     "culture.timezone": AttributeMetadata(
         brief="The timezone of the culture, as a geographic timezone identifier.",
@@ -5449,6 +5693,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="Europe/Vienna",
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[243]),
+        ],
     ),
     "db.collection.name": AttributeMetadata(
         brief="The name of a collection (table, container) within the database.",
@@ -5456,6 +5703,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="users",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[106, 127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "db.name": AttributeMetadata(
         brief="The name of the database being accessed.",
@@ -5465,6 +5716,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="customers",
         deprecation=DeprecationInfo(replacement="db.namespace"),
         aliases=["db.namespace"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[61, 127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "db.namespace": AttributeMetadata(
         brief="The name of the database being accessed.",
@@ -5473,6 +5728,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="customers",
         aliases=["db.name"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "db.operation": AttributeMetadata(
         brief="The name of the operation being executed.",
@@ -5484,6 +5743,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             replacement="db.operation.name", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["db.operation.name"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[199]),
+            ChangelogEntry(version="0.1.0", prs=[61, 127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "db.operation.name": AttributeMetadata(
         brief="The name of the operation being executed.",
@@ -5492,6 +5756,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="SELECT",
         aliases=["db.operation"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "db.query.parameter.<key>": AttributeMetadata(
         brief="A query parameter used in db.query.text, with <key> being the parameter name, and the attribute value being a string representation of the parameter value.",
@@ -5500,6 +5768,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         has_dynamic_suffix=True,
         example="db.query.parameter.foo='123'",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[103, 127]),
+        ],
     ),
     "db.query.summary": AttributeMetadata(
         brief="A shortened representation of operation(s) in the full query. This attribute must be low-cardinality and should only contain the operation table names.",
@@ -5507,6 +5778,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="SELECT users;",
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[208]),
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "db.query.text": AttributeMetadata(
         brief="The database parameterized query being executed. Any parameter values (filters, insertion values, etc) should be replaced with parameter placeholders. If applicable, use `db.query.parameter.<key>` to add the parameter value.",
@@ -5515,6 +5791,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="SELECT * FROM users WHERE id = $1",
         aliases=["db.statement"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[208]),
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "db.redis.connection": AttributeMetadata(
         brief="The redis connection name.",
@@ -5523,6 +5804,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="my-redis-instance",
         sdks=["php-laravel"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "db.redis.parameters": AttributeMetadata(
         brief="The array of command parameters given to a redis command.",
@@ -5531,6 +5816,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=["test", "*"],
         sdks=["php-laravel"],
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "db.sql.bindings": AttributeMetadata(
         brief="The array of query bindings.",
@@ -5543,6 +5831,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="Instead of adding every binding in the db.sql.bindings attribute, add them as individual entires with db.query.parameter.<key>.",
         ),
         sdks=["php-laravel"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[61]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "db.statement": AttributeMetadata(
         brief="The database statement being executed.",
@@ -5554,6 +5846,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             replacement="db.query.text", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["db.query.text"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[199]),
+            ChangelogEntry(version="0.1.0", prs=[61, 127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "db.system": AttributeMetadata(
         brief="An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers.",
@@ -5565,6 +5862,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             replacement="db.system.name", status=DeprecationStatus.BACKFILL
         ),
         aliases=["db.system.name"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[199, 224]),
+            ChangelogEntry(version="0.1.0", prs=[61, 127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "db.system.name": AttributeMetadata(
         brief="An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers.",
@@ -5573,6 +5875,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="postgresql",
         aliases=["db.system"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "db.user": AttributeMetadata(
         brief="The database user.",
@@ -5580,6 +5886,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         example="fancy_user",
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "device.brand": AttributeMetadata(
         brief="The brand of the device.",
@@ -5587,6 +5896,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="Apple",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[116, 127]),
+        ],
     ),
     "device.family": AttributeMetadata(
         brief="The family of the device.",
@@ -5594,6 +5906,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="iPhone",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[116, 127]),
+        ],
     ),
     "device.model": AttributeMetadata(
         brief="The model of the device.",
@@ -5601,6 +5916,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="iPhone 15 Pro Max",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[116, 127]),
+        ],
     ),
     "environment": AttributeMetadata(
         brief="The sentry environment.",
@@ -5610,6 +5928,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="production",
         deprecation=DeprecationInfo(replacement="sentry.environment"),
         aliases=["sentry.environment"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[61, 127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "error.type": AttributeMetadata(
         brief="Describes a class of error the operation ended with.",
@@ -5617,6 +5939,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="timeout",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "event.id": AttributeMetadata(
         brief="The unique identifier for this event (log record)",
@@ -5624,6 +5950,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=1234567890,
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[101]),
+        ],
     ),
     "event.name": AttributeMetadata(
         brief="The name that uniquely identifies this event (log record)",
@@ -5631,6 +5960,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="Process Payload",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[101, 127]),
+        ],
     ),
     "exception.escaped": AttributeMetadata(
         brief="SHOULD be set to true if the exception event is recorded at a point where it is known that the exception is escaping the scope of the span.",
@@ -5638,6 +5970,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
         example=True,
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "exception.message": AttributeMetadata(
         brief="The error message.",
@@ -5645,6 +5980,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="ENOENT: no such file or directory",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "exception.stacktrace": AttributeMetadata(
         brief="A stacktrace as a string in the natural representation for the language runtime. The representation is to be determined and documented by each language SIG.",
@@ -5652,6 +5991,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example='Exception in thread "main" java.lang.RuntimeException: Test exception\n at com.example.GenerateTrace.methodB(GenerateTrace.java:13)\n at com.example.GenerateTrace.methodA(GenerateTrace.java:9)\n at com.example.GenerateTrace.main(GenerateTrace.java:5)',
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "exception.type": AttributeMetadata(
         brief="The type of the exception (its fully-qualified class name, if applicable). The dynamic type of the exception should be preferred over the static type in languages that support it.",
@@ -5659,6 +6002,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="OSError",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "faas.coldstart": AttributeMetadata(
         brief="A boolean that is true if the serverless function is executed for the first time (aka cold-start).",
@@ -5666,6 +6013,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
         example=True,
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "faas.cron": AttributeMetadata(
         brief="A string containing the schedule period as Cron Expression.",
@@ -5673,6 +6023,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="0/5 * * * ? *",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "faas.time": AttributeMetadata(
         brief="A string containing the function invocation time in the ISO 8601 format expressed in UTC.",
@@ -5680,6 +6034,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="2020-01-23T13:47:06Z",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "faas.trigger": AttributeMetadata(
         brief="Type of the trigger which caused this function invocation.",
@@ -5687,6 +6045,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="timer",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "flag.evaluation.<key>": AttributeMetadata(
         brief="An instance of a feature flag evaluation. The value of this attribute is the boolean representing the evaluation result. The <key> suffix is the name of the feature flag.",
@@ -5695,6 +6057,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         has_dynamic_suffix=True,
         example="flag.evaluation.is_new_ui=true",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[103]),
+        ],
     ),
     "frames.delay": AttributeMetadata(
         brief="The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).",
@@ -5702,6 +6067,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=5,
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "frames.frozen": AttributeMetadata(
         brief="The number of frozen frames rendered during the lifetime of the span.",
@@ -5709,6 +6078,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=3,
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "frames.slow": AttributeMetadata(
         brief="The number of slow frames rendered during the lifetime of the span.",
@@ -5716,6 +6089,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1,
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "frames.total": AttributeMetadata(
         brief="The number of total frames rendered during the lifetime of the span.",
@@ -5723,6 +6100,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=60,
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "fs_error": AttributeMetadata(
         brief="The error message of a file system error.",
@@ -5735,6 +6116,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="This attribute is not part of the OpenTelemetry specification and error.type fits much better.",
         ),
         sdks=["javascript-node"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[61, 127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "gen_ai.agent.name": AttributeMetadata(
         brief="The name of the agent being used.",
@@ -5742,6 +6127,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="ResearchAssistant",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[62, 127]),
+        ],
     ),
     "gen_ai.conversation.id": AttributeMetadata(
         brief="The unique identifier for a conversation (session, thread), used to store and correlate messages within this conversation.",
@@ -5749,6 +6137,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="conv_5j66UpCpwteGg4YSxUnt7lPY",
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[250]),
+        ],
     ),
     "gen_ai.cost.input_tokens": AttributeMetadata(
         brief="The cost of tokens used to process the AI input (prompt) in USD (without cached input tokens).",
@@ -5756,6 +6147,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=123.45,
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[112]),
+        ],
     ),
     "gen_ai.cost.output_tokens": AttributeMetadata(
         brief="The cost of tokens used for creating the AI output in USD (without reasoning tokens).",
@@ -5763,6 +6158,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=123.45,
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[112]),
+        ],
     ),
     "gen_ai.cost.total_tokens": AttributeMetadata(
         brief="The total cost for the tokens used.",
@@ -5771,6 +6170,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=12.34,
         aliases=["ai.total_cost"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[126]),
+        ],
     ),
     "gen_ai.embeddings.input": AttributeMetadata(
         brief="The input to the embeddings model.",
@@ -5778,6 +6181,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="What's the weather in Paris?",
+        changelog=[
+            ChangelogEntry(version="0.3.1", prs=[195]),
+        ],
     ),
     "gen_ai.input.messages": AttributeMetadata(
         brief='The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.',
@@ -5786,6 +6192,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example='[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
         aliases=["ai.texts"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[221]),
+        ],
     ),
     "gen_ai.operation.name": AttributeMetadata(
         brief="The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'embeddings', 'execute_tool', 'generate_content', 'invoke_agent', 'text_completion'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used.",
@@ -5793,6 +6202,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="chat",
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[225]),
+            ChangelogEntry(version="0.1.0", prs=[62, 127]),
+        ],
     ),
     "gen_ai.operation.type": AttributeMetadata(
         brief="The type of AI operation. Must be one of 'agent' (invoke_agent and create_agent spans), 'ai_client' (any LLM call), 'tool' (execute_tool spans), 'handoff' (handoff spans), 'other' (input and output processors, skill loading, guardrails etc.) . Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI",
@@ -5800,6 +6213,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="tool",
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[257]),
+            ChangelogEntry(version="0.1.0", prs=[113, 127]),
+        ],
     ),
     "gen_ai.output.messages": AttributeMetadata(
         brief="The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls.",
@@ -5807,6 +6224,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example='[{"role": "assistant", "parts": [{"type": "text", "content": "The weather in Paris is currently rainy with a temperature of 57°F."}], "finish_reason": "stop"}]',
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[221]),
+        ],
     ),
     "gen_ai.pipeline.name": AttributeMetadata(
         brief="Name of the AI pipeline or chain being executed.",
@@ -5815,6 +6235,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="Autofix Pipeline",
         aliases=["ai.pipeline.name"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[76, 127]),
+        ],
     ),
     "gen_ai.prompt": AttributeMetadata(
         brief="The input messages sent to the model",
@@ -5825,6 +6248,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             reason="Deprecated from OTEL, use gen_ai.input.messages with the new format instead."
         ),
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[74, 108, 119]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "gen_ai.provider.name": AttributeMetadata(
         brief="The Generative AI provider as identified by the client or server instrumentation.",
@@ -5833,6 +6260,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="openai",
         aliases=["ai.model.provider", "gen_ai.system"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[253]),
+        ],
     ),
     "gen_ai.request.available_tools": AttributeMetadata(
         brief="The available tools for the model. It has to be a stringified version of an array of objects.",
@@ -5841,6 +6271,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example='[{"name": "get_weather", "description": "Get the weather for a given location"}, {"name": "get_news", "description": "Get the news for a given topic"}]',
         deprecation=DeprecationInfo(replacement="gen_ai.tool.definitions"),
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[221]),
+            ChangelogEntry(version="0.1.0", prs=[63, 127]),
+        ],
     ),
     "gen_ai.request.frequency_penalty": AttributeMetadata(
         brief="Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.",
@@ -5849,6 +6283,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example=0.5,
         aliases=["ai.frequency_penalty"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[57]),
+        ],
     ),
     "gen_ai.request.max_tokens": AttributeMetadata(
         brief="The maximum number of tokens to generate in the response.",
@@ -5856,6 +6294,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example=2048,
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[62]),
+        ],
     ),
     "gen_ai.request.messages": AttributeMetadata(
         brief='The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.',
@@ -5865,6 +6307,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example='[{"role": "system", "content": "Generate a random number."}, {"role": "user", "content": [{"text": "Generate a random number between 0 and 10.", "type": "text"}]}, {"role": "tool", "content": {"toolCallId": "1", "toolName": "Weather", "output": "rainy"}}]',
         deprecation=DeprecationInfo(replacement="gen_ai.input.messages"),
         aliases=["ai.input_messages"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[221]),
+            ChangelogEntry(version="0.1.0", prs=[63, 74, 108, 119, 122]),
+        ],
     ),
     "gen_ai.request.model": AttributeMetadata(
         brief="The model identifier being used for the request.",
@@ -5872,6 +6318,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="gpt-4-turbo-preview",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[62, 127]),
+        ],
     ),
     "gen_ai.request.presence_penalty": AttributeMetadata(
         brief="Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.",
@@ -5880,6 +6329,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example=0.5,
         aliases=["ai.presence_penalty"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[57]),
+        ],
     ),
     "gen_ai.request.seed": AttributeMetadata(
         brief="The seed, ideally models given the same seed and same other parameters will produce the exact same output.",
@@ -5888,6 +6341,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="1234567890",
         aliases=["ai.seed"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[57, 127]),
+        ],
     ),
     "gen_ai.request.temperature": AttributeMetadata(
         brief="For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.",
@@ -5896,6 +6352,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example=0.1,
         aliases=["ai.temperature"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[57]),
+        ],
     ),
     "gen_ai.request.top_k": AttributeMetadata(
         brief="Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).",
@@ -5904,6 +6364,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example=35,
         aliases=["ai.top_k"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[57]),
+        ],
     ),
     "gen_ai.request.top_p": AttributeMetadata(
         brief="Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).",
@@ -5912,6 +6376,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example=0.7,
         aliases=["ai.top_p"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[57]),
+        ],
     ),
     "gen_ai.response.finish_reasons": AttributeMetadata(
         brief="The reason why the model stopped generating.",
@@ -5920,6 +6388,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="COMPLETE",
         aliases=["ai.finish_reason"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[57, 127]),
+        ],
     ),
     "gen_ai.response.id": AttributeMetadata(
         brief="Unique identifier for the completion.",
@@ -5928,6 +6399,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="gen_123abc",
         aliases=["ai.generation_id"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[57, 127]),
+        ],
     ),
     "gen_ai.response.model": AttributeMetadata(
         brief="The vendor-specific ID of the model used.",
@@ -5936,6 +6410,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="gpt-4",
         aliases=["ai.model_id"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "gen_ai.response.streaming": AttributeMetadata(
         brief="Whether or not the AI model call's response was streamed back asynchronously",
@@ -5944,6 +6422,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=True,
         aliases=["ai.streaming"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[76]),
+        ],
     ),
     "gen_ai.response.text": AttributeMetadata(
         brief="The model's response text messages. It has to be a stringified version of an array of response text messages.",
@@ -5952,6 +6433,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example='["The weather in Paris is rainy and overcast, with temperatures around 57°F", "The weather in London is sunny and warm, with temperatures around 65°F"]',
         deprecation=DeprecationInfo(replacement="gen_ai.output.messages"),
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[221]),
+            ChangelogEntry(version="0.1.0", prs=[63, 74]),
+        ],
     ),
     "gen_ai.response.time_to_first_token": AttributeMetadata(
         brief="Time in seconds when the first response content chunk arrived in streaming responses.",
@@ -5959,6 +6444,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=0.6853435,
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[227]),
+        ],
     ),
     "gen_ai.response.tokens_per_second": AttributeMetadata(
         brief="The total output tokens per seconds throughput",
@@ -5966,6 +6454,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=12345.67,
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[66]),
+        ],
     ),
     "gen_ai.response.tool_calls": AttributeMetadata(
         brief="The tool calls in the model's response. It has to be a stringified version of an array of objects.",
@@ -5974,6 +6466,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example='[{"name": "get_weather", "arguments": {"location": "Paris"}}]',
         deprecation=DeprecationInfo(replacement="gen_ai.output.messages"),
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[221]),
+            ChangelogEntry(version="0.1.0", prs=[63, 74]),
+        ],
     ),
     "gen_ai.system": AttributeMetadata(
         brief="The provider of the model.",
@@ -5983,6 +6479,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="openai",
         deprecation=DeprecationInfo(replacement="gen_ai.provider.name"),
         aliases=["ai.model.provider", "gen_ai.provider.name"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[253]),
+            ChangelogEntry(version="0.1.0", prs=[57, 127]),
+        ],
     ),
     "gen_ai.system.message": AttributeMetadata(
         brief="The system instructions passed to the model.",
@@ -5991,6 +6491,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="You are a helpful assistant",
         deprecation=DeprecationInfo(replacement="gen_ai.system_instructions"),
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[221]),
+            ChangelogEntry(version="0.1.0", prs=[62]),
+        ],
     ),
     "gen_ai.system_instructions": AttributeMetadata(
         brief="The system instructions passed to the model.",
@@ -5999,6 +6503,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="You are a helpful assistant",
         aliases=["ai.preamble"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[221]),
+        ],
     ),
     "gen_ai.tool.call.arguments": AttributeMetadata(
         brief="The arguments of the tool call. It has to be a stringified version of the arguments to the tool.",
@@ -6007,6 +6514,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example='{"location": "Paris"}',
         aliases=["gen_ai.tool.input"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[221]),
+        ],
     ),
     "gen_ai.tool.call.result": AttributeMetadata(
         brief="The result of the tool call. It has to be a stringified version of the result of the tool.",
@@ -6015,6 +6525,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="rainy, 57°F",
         aliases=["gen_ai.tool.output", "gen_ai.tool.message"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[221]),
+        ],
     ),
     "gen_ai.tool.definitions": AttributeMetadata(
         brief="The list of source system tool definitions available to the GenAI agent or model.",
@@ -6022,6 +6535,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example='[{"type": "function", "name": "get_current_weather", "description": "Get the current weather in a given location", "parameters": {"type": "object", "properties": {"location": {"type": "string", "description": "The city and state, e.g. San Francisco, CA"}, "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]}}, "required": ["location", "unit"]}}]',
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[221]),
+        ],
     ),
     "gen_ai.tool.description": AttributeMetadata(
         brief="The description of the tool being used.",
@@ -6029,6 +6545,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="Searches the web for current information about a topic",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[62, 127]),
+        ],
     ),
     "gen_ai.tool.input": AttributeMetadata(
         brief="The input of the tool being used. It has to be a stringified version of the input to the tool.",
@@ -6038,6 +6557,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example='{"location": "Paris"}',
         deprecation=DeprecationInfo(replacement="gen_ai.tool.call.arguments"),
         aliases=["gen_ai.tool.call.arguments"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[63, 74]),
+        ],
     ),
     "gen_ai.tool.message": AttributeMetadata(
         brief="The response from a tool or function call passed to the model.",
@@ -6047,6 +6569,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="rainy, 57°F",
         deprecation=DeprecationInfo(replacement="gen_ai.tool.call.result"),
         aliases=["gen_ai.tool.call.result", "gen_ai.tool.output"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[62]),
+        ],
     ),
     "gen_ai.tool.name": AttributeMetadata(
         brief="Name of the tool utilized by the agent.",
@@ -6055,6 +6580,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="Flights",
         aliases=["ai.function_call"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[57, 127]),
+        ],
     ),
     "gen_ai.tool.output": AttributeMetadata(
         brief="The output of the tool being used. It has to be a stringified version of the output of the tool.",
@@ -6064,6 +6592,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="rainy, 57°F",
         deprecation=DeprecationInfo(replacement="gen_ai.tool.call.result"),
         aliases=["gen_ai.tool.call.result", "gen_ai.tool.message"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[63, 74]),
+        ],
     ),
     "gen_ai.tool.type": AttributeMetadata(
         brief="The type of tool being used.",
@@ -6071,6 +6602,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="function",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[62, 127]),
+        ],
     ),
     "gen_ai.usage.completion_tokens": AttributeMetadata(
         brief="The number of tokens used in the GenAI response (completion).",
@@ -6080,6 +6614,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=10,
         deprecation=DeprecationInfo(replacement="gen_ai.usage.output_tokens"),
         aliases=["ai.completion_tokens.used", "gen_ai.usage.output_tokens"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[61]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "gen_ai.usage.input_tokens": AttributeMetadata(
         brief="The number of tokens used to process the AI input (prompt) including cached input tokens.",
@@ -6088,6 +6627,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example=10,
         aliases=["ai.prompt_tokens.used", "gen_ai.usage.prompt_tokens"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[112]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "gen_ai.usage.input_tokens.cache_write": AttributeMetadata(
         brief="The number of tokens written to the cache when processing the AI input (prompt).",
@@ -6095,6 +6639,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=100,
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[217, 228]),
+        ],
     ),
     "gen_ai.usage.input_tokens.cached": AttributeMetadata(
         brief="The number of cached tokens used to process the AI input (prompt).",
@@ -6102,6 +6649,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=50,
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[62, 112]),
+        ],
     ),
     "gen_ai.usage.output_tokens": AttributeMetadata(
         brief="The number of tokens used for creating the AI output (including reasoning tokens).",
@@ -6110,6 +6661,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example=10,
         aliases=["ai.completion_tokens.used", "gen_ai.usage.completion_tokens"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[112]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "gen_ai.usage.output_tokens.reasoning": AttributeMetadata(
         brief="The number of tokens used for reasoning to create the AI output.",
@@ -6117,6 +6673,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=75,
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[62, 112]),
+        ],
     ),
     "gen_ai.usage.prompt_tokens": AttributeMetadata(
         brief="The number of tokens used in the GenAI input (prompt).",
@@ -6126,6 +6686,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=20,
         deprecation=DeprecationInfo(replacement="gen_ai.usage.input_tokens"),
         aliases=["ai.prompt_tokens.used", "gen_ai.usage.input_tokens"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[61]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "gen_ai.usage.total_tokens": AttributeMetadata(
         brief="The total number of tokens used to process the prompt. (input tokens plus output todkens)",
@@ -6134,6 +6699,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=20,
         aliases=["ai.total_tokens.used"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[57]),
+        ],
     ),
     "graphql.operation.name": AttributeMetadata(
         brief="The name of the operation being executed.",
@@ -6141,6 +6710,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="findBookById",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "graphql.operation.type": AttributeMetadata(
         brief="The type of the operation being executed.",
@@ -6148,6 +6721,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="query",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "http.client_ip": AttributeMetadata(
         brief="Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
@@ -6157,6 +6734,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="example.com",
         deprecation=DeprecationInfo(replacement="client.address"),
         aliases=["client.address"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[61, 106, 127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "http.decoded_response_content_length": AttributeMetadata(
         brief="The decoded body size of the response (in bytes).",
@@ -6165,6 +6746,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=456,
         sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "http.flavor": AttributeMetadata(
         brief="The actual version of the protocol used for network communication.",
@@ -6174,6 +6759,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="1.1",
         deprecation=DeprecationInfo(replacement="network.protocol.version"),
         aliases=["network.protocol.version", "net.protocol.version"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "http.fragment": AttributeMetadata(
         brief="The fragments present in the URI. Note that this contains the leading # character, while the `url.fragment` attribute does not.",
@@ -6181,6 +6770,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="#details",
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "http.host": AttributeMetadata(
         brief="The domain name.",
@@ -6198,6 +6790,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "http.server_name",
             "net.host.name",
         ],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "http.method": AttributeMetadata(
         brief="The HTTP method used.",
@@ -6207,6 +6803,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="GET",
         deprecation=DeprecationInfo(replacement="http.request.method"),
         aliases=["http.request.method"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[61, 127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "http.query": AttributeMetadata(
         brief="The query string present in the URL. Note that this contains the leading ? character, while the `url.query` attribute does not.",
@@ -6217,6 +6817,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         is_in_otel=False,
         example="?foo=bar&bar=baz",
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "http.request.connect_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the user agent starts establishing the connection to the server to retrieve the resource.",
@@ -6225,6 +6828,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=1732829555.111,
         sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[134]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "http.request.connection_end": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately after the browser finishes establishing the connection to the server to retrieve the resource. The timestamp value includes the time interval to establish the transport connection, as well as other time intervals such as TLS handshake and SOCKS authentication.",
@@ -6233,6 +6841,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=1732829555.15,
         sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[134]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "http.request.domain_lookup_end": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately after the browser finishes the domain-name lookup for the resource.",
@@ -6241,6 +6854,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=1732829555.201,
         sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[134]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "http.request.domain_lookup_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the browser starts the domain name lookup for the resource.",
@@ -6249,6 +6867,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=1732829555.322,
         sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[134]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "http.request.fetch_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the browser starts to fetch the resource.",
@@ -6257,6 +6880,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=1732829555.389,
         sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[134]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "http.request.header.<key>": AttributeMetadata(
         brief="HTTP request headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.",
@@ -6265,6 +6893,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         has_dynamic_suffix=True,
         example="http.request.header.custom-header=['foo', 'bar']",
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[201, 204]),
+            ChangelogEntry(version="0.1.0", prs=[103]),
+        ],
     ),
     "http.request.method": AttributeMetadata(
         brief="The HTTP method used.",
@@ -6273,6 +6905,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="GET",
         aliases=["method", "http.method"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "http.request.redirect_end": AttributeMetadata(
         brief="The UNIX timestamp representing the timestamp immediately after receiving the last byte of the response of the last redirect",
@@ -6281,6 +6917,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=1732829558.502,
         sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[130, 134]),
+        ],
     ),
     "http.request.redirect_start": AttributeMetadata(
         brief="The UNIX timestamp representing the start time of the fetch which that initiates the redirect.",
@@ -6289,6 +6929,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=1732829555.495,
         sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[134]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "http.request.request_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.",
@@ -6297,6 +6942,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=1732829555.51,
         sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[134]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "http.request.resend_count": AttributeMetadata(
         brief="The ordinal number of request resending attempt (for any reason, including redirects).",
@@ -6304,6 +6954,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=2,
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "http.request.response_end": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately after the browser receives the last byte of the resource or immediately before the transport connection is closed, whichever comes first.",
@@ -6312,6 +6966,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=1732829555.89,
         sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[134]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "http.request.response_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.",
@@ -6320,6 +6979,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=1732829555.7,
         sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[134]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "http.request.secure_connection_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the browser starts the handshake process to secure the current connection. If a secure connection is not used, the property returns zero.",
@@ -6328,6 +6992,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=1732829555.73,
         sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[134]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "http.request.time_to_first_byte": AttributeMetadata(
         brief="The time in seconds from the browser's timeorigin to when the first byte of the request's response was received. See https://web.dev/articles/ttfb#measure-resource-requests",
@@ -6336,6 +7005,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=1.032,
         sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[131]),
+        ],
     ),
     "http.request.worker_start": AttributeMetadata(
         brief="The UNIX timestamp representing the timestamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running.",
@@ -6344,6 +7017,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=1732829553.68,
         sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[130, 134]),
+        ],
     ),
     "http.response.body.size": AttributeMetadata(
         brief="The encoded body size of the response (in bytes).",
@@ -6352,6 +7029,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example=123,
         aliases=["http.response_content_length", "http.response.header.content-length"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[106]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "http.response.header.<key>": AttributeMetadata(
         brief="HTTP response headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.",
@@ -6360,6 +7042,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         has_dynamic_suffix=True,
         example="http.response.header.custom-header=['foo', 'bar']",
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[201, 204]),
+            ChangelogEntry(version="0.1.0", prs=[103]),
+        ],
     ),
     "http.response.header.content-length": AttributeMetadata(
         brief="The size of the message body sent to the recipient (in bytes)",
@@ -6368,6 +7054,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="http.response.header.custom-header=['foo', 'bar']",
         aliases=["http.response_content_length", "http.response.body.size"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "http.response.size": AttributeMetadata(
         brief="The transfer size of the response (in bytes).",
@@ -6376,6 +7066,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example=456,
         aliases=["http.response_transfer_size"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "http.response.status_code": AttributeMetadata(
         brief="The status code of the HTTP response.",
@@ -6384,6 +7078,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example=404,
         aliases=["http.status_code"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "http.response_content_length": AttributeMetadata(
         brief="The encoded body size of the response (in bytes).",
@@ -6395,6 +7093,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             replacement="http.response.body.size", status=DeprecationStatus.BACKFILL
         ),
         aliases=["http.response.body.size", "http.response.header.content-length"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[61, 106]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "http.response_transfer_size": AttributeMetadata(
         brief="The transfer size of the response (in bytes).",
@@ -6406,6 +7109,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             replacement="http.response.size", status=DeprecationStatus.BACKFILL
         ),
         aliases=["http.response.size"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[61]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "http.route": AttributeMetadata(
         brief="The matched route, that is, the path template in the format used by the respective server framework.",
@@ -6414,6 +7122,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="/users/:id",
         aliases=["url.template"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "http.scheme": AttributeMetadata(
         brief="The URI scheme component identifying the used protocol.",
@@ -6423,6 +7135,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="https",
         deprecation=DeprecationInfo(replacement="url.scheme"),
         aliases=["url.scheme"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[61, 127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "http.server.request.time_in_queue": AttributeMetadata(
         brief="The time in milliseconds the request spent in the server queue before processing began. Measured from the X-Request-Start header set by reverse proxies (e.g., Nginx, HAProxy, Heroku) to when the application started handling the request.",
@@ -6440,6 +7156,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="example.com",
         deprecation=DeprecationInfo(replacement="server.address"),
         aliases=["server.address", "net.host.name", "http.host"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "http.status_code": AttributeMetadata(
         brief="The status code of the HTTP response.",
@@ -6449,6 +7169,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=404,
         deprecation=DeprecationInfo(replacement="http.response.status_code"),
         aliases=["http.response.status_code"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[61]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "http.target": AttributeMetadata(
         brief="The pathname and query string of the URL.",
@@ -6460,6 +7185,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             replacement="url.path",
             reason="This attribute is being deprecated in favor of url.path and url.query",
         ),
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[61]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "http.url": AttributeMetadata(
         brief="The URL of the resource that was fetched.",
@@ -6469,6 +7198,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="https://example.com/test?foo=bar#buzz",
         deprecation=DeprecationInfo(replacement="url.full"),
         aliases=["url.full", "url"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[61, 108]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "http.user_agent": AttributeMetadata(
         brief="Value of the HTTP User-Agent header sent by the client.",
@@ -6478,6 +7211,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1",
         deprecation=DeprecationInfo(replacement="user_agent.original"),
         aliases=["user_agent.original"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[61, 127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "id": AttributeMetadata(
         brief="A unique identifier for the span.",
@@ -6486,6 +7223,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="f47ac10b58cc4372a5670e02b2c3d479",
         sdks=["php-laravel"],
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "jvm.gc.action": AttributeMetadata(
         brief="Name of the garbage collector action.",
@@ -6493,6 +7233,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="end of minor GC",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "jvm.gc.name": AttributeMetadata(
         brief="Name of the garbage collector.",
@@ -6500,6 +7244,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="G1 Young Generation",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "jvm.memory.pool.name": AttributeMetadata(
         brief="Name of the memory pool.",
@@ -6507,6 +7255,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="G1 Old Gen",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "jvm.memory.type": AttributeMetadata(
         brief="Name of the memory pool.",
@@ -6514,6 +7266,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="G1 Old Gen",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "jvm.thread.daemon": AttributeMetadata(
         brief="Whether the thread is daemon or not.",
@@ -6521,6 +7277,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
         example=True,
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "jvm.thread.state": AttributeMetadata(
         brief="State of the thread.",
@@ -6528,6 +7287,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="blocked",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "lcp.element": AttributeMetadata(
         brief="The dom element responsible for the largest contentful paint.",
@@ -6535,6 +7298,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="img",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "lcp.id": AttributeMetadata(
         brief="The id of the dom element responsible for the largest contentful paint.",
@@ -6542,6 +7309,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="#hero",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "lcp.size": AttributeMetadata(
         brief="The size of the largest contentful paint element.",
@@ -6549,6 +7320,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1234,
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "lcp.url": AttributeMetadata(
         brief="The url of the dom element responsible for the largest contentful paint.",
@@ -6556,6 +7331,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="https://example.com",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "logger.name": AttributeMetadata(
         brief="The name of the logger that generated this event.",
@@ -6563,6 +7342,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="myLogger",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "mcp.cancelled.reason": AttributeMetadata(
         brief="Reason for the cancellation of an MCP operation.",
@@ -6573,6 +7356,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         is_in_otel=False,
         example="User cancelled the request",
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
     ),
     "mcp.cancelled.request_id": AttributeMetadata(
         brief="Request ID of the cancelled MCP operation.",
@@ -6580,6 +7366,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="123",
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
     ),
     "mcp.client.name": AttributeMetadata(
         brief="Name of the MCP client application.",
@@ -6587,6 +7376,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="claude-desktop",
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
     ),
     "mcp.client.title": AttributeMetadata(
         brief="Display title of the MCP client application.",
@@ -6597,6 +7389,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         is_in_otel=False,
         example="Claude Desktop",
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
     ),
     "mcp.client.version": AttributeMetadata(
         brief="Version of the MCP client application.",
@@ -6604,6 +7399,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="1.0.0",
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
     ),
     "mcp.lifecycle.phase": AttributeMetadata(
         brief="Lifecycle phase indicator for MCP operations.",
@@ -6611,6 +7409,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="initialization_complete",
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
     ),
     "mcp.logging.data_type": AttributeMetadata(
         brief="Data type of the logged message content.",
@@ -6618,6 +7419,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="string",
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
     ),
     "mcp.logging.level": AttributeMetadata(
         brief="Log level for MCP logging operations.",
@@ -6625,6 +7429,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="info",
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
     ),
     "mcp.logging.logger": AttributeMetadata(
         brief="Logger name for MCP logging operations.",
@@ -6635,6 +7442,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         is_in_otel=False,
         example="mcp_server",
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
     ),
     "mcp.logging.message": AttributeMetadata(
         brief="Log message content from MCP logging operations.",
@@ -6642,6 +7452,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.TRUE, reason="Log messages can contain user data"),
         is_in_otel=False,
         example="Tool execution completed successfully",
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
     ),
     "mcp.method.name": AttributeMetadata(
         brief="The name of the MCP request or notification method being called.",
@@ -6649,6 +7462,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="tools/call",
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
     ),
     "mcp.progress.current": AttributeMetadata(
         brief="Current progress value of an MCP operation.",
@@ -6656,6 +7472,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=50,
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
     ),
     "mcp.progress.message": AttributeMetadata(
         brief="Progress message describing the current state of an MCP operation.",
@@ -6666,6 +7486,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         is_in_otel=False,
         example="Processing 50 of 100 items",
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
     ),
     "mcp.progress.percentage": AttributeMetadata(
         brief="Calculated progress percentage of an MCP operation. Computed from current/total * 100.",
@@ -6673,6 +7496,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=50,
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
     ),
     "mcp.progress.token": AttributeMetadata(
         brief="Token for tracking progress of an MCP operation.",
@@ -6680,6 +7507,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="progress-token-123",
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
     ),
     "mcp.progress.total": AttributeMetadata(
         brief="Total progress target value of an MCP operation.",
@@ -6687,6 +7517,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=100,
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
     ),
     "mcp.prompt.name": AttributeMetadata(
         brief="Name of the MCP prompt template being used.",
@@ -6697,6 +7531,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         is_in_otel=False,
         example="summarize",
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
     ),
     "mcp.prompt.result.description": AttributeMetadata(
         brief="Description of the prompt result.",
@@ -6704,6 +7541,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         example="A summary of the requested information",
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
     ),
     "mcp.prompt.result.message_content": AttributeMetadata(
         brief="Content of the message in the prompt result. Used for single message results only.",
@@ -6711,6 +7551,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         example="Please provide a summary of the document",
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
     ),
     "mcp.prompt.result.message_count": AttributeMetadata(
         brief="Number of messages in the prompt result.",
@@ -6718,6 +7561,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=3,
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
     ),
     "mcp.prompt.result.message_role": AttributeMetadata(
         brief="Role of the message in the prompt result. Used for single message results only.",
@@ -6725,6 +7572,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="user",
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
     ),
     "mcp.protocol.ready": AttributeMetadata(
         brief="Protocol readiness indicator for MCP session. Non-zero value indicates the protocol is ready.",
@@ -6732,6 +7582,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1,
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
     ),
     "mcp.protocol.version": AttributeMetadata(
         brief="MCP protocol version used in the session.",
@@ -6739,6 +7593,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="2024-11-05",
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
     ),
     "mcp.request.argument.<key>": AttributeMetadata(
         brief="MCP request argument with dynamic key suffix. The <key> is replaced with the actual argument name. The value is a JSON-stringified representation of the argument value.",
@@ -6747,6 +7604,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         has_dynamic_suffix=True,
         example="mcp.request.argument.query='weather in Paris'",
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[176]),
+        ],
     ),
     "mcp.request.argument.name": AttributeMetadata(
         brief="Name argument from prompts/get MCP request.",
@@ -6754,6 +7614,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.TRUE, reason="Prompt names can contain user input"),
         is_in_otel=False,
         example="summarize",
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
     ),
     "mcp.request.argument.uri": AttributeMetadata(
         brief="URI argument from resources/read MCP request.",
@@ -6761,6 +7624,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.TRUE, reason="URIs can contain user file paths"),
         is_in_otel=False,
         example="file:///path/to/resource",
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
     ),
     "mcp.request.id": AttributeMetadata(
         brief="JSON-RPC request identifier for the MCP request. Unique within the MCP session.",
@@ -6768,6 +7634,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="1",
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
     ),
     "mcp.resource.protocol": AttributeMetadata(
         brief="Protocol of the resource URI being accessed, extracted from the URI.",
@@ -6775,6 +7644,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="file",
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
     ),
     "mcp.resource.uri": AttributeMetadata(
         brief="The resource URI being accessed in an MCP operation.",
@@ -6782,6 +7654,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.TRUE, reason="URIs can contain sensitive file paths"),
         is_in_otel=False,
         example="file:///path/to/file.txt",
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
     ),
     "mcp.server.name": AttributeMetadata(
         brief="Name of the MCP server application.",
@@ -6789,6 +7664,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="sentry-mcp-server",
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
     ),
     "mcp.server.title": AttributeMetadata(
         brief="Display title of the MCP server application.",
@@ -6799,6 +7677,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         is_in_otel=False,
         example="Sentry MCP Server",
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
     ),
     "mcp.server.version": AttributeMetadata(
         brief="Version of the MCP server application.",
@@ -6806,6 +7687,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="0.1.0",
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
     ),
     "mcp.session.id": AttributeMetadata(
         brief="Identifier for the MCP session.",
@@ -6813,6 +7697,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="550e8400-e29b-41d4-a716-446655440000",
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
     ),
     "mcp.tool.name": AttributeMetadata(
         brief="Name of the MCP tool being called.",
@@ -6820,6 +7707,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="calculator",
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
     ),
     "mcp.tool.result.content": AttributeMetadata(
         brief="The content of the tool result.",
@@ -6827,6 +7717,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.TRUE, reason="Tool results can contain user data"),
         is_in_otel=False,
         example='{"output": "rainy", "toolCallId": "1"}',
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[171]),
+            ChangelogEntry(version="0.2.0", prs=[164]),
+        ],
     ),
     "mcp.tool.result.content_count": AttributeMetadata(
         brief="Number of content items in the tool result.",
@@ -6834,6 +7728,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1,
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
     ),
     "mcp.tool.result.is_error": AttributeMetadata(
         brief="Whether a tool execution resulted in an error.",
@@ -6841,6 +7739,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=False,
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
     ),
     "mcp.transport": AttributeMetadata(
         brief="Transport method used for MCP communication.",
@@ -6848,6 +7749,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="stdio",
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
     ),
     "mdc.<key>": AttributeMetadata(
         brief="Attributes from the Mapped Diagnostic Context (MDC) present at the moment the log record was created. The MDC is supported by all the most popular logging solutions in the Java ecosystem, and it's usually implemented as a thread-local map that stores context for e.g. a specific request.",
@@ -6857,6 +7761,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         has_dynamic_suffix=True,
         example="mdc.some_key='some_value'",
         sdks=["java", "java.logback", "java.jul", "java.log4j2"],
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[176]),
+        ],
     ),
     "messaging.destination.connection": AttributeMetadata(
         brief="The message destination connection.",
@@ -6865,6 +7772,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="BestTopic",
         sdks=["php-laravel"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "messaging.destination.name": AttributeMetadata(
         brief="The message destination name.",
@@ -6873,6 +7784,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="BestTopic",
         sdks=["php-laravel"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "messaging.message.body.size": AttributeMetadata(
         brief="The size of the message body in bytes.",
@@ -6881,6 +7796,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example=839,
         sdks=["php-laravel"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "messaging.message.envelope.size": AttributeMetadata(
         brief="The size of the message body and metadata in bytes.",
@@ -6889,6 +7808,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example=1045,
         sdks=["php-laravel"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "messaging.message.id": AttributeMetadata(
         brief="A value used by the messaging system as an identifier for the message, represented as a string.",
@@ -6897,6 +7820,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="f47ac10b58cc4372a5670e02b2c3d479",
         sdks=["php-laravel"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "messaging.message.receive.latency": AttributeMetadata(
         brief="The latency between when the message was published and received.",
@@ -6905,6 +7832,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=1732847252,
         sdks=["php-laravel"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "messaging.message.retry.count": AttributeMetadata(
         brief="The amount of attempts to send the message.",
@@ -6913,6 +7844,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=2,
         sdks=["php-laravel"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "messaging.operation.type": AttributeMetadata(
         brief="A string identifying the type of the messaging operation",
@@ -6920,6 +7855,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="create",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[51, 127]),
+        ],
     ),
     "messaging.system": AttributeMetadata(
         brief="The messaging system as identified by the client instrumentation.",
@@ -6928,6 +7866,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="activemq",
         sdks=["php-laravel"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "method": AttributeMetadata(
         brief="The HTTP method used.",
@@ -6938,6 +7880,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="http.request.method"),
         aliases=["http.request.method"],
         sdks=["javascript-browser", "javascript-node"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[61, 127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "navigation.type": AttributeMetadata(
         brief="The type of navigation done by a client-side router.",
@@ -6945,6 +7891,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="router.push",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "nel.elapsed_time": AttributeMetadata(
         brief="The elapsed number of milliseconds between the start of the resource fetch and when it was completed or aborted by the user agent.",
@@ -6952,6 +7902,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=100,
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[68]),
+        ],
     ),
     "nel.phase": AttributeMetadata(
         brief='If request failed, the phase of its network error. If request succeeded, "application".',
@@ -6959,6 +7913,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="application",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[68, 127]),
+        ],
     ),
     "nel.referrer": AttributeMetadata(
         brief="request's referrer, as determined by the referrer policy associated with its client.",
@@ -6966,6 +7923,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="https://example.com/foo?bar=baz",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[68, 127]),
+        ],
     ),
     "nel.sampling_function": AttributeMetadata(
         brief="The sampling function used to determine if the request should be sampled.",
@@ -6973,6 +7933,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=0.5,
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[68]),
+        ],
     ),
     "nel.type": AttributeMetadata(
         brief='If request failed, the type of its network error. If request succeeded, "ok".',
@@ -6980,6 +7944,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="dns.unreachable",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[68, 127]),
+        ],
     ),
     "net.host.ip": AttributeMetadata(
         brief="Local address of the network connection - IP address or Unix domain socket name.",
@@ -6989,6 +7956,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="192.168.0.1",
         deprecation=DeprecationInfo(replacement="network.local.address"),
         aliases=["network.local.address", "net.sock.host.addr"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "net.host.name": AttributeMetadata(
         brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
@@ -6998,6 +7969,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="example.com",
         deprecation=DeprecationInfo(replacement="server.address"),
         aliases=["server.address", "http.server_name", "http.host"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "net.host.port": AttributeMetadata(
         brief="Server port number.",
@@ -7007,6 +7982,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=1337,
         deprecation=DeprecationInfo(replacement="server.port"),
         aliases=["server.port"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[61]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "net.peer.ip": AttributeMetadata(
         brief="Peer address of the network connection - IP address or Unix domain socket name.",
@@ -7016,6 +7996,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="192.168.0.1",
         deprecation=DeprecationInfo(replacement="network.peer.address"),
         aliases=["network.peer.address", "net.sock.peer.addr"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "net.peer.name": AttributeMetadata(
         brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
@@ -7027,6 +8011,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             replacement="server.address",
             reason="Deprecated, use server.address on client spans and client.address on server spans.",
         ),
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[61, 127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "net.peer.port": AttributeMetadata(
         brief="Peer port number.",
@@ -7038,6 +8026,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             replacement="server.port",
             reason="Deprecated, use server.port on client spans and client.port on server spans.",
         ),
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[61]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "net.protocol.name": AttributeMetadata(
         brief="OSI application layer or non-OSI equivalent.",
@@ -7047,6 +8040,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="http",
         deprecation=DeprecationInfo(replacement="network.protocol.name"),
         aliases=["network.protocol.name"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[61, 127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "net.protocol.version": AttributeMetadata(
         brief="The actual version of the protocol used for network communication.",
@@ -7056,6 +8053,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="1.1",
         deprecation=DeprecationInfo(replacement="network.protocol.version"),
         aliases=["network.protocol.version", "http.flavor"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "net.sock.family": AttributeMetadata(
         brief="OSI transport and network layer",
@@ -7067,6 +8068,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             replacement="network.transport",
             reason="Deprecated, use network.transport and network.type.",
         ),
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[61, 127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "net.sock.host.addr": AttributeMetadata(
         brief="Local address of the network connection mapping to Unix domain socket name.",
@@ -7076,6 +8081,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="/var/my.sock",
         deprecation=DeprecationInfo(replacement="network.local.address"),
         aliases=["network.local.address", "net.host.ip"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "net.sock.host.port": AttributeMetadata(
         brief="Local port number of the network connection.",
@@ -7085,6 +8094,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=8080,
         deprecation=DeprecationInfo(replacement="network.local.port"),
         aliases=["network.local.port"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[61]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "net.sock.peer.addr": AttributeMetadata(
         brief="Peer address of the network connection - IP address",
@@ -7094,6 +8108,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="192.168.0.1",
         deprecation=DeprecationInfo(replacement="network.peer.address"),
         aliases=["network.peer.address", "net.peer.ip"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "net.sock.peer.name": AttributeMetadata(
         brief="Peer address of the network connection - Unix domain socket name",
@@ -7104,6 +8122,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             reason="Deprecated from OTEL, no replacement at this time"
         ),
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[61, 119, 127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "net.sock.peer.port": AttributeMetadata(
         brief="Peer port number of the network connection.",
@@ -7112,6 +8134,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example=8080,
         deprecation=DeprecationInfo(replacement="network.peer.port"),
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.1.0", prs=[61]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "net.transport": AttributeMetadata(
         brief="OSI transport layer or inter-process communication method.",
@@ -7121,6 +8148,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="tcp",
         deprecation=DeprecationInfo(replacement="network.transport"),
         aliases=["network.transport"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[61, 127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "network.local.address": AttributeMetadata(
         brief="Local address of the network connection - IP address or Unix domain socket name.",
@@ -7129,6 +8160,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="10.1.2.80",
         aliases=["net.host.ip", "net.sock.host.addr"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "network.local.port": AttributeMetadata(
         brief="Local port number of the network connection.",
@@ -7137,6 +8172,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example=65400,
         aliases=["net.sock.host.port"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "network.peer.address": AttributeMetadata(
         brief="Peer address of the network connection - IP address or Unix domain socket name.",
@@ -7145,6 +8184,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="10.1.2.80",
         aliases=["net.peer.ip", "net.sock.peer.addr"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[108, 127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "network.peer.port": AttributeMetadata(
         brief="Peer port number of the network connection.",
@@ -7152,6 +8195,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example=65400,
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "network.protocol.name": AttributeMetadata(
         brief="OSI application layer or non-OSI equivalent.",
@@ -7160,6 +8207,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="http",
         aliases=["net.protocol.name"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "network.protocol.version": AttributeMetadata(
         brief="The actual version of the protocol used for network communication.",
@@ -7168,6 +8219,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="1.1",
         aliases=["http.flavor", "net.protocol.version"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "network.transport": AttributeMetadata(
         brief="OSI transport layer or inter-process communication method.",
@@ -7176,6 +8231,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="tcp",
         aliases=["net.transport"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "network.type": AttributeMetadata(
         brief="OSI network layer or non-OSI equivalent.",
@@ -7183,6 +8242,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="ipv4",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "os.build_id": AttributeMetadata(
         brief="The build ID of the operating system.",
@@ -7190,6 +8253,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="1234567890",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "os.description": AttributeMetadata(
         brief="Human readable (not intended to be parsed) OS version information, like e.g. reported by ver or lsb_release -a commands.",
@@ -7197,6 +8264,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="Ubuntu 18.04.1 LTS",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "os.name": AttributeMetadata(
         brief="Human readable operating system name.",
@@ -7204,6 +8275,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="Ubuntu",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "os.type": AttributeMetadata(
         brief="The operating system type.",
@@ -7211,6 +8286,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="linux",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "os.version": AttributeMetadata(
         brief="The version of the operating system.",
@@ -7218,6 +8297,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="18.04.2",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "otel.scope.name": AttributeMetadata(
         brief="The name of the instrumentation scope - (InstrumentationScope.Name in OTLP).",
@@ -7225,6 +8308,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="io.opentelemetry.contrib.mongodb",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "otel.scope.version": AttributeMetadata(
         brief="The version of the instrumentation scope - (InstrumentationScope.Version in OTLP).",
@@ -7232,6 +8319,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="2.4.5",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "otel.status_code": AttributeMetadata(
         brief="Name of the code, either “OK” or “ERROR”. MUST NOT be set if the status code is UNSET.",
@@ -7239,6 +8330,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="OK",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "otel.status_description": AttributeMetadata(
         brief="Description of the Status if it has a value, otherwise not set.",
@@ -7246,6 +8341,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="resource not found",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "params.<key>": AttributeMetadata(
         brief="Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.",
@@ -7255,6 +8354,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         has_dynamic_suffix=True,
         example="params.id='123'",
         aliases=["url.path.parameter.<key>"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[103]),
+        ],
     ),
     "previous_route": AttributeMetadata(
         brief="Also used by mobile SDKs to indicate the previous route in the application.",
@@ -7263,6 +8365,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="HomeScreen",
         sdks=["javascript-reactnative"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[74]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "process.executable.name": AttributeMetadata(
         brief="The name of the executable that started the process.",
@@ -7270,6 +8376,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="getsentry",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "process.pid": AttributeMetadata(
         brief="The process ID of the running process.",
@@ -7277,6 +8387,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example=12345,
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "process.runtime.description": AttributeMetadata(
         brief="An additional description about the runtime of the process, for example a specific vendor customization of the runtime environment. Equivalent to `raw_description` in the Sentry runtime context.",
@@ -7284,6 +8398,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="Eclipse OpenJ9 VM openj9-0.21.0",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "process.runtime.name": AttributeMetadata(
         brief="The name of the runtime. Equivalent to `name` in the Sentry runtime context.",
@@ -7291,6 +8409,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="node",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "process.runtime.version": AttributeMetadata(
         brief="The version of the runtime of this process, as returned by the runtime without modification. Equivalent to `version` in the Sentry runtime context.",
@@ -7298,6 +8420,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="18.04.2",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "query.<key>": AttributeMetadata(
         brief="An item in a query string. Usually added by client-side routing frameworks like vue-router.",
@@ -7310,6 +8436,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             replacement="url.query",
             reason="Instead of sending items individually in query.<key>, they should be sent all together with url.query.",
         ),
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[103]),
+        ],
     ),
     "release": AttributeMetadata(
         brief="The sentry release.",
@@ -7319,6 +8448,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="production",
         deprecation=DeprecationInfo(replacement="sentry.release"),
         aliases=["sentry.release"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[61, 127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "remix.action_form_data.<key>": AttributeMetadata(
         brief="Remix form data, <key> being the form data key, the value being the form data value.",
@@ -7328,6 +8461,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         has_dynamic_suffix=True,
         example="http.response.header.text='test'",
         sdks=["javascript-remix"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[103]),
+        ],
     ),
     "replay_id": AttributeMetadata(
         brief="The id of the sentry replay.",
@@ -7337,6 +8473,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="123e4567e89b12d3a456426614174000",
         deprecation=DeprecationInfo(replacement="sentry.replay_id"),
         aliases=["sentry.replay_id"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[61]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "resource.deployment.environment.name": AttributeMetadata(
         brief="The software deployment environment name.",
@@ -7347,6 +8487,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="sentry.environment", status=DeprecationStatus.BACKFILL
         ),
+        changelog=[
+            ChangelogEntry(version="0.3.1", prs=[196]),
+        ],
     ),
     "resource.render_blocking_status": AttributeMetadata(
         brief="The render blocking status of the resource.",
@@ -7355,6 +8498,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="non-blocking",
         sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "route": AttributeMetadata(
         brief="The matched route, that is, the path template in the format used by the respective server framework. Also used by mobile SDKs to indicate the current route in the application.",
@@ -7365,6 +8512,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="http.route"),
         aliases=["http.route"],
         sdks=["php-laravel", "javascript-reactnative"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[61, 74]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "rpc.grpc.status_code": AttributeMetadata(
         brief="The numeric status code of the gRPC request.",
@@ -7372,6 +8523,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example=2,
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "rpc.service": AttributeMetadata(
         brief="The full (logical) name of the service being called, including its package name, if applicable.",
@@ -7379,6 +8534,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="myService.BestService",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "sentry.action": AttributeMetadata(
         brief="Used as a generic attribute representing the action depending on the type of span. For instance, this is the database query operation for DB spans, and the request method for HTTP spans.",
@@ -7386,6 +8545,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="SELECT",
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[212]),
+        ],
     ),
     "sentry.browser.name": AttributeMetadata(
         brief="The name of the browser.",
@@ -7395,6 +8557,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="Chrome",
         deprecation=DeprecationInfo(replacement="browser.name"),
         aliases=["browser.name"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[139]),
+        ],
     ),
     "sentry.browser.version": AttributeMetadata(
         brief="The version of the browser.",
@@ -7404,6 +8569,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="120.0.6099.130",
         deprecation=DeprecationInfo(replacement="browser.version"),
         aliases=["browser.version"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[139]),
+        ],
     ),
     "sentry.cancellation_reason": AttributeMetadata(
         brief="The reason why a span ended early.",
@@ -7411,6 +8579,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="document.hidden",
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "sentry.category": AttributeMetadata(
         brief="The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI). Known values include: 'ai', 'ai.pipeline', 'app', 'browser', 'cache', 'console', 'db', 'event', 'file', 'function.aws', 'function.azure', 'function.gcp', 'function.nextjs', 'function.remix', 'graphql', 'grpc', 'http', 'measure', 'middleware', 'navigation', 'pageload', 'queue', 'resource', 'rpc', 'serialize', 'subprocess', 'template', 'topic', 'ui', 'ui.angular', 'ui.ember', 'ui.react', 'ui.svelte', 'ui.vue', 'view', 'websocket'.",
@@ -7418,6 +8589,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="db",
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[218]),
+        ],
     ),
     "sentry.client_sample_rate": AttributeMetadata(
         brief="Rate at which a span was sampled in the SDK.",
@@ -7425,6 +8599,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=0.5,
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[102]),
+        ],
     ),
     "sentry.description": AttributeMetadata(
         brief="The human-readable description of a span.",
@@ -7432,6 +8609,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="index view query",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[135]),
+        ],
     ),
     "sentry.dist": AttributeMetadata(
         brief="The sentry dist.",
@@ -7439,6 +8619,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="1.0",
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "sentry.domain": AttributeMetadata(
         brief="Used as a generic attribute representing the domain depending on the type of span. For instance, this is the collection/table name for database spans, and the server address for HTTP spans.",
@@ -7446,6 +8629,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="example.com",
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[212]),
+        ],
     ),
     "sentry.dsc.environment": AttributeMetadata(
         brief="The environment from the dynamic sampling context.",
@@ -7453,6 +8639,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="prod",
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[185]),
+        ],
     ),
     "sentry.dsc.public_key": AttributeMetadata(
         brief="The public key from the dynamic sampling context.",
@@ -7460,6 +8649,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="c51734c603c4430eb57cb0a5728a479d",
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[185]),
+        ],
     ),
     "sentry.dsc.release": AttributeMetadata(
         brief="The release identifier from the dynamic sampling context.",
@@ -7467,6 +8659,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="frontend@e8211be71b214afab5b85de4b4c54be3714952bb",
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[185]),
+        ],
     ),
     "sentry.dsc.sample_rate": AttributeMetadata(
         brief="The sample rate from the dynamic sampling context.",
@@ -7474,6 +8669,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="1.0",
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[185]),
+        ],
     ),
     "sentry.dsc.sampled": AttributeMetadata(
         brief="Whether the event was sampled according to the dynamic sampling context.",
@@ -7481,6 +8679,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=True,
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[185]),
+        ],
     ),
     "sentry.dsc.trace_id": AttributeMetadata(
         brief="The trace ID from the dynamic sampling context.",
@@ -7488,6 +8689,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="047372980460430cbc78d9779df33a46",
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[185]),
+        ],
     ),
     "sentry.dsc.transaction": AttributeMetadata(
         brief="The transaction name from the dynamic sampling context.",
@@ -7495,6 +8699,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="/issues/errors-outages/",
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[185]),
+        ],
     ),
     "sentry.environment": AttributeMetadata(
         brief="The sentry environment.",
@@ -7503,6 +8710,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="production",
         aliases=["environment"],
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "sentry.exclusive_time": AttributeMetadata(
         brief="The exclusive time duration of the span in milliseconds.",
@@ -7510,6 +8720,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1234,
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.3.0", prs=[160]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "sentry.graphql.operation": AttributeMetadata(
         brief="Indicates the type of graphql operation, emitted by the Javascript SDK.",
@@ -7517,12 +8732,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="getUserById",
+        changelog=[
+            ChangelogEntry(version="0.3.1", prs=[190]),
+        ],
     ),
     "sentry.group": AttributeMetadata(
         brief="Stores the hash of `sentry.normalized_description`. This is primarily used for grouping spans in the product end.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[212]),
+        ],
     ),
     "sentry.http.prefetch": AttributeMetadata(
         brief="If an http request was a prefetch request.",
@@ -7530,6 +8751,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=True,
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "sentry.idle_span_finish_reason": AttributeMetadata(
         brief="The reason why an idle span ended early.",
@@ -7537,6 +8761,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="idleTimeout",
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "sentry.is_remote": AttributeMetadata(
         brief="Indicates whether a span's parent is remote.",
@@ -7544,6 +8771,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=True,
+        changelog=[
+            ChangelogEntry(version="0.3.1", prs=[190]),
+        ],
     ),
     "sentry.kind": AttributeMetadata(
         brief="Used to clarify the relationship between parents and children, or to distinguish between spans, e.g. a `server` and `client` span with the same name.",
@@ -7551,6 +8781,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="server",
+        changelog=[
+            ChangelogEntry(version="0.3.1", prs=[190]),
+        ],
     ),
     "sentry.message.parameter.<key>": AttributeMetadata(
         brief="A parameter used in the message template. <key> can either be the number that represent the parameter's position in the template string (sentry.message.parameter.0, sentry.message.parameter.1, etc) or the parameter's name (sentry.message.parameter.item_id, sentry.message.parameter.user_id, etc)",
@@ -7558,6 +8791,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="sentry.message.parameter.0='123'",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[116]),
+        ],
     ),
     "sentry.message.template": AttributeMetadata(
         brief="The parameterized template string.",
@@ -7565,6 +8801,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="Hello, {name}!",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[116]),
+        ],
     ),
     "sentry.module.<key>": AttributeMetadata(
         brief="A module that was loaded in the process. The key is the name of the module.",
@@ -7573,6 +8812,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         has_dynamic_suffix=True,
         example="sentry.module.brianium/paratest='v7.7.0'",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[103]),
+        ],
     ),
     "sentry.nextjs.ssr.function.route": AttributeMetadata(
         brief="A parameterized route for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions when the file location of the function is known.",
@@ -7581,6 +8823,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="/posts/[id]/layout",
         sdks=["javascript"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[54, 106]),
+        ],
     ),
     "sentry.nextjs.ssr.function.type": AttributeMetadata(
         brief="A descriptor for a for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions.",
@@ -7589,6 +8834,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="generateMetadata",
         sdks=["javascript"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[54, 106]),
+        ],
     ),
     "sentry.normalized_db_query": AttributeMetadata(
         brief="The normalized version of `db.query.text`.",
@@ -7596,12 +8844,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="SELECT .. FROM sentry_project WHERE (project_id = %s)",
+        changelog=[
+            ChangelogEntry(version="0.3.1", prs=[194]),
+        ],
     ),
     "sentry.normalized_db_query.hash": AttributeMetadata(
         brief="The hash of `sentry.normalized_db_query`.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[200]),
+        ],
     ),
     "sentry.normalized_description": AttributeMetadata(
         brief="Used as a generic attribute representing the normalized `sentry.description`. This refers to the legacy use case of `sentry.description` where it holds relevant data depending on the type of span (e.g. database query, resource url, http request description, etc).",
@@ -7609,6 +8863,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="SELECT .. FROM sentry_project WHERE (project_id = %s)",
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[212]),
+        ],
     ),
     "sentry.observed_timestamp_nanos": AttributeMetadata(
         brief="The timestamp at which an envelope was received by Relay, in nanoseconds.",
@@ -7616,6 +8873,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="1544712660300000000",
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[174]),
+            ChangelogEntry(version="0.2.0", prs=[137]),
+        ],
     ),
     "sentry.op": AttributeMetadata(
         brief="The operation of a span.",
@@ -7623,6 +8884,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="http.client",
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "sentry.origin": AttributeMetadata(
         brief="The origin of the instrumentation (e.g. span, log, etc.)",
@@ -7630,6 +8894,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="auto.http.otel.fastify",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[68]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "sentry.platform": AttributeMetadata(
         brief="The sdk platform that generated the event.",
@@ -7637,6 +8905,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="php",
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "sentry.profiler_id": AttributeMetadata(
         brief="The id of the currently running profiler (continuous profiling)",
@@ -7644,6 +8915,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="18779b64dd35d1a538e7ce2dd2d3fad3",
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[242]),
+        ],
     ),
     "sentry.release": AttributeMetadata(
         brief="The sentry release.",
@@ -7652,6 +8926,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="7.0.0",
         aliases=["service.version", "release"],
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "sentry.replay_id": AttributeMetadata(
         brief="The id of the sentry replay.",
@@ -7660,6 +8937,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="123e4567e89b12d3a456426614174000",
         aliases=["replay_id"],
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "sentry.replay_is_buffering": AttributeMetadata(
         brief="A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate).",
@@ -7667,6 +8947,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=True,
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[185]),
+        ],
     ),
     "sentry.sdk.integrations": AttributeMetadata(
         brief="A list of names identifying enabled integrations. The list shouldhave all enabled integrations, including default integrations. Defaultintegrations are included because different SDK releases may contain differentdefault integrations.",
@@ -7679,6 +8962,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "BrowserApiErrors",
             "Breadcrumbs",
         ],
+        changelog=[
+            ChangelogEntry(version="0.0.0", prs=[42]),
+        ],
     ),
     "sentry.sdk.name": AttributeMetadata(
         brief="The sentry sdk name.",
@@ -7686,6 +8972,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="@sentry/react",
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "sentry.sdk.version": AttributeMetadata(
         brief="The sentry sdk version.",
@@ -7693,6 +8982,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="7.0.0",
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "sentry.segment.id": AttributeMetadata(
         brief="The segment ID of a span",
@@ -7701,6 +8993,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="051581bf3cb55c13",
         aliases=["sentry.segment_id"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[107, 124]),
+        ],
     ),
     "sentry.segment.name": AttributeMetadata(
         brief="The segment name of a span",
@@ -7708,6 +9003,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="GET /user",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[104]),
+        ],
     ),
     "sentry.segment_id": AttributeMetadata(
         brief="The segment ID of a span",
@@ -7717,6 +9015,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="051581bf3cb55c13",
         deprecation=DeprecationInfo(replacement="sentry.segment.id"),
         aliases=["sentry.segment.id"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[124]),
+        ],
     ),
     "sentry.server_sample_rate": AttributeMetadata(
         brief="Rate at which a span was sampled in Relay.",
@@ -7724,6 +9025,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=0.5,
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[102]),
+        ],
     ),
     "sentry.span.source": AttributeMetadata(
         brief="The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.",
@@ -7731,6 +9035,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="route",
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[214]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "sentry.status.message": AttributeMetadata(
         brief="The from OTLP extracted status message.",
@@ -7738,6 +9046,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="foobar",
+        changelog=[
+            ChangelogEntry(version="0.3.1", prs=[190]),
+        ],
     ),
     "sentry.status_code": AttributeMetadata(
         brief="The HTTP status code used in Sentry Insights. Typically set by Sentry during ingestion, rather than by clients.",
@@ -7745,6 +9056,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=200,
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[223, 228]),
+        ],
     ),
     "sentry.trace.parent_span_id": AttributeMetadata(
         brief="The span id of the span that was active when the log was collected. This should not be set if there was no active span.",
@@ -7752,6 +9066,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="b0e6f15b45c36b12",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[116]),
+        ],
     ),
     "sentry.transaction": AttributeMetadata(
         brief="The sentry transaction (segment name).",
@@ -7760,6 +9077,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="GET /",
         aliases=["transaction"],
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "server.address": AttributeMetadata(
         brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
@@ -7768,6 +9088,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="example.com",
         aliases=["http.server_name", "net.host.name", "http.host"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[108, 127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "server.port": AttributeMetadata(
         brief="Server port number.",
@@ -7776,6 +9100,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example=1337,
         aliases=["net.host.port"],
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "service.name": AttributeMetadata(
         brief="Logical name of the service.",
@@ -7783,6 +9111,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="omegastar",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "service.version": AttributeMetadata(
         brief="The version string of the service API or implementation. The format is not defined by these conventions.",
@@ -7791,6 +9123,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="5.0.0",
         aliases=["sentry.release"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "thread.id": AttributeMetadata(
         brief="Current “managed” thread ID.",
@@ -7798,6 +9134,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
         example=56,
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "thread.name": AttributeMetadata(
         brief="Current thread name.",
@@ -7805,6 +9144,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="main",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "timber.tag": AttributeMetadata(
         brief="The log tag provided by the timber logging framework.",
@@ -7813,6 +9156,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="MyTag",
         sdks=["sentry.java.android"],
+        changelog=[
+            ChangelogEntry(version="0.3.0", prs=[183]),
+        ],
     ),
     "transaction": AttributeMetadata(
         brief="The sentry transaction (segment name).",
@@ -7822,6 +9168,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="GET /",
         deprecation=DeprecationInfo(replacement="sentry.transaction"),
         aliases=["sentry.transaction"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[61, 127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "type": AttributeMetadata(
         brief="More granular type of the operation happening.",
@@ -7830,6 +9180,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="fetch",
         sdks=["javascript-browser", "javascript-node"],
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "ui.component_name": AttributeMetadata(
         brief="The name of the associated component.",
@@ -7837,6 +9190,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="HomeButton",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "ui.contributes_to_ttfd": AttributeMetadata(
         brief="Whether the span execution contributed to the TTFD (time to fully drawn) metric.",
@@ -7844,6 +9201,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=True,
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "ui.contributes_to_ttid": AttributeMetadata(
         brief="Whether the span execution contributed to the TTID (time to initial display) metric.",
@@ -7851,6 +9211,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=True,
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "url.domain": AttributeMetadata(
         brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
@@ -7858,6 +9221,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="example.com",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "url.fragment": AttributeMetadata(
         brief="The fragments present in the URI. Note that this does not contain the leading # character, while the `http.fragment` attribute does.",
@@ -7865,6 +9232,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="details",
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "url.full": AttributeMetadata(
         brief="The URL of the resource that was fetched.",
@@ -7873,6 +9243,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="https://example.com/test?foo=bar#buzz",
         aliases=["http.url", "url"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[108]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "url.path": AttributeMetadata(
         brief="The URI path component.",
@@ -7880,6 +9254,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="/foo",
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "url.path.parameter.<key>": AttributeMetadata(
         brief="Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.",
@@ -7889,6 +9266,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         has_dynamic_suffix=True,
         example="url.path.parameter.id='123'",
         aliases=["params.<key>"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[103]),
+        ],
     ),
     "url.port": AttributeMetadata(
         brief="Server port number.",
@@ -7896,6 +9276,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example=1337,
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "url.query": AttributeMetadata(
         brief="The query string present in the URL. Note that this does not contain the leading ? character, while the `http.query` attribute does.",
@@ -7906,6 +9290,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         is_in_otel=True,
         example="foo=bar&bar=baz",
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "url.scheme": AttributeMetadata(
         brief="The URI scheme component identifying the used protocol.",
@@ -7914,6 +9301,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="https",
         aliases=["http.scheme"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "url.template": AttributeMetadata(
         brief="The low-cardinality template of an absolute path reference.",
@@ -7922,6 +9313,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="/users/:id",
         aliases=["http.route"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "url": AttributeMetadata(
         brief="The URL of the resource that was fetched.",
@@ -7932,6 +9327,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="url.full"),
         aliases=["url.full", "http.url"],
         sdks=["javascript-browser", "javascript-node"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[61]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "user.email": AttributeMetadata(
         brief="User email address.",
@@ -7939,6 +9338,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         example="test@example.com",
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "user.full_name": AttributeMetadata(
         brief="User's full name.",
@@ -7946,6 +9348,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         example="John Smith",
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "user.geo.city": AttributeMetadata(
         brief="Human readable city name.",
@@ -7953,6 +9358,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="Toronto",
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "user.geo.country_code": AttributeMetadata(
         brief="Two-letter country code (ISO 3166-1 alpha-2).",
@@ -7960,6 +9368,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="CA",
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "user.geo.region": AttributeMetadata(
         brief="Human readable region name or code.",
@@ -7967,6 +9378,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="Canada",
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "user.geo.subdivision": AttributeMetadata(
         brief="Human readable subdivision name.",
@@ -7974,6 +9388,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="Ontario",
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "user.hash": AttributeMetadata(
         brief="Unique user hash to correlate information for a user in anonymized form.",
@@ -7981,6 +9398,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         example="8ae4c2993e0f4f3b8b2d1b1f3b5e8f4d",
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "user.id": AttributeMetadata(
         brief="Unique identifier of the user.",
@@ -7988,6 +9408,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         example="S-1-5-21-202424912787-2692429404-2351956786-1000",
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "user.ip_address": AttributeMetadata(
         brief="The IP address of the user.",
@@ -7995,6 +9418,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         example="192.168.1.1",
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[75]),
+        ],
     ),
     "user.name": AttributeMetadata(
         brief="Short name or login/username of the user.",
@@ -8002,6 +9428,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         example="j.smith",
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "user.roles": AttributeMetadata(
         brief="Array of user roles at the time of the event.",
@@ -8009,6 +9438,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         example=["admin", "editor"],
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "user_agent.original": AttributeMetadata(
         brief="Value of the HTTP User-Agent header sent by the client.",
@@ -8017,6 +9449,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1",
         aliases=["http.user_agent"],
+        changelog=[
+            ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
     ),
     "vercel.branch": AttributeMetadata(
         brief="Git branch name for Vercel project",
@@ -8024,6 +9460,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="main",
+        changelog=[
+            ChangelogEntry(version="0.2.0", prs=[163]),
+        ],
     ),
     "vercel.build_id": AttributeMetadata(
         brief="Identifier for the Vercel build (only present on build logs)",
@@ -8031,6 +9470,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="bld_cotnkcr76",
+        changelog=[
+            ChangelogEntry(version="0.2.0", prs=[163]),
+        ],
     ),
     "vercel.deployment_id": AttributeMetadata(
         brief="Identifier for the Vercel deployment",
@@ -8038,6 +9480,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="dpl_233NRGRjVZX1caZrXWtz5g1TAksD",
+        changelog=[
+            ChangelogEntry(version="0.2.0", prs=[163]),
+        ],
     ),
     "vercel.destination": AttributeMetadata(
         brief="Origin of the external content in Vercel (only on external logs)",
@@ -8045,6 +9490,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="https://vitals.vercel-insights.com/v1",
+        changelog=[
+            ChangelogEntry(version="0.2.0", prs=[163]),
+        ],
     ),
     "vercel.edge_type": AttributeMetadata(
         brief="Type of edge runtime in Vercel",
@@ -8052,6 +9500,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="edge-function",
+        changelog=[
+            ChangelogEntry(version="0.2.0", prs=[163]),
+        ],
     ),
     "vercel.entrypoint": AttributeMetadata(
         brief="Entrypoint for the request in Vercel",
@@ -8059,6 +9510,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="api/index.js",
+        changelog=[
+            ChangelogEntry(version="0.2.0", prs=[163]),
+        ],
     ),
     "vercel.execution_region": AttributeMetadata(
         brief="Region where the request is executed",
@@ -8066,6 +9520,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="sfo1",
+        changelog=[
+            ChangelogEntry(version="0.2.0", prs=[163]),
+        ],
     ),
     "vercel.id": AttributeMetadata(
         brief="Unique identifier for the log entry in Vercel",
@@ -8073,6 +9530,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="1573817187330377061717300000",
+        changelog=[
+            ChangelogEntry(version="0.2.0", prs=[163]),
+        ],
     ),
     "vercel.ja3_digest": AttributeMetadata(
         brief="JA3 fingerprint digest of Vercel request",
@@ -8080,6 +9540,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="769,47-53-5-10-49161-49162-49171-49172-50-56-19-4,0-10-11,23-24-25,0",
+        changelog=[
+            ChangelogEntry(version="0.2.0", prs=[163]),
+        ],
     ),
     "vercel.ja4_digest": AttributeMetadata(
         brief="JA4 fingerprint digest",
@@ -8087,6 +9550,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="t13d1516h2_8daaf6152771_02713d6af862",
+        changelog=[
+            ChangelogEntry(version="0.2.0", prs=[163]),
+        ],
     ),
     "vercel.log_type": AttributeMetadata(
         brief="Vercel log output type",
@@ -8094,6 +9560,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="stdout",
+        changelog=[
+            ChangelogEntry(version="0.2.0", prs=[163]),
+        ],
     ),
     "vercel.project_id": AttributeMetadata(
         brief="Identifier for the Vercel project",
@@ -8101,6 +9570,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="gdufoJxB6b9b1fEqr1jUtFkyavUU",
+        changelog=[
+            ChangelogEntry(version="0.2.0", prs=[163]),
+        ],
     ),
     "vercel.project_name": AttributeMetadata(
         brief="Name of the Vercel project",
@@ -8108,6 +9580,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="my-app",
+        changelog=[
+            ChangelogEntry(version="0.2.0", prs=[163]),
+        ],
     ),
     "vercel.proxy.cache_id": AttributeMetadata(
         brief="Original request ID when request is served from cache",
@@ -8115,6 +9590,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="pdx1::v8g4b-1744143786684-93dafbc0f70d",
+        changelog=[
+            ChangelogEntry(version="0.2.0", prs=[163]),
+        ],
     ),
     "vercel.proxy.client_ip": AttributeMetadata(
         brief="Client IP address",
@@ -8122,6 +9600,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         example="120.75.16.101",
+        changelog=[
+            ChangelogEntry(version="0.2.0", prs=[163]),
+        ],
     ),
     "vercel.proxy.host": AttributeMetadata(
         brief="Hostname of the request",
@@ -8129,6 +9610,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="test.vercel.app",
+        changelog=[
+            ChangelogEntry(version="0.2.0", prs=[163]),
+        ],
     ),
     "vercel.proxy.lambda_region": AttributeMetadata(
         brief="Region where lambda function executed",
@@ -8136,6 +9620,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="sfo1",
+        changelog=[
+            ChangelogEntry(version="0.2.0", prs=[163]),
+        ],
     ),
     "vercel.proxy.method": AttributeMetadata(
         brief="HTTP method of the request",
@@ -8143,6 +9630,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="GET",
+        changelog=[
+            ChangelogEntry(version="0.2.0", prs=[163]),
+        ],
     ),
     "vercel.proxy.path": AttributeMetadata(
         brief="Request path with query parameters",
@@ -8150,6 +9640,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="/dynamic/some-value.json?route=some-value",
+        changelog=[
+            ChangelogEntry(version="0.2.0", prs=[163]),
+        ],
     ),
     "vercel.proxy.path_type": AttributeMetadata(
         brief="How the request was served based on its path and project configuration",
@@ -8157,6 +9650,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="func",
+        changelog=[
+            ChangelogEntry(version="0.2.0", prs=[163]),
+        ],
     ),
     "vercel.proxy.path_type_variant": AttributeMetadata(
         brief="Variant of the path type",
@@ -8164,6 +9660,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="api",
+        changelog=[
+            ChangelogEntry(version="0.2.0", prs=[163]),
+        ],
     ),
     "vercel.proxy.referer": AttributeMetadata(
         brief="Referer of the request",
@@ -8171,6 +9670,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="*.vercel.app",
+        changelog=[
+            ChangelogEntry(version="0.2.0", prs=[163]),
+        ],
     ),
     "vercel.proxy.region": AttributeMetadata(
         brief="Region where the request is processed",
@@ -8178,6 +9680,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="sfo1",
+        changelog=[
+            ChangelogEntry(version="0.2.0", prs=[163]),
+        ],
     ),
     "vercel.proxy.response_byte_size": AttributeMetadata(
         brief="Size of the response in bytes",
@@ -8185,6 +9690,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1024,
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.2.0", prs=[163]),
+        ],
     ),
     "vercel.proxy.scheme": AttributeMetadata(
         brief="Protocol of the request",
@@ -8192,6 +9701,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="https",
+        changelog=[
+            ChangelogEntry(version="0.2.0", prs=[163]),
+        ],
     ),
     "vercel.proxy.status_code": AttributeMetadata(
         brief="HTTP status code of the proxy request",
@@ -8199,6 +9711,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=200,
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.2.0", prs=[163]),
+        ],
     ),
     "vercel.proxy.timestamp": AttributeMetadata(
         brief="Unix timestamp when the proxy request was made",
@@ -8206,6 +9722,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1573817250172,
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.2.0", prs=[163]),
+        ],
     ),
     "vercel.proxy.user_agent": AttributeMetadata(
         brief="User agent strings of the request",
@@ -8213,6 +9733,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=["Mozilla/5.0..."],
+        changelog=[
+            ChangelogEntry(version="0.2.0", prs=[163]),
+        ],
     ),
     "vercel.proxy.vercel_cache": AttributeMetadata(
         brief="Cache status sent to the browser",
@@ -8220,6 +9743,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="REVALIDATED",
+        changelog=[
+            ChangelogEntry(version="0.2.0", prs=[163]),
+        ],
     ),
     "vercel.proxy.vercel_id": AttributeMetadata(
         brief="Vercel-specific identifier",
@@ -8227,6 +9753,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="sfo1::abc123",
+        changelog=[
+            ChangelogEntry(version="0.2.0", prs=[163]),
+        ],
     ),
     "vercel.proxy.waf_action": AttributeMetadata(
         brief="Action taken by firewall rules",
@@ -8234,6 +9763,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="deny",
+        changelog=[
+            ChangelogEntry(version="0.2.0", prs=[163]),
+        ],
     ),
     "vercel.proxy.waf_rule_id": AttributeMetadata(
         brief="ID of the firewall rule that matched",
@@ -8241,6 +9773,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="rule_gAHz8jtSB1Gy",
+        changelog=[
+            ChangelogEntry(version="0.2.0", prs=[163]),
+        ],
     ),
     "vercel.request_id": AttributeMetadata(
         brief="Identifier of the Vercel request",
@@ -8248,6 +9783,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="643af4e3-975a-4cc7-9e7a-1eda11539d90",
+        changelog=[
+            ChangelogEntry(version="0.2.0", prs=[163]),
+        ],
     ),
     "vercel.source": AttributeMetadata(
         brief="Origin of the Vercel log (build, edge, lambda, static, external, or firewall)",
@@ -8255,6 +9793,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="build",
+        changelog=[
+            ChangelogEntry(version="0.2.0", prs=[163]),
+        ],
     ),
     "vercel.status_code": AttributeMetadata(
         brief="HTTP status code of the request (-1 means no response returned and the lambda crashed)",
@@ -8262,6 +9803,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=200,
+        changelog=[
+            ChangelogEntry(version="0.4.0", prs=[228]),
+            ChangelogEntry(version="0.2.0", prs=[163]),
+        ],
     ),
 }
 

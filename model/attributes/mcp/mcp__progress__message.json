@@ -7,5 +7,13 @@
     "reason": "Progress messages may contain user-specific or sensitive information"
   },
   "is_in_otel": false,
-  "example": "Processing 50 of 100 items"
+  "example": "Processing 50 of 100 items",
+  "changelog": [
+    {
+      "version": "0.3.0",
+      "prs": [
+        171
+      ]
+    }
+  ]
 }

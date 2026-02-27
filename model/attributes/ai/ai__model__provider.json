@@ -11,5 +11,25 @@
     "_status": null,
     "replacement": "gen_ai.provider.name"
   },
-  "alias": ["gen_ai.provider.name", "gen_ai.system"]
+  "alias": [
+    "gen_ai.provider.name",
+    "gen_ai.system"
+  ],
+  "changelog": [
+    {
+      "version": "0.4.0",
+      "prs": [
+        253
+      ]
+    },
+    {
+      "version": "0.1.0",
+      "prs": [
+        57,
+        61,
+        108,
+        127
+      ]
+    }
+  ]
 }

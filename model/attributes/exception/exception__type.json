@@ -6,5 +6,16 @@
     "key": "maybe"
   },
   "is_in_otel": true,
-  "example": "OSError"
+  "example": "OSError",
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [
+        127
+      ]
+    },
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

@@ -6,8 +6,18 @@
     "key": "true"
   },
   "is_in_otel": false,
-  "example": ["search_result_1, search_result_2"],
+  "example": [
+    "search_result_1, search_result_2"
+  ],
   "deprecation": {
     "_status": null
-  }
+  },
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [
+        55
+      ]
+    }
+  ]
 }

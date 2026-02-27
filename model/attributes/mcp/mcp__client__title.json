@@ -7,5 +7,13 @@
     "reason": "Client titles may reveal user-specific application configurations or custom setups"
   },
   "is_in_otel": false,
-  "example": "Claude Desktop"
+  "example": "Claude Desktop",
+  "changelog": [
+    {
+      "version": "0.3.0",
+      "prs": [
+        171
+      ]
+    }
+  ]
 }

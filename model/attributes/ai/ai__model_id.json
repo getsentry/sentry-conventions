@@ -7,10 +7,27 @@
   },
   "is_in_otel": false,
   "example": "gpt-4",
-  "alias": ["gen_ai.response.model"],
-  "sdks": ["python"],
+  "alias": [
+    "gen_ai.response.model"
+  ],
+  "sdks": [
+    "python"
+  ],
   "deprecation": {
     "_status": null,
     "replacement": "gen_ai.response.model"
-  }
+  },
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [
+        57,
+        61,
+        127
+      ]
+    },
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

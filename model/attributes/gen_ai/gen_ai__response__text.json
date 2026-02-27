@@ -11,5 +11,20 @@
   "deprecation": {
     "_status": null,
     "replacement": "gen_ai.output.messages"
-  }
+  },
+  "changelog": [
+    {
+      "version": "0.4.0",
+      "prs": [
+        221
+      ]
+    },
+    {
+      "version": "0.1.0",
+      "prs": [
+        63,
+        74
+      ]
+    }
+  ]
 }

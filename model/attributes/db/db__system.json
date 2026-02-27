@@ -11,5 +11,26 @@
     "_status": "backfill",
     "replacement": "db.system.name"
   },
-  "alias": ["db.system.name"]
+  "alias": [
+    "db.system.name"
+  ],
+  "changelog": [
+    {
+      "version": "0.4.0",
+      "prs": [
+        199,
+        224
+      ]
+    },
+    {
+      "version": "0.1.0",
+      "prs": [
+        61,
+        127
+      ]
+    },
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

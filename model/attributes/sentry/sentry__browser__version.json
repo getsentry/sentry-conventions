@@ -11,5 +11,15 @@
     "_status": null,
     "replacement": "browser.version"
   },
-  "alias": ["browser.version"]
+  "alias": [
+    "browser.version"
+  ],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [
+        139
+      ]
+    }
+  ]
 }

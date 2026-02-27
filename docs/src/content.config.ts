@@ -24,6 +24,15 @@ const attributeSchema = z.object({
     .optional(),
   alias: z.array(z.string()).optional(),
   sdks: z.array(z.string()).optional(),
+  changelog: z
+    .array(
+      z.object({
+        version: z.string(),
+        prs: z.array(z.number().int().positive()).optional(),
+        description: z.string().optional(),
+      }),
+    )
+    .optional(),
 });
 
 // Schema matching schemas/name.schema.json

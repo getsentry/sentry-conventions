@@ -6,5 +6,13 @@
     "key": "maybe"
   },
   "is_in_otel": false,
-  "example": "getUserById"
+  "example": "getUserById",
+  "changelog": [
+    {
+      "version": "0.3.1",
+      "prs": [
+        190
+      ]
+    }
+  ]
 }

@@ -314,6 +314,18 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
   content += '    status: Optional[DeprecationStatus] = None\n\n';
 
   content += '@dataclass\n';
+  content += 'class ChangelogEntry:\n';
+  content += '    """A changelog entry tracking a change to an attribute."""\n\n';
+  content += '    version: str\n';
+  content += '    """The sentry-conventions release version"""\n';
+  content += '    \n';
+  content += '    prs: Optional[List[int]] = None\n';
+  content += '    """GitHub PR numbers"""\n';
+  content += '    \n';
+  content += '    description: Optional[str] = None\n';
+  content += '    """Optional description of what changed"""\n\n';
+
+  content += '@dataclass\n';
   content += 'class AttributeMetadata:\n';
   content += '    """The metadata for an attribute."""\n\n';
   content += '    brief: str\n';
@@ -344,7 +356,10 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
   content += '    \n';
   content += '    sdks: Optional[List[str]] = None\n';
   content +=
-    '    """If an attribute is SDK specific, list the SDKs that use this attribute. This is not an exhaustive list, there might be SDKs that send this attribute that are is not documented here."""\n\n';
+    '    """If an attribute is SDK specific, list the SDKs that use this attribute. This is not an exhaustive list, there might be SDKs that send this attribute that are is not documented here."""\n';
+  content += '    \n';
+  content += '    changelog: Optional[List[ChangelogEntry]] = None\n';
+  content += '    """Changelog entries tracking how this attribute has changed across versions"""\n\n';
 
   let attributesTypeMembers = '';
   let deprecatedAttributesTypeMembers = '';
@@ -503,6 +518,22 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
       metadataDict += `        sdks=${JSON.stringify(attributeJson.sdks)},\n`;
     }
 
+    if (attributeJson.changelog && attributeJson.changelog.length > 0) {
+      metadataDict += '        changelog=[\n';
+      for (const entry of attributeJson.changelog) {
+        metadataDict += '            ChangelogEntry(';
+        metadataDict += `version=${JSON.stringify(entry.version)}`;
+        if (entry.prs && entry.prs.length > 0) {
+          metadataDict += `, prs=[${entry.prs.join(', ')}]`;
+        }
+        if (entry.description) {
+          metadataDict += `, description=${JSON.stringify(entry.description)}`;
+        }
+        metadataDict += '),\n';
+      }
+      metadataDict += '        ],\n';
+    }
+
     metadataDict += '    ),\n';
   }
 
@@ -629,6 +660,15 @@ export interface DeprecationInfo {
   reason?: string;
 }
 
+export interface ChangelogEntry {
+  /** The sentry-conventions release version */
+  version: string;
+  /** GitHub PR numbers */
+  prs?: number[];
+  /** Optional description of what changed */
+  description?: string;
+}
+
 export interface AttributeMetadata {
   /** A description of the attribute */
   brief: string;
@@ -648,6 +688,8 @@ export interface AttributeMetadata {
   aliases?: AttributeName[];
   /** If an attribute is SDK specific, list the SDKs that use this attribute */
   sdks?: string[];
+  /** Changelog entries tracking how this attribute has changed across versions */
+  changelog?: ChangelogEntry[];
 }
 
 `;
@@ -742,6 +784,22 @@ function generateMetadataDict(
 
     if (attributeJson.sdks && attributeJson.sdks.length > 0) {
       metadataDict += `    sdks: ${JSON.stringify(attributeJson.sdks)},\n`;
+    }
+
+    if (attributeJson.changelog && attributeJson.changelog.length > 0) {
+      metadataDict += '    changelog: [\n';
+      for (const entry of attributeJson.changelog) {
+        metadataDict += '      {';
+        metadataDict += ` version: ${JSON.stringify(entry.version)}`;
+        if (entry.prs && entry.prs.length > 0) {
+          metadataDict += `, prs: [${entry.prs.join(', ')}]`;
+        }
+        if (entry.description) {
+          metadataDict += `, description: ${JSON.stringify(entry.description)}`;
+        }
+        metadataDict += ' },\n';
+      }
+      metadataDict += '    ],\n';
     }
 
     metadataDict += '  },\n';

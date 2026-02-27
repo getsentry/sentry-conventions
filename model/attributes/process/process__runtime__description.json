@@ -6,5 +6,16 @@
     "key": "maybe"
   },
   "is_in_otel": true,
-  "example": "Eclipse OpenJ9 VM openj9-0.21.0"
+  "example": "Eclipse OpenJ9 VM openj9-0.21.0",
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [
+        127
+      ]
+    },
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

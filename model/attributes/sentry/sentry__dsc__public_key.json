@@ -6,5 +6,13 @@
     "key": "maybe"
   },
   "is_in_otel": false,
-  "example": "c51734c603c4430eb57cb0a5728a479d"
+  "example": "c51734c603c4430eb57cb0a5728a479d",
+  "changelog": [
+    {
+      "version": "0.3.0",
+      "prs": [
+        185
+      ]
+    }
+  ]
 }

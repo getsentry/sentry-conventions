@@ -6,5 +6,13 @@
     "key": "maybe"
   },
   "is_in_otel": false,
-  "example": "/dynamic/some-value.json?route=some-value"
+  "example": "/dynamic/some-value.json?route=some-value",
+  "changelog": [
+    {
+      "version": "0.2.0",
+      "prs": [
+        163
+      ]
+    }
+  ]
 }

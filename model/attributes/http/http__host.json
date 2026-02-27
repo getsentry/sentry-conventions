@@ -12,5 +12,23 @@
     "replacement": "server.address",
     "reason": "Deprecated, use one of `server.address` or `client.address`, depending on the usage"
   },
-  "alias": ["server.address", "client.address", "http.server_name", "net.host.name"]
+  "alias": [
+    "server.address",
+    "client.address",
+    "http.server_name",
+    "net.host.name"
+  ],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [
+        61,
+        108,
+        127
+      ]
+    },
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

@@ -11,5 +11,18 @@
     "_status": null,
     "replacement": "gen_ai.tool.name"
   },
-  "alias": ["gen_ai.tool.name"]
+  "alias": [
+    "gen_ai.tool.name"
+  ],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [
+        55,
+        57,
+        61,
+        108
+      ]
+    }
+  ]
 }

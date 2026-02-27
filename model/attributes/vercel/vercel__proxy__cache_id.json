@@ -6,5 +6,13 @@
     "key": "false"
   },
   "is_in_otel": false,
-  "example": "pdx1::v8g4b-1744143786684-93dafbc0f70d"
+  "example": "pdx1::v8g4b-1744143786684-93dafbc0f70d",
+  "changelog": [
+    {
+      "version": "0.2.0",
+      "prs": [
+        163
+      ]
+    }
+  ]
 }

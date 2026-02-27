@@ -7,5 +7,13 @@
     "key": "maybe"
   },
   "is_in_otel": false,
-  "example": "sentry.module.brianium/paratest='v7.7.0'"
+  "example": "sentry.module.brianium/paratest='v7.7.0'",
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [
+        103
+      ]
+    }
+  ]
 }

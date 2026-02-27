@@ -11,5 +11,22 @@
     "_status": null,
     "replacement": "server.address"
   },
-  "alias": ["server.address", "http.server_name", "http.host"]
+  "alias": [
+    "server.address",
+    "http.server_name",
+    "http.host"
+  ],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [
+        61,
+        108,
+        127
+      ]
+    },
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

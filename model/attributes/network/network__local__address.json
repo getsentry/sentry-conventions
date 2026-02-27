@@ -7,5 +7,19 @@
   },
   "is_in_otel": true,
   "example": "10.1.2.80",
-  "alias": ["net.host.ip", "net.sock.host.addr"]
+  "alias": [
+    "net.host.ip",
+    "net.sock.host.addr"
+  ],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [
+        127
+      ]
+    },
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

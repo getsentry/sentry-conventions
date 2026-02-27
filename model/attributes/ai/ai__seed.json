@@ -11,5 +11,19 @@
     "_status": null,
     "replacement": "gen_ai.request.seed"
   },
-  "alias": ["gen_ai.request.seed"]
+  "alias": [
+    "gen_ai.request.seed"
+  ],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [
+        55,
+        57,
+        61,
+        108,
+        127
+      ]
+    }
+  ]
 }

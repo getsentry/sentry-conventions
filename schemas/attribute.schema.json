@@ -101,6 +101,32 @@
       "items": {
         "type": "string"
       }
+    },
+    "changelog": {
+      "description": "A list of changelog entries tracking how this attribute has changed across versions",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "version": {
+            "description": "The sentry-conventions release version",
+            "type": "string"
+          },
+          "prs": {
+            "description": "GitHub PR numbers",
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "description": {
+            "description": "Optional description of what changed",
+            "type": "string"
+          }
+        },
+        "required": ["version"]
+      }
     }
   },
   "required": ["key", "brief", "type", "pii", "is_in_otel"]

@@ -6,8 +6,19 @@
     "key": "true"
   },
   "is_in_otel": false,
-  "example": ["document1.txt", "document2.pdf"],
+  "example": [
+    "document1.txt",
+    "document2.pdf"
+  ],
   "deprecation": {
     "_status": null
-  }
+  },
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [
+        55
+      ]
+    }
+  ]
 }

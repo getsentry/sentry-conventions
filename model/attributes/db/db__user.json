@@ -6,5 +6,10 @@
     "key": "true"
   },
   "is_in_otel": true,
-  "example": "fancy_user"
+  "example": "fancy_user",
+  "changelog": [
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

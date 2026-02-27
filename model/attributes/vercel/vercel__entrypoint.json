@@ -6,5 +6,13 @@
     "key": "maybe"
   },
   "is_in_otel": false,
-  "example": "api/index.js"
+  "example": "api/index.js",
+  "changelog": [
+    {
+      "version": "0.2.0",
+      "prs": [
+        163
+      ]
+    }
+  ]
 }

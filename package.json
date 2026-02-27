@@ -29,6 +29,7 @@
     "create:attribute": "tsx scripts/create_attribute.ts",
 
     "generate": "tsx scripts/generate.ts && yarn format",
+    "generate:attribute-changelog": "tsx scripts/generate_attribute_changelog.ts",
 
     "docs:dev": "yarn workspace docs dev",
     "docs:build": "yarn workspace docs build",

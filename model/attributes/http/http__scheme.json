@@ -11,5 +11,19 @@
     "_status": null,
     "replacement": "url.scheme"
   },
-  "alias": ["url.scheme"]
+  "alias": [
+    "url.scheme"
+  ],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [
+        61,
+        127
+      ]
+    },
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

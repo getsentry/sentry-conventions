@@ -7,10 +7,26 @@
   },
   "is_in_otel": false,
   "example": true,
-  "sdks": ["python"],
+  "sdks": [
+    "python"
+  ],
   "deprecation": {
     "_status": null,
     "replacement": "gen_ai.response.streaming"
   },
-  "alias": ["gen_ai.response.streaming"]
+  "alias": [
+    "gen_ai.response.streaming"
+  ],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [
+        76,
+        108
+      ]
+    },
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

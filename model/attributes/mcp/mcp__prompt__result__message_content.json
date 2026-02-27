@@ -6,5 +6,13 @@
     "key": "true"
   },
   "is_in_otel": false,
-  "example": "Please provide a summary of the document"
+  "example": "Please provide a summary of the document",
+  "changelog": [
+    {
+      "version": "0.3.0",
+      "prs": [
+        171
+      ]
+    }
+  ]
 }

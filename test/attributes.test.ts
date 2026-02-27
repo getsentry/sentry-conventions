@@ -10,6 +10,16 @@ import { attributeKeyToFileName, fileNameToAttributeKey } from '../scripts/utils
 
 const traceFolders = path.resolve(__dirname, '../model/attributes');
 
+function compareVersions(a: string, b: string): number {
+  const partsA = a.split('.').map(Number);
+  const partsB = b.split('.').map(Number);
+  for (let i = 0; i < Math.max(partsA.length, partsB.length); i++) {
+    const diff = (partsA[i] ?? 0) - (partsB[i] ?? 0);
+    if (diff !== 0) return diff;
+  }
+  return 0;
+}
+
 describe('attribute json', async () => {
   const filesIterator = await fs.promises.glob(`${traceFolders}/**/*.json`);
   const files = await Array.fromAsync(filesIterator);
@@ -134,6 +144,39 @@ describe('attribute json', async () => {
         }
         for (const alias of content.alias) {
           expect(content.key !== alias);
+        }
+      });
+
+      it('should have valid changelog entries', () => {
+        if (!content.changelog || content.changelog.length === 0) {
+          return;
+        }
+
+        for (const entry of content.changelog) {
+          expect(entry.version).toBeDefined();
+          expect(typeof entry.version).toBe('string');
+          expect(entry.version.length).toBeGreaterThan(0);
+
+          if (entry.prs !== undefined) {
+            expect(Array.isArray(entry.prs)).toBe(true);
+            for (const pr of entry.prs) {
+              expect(Number.isInteger(pr)).toBe(true);
+              expect(pr).toBeGreaterThan(0);
+            }
+          }
+        }
+      });
+
+      it('should have changelog entries ordered by version (newest first)', () => {
+        if (!content.changelog || content.changelog.length < 2) {
+          return;
+        }
+
+        for (let i = 1; i < content.changelog.length; i++) {
+          const prev = content.changelog[i - 1]!.version;
+          const curr = content.changelog[i]!.version;
+          const cmp = compareVersions(prev, curr);
+          expect(cmp).toBeGreaterThanOrEqual(0);
         }
       });
     });

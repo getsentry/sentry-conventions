@@ -7,5 +7,16 @@
   },
   "is_in_otel": true,
   "example": "Flights",
-  "alias": ["ai.function_call"]
+  "alias": [
+    "ai.function_call"
+  ],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [
+        57,
+        127
+      ]
+    }
+  ]
 }

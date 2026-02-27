@@ -7,5 +7,18 @@
   },
   "is_in_otel": true,
   "example": "gpt-4",
-  "alias": ["ai.model_id"]
+  "alias": [
+    "ai.model_id"
+  ],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [
+        127
+      ]
+    },
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

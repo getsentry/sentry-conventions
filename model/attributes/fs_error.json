@@ -12,5 +12,19 @@
     "reason": "This attribute is not part of the OpenTelemetry specification and error.type fits much better."
   },
   "example": "ENOENT: no such file or directory",
-  "sdks": ["javascript-node"]
+  "sdks": [
+    "javascript-node"
+  ],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [
+        61,
+        127
+      ]
+    },
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

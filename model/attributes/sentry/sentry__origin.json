@@ -6,5 +6,16 @@
     "key": "false"
   },
   "is_in_otel": false,
-  "example": "auto.http.otel.fastify"
+  "example": "auto.http.otel.fastify",
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [
+        68
+      ]
+    },
+    {
+      "version": "0.0.0"
+    }
+  ]
 }
