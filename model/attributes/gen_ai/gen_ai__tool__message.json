@@ -7,10 +7,7 @@
   },
   "is_in_otel": false,
   "example": "rainy, 57°F",
-  "alias": [
-    "gen_ai.tool.call.result",
-    "gen_ai.tool.output"
-  ],
+  "alias": ["gen_ai.tool.call.result", "gen_ai.tool.output"],
   "deprecation": {
     "_status": null,
     "replacement": "gen_ai.tool.call.result"
@@ -18,9 +15,7 @@
   "changelog": [
     {
       "version": "0.1.0",
-      "prs": [
-        62
-      ]
+      "prs": [62]
     }
   ]
 }

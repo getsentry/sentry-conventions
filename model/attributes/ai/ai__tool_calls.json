@@ -6,10 +6,7 @@
     "key": "true"
   },
   "is_in_otel": false,
-  "example": [
-    "tool_call_1",
-    "tool_call_2"
-  ],
+  "example": ["tool_call_1", "tool_call_2"],
   "deprecation": {
     "_status": null,
     "replacement": "gen_ai.response.tool_calls"
@@ -17,10 +14,7 @@
   "changelog": [
     {
       "version": "0.1.0",
-      "prs": [
-        55,
-        65
-      ]
+      "prs": [55, 65]
     }
   ]
 }

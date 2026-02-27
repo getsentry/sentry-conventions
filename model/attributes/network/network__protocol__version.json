@@ -7,16 +7,11 @@
   },
   "is_in_otel": true,
   "example": "1.1",
-  "alias": [
-    "http.flavor",
-    "net.protocol.version"
-  ],
+  "alias": ["http.flavor", "net.protocol.version"],
   "changelog": [
     {
       "version": "0.1.0",
-      "prs": [
-        127
-      ]
+      "prs": [127]
     },
     {
       "version": "0.0.0"

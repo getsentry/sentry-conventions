@@ -11,20 +11,12 @@
     "_status": null,
     "replacement": "http.route"
   },
-  "alias": [
-    "http.route"
-  ],
-  "sdks": [
-    "php-laravel",
-    "javascript-reactnative"
-  ],
+  "alias": ["http.route"],
+  "sdks": ["php-laravel", "javascript-reactnative"],
   "changelog": [
     {
       "version": "0.1.0",
-      "prs": [
-        61,
-        74
-      ]
+      "prs": [61, 74]
     },
     {
       "version": "0.0.0"

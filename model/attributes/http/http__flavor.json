@@ -11,18 +11,11 @@
     "_status": null,
     "replacement": "network.protocol.version"
   },
-  "alias": [
-    "network.protocol.version",
-    "net.protocol.version"
-  ],
+  "alias": ["network.protocol.version", "net.protocol.version"],
   "changelog": [
     {
       "version": "0.1.0",
-      "prs": [
-        61,
-        108,
-        127
-      ]
+      "prs": [61, 108, 127]
     },
     {
       "version": "0.0.0"

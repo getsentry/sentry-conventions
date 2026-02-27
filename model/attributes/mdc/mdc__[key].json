@@ -8,18 +8,11 @@
   },
   "is_in_otel": false,
   "example": "mdc.some_key='some_value'",
-  "sdks": [
-    "java",
-    "java.logback",
-    "java.jul",
-    "java.log4j2"
-  ],
+  "sdks": ["java", "java.logback", "java.jul", "java.log4j2"],
   "changelog": [
     {
       "version": "0.3.0",
-      "prs": [
-        176
-      ]
+      "prs": [176]
     }
   ]
 }

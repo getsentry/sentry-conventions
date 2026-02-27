@@ -173,8 +173,8 @@ describe('attribute json', async () => {
         }
 
         for (let i = 1; i < content.changelog.length; i++) {
-          const prev = content.changelog[i - 1]!.version;
-          const curr = content.changelog[i]!.version;
+          const prev = content.changelog[i - 1]?.version;
+          const curr = content.changelog[i]?.version;
           const cmp = compareVersions(prev, curr);
           expect(cmp).toBeGreaterThanOrEqual(0);
         }

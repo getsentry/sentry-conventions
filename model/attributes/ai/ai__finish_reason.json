@@ -11,19 +11,11 @@
     "_status": null,
     "replacement": "gen_ai.response.finish_reason"
   },
-  "alias": [
-    "gen_ai.response.finish_reasons"
-  ],
+  "alias": ["gen_ai.response.finish_reasons"],
   "changelog": [
     {
       "version": "0.1.0",
-      "prs": [
-        55,
-        57,
-        61,
-        108,
-        127
-      ]
+      "prs": [55, 57, 61, 108, 127]
     }
   ]
 }

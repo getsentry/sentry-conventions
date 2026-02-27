@@ -7,15 +7,11 @@
   },
   "is_in_otel": true,
   "example": "activemq",
-  "sdks": [
-    "php-laravel"
-  ],
+  "sdks": ["php-laravel"],
   "changelog": [
     {
       "version": "0.1.0",
-      "prs": [
-        127
-      ]
+      "prs": [127]
     },
     {
       "version": "0.0.0"

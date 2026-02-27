@@ -29,8 +29,8 @@ export async function generateAttributeChangelog() {
   const tagRanges: Array<{ from: string | null; to: string }> = [];
   for (let i = 0; i < tags.length; i++) {
     tagRanges.push({
-      from: i === 0 ? null : tags[i - 1]!,
-      to: tags[i]!,
+      from: i === 0 ? null : tags[i - 1],
+      to: tags[i] as string,
     });
   }
 

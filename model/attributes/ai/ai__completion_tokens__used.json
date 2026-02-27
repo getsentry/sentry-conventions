@@ -7,13 +7,8 @@
   },
   "is_in_otel": false,
   "example": 10,
-  "alias": [
-    "gen_ai.usage.output_tokens",
-    "gen_ai.usage.completion_tokens"
-  ],
-  "sdks": [
-    "python"
-  ],
+  "alias": ["gen_ai.usage.output_tokens", "gen_ai.usage.completion_tokens"],
+  "sdks": ["python"],
   "deprecation": {
     "_status": null,
     "replacement": "gen_ai.usage.output_tokens"
@@ -21,16 +16,11 @@
   "changelog": [
     {
       "version": "0.4.0",
-      "prs": [
-        228
-      ]
+      "prs": [228]
     },
     {
       "version": "0.1.0",
-      "prs": [
-        57,
-        61
-      ]
+      "prs": [57, 61]
     },
     {
       "version": "0.0.0"

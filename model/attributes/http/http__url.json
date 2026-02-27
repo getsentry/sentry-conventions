@@ -11,17 +11,11 @@
     "_status": null,
     "replacement": "url.full"
   },
-  "alias": [
-    "url.full",
-    "url"
-  ],
+  "alias": ["url.full", "url"],
   "changelog": [
     {
       "version": "0.1.0",
-      "prs": [
-        61,
-        108
-      ]
+      "prs": [61, 108]
     },
     {
       "version": "0.0.0"

@@ -7,16 +7,11 @@
   },
   "is_in_otel": true,
   "example": "https://example.com/test?foo=bar#buzz",
-  "alias": [
-    "http.url",
-    "url"
-  ],
+  "alias": ["http.url", "url"],
   "changelog": [
     {
       "version": "0.1.0",
-      "prs": [
-        108
-      ]
+      "prs": [108]
     },
     {
       "version": "0.0.0"

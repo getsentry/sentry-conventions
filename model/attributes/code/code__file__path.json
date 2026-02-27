@@ -7,9 +7,7 @@
   },
   "is_in_otel": true,
   "example": "/app/myapplication/http/handler/server.py",
-  "alias": [
-    "code.filepath"
-  ],
+  "alias": ["code.filepath"],
   "changelog": [
     {
       "version": "0.0.0"

@@ -7,22 +7,15 @@
   },
   "is_in_otel": true,
   "example": 10,
-  "alias": [
-    "ai.completion_tokens.used",
-    "gen_ai.usage.completion_tokens"
-  ],
+  "alias": ["ai.completion_tokens.used", "gen_ai.usage.completion_tokens"],
   "changelog": [
     {
       "version": "0.4.0",
-      "prs": [
-        228
-      ]
+      "prs": [228]
     },
     {
       "version": "0.1.0",
-      "prs": [
-        112
-      ]
+      "prs": [112]
     },
     {
       "version": "0.0.0"

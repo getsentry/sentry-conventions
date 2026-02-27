@@ -11,18 +11,11 @@
     "_status": null,
     "replacement": "gen_ai.pipeline.name"
   },
-  "alias": [
-    "gen_ai.pipeline.name"
-  ],
+  "alias": ["gen_ai.pipeline.name"],
   "changelog": [
     {
       "version": "0.1.0",
-      "prs": [
-        53,
-        76,
-        108,
-        127
-      ]
+      "prs": [53, 76, 108, 127]
     }
   ]
 }

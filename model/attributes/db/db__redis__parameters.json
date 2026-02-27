@@ -6,13 +6,8 @@
     "key": "maybe"
   },
   "is_in_otel": false,
-  "example": [
-    "test",
-    "*"
-  ],
-  "sdks": [
-    "php-laravel"
-  ],
+  "example": ["test", "*"],
+  "sdks": ["php-laravel"],
   "changelog": [
     {
       "version": "0.0.0"

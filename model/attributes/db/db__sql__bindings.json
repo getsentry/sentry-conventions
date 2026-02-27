@@ -11,19 +11,12 @@
     "replacement": "db.query.parameter.<key>",
     "reason": "Instead of adding every binding in the db.sql.bindings attribute, add them as individual entires with db.query.parameter.<key>."
   },
-  "example": [
-    "1",
-    "foo"
-  ],
-  "sdks": [
-    "php-laravel"
-  ],
+  "example": ["1", "foo"],
+  "sdks": ["php-laravel"],
   "changelog": [
     {
       "version": "0.1.0",
-      "prs": [
-        61
-      ]
+      "prs": [61]
     },
     {
       "version": "0.0.0"

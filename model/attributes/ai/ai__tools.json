@@ -6,10 +6,7 @@
     "key": "maybe"
   },
   "is_in_otel": false,
-  "example": [
-    "function_1",
-    "function_2"
-  ],
+  "example": ["function_1", "function_2"],
   "deprecation": {
     "_status": null,
     "replacement": "gen_ai.request.available_tools"
@@ -17,11 +14,7 @@
   "changelog": [
     {
       "version": "0.1.0",
-      "prs": [
-        55,
-        65,
-        127
-      ]
+      "prs": [55, 65, 127]
     }
   ]
 }

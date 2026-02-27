@@ -6,18 +6,14 @@
     "key": "true"
   },
   "is_in_otel": false,
-  "example": [
-    "Token limit exceeded"
-  ],
+  "example": ["Token limit exceeded"],
   "deprecation": {
     "_status": null
   },
   "changelog": [
     {
       "version": "0.1.0",
-      "prs": [
-        55
-      ]
+      "prs": [55]
     }
   ]
 }

@@ -11,18 +11,11 @@
     "_status": null,
     "replacement": "network.peer.address"
   },
-  "alias": [
-    "network.peer.address",
-    "net.sock.peer.addr"
-  ],
+  "alias": ["network.peer.address", "net.sock.peer.addr"],
   "changelog": [
     {
       "version": "0.1.0",
-      "prs": [
-        61,
-        108,
-        127
-      ]
+      "prs": [61, 108, 127]
     },
     {
       "version": "0.0.0"

@@ -7,16 +7,11 @@
   },
   "is_in_otel": true,
   "example": "rainy, 57°F",
-  "alias": [
-    "gen_ai.tool.output",
-    "gen_ai.tool.message"
-  ],
+  "alias": ["gen_ai.tool.output", "gen_ai.tool.message"],
   "changelog": [
     {
       "version": "0.4.0",
-      "prs": [
-        221
-      ]
+      "prs": [221]
     }
   ]
 }

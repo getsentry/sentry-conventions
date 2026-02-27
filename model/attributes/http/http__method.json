@@ -11,16 +11,11 @@
     "_status": null,
     "replacement": "http.request.method"
   },
-  "alias": [
-    "http.request.method"
-  ],
+  "alias": ["http.request.method"],
   "changelog": [
     {
       "version": "0.1.0",
-      "prs": [
-        61,
-        127
-      ]
+      "prs": [61, 127]
     },
     {
       "version": "0.0.0"

@@ -7,9 +7,7 @@
   },
   "is_in_otel": false,
   "example": "f47ac10b58cc4372a5670e02b2c3d479",
-  "sdks": [
-    "php-laravel"
-  ],
+  "sdks": ["php-laravel"],
   "changelog": [
     {
       "version": "0.0.0"

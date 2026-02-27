@@ -7,16 +7,11 @@
   },
   "is_in_otel": true,
   "example": "http.response.header.custom-header=['foo', 'bar']",
-  "alias": [
-    "http.response_content_length",
-    "http.response.body.size"
-  ],
+  "alias": ["http.response_content_length", "http.response.body.size"],
   "changelog": [
     {
       "version": "0.1.0",
-      "prs": [
-        127
-      ]
+      "prs": [127]
     },
     {
       "version": "0.0.0"

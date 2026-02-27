@@ -11,20 +11,12 @@
     "_status": null,
     "replacement": "url.full"
   },
-  "alias": [
-    "url.full",
-    "http.url"
-  ],
-  "sdks": [
-    "javascript-browser",
-    "javascript-node"
-  ],
+  "alias": ["url.full", "http.url"],
+  "sdks": ["javascript-browser", "javascript-node"],
   "changelog": [
     {
       "version": "0.1.0",
-      "prs": [
-        61
-      ]
+      "prs": [61]
     },
     {
       "version": "0.0.0"

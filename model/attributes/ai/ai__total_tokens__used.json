@@ -7,30 +7,20 @@
   },
   "is_in_otel": false,
   "example": 30,
-  "sdks": [
-    "python"
-  ],
+  "sdks": ["python"],
   "deprecation": {
     "_status": null,
     "replacement": "gen_ai.usage.total_tokens"
   },
-  "alias": [
-    "gen_ai.usage.total_tokens"
-  ],
+  "alias": ["gen_ai.usage.total_tokens"],
   "changelog": [
     {
       "version": "0.4.0",
-      "prs": [
-        228
-      ]
+      "prs": [228]
     },
     {
       "version": "0.1.0",
-      "prs": [
-        57,
-        61,
-        108
-      ]
+      "prs": [57, 61, 108]
     },
     {
       "version": "0.0.0"

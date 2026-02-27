@@ -7,9 +7,7 @@
   },
   "is_in_otel": false,
   "example": "051581bf3cb55c13",
-  "alias": [
-    "sentry.segment.id"
-  ],
+  "alias": ["sentry.segment.id"],
   "deprecation": {
     "_status": null,
     "replacement": "sentry.segment.id"
@@ -17,9 +15,7 @@
   "changelog": [
     {
       "version": "0.1.0",
-      "prs": [
-        124
-      ]
+      "prs": [124]
     }
   ]
 }

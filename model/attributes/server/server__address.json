@@ -7,18 +7,11 @@
   },
   "is_in_otel": true,
   "example": "example.com",
-  "alias": [
-    "http.server_name",
-    "net.host.name",
-    "http.host"
-  ],
+  "alias": ["http.server_name", "net.host.name", "http.host"],
   "changelog": [
     {
       "version": "0.1.0",
-      "prs": [
-        108,
-        127
-      ]
+      "prs": [108, 127]
     },
     {
       "version": "0.0.0"

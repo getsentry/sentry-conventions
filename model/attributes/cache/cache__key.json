@@ -6,13 +6,8 @@
     "key": "maybe"
   },
   "is_in_otel": false,
-  "example": [
-    "my-cache-key",
-    "my-other-cache-key"
-  ],
-  "sdks": [
-    "php-laravel"
-  ],
+  "example": ["my-cache-key", "my-other-cache-key"],
+  "sdks": ["php-laravel"],
   "changelog": [
     {
       "version": "0.0.0"

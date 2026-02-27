@@ -7,16 +7,11 @@
   },
   "is_in_otel": false,
   "example": "Chrome",
-  "alias": [
-    "sentry.browser.name"
-  ],
+  "alias": ["sentry.browser.name"],
   "changelog": [
     {
       "version": "0.1.0",
-      "prs": [
-        127,
-        139
-      ]
+      "prs": [127, 139]
     },
     {
       "version": "0.0.0"

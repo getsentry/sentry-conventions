@@ -11,15 +11,11 @@
     "_status": null,
     "replacement": "gen_ai.system_instructions"
   },
-  "alias": [
-    "gen_ai.system_instructions"
-  ],
+  "alias": ["gen_ai.system_instructions"],
   "changelog": [
     {
       "version": "0.1.0",
-      "prs": [
-        55
-      ]
+      "prs": [55]
     }
   ]
 }

@@ -7,16 +7,11 @@
   },
   "is_in_otel": false,
   "example": "051581bf3cb55c13",
-  "alias": [
-    "sentry.segment_id"
-  ],
+  "alias": ["sentry.segment_id"],
   "changelog": [
     {
       "version": "0.1.0",
-      "prs": [
-        107,
-        124
-      ]
+      "prs": [107, 124]
     }
   ]
 }

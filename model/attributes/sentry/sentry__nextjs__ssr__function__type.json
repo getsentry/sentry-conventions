@@ -7,16 +7,11 @@
   },
   "is_in_otel": false,
   "example": "generateMetadata",
-  "sdks": [
-    "javascript"
-  ],
+  "sdks": ["javascript"],
   "changelog": [
     {
       "version": "0.1.0",
-      "prs": [
-        54,
-        106
-      ]
+      "prs": [54, 106]
     }
   ]
 }
