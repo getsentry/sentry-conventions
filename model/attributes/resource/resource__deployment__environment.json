@@ -1,0 +1,14 @@
+{
+  "key": "resource.deployment.environment",
+  "brief": "The software deployment environment name.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "production",
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "sentry.environment"
+  }
+}
