@@ -11,5 +11,11 @@
   "deprecation": {
     "_status": null,
     "replacement": "gen_ai.tool.call.arguments"
-  }
+  },
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [63, 74]
+    }
+  ]
 }

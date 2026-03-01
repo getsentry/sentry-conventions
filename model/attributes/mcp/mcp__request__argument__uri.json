@@ -7,5 +7,11 @@
     "reason": "URIs can contain user file paths"
   },
   "is_in_otel": false,
-  "example": "file:///path/to/resource"
+  "example": "file:///path/to/resource",
+  "changelog": [
+    {
+      "version": "0.3.0",
+      "prs": [171]
+    }
+  ]
 }

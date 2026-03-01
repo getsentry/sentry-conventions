@@ -8,5 +8,11 @@
   },
   "is_in_otel": false,
   "example": "http.response.header.text='test'",
-  "sdks": ["javascript-remix"]
+  "sdks": ["javascript-remix"],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [103]
+    }
+  ]
 }

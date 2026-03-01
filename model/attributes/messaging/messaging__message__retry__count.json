@@ -7,5 +7,14 @@
   },
   "is_in_otel": false,
   "example": 2,
-  "sdks": ["php-laravel"]
+  "sdks": ["php-laravel"],
+  "changelog": [
+    {
+      "version": "0.4.0",
+      "prs": [228]
+    },
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

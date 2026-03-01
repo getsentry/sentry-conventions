@@ -7,5 +7,11 @@
     "reason": "Log messages can contain user data"
   },
   "is_in_otel": false,
-  "example": "Tool execution completed successfully"
+  "example": "Tool execution completed successfully",
+  "changelog": [
+    {
+      "version": "0.3.0",
+      "prs": [171]
+    }
+  ]
 }

@@ -7,5 +7,11 @@
   },
   "is_in_otel": false,
   "example": "120.0.6099.130",
-  "alias": ["sentry.browser.version"]
+  "alias": ["sentry.browser.version"],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [59, 127, 139]
+    }
+  ]
 }

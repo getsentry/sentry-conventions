@@ -8,5 +8,11 @@
   },
   "is_in_otel": false,
   "has_dynamic_suffix": true,
-  "example": "mcp.request.argument.query='weather in Paris'"
+  "example": "mcp.request.argument.query='weather in Paris'",
+  "changelog": [
+    {
+      "version": "0.3.0",
+      "prs": [176]
+    }
+  ]
 }

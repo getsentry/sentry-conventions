@@ -7,5 +7,14 @@
   },
   "is_in_otel": true,
   "example": 404,
-  "alias": ["http.status_code"]
+  "alias": ["http.status_code"],
+  "changelog": [
+    {
+      "version": "0.4.0",
+      "prs": [228]
+    },
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

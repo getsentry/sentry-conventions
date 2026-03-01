@@ -8922,6 +8922,15 @@ export interface DeprecationInfo {
   reason?: string;
 }
 
+export interface ChangelogEntry {
+  /** The sentry-conventions release version */
+  version: string;
+  /** GitHub PR numbers */
+  prs?: number[];
+  /** Optional description of what changed */
+  description?: string;
+}
+
 export interface AttributeMetadata {
   /** A description of the attribute */
   brief: string;
@@ -8941,6 +8950,8 @@ export interface AttributeMetadata {
   aliases?: AttributeName[];
   /** If an attribute is SDK specific, list the SDKs that use this attribute */
   sdks?: string[];
+  /** Changelog entries tracking how this attribute has changed across versions */
+  changelog?: ChangelogEntry[];
 }
 
 export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
@@ -9812,6 +9823,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: ['Citation 1', 'Citation 2'],
     deprecation: {},
+    changelog: [{ version: '0.1.0', prs: [55] }],
   },
   [AI_COMPLETION_TOKENS_USED]: {
     brief: 'The number of tokens used to respond to the message.',
@@ -9826,6 +9838,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [GEN_AI_USAGE_OUTPUT_TOKENS, GEN_AI_USAGE_COMPLETION_TOKENS],
     sdks: ['python'],
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [57, 61] }, { version: '0.0.0' }],
   },
   [AI_DOCUMENTS]: {
     brief: 'Documents or content chunks used as context for the AI model.',
@@ -9836,6 +9849,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: ['document1.txt', 'document2.pdf'],
     deprecation: {},
+    changelog: [{ version: '0.1.0', prs: [55] }],
   },
   [AI_FINISH_REASON]: {
     brief: 'The reason why the model stopped generating.',
@@ -9849,6 +9863,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.response.finish_reason',
     },
     aliases: [GEN_AI_RESPONSE_FINISH_REASONS],
+    changelog: [{ version: '0.1.0', prs: [55, 57, 61, 108, 127] }],
   },
   [AI_FREQUENCY_PENALTY]: {
     brief:
@@ -9863,6 +9878,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.request.frequency_penalty',
     },
     aliases: [GEN_AI_REQUEST_FREQUENCY_PENALTY],
+    changelog: [
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [55, 57, 61, 108] },
+    ],
   },
   [AI_FUNCTION_CALL]: {
     brief:
@@ -9877,6 +9896,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.tool.name',
     },
     aliases: [GEN_AI_TOOL_NAME],
+    changelog: [{ version: '0.1.0', prs: [55, 57, 61, 108] }],
   },
   [AI_GENERATION_ID]: {
     brief: 'Unique identifier for the completion.',
@@ -9890,6 +9910,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.response.id',
     },
     aliases: [GEN_AI_RESPONSE_ID],
+    changelog: [{ version: '0.1.0', prs: [55, 57, 61, 108, 127] }],
   },
   [AI_INPUT_MESSAGES]: {
     brief: 'The input messages sent to the model',
@@ -9904,6 +9925,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [GEN_AI_REQUEST_MESSAGES],
     sdks: ['python'],
+    changelog: [{ version: '0.1.0', prs: [65, 119] }, { version: '0.0.0' }],
   },
   [AI_IS_SEARCH_REQUIRED]: {
     brief: 'Boolean indicating if the model needs to perform a search.',
@@ -9914,6 +9936,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: false,
     deprecation: {},
+    changelog: [{ version: '0.1.0', prs: [55] }],
   },
   [AI_METADATA]: {
     brief: 'Extra metadata passed to an AI pipeline step.',
@@ -9924,6 +9947,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '{"user_id": 123, "session_id": "abc123"}',
     deprecation: {},
+    changelog: [{ version: '0.1.0', prs: [55, 127] }],
   },
   [AI_MODEL_ID]: {
     brief: 'The vendor-specific ID of the model used.',
@@ -9938,6 +9962,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [GEN_AI_RESPONSE_MODEL],
     sdks: ['python'],
+    changelog: [{ version: '0.1.0', prs: [57, 61, 127] }, { version: '0.0.0' }],
   },
   [AI_MODEL_PROVIDER]: {
     brief: 'The provider of the model.',
@@ -9951,6 +9976,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.provider.name',
     },
     aliases: [GEN_AI_PROVIDER_NAME, GEN_AI_SYSTEM],
+    changelog: [
+      { version: '0.4.0', prs: [253] },
+      { version: '0.1.0', prs: [57, 61, 108, 127] },
+    ],
   },
   [AI_PIPELINE_NAME]: {
     brief: 'The name of the AI pipeline.',
@@ -9964,6 +9993,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.pipeline.name',
     },
     aliases: [GEN_AI_PIPELINE_NAME],
+    changelog: [{ version: '0.1.0', prs: [53, 76, 108, 127] }],
   },
   [AI_PREAMBLE]: {
     brief:
@@ -9978,6 +10008,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.system_instructions',
     },
     aliases: [GEN_AI_SYSTEM_INSTRUCTIONS],
+    changelog: [{ version: '0.1.0', prs: [55] }],
   },
   [AI_PRESENCE_PENALTY]: {
     brief:
@@ -9992,6 +10023,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.request.presence_penalty',
     },
     aliases: [GEN_AI_REQUEST_PRESENCE_PENALTY],
+    changelog: [
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [55, 57, 61, 108] },
+    ],
   },
   [AI_PROMPT_TOKENS_USED]: {
     brief: 'The number of tokens used to process just the prompt.',
@@ -10006,6 +10041,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [GEN_AI_USAGE_PROMPT_TOKENS, GEN_AI_USAGE_INPUT_TOKENS],
     sdks: ['python'],
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [57, 61] }, { version: '0.0.0' }],
   },
   [AI_RAW_PROMPTING]: {
     brief: 'When enabled, the user’s prompt will be sent to the model without any pre-processing.',
@@ -10016,6 +10052,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: true,
     deprecation: {},
+    changelog: [{ version: '0.1.0', prs: [55] }],
   },
   [AI_RESPONSES]: {
     brief: 'The response messages sent back by the AI model.',
@@ -10029,6 +10066,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.response.text',
     },
     sdks: ['python'],
+    changelog: [{ version: '0.1.0', prs: [65, 127] }, { version: '0.0.0' }],
   },
   [AI_RESPONSE_FORMAT]: {
     brief: 'For an AI model call, the format of the response',
@@ -10039,6 +10077,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'json_object',
     deprecation: {},
+    changelog: [{ version: '0.1.0', prs: [55, 127] }],
   },
   [AI_SEARCH_QUERIES]: {
     brief: 'Queries used to search for relevant context or documents.',
@@ -10049,6 +10088,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: ['climate change effects', 'renewable energy'],
     deprecation: {},
+    changelog: [{ version: '0.1.0', prs: [55] }],
   },
   [AI_SEARCH_RESULTS]: {
     brief: 'Results returned from search queries for context.',
@@ -10059,6 +10099,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: ['search_result_1, search_result_2'],
     deprecation: {},
+    changelog: [{ version: '0.1.0', prs: [55] }],
   },
   [AI_SEED]: {
     brief: 'The seed, ideally models given the same seed and same other parameters will produce the exact same output.',
@@ -10072,6 +10113,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.request.seed',
     },
     aliases: [GEN_AI_REQUEST_SEED],
+    changelog: [{ version: '0.1.0', prs: [55, 57, 61, 108, 127] }],
   },
   [AI_STREAMING]: {
     brief: 'Whether the request was streamed back.',
@@ -10086,6 +10128,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [GEN_AI_RESPONSE_STREAMING],
     sdks: ['python'],
+    changelog: [{ version: '0.1.0', prs: [76, 108] }, { version: '0.0.0' }],
   },
   [AI_TAGS]: {
     brief: 'Tags that describe an AI pipeline step.',
@@ -10096,6 +10139,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '{"executed_function": "add_integers"}',
     deprecation: {},
+    changelog: [{ version: '0.1.0', prs: [55, 127] }],
   },
   [AI_TEMPERATURE]: {
     brief:
@@ -10110,6 +10154,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.request.temperature',
     },
     aliases: [GEN_AI_REQUEST_TEMPERATURE],
+    changelog: [
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [55, 57, 61, 108] },
+    ],
   },
   [AI_TEXTS]: {
     brief: 'Raw text inputs provided to the model.',
@@ -10123,6 +10171,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.input.messages',
     },
     aliases: [GEN_AI_INPUT_MESSAGES],
+    changelog: [{ version: '0.1.0', prs: [55] }],
   },
   [AI_TOOLS]: {
     brief: 'For an AI model call, the functions that are available',
@@ -10135,6 +10184,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.request.available_tools',
     },
+    changelog: [{ version: '0.1.0', prs: [55, 65, 127] }],
   },
   [AI_TOOL_CALLS]: {
     brief: 'For an AI model call, the tool calls that were made.',
@@ -10147,6 +10197,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.response.tool_calls',
     },
+    changelog: [{ version: '0.1.0', prs: [55, 65] }],
   },
   [AI_TOP_K]: {
     brief:
@@ -10161,6 +10212,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.request.top_k',
     },
     aliases: [GEN_AI_REQUEST_TOP_K],
+    changelog: [
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [55, 57, 61, 108] },
+    ],
   },
   [AI_TOP_P]: {
     brief:
@@ -10175,6 +10230,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.request.top_p',
     },
     aliases: [GEN_AI_REQUEST_TOP_P],
+    changelog: [
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [55, 57, 61, 108] },
+    ],
   },
   [AI_TOTAL_COST]: {
     brief: 'The total cost for the tokens used.',
@@ -10188,6 +10247,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.cost.total_tokens',
     },
     aliases: [GEN_AI_COST_TOTAL_TOKENS],
+    changelog: [
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [53] },
+    ],
   },
   [AI_TOTAL_TOKENS_USED]: {
     brief: 'The total number of tokens used to process the prompt.',
@@ -10202,6 +10265,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [GEN_AI_USAGE_TOTAL_TOKENS],
     sdks: ['python'],
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [57, 61, 108] }, { version: '0.0.0' }],
   },
   [AI_WARNINGS]: {
     brief: 'Warning messages generated during model execution.',
@@ -10212,6 +10276,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: ['Token limit exceeded'],
     deprecation: {},
+    changelog: [{ version: '0.1.0', prs: [55] }],
   },
   [APP_START_TYPE]: {
     brief: 'Mobile app start variant. Either cold or warm.',
@@ -10221,6 +10286,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'cold',
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [BLOCKED_MAIN_THREAD]: {
     brief: 'Whether the main thread was blocked by the span.',
@@ -10230,6 +10296,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: true,
+    changelog: [{ version: '0.0.0' }],
   },
   [BROWSER_NAME]: {
     brief: 'The name of the browser.',
@@ -10240,6 +10307,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'Chrome',
     aliases: [SENTRY_BROWSER_NAME],
+    changelog: [{ version: '0.1.0', prs: [127, 139] }, { version: '0.0.0' }],
   },
   [BROWSER_REPORT_TYPE]: {
     brief: 'A browser report sent via reporting API..',
@@ -10249,6 +10317,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'network-error',
+    changelog: [{ version: '0.1.0', prs: [68, 127] }],
   },
   [BROWSER_SCRIPT_INVOKER]: {
     brief: 'How a script was called in the browser.',
@@ -10259,6 +10328,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'Window.requestAnimationFrame',
     sdks: ['browser'],
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [BROWSER_SCRIPT_INVOKER_TYPE]: {
     brief: 'Browser script entry point type.',
@@ -10269,6 +10339,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'event-listener',
     sdks: ['browser'],
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [BROWSER_SCRIPT_SOURCE_CHAR_POSITION]: {
     brief: 'A number representing the script character position of the script.',
@@ -10279,6 +10350,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 678,
     sdks: ['browser'],
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [BROWSER_VERSION]: {
     brief: 'The version of the browser.',
@@ -10289,6 +10361,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '120.0.6099.130',
     aliases: [SENTRY_BROWSER_VERSION],
+    changelog: [{ version: '0.1.0', prs: [59, 127, 139] }],
   },
   [CACHE_HIT]: {
     brief: 'If the cache was hit during this span.',
@@ -10299,6 +10372,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: true,
     sdks: ['php-laravel'],
+    changelog: [{ version: '0.0.0' }],
   },
   [CACHE_ITEM_SIZE]: {
     brief: 'The size of the requested item in the cache. In bytes.',
@@ -10308,6 +10382,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 58,
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [CACHE_KEY]: {
     brief: 'The key of the cache accessed.',
@@ -10318,6 +10393,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: ['my-cache-key', 'my-other-cache-key'],
     sdks: ['php-laravel'],
+    changelog: [{ version: '0.0.0' }],
   },
   [CACHE_OPERATION]: {
     brief: 'The operation being performed on the cache.',
@@ -10328,6 +10404,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'get',
     sdks: ['php-laravel'],
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [CACHE_TTL]: {
     brief: 'The ttl of the cache in seconds',
@@ -10338,6 +10415,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 120,
     sdks: ['php-laravel'],
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [CHANNEL]: {
     brief: 'The channel name that is being used.',
@@ -10348,6 +10426,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'mail',
     sdks: ['php-laravel'],
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [CLIENT_ADDRESS]: {
     brief:
@@ -10359,6 +10438,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'example.com',
     aliases: [HTTP_CLIENT_IP],
+    changelog: [{ version: '0.1.0', prs: [106, 127] }, { version: '0.0.0' }],
   },
   [CLIENT_PORT]: {
     brief: 'Client port number.',
@@ -10368,6 +10448,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 5432,
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [CLOUDFLARE_D1_DURATION]: {
     brief: 'The duration of a Cloudflare D1 operation.',
@@ -10378,6 +10459,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 543,
     sdks: ['javascript-cloudflare'],
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [CLOUDFLARE_D1_ROWS_READ]: {
     brief: 'The number of rows read in a Cloudflare D1 operation.',
@@ -10388,6 +10470,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 12,
     sdks: ['javascript-cloudflare'],
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [CLOUDFLARE_D1_ROWS_WRITTEN]: {
     brief: 'The number of rows written in a Cloudflare D1 operation.',
@@ -10398,6 +10481,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 12,
     sdks: ['javascript-cloudflare'],
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [CODE_FILEPATH]: {
     brief:
@@ -10412,6 +10496,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'code.file.path',
     },
     aliases: [CODE_FILE_PATH],
+    changelog: [{ version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
   },
   [CODE_FILE_PATH]: {
     brief:
@@ -10423,6 +10508,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: '/app/myapplication/http/handler/server.py',
     aliases: [CODE_FILEPATH],
+    changelog: [{ version: '0.0.0' }],
   },
   [CODE_FUNCTION]: {
     brief: "The method or function name, or equivalent (usually rightmost part of the code unit's name).",
@@ -10436,6 +10522,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'code.function.name',
     },
     aliases: [CODE_FUNCTION_NAME],
+    changelog: [{ version: '0.1.0', prs: [61, 74] }, { version: '0.0.0' }],
   },
   [CODE_FUNCTION_NAME]: {
     brief: "The method or function name, or equivalent (usually rightmost part of the code unit's name).",
@@ -10446,6 +10533,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'server_request',
     aliases: [CODE_FUNCTION],
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [CODE_LINENO]: {
     brief:
@@ -10460,6 +10548,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'code.line.number',
     },
     aliases: [CODE_LINE_NUMBER],
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61, 108] }, { version: '0.0.0' }],
   },
   [CODE_LINE_NUMBER]: {
     brief:
@@ -10471,6 +10560,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 42,
     aliases: [CODE_LINENO],
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [CODE_NAMESPACE]: {
     brief:
@@ -10485,6 +10575,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'code.function.name',
       reason: 'code.function.name should include the namespace.',
     },
+    changelog: [{ version: '0.1.0', prs: [61, 74] }, { version: '0.0.0' }],
   },
   [CULTURE_CALENDAR]: {
     brief: 'The calendar system used by the culture.',
@@ -10494,6 +10585,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'GregorianCalendar',
+    changelog: [{ version: '0.4.0', prs: [243] }],
   },
   [CULTURE_DISPLAY_NAME]: {
     brief: 'Human readable name of the culture.',
@@ -10503,6 +10595,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'English (United States)',
+    changelog: [{ version: '0.4.0', prs: [243] }],
   },
   [CULTURE_IS_24_HOUR_FORMAT]: {
     brief: 'Whether the culture uses 24-hour time format.',
@@ -10512,6 +10605,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: true,
+    changelog: [{ version: '0.4.0', prs: [243] }],
   },
   [CULTURE_LOCALE]: {
     brief: 'The locale identifier following RFC 4646.',
@@ -10521,6 +10615,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'en-US',
+    changelog: [{ version: '0.4.0', prs: [243] }],
   },
   [CULTURE_TIMEZONE]: {
     brief: 'The timezone of the culture, as a geographic timezone identifier.',
@@ -10530,6 +10625,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'Europe/Vienna',
+    changelog: [{ version: '0.4.0', prs: [243] }],
   },
   [DB_COLLECTION_NAME]: {
     brief: 'The name of a collection (table, container) within the database.',
@@ -10539,6 +10635,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'users',
+    changelog: [{ version: '0.1.0', prs: [106, 127] }, { version: '0.0.0' }],
   },
   [DB_NAME]: {
     brief: 'The name of the database being accessed.',
@@ -10552,6 +10649,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'db.namespace',
     },
     aliases: [DB_NAMESPACE],
+    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
   [DB_NAMESPACE]: {
     brief: 'The name of the database being accessed.',
@@ -10562,6 +10660,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'customers',
     aliases: [DB_NAME],
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [DB_OPERATION]: {
     brief: 'The name of the operation being executed.',
@@ -10575,6 +10674,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'db.operation.name',
     },
     aliases: [DB_OPERATION_NAME],
+    changelog: [{ version: '0.4.0', prs: [199] }, { version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
   [DB_OPERATION_NAME]: {
     brief: 'The name of the operation being executed.',
@@ -10585,6 +10685,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'SELECT',
     aliases: [DB_OPERATION],
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [DB_QUERY_PARAMETER_KEY]: {
     brief:
@@ -10596,6 +10697,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     hasDynamicSuffix: true,
     example: "db.query.parameter.foo='123'",
+    changelog: [{ version: '0.1.0', prs: [103, 127] }],
   },
   [DB_QUERY_SUMMARY]: {
     brief:
@@ -10606,6 +10708,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'SELECT users;',
+    changelog: [{ version: '0.4.0', prs: [208] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [DB_QUERY_TEXT]: {
     brief:
@@ -10617,6 +10720,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'SELECT * FROM users WHERE id = $1',
     aliases: [DB_STATEMENT],
+    changelog: [{ version: '0.4.0', prs: [208] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [DB_REDIS_CONNECTION]: {
     brief: 'The redis connection name.',
@@ -10627,6 +10731,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'my-redis-instance',
     sdks: ['php-laravel'],
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [DB_REDIS_PARAMETERS]: {
     brief: 'The array of command parameters given to a redis command.',
@@ -10637,6 +10742,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: ['test', '*'],
     sdks: ['php-laravel'],
+    changelog: [{ version: '0.0.0' }],
   },
   [DB_SQL_BINDINGS]: {
     brief: 'The array of query bindings.',
@@ -10652,6 +10758,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         'Instead of adding every binding in the db.sql.bindings attribute, add them as individual entires with db.query.parameter.<key>.',
     },
     sdks: ['php-laravel'],
+    changelog: [{ version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
   },
   [DB_STATEMENT]: {
     brief: 'The database statement being executed.',
@@ -10665,6 +10772,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'db.query.text',
     },
     aliases: [DB_QUERY_TEXT],
+    changelog: [{ version: '0.4.0', prs: [199] }, { version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
   [DB_SYSTEM]: {
     brief:
@@ -10679,6 +10787,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'db.system.name',
     },
     aliases: [DB_SYSTEM_NAME],
+    changelog: [{ version: '0.4.0', prs: [199, 224] }, { version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
   [DB_SYSTEM_NAME]: {
     brief:
@@ -10690,6 +10799,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'postgresql',
     aliases: [DB_SYSTEM],
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [DB_USER]: {
     brief: 'The database user.',
@@ -10699,6 +10809,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'fancy_user',
+    changelog: [{ version: '0.0.0' }],
   },
   [DEVICE_BRAND]: {
     brief: 'The brand of the device.',
@@ -10708,6 +10819,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'Apple',
+    changelog: [{ version: '0.1.0', prs: [116, 127] }],
   },
   [DEVICE_FAMILY]: {
     brief: 'The family of the device.',
@@ -10717,6 +10829,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'iPhone',
+    changelog: [{ version: '0.1.0', prs: [116, 127] }],
   },
   [DEVICE_MODEL]: {
     brief: 'The model of the device.',
@@ -10726,6 +10839,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'iPhone 15 Pro Max',
+    changelog: [{ version: '0.1.0', prs: [116, 127] }],
   },
   [ENVIRONMENT]: {
     brief: 'The sentry environment.',
@@ -10739,6 +10853,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'sentry.environment',
     },
     aliases: [SENTRY_ENVIRONMENT],
+    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
   [ERROR_TYPE]: {
     brief: 'Describes a class of error the operation ended with.',
@@ -10748,6 +10863,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'timeout',
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [EVENT_ID]: {
     brief: 'The unique identifier for this event (log record)',
@@ -10757,6 +10873,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 1234567890,
+    changelog: [{ version: '0.1.0', prs: [101] }],
   },
   [EVENT_NAME]: {
     brief: 'The name that uniquely identifies this event (log record)',
@@ -10766,6 +10883,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'Process Payload',
+    changelog: [{ version: '0.1.0', prs: [101, 127] }],
   },
   [EXCEPTION_ESCAPED]: {
     brief:
@@ -10776,6 +10894,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: true,
+    changelog: [{ version: '0.0.0' }],
   },
   [EXCEPTION_MESSAGE]: {
     brief: 'The error message.',
@@ -10785,6 +10904,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'ENOENT: no such file or directory',
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [EXCEPTION_STACKTRACE]: {
     brief:
@@ -10796,6 +10916,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example:
       'Exception in thread "main" java.lang.RuntimeException: Test exception\n at com.example.GenerateTrace.methodB(GenerateTrace.java:13)\n at com.example.GenerateTrace.methodA(GenerateTrace.java:9)\n at com.example.GenerateTrace.main(GenerateTrace.java:5)',
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [EXCEPTION_TYPE]: {
     brief:
@@ -10806,6 +10927,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'OSError',
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [FAAS_COLDSTART]: {
     brief: 'A boolean that is true if the serverless function is executed for the first time (aka cold-start).',
@@ -10815,6 +10937,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: true,
+    changelog: [{ version: '0.0.0' }],
   },
   [FAAS_CRON]: {
     brief: 'A string containing the schedule period as Cron Expression.',
@@ -10824,6 +10947,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: '0/5 * * * ? *',
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [FAAS_TIME]: {
     brief: 'A string containing the function invocation time in the ISO 8601 format expressed in UTC.',
@@ -10833,6 +10957,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: '2020-01-23T13:47:06Z',
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [FAAS_TRIGGER]: {
     brief: 'Type of the trigger which caused this function invocation.',
@@ -10842,6 +10967,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'timer',
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [FLAG_EVALUATION_KEY]: {
     brief:
@@ -10853,6 +10979,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     hasDynamicSuffix: true,
     example: 'flag.evaluation.is_new_ui=true',
+    changelog: [{ version: '0.1.0', prs: [103] }],
   },
   [FRAMES_DELAY]: {
     brief:
@@ -10863,6 +10990,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 5,
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [FRAMES_FROZEN]: {
     brief: 'The number of frozen frames rendered during the lifetime of the span.',
@@ -10872,6 +11000,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 3,
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [FRAMES_SLOW]: {
     brief: 'The number of slow frames rendered during the lifetime of the span.',
@@ -10881,6 +11010,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 1,
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [FRAMES_TOTAL]: {
     brief: 'The number of total frames rendered during the lifetime of the span.',
@@ -10890,6 +11020,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 60,
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [FS_ERROR]: {
     brief: 'The error message of a file system error.',
@@ -10904,6 +11035,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'This attribute is not part of the OpenTelemetry specification and error.type fits much better.',
     },
     sdks: ['javascript-node'],
+    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
   [GEN_AI_AGENT_NAME]: {
     brief: 'The name of the agent being used.',
@@ -10913,6 +11045,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'ResearchAssistant',
+    changelog: [{ version: '0.1.0', prs: [62, 127] }],
   },
   [GEN_AI_CONVERSATION_ID]: {
     brief:
@@ -10923,6 +11056,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'conv_5j66UpCpwteGg4YSxUnt7lPY',
+    changelog: [{ version: '0.4.0', prs: [250] }],
   },
   [GEN_AI_COST_INPUT_TOKENS]: {
     brief: 'The cost of tokens used to process the AI input (prompt) in USD (without cached input tokens).',
@@ -10932,6 +11066,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 123.45,
+    changelog: [
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [112] },
+    ],
   },
   [GEN_AI_COST_OUTPUT_TOKENS]: {
     brief: 'The cost of tokens used for creating the AI output in USD (without reasoning tokens).',
@@ -10941,6 +11079,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 123.45,
+    changelog: [
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [112] },
+    ],
   },
   [GEN_AI_COST_TOTAL_TOKENS]: {
     brief: 'The total cost for the tokens used.',
@@ -10951,6 +11093,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 12.34,
     aliases: [AI_TOTAL_COST],
+    changelog: [
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [126] },
+    ],
   },
   [GEN_AI_EMBEDDINGS_INPUT]: {
     brief: 'The input to the embeddings model.',
@@ -10960,6 +11106,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: "What's the weather in Paris?",
+    changelog: [{ version: '0.3.1', prs: [195] }],
   },
   [GEN_AI_INPUT_MESSAGES]: {
     brief:
@@ -10972,6 +11119,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example:
       '[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
     aliases: [AI_TEXTS],
+    changelog: [{ version: '0.4.0', prs: [221] }],
   },
   [GEN_AI_OPERATION_NAME]: {
     brief:
@@ -10982,6 +11130,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'chat',
+    changelog: [
+      { version: '0.4.0', prs: [225] },
+      { version: '0.1.0', prs: [62, 127] },
+    ],
   },
   [GEN_AI_OPERATION_TYPE]: {
     brief:
@@ -10992,6 +11144,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'tool',
+    changelog: [
+      { version: '0.4.0', prs: [257] },
+      { version: '0.1.0', prs: [113, 127] },
+    ],
   },
   [GEN_AI_OUTPUT_MESSAGES]: {
     brief:
@@ -11003,6 +11159,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example:
       '[{"role": "assistant", "parts": [{"type": "text", "content": "The weather in Paris is currently rainy with a temperature of 57°F."}], "finish_reason": "stop"}]',
+    changelog: [{ version: '0.4.0', prs: [221] }],
   },
   [GEN_AI_PIPELINE_NAME]: {
     brief: 'Name of the AI pipeline or chain being executed.',
@@ -11013,6 +11170,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'Autofix Pipeline',
     aliases: [AI_PIPELINE_NAME],
+    changelog: [{ version: '0.1.0', prs: [76, 127] }],
   },
   [GEN_AI_PROMPT]: {
     brief: 'The input messages sent to the model',
@@ -11025,6 +11183,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       reason: 'Deprecated from OTEL, use gen_ai.input.messages with the new format instead.',
     },
+    changelog: [{ version: '0.1.0', prs: [74, 108, 119] }, { version: '0.0.0' }],
   },
   [GEN_AI_PROVIDER_NAME]: {
     brief: 'The Generative AI provider as identified by the client or server instrumentation.',
@@ -11035,6 +11194,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'openai',
     aliases: [AI_MODEL_PROVIDER, GEN_AI_SYSTEM],
+    changelog: [{ version: '0.4.0', prs: [253] }],
   },
   [GEN_AI_REQUEST_AVAILABLE_TOOLS]: {
     brief: 'The available tools for the model. It has to be a stringified version of an array of objects.',
@@ -11048,6 +11208,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.tool.definitions',
     },
+    changelog: [
+      { version: '0.4.0', prs: [221] },
+      { version: '0.1.0', prs: [63, 127] },
+    ],
   },
   [GEN_AI_REQUEST_FREQUENCY_PENALTY]: {
     brief:
@@ -11059,6 +11223,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 0.5,
     aliases: [AI_FREQUENCY_PENALTY],
+    changelog: [
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [57] },
+    ],
   },
   [GEN_AI_REQUEST_MAX_TOKENS]: {
     brief: 'The maximum number of tokens to generate in the response.',
@@ -11068,6 +11236,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 2048,
+    changelog: [
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [62] },
+    ],
   },
   [GEN_AI_REQUEST_MESSAGES]: {
     brief:
@@ -11083,6 +11255,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.input.messages',
     },
     aliases: [AI_INPUT_MESSAGES],
+    changelog: [
+      { version: '0.4.0', prs: [221] },
+      { version: '0.1.0', prs: [63, 74, 108, 119, 122] },
+    ],
   },
   [GEN_AI_REQUEST_MODEL]: {
     brief: 'The model identifier being used for the request.',
@@ -11092,6 +11268,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'gpt-4-turbo-preview',
+    changelog: [{ version: '0.1.0', prs: [62, 127] }],
   },
   [GEN_AI_REQUEST_PRESENCE_PENALTY]: {
     brief:
@@ -11103,6 +11280,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 0.5,
     aliases: [AI_PRESENCE_PENALTY],
+    changelog: [
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [57] },
+    ],
   },
   [GEN_AI_REQUEST_SEED]: {
     brief: 'The seed, ideally models given the same seed and same other parameters will produce the exact same output.',
@@ -11113,6 +11294,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: '1234567890',
     aliases: [AI_SEED],
+    changelog: [{ version: '0.1.0', prs: [57, 127] }],
   },
   [GEN_AI_REQUEST_TEMPERATURE]: {
     brief:
@@ -11124,6 +11306,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 0.1,
     aliases: [AI_TEMPERATURE],
+    changelog: [
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [57] },
+    ],
   },
   [GEN_AI_REQUEST_TOP_K]: {
     brief:
@@ -11135,6 +11321,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 35,
     aliases: [AI_TOP_K],
+    changelog: [
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [57] },
+    ],
   },
   [GEN_AI_REQUEST_TOP_P]: {
     brief:
@@ -11146,6 +11336,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 0.7,
     aliases: [AI_TOP_P],
+    changelog: [
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [57] },
+    ],
   },
   [GEN_AI_RESPONSE_FINISH_REASONS]: {
     brief: 'The reason why the model stopped generating.',
@@ -11156,6 +11350,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'COMPLETE',
     aliases: [AI_FINISH_REASON],
+    changelog: [{ version: '0.1.0', prs: [57, 127] }],
   },
   [GEN_AI_RESPONSE_ID]: {
     brief: 'Unique identifier for the completion.',
@@ -11166,6 +11361,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'gen_123abc',
     aliases: [AI_GENERATION_ID],
+    changelog: [{ version: '0.1.0', prs: [57, 127] }],
   },
   [GEN_AI_RESPONSE_MODEL]: {
     brief: 'The vendor-specific ID of the model used.',
@@ -11176,6 +11372,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'gpt-4',
     aliases: [AI_MODEL_ID],
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [GEN_AI_RESPONSE_STREAMING]: {
     brief: "Whether or not the AI model call's response was streamed back asynchronously",
@@ -11186,6 +11383,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: true,
     aliases: [AI_STREAMING],
+    changelog: [{ version: '0.1.0', prs: [76] }],
   },
   [GEN_AI_RESPONSE_TEXT]: {
     brief:
@@ -11200,6 +11398,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.output.messages',
     },
+    changelog: [
+      { version: '0.4.0', prs: [221] },
+      { version: '0.1.0', prs: [63, 74] },
+    ],
   },
   [GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN]: {
     brief: 'Time in seconds when the first response content chunk arrived in streaming responses.',
@@ -11209,6 +11411,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 0.6853435,
+    changelog: [{ version: '0.4.0', prs: [227] }],
   },
   [GEN_AI_RESPONSE_TOKENS_PER_SECOND]: {
     brief: 'The total output tokens per seconds throughput',
@@ -11218,6 +11421,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 12345.67,
+    changelog: [
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [66] },
+    ],
   },
   [GEN_AI_RESPONSE_TOOL_CALLS]: {
     brief: "The tool calls in the model's response. It has to be a stringified version of an array of objects.",
@@ -11230,6 +11437,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.output.messages',
     },
+    changelog: [
+      { version: '0.4.0', prs: [221] },
+      { version: '0.1.0', prs: [63, 74] },
+    ],
   },
   [GEN_AI_SYSTEM]: {
     brief: 'The provider of the model.',
@@ -11243,6 +11454,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.provider.name',
     },
     aliases: [AI_MODEL_PROVIDER, GEN_AI_PROVIDER_NAME],
+    changelog: [
+      { version: '0.4.0', prs: [253] },
+      { version: '0.1.0', prs: [57, 127] },
+    ],
   },
   [GEN_AI_SYSTEM_INSTRUCTIONS]: {
     brief: 'The system instructions passed to the model.',
@@ -11253,6 +11468,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'You are a helpful assistant',
     aliases: [AI_PREAMBLE],
+    changelog: [{ version: '0.4.0', prs: [221] }],
   },
   [GEN_AI_SYSTEM_MESSAGE]: {
     brief: 'The system instructions passed to the model.',
@@ -11265,6 +11481,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.system_instructions',
     },
+    changelog: [
+      { version: '0.4.0', prs: [221] },
+      { version: '0.1.0', prs: [62] },
+    ],
   },
   [GEN_AI_TOOL_CALL_ARGUMENTS]: {
     brief: 'The arguments of the tool call. It has to be a stringified version of the arguments to the tool.',
@@ -11275,6 +11495,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: '{"location": "Paris"}',
     aliases: [GEN_AI_TOOL_INPUT],
+    changelog: [{ version: '0.4.0', prs: [221] }],
   },
   [GEN_AI_TOOL_CALL_RESULT]: {
     brief: 'The result of the tool call. It has to be a stringified version of the result of the tool.',
@@ -11285,6 +11506,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'rainy, 57°F',
     aliases: [GEN_AI_TOOL_OUTPUT, GEN_AI_TOOL_MESSAGE],
+    changelog: [{ version: '0.4.0', prs: [221] }],
   },
   [GEN_AI_TOOL_DEFINITIONS]: {
     brief: 'The list of source system tool definitions available to the GenAI agent or model.',
@@ -11295,6 +11517,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example:
       '[{"type": "function", "name": "get_current_weather", "description": "Get the current weather in a given location", "parameters": {"type": "object", "properties": {"location": {"type": "string", "description": "The city and state, e.g. San Francisco, CA"}, "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]}}, "required": ["location", "unit"]}}]',
+    changelog: [{ version: '0.4.0', prs: [221] }],
   },
   [GEN_AI_TOOL_DESCRIPTION]: {
     brief: 'The description of the tool being used.',
@@ -11304,6 +11527,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'Searches the web for current information about a topic',
+    changelog: [{ version: '0.1.0', prs: [62, 127] }],
   },
   [GEN_AI_TOOL_INPUT]: {
     brief: 'The input of the tool being used. It has to be a stringified version of the input to the tool.',
@@ -11317,6 +11541,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.tool.call.arguments',
     },
     aliases: [GEN_AI_TOOL_CALL_ARGUMENTS],
+    changelog: [{ version: '0.1.0', prs: [63, 74] }],
   },
   [GEN_AI_TOOL_MESSAGE]: {
     brief: 'The response from a tool or function call passed to the model.',
@@ -11330,6 +11555,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.tool.call.result',
     },
     aliases: [GEN_AI_TOOL_CALL_RESULT, GEN_AI_TOOL_OUTPUT],
+    changelog: [{ version: '0.1.0', prs: [62] }],
   },
   [GEN_AI_TOOL_NAME]: {
     brief: 'Name of the tool utilized by the agent.',
@@ -11340,6 +11566,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'Flights',
     aliases: [AI_FUNCTION_CALL],
+    changelog: [{ version: '0.1.0', prs: [57, 127] }],
   },
   [GEN_AI_TOOL_OUTPUT]: {
     brief: 'The output of the tool being used. It has to be a stringified version of the output of the tool.',
@@ -11353,6 +11580,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.tool.call.result',
     },
     aliases: [GEN_AI_TOOL_CALL_RESULT, GEN_AI_TOOL_MESSAGE],
+    changelog: [{ version: '0.1.0', prs: [63, 74] }],
   },
   [GEN_AI_TOOL_TYPE]: {
     brief: 'The type of tool being used.',
@@ -11362,6 +11590,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'function',
+    changelog: [{ version: '0.1.0', prs: [62, 127] }],
   },
   [GEN_AI_USAGE_COMPLETION_TOKENS]: {
     brief: 'The number of tokens used in the GenAI response (completion).',
@@ -11375,6 +11604,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.usage.output_tokens',
     },
     aliases: [AI_COMPLETION_TOKENS_USED, GEN_AI_USAGE_OUTPUT_TOKENS],
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
   },
   [GEN_AI_USAGE_INPUT_TOKENS]: {
     brief: 'The number of tokens used to process the AI input (prompt) including cached input tokens.',
@@ -11385,6 +11615,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 10,
     aliases: [AI_PROMPT_TOKENS_USED, GEN_AI_USAGE_PROMPT_TOKENS],
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [112] }, { version: '0.0.0' }],
   },
   [GEN_AI_USAGE_INPUT_TOKENS_CACHED]: {
     brief: 'The number of cached tokens used to process the AI input (prompt).',
@@ -11394,6 +11625,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 50,
+    changelog: [
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [62, 112] },
+    ],
   },
   [GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE]: {
     brief: 'The number of tokens written to the cache when processing the AI input (prompt).',
@@ -11403,6 +11638,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 100,
+    changelog: [{ version: '0.4.0', prs: [217, 228] }],
   },
   [GEN_AI_USAGE_OUTPUT_TOKENS]: {
     brief: 'The number of tokens used for creating the AI output (including reasoning tokens).',
@@ -11413,6 +11649,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 10,
     aliases: [AI_COMPLETION_TOKENS_USED, GEN_AI_USAGE_COMPLETION_TOKENS],
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [112] }, { version: '0.0.0' }],
   },
   [GEN_AI_USAGE_OUTPUT_TOKENS_REASONING]: {
     brief: 'The number of tokens used for reasoning to create the AI output.',
@@ -11422,6 +11659,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 75,
+    changelog: [
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [62, 112] },
+    ],
   },
   [GEN_AI_USAGE_PROMPT_TOKENS]: {
     brief: 'The number of tokens used in the GenAI input (prompt).',
@@ -11435,6 +11676,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.usage.input_tokens',
     },
     aliases: [AI_PROMPT_TOKENS_USED, GEN_AI_USAGE_INPUT_TOKENS],
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
   },
   [GEN_AI_USAGE_TOTAL_TOKENS]: {
     brief: 'The total number of tokens used to process the prompt. (input tokens plus output todkens)',
@@ -11445,6 +11687,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 20,
     aliases: [AI_TOTAL_TOKENS_USED],
+    changelog: [
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [57] },
+    ],
   },
   [GRAPHQL_OPERATION_NAME]: {
     brief: 'The name of the operation being executed.',
@@ -11454,6 +11700,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'findBookById',
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [GRAPHQL_OPERATION_TYPE]: {
     brief: 'The type of the operation being executed.',
@@ -11463,6 +11710,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'query',
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [HTTP_CLIENT_IP]: {
     brief:
@@ -11477,6 +11725,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'client.address',
     },
     aliases: [CLIENT_ADDRESS],
+    changelog: [{ version: '0.1.0', prs: [61, 106, 127] }, { version: '0.0.0' }],
   },
   [HTTP_DECODED_RESPONSE_CONTENT_LENGTH]: {
     brief: 'The decoded body size of the response (in bytes).',
@@ -11487,6 +11736,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 456,
     sdks: ['javascript-browser'],
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [HTTP_FLAVOR]: {
     brief: 'The actual version of the protocol used for network communication.',
@@ -11500,6 +11750,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'network.protocol.version',
     },
     aliases: [NETWORK_PROTOCOL_VERSION, NET_PROTOCOL_VERSION],
+    changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
   },
   [HTTP_FRAGMENT]: {
     brief:
@@ -11510,6 +11761,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '#details',
+    changelog: [{ version: '0.0.0' }],
   },
   [HTTP_HOST]: {
     brief: 'The domain name.',
@@ -11524,6 +11776,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Deprecated, use one of `server.address` or `client.address`, depending on the usage',
     },
     aliases: [SERVER_ADDRESS, CLIENT_ADDRESS, HTTP_SERVER_NAME, NET_HOST_NAME],
+    changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
   },
   [HTTP_METHOD]: {
     brief: 'The HTTP method used.',
@@ -11537,6 +11790,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'http.request.method',
     },
     aliases: [HTTP_REQUEST_METHOD],
+    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
   [HTTP_QUERY]: {
     brief:
@@ -11549,6 +11803,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '?foo=bar&bar=baz',
+    changelog: [{ version: '0.0.0' }],
   },
   [HTTP_REQUEST_CONNECTION_END]: {
     brief:
@@ -11560,6 +11815,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 1732829555.15,
     sdks: ['javascript-browser'],
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
   [HTTP_REQUEST_CONNECT_START]: {
     brief:
@@ -11571,6 +11827,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 1732829555.111,
     sdks: ['javascript-browser'],
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
   [HTTP_REQUEST_DOMAIN_LOOKUP_END]: {
     brief:
@@ -11582,6 +11839,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 1732829555.201,
     sdks: ['javascript-browser'],
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
   [HTTP_REQUEST_DOMAIN_LOOKUP_START]: {
     brief:
@@ -11593,6 +11851,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 1732829555.322,
     sdks: ['javascript-browser'],
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
   [HTTP_REQUEST_FETCH_START]: {
     brief: 'The UNIX timestamp representing the time immediately before the browser starts to fetch the resource.',
@@ -11603,6 +11862,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 1732829555.389,
     sdks: ['javascript-browser'],
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
   [HTTP_REQUEST_HEADER_KEY]: {
     brief:
@@ -11614,6 +11874,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     hasDynamicSuffix: true,
     example: "http.request.header.custom-header=['foo', 'bar']",
+    changelog: [
+      { version: '0.4.0', prs: [201, 204] },
+      { version: '0.1.0', prs: [103] },
+    ],
   },
   [HTTP_REQUEST_METHOD]: {
     brief: 'The HTTP method used.',
@@ -11624,6 +11888,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'GET',
     aliases: [METHOD, HTTP_METHOD],
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [HTTP_REQUEST_REDIRECT_END]: {
     brief:
@@ -11635,6 +11900,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 1732829558.502,
     sdks: ['javascript-browser'],
+    changelog: [
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [130, 134] },
+    ],
   },
   [HTTP_REQUEST_REDIRECT_START]: {
     brief: 'The UNIX timestamp representing the start time of the fetch which that initiates the redirect.',
@@ -11645,6 +11914,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 1732829555.495,
     sdks: ['javascript-browser'],
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
   [HTTP_REQUEST_REQUEST_START]: {
     brief:
@@ -11656,6 +11926,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 1732829555.51,
     sdks: ['javascript-browser'],
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
   [HTTP_REQUEST_RESEND_COUNT]: {
     brief: 'The ordinal number of request resending attempt (for any reason, including redirects).',
@@ -11665,6 +11936,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 2,
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [HTTP_REQUEST_RESPONSE_END]: {
     brief:
@@ -11676,6 +11948,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 1732829555.89,
     sdks: ['javascript-browser'],
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
   [HTTP_REQUEST_RESPONSE_START]: {
     brief:
@@ -11687,6 +11960,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 1732829555.7,
     sdks: ['javascript-browser'],
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
   [HTTP_REQUEST_SECURE_CONNECTION_START]: {
     brief:
@@ -11698,6 +11972,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 1732829555.73,
     sdks: ['javascript-browser'],
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
   [HTTP_REQUEST_TIME_TO_FIRST_BYTE]: {
     brief:
@@ -11709,6 +11984,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 1.032,
     sdks: ['javascript-browser'],
+    changelog: [
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [131] },
+    ],
   },
   [HTTP_REQUEST_WORKER_START]: {
     brief:
@@ -11720,6 +11999,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 1732829553.68,
     sdks: ['javascript-browser'],
+    changelog: [
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [130, 134] },
+    ],
   },
   [HTTP_RESPONSE_BODY_SIZE]: {
     brief: 'The encoded body size of the response (in bytes).',
@@ -11730,6 +12013,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 123,
     aliases: [HTTP_RESPONSE_CONTENT_LENGTH, HTTP_RESPONSE_HEADER_CONTENT_LENGTH],
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [106] }, { version: '0.0.0' }],
   },
   [HTTP_RESPONSE_CONTENT_LENGTH]: {
     brief: 'The encoded body size of the response (in bytes).',
@@ -11743,6 +12027,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'http.response.body.size',
     },
     aliases: [HTTP_RESPONSE_BODY_SIZE, HTTP_RESPONSE_HEADER_CONTENT_LENGTH],
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61, 106] }, { version: '0.0.0' }],
   },
   [HTTP_RESPONSE_HEADER_CONTENT_LENGTH]: {
     brief: 'The size of the message body sent to the recipient (in bytes)',
@@ -11753,6 +12038,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: "http.response.header.custom-header=['foo', 'bar']",
     aliases: [HTTP_RESPONSE_CONTENT_LENGTH, HTTP_RESPONSE_BODY_SIZE],
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [HTTP_RESPONSE_HEADER_KEY]: {
     brief:
@@ -11764,6 +12050,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     hasDynamicSuffix: true,
     example: "http.response.header.custom-header=['foo', 'bar']",
+    changelog: [
+      { version: '0.4.0', prs: [201, 204] },
+      { version: '0.1.0', prs: [103] },
+    ],
   },
   [HTTP_RESPONSE_SIZE]: {
     brief: 'The transfer size of the response (in bytes).',
@@ -11774,6 +12064,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 456,
     aliases: [HTTP_RESPONSE_TRANSFER_SIZE],
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [HTTP_RESPONSE_STATUS_CODE]: {
     brief: 'The status code of the HTTP response.',
@@ -11784,6 +12075,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 404,
     aliases: [HTTP_STATUS_CODE],
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [HTTP_RESPONSE_TRANSFER_SIZE]: {
     brief: 'The transfer size of the response (in bytes).',
@@ -11797,6 +12089,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'http.response.size',
     },
     aliases: [HTTP_RESPONSE_SIZE],
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
   },
   [HTTP_ROUTE]: {
     brief: 'The matched route, that is, the path template in the format used by the respective server framework.',
@@ -11807,6 +12100,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: '/users/:id',
     aliases: [URL_TEMPLATE],
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [HTTP_SCHEME]: {
     brief: 'The URI scheme component identifying the used protocol.',
@@ -11820,6 +12114,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'url.scheme',
     },
     aliases: [URL_SCHEME],
+    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
   [HTTP_SERVER_NAME]: {
     brief: 'The server domain name',
@@ -11833,6 +12128,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'server.address',
     },
     aliases: [SERVER_ADDRESS, NET_HOST_NAME, HTTP_HOST],
+    changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
   },
   [HTTP_SERVER_REQUEST_TIME_IN_QUEUE]: {
     brief:
@@ -11857,6 +12153,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'http.response.status_code',
     },
     aliases: [HTTP_RESPONSE_STATUS_CODE],
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
   },
   [HTTP_TARGET]: {
     brief: 'The pathname and query string of the URL.',
@@ -11870,6 +12167,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'url.path',
       reason: 'This attribute is being deprecated in favor of url.path and url.query',
     },
+    changelog: [{ version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
   },
   [HTTP_URL]: {
     brief: 'The URL of the resource that was fetched.',
@@ -11883,6 +12181,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'url.full',
     },
     aliases: [URL_FULL, URL],
+    changelog: [{ version: '0.1.0', prs: [61, 108] }, { version: '0.0.0' }],
   },
   [HTTP_USER_AGENT]: {
     brief: 'Value of the HTTP User-Agent header sent by the client.',
@@ -11897,6 +12196,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'user_agent.original',
     },
     aliases: [USER_AGENT_ORIGINAL],
+    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
   [ID]: {
     brief: 'A unique identifier for the span.',
@@ -11907,6 +12207,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'f47ac10b58cc4372a5670e02b2c3d479',
     sdks: ['php-laravel'],
+    changelog: [{ version: '0.0.0' }],
   },
   [JVM_GC_ACTION]: {
     brief: 'Name of the garbage collector action.',
@@ -11916,6 +12217,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'end of minor GC',
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [JVM_GC_NAME]: {
     brief: 'Name of the garbage collector.',
@@ -11925,6 +12227,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'G1 Young Generation',
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [JVM_MEMORY_POOL_NAME]: {
     brief: 'Name of the memory pool.',
@@ -11934,6 +12237,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'G1 Old Gen',
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [JVM_MEMORY_TYPE]: {
     brief: 'Name of the memory pool.',
@@ -11943,6 +12247,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'G1 Old Gen',
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [JVM_THREAD_DAEMON]: {
     brief: 'Whether the thread is daemon or not.',
@@ -11952,6 +12257,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: true,
+    changelog: [{ version: '0.0.0' }],
   },
   [JVM_THREAD_STATE]: {
     brief: 'State of the thread.',
@@ -11961,6 +12267,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'blocked',
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [LCP_ELEMENT]: {
     brief: 'The dom element responsible for the largest contentful paint.',
@@ -11970,6 +12277,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'img',
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [LCP_ID]: {
     brief: 'The id of the dom element responsible for the largest contentful paint.',
@@ -11979,6 +12287,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '#hero',
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [LCP_SIZE]: {
     brief: 'The size of the largest contentful paint element.',
@@ -11988,6 +12297,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 1234,
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [LCP_URL]: {
     brief: 'The url of the dom element responsible for the largest contentful paint.',
@@ -11997,6 +12307,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'https://example.com',
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [LOGGER_NAME]: {
     brief: 'The name of the logger that generated this event.',
@@ -12006,6 +12317,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'myLogger',
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [MCP_CANCELLED_REASON]: {
     brief: 'Reason for the cancellation of an MCP operation.',
@@ -12016,6 +12328,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'User cancelled the request',
+    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   [MCP_CANCELLED_REQUEST_ID]: {
     brief: 'Request ID of the cancelled MCP operation.',
@@ -12025,6 +12338,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '123',
+    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   [MCP_CLIENT_NAME]: {
     brief: 'Name of the MCP client application.',
@@ -12034,6 +12348,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'claude-desktop',
+    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   [MCP_CLIENT_TITLE]: {
     brief: 'Display title of the MCP client application.',
@@ -12044,6 +12359,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'Claude Desktop',
+    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   [MCP_CLIENT_VERSION]: {
     brief: 'Version of the MCP client application.',
@@ -12053,6 +12369,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '1.0.0',
+    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   [MCP_LIFECYCLE_PHASE]: {
     brief: 'Lifecycle phase indicator for MCP operations.',
@@ -12062,6 +12379,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'initialization_complete',
+    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   [MCP_LOGGING_DATA_TYPE]: {
     brief: 'Data type of the logged message content.',
@@ -12071,6 +12389,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'string',
+    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   [MCP_LOGGING_LEVEL]: {
     brief: 'Log level for MCP logging operations.',
@@ -12080,6 +12399,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'info',
+    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   [MCP_LOGGING_LOGGER]: {
     brief: 'Logger name for MCP logging operations.',
@@ -12090,6 +12410,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'mcp_server',
+    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   [MCP_LOGGING_MESSAGE]: {
     brief: 'Log message content from MCP logging operations.',
@@ -12100,6 +12421,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'Tool execution completed successfully',
+    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   [MCP_METHOD_NAME]: {
     brief: 'The name of the MCP request or notification method being called.',
@@ -12109,6 +12431,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'tools/call',
+    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   [MCP_PROGRESS_CURRENT]: {
     brief: 'Current progress value of an MCP operation.',
@@ -12118,6 +12441,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 50,
+    changelog: [
+      { version: '0.4.0', prs: [228] },
+      { version: '0.3.0', prs: [171] },
+    ],
   },
   [MCP_PROGRESS_MESSAGE]: {
     brief: 'Progress message describing the current state of an MCP operation.',
@@ -12128,6 +12455,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'Processing 50 of 100 items',
+    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   [MCP_PROGRESS_PERCENTAGE]: {
     brief: 'Calculated progress percentage of an MCP operation. Computed from current/total * 100.',
@@ -12137,6 +12465,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 50,
+    changelog: [
+      { version: '0.4.0', prs: [228] },
+      { version: '0.3.0', prs: [171] },
+    ],
   },
   [MCP_PROGRESS_TOKEN]: {
     brief: 'Token for tracking progress of an MCP operation.',
@@ -12146,6 +12478,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'progress-token-123',
+    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   [MCP_PROGRESS_TOTAL]: {
     brief: 'Total progress target value of an MCP operation.',
@@ -12155,6 +12488,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 100,
+    changelog: [
+      { version: '0.4.0', prs: [228] },
+      { version: '0.3.0', prs: [171] },
+    ],
   },
   [MCP_PROMPT_NAME]: {
     brief: 'Name of the MCP prompt template being used.',
@@ -12165,6 +12502,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'summarize',
+    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   [MCP_PROMPT_RESULT_DESCRIPTION]: {
     brief: 'Description of the prompt result.',
@@ -12174,6 +12512,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'A summary of the requested information',
+    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   [MCP_PROMPT_RESULT_MESSAGE_CONTENT]: {
     brief: 'Content of the message in the prompt result. Used for single message results only.',
@@ -12183,6 +12522,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'Please provide a summary of the document',
+    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   [MCP_PROMPT_RESULT_MESSAGE_COUNT]: {
     brief: 'Number of messages in the prompt result.',
@@ -12192,6 +12532,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 3,
+    changelog: [
+      { version: '0.4.0', prs: [228] },
+      { version: '0.3.0', prs: [171] },
+    ],
   },
   [MCP_PROMPT_RESULT_MESSAGE_ROLE]: {
     brief: 'Role of the message in the prompt result. Used for single message results only.',
@@ -12201,6 +12545,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'user',
+    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   [MCP_PROTOCOL_READY]: {
     brief: 'Protocol readiness indicator for MCP session. Non-zero value indicates the protocol is ready.',
@@ -12210,6 +12555,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 1,
+    changelog: [
+      { version: '0.4.0', prs: [228] },
+      { version: '0.3.0', prs: [171] },
+    ],
   },
   [MCP_PROTOCOL_VERSION]: {
     brief: 'MCP protocol version used in the session.',
@@ -12219,6 +12568,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '2024-11-05',
+    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   [MCP_REQUEST_ARGUMENT_KEY]: {
     brief:
@@ -12231,6 +12581,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     hasDynamicSuffix: true,
     example: "mcp.request.argument.query='weather in Paris'",
+    changelog: [{ version: '0.3.0', prs: [176] }],
   },
   [MCP_REQUEST_ARGUMENT_NAME]: {
     brief: 'Name argument from prompts/get MCP request.',
@@ -12241,6 +12592,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'summarize',
+    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   [MCP_REQUEST_ARGUMENT_URI]: {
     brief: 'URI argument from resources/read MCP request.',
@@ -12251,6 +12603,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'file:///path/to/resource',
+    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   [MCP_REQUEST_ID]: {
     brief: 'JSON-RPC request identifier for the MCP request. Unique within the MCP session.',
@@ -12260,6 +12613,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '1',
+    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   [MCP_RESOURCE_PROTOCOL]: {
     brief: 'Protocol of the resource URI being accessed, extracted from the URI.',
@@ -12269,6 +12623,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'file',
+    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   [MCP_RESOURCE_URI]: {
     brief: 'The resource URI being accessed in an MCP operation.',
@@ -12279,6 +12634,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'file:///path/to/file.txt',
+    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   [MCP_SERVER_NAME]: {
     brief: 'Name of the MCP server application.',
@@ -12288,6 +12644,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'sentry-mcp-server',
+    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   [MCP_SERVER_TITLE]: {
     brief: 'Display title of the MCP server application.',
@@ -12298,6 +12655,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'Sentry MCP Server',
+    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   [MCP_SERVER_VERSION]: {
     brief: 'Version of the MCP server application.',
@@ -12307,6 +12665,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '0.1.0',
+    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   [MCP_SESSION_ID]: {
     brief: 'Identifier for the MCP session.',
@@ -12316,6 +12675,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '550e8400-e29b-41d4-a716-446655440000',
+    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   [MCP_TOOL_NAME]: {
     brief: 'Name of the MCP tool being called.',
@@ -12325,6 +12685,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'calculator',
+    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   [MCP_TOOL_RESULT_CONTENT]: {
     brief: 'The content of the tool result.',
@@ -12335,6 +12696,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '{"output": "rainy", "toolCallId": "1"}',
+    changelog: [
+      { version: '0.3.0', prs: [171] },
+      { version: '0.2.0', prs: [164] },
+    ],
   },
   [MCP_TOOL_RESULT_CONTENT_COUNT]: {
     brief: 'Number of content items in the tool result.',
@@ -12344,6 +12709,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 1,
+    changelog: [
+      { version: '0.4.0', prs: [228] },
+      { version: '0.3.0', prs: [171] },
+    ],
   },
   [MCP_TOOL_RESULT_IS_ERROR]: {
     brief: 'Whether a tool execution resulted in an error.',
@@ -12353,6 +12722,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: false,
+    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   [MCP_TRANSPORT]: {
     brief: 'Transport method used for MCP communication.',
@@ -12362,6 +12732,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'stdio',
+    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   [MDC_KEY]: {
     brief:
@@ -12374,6 +12745,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     hasDynamicSuffix: true,
     example: "mdc.some_key='some_value'",
     sdks: ['java', 'java.logback', 'java.jul', 'java.log4j2'],
+    changelog: [{ version: '0.3.0', prs: [176] }],
   },
   [MESSAGING_DESTINATION_CONNECTION]: {
     brief: 'The message destination connection.',
@@ -12384,6 +12756,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'BestTopic',
     sdks: ['php-laravel'],
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [MESSAGING_DESTINATION_NAME]: {
     brief: 'The message destination name.',
@@ -12394,6 +12767,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'BestTopic',
     sdks: ['php-laravel'],
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [MESSAGING_MESSAGE_BODY_SIZE]: {
     brief: 'The size of the message body in bytes.',
@@ -12404,6 +12778,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 839,
     sdks: ['php-laravel'],
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [MESSAGING_MESSAGE_ENVELOPE_SIZE]: {
     brief: 'The size of the message body and metadata in bytes.',
@@ -12414,6 +12789,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 1045,
     sdks: ['php-laravel'],
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [MESSAGING_MESSAGE_ID]: {
     brief: 'A value used by the messaging system as an identifier for the message, represented as a string.',
@@ -12424,6 +12800,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'f47ac10b58cc4372a5670e02b2c3d479',
     sdks: ['php-laravel'],
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [MESSAGING_MESSAGE_RECEIVE_LATENCY]: {
     brief: 'The latency between when the message was published and received.',
@@ -12434,6 +12811,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 1732847252,
     sdks: ['php-laravel'],
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [MESSAGING_MESSAGE_RETRY_COUNT]: {
     brief: 'The amount of attempts to send the message.',
@@ -12444,6 +12822,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 2,
     sdks: ['php-laravel'],
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [MESSAGING_OPERATION_TYPE]: {
     brief: 'A string identifying the type of the messaging operation',
@@ -12453,6 +12832,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'create',
+    changelog: [{ version: '0.1.0', prs: [51, 127] }],
   },
   [MESSAGING_SYSTEM]: {
     brief: 'The messaging system as identified by the client instrumentation.',
@@ -12463,6 +12843,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'activemq',
     sdks: ['php-laravel'],
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [METHOD]: {
     brief: 'The HTTP method used.',
@@ -12477,6 +12858,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [HTTP_REQUEST_METHOD],
     sdks: ['javascript-browser', 'javascript-node'],
+    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
   [NAVIGATION_TYPE]: {
     brief: 'The type of navigation done by a client-side router.',
@@ -12486,6 +12868,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'router.push',
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [NEL_ELAPSED_TIME]: {
     brief:
@@ -12496,6 +12879,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 100,
+    changelog: [
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [68] },
+    ],
   },
   [NEL_PHASE]: {
     brief: 'If request failed, the phase of its network error. If request succeeded, "application".',
@@ -12505,6 +12892,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'application',
+    changelog: [{ version: '0.1.0', prs: [68, 127] }],
   },
   [NEL_REFERRER]: {
     brief: "request's referrer, as determined by the referrer policy associated with its client.",
@@ -12514,6 +12902,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'https://example.com/foo?bar=baz',
+    changelog: [{ version: '0.1.0', prs: [68, 127] }],
   },
   [NEL_SAMPLING_FUNCTION]: {
     brief: 'The sampling function used to determine if the request should be sampled.',
@@ -12523,6 +12912,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 0.5,
+    changelog: [
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [68] },
+    ],
   },
   [NEL_TYPE]: {
     brief: 'If request failed, the type of its network error. If request succeeded, "ok".',
@@ -12532,6 +12925,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'dns.unreachable',
+    changelog: [{ version: '0.1.0', prs: [68, 127] }],
   },
   [NETWORK_LOCAL_ADDRESS]: {
     brief: 'Local address of the network connection - IP address or Unix domain socket name.',
@@ -12542,6 +12936,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: '10.1.2.80',
     aliases: [NET_HOST_IP, NET_SOCK_HOST_ADDR],
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [NETWORK_LOCAL_PORT]: {
     brief: 'Local port number of the network connection.',
@@ -12552,6 +12947,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 65400,
     aliases: [NET_SOCK_HOST_PORT],
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [NETWORK_PEER_ADDRESS]: {
     brief: 'Peer address of the network connection - IP address or Unix domain socket name.',
@@ -12562,6 +12958,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: '10.1.2.80',
     aliases: [NET_PEER_IP, NET_SOCK_PEER_ADDR],
+    changelog: [{ version: '0.1.0', prs: [108, 127] }, { version: '0.0.0' }],
   },
   [NETWORK_PEER_PORT]: {
     brief: 'Peer port number of the network connection.',
@@ -12571,6 +12968,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 65400,
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [NETWORK_PROTOCOL_NAME]: {
     brief: 'OSI application layer or non-OSI equivalent.',
@@ -12581,6 +12979,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'http',
     aliases: [NET_PROTOCOL_NAME],
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [NETWORK_PROTOCOL_VERSION]: {
     brief: 'The actual version of the protocol used for network communication.',
@@ -12591,6 +12990,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: '1.1',
     aliases: [HTTP_FLAVOR, NET_PROTOCOL_VERSION],
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [NETWORK_TRANSPORT]: {
     brief: 'OSI transport layer or inter-process communication method.',
@@ -12601,6 +13001,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'tcp',
     aliases: [NET_TRANSPORT],
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [NETWORK_TYPE]: {
     brief: 'OSI network layer or non-OSI equivalent.',
@@ -12610,6 +13011,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'ipv4',
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [NET_HOST_IP]: {
     brief: 'Local address of the network connection - IP address or Unix domain socket name.',
@@ -12623,6 +13025,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'network.local.address',
     },
     aliases: [NETWORK_LOCAL_ADDRESS, NET_SOCK_HOST_ADDR],
+    changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
   },
   [NET_HOST_NAME]: {
     brief:
@@ -12637,6 +13040,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'server.address',
     },
     aliases: [SERVER_ADDRESS, HTTP_SERVER_NAME, HTTP_HOST],
+    changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
   },
   [NET_HOST_PORT]: {
     brief: 'Server port number.',
@@ -12650,6 +13054,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'server.port',
     },
     aliases: [SERVER_PORT],
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
   },
   [NET_PEER_IP]: {
     brief: 'Peer address of the network connection - IP address or Unix domain socket name.',
@@ -12663,6 +13068,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'network.peer.address',
     },
     aliases: [NETWORK_PEER_ADDRESS, NET_SOCK_PEER_ADDR],
+    changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
   },
   [NET_PEER_NAME]: {
     brief:
@@ -12677,6 +13083,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'server.address',
       reason: 'Deprecated, use server.address on client spans and client.address on server spans.',
     },
+    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
   [NET_PEER_PORT]: {
     brief: 'Peer port number.',
@@ -12690,6 +13097,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'server.port',
       reason: 'Deprecated, use server.port on client spans and client.port on server spans.',
     },
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
   },
   [NET_PROTOCOL_NAME]: {
     brief: 'OSI application layer or non-OSI equivalent.',
@@ -12703,6 +13111,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'network.protocol.name',
     },
     aliases: [NETWORK_PROTOCOL_NAME],
+    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
   [NET_PROTOCOL_VERSION]: {
     brief: 'The actual version of the protocol used for network communication.',
@@ -12716,6 +13125,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'network.protocol.version',
     },
     aliases: [NETWORK_PROTOCOL_VERSION, HTTP_FLAVOR],
+    changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
   },
   [NET_SOCK_FAMILY]: {
     brief: 'OSI transport and network layer',
@@ -12729,6 +13139,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'network.transport',
       reason: 'Deprecated, use network.transport and network.type.',
     },
+    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
   [NET_SOCK_HOST_ADDR]: {
     brief: 'Local address of the network connection mapping to Unix domain socket name.',
@@ -12742,6 +13153,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'network.local.address',
     },
     aliases: [NETWORK_LOCAL_ADDRESS, NET_HOST_IP],
+    changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
   },
   [NET_SOCK_HOST_PORT]: {
     brief: 'Local port number of the network connection.',
@@ -12755,6 +13167,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'network.local.port',
     },
     aliases: [NETWORK_LOCAL_PORT],
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
   },
   [NET_SOCK_PEER_ADDR]: {
     brief: 'Peer address of the network connection - IP address',
@@ -12768,6 +13181,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'network.peer.address',
     },
     aliases: [NETWORK_PEER_ADDRESS, NET_PEER_IP],
+    changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
   },
   [NET_SOCK_PEER_NAME]: {
     brief: 'Peer address of the network connection - Unix domain socket name',
@@ -12780,6 +13194,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       reason: 'Deprecated from OTEL, no replacement at this time',
     },
+    changelog: [{ version: '0.1.0', prs: [61, 119, 127] }, { version: '0.0.0' }],
   },
   [NET_SOCK_PEER_PORT]: {
     brief: 'Peer port number of the network connection.',
@@ -12792,6 +13207,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'network.peer.port',
     },
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
   },
   [NET_TRANSPORT]: {
     brief: 'OSI transport layer or inter-process communication method.',
@@ -12805,6 +13221,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'network.transport',
     },
     aliases: [NETWORK_TRANSPORT],
+    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
   [OS_BUILD_ID]: {
     brief: 'The build ID of the operating system.',
@@ -12814,6 +13231,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: '1234567890',
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [OS_DESCRIPTION]: {
     brief:
@@ -12824,6 +13242,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'Ubuntu 18.04.1 LTS',
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [OS_NAME]: {
     brief: 'Human readable operating system name.',
@@ -12833,6 +13252,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'Ubuntu',
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [OS_TYPE]: {
     brief: 'The operating system type.',
@@ -12842,6 +13262,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'linux',
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [OS_VERSION]: {
     brief: 'The version of the operating system.',
@@ -12851,6 +13272,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: '18.04.2',
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [OTEL_SCOPE_NAME]: {
     brief: 'The name of the instrumentation scope - (InstrumentationScope.Name in OTLP).',
@@ -12860,6 +13282,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'io.opentelemetry.contrib.mongodb',
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [OTEL_SCOPE_VERSION]: {
     brief: 'The version of the instrumentation scope - (InstrumentationScope.Version in OTLP).',
@@ -12869,6 +13292,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: '2.4.5',
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [OTEL_STATUS_CODE]: {
     brief: 'Name of the code, either “OK” or “ERROR”. MUST NOT be set if the status code is UNSET.',
@@ -12878,6 +13302,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'OK',
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [OTEL_STATUS_DESCRIPTION]: {
     brief: 'Description of the Status if it has a value, otherwise not set.',
@@ -12887,6 +13312,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'resource not found',
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [PARAMS_KEY]: {
     brief:
@@ -12899,6 +13325,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     hasDynamicSuffix: true,
     example: "params.id='123'",
     aliases: [URL_PATH_PARAMETER_KEY],
+    changelog: [{ version: '0.1.0', prs: [103] }],
   },
   [PREVIOUS_ROUTE]: {
     brief: 'Also used by mobile SDKs to indicate the previous route in the application.',
@@ -12909,6 +13336,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'HomeScreen',
     sdks: ['javascript-reactnative'],
+    changelog: [{ version: '0.1.0', prs: [74] }, { version: '0.0.0' }],
   },
   [PROCESS_EXECUTABLE_NAME]: {
     brief: 'The name of the executable that started the process.',
@@ -12918,6 +13346,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'getsentry',
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [PROCESS_PID]: {
     brief: 'The process ID of the running process.',
@@ -12927,6 +13356,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 12345,
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [PROCESS_RUNTIME_DESCRIPTION]: {
     brief:
@@ -12937,6 +13367,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'Eclipse OpenJ9 VM openj9-0.21.0',
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [PROCESS_RUNTIME_NAME]: {
     brief: 'The name of the runtime. Equivalent to `name` in the Sentry runtime context.',
@@ -12946,6 +13377,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'node',
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [PROCESS_RUNTIME_VERSION]: {
     brief:
@@ -12956,6 +13388,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: '18.04.2',
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [QUERY_KEY]: {
     brief: 'An item in a query string. Usually added by client-side routing frameworks like vue-router.',
@@ -12970,6 +13403,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'url.query',
       reason: 'Instead of sending items individually in query.<key>, they should be sent all together with url.query.',
     },
+    changelog: [{ version: '0.1.0', prs: [103] }],
   },
   [RELEASE]: {
     brief: 'The sentry release.',
@@ -12983,6 +13417,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'sentry.release',
     },
     aliases: [SENTRY_RELEASE],
+    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
   [REMIX_ACTION_FORM_DATA_KEY]: {
     brief: 'Remix form data, <key> being the form data key, the value being the form data value.',
@@ -12994,6 +13429,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     hasDynamicSuffix: true,
     example: "http.response.header.text='test'",
     sdks: ['javascript-remix'],
+    changelog: [{ version: '0.1.0', prs: [103] }],
   },
   [REPLAY_ID]: {
     brief: 'The id of the sentry replay.',
@@ -13007,6 +13443,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'sentry.replay_id',
     },
     aliases: [SENTRY_REPLAY_ID],
+    changelog: [{ version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
   },
   [RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME]: {
     brief: 'The software deployment environment name.',
@@ -13019,6 +13456,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'sentry.environment',
     },
+    changelog: [{ version: '0.3.1', prs: [196] }],
   },
   [RESOURCE_RENDER_BLOCKING_STATUS]: {
     brief: 'The render blocking status of the resource.',
@@ -13029,6 +13467,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'non-blocking',
     sdks: ['javascript-browser'],
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [ROUTE]: {
     brief:
@@ -13044,6 +13483,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [HTTP_ROUTE],
     sdks: ['php-laravel', 'javascript-reactnative'],
+    changelog: [{ version: '0.1.0', prs: [61, 74] }, { version: '0.0.0' }],
   },
   [RPC_GRPC_STATUS_CODE]: {
     brief: 'The numeric status code of the gRPC request.',
@@ -13053,6 +13493,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 2,
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [RPC_SERVICE]: {
     brief: 'The full (logical) name of the service being called, including its package name, if applicable.',
@@ -13062,6 +13503,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'myService.BestService',
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [SENTRY_ACTION]: {
     brief:
@@ -13072,6 +13514,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'SELECT',
+    changelog: [{ version: '0.4.0', prs: [212] }],
   },
   [SENTRY_BROWSER_NAME]: {
     brief: 'The name of the browser.',
@@ -13085,6 +13528,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'browser.name',
     },
     aliases: [BROWSER_NAME],
+    changelog: [{ version: '0.1.0', prs: [139] }],
   },
   [SENTRY_BROWSER_VERSION]: {
     brief: 'The version of the browser.',
@@ -13098,6 +13542,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'browser.version',
     },
     aliases: [BROWSER_VERSION],
+    changelog: [{ version: '0.1.0', prs: [139] }],
   },
   [SENTRY_CANCELLATION_REASON]: {
     brief: 'The reason why a span ended early.',
@@ -13107,6 +13552,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'document.hidden',
+    changelog: [{ version: '0.0.0' }],
   },
   [SENTRY_CATEGORY]: {
     brief:
@@ -13117,6 +13563,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'db',
+    changelog: [{ version: '0.4.0', prs: [218] }],
   },
   [SENTRY_CLIENT_SAMPLE_RATE]: {
     brief: 'Rate at which a span was sampled in the SDK.',
@@ -13126,6 +13573,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 0.5,
+    changelog: [{ version: '0.1.0', prs: [102] }],
   },
   [SENTRY_DESCRIPTION]: {
     brief: 'The human-readable description of a span.',
@@ -13135,6 +13583,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'index view query',
+    changelog: [{ version: '0.1.0', prs: [135] }],
   },
   [SENTRY_DIST]: {
     brief: 'The sentry dist.',
@@ -13144,6 +13593,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '1.0',
+    changelog: [{ version: '0.0.0' }],
   },
   [SENTRY_DOMAIN]: {
     brief:
@@ -13154,6 +13604,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'example.com',
+    changelog: [{ version: '0.4.0', prs: [212] }],
   },
   [SENTRY_DSC_ENVIRONMENT]: {
     brief: 'The environment from the dynamic sampling context.',
@@ -13163,6 +13614,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'prod',
+    changelog: [{ version: '0.3.0', prs: [185] }],
   },
   [SENTRY_DSC_PUBLIC_KEY]: {
     brief: 'The public key from the dynamic sampling context.',
@@ -13172,6 +13624,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'c51734c603c4430eb57cb0a5728a479d',
+    changelog: [{ version: '0.3.0', prs: [185] }],
   },
   [SENTRY_DSC_RELEASE]: {
     brief: 'The release identifier from the dynamic sampling context.',
@@ -13181,6 +13634,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'frontend@e8211be71b214afab5b85de4b4c54be3714952bb',
+    changelog: [{ version: '0.3.0', prs: [185] }],
   },
   [SENTRY_DSC_SAMPLED]: {
     brief: 'Whether the event was sampled according to the dynamic sampling context.',
@@ -13190,6 +13644,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: true,
+    changelog: [{ version: '0.3.0', prs: [185] }],
   },
   [SENTRY_DSC_SAMPLE_RATE]: {
     brief: 'The sample rate from the dynamic sampling context.',
@@ -13199,6 +13654,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '1.0',
+    changelog: [{ version: '0.3.0', prs: [185] }],
   },
   [SENTRY_DSC_TRACE_ID]: {
     brief: 'The trace ID from the dynamic sampling context.',
@@ -13208,6 +13664,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '047372980460430cbc78d9779df33a46',
+    changelog: [{ version: '0.3.0', prs: [185] }],
   },
   [SENTRY_DSC_TRANSACTION]: {
     brief: 'The transaction name from the dynamic sampling context.',
@@ -13217,6 +13674,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '/issues/errors-outages/',
+    changelog: [{ version: '0.3.0', prs: [185] }],
   },
   [SENTRY_ENVIRONMENT]: {
     brief: 'The sentry environment.',
@@ -13227,6 +13685,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'production',
     aliases: [ENVIRONMENT],
+    changelog: [{ version: '0.0.0' }],
   },
   [SENTRY_EXCLUSIVE_TIME]: {
     brief: 'The exclusive time duration of the span in milliseconds.',
@@ -13236,6 +13695,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 1234,
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.3.0', prs: [160] }, { version: '0.0.0' }],
   },
   [SENTRY_GRAPHQL_OPERATION]: {
     brief: 'Indicates the type of graphql operation, emitted by the Javascript SDK.',
@@ -13245,6 +13705,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'getUserById',
+    changelog: [{ version: '0.3.1', prs: [190] }],
   },
   [SENTRY_GROUP]: {
     brief:
@@ -13254,6 +13715,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    changelog: [{ version: '0.4.0', prs: [212] }],
   },
   [SENTRY_HTTP_PREFETCH]: {
     brief: 'If an http request was a prefetch request.',
@@ -13263,6 +13725,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: true,
+    changelog: [{ version: '0.0.0' }],
   },
   [SENTRY_IDLE_SPAN_FINISH_REASON]: {
     brief: 'The reason why an idle span ended early.',
@@ -13272,6 +13735,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'idleTimeout',
+    changelog: [{ version: '0.0.0' }],
   },
   [SENTRY_IS_REMOTE]: {
     brief: "Indicates whether a span's parent is remote.",
@@ -13281,6 +13745,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: true,
+    changelog: [{ version: '0.3.1', prs: [190] }],
   },
   [SENTRY_KIND]: {
     brief:
@@ -13291,6 +13756,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'server',
+    changelog: [{ version: '0.3.1', prs: [190] }],
   },
   [SENTRY_MESSAGE_PARAMETER_KEY]: {
     brief:
@@ -13301,6 +13767,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: "sentry.message.parameter.0='123'",
+    changelog: [{ version: '0.1.0', prs: [116] }],
   },
   [SENTRY_MESSAGE_TEMPLATE]: {
     brief: 'The parameterized template string.',
@@ -13310,6 +13777,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'Hello, {name}!',
+    changelog: [{ version: '0.1.0', prs: [116] }],
   },
   [SENTRY_MODULE_KEY]: {
     brief: 'A module that was loaded in the process. The key is the name of the module.',
@@ -13320,6 +13788,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     hasDynamicSuffix: true,
     example: "sentry.module.brianium/paratest='v7.7.0'",
+    changelog: [{ version: '0.1.0', prs: [103] }],
   },
   [SENTRY_NEXTJS_SSR_FUNCTION_ROUTE]: {
     brief:
@@ -13331,6 +13800,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '/posts/[id]/layout',
     sdks: ['javascript'],
+    changelog: [{ version: '0.1.0', prs: [54, 106] }],
   },
   [SENTRY_NEXTJS_SSR_FUNCTION_TYPE]: {
     brief:
@@ -13342,6 +13812,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'generateMetadata',
     sdks: ['javascript'],
+    changelog: [{ version: '0.1.0', prs: [54, 106] }],
   },
   [SENTRY_NORMALIZED_DB_QUERY]: {
     brief: 'The normalized version of `db.query.text`.',
@@ -13351,6 +13822,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'SELECT .. FROM sentry_project WHERE (project_id = %s)',
+    changelog: [{ version: '0.3.1', prs: [194] }],
   },
   [SENTRY_NORMALIZED_DB_QUERY_HASH]: {
     brief: 'The hash of `sentry.normalized_db_query`.',
@@ -13359,6 +13831,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    changelog: [{ version: '0.4.0', prs: [200] }],
   },
   [SENTRY_NORMALIZED_DESCRIPTION]: {
     brief:
@@ -13369,6 +13842,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'SELECT .. FROM sentry_project WHERE (project_id = %s)',
+    changelog: [{ version: '0.4.0', prs: [212] }],
   },
   [SENTRY_OBSERVED_TIMESTAMP_NANOS]: {
     brief: 'The timestamp at which an envelope was received by Relay, in nanoseconds.',
@@ -13378,6 +13852,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '1544712660300000000',
+    changelog: [
+      { version: '0.3.0', prs: [174] },
+      { version: '0.2.0', prs: [137] },
+    ],
   },
   [SENTRY_OP]: {
     brief: 'The operation of a span.',
@@ -13387,6 +13865,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'http.client',
+    changelog: [{ version: '0.0.0' }],
   },
   [SENTRY_ORIGIN]: {
     brief: 'The origin of the instrumentation (e.g. span, log, etc.)',
@@ -13396,6 +13875,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'auto.http.otel.fastify',
+    changelog: [{ version: '0.1.0', prs: [68] }, { version: '0.0.0' }],
   },
   [SENTRY_PLATFORM]: {
     brief: 'The sdk platform that generated the event.',
@@ -13405,6 +13885,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'php',
+    changelog: [{ version: '0.0.0' }],
   },
   [SENTRY_PROFILER_ID]: {
     brief: 'The id of the currently running profiler (continuous profiling)',
@@ -13414,6 +13895,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '18779b64dd35d1a538e7ce2dd2d3fad3',
+    changelog: [{ version: '0.4.0', prs: [242] }],
   },
   [SENTRY_RELEASE]: {
     brief: 'The sentry release.',
@@ -13424,6 +13906,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '7.0.0',
     aliases: [SERVICE_VERSION, RELEASE],
+    changelog: [{ version: '0.0.0' }],
   },
   [SENTRY_REPLAY_ID]: {
     brief: 'The id of the sentry replay.',
@@ -13434,6 +13917,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '123e4567e89b12d3a456426614174000',
     aliases: [REPLAY_ID],
+    changelog: [{ version: '0.0.0' }],
   },
   [SENTRY_REPLAY_IS_BUFFERING]: {
     brief:
@@ -13444,6 +13928,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: true,
+    changelog: [{ version: '0.3.0', prs: [185] }],
   },
   [SENTRY_SDK_INTEGRATIONS]: {
     brief:
@@ -13454,6 +13939,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: ['InboundFilters', 'FunctionToString', 'BrowserApiErrors', 'Breadcrumbs'],
+    changelog: [{ version: '0.0.0', prs: [42] }],
   },
   [SENTRY_SDK_NAME]: {
     brief: 'The sentry sdk name.',
@@ -13463,6 +13949,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '@sentry/react',
+    changelog: [{ version: '0.0.0' }],
   },
   [SENTRY_SDK_VERSION]: {
     brief: 'The sentry sdk version.',
@@ -13472,6 +13959,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '7.0.0',
+    changelog: [{ version: '0.0.0' }],
   },
   [SENTRY_SEGMENT_ID]: {
     brief: 'The segment ID of a span',
@@ -13482,6 +13970,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '051581bf3cb55c13',
     aliases: [_SENTRY_SEGMENT_ID],
+    changelog: [{ version: '0.1.0', prs: [107, 124] }],
   },
   [_SENTRY_SEGMENT_ID]: {
     brief: 'The segment ID of a span',
@@ -13495,6 +13984,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'sentry.segment.id',
     },
     aliases: [SENTRY_SEGMENT_ID],
+    changelog: [{ version: '0.1.0', prs: [124] }],
   },
   [SENTRY_SEGMENT_NAME]: {
     brief: 'The segment name of a span',
@@ -13504,6 +13994,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'GET /user',
+    changelog: [{ version: '0.1.0', prs: [104] }],
   },
   [SENTRY_SERVER_SAMPLE_RATE]: {
     brief: 'Rate at which a span was sampled in Relay.',
@@ -13513,6 +14004,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 0.5,
+    changelog: [{ version: '0.1.0', prs: [102] }],
   },
   [SENTRY_SPAN_SOURCE]: {
     brief:
@@ -13523,6 +14015,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'route',
+    changelog: [{ version: '0.4.0', prs: [214] }, { version: '0.0.0' }],
   },
   [SENTRY_STATUS_CODE]: {
     brief:
@@ -13533,6 +14026,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 200,
+    changelog: [{ version: '0.4.0', prs: [223, 228] }],
   },
   [SENTRY_STATUS_MESSAGE]: {
     brief: 'The from OTLP extracted status message.',
@@ -13542,6 +14036,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'foobar',
+    changelog: [{ version: '0.3.1', prs: [190] }],
   },
   [SENTRY_TRACE_PARENT_SPAN_ID]: {
     brief:
@@ -13552,6 +14047,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'b0e6f15b45c36b12',
+    changelog: [{ version: '0.1.0', prs: [116] }],
   },
   [SENTRY_TRANSACTION]: {
     brief: 'The sentry transaction (segment name).',
@@ -13562,6 +14058,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'GET /',
     aliases: [TRANSACTION],
+    changelog: [{ version: '0.0.0' }],
   },
   [SERVER_ADDRESS]: {
     brief:
@@ -13573,6 +14070,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'example.com',
     aliases: [HTTP_SERVER_NAME, NET_HOST_NAME, HTTP_HOST],
+    changelog: [{ version: '0.1.0', prs: [108, 127] }, { version: '0.0.0' }],
   },
   [SERVER_PORT]: {
     brief: 'Server port number.',
@@ -13583,6 +14081,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 1337,
     aliases: [NET_HOST_PORT],
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [SERVICE_NAME]: {
     brief: 'Logical name of the service.',
@@ -13592,6 +14091,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'omegastar',
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [SERVICE_VERSION]: {
     brief: 'The version string of the service API or implementation. The format is not defined by these conventions.',
@@ -13602,6 +14102,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: '5.0.0',
     aliases: [SENTRY_RELEASE],
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [THREAD_ID]: {
     brief: 'Current “managed” thread ID.',
@@ -13611,6 +14112,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 56,
+    changelog: [{ version: '0.0.0' }],
   },
   [THREAD_NAME]: {
     brief: 'Current thread name.',
@@ -13620,6 +14122,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'main',
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [TIMBER_TAG]: {
     brief: 'The log tag provided by the timber logging framework.',
@@ -13630,6 +14133,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'MyTag',
     sdks: ['sentry.java.android'],
+    changelog: [{ version: '0.3.0', prs: [183] }],
   },
   [TRANSACTION]: {
     brief: 'The sentry transaction (segment name).',
@@ -13643,6 +14147,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'sentry.transaction',
     },
     aliases: [SENTRY_TRANSACTION],
+    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
   [TYPE]: {
     brief: 'More granular type of the operation happening.',
@@ -13653,6 +14158,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'fetch',
     sdks: ['javascript-browser', 'javascript-node'],
+    changelog: [{ version: '0.0.0' }],
   },
   [UI_COMPONENT_NAME]: {
     brief: 'The name of the associated component.',
@@ -13662,6 +14168,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'HomeButton',
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [UI_CONTRIBUTES_TO_TTFD]: {
     brief: 'Whether the span execution contributed to the TTFD (time to fully drawn) metric.',
@@ -13671,6 +14178,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: true,
+    changelog: [{ version: '0.0.0' }],
   },
   [UI_CONTRIBUTES_TO_TTID]: {
     brief: 'Whether the span execution contributed to the TTID (time to initial display) metric.',
@@ -13680,6 +14188,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: true,
+    changelog: [{ version: '0.0.0' }],
   },
   [URL]: {
     brief: 'The URL of the resource that was fetched.',
@@ -13694,6 +14203,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [URL_FULL, HTTP_URL],
     sdks: ['javascript-browser', 'javascript-node'],
+    changelog: [{ version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
   },
   [URL_DOMAIN]: {
     brief:
@@ -13704,6 +14214,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'example.com',
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [URL_FRAGMENT]: {
     brief:
@@ -13714,6 +14225,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'details',
+    changelog: [{ version: '0.0.0' }],
   },
   [URL_FULL]: {
     brief: 'The URL of the resource that was fetched.',
@@ -13724,6 +14236,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'https://example.com/test?foo=bar#buzz',
     aliases: [HTTP_URL, URL],
+    changelog: [{ version: '0.1.0', prs: [108] }, { version: '0.0.0' }],
   },
   [URL_PATH]: {
     brief: 'The URI path component.',
@@ -13733,6 +14246,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: '/foo',
+    changelog: [{ version: '0.0.0' }],
   },
   [URL_PATH_PARAMETER_KEY]: {
     brief:
@@ -13745,6 +14259,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     hasDynamicSuffix: true,
     example: "url.path.parameter.id='123'",
     aliases: [PARAMS_KEY],
+    changelog: [{ version: '0.1.0', prs: [103] }],
   },
   [URL_PORT]: {
     brief: 'Server port number.',
@@ -13754,6 +14269,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 1337,
+    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [URL_QUERY]: {
     brief:
@@ -13766,6 +14282,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'foo=bar&bar=baz',
+    changelog: [{ version: '0.0.0' }],
   },
   [URL_SCHEME]: {
     brief: 'The URI scheme component identifying the used protocol.',
@@ -13776,6 +14293,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'https',
     aliases: [HTTP_SCHEME],
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [URL_TEMPLATE]: {
     brief: 'The low-cardinality template of an absolute path reference.',
@@ -13786,6 +14304,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: '/users/:id',
     aliases: [HTTP_ROUTE],
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [USER_AGENT_ORIGINAL]: {
     brief: 'Value of the HTTP User-Agent header sent by the client.',
@@ -13797,6 +14316,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example:
       'Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1',
     aliases: [HTTP_USER_AGENT],
+    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [USER_EMAIL]: {
     brief: 'User email address.',
@@ -13806,6 +14326,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'test@example.com',
+    changelog: [{ version: '0.0.0' }],
   },
   [USER_FULL_NAME]: {
     brief: "User's full name.",
@@ -13815,6 +14336,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'John Smith',
+    changelog: [{ version: '0.0.0' }],
   },
   [USER_GEO_CITY]: {
     brief: 'Human readable city name.',
@@ -13824,6 +14346,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'Toronto',
+    changelog: [{ version: '0.0.0' }],
   },
   [USER_GEO_COUNTRY_CODE]: {
     brief: 'Two-letter country code (ISO 3166-1 alpha-2).',
@@ -13833,6 +14356,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'CA',
+    changelog: [{ version: '0.0.0' }],
   },
   [USER_GEO_REGION]: {
     brief: 'Human readable region name or code.',
@@ -13842,6 +14366,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'Canada',
+    changelog: [{ version: '0.0.0' }],
   },
   [USER_GEO_SUBDIVISION]: {
     brief: 'Human readable subdivision name.',
@@ -13851,6 +14376,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'Ontario',
+    changelog: [{ version: '0.0.0' }],
   },
   [USER_HASH]: {
     brief: 'Unique user hash to correlate information for a user in anonymized form.',
@@ -13860,6 +14386,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: '8ae4c2993e0f4f3b8b2d1b1f3b5e8f4d',
+    changelog: [{ version: '0.0.0' }],
   },
   [USER_ID]: {
     brief: 'Unique identifier of the user.',
@@ -13869,6 +14396,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'S-1-5-21-202424912787-2692429404-2351956786-1000',
+    changelog: [{ version: '0.0.0' }],
   },
   [USER_IP_ADDRESS]: {
     brief: 'The IP address of the user.',
@@ -13878,6 +14406,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '192.168.1.1',
+    changelog: [{ version: '0.1.0', prs: [75] }],
   },
   [USER_NAME]: {
     brief: 'Short name or login/username of the user.',
@@ -13887,6 +14416,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'j.smith',
+    changelog: [{ version: '0.0.0' }],
   },
   [USER_ROLES]: {
     brief: 'Array of user roles at the time of the event.',
@@ -13896,6 +14426,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: ['admin', 'editor'],
+    changelog: [{ version: '0.0.0' }],
   },
   [VERCEL_BRANCH]: {
     brief: 'Git branch name for Vercel project',
@@ -13905,6 +14436,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'main',
+    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   [VERCEL_BUILD_ID]: {
     brief: 'Identifier for the Vercel build (only present on build logs)',
@@ -13914,6 +14446,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'bld_cotnkcr76',
+    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   [VERCEL_DEPLOYMENT_ID]: {
     brief: 'Identifier for the Vercel deployment',
@@ -13923,6 +14456,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'dpl_233NRGRjVZX1caZrXWtz5g1TAksD',
+    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   [VERCEL_DESTINATION]: {
     brief: 'Origin of the external content in Vercel (only on external logs)',
@@ -13932,6 +14466,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'https://vitals.vercel-insights.com/v1',
+    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   [VERCEL_EDGE_TYPE]: {
     brief: 'Type of edge runtime in Vercel',
@@ -13941,6 +14476,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'edge-function',
+    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   [VERCEL_ENTRYPOINT]: {
     brief: 'Entrypoint for the request in Vercel',
@@ -13950,6 +14486,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'api/index.js',
+    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   [VERCEL_EXECUTION_REGION]: {
     brief: 'Region where the request is executed',
@@ -13959,6 +14496,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'sfo1',
+    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   [VERCEL_ID]: {
     brief: 'Unique identifier for the log entry in Vercel',
@@ -13968,6 +14506,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '1573817187330377061717300000',
+    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   [VERCEL_JA3_DIGEST]: {
     brief: 'JA3 fingerprint digest of Vercel request',
@@ -13977,6 +14516,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '769,47-53-5-10-49161-49162-49171-49172-50-56-19-4,0-10-11,23-24-25,0',
+    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   [VERCEL_JA4_DIGEST]: {
     brief: 'JA4 fingerprint digest',
@@ -13986,6 +14526,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 't13d1516h2_8daaf6152771_02713d6af862',
+    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   [VERCEL_LOG_TYPE]: {
     brief: 'Vercel log output type',
@@ -13995,6 +14536,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'stdout',
+    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   [VERCEL_PROJECT_ID]: {
     brief: 'Identifier for the Vercel project',
@@ -14004,6 +14546,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'gdufoJxB6b9b1fEqr1jUtFkyavUU',
+    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   [VERCEL_PROJECT_NAME]: {
     brief: 'Name of the Vercel project',
@@ -14013,6 +14556,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'my-app',
+    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   [VERCEL_PROXY_CACHE_ID]: {
     brief: 'Original request ID when request is served from cache',
@@ -14022,6 +14566,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'pdx1::v8g4b-1744143786684-93dafbc0f70d',
+    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   [VERCEL_PROXY_CLIENT_IP]: {
     brief: 'Client IP address',
@@ -14031,6 +14576,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '120.75.16.101',
+    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   [VERCEL_PROXY_HOST]: {
     brief: 'Hostname of the request',
@@ -14040,6 +14586,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'test.vercel.app',
+    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   [VERCEL_PROXY_LAMBDA_REGION]: {
     brief: 'Region where lambda function executed',
@@ -14049,6 +14596,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'sfo1',
+    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   [VERCEL_PROXY_METHOD]: {
     brief: 'HTTP method of the request',
@@ -14058,6 +14606,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'GET',
+    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   [VERCEL_PROXY_PATH]: {
     brief: 'Request path with query parameters',
@@ -14067,6 +14616,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '/dynamic/some-value.json?route=some-value',
+    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   [VERCEL_PROXY_PATH_TYPE]: {
     brief: 'How the request was served based on its path and project configuration',
@@ -14076,6 +14626,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'func',
+    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   [VERCEL_PROXY_PATH_TYPE_VARIANT]: {
     brief: 'Variant of the path type',
@@ -14085,6 +14636,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'api',
+    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   [VERCEL_PROXY_REFERER]: {
     brief: 'Referer of the request',
@@ -14094,6 +14646,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '*.vercel.app',
+    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   [VERCEL_PROXY_REGION]: {
     brief: 'Region where the request is processed',
@@ -14103,6 +14656,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'sfo1',
+    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   [VERCEL_PROXY_RESPONSE_BYTE_SIZE]: {
     brief: 'Size of the response in bytes',
@@ -14112,6 +14666,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 1024,
+    changelog: [
+      { version: '0.4.0', prs: [228] },
+      { version: '0.2.0', prs: [163] },
+    ],
   },
   [VERCEL_PROXY_SCHEME]: {
     brief: 'Protocol of the request',
@@ -14121,6 +14679,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'https',
+    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   [VERCEL_PROXY_STATUS_CODE]: {
     brief: 'HTTP status code of the proxy request',
@@ -14130,6 +14689,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 200,
+    changelog: [
+      { version: '0.4.0', prs: [228] },
+      { version: '0.2.0', prs: [163] },
+    ],
   },
   [VERCEL_PROXY_TIMESTAMP]: {
     brief: 'Unix timestamp when the proxy request was made',
@@ -14139,6 +14702,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 1573817250172,
+    changelog: [
+      { version: '0.4.0', prs: [228] },
+      { version: '0.2.0', prs: [163] },
+    ],
   },
   [VERCEL_PROXY_USER_AGENT]: {
     brief: 'User agent strings of the request',
@@ -14148,6 +14715,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: ['Mozilla/5.0...'],
+    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   [VERCEL_PROXY_VERCEL_CACHE]: {
     brief: 'Cache status sent to the browser',
@@ -14157,6 +14725,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'REVALIDATED',
+    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   [VERCEL_PROXY_VERCEL_ID]: {
     brief: 'Vercel-specific identifier',
@@ -14166,6 +14735,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'sfo1::abc123',
+    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   [VERCEL_PROXY_WAF_ACTION]: {
     brief: 'Action taken by firewall rules',
@@ -14175,6 +14745,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'deny',
+    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   [VERCEL_PROXY_WAF_RULE_ID]: {
     brief: 'ID of the firewall rule that matched',
@@ -14184,6 +14755,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'rule_gAHz8jtSB1Gy',
+    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   [VERCEL_REQUEST_ID]: {
     brief: 'Identifier of the Vercel request',
@@ -14193,6 +14765,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '643af4e3-975a-4cc7-9e7a-1eda11539d90',
+    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   [VERCEL_SOURCE]: {
     brief: 'Origin of the Vercel log (build, edge, lambda, static, external, or firewall)',
@@ -14202,6 +14775,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'build',
+    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   [VERCEL_STATUS_CODE]: {
     brief: 'HTTP status code of the request (-1 means no response returned and the lambda crashed)',
@@ -14211,6 +14785,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 200,
+    changelog: [
+      { version: '0.4.0', prs: [228] },
+      { version: '0.2.0', prs: [163] },
+    ],
   },
 };
 

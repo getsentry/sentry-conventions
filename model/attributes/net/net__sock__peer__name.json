@@ -10,5 +10,14 @@
   "deprecation": {
     "_status": null,
     "reason": "Deprecated from OTEL, no replacement at this time"
-  }
+  },
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [61, 119, 127]
+    },
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

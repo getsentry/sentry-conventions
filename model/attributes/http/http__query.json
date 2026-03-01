@@ -7,5 +7,10 @@
     "reason": "Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information."
   },
   "is_in_otel": false,
-  "example": "?foo=bar&bar=baz"
+  "example": "?foo=bar&bar=baz",
+  "changelog": [
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

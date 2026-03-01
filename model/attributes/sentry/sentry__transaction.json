@@ -7,5 +7,10 @@
   },
   "is_in_otel": false,
   "example": "GET /",
-  "alias": ["transaction"]
+  "alias": ["transaction"],
+  "changelog": [
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

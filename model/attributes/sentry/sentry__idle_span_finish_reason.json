@@ -6,5 +6,10 @@
     "key": "false"
   },
   "is_in_otel": false,
-  "example": "idleTimeout"
+  "example": "idleTimeout",
+  "changelog": [
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

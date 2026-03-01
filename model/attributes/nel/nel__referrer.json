@@ -6,5 +6,11 @@
     "key": "maybe"
   },
   "is_in_otel": false,
-  "example": "https://example.com/foo?bar=baz"
+  "example": "https://example.com/foo?bar=baz",
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [68, 127]
+    }
+  ]
 }

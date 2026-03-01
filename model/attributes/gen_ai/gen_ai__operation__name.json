@@ -6,5 +6,15 @@
     "key": "maybe"
   },
   "is_in_otel": true,
-  "example": "chat"
+  "example": "chat",
+  "changelog": [
+    {
+      "version": "0.4.0",
+      "prs": [225]
+    },
+    {
+      "version": "0.1.0",
+      "prs": [62, 127]
+    }
+  ]
 }

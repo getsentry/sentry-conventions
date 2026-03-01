@@ -11,5 +11,15 @@
     "_status": null,
     "replacement": "gen_ai.request.top_k"
   },
-  "alias": ["gen_ai.request.top_k"]
+  "alias": ["gen_ai.request.top_k"],
+  "changelog": [
+    {
+      "version": "0.4.0",
+      "prs": [228]
+    },
+    {
+      "version": "0.1.0",
+      "prs": [55, 57, 61, 108]
+    }
+  ]
 }

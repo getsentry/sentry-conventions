@@ -7,5 +7,15 @@
   },
   "is_in_otel": true,
   "example": 35,
-  "alias": ["ai.top_k"]
+  "alias": ["ai.top_k"],
+  "changelog": [
+    {
+      "version": "0.4.0",
+      "prs": [228]
+    },
+    {
+      "version": "0.1.0",
+      "prs": [57]
+    }
+  ]
 }

@@ -7,5 +7,14 @@
   },
   "is_in_otel": false,
   "example": "Window.requestAnimationFrame",
-  "sdks": ["browser"]
+  "sdks": ["browser"],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [127]
+    },
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

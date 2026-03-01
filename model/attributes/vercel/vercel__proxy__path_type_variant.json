@@ -6,5 +6,11 @@
     "key": "maybe"
   },
   "is_in_otel": false,
-  "example": "api"
+  "example": "api",
+  "changelog": [
+    {
+      "version": "0.2.0",
+      "prs": [163]
+    }
+  ]
 }

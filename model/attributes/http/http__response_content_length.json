@@ -11,5 +11,18 @@
     "_status": "backfill",
     "replacement": "http.response.body.size"
   },
-  "alias": ["http.response.body.size", "http.response.header.content-length"]
+  "alias": ["http.response.body.size", "http.response.header.content-length"],
+  "changelog": [
+    {
+      "version": "0.4.0",
+      "prs": [228]
+    },
+    {
+      "version": "0.1.0",
+      "prs": [61, 106]
+    },
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

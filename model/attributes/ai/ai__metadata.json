@@ -9,5 +9,11 @@
   "example": "{\"user_id\": 123, \"session_id\": \"abc123\"}",
   "deprecation": {
     "_status": null
-  }
+  },
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [55, 127]
+    }
+  ]
 }

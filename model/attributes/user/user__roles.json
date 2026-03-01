@@ -6,5 +6,10 @@
     "key": "true"
   },
   "is_in_otel": true,
-  "example": ["admin", "editor"]
+  "example": ["admin", "editor"],
+  "changelog": [
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

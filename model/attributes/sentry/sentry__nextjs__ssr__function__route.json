@@ -7,5 +7,11 @@
   },
   "is_in_otel": false,
   "example": "/posts/[id]/layout",
-  "sdks": ["javascript"]
+  "sdks": ["javascript"],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [54, 106]
+    }
+  ]
 }

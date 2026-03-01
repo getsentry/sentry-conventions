@@ -6,5 +6,15 @@
     "key": "maybe"
   },
   "is_in_otel": false,
-  "example": "tool"
+  "example": "tool",
+  "changelog": [
+    {
+      "version": "0.4.0",
+      "prs": [257]
+    },
+    {
+      "version": "0.1.0",
+      "prs": [113, 127]
+    }
+  ]
 }

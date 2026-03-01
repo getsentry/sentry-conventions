@@ -6,5 +6,11 @@
     "key": "false"
   },
   "is_in_otel": false,
-  "example": ["InboundFilters", "FunctionToString", "BrowserApiErrors", "Breadcrumbs"]
+  "example": ["InboundFilters", "FunctionToString", "BrowserApiErrors", "Breadcrumbs"],
+  "changelog": [
+    {
+      "version": "0.0.0",
+      "prs": [42]
+    }
+  ]
 }

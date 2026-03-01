@@ -6,5 +6,10 @@
     "key": "maybe"
   },
   "is_in_otel": false,
-  "example": "Ontario"
+  "example": "Ontario",
+  "changelog": [
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

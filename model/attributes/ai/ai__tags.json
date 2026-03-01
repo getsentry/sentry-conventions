@@ -9,5 +9,11 @@
   "example": "{\"executed_function\": \"add_integers\"}",
   "deprecation": {
     "_status": null
-  }
+  },
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [55, 127]
+    }
+  ]
 }

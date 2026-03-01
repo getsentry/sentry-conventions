@@ -6,5 +6,10 @@
     "key": "false"
   },
   "is_in_otel": false,
-  "example": "7.0.0"
+  "example": "7.0.0",
+  "changelog": [
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

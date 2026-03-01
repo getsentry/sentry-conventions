@@ -7,5 +7,15 @@
   },
   "is_in_otel": true,
   "example": 0.5,
-  "alias": ["ai.presence_penalty"]
+  "alias": ["ai.presence_penalty"],
+  "changelog": [
+    {
+      "version": "0.4.0",
+      "prs": [228]
+    },
+    {
+      "version": "0.1.0",
+      "prs": [57]
+    }
+  ]
 }

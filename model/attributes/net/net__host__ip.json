@@ -11,5 +11,14 @@
     "_status": null,
     "replacement": "network.local.address"
   },
-  "alias": ["network.local.address", "net.sock.host.addr"]
+  "alias": ["network.local.address", "net.sock.host.addr"],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [61, 108, 127]
+    },
+    {
+      "version": "0.0.0"
+    }
+  ]
 }
