@@ -20,11 +20,6 @@ export async function generateAttributeChangelog() {
   const attributesDir = path.join(__dirname, '..', 'model', 'attributes');
   const tags = getReleaseTags();
 
-  if (tags.length === 0) {
-    console.log('No release tags found, skipping changelog generation.');
-    return;
-  }
-
   // Build tag ranges: [{from: null, to: "0.0.0"}, {from: "0.0.0", to: "0.1.0"}, ...]
   const tagRanges: Array<{ from: string | null; to: string }> = [];
   for (let i = 0; i < tags.length; i++) {
@@ -33,6 +28,12 @@ export async function generateAttributeChangelog() {
       to: tags[i] as string,
     });
   }
+
+  // Add range from latest tag (or beginning) to HEAD for unreleased changes
+  tagRanges.push({
+    from: tags.length > 0 ? (tags[tags.length - 1] as string) : null,
+    to: 'next',
+  });
 
   const allFiles = await getAllJsonFiles(attributesDir);
   let updatedCount = 0;
@@ -71,7 +72,7 @@ function buildChangelog(gitPath: string, tagRanges: Array<{ from: string | null;
   const changelog: ChangelogEntry[] = [];
 
   for (const { from, to } of tagRanges) {
-    const range = from ? `${from}..${to}` : to;
+    const range = to === 'next' ? (from ? `${from}..HEAD` : 'HEAD') : from ? `${from}..${to}` : to;
     const commits = getCommitsInRange(gitPath, range);
 
     if (commits.length === 0) {
@@ -109,8 +110,12 @@ function compareVersions(a: string, b: string): number {
 }
 
 export function mergeChangelogs(existing: ChangelogEntry[], generated: ChangelogEntry[]): ChangelogEntry[] {
+  // If the existing changelog has a "next" entry but the generated changelog has a real version
+  // that accounts for those same commits, promote the old "next" entry to that version.
+  const existingPromoted = promoteNextEntries(existing, generated);
+
   const existingByVersion = new Map<string, ChangelogEntry>();
-  for (const entry of existing) {
+  for (const entry of existingPromoted) {
     existingByVersion.set(entry.version, entry);
   }
 
@@ -140,14 +145,52 @@ export function mergeChangelogs(existing: ChangelogEntry[], generated: Changelog
   }
 
   // Preserve manually-created entries not in generated
-  for (const existingEntry of existing) {
+  for (const existingEntry of existingPromoted) {
     if (!generatedByVersion.has(existingEntry.version)) {
       merged.push({ ...existingEntry });
     }
   }
 
-  // Sort newest-first
-  return merged.sort((a, b) => compareVersions(b.version, a.version));
+  // Sort newest-first ("next" always comes first)
+  return merged.sort((a, b) => {
+    if (a.version === 'next') return -1;
+    if (b.version === 'next') return 1;
+    return compareVersions(b.version, a.version);
+  });
+}
+
+/**
+ * When a new release happens, the previously-generated "next" entries should be
+ * promoted to the newest version that now covers those commits.
+ * This finds the highest non-"next" version in the generated changelog and
+ * re-labels any existing "next" entry to that version.
+ */
+function promoteNextEntries(existing: ChangelogEntry[], generated: ChangelogEntry[]): ChangelogEntry[] {
+  const existingNext = existing.find((e) => e.version === 'next');
+  if (!existingNext) {
+    return existing;
+  }
+
+  // Check if generated still has a "next" entry — if so, no promotion needed yet
+  const generatedHasNext = generated.some((e) => e.version === 'next');
+
+  // Find the highest real version in generated
+  const realVersions = generated.filter((e) => e.version !== 'next').map((e) => e.version);
+  if (realVersions.length === 0 || generatedHasNext) {
+    return existing;
+  }
+
+  const highestVersion = realVersions.sort((a, b) => compareVersions(b, a))[0] as string;
+
+  // Check if this version is newer than what was previously in existing
+  // (i.e., was the "next" entry created before this version existed?)
+  const existingHasVersion = existing.some((e) => e.version === highestVersion);
+  if (existingHasVersion) {
+    return existing;
+  }
+
+  // Promote: replace "next" with the new version
+  return existing.map((e) => (e.version === 'next' ? { ...e, version: highestVersion } : e));
 }
 
 interface CommitInfo {

@@ -69,4 +69,96 @@ describe('mergeChangelogs', () => {
     const result = mergeChangelogs(existing, generated);
     expect(result).toEqual([{ version: '0.1.0', description: 'Initial release' }]);
   });
+
+  it('should place "next" entries first when sorting', () => {
+    const generated: ChangelogEntry[] = [
+      { version: 'next', prs: [30] },
+      { version: '0.2.0', prs: [20] },
+      { version: '0.1.0', prs: [10] },
+    ];
+    const result = mergeChangelogs([], generated);
+    expect(result.map((e) => e.version)).toEqual(['next', '0.2.0', '0.1.0']);
+  });
+
+  it('should promote existing "next" entry to new version when release happens', () => {
+    // Previously, there were unreleased changes under "next"
+    const existing: ChangelogEntry[] = [
+      { version: 'next', prs: [25] },
+      { version: '0.1.0', prs: [10] },
+    ];
+    // Now a new version 0.2.0 has been released that covers those commits
+    // and there are no more unreleased changes
+    const generated: ChangelogEntry[] = [
+      { version: '0.2.0', prs: [25] },
+      { version: '0.1.0', prs: [10] },
+    ];
+    const result = mergeChangelogs(existing, generated);
+    expect(result).toEqual([
+      { version: '0.2.0', prs: [25] },
+      { version: '0.1.0', prs: [10] },
+    ]);
+  });
+
+  it('should promote "next" and preserve its description when release happens', () => {
+    const existing: ChangelogEntry[] = [
+      { version: 'next', prs: [25], description: 'Added new field' },
+      { version: '0.1.0', prs: [10] },
+    ];
+    const generated: ChangelogEntry[] = [
+      { version: '0.2.0', prs: [25] },
+      { version: '0.1.0', prs: [10] },
+    ];
+    const result = mergeChangelogs(existing, generated);
+    expect(result).toEqual([
+      { version: '0.2.0', prs: [25], description: 'Added new field' },
+      { version: '0.1.0', prs: [10] },
+    ]);
+  });
+
+  it('should not promote "next" if generated still has "next" (no release yet)', () => {
+    const existing: ChangelogEntry[] = [
+      { version: 'next', prs: [25] },
+      { version: '0.1.0', prs: [10] },
+    ];
+    const generated: ChangelogEntry[] = [
+      { version: 'next', prs: [25, 30] },
+      { version: '0.1.0', prs: [10] },
+    ];
+    const result = mergeChangelogs(existing, generated);
+    expect(result).toEqual([
+      { version: 'next', prs: [25, 30] },
+      { version: '0.1.0', prs: [10] },
+    ]);
+  });
+
+  it('should merge PRs between existing and generated "next" entries', () => {
+    const existing: ChangelogEntry[] = [{ version: 'next', prs: [25] }];
+    const generated: ChangelogEntry[] = [{ version: 'next', prs: [25, 30] }];
+    const result = mergeChangelogs(existing, generated);
+    expect(result).toEqual([{ version: 'next', prs: [25, 30] }]);
+  });
+
+  it('should handle "next" as the only generated entry with no prior tags', () => {
+    const generated: ChangelogEntry[] = [{ version: 'next', prs: [5] }];
+    const result = mergeChangelogs([], generated);
+    expect(result).toEqual([{ version: 'next', prs: [5] }]);
+  });
+
+  it('should promote "next" to highest new version and union PRs from generated', () => {
+    const existing: ChangelogEntry[] = [
+      { version: 'next', prs: [25, 26] },
+      { version: '0.1.0', prs: [10] },
+    ];
+    // A release happened and there are additional PRs discovered by git
+    const generated: ChangelogEntry[] = [
+      { version: '0.2.0', prs: [25, 26, 27] },
+      { version: '0.1.0', prs: [10] },
+    ];
+    const result = mergeChangelogs(existing, generated);
+    // The promoted "next" (now 0.2.0) merges with generated 0.2.0
+    expect(result).toEqual([
+      { version: '0.2.0', prs: [25, 26, 27] },
+      { version: '0.1.0', prs: [10] },
+    ]);
+  });
 });
