@@ -1,9 +1,9 @@
+import { execSync } from 'node:child_process';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
-import { execSync } from 'node:child_process';
 import type { AttributeJson } from './types';
 
-interface ChangelogEntry {
+export interface ChangelogEntry {
   version: string;
   prs?: number[];
   description?: string;
@@ -47,7 +47,7 @@ export async function generateAttributeChangelog() {
     }
 
     const attributeJson = JSON.parse(fs.readFileSync(filePath, 'utf-8')) as AttributeJson;
-    attributeJson.changelog = changelog;
+    attributeJson.changelog = mergeChangelogs(attributeJson.changelog ?? [], changelog);
     fs.writeFileSync(filePath, `${JSON.stringify(attributeJson, null, 2)}\n`);
     updatedCount++;
   }
@@ -95,6 +95,59 @@ function buildChangelog(gitPath: string, tagRanges: Array<{ from: string | null;
   }
 
   return changelog.reverse();
+}
+
+function compareVersions(a: string, b: string): number {
+  const partsA = a.split('.').map(Number);
+  const partsB = b.split('.').map(Number);
+  for (let i = 0; i < Math.max(partsA.length, partsB.length); i++) {
+    const numA = partsA[i] ?? 0;
+    const numB = partsB[i] ?? 0;
+    if (numA !== numB) return numA - numB;
+  }
+  return 0;
+}
+
+export function mergeChangelogs(existing: ChangelogEntry[], generated: ChangelogEntry[]): ChangelogEntry[] {
+  const existingByVersion = new Map<string, ChangelogEntry>();
+  for (const entry of existing) {
+    existingByVersion.set(entry.version, entry);
+  }
+
+  const generatedByVersion = new Map<string, ChangelogEntry>();
+  for (const entry of generated) {
+    generatedByVersion.set(entry.version, entry);
+  }
+
+  const merged: ChangelogEntry[] = [];
+
+  // Merge generated entries, preserving existing descriptions and unioning PRs
+  for (const genEntry of generated) {
+    const existingEntry = existingByVersion.get(genEntry.version);
+    if (existingEntry) {
+      const prSet = new Set<number>([...(existingEntry.prs ?? []), ...(genEntry.prs ?? [])]);
+      const mergedEntry: ChangelogEntry = { version: genEntry.version };
+      if (prSet.size > 0) {
+        mergedEntry.prs = Array.from(prSet).sort((a, b) => a - b);
+      }
+      if (existingEntry.description) {
+        mergedEntry.description = existingEntry.description;
+      }
+      merged.push(mergedEntry);
+    } else {
+      merged.push({ ...genEntry });
+    }
+  }
+
+  // Preserve manually-created entries not in generated
+  for (const existingEntry of existing) {
+    if (!generatedByVersion.has(existingEntry.version)) {
+      merged.push({ ...existingEntry });
+    }
+  }
+
+  // Sort newest-first
+  return merged.sort((a, b) => compareVersions(b.version, a.version));
 }
 
 interface CommitInfo {
