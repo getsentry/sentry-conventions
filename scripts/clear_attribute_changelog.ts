@@ -15,7 +15,7 @@ async function clearAll(): Promise<void> {
     const json: AttributeJson = JSON.parse(content);
 
     if ('changelog' in json) {
-      delete json.changelog;
+      json.changelog = undefined;
       await fs.promises.writeFile(filePath, `${JSON.stringify(json, null, 2)}\n`, 'utf-8');
       count++;
     }
@@ -34,7 +34,7 @@ async function clearByKey(key: string): Promise<void> {
 
     if (json.key === key) {
       if ('changelog' in json) {
-        delete json.changelog;
+        json.changelog = undefined;
         await fs.promises.writeFile(filePath, `${JSON.stringify(json, null, 2)}\n`, 'utf-8');
         console.log(`Cleared changelog from ${relativeFile}`);
       } else {
