@@ -9,6 +9,9 @@
   "example": "conv_5j66UpCpwteGg4YSxUnt7lPY",
   "changelog": [
     {
+      "version": "next"
+    },
+    {
       "version": "0.4.0",
       "prs": [250]
     }

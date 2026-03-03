@@ -15,6 +15,9 @@
   "alias": ["gen_ai.response.streaming"],
   "changelog": [
     {
+      "version": "next"
+    },
+    {
       "version": "0.1.0",
       "prs": [76, 108]
     },

@@ -14,6 +14,9 @@
   "alias": ["network.transport"],
   "changelog": [
     {
+      "version": "next"
+    },
+    {
       "version": "0.1.0",
       "prs": [61, 127]
     },

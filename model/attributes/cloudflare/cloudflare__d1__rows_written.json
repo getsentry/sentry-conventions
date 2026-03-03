@@ -10,6 +10,9 @@
   "sdks": ["javascript-cloudflare"],
   "changelog": [
     {
+      "version": "next"
+    },
+    {
       "version": "0.4.0",
       "prs": [228]
     },

@@ -10,6 +10,9 @@
   "alias": ["ai.model_id"],
   "changelog": [
     {
+      "version": "next"
+    },
+    {
       "version": "0.1.0",
       "prs": [127]
     },

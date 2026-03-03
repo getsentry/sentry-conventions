@@ -98,7 +98,11 @@ function buildChangelog(gitPath: string, tagRanges: Array<{ from: string | null;
   return changelog.reverse();
 }
 
-function compareVersions(a: string, b: string): number {
+export function compareVersions(a: string, b: string): number {
+  if (a === 'next' && b === 'next') return 0;
+  if (a === 'next') return 1;
+  if (b === 'next') return -1;
+
   const partsA = a.split('.').map(Number);
   const partsB = b.split('.').map(Number);
   for (let i = 0; i < Math.max(partsA.length, partsB.length); i++) {
@@ -239,5 +243,7 @@ async function getAllJsonFiles(dir: string): Promise<string[]> {
   return allFiles;
 }
 
-// Run directly
-generateAttributeChangelog();
+// Run directly (not when imported as a module)
+if (process.argv[1] === __filename) {
+  generateAttributeChangelog();
+}

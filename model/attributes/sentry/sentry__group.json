@@ -8,6 +8,9 @@
   "is_in_otel": false,
   "changelog": [
     {
+      "version": "next"
+    },
+    {
       "version": "0.4.0",
       "prs": [212]
     }

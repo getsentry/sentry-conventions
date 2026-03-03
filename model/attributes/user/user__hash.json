@@ -9,6 +9,9 @@
   "example": "8ae4c2993e0f4f3b8b2d1b1f3b5e8f4d",
   "changelog": [
     {
+      "version": "next"
+    },
+    {
       "version": "0.0.0"
     }
   ]

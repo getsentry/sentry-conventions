@@ -10,6 +10,9 @@
   "example": "flag.evaluation.is_new_ui=true",
   "changelog": [
     {
+      "version": "next"
+    },
+    {
       "version": "0.1.0",
       "prs": [103]
     }

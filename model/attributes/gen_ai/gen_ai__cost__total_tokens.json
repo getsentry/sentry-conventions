@@ -10,6 +10,10 @@
   "alias": ["ai.total_cost"],
   "changelog": [
     {
+      "version": "next",
+      "prs": [264]
+    },
+    {
       "version": "0.4.0",
       "prs": [228]
     },

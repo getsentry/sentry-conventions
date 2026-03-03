@@ -10,6 +10,9 @@
   "example": "http.request.header.custom-header=['foo', 'bar']",
   "changelog": [
     {
+      "version": "next"
+    },
+    {
       "version": "0.4.0",
       "prs": [201, 204]
     },

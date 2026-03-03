@@ -14,6 +14,9 @@
   "alias": ["gen_ai.request.top_k"],
   "changelog": [
     {
+      "version": "next"
+    },
+    {
       "version": "0.4.0",
       "prs": [228]
     },

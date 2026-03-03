@@ -10,6 +10,10 @@
   "alias": ["gen_ai.tool.output", "gen_ai.tool.message"],
   "changelog": [
     {
+      "version": "next",
+      "prs": [265]
+    },
+    {
       "version": "0.4.0",
       "prs": [221]
     }

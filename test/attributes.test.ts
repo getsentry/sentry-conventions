@@ -6,19 +6,10 @@ import { describe, expect, it } from 'vitest';
 
 import schema from '../schemas/attribute.schema.json';
 import type { AttributeJson } from '../scripts/types';
+import { compareVersions } from '../scripts/generate_attribute_changelog';
 import { attributeKeyToFileName, fileNameToAttributeKey } from '../scripts/utils';
 
 const traceFolders = path.resolve(__dirname, '../model/attributes');
-
-function compareVersions(a: string, b: string): number {
-  const partsA = a.split('.').map(Number);
-  const partsB = b.split('.').map(Number);
-  for (let i = 0; i < Math.max(partsA.length, partsB.length); i++) {
-    const diff = (partsA[i] ?? 0) - (partsB[i] ?? 0);
-    if (diff !== 0) return diff;
-  }
-  return 0;
-}
 
 describe('attribute json', async () => {
   const filesIterator = await fs.promises.glob(`${traceFolders}/**/*.json`);

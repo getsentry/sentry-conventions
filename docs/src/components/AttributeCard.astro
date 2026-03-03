@@ -125,7 +125,7 @@ const rawJson = JSON.stringify(attribute, null, 2);
       <div class="mt-3 flex flex-col gap-2">
         {attribute.changelog.map((entry) => (
           <div class="flex items-baseline gap-3 text-sm">
-            <span class="px-2 py-0.5 bg-bg-elevated border border-border rounded-sm text-xs font-mono text-text-secondary">v{entry.version}</span>
+            <span class="px-2 py-0.5 bg-bg-elevated border border-border rounded-sm text-xs font-mono text-text-secondary">{entry.version === 'next' ? 'next' : `v${entry.version}`}</span>
             {entry.prs && entry.prs.length > 0 && entry.prs.map((pr) => (
               <a href={`https://github.com/getsentry/sentry-conventions/pull/${pr}`} class="text-xs text-accent hover:underline">#{pr}</a>
             ))}

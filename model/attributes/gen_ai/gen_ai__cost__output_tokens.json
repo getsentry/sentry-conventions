@@ -9,6 +9,9 @@
   "example": 123.45,
   "changelog": [
     {
+      "version": "next"
+    },
+    {
       "version": "0.4.0",
       "prs": [228]
     },

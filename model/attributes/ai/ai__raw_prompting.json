@@ -12,6 +12,10 @@
   },
   "changelog": [
     {
+      "version": "next",
+      "prs": [264]
+    },
+    {
       "version": "0.1.0",
       "prs": [55]
     }

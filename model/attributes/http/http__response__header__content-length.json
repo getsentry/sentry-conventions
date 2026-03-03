@@ -10,6 +10,9 @@
   "alias": ["http.response_content_length", "http.response.body.size"],
   "changelog": [
     {
+      "version": "next"
+    },
+    {
       "version": "0.1.0",
       "prs": [127]
     },

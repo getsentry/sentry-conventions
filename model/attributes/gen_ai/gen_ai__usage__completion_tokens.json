@@ -14,6 +14,9 @@
   "alias": ["ai.completion_tokens.used", "gen_ai.usage.output_tokens"],
   "changelog": [
     {
+      "version": "next"
+    },
+    {
       "version": "0.4.0",
       "prs": [228]
     },

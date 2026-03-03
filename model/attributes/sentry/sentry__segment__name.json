@@ -9,6 +9,9 @@
   "example": "GET /user",
   "changelog": [
     {
+      "version": "next"
+    },
+    {
       "version": "0.1.0",
       "prs": [104]
     }

@@ -9,6 +9,9 @@
   "example": "SELECT .. FROM sentry_project WHERE (project_id = %s)",
   "changelog": [
     {
+      "version": "next"
+    },
+    {
       "version": "0.3.1",
       "prs": [194]
     }
