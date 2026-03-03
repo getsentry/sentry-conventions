@@ -101,6 +101,10 @@
       "items": {
         "type": "string"
       }
+    },
+    "allow_any_value": {
+      "description": "If true, the attribute can hold any value type as per the OTEL AnyValue convention, not only the declared scalar type. Only set for a curated set of attributes. The ingestion pipeline will accept object/complex values for these attributes instead of rejecting them.",
+      "type": "boolean"
     }
   },
   "required": ["key", "brief", "type", "pii", "is_in_otel"]

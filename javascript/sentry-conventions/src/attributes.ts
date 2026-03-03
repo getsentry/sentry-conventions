@@ -8941,6 +8941,8 @@ export interface AttributeMetadata {
   aliases?: AttributeName[];
   /** If an attribute is SDK specific, list the SDKs that use this attribute */
   sdks?: string[];
+  /** If the attribute allows any value type as per the OTEL AnyValue convention */
+  allowAnyValue?: boolean;
 }
 
 export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {

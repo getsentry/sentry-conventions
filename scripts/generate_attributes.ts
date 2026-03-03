@@ -111,9 +111,10 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
 
   // Generate individual attribute constants with documentation AND build the explicit type map
   for (const { file, key, constantName, attributeJson, isDeprecated } of allAttributes) {
-    const { brief, type, pii, is_in_otel, example, has_dynamic_suffix, deprecation, alias, sdks } = attributeJson;
+    const { brief, type, pii, is_in_otel, example, has_dynamic_suffix, deprecation, alias, sdks, allow_any_value } =
+      attributeJson;
 
-    const tsType = getTsType(type);
+    const tsType = getTsType(type, allow_any_value);
     attributeTypeMap += `\n  [${constantName}]?: ${constantName}_TYPE;`;
 
     // Generate individual constant with documentation
@@ -137,6 +138,11 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
     if (has_dynamic_suffix) {
       individualConstants += ' *\n';
       individualConstants += ' * Has Dynamic Suffix: true\n';
+    }
+
+    if (allow_any_value) {
+      individualConstants += ' *\n';
+      individualConstants += ' * Allow Any Value: true (OTEL AnyValue convention)\n';
     }
 
     // Aliases
@@ -245,7 +251,8 @@ function getConstantName(key: string, isDeprecated: boolean): string {
   return constantName;
 }
 
-function getTsType(type: AttributeJson['type']): string {
+function getTsType(type: AttributeJson['type'], allowAnyValue?: boolean): string {
+  if (allowAnyValue) return 'unknown';
   switch (type) {
     case 'string':
       return 'string';
@@ -344,7 +351,10 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
   content += '    \n';
   content += '    sdks: Optional[List[str]] = None\n';
   content +=
-    '    """If an attribute is SDK specific, list the SDKs that use this attribute. This is not an exhaustive list, there might be SDKs that send this attribute that are is not documented here."""\n\n';
+    '    """If an attribute is SDK specific, list the SDKs that use this attribute. This is not an exhaustive list, there might be SDKs that send this attribute that are is not documented here."""\n';
+  content += '    \n';
+  content += '    allow_any_value: Optional[bool] = None\n';
+  content += '    """If the attribute allows any value type as per the OTEL AnyValue convention"""\n\n';
 
   let attributesTypeMembers = '';
   let deprecatedAttributesTypeMembers = '';
@@ -397,12 +407,13 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
     const attributePath = path.join(attributesDir, file);
     const attributeJson = JSON.parse(fs.readFileSync(attributePath, 'utf-8')) as AttributeJson;
 
-    const { key, brief, type, pii, is_in_otel, example, has_dynamic_suffix, deprecation, alias } = attributeJson;
+    const { key, brief, type, pii, is_in_otel, example, has_dynamic_suffix, deprecation, alias, allow_any_value } =
+      attributeJson;
 
     // Convert attribute key to a valid Python constant name
     const isDeprecated = !!deprecation;
     const constantName = getConstantName(key, isDeprecated);
-    const pythonType = getPythonType(type);
+    const pythonType = getPythonType(type, allow_any_value);
 
     content += `    # Path: model/attributes/${file}\n`;
 
@@ -414,6 +425,10 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
 
     if (has_dynamic_suffix) {
       content += '    Has Dynamic Suffix: true\n';
+    }
+
+    if (allow_any_value) {
+      content += '    Allow Any Value: true (OTEL AnyValue convention)\n';
     }
 
     if (alias && alias.length > 0) {
@@ -503,6 +518,10 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
       metadataDict += `        sdks=${JSON.stringify(attributeJson.sdks)},\n`;
     }
 
+    if (attributeJson.allow_any_value) {
+      metadataDict += '        allow_any_value=True,\n';
+    }
+
     metadataDict += '    ),\n';
   }
 
@@ -540,7 +559,8 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
   console.log(`Generated Python attributes file at: ${outputFilePath}`);
 }
 
-function getPythonType(type: AttributeJson['type']): string {
+function getPythonType(type: AttributeJson['type'], allowAnyValue?: boolean): string {
+  if (allowAnyValue) return 'object';
   switch (type) {
     case 'string':
       return 'str';
@@ -648,6 +668,8 @@ export interface AttributeMetadata {
   aliases?: AttributeName[];
   /** If an attribute is SDK specific, list the SDKs that use this attribute */
   sdks?: string[];
+  /** If the attribute allows any value type as per the OTEL AnyValue convention */
+  allowAnyValue?: boolean;
 }
 
 `;
@@ -683,7 +705,8 @@ function generateMetadataDict(
   metadataDict += 'export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {\n';
 
   for (const { key, attributeJson, constantName } of allAttributes) {
-    const { brief, type, pii, is_in_otel, example, has_dynamic_suffix, deprecation, alias } = attributeJson;
+    const { brief, type, pii, is_in_otel, example, has_dynamic_suffix, deprecation, alias, allow_any_value } =
+      attributeJson;
 
     metadataDict += `  [${constantName}]: {\n`;
     metadataDict += `    brief: ${JSON.stringify(brief)},\n`;
@@ -742,6 +765,10 @@ function generateMetadataDict(
 
     if (attributeJson.sdks && attributeJson.sdks.length > 0) {
       metadataDict += `    sdks: ${JSON.stringify(attributeJson.sdks)},\n`;
+    }
+
+    if (allow_any_value) {
+      metadataDict += '    allowAnyValue: true,\n';
     }
 
     metadataDict += '  },\n';

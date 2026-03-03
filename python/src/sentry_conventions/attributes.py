@@ -82,6 +82,9 @@ class AttributeMetadata:
     sdks: Optional[List[str]] = None
     """If an attribute is SDK specific, list the SDKs that use this attribute. This is not an exhaustive list, there might be SDKs that send this attribute that are is not documented here."""
 
+    allow_any_value: Optional[bool] = None
+    """If the attribute allows any value type as per the OTEL AnyValue convention"""
+
 
 class _AttributeNamesMeta(type):
     _deprecated_names = {
