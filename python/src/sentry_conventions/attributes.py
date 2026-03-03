@@ -189,6 +189,7 @@ class _AttributeNamesMeta(type):
         "QUERY_KEY",
         "RELEASE",
         "REPLAY_ID",
+        "RESOURCE_DEPLOYMENT_ENVIRONMENT",
         "RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME",
         "ROUTE",
         "SENTRY_BROWSER_NAME",
@@ -3586,6 +3587,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Aliases: sentry.replay_id
     DEPRECATED: Use sentry.replay_id instead
     Example: "123e4567e89b12d3a456426614174000"
+    """
+
+    # Path: model/attributes/resource/resource__deployment__environment.json
+    RESOURCE_DEPLOYMENT_ENVIRONMENT: Literal["resource.deployment.environment"] = (
+        "resource.deployment.environment"
+    )
+    """The software deployment environment name.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: Yes
+    DEPRECATED: Use sentry.environment instead
+    Example: "production"
     """
 
     # Path: model/attributes/resource/resource__deployment__environment__name.json
@@ -8478,6 +8492,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "resource.deployment.environment": AttributeMetadata(
+        brief="The software deployment environment name.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=True,
+        example="production",
+        deprecation=DeprecationInfo(
+            replacement="sentry.environment", status=DeprecationStatus.BACKFILL
+        ),
+    ),
     "resource.deployment.environment.name": AttributeMetadata(
         brief="The software deployment environment name.",
         type=AttributeType.STRING,
@@ -10119,6 +10143,7 @@ Attributes = TypedDict(
         "release": str,
         "remix.action_form_data.<key>": str,
         "replay_id": str,
+        "resource.deployment.environment": str,
         "resource.deployment.environment.name": str,
         "resource.render_blocking_status": str,
         "route": str,
