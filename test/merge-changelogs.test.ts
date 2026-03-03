@@ -144,6 +144,26 @@ describe('mergeChangelogs', () => {
     expect(result).toEqual([{ version: 'next', prs: [5] }]);
   });
 
+  it('should drop stale empty "next" entry when generated has no "next"', () => {
+    const existing: ChangelogEntry[] = [{ version: 'next' }, { version: '0.2.0', prs: [163] }];
+    const generated: ChangelogEntry[] = [{ version: '0.2.0', prs: [163] }];
+    const result = mergeChangelogs(existing, generated);
+    expect(result).toEqual([{ version: '0.2.0', prs: [163] }]);
+  });
+
+  it('should preserve "next" with description even when generated has no "next"', () => {
+    const existing: ChangelogEntry[] = [
+      { version: 'next', description: 'Planned change' },
+      { version: '0.2.0', prs: [163] },
+    ];
+    const generated: ChangelogEntry[] = [{ version: '0.2.0', prs: [163] }];
+    const result = mergeChangelogs(existing, generated);
+    expect(result).toEqual([
+      { version: 'next', description: 'Planned change' },
+      { version: '0.2.0', prs: [163] },
+    ]);
+  });
+
   it('should promote "next" to highest new version and union PRs from generated', () => {
     const existing: ChangelogEntry[] = [
       { version: 'next', prs: [25, 26] },

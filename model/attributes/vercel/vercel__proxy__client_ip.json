@@ -9,9 +9,6 @@
   "example": "120.75.16.101",
   "changelog": [
     {
-      "version": "next"
-    },
-    {
       "version": "0.2.0",
       "prs": [163]
     }

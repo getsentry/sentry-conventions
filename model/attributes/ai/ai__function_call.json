@@ -14,9 +14,6 @@
   "alias": ["gen_ai.tool.name"],
   "changelog": [
     {
-      "version": "next"
-    },
-    {
       "version": "0.1.0",
       "prs": [55, 57, 61, 108]
     }

@@ -14,9 +14,6 @@
   "alias": ["network.local.port"],
   "changelog": [
     {
-      "version": "next"
-    },
-    {
       "version": "0.4.0",
       "prs": [228]
     },

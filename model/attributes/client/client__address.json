@@ -10,9 +10,6 @@
   "alias": ["http.client_ip"],
   "changelog": [
     {
-      "version": "next"
-    },
-    {
       "version": "0.1.0",
       "prs": [106, 127]
     },

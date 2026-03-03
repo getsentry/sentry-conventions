@@ -9,9 +9,6 @@
   "example": "create",
   "changelog": [
     {
-      "version": "next"
-    },
-    {
       "version": "0.1.0",
       "prs": [51, 127]
     }

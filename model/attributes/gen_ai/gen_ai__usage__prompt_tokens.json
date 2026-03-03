@@ -14,9 +14,6 @@
   "alias": ["ai.prompt_tokens.used", "gen_ai.usage.input_tokens"],
   "changelog": [
     {
-      "version": "next"
-    },
-    {
       "version": "0.4.0",
       "prs": [228]
     },

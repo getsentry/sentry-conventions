@@ -15,9 +15,6 @@
   "sdks": ["php-laravel", "javascript-reactnative"],
   "changelog": [
     {
-      "version": "next"
-    },
-    {
       "version": "0.1.0",
       "prs": [61, 74]
     },

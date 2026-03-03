@@ -10,9 +10,6 @@
   "example": "?foo=bar&bar=baz",
   "changelog": [
     {
-      "version": "next"
-    },
-    {
       "version": "0.0.0"
     }
   ]

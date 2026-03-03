@@ -38,6 +38,10 @@ export async function generateAttributeChangelog() {
   const allFiles = await getAllJsonFiles(attributesDir);
   let updatedCount = 0;
 
+  // TODO: This runs O(files × versions) git subprocesses. As the repo accumulates
+  // more releases, consider batching: for each version range, query changed files
+  // once with `git diff --name-only`, then map files to versions, instead of
+  // querying per file.
   for (const relativeFile of allFiles) {
     const filePath = path.join(attributesDir, relativeFile);
     const gitPath = path.join('model', 'attributes', relativeFile);
@@ -86,6 +90,12 @@ function buildChangelog(gitPath: string, tagRanges: Array<{ from: string | null;
       if (pr !== undefined) {
         prs.add(pr);
       }
+    }
+
+    // Don't create empty 'next' entries — commits without PR numbers are
+    // infrastructure/tooling changes, not real attribute changes
+    if (to === 'next' && prs.size === 0) {
+      continue;
     }
 
     const entry: ChangelogEntry = { version: to };
@@ -151,16 +161,18 @@ export function mergeChangelogs(existing: ChangelogEntry[], generated: Changelog
   // Preserve manually-created entries not in generated
   for (const existingEntry of existingPromoted) {
     if (!generatedByVersion.has(existingEntry.version)) {
+      // Don't preserve stale 'next' entries with no description.
+      // If generated has no 'next', the script found no PR-bearing unreleased commits.
+      // A description-only 'next' is a deliberate manual annotation; preserve that.
+      if (existingEntry.version === 'next' && !existingEntry.description) {
+        continue;
+      }
       merged.push({ ...existingEntry });
     }
   }
 
-  // Sort newest-first ("next" always comes first)
-  return merged.sort((a, b) => {
-    if (a.version === 'next') return -1;
-    if (b.version === 'next') return 1;
-    return compareVersions(b.version, a.version);
-  });
+  // Sort newest-first ("next" always comes first, handled by compareVersions)
+  return merged.sort((a, b) => compareVersions(b.version, a.version));
 }
 
 /**
@@ -223,7 +235,7 @@ function extractPrNumber(message: string): number | undefined {
   return match ? Number(match[1]) : undefined;
 }
 
-async function getAllJsonFiles(dir: string): Promise<string[]> {
+export async function getAllJsonFiles(dir: string): Promise<string[]> {
   const allFiles: string[] = [];
 
   async function scanDir(currentDir: string, relativePath = '') {

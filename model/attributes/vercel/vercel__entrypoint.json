@@ -9,9 +9,6 @@
   "example": "api/index.js",
   "changelog": [
     {
-      "version": "next"
-    },
-    {
       "version": "0.2.0",
       "prs": [163]
     }

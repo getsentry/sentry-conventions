@@ -9,9 +9,6 @@
   "example": "https://vitals.vercel-insights.com/v1",
   "changelog": [
     {
-      "version": "next"
-    },
-    {
       "version": "0.2.0",
       "prs": [163]
     }

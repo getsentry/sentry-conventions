@@ -9,9 +9,6 @@
   "example": "document.hidden",
   "changelog": [
     {
-      "version": "next"
-    },
-    {
       "version": "0.0.0"
     }
   ]

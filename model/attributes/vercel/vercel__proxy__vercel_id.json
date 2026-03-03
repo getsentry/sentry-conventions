@@ -9,9 +9,6 @@
   "example": "sfo1::abc123",
   "changelog": [
     {
-      "version": "next"
-    },
-    {
       "version": "0.2.0",
       "prs": [163]
     }
