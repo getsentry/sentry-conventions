@@ -9846,7 +9846,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: ['Citation 1', 'Citation 2'],
     deprecation: {},
-    changelog: [{ version: '0.1.0', prs: [55] }],
+    changelog: [
+      { version: 'next', prs: [264] },
+      { version: '0.1.0', prs: [55] },
+    ],
   },
   [AI_COMPLETION_TOKENS_USED]: {
     brief: 'The number of tokens used to respond to the message.',
@@ -9872,7 +9875,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: ['document1.txt', 'document2.pdf'],
     deprecation: {},
-    changelog: [{ version: '0.1.0', prs: [55] }],
+    changelog: [
+      { version: 'next', prs: [264] },
+      { version: '0.1.0', prs: [55] },
+    ],
   },
   [AI_FINISH_REASON]: {
     brief: 'The reason why the model stopped generating.',
@@ -9959,7 +9965,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: false,
     deprecation: {},
-    changelog: [{ version: '0.1.0', prs: [55] }],
+    changelog: [
+      { version: 'next', prs: [264] },
+      { version: '0.1.0', prs: [55] },
+    ],
   },
   [AI_METADATA]: {
     brief: 'Extra metadata passed to an AI pipeline step.',
@@ -9970,7 +9979,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '{"user_id": 123, "session_id": "abc123"}',
     deprecation: {},
-    changelog: [{ version: '0.1.0', prs: [55, 127] }],
+    changelog: [
+      { version: 'next', prs: [264] },
+      { version: '0.1.0', prs: [55, 127] },
+    ],
   },
   [AI_MODEL_ID]: {
     brief: 'The vendor-specific ID of the model used.',
@@ -10031,7 +10043,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.system_instructions',
     },
     aliases: [GEN_AI_SYSTEM_INSTRUCTIONS],
-    changelog: [{ version: '0.1.0', prs: [55] }],
+    changelog: [
+      { version: 'next', prs: [264] },
+      { version: '0.1.0', prs: [55] },
+    ],
   },
   [AI_PRESENCE_PENALTY]: {
     brief:
@@ -10075,7 +10090,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: true,
     deprecation: {},
-    changelog: [{ version: '0.1.0', prs: [55] }],
+    changelog: [
+      { version: 'next', prs: [264] },
+      { version: '0.1.0', prs: [55] },
+    ],
   },
   [AI_RESPONSES]: {
     brief: 'The response messages sent back by the AI model.',
@@ -10100,7 +10118,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'json_object',
     deprecation: {},
-    changelog: [{ version: '0.1.0', prs: [55, 127] }],
+    changelog: [
+      { version: 'next', prs: [264] },
+      { version: '0.1.0', prs: [55, 127] },
+    ],
   },
   [AI_SEARCH_QUERIES]: {
     brief: 'Queries used to search for relevant context or documents.',
@@ -10111,7 +10132,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: ['climate change effects', 'renewable energy'],
     deprecation: {},
-    changelog: [{ version: '0.1.0', prs: [55] }],
+    changelog: [
+      { version: 'next', prs: [264] },
+      { version: '0.1.0', prs: [55] },
+    ],
   },
   [AI_SEARCH_RESULTS]: {
     brief: 'Results returned from search queries for context.',
@@ -10122,7 +10146,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: ['search_result_1, search_result_2'],
     deprecation: {},
-    changelog: [{ version: '0.1.0', prs: [55] }],
+    changelog: [
+      { version: 'next', prs: [264] },
+      { version: '0.1.0', prs: [55] },
+    ],
   },
   [AI_SEED]: {
     brief: 'The seed, ideally models given the same seed and same other parameters will produce the exact same output.',
@@ -10162,7 +10189,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '{"executed_function": "add_integers"}',
     deprecation: {},
-    changelog: [{ version: '0.1.0', prs: [55, 127] }],
+    changelog: [
+      { version: 'next', prs: [264] },
+      { version: '0.1.0', prs: [55, 127] },
+    ],
   },
   [AI_TEMPERATURE]: {
     brief:
@@ -10194,7 +10224,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.input.messages',
     },
     aliases: [GEN_AI_INPUT_MESSAGES],
-    changelog: [{ version: '0.1.0', prs: [55] }],
+    changelog: [
+      { version: 'next', prs: [264] },
+      { version: '0.1.0', prs: [55] },
+    ],
   },
   [AI_TOOLS]: {
     brief: 'For an AI model call, the functions that are available',
@@ -10271,6 +10304,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [GEN_AI_COST_TOTAL_TOKENS],
     changelog: [
+      { version: 'next', prs: [264] },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [53] },
     ],
@@ -10299,7 +10333,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: ['Token limit exceeded'],
     deprecation: {},
-    changelog: [{ version: '0.1.0', prs: [55] }],
+    changelog: [
+      { version: 'next', prs: [264] },
+      { version: '0.1.0', prs: [55] },
+    ],
   },
   [APP_START_TYPE]: {
     brief: 'Mobile app start variant. Either cold or warm.',
@@ -11117,6 +11154,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 12.34,
     aliases: [AI_TOTAL_COST],
     changelog: [
+      { version: 'next', prs: [264] },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [126] },
     ],
@@ -11142,7 +11180,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example:
       '[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
     aliases: [AI_TEXTS],
-    changelog: [{ version: '0.4.0', prs: [221] }],
+    changelog: [
+      { version: 'next', prs: [264] },
+      { version: '0.4.0', prs: [221] },
+    ],
   },
   [GEN_AI_OPERATION_NAME]: {
     brief:
@@ -11491,7 +11532,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'You are a helpful assistant',
     aliases: [AI_PREAMBLE],
-    changelog: [{ version: '0.4.0', prs: [221] }],
+    changelog: [
+      { version: 'next', prs: [264] },
+      { version: '0.4.0', prs: [221] },
+    ],
   },
   [GEN_AI_SYSTEM_MESSAGE]: {
     brief: 'The system instructions passed to the model.',
@@ -11518,7 +11562,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: '{"location": "Paris"}',
     aliases: [GEN_AI_TOOL_INPUT],
-    changelog: [{ version: '0.4.0', prs: [221] }],
+    changelog: [
+      { version: 'next', prs: [265] },
+      { version: '0.4.0', prs: [221] },
+    ],
   },
   [GEN_AI_TOOL_CALL_RESULT]: {
     brief: 'The result of the tool call. It has to be a stringified version of the result of the tool.',
@@ -11529,7 +11576,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'rainy, 57°F',
     aliases: [GEN_AI_TOOL_OUTPUT, GEN_AI_TOOL_MESSAGE],
-    changelog: [{ version: '0.4.0', prs: [221] }],
+    changelog: [
+      { version: 'next', prs: [265] },
+      { version: '0.4.0', prs: [221] },
+    ],
   },
   [GEN_AI_TOOL_DEFINITIONS]: {
     brief: 'The list of source system tool definitions available to the GenAI agent or model.',
@@ -11564,7 +11614,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.tool.call.arguments',
     },
     aliases: [GEN_AI_TOOL_CALL_ARGUMENTS],
-    changelog: [{ version: '0.1.0', prs: [63, 74] }],
+    changelog: [
+      { version: 'next', prs: [265] },
+      { version: '0.1.0', prs: [63, 74] },
+    ],
   },
   [GEN_AI_TOOL_MESSAGE]: {
     brief: 'The response from a tool or function call passed to the model.',
@@ -11578,7 +11631,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.tool.call.result',
     },
     aliases: [GEN_AI_TOOL_CALL_RESULT, GEN_AI_TOOL_OUTPUT],
-    changelog: [{ version: '0.1.0', prs: [62] }],
+    changelog: [
+      { version: 'next', prs: [265] },
+      { version: '0.1.0', prs: [62] },
+    ],
   },
   [GEN_AI_TOOL_NAME]: {
     brief: 'Name of the tool utilized by the agent.',
@@ -11603,7 +11659,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.tool.call.result',
     },
     aliases: [GEN_AI_TOOL_CALL_RESULT, GEN_AI_TOOL_MESSAGE],
-    changelog: [{ version: '0.1.0', prs: [63, 74] }],
+    changelog: [
+      { version: 'next', prs: [265] },
+      { version: '0.1.0', prs: [63, 74] },
+    ],
   },
   [GEN_AI_TOOL_TYPE]: {
     brief: 'The type of tool being used.',
@@ -11638,7 +11697,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 10,
     aliases: [AI_PROMPT_TOKENS_USED, GEN_AI_USAGE_PROMPT_TOKENS],
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [112] }, { version: '0.0.0' }],
+    changelog: [
+      { version: 'next', prs: [261] },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [112] },
+      { version: '0.0.0' },
+    ],
   },
   [GEN_AI_USAGE_INPUT_TOKENS_CACHED]: {
     brief: 'The number of cached tokens used to process the AI input (prompt).',
@@ -11672,7 +11736,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 10,
     aliases: [AI_COMPLETION_TOKENS_USED, GEN_AI_USAGE_COMPLETION_TOKENS],
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [112] }, { version: '0.0.0' }],
+    changelog: [
+      { version: 'next', prs: [261] },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [112] },
+      { version: '0.0.0' },
+    ],
   },
   [GEN_AI_USAGE_OUTPUT_TOKENS_REASONING]: {
     brief: 'The number of tokens used for reasoning to create the AI output.',
@@ -12163,6 +12232,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 50,
     sdks: ['ruby'],
+    changelog: [{ version: 'next', prs: [267] }],
   },
   [HTTP_STATUS_CODE]: {
     brief: 'The status code of the HTTP response.',
@@ -13479,6 +13549,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'sentry.environment',
     },
+    changelog: [{ version: 'next', prs: [266] }],
   },
   [RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME]: {
     brief: 'The software deployment environment name.',

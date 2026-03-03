@@ -4954,6 +4954,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=["Citation 1", "Citation 2"],
         deprecation=DeprecationInfo(),
         changelog=[
+            ChangelogEntry(version="next", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55]),
         ],
     ),
@@ -4980,6 +4981,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=["document1.txt", "document2.pdf"],
         deprecation=DeprecationInfo(),
         changelog=[
+            ChangelogEntry(version="next", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55]),
         ],
     ),
@@ -5054,6 +5056,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=False,
         deprecation=DeprecationInfo(),
         changelog=[
+            ChangelogEntry(version="next", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55]),
         ],
     ),
@@ -5065,6 +5068,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example='{"user_id": 123, "session_id": "abc123"}',
         deprecation=DeprecationInfo(),
         changelog=[
+            ChangelogEntry(version="next", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55, 127]),
         ],
     ),
@@ -5116,6 +5120,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.system_instructions"),
         aliases=["gen_ai.system_instructions"],
         changelog=[
+            ChangelogEntry(version="next", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55]),
         ],
     ),
@@ -5155,6 +5160,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=True,
         deprecation=DeprecationInfo(),
         changelog=[
+            ChangelogEntry(version="next", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55]),
         ],
     ),
@@ -5166,6 +5172,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="json_object",
         deprecation=DeprecationInfo(),
         changelog=[
+            ChangelogEntry(version="next", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55, 127]),
         ],
     ),
@@ -5190,6 +5197,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=["climate change effects", "renewable energy"],
         deprecation=DeprecationInfo(),
         changelog=[
+            ChangelogEntry(version="next", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55]),
         ],
     ),
@@ -5201,6 +5209,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=["search_result_1, search_result_2"],
         deprecation=DeprecationInfo(),
         changelog=[
+            ChangelogEntry(version="next", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55]),
         ],
     ),
@@ -5238,6 +5247,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example='{"executed_function": "add_integers"}',
         deprecation=DeprecationInfo(),
         changelog=[
+            ChangelogEntry(version="next", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55, 127]),
         ],
     ),
@@ -5263,6 +5273,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.input.messages"),
         aliases=["gen_ai.input.messages"],
         changelog=[
+            ChangelogEntry(version="next", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55]),
         ],
     ),
@@ -5323,6 +5334,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.cost.total_tokens"),
         aliases=["gen_ai.cost.total_tokens"],
         changelog=[
+            ChangelogEntry(version="next", prs=[264]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[53]),
         ],
@@ -5350,6 +5362,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=["Token limit exceeded"],
         deprecation=DeprecationInfo(),
         changelog=[
+            ChangelogEntry(version="next", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55]),
         ],
     ),
@@ -6185,6 +6198,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=12.34,
         aliases=["ai.total_cost"],
         changelog=[
+            ChangelogEntry(version="next", prs=[264]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[126]),
         ],
@@ -6207,6 +6221,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example='[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
         aliases=["ai.texts"],
         changelog=[
+            ChangelogEntry(version="next", prs=[264]),
             ChangelogEntry(version="0.4.0", prs=[221]),
         ],
     ),
@@ -6518,6 +6533,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="You are a helpful assistant",
         aliases=["ai.preamble"],
         changelog=[
+            ChangelogEntry(version="next", prs=[264]),
             ChangelogEntry(version="0.4.0", prs=[221]),
         ],
     ),
@@ -6529,6 +6545,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example='{"location": "Paris"}',
         aliases=["gen_ai.tool.input"],
         changelog=[
+            ChangelogEntry(version="next", prs=[265]),
             ChangelogEntry(version="0.4.0", prs=[221]),
         ],
     ),
@@ -6540,6 +6557,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="rainy, 57°F",
         aliases=["gen_ai.tool.output", "gen_ai.tool.message"],
         changelog=[
+            ChangelogEntry(version="next", prs=[265]),
             ChangelogEntry(version="0.4.0", prs=[221]),
         ],
     ),
@@ -6572,6 +6590,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.tool.call.arguments"),
         aliases=["gen_ai.tool.call.arguments"],
         changelog=[
+            ChangelogEntry(version="next", prs=[265]),
             ChangelogEntry(version="0.1.0", prs=[63, 74]),
         ],
     ),
@@ -6584,6 +6603,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.tool.call.result"),
         aliases=["gen_ai.tool.call.result", "gen_ai.tool.output"],
         changelog=[
+            ChangelogEntry(version="next", prs=[265]),
             ChangelogEntry(version="0.1.0", prs=[62]),
         ],
     ),
@@ -6607,6 +6627,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.tool.call.result"),
         aliases=["gen_ai.tool.call.result", "gen_ai.tool.message"],
         changelog=[
+            ChangelogEntry(version="next", prs=[265]),
             ChangelogEntry(version="0.1.0", prs=[63, 74]),
         ],
     ),
@@ -6642,6 +6663,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=10,
         aliases=["ai.prompt_tokens.used", "gen_ai.usage.prompt_tokens"],
         changelog=[
+            ChangelogEntry(version="next", prs=[261]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[112]),
             ChangelogEntry(version="0.0.0"),
@@ -6676,6 +6698,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=10,
         aliases=["ai.completion_tokens.used", "gen_ai.usage.completion_tokens"],
         changelog=[
+            ChangelogEntry(version="next", prs=[261]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[112]),
             ChangelogEntry(version="0.0.0"),
@@ -7161,6 +7184,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=50,
         sdks=["ruby"],
+        changelog=[
+            ChangelogEntry(version="next", prs=[267]),
+        ],
     ),
     "http.server_name": AttributeMetadata(
         brief="The server domain name",
@@ -8501,6 +8527,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="sentry.environment", status=DeprecationStatus.BACKFILL
         ),
+        changelog=[
+            ChangelogEntry(version="next", prs=[266]),
+        ],
     ),
     "resource.deployment.environment.name": AttributeMetadata(
         brief="The software deployment environment name.",

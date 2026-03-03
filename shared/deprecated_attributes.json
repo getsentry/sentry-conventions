@@ -211,6 +211,10 @@
       },
       "changelog": [
         {
+          "version": "next",
+          "prs": [264]
+        },
+        {
           "version": "0.1.0",
           "prs": [55]
         }
@@ -258,6 +262,10 @@
         "_status": null
       },
       "changelog": [
+        {
+          "version": "next",
+          "prs": [264]
+        },
         {
           "version": "0.1.0",
           "prs": [55]
@@ -391,6 +399,10 @@
       },
       "changelog": [
         {
+          "version": "next",
+          "prs": [264]
+        },
+        {
           "version": "0.1.0",
           "prs": [55]
         }
@@ -409,6 +421,10 @@
         "_status": null
       },
       "changelog": [
+        {
+          "version": "next",
+          "prs": [264]
+        },
         {
           "version": "0.1.0",
           "prs": [55, 127]
@@ -502,6 +518,10 @@
       "alias": ["gen_ai.system_instructions"],
       "changelog": [
         {
+          "version": "next",
+          "prs": [264]
+        },
+        {
           "version": "0.1.0",
           "prs": [55]
         }
@@ -575,6 +595,10 @@
       },
       "changelog": [
         {
+          "version": "next",
+          "prs": [264]
+        },
+        {
           "version": "0.1.0",
           "prs": [55]
         }
@@ -593,6 +617,10 @@
         "_status": null
       },
       "changelog": [
+        {
+          "version": "next",
+          "prs": [264]
+        },
         {
           "version": "0.1.0",
           "prs": [55, 127]
@@ -637,6 +665,10 @@
       },
       "changelog": [
         {
+          "version": "next",
+          "prs": [264]
+        },
+        {
           "version": "0.1.0",
           "prs": [55]
         }
@@ -655,6 +687,10 @@
         "_status": null
       },
       "changelog": [
+        {
+          "version": "next",
+          "prs": [264]
+        },
         {
           "version": "0.1.0",
           "prs": [55]
@@ -721,6 +757,10 @@
       },
       "changelog": [
         {
+          "version": "next",
+          "prs": [264]
+        },
+        {
           "version": "0.1.0",
           "prs": [55, 127]
         }
@@ -766,6 +806,10 @@
       },
       "alias": ["gen_ai.input.messages"],
       "changelog": [
+        {
+          "version": "next",
+          "prs": [264]
+        },
         {
           "version": "0.1.0",
           "prs": [55]
@@ -878,6 +922,10 @@
       "alias": ["gen_ai.cost.total_tokens"],
       "changelog": [
         {
+          "version": "next",
+          "prs": [264]
+        },
+        {
           "version": "0.4.0",
           "prs": [228]
         },
@@ -929,6 +977,10 @@
         "_status": null
       },
       "changelog": [
+        {
+          "version": "next",
+          "prs": [264]
+        },
         {
           "version": "0.1.0",
           "prs": [55]
@@ -1356,6 +1408,10 @@
       },
       "changelog": [
         {
+          "version": "next",
+          "prs": [265]
+        },
+        {
           "version": "0.1.0",
           "prs": [63, 74]
         }
@@ -1377,6 +1433,10 @@
       },
       "changelog": [
         {
+          "version": "next",
+          "prs": [265]
+        },
+        {
           "version": "0.1.0",
           "prs": [62]
         }
@@ -1397,6 +1457,10 @@
         "replacement": "gen_ai.tool.call.result"
       },
       "changelog": [
+        {
+          "version": "next",
+          "prs": [265]
+        },
         {
           "version": "0.1.0",
           "prs": [63, 74]
@@ -2168,7 +2232,13 @@
       "deprecation": {
         "_status": "backfill",
         "replacement": "sentry.environment"
-      }
+      },
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [266]
+        }
+      ]
     },
     {
       "key": "resource.deployment.environment.name",
