@@ -6,5 +6,14 @@
     "key": "maybe"
   },
   "is_in_otel": true,
-  "example": "Exception in thread \"main\" java.lang.RuntimeException: Test exception\n at com.example.GenerateTrace.methodB(GenerateTrace.java:13)\n at com.example.GenerateTrace.methodA(GenerateTrace.java:9)\n at com.example.GenerateTrace.main(GenerateTrace.java:5)"
+  "example": "Exception in thread \"main\" java.lang.RuntimeException: Test exception\n at com.example.GenerateTrace.methodB(GenerateTrace.java:13)\n at com.example.GenerateTrace.methodA(GenerateTrace.java:9)\n at com.example.GenerateTrace.main(GenerateTrace.java:5)",
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [127]
+    },
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

@@ -7,5 +7,10 @@
   },
   "is_in_otel": false,
   "example": "production",
-  "alias": ["environment"]
+  "alias": ["environment"],
+  "changelog": [
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

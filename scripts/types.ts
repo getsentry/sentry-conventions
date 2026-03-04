@@ -16,6 +16,7 @@ export interface AttributeJson {
   };
   alias?: string[];
   sdks?: string[];
+  changelog?: { version: string; prs?: number[]; description?: string }[];
 }
 
 export interface NameJson {

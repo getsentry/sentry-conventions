@@ -7,5 +7,14 @@
   },
   "is_in_otel": false,
   "example": 678,
-  "sdks": ["browser"]
+  "sdks": ["browser"],
+  "changelog": [
+    {
+      "version": "0.4.0",
+      "prs": [228]
+    },
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

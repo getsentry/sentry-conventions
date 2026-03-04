@@ -6,6 +6,12 @@
     "key": "maybe"
   },
   "is_in_otel": false,
-  "example": 50.0,
-  "sdks": ["ruby"]
+  "example": 50,
+  "sdks": ["ruby"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [267]
+    }
+  ]
 }

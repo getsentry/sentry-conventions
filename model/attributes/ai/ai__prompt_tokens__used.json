@@ -12,5 +12,18 @@
   "deprecation": {
     "_status": null,
     "replacement": "gen_ai.usage.input_tokens"
-  }
+  },
+  "changelog": [
+    {
+      "version": "0.4.0",
+      "prs": [228]
+    },
+    {
+      "version": "0.1.0",
+      "prs": [57, 61]
+    },
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

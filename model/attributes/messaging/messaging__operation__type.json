@@ -6,5 +6,11 @@
     "key": "maybe"
   },
   "is_in_otel": true,
-  "example": "create"
+  "example": "create",
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [51, 127]
+    }
+  ]
 }

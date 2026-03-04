@@ -6,5 +6,11 @@
     "key": "maybe"
   },
   "is_in_otel": false,
-  "example": "foobar"
+  "example": "foobar",
+  "changelog": [
+    {
+      "version": "0.3.1",
+      "prs": [190]
+    }
+  ]
 }

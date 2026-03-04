@@ -6,5 +6,11 @@
     "key": "maybe"
   },
   "is_in_otel": false,
-  "example": "sentry.message.parameter.0='123'"
+  "example": "sentry.message.parameter.0='123'",
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [116]
+    }
+  ]
 }

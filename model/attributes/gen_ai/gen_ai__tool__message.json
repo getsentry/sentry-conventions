@@ -11,5 +11,15 @@
   "deprecation": {
     "_status": null,
     "replacement": "gen_ai.tool.call.result"
-  }
+  },
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [265]
+    },
+    {
+      "version": "0.1.0",
+      "prs": [62]
+    }
+  ]
 }

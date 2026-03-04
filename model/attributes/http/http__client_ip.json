@@ -11,5 +11,14 @@
     "_status": null,
     "replacement": "client.address"
   },
-  "alias": ["client.address"]
+  "alias": ["client.address"],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [61, 106, 127]
+    },
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

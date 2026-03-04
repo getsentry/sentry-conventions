@@ -9,5 +9,15 @@
   "example": ["search_result_1, search_result_2"],
   "deprecation": {
     "_status": null
-  }
+  },
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [264]
+    },
+    {
+      "version": "0.1.0",
+      "prs": [55]
+    }
+  ]
 }

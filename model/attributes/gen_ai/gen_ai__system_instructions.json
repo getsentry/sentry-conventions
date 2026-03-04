@@ -7,5 +7,15 @@
   },
   "is_in_otel": true,
   "example": "You are a helpful assistant",
-  "alias": ["ai.preamble"]
+  "alias": ["ai.preamble"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [264]
+    },
+    {
+      "version": "0.4.0",
+      "prs": [221]
+    }
+  ]
 }

@@ -11,5 +11,14 @@
     "_status": null,
     "replacement": "sentry.replay_id"
   },
-  "alias": ["sentry.replay_id"]
+  "alias": ["sentry.replay_id"],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [61]
+    },
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

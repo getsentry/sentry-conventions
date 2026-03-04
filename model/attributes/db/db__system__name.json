@@ -7,5 +7,14 @@
   },
   "is_in_otel": true,
   "example": "postgresql",
-  "alias": ["db.system"]
+  "alias": ["db.system"],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [127]
+    },
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

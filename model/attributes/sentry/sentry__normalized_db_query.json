@@ -6,5 +6,11 @@
     "key": "maybe"
   },
   "is_in_otel": false,
-  "example": "SELECT .. FROM sentry_project WHERE (project_id = %s)"
+  "example": "SELECT .. FROM sentry_project WHERE (project_id = %s)",
+  "changelog": [
+    {
+      "version": "0.3.1",
+      "prs": [194]
+    }
+  ]
 }

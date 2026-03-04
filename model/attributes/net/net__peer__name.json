@@ -11,5 +11,14 @@
     "_status": null,
     "replacement": "server.address",
     "reason": "Deprecated, use server.address on client spans and client.address on server spans."
-  }
+  },
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [61, 127]
+    },
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

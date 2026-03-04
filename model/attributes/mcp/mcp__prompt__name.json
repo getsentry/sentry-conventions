@@ -7,5 +7,11 @@
     "reason": "Prompt names may reveal user behavior patterns or sensitive operations"
   },
   "is_in_otel": false,
-  "example": "summarize"
+  "example": "summarize",
+  "changelog": [
+    {
+      "version": "0.3.0",
+      "prs": [171]
+    }
+  ]
 }
