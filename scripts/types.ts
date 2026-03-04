@@ -2,7 +2,7 @@ export interface AttributeJson {
   key: string;
   brief: string;
   has_dynamic_suffix?: boolean;
-  type: 'string' | 'boolean' | 'integer' | 'double' | 'string[]' | 'boolean[]' | 'integer[]' | 'double[]';
+  type: 'string' | 'boolean' | 'integer' | 'double' | 'string[]' | 'boolean[]' | 'integer[]' | 'double[]' | 'any';
   pii: {
     key: 'true' | 'maybe' | 'false';
     reason?: string;
@@ -16,7 +16,6 @@ export interface AttributeJson {
   };
   alias?: string[];
   sdks?: string[];
-  allow_any_value?: boolean;
 }
 
 export interface NameJson {

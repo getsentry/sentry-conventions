@@ -58,6 +58,8 @@ describe('attribute json', async () => {
             expect(Array.isArray(content.example)).toBe(true);
             expect((content.example as boolean[]).every((e: boolean) => typeof e === 'boolean')).toBe(true);
             break;
+          case 'any':
+            break;
           default:
             throw new Error('Invalid type');
         }

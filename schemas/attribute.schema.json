@@ -19,7 +19,7 @@
     },
     "type": {
       "description": "The type of the attribute value",
-      "enum": ["string", "boolean", "integer", "double", "string[]", "boolean[]", "integer[]", "double[]"]
+      "enum": ["string", "boolean", "integer", "double", "string[]", "boolean[]", "integer[]", "double[]", "any"]
     },
     "pii": {
       "description": "If an attribute can have pii. Is either true, false or maybe. Optionally include a reason about why it has PII or not",
@@ -101,10 +101,6 @@
       "items": {
         "type": "string"
       }
-    },
-    "allow_any_value": {
-      "description": "If true, the attribute can hold any value type as per the OTEL AnyValue convention, not only the declared scalar type. Only set for a curated set of attributes. The ingestion pipeline will accept object/complex values for these attributes instead of rejecting them.",
-      "type": "boolean"
     }
   },
   "required": ["key", "brief", "type", "pii", "is_in_otel"]

@@ -111,10 +111,9 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
 
   // Generate individual attribute constants with documentation AND build the explicit type map
   for (const { file, key, constantName, attributeJson, isDeprecated } of allAttributes) {
-    const { brief, type, pii, is_in_otel, example, has_dynamic_suffix, deprecation, alias, sdks, allow_any_value } =
-      attributeJson;
+    const { brief, type, pii, is_in_otel, example, has_dynamic_suffix, deprecation, alias, sdks } = attributeJson;
 
-    const tsType = getTsType(type, allow_any_value);
+    const tsType = getTsType(type);
     attributeTypeMap += `\n  [${constantName}]?: ${constantName}_TYPE;`;
 
     // Generate individual constant with documentation
@@ -138,11 +137,6 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
     if (has_dynamic_suffix) {
       individualConstants += ' *\n';
       individualConstants += ' * Has Dynamic Suffix: true\n';
-    }
-
-    if (allow_any_value) {
-      individualConstants += ' *\n';
-      individualConstants += ' * Allow Any Value: true (OTEL AnyValue convention)\n';
     }
 
     // Aliases
@@ -251,8 +245,7 @@ function getConstantName(key: string, isDeprecated: boolean): string {
   return constantName;
 }
 
-function getTsType(type: AttributeJson['type'], allowAnyValue?: boolean): string {
-  if (allowAnyValue) return 'unknown';
+function getTsType(type: AttributeJson['type']): string {
   switch (type) {
     case 'string':
       return 'string';
@@ -270,6 +263,8 @@ function getTsType(type: AttributeJson['type'], allowAnyValue?: boolean): string
       return 'Array<number>';
     case 'double[]':
       return 'Array<number>';
+    case 'any':
+      return 'unknown';
     default:
       throw new Error(`Unknown attribute type: ${type}`);
   }
@@ -296,7 +291,8 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
   content += '    STRING_ARRAY = "string[]"\n';
   content += '    BOOLEAN_ARRAY = "boolean[]"\n';
   content += '    INTEGER_ARRAY = "integer[]"\n';
-  content += '    DOUBLE_ARRAY = "double[]"\n\n';
+  content += '    DOUBLE_ARRAY = "double[]"\n';
+  content += '    ANY = "any"\n\n';
 
   content += 'class IsPii(Enum):\n';
   content += '    TRUE = "true"\n';
@@ -351,10 +347,7 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
   content += '    \n';
   content += '    sdks: Optional[List[str]] = None\n';
   content +=
-    '    """If an attribute is SDK specific, list the SDKs that use this attribute. This is not an exhaustive list, there might be SDKs that send this attribute that are is not documented here."""\n';
-  content += '    \n';
-  content += '    allow_any_value: Optional[bool] = None\n';
-  content += '    """If the attribute allows any value type as per the OTEL AnyValue convention"""\n\n';
+    '    """If an attribute is SDK specific, list the SDKs that use this attribute. This is not an exhaustive list, there might be SDKs that send this attribute that are is not documented here."""\n\n';
 
   let attributesTypeMembers = '';
   let deprecatedAttributesTypeMembers = '';
@@ -407,13 +400,12 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
     const attributePath = path.join(attributesDir, file);
     const attributeJson = JSON.parse(fs.readFileSync(attributePath, 'utf-8')) as AttributeJson;
 
-    const { key, brief, type, pii, is_in_otel, example, has_dynamic_suffix, deprecation, alias, allow_any_value } =
-      attributeJson;
+    const { key, brief, type, pii, is_in_otel, example, has_dynamic_suffix, deprecation, alias } = attributeJson;
 
     // Convert attribute key to a valid Python constant name
     const isDeprecated = !!deprecation;
     const constantName = getConstantName(key, isDeprecated);
-    const pythonType = getPythonType(type, allow_any_value);
+    const pythonType = getPythonType(type);
 
     content += `    # Path: model/attributes/${file}\n`;
 
@@ -425,10 +417,6 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
 
     if (has_dynamic_suffix) {
       content += '    Has Dynamic Suffix: true\n';
-    }
-
-    if (allow_any_value) {
-      content += '    Allow Any Value: true (OTEL AnyValue convention)\n';
     }
 
     if (alias && alias.length > 0) {
@@ -518,10 +506,6 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
       metadataDict += `        sdks=${JSON.stringify(attributeJson.sdks)},\n`;
     }
 
-    if (attributeJson.allow_any_value) {
-      metadataDict += '        allow_any_value=True,\n';
-    }
-
     metadataDict += '    ),\n';
   }
 
@@ -559,8 +543,7 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
   console.log(`Generated Python attributes file at: ${outputFilePath}`);
 }
 
-function getPythonType(type: AttributeJson['type'], allowAnyValue?: boolean): string {
-  if (allowAnyValue) return 'object';
+function getPythonType(type: AttributeJson['type']): string {
   switch (type) {
     case 'string':
       return 'str';
@@ -578,6 +561,8 @@ function getPythonType(type: AttributeJson['type'], allowAnyValue?: boolean): st
       return 'List[int]';
     case 'double[]':
       return 'List[float]';
+    case 'any':
+      return 'object';
     default:
       throw new Error(`Unknown attribute type: ${type}`);
   }
@@ -601,6 +586,8 @@ function getAttributeTypeEnum(type: AttributeJson['type']): string {
       return 'INTEGER_ARRAY';
     case 'double[]':
       return 'DOUBLE_ARRAY';
+    case 'any':
+      return 'ANY';
     default:
       throw new Error(`Unknown attribute type: ${type}`);
   }
@@ -620,7 +607,7 @@ function convertToPythonLiteral(value: AttributeJson['example']): string {
 
 function generateMetadataTypes(): string {
   return `
-export type AttributeType = 
+export type AttributeType =
   | 'string'
   | 'boolean'
   | 'integer'
@@ -628,7 +615,8 @@ export type AttributeType =
   | 'string[]'
   | 'boolean[]'
   | 'integer[]'
-  | 'double[]';
+  | 'double[]'
+  | 'any';
 
 export type IsPii = 
   | 'true'
@@ -668,8 +656,6 @@ export interface AttributeMetadata {
   aliases?: AttributeName[];
   /** If an attribute is SDK specific, list the SDKs that use this attribute */
   sdks?: string[];
-  /** If the attribute allows any value type as per the OTEL AnyValue convention */
-  allowAnyValue?: boolean;
 }
 
 `;
@@ -705,8 +691,7 @@ function generateMetadataDict(
   metadataDict += 'export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {\n';
 
   for (const { key, attributeJson, constantName } of allAttributes) {
-    const { brief, type, pii, is_in_otel, example, has_dynamic_suffix, deprecation, alias, allow_any_value } =
-      attributeJson;
+    const { brief, type, pii, is_in_otel, example, has_dynamic_suffix, deprecation, alias } = attributeJson;
 
     metadataDict += `  [${constantName}]: {\n`;
     metadataDict += `    brief: ${JSON.stringify(brief)},\n`;
@@ -765,10 +750,6 @@ function generateMetadataDict(
 
     if (attributeJson.sdks && attributeJson.sdks.length > 0) {
       metadataDict += `    sdks: ${JSON.stringify(attributeJson.sdks)},\n`;
-    }
-
-    if (allow_any_value) {
-      metadataDict += '    allowAnyValue: true,\n';
     }
 
     metadataDict += '  },\n';
