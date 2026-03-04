@@ -16,6 +16,7 @@ export interface AttributeJson {
   };
   alias?: string[];
   sdks?: string[];
+  allow_any_value?: boolean;
 }
 
 export interface NameJson {
