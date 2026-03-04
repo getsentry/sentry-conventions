@@ -3,6 +3,25 @@ import * as fs from 'node:fs';
 import * as path from 'node:path';
 import type { AttributeJson } from './types';
 
+/**
+ * Full commit hashes to ignore when building changelogs (e.g. the commit that
+ * introduced the changelog concept and touched every file, to avoid infinite recursion).
+ */
+const IGNORED_COMMIT_HASHES = new Set<string>([
+  // feat: Add changelog tracking to attribute definitions (#270)
+  '0db15becb4b06b592d53bd18aa9f945d7b065a71',
+]);
+
+function isCommitIgnored(hash: string): boolean {
+  const h = hash.trim().toLowerCase();
+  if (!h) return false;
+  for (const ignored of IGNORED_COMMIT_HASHES) {
+    const i = ignored.trim().toLowerCase();
+    if (h === i || h.startsWith(i) || i.startsWith(h)) return true;
+  }
+  return false;
+}
+
 export interface ChangelogEntry {
   version: string;
   prs?: number[];
@@ -24,7 +43,7 @@ export async function generateAttributeChangelog() {
   const tagRanges: Array<{ from: string | null; to: string }> = [];
   for (let i = 0; i < tags.length; i++) {
     tagRanges.push({
-      from: i === 0 ? null : tags[i - 1],
+      from: i === 0 ? null : (tags[i - 1] ?? null),
       to: tags[i] as string,
     });
   }
@@ -37,26 +56,31 @@ export async function generateAttributeChangelog() {
 
   const allFiles = await getAllJsonFiles(attributesDir);
   let updatedCount = 0;
+  const total = allFiles.length;
 
   // TODO: This runs O(files × versions) git subprocesses. As the repo accumulates
   // more releases, consider batching: for each version range, query changed files
   // once with `git diff --name-only`, then map files to versions, instead of
   // querying per file.
-  for (const relativeFile of allFiles) {
+  for (let i = 0; i < allFiles.length; i++) {
+    const relativeFile = allFiles[i] as string;
+    process.stdout.write(`\r[${i + 1}/${total}] ${relativeFile.padEnd(60)}`);
+
     const filePath = path.join(attributesDir, relativeFile);
     const gitPath = path.join('model', 'attributes', relativeFile);
-    const changelog = buildChangelog(gitPath, tagRanges);
+    const { changelog, skippedPrs } = buildChangelog(gitPath, tagRanges);
 
     if (changelog.length === 0) {
       continue;
     }
 
     const attributeJson = JSON.parse(fs.readFileSync(filePath, 'utf-8')) as AttributeJson;
-    attributeJson.changelog = mergeChangelogs(attributeJson.changelog ?? [], changelog);
+    attributeJson.changelog = mergeChangelogs(attributeJson.changelog ?? [], changelog, skippedPrs);
     fs.writeFileSync(filePath, `${JSON.stringify(attributeJson, null, 2)}\n`);
     updatedCount++;
   }
 
+  process.stdout.write('\n');
   console.log(`Updated changelog for ${updatedCount} attribute files.`);
 }
 
@@ -72,8 +96,14 @@ function getReleaseTags(): string[] {
   }
 }
 
-function buildChangelog(gitPath: string, tagRanges: Array<{ from: string | null; to: string }>): ChangelogEntry[] {
+interface BuildChangelogResult {
+  changelog: ChangelogEntry[];
+  skippedPrs: Set<number>;
+}
+
+function buildChangelog(gitPath: string, tagRanges: Array<{ from: string | null; to: string }>): BuildChangelogResult {
   const changelog: ChangelogEntry[] = [];
+  const skippedPrs = new Set<number>();
 
   for (const { from, to } of tagRanges) {
     const range = to === 'next' ? (from ? `${from}..HEAD` : 'HEAD') : from ? `${from}..${to}` : to;
@@ -83,9 +113,14 @@ function buildChangelog(gitPath: string, tagRanges: Array<{ from: string | null;
       continue;
     }
 
-    // Extract PR numbers from all commits in this version
+    // Extract PR numbers from all commits in this version (respecting ignore list)
     const prs = new Set<number>();
     for (const commit of commits) {
+      if (isCommitIgnored(commit.hash)) {
+        const pr = extractPrNumber(commit.message);
+        if (pr !== undefined) skippedPrs.add(pr);
+        continue;
+      }
       const pr = extractPrNumber(commit.message);
       if (pr !== undefined) {
         prs.add(pr);
@@ -105,7 +140,7 @@ function buildChangelog(gitPath: string, tagRanges: Array<{ from: string | null;
     changelog.push(entry);
   }
 
-  return changelog.reverse();
+  return { changelog: changelog.reverse(), skippedPrs };
 }
 
 export function compareVersions(a: string, b: string): number {
@@ -123,7 +158,13 @@ export function compareVersions(a: string, b: string): number {
   return 0;
 }
 
-export function mergeChangelogs(existing: ChangelogEntry[], generated: ChangelogEntry[]): ChangelogEntry[] {
+export function mergeChangelogs(
+  existing: ChangelogEntry[],
+  generated: ChangelogEntry[],
+  skippedPrs: Set<number> = new Set(),
+): ChangelogEntry[] {
+  const filterPrs = (prs: number[] | undefined) => (prs ?? []).filter((pr) => !skippedPrs.has(pr));
+
   // If the existing changelog has a "next" entry but the generated changelog has a real version
   // that accounts for those same commits, promote the old "next" entry to that version.
   const existingPromoted = promoteNextEntries(existing, generated);
@@ -140,11 +181,11 @@ export function mergeChangelogs(existing: ChangelogEntry[], generated: Changelog
 
   const merged: ChangelogEntry[] = [];
 
-  // Merge generated entries, preserving existing descriptions and unioning PRs
+  // Merge generated entries, preserving existing descriptions and unioning PRs (minus skipped)
   for (const genEntry of generated) {
     const existingEntry = existingByVersion.get(genEntry.version);
     if (existingEntry) {
-      const prSet = new Set<number>([...(existingEntry.prs ?? []), ...(genEntry.prs ?? [])]);
+      const prSet = new Set<number>([...filterPrs(existingEntry.prs), ...filterPrs(genEntry.prs)]);
       const mergedEntry: ChangelogEntry = { version: genEntry.version };
       if (prSet.size > 0) {
         mergedEntry.prs = Array.from(prSet).sort((a, b) => a - b);
@@ -154,20 +195,32 @@ export function mergeChangelogs(existing: ChangelogEntry[], generated: Changelog
       }
       merged.push(mergedEntry);
     } else {
-      merged.push({ ...genEntry });
+      const prs = filterPrs(genEntry.prs);
+      merged.push({
+        ...genEntry,
+        prs: prs.length > 0 ? prs : undefined,
+      });
     }
   }
 
-  // Preserve manually-created entries not in generated
+  // Preserve manually-created entries not in generated (with skipped PRs filtered out)
   for (const existingEntry of existingPromoted) {
     if (!generatedByVersion.has(existingEntry.version)) {
-      // Don't preserve stale 'next' entries with no description.
-      // If generated has no 'next', the script found no PR-bearing unreleased commits.
-      // A description-only 'next' is a deliberate manual annotation; preserve that.
-      if (existingEntry.version === 'next' && !existingEntry.description) {
+      const filteredPrs = filterPrs(existingEntry.prs);
+      // Don't preserve stale 'next' with no description and no PRs — unless we stripped PRs
+      // (skippedPrs), in which case keep the entry to avoid flip-flop between runs.
+      if (
+        existingEntry.version === 'next' &&
+        !existingEntry.description &&
+        filteredPrs.length === 0 &&
+        skippedPrs.size === 0
+      ) {
         continue;
       }
-      merged.push({ ...existingEntry });
+      merged.push({
+        ...existingEntry,
+        prs: filteredPrs.length > 0 ? filteredPrs : undefined,
+      });
     }
   }
 
@@ -221,10 +274,13 @@ function getCommitsInRange(gitPath: string, range: string): CommitInfo[] {
       .trim()
       .split('\n')
       .filter(Boolean)
-      .map((line) => ({
-        hash: line.substring(0, 40),
-        message: line.substring(41),
-      }));
+      .map((line) => {
+        const trimmed = line.trim();
+        return {
+          hash: trimmed.substring(0, 40),
+          message: trimmed.substring(41).trim(),
+        };
+      });
   } catch {
     return [];
   }
