@@ -9,6 +9,10 @@
   "example": "/dynamic/some-value.json?route=some-value",
   "changelog": [
     {
+      "version": "next",
+      "prs": [270]
+    },
+    {
       "version": "0.2.0",
       "prs": [163]
     }

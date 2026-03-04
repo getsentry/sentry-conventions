@@ -11,6 +11,10 @@
   "example": "mcp.request.argument.query='weather in Paris'",
   "changelog": [
     {
+      "version": "next",
+      "prs": [270]
+    },
+    {
       "version": "0.3.0",
       "prs": [176]
     }

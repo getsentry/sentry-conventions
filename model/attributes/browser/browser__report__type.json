@@ -9,6 +9,10 @@
   "example": "network-error",
   "changelog": [
     {
+      "version": "next",
+      "prs": [270]
+    },
+    {
       "version": "0.1.0",
       "prs": [68, 127]
     }

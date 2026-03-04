@@ -10,6 +10,10 @@
   "example": "file:///path/to/file.txt",
   "changelog": [
     {
+      "version": "next",
+      "prs": [270]
+    },
+    {
       "version": "0.3.0",
       "prs": [171]
     }

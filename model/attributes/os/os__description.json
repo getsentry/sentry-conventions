@@ -9,6 +9,10 @@
   "example": "Ubuntu 18.04.1 LTS",
   "changelog": [
     {
+      "version": "next",
+      "prs": [270]
+    },
+    {
       "version": "0.1.0",
       "prs": [127]
     },

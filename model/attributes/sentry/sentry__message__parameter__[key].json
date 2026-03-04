@@ -9,6 +9,10 @@
   "example": "sentry.message.parameter.0='123'",
   "changelog": [
     {
+      "version": "next",
+      "prs": [270]
+    },
+    {
       "version": "0.1.0",
       "prs": [116]
     }

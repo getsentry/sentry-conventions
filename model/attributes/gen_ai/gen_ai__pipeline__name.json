@@ -10,6 +10,10 @@
   "alias": ["ai.pipeline.name"],
   "changelog": [
     {
+      "version": "next",
+      "prs": [270]
+    },
+    {
       "version": "0.1.0",
       "prs": [76, 127]
     }

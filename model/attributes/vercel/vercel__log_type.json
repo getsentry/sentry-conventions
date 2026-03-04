@@ -9,6 +9,10 @@
   "example": "stdout",
   "changelog": [
     {
+      "version": "next",
+      "prs": [270]
+    },
+    {
       "version": "0.2.0",
       "prs": [163]
     }

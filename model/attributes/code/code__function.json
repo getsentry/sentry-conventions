@@ -14,6 +14,10 @@
   "alias": ["code.function.name"],
   "changelog": [
     {
+      "version": "next",
+      "prs": [270]
+    },
+    {
       "version": "0.1.0",
       "prs": [61, 74]
     },

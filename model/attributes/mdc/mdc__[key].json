@@ -11,6 +11,10 @@
   "sdks": ["java", "java.logback", "java.jul", "java.log4j2"],
   "changelog": [
     {
+      "version": "next",
+      "prs": [270]
+    },
+    {
       "version": "0.3.0",
       "prs": [176]
     }

@@ -9,6 +9,10 @@
   "example": "pdx1::v8g4b-1744143786684-93dafbc0f70d",
   "changelog": [
     {
+      "version": "next",
+      "prs": [270]
+    },
+    {
       "version": "0.2.0",
       "prs": [163]
     }

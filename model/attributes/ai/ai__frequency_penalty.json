@@ -14,6 +14,10 @@
   "alias": ["gen_ai.request.frequency_penalty"],
   "changelog": [
     {
+      "version": "next",
+      "prs": [270]
+    },
+    {
       "version": "0.4.0",
       "prs": [228]
     },

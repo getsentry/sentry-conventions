@@ -9,6 +9,10 @@
   "example": ["InboundFilters", "FunctionToString", "BrowserApiErrors", "Breadcrumbs"],
   "changelog": [
     {
+      "version": "next",
+      "prs": [270]
+    },
+    {
       "version": "0.0.0",
       "prs": [42]
     }

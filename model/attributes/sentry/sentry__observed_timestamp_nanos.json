@@ -9,6 +9,10 @@
   "example": "1544712660300000000",
   "changelog": [
     {
+      "version": "next",
+      "prs": [270]
+    },
+    {
       "version": "0.3.0",
       "prs": [174]
     },
