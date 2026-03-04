@@ -9,10 +9,6 @@
   "example": "document.hidden",
   "changelog": [
     {
-      "version": "next",
-      "prs": [270]
-    },
-    {
       "version": "0.0.0"
     }
   ]

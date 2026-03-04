@@ -14,10 +14,6 @@
   "alias": ["ai.model.provider", "gen_ai.provider.name"],
   "changelog": [
     {
-      "version": "next",
-      "prs": [270]
-    },
-    {
       "version": "0.4.0",
       "prs": [253]
     },

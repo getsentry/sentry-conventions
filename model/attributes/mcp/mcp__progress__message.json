@@ -10,10 +10,6 @@
   "example": "Processing 50 of 100 items",
   "changelog": [
     {
-      "version": "next",
-      "prs": [270]
-    },
-    {
       "version": "0.3.0",
       "prs": [171]
     }

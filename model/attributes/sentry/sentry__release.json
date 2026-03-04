@@ -10,10 +10,6 @@
   "alias": ["service.version", "release"],
   "changelog": [
     {
-      "version": "next",
-      "prs": [270]
-    },
-    {
       "version": "0.0.0"
     }
   ]

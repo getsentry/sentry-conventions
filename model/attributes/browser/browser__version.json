@@ -10,10 +10,6 @@
   "alias": ["sentry.browser.version"],
   "changelog": [
     {
-      "version": "next",
-      "prs": [270]
-    },
-    {
       "version": "0.1.0",
       "prs": [59, 127, 139]
     }

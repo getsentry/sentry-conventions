@@ -10,10 +10,6 @@
   "example": "db.query.parameter.foo='123'",
   "changelog": [
     {
-      "version": "next",
-      "prs": [270]
-    },
-    {
       "version": "0.1.0",
       "prs": [103, 127]
     }

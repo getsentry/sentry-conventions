@@ -17,10 +17,6 @@
       "alias": ["sentry.environment"],
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.1.0",
           "prs": [61, 127]
         },
@@ -45,10 +41,6 @@
       "example": "ENOENT: no such file or directory",
       "sdks": ["javascript-node"],
       "changelog": [
-        {
-          "version": "next",
-          "prs": [270]
-        },
         {
           "version": "0.1.0",
           "prs": [61, 127]
@@ -75,10 +67,6 @@
       "sdks": ["javascript-browser", "javascript-node"],
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.1.0",
           "prs": [61, 127]
         },
@@ -103,10 +91,6 @@
       "alias": ["sentry.release"],
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.1.0",
           "prs": [61, 127]
         },
@@ -130,10 +114,6 @@
       },
       "alias": ["sentry.replay_id"],
       "changelog": [
-        {
-          "version": "next",
-          "prs": [270]
-        },
         {
           "version": "0.1.0",
           "prs": [61]
@@ -160,10 +140,6 @@
       "sdks": ["php-laravel", "javascript-reactnative"],
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.1.0",
           "prs": [61, 74]
         },
@@ -187,10 +163,6 @@
       },
       "alias": ["sentry.transaction"],
       "changelog": [
-        {
-          "version": "next",
-          "prs": [270]
-        },
         {
           "version": "0.1.0",
           "prs": [61, 127]
@@ -217,10 +189,6 @@
       "sdks": ["javascript-browser", "javascript-node"],
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.1.0",
           "prs": [61]
         },
@@ -244,7 +212,7 @@
       "changelog": [
         {
           "version": "next",
-          "prs": [264, 270]
+          "prs": [264]
         },
         {
           "version": "0.1.0",
@@ -268,10 +236,6 @@
         "replacement": "gen_ai.usage.output_tokens"
       },
       "changelog": [
-        {
-          "version": "next",
-          "prs": [270]
-        },
         {
           "version": "0.4.0",
           "prs": [228]
@@ -300,7 +264,7 @@
       "changelog": [
         {
           "version": "next",
-          "prs": [264, 270]
+          "prs": [264]
         },
         {
           "version": "0.1.0",
@@ -324,10 +288,6 @@
       "alias": ["gen_ai.response.finish_reasons"],
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.1.0",
           "prs": [55, 57, 61, 108, 127]
         }
@@ -348,10 +308,6 @@
       },
       "alias": ["gen_ai.request.frequency_penalty"],
       "changelog": [
-        {
-          "version": "next",
-          "prs": [270]
-        },
         {
           "version": "0.4.0",
           "prs": [228]
@@ -378,10 +334,6 @@
       "alias": ["gen_ai.tool.name"],
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.1.0",
           "prs": [55, 57, 61, 108]
         }
@@ -402,10 +354,6 @@
       },
       "alias": ["gen_ai.response.id"],
       "changelog": [
-        {
-          "version": "next",
-          "prs": [270]
-        },
         {
           "version": "0.1.0",
           "prs": [55, 57, 61, 108, 127]
@@ -428,10 +376,6 @@
         "replacement": "gen_ai.request.messages"
       },
       "changelog": [
-        {
-          "version": "next",
-          "prs": [270]
-        },
         {
           "version": "0.1.0",
           "prs": [65, 119]
@@ -456,7 +400,7 @@
       "changelog": [
         {
           "version": "next",
-          "prs": [264, 270]
+          "prs": [264]
         },
         {
           "version": "0.1.0",
@@ -479,7 +423,7 @@
       "changelog": [
         {
           "version": "next",
-          "prs": [264, 270]
+          "prs": [264]
         },
         {
           "version": "0.1.0",
@@ -502,10 +446,6 @@
       },
       "alias": ["gen_ai.provider.name", "gen_ai.system"],
       "changelog": [
-        {
-          "version": "next",
-          "prs": [270]
-        },
         {
           "version": "0.4.0",
           "prs": [253]
@@ -533,10 +473,6 @@
       },
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.1.0",
           "prs": [57, 61, 127]
         },
@@ -561,10 +497,6 @@
       "alias": ["gen_ai.pipeline.name"],
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.1.0",
           "prs": [53, 76, 108, 127]
         }
@@ -587,7 +519,7 @@
       "changelog": [
         {
           "version": "next",
-          "prs": [264, 270]
+          "prs": [264]
         },
         {
           "version": "0.1.0",
@@ -610,10 +542,6 @@
       },
       "alias": ["gen_ai.request.presence_penalty"],
       "changelog": [
-        {
-          "version": "next",
-          "prs": [270]
-        },
         {
           "version": "0.4.0",
           "prs": [228]
@@ -640,10 +568,6 @@
         "replacement": "gen_ai.usage.input_tokens"
       },
       "changelog": [
-        {
-          "version": "next",
-          "prs": [270]
-        },
         {
           "version": "0.4.0",
           "prs": [228]
@@ -672,7 +596,7 @@
       "changelog": [
         {
           "version": "next",
-          "prs": [264, 270]
+          "prs": [264]
         },
         {
           "version": "0.1.0",
@@ -695,7 +619,7 @@
       "changelog": [
         {
           "version": "next",
-          "prs": [264, 270]
+          "prs": [264]
         },
         {
           "version": "0.1.0",
@@ -718,10 +642,6 @@
         "replacement": "gen_ai.response.text"
       },
       "changelog": [
-        {
-          "version": "next",
-          "prs": [270]
-        },
         {
           "version": "0.1.0",
           "prs": [65, 127]
@@ -746,7 +666,7 @@
       "changelog": [
         {
           "version": "next",
-          "prs": [264, 270]
+          "prs": [264]
         },
         {
           "version": "0.1.0",
@@ -769,7 +689,7 @@
       "changelog": [
         {
           "version": "next",
-          "prs": [264, 270]
+          "prs": [264]
         },
         {
           "version": "0.1.0",
@@ -793,10 +713,6 @@
       "alias": ["gen_ai.request.seed"],
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.1.0",
           "prs": [55, 57, 61, 108, 127]
         }
@@ -818,10 +734,6 @@
       },
       "alias": ["gen_ai.response.streaming"],
       "changelog": [
-        {
-          "version": "next",
-          "prs": [270]
-        },
         {
           "version": "0.1.0",
           "prs": [76, 108]
@@ -846,7 +758,7 @@
       "changelog": [
         {
           "version": "next",
-          "prs": [264, 270]
+          "prs": [264]
         },
         {
           "version": "0.1.0",
@@ -869,10 +781,6 @@
       },
       "alias": ["gen_ai.request.temperature"],
       "changelog": [
-        {
-          "version": "next",
-          "prs": [270]
-        },
         {
           "version": "0.4.0",
           "prs": [228]
@@ -900,7 +808,7 @@
       "changelog": [
         {
           "version": "next",
-          "prs": [264, 270]
+          "prs": [264]
         },
         {
           "version": "0.1.0",
@@ -923,10 +831,6 @@
       },
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.1.0",
           "prs": [55, 65]
         }
@@ -946,10 +850,6 @@
         "replacement": "gen_ai.request.available_tools"
       },
       "changelog": [
-        {
-          "version": "next",
-          "prs": [270]
-        },
         {
           "version": "0.1.0",
           "prs": [55, 65, 127]
@@ -971,10 +871,6 @@
       },
       "alias": ["gen_ai.request.top_k"],
       "changelog": [
-        {
-          "version": "next",
-          "prs": [270]
-        },
         {
           "version": "0.4.0",
           "prs": [228]
@@ -1000,10 +896,6 @@
       },
       "alias": ["gen_ai.request.top_p"],
       "changelog": [
-        {
-          "version": "next",
-          "prs": [270]
-        },
         {
           "version": "0.4.0",
           "prs": [228]
@@ -1031,7 +923,7 @@
       "changelog": [
         {
           "version": "next",
-          "prs": [264, 270]
+          "prs": [264]
         },
         {
           "version": "0.4.0",
@@ -1060,10 +952,6 @@
       "alias": ["gen_ai.usage.total_tokens"],
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.4.0",
           "prs": [228]
         },
@@ -1091,7 +979,7 @@
       "changelog": [
         {
           "version": "next",
-          "prs": [264, 270]
+          "prs": [264]
         },
         {
           "version": "0.1.0",
@@ -1114,10 +1002,6 @@
       },
       "alias": ["code.file.path"],
       "changelog": [
-        {
-          "version": "next",
-          "prs": [270]
-        },
         {
           "version": "0.1.0",
           "prs": [61]
@@ -1143,10 +1027,6 @@
       "alias": ["code.function.name"],
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.1.0",
           "prs": [61, 74]
         },
@@ -1170,10 +1050,6 @@
       },
       "alias": ["code.line.number"],
       "changelog": [
-        {
-          "version": "next",
-          "prs": [270]
-        },
         {
           "version": "0.4.0",
           "prs": [228]
@@ -1203,10 +1079,6 @@
       },
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.1.0",
           "prs": [61, 74]
         },
@@ -1231,10 +1103,6 @@
       "alias": ["db.namespace"],
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.1.0",
           "prs": [61, 127]
         },
@@ -1258,10 +1126,6 @@
       },
       "alias": ["db.operation.name"],
       "changelog": [
-        {
-          "version": "next",
-          "prs": [270]
-        },
         {
           "version": "0.4.0",
           "prs": [199]
@@ -1292,10 +1156,6 @@
       "sdks": ["php-laravel"],
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.1.0",
           "prs": [61]
         },
@@ -1319,10 +1179,6 @@
       },
       "alias": ["db.query.text"],
       "changelog": [
-        {
-          "version": "next",
-          "prs": [270]
-        },
         {
           "version": "0.4.0",
           "prs": [199]
@@ -1352,10 +1208,6 @@
       "alias": ["db.system.name"],
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.4.0",
           "prs": [199, 224]
         },
@@ -1383,10 +1235,6 @@
       },
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.1.0",
           "prs": [74, 108, 119]
         },
@@ -1410,10 +1258,6 @@
         "replacement": "gen_ai.tool.definitions"
       },
       "changelog": [
-        {
-          "version": "next",
-          "prs": [270]
-        },
         {
           "version": "0.4.0",
           "prs": [221]
@@ -1440,10 +1284,6 @@
       },
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.4.0",
           "prs": [221]
         },
@@ -1468,10 +1308,6 @@
         "replacement": "gen_ai.output.messages"
       },
       "changelog": [
-        {
-          "version": "next",
-          "prs": [270]
-        },
         {
           "version": "0.4.0",
           "prs": [221]
@@ -1498,10 +1334,6 @@
       },
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.4.0",
           "prs": [221]
         },
@@ -1527,10 +1359,6 @@
       "alias": ["ai.model.provider", "gen_ai.provider.name"],
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.4.0",
           "prs": [253]
         },
@@ -1554,10 +1382,6 @@
         "replacement": "gen_ai.system_instructions"
       },
       "changelog": [
-        {
-          "version": "next",
-          "prs": [270]
-        },
         {
           "version": "0.4.0",
           "prs": [221]
@@ -1585,7 +1409,7 @@
       "changelog": [
         {
           "version": "next",
-          "prs": [265, 270]
+          "prs": [265]
         },
         {
           "version": "0.1.0",
@@ -1610,7 +1434,7 @@
       "changelog": [
         {
           "version": "next",
-          "prs": [265, 270]
+          "prs": [265]
         },
         {
           "version": "0.1.0",
@@ -1635,7 +1459,7 @@
       "changelog": [
         {
           "version": "next",
-          "prs": [265, 270]
+          "prs": [265]
         },
         {
           "version": "0.1.0",
@@ -1658,10 +1482,6 @@
       },
       "alias": ["ai.completion_tokens.used", "gen_ai.usage.output_tokens"],
       "changelog": [
-        {
-          "version": "next",
-          "prs": [270]
-        },
         {
           "version": "0.4.0",
           "prs": [228]
@@ -1691,10 +1511,6 @@
       "alias": ["ai.prompt_tokens.used", "gen_ai.usage.input_tokens"],
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.4.0",
           "prs": [228]
         },
@@ -1723,10 +1539,6 @@
       "alias": ["client.address"],
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.1.0",
           "prs": [61, 106, 127]
         },
@@ -1750,10 +1562,6 @@
       },
       "alias": ["network.protocol.version", "net.protocol.version"],
       "changelog": [
-        {
-          "version": "next",
-          "prs": [270]
-        },
         {
           "version": "0.1.0",
           "prs": [61, 108, 127]
@@ -1780,10 +1588,6 @@
       "alias": ["server.address", "client.address", "http.server_name", "net.host.name"],
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.1.0",
           "prs": [61, 108, 127]
         },
@@ -1808,10 +1612,6 @@
       "alias": ["http.request.method"],
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.1.0",
           "prs": [61, 127]
         },
@@ -1835,10 +1635,6 @@
       },
       "alias": ["http.response.body.size", "http.response.header.content-length"],
       "changelog": [
-        {
-          "version": "next",
-          "prs": [270]
-        },
         {
           "version": "0.4.0",
           "prs": [228]
@@ -1868,10 +1664,6 @@
       "alias": ["http.response.size"],
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.4.0",
           "prs": [228]
         },
@@ -1900,10 +1692,6 @@
       "alias": ["url.scheme"],
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.1.0",
           "prs": [61, 127]
         },
@@ -1928,10 +1716,6 @@
       "alias": ["server.address", "net.host.name", "http.host"],
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.1.0",
           "prs": [61, 108, 127]
         },
@@ -1955,10 +1739,6 @@
       },
       "alias": ["http.response.status_code"],
       "changelog": [
-        {
-          "version": "next",
-          "prs": [270]
-        },
         {
           "version": "0.4.0",
           "prs": [228]
@@ -1988,10 +1768,6 @@
       },
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.1.0",
           "prs": [61]
         },
@@ -2015,10 +1791,6 @@
       },
       "alias": ["url.full", "url"],
       "changelog": [
-        {
-          "version": "next",
-          "prs": [270]
-        },
         {
           "version": "0.1.0",
           "prs": [61, 108]
@@ -2044,10 +1816,6 @@
       "alias": ["user_agent.original"],
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.1.0",
           "prs": [61, 127]
         },
@@ -2071,10 +1839,6 @@
       },
       "alias": ["network.local.address", "net.sock.host.addr"],
       "changelog": [
-        {
-          "version": "next",
-          "prs": [270]
-        },
         {
           "version": "0.1.0",
           "prs": [61, 108, 127]
@@ -2100,10 +1864,6 @@
       "alias": ["server.address", "http.server_name", "http.host"],
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.1.0",
           "prs": [61, 108, 127]
         },
@@ -2127,10 +1887,6 @@
       },
       "alias": ["server.port"],
       "changelog": [
-        {
-          "version": "next",
-          "prs": [270]
-        },
         {
           "version": "0.4.0",
           "prs": [228]
@@ -2160,10 +1916,6 @@
       "alias": ["network.peer.address", "net.sock.peer.addr"],
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.1.0",
           "prs": [61, 108, 127]
         },
@@ -2188,10 +1940,6 @@
       },
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.1.0",
           "prs": [61, 127]
         },
@@ -2215,10 +1963,6 @@
         "reason": "Deprecated, use server.port on client spans and client.port on server spans."
       },
       "changelog": [
-        {
-          "version": "next",
-          "prs": [270]
-        },
         {
           "version": "0.4.0",
           "prs": [228]
@@ -2248,10 +1992,6 @@
       "alias": ["network.protocol.name"],
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.1.0",
           "prs": [61, 127]
         },
@@ -2275,10 +2015,6 @@
       },
       "alias": ["network.protocol.version", "http.flavor"],
       "changelog": [
-        {
-          "version": "next",
-          "prs": [270]
-        },
         {
           "version": "0.1.0",
           "prs": [61, 108, 127]
@@ -2304,10 +2040,6 @@
       },
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.1.0",
           "prs": [61, 127]
         },
@@ -2332,10 +2064,6 @@
       "alias": ["network.local.address", "net.host.ip"],
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.1.0",
           "prs": [61, 108, 127]
         },
@@ -2359,10 +2087,6 @@
       },
       "alias": ["network.local.port"],
       "changelog": [
-        {
-          "version": "next",
-          "prs": [270]
-        },
         {
           "version": "0.4.0",
           "prs": [228]
@@ -2392,10 +2116,6 @@
       "alias": ["network.peer.address", "net.peer.ip"],
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.1.0",
           "prs": [61, 108, 127]
         },
@@ -2419,10 +2139,6 @@
       },
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.1.0",
           "prs": [61, 119, 127]
         },
@@ -2445,10 +2161,6 @@
         "replacement": "network.peer.port"
       },
       "changelog": [
-        {
-          "version": "next",
-          "prs": [270]
-        },
         {
           "version": "0.4.0",
           "prs": [228]
@@ -2478,10 +2190,6 @@
       "alias": ["network.transport"],
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.1.0",
           "prs": [61, 127]
         },
@@ -2507,10 +2215,6 @@
       "example": "query.id='123'",
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.1.0",
           "prs": [103]
         }
@@ -2532,7 +2236,7 @@
       "changelog": [
         {
           "version": "next",
-          "prs": [266, 270]
+          "prs": [266]
         }
       ]
     },
@@ -2550,10 +2254,6 @@
         "replacement": "sentry.environment"
       },
       "changelog": [
-        {
-          "version": "next",
-          "prs": [270]
-        },
         {
           "version": "0.3.1",
           "prs": [196]
@@ -2576,10 +2276,6 @@
       "alias": ["browser.name"],
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.1.0",
           "prs": [139]
         }
@@ -2601,10 +2297,6 @@
       "alias": ["browser.version"],
       "changelog": [
         {
-          "version": "next",
-          "prs": [270]
-        },
-        {
           "version": "0.1.0",
           "prs": [139]
         }
@@ -2625,10 +2317,6 @@
         "replacement": "sentry.segment.id"
       },
       "changelog": [
-        {
-          "version": "next",
-          "prs": [270]
-        },
         {
           "version": "0.1.0",
           "prs": [124]

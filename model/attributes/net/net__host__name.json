@@ -14,10 +14,6 @@
   "alias": ["server.address", "http.server_name", "http.host"],
   "changelog": [
     {
-      "version": "next",
-      "prs": [270]
-    },
-    {
       "version": "0.1.0",
       "prs": [61, 108, 127]
     },

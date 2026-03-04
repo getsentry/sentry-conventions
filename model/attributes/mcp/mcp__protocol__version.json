@@ -9,10 +9,6 @@
   "example": "2024-11-05",
   "changelog": [
     {
-      "version": "next",
-      "prs": [270]
-    },
-    {
       "version": "0.3.0",
       "prs": [171]
     }

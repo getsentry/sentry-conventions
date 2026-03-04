@@ -3912,6 +3912,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "server"
     """
 
+    # Path: model/attributes/sentry/sentry__log__sequence.json
+    SENTRY_LOG_SEQUENCE: Literal["sentry.log.sequence"] = "sentry.log.sequence"
+    """A monotonically incrementing counter assigned to each log by the SDK, used to determine the correct ordering of logs when timestamps are identical.
+
+    Type: int
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 42
+    """
+
     # Path: model/attributes/sentry/sentry__message__parameter__[key].json
     SENTRY_MESSAGE_PARAMETER_KEY: Literal["sentry.message.parameter.<key>"] = (
         "sentry.message.parameter.<key>"
@@ -4197,18 +4207,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Example: 200
-    """
-
-    # Path: model/attributes/sentry/sentry__timestamp__sequence.json
-    SENTRY_TIMESTAMP_SEQUENCE: Literal["sentry.timestamp.sequence"] = (
-        "sentry.timestamp.sequence"
-    )
-    """A sequencing counter for deterministic ordering of logs or metrics when timestamps share the same integer millisecond. Starts at 0 on SDK initialization, increments by 1 for each captured item, and resets to 0 when the integer millisecond of the current item differs from the previous one.
-
-    Type: int
-    Contains PII: false
-    Defined in OTEL: No
-    Example: 0
     """
 
     # Path: model/attributes/sentry/sentry__trace__parent_span_id.json
@@ -4967,7 +4965,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=["Citation 1", "Citation 2"],
         deprecation=DeprecationInfo(),
         changelog=[
-            ChangelogEntry(version="next", prs=[264, 270]),
+            ChangelogEntry(version="next", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55]),
         ],
     ),
@@ -4981,7 +4979,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.usage.output_tokens", "gen_ai.usage.completion_tokens"],
         sdks=["python"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[57, 61]),
             ChangelogEntry(version="0.0.0"),
@@ -4995,7 +4992,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=["document1.txt", "document2.pdf"],
         deprecation=DeprecationInfo(),
         changelog=[
-            ChangelogEntry(version="next", prs=[264, 270]),
+            ChangelogEntry(version="next", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55]),
         ],
     ),
@@ -5008,7 +5005,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.response.finish_reason"),
         aliases=["gen_ai.response.finish_reasons"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[55, 57, 61, 108, 127]),
         ],
     ),
@@ -5021,7 +5017,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.request.frequency_penalty"),
         aliases=["gen_ai.request.frequency_penalty"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[55, 57, 61, 108]),
         ],
@@ -5035,7 +5030,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.tool.name"),
         aliases=["gen_ai.tool.name"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[55, 57, 61, 108]),
         ],
     ),
@@ -5048,7 +5042,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.response.id"),
         aliases=["gen_ai.response.id"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[55, 57, 61, 108, 127]),
         ],
     ),
@@ -5062,7 +5055,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.request.messages"],
         sdks=["python"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[65, 119]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -5075,7 +5067,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=False,
         deprecation=DeprecationInfo(),
         changelog=[
-            ChangelogEntry(version="next", prs=[264, 270]),
+            ChangelogEntry(version="next", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55]),
         ],
     ),
@@ -5087,7 +5079,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example='{"user_id": 123, "session_id": "abc123"}',
         deprecation=DeprecationInfo(),
         changelog=[
-            ChangelogEntry(version="next", prs=[264, 270]),
+            ChangelogEntry(version="next", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55, 127]),
         ],
     ),
@@ -5100,7 +5092,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.provider.name"),
         aliases=["gen_ai.provider.name", "gen_ai.system"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[253]),
             ChangelogEntry(version="0.1.0", prs=[57, 61, 108, 127]),
         ],
@@ -5115,7 +5106,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.response.model"],
         sdks=["python"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[57, 61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -5129,7 +5119,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.pipeline.name"),
         aliases=["gen_ai.pipeline.name"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[53, 76, 108, 127]),
         ],
     ),
@@ -5142,7 +5131,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.system_instructions"),
         aliases=["gen_ai.system_instructions"],
         changelog=[
-            ChangelogEntry(version="next", prs=[264, 270]),
+            ChangelogEntry(version="next", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55]),
         ],
     ),
@@ -5155,7 +5144,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.request.presence_penalty"),
         aliases=["gen_ai.request.presence_penalty"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[55, 57, 61, 108]),
         ],
@@ -5170,7 +5158,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.usage.prompt_tokens", "gen_ai.usage.input_tokens"],
         sdks=["python"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[57, 61]),
             ChangelogEntry(version="0.0.0"),
@@ -5184,7 +5171,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=True,
         deprecation=DeprecationInfo(),
         changelog=[
-            ChangelogEntry(version="next", prs=[264, 270]),
+            ChangelogEntry(version="next", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55]),
         ],
     ),
@@ -5196,7 +5183,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="json_object",
         deprecation=DeprecationInfo(),
         changelog=[
-            ChangelogEntry(version="next", prs=[264, 270]),
+            ChangelogEntry(version="next", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55, 127]),
         ],
     ),
@@ -5209,7 +5196,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.response.text"),
         sdks=["python"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[65, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -5222,7 +5208,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=["climate change effects", "renewable energy"],
         deprecation=DeprecationInfo(),
         changelog=[
-            ChangelogEntry(version="next", prs=[264, 270]),
+            ChangelogEntry(version="next", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55]),
         ],
     ),
@@ -5234,7 +5220,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=["search_result_1, search_result_2"],
         deprecation=DeprecationInfo(),
         changelog=[
-            ChangelogEntry(version="next", prs=[264, 270]),
+            ChangelogEntry(version="next", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55]),
         ],
     ),
@@ -5247,7 +5233,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.request.seed"),
         aliases=["gen_ai.request.seed"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[55, 57, 61, 108, 127]),
         ],
     ),
@@ -5261,7 +5246,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.response.streaming"],
         sdks=["python"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[76, 108]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -5274,7 +5258,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example='{"executed_function": "add_integers"}',
         deprecation=DeprecationInfo(),
         changelog=[
-            ChangelogEntry(version="next", prs=[264, 270]),
+            ChangelogEntry(version="next", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55, 127]),
         ],
     ),
@@ -5287,7 +5271,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.request.temperature"),
         aliases=["gen_ai.request.temperature"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[55, 57, 61, 108]),
         ],
@@ -5301,7 +5284,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.input.messages"),
         aliases=["gen_ai.input.messages"],
         changelog=[
-            ChangelogEntry(version="next", prs=[264, 270]),
+            ChangelogEntry(version="next", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55]),
         ],
     ),
@@ -5313,7 +5296,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=["tool_call_1", "tool_call_2"],
         deprecation=DeprecationInfo(replacement="gen_ai.response.tool_calls"),
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[55, 65]),
         ],
     ),
@@ -5325,7 +5307,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=["function_1", "function_2"],
         deprecation=DeprecationInfo(replacement="gen_ai.request.available_tools"),
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[55, 65, 127]),
         ],
     ),
@@ -5338,7 +5319,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.request.top_k"),
         aliases=["gen_ai.request.top_k"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[55, 57, 61, 108]),
         ],
@@ -5352,7 +5332,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.request.top_p"),
         aliases=["gen_ai.request.top_p"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[55, 57, 61, 108]),
         ],
@@ -5366,7 +5345,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.cost.total_tokens"),
         aliases=["gen_ai.cost.total_tokens"],
         changelog=[
-            ChangelogEntry(version="next", prs=[264, 270]),
+            ChangelogEntry(version="next", prs=[264]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[53]),
         ],
@@ -5381,7 +5360,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.usage.total_tokens"],
         sdks=["python"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[57, 61, 108]),
             ChangelogEntry(version="0.0.0"),
@@ -5395,7 +5373,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=["Token limit exceeded"],
         deprecation=DeprecationInfo(),
         changelog=[
-            ChangelogEntry(version="next", prs=[264, 270]),
+            ChangelogEntry(version="next", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55]),
         ],
     ),
@@ -5406,7 +5384,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="cold",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -5418,7 +5395,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=True,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -5430,7 +5406,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="Chrome",
         aliases=["sentry.browser.name"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127, 139]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -5442,7 +5417,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="network-error",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[68, 127]),
         ],
     ),
@@ -5454,7 +5428,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="Window.requestAnimationFrame",
         sdks=["browser"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -5467,7 +5440,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="event-listener",
         sdks=["browser"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -5480,7 +5452,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=678,
         sdks=["browser"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -5493,7 +5464,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="120.0.6099.130",
         aliases=["sentry.browser.version"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[59, 127, 139]),
         ],
     ),
@@ -5505,7 +5475,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=True,
         sdks=["php-laravel"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -5516,7 +5485,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=58,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -5529,7 +5497,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=["my-cache-key", "my-other-cache-key"],
         sdks=["php-laravel"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -5541,7 +5508,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="get",
         sdks=["php-laravel"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -5554,7 +5520,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=120,
         sdks=["php-laravel"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -5567,7 +5532,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="mail",
         sdks=["php-laravel"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -5580,7 +5544,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="example.com",
         aliases=["http.client_ip"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[106, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -5592,7 +5555,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example=5432,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -5605,7 +5567,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=543,
         sdks=["javascript-cloudflare"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -5618,7 +5579,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=12,
         sdks=["javascript-cloudflare"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -5631,7 +5591,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=12,
         sdks=["javascript-cloudflare"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -5644,7 +5603,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="/app/myapplication/http/handler/server.py",
         aliases=["code.filepath"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -5657,7 +5615,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="code.file.path"),
         aliases=["code.file.path"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[61]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -5671,7 +5628,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="code.function.name"),
         aliases=["code.function.name"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[61, 74]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -5684,7 +5640,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="server_request",
         aliases=["code.function"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -5697,7 +5652,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=42,
         aliases=["code.lineno"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -5711,7 +5665,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="code.line.number"),
         aliases=["code.line.number"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[61, 108]),
             ChangelogEntry(version="0.0.0"),
@@ -5728,7 +5681,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="code.function.name should include the namespace.",
         ),
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[61, 74]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -5740,7 +5692,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="GregorianCalendar",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[243]),
         ],
     ),
@@ -5751,7 +5702,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="English (United States)",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[243]),
         ],
     ),
@@ -5762,7 +5712,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=True,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[243]),
         ],
     ),
@@ -5773,7 +5722,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="en-US",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[243]),
         ],
     ),
@@ -5784,7 +5732,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="Europe/Vienna",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[243]),
         ],
     ),
@@ -5795,7 +5742,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="users",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[106, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -5809,7 +5755,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="db.namespace"),
         aliases=["db.namespace"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -5822,7 +5767,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="customers",
         aliases=["db.name"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -5838,7 +5782,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         aliases=["db.operation.name"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[199]),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
@@ -5852,7 +5795,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="SELECT",
         aliases=["db.operation"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -5865,7 +5807,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         has_dynamic_suffix=True,
         example="db.query.parameter.foo='123'",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[103, 127]),
         ],
     ),
@@ -5876,7 +5817,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="SELECT users;",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[208]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
@@ -5890,7 +5830,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="SELECT * FROM users WHERE id = $1",
         aliases=["db.statement"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[208]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
@@ -5904,7 +5843,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="my-redis-instance",
         sdks=["php-laravel"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -5917,7 +5855,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=["test", "*"],
         sdks=["php-laravel"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -5933,7 +5870,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         sdks=["php-laravel"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[61]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -5949,7 +5885,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         aliases=["db.query.text"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[199]),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
@@ -5966,7 +5901,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         aliases=["db.system.name"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[199, 224]),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
@@ -5980,7 +5914,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="postgresql",
         aliases=["db.system"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -5992,7 +5925,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="fancy_user",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -6003,7 +5935,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="Apple",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[116, 127]),
         ],
     ),
@@ -6014,7 +5945,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="iPhone",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[116, 127]),
         ],
     ),
@@ -6025,7 +5955,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="iPhone 15 Pro Max",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[116, 127]),
         ],
     ),
@@ -6038,7 +5967,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="sentry.environment"),
         aliases=["sentry.environment"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -6050,7 +5978,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="timeout",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -6062,7 +5989,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=1234567890,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[101]),
         ],
     ),
@@ -6073,7 +5999,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="Process Payload",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[101, 127]),
         ],
     ),
@@ -6084,7 +6009,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example=True,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -6095,7 +6019,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="ENOENT: no such file or directory",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -6107,7 +6030,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example='Exception in thread "main" java.lang.RuntimeException: Test exception\n at com.example.GenerateTrace.methodB(GenerateTrace.java:13)\n at com.example.GenerateTrace.methodA(GenerateTrace.java:9)\n at com.example.GenerateTrace.main(GenerateTrace.java:5)',
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -6119,7 +6041,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="OSError",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -6131,7 +6052,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example=True,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -6142,7 +6062,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="0/5 * * * ? *",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -6154,7 +6073,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="2020-01-23T13:47:06Z",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -6166,7 +6084,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="timer",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -6179,7 +6096,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         has_dynamic_suffix=True,
         example="flag.evaluation.is_new_ui=true",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[103]),
         ],
     ),
@@ -6190,7 +6106,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=5,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -6202,7 +6117,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=3,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -6214,7 +6128,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=1,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -6226,7 +6139,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=60,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -6243,7 +6155,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         sdks=["javascript-node"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -6255,7 +6166,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="ResearchAssistant",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[62, 127]),
         ],
     ),
@@ -6266,7 +6176,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="conv_5j66UpCpwteGg4YSxUnt7lPY",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[250]),
         ],
     ),
@@ -6277,7 +6186,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=123.45,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[112]),
         ],
@@ -6289,7 +6197,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=123.45,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[112]),
         ],
@@ -6302,7 +6209,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=12.34,
         aliases=["ai.total_cost"],
         changelog=[
-            ChangelogEntry(version="next", prs=[264, 270]),
+            ChangelogEntry(version="next", prs=[264]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[126]),
         ],
@@ -6314,7 +6221,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="What's the weather in Paris?",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.1", prs=[195]),
         ],
     ),
@@ -6326,7 +6232,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example='[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
         aliases=["ai.texts"],
         changelog=[
-            ChangelogEntry(version="next", prs=[264, 270]),
+            ChangelogEntry(version="next", prs=[264]),
             ChangelogEntry(version="0.4.0", prs=[221]),
         ],
     ),
@@ -6337,7 +6243,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="chat",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[225]),
             ChangelogEntry(version="0.1.0", prs=[62, 127]),
         ],
@@ -6349,7 +6254,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="tool",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[257]),
             ChangelogEntry(version="0.1.0", prs=[113, 127]),
         ],
@@ -6361,7 +6265,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example='[{"role": "assistant", "parts": [{"type": "text", "content": "The weather in Paris is currently rainy with a temperature of 57°F."}], "finish_reason": "stop"}]',
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[221]),
         ],
     ),
@@ -6373,7 +6276,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="Autofix Pipeline",
         aliases=["ai.pipeline.name"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[76, 127]),
         ],
     ),
@@ -6387,7 +6289,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="Deprecated from OTEL, use gen_ai.input.messages with the new format instead."
         ),
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[74, 108, 119]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -6400,7 +6301,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="openai",
         aliases=["ai.model.provider", "gen_ai.system"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[253]),
         ],
     ),
@@ -6412,7 +6312,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example='[{"name": "get_weather", "description": "Get the weather for a given location"}, {"name": "get_news", "description": "Get the news for a given topic"}]',
         deprecation=DeprecationInfo(replacement="gen_ai.tool.definitions"),
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[221]),
             ChangelogEntry(version="0.1.0", prs=[63, 127]),
         ],
@@ -6425,7 +6324,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=0.5,
         aliases=["ai.frequency_penalty"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[57]),
         ],
@@ -6437,7 +6335,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example=2048,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[62]),
         ],
@@ -6451,7 +6348,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.input.messages"),
         aliases=["ai.input_messages"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[221]),
             ChangelogEntry(version="0.1.0", prs=[63, 74, 108, 119, 122]),
         ],
@@ -6463,7 +6359,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="gpt-4-turbo-preview",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[62, 127]),
         ],
     ),
@@ -6475,7 +6370,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=0.5,
         aliases=["ai.presence_penalty"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[57]),
         ],
@@ -6488,7 +6382,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="1234567890",
         aliases=["ai.seed"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[57, 127]),
         ],
     ),
@@ -6500,7 +6393,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=0.1,
         aliases=["ai.temperature"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[57]),
         ],
@@ -6513,7 +6405,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=35,
         aliases=["ai.top_k"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[57]),
         ],
@@ -6526,7 +6417,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=0.7,
         aliases=["ai.top_p"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[57]),
         ],
@@ -6539,7 +6429,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="COMPLETE",
         aliases=["ai.finish_reason"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[57, 127]),
         ],
     ),
@@ -6551,7 +6440,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="gen_123abc",
         aliases=["ai.generation_id"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[57, 127]),
         ],
     ),
@@ -6563,7 +6451,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="gpt-4",
         aliases=["ai.model_id"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -6576,7 +6463,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=True,
         aliases=["ai.streaming"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[76]),
         ],
     ),
@@ -6588,7 +6474,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example='["The weather in Paris is rainy and overcast, with temperatures around 57°F", "The weather in London is sunny and warm, with temperatures around 65°F"]',
         deprecation=DeprecationInfo(replacement="gen_ai.output.messages"),
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[221]),
             ChangelogEntry(version="0.1.0", prs=[63, 74]),
         ],
@@ -6600,7 +6485,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=0.6853435,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[227]),
         ],
     ),
@@ -6611,7 +6495,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=12345.67,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[66]),
         ],
@@ -6624,7 +6507,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example='[{"name": "get_weather", "arguments": {"location": "Paris"}}]',
         deprecation=DeprecationInfo(replacement="gen_ai.output.messages"),
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[221]),
             ChangelogEntry(version="0.1.0", prs=[63, 74]),
         ],
@@ -6638,7 +6520,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.provider.name"),
         aliases=["ai.model.provider", "gen_ai.provider.name"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[253]),
             ChangelogEntry(version="0.1.0", prs=[57, 127]),
         ],
@@ -6651,7 +6532,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="You are a helpful assistant",
         deprecation=DeprecationInfo(replacement="gen_ai.system_instructions"),
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[221]),
             ChangelogEntry(version="0.1.0", prs=[62]),
         ],
@@ -6664,7 +6544,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="You are a helpful assistant",
         aliases=["ai.preamble"],
         changelog=[
-            ChangelogEntry(version="next", prs=[264, 270]),
+            ChangelogEntry(version="next", prs=[264]),
             ChangelogEntry(version="0.4.0", prs=[221]),
         ],
     ),
@@ -6676,7 +6556,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example='{"location": "Paris"}',
         aliases=["gen_ai.tool.input"],
         changelog=[
-            ChangelogEntry(version="next", prs=[265, 270]),
+            ChangelogEntry(version="next", prs=[265]),
             ChangelogEntry(version="0.4.0", prs=[221]),
         ],
     ),
@@ -6688,7 +6568,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="rainy, 57°F",
         aliases=["gen_ai.tool.output", "gen_ai.tool.message"],
         changelog=[
-            ChangelogEntry(version="next", prs=[265, 270]),
+            ChangelogEntry(version="next", prs=[265]),
             ChangelogEntry(version="0.4.0", prs=[221]),
         ],
     ),
@@ -6699,7 +6579,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example='[{"type": "function", "name": "get_current_weather", "description": "Get the current weather in a given location", "parameters": {"type": "object", "properties": {"location": {"type": "string", "description": "The city and state, e.g. San Francisco, CA"}, "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]}}, "required": ["location", "unit"]}}]',
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[221]),
         ],
     ),
@@ -6710,7 +6589,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="Searches the web for current information about a topic",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[62, 127]),
         ],
     ),
@@ -6723,7 +6601,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.tool.call.arguments"),
         aliases=["gen_ai.tool.call.arguments"],
         changelog=[
-            ChangelogEntry(version="next", prs=[265, 270]),
+            ChangelogEntry(version="next", prs=[265]),
             ChangelogEntry(version="0.1.0", prs=[63, 74]),
         ],
     ),
@@ -6736,7 +6614,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.tool.call.result"),
         aliases=["gen_ai.tool.call.result", "gen_ai.tool.output"],
         changelog=[
-            ChangelogEntry(version="next", prs=[265, 270]),
+            ChangelogEntry(version="next", prs=[265]),
             ChangelogEntry(version="0.1.0", prs=[62]),
         ],
     ),
@@ -6748,7 +6626,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="Flights",
         aliases=["ai.function_call"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[57, 127]),
         ],
     ),
@@ -6761,7 +6638,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.tool.call.result"),
         aliases=["gen_ai.tool.call.result", "gen_ai.tool.message"],
         changelog=[
-            ChangelogEntry(version="next", prs=[265, 270]),
+            ChangelogEntry(version="next", prs=[265]),
             ChangelogEntry(version="0.1.0", prs=[63, 74]),
         ],
     ),
@@ -6772,7 +6649,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="function",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[62, 127]),
         ],
     ),
@@ -6785,7 +6661,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.usage.output_tokens"),
         aliases=["ai.completion_tokens.used", "gen_ai.usage.output_tokens"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[61]),
             ChangelogEntry(version="0.0.0"),
@@ -6799,7 +6674,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=10,
         aliases=["ai.prompt_tokens.used", "gen_ai.usage.prompt_tokens"],
         changelog=[
-            ChangelogEntry(version="next", prs=[261, 270]),
+            ChangelogEntry(version="next", prs=[261]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[112]),
             ChangelogEntry(version="0.0.0"),
@@ -6812,7 +6687,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=100,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[217, 228]),
         ],
     ),
@@ -6823,7 +6697,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=50,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[62, 112]),
         ],
@@ -6836,7 +6709,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=10,
         aliases=["ai.completion_tokens.used", "gen_ai.usage.completion_tokens"],
         changelog=[
-            ChangelogEntry(version="next", prs=[261, 270]),
+            ChangelogEntry(version="next", prs=[261]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[112]),
             ChangelogEntry(version="0.0.0"),
@@ -6849,7 +6722,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=75,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[62, 112]),
         ],
@@ -6863,7 +6735,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.usage.input_tokens"),
         aliases=["ai.prompt_tokens.used", "gen_ai.usage.input_tokens"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[61]),
             ChangelogEntry(version="0.0.0"),
@@ -6877,7 +6748,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=20,
         aliases=["ai.total_tokens.used"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[57]),
         ],
@@ -6889,7 +6759,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="findBookById",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -6901,7 +6770,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="query",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -6915,7 +6783,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="client.address"),
         aliases=["client.address"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[61, 106, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -6928,7 +6795,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=456,
         sdks=["javascript-browser"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -6942,7 +6808,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="network.protocol.version"),
         aliases=["network.protocol.version", "net.protocol.version"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -6954,7 +6819,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="#details",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -6975,7 +6839,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "net.host.name",
         ],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -6989,7 +6852,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="http.request.method"),
         aliases=["http.request.method"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -7004,7 +6866,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="?foo=bar&bar=baz",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -7016,7 +6877,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=1732829555.111,
         sdks=["javascript-browser"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[134]),
             ChangelogEntry(version="0.0.0"),
@@ -7030,7 +6890,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=1732829555.15,
         sdks=["javascript-browser"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[134]),
             ChangelogEntry(version="0.0.0"),
@@ -7044,7 +6903,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=1732829555.201,
         sdks=["javascript-browser"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[134]),
             ChangelogEntry(version="0.0.0"),
@@ -7058,7 +6916,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=1732829555.322,
         sdks=["javascript-browser"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[134]),
             ChangelogEntry(version="0.0.0"),
@@ -7072,7 +6929,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=1732829555.389,
         sdks=["javascript-browser"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[134]),
             ChangelogEntry(version="0.0.0"),
@@ -7086,7 +6942,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         has_dynamic_suffix=True,
         example="http.request.header.custom-header=['foo', 'bar']",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[201, 204]),
             ChangelogEntry(version="0.1.0", prs=[103]),
         ],
@@ -7099,7 +6954,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="GET",
         aliases=["method", "http.method"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -7112,7 +6966,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=1732829558.502,
         sdks=["javascript-browser"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[130, 134]),
         ],
@@ -7125,7 +6978,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=1732829555.495,
         sdks=["javascript-browser"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[134]),
             ChangelogEntry(version="0.0.0"),
@@ -7139,7 +6991,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=1732829555.51,
         sdks=["javascript-browser"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[134]),
             ChangelogEntry(version="0.0.0"),
@@ -7152,7 +7003,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=2,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -7165,7 +7015,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=1732829555.89,
         sdks=["javascript-browser"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[134]),
             ChangelogEntry(version="0.0.0"),
@@ -7179,7 +7028,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=1732829555.7,
         sdks=["javascript-browser"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[134]),
             ChangelogEntry(version="0.0.0"),
@@ -7193,7 +7041,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=1732829555.73,
         sdks=["javascript-browser"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[134]),
             ChangelogEntry(version="0.0.0"),
@@ -7207,7 +7054,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=1.032,
         sdks=["javascript-browser"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[131]),
         ],
@@ -7220,7 +7066,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=1732829553.68,
         sdks=["javascript-browser"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[130, 134]),
         ],
@@ -7233,7 +7078,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=123,
         aliases=["http.response_content_length", "http.response.header.content-length"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[106]),
             ChangelogEntry(version="0.0.0"),
@@ -7247,7 +7091,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         has_dynamic_suffix=True,
         example="http.response.header.custom-header=['foo', 'bar']",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[201, 204]),
             ChangelogEntry(version="0.1.0", prs=[103]),
         ],
@@ -7260,7 +7103,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="http.response.header.custom-header=['foo', 'bar']",
         aliases=["http.response_content_length", "http.response.body.size"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -7273,7 +7115,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=456,
         aliases=["http.response_transfer_size"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -7286,7 +7127,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=404,
         aliases=["http.status_code"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -7302,7 +7142,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         aliases=["http.response.body.size", "http.response.header.content-length"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[61, 106]),
             ChangelogEntry(version="0.0.0"),
@@ -7319,7 +7158,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         aliases=["http.response.size"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[61]),
             ChangelogEntry(version="0.0.0"),
@@ -7333,7 +7171,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="/users/:id",
         aliases=["url.template"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -7347,7 +7184,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="url.scheme"),
         aliases=["url.scheme"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -7360,7 +7196,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=50,
         sdks=["ruby"],
         changelog=[
-            ChangelogEntry(version="next", prs=[267, 270]),
+            ChangelogEntry(version="next", prs=[267]),
         ],
     ),
     "http.server_name": AttributeMetadata(
@@ -7372,7 +7208,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="server.address"),
         aliases=["server.address", "net.host.name", "http.host"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -7386,7 +7221,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="http.response.status_code"),
         aliases=["http.response.status_code"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[61]),
             ChangelogEntry(version="0.0.0"),
@@ -7403,7 +7237,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="This attribute is being deprecated in favor of url.path and url.query",
         ),
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[61]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -7417,7 +7250,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="url.full"),
         aliases=["url.full", "url"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[61, 108]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -7431,7 +7263,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="user_agent.original"),
         aliases=["user_agent.original"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -7444,7 +7275,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="f47ac10b58cc4372a5670e02b2c3d479",
         sdks=["php-laravel"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -7455,7 +7285,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="end of minor GC",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -7467,7 +7296,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="G1 Young Generation",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -7479,7 +7307,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="G1 Old Gen",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -7491,7 +7318,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="G1 Old Gen",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -7503,7 +7329,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example=True,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -7514,7 +7339,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="blocked",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -7526,7 +7350,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="img",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -7538,7 +7361,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="#hero",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -7550,7 +7372,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=1234,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -7562,7 +7383,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="https://example.com",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -7574,7 +7394,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="myLogger",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -7589,7 +7408,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="User cancelled the request",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -7600,7 +7418,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="123",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -7611,7 +7428,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="claude-desktop",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -7625,7 +7441,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="Claude Desktop",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -7636,7 +7451,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="1.0.0",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -7647,7 +7461,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="initialization_complete",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -7658,7 +7471,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="string",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -7669,7 +7481,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="info",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -7683,7 +7494,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="mcp_server",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -7694,7 +7504,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="Tool execution completed successfully",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -7705,7 +7514,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="tools/call",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -7716,7 +7524,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=50,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
@@ -7731,7 +7538,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="Processing 50 of 100 items",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -7742,7 +7548,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=50,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
@@ -7754,7 +7559,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="progress-token-123",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -7765,7 +7569,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=100,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
@@ -7780,7 +7583,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="summarize",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -7791,7 +7593,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="A summary of the requested information",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -7802,7 +7603,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="Please provide a summary of the document",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -7813,7 +7613,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=3,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
@@ -7825,7 +7624,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="user",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -7836,7 +7634,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=1,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
@@ -7848,7 +7645,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="2024-11-05",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -7860,7 +7656,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         has_dynamic_suffix=True,
         example="mcp.request.argument.query='weather in Paris'",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[176]),
         ],
     ),
@@ -7871,7 +7666,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="summarize",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -7882,7 +7676,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="file:///path/to/resource",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -7893,7 +7686,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="1",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -7904,7 +7696,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="file",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -7915,7 +7706,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="file:///path/to/file.txt",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -7926,7 +7716,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="sentry-mcp-server",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -7940,7 +7729,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="Sentry MCP Server",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -7951,7 +7739,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="0.1.0",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -7962,7 +7749,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="550e8400-e29b-41d4-a716-446655440000",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -7973,7 +7759,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="calculator",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -7984,7 +7769,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example='{"output": "rainy", "toolCallId": "1"}',
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[171]),
             ChangelogEntry(version="0.2.0", prs=[164]),
         ],
@@ -7996,7 +7780,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=1,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
@@ -8008,7 +7791,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=False,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -8019,7 +7801,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="stdio",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -8032,7 +7813,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="mdc.some_key='some_value'",
         sdks=["java", "java.logback", "java.jul", "java.log4j2"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[176]),
         ],
     ),
@@ -8044,7 +7824,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="BestTopic",
         sdks=["php-laravel"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8057,7 +7836,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="BestTopic",
         sdks=["php-laravel"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8070,7 +7848,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=839,
         sdks=["php-laravel"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8083,7 +7860,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=1045,
         sdks=["php-laravel"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8096,7 +7872,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="f47ac10b58cc4372a5670e02b2c3d479",
         sdks=["php-laravel"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8109,7 +7884,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=1732847252,
         sdks=["php-laravel"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8122,7 +7896,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=2,
         sdks=["php-laravel"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8134,7 +7907,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="create",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[51, 127]),
         ],
     ),
@@ -8146,7 +7918,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="activemq",
         sdks=["php-laravel"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8161,7 +7932,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["http.request.method"],
         sdks=["javascript-browser", "javascript-node"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8173,7 +7943,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="router.push",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8185,7 +7954,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=100,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[68]),
         ],
@@ -8197,7 +7965,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="application",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[68, 127]),
         ],
     ),
@@ -8208,7 +7975,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="https://example.com/foo?bar=baz",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[68, 127]),
         ],
     ),
@@ -8219,7 +7985,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=0.5,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[68]),
         ],
@@ -8231,7 +7996,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="dns.unreachable",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[68, 127]),
         ],
     ),
@@ -8244,7 +8008,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="network.local.address"),
         aliases=["network.local.address", "net.sock.host.addr"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8258,7 +8021,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="server.address"),
         aliases=["server.address", "http.server_name", "http.host"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8272,7 +8034,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="server.port"),
         aliases=["server.port"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[61]),
             ChangelogEntry(version="0.0.0"),
@@ -8287,7 +8048,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="network.peer.address"),
         aliases=["network.peer.address", "net.sock.peer.addr"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8303,7 +8063,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="Deprecated, use server.address on client spans and client.address on server spans.",
         ),
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8319,7 +8078,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="Deprecated, use server.port on client spans and client.port on server spans.",
         ),
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[61]),
             ChangelogEntry(version="0.0.0"),
@@ -8334,7 +8092,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="network.protocol.name"),
         aliases=["network.protocol.name"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8348,7 +8105,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="network.protocol.version"),
         aliases=["network.protocol.version", "http.flavor"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8364,7 +8120,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="Deprecated, use network.transport and network.type.",
         ),
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8378,7 +8133,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="network.local.address"),
         aliases=["network.local.address", "net.host.ip"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8392,7 +8146,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="network.local.port"),
         aliases=["network.local.port"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[61]),
             ChangelogEntry(version="0.0.0"),
@@ -8407,7 +8160,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="network.peer.address"),
         aliases=["network.peer.address", "net.peer.ip"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8422,7 +8174,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="Deprecated from OTEL, no replacement at this time"
         ),
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[61, 119, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8435,7 +8186,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=8080,
         deprecation=DeprecationInfo(replacement="network.peer.port"),
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[61]),
             ChangelogEntry(version="0.0.0"),
@@ -8450,7 +8200,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="network.transport"),
         aliases=["network.transport"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8463,7 +8212,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="10.1.2.80",
         aliases=["net.host.ip", "net.sock.host.addr"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8476,7 +8224,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=65400,
         aliases=["net.sock.host.port"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8489,7 +8236,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="10.1.2.80",
         aliases=["net.peer.ip", "net.sock.peer.addr"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[108, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8501,7 +8247,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example=65400,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8514,7 +8259,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="http",
         aliases=["net.protocol.name"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8527,7 +8271,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="1.1",
         aliases=["http.flavor", "net.protocol.version"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8540,7 +8283,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="tcp",
         aliases=["net.transport"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8552,7 +8294,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="ipv4",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8564,7 +8305,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="1234567890",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8576,7 +8316,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="Ubuntu 18.04.1 LTS",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8588,7 +8327,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="Ubuntu",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8600,7 +8338,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="linux",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8612,7 +8349,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="18.04.2",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8624,7 +8360,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="io.opentelemetry.contrib.mongodb",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8636,7 +8371,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="2.4.5",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8648,7 +8382,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="OK",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8660,7 +8393,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="resource not found",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8674,7 +8406,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="params.id='123'",
         aliases=["url.path.parameter.<key>"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[103]),
         ],
     ),
@@ -8686,7 +8417,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="HomeScreen",
         sdks=["javascript-reactnative"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[74]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8698,7 +8428,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="getsentry",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8710,7 +8439,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example=12345,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8722,7 +8450,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="Eclipse OpenJ9 VM openj9-0.21.0",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8734,7 +8461,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="node",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8746,7 +8472,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="18.04.2",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8763,7 +8488,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="Instead of sending items individually in query.<key>, they should be sent all together with url.query.",
         ),
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[103]),
         ],
     ),
@@ -8776,7 +8500,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="sentry.release"),
         aliases=["sentry.release"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8790,7 +8513,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="http.response.header.text='test'",
         sdks=["javascript-remix"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[103]),
         ],
     ),
@@ -8803,7 +8525,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="sentry.replay_id"),
         aliases=["sentry.replay_id"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[61]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8818,7 +8539,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             replacement="sentry.environment", status=DeprecationStatus.BACKFILL
         ),
         changelog=[
-            ChangelogEntry(version="next", prs=[266, 270]),
+            ChangelogEntry(version="next", prs=[266]),
         ],
     ),
     "resource.deployment.environment.name": AttributeMetadata(
@@ -8831,7 +8552,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             replacement="sentry.environment", status=DeprecationStatus.BACKFILL
         ),
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.1", prs=[196]),
         ],
     ),
@@ -8843,7 +8563,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="non-blocking",
         sdks=["javascript-browser"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8858,7 +8577,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["http.route"],
         sdks=["php-laravel", "javascript-reactnative"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[61, 74]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8870,7 +8588,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example=2,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8882,7 +8599,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="myService.BestService",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -8894,7 +8610,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="SELECT",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[212]),
         ],
     ),
@@ -8907,7 +8622,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="browser.name"),
         aliases=["browser.name"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[139]),
         ],
     ),
@@ -8920,7 +8634,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="browser.version"),
         aliases=["browser.version"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[139]),
         ],
     ),
@@ -8931,7 +8644,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="document.hidden",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -8942,7 +8654,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="db",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[218]),
         ],
     ),
@@ -8953,7 +8664,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=0.5,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[102]),
         ],
     ),
@@ -8964,7 +8674,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="index view query",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[135]),
         ],
     ),
@@ -8975,7 +8684,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="1.0",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -8986,7 +8694,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="example.com",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[212]),
         ],
     ),
@@ -8997,7 +8704,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="prod",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[185]),
         ],
     ),
@@ -9008,7 +8714,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="c51734c603c4430eb57cb0a5728a479d",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[185]),
         ],
     ),
@@ -9019,7 +8724,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="frontend@e8211be71b214afab5b85de4b4c54be3714952bb",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[185]),
         ],
     ),
@@ -9030,7 +8734,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="1.0",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[185]),
         ],
     ),
@@ -9041,7 +8744,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=True,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[185]),
         ],
     ),
@@ -9052,7 +8754,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="047372980460430cbc78d9779df33a46",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[185]),
         ],
     ),
@@ -9063,7 +8764,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="/issues/errors-outages/",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[185]),
         ],
     ),
@@ -9075,7 +8775,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="production",
         aliases=["environment"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -9086,7 +8785,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=1234,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.3.0", prs=[160]),
             ChangelogEntry(version="0.0.0"),
@@ -9099,7 +8797,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="getUserById",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.1", prs=[190]),
         ],
     ),
@@ -9109,7 +8806,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[212]),
         ],
     ),
@@ -9120,7 +8816,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=True,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -9131,7 +8826,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="idleTimeout",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -9142,7 +8836,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=True,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.1", prs=[190]),
         ],
     ),
@@ -9153,9 +8846,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="server",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.1", prs=[190]),
         ],
+    ),
+    "sentry.log.sequence": AttributeMetadata(
+        brief="A monotonically incrementing counter assigned to each log by the SDK, used to determine the correct ordering of logs when timestamps are identical.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=42,
     ),
     "sentry.message.parameter.<key>": AttributeMetadata(
         brief="A parameter used in the message template. <key> can either be the number that represent the parameter's position in the template string (sentry.message.parameter.0, sentry.message.parameter.1, etc) or the parameter's name (sentry.message.parameter.item_id, sentry.message.parameter.user_id, etc)",
@@ -9164,7 +8863,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="sentry.message.parameter.0='123'",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[116]),
         ],
     ),
@@ -9175,7 +8873,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="Hello, {name}!",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[116]),
         ],
     ),
@@ -9187,7 +8884,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         has_dynamic_suffix=True,
         example="sentry.module.brianium/paratest='v7.7.0'",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[103]),
         ],
     ),
@@ -9199,7 +8895,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="/posts/[id]/layout",
         sdks=["javascript"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[54, 106]),
         ],
     ),
@@ -9211,7 +8906,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="generateMetadata",
         sdks=["javascript"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[54, 106]),
         ],
     ),
@@ -9222,7 +8916,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="SELECT .. FROM sentry_project WHERE (project_id = %s)",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.1", prs=[194]),
         ],
     ),
@@ -9232,7 +8925,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[200]),
         ],
     ),
@@ -9243,7 +8935,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="SELECT .. FROM sentry_project WHERE (project_id = %s)",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[212]),
         ],
     ),
@@ -9254,7 +8945,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="1544712660300000000",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[174]),
             ChangelogEntry(version="0.2.0", prs=[137]),
         ],
@@ -9266,7 +8956,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="http.client",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -9277,7 +8966,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="auto.http.otel.fastify",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[68]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -9289,7 +8977,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="php",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -9300,7 +8987,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="18779b64dd35d1a538e7ce2dd2d3fad3",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[242]),
         ],
     ),
@@ -9312,7 +8998,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="7.0.0",
         aliases=["service.version", "release"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -9324,7 +9009,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="123e4567e89b12d3a456426614174000",
         aliases=["replay_id"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -9335,7 +9019,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=True,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[185]),
         ],
     ),
@@ -9351,7 +9034,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "Breadcrumbs",
         ],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0", prs=[42]),
         ],
     ),
@@ -9362,7 +9044,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="@sentry/react",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -9373,7 +9054,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="7.0.0",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -9385,7 +9065,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="051581bf3cb55c13",
         aliases=["sentry.segment_id"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[107, 124]),
         ],
     ),
@@ -9396,7 +9075,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="GET /user",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[104]),
         ],
     ),
@@ -9409,7 +9087,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="sentry.segment.id"),
         aliases=["sentry.segment.id"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[124]),
         ],
     ),
@@ -9420,7 +9097,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=0.5,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[102]),
         ],
     ),
@@ -9431,7 +9107,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="route",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[214]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -9443,7 +9118,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="foobar",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.1", prs=[190]),
         ],
     ),
@@ -9454,16 +9128,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=200,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[223, 228]),
         ],
-    ),
-    "sentry.timestamp.sequence": AttributeMetadata(
-        brief="A sequencing counter for deterministic ordering of logs or metrics when timestamps share the same integer millisecond. Starts at 0 on SDK initialization, increments by 1 for each captured item, and resets to 0 when the integer millisecond of the current item differs from the previous one.",
-        type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=False,
-        example=0,
     ),
     "sentry.trace.parent_span_id": AttributeMetadata(
         brief="The span id of the span that was active when the log was collected. This should not be set if there was no active span.",
@@ -9472,7 +9138,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="b0e6f15b45c36b12",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[116]),
         ],
     ),
@@ -9484,7 +9149,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="GET /",
         aliases=["transaction"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -9496,7 +9160,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="example.com",
         aliases=["http.server_name", "net.host.name", "http.host"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[108, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -9509,7 +9172,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=1337,
         aliases=["net.host.port"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -9521,7 +9183,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="omegastar",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -9534,7 +9195,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="5.0.0",
         aliases=["sentry.release"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -9546,7 +9206,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example=56,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -9557,7 +9216,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="main",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -9570,7 +9228,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="MyTag",
         sdks=["sentry.java.android"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.3.0", prs=[183]),
         ],
     ),
@@ -9583,7 +9240,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="sentry.transaction"),
         aliases=["sentry.transaction"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -9596,7 +9252,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="fetch",
         sdks=["javascript-browser", "javascript-node"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -9607,7 +9262,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="HomeButton",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -9619,7 +9273,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=True,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -9630,7 +9283,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=True,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -9641,7 +9293,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="example.com",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -9653,7 +9304,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="details",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -9665,7 +9315,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="https://example.com/test?foo=bar#buzz",
         aliases=["http.url", "url"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[108]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -9677,7 +9326,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="/foo",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -9690,7 +9338,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="url.path.parameter.id='123'",
         aliases=["params.<key>"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[103]),
         ],
     ),
@@ -9701,7 +9348,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example=1337,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -9716,7 +9362,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="foo=bar&bar=baz",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -9728,7 +9373,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="https",
         aliases=["http.scheme"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -9741,7 +9385,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="/users/:id",
         aliases=["http.route"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -9756,7 +9399,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["url.full", "http.url"],
         sdks=["javascript-browser", "javascript-node"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[61]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -9768,7 +9410,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="test@example.com",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -9779,7 +9420,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="John Smith",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -9790,7 +9430,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="Toronto",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -9801,7 +9440,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="CA",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -9812,7 +9450,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="Canada",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -9823,7 +9460,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="Ontario",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -9834,7 +9470,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="8ae4c2993e0f4f3b8b2d1b1f3b5e8f4d",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -9845,7 +9480,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="S-1-5-21-202424912787-2692429404-2351956786-1000",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -9856,7 +9490,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="192.168.1.1",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[75]),
         ],
     ),
@@ -9867,7 +9500,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="j.smith",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -9878,7 +9510,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example=["admin", "editor"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -9890,7 +9521,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1",
         aliases=["http.user_agent"],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -9902,7 +9532,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="main",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.2.0", prs=[163]),
         ],
     ),
@@ -9913,7 +9542,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="bld_cotnkcr76",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.2.0", prs=[163]),
         ],
     ),
@@ -9924,7 +9552,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="dpl_233NRGRjVZX1caZrXWtz5g1TAksD",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.2.0", prs=[163]),
         ],
     ),
@@ -9935,7 +9562,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="https://vitals.vercel-insights.com/v1",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.2.0", prs=[163]),
         ],
     ),
@@ -9946,7 +9572,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="edge-function",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.2.0", prs=[163]),
         ],
     ),
@@ -9957,7 +9582,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="api/index.js",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.2.0", prs=[163]),
         ],
     ),
@@ -9968,7 +9592,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="sfo1",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.2.0", prs=[163]),
         ],
     ),
@@ -9979,7 +9602,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="1573817187330377061717300000",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.2.0", prs=[163]),
         ],
     ),
@@ -9990,7 +9612,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="769,47-53-5-10-49161-49162-49171-49172-50-56-19-4,0-10-11,23-24-25,0",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.2.0", prs=[163]),
         ],
     ),
@@ -10001,7 +9622,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="t13d1516h2_8daaf6152771_02713d6af862",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.2.0", prs=[163]),
         ],
     ),
@@ -10012,7 +9632,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="stdout",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.2.0", prs=[163]),
         ],
     ),
@@ -10023,7 +9642,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="gdufoJxB6b9b1fEqr1jUtFkyavUU",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.2.0", prs=[163]),
         ],
     ),
@@ -10034,7 +9652,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="my-app",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.2.0", prs=[163]),
         ],
     ),
@@ -10045,7 +9662,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="pdx1::v8g4b-1744143786684-93dafbc0f70d",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.2.0", prs=[163]),
         ],
     ),
@@ -10056,7 +9672,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="120.75.16.101",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.2.0", prs=[163]),
         ],
     ),
@@ -10067,7 +9682,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="test.vercel.app",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.2.0", prs=[163]),
         ],
     ),
@@ -10078,7 +9692,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="sfo1",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.2.0", prs=[163]),
         ],
     ),
@@ -10089,7 +9702,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="GET",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.2.0", prs=[163]),
         ],
     ),
@@ -10100,7 +9712,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="/dynamic/some-value.json?route=some-value",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.2.0", prs=[163]),
         ],
     ),
@@ -10111,7 +9722,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="func",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.2.0", prs=[163]),
         ],
     ),
@@ -10122,7 +9732,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="api",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.2.0", prs=[163]),
         ],
     ),
@@ -10133,7 +9742,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="*.vercel.app",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.2.0", prs=[163]),
         ],
     ),
@@ -10144,7 +9752,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="sfo1",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.2.0", prs=[163]),
         ],
     ),
@@ -10155,7 +9762,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=1024,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.2.0", prs=[163]),
         ],
@@ -10167,7 +9773,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="https",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.2.0", prs=[163]),
         ],
     ),
@@ -10178,7 +9783,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=200,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.2.0", prs=[163]),
         ],
@@ -10190,7 +9794,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=1573817250172,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.2.0", prs=[163]),
         ],
@@ -10202,7 +9805,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=["Mozilla/5.0..."],
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.2.0", prs=[163]),
         ],
     ),
@@ -10213,7 +9815,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="REVALIDATED",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.2.0", prs=[163]),
         ],
     ),
@@ -10224,7 +9825,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="sfo1::abc123",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.2.0", prs=[163]),
         ],
     ),
@@ -10235,7 +9835,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="deny",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.2.0", prs=[163]),
         ],
     ),
@@ -10246,7 +9845,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="rule_gAHz8jtSB1Gy",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.2.0", prs=[163]),
         ],
     ),
@@ -10257,7 +9855,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="643af4e3-975a-4cc7-9e7a-1eda11539d90",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.2.0", prs=[163]),
         ],
     ),
@@ -10268,7 +9865,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="build",
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.2.0", prs=[163]),
         ],
     ),
@@ -10279,7 +9875,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=200,
         changelog=[
-            ChangelogEntry(version="next", prs=[270]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.2.0", prs=[163]),
         ],
@@ -10625,6 +10220,7 @@ Attributes = TypedDict(
         "sentry.idle_span_finish_reason": str,
         "sentry.is_remote": bool,
         "sentry.kind": str,
+        "sentry.log.sequence": int,
         "sentry.message.parameter.<key>": str,
         "sentry.message.template": str,
         "sentry.module.<key>": str,
@@ -10651,7 +10247,6 @@ Attributes = TypedDict(
         "sentry.span.source": str,
         "sentry.status.message": str,
         "sentry.status_code": int,
-        "sentry.timestamp.sequence": int,
         "sentry.trace.parent_span_id": str,
         "sentry.transaction": str,
         "server.address": str,

@@ -9,10 +9,6 @@
   "example": "Eclipse OpenJ9 VM openj9-0.21.0",
   "changelog": [
     {
-      "version": "next",
-      "prs": [270]
-    },
-    {
       "version": "0.1.0",
       "prs": [127]
     },

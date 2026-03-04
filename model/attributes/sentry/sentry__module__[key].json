@@ -10,10 +10,6 @@
   "example": "sentry.module.brianium/paratest='v7.7.0'",
   "changelog": [
     {
-      "version": "next",
-      "prs": [270]
-    },
-    {
       "version": "0.1.0",
       "prs": [103]
     }

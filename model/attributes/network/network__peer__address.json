@@ -10,10 +10,6 @@
   "alias": ["net.peer.ip", "net.sock.peer.addr"],
   "changelog": [
     {
-      "version": "next",
-      "prs": [270]
-    },
-    {
       "version": "0.1.0",
       "prs": [108, 127]
     },

@@ -9,10 +9,6 @@
   "example": "ENOENT: no such file or directory",
   "changelog": [
     {
-      "version": "next",
-      "prs": [270]
-    },
-    {
       "version": "0.1.0",
       "prs": [127]
     },
