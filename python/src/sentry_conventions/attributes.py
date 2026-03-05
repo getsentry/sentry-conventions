@@ -9132,6 +9132,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=0,
+        changelog=[
+            ChangelogEntry(version="next", prs=[262]),
+        ],
     ),
     "sentry.trace.parent_span_id": AttributeMetadata(
         brief="The span id of the span that was active when the log was collected. This should not be set if there was no active span.",

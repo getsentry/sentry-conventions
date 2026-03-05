@@ -14176,6 +14176,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 0,
+    changelog: [{ version: 'next', prs: [262] }],
   },
   [SENTRY_TRACE_PARENT_SPAN_ID]: {
     brief:
