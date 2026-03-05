@@ -3912,16 +3912,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "server"
     """
 
-    # Path: model/attributes/sentry/sentry__log__sequence.json
-    SENTRY_LOG_SEQUENCE: Literal["sentry.log.sequence"] = "sentry.log.sequence"
-    """A monotonically incrementing counter assigned to each log by the SDK, used to determine the correct ordering of logs when timestamps are identical.
-
-    Type: int
-    Contains PII: false
-    Defined in OTEL: No
-    Example: 42
-    """
-
     # Path: model/attributes/sentry/sentry__message__parameter__[key].json
     SENTRY_MESSAGE_PARAMETER_KEY: Literal["sentry.message.parameter.<key>"] = (
         "sentry.message.parameter.<key>"
@@ -4207,6 +4197,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Example: 200
+    """
+
+    # Path: model/attributes/sentry/sentry__timestamp__sequence.json
+    SENTRY_TIMESTAMP_SEQUENCE: Literal["sentry.timestamp.sequence"] = (
+        "sentry.timestamp.sequence"
+    )
+    """A sequencing counter for deterministic ordering of logs or metrics when timestamps share the same integer millisecond. Starts at 0 on SDK initialization, increments by 1 for each captured item, and resets to 0 when the integer millisecond of the current item differs from the previous one.
+
+    Type: int
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 0
     """
 
     # Path: model/attributes/sentry/sentry__trace__parent_span_id.json
@@ -8849,13 +8851,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.3.1", prs=[190]),
         ],
     ),
-    "sentry.log.sequence": AttributeMetadata(
-        brief="A monotonically incrementing counter assigned to each log by the SDK, used to determine the correct ordering of logs when timestamps are identical.",
-        type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=False,
-        example=42,
-    ),
     "sentry.message.parameter.<key>": AttributeMetadata(
         brief="A parameter used in the message template. <key> can either be the number that represent the parameter's position in the template string (sentry.message.parameter.0, sentry.message.parameter.1, etc) or the parameter's name (sentry.message.parameter.item_id, sentry.message.parameter.user_id, etc)",
         type=AttributeType.STRING,
@@ -9130,6 +9125,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[223, 228]),
         ],
+    ),
+    "sentry.timestamp.sequence": AttributeMetadata(
+        brief="A sequencing counter for deterministic ordering of logs or metrics when timestamps share the same integer millisecond. Starts at 0 on SDK initialization, increments by 1 for each captured item, and resets to 0 when the integer millisecond of the current item differs from the previous one.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=0,
     ),
     "sentry.trace.parent_span_id": AttributeMetadata(
         brief="The span id of the span that was active when the log was collected. This should not be set if there was no active span.",
@@ -10220,7 +10222,6 @@ Attributes = TypedDict(
         "sentry.idle_span_finish_reason": str,
         "sentry.is_remote": bool,
         "sentry.kind": str,
-        "sentry.log.sequence": int,
         "sentry.message.parameter.<key>": str,
         "sentry.message.template": str,
         "sentry.module.<key>": str,
@@ -10247,6 +10248,7 @@ Attributes = TypedDict(
         "sentry.span.source": str,
         "sentry.status.message": str,
         "sentry.status_code": int,
+        "sentry.timestamp.sequence": int,
         "sentry.trace.parent_span_id": str,
         "sentry.transaction": str,
         "server.address": str,

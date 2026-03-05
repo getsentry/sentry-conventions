@@ -6942,26 +6942,6 @@ export const SENTRY_KIND = 'sentry.kind';
  */
 export type SENTRY_KIND_TYPE = string;
 
-// Path: model/attributes/sentry/sentry__log__sequence.json
-
-/**
- * A monotonically incrementing counter assigned to each log by the SDK, used to determine the correct ordering of logs when timestamps are identical. `sentry.log.sequence`
- *
- * Attribute Value Type: `number` {@link SENTRY_LOG_SEQUENCE_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * @example 42
- */
-export const SENTRY_LOG_SEQUENCE = 'sentry.log.sequence';
-
-/**
- * Type for {@link SENTRY_LOG_SEQUENCE} sentry.log.sequence
- */
-export type SENTRY_LOG_SEQUENCE_TYPE = number;
-
 // Path: model/attributes/sentry/sentry__message__parameter__[key].json
 
 /**
@@ -7490,6 +7470,26 @@ export const SENTRY_STATUS_MESSAGE = 'sentry.status.message';
  * Type for {@link SENTRY_STATUS_MESSAGE} sentry.status.message
  */
 export type SENTRY_STATUS_MESSAGE_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__timestamp__sequence.json
+
+/**
+ * A sequencing counter for deterministic ordering of logs or metrics when timestamps share the same integer millisecond. Starts at 0 on SDK initialization, increments by 1 for each captured item, and resets to 0 when the integer millisecond of the current item differs from the previous one. `sentry.timestamp.sequence`
+ *
+ * Attribute Value Type: `number` {@link SENTRY_TIMESTAMP_SEQUENCE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 0
+ */
+export const SENTRY_TIMESTAMP_SEQUENCE = 'sentry.timestamp.sequence';
+
+/**
+ * Type for {@link SENTRY_TIMESTAMP_SEQUENCE} sentry.timestamp.sequence
+ */
+export type SENTRY_TIMESTAMP_SEQUENCE_TYPE = number;
 
 // Path: model/attributes/sentry/sentry__trace__parent_span_id.json
 
@@ -9328,7 +9328,6 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_IDLE_SPAN_FINISH_REASON]: 'string',
   [SENTRY_IS_REMOTE]: 'boolean',
   [SENTRY_KIND]: 'string',
-  [SENTRY_LOG_SEQUENCE]: 'integer',
   [SENTRY_MESSAGE_PARAMETER_KEY]: 'string',
   [SENTRY_MESSAGE_TEMPLATE]: 'string',
   [SENTRY_MODULE_KEY]: 'string',
@@ -9355,6 +9354,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_SPAN_SOURCE]: 'string',
   [SENTRY_STATUS_CODE]: 'integer',
   [SENTRY_STATUS_MESSAGE]: 'string',
+  [SENTRY_TIMESTAMP_SEQUENCE]: 'integer',
   [SENTRY_TRACE_PARENT_SPAN_ID]: 'string',
   [SENTRY_TRANSACTION]: 'string',
   [SERVER_ADDRESS]: 'string',
@@ -9760,7 +9760,6 @@ export type AttributeName =
   | typeof SENTRY_IDLE_SPAN_FINISH_REASON
   | typeof SENTRY_IS_REMOTE
   | typeof SENTRY_KIND
-  | typeof SENTRY_LOG_SEQUENCE
   | typeof SENTRY_MESSAGE_PARAMETER_KEY
   | typeof SENTRY_MESSAGE_TEMPLATE
   | typeof SENTRY_MODULE_KEY
@@ -9787,6 +9786,7 @@ export type AttributeName =
   | typeof SENTRY_SPAN_SOURCE
   | typeof SENTRY_STATUS_CODE
   | typeof SENTRY_STATUS_MESSAGE
+  | typeof SENTRY_TIMESTAMP_SEQUENCE
   | typeof SENTRY_TRACE_PARENT_SPAN_ID
   | typeof SENTRY_TRANSACTION
   | typeof SERVER_ADDRESS
@@ -13887,16 +13887,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'server',
     changelog: [{ version: '0.3.1', prs: [190] }],
   },
-  [SENTRY_LOG_SEQUENCE]: {
-    brief:
-      'A monotonically incrementing counter assigned to each log by the SDK, used to determine the correct ordering of logs when timestamps are identical.',
-    type: 'integer',
-    pii: {
-      isPii: 'false',
-    },
-    isInOtel: false,
-    example: 42,
-  },
   [SENTRY_MESSAGE_PARAMETER_KEY]: {
     brief:
       "A parameter used in the message template. <key> can either be the number that represent the parameter's position in the template string (sentry.message.parameter.0, sentry.message.parameter.1, etc) or the parameter's name (sentry.message.parameter.item_id, sentry.message.parameter.user_id, etc)",
@@ -14176,6 +14166,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'foobar',
     changelog: [{ version: '0.3.1', prs: [190] }],
+  },
+  [SENTRY_TIMESTAMP_SEQUENCE]: {
+    brief:
+      'A sequencing counter for deterministic ordering of logs or metrics when timestamps share the same integer millisecond. Starts at 0 on SDK initialization, increments by 1 for each captured item, and resets to 0 when the integer millisecond of the current item differs from the previous one.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 0,
   },
   [SENTRY_TRACE_PARENT_SPAN_ID]: {
     brief:
@@ -15265,7 +15265,6 @@ export type Attributes = {
   [SENTRY_IDLE_SPAN_FINISH_REASON]?: SENTRY_IDLE_SPAN_FINISH_REASON_TYPE;
   [SENTRY_IS_REMOTE]?: SENTRY_IS_REMOTE_TYPE;
   [SENTRY_KIND]?: SENTRY_KIND_TYPE;
-  [SENTRY_LOG_SEQUENCE]?: SENTRY_LOG_SEQUENCE_TYPE;
   [SENTRY_MESSAGE_PARAMETER_KEY]?: SENTRY_MESSAGE_PARAMETER_KEY_TYPE;
   [SENTRY_MESSAGE_TEMPLATE]?: SENTRY_MESSAGE_TEMPLATE_TYPE;
   [SENTRY_MODULE_KEY]?: SENTRY_MODULE_KEY_TYPE;
@@ -15292,6 +15291,7 @@ export type Attributes = {
   [SENTRY_SPAN_SOURCE]?: SENTRY_SPAN_SOURCE_TYPE;
   [SENTRY_STATUS_CODE]?: SENTRY_STATUS_CODE_TYPE;
   [SENTRY_STATUS_MESSAGE]?: SENTRY_STATUS_MESSAGE_TYPE;
+  [SENTRY_TIMESTAMP_SEQUENCE]?: SENTRY_TIMESTAMP_SEQUENCE_TYPE;
   [SENTRY_TRACE_PARENT_SPAN_ID]?: SENTRY_TRACE_PARENT_SPAN_ID_TYPE;
   [SENTRY_TRANSACTION]?: SENTRY_TRANSACTION_TYPE;
   [SERVER_ADDRESS]?: SERVER_ADDRESS_TYPE;
