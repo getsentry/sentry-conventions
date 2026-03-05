@@ -17,7 +17,7 @@ function isCommitIgnored(hash: string): boolean {
   if (!h) return false;
   for (const ignored of IGNORED_COMMIT_HASHES) {
     const i = ignored.trim().toLowerCase();
-    if (h === i || h.startsWith(i) || i.startsWith(h)) return true;
+    if (h === i || h.startsWith(i)) return true;
   }
   return false;
 }
