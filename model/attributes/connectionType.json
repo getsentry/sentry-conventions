@@ -1,0 +1,23 @@
+{
+  "key": "connectionType",
+  "brief": "type of current connection (e.g. wifi, ethernet, cellular , etc).",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "wifi",
+  "sdks": ["javascript-browser"],
+  "alias": ["network.connection.type"],
+  "deprecation": {
+    "replacement": "network.connection.type",
+    "reason": "Old namespace-less attribute, to be replaced with network.connection.type with span-first future"
+  },
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [278],
+      "description": "Added and deprecated attribute to document JS SDK's current behaviour"
+    }
+  ]
+}
