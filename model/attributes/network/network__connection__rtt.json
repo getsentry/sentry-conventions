@@ -1,0 +1,19 @@
+{
+  "key": "network.connection.rtt",
+  "brief": "Specifies the estimated effective round-trip time of the current connection, in milliseconds.",
+  "type": "integer",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": 100,
+  "alias": ["connection.rtt"],
+  "sdks": ["javascript-browser"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [279],
+      "description": "Added attribute network.connection.rtt to be used instead of connection.rtt"
+    }
+  ]
+}
