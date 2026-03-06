@@ -1,0 +1,23 @@
+{
+  "key": "ttfb",
+  "brief": "The value of the recorded Time To First Byte (TTFB) web vital in milliseconds",
+  "type": "double",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": 194,
+  "alias": ["browser.web_vital.ttfb.value"],
+  "sdks": ["javascript-browser"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "browser.web_vital.ttfb.value",
+    "reason": "This attribute is being deprecated in favor of browser.web_vital.ttfb.value"
+  },
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [235]
+    }
+  ]
+}
