@@ -1,0 +1,16 @@
+{
+  "key": "network.connection.type",
+  "brief": "Specifies the type of the current connection",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": true,
+  "example": "wifi",
+  "alias": [
+    "connectionType"
+  ],
+  "sdks": [
+    "javascript-browser"
+  ]
+}
