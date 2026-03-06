@@ -5555,6 +5555,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=0.2361,
         aliases=["cls"],
         sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[229],
+                description="Added browser.web_vital.cls.value attribute",
+            ),
+        ],
     ),
     "browser.web_vital.inp.value": AttributeMetadata(
         brief="The value of the recorded Interaction to Next Paint (INP) web vital",
@@ -5564,6 +5571,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=200,
         aliases=["inp"],
         sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[229],
+                description="Added browser.web_vital.inp.value attribute",
+            ),
+        ],
     ),
     "browser.web_vital.lcp.value": AttributeMetadata(
         brief="The value of the recorded Largest Contentful Paint (LCP) web vital",
@@ -5573,6 +5587,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=2500,
         aliases=["lcp"],
         sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[229],
+                description="Added browser.web_vital.lcp.value attribute",
+            ),
+        ],
     ),
     "cache.hit": AttributeMetadata(
         brief="If the cache was hit during this span.",
@@ -5715,6 +5736,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         aliases=["browser.web_vital.cls.value"],
         sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[229],
+                description="Added and deprecated attribute to document JS SDK's current behaviour",
+            ),
+        ],
     ),
     "code.file.path": AttributeMetadata(
         brief="The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).",
@@ -7412,6 +7440,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         aliases=["browser.web_vital.inp.value"],
         sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[229],
+                description="Added and deprecated attribute to document JS SDK's current behaviour",
+            ),
+        ],
     ),
     "jvm.gc.action": AttributeMetadata(
         brief="Name of the garbage collector action.",
@@ -7535,6 +7570,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         aliases=["browser.web_vital.lcp.value"],
         sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[229],
+                description="Added and deprecated attribute to document JS SDK's current behaviour",
+            ),
+        ],
     ),
     "logger.name": AttributeMetadata(
         brief="The name of the logger that generated this event.",

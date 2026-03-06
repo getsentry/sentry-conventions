@@ -10603,6 +10603,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 0.2361,
     aliases: [CLS],
     sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [229], description: 'Added browser.web_vital.cls.value attribute' }],
   },
   [BROWSER_WEB_VITAL_INP_VALUE]: {
     brief: 'The value of the recorded Interaction to Next Paint (INP) web vital',
@@ -10614,6 +10615,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 200,
     aliases: [INP],
     sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [229], description: 'Added browser.web_vital.inp.value attribute' }],
   },
   [BROWSER_WEB_VITAL_LCP_VALUE]: {
     brief: 'The value of the recorded Largest Contentful Paint (LCP) web vital',
@@ -10625,6 +10627,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 2500,
     aliases: [LCP],
     sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [229], description: 'Added browser.web_vital.lcp.value attribute' }],
   },
   [CACHE_HIT]: {
     brief: 'If the cache was hit during this span.',
@@ -10760,6 +10763,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [BROWSER_WEB_VITAL_CLS_VALUE],
     sdks: ['javascript-browser'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [229],
+        description: "Added and deprecated attribute to document JS SDK's current behaviour",
+      },
+    ],
   },
   [CODE_FILEPATH]: {
     brief:
@@ -12534,6 +12544,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [BROWSER_WEB_VITAL_INP_VALUE],
     sdks: ['javascript-browser'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [229],
+        description: "Added and deprecated attribute to document JS SDK's current behaviour",
+      },
+    ],
   },
   [JVM_GC_ACTION]: {
     brief: 'Name of the garbage collector action.',
@@ -12609,6 +12626,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [BROWSER_WEB_VITAL_LCP_VALUE],
     sdks: ['javascript-browser'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [229],
+        description: "Added and deprecated attribute to document JS SDK's current behaviour",
+      },
+    ],
   },
   [LCP_ELEMENT]: {
     brief: 'The dom element responsible for the largest contentful paint.',
