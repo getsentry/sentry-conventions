@@ -4199,6 +4199,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 200
     """
 
+    # Path: model/attributes/sentry/sentry__timestamp__sequence.json
+    SENTRY_TIMESTAMP_SEQUENCE: Literal["sentry.timestamp.sequence"] = (
+        "sentry.timestamp.sequence"
+    )
+    """A sequencing counter for deterministic ordering of logs or metrics when timestamps share the same integer millisecond. Starts at 0 on SDK initialization, increments by 1 for each captured item, and resets to 0 when the integer millisecond of the current item differs from the previous one.
+
+    Type: int
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 0
+    """
+
     # Path: model/attributes/sentry/sentry__trace__parent_span_id.json
     SENTRY_TRACE_PARENT_SPAN_ID: Literal["sentry.trace.parent_span_id"] = (
         "sentry.trace.parent_span_id"
@@ -9114,6 +9126,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.4.0", prs=[223, 228]),
         ],
     ),
+    "sentry.timestamp.sequence": AttributeMetadata(
+        brief="A sequencing counter for deterministic ordering of logs or metrics when timestamps share the same integer millisecond. Starts at 0 on SDK initialization, increments by 1 for each captured item, and resets to 0 when the integer millisecond of the current item differs from the previous one.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=0,
+        changelog=[
+            ChangelogEntry(version="next", prs=[262]),
+        ],
+    ),
     "sentry.trace.parent_span_id": AttributeMetadata(
         brief="The span id of the span that was active when the log was collected. This should not be set if there was no active span.",
         type=AttributeType.STRING,
@@ -10229,6 +10251,7 @@ Attributes = TypedDict(
         "sentry.span.source": str,
         "sentry.status.message": str,
         "sentry.status_code": int,
+        "sentry.timestamp.sequence": int,
         "sentry.trace.parent_span_id": str,
         "sentry.transaction": str,
         "server.address": str,

@@ -7471,6 +7471,26 @@ export const SENTRY_STATUS_MESSAGE = 'sentry.status.message';
  */
 export type SENTRY_STATUS_MESSAGE_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__timestamp__sequence.json
+
+/**
+ * A sequencing counter for deterministic ordering of logs or metrics when timestamps share the same integer millisecond. Starts at 0 on SDK initialization, increments by 1 for each captured item, and resets to 0 when the integer millisecond of the current item differs from the previous one. `sentry.timestamp.sequence`
+ *
+ * Attribute Value Type: `number` {@link SENTRY_TIMESTAMP_SEQUENCE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 0
+ */
+export const SENTRY_TIMESTAMP_SEQUENCE = 'sentry.timestamp.sequence';
+
+/**
+ * Type for {@link SENTRY_TIMESTAMP_SEQUENCE} sentry.timestamp.sequence
+ */
+export type SENTRY_TIMESTAMP_SEQUENCE_TYPE = number;
+
 // Path: model/attributes/sentry/sentry__trace__parent_span_id.json
 
 /**
@@ -9334,6 +9354,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_SPAN_SOURCE]: 'string',
   [SENTRY_STATUS_CODE]: 'integer',
   [SENTRY_STATUS_MESSAGE]: 'string',
+  [SENTRY_TIMESTAMP_SEQUENCE]: 'integer',
   [SENTRY_TRACE_PARENT_SPAN_ID]: 'string',
   [SENTRY_TRANSACTION]: 'string',
   [SERVER_ADDRESS]: 'string',
@@ -9765,6 +9786,7 @@ export type AttributeName =
   | typeof SENTRY_SPAN_SOURCE
   | typeof SENTRY_STATUS_CODE
   | typeof SENTRY_STATUS_MESSAGE
+  | typeof SENTRY_TIMESTAMP_SEQUENCE
   | typeof SENTRY_TRACE_PARENT_SPAN_ID
   | typeof SENTRY_TRANSACTION
   | typeof SERVER_ADDRESS
@@ -14145,6 +14167,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'foobar',
     changelog: [{ version: '0.3.1', prs: [190] }],
   },
+  [SENTRY_TIMESTAMP_SEQUENCE]: {
+    brief:
+      'A sequencing counter for deterministic ordering of logs or metrics when timestamps share the same integer millisecond. Starts at 0 on SDK initialization, increments by 1 for each captured item, and resets to 0 when the integer millisecond of the current item differs from the previous one.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 0,
+    changelog: [{ version: 'next', prs: [262] }],
+  },
   [SENTRY_TRACE_PARENT_SPAN_ID]: {
     brief:
       'The span id of the span that was active when the log was collected. This should not be set if there was no active span.',
@@ -15259,6 +15292,7 @@ export type Attributes = {
   [SENTRY_SPAN_SOURCE]?: SENTRY_SPAN_SOURCE_TYPE;
   [SENTRY_STATUS_CODE]?: SENTRY_STATUS_CODE_TYPE;
   [SENTRY_STATUS_MESSAGE]?: SENTRY_STATUS_MESSAGE_TYPE;
+  [SENTRY_TIMESTAMP_SEQUENCE]?: SENTRY_TIMESTAMP_SEQUENCE_TYPE;
   [SENTRY_TRACE_PARENT_SPAN_ID]?: SENTRY_TRACE_PARENT_SPAN_ID_TYPE;
   [SENTRY_TRANSACTION]?: SENTRY_TRANSACTION_TYPE;
   [SERVER_ADDRESS]?: SERVER_ADDRESS_TYPE;
