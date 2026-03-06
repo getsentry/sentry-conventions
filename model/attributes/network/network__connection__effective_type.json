@@ -1,0 +1,19 @@
+{
+  "key": "network.connection.effective_type",
+  "brief": "Specifies the effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "4g",
+  "alias": ["effectiveConnectionType"],
+  "sdks": ["javascript-browser"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [279],
+      "description": "Added attribute network.connection.effective_type to be used instead of effectiveConnectionType"
+    }
+  ]
+}
