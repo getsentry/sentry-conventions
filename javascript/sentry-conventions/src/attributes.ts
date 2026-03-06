@@ -1698,6 +1698,29 @@ export const DB_USER = 'db.user';
  */
 export type DB_USER_TYPE = string;
 
+// Path: model/attributes/deviceMemory.json
+
+/**
+ * The estimated total memory capacity of the device, only a rough estimation in gigabytes. `deviceMemory`
+ *
+ * Attribute Value Type: `string` {@link DEVICEMEMORY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link DEVICE_MEMORY_ESTIMATED_CAPACITY} `device.memory.estimated_capacity`
+ *
+ * @deprecated Use {@link DEVICE_MEMORY_ESTIMATED_CAPACITY} (device.memory.estimated_capacity) instead - Old namespace-less attribute, to be replaced with device.memory.estimated_capacity for span-first future
+ * @example "8 GB"
+ */
+export const DEVICEMEMORY = 'deviceMemory';
+
+/**
+ * Type for {@link DEVICEMEMORY} deviceMemory
+ */
+export type DEVICEMEMORY_TYPE = string;
+
 // Path: model/attributes/device/device__brand.json
 
 /**
@@ -1718,6 +1741,28 @@ export const DEVICE_BRAND = 'device.brand';
  */
 export type DEVICE_BRAND_TYPE = string;
 
+// Path: model/attributes/device/device__cpu__logical_core_count.json
+
+/**
+ * The number of logical CPU cores available. `device.cpu.logical_core_count`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_CPU_LOGICAL_CORE_COUNT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link HARDWARECONCURRENCY} `hardwareConcurrency`
+ *
+ * @example 14
+ */
+export const DEVICE_CPU_LOGICAL_CORE_COUNT = 'device.cpu.logical_core_count';
+
+/**
+ * Type for {@link DEVICE_CPU_LOGICAL_CORE_COUNT} device.cpu.logical_core_count
+ */
+export type DEVICE_CPU_LOGICAL_CORE_COUNT_TYPE = number;
+
 // Path: model/attributes/device/device__family.json
 
 /**
@@ -1737,6 +1782,28 @@ export const DEVICE_FAMILY = 'device.family';
  * Type for {@link DEVICE_FAMILY} device.family
  */
 export type DEVICE_FAMILY_TYPE = string;
+
+// Path: model/attributes/device/device__memory__estimated_capacity.json
+
+/**
+ * The estimated total memory capacity of the device, only a rough estimation in gigabytes. Browsers report estimations in buckets of powers of 2, mostly capped at 8 GB `device.memory.estimated_capacity`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_MEMORY_ESTIMATED_CAPACITY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link DEVICEMEMORY} `deviceMemory`
+ *
+ * @example 8
+ */
+export const DEVICE_MEMORY_ESTIMATED_CAPACITY = 'device.memory.estimated_capacity';
+
+/**
+ * Type for {@link DEVICE_MEMORY_ESTIMATED_CAPACITY} device.memory.estimated_capacity
+ */
+export type DEVICE_MEMORY_ESTIMATED_CAPACITY_TYPE = number;
 
 // Path: model/attributes/device/device__model.json
 
@@ -3251,6 +3318,29 @@ export const GRAPHQL_OPERATION_TYPE = 'graphql.operation.type';
  * Type for {@link GRAPHQL_OPERATION_TYPE} graphql.operation.type
  */
 export type GRAPHQL_OPERATION_TYPE_TYPE = string;
+
+// Path: model/attributes/hardwareConcurrency.json
+
+/**
+ * The number of logical CPU cores available. `hardwareConcurrency`
+ *
+ * Attribute Value Type: `string` {@link HARDWARECONCURRENCY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link DEVICE_CPU_LOGICAL_CORE_COUNT} `device.cpu.logical_core_count`
+ *
+ * @deprecated Use {@link DEVICE_CPU_LOGICAL_CORE_COUNT} (device.cpu.logical_core_count) instead - Old namespace-less attribute, to be replaced with device.cpu.logical_core_count for span-first future
+ * @example "14"
+ */
+export const HARDWARECONCURRENCY = 'hardwareConcurrency';
+
+/**
+ * Type for {@link HARDWARECONCURRENCY} hardwareConcurrency
+ */
+export type HARDWARECONCURRENCY_TYPE = string;
 
 // Path: model/attributes/http/http__client_ip.json
 
@@ -9076,8 +9166,11 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [DB_SYSTEM]: 'string',
   [DB_SYSTEM_NAME]: 'string',
   [DB_USER]: 'string',
+  [DEVICEMEMORY]: 'string',
   [DEVICE_BRAND]: 'string',
+  [DEVICE_CPU_LOGICAL_CORE_COUNT]: 'integer',
   [DEVICE_FAMILY]: 'string',
+  [DEVICE_MEMORY_ESTIMATED_CAPACITY]: 'integer',
   [DEVICE_MODEL]: 'string',
   [ENVIRONMENT]: 'string',
   [ERROR_TYPE]: 'string',
@@ -9150,6 +9243,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [GEN_AI_USAGE_TOTAL_TOKENS]: 'integer',
   [GRAPHQL_OPERATION_NAME]: 'string',
   [GRAPHQL_OPERATION_TYPE]: 'string',
+  [HARDWARECONCURRENCY]: 'string',
   [HTTP_CLIENT_IP]: 'string',
   [HTTP_DECODED_RESPONSE_CONTENT_LENGTH]: 'integer',
   [HTTP_FLAVOR]: 'string',
@@ -9508,8 +9602,11 @@ export type AttributeName =
   | typeof DB_SYSTEM
   | typeof DB_SYSTEM_NAME
   | typeof DB_USER
+  | typeof DEVICEMEMORY
   | typeof DEVICE_BRAND
+  | typeof DEVICE_CPU_LOGICAL_CORE_COUNT
   | typeof DEVICE_FAMILY
+  | typeof DEVICE_MEMORY_ESTIMATED_CAPACITY
   | typeof DEVICE_MODEL
   | typeof ENVIRONMENT
   | typeof ERROR_TYPE
@@ -9582,6 +9679,7 @@ export type AttributeName =
   | typeof GEN_AI_USAGE_TOTAL_TOKENS
   | typeof GRAPHQL_OPERATION_NAME
   | typeof GRAPHQL_OPERATION_TYPE
+  | typeof HARDWARECONCURRENCY
   | typeof HTTP_CLIENT_IP
   | typeof HTTP_DECODED_RESPONSE_CONTENT_LENGTH
   | typeof HTTP_FLAVOR
@@ -10894,6 +10992,29 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'fancy_user',
     changelog: [{ version: '0.0.0' }],
   },
+  [DEVICEMEMORY]: {
+    brief: 'The estimated total memory capacity of the device, only a rough estimation in gigabytes.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '8 GB',
+    deprecation: {
+      replacement: 'device.memory.estimated_capacity',
+      reason:
+        'Old namespace-less attribute, to be replaced with device.memory.estimated_capacity for span-first future',
+    },
+    aliases: [DEVICE_MEMORY_ESTIMATED_CAPACITY],
+    sdks: ['javascript-browser'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [281],
+        description: "Added and deprecated attribute to document JS SDK's current behaviour",
+      },
+    ],
+  },
   [DEVICE_BRAND]: {
     brief: 'The brand of the device.',
     type: 'string',
@@ -10904,6 +11025,24 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'Apple',
     changelog: [{ version: '0.1.0', prs: [116, 127] }],
   },
+  [DEVICE_CPU_LOGICAL_CORE_COUNT]: {
+    brief: 'The number of logical CPU cores available.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 14,
+    aliases: [HARDWARECONCURRENCY],
+    sdks: ['javascript-browser'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [281],
+        description: 'Added attribute device.cpu.logical_core_count to be used instead of hardwareConcurrency',
+      },
+    ],
+  },
   [DEVICE_FAMILY]: {
     brief: 'The family of the device.',
     type: 'string',
@@ -10913,6 +11052,25 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'iPhone',
     changelog: [{ version: '0.1.0', prs: [116, 127] }],
+  },
+  [DEVICE_MEMORY_ESTIMATED_CAPACITY]: {
+    brief:
+      'The estimated total memory capacity of the device, only a rough estimation in gigabytes. Browsers report estimations in buckets of powers of 2, mostly capped at 8 GB',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 8,
+    aliases: [DEVICEMEMORY],
+    sdks: ['javascript-browser'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [281],
+        description: 'Added attribute device.memory.estimated_capacity to be used instead of deviceMemory',
+      },
+    ],
   },
   [DEVICE_MODEL]: {
     brief: 'The model of the device.',
@@ -11826,6 +11984,28 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'query',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+  },
+  [HARDWARECONCURRENCY]: {
+    brief: 'The number of logical CPU cores available.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '14',
+    deprecation: {
+      replacement: 'device.cpu.logical_core_count',
+      reason: 'Old namespace-less attribute, to be replaced with device.cpu.logical_core_count for span-first future',
+    },
+    aliases: [DEVICE_CPU_LOGICAL_CORE_COUNT],
+    sdks: ['javascript-browser'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [281],
+        description: "Added and deprecated attribute to document JS SDK's current behaviour",
+      },
+    ],
   },
   [HTTP_CLIENT_IP]: {
     brief:
@@ -15014,8 +15194,11 @@ export type Attributes = {
   [DB_SYSTEM]?: DB_SYSTEM_TYPE;
   [DB_SYSTEM_NAME]?: DB_SYSTEM_NAME_TYPE;
   [DB_USER]?: DB_USER_TYPE;
+  [DEVICEMEMORY]?: DEVICEMEMORY_TYPE;
   [DEVICE_BRAND]?: DEVICE_BRAND_TYPE;
+  [DEVICE_CPU_LOGICAL_CORE_COUNT]?: DEVICE_CPU_LOGICAL_CORE_COUNT_TYPE;
   [DEVICE_FAMILY]?: DEVICE_FAMILY_TYPE;
+  [DEVICE_MEMORY_ESTIMATED_CAPACITY]?: DEVICE_MEMORY_ESTIMATED_CAPACITY_TYPE;
   [DEVICE_MODEL]?: DEVICE_MODEL_TYPE;
   [ENVIRONMENT]?: ENVIRONMENT_TYPE;
   [ERROR_TYPE]?: ERROR_TYPE_TYPE;
@@ -15088,6 +15271,7 @@ export type Attributes = {
   [GEN_AI_USAGE_TOTAL_TOKENS]?: GEN_AI_USAGE_TOTAL_TOKENS_TYPE;
   [GRAPHQL_OPERATION_NAME]?: GRAPHQL_OPERATION_NAME_TYPE;
   [GRAPHQL_OPERATION_TYPE]?: GRAPHQL_OPERATION_TYPE_TYPE;
+  [HARDWARECONCURRENCY]?: HARDWARECONCURRENCY_TYPE;
   [HTTP_CLIENT_IP]?: HTTP_CLIENT_IP_TYPE;
   [HTTP_DECODED_RESPONSE_CONTENT_LENGTH]?: HTTP_DECODED_RESPONSE_CONTENT_LENGTH_TYPE;
   [HTTP_FLAVOR]?: HTTP_FLAVOR_TYPE;
