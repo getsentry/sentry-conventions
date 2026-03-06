@@ -903,6 +903,12 @@ export type BROWSER_VERSION_TYPE = string;
  * The value of the recorded Cumulative Layout Shift (CLS) web vital `browser.web_vital.cls.value`
  *
  * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_CLS_VALUE_TYPE}
+// Path: model/attributes/browser/browser__web_vital__cls__source__[key].json
+
+/**
+ * The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N `browser.web_vital.cls.source.<key>`
+ *
+ * Attribute Value Type: `string` {@link BROWSER_WEB_VITAL_CLS_SOURCE_KEY_TYPE}
  *
  * Contains PII: maybe
  *
@@ -962,6 +968,18 @@ export const BROWSER_WEB_VITAL_LCP_VALUE = 'browser.web_vital.lcp.value';
  * Type for {@link BROWSER_WEB_VITAL_LCP_VALUE} browser.web_vital.lcp.value
  */
 export type BROWSER_WEB_VITAL_LCP_VALUE_TYPE = number;
+ * Has Dynamic Suffix: true
+ *
+ * Aliases: {@link CLS_SOURCE_KEY} `cls.source.<key>`
+ *
+ * @example "body > div#app"
+ */
+export const BROWSER_WEB_VITAL_CLS_SOURCE_KEY = 'browser.web_vital.cls.source.<key>';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_CLS_SOURCE_KEY} browser.web_vital.cls.source.<key>
+ */
+export type BROWSER_WEB_VITAL_CLS_SOURCE_KEY_TYPE = string;
 
 // Path: model/attributes/cache/cache__hit.json
 
@@ -1191,6 +1209,12 @@ export type CLOUDFLARE_D1_ROWS_WRITTEN_TYPE = number;
  * The value of the recorded Cumulative Layout Shift (CLS) web vital `cls`
  *
  * Attribute Value Type: `number` {@link CLS_TYPE}
+// Path: model/attributes/cls/cls__source__[key].json
+
+/**
+ * The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N `cls.source.<key>`
+ *
+ * Attribute Value Type: `string` {@link CLS_SOURCE_KEY_TYPE}
  *
  * Contains PII: maybe
  *
@@ -1207,6 +1231,19 @@ export const CLS = 'cls';
  * Type for {@link CLS} cls
  */
 export type CLS_TYPE = number;
+ * Has Dynamic Suffix: true
+ *
+ * Aliases: {@link BROWSER_WEB_VITAL_CLS_SOURCE_KEY} `browser.web_vital.cls.source.<key>`
+ *
+ * @deprecated Use {@link BROWSER_WEB_VITAL_CLS_SOURCE_KEY} (browser.web_vital.cls.source.<key>) instead - The CLS source is now recorded as a browser.web_vital.cls.source.<key> attribute.
+ * @example "body > div#app"
+ */
+export const CLS_SOURCE_KEY = 'cls.source.<key>';
+
+/**
+ * Type for {@link CLS_SOURCE_KEY} cls.source.<key>
+ */
+export type CLS_SOURCE_KEY_TYPE = string;
 
 // Path: model/attributes/code/code__filepath.json
 
@@ -9173,9 +9210,13 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [BROWSER_SCRIPT_INVOKER_TYPE]: 'string',
   [BROWSER_SCRIPT_SOURCE_CHAR_POSITION]: 'integer',
   [BROWSER_VERSION]: 'string',
+<<<<<<< HEAD
   [BROWSER_WEB_VITAL_CLS_VALUE]: 'double',
   [BROWSER_WEB_VITAL_INP_VALUE]: 'double',
   [BROWSER_WEB_VITAL_LCP_VALUE]: 'double',
+=======
+  [BROWSER_WEB_VITAL_CLS_SOURCE_KEY]: 'string',
+>>>>>>> 5d1281f (feat(attributes): Add CLS web vital source attribute)
   [CACHE_HIT]: 'boolean',
   [CACHE_ITEM_SIZE]: 'integer',
   [CACHE_KEY]: 'string[]',
@@ -9187,7 +9228,11 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [CLOUDFLARE_D1_DURATION]: 'integer',
   [CLOUDFLARE_D1_ROWS_READ]: 'integer',
   [CLOUDFLARE_D1_ROWS_WRITTEN]: 'integer',
+<<<<<<< HEAD
   [CLS]: 'double',
+=======
+  [CLS_SOURCE_KEY]: 'string',
+>>>>>>> 5d1281f (feat(attributes): Add CLS web vital source attribute)
   [CODE_FILEPATH]: 'string',
   [CODE_FILE_PATH]: 'string',
   [CODE_FUNCTION]: 'string',
@@ -9611,9 +9656,13 @@ export type AttributeName =
   | typeof BROWSER_SCRIPT_INVOKER_TYPE
   | typeof BROWSER_SCRIPT_SOURCE_CHAR_POSITION
   | typeof BROWSER_VERSION
+<<<<<<< HEAD
   | typeof BROWSER_WEB_VITAL_CLS_VALUE
   | typeof BROWSER_WEB_VITAL_INP_VALUE
   | typeof BROWSER_WEB_VITAL_LCP_VALUE
+=======
+  | typeof BROWSER_WEB_VITAL_CLS_SOURCE_KEY
+>>>>>>> 5d1281f (feat(attributes): Add CLS web vital source attribute)
   | typeof CACHE_HIT
   | typeof CACHE_ITEM_SIZE
   | typeof CACHE_KEY
@@ -9625,7 +9674,11 @@ export type AttributeName =
   | typeof CLOUDFLARE_D1_DURATION
   | typeof CLOUDFLARE_D1_ROWS_READ
   | typeof CLOUDFLARE_D1_ROWS_WRITTEN
+<<<<<<< HEAD
   | typeof CLS
+=======
+  | typeof CLS_SOURCE_KEY
+>>>>>>> 5d1281f (feat(attributes): Add CLS web vital source attribute)
   | typeof CODE_FILEPATH
   | typeof CODE_FILE_PATH
   | typeof CODE_FUNCTION
@@ -10593,13 +10646,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [SENTRY_BROWSER_VERSION],
     changelog: [{ version: '0.1.0', prs: [59, 127, 139] }],
   },
+<<<<<<< HEAD
   [BROWSER_WEB_VITAL_CLS_VALUE]: {
     brief: 'The value of the recorded Cumulative Layout Shift (CLS) web vital',
     type: 'double',
+=======
+  [BROWSER_WEB_VITAL_CLS_SOURCE_KEY]: {
+    brief: 'The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N',
+    type: 'string',
+>>>>>>> 5d1281f (feat(attributes): Add CLS web vital source attribute)
     pii: {
       isPii: 'maybe',
     },
     isInOtel: false,
+<<<<<<< HEAD
     example: 0.2361,
     aliases: [CLS],
     sdks: ['javascript-browser'],
@@ -10628,6 +10688,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [LCP],
     sdks: ['javascript-browser'],
     changelog: [{ version: 'next', prs: [229], description: 'Added browser.web_vital.lcp.value attribute' }],
+=======
+    hasDynamicSuffix: true,
+    example: 'body > div#app',
+    aliases: [CLS_SOURCE_KEY],
+    sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [234] }],
+>>>>>>> 5d1281f (feat(attributes): Add CLS web vital source attribute)
   },
   [CACHE_HIT]: {
     brief: 'If the cache was hit during this span.',
@@ -10749,13 +10816,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['javascript-cloudflare'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
+<<<<<<< HEAD
   [CLS]: {
     brief: 'The value of the recorded Cumulative Layout Shift (CLS) web vital',
     type: 'double',
+=======
+  [CLS_SOURCE_KEY]: {
+    brief: 'The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N',
+    type: 'string',
+>>>>>>> 5d1281f (feat(attributes): Add CLS web vital source attribute)
     pii: {
       isPii: 'maybe',
     },
     isInOtel: false,
+<<<<<<< HEAD
     example: 0.2361,
     deprecation: {
       replacement: 'browser.web_vital.cls.value',
@@ -10770,6 +10844,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         description: "Added and deprecated attribute to document JS SDK's current behaviour",
       },
     ],
+=======
+    hasDynamicSuffix: true,
+    example: 'body > div#app',
+    deprecation: {
+      replacement: 'browser.web_vital.cls.source.<key>',
+      reason: 'The CLS source is now recorded as a browser.web_vital.cls.source.<key> attribute.',
+    },
+    aliases: [BROWSER_WEB_VITAL_CLS_SOURCE_KEY],
+    sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [234] }],
+>>>>>>> 5d1281f (feat(attributes): Add CLS web vital source attribute)
   },
   [CODE_FILEPATH]: {
     brief:
@@ -15225,9 +15310,13 @@ export type Attributes = {
   [BROWSER_SCRIPT_INVOKER_TYPE]?: BROWSER_SCRIPT_INVOKER_TYPE_TYPE;
   [BROWSER_SCRIPT_SOURCE_CHAR_POSITION]?: BROWSER_SCRIPT_SOURCE_CHAR_POSITION_TYPE;
   [BROWSER_VERSION]?: BROWSER_VERSION_TYPE;
+<<<<<<< HEAD
   [BROWSER_WEB_VITAL_CLS_VALUE]?: BROWSER_WEB_VITAL_CLS_VALUE_TYPE;
   [BROWSER_WEB_VITAL_INP_VALUE]?: BROWSER_WEB_VITAL_INP_VALUE_TYPE;
   [BROWSER_WEB_VITAL_LCP_VALUE]?: BROWSER_WEB_VITAL_LCP_VALUE_TYPE;
+=======
+  [BROWSER_WEB_VITAL_CLS_SOURCE_KEY]?: BROWSER_WEB_VITAL_CLS_SOURCE_KEY_TYPE;
+>>>>>>> 5d1281f (feat(attributes): Add CLS web vital source attribute)
   [CACHE_HIT]?: CACHE_HIT_TYPE;
   [CACHE_ITEM_SIZE]?: CACHE_ITEM_SIZE_TYPE;
   [CACHE_KEY]?: CACHE_KEY_TYPE;
@@ -15239,7 +15328,11 @@ export type Attributes = {
   [CLOUDFLARE_D1_DURATION]?: CLOUDFLARE_D1_DURATION_TYPE;
   [CLOUDFLARE_D1_ROWS_READ]?: CLOUDFLARE_D1_ROWS_READ_TYPE;
   [CLOUDFLARE_D1_ROWS_WRITTEN]?: CLOUDFLARE_D1_ROWS_WRITTEN_TYPE;
+<<<<<<< HEAD
   [CLS]?: CLS_TYPE;
+=======
+  [CLS_SOURCE_KEY]?: CLS_SOURCE_KEY_TYPE;
+>>>>>>> 5d1281f (feat(attributes): Add CLS web vital source attribute)
   [CODE_FILEPATH]?: CODE_FILEPATH_TYPE;
   [CODE_FILE_PATH]?: CODE_FILE_PATH_TYPE;
   [CODE_FUNCTION]?: CODE_FUNCTION_TYPE;

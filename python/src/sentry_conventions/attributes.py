@@ -136,7 +136,11 @@ class _AttributeNamesMeta(type):
         "AI_TOTAL_COST",
         "AI_TOTAL_TOKENS_USED",
         "AI_WARNINGS",
+<<<<<<< HEAD
         "CLS",
+=======
+        "CLS_SOURCE_KEY",
+>>>>>>> 5d1281f (feat(attributes): Add CLS web vital source attribute)
         "CODE_FILEPATH",
         "CODE_FUNCTION",
         "CODE_LINENO",
@@ -689,6 +693,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "120.0.6099.130"
     """
 
+<<<<<<< HEAD
     # Path: model/attributes/browser/browser__web_vital__cls__value.json
     BROWSER_WEB_VITAL_CLS_VALUE: Literal["browser.web_vital.cls.value"] = (
         "browser.web_vital.cls.value"
@@ -726,6 +731,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Aliases: lcp
     Example: 2500
+=======
+    # Path: model/attributes/browser/browser__web_vital__cls__source__[key].json
+    BROWSER_WEB_VITAL_CLS_SOURCE_KEY: Literal["browser.web_vital.cls.source.<key>"] = (
+        "browser.web_vital.cls.source.<key>"
+    )
+    """The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Has Dynamic Suffix: true
+    Aliases: cls.source.<key>
+    Example: "body > div#app"
+>>>>>>> 5d1281f (feat(attributes): Add CLS web vital source attribute)
     """
 
     # Path: model/attributes/cache/cache__hit.json
@@ -843,6 +862,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 12
     """
 
+<<<<<<< HEAD
     # Path: model/attributes/cls.json
     CLS: Literal["cls"] = "cls"
     """The value of the recorded Cumulative Layout Shift (CLS) web vital
@@ -853,6 +873,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Aliases: browser.web_vital.cls.value
     DEPRECATED: Use browser.web_vital.cls.value instead - The CLS web vital is now recorded as a browser.web_vital.cls.value attribute.
     Example: 0.2361
+=======
+    # Path: model/attributes/cls/cls__source__[key].json
+    CLS_SOURCE_KEY: Literal["cls.source.<key>"] = "cls.source.<key>"
+    """The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Has Dynamic Suffix: true
+    Aliases: browser.web_vital.cls.source.<key>
+    DEPRECATED: Use browser.web_vital.cls.source.<key> instead - The CLS source is now recorded as a browser.web_vital.cls.source.<key> attribute.
+    Example: "body > div#app"
+>>>>>>> 5d1281f (feat(attributes): Add CLS web vital source attribute)
     """
 
     # Path: model/attributes/code/code__file__path.json
@@ -5547,6 +5580,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[59, 127, 139]),
         ],
     ),
+<<<<<<< HEAD
     "browser.web_vital.cls.value": AttributeMetadata(
         brief="The value of the recorded Cumulative Layout Shift (CLS) web vital",
         type=AttributeType.DOUBLE,
@@ -5593,6 +5627,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 prs=[229],
                 description="Added browser.web_vital.lcp.value attribute",
             ),
+=======
+    "browser.web_vital.cls.source.<key>": AttributeMetadata(
+        brief="The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        has_dynamic_suffix=True,
+        example="body > div#app",
+        aliases=["cls.source.<key>"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(version="next", prs=[234]),
+>>>>>>> 5d1281f (feat(attributes): Add CLS web vital source attribute)
         ],
     ),
     "cache.hit": AttributeMetadata(
@@ -5723,6 +5770,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+<<<<<<< HEAD
     "cls": AttributeMetadata(
         brief="The value of the recorded Cumulative Layout Shift (CLS) web vital",
         type=AttributeType.DOUBLE,
@@ -5742,6 +5790,24 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 prs=[229],
                 description="Added and deprecated attribute to document JS SDK's current behaviour",
             ),
+=======
+    "cls.source.<key>": AttributeMetadata(
+        brief="The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        has_dynamic_suffix=True,
+        example="body > div#app",
+        deprecation=DeprecationInfo(
+            replacement="browser.web_vital.cls.source.<key>",
+            reason="The CLS source is now recorded as a browser.web_vital.cls.source.<key> attribute.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["browser.web_vital.cls.source.<key>"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(version="next", prs=[234]),
+>>>>>>> 5d1281f (feat(attributes): Add CLS web vital source attribute)
         ],
     ),
     "code.file.path": AttributeMetadata(
@@ -10124,9 +10190,13 @@ Attributes = TypedDict(
         "browser.script.invoker_type": str,
         "browser.script.source_char_position": int,
         "browser.version": str,
+<<<<<<< HEAD
         "browser.web_vital.cls.value": float,
         "browser.web_vital.inp.value": float,
         "browser.web_vital.lcp.value": float,
+=======
+        "browser.web_vital.cls.source.<key>": str,
+>>>>>>> 5d1281f (feat(attributes): Add CLS web vital source attribute)
         "cache.hit": bool,
         "cache.item_size": int,
         "cache.key": List[str],
@@ -10138,7 +10208,11 @@ Attributes = TypedDict(
         "cloudflare.d1.duration": int,
         "cloudflare.d1.rows_read": int,
         "cloudflare.d1.rows_written": int,
+<<<<<<< HEAD
         "cls": float,
+=======
+        "cls.source.<key>": str,
+>>>>>>> 5d1281f (feat(attributes): Add CLS web vital source attribute)
         "code.file.path": str,
         "code.filepath": str,
         "code.function": str,
