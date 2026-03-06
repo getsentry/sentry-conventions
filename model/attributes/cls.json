@@ -13,5 +13,12 @@
     "reason": "The CLS web vital is now recorded as a browser.web_vital.cls.value attribute.",
     "_status": "backfill"
   },
-  "alias": ["browser.web_vital.cls.value"]
+  "alias": ["browser.web_vital.cls.value"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [229],
+      "description": "Added and deprecated attribute to document JS SDK's current behaviour"
+    }
+  ]
 }

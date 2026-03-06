@@ -8,5 +8,12 @@
   "is_in_otel": false,
   "example": 200.0,
   "sdks": ["javascript-browser"],
-  "alias": ["inp"]
+  "alias": ["inp"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [229],
+      "description": "Added browser.web_vital.inp.value attribute"
+    }
+  ]
 }

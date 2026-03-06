@@ -8,5 +8,12 @@
   "is_in_otel": false,
   "example": 2500.0,
   "sdks": ["javascript-browser"],
-  "alias": ["lcp"]
+  "alias": ["lcp"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [229],
+      "description": "Added browser.web_vital.lcp.value attribute"
+    }
+  ]
 }

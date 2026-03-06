@@ -8,5 +8,12 @@
   "is_in_otel": false,
   "example": 0.2361,
   "sdks": ["javascript-browser"],
-  "alias": ["cls"]
+  "alias": ["cls"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [229],
+      "description": "Added browser.web_vital.cls.value attribute"
+    }
+  ]
 }
