@@ -1786,7 +1786,7 @@ export type CODE_NAMESPACE_TYPE = string;
  *
  * Aliases: {@link NETWORK_CONNECTION_TYPE} `network.connection.type`
  *
- * @deprecated Use {@link NETWORK_CONNECTION_TYPE} (network.connection.type) instead - Old namespace-less attribute, to be replaced with network.connection.type with span-first future
+ * @deprecated Use {@link NETWORK_CONNECTION_TYPE} (network.connection.type) instead - Old namespace-less attribute, to be replaced with network.connection.type for span-first future
  * @example "wifi"
  */
 export const CONNECTIONTYPE = 'connectionType';
@@ -1795,6 +1795,29 @@ export const CONNECTIONTYPE = 'connectionType';
  * Type for {@link CONNECTIONTYPE} connectionType
  */
 export type CONNECTIONTYPE_TYPE = string;
+
+// Path: model/attributes/connection/connection__rtt.json
+
+/**
+ * Specifies the estimated effective round-trip time of the current connection, in milliseconds. `connection.rtt`
+ *
+ * Attribute Value Type: `number` {@link CONNECTION_RTT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link NETWORK_CONNECTION_RTT} `network.connection.rtt`
+ *
+ * @deprecated Use {@link NETWORK_CONNECTION_RTT} (network.connection.rtt) instead - Old attribute name (no official namespace), to be replaced with network.connection.rtt for span-first future
+ * @example 100
+ */
+export const CONNECTION_RTT = 'connection.rtt';
+
+/**
+ * Type for {@link CONNECTION_RTT} connection.rtt
+ */
+export type CONNECTION_RTT_TYPE = number;
 
 // Path: model/attributes/culture/culture__calendar.json
 
@@ -2384,17 +2407,27 @@ export const DEVICE_MODEL = 'device.model';
  */
 export type DEVICE_MODEL_TYPE = string;
 
+<<<<<<< HEAD
 // Path: model/attributes/device/device__model_id.json
 
 /**
  * An internal hardware revision to identify the device exactly. `device.model_id`
  *
  * Attribute Value Type: `string` {@link DEVICE_MODEL_ID_TYPE}
+=======
+// Path: model/attributes/effectiveConnectionType.json
+
+/**
+ * Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g). `effectiveConnectionType`
+ *
+ * Attribute Value Type: `string` {@link EFFECTIVECONNECTIONTYPE_TYPE}
+>>>>>>> 04be27a (add attributes)
  *
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
+<<<<<<< HEAD
  * @example "N861AP"
  */
 export const DEVICE_MODEL_ID = 'device.model_id';
@@ -2445,6 +2478,19 @@ export const DEVICE_SIMULATOR = 'device.simulator';
  * Type for {@link DEVICE_SIMULATOR} device.simulator
  */
 export type DEVICE_SIMULATOR_TYPE = boolean;
+=======
+ * Aliases: {@link NETWORK_CONNECTION_EFFECTIVE_TYPE} `network.connection.effective_type`
+ *
+ * @deprecated Use {@link NETWORK_CONNECTION_EFFECTIVE_TYPE} (network.connection.effective_type) instead - Old namespace-less attribute, to be replaced with network.connection.effective_type for span-first future
+ * @example "4g"
+ */
+export const EFFECTIVECONNECTIONTYPE = 'effectiveConnectionType';
+
+/**
+ * Type for {@link EFFECTIVECONNECTIONTYPE} effectiveConnectionType
+ */
+export type EFFECTIVECONNECTIONTYPE_TYPE = string;
+>>>>>>> 04be27a (add attributes)
 
 // Path: model/attributes/environment.json
 
@@ -6269,6 +6315,50 @@ export const NEL_TYPE = 'nel.type';
  * Type for {@link NEL_TYPE} nel.type
  */
 export type NEL_TYPE_TYPE = string;
+
+// Path: model/attributes/network/network__connection__effective_type.json
+
+/**
+ * Specifies the effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g). `network.connection.effective_type`
+ *
+ * Attribute Value Type: `string` {@link NETWORK_CONNECTION_EFFECTIVE_TYPE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link EFFECTIVECONNECTIONTYPE} `effectiveConnectionType`
+ *
+ * @example "4g"
+ */
+export const NETWORK_CONNECTION_EFFECTIVE_TYPE = 'network.connection.effective_type';
+
+/**
+ * Type for {@link NETWORK_CONNECTION_EFFECTIVE_TYPE} network.connection.effective_type
+ */
+export type NETWORK_CONNECTION_EFFECTIVE_TYPE_TYPE = string;
+
+// Path: model/attributes/network/network__connection__rtt.json
+
+/**
+ * Specifies the estimated effective round-trip time of the current connection, in milliseconds. `network.connection.rtt`
+ *
+ * Attribute Value Type: `number` {@link NETWORK_CONNECTION_RTT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link CONNECTION_RTT} `connection.rtt`
+ *
+ * @example 100
+ */
+export const NETWORK_CONNECTION_RTT = 'network.connection.rtt';
+
+/**
+ * Type for {@link NETWORK_CONNECTION_RTT} network.connection.rtt
+ */
+export type NETWORK_CONNECTION_RTT_TYPE = number;
 
 // Path: model/attributes/network/network__connection__type.json
 
@@ -10211,6 +10301,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [CODE_LINE_NUMBER]: 'integer',
   [CODE_NAMESPACE]: 'string',
   [CONNECTIONTYPE]: 'string',
+  [CONNECTION_RTT]: 'integer',
   [CULTURE_CALENDAR]: 'string',
   [CULTURE_DISPLAY_NAME]: 'string',
   [CULTURE_IS_24_HOUR_FORMAT]: 'boolean',
@@ -10239,9 +10330,13 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [DEVICE_MEMORY_ESTIMATED_CAPACITY]: 'integer',
   [DEVICE_MEMORY_SIZE]: 'integer',
   [DEVICE_MODEL]: 'string',
+<<<<<<< HEAD
   [DEVICE_MODEL_ID]: 'string',
   [DEVICE_PROCESSOR_COUNT]: 'integer',
   [DEVICE_SIMULATOR]: 'boolean',
+=======
+  [EFFECTIVECONNECTIONTYPE]: 'string',
+>>>>>>> 04be27a (add attributes)
   [ENVIRONMENT]: 'string',
   [ERROR_TYPE]: 'string',
   [EVENT_ID]: 'integer',
@@ -10425,6 +10520,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [NEL_REFERRER]: 'string',
   [NEL_SAMPLING_FUNCTION]: 'double',
   [NEL_TYPE]: 'string',
+  [NETWORK_CONNECTION_EFFECTIVE_TYPE]: 'string',
+  [NETWORK_CONNECTION_RTT]: 'integer',
   [NETWORK_CONNECTION_TYPE]: 'string',
   [NETWORK_LOCAL_ADDRESS]: 'string',
   [NETWORK_LOCAL_PORT]: 'integer',
@@ -10695,6 +10792,7 @@ export type AttributeName =
   | typeof CODE_LINE_NUMBER
   | typeof CODE_NAMESPACE
   | typeof CONNECTIONTYPE
+  | typeof CONNECTION_RTT
   | typeof CULTURE_CALENDAR
   | typeof CULTURE_DISPLAY_NAME
   | typeof CULTURE_IS_24_HOUR_FORMAT
@@ -10723,9 +10821,13 @@ export type AttributeName =
   | typeof DEVICE_MEMORY_ESTIMATED_CAPACITY
   | typeof DEVICE_MEMORY_SIZE
   | typeof DEVICE_MODEL
+<<<<<<< HEAD
   | typeof DEVICE_MODEL_ID
   | typeof DEVICE_PROCESSOR_COUNT
   | typeof DEVICE_SIMULATOR
+=======
+  | typeof EFFECTIVECONNECTIONTYPE
+>>>>>>> 04be27a (add attributes)
   | typeof ENVIRONMENT
   | typeof ERROR_TYPE
   | typeof EVENT_ID
@@ -10909,6 +11011,8 @@ export type AttributeName =
   | typeof NEL_REFERRER
   | typeof NEL_SAMPLING_FUNCTION
   | typeof NEL_TYPE
+  | typeof NETWORK_CONNECTION_EFFECTIVE_TYPE
+  | typeof NETWORK_CONNECTION_RTT
   | typeof NETWORK_CONNECTION_TYPE
   | typeof NETWORK_LOCAL_ADDRESS
   | typeof NETWORK_LOCAL_PORT
@@ -12191,9 +12295,32 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'wifi',
     deprecation: {
       replacement: 'network.connection.type',
-      reason: 'Old namespace-less attribute, to be replaced with network.connection.type with span-first future',
+      reason: 'Old namespace-less attribute, to be replaced with network.connection.type for span-first future',
     },
     aliases: [NETWORK_CONNECTION_TYPE],
+    sdks: ['javascript-browser'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [279],
+        description: "Added and deprecated attribute to document JS SDK's current behaviour",
+      },
+    ],
+  },
+  [CONNECTION_RTT]: {
+    brief: 'Specifies the estimated effective round-trip time of the current connection, in milliseconds.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 100,
+    deprecation: {
+      replacement: 'network.connection.rtt',
+      reason:
+        'Old attribute name (no official namespace), to be replaced with network.connection.rtt for span-first future',
+    },
+    aliases: [NETWORK_CONNECTION_RTT],
     sdks: ['javascript-browser'],
     changelog: [
       {
@@ -12540,13 +12667,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'iPhone 15 Pro Max',
     changelog: [{ version: '0.1.0', prs: [116, 127] }],
   },
+<<<<<<< HEAD
   [DEVICE_MODEL_ID]: {
     brief: 'An internal hardware revision to identify the device exactly.',
+=======
+  [EFFECTIVECONNECTIONTYPE]: {
+    brief: 'Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).',
+>>>>>>> 04be27a (add attributes)
     type: 'string',
     pii: {
       isPii: 'maybe',
     },
     isInOtel: false,
+<<<<<<< HEAD
     example: 'N861AP',
     changelog: [{ version: 'next', prs: [300], description: 'Added device.model_id attribute' }],
   },
@@ -12582,6 +12715,24 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: false,
     changelog: [{ version: 'next', prs: [300], description: 'Added device.simulator attribute' }],
   },
+=======
+    example: '4g',
+    deprecation: {
+      replacement: 'network.connection.effective_type',
+      reason:
+        'Old namespace-less attribute, to be replaced with network.connection.effective_type for span-first future',
+    },
+    aliases: [NETWORK_CONNECTION_EFFECTIVE_TYPE],
+    sdks: ['javascript-browser'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [279],
+        description: "Added and deprecated attribute to document JS SDK's current behaviour",
+      },
+    ],
+  },
+>>>>>>> 04be27a (add attributes)
   [ENVIRONMENT]: {
     brief: 'The sentry environment.',
     type: 'string',
@@ -14856,6 +15007,42 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'dns.unreachable',
     changelog: [{ version: '0.1.0', prs: [68, 127] }],
   },
+  [NETWORK_CONNECTION_EFFECTIVE_TYPE]: {
+    brief: 'Specifies the effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '4g',
+    aliases: [EFFECTIVECONNECTIONTYPE],
+    sdks: ['javascript-browser'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [279],
+        description: 'Added attribute network.connection.effective_type to be used instead of effectiveConnectionType',
+      },
+    ],
+  },
+  [NETWORK_CONNECTION_RTT]: {
+    brief: 'Specifies the estimated effective round-trip time of the current connection, in milliseconds.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 100,
+    aliases: [CONNECTION_RTT],
+    sdks: ['javascript-browser'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [279],
+        description: 'Added attribute network.connection.rtt to be used instead of connection.rtt',
+      },
+    ],
+  },
   [NETWORK_CONNECTION_TYPE]: {
     brief: 'Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).',
     type: 'string',
@@ -14869,7 +15056,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [
       {
         version: 'next',
-        prs: [278],
+        prs: [279],
         description: 'Added attribute network.connection.type to be used instead of connectionType',
       },
     ],
@@ -17000,6 +17187,7 @@ export type Attributes = {
   [CODE_LINE_NUMBER]?: CODE_LINE_NUMBER_TYPE;
   [CODE_NAMESPACE]?: CODE_NAMESPACE_TYPE;
   [CONNECTIONTYPE]?: CONNECTIONTYPE_TYPE;
+  [CONNECTION_RTT]?: CONNECTION_RTT_TYPE;
   [CULTURE_CALENDAR]?: CULTURE_CALENDAR_TYPE;
   [CULTURE_DISPLAY_NAME]?: CULTURE_DISPLAY_NAME_TYPE;
   [CULTURE_IS_24_HOUR_FORMAT]?: CULTURE_IS_24_HOUR_FORMAT_TYPE;
@@ -17028,9 +17216,13 @@ export type Attributes = {
   [DEVICE_MEMORY_ESTIMATED_CAPACITY]?: DEVICE_MEMORY_ESTIMATED_CAPACITY_TYPE;
   [DEVICE_MEMORY_SIZE]?: DEVICE_MEMORY_SIZE_TYPE;
   [DEVICE_MODEL]?: DEVICE_MODEL_TYPE;
+<<<<<<< HEAD
   [DEVICE_MODEL_ID]?: DEVICE_MODEL_ID_TYPE;
   [DEVICE_PROCESSOR_COUNT]?: DEVICE_PROCESSOR_COUNT_TYPE;
   [DEVICE_SIMULATOR]?: DEVICE_SIMULATOR_TYPE;
+=======
+  [EFFECTIVECONNECTIONTYPE]?: EFFECTIVECONNECTIONTYPE_TYPE;
+>>>>>>> 04be27a (add attributes)
   [ENVIRONMENT]?: ENVIRONMENT_TYPE;
   [ERROR_TYPE]?: ERROR_TYPE_TYPE;
   [EVENT_ID]?: EVENT_ID_TYPE;
@@ -17214,6 +17406,8 @@ export type Attributes = {
   [NEL_REFERRER]?: NEL_REFERRER_TYPE;
   [NEL_SAMPLING_FUNCTION]?: NEL_SAMPLING_FUNCTION_TYPE;
   [NEL_TYPE]?: NEL_TYPE_TYPE;
+  [NETWORK_CONNECTION_EFFECTIVE_TYPE]?: NETWORK_CONNECTION_EFFECTIVE_TYPE_TYPE;
+  [NETWORK_CONNECTION_RTT]?: NETWORK_CONNECTION_RTT_TYPE;
   [NETWORK_CONNECTION_TYPE]?: NETWORK_CONNECTION_TYPE_TYPE;
   [NETWORK_LOCAL_ADDRESS]?: NETWORK_LOCAL_ADDRESS_TYPE;
   [NETWORK_LOCAL_PORT]?: NETWORK_LOCAL_PORT_TYPE;
