@@ -5,6 +5,19 @@ import { parseArgs } from 'node:util';
 import { confirm, intro, isCancel, log, outro, select, text } from '@clack/prompts';
 import Ajv from 'ajv';
 
+const getNextPrNumber = (): number | undefined => {
+  try {
+    const result = execSync(
+      'gh api "repos/getsentry/sentry-conventions/issues?per_page=1&state=all" --jq ".[0].number"',
+      { encoding: 'utf-8', stdio: ['pipe', 'pipe', 'pipe'] },
+    ).trim();
+    const latest = Number.parseInt(result, 10);
+    return Number.isNaN(latest) ? undefined : latest + 1;
+  } catch {
+    return undefined;
+  }
+};
+
 const HELP_TEXT = `
 Usage: yarn create:attribute [options]
 
@@ -119,6 +132,8 @@ const createAttribute = async () => {
       }
     }
 
+    const nextPrNumber = getNextPrNumber();
+
     const attribute = {
       key,
       brief: description,
@@ -131,6 +146,13 @@ const createAttribute = async () => {
       ...(example && { example: exampleValue }),
       ...(alias && alias.trim() !== '' && { alias: alias.split(',').map((s) => s.trim()) }),
       ...(sdks && sdks.trim() !== '' && { sdks: sdks.split(',').map((s) => s.trim()) }),
+      changelog: [
+        {
+          version: 'next',
+          ...(nextPrNumber && { prs: [nextPrNumber] }),
+          description: `Added ${key} attribute`,
+        },
+      ],
     };
 
     validateSchema(attribute);
