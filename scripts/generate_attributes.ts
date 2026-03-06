@@ -371,10 +371,25 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
   const attributeNames: string[] = [];
   const deprecatedAttributes: { name: string; replacement?: string }[] = [];
 
-  // First pass: collect deprecated attributes
+  // First pass: collect all attributes
+  const allAttributesPartialPython: Array<{
+    file: string;
+    key: string;
+    attributeJson: AttributeJson;
+    isDeprecated: boolean;
+  }> = [];
+
   for (const file of attributeFiles) {
     const attributePath = path.join(attributesDir, file);
     const attributeJson = JSON.parse(fs.readFileSync(attributePath, 'utf-8')) as AttributeJson;
+    const isDeprecated = !!attributeJson.deprecation;
+
+    allAttributesPartialPython.push({
+      file,
+      key: attributeJson.key,
+      attributeJson,
+      isDeprecated,
+    });
 
     if (attributeJson.deprecation) {
       const constantName = getConstantName(attributeJson.key, true);
@@ -384,6 +399,25 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
       });
     }
   }
+
+  // Sort by what the constant name would be, but put non-deprecated attributes before deprecated ones
+  allAttributesPartialPython.sort((a, b) => {
+    const aName = getConstantNameInner(a.key);
+    const bName = getConstantNameInner(b.key);
+    if (aName < bName) {
+      return -1;
+    }
+    if (aName > bName) {
+      return 1;
+    }
+    if (a.isDeprecated === b.isDeprecated) {
+      return 0;
+    }
+    if (a.isDeprecated) {
+      return 1;
+    }
+    return -1;
+  });
 
   // Generate metaclass for deprecation warnings
   content += 'class _AttributeNamesMeta(type):\n';
@@ -411,14 +445,10 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
   content += '    """Contains all attribute names as class attributes with their documentation."""\n\n';
 
   // Generate class attributes instead of top-level constants
-  for (const file of attributeFiles) {
-    const attributePath = path.join(attributesDir, file);
-    const attributeJson = JSON.parse(fs.readFileSync(attributePath, 'utf-8')) as AttributeJson;
-
-    const { key, brief, type, pii, is_in_otel, example, has_dynamic_suffix, deprecation, alias } = attributeJson;
+  for (const { file, key, attributeJson, isDeprecated } of allAttributesPartialPython) {
+    const { brief, type, pii, is_in_otel, example, has_dynamic_suffix, deprecation, alias } = attributeJson;
 
     // Convert attribute key to a valid Python constant name
-    const isDeprecated = !!deprecation;
     const constantName = getConstantName(key, isDeprecated);
     const pythonType = getPythonType(type);
 
