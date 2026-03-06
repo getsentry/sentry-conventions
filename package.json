@@ -28,7 +28,7 @@
 
     "create:attribute": "tsx scripts/create_attribute.ts",
 
-    "generate": "tsx scripts/generate.ts && tsx scripts/generate_attribute_changelog.ts && yarn format",
+    "generate": "tsx scripts/generate.ts && yarn format",
     "generate:attribute-changelog": "tsx scripts/generate_attribute_changelog.ts",
 
     "clear:attribute-changelog": "tsx scripts/clear_attribute_changelog.ts --all",
