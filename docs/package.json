@@ -14,7 +14,7 @@
     "@astrojs/svelte": "^7.2.5",
     "@astrojs/tailwind": "^6.0.2",
     "astro": "^5.16.15",
-    "dompurify": "^3.3.1",
+    "dompurify": "^3.3.2",
     "svelte": "^5.53.5",
     "tailwindcss": "^3.4.0"
   },
