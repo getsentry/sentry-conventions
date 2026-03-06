@@ -123,7 +123,7 @@ describe('attribute json', async () => {
         expect(missingAliases).toEqual([]);
       });
 
-      it('should not be a replacement of itself', async () => {
+      it('is not be a replacement of itself', async () => {
         if (!content.deprecation?.replacement) {
           return;
         }
@@ -131,7 +131,7 @@ describe('attribute json', async () => {
         expect(content.key !== replacement);
       });
 
-      it('should not alias itself', async () => {
+      it("doesn't not alias itself", async () => {
         if (!content.alias || content.alias.length === 0) {
           return;
         }
@@ -140,12 +140,12 @@ describe('attribute json', async () => {
         }
       });
 
-      it('should have valid changelog entries', () => {
-        if (!content.changelog || content.changelog.length === 0) {
-          return;
-        }
+      it('has valid changelog entries', () => {
+        expect(content.changelog).toBeDefined();
+        expect(Array.isArray(content.changelog)).toBe(true);
+        expect(content.changelog?.length).toBeGreaterThan(0);
 
-        for (const entry of content.changelog) {
+        for (const entry of content.changelog || []) {
           expect(entry.version).toBeDefined();
           expect(typeof entry.version).toBe('string');
           expect(entry.version.length).toBeGreaterThan(0);
@@ -160,7 +160,7 @@ describe('attribute json', async () => {
         }
       });
 
-      it('should have changelog entries ordered by version (newest first)', () => {
+      it('has changelog entries ordered by version (newest first)', () => {
         if (!content.changelog || content.changelog.length < 2) {
           return;
         }
