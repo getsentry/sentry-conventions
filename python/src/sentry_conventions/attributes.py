@@ -136,6 +136,7 @@ class _AttributeNamesMeta(type):
         "AI_TOTAL_COST",
         "AI_TOTAL_TOKENS_USED",
         "AI_WARNINGS",
+        "CLS",
         "CODE_FILEPATH",
         "CODE_FUNCTION",
         "CODE_LINENO",
@@ -171,6 +172,8 @@ class _AttributeNamesMeta(type):
         "HTTP_TARGET",
         "HTTP_URL",
         "HTTP_USER_AGENT",
+        "INP",
+        "LCP",
         "METHOD",
         "NET_HOST_IP",
         "NET_HOST_NAME",
@@ -686,6 +689,45 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "120.0.6099.130"
     """
 
+    # Path: model/attributes/browser/browser__web_vital__cls__value.json
+    BROWSER_WEB_VITAL_CLS_VALUE: Literal["browser.web_vital.cls.value"] = (
+        "browser.web_vital.cls.value"
+    )
+    """The value of the recorded Cumulative Layout Shift (CLS) web vital
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: cls
+    Example: 0.2361
+    """
+
+    # Path: model/attributes/browser/browser__web_vital__inp__value.json
+    BROWSER_WEB_VITAL_INP_VALUE: Literal["browser.web_vital.inp.value"] = (
+        "browser.web_vital.inp.value"
+    )
+    """The value of the recorded Interaction to Next Paint (INP) web vital
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: inp
+    Example: 200
+    """
+
+    # Path: model/attributes/browser/browser__web_vital__lcp__value.json
+    BROWSER_WEB_VITAL_LCP_VALUE: Literal["browser.web_vital.lcp.value"] = (
+        "browser.web_vital.lcp.value"
+    )
+    """The value of the recorded Largest Contentful Paint (LCP) web vital
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: lcp
+    Example: 2500
+    """
+
     # Path: model/attributes/cache/cache__hit.json
     CACHE_HIT: Literal["cache.hit"] = "cache.hit"
     """If the cache was hit during this span.
@@ -799,6 +841,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Example: 12
+    """
+
+    # Path: model/attributes/cls.json
+    CLS: Literal["cls"] = "cls"
+    """The value of the recorded Cumulative Layout Shift (CLS) web vital
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: browser.web_vital.cls.value
+    DEPRECATED: Use browser.web_vital.cls.value instead - The CLS web vital is now recorded as a browser.web_vital.cls.value attribute.
+    Example: 0.2361
     """
 
     # Path: model/attributes/code/code__file__path.json
@@ -2406,6 +2460,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "f47ac10b58cc4372a5670e02b2c3d479"
     """
 
+    # Path: model/attributes/inp.json
+    INP: Literal["inp"] = "inp"
+    """The value of the recorded Interaction to Next Paint (INP) web vital
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: browser.web_vital.inp.value
+    DEPRECATED: Use browser.web_vital.inp.value instead - The INP web vital is now recorded as a browser.web_vital.inp.value attribute.
+    Example: 200
+    """
+
     # Path: model/attributes/jvm/jvm__gc__action.json
     JVM_GC_ACTION: Literal["jvm.gc.action"] = "jvm.gc.action"
     """Name of the garbage collector action.
@@ -2504,6 +2570,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Example: "https://example.com"
+    """
+
+    # Path: model/attributes/lcp.json
+    LCP: Literal["lcp"] = "lcp"
+    """The value of the recorded Largest Contentful Paint (LCP) web vital
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: browser.web_vital.lcp.value
+    DEPRECATED: Use browser.web_vital.lcp.value instead - The LCP web vital is now recorded as a browser.web_vital.lcp.value attribute.
+    Example: 2500
     """
 
     # Path: model/attributes/logger/logger__name.json
@@ -5469,6 +5547,54 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[59, 127, 139]),
         ],
     ),
+    "browser.web_vital.cls.value": AttributeMetadata(
+        brief="The value of the recorded Cumulative Layout Shift (CLS) web vital",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=0.2361,
+        aliases=["cls"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[229],
+                description="Added browser.web_vital.cls.value attribute",
+            ),
+        ],
+    ),
+    "browser.web_vital.inp.value": AttributeMetadata(
+        brief="The value of the recorded Interaction to Next Paint (INP) web vital",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=200,
+        aliases=["inp"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[229],
+                description="Added browser.web_vital.inp.value attribute",
+            ),
+        ],
+    ),
+    "browser.web_vital.lcp.value": AttributeMetadata(
+        brief="The value of the recorded Largest Contentful Paint (LCP) web vital",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=2500,
+        aliases=["lcp"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[229],
+                description="Added browser.web_vital.lcp.value attribute",
+            ),
+        ],
+    ),
     "cache.hit": AttributeMetadata(
         brief="If the cache was hit during this span.",
         type=AttributeType.BOOLEAN,
@@ -5595,6 +5721,27 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "cls": AttributeMetadata(
+        brief="The value of the recorded Cumulative Layout Shift (CLS) web vital",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=0.2361,
+        deprecation=DeprecationInfo(
+            replacement="browser.web_vital.cls.value",
+            reason="The CLS web vital is now recorded as a browser.web_vital.cls.value attribute.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["browser.web_vital.cls.value"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[229],
+                description="Added and deprecated attribute to document JS SDK's current behaviour",
+            ),
         ],
     ),
     "code.file.path": AttributeMetadata(
@@ -7280,6 +7427,27 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "inp": AttributeMetadata(
+        brief="The value of the recorded Interaction to Next Paint (INP) web vital",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=200,
+        deprecation=DeprecationInfo(
+            replacement="browser.web_vital.inp.value",
+            reason="The INP web vital is now recorded as a browser.web_vital.inp.value attribute.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["browser.web_vital.inp.value"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[229],
+                description="Added and deprecated attribute to document JS SDK's current behaviour",
+            ),
+        ],
+    ),
     "jvm.gc.action": AttributeMetadata(
         brief="Name of the garbage collector action.",
         type=AttributeType.STRING,
@@ -7387,6 +7555,27 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "lcp": AttributeMetadata(
+        brief="The value of the recorded Largest Contentful Paint (LCP) web vital",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=2500,
+        deprecation=DeprecationInfo(
+            replacement="browser.web_vital.lcp.value",
+            reason="The LCP web vital is now recorded as a browser.web_vital.lcp.value attribute.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["browser.web_vital.lcp.value"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[229],
+                description="Added and deprecated attribute to document JS SDK's current behaviour",
+            ),
         ],
     ),
     "logger.name": AttributeMetadata(
@@ -9935,6 +10124,9 @@ Attributes = TypedDict(
         "browser.script.invoker_type": str,
         "browser.script.source_char_position": int,
         "browser.version": str,
+        "browser.web_vital.cls.value": float,
+        "browser.web_vital.inp.value": float,
+        "browser.web_vital.lcp.value": float,
         "cache.hit": bool,
         "cache.item_size": int,
         "cache.key": List[str],
@@ -9946,6 +10138,7 @@ Attributes = TypedDict(
         "cloudflare.d1.duration": int,
         "cloudflare.d1.rows_read": int,
         "cloudflare.d1.rows_written": int,
+        "cls": float,
         "code.file.path": str,
         "code.filepath": str,
         "code.function": str,
@@ -10086,6 +10279,7 @@ Attributes = TypedDict(
         "http.url": str,
         "http.user_agent": str,
         "id": str,
+        "inp": float,
         "jvm.gc.action": str,
         "jvm.gc.name": str,
         "jvm.memory.pool.name": str,
@@ -10096,6 +10290,7 @@ Attributes = TypedDict(
         "lcp.id": str,
         "lcp.size": int,
         "lcp.url": str,
+        "lcp": float,
         "logger.name": str,
         "mcp.cancelled.reason": str,
         "mcp.cancelled.request_id": str,
