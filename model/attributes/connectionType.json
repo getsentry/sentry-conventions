@@ -1,6 +1,6 @@
 {
   "key": "connectionType",
-  "brief": "type of current connection (e.g. wifi, ethernet, cellular , etc).",
+  "brief": "Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).",
   "type": "string",
   "pii": {
     "key": "maybe"
@@ -11,12 +11,13 @@
   "alias": ["network.connection.type"],
   "deprecation": {
     "replacement": "network.connection.type",
-    "reason": "Old namespace-less attribute, to be replaced with network.connection.type with span-first future"
+    "reason": "Old namespace-less attribute, to be replaced with network.connection.type with span-first future",
+    "_status": "backfill"
   },
   "changelog": [
     {
       "version": "next",
-      "prs": [278],
+      "prs": [279],
       "description": "Added and deprecated attribute to document JS SDK's current behaviour"
     }
   ]

@@ -142,6 +142,7 @@ class _AttributeNamesMeta(type):
         "CODE_FUNCTION",
         "CODE_LINENO",
         "CODE_NAMESPACE",
+        "CONNECTIONTYPE",
         "DB_NAME",
         "DB_OPERATION",
         "DB_SQL_BINDINGS",
@@ -1175,6 +1176,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     DEPRECATED: Use code.function.name instead - code.function.name should include the namespace.
     Example: "http.handler"
+    """
+
+    # Path: model/attributes/connectionType.json
+    CONNECTIONTYPE: Literal["connectionType"] = "connectionType"
+    """Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: network.connection.type
+    DEPRECATED: Use network.connection.type instead - Old namespace-less attribute, to be replaced with network.connection.type with span-first future
+    Example: "wifi"
     """
 
     # Path: model/attributes/culture/culture__calendar.json
@@ -3755,6 +3768,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Aliases: network.transport
     DEPRECATED: Use network.transport instead
     Example: "tcp"
+    """
+
+    # Path: model/attributes/network/network__connection__type.json
+    NETWORK_CONNECTION_TYPE: Literal["network.connection.type"] = (
+        "network.connection.type"
+    )
+    """Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: Yes
+    Aliases: connectionType
+    Example: "wifi"
     """
 
     # Path: model/attributes/network/network__local__address.json
@@ -6628,6 +6654,27 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "connectionType": AttributeMetadata(
+        brief="Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="wifi",
+        deprecation=DeprecationInfo(
+            replacement="network.connection.type",
+            reason="Old namespace-less attribute, to be replaced with network.connection.type with span-first future",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["network.connection.type"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[279],
+                description="Added and deprecated attribute to document JS SDK's current behaviour",
+            ),
+        ],
+    ),
     "culture.calendar": AttributeMetadata(
         brief="The calendar system used by the culture.",
         type=AttributeType.STRING,
@@ -9434,6 +9481,22 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "network.connection.type": AttributeMetadata(
+        brief="Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=True,
+        example="wifi",
+        aliases=["connectionType"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[278],
+                description="Added attribute network.connection.type to be used instead of connectionType",
+            ),
+        ],
+    ),
     "network.local.address": AttributeMetadata(
         brief="Local address of the network connection - IP address or Unix domain socket name.",
         type=AttributeType.STRING,
@@ -11388,6 +11451,7 @@ Attributes = TypedDict(
         "code.line.number": int,
         "code.lineno": int,
         "code.namespace": str,
+        "connectionType": str,
         "culture.calendar": str,
         "culture.display_name": str,
         "culture.is_24_hour_format": bool,
@@ -11617,6 +11681,7 @@ Attributes = TypedDict(
         "net.sock.peer.name": str,
         "net.sock.peer.port": int,
         "net.transport": str,
+        "network.connection.type": str,
         "network.local.address": str,
         "network.local.port": int,
         "network.peer.address": str,

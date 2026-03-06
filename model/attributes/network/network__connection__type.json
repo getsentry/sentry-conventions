@@ -1,16 +1,19 @@
 {
   "key": "network.connection.type",
-  "brief": "Specifies the type of the current connection",
+  "brief": "Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).",
   "type": "string",
   "pii": {
     "key": "maybe"
   },
   "is_in_otel": true,
   "example": "wifi",
-  "alias": [
-    "connectionType"
-  ],
-  "sdks": [
-    "javascript-browser"
+  "alias": ["connectionType"],
+  "sdks": ["javascript-browser"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [278],
+      "description": "Added attribute network.connection.type to be used instead of connectionType"
+    }
   ]
 }
