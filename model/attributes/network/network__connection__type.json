@@ -12,7 +12,7 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [278],
+      "prs": [279],
       "description": "Added attribute network.connection.type to be used instead of connectionType"
     }
   ]
