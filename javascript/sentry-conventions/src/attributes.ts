@@ -897,6 +897,30 @@ export const BROWSER_VERSION = 'browser.version';
  */
 export type BROWSER_VERSION_TYPE = string;
 
+// Path: model/attributes/browser/browser__web_vital__cls__source__[key].json
+
+/**
+ * The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N `browser.web_vital.cls.source.<key>`
+ *
+ * Attribute Value Type: `string` {@link BROWSER_WEB_VITAL_CLS_SOURCE_KEY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Has Dynamic Suffix: true
+ *
+ * Aliases: {@link CLS_SOURCE_KEY} `cls.source.<key>`
+ *
+ * @example "body > div#app"
+ */
+export const BROWSER_WEB_VITAL_CLS_SOURCE_KEY = 'browser.web_vital.cls.source.<key>';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_CLS_SOURCE_KEY} browser.web_vital.cls.source.<key>
+ */
+export type BROWSER_WEB_VITAL_CLS_SOURCE_KEY_TYPE = string;
+
 // Path: model/attributes/browser/browser__web_vital__cls__value.json
 
 /**
@@ -1207,6 +1231,31 @@ export const CLS = 'cls';
  * Type for {@link CLS} cls
  */
 export type CLS_TYPE = number;
+
+// Path: model/attributes/cls/cls__source__[key].json
+
+/**
+ * The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N `cls.source.<key>`
+ *
+ * Attribute Value Type: `string` {@link CLS_SOURCE_KEY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Has Dynamic Suffix: true
+ *
+ * Aliases: {@link BROWSER_WEB_VITAL_CLS_SOURCE_KEY} `browser.web_vital.cls.source.<key>`
+ *
+ * @deprecated Use {@link BROWSER_WEB_VITAL_CLS_SOURCE_KEY} (browser.web_vital.cls.source.<key>) instead - The CLS source is now recorded as a browser.web_vital.cls.source.<key> attribute.
+ * @example "body > div#app"
+ */
+export const CLS_SOURCE_KEY = 'cls.source.<key>';
+
+/**
+ * Type for {@link CLS_SOURCE_KEY} cls.source.<key>
+ */
+export type CLS_SOURCE_KEY_TYPE = string;
 
 // Path: model/attributes/code/code__filepath.json
 
@@ -9173,6 +9222,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [BROWSER_SCRIPT_INVOKER_TYPE]: 'string',
   [BROWSER_SCRIPT_SOURCE_CHAR_POSITION]: 'integer',
   [BROWSER_VERSION]: 'string',
+  [BROWSER_WEB_VITAL_CLS_SOURCE_KEY]: 'string',
   [BROWSER_WEB_VITAL_CLS_VALUE]: 'double',
   [BROWSER_WEB_VITAL_INP_VALUE]: 'double',
   [BROWSER_WEB_VITAL_LCP_VALUE]: 'double',
@@ -9188,6 +9238,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [CLOUDFLARE_D1_ROWS_READ]: 'integer',
   [CLOUDFLARE_D1_ROWS_WRITTEN]: 'integer',
   [CLS]: 'double',
+  [CLS_SOURCE_KEY]: 'string',
   [CODE_FILEPATH]: 'string',
   [CODE_FILE_PATH]: 'string',
   [CODE_FUNCTION]: 'string',
@@ -9611,6 +9662,7 @@ export type AttributeName =
   | typeof BROWSER_SCRIPT_INVOKER_TYPE
   | typeof BROWSER_SCRIPT_SOURCE_CHAR_POSITION
   | typeof BROWSER_VERSION
+  | typeof BROWSER_WEB_VITAL_CLS_SOURCE_KEY
   | typeof BROWSER_WEB_VITAL_CLS_VALUE
   | typeof BROWSER_WEB_VITAL_INP_VALUE
   | typeof BROWSER_WEB_VITAL_LCP_VALUE
@@ -9626,6 +9678,7 @@ export type AttributeName =
   | typeof CLOUDFLARE_D1_ROWS_READ
   | typeof CLOUDFLARE_D1_ROWS_WRITTEN
   | typeof CLS
+  | typeof CLS_SOURCE_KEY
   | typeof CODE_FILEPATH
   | typeof CODE_FILE_PATH
   | typeof CODE_FUNCTION
@@ -10593,6 +10646,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [SENTRY_BROWSER_VERSION],
     changelog: [{ version: '0.1.0', prs: [59, 127, 139] }],
   },
+  [BROWSER_WEB_VITAL_CLS_SOURCE_KEY]: {
+    brief: 'The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    hasDynamicSuffix: true,
+    example: 'body > div#app',
+    aliases: [CLS_SOURCE_KEY],
+    sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [234] }],
+  },
   [BROWSER_WEB_VITAL_CLS_VALUE]: {
     brief: 'The value of the recorded Cumulative Layout Shift (CLS) web vital',
     type: 'double',
@@ -10770,6 +10836,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         description: "Added and deprecated attribute to document JS SDK's current behaviour",
       },
     ],
+  },
+  [CLS_SOURCE_KEY]: {
+    brief: 'The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    hasDynamicSuffix: true,
+    example: 'body > div#app',
+    deprecation: {
+      replacement: 'browser.web_vital.cls.source.<key>',
+      reason: 'The CLS source is now recorded as a browser.web_vital.cls.source.<key> attribute.',
+    },
+    aliases: [BROWSER_WEB_VITAL_CLS_SOURCE_KEY],
+    sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [234] }],
   },
   [CODE_FILEPATH]: {
     brief:
@@ -15225,6 +15308,7 @@ export type Attributes = {
   [BROWSER_SCRIPT_INVOKER_TYPE]?: BROWSER_SCRIPT_INVOKER_TYPE_TYPE;
   [BROWSER_SCRIPT_SOURCE_CHAR_POSITION]?: BROWSER_SCRIPT_SOURCE_CHAR_POSITION_TYPE;
   [BROWSER_VERSION]?: BROWSER_VERSION_TYPE;
+  [BROWSER_WEB_VITAL_CLS_SOURCE_KEY]?: BROWSER_WEB_VITAL_CLS_SOURCE_KEY_TYPE;
   [BROWSER_WEB_VITAL_CLS_VALUE]?: BROWSER_WEB_VITAL_CLS_VALUE_TYPE;
   [BROWSER_WEB_VITAL_INP_VALUE]?: BROWSER_WEB_VITAL_INP_VALUE_TYPE;
   [BROWSER_WEB_VITAL_LCP_VALUE]?: BROWSER_WEB_VITAL_LCP_VALUE_TYPE;
@@ -15240,6 +15324,7 @@ export type Attributes = {
   [CLOUDFLARE_D1_ROWS_READ]?: CLOUDFLARE_D1_ROWS_READ_TYPE;
   [CLOUDFLARE_D1_ROWS_WRITTEN]?: CLOUDFLARE_D1_ROWS_WRITTEN_TYPE;
   [CLS]?: CLS_TYPE;
+  [CLS_SOURCE_KEY]?: CLS_SOURCE_KEY_TYPE;
   [CODE_FILEPATH]?: CODE_FILEPATH_TYPE;
   [CODE_FILE_PATH]?: CODE_FILE_PATH_TYPE;
   [CODE_FUNCTION]?: CODE_FUNCTION_TYPE;
