@@ -897,27 +897,17 @@ export const BROWSER_VERSION = 'browser.version';
  */
 export type BROWSER_VERSION_TYPE = string;
 
-<<<<<<< HEAD
 // Path: model/attributes/browser/browser__web_vital__cls__source__[key].json
 
 /**
  * The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N `browser.web_vital.cls.source.<key>`
  *
  * Attribute Value Type: `string` {@link BROWSER_WEB_VITAL_CLS_SOURCE_KEY_TYPE}
-=======
-// Path: model/attributes/browser/browser__web_vital__fcp__value.json
-
-/**
- * The time it takes for the browser to render the first piece of meaningful content on the screen `browser.web_vital.fcp.value`
- *
- * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_FCP_VALUE_TYPE}
->>>>>>> 883ace0 (feat(attributes): Add remaining TTFB, FCP and FP web vital attributes)
  *
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
-<<<<<<< HEAD
  * Has Dynamic Suffix: true
  *
  * Aliases: {@link CLS_SOURCE_KEY} `cls.source.<key>`
@@ -937,7 +927,33 @@ export type BROWSER_WEB_VITAL_CLS_SOURCE_KEY_TYPE = string;
  * The value of the recorded Cumulative Layout Shift (CLS) web vital `browser.web_vital.cls.value`
  *
  * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_CLS_VALUE_TYPE}
-=======
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link CLS} `cls`
+ *
+ * @example 0.2361
+ */
+export const BROWSER_WEB_VITAL_CLS_VALUE = 'browser.web_vital.cls.value';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_CLS_VALUE} browser.web_vital.cls.value
+ */
+export type BROWSER_WEB_VITAL_CLS_VALUE_TYPE = number;
+
+// Path: model/attributes/browser/browser__web_vital__fcp__value.json
+
+/**
+ * The time it takes for the browser to render the first piece of meaningful content on the screen `browser.web_vital.fcp.value`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_FCP_VALUE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
  * Aliases: {@link FCP} `fcp`
  *
  * @example 547.6951
@@ -955,31 +971,11 @@ export type BROWSER_WEB_VITAL_FCP_VALUE_TYPE = number;
  * The time in milliseconds it takes for the browser to render the first pixel on the screen `browser.web_vital.fp.value`
  *
  * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_FP_VALUE_TYPE}
->>>>>>> 883ace0 (feat(attributes): Add remaining TTFB, FCP and FP web vital attributes)
  *
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
-<<<<<<< HEAD
- * Aliases: {@link CLS} `cls`
- *
- * @example 0.2361
- */
-export const BROWSER_WEB_VITAL_CLS_VALUE = 'browser.web_vital.cls.value';
-
-/**
- * Type for {@link BROWSER_WEB_VITAL_CLS_VALUE} browser.web_vital.cls.value
- */
-export type BROWSER_WEB_VITAL_CLS_VALUE_TYPE = number;
-
-// Path: model/attributes/browser/browser__web_vital__inp__value.json
-
-/**
- * The value of the recorded Interaction to Next Paint (INP) web vital `browser.web_vital.inp.value`
- *
- * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_INP_VALUE_TYPE}
-=======
  * Aliases: {@link FP} `fp`
  *
  * @example 477.1926
@@ -991,19 +987,17 @@ export const BROWSER_WEB_VITAL_FP_VALUE = 'browser.web_vital.fp.value';
  */
 export type BROWSER_WEB_VITAL_FP_VALUE_TYPE = number;
 
-// Path: model/attributes/browser/browser__web_vital__ttfb__request_time.json
+// Path: model/attributes/browser/browser__web_vital__inp__value.json
 
 /**
- * The time it takes for the server to process the initial request and send the first byte of a response to the user's browser `browser.web_vital.ttfb.request_time`
+ * The value of the recorded Interaction to Next Paint (INP) web vital `browser.web_vital.inp.value`
  *
- * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_TTFB_REQUEST_TIME_TYPE}
->>>>>>> 883ace0 (feat(attributes): Add remaining TTFB, FCP and FP web vital attributes)
+ * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_INP_VALUE_TYPE}
  *
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
-<<<<<<< HEAD
  * Aliases: {@link INP} `inp`
  *
  * @example 200
@@ -1021,31 +1015,11 @@ export type BROWSER_WEB_VITAL_INP_VALUE_TYPE = number;
  * The HTML element selector or component name for which LCP was reported `browser.web_vital.lcp.element`
  *
  * Attribute Value Type: `string` {@link BROWSER_WEB_VITAL_LCP_ELEMENT_TYPE}
-=======
- * Aliases: {@link TTFB_REQUESTTIME} `ttfb.requestTime`
- *
- * @example 1554.5814
- */
-export const BROWSER_WEB_VITAL_TTFB_REQUEST_TIME = 'browser.web_vital.ttfb.request_time';
-
-/**
- * Type for {@link BROWSER_WEB_VITAL_TTFB_REQUEST_TIME} browser.web_vital.ttfb.request_time
- */
-export type BROWSER_WEB_VITAL_TTFB_REQUEST_TIME_TYPE = number;
-
-// Path: model/attributes/browser/browser__web_vital__ttfb__value.json
-
-/**
- * The value of the recorded Time To First Byte (TTFB) web vital in Milliseconds `browser.web_vital.ttfb.value`
- *
- * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_TTFB_VALUE_TYPE}
->>>>>>> 883ace0 (feat(attributes): Add remaining TTFB, FCP and FP web vital attributes)
  *
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
-<<<<<<< HEAD
  * Aliases: {@link LCP_ELEMENT} `lcp.element`
  *
  * @example "body > div#app > div#container > div"
@@ -1188,7 +1162,40 @@ export const BROWSER_WEB_VITAL_LCP_VALUE = 'browser.web_vital.lcp.value';
  * Type for {@link BROWSER_WEB_VITAL_LCP_VALUE} browser.web_vital.lcp.value
  */
 export type BROWSER_WEB_VITAL_LCP_VALUE_TYPE = number;
-=======
+
+// Path: model/attributes/browser/browser__web_vital__ttfb__request_time.json
+
+/**
+ * The time it takes for the server to process the initial request and send the first byte of a response to the user's browser `browser.web_vital.ttfb.request_time`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_TTFB_REQUEST_TIME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link TTFB_REQUESTTIME} `ttfb.requestTime`
+ *
+ * @example 1554.5814
+ */
+export const BROWSER_WEB_VITAL_TTFB_REQUEST_TIME = 'browser.web_vital.ttfb.request_time';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_TTFB_REQUEST_TIME} browser.web_vital.ttfb.request_time
+ */
+export type BROWSER_WEB_VITAL_TTFB_REQUEST_TIME_TYPE = number;
+
+// Path: model/attributes/browser/browser__web_vital__ttfb__value.json
+
+/**
+ * The value of the recorded Time To First Byte (TTFB) web vital in Milliseconds `browser.web_vital.ttfb.value`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_TTFB_VALUE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
  * Aliases: {@link TTFB} `ttfb`
  *
  * @example 194.3322
@@ -1199,7 +1206,6 @@ export const BROWSER_WEB_VITAL_TTFB_VALUE = 'browser.web_vital.ttfb.value';
  * Type for {@link BROWSER_WEB_VITAL_TTFB_VALUE} browser.web_vital.ttfb.value
  */
 export type BROWSER_WEB_VITAL_TTFB_VALUE_TYPE = number;
->>>>>>> 883ace0 (feat(attributes): Add remaining TTFB, FCP and FP web vital attributes)
 
 // Path: model/attributes/cache/cache__hit.json
 
@@ -9586,9 +9592,10 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [BROWSER_SCRIPT_INVOKER_TYPE]: 'string',
   [BROWSER_SCRIPT_SOURCE_CHAR_POSITION]: 'integer',
   [BROWSER_VERSION]: 'string',
-<<<<<<< HEAD
   [BROWSER_WEB_VITAL_CLS_SOURCE_KEY]: 'string',
   [BROWSER_WEB_VITAL_CLS_VALUE]: 'double',
+  [BROWSER_WEB_VITAL_FCP_VALUE]: 'double',
+  [BROWSER_WEB_VITAL_FP_VALUE]: 'double',
   [BROWSER_WEB_VITAL_INP_VALUE]: 'double',
   [BROWSER_WEB_VITAL_LCP_ELEMENT]: 'string',
   [BROWSER_WEB_VITAL_LCP_ID]: 'string',
@@ -9597,12 +9604,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [BROWSER_WEB_VITAL_LCP_SIZE]: 'integer',
   [BROWSER_WEB_VITAL_LCP_URL]: 'string',
   [BROWSER_WEB_VITAL_LCP_VALUE]: 'double',
-=======
-  [BROWSER_WEB_VITAL_FCP_VALUE]: 'double',
-  [BROWSER_WEB_VITAL_FP_VALUE]: 'double',
   [BROWSER_WEB_VITAL_TTFB_REQUEST_TIME]: 'double',
   [BROWSER_WEB_VITAL_TTFB_VALUE]: 'double',
->>>>>>> 883ace0 (feat(attributes): Add remaining TTFB, FCP and FP web vital attributes)
   [CACHE_HIT]: 'boolean',
   [CACHE_ITEM_SIZE]: 'integer',
   [CACHE_KEY]: 'string[]',
@@ -10045,9 +10048,10 @@ export type AttributeName =
   | typeof BROWSER_SCRIPT_INVOKER_TYPE
   | typeof BROWSER_SCRIPT_SOURCE_CHAR_POSITION
   | typeof BROWSER_VERSION
-<<<<<<< HEAD
   | typeof BROWSER_WEB_VITAL_CLS_SOURCE_KEY
   | typeof BROWSER_WEB_VITAL_CLS_VALUE
+  | typeof BROWSER_WEB_VITAL_FCP_VALUE
+  | typeof BROWSER_WEB_VITAL_FP_VALUE
   | typeof BROWSER_WEB_VITAL_INP_VALUE
   | typeof BROWSER_WEB_VITAL_LCP_ELEMENT
   | typeof BROWSER_WEB_VITAL_LCP_ID
@@ -10056,12 +10060,8 @@ export type AttributeName =
   | typeof BROWSER_WEB_VITAL_LCP_SIZE
   | typeof BROWSER_WEB_VITAL_LCP_URL
   | typeof BROWSER_WEB_VITAL_LCP_VALUE
-=======
-  | typeof BROWSER_WEB_VITAL_FCP_VALUE
-  | typeof BROWSER_WEB_VITAL_FP_VALUE
   | typeof BROWSER_WEB_VITAL_TTFB_REQUEST_TIME
   | typeof BROWSER_WEB_VITAL_TTFB_VALUE
->>>>>>> 883ace0 (feat(attributes): Add remaining TTFB, FCP and FP web vital attributes)
   | typeof CACHE_HIT
   | typeof CACHE_ITEM_SIZE
   | typeof CACHE_KEY
@@ -11048,7 +11048,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [SENTRY_BROWSER_VERSION],
     changelog: [{ version: '0.1.0', prs: [59, 127, 139] }],
   },
-<<<<<<< HEAD
   [BROWSER_WEB_VITAL_CLS_SOURCE_KEY]: {
     brief: 'The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N',
     type: 'string',
@@ -11064,24 +11063,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [BROWSER_WEB_VITAL_CLS_VALUE]: {
     brief: 'The value of the recorded Cumulative Layout Shift (CLS) web vital',
-=======
-  [BROWSER_WEB_VITAL_FCP_VALUE]: {
-    brief: 'The time it takes for the browser to render the first piece of meaningful content on the screen',
->>>>>>> 883ace0 (feat(attributes): Add remaining TTFB, FCP and FP web vital attributes)
     type: 'double',
     pii: {
       isPii: 'maybe',
     },
     isInOtel: false,
-<<<<<<< HEAD
     example: 0.2361,
     aliases: [CLS],
     sdks: ['javascript-browser'],
     changelog: [{ version: 'next', prs: [229], description: 'Added browser.web_vital.cls.value attribute' }],
   },
-  [BROWSER_WEB_VITAL_INP_VALUE]: {
-    brief: 'The value of the recorded Interaction to Next Paint (INP) web vital',
-=======
+  [BROWSER_WEB_VITAL_FCP_VALUE]: {
+    brief: 'The time it takes for the browser to render the first piece of meaningful content on the screen',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
     example: 547.6951,
     aliases: [FCP],
     sdks: ['javascript-browser'],
@@ -11089,13 +11087,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [BROWSER_WEB_VITAL_FP_VALUE]: {
     brief: 'The time in milliseconds it takes for the browser to render the first pixel on the screen',
->>>>>>> 883ace0 (feat(attributes): Add remaining TTFB, FCP and FP web vital attributes)
     type: 'double',
     pii: {
       isPii: 'maybe',
     },
     isInOtel: false,
-<<<<<<< HEAD
+    example: 477.1926,
+    aliases: [FP],
+    sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [235] }],
+  },
+  [BROWSER_WEB_VITAL_INP_VALUE]: {
+    brief: 'The value of the recorded Interaction to Next Paint (INP) web vital',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
     example: 200,
     aliases: [INP],
     sdks: ['javascript-browser'],
@@ -11175,27 +11183,24 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [BROWSER_WEB_VITAL_LCP_VALUE]: {
     brief: 'The value of the recorded Largest Contentful Paint (LCP) web vital',
-=======
-    example: 477.1926,
-    aliases: [FP],
-    sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [235] }],
-  },
-  [BROWSER_WEB_VITAL_TTFB_REQUEST_TIME]: {
-    brief:
-      "The time it takes for the server to process the initial request and send the first byte of a response to the user's browser",
->>>>>>> 883ace0 (feat(attributes): Add remaining TTFB, FCP and FP web vital attributes)
     type: 'double',
     pii: {
       isPii: 'maybe',
     },
     isInOtel: false,
-<<<<<<< HEAD
     example: 2500,
     aliases: [LCP],
     sdks: ['javascript-browser'],
     changelog: [{ version: 'next', prs: [229], description: 'Added browser.web_vital.lcp.value attribute' }],
-=======
+  },
+  [BROWSER_WEB_VITAL_TTFB_REQUEST_TIME]: {
+    brief:
+      "The time it takes for the server to process the initial request and send the first byte of a response to the user's browser",
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
     example: 1554.5814,
     aliases: [TTFB_REQUESTTIME],
     sdks: ['javascript-browser'],
@@ -11212,7 +11217,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [TTFB],
     sdks: ['javascript-browser'],
     changelog: [{ version: 'next', prs: [235] }],
->>>>>>> 883ace0 (feat(attributes): Add remaining TTFB, FCP and FP web vital attributes)
   },
   [CACHE_HIT]: {
     brief: 'If the cache was hit during this span.',
@@ -15944,9 +15948,10 @@ export type Attributes = {
   [BROWSER_SCRIPT_INVOKER_TYPE]?: BROWSER_SCRIPT_INVOKER_TYPE_TYPE;
   [BROWSER_SCRIPT_SOURCE_CHAR_POSITION]?: BROWSER_SCRIPT_SOURCE_CHAR_POSITION_TYPE;
   [BROWSER_VERSION]?: BROWSER_VERSION_TYPE;
-<<<<<<< HEAD
   [BROWSER_WEB_VITAL_CLS_SOURCE_KEY]?: BROWSER_WEB_VITAL_CLS_SOURCE_KEY_TYPE;
   [BROWSER_WEB_VITAL_CLS_VALUE]?: BROWSER_WEB_VITAL_CLS_VALUE_TYPE;
+  [BROWSER_WEB_VITAL_FCP_VALUE]?: BROWSER_WEB_VITAL_FCP_VALUE_TYPE;
+  [BROWSER_WEB_VITAL_FP_VALUE]?: BROWSER_WEB_VITAL_FP_VALUE_TYPE;
   [BROWSER_WEB_VITAL_INP_VALUE]?: BROWSER_WEB_VITAL_INP_VALUE_TYPE;
   [BROWSER_WEB_VITAL_LCP_ELEMENT]?: BROWSER_WEB_VITAL_LCP_ELEMENT_TYPE;
   [BROWSER_WEB_VITAL_LCP_ID]?: BROWSER_WEB_VITAL_LCP_ID_TYPE;
@@ -15955,12 +15960,8 @@ export type Attributes = {
   [BROWSER_WEB_VITAL_LCP_SIZE]?: BROWSER_WEB_VITAL_LCP_SIZE_TYPE;
   [BROWSER_WEB_VITAL_LCP_URL]?: BROWSER_WEB_VITAL_LCP_URL_TYPE;
   [BROWSER_WEB_VITAL_LCP_VALUE]?: BROWSER_WEB_VITAL_LCP_VALUE_TYPE;
-=======
-  [BROWSER_WEB_VITAL_FCP_VALUE]?: BROWSER_WEB_VITAL_FCP_VALUE_TYPE;
-  [BROWSER_WEB_VITAL_FP_VALUE]?: BROWSER_WEB_VITAL_FP_VALUE_TYPE;
   [BROWSER_WEB_VITAL_TTFB_REQUEST_TIME]?: BROWSER_WEB_VITAL_TTFB_REQUEST_TIME_TYPE;
   [BROWSER_WEB_VITAL_TTFB_VALUE]?: BROWSER_WEB_VITAL_TTFB_VALUE_TYPE;
->>>>>>> 883ace0 (feat(attributes): Add remaining TTFB, FCP and FP web vital attributes)
   [CACHE_HIT]?: CACHE_HIT_TYPE;
   [CACHE_ITEM_SIZE]?: CACHE_ITEM_SIZE_TYPE;
   [CACHE_KEY]?: CACHE_KEY_TYPE;
