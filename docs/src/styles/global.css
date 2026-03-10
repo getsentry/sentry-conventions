@@ -47,8 +47,8 @@
 }
 
 @theme {
-  --font-sans: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+  --font-sans: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", Consolas, monospace;
 
   --spacing-header: 64px;
   --spacing-sidebar: 260px;
