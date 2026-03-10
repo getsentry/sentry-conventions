@@ -173,17 +173,14 @@ class _AttributeNamesMeta(type):
         "HTTP_TARGET",
         "HTTP_URL",
         "HTTP_USER_AGENT",
-<<<<<<< HEAD
         "INP",
-        "LCP",
-=======
         "LCP_ELEMENT",
         "LCP_ID",
         "LCP_LOADTIME",
         "LCP_RENDERTIME",
         "LCP_SIZE",
         "LCP_URL",
->>>>>>> 8f5c2ba (feat(attributes): Add LCP web vital meta attributes)
+        "LCP",
         "METHOD",
         "NET_HOST_IP",
         "NET_HOST_NAME",
@@ -699,24 +696,15 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "120.0.6099.130"
     """
 
-<<<<<<< HEAD
     # Path: model/attributes/browser/browser__web_vital__cls__source__[key].json
     BROWSER_WEB_VITAL_CLS_SOURCE_KEY: Literal["browser.web_vital.cls.source.<key>"] = (
         "browser.web_vital.cls.source.<key>"
     )
     """The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N
-=======
-    # Path: model/attributes/browser/browser__web_vital__lcp__element.json
-    BROWSER_WEB_VITAL_LCP_ELEMENT: Literal["browser.web_vital.lcp.element"] = (
-        "browser.web_vital.lcp.element"
-    )
-    """The HTML element selector or component name for which LCP was reported
->>>>>>> 8f5c2ba (feat(attributes): Add LCP web vital meta attributes)
 
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
-<<<<<<< HEAD
     Has Dynamic Suffix: true
     Aliases: cls.source.<key>
     Example: "body > div#app"
@@ -748,18 +736,15 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 200
     """
 
-    # Path: model/attributes/browser/browser__web_vital__lcp__value.json
-    BROWSER_WEB_VITAL_LCP_VALUE: Literal["browser.web_vital.lcp.value"] = (
-        "browser.web_vital.lcp.value"
+    # Path: model/attributes/browser/browser__web_vital__lcp__element.json
+    BROWSER_WEB_VITAL_LCP_ELEMENT: Literal["browser.web_vital.lcp.element"] = (
+        "browser.web_vital.lcp.element"
     )
-    """The value of the recorded Largest Contentful Paint (LCP) web vital
+    """The HTML element selector or component name for which LCP was reported
 
-    Type: float
+    Type: str
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: lcp
-    Example: 2500
-=======
     Aliases: lcp.element
     Example: "body > div#app > div#container > div"
     """
@@ -827,7 +812,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Aliases: lcp.url
     Example: "https://example.com/static/img.png"
->>>>>>> 8f5c2ba (feat(attributes): Add LCP web vital meta attributes)
+    """
+
+    # Path: model/attributes/browser/browser__web_vital__lcp__value.json
+    BROWSER_WEB_VITAL_LCP_VALUE: Literal["browser.web_vital.lcp.value"] = (
+        "browser.web_vital.lcp.value"
+    )
+    """The value of the recorded Largest Contentful Paint (LCP) web vital
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: lcp
+    Example: 2500
     """
 
     # Path: model/attributes/cache/cache__hit.json
@@ -5694,7 +5691,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[59, 127, 139]),
         ],
     ),
-<<<<<<< HEAD
     "browser.web_vital.cls.source.<key>": AttributeMetadata(
         brief="The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N",
         type=AttributeType.STRING,
@@ -5740,21 +5736,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
-    "browser.web_vital.lcp.value": AttributeMetadata(
-        brief="The value of the recorded Largest Contentful Paint (LCP) web vital",
-        type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
-        is_in_otel=False,
-        example=2500,
-        aliases=["lcp"],
-        sdks=["javascript-browser"],
-        changelog=[
-            ChangelogEntry(
-                version="next",
-                prs=[229],
-                description="Added browser.web_vital.lcp.value attribute",
-            ),
-=======
     "browser.web_vital.lcp.element": AttributeMetadata(
         brief="The HTML element selector or component name for which LCP was reported",
         type=AttributeType.STRING,
@@ -5825,7 +5806,22 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(version="next", prs=[233]),
->>>>>>> 8f5c2ba (feat(attributes): Add LCP web vital meta attributes)
+        ],
+    ),
+    "browser.web_vital.lcp.value": AttributeMetadata(
+        brief="The value of the recorded Largest Contentful Paint (LCP) web vital",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=2500,
+        aliases=["lcp"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[229],
+                description="Added browser.web_vital.lcp.value attribute",
+            ),
         ],
     ),
     "cache.hit": AttributeMetadata(
@@ -10437,19 +10433,16 @@ Attributes = TypedDict(
         "browser.script.invoker_type": str,
         "browser.script.source_char_position": int,
         "browser.version": str,
-<<<<<<< HEAD
         "browser.web_vital.cls.source.<key>": str,
         "browser.web_vital.cls.value": float,
         "browser.web_vital.inp.value": float,
-        "browser.web_vital.lcp.value": float,
-=======
         "browser.web_vital.lcp.element": str,
         "browser.web_vital.lcp.id": str,
         "browser.web_vital.lcp.load_time": int,
         "browser.web_vital.lcp.render_time": int,
         "browser.web_vital.lcp.size": int,
         "browser.web_vital.lcp.url": str,
->>>>>>> 8f5c2ba (feat(attributes): Add LCP web vital meta attributes)
+        "browser.web_vital.lcp.value": float,
         "cache.hit": bool,
         "cache.item_size": int,
         "cache.key": List[str],
