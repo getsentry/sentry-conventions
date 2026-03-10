@@ -965,6 +965,138 @@ export const BROWSER_WEB_VITAL_INP_VALUE = 'browser.web_vital.inp.value';
  */
 export type BROWSER_WEB_VITAL_INP_VALUE_TYPE = number;
 
+// Path: model/attributes/browser/browser__web_vital__lcp__element.json
+
+/**
+ * The HTML element selector or component name for which LCP was reported `browser.web_vital.lcp.element`
+ *
+ * Attribute Value Type: `string` {@link BROWSER_WEB_VITAL_LCP_ELEMENT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link LCP_ELEMENT} `lcp.element`
+ *
+ * @example "body > div#app > div#container > div"
+ */
+export const BROWSER_WEB_VITAL_LCP_ELEMENT = 'browser.web_vital.lcp.element';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_LCP_ELEMENT} browser.web_vital.lcp.element
+ */
+export type BROWSER_WEB_VITAL_LCP_ELEMENT_TYPE = string;
+
+// Path: model/attributes/browser/browser__web_vital__lcp__id.json
+
+/**
+ * The id of the dom element responsible for the largest contentful paint `browser.web_vital.lcp.id`
+ *
+ * Attribute Value Type: `string` {@link BROWSER_WEB_VITAL_LCP_ID_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link LCP_ID} `lcp.id`
+ *
+ * @example "#gero"
+ */
+export const BROWSER_WEB_VITAL_LCP_ID = 'browser.web_vital.lcp.id';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_LCP_ID} browser.web_vital.lcp.id
+ */
+export type BROWSER_WEB_VITAL_LCP_ID_TYPE = string;
+
+// Path: model/attributes/browser/browser__web_vital__lcp__load_time.json
+
+/**
+ * The time it took for the LCP element to be loaded `browser.web_vital.lcp.load_time`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_LCP_LOAD_TIME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link LCP_LOADTIME} `lcp.loadTime`
+ *
+ * @example 1402
+ */
+export const BROWSER_WEB_VITAL_LCP_LOAD_TIME = 'browser.web_vital.lcp.load_time';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_LCP_LOAD_TIME} browser.web_vital.lcp.load_time
+ */
+export type BROWSER_WEB_VITAL_LCP_LOAD_TIME_TYPE = number;
+
+// Path: model/attributes/browser/browser__web_vital__lcp__render_time.json
+
+/**
+ * The time it took for the LCP element to be rendered `browser.web_vital.lcp.render_time`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_LCP_RENDER_TIME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link LCP_RENDERTIME} `lcp.renderTime`
+ *
+ * @example 1685
+ */
+export const BROWSER_WEB_VITAL_LCP_RENDER_TIME = 'browser.web_vital.lcp.render_time';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_LCP_RENDER_TIME} browser.web_vital.lcp.render_time
+ */
+export type BROWSER_WEB_VITAL_LCP_RENDER_TIME_TYPE = number;
+
+// Path: model/attributes/browser/browser__web_vital__lcp__size.json
+
+/**
+ * The size of the largest contentful paint element `browser.web_vital.lcp.size`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_LCP_SIZE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link LCP_SIZE} `lcp.size`
+ *
+ * @example 1024
+ */
+export const BROWSER_WEB_VITAL_LCP_SIZE = 'browser.web_vital.lcp.size';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_LCP_SIZE} browser.web_vital.lcp.size
+ */
+export type BROWSER_WEB_VITAL_LCP_SIZE_TYPE = number;
+
+// Path: model/attributes/browser/browser__web_vital__lcp__url.json
+
+/**
+ * The url of the dom element responsible for the largest contentful paint `browser.web_vital.lcp.url`
+ *
+ * Attribute Value Type: `string` {@link BROWSER_WEB_VITAL_LCP_URL_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link LCP_URL} `lcp.url`
+ *
+ * @example "https://example.com/static/img.png"
+ */
+export const BROWSER_WEB_VITAL_LCP_URL = 'browser.web_vital.lcp.url';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_LCP_URL} browser.web_vital.lcp.url
+ */
+export type BROWSER_WEB_VITAL_LCP_URL_TYPE = string;
+
 // Path: model/attributes/browser/browser__web_vital__lcp__value.json
 
 /**
@@ -4397,6 +4529,9 @@ export type LCP_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link BROWSER_WEB_VITAL_LCP_ELEMENT} `browser.web_vital.lcp.element`
+ *
+ * @deprecated Use {@link BROWSER_WEB_VITAL_LCP_ELEMENT} (browser.web_vital.lcp.element) instead - The LCP element is now recorded as a browser.web_vital.lcp.element attribute.
  * @example "img"
  */
 export const LCP_ELEMENT = 'lcp.element';
@@ -4417,6 +4552,9 @@ export type LCP_ELEMENT_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link BROWSER_WEB_VITAL_LCP_ID} `browser.web_vital.lcp.id`
+ *
+ * @deprecated Use {@link BROWSER_WEB_VITAL_LCP_ID} (browser.web_vital.lcp.id) instead - The LCP id is now recorded as a browser.web_vital.lcp.id attribute.
  * @example "#hero"
  */
 export const LCP_ID = 'lcp.id';
@@ -4425,6 +4563,52 @@ export const LCP_ID = 'lcp.id';
  * Type for {@link LCP_ID} lcp.id
  */
 export type LCP_ID_TYPE = string;
+
+// Path: model/attributes/lcp/lcp__loadTime.json
+
+/**
+ * The time it took for the LCP element to be loaded `lcp.loadTime`
+ *
+ * Attribute Value Type: `number` {@link LCP_LOADTIME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link BROWSER_WEB_VITAL_LCP_LOAD_TIME} `browser.web_vital.lcp.load_time`
+ *
+ * @deprecated Use {@link BROWSER_WEB_VITAL_LCP_LOAD_TIME} (browser.web_vital.lcp.load_time) instead - The LCP load time is now recorded as a browser.web_vital.lcp.load_time attribute.
+ * @example 1402
+ */
+export const LCP_LOADTIME = 'lcp.loadTime';
+
+/**
+ * Type for {@link LCP_LOADTIME} lcp.loadTime
+ */
+export type LCP_LOADTIME_TYPE = number;
+
+// Path: model/attributes/lcp/lcp__renderTime.json
+
+/**
+ * The time it took for the LCP element to be rendered `lcp.renderTime`
+ *
+ * Attribute Value Type: `number` {@link LCP_RENDERTIME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link BROWSER_WEB_VITAL_LCP_RENDER_TIME} `browser.web_vital.lcp.render_time`
+ *
+ * @deprecated Use {@link BROWSER_WEB_VITAL_LCP_RENDER_TIME} (browser.web_vital.lcp.render_time) instead - The LCP render time is now recorded as a browser.web_vital.lcp.render_time attribute.
+ * @example 1685
+ */
+export const LCP_RENDERTIME = 'lcp.renderTime';
+
+/**
+ * Type for {@link LCP_RENDERTIME} lcp.renderTime
+ */
+export type LCP_RENDERTIME_TYPE = number;
 
 // Path: model/attributes/lcp/lcp__size.json
 
@@ -4437,6 +4621,9 @@ export type LCP_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link BROWSER_WEB_VITAL_LCP_SIZE} `browser.web_vital.lcp.size`
+ *
+ * @deprecated Use {@link BROWSER_WEB_VITAL_LCP_SIZE} (browser.web_vital.lcp.size) instead - The LCP size is now recorded as a browser.web_vital.lcp.size attribute.
  * @example 1234
  */
 export const LCP_SIZE = 'lcp.size';
@@ -4457,6 +4644,9 @@ export type LCP_SIZE_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link BROWSER_WEB_VITAL_LCP_URL} `browser.web_vital.lcp.url`
+ *
+ * @deprecated Use {@link BROWSER_WEB_VITAL_LCP_URL} (browser.web_vital.lcp.url) instead - The LCP url is now recorded as a browser.web_vital.lcp.url attribute.
  * @example "https://example.com"
  */
 export const LCP_URL = 'lcp.url';
@@ -9225,6 +9415,12 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [BROWSER_WEB_VITAL_CLS_SOURCE_KEY]: 'string',
   [BROWSER_WEB_VITAL_CLS_VALUE]: 'double',
   [BROWSER_WEB_VITAL_INP_VALUE]: 'double',
+  [BROWSER_WEB_VITAL_LCP_ELEMENT]: 'string',
+  [BROWSER_WEB_VITAL_LCP_ID]: 'string',
+  [BROWSER_WEB_VITAL_LCP_LOAD_TIME]: 'integer',
+  [BROWSER_WEB_VITAL_LCP_RENDER_TIME]: 'integer',
+  [BROWSER_WEB_VITAL_LCP_SIZE]: 'integer',
+  [BROWSER_WEB_VITAL_LCP_URL]: 'string',
   [BROWSER_WEB_VITAL_LCP_VALUE]: 'double',
   [CACHE_HIT]: 'boolean',
   [CACHE_ITEM_SIZE]: 'integer',
@@ -9389,6 +9585,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [LCP]: 'double',
   [LCP_ELEMENT]: 'string',
   [LCP_ID]: 'string',
+  [LCP_LOADTIME]: 'integer',
+  [LCP_RENDERTIME]: 'integer',
   [LCP_SIZE]: 'integer',
   [LCP_URL]: 'string',
   [LOGGER_NAME]: 'string',
@@ -9665,6 +9863,12 @@ export type AttributeName =
   | typeof BROWSER_WEB_VITAL_CLS_SOURCE_KEY
   | typeof BROWSER_WEB_VITAL_CLS_VALUE
   | typeof BROWSER_WEB_VITAL_INP_VALUE
+  | typeof BROWSER_WEB_VITAL_LCP_ELEMENT
+  | typeof BROWSER_WEB_VITAL_LCP_ID
+  | typeof BROWSER_WEB_VITAL_LCP_LOAD_TIME
+  | typeof BROWSER_WEB_VITAL_LCP_RENDER_TIME
+  | typeof BROWSER_WEB_VITAL_LCP_SIZE
+  | typeof BROWSER_WEB_VITAL_LCP_URL
   | typeof BROWSER_WEB_VITAL_LCP_VALUE
   | typeof CACHE_HIT
   | typeof CACHE_ITEM_SIZE
@@ -9829,6 +10033,8 @@ export type AttributeName =
   | typeof LCP
   | typeof LCP_ELEMENT
   | typeof LCP_ID
+  | typeof LCP_LOADTIME
+  | typeof LCP_RENDERTIME
   | typeof LCP_SIZE
   | typeof LCP_URL
   | typeof LOGGER_NAME
@@ -10682,6 +10888,78 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [INP],
     sdks: ['javascript-browser'],
     changelog: [{ version: 'next', prs: [229], description: 'Added browser.web_vital.inp.value attribute' }],
+  },
+  [BROWSER_WEB_VITAL_LCP_ELEMENT]: {
+    brief: 'The HTML element selector or component name for which LCP was reported',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'body > div#app > div#container > div',
+    aliases: [LCP_ELEMENT],
+    sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [233] }],
+  },
+  [BROWSER_WEB_VITAL_LCP_ID]: {
+    brief: 'The id of the dom element responsible for the largest contentful paint',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '#gero',
+    aliases: [LCP_ID],
+    sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [233] }],
+  },
+  [BROWSER_WEB_VITAL_LCP_LOAD_TIME]: {
+    brief: 'The time it took for the LCP element to be loaded',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1402,
+    aliases: [LCP_LOADTIME],
+    sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [233] }],
+  },
+  [BROWSER_WEB_VITAL_LCP_RENDER_TIME]: {
+    brief: 'The time it took for the LCP element to be rendered',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1685,
+    aliases: [LCP_RENDERTIME],
+    sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [233] }],
+  },
+  [BROWSER_WEB_VITAL_LCP_SIZE]: {
+    brief: 'The size of the largest contentful paint element',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1024,
+    aliases: [LCP_SIZE],
+    sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [233] }],
+  },
+  [BROWSER_WEB_VITAL_LCP_URL]: {
+    brief: 'The url of the dom element responsible for the largest contentful paint',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'https://example.com/static/img.png',
+    aliases: [LCP_URL],
+    sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [233] }],
   },
   [BROWSER_WEB_VITAL_LCP_VALUE]: {
     brief: 'The value of the recorded Largest Contentful Paint (LCP) web vital',
@@ -12725,7 +13003,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'img',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    deprecation: {
+      replacement: 'browser.web_vital.lcp.element',
+      reason: 'The LCP element is now recorded as a browser.web_vital.lcp.element attribute.',
+    },
+    aliases: [BROWSER_WEB_VITAL_LCP_ELEMENT],
+    changelog: [{ version: 'next', prs: [233] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [LCP_ID]: {
     brief: 'The id of the dom element responsible for the largest contentful paint.',
@@ -12735,7 +13018,44 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '#hero',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    deprecation: {
+      replacement: 'browser.web_vital.lcp.id',
+      reason: 'The LCP id is now recorded as a browser.web_vital.lcp.id attribute.',
+    },
+    aliases: [BROWSER_WEB_VITAL_LCP_ID],
+    changelog: [{ version: 'next', prs: [233] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+  },
+  [LCP_LOADTIME]: {
+    brief: 'The time it took for the LCP element to be loaded',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1402,
+    deprecation: {
+      replacement: 'browser.web_vital.lcp.load_time',
+      reason: 'The LCP load time is now recorded as a browser.web_vital.lcp.load_time attribute.',
+    },
+    aliases: [BROWSER_WEB_VITAL_LCP_LOAD_TIME],
+    sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [233] }],
+  },
+  [LCP_RENDERTIME]: {
+    brief: 'The time it took for the LCP element to be rendered',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1685,
+    deprecation: {
+      replacement: 'browser.web_vital.lcp.render_time',
+      reason: 'The LCP render time is now recorded as a browser.web_vital.lcp.render_time attribute.',
+    },
+    aliases: [BROWSER_WEB_VITAL_LCP_RENDER_TIME],
+    sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [233] }],
   },
   [LCP_SIZE]: {
     brief: 'The size of the largest contentful paint element.',
@@ -12745,7 +13065,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 1234,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    deprecation: {
+      replacement: 'browser.web_vital.lcp.size',
+      reason: 'The LCP size is now recorded as a browser.web_vital.lcp.size attribute.',
+    },
+    aliases: [BROWSER_WEB_VITAL_LCP_SIZE],
+    changelog: [{ version: 'next', prs: [233] }, { version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [LCP_URL]: {
     brief: 'The url of the dom element responsible for the largest contentful paint.',
@@ -12755,7 +13080,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'https://example.com',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    deprecation: {
+      replacement: 'browser.web_vital.lcp.url',
+      reason: 'The LCP url is now recorded as a browser.web_vital.lcp.url attribute.',
+    },
+    aliases: [BROWSER_WEB_VITAL_LCP_URL],
+    changelog: [{ version: 'next', prs: [233] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [LOGGER_NAME]: {
     brief: 'The name of the logger that generated this event.',
@@ -15311,6 +15641,12 @@ export type Attributes = {
   [BROWSER_WEB_VITAL_CLS_SOURCE_KEY]?: BROWSER_WEB_VITAL_CLS_SOURCE_KEY_TYPE;
   [BROWSER_WEB_VITAL_CLS_VALUE]?: BROWSER_WEB_VITAL_CLS_VALUE_TYPE;
   [BROWSER_WEB_VITAL_INP_VALUE]?: BROWSER_WEB_VITAL_INP_VALUE_TYPE;
+  [BROWSER_WEB_VITAL_LCP_ELEMENT]?: BROWSER_WEB_VITAL_LCP_ELEMENT_TYPE;
+  [BROWSER_WEB_VITAL_LCP_ID]?: BROWSER_WEB_VITAL_LCP_ID_TYPE;
+  [BROWSER_WEB_VITAL_LCP_LOAD_TIME]?: BROWSER_WEB_VITAL_LCP_LOAD_TIME_TYPE;
+  [BROWSER_WEB_VITAL_LCP_RENDER_TIME]?: BROWSER_WEB_VITAL_LCP_RENDER_TIME_TYPE;
+  [BROWSER_WEB_VITAL_LCP_SIZE]?: BROWSER_WEB_VITAL_LCP_SIZE_TYPE;
+  [BROWSER_WEB_VITAL_LCP_URL]?: BROWSER_WEB_VITAL_LCP_URL_TYPE;
   [BROWSER_WEB_VITAL_LCP_VALUE]?: BROWSER_WEB_VITAL_LCP_VALUE_TYPE;
   [CACHE_HIT]?: CACHE_HIT_TYPE;
   [CACHE_ITEM_SIZE]?: CACHE_ITEM_SIZE_TYPE;
@@ -15475,6 +15811,8 @@ export type Attributes = {
   [LCP]?: LCP_TYPE;
   [LCP_ELEMENT]?: LCP_ELEMENT_TYPE;
   [LCP_ID]?: LCP_ID_TYPE;
+  [LCP_LOADTIME]?: LCP_LOADTIME_TYPE;
+  [LCP_RENDERTIME]?: LCP_RENDERTIME_TYPE;
   [LCP_SIZE]?: LCP_SIZE_TYPE;
   [LCP_URL]?: LCP_URL_TYPE;
   [LOGGER_NAME]?: LOGGER_NAME_TYPE;

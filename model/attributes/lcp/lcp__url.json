@@ -7,7 +7,17 @@
   },
   "is_in_otel": false,
   "example": "https://example.com",
+  "deprecation": {
+    "replacement": "browser.web_vital.lcp.url",
+    "reason": "The LCP url is now recorded as a browser.web_vital.lcp.url attribute.",
+    "_status": "backfill"
+  },
+  "alias": ["browser.web_vital.lcp.url"],
   "changelog": [
+    {
+      "version": "next",
+      "prs": [233]
+    },
     {
       "version": "0.1.0",
       "prs": [127]

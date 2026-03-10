@@ -174,6 +174,12 @@ class _AttributeNamesMeta(type):
         "HTTP_URL",
         "HTTP_USER_AGENT",
         "INP",
+        "LCP_ELEMENT",
+        "LCP_ID",
+        "LCP_LOADTIME",
+        "LCP_RENDERTIME",
+        "LCP_SIZE",
+        "LCP_URL",
         "LCP",
         "METHOD",
         "NET_HOST_IP",
@@ -728,6 +734,84 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Aliases: inp
     Example: 200
+    """
+
+    # Path: model/attributes/browser/browser__web_vital__lcp__element.json
+    BROWSER_WEB_VITAL_LCP_ELEMENT: Literal["browser.web_vital.lcp.element"] = (
+        "browser.web_vital.lcp.element"
+    )
+    """The HTML element selector or component name for which LCP was reported
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: lcp.element
+    Example: "body > div#app > div#container > div"
+    """
+
+    # Path: model/attributes/browser/browser__web_vital__lcp__id.json
+    BROWSER_WEB_VITAL_LCP_ID: Literal["browser.web_vital.lcp.id"] = (
+        "browser.web_vital.lcp.id"
+    )
+    """The id of the dom element responsible for the largest contentful paint
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: lcp.id
+    Example: "#gero"
+    """
+
+    # Path: model/attributes/browser/browser__web_vital__lcp__load_time.json
+    BROWSER_WEB_VITAL_LCP_LOAD_TIME: Literal["browser.web_vital.lcp.load_time"] = (
+        "browser.web_vital.lcp.load_time"
+    )
+    """The time it took for the LCP element to be loaded
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: lcp.loadTime
+    Example: 1402
+    """
+
+    # Path: model/attributes/browser/browser__web_vital__lcp__render_time.json
+    BROWSER_WEB_VITAL_LCP_RENDER_TIME: Literal["browser.web_vital.lcp.render_time"] = (
+        "browser.web_vital.lcp.render_time"
+    )
+    """The time it took for the LCP element to be rendered
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: lcp.renderTime
+    Example: 1685
+    """
+
+    # Path: model/attributes/browser/browser__web_vital__lcp__size.json
+    BROWSER_WEB_VITAL_LCP_SIZE: Literal["browser.web_vital.lcp.size"] = (
+        "browser.web_vital.lcp.size"
+    )
+    """The size of the largest contentful paint element
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: lcp.size
+    Example: 1024
+    """
+
+    # Path: model/attributes/browser/browser__web_vital__lcp__url.json
+    BROWSER_WEB_VITAL_LCP_URL: Literal["browser.web_vital.lcp.url"] = (
+        "browser.web_vital.lcp.url"
+    )
+    """The url of the dom element responsible for the largest contentful paint
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: lcp.url
+    Example: "https://example.com/static/img.png"
     """
 
     # Path: model/attributes/browser/browser__web_vital__lcp__value.json
@@ -2567,6 +2651,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Aliases: browser.web_vital.lcp.element
+    DEPRECATED: Use browser.web_vital.lcp.element instead - The LCP element is now recorded as a browser.web_vital.lcp.element attribute.
     Example: "img"
     """
 
@@ -2577,7 +2663,33 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Aliases: browser.web_vital.lcp.id
+    DEPRECATED: Use browser.web_vital.lcp.id instead - The LCP id is now recorded as a browser.web_vital.lcp.id attribute.
     Example: "#hero"
+    """
+
+    # Path: model/attributes/lcp/lcp__loadTime.json
+    LCP_LOADTIME: Literal["lcp.loadTime"] = "lcp.loadTime"
+    """The time it took for the LCP element to be loaded
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: browser.web_vital.lcp.load_time
+    DEPRECATED: Use browser.web_vital.lcp.load_time instead - The LCP load time is now recorded as a browser.web_vital.lcp.load_time attribute.
+    Example: 1402
+    """
+
+    # Path: model/attributes/lcp/lcp__renderTime.json
+    LCP_RENDERTIME: Literal["lcp.renderTime"] = "lcp.renderTime"
+    """The time it took for the LCP element to be rendered
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: browser.web_vital.lcp.render_time
+    DEPRECATED: Use browser.web_vital.lcp.render_time instead - The LCP render time is now recorded as a browser.web_vital.lcp.render_time attribute.
+    Example: 1685
     """
 
     # Path: model/attributes/lcp/lcp__size.json
@@ -2587,6 +2699,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Aliases: browser.web_vital.lcp.size
+    DEPRECATED: Use browser.web_vital.lcp.size instead - The LCP size is now recorded as a browser.web_vital.lcp.size attribute.
     Example: 1234
     """
 
@@ -2597,6 +2711,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Aliases: browser.web_vital.lcp.url
+    DEPRECATED: Use browser.web_vital.lcp.url instead - The LCP url is now recorded as a browser.web_vital.lcp.url attribute.
     Example: "https://example.com"
     """
 
@@ -5620,6 +5736,78 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "browser.web_vital.lcp.element": AttributeMetadata(
+        brief="The HTML element selector or component name for which LCP was reported",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="body > div#app > div#container > div",
+        aliases=["lcp.element"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(version="next", prs=[233]),
+        ],
+    ),
+    "browser.web_vital.lcp.id": AttributeMetadata(
+        brief="The id of the dom element responsible for the largest contentful paint",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="#gero",
+        aliases=["lcp.id"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(version="next", prs=[233]),
+        ],
+    ),
+    "browser.web_vital.lcp.load_time": AttributeMetadata(
+        brief="The time it took for the LCP element to be loaded",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=1402,
+        aliases=["lcp.loadTime"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(version="next", prs=[233]),
+        ],
+    ),
+    "browser.web_vital.lcp.render_time": AttributeMetadata(
+        brief="The time it took for the LCP element to be rendered",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=1685,
+        aliases=["lcp.renderTime"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(version="next", prs=[233]),
+        ],
+    ),
+    "browser.web_vital.lcp.size": AttributeMetadata(
+        brief="The size of the largest contentful paint element",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=1024,
+        aliases=["lcp.size"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(version="next", prs=[233]),
+        ],
+    ),
+    "browser.web_vital.lcp.url": AttributeMetadata(
+        brief="The url of the dom element responsible for the largest contentful paint",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="https://example.com/static/img.png",
+        aliases=["lcp.url"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(version="next", prs=[233]),
+        ],
+    ),
     "browser.web_vital.lcp.value": AttributeMetadata(
         brief="The value of the recorded Largest Contentful Paint (LCP) web vital",
         type=AttributeType.DOUBLE,
@@ -7578,7 +7766,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="img",
+        deprecation=DeprecationInfo(
+            replacement="browser.web_vital.lcp.element",
+            reason="The LCP element is now recorded as a browser.web_vital.lcp.element attribute.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["browser.web_vital.lcp.element"],
         changelog=[
+            ChangelogEntry(version="next", prs=[233]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -7589,9 +7784,50 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="#hero",
+        deprecation=DeprecationInfo(
+            replacement="browser.web_vital.lcp.id",
+            reason="The LCP id is now recorded as a browser.web_vital.lcp.id attribute.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["browser.web_vital.lcp.id"],
         changelog=[
+            ChangelogEntry(version="next", prs=[233]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "lcp.loadTime": AttributeMetadata(
+        brief="The time it took for the LCP element to be loaded",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=1402,
+        deprecation=DeprecationInfo(
+            replacement="browser.web_vital.lcp.load_time",
+            reason="The LCP load time is now recorded as a browser.web_vital.lcp.load_time attribute.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["browser.web_vital.lcp.load_time"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(version="next", prs=[233]),
+        ],
+    ),
+    "lcp.renderTime": AttributeMetadata(
+        brief="The time it took for the LCP element to be rendered",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=1685,
+        deprecation=DeprecationInfo(
+            replacement="browser.web_vital.lcp.render_time",
+            reason="The LCP render time is now recorded as a browser.web_vital.lcp.render_time attribute.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["browser.web_vital.lcp.render_time"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(version="next", prs=[233]),
         ],
     ),
     "lcp.size": AttributeMetadata(
@@ -7600,7 +7836,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1234,
+        deprecation=DeprecationInfo(
+            replacement="browser.web_vital.lcp.size",
+            reason="The LCP size is now recorded as a browser.web_vital.lcp.size attribute.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["browser.web_vital.lcp.size"],
         changelog=[
+            ChangelogEntry(version="next", prs=[233]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -7611,7 +7854,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="https://example.com",
+        deprecation=DeprecationInfo(
+            replacement="browser.web_vital.lcp.url",
+            reason="The LCP url is now recorded as a browser.web_vital.lcp.url attribute.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["browser.web_vital.lcp.url"],
         changelog=[
+            ChangelogEntry(version="next", prs=[233]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -10186,6 +10436,12 @@ Attributes = TypedDict(
         "browser.web_vital.cls.source.<key>": str,
         "browser.web_vital.cls.value": float,
         "browser.web_vital.inp.value": float,
+        "browser.web_vital.lcp.element": str,
+        "browser.web_vital.lcp.id": str,
+        "browser.web_vital.lcp.load_time": int,
+        "browser.web_vital.lcp.render_time": int,
+        "browser.web_vital.lcp.size": int,
+        "browser.web_vital.lcp.url": str,
         "browser.web_vital.lcp.value": float,
         "cache.hit": bool,
         "cache.item_size": int,
@@ -10349,6 +10605,8 @@ Attributes = TypedDict(
         "jvm.thread.state": str,
         "lcp.element": str,
         "lcp.id": str,
+        "lcp.loadTime": int,
+        "lcp.renderTime": int,
         "lcp.size": int,
         "lcp.url": str,
         "lcp": float,
