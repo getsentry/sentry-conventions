@@ -148,6 +148,8 @@ class _AttributeNamesMeta(type):
         "DB_STATEMENT",
         "DB_SYSTEM",
         "ENVIRONMENT",
+        "FCP",
+        "FP",
         "FS_ERROR",
         "GEN_AI_PROMPT",
         "GEN_AI_REQUEST_AVAILABLE_TOOLS",
@@ -207,6 +209,8 @@ class _AttributeNamesMeta(type):
         "SENTRY_BROWSER_VERSION",
         "_SENTRY_SEGMENT_ID",
         "TRANSACTION",
+        "TTFB_REQUESTTIME",
+        "TTFB",
         "URL",
     }
 
@@ -723,6 +727,32 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 0.2361
     """
 
+    # Path: model/attributes/browser/browser__web_vital__fcp__value.json
+    BROWSER_WEB_VITAL_FCP_VALUE: Literal["browser.web_vital.fcp.value"] = (
+        "browser.web_vital.fcp.value"
+    )
+    """The time it takes for the browser to render the first piece of meaningful content on the screen
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: fcp
+    Example: 547.6951
+    """
+
+    # Path: model/attributes/browser/browser__web_vital__fp__value.json
+    BROWSER_WEB_VITAL_FP_VALUE: Literal["browser.web_vital.fp.value"] = (
+        "browser.web_vital.fp.value"
+    )
+    """The time in milliseconds it takes for the browser to render the first pixel on the screen
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: fp
+    Example: 477.1926
+    """
+
     # Path: model/attributes/browser/browser__web_vital__inp__value.json
     BROWSER_WEB_VITAL_INP_VALUE: Literal["browser.web_vital.inp.value"] = (
         "browser.web_vital.inp.value"
@@ -825,6 +855,32 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Aliases: lcp
     Example: 2500
+    """
+
+    # Path: model/attributes/browser/browser__web_vital__ttfb__request_time.json
+    BROWSER_WEB_VITAL_TTFB_REQUEST_TIME: Literal[
+        "browser.web_vital.ttfb.request_time"
+    ] = "browser.web_vital.ttfb.request_time"
+    """The time it takes for the server to process the initial request and send the first byte of a response to the user's browser
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: ttfb.requestTime
+    Example: 1554.5814
+    """
+
+    # Path: model/attributes/browser/browser__web_vital__ttfb__value.json
+    BROWSER_WEB_VITAL_TTFB_VALUE: Literal["browser.web_vital.ttfb.value"] = (
+        "browser.web_vital.ttfb.value"
+    )
+    """The value of the recorded Time To First Byte (TTFB) web vital in Milliseconds
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: ttfb
+    Example: 194.3322
     """
 
     # Path: model/attributes/cache/cache__hit.json
@@ -1417,6 +1473,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "timer"
     """
 
+    # Path: model/attributes/fcp.json
+    FCP: Literal["fcp"] = "fcp"
+    """The time it takes for the browser to render the first piece of meaningful content on the screen
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: browser.web_vital.fcp.value
+    DEPRECATED: Use browser.web_vital.fcp.value instead - This attribute is being deprecated in favor of browser.web_vital.fcp.value
+    Example: 547.6951
+    """
+
     # Path: model/attributes/flag/flag__evaluation__[key].json
     FLAG_EVALUATION_KEY: Literal["flag.evaluation.<key>"] = "flag.evaluation.<key>"
     """An instance of a feature flag evaluation. The value of this attribute is the boolean representing the evaluation result. The <key> suffix is the name of the feature flag.
@@ -1426,6 +1494,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Has Dynamic Suffix: true
     Example: "flag.evaluation.is_new_ui=true"
+    """
+
+    # Path: model/attributes/fp.json
+    FP: Literal["fp"] = "fp"
+    """The time it takes for the browser to render the first pixel on the screen
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: browser.web_vital.fp.value
+    DEPRECATED: Use browser.web_vital.fp.value instead - This attribute is being deprecated in favor of browser.web_vital.fp.value
+    Example: 477.1926
     """
 
     # Path: model/attributes/frames/frames__delay.json
@@ -4541,6 +4621,30 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "GET /"
     """
 
+    # Path: model/attributes/ttfb/ttfb__requestTime.json
+    TTFB_REQUESTTIME: Literal["ttfb.requestTime"] = "ttfb.requestTime"
+    """The time it takes for the server to process the initial request and send the first byte of a response to the user's browser
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: browser.web_vital.ttfb.request_time
+    DEPRECATED: Use browser.web_vital.ttfb.request_time instead - This attribute is being deprecated in favor of browser.web_vital.ttfb.request_time
+    Example: 1554.5814
+    """
+
+    # Path: model/attributes/ttfb.json
+    TTFB: Literal["ttfb"] = "ttfb"
+    """The value of the recorded Time To First Byte (TTFB) web vital in milliseconds
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: browser.web_vital.ttfb.value
+    DEPRECATED: Use browser.web_vital.ttfb.value instead - This attribute is being deprecated in favor of browser.web_vital.ttfb.value
+    Example: 194
+    """
+
     # Path: model/attributes/type.json
     TYPE: Literal["type"] = "type"
     """More granular type of the operation happening.
@@ -5720,6 +5824,30 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "browser.web_vital.fcp.value": AttributeMetadata(
+        brief="The time it takes for the browser to render the first piece of meaningful content on the screen",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=547.6951,
+        aliases=["fcp"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(version="next", prs=[235]),
+        ],
+    ),
+    "browser.web_vital.fp.value": AttributeMetadata(
+        brief="The time in milliseconds it takes for the browser to render the first pixel on the screen",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=477.1926,
+        aliases=["fp"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(version="next", prs=[235]),
+        ],
+    ),
     "browser.web_vital.inp.value": AttributeMetadata(
         brief="The value of the recorded Interaction to Next Paint (INP) web vital",
         type=AttributeType.DOUBLE,
@@ -5822,6 +5950,30 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 prs=[229],
                 description="Added browser.web_vital.lcp.value attribute",
             ),
+        ],
+    ),
+    "browser.web_vital.ttfb.request_time": AttributeMetadata(
+        brief="The time it takes for the server to process the initial request and send the first byte of a response to the user's browser",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=1554.5814,
+        aliases=["ttfb.requestTime"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(version="next", prs=[235]),
+        ],
+    ),
+    "browser.web_vital.ttfb.value": AttributeMetadata(
+        brief="The value of the recorded Time To First Byte (TTFB) web vital in Milliseconds",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=194.3322,
+        aliases=["ttfb"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(version="next", prs=[235]),
         ],
     ),
     "cache.hit": AttributeMetadata(
@@ -6484,6 +6636,23 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "fcp": AttributeMetadata(
+        brief="The time it takes for the browser to render the first piece of meaningful content on the screen",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=547.6951,
+        deprecation=DeprecationInfo(
+            replacement="browser.web_vital.fcp.value",
+            reason="This attribute is being deprecated in favor of browser.web_vital.fcp.value",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["browser.web_vital.fcp.value"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(version="next", prs=[235]),
+        ],
+    ),
     "flag.evaluation.<key>": AttributeMetadata(
         brief="An instance of a feature flag evaluation. The value of this attribute is the boolean representing the evaluation result. The <key> suffix is the name of the feature flag.",
         type=AttributeType.BOOLEAN,
@@ -6493,6 +6662,23 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="flag.evaluation.is_new_ui=true",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[103]),
+        ],
+    ),
+    "fp": AttributeMetadata(
+        brief="The time it takes for the browser to render the first pixel on the screen",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=477.1926,
+        deprecation=DeprecationInfo(
+            replacement="browser.web_vital.fp.value",
+            reason="This attribute is being deprecated in favor of browser.web_vital.fp.value",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["browser.web_vital.fp.value"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(version="next", prs=[235]),
         ],
     ),
     "frames.delay": AttributeMetadata(
@@ -9747,6 +9933,40 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "ttfb.requestTime": AttributeMetadata(
+        brief="The time it takes for the server to process the initial request and send the first byte of a response to the user's browser",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=1554.5814,
+        deprecation=DeprecationInfo(
+            replacement="browser.web_vital.ttfb.request_time",
+            reason="This attribute is being deprecated in favor of browser.web_vital.ttfb.request_time",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["browser.web_vital.ttfb.request_time"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(version="next", prs=[235]),
+        ],
+    ),
+    "ttfb": AttributeMetadata(
+        brief="The value of the recorded Time To First Byte (TTFB) web vital in milliseconds",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=194,
+        deprecation=DeprecationInfo(
+            replacement="browser.web_vital.ttfb.value",
+            reason="This attribute is being deprecated in favor of browser.web_vital.ttfb.value",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["browser.web_vital.ttfb.value"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(version="next", prs=[235]),
+        ],
+    ),
     "type": AttributeMetadata(
         brief="More granular type of the operation happening.",
         type=AttributeType.STRING,
@@ -10435,6 +10655,8 @@ Attributes = TypedDict(
         "browser.version": str,
         "browser.web_vital.cls.source.<key>": str,
         "browser.web_vital.cls.value": float,
+        "browser.web_vital.fcp.value": float,
+        "browser.web_vital.fp.value": float,
         "browser.web_vital.inp.value": float,
         "browser.web_vital.lcp.element": str,
         "browser.web_vital.lcp.id": str,
@@ -10443,6 +10665,8 @@ Attributes = TypedDict(
         "browser.web_vital.lcp.size": int,
         "browser.web_vital.lcp.url": str,
         "browser.web_vital.lcp.value": float,
+        "browser.web_vital.ttfb.request_time": float,
+        "browser.web_vital.ttfb.value": float,
         "cache.hit": bool,
         "cache.item_size": int,
         "cache.key": List[str],
@@ -10498,7 +10722,9 @@ Attributes = TypedDict(
         "faas.cron": str,
         "faas.time": str,
         "faas.trigger": str,
+        "fcp": float,
         "flag.evaluation.<key>": bool,
+        "fp": float,
         "frames.delay": int,
         "frames.frozen": int,
         "frames.slow": int,
@@ -10776,6 +11002,8 @@ Attributes = TypedDict(
         "thread.name": str,
         "timber.tag": str,
         "transaction": str,
+        "ttfb.requestTime": float,
+        "ttfb": float,
         "type": str,
         "ui.component_name": str,
         "ui.contributes_to_ttfd": bool,

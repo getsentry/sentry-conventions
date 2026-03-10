@@ -943,6 +943,50 @@ export const BROWSER_WEB_VITAL_CLS_VALUE = 'browser.web_vital.cls.value';
  */
 export type BROWSER_WEB_VITAL_CLS_VALUE_TYPE = number;
 
+// Path: model/attributes/browser/browser__web_vital__fcp__value.json
+
+/**
+ * The time it takes for the browser to render the first piece of meaningful content on the screen `browser.web_vital.fcp.value`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_FCP_VALUE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link FCP} `fcp`
+ *
+ * @example 547.6951
+ */
+export const BROWSER_WEB_VITAL_FCP_VALUE = 'browser.web_vital.fcp.value';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_FCP_VALUE} browser.web_vital.fcp.value
+ */
+export type BROWSER_WEB_VITAL_FCP_VALUE_TYPE = number;
+
+// Path: model/attributes/browser/browser__web_vital__fp__value.json
+
+/**
+ * The time in milliseconds it takes for the browser to render the first pixel on the screen `browser.web_vital.fp.value`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_FP_VALUE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link FP} `fp`
+ *
+ * @example 477.1926
+ */
+export const BROWSER_WEB_VITAL_FP_VALUE = 'browser.web_vital.fp.value';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_FP_VALUE} browser.web_vital.fp.value
+ */
+export type BROWSER_WEB_VITAL_FP_VALUE_TYPE = number;
+
 // Path: model/attributes/browser/browser__web_vital__inp__value.json
 
 /**
@@ -1118,6 +1162,50 @@ export const BROWSER_WEB_VITAL_LCP_VALUE = 'browser.web_vital.lcp.value';
  * Type for {@link BROWSER_WEB_VITAL_LCP_VALUE} browser.web_vital.lcp.value
  */
 export type BROWSER_WEB_VITAL_LCP_VALUE_TYPE = number;
+
+// Path: model/attributes/browser/browser__web_vital__ttfb__request_time.json
+
+/**
+ * The time it takes for the server to process the initial request and send the first byte of a response to the user's browser `browser.web_vital.ttfb.request_time`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_TTFB_REQUEST_TIME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link TTFB_REQUESTTIME} `ttfb.requestTime`
+ *
+ * @example 1554.5814
+ */
+export const BROWSER_WEB_VITAL_TTFB_REQUEST_TIME = 'browser.web_vital.ttfb.request_time';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_TTFB_REQUEST_TIME} browser.web_vital.ttfb.request_time
+ */
+export type BROWSER_WEB_VITAL_TTFB_REQUEST_TIME_TYPE = number;
+
+// Path: model/attributes/browser/browser__web_vital__ttfb__value.json
+
+/**
+ * The value of the recorded Time To First Byte (TTFB) web vital in Milliseconds `browser.web_vital.ttfb.value`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_TTFB_VALUE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link TTFB} `ttfb`
+ *
+ * @example 194.3322
+ */
+export const BROWSER_WEB_VITAL_TTFB_VALUE = 'browser.web_vital.ttfb.value';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_TTFB_VALUE} browser.web_vital.ttfb.value
+ */
+export type BROWSER_WEB_VITAL_TTFB_VALUE_TYPE = number;
 
 // Path: model/attributes/cache/cache__hit.json
 
@@ -2271,6 +2359,29 @@ export const FAAS_TRIGGER = 'faas.trigger';
  */
 export type FAAS_TRIGGER_TYPE = string;
 
+// Path: model/attributes/fcp.json
+
+/**
+ * The time it takes for the browser to render the first piece of meaningful content on the screen `fcp`
+ *
+ * Attribute Value Type: `number` {@link FCP_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link BROWSER_WEB_VITAL_FCP_VALUE} `browser.web_vital.fcp.value`
+ *
+ * @deprecated Use {@link BROWSER_WEB_VITAL_FCP_VALUE} (browser.web_vital.fcp.value) instead - This attribute is being deprecated in favor of browser.web_vital.fcp.value
+ * @example 547.6951
+ */
+export const FCP = 'fcp';
+
+/**
+ * Type for {@link FCP} fcp
+ */
+export type FCP_TYPE = number;
+
 // Path: model/attributes/flag/flag__evaluation__[key].json
 
 /**
@@ -2292,6 +2403,29 @@ export const FLAG_EVALUATION_KEY = 'flag.evaluation.<key>';
  * Type for {@link FLAG_EVALUATION_KEY} flag.evaluation.<key>
  */
 export type FLAG_EVALUATION_KEY_TYPE = boolean;
+
+// Path: model/attributes/fp.json
+
+/**
+ * The time it takes for the browser to render the first pixel on the screen `fp`
+ *
+ * Attribute Value Type: `number` {@link FP_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link BROWSER_WEB_VITAL_FP_VALUE} `browser.web_vital.fp.value`
+ *
+ * @deprecated Use {@link BROWSER_WEB_VITAL_FP_VALUE} (browser.web_vital.fp.value) instead - This attribute is being deprecated in favor of browser.web_vital.fp.value
+ * @example 477.1926
+ */
+export const FP = 'fp';
+
+/**
+ * Type for {@link FP} fp
+ */
+export type FP_TYPE = number;
 
 // Path: model/attributes/frames/frames__delay.json
 
@@ -8076,6 +8210,52 @@ export const TRANSACTION = 'transaction';
  */
 export type TRANSACTION_TYPE = string;
 
+// Path: model/attributes/ttfb.json
+
+/**
+ * The value of the recorded Time To First Byte (TTFB) web vital in milliseconds `ttfb`
+ *
+ * Attribute Value Type: `number` {@link TTFB_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link BROWSER_WEB_VITAL_TTFB_VALUE} `browser.web_vital.ttfb.value`
+ *
+ * @deprecated Use {@link BROWSER_WEB_VITAL_TTFB_VALUE} (browser.web_vital.ttfb.value) instead - This attribute is being deprecated in favor of browser.web_vital.ttfb.value
+ * @example 194
+ */
+export const TTFB = 'ttfb';
+
+/**
+ * Type for {@link TTFB} ttfb
+ */
+export type TTFB_TYPE = number;
+
+// Path: model/attributes/ttfb/ttfb__requestTime.json
+
+/**
+ * The time it takes for the server to process the initial request and send the first byte of a response to the user's browser `ttfb.requestTime`
+ *
+ * Attribute Value Type: `number` {@link TTFB_REQUESTTIME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link BROWSER_WEB_VITAL_TTFB_REQUEST_TIME} `browser.web_vital.ttfb.request_time`
+ *
+ * @deprecated Use {@link BROWSER_WEB_VITAL_TTFB_REQUEST_TIME} (browser.web_vital.ttfb.request_time) instead - This attribute is being deprecated in favor of browser.web_vital.ttfb.request_time
+ * @example 1554.5814
+ */
+export const TTFB_REQUESTTIME = 'ttfb.requestTime';
+
+/**
+ * Type for {@link TTFB_REQUESTTIME} ttfb.requestTime
+ */
+export type TTFB_REQUESTTIME_TYPE = number;
+
 // Path: model/attributes/type.json
 
 /**
@@ -9414,6 +9594,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [BROWSER_VERSION]: 'string',
   [BROWSER_WEB_VITAL_CLS_SOURCE_KEY]: 'string',
   [BROWSER_WEB_VITAL_CLS_VALUE]: 'double',
+  [BROWSER_WEB_VITAL_FCP_VALUE]: 'double',
+  [BROWSER_WEB_VITAL_FP_VALUE]: 'double',
   [BROWSER_WEB_VITAL_INP_VALUE]: 'double',
   [BROWSER_WEB_VITAL_LCP_ELEMENT]: 'string',
   [BROWSER_WEB_VITAL_LCP_ID]: 'string',
@@ -9422,6 +9604,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [BROWSER_WEB_VITAL_LCP_SIZE]: 'integer',
   [BROWSER_WEB_VITAL_LCP_URL]: 'string',
   [BROWSER_WEB_VITAL_LCP_VALUE]: 'double',
+  [BROWSER_WEB_VITAL_TTFB_REQUEST_TIME]: 'double',
+  [BROWSER_WEB_VITAL_TTFB_VALUE]: 'double',
   [CACHE_HIT]: 'boolean',
   [CACHE_ITEM_SIZE]: 'integer',
   [CACHE_KEY]: 'string[]',
@@ -9477,7 +9661,9 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [FAAS_CRON]: 'string',
   [FAAS_TIME]: 'string',
   [FAAS_TRIGGER]: 'string',
+  [FCP]: 'double',
   [FLAG_EVALUATION_KEY]: 'boolean',
+  [FP]: 'double',
   [FRAMES_DELAY]: 'integer',
   [FRAMES_FROZEN]: 'integer',
   [FRAMES_SLOW]: 'integer',
@@ -9755,6 +9941,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [THREAD_NAME]: 'string',
   [TIMBER_TAG]: 'string',
   [TRANSACTION]: 'string',
+  [TTFB]: 'double',
+  [TTFB_REQUESTTIME]: 'double',
   [TYPE]: 'string',
   [UI_COMPONENT_NAME]: 'string',
   [UI_CONTRIBUTES_TO_TTFD]: 'boolean',
@@ -9862,6 +10050,8 @@ export type AttributeName =
   | typeof BROWSER_VERSION
   | typeof BROWSER_WEB_VITAL_CLS_SOURCE_KEY
   | typeof BROWSER_WEB_VITAL_CLS_VALUE
+  | typeof BROWSER_WEB_VITAL_FCP_VALUE
+  | typeof BROWSER_WEB_VITAL_FP_VALUE
   | typeof BROWSER_WEB_VITAL_INP_VALUE
   | typeof BROWSER_WEB_VITAL_LCP_ELEMENT
   | typeof BROWSER_WEB_VITAL_LCP_ID
@@ -9870,6 +10060,8 @@ export type AttributeName =
   | typeof BROWSER_WEB_VITAL_LCP_SIZE
   | typeof BROWSER_WEB_VITAL_LCP_URL
   | typeof BROWSER_WEB_VITAL_LCP_VALUE
+  | typeof BROWSER_WEB_VITAL_TTFB_REQUEST_TIME
+  | typeof BROWSER_WEB_VITAL_TTFB_VALUE
   | typeof CACHE_HIT
   | typeof CACHE_ITEM_SIZE
   | typeof CACHE_KEY
@@ -9925,7 +10117,9 @@ export type AttributeName =
   | typeof FAAS_CRON
   | typeof FAAS_TIME
   | typeof FAAS_TRIGGER
+  | typeof FCP
   | typeof FLAG_EVALUATION_KEY
+  | typeof FP
   | typeof FRAMES_DELAY
   | typeof FRAMES_FROZEN
   | typeof FRAMES_SLOW
@@ -10203,6 +10397,8 @@ export type AttributeName =
   | typeof THREAD_NAME
   | typeof TIMBER_TAG
   | typeof TRANSACTION
+  | typeof TTFB
+  | typeof TTFB_REQUESTTIME
   | typeof TYPE
   | typeof UI_COMPONENT_NAME
   | typeof UI_CONTRIBUTES_TO_TTFD
@@ -10877,6 +11073,30 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['javascript-browser'],
     changelog: [{ version: 'next', prs: [229], description: 'Added browser.web_vital.cls.value attribute' }],
   },
+  [BROWSER_WEB_VITAL_FCP_VALUE]: {
+    brief: 'The time it takes for the browser to render the first piece of meaningful content on the screen',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 547.6951,
+    aliases: [FCP],
+    sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [235] }],
+  },
+  [BROWSER_WEB_VITAL_FP_VALUE]: {
+    brief: 'The time in milliseconds it takes for the browser to render the first pixel on the screen',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 477.1926,
+    aliases: [FP],
+    sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [235] }],
+  },
   [BROWSER_WEB_VITAL_INP_VALUE]: {
     brief: 'The value of the recorded Interaction to Next Paint (INP) web vital',
     type: 'double',
@@ -10972,6 +11192,31 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [LCP],
     sdks: ['javascript-browser'],
     changelog: [{ version: 'next', prs: [229], description: 'Added browser.web_vital.lcp.value attribute' }],
+  },
+  [BROWSER_WEB_VITAL_TTFB_REQUEST_TIME]: {
+    brief:
+      "The time it takes for the server to process the initial request and send the first byte of a response to the user's browser",
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1554.5814,
+    aliases: [TTFB_REQUESTTIME],
+    sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [235] }],
+  },
+  [BROWSER_WEB_VITAL_TTFB_VALUE]: {
+    brief: 'The value of the recorded Time To First Byte (TTFB) web vital in Milliseconds',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 194.3322,
+    aliases: [TTFB],
+    sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [235] }],
   },
   [CACHE_HIT]: {
     brief: 'If the cache was hit during this span.',
@@ -11618,6 +11863,22 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'timer',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  [FCP]: {
+    brief: 'The time it takes for the browser to render the first piece of meaningful content on the screen',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 547.6951,
+    deprecation: {
+      replacement: 'browser.web_vital.fcp.value',
+      reason: 'This attribute is being deprecated in favor of browser.web_vital.fcp.value',
+    },
+    aliases: [BROWSER_WEB_VITAL_FCP_VALUE],
+    sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [235] }],
+  },
   [FLAG_EVALUATION_KEY]: {
     brief:
       'An instance of a feature flag evaluation. The value of this attribute is the boolean representing the evaluation result. The <key> suffix is the name of the feature flag.',
@@ -11629,6 +11890,22 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     hasDynamicSuffix: true,
     example: 'flag.evaluation.is_new_ui=true',
     changelog: [{ version: '0.1.0', prs: [103] }],
+  },
+  [FP]: {
+    brief: 'The time it takes for the browser to render the first pixel on the screen',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 477.1926,
+    deprecation: {
+      replacement: 'browser.web_vital.fp.value',
+      reason: 'This attribute is being deprecated in favor of browser.web_vital.fp.value',
+    },
+    aliases: [BROWSER_WEB_VITAL_FP_VALUE],
+    sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [235] }],
   },
   [FRAMES_DELAY]: {
     brief:
@@ -14951,6 +15228,39 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [SENTRY_TRANSACTION],
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
+  [TTFB]: {
+    brief: 'The value of the recorded Time To First Byte (TTFB) web vital in milliseconds',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 194,
+    deprecation: {
+      replacement: 'browser.web_vital.ttfb.value',
+      reason: 'This attribute is being deprecated in favor of browser.web_vital.ttfb.value',
+    },
+    aliases: [BROWSER_WEB_VITAL_TTFB_VALUE],
+    sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [235] }],
+  },
+  [TTFB_REQUESTTIME]: {
+    brief:
+      "The time it takes for the server to process the initial request and send the first byte of a response to the user's browser",
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1554.5814,
+    deprecation: {
+      replacement: 'browser.web_vital.ttfb.request_time',
+      reason: 'This attribute is being deprecated in favor of browser.web_vital.ttfb.request_time',
+    },
+    aliases: [BROWSER_WEB_VITAL_TTFB_REQUEST_TIME],
+    sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [235] }],
+  },
   [TYPE]: {
     brief: 'More granular type of the operation happening.',
     type: 'string',
@@ -15640,6 +15950,8 @@ export type Attributes = {
   [BROWSER_VERSION]?: BROWSER_VERSION_TYPE;
   [BROWSER_WEB_VITAL_CLS_SOURCE_KEY]?: BROWSER_WEB_VITAL_CLS_SOURCE_KEY_TYPE;
   [BROWSER_WEB_VITAL_CLS_VALUE]?: BROWSER_WEB_VITAL_CLS_VALUE_TYPE;
+  [BROWSER_WEB_VITAL_FCP_VALUE]?: BROWSER_WEB_VITAL_FCP_VALUE_TYPE;
+  [BROWSER_WEB_VITAL_FP_VALUE]?: BROWSER_WEB_VITAL_FP_VALUE_TYPE;
   [BROWSER_WEB_VITAL_INP_VALUE]?: BROWSER_WEB_VITAL_INP_VALUE_TYPE;
   [BROWSER_WEB_VITAL_LCP_ELEMENT]?: BROWSER_WEB_VITAL_LCP_ELEMENT_TYPE;
   [BROWSER_WEB_VITAL_LCP_ID]?: BROWSER_WEB_VITAL_LCP_ID_TYPE;
@@ -15648,6 +15960,8 @@ export type Attributes = {
   [BROWSER_WEB_VITAL_LCP_SIZE]?: BROWSER_WEB_VITAL_LCP_SIZE_TYPE;
   [BROWSER_WEB_VITAL_LCP_URL]?: BROWSER_WEB_VITAL_LCP_URL_TYPE;
   [BROWSER_WEB_VITAL_LCP_VALUE]?: BROWSER_WEB_VITAL_LCP_VALUE_TYPE;
+  [BROWSER_WEB_VITAL_TTFB_REQUEST_TIME]?: BROWSER_WEB_VITAL_TTFB_REQUEST_TIME_TYPE;
+  [BROWSER_WEB_VITAL_TTFB_VALUE]?: BROWSER_WEB_VITAL_TTFB_VALUE_TYPE;
   [CACHE_HIT]?: CACHE_HIT_TYPE;
   [CACHE_ITEM_SIZE]?: CACHE_ITEM_SIZE_TYPE;
   [CACHE_KEY]?: CACHE_KEY_TYPE;
@@ -15703,7 +16017,9 @@ export type Attributes = {
   [FAAS_CRON]?: FAAS_CRON_TYPE;
   [FAAS_TIME]?: FAAS_TIME_TYPE;
   [FAAS_TRIGGER]?: FAAS_TRIGGER_TYPE;
+  [FCP]?: FCP_TYPE;
   [FLAG_EVALUATION_KEY]?: FLAG_EVALUATION_KEY_TYPE;
+  [FP]?: FP_TYPE;
   [FRAMES_DELAY]?: FRAMES_DELAY_TYPE;
   [FRAMES_FROZEN]?: FRAMES_FROZEN_TYPE;
   [FRAMES_SLOW]?: FRAMES_SLOW_TYPE;
@@ -15981,6 +16297,8 @@ export type Attributes = {
   [THREAD_NAME]?: THREAD_NAME_TYPE;
   [TIMBER_TAG]?: TIMBER_TAG_TYPE;
   [TRANSACTION]?: TRANSACTION_TYPE;
+  [TTFB]?: TTFB_TYPE;
+  [TTFB_REQUESTTIME]?: TTFB_REQUESTTIME_TYPE;
   [TYPE]?: TYPE_TYPE;
   [UI_COMPONENT_NAME]?: UI_COMPONENT_NAME_TYPE;
   [UI_CONTRIBUTES_TO_TTFD]?: UI_CONTRIBUTES_TO_TTFD_TYPE;
