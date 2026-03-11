@@ -4685,6 +4685,96 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: true
     """
 
+    # Path: model/attributes/ui/ui__element__height.json
+    UI_ELEMENT_HEIGHT: Literal["ui.element.height"] = "ui.element.height"
+    """The height of the UI element (for Html in pixels)
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: 256
+    """
+
+    # Path: model/attributes/ui/ui__element__id.json
+    UI_ELEMENT_ID: Literal["ui.element.id"] = "ui.element.id"
+    """The id of the UI element
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "btn-login"
+    """
+
+    # Path: model/attributes/ui/ui__element__identifier.json
+    UI_ELEMENT_IDENTIFIER: Literal["ui.element.identifier"] = "ui.element.identifier"
+    """The identifier used to measure the UI element timing
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "heroImage"
+    """
+
+    # Path: model/attributes/ui/ui__element__load_time.json
+    UI_ELEMENT_LOAD_TIME: Literal["ui.element.load_time"] = "ui.element.load_time"
+    """The loading time of a UI element (from time origin to finished loading)
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: 998.2234
+    """
+
+    # Path: model/attributes/ui/ui__element__paint_type.json
+    UI_ELEMENT_PAINT_TYPE: Literal["ui.element.paint_type"] = "ui.element.paint_type"
+    """The type of element paint. Can either be 'image-paint' or 'text-paint'
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "image-paint"
+    """
+
+    # Path: model/attributes/ui/ui__element__render_time.json
+    UI_ELEMENT_RENDER_TIME: Literal["ui.element.render_time"] = "ui.element.render_time"
+    """The rendering time of the UI element (from time origin to finished rendering)
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: 1023.1124
+    """
+
+    # Path: model/attributes/ui/ui__element__type.json
+    UI_ELEMENT_TYPE: Literal["ui.element.type"] = "ui.element.type"
+    """type of the UI element
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "img"
+    """
+
+    # Path: model/attributes/ui/ui__element__url.json
+    UI_ELEMENT_URL: Literal["ui.element.url"] = "ui.element.url"
+    """The URL of the UI element (e.g. an img src)
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "https://assets.myapp.com/hero.png"
+    """
+
+    # Path: model/attributes/ui/ui__element__width.json
+    UI_ELEMENT_WIDTH: Literal["ui.element.width"] = "ui.element.width"
+    """The width of the UI element (for HTML in pixels)
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: 512
+    """
+
     # Path: model/attributes/url/url__domain.json
     URL_DOMAIN: Literal["url.domain"] = "url.domain"
     """Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
@@ -10009,6 +10099,135 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "ui.element.height": AttributeMetadata(
+        brief="The height of the UI element (for Html in pixels)",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=256,
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[284],
+                description="Added ui.element.height attribute",
+            ),
+        ],
+    ),
+    "ui.element.id": AttributeMetadata(
+        brief="The id of the UI element",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="btn-login",
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[284], description="Added ui.element.id attribute"
+            ),
+        ],
+    ),
+    "ui.element.identifier": AttributeMetadata(
+        brief="The identifier used to measure the UI element timing",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="heroImage",
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[284],
+                description="Added ui.element.identifier attribute",
+            ),
+        ],
+    ),
+    "ui.element.load_time": AttributeMetadata(
+        brief="The loading time of a UI element (from time origin to finished loading)",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=998.2234,
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[284],
+                description="Added ui.element.load_time attribute",
+            ),
+        ],
+    ),
+    "ui.element.paint_type": AttributeMetadata(
+        brief="The type of element paint. Can either be 'image-paint' or 'text-paint'",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="image-paint",
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[284],
+                description="Added ui.element.paint_type attribute",
+            ),
+        ],
+    ),
+    "ui.element.render_time": AttributeMetadata(
+        brief="The rendering time of the UI element (from time origin to finished rendering)",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=1023.1124,
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[284],
+                description="Added ui.element.render_time attribute",
+            ),
+        ],
+    ),
+    "ui.element.type": AttributeMetadata(
+        brief="type of the UI element",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="img",
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[284], description="Added ui.element.type attribute"
+            ),
+        ],
+    ),
+    "ui.element.url": AttributeMetadata(
+        brief="The URL of the UI element (e.g. an img src)",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="https://assets.myapp.com/hero.png",
+        sdks=["javascript.browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[284], description="Added ui.element.url attribute"
+            ),
+        ],
+    ),
+    "ui.element.width": AttributeMetadata(
+        brief="The width of the UI element (for HTML in pixels)",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=512,
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[284],
+                description="Added ui.element.width attribute",
+            ),
+        ],
+    ),
     "url.domain": AttributeMetadata(
         brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
@@ -11008,6 +11227,15 @@ Attributes = TypedDict(
         "ui.component_name": str,
         "ui.contributes_to_ttfd": bool,
         "ui.contributes_to_ttid": bool,
+        "ui.element.height": int,
+        "ui.element.id": str,
+        "ui.element.identifier": str,
+        "ui.element.load_time": float,
+        "ui.element.paint_type": str,
+        "ui.element.render_time": float,
+        "ui.element.type": str,
+        "ui.element.url": str,
+        "ui.element.width": int,
         "url.domain": str,
         "url.fragment": str,
         "url.full": str,
