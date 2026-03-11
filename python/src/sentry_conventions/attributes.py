@@ -10206,7 +10206,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="https://assets.myapp.com/hero.png",
-        sdks=["javascript.browser"],
+        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
                 version="next", prs=[284], description="Added ui.element.url attribute"

@@ -7,7 +7,7 @@
   },
   "is_in_otel": false,
   "example": "https://assets.myapp.com/hero.png",
-  "sdks": ["javascript.browser"],
+  "sdks": ["javascript-browser"],
   "changelog": [
     {
       "version": "next",

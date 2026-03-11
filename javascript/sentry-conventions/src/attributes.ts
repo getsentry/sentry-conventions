@@ -15585,7 +15585,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'https://assets.myapp.com/hero.png',
-    sdks: ['javascript.browser'],
+    sdks: ['javascript-browser'],
     changelog: [{ version: 'next', prs: [284], description: 'Added ui.element.url attribute' }],
   },
   [UI_ELEMENT_WIDTH]: {
