@@ -147,6 +147,7 @@ class _AttributeNamesMeta(type):
         "DB_SQL_BINDINGS",
         "DB_STATEMENT",
         "DB_SYSTEM",
+        "DEVICEMEMORY",
         "ENVIRONMENT",
         "FCP",
         "FP",
@@ -163,6 +164,7 @@ class _AttributeNamesMeta(type):
         "GEN_AI_TOOL_OUTPUT",
         "GEN_AI_USAGE_COMPLETION_TOKENS",
         "GEN_AI_USAGE_PROMPT_TOKENS",
+        "HARDWARECONCURRENCY",
         "HTTP_CLIENT_IP",
         "HTTP_FLAVOR",
         "HTTP_HOST",
@@ -1331,6 +1333,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "Apple"
     """
 
+    # Path: model/attributes/device/device__cpu__logical_core_count.json
+    DEVICE_CPU_LOGICAL_CORE_COUNT: Literal["device.cpu.logical_core_count"] = (
+        "device.cpu.logical_core_count"
+    )
+    """The number of logical CPU cores available.
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: hardwareConcurrency
+    Example: 14
+    """
+
     # Path: model/attributes/device/device__family.json
     DEVICE_FAMILY: Literal["device.family"] = "device.family"
     """The family of the device.
@@ -1341,6 +1356,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "iPhone"
     """
 
+    # Path: model/attributes/device/device__memory__estimated_capacity.json
+    DEVICE_MEMORY_ESTIMATED_CAPACITY: Literal["device.memory.estimated_capacity"] = (
+        "device.memory.estimated_capacity"
+    )
+    """The estimated total memory capacity of the device, only a rough estimation in gigabytes. Browsers report estimations in buckets of powers of 2, mostly capped at 8 GB
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: deviceMemory
+    Example: 8
+    """
+
     # Path: model/attributes/device/device__model.json
     DEVICE_MODEL: Literal["device.model"] = "device.model"
     """The model of the device.
@@ -1349,6 +1377,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Example: "iPhone 15 Pro Max"
+    """
+
+    # Path: model/attributes/deviceMemory.json
+    DEVICEMEMORY: Literal["deviceMemory"] = "deviceMemory"
+    """The estimated total memory capacity of the device, only a rough estimation in gigabytes.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: device.memory.estimated_capacity
+    DEPRECATED: Use device.memory.estimated_capacity instead - Old namespace-less attribute, to be replaced with device.memory.estimated_capacity for span-first future
+    Example: "8 GB"
     """
 
     # Path: model/attributes/environment.json
@@ -2183,6 +2223,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: Yes
     Example: "query"
+    """
+
+    # Path: model/attributes/hardwareConcurrency.json
+    HARDWARECONCURRENCY: Literal["hardwareConcurrency"] = "hardwareConcurrency"
+    """The number of logical CPU cores available.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: device.cpu.logical_core_count
+    DEPRECATED: Use device.cpu.logical_core_count instead - Old namespace-less attribute, to be replaced with device.cpu.logical_core_count for span-first future
+    Example: "14"
     """
 
     # Path: model/attributes/http/http__client_ip.json
@@ -6576,6 +6628,22 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[116, 127]),
         ],
     ),
+    "device.cpu.logical_core_count": AttributeMetadata(
+        brief="The number of logical CPU cores available.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=14,
+        aliases=["hardwareConcurrency"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[281],
+                description="Added attribute device.cpu.logical_core_count to be used instead of hardwareConcurrency",
+            ),
+        ],
+    ),
     "device.family": AttributeMetadata(
         brief="The family of the device.",
         type=AttributeType.STRING,
@@ -6586,6 +6654,22 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[116, 127]),
         ],
     ),
+    "device.memory.estimated_capacity": AttributeMetadata(
+        brief="The estimated total memory capacity of the device, only a rough estimation in gigabytes. Browsers report estimations in buckets of powers of 2, mostly capped at 8 GB",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=8,
+        aliases=["deviceMemory"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[281],
+                description="Added attribute device.memory.estimated_capacity to be used instead of deviceMemory",
+            ),
+        ],
+    ),
     "device.model": AttributeMetadata(
         brief="The model of the device.",
         type=AttributeType.STRING,
@@ -6594,6 +6678,27 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="iPhone 15 Pro Max",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[116, 127]),
+        ],
+    ),
+    "deviceMemory": AttributeMetadata(
+        brief="The estimated total memory capacity of the device, only a rough estimation in gigabytes.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="8 GB",
+        deprecation=DeprecationInfo(
+            replacement="device.memory.estimated_capacity",
+            reason="Old namespace-less attribute, to be replaced with device.memory.estimated_capacity for span-first future",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["device.memory.estimated_capacity"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[281],
+                description="Added and deprecated attribute to document JS SDK's current behaviour",
+            ),
         ],
     ),
     "environment": AttributeMetadata(
@@ -7444,6 +7549,27 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "hardwareConcurrency": AttributeMetadata(
+        brief="The number of logical CPU cores available.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="14",
+        deprecation=DeprecationInfo(
+            replacement="device.cpu.logical_core_count",
+            reason="Old namespace-less attribute, to be replaced with device.cpu.logical_core_count for span-first future",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["device.cpu.logical_core_count"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[281],
+                description="Added and deprecated attribute to document JS SDK's current behaviour",
+            ),
         ],
     ),
     "http.client_ip": AttributeMetadata(
@@ -10927,8 +11053,11 @@ Attributes = TypedDict(
         "db.system.name": str,
         "db.user": str,
         "device.brand": str,
+        "device.cpu.logical_core_count": int,
         "device.family": str,
+        "device.memory.estimated_capacity": int,
         "device.model": str,
+        "deviceMemory": str,
         "environment": str,
         "error.type": str,
         "event.id": int,
@@ -11002,6 +11131,7 @@ Attributes = TypedDict(
         "gen_ai.usage.total_tokens": int,
         "graphql.operation.name": str,
         "graphql.operation.type": str,
+        "hardwareConcurrency": str,
         "http.client_ip": str,
         "http.decoded_response_content_length": int,
         "http.flavor": str,
