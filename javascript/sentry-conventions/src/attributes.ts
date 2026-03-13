@@ -8336,6 +8336,186 @@ export const UI_CONTRIBUTES_TO_TTID = 'ui.contributes_to_ttid';
  */
 export type UI_CONTRIBUTES_TO_TTID_TYPE = boolean;
 
+// Path: model/attributes/ui/ui__element__height.json
+
+/**
+ * The height of the UI element (for Html in pixels) `ui.element.height`
+ *
+ * Attribute Value Type: `number` {@link UI_ELEMENT_HEIGHT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 256
+ */
+export const UI_ELEMENT_HEIGHT = 'ui.element.height';
+
+/**
+ * Type for {@link UI_ELEMENT_HEIGHT} ui.element.height
+ */
+export type UI_ELEMENT_HEIGHT_TYPE = number;
+
+// Path: model/attributes/ui/ui__element__id.json
+
+/**
+ * The id of the UI element `ui.element.id`
+ *
+ * Attribute Value Type: `string` {@link UI_ELEMENT_ID_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "btn-login"
+ */
+export const UI_ELEMENT_ID = 'ui.element.id';
+
+/**
+ * Type for {@link UI_ELEMENT_ID} ui.element.id
+ */
+export type UI_ELEMENT_ID_TYPE = string;
+
+// Path: model/attributes/ui/ui__element__identifier.json
+
+/**
+ * The identifier used to measure the UI element timing `ui.element.identifier`
+ *
+ * Attribute Value Type: `string` {@link UI_ELEMENT_IDENTIFIER_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "heroImage"
+ */
+export const UI_ELEMENT_IDENTIFIER = 'ui.element.identifier';
+
+/**
+ * Type for {@link UI_ELEMENT_IDENTIFIER} ui.element.identifier
+ */
+export type UI_ELEMENT_IDENTIFIER_TYPE = string;
+
+// Path: model/attributes/ui/ui__element__load_time.json
+
+/**
+ * The loading time of a UI element (from time origin to finished loading) `ui.element.load_time`
+ *
+ * Attribute Value Type: `number` {@link UI_ELEMENT_LOAD_TIME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 998.2234
+ */
+export const UI_ELEMENT_LOAD_TIME = 'ui.element.load_time';
+
+/**
+ * Type for {@link UI_ELEMENT_LOAD_TIME} ui.element.load_time
+ */
+export type UI_ELEMENT_LOAD_TIME_TYPE = number;
+
+// Path: model/attributes/ui/ui__element__paint_type.json
+
+/**
+ * The type of element paint. Can either be 'image-paint' or 'text-paint' `ui.element.paint_type`
+ *
+ * Attribute Value Type: `string` {@link UI_ELEMENT_PAINT_TYPE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "image-paint"
+ */
+export const UI_ELEMENT_PAINT_TYPE = 'ui.element.paint_type';
+
+/**
+ * Type for {@link UI_ELEMENT_PAINT_TYPE} ui.element.paint_type
+ */
+export type UI_ELEMENT_PAINT_TYPE_TYPE = string;
+
+// Path: model/attributes/ui/ui__element__render_time.json
+
+/**
+ * The rendering time of the UI element (from time origin to finished rendering) `ui.element.render_time`
+ *
+ * Attribute Value Type: `number` {@link UI_ELEMENT_RENDER_TIME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 1023.1124
+ */
+export const UI_ELEMENT_RENDER_TIME = 'ui.element.render_time';
+
+/**
+ * Type for {@link UI_ELEMENT_RENDER_TIME} ui.element.render_time
+ */
+export type UI_ELEMENT_RENDER_TIME_TYPE = number;
+
+// Path: model/attributes/ui/ui__element__type.json
+
+/**
+ * type of the UI element `ui.element.type`
+ *
+ * Attribute Value Type: `string` {@link UI_ELEMENT_TYPE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "img"
+ */
+export const UI_ELEMENT_TYPE = 'ui.element.type';
+
+/**
+ * Type for {@link UI_ELEMENT_TYPE} ui.element.type
+ */
+export type UI_ELEMENT_TYPE_TYPE = string;
+
+// Path: model/attributes/ui/ui__element__url.json
+
+/**
+ * The URL of the UI element (e.g. an img src) `ui.element.url`
+ *
+ * Attribute Value Type: `string` {@link UI_ELEMENT_URL_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "https://assets.myapp.com/hero.png"
+ */
+export const UI_ELEMENT_URL = 'ui.element.url';
+
+/**
+ * Type for {@link UI_ELEMENT_URL} ui.element.url
+ */
+export type UI_ELEMENT_URL_TYPE = string;
+
+// Path: model/attributes/ui/ui__element__width.json
+
+/**
+ * The width of the UI element (for HTML in pixels) `ui.element.width`
+ *
+ * Attribute Value Type: `number` {@link UI_ELEMENT_WIDTH_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 512
+ */
+export const UI_ELEMENT_WIDTH = 'ui.element.width';
+
+/**
+ * Type for {@link UI_ELEMENT_WIDTH} ui.element.width
+ */
+export type UI_ELEMENT_WIDTH_TYPE = number;
+
 // Path: model/attributes/url.json
 
 /**
@@ -9947,6 +10127,15 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [UI_COMPONENT_NAME]: 'string',
   [UI_CONTRIBUTES_TO_TTFD]: 'boolean',
   [UI_CONTRIBUTES_TO_TTID]: 'boolean',
+  [UI_ELEMENT_HEIGHT]: 'integer',
+  [UI_ELEMENT_ID]: 'string',
+  [UI_ELEMENT_IDENTIFIER]: 'string',
+  [UI_ELEMENT_LOAD_TIME]: 'double',
+  [UI_ELEMENT_PAINT_TYPE]: 'string',
+  [UI_ELEMENT_RENDER_TIME]: 'double',
+  [UI_ELEMENT_TYPE]: 'string',
+  [UI_ELEMENT_URL]: 'string',
+  [UI_ELEMENT_WIDTH]: 'integer',
   [URL]: 'string',
   [URL_DOMAIN]: 'string',
   [URL_FRAGMENT]: 'string',
@@ -10403,6 +10592,15 @@ export type AttributeName =
   | typeof UI_COMPONENT_NAME
   | typeof UI_CONTRIBUTES_TO_TTFD
   | typeof UI_CONTRIBUTES_TO_TTID
+  | typeof UI_ELEMENT_HEIGHT
+  | typeof UI_ELEMENT_ID
+  | typeof UI_ELEMENT_IDENTIFIER
+  | typeof UI_ELEMENT_LOAD_TIME
+  | typeof UI_ELEMENT_PAINT_TYPE
+  | typeof UI_ELEMENT_RENDER_TIME
+  | typeof UI_ELEMENT_TYPE
+  | typeof UI_ELEMENT_URL
+  | typeof UI_ELEMENT_WIDTH
   | typeof URL
   | typeof URL_DOMAIN
   | typeof URL_FRAGMENT
@@ -15302,6 +15500,105 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: true,
     changelog: [{ version: '0.0.0' }],
   },
+  [UI_ELEMENT_HEIGHT]: {
+    brief: 'The height of the UI element (for Html in pixels)',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 256,
+    sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [284], description: 'Added ui.element.height attribute' }],
+  },
+  [UI_ELEMENT_ID]: {
+    brief: 'The id of the UI element',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'btn-login',
+    sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [284], description: 'Added ui.element.id attribute' }],
+  },
+  [UI_ELEMENT_IDENTIFIER]: {
+    brief: 'The identifier used to measure the UI element timing',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'heroImage',
+    sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [284], description: 'Added ui.element.identifier attribute' }],
+  },
+  [UI_ELEMENT_LOAD_TIME]: {
+    brief: 'The loading time of a UI element (from time origin to finished loading)',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 998.2234,
+    sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [284], description: 'Added ui.element.load_time attribute' }],
+  },
+  [UI_ELEMENT_PAINT_TYPE]: {
+    brief: "The type of element paint. Can either be 'image-paint' or 'text-paint'",
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'image-paint',
+    sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [284], description: 'Added ui.element.paint_type attribute' }],
+  },
+  [UI_ELEMENT_RENDER_TIME]: {
+    brief: 'The rendering time of the UI element (from time origin to finished rendering)',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1023.1124,
+    sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [284], description: 'Added ui.element.render_time attribute' }],
+  },
+  [UI_ELEMENT_TYPE]: {
+    brief: 'type of the UI element',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'img',
+    sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [284], description: 'Added ui.element.type attribute' }],
+  },
+  [UI_ELEMENT_URL]: {
+    brief: 'The URL of the UI element (e.g. an img src)',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'https://assets.myapp.com/hero.png',
+    sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [284], description: 'Added ui.element.url attribute' }],
+  },
+  [UI_ELEMENT_WIDTH]: {
+    brief: 'The width of the UI element (for HTML in pixels)',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 512,
+    sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [284], description: 'Added ui.element.width attribute' }],
+  },
   [URL]: {
     brief: 'The URL of the resource that was fetched.',
     type: 'string',
@@ -16303,6 +16600,15 @@ export type Attributes = {
   [UI_COMPONENT_NAME]?: UI_COMPONENT_NAME_TYPE;
   [UI_CONTRIBUTES_TO_TTFD]?: UI_CONTRIBUTES_TO_TTFD_TYPE;
   [UI_CONTRIBUTES_TO_TTID]?: UI_CONTRIBUTES_TO_TTID_TYPE;
+  [UI_ELEMENT_HEIGHT]?: UI_ELEMENT_HEIGHT_TYPE;
+  [UI_ELEMENT_ID]?: UI_ELEMENT_ID_TYPE;
+  [UI_ELEMENT_IDENTIFIER]?: UI_ELEMENT_IDENTIFIER_TYPE;
+  [UI_ELEMENT_LOAD_TIME]?: UI_ELEMENT_LOAD_TIME_TYPE;
+  [UI_ELEMENT_PAINT_TYPE]?: UI_ELEMENT_PAINT_TYPE_TYPE;
+  [UI_ELEMENT_RENDER_TIME]?: UI_ELEMENT_RENDER_TIME_TYPE;
+  [UI_ELEMENT_TYPE]?: UI_ELEMENT_TYPE_TYPE;
+  [UI_ELEMENT_URL]?: UI_ELEMENT_URL_TYPE;
+  [UI_ELEMENT_WIDTH]?: UI_ELEMENT_WIDTH_TYPE;
   [URL]?: URL_TYPE;
   [URL_DOMAIN]?: URL_DOMAIN_TYPE;
   [URL_FRAGMENT]?: URL_FRAGMENT_TYPE;

@@ -1,0 +1,18 @@
+{
+  "key": "ui.element.paint_type",
+  "brief": "The type of element paint. Can either be 'image-paint' or 'text-paint'",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "image-paint",
+  "sdks": ["javascript-browser"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [284],
+      "description": "Added ui.element.paint_type attribute"
+    }
+  ]
+}

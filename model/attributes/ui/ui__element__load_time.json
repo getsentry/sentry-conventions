@@ -1,0 +1,18 @@
+{
+  "key": "ui.element.load_time",
+  "brief": "The loading time of a UI element (from time origin to finished loading)",
+  "type": "double",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": 998.2234,
+  "sdks": ["javascript-browser"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [284],
+      "description": "Added ui.element.load_time attribute"
+    }
+  ]
+}
