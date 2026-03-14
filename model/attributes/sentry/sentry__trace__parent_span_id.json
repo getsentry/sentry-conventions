@@ -7,6 +7,9 @@
   },
   "is_in_otel": false,
   "example": "b0e6f15b45c36b12",
+  "deprecation": {
+    "_status": null
+  },
   "changelog": [
     {
       "version": "0.1.0",
