@@ -210,6 +210,7 @@ class _AttributeNamesMeta(type):
         "SENTRY_BROWSER_NAME",
         "SENTRY_BROWSER_VERSION",
         "_SENTRY_SEGMENT_ID",
+        "SENTRY_TRACE_PARENT_SPAN_ID",
         "TRANSACTION",
         "TTFB_REQUESTTIME",
         "TTFB",
@@ -4574,6 +4575,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    DEPRECATED: No replacement at this time
     Example: "b0e6f15b45c36b12"
     """
 
@@ -10042,6 +10044,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="b0e6f15b45c36b12",
+        deprecation=DeprecationInfo(),
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[116]),
         ],

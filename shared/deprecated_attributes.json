@@ -2699,6 +2699,25 @@
       ]
     },
     {
+      "key": "sentry.trace.parent_span_id",
+      "brief": "The span id of the span that was active when the log was collected. This should not be set if there was no active span.",
+      "type": "string",
+      "pii": {
+        "key": "false"
+      },
+      "is_in_otel": false,
+      "example": "b0e6f15b45c36b12",
+      "deprecation": {
+        "_status": null
+      },
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [116]
+        }
+      ]
+    },
+    {
       "key": "ttfb.requestTime",
       "brief": "The time it takes for the server to process the initial request and send the first byte of a response to the user's browser",
       "type": "double",
