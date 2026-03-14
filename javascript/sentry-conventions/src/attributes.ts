@@ -8121,6 +8121,7 @@ export type SENTRY_TIMESTAMP_SEQUENCE_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
+ * @deprecated
  * @example "b0e6f15b45c36b12"
  */
 export const SENTRY_TRACE_PARENT_SPAN_ID = 'sentry.trace.parent_span_id';
@@ -15542,6 +15543,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'b0e6f15b45c36b12',
+    deprecation: {},
     changelog: [{ version: '0.1.0', prs: [116] }],
   },
   [SENTRY_TRANSACTION]: {
