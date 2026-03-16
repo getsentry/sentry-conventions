@@ -48,7 +48,7 @@ Remember to run `yarn run generate` after editing or creating a `name` conventio
 
 ## Code and Docs Generation
 
-After you edit an attribute or add a new one, you should run `yarn run generate && yarn run format` to generate and format the code and docs, which are generated from the json files stored in the `model` directory.
+After you edit an attribute or add a new one, you should run `yarn run generate` to generate and format the code and docs, which are generated from the json files stored in the `model` directory.
 
 # Policies
 
