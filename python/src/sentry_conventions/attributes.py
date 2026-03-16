@@ -210,6 +210,7 @@ class _AttributeNamesMeta(type):
         "SENTRY_BROWSER_NAME",
         "SENTRY_BROWSER_VERSION",
         "_SENTRY_SEGMENT_ID",
+        "SENTRY_SOURCE",
         "TRANSACTION",
         "TTFB_REQUESTTIME",
         "TTFB",
@@ -4523,9 +4524,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 0.5
     """
 
+    # Path: model/attributes/sentry/sentry__source.json
+    SENTRY_SOURCE: Literal["sentry.source"] = "sentry.source"
+    """The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    DEPRECATED: Use sentry.span.source instead - This attribute is being deprecated in favor of sentry.span.source
+    Example: "route"
+    """
+
     # Path: model/attributes/sentry/sentry__span__source.json
     SENTRY_SPAN_SOURCE: Literal["sentry.span.source"] = "sentry.span.source"
-    """The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.
+    """The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.
 
     Type: str
     Contains PII: false
@@ -9995,8 +10007,23 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[102]),
         ],
     ),
+    "sentry.source": AttributeMetadata(
+        brief="The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="route",
+        deprecation=DeprecationInfo(
+            replacement="sentry.span.source",
+            reason="This attribute is being deprecated in favor of sentry.span.source",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        changelog=[
+            ChangelogEntry(version="next"),
+        ],
+    ),
     "sentry.span.source": AttributeMetadata(
-        brief="The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.",
+        brief="The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
@@ -11337,6 +11364,7 @@ Attributes = TypedDict(
         "sentry.segment.name": str,
         "sentry.segment_id": str,
         "sentry.server_sample_rate": float,
+        "sentry.source": str,
         "sentry.span.source": str,
         "sentry.status.message": str,
         "sentry.status_code": int,
