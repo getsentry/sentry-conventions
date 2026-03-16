@@ -10073,6 +10073,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="b0e6f15b45c36b12",
         deprecation=DeprecationInfo(),
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[287],
+                description="Deprecate `sentry.trace.parent_span_id`",
+            ),
             ChangelogEntry(version="0.1.0", prs=[116]),
         ],
     ),

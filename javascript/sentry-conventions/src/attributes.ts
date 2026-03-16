@@ -15544,7 +15544,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'b0e6f15b45c36b12',
     deprecation: {},
-    changelog: [{ version: '0.1.0', prs: [116] }],
+    changelog: [
+      { version: 'next', prs: [287], description: 'Deprecate `sentry.trace.parent_span_id`' },
+      { version: '0.1.0', prs: [116] },
+    ],
   },
   [SENTRY_TRANSACTION]: {
     brief: 'The sentry transaction (segment name).',
