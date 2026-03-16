@@ -8009,10 +8009,31 @@ export const SENTRY_SERVER_SAMPLE_RATE = 'sentry.server_sample_rate';
  */
 export type SENTRY_SERVER_SAMPLE_RATE_TYPE = number;
 
+// Path: model/attributes/sentry/sentry__source.json
+
+/**
+ * The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers. `sentry.source`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_SOURCE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @deprecated Use {@link SENTRY_SPAN_SOURCE} (sentry.span.source) instead - This attribute is being deprecated in favor of sentry.span.source
+ * @example "route"
+ */
+export const SENTRY_SOURCE = 'sentry.source';
+
+/**
+ * Type for {@link SENTRY_SOURCE} sentry.source
+ */
+export type SENTRY_SOURCE_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__span__source.json
 
 /**
- * The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. `sentry.span.source`
+ * The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers. `sentry.span.source`
  *
  * Attribute Value Type: `string` {@link SENTRY_SPAN_SOURCE_TYPE}
  *
@@ -10201,6 +10222,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [_SENTRY_SEGMENT_ID]: 'string',
   [SENTRY_SEGMENT_NAME]: 'string',
   [SENTRY_SERVER_SAMPLE_RATE]: 'double',
+  [SENTRY_SOURCE]: 'string',
   [SENTRY_SPAN_SOURCE]: 'string',
   [SENTRY_STATUS_CODE]: 'integer',
   [SENTRY_STATUS_MESSAGE]: 'string',
@@ -10670,6 +10692,7 @@ export type AttributeName =
   | typeof _SENTRY_SEGMENT_ID
   | typeof SENTRY_SEGMENT_NAME
   | typeof SENTRY_SERVER_SAMPLE_RATE
+  | typeof SENTRY_SOURCE
   | typeof SENTRY_SPAN_SOURCE
   | typeof SENTRY_STATUS_CODE
   | typeof SENTRY_STATUS_MESSAGE
@@ -15452,9 +15475,24 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 0.5,
     changelog: [{ version: '0.1.0', prs: [102] }],
   },
+  [SENTRY_SOURCE]: {
+    brief:
+      "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'route',
+    deprecation: {
+      replacement: 'sentry.span.source',
+      reason: 'This attribute is being deprecated in favor of sentry.span.source',
+    },
+    changelog: [{ version: 'next' }],
+  },
   [SENTRY_SPAN_SOURCE]: {
     brief:
-      "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.",
+      "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
     type: 'string',
     pii: {
       isPii: 'false',
@@ -16764,6 +16802,7 @@ export type Attributes = {
   [_SENTRY_SEGMENT_ID]?: _SENTRY_SEGMENT_ID_TYPE;
   [SENTRY_SEGMENT_NAME]?: SENTRY_SEGMENT_NAME_TYPE;
   [SENTRY_SERVER_SAMPLE_RATE]?: SENTRY_SERVER_SAMPLE_RATE_TYPE;
+  [SENTRY_SOURCE]?: SENTRY_SOURCE_TYPE;
   [SENTRY_SPAN_SOURCE]?: SENTRY_SPAN_SOURCE_TYPE;
   [SENTRY_STATUS_CODE]?: SENTRY_STATUS_CODE_TYPE;
   [SENTRY_STATUS_MESSAGE]?: SENTRY_STATUS_MESSAGE_TYPE;
