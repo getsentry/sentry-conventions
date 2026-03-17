@@ -149,11 +149,8 @@ class _AttributeNamesMeta(type):
         "DB_SQL_BINDINGS",
         "DB_STATEMENT",
         "DB_SYSTEM",
-<<<<<<< HEAD
         "DEVICEMEMORY",
-=======
         "EFFECTIVECONNECTIONTYPE",
->>>>>>> 10d027e (add attributes)
         "ENVIRONMENT",
         "FCP",
         "FP",
@@ -1499,6 +1496,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     # Path: model/attributes/device/device__model_id.json
     DEVICE_MODEL_ID: Literal["device.model_id"] = "device.model_id"
     """An internal hardware revision to identify the device exactly.
@@ -1533,29 +1531,32 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 =======
 <<<<<<< HEAD
 >>>>>>> 04be27a (add attributes)
+=======
+>>>>>>> 8d239e7 (regenerate after rebase)
     # Path: model/attributes/deviceMemory.json
     DEVICEMEMORY: Literal["deviceMemory"] = "deviceMemory"
     """The estimated total memory capacity of the device, only a rough estimation in gigabytes.
-=======
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: device.memory.estimated_capacity
+    DEPRECATED: Use device.memory.estimated_capacity instead - Old namespace-less attribute, to be replaced with device.memory.estimated_capacity for span-first future
+    Example: "8 GB"
+    """
+
     # Path: model/attributes/effectiveConnectionType.json
     EFFECTIVECONNECTIONTYPE: Literal["effectiveConnectionType"] = (
         "effectiveConnectionType"
     )
     """Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).
->>>>>>> 10d027e (add attributes)
 
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
-<<<<<<< HEAD
-    Aliases: device.memory.estimated_capacity
-    DEPRECATED: Use device.memory.estimated_capacity instead - Old namespace-less attribute, to be replaced with device.memory.estimated_capacity for span-first future
-    Example: "8 GB"
-=======
     Aliases: network.connection.effective_type
     DEPRECATED: Use network.connection.effective_type instead - Old namespace-less attribute, to be replaced with network.connection.effective_type for span-first future
     Example: "4g"
->>>>>>> 10d027e (add attributes)
     """
 
     # Path: model/attributes/environment.json
@@ -7084,6 +7085,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
 <<<<<<< HEAD
+<<<<<<< HEAD
     "device.model_id": AttributeMetadata(
         brief="An internal hardware revision to identify the device exactly.",
         type=AttributeType.STRING,
@@ -7133,6 +7135,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
 =======
 <<<<<<< HEAD
 >>>>>>> 04be27a (add attributes)
+=======
+>>>>>>> 8d239e7 (regenerate after rebase)
     "deviceMemory": AttributeMetadata(
         brief="The estimated total memory capacity of the device, only a rough estimation in gigabytes.",
         type=AttributeType.STRING,
@@ -7145,7 +7149,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             status=DeprecationStatus.BACKFILL,
         ),
         aliases=["device.memory.estimated_capacity"],
-=======
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[281],
+                description="Added and deprecated attribute to document JS SDK's current behaviour",
+            ),
+        ],
+    ),
     "effectiveConnectionType": AttributeMetadata(
         brief="Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).",
         type=AttributeType.STRING,
@@ -7158,16 +7170,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             status=DeprecationStatus.BACKFILL,
         ),
         aliases=["network.connection.effective_type"],
->>>>>>> 10d027e (add attributes)
         sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
                 version="next",
-<<<<<<< HEAD
-                prs=[281],
-=======
                 prs=[279],
->>>>>>> 10d027e (add attributes)
                 description="Added and deprecated attribute to document JS SDK's current behaviour",
             ),
         ],
@@ -11614,16 +11621,17 @@ Attributes = TypedDict(
         "device.memory_size": int,
         "device.model": str,
 <<<<<<< HEAD
+<<<<<<< HEAD
         "device.model_id": str,
         "device.processor_count": int,
         "device.simulator": bool,
 =======
 <<<<<<< HEAD
 >>>>>>> 04be27a (add attributes)
-        "deviceMemory": str,
 =======
+>>>>>>> 8d239e7 (regenerate after rebase)
+        "deviceMemory": str,
         "effectiveConnectionType": str,
->>>>>>> 10d027e (add attributes)
         "environment": str,
         "error.type": str,
         "event.id": int,
