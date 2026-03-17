@@ -1,12 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title="Page Not Found">
-  <script is:inline>
+  <script is:inline define:vars={{ base }}>
     (function () {
       var path = window.location.pathname;
-      var base = '/sentry-conventions/';
       var oldPrefix = base + 'generated/';
       if (path.startsWith(oldPrefix)) {
         var newPath = base + path.slice(oldPrefix.length);
