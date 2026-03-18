@@ -1287,6 +1287,26 @@ export const CACHE_OPERATION = 'cache.operation';
  */
 export type CACHE_OPERATION_TYPE = string;
 
+// Path: model/attributes/cache/cache__write.json
+
+/**
+ * If the cache operation resulted in a write to the cache. `cache.write`
+ *
+ * Attribute Value Type: `boolean` {@link CACHE_WRITE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example true
+ */
+export const CACHE_WRITE = 'cache.write';
+
+/**
+ * Type for {@link CACHE_WRITE} cache.write
+ */
+export type CACHE_WRITE_TYPE = boolean;
+
 // Path: model/attributes/cache/cache__ttl.json
 
 /**
@@ -11580,6 +11600,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'get',
     sdks: ['php-laravel'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+  },
+  [CACHE_WRITE]: {
+    brief: 'If the cache operation resulted in a write to the cache.',
+    type: 'boolean',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: true,
+    sdks: ['java'],
+    changelog: [{ version: '0.5.0' }],
   },
   [CACHE_TTL]: {
     brief: 'The ttl of the cache in seconds',
