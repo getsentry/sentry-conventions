@@ -11,6 +11,7 @@
   "changelog": [
     {
       "version": "next",
+      "prs": [296],
       "description": "Added app.in_foreground attribute"
     }
   ]

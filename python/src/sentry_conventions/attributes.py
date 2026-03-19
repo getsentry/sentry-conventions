@@ -5934,7 +5934,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "sentry.dart.flutter",
         ],
         changelog=[
-            ChangelogEntry(version="next", description="Added app.build attribute"),
+            ChangelogEntry(
+                version="next", prs=[296], description="Added app.build attribute"
+            ),
         ],
     ),
     "app.identifier": AttributeMetadata(
@@ -5951,7 +5953,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added app.identifier attribute"
+                version="next", prs=[296], description="Added app.identifier attribute"
             ),
         ],
     ),
@@ -5969,7 +5971,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added app.in_foreground attribute"
+                version="next",
+                prs=[296],
+                description="Added app.in_foreground attribute",
             ),
         ],
     ),
@@ -5986,7 +5990,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "sentry.dart.flutter",
         ],
         changelog=[
-            ChangelogEntry(version="next", description="Added app.name attribute"),
+            ChangelogEntry(
+                version="next", prs=[296], description="Added app.name attribute"
+            ),
         ],
     ),
     "app.start_time": AttributeMetadata(
@@ -6003,7 +6009,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added app.start_time attribute"
+                version="next", prs=[296], description="Added app.start_time attribute"
             ),
         ],
     ),
@@ -6020,7 +6026,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "sentry.dart.flutter",
         ],
         changelog=[
-            ChangelogEntry(version="next", description="Added app.version attribute"),
+            ChangelogEntry(
+                version="next", prs=[296], description="Added app.version attribute"
+            ),
         ],
     ),
     "app_start_type": AttributeMetadata(

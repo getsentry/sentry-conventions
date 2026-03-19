@@ -11424,7 +11424,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '1',
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
-    changelog: [{ version: 'next', description: 'Added app.build attribute' }],
+    changelog: [{ version: 'next', prs: [296], description: 'Added app.build attribute' }],
   },
   [APP_IDENTIFIER]: {
     brief: 'Version-independent application identifier, often a dotted bundle ID.',
@@ -11435,7 +11435,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'com.example.myapp',
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
-    changelog: [{ version: 'next', description: 'Added app.identifier attribute' }],
+    changelog: [{ version: 'next', prs: [296], description: 'Added app.identifier attribute' }],
   },
   [APP_IN_FOREGROUND]: {
     brief: 'Whether the application is currently in the foreground.',
@@ -11446,7 +11446,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: true,
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
-    changelog: [{ version: 'next', description: 'Added app.in_foreground attribute' }],
+    changelog: [{ version: 'next', prs: [296], description: 'Added app.in_foreground attribute' }],
   },
   [APP_NAME]: {
     brief: 'Human readable application name, as it appears on the platform.',
@@ -11457,7 +11457,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'My App',
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
-    changelog: [{ version: 'next', description: 'Added app.name attribute' }],
+    changelog: [{ version: 'next', prs: [296], description: 'Added app.name attribute' }],
   },
   [APP_START_TIME]: {
     brief: 'Formatted UTC timestamp when the user started the application.',
@@ -11468,7 +11468,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '2025-01-01T00:00:00.000Z',
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
-    changelog: [{ version: 'next', description: 'Added app.start_time attribute' }],
+    changelog: [{ version: 'next', prs: [296], description: 'Added app.start_time attribute' }],
   },
   [APP_START_TYPE]: {
     brief: 'Mobile app start variant. Either cold or warm.',
@@ -11489,7 +11489,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '1.0.0',
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
-    changelog: [{ version: 'next', description: 'Added app.version attribute' }],
+    changelog: [{ version: 'next', prs: [296], description: 'Added app.version attribute' }],
   },
   [BLOCKED_MAIN_THREAD]: {
     brief: 'Whether the main thread was blocked by the span.',
