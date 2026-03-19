@@ -1376,6 +1376,26 @@ export const DB_COLLECTION_NAME = 'db.collection.name';
  */
 export type DB_COLLECTION_NAME_TYPE = string;
 
+// Path: model/attributes/db/db__driver__name.json
+
+/**
+ * The name of the driver used for database connections. `db.driver.name`
+ *
+ * Attribute Value Type: `string` {@link DB_DRIVER_NAME_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "psycopg2"
+ */
+export const DB_DRIVER_NAME = 'db.driver.name';
+
+/**
+ * Type for {@link DB_DRIVER_NAME} db.driver.name
+ */
+export type DB_DRIVER_NAME_TYPE = string;
+
 // Path: model/attributes/db/db__name.json
 
 /**
@@ -8951,6 +8971,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [CULTURE_LOCALE]: 'string',
   [CULTURE_TIMEZONE]: 'string',
   [DB_COLLECTION_NAME]: 'string',
+  [DB_DRIVER_NAME]: 'string',
   [DB_NAME]: 'string',
   [DB_NAMESPACE]: 'string',
   [DB_OPERATION]: 'string',
@@ -9380,6 +9401,7 @@ export type AttributeName =
   | typeof CULTURE_LOCALE
   | typeof CULTURE_TIMEZONE
   | typeof DB_COLLECTION_NAME
+  | typeof DB_DRIVER_NAME
   | typeof DB_NAME
   | typeof DB_NAMESPACE
   | typeof DB_OPERATION
@@ -10457,6 +10479,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'users',
+  },
+  [DB_DRIVER_NAME]: {
+    brief: 'The name of the driver used for database connections.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'psycopg2',
   },
   [DB_NAME]: {
     brief: 'The name of the database being accessed.',
@@ -14172,6 +14203,7 @@ export type Attributes = {
   [CULTURE_LOCALE]?: CULTURE_LOCALE_TYPE;
   [CULTURE_TIMEZONE]?: CULTURE_TIMEZONE_TYPE;
   [DB_COLLECTION_NAME]?: DB_COLLECTION_NAME_TYPE;
+  [DB_DRIVER_NAME]?: DB_DRIVER_NAME_TYPE;
   [DB_NAME]?: DB_NAME_TYPE;
   [DB_NAMESPACE]?: DB_NAMESPACE_TYPE;
   [DB_OPERATION]?: DB_OPERATION_TYPE;
