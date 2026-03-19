@@ -618,6 +618,26 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: ["Token limit exceeded"]
     """
 
+    # Path: model/attributes/app/app__build.json
+    APP_BUILD: Literal["app.build"] = "app.build"
+    """Internal build identifier, as it appears on the platform.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "1"
+    """
+
+    # Path: model/attributes/app/app__identifier.json
+    APP_IDENTIFIER: Literal["app.identifier"] = "app.identifier"
+    """Version-independent application identifier, often a dotted bundle ID.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "com.example.myapp"
+    """
+
     # Path: model/attributes/app/app__in_foreground.json
     APP_IN_FOREGROUND: Literal["app.in_foreground"] = "app.in_foreground"
     """Whether the application is currently in the foreground.
@@ -628,6 +648,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: true
     """
 
+    # Path: model/attributes/app/app__name.json
+    APP_NAME: Literal["app.name"] = "app.name"
+    """Human readable application name, as it appears on the platform.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "My App"
+    """
+
     # Path: model/attributes/app/app__start_time.json
     APP_START_TIME: Literal["app.start_time"] = "app.start_time"
     """Formatted UTC timestamp when the user started the application.
@@ -636,6 +666,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Example: "2025-01-01T00:00:00.000Z"
+    """
+
+    # Path: model/attributes/app/app__version.json
+    APP_VERSION: Literal["app.version"] = "app.version"
+    """Human readable application version, as it appears on the platform.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "1.0.0"
     """
 
     # Path: model/attributes/app_start_type.json
@@ -5881,6 +5921,40 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[55]),
         ],
     ),
+    "app.build": AttributeMetadata(
+        brief="Internal build identifier, as it appears on the platform.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="1",
+        sdks=[
+            "sentry.cocoa",
+            "sentry.java.android",
+            "sentry.javascript.react-native",
+            "sentry.dart.flutter",
+        ],
+        changelog=[
+            ChangelogEntry(version="next", description="Added app.build attribute"),
+        ],
+    ),
+    "app.identifier": AttributeMetadata(
+        brief="Version-independent application identifier, often a dotted bundle ID.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="com.example.myapp",
+        sdks=[
+            "sentry.cocoa",
+            "sentry.java.android",
+            "sentry.javascript.react-native",
+            "sentry.dart.flutter",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added app.identifier attribute"
+            ),
+        ],
+    ),
     "app.in_foreground": AttributeMetadata(
         brief="Whether the application is currently in the foreground.",
         type=AttributeType.BOOLEAN,
@@ -5899,6 +5973,22 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "app.name": AttributeMetadata(
+        brief="Human readable application name, as it appears on the platform.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="My App",
+        sdks=[
+            "sentry.cocoa",
+            "sentry.java.android",
+            "sentry.javascript.react-native",
+            "sentry.dart.flutter",
+        ],
+        changelog=[
+            ChangelogEntry(version="next", description="Added app.name attribute"),
+        ],
+    ),
     "app.start_time": AttributeMetadata(
         brief="Formatted UTC timestamp when the user started the application.",
         type=AttributeType.STRING,
@@ -5915,6 +6005,22 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(
                 version="next", description="Added app.start_time attribute"
             ),
+        ],
+    ),
+    "app.version": AttributeMetadata(
+        brief="Human readable application version, as it appears on the platform.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="1.0.0",
+        sdks=[
+            "sentry.cocoa",
+            "sentry.java.android",
+            "sentry.javascript.react-native",
+            "sentry.dart.flutter",
+        ],
+        changelog=[
+            ChangelogEntry(version="next", description="Added app.version attribute"),
         ],
     ),
     "app_start_type": AttributeMetadata(
@@ -11081,8 +11187,12 @@ Attributes = TypedDict(
         "ai.total_cost": float,
         "ai.total_tokens.used": int,
         "ai.warnings": List[str],
+        "app.build": str,
+        "app.identifier": str,
         "app.in_foreground": bool,
+        "app.name": str,
         "app.start_time": str,
+        "app.version": str,
         "app_start_type": str,
         "blocked_main_thread": bool,
         "browser.name": str,
