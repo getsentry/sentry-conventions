@@ -628,16 +628,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: true
     """
 
-    # Path: model/attributes/app/app__name.json
-    APP_NAME: Literal["app.name"] = "app.name"
-    """Human readable application name, as it appears on the platform.
-
-    Type: str
-    Contains PII: maybe
-    Defined in OTEL: No
-    Example: "My App"
-    """
-
     # Path: model/attributes/app/app__start_time.json
     APP_START_TIME: Literal["app.start_time"] = "app.start_time"
     """Formatted UTC timestamp when the user started the application.
@@ -5909,22 +5899,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
-    "app.name": AttributeMetadata(
-        brief="Human readable application name, as it appears on the platform.",
-        type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
-        is_in_otel=False,
-        example="My App",
-        sdks=[
-            "sentry.cocoa",
-            "sentry.java.android",
-            "sentry.javascript.react-native",
-            "sentry.dart.flutter",
-        ],
-        changelog=[
-            ChangelogEntry(version="next", description="Added app.name attribute"),
-        ],
-    ),
     "app.start_time": AttributeMetadata(
         brief="Formatted UTC timestamp when the user started the application.",
         type=AttributeType.STRING,
@@ -11108,7 +11082,6 @@ Attributes = TypedDict(
         "ai.total_tokens.used": int,
         "ai.warnings": List[str],
         "app.in_foreground": bool,
-        "app.name": str,
         "app.start_time": str,
         "app_start_type": str,
         "blocked_main_thread": bool,

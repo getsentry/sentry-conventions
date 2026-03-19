@@ -753,26 +753,6 @@ export const APP_IN_FOREGROUND = 'app.in_foreground';
  */
 export type APP_IN_FOREGROUND_TYPE = boolean;
 
-// Path: model/attributes/app/app__name.json
-
-/**
- * Human readable application name, as it appears on the platform. `app.name`
- *
- * Attribute Value Type: `string` {@link APP_NAME_TYPE}
- *
- * Contains PII: maybe
- *
- * Attribute defined in OTEL: No
- *
- * @example "My App"
- */
-export const APP_NAME = 'app.name';
-
-/**
- * Type for {@link APP_NAME} app.name
- */
-export type APP_NAME_TYPE = string;
-
 // Path: model/attributes/app/app__start_time.json
 
 /**
@@ -9937,7 +9917,6 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [AI_TOTAL_TOKENS_USED]: 'integer',
   [AI_WARNINGS]: 'string[]',
   [APP_IN_FOREGROUND]: 'boolean',
-  [APP_NAME]: 'string',
   [APP_START_TIME]: 'string',
   [APP_START_TYPE]: 'string',
   [BLOCKED_MAIN_THREAD]: 'boolean',
@@ -10410,7 +10389,6 @@ export type AttributeName =
   | typeof AI_TOTAL_TOKENS_USED
   | typeof AI_WARNINGS
   | typeof APP_IN_FOREGROUND
-  | typeof APP_NAME
   | typeof APP_START_TIME
   | typeof APP_START_TYPE
   | typeof BLOCKED_MAIN_THREAD
@@ -11359,17 +11337,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: true,
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: 'next', description: 'Added app.in_foreground attribute' }],
-  },
-  [APP_NAME]: {
-    brief: 'Human readable application name, as it appears on the platform.',
-    type: 'string',
-    pii: {
-      isPii: 'maybe',
-    },
-    isInOtel: false,
-    example: 'My App',
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
-    changelog: [{ version: 'next', description: 'Added app.name attribute' }],
   },
   [APP_START_TIME]: {
     brief: 'Formatted UTC timestamp when the user started the application.',
@@ -16560,7 +16527,6 @@ export type Attributes = {
   [AI_TOTAL_TOKENS_USED]?: AI_TOTAL_TOKENS_USED_TYPE;
   [AI_WARNINGS]?: AI_WARNINGS_TYPE;
   [APP_IN_FOREGROUND]?: APP_IN_FOREGROUND_TYPE;
-  [APP_NAME]?: APP_NAME_TYPE;
   [APP_START_TIME]?: APP_START_TIME_TYPE;
   [APP_START_TYPE]?: APP_START_TYPE_TYPE;
   [BLOCKED_MAIN_THREAD]?: BLOCKED_MAIN_THREAD_TYPE;
