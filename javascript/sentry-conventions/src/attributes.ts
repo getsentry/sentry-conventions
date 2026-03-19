@@ -733,6 +733,106 @@ export const AI_WARNINGS = 'ai.warnings';
  */
 export type AI_WARNINGS_TYPE = Array<string>;
 
+// Path: model/attributes/app/app__build.json
+
+/**
+ * Internal build identifier, as it appears on the platform. `app.build`
+ *
+ * Attribute Value Type: `string` {@link APP_BUILD_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "1"
+ */
+export const APP_BUILD = 'app.build';
+
+/**
+ * Type for {@link APP_BUILD} app.build
+ */
+export type APP_BUILD_TYPE = string;
+
+// Path: model/attributes/app/app__identifier.json
+
+/**
+ * Version-independent application identifier, often a dotted bundle ID. `app.identifier`
+ *
+ * Attribute Value Type: `string` {@link APP_IDENTIFIER_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "com.example.myapp"
+ */
+export const APP_IDENTIFIER = 'app.identifier';
+
+/**
+ * Type for {@link APP_IDENTIFIER} app.identifier
+ */
+export type APP_IDENTIFIER_TYPE = string;
+
+// Path: model/attributes/app/app__in_foreground.json
+
+/**
+ * Whether the application is currently in the foreground. `app.in_foreground`
+ *
+ * Attribute Value Type: `boolean` {@link APP_IN_FOREGROUND_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example true
+ */
+export const APP_IN_FOREGROUND = 'app.in_foreground';
+
+/**
+ * Type for {@link APP_IN_FOREGROUND} app.in_foreground
+ */
+export type APP_IN_FOREGROUND_TYPE = boolean;
+
+// Path: model/attributes/app/app__name.json
+
+/**
+ * Human readable application name, as it appears on the platform. `app.name`
+ *
+ * Attribute Value Type: `string` {@link APP_NAME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "My App"
+ */
+export const APP_NAME = 'app.name';
+
+/**
+ * Type for {@link APP_NAME} app.name
+ */
+export type APP_NAME_TYPE = string;
+
+// Path: model/attributes/app/app__start_time.json
+
+/**
+ * Formatted UTC timestamp when the user started the application. `app.start_time`
+ *
+ * Attribute Value Type: `string` {@link APP_START_TIME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "2025-01-01T00:00:00.000Z"
+ */
+export const APP_START_TIME = 'app.start_time';
+
+/**
+ * Type for {@link APP_START_TIME} app.start_time
+ */
+export type APP_START_TIME_TYPE = string;
+
 // Path: model/attributes/app_start_type.json
 
 /**
@@ -752,6 +852,26 @@ export const APP_START_TYPE = 'app_start_type';
  * Type for {@link APP_START_TYPE} app_start_type
  */
 export type APP_START_TYPE_TYPE = string;
+
+// Path: model/attributes/app/app__version.json
+
+/**
+ * Human readable application version, as it appears on the platform. `app.version`
+ *
+ * Attribute Value Type: `string` {@link APP_VERSION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "1.0.0"
+ */
+export const APP_VERSION = 'app.version';
+
+/**
+ * Type for {@link APP_VERSION} app.version
+ */
+export type APP_VERSION_TYPE = string;
 
 // Path: model/attributes/blocked_main_thread.json
 
@@ -9876,7 +9996,13 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [AI_TOTAL_COST]: 'double',
   [AI_TOTAL_TOKENS_USED]: 'integer',
   [AI_WARNINGS]: 'string[]',
+  [APP_BUILD]: 'string',
+  [APP_IDENTIFIER]: 'string',
+  [APP_IN_FOREGROUND]: 'boolean',
+  [APP_NAME]: 'string',
+  [APP_START_TIME]: 'string',
   [APP_START_TYPE]: 'string',
+  [APP_VERSION]: 'string',
   [BLOCKED_MAIN_THREAD]: 'boolean',
   [BROWSER_NAME]: 'string',
   [BROWSER_REPORT_TYPE]: 'string',
@@ -10346,7 +10472,13 @@ export type AttributeName =
   | typeof AI_TOTAL_COST
   | typeof AI_TOTAL_TOKENS_USED
   | typeof AI_WARNINGS
+  | typeof APP_BUILD
+  | typeof APP_IDENTIFIER
+  | typeof APP_IN_FOREGROUND
+  | typeof APP_NAME
+  | typeof APP_START_TIME
   | typeof APP_START_TYPE
+  | typeof APP_VERSION
   | typeof BLOCKED_MAIN_THREAD
   | typeof BROWSER_NAME
   | typeof BROWSER_REPORT_TYPE
@@ -11283,6 +11415,61 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.1.0', prs: [55] },
     ],
   },
+  [APP_BUILD]: {
+    brief: 'Internal build identifier, as it appears on the platform.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '1',
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [{ version: 'next', description: 'Added app.build attribute' }],
+  },
+  [APP_IDENTIFIER]: {
+    brief: 'Version-independent application identifier, often a dotted bundle ID.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'com.example.myapp',
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [{ version: 'next', description: 'Added app.identifier attribute' }],
+  },
+  [APP_IN_FOREGROUND]: {
+    brief: 'Whether the application is currently in the foreground.',
+    type: 'boolean',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: true,
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [{ version: 'next', description: 'Added app.in_foreground attribute' }],
+  },
+  [APP_NAME]: {
+    brief: 'Human readable application name, as it appears on the platform.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'My App',
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [{ version: 'next', description: 'Added app.name attribute' }],
+  },
+  [APP_START_TIME]: {
+    brief: 'Formatted UTC timestamp when the user started the application.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '2025-01-01T00:00:00.000Z',
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [{ version: 'next', description: 'Added app.start_time attribute' }],
+  },
   [APP_START_TYPE]: {
     brief: 'Mobile app start variant. Either cold or warm.',
     type: 'string',
@@ -11292,6 +11479,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'cold',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+  },
+  [APP_VERSION]: {
+    brief: 'Human readable application version, as it appears on the platform.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '1.0.0',
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [{ version: 'next', description: 'Added app.version attribute' }],
   },
   [BLOCKED_MAIN_THREAD]: {
     brief: 'Whether the main thread was blocked by the span.',
@@ -16460,7 +16658,13 @@ export type Attributes = {
   [AI_TOTAL_COST]?: AI_TOTAL_COST_TYPE;
   [AI_TOTAL_TOKENS_USED]?: AI_TOTAL_TOKENS_USED_TYPE;
   [AI_WARNINGS]?: AI_WARNINGS_TYPE;
+  [APP_BUILD]?: APP_BUILD_TYPE;
+  [APP_IDENTIFIER]?: APP_IDENTIFIER_TYPE;
+  [APP_IN_FOREGROUND]?: APP_IN_FOREGROUND_TYPE;
+  [APP_NAME]?: APP_NAME_TYPE;
+  [APP_START_TIME]?: APP_START_TIME_TYPE;
   [APP_START_TYPE]?: APP_START_TYPE_TYPE;
+  [APP_VERSION]?: APP_VERSION_TYPE;
   [BLOCKED_MAIN_THREAD]?: BLOCKED_MAIN_THREAD_TYPE;
   [BROWSER_NAME]?: BROWSER_NAME_TYPE;
   [BROWSER_REPORT_TYPE]?: BROWSER_REPORT_TYPE_TYPE;
