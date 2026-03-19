@@ -643,7 +643,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether the application is currently in the foreground.
 
     Type: bool
-    Contains PII: maybe
+    Contains PII: false
     Defined in OTEL: No
     Example: true
     """
@@ -5958,7 +5958,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.in_foreground": AttributeMetadata(
         brief="Whether the application is currently in the foreground.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=True,
         sdks=[

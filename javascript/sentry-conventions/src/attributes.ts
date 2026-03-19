@@ -780,7 +780,7 @@ export type APP_IDENTIFIER_TYPE = string;
  *
  * Attribute Value Type: `boolean` {@link APP_IN_FOREGROUND_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: false
  *
  * Attribute defined in OTEL: No
  *
@@ -11441,7 +11441,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Whether the application is currently in the foreground.',
     type: 'boolean',
     pii: {
-      isPii: 'maybe',
+      isPii: 'false',
     },
     isInOtel: false,
     example: true,
