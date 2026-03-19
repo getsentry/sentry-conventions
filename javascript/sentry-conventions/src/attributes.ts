@@ -740,7 +740,7 @@ export type AI_WARNINGS_TYPE = Array<string>;
  *
  * Attribute Value Type: `string` {@link APP_BUILD_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: false
  *
  * Attribute defined in OTEL: No
  *
@@ -760,7 +760,7 @@ export type APP_BUILD_TYPE = string;
  *
  * Attribute Value Type: `string` {@link APP_IDENTIFIER_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: false
  *
  * Attribute defined in OTEL: No
  *
@@ -820,7 +820,7 @@ export type APP_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link APP_START_TIME_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: false
  *
  * Attribute defined in OTEL: No
  *
@@ -860,7 +860,7 @@ export type APP_START_TYPE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link APP_VERSION_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: false
  *
  * Attribute defined in OTEL: No
  *
@@ -11419,7 +11419,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Internal build identifier, as it appears on the platform.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'false',
     },
     isInOtel: false,
     example: '1',
@@ -11430,7 +11430,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Version-independent application identifier, often a dotted bundle ID.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'false',
     },
     isInOtel: false,
     example: 'com.example.myapp',
@@ -11463,7 +11463,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Formatted UTC timestamp when the user started the application.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'false',
     },
     isInOtel: false,
     example: '2025-01-01T00:00:00.000Z',
@@ -11484,7 +11484,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Human readable application version, as it appears on the platform.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'false',
     },
     isInOtel: false,
     example: '1.0.0',

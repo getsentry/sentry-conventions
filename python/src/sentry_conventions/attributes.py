@@ -623,7 +623,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Internal build identifier, as it appears on the platform.
 
     Type: str
-    Contains PII: maybe
+    Contains PII: false
     Defined in OTEL: No
     Example: "1"
     """
@@ -633,7 +633,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Version-independent application identifier, often a dotted bundle ID.
 
     Type: str
-    Contains PII: maybe
+    Contains PII: false
     Defined in OTEL: No
     Example: "com.example.myapp"
     """
@@ -663,7 +663,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Formatted UTC timestamp when the user started the application.
 
     Type: str
-    Contains PII: maybe
+    Contains PII: false
     Defined in OTEL: No
     Example: "2025-01-01T00:00:00.000Z"
     """
@@ -673,7 +673,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Human readable application version, as it appears on the platform.
 
     Type: str
-    Contains PII: maybe
+    Contains PII: false
     Defined in OTEL: No
     Example: "1.0.0"
     """
@@ -5924,7 +5924,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.build": AttributeMetadata(
         brief="Internal build identifier, as it appears on the platform.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="1",
         sdks=[
@@ -5940,7 +5940,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.identifier": AttributeMetadata(
         brief="Version-independent application identifier, often a dotted bundle ID.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="com.example.myapp",
         sdks=[
@@ -5992,7 +5992,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.start_time": AttributeMetadata(
         brief="Formatted UTC timestamp when the user started the application.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="2025-01-01T00:00:00.000Z",
         sdks=[
@@ -6010,7 +6010,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.version": AttributeMetadata(
         brief="Human readable application version, as it appears on the platform.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="1.0.0",
         sdks=[
