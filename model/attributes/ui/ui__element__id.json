@@ -1,0 +1,18 @@
+{
+  "key": "ui.element.id",
+  "brief": "The id of the UI element",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "btn-login",
+  "sdks": ["javascript-browser"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [284],
+      "description": "Added ui.element.id attribute"
+    }
+  ]
+}

@@ -5,5 +5,11 @@
   "pii": {
     "key": "false"
   },
-  "is_in_otel": false
+  "is_in_otel": false,
+  "changelog": [
+    {
+      "version": "0.4.0",
+      "prs": [212]
+    }
+  ]
 }

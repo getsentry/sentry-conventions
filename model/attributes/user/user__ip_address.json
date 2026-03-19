@@ -6,5 +6,11 @@
     "key": "true"
   },
   "is_in_otel": false,
-  "example": "192.168.1.1"
+  "example": "192.168.1.1",
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [75]
+    }
+  ]
 }

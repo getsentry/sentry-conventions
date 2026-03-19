@@ -6,6 +6,7 @@ import { describe, expect, it } from 'vitest';
 
 import schema from '../schemas/attribute.schema.json';
 import type { AttributeJson } from '../scripts/types';
+import { compareVersions } from '../scripts/generate_attribute_changelog';
 import { attributeKeyToFileName, fileNameToAttributeKey } from '../scripts/utils';
 
 const traceFolders = path.resolve(__dirname, '../model/attributes');
@@ -57,6 +58,8 @@ describe('attribute json', async () => {
           case 'boolean[]':
             expect(Array.isArray(content.example)).toBe(true);
             expect((content.example as boolean[]).every((e: boolean) => typeof e === 'boolean')).toBe(true);
+            break;
+          case 'any':
             break;
           default:
             throw new Error('Invalid type');
@@ -120,7 +123,7 @@ describe('attribute json', async () => {
         expect(missingAliases).toEqual([]);
       });
 
-      it('should not be a replacement of itself', async () => {
+      it('is not be a replacement of itself', async () => {
         if (!content.deprecation?.replacement) {
           return;
         }
@@ -128,12 +131,45 @@ describe('attribute json', async () => {
         expect(content.key !== replacement);
       });
 
-      it('should not alias itself', async () => {
+      it("doesn't not alias itself", async () => {
         if (!content.alias || content.alias.length === 0) {
           return;
         }
         for (const alias of content.alias) {
           expect(content.key !== alias);
+        }
+      });
+
+      it('has valid changelog entries', () => {
+        expect(content.changelog).toBeDefined();
+        expect(Array.isArray(content.changelog)).toBe(true);
+        expect(content.changelog?.length).toBeGreaterThan(0);
+
+        for (const entry of content.changelog || []) {
+          expect(entry.version).toBeDefined();
+          expect(typeof entry.version).toBe('string');
+          expect(entry.version.length).toBeGreaterThan(0);
+
+          if (entry.prs !== undefined) {
+            expect(Array.isArray(entry.prs)).toBe(true);
+            for (const pr of entry.prs) {
+              expect(Number.isInteger(pr)).toBe(true);
+              expect(pr).toBeGreaterThan(0);
+            }
+          }
+        }
+      });
+
+      it('has changelog entries ordered by version (newest first)', () => {
+        if (!content.changelog || content.changelog.length < 2) {
+          return;
+        }
+
+        for (let i = 1; i < content.changelog.length; i++) {
+          const prev = content.changelog[i - 1]?.version;
+          const curr = content.changelog[i]?.version;
+          const cmp = compareVersions(prev, curr);
+          expect(cmp).toBeGreaterThanOrEqual(0);
         }
       });
     });

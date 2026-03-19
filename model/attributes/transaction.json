@@ -11,5 +11,14 @@
     "_status": null,
     "replacement": "sentry.transaction"
   },
-  "alias": ["sentry.transaction"]
+  "alias": ["sentry.transaction"],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [61, 127]
+    },
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

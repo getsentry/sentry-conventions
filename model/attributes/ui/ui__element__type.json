@@ -1,0 +1,18 @@
+{
+  "key": "ui.element.type",
+  "brief": "type of the UI element",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "img",
+  "sdks": ["javascript-browser"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [284],
+      "description": "Added ui.element.type attribute"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "key": "hardwareConcurrency",
+  "brief": "The number of logical CPU cores available.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "14",
+  "sdks": ["javascript-browser"],
+  "alias": ["device.cpu.logical_core_count"],
+  "deprecation": {
+    "replacement": "device.cpu.logical_core_count",
+    "reason": "Old namespace-less attribute, to be replaced with device.cpu.logical_core_count for span-first future",
+    "_status": "backfill"
+  },
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [281],
+      "description": "Added and deprecated attribute to document JS SDK's current behaviour"
+    }
+  ]
+}

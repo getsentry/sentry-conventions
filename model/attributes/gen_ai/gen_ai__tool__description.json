@@ -6,5 +6,11 @@
     "key": "maybe"
   },
   "is_in_otel": true,
-  "example": "Searches the web for current information about a topic"
+  "example": "Searches the web for current information about a topic",
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [62, 127]
+    }
+  ]
 }

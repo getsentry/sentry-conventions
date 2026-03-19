@@ -1,0 +1,18 @@
+{
+  "key": "ui.element.identifier",
+  "brief": "The identifier used to measure the UI element timing",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "heroImage",
+  "sdks": ["javascript-browser"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [284],
+      "description": "Added ui.element.identifier attribute"
+    }
+  ]
+}

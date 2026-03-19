@@ -6,5 +6,10 @@
     "key": "true"
   },
   "is_in_otel": true,
-  "example": "test@example.com"
+  "example": "test@example.com",
+  "changelog": [
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

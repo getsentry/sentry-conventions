@@ -6,5 +6,19 @@
     "key": "false"
   },
   "is_in_otel": false,
-  "example": "b0e6f15b45c36b12"
+  "example": "b0e6f15b45c36b12",
+  "deprecation": {
+    "_status": null
+  },
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [287],
+      "description": "Deprecate `sentry.trace.parent_span_id`"
+    },
+    {
+      "version": "0.1.0",
+      "prs": [116]
+    }
+  ]
 }

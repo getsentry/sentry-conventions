@@ -6,5 +6,11 @@
     "key": "false"
   },
   "is_in_otel": false,
-  "example": 1234567890
+  "example": 1234567890,
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [101]
+    }
+  ]
 }

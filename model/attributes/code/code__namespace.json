@@ -11,5 +11,14 @@
     "_status": null,
     "replacement": "code.function.name",
     "reason": "code.function.name should include the namespace."
-  }
+  },
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [61, 74]
+    },
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

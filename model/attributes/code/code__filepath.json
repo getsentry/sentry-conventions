@@ -11,5 +11,14 @@
     "_status": null,
     "replacement": "code.file.path"
   },
-  "alias": ["code.file.path"]
+  "alias": ["code.file.path"],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [61]
+    },
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

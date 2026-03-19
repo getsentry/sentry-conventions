@@ -1,0 +1,18 @@
+{
+  "key": "ui.element.width",
+  "brief": "The width of the UI element (for HTML in pixels)",
+  "type": "integer",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": 512,
+  "sdks": ["javascript-browser"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [284],
+      "description": "Added ui.element.width attribute"
+    }
+  ]
+}

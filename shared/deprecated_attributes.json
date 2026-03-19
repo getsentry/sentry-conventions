@@ -2,6 +2,54 @@
   "_generated": "This file is generated. Do not modify it directly. See scripts/generate_deprecated_attributes_json.ts",
   "attributes": [
     {
+      "key": "cls",
+      "brief": "The value of the recorded Cumulative Layout Shift (CLS) web vital",
+      "type": "double",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": 0.2361,
+      "sdks": ["javascript-browser"],
+      "deprecation": {
+        "replacement": "browser.web_vital.cls.value",
+        "reason": "The CLS web vital is now recorded as a browser.web_vital.cls.value attribute.",
+        "_status": "backfill"
+      },
+      "alias": ["browser.web_vital.cls.value"],
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [229],
+          "description": "Added and deprecated attribute to document JS SDK's current behaviour"
+        }
+      ]
+    },
+    {
+      "key": "deviceMemory",
+      "brief": "The estimated total memory capacity of the device, only a rough estimation in gigabytes.",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "8 GB",
+      "sdks": ["javascript-browser"],
+      "alias": ["device.memory.estimated_capacity"],
+      "deprecation": {
+        "replacement": "device.memory.estimated_capacity",
+        "reason": "Old namespace-less attribute, to be replaced with device.memory.estimated_capacity for span-first future",
+        "_status": "backfill"
+      },
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [281],
+          "description": "Added and deprecated attribute to document JS SDK's current behaviour"
+        }
+      ]
+    },
+    {
       "key": "environment",
       "brief": "The sentry environment.",
       "type": "string",
@@ -14,7 +62,62 @@
         "_status": null,
         "replacement": "sentry.environment"
       },
-      "alias": ["sentry.environment"]
+      "alias": ["sentry.environment"],
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [61, 127]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
+    },
+    {
+      "key": "fcp",
+      "brief": "The time it takes for the browser to render the first piece of meaningful content on the screen",
+      "type": "double",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": 547.6951,
+      "sdks": ["javascript-browser"],
+      "deprecation": {
+        "_status": "backfill",
+        "replacement": "browser.web_vital.fcp.value",
+        "reason": "This attribute is being deprecated in favor of browser.web_vital.fcp.value"
+      },
+      "alias": ["browser.web_vital.fcp.value"],
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [235]
+        }
+      ]
+    },
+    {
+      "key": "fp",
+      "brief": "The time it takes for the browser to render the first pixel on the screen",
+      "type": "double",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": 477.1926,
+      "sdks": ["javascript-browser"],
+      "deprecation": {
+        "_status": "backfill",
+        "replacement": "browser.web_vital.fp.value",
+        "reason": "This attribute is being deprecated in favor of browser.web_vital.fp.value"
+      },
+      "alias": ["browser.web_vital.fp.value"],
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [235]
+        }
+      ]
     },
     {
       "key": "fs_error",
@@ -30,7 +133,88 @@
         "reason": "This attribute is not part of the OpenTelemetry specification and error.type fits much better."
       },
       "example": "ENOENT: no such file or directory",
-      "sdks": ["javascript-node"]
+      "sdks": ["javascript-node"],
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [61, 127]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
+    },
+    {
+      "key": "hardwareConcurrency",
+      "brief": "The number of logical CPU cores available.",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "14",
+      "sdks": ["javascript-browser"],
+      "alias": ["device.cpu.logical_core_count"],
+      "deprecation": {
+        "replacement": "device.cpu.logical_core_count",
+        "reason": "Old namespace-less attribute, to be replaced with device.cpu.logical_core_count for span-first future",
+        "_status": "backfill"
+      },
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [281],
+          "description": "Added and deprecated attribute to document JS SDK's current behaviour"
+        }
+      ]
+    },
+    {
+      "key": "inp",
+      "brief": "The value of the recorded Interaction to Next Paint (INP) web vital",
+      "type": "double",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": 200,
+      "sdks": ["javascript-browser"],
+      "deprecation": {
+        "replacement": "browser.web_vital.inp.value",
+        "reason": "The INP web vital is now recorded as a browser.web_vital.inp.value attribute.",
+        "_status": "backfill"
+      },
+      "alias": ["browser.web_vital.inp.value"],
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [229],
+          "description": "Added and deprecated attribute to document JS SDK's current behaviour"
+        }
+      ]
+    },
+    {
+      "key": "lcp",
+      "brief": "The value of the recorded Largest Contentful Paint (LCP) web vital",
+      "type": "double",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": 2500,
+      "sdks": ["javascript-browser"],
+      "deprecation": {
+        "replacement": "browser.web_vital.lcp.value",
+        "reason": "The LCP web vital is now recorded as a browser.web_vital.lcp.value attribute.",
+        "_status": "backfill"
+      },
+      "alias": ["browser.web_vital.lcp.value"],
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [229],
+          "description": "Added and deprecated attribute to document JS SDK's current behaviour"
+        }
+      ]
     },
     {
       "key": "method",
@@ -46,7 +230,16 @@
         "replacement": "http.request.method"
       },
       "alias": ["http.request.method"],
-      "sdks": ["javascript-browser", "javascript-node"]
+      "sdks": ["javascript-browser", "javascript-node"],
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [61, 127]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "release",
@@ -61,7 +254,16 @@
         "_status": null,
         "replacement": "sentry.release"
       },
-      "alias": ["sentry.release"]
+      "alias": ["sentry.release"],
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [61, 127]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "replay_id",
@@ -76,7 +278,16 @@
         "_status": null,
         "replacement": "sentry.replay_id"
       },
-      "alias": ["sentry.replay_id"]
+      "alias": ["sentry.replay_id"],
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [61]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "route",
@@ -92,7 +303,16 @@
         "replacement": "http.route"
       },
       "alias": ["http.route"],
-      "sdks": ["php-laravel", "javascript-reactnative"]
+      "sdks": ["php-laravel", "javascript-reactnative"],
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [61, 74]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "transaction",
@@ -107,7 +327,39 @@
         "_status": null,
         "replacement": "sentry.transaction"
       },
-      "alias": ["sentry.transaction"]
+      "alias": ["sentry.transaction"],
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [61, 127]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
+    },
+    {
+      "key": "ttfb",
+      "brief": "The value of the recorded Time To First Byte (TTFB) web vital in milliseconds",
+      "type": "double",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": 194,
+      "alias": ["browser.web_vital.ttfb.value"],
+      "sdks": ["javascript-browser"],
+      "deprecation": {
+        "_status": "backfill",
+        "replacement": "browser.web_vital.ttfb.value",
+        "reason": "This attribute is being deprecated in favor of browser.web_vital.ttfb.value"
+      },
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [235]
+        }
+      ]
     },
     {
       "key": "url",
@@ -123,7 +375,39 @@
         "replacement": "url.full"
       },
       "alias": ["url.full", "http.url"],
-      "sdks": ["javascript-browser", "javascript-node"]
+      "sdks": ["javascript-browser", "javascript-node"],
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [61]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
+    },
+    {
+      "key": "ai.citations",
+      "brief": "References or sources cited by the AI model in its response.",
+      "type": "string[]",
+      "pii": {
+        "key": "true"
+      },
+      "is_in_otel": false,
+      "example": ["Citation 1", "Citation 2"],
+      "deprecation": {
+        "_status": null
+      },
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [264]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [55]
+        }
+      ]
     },
     {
       "key": "ai.completion_tokens.used",
@@ -139,7 +423,43 @@
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.usage.output_tokens"
-      }
+      },
+      "changelog": [
+        {
+          "version": "0.4.0",
+          "prs": [228]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [57, 61]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
+    },
+    {
+      "key": "ai.documents",
+      "brief": "Documents or content chunks used as context for the AI model.",
+      "type": "string[]",
+      "pii": {
+        "key": "true"
+      },
+      "is_in_otel": false,
+      "example": ["document1.txt", "document2.pdf"],
+      "deprecation": {
+        "_status": null
+      },
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [264]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [55]
+        }
+      ]
     },
     {
       "key": "ai.finish_reason",
@@ -154,7 +474,13 @@
         "_status": null,
         "replacement": "gen_ai.response.finish_reason"
       },
-      "alias": ["gen_ai.response.finish_reasons"]
+      "alias": ["gen_ai.response.finish_reasons"],
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [55, 57, 61, 108, 127]
+        }
+      ]
     },
     {
       "key": "ai.frequency_penalty",
@@ -169,7 +495,17 @@
         "_status": null,
         "replacement": "gen_ai.request.frequency_penalty"
       },
-      "alias": ["gen_ai.request.frequency_penalty"]
+      "alias": ["gen_ai.request.frequency_penalty"],
+      "changelog": [
+        {
+          "version": "0.4.0",
+          "prs": [228]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [55, 57, 61, 108]
+        }
+      ]
     },
     {
       "key": "ai.function_call",
@@ -184,7 +520,13 @@
         "_status": null,
         "replacement": "gen_ai.tool.name"
       },
-      "alias": ["gen_ai.tool.name"]
+      "alias": ["gen_ai.tool.name"],
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [55, 57, 61, 108]
+        }
+      ]
     },
     {
       "key": "ai.generation_id",
@@ -199,7 +541,13 @@
         "_status": null,
         "replacement": "gen_ai.response.id"
       },
-      "alias": ["gen_ai.response.id"]
+      "alias": ["gen_ai.response.id"],
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [55, 57, 61, 108, 127]
+        }
+      ]
     },
     {
       "key": "ai.input_messages",
@@ -215,7 +563,62 @@
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.request.messages"
-      }
+      },
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [65, 119]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
+    },
+    {
+      "key": "ai.is_search_required",
+      "brief": "Boolean indicating if the model needs to perform a search.",
+      "type": "boolean",
+      "pii": {
+        "key": "false"
+      },
+      "is_in_otel": false,
+      "example": false,
+      "deprecation": {
+        "_status": null
+      },
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [264]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [55]
+        }
+      ]
+    },
+    {
+      "key": "ai.metadata",
+      "brief": "Extra metadata passed to an AI pipeline step.",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "{\"user_id\": 123, \"session_id\": \"abc123\"}",
+      "deprecation": {
+        "_status": null
+      },
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [264]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [55, 127]
+        }
+      ]
     },
     {
       "key": "ai.model.provider",
@@ -230,7 +633,17 @@
         "_status": null,
         "replacement": "gen_ai.provider.name"
       },
-      "alias": ["gen_ai.provider.name", "gen_ai.system"]
+      "alias": ["gen_ai.provider.name", "gen_ai.system"],
+      "changelog": [
+        {
+          "version": "0.4.0",
+          "prs": [253]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [57, 61, 108, 127]
+        }
+      ]
     },
     {
       "key": "ai.model_id",
@@ -246,7 +659,16 @@
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.response.model"
-      }
+      },
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [57, 61, 127]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "ai.pipeline.name",
@@ -261,7 +683,38 @@
         "_status": null,
         "replacement": "gen_ai.pipeline.name"
       },
-      "alias": ["gen_ai.pipeline.name"]
+      "alias": ["gen_ai.pipeline.name"],
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [53, 76, 108, 127]
+        }
+      ]
+    },
+    {
+      "key": "ai.preamble",
+      "brief": "For an AI model call, the preamble parameter. Preambles are a part of the prompt used to adjust the model's overall behavior and conversation style.",
+      "type": "string",
+      "pii": {
+        "key": "true"
+      },
+      "is_in_otel": false,
+      "example": "You are now a clown.",
+      "deprecation": {
+        "_status": null,
+        "replacement": "gen_ai.system_instructions"
+      },
+      "alias": ["gen_ai.system_instructions"],
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [264]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [55]
+        }
+      ]
     },
     {
       "key": "ai.presence_penalty",
@@ -276,7 +729,17 @@
         "_status": null,
         "replacement": "gen_ai.request.presence_penalty"
       },
-      "alias": ["gen_ai.request.presence_penalty"]
+      "alias": ["gen_ai.request.presence_penalty"],
+      "changelog": [
+        {
+          "version": "0.4.0",
+          "prs": [228]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [55, 57, 61, 108]
+        }
+      ]
     },
     {
       "key": "ai.prompt_tokens.used",
@@ -292,7 +755,66 @@
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.usage.input_tokens"
-      }
+      },
+      "changelog": [
+        {
+          "version": "0.4.0",
+          "prs": [228]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [57, 61]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
+    },
+    {
+      "key": "ai.raw_prompting",
+      "brief": "When enabled, the user’s prompt will be sent to the model without any pre-processing.",
+      "type": "boolean",
+      "pii": {
+        "key": "false"
+      },
+      "is_in_otel": false,
+      "example": true,
+      "deprecation": {
+        "_status": null
+      },
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [264]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [55]
+        }
+      ]
+    },
+    {
+      "key": "ai.response_format",
+      "brief": "For an AI model call, the format of the response",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "json_object",
+      "deprecation": {
+        "_status": null
+      },
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [264]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [55, 127]
+        }
+      ]
     },
     {
       "key": "ai.responses",
@@ -307,7 +829,62 @@
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.response.text"
-      }
+      },
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [65, 127]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
+    },
+    {
+      "key": "ai.search_queries",
+      "brief": "Queries used to search for relevant context or documents.",
+      "type": "string[]",
+      "pii": {
+        "key": "true"
+      },
+      "is_in_otel": false,
+      "example": ["climate change effects", "renewable energy"],
+      "deprecation": {
+        "_status": null
+      },
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [264]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [55]
+        }
+      ]
+    },
+    {
+      "key": "ai.search_results",
+      "brief": "Results returned from search queries for context.",
+      "type": "string[]",
+      "pii": {
+        "key": "true"
+      },
+      "is_in_otel": false,
+      "example": ["search_result_1, search_result_2"],
+      "deprecation": {
+        "_status": null
+      },
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [264]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [55]
+        }
+      ]
     },
     {
       "key": "ai.seed",
@@ -322,7 +899,13 @@
         "_status": null,
         "replacement": "gen_ai.request.seed"
       },
-      "alias": ["gen_ai.request.seed"]
+      "alias": ["gen_ai.request.seed"],
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [55, 57, 61, 108, 127]
+        }
+      ]
     },
     {
       "key": "ai.streaming",
@@ -338,7 +921,39 @@
         "_status": null,
         "replacement": "gen_ai.response.streaming"
       },
-      "alias": ["gen_ai.response.streaming"]
+      "alias": ["gen_ai.response.streaming"],
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [76, 108]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
+    },
+    {
+      "key": "ai.tags",
+      "brief": "Tags that describe an AI pipeline step.",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "{\"executed_function\": \"add_integers\"}",
+      "deprecation": {
+        "_status": null
+      },
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [264]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [55, 127]
+        }
+      ]
     },
     {
       "key": "ai.temperature",
@@ -353,7 +968,42 @@
         "_status": null,
         "replacement": "gen_ai.request.temperature"
       },
-      "alias": ["gen_ai.request.temperature"]
+      "alias": ["gen_ai.request.temperature"],
+      "changelog": [
+        {
+          "version": "0.4.0",
+          "prs": [228]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [55, 57, 61, 108]
+        }
+      ]
+    },
+    {
+      "key": "ai.texts",
+      "brief": "Raw text inputs provided to the model.",
+      "type": "string[]",
+      "pii": {
+        "key": "true"
+      },
+      "is_in_otel": false,
+      "example": ["Hello, how are you?", "What is the capital of France?"],
+      "deprecation": {
+        "_status": null,
+        "replacement": "gen_ai.input.messages"
+      },
+      "alias": ["gen_ai.input.messages"],
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [264]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [55]
+        }
+      ]
     },
     {
       "key": "ai.tool_calls",
@@ -367,7 +1017,13 @@
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.response.tool_calls"
-      }
+      },
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [55, 65]
+        }
+      ]
     },
     {
       "key": "ai.tools",
@@ -381,7 +1037,13 @@
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.request.available_tools"
-      }
+      },
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [55, 65, 127]
+        }
+      ]
     },
     {
       "key": "ai.top_k",
@@ -396,7 +1058,17 @@
         "_status": null,
         "replacement": "gen_ai.request.top_k"
       },
-      "alias": ["gen_ai.request.top_k"]
+      "alias": ["gen_ai.request.top_k"],
+      "changelog": [
+        {
+          "version": "0.4.0",
+          "prs": [228]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [55, 57, 61, 108]
+        }
+      ]
     },
     {
       "key": "ai.top_p",
@@ -411,7 +1083,46 @@
         "_status": null,
         "replacement": "gen_ai.request.top_p"
       },
-      "alias": ["gen_ai.request.top_p"]
+      "alias": ["gen_ai.request.top_p"],
+      "changelog": [
+        {
+          "version": "0.4.0",
+          "prs": [228]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [55, 57, 61, 108]
+        }
+      ]
+    },
+    {
+      "key": "ai.total_cost",
+      "brief": "The total cost for the tokens used.",
+      "type": "double",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": 12.34,
+      "deprecation": {
+        "_status": null,
+        "replacement": "gen_ai.cost.total_tokens"
+      },
+      "alias": ["gen_ai.cost.total_tokens"],
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [264]
+        },
+        {
+          "version": "0.4.0",
+          "prs": [228]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [53]
+        }
+      ]
     },
     {
       "key": "ai.total_tokens.used",
@@ -427,7 +1138,67 @@
         "_status": null,
         "replacement": "gen_ai.usage.total_tokens"
       },
-      "alias": ["gen_ai.usage.total_tokens"]
+      "alias": ["gen_ai.usage.total_tokens"],
+      "changelog": [
+        {
+          "version": "0.4.0",
+          "prs": [228]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [57, 61, 108]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
+    },
+    {
+      "key": "ai.warnings",
+      "brief": "Warning messages generated during model execution.",
+      "type": "string[]",
+      "pii": {
+        "key": "true"
+      },
+      "is_in_otel": false,
+      "example": ["Token limit exceeded"],
+      "deprecation": {
+        "_status": null
+      },
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [264]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [55]
+        }
+      ]
+    },
+    {
+      "key": "cls.source.<key>",
+      "brief": "The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "body > div#app",
+      "sdks": ["javascript-browser"],
+      "deprecation": {
+        "replacement": "browser.web_vital.cls.source.<key>",
+        "reason": "The CLS source is now recorded as a browser.web_vital.cls.source.<key> attribute.",
+        "_status": "backfill"
+      },
+      "has_dynamic_suffix": true,
+      "alias": ["browser.web_vital.cls.source.<key>"],
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [234]
+        }
+      ]
     },
     {
       "key": "code.filepath",
@@ -442,7 +1213,16 @@
         "_status": null,
         "replacement": "code.file.path"
       },
-      "alias": ["code.file.path"]
+      "alias": ["code.file.path"],
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [61]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "code.function",
@@ -457,7 +1237,16 @@
         "_status": null,
         "replacement": "code.function.name"
       },
-      "alias": ["code.function.name"]
+      "alias": ["code.function.name"],
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [61, 74]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "code.lineno",
@@ -472,7 +1261,20 @@
         "_status": null,
         "replacement": "code.line.number"
       },
-      "alias": ["code.line.number"]
+      "alias": ["code.line.number"],
+      "changelog": [
+        {
+          "version": "0.4.0",
+          "prs": [228]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [61, 108]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "code.namespace",
@@ -487,7 +1289,16 @@
         "_status": null,
         "replacement": "code.function.name",
         "reason": "code.function.name should include the namespace."
-      }
+      },
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [61, 74]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "db.name",
@@ -502,7 +1313,16 @@
         "_status": null,
         "replacement": "db.namespace"
       },
-      "alias": ["db.namespace"]
+      "alias": ["db.namespace"],
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [61, 127]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "db.operation",
@@ -517,7 +1337,20 @@
         "_status": "normalize",
         "replacement": "db.operation.name"
       },
-      "alias": ["db.operation.name"]
+      "alias": ["db.operation.name"],
+      "changelog": [
+        {
+          "version": "0.4.0",
+          "prs": [199]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [61, 127]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "db.sql.bindings",
@@ -533,7 +1366,16 @@
         "reason": "Instead of adding every binding in the db.sql.bindings attribute, add them as individual entires with db.query.parameter.<key>."
       },
       "example": ["1", "foo"],
-      "sdks": ["php-laravel"]
+      "sdks": ["php-laravel"],
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [61]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "db.statement",
@@ -548,7 +1390,20 @@
         "_status": "normalize",
         "replacement": "db.query.text"
       },
-      "alias": ["db.query.text"]
+      "alias": ["db.query.text"],
+      "changelog": [
+        {
+          "version": "0.4.0",
+          "prs": [199]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [61, 127]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "db.system",
@@ -563,7 +1418,20 @@
         "_status": "backfill",
         "replacement": "db.system.name"
       },
-      "alias": ["db.system.name"]
+      "alias": ["db.system.name"],
+      "changelog": [
+        {
+          "version": "0.4.0",
+          "prs": [199, 224]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [61, 127]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "gen_ai.prompt",
@@ -577,7 +1445,16 @@
       "deprecation": {
         "_status": null,
         "reason": "Deprecated from OTEL, use gen_ai.input.messages with the new format instead."
-      }
+      },
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [74, 108, 119]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "gen_ai.request.available_tools",
@@ -592,7 +1469,17 @@
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.tool.definitions"
-      }
+      },
+      "changelog": [
+        {
+          "version": "0.4.0",
+          "prs": [221]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [63, 127]
+        }
+      ]
     },
     {
       "key": "gen_ai.request.messages",
@@ -607,7 +1494,17 @@
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.input.messages"
-      }
+      },
+      "changelog": [
+        {
+          "version": "0.4.0",
+          "prs": [221]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [63, 74, 108, 119, 122]
+        }
+      ]
     },
     {
       "key": "gen_ai.response.text",
@@ -622,7 +1519,17 @@
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.output.messages"
-      }
+      },
+      "changelog": [
+        {
+          "version": "0.4.0",
+          "prs": [221]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [63, 74]
+        }
+      ]
     },
     {
       "key": "gen_ai.response.tool_calls",
@@ -637,7 +1544,17 @@
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.output.messages"
-      }
+      },
+      "changelog": [
+        {
+          "version": "0.4.0",
+          "prs": [221]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [63, 74]
+        }
+      ]
     },
     {
       "key": "gen_ai.system",
@@ -652,7 +1569,17 @@
         "_status": null,
         "replacement": "gen_ai.provider.name"
       },
-      "alias": ["ai.model.provider", "gen_ai.provider.name"]
+      "alias": ["ai.model.provider", "gen_ai.provider.name"],
+      "changelog": [
+        {
+          "version": "0.4.0",
+          "prs": [253]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [57, 127]
+        }
+      ]
     },
     {
       "key": "gen_ai.system.message",
@@ -666,7 +1593,92 @@
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.system_instructions"
-      }
+      },
+      "changelog": [
+        {
+          "version": "0.4.0",
+          "prs": [221]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [62]
+        }
+      ]
+    },
+    {
+      "key": "gen_ai.tool.input",
+      "brief": "The input of the tool being used. It has to be a stringified version of the input to the tool.",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "{\"location\": \"Paris\"}",
+      "alias": ["gen_ai.tool.call.arguments"],
+      "deprecation": {
+        "_status": null,
+        "replacement": "gen_ai.tool.call.arguments"
+      },
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [265]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [63, 74]
+        }
+      ]
+    },
+    {
+      "key": "gen_ai.tool.message",
+      "brief": "The response from a tool or function call passed to the model.",
+      "type": "string",
+      "pii": {
+        "key": "true"
+      },
+      "is_in_otel": false,
+      "example": "rainy, 57°F",
+      "alias": ["gen_ai.tool.call.result", "gen_ai.tool.output"],
+      "deprecation": {
+        "_status": null,
+        "replacement": "gen_ai.tool.call.result"
+      },
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [265]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [62]
+        }
+      ]
+    },
+    {
+      "key": "gen_ai.tool.output",
+      "brief": "The output of the tool being used. It has to be a stringified version of the output of the tool.",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "rainy, 57°F",
+      "alias": ["gen_ai.tool.call.result", "gen_ai.tool.message"],
+      "deprecation": {
+        "_status": null,
+        "replacement": "gen_ai.tool.call.result"
+      },
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [265]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [63, 74]
+        }
+      ]
     },
     {
       "key": "gen_ai.usage.completion_tokens",
@@ -681,7 +1693,20 @@
         "_status": null,
         "replacement": "gen_ai.usage.output_tokens"
       },
-      "alias": ["ai.completion_tokens.used", "gen_ai.usage.output_tokens"]
+      "alias": ["ai.completion_tokens.used", "gen_ai.usage.output_tokens"],
+      "changelog": [
+        {
+          "version": "0.4.0",
+          "prs": [228]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [61]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "gen_ai.usage.prompt_tokens",
@@ -696,7 +1721,20 @@
         "_status": null,
         "replacement": "gen_ai.usage.input_tokens"
       },
-      "alias": ["ai.prompt_tokens.used", "gen_ai.usage.input_tokens"]
+      "alias": ["ai.prompt_tokens.used", "gen_ai.usage.input_tokens"],
+      "changelog": [
+        {
+          "version": "0.4.0",
+          "prs": [228]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [61]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "http.client_ip",
@@ -711,7 +1749,16 @@
         "_status": null,
         "replacement": "client.address"
       },
-      "alias": ["client.address"]
+      "alias": ["client.address"],
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [61, 106, 127]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "http.flavor",
@@ -726,7 +1773,16 @@
         "_status": null,
         "replacement": "network.protocol.version"
       },
-      "alias": ["network.protocol.version", "net.protocol.version"]
+      "alias": ["network.protocol.version", "net.protocol.version"],
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [61, 108, 127]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "http.host",
@@ -742,7 +1798,16 @@
         "replacement": "server.address",
         "reason": "Deprecated, use one of `server.address` or `client.address`, depending on the usage"
       },
-      "alias": ["server.address", "client.address", "http.server_name", "net.host.name"]
+      "alias": ["server.address", "client.address", "http.server_name", "net.host.name"],
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [61, 108, 127]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "http.method",
@@ -757,7 +1822,16 @@
         "_status": null,
         "replacement": "http.request.method"
       },
-      "alias": ["http.request.method"]
+      "alias": ["http.request.method"],
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [61, 127]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "http.response_content_length",
@@ -772,7 +1846,20 @@
         "_status": "backfill",
         "replacement": "http.response.body.size"
       },
-      "alias": ["http.response.body.size", "http.response.header.content-length"]
+      "alias": ["http.response.body.size", "http.response.header.content-length"],
+      "changelog": [
+        {
+          "version": "0.4.0",
+          "prs": [228]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [61, 106]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "http.response_transfer_size",
@@ -787,7 +1874,20 @@
         "_status": "backfill",
         "replacement": "http.response.size"
       },
-      "alias": ["http.response.size"]
+      "alias": ["http.response.size"],
+      "changelog": [
+        {
+          "version": "0.4.0",
+          "prs": [228]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [61]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "http.scheme",
@@ -802,7 +1902,16 @@
         "_status": null,
         "replacement": "url.scheme"
       },
-      "alias": ["url.scheme"]
+      "alias": ["url.scheme"],
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [61, 127]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "http.server_name",
@@ -817,7 +1926,16 @@
         "_status": null,
         "replacement": "server.address"
       },
-      "alias": ["server.address", "net.host.name", "http.host"]
+      "alias": ["server.address", "net.host.name", "http.host"],
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [61, 108, 127]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "http.status_code",
@@ -832,7 +1950,20 @@
         "_status": null,
         "replacement": "http.response.status_code"
       },
-      "alias": ["http.response.status_code"]
+      "alias": ["http.response.status_code"],
+      "changelog": [
+        {
+          "version": "0.4.0",
+          "prs": [228]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [61]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "http.target",
@@ -847,7 +1978,16 @@
         "_status": null,
         "replacement": "url.path",
         "reason": "This attribute is being deprecated in favor of url.path and url.query"
-      }
+      },
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [61]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "http.url",
@@ -862,7 +2002,16 @@
         "_status": null,
         "replacement": "url.full"
       },
-      "alias": ["url.full", "url"]
+      "alias": ["url.full", "url"],
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [61, 108]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "http.user_agent",
@@ -877,7 +2026,178 @@
         "_status": null,
         "replacement": "user_agent.original"
       },
-      "alias": ["user_agent.original"]
+      "alias": ["user_agent.original"],
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [61, 127]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
+    },
+    {
+      "key": "lcp.element",
+      "brief": "The dom element responsible for the largest contentful paint.",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "img",
+      "deprecation": {
+        "replacement": "browser.web_vital.lcp.element",
+        "reason": "The LCP element is now recorded as a browser.web_vital.lcp.element attribute.",
+        "_status": "backfill"
+      },
+      "alias": ["browser.web_vital.lcp.element"],
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [233]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [127]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
+    },
+    {
+      "key": "lcp.id",
+      "brief": "The id of the dom element responsible for the largest contentful paint.",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "#hero",
+      "deprecation": {
+        "replacement": "browser.web_vital.lcp.id",
+        "reason": "The LCP id is now recorded as a browser.web_vital.lcp.id attribute.",
+        "_status": "backfill"
+      },
+      "alias": ["browser.web_vital.lcp.id"],
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [233]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [127]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
+    },
+    {
+      "key": "lcp.loadTime",
+      "brief": "The time it took for the LCP element to be loaded",
+      "type": "integer",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": 1402,
+      "sdks": ["javascript-browser"],
+      "deprecation": {
+        "replacement": "browser.web_vital.lcp.load_time",
+        "reason": "The LCP load time is now recorded as a browser.web_vital.lcp.load_time attribute.",
+        "_status": "backfill"
+      },
+      "alias": ["browser.web_vital.lcp.load_time"],
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [233]
+        }
+      ]
+    },
+    {
+      "key": "lcp.renderTime",
+      "brief": "The time it took for the LCP element to be rendered",
+      "type": "integer",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": 1685,
+      "sdks": ["javascript-browser"],
+      "deprecation": {
+        "replacement": "browser.web_vital.lcp.render_time",
+        "reason": "The LCP render time is now recorded as a browser.web_vital.lcp.render_time attribute.",
+        "_status": "backfill"
+      },
+      "alias": ["browser.web_vital.lcp.render_time"],
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [233]
+        }
+      ]
+    },
+    {
+      "key": "lcp.size",
+      "brief": "The size of the largest contentful paint element.",
+      "type": "integer",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": 1234,
+      "deprecation": {
+        "replacement": "browser.web_vital.lcp.size",
+        "reason": "The LCP size is now recorded as a browser.web_vital.lcp.size attribute.",
+        "_status": "backfill"
+      },
+      "alias": ["browser.web_vital.lcp.size"],
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [233]
+        },
+        {
+          "version": "0.4.0",
+          "prs": [228]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
+    },
+    {
+      "key": "lcp.url",
+      "brief": "The url of the dom element responsible for the largest contentful paint.",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "https://example.com",
+      "deprecation": {
+        "replacement": "browser.web_vital.lcp.url",
+        "reason": "The LCP url is now recorded as a browser.web_vital.lcp.url attribute.",
+        "_status": "backfill"
+      },
+      "alias": ["browser.web_vital.lcp.url"],
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [233]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [127]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "net.host.ip",
@@ -892,7 +2212,16 @@
         "_status": null,
         "replacement": "network.local.address"
       },
-      "alias": ["network.local.address", "net.sock.host.addr"]
+      "alias": ["network.local.address", "net.sock.host.addr"],
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [61, 108, 127]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "net.host.name",
@@ -907,7 +2236,16 @@
         "_status": null,
         "replacement": "server.address"
       },
-      "alias": ["server.address", "http.server_name", "http.host"]
+      "alias": ["server.address", "http.server_name", "http.host"],
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [61, 108, 127]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "net.host.port",
@@ -922,7 +2260,20 @@
         "_status": null,
         "replacement": "server.port"
       },
-      "alias": ["server.port"]
+      "alias": ["server.port"],
+      "changelog": [
+        {
+          "version": "0.4.0",
+          "prs": [228]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [61]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "net.peer.ip",
@@ -937,7 +2288,16 @@
         "_status": null,
         "replacement": "network.peer.address"
       },
-      "alias": ["network.peer.address", "net.sock.peer.addr"]
+      "alias": ["network.peer.address", "net.sock.peer.addr"],
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [61, 108, 127]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "net.peer.name",
@@ -952,7 +2312,16 @@
         "_status": null,
         "replacement": "server.address",
         "reason": "Deprecated, use server.address on client spans and client.address on server spans."
-      }
+      },
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [61, 127]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "net.peer.port",
@@ -967,7 +2336,20 @@
         "_status": null,
         "replacement": "server.port",
         "reason": "Deprecated, use server.port on client spans and client.port on server spans."
-      }
+      },
+      "changelog": [
+        {
+          "version": "0.4.0",
+          "prs": [228]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [61]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "net.protocol.name",
@@ -982,7 +2364,16 @@
         "_status": null,
         "replacement": "network.protocol.name"
       },
-      "alias": ["network.protocol.name"]
+      "alias": ["network.protocol.name"],
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [61, 127]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "net.protocol.version",
@@ -997,7 +2388,16 @@
         "_status": null,
         "replacement": "network.protocol.version"
       },
-      "alias": ["network.protocol.version", "http.flavor"]
+      "alias": ["network.protocol.version", "http.flavor"],
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [61, 108, 127]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "net.sock.family",
@@ -1012,7 +2412,16 @@
         "_status": null,
         "replacement": "network.transport",
         "reason": "Deprecated, use network.transport and network.type."
-      }
+      },
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [61, 127]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "net.sock.host.addr",
@@ -1027,7 +2436,16 @@
         "_status": null,
         "replacement": "network.local.address"
       },
-      "alias": ["network.local.address", "net.host.ip"]
+      "alias": ["network.local.address", "net.host.ip"],
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [61, 108, 127]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "net.sock.host.port",
@@ -1042,7 +2460,20 @@
         "_status": null,
         "replacement": "network.local.port"
       },
-      "alias": ["network.local.port"]
+      "alias": ["network.local.port"],
+      "changelog": [
+        {
+          "version": "0.4.0",
+          "prs": [228]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [61]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "net.sock.peer.addr",
@@ -1057,7 +2488,16 @@
         "_status": null,
         "replacement": "network.peer.address"
       },
-      "alias": ["network.peer.address", "net.peer.ip"]
+      "alias": ["network.peer.address", "net.peer.ip"],
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [61, 108, 127]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "net.sock.peer.name",
@@ -1071,7 +2511,16 @@
       "deprecation": {
         "_status": null,
         "reason": "Deprecated from OTEL, no replacement at this time"
-      }
+      },
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [61, 119, 127]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "net.sock.peer.port",
@@ -1085,7 +2534,20 @@
       "deprecation": {
         "_status": null,
         "replacement": "network.peer.port"
-      }
+      },
+      "changelog": [
+        {
+          "version": "0.4.0",
+          "prs": [228]
+        },
+        {
+          "version": "0.1.0",
+          "prs": [61]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "net.transport",
@@ -1100,7 +2562,16 @@
         "_status": null,
         "replacement": "network.transport"
       },
-      "alias": ["network.transport"]
+      "alias": ["network.transport"],
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [61, 127]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
     },
     {
       "key": "query.<key>",
@@ -1116,7 +2587,33 @@
         "replacement": "url.query",
         "reason": "Instead of sending items individually in query.<key>, they should be sent all together with url.query."
       },
-      "example": "query.id='123'"
+      "example": "query.id='123'",
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [103]
+        }
+      ]
+    },
+    {
+      "key": "resource.deployment.environment",
+      "brief": "The software deployment environment name.",
+      "type": "string",
+      "pii": {
+        "key": "false"
+      },
+      "is_in_otel": true,
+      "example": "production",
+      "deprecation": {
+        "_status": "backfill",
+        "replacement": "sentry.environment"
+      },
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [266]
+        }
+      ]
     },
     {
       "key": "resource.deployment.environment.name",
@@ -1130,7 +2627,13 @@
       "deprecation": {
         "_status": "backfill",
         "replacement": "sentry.environment"
-      }
+      },
+      "changelog": [
+        {
+          "version": "0.3.1",
+          "prs": [196]
+        }
+      ]
     },
     {
       "key": "sentry.browser.name",
@@ -1145,7 +2648,13 @@
         "_status": null,
         "replacement": "browser.name"
       },
-      "alias": ["browser.name"]
+      "alias": ["browser.name"],
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [139]
+        }
+      ]
     },
     {
       "key": "sentry.browser.version",
@@ -1160,7 +2669,13 @@
         "_status": null,
         "replacement": "browser.version"
       },
-      "alias": ["browser.version"]
+      "alias": ["browser.version"],
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [139]
+        }
+      ]
     },
     {
       "key": "sentry.segment_id",
@@ -1175,7 +2690,80 @@
       "deprecation": {
         "_status": null,
         "replacement": "sentry.segment.id"
-      }
+      },
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [124]
+        }
+      ]
+    },
+    {
+      "key": "sentry.source",
+      "brief": "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
+      "type": "string",
+      "pii": {
+        "key": "false"
+      },
+      "is_in_otel": false,
+      "example": "route",
+      "deprecation": {
+        "_status": "backfill",
+        "replacement": "sentry.span.source",
+        "reason": "This attribute is being deprecated in favor of sentry.span.source"
+      },
+      "changelog": [
+        {
+          "version": "next"
+        }
+      ]
+    },
+    {
+      "key": "sentry.trace.parent_span_id",
+      "brief": "The span id of the span that was active when the log was collected. This should not be set if there was no active span.",
+      "type": "string",
+      "pii": {
+        "key": "false"
+      },
+      "is_in_otel": false,
+      "example": "b0e6f15b45c36b12",
+      "deprecation": {
+        "_status": null
+      },
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [287],
+          "description": "Deprecate `sentry.trace.parent_span_id`"
+        },
+        {
+          "version": "0.1.0",
+          "prs": [116]
+        }
+      ]
+    },
+    {
+      "key": "ttfb.requestTime",
+      "brief": "The time it takes for the server to process the initial request and send the first byte of a response to the user's browser",
+      "type": "double",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": 1554.5814,
+      "sdks": ["javascript-browser"],
+      "deprecation": {
+        "_status": "backfill",
+        "replacement": "browser.web_vital.ttfb.request_time",
+        "reason": "This attribute is being deprecated in favor of browser.web_vital.ttfb.request_time"
+      },
+      "alias": ["browser.web_vital.ttfb.request_time"],
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [235]
+        }
+      ]
     }
   ]
 }

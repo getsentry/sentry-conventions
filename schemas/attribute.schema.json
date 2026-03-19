@@ -19,7 +19,7 @@
     },
     "type": {
       "description": "The type of the attribute value",
-      "enum": ["string", "boolean", "integer", "double", "string[]", "boolean[]", "integer[]", "double[]"]
+      "enum": ["string", "boolean", "integer", "double", "string[]", "boolean[]", "integer[]", "double[]", "any"]
     },
     "pii": {
       "description": "If an attribute can have pii. Is either true, false or maybe. Optionally include a reason about why it has PII or not",
@@ -100,6 +100,32 @@
       "type": "array",
       "items": {
         "type": "string"
+      }
+    },
+    "changelog": {
+      "description": "A list of changelog entries tracking how this attribute has changed across versions",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "version": {
+            "description": "The sentry-conventions release version",
+            "type": "string"
+          },
+          "prs": {
+            "description": "GitHub PR numbers",
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "description": {
+            "description": "Optional description of what changed",
+            "type": "string"
+          }
+        },
+        "required": ["version"]
       }
     }
   },

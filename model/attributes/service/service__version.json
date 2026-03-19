@@ -7,5 +7,14 @@
   },
   "is_in_otel": true,
   "example": "5.0.0",
-  "alias": ["sentry.release"]
+  "alias": ["sentry.release"],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [127]
+    },
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

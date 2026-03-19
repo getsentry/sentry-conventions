@@ -7,5 +7,18 @@
   },
   "is_in_otel": true,
   "example": "SELECT * FROM users WHERE id = $1",
-  "alias": ["db.statement"]
+  "alias": ["db.statement"],
+  "changelog": [
+    {
+      "version": "0.4.0",
+      "prs": [208]
+    },
+    {
+      "version": "0.1.0",
+      "prs": [127]
+    },
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

@@ -11,5 +11,18 @@
     "_status": null,
     "replacement": "http.response.status_code"
   },
-  "alias": ["http.response.status_code"]
+  "alias": ["http.response.status_code"],
+  "changelog": [
+    {
+      "version": "0.4.0",
+      "prs": [228]
+    },
+    {
+      "version": "0.1.0",
+      "prs": [61]
+    },
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

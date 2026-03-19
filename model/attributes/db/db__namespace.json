@@ -7,5 +7,14 @@
   },
   "is_in_otel": true,
   "example": "customers",
-  "alias": ["db.name"]
+  "alias": ["db.name"],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "prs": [127]
+    },
+    {
+      "version": "0.0.0"
+    }
+  ]
 }

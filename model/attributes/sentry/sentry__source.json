@@ -1,0 +1,20 @@
+{
+  "key": "sentry.source",
+  "brief": "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "route",
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "sentry.span.source",
+    "reason": "This attribute is being deprecated in favor of sentry.span.source"
+  },
+  "changelog": [
+    {
+      "version": "next"
+    }
+  ]
+}

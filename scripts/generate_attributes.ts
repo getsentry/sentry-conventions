@@ -263,6 +263,8 @@ function getTsType(type: AttributeJson['type']): string {
       return 'Array<number>';
     case 'double[]':
       return 'Array<number>';
+    case 'any':
+      return 'unknown';
     default:
       throw new Error(`Unknown attribute type: ${type}`);
   }
@@ -289,7 +291,8 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
   content += '    STRING_ARRAY = "string[]"\n';
   content += '    BOOLEAN_ARRAY = "boolean[]"\n';
   content += '    INTEGER_ARRAY = "integer[]"\n';
-  content += '    DOUBLE_ARRAY = "double[]"\n\n';
+  content += '    DOUBLE_ARRAY = "double[]"\n';
+  content += '    ANY = "any"\n\n';
 
   content += 'class IsPii(Enum):\n';
   content += '    TRUE = "true"\n';
@@ -312,6 +315,18 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
   content += '    replacement: Optional[str] = None\n';
   content += '    reason: Optional[str] = None\n';
   content += '    status: Optional[DeprecationStatus] = None\n\n';
+
+  content += '@dataclass\n';
+  content += 'class ChangelogEntry:\n';
+  content += '    """A changelog entry tracking a change to an attribute."""\n\n';
+  content += '    version: str\n';
+  content += '    """The sentry-conventions release version"""\n';
+  content += '    \n';
+  content += '    prs: Optional[List[int]] = None\n';
+  content += '    """GitHub PR numbers"""\n';
+  content += '    \n';
+  content += '    description: Optional[str] = None\n';
+  content += '    """Optional description of what changed"""\n\n';
 
   content += '@dataclass\n';
   content += 'class AttributeMetadata:\n';
@@ -344,7 +359,10 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
   content += '    \n';
   content += '    sdks: Optional[List[str]] = None\n';
   content +=
-    '    """If an attribute is SDK specific, list the SDKs that use this attribute. This is not an exhaustive list, there might be SDKs that send this attribute that are is not documented here."""\n\n';
+    '    """If an attribute is SDK specific, list the SDKs that use this attribute. This is not an exhaustive list, there might be SDKs that send this attribute that are is not documented here."""\n';
+  content += '    \n';
+  content += '    changelog: Optional[List[ChangelogEntry]] = None\n';
+  content += '    """Changelog entries tracking how this attribute has changed across versions"""\n\n';
 
   let attributesTypeMembers = '';
   let deprecatedAttributesTypeMembers = '';
@@ -503,6 +521,22 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
       metadataDict += `        sdks=${JSON.stringify(attributeJson.sdks)},\n`;
     }
 
+    if (attributeJson.changelog && attributeJson.changelog.length > 0) {
+      metadataDict += '        changelog=[\n';
+      for (const entry of attributeJson.changelog) {
+        metadataDict += '            ChangelogEntry(';
+        metadataDict += `version=${JSON.stringify(entry.version)}`;
+        if (entry.prs && entry.prs.length > 0) {
+          metadataDict += `, prs=[${entry.prs.join(', ')}]`;
+        }
+        if (entry.description) {
+          metadataDict += `, description=${JSON.stringify(entry.description)}`;
+        }
+        metadataDict += '),\n';
+      }
+      metadataDict += '        ],\n';
+    }
+
     metadataDict += '    ),\n';
   }
 
@@ -558,6 +592,8 @@ function getPythonType(type: AttributeJson['type']): string {
       return 'List[int]';
     case 'double[]':
       return 'List[float]';
+    case 'any':
+      return 'object';
     default:
       throw new Error(`Unknown attribute type: ${type}`);
   }
@@ -581,6 +617,8 @@ function getAttributeTypeEnum(type: AttributeJson['type']): string {
       return 'INTEGER_ARRAY';
     case 'double[]':
       return 'DOUBLE_ARRAY';
+    case 'any':
+      return 'ANY';
     default:
       throw new Error(`Unknown attribute type: ${type}`);
   }
@@ -600,7 +638,7 @@ function convertToPythonLiteral(value: AttributeJson['example']): string {
 
 function generateMetadataTypes(): string {
   return `
-export type AttributeType = 
+export type AttributeType =
   | 'string'
   | 'boolean'
   | 'integer'
@@ -608,7 +646,8 @@ export type AttributeType =
   | 'string[]'
   | 'boolean[]'
   | 'integer[]'
-  | 'double[]';
+  | 'double[]'
+  | 'any';
 
 export type IsPii = 
   | 'true'
@@ -627,6 +666,15 @@ export interface DeprecationInfo {
   replacement?: string;
   /** Reason for deprecation */
   reason?: string;
+}
+
+export interface ChangelogEntry {
+  /** The sentry-conventions release version */
+  version: string;
+  /** GitHub PR numbers */
+  prs?: number[];
+  /** Optional description of what changed */
+  description?: string;
 }
 
 export interface AttributeMetadata {
@@ -648,6 +696,8 @@ export interface AttributeMetadata {
   aliases?: AttributeName[];
   /** If an attribute is SDK specific, list the SDKs that use this attribute */
   sdks?: string[];
+  /** Changelog entries tracking how this attribute has changed across versions */
+  changelog?: ChangelogEntry[];
 }
 
 `;
@@ -742,6 +792,22 @@ function generateMetadataDict(
 
     if (attributeJson.sdks && attributeJson.sdks.length > 0) {
       metadataDict += `    sdks: ${JSON.stringify(attributeJson.sdks)},\n`;
+    }
+
+    if (attributeJson.changelog && attributeJson.changelog.length > 0) {
+      metadataDict += '    changelog: [\n';
+      for (const entry of attributeJson.changelog) {
+        metadataDict += '      {';
+        metadataDict += ` version: ${JSON.stringify(entry.version)}`;
+        if (entry.prs && entry.prs.length > 0) {
+          metadataDict += `, prs: [${entry.prs.join(', ')}]`;
+        }
+        if (entry.description) {
+          metadataDict += `, description: ${JSON.stringify(entry.description)}`;
+        }
+        metadataDict += ' },\n';
+      }
+      metadataDict += '    ],\n';
     }
 
     metadataDict += '  },\n';

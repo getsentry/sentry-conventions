@@ -1,0 +1,18 @@
+{
+  "key": "ui.element.url",
+  "brief": "The URL of the UI element (e.g. an img src)",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "https://assets.myapp.com/hero.png",
+  "sdks": ["javascript-browser"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [284],
+      "description": "Added ui.element.url attribute"
+    }
+  ]
+}

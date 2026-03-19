@@ -7,5 +7,15 @@
   },
   "is_in_otel": false,
   "example": 20,
-  "alias": ["ai.total_tokens.used"]
+  "alias": ["ai.total_tokens.used"],
+  "changelog": [
+    {
+      "version": "0.4.0",
+      "prs": [228]
+    },
+    {
+      "version": "0.1.0",
+      "prs": [57]
+    }
+  ]
 }
