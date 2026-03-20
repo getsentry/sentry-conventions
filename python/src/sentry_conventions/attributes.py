@@ -2367,6 +2367,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 1732829555.322
     """
 
+    # Path: model/attributes/http/http__request__env__remote_address.json
+    HTTP_REQUEST_ENV_REMOTE_ADDRESS: Literal["http.request.env.remote_address"] = (
+        "http.request.env.remote_address"
+    )
+    """The remote IP address of the client, as reported by the server's request environment (e.g., REMOTE_ADDR).
+
+    Type: str
+    Contains PII: true
+    Defined in OTEL: No
+    Example: "192.168.1.1"
+    """
+
     # Path: model/attributes/http/http__request__fetch_start.json
     HTTP_REQUEST_FETCH_START: Literal["http.request.fetch_start"] = (
         "http.request.fetch_start"
@@ -7733,6 +7745,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "http.request.env.remote_address": AttributeMetadata(
+        brief="The remote IP address of the client, as reported by the server's request environment (e.g., REMOTE_ADDR).",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.TRUE),
+        is_in_otel=False,
+        example="192.168.1.1",
+        changelog=[
+            ChangelogEntry(version="0.4.0"),
+        ],
+    ),
     "http.request.fetch_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the browser starts to fetch the resource.",
         type=AttributeType.DOUBLE,
@@ -11178,6 +11200,7 @@ Attributes = TypedDict(
         "http.request.connection_end": float,
         "http.request.domain_lookup_end": float,
         "http.request.domain_lookup_start": float,
+        "http.request.env.remote_address": str,
         "http.request.fetch_start": float,
         "http.request.header.<key>": List[str],
         "http.request.method": str,

@@ -3978,6 +3978,26 @@ export const HTTP_REQUEST_DOMAIN_LOOKUP_START = 'http.request.domain_lookup_star
  */
 export type HTTP_REQUEST_DOMAIN_LOOKUP_START_TYPE = number;
 
+// Path: model/attributes/http/http__request__env__remote_address.json
+
+/**
+ * The remote IP address of the client, as reported by the server's request environment (e.g., REMOTE_ADDR). `http.request.env.remote_address`
+ *
+ * Attribute Value Type: `string` {@link HTTP_REQUEST_ENV_REMOTE_ADDRESS_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "192.168.1.1"
+ */
+export const HTTP_REQUEST_ENV_REMOTE_ADDRESS = 'http.request.env.remote_address';
+
+/**
+ * Type for {@link HTTP_REQUEST_ENV_REMOTE_ADDRESS} http.request.env.remote_address
+ */
+export type HTTP_REQUEST_ENV_REMOTE_ADDRESS_TYPE = string;
+
 // Path: model/attributes/http/http__request__fetch_start.json
 
 /**
@@ -10029,6 +10049,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [HTTP_REQUEST_CONNECT_START]: 'double',
   [HTTP_REQUEST_DOMAIN_LOOKUP_END]: 'double',
   [HTTP_REQUEST_DOMAIN_LOOKUP_START]: 'double',
+  [HTTP_REQUEST_ENV_REMOTE_ADDRESS]: 'string',
   [HTTP_REQUEST_FETCH_START]: 'double',
   [HTTP_REQUEST_HEADER_KEY]: 'string[]',
   [HTTP_REQUEST_METHOD]: 'string',
@@ -10499,6 +10520,7 @@ export type AttributeName =
   | typeof HTTP_REQUEST_CONNECT_START
   | typeof HTTP_REQUEST_DOMAIN_LOOKUP_END
   | typeof HTTP_REQUEST_DOMAIN_LOOKUP_START
+  | typeof HTTP_REQUEST_ENV_REMOTE_ADDRESS
   | typeof HTTP_REQUEST_FETCH_START
   | typeof HTTP_REQUEST_HEADER_KEY
   | typeof HTTP_REQUEST_METHOD
@@ -13212,6 +13234,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1732829555.322,
     sdks: ['javascript-browser'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
+  },
+  [HTTP_REQUEST_ENV_REMOTE_ADDRESS]: {
+    brief: "The remote IP address of the client, as reported by the server's request environment (e.g., REMOTE_ADDR).",
+    type: 'string',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: false,
+    example: '192.168.1.1',
+    changelog: [{ version: '0.4.0' }],
   },
   [HTTP_REQUEST_FETCH_START]: {
     brief: 'The UNIX timestamp representing the time immediately before the browser starts to fetch the resource.',
@@ -16613,6 +16645,7 @@ export type Attributes = {
   [HTTP_REQUEST_CONNECT_START]?: HTTP_REQUEST_CONNECT_START_TYPE;
   [HTTP_REQUEST_DOMAIN_LOOKUP_END]?: HTTP_REQUEST_DOMAIN_LOOKUP_END_TYPE;
   [HTTP_REQUEST_DOMAIN_LOOKUP_START]?: HTTP_REQUEST_DOMAIN_LOOKUP_START_TYPE;
+  [HTTP_REQUEST_ENV_REMOTE_ADDRESS]?: HTTP_REQUEST_ENV_REMOTE_ADDRESS_TYPE;
   [HTTP_REQUEST_FETCH_START]?: HTTP_REQUEST_FETCH_START_TYPE;
   [HTTP_REQUEST_HEADER_KEY]?: HTTP_REQUEST_HEADER_KEY_TYPE;
   [HTTP_REQUEST_METHOD]?: HTTP_REQUEST_METHOD_TYPE;
