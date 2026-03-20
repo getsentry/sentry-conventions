@@ -1,0 +1,15 @@
+{
+  "key": "http.request.env.remote_address",
+  "brief": "The remote IP address of the client, as reported by the server's request environment (e.g., REMOTE_ADDR).",
+  "type": "string",
+  "pii": {
+    "key": "true"
+  },
+  "is_in_otel": false,
+  "example": "192.168.1.1",
+  "changelog": [
+    {
+      "version": "0.4.0"
+    }
+  ]
+}
