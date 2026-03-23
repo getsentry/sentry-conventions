@@ -2222,7 +2222,7 @@ export type DEVICE_BRAND_TYPE = string;
 // Path: model/attributes/device/device__class.json
 
 /**
- * The classification of the device. For example, `low`, `medium`, or `high`. `device.class`
+ * The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly. `device.class`
  *
  * Attribute Value Type: `string` {@link DEVICE_CLASS_TYPE}
  *
@@ -12392,7 +12392,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.1.0', prs: [116, 127] }],
   },
   [DEVICE_CLASS]: {
-    brief: 'The classification of the device. For example, `low`, `medium`, or `high`.',
+    brief:
+      'The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.',
     type: 'string',
     pii: {
       isPii: 'false',

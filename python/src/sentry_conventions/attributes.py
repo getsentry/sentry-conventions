@@ -1398,7 +1398,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/device/device__class.json
     DEVICE_CLASS: Literal["device.class"] = "device.class"
-    """The classification of the device. For example, `low`, `medium`, or `high`.
+    """The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.
 
     Type: str
     Contains PII: false
@@ -6876,7 +6876,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "device.class": AttributeMetadata(
-        brief="The classification of the device. For example, `low`, `medium`, or `high`.",
+        brief="The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
