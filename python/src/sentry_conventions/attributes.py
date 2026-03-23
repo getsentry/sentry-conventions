@@ -987,16 +987,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "get"
     """
 
-    # Path: model/attributes/cache/cache__write.json
-    CACHE_WRITE: Literal["cache.write"] = "cache.write"
-    """If the cache operation resulted in a write to the cache.
-
-    Type: bool
-    Contains PII: false
-    Defined in OTEL: No
-    Example: True
-    """
-
     # Path: model/attributes/cache/cache__ttl.json
     CACHE_TTL: Literal["cache.ttl"] = "cache.ttl"
     """The ttl of the cache in seconds
@@ -1005,6 +995,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Example: 120
+    """
+
+    # Path: model/attributes/cache/cache__write.json
+    CACHE_WRITE: Literal["cache.write"] = "cache.write"
+    """If the cache operation resulted in a write to the cache.
+
+    Type: bool
+    Contains PII: false
+    Defined in OTEL: No
+    Example: true
     """
 
     # Path: model/attributes/channel.json
@@ -6357,17 +6357,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
-    "cache.write": AttributeMetadata(
-        brief="If the cache operation resulted in a write to the cache.",
-        type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=False,
-        example=True,
-        sdks=["java"],
-        changelog=[
-            ChangelogEntry(version="0.5.0"),
-        ],
-    ),
     "cache.ttl": AttributeMetadata(
         brief="The ttl of the cache in seconds",
         type=AttributeType.INTEGER,
@@ -6378,6 +6367,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "cache.write": AttributeMetadata(
+        brief="If the cache operation resulted in a write to the cache.",
+        type=AttributeType.BOOLEAN,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=True,
+        sdks=["java"],
+        changelog=[
+            ChangelogEntry(version="0.5.0"),
         ],
     ),
     "channel": AttributeMetadata(
