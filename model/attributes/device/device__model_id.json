@@ -10,7 +10,7 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [],
+      "prs": [300],
       "description": "Added device.model_id attribute"
     }
   ]

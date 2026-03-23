@@ -163,7 +163,7 @@
       "changelog": [
         {
           "version": "next",
-          "prs": [],
+          "prs": [300],
           "description": "Updated deprecation replacement from device.cpu.logical_core_count to device.processor_count"
         },
         {

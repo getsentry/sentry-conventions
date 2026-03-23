@@ -6867,7 +6867,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="medium",
         changelog=[
-            ChangelogEntry(version="next", description="Added device.class attribute"),
+            ChangelogEntry(
+                version="next", prs=[300], description="Added device.class attribute"
+            ),
         ],
     ),
     "device.family": AttributeMetadata(
@@ -6888,7 +6890,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=2147483648,
         changelog=[
             ChangelogEntry(
-                version="next", description="Added device.free_memory attribute"
+                version="next",
+                prs=[300],
+                description="Added device.free_memory attribute",
             ),
         ],
     ),
@@ -6916,7 +6920,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=17179869184,
         changelog=[
             ChangelogEntry(
-                version="next", description="Added device.memory_size attribute"
+                version="next",
+                prs=[300],
+                description="Added device.memory_size attribute",
             ),
         ],
     ),
@@ -6938,7 +6944,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="N861AP",
         changelog=[
             ChangelogEntry(
-                version="next", description="Added device.model_id attribute"
+                version="next", prs=[300], description="Added device.model_id attribute"
             ),
         ],
     ),
@@ -6952,10 +6958,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
+                prs=[300],
                 description="Removed deprecation, device.processor_count is now the canonical attribute",
             ),
             ChangelogEntry(
                 version="next",
+                prs=[300],
                 description="Added and deprecated attribute device.processor_count in favor of device.cpu.logical_core_count",
             ),
         ],
@@ -6968,7 +6976,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=False,
         changelog=[
             ChangelogEntry(
-                version="next", description="Added device.simulator attribute"
+                version="next",
+                prs=[300],
+                description="Added device.simulator attribute",
             ),
         ],
     ),
@@ -7859,6 +7869,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
+                prs=[300],
                 description="Updated deprecation replacement from device.cpu.logical_core_count to device.processor_count",
             ),
             ChangelogEntry(

@@ -12375,7 +12375,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'medium',
-    changelog: [{ version: 'next', description: 'Added device.class attribute' }],
+    changelog: [{ version: 'next', prs: [300], description: 'Added device.class attribute' }],
   },
   [DEVICE_FAMILY]: {
     brief: 'The family of the device.',
@@ -12395,7 +12395,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 2147483648,
-    changelog: [{ version: 'next', description: 'Added device.free_memory attribute' }],
+    changelog: [{ version: 'next', prs: [300], description: 'Added device.free_memory attribute' }],
   },
   [DEVICE_MEMORY_ESTIMATED_CAPACITY]: {
     brief:
@@ -12424,7 +12424,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 17179869184,
-    changelog: [{ version: 'next', description: 'Added device.memory_size attribute' }],
+    changelog: [{ version: 'next', prs: [300], description: 'Added device.memory_size attribute' }],
   },
   [DEVICE_MODEL]: {
     brief: 'The model of the device.',
@@ -12444,7 +12444,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'N861AP',
-    changelog: [{ version: 'next', description: 'Added device.model_id attribute' }],
+    changelog: [{ version: 'next', prs: [300], description: 'Added device.model_id attribute' }],
   },
   [DEVICE_PROCESSOR_COUNT]: {
     brief: 'Number of "logical processors".',
@@ -12456,9 +12456,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 8,
     aliases: [HARDWARECONCURRENCY],
     changelog: [
-      { version: 'next', description: 'Removed deprecation, device.processor_count is now the canonical attribute' },
       {
         version: 'next',
+        prs: [300],
+        description: 'Removed deprecation, device.processor_count is now the canonical attribute',
+      },
+      {
+        version: 'next',
+        prs: [300],
         description: 'Added and deprecated attribute device.processor_count in favor of device.cpu.logical_core_count',
       },
     ],
@@ -12471,7 +12476,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: false,
-    changelog: [{ version: 'next', description: 'Added device.simulator attribute' }],
+    changelog: [{ version: 'next', prs: [300], description: 'Added device.simulator attribute' }],
   },
   [ENVIRONMENT]: {
     brief: 'The sentry environment.',
@@ -13425,6 +13430,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [
       {
         version: 'next',
+        prs: [300],
         description: 'Updated deprecation replacement from device.cpu.logical_core_count to device.processor_count',
       },
       {
