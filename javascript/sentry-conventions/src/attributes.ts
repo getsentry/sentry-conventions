@@ -2226,7 +2226,7 @@ export type DEVICE_BRAND_TYPE = string;
  *
  * Attribute Value Type: `string` {@link DEVICE_CLASS_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -12396,7 +12396,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'medium',

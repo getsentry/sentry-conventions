@@ -1401,7 +1401,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "medium"
     """
@@ -6878,7 +6878,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.class": AttributeMetadata(
         brief="The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="medium",
         changelog=[
