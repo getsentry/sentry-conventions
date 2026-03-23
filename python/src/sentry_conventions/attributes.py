@@ -1434,7 +1434,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Free system memory in bytes.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 2147483648
     """
@@ -1457,7 +1457,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Total system memory available in bytes.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 17179869184
     """
@@ -6917,7 +6917,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.free_memory": AttributeMetadata(
         brief="Free system memory in bytes.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=2147483648,
         changelog=[
@@ -6945,7 +6945,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.memory_size": AttributeMetadata(
         brief="Total system memory available in bytes.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=17179869184,
         changelog=[

@@ -2288,7 +2288,7 @@ export type DEVICE_FAMILY_TYPE = string;
  *
  * Attribute Value Type: `number` {@link DEVICE_FREE_MEMORY_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -2330,7 +2330,7 @@ export type DEVICE_MEMORY_ESTIMATED_CAPACITY_TYPE = number;
  *
  * Attribute Value Type: `number` {@link DEVICE_MEMORY_SIZE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -12435,7 +12435,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Free system memory in bytes.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 2147483648,
@@ -12464,7 +12464,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Total system memory available in bytes.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 17179869184,

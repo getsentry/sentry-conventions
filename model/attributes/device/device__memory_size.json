@@ -3,7 +3,7 @@
   "brief": "Total system memory available in bytes.",
   "type": "integer",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": 17179869184,
