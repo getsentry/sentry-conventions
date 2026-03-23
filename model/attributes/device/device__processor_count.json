@@ -1,0 +1,23 @@
+{
+  "key": "device.processor_count",
+  "brief": "Number of \"logical processors\".",
+  "type": "integer",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": 8,
+  "alias": ["device.cpu.logical_core_count"],
+  "deprecation": {
+    "replacement": "device.cpu.logical_core_count",
+    "reason": "Old attribute from the device context, to be replaced with device.cpu.logical_core_count.",
+    "_status": "backfill"
+  },
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [],
+      "description": "Added and deprecated attribute device.processor_count in favor of device.cpu.logical_core_count"
+    }
+  ]
+}

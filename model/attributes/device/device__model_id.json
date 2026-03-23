@@ -1,0 +1,17 @@
+{
+  "key": "device.model_id",
+  "brief": "An internal hardware revision to identify the device exactly.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "N861AP",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [],
+      "description": "Added device.model_id attribute"
+    }
+  ]
+}

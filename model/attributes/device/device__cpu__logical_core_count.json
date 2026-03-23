@@ -7,9 +7,14 @@
   },
   "is_in_otel": false,
   "example": 14,
-  "alias": ["hardwareConcurrency"],
+  "alias": ["hardwareConcurrency", "device.processor_count"],
   "sdks": ["javascript-browser"],
   "changelog": [
+    {
+      "version": "next",
+      "prs": [],
+      "description": "Added device.processor_count as alias"
+    },
     {
       "version": "next",
       "prs": [281],

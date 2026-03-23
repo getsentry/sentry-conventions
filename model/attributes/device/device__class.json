@@ -1,0 +1,17 @@
+{
+  "key": "device.class",
+  "brief": "The classification of the device. For example, `low`, `medium`, or `high`.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "medium",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [],
+      "description": "Added device.class attribute"
+    }
+  ]
+}

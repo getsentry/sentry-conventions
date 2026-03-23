@@ -1,0 +1,17 @@
+{
+  "key": "device.memory_size",
+  "brief": "Total system memory available in bytes.",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 17179869184,
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [],
+      "description": "Added device.memory_size attribute"
+    }
+  ]
+}

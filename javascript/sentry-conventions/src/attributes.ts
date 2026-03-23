@@ -2219,6 +2219,26 @@ export const DEVICE_BRAND = 'device.brand';
  */
 export type DEVICE_BRAND_TYPE = string;
 
+// Path: model/attributes/device/device__class.json
+
+/**
+ * The classification of the device. For example, `low`, `medium`, or `high`. `device.class`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_CLASS_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "medium"
+ */
+export const DEVICE_CLASS = 'device.class';
+
+/**
+ * Type for {@link DEVICE_CLASS} device.class
+ */
+export type DEVICE_CLASS_TYPE = string;
+
 // Path: model/attributes/device/device__cpu__logical_core_count.json
 
 /**
@@ -2230,7 +2250,7 @@ export type DEVICE_BRAND_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link HARDWARECONCURRENCY} `hardwareConcurrency`
+ * Aliases: {@link HARDWARECONCURRENCY} `hardwareConcurrency`, {@link DEVICE_PROCESSOR_COUNT} `device.processor_count`
  *
  * @example 14
  */
@@ -2261,6 +2281,26 @@ export const DEVICE_FAMILY = 'device.family';
  */
 export type DEVICE_FAMILY_TYPE = string;
 
+// Path: model/attributes/device/device__free_memory.json
+
+/**
+ * Free system memory in bytes. `device.free_memory`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_FREE_MEMORY_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 2147483648
+ */
+export const DEVICE_FREE_MEMORY = 'device.free_memory';
+
+/**
+ * Type for {@link DEVICE_FREE_MEMORY} device.free_memory
+ */
+export type DEVICE_FREE_MEMORY_TYPE = number;
+
 // Path: model/attributes/device/device__memory__estimated_capacity.json
 
 /**
@@ -2283,6 +2323,26 @@ export const DEVICE_MEMORY_ESTIMATED_CAPACITY = 'device.memory.estimated_capacit
  */
 export type DEVICE_MEMORY_ESTIMATED_CAPACITY_TYPE = number;
 
+// Path: model/attributes/device/device__memory_size.json
+
+/**
+ * Total system memory available in bytes. `device.memory_size`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_MEMORY_SIZE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 17179869184
+ */
+export const DEVICE_MEMORY_SIZE = 'device.memory_size';
+
+/**
+ * Type for {@link DEVICE_MEMORY_SIZE} device.memory_size
+ */
+export type DEVICE_MEMORY_SIZE_TYPE = number;
+
 // Path: model/attributes/device/device__model.json
 
 /**
@@ -2302,6 +2362,69 @@ export const DEVICE_MODEL = 'device.model';
  * Type for {@link DEVICE_MODEL} device.model
  */
 export type DEVICE_MODEL_TYPE = string;
+
+// Path: model/attributes/device/device__model_id.json
+
+/**
+ * An internal hardware revision to identify the device exactly. `device.model_id`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_MODEL_ID_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "N861AP"
+ */
+export const DEVICE_MODEL_ID = 'device.model_id';
+
+/**
+ * Type for {@link DEVICE_MODEL_ID} device.model_id
+ */
+export type DEVICE_MODEL_ID_TYPE = string;
+
+// Path: model/attributes/device/device__processor_count.json
+
+/**
+ * Number of "logical processors". `device.processor_count`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_PROCESSOR_COUNT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link DEVICE_CPU_LOGICAL_CORE_COUNT} `device.cpu.logical_core_count`
+ *
+ * @deprecated Use {@link DEVICE_CPU_LOGICAL_CORE_COUNT} (device.cpu.logical_core_count) instead - Old attribute from the device context, to be replaced with device.cpu.logical_core_count.
+ * @example 8
+ */
+export const DEVICE_PROCESSOR_COUNT = 'device.processor_count';
+
+/**
+ * Type for {@link DEVICE_PROCESSOR_COUNT} device.processor_count
+ */
+export type DEVICE_PROCESSOR_COUNT_TYPE = number;
+
+// Path: model/attributes/device/device__simulator.json
+
+/**
+ * Whether the device is a simulator or an actual device. `device.simulator`
+ *
+ * Attribute Value Type: `boolean` {@link DEVICE_SIMULATOR_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example false
+ */
+export const DEVICE_SIMULATOR = 'device.simulator';
+
+/**
+ * Type for {@link DEVICE_SIMULATOR} device.simulator
+ */
+export type DEVICE_SIMULATOR_TYPE = boolean;
 
 // Path: model/attributes/environment.json
 
@@ -10066,10 +10189,16 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [DB_USER]: 'string',
   [DEVICEMEMORY]: 'string',
   [DEVICE_BRAND]: 'string',
+  [DEVICE_CLASS]: 'string',
   [DEVICE_CPU_LOGICAL_CORE_COUNT]: 'integer',
   [DEVICE_FAMILY]: 'string',
+  [DEVICE_FREE_MEMORY]: 'integer',
   [DEVICE_MEMORY_ESTIMATED_CAPACITY]: 'integer',
+  [DEVICE_MEMORY_SIZE]: 'integer',
   [DEVICE_MODEL]: 'string',
+  [DEVICE_MODEL_ID]: 'string',
+  [DEVICE_PROCESSOR_COUNT]: 'integer',
+  [DEVICE_SIMULATOR]: 'boolean',
   [ENVIRONMENT]: 'string',
   [ERROR_TYPE]: 'string',
   [EVENT_ID]: 'integer',
@@ -10542,10 +10671,16 @@ export type AttributeName =
   | typeof DB_USER
   | typeof DEVICEMEMORY
   | typeof DEVICE_BRAND
+  | typeof DEVICE_CLASS
   | typeof DEVICE_CPU_LOGICAL_CORE_COUNT
   | typeof DEVICE_FAMILY
+  | typeof DEVICE_FREE_MEMORY
   | typeof DEVICE_MEMORY_ESTIMATED_CAPACITY
+  | typeof DEVICE_MEMORY_SIZE
   | typeof DEVICE_MODEL
+  | typeof DEVICE_MODEL_ID
+  | typeof DEVICE_PROCESSOR_COUNT
+  | typeof DEVICE_SIMULATOR
   | typeof ENVIRONMENT
   | typeof ERROR_TYPE
   | typeof EVENT_ID
@@ -12256,6 +12391,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'Apple',
     changelog: [{ version: '0.1.0', prs: [116, 127] }],
   },
+  [DEVICE_CLASS]: {
+    brief: 'The classification of the device. For example, `low`, `medium`, or `high`.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'medium',
+    changelog: [{ version: 'next', description: 'Added device.class attribute' }],
+  },
   [DEVICE_CPU_LOGICAL_CORE_COUNT]: {
     brief: 'The number of logical CPU cores available.',
     type: 'integer',
@@ -12264,9 +12409,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 14,
-    aliases: [HARDWARECONCURRENCY],
+    aliases: [HARDWARECONCURRENCY, DEVICE_PROCESSOR_COUNT],
     sdks: ['javascript-browser'],
     changelog: [
+      { version: 'next', description: 'Added device.processor_count as alias' },
       {
         version: 'next',
         prs: [281],
@@ -12283,6 +12429,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'iPhone',
     changelog: [{ version: '0.1.0', prs: [116, 127] }],
+  },
+  [DEVICE_FREE_MEMORY]: {
+    brief: 'Free system memory in bytes.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 2147483648,
+    changelog: [{ version: 'next', description: 'Added device.free_memory attribute' }],
   },
   [DEVICE_MEMORY_ESTIMATED_CAPACITY]: {
     brief:
@@ -12303,6 +12459,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       },
     ],
   },
+  [DEVICE_MEMORY_SIZE]: {
+    brief: 'Total system memory available in bytes.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 17179869184,
+    changelog: [{ version: 'next', description: 'Added device.memory_size attribute' }],
+  },
   [DEVICE_MODEL]: {
     brief: 'The model of the device.',
     type: 'string',
@@ -12312,6 +12478,46 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'iPhone 15 Pro Max',
     changelog: [{ version: '0.1.0', prs: [116, 127] }],
+  },
+  [DEVICE_MODEL_ID]: {
+    brief: 'An internal hardware revision to identify the device exactly.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'N861AP',
+    changelog: [{ version: 'next', description: 'Added device.model_id attribute' }],
+  },
+  [DEVICE_PROCESSOR_COUNT]: {
+    brief: 'Number of "logical processors".',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 8,
+    deprecation: {
+      replacement: 'device.cpu.logical_core_count',
+      reason: 'Old attribute from the device context, to be replaced with device.cpu.logical_core_count.',
+    },
+    aliases: [DEVICE_CPU_LOGICAL_CORE_COUNT],
+    changelog: [
+      {
+        version: 'next',
+        description: 'Added and deprecated attribute device.processor_count in favor of device.cpu.logical_core_count',
+      },
+    ],
+  },
+  [DEVICE_SIMULATOR]: {
+    brief: 'Whether the device is a simulator or an actual device.',
+    type: 'boolean',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: false,
+    changelog: [{ version: 'next', description: 'Added device.simulator attribute' }],
   },
   [ENVIRONMENT]: {
     brief: 'The sentry environment.',
@@ -16728,10 +16934,16 @@ export type Attributes = {
   [DB_USER]?: DB_USER_TYPE;
   [DEVICEMEMORY]?: DEVICEMEMORY_TYPE;
   [DEVICE_BRAND]?: DEVICE_BRAND_TYPE;
+  [DEVICE_CLASS]?: DEVICE_CLASS_TYPE;
   [DEVICE_CPU_LOGICAL_CORE_COUNT]?: DEVICE_CPU_LOGICAL_CORE_COUNT_TYPE;
   [DEVICE_FAMILY]?: DEVICE_FAMILY_TYPE;
+  [DEVICE_FREE_MEMORY]?: DEVICE_FREE_MEMORY_TYPE;
   [DEVICE_MEMORY_ESTIMATED_CAPACITY]?: DEVICE_MEMORY_ESTIMATED_CAPACITY_TYPE;
+  [DEVICE_MEMORY_SIZE]?: DEVICE_MEMORY_SIZE_TYPE;
   [DEVICE_MODEL]?: DEVICE_MODEL_TYPE;
+  [DEVICE_MODEL_ID]?: DEVICE_MODEL_ID_TYPE;
+  [DEVICE_PROCESSOR_COUNT]?: DEVICE_PROCESSOR_COUNT_TYPE;
+  [DEVICE_SIMULATOR]?: DEVICE_SIMULATOR_TYPE;
   [ENVIRONMENT]?: ENVIRONMENT_TYPE;
   [ERROR_TYPE]?: ERROR_TYPE_TYPE;
   [EVENT_ID]?: EVENT_ID_TYPE;
