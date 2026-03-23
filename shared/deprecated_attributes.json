@@ -154,13 +154,18 @@
       "is_in_otel": false,
       "example": "14",
       "sdks": ["javascript-browser"],
-      "alias": ["device.cpu.logical_core_count", "device.processor_count"],
+      "alias": ["device.processor_count"],
       "deprecation": {
-        "replacement": "device.cpu.logical_core_count",
-        "reason": "Old namespace-less attribute, to be replaced with device.cpu.logical_core_count for span-first future",
+        "replacement": "device.processor_count",
+        "reason": "Old namespace-less attribute, to be replaced with device.processor_count for span-first future",
         "_status": "backfill"
       },
       "changelog": [
+        {
+          "version": "next",
+          "prs": [],
+          "description": "Updated deprecation replacement from device.cpu.logical_core_count to device.processor_count"
+        },
         {
           "version": "next",
           "prs": [281],
@@ -1430,29 +1435,6 @@
         },
         {
           "version": "0.0.0"
-        }
-      ]
-    },
-    {
-      "key": "device.processor_count",
-      "brief": "Number of \"logical processors\".",
-      "type": "integer",
-      "pii": {
-        "key": "maybe"
-      },
-      "is_in_otel": false,
-      "example": 8,
-      "alias": ["device.cpu.logical_core_count", "hardwareConcurrency"],
-      "deprecation": {
-        "replacement": "device.cpu.logical_core_count",
-        "reason": "Old attribute from the device context, to be replaced with device.cpu.logical_core_count.",
-        "_status": "backfill"
-      },
-      "changelog": [
-        {
-          "version": "next",
-          "prs": [],
-          "description": "Added and deprecated attribute device.processor_count in favor of device.cpu.logical_core_count"
         }
       ]
     },

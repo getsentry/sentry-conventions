@@ -147,7 +147,6 @@ class _AttributeNamesMeta(type):
         "DB_SQL_BINDINGS",
         "DB_STATEMENT",
         "DB_SYSTEM",
-        "DEVICE_PROCESSOR_COUNT",
         "DEVICEMEMORY",
         "ENVIRONMENT",
         "FCP",
@@ -1406,19 +1405,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "medium"
     """
 
-    # Path: model/attributes/device/device__cpu__logical_core_count.json
-    DEVICE_CPU_LOGICAL_CORE_COUNT: Literal["device.cpu.logical_core_count"] = (
-        "device.cpu.logical_core_count"
-    )
-    """The number of logical CPU cores available.
-
-    Type: int
-    Contains PII: maybe
-    Defined in OTEL: No
-    Aliases: hardwareConcurrency, device.processor_count
-    Example: 14
-    """
-
     # Path: model/attributes/device/device__family.json
     DEVICE_FAMILY: Literal["device.family"] = "device.family"
     """The family of the device.
@@ -1489,8 +1475,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: device.cpu.logical_core_count, hardwareConcurrency
-    DEPRECATED: Use device.cpu.logical_core_count instead - Old attribute from the device context, to be replaced with device.cpu.logical_core_count.
+    Aliases: hardwareConcurrency
     Example: 8
     """
 
@@ -2357,8 +2342,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: device.cpu.logical_core_count, device.processor_count
-    DEPRECATED: Use device.cpu.logical_core_count instead - Old namespace-less attribute, to be replaced with device.cpu.logical_core_count for span-first future
+    Aliases: device.processor_count
+    DEPRECATED: Use device.processor_count instead - Old namespace-less attribute, to be replaced with device.processor_count for span-first future
     Example: "14"
     """
 
@@ -6885,25 +6870,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="next", description="Added device.class attribute"),
         ],
     ),
-    "device.cpu.logical_core_count": AttributeMetadata(
-        brief="The number of logical CPU cores available.",
-        type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
-        is_in_otel=False,
-        example=14,
-        aliases=["hardwareConcurrency", "device.processor_count"],
-        sdks=["javascript-browser"],
-        changelog=[
-            ChangelogEntry(
-                version="next", description="Added device.processor_count as alias"
-            ),
-            ChangelogEntry(
-                version="next",
-                prs=[281],
-                description="Added attribute device.cpu.logical_core_count to be used instead of hardwareConcurrency",
-            ),
-        ],
-    ),
     "device.family": AttributeMetadata(
         brief="The family of the device.",
         type=AttributeType.STRING,
@@ -6982,13 +6948,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=8,
-        deprecation=DeprecationInfo(
-            replacement="device.cpu.logical_core_count",
-            reason="Old attribute from the device context, to be replaced with device.cpu.logical_core_count.",
-            status=DeprecationStatus.BACKFILL,
-        ),
-        aliases=["device.cpu.logical_core_count", "hardwareConcurrency"],
+        aliases=["hardwareConcurrency"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Removed deprecation, device.processor_count is now the canonical attribute",
+            ),
             ChangelogEntry(
                 version="next",
                 description="Added and deprecated attribute device.processor_count in favor of device.cpu.logical_core_count",
@@ -7885,13 +7850,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="14",
         deprecation=DeprecationInfo(
-            replacement="device.cpu.logical_core_count",
-            reason="Old namespace-less attribute, to be replaced with device.cpu.logical_core_count for span-first future",
+            replacement="device.processor_count",
+            reason="Old namespace-less attribute, to be replaced with device.processor_count for span-first future",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["device.cpu.logical_core_count", "device.processor_count"],
+        aliases=["device.processor_count"],
         sdks=["javascript-browser"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Updated deprecation replacement from device.cpu.logical_core_count to device.processor_count",
+            ),
             ChangelogEntry(
                 version="next",
                 prs=[281],
@@ -11408,7 +11377,6 @@ Attributes = TypedDict(
         "db.user": str,
         "device.brand": str,
         "device.class": str,
-        "device.cpu.logical_core_count": int,
         "device.family": str,
         "device.free_memory": int,
         "device.memory.estimated_capacity": int,

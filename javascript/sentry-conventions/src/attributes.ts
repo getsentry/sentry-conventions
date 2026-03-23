@@ -2239,28 +2239,6 @@ export const DEVICE_CLASS = 'device.class';
  */
 export type DEVICE_CLASS_TYPE = string;
 
-// Path: model/attributes/device/device__cpu__logical_core_count.json
-
-/**
- * The number of logical CPU cores available. `device.cpu.logical_core_count`
- *
- * Attribute Value Type: `number` {@link DEVICE_CPU_LOGICAL_CORE_COUNT_TYPE}
- *
- * Contains PII: maybe
- *
- * Attribute defined in OTEL: No
- *
- * Aliases: {@link HARDWARECONCURRENCY} `hardwareConcurrency`, {@link DEVICE_PROCESSOR_COUNT} `device.processor_count`
- *
- * @example 14
- */
-export const DEVICE_CPU_LOGICAL_CORE_COUNT = 'device.cpu.logical_core_count';
-
-/**
- * Type for {@link DEVICE_CPU_LOGICAL_CORE_COUNT} device.cpu.logical_core_count
- */
-export type DEVICE_CPU_LOGICAL_CORE_COUNT_TYPE = number;
-
 // Path: model/attributes/device/device__family.json
 
 /**
@@ -2394,9 +2372,8 @@ export type DEVICE_MODEL_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link DEVICE_CPU_LOGICAL_CORE_COUNT} `device.cpu.logical_core_count`, {@link HARDWARECONCURRENCY} `hardwareConcurrency`
+ * Aliases: {@link HARDWARECONCURRENCY} `hardwareConcurrency`
  *
- * @deprecated Use {@link DEVICE_CPU_LOGICAL_CORE_COUNT} (device.cpu.logical_core_count) instead - Old attribute from the device context, to be replaced with device.cpu.logical_core_count.
  * @example 8
  */
 export const DEVICE_PROCESSOR_COUNT = 'device.processor_count';
@@ -3977,9 +3954,9 @@ export type GRAPHQL_OPERATION_TYPE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link DEVICE_CPU_LOGICAL_CORE_COUNT} `device.cpu.logical_core_count`, {@link DEVICE_PROCESSOR_COUNT} `device.processor_count`
+ * Aliases: {@link DEVICE_PROCESSOR_COUNT} `device.processor_count`
  *
- * @deprecated Use {@link DEVICE_CPU_LOGICAL_CORE_COUNT} (device.cpu.logical_core_count) instead - Old namespace-less attribute, to be replaced with device.cpu.logical_core_count for span-first future
+ * @deprecated Use {@link DEVICE_PROCESSOR_COUNT} (device.processor_count) instead - Old namespace-less attribute, to be replaced with device.processor_count for span-first future
  * @example "14"
  */
 export const HARDWARECONCURRENCY = 'hardwareConcurrency';
@@ -10190,7 +10167,6 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [DEVICEMEMORY]: 'string',
   [DEVICE_BRAND]: 'string',
   [DEVICE_CLASS]: 'string',
-  [DEVICE_CPU_LOGICAL_CORE_COUNT]: 'integer',
   [DEVICE_FAMILY]: 'string',
   [DEVICE_FREE_MEMORY]: 'integer',
   [DEVICE_MEMORY_ESTIMATED_CAPACITY]: 'integer',
@@ -10672,7 +10648,6 @@ export type AttributeName =
   | typeof DEVICEMEMORY
   | typeof DEVICE_BRAND
   | typeof DEVICE_CLASS
-  | typeof DEVICE_CPU_LOGICAL_CORE_COUNT
   | typeof DEVICE_FAMILY
   | typeof DEVICE_FREE_MEMORY
   | typeof DEVICE_MEMORY_ESTIMATED_CAPACITY
@@ -12402,25 +12377,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'medium',
     changelog: [{ version: 'next', description: 'Added device.class attribute' }],
   },
-  [DEVICE_CPU_LOGICAL_CORE_COUNT]: {
-    brief: 'The number of logical CPU cores available.',
-    type: 'integer',
-    pii: {
-      isPii: 'maybe',
-    },
-    isInOtel: false,
-    example: 14,
-    aliases: [HARDWARECONCURRENCY, DEVICE_PROCESSOR_COUNT],
-    sdks: ['javascript-browser'],
-    changelog: [
-      { version: 'next', description: 'Added device.processor_count as alias' },
-      {
-        version: 'next',
-        prs: [281],
-        description: 'Added attribute device.cpu.logical_core_count to be used instead of hardwareConcurrency',
-      },
-    ],
-  },
   [DEVICE_FAMILY]: {
     brief: 'The family of the device.',
     type: 'string',
@@ -12498,12 +12454,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 8,
-    deprecation: {
-      replacement: 'device.cpu.logical_core_count',
-      reason: 'Old attribute from the device context, to be replaced with device.cpu.logical_core_count.',
-    },
-    aliases: [DEVICE_CPU_LOGICAL_CORE_COUNT, HARDWARECONCURRENCY],
+    aliases: [HARDWARECONCURRENCY],
     changelog: [
+      { version: 'next', description: 'Removed deprecation, device.processor_count is now the canonical attribute' },
       {
         version: 'next',
         description: 'Added and deprecated attribute device.processor_count in favor of device.cpu.logical_core_count',
@@ -13464,12 +13417,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '14',
     deprecation: {
-      replacement: 'device.cpu.logical_core_count',
-      reason: 'Old namespace-less attribute, to be replaced with device.cpu.logical_core_count for span-first future',
+      replacement: 'device.processor_count',
+      reason: 'Old namespace-less attribute, to be replaced with device.processor_count for span-first future',
     },
-    aliases: [DEVICE_CPU_LOGICAL_CORE_COUNT, DEVICE_PROCESSOR_COUNT],
+    aliases: [DEVICE_PROCESSOR_COUNT],
     sdks: ['javascript-browser'],
     changelog: [
+      {
+        version: 'next',
+        description: 'Updated deprecation replacement from device.cpu.logical_core_count to device.processor_count',
+      },
       {
         version: 'next',
         prs: [281],
@@ -16936,7 +16893,6 @@ export type Attributes = {
   [DEVICEMEMORY]?: DEVICEMEMORY_TYPE;
   [DEVICE_BRAND]?: DEVICE_BRAND_TYPE;
   [DEVICE_CLASS]?: DEVICE_CLASS_TYPE;
-  [DEVICE_CPU_LOGICAL_CORE_COUNT]?: DEVICE_CPU_LOGICAL_CORE_COUNT_TYPE;
   [DEVICE_FAMILY]?: DEVICE_FAMILY_TYPE;
   [DEVICE_FREE_MEMORY]?: DEVICE_FREE_MEMORY_TYPE;
   [DEVICE_MEMORY_ESTIMATED_CAPACITY]?: DEVICE_MEMORY_ESTIMATED_CAPACITY_TYPE;
