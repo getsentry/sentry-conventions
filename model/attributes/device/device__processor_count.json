@@ -7,7 +7,7 @@
   },
   "is_in_otel": false,
   "example": 8,
-  "alias": ["device.cpu.logical_core_count"],
+  "alias": ["device.cpu.logical_core_count", "hardwareConcurrency"],
   "deprecation": {
     "replacement": "device.cpu.logical_core_count",
     "reason": "Old attribute from the device context, to be replaced with device.cpu.logical_core_count.",

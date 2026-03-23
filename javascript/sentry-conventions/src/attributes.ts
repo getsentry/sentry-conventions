@@ -2394,7 +2394,7 @@ export type DEVICE_MODEL_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link DEVICE_CPU_LOGICAL_CORE_COUNT} `device.cpu.logical_core_count`
+ * Aliases: {@link DEVICE_CPU_LOGICAL_CORE_COUNT} `device.cpu.logical_core_count`, {@link HARDWARECONCURRENCY} `hardwareConcurrency`
  *
  * @deprecated Use {@link DEVICE_CPU_LOGICAL_CORE_COUNT} (device.cpu.logical_core_count) instead - Old attribute from the device context, to be replaced with device.cpu.logical_core_count.
  * @example 8
@@ -3977,7 +3977,7 @@ export type GRAPHQL_OPERATION_TYPE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link DEVICE_CPU_LOGICAL_CORE_COUNT} `device.cpu.logical_core_count`
+ * Aliases: {@link DEVICE_CPU_LOGICAL_CORE_COUNT} `device.cpu.logical_core_count`, {@link DEVICE_PROCESSOR_COUNT} `device.processor_count`
  *
  * @deprecated Use {@link DEVICE_CPU_LOGICAL_CORE_COUNT} (device.cpu.logical_core_count) instead - Old namespace-less attribute, to be replaced with device.cpu.logical_core_count for span-first future
  * @example "14"
@@ -12501,7 +12501,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'device.cpu.logical_core_count',
       reason: 'Old attribute from the device context, to be replaced with device.cpu.logical_core_count.',
     },
-    aliases: [DEVICE_CPU_LOGICAL_CORE_COUNT],
+    aliases: [DEVICE_CPU_LOGICAL_CORE_COUNT, HARDWARECONCURRENCY],
     changelog: [
       {
         version: 'next',
@@ -13466,7 +13466,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'device.cpu.logical_core_count',
       reason: 'Old namespace-less attribute, to be replaced with device.cpu.logical_core_count for span-first future',
     },
-    aliases: [DEVICE_CPU_LOGICAL_CORE_COUNT],
+    aliases: [DEVICE_CPU_LOGICAL_CORE_COUNT, DEVICE_PROCESSOR_COUNT],
     sdks: ['javascript-browser'],
     changelog: [
       {
