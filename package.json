@@ -31,6 +31,8 @@
     "generate": "tsx scripts/generate.ts && yarn format",
     "generate:attribute-changelog": "tsx scripts/generate_attribute_changelog.ts",
 
+    "bump:attribute-changelog": "tsx scripts/bump_attribute_changelog.ts",
+
     "clear:attribute-changelog": "tsx scripts/clear_attribute_changelog.ts --all",
     "clear:attribute-changelog:key": "tsx scripts/clear_attribute_changelog.ts --key",
 
