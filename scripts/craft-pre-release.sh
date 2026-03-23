@@ -9,6 +9,14 @@ NEW_VERSION="${2}"
 echo "Current version: $OLD_VERSION"
 echo "Bumping to version: $NEW_VERSION"
 
+# ==================== Attribute Changelogs ====================
+
+cd $ROOT_DIR
+
+npx tsx scripts/bump_attribute_changelog.ts "${NEW_VERSION}"
+
+yarn generate
+
 # ==================== JS ====================
 
 cd $ROOT_DIR

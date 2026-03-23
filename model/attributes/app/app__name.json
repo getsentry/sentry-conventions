@@ -1,0 +1,18 @@
+{
+  "key": "app.name",
+  "brief": "Human readable application name, as it appears on the platform.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
+  "example": "My App",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [296],
+      "description": "Added app.name attribute"
+    }
+  ]
+}

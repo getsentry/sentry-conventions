@@ -1,0 +1,18 @@
+{
+  "key": "app.in_foreground",
+  "brief": "Whether the application is currently in the foreground.",
+  "type": "boolean",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
+  "example": true,
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [296],
+      "description": "Added app.in_foreground attribute"
+    }
+  ]
+}

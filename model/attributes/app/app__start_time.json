@@ -1,0 +1,18 @@
+{
+  "key": "app.start_time",
+  "brief": "Formatted UTC timestamp when the user started the application.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
+  "example": "2025-01-01T00:00:00.000Z",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [296],
+      "description": "Added app.start_time attribute"
+    }
+  ]
+}
