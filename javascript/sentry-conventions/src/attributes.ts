@@ -10048,6 +10048,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [CACHE_ITEM_SIZE]: 'integer',
   [CACHE_KEY]: 'string[]',
   [CACHE_OPERATION]: 'string',
+  [CACHE_WRITE]: 'boolean',
   [CACHE_TTL]: 'integer',
   [CHANNEL]: 'string',
   [CLIENT_ADDRESS]: 'string',
@@ -10524,6 +10525,7 @@ export type AttributeName =
   | typeof CACHE_ITEM_SIZE
   | typeof CACHE_KEY
   | typeof CACHE_OPERATION
+  | typeof CACHE_WRITE
   | typeof CACHE_TTL
   | typeof CHANNEL
   | typeof CLIENT_ADDRESS
