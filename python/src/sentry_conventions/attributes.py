@@ -1395,17 +1395,14 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "Apple"
     """
 
-    # Path: model/attributes/device/device__cpu__logical_core_count.json
-    DEVICE_CPU_LOGICAL_CORE_COUNT: Literal["device.cpu.logical_core_count"] = (
-        "device.cpu.logical_core_count"
-    )
-    """The number of logical CPU cores available.
+    # Path: model/attributes/device/device__class.json
+    DEVICE_CLASS: Literal["device.class"] = "device.class"
+    """The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.
 
-    Type: int
+    Type: str
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: hardwareConcurrency
-    Example: 14
+    Example: "medium"
     """
 
     # Path: model/attributes/device/device__family.json
@@ -1416,6 +1413,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Example: "iPhone"
+    """
+
+    # Path: model/attributes/device/device__free_memory.json
+    DEVICE_FREE_MEMORY: Literal["device.free_memory"] = "device.free_memory"
+    """Free system memory in bytes.
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: 2147483648
     """
 
     # Path: model/attributes/device/device__memory__estimated_capacity.json
@@ -1431,6 +1438,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 8
     """
 
+    # Path: model/attributes/device/device__memory_size.json
+    DEVICE_MEMORY_SIZE: Literal["device.memory_size"] = "device.memory_size"
+    """Total system memory available in bytes.
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: 17179869184
+    """
+
     # Path: model/attributes/device/device__model.json
     DEVICE_MODEL: Literal["device.model"] = "device.model"
     """The model of the device.
@@ -1439,6 +1456,37 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Example: "iPhone 15 Pro Max"
+    """
+
+    # Path: model/attributes/device/device__model_id.json
+    DEVICE_MODEL_ID: Literal["device.model_id"] = "device.model_id"
+    """An internal hardware revision to identify the device exactly.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "N861AP"
+    """
+
+    # Path: model/attributes/device/device__processor_count.json
+    DEVICE_PROCESSOR_COUNT: Literal["device.processor_count"] = "device.processor_count"
+    """Number of "logical processors".
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: hardwareConcurrency
+    Example: 8
+    """
+
+    # Path: model/attributes/device/device__simulator.json
+    DEVICE_SIMULATOR: Literal["device.simulator"] = "device.simulator"
+    """Whether the device is a simulator or an actual device.
+
+    Type: bool
+    Contains PII: false
+    Defined in OTEL: No
+    Example: false
     """
 
     # Path: model/attributes/deviceMemory.json
@@ -2294,8 +2342,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: device.cpu.logical_core_count
-    DEPRECATED: Use device.cpu.logical_core_count instead - Old namespace-less attribute, to be replaced with device.cpu.logical_core_count for span-first future
+    Aliases: device.processor_count
+    DEPRECATED: Use device.processor_count instead - Old namespace-less attribute, to be replaced with device.processor_count for span-first future
     Example: "14"
     """
 
@@ -6812,19 +6860,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[116, 127]),
         ],
     ),
-    "device.cpu.logical_core_count": AttributeMetadata(
-        brief="The number of logical CPU cores available.",
-        type=AttributeType.INTEGER,
+    "device.class": AttributeMetadata(
+        brief="The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.",
+        type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
-        example=14,
-        aliases=["hardwareConcurrency"],
-        sdks=["javascript-browser"],
+        example="medium",
         changelog=[
             ChangelogEntry(
-                version="next",
-                prs=[281],
-                description="Added attribute device.cpu.logical_core_count to be used instead of hardwareConcurrency",
+                version="next", prs=[300], description="Added device.class attribute"
             ),
         ],
     ),
@@ -6836,6 +6880,20 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="iPhone",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[116, 127]),
+        ],
+    ),
+    "device.free_memory": AttributeMetadata(
+        brief="Free system memory in bytes.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=2147483648,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[300],
+                description="Added device.free_memory attribute",
+            ),
         ],
     ),
     "device.memory.estimated_capacity": AttributeMetadata(
@@ -6854,6 +6912,20 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "device.memory_size": AttributeMetadata(
+        brief="Total system memory available in bytes.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=17179869184,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[300],
+                description="Added device.memory_size attribute",
+            ),
+        ],
+    ),
     "device.model": AttributeMetadata(
         brief="The model of the device.",
         type=AttributeType.STRING,
@@ -6862,6 +6934,52 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="iPhone 15 Pro Max",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[116, 127]),
+        ],
+    ),
+    "device.model_id": AttributeMetadata(
+        brief="An internal hardware revision to identify the device exactly.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="N861AP",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[300], description="Added device.model_id attribute"
+            ),
+        ],
+    ),
+    "device.processor_count": AttributeMetadata(
+        brief='Number of "logical processors".',
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=8,
+        aliases=["hardwareConcurrency"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[300],
+                description="Removed deprecation, device.processor_count is now the canonical attribute",
+            ),
+            ChangelogEntry(
+                version="next",
+                prs=[300],
+                description="Added and deprecated attribute device.processor_count in favor of device.cpu.logical_core_count",
+            ),
+        ],
+    ),
+    "device.simulator": AttributeMetadata(
+        brief="Whether the device is a simulator or an actual device.",
+        type=AttributeType.BOOLEAN,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=False,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[300],
+                description="Added device.simulator attribute",
+            ),
         ],
     ),
     "deviceMemory": AttributeMetadata(
@@ -7742,13 +7860,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="14",
         deprecation=DeprecationInfo(
-            replacement="device.cpu.logical_core_count",
-            reason="Old namespace-less attribute, to be replaced with device.cpu.logical_core_count for span-first future",
+            replacement="device.processor_count",
+            reason="Old namespace-less attribute, to be replaced with device.processor_count for span-first future",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["device.cpu.logical_core_count"],
+        aliases=["device.processor_count"],
         sdks=["javascript-browser"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[300],
+                description="Updated deprecation replacement from device.cpu.logical_core_count to device.processor_count",
+            ),
             ChangelogEntry(
                 version="next",
                 prs=[281],
@@ -11264,10 +11387,15 @@ Attributes = TypedDict(
         "db.system.name": str,
         "db.user": str,
         "device.brand": str,
-        "device.cpu.logical_core_count": int,
+        "device.class": str,
         "device.family": str,
+        "device.free_memory": int,
         "device.memory.estimated_capacity": int,
+        "device.memory_size": int,
         "device.model": str,
+        "device.model_id": str,
+        "device.processor_count": int,
+        "device.simulator": bool,
         "deviceMemory": str,
         "environment": str,
         "error.type": str,
