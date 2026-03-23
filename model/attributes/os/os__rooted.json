@@ -1,0 +1,16 @@
+{
+  "key": "os.rooted",
+  "brief": "Whether the operating system has been jailbroken or rooted.",
+  "type": "boolean",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": true,
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added os.rooted attribute"
+    }
+  ]
+}
