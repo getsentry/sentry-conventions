@@ -1,0 +1,18 @@
+{
+  "key": "app.version",
+  "brief": "Human readable application version, as it appears on the platform.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
+  "example": "1.0.0",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [296],
+      "description": "Added app.version attribute"
+    }
+  ]
+}
