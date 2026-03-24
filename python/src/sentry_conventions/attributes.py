@@ -4011,6 +4011,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Aliases: device.connection_type
     Example: "wifi"
     """
 
@@ -10018,6 +10019,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="wifi",
+        aliases=["device.connection_type"],
         changelog=[
             ChangelogEntry(
                 version="next",

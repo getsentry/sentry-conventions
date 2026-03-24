@@ -6721,6 +6721,8 @@ export type NEL_TYPE_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  *
+ * Aliases: {@link DEVICE_CONNECTION_TYPE} `device.connection_type`
+ *
  * @example "wifi"
  */
 export const NETWORK_CONNECTION_TYPE = 'network.connection.type';
@@ -15566,6 +15568,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'wifi',
+    aliases: [DEVICE_CONNECTION_TYPE],
     changelog: [{ version: 'next', prs: [303], description: 'Added network.connection.type attribute' }],
   },
   [NETWORK_LOCAL_ADDRESS]: {
