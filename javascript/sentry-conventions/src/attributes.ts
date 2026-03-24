@@ -2524,7 +2524,7 @@ export type DEVICE_MODEL_ID_TYPE = string;
 // Path: model/attributes/device/device__name.json
 
 /**
- * The name of the device, typically a hostname. `device.name`
+ * The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname. `device.name`
  *
  * Attribute Value Type: `string` {@link DEVICE_NAME_TYPE}
  *
@@ -12760,7 +12760,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 100,
-    changelog: [{ version: 'next', description: 'Added device.battery_level attribute' }],
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.battery_level attribute' }],
   },
   [DEVICE_BATTERY_TEMPERATURE]: {
     brief: 'The battery temperature of the device in Celsius.',
@@ -12770,7 +12770,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 25,
-    changelog: [{ version: 'next', description: 'Added device.battery_temperature attribute' }],
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.battery_temperature attribute' }],
   },
   [DEVICE_BOOT_TIME]: {
     brief: 'A formatted UTC timestamp when the system was booted.',
@@ -12780,7 +12780,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '2018-02-08T12:52:12Z',
-    changelog: [{ version: 'next', description: 'Added device.boot_time attribute' }],
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.boot_time attribute' }],
   },
   [DEVICE_BRAND]: {
     brief: 'The brand of the device.',
@@ -12800,7 +12800,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: false,
-    changelog: [{ version: 'next', description: 'Added device.charging attribute' }],
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.charging attribute' }],
   },
   [DEVICE_CLASS]: {
     brief:
@@ -12841,7 +12841,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 107374182400,
-    changelog: [{ version: 'next', description: 'Added device.free_storage attribute' }],
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.free_storage attribute' }],
   },
   [DEVICE_ID]: {
     brief: 'Unique device identifier.',
@@ -12851,7 +12851,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
-    changelog: [{ version: 'next', description: 'Added device.id attribute' }],
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.id attribute' }],
   },
   [DEVICE_LOW_MEMORY]: {
     brief: 'Whether the device was low on memory.',
@@ -12861,7 +12861,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: false,
-    changelog: [{ version: 'next', description: 'Added device.low_memory attribute' }],
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.low_memory attribute' }],
   },
   [DEVICE_MANUFACTURER]: {
     brief: 'The manufacturer of the device.',
@@ -12871,7 +12871,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'Google',
-    changelog: [{ version: 'next', description: 'Added device.manufacturer attribute' }],
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.manufacturer attribute' }],
   },
   [DEVICE_MEMORY_ESTIMATED_CAPACITY]: {
     brief:
@@ -12923,14 +12923,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: 'next', prs: [300], description: 'Added device.model_id attribute' }],
   },
   [DEVICE_NAME]: {
-    brief: 'The name of the device, typically a hostname.',
+    brief:
+      'The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname.',
     type: 'string',
     pii: {
       isPii: 'maybe',
     },
     isInOtel: false,
     example: 'localhost',
-    changelog: [{ version: 'next', description: 'Added device.name attribute' }],
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.name attribute' }],
   },
   [DEVICE_ONLINE]: {
     brief: 'Whether the device was online or not.',
@@ -12940,7 +12941,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: true,
-    changelog: [{ version: 'next', description: 'Added device.online attribute' }],
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.online attribute' }],
   },
   [DEVICE_ORIENTATION]: {
     brief: 'The orientation of the device, either "portrait" or "landscape".',
@@ -12950,7 +12951,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'portrait',
-    changelog: [{ version: 'next', description: 'Added device.orientation attribute' }],
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.orientation attribute' }],
   },
   [DEVICE_PROCESSOR_COUNT]: {
     brief: 'Number of "logical processors".',
@@ -12982,7 +12983,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 2400,
-    changelog: [{ version: 'next', description: 'Added device.processor_frequency attribute' }],
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.processor_frequency attribute' }],
   },
   [DEVICE_SCREEN_DENSITY]: {
     brief: 'The screen density of the device.',
@@ -12992,7 +12993,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 2.625,
-    changelog: [{ version: 'next', description: 'Added device.screen_density attribute' }],
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.screen_density attribute' }],
   },
   [DEVICE_SCREEN_DPI]: {
     brief: 'The screen density in dots-per-inch (DPI) of the device.',
@@ -13002,7 +13003,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 420,
-    changelog: [{ version: 'next', description: 'Added device.screen_dpi attribute' }],
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.screen_dpi attribute' }],
   },
   [DEVICE_SCREEN_HEIGHT_PIXELS]: {
     brief: 'The height of the device screen in pixels.',
@@ -13012,7 +13013,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 2400,
-    changelog: [{ version: 'next', description: 'Added device.screen_height_pixels attribute' }],
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.screen_height_pixels attribute' }],
   },
   [DEVICE_SCREEN_WIDTH_PIXELS]: {
     brief: 'The width of the device screen in pixels.',
@@ -13022,7 +13023,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 1080,
-    changelog: [{ version: 'next', description: 'Added device.screen_width_pixels attribute' }],
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.screen_width_pixels attribute' }],
   },
   [DEVICE_SIMULATOR]: {
     brief: 'Whether the device is a simulator or an actual device.',
@@ -13042,7 +13043,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 274877906944,
-    changelog: [{ version: 'next', description: 'Added device.storage_size attribute' }],
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.storage_size attribute' }],
   },
   [DEVICE_USABLE_MEMORY]: {
     brief: 'Memory usable for the app in bytes.',
@@ -13052,7 +13053,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 2147483648,
-    changelog: [{ version: 'next', description: 'Added device.usable_memory attribute' }],
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.usable_memory attribute' }],
   },
   [ENVIRONMENT]: {
     brief: 'The sentry environment.',
