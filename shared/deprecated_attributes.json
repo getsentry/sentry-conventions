@@ -1439,6 +1439,29 @@
       ]
     },
     {
+      "key": "device.connection_type",
+      "brief": "The internet connection type currently being used by the device.",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "wifi",
+      "deprecation": {
+        "_status": "backfill",
+        "replacement": "network.connection.type",
+        "reason": "This attribute is being deprecated in favor of network.connection.type"
+      },
+      "alias": ["network.connection.type"],
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [303],
+          "description": "Added and deprecated device.connection_type in favor of network.connection.type"
+        }
+      ]
+    },
+    {
       "key": "gen_ai.prompt",
       "brief": "The input messages sent to the model",
       "type": "string",

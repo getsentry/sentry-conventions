@@ -147,6 +147,7 @@ class _AttributeNamesMeta(type):
         "DB_SQL_BINDINGS",
         "DB_STATEMENT",
         "DB_SYSTEM",
+        "DEVICE_CONNECTION_TYPE",
         "DEVICEMEMORY",
         "ENVIRONMENT",
         "FCP",
@@ -1437,6 +1438,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: false
     """
 
+    # Path: model/attributes/device/device__chipset.json
+    DEVICE_CHIPSET: Literal["device.chipset"] = "device.chipset"
+    """The chipset of the device.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "Qualcomm SM8550"
+    """
+
     # Path: model/attributes/device/device__class.json
     DEVICE_CLASS: Literal["device.class"] = "device.class"
     """The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.
@@ -1445,6 +1456,52 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Example: "medium"
+    """
+
+    # Path: model/attributes/device/device__connection_type.json
+    DEVICE_CONNECTION_TYPE: Literal["device.connection_type"] = "device.connection_type"
+    """The internet connection type currently being used by the device.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: network.connection.type
+    DEPRECATED: Use network.connection.type instead - This attribute is being deprecated in favor of network.connection.type
+    Example: "wifi"
+    """
+
+    # Path: model/attributes/device/device__cpu_description.json
+    DEVICE_CPU_DESCRIPTION: Literal["device.cpu_description"] = "device.cpu_description"
+    """A description of the CPU of the device.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "Intel(R) Core(TM)2 Quad CPU Q6600 @ 2.40GHz"
+    """
+
+    # Path: model/attributes/device/device__external_free_storage.json
+    DEVICE_EXTERNAL_FREE_STORAGE: Literal["device.external_free_storage"] = (
+        "device.external_free_storage"
+    )
+    """External storage free size in bytes.
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: 67108864000
+    """
+
+    # Path: model/attributes/device/device__external_storage_size.json
+    DEVICE_EXTERNAL_STORAGE_SIZE: Literal["device.external_storage_size"] = (
+        "device.external_storage_size"
+    )
+    """External storage total size in bytes.
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: 134217728000
     """
 
     # Path: model/attributes/device/device__family.json
@@ -1665,6 +1722,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Example: 274877906944
+    """
+
+    # Path: model/attributes/device/device__thermal_state.json
+    DEVICE_THERMAL_STATE: Literal["device.thermal_state"] = "device.thermal_state"
+    """The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum: `nominal`, `fair`, `serious`, or `critical`.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "nominal"
     """
 
     # Path: model/attributes/device/device__usable_memory.json
@@ -3933,6 +4000,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Aliases: network.transport
     DEPRECATED: Use network.transport instead
     Example: "tcp"
+    """
+
+    # Path: model/attributes/network/network__connection__type.json
+    NETWORK_CONNECTION_TYPE: Literal["network.connection.type"] = (
+        "network.connection.type"
+    )
+    """The internet connection type currently being used by the host.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: Yes
+    Example: "wifi"
     """
 
     # Path: model/attributes/network/network__local__address.json
@@ -7102,6 +7181,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "device.chipset": AttributeMetadata(
+        brief="The chipset of the device.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="Qualcomm SM8550",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[303], description="Added device.chipset attribute"
+            ),
+        ],
+    ),
     "device.class": AttributeMetadata(
         brief="The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.",
         type=AttributeType.STRING,
@@ -7111,6 +7202,68 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next", prs=[300], description="Added device.class attribute"
+            ),
+        ],
+    ),
+    "device.connection_type": AttributeMetadata(
+        brief="The internet connection type currently being used by the device.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="wifi",
+        deprecation=DeprecationInfo(
+            replacement="network.connection.type",
+            reason="This attribute is being deprecated in favor of network.connection.type",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["network.connection.type"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[303],
+                description="Added and deprecated device.connection_type in favor of network.connection.type",
+            ),
+        ],
+    ),
+    "device.cpu_description": AttributeMetadata(
+        brief="A description of the CPU of the device.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="Intel(R) Core(TM)2 Quad CPU Q6600 @ 2.40GHz",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[303],
+                description="Added device.cpu_description attribute",
+            ),
+        ],
+    ),
+    "device.external_free_storage": AttributeMetadata(
+        brief="External storage free size in bytes.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=67108864000,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[303],
+                description="Added device.external_free_storage attribute",
+            ),
+        ],
+    ),
+    "device.external_storage_size": AttributeMetadata(
+        brief="External storage total size in bytes.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=134217728000,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[303],
+                description="Added device.external_storage_size attribute",
             ),
         ],
     ),
@@ -7397,6 +7550,20 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 version="next",
                 prs=[303],
                 description="Added device.storage_size attribute",
+            ),
+        ],
+    ),
+    "device.thermal_state": AttributeMetadata(
+        brief="The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum: `nominal`, `fair`, `serious`, or `critical`.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="nominal",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[303],
+                description="Added device.thermal_state attribute",
             ),
         ],
     ),
@@ -9845,6 +10012,20 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "network.connection.type": AttributeMetadata(
+        brief="The internet connection type currently being used by the host.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=True,
+        example="wifi",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[303],
+                description="Added network.connection.type attribute",
+            ),
+        ],
+    ),
     "network.local.address": AttributeMetadata(
         brief="Local address of the network connection - IP address or Unix domain socket name.",
         type=AttributeType.STRING,
@@ -11823,7 +12004,12 @@ Attributes = TypedDict(
         "device.boot_time": str,
         "device.brand": str,
         "device.charging": bool,
+        "device.chipset": str,
         "device.class": str,
+        "device.connection_type": str,
+        "device.cpu_description": str,
+        "device.external_free_storage": int,
+        "device.external_storage_size": int,
         "device.family": str,
         "device.free_memory": int,
         "device.free_storage": int,
@@ -11845,6 +12031,7 @@ Attributes = TypedDict(
         "device.screen_width_pixels": int,
         "device.simulator": bool,
         "device.storage_size": int,
+        "device.thermal_state": str,
         "device.usable_memory": int,
         "deviceMemory": str,
         "environment": str,
@@ -12045,6 +12232,7 @@ Attributes = TypedDict(
         "net.sock.peer.name": str,
         "net.sock.peer.port": int,
         "net.transport": str,
+        "network.connection.type": str,
         "network.local.address": str,
         "network.local.port": int,
         "network.peer.address": str,

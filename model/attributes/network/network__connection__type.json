@@ -1,0 +1,17 @@
+{
+  "key": "network.connection.type",
+  "brief": "The internet connection type currently being used by the host.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": true,
+  "example": "wifi",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [303],
+      "description": "Added network.connection.type attribute"
+    }
+  ]
+}

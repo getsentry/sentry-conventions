@@ -2299,6 +2299,26 @@ export const DEVICE_CHARGING = 'device.charging';
  */
 export type DEVICE_CHARGING_TYPE = boolean;
 
+// Path: model/attributes/device/device__chipset.json
+
+/**
+ * The chipset of the device. `device.chipset`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_CHIPSET_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "Qualcomm SM8550"
+ */
+export const DEVICE_CHIPSET = 'device.chipset';
+
+/**
+ * Type for {@link DEVICE_CHIPSET} device.chipset
+ */
+export type DEVICE_CHIPSET_TYPE = string;
+
 // Path: model/attributes/device/device__class.json
 
 /**
@@ -2318,6 +2338,89 @@ export const DEVICE_CLASS = 'device.class';
  * Type for {@link DEVICE_CLASS} device.class
  */
 export type DEVICE_CLASS_TYPE = string;
+
+// Path: model/attributes/device/device__connection_type.json
+
+/**
+ * The internet connection type currently being used by the device. `device.connection_type`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_CONNECTION_TYPE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link NETWORK_CONNECTION_TYPE} `network.connection.type`
+ *
+ * @deprecated Use {@link NETWORK_CONNECTION_TYPE} (network.connection.type) instead - This attribute is being deprecated in favor of network.connection.type
+ * @example "wifi"
+ */
+export const DEVICE_CONNECTION_TYPE = 'device.connection_type';
+
+/**
+ * Type for {@link DEVICE_CONNECTION_TYPE} device.connection_type
+ */
+export type DEVICE_CONNECTION_TYPE_TYPE = string;
+
+// Path: model/attributes/device/device__cpu_description.json
+
+/**
+ * A description of the CPU of the device. `device.cpu_description`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_CPU_DESCRIPTION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "Intel(R) Core(TM)2 Quad CPU Q6600 @ 2.40GHz"
+ */
+export const DEVICE_CPU_DESCRIPTION = 'device.cpu_description';
+
+/**
+ * Type for {@link DEVICE_CPU_DESCRIPTION} device.cpu_description
+ */
+export type DEVICE_CPU_DESCRIPTION_TYPE = string;
+
+// Path: model/attributes/device/device__external_free_storage.json
+
+/**
+ * External storage free size in bytes. `device.external_free_storage`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_EXTERNAL_FREE_STORAGE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 67108864000
+ */
+export const DEVICE_EXTERNAL_FREE_STORAGE = 'device.external_free_storage';
+
+/**
+ * Type for {@link DEVICE_EXTERNAL_FREE_STORAGE} device.external_free_storage
+ */
+export type DEVICE_EXTERNAL_FREE_STORAGE_TYPE = number;
+
+// Path: model/attributes/device/device__external_storage_size.json
+
+/**
+ * External storage total size in bytes. `device.external_storage_size`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_EXTERNAL_STORAGE_SIZE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 134217728000
+ */
+export const DEVICE_EXTERNAL_STORAGE_SIZE = 'device.external_storage_size';
+
+/**
+ * Type for {@link DEVICE_EXTERNAL_STORAGE_SIZE} device.external_storage_size
+ */
+export type DEVICE_EXTERNAL_STORAGE_SIZE_TYPE = number;
 
 // Path: model/attributes/device/device__family.json
 
@@ -2742,6 +2845,26 @@ export const DEVICE_STORAGE_SIZE = 'device.storage_size';
  * Type for {@link DEVICE_STORAGE_SIZE} device.storage_size
  */
 export type DEVICE_STORAGE_SIZE_TYPE = number;
+
+// Path: model/attributes/device/device__thermal_state.json
+
+/**
+ * The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum: `nominal`, `fair`, `serious`, or `critical`. `device.thermal_state`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_THERMAL_STATE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "nominal"
+ */
+export const DEVICE_THERMAL_STATE = 'device.thermal_state';
+
+/**
+ * Type for {@link DEVICE_THERMAL_STATE} device.thermal_state
+ */
+export type DEVICE_THERMAL_STATE_TYPE = string;
 
 // Path: model/attributes/device/device__usable_memory.json
 
@@ -6586,6 +6709,26 @@ export const NEL_TYPE = 'nel.type';
  * Type for {@link NEL_TYPE} nel.type
  */
 export type NEL_TYPE_TYPE = string;
+
+// Path: model/attributes/network/network__connection__type.json
+
+/**
+ * The internet connection type currently being used by the host. `network.connection.type`
+ *
+ * Attribute Value Type: `string` {@link NETWORK_CONNECTION_TYPE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "wifi"
+ */
+export const NETWORK_CONNECTION_TYPE = 'network.connection.type';
+
+/**
+ * Type for {@link NETWORK_CONNECTION_TYPE} network.connection.type
+ */
+export type NETWORK_CONNECTION_TYPE_TYPE = string;
 
 // Path: model/attributes/network/network__local__address.json
 
@@ -10530,7 +10673,12 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [DEVICE_BOOT_TIME]: 'string',
   [DEVICE_BRAND]: 'string',
   [DEVICE_CHARGING]: 'boolean',
+  [DEVICE_CHIPSET]: 'string',
   [DEVICE_CLASS]: 'string',
+  [DEVICE_CONNECTION_TYPE]: 'string',
+  [DEVICE_CPU_DESCRIPTION]: 'string',
+  [DEVICE_EXTERNAL_FREE_STORAGE]: 'integer',
+  [DEVICE_EXTERNAL_STORAGE_SIZE]: 'integer',
   [DEVICE_FAMILY]: 'string',
   [DEVICE_FREE_MEMORY]: 'integer',
   [DEVICE_FREE_STORAGE]: 'integer',
@@ -10552,6 +10700,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [DEVICE_SCREEN_WIDTH_PIXELS]: 'integer',
   [DEVICE_SIMULATOR]: 'boolean',
   [DEVICE_STORAGE_SIZE]: 'integer',
+  [DEVICE_THERMAL_STATE]: 'string',
   [DEVICE_USABLE_MEMORY]: 'integer',
   [ENVIRONMENT]: 'string',
   [ERROR_TYPE]: 'string',
@@ -10736,6 +10885,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [NEL_REFERRER]: 'string',
   [NEL_SAMPLING_FUNCTION]: 'double',
   [NEL_TYPE]: 'string',
+  [NETWORK_CONNECTION_TYPE]: 'string',
   [NETWORK_LOCAL_ADDRESS]: 'string',
   [NETWORK_LOCAL_PORT]: 'integer',
   [NETWORK_PEER_ADDRESS]: 'string',
@@ -11029,7 +11179,12 @@ export type AttributeName =
   | typeof DEVICE_BOOT_TIME
   | typeof DEVICE_BRAND
   | typeof DEVICE_CHARGING
+  | typeof DEVICE_CHIPSET
   | typeof DEVICE_CLASS
+  | typeof DEVICE_CONNECTION_TYPE
+  | typeof DEVICE_CPU_DESCRIPTION
+  | typeof DEVICE_EXTERNAL_FREE_STORAGE
+  | typeof DEVICE_EXTERNAL_STORAGE_SIZE
   | typeof DEVICE_FAMILY
   | typeof DEVICE_FREE_MEMORY
   | typeof DEVICE_FREE_STORAGE
@@ -11051,6 +11206,7 @@ export type AttributeName =
   | typeof DEVICE_SCREEN_WIDTH_PIXELS
   | typeof DEVICE_SIMULATOR
   | typeof DEVICE_STORAGE_SIZE
+  | typeof DEVICE_THERMAL_STATE
   | typeof DEVICE_USABLE_MEMORY
   | typeof ENVIRONMENT
   | typeof ERROR_TYPE
@@ -11235,6 +11391,7 @@ export type AttributeName =
   | typeof NEL_REFERRER
   | typeof NEL_SAMPLING_FUNCTION
   | typeof NEL_TYPE
+  | typeof NETWORK_CONNECTION_TYPE
   | typeof NETWORK_LOCAL_ADDRESS
   | typeof NETWORK_LOCAL_PORT
   | typeof NETWORK_PEER_ADDRESS
@@ -12802,6 +12959,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: false,
     changelog: [{ version: 'next', prs: [303], description: 'Added device.charging attribute' }],
   },
+  [DEVICE_CHIPSET]: {
+    brief: 'The chipset of the device.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'Qualcomm SM8550',
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.chipset attribute' }],
+  },
   [DEVICE_CLASS]: {
     brief:
       'The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.',
@@ -12812,6 +12979,57 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'medium',
     changelog: [{ version: 'next', prs: [300], description: 'Added device.class attribute' }],
+  },
+  [DEVICE_CONNECTION_TYPE]: {
+    brief: 'The internet connection type currently being used by the device.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'wifi',
+    deprecation: {
+      replacement: 'network.connection.type',
+      reason: 'This attribute is being deprecated in favor of network.connection.type',
+    },
+    aliases: [NETWORK_CONNECTION_TYPE],
+    changelog: [
+      {
+        version: 'next',
+        prs: [303],
+        description: 'Added and deprecated device.connection_type in favor of network.connection.type',
+      },
+    ],
+  },
+  [DEVICE_CPU_DESCRIPTION]: {
+    brief: 'A description of the CPU of the device.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'Intel(R) Core(TM)2 Quad CPU Q6600 @ 2.40GHz',
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.cpu_description attribute' }],
+  },
+  [DEVICE_EXTERNAL_FREE_STORAGE]: {
+    brief: 'External storage free size in bytes.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 67108864000,
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.external_free_storage attribute' }],
+  },
+  [DEVICE_EXTERNAL_STORAGE_SIZE]: {
+    brief: 'External storage total size in bytes.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 134217728000,
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.external_storage_size attribute' }],
   },
   [DEVICE_FAMILY]: {
     brief: 'The family of the device.',
@@ -13044,6 +13262,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 274877906944,
     changelog: [{ version: 'next', prs: [303], description: 'Added device.storage_size attribute' }],
+  },
+  [DEVICE_THERMAL_STATE]: {
+    brief:
+      "The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum: `nominal`, `fair`, `serious`, or `critical`.",
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'nominal',
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.thermal_state attribute' }],
   },
   [DEVICE_USABLE_MEMORY]: {
     brief: 'Memory usable for the app in bytes.',
@@ -15329,6 +15558,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'dns.unreachable',
     changelog: [{ version: '0.1.0', prs: [68, 127] }],
   },
+  [NETWORK_CONNECTION_TYPE]: {
+    brief: 'The internet connection type currently being used by the host.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'wifi',
+    changelog: [{ version: 'next', prs: [303], description: 'Added network.connection.type attribute' }],
+  },
   [NETWORK_LOCAL_ADDRESS]: {
     brief: 'Local address of the network connection - IP address or Unix domain socket name.',
     type: 'string',
@@ -17479,7 +17718,12 @@ export type Attributes = {
   [DEVICE_BOOT_TIME]?: DEVICE_BOOT_TIME_TYPE;
   [DEVICE_BRAND]?: DEVICE_BRAND_TYPE;
   [DEVICE_CHARGING]?: DEVICE_CHARGING_TYPE;
+  [DEVICE_CHIPSET]?: DEVICE_CHIPSET_TYPE;
   [DEVICE_CLASS]?: DEVICE_CLASS_TYPE;
+  [DEVICE_CONNECTION_TYPE]?: DEVICE_CONNECTION_TYPE_TYPE;
+  [DEVICE_CPU_DESCRIPTION]?: DEVICE_CPU_DESCRIPTION_TYPE;
+  [DEVICE_EXTERNAL_FREE_STORAGE]?: DEVICE_EXTERNAL_FREE_STORAGE_TYPE;
+  [DEVICE_EXTERNAL_STORAGE_SIZE]?: DEVICE_EXTERNAL_STORAGE_SIZE_TYPE;
   [DEVICE_FAMILY]?: DEVICE_FAMILY_TYPE;
   [DEVICE_FREE_MEMORY]?: DEVICE_FREE_MEMORY_TYPE;
   [DEVICE_FREE_STORAGE]?: DEVICE_FREE_STORAGE_TYPE;
@@ -17501,6 +17745,7 @@ export type Attributes = {
   [DEVICE_SCREEN_WIDTH_PIXELS]?: DEVICE_SCREEN_WIDTH_PIXELS_TYPE;
   [DEVICE_SIMULATOR]?: DEVICE_SIMULATOR_TYPE;
   [DEVICE_STORAGE_SIZE]?: DEVICE_STORAGE_SIZE_TYPE;
+  [DEVICE_THERMAL_STATE]?: DEVICE_THERMAL_STATE_TYPE;
   [DEVICE_USABLE_MEMORY]?: DEVICE_USABLE_MEMORY_TYPE;
   [ENVIRONMENT]?: ENVIRONMENT_TYPE;
   [ERROR_TYPE]?: ERROR_TYPE_TYPE;
@@ -17685,6 +17930,7 @@ export type Attributes = {
   [NEL_REFERRER]?: NEL_REFERRER_TYPE;
   [NEL_SAMPLING_FUNCTION]?: NEL_SAMPLING_FUNCTION_TYPE;
   [NEL_TYPE]?: NEL_TYPE_TYPE;
+  [NETWORK_CONNECTION_TYPE]?: NETWORK_CONNECTION_TYPE_TYPE;
   [NETWORK_LOCAL_ADDRESS]?: NETWORK_LOCAL_ADDRESS_TYPE;
   [NETWORK_LOCAL_PORT]?: NETWORK_LOCAL_PORT_TYPE;
   [NETWORK_PEER_ADDRESS]?: NETWORK_PEER_ADDRESS_TYPE;
