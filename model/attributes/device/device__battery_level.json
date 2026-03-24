@@ -1,0 +1,16 @@
+{
+  "key": "device.battery_level",
+  "brief": "The battery level of the device as a percentage (0-100).",
+  "type": "double",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": 100.0,
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added device.battery_level attribute"
+    }
+  ]
+}

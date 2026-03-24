@@ -1,0 +1,16 @@
+{
+  "key": "device.screen_dpi",
+  "brief": "The screen density in dots-per-inch (DPI) of the device.",
+  "type": "integer",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": 420,
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added device.screen_dpi attribute"
+    }
+  ]
+}

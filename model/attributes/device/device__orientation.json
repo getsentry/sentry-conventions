@@ -1,0 +1,16 @@
+{
+  "key": "device.orientation",
+  "brief": "The orientation of the device, either \"portrait\" or \"landscape\".",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "portrait",
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added device.orientation attribute"
+    }
+  ]
+}

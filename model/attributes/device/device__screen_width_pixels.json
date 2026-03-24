@@ -1,0 +1,16 @@
+{
+  "key": "device.screen_width_pixels",
+  "brief": "The width of the device screen in pixels.",
+  "type": "integer",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": 1080,
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added device.screen_width_pixels attribute"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "key": "device.free_storage",
+  "brief": "Free device storage in bytes.",
+  "type": "integer",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": 107374182400,
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added device.free_storage attribute"
+    }
+  ]
+}

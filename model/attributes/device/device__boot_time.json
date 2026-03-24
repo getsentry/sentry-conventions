@@ -1,0 +1,16 @@
+{
+  "key": "device.boot_time",
+  "brief": "A formatted UTC timestamp when the system was booted.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "2018-02-08T12:52:12Z",
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added device.boot_time attribute"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "key": "device.storage_size",
+  "brief": "Total device storage in bytes.",
+  "type": "integer",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": 274877906944,
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added device.storage_size attribute"
+    }
+  ]
+}
