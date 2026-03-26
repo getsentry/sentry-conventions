@@ -154,13 +154,18 @@
       "is_in_otel": false,
       "example": "14",
       "sdks": ["javascript-browser"],
-      "alias": ["device.cpu.logical_core_count"],
+      "alias": ["device.processor_count"],
       "deprecation": {
-        "replacement": "device.cpu.logical_core_count",
-        "reason": "Old namespace-less attribute, to be replaced with device.cpu.logical_core_count for span-first future",
+        "replacement": "device.processor_count",
+        "reason": "Old namespace-less attribute, to be replaced with device.processor_count for span-first future",
         "_status": "backfill"
       },
       "changelog": [
+        {
+          "version": "next",
+          "prs": [300],
+          "description": "Updated deprecation replacement from device.cpu.logical_core_count to device.processor_count"
+        },
         {
           "version": "next",
           "prs": [281],

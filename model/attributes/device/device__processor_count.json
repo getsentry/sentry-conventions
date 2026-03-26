@@ -1,0 +1,23 @@
+{
+  "key": "device.processor_count",
+  "brief": "Number of \"logical processors\".",
+  "type": "integer",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": 8,
+  "alias": ["hardwareConcurrency"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [300],
+      "description": "Removed deprecation, device.processor_count is now the canonical attribute"
+    },
+    {
+      "version": "next",
+      "prs": [300],
+      "description": "Added and deprecated attribute device.processor_count in favor of device.cpu.logical_core_count"
+    }
+  ]
+}
