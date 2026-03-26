@@ -1427,6 +1427,26 @@ export const CACHE_TTL = 'cache.ttl';
  */
 export type CACHE_TTL_TYPE = number;
 
+// Path: model/attributes/cache/cache__write.json
+
+/**
+ * If the cache operation resulted in a write to the cache. `cache.write`
+ *
+ * Attribute Value Type: `boolean` {@link CACHE_WRITE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example true
+ */
+export const CACHE_WRITE = 'cache.write';
+
+/**
+ * Type for {@link CACHE_WRITE} cache.write
+ */
+export type CACHE_WRITE_TYPE = boolean;
+
 // Path: model/attributes/channel.json
 
 /**
@@ -10129,6 +10149,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [CACHE_KEY]: 'string[]',
   [CACHE_OPERATION]: 'string',
   [CACHE_TTL]: 'integer',
+  [CACHE_WRITE]: 'boolean',
   [CHANNEL]: 'string',
   [CLIENT_ADDRESS]: 'string',
   [CLIENT_PORT]: 'integer',
@@ -10610,6 +10631,7 @@ export type AttributeName =
   | typeof CACHE_KEY
   | typeof CACHE_OPERATION
   | typeof CACHE_TTL
+  | typeof CACHE_WRITE
   | typeof CHANNEL
   | typeof CLIENT_ADDRESS
   | typeof CLIENT_PORT
@@ -11899,6 +11921,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 120,
     sdks: ['php-laravel'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+  },
+  [CACHE_WRITE]: {
+    brief: 'If the cache operation resulted in a write to the cache.',
+    type: 'boolean',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: true,
+    sdks: ['java'],
+    changelog: [{ version: 'next' }],
   },
   [CHANNEL]: {
     brief: 'The channel name that is being used.',
@@ -16861,6 +16894,7 @@ export type Attributes = {
   [CACHE_KEY]?: CACHE_KEY_TYPE;
   [CACHE_OPERATION]?: CACHE_OPERATION_TYPE;
   [CACHE_TTL]?: CACHE_TTL_TYPE;
+  [CACHE_WRITE]?: CACHE_WRITE_TYPE;
   [CHANNEL]?: CHANNEL_TYPE;
   [CLIENT_ADDRESS]?: CLIENT_ADDRESS_TYPE;
   [CLIENT_PORT]?: CLIENT_PORT_TYPE;

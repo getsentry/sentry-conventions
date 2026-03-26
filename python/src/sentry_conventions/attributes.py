@@ -997,6 +997,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 120
     """
 
+    # Path: model/attributes/cache/cache__write.json
+    CACHE_WRITE: Literal["cache.write"] = "cache.write"
+    """If the cache operation resulted in a write to the cache.
+
+    Type: bool
+    Contains PII: false
+    Defined in OTEL: No
+    Example: true
+    """
+
     # Path: model/attributes/channel.json
     CHANNEL: Literal["channel"] = "channel"
     """The channel name that is being used.
@@ -6407,6 +6417,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "cache.write": AttributeMetadata(
+        brief="If the cache operation resulted in a write to the cache.",
+        type=AttributeType.BOOLEAN,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=True,
+        sdks=["java"],
+        changelog=[
+            ChangelogEntry(version="next"),
+        ],
+    ),
     "channel": AttributeMetadata(
         brief="The channel name that is being used.",
         type=AttributeType.STRING,
@@ -11351,6 +11372,7 @@ Attributes = TypedDict(
         "cache.key": List[str],
         "cache.operation": str,
         "cache.ttl": int,
+        "cache.write": bool,
         "channel": str,
         "client.address": str,
         "client.port": int,
