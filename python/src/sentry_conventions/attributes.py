@@ -6377,7 +6377,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=True,
         sdks=["java"],
         changelog=[
-            ChangelogEntry(version="0.5.0"),
+            ChangelogEntry(version="next"),
         ],
     ),
     "channel": AttributeMetadata(

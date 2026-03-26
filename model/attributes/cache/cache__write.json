@@ -10,7 +10,7 @@
   "sdks": ["java"],
   "changelog": [
     {
-      "version": "0.5.0"
+      "version": "next"
     }
   ]
 }

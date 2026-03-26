@@ -11821,7 +11821,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: true,
     sdks: ['java'],
-    changelog: [{ version: '0.5.0' }],
+    changelog: [{ version: 'next' }],
   },
   [CHANNEL]: {
     brief: 'The channel name that is being used.',
