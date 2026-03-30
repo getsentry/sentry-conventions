@@ -147,6 +147,8 @@ class _AttributeNamesMeta(type):
         "CODE_FUNCTION",
         "CODE_LINENO",
         "CODE_NAMESPACE",
+        "CONNECTION_RTT",
+        "CONNECTIONTYPE",
         "DB_NAME",
         "DB_OPERATION",
         "DB_SQL_BINDINGS",
@@ -154,6 +156,7 @@ class _AttributeNamesMeta(type):
         "DB_SYSTEM",
         "DEVICE_CONNECTION_TYPE",
         "DEVICEMEMORY",
+        "EFFECTIVECONNECTIONTYPE",
         "ENVIRONMENT",
         "FCP",
         "FP",
@@ -1068,6 +1071,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 120
     """
 
+    # Path: model/attributes/cache/cache__write.json
+    CACHE_WRITE: Literal["cache.write"] = "cache.write"
+    """If the cache operation resulted in a write to the cache.
+
+    Type: bool
+    Contains PII: false
+    Defined in OTEL: No
+    Example: true
+    """
+
     # Path: model/attributes/channel.json
     CHANNEL: Literal["channel"] = "channel"
     """The channel name that is being used.
@@ -1236,6 +1249,30 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     DEPRECATED: Use code.function.name instead - code.function.name should include the namespace.
     Example: "http.handler"
+    """
+
+    # Path: model/attributes/connection/connection__rtt.json
+    CONNECTION_RTT: Literal["connection.rtt"] = "connection.rtt"
+    """Specifies the estimated effective round-trip time of the current connection, in milliseconds.
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: network.connection.rtt
+    DEPRECATED: Use network.connection.rtt instead - Old attribute name (no official namespace), to be replaced with network.connection.rtt for span-first future
+    Example: 100
+    """
+
+    # Path: model/attributes/connectionType.json
+    CONNECTIONTYPE: Literal["connectionType"] = "connectionType"
+    """Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: network.connection.type
+    DEPRECATED: Use network.connection.type instead - Old namespace-less attribute, to be replaced with network.connection.type for span-first future
+    Example: "wifi"
     """
 
     # Path: model/attributes/culture/culture__calendar.json
@@ -1824,6 +1861,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Aliases: device.memory.estimated_capacity
     DEPRECATED: Use device.memory.estimated_capacity instead - Old namespace-less attribute, to be replaced with device.memory.estimated_capacity for span-first future
     Example: "8 GB"
+    """
+
+    # Path: model/attributes/effectiveConnectionType.json
+    EFFECTIVECONNECTIONTYPE: Literal["effectiveConnectionType"] = (
+        "effectiveConnectionType"
+    )
+    """Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: network.connection.effective_type
+    DEPRECATED: Use network.connection.effective_type instead - Old namespace-less attribute, to be replaced with network.connection.effective_type for span-first future
+    Example: "4g"
     """
 
     # Path: model/attributes/environment.json
@@ -4072,6 +4123,30 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "tcp"
     """
 
+    # Path: model/attributes/network/network__connection__effective_type.json
+    NETWORK_CONNECTION_EFFECTIVE_TYPE: Literal["network.connection.effective_type"] = (
+        "network.connection.effective_type"
+    )
+    """Specifies the effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: effectiveConnectionType
+    Example: "4g"
+    """
+
+    # Path: model/attributes/network/network__connection__rtt.json
+    NETWORK_CONNECTION_RTT: Literal["network.connection.rtt"] = "network.connection.rtt"
+    """Specifies the estimated effective round-trip time of the current connection, in milliseconds.
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: connection.rtt
+    Example: 100
+    """
+
     # Path: model/attributes/network/network__connection__type.json
     NETWORK_CONNECTION_TYPE: Literal["network.connection.type"] = (
         "network.connection.type"
@@ -4081,7 +4156,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
-    Aliases: device.connection_type
+    Aliases: device.connection_type, connectionType
     Example: "wifi"
     """
 
@@ -6880,6 +6955,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "cache.write": AttributeMetadata(
+        brief="If the cache operation resulted in a write to the cache.",
+        type=AttributeType.BOOLEAN,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=True,
+        sdks=["java"],
+        changelog=[
+            ChangelogEntry(version="next"),
+        ],
+    ),
     "channel": AttributeMetadata(
         brief="The channel name that is being used.",
         type=AttributeType.STRING,
@@ -7078,6 +7164,48 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 74]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "connection.rtt": AttributeMetadata(
+        brief="Specifies the estimated effective round-trip time of the current connection, in milliseconds.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=100,
+        deprecation=DeprecationInfo(
+            replacement="network.connection.rtt",
+            reason="Old attribute name (no official namespace), to be replaced with network.connection.rtt for span-first future",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["network.connection.rtt"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[279],
+                description="Added and deprecated attribute to document JS SDK's current behaviour",
+            ),
+        ],
+    ),
+    "connectionType": AttributeMetadata(
+        brief="Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="wifi",
+        deprecation=DeprecationInfo(
+            replacement="network.connection.type",
+            reason="Old namespace-less attribute, to be replaced with network.connection.type for span-first future",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["network.connection.type"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[279],
+                description="Added and deprecated attribute to document JS SDK's current behaviour",
+            ),
         ],
     ),
     "culture.calendar": AttributeMetadata(
@@ -7804,6 +7932,27 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(
                 version="next",
                 prs=[281],
+                description="Added and deprecated attribute to document JS SDK's current behaviour",
+            ),
+        ],
+    ),
+    "effectiveConnectionType": AttributeMetadata(
+        brief="Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="4g",
+        deprecation=DeprecationInfo(
+            replacement="network.connection.effective_type",
+            reason="Old namespace-less attribute, to be replaced with network.connection.effective_type for span-first future",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["network.connection.effective_type"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[279],
                 description="Added and deprecated attribute to document JS SDK's current behaviour",
             ),
         ],
@@ -10218,17 +10367,50 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "network.connection.effective_type": AttributeMetadata(
+        brief="Specifies the effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="4g",
+        aliases=["effectiveConnectionType"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[279],
+                description="Added attribute network.connection.effective_type to be used instead of effectiveConnectionType",
+            ),
+        ],
+    ),
+    "network.connection.rtt": AttributeMetadata(
+        brief="Specifies the estimated effective round-trip time of the current connection, in milliseconds.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=100,
+        aliases=["connection.rtt"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[279],
+                description="Added attribute network.connection.rtt to be used instead of connection.rtt",
+            ),
+        ],
+    ),
     "network.connection.type": AttributeMetadata(
         brief="The internet connection type currently being used by the host.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="wifi",
-        aliases=["device.connection_type"],
+        aliases=["device.connection_type", "connectionType"],
+        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[303],
+                prs=[279, 303],
                 description="Added network.connection.type attribute",
             ),
         ],
@@ -12176,6 +12358,7 @@ Attributes = TypedDict(
         "cache.key": List[str],
         "cache.operation": str,
         "cache.ttl": int,
+        "cache.write": bool,
         "channel": str,
         "client.address": str,
         "client.port": int,
@@ -12191,6 +12374,8 @@ Attributes = TypedDict(
         "code.line.number": int,
         "code.lineno": int,
         "code.namespace": str,
+        "connection.rtt": int,
+        "connectionType": str,
         "culture.calendar": str,
         "culture.display_name": str,
         "culture.is_24_hour_format": bool,
@@ -12246,6 +12431,7 @@ Attributes = TypedDict(
         "device.thermal_state": str,
         "device.usable_memory": int,
         "deviceMemory": str,
+        "effectiveConnectionType": str,
         "environment": str,
         "error.type": str,
         "event.id": int,
@@ -12444,6 +12630,8 @@ Attributes = TypedDict(
         "net.sock.peer.name": str,
         "net.sock.peer.port": int,
         "net.transport": str,
+        "network.connection.effective_type": str,
+        "network.connection.rtt": int,
         "network.connection.type": str,
         "network.local.address": str,
         "network.local.port": int,
