@@ -12,7 +12,7 @@
     "replacement": "network.connection.type",
     "reason": "This attribute is being deprecated in favor of network.connection.type"
   },
-  "alias": ["network.connection.type"],
+  "alias": ["network.connection.type", "connectionType"],
   "changelog": [
     {
       "version": "next",
