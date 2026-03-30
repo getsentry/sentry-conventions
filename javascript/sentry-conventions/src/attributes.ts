@@ -2407,27 +2407,17 @@ export const DEVICE_MODEL = 'device.model';
  */
 export type DEVICE_MODEL_TYPE = string;
 
-<<<<<<< HEAD
 // Path: model/attributes/device/device__model_id.json
 
 /**
  * An internal hardware revision to identify the device exactly. `device.model_id`
  *
  * Attribute Value Type: `string` {@link DEVICE_MODEL_ID_TYPE}
-=======
-// Path: model/attributes/effectiveConnectionType.json
-
-/**
- * Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g). `effectiveConnectionType`
- *
- * Attribute Value Type: `string` {@link EFFECTIVECONNECTIONTYPE_TYPE}
->>>>>>> 04be27a (add attributes)
  *
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
-<<<<<<< HEAD
  * @example "N861AP"
  */
 export const DEVICE_MODEL_ID = 'device.model_id';
@@ -2478,7 +2468,18 @@ export const DEVICE_SIMULATOR = 'device.simulator';
  * Type for {@link DEVICE_SIMULATOR} device.simulator
  */
 export type DEVICE_SIMULATOR_TYPE = boolean;
-=======
+
+// Path: model/attributes/effectiveConnectionType.json
+
+/**
+ * Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g). `effectiveConnectionType`
+ *
+ * Attribute Value Type: `string` {@link EFFECTIVECONNECTIONTYPE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
  * Aliases: {@link NETWORK_CONNECTION_EFFECTIVE_TYPE} `network.connection.effective_type`
  *
  * @deprecated Use {@link NETWORK_CONNECTION_EFFECTIVE_TYPE} (network.connection.effective_type) instead - Old namespace-less attribute, to be replaced with network.connection.effective_type for span-first future
@@ -2490,7 +2491,6 @@ export const EFFECTIVECONNECTIONTYPE = 'effectiveConnectionType';
  * Type for {@link EFFECTIVECONNECTIONTYPE} effectiveConnectionType
  */
 export type EFFECTIVECONNECTIONTYPE_TYPE = string;
->>>>>>> 04be27a (add attributes)
 
 // Path: model/attributes/environment.json
 
@@ -10330,13 +10330,10 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [DEVICE_MEMORY_ESTIMATED_CAPACITY]: 'integer',
   [DEVICE_MEMORY_SIZE]: 'integer',
   [DEVICE_MODEL]: 'string',
-<<<<<<< HEAD
   [DEVICE_MODEL_ID]: 'string',
   [DEVICE_PROCESSOR_COUNT]: 'integer',
   [DEVICE_SIMULATOR]: 'boolean',
-=======
   [EFFECTIVECONNECTIONTYPE]: 'string',
->>>>>>> 04be27a (add attributes)
   [ENVIRONMENT]: 'string',
   [ERROR_TYPE]: 'string',
   [EVENT_ID]: 'integer',
@@ -10821,13 +10818,10 @@ export type AttributeName =
   | typeof DEVICE_MEMORY_ESTIMATED_CAPACITY
   | typeof DEVICE_MEMORY_SIZE
   | typeof DEVICE_MODEL
-<<<<<<< HEAD
   | typeof DEVICE_MODEL_ID
   | typeof DEVICE_PROCESSOR_COUNT
   | typeof DEVICE_SIMULATOR
-=======
   | typeof EFFECTIVECONNECTIONTYPE
->>>>>>> 04be27a (add attributes)
   | typeof ENVIRONMENT
   | typeof ERROR_TYPE
   | typeof EVENT_ID
@@ -12667,19 +12661,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'iPhone 15 Pro Max',
     changelog: [{ version: '0.1.0', prs: [116, 127] }],
   },
-<<<<<<< HEAD
   [DEVICE_MODEL_ID]: {
     brief: 'An internal hardware revision to identify the device exactly.',
-=======
-  [EFFECTIVECONNECTIONTYPE]: {
-    brief: 'Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).',
->>>>>>> 04be27a (add attributes)
     type: 'string',
     pii: {
       isPii: 'maybe',
     },
     isInOtel: false,
-<<<<<<< HEAD
     example: 'N861AP',
     changelog: [{ version: 'next', prs: [300], description: 'Added device.model_id attribute' }],
   },
@@ -12715,7 +12703,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: false,
     changelog: [{ version: 'next', prs: [300], description: 'Added device.simulator attribute' }],
   },
-=======
+  [EFFECTIVECONNECTIONTYPE]: {
+    brief: 'Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
     example: '4g',
     deprecation: {
       replacement: 'network.connection.effective_type',
@@ -12732,7 +12726,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       },
     ],
   },
->>>>>>> 04be27a (add attributes)
   [ENVIRONMENT]: {
     brief: 'The sentry environment.',
     type: 'string',
@@ -17216,13 +17209,10 @@ export type Attributes = {
   [DEVICE_MEMORY_ESTIMATED_CAPACITY]?: DEVICE_MEMORY_ESTIMATED_CAPACITY_TYPE;
   [DEVICE_MEMORY_SIZE]?: DEVICE_MEMORY_SIZE_TYPE;
   [DEVICE_MODEL]?: DEVICE_MODEL_TYPE;
-<<<<<<< HEAD
   [DEVICE_MODEL_ID]?: DEVICE_MODEL_ID_TYPE;
   [DEVICE_PROCESSOR_COUNT]?: DEVICE_PROCESSOR_COUNT_TYPE;
   [DEVICE_SIMULATOR]?: DEVICE_SIMULATOR_TYPE;
-=======
   [EFFECTIVECONNECTIONTYPE]?: EFFECTIVECONNECTIONTYPE_TYPE;
->>>>>>> 04be27a (add attributes)
   [ENVIRONMENT]?: ENVIRONMENT_TYPE;
   [ERROR_TYPE]?: ERROR_TYPE_TYPE;
   [EVENT_ID]?: EVENT_ID_TYPE;

@@ -1495,8 +1495,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "iPhone 15 Pro Max"
     """
 
-<<<<<<< HEAD
-<<<<<<< HEAD
     # Path: model/attributes/device/device__model_id.json
     DEVICE_MODEL_ID: Literal["device.model_id"] = "device.model_id"
     """An internal hardware revision to identify the device exactly.
@@ -1528,11 +1526,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: false
     """
 
-=======
-<<<<<<< HEAD
->>>>>>> 04be27a (add attributes)
-=======
->>>>>>> 8d239e7 (regenerate after rebase)
     # Path: model/attributes/deviceMemory.json
     DEVICEMEMORY: Literal["deviceMemory"] = "deviceMemory"
     """The estimated total memory capacity of the device, only a rough estimation in gigabytes.
@@ -7084,8 +7077,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[116, 127]),
         ],
     ),
-<<<<<<< HEAD
-<<<<<<< HEAD
     "device.model_id": AttributeMetadata(
         brief="An internal hardware revision to identify the device exactly.",
         type=AttributeType.STRING,
@@ -7132,11 +7123,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
-=======
-<<<<<<< HEAD
->>>>>>> 04be27a (add attributes)
-=======
->>>>>>> 8d239e7 (regenerate after rebase)
     "deviceMemory": AttributeMetadata(
         brief="The estimated total memory capacity of the device, only a rough estimation in gigabytes.",
         type=AttributeType.STRING,
@@ -11620,16 +11606,9 @@ Attributes = TypedDict(
         "device.memory.estimated_capacity": int,
         "device.memory_size": int,
         "device.model": str,
-<<<<<<< HEAD
-<<<<<<< HEAD
         "device.model_id": str,
         "device.processor_count": int,
         "device.simulator": bool,
-=======
-<<<<<<< HEAD
->>>>>>> 04be27a (add attributes)
-=======
->>>>>>> 8d239e7 (regenerate after rebase)
         "deviceMemory": str,
         "effectiveConnectionType": str,
         "environment": str,
