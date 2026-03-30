@@ -1200,7 +1200,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: network.connection.type
+    Aliases: network.connection.type, device.connection_type
     DEPRECATED: Use network.connection.type instead - Old namespace-less attribute, to be replaced with network.connection.type for span-first future
     Example: "wifi"
     """
@@ -1502,7 +1502,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: network.connection.type
+    Aliases: network.connection.type, connectionType
     DEPRECATED: Use network.connection.type instead - This attribute is being deprecated in favor of network.connection.type
     Example: "wifi"
     """
@@ -6993,7 +6993,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="Old namespace-less attribute, to be replaced with network.connection.type for span-first future",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["network.connection.type"],
+        aliases=["network.connection.type", "device.connection_type"],
         sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
@@ -7345,7 +7345,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="This attribute is being deprecated in favor of network.connection.type",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["network.connection.type"],
+        aliases=["network.connection.type", "connectionType"],
         changelog=[
             ChangelogEntry(
                 version="next",

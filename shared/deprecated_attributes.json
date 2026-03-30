@@ -35,7 +35,7 @@
       "is_in_otel": false,
       "example": "wifi",
       "sdks": ["javascript-browser"],
-      "alias": ["network.connection.type"],
+      "alias": ["network.connection.type", "device.connection_type"],
       "deprecation": {
         "replacement": "network.connection.type",
         "reason": "Old namespace-less attribute, to be replaced with network.connection.type for span-first future",
@@ -1524,7 +1524,7 @@
         "replacement": "network.connection.type",
         "reason": "This attribute is being deprecated in favor of network.connection.type"
       },
-      "alias": ["network.connection.type"],
+      "alias": ["network.connection.type", "connectionType"],
       "changelog": [
         {
           "version": "next",

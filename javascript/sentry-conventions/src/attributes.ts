@@ -1784,7 +1784,7 @@ export type CODE_NAMESPACE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link NETWORK_CONNECTION_TYPE} `network.connection.type`
+ * Aliases: {@link NETWORK_CONNECTION_TYPE} `network.connection.type`, {@link DEVICE_CONNECTION_TYPE} `device.connection_type`
  *
  * @deprecated Use {@link NETWORK_CONNECTION_TYPE} (network.connection.type) instead - Old namespace-less attribute, to be replaced with network.connection.type for span-first future
  * @example "wifi"
@@ -2416,7 +2416,7 @@ export type DEVICE_CLASS_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link NETWORK_CONNECTION_TYPE} `network.connection.type`
+ * Aliases: {@link NETWORK_CONNECTION_TYPE} `network.connection.type`, {@link CONNECTIONTYPE} `connectionType`
  *
  * @deprecated Use {@link NETWORK_CONNECTION_TYPE} (network.connection.type) instead - This attribute is being deprecated in favor of network.connection.type
  * @example "wifi"
@@ -12822,7 +12822,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'network.connection.type',
       reason: 'Old namespace-less attribute, to be replaced with network.connection.type for span-first future',
     },
-    aliases: [NETWORK_CONNECTION_TYPE],
+    aliases: [NETWORK_CONNECTION_TYPE, DEVICE_CONNECTION_TYPE],
     sdks: ['javascript-browser'],
     changelog: [
       {
@@ -13195,7 +13195,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'network.connection.type',
       reason: 'This attribute is being deprecated in favor of network.connection.type',
     },
-    aliases: [NETWORK_CONNECTION_TYPE],
+    aliases: [NETWORK_CONNECTION_TYPE, CONNECTIONTYPE],
     changelog: [
       {
         version: 'next',
