@@ -6741,7 +6741,7 @@ export type OS_RAW_DESCRIPTION_TYPE = string;
  *
  * Attribute Value Type: `boolean` {@link OS_ROOTED_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -6761,7 +6761,7 @@ export type OS_ROOTED_TYPE = boolean;
  *
  * Attribute Value Type: `string` {@link OS_THEME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -15022,7 +15022,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Whether the operating system has been jailbroken or rooted.',
     type: 'boolean',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: true,
@@ -15032,7 +15032,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Whether the OS runs in dark mode or light mode.',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'dark',
