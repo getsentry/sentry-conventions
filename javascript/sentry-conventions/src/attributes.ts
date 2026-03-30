@@ -733,6 +733,121 @@ export const AI_WARNINGS = 'ai.warnings';
  */
 export type AI_WARNINGS_TYPE = Array<string>;
 
+// Path: model/attributes/app/app__app_build.json
+
+/**
+ * Internal build identifier, as it appears on the platform. `app.app_build`
+ *
+ * Attribute Value Type: `string` {@link APP_APP_BUILD_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link APP_BUILD} `app.build`
+ *
+ * @deprecated Use {@link APP_BUILD} (app.build) instead - Deprecated in favor of app.build
+ * @example "1"
+ */
+export const APP_APP_BUILD = 'app.app_build';
+
+/**
+ * Type for {@link APP_APP_BUILD} app.app_build
+ */
+export type APP_APP_BUILD_TYPE = string;
+
+// Path: model/attributes/app/app__app_identifier.json
+
+/**
+ * Version-independent application identifier, often a dotted bundle ID. `app.app_identifier`
+ *
+ * Attribute Value Type: `string` {@link APP_APP_IDENTIFIER_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link APP_IDENTIFIER} `app.identifier`
+ *
+ * @deprecated Use {@link APP_IDENTIFIER} (app.identifier) instead - Deprecated in favor of app.identifier
+ * @example "com.example.myapp"
+ */
+export const APP_APP_IDENTIFIER = 'app.app_identifier';
+
+/**
+ * Type for {@link APP_APP_IDENTIFIER} app.app_identifier
+ */
+export type APP_APP_IDENTIFIER_TYPE = string;
+
+// Path: model/attributes/app/app__app_name.json
+
+/**
+ * Human readable application name, as it appears on the platform. `app.app_name`
+ *
+ * Attribute Value Type: `string` {@link APP_APP_NAME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link APP_NAME} `app.name`
+ *
+ * @deprecated Use {@link APP_NAME} (app.name) instead - Deprecated in favor of app.name
+ * @example "My App"
+ */
+export const APP_APP_NAME = 'app.app_name';
+
+/**
+ * Type for {@link APP_APP_NAME} app.app_name
+ */
+export type APP_APP_NAME_TYPE = string;
+
+// Path: model/attributes/app/app__app_start_time.json
+
+/**
+ * Formatted UTC timestamp when the user started the application. `app.app_start_time`
+ *
+ * Attribute Value Type: `string` {@link APP_APP_START_TIME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link APP_START_TIME} `app.start_time`
+ *
+ * @deprecated Use {@link APP_START_TIME} (app.start_time) instead - Deprecated in favor of app.start_time
+ * @example "2025-01-01T00:00:00.000Z"
+ */
+export const APP_APP_START_TIME = 'app.app_start_time';
+
+/**
+ * Type for {@link APP_APP_START_TIME} app.app_start_time
+ */
+export type APP_APP_START_TIME_TYPE = string;
+
+// Path: model/attributes/app/app__app_version.json
+
+/**
+ * Human readable application version, as it appears on the platform. `app.app_version`
+ *
+ * Attribute Value Type: `string` {@link APP_APP_VERSION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link APP_VERSION} `app.version`
+ *
+ * @deprecated Use {@link APP_VERSION} (app.version) instead - Deprecated in favor of app.version
+ * @example "1.0.0"
+ */
+export const APP_APP_VERSION = 'app.app_version';
+
+/**
+ * Type for {@link APP_APP_VERSION} app.app_version
+ */
+export type APP_APP_VERSION_TYPE = string;
+
 // Path: model/attributes/app/app__build.json
 
 /**
@@ -743,6 +858,8 @@ export type AI_WARNINGS_TYPE = Array<string>;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link APP_APP_BUILD} `app.app_build`
  *
  * @example "1"
  */
@@ -763,6 +880,8 @@ export type APP_BUILD_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link APP_APP_IDENTIFIER} `app.app_identifier`
  *
  * @example "com.example.myapp"
  */
@@ -804,6 +923,8 @@ export type APP_IN_FOREGROUND_TYPE = boolean;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link APP_APP_NAME} `app.app_name`
+ *
  * @example "My App"
  */
 export const APP_NAME = 'app.name';
@@ -823,6 +944,8 @@ export type APP_NAME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link APP_APP_START_TIME} `app.app_start_time`
  *
  * @example "2025-01-01T00:00:00.000Z"
  */
@@ -863,6 +986,8 @@ export type APP_START_TYPE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link APP_APP_VERSION} `app.app_version`
  *
  * @example "1.0.0"
  */
@@ -10251,6 +10376,11 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [AI_TOTAL_COST]: 'double',
   [AI_TOTAL_TOKENS_USED]: 'integer',
   [AI_WARNINGS]: 'string[]',
+  [APP_APP_BUILD]: 'string',
+  [APP_APP_IDENTIFIER]: 'string',
+  [APP_APP_NAME]: 'string',
+  [APP_APP_START_TIME]: 'string',
+  [APP_APP_VERSION]: 'string',
   [APP_BUILD]: 'string',
   [APP_IDENTIFIER]: 'string',
   [APP_IN_FOREGROUND]: 'boolean',
@@ -10739,6 +10869,11 @@ export type AttributeName =
   | typeof AI_TOTAL_COST
   | typeof AI_TOTAL_TOKENS_USED
   | typeof AI_WARNINGS
+  | typeof APP_APP_BUILD
+  | typeof APP_APP_IDENTIFIER
+  | typeof APP_APP_NAME
+  | typeof APP_APP_START_TIME
+  | typeof APP_APP_VERSION
   | typeof APP_BUILD
   | typeof APP_IDENTIFIER
   | typeof APP_IN_FOREGROUND
@@ -11694,6 +11829,102 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.1.0', prs: [55] },
     ],
   },
+  [APP_APP_BUILD]: {
+    brief: 'Internal build identifier, as it appears on the platform.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '1',
+    deprecation: {
+      replacement: 'app.build',
+      reason: 'Deprecated in favor of app.build',
+    },
+    aliases: [APP_BUILD],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [
+      { version: 'next', prs: [296], description: 'Added and deprecated app.app_build in favor of app.build' },
+    ],
+  },
+  [APP_APP_IDENTIFIER]: {
+    brief: 'Version-independent application identifier, often a dotted bundle ID.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'com.example.myapp',
+    deprecation: {
+      replacement: 'app.identifier',
+      reason: 'Deprecated in favor of app.identifier',
+    },
+    aliases: [APP_IDENTIFIER],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [296],
+        description: 'Added and deprecated app.app_identifier in favor of app.identifier',
+      },
+    ],
+  },
+  [APP_APP_NAME]: {
+    brief: 'Human readable application name, as it appears on the platform.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'My App',
+    deprecation: {
+      replacement: 'app.name',
+      reason: 'Deprecated in favor of app.name',
+    },
+    aliases: [APP_NAME],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [{ version: 'next', prs: [296], description: 'Added and deprecated app.app_name in favor of app.name' }],
+  },
+  [APP_APP_START_TIME]: {
+    brief: 'Formatted UTC timestamp when the user started the application.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '2025-01-01T00:00:00.000Z',
+    deprecation: {
+      replacement: 'app.start_time',
+      reason: 'Deprecated in favor of app.start_time',
+    },
+    aliases: [APP_START_TIME],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [296],
+        description: 'Added and deprecated app.app_start_time in favor of app.start_time',
+      },
+    ],
+  },
+  [APP_APP_VERSION]: {
+    brief: 'Human readable application version, as it appears on the platform.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '1.0.0',
+    deprecation: {
+      replacement: 'app.version',
+      reason: 'Deprecated in favor of app.version',
+    },
+    aliases: [APP_VERSION],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [
+      { version: 'next', prs: [296], description: 'Added and deprecated app.app_version in favor of app.version' },
+    ],
+  },
   [APP_BUILD]: {
     brief: 'Internal build identifier, as it appears on the platform.',
     type: 'string',
@@ -11702,6 +11933,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '1',
+    aliases: [APP_APP_BUILD],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: 'next', prs: [296], description: 'Added app.build attribute' }],
   },
@@ -11713,6 +11945,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'com.example.myapp',
+    aliases: [APP_APP_IDENTIFIER],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: 'next', prs: [296], description: 'Added app.identifier attribute' }],
   },
@@ -11735,6 +11968,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'My App',
+    aliases: [APP_APP_NAME],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: 'next', prs: [296], description: 'Added app.name attribute' }],
   },
@@ -11746,6 +11980,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '2025-01-01T00:00:00.000Z',
+    aliases: [APP_APP_START_TIME],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: 'next', prs: [296], description: 'Added app.start_time attribute' }],
   },
@@ -11767,6 +12002,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '1.0.0',
+    aliases: [APP_APP_VERSION],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: 'next', prs: [296], description: 'Added app.version attribute' }],
   },
@@ -17130,6 +17366,11 @@ export type Attributes = {
   [AI_TOTAL_COST]?: AI_TOTAL_COST_TYPE;
   [AI_TOTAL_TOKENS_USED]?: AI_TOTAL_TOKENS_USED_TYPE;
   [AI_WARNINGS]?: AI_WARNINGS_TYPE;
+  [APP_APP_BUILD]?: APP_APP_BUILD_TYPE;
+  [APP_APP_IDENTIFIER]?: APP_APP_IDENTIFIER_TYPE;
+  [APP_APP_NAME]?: APP_APP_NAME_TYPE;
+  [APP_APP_START_TIME]?: APP_APP_START_TIME_TYPE;
+  [APP_APP_VERSION]?: APP_APP_VERSION_TYPE;
   [APP_BUILD]?: APP_BUILD_TYPE;
   [APP_IDENTIFIER]?: APP_IDENTIFIER_TYPE;
   [APP_IN_FOREGROUND]?: APP_IN_FOREGROUND_TYPE;

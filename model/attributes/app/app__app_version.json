@@ -1,5 +1,5 @@
 {
-  "key": "app.version",
+  "key": "app.app_version",
   "brief": "Human readable application version, as it appears on the platform.",
   "type": "string",
   "pii": {
@@ -8,12 +8,17 @@
   "is_in_otel": false,
   "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
   "example": "1.0.0",
-  "alias": ["app.app_version"],
+  "alias": ["app.version"],
+  "deprecation": {
+    "replacement": "app.version",
+    "reason": "Deprecated in favor of app.version",
+    "_status": "backfill"
+  },
   "changelog": [
     {
       "version": "next",
       "prs": [296],
-      "description": "Added app.version attribute"
+      "description": "Added and deprecated app.app_version in favor of app.version"
     }
   ]
 }
