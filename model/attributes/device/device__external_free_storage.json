@@ -1,0 +1,17 @@
+{
+  "key": "device.external_free_storage",
+  "brief": "External storage free size in bytes.",
+  "type": "integer",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": 67108864000,
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [303],
+      "description": "Added device.external_free_storage attribute"
+    }
+  ]
+}

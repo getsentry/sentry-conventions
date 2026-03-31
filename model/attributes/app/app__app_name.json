@@ -1,5 +1,5 @@
 {
-  "key": "app.name",
+  "key": "app.app_name",
   "brief": "Human readable application name, as it appears on the platform.",
   "type": "string",
   "pii": {
@@ -8,12 +8,17 @@
   "is_in_otel": false,
   "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
   "example": "My App",
-  "alias": ["app.app_name"],
+  "alias": ["app.name"],
+  "deprecation": {
+    "replacement": "app.name",
+    "reason": "Deprecated in favor of app.name",
+    "_status": "backfill"
+  },
   "changelog": [
     {
       "version": "next",
       "prs": [296],
-      "description": "Added app.name attribute"
+      "description": "Added and deprecated app.app_name in favor of app.name"
     }
   ]
 }
