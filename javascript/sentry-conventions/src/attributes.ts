@@ -1784,7 +1784,7 @@ export type CODE_NAMESPACE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link NETWORK_CONNECTION_TYPE} `network.connection.type`
+ * Aliases: {@link NETWORK_CONNECTION_TYPE} `network.connection.type`, {@link DEVICE_CONNECTION_TYPE} `device.connection_type`
  *
  * @deprecated Use {@link NETWORK_CONNECTION_TYPE} (network.connection.type) instead - Old namespace-less attribute, to be replaced with network.connection.type for span-first future
  * @example "wifi"
@@ -2265,6 +2265,66 @@ export const DEVICEMEMORY = 'deviceMemory';
  */
 export type DEVICEMEMORY_TYPE = string;
 
+// Path: model/attributes/device/device__battery_level.json
+
+/**
+ * The battery level of the device as a percentage (0-100). `device.battery_level`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_BATTERY_LEVEL_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 100
+ */
+export const DEVICE_BATTERY_LEVEL = 'device.battery_level';
+
+/**
+ * Type for {@link DEVICE_BATTERY_LEVEL} device.battery_level
+ */
+export type DEVICE_BATTERY_LEVEL_TYPE = number;
+
+// Path: model/attributes/device/device__battery_temperature.json
+
+/**
+ * The battery temperature of the device in Celsius. `device.battery_temperature`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_BATTERY_TEMPERATURE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 25
+ */
+export const DEVICE_BATTERY_TEMPERATURE = 'device.battery_temperature';
+
+/**
+ * Type for {@link DEVICE_BATTERY_TEMPERATURE} device.battery_temperature
+ */
+export type DEVICE_BATTERY_TEMPERATURE_TYPE = number;
+
+// Path: model/attributes/device/device__boot_time.json
+
+/**
+ * A formatted UTC timestamp when the system was booted. `device.boot_time`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_BOOT_TIME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "2018-02-08T12:52:12Z"
+ */
+export const DEVICE_BOOT_TIME = 'device.boot_time';
+
+/**
+ * Type for {@link DEVICE_BOOT_TIME} device.boot_time
+ */
+export type DEVICE_BOOT_TIME_TYPE = string;
+
 // Path: model/attributes/device/device__brand.json
 
 /**
@@ -2285,6 +2345,46 @@ export const DEVICE_BRAND = 'device.brand';
  */
 export type DEVICE_BRAND_TYPE = string;
 
+// Path: model/attributes/device/device__charging.json
+
+/**
+ * Whether the device was charging or not. `device.charging`
+ *
+ * Attribute Value Type: `boolean` {@link DEVICE_CHARGING_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example false
+ */
+export const DEVICE_CHARGING = 'device.charging';
+
+/**
+ * Type for {@link DEVICE_CHARGING} device.charging
+ */
+export type DEVICE_CHARGING_TYPE = boolean;
+
+// Path: model/attributes/device/device__chipset.json
+
+/**
+ * The chipset of the device. `device.chipset`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_CHIPSET_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "Qualcomm SM8550"
+ */
+export const DEVICE_CHIPSET = 'device.chipset';
+
+/**
+ * Type for {@link DEVICE_CHIPSET} device.chipset
+ */
+export type DEVICE_CHIPSET_TYPE = string;
+
 // Path: model/attributes/device/device__class.json
 
 /**
@@ -2304,6 +2404,89 @@ export const DEVICE_CLASS = 'device.class';
  * Type for {@link DEVICE_CLASS} device.class
  */
 export type DEVICE_CLASS_TYPE = string;
+
+// Path: model/attributes/device/device__connection_type.json
+
+/**
+ * The internet connection type currently being used by the device. `device.connection_type`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_CONNECTION_TYPE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link NETWORK_CONNECTION_TYPE} `network.connection.type`, {@link CONNECTIONTYPE} `connectionType`
+ *
+ * @deprecated Use {@link NETWORK_CONNECTION_TYPE} (network.connection.type) instead - This attribute is being deprecated in favor of network.connection.type
+ * @example "wifi"
+ */
+export const DEVICE_CONNECTION_TYPE = 'device.connection_type';
+
+/**
+ * Type for {@link DEVICE_CONNECTION_TYPE} device.connection_type
+ */
+export type DEVICE_CONNECTION_TYPE_TYPE = string;
+
+// Path: model/attributes/device/device__cpu_description.json
+
+/**
+ * A description of the CPU of the device. `device.cpu_description`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_CPU_DESCRIPTION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "Intel(R) Core(TM)2 Quad CPU Q6600 @ 2.40GHz"
+ */
+export const DEVICE_CPU_DESCRIPTION = 'device.cpu_description';
+
+/**
+ * Type for {@link DEVICE_CPU_DESCRIPTION} device.cpu_description
+ */
+export type DEVICE_CPU_DESCRIPTION_TYPE = string;
+
+// Path: model/attributes/device/device__external_free_storage.json
+
+/**
+ * External storage free size in bytes. `device.external_free_storage`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_EXTERNAL_FREE_STORAGE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 67108864000
+ */
+export const DEVICE_EXTERNAL_FREE_STORAGE = 'device.external_free_storage';
+
+/**
+ * Type for {@link DEVICE_EXTERNAL_FREE_STORAGE} device.external_free_storage
+ */
+export type DEVICE_EXTERNAL_FREE_STORAGE_TYPE = number;
+
+// Path: model/attributes/device/device__external_storage_size.json
+
+/**
+ * External storage total size in bytes. `device.external_storage_size`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_EXTERNAL_STORAGE_SIZE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 134217728000
+ */
+export const DEVICE_EXTERNAL_STORAGE_SIZE = 'device.external_storage_size';
+
+/**
+ * Type for {@link DEVICE_EXTERNAL_STORAGE_SIZE} device.external_storage_size
+ */
+export type DEVICE_EXTERNAL_STORAGE_SIZE_TYPE = number;
 
 // Path: model/attributes/device/device__family.json
 
@@ -2344,6 +2527,86 @@ export const DEVICE_FREE_MEMORY = 'device.free_memory';
  * Type for {@link DEVICE_FREE_MEMORY} device.free_memory
  */
 export type DEVICE_FREE_MEMORY_TYPE = number;
+
+// Path: model/attributes/device/device__free_storage.json
+
+/**
+ * Free device storage in bytes. `device.free_storage`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_FREE_STORAGE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 107374182400
+ */
+export const DEVICE_FREE_STORAGE = 'device.free_storage';
+
+/**
+ * Type for {@link DEVICE_FREE_STORAGE} device.free_storage
+ */
+export type DEVICE_FREE_STORAGE_TYPE = number;
+
+// Path: model/attributes/device/device__id.json
+
+/**
+ * Unique device identifier. `device.id`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_ID_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+ */
+export const DEVICE_ID = 'device.id';
+
+/**
+ * Type for {@link DEVICE_ID} device.id
+ */
+export type DEVICE_ID_TYPE = string;
+
+// Path: model/attributes/device/device__low_memory.json
+
+/**
+ * Whether the device was low on memory. `device.low_memory`
+ *
+ * Attribute Value Type: `boolean` {@link DEVICE_LOW_MEMORY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example false
+ */
+export const DEVICE_LOW_MEMORY = 'device.low_memory';
+
+/**
+ * Type for {@link DEVICE_LOW_MEMORY} device.low_memory
+ */
+export type DEVICE_LOW_MEMORY_TYPE = boolean;
+
+// Path: model/attributes/device/device__manufacturer.json
+
+/**
+ * The manufacturer of the device. `device.manufacturer`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_MANUFACTURER_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "Google"
+ */
+export const DEVICE_MANUFACTURER = 'device.manufacturer';
+
+/**
+ * Type for {@link DEVICE_MANUFACTURER} device.manufacturer
+ */
+export type DEVICE_MANUFACTURER_TYPE = string;
 
 // Path: model/attributes/device/device__memory__estimated_capacity.json
 
@@ -2427,6 +2690,66 @@ export const DEVICE_MODEL_ID = 'device.model_id';
  */
 export type DEVICE_MODEL_ID_TYPE = string;
 
+// Path: model/attributes/device/device__name.json
+
+/**
+ * The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname. `device.name`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_NAME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "localhost"
+ */
+export const DEVICE_NAME = 'device.name';
+
+/**
+ * Type for {@link DEVICE_NAME} device.name
+ */
+export type DEVICE_NAME_TYPE = string;
+
+// Path: model/attributes/device/device__online.json
+
+/**
+ * Whether the device was online or not. `device.online`
+ *
+ * Attribute Value Type: `boolean` {@link DEVICE_ONLINE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example true
+ */
+export const DEVICE_ONLINE = 'device.online';
+
+/**
+ * Type for {@link DEVICE_ONLINE} device.online
+ */
+export type DEVICE_ONLINE_TYPE = boolean;
+
+// Path: model/attributes/device/device__orientation.json
+
+/**
+ * The orientation of the device, either "portrait" or "landscape". `device.orientation`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_ORIENTATION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "portrait"
+ */
+export const DEVICE_ORIENTATION = 'device.orientation';
+
+/**
+ * Type for {@link DEVICE_ORIENTATION} device.orientation
+ */
+export type DEVICE_ORIENTATION_TYPE = string;
+
 // Path: model/attributes/device/device__processor_count.json
 
 /**
@@ -2449,6 +2772,106 @@ export const DEVICE_PROCESSOR_COUNT = 'device.processor_count';
  */
 export type DEVICE_PROCESSOR_COUNT_TYPE = number;
 
+// Path: model/attributes/device/device__processor_frequency.json
+
+/**
+ * Processor frequency in MHz. `device.processor_frequency`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_PROCESSOR_FREQUENCY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 2400
+ */
+export const DEVICE_PROCESSOR_FREQUENCY = 'device.processor_frequency';
+
+/**
+ * Type for {@link DEVICE_PROCESSOR_FREQUENCY} device.processor_frequency
+ */
+export type DEVICE_PROCESSOR_FREQUENCY_TYPE = number;
+
+// Path: model/attributes/device/device__screen_density.json
+
+/**
+ * The screen density of the device. `device.screen_density`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_SCREEN_DENSITY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 2.625
+ */
+export const DEVICE_SCREEN_DENSITY = 'device.screen_density';
+
+/**
+ * Type for {@link DEVICE_SCREEN_DENSITY} device.screen_density
+ */
+export type DEVICE_SCREEN_DENSITY_TYPE = number;
+
+// Path: model/attributes/device/device__screen_dpi.json
+
+/**
+ * The screen density in dots-per-inch (DPI) of the device. `device.screen_dpi`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_SCREEN_DPI_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 420
+ */
+export const DEVICE_SCREEN_DPI = 'device.screen_dpi';
+
+/**
+ * Type for {@link DEVICE_SCREEN_DPI} device.screen_dpi
+ */
+export type DEVICE_SCREEN_DPI_TYPE = number;
+
+// Path: model/attributes/device/device__screen_height_pixels.json
+
+/**
+ * The height of the device screen in pixels. `device.screen_height_pixels`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_SCREEN_HEIGHT_PIXELS_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 2400
+ */
+export const DEVICE_SCREEN_HEIGHT_PIXELS = 'device.screen_height_pixels';
+
+/**
+ * Type for {@link DEVICE_SCREEN_HEIGHT_PIXELS} device.screen_height_pixels
+ */
+export type DEVICE_SCREEN_HEIGHT_PIXELS_TYPE = number;
+
+// Path: model/attributes/device/device__screen_width_pixels.json
+
+/**
+ * The width of the device screen in pixels. `device.screen_width_pixels`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_SCREEN_WIDTH_PIXELS_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 1080
+ */
+export const DEVICE_SCREEN_WIDTH_PIXELS = 'device.screen_width_pixels';
+
+/**
+ * Type for {@link DEVICE_SCREEN_WIDTH_PIXELS} device.screen_width_pixels
+ */
+export type DEVICE_SCREEN_WIDTH_PIXELS_TYPE = number;
+
 // Path: model/attributes/device/device__simulator.json
 
 /**
@@ -2468,6 +2891,66 @@ export const DEVICE_SIMULATOR = 'device.simulator';
  * Type for {@link DEVICE_SIMULATOR} device.simulator
  */
 export type DEVICE_SIMULATOR_TYPE = boolean;
+
+// Path: model/attributes/device/device__storage_size.json
+
+/**
+ * Total device storage in bytes. `device.storage_size`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_STORAGE_SIZE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 274877906944
+ */
+export const DEVICE_STORAGE_SIZE = 'device.storage_size';
+
+/**
+ * Type for {@link DEVICE_STORAGE_SIZE} device.storage_size
+ */
+export type DEVICE_STORAGE_SIZE_TYPE = number;
+
+// Path: model/attributes/device/device__thermal_state.json
+
+/**
+ * The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum: `nominal`, `fair`, `serious`, or `critical`. `device.thermal_state`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_THERMAL_STATE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "nominal"
+ */
+export const DEVICE_THERMAL_STATE = 'device.thermal_state';
+
+/**
+ * Type for {@link DEVICE_THERMAL_STATE} device.thermal_state
+ */
+export type DEVICE_THERMAL_STATE_TYPE = string;
+
+// Path: model/attributes/device/device__usable_memory.json
+
+/**
+ * Memory usable for the app in bytes. `device.usable_memory`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_USABLE_MEMORY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 2147483648
+ */
+export const DEVICE_USABLE_MEMORY = 'device.usable_memory';
+
+/**
+ * Type for {@link DEVICE_USABLE_MEMORY} device.usable_memory
+ */
+export type DEVICE_USABLE_MEMORY_TYPE = number;
 
 // Path: model/attributes/effectiveConnectionType.json
 
@@ -6363,7 +6846,7 @@ export type NETWORK_CONNECTION_RTT_TYPE = number;
 // Path: model/attributes/network/network__connection__type.json
 
 /**
- * Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc). `network.connection.type`
+ * The internet connection type currently being used by the host. `network.connection.type`
  *
  * Attribute Value Type: `string` {@link NETWORK_CONNECTION_TYPE_TYPE}
  *
@@ -6371,7 +6854,7 @@ export type NETWORK_CONNECTION_RTT_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link CONNECTIONTYPE} `connectionType`
+ * Aliases: {@link DEVICE_CONNECTION_TYPE} `device.connection_type`, {@link CONNECTIONTYPE} `connectionType`
  *
  * @example "wifi"
  */
@@ -10323,16 +10806,40 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [DB_SYSTEM_NAME]: 'string',
   [DB_USER]: 'string',
   [DEVICEMEMORY]: 'string',
+  [DEVICE_BATTERY_LEVEL]: 'double',
+  [DEVICE_BATTERY_TEMPERATURE]: 'double',
+  [DEVICE_BOOT_TIME]: 'string',
   [DEVICE_BRAND]: 'string',
+  [DEVICE_CHARGING]: 'boolean',
+  [DEVICE_CHIPSET]: 'string',
   [DEVICE_CLASS]: 'string',
+  [DEVICE_CONNECTION_TYPE]: 'string',
+  [DEVICE_CPU_DESCRIPTION]: 'string',
+  [DEVICE_EXTERNAL_FREE_STORAGE]: 'integer',
+  [DEVICE_EXTERNAL_STORAGE_SIZE]: 'integer',
   [DEVICE_FAMILY]: 'string',
   [DEVICE_FREE_MEMORY]: 'integer',
+  [DEVICE_FREE_STORAGE]: 'integer',
+  [DEVICE_ID]: 'string',
+  [DEVICE_LOW_MEMORY]: 'boolean',
+  [DEVICE_MANUFACTURER]: 'string',
   [DEVICE_MEMORY_ESTIMATED_CAPACITY]: 'integer',
   [DEVICE_MEMORY_SIZE]: 'integer',
   [DEVICE_MODEL]: 'string',
   [DEVICE_MODEL_ID]: 'string',
+  [DEVICE_NAME]: 'string',
+  [DEVICE_ONLINE]: 'boolean',
+  [DEVICE_ORIENTATION]: 'string',
   [DEVICE_PROCESSOR_COUNT]: 'integer',
+  [DEVICE_PROCESSOR_FREQUENCY]: 'double',
+  [DEVICE_SCREEN_DENSITY]: 'double',
+  [DEVICE_SCREEN_DPI]: 'integer',
+  [DEVICE_SCREEN_HEIGHT_PIXELS]: 'integer',
+  [DEVICE_SCREEN_WIDTH_PIXELS]: 'integer',
   [DEVICE_SIMULATOR]: 'boolean',
+  [DEVICE_STORAGE_SIZE]: 'integer',
+  [DEVICE_THERMAL_STATE]: 'string',
+  [DEVICE_USABLE_MEMORY]: 'integer',
   [EFFECTIVECONNECTIONTYPE]: 'string',
   [ENVIRONMENT]: 'string',
   [ERROR_TYPE]: 'string',
@@ -10811,16 +11318,40 @@ export type AttributeName =
   | typeof DB_SYSTEM_NAME
   | typeof DB_USER
   | typeof DEVICEMEMORY
+  | typeof DEVICE_BATTERY_LEVEL
+  | typeof DEVICE_BATTERY_TEMPERATURE
+  | typeof DEVICE_BOOT_TIME
   | typeof DEVICE_BRAND
+  | typeof DEVICE_CHARGING
+  | typeof DEVICE_CHIPSET
   | typeof DEVICE_CLASS
+  | typeof DEVICE_CONNECTION_TYPE
+  | typeof DEVICE_CPU_DESCRIPTION
+  | typeof DEVICE_EXTERNAL_FREE_STORAGE
+  | typeof DEVICE_EXTERNAL_STORAGE_SIZE
   | typeof DEVICE_FAMILY
   | typeof DEVICE_FREE_MEMORY
+  | typeof DEVICE_FREE_STORAGE
+  | typeof DEVICE_ID
+  | typeof DEVICE_LOW_MEMORY
+  | typeof DEVICE_MANUFACTURER
   | typeof DEVICE_MEMORY_ESTIMATED_CAPACITY
   | typeof DEVICE_MEMORY_SIZE
   | typeof DEVICE_MODEL
   | typeof DEVICE_MODEL_ID
+  | typeof DEVICE_NAME
+  | typeof DEVICE_ONLINE
+  | typeof DEVICE_ORIENTATION
   | typeof DEVICE_PROCESSOR_COUNT
+  | typeof DEVICE_PROCESSOR_FREQUENCY
+  | typeof DEVICE_SCREEN_DENSITY
+  | typeof DEVICE_SCREEN_DPI
+  | typeof DEVICE_SCREEN_HEIGHT_PIXELS
+  | typeof DEVICE_SCREEN_WIDTH_PIXELS
   | typeof DEVICE_SIMULATOR
+  | typeof DEVICE_STORAGE_SIZE
+  | typeof DEVICE_THERMAL_STATE
+  | typeof DEVICE_USABLE_MEMORY
   | typeof EFFECTIVECONNECTIONTYPE
   | typeof ENVIRONMENT
   | typeof ERROR_TYPE
@@ -12291,7 +12822,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'network.connection.type',
       reason: 'Old namespace-less attribute, to be replaced with network.connection.type for span-first future',
     },
-    aliases: [NETWORK_CONNECTION_TYPE],
+    aliases: [NETWORK_CONNECTION_TYPE, DEVICE_CONNECTION_TYPE],
     sdks: ['javascript-browser'],
     changelog: [
       {
@@ -12581,6 +13112,36 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       },
     ],
   },
+  [DEVICE_BATTERY_LEVEL]: {
+    brief: 'The battery level of the device as a percentage (0-100).',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 100,
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.battery_level attribute' }],
+  },
+  [DEVICE_BATTERY_TEMPERATURE]: {
+    brief: 'The battery temperature of the device in Celsius.',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 25,
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.battery_temperature attribute' }],
+  },
+  [DEVICE_BOOT_TIME]: {
+    brief: 'A formatted UTC timestamp when the system was booted.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '2018-02-08T12:52:12Z',
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.boot_time attribute' }],
+  },
   [DEVICE_BRAND]: {
     brief: 'The brand of the device.',
     type: 'string',
@@ -12590,6 +13151,26 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'Apple',
     changelog: [{ version: '0.1.0', prs: [116, 127] }],
+  },
+  [DEVICE_CHARGING]: {
+    brief: 'Whether the device was charging or not.',
+    type: 'boolean',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: false,
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.charging attribute' }],
+  },
+  [DEVICE_CHIPSET]: {
+    brief: 'The chipset of the device.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'Qualcomm SM8550',
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.chipset attribute' }],
   },
   [DEVICE_CLASS]: {
     brief:
@@ -12601,6 +13182,57 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'medium',
     changelog: [{ version: 'next', prs: [300], description: 'Added device.class attribute' }],
+  },
+  [DEVICE_CONNECTION_TYPE]: {
+    brief: 'The internet connection type currently being used by the device.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'wifi',
+    deprecation: {
+      replacement: 'network.connection.type',
+      reason: 'This attribute is being deprecated in favor of network.connection.type',
+    },
+    aliases: [NETWORK_CONNECTION_TYPE, CONNECTIONTYPE],
+    changelog: [
+      {
+        version: 'next',
+        prs: [303],
+        description: 'Added and deprecated device.connection_type in favor of network.connection.type',
+      },
+    ],
+  },
+  [DEVICE_CPU_DESCRIPTION]: {
+    brief: 'A description of the CPU of the device.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'Intel(R) Core(TM)2 Quad CPU Q6600 @ 2.40GHz',
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.cpu_description attribute' }],
+  },
+  [DEVICE_EXTERNAL_FREE_STORAGE]: {
+    brief: 'External storage free size in bytes.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 67108864000,
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.external_free_storage attribute' }],
+  },
+  [DEVICE_EXTERNAL_STORAGE_SIZE]: {
+    brief: 'External storage total size in bytes.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 134217728000,
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.external_storage_size attribute' }],
   },
   [DEVICE_FAMILY]: {
     brief: 'The family of the device.',
@@ -12621,6 +13253,46 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 2147483648,
     changelog: [{ version: 'next', prs: [300], description: 'Added device.free_memory attribute' }],
+  },
+  [DEVICE_FREE_STORAGE]: {
+    brief: 'Free device storage in bytes.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 107374182400,
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.free_storage attribute' }],
+  },
+  [DEVICE_ID]: {
+    brief: 'Unique device identifier.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.id attribute' }],
+  },
+  [DEVICE_LOW_MEMORY]: {
+    brief: 'Whether the device was low on memory.',
+    type: 'boolean',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: false,
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.low_memory attribute' }],
+  },
+  [DEVICE_MANUFACTURER]: {
+    brief: 'The manufacturer of the device.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'Google',
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.manufacturer attribute' }],
   },
   [DEVICE_MEMORY_ESTIMATED_CAPACITY]: {
     brief:
@@ -12671,6 +13343,37 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'N861AP',
     changelog: [{ version: 'next', prs: [300], description: 'Added device.model_id attribute' }],
   },
+  [DEVICE_NAME]: {
+    brief:
+      'The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'localhost',
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.name attribute' }],
+  },
+  [DEVICE_ONLINE]: {
+    brief: 'Whether the device was online or not.',
+    type: 'boolean',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: true,
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.online attribute' }],
+  },
+  [DEVICE_ORIENTATION]: {
+    brief: 'The orientation of the device, either "portrait" or "landscape".',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'portrait',
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.orientation attribute' }],
+  },
   [DEVICE_PROCESSOR_COUNT]: {
     brief: 'Number of "logical processors".',
     type: 'integer',
@@ -12693,6 +13396,56 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       },
     ],
   },
+  [DEVICE_PROCESSOR_FREQUENCY]: {
+    brief: 'Processor frequency in MHz.',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 2400,
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.processor_frequency attribute' }],
+  },
+  [DEVICE_SCREEN_DENSITY]: {
+    brief: 'The screen density of the device.',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 2.625,
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.screen_density attribute' }],
+  },
+  [DEVICE_SCREEN_DPI]: {
+    brief: 'The screen density in dots-per-inch (DPI) of the device.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 420,
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.screen_dpi attribute' }],
+  },
+  [DEVICE_SCREEN_HEIGHT_PIXELS]: {
+    brief: 'The height of the device screen in pixels.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 2400,
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.screen_height_pixels attribute' }],
+  },
+  [DEVICE_SCREEN_WIDTH_PIXELS]: {
+    brief: 'The width of the device screen in pixels.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1080,
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.screen_width_pixels attribute' }],
+  },
   [DEVICE_SIMULATOR]: {
     brief: 'Whether the device is a simulator or an actual device.',
     type: 'boolean',
@@ -12702,6 +13455,37 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: false,
     changelog: [{ version: 'next', prs: [300], description: 'Added device.simulator attribute' }],
+  },
+  [DEVICE_STORAGE_SIZE]: {
+    brief: 'Total device storage in bytes.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 274877906944,
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.storage_size attribute' }],
+  },
+  [DEVICE_THERMAL_STATE]: {
+    brief:
+      "The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum: `nominal`, `fair`, `serious`, or `critical`.",
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'nominal',
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.thermal_state attribute' }],
+  },
+  [DEVICE_USABLE_MEMORY]: {
+    brief: 'Memory usable for the app in bytes.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 2147483648,
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.usable_memory attribute' }],
   },
   [EFFECTIVECONNECTIONTYPE]: {
     brief: 'Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).',
@@ -15037,22 +15821,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   [NETWORK_CONNECTION_TYPE]: {
-    brief: 'Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).',
+    brief: 'The internet connection type currently being used by the host.',
     type: 'string',
     pii: {
       isPii: 'maybe',
     },
     isInOtel: true,
     example: 'wifi',
-    aliases: [CONNECTIONTYPE],
+    aliases: [DEVICE_CONNECTION_TYPE, CONNECTIONTYPE],
     sdks: ['javascript-browser'],
-    changelog: [
-      {
-        version: 'next',
-        prs: [279],
-        description: 'Added attribute network.connection.type to be used instead of connectionType',
-      },
-    ],
+    changelog: [{ version: 'next', prs: [279, 303], description: 'Added network.connection.type attribute' }],
   },
   [NETWORK_LOCAL_ADDRESS]: {
     brief: 'Local address of the network connection - IP address or Unix domain socket name.',
@@ -17202,16 +17980,40 @@ export type Attributes = {
   [DB_SYSTEM_NAME]?: DB_SYSTEM_NAME_TYPE;
   [DB_USER]?: DB_USER_TYPE;
   [DEVICEMEMORY]?: DEVICEMEMORY_TYPE;
+  [DEVICE_BATTERY_LEVEL]?: DEVICE_BATTERY_LEVEL_TYPE;
+  [DEVICE_BATTERY_TEMPERATURE]?: DEVICE_BATTERY_TEMPERATURE_TYPE;
+  [DEVICE_BOOT_TIME]?: DEVICE_BOOT_TIME_TYPE;
   [DEVICE_BRAND]?: DEVICE_BRAND_TYPE;
+  [DEVICE_CHARGING]?: DEVICE_CHARGING_TYPE;
+  [DEVICE_CHIPSET]?: DEVICE_CHIPSET_TYPE;
   [DEVICE_CLASS]?: DEVICE_CLASS_TYPE;
+  [DEVICE_CONNECTION_TYPE]?: DEVICE_CONNECTION_TYPE_TYPE;
+  [DEVICE_CPU_DESCRIPTION]?: DEVICE_CPU_DESCRIPTION_TYPE;
+  [DEVICE_EXTERNAL_FREE_STORAGE]?: DEVICE_EXTERNAL_FREE_STORAGE_TYPE;
+  [DEVICE_EXTERNAL_STORAGE_SIZE]?: DEVICE_EXTERNAL_STORAGE_SIZE_TYPE;
   [DEVICE_FAMILY]?: DEVICE_FAMILY_TYPE;
   [DEVICE_FREE_MEMORY]?: DEVICE_FREE_MEMORY_TYPE;
+  [DEVICE_FREE_STORAGE]?: DEVICE_FREE_STORAGE_TYPE;
+  [DEVICE_ID]?: DEVICE_ID_TYPE;
+  [DEVICE_LOW_MEMORY]?: DEVICE_LOW_MEMORY_TYPE;
+  [DEVICE_MANUFACTURER]?: DEVICE_MANUFACTURER_TYPE;
   [DEVICE_MEMORY_ESTIMATED_CAPACITY]?: DEVICE_MEMORY_ESTIMATED_CAPACITY_TYPE;
   [DEVICE_MEMORY_SIZE]?: DEVICE_MEMORY_SIZE_TYPE;
   [DEVICE_MODEL]?: DEVICE_MODEL_TYPE;
   [DEVICE_MODEL_ID]?: DEVICE_MODEL_ID_TYPE;
+  [DEVICE_NAME]?: DEVICE_NAME_TYPE;
+  [DEVICE_ONLINE]?: DEVICE_ONLINE_TYPE;
+  [DEVICE_ORIENTATION]?: DEVICE_ORIENTATION_TYPE;
   [DEVICE_PROCESSOR_COUNT]?: DEVICE_PROCESSOR_COUNT_TYPE;
+  [DEVICE_PROCESSOR_FREQUENCY]?: DEVICE_PROCESSOR_FREQUENCY_TYPE;
+  [DEVICE_SCREEN_DENSITY]?: DEVICE_SCREEN_DENSITY_TYPE;
+  [DEVICE_SCREEN_DPI]?: DEVICE_SCREEN_DPI_TYPE;
+  [DEVICE_SCREEN_HEIGHT_PIXELS]?: DEVICE_SCREEN_HEIGHT_PIXELS_TYPE;
+  [DEVICE_SCREEN_WIDTH_PIXELS]?: DEVICE_SCREEN_WIDTH_PIXELS_TYPE;
   [DEVICE_SIMULATOR]?: DEVICE_SIMULATOR_TYPE;
+  [DEVICE_STORAGE_SIZE]?: DEVICE_STORAGE_SIZE_TYPE;
+  [DEVICE_THERMAL_STATE]?: DEVICE_THERMAL_STATE_TYPE;
+  [DEVICE_USABLE_MEMORY]?: DEVICE_USABLE_MEMORY_TYPE;
   [EFFECTIVECONNECTIONTYPE]?: EFFECTIVECONNECTIONTYPE_TYPE;
   [ENVIRONMENT]?: ENVIRONMENT_TYPE;
   [ERROR_TYPE]?: ERROR_TYPE_TYPE;
