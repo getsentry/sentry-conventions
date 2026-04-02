@@ -1266,6 +1266,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "users"
     """
 
+    # Path: model/attributes/db/db__driver__name.json
+    DB_DRIVER_NAME: Literal["db.driver.name"] = "db.driver.name"
+    """The name of the driver used for the database connection.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "psycopg2"
+    """
+
     # Path: model/attributes/db/db__name.json
     DB_NAME: Literal["db.name"] = "db.name"
     """The name of the database being accessed.
@@ -6809,6 +6819,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "db.driver.name": AttributeMetadata(
+        brief="The name of the driver used for the database connection.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="psycopg2",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[297], description="Added db.driver.name attribute"
+            ),
+        ],
+    ),
     "db.name": AttributeMetadata(
         brief="The name of the database being accessed.",
         type=AttributeType.STRING,
@@ -11585,6 +11607,7 @@ Attributes = TypedDict(
         "culture.locale": str,
         "culture.timezone": str,
         "db.collection.name": str,
+        "db.driver.name": str,
         "db.name": str,
         "db.namespace": str,
         "db.operation": str,
