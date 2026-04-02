@@ -1,0 +1,17 @@
+{
+  "key": "gen_ai.function_id",
+  "brief": "The function identifier associated with the AI operation.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "my-awesome-function",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [308],
+      "description": "Added gen_ai.function_id attribute"
+    }
+  ]
+}

@@ -1829,6 +1829,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "What's the weather in Paris?"
     """
 
+    # Path: model/attributes/gen_ai/gen_ai__function_id.json
+    GEN_AI_FUNCTION_ID: Literal["gen_ai.function_id"] = "gen_ai.function_id"
+    """The function identifier associated with the AI operation.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "my-awesome-function"
+    """
+
     # Path: model/attributes/gen_ai/gen_ai__input__messages.json
     GEN_AI_INPUT_MESSAGES: Literal["gen_ai.input.messages"] = "gen_ai.input.messages"
     """The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.
@@ -7465,6 +7475,20 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.3.1", prs=[195]),
         ],
     ),
+    "gen_ai.function_id": AttributeMetadata(
+        brief="The function identifier associated with the AI operation.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="my-awesome-function",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[308],
+                description="Added gen_ai.function_id attribute",
+            ),
+        ],
+    ),
     "gen_ai.input.messages": AttributeMetadata(
         brief='The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.',
         type=AttributeType.STRING,
@@ -11637,6 +11661,7 @@ Attributes = TypedDict(
         "gen_ai.cost.output_tokens": float,
         "gen_ai.cost.total_tokens": float,
         "gen_ai.embeddings.input": str,
+        "gen_ai.function_id": str,
         "gen_ai.input.messages": str,
         "gen_ai.operation.name": str,
         "gen_ai.operation.type": str,
