@@ -6889,6 +6889,29 @@ export const NET_TRANSPORT = 'net.transport';
  */
 export type NET_TRANSPORT_TYPE = string;
 
+// Path: model/attributes/os/os__build.json
+
+/**
+ * The build ID of the operating system. `os.build`
+ *
+ * Attribute Value Type: `string` {@link OS_BUILD_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link OS_BUILD_ID} `os.build_id`
+ *
+ * @deprecated Use {@link OS_BUILD_ID} (os.build_id) instead
+ * @example "1234567890"
+ */
+export const OS_BUILD = 'os.build';
+
+/**
+ * Type for {@link OS_BUILD} os.build
+ */
+export type OS_BUILD_TYPE = string;
+
 // Path: model/attributes/os/os__build_id.json
 
 /**
@@ -6899,6 +6922,8 @@ export type NET_TRANSPORT_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ *
+ * Aliases: {@link OS_BUILD} `os.build`
  *
  * @example "1234567890"
  */
@@ -10623,6 +10648,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [NET_SOCK_PEER_NAME]: 'string',
   [NET_SOCK_PEER_PORT]: 'integer',
   [NET_TRANSPORT]: 'string',
+  [OS_BUILD]: 'string',
   [OS_BUILD_ID]: 'string',
   [OS_DESCRIPTION]: 'string',
   [OS_KERNEL_VERSION]: 'string',
@@ -11115,6 +11141,7 @@ export type AttributeName =
   | typeof NET_SOCK_PEER_NAME
   | typeof NET_SOCK_PEER_PORT
   | typeof NET_TRANSPORT
+  | typeof OS_BUILD
   | typeof OS_BUILD_ID
   | typeof OS_DESCRIPTION
   | typeof OS_KERNEL_VERSION
@@ -15438,6 +15465,22 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [NETWORK_TRANSPORT],
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
+  [OS_BUILD]: {
+    brief: 'The build ID of the operating system.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '1234567890',
+    deprecation: {
+      replacement: 'os.build_id',
+    },
+    aliases: [OS_BUILD_ID],
+    changelog: [
+      { version: 'next', prs: [301], description: 'Added os.build attribute, deprecated in favour of os.build_id' },
+    ],
+  },
   [OS_BUILD_ID]: {
     brief: 'The build ID of the operating system.',
     type: 'string',
@@ -15446,7 +15489,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: '1234567890',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: [OS_BUILD],
+    changelog: [
+      { version: 'next', prs: [301], description: 'Added os.build as alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   [OS_DESCRIPTION]: {
     brief:
@@ -17551,6 +17599,7 @@ export type Attributes = {
   [NET_SOCK_PEER_NAME]?: NET_SOCK_PEER_NAME_TYPE;
   [NET_SOCK_PEER_PORT]?: NET_SOCK_PEER_PORT_TYPE;
   [NET_TRANSPORT]?: NET_TRANSPORT_TYPE;
+  [OS_BUILD]?: OS_BUILD_TYPE;
   [OS_BUILD_ID]?: OS_BUILD_ID_TYPE;
   [OS_DESCRIPTION]?: OS_DESCRIPTION_TYPE;
   [OS_KERNEL_VERSION]?: OS_KERNEL_VERSION_TYPE;

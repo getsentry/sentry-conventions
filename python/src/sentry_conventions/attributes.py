@@ -204,6 +204,7 @@ class _AttributeNamesMeta(type):
         "NET_SOCK_PEER_NAME",
         "NET_SOCK_PEER_PORT",
         "NET_TRANSPORT",
+        "OS_BUILD",
         "QUERY_KEY",
         "RELEASE",
         "REPLAY_ID",
@@ -3923,6 +3924,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "ipv4"
     """
 
+    # Path: model/attributes/os/os__build.json
+    OS_BUILD: Literal["os.build"] = "os.build"
+    """The build ID of the operating system.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: os.build_id
+    DEPRECATED: Use os.build_id instead
+    Example: "1234567890"
+    """
+
     # Path: model/attributes/os/os__build_id.json
     OS_BUILD_ID: Literal["os.build_id"] = "os.build_id"
     """The build ID of the operating system.
@@ -3930,6 +3943,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Aliases: os.build
     Example: "1234567890"
     """
 
@@ -9757,13 +9771,35 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "os.build": AttributeMetadata(
+        brief="The build ID of the operating system.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="1234567890",
+        deprecation=DeprecationInfo(
+            replacement="os.build_id", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["os.build_id"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[301],
+                description="Added os.build attribute, deprecated in favour of os.build_id",
+            ),
+        ],
+    ),
     "os.build_id": AttributeMetadata(
         brief="The build ID of the operating system.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="1234567890",
+        aliases=["os.build"],
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[301], description="Added os.build as alias"
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -11904,6 +11940,7 @@ Attributes = TypedDict(
         "network.protocol.version": str,
         "network.transport": str,
         "network.type": str,
+        "os.build": str,
         "os.build_id": str,
         "os.description": str,
         "os.kernel_version": str,
