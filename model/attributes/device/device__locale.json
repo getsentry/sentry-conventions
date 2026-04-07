@@ -1,0 +1,23 @@
+{
+  "key": "device.locale",
+  "brief": "The locale of the device.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "en-US",
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "culture.locale",
+    "reason": "This attribute is being deprecated in favor of culture.locale"
+  },
+  "alias": ["culture.locale"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [],
+      "description": "Added and deprecated device.locale in favor of culture.locale"
+    }
+  ]
+}

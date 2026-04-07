@@ -1890,6 +1890,8 @@ export type CULTURE_IS_24_HOUR_FORMAT_TYPE = boolean;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link DEVICE_LOCALE} `device.locale`
+ *
  * @example "en-US"
  */
 export const CULTURE_LOCALE = 'culture.locale';
@@ -1909,6 +1911,8 @@ export type CULTURE_LOCALE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link DEVICE_TIMEZONE} `device.timezone`
  *
  * @example "Europe/Vienna"
  */
@@ -2588,6 +2592,29 @@ export const DEVICE_ID = 'device.id';
  */
 export type DEVICE_ID_TYPE = string;
 
+// Path: model/attributes/device/device__locale.json
+
+/**
+ * The locale of the device. `device.locale`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_LOCALE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link CULTURE_LOCALE} `culture.locale`
+ *
+ * @deprecated Use {@link CULTURE_LOCALE} (culture.locale) instead - This attribute is being deprecated in favor of culture.locale
+ * @example "en-US"
+ */
+export const DEVICE_LOCALE = 'device.locale';
+
+/**
+ * Type for {@link DEVICE_LOCALE} device.locale
+ */
+export type DEVICE_LOCALE_TYPE = string;
+
 // Path: model/attributes/device/device__low_memory.json
 
 /**
@@ -2951,6 +2978,29 @@ export const DEVICE_THERMAL_STATE = 'device.thermal_state';
  * Type for {@link DEVICE_THERMAL_STATE} device.thermal_state
  */
 export type DEVICE_THERMAL_STATE_TYPE = string;
+
+// Path: model/attributes/device/device__timezone.json
+
+/**
+ * The timezone of the device. `device.timezone`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_TIMEZONE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link CULTURE_TIMEZONE} `culture.timezone`
+ *
+ * @deprecated Use {@link CULTURE_TIMEZONE} (culture.timezone) instead - This attribute is being deprecated in favor of culture.timezone
+ * @example "Europe/Vienna"
+ */
+export const DEVICE_TIMEZONE = 'device.timezone';
+
+/**
+ * Type for {@link DEVICE_TIMEZONE} device.timezone
+ */
+export type DEVICE_TIMEZONE_TYPE = string;
 
 // Path: model/attributes/device/device__usable_memory.json
 
@@ -10842,6 +10892,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [DEVICE_FREE_MEMORY]: 'integer',
   [DEVICE_FREE_STORAGE]: 'integer',
   [DEVICE_ID]: 'string',
+  [DEVICE_LOCALE]: 'string',
   [DEVICE_LOW_MEMORY]: 'boolean',
   [DEVICE_MANUFACTURER]: 'string',
   [DEVICE_MEMORY_ESTIMATED_CAPACITY]: 'integer',
@@ -10860,6 +10911,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [DEVICE_SIMULATOR]: 'boolean',
   [DEVICE_STORAGE_SIZE]: 'integer',
   [DEVICE_THERMAL_STATE]: 'string',
+  [DEVICE_TIMEZONE]: 'string',
   [DEVICE_USABLE_MEMORY]: 'integer',
   [EFFECTIVECONNECTIONTYPE]: 'string',
   [ENVIRONMENT]: 'string',
@@ -11355,6 +11407,7 @@ export type AttributeName =
   | typeof DEVICE_FREE_MEMORY
   | typeof DEVICE_FREE_STORAGE
   | typeof DEVICE_ID
+  | typeof DEVICE_LOCALE
   | typeof DEVICE_LOW_MEMORY
   | typeof DEVICE_MANUFACTURER
   | typeof DEVICE_MEMORY_ESTIMATED_CAPACITY
@@ -11373,6 +11426,7 @@ export type AttributeName =
   | typeof DEVICE_SIMULATOR
   | typeof DEVICE_STORAGE_SIZE
   | typeof DEVICE_THERMAL_STATE
+  | typeof DEVICE_TIMEZONE
   | typeof DEVICE_USABLE_MEMORY
   | typeof EFFECTIVECONNECTIONTYPE
   | typeof ENVIRONMENT
@@ -12915,6 +12969,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'en-US',
+    aliases: [DEVICE_LOCALE],
     changelog: [{ version: '0.4.0', prs: [243] }],
   },
   [CULTURE_TIMEZONE]: {
@@ -12925,6 +12980,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'Europe/Vienna',
+    aliases: [DEVICE_TIMEZONE],
     changelog: [{ version: '0.4.0', prs: [243] }],
   },
   [DB_COLLECTION_NAME]: {
@@ -13306,6 +13362,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     changelog: [{ version: 'next', prs: [303], description: 'Added device.id attribute' }],
   },
+  [DEVICE_LOCALE]: {
+    brief: 'The locale of the device.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'en-US',
+    deprecation: {
+      replacement: 'culture.locale',
+      reason: 'This attribute is being deprecated in favor of culture.locale',
+    },
+    aliases: [CULTURE_LOCALE],
+    changelog: [{ version: 'next', description: 'Added and deprecated device.locale in favor of culture.locale' }],
+  },
   [DEVICE_LOW_MEMORY]: {
     brief: 'Whether the device was low on memory.',
     type: 'boolean',
@@ -13508,6 +13579,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'nominal',
     changelog: [{ version: 'next', prs: [303], description: 'Added device.thermal_state attribute' }],
+  },
+  [DEVICE_TIMEZONE]: {
+    brief: 'The timezone of the device.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'Europe/Vienna',
+    deprecation: {
+      replacement: 'culture.timezone',
+      reason: 'This attribute is being deprecated in favor of culture.timezone',
+    },
+    aliases: [CULTURE_TIMEZONE],
+    changelog: [{ version: 'next', description: 'Added and deprecated device.timezone in favor of culture.timezone' }],
   },
   [DEVICE_USABLE_MEMORY]: {
     brief: 'Memory usable for the app in bytes.',
@@ -18028,6 +18114,7 @@ export type Attributes = {
   [DEVICE_FREE_MEMORY]?: DEVICE_FREE_MEMORY_TYPE;
   [DEVICE_FREE_STORAGE]?: DEVICE_FREE_STORAGE_TYPE;
   [DEVICE_ID]?: DEVICE_ID_TYPE;
+  [DEVICE_LOCALE]?: DEVICE_LOCALE_TYPE;
   [DEVICE_LOW_MEMORY]?: DEVICE_LOW_MEMORY_TYPE;
   [DEVICE_MANUFACTURER]?: DEVICE_MANUFACTURER_TYPE;
   [DEVICE_MEMORY_ESTIMATED_CAPACITY]?: DEVICE_MEMORY_ESTIMATED_CAPACITY_TYPE;
@@ -18046,6 +18133,7 @@ export type Attributes = {
   [DEVICE_SIMULATOR]?: DEVICE_SIMULATOR_TYPE;
   [DEVICE_STORAGE_SIZE]?: DEVICE_STORAGE_SIZE_TYPE;
   [DEVICE_THERMAL_STATE]?: DEVICE_THERMAL_STATE_TYPE;
+  [DEVICE_TIMEZONE]?: DEVICE_TIMEZONE_TYPE;
   [DEVICE_USABLE_MEMORY]?: DEVICE_USABLE_MEMORY_TYPE;
   [EFFECTIVECONNECTIONTYPE]?: EFFECTIVECONNECTIONTYPE_TYPE;
   [ENVIRONMENT]?: ENVIRONMENT_TYPE;
