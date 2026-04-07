@@ -1,0 +1,17 @@
+{
+  "key": "device.archs",
+  "brief": "The CPU architectures of the device.",
+  "type": "string[]",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": ["arm64-v8a", "armeabi-v7a", "armeabi"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [],
+      "description": "Added device.archs attribute"
+    }
+  ]
+}

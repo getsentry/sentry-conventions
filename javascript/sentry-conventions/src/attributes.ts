@@ -2265,6 +2265,26 @@ export const DEVICEMEMORY = 'deviceMemory';
  */
 export type DEVICEMEMORY_TYPE = string;
 
+// Path: model/attributes/device/device__archs.json
+
+/**
+ * The CPU architectures of the device. `device.archs`
+ *
+ * Attribute Value Type: `Array<string>` {@link DEVICE_ARCHS_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example ["arm64-v8a","armeabi-v7a","armeabi"]
+ */
+export const DEVICE_ARCHS = 'device.archs';
+
+/**
+ * Type for {@link DEVICE_ARCHS} device.archs
+ */
+export type DEVICE_ARCHS_TYPE = Array<string>;
+
 // Path: model/attributes/device/device__battery_level.json
 
 /**
@@ -10806,6 +10826,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [DB_SYSTEM_NAME]: 'string',
   [DB_USER]: 'string',
   [DEVICEMEMORY]: 'string',
+  [DEVICE_ARCHS]: 'string[]',
   [DEVICE_BATTERY_LEVEL]: 'double',
   [DEVICE_BATTERY_TEMPERATURE]: 'double',
   [DEVICE_BOOT_TIME]: 'string',
@@ -11318,6 +11339,7 @@ export type AttributeName =
   | typeof DB_SYSTEM_NAME
   | typeof DB_USER
   | typeof DEVICEMEMORY
+  | typeof DEVICE_ARCHS
   | typeof DEVICE_BATTERY_LEVEL
   | typeof DEVICE_BATTERY_TEMPERATURE
   | typeof DEVICE_BOOT_TIME
@@ -13111,6 +13133,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         description: "Added and deprecated attribute to document JS SDK's current behaviour",
       },
     ],
+  },
+  [DEVICE_ARCHS]: {
+    brief: 'The CPU architectures of the device.',
+    type: 'string[]',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: ['arm64-v8a', 'armeabi-v7a', 'armeabi'],
+    changelog: [{ version: 'next', description: 'Added device.archs attribute' }],
   },
   [DEVICE_BATTERY_LEVEL]: {
     brief: 'The battery level of the device as a percentage (0-100).',
@@ -17980,6 +18012,7 @@ export type Attributes = {
   [DB_SYSTEM_NAME]?: DB_SYSTEM_NAME_TYPE;
   [DB_USER]?: DB_USER_TYPE;
   [DEVICEMEMORY]?: DEVICEMEMORY_TYPE;
+  [DEVICE_ARCHS]?: DEVICE_ARCHS_TYPE;
   [DEVICE_BATTERY_LEVEL]?: DEVICE_BATTERY_LEVEL_TYPE;
   [DEVICE_BATTERY_TEMPERATURE]?: DEVICE_BATTERY_TEMPERATURE_TYPE;
   [DEVICE_BOOT_TIME]?: DEVICE_BOOT_TIME_TYPE;

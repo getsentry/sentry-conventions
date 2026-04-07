@@ -1423,6 +1423,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "fancy_user"
     """
 
+    # Path: model/attributes/device/device__archs.json
+    DEVICE_ARCHS: Literal["device.archs"] = "device.archs"
+    """The CPU architectures of the device.
+
+    Type: List[str]
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: ["arm64-v8a","armeabi-v7a","armeabi"]
+    """
+
     # Path: model/attributes/device/device__battery_level.json
     DEVICE_BATTERY_LEVEL: Literal["device.battery_level"] = "device.battery_level"
     """The battery level of the device as a percentage (0-100).
@@ -7246,6 +7256,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "device.archs": AttributeMetadata(
+        brief="The CPU architectures of the device.",
+        type=AttributeType.STRING_ARRAY,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=["arm64-v8a", "armeabi-v7a", "armeabi"],
+        changelog=[
+            ChangelogEntry(version="next", description="Added device.archs attribute"),
+        ],
+    ),
     "device.battery_level": AttributeMetadata(
         brief="The battery level of the device as a percentage (0-100).",
         type=AttributeType.DOUBLE,
@@ -12186,6 +12206,7 @@ Attributes = TypedDict(
         "db.system": str,
         "db.system.name": str,
         "db.user": str,
+        "device.archs": List[str],
         "device.battery_level": float,
         "device.battery_temperature": float,
         "device.boot_time": str,
