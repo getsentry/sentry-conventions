@@ -1551,7 +1551,7 @@
       "changelog": [
         {
           "version": "next",
-          "prs": [],
+          "prs": [303],
           "description": "Added and deprecated device.locale in favor of culture.locale"
         }
       ]
@@ -1574,7 +1574,7 @@
       "changelog": [
         {
           "version": "next",
-          "prs": [],
+          "prs": [303],
           "description": "Added and deprecated device.timezone in favor of culture.timezone"
         }
       ]
