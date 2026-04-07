@@ -142,12 +142,15 @@ class _AttributeNamesMeta(type):
         "CODE_FUNCTION",
         "CODE_LINENO",
         "CODE_NAMESPACE",
+        "CONNECTION_RTT",
+        "CONNECTIONTYPE",
         "DB_NAME",
         "DB_OPERATION",
         "DB_SQL_BINDINGS",
         "DB_STATEMENT",
         "DB_SYSTEM",
         "DEVICEMEMORY",
+        "EFFECTIVECONNECTIONTYPE",
         "ENVIRONMENT",
         "FCP",
         "FP",
@@ -997,6 +1000,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 120
     """
 
+    # Path: model/attributes/cache/cache__write.json
+    CACHE_WRITE: Literal["cache.write"] = "cache.write"
+    """If the cache operation resulted in a write to the cache.
+
+    Type: bool
+    Contains PII: false
+    Defined in OTEL: No
+    Example: true
+    """
+
     # Path: model/attributes/channel.json
     CHANNEL: Literal["channel"] = "channel"
     """The channel name that is being used.
@@ -1165,6 +1178,30 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     DEPRECATED: Use code.function.name instead - code.function.name should include the namespace.
     Example: "http.handler"
+    """
+
+    # Path: model/attributes/connection/connection__rtt.json
+    CONNECTION_RTT: Literal["connection.rtt"] = "connection.rtt"
+    """Specifies the estimated effective round-trip time of the current connection, in milliseconds.
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: network.connection.rtt
+    DEPRECATED: Use network.connection.rtt instead - Old attribute name (no official namespace), to be replaced with network.connection.rtt for span-first future
+    Example: 100
+    """
+
+    # Path: model/attributes/connectionType.json
+    CONNECTIONTYPE: Literal["connectionType"] = "connectionType"
+    """Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: network.connection.type
+    DEPRECATED: Use network.connection.type instead - Old namespace-less attribute, to be replaced with network.connection.type for span-first future
+    Example: "wifi"
     """
 
     # Path: model/attributes/culture/culture__calendar.json
@@ -1395,17 +1432,14 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "Apple"
     """
 
-    # Path: model/attributes/device/device__cpu__logical_core_count.json
-    DEVICE_CPU_LOGICAL_CORE_COUNT: Literal["device.cpu.logical_core_count"] = (
-        "device.cpu.logical_core_count"
-    )
-    """The number of logical CPU cores available.
+    # Path: model/attributes/device/device__class.json
+    DEVICE_CLASS: Literal["device.class"] = "device.class"
+    """The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.
 
-    Type: int
+    Type: str
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: hardwareConcurrency
-    Example: 14
+    Example: "medium"
     """
 
     # Path: model/attributes/device/device__family.json
@@ -1416,6 +1450,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Example: "iPhone"
+    """
+
+    # Path: model/attributes/device/device__free_memory.json
+    DEVICE_FREE_MEMORY: Literal["device.free_memory"] = "device.free_memory"
+    """Free system memory in bytes.
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: 2147483648
     """
 
     # Path: model/attributes/device/device__memory__estimated_capacity.json
@@ -1431,6 +1475,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 8
     """
 
+    # Path: model/attributes/device/device__memory_size.json
+    DEVICE_MEMORY_SIZE: Literal["device.memory_size"] = "device.memory_size"
+    """Total system memory available in bytes.
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: 17179869184
+    """
+
     # Path: model/attributes/device/device__model.json
     DEVICE_MODEL: Literal["device.model"] = "device.model"
     """The model of the device.
@@ -1439,6 +1493,37 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Example: "iPhone 15 Pro Max"
+    """
+
+    # Path: model/attributes/device/device__model_id.json
+    DEVICE_MODEL_ID: Literal["device.model_id"] = "device.model_id"
+    """An internal hardware revision to identify the device exactly.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "N861AP"
+    """
+
+    # Path: model/attributes/device/device__processor_count.json
+    DEVICE_PROCESSOR_COUNT: Literal["device.processor_count"] = "device.processor_count"
+    """Number of "logical processors".
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: hardwareConcurrency
+    Example: 8
+    """
+
+    # Path: model/attributes/device/device__simulator.json
+    DEVICE_SIMULATOR: Literal["device.simulator"] = "device.simulator"
+    """Whether the device is a simulator or an actual device.
+
+    Type: bool
+    Contains PII: false
+    Defined in OTEL: No
+    Example: false
     """
 
     # Path: model/attributes/deviceMemory.json
@@ -1451,6 +1536,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Aliases: device.memory.estimated_capacity
     DEPRECATED: Use device.memory.estimated_capacity instead - Old namespace-less attribute, to be replaced with device.memory.estimated_capacity for span-first future
     Example: "8 GB"
+    """
+
+    # Path: model/attributes/effectiveConnectionType.json
+    EFFECTIVECONNECTIONTYPE: Literal["effectiveConnectionType"] = (
+        "effectiveConnectionType"
+    )
+    """Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: network.connection.effective_type
+    DEPRECATED: Use network.connection.effective_type instead - Old namespace-less attribute, to be replaced with network.connection.effective_type for span-first future
+    Example: "4g"
     """
 
     # Path: model/attributes/environment.json
@@ -2294,8 +2393,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: device.cpu.logical_core_count
-    DEPRECATED: Use device.cpu.logical_core_count instead - Old namespace-less attribute, to be replaced with device.cpu.logical_core_count for span-first future
+    Aliases: device.processor_count
+    DEPRECATED: Use device.processor_count instead - Old namespace-less attribute, to be replaced with device.processor_count for span-first future
     Example: "14"
     """
 
@@ -3697,6 +3796,43 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Aliases: network.transport
     DEPRECATED: Use network.transport instead
     Example: "tcp"
+    """
+
+    # Path: model/attributes/network/network__connection__effective_type.json
+    NETWORK_CONNECTION_EFFECTIVE_TYPE: Literal["network.connection.effective_type"] = (
+        "network.connection.effective_type"
+    )
+    """Specifies the effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: effectiveConnectionType
+    Example: "4g"
+    """
+
+    # Path: model/attributes/network/network__connection__rtt.json
+    NETWORK_CONNECTION_RTT: Literal["network.connection.rtt"] = "network.connection.rtt"
+    """Specifies the estimated effective round-trip time of the current connection, in milliseconds.
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: connection.rtt
+    Example: 100
+    """
+
+    # Path: model/attributes/network/network__connection__type.json
+    NETWORK_CONNECTION_TYPE: Literal["network.connection.type"] = (
+        "network.connection.type"
+    )
+    """Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: Yes
+    Aliases: connectionType
+    Example: "wifi"
     """
 
     # Path: model/attributes/network/network__local__address.json
@@ -6399,6 +6535,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "cache.write": AttributeMetadata(
+        brief="If the cache operation resulted in a write to the cache.",
+        type=AttributeType.BOOLEAN,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=True,
+        sdks=["java"],
+        changelog=[
+            ChangelogEntry(version="next"),
+        ],
+    ),
     "channel": AttributeMetadata(
         brief="The channel name that is being used.",
         type=AttributeType.STRING,
@@ -6597,6 +6744,48 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 74]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "connection.rtt": AttributeMetadata(
+        brief="Specifies the estimated effective round-trip time of the current connection, in milliseconds.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=100,
+        deprecation=DeprecationInfo(
+            replacement="network.connection.rtt",
+            reason="Old attribute name (no official namespace), to be replaced with network.connection.rtt for span-first future",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["network.connection.rtt"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[279],
+                description="Added and deprecated attribute to document JS SDK's current behaviour",
+            ),
+        ],
+    ),
+    "connectionType": AttributeMetadata(
+        brief="Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="wifi",
+        deprecation=DeprecationInfo(
+            replacement="network.connection.type",
+            reason="Old namespace-less attribute, to be replaced with network.connection.type for span-first future",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["network.connection.type"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[279],
+                description="Added and deprecated attribute to document JS SDK's current behaviour",
+            ),
         ],
     ),
     "culture.calendar": AttributeMetadata(
@@ -6852,19 +7041,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[116, 127]),
         ],
     ),
-    "device.cpu.logical_core_count": AttributeMetadata(
-        brief="The number of logical CPU cores available.",
-        type=AttributeType.INTEGER,
+    "device.class": AttributeMetadata(
+        brief="The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.",
+        type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
-        example=14,
-        aliases=["hardwareConcurrency"],
-        sdks=["javascript-browser"],
+        example="medium",
         changelog=[
             ChangelogEntry(
-                version="next",
-                prs=[281],
-                description="Added attribute device.cpu.logical_core_count to be used instead of hardwareConcurrency",
+                version="next", prs=[300], description="Added device.class attribute"
             ),
         ],
     ),
@@ -6876,6 +7061,20 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="iPhone",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[116, 127]),
+        ],
+    ),
+    "device.free_memory": AttributeMetadata(
+        brief="Free system memory in bytes.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=2147483648,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[300],
+                description="Added device.free_memory attribute",
+            ),
         ],
     ),
     "device.memory.estimated_capacity": AttributeMetadata(
@@ -6894,6 +7093,20 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "device.memory_size": AttributeMetadata(
+        brief="Total system memory available in bytes.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=17179869184,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[300],
+                description="Added device.memory_size attribute",
+            ),
+        ],
+    ),
     "device.model": AttributeMetadata(
         brief="The model of the device.",
         type=AttributeType.STRING,
@@ -6902,6 +7115,52 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="iPhone 15 Pro Max",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[116, 127]),
+        ],
+    ),
+    "device.model_id": AttributeMetadata(
+        brief="An internal hardware revision to identify the device exactly.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="N861AP",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[300], description="Added device.model_id attribute"
+            ),
+        ],
+    ),
+    "device.processor_count": AttributeMetadata(
+        brief='Number of "logical processors".',
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=8,
+        aliases=["hardwareConcurrency"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[300],
+                description="Removed deprecation, device.processor_count is now the canonical attribute",
+            ),
+            ChangelogEntry(
+                version="next",
+                prs=[300],
+                description="Added and deprecated attribute device.processor_count in favor of device.cpu.logical_core_count",
+            ),
+        ],
+    ),
+    "device.simulator": AttributeMetadata(
+        brief="Whether the device is a simulator or an actual device.",
+        type=AttributeType.BOOLEAN,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=False,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[300],
+                description="Added device.simulator attribute",
+            ),
         ],
     ),
     "deviceMemory": AttributeMetadata(
@@ -6921,6 +7180,27 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(
                 version="next",
                 prs=[281],
+                description="Added and deprecated attribute to document JS SDK's current behaviour",
+            ),
+        ],
+    ),
+    "effectiveConnectionType": AttributeMetadata(
+        brief="Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="4g",
+        deprecation=DeprecationInfo(
+            replacement="network.connection.effective_type",
+            reason="Old namespace-less attribute, to be replaced with network.connection.effective_type for span-first future",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["network.connection.effective_type"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[279],
                 description="Added and deprecated attribute to document JS SDK's current behaviour",
             ),
         ],
@@ -7782,13 +8062,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="14",
         deprecation=DeprecationInfo(
-            replacement="device.cpu.logical_core_count",
-            reason="Old namespace-less attribute, to be replaced with device.cpu.logical_core_count for span-first future",
+            replacement="device.processor_count",
+            reason="Old namespace-less attribute, to be replaced with device.processor_count for span-first future",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["device.cpu.logical_core_count"],
+        aliases=["device.processor_count"],
         sdks=["javascript-browser"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[300],
+                description="Updated deprecation replacement from device.cpu.logical_core_count to device.processor_count",
+            ),
             ChangelogEntry(
                 version="next",
                 prs=[281],
@@ -9328,6 +9613,54 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "network.connection.effective_type": AttributeMetadata(
+        brief="Specifies the effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="4g",
+        aliases=["effectiveConnectionType"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[279],
+                description="Added attribute network.connection.effective_type to be used instead of effectiveConnectionType",
+            ),
+        ],
+    ),
+    "network.connection.rtt": AttributeMetadata(
+        brief="Specifies the estimated effective round-trip time of the current connection, in milliseconds.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=100,
+        aliases=["connection.rtt"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[279],
+                description="Added attribute network.connection.rtt to be used instead of connection.rtt",
+            ),
+        ],
+    ),
+    "network.connection.type": AttributeMetadata(
+        brief="Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=True,
+        example="wifi",
+        aliases=["connectionType"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[279],
+                description="Added attribute network.connection.type to be used instead of connectionType",
+            ),
         ],
     ),
     "network.local.address": AttributeMetadata(
@@ -11312,6 +11645,7 @@ Attributes = TypedDict(
         "cache.key": List[str],
         "cache.operation": str,
         "cache.ttl": int,
+        "cache.write": bool,
         "channel": str,
         "client.address": str,
         "client.port": int,
@@ -11327,6 +11661,8 @@ Attributes = TypedDict(
         "code.line.number": int,
         "code.lineno": int,
         "code.namespace": str,
+        "connection.rtt": int,
+        "connectionType": str,
         "culture.calendar": str,
         "culture.display_name": str,
         "culture.is_24_hour_format": bool,
@@ -11348,11 +11684,17 @@ Attributes = TypedDict(
         "db.system.name": str,
         "db.user": str,
         "device.brand": str,
-        "device.cpu.logical_core_count": int,
+        "device.class": str,
         "device.family": str,
+        "device.free_memory": int,
         "device.memory.estimated_capacity": int,
+        "device.memory_size": int,
         "device.model": str,
+        "device.model_id": str,
+        "device.processor_count": int,
+        "device.simulator": bool,
         "deviceMemory": str,
+        "effectiveConnectionType": str,
         "environment": str,
         "error.type": str,
         "event.id": int,
@@ -11551,6 +11893,9 @@ Attributes = TypedDict(
         "net.sock.peer.name": str,
         "net.sock.peer.port": int,
         "net.transport": str,
+        "network.connection.effective_type": str,
+        "network.connection.rtt": int,
+        "network.connection.type": str,
         "network.local.address": str,
         "network.local.port": int,
         "network.peer.address": str,

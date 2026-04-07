@@ -1,0 +1,17 @@
+{
+  "key": "device.simulator",
+  "brief": "Whether the device is a simulator or an actual device.",
+  "type": "boolean",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": false,
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [300],
+      "description": "Added device.simulator attribute"
+    }
+  ]
+}

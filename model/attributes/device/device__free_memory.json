@@ -1,0 +1,17 @@
+{
+  "key": "device.free_memory",
+  "brief": "Free system memory in bytes.",
+  "type": "integer",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": 2147483648,
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [300],
+      "description": "Added device.free_memory attribute"
+    }
+  ]
+}

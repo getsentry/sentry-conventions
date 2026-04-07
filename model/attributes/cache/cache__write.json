@@ -1,0 +1,16 @@
+{
+  "key": "cache.write",
+  "brief": "If the cache operation resulted in a write to the cache.",
+  "type": "boolean",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": true,
+  "sdks": ["java"],
+  "changelog": [
+    {
+      "version": "next"
+    }
+  ]
+}

@@ -1427,6 +1427,26 @@ export const CACHE_TTL = 'cache.ttl';
  */
 export type CACHE_TTL_TYPE = number;
 
+// Path: model/attributes/cache/cache__write.json
+
+/**
+ * If the cache operation resulted in a write to the cache. `cache.write`
+ *
+ * Attribute Value Type: `boolean` {@link CACHE_WRITE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example true
+ */
+export const CACHE_WRITE = 'cache.write';
+
+/**
+ * Type for {@link CACHE_WRITE} cache.write
+ */
+export type CACHE_WRITE_TYPE = boolean;
+
 // Path: model/attributes/channel.json
 
 /**
@@ -1752,6 +1772,52 @@ export const CODE_NAMESPACE = 'code.namespace';
  * Type for {@link CODE_NAMESPACE} code.namespace
  */
 export type CODE_NAMESPACE_TYPE = string;
+
+// Path: model/attributes/connectionType.json
+
+/**
+ * Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc). `connectionType`
+ *
+ * Attribute Value Type: `string` {@link CONNECTIONTYPE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link NETWORK_CONNECTION_TYPE} `network.connection.type`
+ *
+ * @deprecated Use {@link NETWORK_CONNECTION_TYPE} (network.connection.type) instead - Old namespace-less attribute, to be replaced with network.connection.type for span-first future
+ * @example "wifi"
+ */
+export const CONNECTIONTYPE = 'connectionType';
+
+/**
+ * Type for {@link CONNECTIONTYPE} connectionType
+ */
+export type CONNECTIONTYPE_TYPE = string;
+
+// Path: model/attributes/connection/connection__rtt.json
+
+/**
+ * Specifies the estimated effective round-trip time of the current connection, in milliseconds. `connection.rtt`
+ *
+ * Attribute Value Type: `number` {@link CONNECTION_RTT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link NETWORK_CONNECTION_RTT} `network.connection.rtt`
+ *
+ * @deprecated Use {@link NETWORK_CONNECTION_RTT} (network.connection.rtt) instead - Old attribute name (no official namespace), to be replaced with network.connection.rtt for span-first future
+ * @example 100
+ */
+export const CONNECTION_RTT = 'connection.rtt';
+
+/**
+ * Type for {@link CONNECTION_RTT} connection.rtt
+ */
+export type CONNECTION_RTT_TYPE = number;
 
 // Path: model/attributes/culture/culture__calendar.json
 
@@ -2219,27 +2285,25 @@ export const DEVICE_BRAND = 'device.brand';
  */
 export type DEVICE_BRAND_TYPE = string;
 
-// Path: model/attributes/device/device__cpu__logical_core_count.json
+// Path: model/attributes/device/device__class.json
 
 /**
- * The number of logical CPU cores available. `device.cpu.logical_core_count`
+ * The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly. `device.class`
  *
- * Attribute Value Type: `number` {@link DEVICE_CPU_LOGICAL_CORE_COUNT_TYPE}
+ * Attribute Value Type: `string` {@link DEVICE_CLASS_TYPE}
  *
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link HARDWARECONCURRENCY} `hardwareConcurrency`
- *
- * @example 14
+ * @example "medium"
  */
-export const DEVICE_CPU_LOGICAL_CORE_COUNT = 'device.cpu.logical_core_count';
+export const DEVICE_CLASS = 'device.class';
 
 /**
- * Type for {@link DEVICE_CPU_LOGICAL_CORE_COUNT} device.cpu.logical_core_count
+ * Type for {@link DEVICE_CLASS} device.class
  */
-export type DEVICE_CPU_LOGICAL_CORE_COUNT_TYPE = number;
+export type DEVICE_CLASS_TYPE = string;
 
 // Path: model/attributes/device/device__family.json
 
@@ -2260,6 +2324,26 @@ export const DEVICE_FAMILY = 'device.family';
  * Type for {@link DEVICE_FAMILY} device.family
  */
 export type DEVICE_FAMILY_TYPE = string;
+
+// Path: model/attributes/device/device__free_memory.json
+
+/**
+ * Free system memory in bytes. `device.free_memory`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_FREE_MEMORY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 2147483648
+ */
+export const DEVICE_FREE_MEMORY = 'device.free_memory';
+
+/**
+ * Type for {@link DEVICE_FREE_MEMORY} device.free_memory
+ */
+export type DEVICE_FREE_MEMORY_TYPE = number;
 
 // Path: model/attributes/device/device__memory__estimated_capacity.json
 
@@ -2283,6 +2367,26 @@ export const DEVICE_MEMORY_ESTIMATED_CAPACITY = 'device.memory.estimated_capacit
  */
 export type DEVICE_MEMORY_ESTIMATED_CAPACITY_TYPE = number;
 
+// Path: model/attributes/device/device__memory_size.json
+
+/**
+ * Total system memory available in bytes. `device.memory_size`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_MEMORY_SIZE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 17179869184
+ */
+export const DEVICE_MEMORY_SIZE = 'device.memory_size';
+
+/**
+ * Type for {@link DEVICE_MEMORY_SIZE} device.memory_size
+ */
+export type DEVICE_MEMORY_SIZE_TYPE = number;
+
 // Path: model/attributes/device/device__model.json
 
 /**
@@ -2302,6 +2406,91 @@ export const DEVICE_MODEL = 'device.model';
  * Type for {@link DEVICE_MODEL} device.model
  */
 export type DEVICE_MODEL_TYPE = string;
+
+// Path: model/attributes/device/device__model_id.json
+
+/**
+ * An internal hardware revision to identify the device exactly. `device.model_id`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_MODEL_ID_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "N861AP"
+ */
+export const DEVICE_MODEL_ID = 'device.model_id';
+
+/**
+ * Type for {@link DEVICE_MODEL_ID} device.model_id
+ */
+export type DEVICE_MODEL_ID_TYPE = string;
+
+// Path: model/attributes/device/device__processor_count.json
+
+/**
+ * Number of "logical processors". `device.processor_count`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_PROCESSOR_COUNT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link HARDWARECONCURRENCY} `hardwareConcurrency`
+ *
+ * @example 8
+ */
+export const DEVICE_PROCESSOR_COUNT = 'device.processor_count';
+
+/**
+ * Type for {@link DEVICE_PROCESSOR_COUNT} device.processor_count
+ */
+export type DEVICE_PROCESSOR_COUNT_TYPE = number;
+
+// Path: model/attributes/device/device__simulator.json
+
+/**
+ * Whether the device is a simulator or an actual device. `device.simulator`
+ *
+ * Attribute Value Type: `boolean` {@link DEVICE_SIMULATOR_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example false
+ */
+export const DEVICE_SIMULATOR = 'device.simulator';
+
+/**
+ * Type for {@link DEVICE_SIMULATOR} device.simulator
+ */
+export type DEVICE_SIMULATOR_TYPE = boolean;
+
+// Path: model/attributes/effectiveConnectionType.json
+
+/**
+ * Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g). `effectiveConnectionType`
+ *
+ * Attribute Value Type: `string` {@link EFFECTIVECONNECTIONTYPE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link NETWORK_CONNECTION_EFFECTIVE_TYPE} `network.connection.effective_type`
+ *
+ * @deprecated Use {@link NETWORK_CONNECTION_EFFECTIVE_TYPE} (network.connection.effective_type) instead - Old namespace-less attribute, to be replaced with network.connection.effective_type for span-first future
+ * @example "4g"
+ */
+export const EFFECTIVECONNECTIONTYPE = 'effectiveConnectionType';
+
+/**
+ * Type for {@link EFFECTIVECONNECTIONTYPE} effectiveConnectionType
+ */
+export type EFFECTIVECONNECTIONTYPE_TYPE = string;
 
 // Path: model/attributes/environment.json
 
@@ -3854,9 +4043,9 @@ export type GRAPHQL_OPERATION_TYPE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link DEVICE_CPU_LOGICAL_CORE_COUNT} `device.cpu.logical_core_count`
+ * Aliases: {@link DEVICE_PROCESSOR_COUNT} `device.processor_count`
  *
- * @deprecated Use {@link DEVICE_CPU_LOGICAL_CORE_COUNT} (device.cpu.logical_core_count) instead - Old namespace-less attribute, to be replaced with device.cpu.logical_core_count for span-first future
+ * @deprecated Use {@link DEVICE_PROCESSOR_COUNT} (device.processor_count) instead - Old namespace-less attribute, to be replaced with device.processor_count for span-first future
  * @example "14"
  */
 export const HARDWARECONCURRENCY = 'hardwareConcurrency';
@@ -6126,6 +6315,72 @@ export const NEL_TYPE = 'nel.type';
  * Type for {@link NEL_TYPE} nel.type
  */
 export type NEL_TYPE_TYPE = string;
+
+// Path: model/attributes/network/network__connection__effective_type.json
+
+/**
+ * Specifies the effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g). `network.connection.effective_type`
+ *
+ * Attribute Value Type: `string` {@link NETWORK_CONNECTION_EFFECTIVE_TYPE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link EFFECTIVECONNECTIONTYPE} `effectiveConnectionType`
+ *
+ * @example "4g"
+ */
+export const NETWORK_CONNECTION_EFFECTIVE_TYPE = 'network.connection.effective_type';
+
+/**
+ * Type for {@link NETWORK_CONNECTION_EFFECTIVE_TYPE} network.connection.effective_type
+ */
+export type NETWORK_CONNECTION_EFFECTIVE_TYPE_TYPE = string;
+
+// Path: model/attributes/network/network__connection__rtt.json
+
+/**
+ * Specifies the estimated effective round-trip time of the current connection, in milliseconds. `network.connection.rtt`
+ *
+ * Attribute Value Type: `number` {@link NETWORK_CONNECTION_RTT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link CONNECTION_RTT} `connection.rtt`
+ *
+ * @example 100
+ */
+export const NETWORK_CONNECTION_RTT = 'network.connection.rtt';
+
+/**
+ * Type for {@link NETWORK_CONNECTION_RTT} network.connection.rtt
+ */
+export type NETWORK_CONNECTION_RTT_TYPE = number;
+
+// Path: model/attributes/network/network__connection__type.json
+
+/**
+ * Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc). `network.connection.type`
+ *
+ * Attribute Value Type: `string` {@link NETWORK_CONNECTION_TYPE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * Aliases: {@link CONNECTIONTYPE} `connectionType`
+ *
+ * @example "wifi"
+ */
+export const NETWORK_CONNECTION_TYPE = 'network.connection.type';
+
+/**
+ * Type for {@link NETWORK_CONNECTION_TYPE} network.connection.type
+ */
+export type NETWORK_CONNECTION_TYPE_TYPE = string;
 
 // Path: model/attributes/network/network__local__address.json
 
@@ -10109,6 +10364,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [CACHE_KEY]: 'string[]',
   [CACHE_OPERATION]: 'string',
   [CACHE_TTL]: 'integer',
+  [CACHE_WRITE]: 'boolean',
   [CHANNEL]: 'string',
   [CLIENT_ADDRESS]: 'string',
   [CLIENT_PORT]: 'integer',
@@ -10124,6 +10380,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [CODE_LINENO]: 'integer',
   [CODE_LINE_NUMBER]: 'integer',
   [CODE_NAMESPACE]: 'string',
+  [CONNECTIONTYPE]: 'string',
+  [CONNECTION_RTT]: 'integer',
   [CULTURE_CALENDAR]: 'string',
   [CULTURE_DISPLAY_NAME]: 'string',
   [CULTURE_IS_24_HOUR_FORMAT]: 'boolean',
@@ -10146,10 +10404,16 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [DB_USER]: 'string',
   [DEVICEMEMORY]: 'string',
   [DEVICE_BRAND]: 'string',
-  [DEVICE_CPU_LOGICAL_CORE_COUNT]: 'integer',
+  [DEVICE_CLASS]: 'string',
   [DEVICE_FAMILY]: 'string',
+  [DEVICE_FREE_MEMORY]: 'integer',
   [DEVICE_MEMORY_ESTIMATED_CAPACITY]: 'integer',
+  [DEVICE_MEMORY_SIZE]: 'integer',
   [DEVICE_MODEL]: 'string',
+  [DEVICE_MODEL_ID]: 'string',
+  [DEVICE_PROCESSOR_COUNT]: 'integer',
+  [DEVICE_SIMULATOR]: 'boolean',
+  [EFFECTIVECONNECTIONTYPE]: 'string',
   [ENVIRONMENT]: 'string',
   [ERROR_TYPE]: 'string',
   [EVENT_ID]: 'integer',
@@ -10333,6 +10597,9 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [NEL_REFERRER]: 'string',
   [NEL_SAMPLING_FUNCTION]: 'double',
   [NEL_TYPE]: 'string',
+  [NETWORK_CONNECTION_EFFECTIVE_TYPE]: 'string',
+  [NETWORK_CONNECTION_RTT]: 'integer',
+  [NETWORK_CONNECTION_TYPE]: 'string',
   [NETWORK_LOCAL_ADDRESS]: 'string',
   [NETWORK_LOCAL_PORT]: 'integer',
   [NETWORK_PEER_ADDRESS]: 'string',
@@ -10589,6 +10856,7 @@ export type AttributeName =
   | typeof CACHE_KEY
   | typeof CACHE_OPERATION
   | typeof CACHE_TTL
+  | typeof CACHE_WRITE
   | typeof CHANNEL
   | typeof CLIENT_ADDRESS
   | typeof CLIENT_PORT
@@ -10604,6 +10872,8 @@ export type AttributeName =
   | typeof CODE_LINENO
   | typeof CODE_LINE_NUMBER
   | typeof CODE_NAMESPACE
+  | typeof CONNECTIONTYPE
+  | typeof CONNECTION_RTT
   | typeof CULTURE_CALENDAR
   | typeof CULTURE_DISPLAY_NAME
   | typeof CULTURE_IS_24_HOUR_FORMAT
@@ -10626,10 +10896,16 @@ export type AttributeName =
   | typeof DB_USER
   | typeof DEVICEMEMORY
   | typeof DEVICE_BRAND
-  | typeof DEVICE_CPU_LOGICAL_CORE_COUNT
+  | typeof DEVICE_CLASS
   | typeof DEVICE_FAMILY
+  | typeof DEVICE_FREE_MEMORY
   | typeof DEVICE_MEMORY_ESTIMATED_CAPACITY
+  | typeof DEVICE_MEMORY_SIZE
   | typeof DEVICE_MODEL
+  | typeof DEVICE_MODEL_ID
+  | typeof DEVICE_PROCESSOR_COUNT
+  | typeof DEVICE_SIMULATOR
+  | typeof EFFECTIVECONNECTIONTYPE
   | typeof ENVIRONMENT
   | typeof ERROR_TYPE
   | typeof EVENT_ID
@@ -10813,6 +11089,9 @@ export type AttributeName =
   | typeof NEL_REFERRER
   | typeof NEL_SAMPLING_FUNCTION
   | typeof NEL_TYPE
+  | typeof NETWORK_CONNECTION_EFFECTIVE_TYPE
+  | typeof NETWORK_CONNECTION_RTT
+  | typeof NETWORK_CONNECTION_TYPE
   | typeof NETWORK_LOCAL_ADDRESS
   | typeof NETWORK_LOCAL_PORT
   | typeof NETWORK_PEER_ADDRESS
@@ -11878,6 +12157,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['php-laravel'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
+  [CACHE_WRITE]: {
+    brief: 'If the cache operation resulted in a write to the cache.',
+    type: 'boolean',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: true,
+    sdks: ['java'],
+    changelog: [{ version: 'next' }],
+  },
   [CHANNEL]: {
     brief: 'The channel name that is being used.',
     type: 'string',
@@ -12076,6 +12366,51 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'code.function.name should include the namespace.',
     },
     changelog: [{ version: '0.1.0', prs: [61, 74] }, { version: '0.0.0' }],
+  },
+  [CONNECTIONTYPE]: {
+    brief: 'Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'wifi',
+    deprecation: {
+      replacement: 'network.connection.type',
+      reason: 'Old namespace-less attribute, to be replaced with network.connection.type for span-first future',
+    },
+    aliases: [NETWORK_CONNECTION_TYPE],
+    sdks: ['javascript-browser'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [279],
+        description: "Added and deprecated attribute to document JS SDK's current behaviour",
+      },
+    ],
+  },
+  [CONNECTION_RTT]: {
+    brief: 'Specifies the estimated effective round-trip time of the current connection, in milliseconds.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 100,
+    deprecation: {
+      replacement: 'network.connection.rtt',
+      reason:
+        'Old attribute name (no official namespace), to be replaced with network.connection.rtt for span-first future',
+    },
+    aliases: [NETWORK_CONNECTION_RTT],
+    sdks: ['javascript-browser'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [279],
+        description: "Added and deprecated attribute to document JS SDK's current behaviour",
+      },
+    ],
   },
   [CULTURE_CALENDAR]: {
     brief: 'The calendar system used by the culture.',
@@ -12344,23 +12679,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'Apple',
     changelog: [{ version: '0.1.0', prs: [116, 127] }],
   },
-  [DEVICE_CPU_LOGICAL_CORE_COUNT]: {
-    brief: 'The number of logical CPU cores available.',
-    type: 'integer',
+  [DEVICE_CLASS]: {
+    brief:
+      'The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.',
+    type: 'string',
     pii: {
       isPii: 'maybe',
     },
     isInOtel: false,
-    example: 14,
-    aliases: [HARDWARECONCURRENCY],
-    sdks: ['javascript-browser'],
-    changelog: [
-      {
-        version: 'next',
-        prs: [281],
-        description: 'Added attribute device.cpu.logical_core_count to be used instead of hardwareConcurrency',
-      },
-    ],
+    example: 'medium',
+    changelog: [{ version: 'next', prs: [300], description: 'Added device.class attribute' }],
   },
   [DEVICE_FAMILY]: {
     brief: 'The family of the device.',
@@ -12371,6 +12699,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'iPhone',
     changelog: [{ version: '0.1.0', prs: [116, 127] }],
+  },
+  [DEVICE_FREE_MEMORY]: {
+    brief: 'Free system memory in bytes.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 2147483648,
+    changelog: [{ version: 'next', prs: [300], description: 'Added device.free_memory attribute' }],
   },
   [DEVICE_MEMORY_ESTIMATED_CAPACITY]: {
     brief:
@@ -12391,6 +12729,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       },
     ],
   },
+  [DEVICE_MEMORY_SIZE]: {
+    brief: 'Total system memory available in bytes.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 17179869184,
+    changelog: [{ version: 'next', prs: [300], description: 'Added device.memory_size attribute' }],
+  },
   [DEVICE_MODEL]: {
     brief: 'The model of the device.',
     type: 'string',
@@ -12400,6 +12748,71 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'iPhone 15 Pro Max',
     changelog: [{ version: '0.1.0', prs: [116, 127] }],
+  },
+  [DEVICE_MODEL_ID]: {
+    brief: 'An internal hardware revision to identify the device exactly.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'N861AP',
+    changelog: [{ version: 'next', prs: [300], description: 'Added device.model_id attribute' }],
+  },
+  [DEVICE_PROCESSOR_COUNT]: {
+    brief: 'Number of "logical processors".',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 8,
+    aliases: [HARDWARECONCURRENCY],
+    changelog: [
+      {
+        version: 'next',
+        prs: [300],
+        description: 'Removed deprecation, device.processor_count is now the canonical attribute',
+      },
+      {
+        version: 'next',
+        prs: [300],
+        description: 'Added and deprecated attribute device.processor_count in favor of device.cpu.logical_core_count',
+      },
+    ],
+  },
+  [DEVICE_SIMULATOR]: {
+    brief: 'Whether the device is a simulator or an actual device.',
+    type: 'boolean',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: false,
+    changelog: [{ version: 'next', prs: [300], description: 'Added device.simulator attribute' }],
+  },
+  [EFFECTIVECONNECTIONTYPE]: {
+    brief: 'Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '4g',
+    deprecation: {
+      replacement: 'network.connection.effective_type',
+      reason:
+        'Old namespace-less attribute, to be replaced with network.connection.effective_type for span-first future',
+    },
+    aliases: [NETWORK_CONNECTION_EFFECTIVE_TYPE],
+    sdks: ['javascript-browser'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [279],
+        description: "Added and deprecated attribute to document JS SDK's current behaviour",
+      },
+    ],
   },
   [ENVIRONMENT]: {
     brief: 'The sentry environment.',
@@ -13345,12 +13758,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '14',
     deprecation: {
-      replacement: 'device.cpu.logical_core_count',
-      reason: 'Old namespace-less attribute, to be replaced with device.cpu.logical_core_count for span-first future',
+      replacement: 'device.processor_count',
+      reason: 'Old namespace-less attribute, to be replaced with device.processor_count for span-first future',
     },
-    aliases: [DEVICE_CPU_LOGICAL_CORE_COUNT],
+    aliases: [DEVICE_PROCESSOR_COUNT],
     sdks: ['javascript-browser'],
     changelog: [
+      {
+        version: 'next',
+        prs: [300],
+        description: 'Updated deprecation replacement from device.cpu.logical_core_count to device.processor_count',
+      },
       {
         version: 'next',
         prs: [281],
@@ -14669,6 +15087,60 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'dns.unreachable',
     changelog: [{ version: '0.1.0', prs: [68, 127] }],
+  },
+  [NETWORK_CONNECTION_EFFECTIVE_TYPE]: {
+    brief: 'Specifies the effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '4g',
+    aliases: [EFFECTIVECONNECTIONTYPE],
+    sdks: ['javascript-browser'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [279],
+        description: 'Added attribute network.connection.effective_type to be used instead of effectiveConnectionType',
+      },
+    ],
+  },
+  [NETWORK_CONNECTION_RTT]: {
+    brief: 'Specifies the estimated effective round-trip time of the current connection, in milliseconds.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 100,
+    aliases: [CONNECTION_RTT],
+    sdks: ['javascript-browser'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [279],
+        description: 'Added attribute network.connection.rtt to be used instead of connection.rtt',
+      },
+    ],
+  },
+  [NETWORK_CONNECTION_TYPE]: {
+    brief: 'Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'wifi',
+    aliases: [CONNECTIONTYPE],
+    sdks: ['javascript-browser'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [279],
+        description: 'Added attribute network.connection.type to be used instead of connectionType',
+      },
+    ],
   },
   [NETWORK_LOCAL_ADDRESS]: {
     brief: 'Local address of the network connection - IP address or Unix domain socket name.',
@@ -16820,6 +17292,7 @@ export type Attributes = {
   [CACHE_KEY]?: CACHE_KEY_TYPE;
   [CACHE_OPERATION]?: CACHE_OPERATION_TYPE;
   [CACHE_TTL]?: CACHE_TTL_TYPE;
+  [CACHE_WRITE]?: CACHE_WRITE_TYPE;
   [CHANNEL]?: CHANNEL_TYPE;
   [CLIENT_ADDRESS]?: CLIENT_ADDRESS_TYPE;
   [CLIENT_PORT]?: CLIENT_PORT_TYPE;
@@ -16835,6 +17308,8 @@ export type Attributes = {
   [CODE_LINENO]?: CODE_LINENO_TYPE;
   [CODE_LINE_NUMBER]?: CODE_LINE_NUMBER_TYPE;
   [CODE_NAMESPACE]?: CODE_NAMESPACE_TYPE;
+  [CONNECTIONTYPE]?: CONNECTIONTYPE_TYPE;
+  [CONNECTION_RTT]?: CONNECTION_RTT_TYPE;
   [CULTURE_CALENDAR]?: CULTURE_CALENDAR_TYPE;
   [CULTURE_DISPLAY_NAME]?: CULTURE_DISPLAY_NAME_TYPE;
   [CULTURE_IS_24_HOUR_FORMAT]?: CULTURE_IS_24_HOUR_FORMAT_TYPE;
@@ -16857,10 +17332,16 @@ export type Attributes = {
   [DB_USER]?: DB_USER_TYPE;
   [DEVICEMEMORY]?: DEVICEMEMORY_TYPE;
   [DEVICE_BRAND]?: DEVICE_BRAND_TYPE;
-  [DEVICE_CPU_LOGICAL_CORE_COUNT]?: DEVICE_CPU_LOGICAL_CORE_COUNT_TYPE;
+  [DEVICE_CLASS]?: DEVICE_CLASS_TYPE;
   [DEVICE_FAMILY]?: DEVICE_FAMILY_TYPE;
+  [DEVICE_FREE_MEMORY]?: DEVICE_FREE_MEMORY_TYPE;
   [DEVICE_MEMORY_ESTIMATED_CAPACITY]?: DEVICE_MEMORY_ESTIMATED_CAPACITY_TYPE;
+  [DEVICE_MEMORY_SIZE]?: DEVICE_MEMORY_SIZE_TYPE;
   [DEVICE_MODEL]?: DEVICE_MODEL_TYPE;
+  [DEVICE_MODEL_ID]?: DEVICE_MODEL_ID_TYPE;
+  [DEVICE_PROCESSOR_COUNT]?: DEVICE_PROCESSOR_COUNT_TYPE;
+  [DEVICE_SIMULATOR]?: DEVICE_SIMULATOR_TYPE;
+  [EFFECTIVECONNECTIONTYPE]?: EFFECTIVECONNECTIONTYPE_TYPE;
   [ENVIRONMENT]?: ENVIRONMENT_TYPE;
   [ERROR_TYPE]?: ERROR_TYPE_TYPE;
   [EVENT_ID]?: EVENT_ID_TYPE;
@@ -17044,6 +17525,9 @@ export type Attributes = {
   [NEL_REFERRER]?: NEL_REFERRER_TYPE;
   [NEL_SAMPLING_FUNCTION]?: NEL_SAMPLING_FUNCTION_TYPE;
   [NEL_TYPE]?: NEL_TYPE_TYPE;
+  [NETWORK_CONNECTION_EFFECTIVE_TYPE]?: NETWORK_CONNECTION_EFFECTIVE_TYPE_TYPE;
+  [NETWORK_CONNECTION_RTT]?: NETWORK_CONNECTION_RTT_TYPE;
+  [NETWORK_CONNECTION_TYPE]?: NETWORK_CONNECTION_TYPE_TYPE;
   [NETWORK_LOCAL_ADDRESS]?: NETWORK_LOCAL_ADDRESS_TYPE;
   [NETWORK_LOCAL_PORT]?: NETWORK_LOCAL_PORT_TYPE;
   [NETWORK_PEER_ADDRESS]?: NETWORK_PEER_ADDRESS_TYPE;
