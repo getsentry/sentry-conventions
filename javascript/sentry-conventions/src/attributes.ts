@@ -13198,7 +13198,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: ['arm64-v8a', 'armeabi-v7a', 'armeabi'],
-    changelog: [{ version: 'next', description: 'Added device.archs attribute' }],
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.archs attribute' }],
   },
   [DEVICE_BATTERY_LEVEL]: {
     brief: 'The battery level of the device as a percentage (0-100).',
@@ -13375,7 +13375,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'This attribute is being deprecated in favor of culture.locale',
     },
     aliases: [CULTURE_LOCALE],
-    changelog: [{ version: 'next', description: 'Added and deprecated device.locale in favor of culture.locale' }],
+    changelog: [
+      { version: 'next', prs: [303], description: 'Added and deprecated device.locale in favor of culture.locale' },
+    ],
   },
   [DEVICE_LOW_MEMORY]: {
     brief: 'Whether the device was low on memory.',
@@ -13593,7 +13595,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'This attribute is being deprecated in favor of culture.timezone',
     },
     aliases: [CULTURE_TIMEZONE],
-    changelog: [{ version: 'next', description: 'Added and deprecated device.timezone in favor of culture.timezone' }],
+    changelog: [
+      { version: 'next', prs: [303], description: 'Added and deprecated device.timezone in favor of culture.timezone' },
+    ],
   },
   [DEVICE_USABLE_MEMORY]: {
     brief: 'Memory usable for the app in bytes.',

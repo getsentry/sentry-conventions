@@ -16,7 +16,7 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [],
+      "prs": [303],
       "description": "Added and deprecated device.timezone in favor of culture.timezone"
     }
   ]

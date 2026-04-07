@@ -7293,7 +7293,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=["arm64-v8a", "armeabi-v7a", "armeabi"],
         changelog=[
-            ChangelogEntry(version="next", description="Added device.archs attribute"),
+            ChangelogEntry(
+                version="next", prs=[303], description="Added device.archs attribute"
+            ),
         ],
     ),
     "device.battery_level": AttributeMetadata(
@@ -7511,6 +7513,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
+                prs=[303],
                 description="Added and deprecated device.locale in favor of culture.locale",
             ),
         ],
@@ -7780,6 +7783,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
+                prs=[303],
                 description="Added and deprecated device.timezone in favor of culture.timezone",
             ),
         ],

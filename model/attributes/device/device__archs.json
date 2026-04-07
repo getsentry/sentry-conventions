@@ -10,7 +10,7 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [],
+      "prs": [303],
       "description": "Added device.archs attribute"
     }
   ]
