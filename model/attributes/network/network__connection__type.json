@@ -1,6 +1,6 @@
 {
   "key": "network.connection.type",
-  "brief": "The internet connection type currently being used by the host.",
+  "brief": "Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).",
   "type": "string",
   "pii": {
     "key": "maybe"
@@ -12,8 +12,8 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [279, 303],
-      "description": "Added network.connection.type attribute"
+      "prs": [279],
+      "description": "Added attribute network.connection.type to be used instead of connectionType"
     }
   ]
 }

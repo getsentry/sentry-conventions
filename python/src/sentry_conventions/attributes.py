@@ -4119,7 +4119,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     NETWORK_CONNECTION_TYPE: Literal["network.connection.type"] = (
         "network.connection.type"
     )
-    """The internet connection type currently being used by the host.
+    """Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).
 
     Type: str
     Contains PII: maybe
@@ -10287,7 +10287,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "network.connection.type": AttributeMetadata(
-        brief="The internet connection type currently being used by the host.",
+        brief="Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
@@ -10297,8 +10297,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[279, 303],
-                description="Added network.connection.type attribute",
+                prs=[279],
+                description="Added attribute network.connection.type to be used instead of connectionType",
             ),
         ],
     ),

@@ -6916,7 +6916,7 @@ export type NETWORK_CONNECTION_RTT_TYPE = number;
 // Path: model/attributes/network/network__connection__type.json
 
 /**
- * The internet connection type currently being used by the host. `network.connection.type`
+ * Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc). `network.connection.type`
  *
  * Attribute Value Type: `string` {@link NETWORK_CONNECTION_TYPE_TYPE}
  *
@@ -15943,7 +15943,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   [NETWORK_CONNECTION_TYPE]: {
-    brief: 'The internet connection type currently being used by the host.',
+    brief: 'Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).',
     type: 'string',
     pii: {
       isPii: 'maybe',
@@ -15952,7 +15952,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'wifi',
     aliases: [DEVICE_CONNECTION_TYPE, CONNECTIONTYPE],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [279, 303], description: 'Added network.connection.type attribute' }],
+    changelog: [
+      {
+        version: 'next',
+        prs: [279],
+        description: 'Added attribute network.connection.type to be used instead of connectionType',
+      },
+    ],
   },
   [NETWORK_LOCAL_ADDRESS]: {
     brief: 'Local address of the network connection - IP address or Unix domain socket name.',
