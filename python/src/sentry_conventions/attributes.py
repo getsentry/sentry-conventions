@@ -9785,7 +9785,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(
                 version="next",
                 prs=[301],
-                description="Added os.build attribute, deprecated in favour of os.build_id",
+                description="Added os.build attribute, deprecated in favor of os.build_id",
             ),
         ],
     ),
@@ -9823,7 +9823,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="20.2.0",
         changelog=[
             ChangelogEntry(
-                version="next", description="Added os.kernel_version attribute"
+                version="next",
+                prs=[301],
+                description="Added os.kernel_version attribute",
             ),
         ],
     ),
@@ -9846,7 +9848,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="Ubuntu 22.04.4 LTS (Jammy Jellyfish)",
         changelog=[
             ChangelogEntry(
-                version="next", description="Added os.raw_description attribute"
+                version="next",
+                prs=[301],
+                description="Added os.raw_description attribute",
             ),
         ],
     ),
@@ -9857,7 +9861,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=True,
         changelog=[
-            ChangelogEntry(version="next", description="Added os.rooted attribute"),
+            ChangelogEntry(
+                version="next", prs=[301], description="Added os.rooted attribute"
+            ),
         ],
     ),
     "os.theme": AttributeMetadata(
@@ -9867,7 +9873,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="dark",
         changelog=[
-            ChangelogEntry(version="next", description="Added os.theme attribute"),
+            ChangelogEntry(
+                version="next", prs=[301], description="Added os.theme attribute"
+            ),
         ],
     ),
     "os.type": AttributeMetadata(

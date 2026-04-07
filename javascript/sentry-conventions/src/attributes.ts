@@ -15478,7 +15478,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [OS_BUILD_ID],
     changelog: [
-      { version: 'next', prs: [301], description: 'Added os.build attribute, deprecated in favour of os.build_id' },
+      { version: 'next', prs: [301], description: 'Added os.build attribute, deprecated in favor of os.build_id' },
     ],
   },
   [OS_BUILD_ID]: {
@@ -15515,7 +15515,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '20.2.0',
-    changelog: [{ version: 'next', description: 'Added os.kernel_version attribute' }],
+    changelog: [{ version: 'next', prs: [301], description: 'Added os.kernel_version attribute' }],
   },
   [OS_NAME]: {
     brief: 'Human readable operating system name.',
@@ -15536,7 +15536,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'Ubuntu 22.04.4 LTS (Jammy Jellyfish)',
-    changelog: [{ version: 'next', description: 'Added os.raw_description attribute' }],
+    changelog: [{ version: 'next', prs: [301], description: 'Added os.raw_description attribute' }],
   },
   [OS_ROOTED]: {
     brief: 'Whether the operating system has been jailbroken or rooted.',
@@ -15546,7 +15546,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: true,
-    changelog: [{ version: 'next', description: 'Added os.rooted attribute' }],
+    changelog: [{ version: 'next', prs: [301], description: 'Added os.rooted attribute' }],
   },
   [OS_THEME]: {
     brief: 'Whether the OS runs in dark mode or light mode.',
@@ -15556,7 +15556,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'dark',
-    changelog: [{ version: 'next', description: 'Added os.theme attribute' }],
+    changelog: [{ version: 'next', prs: [301], description: 'Added os.theme attribute' }],
   },
   [OS_TYPE]: {
     brief: 'The operating system type.',

@@ -16,7 +16,7 @@
     {
       "version": "next",
       "prs": [301],
-      "description": "Added os.build attribute, deprecated in favour of os.build_id"
+      "description": "Added os.build attribute, deprecated in favor of os.build_id"
     }
   ]
 }
