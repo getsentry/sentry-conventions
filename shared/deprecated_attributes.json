@@ -10,23 +10,17 @@
       },
       "is_in_otel": false,
       "example": 0.2361,
-      "sdks": [
-        "javascript-browser"
-      ],
+      "sdks": ["javascript-browser"],
       "deprecation": {
         "replacement": "browser.web_vital.cls.value",
         "reason": "The CLS web vital is now recorded as a browser.web_vital.cls.value attribute.",
         "_status": "backfill"
       },
-      "alias": [
-        "browser.web_vital.cls.value"
-      ],
+      "alias": ["browser.web_vital.cls.value"],
       "changelog": [
         {
           "version": "next",
-          "prs": [
-            229
-          ],
+          "prs": [229],
           "description": "Added and deprecated attribute to document JS SDK's current behaviour"
         }
       ]
@@ -40,12 +34,8 @@
       },
       "is_in_otel": false,
       "example": "wifi",
-      "sdks": [
-        "javascript-browser"
-      ],
-      "alias": [
-        "network.connection.type"
-      ],
+      "sdks": ["javascript-browser"],
+      "alias": ["network.connection.type"],
       "deprecation": {
         "replacement": "network.connection.type",
         "reason": "Old namespace-less attribute, to be replaced with network.connection.type for span-first future",
@@ -54,9 +44,7 @@
       "changelog": [
         {
           "version": "next",
-          "prs": [
-            279
-          ],
+          "prs": [279],
           "description": "Added and deprecated attribute to document JS SDK's current behaviour"
         }
       ]
@@ -70,12 +58,8 @@
       },
       "is_in_otel": false,
       "example": "8 GB",
-      "sdks": [
-        "javascript-browser"
-      ],
-      "alias": [
-        "device.memory.estimated_capacity"
-      ],
+      "sdks": ["javascript-browser"],
+      "alias": ["device.memory.estimated_capacity"],
       "deprecation": {
         "replacement": "device.memory.estimated_capacity",
         "reason": "Old namespace-less attribute, to be replaced with device.memory.estimated_capacity for span-first future",
@@ -84,9 +68,7 @@
       "changelog": [
         {
           "version": "next",
-          "prs": [
-            281
-          ],
+          "prs": [281],
           "description": "Added and deprecated attribute to document JS SDK's current behaviour"
         }
       ]
@@ -100,12 +82,8 @@
       },
       "is_in_otel": false,
       "example": "4g",
-      "sdks": [
-        "javascript-browser"
-      ],
-      "alias": [
-        "network.connection.effective_type"
-      ],
+      "sdks": ["javascript-browser"],
+      "alias": ["network.connection.effective_type"],
       "deprecation": {
         "replacement": "network.connection.effective_type",
         "reason": "Old namespace-less attribute, to be replaced with network.connection.effective_type for span-first future",
@@ -114,9 +92,7 @@
       "changelog": [
         {
           "version": "next",
-          "prs": [
-            279
-          ],
+          "prs": [279],
           "description": "Added and deprecated attribute to document JS SDK's current behaviour"
         }
       ]
@@ -134,16 +110,11 @@
         "_status": null,
         "replacement": "sentry.environment"
       },
-      "alias": [
-        "sentry.environment"
-      ],
+      "alias": ["sentry.environment"],
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            61,
-            127
-          ]
+          "prs": [61, 127]
         },
         {
           "version": "0.0.0"
@@ -159,23 +130,17 @@
       },
       "is_in_otel": false,
       "example": 547.6951,
-      "sdks": [
-        "javascript-browser"
-      ],
+      "sdks": ["javascript-browser"],
       "deprecation": {
         "_status": "backfill",
         "replacement": "browser.web_vital.fcp.value",
         "reason": "This attribute is being deprecated in favor of browser.web_vital.fcp.value"
       },
-      "alias": [
-        "browser.web_vital.fcp.value"
-      ],
+      "alias": ["browser.web_vital.fcp.value"],
       "changelog": [
         {
           "version": "next",
-          "prs": [
-            235
-          ]
+          "prs": [235]
         }
       ]
     },
@@ -188,23 +153,17 @@
       },
       "is_in_otel": false,
       "example": 477.1926,
-      "sdks": [
-        "javascript-browser"
-      ],
+      "sdks": ["javascript-browser"],
       "deprecation": {
         "_status": "backfill",
         "replacement": "browser.web_vital.fp.value",
         "reason": "This attribute is being deprecated in favor of browser.web_vital.fp.value"
       },
-      "alias": [
-        "browser.web_vital.fp.value"
-      ],
+      "alias": ["browser.web_vital.fp.value"],
       "changelog": [
         {
           "version": "next",
-          "prs": [
-            235
-          ]
+          "prs": [235]
         }
       ]
     },
@@ -222,16 +181,11 @@
         "reason": "This attribute is not part of the OpenTelemetry specification and error.type fits much better."
       },
       "example": "ENOENT: no such file or directory",
-      "sdks": [
-        "javascript-node"
-      ],
+      "sdks": ["javascript-node"],
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            61,
-            127
-          ]
+          "prs": [61, 127]
         },
         {
           "version": "0.0.0"
@@ -247,12 +201,8 @@
       },
       "is_in_otel": false,
       "example": "14",
-      "sdks": [
-        "javascript-browser"
-      ],
-      "alias": [
-        "device.processor_count"
-      ],
+      "sdks": ["javascript-browser"],
+      "alias": ["device.processor_count"],
       "deprecation": {
         "replacement": "device.processor_count",
         "reason": "Old namespace-less attribute, to be replaced with device.processor_count for span-first future",
@@ -261,16 +211,12 @@
       "changelog": [
         {
           "version": "next",
-          "prs": [
-            300
-          ],
+          "prs": [300],
           "description": "Updated deprecation replacement from device.cpu.logical_core_count to device.processor_count"
         },
         {
           "version": "next",
-          "prs": [
-            281
-          ],
+          "prs": [281],
           "description": "Added and deprecated attribute to document JS SDK's current behaviour"
         }
       ]
@@ -284,23 +230,17 @@
       },
       "is_in_otel": false,
       "example": 200,
-      "sdks": [
-        "javascript-browser"
-      ],
+      "sdks": ["javascript-browser"],
       "deprecation": {
         "replacement": "browser.web_vital.inp.value",
         "reason": "The INP web vital is now recorded as a browser.web_vital.inp.value attribute.",
         "_status": "backfill"
       },
-      "alias": [
-        "browser.web_vital.inp.value"
-      ],
+      "alias": ["browser.web_vital.inp.value"],
       "changelog": [
         {
           "version": "next",
-          "prs": [
-            229
-          ],
+          "prs": [229],
           "description": "Added and deprecated attribute to document JS SDK's current behaviour"
         }
       ]
@@ -314,23 +254,17 @@
       },
       "is_in_otel": false,
       "example": 2500,
-      "sdks": [
-        "javascript-browser"
-      ],
+      "sdks": ["javascript-browser"],
       "deprecation": {
         "replacement": "browser.web_vital.lcp.value",
         "reason": "The LCP web vital is now recorded as a browser.web_vital.lcp.value attribute.",
         "_status": "backfill"
       },
-      "alias": [
-        "browser.web_vital.lcp.value"
-      ],
+      "alias": ["browser.web_vital.lcp.value"],
       "changelog": [
         {
           "version": "next",
-          "prs": [
-            229
-          ],
+          "prs": [229],
           "description": "Added and deprecated attribute to document JS SDK's current behaviour"
         }
       ]
@@ -348,20 +282,12 @@
         "_status": null,
         "replacement": "http.request.method"
       },
-      "alias": [
-        "http.request.method"
-      ],
-      "sdks": [
-        "javascript-browser",
-        "javascript-node"
-      ],
+      "alias": ["http.request.method"],
+      "sdks": ["javascript-browser", "javascript-node"],
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            61,
-            127
-          ]
+          "prs": [61, 127]
         },
         {
           "version": "0.0.0"
@@ -381,16 +307,11 @@
         "_status": null,
         "replacement": "sentry.release"
       },
-      "alias": [
-        "sentry.release"
-      ],
+      "alias": ["sentry.release"],
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            61,
-            127
-          ]
+          "prs": [61, 127]
         },
         {
           "version": "0.0.0"
@@ -410,15 +331,11 @@
         "_status": null,
         "replacement": "sentry.replay_id"
       },
-      "alias": [
-        "sentry.replay_id"
-      ],
+      "alias": ["sentry.replay_id"],
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            61
-          ]
+          "prs": [61]
         },
         {
           "version": "0.0.0"
@@ -438,20 +355,12 @@
         "_status": null,
         "replacement": "http.route"
       },
-      "alias": [
-        "http.route"
-      ],
-      "sdks": [
-        "php-laravel",
-        "javascript-reactnative"
-      ],
+      "alias": ["http.route"],
+      "sdks": ["php-laravel", "javascript-reactnative"],
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            61,
-            74
-          ]
+          "prs": [61, 74]
         },
         {
           "version": "0.0.0"
@@ -471,16 +380,11 @@
         "_status": null,
         "replacement": "sentry.transaction"
       },
-      "alias": [
-        "sentry.transaction"
-      ],
+      "alias": ["sentry.transaction"],
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            61,
-            127
-          ]
+          "prs": [61, 127]
         },
         {
           "version": "0.0.0"
@@ -496,12 +400,8 @@
       },
       "is_in_otel": false,
       "example": 194,
-      "alias": [
-        "browser.web_vital.ttfb.value"
-      ],
-      "sdks": [
-        "javascript-browser"
-      ],
+      "alias": ["browser.web_vital.ttfb.value"],
+      "sdks": ["javascript-browser"],
       "deprecation": {
         "_status": "backfill",
         "replacement": "browser.web_vital.ttfb.value",
@@ -510,9 +410,7 @@
       "changelog": [
         {
           "version": "next",
-          "prs": [
-            235
-          ]
+          "prs": [235]
         }
       ]
     },
@@ -529,20 +427,12 @@
         "_status": null,
         "replacement": "url.full"
       },
-      "alias": [
-        "url.full",
-        "http.url"
-      ],
-      "sdks": [
-        "javascript-browser",
-        "javascript-node"
-      ],
+      "alias": ["url.full", "http.url"],
+      "sdks": ["javascript-browser", "javascript-node"],
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            61
-          ]
+          "prs": [61]
         },
         {
           "version": "0.0.0"
@@ -557,25 +447,18 @@
         "key": "true"
       },
       "is_in_otel": false,
-      "example": [
-        "Citation 1",
-        "Citation 2"
-      ],
+      "example": ["Citation 1", "Citation 2"],
       "deprecation": {
         "_status": null
       },
       "changelog": [
         {
           "version": "next",
-          "prs": [
-            264
-          ]
+          "prs": [264]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            55
-          ]
+          "prs": [55]
         }
       ]
     },
@@ -588,13 +471,8 @@
       },
       "is_in_otel": false,
       "example": 10,
-      "alias": [
-        "gen_ai.usage.output_tokens",
-        "gen_ai.usage.completion_tokens"
-      ],
-      "sdks": [
-        "python"
-      ],
+      "alias": ["gen_ai.usage.output_tokens", "gen_ai.usage.completion_tokens"],
+      "sdks": ["python"],
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.usage.output_tokens"
@@ -602,16 +480,11 @@
       "changelog": [
         {
           "version": "0.4.0",
-          "prs": [
-            228
-          ]
+          "prs": [228]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            57,
-            61
-          ]
+          "prs": [57, 61]
         },
         {
           "version": "0.0.0"
@@ -626,25 +499,18 @@
         "key": "true"
       },
       "is_in_otel": false,
-      "example": [
-        "document1.txt",
-        "document2.pdf"
-      ],
+      "example": ["document1.txt", "document2.pdf"],
       "deprecation": {
         "_status": null
       },
       "changelog": [
         {
           "version": "next",
-          "prs": [
-            264
-          ]
+          "prs": [264]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            55
-          ]
+          "prs": [55]
         }
       ]
     },
@@ -661,19 +527,11 @@
         "_status": null,
         "replacement": "gen_ai.response.finish_reason"
       },
-      "alias": [
-        "gen_ai.response.finish_reasons"
-      ],
+      "alias": ["gen_ai.response.finish_reasons"],
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            55,
-            57,
-            61,
-            108,
-            127
-          ]
+          "prs": [55, 57, 61, 108, 127]
         }
       ]
     },
@@ -690,24 +548,15 @@
         "_status": null,
         "replacement": "gen_ai.request.frequency_penalty"
       },
-      "alias": [
-        "gen_ai.request.frequency_penalty"
-      ],
+      "alias": ["gen_ai.request.frequency_penalty"],
       "changelog": [
         {
           "version": "0.4.0",
-          "prs": [
-            228
-          ]
+          "prs": [228]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            55,
-            57,
-            61,
-            108
-          ]
+          "prs": [55, 57, 61, 108]
         }
       ]
     },
@@ -724,18 +573,11 @@
         "_status": null,
         "replacement": "gen_ai.tool.name"
       },
-      "alias": [
-        "gen_ai.tool.name"
-      ],
+      "alias": ["gen_ai.tool.name"],
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            55,
-            57,
-            61,
-            108
-          ]
+          "prs": [55, 57, 61, 108]
         }
       ]
     },
@@ -752,19 +594,11 @@
         "_status": null,
         "replacement": "gen_ai.response.id"
       },
-      "alias": [
-        "gen_ai.response.id"
-      ],
+      "alias": ["gen_ai.response.id"],
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            55,
-            57,
-            61,
-            108,
-            127
-          ]
+          "prs": [55, 57, 61, 108, 127]
         }
       ]
     },
@@ -777,12 +611,8 @@
       },
       "is_in_otel": false,
       "example": "[{\"role\": \"user\", \"message\": \"hello\"}]",
-      "alias": [
-        "gen_ai.request.messages"
-      ],
-      "sdks": [
-        "python"
-      ],
+      "alias": ["gen_ai.request.messages"],
+      "sdks": ["python"],
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.request.messages"
@@ -790,10 +620,7 @@
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            65,
-            119
-          ]
+          "prs": [65, 119]
         },
         {
           "version": "0.0.0"
@@ -815,15 +642,11 @@
       "changelog": [
         {
           "version": "next",
-          "prs": [
-            264
-          ]
+          "prs": [264]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            55
-          ]
+          "prs": [55]
         }
       ]
     },
@@ -842,16 +665,11 @@
       "changelog": [
         {
           "version": "next",
-          "prs": [
-            264
-          ]
+          "prs": [264]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            55,
-            127
-          ]
+          "prs": [55, 127]
         }
       ]
     },
@@ -868,25 +686,15 @@
         "_status": null,
         "replacement": "gen_ai.provider.name"
       },
-      "alias": [
-        "gen_ai.provider.name",
-        "gen_ai.system"
-      ],
+      "alias": ["gen_ai.provider.name", "gen_ai.system"],
       "changelog": [
         {
           "version": "0.4.0",
-          "prs": [
-            253
-          ]
+          "prs": [253]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            57,
-            61,
-            108,
-            127
-          ]
+          "prs": [57, 61, 108, 127]
         }
       ]
     },
@@ -899,12 +707,8 @@
       },
       "is_in_otel": false,
       "example": "gpt-4",
-      "alias": [
-        "gen_ai.response.model"
-      ],
-      "sdks": [
-        "python"
-      ],
+      "alias": ["gen_ai.response.model"],
+      "sdks": ["python"],
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.response.model"
@@ -912,11 +716,7 @@
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            57,
-            61,
-            127
-          ]
+          "prs": [57, 61, 127]
         },
         {
           "version": "0.0.0"
@@ -936,18 +736,11 @@
         "_status": null,
         "replacement": "gen_ai.pipeline.name"
       },
-      "alias": [
-        "gen_ai.pipeline.name"
-      ],
+      "alias": ["gen_ai.pipeline.name"],
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            53,
-            76,
-            108,
-            127
-          ]
+          "prs": [53, 76, 108, 127]
         }
       ]
     },
@@ -964,21 +757,15 @@
         "_status": null,
         "replacement": "gen_ai.system_instructions"
       },
-      "alias": [
-        "gen_ai.system_instructions"
-      ],
+      "alias": ["gen_ai.system_instructions"],
       "changelog": [
         {
           "version": "next",
-          "prs": [
-            264
-          ]
+          "prs": [264]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            55
-          ]
+          "prs": [55]
         }
       ]
     },
@@ -995,24 +782,15 @@
         "_status": null,
         "replacement": "gen_ai.request.presence_penalty"
       },
-      "alias": [
-        "gen_ai.request.presence_penalty"
-      ],
+      "alias": ["gen_ai.request.presence_penalty"],
       "changelog": [
         {
           "version": "0.4.0",
-          "prs": [
-            228
-          ]
+          "prs": [228]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            55,
-            57,
-            61,
-            108
-          ]
+          "prs": [55, 57, 61, 108]
         }
       ]
     },
@@ -1025,13 +803,8 @@
       },
       "is_in_otel": false,
       "example": 20,
-      "alias": [
-        "gen_ai.usage.prompt_tokens",
-        "gen_ai.usage.input_tokens"
-      ],
-      "sdks": [
-        "python"
-      ],
+      "alias": ["gen_ai.usage.prompt_tokens", "gen_ai.usage.input_tokens"],
+      "sdks": ["python"],
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.usage.input_tokens"
@@ -1039,16 +812,11 @@
       "changelog": [
         {
           "version": "0.4.0",
-          "prs": [
-            228
-          ]
+          "prs": [228]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            57,
-            61
-          ]
+          "prs": [57, 61]
         },
         {
           "version": "0.0.0"
@@ -1070,15 +838,11 @@
       "changelog": [
         {
           "version": "next",
-          "prs": [
-            264
-          ]
+          "prs": [264]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            55
-          ]
+          "prs": [55]
         }
       ]
     },
@@ -1097,16 +861,11 @@
       "changelog": [
         {
           "version": "next",
-          "prs": [
-            264
-          ]
+          "prs": [264]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            55,
-            127
-          ]
+          "prs": [55, 127]
         }
       ]
     },
@@ -1118,13 +877,8 @@
         "key": "maybe"
       },
       "is_in_otel": false,
-      "example": [
-        "hello",
-        "world"
-      ],
-      "sdks": [
-        "python"
-      ],
+      "example": ["hello", "world"],
+      "sdks": ["python"],
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.response.text"
@@ -1132,10 +886,7 @@
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            65,
-            127
-          ]
+          "prs": [65, 127]
         },
         {
           "version": "0.0.0"
@@ -1150,25 +901,18 @@
         "key": "true"
       },
       "is_in_otel": false,
-      "example": [
-        "climate change effects",
-        "renewable energy"
-      ],
+      "example": ["climate change effects", "renewable energy"],
       "deprecation": {
         "_status": null
       },
       "changelog": [
         {
           "version": "next",
-          "prs": [
-            264
-          ]
+          "prs": [264]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            55
-          ]
+          "prs": [55]
         }
       ]
     },
@@ -1180,24 +924,18 @@
         "key": "true"
       },
       "is_in_otel": false,
-      "example": [
-        "search_result_1, search_result_2"
-      ],
+      "example": ["search_result_1, search_result_2"],
       "deprecation": {
         "_status": null
       },
       "changelog": [
         {
           "version": "next",
-          "prs": [
-            264
-          ]
+          "prs": [264]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            55
-          ]
+          "prs": [55]
         }
       ]
     },
@@ -1214,19 +952,11 @@
         "_status": null,
         "replacement": "gen_ai.request.seed"
       },
-      "alias": [
-        "gen_ai.request.seed"
-      ],
+      "alias": ["gen_ai.request.seed"],
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            55,
-            57,
-            61,
-            108,
-            127
-          ]
+          "prs": [55, 57, 61, 108, 127]
         }
       ]
     },
@@ -1239,23 +969,16 @@
       },
       "is_in_otel": false,
       "example": true,
-      "sdks": [
-        "python"
-      ],
+      "sdks": ["python"],
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.response.streaming"
       },
-      "alias": [
-        "gen_ai.response.streaming"
-      ],
+      "alias": ["gen_ai.response.streaming"],
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            76,
-            108
-          ]
+          "prs": [76, 108]
         },
         {
           "version": "0.0.0"
@@ -1277,16 +1000,11 @@
       "changelog": [
         {
           "version": "next",
-          "prs": [
-            264
-          ]
+          "prs": [264]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            55,
-            127
-          ]
+          "prs": [55, 127]
         }
       ]
     },
@@ -1303,24 +1021,15 @@
         "_status": null,
         "replacement": "gen_ai.request.temperature"
       },
-      "alias": [
-        "gen_ai.request.temperature"
-      ],
+      "alias": ["gen_ai.request.temperature"],
       "changelog": [
         {
           "version": "0.4.0",
-          "prs": [
-            228
-          ]
+          "prs": [228]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            55,
-            57,
-            61,
-            108
-          ]
+          "prs": [55, 57, 61, 108]
         }
       ]
     },
@@ -1332,29 +1041,20 @@
         "key": "true"
       },
       "is_in_otel": false,
-      "example": [
-        "Hello, how are you?",
-        "What is the capital of France?"
-      ],
+      "example": ["Hello, how are you?", "What is the capital of France?"],
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.input.messages"
       },
-      "alias": [
-        "gen_ai.input.messages"
-      ],
+      "alias": ["gen_ai.input.messages"],
       "changelog": [
         {
           "version": "next",
-          "prs": [
-            264
-          ]
+          "prs": [264]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            55
-          ]
+          "prs": [55]
         }
       ]
     },
@@ -1366,10 +1066,7 @@
         "key": "true"
       },
       "is_in_otel": false,
-      "example": [
-        "tool_call_1",
-        "tool_call_2"
-      ],
+      "example": ["tool_call_1", "tool_call_2"],
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.response.tool_calls"
@@ -1377,10 +1074,7 @@
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            55,
-            65
-          ]
+          "prs": [55, 65]
         }
       ]
     },
@@ -1392,10 +1086,7 @@
         "key": "maybe"
       },
       "is_in_otel": false,
-      "example": [
-        "function_1",
-        "function_2"
-      ],
+      "example": ["function_1", "function_2"],
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.request.available_tools"
@@ -1403,11 +1094,7 @@
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            55,
-            65,
-            127
-          ]
+          "prs": [55, 65, 127]
         }
       ]
     },
@@ -1424,24 +1111,15 @@
         "_status": null,
         "replacement": "gen_ai.request.top_k"
       },
-      "alias": [
-        "gen_ai.request.top_k"
-      ],
+      "alias": ["gen_ai.request.top_k"],
       "changelog": [
         {
           "version": "0.4.0",
-          "prs": [
-            228
-          ]
+          "prs": [228]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            55,
-            57,
-            61,
-            108
-          ]
+          "prs": [55, 57, 61, 108]
         }
       ]
     },
@@ -1458,24 +1136,15 @@
         "_status": null,
         "replacement": "gen_ai.request.top_p"
       },
-      "alias": [
-        "gen_ai.request.top_p"
-      ],
+      "alias": ["gen_ai.request.top_p"],
       "changelog": [
         {
           "version": "0.4.0",
-          "prs": [
-            228
-          ]
+          "prs": [228]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            55,
-            57,
-            61,
-            108
-          ]
+          "prs": [55, 57, 61, 108]
         }
       ]
     },
@@ -1492,27 +1161,19 @@
         "_status": null,
         "replacement": "gen_ai.cost.total_tokens"
       },
-      "alias": [
-        "gen_ai.cost.total_tokens"
-      ],
+      "alias": ["gen_ai.cost.total_tokens"],
       "changelog": [
         {
           "version": "next",
-          "prs": [
-            264
-          ]
+          "prs": [264]
         },
         {
           "version": "0.4.0",
-          "prs": [
-            228
-          ]
+          "prs": [228]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            53
-          ]
+          "prs": [53]
         }
       ]
     },
@@ -1525,30 +1186,20 @@
       },
       "is_in_otel": false,
       "example": 30,
-      "sdks": [
-        "python"
-      ],
+      "sdks": ["python"],
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.usage.total_tokens"
       },
-      "alias": [
-        "gen_ai.usage.total_tokens"
-      ],
+      "alias": ["gen_ai.usage.total_tokens"],
       "changelog": [
         {
           "version": "0.4.0",
-          "prs": [
-            228
-          ]
+          "prs": [228]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            57,
-            61,
-            108
-          ]
+          "prs": [57, 61, 108]
         },
         {
           "version": "0.0.0"
@@ -1563,24 +1214,18 @@
         "key": "true"
       },
       "is_in_otel": false,
-      "example": [
-        "Token limit exceeded"
-      ],
+      "example": ["Token limit exceeded"],
       "deprecation": {
         "_status": null
       },
       "changelog": [
         {
           "version": "next",
-          "prs": [
-            264
-          ]
+          "prs": [264]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            55
-          ]
+          "prs": [55]
         }
       ]
     },
@@ -1593,24 +1238,18 @@
       },
       "is_in_otel": false,
       "example": "body > div#app",
-      "sdks": [
-        "javascript-browser"
-      ],
+      "sdks": ["javascript-browser"],
       "deprecation": {
         "replacement": "browser.web_vital.cls.source.<key>",
         "reason": "The CLS source is now recorded as a browser.web_vital.cls.source.<key> attribute.",
         "_status": "backfill"
       },
       "has_dynamic_suffix": true,
-      "alias": [
-        "browser.web_vital.cls.source.<key>"
-      ],
+      "alias": ["browser.web_vital.cls.source.<key>"],
       "changelog": [
         {
           "version": "next",
-          "prs": [
-            234
-          ]
+          "prs": [234]
         }
       ]
     },
@@ -1627,15 +1266,11 @@
         "_status": null,
         "replacement": "code.file.path"
       },
-      "alias": [
-        "code.file.path"
-      ],
+      "alias": ["code.file.path"],
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            61
-          ]
+          "prs": [61]
         },
         {
           "version": "0.0.0"
@@ -1655,16 +1290,11 @@
         "_status": null,
         "replacement": "code.function.name"
       },
-      "alias": [
-        "code.function.name"
-      ],
+      "alias": ["code.function.name"],
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            61,
-            74
-          ]
+          "prs": [61, 74]
         },
         {
           "version": "0.0.0"
@@ -1684,22 +1314,15 @@
         "_status": null,
         "replacement": "code.line.number"
       },
-      "alias": [
-        "code.line.number"
-      ],
+      "alias": ["code.line.number"],
       "changelog": [
         {
           "version": "0.4.0",
-          "prs": [
-            228
-          ]
+          "prs": [228]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            61,
-            108
-          ]
+          "prs": [61, 108]
         },
         {
           "version": "0.0.0"
@@ -1723,10 +1346,7 @@
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            61,
-            74
-          ]
+          "prs": [61, 74]
         },
         {
           "version": "0.0.0"
@@ -1742,12 +1362,8 @@
       },
       "is_in_otel": false,
       "example": 100,
-      "sdks": [
-        "javascript-browser"
-      ],
-      "alias": [
-        "network.connection.rtt"
-      ],
+      "sdks": ["javascript-browser"],
+      "alias": ["network.connection.rtt"],
       "deprecation": {
         "replacement": "network.connection.rtt",
         "reason": "Old attribute name (no official namespace), to be replaced with network.connection.rtt for span-first future",
@@ -1756,9 +1372,7 @@
       "changelog": [
         {
           "version": "next",
-          "prs": [
-            279
-          ],
+          "prs": [279],
           "description": "Added and deprecated attribute to document JS SDK's current behaviour"
         }
       ]
@@ -1776,16 +1390,11 @@
         "_status": null,
         "replacement": "db.namespace"
       },
-      "alias": [
-        "db.namespace"
-      ],
+      "alias": ["db.namespace"],
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            61,
-            127
-          ]
+          "prs": [61, 127]
         },
         {
           "version": "0.0.0"
@@ -1805,22 +1414,15 @@
         "_status": "normalize",
         "replacement": "db.operation.name"
       },
-      "alias": [
-        "db.operation.name"
-      ],
+      "alias": ["db.operation.name"],
       "changelog": [
         {
           "version": "0.4.0",
-          "prs": [
-            199
-          ]
+          "prs": [199]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            61,
-            127
-          ]
+          "prs": [61, 127]
         },
         {
           "version": "0.0.0"
@@ -1840,19 +1442,12 @@
         "replacement": "db.query.parameter.<key>",
         "reason": "Instead of adding every binding in the db.sql.bindings attribute, add them as individual entires with db.query.parameter.<key>."
       },
-      "example": [
-        "1",
-        "foo"
-      ],
-      "sdks": [
-        "php-laravel"
-      ],
+      "example": ["1", "foo"],
+      "sdks": ["php-laravel"],
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            61
-          ]
+          "prs": [61]
         },
         {
           "version": "0.0.0"
@@ -1872,22 +1467,15 @@
         "_status": "normalize",
         "replacement": "db.query.text"
       },
-      "alias": [
-        "db.query.text"
-      ],
+      "alias": ["db.query.text"],
       "changelog": [
         {
           "version": "0.4.0",
-          "prs": [
-            199
-          ]
+          "prs": [199]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            61,
-            127
-          ]
+          "prs": [61, 127]
         },
         {
           "version": "0.0.0"
@@ -1907,23 +1495,15 @@
         "_status": "backfill",
         "replacement": "db.system.name"
       },
-      "alias": [
-        "db.system.name"
-      ],
+      "alias": ["db.system.name"],
       "changelog": [
         {
           "version": "0.4.0",
-          "prs": [
-            199,
-            224
-          ]
+          "prs": [199, 224]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            61,
-            127
-          ]
+          "prs": [61, 127]
         },
         {
           "version": "0.0.0"
@@ -1946,11 +1526,7 @@
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            74,
-            108,
-            119
-          ]
+          "prs": [74, 108, 119]
         },
         {
           "version": "0.0.0"
@@ -1974,16 +1550,11 @@
       "changelog": [
         {
           "version": "0.4.0",
-          "prs": [
-            221
-          ]
+          "prs": [221]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            63,
-            127
-          ]
+          "prs": [63, 127]
         }
       ]
     },
@@ -1996,9 +1567,7 @@
       },
       "is_in_otel": false,
       "example": "[{\"role\": \"system\", \"content\": \"Generate a random number.\"}, {\"role\": \"user\", \"content\": [{\"text\": \"Generate a random number between 0 and 10.\", \"type\": \"text\"}]}, {\"role\": \"tool\", \"content\": {\"toolCallId\": \"1\", \"toolName\": \"Weather\", \"output\": \"rainy\"}}]",
-      "alias": [
-        "ai.input_messages"
-      ],
+      "alias": ["ai.input_messages"],
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.input.messages"
@@ -2006,19 +1575,11 @@
       "changelog": [
         {
           "version": "0.4.0",
-          "prs": [
-            221
-          ]
+          "prs": [221]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            63,
-            74,
-            108,
-            119,
-            122
-          ]
+          "prs": [63, 74, 108, 119, 122]
         }
       ]
     },
@@ -2039,16 +1600,11 @@
       "changelog": [
         {
           "version": "0.4.0",
-          "prs": [
-            221
-          ]
+          "prs": [221]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            63,
-            74
-          ]
+          "prs": [63, 74]
         }
       ]
     },
@@ -2069,16 +1625,11 @@
       "changelog": [
         {
           "version": "0.4.0",
-          "prs": [
-            221
-          ]
+          "prs": [221]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            63,
-            74
-          ]
+          "prs": [63, 74]
         }
       ]
     },
@@ -2095,23 +1646,15 @@
         "_status": null,
         "replacement": "gen_ai.provider.name"
       },
-      "alias": [
-        "ai.model.provider",
-        "gen_ai.provider.name"
-      ],
+      "alias": ["ai.model.provider", "gen_ai.provider.name"],
       "changelog": [
         {
           "version": "0.4.0",
-          "prs": [
-            253
-          ]
+          "prs": [253]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            57,
-            127
-          ]
+          "prs": [57, 127]
         }
       ]
     },
@@ -2131,15 +1674,11 @@
       "changelog": [
         {
           "version": "0.4.0",
-          "prs": [
-            221
-          ]
+          "prs": [221]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            62
-          ]
+          "prs": [62]
         }
       ]
     },
@@ -2152,9 +1691,7 @@
       },
       "is_in_otel": false,
       "example": "{\"location\": \"Paris\"}",
-      "alias": [
-        "gen_ai.tool.call.arguments"
-      ],
+      "alias": ["gen_ai.tool.call.arguments"],
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.tool.call.arguments"
@@ -2162,16 +1699,11 @@
       "changelog": [
         {
           "version": "next",
-          "prs": [
-            265
-          ]
+          "prs": [265]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            63,
-            74
-          ]
+          "prs": [63, 74]
         }
       ]
     },
@@ -2184,10 +1716,7 @@
       },
       "is_in_otel": false,
       "example": "rainy, 57°F",
-      "alias": [
-        "gen_ai.tool.call.result",
-        "gen_ai.tool.output"
-      ],
+      "alias": ["gen_ai.tool.call.result", "gen_ai.tool.output"],
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.tool.call.result"
@@ -2195,15 +1724,11 @@
       "changelog": [
         {
           "version": "next",
-          "prs": [
-            265
-          ]
+          "prs": [265]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            62
-          ]
+          "prs": [62]
         }
       ]
     },
@@ -2216,10 +1741,7 @@
       },
       "is_in_otel": false,
       "example": "rainy, 57°F",
-      "alias": [
-        "gen_ai.tool.call.result",
-        "gen_ai.tool.message"
-      ],
+      "alias": ["gen_ai.tool.call.result", "gen_ai.tool.message"],
       "deprecation": {
         "_status": null,
         "replacement": "gen_ai.tool.call.result"
@@ -2227,16 +1749,11 @@
       "changelog": [
         {
           "version": "next",
-          "prs": [
-            265
-          ]
+          "prs": [265]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            63,
-            74
-          ]
+          "prs": [63, 74]
         }
       ]
     },
@@ -2256,10 +1773,7 @@
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            62,
-            127
-          ]
+          "prs": [62, 127]
         }
       ]
     },
@@ -2276,22 +1790,15 @@
         "_status": null,
         "replacement": "gen_ai.usage.output_tokens"
       },
-      "alias": [
-        "ai.completion_tokens.used",
-        "gen_ai.usage.output_tokens"
-      ],
+      "alias": ["ai.completion_tokens.used", "gen_ai.usage.output_tokens"],
       "changelog": [
         {
           "version": "0.4.0",
-          "prs": [
-            228
-          ]
+          "prs": [228]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            61
-          ]
+          "prs": [61]
         },
         {
           "version": "0.0.0"
@@ -2311,22 +1818,15 @@
         "_status": null,
         "replacement": "gen_ai.usage.input_tokens"
       },
-      "alias": [
-        "ai.prompt_tokens.used",
-        "gen_ai.usage.input_tokens"
-      ],
+      "alias": ["ai.prompt_tokens.used", "gen_ai.usage.input_tokens"],
       "changelog": [
         {
           "version": "0.4.0",
-          "prs": [
-            228
-          ]
+          "prs": [228]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            61
-          ]
+          "prs": [61]
         },
         {
           "version": "0.0.0"
@@ -2346,17 +1846,11 @@
         "_status": null,
         "replacement": "client.address"
       },
-      "alias": [
-        "client.address"
-      ],
+      "alias": ["client.address"],
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            61,
-            106,
-            127
-          ]
+          "prs": [61, 106, 127]
         },
         {
           "version": "0.0.0"
@@ -2376,18 +1870,11 @@
         "_status": null,
         "replacement": "network.protocol.version"
       },
-      "alias": [
-        "network.protocol.version",
-        "net.protocol.version"
-      ],
+      "alias": ["network.protocol.version", "net.protocol.version"],
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            61,
-            108,
-            127
-          ]
+          "prs": [61, 108, 127]
         },
         {
           "version": "0.0.0"
@@ -2408,20 +1895,11 @@
         "replacement": "server.address",
         "reason": "Deprecated, use one of `server.address` or `client.address`, depending on the usage"
       },
-      "alias": [
-        "server.address",
-        "client.address",
-        "http.server_name",
-        "net.host.name"
-      ],
+      "alias": ["server.address", "client.address", "http.server_name", "net.host.name"],
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            61,
-            108,
-            127
-          ]
+          "prs": [61, 108, 127]
         },
         {
           "version": "0.0.0"
@@ -2441,16 +1919,11 @@
         "_status": null,
         "replacement": "http.request.method"
       },
-      "alias": [
-        "http.request.method"
-      ],
+      "alias": ["http.request.method"],
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            61,
-            127
-          ]
+          "prs": [61, 127]
         },
         {
           "version": "0.0.0"
@@ -2470,23 +1943,15 @@
         "_status": "backfill",
         "replacement": "http.response.body.size"
       },
-      "alias": [
-        "http.response.body.size",
-        "http.response.header.content-length"
-      ],
+      "alias": ["http.response.body.size", "http.response.header.content-length"],
       "changelog": [
         {
           "version": "0.4.0",
-          "prs": [
-            228
-          ]
+          "prs": [228]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            61,
-            106
-          ]
+          "prs": [61, 106]
         },
         {
           "version": "0.0.0"
@@ -2506,21 +1971,15 @@
         "_status": "backfill",
         "replacement": "http.response.size"
       },
-      "alias": [
-        "http.response.size"
-      ],
+      "alias": ["http.response.size"],
       "changelog": [
         {
           "version": "0.4.0",
-          "prs": [
-            228
-          ]
+          "prs": [228]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            61
-          ]
+          "prs": [61]
         },
         {
           "version": "0.0.0"
@@ -2540,16 +1999,11 @@
         "_status": null,
         "replacement": "url.scheme"
       },
-      "alias": [
-        "url.scheme"
-      ],
+      "alias": ["url.scheme"],
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            61,
-            127
-          ]
+          "prs": [61, 127]
         },
         {
           "version": "0.0.0"
@@ -2569,19 +2023,11 @@
         "_status": null,
         "replacement": "server.address"
       },
-      "alias": [
-        "server.address",
-        "net.host.name",
-        "http.host"
-      ],
+      "alias": ["server.address", "net.host.name", "http.host"],
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            61,
-            108,
-            127
-          ]
+          "prs": [61, 108, 127]
         },
         {
           "version": "0.0.0"
@@ -2601,21 +2047,15 @@
         "_status": null,
         "replacement": "http.response.status_code"
       },
-      "alias": [
-        "http.response.status_code"
-      ],
+      "alias": ["http.response.status_code"],
       "changelog": [
         {
           "version": "0.4.0",
-          "prs": [
-            228
-          ]
+          "prs": [228]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            61
-          ]
+          "prs": [61]
         },
         {
           "version": "0.0.0"
@@ -2639,9 +2079,7 @@
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            61
-          ]
+          "prs": [61]
         },
         {
           "version": "0.0.0"
@@ -2661,17 +2099,11 @@
         "_status": null,
         "replacement": "url.full"
       },
-      "alias": [
-        "url.full",
-        "url"
-      ],
+      "alias": ["url.full", "url"],
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            61,
-            108
-          ]
+          "prs": [61, 108]
         },
         {
           "version": "0.0.0"
@@ -2691,16 +2123,11 @@
         "_status": null,
         "replacement": "user_agent.original"
       },
-      "alias": [
-        "user_agent.original"
-      ],
+      "alias": ["user_agent.original"],
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            61,
-            127
-          ]
+          "prs": [61, 127]
         },
         {
           "version": "0.0.0"
@@ -2721,21 +2148,15 @@
         "reason": "The LCP element is now recorded as a browser.web_vital.lcp.element attribute.",
         "_status": "backfill"
       },
-      "alias": [
-        "browser.web_vital.lcp.element"
-      ],
+      "alias": ["browser.web_vital.lcp.element"],
       "changelog": [
         {
           "version": "next",
-          "prs": [
-            233
-          ]
+          "prs": [233]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            127
-          ]
+          "prs": [127]
         },
         {
           "version": "0.0.0"
@@ -2756,21 +2177,15 @@
         "reason": "The LCP id is now recorded as a browser.web_vital.lcp.id attribute.",
         "_status": "backfill"
       },
-      "alias": [
-        "browser.web_vital.lcp.id"
-      ],
+      "alias": ["browser.web_vital.lcp.id"],
       "changelog": [
         {
           "version": "next",
-          "prs": [
-            233
-          ]
+          "prs": [233]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            127
-          ]
+          "prs": [127]
         },
         {
           "version": "0.0.0"
@@ -2786,23 +2201,17 @@
       },
       "is_in_otel": false,
       "example": 1402,
-      "sdks": [
-        "javascript-browser"
-      ],
+      "sdks": ["javascript-browser"],
       "deprecation": {
         "replacement": "browser.web_vital.lcp.load_time",
         "reason": "The LCP load time is now recorded as a browser.web_vital.lcp.load_time attribute.",
         "_status": "backfill"
       },
-      "alias": [
-        "browser.web_vital.lcp.load_time"
-      ],
+      "alias": ["browser.web_vital.lcp.load_time"],
       "changelog": [
         {
           "version": "next",
-          "prs": [
-            233
-          ]
+          "prs": [233]
         }
       ]
     },
@@ -2815,23 +2224,17 @@
       },
       "is_in_otel": false,
       "example": 1685,
-      "sdks": [
-        "javascript-browser"
-      ],
+      "sdks": ["javascript-browser"],
       "deprecation": {
         "replacement": "browser.web_vital.lcp.render_time",
         "reason": "The LCP render time is now recorded as a browser.web_vital.lcp.render_time attribute.",
         "_status": "backfill"
       },
-      "alias": [
-        "browser.web_vital.lcp.render_time"
-      ],
+      "alias": ["browser.web_vital.lcp.render_time"],
       "changelog": [
         {
           "version": "next",
-          "prs": [
-            233
-          ]
+          "prs": [233]
         }
       ]
     },
@@ -2849,21 +2252,15 @@
         "reason": "The LCP size is now recorded as a browser.web_vital.lcp.size attribute.",
         "_status": "backfill"
       },
-      "alias": [
-        "browser.web_vital.lcp.size"
-      ],
+      "alias": ["browser.web_vital.lcp.size"],
       "changelog": [
         {
           "version": "next",
-          "prs": [
-            233
-          ]
+          "prs": [233]
         },
         {
           "version": "0.4.0",
-          "prs": [
-            228
-          ]
+          "prs": [228]
         },
         {
           "version": "0.0.0"
@@ -2884,21 +2281,15 @@
         "reason": "The LCP url is now recorded as a browser.web_vital.lcp.url attribute.",
         "_status": "backfill"
       },
-      "alias": [
-        "browser.web_vital.lcp.url"
-      ],
+      "alias": ["browser.web_vital.lcp.url"],
       "changelog": [
         {
           "version": "next",
-          "prs": [
-            233
-          ]
+          "prs": [233]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            127
-          ]
+          "prs": [127]
         },
         {
           "version": "0.0.0"
@@ -2918,18 +2309,11 @@
         "_status": null,
         "replacement": "network.local.address"
       },
-      "alias": [
-        "network.local.address",
-        "net.sock.host.addr"
-      ],
+      "alias": ["network.local.address", "net.sock.host.addr"],
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            61,
-            108,
-            127
-          ]
+          "prs": [61, 108, 127]
         },
         {
           "version": "0.0.0"
@@ -2949,19 +2333,11 @@
         "_status": null,
         "replacement": "server.address"
       },
-      "alias": [
-        "server.address",
-        "http.server_name",
-        "http.host"
-      ],
+      "alias": ["server.address", "http.server_name", "http.host"],
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            61,
-            108,
-            127
-          ]
+          "prs": [61, 108, 127]
         },
         {
           "version": "0.0.0"
@@ -2981,21 +2357,15 @@
         "_status": null,
         "replacement": "server.port"
       },
-      "alias": [
-        "server.port"
-      ],
+      "alias": ["server.port"],
       "changelog": [
         {
           "version": "0.4.0",
-          "prs": [
-            228
-          ]
+          "prs": [228]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            61
-          ]
+          "prs": [61]
         },
         {
           "version": "0.0.0"
@@ -3015,18 +2385,11 @@
         "_status": null,
         "replacement": "network.peer.address"
       },
-      "alias": [
-        "network.peer.address",
-        "net.sock.peer.addr"
-      ],
+      "alias": ["network.peer.address", "net.sock.peer.addr"],
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            61,
-            108,
-            127
-          ]
+          "prs": [61, 108, 127]
         },
         {
           "version": "0.0.0"
@@ -3050,10 +2413,7 @@
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            61,
-            127
-          ]
+          "prs": [61, 127]
         },
         {
           "version": "0.0.0"
@@ -3077,15 +2437,11 @@
       "changelog": [
         {
           "version": "0.4.0",
-          "prs": [
-            228
-          ]
+          "prs": [228]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            61
-          ]
+          "prs": [61]
         },
         {
           "version": "0.0.0"
@@ -3105,16 +2461,11 @@
         "_status": null,
         "replacement": "network.protocol.name"
       },
-      "alias": [
-        "network.protocol.name"
-      ],
+      "alias": ["network.protocol.name"],
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            61,
-            127
-          ]
+          "prs": [61, 127]
         },
         {
           "version": "0.0.0"
@@ -3134,18 +2485,11 @@
         "_status": null,
         "replacement": "network.protocol.version"
       },
-      "alias": [
-        "network.protocol.version",
-        "http.flavor"
-      ],
+      "alias": ["network.protocol.version", "http.flavor"],
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            61,
-            108,
-            127
-          ]
+          "prs": [61, 108, 127]
         },
         {
           "version": "0.0.0"
@@ -3169,10 +2513,7 @@
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            61,
-            127
-          ]
+          "prs": [61, 127]
         },
         {
           "version": "0.0.0"
@@ -3192,18 +2533,11 @@
         "_status": null,
         "replacement": "network.local.address"
       },
-      "alias": [
-        "network.local.address",
-        "net.host.ip"
-      ],
+      "alias": ["network.local.address", "net.host.ip"],
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            61,
-            108,
-            127
-          ]
+          "prs": [61, 108, 127]
         },
         {
           "version": "0.0.0"
@@ -3223,21 +2557,15 @@
         "_status": null,
         "replacement": "network.local.port"
       },
-      "alias": [
-        "network.local.port"
-      ],
+      "alias": ["network.local.port"],
       "changelog": [
         {
           "version": "0.4.0",
-          "prs": [
-            228
-          ]
+          "prs": [228]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            61
-          ]
+          "prs": [61]
         },
         {
           "version": "0.0.0"
@@ -3257,18 +2585,11 @@
         "_status": null,
         "replacement": "network.peer.address"
       },
-      "alias": [
-        "network.peer.address",
-        "net.peer.ip"
-      ],
+      "alias": ["network.peer.address", "net.peer.ip"],
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            61,
-            108,
-            127
-          ]
+          "prs": [61, 108, 127]
         },
         {
           "version": "0.0.0"
@@ -3291,11 +2612,7 @@
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            61,
-            119,
-            127
-          ]
+          "prs": [61, 119, 127]
         },
         {
           "version": "0.0.0"
@@ -3318,15 +2635,11 @@
       "changelog": [
         {
           "version": "0.4.0",
-          "prs": [
-            228
-          ]
+          "prs": [228]
         },
         {
           "version": "0.1.0",
-          "prs": [
-            61
-          ]
+          "prs": [61]
         },
         {
           "version": "0.0.0"
@@ -3346,16 +2659,11 @@
         "_status": null,
         "replacement": "network.transport"
       },
-      "alias": [
-        "network.transport"
-      ],
+      "alias": ["network.transport"],
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            61,
-            127
-          ]
+          "prs": [61, 127]
         },
         {
           "version": "0.0.0"
@@ -3380,9 +2688,7 @@
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            103
-          ]
+          "prs": [103]
         }
       ]
     },
@@ -3402,9 +2708,7 @@
       "changelog": [
         {
           "version": "next",
-          "prs": [
-            266
-          ]
+          "prs": [266]
         }
       ]
     },
@@ -3424,9 +2728,7 @@
       "changelog": [
         {
           "version": "0.3.1",
-          "prs": [
-            196
-          ]
+          "prs": [196]
         }
       ]
     },
@@ -3443,15 +2745,11 @@
         "_status": null,
         "replacement": "browser.name"
       },
-      "alias": [
-        "browser.name"
-      ],
+      "alias": ["browser.name"],
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            139
-          ]
+          "prs": [139]
         }
       ]
     },
@@ -3468,15 +2766,11 @@
         "_status": null,
         "replacement": "browser.version"
       },
-      "alias": [
-        "browser.version"
-      ],
+      "alias": ["browser.version"],
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            139
-          ]
+          "prs": [139]
         }
       ]
     },
@@ -3489,9 +2783,7 @@
       },
       "is_in_otel": false,
       "example": "051581bf3cb55c13",
-      "alias": [
-        "sentry.segment.id"
-      ],
+      "alias": ["sentry.segment.id"],
       "deprecation": {
         "_status": null,
         "replacement": "sentry.segment.id"
@@ -3499,9 +2791,7 @@
       "changelog": [
         {
           "version": "0.1.0",
-          "prs": [
-            124
-          ]
+          "prs": [124]
         }
       ]
     },
@@ -3540,16 +2830,12 @@
       "changelog": [
         {
           "version": "next",
-          "prs": [
-            287
-          ],
+          "prs": [287],
           "description": "Deprecate `sentry.trace.parent_span_id`"
         },
         {
           "version": "0.1.0",
-          "prs": [
-            116
-          ]
+          "prs": [116]
         }
       ]
     },
@@ -3562,23 +2848,17 @@
       },
       "is_in_otel": false,
       "example": 1554.5814,
-      "sdks": [
-        "javascript-browser"
-      ],
+      "sdks": ["javascript-browser"],
       "deprecation": {
         "_status": "backfill",
         "replacement": "browser.web_vital.ttfb.request_time",
         "reason": "This attribute is being deprecated in favor of browser.web_vital.ttfb.request_time"
       },
-      "alias": [
-        "browser.web_vital.ttfb.request_time"
-      ],
+      "alias": ["browser.web_vital.ttfb.request_time"],
       "changelog": [
         {
           "version": "next",
-          "prs": [
-            235
-          ]
+          "prs": [235]
         }
       ]
     }
