@@ -661,6 +661,26 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "My App"
     """
 
+    # Path: model/attributes/app/app__start__cold__value.json
+    APP_START_COLD_VALUE: Literal["app.start.cold.value"] = "app.start.cold.value"
+    """The duration of a cold app start in milliseconds
+
+    Type: float
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 1234.56
+    """
+
+    # Path: model/attributes/app/app__start__warm__value.json
+    APP_START_WARM_VALUE: Literal["app.start.warm.value"] = "app.start.warm.value"
+    """The duration of a warm app start in milliseconds
+
+    Type: float
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 1234.56
+    """
+
     # Path: model/attributes/app/app__start_time.json
     APP_START_TIME: Literal["app.start_time"] = "app.start_time"
     """Formatted UTC timestamp when the user started the application.
@@ -669,6 +689,26 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Example: "2025-01-01T00:00:00.000Z"
+    """
+
+    # Path: model/attributes/app/app__ttfd__value.json
+    APP_TTFD_VALUE: Literal["app.ttfd.value"] = "app.ttfd.value"
+    """The duration of time to full display in milliseconds
+
+    Type: float
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 1234.56
+    """
+
+    # Path: model/attributes/app/app__ttid__value.json
+    APP_TTID_VALUE: Literal["app.ttid.value"] = "app.ttid.value"
+    """The duration of time to initial display in milliseconds
+
+    Type: float
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 1234.56
     """
 
     # Path: model/attributes/app/app__version.json
@@ -6131,6 +6171,34 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "app.start.cold.value": AttributeMetadata(
+        brief="The duration of a cold app start in milliseconds",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=1234.56,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[312],
+                description="Added app.start.cold.value attribute",
+            ),
+        ],
+    ),
+    "app.start.warm.value": AttributeMetadata(
+        brief="The duration of a warm app start in milliseconds",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=1234.56,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[312],
+                description="Added app.start.warm.value attribute",
+            ),
+        ],
+    ),
     "app.start_time": AttributeMetadata(
         brief="Formatted UTC timestamp when the user started the application.",
         type=AttributeType.STRING,
@@ -6146,6 +6214,30 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next", prs=[296], description="Added app.start_time attribute"
+            ),
+        ],
+    ),
+    "app.ttfd.value": AttributeMetadata(
+        brief="The duration of time to full display in milliseconds",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=1234.56,
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[312], description="Added app.ttfd.value attribute"
+            ),
+        ],
+    ),
+    "app.ttid.value": AttributeMetadata(
+        brief="The duration of time to initial display in milliseconds",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=1234.56,
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[312], description="Added app.ttid.value attribute"
             ),
         ],
     ),
@@ -11532,7 +11624,11 @@ Attributes = TypedDict(
         "app.identifier": str,
         "app.in_foreground": bool,
         "app.name": str,
+        "app.start.cold.value": float,
+        "app.start.warm.value": float,
         "app.start_time": str,
+        "app.ttfd.value": float,
+        "app.ttid.value": float,
         "app.version": str,
         "app_start_type": str,
         "blocked_main_thread": bool,

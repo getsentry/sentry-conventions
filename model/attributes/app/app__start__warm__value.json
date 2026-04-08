@@ -1,0 +1,17 @@
+{
+  "key": "app.start.warm.value",
+  "brief": "The duration of a warm app start in milliseconds",
+  "type": "double",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 1234.56,
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [312],
+      "description": "Added app.start.warm.value attribute"
+    }
+  ]
+}

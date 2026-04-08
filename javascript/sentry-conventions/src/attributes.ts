@@ -813,6 +813,26 @@ export const APP_NAME = 'app.name';
  */
 export type APP_NAME_TYPE = string;
 
+// Path: model/attributes/app/app__start__cold__value.json
+
+/**
+ * The duration of a cold app start in milliseconds `app.start.cold.value`
+ *
+ * Attribute Value Type: `number` {@link APP_START_COLD_VALUE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 1234.56
+ */
+export const APP_START_COLD_VALUE = 'app.start.cold.value';
+
+/**
+ * Type for {@link APP_START_COLD_VALUE} app.start.cold.value
+ */
+export type APP_START_COLD_VALUE_TYPE = number;
+
 // Path: model/attributes/app/app__start_time.json
 
 /**
@@ -852,6 +872,66 @@ export const APP_START_TYPE = 'app_start_type';
  * Type for {@link APP_START_TYPE} app_start_type
  */
 export type APP_START_TYPE_TYPE = string;
+
+// Path: model/attributes/app/app__start__warm__value.json
+
+/**
+ * The duration of a warm app start in milliseconds `app.start.warm.value`
+ *
+ * Attribute Value Type: `number` {@link APP_START_WARM_VALUE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 1234.56
+ */
+export const APP_START_WARM_VALUE = 'app.start.warm.value';
+
+/**
+ * Type for {@link APP_START_WARM_VALUE} app.start.warm.value
+ */
+export type APP_START_WARM_VALUE_TYPE = number;
+
+// Path: model/attributes/app/app__ttfd__value.json
+
+/**
+ * The duration of time to full display in milliseconds `app.ttfd.value`
+ *
+ * Attribute Value Type: `number` {@link APP_TTFD_VALUE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 1234.56
+ */
+export const APP_TTFD_VALUE = 'app.ttfd.value';
+
+/**
+ * Type for {@link APP_TTFD_VALUE} app.ttfd.value
+ */
+export type APP_TTFD_VALUE_TYPE = number;
+
+// Path: model/attributes/app/app__ttid__value.json
+
+/**
+ * The duration of time to initial display in milliseconds `app.ttid.value`
+ *
+ * Attribute Value Type: `number` {@link APP_TTID_VALUE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 1234.56
+ */
+export const APP_TTID_VALUE = 'app.ttid.value';
+
+/**
+ * Type for {@link APP_TTID_VALUE} app.ttid.value
+ */
+export type APP_TTID_VALUE_TYPE = number;
 
 // Path: model/attributes/app/app__version.json
 
@@ -10255,8 +10335,12 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [APP_IDENTIFIER]: 'string',
   [APP_IN_FOREGROUND]: 'boolean',
   [APP_NAME]: 'string',
+  [APP_START_COLD_VALUE]: 'double',
   [APP_START_TIME]: 'string',
   [APP_START_TYPE]: 'string',
+  [APP_START_WARM_VALUE]: 'double',
+  [APP_TTFD_VALUE]: 'double',
+  [APP_TTID_VALUE]: 'double',
   [APP_VERSION]: 'string',
   [BLOCKED_MAIN_THREAD]: 'boolean',
   [BROWSER_NAME]: 'string',
@@ -10743,8 +10827,12 @@ export type AttributeName =
   | typeof APP_IDENTIFIER
   | typeof APP_IN_FOREGROUND
   | typeof APP_NAME
+  | typeof APP_START_COLD_VALUE
   | typeof APP_START_TIME
   | typeof APP_START_TYPE
+  | typeof APP_START_WARM_VALUE
+  | typeof APP_TTFD_VALUE
+  | typeof APP_TTID_VALUE
   | typeof APP_VERSION
   | typeof BLOCKED_MAIN_THREAD
   | typeof BROWSER_NAME
@@ -11738,6 +11826,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: 'next', prs: [296], description: 'Added app.name attribute' }],
   },
+  [APP_START_COLD_VALUE]: {
+    brief: 'The duration of a cold app start in milliseconds',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 1234.56,
+    changelog: [{ version: 'next', prs: [312], description: 'Added app.start.cold.value attribute' }],
+  },
   [APP_START_TIME]: {
     brief: 'Formatted UTC timestamp when the user started the application.',
     type: 'string',
@@ -11758,6 +11856,36 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'cold',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+  },
+  [APP_START_WARM_VALUE]: {
+    brief: 'The duration of a warm app start in milliseconds',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 1234.56,
+    changelog: [{ version: 'next', prs: [312], description: 'Added app.start.warm.value attribute' }],
+  },
+  [APP_TTFD_VALUE]: {
+    brief: 'The duration of time to full display in milliseconds',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 1234.56,
+    changelog: [{ version: 'next', prs: [312], description: 'Added app.ttfd.value attribute' }],
+  },
+  [APP_TTID_VALUE]: {
+    brief: 'The duration of time to initial display in milliseconds',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 1234.56,
+    changelog: [{ version: 'next', prs: [312], description: 'Added app.ttid.value attribute' }],
   },
   [APP_VERSION]: {
     brief: 'Human readable application version, as it appears on the platform.',
@@ -17134,8 +17262,12 @@ export type Attributes = {
   [APP_IDENTIFIER]?: APP_IDENTIFIER_TYPE;
   [APP_IN_FOREGROUND]?: APP_IN_FOREGROUND_TYPE;
   [APP_NAME]?: APP_NAME_TYPE;
+  [APP_START_COLD_VALUE]?: APP_START_COLD_VALUE_TYPE;
   [APP_START_TIME]?: APP_START_TIME_TYPE;
   [APP_START_TYPE]?: APP_START_TYPE_TYPE;
+  [APP_START_WARM_VALUE]?: APP_START_WARM_VALUE_TYPE;
+  [APP_TTFD_VALUE]?: APP_TTFD_VALUE_TYPE;
+  [APP_TTID_VALUE]?: APP_TTID_VALUE_TYPE;
   [APP_VERSION]?: APP_VERSION_TYPE;
   [BLOCKED_MAIN_THREAD]?: BLOCKED_MAIN_THREAD_TYPE;
   [BROWSER_NAME]?: BROWSER_NAME_TYPE;

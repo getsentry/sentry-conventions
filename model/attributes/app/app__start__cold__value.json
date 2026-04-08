@@ -1,0 +1,17 @@
+{
+  "key": "app.start.cold.value",
+  "brief": "The duration of a cold app start in milliseconds",
+  "type": "double",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 1234.56,
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [312],
+      "description": "Added app.start.cold.value attribute"
+    }
+  ]
+}
