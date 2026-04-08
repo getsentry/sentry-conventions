@@ -7,6 +7,10 @@
   },
   "is_in_otel": true,
   "example": "function",
+  "deprecation": {
+    "_status": null,
+    "reason": "The gen_ai.tool.type attribute is deprecated and should no longer be set."
+  },
   "changelog": [
     {
       "version": "0.1.0",
