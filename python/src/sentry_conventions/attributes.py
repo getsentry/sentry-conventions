@@ -1526,6 +1526,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: false
     """
 
+    # Path: model/attributes/device/device__low_power_mode.json
+    DEVICE_LOW_POWER_MODE: Literal["device.low_power_mode"] = "device.low_power_mode"
+    """Whether the device is in Low Power Mode.
+
+    Type: bool
+    Contains PII: false
+    Defined in OTEL: No
+    Example: true
+    """
+
     # Path: model/attributes/deviceMemory.json
     DEVICEMEMORY: Literal["deviceMemory"] = "deviceMemory"
     """The estimated total memory capacity of the device, only a rough estimation in gigabytes.

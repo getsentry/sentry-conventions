@@ -2469,6 +2469,26 @@ export const DEVICE_SIMULATOR = 'device.simulator';
  */
 export type DEVICE_SIMULATOR_TYPE = boolean;
 
+// Path: model/attributes/device/device__low_power_mode.json
+
+/**
+ * Whether the device is in Low Power Mode. `device.low_power_mode`
+ *
+ * Attribute Value Type: `boolean` {@link DEVICE_LOW_POWER_MODE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example true
+ */
+export const DEVICE_LOW_POWER_MODE = 'device.low_power_mode';
+
+/**
+ * Type for {@link DEVICE_LOW_POWER_MODE} device.low_power_mode
+ */
+export type DEVICE_LOW_POWER_MODE_TYPE = boolean;
+
 // Path: model/attributes/effectiveConnectionType.json
 
 /**
@@ -10333,6 +10353,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [DEVICE_MODEL_ID]: 'string',
   [DEVICE_PROCESSOR_COUNT]: 'integer',
   [DEVICE_SIMULATOR]: 'boolean',
+  [DEVICE_LOW_POWER_MODE]: 'boolean',
   [EFFECTIVECONNECTIONTYPE]: 'string',
   [ENVIRONMENT]: 'string',
   [ERROR_TYPE]: 'string',
@@ -10821,6 +10842,7 @@ export type AttributeName =
   | typeof DEVICE_MODEL_ID
   | typeof DEVICE_PROCESSOR_COUNT
   | typeof DEVICE_SIMULATOR
+  | typeof DEVICE_LOW_POWER_MODE
   | typeof EFFECTIVECONNECTIONTYPE
   | typeof ENVIRONMENT
   | typeof ERROR_TYPE
@@ -12702,6 +12724,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: false,
     changelog: [{ version: 'next', prs: [300], description: 'Added device.simulator attribute' }],
+  },
+  [DEVICE_LOW_POWER_MODE]: {
+    brief: 'Whether the device is in Low Power Mode.',
+    type: 'boolean',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    sdks: ['sentry.cocoa'],
+    example: true,
+    changelog: [{ version: 'next', description: 'Added device.low_power_mode attribute' }],
   },
   [EFFECTIVECONNECTIONTYPE]: {
     brief: 'Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).',
