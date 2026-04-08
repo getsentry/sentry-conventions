@@ -661,11 +661,15 @@ export interface PiiInfo {
   reason?: string;
 }
 
+export type DeprecationStatus = 'backfill' | 'normalize';
+
 export interface DeprecationInfo {
   /** What this attribute was replaced with */
   replacement?: string;
   /** Reason for deprecation */
   reason?: string;
+  /** The deprecation status */
+  status?: DeprecationStatus;
 }
 
 export interface ChangelogEntry {
@@ -767,6 +771,9 @@ function generateMetadataDict(
       }
       if (deprecation.reason) {
         deprecationFields.push(`\n      reason: ${JSON.stringify(deprecation.reason)}`);
+      }
+      if (deprecation._status) {
+        deprecationFields.push(`\n      status: ${JSON.stringify(deprecation._status)}`);
       }
       if (deprecationFields.length > 0) {
         metadataDict += deprecationFields.join(',');
