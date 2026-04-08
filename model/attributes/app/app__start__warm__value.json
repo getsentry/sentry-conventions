@@ -3,7 +3,7 @@
   "brief": "The duration of a warm app start in milliseconds",
   "type": "double",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": 1234.56,

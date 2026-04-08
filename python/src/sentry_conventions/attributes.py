@@ -666,7 +666,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The duration of a cold app start in milliseconds
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 1234.56
     """
@@ -676,7 +676,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The duration of a warm app start in milliseconds
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 1234.56
     """
@@ -696,7 +696,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The duration of time to full display in milliseconds
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 1234.56
     """
@@ -706,7 +706,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The duration of time to initial display in milliseconds
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 1234.56
     """
@@ -6174,7 +6174,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.start.cold.value": AttributeMetadata(
         brief="The duration of a cold app start in milliseconds",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1234.56,
         changelog=[
@@ -6188,7 +6188,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.start.warm.value": AttributeMetadata(
         brief="The duration of a warm app start in milliseconds",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1234.56,
         changelog=[
@@ -6220,7 +6220,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.ttfd.value": AttributeMetadata(
         brief="The duration of time to full display in milliseconds",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1234.56,
         changelog=[
@@ -6232,7 +6232,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.ttid.value": AttributeMetadata(
         brief="The duration of time to initial display in milliseconds",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1234.56,
         changelog=[

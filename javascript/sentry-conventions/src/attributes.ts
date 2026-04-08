@@ -820,7 +820,7 @@ export type APP_NAME_TYPE = string;
  *
  * Attribute Value Type: `number` {@link APP_START_COLD_VALUE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -880,7 +880,7 @@ export type APP_START_TYPE_TYPE = string;
  *
  * Attribute Value Type: `number` {@link APP_START_WARM_VALUE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -900,7 +900,7 @@ export type APP_START_WARM_VALUE_TYPE = number;
  *
  * Attribute Value Type: `number` {@link APP_TTFD_VALUE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -920,7 +920,7 @@ export type APP_TTFD_VALUE_TYPE = number;
  *
  * Attribute Value Type: `number` {@link APP_TTID_VALUE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -11830,7 +11830,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The duration of a cold app start in milliseconds',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 1234.56,
@@ -11861,7 +11861,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The duration of a warm app start in milliseconds',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 1234.56,
@@ -11871,7 +11871,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The duration of time to full display in milliseconds',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 1234.56,
@@ -11881,7 +11881,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The duration of time to initial display in milliseconds',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 1234.56,

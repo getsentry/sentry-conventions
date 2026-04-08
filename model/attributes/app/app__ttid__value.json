@@ -3,7 +3,7 @@
   "brief": "The duration of time to initial display in milliseconds",
   "type": "double",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": 1234.56,
