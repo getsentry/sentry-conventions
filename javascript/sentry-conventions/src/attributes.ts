@@ -10303,15 +10303,11 @@ export interface PiiInfo {
   reason?: string;
 }
 
-export type DeprecationStatus = 'backfill' | 'normalize';
-
 export interface DeprecationInfo {
   /** What this attribute was replaced with */
   replacement?: string;
   /** Reason for deprecation */
   reason?: string;
-  /** The deprecation status */
-  status?: DeprecationStatus;
 }
 
 export interface ChangelogEntry {
@@ -11844,7 +11840,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'app.build',
       reason: 'Deprecated in favor of app.build',
-      status: 'backfill',
     },
     aliases: [APP_BUILD],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
@@ -11863,7 +11858,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'app.identifier',
       reason: 'Deprecated in favor of app.identifier',
-      status: 'backfill',
     },
     aliases: [APP_IDENTIFIER],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
@@ -11886,7 +11880,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'app.name',
       reason: 'Deprecated in favor of app.name',
-      status: 'backfill',
     },
     aliases: [APP_NAME],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
@@ -11903,7 +11896,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'app.start_time',
       reason: 'Deprecated in favor of app.start_time',
-      status: 'backfill',
     },
     aliases: [APP_START_TIME],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
@@ -11926,7 +11918,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'app.version',
       reason: 'Deprecated in favor of app.version',
-      status: 'backfill',
     },
     aliases: [APP_VERSION],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
@@ -12402,7 +12393,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.cls.value',
       reason: 'The CLS web vital is now recorded as a browser.web_vital.cls.value attribute.',
-      status: 'backfill',
     },
     aliases: [BROWSER_WEB_VITAL_CLS_VALUE],
     sdks: ['javascript-browser'],
@@ -12426,7 +12416,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.cls.source.<key>',
       reason: 'The CLS source is now recorded as a browser.web_vital.cls.source.<key> attribute.',
-      status: 'backfill',
     },
     aliases: [BROWSER_WEB_VITAL_CLS_SOURCE_KEY],
     sdks: ['javascript-browser'],
@@ -12537,7 +12526,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'network.connection.type',
       reason: 'Old namespace-less attribute, to be replaced with network.connection.type for span-first future',
-      status: 'backfill',
     },
     aliases: [NETWORK_CONNECTION_TYPE],
     sdks: ['javascript-browser'],
@@ -12561,7 +12549,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'network.connection.rtt',
       reason:
         'Old attribute name (no official namespace), to be replaced with network.connection.rtt for span-first future',
-      status: 'backfill',
     },
     aliases: [NETWORK_CONNECTION_RTT],
     sdks: ['javascript-browser'],
@@ -12668,7 +12655,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'SELECT',
     deprecation: {
       replacement: 'db.operation.name',
-      status: 'normalize',
     },
     aliases: [DB_OPERATION_NAME],
     changelog: [{ version: '0.4.0', prs: [199] }, { version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
@@ -12767,7 +12753,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'SELECT * FROM users',
     deprecation: {
       replacement: 'db.query.text',
-      status: 'normalize',
     },
     aliases: [DB_QUERY_TEXT],
     changelog: [{ version: '0.4.0', prs: [199] }, { version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
@@ -12783,7 +12768,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'postgresql',
     deprecation: {
       replacement: 'db.system.name',
-      status: 'backfill',
     },
     aliases: [DB_SYSTEM_NAME],
     changelog: [{ version: '0.4.0', prs: [199, 224] }, { version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
@@ -12822,7 +12806,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'device.memory.estimated_capacity',
       reason:
         'Old namespace-less attribute, to be replaced with device.memory.estimated_capacity for span-first future',
-      status: 'backfill',
     },
     aliases: [DEVICE_MEMORY_ESTIMATED_CAPACITY],
     sdks: ['javascript-browser'],
@@ -12968,7 +12951,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'network.connection.effective_type',
       reason:
         'Old namespace-less attribute, to be replaced with network.connection.effective_type for span-first future',
-      status: 'backfill',
     },
     aliases: [NETWORK_CONNECTION_EFFECTIVE_TYPE],
     sdks: ['javascript-browser'],
@@ -13119,7 +13101,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.fcp.value',
       reason: 'This attribute is being deprecated in favor of browser.web_vital.fcp.value',
-      status: 'backfill',
     },
     aliases: [BROWSER_WEB_VITAL_FCP_VALUE],
     sdks: ['javascript-browser'],
@@ -13148,7 +13129,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.fp.value',
       reason: 'This attribute is being deprecated in favor of browser.web_vital.fp.value',
-      status: 'backfill',
     },
     aliases: [BROWSER_WEB_VITAL_FP_VALUE],
     sdks: ['javascript-browser'],
@@ -13928,7 +13908,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'device.processor_count',
       reason: 'Old namespace-less attribute, to be replaced with device.processor_count for span-first future',
-      status: 'backfill',
     },
     aliases: [DEVICE_PROCESSOR_COUNT],
     sdks: ['javascript-browser'],
@@ -14258,7 +14237,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 123,
     deprecation: {
       replacement: 'http.response.body.size',
-      status: 'backfill',
     },
     aliases: [HTTP_RESPONSE_BODY_SIZE, HTTP_RESPONSE_HEADER_CONTENT_LENGTH],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61, 106] }, { version: '0.0.0' }],
@@ -14321,7 +14299,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 456,
     deprecation: {
       replacement: 'http.response.size',
-      status: 'backfill',
     },
     aliases: [HTTP_RESPONSE_SIZE],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
@@ -14456,7 +14433,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.inp.value',
       reason: 'The INP web vital is now recorded as a browser.web_vital.inp.value attribute.',
-      status: 'backfill',
     },
     aliases: [BROWSER_WEB_VITAL_INP_VALUE],
     sdks: ['javascript-browser'],
@@ -14539,7 +14515,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.lcp.value',
       reason: 'The LCP web vital is now recorded as a browser.web_vital.lcp.value attribute.',
-      status: 'backfill',
     },
     aliases: [BROWSER_WEB_VITAL_LCP_VALUE],
     sdks: ['javascript-browser'],
@@ -14562,7 +14537,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.lcp.element',
       reason: 'The LCP element is now recorded as a browser.web_vital.lcp.element attribute.',
-      status: 'backfill',
     },
     aliases: [BROWSER_WEB_VITAL_LCP_ELEMENT],
     changelog: [{ version: 'next', prs: [233] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
@@ -14578,7 +14552,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.lcp.id',
       reason: 'The LCP id is now recorded as a browser.web_vital.lcp.id attribute.',
-      status: 'backfill',
     },
     aliases: [BROWSER_WEB_VITAL_LCP_ID],
     changelog: [{ version: 'next', prs: [233] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
@@ -14594,7 +14567,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.lcp.load_time',
       reason: 'The LCP load time is now recorded as a browser.web_vital.lcp.load_time attribute.',
-      status: 'backfill',
     },
     aliases: [BROWSER_WEB_VITAL_LCP_LOAD_TIME],
     sdks: ['javascript-browser'],
@@ -14611,7 +14583,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.lcp.render_time',
       reason: 'The LCP render time is now recorded as a browser.web_vital.lcp.render_time attribute.',
-      status: 'backfill',
     },
     aliases: [BROWSER_WEB_VITAL_LCP_RENDER_TIME],
     sdks: ['javascript-browser'],
@@ -14628,7 +14599,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.lcp.size',
       reason: 'The LCP size is now recorded as a browser.web_vital.lcp.size attribute.',
-      status: 'backfill',
     },
     aliases: [BROWSER_WEB_VITAL_LCP_SIZE],
     changelog: [{ version: 'next', prs: [233] }, { version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
@@ -14644,7 +14614,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.lcp.url',
       reason: 'The LCP url is now recorded as a browser.web_vital.lcp.url attribute.',
-      status: 'backfill',
     },
     aliases: [BROWSER_WEB_VITAL_LCP_URL],
     changelog: [{ version: 'next', prs: [233] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
@@ -15849,7 +15818,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'production',
     deprecation: {
       replacement: 'sentry.environment',
-      status: 'backfill',
     },
     changelog: [{ version: 'next', prs: [266] }],
   },
@@ -15863,7 +15831,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'production',
     deprecation: {
       replacement: 'sentry.environment',
-      status: 'backfill',
     },
     changelog: [{ version: '0.3.1', prs: [196] }],
   },
@@ -16427,7 +16394,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'sentry.span.source',
       reason: 'This attribute is being deprecated in favor of sentry.span.source',
-      status: 'backfill',
     },
     changelog: [{ version: 'next' }],
   },
@@ -16600,7 +16566,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.ttfb.value',
       reason: 'This attribute is being deprecated in favor of browser.web_vital.ttfb.value',
-      status: 'backfill',
     },
     aliases: [BROWSER_WEB_VITAL_TTFB_VALUE],
     sdks: ['javascript-browser'],
@@ -16618,7 +16583,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.ttfb.request_time',
       reason: 'This attribute is being deprecated in favor of browser.web_vital.ttfb.request_time',
-      status: 'backfill',
     },
     aliases: [BROWSER_WEB_VITAL_TTFB_REQUEST_TIME],
     sdks: ['javascript-browser'],
