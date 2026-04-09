@@ -1,0 +1,17 @@
+{
+  "key": "db.driver.name",
+  "brief": "The name of the driver used for the database connection.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "psycopg2",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [297],
+      "description": "Added db.driver.name attribute"
+    }
+  ]
+}
