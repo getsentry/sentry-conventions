@@ -2,6 +2,36 @@
   "_generated": "This file is generated. Do not modify it directly. See scripts/generate_deprecated_attributes_json.ts",
   "attributes": [
     {
+      "key": "app_start_type",
+      "brief": "Mobile app start variant. Either cold or warm.",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "cold",
+      "alias": ["app.start.type"],
+      "deprecation": {
+        "replacement": "app.start.type",
+        "reason": "Old namespace-less attribute, to be replaced with app.start.type",
+        "_status": "backfill"
+      },
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [313],
+          "description": "Deprecated in favor of app.start.type"
+        },
+        {
+          "version": "0.1.0",
+          "prs": [127]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
+    },
+    {
       "key": "cls",
       "brief": "The value of the recorded Cumulative Layout Shift (CLS) web vital",
       "type": "double",
@@ -1504,6 +1534,126 @@
         {
           "version": "0.1.0",
           "prs": [61, 127]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
+    },
+    {
+      "key": "frames.delay",
+      "brief": "The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).",
+      "type": "integer",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": 5,
+      "alias": ["app.frames.delay.value"],
+      "deprecation": {
+        "replacement": "app.frames.delay.value",
+        "reason": "Old namespace-less attribute, to be replaced with app.frames.delay.value",
+        "_status": "backfill"
+      },
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [313],
+          "description": "Deprecated in favor of app.frames.delay.value"
+        },
+        {
+          "version": "0.4.0",
+          "prs": [228]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
+    },
+    {
+      "key": "frames.frozen",
+      "brief": "The number of frozen frames rendered during the lifetime of the span.",
+      "type": "integer",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": 3,
+      "alias": ["app.frames.frozen.count"],
+      "deprecation": {
+        "replacement": "app.frames.frozen.count",
+        "reason": "Old namespace-less attribute, to be replaced with app.frames.frozen.count",
+        "_status": "backfill"
+      },
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [313],
+          "description": "Deprecated in favor of app.frames.frozen.count"
+        },
+        {
+          "version": "0.4.0",
+          "prs": [228]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
+    },
+    {
+      "key": "frames.slow",
+      "brief": "The number of slow frames rendered during the lifetime of the span.",
+      "type": "integer",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": 1,
+      "alias": ["app.frames.slow.count"],
+      "deprecation": {
+        "replacement": "app.frames.slow.count",
+        "reason": "Old namespace-less attribute, to be replaced with app.frames.slow.count",
+        "_status": "backfill"
+      },
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [313],
+          "description": "Deprecated in favor of app.frames.slow.count"
+        },
+        {
+          "version": "0.4.0",
+          "prs": [228]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
+    },
+    {
+      "key": "frames.total",
+      "brief": "The number of total frames rendered during the lifetime of the span.",
+      "type": "integer",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": 60,
+      "alias": ["app.frames.total.count"],
+      "deprecation": {
+        "replacement": "app.frames.total.count",
+        "reason": "Old namespace-less attribute, to be replaced with app.frames.total.count",
+        "_status": "backfill"
+      },
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [313],
+          "description": "Deprecated in favor of app.frames.total.count"
+        },
+        {
+          "version": "0.4.0",
+          "prs": [228]
         },
         {
           "version": "0.0.0"

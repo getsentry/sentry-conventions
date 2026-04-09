@@ -1,6 +1,6 @@
 {
-  "key": "app.ttid.value",
-  "brief": "The duration of time to initial display in milliseconds",
+  "key": "app.start.value",
+  "brief": "The duration of the app start in milliseconds",
   "type": "double",
   "pii": {
     "key": "maybe"
@@ -12,7 +12,7 @@
     {
       "version": "next",
       "prs": [313],
-      "description": "Added app.ttid.value attribute"
+      "description": "Added app.start.value attribute"
     }
   ]
 }

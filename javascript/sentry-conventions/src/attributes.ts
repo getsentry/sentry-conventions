@@ -753,6 +753,94 @@ export const APP_BUILD = 'app.build';
  */
 export type APP_BUILD_TYPE = string;
 
+// Path: model/attributes/app/app__frames__delay__value.json
+
+/**
+ * The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/). `app.frames.delay.value`
+ *
+ * Attribute Value Type: `number` {@link APP_FRAMES_DELAY_VALUE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link FRAMES_DELAY} `frames.delay`
+ *
+ * @example 5
+ */
+export const APP_FRAMES_DELAY_VALUE = 'app.frames.delay.value';
+
+/**
+ * Type for {@link APP_FRAMES_DELAY_VALUE} app.frames.delay.value
+ */
+export type APP_FRAMES_DELAY_VALUE_TYPE = number;
+
+// Path: model/attributes/app/app__frames__frozen__count.json
+
+/**
+ * The number of frozen frames rendered during the lifetime of the span. `app.frames.frozen.count`
+ *
+ * Attribute Value Type: `number` {@link APP_FRAMES_FROZEN_COUNT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link FRAMES_FROZEN} `frames.frozen`
+ *
+ * @example 3
+ */
+export const APP_FRAMES_FROZEN_COUNT = 'app.frames.frozen.count';
+
+/**
+ * Type for {@link APP_FRAMES_FROZEN_COUNT} app.frames.frozen.count
+ */
+export type APP_FRAMES_FROZEN_COUNT_TYPE = number;
+
+// Path: model/attributes/app/app__frames__slow__count.json
+
+/**
+ * The number of slow frames rendered during the lifetime of the span. `app.frames.slow.count`
+ *
+ * Attribute Value Type: `number` {@link APP_FRAMES_SLOW_COUNT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link FRAMES_SLOW} `frames.slow`
+ *
+ * @example 1
+ */
+export const APP_FRAMES_SLOW_COUNT = 'app.frames.slow.count';
+
+/**
+ * Type for {@link APP_FRAMES_SLOW_COUNT} app.frames.slow.count
+ */
+export type APP_FRAMES_SLOW_COUNT_TYPE = number;
+
+// Path: model/attributes/app/app__frames__total__count.json
+
+/**
+ * The number of total frames rendered during the lifetime of the span. `app.frames.total.count`
+ *
+ * Attribute Value Type: `number` {@link APP_FRAMES_TOTAL_COUNT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link FRAMES_TOTAL} `frames.total`
+ *
+ * @example 60
+ */
+export const APP_FRAMES_TOTAL_COUNT = 'app.frames.total.count';
+
+/**
+ * Type for {@link APP_FRAMES_TOTAL_COUNT} app.frames.total.count
+ */
+export type APP_FRAMES_TOTAL_COUNT_TYPE = number;
+
 // Path: model/attributes/app/app__identifier.json
 
 /**
@@ -813,26 +901,6 @@ export const APP_NAME = 'app.name';
  */
 export type APP_NAME_TYPE = string;
 
-// Path: model/attributes/app/app__start__cold__value.json
-
-/**
- * The duration of a cold app start in milliseconds `app.start.cold.value`
- *
- * Attribute Value Type: `number` {@link APP_START_COLD_VALUE_TYPE}
- *
- * Contains PII: maybe
- *
- * Attribute defined in OTEL: No
- *
- * @example 1234.56
- */
-export const APP_START_COLD_VALUE = 'app.start.cold.value';
-
-/**
- * Type for {@link APP_START_COLD_VALUE} app.start.cold.value
- */
-export type APP_START_COLD_VALUE_TYPE = number;
-
 // Path: model/attributes/app/app__start_time.json
 
 /**
@@ -853,10 +921,10 @@ export const APP_START_TIME = 'app.start_time';
  */
 export type APP_START_TIME_TYPE = string;
 
-// Path: model/attributes/app_start_type.json
+// Path: model/attributes/app/app__start__type.json
 
 /**
- * Mobile app start variant. Either cold or warm. `app_start_type`
+ * The type of app start `app.start.type`
  *
  * Attribute Value Type: `string` {@link APP_START_TYPE_TYPE}
  *
@@ -864,21 +932,46 @@ export type APP_START_TIME_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link _APP_START_TYPE} `app_start_type`
+ *
  * @example "cold"
  */
-export const APP_START_TYPE = 'app_start_type';
+export const APP_START_TYPE = 'app.start.type';
 
 /**
- * Type for {@link APP_START_TYPE} app_start_type
+ * Type for {@link APP_START_TYPE} app.start.type
  */
 export type APP_START_TYPE_TYPE = string;
 
-// Path: model/attributes/app/app__start__warm__value.json
+// Path: model/attributes/app_start_type.json
 
 /**
- * The duration of a warm app start in milliseconds `app.start.warm.value`
+ * Mobile app start variant. Either cold or warm. `app_start_type`
  *
- * Attribute Value Type: `number` {@link APP_START_WARM_VALUE_TYPE}
+ * Attribute Value Type: `string` {@link _APP_START_TYPE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link APP_START_TYPE} `app.start.type`
+ *
+ * @deprecated Use {@link APP_START_TYPE} (app.start.type) instead - Old namespace-less attribute, to be replaced with app.start.type
+ * @example "cold"
+ */
+export const _APP_START_TYPE = 'app_start_type';
+
+/**
+ * Type for {@link _APP_START_TYPE} app_start_type
+ */
+export type _APP_START_TYPE_TYPE = string;
+
+// Path: model/attributes/app/app__start__value.json
+
+/**
+ * The duration of the app start in milliseconds `app.start.value`
+ *
+ * Attribute Value Type: `number` {@link APP_START_VALUE_TYPE}
  *
  * Contains PII: maybe
  *
@@ -886,12 +979,12 @@ export type APP_START_TYPE_TYPE = string;
  *
  * @example 1234.56
  */
-export const APP_START_WARM_VALUE = 'app.start.warm.value';
+export const APP_START_VALUE = 'app.start.value';
 
 /**
- * Type for {@link APP_START_WARM_VALUE} app.start.warm.value
+ * Type for {@link APP_START_VALUE} app.start.value
  */
-export type APP_START_WARM_VALUE_TYPE = number;
+export type APP_START_VALUE_TYPE = number;
 
 // Path: model/attributes/app/app__ttfd__value.json
 
@@ -2894,6 +2987,9 @@ export type FP_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link APP_FRAMES_DELAY_VALUE} `app.frames.delay.value`
+ *
+ * @deprecated Use {@link APP_FRAMES_DELAY_VALUE} (app.frames.delay.value) instead - Old namespace-less attribute, to be replaced with app.frames.delay.value
  * @example 5
  */
 export const FRAMES_DELAY = 'frames.delay';
@@ -2914,6 +3010,9 @@ export type FRAMES_DELAY_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link APP_FRAMES_FROZEN_COUNT} `app.frames.frozen.count`
+ *
+ * @deprecated Use {@link APP_FRAMES_FROZEN_COUNT} (app.frames.frozen.count) instead - Old namespace-less attribute, to be replaced with app.frames.frozen.count
  * @example 3
  */
 export const FRAMES_FROZEN = 'frames.frozen';
@@ -2934,6 +3033,9 @@ export type FRAMES_FROZEN_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link APP_FRAMES_SLOW_COUNT} `app.frames.slow.count`
+ *
+ * @deprecated Use {@link APP_FRAMES_SLOW_COUNT} (app.frames.slow.count) instead - Old namespace-less attribute, to be replaced with app.frames.slow.count
  * @example 1
  */
 export const FRAMES_SLOW = 'frames.slow';
@@ -2954,6 +3056,9 @@ export type FRAMES_SLOW_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link APP_FRAMES_TOTAL_COUNT} `app.frames.total.count`
+ *
+ * @deprecated Use {@link APP_FRAMES_TOTAL_COUNT} (app.frames.total.count) instead - Old namespace-less attribute, to be replaced with app.frames.total.count
  * @example 60
  */
 export const FRAMES_TOTAL = 'frames.total';
@@ -10332,13 +10437,17 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [AI_TOTAL_TOKENS_USED]: 'integer',
   [AI_WARNINGS]: 'string[]',
   [APP_BUILD]: 'string',
+  [APP_FRAMES_DELAY_VALUE]: 'integer',
+  [APP_FRAMES_FROZEN_COUNT]: 'integer',
+  [APP_FRAMES_SLOW_COUNT]: 'integer',
+  [APP_FRAMES_TOTAL_COUNT]: 'integer',
   [APP_IDENTIFIER]: 'string',
   [APP_IN_FOREGROUND]: 'boolean',
   [APP_NAME]: 'string',
-  [APP_START_COLD_VALUE]: 'double',
   [APP_START_TIME]: 'string',
   [APP_START_TYPE]: 'string',
-  [APP_START_WARM_VALUE]: 'double',
+  [_APP_START_TYPE]: 'string',
+  [APP_START_VALUE]: 'double',
   [APP_TTFD_VALUE]: 'double',
   [APP_TTID_VALUE]: 'double',
   [APP_VERSION]: 'string',
@@ -10824,13 +10933,17 @@ export type AttributeName =
   | typeof AI_TOTAL_TOKENS_USED
   | typeof AI_WARNINGS
   | typeof APP_BUILD
+  | typeof APP_FRAMES_DELAY_VALUE
+  | typeof APP_FRAMES_FROZEN_COUNT
+  | typeof APP_FRAMES_SLOW_COUNT
+  | typeof APP_FRAMES_TOTAL_COUNT
   | typeof APP_IDENTIFIER
   | typeof APP_IN_FOREGROUND
   | typeof APP_NAME
-  | typeof APP_START_COLD_VALUE
   | typeof APP_START_TIME
   | typeof APP_START_TYPE
-  | typeof APP_START_WARM_VALUE
+  | typeof _APP_START_TYPE
+  | typeof APP_START_VALUE
   | typeof APP_TTFD_VALUE
   | typeof APP_TTID_VALUE
   | typeof APP_VERSION
@@ -11793,6 +11906,55 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: 'next', prs: [296], description: 'Added app.build attribute' }],
   },
+  [APP_FRAMES_DELAY_VALUE]: {
+    brief:
+      'The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 5,
+    aliases: [FRAMES_DELAY],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [{ version: 'next', prs: [313], description: 'Added app.frames.delay.value to replace frames.delay' }],
+  },
+  [APP_FRAMES_FROZEN_COUNT]: {
+    brief: 'The number of frozen frames rendered during the lifetime of the span.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 3,
+    aliases: [FRAMES_FROZEN],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [{ version: 'next', prs: [313], description: 'Added app.frames.frozen.count to replace frames.frozen' }],
+  },
+  [APP_FRAMES_SLOW_COUNT]: {
+    brief: 'The number of slow frames rendered during the lifetime of the span.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1,
+    aliases: [FRAMES_SLOW],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [{ version: 'next', prs: [313], description: 'Added app.frames.slow.count to replace frames.slow' }],
+  },
+  [APP_FRAMES_TOTAL_COUNT]: {
+    brief: 'The number of total frames rendered during the lifetime of the span.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 60,
+    aliases: [FRAMES_TOTAL],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [{ version: 'next', prs: [313], description: 'Added app.frames.total.count to replace frames.total' }],
+  },
   [APP_IDENTIFIER]: {
     brief: 'Version-independent application identifier, often a dotted bundle ID.',
     type: 'string',
@@ -11826,16 +11988,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: 'next', prs: [296], description: 'Added app.name attribute' }],
   },
-  [APP_START_COLD_VALUE]: {
-    brief: 'The duration of a cold app start in milliseconds',
-    type: 'double',
-    pii: {
-      isPii: 'maybe',
-    },
-    isInOtel: false,
-    example: 1234.56,
-    changelog: [{ version: 'next', prs: [312], description: 'Added app.start.cold.value attribute' }],
-  },
   [APP_START_TIME]: {
     brief: 'Formatted UTC timestamp when the user started the application.',
     type: 'string',
@@ -11848,6 +12000,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: 'next', prs: [296], description: 'Added app.start_time attribute' }],
   },
   [APP_START_TYPE]: {
+    brief: 'The type of app start',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'cold',
+    aliases: [_APP_START_TYPE],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [{ version: 'next', prs: [313], description: 'Added app.start.type attribute' }],
+  },
+  [_APP_START_TYPE]: {
     brief: 'Mobile app start variant. Either cold or warm.',
     type: 'string',
     pii: {
@@ -11855,17 +12019,27 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'cold',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    deprecation: {
+      replacement: 'app.start.type',
+      reason: 'Old namespace-less attribute, to be replaced with app.start.type',
+    },
+    aliases: [APP_START_TYPE],
+    changelog: [
+      { version: 'next', prs: [313], description: 'Deprecated in favor of app.start.type' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
-  [APP_START_WARM_VALUE]: {
-    brief: 'The duration of a warm app start in milliseconds',
+  [APP_START_VALUE]: {
+    brief: 'The duration of the app start in milliseconds',
     type: 'double',
     pii: {
       isPii: 'maybe',
     },
     isInOtel: false,
     example: 1234.56,
-    changelog: [{ version: 'next', prs: [312], description: 'Added app.start.warm.value attribute' }],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [{ version: 'next', prs: [313], description: 'Added app.start.value attribute' }],
   },
   [APP_TTFD_VALUE]: {
     brief: 'The duration of time to full display in milliseconds',
@@ -11875,7 +12049,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 1234.56,
-    changelog: [{ version: 'next', prs: [312], description: 'Added app.ttfd.value attribute' }],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [{ version: 'next', prs: [313], description: 'Added app.ttfd.value attribute' }],
   },
   [APP_TTID_VALUE]: {
     brief: 'The duration of time to initial display in milliseconds',
@@ -11885,7 +12060,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 1234.56,
-    changelog: [{ version: 'next', prs: [312], description: 'Added app.ttid.value attribute' }],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [{ version: 'next', prs: [313], description: 'Added app.ttid.value attribute' }],
   },
   [APP_VERSION]: {
     brief: 'Human readable application version, as it appears on the platform.',
@@ -13035,7 +13211,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 5,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    deprecation: {
+      replacement: 'app.frames.delay.value',
+      reason: 'Old namespace-less attribute, to be replaced with app.frames.delay.value',
+    },
+    aliases: [APP_FRAMES_DELAY_VALUE],
+    changelog: [
+      { version: 'next', prs: [313], description: 'Deprecated in favor of app.frames.delay.value' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.0.0' },
+    ],
   },
   [FRAMES_FROZEN]: {
     brief: 'The number of frozen frames rendered during the lifetime of the span.',
@@ -13045,7 +13230,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 3,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    deprecation: {
+      replacement: 'app.frames.frozen.count',
+      reason: 'Old namespace-less attribute, to be replaced with app.frames.frozen.count',
+    },
+    aliases: [APP_FRAMES_FROZEN_COUNT],
+    changelog: [
+      { version: 'next', prs: [313], description: 'Deprecated in favor of app.frames.frozen.count' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.0.0' },
+    ],
   },
   [FRAMES_SLOW]: {
     brief: 'The number of slow frames rendered during the lifetime of the span.',
@@ -13055,7 +13249,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 1,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    deprecation: {
+      replacement: 'app.frames.slow.count',
+      reason: 'Old namespace-less attribute, to be replaced with app.frames.slow.count',
+    },
+    aliases: [APP_FRAMES_SLOW_COUNT],
+    changelog: [
+      { version: 'next', prs: [313], description: 'Deprecated in favor of app.frames.slow.count' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.0.0' },
+    ],
   },
   [FRAMES_TOTAL]: {
     brief: 'The number of total frames rendered during the lifetime of the span.',
@@ -13065,7 +13268,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 60,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    deprecation: {
+      replacement: 'app.frames.total.count',
+      reason: 'Old namespace-less attribute, to be replaced with app.frames.total.count',
+    },
+    aliases: [APP_FRAMES_TOTAL_COUNT],
+    changelog: [
+      { version: 'next', prs: [313], description: 'Deprecated in favor of app.frames.total.count' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.0.0' },
+    ],
   },
   [FS_ERROR]: {
     brief: 'The error message of a file system error.',
@@ -17259,13 +17471,17 @@ export type Attributes = {
   [AI_TOTAL_TOKENS_USED]?: AI_TOTAL_TOKENS_USED_TYPE;
   [AI_WARNINGS]?: AI_WARNINGS_TYPE;
   [APP_BUILD]?: APP_BUILD_TYPE;
+  [APP_FRAMES_DELAY_VALUE]?: APP_FRAMES_DELAY_VALUE_TYPE;
+  [APP_FRAMES_FROZEN_COUNT]?: APP_FRAMES_FROZEN_COUNT_TYPE;
+  [APP_FRAMES_SLOW_COUNT]?: APP_FRAMES_SLOW_COUNT_TYPE;
+  [APP_FRAMES_TOTAL_COUNT]?: APP_FRAMES_TOTAL_COUNT_TYPE;
   [APP_IDENTIFIER]?: APP_IDENTIFIER_TYPE;
   [APP_IN_FOREGROUND]?: APP_IN_FOREGROUND_TYPE;
   [APP_NAME]?: APP_NAME_TYPE;
-  [APP_START_COLD_VALUE]?: APP_START_COLD_VALUE_TYPE;
   [APP_START_TIME]?: APP_START_TIME_TYPE;
   [APP_START_TYPE]?: APP_START_TYPE_TYPE;
-  [APP_START_WARM_VALUE]?: APP_START_WARM_VALUE_TYPE;
+  [_APP_START_TYPE]?: _APP_START_TYPE_TYPE;
+  [APP_START_VALUE]?: APP_START_VALUE_TYPE;
   [APP_TTFD_VALUE]?: APP_TTFD_VALUE_TYPE;
   [APP_TTID_VALUE]?: APP_TTID_VALUE_TYPE;
   [APP_VERSION]?: APP_VERSION_TYPE;

@@ -1,18 +1,19 @@
 {
-  "key": "app.ttid.value",
-  "brief": "The duration of time to initial display in milliseconds",
-  "type": "double",
+  "key": "app.start.type",
+  "brief": "The type of app start",
+  "type": "string",
   "pii": {
     "key": "maybe"
   },
   "is_in_otel": false,
+  "alias": ["app_start_type"],
   "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
-  "example": 1234.56,
+  "example": "cold",
   "changelog": [
     {
       "version": "next",
       "prs": [313],
-      "description": "Added app.ttid.value attribute"
+      "description": "Added app.start.type attribute"
     }
   ]
 }

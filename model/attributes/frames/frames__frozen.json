@@ -7,7 +7,18 @@
   },
   "is_in_otel": false,
   "example": 3,
+  "alias": ["app.frames.frozen.count"],
+  "deprecation": {
+    "replacement": "app.frames.frozen.count",
+    "reason": "Old namespace-less attribute, to be replaced with app.frames.frozen.count",
+    "_status": "backfill"
+  },
   "changelog": [
+    {
+      "version": "next",
+      "prs": [313],
+      "description": "Deprecated in favor of app.frames.frozen.count"
+    },
     {
       "version": "0.4.0",
       "prs": [228]

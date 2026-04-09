@@ -6,11 +6,12 @@
     "key": "maybe"
   },
   "is_in_otel": false,
+  "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
   "example": 1234.56,
   "changelog": [
     {
       "version": "next",
-      "prs": [312],
+      "prs": [313],
       "description": "Added app.ttfd.value attribute"
     }
   ]

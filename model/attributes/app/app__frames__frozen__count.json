@@ -1,0 +1,19 @@
+{
+  "key": "app.frames.frozen.count",
+  "brief": "The number of frozen frames rendered during the lifetime of the span.",
+  "type": "integer",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "alias": ["frames.frozen"],
+  "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
+  "example": 3,
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [313],
+      "description": "Added app.frames.frozen.count to replace frames.frozen"
+    }
+  ]
+}

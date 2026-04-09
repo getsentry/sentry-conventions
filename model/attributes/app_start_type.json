@@ -7,7 +7,18 @@
   },
   "is_in_otel": false,
   "example": "cold",
+  "alias": ["app.start.type"],
+  "deprecation": {
+    "replacement": "app.start.type",
+    "reason": "Old namespace-less attribute, to be replaced with app.start.type",
+    "_status": "backfill"
+  },
   "changelog": [
+    {
+      "version": "next",
+      "prs": [313],
+      "description": "Deprecated in favor of app.start.type"
+    },
     {
       "version": "0.1.0",
       "prs": [127]

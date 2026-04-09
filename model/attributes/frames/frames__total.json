@@ -7,7 +7,18 @@
   },
   "is_in_otel": false,
   "example": 60,
+  "alias": ["app.frames.total.count"],
+  "deprecation": {
+    "replacement": "app.frames.total.count",
+    "reason": "Old namespace-less attribute, to be replaced with app.frames.total.count",
+    "_status": "backfill"
+  },
   "changelog": [
+    {
+      "version": "next",
+      "prs": [313],
+      "description": "Deprecated in favor of app.frames.total.count"
+    },
     {
       "version": "0.4.0",
       "prs": [228]

@@ -7,7 +7,18 @@
   },
   "is_in_otel": false,
   "example": 5,
+  "alias": ["app.frames.delay.value"],
+  "deprecation": {
+    "replacement": "app.frames.delay.value",
+    "reason": "Old namespace-less attribute, to be replaced with app.frames.delay.value",
+    "_status": "backfill"
+  },
   "changelog": [
+    {
+      "version": "next",
+      "prs": [313],
+      "description": "Deprecated in favor of app.frames.delay.value"
+    },
     {
       "version": "0.4.0",
       "prs": [228]
