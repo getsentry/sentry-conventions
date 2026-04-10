@@ -1781,6 +1781,30 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "ResearchAssistant"
     """
 
+    # Path: model/attributes/gen_ai/gen_ai__context__utilization.json
+    GEN_AI_CONTEXT_UTILIZATION: Literal["gen_ai.context.utilization"] = (
+        "gen_ai.context.utilization"
+    )
+    """The fraction of the model context window utilized by this generation.
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: 0.75
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__context__window_size.json
+    GEN_AI_CONTEXT_WINDOW_SIZE: Literal["gen_ai.context.window_size"] = (
+        "gen_ai.context.window_size"
+    )
+    """The maximum context window size supported by the model for this generation.
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: 128000
+    """
+
     # Path: model/attributes/gen_ai/gen_ai__conversation__id.json
     GEN_AI_CONVERSATION_ID: Literal["gen_ai.conversation.id"] = "gen_ai.conversation.id"
     """The unique identifier for a conversation (session, thread), used to store and correlate messages within this conversation.
@@ -7434,6 +7458,34 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[62, 127]),
         ],
     ),
+    "gen_ai.context.utilization": AttributeMetadata(
+        brief="The fraction of the model context window utilized by this generation.",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=0.75,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[315],
+                description="Added gen_ai.context.utilization attribute",
+            ),
+        ],
+    ),
+    "gen_ai.context.window_size": AttributeMetadata(
+        brief="The maximum context window size supported by the model for this generation.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=128000,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[315],
+                description="Added gen_ai.context.window_size attribute",
+            ),
+        ],
+    ),
     "gen_ai.conversation.id": AttributeMetadata(
         brief="The unique identifier for a conversation (session, thread), used to store and correlate messages within this conversation.",
         type=AttributeType.STRING,
@@ -11660,6 +11712,8 @@ Attributes = TypedDict(
         "frames.total": int,
         "fs_error": str,
         "gen_ai.agent.name": str,
+        "gen_ai.context.utilization": float,
+        "gen_ai.context.window_size": int,
         "gen_ai.conversation.id": str,
         "gen_ai.cost.input_tokens": float,
         "gen_ai.cost.output_tokens": float,

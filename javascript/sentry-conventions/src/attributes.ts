@@ -2944,6 +2944,46 @@ export const GEN_AI_AGENT_NAME = 'gen_ai.agent.name';
  */
 export type GEN_AI_AGENT_NAME_TYPE = string;
 
+// Path: model/attributes/gen_ai/gen_ai__context__utilization.json
+
+/**
+ * The fraction of the model context window utilized by this generation. `gen_ai.context.utilization`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_CONTEXT_UTILIZATION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 0.75
+ */
+export const GEN_AI_CONTEXT_UTILIZATION = 'gen_ai.context.utilization';
+
+/**
+ * Type for {@link GEN_AI_CONTEXT_UTILIZATION} gen_ai.context.utilization
+ */
+export type GEN_AI_CONTEXT_UTILIZATION_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__context__window_size.json
+
+/**
+ * The maximum context window size supported by the model for this generation. `gen_ai.context.window_size`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_CONTEXT_WINDOW_SIZE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 128000
+ */
+export const GEN_AI_CONTEXT_WINDOW_SIZE = 'gen_ai.context.window_size';
+
+/**
+ * Type for {@link GEN_AI_CONTEXT_WINDOW_SIZE} gen_ai.context.window_size
+ */
+export type GEN_AI_CONTEXT_WINDOW_SIZE_TYPE = number;
+
 // Path: model/attributes/gen_ai/gen_ai__conversation__id.json
 
 /**
@@ -10377,6 +10417,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [FRAMES_TOTAL]: 'integer',
   [FS_ERROR]: 'string',
   [GEN_AI_AGENT_NAME]: 'string',
+  [GEN_AI_CONTEXT_UTILIZATION]: 'double',
+  [GEN_AI_CONTEXT_WINDOW_SIZE]: 'integer',
   [GEN_AI_CONVERSATION_ID]: 'string',
   [GEN_AI_COST_INPUT_TOKENS]: 'double',
   [GEN_AI_COST_OUTPUT_TOKENS]: 'double',
@@ -10866,6 +10908,8 @@ export type AttributeName =
   | typeof FRAMES_TOTAL
   | typeof FS_ERROR
   | typeof GEN_AI_AGENT_NAME
+  | typeof GEN_AI_CONTEXT_UTILIZATION
+  | typeof GEN_AI_CONTEXT_WINDOW_SIZE
   | typeof GEN_AI_CONVERSATION_ID
   | typeof GEN_AI_COST_INPUT_TOKENS
   | typeof GEN_AI_COST_OUTPUT_TOKENS
@@ -12996,6 +13040,26 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'ResearchAssistant',
     changelog: [{ version: '0.1.0', prs: [62, 127] }],
+  },
+  [GEN_AI_CONTEXT_UTILIZATION]: {
+    brief: 'The fraction of the model context window utilized by this generation.',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 0.75,
+    changelog: [{ version: 'next', prs: [315], description: 'Added gen_ai.context.utilization attribute' }],
+  },
+  [GEN_AI_CONTEXT_WINDOW_SIZE]: {
+    brief: 'The maximum context window size supported by the model for this generation.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 128000,
+    changelog: [{ version: 'next', prs: [315], description: 'Added gen_ai.context.window_size attribute' }],
   },
   [GEN_AI_CONVERSATION_ID]: {
     brief:
@@ -17271,6 +17335,8 @@ export type Attributes = {
   [FRAMES_TOTAL]?: FRAMES_TOTAL_TYPE;
   [FS_ERROR]?: FS_ERROR_TYPE;
   [GEN_AI_AGENT_NAME]?: GEN_AI_AGENT_NAME_TYPE;
+  [GEN_AI_CONTEXT_UTILIZATION]?: GEN_AI_CONTEXT_UTILIZATION_TYPE;
+  [GEN_AI_CONTEXT_WINDOW_SIZE]?: GEN_AI_CONTEXT_WINDOW_SIZE_TYPE;
   [GEN_AI_CONVERSATION_ID]?: GEN_AI_CONVERSATION_ID_TYPE;
   [GEN_AI_COST_INPUT_TOKENS]?: GEN_AI_COST_INPUT_TOKENS_TYPE;
   [GEN_AI_COST_OUTPUT_TOKENS]?: GEN_AI_COST_OUTPUT_TOKENS_TYPE;

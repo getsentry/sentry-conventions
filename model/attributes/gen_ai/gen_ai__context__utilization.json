@@ -1,0 +1,17 @@
+{
+  "key": "gen_ai.context.utilization",
+  "brief": "The fraction of the model context window utilized by this generation.",
+  "type": "double",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": 0.75,
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [315],
+      "description": "Added gen_ai.context.utilization attribute"
+    }
+  ]
+}
