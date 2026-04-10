@@ -1758,6 +1758,26 @@
       ]
     },
     {
+      "key": "gen_ai.tool.type",
+      "brief": "The type of tool being used.",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": true,
+      "example": "function",
+      "deprecation": {
+        "_status": null,
+        "reason": "The gen_ai.tool.type attribute is deprecated and should no longer be set."
+      },
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [62, 127]
+        }
+      ]
+    },
+    {
       "key": "gen_ai.usage.completion_tokens",
       "brief": "The number of tokens used in the GenAI response (completion).",
       "type": "integer",

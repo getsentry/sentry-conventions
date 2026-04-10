@@ -165,6 +165,7 @@ class _AttributeNamesMeta(type):
         "GEN_AI_TOOL_INPUT",
         "GEN_AI_TOOL_MESSAGE",
         "GEN_AI_TOOL_OUTPUT",
+        "GEN_AI_TOOL_TYPE",
         "GEN_AI_USAGE_COMPLETION_TOKENS",
         "GEN_AI_USAGE_PROMPT_TOKENS",
         "HARDWARECONCURRENCY",
@@ -2270,6 +2271,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    DEPRECATED: No replacement at this time - The gen_ai.tool.type attribute is deprecated and should no longer be set.
     Example: "function"
     """
 
@@ -7911,6 +7913,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="function",
+        deprecation=DeprecationInfo(
+            reason="The gen_ai.tool.type attribute is deprecated and should no longer be set."
+        ),
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[62, 127]),
         ],

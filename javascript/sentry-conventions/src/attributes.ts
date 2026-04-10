@@ -3831,6 +3831,7 @@ export type GEN_AI_TOOL_OUTPUT_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  *
+ * @deprecated  - The gen_ai.tool.type attribute is deprecated and should no longer be set.
  * @example "function"
  */
 export const GEN_AI_TOOL_TYPE = 'gen_ai.tool.type';
@@ -13561,6 +13562,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'function',
+    deprecation: {
+      reason: 'The gen_ai.tool.type attribute is deprecated and should no longer be set.',
+    },
     changelog: [{ version: '0.1.0', prs: [62, 127] }],
   },
   [GEN_AI_USAGE_COMPLETION_TOKENS]: {
