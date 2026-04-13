@@ -7983,7 +7983,7 @@ export type SENTRY_KIND_TYPE = string;
  *
  * Attribute Value Type: `boolean` {@link SENTRY_MAIN_THREAD_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: false
  *
  * Attribute defined in OTEL: No
  *
@@ -8043,7 +8043,7 @@ export type SENTRY_MESSAGE_TEMPLATE_TYPE = string;
  *
  * Attribute Value Type: `boolean` {@link SENTRY_MOBILE_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: false
  *
  * Attribute defined in OTEL: No
  *
@@ -16046,7 +16046,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs.',
     type: 'boolean',
     pii: {
-      isPii: 'maybe',
+      isPii: 'false',
     },
     isInOtel: false,
     example: true,
@@ -16077,7 +16077,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Whether the application is using a mobile SDK. Computed by Relay and should not be set by SDKs.',
     type: 'boolean',
     pii: {
-      isPii: 'maybe',
+      isPii: 'false',
     },
     isInOtel: false,
     example: true,

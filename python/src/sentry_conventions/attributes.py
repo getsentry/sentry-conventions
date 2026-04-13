@@ -4505,7 +4505,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs.
 
     Type: bool
-    Contains PII: maybe
+    Contains PII: false
     Defined in OTEL: No
     Example: true
     """
@@ -4539,7 +4539,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether the application is using a mobile SDK. Computed by Relay and should not be set by SDKs.
 
     Type: bool
-    Contains PII: maybe
+    Contains PII: false
     Defined in OTEL: No
     Example: true
     """
@@ -10370,7 +10370,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.main_thread": AttributeMetadata(
         brief="Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=True,
         changelog=[
@@ -10400,7 +10400,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.mobile": AttributeMetadata(
         brief="Whether the application is using a mobile SDK. Computed by Relay and should not be set by SDKs.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=True,
         changelog=[
