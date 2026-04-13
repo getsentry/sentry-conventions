@@ -3086,6 +3086,26 @@ export const GEN_AI_EMBEDDINGS_INPUT = 'gen_ai.embeddings.input';
  */
 export type GEN_AI_EMBEDDINGS_INPUT_TYPE = string;
 
+// Path: model/attributes/gen_ai/gen_ai__function_id.json
+
+/**
+ * Framework-specific tracing label for the execution of a function or other unit of execution in a generative AI system. `gen_ai.function_id`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_FUNCTION_ID_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "my-awesome-function"
+ */
+export const GEN_AI_FUNCTION_ID = 'gen_ai.function_id';
+
+/**
+ * Type for {@link GEN_AI_FUNCTION_ID} gen_ai.function_id
+ */
+export type GEN_AI_FUNCTION_ID_TYPE = string;
+
 // Path: model/attributes/gen_ai/gen_ai__input__messages.json
 
 /**
@@ -10424,6 +10444,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [GEN_AI_COST_OUTPUT_TOKENS]: 'double',
   [GEN_AI_COST_TOTAL_TOKENS]: 'double',
   [GEN_AI_EMBEDDINGS_INPUT]: 'string',
+  [GEN_AI_FUNCTION_ID]: 'string',
   [GEN_AI_INPUT_MESSAGES]: 'string',
   [GEN_AI_OPERATION_NAME]: 'string',
   [GEN_AI_OPERATION_TYPE]: 'string',
@@ -10915,6 +10936,7 @@ export type AttributeName =
   | typeof GEN_AI_COST_OUTPUT_TOKENS
   | typeof GEN_AI_COST_TOTAL_TOKENS
   | typeof GEN_AI_EMBEDDINGS_INPUT
+  | typeof GEN_AI_FUNCTION_ID
   | typeof GEN_AI_INPUT_MESSAGES
   | typeof GEN_AI_OPERATION_NAME
   | typeof GEN_AI_OPERATION_TYPE
@@ -13122,6 +13144,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: "What's the weather in Paris?",
     changelog: [{ version: '0.3.1', prs: [195] }],
+  },
+  [GEN_AI_FUNCTION_ID]: {
+    brief:
+      'Framework-specific tracing label for the execution of a function or other unit of execution in a generative AI system.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'my-awesome-function',
+    changelog: [{ version: 'next', prs: [308], description: 'Added gen_ai.function_id attribute' }],
   },
   [GEN_AI_INPUT_MESSAGES]: {
     brief:
@@ -17342,6 +17375,7 @@ export type Attributes = {
   [GEN_AI_COST_OUTPUT_TOKENS]?: GEN_AI_COST_OUTPUT_TOKENS_TYPE;
   [GEN_AI_COST_TOTAL_TOKENS]?: GEN_AI_COST_TOTAL_TOKENS_TYPE;
   [GEN_AI_EMBEDDINGS_INPUT]?: GEN_AI_EMBEDDINGS_INPUT_TYPE;
+  [GEN_AI_FUNCTION_ID]?: GEN_AI_FUNCTION_ID_TYPE;
   [GEN_AI_INPUT_MESSAGES]?: GEN_AI_INPUT_MESSAGES_TYPE;
   [GEN_AI_OPERATION_NAME]?: GEN_AI_OPERATION_NAME_TYPE;
   [GEN_AI_OPERATION_TYPE]?: GEN_AI_OPERATION_TYPE_TYPE;
