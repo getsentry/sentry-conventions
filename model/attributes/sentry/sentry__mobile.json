@@ -1,0 +1,15 @@
+{
+  "key": "sentry.mobile",
+  "brief": "Whether the application is using a mobile SDK. Computed by Relay and should not be set by SDKs.",
+  "type": "boolean",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": true,
+  "changelog": [
+    {
+      "version": "next"
+    }
+  ]
+}

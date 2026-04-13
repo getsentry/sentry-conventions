@@ -1,0 +1,15 @@
+{
+  "key": "sentry.main_thread",
+  "brief": "Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs.",
+  "type": "boolean",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": true,
+  "changelog": [
+    {
+      "version": "next"
+    }
+  ]
+}

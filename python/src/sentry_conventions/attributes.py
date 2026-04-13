@@ -4500,6 +4500,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "server"
     """
 
+    # Path: model/attributes/sentry/sentry__main_thread.json
+    SENTRY_MAIN_THREAD: Literal["sentry.main_thread"] = "sentry.main_thread"
+    """Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs.
+
+    Type: bool
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: true
+    """
+
     # Path: model/attributes/sentry/sentry__message__parameter__[key].json
     SENTRY_MESSAGE_PARAMETER_KEY: Literal["sentry.message.parameter.<key>"] = (
         "sentry.message.parameter.<key>"
@@ -4522,6 +4532,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Example: "Hello, {name}!"
+    """
+
+    # Path: model/attributes/sentry/sentry__mobile.json
+    SENTRY_MOBILE: Literal["sentry.mobile"] = "sentry.mobile"
+    """Whether the application is using a mobile SDK. Computed by Relay and should not be set by SDKs.
+
+    Type: bool
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: true
     """
 
     # Path: model/attributes/sentry/sentry__module__[key].json
@@ -10347,6 +10367,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.3.1", prs=[190]),
         ],
     ),
+    "sentry.main_thread": AttributeMetadata(
+        brief="Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs.",
+        type=AttributeType.BOOLEAN,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=True,
+        changelog=[
+            ChangelogEntry(version="next"),
+        ],
+    ),
     "sentry.message.parameter.<key>": AttributeMetadata(
         brief="A parameter used in the message template. <key> can either be the number that represent the parameter's position in the template string (sentry.message.parameter.0, sentry.message.parameter.1, etc) or the parameter's name (sentry.message.parameter.item_id, sentry.message.parameter.user_id, etc)",
         type=AttributeType.STRING,
@@ -10365,6 +10395,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="Hello, {name}!",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[116]),
+        ],
+    ),
+    "sentry.mobile": AttributeMetadata(
+        brief="Whether the application is using a mobile SDK. Computed by Relay and should not be set by SDKs.",
+        type=AttributeType.BOOLEAN,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=True,
+        changelog=[
+            ChangelogEntry(version="next"),
         ],
     ),
     "sentry.module.<key>": AttributeMetadata(
@@ -11952,8 +11992,10 @@ Attributes = TypedDict(
         "sentry.idle_span_finish_reason": str,
         "sentry.is_remote": bool,
         "sentry.kind": str,
+        "sentry.main_thread": bool,
         "sentry.message.parameter.<key>": str,
         "sentry.message.template": str,
+        "sentry.mobile": bool,
         "sentry.module.<key>": str,
         "sentry.nextjs.ssr.function.route": str,
         "sentry.nextjs.ssr.function.type": str,
