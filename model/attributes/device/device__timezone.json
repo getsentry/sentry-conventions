@@ -1,0 +1,18 @@
+{
+  "key": "device.timezone",
+  "brief": "The timezone of the device.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "Europe/Vienna",
+  "alias": ["culture.timezone"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [303],
+      "description": "Added device.timezone as an alias for culture.timezone"
+    }
+  ]
+}
