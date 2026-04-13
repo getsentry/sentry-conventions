@@ -997,6 +997,8 @@ export type APP_START_VALUE_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link TIME_TO_FULL_DISPLAY} `time_to_full_display`
+ *
  * @example 1234.56
  */
 export const APP_TTFD_VALUE = 'app.ttfd.value';
@@ -1016,6 +1018,8 @@ export type APP_TTFD_VALUE_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link TIME_TO_INITIAL_DISPLAY} `time_to_initial_display`
  *
  * @example 1234.56
  */
@@ -8859,6 +8863,52 @@ export const TIMBER_TAG = 'timber.tag';
  */
 export type TIMBER_TAG_TYPE = string;
 
+// Path: model/attributes/time_to_full_display.json
+
+/**
+ * The duration of time to full display in milliseconds `time_to_full_display`
+ *
+ * Attribute Value Type: `number` {@link TIME_TO_FULL_DISPLAY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link APP_TTFD_VALUE} `app.ttfd.value`
+ *
+ * @deprecated Use {@link APP_TTFD_VALUE} (app.ttfd.value) instead - Old namespace-less attribute, to be replaced with app.ttfd.value
+ * @example 1234.56
+ */
+export const TIME_TO_FULL_DISPLAY = 'time_to_full_display';
+
+/**
+ * Type for {@link TIME_TO_FULL_DISPLAY} time_to_full_display
+ */
+export type TIME_TO_FULL_DISPLAY_TYPE = number;
+
+// Path: model/attributes/time_to_initial_display.json
+
+/**
+ * The duration of time to initial display in milliseconds `time_to_initial_display`
+ *
+ * Attribute Value Type: `number` {@link TIME_TO_INITIAL_DISPLAY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link APP_TTID_VALUE} `app.ttid.value`
+ *
+ * @deprecated Use {@link APP_TTID_VALUE} (app.ttid.value) instead - Old namespace-less attribute, to be replaced with app.ttid.value
+ * @example 1234.56
+ */
+export const TIME_TO_INITIAL_DISPLAY = 'time_to_initial_display';
+
+/**
+ * Type for {@link TIME_TO_INITIAL_DISPLAY} time_to_initial_display
+ */
+export type TIME_TO_INITIAL_DISPLAY_TYPE = number;
+
 // Path: model/attributes/transaction.json
 
 /**
@@ -10823,6 +10873,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [THREAD_ID]: 'integer',
   [THREAD_NAME]: 'string',
   [TIMBER_TAG]: 'string',
+  [TIME_TO_FULL_DISPLAY]: 'double',
+  [TIME_TO_INITIAL_DISPLAY]: 'double',
   [TRANSACTION]: 'string',
   [TTFB]: 'double',
   [TTFB_REQUESTTIME]: 'double',
@@ -11319,6 +11371,8 @@ export type AttributeName =
   | typeof THREAD_ID
   | typeof THREAD_NAME
   | typeof TIMBER_TAG
+  | typeof TIME_TO_FULL_DISPLAY
+  | typeof TIME_TO_INITIAL_DISPLAY
   | typeof TRANSACTION
   | typeof TTFB
   | typeof TTFB_REQUESTTIME
@@ -12049,6 +12103,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 1234.56,
+    aliases: [TIME_TO_FULL_DISPLAY],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: 'next', prs: [313], description: 'Added app.ttfd.value attribute' }],
   },
@@ -12060,6 +12115,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 1234.56,
+    aliases: [TIME_TO_INITIAL_DISPLAY],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: 'next', prs: [313], description: 'Added app.ttid.value attribute' }],
   },
@@ -16645,6 +16701,38 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['sentry.java.android'],
     changelog: [{ version: '0.3.0', prs: [183] }],
   },
+  [TIME_TO_FULL_DISPLAY]: {
+    brief: 'The duration of time to full display in milliseconds',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1234.56,
+    deprecation: {
+      replacement: 'app.ttfd.value',
+      reason: 'Old namespace-less attribute, to be replaced with app.ttfd.value',
+    },
+    aliases: [APP_TTFD_VALUE],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [{ version: 'next', prs: [313], description: 'Added and deprecated in favor of app.ttfd.value' }],
+  },
+  [TIME_TO_INITIAL_DISPLAY]: {
+    brief: 'The duration of time to initial display in milliseconds',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1234.56,
+    deprecation: {
+      replacement: 'app.ttid.value',
+      reason: 'Old namespace-less attribute, to be replaced with app.ttid.value',
+    },
+    aliases: [APP_TTID_VALUE],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [{ version: 'next', prs: [313], description: 'Added and deprecated in favor of app.ttid.value' }],
+  },
   [TRANSACTION]: {
     brief: 'The sentry transaction (segment name).',
     type: 'string',
@@ -17857,6 +17945,8 @@ export type Attributes = {
   [THREAD_ID]?: THREAD_ID_TYPE;
   [THREAD_NAME]?: THREAD_NAME_TYPE;
   [TIMBER_TAG]?: TIMBER_TAG_TYPE;
+  [TIME_TO_FULL_DISPLAY]?: TIME_TO_FULL_DISPLAY_TYPE;
+  [TIME_TO_INITIAL_DISPLAY]?: TIME_TO_INITIAL_DISPLAY_TYPE;
   [TRANSACTION]?: TRANSACTION_TYPE;
   [TTFB]?: TTFB_TYPE;
   [TTFB_REQUESTTIME]?: TTFB_REQUESTTIME_TYPE;

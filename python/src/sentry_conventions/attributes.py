@@ -220,6 +220,8 @@ class _AttributeNamesMeta(type):
         "_SENTRY_SEGMENT_ID",
         "SENTRY_SOURCE",
         "SENTRY_TRACE_PARENT_SPAN_ID",
+        "TIME_TO_FULL_DISPLAY",
+        "TIME_TO_INITIAL_DISPLAY",
         "TRANSACTION",
         "TTFB_REQUESTTIME",
         "TTFB",
@@ -750,6 +752,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Aliases: time_to_full_display
     Example: 1234.56
     """
 
@@ -760,6 +763,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Aliases: time_to_initial_display
     Example: 1234.56
     """
 
@@ -4973,6 +4977,32 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "MyTag"
     """
 
+    # Path: model/attributes/time_to_full_display.json
+    TIME_TO_FULL_DISPLAY: Literal["time_to_full_display"] = "time_to_full_display"
+    """The duration of time to full display in milliseconds
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: app.ttfd.value
+    DEPRECATED: Use app.ttfd.value instead - Old namespace-less attribute, to be replaced with app.ttfd.value
+    Example: 1234.56
+    """
+
+    # Path: model/attributes/time_to_initial_display.json
+    TIME_TO_INITIAL_DISPLAY: Literal["time_to_initial_display"] = (
+        "time_to_initial_display"
+    )
+    """The duration of time to initial display in milliseconds
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: app.ttid.value
+    DEPRECATED: Use app.ttid.value instead - Old namespace-less attribute, to be replaced with app.ttid.value
+    Example: 1234.56
+    """
+
     # Path: model/attributes/transaction.json
     TRANSACTION: Literal["transaction"] = "transaction"
     """The sentry transaction (segment name).
@@ -6378,6 +6408,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1234.56,
+        aliases=["time_to_full_display"],
         sdks=[
             "sentry.cocoa",
             "sentry.java.android",
@@ -6396,6 +6427,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1234.56,
+        aliases=["time_to_initial_display"],
         sdks=[
             "sentry.cocoa",
             "sentry.java.android",
@@ -10988,6 +11020,58 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.3.0", prs=[183]),
         ],
     ),
+    "time_to_full_display": AttributeMetadata(
+        brief="The duration of time to full display in milliseconds",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=1234.56,
+        deprecation=DeprecationInfo(
+            replacement="app.ttfd.value",
+            reason="Old namespace-less attribute, to be replaced with app.ttfd.value",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["app.ttfd.value"],
+        sdks=[
+            "sentry.cocoa",
+            "sentry.java.android",
+            "sentry.javascript.react-native",
+            "sentry.dart.flutter",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[313],
+                description="Added and deprecated in favor of app.ttfd.value",
+            ),
+        ],
+    ),
+    "time_to_initial_display": AttributeMetadata(
+        brief="The duration of time to initial display in milliseconds",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=1234.56,
+        deprecation=DeprecationInfo(
+            replacement="app.ttid.value",
+            reason="Old namespace-less attribute, to be replaced with app.ttid.value",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["app.ttid.value"],
+        sdks=[
+            "sentry.cocoa",
+            "sentry.java.android",
+            "sentry.javascript.react-native",
+            "sentry.dart.flutter",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[313],
+                description="Added and deprecated in favor of app.ttid.value",
+            ),
+        ],
+    ),
     "transaction": AttributeMetadata(
         brief="The sentry transaction (segment name).",
         type=AttributeType.STRING,
@@ -12229,6 +12313,8 @@ Attributes = TypedDict(
         "thread.id": int,
         "thread.name": str,
         "timber.tag": str,
+        "time_to_full_display": float,
+        "time_to_initial_display": float,
         "transaction": str,
         "ttfb.requestTime": float,
         "ttfb": float,

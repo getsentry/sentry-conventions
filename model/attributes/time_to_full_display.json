@@ -1,0 +1,24 @@
+{
+  "key": "time_to_full_display",
+  "brief": "The duration of time to full display in milliseconds",
+  "type": "double",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": 1234.56,
+  "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
+  "alias": ["app.ttfd.value"],
+  "deprecation": {
+    "replacement": "app.ttfd.value",
+    "reason": "Old namespace-less attribute, to be replaced with app.ttfd.value",
+    "_status": "backfill"
+  },
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [313],
+      "description": "Added and deprecated in favor of app.ttfd.value"
+    }
+  ]
+}
