@@ -150,8 +150,6 @@ class _AttributeNamesMeta(type):
         "DB_STATEMENT",
         "DB_SYSTEM",
         "DEVICE_CONNECTION_TYPE",
-        "DEVICE_LOCALE",
-        "DEVICE_TIMEZONE",
         "DEVICEMEMORY",
         "EFFECTIVECONNECTIONTYPE",
         "ENVIRONMENT",
@@ -1246,7 +1244,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: device.locale
     Example: "en-US"
     """
 
@@ -1257,7 +1254,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: device.timezone
     Example: "Europe/Vienna"
     """
 
@@ -1595,18 +1591,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
     """
 
-    # Path: model/attributes/device/device__locale.json
-    DEVICE_LOCALE: Literal["device.locale"] = "device.locale"
-    """The locale of the device.
-
-    Type: str
-    Contains PII: maybe
-    Defined in OTEL: No
-    Aliases: culture.locale
-    DEPRECATED: Use culture.locale instead - This attribute is being deprecated in favor of culture.locale
-    Example: "en-US"
-    """
-
     # Path: model/attributes/device/device__low_memory.json
     DEVICE_LOW_MEMORY: Literal["device.low_memory"] = "device.low_memory"
     """Whether the device was low on memory.
@@ -1795,18 +1779,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Example: "nominal"
-    """
-
-    # Path: model/attributes/device/device__timezone.json
-    DEVICE_TIMEZONE: Literal["device.timezone"] = "device.timezone"
-    """The timezone of the device.
-
-    Type: str
-    Contains PII: maybe
-    Defined in OTEL: No
-    Aliases: culture.timezone
-    DEPRECATED: Use culture.timezone instead - This attribute is being deprecated in favor of culture.timezone
-    Example: "Europe/Vienna"
     """
 
     # Path: model/attributes/device/device__usable_memory.json
@@ -7077,7 +7049,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="en-US",
-        aliases=["device.locale"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[243]),
         ],
@@ -7088,7 +7059,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="Europe/Vienna",
-        aliases=["device.timezone"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[243]),
         ],
@@ -7498,26 +7468,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
-    "device.locale": AttributeMetadata(
-        brief="The locale of the device.",
-        type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
-        is_in_otel=False,
-        example="en-US",
-        deprecation=DeprecationInfo(
-            replacement="culture.locale",
-            reason="This attribute is being deprecated in favor of culture.locale",
-            status=DeprecationStatus.BACKFILL,
-        ),
-        aliases=["culture.locale"],
-        changelog=[
-            ChangelogEntry(
-                version="next",
-                prs=[303],
-                description="Added and deprecated device.locale in favor of culture.locale",
-            ),
-        ],
-    ),
     "device.low_memory": AttributeMetadata(
         brief="Whether the device was low on memory.",
         type=AttributeType.BOOLEAN,
@@ -7765,26 +7715,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 version="next",
                 prs=[303],
                 description="Added device.thermal_state attribute",
-            ),
-        ],
-    ),
-    "device.timezone": AttributeMetadata(
-        brief="The timezone of the device.",
-        type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
-        is_in_otel=False,
-        example="Europe/Vienna",
-        deprecation=DeprecationInfo(
-            replacement="culture.timezone",
-            reason="This attribute is being deprecated in favor of culture.timezone",
-            status=DeprecationStatus.BACKFILL,
-        ),
-        aliases=["culture.timezone"],
-        changelog=[
-            ChangelogEntry(
-                version="next",
-                prs=[303],
-                description="Added and deprecated device.timezone in favor of culture.timezone",
             ),
         ],
     ),
@@ -12294,7 +12224,6 @@ Attributes = TypedDict(
         "device.free_memory": int,
         "device.free_storage": int,
         "device.id": str,
-        "device.locale": str,
         "device.low_memory": bool,
         "device.manufacturer": str,
         "device.memory.estimated_capacity": int,
@@ -12313,7 +12242,6 @@ Attributes = TypedDict(
         "device.simulator": bool,
         "device.storage_size": int,
         "device.thermal_state": str,
-        "device.timezone": str,
         "device.usable_memory": int,
         "deviceMemory": str,
         "effectiveConnectionType": str,

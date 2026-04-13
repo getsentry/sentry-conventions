@@ -1534,52 +1534,6 @@
       ]
     },
     {
-      "key": "device.locale",
-      "brief": "The locale of the device.",
-      "type": "string",
-      "pii": {
-        "key": "maybe"
-      },
-      "is_in_otel": false,
-      "example": "en-US",
-      "deprecation": {
-        "_status": "backfill",
-        "replacement": "culture.locale",
-        "reason": "This attribute is being deprecated in favor of culture.locale"
-      },
-      "alias": ["culture.locale"],
-      "changelog": [
-        {
-          "version": "next",
-          "prs": [303],
-          "description": "Added and deprecated device.locale in favor of culture.locale"
-        }
-      ]
-    },
-    {
-      "key": "device.timezone",
-      "brief": "The timezone of the device.",
-      "type": "string",
-      "pii": {
-        "key": "maybe"
-      },
-      "is_in_otel": false,
-      "example": "Europe/Vienna",
-      "deprecation": {
-        "_status": "backfill",
-        "replacement": "culture.timezone",
-        "reason": "This attribute is being deprecated in favor of culture.timezone"
-      },
-      "alias": ["culture.timezone"],
-      "changelog": [
-        {
-          "version": "next",
-          "prs": [303],
-          "description": "Added and deprecated device.timezone in favor of culture.timezone"
-        }
-      ]
-    },
-    {
       "key": "gen_ai.prompt",
       "brief": "The input messages sent to the model",
       "type": "string",
