@@ -1244,7 +1244,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: device.locale
     Example: "en-US"
     """
 
@@ -1255,7 +1254,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: device.timezone
     Example: "Europe/Vienna"
     """
 
@@ -1600,7 +1598,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: culture.locale
     Example: "en-US"
     """
 
@@ -1801,7 +1798,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: culture.timezone
     Example: "Europe/Vienna"
     """
 
@@ -7073,7 +7069,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="en-US",
-        aliases=["device.locale"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[243]),
         ],
@@ -7084,7 +7079,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="Europe/Vienna",
-        aliases=["device.timezone"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[243]),
         ],
@@ -7500,12 +7494,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="en-US",
-        aliases=["culture.locale"],
         changelog=[
             ChangelogEntry(
-                version="next",
-                prs=[303],
-                description="Added device.locale as an alias for culture.locale",
+                version="next", prs=[303], description="Added device.locale attribute"
             ),
         ],
     ),
@@ -7765,12 +7756,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="Europe/Vienna",
-        aliases=["culture.timezone"],
         changelog=[
             ChangelogEntry(
-                version="next",
-                prs=[303],
-                description="Added device.timezone as an alias for culture.timezone",
+                version="next", prs=[303], description="Added device.timezone attribute"
             ),
         ],
     ),

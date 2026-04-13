@@ -7,12 +7,11 @@
   },
   "is_in_otel": false,
   "example": "en-US",
-  "alias": ["culture.locale"],
   "changelog": [
     {
       "version": "next",
       "prs": [303],
-      "description": "Added device.locale as an alias for culture.locale"
+      "description": "Added device.locale attribute"
     }
   ]
 }

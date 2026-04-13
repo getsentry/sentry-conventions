@@ -7,7 +7,6 @@
   },
   "is_in_otel": false,
   "example": "en-US",
-  "alias": ["device.locale"],
   "changelog": [
     {
       "version": "0.4.0",

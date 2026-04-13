@@ -1890,8 +1890,6 @@ export type CULTURE_IS_24_HOUR_FORMAT_TYPE = boolean;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link DEVICE_LOCALE} `device.locale`
- *
  * @example "en-US"
  */
 export const CULTURE_LOCALE = 'culture.locale';
@@ -1911,8 +1909,6 @@ export type CULTURE_LOCALE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
- *
- * Aliases: {@link DEVICE_TIMEZONE} `device.timezone`
  *
  * @example "Europe/Vienna"
  */
@@ -2603,8 +2599,6 @@ export type DEVICE_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link CULTURE_LOCALE} `culture.locale`
- *
  * @example "en-US"
  */
 export const DEVICE_LOCALE = 'device.locale';
@@ -2988,8 +2982,6 @@ export type DEVICE_THERMAL_STATE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
- *
- * Aliases: {@link CULTURE_TIMEZONE} `culture.timezone`
  *
  * @example "Europe/Vienna"
  */
@@ -12967,7 +12959,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'en-US',
-    aliases: [DEVICE_LOCALE],
     changelog: [{ version: '0.4.0', prs: [243] }],
   },
   [CULTURE_TIMEZONE]: {
@@ -12978,7 +12969,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'Europe/Vienna',
-    aliases: [DEVICE_TIMEZONE],
     changelog: [{ version: '0.4.0', prs: [243] }],
   },
   [DB_COLLECTION_NAME]: {
@@ -13368,8 +13358,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'en-US',
-    aliases: [CULTURE_LOCALE],
-    changelog: [{ version: 'next', prs: [303], description: 'Added device.locale as an alias for culture.locale' }],
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.locale attribute' }],
   },
   [DEVICE_LOW_MEMORY]: {
     brief: 'Whether the device was low on memory.',
@@ -13582,8 +13571,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'Europe/Vienna',
-    aliases: [CULTURE_TIMEZONE],
-    changelog: [{ version: 'next', prs: [303], description: 'Added device.timezone as an alias for culture.timezone' }],
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.timezone attribute' }],
   },
   [DEVICE_USABLE_MEMORY]: {
     brief: 'Memory usable for the app in bytes.',
