@@ -642,7 +642,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     APP_FRAMES_DELAY_VALUE: Literal["app.frames.delay.value"] = "app.frames.delay.value"
     """The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).
 
-    Type: float
+    Type: int
     Contains PII: maybe
     Defined in OTEL: No
     Aliases: frames.delay
@@ -6209,7 +6209,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ),
     "app.frames.delay.value": AttributeMetadata(
         brief="The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).",
-        type=AttributeType.DOUBLE,
+        type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=5,
@@ -11927,7 +11927,7 @@ Attributes = TypedDict(
         "ai.total_tokens.used": int,
         "ai.warnings": List[str],
         "app.build": str,
-        "app.frames.delay.value": float,
+        "app.frames.delay.value": int,
         "app.frames.frozen.count": int,
         "app.frames.slow.count": int,
         "app.frames.total.count": int,

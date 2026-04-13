@@ -10487,7 +10487,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [AI_TOTAL_TOKENS_USED]: 'integer',
   [AI_WARNINGS]: 'string[]',
   [APP_BUILD]: 'string',
-  [APP_FRAMES_DELAY_VALUE]: 'double',
+  [APP_FRAMES_DELAY_VALUE]: 'integer',
   [APP_FRAMES_FROZEN_COUNT]: 'integer',
   [APP_FRAMES_SLOW_COUNT]: 'integer',
   [APP_FRAMES_TOTAL_COUNT]: 'integer',
@@ -11963,7 +11963,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [APP_FRAMES_DELAY_VALUE]: {
     brief:
       'The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).',
-    type: 'double',
+    type: 'integer',
     pii: {
       isPii: 'maybe',
     },
