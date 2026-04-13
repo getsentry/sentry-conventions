@@ -7,17 +7,17 @@
   },
   "is_in_otel": false,
   "example": "cold",
-  "alias": ["app.start.type"],
+  "alias": ["app.vitals.start.type"],
   "deprecation": {
-    "replacement": "app.start.type",
-    "reason": "Old namespace-less attribute, to be replaced with app.start.type",
+    "replacement": "app.vitals.start.type",
+    "reason": "Replaced by app.vitals.start.type to align with the app.vitals.* namespace for mobile performance attributes",
     "_status": "backfill"
   },
   "changelog": [
     {
       "version": "next",
       "prs": [313],
-      "description": "Deprecated in favor of app.start.type"
+      "description": "Deprecated in favor of app.vitals.start.type"
     },
     {
       "version": "0.1.0",

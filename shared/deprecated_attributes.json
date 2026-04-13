@@ -10,17 +10,17 @@
       },
       "is_in_otel": false,
       "example": "cold",
-      "alias": ["app.start.type"],
+      "alias": ["app.vitals.start.type"],
       "deprecation": {
-        "replacement": "app.start.type",
-        "reason": "Old namespace-less attribute, to be replaced with app.start.type",
+        "replacement": "app.vitals.start.type",
+        "reason": "Replaced by app.vitals.start.type to align with the app.vitals.* namespace for mobile performance attributes",
         "_status": "backfill"
       },
       "changelog": [
         {
           "version": "next",
           "prs": [313],
-          "description": "Deprecated in favor of app.start.type"
+          "description": "Deprecated in favor of app.vitals.start.type"
         },
         {
           "version": "0.1.0",
@@ -407,10 +407,10 @@
       "is_in_otel": false,
       "example": 1234.56,
       "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
-      "alias": ["app.ttfd.value"],
+      "alias": ["app.vitals.ttfd.value"],
       "deprecation": {
-        "replacement": "app.ttfd.value",
-        "reason": "Old namespace-less attribute, to be replaced with app.ttfd.value",
+        "replacement": "app.vitals.ttfd.value",
+        "reason": "Replaced by app.vitals.ttfd.value to align with the app.vitals.* namespace for mobile performance attributes",
         "_status": "backfill"
       },
       "changelog": [
@@ -431,10 +431,10 @@
       "is_in_otel": false,
       "example": 1234.56,
       "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
-      "alias": ["app.ttid.value"],
+      "alias": ["app.vitals.ttid.value"],
       "deprecation": {
-        "replacement": "app.ttid.value",
-        "reason": "Old namespace-less attribute, to be replaced with app.ttid.value",
+        "replacement": "app.vitals.ttid.value",
+        "reason": "Replaced by app.vitals.ttid.value to align with the app.vitals.* namespace for mobile performance attributes",
         "_status": "backfill"
       },
       "changelog": [
@@ -1597,10 +1597,10 @@
       },
       "is_in_otel": false,
       "example": 5,
-      "alias": ["app.frames.delay.value"],
+      "alias": ["app.vitals.frames.delay.value"],
       "deprecation": {
-        "replacement": "app.frames.delay.value",
-        "reason": "Old frames.* attribute, to be replaced with app.frames.delay.value for app namespacing",
+        "replacement": "app.vitals.frames.delay.value",
+        "reason": "Replaced by app.vitals.frames.delay.value to align with the app.vitals.* namespace for mobile performance attributes",
         "_status": "backfill"
       },
       "changelog": [
@@ -1627,10 +1627,10 @@
       },
       "is_in_otel": false,
       "example": 3,
-      "alias": ["app.frames.frozen.count"],
+      "alias": ["app.vitals.frames.frozen.count"],
       "deprecation": {
-        "replacement": "app.frames.frozen.count",
-        "reason": "Old frames.* attribute, to be replaced with app.frames.frozen.count for app namespacing",
+        "replacement": "app.vitals.frames.frozen.count",
+        "reason": "Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes",
         "_status": "backfill"
       },
       "changelog": [
@@ -1657,10 +1657,10 @@
       },
       "is_in_otel": false,
       "example": 1,
-      "alias": ["app.frames.slow.count"],
+      "alias": ["app.vitals.frames.slow.count"],
       "deprecation": {
-        "replacement": "app.frames.slow.count",
-        "reason": "Old frames.* attribute, to be replaced with app.frames.slow.count for app namespacing",
+        "replacement": "app.vitals.frames.slow.count",
+        "reason": "Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes",
         "_status": "backfill"
       },
       "changelog": [
@@ -1687,10 +1687,10 @@
       },
       "is_in_otel": false,
       "example": 60,
-      "alias": ["app.frames.total.count"],
+      "alias": ["app.vitals.frames.total.count"],
       "deprecation": {
-        "replacement": "app.frames.total.count",
-        "reason": "Old frames.* attribute, to be replaced with app.frames.total.count for app namespacing",
+        "replacement": "app.vitals.frames.total.count",
+        "reason": "Replaced by app.vitals.frames.total.count to align with the app.vitals.* namespace for mobile performance attributes",
         "_status": "backfill"
       },
       "changelog": [

@@ -1,19 +1,18 @@
 {
-  "key": "app.start.type",
-  "brief": "The type of app start, for example `cold` or `warm`",
-  "type": "string",
+  "key": "app.vitals.start.warm.value",
+  "brief": "The duration of a warm app start in milliseconds",
+  "type": "double",
   "pii": {
     "key": "maybe"
   },
   "is_in_otel": false,
-  "alias": ["app_start_type"],
   "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
-  "example": "cold",
+  "example": 1234.56,
   "changelog": [
     {
       "version": "next",
       "prs": [313],
-      "description": "Added app.start.type attribute"
+      "description": "Added app.vitals.start.warm.value attribute"
     }
   ]
 }

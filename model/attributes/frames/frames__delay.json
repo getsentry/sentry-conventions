@@ -7,10 +7,10 @@
   },
   "is_in_otel": false,
   "example": 5,
-  "alias": ["app.frames.delay.value"],
+  "alias": ["app.vitals.frames.delay.value"],
   "deprecation": {
-    "replacement": "app.frames.delay.value",
-    "reason": "Old frames.* attribute, to be replaced with app.frames.delay.value for app namespacing",
+    "replacement": "app.vitals.frames.delay.value",
+    "reason": "Replaced by app.vitals.frames.delay.value to align with the app.vitals.* namespace for mobile performance attributes",
     "_status": "backfill"
   },
   "changelog": [

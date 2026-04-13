@@ -7,10 +7,10 @@
   },
   "is_in_otel": false,
   "example": 3,
-  "alias": ["app.frames.frozen.count"],
+  "alias": ["app.vitals.frames.frozen.count"],
   "deprecation": {
-    "replacement": "app.frames.frozen.count",
-    "reason": "Old frames.* attribute, to be replaced with app.frames.frozen.count for app namespacing",
+    "replacement": "app.vitals.frames.frozen.count",
+    "reason": "Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes",
     "_status": "backfill"
   },
   "changelog": [

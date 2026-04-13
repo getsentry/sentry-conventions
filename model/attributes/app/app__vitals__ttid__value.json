@@ -1,5 +1,5 @@
 {
-  "key": "app.ttid.value",
+  "key": "app.vitals.ttid.value",
   "brief": "The duration of time to initial display in milliseconds",
   "type": "double",
   "pii": {
@@ -13,7 +13,7 @@
     {
       "version": "next",
       "prs": [313],
-      "description": "Added app.ttid.value attribute"
+      "description": "Added app.vitals.ttid.value attribute"
     }
   ]
 }

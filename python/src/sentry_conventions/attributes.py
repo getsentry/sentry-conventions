@@ -136,7 +136,7 @@ class _AttributeNamesMeta(type):
         "AI_TOTAL_COST",
         "AI_TOTAL_TOKENS_USED",
         "AI_WARNINGS",
-        "_APP_START_TYPE",
+        "APP_START_TYPE",
         "CLS_SOURCE_KEY",
         "CLS",
         "CODE_FILEPATH",
@@ -638,52 +638,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "1"
     """
 
-    # Path: model/attributes/app/app__frames__delay__value.json
-    APP_FRAMES_DELAY_VALUE: Literal["app.frames.delay.value"] = "app.frames.delay.value"
-    """The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).
-
-    Type: int
-    Contains PII: maybe
-    Defined in OTEL: No
-    Aliases: frames.delay
-    Example: 5
-    """
-
-    # Path: model/attributes/app/app__frames__frozen__count.json
-    APP_FRAMES_FROZEN_COUNT: Literal["app.frames.frozen.count"] = (
-        "app.frames.frozen.count"
-    )
-    """The number of frozen frames rendered during the lifetime of the span.
-
-    Type: int
-    Contains PII: maybe
-    Defined in OTEL: No
-    Aliases: frames.frozen
-    Example: 3
-    """
-
-    # Path: model/attributes/app/app__frames__slow__count.json
-    APP_FRAMES_SLOW_COUNT: Literal["app.frames.slow.count"] = "app.frames.slow.count"
-    """The number of slow frames rendered during the lifetime of the span.
-
-    Type: int
-    Contains PII: maybe
-    Defined in OTEL: No
-    Aliases: frames.slow
-    Example: 1
-    """
-
-    # Path: model/attributes/app/app__frames__total__count.json
-    APP_FRAMES_TOTAL_COUNT: Literal["app.frames.total.count"] = "app.frames.total.count"
-    """The number of total frames rendered during the lifetime of the span.
-
-    Type: int
-    Contains PII: maybe
-    Defined in OTEL: No
-    Aliases: frames.total
-    Example: 60
-    """
-
     # Path: model/attributes/app/app__identifier.json
     APP_IDENTIFIER: Literal["app.identifier"] = "app.identifier"
     """Version-independent application identifier, often a dotted bundle ID.
@@ -714,27 +668,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "My App"
     """
 
-    # Path: model/attributes/app/app__start__type.json
-    APP_START_TYPE: Literal["app.start.type"] = "app.start.type"
-    """The type of app start, for example `cold` or `warm`
-
-    Type: str
-    Contains PII: maybe
-    Defined in OTEL: No
-    Aliases: app_start_type
-    Example: "cold"
-    """
-
-    # Path: model/attributes/app/app__start__value.json
-    APP_START_VALUE: Literal["app.start.value"] = "app.start.value"
-    """The duration of the app start in milliseconds
-
-    Type: float
-    Contains PII: maybe
-    Defined in OTEL: No
-    Example: 1234.56
-    """
-
     # Path: model/attributes/app/app__start_time.json
     APP_START_TIME: Literal["app.start_time"] = "app.start_time"
     """Formatted UTC timestamp when the user started the application.
@@ -743,28 +676,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Example: "2025-01-01T00:00:00.000Z"
-    """
-
-    # Path: model/attributes/app/app__ttfd__value.json
-    APP_TTFD_VALUE: Literal["app.ttfd.value"] = "app.ttfd.value"
-    """The duration of time to full display in milliseconds
-
-    Type: float
-    Contains PII: maybe
-    Defined in OTEL: No
-    Aliases: time_to_full_display
-    Example: 1234.56
-    """
-
-    # Path: model/attributes/app/app__ttid__value.json
-    APP_TTID_VALUE: Literal["app.ttid.value"] = "app.ttid.value"
-    """The duration of time to initial display in milliseconds
-
-    Type: float
-    Contains PII: maybe
-    Defined in OTEL: No
-    Aliases: time_to_initial_display
-    Example: 1234.56
     """
 
     # Path: model/attributes/app/app__version.json
@@ -777,15 +688,124 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "1.0.0"
     """
 
+    # Path: model/attributes/app/app__vitals__frames__delay__value.json
+    APP_VITALS_FRAMES_DELAY_VALUE: Literal["app.vitals.frames.delay.value"] = (
+        "app.vitals.frames.delay.value"
+    )
+    """The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: frames.delay
+    Example: 5
+    """
+
+    # Path: model/attributes/app/app__vitals__frames__frozen__count.json
+    APP_VITALS_FRAMES_FROZEN_COUNT: Literal["app.vitals.frames.frozen.count"] = (
+        "app.vitals.frames.frozen.count"
+    )
+    """The number of frozen frames rendered during the lifetime of the span.
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: frames.frozen
+    Example: 3
+    """
+
+    # Path: model/attributes/app/app__vitals__frames__slow__count.json
+    APP_VITALS_FRAMES_SLOW_COUNT: Literal["app.vitals.frames.slow.count"] = (
+        "app.vitals.frames.slow.count"
+    )
+    """The number of slow frames rendered during the lifetime of the span.
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: frames.slow
+    Example: 1
+    """
+
+    # Path: model/attributes/app/app__vitals__frames__total__count.json
+    APP_VITALS_FRAMES_TOTAL_COUNT: Literal["app.vitals.frames.total.count"] = (
+        "app.vitals.frames.total.count"
+    )
+    """The number of total frames rendered during the lifetime of the span.
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: frames.total
+    Example: 60
+    """
+
+    # Path: model/attributes/app/app__vitals__start__cold__value.json
+    APP_VITALS_START_COLD_VALUE: Literal["app.vitals.start.cold.value"] = (
+        "app.vitals.start.cold.value"
+    )
+    """The duration of a cold app start in milliseconds
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: 1234.56
+    """
+
+    # Path: model/attributes/app/app__vitals__start__type.json
+    APP_VITALS_START_TYPE: Literal["app.vitals.start.type"] = "app.vitals.start.type"
+    """The type of app start, for example `cold` or `warm`
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: app_start_type
+    Example: "cold"
+    """
+
+    # Path: model/attributes/app/app__vitals__start__warm__value.json
+    APP_VITALS_START_WARM_VALUE: Literal["app.vitals.start.warm.value"] = (
+        "app.vitals.start.warm.value"
+    )
+    """The duration of a warm app start in milliseconds
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: 1234.56
+    """
+
+    # Path: model/attributes/app/app__vitals__ttfd__value.json
+    APP_VITALS_TTFD_VALUE: Literal["app.vitals.ttfd.value"] = "app.vitals.ttfd.value"
+    """The duration of time to full display in milliseconds
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: time_to_full_display
+    Example: 1234.56
+    """
+
+    # Path: model/attributes/app/app__vitals__ttid__value.json
+    APP_VITALS_TTID_VALUE: Literal["app.vitals.ttid.value"] = "app.vitals.ttid.value"
+    """The duration of time to initial display in milliseconds
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: time_to_initial_display
+    Example: 1234.56
+    """
+
     # Path: model/attributes/app_start_type.json
-    _APP_START_TYPE: Literal["app_start_type"] = "app_start_type"
+    APP_START_TYPE: Literal["app_start_type"] = "app_start_type"
     """Mobile app start variant. Either cold or warm.
 
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: app.start.type
-    DEPRECATED: Use app.start.type instead - Old namespace-less attribute, to be replaced with app.start.type
+    Aliases: app.vitals.start.type
+    DEPRECATED: Use app.vitals.start.type instead - Replaced by app.vitals.start.type to align with the app.vitals.* namespace for mobile performance attributes
     Example: "cold"
     """
 
@@ -1814,8 +1834,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: app.frames.delay.value
-    DEPRECATED: Use app.frames.delay.value instead - Old frames.* attribute, to be replaced with app.frames.delay.value for app namespacing
+    Aliases: app.vitals.frames.delay.value
+    DEPRECATED: Use app.vitals.frames.delay.value instead - Replaced by app.vitals.frames.delay.value to align with the app.vitals.* namespace for mobile performance attributes
     Example: 5
     """
 
@@ -1826,8 +1846,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: app.frames.frozen.count
-    DEPRECATED: Use app.frames.frozen.count instead - Old frames.* attribute, to be replaced with app.frames.frozen.count for app namespacing
+    Aliases: app.vitals.frames.frozen.count
+    DEPRECATED: Use app.vitals.frames.frozen.count instead - Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes
     Example: 3
     """
 
@@ -1838,8 +1858,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: app.frames.slow.count
-    DEPRECATED: Use app.frames.slow.count instead - Old frames.* attribute, to be replaced with app.frames.slow.count for app namespacing
+    Aliases: app.vitals.frames.slow.count
+    DEPRECATED: Use app.vitals.frames.slow.count instead - Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes
     Example: 1
     """
 
@@ -1850,8 +1870,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: app.frames.total.count
-    DEPRECATED: Use app.frames.total.count instead - Old frames.* attribute, to be replaced with app.frames.total.count for app namespacing
+    Aliases: app.vitals.frames.total.count
+    DEPRECATED: Use app.vitals.frames.total.count instead - Replaced by app.vitals.frames.total.count to align with the app.vitals.* namespace for mobile performance attributes
     Example: 60
     """
 
@@ -4984,8 +5004,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: app.ttfd.value
-    DEPRECATED: Use app.ttfd.value instead - Old namespace-less attribute, to be replaced with app.ttfd.value
+    Aliases: app.vitals.ttfd.value
+    DEPRECATED: Use app.vitals.ttfd.value instead - Replaced by app.vitals.ttfd.value to align with the app.vitals.* namespace for mobile performance attributes
     Example: 1234.56
     """
 
@@ -4998,8 +5018,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: app.ttid.value
-    DEPRECATED: Use app.ttid.value instead - Old namespace-less attribute, to be replaced with app.ttid.value
+    Aliases: app.vitals.ttid.value
+    DEPRECATED: Use app.vitals.ttid.value instead - Replaced by app.vitals.ttid.value to align with the app.vitals.* namespace for mobile performance attributes
     Example: 1234.56
     """
 
@@ -6207,90 +6227,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
-    "app.frames.delay.value": AttributeMetadata(
-        brief="The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).",
-        type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
-        is_in_otel=False,
-        example=5,
-        aliases=["frames.delay"],
-        sdks=[
-            "sentry.cocoa",
-            "sentry.java.android",
-            "sentry.javascript.react-native",
-            "sentry.dart.flutter",
-        ],
-        changelog=[
-            ChangelogEntry(
-                version="next",
-                prs=[313],
-                description="Added app.frames.delay.value to replace frames.delay",
-            ),
-        ],
-    ),
-    "app.frames.frozen.count": AttributeMetadata(
-        brief="The number of frozen frames rendered during the lifetime of the span.",
-        type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
-        is_in_otel=False,
-        example=3,
-        aliases=["frames.frozen"],
-        sdks=[
-            "sentry.cocoa",
-            "sentry.java.android",
-            "sentry.javascript.react-native",
-            "sentry.dart.flutter",
-        ],
-        changelog=[
-            ChangelogEntry(
-                version="next",
-                prs=[313],
-                description="Added app.frames.frozen.count to replace frames.frozen",
-            ),
-        ],
-    ),
-    "app.frames.slow.count": AttributeMetadata(
-        brief="The number of slow frames rendered during the lifetime of the span.",
-        type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
-        is_in_otel=False,
-        example=1,
-        aliases=["frames.slow"],
-        sdks=[
-            "sentry.cocoa",
-            "sentry.java.android",
-            "sentry.javascript.react-native",
-            "sentry.dart.flutter",
-        ],
-        changelog=[
-            ChangelogEntry(
-                version="next",
-                prs=[313],
-                description="Added app.frames.slow.count to replace frames.slow",
-            ),
-        ],
-    ),
-    "app.frames.total.count": AttributeMetadata(
-        brief="The number of total frames rendered during the lifetime of the span.",
-        type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
-        is_in_otel=False,
-        example=60,
-        aliases=["frames.total"],
-        sdks=[
-            "sentry.cocoa",
-            "sentry.java.android",
-            "sentry.javascript.react-native",
-            "sentry.dart.flutter",
-        ],
-        changelog=[
-            ChangelogEntry(
-                version="next",
-                prs=[313],
-                description="Added app.frames.total.count to replace frames.total",
-            ),
-        ],
-    ),
     "app.identifier": AttributeMetadata(
         brief="Version-independent application identifier, often a dotted bundle ID.",
         type=AttributeType.STRING,
@@ -6347,43 +6283,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
-    "app.start.type": AttributeMetadata(
-        brief="The type of app start, for example `cold` or `warm`",
-        type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
-        is_in_otel=False,
-        example="cold",
-        aliases=["app_start_type"],
-        sdks=[
-            "sentry.cocoa",
-            "sentry.java.android",
-            "sentry.javascript.react-native",
-            "sentry.dart.flutter",
-        ],
-        changelog=[
-            ChangelogEntry(
-                version="next", prs=[313], description="Added app.start.type attribute"
-            ),
-        ],
-    ),
-    "app.start.value": AttributeMetadata(
-        brief="The duration of the app start in milliseconds",
-        type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
-        is_in_otel=False,
-        example=1234.56,
-        sdks=[
-            "sentry.cocoa",
-            "sentry.java.android",
-            "sentry.javascript.react-native",
-            "sentry.dart.flutter",
-        ],
-        changelog=[
-            ChangelogEntry(
-                version="next", prs=[313], description="Added app.start.value attribute"
-            ),
-        ],
-    ),
     "app.start_time": AttributeMetadata(
         brief="Formatted UTC timestamp when the user started the application.",
         type=AttributeType.STRING,
@@ -6399,44 +6298,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next", prs=[296], description="Added app.start_time attribute"
-            ),
-        ],
-    ),
-    "app.ttfd.value": AttributeMetadata(
-        brief="The duration of time to full display in milliseconds",
-        type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
-        is_in_otel=False,
-        example=1234.56,
-        aliases=["time_to_full_display"],
-        sdks=[
-            "sentry.cocoa",
-            "sentry.java.android",
-            "sentry.javascript.react-native",
-            "sentry.dart.flutter",
-        ],
-        changelog=[
-            ChangelogEntry(
-                version="next", prs=[313], description="Added app.ttfd.value attribute"
-            ),
-        ],
-    ),
-    "app.ttid.value": AttributeMetadata(
-        brief="The duration of time to initial display in milliseconds",
-        type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
-        is_in_otel=False,
-        example=1234.56,
-        aliases=["time_to_initial_display"],
-        sdks=[
-            "sentry.cocoa",
-            "sentry.java.android",
-            "sentry.javascript.react-native",
-            "sentry.dart.flutter",
-        ],
-        changelog=[
-            ChangelogEntry(
-                version="next", prs=[313], description="Added app.ttid.value attribute"
             ),
         ],
     ),
@@ -6458,6 +6319,193 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "app.vitals.frames.delay.value": AttributeMetadata(
+        brief="The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=5,
+        aliases=["frames.delay"],
+        sdks=[
+            "sentry.cocoa",
+            "sentry.java.android",
+            "sentry.javascript.react-native",
+            "sentry.dart.flutter",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[313],
+                description="Added app.vitals.frames.delay.value to replace frames.delay",
+            ),
+        ],
+    ),
+    "app.vitals.frames.frozen.count": AttributeMetadata(
+        brief="The number of frozen frames rendered during the lifetime of the span.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=3,
+        aliases=["frames.frozen"],
+        sdks=[
+            "sentry.cocoa",
+            "sentry.java.android",
+            "sentry.javascript.react-native",
+            "sentry.dart.flutter",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[313],
+                description="Added app.vitals.frames.frozen.count to replace frames.frozen",
+            ),
+        ],
+    ),
+    "app.vitals.frames.slow.count": AttributeMetadata(
+        brief="The number of slow frames rendered during the lifetime of the span.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=1,
+        aliases=["frames.slow"],
+        sdks=[
+            "sentry.cocoa",
+            "sentry.java.android",
+            "sentry.javascript.react-native",
+            "sentry.dart.flutter",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[313],
+                description="Added app.vitals.frames.slow.count to replace frames.slow",
+            ),
+        ],
+    ),
+    "app.vitals.frames.total.count": AttributeMetadata(
+        brief="The number of total frames rendered during the lifetime of the span.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=60,
+        aliases=["frames.total"],
+        sdks=[
+            "sentry.cocoa",
+            "sentry.java.android",
+            "sentry.javascript.react-native",
+            "sentry.dart.flutter",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[313],
+                description="Added app.vitals.frames.total.count to replace frames.total",
+            ),
+        ],
+    ),
+    "app.vitals.start.cold.value": AttributeMetadata(
+        brief="The duration of a cold app start in milliseconds",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=1234.56,
+        sdks=[
+            "sentry.cocoa",
+            "sentry.java.android",
+            "sentry.javascript.react-native",
+            "sentry.dart.flutter",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[313],
+                description="Added app.vitals.start.cold.value attribute",
+            ),
+        ],
+    ),
+    "app.vitals.start.type": AttributeMetadata(
+        brief="The type of app start, for example `cold` or `warm`",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="cold",
+        aliases=["app_start_type"],
+        sdks=[
+            "sentry.cocoa",
+            "sentry.java.android",
+            "sentry.javascript.react-native",
+            "sentry.dart.flutter",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[313],
+                description="Added app.vitals.start.type attribute",
+            ),
+        ],
+    ),
+    "app.vitals.start.warm.value": AttributeMetadata(
+        brief="The duration of a warm app start in milliseconds",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=1234.56,
+        sdks=[
+            "sentry.cocoa",
+            "sentry.java.android",
+            "sentry.javascript.react-native",
+            "sentry.dart.flutter",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[313],
+                description="Added app.vitals.start.warm.value attribute",
+            ),
+        ],
+    ),
+    "app.vitals.ttfd.value": AttributeMetadata(
+        brief="The duration of time to full display in milliseconds",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=1234.56,
+        aliases=["time_to_full_display"],
+        sdks=[
+            "sentry.cocoa",
+            "sentry.java.android",
+            "sentry.javascript.react-native",
+            "sentry.dart.flutter",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[313],
+                description="Added app.vitals.ttfd.value attribute",
+            ),
+        ],
+    ),
+    "app.vitals.ttid.value": AttributeMetadata(
+        brief="The duration of time to initial display in milliseconds",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=1234.56,
+        aliases=["time_to_initial_display"],
+        sdks=[
+            "sentry.cocoa",
+            "sentry.java.android",
+            "sentry.javascript.react-native",
+            "sentry.dart.flutter",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[313],
+                description="Added app.vitals.ttid.value attribute",
+            ),
+        ],
+    ),
     "app_start_type": AttributeMetadata(
         brief="Mobile app start variant. Either cold or warm.",
         type=AttributeType.STRING,
@@ -6465,16 +6513,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="cold",
         deprecation=DeprecationInfo(
-            replacement="app.start.type",
-            reason="Old namespace-less attribute, to be replaced with app.start.type",
+            replacement="app.vitals.start.type",
+            reason="Replaced by app.vitals.start.type to align with the app.vitals.* namespace for mobile performance attributes",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["app.start.type"],
+        aliases=["app.vitals.start.type"],
         changelog=[
             ChangelogEntry(
                 version="next",
                 prs=[313],
-                description="Deprecated in favor of app.start.type",
+                description="Deprecated in favor of app.vitals.start.type",
             ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
@@ -7649,11 +7697,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=5,
         deprecation=DeprecationInfo(
-            replacement="app.frames.delay.value",
-            reason="Old frames.* attribute, to be replaced with app.frames.delay.value for app namespacing",
+            replacement="app.vitals.frames.delay.value",
+            reason="Replaced by app.vitals.frames.delay.value to align with the app.vitals.* namespace for mobile performance attributes",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["app.frames.delay.value"],
+        aliases=["app.vitals.frames.delay.value"],
         changelog=[
             ChangelogEntry(
                 version="next",
@@ -7671,11 +7719,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=3,
         deprecation=DeprecationInfo(
-            replacement="app.frames.frozen.count",
-            reason="Old frames.* attribute, to be replaced with app.frames.frozen.count for app namespacing",
+            replacement="app.vitals.frames.frozen.count",
+            reason="Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["app.frames.frozen.count"],
+        aliases=["app.vitals.frames.frozen.count"],
         changelog=[
             ChangelogEntry(
                 version="next",
@@ -7693,11 +7741,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=1,
         deprecation=DeprecationInfo(
-            replacement="app.frames.slow.count",
-            reason="Old frames.* attribute, to be replaced with app.frames.slow.count for app namespacing",
+            replacement="app.vitals.frames.slow.count",
+            reason="Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["app.frames.slow.count"],
+        aliases=["app.vitals.frames.slow.count"],
         changelog=[
             ChangelogEntry(
                 version="next",
@@ -7715,11 +7763,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=60,
         deprecation=DeprecationInfo(
-            replacement="app.frames.total.count",
-            reason="Old frames.* attribute, to be replaced with app.frames.total.count for app namespacing",
+            replacement="app.vitals.frames.total.count",
+            reason="Replaced by app.vitals.frames.total.count to align with the app.vitals.* namespace for mobile performance attributes",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["app.frames.total.count"],
+        aliases=["app.vitals.frames.total.count"],
         changelog=[
             ChangelogEntry(
                 version="next",
@@ -11027,11 +11075,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=1234.56,
         deprecation=DeprecationInfo(
-            replacement="app.ttfd.value",
-            reason="Old namespace-less attribute, to be replaced with app.ttfd.value",
+            replacement="app.vitals.ttfd.value",
+            reason="Replaced by app.vitals.ttfd.value to align with the app.vitals.* namespace for mobile performance attributes",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["app.ttfd.value"],
+        aliases=["app.vitals.ttfd.value"],
         sdks=[
             "sentry.cocoa",
             "sentry.java.android",
@@ -11053,11 +11101,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=1234.56,
         deprecation=DeprecationInfo(
-            replacement="app.ttid.value",
-            reason="Old namespace-less attribute, to be replaced with app.ttid.value",
+            replacement="app.vitals.ttid.value",
+            reason="Replaced by app.vitals.ttid.value to align with the app.vitals.* namespace for mobile performance attributes",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["app.ttid.value"],
+        aliases=["app.vitals.ttid.value"],
         sdks=[
             "sentry.cocoa",
             "sentry.java.android",
@@ -11927,19 +11975,20 @@ Attributes = TypedDict(
         "ai.total_tokens.used": int,
         "ai.warnings": List[str],
         "app.build": str,
-        "app.frames.delay.value": int,
-        "app.frames.frozen.count": int,
-        "app.frames.slow.count": int,
-        "app.frames.total.count": int,
         "app.identifier": str,
         "app.in_foreground": bool,
         "app.name": str,
-        "app.start.type": str,
-        "app.start.value": float,
         "app.start_time": str,
-        "app.ttfd.value": float,
-        "app.ttid.value": float,
         "app.version": str,
+        "app.vitals.frames.delay.value": int,
+        "app.vitals.frames.frozen.count": int,
+        "app.vitals.frames.slow.count": int,
+        "app.vitals.frames.total.count": int,
+        "app.vitals.start.cold.value": float,
+        "app.vitals.start.type": str,
+        "app.vitals.start.warm.value": float,
+        "app.vitals.ttfd.value": float,
+        "app.vitals.ttid.value": float,
         "app_start_type": str,
         "blocked_main_thread": bool,
         "browser.name": str,

@@ -1,6 +1,6 @@
 {
-  "key": "app.start.value",
-  "brief": "The duration of the app start in milliseconds",
+  "key": "app.vitals.start.cold.value",
+  "brief": "The duration of a cold app start in milliseconds",
   "type": "double",
   "pii": {
     "key": "maybe"
@@ -12,7 +12,7 @@
     {
       "version": "next",
       "prs": [313],
-      "description": "Added app.start.value attribute"
+      "description": "Added app.vitals.start.cold.value attribute"
     }
   ]
 }

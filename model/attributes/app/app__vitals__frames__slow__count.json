@@ -1,5 +1,5 @@
 {
-  "key": "app.frames.slow.count",
+  "key": "app.vitals.frames.slow.count",
   "brief": "The number of slow frames rendered during the lifetime of the span.",
   "type": "integer",
   "pii": {
@@ -13,7 +13,7 @@
     {
       "version": "next",
       "prs": [313],
-      "description": "Added app.frames.slow.count to replace frames.slow"
+      "description": "Added app.vitals.frames.slow.count to replace frames.slow"
     }
   ]
 }

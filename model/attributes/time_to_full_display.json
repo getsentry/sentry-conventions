@@ -8,10 +8,10 @@
   "is_in_otel": false,
   "example": 1234.56,
   "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
-  "alias": ["app.ttfd.value"],
+  "alias": ["app.vitals.ttfd.value"],
   "deprecation": {
-    "replacement": "app.ttfd.value",
-    "reason": "Old namespace-less attribute, to be replaced with app.ttfd.value",
+    "replacement": "app.vitals.ttfd.value",
+    "reason": "Replaced by app.vitals.ttfd.value to align with the app.vitals.* namespace for mobile performance attributes",
     "_status": "backfill"
   },
   "changelog": [

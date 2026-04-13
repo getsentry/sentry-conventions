@@ -1,5 +1,5 @@
 {
-  "key": "app.ttfd.value",
+  "key": "app.vitals.ttfd.value",
   "brief": "The duration of time to full display in milliseconds",
   "type": "double",
   "pii": {
@@ -13,7 +13,7 @@
     {
       "version": "next",
       "prs": [313],
-      "description": "Added app.ttfd.value attribute"
+      "description": "Added app.vitals.ttfd.value attribute"
     }
   ]
 }
