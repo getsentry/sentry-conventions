@@ -10,7 +10,7 @@
   "alias": ["app.frames.frozen.count"],
   "deprecation": {
     "replacement": "app.frames.frozen.count",
-    "reason": "Old namespace-less attribute, to be replaced with app.frames.frozen.count",
+    "reason": "Old frames.* attribute, to be replaced with app.frames.frozen.count for app namespacing",
     "_status": "backfill"
   },
   "changelog": [

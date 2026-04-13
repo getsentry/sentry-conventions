@@ -10,7 +10,7 @@
   "alias": ["app.frames.delay.value"],
   "deprecation": {
     "replacement": "app.frames.delay.value",
-    "reason": "Old namespace-less attribute, to be replaced with app.frames.delay.value",
+    "reason": "Old frames.* attribute, to be replaced with app.frames.delay.value for app namespacing",
     "_status": "backfill"
   },
   "changelog": [

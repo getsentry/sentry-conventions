@@ -1,6 +1,6 @@
 {
   "key": "app.start.type",
-  "brief": "The type of app start",
+  "brief": "The type of app start, for example `cold` or `warm`",
   "type": "string",
   "pii": {
     "key": "maybe"

@@ -1600,7 +1600,7 @@
       "alias": ["app.frames.delay.value"],
       "deprecation": {
         "replacement": "app.frames.delay.value",
-        "reason": "Old namespace-less attribute, to be replaced with app.frames.delay.value",
+        "reason": "Old frames.* attribute, to be replaced with app.frames.delay.value for app namespacing",
         "_status": "backfill"
       },
       "changelog": [
@@ -1630,7 +1630,7 @@
       "alias": ["app.frames.frozen.count"],
       "deprecation": {
         "replacement": "app.frames.frozen.count",
-        "reason": "Old namespace-less attribute, to be replaced with app.frames.frozen.count",
+        "reason": "Old frames.* attribute, to be replaced with app.frames.frozen.count for app namespacing",
         "_status": "backfill"
       },
       "changelog": [
@@ -1660,7 +1660,7 @@
       "alias": ["app.frames.slow.count"],
       "deprecation": {
         "replacement": "app.frames.slow.count",
-        "reason": "Old namespace-less attribute, to be replaced with app.frames.slow.count",
+        "reason": "Old frames.* attribute, to be replaced with app.frames.slow.count for app namespacing",
         "_status": "backfill"
       },
       "changelog": [
@@ -1690,7 +1690,7 @@
       "alias": ["app.frames.total.count"],
       "deprecation": {
         "replacement": "app.frames.total.count",
-        "reason": "Old namespace-less attribute, to be replaced with app.frames.total.count",
+        "reason": "Old frames.* attribute, to be replaced with app.frames.total.count for app namespacing",
         "_status": "backfill"
       },
       "changelog": [

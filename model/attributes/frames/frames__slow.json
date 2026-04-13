@@ -10,7 +10,7 @@
   "alias": ["app.frames.slow.count"],
   "deprecation": {
     "replacement": "app.frames.slow.count",
-    "reason": "Old namespace-less attribute, to be replaced with app.frames.slow.count",
+    "reason": "Old frames.* attribute, to be replaced with app.frames.slow.count for app namespacing",
     "_status": "backfill"
   },
   "changelog": [

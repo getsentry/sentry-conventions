@@ -924,7 +924,7 @@ export type APP_START_TIME_TYPE = string;
 // Path: model/attributes/app/app__start__type.json
 
 /**
- * The type of app start `app.start.type`
+ * The type of app start, for example `cold` or `warm` `app.start.type`
  *
  * Attribute Value Type: `string` {@link APP_START_TYPE_TYPE}
  *
@@ -2993,7 +2993,7 @@ export type FP_TYPE = number;
  *
  * Aliases: {@link APP_FRAMES_DELAY_VALUE} `app.frames.delay.value`
  *
- * @deprecated Use {@link APP_FRAMES_DELAY_VALUE} (app.frames.delay.value) instead - Old namespace-less attribute, to be replaced with app.frames.delay.value
+ * @deprecated Use {@link APP_FRAMES_DELAY_VALUE} (app.frames.delay.value) instead - Old frames.* attribute, to be replaced with app.frames.delay.value for app namespacing
  * @example 5
  */
 export const FRAMES_DELAY = 'frames.delay';
@@ -3016,7 +3016,7 @@ export type FRAMES_DELAY_TYPE = number;
  *
  * Aliases: {@link APP_FRAMES_FROZEN_COUNT} `app.frames.frozen.count`
  *
- * @deprecated Use {@link APP_FRAMES_FROZEN_COUNT} (app.frames.frozen.count) instead - Old namespace-less attribute, to be replaced with app.frames.frozen.count
+ * @deprecated Use {@link APP_FRAMES_FROZEN_COUNT} (app.frames.frozen.count) instead - Old frames.* attribute, to be replaced with app.frames.frozen.count for app namespacing
  * @example 3
  */
 export const FRAMES_FROZEN = 'frames.frozen';
@@ -3039,7 +3039,7 @@ export type FRAMES_FROZEN_TYPE = number;
  *
  * Aliases: {@link APP_FRAMES_SLOW_COUNT} `app.frames.slow.count`
  *
- * @deprecated Use {@link APP_FRAMES_SLOW_COUNT} (app.frames.slow.count) instead - Old namespace-less attribute, to be replaced with app.frames.slow.count
+ * @deprecated Use {@link APP_FRAMES_SLOW_COUNT} (app.frames.slow.count) instead - Old frames.* attribute, to be replaced with app.frames.slow.count for app namespacing
  * @example 1
  */
 export const FRAMES_SLOW = 'frames.slow';
@@ -3062,7 +3062,7 @@ export type FRAMES_SLOW_TYPE = number;
  *
  * Aliases: {@link APP_FRAMES_TOTAL_COUNT} `app.frames.total.count`
  *
- * @deprecated Use {@link APP_FRAMES_TOTAL_COUNT} (app.frames.total.count) instead - Old namespace-less attribute, to be replaced with app.frames.total.count
+ * @deprecated Use {@link APP_FRAMES_TOTAL_COUNT} (app.frames.total.count) instead - Old frames.* attribute, to be replaced with app.frames.total.count for app namespacing
  * @example 60
  */
 export const FRAMES_TOTAL = 'frames.total';
@@ -10487,7 +10487,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [AI_TOTAL_TOKENS_USED]: 'integer',
   [AI_WARNINGS]: 'string[]',
   [APP_BUILD]: 'string',
-  [APP_FRAMES_DELAY_VALUE]: 'integer',
+  [APP_FRAMES_DELAY_VALUE]: 'double',
   [APP_FRAMES_FROZEN_COUNT]: 'integer',
   [APP_FRAMES_SLOW_COUNT]: 'integer',
   [APP_FRAMES_TOTAL_COUNT]: 'integer',
@@ -11963,7 +11963,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [APP_FRAMES_DELAY_VALUE]: {
     brief:
       'The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).',
-    type: 'integer',
+    type: 'double',
     pii: {
       isPii: 'maybe',
     },
@@ -12054,7 +12054,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: 'next', prs: [296], description: 'Added app.start_time attribute' }],
   },
   [APP_START_TYPE]: {
-    brief: 'The type of app start',
+    brief: 'The type of app start, for example `cold` or `warm`',
     type: 'string',
     pii: {
       isPii: 'maybe',
@@ -13269,7 +13269,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 5,
     deprecation: {
       replacement: 'app.frames.delay.value',
-      reason: 'Old namespace-less attribute, to be replaced with app.frames.delay.value',
+      reason: 'Old frames.* attribute, to be replaced with app.frames.delay.value for app namespacing',
     },
     aliases: [APP_FRAMES_DELAY_VALUE],
     changelog: [
@@ -13288,7 +13288,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 3,
     deprecation: {
       replacement: 'app.frames.frozen.count',
-      reason: 'Old namespace-less attribute, to be replaced with app.frames.frozen.count',
+      reason: 'Old frames.* attribute, to be replaced with app.frames.frozen.count for app namespacing',
     },
     aliases: [APP_FRAMES_FROZEN_COUNT],
     changelog: [
@@ -13307,7 +13307,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1,
     deprecation: {
       replacement: 'app.frames.slow.count',
-      reason: 'Old namespace-less attribute, to be replaced with app.frames.slow.count',
+      reason: 'Old frames.* attribute, to be replaced with app.frames.slow.count for app namespacing',
     },
     aliases: [APP_FRAMES_SLOW_COUNT],
     changelog: [
@@ -13326,7 +13326,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 60,
     deprecation: {
       replacement: 'app.frames.total.count',
-      reason: 'Old namespace-less attribute, to be replaced with app.frames.total.count',
+      reason: 'Old frames.* attribute, to be replaced with app.frames.total.count for app namespacing',
     },
     aliases: [APP_FRAMES_TOTAL_COUNT],
     changelog: [

@@ -642,7 +642,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     APP_FRAMES_DELAY_VALUE: Literal["app.frames.delay.value"] = "app.frames.delay.value"
     """The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).
 
-    Type: int
+    Type: float
     Contains PII: maybe
     Defined in OTEL: No
     Aliases: frames.delay
@@ -716,7 +716,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/app/app__start__type.json
     APP_START_TYPE: Literal["app.start.type"] = "app.start.type"
-    """The type of app start
+    """The type of app start, for example `cold` or `warm`
 
     Type: str
     Contains PII: maybe
@@ -1815,7 +1815,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Aliases: app.frames.delay.value
-    DEPRECATED: Use app.frames.delay.value instead - Old namespace-less attribute, to be replaced with app.frames.delay.value
+    DEPRECATED: Use app.frames.delay.value instead - Old frames.* attribute, to be replaced with app.frames.delay.value for app namespacing
     Example: 5
     """
 
@@ -1827,7 +1827,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Aliases: app.frames.frozen.count
-    DEPRECATED: Use app.frames.frozen.count instead - Old namespace-less attribute, to be replaced with app.frames.frozen.count
+    DEPRECATED: Use app.frames.frozen.count instead - Old frames.* attribute, to be replaced with app.frames.frozen.count for app namespacing
     Example: 3
     """
 
@@ -1839,7 +1839,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Aliases: app.frames.slow.count
-    DEPRECATED: Use app.frames.slow.count instead - Old namespace-less attribute, to be replaced with app.frames.slow.count
+    DEPRECATED: Use app.frames.slow.count instead - Old frames.* attribute, to be replaced with app.frames.slow.count for app namespacing
     Example: 1
     """
 
@@ -1851,7 +1851,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Aliases: app.frames.total.count
-    DEPRECATED: Use app.frames.total.count instead - Old namespace-less attribute, to be replaced with app.frames.total.count
+    DEPRECATED: Use app.frames.total.count instead - Old frames.* attribute, to be replaced with app.frames.total.count for app namespacing
     Example: 60
     """
 
@@ -6209,7 +6209,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ),
     "app.frames.delay.value": AttributeMetadata(
         brief="The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).",
-        type=AttributeType.INTEGER,
+        type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=5,
@@ -6348,7 +6348,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "app.start.type": AttributeMetadata(
-        brief="The type of app start",
+        brief="The type of app start, for example `cold` or `warm`",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
@@ -7650,7 +7650,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=5,
         deprecation=DeprecationInfo(
             replacement="app.frames.delay.value",
-            reason="Old namespace-less attribute, to be replaced with app.frames.delay.value",
+            reason="Old frames.* attribute, to be replaced with app.frames.delay.value for app namespacing",
             status=DeprecationStatus.BACKFILL,
         ),
         aliases=["app.frames.delay.value"],
@@ -7672,7 +7672,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=3,
         deprecation=DeprecationInfo(
             replacement="app.frames.frozen.count",
-            reason="Old namespace-less attribute, to be replaced with app.frames.frozen.count",
+            reason="Old frames.* attribute, to be replaced with app.frames.frozen.count for app namespacing",
             status=DeprecationStatus.BACKFILL,
         ),
         aliases=["app.frames.frozen.count"],
@@ -7694,7 +7694,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=1,
         deprecation=DeprecationInfo(
             replacement="app.frames.slow.count",
-            reason="Old namespace-less attribute, to be replaced with app.frames.slow.count",
+            reason="Old frames.* attribute, to be replaced with app.frames.slow.count for app namespacing",
             status=DeprecationStatus.BACKFILL,
         ),
         aliases=["app.frames.slow.count"],
@@ -7716,7 +7716,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=60,
         deprecation=DeprecationInfo(
             replacement="app.frames.total.count",
-            reason="Old namespace-less attribute, to be replaced with app.frames.total.count",
+            reason="Old frames.* attribute, to be replaced with app.frames.total.count for app namespacing",
             status=DeprecationStatus.BACKFILL,
         ),
         aliases=["app.frames.total.count"],
@@ -11927,7 +11927,7 @@ Attributes = TypedDict(
         "ai.total_tokens.used": int,
         "ai.warnings": List[str],
         "app.build": str,
-        "app.frames.delay.value": int,
+        "app.frames.delay.value": float,
         "app.frames.frozen.count": int,
         "app.frames.slow.count": int,
         "app.frames.total.count": int,
