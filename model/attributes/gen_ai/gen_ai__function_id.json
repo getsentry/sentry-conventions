@@ -1,6 +1,6 @@
 {
   "key": "gen_ai.function_id",
-  "brief": "The function identifier associated with the AI operation.",
+  "brief": "Framework-specific tracing label for the execution of a function or other unit of execution in a generative AI system.",
   "type": "string",
   "pii": {
     "key": "maybe"

@@ -3029,7 +3029,7 @@ export type GEN_AI_EMBEDDINGS_INPUT_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__function_id.json
 
 /**
- * The function identifier associated with the AI operation. `gen_ai.function_id`
+ * Framework-specific tracing label for the execution of a function or other unit of execution in a generative AI system. `gen_ai.function_id`
  *
  * Attribute Value Type: `string` {@link GEN_AI_FUNCTION_ID_TYPE}
  *
@@ -13049,7 +13049,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.3.1', prs: [195] }],
   },
   [GEN_AI_FUNCTION_ID]: {
-    brief: 'The function identifier associated with the AI operation.',
+    brief:
+      'Framework-specific tracing label for the execution of a function or other unit of execution in a generative AI system.',
     type: 'string',
     pii: {
       isPii: 'maybe',

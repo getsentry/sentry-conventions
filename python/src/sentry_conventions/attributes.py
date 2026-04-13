@@ -1831,7 +1831,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/gen_ai/gen_ai__function_id.json
     GEN_AI_FUNCTION_ID: Literal["gen_ai.function_id"] = "gen_ai.function_id"
-    """The function identifier associated with the AI operation.
+    """Framework-specific tracing label for the execution of a function or other unit of execution in a generative AI system.
 
     Type: str
     Contains PII: maybe
@@ -7476,7 +7476,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "gen_ai.function_id": AttributeMetadata(
-        brief="The function identifier associated with the AI operation.",
+        brief="Framework-specific tracing label for the execution of a function or other unit of execution in a generative AI system.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
