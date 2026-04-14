@@ -18252,7 +18252,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [APP_VITALS_TTFD_VALUE],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
-    changelog: [{ version: 'next', prs: [313], description: 'Added and deprecated in favor of app.ttfd.value' }],
+    changelog: [{ version: 'next', prs: [313], description: 'Added and deprecated in favor of app.vitals.ttfd.value' }],
   },
   [TIME_TO_INITIAL_DISPLAY]: {
     brief: 'The duration of time to initial display in milliseconds',
@@ -18269,7 +18269,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [APP_VITALS_TTID_VALUE],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
-    changelog: [{ version: 'next', prs: [313], description: 'Added and deprecated in favor of app.ttid.value' }],
+    changelog: [{ version: 'next', prs: [313], description: 'Added and deprecated in favor of app.vitals.ttid.value' }],
   },
   [TRANSACTION]: {
     brief: 'The sentry transaction (segment name).',

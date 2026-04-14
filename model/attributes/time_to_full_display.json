@@ -18,7 +18,7 @@
     {
       "version": "next",
       "prs": [313],
-      "description": "Added and deprecated in favor of app.ttfd.value"
+      "description": "Added and deprecated in favor of app.vitals.ttfd.value"
     }
   ]
 }

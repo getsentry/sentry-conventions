@@ -12219,7 +12219,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(
                 version="next",
                 prs=[313],
-                description="Added and deprecated in favor of app.ttfd.value",
+                description="Added and deprecated in favor of app.vitals.ttfd.value",
             ),
         ],
     ),
@@ -12245,7 +12245,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(
                 version="next",
                 prs=[313],
-                description="Added and deprecated in favor of app.ttid.value",
+                description="Added and deprecated in favor of app.vitals.ttid.value",
             ),
         ],
     ),
