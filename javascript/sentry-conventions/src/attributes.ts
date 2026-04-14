@@ -8644,6 +8644,26 @@ export const SENTRY_KIND = 'sentry.kind';
  */
 export type SENTRY_KIND_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__main_thread.json
+
+/**
+ * Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs. `sentry.main_thread`
+ *
+ * Attribute Value Type: `boolean` {@link SENTRY_MAIN_THREAD_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example true
+ */
+export const SENTRY_MAIN_THREAD = 'sentry.main_thread';
+
+/**
+ * Type for {@link SENTRY_MAIN_THREAD} sentry.main_thread
+ */
+export type SENTRY_MAIN_THREAD_TYPE = boolean;
+
 // Path: model/attributes/sentry/sentry__message__parameter__[key].json
 
 /**
@@ -8683,6 +8703,26 @@ export const SENTRY_MESSAGE_TEMPLATE = 'sentry.message.template';
  * Type for {@link SENTRY_MESSAGE_TEMPLATE} sentry.message.template
  */
 export type SENTRY_MESSAGE_TEMPLATE_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__mobile.json
+
+/**
+ * Whether the application is using a mobile SDK. Computed by Relay and should not be set by SDKs. `sentry.mobile`
+ *
+ * Attribute Value Type: `boolean` {@link SENTRY_MOBILE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example true
+ */
+export const SENTRY_MOBILE = 'sentry.mobile';
+
+/**
+ * Type for {@link SENTRY_MOBILE} sentry.mobile
+ */
+export type SENTRY_MOBILE_TYPE = boolean;
 
 // Path: model/attributes/sentry/sentry__module__[key].json
 
@@ -11358,8 +11398,10 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_IDLE_SPAN_FINISH_REASON]: 'string',
   [SENTRY_IS_REMOTE]: 'boolean',
   [SENTRY_KIND]: 'string',
+  [SENTRY_MAIN_THREAD]: 'boolean',
   [SENTRY_MESSAGE_PARAMETER_KEY]: 'string',
   [SENTRY_MESSAGE_TEMPLATE]: 'string',
+  [SENTRY_MOBILE]: 'boolean',
   [SENTRY_MODULE_KEY]: 'string',
   [SENTRY_NEXTJS_SSR_FUNCTION_ROUTE]: 'string',
   [SENTRY_NEXTJS_SSR_FUNCTION_TYPE]: 'string',
@@ -11882,8 +11924,10 @@ export type AttributeName =
   | typeof SENTRY_IDLE_SPAN_FINISH_REASON
   | typeof SENTRY_IS_REMOTE
   | typeof SENTRY_KIND
+  | typeof SENTRY_MAIN_THREAD
   | typeof SENTRY_MESSAGE_PARAMETER_KEY
   | typeof SENTRY_MESSAGE_TEMPLATE
+  | typeof SENTRY_MOBILE
   | typeof SENTRY_MODULE_KEY
   | typeof SENTRY_NEXTJS_SSR_FUNCTION_ROUTE
   | typeof SENTRY_NEXTJS_SSR_FUNCTION_TYPE
@@ -17088,6 +17132,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'server',
     changelog: [{ version: '0.3.1', prs: [190] }],
   },
+  [SENTRY_MAIN_THREAD]: {
+    brief: 'Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs.',
+    type: 'boolean',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: true,
+    changelog: [{ version: 'next' }],
+  },
   [SENTRY_MESSAGE_PARAMETER_KEY]: {
     brief:
       "A parameter used in the message template. <key> can either be the number that represent the parameter's position in the template string (sentry.message.parameter.0, sentry.message.parameter.1, etc) or the parameter's name (sentry.message.parameter.item_id, sentry.message.parameter.user_id, etc)",
@@ -17108,6 +17162,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'Hello, {name}!',
     changelog: [{ version: '0.1.0', prs: [116] }],
+  },
+  [SENTRY_MOBILE]: {
+    brief: 'Whether the application is using a mobile SDK. Computed by Relay and should not be set by SDKs.',
+    type: 'boolean',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: true,
+    changelog: [{ version: 'next' }],
   },
   [SENTRY_MODULE_KEY]: {
     brief: 'A module that was loaded in the process. The key is the name of the module.',
@@ -18698,8 +18762,10 @@ export type Attributes = {
   [SENTRY_IDLE_SPAN_FINISH_REASON]?: SENTRY_IDLE_SPAN_FINISH_REASON_TYPE;
   [SENTRY_IS_REMOTE]?: SENTRY_IS_REMOTE_TYPE;
   [SENTRY_KIND]?: SENTRY_KIND_TYPE;
+  [SENTRY_MAIN_THREAD]?: SENTRY_MAIN_THREAD_TYPE;
   [SENTRY_MESSAGE_PARAMETER_KEY]?: SENTRY_MESSAGE_PARAMETER_KEY_TYPE;
   [SENTRY_MESSAGE_TEMPLATE]?: SENTRY_MESSAGE_TEMPLATE_TYPE;
+  [SENTRY_MOBILE]?: SENTRY_MOBILE_TYPE;
   [SENTRY_MODULE_KEY]?: SENTRY_MODULE_KEY_TYPE;
   [SENTRY_NEXTJS_SSR_FUNCTION_ROUTE]?: SENTRY_NEXTJS_SSR_FUNCTION_ROUTE_TYPE;
   [SENTRY_NEXTJS_SSR_FUNCTION_TYPE]?: SENTRY_NEXTJS_SSR_FUNCTION_TYPE_TYPE;
