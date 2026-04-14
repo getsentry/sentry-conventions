@@ -2,6 +2,36 @@
   "_generated": "This file is generated. Do not modify it directly. See scripts/generate_deprecated_attributes_json.ts",
   "attributes": [
     {
+      "key": "app_start_type",
+      "brief": "Mobile app start variant. Either cold or warm.",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "cold",
+      "alias": ["app.vitals.start.type"],
+      "deprecation": {
+        "replacement": "app.vitals.start.type",
+        "reason": "Replaced by app.vitals.start.type to align with the app.vitals.* namespace for mobile performance attributes",
+        "_status": "backfill"
+      },
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [313],
+          "description": "Deprecated in favor of app.vitals.start.type"
+        },
+        {
+          "version": "0.1.0",
+          "prs": [127]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
+    },
+    {
       "key": "cls",
       "brief": "The value of the recorded Cumulative Layout Shift (CLS) web vital",
       "type": "double",
@@ -364,6 +394,54 @@
         },
         {
           "version": "0.0.0"
+        }
+      ]
+    },
+    {
+      "key": "time_to_full_display",
+      "brief": "The duration of time to full display in milliseconds",
+      "type": "double",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": 1234.56,
+      "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
+      "alias": ["app.vitals.ttfd.value"],
+      "deprecation": {
+        "replacement": "app.vitals.ttfd.value",
+        "reason": "Replaced by app.vitals.ttfd.value to align with the app.vitals.* namespace for mobile performance attributes",
+        "_status": "backfill"
+      },
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [313],
+          "description": "Added and deprecated in favor of app.vitals.ttfd.value"
+        }
+      ]
+    },
+    {
+      "key": "time_to_initial_display",
+      "brief": "The duration of time to initial display in milliseconds",
+      "type": "double",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": 1234.56,
+      "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
+      "alias": ["app.vitals.ttid.value"],
+      "deprecation": {
+        "replacement": "app.vitals.ttid.value",
+        "reason": "Replaced by app.vitals.ttid.value to align with the app.vitals.* namespace for mobile performance attributes",
+        "_status": "backfill"
+      },
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [313],
+          "description": "Added and deprecated in favor of app.vitals.ttid.value"
         }
       ]
     },
@@ -1650,6 +1728,126 @@
           "version": "next",
           "prs": [303],
           "description": "Added and deprecated device.connection_type in favor of network.connection.type"
+        }
+      ]
+    },
+    {
+      "key": "frames.delay",
+      "brief": "The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).",
+      "type": "integer",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": 5,
+      "alias": ["app.vitals.frames.delay.value"],
+      "deprecation": {
+        "replacement": "app.vitals.frames.delay.value",
+        "reason": "Replaced by app.vitals.frames.delay.value to align with the app.vitals.* namespace for mobile performance attributes",
+        "_status": "backfill"
+      },
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [313],
+          "description": "Deprecated in favor of app.vitals.frames.delay.value"
+        },
+        {
+          "version": "0.4.0",
+          "prs": [228]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
+    },
+    {
+      "key": "frames.frozen",
+      "brief": "The number of frozen frames rendered during the lifetime of the span.",
+      "type": "integer",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": 3,
+      "alias": ["app.vitals.frames.frozen.count"],
+      "deprecation": {
+        "replacement": "app.vitals.frames.frozen.count",
+        "reason": "Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes",
+        "_status": "backfill"
+      },
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [313],
+          "description": "Deprecated in favor of app.vitals.frames.frozen.count"
+        },
+        {
+          "version": "0.4.0",
+          "prs": [228]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
+    },
+    {
+      "key": "frames.slow",
+      "brief": "The number of slow frames rendered during the lifetime of the span.",
+      "type": "integer",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": 1,
+      "alias": ["app.vitals.frames.slow.count"],
+      "deprecation": {
+        "replacement": "app.vitals.frames.slow.count",
+        "reason": "Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes",
+        "_status": "backfill"
+      },
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [313],
+          "description": "Deprecated in favor of app.vitals.frames.slow.count"
+        },
+        {
+          "version": "0.4.0",
+          "prs": [228]
+        },
+        {
+          "version": "0.0.0"
+        }
+      ]
+    },
+    {
+      "key": "frames.total",
+      "brief": "The number of total frames rendered during the lifetime of the span.",
+      "type": "integer",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": 60,
+      "alias": ["app.vitals.frames.total.count"],
+      "deprecation": {
+        "replacement": "app.vitals.frames.total.count",
+        "reason": "Replaced by app.vitals.frames.total.count to align with the app.vitals.* namespace for mobile performance attributes",
+        "_status": "backfill"
+      },
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [313],
+          "description": "Deprecated in favor of app.vitals.frames.total.count"
+        },
+        {
+          "version": "0.4.0",
+          "prs": [228]
+        },
+        {
+          "version": "0.0.0"
         }
       ]
     },

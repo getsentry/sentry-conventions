@@ -967,6 +967,9 @@ export type APP_START_TIME_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link APP_VITALS_START_TYPE} `app.vitals.start.type`
+ *
+ * @deprecated Use {@link APP_VITALS_START_TYPE} (app.vitals.start.type) instead - Replaced by app.vitals.start.type to align with the app.vitals.* namespace for mobile performance attributes
  * @example "cold"
  */
 export const APP_START_TYPE = 'app_start_type';
@@ -997,6 +1000,200 @@ export const APP_VERSION = 'app.version';
  * Type for {@link APP_VERSION} app.version
  */
 export type APP_VERSION_TYPE = string;
+
+// Path: model/attributes/app/app__vitals__frames__delay__value.json
+
+/**
+ * The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/). `app.vitals.frames.delay.value`
+ *
+ * Attribute Value Type: `number` {@link APP_VITALS_FRAMES_DELAY_VALUE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link FRAMES_DELAY} `frames.delay`
+ *
+ * @example 5
+ */
+export const APP_VITALS_FRAMES_DELAY_VALUE = 'app.vitals.frames.delay.value';
+
+/**
+ * Type for {@link APP_VITALS_FRAMES_DELAY_VALUE} app.vitals.frames.delay.value
+ */
+export type APP_VITALS_FRAMES_DELAY_VALUE_TYPE = number;
+
+// Path: model/attributes/app/app__vitals__frames__frozen__count.json
+
+/**
+ * The number of frozen frames rendered during the lifetime of the span. `app.vitals.frames.frozen.count`
+ *
+ * Attribute Value Type: `number` {@link APP_VITALS_FRAMES_FROZEN_COUNT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link FRAMES_FROZEN} `frames.frozen`
+ *
+ * @example 3
+ */
+export const APP_VITALS_FRAMES_FROZEN_COUNT = 'app.vitals.frames.frozen.count';
+
+/**
+ * Type for {@link APP_VITALS_FRAMES_FROZEN_COUNT} app.vitals.frames.frozen.count
+ */
+export type APP_VITALS_FRAMES_FROZEN_COUNT_TYPE = number;
+
+// Path: model/attributes/app/app__vitals__frames__slow__count.json
+
+/**
+ * The number of slow frames rendered during the lifetime of the span. `app.vitals.frames.slow.count`
+ *
+ * Attribute Value Type: `number` {@link APP_VITALS_FRAMES_SLOW_COUNT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link FRAMES_SLOW} `frames.slow`
+ *
+ * @example 1
+ */
+export const APP_VITALS_FRAMES_SLOW_COUNT = 'app.vitals.frames.slow.count';
+
+/**
+ * Type for {@link APP_VITALS_FRAMES_SLOW_COUNT} app.vitals.frames.slow.count
+ */
+export type APP_VITALS_FRAMES_SLOW_COUNT_TYPE = number;
+
+// Path: model/attributes/app/app__vitals__frames__total__count.json
+
+/**
+ * The number of total frames rendered during the lifetime of the span. `app.vitals.frames.total.count`
+ *
+ * Attribute Value Type: `number` {@link APP_VITALS_FRAMES_TOTAL_COUNT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link FRAMES_TOTAL} `frames.total`
+ *
+ * @example 60
+ */
+export const APP_VITALS_FRAMES_TOTAL_COUNT = 'app.vitals.frames.total.count';
+
+/**
+ * Type for {@link APP_VITALS_FRAMES_TOTAL_COUNT} app.vitals.frames.total.count
+ */
+export type APP_VITALS_FRAMES_TOTAL_COUNT_TYPE = number;
+
+// Path: model/attributes/app/app__vitals__start__cold__value.json
+
+/**
+ * The duration of a cold app start in milliseconds `app.vitals.start.cold.value`
+ *
+ * Attribute Value Type: `number` {@link APP_VITALS_START_COLD_VALUE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 1234.56
+ */
+export const APP_VITALS_START_COLD_VALUE = 'app.vitals.start.cold.value';
+
+/**
+ * Type for {@link APP_VITALS_START_COLD_VALUE} app.vitals.start.cold.value
+ */
+export type APP_VITALS_START_COLD_VALUE_TYPE = number;
+
+// Path: model/attributes/app/app__vitals__start__type.json
+
+/**
+ * The type of app start, for example `cold` or `warm` `app.vitals.start.type`
+ *
+ * Attribute Value Type: `string` {@link APP_VITALS_START_TYPE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link APP_START_TYPE} `app_start_type`
+ *
+ * @example "cold"
+ */
+export const APP_VITALS_START_TYPE = 'app.vitals.start.type';
+
+/**
+ * Type for {@link APP_VITALS_START_TYPE} app.vitals.start.type
+ */
+export type APP_VITALS_START_TYPE_TYPE = string;
+
+// Path: model/attributes/app/app__vitals__start__warm__value.json
+
+/**
+ * The duration of a warm app start in milliseconds `app.vitals.start.warm.value`
+ *
+ * Attribute Value Type: `number` {@link APP_VITALS_START_WARM_VALUE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 1234.56
+ */
+export const APP_VITALS_START_WARM_VALUE = 'app.vitals.start.warm.value';
+
+/**
+ * Type for {@link APP_VITALS_START_WARM_VALUE} app.vitals.start.warm.value
+ */
+export type APP_VITALS_START_WARM_VALUE_TYPE = number;
+
+// Path: model/attributes/app/app__vitals__ttfd__value.json
+
+/**
+ * The duration of time to full display in milliseconds `app.vitals.ttfd.value`
+ *
+ * Attribute Value Type: `number` {@link APP_VITALS_TTFD_VALUE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link TIME_TO_FULL_DISPLAY} `time_to_full_display`
+ *
+ * @example 1234.56
+ */
+export const APP_VITALS_TTFD_VALUE = 'app.vitals.ttfd.value';
+
+/**
+ * Type for {@link APP_VITALS_TTFD_VALUE} app.vitals.ttfd.value
+ */
+export type APP_VITALS_TTFD_VALUE_TYPE = number;
+
+// Path: model/attributes/app/app__vitals__ttid__value.json
+
+/**
+ * The duration of time to initial display in milliseconds `app.vitals.ttid.value`
+ *
+ * Attribute Value Type: `number` {@link APP_VITALS_TTID_VALUE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link TIME_TO_INITIAL_DISPLAY} `time_to_initial_display`
+ *
+ * @example 1234.56
+ */
+export const APP_VITALS_TTID_VALUE = 'app.vitals.ttid.value';
+
+/**
+ * Type for {@link APP_VITALS_TTID_VALUE} app.vitals.ttid.value
+ */
+export type APP_VITALS_TTID_VALUE_TYPE = number;
 
 // Path: model/attributes/blocked_main_thread.json
 
@@ -3502,6 +3699,9 @@ export type FP_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link APP_VITALS_FRAMES_DELAY_VALUE} `app.vitals.frames.delay.value`
+ *
+ * @deprecated Use {@link APP_VITALS_FRAMES_DELAY_VALUE} (app.vitals.frames.delay.value) instead - Replaced by app.vitals.frames.delay.value to align with the app.vitals.* namespace for mobile performance attributes
  * @example 5
  */
 export const FRAMES_DELAY = 'frames.delay';
@@ -3522,6 +3722,9 @@ export type FRAMES_DELAY_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link APP_VITALS_FRAMES_FROZEN_COUNT} `app.vitals.frames.frozen.count`
+ *
+ * @deprecated Use {@link APP_VITALS_FRAMES_FROZEN_COUNT} (app.vitals.frames.frozen.count) instead - Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes
  * @example 3
  */
 export const FRAMES_FROZEN = 'frames.frozen';
@@ -3542,6 +3745,9 @@ export type FRAMES_FROZEN_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link APP_VITALS_FRAMES_SLOW_COUNT} `app.vitals.frames.slow.count`
+ *
+ * @deprecated Use {@link APP_VITALS_FRAMES_SLOW_COUNT} (app.vitals.frames.slow.count) instead - Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes
  * @example 1
  */
 export const FRAMES_SLOW = 'frames.slow';
@@ -3562,6 +3768,9 @@ export type FRAMES_SLOW_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link APP_VITALS_FRAMES_TOTAL_COUNT} `app.vitals.frames.total.count`
+ *
+ * @deprecated Use {@link APP_VITALS_FRAMES_TOTAL_COUNT} (app.vitals.frames.total.count) instead - Replaced by app.vitals.frames.total.count to align with the app.vitals.* namespace for mobile performance attributes
  * @example 60
  */
 export const FRAMES_TOTAL = 'frames.total';
@@ -9568,6 +9777,52 @@ export const TIMBER_TAG = 'timber.tag';
  */
 export type TIMBER_TAG_TYPE = string;
 
+// Path: model/attributes/time_to_full_display.json
+
+/**
+ * The duration of time to full display in milliseconds `time_to_full_display`
+ *
+ * Attribute Value Type: `number` {@link TIME_TO_FULL_DISPLAY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link APP_VITALS_TTFD_VALUE} `app.vitals.ttfd.value`
+ *
+ * @deprecated Use {@link APP_VITALS_TTFD_VALUE} (app.vitals.ttfd.value) instead - Replaced by app.vitals.ttfd.value to align with the app.vitals.* namespace for mobile performance attributes
+ * @example 1234.56
+ */
+export const TIME_TO_FULL_DISPLAY = 'time_to_full_display';
+
+/**
+ * Type for {@link TIME_TO_FULL_DISPLAY} time_to_full_display
+ */
+export type TIME_TO_FULL_DISPLAY_TYPE = number;
+
+// Path: model/attributes/time_to_initial_display.json
+
+/**
+ * The duration of time to initial display in milliseconds `time_to_initial_display`
+ *
+ * Attribute Value Type: `number` {@link TIME_TO_INITIAL_DISPLAY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link APP_VITALS_TTID_VALUE} `app.vitals.ttid.value`
+ *
+ * @deprecated Use {@link APP_VITALS_TTID_VALUE} (app.vitals.ttid.value) instead - Replaced by app.vitals.ttid.value to align with the app.vitals.* namespace for mobile performance attributes
+ * @example 1234.56
+ */
+export const TIME_TO_INITIAL_DISPLAY = 'time_to_initial_display';
+
+/**
+ * Type for {@link TIME_TO_INITIAL_DISPLAY} time_to_initial_display
+ */
+export type TIME_TO_INITIAL_DISPLAY_TYPE = number;
+
 // Path: model/attributes/transaction.json
 
 /**
@@ -11157,6 +11412,15 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [APP_START_TIME]: 'string',
   [APP_START_TYPE]: 'string',
   [APP_VERSION]: 'string',
+  [APP_VITALS_FRAMES_DELAY_VALUE]: 'integer',
+  [APP_VITALS_FRAMES_FROZEN_COUNT]: 'integer',
+  [APP_VITALS_FRAMES_SLOW_COUNT]: 'integer',
+  [APP_VITALS_FRAMES_TOTAL_COUNT]: 'integer',
+  [APP_VITALS_START_COLD_VALUE]: 'double',
+  [APP_VITALS_START_TYPE]: 'string',
+  [APP_VITALS_START_WARM_VALUE]: 'double',
+  [APP_VITALS_TTFD_VALUE]: 'double',
+  [APP_VITALS_TTID_VALUE]: 'double',
   [BLOCKED_MAIN_THREAD]: 'boolean',
   [BROWSER_NAME]: 'string',
   [BROWSER_REPORT_TYPE]: 'string',
@@ -11567,6 +11831,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [THREAD_ID]: 'integer',
   [THREAD_NAME]: 'string',
   [TIMBER_TAG]: 'string',
+  [TIME_TO_FULL_DISPLAY]: 'double',
+  [TIME_TO_INITIAL_DISPLAY]: 'double',
   [TRANSACTION]: 'string',
   [TTFB]: 'double',
   [TTFB_REQUESTTIME]: 'double',
@@ -11688,6 +11954,15 @@ export type AttributeName =
   | typeof APP_START_TIME
   | typeof APP_START_TYPE
   | typeof APP_VERSION
+  | typeof APP_VITALS_FRAMES_DELAY_VALUE
+  | typeof APP_VITALS_FRAMES_FROZEN_COUNT
+  | typeof APP_VITALS_FRAMES_SLOW_COUNT
+  | typeof APP_VITALS_FRAMES_TOTAL_COUNT
+  | typeof APP_VITALS_START_COLD_VALUE
+  | typeof APP_VITALS_START_TYPE
+  | typeof APP_VITALS_START_WARM_VALUE
+  | typeof APP_VITALS_TTFD_VALUE
+  | typeof APP_VITALS_TTID_VALUE
   | typeof BLOCKED_MAIN_THREAD
   | typeof BROWSER_NAME
   | typeof BROWSER_REPORT_TYPE
@@ -12098,6 +12373,8 @@ export type AttributeName =
   | typeof THREAD_ID
   | typeof THREAD_NAME
   | typeof TIMBER_TAG
+  | typeof TIME_TO_FULL_DISPLAY
+  | typeof TIME_TO_INITIAL_DISPLAY
   | typeof TRANSACTION
   | typeof TTFB
   | typeof TTFB_REQUESTTIME
@@ -12837,7 +13114,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'cold',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    deprecation: {
+      replacement: 'app.vitals.start.type',
+      reason:
+        'Replaced by app.vitals.start.type to align with the app.vitals.* namespace for mobile performance attributes',
+    },
+    aliases: [APP_VITALS_START_TYPE],
+    changelog: [
+      { version: 'next', prs: [313], description: 'Deprecated in favor of app.vitals.start.type' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   [APP_VERSION]: {
     brief: 'Human readable application version, as it appears on the platform.',
@@ -12850,6 +13137,121 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [APP_APP_VERSION],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: 'next', prs: [296], description: 'Added app.version attribute' }],
+  },
+  [APP_VITALS_FRAMES_DELAY_VALUE]: {
+    brief:
+      'The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 5,
+    aliases: [FRAMES_DELAY],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [
+      { version: 'next', prs: [313], description: 'Added app.vitals.frames.delay.value to replace frames.delay' },
+    ],
+  },
+  [APP_VITALS_FRAMES_FROZEN_COUNT]: {
+    brief: 'The number of frozen frames rendered during the lifetime of the span.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 3,
+    aliases: [FRAMES_FROZEN],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [
+      { version: 'next', prs: [313], description: 'Added app.vitals.frames.frozen.count to replace frames.frozen' },
+    ],
+  },
+  [APP_VITALS_FRAMES_SLOW_COUNT]: {
+    brief: 'The number of slow frames rendered during the lifetime of the span.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1,
+    aliases: [FRAMES_SLOW],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [
+      { version: 'next', prs: [313], description: 'Added app.vitals.frames.slow.count to replace frames.slow' },
+    ],
+  },
+  [APP_VITALS_FRAMES_TOTAL_COUNT]: {
+    brief: 'The number of total frames rendered during the lifetime of the span.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 60,
+    aliases: [FRAMES_TOTAL],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [
+      { version: 'next', prs: [313], description: 'Added app.vitals.frames.total.count to replace frames.total' },
+    ],
+  },
+  [APP_VITALS_START_COLD_VALUE]: {
+    brief: 'The duration of a cold app start in milliseconds',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1234.56,
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [{ version: 'next', prs: [313], description: 'Added app.vitals.start.cold.value attribute' }],
+  },
+  [APP_VITALS_START_TYPE]: {
+    brief: 'The type of app start, for example `cold` or `warm`',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'cold',
+    aliases: [APP_START_TYPE],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [{ version: 'next', prs: [313], description: 'Added app.vitals.start.type attribute' }],
+  },
+  [APP_VITALS_START_WARM_VALUE]: {
+    brief: 'The duration of a warm app start in milliseconds',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1234.56,
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [{ version: 'next', prs: [313], description: 'Added app.vitals.start.warm.value attribute' }],
+  },
+  [APP_VITALS_TTFD_VALUE]: {
+    brief: 'The duration of time to full display in milliseconds',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1234.56,
+    aliases: [TIME_TO_FULL_DISPLAY],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [{ version: 'next', prs: [313], description: 'Added app.vitals.ttfd.value attribute' }],
+  },
+  [APP_VITALS_TTID_VALUE]: {
+    brief: 'The duration of time to initial display in milliseconds',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1234.56,
+    aliases: [TIME_TO_INITIAL_DISPLAY],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [{ version: 'next', prs: [313], description: 'Added app.vitals.ttid.value attribute' }],
   },
   [BLOCKED_MAIN_THREAD]: {
     brief: 'Whether the main thread was blocked by the span.',
@@ -14281,7 +14683,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 5,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    deprecation: {
+      replacement: 'app.vitals.frames.delay.value',
+      reason:
+        'Replaced by app.vitals.frames.delay.value to align with the app.vitals.* namespace for mobile performance attributes',
+    },
+    aliases: [APP_VITALS_FRAMES_DELAY_VALUE],
+    changelog: [
+      { version: 'next', prs: [313], description: 'Deprecated in favor of app.vitals.frames.delay.value' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.0.0' },
+    ],
   },
   [FRAMES_FROZEN]: {
     brief: 'The number of frozen frames rendered during the lifetime of the span.',
@@ -14291,7 +14703,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 3,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    deprecation: {
+      replacement: 'app.vitals.frames.frozen.count',
+      reason:
+        'Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes',
+    },
+    aliases: [APP_VITALS_FRAMES_FROZEN_COUNT],
+    changelog: [
+      { version: 'next', prs: [313], description: 'Deprecated in favor of app.vitals.frames.frozen.count' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.0.0' },
+    ],
   },
   [FRAMES_SLOW]: {
     brief: 'The number of slow frames rendered during the lifetime of the span.',
@@ -14301,7 +14723,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 1,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    deprecation: {
+      replacement: 'app.vitals.frames.slow.count',
+      reason:
+        'Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes',
+    },
+    aliases: [APP_VITALS_FRAMES_SLOW_COUNT],
+    changelog: [
+      { version: 'next', prs: [313], description: 'Deprecated in favor of app.vitals.frames.slow.count' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.0.0' },
+    ],
   },
   [FRAMES_TOTAL]: {
     brief: 'The number of total frames rendered during the lifetime of the span.',
@@ -14311,7 +14743,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 60,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    deprecation: {
+      replacement: 'app.vitals.frames.total.count',
+      reason:
+        'Replaced by app.vitals.frames.total.count to align with the app.vitals.* namespace for mobile performance attributes',
+    },
+    aliases: [APP_VITALS_FRAMES_TOTAL_COUNT],
+    changelog: [
+      { version: 'next', prs: [313], description: 'Deprecated in favor of app.vitals.frames.total.count' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.0.0' },
+    ],
   },
   [FS_ERROR]: {
     brief: 'The error message of a file system error.',
@@ -17795,6 +18237,40 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['sentry.java.android'],
     changelog: [{ version: '0.3.0', prs: [183] }],
   },
+  [TIME_TO_FULL_DISPLAY]: {
+    brief: 'The duration of time to full display in milliseconds',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1234.56,
+    deprecation: {
+      replacement: 'app.vitals.ttfd.value',
+      reason:
+        'Replaced by app.vitals.ttfd.value to align with the app.vitals.* namespace for mobile performance attributes',
+    },
+    aliases: [APP_VITALS_TTFD_VALUE],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [{ version: 'next', prs: [313], description: 'Added and deprecated in favor of app.vitals.ttfd.value' }],
+  },
+  [TIME_TO_INITIAL_DISPLAY]: {
+    brief: 'The duration of time to initial display in milliseconds',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1234.56,
+    deprecation: {
+      replacement: 'app.vitals.ttid.value',
+      reason:
+        'Replaced by app.vitals.ttid.value to align with the app.vitals.* namespace for mobile performance attributes',
+    },
+    aliases: [APP_VITALS_TTID_VALUE],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [{ version: 'next', prs: [313], description: 'Added and deprecated in favor of app.vitals.ttid.value' }],
+  },
   [TRANSACTION]: {
     brief: 'The sentry transaction (segment name).',
     type: 'string',
@@ -18632,6 +19108,15 @@ export type Attributes = {
   [APP_START_TIME]?: APP_START_TIME_TYPE;
   [APP_START_TYPE]?: APP_START_TYPE_TYPE;
   [APP_VERSION]?: APP_VERSION_TYPE;
+  [APP_VITALS_FRAMES_DELAY_VALUE]?: APP_VITALS_FRAMES_DELAY_VALUE_TYPE;
+  [APP_VITALS_FRAMES_FROZEN_COUNT]?: APP_VITALS_FRAMES_FROZEN_COUNT_TYPE;
+  [APP_VITALS_FRAMES_SLOW_COUNT]?: APP_VITALS_FRAMES_SLOW_COUNT_TYPE;
+  [APP_VITALS_FRAMES_TOTAL_COUNT]?: APP_VITALS_FRAMES_TOTAL_COUNT_TYPE;
+  [APP_VITALS_START_COLD_VALUE]?: APP_VITALS_START_COLD_VALUE_TYPE;
+  [APP_VITALS_START_TYPE]?: APP_VITALS_START_TYPE_TYPE;
+  [APP_VITALS_START_WARM_VALUE]?: APP_VITALS_START_WARM_VALUE_TYPE;
+  [APP_VITALS_TTFD_VALUE]?: APP_VITALS_TTFD_VALUE_TYPE;
+  [APP_VITALS_TTID_VALUE]?: APP_VITALS_TTID_VALUE_TYPE;
   [BLOCKED_MAIN_THREAD]?: BLOCKED_MAIN_THREAD_TYPE;
   [BROWSER_NAME]?: BROWSER_NAME_TYPE;
   [BROWSER_REPORT_TYPE]?: BROWSER_REPORT_TYPE_TYPE;
@@ -19042,6 +19527,8 @@ export type Attributes = {
   [THREAD_ID]?: THREAD_ID_TYPE;
   [THREAD_NAME]?: THREAD_NAME_TYPE;
   [TIMBER_TAG]?: TIMBER_TAG_TYPE;
+  [TIME_TO_FULL_DISPLAY]?: TIME_TO_FULL_DISPLAY_TYPE;
+  [TIME_TO_INITIAL_DISPLAY]?: TIME_TO_INITIAL_DISPLAY_TYPE;
   [TRANSACTION]?: TRANSACTION_TYPE;
   [TTFB]?: TTFB_TYPE;
   [TTFB_REQUESTTIME]?: TTFB_REQUESTTIME_TYPE;

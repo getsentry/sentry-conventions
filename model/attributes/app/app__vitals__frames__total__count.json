@@ -1,0 +1,19 @@
+{
+  "key": "app.vitals.frames.total.count",
+  "brief": "The number of total frames rendered during the lifetime of the span.",
+  "type": "integer",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "alias": ["frames.total"],
+  "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
+  "example": 60,
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [313],
+      "description": "Added app.vitals.frames.total.count to replace frames.total"
+    }
+  ]
+}
