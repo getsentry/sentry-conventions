@@ -136,6 +136,11 @@ class _AttributeNamesMeta(type):
         "AI_TOTAL_COST",
         "AI_TOTAL_TOKENS_USED",
         "AI_WARNINGS",
+        "APP_APP_BUILD",
+        "APP_APP_IDENTIFIER",
+        "APP_APP_NAME",
+        "APP_APP_START_TIME",
+        "APP_APP_VERSION",
         "CLS_SOURCE_KEY",
         "CLS",
         "CODE_FILEPATH",
@@ -624,6 +629,66 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: ["Token limit exceeded"]
     """
 
+    # Path: model/attributes/app/app__app_build.json
+    APP_APP_BUILD: Literal["app.app_build"] = "app.app_build"
+    """Internal build identifier, as it appears on the platform.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: app.build
+    DEPRECATED: Use app.build instead - Deprecated in favor of app.build
+    Example: "1"
+    """
+
+    # Path: model/attributes/app/app__app_identifier.json
+    APP_APP_IDENTIFIER: Literal["app.app_identifier"] = "app.app_identifier"
+    """Version-independent application identifier, often a dotted bundle ID.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: app.identifier
+    DEPRECATED: Use app.identifier instead - Deprecated in favor of app.identifier
+    Example: "com.example.myapp"
+    """
+
+    # Path: model/attributes/app/app__app_name.json
+    APP_APP_NAME: Literal["app.app_name"] = "app.app_name"
+    """Human readable application name, as it appears on the platform.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: app.name
+    DEPRECATED: Use app.name instead - Deprecated in favor of app.name
+    Example: "My App"
+    """
+
+    # Path: model/attributes/app/app__app_start_time.json
+    APP_APP_START_TIME: Literal["app.app_start_time"] = "app.app_start_time"
+    """Formatted UTC timestamp when the user started the application.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: app.start_time
+    DEPRECATED: Use app.start_time instead - Deprecated in favor of app.start_time
+    Example: "2025-01-01T00:00:00.000Z"
+    """
+
+    # Path: model/attributes/app/app__app_version.json
+    APP_APP_VERSION: Literal["app.app_version"] = "app.app_version"
+    """Human readable application version, as it appears on the platform.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: app.version
+    DEPRECATED: Use app.version instead - Deprecated in favor of app.version
+    Example: "1.0.0"
+    """
+
     # Path: model/attributes/app/app__build.json
     APP_BUILD: Literal["app.build"] = "app.build"
     """Internal build identifier, as it appears on the platform.
@@ -631,6 +696,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Aliases: app.app_build
     Example: "1"
     """
 
@@ -641,6 +707,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Aliases: app.app_identifier
     Example: "com.example.myapp"
     """
 
@@ -649,7 +716,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether the application is currently in the foreground.
 
     Type: bool
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: true
     """
@@ -661,6 +728,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Aliases: app.app_name
     Example: "My App"
     """
 
@@ -671,6 +739,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Aliases: app.app_start_time
     Example: "2025-01-01T00:00:00.000Z"
     """
 
@@ -681,6 +750,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Aliases: app.app_version
     Example: "1.0.0"
     """
 
@@ -6462,12 +6532,143 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[55]),
         ],
     ),
+    "app.app_build": AttributeMetadata(
+        brief="Internal build identifier, as it appears on the platform.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="1",
+        deprecation=DeprecationInfo(
+            replacement="app.build",
+            reason="Deprecated in favor of app.build",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["app.build"],
+        sdks=[
+            "sentry.cocoa",
+            "sentry.java.android",
+            "sentry.javascript.react-native",
+            "sentry.dart.flutter",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[296],
+                description="Added and deprecated app.app_build in favor of app.build",
+            ),
+        ],
+    ),
+    "app.app_identifier": AttributeMetadata(
+        brief="Version-independent application identifier, often a dotted bundle ID.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="com.example.myapp",
+        deprecation=DeprecationInfo(
+            replacement="app.identifier",
+            reason="Deprecated in favor of app.identifier",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["app.identifier"],
+        sdks=[
+            "sentry.cocoa",
+            "sentry.java.android",
+            "sentry.javascript.react-native",
+            "sentry.dart.flutter",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[296],
+                description="Added and deprecated app.app_identifier in favor of app.identifier",
+            ),
+        ],
+    ),
+    "app.app_name": AttributeMetadata(
+        brief="Human readable application name, as it appears on the platform.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="My App",
+        deprecation=DeprecationInfo(
+            replacement="app.name",
+            reason="Deprecated in favor of app.name",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["app.name"],
+        sdks=[
+            "sentry.cocoa",
+            "sentry.java.android",
+            "sentry.javascript.react-native",
+            "sentry.dart.flutter",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[296],
+                description="Added and deprecated app.app_name in favor of app.name",
+            ),
+        ],
+    ),
+    "app.app_start_time": AttributeMetadata(
+        brief="Formatted UTC timestamp when the user started the application.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="2025-01-01T00:00:00.000Z",
+        deprecation=DeprecationInfo(
+            replacement="app.start_time",
+            reason="Deprecated in favor of app.start_time",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["app.start_time"],
+        sdks=[
+            "sentry.cocoa",
+            "sentry.java.android",
+            "sentry.javascript.react-native",
+            "sentry.dart.flutter",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[296],
+                description="Added and deprecated app.app_start_time in favor of app.start_time",
+            ),
+        ],
+    ),
+    "app.app_version": AttributeMetadata(
+        brief="Human readable application version, as it appears on the platform.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="1.0.0",
+        deprecation=DeprecationInfo(
+            replacement="app.version",
+            reason="Deprecated in favor of app.version",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["app.version"],
+        sdks=[
+            "sentry.cocoa",
+            "sentry.java.android",
+            "sentry.javascript.react-native",
+            "sentry.dart.flutter",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[296],
+                description="Added and deprecated app.app_version in favor of app.version",
+            ),
+        ],
+    ),
     "app.build": AttributeMetadata(
         brief="Internal build identifier, as it appears on the platform.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="1",
+        aliases=["app.app_build"],
         sdks=[
             "sentry.cocoa",
             "sentry.java.android",
@@ -6486,6 +6687,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="com.example.myapp",
+        aliases=["app.app_identifier"],
         sdks=[
             "sentry.cocoa",
             "sentry.java.android",
@@ -6501,7 +6703,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.in_foreground": AttributeMetadata(
         brief="Whether the application is currently in the foreground.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=True,
         sdks=[
@@ -6524,6 +6726,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="My App",
+        aliases=["app.app_name"],
         sdks=[
             "sentry.cocoa",
             "sentry.java.android",
@@ -6542,6 +6745,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="2025-01-01T00:00:00.000Z",
+        aliases=["app.app_start_time"],
         sdks=[
             "sentry.cocoa",
             "sentry.java.android",
@@ -6560,6 +6764,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="1.0.0",
+        aliases=["app.app_version"],
         sdks=[
             "sentry.cocoa",
             "sentry.java.android",
@@ -12452,6 +12657,11 @@ Attributes = TypedDict(
         "ai.total_cost": float,
         "ai.total_tokens.used": int,
         "ai.warnings": List[str],
+        "app.app_build": str,
+        "app.app_identifier": str,
+        "app.app_name": str,
+        "app.app_start_time": str,
+        "app.app_version": str,
         "app.build": str,
         "app.identifier": str,
         "app.in_foreground": bool,

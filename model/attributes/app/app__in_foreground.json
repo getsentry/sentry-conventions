@@ -3,7 +3,7 @@
   "brief": "Whether the application is currently in the foreground.",
   "type": "boolean",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
