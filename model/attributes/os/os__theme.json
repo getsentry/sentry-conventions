@@ -1,0 +1,17 @@
+{
+  "key": "os.theme",
+  "brief": "Whether the OS runs in dark mode or light mode.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "dark",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [301],
+      "description": "Added os.theme attribute"
+    }
+  ]
+}

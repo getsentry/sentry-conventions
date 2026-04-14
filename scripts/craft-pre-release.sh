@@ -15,6 +15,7 @@ cd $ROOT_DIR
 
 npx tsx scripts/bump_attribute_changelog.ts "${NEW_VERSION}"
 
+yarn install
 yarn generate
 
 # ==================== JS ====================

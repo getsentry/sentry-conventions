@@ -35,7 +35,7 @@
       "is_in_otel": false,
       "example": "wifi",
       "sdks": ["javascript-browser"],
-      "alias": ["network.connection.type"],
+      "alias": ["network.connection.type", "device.connection_type"],
       "deprecation": {
         "replacement": "network.connection.type",
         "reason": "Old namespace-less attribute, to be replaced with network.connection.type for span-first future",
@@ -1631,6 +1631,29 @@
       ]
     },
     {
+      "key": "device.connection_type",
+      "brief": "The internet connection type currently being used by the device.",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "wifi",
+      "deprecation": {
+        "_status": "backfill",
+        "replacement": "network.connection.type",
+        "reason": "This attribute is being deprecated in favor of network.connection.type"
+      },
+      "alias": ["network.connection.type", "connectionType"],
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [303],
+          "description": "Added and deprecated device.connection_type in favor of network.connection.type"
+        }
+      ]
+    },
+    {
       "key": "gen_ai.prompt",
       "brief": "The input messages sent to the model",
       "type": "string",
@@ -1874,6 +1897,26 @@
         {
           "version": "0.1.0",
           "prs": [63, 74]
+        }
+      ]
+    },
+    {
+      "key": "gen_ai.tool.type",
+      "brief": "The type of tool being used.",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": true,
+      "example": "function",
+      "deprecation": {
+        "_status": null,
+        "reason": "The gen_ai.tool.type attribute is deprecated and should no longer be set."
+      },
+      "changelog": [
+        {
+          "version": "0.1.0",
+          "prs": [62, 127]
         }
       ]
     },
@@ -2767,6 +2810,28 @@
         },
         {
           "version": "0.0.0"
+        }
+      ]
+    },
+    {
+      "key": "os.build",
+      "brief": "The build ID of the operating system.",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "1234567890",
+      "deprecation": {
+        "_status": "backfill",
+        "replacement": "os.build_id"
+      },
+      "alias": ["os.build_id"],
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [301],
+          "description": "Added os.build attribute, deprecated in favor of os.build_id"
         }
       ]
     },

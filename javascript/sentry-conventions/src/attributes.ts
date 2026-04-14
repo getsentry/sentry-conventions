@@ -1909,7 +1909,7 @@ export type CODE_NAMESPACE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link NETWORK_CONNECTION_TYPE} `network.connection.type`
+ * Aliases: {@link NETWORK_CONNECTION_TYPE} `network.connection.type`, {@link DEVICE_CONNECTION_TYPE} `device.connection_type`
  *
  * @deprecated Use {@link NETWORK_CONNECTION_TYPE} (network.connection.type) instead - Old namespace-less attribute, to be replaced with network.connection.type for span-first future
  * @example "wifi"
@@ -2063,6 +2063,26 @@ export const DB_COLLECTION_NAME = 'db.collection.name';
  * Type for {@link DB_COLLECTION_NAME} db.collection.name
  */
 export type DB_COLLECTION_NAME_TYPE = string;
+
+// Path: model/attributes/db/db__driver__name.json
+
+/**
+ * The name of the driver used for the database connection. `db.driver.name`
+ *
+ * Attribute Value Type: `string` {@link DB_DRIVER_NAME_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "psycopg2"
+ */
+export const DB_DRIVER_NAME = 'db.driver.name';
+
+/**
+ * Type for {@link DB_DRIVER_NAME} db.driver.name
+ */
+export type DB_DRIVER_NAME_TYPE = string;
 
 // Path: model/attributes/db/db__name.json
 
@@ -2390,6 +2410,86 @@ export const DEVICEMEMORY = 'deviceMemory';
  */
 export type DEVICEMEMORY_TYPE = string;
 
+// Path: model/attributes/device/device__archs.json
+
+/**
+ * The CPU architectures of the device. `device.archs`
+ *
+ * Attribute Value Type: `Array<string>` {@link DEVICE_ARCHS_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example ["arm64-v8a","armeabi-v7a","armeabi"]
+ */
+export const DEVICE_ARCHS = 'device.archs';
+
+/**
+ * Type for {@link DEVICE_ARCHS} device.archs
+ */
+export type DEVICE_ARCHS_TYPE = Array<string>;
+
+// Path: model/attributes/device/device__battery_level.json
+
+/**
+ * The battery level of the device as a percentage (0-100). `device.battery_level`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_BATTERY_LEVEL_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 100
+ */
+export const DEVICE_BATTERY_LEVEL = 'device.battery_level';
+
+/**
+ * Type for {@link DEVICE_BATTERY_LEVEL} device.battery_level
+ */
+export type DEVICE_BATTERY_LEVEL_TYPE = number;
+
+// Path: model/attributes/device/device__battery_temperature.json
+
+/**
+ * The battery temperature of the device in Celsius. `device.battery_temperature`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_BATTERY_TEMPERATURE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 25
+ */
+export const DEVICE_BATTERY_TEMPERATURE = 'device.battery_temperature';
+
+/**
+ * Type for {@link DEVICE_BATTERY_TEMPERATURE} device.battery_temperature
+ */
+export type DEVICE_BATTERY_TEMPERATURE_TYPE = number;
+
+// Path: model/attributes/device/device__boot_time.json
+
+/**
+ * A formatted UTC timestamp when the system was booted. `device.boot_time`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_BOOT_TIME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "2018-02-08T12:52:12Z"
+ */
+export const DEVICE_BOOT_TIME = 'device.boot_time';
+
+/**
+ * Type for {@link DEVICE_BOOT_TIME} device.boot_time
+ */
+export type DEVICE_BOOT_TIME_TYPE = string;
+
 // Path: model/attributes/device/device__brand.json
 
 /**
@@ -2410,6 +2510,46 @@ export const DEVICE_BRAND = 'device.brand';
  */
 export type DEVICE_BRAND_TYPE = string;
 
+// Path: model/attributes/device/device__charging.json
+
+/**
+ * Whether the device was charging or not. `device.charging`
+ *
+ * Attribute Value Type: `boolean` {@link DEVICE_CHARGING_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example false
+ */
+export const DEVICE_CHARGING = 'device.charging';
+
+/**
+ * Type for {@link DEVICE_CHARGING} device.charging
+ */
+export type DEVICE_CHARGING_TYPE = boolean;
+
+// Path: model/attributes/device/device__chipset.json
+
+/**
+ * The chipset of the device. `device.chipset`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_CHIPSET_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "Qualcomm SM8550"
+ */
+export const DEVICE_CHIPSET = 'device.chipset';
+
+/**
+ * Type for {@link DEVICE_CHIPSET} device.chipset
+ */
+export type DEVICE_CHIPSET_TYPE = string;
+
 // Path: model/attributes/device/device__class.json
 
 /**
@@ -2429,6 +2569,89 @@ export const DEVICE_CLASS = 'device.class';
  * Type for {@link DEVICE_CLASS} device.class
  */
 export type DEVICE_CLASS_TYPE = string;
+
+// Path: model/attributes/device/device__connection_type.json
+
+/**
+ * The internet connection type currently being used by the device. `device.connection_type`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_CONNECTION_TYPE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link NETWORK_CONNECTION_TYPE} `network.connection.type`, {@link CONNECTIONTYPE} `connectionType`
+ *
+ * @deprecated Use {@link NETWORK_CONNECTION_TYPE} (network.connection.type) instead - This attribute is being deprecated in favor of network.connection.type
+ * @example "wifi"
+ */
+export const DEVICE_CONNECTION_TYPE = 'device.connection_type';
+
+/**
+ * Type for {@link DEVICE_CONNECTION_TYPE} device.connection_type
+ */
+export type DEVICE_CONNECTION_TYPE_TYPE = string;
+
+// Path: model/attributes/device/device__cpu_description.json
+
+/**
+ * A description of the CPU of the device. `device.cpu_description`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_CPU_DESCRIPTION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "Intel(R) Core(TM)2 Quad CPU Q6600 @ 2.40GHz"
+ */
+export const DEVICE_CPU_DESCRIPTION = 'device.cpu_description';
+
+/**
+ * Type for {@link DEVICE_CPU_DESCRIPTION} device.cpu_description
+ */
+export type DEVICE_CPU_DESCRIPTION_TYPE = string;
+
+// Path: model/attributes/device/device__external_free_storage.json
+
+/**
+ * External storage free size in bytes. `device.external_free_storage`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_EXTERNAL_FREE_STORAGE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 67108864000
+ */
+export const DEVICE_EXTERNAL_FREE_STORAGE = 'device.external_free_storage';
+
+/**
+ * Type for {@link DEVICE_EXTERNAL_FREE_STORAGE} device.external_free_storage
+ */
+export type DEVICE_EXTERNAL_FREE_STORAGE_TYPE = number;
+
+// Path: model/attributes/device/device__external_storage_size.json
+
+/**
+ * External storage total size in bytes. `device.external_storage_size`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_EXTERNAL_STORAGE_SIZE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 134217728000
+ */
+export const DEVICE_EXTERNAL_STORAGE_SIZE = 'device.external_storage_size';
+
+/**
+ * Type for {@link DEVICE_EXTERNAL_STORAGE_SIZE} device.external_storage_size
+ */
+export type DEVICE_EXTERNAL_STORAGE_SIZE_TYPE = number;
 
 // Path: model/attributes/device/device__family.json
 
@@ -2469,6 +2692,106 @@ export const DEVICE_FREE_MEMORY = 'device.free_memory';
  * Type for {@link DEVICE_FREE_MEMORY} device.free_memory
  */
 export type DEVICE_FREE_MEMORY_TYPE = number;
+
+// Path: model/attributes/device/device__free_storage.json
+
+/**
+ * Free device storage in bytes. `device.free_storage`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_FREE_STORAGE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 107374182400
+ */
+export const DEVICE_FREE_STORAGE = 'device.free_storage';
+
+/**
+ * Type for {@link DEVICE_FREE_STORAGE} device.free_storage
+ */
+export type DEVICE_FREE_STORAGE_TYPE = number;
+
+// Path: model/attributes/device/device__id.json
+
+/**
+ * Unique device identifier. `device.id`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_ID_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+ */
+export const DEVICE_ID = 'device.id';
+
+/**
+ * Type for {@link DEVICE_ID} device.id
+ */
+export type DEVICE_ID_TYPE = string;
+
+// Path: model/attributes/device/device__locale.json
+
+/**
+ * The locale of the device. `device.locale`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_LOCALE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "en-US"
+ */
+export const DEVICE_LOCALE = 'device.locale';
+
+/**
+ * Type for {@link DEVICE_LOCALE} device.locale
+ */
+export type DEVICE_LOCALE_TYPE = string;
+
+// Path: model/attributes/device/device__low_memory.json
+
+/**
+ * Whether the device was low on memory. `device.low_memory`
+ *
+ * Attribute Value Type: `boolean` {@link DEVICE_LOW_MEMORY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example false
+ */
+export const DEVICE_LOW_MEMORY = 'device.low_memory';
+
+/**
+ * Type for {@link DEVICE_LOW_MEMORY} device.low_memory
+ */
+export type DEVICE_LOW_MEMORY_TYPE = boolean;
+
+// Path: model/attributes/device/device__manufacturer.json
+
+/**
+ * The manufacturer of the device. `device.manufacturer`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_MANUFACTURER_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "Google"
+ */
+export const DEVICE_MANUFACTURER = 'device.manufacturer';
+
+/**
+ * Type for {@link DEVICE_MANUFACTURER} device.manufacturer
+ */
+export type DEVICE_MANUFACTURER_TYPE = string;
 
 // Path: model/attributes/device/device__memory__estimated_capacity.json
 
@@ -2552,6 +2875,66 @@ export const DEVICE_MODEL_ID = 'device.model_id';
  */
 export type DEVICE_MODEL_ID_TYPE = string;
 
+// Path: model/attributes/device/device__name.json
+
+/**
+ * The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname. `device.name`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_NAME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "localhost"
+ */
+export const DEVICE_NAME = 'device.name';
+
+/**
+ * Type for {@link DEVICE_NAME} device.name
+ */
+export type DEVICE_NAME_TYPE = string;
+
+// Path: model/attributes/device/device__online.json
+
+/**
+ * Whether the device was online or not. `device.online`
+ *
+ * Attribute Value Type: `boolean` {@link DEVICE_ONLINE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example true
+ */
+export const DEVICE_ONLINE = 'device.online';
+
+/**
+ * Type for {@link DEVICE_ONLINE} device.online
+ */
+export type DEVICE_ONLINE_TYPE = boolean;
+
+// Path: model/attributes/device/device__orientation.json
+
+/**
+ * The orientation of the device, either "portrait" or "landscape". `device.orientation`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_ORIENTATION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "portrait"
+ */
+export const DEVICE_ORIENTATION = 'device.orientation';
+
+/**
+ * Type for {@link DEVICE_ORIENTATION} device.orientation
+ */
+export type DEVICE_ORIENTATION_TYPE = string;
+
 // Path: model/attributes/device/device__processor_count.json
 
 /**
@@ -2574,6 +2957,106 @@ export const DEVICE_PROCESSOR_COUNT = 'device.processor_count';
  */
 export type DEVICE_PROCESSOR_COUNT_TYPE = number;
 
+// Path: model/attributes/device/device__processor_frequency.json
+
+/**
+ * Processor frequency in MHz. `device.processor_frequency`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_PROCESSOR_FREQUENCY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 2400
+ */
+export const DEVICE_PROCESSOR_FREQUENCY = 'device.processor_frequency';
+
+/**
+ * Type for {@link DEVICE_PROCESSOR_FREQUENCY} device.processor_frequency
+ */
+export type DEVICE_PROCESSOR_FREQUENCY_TYPE = number;
+
+// Path: model/attributes/device/device__screen_density.json
+
+/**
+ * The screen density of the device. `device.screen_density`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_SCREEN_DENSITY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 2.625
+ */
+export const DEVICE_SCREEN_DENSITY = 'device.screen_density';
+
+/**
+ * Type for {@link DEVICE_SCREEN_DENSITY} device.screen_density
+ */
+export type DEVICE_SCREEN_DENSITY_TYPE = number;
+
+// Path: model/attributes/device/device__screen_dpi.json
+
+/**
+ * The screen density in dots-per-inch (DPI) of the device. `device.screen_dpi`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_SCREEN_DPI_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 420
+ */
+export const DEVICE_SCREEN_DPI = 'device.screen_dpi';
+
+/**
+ * Type for {@link DEVICE_SCREEN_DPI} device.screen_dpi
+ */
+export type DEVICE_SCREEN_DPI_TYPE = number;
+
+// Path: model/attributes/device/device__screen_height_pixels.json
+
+/**
+ * The height of the device screen in pixels. `device.screen_height_pixels`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_SCREEN_HEIGHT_PIXELS_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 2400
+ */
+export const DEVICE_SCREEN_HEIGHT_PIXELS = 'device.screen_height_pixels';
+
+/**
+ * Type for {@link DEVICE_SCREEN_HEIGHT_PIXELS} device.screen_height_pixels
+ */
+export type DEVICE_SCREEN_HEIGHT_PIXELS_TYPE = number;
+
+// Path: model/attributes/device/device__screen_width_pixels.json
+
+/**
+ * The width of the device screen in pixels. `device.screen_width_pixels`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_SCREEN_WIDTH_PIXELS_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 1080
+ */
+export const DEVICE_SCREEN_WIDTH_PIXELS = 'device.screen_width_pixels';
+
+/**
+ * Type for {@link DEVICE_SCREEN_WIDTH_PIXELS} device.screen_width_pixels
+ */
+export type DEVICE_SCREEN_WIDTH_PIXELS_TYPE = number;
+
 // Path: model/attributes/device/device__simulator.json
 
 /**
@@ -2593,6 +3076,86 @@ export const DEVICE_SIMULATOR = 'device.simulator';
  * Type for {@link DEVICE_SIMULATOR} device.simulator
  */
 export type DEVICE_SIMULATOR_TYPE = boolean;
+
+// Path: model/attributes/device/device__storage_size.json
+
+/**
+ * Total device storage in bytes. `device.storage_size`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_STORAGE_SIZE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 274877906944
+ */
+export const DEVICE_STORAGE_SIZE = 'device.storage_size';
+
+/**
+ * Type for {@link DEVICE_STORAGE_SIZE} device.storage_size
+ */
+export type DEVICE_STORAGE_SIZE_TYPE = number;
+
+// Path: model/attributes/device/device__thermal_state.json
+
+/**
+ * The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum: `nominal`, `fair`, `serious`, or `critical`. `device.thermal_state`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_THERMAL_STATE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "nominal"
+ */
+export const DEVICE_THERMAL_STATE = 'device.thermal_state';
+
+/**
+ * Type for {@link DEVICE_THERMAL_STATE} device.thermal_state
+ */
+export type DEVICE_THERMAL_STATE_TYPE = string;
+
+// Path: model/attributes/device/device__timezone.json
+
+/**
+ * The timezone of the device. `device.timezone`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_TIMEZONE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "Europe/Vienna"
+ */
+export const DEVICE_TIMEZONE = 'device.timezone';
+
+/**
+ * Type for {@link DEVICE_TIMEZONE} device.timezone
+ */
+export type DEVICE_TIMEZONE_TYPE = string;
+
+// Path: model/attributes/device/device__usable_memory.json
+
+/**
+ * Memory usable for the app in bytes. `device.usable_memory`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_USABLE_MEMORY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 2147483648
+ */
+export const DEVICE_USABLE_MEMORY = 'device.usable_memory';
+
+/**
+ * Type for {@link DEVICE_USABLE_MEMORY} device.usable_memory
+ */
+export type DEVICE_USABLE_MEMORY_TYPE = number;
 
 // Path: model/attributes/effectiveConnectionType.json
 
@@ -3049,6 +3612,46 @@ export const GEN_AI_AGENT_NAME = 'gen_ai.agent.name';
  */
 export type GEN_AI_AGENT_NAME_TYPE = string;
 
+// Path: model/attributes/gen_ai/gen_ai__context__utilization.json
+
+/**
+ * The fraction of the model context window utilized by this generation. `gen_ai.context.utilization`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_CONTEXT_UTILIZATION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 0.75
+ */
+export const GEN_AI_CONTEXT_UTILIZATION = 'gen_ai.context.utilization';
+
+/**
+ * Type for {@link GEN_AI_CONTEXT_UTILIZATION} gen_ai.context.utilization
+ */
+export type GEN_AI_CONTEXT_UTILIZATION_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__context__window_size.json
+
+/**
+ * The maximum context window size supported by the model for this generation. `gen_ai.context.window_size`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_CONTEXT_WINDOW_SIZE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 128000
+ */
+export const GEN_AI_CONTEXT_WINDOW_SIZE = 'gen_ai.context.window_size';
+
+/**
+ * Type for {@link GEN_AI_CONTEXT_WINDOW_SIZE} gen_ai.context.window_size
+ */
+export type GEN_AI_CONTEXT_WINDOW_SIZE_TYPE = number;
+
 // Path: model/attributes/gen_ai/gen_ai__conversation__id.json
 
 /**
@@ -3150,6 +3753,26 @@ export const GEN_AI_EMBEDDINGS_INPUT = 'gen_ai.embeddings.input';
  * Type for {@link GEN_AI_EMBEDDINGS_INPUT} gen_ai.embeddings.input
  */
 export type GEN_AI_EMBEDDINGS_INPUT_TYPE = string;
+
+// Path: model/attributes/gen_ai/gen_ai__function_id.json
+
+/**
+ * Framework-specific tracing label for the execution of a function or other unit of execution in a generative AI system. `gen_ai.function_id`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_FUNCTION_ID_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "my-awesome-function"
+ */
+export const GEN_AI_FUNCTION_ID = 'gen_ai.function_id';
+
+/**
+ * Type for {@link GEN_AI_FUNCTION_ID} gen_ai.function_id
+ */
+export type GEN_AI_FUNCTION_ID_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__input__messages.json
 
@@ -3936,6 +4559,7 @@ export type GEN_AI_TOOL_OUTPUT_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  *
+ * @deprecated  - The gen_ai.tool.type attribute is deprecated and should no longer be set.
  * @example "function"
  */
 export const GEN_AI_TOOL_TYPE = 'gen_ai.tool.type';
@@ -6496,7 +7120,7 @@ export type NETWORK_CONNECTION_RTT_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link CONNECTIONTYPE} `connectionType`
+ * Aliases: {@link DEVICE_CONNECTION_TYPE} `device.connection_type`, {@link CONNECTIONTYPE} `connectionType`
  *
  * @example "wifi"
  */
@@ -7014,6 +7638,29 @@ export const NET_TRANSPORT = 'net.transport';
  */
 export type NET_TRANSPORT_TYPE = string;
 
+// Path: model/attributes/os/os__build.json
+
+/**
+ * The build ID of the operating system. `os.build`
+ *
+ * Attribute Value Type: `string` {@link OS_BUILD_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link OS_BUILD_ID} `os.build_id`
+ *
+ * @deprecated Use {@link OS_BUILD_ID} (os.build_id) instead
+ * @example "1234567890"
+ */
+export const OS_BUILD = 'os.build';
+
+/**
+ * Type for {@link OS_BUILD} os.build
+ */
+export type OS_BUILD_TYPE = string;
+
 // Path: model/attributes/os/os__build_id.json
 
 /**
@@ -7024,6 +7671,8 @@ export type NET_TRANSPORT_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ *
+ * Aliases: {@link OS_BUILD} `os.build`
  *
  * @example "1234567890"
  */
@@ -7054,6 +7703,26 @@ export const OS_DESCRIPTION = 'os.description';
  */
 export type OS_DESCRIPTION_TYPE = string;
 
+// Path: model/attributes/os/os__kernel_version.json
+
+/**
+ * An independent kernel version string. Typically the entire output of the `uname` syscall. `os.kernel_version`
+ *
+ * Attribute Value Type: `string` {@link OS_KERNEL_VERSION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "20.2.0"
+ */
+export const OS_KERNEL_VERSION = 'os.kernel_version';
+
+/**
+ * Type for {@link OS_KERNEL_VERSION} os.kernel_version
+ */
+export type OS_KERNEL_VERSION_TYPE = string;
+
 // Path: model/attributes/os/os__name.json
 
 /**
@@ -7073,6 +7742,66 @@ export const OS_NAME = 'os.name';
  * Type for {@link OS_NAME} os.name
  */
 export type OS_NAME_TYPE = string;
+
+// Path: model/attributes/os/os__raw_description.json
+
+/**
+ * An unprocessed description string obtained by the operating system. For some well-known runtimes, Sentry will attempt to parse `name` and `version` from this string, if they are not explicitly given. `os.raw_description`
+ *
+ * Attribute Value Type: `string` {@link OS_RAW_DESCRIPTION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "Ubuntu 22.04.4 LTS (Jammy Jellyfish)"
+ */
+export const OS_RAW_DESCRIPTION = 'os.raw_description';
+
+/**
+ * Type for {@link OS_RAW_DESCRIPTION} os.raw_description
+ */
+export type OS_RAW_DESCRIPTION_TYPE = string;
+
+// Path: model/attributes/os/os__rooted.json
+
+/**
+ * Whether the operating system has been jailbroken or rooted. `os.rooted`
+ *
+ * Attribute Value Type: `boolean` {@link OS_ROOTED_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example true
+ */
+export const OS_ROOTED = 'os.rooted';
+
+/**
+ * Type for {@link OS_ROOTED} os.rooted
+ */
+export type OS_ROOTED_TYPE = boolean;
+
+// Path: model/attributes/os/os__theme.json
+
+/**
+ * Whether the OS runs in dark mode or light mode. `os.theme`
+ *
+ * Attribute Value Type: `string` {@link OS_THEME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "dark"
+ */
+export const OS_THEME = 'os.theme';
+
+/**
+ * Type for {@link OS_THEME} os.theme
+ */
+export type OS_THEME_TYPE = string;
 
 // Path: model/attributes/os/os__type.json
 
@@ -8040,6 +8769,26 @@ export const SENTRY_KIND = 'sentry.kind';
  */
 export type SENTRY_KIND_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__main_thread.json
+
+/**
+ * Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs. `sentry.main_thread`
+ *
+ * Attribute Value Type: `boolean` {@link SENTRY_MAIN_THREAD_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example true
+ */
+export const SENTRY_MAIN_THREAD = 'sentry.main_thread';
+
+/**
+ * Type for {@link SENTRY_MAIN_THREAD} sentry.main_thread
+ */
+export type SENTRY_MAIN_THREAD_TYPE = boolean;
+
 // Path: model/attributes/sentry/sentry__message__parameter__[key].json
 
 /**
@@ -8079,6 +8828,26 @@ export const SENTRY_MESSAGE_TEMPLATE = 'sentry.message.template';
  * Type for {@link SENTRY_MESSAGE_TEMPLATE} sentry.message.template
  */
 export type SENTRY_MESSAGE_TEMPLATE_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__mobile.json
+
+/**
+ * Whether the application is using a mobile SDK. Computed by Relay and should not be set by SDKs. `sentry.mobile`
+ *
+ * Attribute Value Type: `boolean` {@link SENTRY_MOBILE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example true
+ */
+export const SENTRY_MOBILE = 'sentry.mobile';
+
+/**
+ * Type for {@link SENTRY_MOBILE} sentry.mobile
+ */
+export type SENTRY_MOBILE_TYPE = boolean;
 
 // Path: model/attributes/sentry/sentry__module__[key].json
 
@@ -10438,6 +11207,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [CULTURE_LOCALE]: 'string',
   [CULTURE_TIMEZONE]: 'string',
   [DB_COLLECTION_NAME]: 'string',
+  [DB_DRIVER_NAME]: 'string',
   [DB_NAME]: 'string',
   [DB_NAMESPACE]: 'string',
   [DB_OPERATION]: 'string',
@@ -10453,16 +11223,43 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [DB_SYSTEM_NAME]: 'string',
   [DB_USER]: 'string',
   [DEVICEMEMORY]: 'string',
+  [DEVICE_ARCHS]: 'string[]',
+  [DEVICE_BATTERY_LEVEL]: 'double',
+  [DEVICE_BATTERY_TEMPERATURE]: 'double',
+  [DEVICE_BOOT_TIME]: 'string',
   [DEVICE_BRAND]: 'string',
+  [DEVICE_CHARGING]: 'boolean',
+  [DEVICE_CHIPSET]: 'string',
   [DEVICE_CLASS]: 'string',
+  [DEVICE_CONNECTION_TYPE]: 'string',
+  [DEVICE_CPU_DESCRIPTION]: 'string',
+  [DEVICE_EXTERNAL_FREE_STORAGE]: 'integer',
+  [DEVICE_EXTERNAL_STORAGE_SIZE]: 'integer',
   [DEVICE_FAMILY]: 'string',
   [DEVICE_FREE_MEMORY]: 'integer',
+  [DEVICE_FREE_STORAGE]: 'integer',
+  [DEVICE_ID]: 'string',
+  [DEVICE_LOCALE]: 'string',
+  [DEVICE_LOW_MEMORY]: 'boolean',
+  [DEVICE_MANUFACTURER]: 'string',
   [DEVICE_MEMORY_ESTIMATED_CAPACITY]: 'integer',
   [DEVICE_MEMORY_SIZE]: 'integer',
   [DEVICE_MODEL]: 'string',
   [DEVICE_MODEL_ID]: 'string',
+  [DEVICE_NAME]: 'string',
+  [DEVICE_ONLINE]: 'boolean',
+  [DEVICE_ORIENTATION]: 'string',
   [DEVICE_PROCESSOR_COUNT]: 'integer',
+  [DEVICE_PROCESSOR_FREQUENCY]: 'double',
+  [DEVICE_SCREEN_DENSITY]: 'double',
+  [DEVICE_SCREEN_DPI]: 'integer',
+  [DEVICE_SCREEN_HEIGHT_PIXELS]: 'integer',
+  [DEVICE_SCREEN_WIDTH_PIXELS]: 'integer',
   [DEVICE_SIMULATOR]: 'boolean',
+  [DEVICE_STORAGE_SIZE]: 'integer',
+  [DEVICE_THERMAL_STATE]: 'string',
+  [DEVICE_TIMEZONE]: 'string',
+  [DEVICE_USABLE_MEMORY]: 'integer',
   [EFFECTIVECONNECTIONTYPE]: 'string',
   [ENVIRONMENT]: 'string',
   [ERROR_TYPE]: 'string',
@@ -10485,11 +11282,14 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [FRAMES_TOTAL]: 'integer',
   [FS_ERROR]: 'string',
   [GEN_AI_AGENT_NAME]: 'string',
+  [GEN_AI_CONTEXT_UTILIZATION]: 'double',
+  [GEN_AI_CONTEXT_WINDOW_SIZE]: 'integer',
   [GEN_AI_CONVERSATION_ID]: 'string',
   [GEN_AI_COST_INPUT_TOKENS]: 'double',
   [GEN_AI_COST_OUTPUT_TOKENS]: 'double',
   [GEN_AI_COST_TOTAL_TOKENS]: 'double',
   [GEN_AI_EMBEDDINGS_INPUT]: 'string',
+  [GEN_AI_FUNCTION_ID]: 'string',
   [GEN_AI_INPUT_MESSAGES]: 'string',
   [GEN_AI_OPERATION_NAME]: 'string',
   [GEN_AI_OPERATION_TYPE]: 'string',
@@ -10673,9 +11473,14 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [NET_SOCK_PEER_NAME]: 'string',
   [NET_SOCK_PEER_PORT]: 'integer',
   [NET_TRANSPORT]: 'string',
+  [OS_BUILD]: 'string',
   [OS_BUILD_ID]: 'string',
   [OS_DESCRIPTION]: 'string',
+  [OS_KERNEL_VERSION]: 'string',
   [OS_NAME]: 'string',
+  [OS_RAW_DESCRIPTION]: 'string',
+  [OS_ROOTED]: 'boolean',
+  [OS_THEME]: 'string',
   [OS_TYPE]: 'string',
   [OS_VERSION]: 'string',
   [OTEL_SCOPE_NAME]: 'string',
@@ -10723,8 +11528,10 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_IDLE_SPAN_FINISH_REASON]: 'string',
   [SENTRY_IS_REMOTE]: 'boolean',
   [SENTRY_KIND]: 'string',
+  [SENTRY_MAIN_THREAD]: 'boolean',
   [SENTRY_MESSAGE_PARAMETER_KEY]: 'string',
   [SENTRY_MESSAGE_TEMPLATE]: 'string',
+  [SENTRY_MOBILE]: 'boolean',
   [SENTRY_MODULE_KEY]: 'string',
   [SENTRY_NEXTJS_SSR_FUNCTION_ROUTE]: 'string',
   [SENTRY_NEXTJS_SSR_FUNCTION_TYPE]: 'string',
@@ -10931,6 +11738,7 @@ export type AttributeName =
   | typeof CULTURE_LOCALE
   | typeof CULTURE_TIMEZONE
   | typeof DB_COLLECTION_NAME
+  | typeof DB_DRIVER_NAME
   | typeof DB_NAME
   | typeof DB_NAMESPACE
   | typeof DB_OPERATION
@@ -10946,16 +11754,43 @@ export type AttributeName =
   | typeof DB_SYSTEM_NAME
   | typeof DB_USER
   | typeof DEVICEMEMORY
+  | typeof DEVICE_ARCHS
+  | typeof DEVICE_BATTERY_LEVEL
+  | typeof DEVICE_BATTERY_TEMPERATURE
+  | typeof DEVICE_BOOT_TIME
   | typeof DEVICE_BRAND
+  | typeof DEVICE_CHARGING
+  | typeof DEVICE_CHIPSET
   | typeof DEVICE_CLASS
+  | typeof DEVICE_CONNECTION_TYPE
+  | typeof DEVICE_CPU_DESCRIPTION
+  | typeof DEVICE_EXTERNAL_FREE_STORAGE
+  | typeof DEVICE_EXTERNAL_STORAGE_SIZE
   | typeof DEVICE_FAMILY
   | typeof DEVICE_FREE_MEMORY
+  | typeof DEVICE_FREE_STORAGE
+  | typeof DEVICE_ID
+  | typeof DEVICE_LOCALE
+  | typeof DEVICE_LOW_MEMORY
+  | typeof DEVICE_MANUFACTURER
   | typeof DEVICE_MEMORY_ESTIMATED_CAPACITY
   | typeof DEVICE_MEMORY_SIZE
   | typeof DEVICE_MODEL
   | typeof DEVICE_MODEL_ID
+  | typeof DEVICE_NAME
+  | typeof DEVICE_ONLINE
+  | typeof DEVICE_ORIENTATION
   | typeof DEVICE_PROCESSOR_COUNT
+  | typeof DEVICE_PROCESSOR_FREQUENCY
+  | typeof DEVICE_SCREEN_DENSITY
+  | typeof DEVICE_SCREEN_DPI
+  | typeof DEVICE_SCREEN_HEIGHT_PIXELS
+  | typeof DEVICE_SCREEN_WIDTH_PIXELS
   | typeof DEVICE_SIMULATOR
+  | typeof DEVICE_STORAGE_SIZE
+  | typeof DEVICE_THERMAL_STATE
+  | typeof DEVICE_TIMEZONE
+  | typeof DEVICE_USABLE_MEMORY
   | typeof EFFECTIVECONNECTIONTYPE
   | typeof ENVIRONMENT
   | typeof ERROR_TYPE
@@ -10978,11 +11813,14 @@ export type AttributeName =
   | typeof FRAMES_TOTAL
   | typeof FS_ERROR
   | typeof GEN_AI_AGENT_NAME
+  | typeof GEN_AI_CONTEXT_UTILIZATION
+  | typeof GEN_AI_CONTEXT_WINDOW_SIZE
   | typeof GEN_AI_CONVERSATION_ID
   | typeof GEN_AI_COST_INPUT_TOKENS
   | typeof GEN_AI_COST_OUTPUT_TOKENS
   | typeof GEN_AI_COST_TOTAL_TOKENS
   | typeof GEN_AI_EMBEDDINGS_INPUT
+  | typeof GEN_AI_FUNCTION_ID
   | typeof GEN_AI_INPUT_MESSAGES
   | typeof GEN_AI_OPERATION_NAME
   | typeof GEN_AI_OPERATION_TYPE
@@ -11166,9 +12004,14 @@ export type AttributeName =
   | typeof NET_SOCK_PEER_NAME
   | typeof NET_SOCK_PEER_PORT
   | typeof NET_TRANSPORT
+  | typeof OS_BUILD
   | typeof OS_BUILD_ID
   | typeof OS_DESCRIPTION
+  | typeof OS_KERNEL_VERSION
   | typeof OS_NAME
+  | typeof OS_RAW_DESCRIPTION
+  | typeof OS_ROOTED
+  | typeof OS_THEME
   | typeof OS_TYPE
   | typeof OS_VERSION
   | typeof OTEL_SCOPE_NAME
@@ -11216,8 +12059,10 @@ export type AttributeName =
   | typeof SENTRY_IDLE_SPAN_FINISH_REASON
   | typeof SENTRY_IS_REMOTE
   | typeof SENTRY_KIND
+  | typeof SENTRY_MAIN_THREAD
   | typeof SENTRY_MESSAGE_PARAMETER_KEY
   | typeof SENTRY_MESSAGE_TEMPLATE
+  | typeof SENTRY_MOBILE
   | typeof SENTRY_MODULE_KEY
   | typeof SENTRY_NEXTJS_SSR_FUNCTION_ROUTE
   | typeof SENTRY_NEXTJS_SSR_FUNCTION_TYPE
@@ -12527,7 +13372,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'network.connection.type',
       reason: 'Old namespace-less attribute, to be replaced with network.connection.type for span-first future',
     },
-    aliases: [NETWORK_CONNECTION_TYPE],
+    aliases: [NETWORK_CONNECTION_TYPE, DEVICE_CONNECTION_TYPE],
     sdks: ['javascript-browser'],
     changelog: [
       {
@@ -12619,6 +13464,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'users',
     changelog: [{ version: '0.1.0', prs: [106, 127] }, { version: '0.0.0' }],
+  },
+  [DB_DRIVER_NAME]: {
+    brief: 'The name of the driver used for the database connection.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'psycopg2',
+    changelog: [{ version: 'next', prs: [297], description: 'Added db.driver.name attribute' }],
   },
   [DB_NAME]: {
     brief: 'The name of the database being accessed.',
@@ -12817,6 +13672,46 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       },
     ],
   },
+  [DEVICE_ARCHS]: {
+    brief: 'The CPU architectures of the device.',
+    type: 'string[]',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: ['arm64-v8a', 'armeabi-v7a', 'armeabi'],
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.archs attribute' }],
+  },
+  [DEVICE_BATTERY_LEVEL]: {
+    brief: 'The battery level of the device as a percentage (0-100).',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 100,
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.battery_level attribute' }],
+  },
+  [DEVICE_BATTERY_TEMPERATURE]: {
+    brief: 'The battery temperature of the device in Celsius.',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 25,
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.battery_temperature attribute' }],
+  },
+  [DEVICE_BOOT_TIME]: {
+    brief: 'A formatted UTC timestamp when the system was booted.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '2018-02-08T12:52:12Z',
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.boot_time attribute' }],
+  },
   [DEVICE_BRAND]: {
     brief: 'The brand of the device.',
     type: 'string',
@@ -12826,6 +13721,26 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'Apple',
     changelog: [{ version: '0.1.0', prs: [116, 127] }],
+  },
+  [DEVICE_CHARGING]: {
+    brief: 'Whether the device was charging or not.',
+    type: 'boolean',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: false,
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.charging attribute' }],
+  },
+  [DEVICE_CHIPSET]: {
+    brief: 'The chipset of the device.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'Qualcomm SM8550',
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.chipset attribute' }],
   },
   [DEVICE_CLASS]: {
     brief:
@@ -12837,6 +13752,57 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'medium',
     changelog: [{ version: 'next', prs: [300], description: 'Added device.class attribute' }],
+  },
+  [DEVICE_CONNECTION_TYPE]: {
+    brief: 'The internet connection type currently being used by the device.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'wifi',
+    deprecation: {
+      replacement: 'network.connection.type',
+      reason: 'This attribute is being deprecated in favor of network.connection.type',
+    },
+    aliases: [NETWORK_CONNECTION_TYPE, CONNECTIONTYPE],
+    changelog: [
+      {
+        version: 'next',
+        prs: [303],
+        description: 'Added and deprecated device.connection_type in favor of network.connection.type',
+      },
+    ],
+  },
+  [DEVICE_CPU_DESCRIPTION]: {
+    brief: 'A description of the CPU of the device.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'Intel(R) Core(TM)2 Quad CPU Q6600 @ 2.40GHz',
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.cpu_description attribute' }],
+  },
+  [DEVICE_EXTERNAL_FREE_STORAGE]: {
+    brief: 'External storage free size in bytes.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 67108864000,
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.external_free_storage attribute' }],
+  },
+  [DEVICE_EXTERNAL_STORAGE_SIZE]: {
+    brief: 'External storage total size in bytes.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 134217728000,
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.external_storage_size attribute' }],
   },
   [DEVICE_FAMILY]: {
     brief: 'The family of the device.',
@@ -12857,6 +13823,56 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 2147483648,
     changelog: [{ version: 'next', prs: [300], description: 'Added device.free_memory attribute' }],
+  },
+  [DEVICE_FREE_STORAGE]: {
+    brief: 'Free device storage in bytes.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 107374182400,
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.free_storage attribute' }],
+  },
+  [DEVICE_ID]: {
+    brief: 'Unique device identifier.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.id attribute' }],
+  },
+  [DEVICE_LOCALE]: {
+    brief: 'The locale of the device.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'en-US',
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.locale attribute' }],
+  },
+  [DEVICE_LOW_MEMORY]: {
+    brief: 'Whether the device was low on memory.',
+    type: 'boolean',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: false,
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.low_memory attribute' }],
+  },
+  [DEVICE_MANUFACTURER]: {
+    brief: 'The manufacturer of the device.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'Google',
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.manufacturer attribute' }],
   },
   [DEVICE_MEMORY_ESTIMATED_CAPACITY]: {
     brief:
@@ -12907,6 +13923,37 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'N861AP',
     changelog: [{ version: 'next', prs: [300], description: 'Added device.model_id attribute' }],
   },
+  [DEVICE_NAME]: {
+    brief:
+      'The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'localhost',
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.name attribute' }],
+  },
+  [DEVICE_ONLINE]: {
+    brief: 'Whether the device was online or not.',
+    type: 'boolean',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: true,
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.online attribute' }],
+  },
+  [DEVICE_ORIENTATION]: {
+    brief: 'The orientation of the device, either "portrait" or "landscape".',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'portrait',
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.orientation attribute' }],
+  },
   [DEVICE_PROCESSOR_COUNT]: {
     brief: 'Number of "logical processors".',
     type: 'integer',
@@ -12929,6 +13976,56 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       },
     ],
   },
+  [DEVICE_PROCESSOR_FREQUENCY]: {
+    brief: 'Processor frequency in MHz.',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 2400,
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.processor_frequency attribute' }],
+  },
+  [DEVICE_SCREEN_DENSITY]: {
+    brief: 'The screen density of the device.',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 2.625,
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.screen_density attribute' }],
+  },
+  [DEVICE_SCREEN_DPI]: {
+    brief: 'The screen density in dots-per-inch (DPI) of the device.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 420,
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.screen_dpi attribute' }],
+  },
+  [DEVICE_SCREEN_HEIGHT_PIXELS]: {
+    brief: 'The height of the device screen in pixels.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 2400,
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.screen_height_pixels attribute' }],
+  },
+  [DEVICE_SCREEN_WIDTH_PIXELS]: {
+    brief: 'The width of the device screen in pixels.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1080,
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.screen_width_pixels attribute' }],
+  },
   [DEVICE_SIMULATOR]: {
     brief: 'Whether the device is a simulator or an actual device.',
     type: 'boolean',
@@ -12938,6 +14035,47 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: false,
     changelog: [{ version: 'next', prs: [300], description: 'Added device.simulator attribute' }],
+  },
+  [DEVICE_STORAGE_SIZE]: {
+    brief: 'Total device storage in bytes.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 274877906944,
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.storage_size attribute' }],
+  },
+  [DEVICE_THERMAL_STATE]: {
+    brief:
+      "The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum: `nominal`, `fair`, `serious`, or `critical`.",
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'nominal',
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.thermal_state attribute' }],
+  },
+  [DEVICE_TIMEZONE]: {
+    brief: 'The timezone of the device.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'Europe/Vienna',
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.timezone attribute' }],
+  },
+  [DEVICE_USABLE_MEMORY]: {
+    brief: 'Memory usable for the app in bytes.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 2147483648,
+    changelog: [{ version: 'next', prs: [303], description: 'Added device.usable_memory attribute' }],
   },
   [EFFECTIVECONNECTIONTYPE]: {
     brief: 'Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).',
@@ -13200,6 +14338,26 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'ResearchAssistant',
     changelog: [{ version: '0.1.0', prs: [62, 127] }],
   },
+  [GEN_AI_CONTEXT_UTILIZATION]: {
+    brief: 'The fraction of the model context window utilized by this generation.',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 0.75,
+    changelog: [{ version: 'next', prs: [315], description: 'Added gen_ai.context.utilization attribute' }],
+  },
+  [GEN_AI_CONTEXT_WINDOW_SIZE]: {
+    brief: 'The maximum context window size supported by the model for this generation.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 128000,
+    changelog: [{ version: 'next', prs: [315], description: 'Added gen_ai.context.window_size attribute' }],
+  },
   [GEN_AI_CONVERSATION_ID]: {
     brief:
       'The unique identifier for a conversation (session, thread), used to store and correlate messages within this conversation.',
@@ -13261,6 +14419,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: "What's the weather in Paris?",
     changelog: [{ version: '0.3.1', prs: [195] }],
+  },
+  [GEN_AI_FUNCTION_ID]: {
+    brief:
+      'Framework-specific tracing label for the execution of a function or other unit of execution in a generative AI system.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'my-awesome-function',
+    changelog: [{ version: 'next', prs: [308], description: 'Added gen_ai.function_id attribute' }],
   },
   [GEN_AI_INPUT_MESSAGES]: {
     brief:
@@ -13765,6 +14934,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'function',
+    deprecation: {
+      reason: 'The gen_ai.tool.type attribute is deprecated and should no longer be set.',
+    },
     changelog: [{ version: '0.1.0', prs: [62, 127] }],
   },
   [GEN_AI_USAGE_COMPLETION_TOKENS]: {
@@ -15280,7 +16452,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'wifi',
-    aliases: [CONNECTIONTYPE],
+    aliases: [DEVICE_CONNECTION_TYPE, CONNECTIONTYPE],
     sdks: ['javascript-browser'],
     changelog: [
       {
@@ -15586,6 +16758,22 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [NETWORK_TRANSPORT],
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
+  [OS_BUILD]: {
+    brief: 'The build ID of the operating system.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '1234567890',
+    deprecation: {
+      replacement: 'os.build_id',
+    },
+    aliases: [OS_BUILD_ID],
+    changelog: [
+      { version: 'next', prs: [301], description: 'Added os.build attribute, deprecated in favor of os.build_id' },
+    ],
+  },
   [OS_BUILD_ID]: {
     brief: 'The build ID of the operating system.',
     type: 'string',
@@ -15594,7 +16782,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: '1234567890',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: [OS_BUILD],
+    changelog: [
+      { version: 'next', prs: [301], description: 'Added os.build as alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   [OS_DESCRIPTION]: {
     brief:
@@ -15607,6 +16800,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'Ubuntu 18.04.1 LTS',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  [OS_KERNEL_VERSION]: {
+    brief: 'An independent kernel version string. Typically the entire output of the `uname` syscall.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '20.2.0',
+    changelog: [{ version: 'next', prs: [301], description: 'Added os.kernel_version attribute' }],
+  },
   [OS_NAME]: {
     brief: 'Human readable operating system name.',
     type: 'string',
@@ -15616,6 +16819,37 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'Ubuntu',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+  },
+  [OS_RAW_DESCRIPTION]: {
+    brief:
+      'An unprocessed description string obtained by the operating system. For some well-known runtimes, Sentry will attempt to parse `name` and `version` from this string, if they are not explicitly given.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'Ubuntu 22.04.4 LTS (Jammy Jellyfish)',
+    changelog: [{ version: 'next', prs: [301], description: 'Added os.raw_description attribute' }],
+  },
+  [OS_ROOTED]: {
+    brief: 'Whether the operating system has been jailbroken or rooted.',
+    type: 'boolean',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: true,
+    changelog: [{ version: 'next', prs: [301], description: 'Added os.rooted attribute' }],
+  },
+  [OS_THEME]: {
+    brief: 'Whether the OS runs in dark mode or light mode.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'dark',
+    changelog: [{ version: 'next', prs: [301], description: 'Added os.theme attribute' }],
   },
   [OS_TYPE]: {
     brief: 'The operating system type.',
@@ -16134,6 +17368,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'server',
     changelog: [{ version: '0.3.1', prs: [190] }],
   },
+  [SENTRY_MAIN_THREAD]: {
+    brief: 'Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs.',
+    type: 'boolean',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: true,
+    changelog: [{ version: 'next' }],
+  },
   [SENTRY_MESSAGE_PARAMETER_KEY]: {
     brief:
       "A parameter used in the message template. <key> can either be the number that represent the parameter's position in the template string (sentry.message.parameter.0, sentry.message.parameter.1, etc) or the parameter's name (sentry.message.parameter.item_id, sentry.message.parameter.user_id, etc)",
@@ -16154,6 +17398,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'Hello, {name}!',
     changelog: [{ version: '0.1.0', prs: [116] }],
+  },
+  [SENTRY_MOBILE]: {
+    brief: 'Whether the application is using a mobile SDK. Computed by Relay and should not be set by SDKs.',
+    type: 'boolean',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: true,
+    changelog: [{ version: 'next' }],
   },
   [SENTRY_MODULE_KEY]: {
     brief: 'A module that was loaded in the process. The key is the name of the module.',
@@ -17428,6 +18682,7 @@ export type Attributes = {
   [CULTURE_LOCALE]?: CULTURE_LOCALE_TYPE;
   [CULTURE_TIMEZONE]?: CULTURE_TIMEZONE_TYPE;
   [DB_COLLECTION_NAME]?: DB_COLLECTION_NAME_TYPE;
+  [DB_DRIVER_NAME]?: DB_DRIVER_NAME_TYPE;
   [DB_NAME]?: DB_NAME_TYPE;
   [DB_NAMESPACE]?: DB_NAMESPACE_TYPE;
   [DB_OPERATION]?: DB_OPERATION_TYPE;
@@ -17443,16 +18698,43 @@ export type Attributes = {
   [DB_SYSTEM_NAME]?: DB_SYSTEM_NAME_TYPE;
   [DB_USER]?: DB_USER_TYPE;
   [DEVICEMEMORY]?: DEVICEMEMORY_TYPE;
+  [DEVICE_ARCHS]?: DEVICE_ARCHS_TYPE;
+  [DEVICE_BATTERY_LEVEL]?: DEVICE_BATTERY_LEVEL_TYPE;
+  [DEVICE_BATTERY_TEMPERATURE]?: DEVICE_BATTERY_TEMPERATURE_TYPE;
+  [DEVICE_BOOT_TIME]?: DEVICE_BOOT_TIME_TYPE;
   [DEVICE_BRAND]?: DEVICE_BRAND_TYPE;
+  [DEVICE_CHARGING]?: DEVICE_CHARGING_TYPE;
+  [DEVICE_CHIPSET]?: DEVICE_CHIPSET_TYPE;
   [DEVICE_CLASS]?: DEVICE_CLASS_TYPE;
+  [DEVICE_CONNECTION_TYPE]?: DEVICE_CONNECTION_TYPE_TYPE;
+  [DEVICE_CPU_DESCRIPTION]?: DEVICE_CPU_DESCRIPTION_TYPE;
+  [DEVICE_EXTERNAL_FREE_STORAGE]?: DEVICE_EXTERNAL_FREE_STORAGE_TYPE;
+  [DEVICE_EXTERNAL_STORAGE_SIZE]?: DEVICE_EXTERNAL_STORAGE_SIZE_TYPE;
   [DEVICE_FAMILY]?: DEVICE_FAMILY_TYPE;
   [DEVICE_FREE_MEMORY]?: DEVICE_FREE_MEMORY_TYPE;
+  [DEVICE_FREE_STORAGE]?: DEVICE_FREE_STORAGE_TYPE;
+  [DEVICE_ID]?: DEVICE_ID_TYPE;
+  [DEVICE_LOCALE]?: DEVICE_LOCALE_TYPE;
+  [DEVICE_LOW_MEMORY]?: DEVICE_LOW_MEMORY_TYPE;
+  [DEVICE_MANUFACTURER]?: DEVICE_MANUFACTURER_TYPE;
   [DEVICE_MEMORY_ESTIMATED_CAPACITY]?: DEVICE_MEMORY_ESTIMATED_CAPACITY_TYPE;
   [DEVICE_MEMORY_SIZE]?: DEVICE_MEMORY_SIZE_TYPE;
   [DEVICE_MODEL]?: DEVICE_MODEL_TYPE;
   [DEVICE_MODEL_ID]?: DEVICE_MODEL_ID_TYPE;
+  [DEVICE_NAME]?: DEVICE_NAME_TYPE;
+  [DEVICE_ONLINE]?: DEVICE_ONLINE_TYPE;
+  [DEVICE_ORIENTATION]?: DEVICE_ORIENTATION_TYPE;
   [DEVICE_PROCESSOR_COUNT]?: DEVICE_PROCESSOR_COUNT_TYPE;
+  [DEVICE_PROCESSOR_FREQUENCY]?: DEVICE_PROCESSOR_FREQUENCY_TYPE;
+  [DEVICE_SCREEN_DENSITY]?: DEVICE_SCREEN_DENSITY_TYPE;
+  [DEVICE_SCREEN_DPI]?: DEVICE_SCREEN_DPI_TYPE;
+  [DEVICE_SCREEN_HEIGHT_PIXELS]?: DEVICE_SCREEN_HEIGHT_PIXELS_TYPE;
+  [DEVICE_SCREEN_WIDTH_PIXELS]?: DEVICE_SCREEN_WIDTH_PIXELS_TYPE;
   [DEVICE_SIMULATOR]?: DEVICE_SIMULATOR_TYPE;
+  [DEVICE_STORAGE_SIZE]?: DEVICE_STORAGE_SIZE_TYPE;
+  [DEVICE_THERMAL_STATE]?: DEVICE_THERMAL_STATE_TYPE;
+  [DEVICE_TIMEZONE]?: DEVICE_TIMEZONE_TYPE;
+  [DEVICE_USABLE_MEMORY]?: DEVICE_USABLE_MEMORY_TYPE;
   [EFFECTIVECONNECTIONTYPE]?: EFFECTIVECONNECTIONTYPE_TYPE;
   [ENVIRONMENT]?: ENVIRONMENT_TYPE;
   [ERROR_TYPE]?: ERROR_TYPE_TYPE;
@@ -17475,11 +18757,14 @@ export type Attributes = {
   [FRAMES_TOTAL]?: FRAMES_TOTAL_TYPE;
   [FS_ERROR]?: FS_ERROR_TYPE;
   [GEN_AI_AGENT_NAME]?: GEN_AI_AGENT_NAME_TYPE;
+  [GEN_AI_CONTEXT_UTILIZATION]?: GEN_AI_CONTEXT_UTILIZATION_TYPE;
+  [GEN_AI_CONTEXT_WINDOW_SIZE]?: GEN_AI_CONTEXT_WINDOW_SIZE_TYPE;
   [GEN_AI_CONVERSATION_ID]?: GEN_AI_CONVERSATION_ID_TYPE;
   [GEN_AI_COST_INPUT_TOKENS]?: GEN_AI_COST_INPUT_TOKENS_TYPE;
   [GEN_AI_COST_OUTPUT_TOKENS]?: GEN_AI_COST_OUTPUT_TOKENS_TYPE;
   [GEN_AI_COST_TOTAL_TOKENS]?: GEN_AI_COST_TOTAL_TOKENS_TYPE;
   [GEN_AI_EMBEDDINGS_INPUT]?: GEN_AI_EMBEDDINGS_INPUT_TYPE;
+  [GEN_AI_FUNCTION_ID]?: GEN_AI_FUNCTION_ID_TYPE;
   [GEN_AI_INPUT_MESSAGES]?: GEN_AI_INPUT_MESSAGES_TYPE;
   [GEN_AI_OPERATION_NAME]?: GEN_AI_OPERATION_NAME_TYPE;
   [GEN_AI_OPERATION_TYPE]?: GEN_AI_OPERATION_TYPE_TYPE;
@@ -17663,9 +18948,14 @@ export type Attributes = {
   [NET_SOCK_PEER_NAME]?: NET_SOCK_PEER_NAME_TYPE;
   [NET_SOCK_PEER_PORT]?: NET_SOCK_PEER_PORT_TYPE;
   [NET_TRANSPORT]?: NET_TRANSPORT_TYPE;
+  [OS_BUILD]?: OS_BUILD_TYPE;
   [OS_BUILD_ID]?: OS_BUILD_ID_TYPE;
   [OS_DESCRIPTION]?: OS_DESCRIPTION_TYPE;
+  [OS_KERNEL_VERSION]?: OS_KERNEL_VERSION_TYPE;
   [OS_NAME]?: OS_NAME_TYPE;
+  [OS_RAW_DESCRIPTION]?: OS_RAW_DESCRIPTION_TYPE;
+  [OS_ROOTED]?: OS_ROOTED_TYPE;
+  [OS_THEME]?: OS_THEME_TYPE;
   [OS_TYPE]?: OS_TYPE_TYPE;
   [OS_VERSION]?: OS_VERSION_TYPE;
   [OTEL_SCOPE_NAME]?: OTEL_SCOPE_NAME_TYPE;
@@ -17713,8 +19003,10 @@ export type Attributes = {
   [SENTRY_IDLE_SPAN_FINISH_REASON]?: SENTRY_IDLE_SPAN_FINISH_REASON_TYPE;
   [SENTRY_IS_REMOTE]?: SENTRY_IS_REMOTE_TYPE;
   [SENTRY_KIND]?: SENTRY_KIND_TYPE;
+  [SENTRY_MAIN_THREAD]?: SENTRY_MAIN_THREAD_TYPE;
   [SENTRY_MESSAGE_PARAMETER_KEY]?: SENTRY_MESSAGE_PARAMETER_KEY_TYPE;
   [SENTRY_MESSAGE_TEMPLATE]?: SENTRY_MESSAGE_TEMPLATE_TYPE;
+  [SENTRY_MOBILE]?: SENTRY_MOBILE_TYPE;
   [SENTRY_MODULE_KEY]?: SENTRY_MODULE_KEY_TYPE;
   [SENTRY_NEXTJS_SSR_FUNCTION_ROUTE]?: SENTRY_NEXTJS_SSR_FUNCTION_ROUTE_TYPE;
   [SENTRY_NEXTJS_SSR_FUNCTION_TYPE]?: SENTRY_NEXTJS_SSR_FUNCTION_TYPE_TYPE;
