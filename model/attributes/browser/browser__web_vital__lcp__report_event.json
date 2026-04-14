@@ -1,0 +1,18 @@
+{
+  "key": "browser.web_vital.lcp.report_event",
+  "brief": "The event that caused the SDK to report LCP (pagehide or navigation)",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "pagehide",
+  "sdks": ["javascript-browser"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [319],
+      "description": "Added browser.web_vital.lcp.report_event attribute"
+    }
+  ]
+}

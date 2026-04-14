@@ -8360,6 +8360,28 @@ export const SENTRY_REPLAY_IS_BUFFERING = 'sentry.replay_is_buffering';
  */
 export type SENTRY_REPLAY_IS_BUFFERING_TYPE = boolean;
 
+// Path: model/attributes/sentry/sentry__report_event.json
+
+/**
+ * (Deprecated) The event that caused the SDK to report CLS or LCP (pagehide or navigation) `sentry.report_event`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_REPORT_EVENT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link BROWSER_WEB_VITAL_LCP_REPORT_EVENT} `browser.web_vital.lcp.report_event`, {@link BROWSER_WEB_VITAL_CLS_REPORT_EVENT} `browser.web_vital.cls.report_event`
+ *
+ * @example "pagehide"
+ */
+export const SENTRY_REPORT_EVENT = 'sentry.report_event';
+
+/**
+ * Type for {@link SENTRY_REPORT_EVENT} sentry.report_event
+ */
+export type SENTRY_REPORT_EVENT_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__sdk__integrations.json
 
 /**
@@ -10736,6 +10758,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_RELEASE]: 'string',
   [SENTRY_REPLAY_ID]: 'string',
   [SENTRY_REPLAY_IS_BUFFERING]: 'boolean',
+  [SENTRY_REPORT_EVENT]: 'string',
   [SENTRY_SDK_INTEGRATIONS]: 'string[]',
   [SENTRY_SDK_NAME]: 'string',
   [SENTRY_SDK_VERSION]: 'string',
@@ -11230,6 +11253,7 @@ export type AttributeName =
   | typeof SENTRY_RELEASE
   | typeof SENTRY_REPLAY_ID
   | typeof SENTRY_REPLAY_IS_BUFFERING
+  | typeof SENTRY_REPORT_EVENT
   | typeof SENTRY_SDK_INTEGRATIONS
   | typeof SENTRY_SDK_NAME
   | typeof SENTRY_SDK_VERSION
@@ -16269,6 +16293,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: true,
     changelog: [{ version: '0.3.0', prs: [185] }],
   },
+  [SENTRY_REPORT_EVENT]: {
+    brief: '(Deprecated) The event that caused the SDK to report CLS or LCP (pagehide or navigation)',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'pagehide',
+    aliases: [BROWSER_WEB_VITAL_LCP_REPORT_EVENT, BROWSER_WEB_VITAL_CLS_REPORT_EVENT],
+    sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [320], description: 'Added sentry.report_event attribute' }],
+  },
   [SENTRY_SDK_INTEGRATIONS]: {
     brief:
       'A list of names identifying enabled integrations. The list shouldhave all enabled integrations, including default integrations. Defaultintegrations are included because different SDK releases may contain differentdefault integrations.',
@@ -17693,6 +17729,7 @@ export type Attributes = {
   [SENTRY_RELEASE]?: SENTRY_RELEASE_TYPE;
   [SENTRY_REPLAY_ID]?: SENTRY_REPLAY_ID_TYPE;
   [SENTRY_REPLAY_IS_BUFFERING]?: SENTRY_REPLAY_IS_BUFFERING_TYPE;
+  [SENTRY_REPORT_EVENT]?: SENTRY_REPORT_EVENT_TYPE;
   [SENTRY_SDK_INTEGRATIONS]?: SENTRY_SDK_INTEGRATIONS_TYPE;
   [SENTRY_SDK_NAME]?: SENTRY_SDK_NAME_TYPE;
   [SENTRY_SDK_VERSION]?: SENTRY_SDK_VERSION_TYPE;

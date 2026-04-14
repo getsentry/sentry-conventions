@@ -4714,6 +4714,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: true
     """
 
+    # Path: model/attributes/sentry/sentry__report_event.json
+    SENTRY_REPORT_EVENT: Literal["sentry.report_event"] = "sentry.report_event"
+    """(Deprecated) The event that caused the SDK to report CLS or LCP (pagehide or navigation)
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: browser.web_vital.lcp.report_event, browser.web_vital.cls.report_event
+    Example: "pagehide"
+    """
+
     # Path: model/attributes/sentry/sentry__sdk__integrations.json
     SENTRY_SDK_INTEGRATIONS: Literal["sentry.sdk.integrations"] = (
         "sentry.sdk.integrations"
@@ -10591,6 +10602,25 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.3.0", prs=[185]),
         ],
     ),
+    "sentry.report_event": AttributeMetadata(
+        brief="(Deprecated) The event that caused the SDK to report CLS or LCP (pagehide or navigation)",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="pagehide",
+        aliases=[
+            "browser.web_vital.lcp.report_event",
+            "browser.web_vital.cls.report_event",
+        ],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[320],
+                description="Added sentry.report_event attribute",
+            ),
+        ],
+    ),
     "sentry.sdk.integrations": AttributeMetadata(
         brief="A list of names identifying enabled integrations. The list shouldhave all enabled integrations, including default integrations. Defaultintegrations are included because different SDK releases may contain differentdefault integrations.",
         type=AttributeType.STRING_ARRAY,
@@ -12049,6 +12079,7 @@ Attributes = TypedDict(
         "sentry.release": str,
         "sentry.replay_id": str,
         "sentry.replay_is_buffering": bool,
+        "sentry.report_event": str,
         "sentry.sdk.integrations": List[str],
         "sentry.sdk.name": str,
         "sentry.sdk.version": str,
