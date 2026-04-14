@@ -6970,6 +6970,29 @@ export const NET_TRANSPORT = 'net.transport';
  */
 export type NET_TRANSPORT_TYPE = string;
 
+// Path: model/attributes/os/os__build.json
+
+/**
+ * The build ID of the operating system. `os.build`
+ *
+ * Attribute Value Type: `string` {@link OS_BUILD_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link OS_BUILD_ID} `os.build_id`
+ *
+ * @deprecated Use {@link OS_BUILD_ID} (os.build_id) instead
+ * @example "1234567890"
+ */
+export const OS_BUILD = 'os.build';
+
+/**
+ * Type for {@link OS_BUILD} os.build
+ */
+export type OS_BUILD_TYPE = string;
+
 // Path: model/attributes/os/os__build_id.json
 
 /**
@@ -6980,6 +7003,8 @@ export type NET_TRANSPORT_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ *
+ * Aliases: {@link OS_BUILD} `os.build`
  *
  * @example "1234567890"
  */
@@ -7010,6 +7035,26 @@ export const OS_DESCRIPTION = 'os.description';
  */
 export type OS_DESCRIPTION_TYPE = string;
 
+// Path: model/attributes/os/os__kernel_version.json
+
+/**
+ * An independent kernel version string. Typically the entire output of the `uname` syscall. `os.kernel_version`
+ *
+ * Attribute Value Type: `string` {@link OS_KERNEL_VERSION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "20.2.0"
+ */
+export const OS_KERNEL_VERSION = 'os.kernel_version';
+
+/**
+ * Type for {@link OS_KERNEL_VERSION} os.kernel_version
+ */
+export type OS_KERNEL_VERSION_TYPE = string;
+
 // Path: model/attributes/os/os__name.json
 
 /**
@@ -7029,6 +7074,66 @@ export const OS_NAME = 'os.name';
  * Type for {@link OS_NAME} os.name
  */
 export type OS_NAME_TYPE = string;
+
+// Path: model/attributes/os/os__raw_description.json
+
+/**
+ * An unprocessed description string obtained by the operating system. For some well-known runtimes, Sentry will attempt to parse `name` and `version` from this string, if they are not explicitly given. `os.raw_description`
+ *
+ * Attribute Value Type: `string` {@link OS_RAW_DESCRIPTION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "Ubuntu 22.04.4 LTS (Jammy Jellyfish)"
+ */
+export const OS_RAW_DESCRIPTION = 'os.raw_description';
+
+/**
+ * Type for {@link OS_RAW_DESCRIPTION} os.raw_description
+ */
+export type OS_RAW_DESCRIPTION_TYPE = string;
+
+// Path: model/attributes/os/os__rooted.json
+
+/**
+ * Whether the operating system has been jailbroken or rooted. `os.rooted`
+ *
+ * Attribute Value Type: `boolean` {@link OS_ROOTED_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example true
+ */
+export const OS_ROOTED = 'os.rooted';
+
+/**
+ * Type for {@link OS_ROOTED} os.rooted
+ */
+export type OS_ROOTED_TYPE = boolean;
+
+// Path: model/attributes/os/os__theme.json
+
+/**
+ * Whether the OS runs in dark mode or light mode. `os.theme`
+ *
+ * Attribute Value Type: `string` {@link OS_THEME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "dark"
+ */
+export const OS_THEME = 'os.theme';
+
+/**
+ * Type for {@link OS_THEME} os.theme
+ */
+export type OS_THEME_TYPE = string;
 
 // Path: model/attributes/os/os__type.json
 
@@ -10628,9 +10733,14 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [NET_SOCK_PEER_NAME]: 'string',
   [NET_SOCK_PEER_PORT]: 'integer',
   [NET_TRANSPORT]: 'string',
+  [OS_BUILD]: 'string',
   [OS_BUILD_ID]: 'string',
   [OS_DESCRIPTION]: 'string',
+  [OS_KERNEL_VERSION]: 'string',
   [OS_NAME]: 'string',
+  [OS_RAW_DESCRIPTION]: 'string',
+  [OS_ROOTED]: 'boolean',
+  [OS_THEME]: 'string',
   [OS_TYPE]: 'string',
   [OS_VERSION]: 'string',
   [OTEL_SCOPE_NAME]: 'string',
@@ -11120,9 +11230,14 @@ export type AttributeName =
   | typeof NET_SOCK_PEER_NAME
   | typeof NET_SOCK_PEER_PORT
   | typeof NET_TRANSPORT
+  | typeof OS_BUILD
   | typeof OS_BUILD_ID
   | typeof OS_DESCRIPTION
+  | typeof OS_KERNEL_VERSION
   | typeof OS_NAME
+  | typeof OS_RAW_DESCRIPTION
+  | typeof OS_ROOTED
+  | typeof OS_THEME
   | typeof OS_TYPE
   | typeof OS_VERSION
   | typeof OTEL_SCOPE_NAME
@@ -15483,6 +15598,22 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [NETWORK_TRANSPORT],
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
+  [OS_BUILD]: {
+    brief: 'The build ID of the operating system.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '1234567890',
+    deprecation: {
+      replacement: 'os.build_id',
+    },
+    aliases: [OS_BUILD_ID],
+    changelog: [
+      { version: 'next', prs: [301], description: 'Added os.build attribute, deprecated in favor of os.build_id' },
+    ],
+  },
   [OS_BUILD_ID]: {
     brief: 'The build ID of the operating system.',
     type: 'string',
@@ -15491,7 +15622,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: '1234567890',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: [OS_BUILD],
+    changelog: [
+      { version: 'next', prs: [301], description: 'Added os.build as alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   [OS_DESCRIPTION]: {
     brief:
@@ -15504,6 +15640,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'Ubuntu 18.04.1 LTS',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  [OS_KERNEL_VERSION]: {
+    brief: 'An independent kernel version string. Typically the entire output of the `uname` syscall.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '20.2.0',
+    changelog: [{ version: 'next', prs: [301], description: 'Added os.kernel_version attribute' }],
+  },
   [OS_NAME]: {
     brief: 'Human readable operating system name.',
     type: 'string',
@@ -15513,6 +15659,37 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'Ubuntu',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+  },
+  [OS_RAW_DESCRIPTION]: {
+    brief:
+      'An unprocessed description string obtained by the operating system. For some well-known runtimes, Sentry will attempt to parse `name` and `version` from this string, if they are not explicitly given.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'Ubuntu 22.04.4 LTS (Jammy Jellyfish)',
+    changelog: [{ version: 'next', prs: [301], description: 'Added os.raw_description attribute' }],
+  },
+  [OS_ROOTED]: {
+    brief: 'Whether the operating system has been jailbroken or rooted.',
+    type: 'boolean',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: true,
+    changelog: [{ version: 'next', prs: [301], description: 'Added os.rooted attribute' }],
+  },
+  [OS_THEME]: {
+    brief: 'Whether the OS runs in dark mode or light mode.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'dark',
+    changelog: [{ version: 'next', prs: [301], description: 'Added os.theme attribute' }],
   },
   [OS_TYPE]: {
     brief: 'The operating system type.',
@@ -17559,9 +17736,14 @@ export type Attributes = {
   [NET_SOCK_PEER_NAME]?: NET_SOCK_PEER_NAME_TYPE;
   [NET_SOCK_PEER_PORT]?: NET_SOCK_PEER_PORT_TYPE;
   [NET_TRANSPORT]?: NET_TRANSPORT_TYPE;
+  [OS_BUILD]?: OS_BUILD_TYPE;
   [OS_BUILD_ID]?: OS_BUILD_ID_TYPE;
   [OS_DESCRIPTION]?: OS_DESCRIPTION_TYPE;
+  [OS_KERNEL_VERSION]?: OS_KERNEL_VERSION_TYPE;
   [OS_NAME]?: OS_NAME_TYPE;
+  [OS_RAW_DESCRIPTION]?: OS_RAW_DESCRIPTION_TYPE;
+  [OS_ROOTED]?: OS_ROOTED_TYPE;
+  [OS_THEME]?: OS_THEME_TYPE;
   [OS_TYPE]?: OS_TYPE_TYPE;
   [OS_VERSION]?: OS_VERSION_TYPE;
   [OTEL_SCOPE_NAME]?: OTEL_SCOPE_NAME_TYPE;

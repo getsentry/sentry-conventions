@@ -205,6 +205,7 @@ class _AttributeNamesMeta(type):
         "NET_SOCK_PEER_NAME",
         "NET_SOCK_PEER_PORT",
         "NET_TRANSPORT",
+        "OS_BUILD",
         "QUERY_KEY",
         "RELEASE",
         "REPLAY_ID",
@@ -3969,6 +3970,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "ipv4"
     """
 
+    # Path: model/attributes/os/os__build.json
+    OS_BUILD: Literal["os.build"] = "os.build"
+    """The build ID of the operating system.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: os.build_id
+    DEPRECATED: Use os.build_id instead
+    Example: "1234567890"
+    """
+
     # Path: model/attributes/os/os__build_id.json
     OS_BUILD_ID: Literal["os.build_id"] = "os.build_id"
     """The build ID of the operating system.
@@ -3976,6 +3989,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Aliases: os.build
     Example: "1234567890"
     """
 
@@ -3989,6 +4003,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "Ubuntu 18.04.1 LTS"
     """
 
+    # Path: model/attributes/os/os__kernel_version.json
+    OS_KERNEL_VERSION: Literal["os.kernel_version"] = "os.kernel_version"
+    """An independent kernel version string. Typically the entire output of the `uname` syscall.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "20.2.0"
+    """
+
     # Path: model/attributes/os/os__name.json
     OS_NAME: Literal["os.name"] = "os.name"
     """Human readable operating system name.
@@ -3997,6 +4021,36 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: Yes
     Example: "Ubuntu"
+    """
+
+    # Path: model/attributes/os/os__raw_description.json
+    OS_RAW_DESCRIPTION: Literal["os.raw_description"] = "os.raw_description"
+    """An unprocessed description string obtained by the operating system. For some well-known runtimes, Sentry will attempt to parse `name` and `version` from this string, if they are not explicitly given.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "Ubuntu 22.04.4 LTS (Jammy Jellyfish)"
+    """
+
+    # Path: model/attributes/os/os__rooted.json
+    OS_ROOTED: Literal["os.rooted"] = "os.rooted"
+    """Whether the operating system has been jailbroken or rooted.
+
+    Type: bool
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: true
+    """
+
+    # Path: model/attributes/os/os__theme.json
+    OS_THEME: Literal["os.theme"] = "os.theme"
+    """Whether the OS runs in dark mode or light mode.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "dark"
     """
 
     # Path: model/attributes/os/os__type.json
@@ -9820,13 +9874,35 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "os.build": AttributeMetadata(
+        brief="The build ID of the operating system.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="1234567890",
+        deprecation=DeprecationInfo(
+            replacement="os.build_id", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["os.build_id"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[301],
+                description="Added os.build attribute, deprecated in favor of os.build_id",
+            ),
+        ],
+    ),
     "os.build_id": AttributeMetadata(
         brief="The build ID of the operating system.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="1234567890",
+        aliases=["os.build"],
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[301], description="Added os.build as alias"
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -9842,6 +9918,20 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "os.kernel_version": AttributeMetadata(
+        brief="An independent kernel version string. Typically the entire output of the `uname` syscall.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="20.2.0",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[301],
+                description="Added os.kernel_version attribute",
+            ),
+        ],
+    ),
     "os.name": AttributeMetadata(
         brief="Human readable operating system name.",
         type=AttributeType.STRING,
@@ -9851,6 +9941,44 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "os.raw_description": AttributeMetadata(
+        brief="An unprocessed description string obtained by the operating system. For some well-known runtimes, Sentry will attempt to parse `name` and `version` from this string, if they are not explicitly given.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="Ubuntu 22.04.4 LTS (Jammy Jellyfish)",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[301],
+                description="Added os.raw_description attribute",
+            ),
+        ],
+    ),
+    "os.rooted": AttributeMetadata(
+        brief="Whether the operating system has been jailbroken or rooted.",
+        type=AttributeType.BOOLEAN,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=True,
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[301], description="Added os.rooted attribute"
+            ),
+        ],
+    ),
+    "os.theme": AttributeMetadata(
+        brief="Whether the OS runs in dark mode or light mode.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="dark",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[301], description="Added os.theme attribute"
+            ),
         ],
     ),
     "os.type": AttributeMetadata(
@@ -11927,9 +12055,14 @@ Attributes = TypedDict(
         "network.protocol.version": str,
         "network.transport": str,
         "network.type": str,
+        "os.build": str,
         "os.build_id": str,
         "os.description": str,
+        "os.kernel_version": str,
         "os.name": str,
+        "os.raw_description": str,
+        "os.rooted": bool,
+        "os.theme": str,
         "os.type": str,
         "os.version": str,
         "otel.scope.name": str,
