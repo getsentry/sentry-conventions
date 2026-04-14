@@ -8156,6 +8156,46 @@ export const PARAMS_KEY = 'params.<key>';
  */
 export type PARAMS_KEY_TYPE = string;
 
+// Path: model/attributes/performance/performance__activationStart.json
+
+/**
+ * The time between initiating a navigation to a page and the browser activating the page `performance.activationStart`
+ *
+ * Attribute Value Type: `number` {@link PERFORMANCE_ACTIVATIONSTART_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 1.983
+ */
+export const PERFORMANCE_ACTIVATIONSTART = 'performance.activationStart';
+
+/**
+ * Type for {@link PERFORMANCE_ACTIVATIONSTART} performance.activationStart
+ */
+export type PERFORMANCE_ACTIVATIONSTART_TYPE = number;
+
+// Path: model/attributes/performance/performance__timeOrigin.json
+
+/**
+ * the browser's performance.timeOrigin timestamp representing the time when the pageload was initiated `performance.timeOrigin`
+ *
+ * Attribute Value Type: `number` {@link PERFORMANCE_TIMEORIGIN_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "1776185678.886"
+ */
+export const PERFORMANCE_TIMEORIGIN = 'performance.timeOrigin';
+
+/**
+ * Type for {@link PERFORMANCE_TIMEORIGIN} performance.timeOrigin
+ */
+export type PERFORMANCE_TIMEORIGIN_TYPE = number;
+
 // Path: model/attributes/previous_route.json
 
 /**
@@ -11752,6 +11792,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [OTEL_STATUS_CODE]: 'string',
   [OTEL_STATUS_DESCRIPTION]: 'string',
   [PARAMS_KEY]: 'string',
+  [PERFORMANCE_ACTIVATIONSTART]: 'double',
+  [PERFORMANCE_TIMEORIGIN]: 'double',
   [PREVIOUS_ROUTE]: 'string',
   [PROCESS_EXECUTABLE_NAME]: 'string',
   [PROCESS_PID]: 'integer',
@@ -12294,6 +12336,8 @@ export type AttributeName =
   | typeof OTEL_STATUS_CODE
   | typeof OTEL_STATUS_DESCRIPTION
   | typeof PARAMS_KEY
+  | typeof PERFORMANCE_ACTIVATIONSTART
+  | typeof PERFORMANCE_TIMEORIGIN
   | typeof PREVIOUS_ROUTE
   | typeof PROCESS_EXECUTABLE_NAME
   | typeof PROCESS_PID
@@ -17366,6 +17410,28 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [URL_PATH_PARAMETER_KEY],
     changelog: [{ version: '0.1.0', prs: [103] }],
   },
+  [PERFORMANCE_ACTIVATIONSTART]: {
+    brief: 'The time between initiating a navigation to a page and the browser activating the page',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1.983,
+    sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [321], description: 'Added performance.activationStart attribute' }],
+  },
+  [PERFORMANCE_TIMEORIGIN]: {
+    brief: "the browser's performance.timeOrigin timestamp representing the time when the pageload was initiated",
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '1776185678.886',
+    sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [321], description: 'Added performance.timeOrigin attribute' }],
+  },
   [PREVIOUS_ROUTE]: {
     brief: 'Also used by mobile SDKs to indicate the previous route in the application.',
     type: 'string',
@@ -19448,6 +19514,8 @@ export type Attributes = {
   [OTEL_STATUS_CODE]?: OTEL_STATUS_CODE_TYPE;
   [OTEL_STATUS_DESCRIPTION]?: OTEL_STATUS_DESCRIPTION_TYPE;
   [PARAMS_KEY]?: PARAMS_KEY_TYPE;
+  [PERFORMANCE_ACTIVATIONSTART]?: PERFORMANCE_ACTIVATIONSTART_TYPE;
+  [PERFORMANCE_TIMEORIGIN]?: PERFORMANCE_TIMEORIGIN_TYPE;
   [PREVIOUS_ROUTE]?: PREVIOUS_ROUTE_TYPE;
   [PROCESS_EXECUTABLE_NAME]?: PROCESS_EXECUTABLE_NAME_TYPE;
   [PROCESS_PID]?: PROCESS_PID_TYPE;

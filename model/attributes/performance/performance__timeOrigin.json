@@ -1,0 +1,18 @@
+{
+  "key": "performance.timeOrigin",
+  "brief": "the browser's performance.timeOrigin timestamp representing the time when the pageload was initiated",
+  "type": "double",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "1776185678.886",
+  "sdks": ["javascript-browser"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [321],
+      "description": "Added performance.timeOrigin attribute"
+    }
+  ]
+}
