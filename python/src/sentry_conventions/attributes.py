@@ -4722,7 +4722,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: browser.web_vital.lcp.report_event, browser.web_vital.cls.report_event
     DEPRECATED: No replacement at this time - The report event is now recorded as a browser.web_vital.lcp.report_event or browser.web_vital.cls.report_event attribute. No backfill required.
     Example: "pagehide"
     """
@@ -10613,10 +10612,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             reason="The report event is now recorded as a browser.web_vital.lcp.report_event or browser.web_vital.cls.report_event attribute. No backfill required."
         ),
-        aliases=[
-            "browser.web_vital.lcp.report_event",
-            "browser.web_vital.cls.report_event",
-        ],
         sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(

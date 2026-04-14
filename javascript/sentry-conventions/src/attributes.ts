@@ -8371,8 +8371,6 @@ export type SENTRY_REPLAY_IS_BUFFERING_TYPE = boolean;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link BROWSER_WEB_VITAL_LCP_REPORT_EVENT} `browser.web_vital.lcp.report_event`, {@link BROWSER_WEB_VITAL_CLS_REPORT_EVENT} `browser.web_vital.cls.report_event`
- *
  * @deprecated  - The report event is now recorded as a browser.web_vital.lcp.report_event or browser.web_vital.cls.report_event attribute. No backfill required.
  * @example "pagehide"
  */
@@ -16306,7 +16304,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason:
         'The report event is now recorded as a browser.web_vital.lcp.report_event or browser.web_vital.cls.report_event attribute. No backfill required.',
     },
-    aliases: [BROWSER_WEB_VITAL_LCP_REPORT_EVENT, BROWSER_WEB_VITAL_CLS_REPORT_EVENT],
     sdks: ['javascript-browser'],
     changelog: [{ version: 'next', prs: [320], description: 'Added sentry.report_event attribute' }],
   },
