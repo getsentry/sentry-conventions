@@ -1,0 +1,17 @@
+{
+  "key": "device.thermal_state",
+  "brief": "The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum: `nominal`, `fair`, `serious`, or `critical`.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "nominal",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [303],
+      "description": "Added device.thermal_state attribute"
+    }
+  ]
+}

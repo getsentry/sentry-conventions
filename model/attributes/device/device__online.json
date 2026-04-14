@@ -1,0 +1,17 @@
+{
+  "key": "device.online",
+  "brief": "Whether the device was online or not.",
+  "type": "boolean",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": true,
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [303],
+      "description": "Added device.online attribute"
+    }
+  ]
+}
