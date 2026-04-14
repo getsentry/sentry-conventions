@@ -7,7 +7,6 @@
   },
   "is_in_otel": false,
   "example": "pagehide",
-  "alias": ["browser.web_vital.lcp.report_event", "browser.web_vital.cls.report_event"],
   "sdks": ["javascript-browser"],
   "deprecation": {
     "replacement": null,
