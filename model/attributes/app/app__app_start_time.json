@@ -1,5 +1,5 @@
 {
-  "key": "app.start_time",
+  "key": "app.app_start_time",
   "brief": "Formatted UTC timestamp when the user started the application.",
   "type": "string",
   "pii": {
@@ -8,12 +8,17 @@
   "is_in_otel": false,
   "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
   "example": "2025-01-01T00:00:00.000Z",
-  "alias": ["app.app_start_time"],
+  "alias": ["app.start_time"],
+  "deprecation": {
+    "replacement": "app.start_time",
+    "reason": "Deprecated in favor of app.start_time",
+    "_status": "backfill"
+  },
   "changelog": [
     {
       "version": "next",
       "prs": [296],
-      "description": "Added app.start_time attribute"
+      "description": "Added and deprecated app.app_start_time in favor of app.start_time"
     }
   ]
 }

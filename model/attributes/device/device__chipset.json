@@ -1,0 +1,17 @@
+{
+  "key": "device.chipset",
+  "brief": "The chipset of the device.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "Qualcomm SM8550",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [303],
+      "description": "Added device.chipset attribute"
+    }
+  ]
+}

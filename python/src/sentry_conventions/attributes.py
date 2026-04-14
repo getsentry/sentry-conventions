@@ -136,6 +136,11 @@ class _AttributeNamesMeta(type):
         "AI_TOTAL_COST",
         "AI_TOTAL_TOKENS_USED",
         "AI_WARNINGS",
+        "APP_APP_BUILD",
+        "APP_APP_IDENTIFIER",
+        "APP_APP_NAME",
+        "APP_APP_START_TIME",
+        "APP_APP_VERSION",
         "APP_START_TYPE",
         "CLS_SOURCE_KEY",
         "CLS",
@@ -150,6 +155,7 @@ class _AttributeNamesMeta(type):
         "DB_SQL_BINDINGS",
         "DB_STATEMENT",
         "DB_SYSTEM",
+        "DEVICE_CONNECTION_TYPE",
         "DEVICEMEMORY",
         "EFFECTIVECONNECTIONTYPE",
         "ENVIRONMENT",
@@ -170,6 +176,7 @@ class _AttributeNamesMeta(type):
         "GEN_AI_TOOL_INPUT",
         "GEN_AI_TOOL_MESSAGE",
         "GEN_AI_TOOL_OUTPUT",
+        "GEN_AI_TOOL_TYPE",
         "GEN_AI_USAGE_COMPLETION_TOKENS",
         "GEN_AI_USAGE_PROMPT_TOKENS",
         "HARDWARECONCURRENCY",
@@ -209,6 +216,7 @@ class _AttributeNamesMeta(type):
         "NET_SOCK_PEER_NAME",
         "NET_SOCK_PEER_PORT",
         "NET_TRANSPORT",
+        "OS_BUILD",
         "QUERY_KEY",
         "RELEASE",
         "REPLAY_ID",
@@ -628,6 +636,66 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: ["Token limit exceeded"]
     """
 
+    # Path: model/attributes/app/app__app_build.json
+    APP_APP_BUILD: Literal["app.app_build"] = "app.app_build"
+    """Internal build identifier, as it appears on the platform.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: app.build
+    DEPRECATED: Use app.build instead - Deprecated in favor of app.build
+    Example: "1"
+    """
+
+    # Path: model/attributes/app/app__app_identifier.json
+    APP_APP_IDENTIFIER: Literal["app.app_identifier"] = "app.app_identifier"
+    """Version-independent application identifier, often a dotted bundle ID.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: app.identifier
+    DEPRECATED: Use app.identifier instead - Deprecated in favor of app.identifier
+    Example: "com.example.myapp"
+    """
+
+    # Path: model/attributes/app/app__app_name.json
+    APP_APP_NAME: Literal["app.app_name"] = "app.app_name"
+    """Human readable application name, as it appears on the platform.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: app.name
+    DEPRECATED: Use app.name instead - Deprecated in favor of app.name
+    Example: "My App"
+    """
+
+    # Path: model/attributes/app/app__app_start_time.json
+    APP_APP_START_TIME: Literal["app.app_start_time"] = "app.app_start_time"
+    """Formatted UTC timestamp when the user started the application.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: app.start_time
+    DEPRECATED: Use app.start_time instead - Deprecated in favor of app.start_time
+    Example: "2025-01-01T00:00:00.000Z"
+    """
+
+    # Path: model/attributes/app/app__app_version.json
+    APP_APP_VERSION: Literal["app.app_version"] = "app.app_version"
+    """Human readable application version, as it appears on the platform.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: app.version
+    DEPRECATED: Use app.version instead - Deprecated in favor of app.version
+    Example: "1.0.0"
+    """
+
     # Path: model/attributes/app/app__build.json
     APP_BUILD: Literal["app.build"] = "app.build"
     """Internal build identifier, as it appears on the platform.
@@ -635,6 +703,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Aliases: app.app_build
     Example: "1"
     """
 
@@ -645,6 +714,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Aliases: app.app_identifier
     Example: "com.example.myapp"
     """
 
@@ -653,7 +723,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether the application is currently in the foreground.
 
     Type: bool
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: true
     """
@@ -665,6 +735,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Aliases: app.app_name
     Example: "My App"
     """
 
@@ -675,6 +746,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Aliases: app.app_start_time
     Example: "2025-01-01T00:00:00.000Z"
     """
 
@@ -685,6 +757,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Aliases: app.app_version
     Example: "1.0.0"
     """
 
@@ -1317,7 +1390,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: network.connection.type
+    Aliases: network.connection.type, device.connection_type
     DEPRECATED: Use network.connection.type instead - Old namespace-less attribute, to be replaced with network.connection.type for span-first future
     Example: "wifi"
     """
@@ -1382,6 +1455,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: Yes
     Example: "users"
+    """
+
+    # Path: model/attributes/db/db__driver__name.json
+    DB_DRIVER_NAME: Literal["db.driver.name"] = "db.driver.name"
+    """The name of the driver used for the database connection.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "psycopg2"
     """
 
     # Path: model/attributes/db/db__name.json
@@ -1540,6 +1623,48 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "fancy_user"
     """
 
+    # Path: model/attributes/device/device__archs.json
+    DEVICE_ARCHS: Literal["device.archs"] = "device.archs"
+    """The CPU architectures of the device.
+
+    Type: List[str]
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: ["arm64-v8a","armeabi-v7a","armeabi"]
+    """
+
+    # Path: model/attributes/device/device__battery_level.json
+    DEVICE_BATTERY_LEVEL: Literal["device.battery_level"] = "device.battery_level"
+    """The battery level of the device as a percentage (0-100).
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: 100
+    """
+
+    # Path: model/attributes/device/device__battery_temperature.json
+    DEVICE_BATTERY_TEMPERATURE: Literal["device.battery_temperature"] = (
+        "device.battery_temperature"
+    )
+    """The battery temperature of the device in Celsius.
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: 25
+    """
+
+    # Path: model/attributes/device/device__boot_time.json
+    DEVICE_BOOT_TIME: Literal["device.boot_time"] = "device.boot_time"
+    """A formatted UTC timestamp when the system was booted.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "2018-02-08T12:52:12Z"
+    """
+
     # Path: model/attributes/device/device__brand.json
     DEVICE_BRAND: Literal["device.brand"] = "device.brand"
     """The brand of the device.
@@ -1550,6 +1675,26 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "Apple"
     """
 
+    # Path: model/attributes/device/device__charging.json
+    DEVICE_CHARGING: Literal["device.charging"] = "device.charging"
+    """Whether the device was charging or not.
+
+    Type: bool
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: false
+    """
+
+    # Path: model/attributes/device/device__chipset.json
+    DEVICE_CHIPSET: Literal["device.chipset"] = "device.chipset"
+    """The chipset of the device.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "Qualcomm SM8550"
+    """
+
     # Path: model/attributes/device/device__class.json
     DEVICE_CLASS: Literal["device.class"] = "device.class"
     """The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.
@@ -1558,6 +1703,52 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Example: "medium"
+    """
+
+    # Path: model/attributes/device/device__connection_type.json
+    DEVICE_CONNECTION_TYPE: Literal["device.connection_type"] = "device.connection_type"
+    """The internet connection type currently being used by the device.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: network.connection.type, connectionType
+    DEPRECATED: Use network.connection.type instead - This attribute is being deprecated in favor of network.connection.type
+    Example: "wifi"
+    """
+
+    # Path: model/attributes/device/device__cpu_description.json
+    DEVICE_CPU_DESCRIPTION: Literal["device.cpu_description"] = "device.cpu_description"
+    """A description of the CPU of the device.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "Intel(R) Core(TM)2 Quad CPU Q6600 @ 2.40GHz"
+    """
+
+    # Path: model/attributes/device/device__external_free_storage.json
+    DEVICE_EXTERNAL_FREE_STORAGE: Literal["device.external_free_storage"] = (
+        "device.external_free_storage"
+    )
+    """External storage free size in bytes.
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: 67108864000
+    """
+
+    # Path: model/attributes/device/device__external_storage_size.json
+    DEVICE_EXTERNAL_STORAGE_SIZE: Literal["device.external_storage_size"] = (
+        "device.external_storage_size"
+    )
+    """External storage total size in bytes.
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: 134217728000
     """
 
     # Path: model/attributes/device/device__family.json
@@ -1578,6 +1769,56 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Example: 2147483648
+    """
+
+    # Path: model/attributes/device/device__free_storage.json
+    DEVICE_FREE_STORAGE: Literal["device.free_storage"] = "device.free_storage"
+    """Free device storage in bytes.
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: 107374182400
+    """
+
+    # Path: model/attributes/device/device__id.json
+    DEVICE_ID: Literal["device.id"] = "device.id"
+    """Unique device identifier.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: Yes
+    Example: "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+    """
+
+    # Path: model/attributes/device/device__locale.json
+    DEVICE_LOCALE: Literal["device.locale"] = "device.locale"
+    """The locale of the device.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "en-US"
+    """
+
+    # Path: model/attributes/device/device__low_memory.json
+    DEVICE_LOW_MEMORY: Literal["device.low_memory"] = "device.low_memory"
+    """Whether the device was low on memory.
+
+    Type: bool
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: false
+    """
+
+    # Path: model/attributes/device/device__manufacturer.json
+    DEVICE_MANUFACTURER: Literal["device.manufacturer"] = "device.manufacturer"
+    """The manufacturer of the device.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: Yes
+    Example: "Google"
     """
 
     # Path: model/attributes/device/device__memory__estimated_capacity.json
@@ -1623,6 +1864,36 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "N861AP"
     """
 
+    # Path: model/attributes/device/device__name.json
+    DEVICE_NAME: Literal["device.name"] = "device.name"
+    """The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "localhost"
+    """
+
+    # Path: model/attributes/device/device__online.json
+    DEVICE_ONLINE: Literal["device.online"] = "device.online"
+    """Whether the device was online or not.
+
+    Type: bool
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: true
+    """
+
+    # Path: model/attributes/device/device__orientation.json
+    DEVICE_ORIENTATION: Literal["device.orientation"] = "device.orientation"
+    """The orientation of the device, either "portrait" or "landscape".
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "portrait"
+    """
+
     # Path: model/attributes/device/device__processor_count.json
     DEVICE_PROCESSOR_COUNT: Literal["device.processor_count"] = "device.processor_count"
     """Number of "logical processors".
@@ -1634,6 +1905,62 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 8
     """
 
+    # Path: model/attributes/device/device__processor_frequency.json
+    DEVICE_PROCESSOR_FREQUENCY: Literal["device.processor_frequency"] = (
+        "device.processor_frequency"
+    )
+    """Processor frequency in MHz.
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: 2400
+    """
+
+    # Path: model/attributes/device/device__screen_density.json
+    DEVICE_SCREEN_DENSITY: Literal["device.screen_density"] = "device.screen_density"
+    """The screen density of the device.
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: 2.625
+    """
+
+    # Path: model/attributes/device/device__screen_dpi.json
+    DEVICE_SCREEN_DPI: Literal["device.screen_dpi"] = "device.screen_dpi"
+    """The screen density in dots-per-inch (DPI) of the device.
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: 420
+    """
+
+    # Path: model/attributes/device/device__screen_height_pixels.json
+    DEVICE_SCREEN_HEIGHT_PIXELS: Literal["device.screen_height_pixels"] = (
+        "device.screen_height_pixels"
+    )
+    """The height of the device screen in pixels.
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: 2400
+    """
+
+    # Path: model/attributes/device/device__screen_width_pixels.json
+    DEVICE_SCREEN_WIDTH_PIXELS: Literal["device.screen_width_pixels"] = (
+        "device.screen_width_pixels"
+    )
+    """The width of the device screen in pixels.
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: 1080
+    """
+
     # Path: model/attributes/device/device__simulator.json
     DEVICE_SIMULATOR: Literal["device.simulator"] = "device.simulator"
     """Whether the device is a simulator or an actual device.
@@ -1642,6 +1969,46 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: false
     Defined in OTEL: No
     Example: false
+    """
+
+    # Path: model/attributes/device/device__storage_size.json
+    DEVICE_STORAGE_SIZE: Literal["device.storage_size"] = "device.storage_size"
+    """Total device storage in bytes.
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: 274877906944
+    """
+
+    # Path: model/attributes/device/device__thermal_state.json
+    DEVICE_THERMAL_STATE: Literal["device.thermal_state"] = "device.thermal_state"
+    """The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum: `nominal`, `fair`, `serious`, or `critical`.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "nominal"
+    """
+
+    # Path: model/attributes/device/device__timezone.json
+    DEVICE_TIMEZONE: Literal["device.timezone"] = "device.timezone"
+    """The timezone of the device.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "Europe/Vienna"
+    """
+
+    # Path: model/attributes/device/device__usable_memory.json
+    DEVICE_USABLE_MEMORY: Literal["device.usable_memory"] = "device.usable_memory"
+    """Memory usable for the app in bytes.
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: 2147483648
     """
 
     # Path: model/attributes/deviceMemory.json
@@ -1896,6 +2263,30 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "ResearchAssistant"
     """
 
+    # Path: model/attributes/gen_ai/gen_ai__context__utilization.json
+    GEN_AI_CONTEXT_UTILIZATION: Literal["gen_ai.context.utilization"] = (
+        "gen_ai.context.utilization"
+    )
+    """The fraction of the model context window utilized by this generation.
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: 0.75
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__context__window_size.json
+    GEN_AI_CONTEXT_WINDOW_SIZE: Literal["gen_ai.context.window_size"] = (
+        "gen_ai.context.window_size"
+    )
+    """The maximum context window size supported by the model for this generation.
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: 128000
+    """
+
     # Path: model/attributes/gen_ai/gen_ai__conversation__id.json
     GEN_AI_CONVERSATION_ID: Literal["gen_ai.conversation.id"] = "gen_ai.conversation.id"
     """The unique identifier for a conversation (session, thread), used to store and correlate messages within this conversation.
@@ -1953,6 +2344,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Example: "What's the weather in Paris?"
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__function_id.json
+    GEN_AI_FUNCTION_ID: Literal["gen_ai.function_id"] = "gen_ai.function_id"
+    """Framework-specific tracing label for the execution of a function or other unit of execution in a generative AI system.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "my-awesome-function"
     """
 
     # Path: model/attributes/gen_ai/gen_ai__input__messages.json
@@ -2386,6 +2787,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    DEPRECATED: No replacement at this time - The gen_ai.tool.type attribute is deprecated and should no longer be set.
     Example: "function"
     """
 
@@ -3957,7 +4359,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
-    Aliases: connectionType
+    Aliases: device.connection_type, connectionType
     Example: "wifi"
     """
 
@@ -4049,6 +4451,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "ipv4"
     """
 
+    # Path: model/attributes/os/os__build.json
+    OS_BUILD: Literal["os.build"] = "os.build"
+    """The build ID of the operating system.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: os.build_id
+    DEPRECATED: Use os.build_id instead
+    Example: "1234567890"
+    """
+
     # Path: model/attributes/os/os__build_id.json
     OS_BUILD_ID: Literal["os.build_id"] = "os.build_id"
     """The build ID of the operating system.
@@ -4056,6 +4470,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Aliases: os.build
     Example: "1234567890"
     """
 
@@ -4069,6 +4484,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "Ubuntu 18.04.1 LTS"
     """
 
+    # Path: model/attributes/os/os__kernel_version.json
+    OS_KERNEL_VERSION: Literal["os.kernel_version"] = "os.kernel_version"
+    """An independent kernel version string. Typically the entire output of the `uname` syscall.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "20.2.0"
+    """
+
     # Path: model/attributes/os/os__name.json
     OS_NAME: Literal["os.name"] = "os.name"
     """Human readable operating system name.
@@ -4077,6 +4502,36 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: Yes
     Example: "Ubuntu"
+    """
+
+    # Path: model/attributes/os/os__raw_description.json
+    OS_RAW_DESCRIPTION: Literal["os.raw_description"] = "os.raw_description"
+    """An unprocessed description string obtained by the operating system. For some well-known runtimes, Sentry will attempt to parse `name` and `version` from this string, if they are not explicitly given.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "Ubuntu 22.04.4 LTS (Jammy Jellyfish)"
+    """
+
+    # Path: model/attributes/os/os__rooted.json
+    OS_ROOTED: Literal["os.rooted"] = "os.rooted"
+    """Whether the operating system has been jailbroken or rooted.
+
+    Type: bool
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: true
+    """
+
+    # Path: model/attributes/os/os__theme.json
+    OS_THEME: Literal["os.theme"] = "os.theme"
+    """Whether the OS runs in dark mode or light mode.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "dark"
     """
 
     # Path: model/attributes/os/os__type.json
@@ -4590,6 +5045,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "server"
     """
 
+    # Path: model/attributes/sentry/sentry__main_thread.json
+    SENTRY_MAIN_THREAD: Literal["sentry.main_thread"] = "sentry.main_thread"
+    """Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs.
+
+    Type: bool
+    Contains PII: false
+    Defined in OTEL: No
+    Example: true
+    """
+
     # Path: model/attributes/sentry/sentry__message__parameter__[key].json
     SENTRY_MESSAGE_PARAMETER_KEY: Literal["sentry.message.parameter.<key>"] = (
         "sentry.message.parameter.<key>"
@@ -4612,6 +5077,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Example: "Hello, {name}!"
+    """
+
+    # Path: model/attributes/sentry/sentry__mobile.json
+    SENTRY_MOBILE: Literal["sentry.mobile"] = "sentry.mobile"
+    """Whether the application is using a mobile SDK. Computed by Relay and should not be set by SDKs.
+
+    Type: bool
+    Contains PII: false
+    Defined in OTEL: No
+    Example: true
     """
 
     # Path: model/attributes/sentry/sentry__module__[key].json
@@ -6209,12 +6684,143 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[55]),
         ],
     ),
+    "app.app_build": AttributeMetadata(
+        brief="Internal build identifier, as it appears on the platform.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="1",
+        deprecation=DeprecationInfo(
+            replacement="app.build",
+            reason="Deprecated in favor of app.build",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["app.build"],
+        sdks=[
+            "sentry.cocoa",
+            "sentry.java.android",
+            "sentry.javascript.react-native",
+            "sentry.dart.flutter",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[296],
+                description="Added and deprecated app.app_build in favor of app.build",
+            ),
+        ],
+    ),
+    "app.app_identifier": AttributeMetadata(
+        brief="Version-independent application identifier, often a dotted bundle ID.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="com.example.myapp",
+        deprecation=DeprecationInfo(
+            replacement="app.identifier",
+            reason="Deprecated in favor of app.identifier",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["app.identifier"],
+        sdks=[
+            "sentry.cocoa",
+            "sentry.java.android",
+            "sentry.javascript.react-native",
+            "sentry.dart.flutter",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[296],
+                description="Added and deprecated app.app_identifier in favor of app.identifier",
+            ),
+        ],
+    ),
+    "app.app_name": AttributeMetadata(
+        brief="Human readable application name, as it appears on the platform.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="My App",
+        deprecation=DeprecationInfo(
+            replacement="app.name",
+            reason="Deprecated in favor of app.name",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["app.name"],
+        sdks=[
+            "sentry.cocoa",
+            "sentry.java.android",
+            "sentry.javascript.react-native",
+            "sentry.dart.flutter",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[296],
+                description="Added and deprecated app.app_name in favor of app.name",
+            ),
+        ],
+    ),
+    "app.app_start_time": AttributeMetadata(
+        brief="Formatted UTC timestamp when the user started the application.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="2025-01-01T00:00:00.000Z",
+        deprecation=DeprecationInfo(
+            replacement="app.start_time",
+            reason="Deprecated in favor of app.start_time",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["app.start_time"],
+        sdks=[
+            "sentry.cocoa",
+            "sentry.java.android",
+            "sentry.javascript.react-native",
+            "sentry.dart.flutter",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[296],
+                description="Added and deprecated app.app_start_time in favor of app.start_time",
+            ),
+        ],
+    ),
+    "app.app_version": AttributeMetadata(
+        brief="Human readable application version, as it appears on the platform.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="1.0.0",
+        deprecation=DeprecationInfo(
+            replacement="app.version",
+            reason="Deprecated in favor of app.version",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["app.version"],
+        sdks=[
+            "sentry.cocoa",
+            "sentry.java.android",
+            "sentry.javascript.react-native",
+            "sentry.dart.flutter",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[296],
+                description="Added and deprecated app.app_version in favor of app.version",
+            ),
+        ],
+    ),
     "app.build": AttributeMetadata(
         brief="Internal build identifier, as it appears on the platform.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="1",
+        aliases=["app.app_build"],
         sdks=[
             "sentry.cocoa",
             "sentry.java.android",
@@ -6233,6 +6839,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="com.example.myapp",
+        aliases=["app.app_identifier"],
         sdks=[
             "sentry.cocoa",
             "sentry.java.android",
@@ -6248,7 +6855,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.in_foreground": AttributeMetadata(
         brief="Whether the application is currently in the foreground.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=True,
         sdks=[
@@ -6271,6 +6878,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="My App",
+        aliases=["app.app_name"],
         sdks=[
             "sentry.cocoa",
             "sentry.java.android",
@@ -6289,6 +6897,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="2025-01-01T00:00:00.000Z",
+        aliases=["app.app_start_time"],
         sdks=[
             "sentry.cocoa",
             "sentry.java.android",
@@ -6307,6 +6916,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="1.0.0",
+        aliases=["app.app_version"],
         sdks=[
             "sentry.cocoa",
             "sentry.java.android",
@@ -7088,7 +7698,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="Old namespace-less attribute, to be replaced with network.connection.type for span-first future",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["network.connection.type"],
+        aliases=["network.connection.type", "device.connection_type"],
         sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
@@ -7157,6 +7767,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[106, 127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "db.driver.name": AttributeMetadata(
+        brief="The name of the driver used for the database connection.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="psycopg2",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[297], description="Added db.driver.name attribute"
+            ),
         ],
     ),
     "db.name": AttributeMetadata(
@@ -7341,6 +7963,60 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "device.archs": AttributeMetadata(
+        brief="The CPU architectures of the device.",
+        type=AttributeType.STRING_ARRAY,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=["arm64-v8a", "armeabi-v7a", "armeabi"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[303], description="Added device.archs attribute"
+            ),
+        ],
+    ),
+    "device.battery_level": AttributeMetadata(
+        brief="The battery level of the device as a percentage (0-100).",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=100,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[303],
+                description="Added device.battery_level attribute",
+            ),
+        ],
+    ),
+    "device.battery_temperature": AttributeMetadata(
+        brief="The battery temperature of the device in Celsius.",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=25,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[303],
+                description="Added device.battery_temperature attribute",
+            ),
+        ],
+    ),
+    "device.boot_time": AttributeMetadata(
+        brief="A formatted UTC timestamp when the system was booted.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="2018-02-08T12:52:12Z",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[303],
+                description="Added device.boot_time attribute",
+            ),
+        ],
+    ),
     "device.brand": AttributeMetadata(
         brief="The brand of the device.",
         type=AttributeType.STRING,
@@ -7349,6 +8025,30 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="Apple",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[116, 127]),
+        ],
+    ),
+    "device.charging": AttributeMetadata(
+        brief="Whether the device was charging or not.",
+        type=AttributeType.BOOLEAN,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=False,
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[303], description="Added device.charging attribute"
+            ),
+        ],
+    ),
+    "device.chipset": AttributeMetadata(
+        brief="The chipset of the device.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="Qualcomm SM8550",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[303], description="Added device.chipset attribute"
+            ),
         ],
     ),
     "device.class": AttributeMetadata(
@@ -7360,6 +8060,68 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next", prs=[300], description="Added device.class attribute"
+            ),
+        ],
+    ),
+    "device.connection_type": AttributeMetadata(
+        brief="The internet connection type currently being used by the device.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="wifi",
+        deprecation=DeprecationInfo(
+            replacement="network.connection.type",
+            reason="This attribute is being deprecated in favor of network.connection.type",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["network.connection.type", "connectionType"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[303],
+                description="Added and deprecated device.connection_type in favor of network.connection.type",
+            ),
+        ],
+    ),
+    "device.cpu_description": AttributeMetadata(
+        brief="A description of the CPU of the device.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="Intel(R) Core(TM)2 Quad CPU Q6600 @ 2.40GHz",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[303],
+                description="Added device.cpu_description attribute",
+            ),
+        ],
+    ),
+    "device.external_free_storage": AttributeMetadata(
+        brief="External storage free size in bytes.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=67108864000,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[303],
+                description="Added device.external_free_storage attribute",
+            ),
+        ],
+    ),
+    "device.external_storage_size": AttributeMetadata(
+        brief="External storage total size in bytes.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=134217728000,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[303],
+                description="Added device.external_storage_size attribute",
             ),
         ],
     ),
@@ -7384,6 +8146,72 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 version="next",
                 prs=[300],
                 description="Added device.free_memory attribute",
+            ),
+        ],
+    ),
+    "device.free_storage": AttributeMetadata(
+        brief="Free device storage in bytes.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=107374182400,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[303],
+                description="Added device.free_storage attribute",
+            ),
+        ],
+    ),
+    "device.id": AttributeMetadata(
+        brief="Unique device identifier.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=True,
+        example="a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[303], description="Added device.id attribute"
+            ),
+        ],
+    ),
+    "device.locale": AttributeMetadata(
+        brief="The locale of the device.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="en-US",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[303], description="Added device.locale attribute"
+            ),
+        ],
+    ),
+    "device.low_memory": AttributeMetadata(
+        brief="Whether the device was low on memory.",
+        type=AttributeType.BOOLEAN,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=False,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[303],
+                description="Added device.low_memory attribute",
+            ),
+        ],
+    ),
+    "device.manufacturer": AttributeMetadata(
+        brief="The manufacturer of the device.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=True,
+        example="Google",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[303],
+                description="Added device.manufacturer attribute",
             ),
         ],
     ),
@@ -7439,6 +8267,44 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "device.name": AttributeMetadata(
+        brief="The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="localhost",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[303], description="Added device.name attribute"
+            ),
+        ],
+    ),
+    "device.online": AttributeMetadata(
+        brief="Whether the device was online or not.",
+        type=AttributeType.BOOLEAN,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=True,
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[303], description="Added device.online attribute"
+            ),
+        ],
+    ),
+    "device.orientation": AttributeMetadata(
+        brief='The orientation of the device, either "portrait" or "landscape".',
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="portrait",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[303],
+                description="Added device.orientation attribute",
+            ),
+        ],
+    ),
     "device.processor_count": AttributeMetadata(
         brief='Number of "logical processors".',
         type=AttributeType.INTEGER,
@@ -7459,6 +8325,76 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "device.processor_frequency": AttributeMetadata(
+        brief="Processor frequency in MHz.",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=2400,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[303],
+                description="Added device.processor_frequency attribute",
+            ),
+        ],
+    ),
+    "device.screen_density": AttributeMetadata(
+        brief="The screen density of the device.",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=2.625,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[303],
+                description="Added device.screen_density attribute",
+            ),
+        ],
+    ),
+    "device.screen_dpi": AttributeMetadata(
+        brief="The screen density in dots-per-inch (DPI) of the device.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=420,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[303],
+                description="Added device.screen_dpi attribute",
+            ),
+        ],
+    ),
+    "device.screen_height_pixels": AttributeMetadata(
+        brief="The height of the device screen in pixels.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=2400,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[303],
+                description="Added device.screen_height_pixels attribute",
+            ),
+        ],
+    ),
+    "device.screen_width_pixels": AttributeMetadata(
+        brief="The width of the device screen in pixels.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=1080,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[303],
+                description="Added device.screen_width_pixels attribute",
+            ),
+        ],
+    ),
     "device.simulator": AttributeMetadata(
         brief="Whether the device is a simulator or an actual device.",
         type=AttributeType.BOOLEAN,
@@ -7470,6 +8406,60 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 version="next",
                 prs=[300],
                 description="Added device.simulator attribute",
+            ),
+        ],
+    ),
+    "device.storage_size": AttributeMetadata(
+        brief="Total device storage in bytes.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=274877906944,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[303],
+                description="Added device.storage_size attribute",
+            ),
+        ],
+    ),
+    "device.thermal_state": AttributeMetadata(
+        brief="The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum: `nominal`, `fair`, `serious`, or `critical`.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="nominal",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[303],
+                description="Added device.thermal_state attribute",
+            ),
+        ],
+    ),
+    "device.timezone": AttributeMetadata(
+        brief="The timezone of the device.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="Europe/Vienna",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[303], description="Added device.timezone attribute"
+            ),
+        ],
+    ),
+    "device.usable_memory": AttributeMetadata(
+        brief="Memory usable for the app in bytes.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=2147483648,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[303],
+                description="Added device.usable_memory attribute",
             ),
         ],
     ),
@@ -7804,6 +8794,34 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[62, 127]),
         ],
     ),
+    "gen_ai.context.utilization": AttributeMetadata(
+        brief="The fraction of the model context window utilized by this generation.",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=0.75,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[315],
+                description="Added gen_ai.context.utilization attribute",
+            ),
+        ],
+    ),
+    "gen_ai.context.window_size": AttributeMetadata(
+        brief="The maximum context window size supported by the model for this generation.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=128000,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[315],
+                description="Added gen_ai.context.window_size attribute",
+            ),
+        ],
+    ),
     "gen_ai.conversation.id": AttributeMetadata(
         brief="The unique identifier for a conversation (session, thread), used to store and correlate messages within this conversation.",
         type=AttributeType.STRING,
@@ -7857,6 +8875,20 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="What's the weather in Paris?",
         changelog=[
             ChangelogEntry(version="0.3.1", prs=[195]),
+        ],
+    ),
+    "gen_ai.function_id": AttributeMetadata(
+        brief="Framework-specific tracing label for the execution of a function or other unit of execution in a generative AI system.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="my-awesome-function",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[308],
+                description="Added gen_ai.function_id attribute",
+            ),
         ],
     ),
     "gen_ai.input.messages": AttributeMetadata(
@@ -8283,6 +9315,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="function",
+        deprecation=DeprecationInfo(
+            reason="The gen_ai.tool.type attribute is deprecated and should no longer be set."
+        ),
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[62, 127]),
         ],
@@ -10007,7 +11042,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="wifi",
-        aliases=["connectionType"],
+        aliases=["device.connection_type", "connectionType"],
         sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
@@ -10111,13 +11146,35 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "os.build": AttributeMetadata(
+        brief="The build ID of the operating system.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="1234567890",
+        deprecation=DeprecationInfo(
+            replacement="os.build_id", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["os.build_id"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[301],
+                description="Added os.build attribute, deprecated in favor of os.build_id",
+            ),
+        ],
+    ),
     "os.build_id": AttributeMetadata(
         brief="The build ID of the operating system.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="1234567890",
+        aliases=["os.build"],
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[301], description="Added os.build as alias"
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -10133,6 +11190,20 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "os.kernel_version": AttributeMetadata(
+        brief="An independent kernel version string. Typically the entire output of the `uname` syscall.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="20.2.0",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[301],
+                description="Added os.kernel_version attribute",
+            ),
+        ],
+    ),
     "os.name": AttributeMetadata(
         brief="Human readable operating system name.",
         type=AttributeType.STRING,
@@ -10142,6 +11213,44 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "os.raw_description": AttributeMetadata(
+        brief="An unprocessed description string obtained by the operating system. For some well-known runtimes, Sentry will attempt to parse `name` and `version` from this string, if they are not explicitly given.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="Ubuntu 22.04.4 LTS (Jammy Jellyfish)",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[301],
+                description="Added os.raw_description attribute",
+            ),
+        ],
+    ),
+    "os.rooted": AttributeMetadata(
+        brief="Whether the operating system has been jailbroken or rooted.",
+        type=AttributeType.BOOLEAN,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=True,
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[301], description="Added os.rooted attribute"
+            ),
+        ],
+    ),
+    "os.theme": AttributeMetadata(
+        brief="Whether the OS runs in dark mode or light mode.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="dark",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[301], description="Added os.theme attribute"
+            ),
         ],
     ),
     "os.type": AttributeMetadata(
@@ -10662,6 +11771,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.3.1", prs=[190]),
         ],
     ),
+    "sentry.main_thread": AttributeMetadata(
+        brief="Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs.",
+        type=AttributeType.BOOLEAN,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=True,
+        changelog=[
+            ChangelogEntry(version="next"),
+        ],
+    ),
     "sentry.message.parameter.<key>": AttributeMetadata(
         brief="A parameter used in the message template. <key> can either be the number that represent the parameter's position in the template string (sentry.message.parameter.0, sentry.message.parameter.1, etc) or the parameter's name (sentry.message.parameter.item_id, sentry.message.parameter.user_id, etc)",
         type=AttributeType.STRING,
@@ -10680,6 +11799,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="Hello, {name}!",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[116]),
+        ],
+    ),
+    "sentry.mobile": AttributeMetadata(
+        brief="Whether the application is using a mobile SDK. Computed by Relay and should not be set by SDKs.",
+        type=AttributeType.BOOLEAN,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=True,
+        changelog=[
+            ChangelogEntry(version="next"),
         ],
     ),
     "sentry.module.<key>": AttributeMetadata(
@@ -11974,6 +13103,11 @@ Attributes = TypedDict(
         "ai.total_cost": float,
         "ai.total_tokens.used": int,
         "ai.warnings": List[str],
+        "app.app_build": str,
+        "app.app_identifier": str,
+        "app.app_name": str,
+        "app.app_start_time": str,
+        "app.app_version": str,
         "app.build": str,
         "app.identifier": str,
         "app.in_foreground": bool,
@@ -12040,6 +13174,7 @@ Attributes = TypedDict(
         "culture.locale": str,
         "culture.timezone": str,
         "db.collection.name": str,
+        "db.driver.name": str,
         "db.name": str,
         "db.namespace": str,
         "db.operation": str,
@@ -12054,16 +13189,43 @@ Attributes = TypedDict(
         "db.system": str,
         "db.system.name": str,
         "db.user": str,
+        "device.archs": List[str],
+        "device.battery_level": float,
+        "device.battery_temperature": float,
+        "device.boot_time": str,
         "device.brand": str,
+        "device.charging": bool,
+        "device.chipset": str,
         "device.class": str,
+        "device.connection_type": str,
+        "device.cpu_description": str,
+        "device.external_free_storage": int,
+        "device.external_storage_size": int,
         "device.family": str,
         "device.free_memory": int,
+        "device.free_storage": int,
+        "device.id": str,
+        "device.locale": str,
+        "device.low_memory": bool,
+        "device.manufacturer": str,
         "device.memory.estimated_capacity": int,
         "device.memory_size": int,
         "device.model": str,
         "device.model_id": str,
+        "device.name": str,
+        "device.online": bool,
+        "device.orientation": str,
         "device.processor_count": int,
+        "device.processor_frequency": float,
+        "device.screen_density": float,
+        "device.screen_dpi": int,
+        "device.screen_height_pixels": int,
+        "device.screen_width_pixels": int,
         "device.simulator": bool,
+        "device.storage_size": int,
+        "device.thermal_state": str,
+        "device.timezone": str,
+        "device.usable_memory": int,
         "deviceMemory": str,
         "effectiveConnectionType": str,
         "environment": str,
@@ -12087,11 +13249,14 @@ Attributes = TypedDict(
         "frames.total": int,
         "fs_error": str,
         "gen_ai.agent.name": str,
+        "gen_ai.context.utilization": float,
+        "gen_ai.context.window_size": int,
         "gen_ai.conversation.id": str,
         "gen_ai.cost.input_tokens": float,
         "gen_ai.cost.output_tokens": float,
         "gen_ai.cost.total_tokens": float,
         "gen_ai.embeddings.input": str,
+        "gen_ai.function_id": str,
         "gen_ai.input.messages": str,
         "gen_ai.operation.name": str,
         "gen_ai.operation.type": str,
@@ -12275,9 +13440,14 @@ Attributes = TypedDict(
         "network.protocol.version": str,
         "network.transport": str,
         "network.type": str,
+        "os.build": str,
         "os.build_id": str,
         "os.description": str,
+        "os.kernel_version": str,
         "os.name": str,
+        "os.raw_description": str,
+        "os.rooted": bool,
+        "os.theme": str,
         "os.type": str,
         "os.version": str,
         "otel.scope.name": str,
@@ -12325,8 +13495,10 @@ Attributes = TypedDict(
         "sentry.idle_span_finish_reason": str,
         "sentry.is_remote": bool,
         "sentry.kind": str,
+        "sentry.main_thread": bool,
         "sentry.message.parameter.<key>": str,
         "sentry.message.template": str,
+        "sentry.mobile": bool,
         "sentry.module.<key>": str,
         "sentry.nextjs.ssr.function.route": str,
         "sentry.nextjs.ssr.function.type": str,
