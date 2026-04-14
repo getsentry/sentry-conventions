@@ -2775,6 +2775,30 @@
       ]
     },
     {
+      "key": "sentry.report_event",
+      "brief": "(Deprecated) The event that caused the SDK to report CLS or LCP (pagehide or navigation)",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "pagehide",
+      "alias": ["browser.web_vital.lcp.report_event", "browser.web_vital.cls.report_event"],
+      "sdks": ["javascript-browser"],
+      "deprecation": {
+        "replacement": null,
+        "reason": "The report event is now recorded as a browser.web_vital.lcp.report_event or browser.web_vital.cls.report_event attribute. No backfill required.",
+        "_status": null
+      },
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [320],
+          "description": "Added sentry.report_event attribute"
+        }
+      ]
+    },
+    {
       "key": "sentry.segment_id",
       "brief": "The segment ID of a span",
       "type": "string",

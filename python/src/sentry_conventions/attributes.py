@@ -213,6 +213,7 @@ class _AttributeNamesMeta(type):
         "ROUTE",
         "SENTRY_BROWSER_NAME",
         "SENTRY_BROWSER_VERSION",
+        "SENTRY_REPORT_EVENT",
         "_SENTRY_SEGMENT_ID",
         "SENTRY_SOURCE",
         "SENTRY_TRACE_PARENT_SPAN_ID",
@@ -4722,6 +4723,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Aliases: browser.web_vital.lcp.report_event, browser.web_vital.cls.report_event
+    DEPRECATED: No replacement at this time - The report event is now recorded as a browser.web_vital.lcp.report_event or browser.web_vital.cls.report_event attribute. No backfill required.
     Example: "pagehide"
     """
 
@@ -10608,6 +10610,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="pagehide",
+        deprecation=DeprecationInfo(
+            reason="The report event is now recorded as a browser.web_vital.lcp.report_event or browser.web_vital.cls.report_event attribute. No backfill required."
+        ),
         aliases=[
             "browser.web_vital.lcp.report_event",
             "browser.web_vital.cls.report_event",
