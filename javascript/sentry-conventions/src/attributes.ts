@@ -1017,6 +1017,26 @@ export const BROWSER_VERSION = 'browser.version';
  */
 export type BROWSER_VERSION_TYPE = string;
 
+// Path: model/attributes/browser/browser__web_vital__cls__report_event.json
+
+/**
+ * The event that caused the SDK to report CLS (pagehide or navigation) `browser.web_vital.cls.report_event`
+ *
+ * Attribute Value Type: `string` {@link BROWSER_WEB_VITAL_CLS_REPORT_EVENT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "navigation"
+ */
+export const BROWSER_WEB_VITAL_CLS_REPORT_EVENT = 'browser.web_vital.cls.report_event';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_CLS_REPORT_EVENT} browser.web_vital.cls.report_event
+ */
+export type BROWSER_WEB_VITAL_CLS_REPORT_EVENT_TYPE = string;
+
 // Path: model/attributes/browser/browser__web_vital__cls__source__[key].json
 
 /**
@@ -1216,6 +1236,26 @@ export const BROWSER_WEB_VITAL_LCP_RENDER_TIME = 'browser.web_vital.lcp.render_t
  * Type for {@link BROWSER_WEB_VITAL_LCP_RENDER_TIME} browser.web_vital.lcp.render_time
  */
 export type BROWSER_WEB_VITAL_LCP_RENDER_TIME_TYPE = number;
+
+// Path: model/attributes/browser/browser__web_vital__lcp__report_event.json
+
+/**
+ * The event that caused the SDK to report LCP (pagehide or navigation) `browser.web_vital.lcp.report_event`
+ *
+ * Attribute Value Type: `string` {@link BROWSER_WEB_VITAL_LCP_REPORT_EVENT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "pagehide"
+ */
+export const BROWSER_WEB_VITAL_LCP_REPORT_EVENT = 'browser.web_vital.lcp.report_event';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_LCP_REPORT_EVENT} browser.web_vital.lcp.report_event
+ */
+export type BROWSER_WEB_VITAL_LCP_REPORT_EVENT_TYPE = string;
 
 // Path: model/attributes/browser/browser__web_vital__lcp__size.json
 
@@ -10346,6 +10386,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [BROWSER_SCRIPT_INVOKER_TYPE]: 'string',
   [BROWSER_SCRIPT_SOURCE_CHAR_POSITION]: 'integer',
   [BROWSER_VERSION]: 'string',
+  [BROWSER_WEB_VITAL_CLS_REPORT_EVENT]: 'string',
   [BROWSER_WEB_VITAL_CLS_SOURCE_KEY]: 'string',
   [BROWSER_WEB_VITAL_CLS_VALUE]: 'double',
   [BROWSER_WEB_VITAL_FCP_VALUE]: 'double',
@@ -10355,6 +10396,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [BROWSER_WEB_VITAL_LCP_ID]: 'string',
   [BROWSER_WEB_VITAL_LCP_LOAD_TIME]: 'integer',
   [BROWSER_WEB_VITAL_LCP_RENDER_TIME]: 'integer',
+  [BROWSER_WEB_VITAL_LCP_REPORT_EVENT]: 'string',
   [BROWSER_WEB_VITAL_LCP_SIZE]: 'integer',
   [BROWSER_WEB_VITAL_LCP_URL]: 'string',
   [BROWSER_WEB_VITAL_LCP_VALUE]: 'double',
@@ -10838,6 +10880,7 @@ export type AttributeName =
   | typeof BROWSER_SCRIPT_INVOKER_TYPE
   | typeof BROWSER_SCRIPT_SOURCE_CHAR_POSITION
   | typeof BROWSER_VERSION
+  | typeof BROWSER_WEB_VITAL_CLS_REPORT_EVENT
   | typeof BROWSER_WEB_VITAL_CLS_SOURCE_KEY
   | typeof BROWSER_WEB_VITAL_CLS_VALUE
   | typeof BROWSER_WEB_VITAL_FCP_VALUE
@@ -10847,6 +10890,7 @@ export type AttributeName =
   | typeof BROWSER_WEB_VITAL_LCP_ID
   | typeof BROWSER_WEB_VITAL_LCP_LOAD_TIME
   | typeof BROWSER_WEB_VITAL_LCP_RENDER_TIME
+  | typeof BROWSER_WEB_VITAL_LCP_REPORT_EVENT
   | typeof BROWSER_WEB_VITAL_LCP_SIZE
   | typeof BROWSER_WEB_VITAL_LCP_URL
   | typeof BROWSER_WEB_VITAL_LCP_VALUE
@@ -11934,6 +11978,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [SENTRY_BROWSER_VERSION],
     changelog: [{ version: '0.1.0', prs: [59, 127, 139] }],
   },
+  [BROWSER_WEB_VITAL_CLS_REPORT_EVENT]: {
+    brief: 'The event that caused the SDK to report CLS (pagehide or navigation)',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'navigation',
+    sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [319], description: 'Added browser.web_vital.cls.report_event attribute' }],
+  },
   [BROWSER_WEB_VITAL_CLS_SOURCE_KEY]: {
     brief: 'The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N',
     type: 'string',
@@ -12042,6 +12097,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [LCP_RENDERTIME],
     sdks: ['javascript-browser'],
     changelog: [{ version: 'next', prs: [233] }],
+  },
+  [BROWSER_WEB_VITAL_LCP_REPORT_EVENT]: {
+    brief: 'The event that caused the SDK to report LCP (pagehide or navigation)',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'pagehide',
+    sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [319], description: 'Added browser.web_vital.lcp.report_event attribute' }],
   },
   [BROWSER_WEB_VITAL_LCP_SIZE]: {
     brief: 'The size of the largest contentful paint element',
@@ -17277,6 +17343,7 @@ export type Attributes = {
   [BROWSER_SCRIPT_INVOKER_TYPE]?: BROWSER_SCRIPT_INVOKER_TYPE_TYPE;
   [BROWSER_SCRIPT_SOURCE_CHAR_POSITION]?: BROWSER_SCRIPT_SOURCE_CHAR_POSITION_TYPE;
   [BROWSER_VERSION]?: BROWSER_VERSION_TYPE;
+  [BROWSER_WEB_VITAL_CLS_REPORT_EVENT]?: BROWSER_WEB_VITAL_CLS_REPORT_EVENT_TYPE;
   [BROWSER_WEB_VITAL_CLS_SOURCE_KEY]?: BROWSER_WEB_VITAL_CLS_SOURCE_KEY_TYPE;
   [BROWSER_WEB_VITAL_CLS_VALUE]?: BROWSER_WEB_VITAL_CLS_VALUE_TYPE;
   [BROWSER_WEB_VITAL_FCP_VALUE]?: BROWSER_WEB_VITAL_FCP_VALUE_TYPE;
@@ -17286,6 +17353,7 @@ export type Attributes = {
   [BROWSER_WEB_VITAL_LCP_ID]?: BROWSER_WEB_VITAL_LCP_ID_TYPE;
   [BROWSER_WEB_VITAL_LCP_LOAD_TIME]?: BROWSER_WEB_VITAL_LCP_LOAD_TIME_TYPE;
   [BROWSER_WEB_VITAL_LCP_RENDER_TIME]?: BROWSER_WEB_VITAL_LCP_RENDER_TIME_TYPE;
+  [BROWSER_WEB_VITAL_LCP_REPORT_EVENT]?: BROWSER_WEB_VITAL_LCP_REPORT_EVENT_TYPE;
   [BROWSER_WEB_VITAL_LCP_SIZE]?: BROWSER_WEB_VITAL_LCP_SIZE_TYPE;
   [BROWSER_WEB_VITAL_LCP_URL]?: BROWSER_WEB_VITAL_LCP_URL_TYPE;
   [BROWSER_WEB_VITAL_LCP_VALUE]?: BROWSER_WEB_VITAL_LCP_VALUE_TYPE;
