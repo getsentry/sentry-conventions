@@ -17,7 +17,7 @@
     {
       "version": "next",
       "prs": [313],
-      "description": "Deprecated in favor of app.frames.slow.count"
+      "description": "Deprecated in favor of app.vitals.frames.slow.count"
     },
     {
       "version": "0.4.0",

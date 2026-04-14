@@ -14690,7 +14690,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [APP_VITALS_FRAMES_DELAY_VALUE],
     changelog: [
-      { version: 'next', prs: [313], description: 'Deprecated in favor of app.frames.delay.value' },
+      { version: 'next', prs: [313], description: 'Deprecated in favor of app.vitals.frames.delay.value' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
     ],
@@ -14710,7 +14710,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [APP_VITALS_FRAMES_FROZEN_COUNT],
     changelog: [
-      { version: 'next', prs: [313], description: 'Deprecated in favor of app.frames.frozen.count' },
+      { version: 'next', prs: [313], description: 'Deprecated in favor of app.vitals.frames.frozen.count' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
     ],
@@ -14730,7 +14730,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [APP_VITALS_FRAMES_SLOW_COUNT],
     changelog: [
-      { version: 'next', prs: [313], description: 'Deprecated in favor of app.frames.slow.count' },
+      { version: 'next', prs: [313], description: 'Deprecated in favor of app.vitals.frames.slow.count' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
     ],
@@ -14750,7 +14750,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [APP_VITALS_FRAMES_TOTAL_COUNT],
     changelog: [
-      { version: 'next', prs: [313], description: 'Deprecated in favor of app.frames.total.count' },
+      { version: 'next', prs: [313], description: 'Deprecated in favor of app.vitals.frames.total.count' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
     ],

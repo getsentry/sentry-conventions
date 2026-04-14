@@ -8696,7 +8696,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(
                 version="next",
                 prs=[313],
-                description="Deprecated in favor of app.frames.delay.value",
+                description="Deprecated in favor of app.vitals.frames.delay.value",
             ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
@@ -8718,7 +8718,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(
                 version="next",
                 prs=[313],
-                description="Deprecated in favor of app.frames.frozen.count",
+                description="Deprecated in favor of app.vitals.frames.frozen.count",
             ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
@@ -8740,7 +8740,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(
                 version="next",
                 prs=[313],
-                description="Deprecated in favor of app.frames.slow.count",
+                description="Deprecated in favor of app.vitals.frames.slow.count",
             ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
@@ -8762,7 +8762,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(
                 version="next",
                 prs=[313],
-                description="Deprecated in favor of app.frames.total.count",
+                description="Deprecated in favor of app.vitals.frames.total.count",
             ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
