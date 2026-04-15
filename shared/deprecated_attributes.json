@@ -2,6 +2,30 @@
   "_generated": "This file is generated. Do not modify it directly. See scripts/generate_deprecated_attributes_json.ts",
   "attributes": [
     {
+      "key": "app_start_cold",
+      "brief": "The duration of a cold app start in milliseconds",
+      "type": "double",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": 1234.56,
+      "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
+      "alias": ["app.vitals.start.cold.value"],
+      "deprecation": {
+        "replacement": "app.vitals.start.cold.value",
+        "reason": "Replaced by app.vitals.start.cold.value to align with the app.vitals.* namespace for mobile performance attributes",
+        "_status": "backfill"
+      },
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [313],
+          "description": "Added and deprecated in favor of app.vitals.start.cold.value"
+        }
+      ]
+    },
+    {
       "key": "app_start_type",
       "brief": "Mobile app start variant. Either cold or warm.",
       "type": "string",
@@ -28,6 +52,30 @@
         },
         {
           "version": "0.0.0"
+        }
+      ]
+    },
+    {
+      "key": "app_start_warm",
+      "brief": "The duration of a warm app start in milliseconds",
+      "type": "double",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": 1234.56,
+      "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
+      "alias": ["app.vitals.start.warm.value"],
+      "deprecation": {
+        "replacement": "app.vitals.start.warm.value",
+        "reason": "Replaced by app.vitals.start.warm.value to align with the app.vitals.* namespace for mobile performance attributes",
+        "_status": "backfill"
+      },
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [313],
+          "description": "Added and deprecated in favor of app.vitals.start.warm.value"
         }
       ]
     },
