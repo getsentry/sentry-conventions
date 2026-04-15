@@ -141,7 +141,9 @@ class _AttributeNamesMeta(type):
         "APP_APP_NAME",
         "APP_APP_START_TIME",
         "APP_APP_VERSION",
+        "APP_START_COLD",
         "APP_START_TYPE",
+        "APP_START_WARM",
         "CLS_SOURCE_KEY",
         "CLS",
         "CODE_FILEPATH",
@@ -822,6 +824,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Aliases: app_start_cold
     Example: 1234.56
     """
 
@@ -845,6 +848,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Aliases: app_start_warm
     Example: 1234.56
     """
 
@@ -870,6 +874,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 1234.56
     """
 
+    # Path: model/attributes/app_start_cold.json
+    APP_START_COLD: Literal["app_start_cold"] = "app_start_cold"
+    """The duration of a cold app start in milliseconds
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: app.vitals.start.cold.value
+    DEPRECATED: Use app.vitals.start.cold.value instead - Replaced by app.vitals.start.cold.value to align with the app.vitals.* namespace for mobile performance attributes
+    Example: 1234.56
+    """
+
     # Path: model/attributes/app_start_type.json
     APP_START_TYPE: Literal["app_start_type"] = "app_start_type"
     """Mobile app start variant. Either cold or warm.
@@ -880,6 +896,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Aliases: app.vitals.start.type
     DEPRECATED: Use app.vitals.start.type instead - Replaced by app.vitals.start.type to align with the app.vitals.* namespace for mobile performance attributes
     Example: "cold"
+    """
+
+    # Path: model/attributes/app_start_warm.json
+    APP_START_WARM: Literal["app_start_warm"] = "app_start_warm"
+    """The duration of a warm app start in milliseconds
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: app.vitals.start.warm.value
+    DEPRECATED: Use app.vitals.start.warm.value instead - Replaced by app.vitals.start.warm.value to align with the app.vitals.* namespace for mobile performance attributes
+    Example: 1234.56
     """
 
     # Path: model/attributes/blocked_main_thread.json
@@ -7019,6 +7047,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1234.56,
+        aliases=["app_start_cold"],
         sdks=[
             "sentry.cocoa",
             "sentry.java.android",
@@ -7060,6 +7089,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1234.56,
+        aliases=["app_start_warm"],
         sdks=[
             "sentry.cocoa",
             "sentry.java.android",
@@ -7116,6 +7146,32 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "app_start_cold": AttributeMetadata(
+        brief="The duration of a cold app start in milliseconds",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=1234.56,
+        deprecation=DeprecationInfo(
+            replacement="app.vitals.start.cold.value",
+            reason="Replaced by app.vitals.start.cold.value to align with the app.vitals.* namespace for mobile performance attributes",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["app.vitals.start.cold.value"],
+        sdks=[
+            "sentry.cocoa",
+            "sentry.java.android",
+            "sentry.javascript.react-native",
+            "sentry.dart.flutter",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[323],
+                description="Added and deprecated in favor of app.vitals.start.cold.value",
+            ),
+        ],
+    ),
     "app_start_type": AttributeMetadata(
         brief="Mobile app start variant. Either cold or warm.",
         type=AttributeType.STRING,
@@ -7136,6 +7192,32 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "app_start_warm": AttributeMetadata(
+        brief="The duration of a warm app start in milliseconds",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=1234.56,
+        deprecation=DeprecationInfo(
+            replacement="app.vitals.start.warm.value",
+            reason="Replaced by app.vitals.start.warm.value to align with the app.vitals.* namespace for mobile performance attributes",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["app.vitals.start.warm.value"],
+        sdks=[
+            "sentry.cocoa",
+            "sentry.java.android",
+            "sentry.javascript.react-native",
+            "sentry.dart.flutter",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[323],
+                description="Added and deprecated in favor of app.vitals.start.warm.value",
+            ),
         ],
     ),
     "blocked_main_thread": AttributeMetadata(
@@ -13123,7 +13205,9 @@ Attributes = TypedDict(
         "app.vitals.start.warm.value": float,
         "app.vitals.ttfd.value": float,
         "app.vitals.ttid.value": float,
+        "app_start_cold": float,
         "app_start_type": str,
+        "app_start_warm": float,
         "blocked_main_thread": bool,
         "browser.name": str,
         "browser.report.type": str,
