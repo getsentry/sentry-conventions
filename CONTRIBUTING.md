@@ -73,7 +73,15 @@ Remember to run `yarn run generate` after editing or creating a `name` conventio
 
 ## Code and Docs Generation
 
-After you edit an attribute or add a new one, run `yarn run generate` to generate and format the code and docs, which are generated from the json files stored in the `model` directory.
+After you edit an attribute or add a new one, run `yarn run generate` to generate and format the code, which are generated from the json files stored in the `model` directory.
+
+Docs are generated on every PR merge.
+
+The generated code packages can be published to package repositories (currently npm and pypi) at any time by creating a new release:
+
+1. Trigger the [Release](https://github.com/getsentry/sentry-conventions/actions/workflows/release.yml) Github workflow. Define the version to be released. Usually, assuming any attribute changes are part of the release, that's a new minor version. We're intentionally on major version `0.x` to allow breaking changes in minor releases for now.
+2. Head over to [`getsentry/publish`](https://github.com/getsentry/publish/issues) and wait for a new issue to appear. Ensure the changes look correct and all CI checks have passed
+3. Add the `accept` label. A bot will start the release workflow. Wait for the release to complete.
 
 ## Policies
 
