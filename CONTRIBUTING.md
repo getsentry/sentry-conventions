@@ -33,7 +33,7 @@ The merge process for sentry-conventions PRs:
 > - Use the OTel name and type. Set `is_in_otel: true`. 
 >  - Do not create a Sentry-specific synonym!. Diverging from OTel for the same concept creates more confusion and work than value.
 > 
-> If OTel doesn't define it, or the concept is Sentry-specific, set `is_in_otel: > false`.                                                       
+> If OTel doesn't define it, or the concept is Sentry-specific, set `is_in_otel: false`.                                                       
 > 
 > When in doubt, prefer OTel alignment. Sentry conventions should only extend OTel, not diverge from it.
 
@@ -80,6 +80,9 @@ After you edit an attribute or add a new one, run `yarn run generate` to generat
 Here's a list of policies that any newly added attributes MUST follow. Most of these are automatically enforced by the test suite.
 
 - The attribute MUST be namespaced. Example: `nextjs.function_id`, not `function_id`.
+- Use dots as separators for namespaces and logical grouoing, not underscores (`http.request.method`, not `http_request_method`)
+- Use `snake_case` for multi-word names (`browser.web_vital.ttfb.request_time`, not `browser.webVital.ttfb.request-time`)
+- Namespace first (`db.system`, not `system.db`)
 - The `pii` field in the attribute definition MUST be `maybe` or `true` (if the attribute can contain sensitive data). It SHOULD be `false` only if scrubbing the attribute value for PII would potentially break product features. For example, `sentry.replay_id` should have `pii` set to `false`.
 - When an attribute is added that deprecates an old one:
   - The old one should be marked as deprecated, and it MUST point to the new one using the `deprecation.replacement` field.
