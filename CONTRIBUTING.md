@@ -88,6 +88,7 @@ Here's a list of policies that any newly added attributes MUST follow. Most of t
   - The old one should be marked as deprecated, and it MUST point to the new one using the `deprecation.replacement` field.
   - For both the new and the old attribute, and any existing aliases of the old attribute, the new and old names MUST be added to the `aliases` list.
   - The deprecation status of the old one SHOULD be set to `backfill` for at least 90 days, and then set to `normalize`.
+- Prefer keeping names stable. Renames require deprecation cycles across all SDKs that adopted the attribute!
 
 ## Testing
 
