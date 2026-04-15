@@ -19,7 +19,9 @@ The merge process for sentry-conventions PRs:
 1. Open a PR with the proposed convention change ([Adding an Attribute](#adding-a-new-attribute)).
 2. Get an approval from at least one code owner. 
 3. Wait for at least 3 business days after the first approval to give other code owners a chance to review.
-   This grace period exists because attribute names, once shipped in an SDK release, are effectively permanent. If a bad name gets adopted by even one SDK, fixing it requires a deprecation cycle across the SDK(s) that shipped it and the Sentry backend.
+   This grace period exists because attribute names, once shipped in an SDK release, are effectively permanent. If a bad name gets adopted by even one SDK, fixing it requires a deprecation cycle across the SDK(s) that shipped it and the Sentry backend. 
+   There is no urgency exception. 
+   If a name feels wrong, raise it during review, not after.
 4. Merge your PR (alternatively, code owners may merge it after review)
 
 ## Adding a new attribute
