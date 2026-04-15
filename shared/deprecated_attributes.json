@@ -3034,6 +3034,54 @@
       ]
     },
     {
+      "key": "performance.activationStart",
+      "brief": "The time between initiating a navigation to a page and the browser activating the page",
+      "type": "double",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": 1.983,
+      "sdks": ["javascript-browser"],
+      "alias": ["browser.performance.navigation.activation_start"],
+      "deprecation": {
+        "reason": "The activationStart is now recorded as the browser.performance.navigation.activation_start attribute.",
+        "replacement": "browser.performance.navigation.activation_start",
+        "_status": "backfill"
+      },
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [321],
+          "description": "Added performance.activationStart attribute"
+        }
+      ]
+    },
+    {
+      "key": "performance.timeOrigin",
+      "brief": "The browser's performance.timeOrigin timestamp representing the time when the pageload was initiated",
+      "type": "double",
+      "pii": {
+        "key": "maybe"
+      },
+      "alias": ["browser.performance.time_origin"],
+      "is_in_otel": false,
+      "example": 1776185678.886,
+      "sdks": ["javascript-browser"],
+      "deprecation": {
+        "reason": "The timeOrigin is now recorded as the browser.performance.time_origin attribute.",
+        "replacement": "browser.performance.time_origin",
+        "_status": "backfill"
+      },
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [321],
+          "description": "Added performance.timeOrigin attribute"
+        }
+      ]
+    },
+    {
       "key": "query.<key>",
       "brief": "An item in a query string. Usually added by client-side routing frameworks like vue-router.",
       "has_dynamic_suffix": true,
