@@ -934,6 +934,29 @@ export const APP_NAME = 'app.name';
  */
 export type APP_NAME_TYPE = string;
 
+// Path: model/attributes/app_start_cold.json
+
+/**
+ * The duration of a cold app start in milliseconds `app_start_cold`
+ *
+ * Attribute Value Type: `number` {@link APP_START_COLD_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link APP_VITALS_START_COLD_VALUE} `app.vitals.start.cold.value`
+ *
+ * @deprecated Use {@link APP_VITALS_START_COLD_VALUE} (app.vitals.start.cold.value) instead - Replaced by app.vitals.start.cold.value to align with the app.vitals.* namespace for mobile performance attributes
+ * @example 1234.56
+ */
+export const APP_START_COLD = 'app_start_cold';
+
+/**
+ * Type for {@link APP_START_COLD} app_start_cold
+ */
+export type APP_START_COLD_TYPE = number;
+
 // Path: model/attributes/app/app__start_time.json
 
 /**
@@ -978,6 +1001,29 @@ export const APP_START_TYPE = 'app_start_type';
  * Type for {@link APP_START_TYPE} app_start_type
  */
 export type APP_START_TYPE_TYPE = string;
+
+// Path: model/attributes/app_start_warm.json
+
+/**
+ * The duration of a warm app start in milliseconds `app_start_warm`
+ *
+ * Attribute Value Type: `number` {@link APP_START_WARM_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link APP_VITALS_START_WARM_VALUE} `app.vitals.start.warm.value`
+ *
+ * @deprecated Use {@link APP_VITALS_START_WARM_VALUE} (app.vitals.start.warm.value) instead - Replaced by app.vitals.start.warm.value to align with the app.vitals.* namespace for mobile performance attributes
+ * @example 1234.56
+ */
+export const APP_START_WARM = 'app_start_warm';
+
+/**
+ * Type for {@link APP_START_WARM} app_start_warm
+ */
+export type APP_START_WARM_TYPE = number;
 
 // Path: model/attributes/app/app__version.json
 
@@ -1100,6 +1146,8 @@ export type APP_VITALS_FRAMES_TOTAL_COUNT_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link APP_START_COLD} `app_start_cold`
+ *
  * @example 1234.56
  */
 export const APP_VITALS_START_COLD_VALUE = 'app.vitals.start.cold.value';
@@ -1141,6 +1189,8 @@ export type APP_VITALS_START_TYPE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link APP_START_WARM} `app_start_warm`
  *
  * @example 1234.56
  */
@@ -11409,8 +11459,10 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [APP_IDENTIFIER]: 'string',
   [APP_IN_FOREGROUND]: 'boolean',
   [APP_NAME]: 'string',
+  [APP_START_COLD]: 'double',
   [APP_START_TIME]: 'string',
   [APP_START_TYPE]: 'string',
+  [APP_START_WARM]: 'double',
   [APP_VERSION]: 'string',
   [APP_VITALS_FRAMES_DELAY_VALUE]: 'integer',
   [APP_VITALS_FRAMES_FROZEN_COUNT]: 'integer',
@@ -11951,8 +12003,10 @@ export type AttributeName =
   | typeof APP_IDENTIFIER
   | typeof APP_IN_FOREGROUND
   | typeof APP_NAME
+  | typeof APP_START_COLD
   | typeof APP_START_TIME
   | typeof APP_START_TYPE
+  | typeof APP_START_WARM
   | typeof APP_VERSION
   | typeof APP_VITALS_FRAMES_DELAY_VALUE
   | typeof APP_VITALS_FRAMES_FROZEN_COUNT
@@ -13094,6 +13148,25 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: 'next', prs: [296], description: 'Added app.name attribute' }],
   },
+  [APP_START_COLD]: {
+    brief: 'The duration of a cold app start in milliseconds',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1234.56,
+    deprecation: {
+      replacement: 'app.vitals.start.cold.value',
+      reason:
+        'Replaced by app.vitals.start.cold.value to align with the app.vitals.* namespace for mobile performance attributes',
+    },
+    aliases: [APP_VITALS_START_COLD_VALUE],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [
+      { version: 'next', prs: [323], description: 'Added and deprecated in favor of app.vitals.start.cold.value' },
+    ],
+  },
   [APP_START_TIME]: {
     brief: 'Formatted UTC timestamp when the user started the application.',
     type: 'string',
@@ -13124,6 +13197,25 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: 'next', prs: [313], description: 'Deprecated in favor of app.vitals.start.type' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
+    ],
+  },
+  [APP_START_WARM]: {
+    brief: 'The duration of a warm app start in milliseconds',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1234.56,
+    deprecation: {
+      replacement: 'app.vitals.start.warm.value',
+      reason:
+        'Replaced by app.vitals.start.warm.value to align with the app.vitals.* namespace for mobile performance attributes',
+    },
+    aliases: [APP_VITALS_START_WARM_VALUE],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [
+      { version: 'next', prs: [323], description: 'Added and deprecated in favor of app.vitals.start.warm.value' },
     ],
   },
   [APP_VERSION]: {
@@ -13203,6 +13295,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 1234.56,
+    aliases: [APP_START_COLD],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: 'next', prs: [313], description: 'Added app.vitals.start.cold.value attribute' }],
   },
@@ -13226,6 +13319,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 1234.56,
+    aliases: [APP_START_WARM],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: 'next', prs: [313], description: 'Added app.vitals.start.warm.value attribute' }],
   },
@@ -19105,8 +19199,10 @@ export type Attributes = {
   [APP_IDENTIFIER]?: APP_IDENTIFIER_TYPE;
   [APP_IN_FOREGROUND]?: APP_IN_FOREGROUND_TYPE;
   [APP_NAME]?: APP_NAME_TYPE;
+  [APP_START_COLD]?: APP_START_COLD_TYPE;
   [APP_START_TIME]?: APP_START_TIME_TYPE;
   [APP_START_TYPE]?: APP_START_TYPE_TYPE;
+  [APP_START_WARM]?: APP_START_WARM_TYPE;
   [APP_VERSION]?: APP_VERSION_TYPE;
   [APP_VITALS_FRAMES_DELAY_VALUE]?: APP_VITALS_FRAMES_DELAY_VALUE_TYPE;
   [APP_VITALS_FRAMES_FROZEN_COUNT]?: APP_VITALS_FRAMES_FROZEN_COUNT_TYPE;

@@ -1,0 +1,24 @@
+{
+  "key": "app_start_warm",
+  "brief": "The duration of a warm app start in milliseconds",
+  "type": "double",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": 1234.56,
+  "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
+  "alias": ["app.vitals.start.warm.value"],
+  "deprecation": {
+    "replacement": "app.vitals.start.warm.value",
+    "reason": "Replaced by app.vitals.start.warm.value to align with the app.vitals.* namespace for mobile performance attributes",
+    "_status": "backfill"
+  },
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [323],
+      "description": "Added and deprecated in favor of app.vitals.start.warm.value"
+    }
+  ]
+}
