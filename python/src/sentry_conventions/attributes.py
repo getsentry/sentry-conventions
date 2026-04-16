@@ -297,7 +297,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Aliases: gen_ai.response.finish_reasons
-    DEPRECATED: Use gen_ai.response.finish_reason instead
+    DEPRECATED: Use gen_ai.response.finish_reasons instead
     Example: "COMPLETE"
     """
 
@@ -6337,7 +6337,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="COMPLETE",
-        deprecation=DeprecationInfo(replacement="gen_ai.response.finish_reason"),
+        deprecation=DeprecationInfo(replacement="gen_ai.response.finish_reasons"),
         aliases=["gen_ai.response.finish_reasons"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[55, 57, 61, 108, 127]),
