@@ -9,7 +9,7 @@
   "example": "COMPLETE",
   "deprecation": {
     "_status": null,
-    "replacement": "gen_ai.response.finish_reason"
+    "replacement": "gen_ai.response.finish_reasons"
   },
   "alias": ["gen_ai.response.finish_reasons"],
   "changelog": [
