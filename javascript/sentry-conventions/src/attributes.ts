@@ -78,7 +78,7 @@ export type AI_DOCUMENTS_TYPE = Array<string>;
  *
  * Aliases: {@link GEN_AI_RESPONSE_FINISH_REASONS} `gen_ai.response.finish_reasons`
  *
- * @deprecated Use {@link GEN_AI_RESPONSE_FINISH_REASON} (gen_ai.response.finish_reason) instead
+ * @deprecated Use {@link GEN_AI_RESPONSE_FINISH_REASONS} (gen_ai.response.finish_reasons) instead
  * @example "COMPLETE"
  */
 export const AI_FINISH_REASON = 'ai.finish_reason';
@@ -12721,7 +12721,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'COMPLETE',
     deprecation: {
-      replacement: 'gen_ai.response.finish_reason',
+      replacement: 'gen_ai.response.finish_reasons',
     },
     aliases: [GEN_AI_RESPONSE_FINISH_REASONS],
     changelog: [{ version: '0.1.0', prs: [55, 57, 61, 108, 127] }],
