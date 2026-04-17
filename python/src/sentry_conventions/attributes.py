@@ -219,6 +219,8 @@ class _AttributeNamesMeta(type):
         "NET_SOCK_PEER_PORT",
         "NET_TRANSPORT",
         "OS_BUILD",
+        "PERFORMANCE_ACTIVATIONSTART",
+        "PERFORMANCE_TIMEORIGIN",
         "QUERY_KEY",
         "RELEASE",
         "REPLAY_ID",
@@ -930,6 +932,32 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Aliases: sentry.browser.name
     Example: "Chrome"
+    """
+
+    # Path: model/attributes/browser/browser__performance__navigation__activation_start.json
+    BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START: Literal[
+        "browser.performance.navigation.activation_start"
+    ] = "browser.performance.navigation.activation_start"
+    """The time between initiating a navigation to a page and the browser activating the page
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: performance.activationStart
+    Example: 1.983
+    """
+
+    # Path: model/attributes/browser/browser__performance__time_origin.json
+    BROWSER_PERFORMANCE_TIME_ORIGIN: Literal["browser.performance.time_origin"] = (
+        "browser.performance.time_origin"
+    )
+    """The browser's performance.timeOrigin timestamp representing the time when the pageload was initiated
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: performance.timeOrigin
+    Example: 1776185678.886
     """
 
     # Path: model/attributes/browser/browser__report__type.json
@@ -4661,6 +4689,32 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "params.id='123'"
     """
 
+    # Path: model/attributes/performance/performance__activationStart.json
+    PERFORMANCE_ACTIVATIONSTART: Literal["performance.activationStart"] = (
+        "performance.activationStart"
+    )
+    """The time between initiating a navigation to a page and the browser activating the page
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: browser.performance.navigation.activation_start
+    DEPRECATED: Use browser.performance.navigation.activation_start instead - The activationStart is now recorded as the browser.performance.navigation.activation_start attribute.
+    Example: 1.983
+    """
+
+    # Path: model/attributes/performance/performance__timeOrigin.json
+    PERFORMANCE_TIMEORIGIN: Literal["performance.timeOrigin"] = "performance.timeOrigin"
+    """The browser's performance.timeOrigin timestamp representing the time when the pageload was initiated
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: browser.performance.time_origin
+    DEPRECATED: Use browser.performance.time_origin instead - The timeOrigin is now recorded as the browser.performance.time_origin attribute.
+    Example: 1776185678.886
+    """
+
     # Path: model/attributes/previous_route.json
     PREVIOUS_ROUTE: Literal["previous_route"] = "previous_route"
     """Also used by mobile SDKs to indicate the previous route in the application.
@@ -7276,6 +7330,38 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127, 139]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "browser.performance.navigation.activation_start": AttributeMetadata(
+        brief="The time between initiating a navigation to a page and the browser activating the page",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=1.983,
+        aliases=["performance.activationStart"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[321],
+                description="Added browser.performance.navigation.activation_start attribute",
+            ),
+        ],
+    ),
+    "browser.performance.time_origin": AttributeMetadata(
+        brief="The browser's performance.timeOrigin timestamp representing the time when the pageload was initiated",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=1776185678.886,
+        aliases=["performance.timeOrigin"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[321],
+                description="Added browser.performance.time_origin attribute attribute",
+            ),
         ],
     ),
     "browser.report.type": AttributeMetadata(
@@ -11479,6 +11565,48 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[103]),
         ],
     ),
+    "performance.activationStart": AttributeMetadata(
+        brief="The time between initiating a navigation to a page and the browser activating the page",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=1.983,
+        deprecation=DeprecationInfo(
+            replacement="browser.performance.navigation.activation_start",
+            reason="The activationStart is now recorded as the browser.performance.navigation.activation_start attribute.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["browser.performance.navigation.activation_start"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[321],
+                description="Added performance.activationStart attribute",
+            ),
+        ],
+    ),
+    "performance.timeOrigin": AttributeMetadata(
+        brief="The browser's performance.timeOrigin timestamp representing the time when the pageload was initiated",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=1776185678.886,
+        deprecation=DeprecationInfo(
+            replacement="browser.performance.time_origin",
+            reason="The timeOrigin is now recorded as the browser.performance.time_origin attribute.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["browser.performance.time_origin"],
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[321],
+                description="Added performance.timeOrigin attribute",
+            ),
+        ],
+    ),
     "previous_route": AttributeMetadata(
         brief="Also used by mobile SDKs to indicate the previous route in the application.",
         type=AttributeType.STRING,
@@ -13294,6 +13422,8 @@ Attributes = TypedDict(
         "app_start_warm": float,
         "blocked_main_thread": bool,
         "browser.name": str,
+        "browser.performance.navigation.activation_start": float,
+        "browser.performance.time_origin": float,
         "browser.report.type": str,
         "browser.script.invoker": str,
         "browser.script.invoker_type": str,
@@ -13625,6 +13755,8 @@ Attributes = TypedDict(
         "otel.status_code": str,
         "otel.status_description": str,
         "params.<key>": str,
+        "performance.activationStart": float,
+        "performance.timeOrigin": float,
         "previous_route": str,
         "process.executable.name": str,
         "process.pid": int,

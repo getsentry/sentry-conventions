@@ -1287,6 +1287,50 @@ export const BROWSER_NAME = 'browser.name';
  */
 export type BROWSER_NAME_TYPE = string;
 
+// Path: model/attributes/browser/browser__performance__navigation__activation_start.json
+
+/**
+ * The time between initiating a navigation to a page and the browser activating the page `browser.performance.navigation.activation_start`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link PERFORMANCE_ACTIVATIONSTART} `performance.activationStart`
+ *
+ * @example 1.983
+ */
+export const BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START = 'browser.performance.navigation.activation_start';
+
+/**
+ * Type for {@link BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START} browser.performance.navigation.activation_start
+ */
+export type BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START_TYPE = number;
+
+// Path: model/attributes/browser/browser__performance__time_origin.json
+
+/**
+ * The browser's performance.timeOrigin timestamp representing the time when the pageload was initiated `browser.performance.time_origin`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_PERFORMANCE_TIME_ORIGIN_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link PERFORMANCE_TIMEORIGIN} `performance.timeOrigin`
+ *
+ * @example 1776185678.886
+ */
+export const BROWSER_PERFORMANCE_TIME_ORIGIN = 'browser.performance.time_origin';
+
+/**
+ * Type for {@link BROWSER_PERFORMANCE_TIME_ORIGIN} browser.performance.time_origin
+ */
+export type BROWSER_PERFORMANCE_TIME_ORIGIN_TYPE = number;
+
 // Path: model/attributes/browser/browser__report__type.json
 
 /**
@@ -8246,6 +8290,52 @@ export const PARAMS_KEY = 'params.<key>';
  */
 export type PARAMS_KEY_TYPE = string;
 
+// Path: model/attributes/performance/performance__activationStart.json
+
+/**
+ * The time between initiating a navigation to a page and the browser activating the page `performance.activationStart`
+ *
+ * Attribute Value Type: `number` {@link PERFORMANCE_ACTIVATIONSTART_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START} `browser.performance.navigation.activation_start`
+ *
+ * @deprecated Use {@link BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START} (browser.performance.navigation.activation_start) instead - The activationStart is now recorded as the browser.performance.navigation.activation_start attribute.
+ * @example 1.983
+ */
+export const PERFORMANCE_ACTIVATIONSTART = 'performance.activationStart';
+
+/**
+ * Type for {@link PERFORMANCE_ACTIVATIONSTART} performance.activationStart
+ */
+export type PERFORMANCE_ACTIVATIONSTART_TYPE = number;
+
+// Path: model/attributes/performance/performance__timeOrigin.json
+
+/**
+ * The browser's performance.timeOrigin timestamp representing the time when the pageload was initiated `performance.timeOrigin`
+ *
+ * Attribute Value Type: `number` {@link PERFORMANCE_TIMEORIGIN_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link BROWSER_PERFORMANCE_TIME_ORIGIN} `browser.performance.time_origin`
+ *
+ * @deprecated Use {@link BROWSER_PERFORMANCE_TIME_ORIGIN} (browser.performance.time_origin) instead - The timeOrigin is now recorded as the browser.performance.time_origin attribute.
+ * @example 1776185678.886
+ */
+export const PERFORMANCE_TIMEORIGIN = 'performance.timeOrigin';
+
+/**
+ * Type for {@link PERFORMANCE_TIMEORIGIN} performance.timeOrigin
+ */
+export type PERFORMANCE_TIMEORIGIN_TYPE = number;
+
 // Path: model/attributes/previous_route.json
 
 /**
@@ -11536,6 +11626,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [APP_VITALS_TTID_VALUE]: 'double',
   [BLOCKED_MAIN_THREAD]: 'boolean',
   [BROWSER_NAME]: 'string',
+  [BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START]: 'double',
+  [BROWSER_PERFORMANCE_TIME_ORIGIN]: 'double',
   [BROWSER_REPORT_TYPE]: 'string',
   [BROWSER_SCRIPT_INVOKER]: 'string',
   [BROWSER_SCRIPT_INVOKER_TYPE]: 'string',
@@ -11867,6 +11959,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [OTEL_STATUS_CODE]: 'string',
   [OTEL_STATUS_DESCRIPTION]: 'string',
   [PARAMS_KEY]: 'string',
+  [PERFORMANCE_ACTIVATIONSTART]: 'double',
+  [PERFORMANCE_TIMEORIGIN]: 'double',
   [PREVIOUS_ROUTE]: 'string',
   [PROCESS_EXECUTABLE_NAME]: 'string',
   [PROCESS_PID]: 'integer',
@@ -12083,6 +12177,8 @@ export type AttributeName =
   | typeof APP_VITALS_TTID_VALUE
   | typeof BLOCKED_MAIN_THREAD
   | typeof BROWSER_NAME
+  | typeof BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START
+  | typeof BROWSER_PERFORMANCE_TIME_ORIGIN
   | typeof BROWSER_REPORT_TYPE
   | typeof BROWSER_SCRIPT_INVOKER
   | typeof BROWSER_SCRIPT_INVOKER_TYPE
@@ -12414,6 +12510,8 @@ export type AttributeName =
   | typeof OTEL_STATUS_CODE
   | typeof OTEL_STATUS_DESCRIPTION
   | typeof PARAMS_KEY
+  | typeof PERFORMANCE_ACTIVATIONSTART
+  | typeof PERFORMANCE_TIMEORIGIN
   | typeof PREVIOUS_ROUTE
   | typeof PROCESS_EXECUTABLE_NAME
   | typeof PROCESS_PID
@@ -13434,6 +13532,34 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'Chrome',
     aliases: [SENTRY_BROWSER_NAME],
     changelog: [{ version: '0.1.0', prs: [127, 139] }, { version: '0.0.0' }],
+  },
+  [BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START]: {
+    brief: 'The time between initiating a navigation to a page and the browser activating the page',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1.983,
+    aliases: [PERFORMANCE_ACTIVATIONSTART],
+    sdks: ['javascript-browser'],
+    changelog: [
+      { version: 'next', prs: [321], description: 'Added browser.performance.navigation.activation_start attribute' },
+    ],
+  },
+  [BROWSER_PERFORMANCE_TIME_ORIGIN]: {
+    brief: "The browser's performance.timeOrigin timestamp representing the time when the pageload was initiated",
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1776185678.886,
+    aliases: [PERFORMANCE_TIMEORIGIN],
+    sdks: ['javascript-browser'],
+    changelog: [
+      { version: 'next', prs: [321], description: 'Added browser.performance.time_origin attribute attribute' },
+    ],
   },
   [BROWSER_REPORT_TYPE]: {
     brief: 'A browser report sent via reporting API..',
@@ -17549,6 +17675,38 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [URL_PATH_PARAMETER_KEY],
     changelog: [{ version: '0.1.0', prs: [103] }],
   },
+  [PERFORMANCE_ACTIVATIONSTART]: {
+    brief: 'The time between initiating a navigation to a page and the browser activating the page',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1.983,
+    deprecation: {
+      replacement: 'browser.performance.navigation.activation_start',
+      reason: 'The activationStart is now recorded as the browser.performance.navigation.activation_start attribute.',
+    },
+    aliases: [BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START],
+    sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [321], description: 'Added performance.activationStart attribute' }],
+  },
+  [PERFORMANCE_TIMEORIGIN]: {
+    brief: "The browser's performance.timeOrigin timestamp representing the time when the pageload was initiated",
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1776185678.886,
+    deprecation: {
+      replacement: 'browser.performance.time_origin',
+      reason: 'The timeOrigin is now recorded as the browser.performance.time_origin attribute.',
+    },
+    aliases: [BROWSER_PERFORMANCE_TIME_ORIGIN],
+    sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [321], description: 'Added performance.timeOrigin attribute' }],
+  },
   [PREVIOUS_ROUTE]: {
     brief: 'Also used by mobile SDKs to indicate the previous route in the application.',
     type: 'string',
@@ -19319,6 +19477,8 @@ export type Attributes = {
   [APP_VITALS_TTID_VALUE]?: APP_VITALS_TTID_VALUE_TYPE;
   [BLOCKED_MAIN_THREAD]?: BLOCKED_MAIN_THREAD_TYPE;
   [BROWSER_NAME]?: BROWSER_NAME_TYPE;
+  [BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START]?: BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START_TYPE;
+  [BROWSER_PERFORMANCE_TIME_ORIGIN]?: BROWSER_PERFORMANCE_TIME_ORIGIN_TYPE;
   [BROWSER_REPORT_TYPE]?: BROWSER_REPORT_TYPE_TYPE;
   [BROWSER_SCRIPT_INVOKER]?: BROWSER_SCRIPT_INVOKER_TYPE;
   [BROWSER_SCRIPT_INVOKER_TYPE]?: BROWSER_SCRIPT_INVOKER_TYPE_TYPE;
@@ -19650,6 +19810,8 @@ export type Attributes = {
   [OTEL_STATUS_CODE]?: OTEL_STATUS_CODE_TYPE;
   [OTEL_STATUS_DESCRIPTION]?: OTEL_STATUS_DESCRIPTION_TYPE;
   [PARAMS_KEY]?: PARAMS_KEY_TYPE;
+  [PERFORMANCE_ACTIVATIONSTART]?: PERFORMANCE_ACTIVATIONSTART_TYPE;
+  [PERFORMANCE_TIMEORIGIN]?: PERFORMANCE_TIMEORIGIN_TYPE;
   [PREVIOUS_ROUTE]?: PREVIOUS_ROUTE_TYPE;
   [PROCESS_EXECUTABLE_NAME]?: PROCESS_EXECUTABLE_NAME_TYPE;
   [PROCESS_PID]?: PROCESS_PID_TYPE;

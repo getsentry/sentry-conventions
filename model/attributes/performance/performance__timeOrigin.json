@@ -1,0 +1,24 @@
+{
+  "key": "performance.timeOrigin",
+  "brief": "The browser's performance.timeOrigin timestamp representing the time when the pageload was initiated",
+  "type": "double",
+  "pii": {
+    "key": "maybe"
+  },
+  "alias": ["browser.performance.time_origin"],
+  "is_in_otel": false,
+  "example": 1776185678.886,
+  "sdks": ["javascript-browser"],
+  "deprecation": {
+    "reason": "The timeOrigin is now recorded as the browser.performance.time_origin attribute.",
+    "replacement": "browser.performance.time_origin",
+    "_status": "backfill"
+  },
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [321],
+      "description": "Added performance.timeOrigin attribute"
+    }
+  ]
+}
