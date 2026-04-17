@@ -1389,6 +1389,26 @@ export const BROWSER_VERSION = 'browser.version';
  */
 export type BROWSER_VERSION_TYPE = string;
 
+// Path: model/attributes/browser/browser__web_vital__cls__report_event.json
+
+/**
+ * The event that caused the SDK to report CLS (pagehide or navigation) `browser.web_vital.cls.report_event`
+ *
+ * Attribute Value Type: `string` {@link BROWSER_WEB_VITAL_CLS_REPORT_EVENT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "navigation"
+ */
+export const BROWSER_WEB_VITAL_CLS_REPORT_EVENT = 'browser.web_vital.cls.report_event';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_CLS_REPORT_EVENT} browser.web_vital.cls.report_event
+ */
+export type BROWSER_WEB_VITAL_CLS_REPORT_EVENT_TYPE = string;
+
 // Path: model/attributes/browser/browser__web_vital__cls__source__[key].json
 
 /**
@@ -1588,6 +1608,26 @@ export const BROWSER_WEB_VITAL_LCP_RENDER_TIME = 'browser.web_vital.lcp.render_t
  * Type for {@link BROWSER_WEB_VITAL_LCP_RENDER_TIME} browser.web_vital.lcp.render_time
  */
 export type BROWSER_WEB_VITAL_LCP_RENDER_TIME_TYPE = number;
+
+// Path: model/attributes/browser/browser__web_vital__lcp__report_event.json
+
+/**
+ * The event that caused the SDK to report LCP (pagehide or navigation) `browser.web_vital.lcp.report_event`
+ *
+ * Attribute Value Type: `string` {@link BROWSER_WEB_VITAL_LCP_REPORT_EVENT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "pagehide"
+ */
+export const BROWSER_WEB_VITAL_LCP_REPORT_EVENT = 'browser.web_vital.lcp.report_event';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_LCP_REPORT_EVENT} browser.web_vital.lcp.report_event
+ */
+export type BROWSER_WEB_VITAL_LCP_REPORT_EVENT_TYPE = string;
 
 // Path: model/attributes/browser/browser__web_vital__lcp__size.json
 
@@ -9392,6 +9432,27 @@ export const SENTRY_REPLAY_IS_BUFFERING = 'sentry.replay_is_buffering';
  */
 export type SENTRY_REPLAY_IS_BUFFERING_TYPE = boolean;
 
+// Path: model/attributes/sentry/sentry__report_event.json
+
+/**
+ * (Deprecated) The event that caused the SDK to report CLS or LCP (pagehide or navigation) `sentry.report_event`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_REPORT_EVENT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @deprecated  - The report event is now recorded as a browser.web_vital.lcp.report_event or browser.web_vital.cls.report_event attribute. No backfill required.
+ * @example "pagehide"
+ */
+export const SENTRY_REPORT_EVENT = 'sentry.report_event';
+
+/**
+ * Type for {@link SENTRY_REPORT_EVENT} sentry.report_event
+ */
+export type SENTRY_REPORT_EVENT_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__sdk__integrations.json
 
 /**
@@ -11480,6 +11541,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [BROWSER_SCRIPT_INVOKER_TYPE]: 'string',
   [BROWSER_SCRIPT_SOURCE_CHAR_POSITION]: 'integer',
   [BROWSER_VERSION]: 'string',
+  [BROWSER_WEB_VITAL_CLS_REPORT_EVENT]: 'string',
   [BROWSER_WEB_VITAL_CLS_SOURCE_KEY]: 'string',
   [BROWSER_WEB_VITAL_CLS_VALUE]: 'double',
   [BROWSER_WEB_VITAL_FCP_VALUE]: 'double',
@@ -11489,6 +11551,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [BROWSER_WEB_VITAL_LCP_ID]: 'string',
   [BROWSER_WEB_VITAL_LCP_LOAD_TIME]: 'integer',
   [BROWSER_WEB_VITAL_LCP_RENDER_TIME]: 'integer',
+  [BROWSER_WEB_VITAL_LCP_REPORT_EVENT]: 'string',
   [BROWSER_WEB_VITAL_LCP_SIZE]: 'integer',
   [BROWSER_WEB_VITAL_LCP_URL]: 'string',
   [BROWSER_WEB_VITAL_LCP_VALUE]: 'double',
@@ -11862,6 +11925,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_RELEASE]: 'string',
   [SENTRY_REPLAY_ID]: 'string',
   [SENTRY_REPLAY_IS_BUFFERING]: 'boolean',
+  [SENTRY_REPORT_EVENT]: 'string',
   [SENTRY_SDK_INTEGRATIONS]: 'string[]',
   [SENTRY_SDK_NAME]: 'string',
   [SENTRY_SDK_VERSION]: 'string',
@@ -12024,6 +12088,7 @@ export type AttributeName =
   | typeof BROWSER_SCRIPT_INVOKER_TYPE
   | typeof BROWSER_SCRIPT_SOURCE_CHAR_POSITION
   | typeof BROWSER_VERSION
+  | typeof BROWSER_WEB_VITAL_CLS_REPORT_EVENT
   | typeof BROWSER_WEB_VITAL_CLS_SOURCE_KEY
   | typeof BROWSER_WEB_VITAL_CLS_VALUE
   | typeof BROWSER_WEB_VITAL_FCP_VALUE
@@ -12033,6 +12098,7 @@ export type AttributeName =
   | typeof BROWSER_WEB_VITAL_LCP_ID
   | typeof BROWSER_WEB_VITAL_LCP_LOAD_TIME
   | typeof BROWSER_WEB_VITAL_LCP_RENDER_TIME
+  | typeof BROWSER_WEB_VITAL_LCP_REPORT_EVENT
   | typeof BROWSER_WEB_VITAL_LCP_SIZE
   | typeof BROWSER_WEB_VITAL_LCP_URL
   | typeof BROWSER_WEB_VITAL_LCP_VALUE
@@ -12406,6 +12472,7 @@ export type AttributeName =
   | typeof SENTRY_RELEASE
   | typeof SENTRY_REPLAY_ID
   | typeof SENTRY_REPLAY_IS_BUFFERING
+  | typeof SENTRY_REPORT_EVENT
   | typeof SENTRY_SDK_INTEGRATIONS
   | typeof SENTRY_SDK_NAME
   | typeof SENTRY_SDK_VERSION
@@ -13422,6 +13489,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [SENTRY_BROWSER_VERSION],
     changelog: [{ version: '0.1.0', prs: [59, 127, 139] }],
   },
+  [BROWSER_WEB_VITAL_CLS_REPORT_EVENT]: {
+    brief: 'The event that caused the SDK to report CLS (pagehide or navigation)',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'navigation',
+    sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [319], description: 'Added browser.web_vital.cls.report_event attribute' }],
+  },
   [BROWSER_WEB_VITAL_CLS_SOURCE_KEY]: {
     brief: 'The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N',
     type: 'string',
@@ -13530,6 +13608,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [LCP_RENDERTIME],
     sdks: ['javascript-browser'],
     changelog: [{ version: 'next', prs: [233] }],
+  },
+  [BROWSER_WEB_VITAL_LCP_REPORT_EVENT]: {
+    brief: 'The event that caused the SDK to report LCP (pagehide or navigation)',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'pagehide',
+    sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [319], description: 'Added browser.web_vital.lcp.report_event attribute' }],
   },
   [BROWSER_WEB_VITAL_LCP_SIZE]: {
     brief: 'The size of the largest contentful paint element',
@@ -18096,6 +18185,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: true,
     changelog: [{ version: '0.3.0', prs: [185] }],
   },
+  [SENTRY_REPORT_EVENT]: {
+    brief: '(Deprecated) The event that caused the SDK to report CLS or LCP (pagehide or navigation)',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'pagehide',
+    deprecation: {
+      reason:
+        'The report event is now recorded as a browser.web_vital.lcp.report_event or browser.web_vital.cls.report_event attribute. No backfill required.',
+    },
+    sdks: ['javascript-browser'],
+    changelog: [{ version: 'next', prs: [320], description: 'Added sentry.report_event attribute' }],
+  },
   [SENTRY_SDK_INTEGRATIONS]: {
     brief:
       'A list of names identifying enabled integrations. The list shouldhave all enabled integrations, including default integrations. Defaultintegrations are included because different SDK releases may contain differentdefault integrations.',
@@ -19220,6 +19324,7 @@ export type Attributes = {
   [BROWSER_SCRIPT_INVOKER_TYPE]?: BROWSER_SCRIPT_INVOKER_TYPE_TYPE;
   [BROWSER_SCRIPT_SOURCE_CHAR_POSITION]?: BROWSER_SCRIPT_SOURCE_CHAR_POSITION_TYPE;
   [BROWSER_VERSION]?: BROWSER_VERSION_TYPE;
+  [BROWSER_WEB_VITAL_CLS_REPORT_EVENT]?: BROWSER_WEB_VITAL_CLS_REPORT_EVENT_TYPE;
   [BROWSER_WEB_VITAL_CLS_SOURCE_KEY]?: BROWSER_WEB_VITAL_CLS_SOURCE_KEY_TYPE;
   [BROWSER_WEB_VITAL_CLS_VALUE]?: BROWSER_WEB_VITAL_CLS_VALUE_TYPE;
   [BROWSER_WEB_VITAL_FCP_VALUE]?: BROWSER_WEB_VITAL_FCP_VALUE_TYPE;
@@ -19229,6 +19334,7 @@ export type Attributes = {
   [BROWSER_WEB_VITAL_LCP_ID]?: BROWSER_WEB_VITAL_LCP_ID_TYPE;
   [BROWSER_WEB_VITAL_LCP_LOAD_TIME]?: BROWSER_WEB_VITAL_LCP_LOAD_TIME_TYPE;
   [BROWSER_WEB_VITAL_LCP_RENDER_TIME]?: BROWSER_WEB_VITAL_LCP_RENDER_TIME_TYPE;
+  [BROWSER_WEB_VITAL_LCP_REPORT_EVENT]?: BROWSER_WEB_VITAL_LCP_REPORT_EVENT_TYPE;
   [BROWSER_WEB_VITAL_LCP_SIZE]?: BROWSER_WEB_VITAL_LCP_SIZE_TYPE;
   [BROWSER_WEB_VITAL_LCP_URL]?: BROWSER_WEB_VITAL_LCP_URL_TYPE;
   [BROWSER_WEB_VITAL_LCP_VALUE]?: BROWSER_WEB_VITAL_LCP_VALUE_TYPE;
@@ -19602,6 +19708,7 @@ export type Attributes = {
   [SENTRY_RELEASE]?: SENTRY_RELEASE_TYPE;
   [SENTRY_REPLAY_ID]?: SENTRY_REPLAY_ID_TYPE;
   [SENTRY_REPLAY_IS_BUFFERING]?: SENTRY_REPLAY_IS_BUFFERING_TYPE;
+  [SENTRY_REPORT_EVENT]?: SENTRY_REPORT_EVENT_TYPE;
   [SENTRY_SDK_INTEGRATIONS]?: SENTRY_SDK_INTEGRATIONS_TYPE;
   [SENTRY_SDK_NAME]?: SENTRY_SDK_NAME_TYPE;
   [SENTRY_SDK_VERSION]?: SENTRY_SDK_VERSION_TYPE;

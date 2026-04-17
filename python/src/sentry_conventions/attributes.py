@@ -227,6 +227,7 @@ class _AttributeNamesMeta(type):
         "ROUTE",
         "SENTRY_BROWSER_NAME",
         "SENTRY_BROWSER_VERSION",
+        "SENTRY_REPORT_EVENT",
         "_SENTRY_SEGMENT_ID",
         "SENTRY_SOURCE",
         "SENTRY_TRACE_PARENT_SPAN_ID",
@@ -986,6 +987,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "120.0.6099.130"
     """
 
+    # Path: model/attributes/browser/browser__web_vital__cls__report_event.json
+    BROWSER_WEB_VITAL_CLS_REPORT_EVENT: Literal[
+        "browser.web_vital.cls.report_event"
+    ] = "browser.web_vital.cls.report_event"
+    """The event that caused the SDK to report CLS (pagehide or navigation)
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "navigation"
+    """
+
     # Path: model/attributes/browser/browser__web_vital__cls__source__[key].json
     BROWSER_WEB_VITAL_CLS_SOURCE_KEY: Literal["browser.web_vital.cls.source.<key>"] = (
         "browser.web_vital.cls.source.<key>"
@@ -1102,6 +1115,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Aliases: lcp.renderTime
     Example: 1685
+    """
+
+    # Path: model/attributes/browser/browser__web_vital__lcp__report_event.json
+    BROWSER_WEB_VITAL_LCP_REPORT_EVENT: Literal[
+        "browser.web_vital.lcp.report_event"
+    ] = "browser.web_vital.lcp.report_event"
+    """The event that caused the SDK to report LCP (pagehide or navigation)
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "pagehide"
     """
 
     # Path: model/attributes/browser/browser__web_vital__lcp__size.json
@@ -5273,6 +5298,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: true
     """
 
+    # Path: model/attributes/sentry/sentry__report_event.json
+    SENTRY_REPORT_EVENT: Literal["sentry.report_event"] = "sentry.report_event"
+    """(Deprecated) The event that caused the SDK to report CLS or LCP (pagehide or navigation)
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    DEPRECATED: No replacement at this time - The report event is now recorded as a browser.web_vital.lcp.report_event or browser.web_vital.cls.report_event attribute. No backfill required.
+    Example: "pagehide"
+    """
+
     # Path: model/attributes/sentry/sentry__sdk__integrations.json
     SENTRY_SDK_INTEGRATIONS: Literal["sentry.sdk.integrations"] = (
         "sentry.sdk.integrations"
@@ -7299,6 +7335,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[59, 127, 139]),
         ],
     ),
+    "browser.web_vital.cls.report_event": AttributeMetadata(
+        brief="The event that caused the SDK to report CLS (pagehide or navigation)",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="navigation",
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[319],
+                description="Added browser.web_vital.cls.report_event attribute",
+            ),
+        ],
+    ),
     "browser.web_vital.cls.source.<key>": AttributeMetadata(
         brief="The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N",
         type=AttributeType.STRING,
@@ -7414,6 +7465,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(version="next", prs=[233]),
+        ],
+    ),
+    "browser.web_vital.lcp.report_event": AttributeMetadata(
+        brief="The event that caused the SDK to report LCP (pagehide or navigation)",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="pagehide",
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[319],
+                description="Added browser.web_vital.lcp.report_event attribute",
+            ),
         ],
     ),
     "browser.web_vital.lcp.size": AttributeMetadata(
@@ -12039,6 +12105,24 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.3.0", prs=[185]),
         ],
     ),
+    "sentry.report_event": AttributeMetadata(
+        brief="(Deprecated) The event that caused the SDK to report CLS or LCP (pagehide or navigation)",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="pagehide",
+        deprecation=DeprecationInfo(
+            reason="The report event is now recorded as a browser.web_vital.lcp.report_event or browser.web_vital.cls.report_event attribute. No backfill required."
+        ),
+        sdks=["javascript-browser"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[320],
+                description="Added sentry.report_event attribute",
+            ),
+        ],
+    ),
     "sentry.sdk.integrations": AttributeMetadata(
         brief="A list of names identifying enabled integrations. The list shouldhave all enabled integrations, including default integrations. Defaultintegrations are included because different SDK releases may contain differentdefault integrations.",
         type=AttributeType.STRING_ARRAY,
@@ -13215,6 +13299,7 @@ Attributes = TypedDict(
         "browser.script.invoker_type": str,
         "browser.script.source_char_position": int,
         "browser.version": str,
+        "browser.web_vital.cls.report_event": str,
         "browser.web_vital.cls.source.<key>": str,
         "browser.web_vital.cls.value": float,
         "browser.web_vital.fcp.value": float,
@@ -13224,6 +13309,7 @@ Attributes = TypedDict(
         "browser.web_vital.lcp.id": str,
         "browser.web_vital.lcp.load_time": int,
         "browser.web_vital.lcp.render_time": int,
+        "browser.web_vital.lcp.report_event": str,
         "browser.web_vital.lcp.size": int,
         "browser.web_vital.lcp.url": str,
         "browser.web_vital.lcp.value": float,
@@ -13597,6 +13683,7 @@ Attributes = TypedDict(
         "sentry.release": str,
         "sentry.replay_id": str,
         "sentry.replay_is_buffering": bool,
+        "sentry.report_event": str,
         "sentry.sdk.integrations": List[str],
         "sentry.sdk.name": str,
         "sentry.sdk.version": str,
