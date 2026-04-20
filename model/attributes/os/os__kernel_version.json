@@ -1,0 +1,17 @@
+{
+  "key": "os.kernel_version",
+  "brief": "An independent kernel version string. Typically the entire output of the `uname` syscall.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "20.2.0",
+  "changelog": [
+    {
+      "version": "0.5.0",
+      "prs": [301],
+      "description": "Added os.kernel_version attribute"
+    }
+  ]
+}

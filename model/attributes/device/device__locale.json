@@ -1,0 +1,17 @@
+{
+  "key": "device.locale",
+  "brief": "The locale of the device.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "en-US",
+  "changelog": [
+    {
+      "version": "0.5.0",
+      "prs": [303],
+      "description": "Added device.locale attribute"
+    }
+  ]
+}

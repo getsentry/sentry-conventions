@@ -2,7 +2,7 @@
 
 Running this repo requires the usage of [volta](https://volta.sh/). See instructions on installing volta on their documentation [here](https://docs.volta.sh/guide/getting-started). The repo requires Node v22 or higher to run.
 
-# Setup
+## Setup
 
 To install required dependencies, run `yarn install`.
 
@@ -10,9 +10,34 @@ To install required dependencies, run `yarn install`.
 yarn install
 ```
 
-# Usage
+## Process
+
+Before attributes are sent from SDKs, or attribute values or definitions change, the attributes MUST be defined or updated in this repo. If the convention you need doesn't exist yet, open a PR there to propose it. Only after the convention has been merged, ship it in an SDK. This ensures all SDKs use consistent naming and semantics.
+
+The merge process for sentry-conventions PRs:
+
+1. Open a PR with the proposed convention change ([Adding an Attribute](#adding-a-new-attribute)).
+2. Get an approval from at least one code owner. 
+3. Wait for at least 3 business days after the first approval to give other code owners a chance to review.
+   This grace period exists because attribute names, once shipped in an SDK release, are effectively permanent. If a bad name gets adopted by even one SDK, fixing it requires a deprecation cycle across the SDK(s) that shipped it and the Sentry backend. 
+   There is no urgency exception. 
+   If a name feels wrong, raise it during review, not after.
+4. Merge your PR (alternatively, code owners may merge it after review)
 
 ## Adding a new attribute
+
+> [!IMPORTANT] 
+> ### OTel Alignment
+>
+> Before proposing a new attribute, check the [OpenTelemetry semantic conventions registry](https://opentelemetry.io/docs/specs/semconv/registry/attributes/).     
+>   
+> If OTel already defines the attribute:
+> - Use the OTel name and type. Set `is_in_otel: true`. 
+>  - Do not create a Sentry-specific synonym!. Diverging from OTel for the same concept creates more confusion and work than value.
+> 
+> If OTel doesn't define it, or the concept is Sentry-specific, set `is_in_otel: false`.                                                       
+> 
+> When in doubt, prefer OTel alignment. Sentry conventions should only extend OTel, not diverge from it.
 
 Run `yarn run create:attribute` to create a new attribute. This will prompt you to enter information about the attribute. There are two modes:
 
@@ -48,21 +73,34 @@ Remember to run `yarn run generate` after editing or creating a `name` conventio
 
 ## Code and Docs Generation
 
-After you edit an attribute or add a new one, you should run `yarn run generate` to generate and format the code and docs, which are generated from the json files stored in the `model` directory.
+After you edit an attribute or add a new one, run `yarn run generate` to generate and format the code, which are generated from the json files stored in the `model` directory.
 
-# Policies
+Docs are generated on every PR merge.
 
-## Attributes
+The generated code packages can be published to package repositories (currently npm and pypi) at any time by creating a new release:
+
+1. Trigger the [Release](https://github.com/getsentry/sentry-conventions/actions/workflows/release.yml) Github workflow. Define the version to be released. Usually, assuming any attribute changes are part of the release, that's a new minor version. We're intentionally on major version `0.x` to allow breaking changes in minor releases for now.
+2. Head over to [`getsentry/publish`](https://github.com/getsentry/publish/issues) and wait for a new issue to appear. Ensure the changes look correct and all CI checks have passed
+3. Add the `accept` label. A bot will start the release workflow. Wait for the release to complete.
+
+## Policies
+
+### Attributes
 
 Here's a list of policies that any newly added attributes MUST follow. Most of these are automatically enforced by the test suite.
+
 - The attribute MUST be namespaced. Example: `nextjs.function_id`, not `function_id`.
+- Use dots as separators for namespaces and logical grouoing, not underscores (`http.request.method`, not `http_request_method`)
+- Use `snake_case` for multi-word names (`browser.web_vital.ttfb.request_time`, not `browser.webVital.ttfb.request-time`)
+- Namespace first (`db.system`, not `system.db`)
 - The `pii` field in the attribute definition MUST be `maybe` or `true` (if the attribute can contain sensitive data). It SHOULD be `false` only if scrubbing the attribute value for PII would potentially break product features. For example, `sentry.replay_id` should have `pii` set to `false`.
 - When an attribute is added that deprecates an old one:
   - The old one should be marked as deprecated, and it MUST point to the new one using the `deprecation.replacement` field.
   - For both the new and the old attribute, and any existing aliases of the old attribute, the new and old names MUST be added to the `aliases` list.
   - The deprecation status of the old one SHOULD be set to `backfill` for at least 90 days, and then set to `normalize`.
+- Prefer keeping names stable. Renames require deprecation cycles across all SDKs that adopted the attribute!
 
-# Testing
+## Testing
 
 This repo uses [Vitest](https://vitest.dev/) for testing. To run the tests, run `yarn test`.
 The tests enforce logical correctness as well as policies that the model should follow.
@@ -71,7 +109,7 @@ The tests enforce logical correctness as well as policies that the model should 
 yarn test
 ```
 
-# Linting
+## Linting
 
 This repo uses [Biome](https://biome.sh/) and other platform-specific tools for linting. To run the linting, run `yarn lint`.
 

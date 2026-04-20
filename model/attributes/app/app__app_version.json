@@ -1,0 +1,24 @@
+{
+  "key": "app.app_version",
+  "brief": "Human readable application version, as it appears on the platform.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
+  "example": "1.0.0",
+  "alias": ["app.version"],
+  "deprecation": {
+    "replacement": "app.version",
+    "reason": "Deprecated in favor of app.version",
+    "_status": "backfill"
+  },
+  "changelog": [
+    {
+      "version": "0.5.0",
+      "prs": [296],
+      "description": "Added and deprecated app.app_version in favor of app.version"
+    }
+  ]
+}

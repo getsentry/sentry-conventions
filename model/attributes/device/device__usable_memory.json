@@ -1,0 +1,17 @@
+{
+  "key": "device.usable_memory",
+  "brief": "Memory usable for the app in bytes.",
+  "type": "integer",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": 2147483648,
+  "changelog": [
+    {
+      "version": "0.5.0",
+      "prs": [303],
+      "description": "Added device.usable_memory attribute"
+    }
+  ]
+}

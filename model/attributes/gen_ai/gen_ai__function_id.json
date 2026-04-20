@@ -1,0 +1,17 @@
+{
+  "key": "gen_ai.function_id",
+  "brief": "Framework-specific tracing label for the execution of a function or other unit of execution in a generative AI system.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "my-awesome-function",
+  "changelog": [
+    {
+      "version": "0.5.0",
+      "prs": [308],
+      "description": "Added gen_ai.function_id attribute"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "key": "app.vitals.ttid.value",
+  "brief": "The duration of time to initial display in milliseconds",
+  "type": "double",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "alias": ["time_to_initial_display"],
+  "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
+  "example": 1234.56,
+  "changelog": [
+    {
+      "version": "0.5.0",
+      "prs": [313],
+      "description": "Added app.vitals.ttid.value attribute"
+    }
+  ]
+}

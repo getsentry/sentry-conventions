@@ -1,0 +1,17 @@
+{
+  "key": "gen_ai.context.window_size",
+  "brief": "The maximum context window size supported by the model for this generation.",
+  "type": "integer",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": 128000,
+  "changelog": [
+    {
+      "version": "0.5.0",
+      "prs": [315],
+      "description": "Added gen_ai.context.window_size attribute"
+    }
+  ]
+}

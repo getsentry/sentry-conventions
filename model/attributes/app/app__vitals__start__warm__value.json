@@ -1,0 +1,19 @@
+{
+  "key": "app.vitals.start.warm.value",
+  "brief": "The duration of a warm app start in milliseconds",
+  "type": "double",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "alias": ["app_start_warm"],
+  "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
+  "example": 1234.56,
+  "changelog": [
+    {
+      "version": "0.5.0",
+      "prs": [313],
+      "description": "Added app.vitals.start.warm.value attribute"
+    }
+  ]
+}

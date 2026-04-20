@@ -6,12 +6,12 @@
     "key": "maybe"
   },
   "is_in_otel": false,
-  "example": 2500.0,
+  "example": 2500,
   "sdks": ["javascript-browser"],
   "alias": ["lcp"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.5.0",
       "prs": [229],
       "description": "Added browser.web_vital.lcp.value attribute"
     }

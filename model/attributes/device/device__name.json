@@ -1,0 +1,17 @@
+{
+  "key": "device.name",
+  "brief": "The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "localhost",
+  "changelog": [
+    {
+      "version": "0.5.0",
+      "prs": [303],
+      "description": "Added device.name attribute"
+    }
+  ]
+}

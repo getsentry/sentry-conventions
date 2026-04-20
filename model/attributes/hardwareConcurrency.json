@@ -16,13 +16,8 @@
   },
   "changelog": [
     {
-      "version": "next",
-      "prs": [300],
-      "description": "Updated deprecation replacement from device.cpu.logical_core_count to device.processor_count"
-    },
-    {
-      "version": "next",
-      "prs": [281],
+      "version": "0.5.0",
+      "prs": [281, 300],
       "description": "Added and deprecated attribute to document JS SDK's current behaviour"
     }
   ]

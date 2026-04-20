@@ -1,0 +1,24 @@
+{
+  "key": "performance.activationStart",
+  "brief": "The time between initiating a navigation to a page and the browser activating the page",
+  "type": "double",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": 1.983,
+  "sdks": ["javascript-browser"],
+  "alias": ["browser.performance.navigation.activation_start"],
+  "deprecation": {
+    "reason": "The activationStart is now recorded as the browser.performance.navigation.activation_start attribute.",
+    "replacement": "browser.performance.navigation.activation_start",
+    "_status": "backfill"
+  },
+  "changelog": [
+    {
+      "version": "0.5.0",
+      "prs": [321],
+      "description": "Added performance.activationStart attribute"
+    }
+  ]
+}

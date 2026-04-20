@@ -1,0 +1,17 @@
+{
+  "key": "device.timezone",
+  "brief": "The timezone of the device.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "Europe/Vienna",
+  "changelog": [
+    {
+      "version": "0.5.0",
+      "prs": [303],
+      "description": "Added device.timezone attribute"
+    }
+  ]
+}

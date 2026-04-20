@@ -8,9 +8,10 @@
   "is_in_otel": false,
   "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
   "example": "2025-01-01T00:00:00.000Z",
+  "alias": ["app.app_start_time"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.5.0",
       "prs": [296],
       "description": "Added app.start_time attribute"
     }

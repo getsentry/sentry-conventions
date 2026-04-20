@@ -1,0 +1,17 @@
+{
+  "key": "device.low_memory",
+  "brief": "Whether the device was low on memory.",
+  "type": "boolean",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": false,
+  "changelog": [
+    {
+      "version": "0.5.0",
+      "prs": [303],
+      "description": "Added device.low_memory attribute"
+    }
+  ]
+}

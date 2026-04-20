@@ -1,0 +1,24 @@
+{
+  "key": "app.app_build",
+  "brief": "Internal build identifier, as it appears on the platform.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
+  "example": "1",
+  "alias": ["app.build"],
+  "deprecation": {
+    "replacement": "app.build",
+    "reason": "Deprecated in favor of app.build",
+    "_status": "backfill"
+  },
+  "changelog": [
+    {
+      "version": "0.5.0",
+      "prs": [296],
+      "description": "Added and deprecated app.app_build in favor of app.build"
+    }
+  ]
+}

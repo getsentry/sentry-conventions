@@ -1,0 +1,24 @@
+{
+  "key": "app.app_identifier",
+  "brief": "Version-independent application identifier, often a dotted bundle ID.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
+  "example": "com.example.myapp",
+  "alias": ["app.identifier"],
+  "deprecation": {
+    "replacement": "app.identifier",
+    "reason": "Deprecated in favor of app.identifier",
+    "_status": "backfill"
+  },
+  "changelog": [
+    {
+      "version": "0.5.0",
+      "prs": [296],
+      "description": "Added and deprecated app.app_identifier in favor of app.identifier"
+    }
+  ]
+}

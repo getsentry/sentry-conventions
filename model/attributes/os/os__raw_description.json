@@ -1,0 +1,17 @@
+{
+  "key": "os.raw_description",
+  "brief": "An unprocessed description string obtained by the operating system. For some well-known runtimes, Sentry will attempt to parse `name` and `version` from this string, if they are not explicitly given.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "Ubuntu 22.04.4 LTS (Jammy Jellyfish)",
+  "changelog": [
+    {
+      "version": "0.5.0",
+      "prs": [301],
+      "description": "Added os.raw_description attribute"
+    }
+  ]
+}

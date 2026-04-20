@@ -1,0 +1,17 @@
+{
+  "key": "device.manufacturer",
+  "brief": "The manufacturer of the device.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": true,
+  "example": "Google",
+  "changelog": [
+    {
+      "version": "0.5.0",
+      "prs": [303],
+      "description": "Added device.manufacturer attribute"
+    }
+  ]
+}

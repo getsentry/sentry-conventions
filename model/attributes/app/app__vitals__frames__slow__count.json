@@ -1,0 +1,19 @@
+{
+  "key": "app.vitals.frames.slow.count",
+  "brief": "The number of slow frames rendered during the lifetime of the span.",
+  "type": "integer",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "alias": ["frames.slow"],
+  "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
+  "example": 1,
+  "changelog": [
+    {
+      "version": "0.5.0",
+      "prs": [313],
+      "description": "Added app.vitals.frames.slow.count to replace frames.slow"
+    }
+  ]
+}

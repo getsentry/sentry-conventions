@@ -8,9 +8,10 @@
   "is_in_otel": false,
   "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
   "example": "My App",
+  "alias": ["app.app_name"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.5.0",
       "prs": [296],
       "description": "Added app.name attribute"
     }

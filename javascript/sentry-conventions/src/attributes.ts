@@ -78,7 +78,7 @@ export type AI_DOCUMENTS_TYPE = Array<string>;
  *
  * Aliases: {@link GEN_AI_RESPONSE_FINISH_REASONS} `gen_ai.response.finish_reasons`
  *
- * @deprecated Use {@link GEN_AI_RESPONSE_FINISH_REASON} (gen_ai.response.finish_reason) instead
+ * @deprecated Use {@link GEN_AI_RESPONSE_FINISH_REASONS} (gen_ai.response.finish_reasons) instead
  * @example "COMPLETE"
  */
 export const AI_FINISH_REASON = 'ai.finish_reason';
@@ -733,6 +733,121 @@ export const AI_WARNINGS = 'ai.warnings';
  */
 export type AI_WARNINGS_TYPE = Array<string>;
 
+// Path: model/attributes/app/app__app_build.json
+
+/**
+ * Internal build identifier, as it appears on the platform. `app.app_build`
+ *
+ * Attribute Value Type: `string` {@link APP_APP_BUILD_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link APP_BUILD} `app.build`
+ *
+ * @deprecated Use {@link APP_BUILD} (app.build) instead - Deprecated in favor of app.build
+ * @example "1"
+ */
+export const APP_APP_BUILD = 'app.app_build';
+
+/**
+ * Type for {@link APP_APP_BUILD} app.app_build
+ */
+export type APP_APP_BUILD_TYPE = string;
+
+// Path: model/attributes/app/app__app_identifier.json
+
+/**
+ * Version-independent application identifier, often a dotted bundle ID. `app.app_identifier`
+ *
+ * Attribute Value Type: `string` {@link APP_APP_IDENTIFIER_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link APP_IDENTIFIER} `app.identifier`
+ *
+ * @deprecated Use {@link APP_IDENTIFIER} (app.identifier) instead - Deprecated in favor of app.identifier
+ * @example "com.example.myapp"
+ */
+export const APP_APP_IDENTIFIER = 'app.app_identifier';
+
+/**
+ * Type for {@link APP_APP_IDENTIFIER} app.app_identifier
+ */
+export type APP_APP_IDENTIFIER_TYPE = string;
+
+// Path: model/attributes/app/app__app_name.json
+
+/**
+ * Human readable application name, as it appears on the platform. `app.app_name`
+ *
+ * Attribute Value Type: `string` {@link APP_APP_NAME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link APP_NAME} `app.name`
+ *
+ * @deprecated Use {@link APP_NAME} (app.name) instead - Deprecated in favor of app.name
+ * @example "My App"
+ */
+export const APP_APP_NAME = 'app.app_name';
+
+/**
+ * Type for {@link APP_APP_NAME} app.app_name
+ */
+export type APP_APP_NAME_TYPE = string;
+
+// Path: model/attributes/app/app__app_start_time.json
+
+/**
+ * Formatted UTC timestamp when the user started the application. `app.app_start_time`
+ *
+ * Attribute Value Type: `string` {@link APP_APP_START_TIME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link APP_START_TIME} `app.start_time`
+ *
+ * @deprecated Use {@link APP_START_TIME} (app.start_time) instead - Deprecated in favor of app.start_time
+ * @example "2025-01-01T00:00:00.000Z"
+ */
+export const APP_APP_START_TIME = 'app.app_start_time';
+
+/**
+ * Type for {@link APP_APP_START_TIME} app.app_start_time
+ */
+export type APP_APP_START_TIME_TYPE = string;
+
+// Path: model/attributes/app/app__app_version.json
+
+/**
+ * Human readable application version, as it appears on the platform. `app.app_version`
+ *
+ * Attribute Value Type: `string` {@link APP_APP_VERSION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link APP_VERSION} `app.version`
+ *
+ * @deprecated Use {@link APP_VERSION} (app.version) instead - Deprecated in favor of app.version
+ * @example "1.0.0"
+ */
+export const APP_APP_VERSION = 'app.app_version';
+
+/**
+ * Type for {@link APP_APP_VERSION} app.app_version
+ */
+export type APP_APP_VERSION_TYPE = string;
+
 // Path: model/attributes/app/app__build.json
 
 /**
@@ -743,6 +858,8 @@ export type AI_WARNINGS_TYPE = Array<string>;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link APP_APP_BUILD} `app.app_build`
  *
  * @example "1"
  */
@@ -764,6 +881,8 @@ export type APP_BUILD_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link APP_APP_IDENTIFIER} `app.app_identifier`
+ *
  * @example "com.example.myapp"
  */
 export const APP_IDENTIFIER = 'app.identifier';
@@ -780,7 +899,7 @@ export type APP_IDENTIFIER_TYPE = string;
  *
  * Attribute Value Type: `boolean` {@link APP_IN_FOREGROUND_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -804,6 +923,8 @@ export type APP_IN_FOREGROUND_TYPE = boolean;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link APP_APP_NAME} `app.app_name`
+ *
  * @example "My App"
  */
 export const APP_NAME = 'app.name';
@@ -812,6 +933,29 @@ export const APP_NAME = 'app.name';
  * Type for {@link APP_NAME} app.name
  */
 export type APP_NAME_TYPE = string;
+
+// Path: model/attributes/app_start_cold.json
+
+/**
+ * The duration of a cold app start in milliseconds `app_start_cold`
+ *
+ * Attribute Value Type: `number` {@link APP_START_COLD_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link APP_VITALS_START_COLD_VALUE} `app.vitals.start.cold.value`
+ *
+ * @deprecated Use {@link APP_VITALS_START_COLD_VALUE} (app.vitals.start.cold.value) instead - Replaced by app.vitals.start.cold.value to align with the app.vitals.* namespace for mobile performance attributes
+ * @example 1234.56
+ */
+export const APP_START_COLD = 'app_start_cold';
+
+/**
+ * Type for {@link APP_START_COLD} app_start_cold
+ */
+export type APP_START_COLD_TYPE = number;
 
 // Path: model/attributes/app/app__start_time.json
 
@@ -823,6 +967,8 @@ export type APP_NAME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link APP_APP_START_TIME} `app.app_start_time`
  *
  * @example "2025-01-01T00:00:00.000Z"
  */
@@ -844,6 +990,9 @@ export type APP_START_TIME_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link APP_VITALS_START_TYPE} `app.vitals.start.type`
+ *
+ * @deprecated Use {@link APP_VITALS_START_TYPE} (app.vitals.start.type) instead - Replaced by app.vitals.start.type to align with the app.vitals.* namespace for mobile performance attributes
  * @example "cold"
  */
 export const APP_START_TYPE = 'app_start_type';
@@ -852,6 +1001,29 @@ export const APP_START_TYPE = 'app_start_type';
  * Type for {@link APP_START_TYPE} app_start_type
  */
 export type APP_START_TYPE_TYPE = string;
+
+// Path: model/attributes/app_start_warm.json
+
+/**
+ * The duration of a warm app start in milliseconds `app_start_warm`
+ *
+ * Attribute Value Type: `number` {@link APP_START_WARM_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link APP_VITALS_START_WARM_VALUE} `app.vitals.start.warm.value`
+ *
+ * @deprecated Use {@link APP_VITALS_START_WARM_VALUE} (app.vitals.start.warm.value) instead - Replaced by app.vitals.start.warm.value to align with the app.vitals.* namespace for mobile performance attributes
+ * @example 1234.56
+ */
+export const APP_START_WARM = 'app_start_warm';
+
+/**
+ * Type for {@link APP_START_WARM} app_start_warm
+ */
+export type APP_START_WARM_TYPE = number;
 
 // Path: model/attributes/app/app__version.json
 
@@ -864,6 +1036,8 @@ export type APP_START_TYPE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link APP_APP_VERSION} `app.app_version`
+ *
  * @example "1.0.0"
  */
 export const APP_VERSION = 'app.version';
@@ -872,6 +1046,204 @@ export const APP_VERSION = 'app.version';
  * Type for {@link APP_VERSION} app.version
  */
 export type APP_VERSION_TYPE = string;
+
+// Path: model/attributes/app/app__vitals__frames__delay__value.json
+
+/**
+ * The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/). `app.vitals.frames.delay.value`
+ *
+ * Attribute Value Type: `number` {@link APP_VITALS_FRAMES_DELAY_VALUE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link FRAMES_DELAY} `frames.delay`
+ *
+ * @example 5
+ */
+export const APP_VITALS_FRAMES_DELAY_VALUE = 'app.vitals.frames.delay.value';
+
+/**
+ * Type for {@link APP_VITALS_FRAMES_DELAY_VALUE} app.vitals.frames.delay.value
+ */
+export type APP_VITALS_FRAMES_DELAY_VALUE_TYPE = number;
+
+// Path: model/attributes/app/app__vitals__frames__frozen__count.json
+
+/**
+ * The number of frozen frames rendered during the lifetime of the span. `app.vitals.frames.frozen.count`
+ *
+ * Attribute Value Type: `number` {@link APP_VITALS_FRAMES_FROZEN_COUNT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link FRAMES_FROZEN} `frames.frozen`
+ *
+ * @example 3
+ */
+export const APP_VITALS_FRAMES_FROZEN_COUNT = 'app.vitals.frames.frozen.count';
+
+/**
+ * Type for {@link APP_VITALS_FRAMES_FROZEN_COUNT} app.vitals.frames.frozen.count
+ */
+export type APP_VITALS_FRAMES_FROZEN_COUNT_TYPE = number;
+
+// Path: model/attributes/app/app__vitals__frames__slow__count.json
+
+/**
+ * The number of slow frames rendered during the lifetime of the span. `app.vitals.frames.slow.count`
+ *
+ * Attribute Value Type: `number` {@link APP_VITALS_FRAMES_SLOW_COUNT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link FRAMES_SLOW} `frames.slow`
+ *
+ * @example 1
+ */
+export const APP_VITALS_FRAMES_SLOW_COUNT = 'app.vitals.frames.slow.count';
+
+/**
+ * Type for {@link APP_VITALS_FRAMES_SLOW_COUNT} app.vitals.frames.slow.count
+ */
+export type APP_VITALS_FRAMES_SLOW_COUNT_TYPE = number;
+
+// Path: model/attributes/app/app__vitals__frames__total__count.json
+
+/**
+ * The number of total frames rendered during the lifetime of the span. `app.vitals.frames.total.count`
+ *
+ * Attribute Value Type: `number` {@link APP_VITALS_FRAMES_TOTAL_COUNT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link FRAMES_TOTAL} `frames.total`
+ *
+ * @example 60
+ */
+export const APP_VITALS_FRAMES_TOTAL_COUNT = 'app.vitals.frames.total.count';
+
+/**
+ * Type for {@link APP_VITALS_FRAMES_TOTAL_COUNT} app.vitals.frames.total.count
+ */
+export type APP_VITALS_FRAMES_TOTAL_COUNT_TYPE = number;
+
+// Path: model/attributes/app/app__vitals__start__cold__value.json
+
+/**
+ * The duration of a cold app start in milliseconds `app.vitals.start.cold.value`
+ *
+ * Attribute Value Type: `number` {@link APP_VITALS_START_COLD_VALUE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link APP_START_COLD} `app_start_cold`
+ *
+ * @example 1234.56
+ */
+export const APP_VITALS_START_COLD_VALUE = 'app.vitals.start.cold.value';
+
+/**
+ * Type for {@link APP_VITALS_START_COLD_VALUE} app.vitals.start.cold.value
+ */
+export type APP_VITALS_START_COLD_VALUE_TYPE = number;
+
+// Path: model/attributes/app/app__vitals__start__type.json
+
+/**
+ * The type of app start, for example `cold` or `warm` `app.vitals.start.type`
+ *
+ * Attribute Value Type: `string` {@link APP_VITALS_START_TYPE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link APP_START_TYPE} `app_start_type`
+ *
+ * @example "cold"
+ */
+export const APP_VITALS_START_TYPE = 'app.vitals.start.type';
+
+/**
+ * Type for {@link APP_VITALS_START_TYPE} app.vitals.start.type
+ */
+export type APP_VITALS_START_TYPE_TYPE = string;
+
+// Path: model/attributes/app/app__vitals__start__warm__value.json
+
+/**
+ * The duration of a warm app start in milliseconds `app.vitals.start.warm.value`
+ *
+ * Attribute Value Type: `number` {@link APP_VITALS_START_WARM_VALUE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link APP_START_WARM} `app_start_warm`
+ *
+ * @example 1234.56
+ */
+export const APP_VITALS_START_WARM_VALUE = 'app.vitals.start.warm.value';
+
+/**
+ * Type for {@link APP_VITALS_START_WARM_VALUE} app.vitals.start.warm.value
+ */
+export type APP_VITALS_START_WARM_VALUE_TYPE = number;
+
+// Path: model/attributes/app/app__vitals__ttfd__value.json
+
+/**
+ * The duration of time to full display in milliseconds `app.vitals.ttfd.value`
+ *
+ * Attribute Value Type: `number` {@link APP_VITALS_TTFD_VALUE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link TIME_TO_FULL_DISPLAY} `time_to_full_display`
+ *
+ * @example 1234.56
+ */
+export const APP_VITALS_TTFD_VALUE = 'app.vitals.ttfd.value';
+
+/**
+ * Type for {@link APP_VITALS_TTFD_VALUE} app.vitals.ttfd.value
+ */
+export type APP_VITALS_TTFD_VALUE_TYPE = number;
+
+// Path: model/attributes/app/app__vitals__ttid__value.json
+
+/**
+ * The duration of time to initial display in milliseconds `app.vitals.ttid.value`
+ *
+ * Attribute Value Type: `number` {@link APP_VITALS_TTID_VALUE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link TIME_TO_INITIAL_DISPLAY} `time_to_initial_display`
+ *
+ * @example 1234.56
+ */
+export const APP_VITALS_TTID_VALUE = 'app.vitals.ttid.value';
+
+/**
+ * Type for {@link APP_VITALS_TTID_VALUE} app.vitals.ttid.value
+ */
+export type APP_VITALS_TTID_VALUE_TYPE = number;
 
 // Path: model/attributes/blocked_main_thread.json
 
@@ -914,6 +1286,50 @@ export const BROWSER_NAME = 'browser.name';
  * Type for {@link BROWSER_NAME} browser.name
  */
 export type BROWSER_NAME_TYPE = string;
+
+// Path: model/attributes/browser/browser__performance__navigation__activation_start.json
+
+/**
+ * The time between initiating a navigation to a page and the browser activating the page `browser.performance.navigation.activation_start`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link PERFORMANCE_ACTIVATIONSTART} `performance.activationStart`
+ *
+ * @example 1.983
+ */
+export const BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START = 'browser.performance.navigation.activation_start';
+
+/**
+ * Type for {@link BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START} browser.performance.navigation.activation_start
+ */
+export type BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START_TYPE = number;
+
+// Path: model/attributes/browser/browser__performance__time_origin.json
+
+/**
+ * The browser's performance.timeOrigin timestamp representing the time when the pageload was initiated `browser.performance.time_origin`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_PERFORMANCE_TIME_ORIGIN_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link PERFORMANCE_TIMEORIGIN} `performance.timeOrigin`
+ *
+ * @example 1776185678.886
+ */
+export const BROWSER_PERFORMANCE_TIME_ORIGIN = 'browser.performance.time_origin';
+
+/**
+ * Type for {@link BROWSER_PERFORMANCE_TIME_ORIGIN} browser.performance.time_origin
+ */
+export type BROWSER_PERFORMANCE_TIME_ORIGIN_TYPE = number;
 
 // Path: model/attributes/browser/browser__report__type.json
 
@@ -1016,6 +1432,26 @@ export const BROWSER_VERSION = 'browser.version';
  * Type for {@link BROWSER_VERSION} browser.version
  */
 export type BROWSER_VERSION_TYPE = string;
+
+// Path: model/attributes/browser/browser__web_vital__cls__report_event.json
+
+/**
+ * The event that caused the SDK to report CLS (pagehide or navigation) `browser.web_vital.cls.report_event`
+ *
+ * Attribute Value Type: `string` {@link BROWSER_WEB_VITAL_CLS_REPORT_EVENT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "navigation"
+ */
+export const BROWSER_WEB_VITAL_CLS_REPORT_EVENT = 'browser.web_vital.cls.report_event';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_CLS_REPORT_EVENT} browser.web_vital.cls.report_event
+ */
+export type BROWSER_WEB_VITAL_CLS_REPORT_EVENT_TYPE = string;
 
 // Path: model/attributes/browser/browser__web_vital__cls__source__[key].json
 
@@ -1216,6 +1652,26 @@ export const BROWSER_WEB_VITAL_LCP_RENDER_TIME = 'browser.web_vital.lcp.render_t
  * Type for {@link BROWSER_WEB_VITAL_LCP_RENDER_TIME} browser.web_vital.lcp.render_time
  */
 export type BROWSER_WEB_VITAL_LCP_RENDER_TIME_TYPE = number;
+
+// Path: model/attributes/browser/browser__web_vital__lcp__report_event.json
+
+/**
+ * The event that caused the SDK to report LCP (pagehide or navigation) `browser.web_vital.lcp.report_event`
+ *
+ * Attribute Value Type: `string` {@link BROWSER_WEB_VITAL_LCP_REPORT_EVENT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "pagehide"
+ */
+export const BROWSER_WEB_VITAL_LCP_REPORT_EVENT = 'browser.web_vital.lcp.report_event';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_LCP_REPORT_EVENT} browser.web_vital.lcp.report_event
+ */
+export type BROWSER_WEB_VITAL_LCP_REPORT_EVENT_TYPE = string;
 
 // Path: model/attributes/browser/browser__web_vital__lcp__size.json
 
@@ -1784,7 +2240,7 @@ export type CODE_NAMESPACE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link NETWORK_CONNECTION_TYPE} `network.connection.type`
+ * Aliases: {@link NETWORK_CONNECTION_TYPE} `network.connection.type`, {@link DEVICE_CONNECTION_TYPE} `device.connection_type`
  *
  * @deprecated Use {@link NETWORK_CONNECTION_TYPE} (network.connection.type) instead - Old namespace-less attribute, to be replaced with network.connection.type for span-first future
  * @example "wifi"
@@ -1938,6 +2394,26 @@ export const DB_COLLECTION_NAME = 'db.collection.name';
  * Type for {@link DB_COLLECTION_NAME} db.collection.name
  */
 export type DB_COLLECTION_NAME_TYPE = string;
+
+// Path: model/attributes/db/db__driver__name.json
+
+/**
+ * The name of the driver used for the database connection. `db.driver.name`
+ *
+ * Attribute Value Type: `string` {@link DB_DRIVER_NAME_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "psycopg2"
+ */
+export const DB_DRIVER_NAME = 'db.driver.name';
+
+/**
+ * Type for {@link DB_DRIVER_NAME} db.driver.name
+ */
+export type DB_DRIVER_NAME_TYPE = string;
 
 // Path: model/attributes/db/db__name.json
 
@@ -2265,6 +2741,86 @@ export const DEVICEMEMORY = 'deviceMemory';
  */
 export type DEVICEMEMORY_TYPE = string;
 
+// Path: model/attributes/device/device__archs.json
+
+/**
+ * The CPU architectures of the device. `device.archs`
+ *
+ * Attribute Value Type: `Array<string>` {@link DEVICE_ARCHS_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example ["arm64-v8a","armeabi-v7a","armeabi"]
+ */
+export const DEVICE_ARCHS = 'device.archs';
+
+/**
+ * Type for {@link DEVICE_ARCHS} device.archs
+ */
+export type DEVICE_ARCHS_TYPE = Array<string>;
+
+// Path: model/attributes/device/device__battery_level.json
+
+/**
+ * The battery level of the device as a percentage (0-100). `device.battery_level`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_BATTERY_LEVEL_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 100
+ */
+export const DEVICE_BATTERY_LEVEL = 'device.battery_level';
+
+/**
+ * Type for {@link DEVICE_BATTERY_LEVEL} device.battery_level
+ */
+export type DEVICE_BATTERY_LEVEL_TYPE = number;
+
+// Path: model/attributes/device/device__battery_temperature.json
+
+/**
+ * The battery temperature of the device in Celsius. `device.battery_temperature`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_BATTERY_TEMPERATURE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 25
+ */
+export const DEVICE_BATTERY_TEMPERATURE = 'device.battery_temperature';
+
+/**
+ * Type for {@link DEVICE_BATTERY_TEMPERATURE} device.battery_temperature
+ */
+export type DEVICE_BATTERY_TEMPERATURE_TYPE = number;
+
+// Path: model/attributes/device/device__boot_time.json
+
+/**
+ * A formatted UTC timestamp when the system was booted. `device.boot_time`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_BOOT_TIME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "2018-02-08T12:52:12Z"
+ */
+export const DEVICE_BOOT_TIME = 'device.boot_time';
+
+/**
+ * Type for {@link DEVICE_BOOT_TIME} device.boot_time
+ */
+export type DEVICE_BOOT_TIME_TYPE = string;
+
 // Path: model/attributes/device/device__brand.json
 
 /**
@@ -2285,6 +2841,46 @@ export const DEVICE_BRAND = 'device.brand';
  */
 export type DEVICE_BRAND_TYPE = string;
 
+// Path: model/attributes/device/device__charging.json
+
+/**
+ * Whether the device was charging or not. `device.charging`
+ *
+ * Attribute Value Type: `boolean` {@link DEVICE_CHARGING_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example false
+ */
+export const DEVICE_CHARGING = 'device.charging';
+
+/**
+ * Type for {@link DEVICE_CHARGING} device.charging
+ */
+export type DEVICE_CHARGING_TYPE = boolean;
+
+// Path: model/attributes/device/device__chipset.json
+
+/**
+ * The chipset of the device. `device.chipset`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_CHIPSET_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "Qualcomm SM8550"
+ */
+export const DEVICE_CHIPSET = 'device.chipset';
+
+/**
+ * Type for {@link DEVICE_CHIPSET} device.chipset
+ */
+export type DEVICE_CHIPSET_TYPE = string;
+
 // Path: model/attributes/device/device__class.json
 
 /**
@@ -2304,6 +2900,89 @@ export const DEVICE_CLASS = 'device.class';
  * Type for {@link DEVICE_CLASS} device.class
  */
 export type DEVICE_CLASS_TYPE = string;
+
+// Path: model/attributes/device/device__connection_type.json
+
+/**
+ * The internet connection type currently being used by the device. `device.connection_type`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_CONNECTION_TYPE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link NETWORK_CONNECTION_TYPE} `network.connection.type`, {@link CONNECTIONTYPE} `connectionType`
+ *
+ * @deprecated Use {@link NETWORK_CONNECTION_TYPE} (network.connection.type) instead - This attribute is being deprecated in favor of network.connection.type
+ * @example "wifi"
+ */
+export const DEVICE_CONNECTION_TYPE = 'device.connection_type';
+
+/**
+ * Type for {@link DEVICE_CONNECTION_TYPE} device.connection_type
+ */
+export type DEVICE_CONNECTION_TYPE_TYPE = string;
+
+// Path: model/attributes/device/device__cpu_description.json
+
+/**
+ * A description of the CPU of the device. `device.cpu_description`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_CPU_DESCRIPTION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "Intel(R) Core(TM)2 Quad CPU Q6600 @ 2.40GHz"
+ */
+export const DEVICE_CPU_DESCRIPTION = 'device.cpu_description';
+
+/**
+ * Type for {@link DEVICE_CPU_DESCRIPTION} device.cpu_description
+ */
+export type DEVICE_CPU_DESCRIPTION_TYPE = string;
+
+// Path: model/attributes/device/device__external_free_storage.json
+
+/**
+ * External storage free size in bytes. `device.external_free_storage`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_EXTERNAL_FREE_STORAGE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 67108864000
+ */
+export const DEVICE_EXTERNAL_FREE_STORAGE = 'device.external_free_storage';
+
+/**
+ * Type for {@link DEVICE_EXTERNAL_FREE_STORAGE} device.external_free_storage
+ */
+export type DEVICE_EXTERNAL_FREE_STORAGE_TYPE = number;
+
+// Path: model/attributes/device/device__external_storage_size.json
+
+/**
+ * External storage total size in bytes. `device.external_storage_size`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_EXTERNAL_STORAGE_SIZE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 134217728000
+ */
+export const DEVICE_EXTERNAL_STORAGE_SIZE = 'device.external_storage_size';
+
+/**
+ * Type for {@link DEVICE_EXTERNAL_STORAGE_SIZE} device.external_storage_size
+ */
+export type DEVICE_EXTERNAL_STORAGE_SIZE_TYPE = number;
 
 // Path: model/attributes/device/device__family.json
 
@@ -2345,6 +3024,86 @@ export const DEVICE_FREE_MEMORY = 'device.free_memory';
  */
 export type DEVICE_FREE_MEMORY_TYPE = number;
 
+// Path: model/attributes/device/device__free_storage.json
+
+/**
+ * Free device storage in bytes. `device.free_storage`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_FREE_STORAGE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 107374182400
+ */
+export const DEVICE_FREE_STORAGE = 'device.free_storage';
+
+/**
+ * Type for {@link DEVICE_FREE_STORAGE} device.free_storage
+ */
+export type DEVICE_FREE_STORAGE_TYPE = number;
+
+// Path: model/attributes/device/device__id.json
+
+/**
+ * Unique device identifier. `device.id`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_ID_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+ */
+export const DEVICE_ID = 'device.id';
+
+/**
+ * Type for {@link DEVICE_ID} device.id
+ */
+export type DEVICE_ID_TYPE = string;
+
+// Path: model/attributes/device/device__locale.json
+
+/**
+ * The locale of the device. `device.locale`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_LOCALE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "en-US"
+ */
+export const DEVICE_LOCALE = 'device.locale';
+
+/**
+ * Type for {@link DEVICE_LOCALE} device.locale
+ */
+export type DEVICE_LOCALE_TYPE = string;
+
+// Path: model/attributes/device/device__low_memory.json
+
+/**
+ * Whether the device was low on memory. `device.low_memory`
+ *
+ * Attribute Value Type: `boolean` {@link DEVICE_LOW_MEMORY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example false
+ */
+export const DEVICE_LOW_MEMORY = 'device.low_memory';
+
+/**
+ * Type for {@link DEVICE_LOW_MEMORY} device.low_memory
+ */
+export type DEVICE_LOW_MEMORY_TYPE = boolean;
+
 // Path: model/attributes/device/device__low_power_mode.json
 
 /**
@@ -2364,6 +3123,26 @@ export const DEVICE_LOW_POWER_MODE = 'device.low_power_mode';
  * Type for {@link DEVICE_LOW_POWER_MODE} device.low_power_mode
  */
 export type DEVICE_LOW_POWER_MODE_TYPE = boolean;
+
+// Path: model/attributes/device/device__manufacturer.json
+
+/**
+ * The manufacturer of the device. `device.manufacturer`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_MANUFACTURER_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "Google"
+ */
+export const DEVICE_MANUFACTURER = 'device.manufacturer';
+
+/**
+ * Type for {@link DEVICE_MANUFACTURER} device.manufacturer
+ */
+export type DEVICE_MANUFACTURER_TYPE = string;
 
 // Path: model/attributes/device/device__memory__estimated_capacity.json
 
@@ -2447,6 +3226,66 @@ export const DEVICE_MODEL_ID = 'device.model_id';
  */
 export type DEVICE_MODEL_ID_TYPE = string;
 
+// Path: model/attributes/device/device__name.json
+
+/**
+ * The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname. `device.name`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_NAME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "localhost"
+ */
+export const DEVICE_NAME = 'device.name';
+
+/**
+ * Type for {@link DEVICE_NAME} device.name
+ */
+export type DEVICE_NAME_TYPE = string;
+
+// Path: model/attributes/device/device__online.json
+
+/**
+ * Whether the device was online or not. `device.online`
+ *
+ * Attribute Value Type: `boolean` {@link DEVICE_ONLINE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example true
+ */
+export const DEVICE_ONLINE = 'device.online';
+
+/**
+ * Type for {@link DEVICE_ONLINE} device.online
+ */
+export type DEVICE_ONLINE_TYPE = boolean;
+
+// Path: model/attributes/device/device__orientation.json
+
+/**
+ * The orientation of the device, either "portrait" or "landscape". `device.orientation`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_ORIENTATION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "portrait"
+ */
+export const DEVICE_ORIENTATION = 'device.orientation';
+
+/**
+ * Type for {@link DEVICE_ORIENTATION} device.orientation
+ */
+export type DEVICE_ORIENTATION_TYPE = string;
+
 // Path: model/attributes/device/device__processor_count.json
 
 /**
@@ -2469,6 +3308,106 @@ export const DEVICE_PROCESSOR_COUNT = 'device.processor_count';
  */
 export type DEVICE_PROCESSOR_COUNT_TYPE = number;
 
+// Path: model/attributes/device/device__processor_frequency.json
+
+/**
+ * Processor frequency in MHz. `device.processor_frequency`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_PROCESSOR_FREQUENCY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 2400
+ */
+export const DEVICE_PROCESSOR_FREQUENCY = 'device.processor_frequency';
+
+/**
+ * Type for {@link DEVICE_PROCESSOR_FREQUENCY} device.processor_frequency
+ */
+export type DEVICE_PROCESSOR_FREQUENCY_TYPE = number;
+
+// Path: model/attributes/device/device__screen_density.json
+
+/**
+ * The screen density of the device. `device.screen_density`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_SCREEN_DENSITY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 2.625
+ */
+export const DEVICE_SCREEN_DENSITY = 'device.screen_density';
+
+/**
+ * Type for {@link DEVICE_SCREEN_DENSITY} device.screen_density
+ */
+export type DEVICE_SCREEN_DENSITY_TYPE = number;
+
+// Path: model/attributes/device/device__screen_dpi.json
+
+/**
+ * The screen density in dots-per-inch (DPI) of the device. `device.screen_dpi`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_SCREEN_DPI_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 420
+ */
+export const DEVICE_SCREEN_DPI = 'device.screen_dpi';
+
+/**
+ * Type for {@link DEVICE_SCREEN_DPI} device.screen_dpi
+ */
+export type DEVICE_SCREEN_DPI_TYPE = number;
+
+// Path: model/attributes/device/device__screen_height_pixels.json
+
+/**
+ * The height of the device screen in pixels. `device.screen_height_pixels`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_SCREEN_HEIGHT_PIXELS_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 2400
+ */
+export const DEVICE_SCREEN_HEIGHT_PIXELS = 'device.screen_height_pixels';
+
+/**
+ * Type for {@link DEVICE_SCREEN_HEIGHT_PIXELS} device.screen_height_pixels
+ */
+export type DEVICE_SCREEN_HEIGHT_PIXELS_TYPE = number;
+
+// Path: model/attributes/device/device__screen_width_pixels.json
+
+/**
+ * The width of the device screen in pixels. `device.screen_width_pixels`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_SCREEN_WIDTH_PIXELS_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 1080
+ */
+export const DEVICE_SCREEN_WIDTH_PIXELS = 'device.screen_width_pixels';
+
+/**
+ * Type for {@link DEVICE_SCREEN_WIDTH_PIXELS} device.screen_width_pixels
+ */
+export type DEVICE_SCREEN_WIDTH_PIXELS_TYPE = number;
+
 // Path: model/attributes/device/device__simulator.json
 
 /**
@@ -2488,6 +3427,86 @@ export const DEVICE_SIMULATOR = 'device.simulator';
  * Type for {@link DEVICE_SIMULATOR} device.simulator
  */
 export type DEVICE_SIMULATOR_TYPE = boolean;
+
+// Path: model/attributes/device/device__storage_size.json
+
+/**
+ * Total device storage in bytes. `device.storage_size`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_STORAGE_SIZE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 274877906944
+ */
+export const DEVICE_STORAGE_SIZE = 'device.storage_size';
+
+/**
+ * Type for {@link DEVICE_STORAGE_SIZE} device.storage_size
+ */
+export type DEVICE_STORAGE_SIZE_TYPE = number;
+
+// Path: model/attributes/device/device__thermal_state.json
+
+/**
+ * The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum: `nominal`, `fair`, `serious`, or `critical`. `device.thermal_state`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_THERMAL_STATE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "nominal"
+ */
+export const DEVICE_THERMAL_STATE = 'device.thermal_state';
+
+/**
+ * Type for {@link DEVICE_THERMAL_STATE} device.thermal_state
+ */
+export type DEVICE_THERMAL_STATE_TYPE = string;
+
+// Path: model/attributes/device/device__timezone.json
+
+/**
+ * The timezone of the device. `device.timezone`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_TIMEZONE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "Europe/Vienna"
+ */
+export const DEVICE_TIMEZONE = 'device.timezone';
+
+/**
+ * Type for {@link DEVICE_TIMEZONE} device.timezone
+ */
+export type DEVICE_TIMEZONE_TYPE = string;
+
+// Path: model/attributes/device/device__usable_memory.json
+
+/**
+ * Memory usable for the app in bytes. `device.usable_memory`
+ *
+ * Attribute Value Type: `number` {@link DEVICE_USABLE_MEMORY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 2147483648
+ */
+export const DEVICE_USABLE_MEMORY = 'device.usable_memory';
+
+/**
+ * Type for {@link DEVICE_USABLE_MEMORY} device.usable_memory
+ */
+export type DEVICE_USABLE_MEMORY_TYPE = number;
 
 // Path: model/attributes/effectiveConnectionType.json
 
@@ -2834,6 +3853,9 @@ export type FP_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link APP_VITALS_FRAMES_DELAY_VALUE} `app.vitals.frames.delay.value`
+ *
+ * @deprecated Use {@link APP_VITALS_FRAMES_DELAY_VALUE} (app.vitals.frames.delay.value) instead - Replaced by app.vitals.frames.delay.value to align with the app.vitals.* namespace for mobile performance attributes
  * @example 5
  */
 export const FRAMES_DELAY = 'frames.delay';
@@ -2854,6 +3876,9 @@ export type FRAMES_DELAY_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link APP_VITALS_FRAMES_FROZEN_COUNT} `app.vitals.frames.frozen.count`
+ *
+ * @deprecated Use {@link APP_VITALS_FRAMES_FROZEN_COUNT} (app.vitals.frames.frozen.count) instead - Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes
  * @example 3
  */
 export const FRAMES_FROZEN = 'frames.frozen';
@@ -2874,6 +3899,9 @@ export type FRAMES_FROZEN_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link APP_VITALS_FRAMES_SLOW_COUNT} `app.vitals.frames.slow.count`
+ *
+ * @deprecated Use {@link APP_VITALS_FRAMES_SLOW_COUNT} (app.vitals.frames.slow.count) instead - Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes
  * @example 1
  */
 export const FRAMES_SLOW = 'frames.slow';
@@ -2894,6 +3922,9 @@ export type FRAMES_SLOW_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link APP_VITALS_FRAMES_TOTAL_COUNT} `app.vitals.frames.total.count`
+ *
+ * @deprecated Use {@link APP_VITALS_FRAMES_TOTAL_COUNT} (app.vitals.frames.total.count) instead - Replaced by app.vitals.frames.total.count to align with the app.vitals.* namespace for mobile performance attributes
  * @example 60
  */
 export const FRAMES_TOTAL = 'frames.total';
@@ -2943,6 +3974,46 @@ export const GEN_AI_AGENT_NAME = 'gen_ai.agent.name';
  * Type for {@link GEN_AI_AGENT_NAME} gen_ai.agent.name
  */
 export type GEN_AI_AGENT_NAME_TYPE = string;
+
+// Path: model/attributes/gen_ai/gen_ai__context__utilization.json
+
+/**
+ * The fraction of the model context window utilized by this generation. `gen_ai.context.utilization`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_CONTEXT_UTILIZATION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 0.75
+ */
+export const GEN_AI_CONTEXT_UTILIZATION = 'gen_ai.context.utilization';
+
+/**
+ * Type for {@link GEN_AI_CONTEXT_UTILIZATION} gen_ai.context.utilization
+ */
+export type GEN_AI_CONTEXT_UTILIZATION_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__context__window_size.json
+
+/**
+ * The maximum context window size supported by the model for this generation. `gen_ai.context.window_size`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_CONTEXT_WINDOW_SIZE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 128000
+ */
+export const GEN_AI_CONTEXT_WINDOW_SIZE = 'gen_ai.context.window_size';
+
+/**
+ * Type for {@link GEN_AI_CONTEXT_WINDOW_SIZE} gen_ai.context.window_size
+ */
+export type GEN_AI_CONTEXT_WINDOW_SIZE_TYPE = number;
 
 // Path: model/attributes/gen_ai/gen_ai__conversation__id.json
 
@@ -3045,6 +4116,26 @@ export const GEN_AI_EMBEDDINGS_INPUT = 'gen_ai.embeddings.input';
  * Type for {@link GEN_AI_EMBEDDINGS_INPUT} gen_ai.embeddings.input
  */
 export type GEN_AI_EMBEDDINGS_INPUT_TYPE = string;
+
+// Path: model/attributes/gen_ai/gen_ai__function_id.json
+
+/**
+ * Framework-specific tracing label for the execution of a function or other unit of execution in a generative AI system. `gen_ai.function_id`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_FUNCTION_ID_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "my-awesome-function"
+ */
+export const GEN_AI_FUNCTION_ID = 'gen_ai.function_id';
+
+/**
+ * Type for {@link GEN_AI_FUNCTION_ID} gen_ai.function_id
+ */
+export type GEN_AI_FUNCTION_ID_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__input__messages.json
 
@@ -3831,6 +4922,7 @@ export type GEN_AI_TOOL_OUTPUT_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  *
+ * @deprecated  - The gen_ai.tool.type attribute is deprecated and should no longer be set.
  * @example "function"
  */
 export const GEN_AI_TOOL_TYPE = 'gen_ai.tool.type';
@@ -6391,7 +7483,7 @@ export type NETWORK_CONNECTION_RTT_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link CONNECTIONTYPE} `connectionType`
+ * Aliases: {@link DEVICE_CONNECTION_TYPE} `device.connection_type`, {@link CONNECTIONTYPE} `connectionType`
  *
  * @example "wifi"
  */
@@ -6909,6 +8001,29 @@ export const NET_TRANSPORT = 'net.transport';
  */
 export type NET_TRANSPORT_TYPE = string;
 
+// Path: model/attributes/os/os__build.json
+
+/**
+ * The build ID of the operating system. `os.build`
+ *
+ * Attribute Value Type: `string` {@link OS_BUILD_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link OS_BUILD_ID} `os.build_id`
+ *
+ * @deprecated Use {@link OS_BUILD_ID} (os.build_id) instead
+ * @example "1234567890"
+ */
+export const OS_BUILD = 'os.build';
+
+/**
+ * Type for {@link OS_BUILD} os.build
+ */
+export type OS_BUILD_TYPE = string;
+
 // Path: model/attributes/os/os__build_id.json
 
 /**
@@ -6919,6 +8034,8 @@ export type NET_TRANSPORT_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ *
+ * Aliases: {@link OS_BUILD} `os.build`
  *
  * @example "1234567890"
  */
@@ -6949,6 +8066,26 @@ export const OS_DESCRIPTION = 'os.description';
  */
 export type OS_DESCRIPTION_TYPE = string;
 
+// Path: model/attributes/os/os__kernel_version.json
+
+/**
+ * An independent kernel version string. Typically the entire output of the `uname` syscall. `os.kernel_version`
+ *
+ * Attribute Value Type: `string` {@link OS_KERNEL_VERSION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "20.2.0"
+ */
+export const OS_KERNEL_VERSION = 'os.kernel_version';
+
+/**
+ * Type for {@link OS_KERNEL_VERSION} os.kernel_version
+ */
+export type OS_KERNEL_VERSION_TYPE = string;
+
 // Path: model/attributes/os/os__name.json
 
 /**
@@ -6968,6 +8105,66 @@ export const OS_NAME = 'os.name';
  * Type for {@link OS_NAME} os.name
  */
 export type OS_NAME_TYPE = string;
+
+// Path: model/attributes/os/os__raw_description.json
+
+/**
+ * An unprocessed description string obtained by the operating system. For some well-known runtimes, Sentry will attempt to parse `name` and `version` from this string, if they are not explicitly given. `os.raw_description`
+ *
+ * Attribute Value Type: `string` {@link OS_RAW_DESCRIPTION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "Ubuntu 22.04.4 LTS (Jammy Jellyfish)"
+ */
+export const OS_RAW_DESCRIPTION = 'os.raw_description';
+
+/**
+ * Type for {@link OS_RAW_DESCRIPTION} os.raw_description
+ */
+export type OS_RAW_DESCRIPTION_TYPE = string;
+
+// Path: model/attributes/os/os__rooted.json
+
+/**
+ * Whether the operating system has been jailbroken or rooted. `os.rooted`
+ *
+ * Attribute Value Type: `boolean` {@link OS_ROOTED_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example true
+ */
+export const OS_ROOTED = 'os.rooted';
+
+/**
+ * Type for {@link OS_ROOTED} os.rooted
+ */
+export type OS_ROOTED_TYPE = boolean;
+
+// Path: model/attributes/os/os__theme.json
+
+/**
+ * Whether the OS runs in dark mode or light mode. `os.theme`
+ *
+ * Attribute Value Type: `string` {@link OS_THEME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "dark"
+ */
+export const OS_THEME = 'os.theme';
+
+/**
+ * Type for {@link OS_THEME} os.theme
+ */
+export type OS_THEME_TYPE = string;
 
 // Path: model/attributes/os/os__type.json
 
@@ -7112,6 +8309,52 @@ export const PARAMS_KEY = 'params.<key>';
  * Type for {@link PARAMS_KEY} params.<key>
  */
 export type PARAMS_KEY_TYPE = string;
+
+// Path: model/attributes/performance/performance__activationStart.json
+
+/**
+ * The time between initiating a navigation to a page and the browser activating the page `performance.activationStart`
+ *
+ * Attribute Value Type: `number` {@link PERFORMANCE_ACTIVATIONSTART_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START} `browser.performance.navigation.activation_start`
+ *
+ * @deprecated Use {@link BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START} (browser.performance.navigation.activation_start) instead - The activationStart is now recorded as the browser.performance.navigation.activation_start attribute.
+ * @example 1.983
+ */
+export const PERFORMANCE_ACTIVATIONSTART = 'performance.activationStart';
+
+/**
+ * Type for {@link PERFORMANCE_ACTIVATIONSTART} performance.activationStart
+ */
+export type PERFORMANCE_ACTIVATIONSTART_TYPE = number;
+
+// Path: model/attributes/performance/performance__timeOrigin.json
+
+/**
+ * The browser's performance.timeOrigin timestamp representing the time when the pageload was initiated `performance.timeOrigin`
+ *
+ * Attribute Value Type: `number` {@link PERFORMANCE_TIMEORIGIN_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link BROWSER_PERFORMANCE_TIME_ORIGIN} `browser.performance.time_origin`
+ *
+ * @deprecated Use {@link BROWSER_PERFORMANCE_TIME_ORIGIN} (browser.performance.time_origin) instead - The timeOrigin is now recorded as the browser.performance.time_origin attribute.
+ * @example 1776185678.886
+ */
+export const PERFORMANCE_TIMEORIGIN = 'performance.timeOrigin';
+
+/**
+ * Type for {@link PERFORMANCE_TIMEORIGIN} performance.timeOrigin
+ */
+export type PERFORMANCE_TIMEORIGIN_TYPE = number;
 
 // Path: model/attributes/previous_route.json
 
@@ -7935,6 +9178,26 @@ export const SENTRY_KIND = 'sentry.kind';
  */
 export type SENTRY_KIND_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__main_thread.json
+
+/**
+ * Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs. `sentry.main_thread`
+ *
+ * Attribute Value Type: `boolean` {@link SENTRY_MAIN_THREAD_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example true
+ */
+export const SENTRY_MAIN_THREAD = 'sentry.main_thread';
+
+/**
+ * Type for {@link SENTRY_MAIN_THREAD} sentry.main_thread
+ */
+export type SENTRY_MAIN_THREAD_TYPE = boolean;
+
 // Path: model/attributes/sentry/sentry__message__parameter__[key].json
 
 /**
@@ -7974,6 +9237,26 @@ export const SENTRY_MESSAGE_TEMPLATE = 'sentry.message.template';
  * Type for {@link SENTRY_MESSAGE_TEMPLATE} sentry.message.template
  */
 export type SENTRY_MESSAGE_TEMPLATE_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__mobile.json
+
+/**
+ * Whether the application is using a mobile SDK. Computed by Relay and should not be set by SDKs. `sentry.mobile`
+ *
+ * Attribute Value Type: `boolean` {@link SENTRY_MOBILE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example true
+ */
+export const SENTRY_MOBILE = 'sentry.mobile';
+
+/**
+ * Type for {@link SENTRY_MOBILE} sentry.mobile
+ */
+export type SENTRY_MOBILE_TYPE = boolean;
 
 // Path: model/attributes/sentry/sentry__module__[key].json
 
@@ -8258,6 +9541,27 @@ export const SENTRY_REPLAY_IS_BUFFERING = 'sentry.replay_is_buffering';
  * Type for {@link SENTRY_REPLAY_IS_BUFFERING} sentry.replay_is_buffering
  */
 export type SENTRY_REPLAY_IS_BUFFERING_TYPE = boolean;
+
+// Path: model/attributes/sentry/sentry__report_event.json
+
+/**
+ * (Deprecated) The event that caused the SDK to report CLS or LCP (pagehide or navigation) `sentry.report_event`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_REPORT_EVENT_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @deprecated  - The report event is now recorded as a browser.web_vital.lcp.report_event or browser.web_vital.cls.report_event attribute. No backfill required.
+ * @example "pagehide"
+ */
+export const SENTRY_REPORT_EVENT = 'sentry.report_event';
+
+/**
+ * Type for {@link SENTRY_REPORT_EVENT} sentry.report_event
+ */
+export type SENTRY_REPORT_EVENT_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__sdk__integrations.json
 
@@ -8693,6 +9997,52 @@ export const TIMBER_TAG = 'timber.tag';
  * Type for {@link TIMBER_TAG} timber.tag
  */
 export type TIMBER_TAG_TYPE = string;
+
+// Path: model/attributes/time_to_full_display.json
+
+/**
+ * The duration of time to full display in milliseconds `time_to_full_display`
+ *
+ * Attribute Value Type: `number` {@link TIME_TO_FULL_DISPLAY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link APP_VITALS_TTFD_VALUE} `app.vitals.ttfd.value`
+ *
+ * @deprecated Use {@link APP_VITALS_TTFD_VALUE} (app.vitals.ttfd.value) instead - Replaced by app.vitals.ttfd.value to align with the app.vitals.* namespace for mobile performance attributes
+ * @example 1234.56
+ */
+export const TIME_TO_FULL_DISPLAY = 'time_to_full_display';
+
+/**
+ * Type for {@link TIME_TO_FULL_DISPLAY} time_to_full_display
+ */
+export type TIME_TO_FULL_DISPLAY_TYPE = number;
+
+// Path: model/attributes/time_to_initial_display.json
+
+/**
+ * The duration of time to initial display in milliseconds `time_to_initial_display`
+ *
+ * Attribute Value Type: `number` {@link TIME_TO_INITIAL_DISPLAY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link APP_VITALS_TTID_VALUE} `app.vitals.ttid.value`
+ *
+ * @deprecated Use {@link APP_VITALS_TTID_VALUE} (app.vitals.ttid.value) instead - Replaced by app.vitals.ttid.value to align with the app.vitals.* namespace for mobile performance attributes
+ * @example 1234.56
+ */
+export const TIME_TO_INITIAL_DISPLAY = 'time_to_initial_display';
+
+/**
+ * Type for {@link TIME_TO_INITIAL_DISPLAY} time_to_initial_display
+ */
+export type TIME_TO_INITIAL_DISPLAY_TYPE = number;
 
 // Path: model/attributes/transaction.json
 
@@ -10271,20 +11621,39 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [AI_TOTAL_COST]: 'double',
   [AI_TOTAL_TOKENS_USED]: 'integer',
   [AI_WARNINGS]: 'string[]',
+  [APP_APP_BUILD]: 'string',
+  [APP_APP_IDENTIFIER]: 'string',
+  [APP_APP_NAME]: 'string',
+  [APP_APP_START_TIME]: 'string',
+  [APP_APP_VERSION]: 'string',
   [APP_BUILD]: 'string',
   [APP_IDENTIFIER]: 'string',
   [APP_IN_FOREGROUND]: 'boolean',
   [APP_NAME]: 'string',
+  [APP_START_COLD]: 'double',
   [APP_START_TIME]: 'string',
   [APP_START_TYPE]: 'string',
+  [APP_START_WARM]: 'double',
   [APP_VERSION]: 'string',
+  [APP_VITALS_FRAMES_DELAY_VALUE]: 'integer',
+  [APP_VITALS_FRAMES_FROZEN_COUNT]: 'integer',
+  [APP_VITALS_FRAMES_SLOW_COUNT]: 'integer',
+  [APP_VITALS_FRAMES_TOTAL_COUNT]: 'integer',
+  [APP_VITALS_START_COLD_VALUE]: 'double',
+  [APP_VITALS_START_TYPE]: 'string',
+  [APP_VITALS_START_WARM_VALUE]: 'double',
+  [APP_VITALS_TTFD_VALUE]: 'double',
+  [APP_VITALS_TTID_VALUE]: 'double',
   [BLOCKED_MAIN_THREAD]: 'boolean',
   [BROWSER_NAME]: 'string',
+  [BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START]: 'double',
+  [BROWSER_PERFORMANCE_TIME_ORIGIN]: 'double',
   [BROWSER_REPORT_TYPE]: 'string',
   [BROWSER_SCRIPT_INVOKER]: 'string',
   [BROWSER_SCRIPT_INVOKER_TYPE]: 'string',
   [BROWSER_SCRIPT_SOURCE_CHAR_POSITION]: 'integer',
   [BROWSER_VERSION]: 'string',
+  [BROWSER_WEB_VITAL_CLS_REPORT_EVENT]: 'string',
   [BROWSER_WEB_VITAL_CLS_SOURCE_KEY]: 'string',
   [BROWSER_WEB_VITAL_CLS_VALUE]: 'double',
   [BROWSER_WEB_VITAL_FCP_VALUE]: 'double',
@@ -10294,6 +11663,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [BROWSER_WEB_VITAL_LCP_ID]: 'string',
   [BROWSER_WEB_VITAL_LCP_LOAD_TIME]: 'integer',
   [BROWSER_WEB_VITAL_LCP_RENDER_TIME]: 'integer',
+  [BROWSER_WEB_VITAL_LCP_REPORT_EVENT]: 'string',
   [BROWSER_WEB_VITAL_LCP_SIZE]: 'integer',
   [BROWSER_WEB_VITAL_LCP_URL]: 'string',
   [BROWSER_WEB_VITAL_LCP_VALUE]: 'double',
@@ -10328,6 +11698,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [CULTURE_LOCALE]: 'string',
   [CULTURE_TIMEZONE]: 'string',
   [DB_COLLECTION_NAME]: 'string',
+  [DB_DRIVER_NAME]: 'string',
   [DB_NAME]: 'string',
   [DB_NAMESPACE]: 'string',
   [DB_OPERATION]: 'string',
@@ -10343,17 +11714,44 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [DB_SYSTEM_NAME]: 'string',
   [DB_USER]: 'string',
   [DEVICEMEMORY]: 'string',
+  [DEVICE_ARCHS]: 'string[]',
+  [DEVICE_BATTERY_LEVEL]: 'double',
+  [DEVICE_BATTERY_TEMPERATURE]: 'double',
+  [DEVICE_BOOT_TIME]: 'string',
   [DEVICE_BRAND]: 'string',
+  [DEVICE_CHARGING]: 'boolean',
+  [DEVICE_CHIPSET]: 'string',
   [DEVICE_CLASS]: 'string',
+  [DEVICE_CONNECTION_TYPE]: 'string',
+  [DEVICE_CPU_DESCRIPTION]: 'string',
+  [DEVICE_EXTERNAL_FREE_STORAGE]: 'integer',
+  [DEVICE_EXTERNAL_STORAGE_SIZE]: 'integer',
   [DEVICE_FAMILY]: 'string',
   [DEVICE_FREE_MEMORY]: 'integer',
+  [DEVICE_FREE_STORAGE]: 'integer',
+  [DEVICE_ID]: 'string',
+  [DEVICE_LOCALE]: 'string',
+  [DEVICE_LOW_MEMORY]: 'boolean',
   [DEVICE_LOW_POWER_MODE]: 'boolean',
+  [DEVICE_MANUFACTURER]: 'string',
   [DEVICE_MEMORY_ESTIMATED_CAPACITY]: 'integer',
   [DEVICE_MEMORY_SIZE]: 'integer',
   [DEVICE_MODEL]: 'string',
   [DEVICE_MODEL_ID]: 'string',
+  [DEVICE_NAME]: 'string',
+  [DEVICE_ONLINE]: 'boolean',
+  [DEVICE_ORIENTATION]: 'string',
   [DEVICE_PROCESSOR_COUNT]: 'integer',
+  [DEVICE_PROCESSOR_FREQUENCY]: 'double',
+  [DEVICE_SCREEN_DENSITY]: 'double',
+  [DEVICE_SCREEN_DPI]: 'integer',
+  [DEVICE_SCREEN_HEIGHT_PIXELS]: 'integer',
+  [DEVICE_SCREEN_WIDTH_PIXELS]: 'integer',
   [DEVICE_SIMULATOR]: 'boolean',
+  [DEVICE_STORAGE_SIZE]: 'integer',
+  [DEVICE_THERMAL_STATE]: 'string',
+  [DEVICE_TIMEZONE]: 'string',
+  [DEVICE_USABLE_MEMORY]: 'integer',
   [EFFECTIVECONNECTIONTYPE]: 'string',
   [ENVIRONMENT]: 'string',
   [ERROR_TYPE]: 'string',
@@ -10376,11 +11774,14 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [FRAMES_TOTAL]: 'integer',
   [FS_ERROR]: 'string',
   [GEN_AI_AGENT_NAME]: 'string',
+  [GEN_AI_CONTEXT_UTILIZATION]: 'double',
+  [GEN_AI_CONTEXT_WINDOW_SIZE]: 'integer',
   [GEN_AI_CONVERSATION_ID]: 'string',
   [GEN_AI_COST_INPUT_TOKENS]: 'double',
   [GEN_AI_COST_OUTPUT_TOKENS]: 'double',
   [GEN_AI_COST_TOTAL_TOKENS]: 'double',
   [GEN_AI_EMBEDDINGS_INPUT]: 'string',
+  [GEN_AI_FUNCTION_ID]: 'string',
   [GEN_AI_INPUT_MESSAGES]: 'string',
   [GEN_AI_OPERATION_NAME]: 'string',
   [GEN_AI_OPERATION_TYPE]: 'string',
@@ -10564,9 +11965,14 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [NET_SOCK_PEER_NAME]: 'string',
   [NET_SOCK_PEER_PORT]: 'integer',
   [NET_TRANSPORT]: 'string',
+  [OS_BUILD]: 'string',
   [OS_BUILD_ID]: 'string',
   [OS_DESCRIPTION]: 'string',
+  [OS_KERNEL_VERSION]: 'string',
   [OS_NAME]: 'string',
+  [OS_RAW_DESCRIPTION]: 'string',
+  [OS_ROOTED]: 'boolean',
+  [OS_THEME]: 'string',
   [OS_TYPE]: 'string',
   [OS_VERSION]: 'string',
   [OTEL_SCOPE_NAME]: 'string',
@@ -10574,6 +11980,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [OTEL_STATUS_CODE]: 'string',
   [OTEL_STATUS_DESCRIPTION]: 'string',
   [PARAMS_KEY]: 'string',
+  [PERFORMANCE_ACTIVATIONSTART]: 'double',
+  [PERFORMANCE_TIMEORIGIN]: 'double',
   [PREVIOUS_ROUTE]: 'string',
   [PROCESS_EXECUTABLE_NAME]: 'string',
   [PROCESS_PID]: 'integer',
@@ -10614,8 +12022,10 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_IDLE_SPAN_FINISH_REASON]: 'string',
   [SENTRY_IS_REMOTE]: 'boolean',
   [SENTRY_KIND]: 'string',
+  [SENTRY_MAIN_THREAD]: 'boolean',
   [SENTRY_MESSAGE_PARAMETER_KEY]: 'string',
   [SENTRY_MESSAGE_TEMPLATE]: 'string',
+  [SENTRY_MOBILE]: 'boolean',
   [SENTRY_MODULE_KEY]: 'string',
   [SENTRY_NEXTJS_SSR_FUNCTION_ROUTE]: 'string',
   [SENTRY_NEXTJS_SSR_FUNCTION_TYPE]: 'string',
@@ -10630,6 +12040,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_RELEASE]: 'string',
   [SENTRY_REPLAY_ID]: 'string',
   [SENTRY_REPLAY_IS_BUFFERING]: 'boolean',
+  [SENTRY_REPORT_EVENT]: 'string',
   [SENTRY_SDK_INTEGRATIONS]: 'string[]',
   [SENTRY_SDK_NAME]: 'string',
   [SENTRY_SDK_VERSION]: 'string',
@@ -10651,6 +12062,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [THREAD_ID]: 'integer',
   [THREAD_NAME]: 'string',
   [TIMBER_TAG]: 'string',
+  [TIME_TO_FULL_DISPLAY]: 'double',
+  [TIME_TO_INITIAL_DISPLAY]: 'double',
   [TRANSACTION]: 'string',
   [TTFB]: 'double',
   [TTFB_REQUESTTIME]: 'double',
@@ -10760,20 +12173,39 @@ export type AttributeName =
   | typeof AI_TOTAL_COST
   | typeof AI_TOTAL_TOKENS_USED
   | typeof AI_WARNINGS
+  | typeof APP_APP_BUILD
+  | typeof APP_APP_IDENTIFIER
+  | typeof APP_APP_NAME
+  | typeof APP_APP_START_TIME
+  | typeof APP_APP_VERSION
   | typeof APP_BUILD
   | typeof APP_IDENTIFIER
   | typeof APP_IN_FOREGROUND
   | typeof APP_NAME
+  | typeof APP_START_COLD
   | typeof APP_START_TIME
   | typeof APP_START_TYPE
+  | typeof APP_START_WARM
   | typeof APP_VERSION
+  | typeof APP_VITALS_FRAMES_DELAY_VALUE
+  | typeof APP_VITALS_FRAMES_FROZEN_COUNT
+  | typeof APP_VITALS_FRAMES_SLOW_COUNT
+  | typeof APP_VITALS_FRAMES_TOTAL_COUNT
+  | typeof APP_VITALS_START_COLD_VALUE
+  | typeof APP_VITALS_START_TYPE
+  | typeof APP_VITALS_START_WARM_VALUE
+  | typeof APP_VITALS_TTFD_VALUE
+  | typeof APP_VITALS_TTID_VALUE
   | typeof BLOCKED_MAIN_THREAD
   | typeof BROWSER_NAME
+  | typeof BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START
+  | typeof BROWSER_PERFORMANCE_TIME_ORIGIN
   | typeof BROWSER_REPORT_TYPE
   | typeof BROWSER_SCRIPT_INVOKER
   | typeof BROWSER_SCRIPT_INVOKER_TYPE
   | typeof BROWSER_SCRIPT_SOURCE_CHAR_POSITION
   | typeof BROWSER_VERSION
+  | typeof BROWSER_WEB_VITAL_CLS_REPORT_EVENT
   | typeof BROWSER_WEB_VITAL_CLS_SOURCE_KEY
   | typeof BROWSER_WEB_VITAL_CLS_VALUE
   | typeof BROWSER_WEB_VITAL_FCP_VALUE
@@ -10783,6 +12215,7 @@ export type AttributeName =
   | typeof BROWSER_WEB_VITAL_LCP_ID
   | typeof BROWSER_WEB_VITAL_LCP_LOAD_TIME
   | typeof BROWSER_WEB_VITAL_LCP_RENDER_TIME
+  | typeof BROWSER_WEB_VITAL_LCP_REPORT_EVENT
   | typeof BROWSER_WEB_VITAL_LCP_SIZE
   | typeof BROWSER_WEB_VITAL_LCP_URL
   | typeof BROWSER_WEB_VITAL_LCP_VALUE
@@ -10817,6 +12250,7 @@ export type AttributeName =
   | typeof CULTURE_LOCALE
   | typeof CULTURE_TIMEZONE
   | typeof DB_COLLECTION_NAME
+  | typeof DB_DRIVER_NAME
   | typeof DB_NAME
   | typeof DB_NAMESPACE
   | typeof DB_OPERATION
@@ -10832,17 +12266,44 @@ export type AttributeName =
   | typeof DB_SYSTEM_NAME
   | typeof DB_USER
   | typeof DEVICEMEMORY
+  | typeof DEVICE_ARCHS
+  | typeof DEVICE_BATTERY_LEVEL
+  | typeof DEVICE_BATTERY_TEMPERATURE
+  | typeof DEVICE_BOOT_TIME
   | typeof DEVICE_BRAND
+  | typeof DEVICE_CHARGING
+  | typeof DEVICE_CHIPSET
   | typeof DEVICE_CLASS
+  | typeof DEVICE_CONNECTION_TYPE
+  | typeof DEVICE_CPU_DESCRIPTION
+  | typeof DEVICE_EXTERNAL_FREE_STORAGE
+  | typeof DEVICE_EXTERNAL_STORAGE_SIZE
   | typeof DEVICE_FAMILY
   | typeof DEVICE_FREE_MEMORY
+  | typeof DEVICE_FREE_STORAGE
+  | typeof DEVICE_ID
+  | typeof DEVICE_LOCALE
+  | typeof DEVICE_LOW_MEMORY
   | typeof DEVICE_LOW_POWER_MODE
+  | typeof DEVICE_MANUFACTURER
   | typeof DEVICE_MEMORY_ESTIMATED_CAPACITY
   | typeof DEVICE_MEMORY_SIZE
   | typeof DEVICE_MODEL
   | typeof DEVICE_MODEL_ID
+  | typeof DEVICE_NAME
+  | typeof DEVICE_ONLINE
+  | typeof DEVICE_ORIENTATION
   | typeof DEVICE_PROCESSOR_COUNT
+  | typeof DEVICE_PROCESSOR_FREQUENCY
+  | typeof DEVICE_SCREEN_DENSITY
+  | typeof DEVICE_SCREEN_DPI
+  | typeof DEVICE_SCREEN_HEIGHT_PIXELS
+  | typeof DEVICE_SCREEN_WIDTH_PIXELS
   | typeof DEVICE_SIMULATOR
+  | typeof DEVICE_STORAGE_SIZE
+  | typeof DEVICE_THERMAL_STATE
+  | typeof DEVICE_TIMEZONE
+  | typeof DEVICE_USABLE_MEMORY
   | typeof EFFECTIVECONNECTIONTYPE
   | typeof ENVIRONMENT
   | typeof ERROR_TYPE
@@ -10865,11 +12326,14 @@ export type AttributeName =
   | typeof FRAMES_TOTAL
   | typeof FS_ERROR
   | typeof GEN_AI_AGENT_NAME
+  | typeof GEN_AI_CONTEXT_UTILIZATION
+  | typeof GEN_AI_CONTEXT_WINDOW_SIZE
   | typeof GEN_AI_CONVERSATION_ID
   | typeof GEN_AI_COST_INPUT_TOKENS
   | typeof GEN_AI_COST_OUTPUT_TOKENS
   | typeof GEN_AI_COST_TOTAL_TOKENS
   | typeof GEN_AI_EMBEDDINGS_INPUT
+  | typeof GEN_AI_FUNCTION_ID
   | typeof GEN_AI_INPUT_MESSAGES
   | typeof GEN_AI_OPERATION_NAME
   | typeof GEN_AI_OPERATION_TYPE
@@ -11053,9 +12517,14 @@ export type AttributeName =
   | typeof NET_SOCK_PEER_NAME
   | typeof NET_SOCK_PEER_PORT
   | typeof NET_TRANSPORT
+  | typeof OS_BUILD
   | typeof OS_BUILD_ID
   | typeof OS_DESCRIPTION
+  | typeof OS_KERNEL_VERSION
   | typeof OS_NAME
+  | typeof OS_RAW_DESCRIPTION
+  | typeof OS_ROOTED
+  | typeof OS_THEME
   | typeof OS_TYPE
   | typeof OS_VERSION
   | typeof OTEL_SCOPE_NAME
@@ -11063,6 +12532,8 @@ export type AttributeName =
   | typeof OTEL_STATUS_CODE
   | typeof OTEL_STATUS_DESCRIPTION
   | typeof PARAMS_KEY
+  | typeof PERFORMANCE_ACTIVATIONSTART
+  | typeof PERFORMANCE_TIMEORIGIN
   | typeof PREVIOUS_ROUTE
   | typeof PROCESS_EXECUTABLE_NAME
   | typeof PROCESS_PID
@@ -11103,8 +12574,10 @@ export type AttributeName =
   | typeof SENTRY_IDLE_SPAN_FINISH_REASON
   | typeof SENTRY_IS_REMOTE
   | typeof SENTRY_KIND
+  | typeof SENTRY_MAIN_THREAD
   | typeof SENTRY_MESSAGE_PARAMETER_KEY
   | typeof SENTRY_MESSAGE_TEMPLATE
+  | typeof SENTRY_MOBILE
   | typeof SENTRY_MODULE_KEY
   | typeof SENTRY_NEXTJS_SSR_FUNCTION_ROUTE
   | typeof SENTRY_NEXTJS_SSR_FUNCTION_TYPE
@@ -11119,6 +12592,7 @@ export type AttributeName =
   | typeof SENTRY_RELEASE
   | typeof SENTRY_REPLAY_ID
   | typeof SENTRY_REPLAY_IS_BUFFERING
+  | typeof SENTRY_REPORT_EVENT
   | typeof SENTRY_SDK_INTEGRATIONS
   | typeof SENTRY_SDK_NAME
   | typeof SENTRY_SDK_VERSION
@@ -11140,6 +12614,8 @@ export type AttributeName =
   | typeof THREAD_ID
   | typeof THREAD_NAME
   | typeof TIMBER_TAG
+  | typeof TIME_TO_FULL_DISPLAY
+  | typeof TIME_TO_INITIAL_DISPLAY
   | typeof TRANSACTION
   | typeof TTFB
   | typeof TTFB_REQUESTTIME
@@ -11225,7 +12701,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: ['Citation 1', 'Citation 2'],
     deprecation: {},
     changelog: [
-      { version: 'next', prs: [264] },
+      { version: '0.5.0', prs: [264] },
       { version: '0.1.0', prs: [55] },
     ],
   },
@@ -11254,7 +12730,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: ['document1.txt', 'document2.pdf'],
     deprecation: {},
     changelog: [
-      { version: 'next', prs: [264] },
+      { version: '0.5.0', prs: [264] },
       { version: '0.1.0', prs: [55] },
     ],
   },
@@ -11267,7 +12743,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'COMPLETE',
     deprecation: {
-      replacement: 'gen_ai.response.finish_reason',
+      replacement: 'gen_ai.response.finish_reasons',
     },
     aliases: [GEN_AI_RESPONSE_FINISH_REASONS],
     changelog: [{ version: '0.1.0', prs: [55, 57, 61, 108, 127] }],
@@ -11344,7 +12820,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: false,
     deprecation: {},
     changelog: [
-      { version: 'next', prs: [264] },
+      { version: '0.5.0', prs: [264] },
       { version: '0.1.0', prs: [55] },
     ],
   },
@@ -11358,7 +12834,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '{"user_id": 123, "session_id": "abc123"}',
     deprecation: {},
     changelog: [
-      { version: 'next', prs: [264] },
+      { version: '0.5.0', prs: [264] },
       { version: '0.1.0', prs: [55, 127] },
     ],
   },
@@ -11422,7 +12898,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [GEN_AI_SYSTEM_INSTRUCTIONS],
     changelog: [
-      { version: 'next', prs: [264] },
+      { version: '0.5.0', prs: [264] },
       { version: '0.1.0', prs: [55] },
     ],
   },
@@ -11469,7 +12945,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: true,
     deprecation: {},
     changelog: [
-      { version: 'next', prs: [264] },
+      { version: '0.5.0', prs: [264] },
       { version: '0.1.0', prs: [55] },
     ],
   },
@@ -11497,7 +12973,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'json_object',
     deprecation: {},
     changelog: [
-      { version: 'next', prs: [264] },
+      { version: '0.5.0', prs: [264] },
       { version: '0.1.0', prs: [55, 127] },
     ],
   },
@@ -11511,7 +12987,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: ['climate change effects', 'renewable energy'],
     deprecation: {},
     changelog: [
-      { version: 'next', prs: [264] },
+      { version: '0.5.0', prs: [264] },
       { version: '0.1.0', prs: [55] },
     ],
   },
@@ -11525,7 +13001,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: ['search_result_1, search_result_2'],
     deprecation: {},
     changelog: [
-      { version: 'next', prs: [264] },
+      { version: '0.5.0', prs: [264] },
       { version: '0.1.0', prs: [55] },
     ],
   },
@@ -11568,7 +13044,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '{"executed_function": "add_integers"}',
     deprecation: {},
     changelog: [
-      { version: 'next', prs: [264] },
+      { version: '0.5.0', prs: [264] },
       { version: '0.1.0', prs: [55, 127] },
     ],
   },
@@ -11603,7 +13079,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [GEN_AI_INPUT_MESSAGES],
     changelog: [
-      { version: 'next', prs: [264] },
+      { version: '0.5.0', prs: [264] },
       { version: '0.1.0', prs: [55] },
     ],
   },
@@ -11682,7 +13158,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [GEN_AI_COST_TOTAL_TOKENS],
     changelog: [
-      { version: 'next', prs: [264] },
+      { version: '0.5.0', prs: [264] },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [53] },
     ],
@@ -11712,8 +13188,106 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: ['Token limit exceeded'],
     deprecation: {},
     changelog: [
-      { version: 'next', prs: [264] },
+      { version: '0.5.0', prs: [264] },
       { version: '0.1.0', prs: [55] },
+    ],
+  },
+  [APP_APP_BUILD]: {
+    brief: 'Internal build identifier, as it appears on the platform.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '1',
+    deprecation: {
+      replacement: 'app.build',
+      reason: 'Deprecated in favor of app.build',
+    },
+    aliases: [APP_BUILD],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [
+      { version: '0.5.0', prs: [296], description: 'Added and deprecated app.app_build in favor of app.build' },
+    ],
+  },
+  [APP_APP_IDENTIFIER]: {
+    brief: 'Version-independent application identifier, often a dotted bundle ID.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'com.example.myapp',
+    deprecation: {
+      replacement: 'app.identifier',
+      reason: 'Deprecated in favor of app.identifier',
+    },
+    aliases: [APP_IDENTIFIER],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [
+      {
+        version: '0.5.0',
+        prs: [296],
+        description: 'Added and deprecated app.app_identifier in favor of app.identifier',
+      },
+    ],
+  },
+  [APP_APP_NAME]: {
+    brief: 'Human readable application name, as it appears on the platform.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'My App',
+    deprecation: {
+      replacement: 'app.name',
+      reason: 'Deprecated in favor of app.name',
+    },
+    aliases: [APP_NAME],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [
+      { version: '0.5.0', prs: [296], description: 'Added and deprecated app.app_name in favor of app.name' },
+    ],
+  },
+  [APP_APP_START_TIME]: {
+    brief: 'Formatted UTC timestamp when the user started the application.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '2025-01-01T00:00:00.000Z',
+    deprecation: {
+      replacement: 'app.start_time',
+      reason: 'Deprecated in favor of app.start_time',
+    },
+    aliases: [APP_START_TIME],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [
+      {
+        version: '0.5.0',
+        prs: [296],
+        description: 'Added and deprecated app.app_start_time in favor of app.start_time',
+      },
+    ],
+  },
+  [APP_APP_VERSION]: {
+    brief: 'Human readable application version, as it appears on the platform.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '1.0.0',
+    deprecation: {
+      replacement: 'app.version',
+      reason: 'Deprecated in favor of app.version',
+    },
+    aliases: [APP_VERSION],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [
+      { version: '0.5.0', prs: [296], description: 'Added and deprecated app.app_version in favor of app.version' },
     ],
   },
   [APP_BUILD]: {
@@ -11724,8 +13298,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '1',
+    aliases: [APP_APP_BUILD],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
-    changelog: [{ version: 'next', prs: [296], description: 'Added app.build attribute' }],
+    changelog: [{ version: '0.5.0', prs: [296], description: 'Added app.build attribute' }],
   },
   [APP_IDENTIFIER]: {
     brief: 'Version-independent application identifier, often a dotted bundle ID.',
@@ -11735,19 +13310,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'com.example.myapp',
+    aliases: [APP_APP_IDENTIFIER],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
-    changelog: [{ version: 'next', prs: [296], description: 'Added app.identifier attribute' }],
+    changelog: [{ version: '0.5.0', prs: [296], description: 'Added app.identifier attribute' }],
   },
   [APP_IN_FOREGROUND]: {
     brief: 'Whether the application is currently in the foreground.',
     type: 'boolean',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: true,
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
-    changelog: [{ version: 'next', prs: [296], description: 'Added app.in_foreground attribute' }],
+    changelog: [{ version: '0.5.0', prs: [296], description: 'Added app.in_foreground attribute' }],
   },
   [APP_NAME]: {
     brief: 'Human readable application name, as it appears on the platform.',
@@ -11757,8 +13333,28 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'My App',
+    aliases: [APP_APP_NAME],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
-    changelog: [{ version: 'next', prs: [296], description: 'Added app.name attribute' }],
+    changelog: [{ version: '0.5.0', prs: [296], description: 'Added app.name attribute' }],
+  },
+  [APP_START_COLD]: {
+    brief: 'The duration of a cold app start in milliseconds',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1234.56,
+    deprecation: {
+      replacement: 'app.vitals.start.cold.value',
+      reason:
+        'Replaced by app.vitals.start.cold.value to align with the app.vitals.* namespace for mobile performance attributes',
+    },
+    aliases: [APP_VITALS_START_COLD_VALUE],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [
+      { version: '0.5.0', prs: [323], description: 'Added and deprecated in favor of app.vitals.start.cold.value' },
+    ],
   },
   [APP_START_TIME]: {
     brief: 'Formatted UTC timestamp when the user started the application.',
@@ -11768,8 +13364,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '2025-01-01T00:00:00.000Z',
+    aliases: [APP_APP_START_TIME],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
-    changelog: [{ version: 'next', prs: [296], description: 'Added app.start_time attribute' }],
+    changelog: [{ version: '0.5.0', prs: [296], description: 'Added app.start_time attribute' }],
   },
   [APP_START_TYPE]: {
     brief: 'Mobile app start variant. Either cold or warm.',
@@ -11779,7 +13376,36 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'cold',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    deprecation: {
+      replacement: 'app.vitals.start.type',
+      reason:
+        'Replaced by app.vitals.start.type to align with the app.vitals.* namespace for mobile performance attributes',
+    },
+    aliases: [APP_VITALS_START_TYPE],
+    changelog: [
+      { version: '0.5.0', prs: [313], description: 'Deprecated in favor of app.vitals.start.type' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
+  },
+  [APP_START_WARM]: {
+    brief: 'The duration of a warm app start in milliseconds',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1234.56,
+    deprecation: {
+      replacement: 'app.vitals.start.warm.value',
+      reason:
+        'Replaced by app.vitals.start.warm.value to align with the app.vitals.* namespace for mobile performance attributes',
+    },
+    aliases: [APP_VITALS_START_WARM_VALUE],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [
+      { version: '0.5.0', prs: [323], description: 'Added and deprecated in favor of app.vitals.start.warm.value' },
+    ],
   },
   [APP_VERSION]: {
     brief: 'Human readable application version, as it appears on the platform.',
@@ -11789,8 +13415,126 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '1.0.0',
+    aliases: [APP_APP_VERSION],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
-    changelog: [{ version: 'next', prs: [296], description: 'Added app.version attribute' }],
+    changelog: [{ version: '0.5.0', prs: [296], description: 'Added app.version attribute' }],
+  },
+  [APP_VITALS_FRAMES_DELAY_VALUE]: {
+    brief:
+      'The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 5,
+    aliases: [FRAMES_DELAY],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [
+      { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.delay.value to replace frames.delay' },
+    ],
+  },
+  [APP_VITALS_FRAMES_FROZEN_COUNT]: {
+    brief: 'The number of frozen frames rendered during the lifetime of the span.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 3,
+    aliases: [FRAMES_FROZEN],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [
+      { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.frozen.count to replace frames.frozen' },
+    ],
+  },
+  [APP_VITALS_FRAMES_SLOW_COUNT]: {
+    brief: 'The number of slow frames rendered during the lifetime of the span.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1,
+    aliases: [FRAMES_SLOW],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [
+      { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.slow.count to replace frames.slow' },
+    ],
+  },
+  [APP_VITALS_FRAMES_TOTAL_COUNT]: {
+    brief: 'The number of total frames rendered during the lifetime of the span.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 60,
+    aliases: [FRAMES_TOTAL],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [
+      { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.total.count to replace frames.total' },
+    ],
+  },
+  [APP_VITALS_START_COLD_VALUE]: {
+    brief: 'The duration of a cold app start in milliseconds',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1234.56,
+    aliases: [APP_START_COLD],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.start.cold.value attribute' }],
+  },
+  [APP_VITALS_START_TYPE]: {
+    brief: 'The type of app start, for example `cold` or `warm`',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'cold',
+    aliases: [APP_START_TYPE],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.start.type attribute' }],
+  },
+  [APP_VITALS_START_WARM_VALUE]: {
+    brief: 'The duration of a warm app start in milliseconds',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1234.56,
+    aliases: [APP_START_WARM],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.start.warm.value attribute' }],
+  },
+  [APP_VITALS_TTFD_VALUE]: {
+    brief: 'The duration of time to full display in milliseconds',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1234.56,
+    aliases: [TIME_TO_FULL_DISPLAY],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.ttfd.value attribute' }],
+  },
+  [APP_VITALS_TTID_VALUE]: {
+    brief: 'The duration of time to initial display in milliseconds',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1234.56,
+    aliases: [TIME_TO_INITIAL_DISPLAY],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.ttid.value attribute' }],
   },
   [BLOCKED_MAIN_THREAD]: {
     brief: 'Whether the main thread was blocked by the span.',
@@ -11812,6 +13556,34 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'Chrome',
     aliases: [SENTRY_BROWSER_NAME],
     changelog: [{ version: '0.1.0', prs: [127, 139] }, { version: '0.0.0' }],
+  },
+  [BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START]: {
+    brief: 'The time between initiating a navigation to a page and the browser activating the page',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1.983,
+    aliases: [PERFORMANCE_ACTIVATIONSTART],
+    sdks: ['javascript-browser'],
+    changelog: [
+      { version: '0.5.0', prs: [321], description: 'Added browser.performance.navigation.activation_start attribute' },
+    ],
+  },
+  [BROWSER_PERFORMANCE_TIME_ORIGIN]: {
+    brief: "The browser's performance.timeOrigin timestamp representing the time when the pageload was initiated",
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1776185678.886,
+    aliases: [PERFORMANCE_TIMEORIGIN],
+    sdks: ['javascript-browser'],
+    changelog: [
+      { version: '0.5.0', prs: [321], description: 'Added browser.performance.time_origin attribute attribute' },
+    ],
   },
   [BROWSER_REPORT_TYPE]: {
     brief: 'A browser report sent via reporting API..',
@@ -11867,6 +13639,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [SENTRY_BROWSER_VERSION],
     changelog: [{ version: '0.1.0', prs: [59, 127, 139] }],
   },
+  [BROWSER_WEB_VITAL_CLS_REPORT_EVENT]: {
+    brief: 'The event that caused the SDK to report CLS (pagehide or navigation)',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'navigation',
+    sdks: ['javascript-browser'],
+    changelog: [{ version: '0.5.0', prs: [319], description: 'Added browser.web_vital.cls.report_event attribute' }],
+  },
   [BROWSER_WEB_VITAL_CLS_SOURCE_KEY]: {
     brief: 'The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N',
     type: 'string',
@@ -11878,7 +13661,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'body > div#app',
     aliases: [CLS_SOURCE_KEY],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [234] }],
+    changelog: [{ version: '0.5.0', prs: [234] }],
   },
   [BROWSER_WEB_VITAL_CLS_VALUE]: {
     brief: 'The value of the recorded Cumulative Layout Shift (CLS) web vital',
@@ -11890,7 +13673,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 0.2361,
     aliases: [CLS],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [229], description: 'Added browser.web_vital.cls.value attribute' }],
+    changelog: [{ version: '0.5.0', prs: [229], description: 'Added browser.web_vital.cls.value attribute' }],
   },
   [BROWSER_WEB_VITAL_FCP_VALUE]: {
     brief: 'The time it takes for the browser to render the first piece of meaningful content on the screen',
@@ -11902,7 +13685,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 547.6951,
     aliases: [FCP],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [235] }],
+    changelog: [{ version: '0.5.0', prs: [235] }],
   },
   [BROWSER_WEB_VITAL_FP_VALUE]: {
     brief: 'The time in milliseconds it takes for the browser to render the first pixel on the screen',
@@ -11914,7 +13697,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 477.1926,
     aliases: [FP],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [235] }],
+    changelog: [{ version: '0.5.0', prs: [235] }],
   },
   [BROWSER_WEB_VITAL_INP_VALUE]: {
     brief: 'The value of the recorded Interaction to Next Paint (INP) web vital',
@@ -11926,7 +13709,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 200,
     aliases: [INP],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [229], description: 'Added browser.web_vital.inp.value attribute' }],
+    changelog: [{ version: '0.5.0', prs: [229], description: 'Added browser.web_vital.inp.value attribute' }],
   },
   [BROWSER_WEB_VITAL_LCP_ELEMENT]: {
     brief: 'The HTML element selector or component name for which LCP was reported',
@@ -11938,7 +13721,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'body > div#app > div#container > div',
     aliases: [LCP_ELEMENT],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [233] }],
+    changelog: [{ version: '0.5.0', prs: [233] }],
   },
   [BROWSER_WEB_VITAL_LCP_ID]: {
     brief: 'The id of the dom element responsible for the largest contentful paint',
@@ -11950,7 +13733,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '#gero',
     aliases: [LCP_ID],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [233] }],
+    changelog: [{ version: '0.5.0', prs: [233] }],
   },
   [BROWSER_WEB_VITAL_LCP_LOAD_TIME]: {
     brief: 'The time it took for the LCP element to be loaded',
@@ -11962,7 +13745,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1402,
     aliases: [LCP_LOADTIME],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [233] }],
+    changelog: [{ version: '0.5.0', prs: [233] }],
   },
   [BROWSER_WEB_VITAL_LCP_RENDER_TIME]: {
     brief: 'The time it took for the LCP element to be rendered',
@@ -11974,7 +13757,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1685,
     aliases: [LCP_RENDERTIME],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [233] }],
+    changelog: [{ version: '0.5.0', prs: [233] }],
+  },
+  [BROWSER_WEB_VITAL_LCP_REPORT_EVENT]: {
+    brief: 'The event that caused the SDK to report LCP (pagehide or navigation)',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'pagehide',
+    sdks: ['javascript-browser'],
+    changelog: [{ version: '0.5.0', prs: [319], description: 'Added browser.web_vital.lcp.report_event attribute' }],
   },
   [BROWSER_WEB_VITAL_LCP_SIZE]: {
     brief: 'The size of the largest contentful paint element',
@@ -11986,7 +13780,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1024,
     aliases: [LCP_SIZE],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [233] }],
+    changelog: [{ version: '0.5.0', prs: [233] }],
   },
   [BROWSER_WEB_VITAL_LCP_URL]: {
     brief: 'The url of the dom element responsible for the largest contentful paint',
@@ -11998,7 +13792,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'https://example.com/static/img.png',
     aliases: [LCP_URL],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [233] }],
+    changelog: [{ version: '0.5.0', prs: [233] }],
   },
   [BROWSER_WEB_VITAL_LCP_VALUE]: {
     brief: 'The value of the recorded Largest Contentful Paint (LCP) web vital',
@@ -12010,7 +13804,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 2500,
     aliases: [LCP],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [229], description: 'Added browser.web_vital.lcp.value attribute' }],
+    changelog: [{ version: '0.5.0', prs: [229], description: 'Added browser.web_vital.lcp.value attribute' }],
   },
   [BROWSER_WEB_VITAL_TTFB_REQUEST_TIME]: {
     brief:
@@ -12023,7 +13817,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1554.5814,
     aliases: [TTFB_REQUESTTIME],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [235] }],
+    changelog: [{ version: '0.5.0', prs: [235] }],
   },
   [BROWSER_WEB_VITAL_TTFB_VALUE]: {
     brief: 'The value of the recorded Time To First Byte (TTFB) web vital in Milliseconds',
@@ -12035,7 +13829,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 194.3322,
     aliases: [TTFB],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [235] }],
+    changelog: [{ version: '0.5.0', prs: [235] }],
   },
   [CACHE_HIT]: {
     brief: 'If the cache was hit during this span.',
@@ -12100,7 +13894,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: true,
     sdks: ['java'],
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.5.0' }],
   },
   [CHANNEL]: {
     brief: 'The channel name that is being used.',
@@ -12184,7 +13978,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['javascript-browser'],
     changelog: [
       {
-        version: 'next',
+        version: '0.5.0',
         prs: [229],
         description: "Added and deprecated attribute to document JS SDK's current behaviour",
       },
@@ -12205,7 +13999,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [BROWSER_WEB_VITAL_CLS_SOURCE_KEY],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [234] }],
+    changelog: [{ version: '0.5.0', prs: [234] }],
   },
   [CODE_FILEPATH]: {
     brief:
@@ -12313,11 +14107,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'network.connection.type',
       reason: 'Old namespace-less attribute, to be replaced with network.connection.type for span-first future',
     },
-    aliases: [NETWORK_CONNECTION_TYPE],
+    aliases: [NETWORK_CONNECTION_TYPE, DEVICE_CONNECTION_TYPE],
     sdks: ['javascript-browser'],
     changelog: [
       {
-        version: 'next',
+        version: '0.5.0',
         prs: [279],
         description: "Added and deprecated attribute to document JS SDK's current behaviour",
       },
@@ -12340,7 +14134,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['javascript-browser'],
     changelog: [
       {
-        version: 'next',
+        version: '0.5.0',
         prs: [279],
         description: "Added and deprecated attribute to document JS SDK's current behaviour",
       },
@@ -12405,6 +14199,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'users',
     changelog: [{ version: '0.1.0', prs: [106, 127] }, { version: '0.0.0' }],
+  },
+  [DB_DRIVER_NAME]: {
+    brief: 'The name of the driver used for the database connection.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'psycopg2',
+    changelog: [{ version: '0.5.0', prs: [297], description: 'Added db.driver.name attribute' }],
   },
   [DB_NAME]: {
     brief: 'The name of the database being accessed.',
@@ -12597,11 +14401,51 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['javascript-browser'],
     changelog: [
       {
-        version: 'next',
+        version: '0.5.0',
         prs: [281],
         description: "Added and deprecated attribute to document JS SDK's current behaviour",
       },
     ],
+  },
+  [DEVICE_ARCHS]: {
+    brief: 'The CPU architectures of the device.',
+    type: 'string[]',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: ['arm64-v8a', 'armeabi-v7a', 'armeabi'],
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.archs attribute' }],
+  },
+  [DEVICE_BATTERY_LEVEL]: {
+    brief: 'The battery level of the device as a percentage (0-100).',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 100,
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.battery_level attribute' }],
+  },
+  [DEVICE_BATTERY_TEMPERATURE]: {
+    brief: 'The battery temperature of the device in Celsius.',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 25,
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.battery_temperature attribute' }],
+  },
+  [DEVICE_BOOT_TIME]: {
+    brief: 'A formatted UTC timestamp when the system was booted.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '2018-02-08T12:52:12Z',
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.boot_time attribute' }],
   },
   [DEVICE_BRAND]: {
     brief: 'The brand of the device.',
@@ -12613,6 +14457,26 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'Apple',
     changelog: [{ version: '0.1.0', prs: [116, 127] }],
   },
+  [DEVICE_CHARGING]: {
+    brief: 'Whether the device was charging or not.',
+    type: 'boolean',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: false,
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.charging attribute' }],
+  },
+  [DEVICE_CHIPSET]: {
+    brief: 'The chipset of the device.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'Qualcomm SM8550',
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.chipset attribute' }],
+  },
   [DEVICE_CLASS]: {
     brief:
       'The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.',
@@ -12622,7 +14486,58 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'medium',
-    changelog: [{ version: 'next', prs: [300], description: 'Added device.class attribute' }],
+    changelog: [{ version: '0.5.0', prs: [300], description: 'Added device.class attribute' }],
+  },
+  [DEVICE_CONNECTION_TYPE]: {
+    brief: 'The internet connection type currently being used by the device.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'wifi',
+    deprecation: {
+      replacement: 'network.connection.type',
+      reason: 'This attribute is being deprecated in favor of network.connection.type',
+    },
+    aliases: [NETWORK_CONNECTION_TYPE, CONNECTIONTYPE],
+    changelog: [
+      {
+        version: '0.5.0',
+        prs: [303],
+        description: 'Added and deprecated device.connection_type in favor of network.connection.type',
+      },
+    ],
+  },
+  [DEVICE_CPU_DESCRIPTION]: {
+    brief: 'A description of the CPU of the device.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'Intel(R) Core(TM)2 Quad CPU Q6600 @ 2.40GHz',
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.cpu_description attribute' }],
+  },
+  [DEVICE_EXTERNAL_FREE_STORAGE]: {
+    brief: 'External storage free size in bytes.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 67108864000,
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.external_free_storage attribute' }],
+  },
+  [DEVICE_EXTERNAL_STORAGE_SIZE]: {
+    brief: 'External storage total size in bytes.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 134217728000,
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.external_storage_size attribute' }],
   },
   [DEVICE_FAMILY]: {
     brief: 'The family of the device.',
@@ -12642,7 +14557,47 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 2147483648,
-    changelog: [{ version: 'next', prs: [300], description: 'Added device.free_memory attribute' }],
+    changelog: [{ version: '0.5.0', prs: [300], description: 'Added device.free_memory attribute' }],
+  },
+  [DEVICE_FREE_STORAGE]: {
+    brief: 'Free device storage in bytes.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 107374182400,
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.free_storage attribute' }],
+  },
+  [DEVICE_ID]: {
+    brief: 'Unique device identifier.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.id attribute' }],
+  },
+  [DEVICE_LOCALE]: {
+    brief: 'The locale of the device.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'en-US',
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.locale attribute' }],
+  },
+  [DEVICE_LOW_MEMORY]: {
+    brief: 'Whether the device was low on memory.',
+    type: 'boolean',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: false,
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.low_memory attribute' }],
   },
   [DEVICE_LOW_POWER_MODE]: {
     brief: 'Whether the device is in Low Power Mode.',
@@ -12654,6 +14609,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: true,
     sdks: ['sentry.cocoa'],
     changelog: [{ version: 'next', description: 'Added device.low_power_mode attribute' }],
+  },
+  [DEVICE_MANUFACTURER]: {
+    brief: 'The manufacturer of the device.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'Google',
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.manufacturer attribute' }],
   },
   [DEVICE_MEMORY_ESTIMATED_CAPACITY]: {
     brief:
@@ -12668,7 +14633,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['javascript-browser'],
     changelog: [
       {
-        version: 'next',
+        version: '0.5.0',
         prs: [281],
         description: 'Added attribute device.memory.estimated_capacity to be used instead of deviceMemory',
       },
@@ -12682,7 +14647,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 17179869184,
-    changelog: [{ version: 'next', prs: [300], description: 'Added device.memory_size attribute' }],
+    changelog: [{ version: '0.5.0', prs: [300], description: 'Added device.memory_size attribute' }],
   },
   [DEVICE_MODEL]: {
     brief: 'The model of the device.',
@@ -12702,7 +14667,38 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'N861AP',
-    changelog: [{ version: 'next', prs: [300], description: 'Added device.model_id attribute' }],
+    changelog: [{ version: '0.5.0', prs: [300], description: 'Added device.model_id attribute' }],
+  },
+  [DEVICE_NAME]: {
+    brief:
+      'The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'localhost',
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.name attribute' }],
+  },
+  [DEVICE_ONLINE]: {
+    brief: 'Whether the device was online or not.',
+    type: 'boolean',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: true,
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.online attribute' }],
+  },
+  [DEVICE_ORIENTATION]: {
+    brief: 'The orientation of the device, either "portrait" or "landscape".',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'portrait',
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.orientation attribute' }],
   },
   [DEVICE_PROCESSOR_COUNT]: {
     brief: 'Number of "logical processors".',
@@ -12715,16 +14711,61 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [HARDWARECONCURRENCY],
     changelog: [
       {
-        version: 'next',
-        prs: [300],
-        description: 'Removed deprecation, device.processor_count is now the canonical attribute',
-      },
-      {
-        version: 'next',
+        version: '0.5.0',
         prs: [300],
         description: 'Added and deprecated attribute device.processor_count in favor of device.cpu.logical_core_count',
       },
     ],
+  },
+  [DEVICE_PROCESSOR_FREQUENCY]: {
+    brief: 'Processor frequency in MHz.',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 2400,
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.processor_frequency attribute' }],
+  },
+  [DEVICE_SCREEN_DENSITY]: {
+    brief: 'The screen density of the device.',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 2.625,
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.screen_density attribute' }],
+  },
+  [DEVICE_SCREEN_DPI]: {
+    brief: 'The screen density in dots-per-inch (DPI) of the device.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 420,
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.screen_dpi attribute' }],
+  },
+  [DEVICE_SCREEN_HEIGHT_PIXELS]: {
+    brief: 'The height of the device screen in pixels.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 2400,
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.screen_height_pixels attribute' }],
+  },
+  [DEVICE_SCREEN_WIDTH_PIXELS]: {
+    brief: 'The width of the device screen in pixels.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1080,
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.screen_width_pixels attribute' }],
   },
   [DEVICE_SIMULATOR]: {
     brief: 'Whether the device is a simulator or an actual device.',
@@ -12734,7 +14775,48 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: false,
-    changelog: [{ version: 'next', prs: [300], description: 'Added device.simulator attribute' }],
+    changelog: [{ version: '0.5.0', prs: [300], description: 'Added device.simulator attribute' }],
+  },
+  [DEVICE_STORAGE_SIZE]: {
+    brief: 'Total device storage in bytes.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 274877906944,
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.storage_size attribute' }],
+  },
+  [DEVICE_THERMAL_STATE]: {
+    brief:
+      "The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum: `nominal`, `fair`, `serious`, or `critical`.",
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'nominal',
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.thermal_state attribute' }],
+  },
+  [DEVICE_TIMEZONE]: {
+    brief: 'The timezone of the device.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'Europe/Vienna',
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.timezone attribute' }],
+  },
+  [DEVICE_USABLE_MEMORY]: {
+    brief: 'Memory usable for the app in bytes.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 2147483648,
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.usable_memory attribute' }],
   },
   [EFFECTIVECONNECTIONTYPE]: {
     brief: 'Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).',
@@ -12753,7 +14835,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['javascript-browser'],
     changelog: [
       {
-        version: 'next',
+        version: '0.5.0',
         prs: [279],
         description: "Added and deprecated attribute to document JS SDK's current behaviour",
       },
@@ -12901,7 +14983,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [BROWSER_WEB_VITAL_FCP_VALUE],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [235] }],
+    changelog: [{ version: '0.5.0', prs: [235] }],
   },
   [FLAG_EVALUATION_KEY]: {
     brief:
@@ -12929,7 +15011,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [BROWSER_WEB_VITAL_FP_VALUE],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [235] }],
+    changelog: [{ version: '0.5.0', prs: [235] }],
   },
   [FRAMES_DELAY]: {
     brief:
@@ -12940,7 +15022,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 5,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    deprecation: {
+      replacement: 'app.vitals.frames.delay.value',
+      reason:
+        'Replaced by app.vitals.frames.delay.value to align with the app.vitals.* namespace for mobile performance attributes',
+    },
+    aliases: [APP_VITALS_FRAMES_DELAY_VALUE],
+    changelog: [
+      { version: '0.5.0', prs: [313], description: 'Deprecated in favor of app.vitals.frames.delay.value' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.0.0' },
+    ],
   },
   [FRAMES_FROZEN]: {
     brief: 'The number of frozen frames rendered during the lifetime of the span.',
@@ -12950,7 +15042,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 3,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    deprecation: {
+      replacement: 'app.vitals.frames.frozen.count',
+      reason:
+        'Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes',
+    },
+    aliases: [APP_VITALS_FRAMES_FROZEN_COUNT],
+    changelog: [
+      { version: '0.5.0', prs: [313], description: 'Deprecated in favor of app.vitals.frames.frozen.count' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.0.0' },
+    ],
   },
   [FRAMES_SLOW]: {
     brief: 'The number of slow frames rendered during the lifetime of the span.',
@@ -12960,7 +15062,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 1,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    deprecation: {
+      replacement: 'app.vitals.frames.slow.count',
+      reason:
+        'Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes',
+    },
+    aliases: [APP_VITALS_FRAMES_SLOW_COUNT],
+    changelog: [
+      { version: '0.5.0', prs: [313], description: 'Deprecated in favor of app.vitals.frames.slow.count' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.0.0' },
+    ],
   },
   [FRAMES_TOTAL]: {
     brief: 'The number of total frames rendered during the lifetime of the span.',
@@ -12970,7 +15082,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 60,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    deprecation: {
+      replacement: 'app.vitals.frames.total.count',
+      reason:
+        'Replaced by app.vitals.frames.total.count to align with the app.vitals.* namespace for mobile performance attributes',
+    },
+    aliases: [APP_VITALS_FRAMES_TOTAL_COUNT],
+    changelog: [
+      { version: '0.5.0', prs: [313], description: 'Deprecated in favor of app.vitals.frames.total.count' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.0.0' },
+    ],
   },
   [FS_ERROR]: {
     brief: 'The error message of a file system error.',
@@ -12996,6 +15118,26 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'ResearchAssistant',
     changelog: [{ version: '0.1.0', prs: [62, 127] }],
+  },
+  [GEN_AI_CONTEXT_UTILIZATION]: {
+    brief: 'The fraction of the model context window utilized by this generation.',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 0.75,
+    changelog: [{ version: '0.5.0', prs: [315], description: 'Added gen_ai.context.utilization attribute' }],
+  },
+  [GEN_AI_CONTEXT_WINDOW_SIZE]: {
+    brief: 'The maximum context window size supported by the model for this generation.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 128000,
+    changelog: [{ version: '0.5.0', prs: [315], description: 'Added gen_ai.context.window_size attribute' }],
   },
   [GEN_AI_CONVERSATION_ID]: {
     brief:
@@ -13044,7 +15186,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 12.34,
     aliases: [AI_TOTAL_COST],
     changelog: [
-      { version: 'next', prs: [264] },
+      { version: '0.5.0', prs: [264] },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [126] },
     ],
@@ -13059,6 +15201,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: "What's the weather in Paris?",
     changelog: [{ version: '0.3.1', prs: [195] }],
   },
+  [GEN_AI_FUNCTION_ID]: {
+    brief:
+      'Framework-specific tracing label for the execution of a function or other unit of execution in a generative AI system.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'my-awesome-function',
+    changelog: [{ version: '0.5.0', prs: [308], description: 'Added gen_ai.function_id attribute' }],
+  },
   [GEN_AI_INPUT_MESSAGES]: {
     brief:
       'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.',
@@ -13071,7 +15224,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       '[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
     aliases: [AI_TEXTS],
     changelog: [
-      { version: 'next', prs: [264] },
+      { version: '0.5.0', prs: [264] },
       { version: '0.4.0', prs: [221] },
     ],
   },
@@ -13423,7 +15576,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'You are a helpful assistant',
     aliases: [AI_PREAMBLE],
     changelog: [
-      { version: 'next', prs: [264] },
+      { version: '0.5.0', prs: [264] },
       { version: '0.4.0', prs: [221] },
     ],
   },
@@ -13453,7 +15606,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '{"location": "Paris"}',
     aliases: [GEN_AI_TOOL_INPUT],
     changelog: [
-      { version: 'next', prs: [265] },
+      { version: '0.5.0', prs: [265] },
       { version: '0.4.0', prs: [221] },
     ],
   },
@@ -13467,7 +15620,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'rainy, 57°F',
     aliases: [GEN_AI_TOOL_OUTPUT, GEN_AI_TOOL_MESSAGE],
     changelog: [
-      { version: 'next', prs: [265] },
+      { version: '0.5.0', prs: [265] },
       { version: '0.4.0', prs: [221] },
     ],
   },
@@ -13505,7 +15658,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [GEN_AI_TOOL_CALL_ARGUMENTS],
     changelog: [
-      { version: 'next', prs: [265] },
+      { version: '0.5.0', prs: [265] },
       { version: '0.1.0', prs: [63, 74] },
     ],
   },
@@ -13522,7 +15675,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [GEN_AI_TOOL_CALL_RESULT, GEN_AI_TOOL_OUTPUT],
     changelog: [
-      { version: 'next', prs: [265] },
+      { version: '0.5.0', prs: [265] },
       { version: '0.1.0', prs: [62] },
     ],
   },
@@ -13550,7 +15703,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [GEN_AI_TOOL_CALL_RESULT, GEN_AI_TOOL_MESSAGE],
     changelog: [
-      { version: 'next', prs: [265] },
+      { version: '0.5.0', prs: [265] },
       { version: '0.1.0', prs: [63, 74] },
     ],
   },
@@ -13562,6 +15715,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'function',
+    deprecation: {
+      reason: 'The gen_ai.tool.type attribute is deprecated and should no longer be set.',
+    },
     changelog: [{ version: '0.1.0', prs: [62, 127] }],
   },
   [GEN_AI_USAGE_COMPLETION_TOKENS]: {
@@ -13588,7 +15744,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 10,
     aliases: [AI_PROMPT_TOKENS_USED, GEN_AI_USAGE_PROMPT_TOKENS],
     changelog: [
-      { version: 'next', prs: [261] },
+      { version: '0.5.0', prs: [261] },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [112] },
       { version: '0.0.0' },
@@ -13627,7 +15783,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 10,
     aliases: [AI_COMPLETION_TOKENS_USED, GEN_AI_USAGE_COMPLETION_TOKENS],
     changelog: [
-      { version: 'next', prs: [261] },
+      { version: '0.5.0', prs: [261] },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [112] },
       { version: '0.0.0' },
@@ -13710,13 +15866,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['javascript-browser'],
     changelog: [
       {
-        version: 'next',
-        prs: [300],
-        description: 'Updated deprecation replacement from device.cpu.logical_core_count to device.processor_count',
-      },
-      {
-        version: 'next',
-        prs: [281],
+        version: '0.5.0',
+        prs: [281, 300],
         description: "Added and deprecated attribute to document JS SDK's current behaviour",
       },
     ],
@@ -14149,7 +16300,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 50,
     sdks: ['ruby'],
-    changelog: [{ version: 'next', prs: [267] }],
+    changelog: [{ version: '0.5.0', prs: [267] }],
   },
   [HTTP_STATUS_CODE]: {
     brief: 'The status code of the HTTP response.',
@@ -14235,7 +16386,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['javascript-browser'],
     changelog: [
       {
-        version: 'next',
+        version: '0.5.0',
         prs: [229],
         description: "Added and deprecated attribute to document JS SDK's current behaviour",
       },
@@ -14317,7 +16468,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['javascript-browser'],
     changelog: [
       {
-        version: 'next',
+        version: '0.5.0',
         prs: [229],
         description: "Added and deprecated attribute to document JS SDK's current behaviour",
       },
@@ -14336,7 +16487,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'The LCP element is now recorded as a browser.web_vital.lcp.element attribute.',
     },
     aliases: [BROWSER_WEB_VITAL_LCP_ELEMENT],
-    changelog: [{ version: 'next', prs: [233] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    changelog: [{ version: '0.5.0', prs: [233] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [LCP_ID]: {
     brief: 'The id of the dom element responsible for the largest contentful paint.',
@@ -14351,7 +16502,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'The LCP id is now recorded as a browser.web_vital.lcp.id attribute.',
     },
     aliases: [BROWSER_WEB_VITAL_LCP_ID],
-    changelog: [{ version: 'next', prs: [233] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    changelog: [{ version: '0.5.0', prs: [233] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [LCP_LOADTIME]: {
     brief: 'The time it took for the LCP element to be loaded',
@@ -14367,7 +16518,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [BROWSER_WEB_VITAL_LCP_LOAD_TIME],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [233] }],
+    changelog: [{ version: '0.5.0', prs: [233] }],
   },
   [LCP_RENDERTIME]: {
     brief: 'The time it took for the LCP element to be rendered',
@@ -14383,7 +16534,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [BROWSER_WEB_VITAL_LCP_RENDER_TIME],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [233] }],
+    changelog: [{ version: '0.5.0', prs: [233] }],
   },
   [LCP_SIZE]: {
     brief: 'The size of the largest contentful paint element.',
@@ -14398,7 +16549,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'The LCP size is now recorded as a browser.web_vital.lcp.size attribute.',
     },
     aliases: [BROWSER_WEB_VITAL_LCP_SIZE],
-    changelog: [{ version: 'next', prs: [233] }, { version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    changelog: [{ version: '0.5.0', prs: [233] }, { version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [LCP_URL]: {
     brief: 'The url of the dom element responsible for the largest contentful paint.',
@@ -14413,7 +16564,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'The LCP url is now recorded as a browser.web_vital.lcp.url attribute.',
     },
     aliases: [BROWSER_WEB_VITAL_LCP_URL],
-    changelog: [{ version: 'next', prs: [233] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    changelog: [{ version: '0.5.0', prs: [233] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [LOGGER_NAME]: {
     brief: 'The name of the logger that generated this event.',
@@ -15045,7 +17196,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['javascript-browser'],
     changelog: [
       {
-        version: 'next',
+        version: '0.5.0',
         prs: [279],
         description: 'Added attribute network.connection.effective_type to be used instead of effectiveConnectionType',
       },
@@ -15063,7 +17214,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['javascript-browser'],
     changelog: [
       {
-        version: 'next',
+        version: '0.5.0',
         prs: [279],
         description: 'Added attribute network.connection.rtt to be used instead of connection.rtt',
       },
@@ -15077,11 +17228,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'wifi',
-    aliases: [CONNECTIONTYPE],
+    aliases: [DEVICE_CONNECTION_TYPE, CONNECTIONTYPE],
     sdks: ['javascript-browser'],
     changelog: [
       {
-        version: 'next',
+        version: '0.5.0',
         prs: [279],
         description: 'Added attribute network.connection.type to be used instead of connectionType',
       },
@@ -15383,6 +17534,22 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [NETWORK_TRANSPORT],
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
+  [OS_BUILD]: {
+    brief: 'The build ID of the operating system.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '1234567890',
+    deprecation: {
+      replacement: 'os.build_id',
+    },
+    aliases: [OS_BUILD_ID],
+    changelog: [
+      { version: '0.5.0', prs: [301], description: 'Added os.build attribute, deprecated in favor of os.build_id' },
+    ],
+  },
   [OS_BUILD_ID]: {
     brief: 'The build ID of the operating system.',
     type: 'string',
@@ -15391,7 +17558,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: '1234567890',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: [OS_BUILD],
+    changelog: [
+      { version: '0.5.0', prs: [301], description: 'Added os.build as alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   [OS_DESCRIPTION]: {
     brief:
@@ -15404,6 +17576,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'Ubuntu 18.04.1 LTS',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  [OS_KERNEL_VERSION]: {
+    brief: 'An independent kernel version string. Typically the entire output of the `uname` syscall.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '20.2.0',
+    changelog: [{ version: '0.5.0', prs: [301], description: 'Added os.kernel_version attribute' }],
+  },
   [OS_NAME]: {
     brief: 'Human readable operating system name.',
     type: 'string',
@@ -15413,6 +17595,37 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'Ubuntu',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+  },
+  [OS_RAW_DESCRIPTION]: {
+    brief:
+      'An unprocessed description string obtained by the operating system. For some well-known runtimes, Sentry will attempt to parse `name` and `version` from this string, if they are not explicitly given.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'Ubuntu 22.04.4 LTS (Jammy Jellyfish)',
+    changelog: [{ version: '0.5.0', prs: [301], description: 'Added os.raw_description attribute' }],
+  },
+  [OS_ROOTED]: {
+    brief: 'Whether the operating system has been jailbroken or rooted.',
+    type: 'boolean',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: true,
+    changelog: [{ version: '0.5.0', prs: [301], description: 'Added os.rooted attribute' }],
+  },
+  [OS_THEME]: {
+    brief: 'Whether the OS runs in dark mode or light mode.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'dark',
+    changelog: [{ version: '0.5.0', prs: [301], description: 'Added os.theme attribute' }],
   },
   [OS_TYPE]: {
     brief: 'The operating system type.',
@@ -15486,6 +17699,38 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: "params.id='123'",
     aliases: [URL_PATH_PARAMETER_KEY],
     changelog: [{ version: '0.1.0', prs: [103] }],
+  },
+  [PERFORMANCE_ACTIVATIONSTART]: {
+    brief: 'The time between initiating a navigation to a page and the browser activating the page',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1.983,
+    deprecation: {
+      replacement: 'browser.performance.navigation.activation_start',
+      reason: 'The activationStart is now recorded as the browser.performance.navigation.activation_start attribute.',
+    },
+    aliases: [BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START],
+    sdks: ['javascript-browser'],
+    changelog: [{ version: '0.5.0', prs: [321], description: 'Added performance.activationStart attribute' }],
+  },
+  [PERFORMANCE_TIMEORIGIN]: {
+    brief: "The browser's performance.timeOrigin timestamp representing the time when the pageload was initiated",
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1776185678.886,
+    deprecation: {
+      replacement: 'browser.performance.time_origin',
+      reason: 'The timeOrigin is now recorded as the browser.performance.time_origin attribute.',
+    },
+    aliases: [BROWSER_PERFORMANCE_TIME_ORIGIN],
+    sdks: ['javascript-browser'],
+    changelog: [{ version: '0.5.0', prs: [321], description: 'Added performance.timeOrigin attribute' }],
   },
   [PREVIOUS_ROUTE]: {
     brief: 'Also used by mobile SDKs to indicate the previous route in the application.',
@@ -15616,7 +17861,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'sentry.environment',
     },
-    changelog: [{ version: 'next', prs: [266] }],
+    changelog: [{ version: '0.5.0', prs: [266] }],
   },
   [RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME]: {
     brief: 'The software deployment environment name.',
@@ -15931,6 +18176,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'server',
     changelog: [{ version: '0.3.1', prs: [190] }],
   },
+  [SENTRY_MAIN_THREAD]: {
+    brief: 'Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs.',
+    type: 'boolean',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: true,
+    changelog: [{ version: '0.5.0' }],
+  },
   [SENTRY_MESSAGE_PARAMETER_KEY]: {
     brief:
       "A parameter used in the message template. <key> can either be the number that represent the parameter's position in the template string (sentry.message.parameter.0, sentry.message.parameter.1, etc) or the parameter's name (sentry.message.parameter.item_id, sentry.message.parameter.user_id, etc)",
@@ -15951,6 +18206,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'Hello, {name}!',
     changelog: [{ version: '0.1.0', prs: [116] }],
+  },
+  [SENTRY_MOBILE]: {
+    brief: 'Whether the application is using a mobile SDK. Computed by Relay and should not be set by SDKs.',
+    type: 'boolean',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: true,
+    changelog: [{ version: '0.5.0' }],
   },
   [SENTRY_MODULE_KEY]: {
     brief: 'A module that was loaded in the process. The key is the name of the module.',
@@ -16103,6 +18368,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: true,
     changelog: [{ version: '0.3.0', prs: [185] }],
   },
+  [SENTRY_REPORT_EVENT]: {
+    brief: '(Deprecated) The event that caused the SDK to report CLS or LCP (pagehide or navigation)',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'pagehide',
+    deprecation: {
+      reason:
+        'The report event is now recorded as a browser.web_vital.lcp.report_event or browser.web_vital.cls.report_event attribute. No backfill required.',
+    },
+    sdks: ['javascript-browser'],
+    changelog: [{ version: '0.5.0', prs: [320], description: 'Added sentry.report_event attribute' }],
+  },
   [SENTRY_SDK_INTEGRATIONS]: {
     brief:
       'A list of names identifying enabled integrations. The list shouldhave all enabled integrations, including default integrations. Defaultintegrations are included because different SDK releases may contain differentdefault integrations.',
@@ -16192,7 +18472,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'sentry.span.source',
       reason: 'This attribute is being deprecated in favor of sentry.span.source',
     },
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.5.0' }],
   },
   [SENTRY_SPAN_SOURCE]: {
     brief:
@@ -16235,7 +18515,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 0,
-    changelog: [{ version: 'next', prs: [262] }],
+    changelog: [{ version: '0.5.0', prs: [262] }],
   },
   [SENTRY_TRACE_PARENT_SPAN_ID]: {
     brief:
@@ -16248,7 +18528,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'b0e6f15b45c36b12',
     deprecation: {},
     changelog: [
-      { version: 'next', prs: [287], description: 'Deprecate `sentry.trace.parent_span_id`' },
+      { version: '0.5.0', prs: [287], description: 'Deprecate `sentry.trace.parent_span_id`' },
       { version: '0.1.0', prs: [116] },
     ],
   },
@@ -16338,6 +18618,44 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['sentry.java.android'],
     changelog: [{ version: '0.3.0', prs: [183] }],
   },
+  [TIME_TO_FULL_DISPLAY]: {
+    brief: 'The duration of time to full display in milliseconds',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1234.56,
+    deprecation: {
+      replacement: 'app.vitals.ttfd.value',
+      reason:
+        'Replaced by app.vitals.ttfd.value to align with the app.vitals.* namespace for mobile performance attributes',
+    },
+    aliases: [APP_VITALS_TTFD_VALUE],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [
+      { version: '0.5.0', prs: [313], description: 'Added and deprecated in favor of app.vitals.ttfd.value' },
+    ],
+  },
+  [TIME_TO_INITIAL_DISPLAY]: {
+    brief: 'The duration of time to initial display in milliseconds',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1234.56,
+    deprecation: {
+      replacement: 'app.vitals.ttid.value',
+      reason:
+        'Replaced by app.vitals.ttid.value to align with the app.vitals.* namespace for mobile performance attributes',
+    },
+    aliases: [APP_VITALS_TTID_VALUE],
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [
+      { version: '0.5.0', prs: [313], description: 'Added and deprecated in favor of app.vitals.ttid.value' },
+    ],
+  },
   [TRANSACTION]: {
     brief: 'The sentry transaction (segment name).',
     type: 'string',
@@ -16366,7 +18684,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [BROWSER_WEB_VITAL_TTFB_VALUE],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [235] }],
+    changelog: [{ version: '0.5.0', prs: [235] }],
   },
   [TTFB_REQUESTTIME]: {
     brief:
@@ -16383,7 +18701,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [BROWSER_WEB_VITAL_TTFB_REQUEST_TIME],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [235] }],
+    changelog: [{ version: '0.5.0', prs: [235] }],
   },
   [TYPE]: {
     brief: 'More granular type of the operation happening.',
@@ -16435,7 +18753,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 256,
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [284], description: 'Added ui.element.height attribute' }],
+    changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.height attribute' }],
   },
   [UI_ELEMENT_ID]: {
     brief: 'The id of the UI element',
@@ -16446,7 +18764,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'btn-login',
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [284], description: 'Added ui.element.id attribute' }],
+    changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.id attribute' }],
   },
   [UI_ELEMENT_IDENTIFIER]: {
     brief: 'The identifier used to measure the UI element timing',
@@ -16457,7 +18775,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'heroImage',
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [284], description: 'Added ui.element.identifier attribute' }],
+    changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.identifier attribute' }],
   },
   [UI_ELEMENT_LOAD_TIME]: {
     brief: 'The loading time of a UI element (from time origin to finished loading)',
@@ -16468,7 +18786,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 998.2234,
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [284], description: 'Added ui.element.load_time attribute' }],
+    changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.load_time attribute' }],
   },
   [UI_ELEMENT_PAINT_TYPE]: {
     brief: "The type of element paint. Can either be 'image-paint' or 'text-paint'",
@@ -16479,7 +18797,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'image-paint',
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [284], description: 'Added ui.element.paint_type attribute' }],
+    changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.paint_type attribute' }],
   },
   [UI_ELEMENT_RENDER_TIME]: {
     brief: 'The rendering time of the UI element (from time origin to finished rendering)',
@@ -16490,7 +18808,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 1023.1124,
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [284], description: 'Added ui.element.render_time attribute' }],
+    changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.render_time attribute' }],
   },
   [UI_ELEMENT_TYPE]: {
     brief: 'type of the UI element',
@@ -16501,7 +18819,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'img',
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [284], description: 'Added ui.element.type attribute' }],
+    changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.type attribute' }],
   },
   [UI_ELEMENT_URL]: {
     brief: 'The URL of the UI element (e.g. an img src)',
@@ -16512,7 +18830,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'https://assets.myapp.com/hero.png',
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [284], description: 'Added ui.element.url attribute' }],
+    changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.url attribute' }],
   },
   [UI_ELEMENT_WIDTH]: {
     brief: 'The width of the UI element (for HTML in pixels)',
@@ -16523,7 +18841,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 512,
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [284], description: 'Added ui.element.width attribute' }],
+    changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.width attribute' }],
   },
   [URL]: {
     brief: 'The URL of the resource that was fetched.',
@@ -17163,20 +19481,39 @@ export type Attributes = {
   [AI_TOTAL_COST]?: AI_TOTAL_COST_TYPE;
   [AI_TOTAL_TOKENS_USED]?: AI_TOTAL_TOKENS_USED_TYPE;
   [AI_WARNINGS]?: AI_WARNINGS_TYPE;
+  [APP_APP_BUILD]?: APP_APP_BUILD_TYPE;
+  [APP_APP_IDENTIFIER]?: APP_APP_IDENTIFIER_TYPE;
+  [APP_APP_NAME]?: APP_APP_NAME_TYPE;
+  [APP_APP_START_TIME]?: APP_APP_START_TIME_TYPE;
+  [APP_APP_VERSION]?: APP_APP_VERSION_TYPE;
   [APP_BUILD]?: APP_BUILD_TYPE;
   [APP_IDENTIFIER]?: APP_IDENTIFIER_TYPE;
   [APP_IN_FOREGROUND]?: APP_IN_FOREGROUND_TYPE;
   [APP_NAME]?: APP_NAME_TYPE;
+  [APP_START_COLD]?: APP_START_COLD_TYPE;
   [APP_START_TIME]?: APP_START_TIME_TYPE;
   [APP_START_TYPE]?: APP_START_TYPE_TYPE;
+  [APP_START_WARM]?: APP_START_WARM_TYPE;
   [APP_VERSION]?: APP_VERSION_TYPE;
+  [APP_VITALS_FRAMES_DELAY_VALUE]?: APP_VITALS_FRAMES_DELAY_VALUE_TYPE;
+  [APP_VITALS_FRAMES_FROZEN_COUNT]?: APP_VITALS_FRAMES_FROZEN_COUNT_TYPE;
+  [APP_VITALS_FRAMES_SLOW_COUNT]?: APP_VITALS_FRAMES_SLOW_COUNT_TYPE;
+  [APP_VITALS_FRAMES_TOTAL_COUNT]?: APP_VITALS_FRAMES_TOTAL_COUNT_TYPE;
+  [APP_VITALS_START_COLD_VALUE]?: APP_VITALS_START_COLD_VALUE_TYPE;
+  [APP_VITALS_START_TYPE]?: APP_VITALS_START_TYPE_TYPE;
+  [APP_VITALS_START_WARM_VALUE]?: APP_VITALS_START_WARM_VALUE_TYPE;
+  [APP_VITALS_TTFD_VALUE]?: APP_VITALS_TTFD_VALUE_TYPE;
+  [APP_VITALS_TTID_VALUE]?: APP_VITALS_TTID_VALUE_TYPE;
   [BLOCKED_MAIN_THREAD]?: BLOCKED_MAIN_THREAD_TYPE;
   [BROWSER_NAME]?: BROWSER_NAME_TYPE;
+  [BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START]?: BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START_TYPE;
+  [BROWSER_PERFORMANCE_TIME_ORIGIN]?: BROWSER_PERFORMANCE_TIME_ORIGIN_TYPE;
   [BROWSER_REPORT_TYPE]?: BROWSER_REPORT_TYPE_TYPE;
   [BROWSER_SCRIPT_INVOKER]?: BROWSER_SCRIPT_INVOKER_TYPE;
   [BROWSER_SCRIPT_INVOKER_TYPE]?: BROWSER_SCRIPT_INVOKER_TYPE_TYPE;
   [BROWSER_SCRIPT_SOURCE_CHAR_POSITION]?: BROWSER_SCRIPT_SOURCE_CHAR_POSITION_TYPE;
   [BROWSER_VERSION]?: BROWSER_VERSION_TYPE;
+  [BROWSER_WEB_VITAL_CLS_REPORT_EVENT]?: BROWSER_WEB_VITAL_CLS_REPORT_EVENT_TYPE;
   [BROWSER_WEB_VITAL_CLS_SOURCE_KEY]?: BROWSER_WEB_VITAL_CLS_SOURCE_KEY_TYPE;
   [BROWSER_WEB_VITAL_CLS_VALUE]?: BROWSER_WEB_VITAL_CLS_VALUE_TYPE;
   [BROWSER_WEB_VITAL_FCP_VALUE]?: BROWSER_WEB_VITAL_FCP_VALUE_TYPE;
@@ -17186,6 +19523,7 @@ export type Attributes = {
   [BROWSER_WEB_VITAL_LCP_ID]?: BROWSER_WEB_VITAL_LCP_ID_TYPE;
   [BROWSER_WEB_VITAL_LCP_LOAD_TIME]?: BROWSER_WEB_VITAL_LCP_LOAD_TIME_TYPE;
   [BROWSER_WEB_VITAL_LCP_RENDER_TIME]?: BROWSER_WEB_VITAL_LCP_RENDER_TIME_TYPE;
+  [BROWSER_WEB_VITAL_LCP_REPORT_EVENT]?: BROWSER_WEB_VITAL_LCP_REPORT_EVENT_TYPE;
   [BROWSER_WEB_VITAL_LCP_SIZE]?: BROWSER_WEB_VITAL_LCP_SIZE_TYPE;
   [BROWSER_WEB_VITAL_LCP_URL]?: BROWSER_WEB_VITAL_LCP_URL_TYPE;
   [BROWSER_WEB_VITAL_LCP_VALUE]?: BROWSER_WEB_VITAL_LCP_VALUE_TYPE;
@@ -17220,6 +19558,7 @@ export type Attributes = {
   [CULTURE_LOCALE]?: CULTURE_LOCALE_TYPE;
   [CULTURE_TIMEZONE]?: CULTURE_TIMEZONE_TYPE;
   [DB_COLLECTION_NAME]?: DB_COLLECTION_NAME_TYPE;
+  [DB_DRIVER_NAME]?: DB_DRIVER_NAME_TYPE;
   [DB_NAME]?: DB_NAME_TYPE;
   [DB_NAMESPACE]?: DB_NAMESPACE_TYPE;
   [DB_OPERATION]?: DB_OPERATION_TYPE;
@@ -17235,17 +19574,44 @@ export type Attributes = {
   [DB_SYSTEM_NAME]?: DB_SYSTEM_NAME_TYPE;
   [DB_USER]?: DB_USER_TYPE;
   [DEVICEMEMORY]?: DEVICEMEMORY_TYPE;
+  [DEVICE_ARCHS]?: DEVICE_ARCHS_TYPE;
+  [DEVICE_BATTERY_LEVEL]?: DEVICE_BATTERY_LEVEL_TYPE;
+  [DEVICE_BATTERY_TEMPERATURE]?: DEVICE_BATTERY_TEMPERATURE_TYPE;
+  [DEVICE_BOOT_TIME]?: DEVICE_BOOT_TIME_TYPE;
   [DEVICE_BRAND]?: DEVICE_BRAND_TYPE;
+  [DEVICE_CHARGING]?: DEVICE_CHARGING_TYPE;
+  [DEVICE_CHIPSET]?: DEVICE_CHIPSET_TYPE;
   [DEVICE_CLASS]?: DEVICE_CLASS_TYPE;
+  [DEVICE_CONNECTION_TYPE]?: DEVICE_CONNECTION_TYPE_TYPE;
+  [DEVICE_CPU_DESCRIPTION]?: DEVICE_CPU_DESCRIPTION_TYPE;
+  [DEVICE_EXTERNAL_FREE_STORAGE]?: DEVICE_EXTERNAL_FREE_STORAGE_TYPE;
+  [DEVICE_EXTERNAL_STORAGE_SIZE]?: DEVICE_EXTERNAL_STORAGE_SIZE_TYPE;
   [DEVICE_FAMILY]?: DEVICE_FAMILY_TYPE;
   [DEVICE_FREE_MEMORY]?: DEVICE_FREE_MEMORY_TYPE;
+  [DEVICE_FREE_STORAGE]?: DEVICE_FREE_STORAGE_TYPE;
+  [DEVICE_ID]?: DEVICE_ID_TYPE;
+  [DEVICE_LOCALE]?: DEVICE_LOCALE_TYPE;
+  [DEVICE_LOW_MEMORY]?: DEVICE_LOW_MEMORY_TYPE;
   [DEVICE_LOW_POWER_MODE]?: DEVICE_LOW_POWER_MODE_TYPE;
+  [DEVICE_MANUFACTURER]?: DEVICE_MANUFACTURER_TYPE;
   [DEVICE_MEMORY_ESTIMATED_CAPACITY]?: DEVICE_MEMORY_ESTIMATED_CAPACITY_TYPE;
   [DEVICE_MEMORY_SIZE]?: DEVICE_MEMORY_SIZE_TYPE;
   [DEVICE_MODEL]?: DEVICE_MODEL_TYPE;
   [DEVICE_MODEL_ID]?: DEVICE_MODEL_ID_TYPE;
+  [DEVICE_NAME]?: DEVICE_NAME_TYPE;
+  [DEVICE_ONLINE]?: DEVICE_ONLINE_TYPE;
+  [DEVICE_ORIENTATION]?: DEVICE_ORIENTATION_TYPE;
   [DEVICE_PROCESSOR_COUNT]?: DEVICE_PROCESSOR_COUNT_TYPE;
+  [DEVICE_PROCESSOR_FREQUENCY]?: DEVICE_PROCESSOR_FREQUENCY_TYPE;
+  [DEVICE_SCREEN_DENSITY]?: DEVICE_SCREEN_DENSITY_TYPE;
+  [DEVICE_SCREEN_DPI]?: DEVICE_SCREEN_DPI_TYPE;
+  [DEVICE_SCREEN_HEIGHT_PIXELS]?: DEVICE_SCREEN_HEIGHT_PIXELS_TYPE;
+  [DEVICE_SCREEN_WIDTH_PIXELS]?: DEVICE_SCREEN_WIDTH_PIXELS_TYPE;
   [DEVICE_SIMULATOR]?: DEVICE_SIMULATOR_TYPE;
+  [DEVICE_STORAGE_SIZE]?: DEVICE_STORAGE_SIZE_TYPE;
+  [DEVICE_THERMAL_STATE]?: DEVICE_THERMAL_STATE_TYPE;
+  [DEVICE_TIMEZONE]?: DEVICE_TIMEZONE_TYPE;
+  [DEVICE_USABLE_MEMORY]?: DEVICE_USABLE_MEMORY_TYPE;
   [EFFECTIVECONNECTIONTYPE]?: EFFECTIVECONNECTIONTYPE_TYPE;
   [ENVIRONMENT]?: ENVIRONMENT_TYPE;
   [ERROR_TYPE]?: ERROR_TYPE_TYPE;
@@ -17268,11 +19634,14 @@ export type Attributes = {
   [FRAMES_TOTAL]?: FRAMES_TOTAL_TYPE;
   [FS_ERROR]?: FS_ERROR_TYPE;
   [GEN_AI_AGENT_NAME]?: GEN_AI_AGENT_NAME_TYPE;
+  [GEN_AI_CONTEXT_UTILIZATION]?: GEN_AI_CONTEXT_UTILIZATION_TYPE;
+  [GEN_AI_CONTEXT_WINDOW_SIZE]?: GEN_AI_CONTEXT_WINDOW_SIZE_TYPE;
   [GEN_AI_CONVERSATION_ID]?: GEN_AI_CONVERSATION_ID_TYPE;
   [GEN_AI_COST_INPUT_TOKENS]?: GEN_AI_COST_INPUT_TOKENS_TYPE;
   [GEN_AI_COST_OUTPUT_TOKENS]?: GEN_AI_COST_OUTPUT_TOKENS_TYPE;
   [GEN_AI_COST_TOTAL_TOKENS]?: GEN_AI_COST_TOTAL_TOKENS_TYPE;
   [GEN_AI_EMBEDDINGS_INPUT]?: GEN_AI_EMBEDDINGS_INPUT_TYPE;
+  [GEN_AI_FUNCTION_ID]?: GEN_AI_FUNCTION_ID_TYPE;
   [GEN_AI_INPUT_MESSAGES]?: GEN_AI_INPUT_MESSAGES_TYPE;
   [GEN_AI_OPERATION_NAME]?: GEN_AI_OPERATION_NAME_TYPE;
   [GEN_AI_OPERATION_TYPE]?: GEN_AI_OPERATION_TYPE_TYPE;
@@ -17456,9 +19825,14 @@ export type Attributes = {
   [NET_SOCK_PEER_NAME]?: NET_SOCK_PEER_NAME_TYPE;
   [NET_SOCK_PEER_PORT]?: NET_SOCK_PEER_PORT_TYPE;
   [NET_TRANSPORT]?: NET_TRANSPORT_TYPE;
+  [OS_BUILD]?: OS_BUILD_TYPE;
   [OS_BUILD_ID]?: OS_BUILD_ID_TYPE;
   [OS_DESCRIPTION]?: OS_DESCRIPTION_TYPE;
+  [OS_KERNEL_VERSION]?: OS_KERNEL_VERSION_TYPE;
   [OS_NAME]?: OS_NAME_TYPE;
+  [OS_RAW_DESCRIPTION]?: OS_RAW_DESCRIPTION_TYPE;
+  [OS_ROOTED]?: OS_ROOTED_TYPE;
+  [OS_THEME]?: OS_THEME_TYPE;
   [OS_TYPE]?: OS_TYPE_TYPE;
   [OS_VERSION]?: OS_VERSION_TYPE;
   [OTEL_SCOPE_NAME]?: OTEL_SCOPE_NAME_TYPE;
@@ -17466,6 +19840,8 @@ export type Attributes = {
   [OTEL_STATUS_CODE]?: OTEL_STATUS_CODE_TYPE;
   [OTEL_STATUS_DESCRIPTION]?: OTEL_STATUS_DESCRIPTION_TYPE;
   [PARAMS_KEY]?: PARAMS_KEY_TYPE;
+  [PERFORMANCE_ACTIVATIONSTART]?: PERFORMANCE_ACTIVATIONSTART_TYPE;
+  [PERFORMANCE_TIMEORIGIN]?: PERFORMANCE_TIMEORIGIN_TYPE;
   [PREVIOUS_ROUTE]?: PREVIOUS_ROUTE_TYPE;
   [PROCESS_EXECUTABLE_NAME]?: PROCESS_EXECUTABLE_NAME_TYPE;
   [PROCESS_PID]?: PROCESS_PID_TYPE;
@@ -17506,8 +19882,10 @@ export type Attributes = {
   [SENTRY_IDLE_SPAN_FINISH_REASON]?: SENTRY_IDLE_SPAN_FINISH_REASON_TYPE;
   [SENTRY_IS_REMOTE]?: SENTRY_IS_REMOTE_TYPE;
   [SENTRY_KIND]?: SENTRY_KIND_TYPE;
+  [SENTRY_MAIN_THREAD]?: SENTRY_MAIN_THREAD_TYPE;
   [SENTRY_MESSAGE_PARAMETER_KEY]?: SENTRY_MESSAGE_PARAMETER_KEY_TYPE;
   [SENTRY_MESSAGE_TEMPLATE]?: SENTRY_MESSAGE_TEMPLATE_TYPE;
+  [SENTRY_MOBILE]?: SENTRY_MOBILE_TYPE;
   [SENTRY_MODULE_KEY]?: SENTRY_MODULE_KEY_TYPE;
   [SENTRY_NEXTJS_SSR_FUNCTION_ROUTE]?: SENTRY_NEXTJS_SSR_FUNCTION_ROUTE_TYPE;
   [SENTRY_NEXTJS_SSR_FUNCTION_TYPE]?: SENTRY_NEXTJS_SSR_FUNCTION_TYPE_TYPE;
@@ -17522,6 +19900,7 @@ export type Attributes = {
   [SENTRY_RELEASE]?: SENTRY_RELEASE_TYPE;
   [SENTRY_REPLAY_ID]?: SENTRY_REPLAY_ID_TYPE;
   [SENTRY_REPLAY_IS_BUFFERING]?: SENTRY_REPLAY_IS_BUFFERING_TYPE;
+  [SENTRY_REPORT_EVENT]?: SENTRY_REPORT_EVENT_TYPE;
   [SENTRY_SDK_INTEGRATIONS]?: SENTRY_SDK_INTEGRATIONS_TYPE;
   [SENTRY_SDK_NAME]?: SENTRY_SDK_NAME_TYPE;
   [SENTRY_SDK_VERSION]?: SENTRY_SDK_VERSION_TYPE;
@@ -17543,6 +19922,8 @@ export type Attributes = {
   [THREAD_ID]?: THREAD_ID_TYPE;
   [THREAD_NAME]?: THREAD_NAME_TYPE;
   [TIMBER_TAG]?: TIMBER_TAG_TYPE;
+  [TIME_TO_FULL_DISPLAY]?: TIME_TO_FULL_DISPLAY_TYPE;
+  [TIME_TO_INITIAL_DISPLAY]?: TIME_TO_INITIAL_DISPLAY_TYPE;
   [TRANSACTION]?: TRANSACTION_TYPE;
   [TTFB]?: TTFB_TYPE;
   [TTFB_REQUESTTIME]?: TTFB_REQUESTTIME_TYPE;

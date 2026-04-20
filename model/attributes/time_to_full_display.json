@@ -1,0 +1,24 @@
+{
+  "key": "time_to_full_display",
+  "brief": "The duration of time to full display in milliseconds",
+  "type": "double",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": 1234.56,
+  "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
+  "alias": ["app.vitals.ttfd.value"],
+  "deprecation": {
+    "replacement": "app.vitals.ttfd.value",
+    "reason": "Replaced by app.vitals.ttfd.value to align with the app.vitals.* namespace for mobile performance attributes",
+    "_status": "backfill"
+  },
+  "changelog": [
+    {
+      "version": "0.5.0",
+      "prs": [313],
+      "description": "Added and deprecated in favor of app.vitals.ttfd.value"
+    }
+  ]
+}

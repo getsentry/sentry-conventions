@@ -1,0 +1,17 @@
+{
+  "key": "device.cpu_description",
+  "brief": "A description of the CPU of the device.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "Intel(R) Core(TM)2 Quad CPU Q6600 @ 2.40GHz",
+  "changelog": [
+    {
+      "version": "0.5.0",
+      "prs": [303],
+      "description": "Added device.cpu_description attribute"
+    }
+  ]
+}

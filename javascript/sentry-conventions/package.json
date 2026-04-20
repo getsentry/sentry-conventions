@@ -1,7 +1,7 @@
 {
   "name": "@sentry/conventions",
   "license": "MIT",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "exports": {
     ".": {
       "import": "./dist/index.mjs",

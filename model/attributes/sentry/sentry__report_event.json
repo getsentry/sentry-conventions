@@ -1,0 +1,22 @@
+{
+  "key": "sentry.report_event",
+  "brief": "(Deprecated) The event that caused the SDK to report CLS or LCP (pagehide or navigation)",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "pagehide",
+  "sdks": ["javascript-browser"],
+  "deprecation": {
+    "reason": "The report event is now recorded as a browser.web_vital.lcp.report_event or browser.web_vital.cls.report_event attribute. No backfill required.",
+    "_status": null
+  },
+  "changelog": [
+    {
+      "version": "0.5.0",
+      "prs": [320],
+      "description": "Added sentry.report_event attribute"
+    }
+  ]
+}

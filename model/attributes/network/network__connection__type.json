@@ -7,11 +7,11 @@
   },
   "is_in_otel": true,
   "example": "wifi",
-  "alias": ["connectionType"],
+  "alias": ["device.connection_type", "connectionType"],
   "sdks": ["javascript-browser"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.5.0",
       "prs": [279],
       "description": "Added attribute network.connection.type to be used instead of connectionType"
     }

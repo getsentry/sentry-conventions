@@ -1,0 +1,17 @@
+{
+  "key": "device.battery_temperature",
+  "brief": "The battery temperature of the device in Celsius.",
+  "type": "double",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": 25,
+  "changelog": [
+    {
+      "version": "0.5.0",
+      "prs": [303],
+      "description": "Added device.battery_temperature attribute"
+    }
+  ]
+}
