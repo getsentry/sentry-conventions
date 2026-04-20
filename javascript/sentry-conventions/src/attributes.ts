@@ -2345,6 +2345,26 @@ export const DEVICE_FREE_MEMORY = 'device.free_memory';
  */
 export type DEVICE_FREE_MEMORY_TYPE = number;
 
+// Path: model/attributes/device/device__low_power_mode.json
+
+/**
+ * Whether the device is in Low Power Mode. `device.low_power_mode`
+ *
+ * Attribute Value Type: `boolean` {@link DEVICE_LOW_POWER_MODE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example true
+ */
+export const DEVICE_LOW_POWER_MODE = 'device.low_power_mode';
+
+/**
+ * Type for {@link DEVICE_LOW_POWER_MODE} device.low_power_mode
+ */
+export type DEVICE_LOW_POWER_MODE_TYPE = boolean;
+
 // Path: model/attributes/device/device__memory__estimated_capacity.json
 
 /**
@@ -2468,26 +2488,6 @@ export const DEVICE_SIMULATOR = 'device.simulator';
  * Type for {@link DEVICE_SIMULATOR} device.simulator
  */
 export type DEVICE_SIMULATOR_TYPE = boolean;
-
-// Path: model/attributes/device/device__low_power_mode.json
-
-/**
- * Whether the device is in Low Power Mode. `device.low_power_mode`
- *
- * Attribute Value Type: `boolean` {@link DEVICE_LOW_POWER_MODE_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * @example true
- */
-export const DEVICE_LOW_POWER_MODE = 'device.low_power_mode';
-
-/**
- * Type for {@link DEVICE_LOW_POWER_MODE} device.low_power_mode
- */
-export type DEVICE_LOW_POWER_MODE_TYPE = boolean;
 
 // Path: model/attributes/effectiveConnectionType.json
 
@@ -10347,13 +10347,13 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [DEVICE_CLASS]: 'string',
   [DEVICE_FAMILY]: 'string',
   [DEVICE_FREE_MEMORY]: 'integer',
+  [DEVICE_LOW_POWER_MODE]: 'boolean',
   [DEVICE_MEMORY_ESTIMATED_CAPACITY]: 'integer',
   [DEVICE_MEMORY_SIZE]: 'integer',
   [DEVICE_MODEL]: 'string',
   [DEVICE_MODEL_ID]: 'string',
   [DEVICE_PROCESSOR_COUNT]: 'integer',
   [DEVICE_SIMULATOR]: 'boolean',
-  [DEVICE_LOW_POWER_MODE]: 'boolean',
   [EFFECTIVECONNECTIONTYPE]: 'string',
   [ENVIRONMENT]: 'string',
   [ERROR_TYPE]: 'string',
@@ -10836,13 +10836,13 @@ export type AttributeName =
   | typeof DEVICE_CLASS
   | typeof DEVICE_FAMILY
   | typeof DEVICE_FREE_MEMORY
+  | typeof DEVICE_LOW_POWER_MODE
   | typeof DEVICE_MEMORY_ESTIMATED_CAPACITY
   | typeof DEVICE_MEMORY_SIZE
   | typeof DEVICE_MODEL
   | typeof DEVICE_MODEL_ID
   | typeof DEVICE_PROCESSOR_COUNT
   | typeof DEVICE_SIMULATOR
-  | typeof DEVICE_LOW_POWER_MODE
   | typeof EFFECTIVECONNECTIONTYPE
   | typeof ENVIRONMENT
   | typeof ERROR_TYPE
@@ -12644,6 +12644,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 2147483648,
     changelog: [{ version: 'next', prs: [300], description: 'Added device.free_memory attribute' }],
   },
+  [DEVICE_LOW_POWER_MODE]: {
+    brief: 'Whether the device is in Low Power Mode.',
+    type: 'boolean',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: true,
+    sdks: ['sentry.cocoa'],
+    changelog: [{ version: 'next', description: 'Added device.low_power_mode attribute' }],
+  },
   [DEVICE_MEMORY_ESTIMATED_CAPACITY]: {
     brief:
       'The estimated total memory capacity of the device, only a rough estimation in gigabytes. Browsers report estimations in buckets of powers of 2, mostly capped at 8 GB',
@@ -12724,17 +12735,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: false,
     changelog: [{ version: 'next', prs: [300], description: 'Added device.simulator attribute' }],
-  },
-  [DEVICE_LOW_POWER_MODE]: {
-    brief: 'Whether the device is in Low Power Mode.',
-    type: 'boolean',
-    pii: {
-      isPii: 'false',
-    },
-    isInOtel: false,
-    sdks: ['sentry.cocoa'],
-    example: true,
-    changelog: [{ version: 'next', description: 'Added device.low_power_mode attribute' }],
   },
   [EFFECTIVECONNECTIONTYPE]: {
     brief: 'Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).',
@@ -17239,6 +17239,7 @@ export type Attributes = {
   [DEVICE_CLASS]?: DEVICE_CLASS_TYPE;
   [DEVICE_FAMILY]?: DEVICE_FAMILY_TYPE;
   [DEVICE_FREE_MEMORY]?: DEVICE_FREE_MEMORY_TYPE;
+  [DEVICE_LOW_POWER_MODE]?: DEVICE_LOW_POWER_MODE_TYPE;
   [DEVICE_MEMORY_ESTIMATED_CAPACITY]?: DEVICE_MEMORY_ESTIMATED_CAPACITY_TYPE;
   [DEVICE_MEMORY_SIZE]?: DEVICE_MEMORY_SIZE_TYPE;
   [DEVICE_MODEL]?: DEVICE_MODEL_TYPE;

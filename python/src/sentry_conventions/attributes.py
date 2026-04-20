@@ -1462,6 +1462,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 2147483648
     """
 
+    # Path: model/attributes/device/device__low_power_mode.json
+    DEVICE_LOW_POWER_MODE: Literal["device.low_power_mode"] = "device.low_power_mode"
+    """Whether the device is in Low Power Mode.
+
+    Type: bool
+    Contains PII: false
+    Defined in OTEL: No
+    Example: true
+    """
+
     # Path: model/attributes/device/device__memory__estimated_capacity.json
     DEVICE_MEMORY_ESTIMATED_CAPACITY: Literal["device.memory.estimated_capacity"] = (
         "device.memory.estimated_capacity"
@@ -1524,16 +1534,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: false
     Defined in OTEL: No
     Example: false
-    """
-
-    # Path: model/attributes/device/device__low_power_mode.json
-    DEVICE_LOW_POWER_MODE: Literal["device.low_power_mode"] = "device.low_power_mode"
-    """Whether the device is in Low Power Mode.
-
-    Type: bool
-    Contains PII: false
-    Defined in OTEL: No
-    Example: true
     """
 
     # Path: model/attributes/deviceMemory.json
@@ -7047,6 +7047,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "device.low_power_mode": AttributeMetadata(
+        brief="Whether the device is in Low Power Mode.",
+        type=AttributeType.BOOLEAN,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=True,
+        sdks=["sentry.cocoa"],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added device.low_power_mode attribute"
+            ),
+        ],
+    ),
     "device.memory.estimated_capacity": AttributeMetadata(
         brief="The estimated total memory capacity of the device, only a rough estimation in gigabytes. Browsers report estimations in buckets of powers of 2, mostly capped at 8 GB",
         type=AttributeType.INTEGER,
@@ -11613,6 +11626,7 @@ Attributes = TypedDict(
         "device.class": str,
         "device.family": str,
         "device.free_memory": int,
+        "device.low_power_mode": bool,
         "device.memory.estimated_capacity": int,
         "device.memory_size": int,
         "device.model": str,
