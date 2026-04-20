@@ -14608,7 +14608,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: true,
     sdks: ['sentry.cocoa'],
-    changelog: [{ version: 'next', description: 'Added device.low_power_mode attribute' }],
+    changelog: [{ version: 'next', prs: [314], description: 'Added device.low_power_mode attribute' }],
   },
   [DEVICE_MANUFACTURER]: {
     brief: 'The manufacturer of the device.',

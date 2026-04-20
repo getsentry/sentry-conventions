@@ -11,6 +11,7 @@
   "changelog": [
     {
       "version": "next",
+      "prs": [314],
       "description": "Added device.low_power_mode attribute"
     }
   ]

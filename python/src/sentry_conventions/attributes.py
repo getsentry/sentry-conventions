@@ -8456,7 +8456,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["sentry.cocoa"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added device.low_power_mode attribute"
+                version="next",
+                prs=[314],
+                description="Added device.low_power_mode attribute",
             ),
         ],
     ),
