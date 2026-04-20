@@ -1,0 +1,18 @@
+{
+  "key": "device.low_power_mode",
+  "brief": "Whether the device is in Low Power Mode.",
+  "type": "boolean",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "sdks": ["sentry.cocoa"],
+  "example": true,
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [314],
+      "description": "Added device.low_power_mode attribute"
+    }
+  ]
+}

@@ -3104,6 +3104,26 @@ export const DEVICE_LOW_MEMORY = 'device.low_memory';
  */
 export type DEVICE_LOW_MEMORY_TYPE = boolean;
 
+// Path: model/attributes/device/device__low_power_mode.json
+
+/**
+ * Whether the device is in Low Power Mode. `device.low_power_mode`
+ *
+ * Attribute Value Type: `boolean` {@link DEVICE_LOW_POWER_MODE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example true
+ */
+export const DEVICE_LOW_POWER_MODE = 'device.low_power_mode';
+
+/**
+ * Type for {@link DEVICE_LOW_POWER_MODE} device.low_power_mode
+ */
+export type DEVICE_LOW_POWER_MODE_TYPE = boolean;
+
 // Path: model/attributes/device/device__manufacturer.json
 
 /**
@@ -11712,6 +11732,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [DEVICE_ID]: 'string',
   [DEVICE_LOCALE]: 'string',
   [DEVICE_LOW_MEMORY]: 'boolean',
+  [DEVICE_LOW_POWER_MODE]: 'boolean',
   [DEVICE_MANUFACTURER]: 'string',
   [DEVICE_MEMORY_ESTIMATED_CAPACITY]: 'integer',
   [DEVICE_MEMORY_SIZE]: 'integer',
@@ -12263,6 +12284,7 @@ export type AttributeName =
   | typeof DEVICE_ID
   | typeof DEVICE_LOCALE
   | typeof DEVICE_LOW_MEMORY
+  | typeof DEVICE_LOW_POWER_MODE
   | typeof DEVICE_MANUFACTURER
   | typeof DEVICE_MEMORY_ESTIMATED_CAPACITY
   | typeof DEVICE_MEMORY_SIZE
@@ -14576,6 +14598,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: false,
     changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.low_memory attribute' }],
+  },
+  [DEVICE_LOW_POWER_MODE]: {
+    brief: 'Whether the device is in Low Power Mode.',
+    type: 'boolean',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: true,
+    sdks: ['sentry.cocoa'],
+    changelog: [{ version: 'next', prs: [314], description: 'Added device.low_power_mode attribute' }],
   },
   [DEVICE_MANUFACTURER]: {
     brief: 'The manufacturer of the device.',
@@ -19559,6 +19592,7 @@ export type Attributes = {
   [DEVICE_ID]?: DEVICE_ID_TYPE;
   [DEVICE_LOCALE]?: DEVICE_LOCALE_TYPE;
   [DEVICE_LOW_MEMORY]?: DEVICE_LOW_MEMORY_TYPE;
+  [DEVICE_LOW_POWER_MODE]?: DEVICE_LOW_POWER_MODE_TYPE;
   [DEVICE_MANUFACTURER]?: DEVICE_MANUFACTURER_TYPE;
   [DEVICE_MEMORY_ESTIMATED_CAPACITY]?: DEVICE_MEMORY_ESTIMATED_CAPACITY_TYPE;
   [DEVICE_MEMORY_SIZE]?: DEVICE_MEMORY_SIZE_TYPE;

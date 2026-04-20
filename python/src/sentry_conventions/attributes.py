@@ -1892,6 +1892,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: false
     """
 
+    # Path: model/attributes/device/device__low_power_mode.json
+    DEVICE_LOW_POWER_MODE: Literal["device.low_power_mode"] = "device.low_power_mode"
+    """Whether the device is in Low Power Mode.
+
+    Type: bool
+    Contains PII: false
+    Defined in OTEL: No
+    Example: true
+    """
+
     # Path: model/attributes/device/device__manufacturer.json
     DEVICE_MANUFACTURER: Literal["device.manufacturer"] = "device.manufacturer"
     """The manufacturer of the device.
@@ -8437,6 +8447,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "device.low_power_mode": AttributeMetadata(
+        brief="Whether the device is in Low Power Mode.",
+        type=AttributeType.BOOLEAN,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=True,
+        sdks=["sentry.cocoa"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[314],
+                description="Added device.low_power_mode attribute",
+            ),
+        ],
+    ),
     "device.manufacturer": AttributeMetadata(
         brief="The manufacturer of the device.",
         type=AttributeType.STRING,
@@ -13505,6 +13530,7 @@ Attributes = TypedDict(
         "device.id": str,
         "device.locale": str,
         "device.low_memory": bool,
+        "device.low_power_mode": bool,
         "device.manufacturer": str,
         "device.memory.estimated_capacity": int,
         "device.memory_size": int,
