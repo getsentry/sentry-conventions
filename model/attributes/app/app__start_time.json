@@ -11,7 +11,7 @@
   "alias": ["app.app_start_time"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.5.0",
       "prs": [296],
       "description": "Added app.start_time attribute"
     }

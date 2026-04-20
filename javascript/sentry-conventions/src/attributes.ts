@@ -12679,7 +12679,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: ['Citation 1', 'Citation 2'],
     deprecation: {},
     changelog: [
-      { version: 'next', prs: [264] },
+      { version: '0.5.0', prs: [264] },
       { version: '0.1.0', prs: [55] },
     ],
   },
@@ -12708,7 +12708,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: ['document1.txt', 'document2.pdf'],
     deprecation: {},
     changelog: [
-      { version: 'next', prs: [264] },
+      { version: '0.5.0', prs: [264] },
       { version: '0.1.0', prs: [55] },
     ],
   },
@@ -12798,7 +12798,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: false,
     deprecation: {},
     changelog: [
-      { version: 'next', prs: [264] },
+      { version: '0.5.0', prs: [264] },
       { version: '0.1.0', prs: [55] },
     ],
   },
@@ -12812,7 +12812,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '{"user_id": 123, "session_id": "abc123"}',
     deprecation: {},
     changelog: [
-      { version: 'next', prs: [264] },
+      { version: '0.5.0', prs: [264] },
       { version: '0.1.0', prs: [55, 127] },
     ],
   },
@@ -12876,7 +12876,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [GEN_AI_SYSTEM_INSTRUCTIONS],
     changelog: [
-      { version: 'next', prs: [264] },
+      { version: '0.5.0', prs: [264] },
       { version: '0.1.0', prs: [55] },
     ],
   },
@@ -12923,7 +12923,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: true,
     deprecation: {},
     changelog: [
-      { version: 'next', prs: [264] },
+      { version: '0.5.0', prs: [264] },
       { version: '0.1.0', prs: [55] },
     ],
   },
@@ -12951,7 +12951,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'json_object',
     deprecation: {},
     changelog: [
-      { version: 'next', prs: [264] },
+      { version: '0.5.0', prs: [264] },
       { version: '0.1.0', prs: [55, 127] },
     ],
   },
@@ -12965,7 +12965,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: ['climate change effects', 'renewable energy'],
     deprecation: {},
     changelog: [
-      { version: 'next', prs: [264] },
+      { version: '0.5.0', prs: [264] },
       { version: '0.1.0', prs: [55] },
     ],
   },
@@ -12979,7 +12979,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: ['search_result_1, search_result_2'],
     deprecation: {},
     changelog: [
-      { version: 'next', prs: [264] },
+      { version: '0.5.0', prs: [264] },
       { version: '0.1.0', prs: [55] },
     ],
   },
@@ -13022,7 +13022,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '{"executed_function": "add_integers"}',
     deprecation: {},
     changelog: [
-      { version: 'next', prs: [264] },
+      { version: '0.5.0', prs: [264] },
       { version: '0.1.0', prs: [55, 127] },
     ],
   },
@@ -13057,7 +13057,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [GEN_AI_INPUT_MESSAGES],
     changelog: [
-      { version: 'next', prs: [264] },
+      { version: '0.5.0', prs: [264] },
       { version: '0.1.0', prs: [55] },
     ],
   },
@@ -13136,7 +13136,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [GEN_AI_COST_TOTAL_TOKENS],
     changelog: [
-      { version: 'next', prs: [264] },
+      { version: '0.5.0', prs: [264] },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [53] },
     ],
@@ -13166,7 +13166,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: ['Token limit exceeded'],
     deprecation: {},
     changelog: [
-      { version: 'next', prs: [264] },
+      { version: '0.5.0', prs: [264] },
       { version: '0.1.0', prs: [55] },
     ],
   },
@@ -13185,7 +13185,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [APP_BUILD],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
-      { version: 'next', prs: [296], description: 'Added and deprecated app.app_build in favor of app.build' },
+      { version: '0.5.0', prs: [296], description: 'Added and deprecated app.app_build in favor of app.build' },
     ],
   },
   [APP_APP_IDENTIFIER]: {
@@ -13204,7 +13204,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
       {
-        version: 'next',
+        version: '0.5.0',
         prs: [296],
         description: 'Added and deprecated app.app_identifier in favor of app.identifier',
       },
@@ -13224,7 +13224,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [APP_NAME],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
-    changelog: [{ version: 'next', prs: [296], description: 'Added and deprecated app.app_name in favor of app.name' }],
+    changelog: [
+      { version: '0.5.0', prs: [296], description: 'Added and deprecated app.app_name in favor of app.name' },
+    ],
   },
   [APP_APP_START_TIME]: {
     brief: 'Formatted UTC timestamp when the user started the application.',
@@ -13242,7 +13244,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
       {
-        version: 'next',
+        version: '0.5.0',
         prs: [296],
         description: 'Added and deprecated app.app_start_time in favor of app.start_time',
       },
@@ -13263,7 +13265,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [APP_VERSION],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
-      { version: 'next', prs: [296], description: 'Added and deprecated app.app_version in favor of app.version' },
+      { version: '0.5.0', prs: [296], description: 'Added and deprecated app.app_version in favor of app.version' },
     ],
   },
   [APP_BUILD]: {
@@ -13276,7 +13278,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '1',
     aliases: [APP_APP_BUILD],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
-    changelog: [{ version: 'next', prs: [296], description: 'Added app.build attribute' }],
+    changelog: [{ version: '0.5.0', prs: [296], description: 'Added app.build attribute' }],
   },
   [APP_IDENTIFIER]: {
     brief: 'Version-independent application identifier, often a dotted bundle ID.',
@@ -13288,7 +13290,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'com.example.myapp',
     aliases: [APP_APP_IDENTIFIER],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
-    changelog: [{ version: 'next', prs: [296], description: 'Added app.identifier attribute' }],
+    changelog: [{ version: '0.5.0', prs: [296], description: 'Added app.identifier attribute' }],
   },
   [APP_IN_FOREGROUND]: {
     brief: 'Whether the application is currently in the foreground.',
@@ -13299,7 +13301,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: true,
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
-    changelog: [{ version: 'next', prs: [296], description: 'Added app.in_foreground attribute' }],
+    changelog: [{ version: '0.5.0', prs: [296], description: 'Added app.in_foreground attribute' }],
   },
   [APP_NAME]: {
     brief: 'Human readable application name, as it appears on the platform.',
@@ -13311,7 +13313,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'My App',
     aliases: [APP_APP_NAME],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
-    changelog: [{ version: 'next', prs: [296], description: 'Added app.name attribute' }],
+    changelog: [{ version: '0.5.0', prs: [296], description: 'Added app.name attribute' }],
   },
   [APP_START_COLD]: {
     brief: 'The duration of a cold app start in milliseconds',
@@ -13329,7 +13331,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [APP_VITALS_START_COLD_VALUE],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
-      { version: 'next', prs: [323], description: 'Added and deprecated in favor of app.vitals.start.cold.value' },
+      { version: '0.5.0', prs: [323], description: 'Added and deprecated in favor of app.vitals.start.cold.value' },
     ],
   },
   [APP_START_TIME]: {
@@ -13342,7 +13344,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '2025-01-01T00:00:00.000Z',
     aliases: [APP_APP_START_TIME],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
-    changelog: [{ version: 'next', prs: [296], description: 'Added app.start_time attribute' }],
+    changelog: [{ version: '0.5.0', prs: [296], description: 'Added app.start_time attribute' }],
   },
   [APP_START_TYPE]: {
     brief: 'Mobile app start variant. Either cold or warm.',
@@ -13359,7 +13361,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [APP_VITALS_START_TYPE],
     changelog: [
-      { version: 'next', prs: [313], description: 'Deprecated in favor of app.vitals.start.type' },
+      { version: '0.5.0', prs: [313], description: 'Deprecated in favor of app.vitals.start.type' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
     ],
@@ -13380,7 +13382,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [APP_VITALS_START_WARM_VALUE],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
-      { version: 'next', prs: [323], description: 'Added and deprecated in favor of app.vitals.start.warm.value' },
+      { version: '0.5.0', prs: [323], description: 'Added and deprecated in favor of app.vitals.start.warm.value' },
     ],
   },
   [APP_VERSION]: {
@@ -13393,7 +13395,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '1.0.0',
     aliases: [APP_APP_VERSION],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
-    changelog: [{ version: 'next', prs: [296], description: 'Added app.version attribute' }],
+    changelog: [{ version: '0.5.0', prs: [296], description: 'Added app.version attribute' }],
   },
   [APP_VITALS_FRAMES_DELAY_VALUE]: {
     brief:
@@ -13407,7 +13409,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [FRAMES_DELAY],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
-      { version: 'next', prs: [313], description: 'Added app.vitals.frames.delay.value to replace frames.delay' },
+      { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.delay.value to replace frames.delay' },
     ],
   },
   [APP_VITALS_FRAMES_FROZEN_COUNT]: {
@@ -13421,7 +13423,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [FRAMES_FROZEN],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
-      { version: 'next', prs: [313], description: 'Added app.vitals.frames.frozen.count to replace frames.frozen' },
+      { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.frozen.count to replace frames.frozen' },
     ],
   },
   [APP_VITALS_FRAMES_SLOW_COUNT]: {
@@ -13435,7 +13437,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [FRAMES_SLOW],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
-      { version: 'next', prs: [313], description: 'Added app.vitals.frames.slow.count to replace frames.slow' },
+      { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.slow.count to replace frames.slow' },
     ],
   },
   [APP_VITALS_FRAMES_TOTAL_COUNT]: {
@@ -13449,7 +13451,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [FRAMES_TOTAL],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
-      { version: 'next', prs: [313], description: 'Added app.vitals.frames.total.count to replace frames.total' },
+      { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.total.count to replace frames.total' },
     ],
   },
   [APP_VITALS_START_COLD_VALUE]: {
@@ -13462,7 +13464,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1234.56,
     aliases: [APP_START_COLD],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
-    changelog: [{ version: 'next', prs: [313], description: 'Added app.vitals.start.cold.value attribute' }],
+    changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.start.cold.value attribute' }],
   },
   [APP_VITALS_START_TYPE]: {
     brief: 'The type of app start, for example `cold` or `warm`',
@@ -13474,7 +13476,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'cold',
     aliases: [APP_START_TYPE],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
-    changelog: [{ version: 'next', prs: [313], description: 'Added app.vitals.start.type attribute' }],
+    changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.start.type attribute' }],
   },
   [APP_VITALS_START_WARM_VALUE]: {
     brief: 'The duration of a warm app start in milliseconds',
@@ -13486,7 +13488,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1234.56,
     aliases: [APP_START_WARM],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
-    changelog: [{ version: 'next', prs: [313], description: 'Added app.vitals.start.warm.value attribute' }],
+    changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.start.warm.value attribute' }],
   },
   [APP_VITALS_TTFD_VALUE]: {
     brief: 'The duration of time to full display in milliseconds',
@@ -13498,7 +13500,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1234.56,
     aliases: [TIME_TO_FULL_DISPLAY],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
-    changelog: [{ version: 'next', prs: [313], description: 'Added app.vitals.ttfd.value attribute' }],
+    changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.ttfd.value attribute' }],
   },
   [APP_VITALS_TTID_VALUE]: {
     brief: 'The duration of time to initial display in milliseconds',
@@ -13510,7 +13512,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1234.56,
     aliases: [TIME_TO_INITIAL_DISPLAY],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
-    changelog: [{ version: 'next', prs: [313], description: 'Added app.vitals.ttid.value attribute' }],
+    changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.ttid.value attribute' }],
   },
   [BLOCKED_MAIN_THREAD]: {
     brief: 'Whether the main thread was blocked by the span.',
@@ -13544,7 +13546,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [PERFORMANCE_ACTIVATIONSTART],
     sdks: ['javascript-browser'],
     changelog: [
-      { version: 'next', prs: [321], description: 'Added browser.performance.navigation.activation_start attribute' },
+      { version: '0.5.0', prs: [321], description: 'Added browser.performance.navigation.activation_start attribute' },
     ],
   },
   [BROWSER_PERFORMANCE_TIME_ORIGIN]: {
@@ -13558,7 +13560,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [PERFORMANCE_TIMEORIGIN],
     sdks: ['javascript-browser'],
     changelog: [
-      { version: 'next', prs: [321], description: 'Added browser.performance.time_origin attribute attribute' },
+      { version: '0.5.0', prs: [321], description: 'Added browser.performance.time_origin attribute attribute' },
     ],
   },
   [BROWSER_REPORT_TYPE]: {
@@ -13624,7 +13626,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'navigation',
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [319], description: 'Added browser.web_vital.cls.report_event attribute' }],
+    changelog: [{ version: '0.5.0', prs: [319], description: 'Added browser.web_vital.cls.report_event attribute' }],
   },
   [BROWSER_WEB_VITAL_CLS_SOURCE_KEY]: {
     brief: 'The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N',
@@ -13637,7 +13639,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'body > div#app',
     aliases: [CLS_SOURCE_KEY],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [234] }],
+    changelog: [{ version: '0.5.0', prs: [234] }],
   },
   [BROWSER_WEB_VITAL_CLS_VALUE]: {
     brief: 'The value of the recorded Cumulative Layout Shift (CLS) web vital',
@@ -13649,7 +13651,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 0.2361,
     aliases: [CLS],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [229], description: 'Added browser.web_vital.cls.value attribute' }],
+    changelog: [{ version: '0.5.0', prs: [229], description: 'Added browser.web_vital.cls.value attribute' }],
   },
   [BROWSER_WEB_VITAL_FCP_VALUE]: {
     brief: 'The time it takes for the browser to render the first piece of meaningful content on the screen',
@@ -13661,7 +13663,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 547.6951,
     aliases: [FCP],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [235] }],
+    changelog: [{ version: '0.5.0', prs: [235] }],
   },
   [BROWSER_WEB_VITAL_FP_VALUE]: {
     brief: 'The time in milliseconds it takes for the browser to render the first pixel on the screen',
@@ -13673,7 +13675,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 477.1926,
     aliases: [FP],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [235] }],
+    changelog: [{ version: '0.5.0', prs: [235] }],
   },
   [BROWSER_WEB_VITAL_INP_VALUE]: {
     brief: 'The value of the recorded Interaction to Next Paint (INP) web vital',
@@ -13685,7 +13687,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 200,
     aliases: [INP],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [229], description: 'Added browser.web_vital.inp.value attribute' }],
+    changelog: [{ version: '0.5.0', prs: [229], description: 'Added browser.web_vital.inp.value attribute' }],
   },
   [BROWSER_WEB_VITAL_LCP_ELEMENT]: {
     brief: 'The HTML element selector or component name for which LCP was reported',
@@ -13697,7 +13699,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'body > div#app > div#container > div',
     aliases: [LCP_ELEMENT],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [233] }],
+    changelog: [{ version: '0.5.0', prs: [233] }],
   },
   [BROWSER_WEB_VITAL_LCP_ID]: {
     brief: 'The id of the dom element responsible for the largest contentful paint',
@@ -13709,7 +13711,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '#gero',
     aliases: [LCP_ID],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [233] }],
+    changelog: [{ version: '0.5.0', prs: [233] }],
   },
   [BROWSER_WEB_VITAL_LCP_LOAD_TIME]: {
     brief: 'The time it took for the LCP element to be loaded',
@@ -13721,7 +13723,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1402,
     aliases: [LCP_LOADTIME],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [233] }],
+    changelog: [{ version: '0.5.0', prs: [233] }],
   },
   [BROWSER_WEB_VITAL_LCP_RENDER_TIME]: {
     brief: 'The time it took for the LCP element to be rendered',
@@ -13733,7 +13735,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1685,
     aliases: [LCP_RENDERTIME],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [233] }],
+    changelog: [{ version: '0.5.0', prs: [233] }],
   },
   [BROWSER_WEB_VITAL_LCP_REPORT_EVENT]: {
     brief: 'The event that caused the SDK to report LCP (pagehide or navigation)',
@@ -13744,7 +13746,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'pagehide',
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [319], description: 'Added browser.web_vital.lcp.report_event attribute' }],
+    changelog: [{ version: '0.5.0', prs: [319], description: 'Added browser.web_vital.lcp.report_event attribute' }],
   },
   [BROWSER_WEB_VITAL_LCP_SIZE]: {
     brief: 'The size of the largest contentful paint element',
@@ -13756,7 +13758,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1024,
     aliases: [LCP_SIZE],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [233] }],
+    changelog: [{ version: '0.5.0', prs: [233] }],
   },
   [BROWSER_WEB_VITAL_LCP_URL]: {
     brief: 'The url of the dom element responsible for the largest contentful paint',
@@ -13768,7 +13770,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'https://example.com/static/img.png',
     aliases: [LCP_URL],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [233] }],
+    changelog: [{ version: '0.5.0', prs: [233] }],
   },
   [BROWSER_WEB_VITAL_LCP_VALUE]: {
     brief: 'The value of the recorded Largest Contentful Paint (LCP) web vital',
@@ -13780,7 +13782,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 2500,
     aliases: [LCP],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [229], description: 'Added browser.web_vital.lcp.value attribute' }],
+    changelog: [{ version: '0.5.0', prs: [229], description: 'Added browser.web_vital.lcp.value attribute' }],
   },
   [BROWSER_WEB_VITAL_TTFB_REQUEST_TIME]: {
     brief:
@@ -13793,7 +13795,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1554.5814,
     aliases: [TTFB_REQUESTTIME],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [235] }],
+    changelog: [{ version: '0.5.0', prs: [235] }],
   },
   [BROWSER_WEB_VITAL_TTFB_VALUE]: {
     brief: 'The value of the recorded Time To First Byte (TTFB) web vital in Milliseconds',
@@ -13805,7 +13807,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 194.3322,
     aliases: [TTFB],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [235] }],
+    changelog: [{ version: '0.5.0', prs: [235] }],
   },
   [CACHE_HIT]: {
     brief: 'If the cache was hit during this span.',
@@ -13870,7 +13872,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: true,
     sdks: ['java'],
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.5.0' }],
   },
   [CHANNEL]: {
     brief: 'The channel name that is being used.',
@@ -13954,7 +13956,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['javascript-browser'],
     changelog: [
       {
-        version: 'next',
+        version: '0.5.0',
         prs: [229],
         description: "Added and deprecated attribute to document JS SDK's current behaviour",
       },
@@ -13975,7 +13977,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [BROWSER_WEB_VITAL_CLS_SOURCE_KEY],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [234] }],
+    changelog: [{ version: '0.5.0', prs: [234] }],
   },
   [CODE_FILEPATH]: {
     brief:
@@ -14087,7 +14089,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['javascript-browser'],
     changelog: [
       {
-        version: 'next',
+        version: '0.5.0',
         prs: [279],
         description: "Added and deprecated attribute to document JS SDK's current behaviour",
       },
@@ -14110,7 +14112,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['javascript-browser'],
     changelog: [
       {
-        version: 'next',
+        version: '0.5.0',
         prs: [279],
         description: "Added and deprecated attribute to document JS SDK's current behaviour",
       },
@@ -14184,7 +14186,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'psycopg2',
-    changelog: [{ version: 'next', prs: [297], description: 'Added db.driver.name attribute' }],
+    changelog: [{ version: '0.5.0', prs: [297], description: 'Added db.driver.name attribute' }],
   },
   [DB_NAME]: {
     brief: 'The name of the database being accessed.',
@@ -14377,7 +14379,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['javascript-browser'],
     changelog: [
       {
-        version: 'next',
+        version: '0.5.0',
         prs: [281],
         description: "Added and deprecated attribute to document JS SDK's current behaviour",
       },
@@ -14391,7 +14393,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: ['arm64-v8a', 'armeabi-v7a', 'armeabi'],
-    changelog: [{ version: 'next', prs: [303], description: 'Added device.archs attribute' }],
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.archs attribute' }],
   },
   [DEVICE_BATTERY_LEVEL]: {
     brief: 'The battery level of the device as a percentage (0-100).',
@@ -14401,7 +14403,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 100,
-    changelog: [{ version: 'next', prs: [303], description: 'Added device.battery_level attribute' }],
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.battery_level attribute' }],
   },
   [DEVICE_BATTERY_TEMPERATURE]: {
     brief: 'The battery temperature of the device in Celsius.',
@@ -14411,7 +14413,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 25,
-    changelog: [{ version: 'next', prs: [303], description: 'Added device.battery_temperature attribute' }],
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.battery_temperature attribute' }],
   },
   [DEVICE_BOOT_TIME]: {
     brief: 'A formatted UTC timestamp when the system was booted.',
@@ -14421,7 +14423,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '2018-02-08T12:52:12Z',
-    changelog: [{ version: 'next', prs: [303], description: 'Added device.boot_time attribute' }],
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.boot_time attribute' }],
   },
   [DEVICE_BRAND]: {
     brief: 'The brand of the device.',
@@ -14441,7 +14443,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: false,
-    changelog: [{ version: 'next', prs: [303], description: 'Added device.charging attribute' }],
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.charging attribute' }],
   },
   [DEVICE_CHIPSET]: {
     brief: 'The chipset of the device.',
@@ -14451,7 +14453,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'Qualcomm SM8550',
-    changelog: [{ version: 'next', prs: [303], description: 'Added device.chipset attribute' }],
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.chipset attribute' }],
   },
   [DEVICE_CLASS]: {
     brief:
@@ -14462,7 +14464,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'medium',
-    changelog: [{ version: 'next', prs: [300], description: 'Added device.class attribute' }],
+    changelog: [{ version: '0.5.0', prs: [300], description: 'Added device.class attribute' }],
   },
   [DEVICE_CONNECTION_TYPE]: {
     brief: 'The internet connection type currently being used by the device.',
@@ -14479,7 +14481,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [NETWORK_CONNECTION_TYPE, CONNECTIONTYPE],
     changelog: [
       {
-        version: 'next',
+        version: '0.5.0',
         prs: [303],
         description: 'Added and deprecated device.connection_type in favor of network.connection.type',
       },
@@ -14493,7 +14495,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'Intel(R) Core(TM)2 Quad CPU Q6600 @ 2.40GHz',
-    changelog: [{ version: 'next', prs: [303], description: 'Added device.cpu_description attribute' }],
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.cpu_description attribute' }],
   },
   [DEVICE_EXTERNAL_FREE_STORAGE]: {
     brief: 'External storage free size in bytes.',
@@ -14503,7 +14505,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 67108864000,
-    changelog: [{ version: 'next', prs: [303], description: 'Added device.external_free_storage attribute' }],
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.external_free_storage attribute' }],
   },
   [DEVICE_EXTERNAL_STORAGE_SIZE]: {
     brief: 'External storage total size in bytes.',
@@ -14513,7 +14515,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 134217728000,
-    changelog: [{ version: 'next', prs: [303], description: 'Added device.external_storage_size attribute' }],
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.external_storage_size attribute' }],
   },
   [DEVICE_FAMILY]: {
     brief: 'The family of the device.',
@@ -14533,7 +14535,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 2147483648,
-    changelog: [{ version: 'next', prs: [300], description: 'Added device.free_memory attribute' }],
+    changelog: [{ version: '0.5.0', prs: [300], description: 'Added device.free_memory attribute' }],
   },
   [DEVICE_FREE_STORAGE]: {
     brief: 'Free device storage in bytes.',
@@ -14543,7 +14545,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 107374182400,
-    changelog: [{ version: 'next', prs: [303], description: 'Added device.free_storage attribute' }],
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.free_storage attribute' }],
   },
   [DEVICE_ID]: {
     brief: 'Unique device identifier.',
@@ -14553,7 +14555,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
-    changelog: [{ version: 'next', prs: [303], description: 'Added device.id attribute' }],
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.id attribute' }],
   },
   [DEVICE_LOCALE]: {
     brief: 'The locale of the device.',
@@ -14563,7 +14565,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'en-US',
-    changelog: [{ version: 'next', prs: [303], description: 'Added device.locale attribute' }],
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.locale attribute' }],
   },
   [DEVICE_LOW_MEMORY]: {
     brief: 'Whether the device was low on memory.',
@@ -14573,7 +14575,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: false,
-    changelog: [{ version: 'next', prs: [303], description: 'Added device.low_memory attribute' }],
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.low_memory attribute' }],
   },
   [DEVICE_MANUFACTURER]: {
     brief: 'The manufacturer of the device.',
@@ -14583,7 +14585,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'Google',
-    changelog: [{ version: 'next', prs: [303], description: 'Added device.manufacturer attribute' }],
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.manufacturer attribute' }],
   },
   [DEVICE_MEMORY_ESTIMATED_CAPACITY]: {
     brief:
@@ -14598,7 +14600,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['javascript-browser'],
     changelog: [
       {
-        version: 'next',
+        version: '0.5.0',
         prs: [281],
         description: 'Added attribute device.memory.estimated_capacity to be used instead of deviceMemory',
       },
@@ -14612,7 +14614,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 17179869184,
-    changelog: [{ version: 'next', prs: [300], description: 'Added device.memory_size attribute' }],
+    changelog: [{ version: '0.5.0', prs: [300], description: 'Added device.memory_size attribute' }],
   },
   [DEVICE_MODEL]: {
     brief: 'The model of the device.',
@@ -14632,7 +14634,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'N861AP',
-    changelog: [{ version: 'next', prs: [300], description: 'Added device.model_id attribute' }],
+    changelog: [{ version: '0.5.0', prs: [300], description: 'Added device.model_id attribute' }],
   },
   [DEVICE_NAME]: {
     brief:
@@ -14643,7 +14645,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'localhost',
-    changelog: [{ version: 'next', prs: [303], description: 'Added device.name attribute' }],
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.name attribute' }],
   },
   [DEVICE_ONLINE]: {
     brief: 'Whether the device was online or not.',
@@ -14653,7 +14655,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: true,
-    changelog: [{ version: 'next', prs: [303], description: 'Added device.online attribute' }],
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.online attribute' }],
   },
   [DEVICE_ORIENTATION]: {
     brief: 'The orientation of the device, either "portrait" or "landscape".',
@@ -14663,7 +14665,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'portrait',
-    changelog: [{ version: 'next', prs: [303], description: 'Added device.orientation attribute' }],
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.orientation attribute' }],
   },
   [DEVICE_PROCESSOR_COUNT]: {
     brief: 'Number of "logical processors".',
@@ -14676,12 +14678,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [HARDWARECONCURRENCY],
     changelog: [
       {
-        version: 'next',
-        prs: [300],
-        description: 'Removed deprecation, device.processor_count is now the canonical attribute',
-      },
-      {
-        version: 'next',
+        version: '0.5.0',
         prs: [300],
         description: 'Added and deprecated attribute device.processor_count in favor of device.cpu.logical_core_count',
       },
@@ -14695,7 +14692,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 2400,
-    changelog: [{ version: 'next', prs: [303], description: 'Added device.processor_frequency attribute' }],
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.processor_frequency attribute' }],
   },
   [DEVICE_SCREEN_DENSITY]: {
     brief: 'The screen density of the device.',
@@ -14705,7 +14702,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 2.625,
-    changelog: [{ version: 'next', prs: [303], description: 'Added device.screen_density attribute' }],
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.screen_density attribute' }],
   },
   [DEVICE_SCREEN_DPI]: {
     brief: 'The screen density in dots-per-inch (DPI) of the device.',
@@ -14715,7 +14712,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 420,
-    changelog: [{ version: 'next', prs: [303], description: 'Added device.screen_dpi attribute' }],
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.screen_dpi attribute' }],
   },
   [DEVICE_SCREEN_HEIGHT_PIXELS]: {
     brief: 'The height of the device screen in pixels.',
@@ -14725,7 +14722,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 2400,
-    changelog: [{ version: 'next', prs: [303], description: 'Added device.screen_height_pixels attribute' }],
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.screen_height_pixels attribute' }],
   },
   [DEVICE_SCREEN_WIDTH_PIXELS]: {
     brief: 'The width of the device screen in pixels.',
@@ -14735,7 +14732,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 1080,
-    changelog: [{ version: 'next', prs: [303], description: 'Added device.screen_width_pixels attribute' }],
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.screen_width_pixels attribute' }],
   },
   [DEVICE_SIMULATOR]: {
     brief: 'Whether the device is a simulator or an actual device.',
@@ -14745,7 +14742,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: false,
-    changelog: [{ version: 'next', prs: [300], description: 'Added device.simulator attribute' }],
+    changelog: [{ version: '0.5.0', prs: [300], description: 'Added device.simulator attribute' }],
   },
   [DEVICE_STORAGE_SIZE]: {
     brief: 'Total device storage in bytes.',
@@ -14755,7 +14752,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 274877906944,
-    changelog: [{ version: 'next', prs: [303], description: 'Added device.storage_size attribute' }],
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.storage_size attribute' }],
   },
   [DEVICE_THERMAL_STATE]: {
     brief:
@@ -14766,7 +14763,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'nominal',
-    changelog: [{ version: 'next', prs: [303], description: 'Added device.thermal_state attribute' }],
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.thermal_state attribute' }],
   },
   [DEVICE_TIMEZONE]: {
     brief: 'The timezone of the device.',
@@ -14776,7 +14773,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'Europe/Vienna',
-    changelog: [{ version: 'next', prs: [303], description: 'Added device.timezone attribute' }],
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.timezone attribute' }],
   },
   [DEVICE_USABLE_MEMORY]: {
     brief: 'Memory usable for the app in bytes.',
@@ -14786,7 +14783,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 2147483648,
-    changelog: [{ version: 'next', prs: [303], description: 'Added device.usable_memory attribute' }],
+    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.usable_memory attribute' }],
   },
   [EFFECTIVECONNECTIONTYPE]: {
     brief: 'Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).',
@@ -14805,7 +14802,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['javascript-browser'],
     changelog: [
       {
-        version: 'next',
+        version: '0.5.0',
         prs: [279],
         description: "Added and deprecated attribute to document JS SDK's current behaviour",
       },
@@ -14953,7 +14950,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [BROWSER_WEB_VITAL_FCP_VALUE],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [235] }],
+    changelog: [{ version: '0.5.0', prs: [235] }],
   },
   [FLAG_EVALUATION_KEY]: {
     brief:
@@ -14981,7 +14978,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [BROWSER_WEB_VITAL_FP_VALUE],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [235] }],
+    changelog: [{ version: '0.5.0', prs: [235] }],
   },
   [FRAMES_DELAY]: {
     brief:
@@ -14999,7 +14996,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [APP_VITALS_FRAMES_DELAY_VALUE],
     changelog: [
-      { version: 'next', prs: [313], description: 'Deprecated in favor of app.vitals.frames.delay.value' },
+      { version: '0.5.0', prs: [313], description: 'Deprecated in favor of app.vitals.frames.delay.value' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
     ],
@@ -15019,7 +15016,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [APP_VITALS_FRAMES_FROZEN_COUNT],
     changelog: [
-      { version: 'next', prs: [313], description: 'Deprecated in favor of app.vitals.frames.frozen.count' },
+      { version: '0.5.0', prs: [313], description: 'Deprecated in favor of app.vitals.frames.frozen.count' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
     ],
@@ -15039,7 +15036,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [APP_VITALS_FRAMES_SLOW_COUNT],
     changelog: [
-      { version: 'next', prs: [313], description: 'Deprecated in favor of app.vitals.frames.slow.count' },
+      { version: '0.5.0', prs: [313], description: 'Deprecated in favor of app.vitals.frames.slow.count' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
     ],
@@ -15059,7 +15056,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [APP_VITALS_FRAMES_TOTAL_COUNT],
     changelog: [
-      { version: 'next', prs: [313], description: 'Deprecated in favor of app.vitals.frames.total.count' },
+      { version: '0.5.0', prs: [313], description: 'Deprecated in favor of app.vitals.frames.total.count' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
     ],
@@ -15097,7 +15094,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 0.75,
-    changelog: [{ version: 'next', prs: [315], description: 'Added gen_ai.context.utilization attribute' }],
+    changelog: [{ version: '0.5.0', prs: [315], description: 'Added gen_ai.context.utilization attribute' }],
   },
   [GEN_AI_CONTEXT_WINDOW_SIZE]: {
     brief: 'The maximum context window size supported by the model for this generation.',
@@ -15107,7 +15104,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 128000,
-    changelog: [{ version: 'next', prs: [315], description: 'Added gen_ai.context.window_size attribute' }],
+    changelog: [{ version: '0.5.0', prs: [315], description: 'Added gen_ai.context.window_size attribute' }],
   },
   [GEN_AI_CONVERSATION_ID]: {
     brief:
@@ -15156,7 +15153,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 12.34,
     aliases: [AI_TOTAL_COST],
     changelog: [
-      { version: 'next', prs: [264] },
+      { version: '0.5.0', prs: [264] },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [126] },
     ],
@@ -15180,7 +15177,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'my-awesome-function',
-    changelog: [{ version: 'next', prs: [308], description: 'Added gen_ai.function_id attribute' }],
+    changelog: [{ version: '0.5.0', prs: [308], description: 'Added gen_ai.function_id attribute' }],
   },
   [GEN_AI_INPUT_MESSAGES]: {
     brief:
@@ -15194,7 +15191,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       '[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
     aliases: [AI_TEXTS],
     changelog: [
-      { version: 'next', prs: [264] },
+      { version: '0.5.0', prs: [264] },
       { version: '0.4.0', prs: [221] },
     ],
   },
@@ -15546,7 +15543,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'You are a helpful assistant',
     aliases: [AI_PREAMBLE],
     changelog: [
-      { version: 'next', prs: [264] },
+      { version: '0.5.0', prs: [264] },
       { version: '0.4.0', prs: [221] },
     ],
   },
@@ -15576,7 +15573,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '{"location": "Paris"}',
     aliases: [GEN_AI_TOOL_INPUT],
     changelog: [
-      { version: 'next', prs: [265] },
+      { version: '0.5.0', prs: [265] },
       { version: '0.4.0', prs: [221] },
     ],
   },
@@ -15590,7 +15587,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'rainy, 57°F',
     aliases: [GEN_AI_TOOL_OUTPUT, GEN_AI_TOOL_MESSAGE],
     changelog: [
-      { version: 'next', prs: [265] },
+      { version: '0.5.0', prs: [265] },
       { version: '0.4.0', prs: [221] },
     ],
   },
@@ -15628,7 +15625,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [GEN_AI_TOOL_CALL_ARGUMENTS],
     changelog: [
-      { version: 'next', prs: [265] },
+      { version: '0.5.0', prs: [265] },
       { version: '0.1.0', prs: [63, 74] },
     ],
   },
@@ -15645,7 +15642,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [GEN_AI_TOOL_CALL_RESULT, GEN_AI_TOOL_OUTPUT],
     changelog: [
-      { version: 'next', prs: [265] },
+      { version: '0.5.0', prs: [265] },
       { version: '0.1.0', prs: [62] },
     ],
   },
@@ -15673,7 +15670,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [GEN_AI_TOOL_CALL_RESULT, GEN_AI_TOOL_MESSAGE],
     changelog: [
-      { version: 'next', prs: [265] },
+      { version: '0.5.0', prs: [265] },
       { version: '0.1.0', prs: [63, 74] },
     ],
   },
@@ -15714,7 +15711,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 10,
     aliases: [AI_PROMPT_TOKENS_USED, GEN_AI_USAGE_PROMPT_TOKENS],
     changelog: [
-      { version: 'next', prs: [261] },
+      { version: '0.5.0', prs: [261] },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [112] },
       { version: '0.0.0' },
@@ -15753,7 +15750,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 10,
     aliases: [AI_COMPLETION_TOKENS_USED, GEN_AI_USAGE_COMPLETION_TOKENS],
     changelog: [
-      { version: 'next', prs: [261] },
+      { version: '0.5.0', prs: [261] },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [112] },
       { version: '0.0.0' },
@@ -15836,13 +15833,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['javascript-browser'],
     changelog: [
       {
-        version: 'next',
-        prs: [300],
-        description: 'Updated deprecation replacement from device.cpu.logical_core_count to device.processor_count',
-      },
-      {
-        version: 'next',
-        prs: [281],
+        version: '0.5.0',
+        prs: [281, 300],
         description: "Added and deprecated attribute to document JS SDK's current behaviour",
       },
     ],
@@ -16275,7 +16267,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 50,
     sdks: ['ruby'],
-    changelog: [{ version: 'next', prs: [267] }],
+    changelog: [{ version: '0.5.0', prs: [267] }],
   },
   [HTTP_STATUS_CODE]: {
     brief: 'The status code of the HTTP response.',
@@ -16361,7 +16353,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['javascript-browser'],
     changelog: [
       {
-        version: 'next',
+        version: '0.5.0',
         prs: [229],
         description: "Added and deprecated attribute to document JS SDK's current behaviour",
       },
@@ -16443,7 +16435,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['javascript-browser'],
     changelog: [
       {
-        version: 'next',
+        version: '0.5.0',
         prs: [229],
         description: "Added and deprecated attribute to document JS SDK's current behaviour",
       },
@@ -16462,7 +16454,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'The LCP element is now recorded as a browser.web_vital.lcp.element attribute.',
     },
     aliases: [BROWSER_WEB_VITAL_LCP_ELEMENT],
-    changelog: [{ version: 'next', prs: [233] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    changelog: [{ version: '0.5.0', prs: [233] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [LCP_ID]: {
     brief: 'The id of the dom element responsible for the largest contentful paint.',
@@ -16477,7 +16469,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'The LCP id is now recorded as a browser.web_vital.lcp.id attribute.',
     },
     aliases: [BROWSER_WEB_VITAL_LCP_ID],
-    changelog: [{ version: 'next', prs: [233] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    changelog: [{ version: '0.5.0', prs: [233] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [LCP_LOADTIME]: {
     brief: 'The time it took for the LCP element to be loaded',
@@ -16493,7 +16485,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [BROWSER_WEB_VITAL_LCP_LOAD_TIME],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [233] }],
+    changelog: [{ version: '0.5.0', prs: [233] }],
   },
   [LCP_RENDERTIME]: {
     brief: 'The time it took for the LCP element to be rendered',
@@ -16509,7 +16501,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [BROWSER_WEB_VITAL_LCP_RENDER_TIME],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [233] }],
+    changelog: [{ version: '0.5.0', prs: [233] }],
   },
   [LCP_SIZE]: {
     brief: 'The size of the largest contentful paint element.',
@@ -16524,7 +16516,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'The LCP size is now recorded as a browser.web_vital.lcp.size attribute.',
     },
     aliases: [BROWSER_WEB_VITAL_LCP_SIZE],
-    changelog: [{ version: 'next', prs: [233] }, { version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    changelog: [{ version: '0.5.0', prs: [233] }, { version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [LCP_URL]: {
     brief: 'The url of the dom element responsible for the largest contentful paint.',
@@ -16539,7 +16531,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'The LCP url is now recorded as a browser.web_vital.lcp.url attribute.',
     },
     aliases: [BROWSER_WEB_VITAL_LCP_URL],
-    changelog: [{ version: 'next', prs: [233] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    changelog: [{ version: '0.5.0', prs: [233] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [LOGGER_NAME]: {
     brief: 'The name of the logger that generated this event.',
@@ -17171,7 +17163,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['javascript-browser'],
     changelog: [
       {
-        version: 'next',
+        version: '0.5.0',
         prs: [279],
         description: 'Added attribute network.connection.effective_type to be used instead of effectiveConnectionType',
       },
@@ -17189,7 +17181,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['javascript-browser'],
     changelog: [
       {
-        version: 'next',
+        version: '0.5.0',
         prs: [279],
         description: 'Added attribute network.connection.rtt to be used instead of connection.rtt',
       },
@@ -17207,7 +17199,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['javascript-browser'],
     changelog: [
       {
-        version: 'next',
+        version: '0.5.0',
         prs: [279],
         description: 'Added attribute network.connection.type to be used instead of connectionType',
       },
@@ -17522,7 +17514,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [OS_BUILD_ID],
     changelog: [
-      { version: 'next', prs: [301], description: 'Added os.build attribute, deprecated in favor of os.build_id' },
+      { version: '0.5.0', prs: [301], description: 'Added os.build attribute, deprecated in favor of os.build_id' },
     ],
   },
   [OS_BUILD_ID]: {
@@ -17535,7 +17527,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '1234567890',
     aliases: [OS_BUILD],
     changelog: [
-      { version: 'next', prs: [301], description: 'Added os.build as alias' },
+      { version: '0.5.0', prs: [301], description: 'Added os.build as alias' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
     ],
@@ -17559,7 +17551,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '20.2.0',
-    changelog: [{ version: 'next', prs: [301], description: 'Added os.kernel_version attribute' }],
+    changelog: [{ version: '0.5.0', prs: [301], description: 'Added os.kernel_version attribute' }],
   },
   [OS_NAME]: {
     brief: 'Human readable operating system name.',
@@ -17580,7 +17572,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'Ubuntu 22.04.4 LTS (Jammy Jellyfish)',
-    changelog: [{ version: 'next', prs: [301], description: 'Added os.raw_description attribute' }],
+    changelog: [{ version: '0.5.0', prs: [301], description: 'Added os.raw_description attribute' }],
   },
   [OS_ROOTED]: {
     brief: 'Whether the operating system has been jailbroken or rooted.',
@@ -17590,7 +17582,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: true,
-    changelog: [{ version: 'next', prs: [301], description: 'Added os.rooted attribute' }],
+    changelog: [{ version: '0.5.0', prs: [301], description: 'Added os.rooted attribute' }],
   },
   [OS_THEME]: {
     brief: 'Whether the OS runs in dark mode or light mode.',
@@ -17600,7 +17592,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'dark',
-    changelog: [{ version: 'next', prs: [301], description: 'Added os.theme attribute' }],
+    changelog: [{ version: '0.5.0', prs: [301], description: 'Added os.theme attribute' }],
   },
   [OS_TYPE]: {
     brief: 'The operating system type.',
@@ -17689,7 +17681,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [321], description: 'Added performance.activationStart attribute' }],
+    changelog: [{ version: '0.5.0', prs: [321], description: 'Added performance.activationStart attribute' }],
   },
   [PERFORMANCE_TIMEORIGIN]: {
     brief: "The browser's performance.timeOrigin timestamp representing the time when the pageload was initiated",
@@ -17705,7 +17697,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [BROWSER_PERFORMANCE_TIME_ORIGIN],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [321], description: 'Added performance.timeOrigin attribute' }],
+    changelog: [{ version: '0.5.0', prs: [321], description: 'Added performance.timeOrigin attribute' }],
   },
   [PREVIOUS_ROUTE]: {
     brief: 'Also used by mobile SDKs to indicate the previous route in the application.',
@@ -17836,7 +17828,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'sentry.environment',
     },
-    changelog: [{ version: 'next', prs: [266] }],
+    changelog: [{ version: '0.5.0', prs: [266] }],
   },
   [RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME]: {
     brief: 'The software deployment environment name.',
@@ -18159,7 +18151,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: true,
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.5.0' }],
   },
   [SENTRY_MESSAGE_PARAMETER_KEY]: {
     brief:
@@ -18190,7 +18182,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: true,
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.5.0' }],
   },
   [SENTRY_MODULE_KEY]: {
     brief: 'A module that was loaded in the process. The key is the name of the module.',
@@ -18356,7 +18348,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         'The report event is now recorded as a browser.web_vital.lcp.report_event or browser.web_vital.cls.report_event attribute. No backfill required.',
     },
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [320], description: 'Added sentry.report_event attribute' }],
+    changelog: [{ version: '0.5.0', prs: [320], description: 'Added sentry.report_event attribute' }],
   },
   [SENTRY_SDK_INTEGRATIONS]: {
     brief:
@@ -18447,7 +18439,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'sentry.span.source',
       reason: 'This attribute is being deprecated in favor of sentry.span.source',
     },
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.5.0' }],
   },
   [SENTRY_SPAN_SOURCE]: {
     brief:
@@ -18490,7 +18482,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 0,
-    changelog: [{ version: 'next', prs: [262] }],
+    changelog: [{ version: '0.5.0', prs: [262] }],
   },
   [SENTRY_TRACE_PARENT_SPAN_ID]: {
     brief:
@@ -18503,7 +18495,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'b0e6f15b45c36b12',
     deprecation: {},
     changelog: [
-      { version: 'next', prs: [287], description: 'Deprecate `sentry.trace.parent_span_id`' },
+      { version: '0.5.0', prs: [287], description: 'Deprecate `sentry.trace.parent_span_id`' },
       { version: '0.1.0', prs: [116] },
     ],
   },
@@ -18608,7 +18600,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [APP_VITALS_TTFD_VALUE],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
-    changelog: [{ version: 'next', prs: [313], description: 'Added and deprecated in favor of app.vitals.ttfd.value' }],
+    changelog: [
+      { version: '0.5.0', prs: [313], description: 'Added and deprecated in favor of app.vitals.ttfd.value' },
+    ],
   },
   [TIME_TO_INITIAL_DISPLAY]: {
     brief: 'The duration of time to initial display in milliseconds',
@@ -18625,7 +18619,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [APP_VITALS_TTID_VALUE],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
-    changelog: [{ version: 'next', prs: [313], description: 'Added and deprecated in favor of app.vitals.ttid.value' }],
+    changelog: [
+      { version: '0.5.0', prs: [313], description: 'Added and deprecated in favor of app.vitals.ttid.value' },
+    ],
   },
   [TRANSACTION]: {
     brief: 'The sentry transaction (segment name).',
@@ -18655,7 +18651,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [BROWSER_WEB_VITAL_TTFB_VALUE],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [235] }],
+    changelog: [{ version: '0.5.0', prs: [235] }],
   },
   [TTFB_REQUESTTIME]: {
     brief:
@@ -18672,7 +18668,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [BROWSER_WEB_VITAL_TTFB_REQUEST_TIME],
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [235] }],
+    changelog: [{ version: '0.5.0', prs: [235] }],
   },
   [TYPE]: {
     brief: 'More granular type of the operation happening.',
@@ -18724,7 +18720,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 256,
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [284], description: 'Added ui.element.height attribute' }],
+    changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.height attribute' }],
   },
   [UI_ELEMENT_ID]: {
     brief: 'The id of the UI element',
@@ -18735,7 +18731,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'btn-login',
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [284], description: 'Added ui.element.id attribute' }],
+    changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.id attribute' }],
   },
   [UI_ELEMENT_IDENTIFIER]: {
     brief: 'The identifier used to measure the UI element timing',
@@ -18746,7 +18742,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'heroImage',
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [284], description: 'Added ui.element.identifier attribute' }],
+    changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.identifier attribute' }],
   },
   [UI_ELEMENT_LOAD_TIME]: {
     brief: 'The loading time of a UI element (from time origin to finished loading)',
@@ -18757,7 +18753,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 998.2234,
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [284], description: 'Added ui.element.load_time attribute' }],
+    changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.load_time attribute' }],
   },
   [UI_ELEMENT_PAINT_TYPE]: {
     brief: "The type of element paint. Can either be 'image-paint' or 'text-paint'",
@@ -18768,7 +18764,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'image-paint',
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [284], description: 'Added ui.element.paint_type attribute' }],
+    changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.paint_type attribute' }],
   },
   [UI_ELEMENT_RENDER_TIME]: {
     brief: 'The rendering time of the UI element (from time origin to finished rendering)',
@@ -18779,7 +18775,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 1023.1124,
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [284], description: 'Added ui.element.render_time attribute' }],
+    changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.render_time attribute' }],
   },
   [UI_ELEMENT_TYPE]: {
     brief: 'type of the UI element',
@@ -18790,7 +18786,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'img',
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [284], description: 'Added ui.element.type attribute' }],
+    changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.type attribute' }],
   },
   [UI_ELEMENT_URL]: {
     brief: 'The URL of the UI element (e.g. an img src)',
@@ -18801,7 +18797,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'https://assets.myapp.com/hero.png',
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [284], description: 'Added ui.element.url attribute' }],
+    changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.url attribute' }],
   },
   [UI_ELEMENT_WIDTH]: {
     brief: 'The width of the UI element (for HTML in pixels)',
@@ -18812,7 +18808,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 512,
     sdks: ['javascript-browser'],
-    changelog: [{ version: 'next', prs: [284], description: 'Added ui.element.width attribute' }],
+    changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.width attribute' }],
   },
   [URL]: {
     brief: 'The URL of the resource that was fetched.',

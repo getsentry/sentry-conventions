@@ -11,7 +11,7 @@
   "example": 1234.56,
   "changelog": [
     {
-      "version": "next",
+      "version": "0.5.0",
       "prs": [313],
       "description": "Added app.vitals.ttid.value attribute"
     }

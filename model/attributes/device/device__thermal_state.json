@@ -9,7 +9,7 @@
   "example": "nominal",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.5.0",
       "prs": [303],
       "description": "Added device.thermal_state attribute"
     }
