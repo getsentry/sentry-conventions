@@ -10,12 +10,7 @@
   "alias": ["hardwareConcurrency"],
   "changelog": [
     {
-      "version": "next",
-      "prs": [300],
-      "description": "Removed deprecation, device.processor_count is now the canonical attribute"
-    },
-    {
-      "version": "next",
+      "version": "0.5.0",
       "prs": [300],
       "description": "Added and deprecated attribute device.processor_count in favor of device.cpu.logical_core_count"
     }

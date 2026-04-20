@@ -19,7 +19,7 @@
       },
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [323],
           "description": "Added and deprecated in favor of app.vitals.start.cold.value"
         }
@@ -42,7 +42,7 @@
       },
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [313],
           "description": "Deprecated in favor of app.vitals.start.type"
         },
@@ -73,7 +73,7 @@
       },
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [323],
           "description": "Added and deprecated in favor of app.vitals.start.warm.value"
         }
@@ -97,7 +97,7 @@
       "alias": ["browser.web_vital.cls.value"],
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [229],
           "description": "Added and deprecated attribute to document JS SDK's current behaviour"
         }
@@ -121,7 +121,7 @@
       },
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [279],
           "description": "Added and deprecated attribute to document JS SDK's current behaviour"
         }
@@ -145,7 +145,7 @@
       },
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [281],
           "description": "Added and deprecated attribute to document JS SDK's current behaviour"
         }
@@ -169,7 +169,7 @@
       },
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [279],
           "description": "Added and deprecated attribute to document JS SDK's current behaviour"
         }
@@ -217,7 +217,7 @@
       "alias": ["browser.web_vital.fcp.value"],
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [235]
         }
       ]
@@ -240,7 +240,7 @@
       "alias": ["browser.web_vital.fp.value"],
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [235]
         }
       ]
@@ -288,13 +288,8 @@
       },
       "changelog": [
         {
-          "version": "next",
-          "prs": [300],
-          "description": "Updated deprecation replacement from device.cpu.logical_core_count to device.processor_count"
-        },
-        {
-          "version": "next",
-          "prs": [281],
+          "version": "0.5.0",
+          "prs": [281, 300],
           "description": "Added and deprecated attribute to document JS SDK's current behaviour"
         }
       ]
@@ -317,7 +312,7 @@
       "alias": ["browser.web_vital.inp.value"],
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [229],
           "description": "Added and deprecated attribute to document JS SDK's current behaviour"
         }
@@ -341,7 +336,7 @@
       "alias": ["browser.web_vital.lcp.value"],
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [229],
           "description": "Added and deprecated attribute to document JS SDK's current behaviour"
         }
@@ -463,7 +458,7 @@
       },
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [313],
           "description": "Added and deprecated in favor of app.vitals.ttfd.value"
         }
@@ -487,7 +482,7 @@
       },
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [313],
           "description": "Added and deprecated in favor of app.vitals.ttid.value"
         }
@@ -535,7 +530,7 @@
       },
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [235]
         }
       ]
@@ -579,7 +574,7 @@
       },
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [264]
         },
         {
@@ -631,7 +626,7 @@
       },
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [264]
         },
         {
@@ -767,7 +762,7 @@
       },
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [264]
         },
         {
@@ -790,7 +785,7 @@
       },
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [264]
         },
         {
@@ -886,7 +881,7 @@
       "alias": ["gen_ai.system_instructions"],
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [264]
         },
         {
@@ -963,7 +958,7 @@
       },
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [264]
         },
         {
@@ -986,7 +981,7 @@
       },
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [264]
         },
         {
@@ -1033,7 +1028,7 @@
       },
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [264]
         },
         {
@@ -1056,7 +1051,7 @@
       },
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [264]
         },
         {
@@ -1125,7 +1120,7 @@
       },
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [264]
         },
         {
@@ -1175,7 +1170,7 @@
       "alias": ["gen_ai.input.messages"],
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [264]
         },
         {
@@ -1290,7 +1285,7 @@
       "alias": ["gen_ai.cost.total_tokens"],
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [264]
         },
         {
@@ -1346,7 +1341,7 @@
       },
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [264]
         },
         {
@@ -1373,7 +1368,7 @@
       },
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [296],
           "description": "Added and deprecated app.app_build in favor of app.build"
         }
@@ -1397,7 +1392,7 @@
       },
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [296],
           "description": "Added and deprecated app.app_identifier in favor of app.identifier"
         }
@@ -1421,7 +1416,7 @@
       },
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [296],
           "description": "Added and deprecated app.app_name in favor of app.name"
         }
@@ -1445,7 +1440,7 @@
       },
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [296],
           "description": "Added and deprecated app.app_start_time in favor of app.start_time"
         }
@@ -1469,7 +1464,7 @@
       },
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [296],
           "description": "Added and deprecated app.app_version in favor of app.version"
         }
@@ -1494,7 +1489,7 @@
       "alias": ["browser.web_vital.cls.source.<key>"],
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [234]
         }
       ]
@@ -1617,7 +1612,7 @@
       },
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [279],
           "description": "Added and deprecated attribute to document JS SDK's current behaviour"
         }
@@ -1773,7 +1768,7 @@
       "alias": ["network.connection.type", "connectionType"],
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [303],
           "description": "Added and deprecated device.connection_type in favor of network.connection.type"
         }
@@ -1796,7 +1791,7 @@
       },
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [313],
           "description": "Deprecated in favor of app.vitals.frames.delay.value"
         },
@@ -1826,7 +1821,7 @@
       },
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [313],
           "description": "Deprecated in favor of app.vitals.frames.frozen.count"
         },
@@ -1856,7 +1851,7 @@
       },
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [313],
           "description": "Deprecated in favor of app.vitals.frames.slow.count"
         },
@@ -1886,7 +1881,7 @@
       },
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [313],
           "description": "Deprecated in favor of app.vitals.frames.total.count"
         },
@@ -2087,7 +2082,7 @@
       },
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [265]
         },
         {
@@ -2112,7 +2107,7 @@
       },
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [265]
         },
         {
@@ -2137,7 +2132,7 @@
       },
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [265]
         },
         {
@@ -2540,7 +2535,7 @@
       "alias": ["browser.web_vital.lcp.element"],
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [233]
         },
         {
@@ -2569,7 +2564,7 @@
       "alias": ["browser.web_vital.lcp.id"],
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [233]
         },
         {
@@ -2599,7 +2594,7 @@
       "alias": ["browser.web_vital.lcp.load_time"],
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [233]
         }
       ]
@@ -2622,7 +2617,7 @@
       "alias": ["browser.web_vital.lcp.render_time"],
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [233]
         }
       ]
@@ -2644,7 +2639,7 @@
       "alias": ["browser.web_vital.lcp.size"],
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [233]
         },
         {
@@ -2673,7 +2668,7 @@
       "alias": ["browser.web_vital.lcp.url"],
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [233]
         },
         {
@@ -3075,7 +3070,7 @@
       "alias": ["os.build_id"],
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [301],
           "description": "Added os.build attribute, deprecated in favor of os.build_id"
         }
@@ -3099,7 +3094,7 @@
       },
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [321],
           "description": "Added performance.activationStart attribute"
         }
@@ -3123,7 +3118,7 @@
       },
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [321],
           "description": "Added performance.timeOrigin attribute"
         }
@@ -3166,7 +3161,7 @@
       },
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [266]
         }
       ]
@@ -3249,7 +3244,7 @@
       },
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [320],
           "description": "Added sentry.report_event attribute"
         }
@@ -3292,7 +3287,7 @@
       },
       "changelog": [
         {
-          "version": "next"
+          "version": "0.5.0"
         }
       ]
     },
@@ -3310,7 +3305,7 @@
       },
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [287],
           "description": "Deprecate `sentry.trace.parent_span_id`"
         },
@@ -3338,7 +3333,7 @@
       "alias": ["browser.web_vital.ttfb.request_time"],
       "changelog": [
         {
-          "version": "next",
+          "version": "0.5.0",
           "prs": [235]
         }
       ]

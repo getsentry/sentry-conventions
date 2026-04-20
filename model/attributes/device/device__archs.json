@@ -9,7 +9,7 @@
   "example": ["arm64-v8a", "armeabi-v7a", "armeabi"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.5.0",
       "prs": [303],
       "description": "Added device.archs attribute"
     }

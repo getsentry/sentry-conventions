@@ -9,7 +9,7 @@
   "example": 0.75,
   "changelog": [
     {
-      "version": "next",
+      "version": "0.5.0",
       "prs": [315],
       "description": "Added gen_ai.context.utilization attribute"
     }

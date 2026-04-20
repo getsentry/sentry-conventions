@@ -6390,7 +6390,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=["Citation 1", "Citation 2"],
         deprecation=DeprecationInfo(),
         changelog=[
-            ChangelogEntry(version="next", prs=[264]),
+            ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55]),
         ],
     ),
@@ -6417,7 +6417,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=["document1.txt", "document2.pdf"],
         deprecation=DeprecationInfo(),
         changelog=[
-            ChangelogEntry(version="next", prs=[264]),
+            ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55]),
         ],
     ),
@@ -6492,7 +6492,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=False,
         deprecation=DeprecationInfo(),
         changelog=[
-            ChangelogEntry(version="next", prs=[264]),
+            ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55]),
         ],
     ),
@@ -6504,7 +6504,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example='{"user_id": 123, "session_id": "abc123"}',
         deprecation=DeprecationInfo(),
         changelog=[
-            ChangelogEntry(version="next", prs=[264]),
+            ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55, 127]),
         ],
     ),
@@ -6556,7 +6556,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.system_instructions"),
         aliases=["gen_ai.system_instructions"],
         changelog=[
-            ChangelogEntry(version="next", prs=[264]),
+            ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55]),
         ],
     ),
@@ -6596,7 +6596,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=True,
         deprecation=DeprecationInfo(),
         changelog=[
-            ChangelogEntry(version="next", prs=[264]),
+            ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55]),
         ],
     ),
@@ -6608,7 +6608,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="json_object",
         deprecation=DeprecationInfo(),
         changelog=[
-            ChangelogEntry(version="next", prs=[264]),
+            ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55, 127]),
         ],
     ),
@@ -6633,7 +6633,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=["climate change effects", "renewable energy"],
         deprecation=DeprecationInfo(),
         changelog=[
-            ChangelogEntry(version="next", prs=[264]),
+            ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55]),
         ],
     ),
@@ -6645,7 +6645,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=["search_result_1, search_result_2"],
         deprecation=DeprecationInfo(),
         changelog=[
-            ChangelogEntry(version="next", prs=[264]),
+            ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55]),
         ],
     ),
@@ -6683,7 +6683,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example='{"executed_function": "add_integers"}',
         deprecation=DeprecationInfo(),
         changelog=[
-            ChangelogEntry(version="next", prs=[264]),
+            ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55, 127]),
         ],
     ),
@@ -6709,7 +6709,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.input.messages"),
         aliases=["gen_ai.input.messages"],
         changelog=[
-            ChangelogEntry(version="next", prs=[264]),
+            ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55]),
         ],
     ),
@@ -6770,7 +6770,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.cost.total_tokens"),
         aliases=["gen_ai.cost.total_tokens"],
         changelog=[
-            ChangelogEntry(version="next", prs=[264]),
+            ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[53]),
         ],
@@ -6798,7 +6798,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=["Token limit exceeded"],
         deprecation=DeprecationInfo(),
         changelog=[
-            ChangelogEntry(version="next", prs=[264]),
+            ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55]),
         ],
     ),
@@ -6822,7 +6822,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[296],
                 description="Added and deprecated app.app_build in favor of app.build",
             ),
@@ -6848,7 +6848,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[296],
                 description="Added and deprecated app.app_identifier in favor of app.identifier",
             ),
@@ -6874,7 +6874,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[296],
                 description="Added and deprecated app.app_name in favor of app.name",
             ),
@@ -6900,7 +6900,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[296],
                 description="Added and deprecated app.app_start_time in favor of app.start_time",
             ),
@@ -6926,7 +6926,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[296],
                 description="Added and deprecated app.app_version in favor of app.version",
             ),
@@ -6947,7 +6947,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[296], description="Added app.build attribute"
+                version="0.5.0", prs=[296], description="Added app.build attribute"
             ),
         ],
     ),
@@ -6966,7 +6966,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[296], description="Added app.identifier attribute"
+                version="0.5.0", prs=[296], description="Added app.identifier attribute"
             ),
         ],
     ),
@@ -6984,7 +6984,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[296],
                 description="Added app.in_foreground attribute",
             ),
@@ -7005,7 +7005,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[296], description="Added app.name attribute"
+                version="0.5.0", prs=[296], description="Added app.name attribute"
             ),
         ],
     ),
@@ -7024,7 +7024,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[296], description="Added app.start_time attribute"
+                version="0.5.0", prs=[296], description="Added app.start_time attribute"
             ),
         ],
     ),
@@ -7043,7 +7043,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[296], description="Added app.version attribute"
+                version="0.5.0", prs=[296], description="Added app.version attribute"
             ),
         ],
     ),
@@ -7062,7 +7062,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[313],
                 description="Added app.vitals.frames.delay.value to replace frames.delay",
             ),
@@ -7083,7 +7083,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[313],
                 description="Added app.vitals.frames.frozen.count to replace frames.frozen",
             ),
@@ -7104,7 +7104,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[313],
                 description="Added app.vitals.frames.slow.count to replace frames.slow",
             ),
@@ -7125,7 +7125,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[313],
                 description="Added app.vitals.frames.total.count to replace frames.total",
             ),
@@ -7146,7 +7146,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[313],
                 description="Added app.vitals.start.cold.value attribute",
             ),
@@ -7167,7 +7167,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[313],
                 description="Added app.vitals.start.type attribute",
             ),
@@ -7188,7 +7188,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[313],
                 description="Added app.vitals.start.warm.value attribute",
             ),
@@ -7209,7 +7209,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[313],
                 description="Added app.vitals.ttfd.value attribute",
             ),
@@ -7230,7 +7230,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[313],
                 description="Added app.vitals.ttid.value attribute",
             ),
@@ -7256,7 +7256,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[323],
                 description="Added and deprecated in favor of app.vitals.start.cold.value",
             ),
@@ -7276,7 +7276,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["app.vitals.start.type"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[313],
                 description="Deprecated in favor of app.vitals.start.type",
             ),
@@ -7304,7 +7304,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[323],
                 description="Added and deprecated in favor of app.vitals.start.warm.value",
             ),
@@ -7342,7 +7342,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[321],
                 description="Added browser.performance.navigation.activation_start attribute",
             ),
@@ -7358,7 +7358,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[321],
                 description="Added browser.performance.time_origin attribute attribute",
             ),
@@ -7430,7 +7430,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[319],
                 description="Added browser.web_vital.cls.report_event attribute",
             ),
@@ -7446,7 +7446,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["cls.source.<key>"],
         sdks=["javascript-browser"],
         changelog=[
-            ChangelogEntry(version="next", prs=[234]),
+            ChangelogEntry(version="0.5.0", prs=[234]),
         ],
     ),
     "browser.web_vital.cls.value": AttributeMetadata(
@@ -7459,7 +7459,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[229],
                 description="Added browser.web_vital.cls.value attribute",
             ),
@@ -7474,7 +7474,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["fcp"],
         sdks=["javascript-browser"],
         changelog=[
-            ChangelogEntry(version="next", prs=[235]),
+            ChangelogEntry(version="0.5.0", prs=[235]),
         ],
     ),
     "browser.web_vital.fp.value": AttributeMetadata(
@@ -7486,7 +7486,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["fp"],
         sdks=["javascript-browser"],
         changelog=[
-            ChangelogEntry(version="next", prs=[235]),
+            ChangelogEntry(version="0.5.0", prs=[235]),
         ],
     ),
     "browser.web_vital.inp.value": AttributeMetadata(
@@ -7499,7 +7499,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[229],
                 description="Added browser.web_vital.inp.value attribute",
             ),
@@ -7514,7 +7514,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["lcp.element"],
         sdks=["javascript-browser"],
         changelog=[
-            ChangelogEntry(version="next", prs=[233]),
+            ChangelogEntry(version="0.5.0", prs=[233]),
         ],
     ),
     "browser.web_vital.lcp.id": AttributeMetadata(
@@ -7526,7 +7526,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["lcp.id"],
         sdks=["javascript-browser"],
         changelog=[
-            ChangelogEntry(version="next", prs=[233]),
+            ChangelogEntry(version="0.5.0", prs=[233]),
         ],
     ),
     "browser.web_vital.lcp.load_time": AttributeMetadata(
@@ -7538,7 +7538,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["lcp.loadTime"],
         sdks=["javascript-browser"],
         changelog=[
-            ChangelogEntry(version="next", prs=[233]),
+            ChangelogEntry(version="0.5.0", prs=[233]),
         ],
     ),
     "browser.web_vital.lcp.render_time": AttributeMetadata(
@@ -7550,7 +7550,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["lcp.renderTime"],
         sdks=["javascript-browser"],
         changelog=[
-            ChangelogEntry(version="next", prs=[233]),
+            ChangelogEntry(version="0.5.0", prs=[233]),
         ],
     ),
     "browser.web_vital.lcp.report_event": AttributeMetadata(
@@ -7562,7 +7562,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[319],
                 description="Added browser.web_vital.lcp.report_event attribute",
             ),
@@ -7577,7 +7577,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["lcp.size"],
         sdks=["javascript-browser"],
         changelog=[
-            ChangelogEntry(version="next", prs=[233]),
+            ChangelogEntry(version="0.5.0", prs=[233]),
         ],
     ),
     "browser.web_vital.lcp.url": AttributeMetadata(
@@ -7589,7 +7589,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["lcp.url"],
         sdks=["javascript-browser"],
         changelog=[
-            ChangelogEntry(version="next", prs=[233]),
+            ChangelogEntry(version="0.5.0", prs=[233]),
         ],
     ),
     "browser.web_vital.lcp.value": AttributeMetadata(
@@ -7602,7 +7602,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[229],
                 description="Added browser.web_vital.lcp.value attribute",
             ),
@@ -7617,7 +7617,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ttfb.requestTime"],
         sdks=["javascript-browser"],
         changelog=[
-            ChangelogEntry(version="next", prs=[235]),
+            ChangelogEntry(version="0.5.0", prs=[235]),
         ],
     ),
     "browser.web_vital.ttfb.value": AttributeMetadata(
@@ -7629,7 +7629,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ttfb"],
         sdks=["javascript-browser"],
         changelog=[
-            ChangelogEntry(version="next", prs=[235]),
+            ChangelogEntry(version="0.5.0", prs=[235]),
         ],
     ),
     "cache.hit": AttributeMetadata(
@@ -7697,7 +7697,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=True,
         sdks=["java"],
         changelog=[
-            ChangelogEntry(version="next"),
+            ChangelogEntry(version="0.5.0"),
         ],
     ),
     "channel": AttributeMetadata(
@@ -7786,7 +7786,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["browser.web_vital.cls.source.<key>"],
         sdks=["javascript-browser"],
         changelog=[
-            ChangelogEntry(version="next", prs=[234]),
+            ChangelogEntry(version="0.5.0", prs=[234]),
         ],
     ),
     "cls": AttributeMetadata(
@@ -7804,7 +7804,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[229],
                 description="Added and deprecated attribute to document JS SDK's current behaviour",
             ),
@@ -7915,7 +7915,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[279],
                 description="Added and deprecated attribute to document JS SDK's current behaviour",
             ),
@@ -7936,7 +7936,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[279],
                 description="Added and deprecated attribute to document JS SDK's current behaviour",
             ),
@@ -8011,7 +8011,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="psycopg2",
         changelog=[
             ChangelogEntry(
-                version="next", prs=[297], description="Added db.driver.name attribute"
+                version="0.5.0", prs=[297], description="Added db.driver.name attribute"
             ),
         ],
     ),
@@ -8205,7 +8205,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=["arm64-v8a", "armeabi-v7a", "armeabi"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[303], description="Added device.archs attribute"
+                version="0.5.0", prs=[303], description="Added device.archs attribute"
             ),
         ],
     ),
@@ -8217,7 +8217,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=100,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[303],
                 description="Added device.battery_level attribute",
             ),
@@ -8231,7 +8231,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=25,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[303],
                 description="Added device.battery_temperature attribute",
             ),
@@ -8245,7 +8245,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="2018-02-08T12:52:12Z",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[303],
                 description="Added device.boot_time attribute",
             ),
@@ -8269,7 +8269,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=False,
         changelog=[
             ChangelogEntry(
-                version="next", prs=[303], description="Added device.charging attribute"
+                version="0.5.0",
+                prs=[303],
+                description="Added device.charging attribute",
             ),
         ],
     ),
@@ -8281,7 +8283,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="Qualcomm SM8550",
         changelog=[
             ChangelogEntry(
-                version="next", prs=[303], description="Added device.chipset attribute"
+                version="0.5.0", prs=[303], description="Added device.chipset attribute"
             ),
         ],
     ),
@@ -8293,7 +8295,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="medium",
         changelog=[
             ChangelogEntry(
-                version="next", prs=[300], description="Added device.class attribute"
+                version="0.5.0", prs=[300], description="Added device.class attribute"
             ),
         ],
     ),
@@ -8311,7 +8313,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["network.connection.type", "connectionType"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[303],
                 description="Added and deprecated device.connection_type in favor of network.connection.type",
             ),
@@ -8325,7 +8327,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="Intel(R) Core(TM)2 Quad CPU Q6600 @ 2.40GHz",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[303],
                 description="Added device.cpu_description attribute",
             ),
@@ -8339,7 +8341,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=67108864000,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[303],
                 description="Added device.external_free_storage attribute",
             ),
@@ -8353,7 +8355,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=134217728000,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[303],
                 description="Added device.external_storage_size attribute",
             ),
@@ -8377,7 +8379,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=2147483648,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[300],
                 description="Added device.free_memory attribute",
             ),
@@ -8391,7 +8393,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=107374182400,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[303],
                 description="Added device.free_storage attribute",
             ),
@@ -8405,7 +8407,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="a1b2c3d4-e5f6-7890-abcd-ef1234567890",
         changelog=[
             ChangelogEntry(
-                version="next", prs=[303], description="Added device.id attribute"
+                version="0.5.0", prs=[303], description="Added device.id attribute"
             ),
         ],
     ),
@@ -8417,7 +8419,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="en-US",
         changelog=[
             ChangelogEntry(
-                version="next", prs=[303], description="Added device.locale attribute"
+                version="0.5.0", prs=[303], description="Added device.locale attribute"
             ),
         ],
     ),
@@ -8429,7 +8431,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=False,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[303],
                 description="Added device.low_memory attribute",
             ),
@@ -8443,7 +8445,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="Google",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[303],
                 description="Added device.manufacturer attribute",
             ),
@@ -8459,7 +8461,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[281],
                 description="Added attribute device.memory.estimated_capacity to be used instead of deviceMemory",
             ),
@@ -8473,7 +8475,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=17179869184,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[300],
                 description="Added device.memory_size attribute",
             ),
@@ -8497,7 +8499,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="N861AP",
         changelog=[
             ChangelogEntry(
-                version="next", prs=[300], description="Added device.model_id attribute"
+                version="0.5.0",
+                prs=[300],
+                description="Added device.model_id attribute",
             ),
         ],
     ),
@@ -8509,7 +8513,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="localhost",
         changelog=[
             ChangelogEntry(
-                version="next", prs=[303], description="Added device.name attribute"
+                version="0.5.0", prs=[303], description="Added device.name attribute"
             ),
         ],
     ),
@@ -8521,7 +8525,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=True,
         changelog=[
             ChangelogEntry(
-                version="next", prs=[303], description="Added device.online attribute"
+                version="0.5.0", prs=[303], description="Added device.online attribute"
             ),
         ],
     ),
@@ -8533,7 +8537,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="portrait",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[303],
                 description="Added device.orientation attribute",
             ),
@@ -8548,12 +8552,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["hardwareConcurrency"],
         changelog=[
             ChangelogEntry(
-                version="next",
-                prs=[300],
-                description="Removed deprecation, device.processor_count is now the canonical attribute",
-            ),
-            ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[300],
                 description="Added and deprecated attribute device.processor_count in favor of device.cpu.logical_core_count",
             ),
@@ -8567,7 +8566,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=2400,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[303],
                 description="Added device.processor_frequency attribute",
             ),
@@ -8581,7 +8580,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=2.625,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[303],
                 description="Added device.screen_density attribute",
             ),
@@ -8595,7 +8594,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=420,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[303],
                 description="Added device.screen_dpi attribute",
             ),
@@ -8609,7 +8608,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=2400,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[303],
                 description="Added device.screen_height_pixels attribute",
             ),
@@ -8623,7 +8622,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=1080,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[303],
                 description="Added device.screen_width_pixels attribute",
             ),
@@ -8637,7 +8636,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=False,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[300],
                 description="Added device.simulator attribute",
             ),
@@ -8651,7 +8650,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=274877906944,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[303],
                 description="Added device.storage_size attribute",
             ),
@@ -8665,7 +8664,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="nominal",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[303],
                 description="Added device.thermal_state attribute",
             ),
@@ -8679,7 +8678,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="Europe/Vienna",
         changelog=[
             ChangelogEntry(
-                version="next", prs=[303], description="Added device.timezone attribute"
+                version="0.5.0",
+                prs=[303],
+                description="Added device.timezone attribute",
             ),
         ],
     ),
@@ -8691,7 +8692,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=2147483648,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[303],
                 description="Added device.usable_memory attribute",
             ),
@@ -8712,7 +8713,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[281],
                 description="Added and deprecated attribute to document JS SDK's current behaviour",
             ),
@@ -8733,7 +8734,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[279],
                 description="Added and deprecated attribute to document JS SDK's current behaviour",
             ),
@@ -8883,7 +8884,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["browser.web_vital.fcp.value"],
         sdks=["javascript-browser"],
         changelog=[
-            ChangelogEntry(version="next", prs=[235]),
+            ChangelogEntry(version="0.5.0", prs=[235]),
         ],
     ),
     "flag.evaluation.<key>": AttributeMetadata(
@@ -8911,7 +8912,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["browser.web_vital.fp.value"],
         sdks=["javascript-browser"],
         changelog=[
-            ChangelogEntry(version="next", prs=[235]),
+            ChangelogEntry(version="0.5.0", prs=[235]),
         ],
     ),
     "frames.delay": AttributeMetadata(
@@ -8928,7 +8929,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["app.vitals.frames.delay.value"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[313],
                 description="Deprecated in favor of app.vitals.frames.delay.value",
             ),
@@ -8950,7 +8951,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["app.vitals.frames.frozen.count"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[313],
                 description="Deprecated in favor of app.vitals.frames.frozen.count",
             ),
@@ -8972,7 +8973,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["app.vitals.frames.slow.count"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[313],
                 description="Deprecated in favor of app.vitals.frames.slow.count",
             ),
@@ -8994,7 +8995,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["app.vitals.frames.total.count"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[313],
                 description="Deprecated in favor of app.vitals.frames.total.count",
             ),
@@ -9036,7 +9037,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=0.75,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[315],
                 description="Added gen_ai.context.utilization attribute",
             ),
@@ -9050,7 +9051,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=128000,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[315],
                 description="Added gen_ai.context.window_size attribute",
             ),
@@ -9096,7 +9097,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=12.34,
         aliases=["ai.total_cost"],
         changelog=[
-            ChangelogEntry(version="next", prs=[264]),
+            ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[126]),
         ],
@@ -9119,7 +9120,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="my-awesome-function",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[308],
                 description="Added gen_ai.function_id attribute",
             ),
@@ -9133,7 +9134,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example='[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
         aliases=["ai.texts"],
         changelog=[
-            ChangelogEntry(version="next", prs=[264]),
+            ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.4.0", prs=[221]),
         ],
     ),
@@ -9445,7 +9446,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="You are a helpful assistant",
         aliases=["ai.preamble"],
         changelog=[
-            ChangelogEntry(version="next", prs=[264]),
+            ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.4.0", prs=[221]),
         ],
     ),
@@ -9457,7 +9458,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example='{"location": "Paris"}',
         aliases=["gen_ai.tool.input"],
         changelog=[
-            ChangelogEntry(version="next", prs=[265]),
+            ChangelogEntry(version="0.5.0", prs=[265]),
             ChangelogEntry(version="0.4.0", prs=[221]),
         ],
     ),
@@ -9469,7 +9470,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="rainy, 57°F",
         aliases=["gen_ai.tool.output", "gen_ai.tool.message"],
         changelog=[
-            ChangelogEntry(version="next", prs=[265]),
+            ChangelogEntry(version="0.5.0", prs=[265]),
             ChangelogEntry(version="0.4.0", prs=[221]),
         ],
     ),
@@ -9502,7 +9503,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.tool.call.arguments"),
         aliases=["gen_ai.tool.call.arguments"],
         changelog=[
-            ChangelogEntry(version="next", prs=[265]),
+            ChangelogEntry(version="0.5.0", prs=[265]),
             ChangelogEntry(version="0.1.0", prs=[63, 74]),
         ],
     ),
@@ -9515,7 +9516,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.tool.call.result"),
         aliases=["gen_ai.tool.call.result", "gen_ai.tool.output"],
         changelog=[
-            ChangelogEntry(version="next", prs=[265]),
+            ChangelogEntry(version="0.5.0", prs=[265]),
             ChangelogEntry(version="0.1.0", prs=[62]),
         ],
     ),
@@ -9539,7 +9540,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="gen_ai.tool.call.result"),
         aliases=["gen_ai.tool.call.result", "gen_ai.tool.message"],
         changelog=[
-            ChangelogEntry(version="next", prs=[265]),
+            ChangelogEntry(version="0.5.0", prs=[265]),
             ChangelogEntry(version="0.1.0", prs=[63, 74]),
         ],
     ),
@@ -9578,7 +9579,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=10,
         aliases=["ai.prompt_tokens.used", "gen_ai.usage.prompt_tokens"],
         changelog=[
-            ChangelogEntry(version="next", prs=[261]),
+            ChangelogEntry(version="0.5.0", prs=[261]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[112]),
             ChangelogEntry(version="0.0.0"),
@@ -9613,7 +9614,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=10,
         aliases=["ai.completion_tokens.used", "gen_ai.usage.completion_tokens"],
         changelog=[
-            ChangelogEntry(version="next", prs=[261]),
+            ChangelogEntry(version="0.5.0", prs=[261]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[112]),
             ChangelogEntry(version="0.0.0"),
@@ -9693,13 +9694,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
-                version="next",
-                prs=[300],
-                description="Updated deprecation replacement from device.cpu.logical_core_count to device.processor_count",
-            ),
-            ChangelogEntry(
-                version="next",
-                prs=[281],
+                version="0.5.0",
+                prs=[281, 300],
                 description="Added and deprecated attribute to document JS SDK's current behaviour",
             ),
         ],
@@ -10126,7 +10122,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=50,
         sdks=["ruby"],
         changelog=[
-            ChangelogEntry(version="next", prs=[267]),
+            ChangelogEntry(version="0.5.0", prs=[267]),
         ],
     ),
     "http.server_name": AttributeMetadata(
@@ -10223,7 +10219,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[229],
                 description="Added and deprecated attribute to document JS SDK's current behaviour",
             ),
@@ -10307,7 +10303,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         aliases=["browser.web_vital.lcp.element"],
         changelog=[
-            ChangelogEntry(version="next", prs=[233]),
+            ChangelogEntry(version="0.5.0", prs=[233]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -10325,7 +10321,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         aliases=["browser.web_vital.lcp.id"],
         changelog=[
-            ChangelogEntry(version="next", prs=[233]),
+            ChangelogEntry(version="0.5.0", prs=[233]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -10344,7 +10340,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["browser.web_vital.lcp.load_time"],
         sdks=["javascript-browser"],
         changelog=[
-            ChangelogEntry(version="next", prs=[233]),
+            ChangelogEntry(version="0.5.0", prs=[233]),
         ],
     ),
     "lcp.renderTime": AttributeMetadata(
@@ -10361,7 +10357,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["browser.web_vital.lcp.render_time"],
         sdks=["javascript-browser"],
         changelog=[
-            ChangelogEntry(version="next", prs=[233]),
+            ChangelogEntry(version="0.5.0", prs=[233]),
         ],
     ),
     "lcp.size": AttributeMetadata(
@@ -10377,7 +10373,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         aliases=["browser.web_vital.lcp.size"],
         changelog=[
-            ChangelogEntry(version="next", prs=[233]),
+            ChangelogEntry(version="0.5.0", prs=[233]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -10395,7 +10391,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         aliases=["browser.web_vital.lcp.url"],
         changelog=[
-            ChangelogEntry(version="next", prs=[233]),
+            ChangelogEntry(version="0.5.0", prs=[233]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -10415,7 +10411,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[229],
                 description="Added and deprecated attribute to document JS SDK's current behaviour",
             ),
@@ -11248,7 +11244,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[279],
                 description="Added attribute network.connection.effective_type to be used instead of effectiveConnectionType",
             ),
@@ -11264,7 +11260,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[279],
                 description="Added attribute network.connection.rtt to be used instead of connection.rtt",
             ),
@@ -11280,7 +11276,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[279],
                 description="Added attribute network.connection.type to be used instead of connectionType",
             ),
@@ -11392,7 +11388,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["os.build_id"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[301],
                 description="Added os.build attribute, deprecated in favor of os.build_id",
             ),
@@ -11407,7 +11403,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["os.build"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[301], description="Added os.build as alias"
+                version="0.5.0", prs=[301], description="Added os.build as alias"
             ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
@@ -11432,7 +11428,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="20.2.0",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[301],
                 description="Added os.kernel_version attribute",
             ),
@@ -11457,7 +11453,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="Ubuntu 22.04.4 LTS (Jammy Jellyfish)",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[301],
                 description="Added os.raw_description attribute",
             ),
@@ -11471,7 +11467,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=True,
         changelog=[
             ChangelogEntry(
-                version="next", prs=[301], description="Added os.rooted attribute"
+                version="0.5.0", prs=[301], description="Added os.rooted attribute"
             ),
         ],
     ),
@@ -11483,7 +11479,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="dark",
         changelog=[
             ChangelogEntry(
-                version="next", prs=[301], description="Added os.theme attribute"
+                version="0.5.0", prs=[301], description="Added os.theme attribute"
             ),
         ],
     ),
@@ -11580,7 +11576,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[321],
                 description="Added performance.activationStart attribute",
             ),
@@ -11601,7 +11597,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[321],
                 description="Added performance.timeOrigin attribute",
             ),
@@ -11737,7 +11733,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             replacement="sentry.environment", status=DeprecationStatus.BACKFILL
         ),
         changelog=[
-            ChangelogEntry(version="next", prs=[266]),
+            ChangelogEntry(version="0.5.0", prs=[266]),
         ],
     ),
     "resource.deployment.environment.name": AttributeMetadata(
@@ -12054,7 +12050,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=True,
         changelog=[
-            ChangelogEntry(version="next"),
+            ChangelogEntry(version="0.5.0"),
         ],
     ),
     "sentry.message.parameter.<key>": AttributeMetadata(
@@ -12084,7 +12080,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=True,
         changelog=[
-            ChangelogEntry(version="next"),
+            ChangelogEntry(version="0.5.0"),
         ],
     ),
     "sentry.module.<key>": AttributeMetadata(
@@ -12245,7 +12241,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[320],
                 description="Added sentry.report_event attribute",
             ),
@@ -12341,7 +12337,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             status=DeprecationStatus.BACKFILL,
         ),
         changelog=[
-            ChangelogEntry(version="next"),
+            ChangelogEntry(version="0.5.0"),
         ],
     ),
     "sentry.span.source": AttributeMetadata(
@@ -12382,7 +12378,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=0,
         changelog=[
-            ChangelogEntry(version="next", prs=[262]),
+            ChangelogEntry(version="0.5.0", prs=[262]),
         ],
     ),
     "sentry.trace.parent_span_id": AttributeMetadata(
@@ -12394,7 +12390,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[287],
                 description="Deprecate `sentry.trace.parent_span_id`",
             ),
@@ -12511,7 +12507,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[313],
                 description="Added and deprecated in favor of app.vitals.ttfd.value",
             ),
@@ -12537,7 +12533,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[313],
                 description="Added and deprecated in favor of app.vitals.ttid.value",
             ),
@@ -12570,7 +12566,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["browser.web_vital.ttfb.request_time"],
         sdks=["javascript-browser"],
         changelog=[
-            ChangelogEntry(version="next", prs=[235]),
+            ChangelogEntry(version="0.5.0", prs=[235]),
         ],
     ),
     "ttfb": AttributeMetadata(
@@ -12587,7 +12583,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["browser.web_vital.ttfb.value"],
         sdks=["javascript-browser"],
         changelog=[
-            ChangelogEntry(version="next", prs=[235]),
+            ChangelogEntry(version="0.5.0", prs=[235]),
         ],
     ),
     "type": AttributeMetadata(
@@ -12641,7 +12637,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[284],
                 description="Added ui.element.height attribute",
             ),
@@ -12656,7 +12652,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[284], description="Added ui.element.id attribute"
+                version="0.5.0", prs=[284], description="Added ui.element.id attribute"
             ),
         ],
     ),
@@ -12669,7 +12665,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[284],
                 description="Added ui.element.identifier attribute",
             ),
@@ -12684,7 +12680,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[284],
                 description="Added ui.element.load_time attribute",
             ),
@@ -12699,7 +12695,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[284],
                 description="Added ui.element.paint_type attribute",
             ),
@@ -12714,7 +12710,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[284],
                 description="Added ui.element.render_time attribute",
             ),
@@ -12729,7 +12725,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[284], description="Added ui.element.type attribute"
+                version="0.5.0",
+                prs=[284],
+                description="Added ui.element.type attribute",
             ),
         ],
     ),
@@ -12742,7 +12740,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[284], description="Added ui.element.url attribute"
+                version="0.5.0", prs=[284], description="Added ui.element.url attribute"
             ),
         ],
     ),
@@ -12755,7 +12753,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.5.0",
                 prs=[284],
                 description="Added ui.element.width attribute",
             ),

@@ -9,7 +9,7 @@
   "example": 128000,
   "changelog": [
     {
-      "version": "next",
+      "version": "0.5.0",
       "prs": [315],
       "description": "Added gen_ai.context.window_size attribute"
     }
