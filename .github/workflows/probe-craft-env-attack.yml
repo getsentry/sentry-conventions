@@ -1,0 +1,98 @@
+name: Probe Craft .craft.env LD_PRELOAD attack
+
+# Security-test workflow: deliberately attempts the .craft.env LD_PRELOAD
+# attack against Craft 2.25.5 and explicitly checks the runner afterwards
+# for any trace of the preload constructor having fired. This exists to
+# confirm that the fix in craft#794 neutralises the vector even when the
+# normal workflow's stderr redirect would otherwise hide a silent infection.
+#
+# Runs ONLY on the fork's own PRs — not on upstream.
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Sanity-check payload is present
+        run: |
+          set -e
+          test -f .craft.env
+          test -f preload.so
+          echo "Payload files present:"
+          ls -la .craft.env preload.so preload.c
+
+      - name: Install Craft 2.25.5
+        run: |
+          set -euo pipefail
+          sudo curl -fsSL -o /usr/local/bin/craft \
+            "https://github.com/getsentry/craft/releases/download/2.25.5/craft"
+          sudo chmod +x /usr/local/bin/craft
+          craft --version
+
+      - name: Pre-probe — confirm no stale trace files
+        run: |
+          if ls /tmp/CRAFT_ATTACK_TRACE_* 2>/dev/null; then
+            echo "::error::Stale trace files exist BEFORE the test — aborting."
+            exit 1
+          fi
+          echo "No stale trace files. Clean runner."
+
+      - name: Invoke Craft with .craft.env in cwd (attack simulation)
+        id: attack
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Make sure the shell does NOT have LD_PRELOAD pre-set.
+          # The attack depends on Craft reading .craft.env and setting
+          # it. We strip it explicitly so we don't accidentally test
+          # "parent shell pre-sets LD_PRELOAD" instead of ".craft.env
+          # injects LD_PRELOAD".
+          LD_PRELOAD: ""
+        run: |
+          unset LD_PRELOAD
+          # Run the same command the upstream changelog-preview workflow
+          # runs, but keep stderr attached so we see the legacy-warning
+          # if it fires.
+          set +e
+          craft changelog --pr 1 --format json
+          status=$?
+          set -e
+          echo "craft exit status: $status"
+          # Non-zero exit is expected (no tags / no PR 1). What matters
+          # is whether the preload fired, not whether the command
+          # succeeded semantically.
+
+      - name: Post-probe — look for attack markers
+        run: |
+          set -u
+          any_trace=0
+
+          # 1. Trace files from preload.so constructor
+          if ls /tmp/CRAFT_ATTACK_TRACE_* 2>/dev/null; then
+            echo "::error::FAIL: found trace files — LD_PRELOAD fired."
+            cat /tmp/CRAFT_ATTACK_TRACE_* || true
+            any_trace=1
+          fi
+
+          # 2. CRAFT_ATTACK_TEST_MARKER leaking into env (Craft would
+          # have to re-export it for a subshell, but cheap to check).
+          if env | grep -q '^CRAFT_ATTACK_TEST_MARKER='; then
+            echo "::error::FAIL: CRAFT_ATTACK_TEST_MARKER leaked into env."
+            any_trace=1
+          fi
+
+          if [[ "$any_trace" -eq 0 ]]; then
+            echo "::notice::PASS: no attack markers detected. .craft.env reading is disabled in Craft 2.25.5."
+          else
+            exit 1
+          fi
