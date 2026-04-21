@@ -8376,6 +8376,26 @@ export const PREVIOUS_ROUTE = 'previous_route';
  */
 export type PREVIOUS_ROUTE_TYPE = string;
 
+// Path: model/attributes/process/process__command_args.json
+
+/**
+ * All the command arguments (including the command/executable itself) as received by the process.  `process.command_args`
+ *
+ * Attribute Value Type: `Array<string>` {@link PROCESS_COMMAND_ARGS_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example ["cmd/otecol","--config=config.yaml"]
+ */
+export const PROCESS_COMMAND_ARGS = 'process.command_args';
+
+/**
+ * Type for {@link PROCESS_COMMAND_ARGS} process.command_args
+ */
+export type PROCESS_COMMAND_ARGS_TYPE = Array<string>;
+
 // Path: model/attributes/process/process__executable__name.json
 
 /**
@@ -11983,6 +12003,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [PERFORMANCE_ACTIVATIONSTART]: 'double',
   [PERFORMANCE_TIMEORIGIN]: 'double',
   [PREVIOUS_ROUTE]: 'string',
+  [PROCESS_COMMAND_ARGS]: 'string[]',
   [PROCESS_EXECUTABLE_NAME]: 'string',
   [PROCESS_PID]: 'integer',
   [PROCESS_RUNTIME_DESCRIPTION]: 'string',
@@ -12535,6 +12556,7 @@ export type AttributeName =
   | typeof PERFORMANCE_ACTIVATIONSTART
   | typeof PERFORMANCE_TIMEORIGIN
   | typeof PREVIOUS_ROUTE
+  | typeof PROCESS_COMMAND_ARGS
   | typeof PROCESS_EXECUTABLE_NAME
   | typeof PROCESS_PID
   | typeof PROCESS_RUNTIME_DESCRIPTION
@@ -17743,6 +17765,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['javascript-reactnative'],
     changelog: [{ version: '0.1.0', prs: [74] }, { version: '0.0.0' }],
   },
+  [PROCESS_COMMAND_ARGS]: {
+    brief: 'All the command arguments (including the command/executable itself) as received by the process. ',
+    type: 'string[]',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: ['cmd/otecol', '--config=config.yaml'],
+    sdks: ['python'],
+    changelog: [{ version: 'next', prs: [327], description: 'Added process.command_args attribute' }],
+  },
   [PROCESS_EXECUTABLE_NAME]: {
     brief: 'The name of the executable that started the process.',
     type: 'string',
@@ -19843,6 +19876,7 @@ export type Attributes = {
   [PERFORMANCE_ACTIVATIONSTART]?: PERFORMANCE_ACTIVATIONSTART_TYPE;
   [PERFORMANCE_TIMEORIGIN]?: PERFORMANCE_TIMEORIGIN_TYPE;
   [PREVIOUS_ROUTE]?: PREVIOUS_ROUTE_TYPE;
+  [PROCESS_COMMAND_ARGS]?: PROCESS_COMMAND_ARGS_TYPE;
   [PROCESS_EXECUTABLE_NAME]?: PROCESS_EXECUTABLE_NAME_TYPE;
   [PROCESS_PID]?: PROCESS_PID_TYPE;
   [PROCESS_RUNTIME_DESCRIPTION]?: PROCESS_RUNTIME_DESCRIPTION_TYPE;

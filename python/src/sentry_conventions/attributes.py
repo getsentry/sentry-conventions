@@ -4735,6 +4735,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "HomeScreen"
     """
 
+    # Path: model/attributes/process/process__command_args.json
+    PROCESS_COMMAND_ARGS: Literal["process.command_args"] = "process.command_args"
+    """All the command arguments (including the command/executable itself) as received by the process.
+
+    Type: List[str]
+    Contains PII: maybe
+    Defined in OTEL: Yes
+    Example: ["cmd/otecol","--config=config.yaml"]
+    """
+
     # Path: model/attributes/process/process__executable__name.json
     PROCESS_EXECUTABLE_NAME: Literal["process.executable.name"] = (
         "process.executable.name"
@@ -11640,6 +11650,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "process.command_args": AttributeMetadata(
+        brief="All the command arguments (including the command/executable itself) as received by the process.",
+        type=AttributeType.STRING_ARRAY,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=True,
+        example=["cmd/otecol", "--config=config.yaml"],
+        sdks=["python"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[327],
+                description="Added process.command_args attribute",
+            ),
+        ],
+    ),
     "process.executable.name": AttributeMetadata(
         brief="The name of the executable that started the process.",
         type=AttributeType.STRING,
@@ -13782,6 +13807,7 @@ Attributes = TypedDict(
         "performance.activationStart": float,
         "performance.timeOrigin": float,
         "previous_route": str,
+        "process.command_args": List[str],
         "process.executable.name": str,
         "process.pid": int,
         "process.runtime.description": str,
