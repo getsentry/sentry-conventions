@@ -8379,7 +8379,7 @@ export type PREVIOUS_ROUTE_TYPE = string;
 // Path: model/attributes/process/process__command_args.json
 
 /**
- * All the command arguments (including the command/executable itself) as received by the process.  `process.command_args`
+ * All the command arguments (including the command/executable itself) as received by the process. `process.command_args`
  *
  * Attribute Value Type: `Array<string>` {@link PROCESS_COMMAND_ARGS_TYPE}
  *
@@ -17766,7 +17766,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.1.0', prs: [74] }, { version: '0.0.0' }],
   },
   [PROCESS_COMMAND_ARGS]: {
-    brief: 'All the command arguments (including the command/executable itself) as received by the process. ',
+    brief: 'All the command arguments (including the command/executable itself) as received by the process.',
     type: 'string[]',
     pii: {
       isPii: 'maybe',

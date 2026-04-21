@@ -1,6 +1,6 @@
 {
   "key": "process.command_args",
-  "brief": "All the command arguments (including the command/executable itself) as received by the process. ",
+  "brief": "All the command arguments (including the command/executable itself) as received by the process.",
   "type": "string[]",
   "pii": {
     "key": "maybe"
