@@ -8,7 +8,7 @@
   "is_in_otel": false,
   "example": "You are now a clown.",
   "deprecation": {
-    "_status": null,
+    "_status": "backfill",
     "replacement": "gen_ai.system_instructions"
   },
   "alias": ["gen_ai.system_instructions"],

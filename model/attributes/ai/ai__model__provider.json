@@ -8,7 +8,7 @@
   "is_in_otel": false,
   "example": "openai",
   "deprecation": {
-    "_status": null,
+    "_status": "backfill",
     "replacement": "gen_ai.provider.name"
   },
   "alias": ["gen_ai.provider.name", "gen_ai.system"],

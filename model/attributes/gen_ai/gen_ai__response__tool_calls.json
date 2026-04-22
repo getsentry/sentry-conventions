@@ -9,7 +9,7 @@
   "example": "[{\"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]",
   "alias": [],
   "deprecation": {
-    "_status": null,
+    "_status": "backfill",
     "replacement": "gen_ai.output.messages"
   },
   "changelog": [
