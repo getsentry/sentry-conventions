@@ -2027,7 +2027,7 @@
       "is_in_otel": true,
       "example": "openai",
       "deprecation": {
-        "_status": null,
+        "_status": "backfill",
         "replacement": "gen_ai.provider.name"
       },
       "alias": ["ai.model.provider", "gen_ai.provider.name"],
@@ -2300,7 +2300,7 @@
       "is_in_otel": true,
       "example": "GET",
       "deprecation": {
-        "_status": null,
+        "_status": "backfill",
         "replacement": "http.request.method"
       },
       "alias": ["http.request.method"],
@@ -3196,7 +3196,7 @@
       "is_in_otel": false,
       "example": "Chrome",
       "deprecation": {
-        "_status": null,
+        "_status": "backfill",
         "replacement": "browser.name"
       },
       "alias": ["browser.name"],
@@ -3217,7 +3217,7 @@
       "is_in_otel": false,
       "example": "120.0.6099.130",
       "deprecation": {
-        "_status": null,
+        "_status": "backfill",
         "replacement": "browser.version"
       },
       "alias": ["browser.version"],
@@ -3261,7 +3261,7 @@
       "example": "051581bf3cb55c13",
       "alias": ["sentry.segment.id"],
       "deprecation": {
-        "_status": null,
+        "_status": "backfill",
         "replacement": "sentry.segment.id"
       },
       "changelog": [

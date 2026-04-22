@@ -9444,7 +9444,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="openai",
-        deprecation=DeprecationInfo(replacement="gen_ai.provider.name"),
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.provider.name", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["ai.model.provider", "gen_ai.provider.name"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[253]),
@@ -9800,7 +9802,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="GET",
-        deprecation=DeprecationInfo(replacement="http.request.method"),
+        deprecation=DeprecationInfo(
+            replacement="http.request.method", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["http.request.method"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
@@ -11838,7 +11842,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="Chrome",
-        deprecation=DeprecationInfo(replacement="browser.name"),
+        deprecation=DeprecationInfo(
+            replacement="browser.name", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["browser.name"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[139]),
@@ -11850,7 +11856,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="120.0.6099.130",
-        deprecation=DeprecationInfo(replacement="browser.version"),
+        deprecation=DeprecationInfo(
+            replacement="browser.version", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["browser.version"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[139]),
@@ -12334,7 +12342,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="051581bf3cb55c13",
-        deprecation=DeprecationInfo(replacement="sentry.segment.id"),
+        deprecation=DeprecationInfo(
+            replacement="sentry.segment.id", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["sentry.segment.id"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[124]),
