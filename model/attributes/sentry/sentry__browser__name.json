@@ -8,7 +8,7 @@
   "is_in_otel": false,
   "example": "Chrome",
   "deprecation": {
-    "_status": null,
+    "_status": "backfill",
     "replacement": "browser.name"
   },
   "alias": ["browser.name"],

@@ -8,7 +8,7 @@
   "is_in_otel": false,
   "example": "120.0.6099.130",
   "deprecation": {
-    "_status": null,
+    "_status": "backfill",
     "replacement": "browser.version"
   },
   "alias": ["browser.version"],
