@@ -10,7 +10,7 @@
   "alias": ["gen_ai.request.messages"],
   "sdks": ["python"],
   "deprecation": {
-    "_status": null,
+    "_status": "backfill",
     "replacement": "gen_ai.request.messages"
   },
   "changelog": [

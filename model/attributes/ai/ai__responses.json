@@ -9,7 +9,7 @@
   "example": ["hello", "world"],
   "sdks": ["python"],
   "deprecation": {
-    "_status": null,
+    "_status": "backfill",
     "replacement": "gen_ai.response.text"
   },
   "changelog": [

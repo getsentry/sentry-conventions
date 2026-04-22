@@ -9,7 +9,7 @@
   "example": "[\"The weather in Paris is rainy and overcast, with temperatures around 57°F\", \"The weather in London is sunny and warm, with temperatures around 65°F\"]",
   "alias": [],
   "deprecation": {
-    "_status": null,
+    "_status": "backfill",
     "replacement": "gen_ai.output.messages"
   },
   "changelog": [

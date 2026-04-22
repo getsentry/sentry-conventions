@@ -10,7 +10,7 @@
   "alias": ["gen_ai.response.model"],
   "sdks": ["python"],
   "deprecation": {
-    "_status": null,
+    "_status": "backfill",
     "replacement": "gen_ai.response.model"
   },
   "changelog": [

@@ -6410,7 +6410,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=10,
-        deprecation=DeprecationInfo(replacement="gen_ai.usage.output_tokens"),
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.usage.output_tokens", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["gen_ai.usage.output_tokens", "gen_ai.usage.completion_tokens"],
         sdks=["python"],
         changelog=[
@@ -6437,7 +6439,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="COMPLETE",
-        deprecation=DeprecationInfo(replacement="gen_ai.response.finish_reasons"),
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.response.finish_reasons",
+            status=DeprecationStatus.BACKFILL,
+        ),
         aliases=["gen_ai.response.finish_reasons"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[55, 57, 61, 108, 127]),
@@ -6449,7 +6454,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=0.5,
-        deprecation=DeprecationInfo(replacement="gen_ai.request.frequency_penalty"),
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.request.frequency_penalty",
+            status=DeprecationStatus.BACKFILL,
+        ),
         aliases=["gen_ai.request.frequency_penalty"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -6462,7 +6470,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         example="function_name",
-        deprecation=DeprecationInfo(replacement="gen_ai.tool.name"),
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.tool.name", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["gen_ai.tool.name"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[55, 57, 61, 108]),
@@ -6474,7 +6484,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="gen_123abc",
-        deprecation=DeprecationInfo(replacement="gen_ai.response.id"),
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.response.id", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["gen_ai.response.id"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[55, 57, 61, 108, 127]),
@@ -6486,7 +6498,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example='[{"role": "user", "message": "hello"}]',
-        deprecation=DeprecationInfo(replacement="gen_ai.request.messages"),
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.request.messages", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["gen_ai.request.messages"],
         sdks=["python"],
         changelog=[
@@ -6524,7 +6538,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="openai",
-        deprecation=DeprecationInfo(replacement="gen_ai.provider.name"),
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.provider.name", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["gen_ai.provider.name", "gen_ai.system"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[253]),
@@ -6537,7 +6553,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="gpt-4",
-        deprecation=DeprecationInfo(replacement="gen_ai.response.model"),
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.response.model", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["gen_ai.response.model"],
         sdks=["python"],
         changelog=[
@@ -6551,7 +6569,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="Autofix Pipeline",
-        deprecation=DeprecationInfo(replacement="gen_ai.pipeline.name"),
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.pipeline.name", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["gen_ai.pipeline.name"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[53, 76, 108, 127]),
@@ -6563,7 +6583,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         example="You are now a clown.",
-        deprecation=DeprecationInfo(replacement="gen_ai.system_instructions"),
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.system_instructions", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["gen_ai.system_instructions"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[264]),
@@ -6576,7 +6598,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=0.5,
-        deprecation=DeprecationInfo(replacement="gen_ai.request.presence_penalty"),
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.request.presence_penalty",
+            status=DeprecationStatus.BACKFILL,
+        ),
         aliases=["gen_ai.request.presence_penalty"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -6589,7 +6614,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=20,
-        deprecation=DeprecationInfo(replacement="gen_ai.usage.input_tokens"),
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.usage.input_tokens", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["gen_ai.usage.prompt_tokens", "gen_ai.usage.input_tokens"],
         sdks=["python"],
         changelog=[
@@ -6628,7 +6655,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=["hello", "world"],
-        deprecation=DeprecationInfo(replacement="gen_ai.response.text"),
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.response.text", status=DeprecationStatus.BACKFILL
+        ),
         sdks=["python"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[65, 127]),
@@ -6665,7 +6694,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="1234567890",
-        deprecation=DeprecationInfo(replacement="gen_ai.request.seed"),
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.request.seed", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["gen_ai.request.seed"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[55, 57, 61, 108, 127]),
@@ -6677,7 +6708,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example=True,
-        deprecation=DeprecationInfo(replacement="gen_ai.response.streaming"),
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.response.streaming", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["gen_ai.response.streaming"],
         sdks=["python"],
         changelog=[
@@ -6703,7 +6736,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=0.1,
-        deprecation=DeprecationInfo(replacement="gen_ai.request.temperature"),
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.request.temperature", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["gen_ai.request.temperature"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -6716,7 +6751,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         example=["Hello, how are you?", "What is the capital of France?"],
-        deprecation=DeprecationInfo(replacement="gen_ai.input.messages"),
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.input.messages", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["gen_ai.input.messages"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[264]),
@@ -6729,7 +6766,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         example=["tool_call_1", "tool_call_2"],
-        deprecation=DeprecationInfo(replacement="gen_ai.response.tool_calls"),
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.response.tool_calls", status=DeprecationStatus.BACKFILL
+        ),
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[55, 65]),
         ],
@@ -6740,7 +6779,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=["function_1", "function_2"],
-        deprecation=DeprecationInfo(replacement="gen_ai.request.available_tools"),
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.request.available_tools",
+            status=DeprecationStatus.BACKFILL,
+        ),
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[55, 65, 127]),
         ],
@@ -6751,7 +6793,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=35,
-        deprecation=DeprecationInfo(replacement="gen_ai.request.top_k"),
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.request.top_k", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["gen_ai.request.top_k"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -6764,7 +6808,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=0.7,
-        deprecation=DeprecationInfo(replacement="gen_ai.request.top_p"),
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.request.top_p", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["gen_ai.request.top_p"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -6777,7 +6823,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=12.34,
-        deprecation=DeprecationInfo(replacement="gen_ai.cost.total_tokens"),
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.cost.total_tokens", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["gen_ai.cost.total_tokens"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[264]),
@@ -6791,7 +6839,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=30,
-        deprecation=DeprecationInfo(replacement="gen_ai.usage.total_tokens"),
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.usage.total_tokens", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["gen_ai.usage.total_tokens"],
         sdks=["python"],
         changelog=[
@@ -9237,7 +9287,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example='[{"name": "get_weather", "description": "Get the weather for a given location"}, {"name": "get_news", "description": "Get the news for a given topic"}]',
-        deprecation=DeprecationInfo(replacement="gen_ai.tool.definitions"),
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.tool.definitions", status=DeprecationStatus.BACKFILL
+        ),
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[221]),
             ChangelogEntry(version="0.1.0", prs=[63, 127]),
@@ -9272,7 +9324,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example='[{"role": "system", "content": "Generate a random number."}, {"role": "user", "content": [{"text": "Generate a random number between 0 and 10.", "type": "text"}]}, {"role": "tool", "content": {"toolCallId": "1", "toolName": "Weather", "output": "rainy"}}]',
-        deprecation=DeprecationInfo(replacement="gen_ai.input.messages"),
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.input.messages", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["ai.input_messages"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[221]),
@@ -9399,7 +9453,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example='["The weather in Paris is rainy and overcast, with temperatures around 57°F", "The weather in London is sunny and warm, with temperatures around 65°F"]',
-        deprecation=DeprecationInfo(replacement="gen_ai.output.messages"),
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.output.messages", status=DeprecationStatus.BACKFILL
+        ),
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[221]),
             ChangelogEntry(version="0.1.0", prs=[63, 74]),
@@ -9432,7 +9488,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example='[{"name": "get_weather", "arguments": {"location": "Paris"}}]',
-        deprecation=DeprecationInfo(replacement="gen_ai.output.messages"),
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.output.messages", status=DeprecationStatus.BACKFILL
+        ),
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[221]),
             ChangelogEntry(version="0.1.0", prs=[63, 74]),
@@ -9459,7 +9517,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         example="You are a helpful assistant",
-        deprecation=DeprecationInfo(replacement="gen_ai.system_instructions"),
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.system_instructions", status=DeprecationStatus.BACKFILL
+        ),
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[221]),
             ChangelogEntry(version="0.1.0", prs=[62]),
@@ -9527,7 +9587,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example='{"location": "Paris"}',
-        deprecation=DeprecationInfo(replacement="gen_ai.tool.call.arguments"),
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.tool.call.arguments", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["gen_ai.tool.call.arguments"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[265]),
@@ -9540,7 +9602,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         example="rainy, 57°F",
-        deprecation=DeprecationInfo(replacement="gen_ai.tool.call.result"),
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.tool.call.result", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["gen_ai.tool.call.result", "gen_ai.tool.output"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[265]),
@@ -9564,7 +9628,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="rainy, 57°F",
-        deprecation=DeprecationInfo(replacement="gen_ai.tool.call.result"),
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.tool.call.result", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["gen_ai.tool.call.result", "gen_ai.tool.message"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[265]),
@@ -9590,7 +9656,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example=10,
-        deprecation=DeprecationInfo(replacement="gen_ai.usage.output_tokens"),
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.usage.output_tokens", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["ai.completion_tokens.used", "gen_ai.usage.output_tokens"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -9664,7 +9732,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example=20,
-        deprecation=DeprecationInfo(replacement="gen_ai.usage.input_tokens"),
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.usage.input_tokens", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["ai.prompt_tokens.used", "gen_ai.usage.input_tokens"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),

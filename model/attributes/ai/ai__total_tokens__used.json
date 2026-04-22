@@ -9,7 +9,7 @@
   "example": 30,
   "sdks": ["python"],
   "deprecation": {
-    "_status": null,
+    "_status": "backfill",
     "replacement": "gen_ai.usage.total_tokens"
   },
   "alias": ["gen_ai.usage.total_tokens"],

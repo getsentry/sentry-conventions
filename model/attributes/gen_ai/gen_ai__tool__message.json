@@ -9,7 +9,7 @@
   "example": "rainy, 57°F",
   "alias": ["gen_ai.tool.call.result", "gen_ai.tool.output"],
   "deprecation": {
-    "_status": null,
+    "_status": "backfill",
     "replacement": "gen_ai.tool.call.result"
   },
   "changelog": [

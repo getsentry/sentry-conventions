@@ -8,7 +8,7 @@
   "is_in_otel": false,
   "example": "You are a helpful assistant",
   "deprecation": {
-    "_status": null,
+    "_status": "backfill",
     "replacement": "gen_ai.system_instructions"
   },
   "changelog": [

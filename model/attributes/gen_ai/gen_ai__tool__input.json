@@ -9,7 +9,7 @@
   "example": "{\"location\": \"Paris\"}",
   "alias": ["gen_ai.tool.call.arguments"],
   "deprecation": {
-    "_status": null,
+    "_status": "backfill",
     "replacement": "gen_ai.tool.call.arguments"
   },
   "changelog": [
