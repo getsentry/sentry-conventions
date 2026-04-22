@@ -2596,6 +2596,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 0.5
     """
 
+    # Path: model/attributes/gen_ai/gen_ai__request__reasoning_effort.json
+    GEN_AI_REQUEST_REASONING_EFFORT: Literal["gen_ai.request.reasoning_effort"] = (
+        "gen_ai.request.reasoning_effort"
+    )
+    """Constrains the effort on reasoning for reasoning models. Supported values vary by provider: OpenAI supports `minimal`, `low`, `medium`, `high` (and `none`, `xhigh` on newer models); Anthropic supports `low`, `medium`, `high`; Google Gemini 3 supports `low`, `high`.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "high"
+    """
+
     # Path: model/attributes/gen_ai/gen_ai__request__seed.json
     GEN_AI_REQUEST_SEED: Literal["gen_ai.request.seed"] = "gen_ai.request.seed"
     """The seed, ideally models given the same seed and same other parameters will produce the exact same output.
@@ -9355,6 +9367,20 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[57]),
         ],
     ),
+    "gen_ai.request.reasoning_effort": AttributeMetadata(
+        brief="Constrains the effort on reasoning for reasoning models. Supported values vary by provider: OpenAI supports `minimal`, `low`, `medium`, `high` (and `none`, `xhigh` on newer models); Anthropic supports `low`, `medium`, `high`; Google Gemini 3 supports `low`, `high`.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="high",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[334],
+                description="Added gen_ai.request.reasoning_effort attribute",
+            ),
+        ],
+    ),
     "gen_ai.request.seed": AttributeMetadata(
         brief="The seed, ideally models given the same seed and same other parameters will produce the exact same output.",
         type=AttributeType.STRING,
@@ -13674,6 +13700,7 @@ Attributes = TypedDict(
         "gen_ai.request.messages": str,
         "gen_ai.request.model": str,
         "gen_ai.request.presence_penalty": float,
+        "gen_ai.request.reasoning_effort": str,
         "gen_ai.request.seed": str,
         "gen_ai.request.temperature": float,
         "gen_ai.request.top_k": int,

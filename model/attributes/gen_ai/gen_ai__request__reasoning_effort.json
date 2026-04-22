@@ -1,0 +1,17 @@
+{
+  "key": "gen_ai.request.reasoning_effort",
+  "brief": "Constrains the effort on reasoning for reasoning models. Supported values vary by provider: OpenAI supports `minimal`, `low`, `medium`, `high` (and `none`, `xhigh` on newer models); Anthropic supports `low`, `medium`, `high`; Google Gemini 3 supports `low`, `high`.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "high",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [334],
+      "description": "Added gen_ai.request.reasoning_effort attribute"
+    }
+  ]
+}

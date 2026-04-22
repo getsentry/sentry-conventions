@@ -4412,6 +4412,26 @@ export const GEN_AI_REQUEST_PRESENCE_PENALTY = 'gen_ai.request.presence_penalty'
  */
 export type GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE = number;
 
+// Path: model/attributes/gen_ai/gen_ai__request__reasoning_effort.json
+
+/**
+ * Constrains the effort on reasoning for reasoning models. Supported values vary by provider: OpenAI supports `minimal`, `low`, `medium`, `high` (and `none`, `xhigh` on newer models); Anthropic supports `low`, `medium`, `high`; Google Gemini 3 supports `low`, `high`. `gen_ai.request.reasoning_effort`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_REQUEST_REASONING_EFFORT_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "high"
+ */
+export const GEN_AI_REQUEST_REASONING_EFFORT = 'gen_ai.request.reasoning_effort';
+
+/**
+ * Type for {@link GEN_AI_REQUEST_REASONING_EFFORT} gen_ai.request.reasoning_effort
+ */
+export type GEN_AI_REQUEST_REASONING_EFFORT_TYPE = string;
+
 // Path: model/attributes/gen_ai/gen_ai__request__seed.json
 
 /**
@@ -11795,6 +11815,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [GEN_AI_REQUEST_MESSAGES]: 'string',
   [GEN_AI_REQUEST_MODEL]: 'string',
   [GEN_AI_REQUEST_PRESENCE_PENALTY]: 'double',
+  [GEN_AI_REQUEST_REASONING_EFFORT]: 'string',
   [GEN_AI_REQUEST_SEED]: 'string',
   [GEN_AI_REQUEST_TEMPERATURE]: 'double',
   [GEN_AI_REQUEST_TOP_K]: 'integer',
@@ -12347,6 +12368,7 @@ export type AttributeName =
   | typeof GEN_AI_REQUEST_MESSAGES
   | typeof GEN_AI_REQUEST_MODEL
   | typeof GEN_AI_REQUEST_PRESENCE_PENALTY
+  | typeof GEN_AI_REQUEST_REASONING_EFFORT
   | typeof GEN_AI_REQUEST_SEED
   | typeof GEN_AI_REQUEST_TEMPERATURE
   | typeof GEN_AI_REQUEST_TOP_K
@@ -15391,6 +15413,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [57] },
     ],
+  },
+  [GEN_AI_REQUEST_REASONING_EFFORT]: {
+    brief:
+      'Constrains the effort on reasoning for reasoning models. Supported values vary by provider: OpenAI supports `minimal`, `low`, `medium`, `high` (and `none`, `xhigh` on newer models); Anthropic supports `low`, `medium`, `high`; Google Gemini 3 supports `low`, `high`.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'high',
+    changelog: [{ version: 'next', prs: [334], description: 'Added gen_ai.request.reasoning_effort attribute' }],
   },
   [GEN_AI_REQUEST_SEED]: {
     brief: 'The seed, ideally models given the same seed and same other parameters will produce the exact same output.',
@@ -19655,6 +19688,7 @@ export type Attributes = {
   [GEN_AI_REQUEST_MESSAGES]?: GEN_AI_REQUEST_MESSAGES_TYPE;
   [GEN_AI_REQUEST_MODEL]?: GEN_AI_REQUEST_MODEL_TYPE;
   [GEN_AI_REQUEST_PRESENCE_PENALTY]?: GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE;
+  [GEN_AI_REQUEST_REASONING_EFFORT]?: GEN_AI_REQUEST_REASONING_EFFORT_TYPE;
   [GEN_AI_REQUEST_SEED]?: GEN_AI_REQUEST_SEED_TYPE;
   [GEN_AI_REQUEST_TEMPERATURE]?: GEN_AI_REQUEST_TEMPERATURE_TYPE;
   [GEN_AI_REQUEST_TOP_K]?: GEN_AI_REQUEST_TOP_K_TYPE;
