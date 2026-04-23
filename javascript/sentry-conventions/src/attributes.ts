@@ -14043,7 +14043,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.1.0', prs: [61, 74] }, { version: '0.0.0' }],
   },
   [CODE_FUNCTION_NAME]: {
-    brief: "The method or function fully-qualified name without arguments.",
+    brief: 'The method or function fully-qualified name without arguments.',
     type: 'string',
     pii: {
       isPii: 'maybe',
