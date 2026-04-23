@@ -7908,7 +7908,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "code.function.name": AttributeMetadata(
-        brief="The method or function name, or equivalent (usually rightmost part of the code unit's name).",
+        brief="The method or function fully-qualified name without arguments.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,

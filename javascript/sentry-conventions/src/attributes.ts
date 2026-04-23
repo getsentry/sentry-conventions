@@ -2121,7 +2121,7 @@ export type CODE_FILE_PATH_TYPE = string;
 // Path: model/attributes/code/code__function.json
 
 /**
- * The method or function name, or equivalent (usually rightmost part of the code unit's name). `code.function`
+ * The method or function fully-qualified name without arguments. `code.function`
  *
  * Attribute Value Type: `string` {@link CODE_FUNCTION_TYPE}
  *
