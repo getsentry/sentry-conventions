@@ -1409,7 +1409,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/code/code__function__name.json
     CODE_FUNCTION_NAME: Literal["code.function.name"] = "code.function.name"
-    """The method or function name, or equivalent (usually rightmost part of the code unit's name).
+    """The method or function fully-qualified name without arguments.
 
     Type: str
     Contains PII: maybe
@@ -7908,7 +7908,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "code.function.name": AttributeMetadata(
-        brief="The method or function name, or equivalent (usually rightmost part of the code unit's name).",
+        brief="The method or function fully-qualified name without arguments.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,

@@ -1,6 +1,6 @@
 {
   "key": "code.function.name",
-  "brief": "The method or function name, or equivalent (usually rightmost part of the code unit's name).",
+  "brief": "The method or function fully-qualified name without arguments.",
   "type": "string",
   "pii": {
     "key": "maybe"
