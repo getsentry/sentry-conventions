@@ -3099,7 +3099,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/http/http__request__body__data.json
     HTTP_REQUEST_BODY_DATA: Literal["http.request.body.data"] = "http.request.body.data"
-    """HTTP request body data. Could be the JSON body or the form data. If form data, and a file is attached, the file is redacted.
+    """HTTP request body data. Can be given as string or structural data of any format.
 
     Type: str
     Contains PII: maybe
@@ -9905,7 +9905,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "http.request.body.data": AttributeMetadata(
-        brief="HTTP request body data. Could be the JSON body or the form data. If form data, and a file is attached, the file is redacted.",
+        brief="HTTP request body data. Can be given as string or structural data of any format.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,

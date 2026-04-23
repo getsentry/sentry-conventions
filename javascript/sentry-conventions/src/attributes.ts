@@ -5322,7 +5322,7 @@ export type HTTP_QUERY_TYPE = string;
 // Path: model/attributes/http/http__request__body__data.json
 
 /**
- * HTTP request body data. Could be the JSON body or the form data. If form data, and a file is attached, the file is redacted. `http.request.body.data`
+ * HTTP request body data. Can be given as string or structural data of any format. `http.request.body.data`
  *
  * Attribute Value Type: `string` {@link HTTP_REQUEST_BODY_DATA_TYPE}
  *
@@ -15988,8 +15988,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.0.0' }],
   },
   [HTTP_REQUEST_BODY_DATA]: {
-    brief:
-      'HTTP request body data. Could be the JSON body or the form data. If form data, and a file is attached, the file is redacted.',
+    brief: 'HTTP request body data. Can be given as string or structural data of any format.',
     type: 'string',
     pii: {
       isPii: 'maybe',

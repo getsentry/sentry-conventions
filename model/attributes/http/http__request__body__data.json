@@ -1,6 +1,6 @@
 {
   "key": "http.request.body.data",
-  "brief": "HTTP request body data. Could be the JSON body or the form data. If form data, and a file is attached, the file is redacted.",
+  "brief": "HTTP request body data. Can be given as string or structural data of any format.",
   "type": "string",
   "pii": {
     "key": "maybe"
