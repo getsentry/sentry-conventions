@@ -9938,6 +9938,26 @@ export const SERVICE_VERSION = 'service.version';
  */
 export type SERVICE_VERSION_TYPE = string;
 
+// Path: model/attributes/starlette/starlette__middleware__name.json
+
+/**
+ * The name of the Starlette middleware. `starlette.middleware.name`
+ *
+ * Attribute Value Type: `string` {@link STARLETTE_MIDDLEWARE_NAME_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "AuthenticationMiddleware"
+ */
+export const STARLETTE_MIDDLEWARE_NAME = 'starlette.middleware.name';
+
+/**
+ * Type for {@link STARLETTE_MIDDLEWARE_NAME} starlette.middleware.name
+ */
+export type STARLETTE_MIDDLEWARE_NAME_TYPE = string;
+
 // Path: model/attributes/thread/thread__id.json
 
 /**
@@ -12059,6 +12079,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SERVER_PORT]: 'integer',
   [SERVICE_NAME]: 'string',
   [SERVICE_VERSION]: 'string',
+  [STARLETTE_MIDDLEWARE_NAME]: 'string',
   [THREAD_ID]: 'integer',
   [THREAD_NAME]: 'string',
   [TIMBER_TAG]: 'string',
@@ -12611,6 +12632,7 @@ export type AttributeName =
   | typeof SERVER_PORT
   | typeof SERVICE_NAME
   | typeof SERVICE_VERSION
+  | typeof STARLETTE_MIDDLEWARE_NAME
   | typeof THREAD_ID
   | typeof THREAD_NAME
   | typeof TIMBER_TAG
@@ -18587,6 +18609,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [SENTRY_RELEASE],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  [STARLETTE_MIDDLEWARE_NAME]: {
+    brief: 'The name of the Starlette middleware.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'AuthenticationMiddleware',
+    sdks: ['python'],
+    changelog: [{ version: 'next', prs: [336], description: 'Added starlette.middleware.name attribute' }],
+  },
   [THREAD_ID]: {
     brief: 'Current “managed” thread ID.',
     type: 'integer',
@@ -19919,6 +19952,7 @@ export type Attributes = {
   [SERVER_PORT]?: SERVER_PORT_TYPE;
   [SERVICE_NAME]?: SERVICE_NAME_TYPE;
   [SERVICE_VERSION]?: SERVICE_VERSION_TYPE;
+  [STARLETTE_MIDDLEWARE_NAME]?: STARLETTE_MIDDLEWARE_NAME_TYPE;
   [THREAD_ID]?: THREAD_ID_TYPE;
   [THREAD_NAME]?: THREAD_NAME_TYPE;
   [TIMBER_TAG]?: TIMBER_TAG_TYPE;

@@ -1,0 +1,18 @@
+{
+  "key": "starlette.middleware.name",
+  "brief": "The name of the Starlette middleware.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "AuthenticationMiddleware",
+  "sdks": ["python"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [336],
+      "description": "Added starlette.middleware.name attribute"
+    }
+  ]
+}

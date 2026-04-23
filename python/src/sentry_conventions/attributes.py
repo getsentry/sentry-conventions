@@ -5570,6 +5570,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "5.0.0"
     """
 
+    # Path: model/attributes/starlette/starlette__middleware__name.json
+    STARLETTE_MIDDLEWARE_NAME: Literal["starlette.middleware.name"] = (
+        "starlette.middleware.name"
+    )
+    """The name of the Starlette middleware.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "AuthenticationMiddleware"
+    """
+
     # Path: model/attributes/thread/thread__id.json
     THREAD_ID: Literal["thread.id"] = "thread.id"
     """Current “managed” thread ID.
@@ -12560,6 +12572,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "starlette.middleware.name": AttributeMetadata(
+        brief="The name of the Starlette middleware.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="AuthenticationMiddleware",
+        sdks=["python"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[336],
+                description="Added starlette.middleware.name attribute",
+            ),
+        ],
+    ),
     "thread.id": AttributeMetadata(
         brief="Current “managed” thread ID.",
         type=AttributeType.INTEGER,
@@ -13938,6 +13965,7 @@ Attributes = TypedDict(
         "server.port": int,
         "service.name": str,
         "service.version": str,
+        "starlette.middleware.name": str,
         "thread.id": int,
         "thread.name": str,
         "timber.tag": str,
