@@ -1,0 +1,18 @@
+{
+  "key": "process.command_args",
+  "brief": "All the command arguments (including the command/executable itself) as received by the process.",
+  "type": "string[]",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": true,
+  "example": ["cmd/otecol", "--config=config.yaml"],
+  "sdks": ["python"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [327],
+      "description": "Added process.command_args attribute"
+    }
+  ]
+}
