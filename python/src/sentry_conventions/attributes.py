@@ -3097,6 +3097,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "?foo=bar&bar=baz"
     """
 
+    # Path: model/attributes/http/http__request__body__data.json
+    HTTP_REQUEST_BODY_DATA: Literal["http.request.body.data"] = "http.request.body.data"
+    """HTTP request body data. Could be the JSON body or the form data. If form data, and a file is attached, the file is redacted.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "[{\"role\": \"user\", \"message\": \"hello\"}]"
+    """
+
     # Path: model/attributes/http/http__request__connect_start.json
     HTTP_REQUEST_CONNECT_START: Literal["http.request.connect_start"] = (
         "http.request.connect_start"
@@ -9894,6 +9904,20 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "http.request.body.data": AttributeMetadata(
+        brief="HTTP request body data. Could be the JSON body or the form data. If form data, and a file is attached, the file is redacted.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example='[{"role": "user", "message": "hello"}]',
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[336],
+                description="Added http.request.body.data attribute",
+            ),
+        ],
+    ),
     "http.request.connect_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the user agent starts establishing the connection to the server to retrieve the resource.",
         type=AttributeType.DOUBLE,
@@ -13716,6 +13740,7 @@ Attributes = TypedDict(
         "http.host": str,
         "http.method": str,
         "http.query": str,
+        "http.request.body.data": str,
         "http.request.connect_start": float,
         "http.request.connection_end": float,
         "http.request.domain_lookup_end": float,

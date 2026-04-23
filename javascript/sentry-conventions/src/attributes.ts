@@ -5319,6 +5319,26 @@ export const HTTP_QUERY = 'http.query';
  */
 export type HTTP_QUERY_TYPE = string;
 
+// Path: model/attributes/http/http__request__body__data.json
+
+/**
+ * HTTP request body data. Could be the JSON body or the form data. If form data, and a file is attached, the file is redacted. `http.request.body.data`
+ *
+ * Attribute Value Type: `string` {@link HTTP_REQUEST_BODY_DATA_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "[{\"role\": \"user\", \"message\": \"hello\"}]"
+ */
+export const HTTP_REQUEST_BODY_DATA = 'http.request.body.data';
+
+/**
+ * Type for {@link HTTP_REQUEST_BODY_DATA} http.request.body.data
+ */
+export type HTTP_REQUEST_BODY_DATA_TYPE = string;
+
 // Path: model/attributes/http/http__request__connection_end.json
 
 /**
@@ -11837,6 +11857,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [HTTP_HOST]: 'string',
   [HTTP_METHOD]: 'string',
   [HTTP_QUERY]: 'string',
+  [HTTP_REQUEST_BODY_DATA]: 'string',
   [HTTP_REQUEST_CONNECTION_END]: 'double',
   [HTTP_REQUEST_CONNECT_START]: 'double',
   [HTTP_REQUEST_DOMAIN_LOOKUP_END]: 'double',
@@ -12389,6 +12410,7 @@ export type AttributeName =
   | typeof HTTP_HOST
   | typeof HTTP_METHOD
   | typeof HTTP_QUERY
+  | typeof HTTP_REQUEST_BODY_DATA
   | typeof HTTP_REQUEST_CONNECTION_END
   | typeof HTTP_REQUEST_CONNECT_START
   | typeof HTTP_REQUEST_DOMAIN_LOOKUP_END
@@ -15964,6 +15986,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '?foo=bar&bar=baz',
     changelog: [{ version: '0.0.0' }],
+  },
+  [HTTP_REQUEST_BODY_DATA]: {
+    brief:
+      'HTTP request body data. Could be the JSON body or the form data. If form data, and a file is attached, the file is redacted.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '[{"role": "user", "message": "hello"}]',
+    changelog: [{ version: 'next', prs: [336], description: 'Added http.request.body.data attribute' }],
   },
   [HTTP_REQUEST_CONNECTION_END]: {
     brief:
@@ -19697,6 +19730,7 @@ export type Attributes = {
   [HTTP_HOST]?: HTTP_HOST_TYPE;
   [HTTP_METHOD]?: HTTP_METHOD_TYPE;
   [HTTP_QUERY]?: HTTP_QUERY_TYPE;
+  [HTTP_REQUEST_BODY_DATA]?: HTTP_REQUEST_BODY_DATA_TYPE;
   [HTTP_REQUEST_CONNECTION_END]?: HTTP_REQUEST_CONNECTION_END_TYPE;
   [HTTP_REQUEST_CONNECT_START]?: HTTP_REQUEST_CONNECT_START_TYPE;
   [HTTP_REQUEST_DOMAIN_LOOKUP_END]?: HTTP_REQUEST_DOMAIN_LOOKUP_END_TYPE;
