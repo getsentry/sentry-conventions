@@ -2589,6 +2589,26 @@ export const DB_REDIS_CONNECTION = 'db.redis.connection';
  */
 export type DB_REDIS_CONNECTION_TYPE = string;
 
+// Path: model/attributes/db/db__redis__key.json
+
+/**
+ * The key the Redis command is operating on. `db.redis.key`
+ *
+ * Attribute Value Type: `string` {@link DB_REDIS_KEY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "user:2047:city"
+ */
+export const DB_REDIS_KEY = 'db.redis.key';
+
+/**
+ * Type for {@link DB_REDIS_KEY} db.redis.key
+ */
+export type DB_REDIS_KEY_TYPE = string;
+
 // Path: model/attributes/db/db__redis__parameters.json
 
 /**
@@ -11707,6 +11727,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [DB_QUERY_SUMMARY]: 'string',
   [DB_QUERY_TEXT]: 'string',
   [DB_REDIS_CONNECTION]: 'string',
+  [DB_REDIS_KEY]: 'string',
   [DB_REDIS_PARAMETERS]: 'string[]',
   [DB_SQL_BINDINGS]: 'string[]',
   [DB_STATEMENT]: 'string',
@@ -12259,6 +12280,7 @@ export type AttributeName =
   | typeof DB_QUERY_SUMMARY
   | typeof DB_QUERY_TEXT
   | typeof DB_REDIS_CONNECTION
+  | typeof DB_REDIS_KEY
   | typeof DB_REDIS_PARAMETERS
   | typeof DB_SQL_BINDINGS
   | typeof DB_STATEMENT
@@ -14305,6 +14327,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'my-redis-instance',
     sdks: ['php-laravel'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+  },
+  [DB_REDIS_KEY]: {
+    brief: 'The key the Redis command is operating on.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'user:2047:city',
+    sdks: ['python'],
+    changelog: [{ version: 'next', prs: [326], description: 'Added db.redis.key attribute' }],
   },
   [DB_REDIS_PARAMETERS]: {
     brief: 'The array of command parameters given to a redis command.',
@@ -19567,6 +19600,7 @@ export type Attributes = {
   [DB_QUERY_SUMMARY]?: DB_QUERY_SUMMARY_TYPE;
   [DB_QUERY_TEXT]?: DB_QUERY_TEXT_TYPE;
   [DB_REDIS_CONNECTION]?: DB_REDIS_CONNECTION_TYPE;
+  [DB_REDIS_KEY]?: DB_REDIS_KEY_TYPE;
   [DB_REDIS_PARAMETERS]?: DB_REDIS_PARAMETERS_TYPE;
   [DB_SQL_BINDINGS]?: DB_SQL_BINDINGS_TYPE;
   [DB_STATEMENT]?: DB_STATEMENT_TYPE;

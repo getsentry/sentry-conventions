@@ -1,0 +1,18 @@
+{
+  "key": "db.redis.key",
+  "brief": "The key the Redis command is operating on.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "user:2047:city",
+  "sdks": ["python"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [326],
+      "description": "Added db.redis.key attribute"
+    }
+  ]
+}

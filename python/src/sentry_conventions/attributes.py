@@ -1638,6 +1638,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "my-redis-instance"
     """
 
+    # Path: model/attributes/db/db__redis__key.json
+    DB_REDIS_KEY: Literal["db.redis.key"] = "db.redis.key"
+    """The key the Redis command is operating on.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "user:2047:city"
+    """
+
     # Path: model/attributes/db/db__redis__parameters.json
     DB_REDIS_PARAMETERS: Literal["db.redis.parameters"] = "db.redis.parameters"
     """The array of command parameters given to a redis command.
@@ -8176,6 +8186,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "db.redis.key": AttributeMetadata(
+        brief="The key the Redis command is operating on.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="user:2047:city",
+        sdks=["python"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[326], description="Added db.redis.key attribute"
+            ),
+        ],
+    ),
     "db.redis.parameters": AttributeMetadata(
         brief="The array of command parameters given to a redis command.",
         type=AttributeType.STRING_ARRAY,
@@ -13586,6 +13609,7 @@ Attributes = TypedDict(
         "db.query.summary": str,
         "db.query.text": str,
         "db.redis.connection": str,
+        "db.redis.key": str,
         "db.redis.parameters": List[str],
         "db.sql.bindings": List[str],
         "db.statement": str,
