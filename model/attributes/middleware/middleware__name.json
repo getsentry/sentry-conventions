@@ -1,6 +1,6 @@
 {
-  "key": "starlette.middleware.name",
-  "brief": "The name of the Starlette middleware.",
+  "key": "middleware.name",
+  "brief": "The name of the middleware.",
   "type": "string",
   "pii": {
     "key": "false"
@@ -12,7 +12,7 @@
     {
       "version": "next",
       "prs": [336],
-      "description": "Added starlette.middleware.name attribute"
+      "description": "Added middleware.name attribute"
     }
   ]
 }

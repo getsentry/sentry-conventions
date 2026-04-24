@@ -4182,6 +4182,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "GET"
     """
 
+    # Path: model/attributes/middleware/middleware__name.json
+    MIDDLEWARE_NAME: Literal["middleware.name"] = "middleware.name"
+    """The name of the middleware.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "AuthenticationMiddleware"
+    """
+
     # Path: model/attributes/navigation/navigation__type.json
     NAVIGATION_TYPE: Literal["navigation.type"] = "navigation.type"
     """The type of navigation done by a client-side router.
@@ -5568,18 +5578,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Aliases: sentry.release
     Example: "5.0.0"
-    """
-
-    # Path: model/attributes/starlette/starlette__middleware__name.json
-    STARLETTE_MIDDLEWARE_NAME: Literal["starlette.middleware.name"] = (
-        "starlette.middleware.name"
-    )
-    """The name of the Starlette middleware.
-
-    Type: str
-    Contains PII: false
-    Defined in OTEL: No
-    Example: "AuthenticationMiddleware"
     """
 
     # Path: model/attributes/thread/thread__id.json
@@ -11077,6 +11075,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "middleware.name": AttributeMetadata(
+        brief="The name of the middleware.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="AuthenticationMiddleware",
+        sdks=["python"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[336], description="Added middleware.name attribute"
+            ),
+        ],
+    ),
     "navigation.type": AttributeMetadata(
         brief="The type of navigation done by a client-side router.",
         type=AttributeType.STRING,
@@ -12572,21 +12583,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
-    "starlette.middleware.name": AttributeMetadata(
-        brief="The name of the Starlette middleware.",
-        type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=False,
-        example="AuthenticationMiddleware",
-        sdks=["python"],
-        changelog=[
-            ChangelogEntry(
-                version="next",
-                prs=[336],
-                description="Added starlette.middleware.name attribute",
-            ),
-        ],
-    ),
     "thread.id": AttributeMetadata(
         brief="Current “managed” thread ID.",
         type=AttributeType.INTEGER,
@@ -13839,6 +13835,7 @@ Attributes = TypedDict(
         "messaging.operation.type": str,
         "messaging.system": str,
         "method": str,
+        "middleware.name": str,
         "navigation.type": str,
         "nel.elapsed_time": int,
         "nel.phase": str,
@@ -13965,7 +13962,6 @@ Attributes = TypedDict(
         "server.port": int,
         "service.name": str,
         "service.version": str,
-        "starlette.middleware.name": str,
         "thread.id": int,
         "thread.name": str,
         "timber.tag": str,
