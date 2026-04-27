@@ -1,0 +1,17 @@
+{
+  "key": "http.request.body.data",
+  "brief": "HTTP request body data. Can be given as string or structural data of any format.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "[{\"role\": \"user\", \"message\": \"hello\"}]",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [336],
+      "description": "Added http.request.body.data attribute"
+    }
+  ]
+}
