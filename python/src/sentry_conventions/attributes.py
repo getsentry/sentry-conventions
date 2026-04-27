@@ -4202,6 +4202,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "GET"
     """
 
+    # Path: model/attributes/middleware/middleware__name.json
+    MIDDLEWARE_NAME: Literal["middleware.name"] = "middleware.name"
+    """The name of the middleware.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "AuthenticationMiddleware"
+    """
+
     # Path: model/attributes/navigation/navigation__type.json
     NAVIGATION_TYPE: Literal["navigation.type"] = "navigation.type"
     """The type of navigation done by a client-side router.
@@ -11122,6 +11132,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "middleware.name": AttributeMetadata(
+        brief="The name of the middleware.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="AuthenticationMiddleware",
+        sdks=["python"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[336], description="Added middleware.name attribute"
+            ),
+        ],
+    ),
     "navigation.type": AttributeMetadata(
         brief="The type of navigation done by a client-side router.",
         type=AttributeType.STRING,
@@ -13882,6 +13905,7 @@ Attributes = TypedDict(
         "messaging.operation.type": str,
         "messaging.system": str,
         "method": str,
+        "middleware.name": str,
         "navigation.type": str,
         "nel.elapsed_time": int,
         "nel.phase": str,

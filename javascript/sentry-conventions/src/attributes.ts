@@ -7348,6 +7348,26 @@ export const METHOD = 'method';
  */
 export type METHOD_TYPE = string;
 
+// Path: model/attributes/middleware/middleware__name.json
+
+/**
+ * The name of the middleware. `middleware.name`
+ *
+ * Attribute Value Type: `string` {@link MIDDLEWARE_NAME_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "AuthenticationMiddleware"
+ */
+export const MIDDLEWARE_NAME = 'middleware.name';
+
+/**
+ * Type for {@link MIDDLEWARE_NAME} middleware.name
+ */
+export type MIDDLEWARE_NAME_TYPE = string;
+
 // Path: model/attributes/navigation/navigation__type.json
 
 /**
@@ -11995,6 +12015,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [MESSAGING_OPERATION_TYPE]: 'string',
   [MESSAGING_SYSTEM]: 'string',
   [METHOD]: 'string',
+  [MIDDLEWARE_NAME]: 'string',
   [NAVIGATION_TYPE]: 'string',
   [NEL_ELAPSED_TIME]: 'integer',
   [NEL_PHASE]: 'string',
@@ -12550,6 +12571,7 @@ export type AttributeName =
   | typeof MESSAGING_OPERATION_TYPE
   | typeof MESSAGING_SYSTEM
   | typeof METHOD
+  | typeof MIDDLEWARE_NAME
   | typeof NAVIGATION_TYPE
   | typeof NEL_ELAPSED_TIME
   | typeof NEL_PHASE
@@ -17204,6 +17226,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['javascript-browser', 'javascript-node'],
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
+  [MIDDLEWARE_NAME]: {
+    brief: 'The name of the middleware.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'AuthenticationMiddleware',
+    sdks: ['python'],
+    changelog: [{ version: 'next', prs: [336], description: 'Added middleware.name attribute' }],
+  },
   [NAVIGATION_TYPE]: {
     brief: 'The type of navigation done by a client-side router.',
     type: 'string',
@@ -19893,6 +19926,7 @@ export type Attributes = {
   [MESSAGING_OPERATION_TYPE]?: MESSAGING_OPERATION_TYPE_TYPE;
   [MESSAGING_SYSTEM]?: MESSAGING_SYSTEM_TYPE;
   [METHOD]?: METHOD_TYPE;
+  [MIDDLEWARE_NAME]?: MIDDLEWARE_NAME_TYPE;
   [NAVIGATION_TYPE]?: NAVIGATION_TYPE_TYPE;
   [NEL_ELAPSED_TIME]?: NEL_ELAPSED_TIME_TYPE;
   [NEL_PHASE]?: NEL_PHASE_TYPE;
