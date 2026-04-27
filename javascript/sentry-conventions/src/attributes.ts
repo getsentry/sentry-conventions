@@ -7125,6 +7125,26 @@ export const MDC_KEY = 'mdc.<key>';
  */
 export type MDC_KEY_TYPE = string;
 
+// Path: model/attributes/messaging/messaging__batch__message_count.json
+
+/**
+ * The number of messages sent, received, or processed in the scope of the batching operation. `messaging.batch.message_count`
+ *
+ * Attribute Value Type: `number` {@link MESSAGING_BATCH_MESSAGE_COUNT_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example 10
+ */
+export const MESSAGING_BATCH_MESSAGE_COUNT = 'messaging.batch.message_count';
+
+/**
+ * Type for {@link MESSAGING_BATCH_MESSAGE_COUNT} messaging.batch.message_count
+ */
+export type MESSAGING_BATCH_MESSAGE_COUNT_TYPE = number;
+
 // Path: model/attributes/messaging/messaging__destination__connection.json
 
 /**
@@ -11964,6 +11984,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [MCP_TOOL_RESULT_IS_ERROR]: 'boolean',
   [MCP_TRANSPORT]: 'string',
   [MDC_KEY]: 'string',
+  [MESSAGING_BATCH_MESSAGE_COUNT]: 'integer',
   [MESSAGING_DESTINATION_CONNECTION]: 'string',
   [MESSAGING_DESTINATION_NAME]: 'string',
   [MESSAGING_MESSAGE_BODY_SIZE]: 'integer',
@@ -12518,6 +12539,7 @@ export type AttributeName =
   | typeof MCP_TOOL_RESULT_IS_ERROR
   | typeof MCP_TRANSPORT
   | typeof MDC_KEY
+  | typeof MESSAGING_BATCH_MESSAGE_COUNT
   | typeof MESSAGING_DESTINATION_CONNECTION
   | typeof MESSAGING_DESTINATION_NAME
   | typeof MESSAGING_MESSAGE_BODY_SIZE
@@ -17059,6 +17081,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['java', 'java.logback', 'java.jul', 'java.log4j2'],
     changelog: [{ version: '0.3.0', prs: [176] }],
   },
+  [MESSAGING_BATCH_MESSAGE_COUNT]: {
+    brief: 'The number of messages sent, received, or processed in the scope of the batching operation.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 10,
+    changelog: [{ version: 'next', prs: [341], description: 'Added messaging.batch.message_count attribute' }],
+  },
   [MESSAGING_DESTINATION_CONNECTION]: {
     brief: 'The message destination connection.',
     type: 'string',
@@ -19850,6 +19882,7 @@ export type Attributes = {
   [MCP_TOOL_RESULT_IS_ERROR]?: MCP_TOOL_RESULT_IS_ERROR_TYPE;
   [MCP_TRANSPORT]?: MCP_TRANSPORT_TYPE;
   [MDC_KEY]?: MDC_KEY_TYPE;
+  [MESSAGING_BATCH_MESSAGE_COUNT]?: MESSAGING_BATCH_MESSAGE_COUNT_TYPE;
   [MESSAGING_DESTINATION_CONNECTION]?: MESSAGING_DESTINATION_CONNECTION_TYPE;
   [MESSAGING_DESTINATION_NAME]?: MESSAGING_DESTINATION_NAME_TYPE;
   [MESSAGING_MESSAGE_BODY_SIZE]?: MESSAGING_MESSAGE_BODY_SIZE_TYPE;
