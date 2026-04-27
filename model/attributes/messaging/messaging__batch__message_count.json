@@ -1,0 +1,18 @@
+{
+  "key": "messaging.batch.message_count",
+  "brief": "The number of messages sent, received, or processed in the scope of the batching operation.",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": 10,
+  "sdks": ["javascript-cloudflare"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [341],
+      "description": "Added messaging.batch.message_count attribute"
+    }
+  ]
+}

@@ -4076,6 +4076,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "mdc.some_key='some_value'"
     """
 
+    # Path: model/attributes/messaging/messaging__batch__message_count.json
+    MESSAGING_BATCH_MESSAGE_COUNT: Literal["messaging.batch.message_count"] = (
+        "messaging.batch.message_count"
+    )
+    """The number of messages sent, received, or processed in the scope of the batching operation.
+
+    Type: int
+    Contains PII: false
+    Defined in OTEL: Yes
+    Example: 10
+    """
+
     # Path: model/attributes/messaging/messaging__destination__connection.json
     MESSAGING_DESTINATION_CONNECTION: Literal["messaging.destination.connection"] = (
         "messaging.destination.connection"
@@ -10978,6 +10990,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.3.0", prs=[176]),
         ],
     ),
+    "messaging.batch.message_count": AttributeMetadata(
+        brief="The number of messages sent, received, or processed in the scope of the batching operation.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=True,
+        example=10,
+        sdks=["javascript-cloudflare"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[341],
+                description="Added messaging.batch.message_count attribute",
+            ),
+        ],
+    ),
     "messaging.destination.connection": AttributeMetadata(
         brief="The message destination connection.",
         type=AttributeType.STRING,
@@ -13847,6 +13874,7 @@ Attributes = TypedDict(
         "mcp.tool.result.is_error": bool,
         "mcp.transport": str,
         "mdc.<key>": str,
+        "messaging.batch.message_count": int,
         "messaging.destination.connection": str,
         "messaging.destination.name": str,
         "messaging.message.body.size": int,
