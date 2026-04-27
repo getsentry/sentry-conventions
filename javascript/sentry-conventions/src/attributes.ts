@@ -4415,7 +4415,7 @@ export type GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__request__reasoning_effort.json
 
 /**
- * Constrains the effort on reasoning for reasoning models. Supported values vary by provider: OpenAI supports `minimal`, `low`, `medium`, `high` (and `none`, `xhigh` on newer models); Anthropic supports `low`, `medium`, `high`; Google Gemini 3 supports `low`, `high`. `gen_ai.request.reasoning_effort`
+ * Constrains the effort on reasoning for reasoning models. Supported values vary by provider. `gen_ai.request.reasoning_effort`
  *
  * Attribute Value Type: `string` {@link GEN_AI_REQUEST_REASONING_EFFORT_TYPE}
  *
@@ -15416,7 +15416,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [GEN_AI_REQUEST_REASONING_EFFORT]: {
     brief:
-      'Constrains the effort on reasoning for reasoning models. Supported values vary by provider: OpenAI supports `minimal`, `low`, `medium`, `high` (and `none`, `xhigh` on newer models); Anthropic supports `low`, `medium`, `high`; Google Gemini 3 supports `low`, `high`.',
+      'Constrains the effort on reasoning for reasoning models. Supported values vary by provider.',
     type: 'string',
     pii: {
       isPii: 'false',

@@ -2600,7 +2600,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     GEN_AI_REQUEST_REASONING_EFFORT: Literal["gen_ai.request.reasoning_effort"] = (
         "gen_ai.request.reasoning_effort"
     )
-    """Constrains the effort on reasoning for reasoning models. Supported values vary by provider: OpenAI supports `minimal`, `low`, `medium`, `high` (and `none`, `xhigh` on newer models); Anthropic supports `low`, `medium`, `high`; Google Gemini 3 supports `low`, `high`.
+    """Constrains the effort on reasoning for reasoning models. Supported values vary by provider.
 
     Type: str
     Contains PII: false
@@ -9368,7 +9368,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "gen_ai.request.reasoning_effort": AttributeMetadata(
-        brief="Constrains the effort on reasoning for reasoning models. Supported values vary by provider: OpenAI supports `minimal`, `low`, `medium`, `high` (and `none`, `xhigh` on newer models); Anthropic supports `low`, `medium`, `high`; Google Gemini 3 supports `low`, `high`.",
+        brief="Constrains the effort on reasoning for reasoning models. Supported values vary by provider.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
