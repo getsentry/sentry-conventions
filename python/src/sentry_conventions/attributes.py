@@ -1403,7 +1403,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: code.function.name
-    DEPRECATED: Use code.function.name instead
     Example: "server_request"
     """
 
@@ -1448,7 +1447,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
-    DEPRECATED: Use code.function.name instead - code.function.name should include the namespace.
     Example: "http.handler"
     """
 
@@ -7920,7 +7918,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="server_request",
-        deprecation=DeprecationInfo(replacement="code.function.name"),
         aliases=["code.function.name"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 74]),
@@ -7971,10 +7968,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="http.handler",
-        deprecation=DeprecationInfo(
-            replacement="code.function.name",
-            reason="code.function.name should include the namespace.",
-        ),
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 74]),
             ChangelogEntry(version="0.0.0"),
