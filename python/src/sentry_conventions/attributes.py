@@ -11960,9 +11960,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="Chrome",
-        deprecation=DeprecationInfo(
-            replacement="browser.name", status=DeprecationStatus.BACKFILL
-        ),
+        deprecation=DeprecationInfo(replacement="browser.name"),
         aliases=["browser.name"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[139]),
@@ -11974,9 +11972,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="120.0.6099.130",
-        deprecation=DeprecationInfo(
-            replacement="browser.version", status=DeprecationStatus.BACKFILL
-        ),
+        deprecation=DeprecationInfo(replacement="browser.version"),
         aliases=["browser.version"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[139]),
