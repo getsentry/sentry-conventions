@@ -14,7 +14,7 @@ Issues = "https://github.com/getsentry/sentry-conventions/issues"
 
 [dependency-groups]
 dev = [
-    "black>=24.8.0",
+    "black>=26.3.1; python_version>='3.10'",
     "isort>=5.13.2",
     "mypy>=1.14.1",
     "pyflakes>=3.2.0",
