@@ -2144,7 +2144,7 @@ export type CODE_FUNCTION_TYPE = string;
 // Path: model/attributes/code/code__function__name.json
 
 /**
- * The method or function name, or equivalent (usually rightmost part of the code unit's name). `code.function.name`
+ * The method or function fully-qualified name without arguments. `code.function.name`
  *
  * Attribute Value Type: `string` {@link CODE_FUNCTION_NAME_TYPE}
  *
@@ -14131,7 +14131,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.1.0', prs: [61, 74] }, { version: '0.0.0' }],
   },
   [CODE_FUNCTION_NAME]: {
-    brief: "The method or function name, or equivalent (usually rightmost part of the code unit's name).",
+    brief: 'The method or function fully-qualified name without arguments.',
     type: 'string',
     pii: {
       isPii: 'maybe',
