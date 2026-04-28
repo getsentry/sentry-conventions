@@ -5307,7 +5307,7 @@ export type HTTP_HOST_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link HTTP_REQUEST_METHOD} `http.request.method`
+ * Aliases: {@link HTTP_REQUEST_METHOD} `http.request.method`, {@link _HTTP_REQUEST_METHOD} `http.request_method`, {@link METHOD} `method`
  *
  * @deprecated Use {@link HTTP_REQUEST_METHOD} (http.request.method) instead
  * @example "GET"
@@ -5492,7 +5492,7 @@ export type HTTP_REQUEST_HEADER_KEY_TYPE = Array<string>;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link METHOD} `method`, {@link HTTP_METHOD} `http.method`
+ * Aliases: {@link METHOD} `method`, {@link HTTP_METHOD} `http.method`, {@link _HTTP_REQUEST_METHOD} `http.request_method`
  *
  * @example "GET"
  */
@@ -5502,6 +5502,29 @@ export const HTTP_REQUEST_METHOD = 'http.request.method';
  * Type for {@link HTTP_REQUEST_METHOD} http.request.method
  */
 export type HTTP_REQUEST_METHOD_TYPE = string;
+
+// Path: model/attributes/http/http__request_method.json
+
+/**
+ * The HTTP method used. `http.request_method`
+ *
+ * Attribute Value Type: `string` {@link _HTTP_REQUEST_METHOD_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link METHOD} `method`, {@link HTTP_METHOD} `http.method`, {@link HTTP_REQUEST_METHOD} `http.request.method`
+ *
+ * @deprecated Use {@link HTTP_REQUEST_METHOD} (http.request.method) instead
+ * @example "GET"
+ */
+export const _HTTP_REQUEST_METHOD = 'http.request_method';
+
+/**
+ * Type for {@link _HTTP_REQUEST_METHOD} http.request_method
+ */
+export type _HTTP_REQUEST_METHOD_TYPE = string;
 
 // Path: model/attributes/http/http__request__redirect_end.json
 
@@ -7336,7 +7359,7 @@ export type MESSAGING_SYSTEM_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link HTTP_REQUEST_METHOD} `http.request.method`
+ * Aliases: {@link HTTP_REQUEST_METHOD} `http.request.method`, {@link _HTTP_REQUEST_METHOD} `http.request_method`, {@link HTTP_METHOD} `http.method`
  *
  * @deprecated Use {@link HTTP_REQUEST_METHOD} (http.request.method) instead
  * @example "GET"
@@ -11926,6 +11949,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [HTTP_REQUEST_FETCH_START]: 'double',
   [HTTP_REQUEST_HEADER_KEY]: 'string[]',
   [HTTP_REQUEST_METHOD]: 'string',
+  [_HTTP_REQUEST_METHOD]: 'string',
   [HTTP_REQUEST_REDIRECT_END]: 'double',
   [HTTP_REQUEST_REDIRECT_START]: 'double',
   [HTTP_REQUEST_REQUEST_START]: 'double',
@@ -12482,6 +12506,7 @@ export type AttributeName =
   | typeof HTTP_REQUEST_FETCH_START
   | typeof HTTP_REQUEST_HEADER_KEY
   | typeof HTTP_REQUEST_METHOD
+  | typeof _HTTP_REQUEST_METHOD
   | typeof HTTP_REQUEST_REDIRECT_END
   | typeof HTTP_REQUEST_REDIRECT_START
   | typeof HTTP_REQUEST_REQUEST_START
@@ -16048,7 +16073,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'http.request.method',
     },
-    aliases: [HTTP_REQUEST_METHOD],
+    aliases: [HTTP_REQUEST_METHOD, _HTTP_REQUEST_METHOD, METHOD],
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
   [HTTP_QUERY]: {
@@ -16156,8 +16181,22 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'GET',
-    aliases: [METHOD, HTTP_METHOD],
+    aliases: [METHOD, HTTP_METHOD, _HTTP_REQUEST_METHOD],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+  },
+  [_HTTP_REQUEST_METHOD]: {
+    brief: 'The HTTP method used.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'GET',
+    deprecation: {
+      replacement: 'http.request.method',
+    },
+    aliases: [METHOD, HTTP_METHOD, HTTP_REQUEST_METHOD],
+    changelog: [{ version: 'next', prs: [343], description: 'Added http.request_method attribute' }],
   },
   [HTTP_REQUEST_REDIRECT_END]: {
     brief:
@@ -17222,7 +17261,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'http.request.method',
     },
-    aliases: [HTTP_REQUEST_METHOD],
+    aliases: [HTTP_REQUEST_METHOD, _HTTP_REQUEST_METHOD, HTTP_METHOD],
     sdks: ['javascript-browser', 'javascript-node'],
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
@@ -19837,6 +19876,7 @@ export type Attributes = {
   [HTTP_REQUEST_FETCH_START]?: HTTP_REQUEST_FETCH_START_TYPE;
   [HTTP_REQUEST_HEADER_KEY]?: HTTP_REQUEST_HEADER_KEY_TYPE;
   [HTTP_REQUEST_METHOD]?: HTTP_REQUEST_METHOD_TYPE;
+  [_HTTP_REQUEST_METHOD]?: _HTTP_REQUEST_METHOD_TYPE;
   [HTTP_REQUEST_REDIRECT_END]?: HTTP_REQUEST_REDIRECT_END_TYPE;
   [HTTP_REQUEST_REDIRECT_START]?: HTTP_REQUEST_REDIRECT_START_TYPE;
   [HTTP_REQUEST_REQUEST_START]?: HTTP_REQUEST_REQUEST_START_TYPE;

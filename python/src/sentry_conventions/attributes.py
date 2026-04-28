@@ -186,6 +186,7 @@ class _AttributeNamesMeta(type):
         "HTTP_FLAVOR",
         "HTTP_HOST",
         "HTTP_METHOD",
+        "_HTTP_REQUEST_METHOD",
         "HTTP_RESPONSE_CONTENT_LENGTH",
         "HTTP_RESPONSE_TRANSFER_SIZE",
         "HTTP_SCHEME",
@@ -3092,7 +3093,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
-    Aliases: http.request.method
+    Aliases: http.request.method, http.request_method, method
     DEPRECATED: Use http.request.method instead
     Example: "GET"
     """
@@ -3197,7 +3198,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
-    Aliases: method, http.method
+    Aliases: method, http.method, http.request_method
     Example: "GET"
     """
 
@@ -3307,6 +3308,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Example: 1732829553.68
+    """
+
+    # Path: model/attributes/http/http__request_method.json
+    _HTTP_REQUEST_METHOD: Literal["http.request_method"] = "http.request_method"
+    """The HTTP method used.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: method, http.method, http.request.method
+    DEPRECATED: Use http.request.method instead
+    Example: "GET"
     """
 
     # Path: model/attributes/http/http__response__body__size.json
@@ -4197,7 +4210,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: http.request.method
+    Aliases: http.request.method, http.request_method, http.method
     DEPRECATED: Use http.request.method instead
     Example: "GET"
     """
@@ -9928,7 +9941,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="http.request.method", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["http.request.method"],
+        aliases=["http.request.method", "http.request_method", "method"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
@@ -10044,7 +10057,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="GET",
-        aliases=["method", "http.method"],
+        aliases=["method", "http.method", "http.request_method"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
@@ -10160,6 +10173,24 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[130, 134]),
+        ],
+    ),
+    "http.request_method": AttributeMetadata(
+        brief="The HTTP method used.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="GET",
+        deprecation=DeprecationInfo(
+            replacement="http.request.method", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["method", "http.method", "http.request.method"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[343],
+                description="Added http.request_method attribute",
+            ),
         ],
     ),
     "http.response.body.size": AttributeMetadata(
@@ -11125,7 +11156,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="GET",
         deprecation=DeprecationInfo(replacement="http.request.method"),
-        aliases=["http.request.method"],
+        aliases=["http.request.method", "http.request_method", "http.method"],
         sdks=["javascript-browser", "javascript-node"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
@@ -13825,6 +13856,7 @@ Attributes = TypedDict(
         "http.request.secure_connection_start": float,
         "http.request.time_to_first_byte": float,
         "http.request.worker_start": float,
+        "http.request_method": str,
         "http.response.body.size": int,
         "http.response.header.<key>": List[str],
         "http.response.header.content-length": str,

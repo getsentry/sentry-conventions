@@ -355,7 +355,7 @@
         "_status": null,
         "replacement": "http.request.method"
       },
-      "alias": ["http.request.method"],
+      "alias": ["http.request.method", "http.request_method", "http.method"],
       "sdks": ["javascript-browser", "javascript-node"],
       "changelog": [
         {
@@ -2303,7 +2303,7 @@
         "_status": "backfill",
         "replacement": "http.request.method"
       },
-      "alias": ["http.request.method"],
+      "alias": ["http.request.method", "http.request_method", "method"],
       "changelog": [
         {
           "version": "0.1.0",
@@ -2311,6 +2311,28 @@
         },
         {
           "version": "0.0.0"
+        }
+      ]
+    },
+    {
+      "key": "http.request_method",
+      "brief": "The HTTP method used.",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "GET",
+      "deprecation": {
+        "_status": "backfill",
+        "replacement": "http.request.method"
+      },
+      "alias": ["method", "http.method", "http.request.method"],
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [343],
+          "description": "Added http.request_method attribute"
         }
       ]
     },
