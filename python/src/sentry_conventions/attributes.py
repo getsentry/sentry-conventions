@@ -5383,6 +5383,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "php"
     """
 
+    # Path: model/attributes/sentry/sentry__profile_id.json
+    SENTRY_PROFILE_ID: Literal["sentry.profile_id"] = "sentry.profile_id"
+    """The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "123e4567e89b12d3a456426614174000"
+    """
+
     # Path: model/attributes/sentry/sentry__profiler_id.json
     SENTRY_PROFILER_ID: Literal["sentry.profiler_id"] = "sentry.profiler_id"
     """The id of the currently running profiler (continuous profiling)
@@ -12439,6 +12449,20 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "sentry.profile_id": AttributeMetadata(
+        brief="The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="123e4567e89b12d3a456426614174000",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[344],
+                description="Added sentry.profile_id attribute",
+            ),
+        ],
+    ),
     "sentry.profiler_id": AttributeMetadata(
         brief="The id of the currently running profiler (continuous profiling)",
         type=AttributeType.STRING,
@@ -14070,6 +14094,7 @@ Attributes = TypedDict(
         "sentry.op": str,
         "sentry.origin": str,
         "sentry.platform": str,
+        "sentry.profile_id": str,
         "sentry.profiler_id": str,
         "sentry.release": str,
         "sentry.replay_id": str,
