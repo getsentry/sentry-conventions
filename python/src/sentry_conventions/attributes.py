@@ -234,6 +234,7 @@ class _AttributeNamesMeta(type):
         "_SENTRY_SEGMENT_ID",
         "SENTRY_SOURCE",
         "SENTRY_TRACE_PARENT_SPAN_ID",
+        "SENTRY_TRANSACTION",
         "TIME_TO_FULL_DISPLAY",
         "TIME_TO_INITIAL_DISPLAY",
         "TRANSACTION",
@@ -5498,6 +5499,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Aliases: sentry.transaction, transaction
     Example: "GET /user"
     """
 
@@ -5598,7 +5600,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
-    Aliases: transaction
+    Aliases: sentry.segment.name, transaction
+    DEPRECATED: Use sentry.segment.name instead - This attribute is being deprecated in favor of sentry.segment.name
     Example: "GET /"
     """
 
@@ -5708,8 +5711,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: sentry.transaction
-    DEPRECATED: Use sentry.transaction instead
+    Aliases: sentry.segment.name, sentry.transaction
+    DEPRECATED: Use sentry.segment.name instead
     Example: "GET /"
     """
 
@@ -12575,6 +12578,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="GET /user",
+        aliases=["sentry.transaction", "transaction"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[104]),
         ],
@@ -12681,7 +12685,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="GET /",
-        aliases=["transaction"],
+        deprecation=DeprecationInfo(
+            replacement="sentry.segment.name",
+            reason="This attribute is being deprecated in favor of sentry.segment.name",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["sentry.segment.name", "transaction"],
         changelog=[
             ChangelogEntry(version="0.0.0"),
         ],
@@ -12823,8 +12832,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="GET /",
-        deprecation=DeprecationInfo(replacement="sentry.transaction"),
-        aliases=["sentry.transaction"],
+        deprecation=DeprecationInfo(
+            replacement="sentry.segment.name", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["sentry.segment.name", "sentry.transaction"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),

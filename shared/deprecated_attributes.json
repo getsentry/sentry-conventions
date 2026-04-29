@@ -498,10 +498,10 @@
       "is_in_otel": false,
       "example": "GET /",
       "deprecation": {
-        "_status": null,
-        "replacement": "sentry.transaction"
+        "_status": "backfill",
+        "replacement": "sentry.segment.name"
       },
-      "alias": ["sentry.transaction"],
+      "alias": ["sentry.segment.name", "sentry.transaction"],
       "changelog": [
         {
           "version": "0.1.0",
@@ -3334,6 +3334,27 @@
         {
           "version": "0.1.0",
           "prs": [116]
+        }
+      ]
+    },
+    {
+      "key": "sentry.transaction",
+      "brief": "The sentry transaction (segment name).",
+      "type": "string",
+      "pii": {
+        "key": "false"
+      },
+      "is_in_otel": false,
+      "example": "GET /",
+      "deprecation": {
+        "_status": "backfill",
+        "replacement": "sentry.segment.name",
+        "reason": "This attribute is being deprecated in favor of sentry.segment.name"
+      },
+      "alias": ["sentry.segment.name", "transaction"],
+      "changelog": [
+        {
+          "version": "0.0.0"
         }
       ]
     },

@@ -8,10 +8,10 @@
   "is_in_otel": false,
   "example": "GET /",
   "deprecation": {
-    "_status": null,
-    "replacement": "sentry.transaction"
+    "_status": "backfill",
+    "replacement": "sentry.segment.name"
   },
-  "alias": ["sentry.transaction"],
+  "alias": ["sentry.segment.name", "sentry.transaction"],
   "changelog": [
     {
       "version": "0.1.0",
