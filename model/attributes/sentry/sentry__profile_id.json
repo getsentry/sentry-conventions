@@ -1,0 +1,17 @@
+{
+  "key": "sentry.profile_id",
+  "brief": "The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "123e4567e89b12d3a456426614174000",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [344],
+      "description": "Added sentry.profile_id attribute"
+    }
+  ]
+}

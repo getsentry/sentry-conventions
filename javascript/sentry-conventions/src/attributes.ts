@@ -9581,6 +9581,26 @@ export const SENTRY_PROFILER_ID = 'sentry.profiler_id';
  */
 export type SENTRY_PROFILER_ID_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__profile_id.json
+
+/**
+ * The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling. `sentry.profile_id`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_PROFILE_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "123e4567e89b12d3a456426614174000"
+ */
+export const SENTRY_PROFILE_ID = 'sentry.profile_id';
+
+/**
+ * Type for {@link SENTRY_PROFILE_ID} sentry.profile_id
+ */
+export type SENTRY_PROFILE_ID_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__release.json
 
 /**
@@ -12145,6 +12165,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_ORIGIN]: 'string',
   [SENTRY_PLATFORM]: 'string',
   [SENTRY_PROFILER_ID]: 'string',
+  [SENTRY_PROFILE_ID]: 'string',
   [SENTRY_RELEASE]: 'string',
   [SENTRY_REPLAY_ID]: 'string',
   [SENTRY_REPLAY_IS_BUFFERING]: 'boolean',
@@ -12702,6 +12723,7 @@ export type AttributeName =
   | typeof SENTRY_ORIGIN
   | typeof SENTRY_PLATFORM
   | typeof SENTRY_PROFILER_ID
+  | typeof SENTRY_PROFILE_ID
   | typeof SENTRY_RELEASE
   | typeof SENTRY_REPLAY_ID
   | typeof SENTRY_REPLAY_IS_BUFFERING
@@ -18505,6 +18527,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '18779b64dd35d1a538e7ce2dd2d3fad3',
     changelog: [{ version: '0.4.0', prs: [242] }],
   },
+  [SENTRY_PROFILE_ID]: {
+    brief:
+      'The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '123e4567e89b12d3a456426614174000',
+    changelog: [{ version: 'next', prs: [344], description: 'Added sentry.profile_id attribute' }],
+  },
   [SENTRY_RELEASE]: {
     brief: 'The sentry release.',
     type: 'string',
@@ -20072,6 +20105,7 @@ export type Attributes = {
   [SENTRY_ORIGIN]?: SENTRY_ORIGIN_TYPE;
   [SENTRY_PLATFORM]?: SENTRY_PLATFORM_TYPE;
   [SENTRY_PROFILER_ID]?: SENTRY_PROFILER_ID_TYPE;
+  [SENTRY_PROFILE_ID]?: SENTRY_PROFILE_ID_TYPE;
   [SENTRY_RELEASE]?: SENTRY_RELEASE_TYPE;
   [SENTRY_REPLAY_ID]?: SENTRY_REPLAY_ID_TYPE;
   [SENTRY_REPLAY_IS_BUFFERING]?: SENTRY_REPLAY_IS_BUFFERING_TYPE;
