@@ -12580,6 +12580,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="GET /user",
         aliases=["sentry.transaction", "transaction"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[345],
+                description="Added sentry.transaction and transaction aliases",
+            ),
             ChangelogEntry(version="0.1.0", prs=[104]),
         ],
     ),
@@ -12692,6 +12697,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         aliases=["sentry.segment.name", "transaction"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[345],
+                description="Deprecated sentry.transaction in favor of sentry.segment.name",
+            ),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -12837,6 +12847,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         aliases=["sentry.segment.name", "sentry.transaction"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[345],
+                description="Updated transaction deprecation replacement to sentry.segment.name",
+            ),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],

@@ -10,6 +10,11 @@
   "alias": ["sentry.transaction", "transaction"],
   "changelog": [
     {
+      "version": "next",
+      "prs": [345],
+      "description": "Added sentry.transaction and transaction aliases"
+    },
+    {
       "version": "0.1.0",
       "prs": [104]
     }

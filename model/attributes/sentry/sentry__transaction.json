@@ -15,6 +15,11 @@
   "alias": ["sentry.segment.name", "transaction"],
   "changelog": [
     {
+      "version": "next",
+      "prs": [345],
+      "description": "Deprecated sentry.transaction in favor of sentry.segment.name"
+    },
+    {
       "version": "0.0.0"
     }
   ]
