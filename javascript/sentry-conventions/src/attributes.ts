@@ -2131,7 +2131,6 @@ export type CODE_FILE_PATH_TYPE = string;
  *
  * Aliases: {@link CODE_FUNCTION_NAME} `code.function.name`
  *
- * @deprecated Use {@link CODE_FUNCTION_NAME} (code.function.name) instead
  * @example "server_request"
  */
 export const CODE_FUNCTION = 'code.function';
@@ -2219,7 +2218,6 @@ export type CODE_LINE_NUMBER_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  *
- * @deprecated Use {@link CODE_FUNCTION_NAME} (code.function.name) instead - code.function.name should include the namespace.
  * @example "http.handler"
  */
 export const CODE_NAMESPACE = 'code.namespace';
@@ -14193,9 +14191,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'server_request',
-    deprecation: {
-      replacement: 'code.function.name',
-    },
     aliases: [CODE_FUNCTION_NAME],
     changelog: [{ version: '0.1.0', prs: [61, 74] }, { version: '0.0.0' }],
   },
@@ -14246,10 +14241,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'http.handler',
-    deprecation: {
-      replacement: 'code.function.name',
-      reason: 'code.function.name should include the namespace.',
-    },
     changelog: [{ version: '0.1.0', prs: [61, 74] }, { version: '0.0.0' }],
   },
   [CONNECTIONTYPE]: {
