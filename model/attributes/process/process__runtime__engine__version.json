@@ -1,9 +1,9 @@
 {
-  "key": "v8.version",
-  "brief": "The version of the V8 JavaScript engine.",
+  "key": "process.runtime.engine.version",
+  "brief": "The version of the runtime engine.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "12.9.202.13-rusty",

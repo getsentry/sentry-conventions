@@ -8559,6 +8559,46 @@ export const PROCESS_RUNTIME_DESCRIPTION = 'process.runtime.description';
  */
 export type PROCESS_RUNTIME_DESCRIPTION_TYPE = string;
 
+// Path: model/attributes/process/process__runtime__engine__name.json
+
+/**
+ * The name of the runtime engine. `process.runtime.engine.name`
+ *
+ * Attribute Value Type: `string` {@link PROCESS_RUNTIME_ENGINE_NAME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "v8"
+ */
+export const PROCESS_RUNTIME_ENGINE_NAME = 'process.runtime.engine.name';
+
+/**
+ * Type for {@link PROCESS_RUNTIME_ENGINE_NAME} process.runtime.engine.name
+ */
+export type PROCESS_RUNTIME_ENGINE_NAME_TYPE = string;
+
+// Path: model/attributes/process/process__runtime__engine__version.json
+
+/**
+ * The version of the runtime engine. `process.runtime.engine.version`
+ *
+ * Attribute Value Type: `string` {@link PROCESS_RUNTIME_ENGINE_VERSION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "12.9.202.13-rusty"
+ */
+export const PROCESS_RUNTIME_ENGINE_VERSION = 'process.runtime.engine.version';
+
+/**
+ * Type for {@link PROCESS_RUNTIME_ENGINE_VERSION} process.runtime.engine.version
+ */
+export type PROCESS_RUNTIME_ENGINE_VERSION_TYPE = string;
+
 // Path: model/attributes/process/process__runtime__name.json
 
 /**
@@ -10971,26 +11011,6 @@ export const USER_ROLES = 'user.roles';
  */
 export type USER_ROLES_TYPE = Array<string>;
 
-// Path: model/attributes/v8/v8__version.json
-
-/**
- * The version of the V8 JavaScript engine. `v8.version`
- *
- * Attribute Value Type: `string` {@link V8_VERSION_TYPE}
- *
- * Contains PII: false
- *
- * Attribute defined in OTEL: No
- *
- * @example "12.9.202.13-rusty"
- */
-export const V8_VERSION = 'v8.version';
-
-/**
- * Type for {@link V8_VERSION} v8.version
- */
-export type V8_VERSION_TYPE = string;
-
 // Path: model/attributes/vercel/vercel__branch.json
 
 /**
@@ -12155,6 +12175,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [PROCESS_EXECUTABLE_NAME]: 'string',
   [PROCESS_PID]: 'integer',
   [PROCESS_RUNTIME_DESCRIPTION]: 'string',
+  [PROCESS_RUNTIME_ENGINE_NAME]: 'string',
+  [PROCESS_RUNTIME_ENGINE_VERSION]: 'string',
   [PROCESS_RUNTIME_NAME]: 'string',
   [PROCESS_RUNTIME_VERSION]: 'string',
   [QUERY_KEY]: 'string',
@@ -12272,7 +12294,6 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [USER_IP_ADDRESS]: 'string',
   [USER_NAME]: 'string',
   [USER_ROLES]: 'string[]',
-  [V8_VERSION]: 'string',
   [VERCEL_BRANCH]: 'string',
   [VERCEL_BUILD_ID]: 'string',
   [VERCEL_DEPLOYMENT_ID]: 'string',
@@ -12715,6 +12736,8 @@ export type AttributeName =
   | typeof PROCESS_EXECUTABLE_NAME
   | typeof PROCESS_PID
   | typeof PROCESS_RUNTIME_DESCRIPTION
+  | typeof PROCESS_RUNTIME_ENGINE_NAME
+  | typeof PROCESS_RUNTIME_ENGINE_VERSION
   | typeof PROCESS_RUNTIME_NAME
   | typeof PROCESS_RUNTIME_VERSION
   | typeof QUERY_KEY
@@ -12832,7 +12855,6 @@ export type AttributeName =
   | typeof USER_IP_ADDRESS
   | typeof USER_NAME
   | typeof USER_ROLES
-  | typeof V8_VERSION
   | typeof VERCEL_BRANCH
   | typeof VERCEL_BUILD_ID
   | typeof VERCEL_DEPLOYMENT_ID
@@ -18021,6 +18043,26 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'Eclipse OpenJ9 VM openj9-0.21.0',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  [PROCESS_RUNTIME_ENGINE_NAME]: {
+    brief: 'The name of the runtime engine.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'v8',
+    changelog: [{ version: '0.0.0' }],
+  },
+  [PROCESS_RUNTIME_ENGINE_VERSION]: {
+    brief: 'The version of the runtime engine.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '12.9.202.13-rusty',
+    changelog: [{ version: '0.0.0' }],
+  },
   [PROCESS_RUNTIME_NAME]: {
     brief: 'The name of the runtime. Equivalent to `name` in the Sentry runtime context.',
     type: 'string',
@@ -19339,16 +19381,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: ['admin', 'editor'],
     changelog: [{ version: '0.0.0' }],
   },
-  [V8_VERSION]: {
-    brief: 'The version of the V8 JavaScript engine.',
-    type: 'string',
-    pii: {
-      isPii: 'false',
-    },
-    isInOtel: false,
-    example: '12.9.202.13-rusty',
-    changelog: [{ version: '0.0.0' }],
-  },
   [VERCEL_BRANCH]: {
     brief: 'Git branch name for Vercel project',
     type: 'string',
@@ -20120,6 +20152,8 @@ export type Attributes = {
   [PROCESS_EXECUTABLE_NAME]?: PROCESS_EXECUTABLE_NAME_TYPE;
   [PROCESS_PID]?: PROCESS_PID_TYPE;
   [PROCESS_RUNTIME_DESCRIPTION]?: PROCESS_RUNTIME_DESCRIPTION_TYPE;
+  [PROCESS_RUNTIME_ENGINE_NAME]?: PROCESS_RUNTIME_ENGINE_NAME_TYPE;
+  [PROCESS_RUNTIME_ENGINE_VERSION]?: PROCESS_RUNTIME_ENGINE_VERSION_TYPE;
   [PROCESS_RUNTIME_NAME]?: PROCESS_RUNTIME_NAME_TYPE;
   [PROCESS_RUNTIME_VERSION]?: PROCESS_RUNTIME_VERSION_TYPE;
   [QUERY_KEY]?: QUERY_KEY_TYPE;
@@ -20237,7 +20271,6 @@ export type Attributes = {
   [USER_IP_ADDRESS]?: USER_IP_ADDRESS_TYPE;
   [USER_NAME]?: USER_NAME_TYPE;
   [USER_ROLES]?: USER_ROLES_TYPE;
-  [V8_VERSION]?: V8_VERSION_TYPE;
   [VERCEL_BRANCH]?: VERCEL_BRANCH_TYPE;
   [VERCEL_BUILD_ID]?: VERCEL_BUILD_ID_TYPE;
   [VERCEL_DEPLOYMENT_ID]?: VERCEL_DEPLOYMENT_ID_TYPE;

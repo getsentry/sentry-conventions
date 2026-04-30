@@ -4834,6 +4834,30 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "Eclipse OpenJ9 VM openj9-0.21.0"
     """
 
+    # Path: model/attributes/process/process__runtime__engine__name.json
+    PROCESS_RUNTIME_ENGINE_NAME: Literal["process.runtime.engine.name"] = (
+        "process.runtime.engine.name"
+    )
+    """The name of the runtime engine.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "v8"
+    """
+
+    # Path: model/attributes/process/process__runtime__engine__version.json
+    PROCESS_RUNTIME_ENGINE_VERSION: Literal["process.runtime.engine.version"] = (
+        "process.runtime.engine.version"
+    )
+    """The version of the runtime engine.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "12.9.202.13-rusty"
+    """
+
     # Path: model/attributes/process/process__runtime__name.json
     PROCESS_RUNTIME_NAME: Literal["process.runtime.name"] = "process.runtime.name"
     """The name of the runtime. Equivalent to `name` in the Sentry runtime context.
@@ -6095,16 +6119,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Aliases: http.user_agent
     Example: "Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1"
-    """
-
-    # Path: model/attributes/v8/v8__version.json
-    V8_VERSION: Literal["v8.version"] = "v8.version"
-    """The version of the V8 JavaScript engine.
-
-    Type: str
-    Contains PII: false
-    Defined in OTEL: No
-    Example: "12.9.202.13-rusty"
     """
 
     # Path: model/attributes/vercel/vercel__branch.json
@@ -11920,6 +11934,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "process.runtime.engine.name": AttributeMetadata(
+        brief="The name of the runtime engine.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="v8",
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "process.runtime.engine.version": AttributeMetadata(
+        brief="The version of the runtime engine.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="12.9.202.13-rusty",
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
+    ),
     "process.runtime.name": AttributeMetadata(
         brief="The name of the runtime. Equivalent to `name` in the Sentry runtime context.",
         type=AttributeType.STRING,
@@ -13286,16 +13320,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
-    "v8.version": AttributeMetadata(
-        brief="The version of the V8 JavaScript engine.",
-        type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=False,
-        example="12.9.202.13-rusty",
-        changelog=[
-            ChangelogEntry(version="0.0.0"),
-        ],
-    ),
     "vercel.branch": AttributeMetadata(
         brief="Git branch name for Vercel project",
         type=AttributeType.STRING,
@@ -14064,6 +14088,8 @@ Attributes = TypedDict(
         "process.executable.name": str,
         "process.pid": int,
         "process.runtime.description": str,
+        "process.runtime.engine.name": str,
+        "process.runtime.engine.version": str,
         "process.runtime.name": str,
         "process.runtime.version": str,
         "query.<key>": str,
@@ -14181,7 +14207,6 @@ Attributes = TypedDict(
         "user.name": str,
         "user.roles": List[str],
         "user_agent.original": str,
-        "v8.version": str,
         "vercel.branch": str,
         "vercel.build_id": str,
         "vercel.deployment_id": str,
