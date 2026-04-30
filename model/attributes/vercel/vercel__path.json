@@ -1,0 +1,17 @@
+{
+  "key": "vercel.path",
+  "brief": "Function or dynamic path of the request in Vercel.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "/dynamic/[route].json",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [349],
+      "description": "Added vercel.path attribute"
+    }
+  ]
+}

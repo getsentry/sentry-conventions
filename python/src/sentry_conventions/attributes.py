@@ -6205,6 +6205,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "stdout"
     """
 
+    # Path: model/attributes/vercel/vercel__path.json
+    VERCEL_PATH: Literal["vercel.path"] = "vercel.path"
+    """Function or dynamic path of the request in Vercel.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "/dynamic/[route].json"
+    """
+
     # Path: model/attributes/vercel/vercel__project_id.json
     VERCEL_PROJECT_ID: Literal["vercel.project_id"] = "vercel.project_id"
     """Identifier for the Vercel project
@@ -13377,6 +13387,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.2.0", prs=[163]),
         ],
     ),
+    "vercel.path": AttributeMetadata(
+        brief="Function or dynamic path of the request in Vercel.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="/dynamic/[route].json",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[349], description="Added vercel.path attribute"
+            ),
+        ],
+    ),
     "vercel.project_id": AttributeMetadata(
         brief="Identifier for the Vercel project",
         type=AttributeType.STRING,
@@ -14163,6 +14185,7 @@ Attributes = TypedDict(
         "vercel.ja3_digest": str,
         "vercel.ja4_digest": str,
         "vercel.log_type": str,
+        "vercel.path": str,
         "vercel.project_id": str,
         "vercel.project_name": str,
         "vercel.proxy.cache_id": str,
