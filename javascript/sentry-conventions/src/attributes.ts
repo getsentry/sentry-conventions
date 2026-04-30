@@ -10276,6 +10276,26 @@ export const TYPE = 'type';
  */
 export type TYPE_TYPE = string;
 
+// Path: model/attributes/typescript/typescript__version.json
+
+/**
+ * The version of the TypeScript compiler used by the runtime. `typescript.version`
+ *
+ * Attribute Value Type: `string` {@link TYPESCRIPT_VERSION_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "5.6.2"
+ */
+export const TYPESCRIPT_VERSION = 'typescript.version';
+
+/**
+ * Type for {@link TYPESCRIPT_VERSION} typescript.version
+ */
+export type TYPESCRIPT_VERSION_TYPE = string;
+
 // Path: model/attributes/ui/ui__component_name.json
 
 /**
@@ -12218,6 +12238,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [TTFB]: 'double',
   [TTFB_REQUESTTIME]: 'double',
   [TYPE]: 'string',
+  [TYPESCRIPT_VERSION]: 'string',
   [UI_COMPONENT_NAME]: 'string',
   [UI_CONTRIBUTES_TO_TTFD]: 'boolean',
   [UI_CONTRIBUTES_TO_TTID]: 'boolean',
@@ -12777,6 +12798,7 @@ export type AttributeName =
   | typeof TTFB
   | typeof TTFB_REQUESTTIME
   | typeof TYPE
+  | typeof TYPESCRIPT_VERSION
   | typeof UI_COMPONENT_NAME
   | typeof UI_CONTRIBUTES_TO_TTFD
   | typeof UI_CONTRIBUTES_TO_TTID
@@ -18950,6 +18972,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['javascript-browser', 'javascript-node'],
     changelog: [{ version: '0.0.0' }],
   },
+  [TYPESCRIPT_VERSION]: {
+    brief: 'The version of the TypeScript compiler used by the runtime.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '5.6.2',
+    changelog: [{ version: '0.0.0' }],
+  },
   [UI_COMPONENT_NAME]: {
     brief: 'The name of the associated component.',
     type: 'string',
@@ -20171,6 +20203,7 @@ export type Attributes = {
   [TTFB]?: TTFB_TYPE;
   [TTFB_REQUESTTIME]?: TTFB_REQUESTTIME_TYPE;
   [TYPE]?: TYPE_TYPE;
+  [TYPESCRIPT_VERSION]?: TYPESCRIPT_VERSION_TYPE;
   [UI_COMPONENT_NAME]?: UI_COMPONENT_NAME_TYPE;
   [UI_CONTRIBUTES_TO_TTFD]?: UI_CONTRIBUTES_TO_TTFD_TYPE;
   [UI_CONTRIBUTES_TO_TTID]?: UI_CONTRIBUTES_TO_TTID_TYPE;

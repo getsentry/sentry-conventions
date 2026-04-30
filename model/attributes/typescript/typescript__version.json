@@ -1,0 +1,15 @@
+{
+  "key": "typescript.version",
+  "brief": "The version of the TypeScript compiler used by the runtime.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "5.6.2",
+  "changelog": [
+    {
+      "version": "0.0.0"
+    }
+  ]
+}

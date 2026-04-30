@@ -5747,6 +5747,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "fetch"
     """
 
+    # Path: model/attributes/typescript/typescript__version.json
+    TYPESCRIPT_VERSION: Literal["typescript.version"] = "typescript.version"
+    """The version of the TypeScript compiler used by the runtime.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "5.6.2"
+    """
+
     # Path: model/attributes/ui/ui__component_name.json
     UI_COMPONENT_NAME: Literal["ui.component_name"] = "ui.component_name"
     """The name of the associated component.
@@ -12875,6 +12885,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "typescript.version": AttributeMetadata(
+        brief="The version of the TypeScript compiler used by the runtime.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="5.6.2",
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
+    ),
     "ui.component_name": AttributeMetadata(
         brief="The name of the associated component.",
         type=AttributeType.STRING,
@@ -14127,6 +14147,7 @@ Attributes = TypedDict(
         "ttfb.requestTime": float,
         "ttfb": float,
         "type": str,
+        "typescript.version": str,
         "ui.component_name": str,
         "ui.contributes_to_ttfd": bool,
         "ui.contributes_to_ttid": bool,
