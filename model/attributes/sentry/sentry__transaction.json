@@ -7,8 +7,18 @@
   },
   "is_in_otel": false,
   "example": "GET /",
-  "alias": ["transaction"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "sentry.segment.name",
+    "reason": "This attribute is being deprecated in favor of sentry.segment.name"
+  },
+  "alias": ["sentry.segment.name", "transaction"],
   "changelog": [
+    {
+      "version": "next",
+      "prs": [345],
+      "description": "Deprecated sentry.transaction in favor of sentry.segment.name"
+    },
     {
       "version": "0.0.0"
     }

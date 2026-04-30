@@ -9820,6 +9820,8 @@ export type _SENTRY_SEGMENT_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link SENTRY_TRANSACTION} `sentry.transaction`, {@link TRANSACTION} `transaction`
+ *
  * @example "GET /user"
  */
 export const SENTRY_SEGMENT_NAME = 'sentry.segment.name';
@@ -9982,8 +9984,9 @@ export type SENTRY_TRACE_PARENT_SPAN_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link TRANSACTION} `transaction`
+ * Aliases: {@link SENTRY_SEGMENT_NAME} `sentry.segment.name`, {@link TRANSACTION} `transaction`
  *
+ * @deprecated Use {@link SENTRY_SEGMENT_NAME} (sentry.segment.name) instead - This attribute is being deprecated in favor of sentry.segment.name
  * @example "GET /"
  */
 export const SENTRY_TRANSACTION = 'sentry.transaction';
@@ -10196,9 +10199,9 @@ export type TIME_TO_INITIAL_DISPLAY_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link SENTRY_TRANSACTION} `sentry.transaction`
+ * Aliases: {@link SENTRY_SEGMENT_NAME} `sentry.segment.name`, {@link SENTRY_TRANSACTION} `sentry.transaction`
  *
- * @deprecated Use {@link SENTRY_TRANSACTION} (sentry.transaction) instead
+ * @deprecated Use {@link SENTRY_SEGMENT_NAME} (sentry.segment.name) instead
  * @example "GET /"
  */
 export const TRANSACTION = 'transaction';
@@ -18674,7 +18677,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'GET /user',
-    changelog: [{ version: '0.1.0', prs: [104] }],
+    aliases: [SENTRY_TRANSACTION, TRANSACTION],
+    changelog: [
+      { version: 'next', prs: [345], description: 'Added sentry.transaction and transaction aliases' },
+      { version: '0.1.0', prs: [104] },
+    ],
   },
   [SENTRY_SERVER_SAMPLE_RATE]: {
     brief: 'Rate at which a span was sampled in Relay.',
@@ -18767,8 +18774,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'GET /',
-    aliases: [TRANSACTION],
-    changelog: [{ version: '0.0.0' }],
+    deprecation: {
+      replacement: 'sentry.segment.name',
+      reason: 'This attribute is being deprecated in favor of sentry.segment.name',
+    },
+    aliases: [SENTRY_SEGMENT_NAME, TRANSACTION],
+    changelog: [
+      { version: 'next', prs: [345], description: 'Deprecated sentry.transaction in favor of sentry.segment.name' },
+      { version: '0.0.0' },
+    ],
   },
   [SERVER_ADDRESS]: {
     brief:
@@ -18892,10 +18906,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'GET /',
     deprecation: {
-      replacement: 'sentry.transaction',
+      replacement: 'sentry.segment.name',
     },
-    aliases: [SENTRY_TRANSACTION],
-    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
+    aliases: [SENTRY_SEGMENT_NAME, SENTRY_TRANSACTION],
+    changelog: [
+      {
+        version: 'next',
+        prs: [345],
+        description: 'Updated transaction deprecation replacement to sentry.segment.name',
+      },
+      { version: '0.1.0', prs: [61, 127] },
+      { version: '0.0.0' },
+    ],
   },
   [TTFB]: {
     brief: 'The value of the recorded Time To First Byte (TTFB) web vital in milliseconds',
