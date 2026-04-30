@@ -10971,6 +10971,26 @@ export const USER_ROLES = 'user.roles';
  */
 export type USER_ROLES_TYPE = Array<string>;
 
+// Path: model/attributes/v8/v8__version.json
+
+/**
+ * The version of the V8 JavaScript engine. `v8.version`
+ *
+ * Attribute Value Type: `string` {@link V8_VERSION_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "12.9.202.13-rusty"
+ */
+export const V8_VERSION = 'v8.version';
+
+/**
+ * Type for {@link V8_VERSION} v8.version
+ */
+export type V8_VERSION_TYPE = string;
+
 // Path: model/attributes/vercel/vercel__branch.json
 
 /**
@@ -12252,6 +12272,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [USER_IP_ADDRESS]: 'string',
   [USER_NAME]: 'string',
   [USER_ROLES]: 'string[]',
+  [V8_VERSION]: 'string',
   [VERCEL_BRANCH]: 'string',
   [VERCEL_BUILD_ID]: 'string',
   [VERCEL_DEPLOYMENT_ID]: 'string',
@@ -12811,6 +12832,7 @@ export type AttributeName =
   | typeof USER_IP_ADDRESS
   | typeof USER_NAME
   | typeof USER_ROLES
+  | typeof V8_VERSION
   | typeof VERCEL_BRANCH
   | typeof VERCEL_BUILD_ID
   | typeof VERCEL_DEPLOYMENT_ID
@@ -19317,6 +19339,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: ['admin', 'editor'],
     changelog: [{ version: '0.0.0' }],
   },
+  [V8_VERSION]: {
+    brief: 'The version of the V8 JavaScript engine.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '12.9.202.13-rusty',
+    changelog: [{ version: '0.0.0' }],
+  },
   [VERCEL_BRANCH]: {
     brief: 'Git branch name for Vercel project',
     type: 'string',
@@ -20205,6 +20237,7 @@ export type Attributes = {
   [USER_IP_ADDRESS]?: USER_IP_ADDRESS_TYPE;
   [USER_NAME]?: USER_NAME_TYPE;
   [USER_ROLES]?: USER_ROLES_TYPE;
+  [V8_VERSION]?: V8_VERSION_TYPE;
   [VERCEL_BRANCH]?: VERCEL_BRANCH_TYPE;
   [VERCEL_BUILD_ID]?: VERCEL_BUILD_ID_TYPE;
   [VERCEL_DEPLOYMENT_ID]?: VERCEL_DEPLOYMENT_ID_TYPE;
