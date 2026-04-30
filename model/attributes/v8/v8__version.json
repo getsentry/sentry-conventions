@@ -1,0 +1,15 @@
+{
+  "key": "v8.version",
+  "brief": "The version of the V8 JavaScript engine.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "12.9.202.13-rusty",
+  "changelog": [
+    {
+      "version": "0.0.0"
+    }
+  ]
+}

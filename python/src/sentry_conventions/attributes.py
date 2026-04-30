@@ -6097,6 +6097,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1"
     """
 
+    # Path: model/attributes/v8/v8__version.json
+    V8_VERSION: Literal["v8.version"] = "v8.version"
+    """The version of the V8 JavaScript engine.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "12.9.202.13-rusty"
+    """
+
     # Path: model/attributes/vercel/vercel__branch.json
     VERCEL_BRANCH: Literal["vercel.branch"] = "vercel.branch"
     """Git branch name for Vercel project
@@ -13276,6 +13286,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "v8.version": AttributeMetadata(
+        brief="The version of the V8 JavaScript engine.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="12.9.202.13-rusty",
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
+    ),
     "vercel.branch": AttributeMetadata(
         brief="Git branch name for Vercel project",
         type=AttributeType.STRING,
@@ -14161,6 +14181,7 @@ Attributes = TypedDict(
         "user.name": str,
         "user.roles": List[str],
         "user_agent.original": str,
+        "v8.version": str,
         "vercel.branch": str,
         "vercel.build_id": str,
         "vercel.deployment_id": str,
