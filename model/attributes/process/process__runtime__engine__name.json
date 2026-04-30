@@ -1,0 +1,15 @@
+{
+  "key": "process.runtime.engine.name",
+  "brief": "The name of the runtime engine.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "v8",
+  "changelog": [
+    {
+      "version": "0.0.0"
+    }
+  ]
+}

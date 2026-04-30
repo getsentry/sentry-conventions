@@ -1,0 +1,15 @@
+{
+  "key": "process.runtime.engine.version",
+  "brief": "The version of the runtime engine.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "12.9.202.13-rusty",
+  "changelog": [
+    {
+      "version": "0.0.0"
+    }
+  ]
+}

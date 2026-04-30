@@ -4830,6 +4830,30 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "Eclipse OpenJ9 VM openj9-0.21.0"
     """
 
+    # Path: model/attributes/process/process__runtime__engine__name.json
+    PROCESS_RUNTIME_ENGINE_NAME: Literal["process.runtime.engine.name"] = (
+        "process.runtime.engine.name"
+    )
+    """The name of the runtime engine.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "v8"
+    """
+
+    # Path: model/attributes/process/process__runtime__engine__version.json
+    PROCESS_RUNTIME_ENGINE_VERSION: Literal["process.runtime.engine.version"] = (
+        "process.runtime.engine.version"
+    )
+    """The version of the runtime engine.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "12.9.202.13-rusty"
+    """
+
     # Path: model/attributes/process/process__runtime__name.json
     PROCESS_RUNTIME_NAME: Literal["process.runtime.name"] = "process.runtime.name"
     """The name of the runtime. Equivalent to `name` in the Sentry runtime context.
@@ -11901,6 +11925,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "process.runtime.engine.name": AttributeMetadata(
+        brief="The name of the runtime engine.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="v8",
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "process.runtime.engine.version": AttributeMetadata(
+        brief="The version of the runtime engine.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="12.9.202.13-rusty",
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
+    ),
     "process.runtime.name": AttributeMetadata(
         brief="The name of the runtime. Equivalent to `name` in the Sentry runtime context.",
         type=AttributeType.STRING,
@@ -14035,6 +14079,8 @@ Attributes = TypedDict(
         "process.executable.name": str,
         "process.pid": int,
         "process.runtime.description": str,
+        "process.runtime.engine.name": str,
+        "process.runtime.engine.version": str,
         "process.runtime.name": str,
         "process.runtime.version": str,
         "query.<key>": str,
