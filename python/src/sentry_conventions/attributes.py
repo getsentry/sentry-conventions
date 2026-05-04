@@ -9377,7 +9377,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example='[{"name": "get_weather", "description": "Get the weather for a given location"}, {"name": "get_news", "description": "Get the news for a given topic"}]',
         deprecation=DeprecationInfo(
-            replacement="gen_ai.tool.definitions", status=DeprecationStatus.BACKFILL
+            replacement="gen_ai.tool.definitions", status=DeprecationStatus.NORMALIZE
         ),
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[221]),
@@ -9414,7 +9414,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example='[{"role": "system", "content": "Generate a random number."}, {"role": "user", "content": [{"text": "Generate a random number between 0 and 10.", "type": "text"}]}, {"role": "tool", "content": {"toolCallId": "1", "toolName": "Weather", "output": "rainy"}}]',
         deprecation=DeprecationInfo(
-            replacement="gen_ai.input.messages", status=DeprecationStatus.BACKFILL
+            replacement="gen_ai.input.messages", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["ai.input_messages"],
         changelog=[
@@ -9543,7 +9543,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example='["The weather in Paris is rainy and overcast, with temperatures around 57°F", "The weather in London is sunny and warm, with temperatures around 65°F"]',
         deprecation=DeprecationInfo(
-            replacement="gen_ai.output.messages", status=DeprecationStatus.BACKFILL
+            replacement="gen_ai.output.messages", status=DeprecationStatus.NORMALIZE
         ),
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[221]),
@@ -9578,7 +9578,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example='[{"name": "get_weather", "arguments": {"location": "Paris"}}]',
         deprecation=DeprecationInfo(
-            replacement="gen_ai.output.messages", status=DeprecationStatus.BACKFILL
+            replacement="gen_ai.output.messages", status=DeprecationStatus.NORMALIZE
         ),
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[221]),
@@ -9592,7 +9592,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="openai",
         deprecation=DeprecationInfo(
-            replacement="gen_ai.provider.name", status=DeprecationStatus.BACKFILL
+            replacement="gen_ai.provider.name", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["ai.model.provider", "gen_ai.provider.name"],
         changelog=[
@@ -9677,7 +9677,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example='{"location": "Paris"}',
         deprecation=DeprecationInfo(
-            replacement="gen_ai.tool.call.arguments", status=DeprecationStatus.BACKFILL
+            replacement="gen_ai.tool.call.arguments", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["gen_ai.tool.call.arguments"],
         changelog=[
@@ -9692,7 +9692,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="rainy, 57°F",
         deprecation=DeprecationInfo(
-            replacement="gen_ai.tool.call.result", status=DeprecationStatus.BACKFILL
+            replacement="gen_ai.tool.call.result", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["gen_ai.tool.call.result", "gen_ai.tool.output"],
         changelog=[
@@ -9718,7 +9718,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="rainy, 57°F",
         deprecation=DeprecationInfo(
-            replacement="gen_ai.tool.call.result", status=DeprecationStatus.BACKFILL
+            replacement="gen_ai.tool.call.result", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["gen_ai.tool.call.result", "gen_ai.tool.message"],
         changelog=[
