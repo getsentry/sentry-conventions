@@ -14488,7 +14488,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'user:2047:city',
     sdks: ['python'],
-    changelog: [{ version: 'next', prs: [326], description: 'Added db.redis.key attribute' }],
+    changelog: [{ version: '0.6.0', prs: [326], description: 'Added db.redis.key attribute' }],
   },
   [DB_REDIS_PARAMETERS]: {
     brief: 'The array of command parameters given to a redis command.',
@@ -14792,7 +14792,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: true,
     sdks: ['sentry.cocoa'],
-    changelog: [{ version: 'next', prs: [314], description: 'Added device.low_power_mode attribute' }],
+    changelog: [{ version: '0.6.0', prs: [314], description: 'Added device.low_power_mode attribute' }],
   },
   [DEVICE_MANUFACTURER]: {
     brief: 'The manufacturer of the device.',
@@ -16157,7 +16157,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '[{"role": "user", "message": "hello"}]',
-    changelog: [{ version: 'next', prs: [336], description: 'Added http.request.body.data attribute' }],
+    changelog: [{ version: '0.6.0', prs: [336], description: 'Added http.request.body.data attribute' }],
   },
   [HTTP_REQUEST_CONNECTION_END]: {
     brief:
@@ -16256,7 +16256,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'http.request.method',
     },
     aliases: [METHOD, HTTP_METHOD, HTTP_REQUEST_METHOD],
-    changelog: [{ version: 'next', prs: [343], description: 'Added http.request_method attribute' }],
+    changelog: [{ version: '0.6.0', prs: [343], description: 'Added http.request_method attribute' }],
   },
   [HTTP_REQUEST_REDIRECT_END]: {
     brief:
@@ -17221,7 +17221,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 10,
     sdks: ['javascript-cloudflare'],
-    changelog: [{ version: 'next', prs: [341], description: 'Added messaging.batch.message_count attribute' }],
+    changelog: [{ version: '0.6.0', prs: [341], description: 'Added messaging.batch.message_count attribute' }],
   },
   [MESSAGING_DESTINATION_CONNECTION]: {
     brief: 'The message destination connection.',
@@ -17345,7 +17345,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'AuthenticationMiddleware',
     sdks: ['python'],
-    changelog: [{ version: 'next', prs: [336], description: 'Added middleware.name attribute' }],
+    changelog: [{ version: '0.6.0', prs: [336], description: 'Added middleware.name attribute' }],
   },
   [NAVIGATION_TYPE]: {
     brief: 'The type of navigation done by a client-side router.',
@@ -17982,7 +17982,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: ['cmd/otecol', '--config=config.yaml'],
     sdks: ['python'],
-    changelog: [{ version: 'next', prs: [327], description: 'Added process.command_args attribute' }],
+    changelog: [{ version: '0.6.0', prs: [327], description: 'Added process.command_args attribute' }],
   },
   [PROCESS_EXECUTABLE_NAME]: {
     brief: 'The name of the executable that started the process.',
@@ -18585,7 +18585,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '123e4567e89b12d3a456426614174000',
-    changelog: [{ version: 'next', prs: [344], description: 'Added sentry.profile_id attribute' }],
+    changelog: [{ version: '0.6.0', prs: [344], description: 'Added sentry.profile_id attribute' }],
   },
   [SENTRY_RELEASE]: {
     brief: 'The sentry release.',
@@ -18701,7 +18701,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'GET /user',
     aliases: [SENTRY_TRANSACTION, TRANSACTION],
     changelog: [
-      { version: 'next', prs: [345], description: 'Added sentry.transaction and transaction aliases' },
+      { version: '0.6.0', prs: [345], description: 'Added sentry.transaction and transaction aliases' },
       { version: '0.1.0', prs: [104] },
     ],
   },
@@ -18802,7 +18802,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [SENTRY_SEGMENT_NAME, TRANSACTION],
     changelog: [
-      { version: 'next', prs: [345], description: 'Deprecated sentry.transaction in favor of sentry.segment.name' },
+      { version: '0.6.0', prs: [345], description: 'Deprecated sentry.transaction in favor of sentry.segment.name' },
       { version: '0.0.0' },
     ],
   },
@@ -18933,7 +18933,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [SENTRY_SEGMENT_NAME, SENTRY_TRANSACTION],
     changelog: [
       {
-        version: 'next',
+        version: '0.6.0',
         prs: [345],
         description: 'Updated transaction deprecation replacement to sentry.segment.name',
       },
@@ -19470,7 +19470,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '/dynamic/[route].json',
-    changelog: [{ version: 'next', prs: [349], description: 'Added vercel.path attribute' }],
+    changelog: [{ version: '0.6.0', prs: [349], description: 'Added vercel.path attribute' }],
   },
   [VERCEL_PROJECT_ID]: {
     brief: 'Identifier for the Vercel project',

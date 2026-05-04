@@ -8264,7 +8264,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["python"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[326], description="Added db.redis.key attribute"
+                version="0.6.0", prs=[326], description="Added db.redis.key attribute"
             ),
         ],
     ),
@@ -8598,7 +8598,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["sentry.cocoa"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.6.0",
                 prs=[314],
                 description="Added device.low_power_mode attribute",
             ),
@@ -9994,7 +9994,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example='[{"role": "user", "message": "hello"}]',
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.6.0",
                 prs=[336],
                 description="Added http.request.body.data attribute",
             ),
@@ -10213,7 +10213,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["method", "http.method", "http.request.method"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.6.0",
                 prs=[343],
                 description="Added http.request_method attribute",
             ),
@@ -11078,7 +11078,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["javascript-cloudflare"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.6.0",
                 prs=[341],
                 description="Added messaging.batch.message_count attribute",
             ),
@@ -11213,7 +11213,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["python"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[336], description="Added middleware.name attribute"
+                version="0.6.0",
+                prs=[336],
+                description="Added middleware.name attribute",
             ),
         ],
     ),
@@ -11875,7 +11877,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["python"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.6.0",
                 prs=[327],
                 description="Added process.command_args attribute",
             ),
@@ -12461,7 +12463,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="123e4567e89b12d3a456426614174000",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.6.0",
                 prs=[344],
                 description="Added sentry.profile_id attribute",
             ),
@@ -12582,7 +12584,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["sentry.transaction", "transaction"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.6.0",
                 prs=[345],
                 description="Added sentry.transaction and transaction aliases",
             ),
@@ -12699,7 +12701,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["sentry.segment.name", "transaction"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.6.0",
                 prs=[345],
                 description="Deprecated sentry.transaction in favor of sentry.segment.name",
             ),
@@ -12849,7 +12851,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["sentry.segment.name", "sentry.transaction"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.6.0",
                 prs=[345],
                 description="Updated transaction deprecation replacement to sentry.segment.name",
             ),
@@ -13421,7 +13423,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="/dynamic/[route].json",
         changelog=[
             ChangelogEntry(
-                version="next", prs=[349], description="Added vercel.path attribute"
+                version="0.6.0", prs=[349], description="Added vercel.path attribute"
             ),
         ],
     ),

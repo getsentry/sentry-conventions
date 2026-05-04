@@ -9,7 +9,7 @@
   "example": "123e4567e89b12d3a456426614174000",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.6.0",
       "prs": [344],
       "description": "Added sentry.profile_id attribute"
     }
