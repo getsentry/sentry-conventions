@@ -11189,6 +11189,26 @@ export const VERCEL_LOG_TYPE = 'vercel.log_type';
  */
 export type VERCEL_LOG_TYPE_TYPE = string;
 
+// Path: model/attributes/vercel/vercel__path.json
+
+/**
+ * Function or dynamic path of the request in Vercel. `vercel.path`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_PATH_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "/dynamic/[route].json"
+ */
+export const VERCEL_PATH = 'vercel.path';
+
+/**
+ * Type for {@link VERCEL_PATH} vercel.path
+ */
+export type VERCEL_PATH_TYPE = string;
+
 // Path: model/attributes/vercel/vercel__project_id.json
 
 /**
@@ -12261,6 +12281,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [VERCEL_JA3_DIGEST]: 'string',
   [VERCEL_JA4_DIGEST]: 'string',
   [VERCEL_LOG_TYPE]: 'string',
+  [VERCEL_PATH]: 'string',
   [VERCEL_PROJECT_ID]: 'string',
   [VERCEL_PROJECT_NAME]: 'string',
   [VERCEL_PROXY_CACHE_ID]: 'string',
@@ -12820,6 +12841,7 @@ export type AttributeName =
   | typeof VERCEL_JA3_DIGEST
   | typeof VERCEL_JA4_DIGEST
   | typeof VERCEL_LOG_TYPE
+  | typeof VERCEL_PATH
   | typeof VERCEL_PROJECT_ID
   | typeof VERCEL_PROJECT_NAME
   | typeof VERCEL_PROXY_CACHE_ID
@@ -19418,6 +19440,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'stdout',
     changelog: [{ version: '0.2.0', prs: [163] }],
   },
+  [VERCEL_PATH]: {
+    brief: 'Function or dynamic path of the request in Vercel.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '/dynamic/[route].json',
+    changelog: [{ version: 'next', prs: [349], description: 'Added vercel.path attribute' }],
+  },
   [VERCEL_PROJECT_ID]: {
     brief: 'Identifier for the Vercel project',
     type: 'string',
@@ -20207,6 +20239,7 @@ export type Attributes = {
   [VERCEL_JA3_DIGEST]?: VERCEL_JA3_DIGEST_TYPE;
   [VERCEL_JA4_DIGEST]?: VERCEL_JA4_DIGEST_TYPE;
   [VERCEL_LOG_TYPE]?: VERCEL_LOG_TYPE_TYPE;
+  [VERCEL_PATH]?: VERCEL_PATH_TYPE;
   [VERCEL_PROJECT_ID]?: VERCEL_PROJECT_ID_TYPE;
   [VERCEL_PROJECT_NAME]?: VERCEL_PROJECT_NAME_TYPE;
   [VERCEL_PROXY_CACHE_ID]?: VERCEL_PROXY_CACHE_ID_TYPE;
