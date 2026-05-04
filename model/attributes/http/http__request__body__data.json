@@ -9,7 +9,7 @@
   "example": "[{\"role\": \"user\", \"message\": \"hello\"}]",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.6.0",
       "prs": [336],
       "description": "Added http.request.body.data attribute"
     }

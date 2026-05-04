@@ -10,7 +10,7 @@
   "sdks": ["python"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.6.0",
       "prs": [326],
       "description": "Added db.redis.key attribute"
     }
