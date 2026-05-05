@@ -1157,6 +1157,26 @@ export const APP_VITALS_START_COLD_VALUE = 'app.vitals.start.cold.value';
  */
 export type APP_VITALS_START_COLD_VALUE_TYPE = number;
 
+// Path: model/attributes/app/app__vitals__start__screen.json
+
+/**
+ * The screen that is rendered when the app start is complete. This is the screen the user first sees and can interact with after launch. The absence of this attribute on the app start span indicates a background app start where no UI was rendered `app.vitals.start.screen`
+ *
+ * Attribute Value Type: `string` {@link APP_VITALS_START_SCREEN_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "MainActivity"
+ */
+export const APP_VITALS_START_SCREEN = 'app.vitals.start.screen';
+
+/**
+ * Type for {@link APP_VITALS_START_SCREEN} app.vitals.start.screen
+ */
+export type APP_VITALS_START_SCREEN_TYPE = string;
+
 // Path: model/attributes/app/app__vitals__start__type.json
 
 /**
@@ -11804,6 +11824,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [APP_VITALS_FRAMES_SLOW_COUNT]: 'integer',
   [APP_VITALS_FRAMES_TOTAL_COUNT]: 'integer',
   [APP_VITALS_START_COLD_VALUE]: 'double',
+  [APP_VITALS_START_SCREEN]: 'string',
   [APP_VITALS_START_TYPE]: 'string',
   [APP_VITALS_START_WARM_VALUE]: 'double',
   [APP_VITALS_TTFD_VALUE]: 'double',
@@ -12364,6 +12385,7 @@ export type AttributeName =
   | typeof APP_VITALS_FRAMES_SLOW_COUNT
   | typeof APP_VITALS_FRAMES_TOTAL_COUNT
   | typeof APP_VITALS_START_COLD_VALUE
+  | typeof APP_VITALS_START_SCREEN
   | typeof APP_VITALS_START_TYPE
   | typeof APP_VITALS_START_WARM_VALUE
   | typeof APP_VITALS_TTFD_VALUE
@@ -13667,6 +13689,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [APP_START_COLD],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.start.cold.value attribute' }],
+  },
+  [APP_VITALS_START_SCREEN]: {
+    brief:
+      'The screen that is rendered when the app start is complete. This is the screen the user first sees and can interact with after launch. The absence of this attribute on the app start span indicates a background app start where no UI was rendered',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'MainActivity',
+    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    changelog: [{ version: 'next', prs: [353], description: 'Added app.vitals.start.screen attribute' }],
   },
   [APP_VITALS_START_TYPE]: {
     brief: 'The type of app start, for example `cold` or `warm`',
@@ -19781,6 +19815,7 @@ export type Attributes = {
   [APP_VITALS_FRAMES_SLOW_COUNT]?: APP_VITALS_FRAMES_SLOW_COUNT_TYPE;
   [APP_VITALS_FRAMES_TOTAL_COUNT]?: APP_VITALS_FRAMES_TOTAL_COUNT_TYPE;
   [APP_VITALS_START_COLD_VALUE]?: APP_VITALS_START_COLD_VALUE_TYPE;
+  [APP_VITALS_START_SCREEN]?: APP_VITALS_START_SCREEN_TYPE;
   [APP_VITALS_START_TYPE]?: APP_VITALS_START_TYPE_TYPE;
   [APP_VITALS_START_WARM_VALUE]?: APP_VITALS_START_WARM_VALUE_TYPE;
   [APP_VITALS_TTFD_VALUE]?: APP_VITALS_TTFD_VALUE_TYPE;
