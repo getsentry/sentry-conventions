@@ -10,7 +10,7 @@
   "example": true,
   "changelog": [
     {
-      "version": "next",
+      "version": "0.6.0",
       "prs": [314],
       "description": "Added device.low_power_mode attribute"
     }

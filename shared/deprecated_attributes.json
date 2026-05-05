@@ -355,7 +355,7 @@
         "_status": null,
         "replacement": "http.request.method"
       },
-      "alias": ["http.request.method"],
+      "alias": ["http.request.method", "http.request_method", "http.method"],
       "sdks": ["javascript-browser", "javascript-node"],
       "changelog": [
         {
@@ -498,11 +498,16 @@
       "is_in_otel": false,
       "example": "GET /",
       "deprecation": {
-        "_status": null,
-        "replacement": "sentry.transaction"
+        "_status": "backfill",
+        "replacement": "sentry.segment.name"
       },
-      "alias": ["sentry.transaction"],
+      "alias": ["sentry.segment.name", "sentry.transaction"],
       "changelog": [
+        {
+          "version": "0.6.0",
+          "prs": [345],
+          "description": "Updated transaction deprecation replacement to sentry.segment.name"
+        },
         {
           "version": "0.1.0",
           "prs": [61, 127]
@@ -1519,30 +1524,6 @@
       ]
     },
     {
-      "key": "code.function",
-      "brief": "The method or function name, or equivalent (usually rightmost part of the code unit's name).",
-      "type": "string",
-      "pii": {
-        "key": "maybe"
-      },
-      "is_in_otel": true,
-      "example": "server_request",
-      "deprecation": {
-        "_status": null,
-        "replacement": "code.function.name"
-      },
-      "alias": ["code.function.name"],
-      "changelog": [
-        {
-          "version": "0.1.0",
-          "prs": [61, 74]
-        },
-        {
-          "version": "0.0.0"
-        }
-      ]
-    },
-    {
       "key": "code.lineno",
       "brief": "The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function",
       "type": "integer",
@@ -1564,30 +1545,6 @@
         {
           "version": "0.1.0",
           "prs": [61, 108]
-        },
-        {
-          "version": "0.0.0"
-        }
-      ]
-    },
-    {
-      "key": "code.namespace",
-      "brief": "The 'namespace' within which code.function is defined. Usually the qualified class or module name, such that code.namespace + some separator + code.function form a unique identifier for the code unit.",
-      "type": "string",
-      "pii": {
-        "key": "maybe"
-      },
-      "is_in_otel": true,
-      "example": "http.handler",
-      "deprecation": {
-        "_status": null,
-        "replacement": "code.function.name",
-        "reason": "code.function.name should include the namespace."
-      },
-      "changelog": [
-        {
-          "version": "0.1.0",
-          "prs": [61, 74]
         },
         {
           "version": "0.0.0"
@@ -2303,7 +2260,7 @@
         "_status": "backfill",
         "replacement": "http.request.method"
       },
-      "alias": ["http.request.method"],
+      "alias": ["http.request.method", "http.request_method", "method"],
       "changelog": [
         {
           "version": "0.1.0",
@@ -2311,6 +2268,28 @@
         },
         {
           "version": "0.0.0"
+        }
+      ]
+    },
+    {
+      "key": "http.request_method",
+      "brief": "The HTTP method used.",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "GET",
+      "deprecation": {
+        "_status": "backfill",
+        "replacement": "http.request.method"
+      },
+      "alias": ["method", "http.method", "http.request.method"],
+      "changelog": [
+        {
+          "version": "0.6.0",
+          "prs": [343],
+          "description": "Added http.request_method attribute"
         }
       ]
     },
@@ -3196,7 +3175,7 @@
       "is_in_otel": false,
       "example": "Chrome",
       "deprecation": {
-        "_status": "backfill",
+        "_status": null,
         "replacement": "browser.name"
       },
       "alias": ["browser.name"],
@@ -3217,7 +3196,7 @@
       "is_in_otel": false,
       "example": "120.0.6099.130",
       "deprecation": {
-        "_status": "backfill",
+        "_status": null,
         "replacement": "browser.version"
       },
       "alias": ["browser.version"],
@@ -3312,6 +3291,32 @@
         {
           "version": "0.1.0",
           "prs": [116]
+        }
+      ]
+    },
+    {
+      "key": "sentry.transaction",
+      "brief": "The sentry transaction (segment name).",
+      "type": "string",
+      "pii": {
+        "key": "false"
+      },
+      "is_in_otel": false,
+      "example": "GET /",
+      "deprecation": {
+        "_status": "backfill",
+        "replacement": "sentry.segment.name",
+        "reason": "This attribute is being deprecated in favor of sentry.segment.name"
+      },
+      "alias": ["sentry.segment.name", "transaction"],
+      "changelog": [
+        {
+          "version": "0.6.0",
+          "prs": [345],
+          "description": "Deprecated sentry.transaction in favor of sentry.segment.name"
+        },
+        {
+          "version": "0.0.0"
         }
       ]
     },

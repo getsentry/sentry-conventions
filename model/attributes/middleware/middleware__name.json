@@ -1,0 +1,18 @@
+{
+  "key": "middleware.name",
+  "brief": "The name of the middleware.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "AuthenticationMiddleware",
+  "sdks": ["python"],
+  "changelog": [
+    {
+      "version": "0.6.0",
+      "prs": [336],
+      "description": "Added middleware.name attribute"
+    }
+  ]
+}

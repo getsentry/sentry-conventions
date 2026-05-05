@@ -147,9 +147,7 @@ class _AttributeNamesMeta(type):
         "CLS_SOURCE_KEY",
         "CLS",
         "CODE_FILEPATH",
-        "CODE_FUNCTION",
         "CODE_LINENO",
-        "CODE_NAMESPACE",
         "CONNECTION_RTT",
         "CONNECTIONTYPE",
         "DB_NAME",
@@ -186,6 +184,7 @@ class _AttributeNamesMeta(type):
         "HTTP_FLAVOR",
         "HTTP_HOST",
         "HTTP_METHOD",
+        "_HTTP_REQUEST_METHOD",
         "HTTP_RESPONSE_CONTENT_LENGTH",
         "HTTP_RESPONSE_TRANSFER_SIZE",
         "HTTP_SCHEME",
@@ -233,6 +232,7 @@ class _AttributeNamesMeta(type):
         "_SENTRY_SEGMENT_ID",
         "SENTRY_SOURCE",
         "SENTRY_TRACE_PARENT_SPAN_ID",
+        "SENTRY_TRANSACTION",
         "TIME_TO_FULL_DISPLAY",
         "TIME_TO_INITIAL_DISPLAY",
         "TRANSACTION",
@@ -1403,13 +1403,12 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: Yes
     Aliases: code.function.name
-    DEPRECATED: Use code.function.name instead
     Example: "server_request"
     """
 
     # Path: model/attributes/code/code__function__name.json
     CODE_FUNCTION_NAME: Literal["code.function.name"] = "code.function.name"
-    """The method or function name, or equivalent (usually rightmost part of the code unit's name).
+    """The method or function fully-qualified name without arguments.
 
     Type: str
     Contains PII: maybe
@@ -1448,7 +1447,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
-    DEPRECATED: Use code.function.name instead - code.function.name should include the namespace.
     Example: "http.handler"
     """
 
@@ -1636,6 +1634,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Example: "my-redis-instance"
+    """
+
+    # Path: model/attributes/db/db__redis__key.json
+    DB_REDIS_KEY: Literal["db.redis.key"] = "db.redis.key"
+    """The key the Redis command is operating on.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "user:2047:city"
     """
 
     # Path: model/attributes/db/db__redis__parameters.json
@@ -3094,7 +3102,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
-    Aliases: http.request.method
+    Aliases: http.request.method, http.request_method, method
     DEPRECATED: Use http.request.method instead
     Example: "GET"
     """
@@ -3107,6 +3115,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe - Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.
     Defined in OTEL: No
     Example: "?foo=bar&bar=baz"
+    """
+
+    # Path: model/attributes/http/http__request__body__data.json
+    HTTP_REQUEST_BODY_DATA: Literal["http.request.body.data"] = "http.request.body.data"
+    """HTTP request body data. Can be given as string or structural data of any format.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "[{\"role\": \"user\", \"message\": \"hello\"}]"
     """
 
     # Path: model/attributes/http/http__request__connect_start.json
@@ -3189,7 +3207,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
-    Aliases: method, http.method
+    Aliases: method, http.method, http.request_method
     Example: "GET"
     """
 
@@ -3299,6 +3317,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Example: 1732829553.68
+    """
+
+    # Path: model/attributes/http/http__request_method.json
+    _HTTP_REQUEST_METHOD: Literal["http.request_method"] = "http.request_method"
+    """The HTTP method used.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: method, http.method, http.request.method
+    DEPRECATED: Use http.request.method instead
+    Example: "GET"
     """
 
     # Path: model/attributes/http/http__response__body__size.json
@@ -4078,6 +4108,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "mdc.some_key='some_value'"
     """
 
+    # Path: model/attributes/messaging/messaging__batch__message_count.json
+    MESSAGING_BATCH_MESSAGE_COUNT: Literal["messaging.batch.message_count"] = (
+        "messaging.batch.message_count"
+    )
+    """The number of messages sent, received, or processed in the scope of the batching operation.
+
+    Type: int
+    Contains PII: false
+    Defined in OTEL: Yes
+    Example: 10
+    """
+
     # Path: model/attributes/messaging/messaging__destination__connection.json
     MESSAGING_DESTINATION_CONNECTION: Literal["messaging.destination.connection"] = (
         "messaging.destination.connection"
@@ -4189,9 +4231,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: http.request.method
+    Aliases: http.request.method, http.request_method, http.method
     DEPRECATED: Use http.request.method instead
     Example: "GET"
+    """
+
+    # Path: model/attributes/middleware/middleware__name.json
+    MIDDLEWARE_NAME: Literal["middleware.name"] = "middleware.name"
+    """The name of the middleware.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "AuthenticationMiddleware"
     """
 
     # Path: model/attributes/navigation/navigation__type.json
@@ -4745,6 +4797,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Example: "HomeScreen"
+    """
+
+    # Path: model/attributes/process/process__command_args.json
+    PROCESS_COMMAND_ARGS: Literal["process.command_args"] = "process.command_args"
+    """All the command arguments (including the command/executable itself) as received by the process.
+
+    Type: List[str]
+    Contains PII: maybe
+    Defined in OTEL: Yes
+    Example: ["cmd/otecol","--config=config.yaml"]
     """
 
     # Path: model/attributes/process/process__executable__name.json
@@ -5330,6 +5392,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "php"
     """
 
+    # Path: model/attributes/sentry/sentry__profile_id.json
+    SENTRY_PROFILE_ID: Literal["sentry.profile_id"] = "sentry.profile_id"
+    """The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "123e4567e89b12d3a456426614174000"
+    """
+
     # Path: model/attributes/sentry/sentry__profiler_id.json
     SENTRY_PROFILER_ID: Literal["sentry.profiler_id"] = "sentry.profiler_id"
     """The id of the currently running profiler (continuous profiling)
@@ -5435,6 +5507,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Aliases: sentry.transaction, transaction
     Example: "GET /user"
     """
 
@@ -5535,7 +5608,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
-    Aliases: transaction
+    Aliases: sentry.segment.name, transaction
+    DEPRECATED: Use sentry.segment.name instead - This attribute is being deprecated in favor of sentry.segment.name
     Example: "GET /"
     """
 
@@ -5645,8 +5719,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: sentry.transaction
-    DEPRECATED: Use sentry.transaction instead
+    Aliases: sentry.segment.name, sentry.transaction
+    DEPRECATED: Use sentry.segment.name instead
     Example: "GET /"
     """
 
@@ -6144,6 +6218,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: false
     Defined in OTEL: No
     Example: "stdout"
+    """
+
+    # Path: model/attributes/vercel/vercel__path.json
+    VERCEL_PATH: Literal["vercel.path"] = "vercel.path"
+    """Function or dynamic path of the request in Vercel.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "/dynamic/[route].json"
     """
 
     # Path: model/attributes/vercel/vercel__project_id.json
@@ -7912,7 +7996,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="server_request",
-        deprecation=DeprecationInfo(replacement="code.function.name"),
         aliases=["code.function.name"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 74]),
@@ -7920,7 +8003,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "code.function.name": AttributeMetadata(
-        brief="The method or function name, or equivalent (usually rightmost part of the code unit's name).",
+        brief="The method or function fully-qualified name without arguments.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
@@ -7963,10 +8046,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="http.handler",
-        deprecation=DeprecationInfo(
-            replacement="code.function.name",
-            reason="code.function.name should include the namespace.",
-        ),
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 74]),
             ChangelogEntry(version="0.0.0"),
@@ -8186,6 +8265,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "db.redis.key": AttributeMetadata(
+        brief="The key the Redis command is operating on.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="user:2047:city",
+        sdks=["python"],
+        changelog=[
+            ChangelogEntry(
+                version="0.6.0", prs=[326], description="Added db.redis.key attribute"
+            ),
         ],
     ),
     "db.redis.parameters": AttributeMetadata(
@@ -8518,7 +8610,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["sentry.cocoa"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.6.0",
                 prs=[314],
                 description="Added device.low_power_mode attribute",
             ),
@@ -9901,7 +9993,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="http.request.method", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["http.request.method"],
+        aliases=["http.request.method", "http.request_method", "method"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
@@ -9918,6 +10010,20 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="?foo=bar&bar=baz",
         changelog=[
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "http.request.body.data": AttributeMetadata(
+        brief="HTTP request body data. Can be given as string or structural data of any format.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example='[{"role": "user", "message": "hello"}]',
+        changelog=[
+            ChangelogEntry(
+                version="0.6.0",
+                prs=[336],
+                description="Added http.request.body.data attribute",
+            ),
         ],
     ),
     "http.request.connect_start": AttributeMetadata(
@@ -10003,7 +10109,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="GET",
-        aliases=["method", "http.method"],
+        aliases=["method", "http.method", "http.request_method"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
@@ -10119,6 +10225,24 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[130, 134]),
+        ],
+    ),
+    "http.request_method": AttributeMetadata(
+        brief="The HTTP method used.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="GET",
+        deprecation=DeprecationInfo(
+            replacement="http.request.method", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["method", "http.method", "http.request.method"],
+        changelog=[
+            ChangelogEntry(
+                version="0.6.0",
+                prs=[343],
+                description="Added http.request_method attribute",
+            ),
         ],
     ),
     "http.response.body.size": AttributeMetadata(
@@ -10971,6 +11095,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.3.0", prs=[176]),
         ],
     ),
+    "messaging.batch.message_count": AttributeMetadata(
+        brief="The number of messages sent, received, or processed in the scope of the batching operation.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=True,
+        example=10,
+        sdks=["javascript-cloudflare"],
+        changelog=[
+            ChangelogEntry(
+                version="0.6.0",
+                prs=[341],
+                description="Added messaging.batch.message_count attribute",
+            ),
+        ],
+    ),
     "messaging.destination.connection": AttributeMetadata(
         brief="The message destination connection.",
         type=AttributeType.STRING,
@@ -11084,11 +11223,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="GET",
         deprecation=DeprecationInfo(replacement="http.request.method"),
-        aliases=["http.request.method"],
+        aliases=["http.request.method", "http.request_method", "http.method"],
         sdks=["javascript-browser", "javascript-node"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "middleware.name": AttributeMetadata(
+        brief="The name of the middleware.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="AuthenticationMiddleware",
+        sdks=["python"],
+        changelog=[
+            ChangelogEntry(
+                version="0.6.0",
+                prs=[336],
+                description="Added middleware.name attribute",
+            ),
         ],
     ),
     "navigation.type": AttributeMetadata(
@@ -11740,6 +11894,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "process.command_args": AttributeMetadata(
+        brief="All the command arguments (including the command/executable itself) as received by the process.",
+        type=AttributeType.STRING_ARRAY,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=True,
+        example=["cmd/otecol", "--config=config.yaml"],
+        sdks=["python"],
+        changelog=[
+            ChangelogEntry(
+                version="0.6.0",
+                prs=[327],
+                description="Added process.command_args attribute",
+            ),
+        ],
+    ),
     "process.executable.name": AttributeMetadata(
         brief="The name of the executable that started the process.",
         type=AttributeType.STRING,
@@ -11938,9 +12107,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="Chrome",
-        deprecation=DeprecationInfo(
-            replacement="browser.name", status=DeprecationStatus.BACKFILL
-        ),
+        deprecation=DeprecationInfo(replacement="browser.name"),
         aliases=["browser.name"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[139]),
@@ -11952,9 +12119,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="120.0.6099.130",
-        deprecation=DeprecationInfo(
-            replacement="browser.version", status=DeprecationStatus.BACKFILL
-        ),
+        deprecation=DeprecationInfo(replacement="browser.version"),
         aliases=["browser.version"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[139]),
@@ -12316,6 +12481,20 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "sentry.profile_id": AttributeMetadata(
+        brief="The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="123e4567e89b12d3a456426614174000",
+        changelog=[
+            ChangelogEntry(
+                version="0.6.0",
+                prs=[344],
+                description="Added sentry.profile_id attribute",
+            ),
+        ],
+    ),
     "sentry.profiler_id": AttributeMetadata(
         brief="The id of the currently running profiler (continuous profiling)",
         type=AttributeType.STRING,
@@ -12428,7 +12607,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="GET /user",
+        aliases=["sentry.transaction", "transaction"],
         changelog=[
+            ChangelogEntry(
+                version="0.6.0",
+                prs=[345],
+                description="Added sentry.transaction and transaction aliases",
+            ),
             ChangelogEntry(version="0.1.0", prs=[104]),
         ],
     ),
@@ -12534,8 +12719,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="GET /",
-        aliases=["transaction"],
+        deprecation=DeprecationInfo(
+            replacement="sentry.segment.name",
+            reason="This attribute is being deprecated in favor of sentry.segment.name",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["sentry.segment.name", "transaction"],
         changelog=[
+            ChangelogEntry(
+                version="0.6.0",
+                prs=[345],
+                description="Deprecated sentry.transaction in favor of sentry.segment.name",
+            ),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -12676,9 +12871,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="GET /",
-        deprecation=DeprecationInfo(replacement="sentry.transaction"),
-        aliases=["sentry.transaction"],
+        deprecation=DeprecationInfo(
+            replacement="sentry.segment.name", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["sentry.segment.name", "sentry.transaction"],
         changelog=[
+            ChangelogEntry(
+                version="0.6.0",
+                prs=[345],
+                description="Updated transaction deprecation replacement to sentry.segment.name",
+            ),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -13239,6 +13441,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.2.0", prs=[163]),
         ],
     ),
+    "vercel.path": AttributeMetadata(
+        brief="Function or dynamic path of the request in Vercel.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="/dynamic/[route].json",
+        changelog=[
+            ChangelogEntry(
+                version="0.6.0", prs=[349], description="Added vercel.path attribute"
+            ),
+        ],
+    ),
     "vercel.project_id": AttributeMetadata(
         brief="Identifier for the Vercel project",
         type=AttributeType.STRING,
@@ -13612,6 +13826,7 @@ Attributes = TypedDict(
         "db.query.summary": str,
         "db.query.text": str,
         "db.redis.connection": str,
+        "db.redis.key": str,
         "db.redis.parameters": List[str],
         "db.sql.bindings": List[str],
         "db.statement": str,
@@ -13743,6 +13958,7 @@ Attributes = TypedDict(
         "http.host": str,
         "http.method": str,
         "http.query": str,
+        "http.request.body.data": str,
         "http.request.connect_start": float,
         "http.request.connection_end": float,
         "http.request.domain_lookup_end": float,
@@ -13759,6 +13975,7 @@ Attributes = TypedDict(
         "http.request.secure_connection_start": float,
         "http.request.time_to_first_byte": float,
         "http.request.worker_start": float,
+        "http.request_method": str,
         "http.response.body.size": int,
         "http.response.header.<key>": List[str],
         "http.response.header.content-length": str,
@@ -13829,6 +14046,7 @@ Attributes = TypedDict(
         "mcp.tool.result.is_error": bool,
         "mcp.transport": str,
         "mdc.<key>": str,
+        "messaging.batch.message_count": int,
         "messaging.destination.connection": str,
         "messaging.destination.name": str,
         "messaging.message.body.size": int,
@@ -13839,6 +14057,7 @@ Attributes = TypedDict(
         "messaging.operation.type": str,
         "messaging.system": str,
         "method": str,
+        "middleware.name": str,
         "navigation.type": str,
         "nel.elapsed_time": int,
         "nel.phase": str,
@@ -13889,6 +14108,7 @@ Attributes = TypedDict(
         "performance.activationStart": float,
         "performance.timeOrigin": float,
         "previous_route": str,
+        "process.command_args": List[str],
         "process.executable.name": str,
         "process.pid": int,
         "process.runtime.description": str,
@@ -13942,6 +14162,7 @@ Attributes = TypedDict(
         "sentry.op": str,
         "sentry.origin": str,
         "sentry.platform": str,
+        "sentry.profile_id": str,
         "sentry.profiler_id": str,
         "sentry.release": str,
         "sentry.replay_id": str,
@@ -14019,6 +14240,7 @@ Attributes = TypedDict(
         "vercel.ja3_digest": str,
         "vercel.ja4_digest": str,
         "vercel.log_type": str,
+        "vercel.path": str,
         "vercel.project_id": str,
         "vercel.project_name": str,
         "vercel.proxy.cache_id": str,

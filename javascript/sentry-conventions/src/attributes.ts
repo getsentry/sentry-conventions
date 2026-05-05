@@ -2131,7 +2131,6 @@ export type CODE_FILE_PATH_TYPE = string;
  *
  * Aliases: {@link CODE_FUNCTION_NAME} `code.function.name`
  *
- * @deprecated Use {@link CODE_FUNCTION_NAME} (code.function.name) instead
  * @example "server_request"
  */
 export const CODE_FUNCTION = 'code.function';
@@ -2144,7 +2143,7 @@ export type CODE_FUNCTION_TYPE = string;
 // Path: model/attributes/code/code__function__name.json
 
 /**
- * The method or function name, or equivalent (usually rightmost part of the code unit's name). `code.function.name`
+ * The method or function fully-qualified name without arguments. `code.function.name`
  *
  * Attribute Value Type: `string` {@link CODE_FUNCTION_NAME_TYPE}
  *
@@ -2219,7 +2218,6 @@ export type CODE_LINE_NUMBER_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  *
- * @deprecated Use {@link CODE_FUNCTION_NAME} (code.function.name) instead - code.function.name should include the namespace.
  * @example "http.handler"
  */
 export const CODE_NAMESPACE = 'code.namespace';
@@ -2588,6 +2586,26 @@ export const DB_REDIS_CONNECTION = 'db.redis.connection';
  * Type for {@link DB_REDIS_CONNECTION} db.redis.connection
  */
 export type DB_REDIS_CONNECTION_TYPE = string;
+
+// Path: model/attributes/db/db__redis__key.json
+
+/**
+ * The key the Redis command is operating on. `db.redis.key`
+ *
+ * Attribute Value Type: `string` {@link DB_REDIS_KEY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "user:2047:city"
+ */
+export const DB_REDIS_KEY = 'db.redis.key';
+
+/**
+ * Type for {@link DB_REDIS_KEY} db.redis.key
+ */
+export type DB_REDIS_KEY_TYPE = string;
 
 // Path: model/attributes/db/db__redis__parameters.json
 
@@ -5307,7 +5325,7 @@ export type HTTP_HOST_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link HTTP_REQUEST_METHOD} `http.request.method`
+ * Aliases: {@link HTTP_REQUEST_METHOD} `http.request.method`, {@link _HTTP_REQUEST_METHOD} `http.request_method`, {@link METHOD} `method`
  *
  * @deprecated Use {@link HTTP_REQUEST_METHOD} (http.request.method) instead
  * @example "GET"
@@ -5338,6 +5356,26 @@ export const HTTP_QUERY = 'http.query';
  * Type for {@link HTTP_QUERY} http.query
  */
 export type HTTP_QUERY_TYPE = string;
+
+// Path: model/attributes/http/http__request__body__data.json
+
+/**
+ * HTTP request body data. Can be given as string or structural data of any format. `http.request.body.data`
+ *
+ * Attribute Value Type: `string` {@link HTTP_REQUEST_BODY_DATA_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "[{\"role\": \"user\", \"message\": \"hello\"}]"
+ */
+export const HTTP_REQUEST_BODY_DATA = 'http.request.body.data';
+
+/**
+ * Type for {@link HTTP_REQUEST_BODY_DATA} http.request.body.data
+ */
+export type HTTP_REQUEST_BODY_DATA_TYPE = string;
 
 // Path: model/attributes/http/http__request__connection_end.json
 
@@ -5472,7 +5510,7 @@ export type HTTP_REQUEST_HEADER_KEY_TYPE = Array<string>;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link METHOD} `method`, {@link HTTP_METHOD} `http.method`
+ * Aliases: {@link METHOD} `method`, {@link HTTP_METHOD} `http.method`, {@link _HTTP_REQUEST_METHOD} `http.request_method`
  *
  * @example "GET"
  */
@@ -5482,6 +5520,29 @@ export const HTTP_REQUEST_METHOD = 'http.request.method';
  * Type for {@link HTTP_REQUEST_METHOD} http.request.method
  */
 export type HTTP_REQUEST_METHOD_TYPE = string;
+
+// Path: model/attributes/http/http__request_method.json
+
+/**
+ * The HTTP method used. `http.request_method`
+ *
+ * Attribute Value Type: `string` {@link _HTTP_REQUEST_METHOD_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link METHOD} `method`, {@link HTTP_METHOD} `http.method`, {@link HTTP_REQUEST_METHOD} `http.request.method`
+ *
+ * @deprecated Use {@link HTTP_REQUEST_METHOD} (http.request.method) instead
+ * @example "GET"
+ */
+export const _HTTP_REQUEST_METHOD = 'http.request_method';
+
+/**
+ * Type for {@link _HTTP_REQUEST_METHOD} http.request_method
+ */
+export type _HTTP_REQUEST_METHOD_TYPE = string;
 
 // Path: model/attributes/http/http__request__redirect_end.json
 
@@ -7125,6 +7186,26 @@ export const MDC_KEY = 'mdc.<key>';
  */
 export type MDC_KEY_TYPE = string;
 
+// Path: model/attributes/messaging/messaging__batch__message_count.json
+
+/**
+ * The number of messages sent, received, or processed in the scope of the batching operation. `messaging.batch.message_count`
+ *
+ * Attribute Value Type: `number` {@link MESSAGING_BATCH_MESSAGE_COUNT_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example 10
+ */
+export const MESSAGING_BATCH_MESSAGE_COUNT = 'messaging.batch.message_count';
+
+/**
+ * Type for {@link MESSAGING_BATCH_MESSAGE_COUNT} messaging.batch.message_count
+ */
+export type MESSAGING_BATCH_MESSAGE_COUNT_TYPE = number;
+
 // Path: model/attributes/messaging/messaging__destination__connection.json
 
 /**
@@ -7316,7 +7397,7 @@ export type MESSAGING_SYSTEM_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link HTTP_REQUEST_METHOD} `http.request.method`
+ * Aliases: {@link HTTP_REQUEST_METHOD} `http.request.method`, {@link _HTTP_REQUEST_METHOD} `http.request_method`, {@link HTTP_METHOD} `http.method`
  *
  * @deprecated Use {@link HTTP_REQUEST_METHOD} (http.request.method) instead
  * @example "GET"
@@ -7327,6 +7408,26 @@ export const METHOD = 'method';
  * Type for {@link METHOD} method
  */
 export type METHOD_TYPE = string;
+
+// Path: model/attributes/middleware/middleware__name.json
+
+/**
+ * The name of the middleware. `middleware.name`
+ *
+ * Attribute Value Type: `string` {@link MIDDLEWARE_NAME_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "AuthenticationMiddleware"
+ */
+export const MIDDLEWARE_NAME = 'middleware.name';
+
+/**
+ * Type for {@link MIDDLEWARE_NAME} middleware.name
+ */
+export type MIDDLEWARE_NAME_TYPE = string;
 
 // Path: model/attributes/navigation/navigation__type.json
 
@@ -8395,6 +8496,26 @@ export const PREVIOUS_ROUTE = 'previous_route';
  * Type for {@link PREVIOUS_ROUTE} previous_route
  */
 export type PREVIOUS_ROUTE_TYPE = string;
+
+// Path: model/attributes/process/process__command_args.json
+
+/**
+ * All the command arguments (including the command/executable itself) as received by the process. `process.command_args`
+ *
+ * Attribute Value Type: `Array<string>` {@link PROCESS_COMMAND_ARGS_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example ["cmd/otecol","--config=config.yaml"]
+ */
+export const PROCESS_COMMAND_ARGS = 'process.command_args';
+
+/**
+ * Type for {@link PROCESS_COMMAND_ARGS} process.command_args
+ */
+export type PROCESS_COMMAND_ARGS_TYPE = Array<string>;
 
 // Path: model/attributes/process/process__executable__name.json
 
@@ -9498,6 +9619,26 @@ export const SENTRY_PROFILER_ID = 'sentry.profiler_id';
  */
 export type SENTRY_PROFILER_ID_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__profile_id.json
+
+/**
+ * The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling. `sentry.profile_id`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_PROFILE_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "123e4567e89b12d3a456426614174000"
+ */
+export const SENTRY_PROFILE_ID = 'sentry.profile_id';
+
+/**
+ * Type for {@link SENTRY_PROFILE_ID} sentry.profile_id
+ */
+export type SENTRY_PROFILE_ID_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__release.json
 
 /**
@@ -9699,6 +9840,8 @@ export type _SENTRY_SEGMENT_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link SENTRY_TRANSACTION} `sentry.transaction`, {@link TRANSACTION} `transaction`
+ *
  * @example "GET /user"
  */
 export const SENTRY_SEGMENT_NAME = 'sentry.segment.name';
@@ -9861,8 +10004,9 @@ export type SENTRY_TRACE_PARENT_SPAN_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link TRANSACTION} `transaction`
+ * Aliases: {@link SENTRY_SEGMENT_NAME} `sentry.segment.name`, {@link TRANSACTION} `transaction`
  *
+ * @deprecated Use {@link SENTRY_SEGMENT_NAME} (sentry.segment.name) instead - This attribute is being deprecated in favor of sentry.segment.name
  * @example "GET /"
  */
 export const SENTRY_TRANSACTION = 'sentry.transaction';
@@ -10075,9 +10219,9 @@ export type TIME_TO_INITIAL_DISPLAY_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link SENTRY_TRANSACTION} `sentry.transaction`
+ * Aliases: {@link SENTRY_SEGMENT_NAME} `sentry.segment.name`, {@link SENTRY_TRANSACTION} `sentry.transaction`
  *
- * @deprecated Use {@link SENTRY_TRANSACTION} (sentry.transaction) instead
+ * @deprecated Use {@link SENTRY_SEGMENT_NAME} (sentry.segment.name) instead
  * @example "GET /"
  */
 export const TRANSACTION = 'transaction';
@@ -11068,6 +11212,26 @@ export const VERCEL_LOG_TYPE = 'vercel.log_type';
  */
 export type VERCEL_LOG_TYPE_TYPE = string;
 
+// Path: model/attributes/vercel/vercel__path.json
+
+/**
+ * Function or dynamic path of the request in Vercel. `vercel.path`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_PATH_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "/dynamic/[route].json"
+ */
+export const VERCEL_PATH = 'vercel.path';
+
+/**
+ * Type for {@link VERCEL_PATH} vercel.path
+ */
+export type VERCEL_PATH_TYPE = string;
+
 // Path: model/attributes/vercel/vercel__project_id.json
 
 /**
@@ -11727,6 +11891,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [DB_QUERY_SUMMARY]: 'string',
   [DB_QUERY_TEXT]: 'string',
   [DB_REDIS_CONNECTION]: 'string',
+  [DB_REDIS_KEY]: 'string',
   [DB_REDIS_PARAMETERS]: 'string[]',
   [DB_SQL_BINDINGS]: 'string[]',
   [DB_STATEMENT]: 'string',
@@ -11858,6 +12023,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [HTTP_HOST]: 'string',
   [HTTP_METHOD]: 'string',
   [HTTP_QUERY]: 'string',
+  [HTTP_REQUEST_BODY_DATA]: 'string',
   [HTTP_REQUEST_CONNECTION_END]: 'double',
   [HTTP_REQUEST_CONNECT_START]: 'double',
   [HTTP_REQUEST_DOMAIN_LOOKUP_END]: 'double',
@@ -11865,6 +12031,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [HTTP_REQUEST_FETCH_START]: 'double',
   [HTTP_REQUEST_HEADER_KEY]: 'string[]',
   [HTTP_REQUEST_METHOD]: 'string',
+  [_HTTP_REQUEST_METHOD]: 'string',
   [HTTP_REQUEST_REDIRECT_END]: 'double',
   [HTTP_REQUEST_REDIRECT_START]: 'double',
   [HTTP_REQUEST_REQUEST_START]: 'double',
@@ -11944,6 +12111,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [MCP_TOOL_RESULT_IS_ERROR]: 'boolean',
   [MCP_TRANSPORT]: 'string',
   [MDC_KEY]: 'string',
+  [MESSAGING_BATCH_MESSAGE_COUNT]: 'integer',
   [MESSAGING_DESTINATION_CONNECTION]: 'string',
   [MESSAGING_DESTINATION_NAME]: 'string',
   [MESSAGING_MESSAGE_BODY_SIZE]: 'integer',
@@ -11954,6 +12122,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [MESSAGING_OPERATION_TYPE]: 'string',
   [MESSAGING_SYSTEM]: 'string',
   [METHOD]: 'string',
+  [MIDDLEWARE_NAME]: 'string',
   [NAVIGATION_TYPE]: 'string',
   [NEL_ELAPSED_TIME]: 'integer',
   [NEL_PHASE]: 'string',
@@ -12004,6 +12173,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [PERFORMANCE_ACTIVATIONSTART]: 'double',
   [PERFORMANCE_TIMEORIGIN]: 'double',
   [PREVIOUS_ROUTE]: 'string',
+  [PROCESS_COMMAND_ARGS]: 'string[]',
   [PROCESS_EXECUTABLE_NAME]: 'string',
   [PROCESS_PID]: 'integer',
   [PROCESS_RUNTIME_DESCRIPTION]: 'string',
@@ -12058,6 +12228,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_ORIGIN]: 'string',
   [SENTRY_PLATFORM]: 'string',
   [SENTRY_PROFILER_ID]: 'string',
+  [SENTRY_PROFILE_ID]: 'string',
   [SENTRY_RELEASE]: 'string',
   [SENTRY_REPLAY_ID]: 'string',
   [SENTRY_REPLAY_IS_BUFFERING]: 'boolean',
@@ -12134,6 +12305,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [VERCEL_JA3_DIGEST]: 'string',
   [VERCEL_JA4_DIGEST]: 'string',
   [VERCEL_LOG_TYPE]: 'string',
+  [VERCEL_PATH]: 'string',
   [VERCEL_PROJECT_ID]: 'string',
   [VERCEL_PROJECT_NAME]: 'string',
   [VERCEL_PROXY_CACHE_ID]: 'string',
@@ -12280,6 +12452,7 @@ export type AttributeName =
   | typeof DB_QUERY_SUMMARY
   | typeof DB_QUERY_TEXT
   | typeof DB_REDIS_CONNECTION
+  | typeof DB_REDIS_KEY
   | typeof DB_REDIS_PARAMETERS
   | typeof DB_SQL_BINDINGS
   | typeof DB_STATEMENT
@@ -12411,6 +12584,7 @@ export type AttributeName =
   | typeof HTTP_HOST
   | typeof HTTP_METHOD
   | typeof HTTP_QUERY
+  | typeof HTTP_REQUEST_BODY_DATA
   | typeof HTTP_REQUEST_CONNECTION_END
   | typeof HTTP_REQUEST_CONNECT_START
   | typeof HTTP_REQUEST_DOMAIN_LOOKUP_END
@@ -12418,6 +12592,7 @@ export type AttributeName =
   | typeof HTTP_REQUEST_FETCH_START
   | typeof HTTP_REQUEST_HEADER_KEY
   | typeof HTTP_REQUEST_METHOD
+  | typeof _HTTP_REQUEST_METHOD
   | typeof HTTP_REQUEST_REDIRECT_END
   | typeof HTTP_REQUEST_REDIRECT_START
   | typeof HTTP_REQUEST_REQUEST_START
@@ -12497,6 +12672,7 @@ export type AttributeName =
   | typeof MCP_TOOL_RESULT_IS_ERROR
   | typeof MCP_TRANSPORT
   | typeof MDC_KEY
+  | typeof MESSAGING_BATCH_MESSAGE_COUNT
   | typeof MESSAGING_DESTINATION_CONNECTION
   | typeof MESSAGING_DESTINATION_NAME
   | typeof MESSAGING_MESSAGE_BODY_SIZE
@@ -12507,6 +12683,7 @@ export type AttributeName =
   | typeof MESSAGING_OPERATION_TYPE
   | typeof MESSAGING_SYSTEM
   | typeof METHOD
+  | typeof MIDDLEWARE_NAME
   | typeof NAVIGATION_TYPE
   | typeof NEL_ELAPSED_TIME
   | typeof NEL_PHASE
@@ -12557,6 +12734,7 @@ export type AttributeName =
   | typeof PERFORMANCE_ACTIVATIONSTART
   | typeof PERFORMANCE_TIMEORIGIN
   | typeof PREVIOUS_ROUTE
+  | typeof PROCESS_COMMAND_ARGS
   | typeof PROCESS_EXECUTABLE_NAME
   | typeof PROCESS_PID
   | typeof PROCESS_RUNTIME_DESCRIPTION
@@ -12611,6 +12789,7 @@ export type AttributeName =
   | typeof SENTRY_ORIGIN
   | typeof SENTRY_PLATFORM
   | typeof SENTRY_PROFILER_ID
+  | typeof SENTRY_PROFILE_ID
   | typeof SENTRY_RELEASE
   | typeof SENTRY_REPLAY_ID
   | typeof SENTRY_REPLAY_IS_BUFFERING
@@ -12687,6 +12866,7 @@ export type AttributeName =
   | typeof VERCEL_JA3_DIGEST
   | typeof VERCEL_JA4_DIGEST
   | typeof VERCEL_LOG_TYPE
+  | typeof VERCEL_PATH
   | typeof VERCEL_PROJECT_ID
   | typeof VERCEL_PROJECT_NAME
   | typeof VERCEL_PROXY_CACHE_ID
@@ -14058,14 +14238,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'server_request',
-    deprecation: {
-      replacement: 'code.function.name',
-    },
     aliases: [CODE_FUNCTION_NAME],
     changelog: [{ version: '0.1.0', prs: [61, 74] }, { version: '0.0.0' }],
   },
   [CODE_FUNCTION_NAME]: {
-    brief: "The method or function name, or equivalent (usually rightmost part of the code unit's name).",
+    brief: 'The method or function fully-qualified name without arguments.',
     type: 'string',
     pii: {
       isPii: 'maybe',
@@ -14111,10 +14288,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'http.handler',
-    deprecation: {
-      replacement: 'code.function.name',
-      reason: 'code.function.name should include the namespace.',
-    },
     changelog: [{ version: '0.1.0', prs: [61, 74] }, { version: '0.0.0' }],
   },
   [CONNECTIONTYPE]: {
@@ -14327,6 +14500,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'my-redis-instance',
     sdks: ['php-laravel'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+  },
+  [DB_REDIS_KEY]: {
+    brief: 'The key the Redis command is operating on.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'user:2047:city',
+    sdks: ['python'],
+    changelog: [{ version: '0.6.0', prs: [326], description: 'Added db.redis.key attribute' }],
   },
   [DB_REDIS_PARAMETERS]: {
     brief: 'The array of command parameters given to a redis command.',
@@ -14630,7 +14814,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: true,
     sdks: ['sentry.cocoa'],
-    changelog: [{ version: 'next', prs: [314], description: 'Added device.low_power_mode attribute' }],
+    changelog: [{ version: '0.6.0', prs: [314], description: 'Added device.low_power_mode attribute' }],
   },
   [DEVICE_MANUFACTURER]: {
     brief: 'The manufacturer of the device.',
@@ -15982,7 +16166,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'http.request.method',
     },
-    aliases: [HTTP_REQUEST_METHOD],
+    aliases: [HTTP_REQUEST_METHOD, _HTTP_REQUEST_METHOD, METHOD],
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
   [HTTP_QUERY]: {
@@ -15997,6 +16181,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '?foo=bar&bar=baz',
     changelog: [{ version: '0.0.0' }],
+  },
+  [HTTP_REQUEST_BODY_DATA]: {
+    brief: 'HTTP request body data. Can be given as string or structural data of any format.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '[{"role": "user", "message": "hello"}]',
+    changelog: [{ version: '0.6.0', prs: [336], description: 'Added http.request.body.data attribute' }],
   },
   [HTTP_REQUEST_CONNECTION_END]: {
     brief:
@@ -16080,8 +16274,22 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'GET',
-    aliases: [METHOD, HTTP_METHOD],
+    aliases: [METHOD, HTTP_METHOD, _HTTP_REQUEST_METHOD],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+  },
+  [_HTTP_REQUEST_METHOD]: {
+    brief: 'The HTTP method used.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'GET',
+    deprecation: {
+      replacement: 'http.request.method',
+    },
+    aliases: [METHOD, HTTP_METHOD, HTTP_REQUEST_METHOD],
+    changelog: [{ version: '0.6.0', prs: [343], description: 'Added http.request_method attribute' }],
   },
   [HTTP_REQUEST_REDIRECT_END]: {
     brief:
@@ -17037,6 +17245,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['java', 'java.logback', 'java.jul', 'java.log4j2'],
     changelog: [{ version: '0.3.0', prs: [176] }],
   },
+  [MESSAGING_BATCH_MESSAGE_COUNT]: {
+    brief: 'The number of messages sent, received, or processed in the scope of the batching operation.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 10,
+    sdks: ['javascript-cloudflare'],
+    changelog: [{ version: '0.6.0', prs: [341], description: 'Added messaging.batch.message_count attribute' }],
+  },
   [MESSAGING_DESTINATION_CONNECTION]: {
     brief: 'The message destination connection.',
     type: 'string',
@@ -17146,9 +17365,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'http.request.method',
     },
-    aliases: [HTTP_REQUEST_METHOD],
+    aliases: [HTTP_REQUEST_METHOD, _HTTP_REQUEST_METHOD, HTTP_METHOD],
     sdks: ['javascript-browser', 'javascript-node'],
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
+  },
+  [MIDDLEWARE_NAME]: {
+    brief: 'The name of the middleware.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'AuthenticationMiddleware',
+    sdks: ['python'],
+    changelog: [{ version: '0.6.0', prs: [336], description: 'Added middleware.name attribute' }],
   },
   [NAVIGATION_TYPE]: {
     brief: 'The type of navigation done by a client-side router.',
@@ -17776,6 +18006,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['javascript-reactnative'],
     changelog: [{ version: '0.1.0', prs: [74] }, { version: '0.0.0' }],
   },
+  [PROCESS_COMMAND_ARGS]: {
+    brief: 'All the command arguments (including the command/executable itself) as received by the process.',
+    type: 'string[]',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: ['cmd/otecol', '--config=config.yaml'],
+    sdks: ['python'],
+    changelog: [{ version: '0.6.0', prs: [327], description: 'Added process.command_args attribute' }],
+  },
   [PROCESS_EXECUTABLE_NAME]: {
     brief: 'The name of the executable that started the process.',
     type: 'string',
@@ -18368,6 +18609,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '18779b64dd35d1a538e7ce2dd2d3fad3',
     changelog: [{ version: '0.4.0', prs: [242] }],
   },
+  [SENTRY_PROFILE_ID]: {
+    brief:
+      'The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '123e4567e89b12d3a456426614174000',
+    changelog: [{ version: '0.6.0', prs: [344], description: 'Added sentry.profile_id attribute' }],
+  },
   [SENTRY_RELEASE]: {
     brief: 'The sentry release.',
     type: 'string',
@@ -18480,7 +18732,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'GET /user',
-    changelog: [{ version: '0.1.0', prs: [104] }],
+    aliases: [SENTRY_TRANSACTION, TRANSACTION],
+    changelog: [
+      { version: '0.6.0', prs: [345], description: 'Added sentry.transaction and transaction aliases' },
+      { version: '0.1.0', prs: [104] },
+    ],
   },
   [SENTRY_SERVER_SAMPLE_RATE]: {
     brief: 'Rate at which a span was sampled in Relay.',
@@ -18573,8 +18829,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'GET /',
-    aliases: [TRANSACTION],
-    changelog: [{ version: '0.0.0' }],
+    deprecation: {
+      replacement: 'sentry.segment.name',
+      reason: 'This attribute is being deprecated in favor of sentry.segment.name',
+    },
+    aliases: [SENTRY_SEGMENT_NAME, TRANSACTION],
+    changelog: [
+      { version: '0.6.0', prs: [345], description: 'Deprecated sentry.transaction in favor of sentry.segment.name' },
+      { version: '0.0.0' },
+    ],
   },
   [SERVER_ADDRESS]: {
     brief:
@@ -18698,10 +18961,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'GET /',
     deprecation: {
-      replacement: 'sentry.transaction',
+      replacement: 'sentry.segment.name',
     },
-    aliases: [SENTRY_TRANSACTION],
-    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
+    aliases: [SENTRY_SEGMENT_NAME, SENTRY_TRANSACTION],
+    changelog: [
+      {
+        version: '0.6.0',
+        prs: [345],
+        description: 'Updated transaction deprecation replacement to sentry.segment.name',
+      },
+      { version: '0.1.0', prs: [61, 127] },
+      { version: '0.0.0' },
+    ],
   },
   [TTFB]: {
     brief: 'The value of the recorded Time To First Byte (TTFB) web vital in milliseconds',
@@ -19224,6 +19495,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'stdout',
     changelog: [{ version: '0.2.0', prs: [163] }],
   },
+  [VERCEL_PATH]: {
+    brief: 'Function or dynamic path of the request in Vercel.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '/dynamic/[route].json',
+    changelog: [{ version: '0.6.0', prs: [349], description: 'Added vercel.path attribute' }],
+  },
   [VERCEL_PROJECT_ID]: {
     brief: 'Identifier for the Vercel project',
     type: 'string',
@@ -19600,6 +19881,7 @@ export type Attributes = {
   [DB_QUERY_SUMMARY]?: DB_QUERY_SUMMARY_TYPE;
   [DB_QUERY_TEXT]?: DB_QUERY_TEXT_TYPE;
   [DB_REDIS_CONNECTION]?: DB_REDIS_CONNECTION_TYPE;
+  [DB_REDIS_KEY]?: DB_REDIS_KEY_TYPE;
   [DB_REDIS_PARAMETERS]?: DB_REDIS_PARAMETERS_TYPE;
   [DB_SQL_BINDINGS]?: DB_SQL_BINDINGS_TYPE;
   [DB_STATEMENT]?: DB_STATEMENT_TYPE;
@@ -19731,6 +20013,7 @@ export type Attributes = {
   [HTTP_HOST]?: HTTP_HOST_TYPE;
   [HTTP_METHOD]?: HTTP_METHOD_TYPE;
   [HTTP_QUERY]?: HTTP_QUERY_TYPE;
+  [HTTP_REQUEST_BODY_DATA]?: HTTP_REQUEST_BODY_DATA_TYPE;
   [HTTP_REQUEST_CONNECTION_END]?: HTTP_REQUEST_CONNECTION_END_TYPE;
   [HTTP_REQUEST_CONNECT_START]?: HTTP_REQUEST_CONNECT_START_TYPE;
   [HTTP_REQUEST_DOMAIN_LOOKUP_END]?: HTTP_REQUEST_DOMAIN_LOOKUP_END_TYPE;
@@ -19738,6 +20021,7 @@ export type Attributes = {
   [HTTP_REQUEST_FETCH_START]?: HTTP_REQUEST_FETCH_START_TYPE;
   [HTTP_REQUEST_HEADER_KEY]?: HTTP_REQUEST_HEADER_KEY_TYPE;
   [HTTP_REQUEST_METHOD]?: HTTP_REQUEST_METHOD_TYPE;
+  [_HTTP_REQUEST_METHOD]?: _HTTP_REQUEST_METHOD_TYPE;
   [HTTP_REQUEST_REDIRECT_END]?: HTTP_REQUEST_REDIRECT_END_TYPE;
   [HTTP_REQUEST_REDIRECT_START]?: HTTP_REQUEST_REDIRECT_START_TYPE;
   [HTTP_REQUEST_REQUEST_START]?: HTTP_REQUEST_REQUEST_START_TYPE;
@@ -19817,6 +20101,7 @@ export type Attributes = {
   [MCP_TOOL_RESULT_IS_ERROR]?: MCP_TOOL_RESULT_IS_ERROR_TYPE;
   [MCP_TRANSPORT]?: MCP_TRANSPORT_TYPE;
   [MDC_KEY]?: MDC_KEY_TYPE;
+  [MESSAGING_BATCH_MESSAGE_COUNT]?: MESSAGING_BATCH_MESSAGE_COUNT_TYPE;
   [MESSAGING_DESTINATION_CONNECTION]?: MESSAGING_DESTINATION_CONNECTION_TYPE;
   [MESSAGING_DESTINATION_NAME]?: MESSAGING_DESTINATION_NAME_TYPE;
   [MESSAGING_MESSAGE_BODY_SIZE]?: MESSAGING_MESSAGE_BODY_SIZE_TYPE;
@@ -19827,6 +20112,7 @@ export type Attributes = {
   [MESSAGING_OPERATION_TYPE]?: MESSAGING_OPERATION_TYPE_TYPE;
   [MESSAGING_SYSTEM]?: MESSAGING_SYSTEM_TYPE;
   [METHOD]?: METHOD_TYPE;
+  [MIDDLEWARE_NAME]?: MIDDLEWARE_NAME_TYPE;
   [NAVIGATION_TYPE]?: NAVIGATION_TYPE_TYPE;
   [NEL_ELAPSED_TIME]?: NEL_ELAPSED_TIME_TYPE;
   [NEL_PHASE]?: NEL_PHASE_TYPE;
@@ -19877,6 +20163,7 @@ export type Attributes = {
   [PERFORMANCE_ACTIVATIONSTART]?: PERFORMANCE_ACTIVATIONSTART_TYPE;
   [PERFORMANCE_TIMEORIGIN]?: PERFORMANCE_TIMEORIGIN_TYPE;
   [PREVIOUS_ROUTE]?: PREVIOUS_ROUTE_TYPE;
+  [PROCESS_COMMAND_ARGS]?: PROCESS_COMMAND_ARGS_TYPE;
   [PROCESS_EXECUTABLE_NAME]?: PROCESS_EXECUTABLE_NAME_TYPE;
   [PROCESS_PID]?: PROCESS_PID_TYPE;
   [PROCESS_RUNTIME_DESCRIPTION]?: PROCESS_RUNTIME_DESCRIPTION_TYPE;
@@ -19931,6 +20218,7 @@ export type Attributes = {
   [SENTRY_ORIGIN]?: SENTRY_ORIGIN_TYPE;
   [SENTRY_PLATFORM]?: SENTRY_PLATFORM_TYPE;
   [SENTRY_PROFILER_ID]?: SENTRY_PROFILER_ID_TYPE;
+  [SENTRY_PROFILE_ID]?: SENTRY_PROFILE_ID_TYPE;
   [SENTRY_RELEASE]?: SENTRY_RELEASE_TYPE;
   [SENTRY_REPLAY_ID]?: SENTRY_REPLAY_ID_TYPE;
   [SENTRY_REPLAY_IS_BUFFERING]?: SENTRY_REPLAY_IS_BUFFERING_TYPE;
@@ -20007,6 +20295,7 @@ export type Attributes = {
   [VERCEL_JA3_DIGEST]?: VERCEL_JA3_DIGEST_TYPE;
   [VERCEL_JA4_DIGEST]?: VERCEL_JA4_DIGEST_TYPE;
   [VERCEL_LOG_TYPE]?: VERCEL_LOG_TYPE_TYPE;
+  [VERCEL_PATH]?: VERCEL_PATH_TYPE;
   [VERCEL_PROJECT_ID]?: VERCEL_PROJECT_ID_TYPE;
   [VERCEL_PROJECT_NAME]?: VERCEL_PROJECT_NAME_TYPE;
   [VERCEL_PROXY_CACHE_ID]?: VERCEL_PROXY_CACHE_ID_TYPE;
