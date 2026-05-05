@@ -4961,6 +4961,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 2
     """
 
+    # Path: model/attributes/rpc/rpc__method.json
+    RPC_METHOD: Literal["rpc.method"] = "rpc.method"
+    """The fully-qualified logical name of the method from the RPC interface perspective.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: Yes
+    Example: "com.example.ExampleService/exampleMethod"
+    """
+
     # Path: model/attributes/rpc/rpc__service.json
     RPC_SERVICE: Literal["rpc.service"] = "rpc.service"
     """The full (logical) name of the service being called, including its package name, if applicable.
@@ -12049,6 +12059,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "rpc.method": AttributeMetadata(
+        brief="The fully-qualified logical name of the method from the RPC interface perspective.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=True,
+        example="com.example.ExampleService/exampleMethod",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[351], description="Added rpc.method attribute"
+            ),
+        ],
+    ),
     "rpc.service": AttributeMetadata(
         brief="The full (logical) name of the service being called, including its package name, if applicable.",
         type=AttributeType.STRING,
@@ -14068,6 +14090,7 @@ Attributes = TypedDict(
         "resource.render_blocking_status": str,
         "route": str,
         "rpc.grpc.status_code": int,
+        "rpc.method": str,
         "rpc.service": str,
         "sentry.action": str,
         "sentry.browser.name": str,
