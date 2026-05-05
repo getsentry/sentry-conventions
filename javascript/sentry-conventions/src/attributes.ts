@@ -1160,7 +1160,7 @@ export type APP_VITALS_START_COLD_VALUE_TYPE = number;
 // Path: model/attributes/app/app__vitals__start__screen.json
 
 /**
- * The screen that is rendered when the app start is complete. This is the screen the user first sees and can interact with after launch. The absence of this attribute on the app start span indicates a background app start where no UI was rendered `app.vitals.start.screen`
+ * The screen that is rendered when the app start is complete. This is the screen the user first sees and can interact with after launch. The absence of this attribute on the app start span indicates a background app start where no UI was rendered. `app.vitals.start.screen`
  *
  * Attribute Value Type: `string` {@link APP_VITALS_START_SCREEN_TYPE}
  *
@@ -13692,7 +13692,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [APP_VITALS_START_SCREEN]: {
     brief:
-      'The screen that is rendered when the app start is complete. This is the screen the user first sees and can interact with after launch. The absence of this attribute on the app start span indicates a background app start where no UI was rendered',
+      'The screen that is rendered when the app start is complete. This is the screen the user first sees and can interact with after launch. The absence of this attribute on the app start span indicates a background app start where no UI was rendered.',
     type: 'string',
     pii: {
       isPii: 'maybe',

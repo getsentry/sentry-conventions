@@ -835,7 +835,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     APP_VITALS_START_SCREEN: Literal["app.vitals.start.screen"] = (
         "app.vitals.start.screen"
     )
-    """The screen that is rendered when the app start is complete. This is the screen the user first sees and can interact with after launch. The absence of this attribute on the app start span indicates a background app start where no UI was rendered
+    """The screen that is rendered when the app start is complete. This is the screen the user first sees and can interact with after launch. The absence of this attribute on the app start span indicates a background app start where no UI was rendered.
 
     Type: str
     Contains PII: maybe
@@ -7309,7 +7309,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "app.vitals.start.screen": AttributeMetadata(
-        brief="The screen that is rendered when the app start is complete. This is the screen the user first sees and can interact with after launch. The absence of this attribute on the app start span indicates a background app start where no UI was rendered",
+        brief="The screen that is rendered when the app start is complete. This is the screen the user first sees and can interact with after launch. The absence of this attribute on the app start span indicates a background app start where no UI was rendered.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
