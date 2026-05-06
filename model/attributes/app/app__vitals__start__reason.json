@@ -1,0 +1,18 @@
+{
+  "key": "app.vitals.start.reason",
+  "brief": "The reason that triggered the app start. Values may differ between iOS and Android.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "push",
+  "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [353],
+      "description": "Added app.vitals.start.reason attribute"
+    }
+  ]
+}

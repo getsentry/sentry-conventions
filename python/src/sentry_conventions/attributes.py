@@ -831,6 +831,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 1234.56
     """
 
+    # Path: model/attributes/app/app__vitals__start__reason.json
+    APP_VITALS_START_REASON: Literal["app.vitals.start.reason"] = (
+        "app.vitals.start.reason"
+    )
+    """The reason that triggered the app start. Values may differ between iOS and Android.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "push"
+    """
+
     # Path: model/attributes/app/app__vitals__start__screen.json
     APP_VITALS_START_SCREEN: Literal["app.vitals.start.screen"] = (
         "app.vitals.start.screen"
@@ -7308,6 +7320,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "app.vitals.start.reason": AttributeMetadata(
+        brief="The reason that triggered the app start. Values may differ between iOS and Android.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="push",
+        sdks=[
+            "sentry.cocoa",
+            "sentry.java.android",
+            "sentry.javascript.react-native",
+            "sentry.dart.flutter",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[353],
+                description="Added app.vitals.start.reason attribute",
+            ),
+        ],
+    ),
     "app.vitals.start.screen": AttributeMetadata(
         brief="The screen that is rendered when the app start is complete. This is the screen the user first sees and can interact with after launch. The absence of this attribute on the app start span indicates a background app start where no UI was rendered.",
         type=AttributeType.STRING,
@@ -13762,6 +13794,7 @@ Attributes = TypedDict(
         "app.vitals.frames.slow.count": int,
         "app.vitals.frames.total.count": int,
         "app.vitals.start.cold.value": float,
+        "app.vitals.start.reason": str,
         "app.vitals.start.screen": str,
         "app.vitals.start.type": str,
         "app.vitals.start.warm.value": float,
