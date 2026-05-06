@@ -835,7 +835,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     APP_VITALS_START_REASON: Literal["app.vitals.start.reason"] = (
         "app.vitals.start.reason"
     )
-    """The reason that triggered the app start. Values may differ between iOS and Android.
+    """The reason that triggered the app start.
 
     Type: str
     Contains PII: maybe
@@ -7321,7 +7321,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "app.vitals.start.reason": AttributeMetadata(
-        brief="The reason that triggered the app start. Values may differ between iOS and Android.",
+        brief="The reason that triggered the app start.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,

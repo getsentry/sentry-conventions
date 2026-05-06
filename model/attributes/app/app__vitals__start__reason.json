@@ -1,6 +1,6 @@
 {
   "key": "app.vitals.start.reason",
-  "brief": "The reason that triggered the app start. Values may differ between iOS and Android.",
+  "brief": "The reason that triggered the app start.",
   "type": "string",
   "pii": {
     "key": "maybe"

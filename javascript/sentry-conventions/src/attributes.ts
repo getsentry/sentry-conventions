@@ -1160,7 +1160,7 @@ export type APP_VITALS_START_COLD_VALUE_TYPE = number;
 // Path: model/attributes/app/app__vitals__start__reason.json
 
 /**
- * The reason that triggered the app start. Values may differ between iOS and Android. `app.vitals.start.reason`
+ * The reason that triggered the app start. `app.vitals.start.reason`
  *
  * Attribute Value Type: `string` {@link APP_VITALS_START_REASON_TYPE}
  *
@@ -13713,7 +13713,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.start.cold.value attribute' }],
   },
   [APP_VITALS_START_REASON]: {
-    brief: 'The reason that triggered the app start. Values may differ between iOS and Android.',
+    brief: 'The reason that triggered the app start.',
     type: 'string',
     pii: {
       isPii: 'maybe',
