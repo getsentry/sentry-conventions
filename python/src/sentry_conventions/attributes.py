@@ -7331,6 +7331,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "sentry.java.android",
             "sentry.javascript.react-native",
             "sentry.dart.flutter",
+            "sentry.dotnet.maui",
         ],
         changelog=[
             ChangelogEntry(
@@ -7351,6 +7352,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "sentry.java.android",
             "sentry.javascript.react-native",
             "sentry.dart.flutter",
+            "sentry.dotnet.maui",
         ],
         changelog=[
             ChangelogEntry(

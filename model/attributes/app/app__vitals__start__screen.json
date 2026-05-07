@@ -7,7 +7,13 @@
   },
   "is_in_otel": false,
   "example": "MainActivity",
-  "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
+  "sdks": [
+    "sentry.cocoa",
+    "sentry.java.android",
+    "sentry.javascript.react-native",
+    "sentry.dart.flutter",
+    "sentry.dotnet.maui"
+  ],
   "changelog": [
     {
       "version": "next",

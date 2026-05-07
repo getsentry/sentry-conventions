@@ -13720,7 +13720,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'push',
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    sdks: [
+      'sentry.cocoa',
+      'sentry.java.android',
+      'sentry.javascript.react-native',
+      'sentry.dart.flutter',
+      'sentry.dotnet.maui',
+    ],
     changelog: [{ version: 'next', prs: [353], description: 'Added app.vitals.start.reason attribute' }],
   },
   [APP_VITALS_START_SCREEN]: {
@@ -13732,7 +13738,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'MainActivity',
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
+    sdks: [
+      'sentry.cocoa',
+      'sentry.java.android',
+      'sentry.javascript.react-native',
+      'sentry.dart.flutter',
+      'sentry.dotnet.maui',
+    ],
     changelog: [{ version: 'next', prs: [353], description: 'Added app.vitals.start.screen attribute' }],
   },
   [APP_VITALS_START_TYPE]: {
