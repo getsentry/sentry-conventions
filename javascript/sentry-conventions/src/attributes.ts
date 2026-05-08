@@ -8856,7 +8856,7 @@ export type RPC_SERVICE_TYPE = string;
 // Path: model/attributes/score/score__[key].json
 
 /**
- * The weighted performance score for a web vital. This is defined as `score.weight.<key> * score.ratio.<key>`. `score.<key>`
+ * The weighted performance score for a web vital. This is defined as `score.weight.<key>` * `score.ratio.<key>`. `score.<key>`
  *
  * Attribute Value Type: `number` {@link SCORE_KEY_TYPE}
  *
@@ -18322,7 +18322,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [SCORE_KEY]: {
     brief:
-      'The weighted performance score for a web vital. This is defined as `score.weight.<key> * score.ratio.<key>`.',
+      'The weighted performance score for a web vital. This is defined as `score.weight.<key>` * `score.ratio.<key>`.',
     type: 'double',
     pii: {
       isPii: 'maybe',

@@ -4998,7 +4998,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/score/score__[key].json
     SCORE_KEY: Literal["score.<key>"] = "score.<key>"
-    """The weighted performance score for a web vital. This is defined as `score.weight.<key> * score.ratio.<key>`.
+    """The weighted performance score for a web vital. This is defined as `score.weight.<key>` * `score.ratio.<key>`.
 
     Type: float
     Contains PII: maybe
@@ -12152,7 +12152,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "score.<key>": AttributeMetadata(
-        brief="The weighted performance score for a web vital. This is defined as `score.weight.<key> * score.ratio.<key>`.",
+        brief="The weighted performance score for a web vital. This is defined as `score.weight.<key>` * `score.ratio.<key>`.",
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,

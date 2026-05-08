@@ -1,6 +1,6 @@
 {
   "key": "score.<key>",
-  "brief": "The weighted performance score for a web vital. This is defined as `score.weight.<key> * score.ratio.<key>`.",
+  "brief": "The weighted performance score for a web vital. This is defined as `score.weight.<key>` * `score.ratio.<key>`.",
   "has_dynamic_suffix": true,
   "type": "double",
   "pii": {
