@@ -1,0 +1,16 @@
+{
+  "key": "score.total",
+  "brief": "The total performance score of a span. This is the sum of individual weighted web vital scores (see `score.<key>`).",
+  "type": "double",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [354],
+      "description": "Added score.total attribute"
+    }
+  ]
+}

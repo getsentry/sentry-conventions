@@ -1,0 +1,18 @@
+{
+  "key": "score.ratio.<key>",
+  "brief": "For a measured web vital value, this is the ratio of values that fall below that value.",
+  "has_dynamic_suffix": true,
+  "type": "double",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "score.ratio.inp=0.7748",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [354],
+      "description": "Added score.ratio.<key> attribute"
+    }
+  ]
+}

@@ -4996,6 +4996,48 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "myService.BestService"
     """
 
+    # Path: model/attributes/score/score__[key].json
+    SCORE_KEY: Literal["score.<key>"] = "score.<key>"
+    """The weighted performance score for a web vital. This is defined as `score.weight.<key> * score.ratio.<key>`.
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Has Dynamic Suffix: true
+    Example: "score.cls=0.1723"
+    """
+
+    # Path: model/attributes/score/score__ratio__[key].json
+    SCORE_RATIO_KEY: Literal["score.ratio.<key>"] = "score.ratio.<key>"
+    """For a measured web vital value, this is the ratio of values that fall below that value.
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Has Dynamic Suffix: true
+    Example: "score.ratio.inp=0.7748"
+    """
+
+    # Path: model/attributes/score/score__total.json
+    SCORE_TOTAL: Literal["score.total"] = "score.total"
+    """The total performance score of a span. This is the sum of individual weighted web vital scores (see `score.<key>`).
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    """
+
+    # Path: model/attributes/score/score__weight__[key].json
+    SCORE_WEIGHT_KEY: Literal["score.weight.<key>"] = "score.weight.<key>"
+    """The relative weight of a web vital in a span's performance score.
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Has Dynamic Suffix: true
+    Example: "score.weight.fcp=0.25"
+    """
+
     # Path: model/attributes/sentry/sentry__action.json
     SENTRY_ACTION: Literal["sentry.action"] = "sentry.action"
     """Used as a generic attribute representing the action depending on the type of span. For instance, this is the database query operation for DB spans, and the request method for HTTP spans.
@@ -12109,6 +12151,60 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "score.<key>": AttributeMetadata(
+        brief="The weighted performance score for a web vital. This is defined as `score.weight.<key> * score.ratio.<key>`.",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        has_dynamic_suffix=True,
+        example="score.cls=0.1723",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[354], description="Added score.<key> attribute"
+            ),
+        ],
+    ),
+    "score.ratio.<key>": AttributeMetadata(
+        brief="For a measured web vital value, this is the ratio of values that fall below that value.",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        has_dynamic_suffix=True,
+        example="score.ratio.inp=0.7748",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[354],
+                description="Added score.ratio.<key> attribute",
+            ),
+        ],
+    ),
+    "score.total": AttributeMetadata(
+        brief="The total performance score of a span. This is the sum of individual weighted web vital scores (see `score.<key>`).",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[354], description="Added score.total attribute"
+            ),
+        ],
+    ),
+    "score.weight.<key>": AttributeMetadata(
+        brief="The relative weight of a web vital in a span's performance score.",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        has_dynamic_suffix=True,
+        example="score.weight.fcp=0.25",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[354],
+                description="Added score.weight.<key> attribute",
+            ),
+        ],
+    ),
     "sentry.action": AttributeMetadata(
         brief="Used as a generic attribute representing the action depending on the type of span. For instance, this is the database query operation for DB spans, and the request method for HTTP spans.",
         type=AttributeType.STRING,
@@ -14143,6 +14239,10 @@ Attributes = TypedDict(
         "route": str,
         "rpc.grpc.status_code": int,
         "rpc.service": str,
+        "score.<key>": float,
+        "score.ratio.<key>": float,
+        "score.total": float,
+        "score.weight.<key>": float,
         "sentry.action": str,
         "sentry.browser.name": str,
         "sentry.browser.version": str,

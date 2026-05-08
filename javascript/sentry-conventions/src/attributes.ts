@@ -8853,6 +8853,90 @@ export const RPC_SERVICE = 'rpc.service';
  */
 export type RPC_SERVICE_TYPE = string;
 
+// Path: model/attributes/score/score__[key].json
+
+/**
+ * The weighted performance score for a web vital. This is defined as `score.weight.<key> * score.ratio.<key>`. `score.<key>`
+ *
+ * Attribute Value Type: `number` {@link SCORE_KEY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Has Dynamic Suffix: true
+ *
+ * @example "score.cls=0.1723"
+ */
+export const SCORE_KEY = 'score.<key>';
+
+/**
+ * Type for {@link SCORE_KEY} score.<key>
+ */
+export type SCORE_KEY_TYPE = number;
+
+// Path: model/attributes/score/score__ratio__[key].json
+
+/**
+ * For a measured web vital value, this is the ratio of values that fall below that value. `score.ratio.<key>`
+ *
+ * Attribute Value Type: `number` {@link SCORE_RATIO_KEY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Has Dynamic Suffix: true
+ *
+ * @example "score.ratio.inp=0.7748"
+ */
+export const SCORE_RATIO_KEY = 'score.ratio.<key>';
+
+/**
+ * Type for {@link SCORE_RATIO_KEY} score.ratio.<key>
+ */
+export type SCORE_RATIO_KEY_TYPE = number;
+
+// Path: model/attributes/score/score__total.json
+
+/**
+ * The total performance score of a span. This is the sum of individual weighted web vital scores (see `score.<key>`). `score.total`
+ *
+ * Attribute Value Type: `number` {@link SCORE_TOTAL_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ */
+export const SCORE_TOTAL = 'score.total';
+
+/**
+ * Type for {@link SCORE_TOTAL} score.total
+ */
+export type SCORE_TOTAL_TYPE = number;
+
+// Path: model/attributes/score/score__weight__[key].json
+
+/**
+ * The relative weight of a web vital in a span's performance score. `score.weight.<key>`
+ *
+ * Attribute Value Type: `number` {@link SCORE_WEIGHT_KEY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Has Dynamic Suffix: true
+ *
+ * @example "score.weight.fcp=0.25"
+ */
+export const SCORE_WEIGHT_KEY = 'score.weight.<key>';
+
+/**
+ * Type for {@link SCORE_WEIGHT_KEY} score.weight.<key>
+ */
+export type SCORE_WEIGHT_KEY_TYPE = number;
+
 // Path: model/attributes/sentry/sentry__action.json
 
 /**
@@ -12210,6 +12294,10 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [ROUTE]: 'string',
   [RPC_GRPC_STATUS_CODE]: 'integer',
   [RPC_SERVICE]: 'string',
+  [SCORE_KEY]: 'double',
+  [SCORE_RATIO_KEY]: 'double',
+  [SCORE_TOTAL]: 'double',
+  [SCORE_WEIGHT_KEY]: 'double',
   [SENTRY_ACTION]: 'string',
   [SENTRY_BROWSER_NAME]: 'string',
   [SENTRY_BROWSER_VERSION]: 'string',
@@ -12772,6 +12860,10 @@ export type AttributeName =
   | typeof ROUTE
   | typeof RPC_GRPC_STATUS_CODE
   | typeof RPC_SERVICE
+  | typeof SCORE_KEY
+  | typeof SCORE_RATIO_KEY
+  | typeof SCORE_TOTAL
+  | typeof SCORE_WEIGHT_KEY
   | typeof SENTRY_ACTION
   | typeof SENTRY_BROWSER_NAME
   | typeof SENTRY_BROWSER_VERSION
@@ -18228,6 +18320,50 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'myService.BestService',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  [SCORE_KEY]: {
+    brief:
+      'The weighted performance score for a web vital. This is defined as `score.weight.<key> * score.ratio.<key>`.',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    hasDynamicSuffix: true,
+    example: 'score.cls=0.1723',
+    changelog: [{ version: 'next', prs: [354], description: 'Added score.<key> attribute' }],
+  },
+  [SCORE_RATIO_KEY]: {
+    brief: 'For a measured web vital value, this is the ratio of values that fall below that value.',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    hasDynamicSuffix: true,
+    example: 'score.ratio.inp=0.7748',
+    changelog: [{ version: 'next', prs: [354], description: 'Added score.ratio.<key> attribute' }],
+  },
+  [SCORE_TOTAL]: {
+    brief:
+      'The total performance score of a span. This is the sum of individual weighted web vital scores (see `score.<key>`).',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    changelog: [{ version: 'next', prs: [354], description: 'Added score.total attribute' }],
+  },
+  [SCORE_WEIGHT_KEY]: {
+    brief: "The relative weight of a web vital in a span's performance score.",
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    hasDynamicSuffix: true,
+    example: 'score.weight.fcp=0.25',
+    changelog: [{ version: 'next', prs: [354], description: 'Added score.weight.<key> attribute' }],
+  },
   [SENTRY_ACTION]: {
     brief:
       'Used as a generic attribute representing the action depending on the type of span. For instance, this is the database query operation for DB spans, and the request method for HTTP spans.',
@@ -20211,6 +20347,10 @@ export type Attributes = {
   [ROUTE]?: ROUTE_TYPE;
   [RPC_GRPC_STATUS_CODE]?: RPC_GRPC_STATUS_CODE_TYPE;
   [RPC_SERVICE]?: RPC_SERVICE_TYPE;
+  [SCORE_KEY]?: SCORE_KEY_TYPE;
+  [SCORE_RATIO_KEY]?: SCORE_RATIO_KEY_TYPE;
+  [SCORE_TOTAL]?: SCORE_TOTAL_TYPE;
+  [SCORE_WEIGHT_KEY]?: SCORE_WEIGHT_KEY_TYPE;
   [SENTRY_ACTION]?: SENTRY_ACTION_TYPE;
   [SENTRY_BROWSER_NAME]?: SENTRY_BROWSER_NAME_TYPE;
   [SENTRY_BROWSER_VERSION]?: SENTRY_BROWSER_VERSION_TYPE;
