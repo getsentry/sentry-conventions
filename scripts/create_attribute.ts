@@ -158,7 +158,7 @@ const createAttribute = async () => {
     validateSchema(attribute);
 
     // Replace angle brackets for Windows path safety
-    let fileKey = key.replaceAll('<', '[').replaceAll('>', ']');
+    const fileKey = key.replaceAll('<', '[').replaceAll('>', ']');
     // Create the directory structure based on the key
     const parts = fileKey.split('.');
     let filePath: string;
