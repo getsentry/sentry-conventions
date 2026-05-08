@@ -175,6 +175,8 @@ const createAttribute = async () => {
       filePath = path.join(dirPath, `${fileName}.json`);
     }
 
+    // Replace angle brackets for Windows path safety
+    filePath = filePath.replaceAll('<', '[').replaceAll('>', ']');
     fs.writeFileSync(filePath, `${JSON.stringify(attribute, null, 2)}\n`);
     log.success(`Successfully created attribute file at: ${filePath}`);
 
