@@ -1,3 +1,41 @@
+## 0.6.0
+
+### New Features ✨
+
+#### Attributes
+
+- Deprecate sentry.transaction by @buenaflor in [#345](https://github.com/getsentry/sentry-conventions/pull/345)
+- Add `vercel.path` by @loewenheim in [#349](https://github.com/getsentry/sentry-conventions/pull/349)
+- Add sentry.profile_id by @loewenheim in [#344](https://github.com/getsentry/sentry-conventions/pull/344)
+- Add http.request_method by @loewenheim in [#343](https://github.com/getsentry/sentry-conventions/pull/343)
+- Add middleware.name attribute by @ericapisani in [#337](https://github.com/getsentry/sentry-conventions/pull/337)
+- Add http.request.body.data attribute by @ericapisani in [#336](https://github.com/getsentry/sentry-conventions/pull/336)
+- Add device.low_power_mode attribute for iOS by @itaybre in [#314](https://github.com/getsentry/sentry-conventions/pull/314)
+
+#### Other
+
+- Add messaging.batch.message_count by @JPeer264 in [#341](https://github.com/getsentry/sentry-conventions/pull/341)
+- Add `db.redis.key` by @sentrivana in [#326](https://github.com/getsentry/sentry-conventions/pull/326)
+- Add `process.command_args` by @sentrivana in [#327](https://github.com/getsentry/sentry-conventions/pull/327)
+
+### Bug Fixes 🐛
+
+- Align `code.function.name` description with OTel by @alexander-alderman-webb in [#335](https://github.com/getsentry/sentry-conventions/pull/335)
+- Don't backfill `sentry.browser.*` attributes by @loewenheim in [#339](https://github.com/getsentry/sentry-conventions/pull/339)
+- Backfill several deprecated attributes by @loewenheim in [#332](https://github.com/getsentry/sentry-conventions/pull/332)
+
+### Internal Changes 🔧
+
+#### Deps
+
+- Bump black from 24.8.0 to 26.3.1 by @tobias-wilfert in [#342](https://github.com/getsentry/sentry-conventions/pull/342)
+- Bump astro from 6.0.2 to 6.1.6 in /docs by @dependabot in [#330](https://github.com/getsentry/sentry-conventions/pull/330)
+
+#### Other
+
+- (attributes) Mark deprecated gen_ai and ai attributes as backfill by @vgrozdanic in [#333](https://github.com/getsentry/sentry-conventions/pull/333)
+- (code) Undeprecate the `code.namespace` and `code.function` attributes by @alexander-alderman-webb in [#340](https://github.com/getsentry/sentry-conventions/pull/340)
+
 ## 0.5.0
 
 ### New Features ✨

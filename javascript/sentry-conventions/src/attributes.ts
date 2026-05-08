@@ -1157,6 +1157,46 @@ export const APP_VITALS_START_COLD_VALUE = 'app.vitals.start.cold.value';
  */
 export type APP_VITALS_START_COLD_VALUE_TYPE = number;
 
+// Path: model/attributes/app/app__vitals__start__reason.json
+
+/**
+ * The reason that triggered the app start. `app.vitals.start.reason`
+ *
+ * Attribute Value Type: `string` {@link APP_VITALS_START_REASON_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "push"
+ */
+export const APP_VITALS_START_REASON = 'app.vitals.start.reason';
+
+/**
+ * Type for {@link APP_VITALS_START_REASON} app.vitals.start.reason
+ */
+export type APP_VITALS_START_REASON_TYPE = string;
+
+// Path: model/attributes/app/app__vitals__start__screen.json
+
+/**
+ * The screen that is rendered when the app start is complete. This is the screen the user first sees and can interact with after launch. The absence of this attribute on the app start span indicates a background app start where no UI was rendered. `app.vitals.start.screen`
+ *
+ * Attribute Value Type: `string` {@link APP_VITALS_START_SCREEN_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "MainActivity"
+ */
+export const APP_VITALS_START_SCREEN = 'app.vitals.start.screen';
+
+/**
+ * Type for {@link APP_VITALS_START_SCREEN} app.vitals.start.screen
+ */
+export type APP_VITALS_START_SCREEN_TYPE = string;
+
 // Path: model/attributes/app/app__vitals__start__type.json
 
 /**
@@ -8557,6 +8597,46 @@ export const PROCESS_RUNTIME_DESCRIPTION = 'process.runtime.description';
  */
 export type PROCESS_RUNTIME_DESCRIPTION_TYPE = string;
 
+// Path: model/attributes/process/process__runtime__engine__name.json
+
+/**
+ * The name of the runtime engine. `process.runtime.engine.name`
+ *
+ * Attribute Value Type: `string` {@link PROCESS_RUNTIME_ENGINE_NAME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "v8"
+ */
+export const PROCESS_RUNTIME_ENGINE_NAME = 'process.runtime.engine.name';
+
+/**
+ * Type for {@link PROCESS_RUNTIME_ENGINE_NAME} process.runtime.engine.name
+ */
+export type PROCESS_RUNTIME_ENGINE_NAME_TYPE = string;
+
+// Path: model/attributes/process/process__runtime__engine__version.json
+
+/**
+ * The version of the runtime engine. `process.runtime.engine.version`
+ *
+ * Attribute Value Type: `string` {@link PROCESS_RUNTIME_ENGINE_VERSION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "12.9.202.13-rusty"
+ */
+export const PROCESS_RUNTIME_ENGINE_VERSION = 'process.runtime.engine.version';
+
+/**
+ * Type for {@link PROCESS_RUNTIME_ENGINE_VERSION} process.runtime.engine.version
+ */
+export type PROCESS_RUNTIME_ENGINE_VERSION_TYPE = string;
+
 // Path: model/attributes/process/process__runtime__name.json
 
 /**
@@ -8792,6 +8872,26 @@ export const RPC_GRPC_STATUS_CODE = 'rpc.grpc.status_code';
  * Type for {@link RPC_GRPC_STATUS_CODE} rpc.grpc.status_code
  */
 export type RPC_GRPC_STATUS_CODE_TYPE = number;
+
+// Path: model/attributes/rpc/rpc__method.json
+
+/**
+ * The fully-qualified logical name of the method from the RPC interface perspective. `rpc.method`
+ *
+ * Attribute Value Type: `string` {@link RPC_METHOD_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "com.example.ExampleService/exampleMethod"
+ */
+export const RPC_METHOD = 'rpc.method';
+
+/**
+ * Type for {@link RPC_METHOD} rpc.method
+ */
+export type RPC_METHOD_TYPE = string;
 
 // Path: model/attributes/rpc/rpc__response__status_code.json
 
@@ -9840,6 +9940,8 @@ export type _SENTRY_SEGMENT_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link SENTRY_TRANSACTION} `sentry.transaction`, {@link TRANSACTION} `transaction`
+ *
  * @example "GET /user"
  */
 export const SENTRY_SEGMENT_NAME = 'sentry.segment.name';
@@ -10002,8 +10104,9 @@ export type SENTRY_TRACE_PARENT_SPAN_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link TRANSACTION} `transaction`
+ * Aliases: {@link SENTRY_SEGMENT_NAME} `sentry.segment.name`, {@link TRANSACTION} `transaction`
  *
+ * @deprecated Use {@link SENTRY_SEGMENT_NAME} (sentry.segment.name) instead - This attribute is being deprecated in favor of sentry.segment.name
  * @example "GET /"
  */
 export const SENTRY_TRANSACTION = 'sentry.transaction';
@@ -10216,9 +10319,9 @@ export type TIME_TO_INITIAL_DISPLAY_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link SENTRY_TRANSACTION} `sentry.transaction`
+ * Aliases: {@link SENTRY_SEGMENT_NAME} `sentry.segment.name`, {@link SENTRY_TRANSACTION} `sentry.transaction`
  *
- * @deprecated Use {@link SENTRY_TRANSACTION} (sentry.transaction) instead
+ * @deprecated Use {@link SENTRY_SEGMENT_NAME} (sentry.segment.name) instead
  * @example "GET /"
  */
 export const TRANSACTION = 'transaction';
@@ -11821,6 +11924,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [APP_VITALS_FRAMES_SLOW_COUNT]: 'integer',
   [APP_VITALS_FRAMES_TOTAL_COUNT]: 'integer',
   [APP_VITALS_START_COLD_VALUE]: 'double',
+  [APP_VITALS_START_REASON]: 'string',
+  [APP_VITALS_START_SCREEN]: 'string',
   [APP_VITALS_START_TYPE]: 'string',
   [APP_VITALS_START_WARM_VALUE]: 'double',
   [APP_VITALS_TTFD_VALUE]: 'double',
@@ -12173,6 +12278,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [PROCESS_EXECUTABLE_NAME]: 'string',
   [PROCESS_PID]: 'integer',
   [PROCESS_RUNTIME_DESCRIPTION]: 'string',
+  [PROCESS_RUNTIME_ENGINE_NAME]: 'string',
+  [PROCESS_RUNTIME_ENGINE_VERSION]: 'string',
   [PROCESS_RUNTIME_NAME]: 'string',
   [PROCESS_RUNTIME_VERSION]: 'string',
   [QUERY_KEY]: 'string',
@@ -12184,6 +12291,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [RESOURCE_RENDER_BLOCKING_STATUS]: 'string',
   [ROUTE]: 'string',
   [RPC_GRPC_STATUS_CODE]: 'integer',
+  [RPC_METHOD]: 'string',
   [RPC_RESPONSE_STATUS_CODE]: 'string',
   [RPC_SERVICE]: 'string',
   [SENTRY_ACTION]: 'string',
@@ -12382,6 +12490,8 @@ export type AttributeName =
   | typeof APP_VITALS_FRAMES_SLOW_COUNT
   | typeof APP_VITALS_FRAMES_TOTAL_COUNT
   | typeof APP_VITALS_START_COLD_VALUE
+  | typeof APP_VITALS_START_REASON
+  | typeof APP_VITALS_START_SCREEN
   | typeof APP_VITALS_START_TYPE
   | typeof APP_VITALS_START_WARM_VALUE
   | typeof APP_VITALS_TTFD_VALUE
@@ -12734,6 +12844,8 @@ export type AttributeName =
   | typeof PROCESS_EXECUTABLE_NAME
   | typeof PROCESS_PID
   | typeof PROCESS_RUNTIME_DESCRIPTION
+  | typeof PROCESS_RUNTIME_ENGINE_NAME
+  | typeof PROCESS_RUNTIME_ENGINE_VERSION
   | typeof PROCESS_RUNTIME_NAME
   | typeof PROCESS_RUNTIME_VERSION
   | typeof QUERY_KEY
@@ -12745,6 +12857,7 @@ export type AttributeName =
   | typeof RESOURCE_RENDER_BLOCKING_STATUS
   | typeof ROUTE
   | typeof RPC_GRPC_STATUS_CODE
+  | typeof RPC_METHOD
   | typeof RPC_RESPONSE_STATUS_CODE
   | typeof RPC_SERVICE
   | typeof SENTRY_ACTION
@@ -13687,6 +13800,41 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.start.cold.value attribute' }],
   },
+  [APP_VITALS_START_REASON]: {
+    brief: 'The reason that triggered the app start.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'push',
+    sdks: [
+      'sentry.cocoa',
+      'sentry.java.android',
+      'sentry.javascript.react-native',
+      'sentry.dart.flutter',
+      'sentry.dotnet.maui',
+    ],
+    changelog: [{ version: 'next', prs: [353], description: 'Added app.vitals.start.reason attribute' }],
+  },
+  [APP_VITALS_START_SCREEN]: {
+    brief:
+      'The screen that is rendered when the app start is complete. This is the screen the user first sees and can interact with after launch. The absence of this attribute on the app start span indicates a background app start where no UI was rendered.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'MainActivity',
+    sdks: [
+      'sentry.cocoa',
+      'sentry.java.android',
+      'sentry.javascript.react-native',
+      'sentry.dart.flutter',
+      'sentry.dotnet.maui',
+    ],
+    changelog: [{ version: 'next', prs: [353], description: 'Added app.vitals.start.screen attribute' }],
+  },
   [APP_VITALS_START_TYPE]: {
     brief: 'The type of app start, for example `cold` or `warm`',
     type: 'string',
@@ -14507,7 +14655,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'user:2047:city',
     sdks: ['python'],
-    changelog: [{ version: 'next', prs: [326], description: 'Added db.redis.key attribute' }],
+    changelog: [{ version: '0.6.0', prs: [326], description: 'Added db.redis.key attribute' }],
   },
   [DB_REDIS_PARAMETERS]: {
     brief: 'The array of command parameters given to a redis command.',
@@ -14811,7 +14959,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: true,
     sdks: ['sentry.cocoa'],
-    changelog: [{ version: 'next', prs: [314], description: 'Added device.low_power_mode attribute' }],
+    changelog: [{ version: '0.6.0', prs: [314], description: 'Added device.low_power_mode attribute' }],
   },
   [DEVICE_MANUFACTURER]: {
     brief: 'The manufacturer of the device.',
@@ -16176,7 +16324,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '[{"role": "user", "message": "hello"}]',
-    changelog: [{ version: 'next', prs: [336], description: 'Added http.request.body.data attribute' }],
+    changelog: [{ version: '0.6.0', prs: [336], description: 'Added http.request.body.data attribute' }],
   },
   [HTTP_REQUEST_CONNECTION_END]: {
     brief:
@@ -16275,7 +16423,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'http.request.method',
     },
     aliases: [METHOD, HTTP_METHOD, HTTP_REQUEST_METHOD],
-    changelog: [{ version: 'next', prs: [343], description: 'Added http.request_method attribute' }],
+    changelog: [{ version: '0.6.0', prs: [343], description: 'Added http.request_method attribute' }],
   },
   [HTTP_REQUEST_REDIRECT_END]: {
     brief:
@@ -17240,7 +17388,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 10,
     sdks: ['javascript-cloudflare'],
-    changelog: [{ version: 'next', prs: [341], description: 'Added messaging.batch.message_count attribute' }],
+    changelog: [{ version: '0.6.0', prs: [341], description: 'Added messaging.batch.message_count attribute' }],
   },
   [MESSAGING_DESTINATION_CONNECTION]: {
     brief: 'The message destination connection.',
@@ -17364,7 +17512,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'AuthenticationMiddleware',
     sdks: ['python'],
-    changelog: [{ version: 'next', prs: [336], description: 'Added middleware.name attribute' }],
+    changelog: [{ version: '0.6.0', prs: [336], description: 'Added middleware.name attribute' }],
   },
   [NAVIGATION_TYPE]: {
     brief: 'The type of navigation done by a client-side router.',
@@ -18001,7 +18149,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: ['cmd/otecol', '--config=config.yaml'],
     sdks: ['python'],
-    changelog: [{ version: 'next', prs: [327], description: 'Added process.command_args attribute' }],
+    changelog: [{ version: '0.6.0', prs: [327], description: 'Added process.command_args attribute' }],
   },
   [PROCESS_EXECUTABLE_NAME]: {
     brief: 'The name of the executable that started the process.',
@@ -18033,6 +18181,26 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 'Eclipse OpenJ9 VM openj9-0.21.0',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+  },
+  [PROCESS_RUNTIME_ENGINE_NAME]: {
+    brief: 'The name of the runtime engine.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'v8',
+    changelog: [{ version: '0.0.0' }],
+  },
+  [PROCESS_RUNTIME_ENGINE_VERSION]: {
+    brief: 'The version of the runtime engine.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '12.9.202.13-rusty',
+    changelog: [{ version: '0.0.0' }],
   },
   [PROCESS_RUNTIME_NAME]: {
     brief: 'The name of the runtime. Equivalent to `name` in the Sentry runtime context.',
@@ -18172,6 +18340,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     example: 2,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+  },
+  [RPC_METHOD]: {
+    brief: 'The fully-qualified logical name of the method from the RPC interface perspective.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'com.example.ExampleService/exampleMethod',
+    changelog: [{ version: 'next', prs: [351], description: 'Added rpc.method attribute' }],
   },
   [RPC_RESPONSE_STATUS_CODE]: {
     brief: 'Status code of the RPC returned by the RPC server or generated by the client.',
@@ -18614,7 +18792,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '123e4567e89b12d3a456426614174000',
-    changelog: [{ version: 'next', prs: [344], description: 'Added sentry.profile_id attribute' }],
+    changelog: [{ version: '0.6.0', prs: [344], description: 'Added sentry.profile_id attribute' }],
   },
   [SENTRY_RELEASE]: {
     brief: 'The sentry release.',
@@ -18728,7 +18906,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'GET /user',
-    changelog: [{ version: '0.1.0', prs: [104] }],
+    aliases: [SENTRY_TRANSACTION, TRANSACTION],
+    changelog: [
+      { version: '0.6.0', prs: [345], description: 'Added sentry.transaction and transaction aliases' },
+      { version: '0.1.0', prs: [104] },
+    ],
   },
   [SENTRY_SERVER_SAMPLE_RATE]: {
     brief: 'Rate at which a span was sampled in Relay.',
@@ -18821,8 +19003,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'GET /',
-    aliases: [TRANSACTION],
-    changelog: [{ version: '0.0.0' }],
+    deprecation: {
+      replacement: 'sentry.segment.name',
+      reason: 'This attribute is being deprecated in favor of sentry.segment.name',
+    },
+    aliases: [SENTRY_SEGMENT_NAME, TRANSACTION],
+    changelog: [
+      { version: '0.6.0', prs: [345], description: 'Deprecated sentry.transaction in favor of sentry.segment.name' },
+      { version: '0.0.0' },
+    ],
   },
   [SERVER_ADDRESS]: {
     brief:
@@ -18946,10 +19135,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'GET /',
     deprecation: {
-      replacement: 'sentry.transaction',
+      replacement: 'sentry.segment.name',
     },
-    aliases: [SENTRY_TRANSACTION],
-    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
+    aliases: [SENTRY_SEGMENT_NAME, SENTRY_TRANSACTION],
+    changelog: [
+      {
+        version: '0.6.0',
+        prs: [345],
+        description: 'Updated transaction deprecation replacement to sentry.segment.name',
+      },
+      { version: '0.1.0', prs: [61, 127] },
+      { version: '0.0.0' },
+    ],
   },
   [TTFB]: {
     brief: 'The value of the recorded Time To First Byte (TTFB) web vital in milliseconds',
@@ -19480,7 +19677,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '/dynamic/[route].json',
-    changelog: [{ version: 'next', prs: [349], description: 'Added vercel.path attribute' }],
+    changelog: [{ version: '0.6.0', prs: [349], description: 'Added vercel.path attribute' }],
   },
   [VERCEL_PROJECT_ID]: {
     brief: 'Identifier for the Vercel project',
@@ -19791,6 +19988,8 @@ export type Attributes = {
   [APP_VITALS_FRAMES_SLOW_COUNT]?: APP_VITALS_FRAMES_SLOW_COUNT_TYPE;
   [APP_VITALS_FRAMES_TOTAL_COUNT]?: APP_VITALS_FRAMES_TOTAL_COUNT_TYPE;
   [APP_VITALS_START_COLD_VALUE]?: APP_VITALS_START_COLD_VALUE_TYPE;
+  [APP_VITALS_START_REASON]?: APP_VITALS_START_REASON_TYPE;
+  [APP_VITALS_START_SCREEN]?: APP_VITALS_START_SCREEN_TYPE;
   [APP_VITALS_START_TYPE]?: APP_VITALS_START_TYPE_TYPE;
   [APP_VITALS_START_WARM_VALUE]?: APP_VITALS_START_WARM_VALUE_TYPE;
   [APP_VITALS_TTFD_VALUE]?: APP_VITALS_TTFD_VALUE_TYPE;
@@ -20143,6 +20342,8 @@ export type Attributes = {
   [PROCESS_EXECUTABLE_NAME]?: PROCESS_EXECUTABLE_NAME_TYPE;
   [PROCESS_PID]?: PROCESS_PID_TYPE;
   [PROCESS_RUNTIME_DESCRIPTION]?: PROCESS_RUNTIME_DESCRIPTION_TYPE;
+  [PROCESS_RUNTIME_ENGINE_NAME]?: PROCESS_RUNTIME_ENGINE_NAME_TYPE;
+  [PROCESS_RUNTIME_ENGINE_VERSION]?: PROCESS_RUNTIME_ENGINE_VERSION_TYPE;
   [PROCESS_RUNTIME_NAME]?: PROCESS_RUNTIME_NAME_TYPE;
   [PROCESS_RUNTIME_VERSION]?: PROCESS_RUNTIME_VERSION_TYPE;
   [QUERY_KEY]?: QUERY_KEY_TYPE;
@@ -20154,6 +20355,7 @@ export type Attributes = {
   [RESOURCE_RENDER_BLOCKING_STATUS]?: RESOURCE_RENDER_BLOCKING_STATUS_TYPE;
   [ROUTE]?: ROUTE_TYPE;
   [RPC_GRPC_STATUS_CODE]?: RPC_GRPC_STATUS_CODE_TYPE;
+  [RPC_METHOD]?: RPC_METHOD_TYPE;
   [RPC_RESPONSE_STATUS_CODE]?: RPC_RESPONSE_STATUS_CODE_TYPE;
   [RPC_SERVICE]?: RPC_SERVICE_TYPE;
   [SENTRY_ACTION]?: SENTRY_ACTION_TYPE;

@@ -498,11 +498,16 @@
       "is_in_otel": false,
       "example": "GET /",
       "deprecation": {
-        "_status": null,
-        "replacement": "sentry.transaction"
+        "_status": "backfill",
+        "replacement": "sentry.segment.name"
       },
-      "alias": ["sentry.transaction"],
+      "alias": ["sentry.segment.name", "sentry.transaction"],
       "changelog": [
+        {
+          "version": "0.6.0",
+          "prs": [345],
+          "description": "Updated transaction deprecation replacement to sentry.segment.name"
+        },
         {
           "version": "0.1.0",
           "prs": [61, 127]
@@ -1880,7 +1885,7 @@
       "example": "[{\"name\": \"get_weather\", \"description\": \"Get the weather for a given location\"}, {\"name\": \"get_news\", \"description\": \"Get the news for a given topic\"}]",
       "alias": [],
       "deprecation": {
-        "_status": "backfill",
+        "_status": "normalize",
         "replacement": "gen_ai.tool.definitions"
       },
       "changelog": [
@@ -1905,7 +1910,7 @@
       "example": "[{\"role\": \"system\", \"content\": \"Generate a random number.\"}, {\"role\": \"user\", \"content\": [{\"text\": \"Generate a random number between 0 and 10.\", \"type\": \"text\"}]}, {\"role\": \"tool\", \"content\": {\"toolCallId\": \"1\", \"toolName\": \"Weather\", \"output\": \"rainy\"}}]",
       "alias": ["ai.input_messages"],
       "deprecation": {
-        "_status": "backfill",
+        "_status": "normalize",
         "replacement": "gen_ai.input.messages"
       },
       "changelog": [
@@ -1930,7 +1935,7 @@
       "example": "[\"The weather in Paris is rainy and overcast, with temperatures around 57°F\", \"The weather in London is sunny and warm, with temperatures around 65°F\"]",
       "alias": [],
       "deprecation": {
-        "_status": "backfill",
+        "_status": "normalize",
         "replacement": "gen_ai.output.messages"
       },
       "changelog": [
@@ -1955,7 +1960,7 @@
       "example": "[{\"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]",
       "alias": [],
       "deprecation": {
-        "_status": "backfill",
+        "_status": "normalize",
         "replacement": "gen_ai.output.messages"
       },
       "changelog": [
@@ -1979,7 +1984,7 @@
       "is_in_otel": true,
       "example": "openai",
       "deprecation": {
-        "_status": "backfill",
+        "_status": "normalize",
         "replacement": "gen_ai.provider.name"
       },
       "alias": ["ai.model.provider", "gen_ai.provider.name"],
@@ -2029,7 +2034,7 @@
       "example": "{\"location\": \"Paris\"}",
       "alias": ["gen_ai.tool.call.arguments"],
       "deprecation": {
-        "_status": "backfill",
+        "_status": "normalize",
         "replacement": "gen_ai.tool.call.arguments"
       },
       "changelog": [
@@ -2054,7 +2059,7 @@
       "example": "rainy, 57°F",
       "alias": ["gen_ai.tool.call.result", "gen_ai.tool.output"],
       "deprecation": {
-        "_status": "backfill",
+        "_status": "normalize",
         "replacement": "gen_ai.tool.call.result"
       },
       "changelog": [
@@ -2079,7 +2084,7 @@
       "example": "rainy, 57°F",
       "alias": ["gen_ai.tool.call.result", "gen_ai.tool.message"],
       "deprecation": {
-        "_status": "backfill",
+        "_status": "normalize",
         "replacement": "gen_ai.tool.call.result"
       },
       "changelog": [
@@ -2282,7 +2287,7 @@
       "alias": ["method", "http.method", "http.request.method"],
       "changelog": [
         {
-          "version": "next",
+          "version": "0.6.0",
           "prs": [343],
           "description": "Added http.request_method attribute"
         }
@@ -3286,6 +3291,32 @@
         {
           "version": "0.1.0",
           "prs": [116]
+        }
+      ]
+    },
+    {
+      "key": "sentry.transaction",
+      "brief": "The sentry transaction (segment name).",
+      "type": "string",
+      "pii": {
+        "key": "false"
+      },
+      "is_in_otel": false,
+      "example": "GET /",
+      "deprecation": {
+        "_status": "backfill",
+        "replacement": "sentry.segment.name",
+        "reason": "This attribute is being deprecated in favor of sentry.segment.name"
+      },
+      "alias": ["sentry.segment.name", "transaction"],
+      "changelog": [
+        {
+          "version": "0.6.0",
+          "prs": [345],
+          "description": "Deprecated sentry.transaction in favor of sentry.segment.name"
+        },
+        {
+          "version": "0.0.0"
         }
       ]
     },

@@ -232,6 +232,7 @@ class _AttributeNamesMeta(type):
         "_SENTRY_SEGMENT_ID",
         "SENTRY_SOURCE",
         "SENTRY_TRACE_PARENT_SPAN_ID",
+        "SENTRY_TRANSACTION",
         "TIME_TO_FULL_DISPLAY",
         "TIME_TO_INITIAL_DISPLAY",
         "TRANSACTION",
@@ -828,6 +829,30 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Aliases: app_start_cold
     Example: 1234.56
+    """
+
+    # Path: model/attributes/app/app__vitals__start__reason.json
+    APP_VITALS_START_REASON: Literal["app.vitals.start.reason"] = (
+        "app.vitals.start.reason"
+    )
+    """The reason that triggered the app start.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "push"
+    """
+
+    # Path: model/attributes/app/app__vitals__start__screen.json
+    APP_VITALS_START_SCREEN: Literal["app.vitals.start.screen"] = (
+        "app.vitals.start.screen"
+    )
+    """The screen that is rendered when the app start is complete. This is the screen the user first sees and can interact with after launch. The absence of this attribute on the app start span indicates a background app start where no UI was rendered.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "MainActivity"
     """
 
     # Path: model/attributes/app/app__vitals__start__type.json
@@ -4830,6 +4855,30 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "Eclipse OpenJ9 VM openj9-0.21.0"
     """
 
+    # Path: model/attributes/process/process__runtime__engine__name.json
+    PROCESS_RUNTIME_ENGINE_NAME: Literal["process.runtime.engine.name"] = (
+        "process.runtime.engine.name"
+    )
+    """The name of the runtime engine.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "v8"
+    """
+
+    # Path: model/attributes/process/process__runtime__engine__version.json
+    PROCESS_RUNTIME_ENGINE_VERSION: Literal["process.runtime.engine.version"] = (
+        "process.runtime.engine.version"
+    )
+    """The version of the runtime engine.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "12.9.202.13-rusty"
+    """
+
     # Path: model/attributes/process/process__runtime__name.json
     PROCESS_RUNTIME_NAME: Literal["process.runtime.name"] = "process.runtime.name"
     """The name of the runtime. Equivalent to `name` in the Sentry runtime context.
@@ -4959,6 +5008,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: Yes
     Example: 2
+    """
+
+    # Path: model/attributes/rpc/rpc__method.json
+    RPC_METHOD: Literal["rpc.method"] = "rpc.method"
+    """The fully-qualified logical name of the method from the RPC interface perspective.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: Yes
+    Example: "com.example.ExampleService/exampleMethod"
     """
 
     # Path: model/attributes/rpc/rpc__response__status_code.json
@@ -5506,6 +5565,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Aliases: sentry.transaction, transaction
     Example: "GET /user"
     """
 
@@ -5606,7 +5666,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
-    Aliases: transaction
+    Aliases: sentry.segment.name, transaction
+    DEPRECATED: Use sentry.segment.name instead - This attribute is being deprecated in favor of sentry.segment.name
     Example: "GET /"
     """
 
@@ -5716,8 +5777,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: sentry.transaction
-    DEPRECATED: Use sentry.transaction instead
+    Aliases: sentry.segment.name, sentry.transaction
+    DEPRECATED: Use sentry.segment.name instead
     Example: "GET /"
     """
 
@@ -7305,6 +7366,48 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "app.vitals.start.reason": AttributeMetadata(
+        brief="The reason that triggered the app start.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="push",
+        sdks=[
+            "sentry.cocoa",
+            "sentry.java.android",
+            "sentry.javascript.react-native",
+            "sentry.dart.flutter",
+            "sentry.dotnet.maui",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[353],
+                description="Added app.vitals.start.reason attribute",
+            ),
+        ],
+    ),
+    "app.vitals.start.screen": AttributeMetadata(
+        brief="The screen that is rendered when the app start is complete. This is the screen the user first sees and can interact with after launch. The absence of this attribute on the app start span indicates a background app start where no UI was rendered.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="MainActivity",
+        sdks=[
+            "sentry.cocoa",
+            "sentry.java.android",
+            "sentry.javascript.react-native",
+            "sentry.dart.flutter",
+            "sentry.dotnet.maui",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[353],
+                description="Added app.vitals.start.screen attribute",
+            ),
+        ],
+    ),
     "app.vitals.start.type": AttributeMetadata(
         brief="The type of app start, for example `cold` or `warm`",
         type=AttributeType.STRING,
@@ -8273,7 +8376,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["python"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[326], description="Added db.redis.key attribute"
+                version="0.6.0", prs=[326], description="Added db.redis.key attribute"
             ),
         ],
     ),
@@ -8607,7 +8710,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["sentry.cocoa"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.6.0",
                 prs=[314],
                 description="Added device.low_power_mode attribute",
             ),
@@ -9389,7 +9492,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example='[{"name": "get_weather", "description": "Get the weather for a given location"}, {"name": "get_news", "description": "Get the news for a given topic"}]',
         deprecation=DeprecationInfo(
-            replacement="gen_ai.tool.definitions", status=DeprecationStatus.BACKFILL
+            replacement="gen_ai.tool.definitions", status=DeprecationStatus.NORMALIZE
         ),
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[221]),
@@ -9426,7 +9529,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example='[{"role": "system", "content": "Generate a random number."}, {"role": "user", "content": [{"text": "Generate a random number between 0 and 10.", "type": "text"}]}, {"role": "tool", "content": {"toolCallId": "1", "toolName": "Weather", "output": "rainy"}}]',
         deprecation=DeprecationInfo(
-            replacement="gen_ai.input.messages", status=DeprecationStatus.BACKFILL
+            replacement="gen_ai.input.messages", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["ai.input_messages"],
         changelog=[
@@ -9555,7 +9658,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example='["The weather in Paris is rainy and overcast, with temperatures around 57°F", "The weather in London is sunny and warm, with temperatures around 65°F"]',
         deprecation=DeprecationInfo(
-            replacement="gen_ai.output.messages", status=DeprecationStatus.BACKFILL
+            replacement="gen_ai.output.messages", status=DeprecationStatus.NORMALIZE
         ),
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[221]),
@@ -9590,7 +9693,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example='[{"name": "get_weather", "arguments": {"location": "Paris"}}]',
         deprecation=DeprecationInfo(
-            replacement="gen_ai.output.messages", status=DeprecationStatus.BACKFILL
+            replacement="gen_ai.output.messages", status=DeprecationStatus.NORMALIZE
         ),
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[221]),
@@ -9604,7 +9707,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="openai",
         deprecation=DeprecationInfo(
-            replacement="gen_ai.provider.name", status=DeprecationStatus.BACKFILL
+            replacement="gen_ai.provider.name", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["ai.model.provider", "gen_ai.provider.name"],
         changelog=[
@@ -9689,7 +9792,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example='{"location": "Paris"}',
         deprecation=DeprecationInfo(
-            replacement="gen_ai.tool.call.arguments", status=DeprecationStatus.BACKFILL
+            replacement="gen_ai.tool.call.arguments", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["gen_ai.tool.call.arguments"],
         changelog=[
@@ -9704,7 +9807,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="rainy, 57°F",
         deprecation=DeprecationInfo(
-            replacement="gen_ai.tool.call.result", status=DeprecationStatus.BACKFILL
+            replacement="gen_ai.tool.call.result", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["gen_ai.tool.call.result", "gen_ai.tool.output"],
         changelog=[
@@ -9730,7 +9833,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="rainy, 57°F",
         deprecation=DeprecationInfo(
-            replacement="gen_ai.tool.call.result", status=DeprecationStatus.BACKFILL
+            replacement="gen_ai.tool.call.result", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["gen_ai.tool.call.result", "gen_ai.tool.message"],
         changelog=[
@@ -10003,7 +10106,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example='[{"role": "user", "message": "hello"}]',
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.6.0",
                 prs=[336],
                 description="Added http.request.body.data attribute",
             ),
@@ -10222,7 +10325,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["method", "http.method", "http.request.method"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.6.0",
                 prs=[343],
                 description="Added http.request_method attribute",
             ),
@@ -11087,7 +11190,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["javascript-cloudflare"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.6.0",
                 prs=[341],
                 description="Added messaging.batch.message_count attribute",
             ),
@@ -11222,7 +11325,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["python"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[336], description="Added middleware.name attribute"
+                version="0.6.0",
+                prs=[336],
+                description="Added middleware.name attribute",
             ),
         ],
     ),
@@ -11884,7 +11989,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         sdks=["python"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.6.0",
                 prs=[327],
                 description="Added process.command_args attribute",
             ),
@@ -11920,6 +12025,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="Eclipse OpenJ9 VM openj9-0.21.0",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
+            ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "process.runtime.engine.name": AttributeMetadata(
+        brief="The name of the runtime engine.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="v8",
+        changelog=[
+            ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "process.runtime.engine.version": AttributeMetadata(
+        brief="The version of the runtime engine.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="12.9.202.13-rusty",
+        changelog=[
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -12059,6 +12184,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "rpc.method": AttributeMetadata(
+        brief="The fully-qualified logical name of the method from the RPC interface perspective.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=True,
+        example="com.example.ExampleService/exampleMethod",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[351], description="Added rpc.method attribute"
+            ),
         ],
     ),
     "rpc.response.status_code": AttributeMetadata(
@@ -12484,7 +12621,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="123e4567e89b12d3a456426614174000",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.6.0",
                 prs=[344],
                 description="Added sentry.profile_id attribute",
             ),
@@ -12602,7 +12739,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="GET /user",
+        aliases=["sentry.transaction", "transaction"],
         changelog=[
+            ChangelogEntry(
+                version="0.6.0",
+                prs=[345],
+                description="Added sentry.transaction and transaction aliases",
+            ),
             ChangelogEntry(version="0.1.0", prs=[104]),
         ],
     ),
@@ -12708,8 +12851,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         example="GET /",
-        aliases=["transaction"],
+        deprecation=DeprecationInfo(
+            replacement="sentry.segment.name",
+            reason="This attribute is being deprecated in favor of sentry.segment.name",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["sentry.segment.name", "transaction"],
         changelog=[
+            ChangelogEntry(
+                version="0.6.0",
+                prs=[345],
+                description="Deprecated sentry.transaction in favor of sentry.segment.name",
+            ),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -12850,9 +13003,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="GET /",
-        deprecation=DeprecationInfo(replacement="sentry.transaction"),
-        aliases=["sentry.transaction"],
+        deprecation=DeprecationInfo(
+            replacement="sentry.segment.name", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["sentry.segment.name", "sentry.transaction"],
         changelog=[
+            ChangelogEntry(
+                version="0.6.0",
+                prs=[345],
+                description="Updated transaction deprecation replacement to sentry.segment.name",
+            ),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -13421,7 +13581,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="/dynamic/[route].json",
         changelog=[
             ChangelogEntry(
-                version="next", prs=[349], description="Added vercel.path attribute"
+                version="0.6.0", prs=[349], description="Added vercel.path attribute"
             ),
         ],
     ),
@@ -13728,6 +13888,8 @@ Attributes = TypedDict(
         "app.vitals.frames.slow.count": int,
         "app.vitals.frames.total.count": int,
         "app.vitals.start.cold.value": float,
+        "app.vitals.start.reason": str,
+        "app.vitals.start.screen": str,
         "app.vitals.start.type": str,
         "app.vitals.start.warm.value": float,
         "app.vitals.ttfd.value": float,
@@ -14083,6 +14245,8 @@ Attributes = TypedDict(
         "process.executable.name": str,
         "process.pid": int,
         "process.runtime.description": str,
+        "process.runtime.engine.name": str,
+        "process.runtime.engine.version": str,
         "process.runtime.name": str,
         "process.runtime.version": str,
         "query.<key>": str,
@@ -14094,6 +14258,7 @@ Attributes = TypedDict(
         "resource.render_blocking_status": str,
         "route": str,
         "rpc.grpc.status_code": int,
+        "rpc.method": str,
         "rpc.response.status_code": str,
         "rpc.service": str,
         "sentry.action": str,
