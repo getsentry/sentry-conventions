@@ -8878,7 +8878,7 @@ export type SCORE_KEY_TYPE = number;
 // Path: model/attributes/score/score__ratio__[key].json
 
 /**
- * For a measured web vital value, this is the ratio of values that fall below that value. `score.ratio.<key>`
+ * The score for a web vital, normalized to a number between 0 and 1. `score.ratio.<key>`
  *
  * Attribute Value Type: `number` {@link SCORE_RATIO_KEY_TYPE}
  *
@@ -18333,7 +18333,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: 'next', prs: [355], description: 'Added score.<key> attribute' }],
   },
   [SCORE_RATIO_KEY]: {
-    brief: 'For a measured web vital value, this is the ratio of values that fall below that value.',
+    brief: 'The score for a web vital, normalized to a number between 0 and 1.',
     type: 'double',
     pii: {
       isPii: 'maybe',

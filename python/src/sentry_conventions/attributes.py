@@ -5009,7 +5009,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/score/score__ratio__[key].json
     SCORE_RATIO_KEY: Literal["score.ratio.<key>"] = "score.ratio.<key>"
-    """For a measured web vital value, this is the ratio of values that fall below that value.
+    """The score for a web vital, normalized to a number between 0 and 1.
 
     Type: float
     Contains PII: maybe
@@ -12165,7 +12165,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "score.ratio.<key>": AttributeMetadata(
-        brief="For a measured web vital value, this is the ratio of values that fall below that value.",
+        brief="The score for a web vital, normalized to a number between 0 and 1.",
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,

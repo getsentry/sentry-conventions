@@ -1,6 +1,6 @@
 {
   "key": "score.ratio.<key>",
-  "brief": "For a measured web vital value, this is the ratio of values that fall below that value.",
+  "brief": "The score for a web vital, normalized to a number between 0 and 1.",
   "has_dynamic_suffix": true,
   "type": "double",
   "pii": {
