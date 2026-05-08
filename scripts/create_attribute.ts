@@ -157,13 +157,15 @@ const createAttribute = async () => {
 
     validateSchema(attribute);
 
+    // Replace angle brackets for Windows path safety
+    const fileKey = key.replaceAll('<', '[').replaceAll('>', ']');
     // Create the directory structure based on the key
-    const parts = key.split('.');
+    const parts = fileKey.split('.');
     let filePath: string;
 
     if (parts.length === 1) {
       // Handle simple keys like 'replay_id'
-      filePath = path.join('model', 'attributes', `${key}.json`);
+      filePath = path.join('model', 'attributes', `${fileKey}.json`);
     } else {
       // Handle dotted keys like 'http.route'
       const dirPath = path.join('model', 'attributes', parts[0] ?? '');
