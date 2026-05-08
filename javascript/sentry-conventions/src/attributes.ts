@@ -8873,6 +8873,26 @@ export const RPC_GRPC_STATUS_CODE = 'rpc.grpc.status_code';
  */
 export type RPC_GRPC_STATUS_CODE_TYPE = number;
 
+// Path: model/attributes/rpc/rpc__method.json
+
+/**
+ * The fully-qualified logical name of the method from the RPC interface perspective. `rpc.method`
+ *
+ * Attribute Value Type: `string` {@link RPC_METHOD_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "com.example.ExampleService/exampleMethod"
+ */
+export const RPC_METHOD = 'rpc.method';
+
+/**
+ * Type for {@link RPC_METHOD} rpc.method
+ */
+export type RPC_METHOD_TYPE = string;
+
 // Path: model/attributes/rpc/rpc__service.json
 
 /**
@@ -12251,6 +12271,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [RESOURCE_RENDER_BLOCKING_STATUS]: 'string',
   [ROUTE]: 'string',
   [RPC_GRPC_STATUS_CODE]: 'integer',
+  [RPC_METHOD]: 'string',
   [RPC_SERVICE]: 'string',
   [SENTRY_ACTION]: 'string',
   [SENTRY_BROWSER_NAME]: 'string',
@@ -12815,6 +12836,7 @@ export type AttributeName =
   | typeof RESOURCE_RENDER_BLOCKING_STATUS
   | typeof ROUTE
   | typeof RPC_GRPC_STATUS_CODE
+  | typeof RPC_METHOD
   | typeof RPC_SERVICE
   | typeof SENTRY_ACTION
   | typeof SENTRY_BROWSER_NAME
@@ -18297,6 +18319,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 2,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
+  [RPC_METHOD]: {
+    brief: 'The fully-qualified logical name of the method from the RPC interface perspective.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'com.example.ExampleService/exampleMethod',
+    changelog: [{ version: 'next', prs: [351], description: 'Added rpc.method attribute' }],
+  },
   [RPC_SERVICE]: {
     brief: 'The full (logical) name of the service being called, including its package name, if applicable.',
     type: 'string',
@@ -20291,6 +20323,7 @@ export type Attributes = {
   [RESOURCE_RENDER_BLOCKING_STATUS]?: RESOURCE_RENDER_BLOCKING_STATUS_TYPE;
   [ROUTE]?: ROUTE_TYPE;
   [RPC_GRPC_STATUS_CODE]?: RPC_GRPC_STATUS_CODE_TYPE;
+  [RPC_METHOD]?: RPC_METHOD_TYPE;
   [RPC_SERVICE]?: RPC_SERVICE_TYPE;
   [SENTRY_ACTION]?: SENTRY_ACTION_TYPE;
   [SENTRY_BROWSER_NAME]?: SENTRY_BROWSER_NAME_TYPE;
