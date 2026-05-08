@@ -11,7 +11,7 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [354],
+      "prs": [355],
       "description": "Added score.ratio.<key> attribute"
     }
   ]

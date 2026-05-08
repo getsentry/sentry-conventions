@@ -18330,7 +18330,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     hasDynamicSuffix: true,
     example: 'score.cls=0.1723',
-    changelog: [{ version: 'next', prs: [354], description: 'Added score.<key> attribute' }],
+    changelog: [{ version: 'next', prs: [355], description: 'Added score.<key> attribute' }],
   },
   [SCORE_RATIO_KEY]: {
     brief: 'For a measured web vital value, this is the ratio of values that fall below that value.',
@@ -18341,7 +18341,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     hasDynamicSuffix: true,
     example: 'score.ratio.inp=0.7748',
-    changelog: [{ version: 'next', prs: [354], description: 'Added score.ratio.<key> attribute' }],
+    changelog: [{ version: 'next', prs: [355], description: 'Added score.ratio.<key> attribute' }],
   },
   [SCORE_TOTAL]: {
     brief:
@@ -18351,7 +18351,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
-    changelog: [{ version: 'next', prs: [354], description: 'Added score.total attribute' }],
+    changelog: [{ version: 'next', prs: [355], description: 'Added score.total attribute' }],
   },
   [SCORE_WEIGHT_KEY]: {
     brief: "The relative weight of a web vital in a span's performance score.",
@@ -18362,7 +18362,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     hasDynamicSuffix: true,
     example: 'score.weight.fcp=0.25',
-    changelog: [{ version: 'next', prs: [354], description: 'Added score.weight.<key> attribute' }],
+    changelog: [{ version: 'next', prs: [355], description: 'Added score.weight.<key> attribute' }],
   },
   [SENTRY_ACTION]: {
     brief:

@@ -12160,7 +12160,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="score.cls=0.1723",
         changelog=[
             ChangelogEntry(
-                version="next", prs=[354], description="Added score.<key> attribute"
+                version="next", prs=[355], description="Added score.<key> attribute"
             ),
         ],
     ),
@@ -12174,7 +12174,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[354],
+                prs=[355],
                 description="Added score.ratio.<key> attribute",
             ),
         ],
@@ -12186,7 +12186,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         changelog=[
             ChangelogEntry(
-                version="next", prs=[354], description="Added score.total attribute"
+                version="next", prs=[355], description="Added score.total attribute"
             ),
         ],
     ),
@@ -12200,7 +12200,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[354],
+                prs=[355],
                 description="Added score.weight.<key> attribute",
             ),
         ],
