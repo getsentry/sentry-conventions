@@ -12,7 +12,7 @@
     "replacement": "sentry.segment.name",
     "reason": "This attribute is being deprecated in favor of sentry.segment.name"
   },
-  "alias": ["sentry.segment.name", "transaction"],
+  "alias": ["sentry.span.name", "sentry.segment.name", "transaction"],
   "changelog": [
     {
       "version": "0.6.0",

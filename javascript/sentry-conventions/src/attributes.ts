@@ -5345,7 +5345,7 @@ export type HTTP_HOST_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link HTTP_REQUEST_METHOD} `http.request.method`, {@link _HTTP_REQUEST_METHOD} `http.request_method`, {@link METHOD} `method`
+ * Aliases: {@link HTTP_REQUEST_METHOD} `http.request.method`, {@link _HTTP_REQUEST_METHOD} `http.request_method`, {@link METHOD} `method`, {@link TRANSACTION_METHOD} `transaction.method`
  *
  * @deprecated Use {@link HTTP_REQUEST_METHOD} (http.request.method) instead
  * @example "GET"
@@ -5530,7 +5530,7 @@ export type HTTP_REQUEST_HEADER_KEY_TYPE = Array<string>;
  *
  * Attribute defined in OTEL: Yes
  *
- * Aliases: {@link METHOD} `method`, {@link HTTP_METHOD} `http.method`, {@link _HTTP_REQUEST_METHOD} `http.request_method`
+ * Aliases: {@link METHOD} `method`, {@link HTTP_METHOD} `http.method`, {@link _HTTP_REQUEST_METHOD} `http.request_method`, {@link TRANSACTION_METHOD} `transaction.method`
  *
  * @example "GET"
  */
@@ -5552,7 +5552,7 @@ export type HTTP_REQUEST_METHOD_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link METHOD} `method`, {@link HTTP_METHOD} `http.method`, {@link HTTP_REQUEST_METHOD} `http.request.method`
+ * Aliases: {@link METHOD} `method`, {@link HTTP_METHOD} `http.method`, {@link HTTP_REQUEST_METHOD} `http.request.method`, {@link TRANSACTION_METHOD} `transaction.method`
  *
  * @deprecated Use {@link HTTP_REQUEST_METHOD} (http.request.method) instead
  * @example "GET"
@@ -7417,7 +7417,7 @@ export type MESSAGING_SYSTEM_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link HTTP_REQUEST_METHOD} `http.request.method`, {@link _HTTP_REQUEST_METHOD} `http.request_method`, {@link HTTP_METHOD} `http.method`
+ * Aliases: {@link HTTP_REQUEST_METHOD} `http.request.method`, {@link _HTTP_REQUEST_METHOD} `http.request_method`, {@link HTTP_METHOD} `http.method`, {@link TRANSACTION_METHOD} `transaction.method`
  *
  * @deprecated Use {@link HTTP_REQUEST_METHOD} (http.request.method) instead
  * @example "GET"
@@ -10024,7 +10024,7 @@ export type _SENTRY_SEGMENT_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link SENTRY_TRANSACTION} `sentry.transaction`, {@link TRANSACTION} `transaction`
+ * Aliases: {@link SENTRY_SPAN_NAME} `sentry.span.name`, {@link SENTRY_TRANSACTION} `sentry.transaction`, {@link TRANSACTION} `transaction`
  *
  * @example "GET /user"
  */
@@ -10075,6 +10075,28 @@ export const SENTRY_SOURCE = 'sentry.source';
  * Type for {@link SENTRY_SOURCE} sentry.source
  */
 export type SENTRY_SOURCE_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__span__name.json
+
+/**
+ * The name of a span `sentry.span.name`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_SPAN_NAME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link SENTRY_SEGMENT_NAME} `sentry.segment.name`, {@link SENTRY_TRANSACTION} `sentry.transaction`, {@link TRANSACTION} `transaction`
+ *
+ * @example "GET /user"
+ */
+export const SENTRY_SPAN_NAME = 'sentry.span.name';
+
+/**
+ * Type for {@link SENTRY_SPAN_NAME} sentry.span.name
+ */
+export type SENTRY_SPAN_NAME_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__span__source.json
 
@@ -10188,7 +10210,7 @@ export type SENTRY_TRACE_PARENT_SPAN_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link SENTRY_SEGMENT_NAME} `sentry.segment.name`, {@link TRANSACTION} `transaction`
+ * Aliases: {@link SENTRY_SPAN_NAME} `sentry.span.name`, {@link SENTRY_SEGMENT_NAME} `sentry.segment.name`, {@link TRANSACTION} `transaction`
  *
  * @deprecated Use {@link SENTRY_SEGMENT_NAME} (sentry.segment.name) instead - This attribute is being deprecated in favor of sentry.segment.name
  * @example "GET /"
@@ -10403,7 +10425,7 @@ export type TIME_TO_INITIAL_DISPLAY_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link SENTRY_SEGMENT_NAME} `sentry.segment.name`, {@link SENTRY_TRANSACTION} `sentry.transaction`
+ * Aliases: {@link SENTRY_SPAN_NAME} `sentry.span.name`, {@link SENTRY_SEGMENT_NAME} `sentry.segment.name`, {@link SENTRY_TRANSACTION} `sentry.transaction`
  *
  * @deprecated Use {@link SENTRY_SEGMENT_NAME} (sentry.segment.name) instead
  * @example "GET /"
@@ -10414,6 +10436,29 @@ export const TRANSACTION = 'transaction';
  * Type for {@link TRANSACTION} transaction
  */
 export type TRANSACTION_TYPE = string;
+
+// Path: model/attributes/transaction/transaction__method.json
+
+/**
+ * The HTTP method of a transaction `transaction.method`
+ *
+ * Attribute Value Type: `string` {@link TRANSACTION_METHOD_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link HTTP_REQUEST_METHOD} `http.request.method`, {@link HTTP_METHOD} `http.method`, {@link _HTTP_REQUEST_METHOD} `http.request_method`, {@link METHOD} `method`
+ *
+ * @deprecated Use {@link HTTP_REQUEST_METHOD} (http.request.method) instead
+ * @example "GET"
+ */
+export const TRANSACTION_METHOD = 'transaction.method';
+
+/**
+ * Type for {@link TRANSACTION_METHOD} transaction.method
+ */
+export type TRANSACTION_METHOD_TYPE = string;
 
 // Path: model/attributes/ttfb.json
 
@@ -12434,6 +12479,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_SEGMENT_NAME]: 'string',
   [SENTRY_SERVER_SAMPLE_RATE]: 'double',
   [SENTRY_SOURCE]: 'string',
+  [SENTRY_SPAN_NAME]: 'string',
   [SENTRY_SPAN_SOURCE]: 'string',
   [SENTRY_STATUS_CODE]: 'integer',
   [SENTRY_STATUS_MESSAGE]: 'string',
@@ -12450,6 +12496,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [TIME_TO_FULL_DISPLAY]: 'double',
   [TIME_TO_INITIAL_DISPLAY]: 'double',
   [TRANSACTION]: 'string',
+  [TRANSACTION_METHOD]: 'string',
   [TTFB]: 'double',
   [TTFB_REQUESTTIME]: 'double',
   [TYPE]: 'string',
@@ -13004,6 +13051,7 @@ export type AttributeName =
   | typeof SENTRY_SEGMENT_NAME
   | typeof SENTRY_SERVER_SAMPLE_RATE
   | typeof SENTRY_SOURCE
+  | typeof SENTRY_SPAN_NAME
   | typeof SENTRY_SPAN_SOURCE
   | typeof SENTRY_STATUS_CODE
   | typeof SENTRY_STATUS_MESSAGE
@@ -13020,6 +13068,7 @@ export type AttributeName =
   | typeof TIME_TO_FULL_DISPLAY
   | typeof TIME_TO_INITIAL_DISPLAY
   | typeof TRANSACTION
+  | typeof TRANSACTION_METHOD
   | typeof TTFB
   | typeof TTFB_REQUESTTIME
   | typeof TYPE
@@ -16392,7 +16441,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'http.request.method',
     },
-    aliases: [HTTP_REQUEST_METHOD, _HTTP_REQUEST_METHOD, METHOD],
+    aliases: [HTTP_REQUEST_METHOD, _HTTP_REQUEST_METHOD, METHOD, TRANSACTION_METHOD],
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
   [HTTP_QUERY]: {
@@ -16500,7 +16549,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'GET',
-    aliases: [METHOD, HTTP_METHOD, _HTTP_REQUEST_METHOD],
+    aliases: [METHOD, HTTP_METHOD, _HTTP_REQUEST_METHOD, TRANSACTION_METHOD],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [_HTTP_REQUEST_METHOD]: {
@@ -16514,7 +16563,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'http.request.method',
     },
-    aliases: [METHOD, HTTP_METHOD, HTTP_REQUEST_METHOD],
+    aliases: [METHOD, HTTP_METHOD, HTTP_REQUEST_METHOD, TRANSACTION_METHOD],
     changelog: [{ version: '0.6.0', prs: [343], description: 'Added http.request_method attribute' }],
   },
   [HTTP_REQUEST_REDIRECT_END]: {
@@ -17591,7 +17640,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'http.request.method',
     },
-    aliases: [HTTP_REQUEST_METHOD, _HTTP_REQUEST_METHOD, HTTP_METHOD],
+    aliases: [HTTP_REQUEST_METHOD, _HTTP_REQUEST_METHOD, HTTP_METHOD, TRANSACTION_METHOD],
     sdks: ['javascript-browser', 'javascript-node'],
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
@@ -19042,7 +19091,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'GET /user',
-    aliases: [SENTRY_TRANSACTION, TRANSACTION],
+    aliases: [SENTRY_SPAN_NAME, SENTRY_TRANSACTION, TRANSACTION],
     changelog: [
       { version: '0.6.0', prs: [345], description: 'Added sentry.transaction and transaction aliases' },
       { version: '0.1.0', prs: [104] },
@@ -19072,6 +19121,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'This attribute is being deprecated in favor of sentry.span.source',
     },
     changelog: [{ version: '0.5.0' }],
+  },
+  [SENTRY_SPAN_NAME]: {
+    brief: 'The name of a span',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'GET /user',
+    aliases: [SENTRY_SEGMENT_NAME, SENTRY_TRANSACTION, TRANSACTION],
+    changelog: [{ version: 'next', prs: [361], description: 'Added sentry.span.name attribute' }],
   },
   [SENTRY_SPAN_SOURCE]: {
     brief:
@@ -19143,7 +19203,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'sentry.segment.name',
       reason: 'This attribute is being deprecated in favor of sentry.segment.name',
     },
-    aliases: [SENTRY_SEGMENT_NAME, TRANSACTION],
+    aliases: [SENTRY_SPAN_NAME, SENTRY_SEGMENT_NAME, TRANSACTION],
     changelog: [
       { version: '0.6.0', prs: [345], description: 'Deprecated sentry.transaction in favor of sentry.segment.name' },
       { version: '0.0.0' },
@@ -19273,7 +19333,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'sentry.segment.name',
     },
-    aliases: [SENTRY_SEGMENT_NAME, SENTRY_TRANSACTION],
+    aliases: [SENTRY_SPAN_NAME, SENTRY_SEGMENT_NAME, SENTRY_TRANSACTION],
     changelog: [
       {
         version: '0.6.0',
@@ -19283,6 +19343,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.1.0', prs: [61, 127] },
       { version: '0.0.0' },
     ],
+  },
+  [TRANSACTION_METHOD]: {
+    brief: 'The HTTP method of a transaction',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'GET',
+    deprecation: {
+      replacement: 'http.request.method',
+    },
+    aliases: [HTTP_REQUEST_METHOD, HTTP_METHOD, _HTTP_REQUEST_METHOD, METHOD],
+    changelog: [{ version: 'next', prs: [361], description: 'Added transaction.method attribute' }],
   },
   [TTFB]: {
     brief: 'The value of the recorded Time To First Byte (TTFB) web vital in milliseconds',
@@ -20550,6 +20624,7 @@ export type Attributes = {
   [SENTRY_SEGMENT_NAME]?: SENTRY_SEGMENT_NAME_TYPE;
   [SENTRY_SERVER_SAMPLE_RATE]?: SENTRY_SERVER_SAMPLE_RATE_TYPE;
   [SENTRY_SOURCE]?: SENTRY_SOURCE_TYPE;
+  [SENTRY_SPAN_NAME]?: SENTRY_SPAN_NAME_TYPE;
   [SENTRY_SPAN_SOURCE]?: SENTRY_SPAN_SOURCE_TYPE;
   [SENTRY_STATUS_CODE]?: SENTRY_STATUS_CODE_TYPE;
   [SENTRY_STATUS_MESSAGE]?: SENTRY_STATUS_MESSAGE_TYPE;
@@ -20566,6 +20641,7 @@ export type Attributes = {
   [TIME_TO_FULL_DISPLAY]?: TIME_TO_FULL_DISPLAY_TYPE;
   [TIME_TO_INITIAL_DISPLAY]?: TIME_TO_INITIAL_DISPLAY_TYPE;
   [TRANSACTION]?: TRANSACTION_TYPE;
+  [TRANSACTION_METHOD]?: TRANSACTION_METHOD_TYPE;
   [TTFB]?: TTFB_TYPE;
   [TTFB_REQUESTTIME]?: TTFB_REQUESTTIME_TYPE;
   [TYPE]?: TYPE_TYPE;

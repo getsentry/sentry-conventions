@@ -355,7 +355,7 @@
         "_status": null,
         "replacement": "http.request.method"
       },
-      "alias": ["http.request.method", "http.request_method", "http.method"],
+      "alias": ["http.request.method", "http.request_method", "http.method", "transaction.method"],
       "sdks": ["javascript-browser", "javascript-node"],
       "changelog": [
         {
@@ -501,7 +501,7 @@
         "_status": "backfill",
         "replacement": "sentry.segment.name"
       },
-      "alias": ["sentry.segment.name", "sentry.transaction"],
+      "alias": ["sentry.span.name", "sentry.segment.name", "sentry.transaction"],
       "changelog": [
         {
           "version": "0.6.0",
@@ -2260,7 +2260,7 @@
         "_status": "backfill",
         "replacement": "http.request.method"
       },
-      "alias": ["http.request.method", "http.request_method", "method"],
+      "alias": ["http.request.method", "http.request_method", "method", "transaction.method"],
       "changelog": [
         {
           "version": "0.1.0",
@@ -2284,7 +2284,7 @@
         "_status": "backfill",
         "replacement": "http.request.method"
       },
-      "alias": ["method", "http.method", "http.request.method"],
+      "alias": ["method", "http.method", "http.request.method", "transaction.method"],
       "changelog": [
         {
           "version": "0.6.0",
@@ -3308,7 +3308,7 @@
         "replacement": "sentry.segment.name",
         "reason": "This attribute is being deprecated in favor of sentry.segment.name"
       },
-      "alias": ["sentry.segment.name", "transaction"],
+      "alias": ["sentry.span.name", "sentry.segment.name", "transaction"],
       "changelog": [
         {
           "version": "0.6.0",
@@ -3317,6 +3317,28 @@
         },
         {
           "version": "0.0.0"
+        }
+      ]
+    },
+    {
+      "key": "transaction.method",
+      "brief": "The HTTP method of a transaction",
+      "type": "string",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": "GET",
+      "deprecation": {
+        "_status": "backfill",
+        "replacement": "http.request.method"
+      },
+      "alias": ["http.request.method", "http.method", "http.request_method", "method"],
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [361],
+          "description": "Added transaction.method attribute"
         }
       ]
     },

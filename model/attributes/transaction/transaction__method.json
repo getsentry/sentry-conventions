@@ -1,0 +1,22 @@
+{
+  "key": "transaction.method",
+  "brief": "The HTTP method of a transaction",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "GET",
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "http.request.method"
+  },
+  "alias": ["http.request.method", "http.method", "http.request_method", "method"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [361],
+      "description": "Added transaction.method attribute"
+    }
+  ]
+}

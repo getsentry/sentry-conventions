@@ -235,6 +235,7 @@ class _AttributeNamesMeta(type):
         "SENTRY_TRANSACTION",
         "TIME_TO_FULL_DISPLAY",
         "TIME_TO_INITIAL_DISPLAY",
+        "TRANSACTION_METHOD",
         "TRANSACTION",
         "TTFB_REQUESTTIME",
         "TTFB",
@@ -3114,7 +3115,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
-    Aliases: http.request.method, http.request_method, method
+    Aliases: http.request.method, http.request_method, method, transaction.method
     DEPRECATED: Use http.request.method instead
     Example: "GET"
     """
@@ -3219,7 +3220,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
-    Aliases: method, http.method, http.request_method
+    Aliases: method, http.method, http.request_method, transaction.method
     Example: "GET"
     """
 
@@ -3338,7 +3339,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: method, http.method, http.request.method
+    Aliases: method, http.method, http.request.method, transaction.method
     DEPRECATED: Use http.request.method instead
     Example: "GET"
     """
@@ -4243,7 +4244,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: http.request.method, http.request_method, http.method
+    Aliases: http.request.method, http.request_method, http.method, transaction.method
     DEPRECATED: Use http.request.method instead
     Example: "GET"
     """
@@ -5607,7 +5608,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: sentry.transaction, transaction
+    Aliases: sentry.span.name, sentry.transaction, transaction
     Example: "GET /user"
     """
 
@@ -5644,6 +5645,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     DEPRECATED: Use sentry.span.source instead - This attribute is being deprecated in favor of sentry.span.source
     Example: "route"
+    """
+
+    # Path: model/attributes/sentry/sentry__span__name.json
+    SENTRY_SPAN_NAME: Literal["sentry.span.name"] = "sentry.span.name"
+    """The name of a span
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: sentry.segment.name, sentry.transaction, transaction
+    Example: "GET /user"
     """
 
     # Path: model/attributes/sentry/sentry__span__source.json
@@ -5708,7 +5720,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
-    Aliases: sentry.segment.name, transaction
+    Aliases: sentry.span.name, sentry.segment.name, transaction
     DEPRECATED: Use sentry.segment.name instead - This attribute is being deprecated in favor of sentry.segment.name
     Example: "GET /"
     """
@@ -5812,6 +5824,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 1234.56
     """
 
+    # Path: model/attributes/transaction/transaction__method.json
+    TRANSACTION_METHOD: Literal["transaction.method"] = "transaction.method"
+    """The HTTP method of a transaction
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: http.request.method, http.method, http.request_method, method
+    DEPRECATED: Use http.request.method instead
+    Example: "GET"
+    """
+
     # Path: model/attributes/transaction.json
     TRANSACTION: Literal["transaction"] = "transaction"
     """The sentry transaction (segment name).
@@ -5819,7 +5843,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: sentry.segment.name, sentry.transaction
+    Aliases: sentry.span.name, sentry.segment.name, sentry.transaction
     DEPRECATED: Use sentry.segment.name instead
     Example: "GET /"
     """
@@ -10121,7 +10145,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="http.request.method", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["http.request.method", "http.request_method", "method"],
+        aliases=[
+            "http.request.method",
+            "http.request_method",
+            "method",
+            "transaction.method",
+        ],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
@@ -10237,7 +10266,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="GET",
-        aliases=["method", "http.method", "http.request_method"],
+        aliases=["method", "http.method", "http.request_method", "transaction.method"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
@@ -10364,7 +10393,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="http.request.method", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["method", "http.method", "http.request.method"],
+        aliases=["method", "http.method", "http.request.method", "transaction.method"],
         changelog=[
             ChangelogEntry(
                 version="0.6.0",
@@ -11351,7 +11380,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example="GET",
         deprecation=DeprecationInfo(replacement="http.request.method"),
-        aliases=["http.request.method", "http.request_method", "http.method"],
+        aliases=[
+            "http.request.method",
+            "http.request_method",
+            "http.method",
+            "transaction.method",
+        ],
         sdks=["javascript-browser", "javascript-node"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
@@ -12835,7 +12869,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="GET /user",
-        aliases=["sentry.transaction", "transaction"],
+        aliases=["sentry.span.name", "sentry.transaction", "transaction"],
         changelog=[
             ChangelogEntry(
                 version="0.6.0",
@@ -12882,6 +12916,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(version="0.5.0"),
+        ],
+    ),
+    "sentry.span.name": AttributeMetadata(
+        brief="The name of a span",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="GET /user",
+        aliases=["sentry.segment.name", "sentry.transaction", "transaction"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[361],
+                description="Added sentry.span.name attribute",
+            ),
         ],
     ),
     "sentry.span.source": AttributeMetadata(
@@ -12952,7 +13001,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="This attribute is being deprecated in favor of sentry.segment.name",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["sentry.segment.name", "transaction"],
+        aliases=["sentry.span.name", "sentry.segment.name", "transaction"],
         changelog=[
             ChangelogEntry(
                 version="0.6.0",
@@ -13093,6 +13142,24 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "transaction.method": AttributeMetadata(
+        brief="The HTTP method of a transaction",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="GET",
+        deprecation=DeprecationInfo(
+            replacement="http.request.method", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["http.request.method", "http.method", "http.request_method", "method"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[361],
+                description="Added transaction.method attribute",
+            ),
+        ],
+    ),
     "transaction": AttributeMetadata(
         brief="The sentry transaction (segment name).",
         type=AttributeType.STRING,
@@ -13102,7 +13169,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="sentry.segment.name", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["sentry.segment.name", "sentry.transaction"],
+        aliases=["sentry.span.name", "sentry.segment.name", "sentry.transaction"],
         changelog=[
             ChangelogEntry(
                 version="0.6.0",
@@ -14413,6 +14480,7 @@ Attributes = TypedDict(
         "sentry.segment_id": str,
         "sentry.server_sample_rate": float,
         "sentry.source": str,
+        "sentry.span.name": str,
         "sentry.span.source": str,
         "sentry.status.message": str,
         "sentry.status_code": int,
@@ -14428,6 +14496,7 @@ Attributes = TypedDict(
         "timber.tag": str,
         "time_to_full_display": float,
         "time_to_initial_display": float,
+        "transaction.method": str,
         "transaction": str,
         "ttfb.requestTime": float,
         "ttfb": float,
