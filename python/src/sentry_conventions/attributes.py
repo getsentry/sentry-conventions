@@ -5212,6 +5212,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "frontend@e8211be71b214afab5b85de4b4c54be3714952bb"
     """
 
+    # Path: model/attributes/sentry/sentry__dsc__root_project.json
+    SENTRY_DSC_ROOT_PROJECT: Literal["sentry.dsc.root_project"] = (
+        "sentry.dsc.root_project"
+    )
+    """The root project ID from the dynamic sampling context.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "12345"
+    """
+
     # Path: model/attributes/sentry/sentry__dsc__sample_rate.json
     SENTRY_DSC_SAMPLE_RATE: Literal["sentry.dsc.sample_rate"] = "sentry.dsc.sample_rate"
     """The sample rate from the dynamic sampling context.
@@ -12443,6 +12455,20 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.3.0", prs=[185]),
         ],
     ),
+    "sentry.dsc.root_project": AttributeMetadata(
+        brief="The root project ID from the dynamic sampling context.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="12345",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[358],
+                description="Added sentry.dsc.root_project attribute",
+            ),
+        ],
+    ),
     "sentry.dsc.sample_rate": AttributeMetadata(
         brief="The sample rate from the dynamic sampling context.",
         type=AttributeType.STRING,
@@ -14373,6 +14399,7 @@ Attributes = TypedDict(
         "sentry.dsc.environment": str,
         "sentry.dsc.public_key": str,
         "sentry.dsc.release": str,
+        "sentry.dsc.root_project": str,
         "sentry.dsc.sample_rate": str,
         "sentry.dsc.sampled": bool,
         "sentry.dsc.trace_id": str,

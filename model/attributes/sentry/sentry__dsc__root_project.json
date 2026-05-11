@@ -1,0 +1,17 @@
+{
+  "key": "sentry.dsc.root_project",
+  "brief": "The root project ID from the dynamic sampling context.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "12345",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [358],
+      "description": "Added sentry.dsc.root_project attribute"
+    }
+  ]
+}
