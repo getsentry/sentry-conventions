@@ -1,0 +1,18 @@
+{
+  "key": "score.ratio.<key>",
+  "brief": "The score for a web vital, normalized to a number between 0 and 1.",
+  "has_dynamic_suffix": true,
+  "type": "double",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "score.ratio.inp=0.7748",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [355],
+      "description": "Added score.ratio.<key> attribute"
+    }
+  ]
+}

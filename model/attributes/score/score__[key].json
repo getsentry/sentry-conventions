@@ -1,0 +1,18 @@
+{
+  "key": "score.<key>",
+  "brief": "The weighted performance score for a web vital. This is defined as `score.weight.<key>` * `score.ratio.<key>`.",
+  "has_dynamic_suffix": true,
+  "type": "double",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "score.cls=0.1723",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [355],
+      "description": "Added score.<key> attribute"
+    }
+  ]
+}
