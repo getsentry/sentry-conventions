@@ -5216,7 +5216,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     SENTRY_DSC_ROOT_PROJECT: Literal["sentry.dsc.root_project"] = (
         "sentry.dsc.root_project"
     )
-    """The root project ID from the dynamic sampling context.
+    """The ID of the project where the trace originated (i.e. the project of the SDK that started the trace). Propagated through the dynamic sampling context and set by Relay during ingestion.
 
     Type: str
     Contains PII: false
@@ -12456,7 +12456,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "sentry.dsc.root_project": AttributeMetadata(
-        brief="The root project ID from the dynamic sampling context.",
+        brief="The ID of the project where the trace originated (i.e. the project of the SDK that started the trace). Propagated through the dynamic sampling context and set by Relay during ingestion.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,

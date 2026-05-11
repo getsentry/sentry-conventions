@@ -9266,7 +9266,7 @@ export type SENTRY_DSC_RELEASE_TYPE = string;
 // Path: model/attributes/sentry/sentry__dsc__root_project.json
 
 /**
- * The root project ID from the dynamic sampling context. `sentry.dsc.root_project`
+ * The ID of the project where the trace originated (i.e. the project of the SDK that started the trace). Propagated through the dynamic sampling context and set by Relay during ingestion. `sentry.dsc.root_project`
  *
  * Attribute Value Type: `string` {@link SENTRY_DSC_ROOT_PROJECT_TYPE}
  *
@@ -18661,7 +18661,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.3.0', prs: [185] }],
   },
   [SENTRY_DSC_ROOT_PROJECT]: {
-    brief: 'The root project ID from the dynamic sampling context.',
+    brief:
+      'The ID of the project where the trace originated (i.e. the project of the SDK that started the trace). Propagated through the dynamic sampling context and set by Relay during ingestion.',
     type: 'string',
     pii: {
       isPii: 'false',
