@@ -37,19 +37,14 @@
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@clack/prompts": "^0.11.0",
-    "@types/node": "^22.15.3",
+    "@types/node": "^22.19.18",
     "@types/tar": "^6.1.13",
-    "ajv": "^8.18.0",
-    "tar": "^7.5.11",
-    "tsx": "^4.19.4",
-    "vitest": "^3.1.2"
+    "ajv": "^8.20.0",
+    "tar": "^7.5.15",
+    "tsx": "^4.21.0",
+    "vitest": "^3.2.4"
   },
-  "workspaces": [
-    "javascript/*",
-    "python/*",
-    "rust/*",
-    "docs"
-  ],
+  "workspaces": ["javascript/*", "python/*", "rust/*", "docs"],
   "packageManager": "yarn@1.22.22",
   "volta": {
     "node": "22.15.0",
