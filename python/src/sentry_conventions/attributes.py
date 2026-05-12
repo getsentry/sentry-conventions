@@ -2365,6 +2365,24 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 60
     """
 
+    # Path: model/attributes/frames_frozen_rate.json
+    FRAMES_FROZEN_RATE: Literal["frames_frozen_rate"] = "frames_frozen_rate"
+    """The rate of frozen frames, or `app_vitals.frames.frozen.count` divided by `app_vitals.frames.total.count`.
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    """
+
+    # Path: model/attributes/frames_slow_rate.json
+    FRAMES_SLOW_RATE: Literal["frames_slow_rate"] = "frames_slow_rate"
+    """The rate of slow frames, or `app_vitals.frames.slow.count` divided by `app_vitals.frames.total.count`.
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    """
+
     # Path: model/attributes/fs_error.json
     FS_ERROR: Literal["fs_error"] = "fs_error"
     """The error message of a file system error.
@@ -5754,6 +5772,24 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Aliases: sentry.release
     Example: "5.0.0"
+    """
+
+    # Path: model/attributes/stall_percentage.json
+    STALL_PERCENTAGE: Literal["stall_percentage"] = "stall_percentage"
+    """The fraction of time the app was stalled. Only applies to React Native.
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    """
+
+    # Path: model/attributes/stall_total_time.json
+    STALL_TOTAL_TIME: Literal["stall_total_time"] = "stall_total_time"
+    """The combined duration of all stalls in milliseconds. Only applies to React Native.
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
     """
 
     # Path: model/attributes/thread/thread__id.json
@@ -9322,6 +9358,32 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "frames_frozen_rate": AttributeMetadata(
+        brief="The rate of frozen frames, or `app_vitals.frames.frozen.count` divided by `app_vitals.frames.total.count`.",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[362],
+                description="Added frames_frozen_rate attribute",
+            ),
+        ],
+    ),
+    "frames_slow_rate": AttributeMetadata(
+        brief="The rate of slow frames, or `app_vitals.frames.slow.count` divided by `app_vitals.frames.total.count`.",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[362],
+                description="Added frames_slow_rate attribute",
+            ),
         ],
     ),
     "fs_error": AttributeMetadata(
@@ -13009,6 +13071,32 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "stall_percentage": AttributeMetadata(
+        brief="The fraction of time the app was stalled. Only applies to React Native.",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[362],
+                description="Added stall_percentage attribute",
+            ),
+        ],
+    ),
+    "stall_total_time": AttributeMetadata(
+        brief="The combined duration of all stalls in milliseconds. Only applies to React Native.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[362],
+                description="Added stall_total_time attribute",
+            ),
+        ],
+    ),
     "thread.id": AttributeMetadata(
         brief="Current “managed” thread ID.",
         type=AttributeType.INTEGER,
@@ -14122,6 +14210,8 @@ Attributes = TypedDict(
         "frames.frozen": int,
         "frames.slow": int,
         "frames.total": int,
+        "frames_frozen_rate": float,
+        "frames_slow_rate": float,
         "fs_error": str,
         "gen_ai.agent.name": str,
         "gen_ai.context.utilization": float,
@@ -14423,6 +14513,8 @@ Attributes = TypedDict(
         "server.port": int,
         "service.name": str,
         "service.version": str,
+        "stall_percentage": float,
+        "stall_total_time": int,
         "thread.id": int,
         "thread.name": str,
         "timber.tag": str,

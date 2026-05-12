@@ -1,0 +1,16 @@
+{
+  "key": "stall_percentage",
+  "brief": "The fraction of time the app was stalled. Only applies to React Native.",
+  "type": "double",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [362],
+      "description": "Added stall_percentage attribute"
+    }
+  ]
+}

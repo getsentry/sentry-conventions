@@ -1,0 +1,16 @@
+{
+  "key": "stall_total_time",
+  "brief": "The combined duration of all stalls in milliseconds. Only applies to React Native.",
+  "type": "integer",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [362],
+      "description": "Added stall_total_time attribute"
+    }
+  ]
+}
