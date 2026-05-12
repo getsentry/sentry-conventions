@@ -8677,6 +8677,26 @@ export const PROCESS_RUNTIME_VERSION = 'process.runtime.version';
  */
 export type PROCESS_RUNTIME_VERSION_TYPE = string;
 
+// Path: model/attributes/profile/profile__start_timestamp.json
+
+/**
+ * The timestamp when the profile started `profile.start_timestamp`
+ *
+ * Attribute Value Type: `number` {@link PROFILE_START_TIMESTAMP_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 1700000000.123
+ */
+export const PROFILE_START_TIMESTAMP = 'profile.start_timestamp';
+
+/**
+ * Type for {@link PROFILE_START_TIMESTAMP} profile.start_timestamp
+ */
+export type PROFILE_START_TIMESTAMP_TYPE = number;
+
 // Path: model/attributes/query/query__[key].json
 
 /**
@@ -12366,6 +12386,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [PROCESS_RUNTIME_ENGINE_VERSION]: 'string',
   [PROCESS_RUNTIME_NAME]: 'string',
   [PROCESS_RUNTIME_VERSION]: 'string',
+  [PROFILE_START_TIMESTAMP]: 'double',
   [QUERY_KEY]: 'string',
   [RELEASE]: 'string',
   [REMIX_ACTION_FORM_DATA_KEY]: 'string',
@@ -12936,6 +12957,7 @@ export type AttributeName =
   | typeof PROCESS_RUNTIME_ENGINE_VERSION
   | typeof PROCESS_RUNTIME_NAME
   | typeof PROCESS_RUNTIME_VERSION
+  | typeof PROFILE_START_TIMESTAMP
   | typeof QUERY_KEY
   | typeof RELEASE
   | typeof REMIX_ACTION_FORM_DATA_KEY
@@ -18315,6 +18337,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '18.04.2',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  [PROFILE_START_TIMESTAMP]: {
+    brief: 'The timestamp when the profile started',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 1700000000.123,
+    changelog: [{ version: 'next', prs: [363], description: 'Added profile.start_timestamp attribute' }],
+  },
   [QUERY_KEY]: {
     brief: 'An item in a query string. Usually added by client-side routing frameworks like vue-router.',
     type: 'string',
@@ -20482,6 +20514,7 @@ export type Attributes = {
   [PROCESS_RUNTIME_ENGINE_VERSION]?: PROCESS_RUNTIME_ENGINE_VERSION_TYPE;
   [PROCESS_RUNTIME_NAME]?: PROCESS_RUNTIME_NAME_TYPE;
   [PROCESS_RUNTIME_VERSION]?: PROCESS_RUNTIME_VERSION_TYPE;
+  [PROFILE_START_TIMESTAMP]?: PROFILE_START_TIMESTAMP_TYPE;
   [QUERY_KEY]?: QUERY_KEY_TYPE;
   [RELEASE]?: RELEASE_TYPE;
   [REMIX_ACTION_FORM_DATA_KEY]?: REMIX_ACTION_FORM_DATA_KEY_TYPE;

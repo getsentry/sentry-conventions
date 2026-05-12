@@ -1,0 +1,17 @@
+{
+  "key": "profile.start_timestamp",
+  "brief": "The timestamp when the profile started",
+  "type": "double",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 1700000000.123,
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [363],
+      "description": "Added profile.start_timestamp attribute"
+    }
+  ]
+}

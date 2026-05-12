@@ -4901,6 +4901,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "18.04.2"
     """
 
+    # Path: model/attributes/profile/profile__start_timestamp.json
+    PROFILE_START_TIMESTAMP: Literal["profile.start_timestamp"] = (
+        "profile.start_timestamp"
+    )
+    """The timestamp when the profile started
+
+    Type: float
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 1700000000.123
+    """
+
     # Path: model/attributes/query/query__[key].json
     QUERY_KEY: Literal["query.<key>"] = "query.<key>"
     """An item in a query string. Usually added by client-side routing frameworks like vue-router.
@@ -12112,6 +12124,20 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "profile.start_timestamp": AttributeMetadata(
+        brief="The timestamp when the profile started",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=1700000000.123,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[363],
+                description="Added profile.start_timestamp attribute",
+            ),
+        ],
+    ),
     "query.<key>": AttributeMetadata(
         brief="An item in a query string. Usually added by client-side routing frameworks like vue-router.",
         type=AttributeType.STRING,
@@ -14345,6 +14371,7 @@ Attributes = TypedDict(
         "process.runtime.engine.version": str,
         "process.runtime.name": str,
         "process.runtime.version": str,
+        "profile.start_timestamp": float,
         "query.<key>": str,
         "release": str,
         "remix.action_form_data.<key>": str,
