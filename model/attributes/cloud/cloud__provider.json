@@ -1,0 +1,17 @@
+{
+  "key": "cloud.provider",
+  "brief": "Name of the cloud provider",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "aws",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [363],
+      "description": "Added cloud.provider attribute"
+    }
+  ]
+}

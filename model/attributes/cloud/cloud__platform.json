@@ -1,0 +1,17 @@
+{
+  "key": "cloud.platform",
+  "brief": "The cloud platform in use",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "aws_lambda",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [363],
+      "description": "Added cloud.platform attribute"
+    }
+  ]
+}

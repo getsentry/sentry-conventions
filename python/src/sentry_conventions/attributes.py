@@ -1337,6 +1337,58 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 5432
     """
 
+    # Path: model/attributes/cloud/cloud__account__id.json
+    CLOUD_ACCOUNT_ID: Literal["cloud.account.id"] = "cloud.account.id"
+    """The cloud account ID the resource is assigned to
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: Yes
+    Example: "123456789012"
+    """
+
+    # Path: model/attributes/cloud/cloud__availability_zone.json
+    CLOUD_AVAILABILITY_ZONE: Literal["cloud.availability_zone"] = (
+        "cloud.availability_zone"
+    )
+    """Cloud regions often have multiple, isolated locations known as zones to increase availability
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: Yes
+    Example: "us-east-1c"
+    """
+
+    # Path: model/attributes/cloud/cloud__platform.json
+    CLOUD_PLATFORM: Literal["cloud.platform"] = "cloud.platform"
+    """The cloud platform in use
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: Yes
+    Example: "aws_lambda"
+    """
+
+    # Path: model/attributes/cloud/cloud__provider.json
+    CLOUD_PROVIDER: Literal["cloud.provider"] = "cloud.provider"
+    """Name of the cloud provider
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: Yes
+    Example: "aws"
+    """
+
+    # Path: model/attributes/cloud/cloud__region.json
+    CLOUD_REGION: Literal["cloud.region"] = "cloud.region"
+    """The geographical region the resource is running
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: Yes
+    Example: "us-east-1"
+    """
+
     # Path: model/attributes/cloudflare/cloudflare__d1__duration.json
     CLOUDFLARE_D1_DURATION: Literal["cloudflare.d1.duration"] = "cloudflare.d1.duration"
     """The duration of a Cloudflare D1 operation.
@@ -8033,6 +8085,70 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "cloud.account.id": AttributeMetadata(
+        brief="The cloud account ID the resource is assigned to",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=True,
+        example="123456789012",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[363],
+                description="Added cloud.account.id attribute",
+            ),
+        ],
+    ),
+    "cloud.availability_zone": AttributeMetadata(
+        brief="Cloud regions often have multiple, isolated locations known as zones to increase availability",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=True,
+        example="us-east-1c",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[363],
+                description="Added cloud.availability_zone attribute",
+            ),
+        ],
+    ),
+    "cloud.platform": AttributeMetadata(
+        brief="The cloud platform in use",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=True,
+        example="aws_lambda",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[363], description="Added cloud.platform attribute"
+            ),
+        ],
+    ),
+    "cloud.provider": AttributeMetadata(
+        brief="Name of the cloud provider",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=True,
+        example="aws",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[363], description="Added cloud.provider attribute"
+            ),
+        ],
+    ),
+    "cloud.region": AttributeMetadata(
+        brief="The geographical region the resource is running",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=True,
+        example="us-east-1",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[363], description="Added cloud.region attribute"
+            ),
+        ],
+    ),
     "cloudflare.d1.duration": AttributeMetadata(
         brief="The duration of a Cloudflare D1 operation.",
         type=AttributeType.INTEGER,
@@ -14027,6 +14143,11 @@ Attributes = TypedDict(
         "channel": str,
         "client.address": str,
         "client.port": int,
+        "cloud.account.id": str,
+        "cloud.availability_zone": str,
+        "cloud.platform": str,
+        "cloud.provider": str,
+        "cloud.region": str,
         "cloudflare.d1.duration": int,
         "cloudflare.d1.rows_read": int,
         "cloudflare.d1.rows_written": int,

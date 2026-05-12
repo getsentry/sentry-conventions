@@ -1,0 +1,17 @@
+{
+  "key": "cloud.region",
+  "brief": "The geographical region the resource is running",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "us-east-1",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [363],
+      "description": "Added cloud.region attribute"
+    }
+  ]
+}

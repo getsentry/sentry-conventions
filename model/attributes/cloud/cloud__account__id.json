@@ -1,0 +1,17 @@
+{
+  "key": "cloud.account.id",
+  "brief": "The cloud account ID the resource is assigned to",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "123456789012",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [363],
+      "description": "Added cloud.account.id attribute"
+    }
+  ]
+}
