@@ -1,0 +1,17 @@
+{
+  "key": "trpc.procedure_type",
+  "brief": "The type of the tRPC procedure",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "query",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [363],
+      "description": "Added trpc.procedure_type attribute"
+    }
+  ]
+}
