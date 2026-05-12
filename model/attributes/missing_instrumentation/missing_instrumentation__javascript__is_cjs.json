@@ -1,0 +1,17 @@
+{
+  "key": "missing_instrumentation.javascript.is_cjs",
+  "brief": "Whether the missing instrumentation is a CommonJS module",
+  "type": "boolean",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": true,
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [363],
+      "description": "Added missing_instrumentation.javascript.is_cjs attribute"
+    }
+  ]
+}

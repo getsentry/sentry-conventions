@@ -1,0 +1,17 @@
+{
+  "key": "missing_instrumentation.package",
+  "brief": "The package name of the missing instrumentation",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "express",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [363],
+      "description": "Added missing_instrumentation.package attribute"
+    }
+  ]
+}

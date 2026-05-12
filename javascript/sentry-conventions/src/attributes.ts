@@ -7449,6 +7449,46 @@ export const MIDDLEWARE_NAME = 'middleware.name';
  */
 export type MIDDLEWARE_NAME_TYPE = string;
 
+// Path: model/attributes/missing_instrumentation/missing_instrumentation__javascript__is_cjs.json
+
+/**
+ * Whether the missing instrumentation is a CommonJS module `missing_instrumentation.javascript.is_cjs`
+ *
+ * Attribute Value Type: `boolean` {@link MISSING_INSTRUMENTATION_JAVASCRIPT_IS_CJS_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example true
+ */
+export const MISSING_INSTRUMENTATION_JAVASCRIPT_IS_CJS = 'missing_instrumentation.javascript.is_cjs';
+
+/**
+ * Type for {@link MISSING_INSTRUMENTATION_JAVASCRIPT_IS_CJS} missing_instrumentation.javascript.is_cjs
+ */
+export type MISSING_INSTRUMENTATION_JAVASCRIPT_IS_CJS_TYPE = boolean;
+
+// Path: model/attributes/missing_instrumentation/missing_instrumentation__package.json
+
+/**
+ * The package name of the missing instrumentation `missing_instrumentation.package`
+ *
+ * Attribute Value Type: `string` {@link MISSING_INSTRUMENTATION_PACKAGE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "express"
+ */
+export const MISSING_INSTRUMENTATION_PACKAGE = 'missing_instrumentation.package';
+
+/**
+ * Type for {@link MISSING_INSTRUMENTATION_PACKAGE} missing_instrumentation.package
+ */
+export type MISSING_INSTRUMENTATION_PACKAGE_TYPE = string;
+
 // Path: model/attributes/navigation/navigation__type.json
 
 /**
@@ -12308,6 +12348,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [MESSAGING_SYSTEM]: 'string',
   [METHOD]: 'string',
   [MIDDLEWARE_NAME]: 'string',
+  [MISSING_INSTRUMENTATION_JAVASCRIPT_IS_CJS]: 'boolean',
+  [MISSING_INSTRUMENTATION_PACKAGE]: 'string',
   [NAVIGATION_TYPE]: 'string',
   [NEL_ELAPSED_TIME]: 'integer',
   [NEL_PHASE]: 'string',
@@ -12878,6 +12920,8 @@ export type AttributeName =
   | typeof MESSAGING_SYSTEM
   | typeof METHOD
   | typeof MIDDLEWARE_NAME
+  | typeof MISSING_INSTRUMENTATION_JAVASCRIPT_IS_CJS
+  | typeof MISSING_INSTRUMENTATION_PACKAGE
   | typeof NAVIGATION_TYPE
   | typeof NEL_ELAPSED_TIME
   | typeof NEL_PHASE
@@ -17606,6 +17650,28 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['python'],
     changelog: [{ version: '0.6.0', prs: [336], description: 'Added middleware.name attribute' }],
   },
+  [MISSING_INSTRUMENTATION_JAVASCRIPT_IS_CJS]: {
+    brief: 'Whether the missing instrumentation is a CommonJS module',
+    type: 'boolean',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: true,
+    changelog: [
+      { version: 'next', prs: [363], description: 'Added missing_instrumentation.javascript.is_cjs attribute' },
+    ],
+  },
+  [MISSING_INSTRUMENTATION_PACKAGE]: {
+    brief: 'The package name of the missing instrumentation',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'express',
+    changelog: [{ version: 'next', prs: [363], description: 'Added missing_instrumentation.package attribute' }],
+  },
   [NAVIGATION_TYPE]: {
     brief: 'The type of navigation done by a client-side router.',
     type: 'string',
@@ -20424,6 +20490,8 @@ export type Attributes = {
   [MESSAGING_SYSTEM]?: MESSAGING_SYSTEM_TYPE;
   [METHOD]?: METHOD_TYPE;
   [MIDDLEWARE_NAME]?: MIDDLEWARE_NAME_TYPE;
+  [MISSING_INSTRUMENTATION_JAVASCRIPT_IS_CJS]?: MISSING_INSTRUMENTATION_JAVASCRIPT_IS_CJS_TYPE;
+  [MISSING_INSTRUMENTATION_PACKAGE]?: MISSING_INSTRUMENTATION_PACKAGE_TYPE;
   [NAVIGATION_TYPE]?: NAVIGATION_TYPE_TYPE;
   [NEL_ELAPSED_TIME]?: NEL_ELAPSED_TIME_TYPE;
   [NEL_PHASE]?: NEL_PHASE_TYPE;

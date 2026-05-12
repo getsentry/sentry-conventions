@@ -4258,6 +4258,30 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "AuthenticationMiddleware"
     """
 
+    # Path: model/attributes/missing_instrumentation/missing_instrumentation__javascript__is_cjs.json
+    MISSING_INSTRUMENTATION_JAVASCRIPT_IS_CJS: Literal[
+        "missing_instrumentation.javascript.is_cjs"
+    ] = "missing_instrumentation.javascript.is_cjs"
+    """Whether the missing instrumentation is a CommonJS module
+
+    Type: bool
+    Contains PII: false
+    Defined in OTEL: No
+    Example: true
+    """
+
+    # Path: model/attributes/missing_instrumentation/missing_instrumentation__package.json
+    MISSING_INSTRUMENTATION_PACKAGE: Literal["missing_instrumentation.package"] = (
+        "missing_instrumentation.package"
+    )
+    """The package name of the missing instrumentation
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "express"
+    """
+
     # Path: model/attributes/navigation/navigation__type.json
     NAVIGATION_TYPE: Literal["navigation.type"] = "navigation.type"
     """The type of navigation done by a client-side router.
@@ -11373,6 +11397,34 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "missing_instrumentation.javascript.is_cjs": AttributeMetadata(
+        brief="Whether the missing instrumentation is a CommonJS module",
+        type=AttributeType.BOOLEAN,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=True,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[363],
+                description="Added missing_instrumentation.javascript.is_cjs attribute",
+            ),
+        ],
+    ),
+    "missing_instrumentation.package": AttributeMetadata(
+        brief="The package name of the missing instrumentation",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="express",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[363],
+                description="Added missing_instrumentation.package attribute",
+            ),
+        ],
+    ),
     "navigation.type": AttributeMetadata(
         brief="The type of navigation done by a client-side router.",
         type=AttributeType.STRING,
@@ -14287,6 +14339,8 @@ Attributes = TypedDict(
         "messaging.system": str,
         "method": str,
         "middleware.name": str,
+        "missing_instrumentation.javascript.is_cjs": bool,
+        "missing_instrumentation.package": str,
         "navigation.type": str,
         "nel.elapsed_time": int,
         "nel.phase": str,
