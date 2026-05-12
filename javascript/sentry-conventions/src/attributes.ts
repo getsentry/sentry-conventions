@@ -10286,6 +10286,26 @@ export const SERVICE_VERSION = 'service.version';
  */
 export type SERVICE_VERSION_TYPE = string;
 
+// Path: model/attributes/state/state__type.json
+
+/**
+ * The type of state management library `state.type`
+ *
+ * Attribute Value Type: `string` {@link STATE_TYPE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "redux"
+ */
+export const STATE_TYPE = 'state.type';
+
+/**
+ * Type for {@link STATE_TYPE} state.type
+ */
+export type STATE_TYPE_TYPE = string;
+
 // Path: model/attributes/thread/thread__id.json
 
 /**
@@ -12444,6 +12464,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SERVER_PORT]: 'integer',
   [SERVICE_NAME]: 'string',
   [SERVICE_VERSION]: 'string',
+  [STATE_TYPE]: 'string',
   [THREAD_ID]: 'integer',
   [THREAD_NAME]: 'string',
   [TIMBER_TAG]: 'string',
@@ -13014,6 +13035,7 @@ export type AttributeName =
   | typeof SERVER_PORT
   | typeof SERVICE_NAME
   | typeof SERVICE_VERSION
+  | typeof STATE_TYPE
   | typeof THREAD_ID
   | typeof THREAD_NAME
   | typeof TIMBER_TAG
@@ -19193,6 +19215,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [SENTRY_RELEASE],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  [STATE_TYPE]: {
+    brief: 'The type of state management library',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'redux',
+    changelog: [{ version: 'next', prs: [363], description: 'Added state.type attribute' }],
+  },
   [THREAD_ID]: {
     brief: 'Current “managed” thread ID.',
     type: 'integer',
@@ -20560,6 +20592,7 @@ export type Attributes = {
   [SERVER_PORT]?: SERVER_PORT_TYPE;
   [SERVICE_NAME]?: SERVICE_NAME_TYPE;
   [SERVICE_VERSION]?: SERVICE_VERSION_TYPE;
+  [STATE_TYPE]?: STATE_TYPE_TYPE;
   [THREAD_ID]?: THREAD_ID_TYPE;
   [THREAD_NAME]?: THREAD_NAME_TYPE;
   [TIMBER_TAG]?: TIMBER_TAG_TYPE;
