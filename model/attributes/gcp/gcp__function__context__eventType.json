@@ -1,0 +1,17 @@
+{
+  "key": "gcp.function.context.eventType",
+  "brief": "The type of the GCP Cloud Function event",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "google.pubsub.topic.publish",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [363],
+      "description": "Added gcp.function.context.eventType attribute"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "key": "gcp.function.context.resource",
+  "brief": "The resource that triggered the GCP Cloud Function event",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "projects/my-project/topics/my-topic",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [363],
+      "description": "Added gcp.function.context.resource attribute"
+    }
+  ]
+}

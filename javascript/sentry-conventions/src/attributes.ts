@@ -4013,6 +4013,186 @@ export const FS_ERROR = 'fs_error';
  */
 export type FS_ERROR_TYPE = string;
 
+// Path: model/attributes/gcp/gcp__function__context__eventId.json
+
+/**
+ * The legacy event ID of the GCP Cloud Function event `gcp.function.context.eventId`
+ *
+ * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_EVENTID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "1234567890"
+ */
+export const GCP_FUNCTION_CONTEXT_EVENTID = 'gcp.function.context.eventId';
+
+/**
+ * Type for {@link GCP_FUNCTION_CONTEXT_EVENTID} gcp.function.context.eventId
+ */
+export type GCP_FUNCTION_CONTEXT_EVENTID_TYPE = string;
+
+// Path: model/attributes/gcp/gcp__function__context__eventType.json
+
+/**
+ * The type of the GCP Cloud Function event `gcp.function.context.eventType`
+ *
+ * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_EVENTTYPE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "google.pubsub.topic.publish"
+ */
+export const GCP_FUNCTION_CONTEXT_EVENTTYPE = 'gcp.function.context.eventType';
+
+/**
+ * Type for {@link GCP_FUNCTION_CONTEXT_EVENTTYPE} gcp.function.context.eventType
+ */
+export type GCP_FUNCTION_CONTEXT_EVENTTYPE_TYPE = string;
+
+// Path: model/attributes/gcp/gcp__function__context__id.json
+
+/**
+ * The unique ID of the GCP Cloud Function event `gcp.function.context.id`
+ *
+ * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "1234567890"
+ */
+export const GCP_FUNCTION_CONTEXT_ID = 'gcp.function.context.id';
+
+/**
+ * Type for {@link GCP_FUNCTION_CONTEXT_ID} gcp.function.context.id
+ */
+export type GCP_FUNCTION_CONTEXT_ID_TYPE = string;
+
+// Path: model/attributes/gcp/gcp__function__context__resource.json
+
+/**
+ * The resource that triggered the GCP Cloud Function event `gcp.function.context.resource`
+ *
+ * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_RESOURCE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "projects/my-project/topics/my-topic"
+ */
+export const GCP_FUNCTION_CONTEXT_RESOURCE = 'gcp.function.context.resource';
+
+/**
+ * Type for {@link GCP_FUNCTION_CONTEXT_RESOURCE} gcp.function.context.resource
+ */
+export type GCP_FUNCTION_CONTEXT_RESOURCE_TYPE = string;
+
+// Path: model/attributes/gcp/gcp__function__context__source.json
+
+/**
+ * The source of the GCP Cloud Function event `gcp.function.context.source`
+ *
+ * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_SOURCE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "//pubsub.googleapis.com/projects/my-project/topics/my-topic"
+ */
+export const GCP_FUNCTION_CONTEXT_SOURCE = 'gcp.function.context.source';
+
+/**
+ * Type for {@link GCP_FUNCTION_CONTEXT_SOURCE} gcp.function.context.source
+ */
+export type GCP_FUNCTION_CONTEXT_SOURCE_TYPE = string;
+
+// Path: model/attributes/gcp/gcp__function__context__specversion.json
+
+/**
+ * The CloudEvents specification version of the GCP Cloud Function event `gcp.function.context.specversion`
+ *
+ * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_SPECVERSION_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "1.0"
+ */
+export const GCP_FUNCTION_CONTEXT_SPECVERSION = 'gcp.function.context.specversion';
+
+/**
+ * Type for {@link GCP_FUNCTION_CONTEXT_SPECVERSION} gcp.function.context.specversion
+ */
+export type GCP_FUNCTION_CONTEXT_SPECVERSION_TYPE = string;
+
+// Path: model/attributes/gcp/gcp__function__context__time.json
+
+/**
+ * The timestamp of the GCP Cloud Function event `gcp.function.context.time`
+ *
+ * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_TIME_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "2024-01-01T00:00:00.000Z"
+ */
+export const GCP_FUNCTION_CONTEXT_TIME = 'gcp.function.context.time';
+
+/**
+ * Type for {@link GCP_FUNCTION_CONTEXT_TIME} gcp.function.context.time
+ */
+export type GCP_FUNCTION_CONTEXT_TIME_TYPE = string;
+
+// Path: model/attributes/gcp/gcp__function__context__timestamp.json
+
+/**
+ * The legacy timestamp of the GCP Cloud Function event `gcp.function.context.timestamp`
+ *
+ * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_TIMESTAMP_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "2024-01-01T00:00:00.000Z"
+ */
+export const GCP_FUNCTION_CONTEXT_TIMESTAMP = 'gcp.function.context.timestamp';
+
+/**
+ * Type for {@link GCP_FUNCTION_CONTEXT_TIMESTAMP} gcp.function.context.timestamp
+ */
+export type GCP_FUNCTION_CONTEXT_TIMESTAMP_TYPE = string;
+
+// Path: model/attributes/gcp/gcp__function__context__type.json
+
+/**
+ * The type of the GCP Cloud Function event context `gcp.function.context.type`
+ *
+ * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_TYPE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "cloud_functions.context"
+ */
+export const GCP_FUNCTION_CONTEXT_TYPE = 'gcp.function.context.type';
+
+/**
+ * Type for {@link GCP_FUNCTION_CONTEXT_TYPE} gcp.function.context.type
+ */
+export type GCP_FUNCTION_CONTEXT_TYPE_TYPE = string;
+
 // Path: model/attributes/gen_ai/gen_ai__agent__name.json
 
 /**
@@ -12144,6 +12324,15 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [FRAMES_SLOW]: 'integer',
   [FRAMES_TOTAL]: 'integer',
   [FS_ERROR]: 'string',
+  [GCP_FUNCTION_CONTEXT_EVENTID]: 'string',
+  [GCP_FUNCTION_CONTEXT_EVENTTYPE]: 'string',
+  [GCP_FUNCTION_CONTEXT_ID]: 'string',
+  [GCP_FUNCTION_CONTEXT_RESOURCE]: 'string',
+  [GCP_FUNCTION_CONTEXT_SOURCE]: 'string',
+  [GCP_FUNCTION_CONTEXT_SPECVERSION]: 'string',
+  [GCP_FUNCTION_CONTEXT_TIME]: 'string',
+  [GCP_FUNCTION_CONTEXT_TIMESTAMP]: 'string',
+  [GCP_FUNCTION_CONTEXT_TYPE]: 'string',
   [GEN_AI_AGENT_NAME]: 'string',
   [GEN_AI_CONTEXT_UTILIZATION]: 'double',
   [GEN_AI_CONTEXT_WINDOW_SIZE]: 'integer',
@@ -12714,6 +12903,15 @@ export type AttributeName =
   | typeof FRAMES_SLOW
   | typeof FRAMES_TOTAL
   | typeof FS_ERROR
+  | typeof GCP_FUNCTION_CONTEXT_EVENTID
+  | typeof GCP_FUNCTION_CONTEXT_EVENTTYPE
+  | typeof GCP_FUNCTION_CONTEXT_ID
+  | typeof GCP_FUNCTION_CONTEXT_RESOURCE
+  | typeof GCP_FUNCTION_CONTEXT_SOURCE
+  | typeof GCP_FUNCTION_CONTEXT_SPECVERSION
+  | typeof GCP_FUNCTION_CONTEXT_TIME
+  | typeof GCP_FUNCTION_CONTEXT_TIMESTAMP
+  | typeof GCP_FUNCTION_CONTEXT_TYPE
   | typeof GEN_AI_AGENT_NAME
   | typeof GEN_AI_CONTEXT_UTILIZATION
   | typeof GEN_AI_CONTEXT_WINDOW_SIZE
@@ -15551,6 +15749,96 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     sdks: ['javascript-node'],
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
+  },
+  [GCP_FUNCTION_CONTEXT_EVENTID]: {
+    brief: 'The legacy event ID of the GCP Cloud Function event',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '1234567890',
+    changelog: [{ version: 'next', prs: [363], description: 'Added gcp.function.context.eventId attribute' }],
+  },
+  [GCP_FUNCTION_CONTEXT_EVENTTYPE]: {
+    brief: 'The type of the GCP Cloud Function event',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'google.pubsub.topic.publish',
+    changelog: [{ version: 'next', prs: [363], description: 'Added gcp.function.context.eventType attribute' }],
+  },
+  [GCP_FUNCTION_CONTEXT_ID]: {
+    brief: 'The unique ID of the GCP Cloud Function event',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '1234567890',
+    changelog: [{ version: 'next', prs: [363], description: 'Added gcp.function.context.id attribute' }],
+  },
+  [GCP_FUNCTION_CONTEXT_RESOURCE]: {
+    brief: 'The resource that triggered the GCP Cloud Function event',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'projects/my-project/topics/my-topic',
+    changelog: [{ version: 'next', prs: [363], description: 'Added gcp.function.context.resource attribute' }],
+  },
+  [GCP_FUNCTION_CONTEXT_SOURCE]: {
+    brief: 'The source of the GCP Cloud Function event',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '//pubsub.googleapis.com/projects/my-project/topics/my-topic',
+    changelog: [{ version: 'next', prs: [363], description: 'Added gcp.function.context.source attribute' }],
+  },
+  [GCP_FUNCTION_CONTEXT_SPECVERSION]: {
+    brief: 'The CloudEvents specification version of the GCP Cloud Function event',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '1.0',
+    changelog: [{ version: 'next', prs: [363], description: 'Added gcp.function.context.specversion attribute' }],
+  },
+  [GCP_FUNCTION_CONTEXT_TIME]: {
+    brief: 'The timestamp of the GCP Cloud Function event',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '2024-01-01T00:00:00.000Z',
+    changelog: [{ version: 'next', prs: [363], description: 'Added gcp.function.context.time attribute' }],
+  },
+  [GCP_FUNCTION_CONTEXT_TIMESTAMP]: {
+    brief: 'The legacy timestamp of the GCP Cloud Function event',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '2024-01-01T00:00:00.000Z',
+    changelog: [{ version: 'next', prs: [363], description: 'Added gcp.function.context.timestamp attribute' }],
+  },
+  [GCP_FUNCTION_CONTEXT_TYPE]: {
+    brief: 'The type of the GCP Cloud Function event context',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'cloud_functions.context',
+    changelog: [{ version: 'next', prs: [363], description: 'Added gcp.function.context.type attribute' }],
   },
   [GEN_AI_AGENT_NAME]: {
     brief: 'The name of the agent being used.',
@@ -20260,6 +20548,15 @@ export type Attributes = {
   [FRAMES_SLOW]?: FRAMES_SLOW_TYPE;
   [FRAMES_TOTAL]?: FRAMES_TOTAL_TYPE;
   [FS_ERROR]?: FS_ERROR_TYPE;
+  [GCP_FUNCTION_CONTEXT_EVENTID]?: GCP_FUNCTION_CONTEXT_EVENTID_TYPE;
+  [GCP_FUNCTION_CONTEXT_EVENTTYPE]?: GCP_FUNCTION_CONTEXT_EVENTTYPE_TYPE;
+  [GCP_FUNCTION_CONTEXT_ID]?: GCP_FUNCTION_CONTEXT_ID_TYPE;
+  [GCP_FUNCTION_CONTEXT_RESOURCE]?: GCP_FUNCTION_CONTEXT_RESOURCE_TYPE;
+  [GCP_FUNCTION_CONTEXT_SOURCE]?: GCP_FUNCTION_CONTEXT_SOURCE_TYPE;
+  [GCP_FUNCTION_CONTEXT_SPECVERSION]?: GCP_FUNCTION_CONTEXT_SPECVERSION_TYPE;
+  [GCP_FUNCTION_CONTEXT_TIME]?: GCP_FUNCTION_CONTEXT_TIME_TYPE;
+  [GCP_FUNCTION_CONTEXT_TIMESTAMP]?: GCP_FUNCTION_CONTEXT_TIMESTAMP_TYPE;
+  [GCP_FUNCTION_CONTEXT_TYPE]?: GCP_FUNCTION_CONTEXT_TYPE_TYPE;
   [GEN_AI_AGENT_NAME]?: GEN_AI_AGENT_NAME_TYPE;
   [GEN_AI_CONTEXT_UTILIZATION]?: GEN_AI_CONTEXT_UTILIZATION_TYPE;
   [GEN_AI_CONTEXT_WINDOW_SIZE]?: GEN_AI_CONTEXT_WINDOW_SIZE_TYPE;
