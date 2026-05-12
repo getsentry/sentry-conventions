@@ -733,6 +733,26 @@ export const AI_WARNINGS = 'ai.warnings';
  */
 export type AI_WARNINGS_TYPE = Array<string>;
 
+// Path: model/attributes/angular/angular__version.json
+
+/**
+ * The version of the Angular framework `angular.version`
+ *
+ * Attribute Value Type: `string` {@link ANGULAR_VERSION_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "17.1.0"
+ */
+export const ANGULAR_VERSION = 'angular.version';
+
+/**
+ * Type for {@link ANGULAR_VERSION} angular.version
+ */
+export type ANGULAR_VERSION_TYPE = string;
+
 // Path: model/attributes/app/app__app_build.json
 
 /**
@@ -11989,6 +12009,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [AI_TOTAL_COST]: 'double',
   [AI_TOTAL_TOKENS_USED]: 'integer',
   [AI_WARNINGS]: 'string[]',
+  [ANGULAR_VERSION]: 'string',
   [APP_APP_BUILD]: 'string',
   [APP_APP_IDENTIFIER]: 'string',
   [APP_APP_NAME]: 'string',
@@ -12559,6 +12580,7 @@ export type AttributeName =
   | typeof AI_TOTAL_COST
   | typeof AI_TOTAL_TOKENS_USED
   | typeof AI_WARNINGS
+  | typeof ANGULAR_VERSION
   | typeof APP_APP_BUILD
   | typeof APP_APP_IDENTIFIER
   | typeof APP_APP_NAME
@@ -13595,6 +13617,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.5.0', prs: [264] },
       { version: '0.1.0', prs: [55] },
     ],
+  },
+  [ANGULAR_VERSION]: {
+    brief: 'The version of the Angular framework',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '17.1.0',
+    changelog: [{ version: 'next', prs: [363], description: 'Added angular.version attribute' }],
   },
   [APP_APP_BUILD]: {
     brief: 'Internal build identifier, as it appears on the platform.',
@@ -20105,6 +20137,7 @@ export type Attributes = {
   [AI_TOTAL_COST]?: AI_TOTAL_COST_TYPE;
   [AI_TOTAL_TOKENS_USED]?: AI_TOTAL_TOKENS_USED_TYPE;
   [AI_WARNINGS]?: AI_WARNINGS_TYPE;
+  [ANGULAR_VERSION]?: ANGULAR_VERSION_TYPE;
   [APP_APP_BUILD]?: APP_APP_BUILD_TYPE;
   [APP_APP_IDENTIFIER]?: APP_APP_IDENTIFIER_TYPE;
   [APP_APP_NAME]?: APP_APP_NAME_TYPE;

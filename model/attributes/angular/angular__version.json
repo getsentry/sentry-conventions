@@ -1,0 +1,17 @@
+{
+  "key": "angular.version",
+  "brief": "The version of the Angular framework",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "17.1.0",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [363],
+      "description": "Added angular.version attribute"
+    }
+  ]
+}
