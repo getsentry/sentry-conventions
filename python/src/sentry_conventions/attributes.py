@@ -4913,6 +4913,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "query.id='123'"
     """
 
+    # Path: model/attributes/react/react__version.json
+    REACT_VERSION: Literal["react.version"] = "react.version"
+    """The version of the React framework
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "18.2.0"
+    """
+
     # Path: model/attributes/release.json
     RELEASE: Literal["release"] = "release"
     """The sentry release.
@@ -12127,6 +12137,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[103]),
         ],
     ),
+    "react.version": AttributeMetadata(
+        brief="The version of the React framework",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="18.2.0",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[363], description="Added react.version attribute"
+            ),
+        ],
+    ),
     "release": AttributeMetadata(
         brief="The sentry release.",
         type=AttributeType.STRING,
@@ -14346,6 +14368,7 @@ Attributes = TypedDict(
         "process.runtime.name": str,
         "process.runtime.version": str,
         "query.<key>": str,
+        "react.version": str,
         "release": str,
         "remix.action_form_data.<key>": str,
         "replay_id": str,
