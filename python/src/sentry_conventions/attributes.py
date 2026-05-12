@@ -2376,9 +2376,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "ENOENT: no such file or directory"
     """
 
-    # Path: model/attributes/gcp/gcp__function__context__eventId.json
-    GCP_FUNCTION_CONTEXT_EVENTID: Literal["gcp.function.context.eventId"] = (
-        "gcp.function.context.eventId"
+    # Path: model/attributes/gcp/gcp__function__context__event_id.json
+    GCP_FUNCTION_CONTEXT_EVENT_ID: Literal["gcp.function.context.event_id"] = (
+        "gcp.function.context.event_id"
     )
     """The legacy event ID of the GCP Cloud Function event
 
@@ -2388,9 +2388,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "1234567890"
     """
 
-    # Path: model/attributes/gcp/gcp__function__context__eventType.json
-    GCP_FUNCTION_CONTEXT_EVENTTYPE: Literal["gcp.function.context.eventType"] = (
-        "gcp.function.context.eventType"
+    # Path: model/attributes/gcp/gcp__function__context__event_type.json
+    GCP_FUNCTION_CONTEXT_EVENT_TYPE: Literal["gcp.function.context.event_type"] = (
+        "gcp.function.context.event_type"
     )
     """The type of the GCP Cloud Function event
 
@@ -9448,7 +9448,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
-    "gcp.function.context.eventId": AttributeMetadata(
+    "gcp.function.context.event_id": AttributeMetadata(
         brief="The legacy event ID of the GCP Cloud Function event",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
@@ -9457,12 +9457,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[363],
-                description="Added gcp.function.context.eventId attribute",
+                prs=[372],
+                description="Added gcp.function.context.event_id attribute",
             ),
         ],
     ),
-    "gcp.function.context.eventType": AttributeMetadata(
+    "gcp.function.context.event_type": AttributeMetadata(
         brief="The type of the GCP Cloud Function event",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
@@ -9471,8 +9471,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[363],
-                description="Added gcp.function.context.eventType attribute",
+                prs=[372],
+                description="Added gcp.function.context.event_type attribute",
             ),
         ],
     ),
@@ -14357,8 +14357,8 @@ Attributes = TypedDict(
         "frames.slow": int,
         "frames.total": int,
         "fs_error": str,
-        "gcp.function.context.eventId": str,
-        "gcp.function.context.eventType": str,
+        "gcp.function.context.event_id": str,
+        "gcp.function.context.event_type": str,
         "gcp.function.context.id": str,
         "gcp.function.context.resource": str,
         "gcp.function.context.source": str,

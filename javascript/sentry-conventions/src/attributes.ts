@@ -4013,12 +4013,12 @@ export const FS_ERROR = 'fs_error';
  */
 export type FS_ERROR_TYPE = string;
 
-// Path: model/attributes/gcp/gcp__function__context__eventId.json
+// Path: model/attributes/gcp/gcp__function__context__event_id.json
 
 /**
- * The legacy event ID of the GCP Cloud Function event `gcp.function.context.eventId`
+ * The legacy event ID of the GCP Cloud Function event `gcp.function.context.event_id`
  *
- * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_EVENTID_TYPE}
+ * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_EVENT_ID_TYPE}
  *
  * Contains PII: false
  *
@@ -4026,19 +4026,19 @@ export type FS_ERROR_TYPE = string;
  *
  * @example "1234567890"
  */
-export const GCP_FUNCTION_CONTEXT_EVENTID = 'gcp.function.context.eventId';
+export const GCP_FUNCTION_CONTEXT_EVENT_ID = 'gcp.function.context.event_id';
 
 /**
- * Type for {@link GCP_FUNCTION_CONTEXT_EVENTID} gcp.function.context.eventId
+ * Type for {@link GCP_FUNCTION_CONTEXT_EVENT_ID} gcp.function.context.event_id
  */
-export type GCP_FUNCTION_CONTEXT_EVENTID_TYPE = string;
+export type GCP_FUNCTION_CONTEXT_EVENT_ID_TYPE = string;
 
-// Path: model/attributes/gcp/gcp__function__context__eventType.json
+// Path: model/attributes/gcp/gcp__function__context__event_type.json
 
 /**
- * The type of the GCP Cloud Function event `gcp.function.context.eventType`
+ * The type of the GCP Cloud Function event `gcp.function.context.event_type`
  *
- * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_EVENTTYPE_TYPE}
+ * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_EVENT_TYPE_TYPE}
  *
  * Contains PII: false
  *
@@ -4046,12 +4046,12 @@ export type GCP_FUNCTION_CONTEXT_EVENTID_TYPE = string;
  *
  * @example "google.pubsub.topic.publish"
  */
-export const GCP_FUNCTION_CONTEXT_EVENTTYPE = 'gcp.function.context.eventType';
+export const GCP_FUNCTION_CONTEXT_EVENT_TYPE = 'gcp.function.context.event_type';
 
 /**
- * Type for {@link GCP_FUNCTION_CONTEXT_EVENTTYPE} gcp.function.context.eventType
+ * Type for {@link GCP_FUNCTION_CONTEXT_EVENT_TYPE} gcp.function.context.event_type
  */
-export type GCP_FUNCTION_CONTEXT_EVENTTYPE_TYPE = string;
+export type GCP_FUNCTION_CONTEXT_EVENT_TYPE_TYPE = string;
 
 // Path: model/attributes/gcp/gcp__function__context__id.json
 
@@ -12324,8 +12324,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [FRAMES_SLOW]: 'integer',
   [FRAMES_TOTAL]: 'integer',
   [FS_ERROR]: 'string',
-  [GCP_FUNCTION_CONTEXT_EVENTID]: 'string',
-  [GCP_FUNCTION_CONTEXT_EVENTTYPE]: 'string',
+  [GCP_FUNCTION_CONTEXT_EVENT_ID]: 'string',
+  [GCP_FUNCTION_CONTEXT_EVENT_TYPE]: 'string',
   [GCP_FUNCTION_CONTEXT_ID]: 'string',
   [GCP_FUNCTION_CONTEXT_RESOURCE]: 'string',
   [GCP_FUNCTION_CONTEXT_SOURCE]: 'string',
@@ -12903,8 +12903,8 @@ export type AttributeName =
   | typeof FRAMES_SLOW
   | typeof FRAMES_TOTAL
   | typeof FS_ERROR
-  | typeof GCP_FUNCTION_CONTEXT_EVENTID
-  | typeof GCP_FUNCTION_CONTEXT_EVENTTYPE
+  | typeof GCP_FUNCTION_CONTEXT_EVENT_ID
+  | typeof GCP_FUNCTION_CONTEXT_EVENT_TYPE
   | typeof GCP_FUNCTION_CONTEXT_ID
   | typeof GCP_FUNCTION_CONTEXT_RESOURCE
   | typeof GCP_FUNCTION_CONTEXT_SOURCE
@@ -15750,7 +15750,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['javascript-node'],
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
-  [GCP_FUNCTION_CONTEXT_EVENTID]: {
+  [GCP_FUNCTION_CONTEXT_EVENT_ID]: {
     brief: 'The legacy event ID of the GCP Cloud Function event',
     type: 'string',
     pii: {
@@ -15758,9 +15758,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '1234567890',
-    changelog: [{ version: 'next', prs: [363], description: 'Added gcp.function.context.eventId attribute' }],
+    changelog: [{ version: 'next', prs: [372], description: 'Added gcp.function.context.event_id attribute' }],
   },
-  [GCP_FUNCTION_CONTEXT_EVENTTYPE]: {
+  [GCP_FUNCTION_CONTEXT_EVENT_TYPE]: {
     brief: 'The type of the GCP Cloud Function event',
     type: 'string',
     pii: {
@@ -15768,7 +15768,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'google.pubsub.topic.publish',
-    changelog: [{ version: 'next', prs: [363], description: 'Added gcp.function.context.eventType attribute' }],
+    changelog: [{ version: 'next', prs: [372], description: 'Added gcp.function.context.event_type attribute' }],
   },
   [GCP_FUNCTION_CONTEXT_ID]: {
     brief: 'The unique ID of the GCP Cloud Function event',
@@ -20548,8 +20548,8 @@ export type Attributes = {
   [FRAMES_SLOW]?: FRAMES_SLOW_TYPE;
   [FRAMES_TOTAL]?: FRAMES_TOTAL_TYPE;
   [FS_ERROR]?: FS_ERROR_TYPE;
-  [GCP_FUNCTION_CONTEXT_EVENTID]?: GCP_FUNCTION_CONTEXT_EVENTID_TYPE;
-  [GCP_FUNCTION_CONTEXT_EVENTTYPE]?: GCP_FUNCTION_CONTEXT_EVENTTYPE_TYPE;
+  [GCP_FUNCTION_CONTEXT_EVENT_ID]?: GCP_FUNCTION_CONTEXT_EVENT_ID_TYPE;
+  [GCP_FUNCTION_CONTEXT_EVENT_TYPE]?: GCP_FUNCTION_CONTEXT_EVENT_TYPE_TYPE;
   [GCP_FUNCTION_CONTEXT_ID]?: GCP_FUNCTION_CONTEXT_ID_TYPE;
   [GCP_FUNCTION_CONTEXT_RESOURCE]?: GCP_FUNCTION_CONTEXT_RESOURCE_TYPE;
   [GCP_FUNCTION_CONTEXT_SOURCE]?: GCP_FUNCTION_CONTEXT_SOURCE_TYPE;

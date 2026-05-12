@@ -1,5 +1,5 @@
 {
-  "key": "gcp.function.context.eventId",
+  "key": "gcp.function.context.event_id",
   "brief": "The legacy event ID of the GCP Cloud Function event",
   "type": "string",
   "pii": {
@@ -10,8 +10,8 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [363],
-      "description": "Added gcp.function.context.eventId attribute"
+      "prs": [372],
+      "description": "Added gcp.function.context.event_id attribute"
     }
   ]
 }
