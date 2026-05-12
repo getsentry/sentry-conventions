@@ -1,0 +1,17 @@
+{
+  "key": "aws.cloudwatch.logs.log_group",
+  "brief": "The name of the CloudWatch Logs log group",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "/aws/lambda/my-function",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [363],
+      "description": "Added aws.cloudwatch.logs.log_group attribute"
+    }
+  ]
+}
