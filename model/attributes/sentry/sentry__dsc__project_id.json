@@ -1,17 +1,17 @@
 {
   "key": "sentry.dsc.project_id",
   "brief": "The ID of the project where the trace originated (i.e. the project of the SDK that started the trace). Propagated through the dynamic sampling context and set by Relay during ingestion.",
-  "type": "string",
+  "type": "integer",
   "pii": {
     "key": "false"
   },
   "is_in_otel": false,
-  "example": "12345",
+  "example": 12345,
   "changelog": [
     {
       "version": "next",
       "prs": [358],
-      "description": "Added sentry.dsc.root_project attribute"
+      "description": "Add sentry.dsc.project_id as an attribute"
     }
   ]
 }
