@@ -3,7 +3,7 @@
   "brief": "Whether the missing instrumentation is a CommonJS module",
   "type": "boolean",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": true,

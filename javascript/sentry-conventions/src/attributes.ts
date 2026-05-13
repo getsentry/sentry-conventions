@@ -7456,7 +7456,7 @@ export type MIDDLEWARE_NAME_TYPE = string;
  *
  * Attribute Value Type: `boolean` {@link MISSING_INSTRUMENTATION_JAVASCRIPT_IS_CJS_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -7476,7 +7476,7 @@ export type MISSING_INSTRUMENTATION_JAVASCRIPT_IS_CJS_TYPE = boolean;
  *
  * Attribute Value Type: `string` {@link MISSING_INSTRUMENTATION_PACKAGE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -17654,7 +17654,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Whether the missing instrumentation is a CommonJS module',
     type: 'boolean',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: true,
@@ -17666,7 +17666,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The package name of the missing instrumentation',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'express',

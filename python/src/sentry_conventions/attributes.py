@@ -4265,7 +4265,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether the missing instrumentation is a CommonJS module
 
     Type: bool
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: true
     """
@@ -4277,7 +4277,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The package name of the missing instrumentation
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "express"
     """
@@ -11400,7 +11400,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "missing_instrumentation.javascript.is_cjs": AttributeMetadata(
         brief="Whether the missing instrumentation is a CommonJS module",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=True,
         changelog=[
@@ -11414,7 +11414,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "missing_instrumentation.package": AttributeMetadata(
         brief="The package name of the missing instrumentation",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="express",
         changelog=[
