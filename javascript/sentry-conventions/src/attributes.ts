@@ -8684,7 +8684,7 @@ export type PROCESS_RUNTIME_VERSION_TYPE = string;
  *
  * Attribute Value Type: `number` {@link PROFILE_START_TIMESTAMP_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -18341,7 +18341,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The timestamp when the profile started',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 1700000000.123,

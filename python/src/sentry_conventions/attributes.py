@@ -4908,7 +4908,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The timestamp when the profile started
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 1700000000.123
     """
@@ -12127,7 +12127,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "profile.start_timestamp": AttributeMetadata(
         brief="The timestamp when the profile started",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1700000000.123,
         changelog=[
