@@ -3,7 +3,7 @@
   "brief": "The name of the CloudWatch Logs log group",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "/aws/lambda/my-function",

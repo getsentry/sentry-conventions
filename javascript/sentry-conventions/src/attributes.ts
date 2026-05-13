@@ -1292,7 +1292,7 @@ export type APP_VITALS_TTID_VALUE_TYPE = number;
  *
  * Attribute Value Type: `string` {@link AWS_CLOUDWATCH_LOGS_LOG_GROUP_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -1312,7 +1312,7 @@ export type AWS_CLOUDWATCH_LOGS_LOG_GROUP_TYPE = string;
  *
  * Attribute Value Type: `string` {@link AWS_CLOUDWATCH_LOGS_LOG_STREAM_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -1332,7 +1332,7 @@ export type AWS_CLOUDWATCH_LOGS_LOG_STREAM_TYPE = string;
  *
  * Attribute Value Type: `string` {@link AWS_CLOUDWATCH_LOGS_URL_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -1352,7 +1352,7 @@ export type AWS_CLOUDWATCH_LOGS_URL_TYPE = string;
  *
  * Attribute Value Type: `string` {@link AWS_LAMBDA_AWS_REQUEST_ID_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -1372,7 +1372,7 @@ export type AWS_LAMBDA_AWS_REQUEST_ID_TYPE = string;
  *
  * Attribute Value Type: `number` {@link AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -1392,7 +1392,7 @@ export type AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS_TYPE = number;
  *
  * Attribute Value Type: `string` {@link AWS_LAMBDA_FUNCTION_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -1412,7 +1412,7 @@ export type AWS_LAMBDA_FUNCTION_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link AWS_LAMBDA_FUNCTION_VERSION_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -1432,7 +1432,7 @@ export type AWS_LAMBDA_FUNCTION_VERSION_TYPE = string;
  *
  * Attribute Value Type: `string` {@link AWS_LAMBDA_INVOKED_FUNCTION_ARN_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -1452,7 +1452,7 @@ export type AWS_LAMBDA_INVOKED_FUNCTION_ARN_TYPE = string;
  *
  * Attribute Value Type: `number` {@link AWS_LAMBDA_REMAINING_TIME_IN_MILLIS_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -14177,7 +14177,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The name of the CloudWatch Logs log group',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: '/aws/lambda/my-function',
@@ -14187,7 +14187,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The name of the CloudWatch Logs log stream',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: '2024/01/01/[$LATEST]abcdef1234567890',
@@ -14197,7 +14197,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The URL to the CloudWatch Logs log group',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups/log-group/my-log-group',
@@ -14207,7 +14207,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The AWS request ID as received by the Lambda function runtime',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: '8476a536-e9f4-11e8-9739-2dfe598c3fcd',
@@ -14217,7 +14217,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The execution duration of the Lambda function invocation in milliseconds',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 1234.56,
@@ -14229,7 +14229,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The name of the Lambda function',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'my-function',
@@ -14239,7 +14239,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The version of the Lambda function',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: '$LATEST',
@@ -14249,7 +14249,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The full ARN of the Lambda function that was invoked',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'arn:aws:lambda:us-east-1:123456789012:function:my-function',
@@ -14259,7 +14259,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The remaining time in milliseconds before the Lambda function times out',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 5000,

@@ -3,7 +3,7 @@
   "brief": "The execution duration of the Lambda function invocation in milliseconds",
   "type": "double",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": 1234.56,

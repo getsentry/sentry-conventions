@@ -944,7 +944,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the CloudWatch Logs log group
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "/aws/lambda/my-function"
     """
@@ -956,7 +956,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the CloudWatch Logs log stream
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "2024/01/01/[$LATEST]abcdef1234567890"
     """
@@ -968,7 +968,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The URL to the CloudWatch Logs log group
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups/log-group/my-log-group"
     """
@@ -980,7 +980,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The AWS request ID as received by the Lambda function runtime
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "8476a536-e9f4-11e8-9739-2dfe598c3fcd"
     """
@@ -992,7 +992,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The execution duration of the Lambda function invocation in milliseconds
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 1234.56
     """
@@ -1004,7 +1004,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the Lambda function
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "my-function"
     """
@@ -1016,7 +1016,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The version of the Lambda function
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "$LATEST"
     """
@@ -1028,7 +1028,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The full ARN of the Lambda function that was invoked
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "arn:aws:lambda:us-east-1:123456789012:function:my-function"
     """
@@ -1040,7 +1040,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The remaining time in milliseconds before the Lambda function times out
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: 5000
     """
@@ -7719,7 +7719,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.cloudwatch.logs.log_group": AttributeMetadata(
         brief="The name of the CloudWatch Logs log group",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="/aws/lambda/my-function",
         changelog=[
@@ -7733,7 +7733,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.cloudwatch.logs.log_stream": AttributeMetadata(
         brief="The name of the CloudWatch Logs log stream",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="2024/01/01/[$LATEST]abcdef1234567890",
         changelog=[
@@ -7747,7 +7747,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.cloudwatch.logs.url": AttributeMetadata(
         brief="The URL to the CloudWatch Logs log group",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups/log-group/my-log-group",
         changelog=[
@@ -7761,7 +7761,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.lambda.aws_request_id": AttributeMetadata(
         brief="The AWS request ID as received by the Lambda function runtime",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="8476a536-e9f4-11e8-9739-2dfe598c3fcd",
         changelog=[
@@ -7775,7 +7775,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.lambda.execution_duration_in_millis": AttributeMetadata(
         brief="The execution duration of the Lambda function invocation in milliseconds",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1234.56,
         changelog=[
@@ -7789,7 +7789,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.lambda.function_name": AttributeMetadata(
         brief="The name of the Lambda function",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="my-function",
         changelog=[
@@ -7803,7 +7803,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.lambda.function_version": AttributeMetadata(
         brief="The version of the Lambda function",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="$LATEST",
         changelog=[
@@ -7817,7 +7817,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.lambda.invoked_function_arn": AttributeMetadata(
         brief="The full ARN of the Lambda function that was invoked",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="arn:aws:lambda:us-east-1:123456789012:function:my-function",
         changelog=[
@@ -7831,7 +7831,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.lambda.remaining_time_in_millis": AttributeMetadata(
         brief="The remaining time in milliseconds before the Lambda function times out",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=5000,
         changelog=[

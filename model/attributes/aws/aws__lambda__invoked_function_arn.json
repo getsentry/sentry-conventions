@@ -3,7 +3,7 @@
   "brief": "The full ARN of the Lambda function that was invoked",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "arn:aws:lambda:us-east-1:123456789012:function:my-function",

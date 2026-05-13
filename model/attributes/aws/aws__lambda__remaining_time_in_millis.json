@@ -3,7 +3,7 @@
   "brief": "The remaining time in milliseconds before the Lambda function times out",
   "type": "double",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": 5000,
