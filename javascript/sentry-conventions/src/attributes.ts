@@ -495,7 +495,7 @@ export type AI_SEED_TYPE = string;
  *
  * Attribute Value Type: `boolean` {@link AI_STREAMING_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -6039,7 +6039,7 @@ export type HTTP_TARGET_TYPE = string;
  *
  * Attribute Value Type: `string` {@link HTTP_URL_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: Yes
  *
@@ -10728,7 +10728,7 @@ export type UI_ELEMENT_WIDTH_TYPE = number;
  *
  * Attribute Value Type: `string` {@link URL_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: No
  *
@@ -13427,7 +13427,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Whether the request was streamed back.',
     type: 'boolean',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: true,
@@ -16801,7 +16801,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The URL of the resource that was fetched.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: true,
     example: 'https://example.com/test?foo=bar#buzz',
@@ -19461,7 +19461,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The URL of the resource that was fetched.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: false,
     example: 'https://example.com/test?foo=bar#buzz',

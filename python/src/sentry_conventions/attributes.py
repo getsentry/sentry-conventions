@@ -518,7 +518,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether the request was streamed back.
 
     Type: bool
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Aliases: gen_ai.response.streaming
     DEPRECATED: Use gen_ai.response.streaming instead
@@ -3509,7 +3509,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The URL of the resource that was fetched.
 
     Type: str
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: Yes
     Aliases: url.full, url
     DEPRECATED: Use url.full instead
@@ -6080,7 +6080,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The URL of the resource that was fetched.
 
     Type: str
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: No
     Aliases: url.full, http.url
     DEPRECATED: Use url.full instead
@@ -6901,7 +6901,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.streaming": AttributeMetadata(
         brief="Whether the request was streamed back.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=True,
         deprecation=DeprecationInfo(
@@ -10547,7 +10547,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.url": AttributeMetadata(
         brief="The URL of the resource that was fetched.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         example="https://example.com/test?foo=bar#buzz",
         deprecation=DeprecationInfo(replacement="url.full"),
@@ -13426,7 +13426,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "url": AttributeMetadata(
         brief="The URL of the resource that was fetched.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         example="https://example.com/test?foo=bar#buzz",
         deprecation=DeprecationInfo(replacement="url.full"),
