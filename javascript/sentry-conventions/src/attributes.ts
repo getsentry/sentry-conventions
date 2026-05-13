@@ -495,7 +495,7 @@ export type AI_SEED_TYPE = string;
  *
  * Attribute Value Type: `boolean` {@link AI_STREAMING_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -4631,7 +4631,7 @@ export type GEN_AI_RESPONSE_MODEL_TYPE = string;
  *
  * Attribute Value Type: `boolean` {@link GEN_AI_RESPONSE_STREAMING_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -5364,7 +5364,7 @@ export type HTTP_METHOD_TYPE = string;
  *
  * Attribute Value Type: `string` {@link HTTP_QUERY_TYPE}
  *
- * Contains PII: maybe - Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.
+ * Contains PII: true - Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.
  *
  * Attribute defined in OTEL: No
  *
@@ -6039,7 +6039,7 @@ export type HTTP_TARGET_TYPE = string;
  *
  * Attribute Value Type: `string` {@link HTTP_URL_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: Yes
  *
@@ -10293,7 +10293,7 @@ export type SERVICE_VERSION_TYPE = string;
  *
  * Attribute Value Type: `number` {@link THREAD_ID_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -10728,7 +10728,7 @@ export type UI_ELEMENT_WIDTH_TYPE = number;
  *
  * Attribute Value Type: `string` {@link URL_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: No
  *
@@ -10791,7 +10791,7 @@ export type URL_FRAGMENT_TYPE = string;
  *
  * Attribute Value Type: `string` {@link URL_FULL_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: Yes
  *
@@ -10877,7 +10877,7 @@ export type URL_PORT_TYPE = number;
  *
  * Attribute Value Type: `string` {@link URL_QUERY_TYPE}
  *
- * Contains PII: maybe - Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.
+ * Contains PII: true - Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.
  *
  * Attribute defined in OTEL: Yes
  *
@@ -13427,7 +13427,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Whether the request was streamed back.',
     type: 'boolean',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: true,
@@ -15928,7 +15928,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: "Whether or not the AI model call's response was streamed back asynchronously",
     type: 'boolean',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: true,
@@ -16400,7 +16400,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'The query string present in the URL. Note that this contains the leading ? character, while the `url.query` attribute does not.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
       reason:
         'Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.',
     },
@@ -16801,7 +16801,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The URL of the resource that was fetched.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: true,
     example: 'https://example.com/test?foo=bar#buzz',
@@ -19197,7 +19197,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Current “managed” thread ID.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 56,
@@ -19461,7 +19461,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The URL of the resource that was fetched.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: false,
     example: 'https://example.com/test?foo=bar#buzz',
@@ -19498,7 +19498,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The URL of the resource that was fetched.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: true,
     example: 'https://example.com/test?foo=bar#buzz',
@@ -19543,7 +19543,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'The query string present in the URL. Note that this does not contain the leading ? character, while the `http.query` attribute does.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
       reason:
         'Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.',
     },

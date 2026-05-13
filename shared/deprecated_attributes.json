@@ -545,7 +545,7 @@
       "brief": "The URL of the resource that was fetched.",
       "type": "string",
       "pii": {
-        "key": "maybe"
+        "key": "true"
       },
       "is_in_otel": false,
       "example": "https://example.com/test?foo=bar#buzz",
@@ -1091,7 +1091,7 @@
       "brief": "Whether the request was streamed back.",
       "type": "boolean",
       "pii": {
-        "key": "false"
+        "key": "maybe"
       },
       "is_in_otel": false,
       "example": true,
@@ -2454,7 +2454,7 @@
       "brief": "The URL of the resource that was fetched.",
       "type": "string",
       "pii": {
-        "key": "maybe"
+        "key": "true"
       },
       "is_in_otel": true,
       "example": "https://example.com/test?foo=bar#buzz",
