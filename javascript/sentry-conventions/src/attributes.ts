@@ -10293,7 +10293,7 @@ export type SERVICE_VERSION_TYPE = string;
  *
  * Attribute Value Type: `string` {@link STATE_TYPE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -19219,7 +19219,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The type of state management library',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'redux',

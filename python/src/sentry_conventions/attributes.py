@@ -5761,7 +5761,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The type of state management library
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "redux"
     """
@@ -13022,7 +13022,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "state.type": AttributeMetadata(
         brief="The type of state management library",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="redux",
         changelog=[
