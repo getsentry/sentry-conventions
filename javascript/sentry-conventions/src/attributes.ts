@@ -10422,7 +10422,7 @@ export type TRANSACTION_TYPE = string;
  *
  * Attribute Value Type: `string` {@link TRPC_PROCEDURE_PATH_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -10442,7 +10442,7 @@ export type TRPC_PROCEDURE_PATH_TYPE = string;
  *
  * Attribute Value Type: `string` {@link TRPC_PROCEDURE_TYPE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -19332,7 +19332,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The path of the tRPC procedure being called',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'user.getById',
@@ -19342,7 +19342,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The type of the tRPC procedure',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'query',

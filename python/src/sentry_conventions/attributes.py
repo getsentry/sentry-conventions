@@ -5829,7 +5829,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The path of the tRPC procedure being called
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "user.getById"
     """
@@ -5839,7 +5839,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The type of the tRPC procedure
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "query"
     """
@@ -13136,7 +13136,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "trpc.procedure_path": AttributeMetadata(
         brief="The path of the tRPC procedure being called",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="user.getById",
         changelog=[
@@ -13150,7 +13150,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "trpc.procedure_type": AttributeMetadata(
         brief="The type of the tRPC procedure",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="query",
         changelog=[
