@@ -3,7 +3,7 @@
   "brief": "Whether the request was streamed back.",
   "type": "boolean",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": true,
