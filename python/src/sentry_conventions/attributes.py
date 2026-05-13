@@ -2716,7 +2716,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether or not the AI model call's response was streamed back asynchronously
 
     Type: bool
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Aliases: ai.streaming
     Example: true
@@ -3124,7 +3124,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The query string present in the URL. Note that this contains the leading ? character, while the `url.query` attribute does not.
 
     Type: str
-    Contains PII: maybe - Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.
+    Contains PII: true - Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.
     Defined in OTEL: No
     Example: "?foo=bar&bar=baz"
     """
@@ -5761,7 +5761,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Current “managed” thread ID.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: 56
     """
@@ -6003,7 +6003,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The URL of the resource that was fetched.
 
     Type: str
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: Yes
     Aliases: http.url, url
     Example: "https://example.com/test?foo=bar#buzz"
@@ -6048,7 +6048,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The query string present in the URL. Note that this does not contain the leading ? character, while the `http.query` attribute does.
 
     Type: str
-    Contains PII: maybe - Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.
+    Contains PII: true - Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.
     Defined in OTEL: Yes
     Example: "foo=bar&bar=baz"
     """
@@ -9685,7 +9685,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.response.streaming": AttributeMetadata(
         brief="Whether or not the AI model call's response was streamed back asynchronously",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=True,
         aliases=["ai.streaming"],
@@ -10131,7 +10131,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="The query string present in the URL. Note that this contains the leading ? character, while the `url.query` attribute does not.",
         type=AttributeType.STRING,
         pii=PiiInfo(
-            isPii=IsPii.MAYBE,
+            isPii=IsPii.TRUE,
             reason="Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.",
         ),
         is_in_otel=False,
@@ -13012,7 +13012,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "thread.id": AttributeMetadata(
         brief="Current “managed” thread ID.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example=56,
         changelog=[
@@ -13344,7 +13344,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "url.full": AttributeMetadata(
         brief="The URL of the resource that was fetched.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         example="https://example.com/test?foo=bar#buzz",
         aliases=["http.url", "url"],
@@ -13390,7 +13390,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="The query string present in the URL. Note that this does not contain the leading ? character, while the `http.query` attribute does.",
         type=AttributeType.STRING,
         pii=PiiInfo(
-            isPii=IsPii.MAYBE,
+            isPii=IsPii.TRUE,
             reason="Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.",
         ),
         is_in_otel=True,
