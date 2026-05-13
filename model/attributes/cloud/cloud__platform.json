@@ -3,7 +3,7 @@
   "brief": "The cloud platform in use",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "aws_lambda",

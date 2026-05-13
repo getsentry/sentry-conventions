@@ -2072,7 +2072,7 @@ export type CLOUDFLARE_D1_ROWS_WRITTEN_TYPE = number;
  *
  * Attribute Value Type: `string` {@link CLOUD_ACCOUNT_ID_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -2092,7 +2092,7 @@ export type CLOUD_ACCOUNT_ID_TYPE = string;
  *
  * Attribute Value Type: `string` {@link CLOUD_AVAILABILITY_ZONE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -2112,7 +2112,7 @@ export type CLOUD_AVAILABILITY_ZONE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link CLOUD_PLATFORM_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -2132,7 +2132,7 @@ export type CLOUD_PLATFORM_TYPE = string;
  *
  * Attribute Value Type: `string` {@link CLOUD_PROVIDER_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -2152,7 +2152,7 @@ export type CLOUD_PROVIDER_TYPE = string;
  *
  * Attribute Value Type: `string` {@link CLOUD_REGION_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -14515,7 +14515,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The cloud account ID the resource is assigned to',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: '123456789012',
@@ -14525,7 +14525,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Cloud regions often have multiple, isolated locations known as zones to increase availability',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'us-east-1c',
@@ -14535,7 +14535,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The cloud platform in use',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'aws_lambda',
@@ -14545,7 +14545,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Name of the cloud provider',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'aws',
@@ -14555,7 +14555,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The geographical region the resource is running',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 'us-east-1',

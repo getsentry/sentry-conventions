@@ -3,7 +3,7 @@
   "brief": "The cloud account ID the resource is assigned to",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "123456789012",

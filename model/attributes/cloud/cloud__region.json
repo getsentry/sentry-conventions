@@ -3,7 +3,7 @@
   "brief": "The geographical region the resource is running",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "us-east-1",

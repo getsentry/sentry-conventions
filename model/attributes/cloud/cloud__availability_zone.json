@@ -3,7 +3,7 @@
   "brief": "Cloud regions often have multiple, isolated locations known as zones to increase availability",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "us-east-1c",

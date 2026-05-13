@@ -1342,7 +1342,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The cloud account ID the resource is assigned to
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "123456789012"
     """
@@ -1354,7 +1354,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Cloud regions often have multiple, isolated locations known as zones to increase availability
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "us-east-1c"
     """
@@ -1364,7 +1364,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The cloud platform in use
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "aws_lambda"
     """
@@ -1374,7 +1374,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Name of the cloud provider
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "aws"
     """
@@ -1384,7 +1384,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The geographical region the resource is running
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: "us-east-1"
     """
@@ -8088,7 +8088,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloud.account.id": AttributeMetadata(
         brief="The cloud account ID the resource is assigned to",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="123456789012",
         changelog=[
@@ -8102,7 +8102,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloud.availability_zone": AttributeMetadata(
         brief="Cloud regions often have multiple, isolated locations known as zones to increase availability",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="us-east-1c",
         changelog=[
@@ -8116,7 +8116,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloud.platform": AttributeMetadata(
         brief="The cloud platform in use",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="aws_lambda",
         changelog=[
@@ -8128,7 +8128,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloud.provider": AttributeMetadata(
         brief="Name of the cloud provider",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="aws",
         changelog=[
@@ -8140,7 +8140,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloud.region": AttributeMetadata(
         brief="The geographical region the resource is running",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="us-east-1",
         changelog=[
