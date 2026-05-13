@@ -8707,7 +8707,7 @@ export type QUERY_KEY_TYPE = string;
  *
  * Attribute Value Type: `string` {@link REACT_VERSION_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -18356,7 +18356,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The version of the React framework',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: '18.2.0',

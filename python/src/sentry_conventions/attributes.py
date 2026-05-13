@@ -4918,7 +4918,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The version of the React framework
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "18.2.0"
     """
@@ -12140,7 +12140,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "react.version": AttributeMetadata(
         brief="The version of the React framework",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="18.2.0",
         changelog=[
