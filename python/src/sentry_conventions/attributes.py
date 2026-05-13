@@ -646,7 +646,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The version of the Angular framework
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "17.1.0"
     """
@@ -7071,7 +7071,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "angular.version": AttributeMetadata(
         brief="The version of the Angular framework",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="17.1.0",
         changelog=[

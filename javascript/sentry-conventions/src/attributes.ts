@@ -740,7 +740,7 @@ export type AI_WARNINGS_TYPE = Array<string>;
  *
  * Attribute Value Type: `string` {@link ANGULAR_VERSION_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -13622,7 +13622,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The version of the Angular framework',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: '17.1.0',
