@@ -831,6 +831,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 1234.56
     """
 
+    # Path: model/attributes/app/app__vitals__start__prewarmed.json
+    APP_VITALS_START_PREWARMED: Literal["app.vitals.start.prewarmed"] = (
+        "app.vitals.start.prewarmed"
+    )
+    """Whether the app start was prewarmed.
+
+    Type: bool
+    Contains PII: false
+    Defined in OTEL: No
+    Example: true
+    """
+
     # Path: model/attributes/app/app__vitals__start__reason.json
     APP_VITALS_START_REASON: Literal["app.vitals.start.reason"] = (
         "app.vitals.start.reason"
@@ -7405,6 +7417,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 version="0.5.0",
                 prs=[313],
                 description="Added app.vitals.start.cold.value attribute",
+            ),
+        ],
+    ),
+    "app.vitals.start.prewarmed": AttributeMetadata(
+        brief="Whether the app start was prewarmed.",
+        type=AttributeType.BOOLEAN,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=True,
+        sdks=["sentry.cocoa"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[378],
+                description="Added app.vitals.start.prewarmed attribute",
             ),
         ],
     ),
@@ -13984,6 +14011,7 @@ Attributes = TypedDict(
         "app.vitals.frames.slow.count": int,
         "app.vitals.frames.total.count": int,
         "app.vitals.start.cold.value": float,
+        "app.vitals.start.prewarmed": bool,
         "app.vitals.start.reason": str,
         "app.vitals.start.screen": str,
         "app.vitals.start.type": str,
