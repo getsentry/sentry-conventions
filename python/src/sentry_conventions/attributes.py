@@ -7430,7 +7430,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[378],
+                prs=[379],
                 description="Added app.vitals.start.prewarmed attribute",
             ),
         ],

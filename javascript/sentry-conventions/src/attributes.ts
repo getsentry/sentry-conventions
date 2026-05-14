@@ -13923,7 +13923,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: true,
     sdks: ['sentry.cocoa'],
-    changelog: [{ version: 'next', prs: [378], description: 'Added app.vitals.start.prewarmed attribute' }],
+    changelog: [{ version: 'next', prs: [379], description: 'Added app.vitals.start.prewarmed attribute' }],
   },
   [APP_VITALS_START_REASON]: {
     brief: 'The reason that triggered the app start.',

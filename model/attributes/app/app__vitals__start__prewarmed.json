@@ -11,7 +11,7 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [378],
+      "prs": [379],
       "description": "Added app.vitals.start.prewarmed attribute"
     }
   ]
