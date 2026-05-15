@@ -1,0 +1,18 @@
+{
+  "key": "art.free_memory_until_oome",
+  "brief": "Free memory available before an OutOfMemoryError would be thrown by the Android Runtime, in bytes",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 196083712,
+  "sdks": ["sentry.java.android"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [382],
+      "description": "Added art.free_memory_until_oome attribute"
+    }
+  ]
+}

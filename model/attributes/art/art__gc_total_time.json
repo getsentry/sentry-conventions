@@ -1,0 +1,18 @@
+{
+  "key": "art.gc_total_time",
+  "brief": "Total time spent in garbage collection by the Android Runtime, in milliseconds",
+  "type": "double",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 11.807,
+  "sdks": ["sentry.java.android"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [382],
+      "description": "Added art.gc_total_time attribute"
+    }
+  ]
+}
