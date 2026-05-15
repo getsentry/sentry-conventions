@@ -1,5 +1,5 @@
 {
-  "key": "runtime.art.gc.total_time",
+  "key": "art.gc.total_time",
   "brief": "Total time spent in garbage collection by the Android Runtime, in milliseconds",
   "type": "double",
   "pii": {
@@ -11,8 +11,8 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [384],
-      "description": "Added runtime.art.gc.total_time attribute"
+      "prs": [382],
+      "description": "Added art.gc.total_time attribute"
     }
   ]
 }
