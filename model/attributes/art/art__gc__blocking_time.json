@@ -1,5 +1,5 @@
 {
-  "key": "art.gc_blocking_time",
+  "key": "art.gc.blocking_time",
   "brief": "Total time spent in blocking (stop-the-world) garbage collections by the Android Runtime, in milliseconds",
   "type": "double",
   "pii": {
@@ -12,7 +12,7 @@
     {
       "version": "next",
       "prs": [382],
-      "description": "Added art.gc_blocking_time attribute"
+      "description": "Added art.gc.blocking_time attribute"
     }
   ]
 }

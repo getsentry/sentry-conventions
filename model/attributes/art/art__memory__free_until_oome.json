@@ -1,5 +1,5 @@
 {
-  "key": "art.free_memory_until_oome",
+  "key": "art.memory.free_until_oome",
   "brief": "Free memory available before an OutOfMemoryError would be thrown by the Android Runtime, in bytes",
   "type": "integer",
   "pii": {
@@ -12,7 +12,7 @@
     {
       "version": "next",
       "prs": [382],
-      "description": "Added art.free_memory_until_oome attribute"
+      "description": "Added art.memory.free_until_oome attribute"
     }
   ]
 }

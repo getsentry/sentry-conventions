@@ -1,6 +1,6 @@
 {
-  "key": "art.free_memory_until_gc",
-  "brief": "Free memory available before a garbage collection would be triggered by the Android Runtime, in bytes",
+  "key": "art.memory.free",
+  "brief": "Free memory available to the process as reported by the Android Runtime, in bytes",
   "type": "integer",
   "pii": {
     "key": "false"
@@ -12,7 +12,7 @@
     {
       "version": "next",
       "prs": [382],
-      "description": "Added art.free_memory_until_gc attribute"
+      "description": "Added art.memory.free attribute"
     }
   ]
 }

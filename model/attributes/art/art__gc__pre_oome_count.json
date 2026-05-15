@@ -1,5 +1,5 @@
 {
-  "key": "art.gc_pre_oome_count",
+  "key": "art.gc.pre_oome_count",
   "brief": "Total number of garbage collections triggered as a last resort before an OutOfMemoryError by the Android Runtime",
   "type": "integer",
   "pii": {
@@ -12,7 +12,7 @@
     {
       "version": "next",
       "prs": [382],
-      "description": "Added art.gc_pre_oome_count attribute"
+      "description": "Added art.gc.pre_oome_count attribute"
     }
   ]
 }
