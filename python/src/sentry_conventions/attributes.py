@@ -5042,6 +5042,48 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "myService.BestService"
     """
 
+    # Path: model/attributes/runtime/runtime__build.json
+    RUNTIME_BUILD: Literal["runtime.build"] = "runtime.build"
+    """The application build string, when it is separate from the version.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "stable"
+    """
+
+    # Path: model/attributes/runtime/runtime__name.json
+    RUNTIME_NAME: Literal["runtime.name"] = "runtime.name"
+    """The name of the runtime. For example node, CPython, or rustc.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "node"
+    """
+
+    # Path: model/attributes/runtime/runtime__raw_description.json
+    RUNTIME_RAW_DESCRIPTION: Literal["runtime.raw_description"] = (
+        "runtime.raw_description"
+    )
+    """Unprocessed description string as obtained from the runtime. Used to extract name and version for well-known runtimes.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "Eclipse OpenJ9 VM openj9-0.21.0"
+    """
+
+    # Path: model/attributes/runtime/runtime__version.json
+    RUNTIME_VERSION: Literal["runtime.version"] = "runtime.version"
+    """The version of the runtime.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "18.04.2"
+    """
+
     # Path: model/attributes/score/score__[key].json
     SCORE_KEY: Literal["score.<key>"] = "score.<key>"
     """The weighted performance score for a web vital. This is defined as `score.weight.<key>` * `score.ratio.<key>`.
@@ -12265,6 +12307,56 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "runtime.build": AttributeMetadata(
+        brief="The application build string, when it is separate from the version.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="stable",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[383], description="Added runtime.build attribute"
+            ),
+        ],
+    ),
+    "runtime.name": AttributeMetadata(
+        brief="The name of the runtime. For example node, CPython, or rustc.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="node",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[383], description="Added runtime.name attribute"
+            ),
+        ],
+    ),
+    "runtime.raw_description": AttributeMetadata(
+        brief="Unprocessed description string as obtained from the runtime. Used to extract name and version for well-known runtimes.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="Eclipse OpenJ9 VM openj9-0.21.0",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[383],
+                description="Added runtime.raw_description attribute",
+            ),
+        ],
+    ),
+    "runtime.version": AttributeMetadata(
+        brief="The version of the runtime.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="18.04.2",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[383], description="Added runtime.version attribute"
+            ),
+        ],
+    ),
     "score.<key>": AttributeMetadata(
         brief="The weighted performance score for a web vital. This is defined as `score.weight.<key>` * `score.ratio.<key>`.",
         type=AttributeType.DOUBLE,
@@ -14357,6 +14449,10 @@ Attributes = TypedDict(
         "rpc.method": str,
         "rpc.response.status_code": str,
         "rpc.service": str,
+        "runtime.build": str,
+        "runtime.name": str,
+        "runtime.raw_description": str,
+        "runtime.version": str,
         "score.<key>": float,
         "score.ratio.<key>": float,
         "score.total": float,

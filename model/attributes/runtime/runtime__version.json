@@ -1,0 +1,17 @@
+{
+  "key": "runtime.version",
+  "brief": "The version of the runtime.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "18.04.2",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [383],
+      "description": "Added runtime.version attribute"
+    }
+  ]
+}

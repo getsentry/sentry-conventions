@@ -8933,6 +8933,86 @@ export const RPC_SERVICE = 'rpc.service';
  */
 export type RPC_SERVICE_TYPE = string;
 
+// Path: model/attributes/runtime/runtime__build.json
+
+/**
+ * The application build string, when it is separate from the version. `runtime.build`
+ *
+ * Attribute Value Type: `string` {@link RUNTIME_BUILD_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "stable"
+ */
+export const RUNTIME_BUILD = 'runtime.build';
+
+/**
+ * Type for {@link RUNTIME_BUILD} runtime.build
+ */
+export type RUNTIME_BUILD_TYPE = string;
+
+// Path: model/attributes/runtime/runtime__name.json
+
+/**
+ * The name of the runtime. For example node, CPython, or rustc. `runtime.name`
+ *
+ * Attribute Value Type: `string` {@link RUNTIME_NAME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "node"
+ */
+export const RUNTIME_NAME = 'runtime.name';
+
+/**
+ * Type for {@link RUNTIME_NAME} runtime.name
+ */
+export type RUNTIME_NAME_TYPE = string;
+
+// Path: model/attributes/runtime/runtime__raw_description.json
+
+/**
+ * Unprocessed description string as obtained from the runtime. Used to extract name and version for well-known runtimes. `runtime.raw_description`
+ *
+ * Attribute Value Type: `string` {@link RUNTIME_RAW_DESCRIPTION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "Eclipse OpenJ9 VM openj9-0.21.0"
+ */
+export const RUNTIME_RAW_DESCRIPTION = 'runtime.raw_description';
+
+/**
+ * Type for {@link RUNTIME_RAW_DESCRIPTION} runtime.raw_description
+ */
+export type RUNTIME_RAW_DESCRIPTION_TYPE = string;
+
+// Path: model/attributes/runtime/runtime__version.json
+
+/**
+ * The version of the runtime. `runtime.version`
+ *
+ * Attribute Value Type: `string` {@link RUNTIME_VERSION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "18.04.2"
+ */
+export const RUNTIME_VERSION = 'runtime.version';
+
+/**
+ * Type for {@link RUNTIME_VERSION} runtime.version
+ */
+export type RUNTIME_VERSION_TYPE = string;
+
 // Path: model/attributes/score/score__[key].json
 
 /**
@@ -12378,6 +12458,10 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [RPC_METHOD]: 'string',
   [RPC_RESPONSE_STATUS_CODE]: 'string',
   [RPC_SERVICE]: 'string',
+  [RUNTIME_BUILD]: 'string',
+  [RUNTIME_NAME]: 'string',
+  [RUNTIME_RAW_DESCRIPTION]: 'string',
+  [RUNTIME_VERSION]: 'string',
   [SCORE_KEY]: 'double',
   [SCORE_RATIO_KEY]: 'double',
   [SCORE_TOTAL]: 'double',
@@ -12948,6 +13032,10 @@ export type AttributeName =
   | typeof RPC_METHOD
   | typeof RPC_RESPONSE_STATUS_CODE
   | typeof RPC_SERVICE
+  | typeof RUNTIME_BUILD
+  | typeof RUNTIME_NAME
+  | typeof RUNTIME_RAW_DESCRIPTION
+  | typeof RUNTIME_VERSION
   | typeof SCORE_KEY
   | typeof SCORE_RATIO_KEY
   | typeof SCORE_TOTAL
@@ -18463,6 +18551,47 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'myService.BestService',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  [RUNTIME_BUILD]: {
+    brief: 'The application build string, when it is separate from the version.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'stable',
+    changelog: [{ version: 'next', prs: [383], description: 'Added runtime.build attribute' }],
+  },
+  [RUNTIME_NAME]: {
+    brief: 'The name of the runtime. For example node, CPython, or rustc.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'node',
+    changelog: [{ version: 'next', prs: [383], description: 'Added runtime.name attribute' }],
+  },
+  [RUNTIME_RAW_DESCRIPTION]: {
+    brief:
+      'Unprocessed description string as obtained from the runtime. Used to extract name and version for well-known runtimes.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'Eclipse OpenJ9 VM openj9-0.21.0',
+    changelog: [{ version: 'next', prs: [383], description: 'Added runtime.raw_description attribute' }],
+  },
+  [RUNTIME_VERSION]: {
+    brief: 'The version of the runtime.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '18.04.2',
+    changelog: [{ version: 'next', prs: [383], description: 'Added runtime.version attribute' }],
+  },
   [SCORE_KEY]: {
     brief:
       'The weighted performance score for a web vital. This is defined as `score.weight.<key>` * `score.ratio.<key>`.',
@@ -20494,6 +20623,10 @@ export type Attributes = {
   [RPC_METHOD]?: RPC_METHOD_TYPE;
   [RPC_RESPONSE_STATUS_CODE]?: RPC_RESPONSE_STATUS_CODE_TYPE;
   [RPC_SERVICE]?: RPC_SERVICE_TYPE;
+  [RUNTIME_BUILD]?: RUNTIME_BUILD_TYPE;
+  [RUNTIME_NAME]?: RUNTIME_NAME_TYPE;
+  [RUNTIME_RAW_DESCRIPTION]?: RUNTIME_RAW_DESCRIPTION_TYPE;
+  [RUNTIME_VERSION]?: RUNTIME_VERSION_TYPE;
   [SCORE_KEY]?: SCORE_KEY_TYPE;
   [SCORE_RATIO_KEY]?: SCORE_RATIO_KEY_TYPE;
   [SCORE_TOTAL]?: SCORE_TOTAL_TYPE;
