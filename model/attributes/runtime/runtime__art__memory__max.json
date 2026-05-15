@@ -1,5 +1,5 @@
 {
-  "key": "art.memory.max",
+  "key": "runtime.art.memory.max",
   "brief": "Maximum memory the process is allowed to use as reported by the Android Runtime, in bytes",
   "type": "integer",
   "pii": {
@@ -11,8 +11,8 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [382],
-      "description": "Added art.memory.max attribute"
+      "prs": [384],
+      "description": "Added runtime.art.memory.max attribute"
     }
   ]
 }

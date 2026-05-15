@@ -1,5 +1,5 @@
 {
-  "key": "art.gc.blocking_count",
+  "key": "runtime.art.gc.blocking_count",
   "brief": "Total number of blocking (stop-the-world) garbage collections performed by the Android Runtime",
   "type": "integer",
   "pii": {
@@ -11,8 +11,8 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [382],
-      "description": "Added art.gc.blocking_count attribute"
+      "prs": [384],
+      "description": "Added runtime.art.gc.blocking_count attribute"
     }
   ]
 }

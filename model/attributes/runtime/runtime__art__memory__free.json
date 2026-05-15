@@ -1,5 +1,5 @@
 {
-  "key": "art.memory.free",
+  "key": "runtime.art.memory.free",
   "brief": "Free memory available to the process as reported by the Android Runtime, in bytes",
   "type": "integer",
   "pii": {
@@ -11,8 +11,8 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [382],
-      "description": "Added art.memory.free attribute"
+      "prs": [384],
+      "description": "Added runtime.art.memory.free attribute"
     }
   ]
 }

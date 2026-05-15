@@ -1,5 +1,5 @@
 {
-  "key": "art.gc.total_count",
+  "key": "runtime.art.gc.total_count",
   "brief": "Total number of garbage collections performed by the Android Runtime",
   "type": "integer",
   "pii": {
@@ -11,8 +11,8 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [382],
-      "description": "Added art.gc.total_count attribute"
+      "prs": [384],
+      "description": "Added runtime.art.gc.total_count attribute"
     }
   ]
 }

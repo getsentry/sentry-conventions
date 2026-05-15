@@ -937,120 +937,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 1234.56
     """
 
-    # Path: model/attributes/art/art__gc__blocking_count.json
-    ART_GC_BLOCKING_COUNT: Literal["art.gc.blocking_count"] = "art.gc.blocking_count"
-    """Total number of blocking (stop-the-world) garbage collections performed by the Android Runtime
-
-    Type: int
-    Contains PII: false
-    Defined in OTEL: No
-    Example: 1
-    """
-
-    # Path: model/attributes/art/art__gc__blocking_time.json
-    ART_GC_BLOCKING_TIME: Literal["art.gc.blocking_time"] = "art.gc.blocking_time"
-    """Total time spent in blocking (stop-the-world) garbage collections by the Android Runtime, in milliseconds
-
-    Type: float
-    Contains PII: false
-    Defined in OTEL: No
-    Example: 11.873
-    """
-
-    # Path: model/attributes/art/art__gc__pre_oome_count.json
-    ART_GC_PRE_OOME_COUNT: Literal["art.gc.pre_oome_count"] = "art.gc.pre_oome_count"
-    """Total number of garbage collections triggered as a last resort before an OutOfMemoryError by the Android Runtime
-
-    Type: int
-    Contains PII: false
-    Defined in OTEL: No
-    Example: 0
-    """
-
-    # Path: model/attributes/art/art__gc__total_count.json
-    ART_GC_TOTAL_COUNT: Literal["art.gc.total_count"] = "art.gc.total_count"
-    """Total number of garbage collections performed by the Android Runtime
-
-    Type: int
-    Contains PII: false
-    Defined in OTEL: No
-    Example: 1
-    """
-
-    # Path: model/attributes/art/art__gc__total_time.json
-    ART_GC_TOTAL_TIME: Literal["art.gc.total_time"] = "art.gc.total_time"
-    """Total time spent in garbage collection by the Android Runtime, in milliseconds
-
-    Type: float
-    Contains PII: false
-    Defined in OTEL: No
-    Example: 11.807
-    """
-
-    # Path: model/attributes/art/art__gc__waiting_time.json
-    ART_GC_WAITING_TIME: Literal["art.gc.waiting_time"] = "art.gc.waiting_time"
-    """Total time threads spent waiting for garbage collection to complete in the Android Runtime, in milliseconds
-
-    Type: float
-    Contains PII: false
-    Defined in OTEL: No
-    Example: 8.054
-    """
-
-    # Path: model/attributes/art/art__memory__free.json
-    ART_MEMORY_FREE: Literal["art.memory.free"] = "art.memory.free"
-    """Free memory available to the process as reported by the Android Runtime, in bytes
-
-    Type: int
-    Contains PII: false
-    Defined in OTEL: No
-    Example: 3181568
-    """
-
-    # Path: model/attributes/art/art__memory__free_until_gc.json
-    ART_MEMORY_FREE_UNTIL_GC: Literal["art.memory.free_until_gc"] = (
-        "art.memory.free_until_gc"
-    )
-    """Free memory available before a garbage collection would be triggered by the Android Runtime, in bytes
-
-    Type: int
-    Contains PII: false
-    Defined in OTEL: No
-    Example: 3181568
-    """
-
-    # Path: model/attributes/art/art__memory__free_until_oome.json
-    ART_MEMORY_FREE_UNTIL_OOME: Literal["art.memory.free_until_oome"] = (
-        "art.memory.free_until_oome"
-    )
-    """Free memory available before an OutOfMemoryError would be thrown by the Android Runtime, in bytes
-
-    Type: int
-    Contains PII: false
-    Defined in OTEL: No
-    Example: 196083712
-    """
-
-    # Path: model/attributes/art/art__memory__max.json
-    ART_MEMORY_MAX: Literal["art.memory.max"] = "art.memory.max"
-    """Maximum memory the process is allowed to use as reported by the Android Runtime, in bytes
-
-    Type: int
-    Contains PII: false
-    Defined in OTEL: No
-    Example: 201326592
-    """
-
-    # Path: model/attributes/art/art__memory__total.json
-    ART_MEMORY_TOTAL: Literal["art.memory.total"] = "art.memory.total"
-    """Total memory currently allocated to the process by the Android Runtime, in bytes
-
-    Type: int
-    Contains PII: false
-    Defined in OTEL: No
-    Example: 7774208
-    """
-
     # Path: model/attributes/blocked_main_thread.json
     BLOCKED_MAIN_THREAD: Literal["blocked_main_thread"] = "blocked_main_thread"
     """Whether the main thread was blocked by the span.
@@ -5156,6 +5042,136 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "myService.BestService"
     """
 
+    # Path: model/attributes/runtime/runtime__art__gc__blocking_count.json
+    RUNTIME_ART_GC_BLOCKING_COUNT: Literal["runtime.art.gc.blocking_count"] = (
+        "runtime.art.gc.blocking_count"
+    )
+    """Total number of blocking (stop-the-world) garbage collections performed by the Android Runtime
+
+    Type: int
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 1
+    """
+
+    # Path: model/attributes/runtime/runtime__art__gc__blocking_time.json
+    RUNTIME_ART_GC_BLOCKING_TIME: Literal["runtime.art.gc.blocking_time"] = (
+        "runtime.art.gc.blocking_time"
+    )
+    """Total time spent in blocking (stop-the-world) garbage collections by the Android Runtime, in milliseconds
+
+    Type: float
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 11.873
+    """
+
+    # Path: model/attributes/runtime/runtime__art__gc__pre_oome_count.json
+    RUNTIME_ART_GC_PRE_OOME_COUNT: Literal["runtime.art.gc.pre_oome_count"] = (
+        "runtime.art.gc.pre_oome_count"
+    )
+    """Total number of garbage collections triggered as a last resort before an OutOfMemoryError by the Android Runtime
+
+    Type: int
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 0
+    """
+
+    # Path: model/attributes/runtime/runtime__art__gc__total_count.json
+    RUNTIME_ART_GC_TOTAL_COUNT: Literal["runtime.art.gc.total_count"] = (
+        "runtime.art.gc.total_count"
+    )
+    """Total number of garbage collections performed by the Android Runtime
+
+    Type: int
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 1
+    """
+
+    # Path: model/attributes/runtime/runtime__art__gc__total_time.json
+    RUNTIME_ART_GC_TOTAL_TIME: Literal["runtime.art.gc.total_time"] = (
+        "runtime.art.gc.total_time"
+    )
+    """Total time spent in garbage collection by the Android Runtime, in milliseconds
+
+    Type: float
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 11.807
+    """
+
+    # Path: model/attributes/runtime/runtime__art__gc__waiting_time.json
+    RUNTIME_ART_GC_WAITING_TIME: Literal["runtime.art.gc.waiting_time"] = (
+        "runtime.art.gc.waiting_time"
+    )
+    """Total time threads spent waiting for garbage collection to complete in the Android Runtime, in milliseconds
+
+    Type: float
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 8.054
+    """
+
+    # Path: model/attributes/runtime/runtime__art__memory__free.json
+    RUNTIME_ART_MEMORY_FREE: Literal["runtime.art.memory.free"] = (
+        "runtime.art.memory.free"
+    )
+    """Free memory available to the process as reported by the Android Runtime, in bytes
+
+    Type: int
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 3181568
+    """
+
+    # Path: model/attributes/runtime/runtime__art__memory__free_until_gc.json
+    RUNTIME_ART_MEMORY_FREE_UNTIL_GC: Literal["runtime.art.memory.free_until_gc"] = (
+        "runtime.art.memory.free_until_gc"
+    )
+    """Free memory available before a garbage collection would be triggered by the Android Runtime, in bytes
+
+    Type: int
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 3181568
+    """
+
+    # Path: model/attributes/runtime/runtime__art__memory__free_until_oome.json
+    RUNTIME_ART_MEMORY_FREE_UNTIL_OOME: Literal[
+        "runtime.art.memory.free_until_oome"
+    ] = "runtime.art.memory.free_until_oome"
+    """Free memory available before an OutOfMemoryError would be thrown by the Android Runtime, in bytes
+
+    Type: int
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 196083712
+    """
+
+    # Path: model/attributes/runtime/runtime__art__memory__max.json
+    RUNTIME_ART_MEMORY_MAX: Literal["runtime.art.memory.max"] = "runtime.art.memory.max"
+    """Maximum memory the process is allowed to use as reported by the Android Runtime, in bytes
+
+    Type: int
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 201326592
+    """
+
+    # Path: model/attributes/runtime/runtime__art__memory__total.json
+    RUNTIME_ART_MEMORY_TOTAL: Literal["runtime.art.memory.total"] = (
+        "runtime.art.memory.total"
+    )
+    """Total memory currently allocated to the process by the Android Runtime, in bytes
+
+    Type: int
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 7774208
+    """
+
     # Path: model/attributes/runtime/runtime__build.json
     RUNTIME_BUILD: Literal["runtime.build"] = "runtime.build"
     """The application build string, when it is separate from the version.
@@ -7761,167 +7777,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 version="0.5.0",
                 prs=[323],
                 description="Added and deprecated in favor of app.vitals.start.warm.value",
-            ),
-        ],
-    ),
-    "art.gc.blocking_count": AttributeMetadata(
-        brief="Total number of blocking (stop-the-world) garbage collections performed by the Android Runtime",
-        type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=False,
-        example=1,
-        sdks=["sentry.java.android"],
-        changelog=[
-            ChangelogEntry(
-                version="next",
-                prs=[382],
-                description="Added art.gc.blocking_count attribute",
-            ),
-        ],
-    ),
-    "art.gc.blocking_time": AttributeMetadata(
-        brief="Total time spent in blocking (stop-the-world) garbage collections by the Android Runtime, in milliseconds",
-        type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=False,
-        example=11.873,
-        sdks=["sentry.java.android"],
-        changelog=[
-            ChangelogEntry(
-                version="next",
-                prs=[382],
-                description="Added art.gc.blocking_time attribute",
-            ),
-        ],
-    ),
-    "art.gc.pre_oome_count": AttributeMetadata(
-        brief="Total number of garbage collections triggered as a last resort before an OutOfMemoryError by the Android Runtime",
-        type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=False,
-        example=0,
-        sdks=["sentry.java.android"],
-        changelog=[
-            ChangelogEntry(
-                version="next",
-                prs=[382],
-                description="Added art.gc.pre_oome_count attribute",
-            ),
-        ],
-    ),
-    "art.gc.total_count": AttributeMetadata(
-        brief="Total number of garbage collections performed by the Android Runtime",
-        type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=False,
-        example=1,
-        sdks=["sentry.java.android"],
-        changelog=[
-            ChangelogEntry(
-                version="next",
-                prs=[382],
-                description="Added art.gc.total_count attribute",
-            ),
-        ],
-    ),
-    "art.gc.total_time": AttributeMetadata(
-        brief="Total time spent in garbage collection by the Android Runtime, in milliseconds",
-        type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=False,
-        example=11.807,
-        sdks=["sentry.java.android"],
-        changelog=[
-            ChangelogEntry(
-                version="next",
-                prs=[382],
-                description="Added art.gc.total_time attribute",
-            ),
-        ],
-    ),
-    "art.gc.waiting_time": AttributeMetadata(
-        brief="Total time threads spent waiting for garbage collection to complete in the Android Runtime, in milliseconds",
-        type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=False,
-        example=8.054,
-        sdks=["sentry.java.android"],
-        changelog=[
-            ChangelogEntry(
-                version="next",
-                prs=[382],
-                description="Added art.gc.waiting_time attribute",
-            ),
-        ],
-    ),
-    "art.memory.free": AttributeMetadata(
-        brief="Free memory available to the process as reported by the Android Runtime, in bytes",
-        type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=False,
-        example=3181568,
-        sdks=["sentry.java.android"],
-        changelog=[
-            ChangelogEntry(
-                version="next", prs=[382], description="Added art.memory.free attribute"
-            ),
-        ],
-    ),
-    "art.memory.free_until_gc": AttributeMetadata(
-        brief="Free memory available before a garbage collection would be triggered by the Android Runtime, in bytes",
-        type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=False,
-        example=3181568,
-        sdks=["sentry.java.android"],
-        changelog=[
-            ChangelogEntry(
-                version="next",
-                prs=[382],
-                description="Added art.memory.free_until_gc attribute",
-            ),
-        ],
-    ),
-    "art.memory.free_until_oome": AttributeMetadata(
-        brief="Free memory available before an OutOfMemoryError would be thrown by the Android Runtime, in bytes",
-        type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=False,
-        example=196083712,
-        sdks=["sentry.java.android"],
-        changelog=[
-            ChangelogEntry(
-                version="next",
-                prs=[382],
-                description="Added art.memory.free_until_oome attribute",
-            ),
-        ],
-    ),
-    "art.memory.max": AttributeMetadata(
-        brief="Maximum memory the process is allowed to use as reported by the Android Runtime, in bytes",
-        type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=False,
-        example=201326592,
-        sdks=["sentry.java.android"],
-        changelog=[
-            ChangelogEntry(
-                version="next", prs=[382], description="Added art.memory.max attribute"
-            ),
-        ],
-    ),
-    "art.memory.total": AttributeMetadata(
-        brief="Total memory currently allocated to the process by the Android Runtime, in bytes",
-        type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=False,
-        example=7774208,
-        sdks=["sentry.java.android"],
-        changelog=[
-            ChangelogEntry(
-                version="next",
-                prs=[382],
-                description="Added art.memory.total attribute",
             ),
         ],
     ),
@@ -12582,6 +12437,171 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "runtime.art.gc.blocking_count": AttributeMetadata(
+        brief="Total number of blocking (stop-the-world) garbage collections performed by the Android Runtime",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=1,
+        sdks=["sentry.java.android"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[384],
+                description="Added runtime.art.gc.blocking_count attribute",
+            ),
+        ],
+    ),
+    "runtime.art.gc.blocking_time": AttributeMetadata(
+        brief="Total time spent in blocking (stop-the-world) garbage collections by the Android Runtime, in milliseconds",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=11.873,
+        sdks=["sentry.java.android"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[384],
+                description="Added runtime.art.gc.blocking_time attribute",
+            ),
+        ],
+    ),
+    "runtime.art.gc.pre_oome_count": AttributeMetadata(
+        brief="Total number of garbage collections triggered as a last resort before an OutOfMemoryError by the Android Runtime",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=0,
+        sdks=["sentry.java.android"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[384],
+                description="Added runtime.art.gc.pre_oome_count attribute",
+            ),
+        ],
+    ),
+    "runtime.art.gc.total_count": AttributeMetadata(
+        brief="Total number of garbage collections performed by the Android Runtime",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=1,
+        sdks=["sentry.java.android"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[384],
+                description="Added runtime.art.gc.total_count attribute",
+            ),
+        ],
+    ),
+    "runtime.art.gc.total_time": AttributeMetadata(
+        brief="Total time spent in garbage collection by the Android Runtime, in milliseconds",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=11.807,
+        sdks=["sentry.java.android"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[384],
+                description="Added runtime.art.gc.total_time attribute",
+            ),
+        ],
+    ),
+    "runtime.art.gc.waiting_time": AttributeMetadata(
+        brief="Total time threads spent waiting for garbage collection to complete in the Android Runtime, in milliseconds",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=8.054,
+        sdks=["sentry.java.android"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[384],
+                description="Added runtime.art.gc.waiting_time attribute",
+            ),
+        ],
+    ),
+    "runtime.art.memory.free": AttributeMetadata(
+        brief="Free memory available to the process as reported by the Android Runtime, in bytes",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=3181568,
+        sdks=["sentry.java.android"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[384],
+                description="Added runtime.art.memory.free attribute",
+            ),
+        ],
+    ),
+    "runtime.art.memory.free_until_gc": AttributeMetadata(
+        brief="Free memory available before a garbage collection would be triggered by the Android Runtime, in bytes",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=3181568,
+        sdks=["sentry.java.android"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[384],
+                description="Added runtime.art.memory.free_until_gc attribute",
+            ),
+        ],
+    ),
+    "runtime.art.memory.free_until_oome": AttributeMetadata(
+        brief="Free memory available before an OutOfMemoryError would be thrown by the Android Runtime, in bytes",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=196083712,
+        sdks=["sentry.java.android"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[384],
+                description="Added runtime.art.memory.free_until_oome attribute",
+            ),
+        ],
+    ),
+    "runtime.art.memory.max": AttributeMetadata(
+        brief="Maximum memory the process is allowed to use as reported by the Android Runtime, in bytes",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=201326592,
+        sdks=["sentry.java.android"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[384],
+                description="Added runtime.art.memory.max attribute",
+            ),
+        ],
+    ),
+    "runtime.art.memory.total": AttributeMetadata(
+        brief="Total memory currently allocated to the process by the Android Runtime, in bytes",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=7774208,
+        sdks=["sentry.java.android"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[384],
+                description="Added runtime.art.memory.total attribute",
+            ),
+        ],
+    ),
     "runtime.build": AttributeMetadata(
         brief="The application build string, when it is separate from the version.",
         type=AttributeType.STRING,
@@ -14360,17 +14380,6 @@ Attributes = TypedDict(
         "app_start_cold": float,
         "app_start_type": str,
         "app_start_warm": float,
-        "art.gc.blocking_count": int,
-        "art.gc.blocking_time": float,
-        "art.gc.pre_oome_count": int,
-        "art.gc.total_count": int,
-        "art.gc.total_time": float,
-        "art.gc.waiting_time": float,
-        "art.memory.free": int,
-        "art.memory.free_until_gc": int,
-        "art.memory.free_until_oome": int,
-        "art.memory.max": int,
-        "art.memory.total": int,
         "blocked_main_thread": bool,
         "browser.name": str,
         "browser.performance.navigation.activation_start": float,
@@ -14735,6 +14744,17 @@ Attributes = TypedDict(
         "rpc.method": str,
         "rpc.response.status_code": str,
         "rpc.service": str,
+        "runtime.art.gc.blocking_count": int,
+        "runtime.art.gc.blocking_time": float,
+        "runtime.art.gc.pre_oome_count": int,
+        "runtime.art.gc.total_count": int,
+        "runtime.art.gc.total_time": float,
+        "runtime.art.gc.waiting_time": float,
+        "runtime.art.memory.free": int,
+        "runtime.art.memory.free_until_gc": int,
+        "runtime.art.memory.free_until_oome": int,
+        "runtime.art.memory.max": int,
+        "runtime.art.memory.total": int,
         "runtime.build": str,
         "runtime.name": str,
         "runtime.raw_description": str,

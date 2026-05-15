@@ -1,5 +1,5 @@
 {
-  "key": "art.memory.total",
+  "key": "runtime.art.memory.total",
   "brief": "Total memory currently allocated to the process by the Android Runtime, in bytes",
   "type": "integer",
   "pii": {
@@ -11,8 +11,8 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [382],
-      "description": "Added art.memory.total attribute"
+      "prs": [384],
+      "description": "Added runtime.art.memory.total attribute"
     }
   ]
 }
