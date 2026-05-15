@@ -3,7 +3,7 @@
   "brief": "The CloudEvents specification version of the GCP Cloud Function event",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "1.0",

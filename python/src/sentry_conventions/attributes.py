@@ -2383,7 +2383,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The legacy event ID of the GCP Cloud Function event
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "1234567890"
     """
@@ -2395,7 +2395,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The type of the GCP Cloud Function event
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "google.pubsub.topic.publish"
     """
@@ -2407,7 +2407,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The unique ID of the GCP Cloud Function event
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "1234567890"
     """
@@ -2419,7 +2419,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The resource that triggered the GCP Cloud Function event
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "projects/my-project/topics/my-topic"
     """
@@ -2431,7 +2431,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The source of the GCP Cloud Function event
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "//pubsub.googleapis.com/projects/my-project/topics/my-topic"
     """
@@ -2443,7 +2443,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The CloudEvents specification version of the GCP Cloud Function event
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "1.0"
     """
@@ -2455,7 +2455,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The timestamp of the GCP Cloud Function event
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "2024-01-01T00:00:00.000Z"
     """
@@ -2467,7 +2467,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The legacy timestamp of the GCP Cloud Function event
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "2024-01-01T00:00:00.000Z"
     """
@@ -2479,7 +2479,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The type of the GCP Cloud Function event context
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Example: "cloud_functions.context"
     """
@@ -9451,7 +9451,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gcp.function.context.event_id": AttributeMetadata(
         brief="The legacy event ID of the GCP Cloud Function event",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="1234567890",
         changelog=[
@@ -9465,7 +9465,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gcp.function.context.event_type": AttributeMetadata(
         brief="The type of the GCP Cloud Function event",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="google.pubsub.topic.publish",
         changelog=[
@@ -9479,7 +9479,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gcp.function.context.id": AttributeMetadata(
         brief="The unique ID of the GCP Cloud Function event",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="1234567890",
         changelog=[
@@ -9493,7 +9493,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gcp.function.context.resource": AttributeMetadata(
         brief="The resource that triggered the GCP Cloud Function event",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="projects/my-project/topics/my-topic",
         changelog=[
@@ -9507,7 +9507,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gcp.function.context.source": AttributeMetadata(
         brief="The source of the GCP Cloud Function event",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="//pubsub.googleapis.com/projects/my-project/topics/my-topic",
         changelog=[
@@ -9521,7 +9521,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gcp.function.context.specversion": AttributeMetadata(
         brief="The CloudEvents specification version of the GCP Cloud Function event",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="1.0",
         changelog=[
@@ -9535,7 +9535,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gcp.function.context.time": AttributeMetadata(
         brief="The timestamp of the GCP Cloud Function event",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="2024-01-01T00:00:00.000Z",
         changelog=[
@@ -9549,7 +9549,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gcp.function.context.timestamp": AttributeMetadata(
         brief="The legacy timestamp of the GCP Cloud Function event",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="2024-01-01T00:00:00.000Z",
         changelog=[
@@ -9563,7 +9563,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gcp.function.context.type": AttributeMetadata(
         brief="The type of the GCP Cloud Function event context",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="cloud_functions.context",
         changelog=[

@@ -4020,7 +4020,7 @@ export type FS_ERROR_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_EVENT_ID_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -4040,7 +4040,7 @@ export type GCP_FUNCTION_CONTEXT_EVENT_ID_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_EVENT_TYPE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -4060,7 +4060,7 @@ export type GCP_FUNCTION_CONTEXT_EVENT_TYPE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_ID_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -4080,7 +4080,7 @@ export type GCP_FUNCTION_CONTEXT_ID_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_RESOURCE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -4100,7 +4100,7 @@ export type GCP_FUNCTION_CONTEXT_RESOURCE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_SOURCE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -4120,7 +4120,7 @@ export type GCP_FUNCTION_CONTEXT_SOURCE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_SPECVERSION_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -4140,7 +4140,7 @@ export type GCP_FUNCTION_CONTEXT_SPECVERSION_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_TIME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -4160,7 +4160,7 @@ export type GCP_FUNCTION_CONTEXT_TIME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_TIMESTAMP_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -4180,7 +4180,7 @@ export type GCP_FUNCTION_CONTEXT_TIMESTAMP_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_TYPE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -15754,7 +15754,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The legacy event ID of the GCP Cloud Function event',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: '1234567890',
@@ -15764,7 +15764,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The type of the GCP Cloud Function event',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'google.pubsub.topic.publish',
@@ -15774,7 +15774,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The unique ID of the GCP Cloud Function event',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: '1234567890',
@@ -15784,7 +15784,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The resource that triggered the GCP Cloud Function event',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'projects/my-project/topics/my-topic',
@@ -15794,7 +15794,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The source of the GCP Cloud Function event',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: '//pubsub.googleapis.com/projects/my-project/topics/my-topic',
@@ -15804,7 +15804,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The CloudEvents specification version of the GCP Cloud Function event',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: '1.0',
@@ -15814,7 +15814,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The timestamp of the GCP Cloud Function event',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: '2024-01-01T00:00:00.000Z',
@@ -15824,7 +15824,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The legacy timestamp of the GCP Cloud Function event',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: '2024-01-01T00:00:00.000Z',
@@ -15834,7 +15834,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The type of the GCP Cloud Function event context',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: 'cloud_functions.context',
