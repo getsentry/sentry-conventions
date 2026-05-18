@@ -13,5 +13,11 @@
     "reason": "Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes",
     "_status": "backfill"
   },
-  "changelog": []
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [385],
+      "description": "Added frames_frozen"
+    }
+  ]
 }

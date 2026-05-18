@@ -260,7 +260,13 @@
         "reason": "Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes",
         "_status": "backfill"
       },
-      "changelog": []
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [385],
+          "description": "Added frames_frozen"
+        }
+      ]
     },
     {
       "key": "frames_slow",
@@ -277,7 +283,13 @@
         "reason": "Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes",
         "_status": "backfill"
       },
-      "changelog": []
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [385],
+          "description": "Added frames_slow"
+        }
+      ]
     },
     {
       "key": "frames_total",
@@ -294,7 +306,13 @@
         "reason": "Replaced by app.vitals.frames.total.count to align with the app.vitals.* namespace for mobile performance attributes",
         "_status": "backfill"
       },
-      "changelog": []
+      "changelog": [
+        {
+          "version": "next",
+          "prs": [385],
+          "description": "Added frames_total"
+        }
+      ]
     },
     {
       "key": "fs_error",
@@ -1829,6 +1847,11 @@
       },
       "changelog": [
         {
+          "version": "next",
+          "prs": [385],
+          "description": "Added frames_frozen as a deprecated alias"
+        },
+        {
           "version": "0.5.0",
           "prs": [313],
           "description": "Deprecated in favor of app.vitals.frames.frozen.count"
@@ -1859,6 +1882,11 @@
       },
       "changelog": [
         {
+          "version": "next",
+          "prs": [385],
+          "description": "Added frames_slow as a deprecated alias"
+        },
+        {
           "version": "0.5.0",
           "prs": [313],
           "description": "Deprecated in favor of app.vitals.frames.slow.count"
@@ -1888,6 +1916,11 @@
         "_status": "backfill"
       },
       "changelog": [
+        {
+          "version": "next",
+          "prs": [385],
+          "description": "Added frames_total as a deprecated alias"
+        },
         {
           "version": "0.5.0",
           "prs": [313],

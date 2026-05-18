@@ -7754,6 +7754,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
+                version="next",
+                prs=[385],
+                description="Added frames_frozen as a deprecated alias",
+            ),
+            ChangelogEntry(
                 version="0.5.0",
                 prs=[313],
                 description="Added app.vitals.frames.frozen.count to replace frames.frozen",
@@ -7775,6 +7780,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
+                version="next",
+                prs=[385],
+                description="Added frames_slow as a deprecated alias",
+            ),
+            ChangelogEntry(
                 version="0.5.0",
                 prs=[313],
                 description="Added app.vitals.frames.slow.count to replace frames.slow",
@@ -7795,6 +7805,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "sentry.dart.flutter",
         ],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[385],
+                description="Added frames_total as a deprecated alias",
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[313],
@@ -9877,6 +9892,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["app.vitals.frames.frozen.count", "frames_frozen"],
         changelog=[
             ChangelogEntry(
+                version="next",
+                prs=[385],
+                description="Added frames_frozen as a deprecated alias",
+            ),
+            ChangelogEntry(
                 version="0.5.0",
                 prs=[313],
                 description="Deprecated in favor of app.vitals.frames.frozen.count",
@@ -9898,6 +9918,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         aliases=["app.vitals.frames.slow.count", "frames_slow"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[385],
+                description="Added frames_slow as a deprecated alias",
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[313],
@@ -9921,6 +9946,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["app.vitals.frames.total.count", "frames_total"],
         changelog=[
             ChangelogEntry(
+                version="next",
+                prs=[385],
+                description="Added frames_total as a deprecated alias",
+            ),
+            ChangelogEntry(
                 version="0.5.0",
                 prs=[313],
                 description="Deprecated in favor of app.vitals.frames.total.count",
@@ -9941,6 +9971,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             status=DeprecationStatus.BACKFILL,
         ),
         aliases=["app.vitals.frames.frozen.count", "frames.frozen"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[385], description="Added frames_frozen"
+            ),
+        ],
     ),
     "frames_frozen_rate": AttributeMetadata(
         brief="The rate of frozen frames, or `app_vitals.frames.frozen.count` divided by `app_vitals.frames.total.count`. This is computed by Relay.",
@@ -9967,6 +10002,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             status=DeprecationStatus.BACKFILL,
         ),
         aliases=["app.vitals.frames.slow.count", "frames.slow"],
+        changelog=[
+            ChangelogEntry(version="next", prs=[385], description="Added frames_slow"),
+        ],
     ),
     "frames_slow_rate": AttributeMetadata(
         brief="The rate of slow frames, or `app_vitals.frames.slow.count` divided by `app_vitals.frames.total.count`. This is computed by Relay.",
@@ -9993,6 +10031,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             status=DeprecationStatus.BACKFILL,
         ),
         aliases=["app.vitals.frames.total.count", "frames.total"],
+        changelog=[
+            ChangelogEntry(version="next", prs=[385], description="Added frames_total"),
+        ],
     ),
     "fs_error": AttributeMetadata(
         brief="The error message of a file system error.",

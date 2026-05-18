@@ -14652,6 +14652,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [FRAMES_FROZEN, _FRAMES_FROZEN],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
+      { version: 'next', prs: [385], description: 'Added frames_frozen as a deprecated alias' },
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.frozen.count to replace frames.frozen' },
     ],
   },
@@ -14666,6 +14667,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [FRAMES_SLOW, _FRAMES_SLOW],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
+      { version: 'next', prs: [385], description: 'Added frames_slow as a deprecated alias' },
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.slow.count to replace frames.slow' },
     ],
   },
@@ -14680,6 +14682,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [FRAMES_TOTAL, _FRAMES_TOTAL],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
+      { version: 'next', prs: [385], description: 'Added frames_total as a deprecated alias' },
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.total.count to replace frames.total' },
     ],
   },
@@ -16437,6 +16440,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [APP_VITALS_FRAMES_FROZEN_COUNT, _FRAMES_FROZEN],
     changelog: [
+      { version: 'next', prs: [385], description: 'Added frames_frozen as a deprecated alias' },
       { version: '0.5.0', prs: [313], description: 'Deprecated in favor of app.vitals.frames.frozen.count' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
@@ -16456,6 +16460,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         'Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes',
     },
     aliases: [APP_VITALS_FRAMES_FROZEN_COUNT, FRAMES_FROZEN],
+    changelog: [{ version: 'next', prs: [385], description: 'Added frames_frozen' }],
   },
   [FRAMES_FROZEN_RATE]: {
     brief:
@@ -16482,6 +16487,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [APP_VITALS_FRAMES_SLOW_COUNT, _FRAMES_SLOW],
     changelog: [
+      { version: 'next', prs: [385], description: 'Added frames_slow as a deprecated alias' },
       { version: '0.5.0', prs: [313], description: 'Deprecated in favor of app.vitals.frames.slow.count' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
@@ -16501,6 +16507,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         'Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes',
     },
     aliases: [APP_VITALS_FRAMES_SLOW_COUNT, FRAMES_SLOW],
+    changelog: [{ version: 'next', prs: [385], description: 'Added frames_slow' }],
   },
   [FRAMES_SLOW_RATE]: {
     brief:
@@ -16527,6 +16534,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [APP_VITALS_FRAMES_TOTAL_COUNT, _FRAMES_TOTAL],
     changelog: [
+      { version: 'next', prs: [385], description: 'Added frames_total as a deprecated alias' },
       { version: '0.5.0', prs: [313], description: 'Deprecated in favor of app.vitals.frames.total.count' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
@@ -16546,6 +16554,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         'Replaced by app.vitals.frames.total.count to align with the app.vitals.* namespace for mobile performance attributes',
     },
     aliases: [APP_VITALS_FRAMES_TOTAL_COUNT, FRAMES_TOTAL],
+    changelog: [{ version: 'next', prs: [385], description: 'Added frames_total' }],
   },
   [FS_ERROR]: {
     brief: 'The error message of a file system error.',
