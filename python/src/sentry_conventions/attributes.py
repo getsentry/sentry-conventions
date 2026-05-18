@@ -5808,6 +5808,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "5.0.0"
     """
 
+    # Path: model/attributes/state/state__type.json
+    STATE_TYPE: Literal["state.type"] = "state.type"
+    """The type of state management library
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "redux"
+    """
+
     # Path: model/attributes/thread/thread__id.json
     THREAD_ID: Literal["thread.id"] = "thread.id"
     """Current “managed” thread ID.
@@ -13125,6 +13135,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "state.type": AttributeMetadata(
+        brief="The type of state management library",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="redux",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[363], description="Added state.type attribute"
+            ),
+        ],
+    ),
     "thread.id": AttributeMetadata(
         brief="Current “managed” thread ID.",
         type=AttributeType.INTEGER,
@@ -14544,6 +14566,7 @@ Attributes = TypedDict(
         "server.port": int,
         "service.name": str,
         "service.version": str,
+        "state.type": str,
         "thread.id": int,
         "thread.name": str,
         "timber.tag": str,
