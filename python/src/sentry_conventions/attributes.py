@@ -641,6 +641,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: ["Token limit exceeded"]
     """
 
+    # Path: model/attributes/angular/angular__version.json
+    ANGULAR_VERSION: Literal["angular.version"] = "angular.version"
+    """The version of the Angular framework
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "17.1.0"
+    """
+
     # Path: model/attributes/app/app__app_build.json
     APP_APP_BUILD: Literal["app.app_build"] = "app.app_build"
     """Internal build identifier, as it appears on the platform.
@@ -7236,6 +7246,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55]),
+        ],
+    ),
+    "angular.version": AttributeMetadata(
+        brief="The version of the Angular framework",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="17.1.0",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[363], description="Added angular.version attribute"
+            ),
         ],
     ),
     "app.app_build": AttributeMetadata(
@@ -14362,6 +14384,7 @@ Attributes = TypedDict(
         "ai.total_cost": float,
         "ai.total_tokens.used": int,
         "ai.warnings": List[str],
+        "angular.version": str,
         "app.app_build": str,
         "app.app_identifier": str,
         "app.app_name": str,
