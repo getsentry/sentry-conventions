@@ -1285,6 +1285,186 @@ export const APP_VITALS_TTID_VALUE = 'app.vitals.ttid.value';
  */
 export type APP_VITALS_TTID_VALUE_TYPE = number;
 
+// Path: model/attributes/aws/aws__cloudwatch__logs__log_group.json
+
+/**
+ * The name of the CloudWatch Logs log group `aws.cloudwatch.logs.log_group`
+ *
+ * Attribute Value Type: `string` {@link AWS_CLOUDWATCH_LOGS_LOG_GROUP_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "/aws/lambda/my-function"
+ */
+export const AWS_CLOUDWATCH_LOGS_LOG_GROUP = 'aws.cloudwatch.logs.log_group';
+
+/**
+ * Type for {@link AWS_CLOUDWATCH_LOGS_LOG_GROUP} aws.cloudwatch.logs.log_group
+ */
+export type AWS_CLOUDWATCH_LOGS_LOG_GROUP_TYPE = string;
+
+// Path: model/attributes/aws/aws__cloudwatch__logs__log_stream.json
+
+/**
+ * The name of the CloudWatch Logs log stream `aws.cloudwatch.logs.log_stream`
+ *
+ * Attribute Value Type: `string` {@link AWS_CLOUDWATCH_LOGS_LOG_STREAM_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "2024/01/01/[$LATEST]abcdef1234567890"
+ */
+export const AWS_CLOUDWATCH_LOGS_LOG_STREAM = 'aws.cloudwatch.logs.log_stream';
+
+/**
+ * Type for {@link AWS_CLOUDWATCH_LOGS_LOG_STREAM} aws.cloudwatch.logs.log_stream
+ */
+export type AWS_CLOUDWATCH_LOGS_LOG_STREAM_TYPE = string;
+
+// Path: model/attributes/aws/aws__cloudwatch__logs__url.json
+
+/**
+ * The URL to the CloudWatch Logs log group `aws.cloudwatch.logs.url`
+ *
+ * Attribute Value Type: `string` {@link AWS_CLOUDWATCH_LOGS_URL_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups/log-group/my-log-group"
+ */
+export const AWS_CLOUDWATCH_LOGS_URL = 'aws.cloudwatch.logs.url';
+
+/**
+ * Type for {@link AWS_CLOUDWATCH_LOGS_URL} aws.cloudwatch.logs.url
+ */
+export type AWS_CLOUDWATCH_LOGS_URL_TYPE = string;
+
+// Path: model/attributes/aws/aws__lambda__aws_request_id.json
+
+/**
+ * The AWS request ID as received by the Lambda function runtime `aws.lambda.aws_request_id`
+ *
+ * Attribute Value Type: `string` {@link AWS_LAMBDA_AWS_REQUEST_ID_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "8476a536-e9f4-11e8-9739-2dfe598c3fcd"
+ */
+export const AWS_LAMBDA_AWS_REQUEST_ID = 'aws.lambda.aws_request_id';
+
+/**
+ * Type for {@link AWS_LAMBDA_AWS_REQUEST_ID} aws.lambda.aws_request_id
+ */
+export type AWS_LAMBDA_AWS_REQUEST_ID_TYPE = string;
+
+// Path: model/attributes/aws/aws__lambda__execution_duration_in_millis.json
+
+/**
+ * The execution duration of the Lambda function invocation in milliseconds `aws.lambda.execution_duration_in_millis`
+ *
+ * Attribute Value Type: `number` {@link AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 1234.56
+ */
+export const AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS = 'aws.lambda.execution_duration_in_millis';
+
+/**
+ * Type for {@link AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS} aws.lambda.execution_duration_in_millis
+ */
+export type AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS_TYPE = number;
+
+// Path: model/attributes/aws/aws__lambda__function_name.json
+
+/**
+ * The name of the Lambda function `aws.lambda.function_name`
+ *
+ * Attribute Value Type: `string` {@link AWS_LAMBDA_FUNCTION_NAME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "my-function"
+ */
+export const AWS_LAMBDA_FUNCTION_NAME = 'aws.lambda.function_name';
+
+/**
+ * Type for {@link AWS_LAMBDA_FUNCTION_NAME} aws.lambda.function_name
+ */
+export type AWS_LAMBDA_FUNCTION_NAME_TYPE = string;
+
+// Path: model/attributes/aws/aws__lambda__function_version.json
+
+/**
+ * The version of the Lambda function `aws.lambda.function_version`
+ *
+ * Attribute Value Type: `string` {@link AWS_LAMBDA_FUNCTION_VERSION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "$LATEST"
+ */
+export const AWS_LAMBDA_FUNCTION_VERSION = 'aws.lambda.function_version';
+
+/**
+ * Type for {@link AWS_LAMBDA_FUNCTION_VERSION} aws.lambda.function_version
+ */
+export type AWS_LAMBDA_FUNCTION_VERSION_TYPE = string;
+
+// Path: model/attributes/aws/aws__lambda__invoked_function_arn.json
+
+/**
+ * The full ARN of the Lambda function that was invoked `aws.lambda.invoked_function_arn`
+ *
+ * Attribute Value Type: `string` {@link AWS_LAMBDA_INVOKED_FUNCTION_ARN_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "arn:aws:lambda:us-east-1:123456789012:function:my-function"
+ */
+export const AWS_LAMBDA_INVOKED_FUNCTION_ARN = 'aws.lambda.invoked_function_arn';
+
+/**
+ * Type for {@link AWS_LAMBDA_INVOKED_FUNCTION_ARN} aws.lambda.invoked_function_arn
+ */
+export type AWS_LAMBDA_INVOKED_FUNCTION_ARN_TYPE = string;
+
+// Path: model/attributes/aws/aws__lambda__remaining_time_in_millis.json
+
+/**
+ * The remaining time in milliseconds before the Lambda function times out `aws.lambda.remaining_time_in_millis`
+ *
+ * Attribute Value Type: `number` {@link AWS_LAMBDA_REMAINING_TIME_IN_MILLIS_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 5000
+ */
+export const AWS_LAMBDA_REMAINING_TIME_IN_MILLIS = 'aws.lambda.remaining_time_in_millis';
+
+/**
+ * Type for {@link AWS_LAMBDA_REMAINING_TIME_IN_MILLIS} aws.lambda.remaining_time_in_millis
+ */
+export type AWS_LAMBDA_REMAINING_TIME_IN_MILLIS_TYPE = number;
+
 // Path: model/attributes/blocked_main_thread.json
 
 /**
@@ -12154,6 +12334,15 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [APP_VITALS_START_WARM_VALUE]: 'double',
   [APP_VITALS_TTFD_VALUE]: 'double',
   [APP_VITALS_TTID_VALUE]: 'double',
+  [AWS_CLOUDWATCH_LOGS_LOG_GROUP]: 'string',
+  [AWS_CLOUDWATCH_LOGS_LOG_STREAM]: 'string',
+  [AWS_CLOUDWATCH_LOGS_URL]: 'string',
+  [AWS_LAMBDA_AWS_REQUEST_ID]: 'string',
+  [AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS]: 'double',
+  [AWS_LAMBDA_FUNCTION_NAME]: 'string',
+  [AWS_LAMBDA_FUNCTION_VERSION]: 'string',
+  [AWS_LAMBDA_INVOKED_FUNCTION_ARN]: 'string',
+  [AWS_LAMBDA_REMAINING_TIME_IN_MILLIS]: 'double',
   [BLOCKED_MAIN_THREAD]: 'boolean',
   [BROWSER_NAME]: 'string',
   [BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START]: 'double',
@@ -12731,6 +12920,15 @@ export type AttributeName =
   | typeof APP_VITALS_START_WARM_VALUE
   | typeof APP_VITALS_TTFD_VALUE
   | typeof APP_VITALS_TTID_VALUE
+  | typeof AWS_CLOUDWATCH_LOGS_LOG_GROUP
+  | typeof AWS_CLOUDWATCH_LOGS_LOG_STREAM
+  | typeof AWS_CLOUDWATCH_LOGS_URL
+  | typeof AWS_LAMBDA_AWS_REQUEST_ID
+  | typeof AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS
+  | typeof AWS_LAMBDA_FUNCTION_NAME
+  | typeof AWS_LAMBDA_FUNCTION_VERSION
+  | typeof AWS_LAMBDA_INVOKED_FUNCTION_ARN
+  | typeof AWS_LAMBDA_REMAINING_TIME_IN_MILLIS
   | typeof BLOCKED_MAIN_THREAD
   | typeof BROWSER_NAME
   | typeof BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START
@@ -14128,6 +14326,98 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [TIME_TO_INITIAL_DISPLAY],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.ttid.value attribute' }],
+  },
+  [AWS_CLOUDWATCH_LOGS_LOG_GROUP]: {
+    brief: 'The name of the CloudWatch Logs log group',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '/aws/lambda/my-function',
+    changelog: [{ version: 'next', prs: [363], description: 'Added aws.cloudwatch.logs.log_group attribute' }],
+  },
+  [AWS_CLOUDWATCH_LOGS_LOG_STREAM]: {
+    brief: 'The name of the CloudWatch Logs log stream',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '2024/01/01/[$LATEST]abcdef1234567890',
+    changelog: [{ version: 'next', prs: [363], description: 'Added aws.cloudwatch.logs.log_stream attribute' }],
+  },
+  [AWS_CLOUDWATCH_LOGS_URL]: {
+    brief: 'The URL to the CloudWatch Logs log group',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups/log-group/my-log-group',
+    changelog: [{ version: 'next', prs: [363], description: 'Added aws.cloudwatch.logs.url attribute' }],
+  },
+  [AWS_LAMBDA_AWS_REQUEST_ID]: {
+    brief: 'The AWS request ID as received by the Lambda function runtime',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '8476a536-e9f4-11e8-9739-2dfe598c3fcd',
+    changelog: [{ version: 'next', prs: [363], description: 'Added aws.lambda.aws_request_id attribute' }],
+  },
+  [AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS]: {
+    brief: 'The execution duration of the Lambda function invocation in milliseconds',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1234.56,
+    changelog: [
+      { version: 'next', prs: [363], description: 'Added aws.lambda.execution_duration_in_millis attribute' },
+    ],
+  },
+  [AWS_LAMBDA_FUNCTION_NAME]: {
+    brief: 'The name of the Lambda function',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'my-function',
+    changelog: [{ version: 'next', prs: [363], description: 'Added aws.lambda.function_name attribute' }],
+  },
+  [AWS_LAMBDA_FUNCTION_VERSION]: {
+    brief: 'The version of the Lambda function',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '$LATEST',
+    changelog: [{ version: 'next', prs: [363], description: 'Added aws.lambda.function_version attribute' }],
+  },
+  [AWS_LAMBDA_INVOKED_FUNCTION_ARN]: {
+    brief: 'The full ARN of the Lambda function that was invoked',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'arn:aws:lambda:us-east-1:123456789012:function:my-function',
+    changelog: [{ version: 'next', prs: [363], description: 'Added aws.lambda.invoked_function_arn attribute' }],
+  },
+  [AWS_LAMBDA_REMAINING_TIME_IN_MILLIS]: {
+    brief: 'The remaining time in milliseconds before the Lambda function times out',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 5000,
+    changelog: [{ version: 'next', prs: [363], description: 'Added aws.lambda.remaining_time_in_millis attribute' }],
   },
   [BLOCKED_MAIN_THREAD]: {
     brief: 'Whether the main thread was blocked by the span.',
@@ -20354,6 +20644,15 @@ export type Attributes = {
   [APP_VITALS_START_WARM_VALUE]?: APP_VITALS_START_WARM_VALUE_TYPE;
   [APP_VITALS_TTFD_VALUE]?: APP_VITALS_TTFD_VALUE_TYPE;
   [APP_VITALS_TTID_VALUE]?: APP_VITALS_TTID_VALUE_TYPE;
+  [AWS_CLOUDWATCH_LOGS_LOG_GROUP]?: AWS_CLOUDWATCH_LOGS_LOG_GROUP_TYPE;
+  [AWS_CLOUDWATCH_LOGS_LOG_STREAM]?: AWS_CLOUDWATCH_LOGS_LOG_STREAM_TYPE;
+  [AWS_CLOUDWATCH_LOGS_URL]?: AWS_CLOUDWATCH_LOGS_URL_TYPE;
+  [AWS_LAMBDA_AWS_REQUEST_ID]?: AWS_LAMBDA_AWS_REQUEST_ID_TYPE;
+  [AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS]?: AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS_TYPE;
+  [AWS_LAMBDA_FUNCTION_NAME]?: AWS_LAMBDA_FUNCTION_NAME_TYPE;
+  [AWS_LAMBDA_FUNCTION_VERSION]?: AWS_LAMBDA_FUNCTION_VERSION_TYPE;
+  [AWS_LAMBDA_INVOKED_FUNCTION_ARN]?: AWS_LAMBDA_INVOKED_FUNCTION_ARN_TYPE;
+  [AWS_LAMBDA_REMAINING_TIME_IN_MILLIS]?: AWS_LAMBDA_REMAINING_TIME_IN_MILLIS_TYPE;
   [BLOCKED_MAIN_THREAD]?: BLOCKED_MAIN_THREAD_TYPE;
   [BROWSER_NAME]?: BROWSER_NAME_TYPE;
   [BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START]?: BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START_TYPE;

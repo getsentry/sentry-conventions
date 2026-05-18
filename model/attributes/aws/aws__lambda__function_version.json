@@ -1,0 +1,17 @@
+{
+  "key": "aws.lambda.function_version",
+  "brief": "The version of the Lambda function",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "$LATEST",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [363],
+      "description": "Added aws.lambda.function_version attribute"
+    }
+  ]
+}

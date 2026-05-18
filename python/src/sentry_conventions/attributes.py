@@ -937,6 +937,114 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 1234.56
     """
 
+    # Path: model/attributes/aws/aws__cloudwatch__logs__log_group.json
+    AWS_CLOUDWATCH_LOGS_LOG_GROUP: Literal["aws.cloudwatch.logs.log_group"] = (
+        "aws.cloudwatch.logs.log_group"
+    )
+    """The name of the CloudWatch Logs log group
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "/aws/lambda/my-function"
+    """
+
+    # Path: model/attributes/aws/aws__cloudwatch__logs__log_stream.json
+    AWS_CLOUDWATCH_LOGS_LOG_STREAM: Literal["aws.cloudwatch.logs.log_stream"] = (
+        "aws.cloudwatch.logs.log_stream"
+    )
+    """The name of the CloudWatch Logs log stream
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "2024/01/01/[$LATEST]abcdef1234567890"
+    """
+
+    # Path: model/attributes/aws/aws__cloudwatch__logs__url.json
+    AWS_CLOUDWATCH_LOGS_URL: Literal["aws.cloudwatch.logs.url"] = (
+        "aws.cloudwatch.logs.url"
+    )
+    """The URL to the CloudWatch Logs log group
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups/log-group/my-log-group"
+    """
+
+    # Path: model/attributes/aws/aws__lambda__aws_request_id.json
+    AWS_LAMBDA_AWS_REQUEST_ID: Literal["aws.lambda.aws_request_id"] = (
+        "aws.lambda.aws_request_id"
+    )
+    """The AWS request ID as received by the Lambda function runtime
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "8476a536-e9f4-11e8-9739-2dfe598c3fcd"
+    """
+
+    # Path: model/attributes/aws/aws__lambda__execution_duration_in_millis.json
+    AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS: Literal[
+        "aws.lambda.execution_duration_in_millis"
+    ] = "aws.lambda.execution_duration_in_millis"
+    """The execution duration of the Lambda function invocation in milliseconds
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: 1234.56
+    """
+
+    # Path: model/attributes/aws/aws__lambda__function_name.json
+    AWS_LAMBDA_FUNCTION_NAME: Literal["aws.lambda.function_name"] = (
+        "aws.lambda.function_name"
+    )
+    """The name of the Lambda function
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "my-function"
+    """
+
+    # Path: model/attributes/aws/aws__lambda__function_version.json
+    AWS_LAMBDA_FUNCTION_VERSION: Literal["aws.lambda.function_version"] = (
+        "aws.lambda.function_version"
+    )
+    """The version of the Lambda function
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "$LATEST"
+    """
+
+    # Path: model/attributes/aws/aws__lambda__invoked_function_arn.json
+    AWS_LAMBDA_INVOKED_FUNCTION_ARN: Literal["aws.lambda.invoked_function_arn"] = (
+        "aws.lambda.invoked_function_arn"
+    )
+    """The full ARN of the Lambda function that was invoked
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "arn:aws:lambda:us-east-1:123456789012:function:my-function"
+    """
+
+    # Path: model/attributes/aws/aws__lambda__remaining_time_in_millis.json
+    AWS_LAMBDA_REMAINING_TIME_IN_MILLIS: Literal[
+        "aws.lambda.remaining_time_in_millis"
+    ] = "aws.lambda.remaining_time_in_millis"
+    """The remaining time in milliseconds before the Lambda function times out
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: 5000
+    """
+
     # Path: model/attributes/blocked_main_thread.json
     BLOCKED_MAIN_THREAD: Literal["blocked_main_thread"] = "blocked_main_thread"
     """Whether the main thread was blocked by the span.
@@ -7680,6 +7788,132 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "aws.cloudwatch.logs.log_group": AttributeMetadata(
+        brief="The name of the CloudWatch Logs log group",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="/aws/lambda/my-function",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[363],
+                description="Added aws.cloudwatch.logs.log_group attribute",
+            ),
+        ],
+    ),
+    "aws.cloudwatch.logs.log_stream": AttributeMetadata(
+        brief="The name of the CloudWatch Logs log stream",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="2024/01/01/[$LATEST]abcdef1234567890",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[363],
+                description="Added aws.cloudwatch.logs.log_stream attribute",
+            ),
+        ],
+    ),
+    "aws.cloudwatch.logs.url": AttributeMetadata(
+        brief="The URL to the CloudWatch Logs log group",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups/log-group/my-log-group",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[363],
+                description="Added aws.cloudwatch.logs.url attribute",
+            ),
+        ],
+    ),
+    "aws.lambda.aws_request_id": AttributeMetadata(
+        brief="The AWS request ID as received by the Lambda function runtime",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="8476a536-e9f4-11e8-9739-2dfe598c3fcd",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[363],
+                description="Added aws.lambda.aws_request_id attribute",
+            ),
+        ],
+    ),
+    "aws.lambda.execution_duration_in_millis": AttributeMetadata(
+        brief="The execution duration of the Lambda function invocation in milliseconds",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=1234.56,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[363],
+                description="Added aws.lambda.execution_duration_in_millis attribute",
+            ),
+        ],
+    ),
+    "aws.lambda.function_name": AttributeMetadata(
+        brief="The name of the Lambda function",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="my-function",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[363],
+                description="Added aws.lambda.function_name attribute",
+            ),
+        ],
+    ),
+    "aws.lambda.function_version": AttributeMetadata(
+        brief="The version of the Lambda function",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="$LATEST",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[363],
+                description="Added aws.lambda.function_version attribute",
+            ),
+        ],
+    ),
+    "aws.lambda.invoked_function_arn": AttributeMetadata(
+        brief="The full ARN of the Lambda function that was invoked",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="arn:aws:lambda:us-east-1:123456789012:function:my-function",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[363],
+                description="Added aws.lambda.invoked_function_arn attribute",
+            ),
+        ],
+    ),
+    "aws.lambda.remaining_time_in_millis": AttributeMetadata(
+        brief="The remaining time in milliseconds before the Lambda function times out",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=5000,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[363],
+                description="Added aws.lambda.remaining_time_in_millis attribute",
+            ),
+        ],
+    ),
     "blocked_main_thread": AttributeMetadata(
         brief="Whether the main thread was blocked by the span.",
         type=AttributeType.BOOLEAN,
@@ -14153,6 +14387,15 @@ Attributes = TypedDict(
         "app_start_cold": float,
         "app_start_type": str,
         "app_start_warm": float,
+        "aws.cloudwatch.logs.log_group": str,
+        "aws.cloudwatch.logs.log_stream": str,
+        "aws.cloudwatch.logs.url": str,
+        "aws.lambda.aws_request_id": str,
+        "aws.lambda.execution_duration_in_millis": float,
+        "aws.lambda.function_name": str,
+        "aws.lambda.function_version": str,
+        "aws.lambda.invoked_function_arn": str,
+        "aws.lambda.remaining_time_in_millis": float,
         "blocked_main_thread": bool,
         "browser.name": str,
         "browser.performance.navigation.activation_start": float,

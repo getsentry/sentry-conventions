@@ -1,0 +1,17 @@
+{
+  "key": "aws.lambda.aws_request_id",
+  "brief": "The AWS request ID as received by the Lambda function runtime",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "8476a536-e9f4-11e8-9739-2dfe598c3fcd",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [363],
+      "description": "Added aws.lambda.aws_request_id attribute"
+    }
+  ]
+}
