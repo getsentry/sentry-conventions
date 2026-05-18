@@ -4246,6 +4246,24 @@ export const FRAMES_FROZEN = 'frames.frozen';
  */
 export type FRAMES_FROZEN_TYPE = number;
 
+// Path: model/attributes/frames_frozen_rate.json
+
+/**
+ * The rate of frozen frames, or `app_vitals.frames.frozen.count` divided by `app_vitals.frames.total.count`. This is computed by Relay. `frames_frozen_rate`
+ *
+ * Attribute Value Type: `number` {@link FRAMES_FROZEN_RATE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ */
+export const FRAMES_FROZEN_RATE = 'frames_frozen_rate';
+
+/**
+ * Type for {@link FRAMES_FROZEN_RATE} frames_frozen_rate
+ */
+export type FRAMES_FROZEN_RATE_TYPE = number;
+
 // Path: model/attributes/frames/frames__slow.json
 
 /**
@@ -4268,6 +4286,24 @@ export const FRAMES_SLOW = 'frames.slow';
  * Type for {@link FRAMES_SLOW} frames.slow
  */
 export type FRAMES_SLOW_TYPE = number;
+
+// Path: model/attributes/frames_slow_rate.json
+
+/**
+ * The rate of slow frames, or `app_vitals.frames.slow.count` divided by `app_vitals.frames.total.count`. This is computed by Relay. `frames_slow_rate`
+ *
+ * Attribute Value Type: `number` {@link FRAMES_SLOW_RATE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ */
+export const FRAMES_SLOW_RATE = 'frames_slow_rate';
+
+/**
+ * Type for {@link FRAMES_SLOW_RATE} frames_slow_rate
+ */
+export type FRAMES_SLOW_RATE_TYPE = number;
 
 // Path: model/attributes/frames/frames__total.json
 
@@ -10806,6 +10842,42 @@ export const SERVICE_VERSION = 'service.version';
  */
 export type SERVICE_VERSION_TYPE = string;
 
+// Path: model/attributes/stall_percentage.json
+
+/**
+ * The fraction of time the app was stalled. Only applies to React Native. This is computed by Relay. `stall_percentage`
+ *
+ * Attribute Value Type: `number` {@link STALL_PERCENTAGE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ */
+export const STALL_PERCENTAGE = 'stall_percentage';
+
+/**
+ * Type for {@link STALL_PERCENTAGE} stall_percentage
+ */
+export type STALL_PERCENTAGE_TYPE = number;
+
+// Path: model/attributes/stall_total_time.json
+
+/**
+ * The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay. `stall_total_time`
+ *
+ * Attribute Value Type: `number` {@link STALL_TOTAL_TIME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ */
+export const STALL_TOTAL_TIME = 'stall_total_time';
+
+/**
+ * Type for {@link STALL_TOTAL_TIME} stall_total_time
+ */
+export type STALL_TOTAL_TIME_TYPE = number;
+
 // Path: model/attributes/state/state__type.json
 
 /**
@@ -12736,7 +12808,9 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [FP]: 'double',
   [FRAMES_DELAY]: 'integer',
   [FRAMES_FROZEN]: 'integer',
+  [FRAMES_FROZEN_RATE]: 'double',
   [FRAMES_SLOW]: 'integer',
+  [FRAMES_SLOW_RATE]: 'double',
   [FRAMES_TOTAL]: 'integer',
   [FS_ERROR]: 'string',
   [GCP_FUNCTION_CONTEXT_EVENT_ID]: 'string',
@@ -13050,6 +13124,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SERVER_PORT]: 'integer',
   [SERVICE_NAME]: 'string',
   [SERVICE_VERSION]: 'string',
+  [STALL_PERCENTAGE]: 'double',
+  [STALL_TOTAL_TIME]: 'double',
   [STATE_TYPE]: 'string',
   [THREAD_ID]: 'integer',
   [THREAD_NAME]: 'string',
@@ -13335,7 +13411,9 @@ export type AttributeName =
   | typeof FP
   | typeof FRAMES_DELAY
   | typeof FRAMES_FROZEN
+  | typeof FRAMES_FROZEN_RATE
   | typeof FRAMES_SLOW
+  | typeof FRAMES_SLOW_RATE
   | typeof FRAMES_TOTAL
   | typeof FS_ERROR
   | typeof GCP_FUNCTION_CONTEXT_EVENT_ID
@@ -13649,6 +13727,8 @@ export type AttributeName =
   | typeof SERVER_PORT
   | typeof SERVICE_NAME
   | typeof SERVICE_VERSION
+  | typeof STALL_PERCENTAGE
+  | typeof STALL_TOTAL_TIME
   | typeof STATE_TYPE
   | typeof THREAD_ID
   | typeof THREAD_NAME
@@ -16287,6 +16367,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.0.0' },
     ],
   },
+  [FRAMES_FROZEN_RATE]: {
+    brief:
+      'The rate of frozen frames, or `app_vitals.frames.frozen.count` divided by `app_vitals.frames.total.count`. This is computed by Relay.',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    changelog: [{ version: 'next', prs: [362], description: 'Added frames_frozen_rate attribute' }],
+  },
   [FRAMES_SLOW]: {
     brief: 'The number of slow frames rendered during the lifetime of the span.',
     type: 'integer',
@@ -16306,6 +16396,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
     ],
+  },
+  [FRAMES_SLOW_RATE]: {
+    brief:
+      'The rate of slow frames, or `app_vitals.frames.slow.count` divided by `app_vitals.frames.total.count`. This is computed by Relay.',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    changelog: [{ version: 'next', prs: [362], description: 'Added frames_slow_rate attribute' }],
   },
   [FRAMES_TOTAL]: {
     brief: 'The number of total frames rendered during the lifetime of the span.',
@@ -20094,6 +20194,25 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [SENTRY_RELEASE],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  [STALL_PERCENTAGE]: {
+    brief: 'The fraction of time the app was stalled. Only applies to React Native. This is computed by Relay.',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    changelog: [{ version: 'next', prs: [362], description: 'Added stall_percentage attribute' }],
+  },
+  [STALL_TOTAL_TIME]: {
+    brief:
+      'The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay.',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    changelog: [{ version: 'next', prs: [362], description: 'Added stall_total_time attribute' }],
+  },
   [STATE_TYPE]: {
     brief: 'The type of state management library',
     type: 'string',
@@ -21203,7 +21322,9 @@ export type Attributes = {
   [FP]?: FP_TYPE;
   [FRAMES_DELAY]?: FRAMES_DELAY_TYPE;
   [FRAMES_FROZEN]?: FRAMES_FROZEN_TYPE;
+  [FRAMES_FROZEN_RATE]?: FRAMES_FROZEN_RATE_TYPE;
   [FRAMES_SLOW]?: FRAMES_SLOW_TYPE;
+  [FRAMES_SLOW_RATE]?: FRAMES_SLOW_RATE_TYPE;
   [FRAMES_TOTAL]?: FRAMES_TOTAL_TYPE;
   [FS_ERROR]?: FS_ERROR_TYPE;
   [GCP_FUNCTION_CONTEXT_EVENT_ID]?: GCP_FUNCTION_CONTEXT_EVENT_ID_TYPE;
@@ -21517,6 +21638,8 @@ export type Attributes = {
   [SERVER_PORT]?: SERVER_PORT_TYPE;
   [SERVICE_NAME]?: SERVICE_NAME_TYPE;
   [SERVICE_VERSION]?: SERVICE_VERSION_TYPE;
+  [STALL_PERCENTAGE]?: STALL_PERCENTAGE_TYPE;
+  [STALL_TOTAL_TIME]?: STALL_TOTAL_TIME_TYPE;
   [STATE_TYPE]?: STATE_TYPE_TYPE;
   [THREAD_ID]?: THREAD_ID_TYPE;
   [THREAD_NAME]?: THREAD_NAME_TYPE;
