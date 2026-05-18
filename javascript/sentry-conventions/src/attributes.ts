@@ -9543,6 +9543,26 @@ export const SENTRY_DSC_ENVIRONMENT = 'sentry.dsc.environment';
  */
 export type SENTRY_DSC_ENVIRONMENT_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__dsc__project_id.json
+
+/**
+ * The ID of the project where the trace originated (i.e. the project of the SDK that started the trace). Propagated through the dynamic sampling context and set by Relay during ingestion. `sentry.dsc.project_id`
+ *
+ * Attribute Value Type: `number` {@link SENTRY_DSC_PROJECT_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 12345
+ */
+export const SENTRY_DSC_PROJECT_ID = 'sentry.dsc.project_id';
+
+/**
+ * Type for {@link SENTRY_DSC_PROJECT_ID} sentry.dsc.project_id
+ */
+export type SENTRY_DSC_PROJECT_ID_TYPE = number;
+
 // Path: model/attributes/sentry/sentry__dsc__public_key.json
 
 /**
@@ -12788,6 +12808,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_DIST]: 'string',
   [SENTRY_DOMAIN]: 'string',
   [SENTRY_DSC_ENVIRONMENT]: 'string',
+  [SENTRY_DSC_PROJECT_ID]: 'integer',
   [SENTRY_DSC_PUBLIC_KEY]: 'string',
   [SENTRY_DSC_RELEASE]: 'string',
   [SENTRY_DSC_SAMPLED]: 'boolean',
@@ -13377,6 +13398,7 @@ export type AttributeName =
   | typeof SENTRY_DIST
   | typeof SENTRY_DOMAIN
   | typeof SENTRY_DSC_ENVIRONMENT
+  | typeof SENTRY_DSC_PROJECT_ID
   | typeof SENTRY_DSC_PUBLIC_KEY
   | typeof SENTRY_DSC_RELEASE
   | typeof SENTRY_DSC_SAMPLED
@@ -19198,6 +19220,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'prod',
     changelog: [{ version: '0.3.0', prs: [185] }],
   },
+  [SENTRY_DSC_PROJECT_ID]: {
+    brief:
+      'The ID of the project where the trace originated (i.e. the project of the SDK that started the trace). Propagated through the dynamic sampling context and set by Relay during ingestion.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 12345,
+    changelog: [{ version: 'next', prs: [358], description: 'Add sentry.dsc.project_id as an attribute' }],
+  },
   [SENTRY_DSC_PUBLIC_KEY]: {
     brief: 'The public key from the dynamic sampling context.',
     type: 'string',
@@ -21134,6 +21167,7 @@ export type Attributes = {
   [SENTRY_DIST]?: SENTRY_DIST_TYPE;
   [SENTRY_DOMAIN]?: SENTRY_DOMAIN_TYPE;
   [SENTRY_DSC_ENVIRONMENT]?: SENTRY_DSC_ENVIRONMENT_TYPE;
+  [SENTRY_DSC_PROJECT_ID]?: SENTRY_DSC_PROJECT_ID_TYPE;
   [SENTRY_DSC_PUBLIC_KEY]?: SENTRY_DSC_PUBLIC_KEY_TYPE;
   [SENTRY_DSC_RELEASE]?: SENTRY_DSC_RELEASE_TYPE;
   [SENTRY_DSC_SAMPLED]?: SENTRY_DSC_SAMPLED_TYPE;
