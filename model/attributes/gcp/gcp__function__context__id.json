@@ -1,6 +1,6 @@
 {
   "key": "gcp.function.context.id",
-  "brief": "The unique ID of the GCP Cloud Function event",
+  "brief": "The unique event ID from the GCP CloudEvents context (2nd gen Cloud Functions)",
   "type": "string",
   "pii": {
     "key": "maybe"

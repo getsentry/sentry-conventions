@@ -2380,7 +2380,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     GCP_FUNCTION_CONTEXT_EVENT_ID: Literal["gcp.function.context.event_id"] = (
         "gcp.function.context.event_id"
     )
-    """The legacy event ID of the GCP Cloud Function event
+    """The event ID from the legacy GCP Cloud Function context (1st gen)
 
     Type: str
     Contains PII: maybe
@@ -2404,7 +2404,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     GCP_FUNCTION_CONTEXT_ID: Literal["gcp.function.context.id"] = (
         "gcp.function.context.id"
     )
-    """The unique ID of the GCP Cloud Function event
+    """The unique event ID from the GCP CloudEvents context (2nd gen Cloud Functions)
 
     Type: str
     Contains PII: maybe
@@ -9449,7 +9449,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "gcp.function.context.event_id": AttributeMetadata(
-        brief="The legacy event ID of the GCP Cloud Function event",
+        brief="The event ID from the legacy GCP Cloud Function context (1st gen)",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
@@ -9477,7 +9477,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "gcp.function.context.id": AttributeMetadata(
-        brief="The unique ID of the GCP Cloud Function event",
+        brief="The unique event ID from the GCP CloudEvents context (2nd gen Cloud Functions)",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,

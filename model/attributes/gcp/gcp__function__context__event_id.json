@@ -1,6 +1,6 @@
 {
   "key": "gcp.function.context.event_id",
-  "brief": "The legacy event ID of the GCP Cloud Function event",
+  "brief": "The event ID from the legacy GCP Cloud Function context (1st gen)",
   "type": "string",
   "pii": {
     "key": "maybe"

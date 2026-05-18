@@ -4016,7 +4016,7 @@ export type FS_ERROR_TYPE = string;
 // Path: model/attributes/gcp/gcp__function__context__event_id.json
 
 /**
- * The legacy event ID of the GCP Cloud Function event `gcp.function.context.event_id`
+ * The event ID from the legacy GCP Cloud Function context (1st gen) `gcp.function.context.event_id`
  *
  * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_EVENT_ID_TYPE}
  *
@@ -4056,7 +4056,7 @@ export type GCP_FUNCTION_CONTEXT_EVENT_TYPE_TYPE = string;
 // Path: model/attributes/gcp/gcp__function__context__id.json
 
 /**
- * The unique ID of the GCP Cloud Function event `gcp.function.context.id`
+ * The unique event ID from the GCP CloudEvents context (2nd gen Cloud Functions) `gcp.function.context.id`
  *
  * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_ID_TYPE}
  *
@@ -15751,7 +15751,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
   [GCP_FUNCTION_CONTEXT_EVENT_ID]: {
-    brief: 'The legacy event ID of the GCP Cloud Function event',
+    brief: 'The event ID from the legacy GCP Cloud Function context (1st gen)',
     type: 'string',
     pii: {
       isPii: 'maybe',
@@ -15771,7 +15771,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: 'next', prs: [372], description: 'Added gcp.function.context.event_type attribute' }],
   },
   [GCP_FUNCTION_CONTEXT_ID]: {
-    brief: 'The unique ID of the GCP Cloud Function event',
+    brief: 'The unique event ID from the GCP CloudEvents context (2nd gen Cloud Functions)',
     type: 'string',
     pii: {
       isPii: 'maybe',
