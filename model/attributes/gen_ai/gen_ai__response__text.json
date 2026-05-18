@@ -1,12 +1,15 @@
 {
   "key": "gen_ai.response.text",
-  "brief": "The model's response text messages. It has to be a stringified version of an array of response text messages.",
-  "type": "string",
+  "brief": "The model's response text messages.",
+  "type": "string[]",
   "pii": {
     "key": "maybe"
   },
   "is_in_otel": false,
-  "example": "[\"The weather in Paris is rainy and overcast, with temperatures around 57°F\", \"The weather in London is sunny and warm, with temperatures around 65°F\"]",
+  "example": [
+    "The weather in Paris is rainy and overcast, with temperatures around 57°F",
+    "The weather in London is sunny and warm, with temperatures around 65°F"
+  ],
   "alias": [],
   "deprecation": {
     "_status": "normalize",
@@ -15,11 +18,16 @@
   "changelog": [
     {
       "version": "0.4.0",
-      "prs": [221]
+      "prs": [
+        221
+      ]
     },
     {
       "version": "0.1.0",
-      "prs": [63, 74]
+      "prs": [
+        63,
+        74
+      ]
     }
   ]
 }

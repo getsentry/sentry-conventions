@@ -1,12 +1,15 @@
 {
   "key": "gen_ai.request.available_tools",
-  "brief": "The available tools for the model. It has to be a stringified version of an array of objects.",
-  "type": "string",
+  "brief": "The available tools for the model. Each element is a stringified JSON object representing a tool.",
+  "type": "string[]",
   "pii": {
     "key": "maybe"
   },
   "is_in_otel": false,
-  "example": "[{\"name\": \"get_weather\", \"description\": \"Get the weather for a given location\"}, {\"name\": \"get_news\", \"description\": \"Get the news for a given topic\"}]",
+  "example": [
+    "{\"name\": \"get_weather\", \"description\": \"Get the weather for a given location\"}",
+    "{\"name\": \"get_news\", \"description\": \"Get the news for a given topic\"}"
+  ],
   "alias": [],
   "deprecation": {
     "_status": "normalize",
@@ -15,11 +18,16 @@
   "changelog": [
     {
       "version": "0.4.0",
-      "prs": [221]
+      "prs": [
+        221
+      ]
     },
     {
       "version": "0.1.0",
-      "prs": [63, 127]
+      "prs": [
+        63,
+        127
+      ]
     }
   ]
 }

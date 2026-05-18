@@ -1,17 +1,24 @@
 {
   "key": "gen_ai.response.finish_reasons",
   "brief": "The reason why the model stopped generating.",
-  "type": "string",
+  "type": "string[]",
   "pii": {
     "key": "maybe"
   },
   "is_in_otel": true,
-  "example": "COMPLETE",
-  "alias": ["ai.finish_reason"],
+  "example": [
+    "COMPLETE"
+  ],
+  "alias": [
+    "ai.finish_reason"
+  ],
   "changelog": [
     {
       "version": "0.1.0",
-      "prs": [57, 127]
+      "prs": [
+        57,
+        127
+      ]
     }
   ]
 }

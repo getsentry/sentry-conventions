@@ -1,12 +1,14 @@
 {
   "key": "gen_ai.prompt",
-  "brief": "The input messages sent to the model",
-  "type": "string",
+  "brief": "The input messages sent to the model.",
+  "type": "string[]",
   "pii": {
     "key": "maybe"
   },
   "is_in_otel": true,
-  "example": "[{\"role\": \"user\", \"message\": \"hello\"}]",
+  "example": [
+    "{\"role\": \"user\", \"message\": \"hello\"}"
+  ],
   "deprecation": {
     "_status": null,
     "reason": "Deprecated from OTEL, use gen_ai.input.messages with the new format instead."
@@ -14,7 +16,11 @@
   "changelog": [
     {
       "version": "0.1.0",
-      "prs": [74, 108, 119]
+      "prs": [
+        74,
+        108,
+        119
+      ]
     },
     {
       "version": "0.0.0"

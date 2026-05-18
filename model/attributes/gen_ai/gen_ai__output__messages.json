@@ -1,16 +1,20 @@
 {
   "key": "gen_ai.output.messages",
-  "brief": "The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls.",
-  "type": "string",
+  "brief": "The model's response messages. Each element is a stringified JSON object representing a message, which can include text responses and tool calls.",
+  "type": "string[]",
   "pii": {
     "key": "maybe"
   },
   "is_in_otel": true,
-  "example": "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"text\", \"content\": \"The weather in Paris is currently rainy with a temperature of 57°F.\"}], \"finish_reason\": \"stop\"}]",
+  "example": [
+    "{\"role\": \"assistant\", \"parts\": [{\"type\": \"text\", \"content\": \"The weather in Paris is currently rainy with a temperature of 57\\u00b0F.\"}], \"finish_reason\": \"stop\"}"
+  ],
   "changelog": [
     {
       "version": "0.4.0",
-      "prs": [221]
+      "prs": [
+        221
+      ]
     }
   ]
 }
