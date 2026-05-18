@@ -1,6 +1,6 @@
 {
   "key": "stall_percentage",
-  "brief": "The fraction of time the app was stalled. Only applies to React Native.",
+  "brief": "The fraction of time the app was stalled. Only applies to React Native. This is computed by Relay.",
   "type": "double",
   "pii": {
     "key": "maybe"

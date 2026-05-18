@@ -2367,7 +2367,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/frames_frozen_rate.json
     FRAMES_FROZEN_RATE: Literal["frames_frozen_rate"] = "frames_frozen_rate"
-    """The rate of frozen frames, or `app_vitals.frames.frozen.count` divided by `app_vitals.frames.total.count`.
+    """The rate of frozen frames, or `app_vitals.frames.frozen.count` divided by `app_vitals.frames.total.count`. This is computed by Relay.
 
     Type: float
     Contains PII: maybe
@@ -2376,7 +2376,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/frames_slow_rate.json
     FRAMES_SLOW_RATE: Literal["frames_slow_rate"] = "frames_slow_rate"
-    """The rate of slow frames, or `app_vitals.frames.slow.count` divided by `app_vitals.frames.total.count`.
+    """The rate of slow frames, or `app_vitals.frames.slow.count` divided by `app_vitals.frames.total.count`. This is computed by Relay.
 
     Type: float
     Contains PII: maybe
@@ -5776,7 +5776,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/stall_percentage.json
     STALL_PERCENTAGE: Literal["stall_percentage"] = "stall_percentage"
-    """The fraction of time the app was stalled. Only applies to React Native.
+    """The fraction of time the app was stalled. Only applies to React Native. This is computed by Relay.
 
     Type: float
     Contains PII: maybe
@@ -5785,7 +5785,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/stall_total_time.json
     STALL_TOTAL_TIME: Literal["stall_total_time"] = "stall_total_time"
-    """The combined duration of all stalls in milliseconds. Only applies to React Native.
+    """The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay.
 
     Type: float
     Contains PII: maybe
@@ -9361,7 +9361,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "frames_frozen_rate": AttributeMetadata(
-        brief="The rate of frozen frames, or `app_vitals.frames.frozen.count` divided by `app_vitals.frames.total.count`.",
+        brief="The rate of frozen frames, or `app_vitals.frames.frozen.count` divided by `app_vitals.frames.total.count`. This is computed by Relay.",
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
@@ -9374,7 +9374,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "frames_slow_rate": AttributeMetadata(
-        brief="The rate of slow frames, or `app_vitals.frames.slow.count` divided by `app_vitals.frames.total.count`.",
+        brief="The rate of slow frames, or `app_vitals.frames.slow.count` divided by `app_vitals.frames.total.count`. This is computed by Relay.",
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
@@ -13072,7 +13072,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "stall_percentage": AttributeMetadata(
-        brief="The fraction of time the app was stalled. Only applies to React Native.",
+        brief="The fraction of time the app was stalled. Only applies to React Native. This is computed by Relay.",
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
@@ -13085,7 +13085,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "stall_total_time": AttributeMetadata(
-        brief="The combined duration of all stalls in milliseconds. Only applies to React Native.",
+        brief="The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay.",
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,

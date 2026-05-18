@@ -1,6 +1,6 @@
 {
   "key": "frames_frozen_rate",
-  "brief": "The rate of frozen frames, or `app_vitals.frames.frozen.count` divided by `app_vitals.frames.total.count`.",
+  "brief": "The rate of frozen frames, or `app_vitals.frames.frozen.count` divided by `app_vitals.frames.total.count`. This is computed by Relay.",
   "type": "double",
   "pii": {
     "key": "maybe"

@@ -3949,7 +3949,7 @@ export type FRAMES_FROZEN_TYPE = number;
 // Path: model/attributes/frames_frozen_rate.json
 
 /**
- * The rate of frozen frames, or `app_vitals.frames.frozen.count` divided by `app_vitals.frames.total.count`. `frames_frozen_rate`
+ * The rate of frozen frames, or `app_vitals.frames.frozen.count` divided by `app_vitals.frames.total.count`. This is computed by Relay. `frames_frozen_rate`
  *
  * Attribute Value Type: `number` {@link FRAMES_FROZEN_RATE_TYPE}
  *
@@ -3990,7 +3990,7 @@ export type FRAMES_SLOW_TYPE = number;
 // Path: model/attributes/frames_slow_rate.json
 
 /**
- * The rate of slow frames, or `app_vitals.frames.slow.count` divided by `app_vitals.frames.total.count`. `frames_slow_rate`
+ * The rate of slow frames, or `app_vitals.frames.slow.count` divided by `app_vitals.frames.total.count`. This is computed by Relay. `frames_slow_rate`
  *
  * Attribute Value Type: `number` {@link FRAMES_SLOW_RATE_TYPE}
  *
@@ -10325,7 +10325,7 @@ export type SERVICE_VERSION_TYPE = string;
 // Path: model/attributes/stall_percentage.json
 
 /**
- * The fraction of time the app was stalled. Only applies to React Native. `stall_percentage`
+ * The fraction of time the app was stalled. Only applies to React Native. This is computed by Relay. `stall_percentage`
  *
  * Attribute Value Type: `number` {@link STALL_PERCENTAGE_TYPE}
  *
@@ -10343,7 +10343,7 @@ export type STALL_PERCENTAGE_TYPE = number;
 // Path: model/attributes/stall_total_time.json
 
 /**
- * The combined duration of all stalls in milliseconds. Only applies to React Native. `stall_total_time`
+ * The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay. `stall_total_time`
  *
  * Attribute Value Type: `number` {@link STALL_TOTAL_TIME_TYPE}
  *
@@ -15578,7 +15578,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   [FRAMES_FROZEN_RATE]: {
-    brief: 'The rate of frozen frames, or `app_vitals.frames.frozen.count` divided by `app_vitals.frames.total.count`.',
+    brief:
+      'The rate of frozen frames, or `app_vitals.frames.frozen.count` divided by `app_vitals.frames.total.count`. This is computed by Relay.',
     type: 'double',
     pii: {
       isPii: 'maybe',
@@ -15607,7 +15608,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   [FRAMES_SLOW_RATE]: {
-    brief: 'The rate of slow frames, or `app_vitals.frames.slow.count` divided by `app_vitals.frames.total.count`.',
+    brief:
+      'The rate of slow frames, or `app_vitals.frames.slow.count` divided by `app_vitals.frames.total.count`. This is computed by Relay.',
     type: 'double',
     pii: {
       isPii: 'maybe',
@@ -19292,7 +19294,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [STALL_PERCENTAGE]: {
-    brief: 'The fraction of time the app was stalled. Only applies to React Native.',
+    brief: 'The fraction of time the app was stalled. Only applies to React Native. This is computed by Relay.',
     type: 'double',
     pii: {
       isPii: 'maybe',
@@ -19301,7 +19303,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: 'next', prs: [362], description: 'Added stall_percentage attribute' }],
   },
   [STALL_TOTAL_TIME]: {
-    brief: 'The combined duration of all stalls in milliseconds. Only applies to React Native.',
+    brief:
+      'The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay.',
     type: 'double',
     pii: {
       isPii: 'maybe',
