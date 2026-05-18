@@ -10,7 +10,7 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [363],
+      "prs": [371],
       "description": "Added gcp.function.context.time attribute"
     }
   ]

@@ -15758,7 +15758,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '1234567890',
-    changelog: [{ version: 'next', prs: [372], description: 'Added gcp.function.context.event_id attribute' }],
+    changelog: [{ version: 'next', prs: [371], description: 'Added gcp.function.context.event_id attribute' }],
   },
   [GCP_FUNCTION_CONTEXT_EVENT_TYPE]: {
     brief: 'The type of the GCP Cloud Function event',
@@ -15768,7 +15768,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'google.pubsub.topic.publish',
-    changelog: [{ version: 'next', prs: [372], description: 'Added gcp.function.context.event_type attribute' }],
+    changelog: [{ version: 'next', prs: [371], description: 'Added gcp.function.context.event_type attribute' }],
   },
   [GCP_FUNCTION_CONTEXT_ID]: {
     brief: 'The unique event ID from the GCP CloudEvents context (2nd gen Cloud Functions)',
@@ -15778,7 +15778,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '1234567890',
-    changelog: [{ version: 'next', prs: [363], description: 'Added gcp.function.context.id attribute' }],
+    changelog: [{ version: 'next', prs: [371], description: 'Added gcp.function.context.id attribute' }],
   },
   [GCP_FUNCTION_CONTEXT_RESOURCE]: {
     brief: 'The resource that triggered the GCP Cloud Function event',
@@ -15788,7 +15788,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'projects/my-project/topics/my-topic',
-    changelog: [{ version: 'next', prs: [363], description: 'Added gcp.function.context.resource attribute' }],
+    changelog: [{ version: 'next', prs: [371], description: 'Added gcp.function.context.resource attribute' }],
   },
   [GCP_FUNCTION_CONTEXT_SOURCE]: {
     brief: 'The source of the GCP Cloud Function event',
@@ -15798,7 +15798,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '//pubsub.googleapis.com/projects/my-project/topics/my-topic',
-    changelog: [{ version: 'next', prs: [363], description: 'Added gcp.function.context.source attribute' }],
+    changelog: [{ version: 'next', prs: [371], description: 'Added gcp.function.context.source attribute' }],
   },
   [GCP_FUNCTION_CONTEXT_SPECVERSION]: {
     brief: 'The CloudEvents specification version of the GCP Cloud Function event',
@@ -15808,7 +15808,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '1.0',
-    changelog: [{ version: 'next', prs: [363], description: 'Added gcp.function.context.specversion attribute' }],
+    changelog: [{ version: 'next', prs: [371], description: 'Added gcp.function.context.specversion attribute' }],
   },
   [GCP_FUNCTION_CONTEXT_TIME]: {
     brief: 'The timestamp of the GCP Cloud Function event',
@@ -15818,7 +15818,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '2024-01-01T00:00:00.000Z',
-    changelog: [{ version: 'next', prs: [363], description: 'Added gcp.function.context.time attribute' }],
+    changelog: [{ version: 'next', prs: [371], description: 'Added gcp.function.context.time attribute' }],
   },
   [GCP_FUNCTION_CONTEXT_TIMESTAMP]: {
     brief: 'The legacy timestamp of the GCP Cloud Function event',
@@ -15828,7 +15828,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '2024-01-01T00:00:00.000Z',
-    changelog: [{ version: 'next', prs: [363], description: 'Added gcp.function.context.timestamp attribute' }],
+    changelog: [{ version: 'next', prs: [371], description: 'Added gcp.function.context.timestamp attribute' }],
   },
   [GCP_FUNCTION_CONTEXT_TYPE]: {
     brief: 'The type of the GCP Cloud Function event context',
@@ -15838,7 +15838,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'cloud_functions.context',
-    changelog: [{ version: 'next', prs: [363], description: 'Added gcp.function.context.type attribute' }],
+    changelog: [{ version: 'next', prs: [371], description: 'Added gcp.function.context.type attribute' }],
   },
   [GEN_AI_AGENT_NAME]: {
     brief: 'The name of the agent being used.',

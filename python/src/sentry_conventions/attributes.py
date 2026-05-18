@@ -9457,7 +9457,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[372],
+                prs=[371],
                 description="Added gcp.function.context.event_id attribute",
             ),
         ],
@@ -9471,7 +9471,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[372],
+                prs=[371],
                 description="Added gcp.function.context.event_type attribute",
             ),
         ],
@@ -9485,7 +9485,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[363],
+                prs=[371],
                 description="Added gcp.function.context.id attribute",
             ),
         ],
@@ -9499,7 +9499,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[363],
+                prs=[371],
                 description="Added gcp.function.context.resource attribute",
             ),
         ],
@@ -9513,7 +9513,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[363],
+                prs=[371],
                 description="Added gcp.function.context.source attribute",
             ),
         ],
@@ -9527,7 +9527,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[363],
+                prs=[371],
                 description="Added gcp.function.context.specversion attribute",
             ),
         ],
@@ -9541,7 +9541,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[363],
+                prs=[371],
                 description="Added gcp.function.context.time attribute",
             ),
         ],
@@ -9555,7 +9555,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[363],
+                prs=[371],
                 description="Added gcp.function.context.timestamp attribute",
             ),
         ],
@@ -9569,7 +9569,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[363],
+                prs=[371],
                 description="Added gcp.function.context.type attribute",
             ),
         ],
