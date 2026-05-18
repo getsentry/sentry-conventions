@@ -2546,6 +2546,114 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "ENOENT: no such file or directory"
     """
 
+    # Path: model/attributes/gcp/gcp__function__context__event_id.json
+    GCP_FUNCTION_CONTEXT_EVENT_ID: Literal["gcp.function.context.event_id"] = (
+        "gcp.function.context.event_id"
+    )
+    """The event ID from the legacy GCP Cloud Function context (1st gen)
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "1234567890"
+    """
+
+    # Path: model/attributes/gcp/gcp__function__context__event_type.json
+    GCP_FUNCTION_CONTEXT_EVENT_TYPE: Literal["gcp.function.context.event_type"] = (
+        "gcp.function.context.event_type"
+    )
+    """The type of the GCP Cloud Function event
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "google.pubsub.topic.publish"
+    """
+
+    # Path: model/attributes/gcp/gcp__function__context__id.json
+    GCP_FUNCTION_CONTEXT_ID: Literal["gcp.function.context.id"] = (
+        "gcp.function.context.id"
+    )
+    """The unique event ID from the GCP CloudEvents context (2nd gen Cloud Functions)
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "1234567890"
+    """
+
+    # Path: model/attributes/gcp/gcp__function__context__resource.json
+    GCP_FUNCTION_CONTEXT_RESOURCE: Literal["gcp.function.context.resource"] = (
+        "gcp.function.context.resource"
+    )
+    """The resource that triggered the GCP Cloud Function event
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "projects/my-project/topics/my-topic"
+    """
+
+    # Path: model/attributes/gcp/gcp__function__context__source.json
+    GCP_FUNCTION_CONTEXT_SOURCE: Literal["gcp.function.context.source"] = (
+        "gcp.function.context.source"
+    )
+    """The source of the GCP Cloud Function event
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "//pubsub.googleapis.com/projects/my-project/topics/my-topic"
+    """
+
+    # Path: model/attributes/gcp/gcp__function__context__specversion.json
+    GCP_FUNCTION_CONTEXT_SPECVERSION: Literal["gcp.function.context.specversion"] = (
+        "gcp.function.context.specversion"
+    )
+    """The CloudEvents specification version of the GCP Cloud Function event
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "1.0"
+    """
+
+    # Path: model/attributes/gcp/gcp__function__context__time.json
+    GCP_FUNCTION_CONTEXT_TIME: Literal["gcp.function.context.time"] = (
+        "gcp.function.context.time"
+    )
+    """The timestamp of the GCP Cloud Function event
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "2024-01-01T00:00:00.000Z"
+    """
+
+    # Path: model/attributes/gcp/gcp__function__context__timestamp.json
+    GCP_FUNCTION_CONTEXT_TIMESTAMP: Literal["gcp.function.context.timestamp"] = (
+        "gcp.function.context.timestamp"
+    )
+    """The legacy timestamp of the GCP Cloud Function event
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "2024-01-01T00:00:00.000Z"
+    """
+
+    # Path: model/attributes/gcp/gcp__function__context__type.json
+    GCP_FUNCTION_CONTEXT_TYPE: Literal["gcp.function.context.type"] = (
+        "gcp.function.context.type"
+    )
+    """The type of the GCP Cloud Function event context
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "cloud_functions.context"
+    """
+
     # Path: model/attributes/gen_ai/gen_ai__agent__name.json
     GEN_AI_AGENT_NAME: Literal["gen_ai.agent.name"] = "gen_ai.agent.name"
     """The name of the agent being used.
@@ -9762,6 +9870,132 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "gcp.function.context.event_id": AttributeMetadata(
+        brief="The event ID from the legacy GCP Cloud Function context (1st gen)",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="1234567890",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[371],
+                description="Added gcp.function.context.event_id attribute",
+            ),
+        ],
+    ),
+    "gcp.function.context.event_type": AttributeMetadata(
+        brief="The type of the GCP Cloud Function event",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="google.pubsub.topic.publish",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[371],
+                description="Added gcp.function.context.event_type attribute",
+            ),
+        ],
+    ),
+    "gcp.function.context.id": AttributeMetadata(
+        brief="The unique event ID from the GCP CloudEvents context (2nd gen Cloud Functions)",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="1234567890",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[371],
+                description="Added gcp.function.context.id attribute",
+            ),
+        ],
+    ),
+    "gcp.function.context.resource": AttributeMetadata(
+        brief="The resource that triggered the GCP Cloud Function event",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="projects/my-project/topics/my-topic",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[371],
+                description="Added gcp.function.context.resource attribute",
+            ),
+        ],
+    ),
+    "gcp.function.context.source": AttributeMetadata(
+        brief="The source of the GCP Cloud Function event",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="//pubsub.googleapis.com/projects/my-project/topics/my-topic",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[371],
+                description="Added gcp.function.context.source attribute",
+            ),
+        ],
+    ),
+    "gcp.function.context.specversion": AttributeMetadata(
+        brief="The CloudEvents specification version of the GCP Cloud Function event",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="1.0",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[371],
+                description="Added gcp.function.context.specversion attribute",
+            ),
+        ],
+    ),
+    "gcp.function.context.time": AttributeMetadata(
+        brief="The timestamp of the GCP Cloud Function event",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="2024-01-01T00:00:00.000Z",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[371],
+                description="Added gcp.function.context.time attribute",
+            ),
+        ],
+    ),
+    "gcp.function.context.timestamp": AttributeMetadata(
+        brief="The legacy timestamp of the GCP Cloud Function event",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="2024-01-01T00:00:00.000Z",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[371],
+                description="Added gcp.function.context.timestamp attribute",
+            ),
+        ],
+    ),
+    "gcp.function.context.type": AttributeMetadata(
+        brief="The type of the GCP Cloud Function event context",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="cloud_functions.context",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[371],
+                description="Added gcp.function.context.type attribute",
+            ),
+        ],
+    ),
     "gen_ai.agent.name": AttributeMetadata(
         brief="The name of the agent being used.",
         type=AttributeType.STRING,
@@ -14626,6 +14860,15 @@ Attributes = TypedDict(
         "frames.slow": int,
         "frames.total": int,
         "fs_error": str,
+        "gcp.function.context.event_id": str,
+        "gcp.function.context.event_type": str,
+        "gcp.function.context.id": str,
+        "gcp.function.context.resource": str,
+        "gcp.function.context.source": str,
+        "gcp.function.context.specversion": str,
+        "gcp.function.context.time": str,
+        "gcp.function.context.timestamp": str,
+        "gcp.function.context.type": str,
         "gen_ai.agent.name": str,
         "gen_ai.context.utilization": float,
         "gen_ai.context.window_size": int,

@@ -1,0 +1,17 @@
+{
+  "key": "gcp.function.context.id",
+  "brief": "The unique event ID from the GCP CloudEvents context (2nd gen Cloud Functions)",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "1234567890",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [371],
+      "description": "Added gcp.function.context.id attribute"
+    }
+  ]
+}
