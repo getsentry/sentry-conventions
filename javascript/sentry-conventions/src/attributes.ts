@@ -1100,7 +1100,7 @@ export type APP_VITALS_FRAMES_DELAY_VALUE_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link FRAMES_FROZEN} `frames.frozen`
+ * Aliases: {@link FRAMES_FROZEN} `frames.frozen`, {@link _FRAMES_FROZEN} `frames_frozen`
  *
  * @example 3
  */
@@ -1122,7 +1122,7 @@ export type APP_VITALS_FRAMES_FROZEN_COUNT_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link FRAMES_SLOW} `frames.slow`
+ * Aliases: {@link FRAMES_SLOW} `frames.slow`, {@link _FRAMES_SLOW} `frames_slow`
  *
  * @example 1
  */
@@ -1144,7 +1144,7 @@ export type APP_VITALS_FRAMES_SLOW_COUNT_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link FRAMES_TOTAL} `frames.total`
+ * Aliases: {@link FRAMES_TOTAL} `frames.total`, {@link _FRAMES_TOTAL} `frames_total`
  *
  * @example 60
  */
@@ -4234,7 +4234,7 @@ export type FRAMES_DELAY_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link APP_VITALS_FRAMES_FROZEN_COUNT} `app.vitals.frames.frozen.count`
+ * Aliases: {@link APP_VITALS_FRAMES_FROZEN_COUNT} `app.vitals.frames.frozen.count`, {@link _FRAMES_FROZEN} `frames_frozen`
  *
  * @deprecated Use {@link APP_VITALS_FRAMES_FROZEN_COUNT} (app.vitals.frames.frozen.count) instead - Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes
  * @example 3
@@ -4245,6 +4245,29 @@ export const FRAMES_FROZEN = 'frames.frozen';
  * Type for {@link FRAMES_FROZEN} frames.frozen
  */
 export type FRAMES_FROZEN_TYPE = number;
+
+// Path: model/attributes/frames_frozen.json
+
+/**
+ * The number of frozen frames rendered during the lifetime of the span. `frames_frozen`
+ *
+ * Attribute Value Type: `number` {@link _FRAMES_FROZEN_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link APP_VITALS_FRAMES_FROZEN_COUNT} `app.vitals.frames.frozen.count`, {@link FRAMES_FROZEN} `frames.frozen`
+ *
+ * @deprecated Use {@link APP_VITALS_FRAMES_FROZEN_COUNT} (app.vitals.frames.frozen.count) instead - Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes
+ * @example 3
+ */
+export const _FRAMES_FROZEN = 'frames_frozen';
+
+/**
+ * Type for {@link _FRAMES_FROZEN} frames_frozen
+ */
+export type _FRAMES_FROZEN_TYPE = number;
 
 // Path: model/attributes/frames_frozen_rate.json
 
@@ -4275,7 +4298,7 @@ export type FRAMES_FROZEN_RATE_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link APP_VITALS_FRAMES_SLOW_COUNT} `app.vitals.frames.slow.count`
+ * Aliases: {@link APP_VITALS_FRAMES_SLOW_COUNT} `app.vitals.frames.slow.count`, {@link _FRAMES_SLOW} `frames_slow`
  *
  * @deprecated Use {@link APP_VITALS_FRAMES_SLOW_COUNT} (app.vitals.frames.slow.count) instead - Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes
  * @example 1
@@ -4286,6 +4309,29 @@ export const FRAMES_SLOW = 'frames.slow';
  * Type for {@link FRAMES_SLOW} frames.slow
  */
 export type FRAMES_SLOW_TYPE = number;
+
+// Path: model/attributes/frames_slow.json
+
+/**
+ * The number of slow frames rendered during the lifetime of the span. `frames_slow`
+ *
+ * Attribute Value Type: `number` {@link _FRAMES_SLOW_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link APP_VITALS_FRAMES_SLOW_COUNT} `app.vitals.frames.slow.count`, {@link FRAMES_SLOW} `frames.slow`
+ *
+ * @deprecated Use {@link APP_VITALS_FRAMES_SLOW_COUNT} (app.vitals.frames.slow.count) instead - Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes
+ * @example 1
+ */
+export const _FRAMES_SLOW = 'frames_slow';
+
+/**
+ * Type for {@link _FRAMES_SLOW} frames_slow
+ */
+export type _FRAMES_SLOW_TYPE = number;
 
 // Path: model/attributes/frames_slow_rate.json
 
@@ -4316,7 +4362,7 @@ export type FRAMES_SLOW_RATE_TYPE = number;
  *
  * Attribute defined in OTEL: No
  *
- * Aliases: {@link APP_VITALS_FRAMES_TOTAL_COUNT} `app.vitals.frames.total.count`
+ * Aliases: {@link APP_VITALS_FRAMES_TOTAL_COUNT} `app.vitals.frames.total.count`, {@link _FRAMES_TOTAL} `frames_total`
  *
  * @deprecated Use {@link APP_VITALS_FRAMES_TOTAL_COUNT} (app.vitals.frames.total.count) instead - Replaced by app.vitals.frames.total.count to align with the app.vitals.* namespace for mobile performance attributes
  * @example 60
@@ -4327,6 +4373,29 @@ export const FRAMES_TOTAL = 'frames.total';
  * Type for {@link FRAMES_TOTAL} frames.total
  */
 export type FRAMES_TOTAL_TYPE = number;
+
+// Path: model/attributes/frames_total.json
+
+/**
+ * The number of total frames rendered during the lifetime of the span. `frames_total`
+ *
+ * Attribute Value Type: `number` {@link _FRAMES_TOTAL_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * Aliases: {@link APP_VITALS_FRAMES_TOTAL_COUNT} `app.vitals.frames.total.count`, {@link FRAMES_TOTAL} `frames.total`
+ *
+ * @deprecated Use {@link APP_VITALS_FRAMES_TOTAL_COUNT} (app.vitals.frames.total.count) instead - Replaced by app.vitals.frames.total.count to align with the app.vitals.* namespace for mobile performance attributes
+ * @example 60
+ */
+export const _FRAMES_TOTAL = 'frames_total';
+
+/**
+ * Type for {@link _FRAMES_TOTAL} frames_total
+ */
+export type _FRAMES_TOTAL_TYPE = number;
 
 // Path: model/attributes/fs_error.json
 
@@ -12808,10 +12877,13 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [FP]: 'double',
   [FRAMES_DELAY]: 'integer',
   [FRAMES_FROZEN]: 'integer',
+  [_FRAMES_FROZEN]: 'integer',
   [FRAMES_FROZEN_RATE]: 'double',
   [FRAMES_SLOW]: 'integer',
+  [_FRAMES_SLOW]: 'integer',
   [FRAMES_SLOW_RATE]: 'double',
   [FRAMES_TOTAL]: 'integer',
+  [_FRAMES_TOTAL]: 'integer',
   [FS_ERROR]: 'string',
   [GCP_FUNCTION_CONTEXT_EVENT_ID]: 'string',
   [GCP_FUNCTION_CONTEXT_EVENT_TYPE]: 'string',
@@ -13411,10 +13483,13 @@ export type AttributeName =
   | typeof FP
   | typeof FRAMES_DELAY
   | typeof FRAMES_FROZEN
+  | typeof _FRAMES_FROZEN
   | typeof FRAMES_FROZEN_RATE
   | typeof FRAMES_SLOW
+  | typeof _FRAMES_SLOW
   | typeof FRAMES_SLOW_RATE
   | typeof FRAMES_TOTAL
+  | typeof _FRAMES_TOTAL
   | typeof FS_ERROR
   | typeof GCP_FUNCTION_CONTEXT_EVENT_ID
   | typeof GCP_FUNCTION_CONTEXT_EVENT_TYPE
@@ -14574,7 +14649,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 3,
-    aliases: [FRAMES_FROZEN],
+    aliases: [FRAMES_FROZEN, _FRAMES_FROZEN],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.frozen.count to replace frames.frozen' },
@@ -14588,7 +14663,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 1,
-    aliases: [FRAMES_SLOW],
+    aliases: [FRAMES_SLOW, _FRAMES_SLOW],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.slow.count to replace frames.slow' },
@@ -14602,7 +14677,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 60,
-    aliases: [FRAMES_TOTAL],
+    aliases: [FRAMES_TOTAL, _FRAMES_TOTAL],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.total.count to replace frames.total' },
@@ -16360,12 +16435,27 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason:
         'Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes',
     },
-    aliases: [APP_VITALS_FRAMES_FROZEN_COUNT],
+    aliases: [APP_VITALS_FRAMES_FROZEN_COUNT, _FRAMES_FROZEN],
     changelog: [
       { version: '0.5.0', prs: [313], description: 'Deprecated in favor of app.vitals.frames.frozen.count' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
     ],
+  },
+  [_FRAMES_FROZEN]: {
+    brief: 'The number of frozen frames rendered during the lifetime of the span.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 3,
+    deprecation: {
+      replacement: 'app.vitals.frames.frozen.count',
+      reason:
+        'Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes',
+    },
+    aliases: [APP_VITALS_FRAMES_FROZEN_COUNT, FRAMES_FROZEN],
   },
   [FRAMES_FROZEN_RATE]: {
     brief:
@@ -16390,12 +16480,27 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason:
         'Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes',
     },
-    aliases: [APP_VITALS_FRAMES_SLOW_COUNT],
+    aliases: [APP_VITALS_FRAMES_SLOW_COUNT, _FRAMES_SLOW],
     changelog: [
       { version: '0.5.0', prs: [313], description: 'Deprecated in favor of app.vitals.frames.slow.count' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
     ],
+  },
+  [_FRAMES_SLOW]: {
+    brief: 'The number of slow frames rendered during the lifetime of the span.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1,
+    deprecation: {
+      replacement: 'app.vitals.frames.slow.count',
+      reason:
+        'Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes',
+    },
+    aliases: [APP_VITALS_FRAMES_SLOW_COUNT, FRAMES_SLOW],
   },
   [FRAMES_SLOW_RATE]: {
     brief:
@@ -16420,12 +16525,27 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason:
         'Replaced by app.vitals.frames.total.count to align with the app.vitals.* namespace for mobile performance attributes',
     },
-    aliases: [APP_VITALS_FRAMES_TOTAL_COUNT],
+    aliases: [APP_VITALS_FRAMES_TOTAL_COUNT, _FRAMES_TOTAL],
     changelog: [
       { version: '0.5.0', prs: [313], description: 'Deprecated in favor of app.vitals.frames.total.count' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
     ],
+  },
+  [_FRAMES_TOTAL]: {
+    brief: 'The number of total frames rendered during the lifetime of the span.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 60,
+    deprecation: {
+      replacement: 'app.vitals.frames.total.count',
+      reason:
+        'Replaced by app.vitals.frames.total.count to align with the app.vitals.* namespace for mobile performance attributes',
+    },
+    aliases: [APP_VITALS_FRAMES_TOTAL_COUNT, FRAMES_TOTAL],
   },
   [FS_ERROR]: {
     brief: 'The error message of a file system error.',
@@ -21322,10 +21442,13 @@ export type Attributes = {
   [FP]?: FP_TYPE;
   [FRAMES_DELAY]?: FRAMES_DELAY_TYPE;
   [FRAMES_FROZEN]?: FRAMES_FROZEN_TYPE;
+  [_FRAMES_FROZEN]?: _FRAMES_FROZEN_TYPE;
   [FRAMES_FROZEN_RATE]?: FRAMES_FROZEN_RATE_TYPE;
   [FRAMES_SLOW]?: FRAMES_SLOW_TYPE;
+  [_FRAMES_SLOW]?: _FRAMES_SLOW_TYPE;
   [FRAMES_SLOW_RATE]?: FRAMES_SLOW_RATE_TYPE;
   [FRAMES_TOTAL]?: FRAMES_TOTAL_TYPE;
+  [_FRAMES_TOTAL]?: _FRAMES_TOTAL_TYPE;
   [FS_ERROR]?: FS_ERROR_TYPE;
   [GCP_FUNCTION_CONTEXT_EVENT_ID]?: GCP_FUNCTION_CONTEXT_EVENT_ID_TYPE;
   [GCP_FUNCTION_CONTEXT_EVENT_TYPE]?: GCP_FUNCTION_CONTEXT_EVENT_TYPE_TYPE;

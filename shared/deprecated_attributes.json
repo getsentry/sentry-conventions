@@ -246,6 +246,57 @@
       ]
     },
     {
+      "key": "frames_frozen",
+      "brief": "The number of frozen frames rendered during the lifetime of the span.",
+      "type": "integer",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": 3,
+      "alias": ["app.vitals.frames.frozen.count", "frames.frozen"],
+      "deprecation": {
+        "replacement": "app.vitals.frames.frozen.count",
+        "reason": "Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes",
+        "_status": "backfill"
+      },
+      "changelog": []
+    },
+    {
+      "key": "frames_slow",
+      "brief": "The number of slow frames rendered during the lifetime of the span.",
+      "type": "integer",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": 1,
+      "alias": ["app.vitals.frames.slow.count", "frames.slow"],
+      "deprecation": {
+        "replacement": "app.vitals.frames.slow.count",
+        "reason": "Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes",
+        "_status": "backfill"
+      },
+      "changelog": []
+    },
+    {
+      "key": "frames_total",
+      "brief": "The number of total frames rendered during the lifetime of the span.",
+      "type": "integer",
+      "pii": {
+        "key": "maybe"
+      },
+      "is_in_otel": false,
+      "example": 60,
+      "alias": ["app.vitals.frames.total.count", "frames.total"],
+      "deprecation": {
+        "replacement": "app.vitals.frames.total.count",
+        "reason": "Replaced by app.vitals.frames.total.count to align with the app.vitals.* namespace for mobile performance attributes",
+        "_status": "backfill"
+      },
+      "changelog": []
+    },
+    {
       "key": "fs_error",
       "brief": "The error message of a file system error.",
       "type": "string",
@@ -1770,7 +1821,7 @@
       },
       "is_in_otel": false,
       "example": 3,
-      "alias": ["app.vitals.frames.frozen.count"],
+      "alias": ["app.vitals.frames.frozen.count", "frames_frozen"],
       "deprecation": {
         "replacement": "app.vitals.frames.frozen.count",
         "reason": "Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes",
@@ -1800,7 +1851,7 @@
       },
       "is_in_otel": false,
       "example": 1,
-      "alias": ["app.vitals.frames.slow.count"],
+      "alias": ["app.vitals.frames.slow.count", "frames_slow"],
       "deprecation": {
         "replacement": "app.vitals.frames.slow.count",
         "reason": "Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes",
@@ -1830,7 +1881,7 @@
       },
       "is_in_otel": false,
       "example": 60,
-      "alias": ["app.vitals.frames.total.count"],
+      "alias": ["app.vitals.frames.total.count", "frames_total"],
       "deprecation": {
         "replacement": "app.vitals.frames.total.count",
         "reason": "Replaced by app.vitals.frames.total.count to align with the app.vitals.* namespace for mobile performance attributes",

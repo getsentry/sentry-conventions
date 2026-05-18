@@ -6,7 +6,7 @@
     "key": "maybe"
   },
   "is_in_otel": false,
-  "alias": ["frames.frozen"],
+  "alias": ["frames.frozen", "frames_frozen"],
   "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
   "example": 3,
   "changelog": [

@@ -165,6 +165,9 @@ class _AttributeNamesMeta(type):
         "FRAMES_FROZEN",
         "FRAMES_SLOW",
         "FRAMES_TOTAL",
+        "_FRAMES_FROZEN",
+        "_FRAMES_SLOW",
+        "_FRAMES_TOTAL",
         "FS_ERROR",
         "GEN_AI_PROMPT",
         "GEN_AI_REQUEST_AVAILABLE_TOOLS",
@@ -798,7 +801,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: frames.frozen
+    Aliases: frames.frozen, frames_frozen
     Example: 3
     """
 
@@ -811,7 +814,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: frames.slow
+    Aliases: frames.slow, frames_slow
     Example: 1
     """
 
@@ -824,7 +827,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: frames.total
+    Aliases: frames.total, frames_total
     Example: 60
     """
 
@@ -2506,7 +2509,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: app.vitals.frames.frozen.count
+    Aliases: app.vitals.frames.frozen.count, frames_frozen
     DEPRECATED: Use app.vitals.frames.frozen.count instead - Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes
     Example: 3
     """
@@ -2518,7 +2521,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: app.vitals.frames.slow.count
+    Aliases: app.vitals.frames.slow.count, frames_slow
     DEPRECATED: Use app.vitals.frames.slow.count instead - Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes
     Example: 1
     """
@@ -2530,9 +2533,21 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
-    Aliases: app.vitals.frames.total.count
+    Aliases: app.vitals.frames.total.count, frames_total
     DEPRECATED: Use app.vitals.frames.total.count instead - Replaced by app.vitals.frames.total.count to align with the app.vitals.* namespace for mobile performance attributes
     Example: 60
+    """
+
+    # Path: model/attributes/frames_frozen.json
+    _FRAMES_FROZEN: Literal["frames_frozen"] = "frames_frozen"
+    """The number of frozen frames rendered during the lifetime of the span.
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: app.vitals.frames.frozen.count, frames.frozen
+    DEPRECATED: Use app.vitals.frames.frozen.count instead - Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes
+    Example: 3
     """
 
     # Path: model/attributes/frames_frozen_rate.json
@@ -2544,6 +2559,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     """
 
+    # Path: model/attributes/frames_slow.json
+    _FRAMES_SLOW: Literal["frames_slow"] = "frames_slow"
+    """The number of slow frames rendered during the lifetime of the span.
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: app.vitals.frames.slow.count, frames.slow
+    DEPRECATED: Use app.vitals.frames.slow.count instead - Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes
+    Example: 1
+    """
+
     # Path: model/attributes/frames_slow_rate.json
     FRAMES_SLOW_RATE: Literal["frames_slow_rate"] = "frames_slow_rate"
     """The rate of slow frames, or `app_vitals.frames.slow.count` divided by `app_vitals.frames.total.count`. This is computed by Relay.
@@ -2551,6 +2578,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    """
+
+    # Path: model/attributes/frames_total.json
+    _FRAMES_TOTAL: Literal["frames_total"] = "frames_total"
+    """The number of total frames rendered during the lifetime of the span.
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Aliases: app.vitals.frames.total.count, frames.total
+    DEPRECATED: Use app.vitals.frames.total.count instead - Replaced by app.vitals.frames.total.count to align with the app.vitals.* namespace for mobile performance attributes
+    Example: 60
     """
 
     # Path: model/attributes/fs_error.json
@@ -7706,7 +7745,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=3,
-        aliases=["frames.frozen"],
+        aliases=["frames.frozen", "frames_frozen"],
         sdks=[
             "sentry.cocoa",
             "sentry.java.android",
@@ -7727,7 +7766,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=1,
-        aliases=["frames.slow"],
+        aliases=["frames.slow", "frames_slow"],
         sdks=[
             "sentry.cocoa",
             "sentry.java.android",
@@ -7748,7 +7787,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=60,
-        aliases=["frames.total"],
+        aliases=["frames.total", "frames_total"],
         sdks=[
             "sentry.cocoa",
             "sentry.java.android",
@@ -9835,7 +9874,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["app.vitals.frames.frozen.count"],
+        aliases=["app.vitals.frames.frozen.count", "frames_frozen"],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -9857,7 +9896,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["app.vitals.frames.slow.count"],
+        aliases=["app.vitals.frames.slow.count", "frames_slow"],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -9879,7 +9918,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="Replaced by app.vitals.frames.total.count to align with the app.vitals.* namespace for mobile performance attributes",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["app.vitals.frames.total.count"],
+        aliases=["app.vitals.frames.total.count", "frames_total"],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -9889,6 +9928,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
+    ),
+    "frames_frozen": AttributeMetadata(
+        brief="The number of frozen frames rendered during the lifetime of the span.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=3,
+        deprecation=DeprecationInfo(
+            replacement="app.vitals.frames.frozen.count",
+            reason="Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["app.vitals.frames.frozen.count", "frames.frozen"],
     ),
     "frames_frozen_rate": AttributeMetadata(
         brief="The rate of frozen frames, or `app_vitals.frames.frozen.count` divided by `app_vitals.frames.total.count`. This is computed by Relay.",
@@ -9903,6 +9955,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "frames_slow": AttributeMetadata(
+        brief="The number of slow frames rendered during the lifetime of the span.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=1,
+        deprecation=DeprecationInfo(
+            replacement="app.vitals.frames.slow.count",
+            reason="Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["app.vitals.frames.slow.count", "frames.slow"],
+    ),
     "frames_slow_rate": AttributeMetadata(
         brief="The rate of slow frames, or `app_vitals.frames.slow.count` divided by `app_vitals.frames.total.count`. This is computed by Relay.",
         type=AttributeType.DOUBLE,
@@ -9915,6 +9980,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 description="Added frames_slow_rate attribute",
             ),
         ],
+    ),
+    "frames_total": AttributeMetadata(
+        brief="The number of total frames rendered during the lifetime of the span.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=60,
+        deprecation=DeprecationInfo(
+            replacement="app.vitals.frames.total.count",
+            reason="Replaced by app.vitals.frames.total.count to align with the app.vitals.* namespace for mobile performance attributes",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["app.vitals.frames.total.count", "frames.total"],
     ),
     "fs_error": AttributeMetadata(
         brief="The error message of a file system error.",
@@ -14947,8 +15025,11 @@ Attributes = TypedDict(
         "frames.frozen": int,
         "frames.slow": int,
         "frames.total": int,
+        "frames_frozen": int,
         "frames_frozen_rate": float,
+        "frames_slow": int,
         "frames_slow_rate": float,
+        "frames_total": int,
         "fs_error": str,
         "gcp.function.context.event_id": str,
         "gcp.function.context.event_type": str,
