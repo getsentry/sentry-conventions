@@ -8800,6 +8800,26 @@ export const QUERY_KEY = 'query.<key>';
  */
 export type QUERY_KEY_TYPE = string;
 
+// Path: model/attributes/react/react__version.json
+
+/**
+ * The version of the React framework `react.version`
+ *
+ * Attribute Value Type: `string` {@link REACT_VERSION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "18.2.0"
+ */
+export const REACT_VERSION = 'react.version';
+
+/**
+ * Type for {@link REACT_VERSION} react.version
+ */
+export type REACT_VERSION_TYPE = string;
+
 // Path: model/attributes/release.json
 
 /**
@@ -12492,6 +12512,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [PROCESS_RUNTIME_NAME]: 'string',
   [PROCESS_RUNTIME_VERSION]: 'string',
   [QUERY_KEY]: 'string',
+  [REACT_VERSION]: 'string',
   [RELEASE]: 'string',
   [REMIX_ACTION_FORM_DATA_KEY]: 'string',
   [REPLAY_ID]: 'string',
@@ -13068,6 +13089,7 @@ export type AttributeName =
   | typeof PROCESS_RUNTIME_NAME
   | typeof PROCESS_RUNTIME_VERSION
   | typeof QUERY_KEY
+  | typeof REACT_VERSION
   | typeof RELEASE
   | typeof REMIX_ACTION_FORM_DATA_KEY
   | typeof REPLAY_ID
@@ -18512,6 +18534,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     changelog: [{ version: '0.1.0', prs: [103] }],
   },
+  [REACT_VERSION]: {
+    brief: 'The version of the React framework',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '18.2.0',
+    changelog: [{ version: 'next', prs: [363], description: 'Added react.version attribute' }],
+  },
   [RELEASE]: {
     brief: 'The sentry release.',
     type: 'string',
@@ -20680,6 +20712,7 @@ export type Attributes = {
   [PROCESS_RUNTIME_NAME]?: PROCESS_RUNTIME_NAME_TYPE;
   [PROCESS_RUNTIME_VERSION]?: PROCESS_RUNTIME_VERSION_TYPE;
   [QUERY_KEY]?: QUERY_KEY_TYPE;
+  [REACT_VERSION]?: REACT_VERSION_TYPE;
   [RELEASE]?: RELEASE_TYPE;
   [REMIX_ACTION_FORM_DATA_KEY]?: REMIX_ACTION_FORM_DATA_KEY_TYPE;
   [REPLAY_ID]?: REPLAY_ID_TYPE;
