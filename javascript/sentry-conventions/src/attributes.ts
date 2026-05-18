@@ -2065,6 +2065,106 @@ export const CLOUDFLARE_D1_ROWS_WRITTEN = 'cloudflare.d1.rows_written';
  */
 export type CLOUDFLARE_D1_ROWS_WRITTEN_TYPE = number;
 
+// Path: model/attributes/cloud/cloud__account__id.json
+
+/**
+ * The cloud account ID the resource is assigned to `cloud.account.id`
+ *
+ * Attribute Value Type: `string` {@link CLOUD_ACCOUNT_ID_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "123456789012"
+ */
+export const CLOUD_ACCOUNT_ID = 'cloud.account.id';
+
+/**
+ * Type for {@link CLOUD_ACCOUNT_ID} cloud.account.id
+ */
+export type CLOUD_ACCOUNT_ID_TYPE = string;
+
+// Path: model/attributes/cloud/cloud__availability_zone.json
+
+/**
+ * Cloud regions often have multiple, isolated locations known as zones to increase availability `cloud.availability_zone`
+ *
+ * Attribute Value Type: `string` {@link CLOUD_AVAILABILITY_ZONE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "us-east-1c"
+ */
+export const CLOUD_AVAILABILITY_ZONE = 'cloud.availability_zone';
+
+/**
+ * Type for {@link CLOUD_AVAILABILITY_ZONE} cloud.availability_zone
+ */
+export type CLOUD_AVAILABILITY_ZONE_TYPE = string;
+
+// Path: model/attributes/cloud/cloud__platform.json
+
+/**
+ * The cloud platform in use `cloud.platform`
+ *
+ * Attribute Value Type: `string` {@link CLOUD_PLATFORM_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "aws_lambda"
+ */
+export const CLOUD_PLATFORM = 'cloud.platform';
+
+/**
+ * Type for {@link CLOUD_PLATFORM} cloud.platform
+ */
+export type CLOUD_PLATFORM_TYPE = string;
+
+// Path: model/attributes/cloud/cloud__provider.json
+
+/**
+ * Name of the cloud provider `cloud.provider`
+ *
+ * Attribute Value Type: `string` {@link CLOUD_PROVIDER_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "aws"
+ */
+export const CLOUD_PROVIDER = 'cloud.provider';
+
+/**
+ * Type for {@link CLOUD_PROVIDER} cloud.provider
+ */
+export type CLOUD_PROVIDER_TYPE = string;
+
+// Path: model/attributes/cloud/cloud__region.json
+
+/**
+ * The geographical region the resource is running `cloud.region`
+ *
+ * Attribute Value Type: `string` {@link CLOUD_REGION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "us-east-1"
+ */
+export const CLOUD_REGION = 'cloud.region';
+
+/**
+ * Type for {@link CLOUD_REGION} cloud.region
+ */
+export type CLOUD_REGION_TYPE = string;
+
 // Path: model/attributes/cls.json
 
 /**
@@ -12051,6 +12151,11 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [CLOUDFLARE_D1_DURATION]: 'integer',
   [CLOUDFLARE_D1_ROWS_READ]: 'integer',
   [CLOUDFLARE_D1_ROWS_WRITTEN]: 'integer',
+  [CLOUD_ACCOUNT_ID]: 'string',
+  [CLOUD_AVAILABILITY_ZONE]: 'string',
+  [CLOUD_PLATFORM]: 'string',
+  [CLOUD_PROVIDER]: 'string',
+  [CLOUD_REGION]: 'string',
   [CLS]: 'double',
   [CLS_SOURCE_KEY]: 'string',
   [CODE_FILEPATH]: 'string',
@@ -12621,6 +12726,11 @@ export type AttributeName =
   | typeof CLOUDFLARE_D1_DURATION
   | typeof CLOUDFLARE_D1_ROWS_READ
   | typeof CLOUDFLARE_D1_ROWS_WRITTEN
+  | typeof CLOUD_ACCOUNT_ID
+  | typeof CLOUD_AVAILABILITY_ZONE
+  | typeof CLOUD_PLATFORM
+  | typeof CLOUD_PROVIDER
+  | typeof CLOUD_REGION
   | typeof CLS
   | typeof CLS_SOURCE_KEY
   | typeof CODE_FILEPATH
@@ -14400,6 +14510,56 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 12,
     sdks: ['javascript-cloudflare'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+  },
+  [CLOUD_ACCOUNT_ID]: {
+    brief: 'The cloud account ID the resource is assigned to',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: '123456789012',
+    changelog: [{ version: 'next', prs: [363], description: 'Added cloud.account.id attribute' }],
+  },
+  [CLOUD_AVAILABILITY_ZONE]: {
+    brief: 'Cloud regions often have multiple, isolated locations known as zones to increase availability',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'us-east-1c',
+    changelog: [{ version: 'next', prs: [363], description: 'Added cloud.availability_zone attribute' }],
+  },
+  [CLOUD_PLATFORM]: {
+    brief: 'The cloud platform in use',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'aws_lambda',
+    changelog: [{ version: 'next', prs: [363], description: 'Added cloud.platform attribute' }],
+  },
+  [CLOUD_PROVIDER]: {
+    brief: 'Name of the cloud provider',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'aws',
+    changelog: [{ version: 'next', prs: [363], description: 'Added cloud.provider attribute' }],
+  },
+  [CLOUD_REGION]: {
+    brief: 'The geographical region the resource is running',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'us-east-1',
+    changelog: [{ version: 'next', prs: [363], description: 'Added cloud.region attribute' }],
   },
   [CLS]: {
     brief: 'The value of the recorded Cumulative Layout Shift (CLS) web vital',
@@ -20167,6 +20327,11 @@ export type Attributes = {
   [CLOUDFLARE_D1_DURATION]?: CLOUDFLARE_D1_DURATION_TYPE;
   [CLOUDFLARE_D1_ROWS_READ]?: CLOUDFLARE_D1_ROWS_READ_TYPE;
   [CLOUDFLARE_D1_ROWS_WRITTEN]?: CLOUDFLARE_D1_ROWS_WRITTEN_TYPE;
+  [CLOUD_ACCOUNT_ID]?: CLOUD_ACCOUNT_ID_TYPE;
+  [CLOUD_AVAILABILITY_ZONE]?: CLOUD_AVAILABILITY_ZONE_TYPE;
+  [CLOUD_PLATFORM]?: CLOUD_PLATFORM_TYPE;
+  [CLOUD_PROVIDER]?: CLOUD_PROVIDER_TYPE;
+  [CLOUD_REGION]?: CLOUD_REGION_TYPE;
   [CLS]?: CLS_TYPE;
   [CLS_SOURCE_KEY]?: CLS_SOURCE_KEY_TYPE;
   [CODE_FILEPATH]?: CODE_FILEPATH_TYPE;
