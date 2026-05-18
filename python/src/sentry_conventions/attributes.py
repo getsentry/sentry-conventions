@@ -6014,6 +6014,26 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "GET /"
     """
 
+    # Path: model/attributes/trpc/trpc__procedure_path.json
+    TRPC_PROCEDURE_PATH: Literal["trpc.procedure_path"] = "trpc.procedure_path"
+    """The path of the tRPC procedure being called
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "user.getById"
+    """
+
+    # Path: model/attributes/trpc/trpc__procedure_type.json
+    TRPC_PROCEDURE_TYPE: Literal["trpc.procedure_type"] = "trpc.procedure_type"
+    """The type of the tRPC procedure
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "query"
+    """
+
     # Path: model/attributes/ttfb/ttfb__requestTime.json
     TTFB_REQUESTTIME: Literal["ttfb.requestTime"] = "ttfb.requestTime"
     """The time it takes for the server to process the initial request and send the first byte of a response to the user's browser
@@ -13529,6 +13549,34 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "trpc.procedure_path": AttributeMetadata(
+        brief="The path of the tRPC procedure being called",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="user.getById",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[363],
+                description="Added trpc.procedure_path attribute",
+            ),
+        ],
+    ),
+    "trpc.procedure_type": AttributeMetadata(
+        brief="The type of the tRPC procedure",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="query",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[363],
+                description="Added trpc.procedure_type attribute",
+            ),
+        ],
+    ),
     "ttfb.requestTime": AttributeMetadata(
         brief="The time it takes for the server to process the initial request and send the first byte of a response to the user's browser",
         type=AttributeType.DOUBLE,
@@ -14862,6 +14910,8 @@ Attributes = TypedDict(
         "time_to_full_display": float,
         "time_to_initial_display": float,
         "transaction": str,
+        "trpc.procedure_path": str,
+        "trpc.procedure_type": str,
         "ttfb.requestTime": float,
         "ttfb": float,
         "type": str,

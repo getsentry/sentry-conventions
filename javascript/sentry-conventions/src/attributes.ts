@@ -10755,6 +10755,46 @@ export const TRANSACTION = 'transaction';
  */
 export type TRANSACTION_TYPE = string;
 
+// Path: model/attributes/trpc/trpc__procedure_path.json
+
+/**
+ * The path of the tRPC procedure being called `trpc.procedure_path`
+ *
+ * Attribute Value Type: `string` {@link TRPC_PROCEDURE_PATH_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "user.getById"
+ */
+export const TRPC_PROCEDURE_PATH = 'trpc.procedure_path';
+
+/**
+ * Type for {@link TRPC_PROCEDURE_PATH} trpc.procedure_path
+ */
+export type TRPC_PROCEDURE_PATH_TYPE = string;
+
+// Path: model/attributes/trpc/trpc__procedure_type.json
+
+/**
+ * The type of the tRPC procedure `trpc.procedure_type`
+ *
+ * Attribute Value Type: `string` {@link TRPC_PROCEDURE_TYPE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "query"
+ */
+export const TRPC_PROCEDURE_TYPE = 'trpc.procedure_type';
+
+/**
+ * Type for {@link TRPC_PROCEDURE_TYPE} trpc.procedure_type
+ */
+export type TRPC_PROCEDURE_TYPE_TYPE = string;
+
 // Path: model/attributes/ttfb.json
 
 /**
@@ -12807,6 +12847,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [TIME_TO_FULL_DISPLAY]: 'double',
   [TIME_TO_INITIAL_DISPLAY]: 'double',
   [TRANSACTION]: 'string',
+  [TRPC_PROCEDURE_PATH]: 'string',
+  [TRPC_PROCEDURE_TYPE]: 'string',
   [TTFB]: 'double',
   [TTFB_REQUESTTIME]: 'double',
   [TYPE]: 'string',
@@ -13394,6 +13436,8 @@ export type AttributeName =
   | typeof TIME_TO_FULL_DISPLAY
   | typeof TIME_TO_INITIAL_DISPLAY
   | typeof TRANSACTION
+  | typeof TRPC_PROCEDURE_PATH
+  | typeof TRPC_PROCEDURE_TYPE
   | typeof TTFB
   | typeof TTFB_REQUESTTIME
   | typeof TYPE
@@ -19830,6 +19874,26 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.0.0' },
     ],
   },
+  [TRPC_PROCEDURE_PATH]: {
+    brief: 'The path of the tRPC procedure being called',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'user.getById',
+    changelog: [{ version: 'next', prs: [363], description: 'Added trpc.procedure_path attribute' }],
+  },
+  [TRPC_PROCEDURE_TYPE]: {
+    brief: 'The type of the tRPC procedure',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'query',
+    changelog: [{ version: 'next', prs: [363], description: 'Added trpc.procedure_type attribute' }],
+  },
   [TTFB]: {
     brief: 'The value of the recorded Time To First Byte (TTFB) web vital in milliseconds',
     type: 'double',
@@ -21129,6 +21193,8 @@ export type Attributes = {
   [TIME_TO_FULL_DISPLAY]?: TIME_TO_FULL_DISPLAY_TYPE;
   [TIME_TO_INITIAL_DISPLAY]?: TIME_TO_INITIAL_DISPLAY_TYPE;
   [TRANSACTION]?: TRANSACTION_TYPE;
+  [TRPC_PROCEDURE_PATH]?: TRPC_PROCEDURE_PATH_TYPE;
+  [TRPC_PROCEDURE_TYPE]?: TRPC_PROCEDURE_TYPE_TYPE;
   [TTFB]?: TTFB_TYPE;
   [TTFB_REQUESTTIME]?: TTFB_REQUESTTIME_TYPE;
   [TYPE]?: TYPE_TYPE;
