@@ -6,9 +6,7 @@
     "key": "maybe"
   },
   "is_in_otel": false,
-  "example": [
-    "{\"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}"
-  ],
+  "example": ["{\"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}"],
   "alias": [],
   "deprecation": {
     "_status": "normalize",
@@ -17,16 +15,11 @@
   "changelog": [
     {
       "version": "0.4.0",
-      "prs": [
-        221
-      ]
+      "prs": [221]
     },
     {
       "version": "0.1.0",
-      "prs": [
-        63,
-        74
-      ]
+      "prs": [63, 74]
     }
   ]
 }

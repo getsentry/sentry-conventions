@@ -1853,13 +1853,13 @@
     },
     {
       "key": "gen_ai.prompt",
-      "brief": "The input messages sent to the model",
-      "type": "string",
+      "brief": "The input messages sent to the model.",
+      "type": "string[]",
       "pii": {
         "key": "maybe"
       },
       "is_in_otel": true,
-      "example": "[{\"role\": \"user\", \"message\": \"hello\"}]",
+      "example": ["{\"role\": \"user\", \"message\": \"hello\"}"],
       "deprecation": {
         "_status": null,
         "reason": "Deprecated from OTEL, use gen_ai.input.messages with the new format instead."
@@ -1876,13 +1876,16 @@
     },
     {
       "key": "gen_ai.request.available_tools",
-      "brief": "The available tools for the model. It has to be a stringified version of an array of objects.",
-      "type": "string",
+      "brief": "The available tools for the model. Each element is a stringified JSON object representing a tool.",
+      "type": "string[]",
       "pii": {
         "key": "maybe"
       },
       "is_in_otel": false,
-      "example": "[{\"name\": \"get_weather\", \"description\": \"Get the weather for a given location\"}, {\"name\": \"get_news\", \"description\": \"Get the news for a given topic\"}]",
+      "example": [
+        "{\"name\": \"get_weather\", \"description\": \"Get the weather for a given location\"}",
+        "{\"name\": \"get_news\", \"description\": \"Get the news for a given topic\"}"
+      ],
       "alias": [],
       "deprecation": {
         "_status": "normalize",
@@ -1901,13 +1904,17 @@
     },
     {
       "key": "gen_ai.request.messages",
-      "brief": "The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `\"user\"`, `\"assistant\"`, `\"tool\"`, or `\"system\"`. For messages of the role `\"tool\"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: \"text\", text:\"...\"}`.",
-      "type": "string",
+      "brief": "The messages passed to the model. Each element is a stringified JSON object representing a message. The `role` attribute of each object must be `\"user\"`, `\"assistant\"`, `\"tool\"`, or `\"system\"`. For messages of the role `\"tool\"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: \"text\", text:\"...\"}`.",
+      "type": "string[]",
       "pii": {
         "key": "maybe"
       },
       "is_in_otel": false,
-      "example": "[{\"role\": \"system\", \"content\": \"Generate a random number.\"}, {\"role\": \"user\", \"content\": [{\"text\": \"Generate a random number between 0 and 10.\", \"type\": \"text\"}]}, {\"role\": \"tool\", \"content\": {\"toolCallId\": \"1\", \"toolName\": \"Weather\", \"output\": \"rainy\"}}]",
+      "example": [
+        "{\"role\": \"system\", \"content\": \"Generate a random number.\"}",
+        "{\"role\": \"user\", \"content\": [{\"text\": \"Generate a random number between 0 and 10.\", \"type\": \"text\"}]}",
+        "{\"role\": \"tool\", \"content\": {\"toolCallId\": \"1\", \"toolName\": \"Weather\", \"output\": \"rainy\"}}"
+      ],
       "alias": ["ai.input_messages"],
       "deprecation": {
         "_status": "normalize",
@@ -1926,13 +1933,16 @@
     },
     {
       "key": "gen_ai.response.text",
-      "brief": "The model's response text messages. It has to be a stringified version of an array of response text messages.",
-      "type": "string",
+      "brief": "The model's response text messages.",
+      "type": "string[]",
       "pii": {
         "key": "maybe"
       },
       "is_in_otel": false,
-      "example": "[\"The weather in Paris is rainy and overcast, with temperatures around 57°F\", \"The weather in London is sunny and warm, with temperatures around 65°F\"]",
+      "example": [
+        "The weather in Paris is rainy and overcast, with temperatures around 57°F",
+        "The weather in London is sunny and warm, with temperatures around 65°F"
+      ],
       "alias": [],
       "deprecation": {
         "_status": "normalize",
@@ -1951,13 +1961,13 @@
     },
     {
       "key": "gen_ai.response.tool_calls",
-      "brief": "The tool calls in the model's response. It has to be a stringified version of an array of objects.",
-      "type": "string",
+      "brief": "The tool calls in the model's response. Each element is a stringified JSON object representing a tool call.",
+      "type": "string[]",
       "pii": {
         "key": "maybe"
       },
       "is_in_otel": false,
-      "example": "[{\"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]",
+      "example": ["{\"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}"],
       "alias": [],
       "deprecation": {
         "_status": "normalize",

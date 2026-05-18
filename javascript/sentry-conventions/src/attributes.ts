@@ -4714,9 +4714,9 @@ export type GEN_AI_FUNCTION_ID_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__input__messages.json
 
 /**
- * The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. `gen_ai.input.messages`
+ * The messages passed to the model. Each element is a stringified JSON object representing a message. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. `gen_ai.input.messages`
  *
- * Attribute Value Type: `string` {@link GEN_AI_INPUT_MESSAGES_TYPE}
+ * Attribute Value Type: `Array<string>` {@link GEN_AI_INPUT_MESSAGES_TYPE}
  *
  * Contains PII: maybe
  *
@@ -4724,14 +4724,14 @@ export type GEN_AI_FUNCTION_ID_TYPE = string;
  *
  * Aliases: {@link AI_TEXTS} `ai.texts`
  *
- * @example "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"Weather in Paris?\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"result\": \"rainy, 57°F\"}]}]"
+ * @example ["{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"Weather in Paris?\"}]}","{\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]}","{\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"result\": \"rainy, 57\\u00b0F\"}]}"]
  */
 export const GEN_AI_INPUT_MESSAGES = 'gen_ai.input.messages';
 
 /**
  * Type for {@link GEN_AI_INPUT_MESSAGES} gen_ai.input.messages
  */
-export type GEN_AI_INPUT_MESSAGES_TYPE = string;
+export type GEN_AI_INPUT_MESSAGES_TYPE = Array<string>;
 
 // Path: model/attributes/gen_ai/gen_ai__operation__name.json
 
@@ -4776,22 +4776,22 @@ export type GEN_AI_OPERATION_TYPE_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__output__messages.json
 
 /**
- * The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. `gen_ai.output.messages`
+ * The model's response messages. Each element is a stringified JSON object representing a message, which can include text responses and tool calls. `gen_ai.output.messages`
  *
- * Attribute Value Type: `string` {@link GEN_AI_OUTPUT_MESSAGES_TYPE}
+ * Attribute Value Type: `Array<string>` {@link GEN_AI_OUTPUT_MESSAGES_TYPE}
  *
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
- * @example "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"text\", \"content\": \"The weather in Paris is currently rainy with a temperature of 57°F.\"}], \"finish_reason\": \"stop\"}]"
+ * @example ["{\"role\": \"assistant\", \"parts\": [{\"type\": \"text\", \"content\": \"The weather in Paris is currently rainy with a temperature of 57\\u00b0F.\"}], \"finish_reason\": \"stop\"}"]
  */
 export const GEN_AI_OUTPUT_MESSAGES = 'gen_ai.output.messages';
 
 /**
  * Type for {@link GEN_AI_OUTPUT_MESSAGES} gen_ai.output.messages
  */
-export type GEN_AI_OUTPUT_MESSAGES_TYPE = string;
+export type GEN_AI_OUTPUT_MESSAGES_TYPE = Array<string>;
 
 // Path: model/attributes/gen_ai/gen_ai__pipeline__name.json
 
@@ -4818,23 +4818,23 @@ export type GEN_AI_PIPELINE_NAME_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__prompt.json
 
 /**
- * The input messages sent to the model `gen_ai.prompt`
+ * The input messages sent to the model. `gen_ai.prompt`
  *
- * Attribute Value Type: `string` {@link GEN_AI_PROMPT_TYPE}
+ * Attribute Value Type: `Array<string>` {@link GEN_AI_PROMPT_TYPE}
  *
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
  * @deprecated  - Deprecated from OTEL, use gen_ai.input.messages with the new format instead.
- * @example "[{\"role\": \"user\", \"message\": \"hello\"}]"
+ * @example ["{\"role\": \"user\", \"message\": \"hello\"}"]
  */
 export const GEN_AI_PROMPT = 'gen_ai.prompt';
 
 /**
  * Type for {@link GEN_AI_PROMPT} gen_ai.prompt
  */
-export type GEN_AI_PROMPT_TYPE = string;
+export type GEN_AI_PROMPT_TYPE = Array<string>;
 
 // Path: model/attributes/gen_ai/gen_ai__provider__name.json
 
@@ -4861,23 +4861,23 @@ export type GEN_AI_PROVIDER_NAME_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__request__available_tools.json
 
 /**
- * The available tools for the model. It has to be a stringified version of an array of objects. `gen_ai.request.available_tools`
+ * The available tools for the model. Each element is a stringified JSON object representing a tool. `gen_ai.request.available_tools`
  *
- * Attribute Value Type: `string` {@link GEN_AI_REQUEST_AVAILABLE_TOOLS_TYPE}
+ * Attribute Value Type: `Array<string>` {@link GEN_AI_REQUEST_AVAILABLE_TOOLS_TYPE}
  *
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
  * @deprecated Use {@link GEN_AI_TOOL_DEFINITIONS} (gen_ai.tool.definitions) instead
- * @example "[{\"name\": \"get_weather\", \"description\": \"Get the weather for a given location\"}, {\"name\": \"get_news\", \"description\": \"Get the news for a given topic\"}]"
+ * @example ["{\"name\": \"get_weather\", \"description\": \"Get the weather for a given location\"}","{\"name\": \"get_news\", \"description\": \"Get the news for a given topic\"}"]
  */
 export const GEN_AI_REQUEST_AVAILABLE_TOOLS = 'gen_ai.request.available_tools';
 
 /**
  * Type for {@link GEN_AI_REQUEST_AVAILABLE_TOOLS} gen_ai.request.available_tools
  */
-export type GEN_AI_REQUEST_AVAILABLE_TOOLS_TYPE = string;
+export type GEN_AI_REQUEST_AVAILABLE_TOOLS_TYPE = Array<string>;
 
 // Path: model/attributes/gen_ai/gen_ai__request__frequency_penalty.json
 
@@ -4924,9 +4924,9 @@ export type GEN_AI_REQUEST_MAX_TOKENS_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__request__messages.json
 
 /**
- * The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. `gen_ai.request.messages`
+ * The messages passed to the model. Each element is a stringified JSON object representing a message. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. `gen_ai.request.messages`
  *
- * Attribute Value Type: `string` {@link GEN_AI_REQUEST_MESSAGES_TYPE}
+ * Attribute Value Type: `Array<string>` {@link GEN_AI_REQUEST_MESSAGES_TYPE}
  *
  * Contains PII: maybe
  *
@@ -4935,14 +4935,14 @@ export type GEN_AI_REQUEST_MAX_TOKENS_TYPE = number;
  * Aliases: {@link AI_INPUT_MESSAGES} `ai.input_messages`
  *
  * @deprecated Use {@link GEN_AI_INPUT_MESSAGES} (gen_ai.input.messages) instead
- * @example "[{\"role\": \"system\", \"content\": \"Generate a random number.\"}, {\"role\": \"user\", \"content\": [{\"text\": \"Generate a random number between 0 and 10.\", \"type\": \"text\"}]}, {\"role\": \"tool\", \"content\": {\"toolCallId\": \"1\", \"toolName\": \"Weather\", \"output\": \"rainy\"}}]"
+ * @example ["{\"role\": \"system\", \"content\": \"Generate a random number.\"}","{\"role\": \"user\", \"content\": [{\"text\": \"Generate a random number between 0 and 10.\", \"type\": \"text\"}]}","{\"role\": \"tool\", \"content\": {\"toolCallId\": \"1\", \"toolName\": \"Weather\", \"output\": \"rainy\"}}"]
  */
 export const GEN_AI_REQUEST_MESSAGES = 'gen_ai.request.messages';
 
 /**
  * Type for {@link GEN_AI_REQUEST_MESSAGES} gen_ai.request.messages
  */
-export type GEN_AI_REQUEST_MESSAGES_TYPE = string;
+export type GEN_AI_REQUEST_MESSAGES_TYPE = Array<string>;
 
 // Path: model/attributes/gen_ai/gen_ai__request__model.json
 
@@ -5079,7 +5079,7 @@ export type GEN_AI_REQUEST_TOP_P_TYPE = number;
 /**
  * The reason why the model stopped generating. `gen_ai.response.finish_reasons`
  *
- * Attribute Value Type: `string` {@link GEN_AI_RESPONSE_FINISH_REASONS_TYPE}
+ * Attribute Value Type: `Array<string>` {@link GEN_AI_RESPONSE_FINISH_REASONS_TYPE}
  *
  * Contains PII: maybe
  *
@@ -5087,14 +5087,14 @@ export type GEN_AI_REQUEST_TOP_P_TYPE = number;
  *
  * Aliases: {@link AI_FINISH_REASON} `ai.finish_reason`
  *
- * @example "COMPLETE"
+ * @example ["COMPLETE"]
  */
 export const GEN_AI_RESPONSE_FINISH_REASONS = 'gen_ai.response.finish_reasons';
 
 /**
  * Type for {@link GEN_AI_RESPONSE_FINISH_REASONS} gen_ai.response.finish_reasons
  */
-export type GEN_AI_RESPONSE_FINISH_REASONS_TYPE = string;
+export type GEN_AI_RESPONSE_FINISH_REASONS_TYPE = Array<string>;
 
 // Path: model/attributes/gen_ai/gen_ai__response__id.json
 
@@ -5165,23 +5165,23 @@ export type GEN_AI_RESPONSE_STREAMING_TYPE = boolean;
 // Path: model/attributes/gen_ai/gen_ai__response__text.json
 
 /**
- * The model's response text messages. It has to be a stringified version of an array of response text messages. `gen_ai.response.text`
+ * The model's response text messages. `gen_ai.response.text`
  *
- * Attribute Value Type: `string` {@link GEN_AI_RESPONSE_TEXT_TYPE}
+ * Attribute Value Type: `Array<string>` {@link GEN_AI_RESPONSE_TEXT_TYPE}
  *
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
  * @deprecated Use {@link GEN_AI_OUTPUT_MESSAGES} (gen_ai.output.messages) instead
- * @example "[\"The weather in Paris is rainy and overcast, with temperatures around 57°F\", \"The weather in London is sunny and warm, with temperatures around 65°F\"]"
+ * @example ["The weather in Paris is rainy and overcast, with temperatures around 57°F","The weather in London is sunny and warm, with temperatures around 65°F"]
  */
 export const GEN_AI_RESPONSE_TEXT = 'gen_ai.response.text';
 
 /**
  * Type for {@link GEN_AI_RESPONSE_TEXT} gen_ai.response.text
  */
-export type GEN_AI_RESPONSE_TEXT_TYPE = string;
+export type GEN_AI_RESPONSE_TEXT_TYPE = Array<string>;
 
 // Path: model/attributes/gen_ai/gen_ai__response__time_to_first_token.json
 
@@ -5226,23 +5226,23 @@ export type GEN_AI_RESPONSE_TOKENS_PER_SECOND_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__response__tool_calls.json
 
 /**
- * The tool calls in the model's response. It has to be a stringified version of an array of objects. `gen_ai.response.tool_calls`
+ * The tool calls in the model's response. Each element is a stringified JSON object representing a tool call. `gen_ai.response.tool_calls`
  *
- * Attribute Value Type: `string` {@link GEN_AI_RESPONSE_TOOL_CALLS_TYPE}
+ * Attribute Value Type: `Array<string>` {@link GEN_AI_RESPONSE_TOOL_CALLS_TYPE}
  *
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
  * @deprecated Use {@link GEN_AI_OUTPUT_MESSAGES} (gen_ai.output.messages) instead
- * @example "[{\"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]"
+ * @example ["{\"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}"]
  */
 export const GEN_AI_RESPONSE_TOOL_CALLS = 'gen_ai.response.tool_calls';
 
 /**
  * Type for {@link GEN_AI_RESPONSE_TOOL_CALLS} gen_ai.response.tool_calls
  */
-export type GEN_AI_RESPONSE_TOOL_CALLS_TYPE = string;
+export type GEN_AI_RESPONSE_TOOL_CALLS_TYPE = Array<string>;
 
 // Path: model/attributes/gen_ai/gen_ai__system.json
 
@@ -5357,22 +5357,22 @@ export type GEN_AI_TOOL_CALL_RESULT_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__tool__definitions.json
 
 /**
- * The list of source system tool definitions available to the GenAI agent or model. `gen_ai.tool.definitions`
+ * The list of source system tool definitions available to the GenAI agent or model. Each element is a stringified JSON object representing a tool definition. `gen_ai.tool.definitions`
  *
- * Attribute Value Type: `string` {@link GEN_AI_TOOL_DEFINITIONS_TYPE}
+ * Attribute Value Type: `Array<string>` {@link GEN_AI_TOOL_DEFINITIONS_TYPE}
  *
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
- * @example "[{\"type\": \"function\", \"name\": \"get_current_weather\", \"description\": \"Get the current weather in a given location\", \"parameters\": {\"type\": \"object\", \"properties\": {\"location\": {\"type\": \"string\", \"description\": \"The city and state, e.g. San Francisco, CA\"}, \"unit\": {\"type\": \"string\", \"enum\": [\"celsius\", \"fahrenheit\"]}}, \"required\": [\"location\", \"unit\"]}}]"
+ * @example ["{\"type\": \"function\", \"name\": \"get_current_weather\", \"description\": \"Get the current weather in a given location\", \"parameters\": {\"type\": \"object\", \"properties\": {\"location\": {\"type\": \"string\", \"description\": \"The city and state, e.g. San Francisco, CA\"}, \"unit\": {\"type\": \"string\", \"enum\": [\"celsius\", \"fahrenheit\"]}}, \"required\": [\"location\", \"unit\"]}}"]
  */
 export const GEN_AI_TOOL_DEFINITIONS = 'gen_ai.tool.definitions';
 
 /**
  * Type for {@link GEN_AI_TOOL_DEFINITIONS} gen_ai.tool.definitions
  */
-export type GEN_AI_TOOL_DEFINITIONS_TYPE = string;
+export type GEN_AI_TOOL_DEFINITIONS_TYPE = Array<string>;
 
 // Path: model/attributes/gen_ai/gen_ai__tool__description.json
 
@@ -12831,37 +12831,37 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [GEN_AI_COST_TOTAL_TOKENS]: 'double',
   [GEN_AI_EMBEDDINGS_INPUT]: 'string',
   [GEN_AI_FUNCTION_ID]: 'string',
-  [GEN_AI_INPUT_MESSAGES]: 'string',
+  [GEN_AI_INPUT_MESSAGES]: 'string[]',
   [GEN_AI_OPERATION_NAME]: 'string',
   [GEN_AI_OPERATION_TYPE]: 'string',
-  [GEN_AI_OUTPUT_MESSAGES]: 'string',
+  [GEN_AI_OUTPUT_MESSAGES]: 'string[]',
   [GEN_AI_PIPELINE_NAME]: 'string',
-  [GEN_AI_PROMPT]: 'string',
+  [GEN_AI_PROMPT]: 'string[]',
   [GEN_AI_PROVIDER_NAME]: 'string',
-  [GEN_AI_REQUEST_AVAILABLE_TOOLS]: 'string',
+  [GEN_AI_REQUEST_AVAILABLE_TOOLS]: 'string[]',
   [GEN_AI_REQUEST_FREQUENCY_PENALTY]: 'double',
   [GEN_AI_REQUEST_MAX_TOKENS]: 'integer',
-  [GEN_AI_REQUEST_MESSAGES]: 'string',
+  [GEN_AI_REQUEST_MESSAGES]: 'string[]',
   [GEN_AI_REQUEST_MODEL]: 'string',
   [GEN_AI_REQUEST_PRESENCE_PENALTY]: 'double',
   [GEN_AI_REQUEST_SEED]: 'string',
   [GEN_AI_REQUEST_TEMPERATURE]: 'double',
   [GEN_AI_REQUEST_TOP_K]: 'integer',
   [GEN_AI_REQUEST_TOP_P]: 'double',
-  [GEN_AI_RESPONSE_FINISH_REASONS]: 'string',
+  [GEN_AI_RESPONSE_FINISH_REASONS]: 'string[]',
   [GEN_AI_RESPONSE_ID]: 'string',
   [GEN_AI_RESPONSE_MODEL]: 'string',
   [GEN_AI_RESPONSE_STREAMING]: 'boolean',
-  [GEN_AI_RESPONSE_TEXT]: 'string',
+  [GEN_AI_RESPONSE_TEXT]: 'string[]',
   [GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN]: 'double',
   [GEN_AI_RESPONSE_TOKENS_PER_SECOND]: 'double',
-  [GEN_AI_RESPONSE_TOOL_CALLS]: 'string',
+  [GEN_AI_RESPONSE_TOOL_CALLS]: 'string[]',
   [GEN_AI_SYSTEM]: 'string',
   [GEN_AI_SYSTEM_INSTRUCTIONS]: 'string',
   [GEN_AI_SYSTEM_MESSAGE]: 'string',
   [GEN_AI_TOOL_CALL_ARGUMENTS]: 'string',
   [GEN_AI_TOOL_CALL_RESULT]: 'string',
-  [GEN_AI_TOOL_DEFINITIONS]: 'string',
+  [GEN_AI_TOOL_DEFINITIONS]: 'string[]',
   [GEN_AI_TOOL_DESCRIPTION]: 'string',
   [GEN_AI_TOOL_INPUT]: 'string',
   [GEN_AI_TOOL_MESSAGE]: 'string',
@@ -16637,14 +16637,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [GEN_AI_INPUT_MESSAGES]: {
     brief:
-      'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.',
-    type: 'string',
+      'The messages passed to the model. Each element is a stringified JSON object representing a message. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.',
+    type: 'string[]',
     pii: {
       isPii: 'maybe',
     },
     isInOtel: true,
-    example:
-      '[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
+    example: [
+      '{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}',
+      '{"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}',
+      '{"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57\\u00b0F"}]}',
+    ],
     aliases: [AI_TEXTS],
     changelog: [
       { version: '0.5.0', prs: [264] },
@@ -16681,14 +16684,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [GEN_AI_OUTPUT_MESSAGES]: {
     brief:
-      "The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls.",
-    type: 'string',
+      "The model's response messages. Each element is a stringified JSON object representing a message, which can include text responses and tool calls.",
+    type: 'string[]',
     pii: {
       isPii: 'maybe',
     },
     isInOtel: true,
-    example:
-      '[{"role": "assistant", "parts": [{"type": "text", "content": "The weather in Paris is currently rainy with a temperature of 57°F."}], "finish_reason": "stop"}]',
+    example: [
+      '{"role": "assistant", "parts": [{"type": "text", "content": "The weather in Paris is currently rainy with a temperature of 57\\u00b0F."}], "finish_reason": "stop"}',
+    ],
     changelog: [{ version: '0.4.0', prs: [221] }],
   },
   [GEN_AI_PIPELINE_NAME]: {
@@ -16703,13 +16707,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.1.0', prs: [76, 127] }],
   },
   [GEN_AI_PROMPT]: {
-    brief: 'The input messages sent to the model',
-    type: 'string',
+    brief: 'The input messages sent to the model.',
+    type: 'string[]',
     pii: {
       isPii: 'maybe',
     },
     isInOtel: true,
-    example: '[{"role": "user", "message": "hello"}]',
+    example: ['{"role": "user", "message": "hello"}'],
     deprecation: {
       reason: 'Deprecated from OTEL, use gen_ai.input.messages with the new format instead.',
     },
@@ -16727,14 +16731,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.4.0', prs: [253] }],
   },
   [GEN_AI_REQUEST_AVAILABLE_TOOLS]: {
-    brief: 'The available tools for the model. It has to be a stringified version of an array of objects.',
-    type: 'string',
+    brief: 'The available tools for the model. Each element is a stringified JSON object representing a tool.',
+    type: 'string[]',
     pii: {
       isPii: 'maybe',
     },
     isInOtel: false,
-    example:
-      '[{"name": "get_weather", "description": "Get the weather for a given location"}, {"name": "get_news", "description": "Get the news for a given topic"}]',
+    example: [
+      '{"name": "get_weather", "description": "Get the weather for a given location"}',
+      '{"name": "get_news", "description": "Get the news for a given topic"}',
+    ],
     deprecation: {
       replacement: 'gen_ai.tool.definitions',
     },
@@ -16773,14 +16779,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [GEN_AI_REQUEST_MESSAGES]: {
     brief:
-      'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.',
-    type: 'string',
+      'The messages passed to the model. Each element is a stringified JSON object representing a message. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.',
+    type: 'string[]',
     pii: {
       isPii: 'maybe',
     },
     isInOtel: false,
-    example:
-      '[{"role": "system", "content": "Generate a random number."}, {"role": "user", "content": [{"text": "Generate a random number between 0 and 10.", "type": "text"}]}, {"role": "tool", "content": {"toolCallId": "1", "toolName": "Weather", "output": "rainy"}}]',
+    example: [
+      '{"role": "system", "content": "Generate a random number."}',
+      '{"role": "user", "content": [{"text": "Generate a random number between 0 and 10.", "type": "text"}]}',
+      '{"role": "tool", "content": {"toolCallId": "1", "toolName": "Weather", "output": "rainy"}}',
+    ],
     deprecation: {
       replacement: 'gen_ai.input.messages',
     },
@@ -16873,12 +16882,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [GEN_AI_RESPONSE_FINISH_REASONS]: {
     brief: 'The reason why the model stopped generating.',
-    type: 'string',
+    type: 'string[]',
     pii: {
       isPii: 'maybe',
     },
     isInOtel: true,
-    example: 'COMPLETE',
+    example: ['COMPLETE'],
     aliases: [AI_FINISH_REASON],
     changelog: [{ version: '0.1.0', prs: [57, 127] }],
   },
@@ -16916,15 +16925,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.1.0', prs: [76] }],
   },
   [GEN_AI_RESPONSE_TEXT]: {
-    brief:
-      "The model's response text messages. It has to be a stringified version of an array of response text messages.",
-    type: 'string',
+    brief: "The model's response text messages.",
+    type: 'string[]',
     pii: {
       isPii: 'maybe',
     },
     isInOtel: false,
-    example:
-      '["The weather in Paris is rainy and overcast, with temperatures around 57°F", "The weather in London is sunny and warm, with temperatures around 65°F"]',
+    example: [
+      'The weather in Paris is rainy and overcast, with temperatures around 57°F',
+      'The weather in London is sunny and warm, with temperatures around 65°F',
+    ],
     deprecation: {
       replacement: 'gen_ai.output.messages',
     },
@@ -16957,13 +16967,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   [GEN_AI_RESPONSE_TOOL_CALLS]: {
-    brief: "The tool calls in the model's response. It has to be a stringified version of an array of objects.",
-    type: 'string',
+    brief:
+      "The tool calls in the model's response. Each element is a stringified JSON object representing a tool call.",
+    type: 'string[]',
     pii: {
       isPii: 'maybe',
     },
     isInOtel: false,
-    example: '[{"name": "get_weather", "arguments": {"location": "Paris"}}]',
+    example: ['{"name": "get_weather", "arguments": {"location": "Paris"}}'],
     deprecation: {
       replacement: 'gen_ai.output.messages',
     },
@@ -17048,14 +17059,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   [GEN_AI_TOOL_DEFINITIONS]: {
-    brief: 'The list of source system tool definitions available to the GenAI agent or model.',
-    type: 'string',
+    brief:
+      'The list of source system tool definitions available to the GenAI agent or model. Each element is a stringified JSON object representing a tool definition.',
+    type: 'string[]',
     pii: {
       isPii: 'maybe',
     },
     isInOtel: true,
-    example:
-      '[{"type": "function", "name": "get_current_weather", "description": "Get the current weather in a given location", "parameters": {"type": "object", "properties": {"location": {"type": "string", "description": "The city and state, e.g. San Francisco, CA"}, "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]}}, "required": ["location", "unit"]}}]',
+    example: [
+      '{"type": "function", "name": "get_current_weather", "description": "Get the current weather in a given location", "parameters": {"type": "object", "properties": {"location": {"type": "string", "description": "The city and state, e.g. San Francisco, CA"}, "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]}}, "required": ["location", "unit"]}}',
+    ],
     changelog: [{ version: '0.4.0', prs: [221] }],
   },
   [GEN_AI_TOOL_DESCRIPTION]: {
