@@ -518,7 +518,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether the request was streamed back.
 
     Type: bool
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Aliases: gen_ai.response.streaming
     DEPRECATED: Use gen_ai.response.streaming instead
@@ -639,6 +639,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     DEPRECATED: No replacement at this time
     Example: ["Token limit exceeded"]
+    """
+
+    # Path: model/attributes/angular/angular__version.json
+    ANGULAR_VERSION: Literal["angular.version"] = "angular.version"
+    """The version of the Angular framework
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "17.1.0"
     """
 
     # Path: model/attributes/app/app__app_build.json
@@ -935,6 +945,114 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Aliases: app.vitals.start.warm.value
     DEPRECATED: Use app.vitals.start.warm.value instead - Replaced by app.vitals.start.warm.value to align with the app.vitals.* namespace for mobile performance attributes
     Example: 1234.56
+    """
+
+    # Path: model/attributes/aws/aws__cloudwatch__logs__log_group.json
+    AWS_CLOUDWATCH_LOGS_LOG_GROUP: Literal["aws.cloudwatch.logs.log_group"] = (
+        "aws.cloudwatch.logs.log_group"
+    )
+    """The name of the CloudWatch Logs log group
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "/aws/lambda/my-function"
+    """
+
+    # Path: model/attributes/aws/aws__cloudwatch__logs__log_stream.json
+    AWS_CLOUDWATCH_LOGS_LOG_STREAM: Literal["aws.cloudwatch.logs.log_stream"] = (
+        "aws.cloudwatch.logs.log_stream"
+    )
+    """The name of the CloudWatch Logs log stream
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "2024/01/01/[$LATEST]abcdef1234567890"
+    """
+
+    # Path: model/attributes/aws/aws__cloudwatch__logs__url.json
+    AWS_CLOUDWATCH_LOGS_URL: Literal["aws.cloudwatch.logs.url"] = (
+        "aws.cloudwatch.logs.url"
+    )
+    """The URL to the CloudWatch Logs log group
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups/log-group/my-log-group"
+    """
+
+    # Path: model/attributes/aws/aws__lambda__aws_request_id.json
+    AWS_LAMBDA_AWS_REQUEST_ID: Literal["aws.lambda.aws_request_id"] = (
+        "aws.lambda.aws_request_id"
+    )
+    """The AWS request ID as received by the Lambda function runtime
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "8476a536-e9f4-11e8-9739-2dfe598c3fcd"
+    """
+
+    # Path: model/attributes/aws/aws__lambda__execution_duration_in_millis.json
+    AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS: Literal[
+        "aws.lambda.execution_duration_in_millis"
+    ] = "aws.lambda.execution_duration_in_millis"
+    """The execution duration of the Lambda function invocation in milliseconds
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: 1234.56
+    """
+
+    # Path: model/attributes/aws/aws__lambda__function_name.json
+    AWS_LAMBDA_FUNCTION_NAME: Literal["aws.lambda.function_name"] = (
+        "aws.lambda.function_name"
+    )
+    """The name of the Lambda function
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "my-function"
+    """
+
+    # Path: model/attributes/aws/aws__lambda__function_version.json
+    AWS_LAMBDA_FUNCTION_VERSION: Literal["aws.lambda.function_version"] = (
+        "aws.lambda.function_version"
+    )
+    """The version of the Lambda function
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "$LATEST"
+    """
+
+    # Path: model/attributes/aws/aws__lambda__invoked_function_arn.json
+    AWS_LAMBDA_INVOKED_FUNCTION_ARN: Literal["aws.lambda.invoked_function_arn"] = (
+        "aws.lambda.invoked_function_arn"
+    )
+    """The full ARN of the Lambda function that was invoked
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "arn:aws:lambda:us-east-1:123456789012:function:my-function"
+    """
+
+    # Path: model/attributes/aws/aws__lambda__remaining_time_in_millis.json
+    AWS_LAMBDA_REMAINING_TIME_IN_MILLIS: Literal[
+        "aws.lambda.remaining_time_in_millis"
+    ] = "aws.lambda.remaining_time_in_millis"
+    """The remaining time in milliseconds before the Lambda function times out
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: 5000
     """
 
     # Path: model/attributes/blocked_main_thread.json
@@ -1335,6 +1453,58 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: Yes
     Example: 5432
+    """
+
+    # Path: model/attributes/cloud/cloud__account__id.json
+    CLOUD_ACCOUNT_ID: Literal["cloud.account.id"] = "cloud.account.id"
+    """The cloud account ID the resource is assigned to
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: Yes
+    Example: "123456789012"
+    """
+
+    # Path: model/attributes/cloud/cloud__availability_zone.json
+    CLOUD_AVAILABILITY_ZONE: Literal["cloud.availability_zone"] = (
+        "cloud.availability_zone"
+    )
+    """Cloud regions often have multiple, isolated locations known as zones to increase availability
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: Yes
+    Example: "us-east-1c"
+    """
+
+    # Path: model/attributes/cloud/cloud__platform.json
+    CLOUD_PLATFORM: Literal["cloud.platform"] = "cloud.platform"
+    """The cloud platform in use
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: Yes
+    Example: "aws_lambda"
+    """
+
+    # Path: model/attributes/cloud/cloud__provider.json
+    CLOUD_PROVIDER: Literal["cloud.provider"] = "cloud.provider"
+    """Name of the cloud provider
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: Yes
+    Example: "aws"
+    """
+
+    # Path: model/attributes/cloud/cloud__region.json
+    CLOUD_REGION: Literal["cloud.region"] = "cloud.region"
+    """The geographical region the resource is running
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: Yes
+    Example: "us-east-1"
     """
 
     # Path: model/attributes/cloudflare/cloudflare__d1__duration.json
@@ -2394,6 +2564,114 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "ENOENT: no such file or directory"
     """
 
+    # Path: model/attributes/gcp/gcp__function__context__event_id.json
+    GCP_FUNCTION_CONTEXT_EVENT_ID: Literal["gcp.function.context.event_id"] = (
+        "gcp.function.context.event_id"
+    )
+    """The event ID from the legacy GCP Cloud Function context (1st gen)
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "1234567890"
+    """
+
+    # Path: model/attributes/gcp/gcp__function__context__event_type.json
+    GCP_FUNCTION_CONTEXT_EVENT_TYPE: Literal["gcp.function.context.event_type"] = (
+        "gcp.function.context.event_type"
+    )
+    """The type of the GCP Cloud Function event
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "google.pubsub.topic.publish"
+    """
+
+    # Path: model/attributes/gcp/gcp__function__context__id.json
+    GCP_FUNCTION_CONTEXT_ID: Literal["gcp.function.context.id"] = (
+        "gcp.function.context.id"
+    )
+    """The unique event ID from the GCP CloudEvents context (2nd gen Cloud Functions)
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "1234567890"
+    """
+
+    # Path: model/attributes/gcp/gcp__function__context__resource.json
+    GCP_FUNCTION_CONTEXT_RESOURCE: Literal["gcp.function.context.resource"] = (
+        "gcp.function.context.resource"
+    )
+    """The resource that triggered the GCP Cloud Function event
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "projects/my-project/topics/my-topic"
+    """
+
+    # Path: model/attributes/gcp/gcp__function__context__source.json
+    GCP_FUNCTION_CONTEXT_SOURCE: Literal["gcp.function.context.source"] = (
+        "gcp.function.context.source"
+    )
+    """The source of the GCP Cloud Function event
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "//pubsub.googleapis.com/projects/my-project/topics/my-topic"
+    """
+
+    # Path: model/attributes/gcp/gcp__function__context__specversion.json
+    GCP_FUNCTION_CONTEXT_SPECVERSION: Literal["gcp.function.context.specversion"] = (
+        "gcp.function.context.specversion"
+    )
+    """The CloudEvents specification version of the GCP Cloud Function event
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "1.0"
+    """
+
+    # Path: model/attributes/gcp/gcp__function__context__time.json
+    GCP_FUNCTION_CONTEXT_TIME: Literal["gcp.function.context.time"] = (
+        "gcp.function.context.time"
+    )
+    """The timestamp of the GCP Cloud Function event
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "2024-01-01T00:00:00.000Z"
+    """
+
+    # Path: model/attributes/gcp/gcp__function__context__timestamp.json
+    GCP_FUNCTION_CONTEXT_TIMESTAMP: Literal["gcp.function.context.timestamp"] = (
+        "gcp.function.context.timestamp"
+    )
+    """The legacy timestamp of the GCP Cloud Function event
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "2024-01-01T00:00:00.000Z"
+    """
+
+    # Path: model/attributes/gcp/gcp__function__context__type.json
+    GCP_FUNCTION_CONTEXT_TYPE: Literal["gcp.function.context.type"] = (
+        "gcp.function.context.type"
+    )
+    """The type of the GCP Cloud Function event context
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "cloud_functions.context"
+    """
+
     # Path: model/attributes/gen_ai/gen_ai__agent__name.json
     GEN_AI_AGENT_NAME: Literal["gen_ai.agent.name"] = "gen_ai.agent.name"
     """The name of the agent being used.
@@ -2734,7 +3012,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether or not the AI model call's response was streamed back asynchronously
 
     Type: bool
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Aliases: ai.streaming
     Example: true
@@ -3142,7 +3420,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The query string present in the URL. Note that this contains the leading ? character, while the `url.query` attribute does not.
 
     Type: str
-    Contains PII: maybe - Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.
+    Contains PII: true - Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.
     Defined in OTEL: No
     Example: "?foo=bar&bar=baz"
     """
@@ -3527,7 +3805,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The URL of the resource that was fetched.
 
     Type: str
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: Yes
     Aliases: url.full, url
     DEPRECATED: Use url.full instead
@@ -4931,6 +5209,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "query.id='123'"
     """
 
+    # Path: model/attributes/react/react__version.json
+    REACT_VERSION: Literal["react.version"] = "react.version"
+    """The version of the React framework
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "18.2.0"
+    """
+
     # Path: model/attributes/release.json
     RELEASE: Literal["release"] = "release"
     """The sentry release.
@@ -5208,6 +5496,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: false
     Defined in OTEL: No
     Example: "prod"
+    """
+
+    # Path: model/attributes/sentry/sentry__dsc__project_id.json
+    SENTRY_DSC_PROJECT_ID: Literal["sentry.dsc.project_id"] = "sentry.dsc.project_id"
+    """The ID of the project where the trace originated (i.e. the project of the SDK that started the trace). Propagated through the dynamic sampling context and set by Relay during ingestion.
+
+    Type: int
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 12345
     """
 
     # Path: model/attributes/sentry/sentry__dsc__public_key.json
@@ -5792,12 +6090,22 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     """
 
+    # Path: model/attributes/state/state__type.json
+    STATE_TYPE: Literal["state.type"] = "state.type"
+    """The type of state management library
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "redux"
+    """
+
     # Path: model/attributes/thread/thread__id.json
     THREAD_ID: Literal["thread.id"] = "thread.id"
     """Current “managed” thread ID.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Example: 56
     """
@@ -5858,6 +6166,26 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Aliases: sentry.segment.name, sentry.transaction
     DEPRECATED: Use sentry.segment.name instead
     Example: "GET /"
+    """
+
+    # Path: model/attributes/trpc/trpc__procedure_path.json
+    TRPC_PROCEDURE_PATH: Literal["trpc.procedure_path"] = "trpc.procedure_path"
+    """The path of the tRPC procedure being called
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "user.getById"
+    """
+
+    # Path: model/attributes/trpc/trpc__procedure_type.json
+    TRPC_PROCEDURE_TYPE: Literal["trpc.procedure_type"] = "trpc.procedure_type"
+    """The type of the tRPC procedure
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Example: "query"
     """
 
     # Path: model/attributes/ttfb/ttfb__requestTime.json
@@ -6039,7 +6367,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The URL of the resource that was fetched.
 
     Type: str
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: Yes
     Aliases: http.url, url
     Example: "https://example.com/test?foo=bar#buzz"
@@ -6084,7 +6412,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The query string present in the URL. Note that this does not contain the leading ? character, while the `http.query` attribute does.
 
     Type: str
-    Contains PII: maybe - Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.
+    Contains PII: true - Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.
     Defined in OTEL: Yes
     Example: "foo=bar&bar=baz"
     """
@@ -6116,7 +6444,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The URL of the resource that was fetched.
 
     Type: str
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: No
     Aliases: url.full, http.url
     DEPRECATED: Use url.full instead
@@ -6937,7 +7265,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.streaming": AttributeMetadata(
         brief="Whether the request was streamed back.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=True,
         deprecation=DeprecationInfo(
@@ -7092,6 +7420,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55]),
+        ],
+    ),
+    "angular.version": AttributeMetadata(
+        brief="The version of the Angular framework",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="17.1.0",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[367], description="Added angular.version attribute"
+            ),
         ],
     ),
     "app.app_build": AttributeMetadata(
@@ -7644,6 +7984,132 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "aws.cloudwatch.logs.log_group": AttributeMetadata(
+        brief="The name of the CloudWatch Logs log group",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="/aws/lambda/my-function",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[369],
+                description="Added aws.cloudwatch.logs.log_group attribute",
+            ),
+        ],
+    ),
+    "aws.cloudwatch.logs.log_stream": AttributeMetadata(
+        brief="The name of the CloudWatch Logs log stream",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="2024/01/01/[$LATEST]abcdef1234567890",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[369],
+                description="Added aws.cloudwatch.logs.log_stream attribute",
+            ),
+        ],
+    ),
+    "aws.cloudwatch.logs.url": AttributeMetadata(
+        brief="The URL to the CloudWatch Logs log group",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups/log-group/my-log-group",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[369],
+                description="Added aws.cloudwatch.logs.url attribute",
+            ),
+        ],
+    ),
+    "aws.lambda.aws_request_id": AttributeMetadata(
+        brief="The AWS request ID as received by the Lambda function runtime",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="8476a536-e9f4-11e8-9739-2dfe598c3fcd",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[369],
+                description="Added aws.lambda.aws_request_id attribute",
+            ),
+        ],
+    ),
+    "aws.lambda.execution_duration_in_millis": AttributeMetadata(
+        brief="The execution duration of the Lambda function invocation in milliseconds",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=1234.56,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[369],
+                description="Added aws.lambda.execution_duration_in_millis attribute",
+            ),
+        ],
+    ),
+    "aws.lambda.function_name": AttributeMetadata(
+        brief="The name of the Lambda function",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="my-function",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[369],
+                description="Added aws.lambda.function_name attribute",
+            ),
+        ],
+    ),
+    "aws.lambda.function_version": AttributeMetadata(
+        brief="The version of the Lambda function",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="$LATEST",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[369],
+                description="Added aws.lambda.function_version attribute",
+            ),
+        ],
+    ),
+    "aws.lambda.invoked_function_arn": AttributeMetadata(
+        brief="The full ARN of the Lambda function that was invoked",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="arn:aws:lambda:us-east-1:123456789012:function:my-function",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[369],
+                description="Added aws.lambda.invoked_function_arn attribute",
+            ),
+        ],
+    ),
+    "aws.lambda.remaining_time_in_millis": AttributeMetadata(
+        brief="The remaining time in milliseconds before the Lambda function times out",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example=5000,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[369],
+                description="Added aws.lambda.remaining_time_in_millis attribute",
+            ),
+        ],
+    ),
     "blocked_main_thread": AttributeMetadata(
         brief="Whether the main thread was blocked by the span.",
         type=AttributeType.BOOLEAN,
@@ -8067,6 +8533,70 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "cloud.account.id": AttributeMetadata(
+        brief="The cloud account ID the resource is assigned to",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=True,
+        example="123456789012",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[364],
+                description="Added cloud.account.id attribute",
+            ),
+        ],
+    ),
+    "cloud.availability_zone": AttributeMetadata(
+        brief="Cloud regions often have multiple, isolated locations known as zones to increase availability",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=True,
+        example="us-east-1c",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[364],
+                description="Added cloud.availability_zone attribute",
+            ),
+        ],
+    ),
+    "cloud.platform": AttributeMetadata(
+        brief="The cloud platform in use",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=True,
+        example="aws_lambda",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[364], description="Added cloud.platform attribute"
+            ),
+        ],
+    ),
+    "cloud.provider": AttributeMetadata(
+        brief="Name of the cloud provider",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=True,
+        example="aws",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[364], description="Added cloud.provider attribute"
+            ),
+        ],
+    ),
+    "cloud.region": AttributeMetadata(
+        brief="The geographical region the resource is running",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=True,
+        example="us-east-1",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[364], description="Added cloud.region attribute"
+            ),
         ],
     ),
     "cloudflare.d1.duration": AttributeMetadata(
@@ -9402,6 +9932,132 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "gcp.function.context.event_id": AttributeMetadata(
+        brief="The event ID from the legacy GCP Cloud Function context (1st gen)",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="1234567890",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[371],
+                description="Added gcp.function.context.event_id attribute",
+            ),
+        ],
+    ),
+    "gcp.function.context.event_type": AttributeMetadata(
+        brief="The type of the GCP Cloud Function event",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="google.pubsub.topic.publish",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[371],
+                description="Added gcp.function.context.event_type attribute",
+            ),
+        ],
+    ),
+    "gcp.function.context.id": AttributeMetadata(
+        brief="The unique event ID from the GCP CloudEvents context (2nd gen Cloud Functions)",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="1234567890",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[371],
+                description="Added gcp.function.context.id attribute",
+            ),
+        ],
+    ),
+    "gcp.function.context.resource": AttributeMetadata(
+        brief="The resource that triggered the GCP Cloud Function event",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="projects/my-project/topics/my-topic",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[371],
+                description="Added gcp.function.context.resource attribute",
+            ),
+        ],
+    ),
+    "gcp.function.context.source": AttributeMetadata(
+        brief="The source of the GCP Cloud Function event",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="//pubsub.googleapis.com/projects/my-project/topics/my-topic",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[371],
+                description="Added gcp.function.context.source attribute",
+            ),
+        ],
+    ),
+    "gcp.function.context.specversion": AttributeMetadata(
+        brief="The CloudEvents specification version of the GCP Cloud Function event",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="1.0",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[371],
+                description="Added gcp.function.context.specversion attribute",
+            ),
+        ],
+    ),
+    "gcp.function.context.time": AttributeMetadata(
+        brief="The timestamp of the GCP Cloud Function event",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="2024-01-01T00:00:00.000Z",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[371],
+                description="Added gcp.function.context.time attribute",
+            ),
+        ],
+    ),
+    "gcp.function.context.timestamp": AttributeMetadata(
+        brief="The legacy timestamp of the GCP Cloud Function event",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="2024-01-01T00:00:00.000Z",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[371],
+                description="Added gcp.function.context.timestamp attribute",
+            ),
+        ],
+    ),
+    "gcp.function.context.type": AttributeMetadata(
+        brief="The type of the GCP Cloud Function event context",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="cloud_functions.context",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[371],
+                description="Added gcp.function.context.type attribute",
+            ),
+        ],
+    ),
     "gen_ai.agent.name": AttributeMetadata(
         brief="The name of the agent being used.",
         type=AttributeType.STRING,
@@ -9747,7 +10403,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.response.streaming": AttributeMetadata(
         brief="Whether or not the AI model call's response was streamed back asynchronously",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example=True,
         aliases=["ai.streaming"],
@@ -10193,7 +10849,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="The query string present in the URL. Note that this contains the leading ? character, while the `url.query` attribute does not.",
         type=AttributeType.STRING,
         pii=PiiInfo(
-            isPii=IsPii.MAYBE,
+            isPii=IsPii.TRUE,
             reason="Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.",
         ),
         is_in_otel=False,
@@ -10609,7 +11265,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.url": AttributeMetadata(
         brief="The URL of the resource that was fetched.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         example="https://example.com/test?foo=bar#buzz",
         deprecation=DeprecationInfo(replacement="url.full"),
@@ -12189,6 +12845,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[103]),
         ],
     ),
+    "react.version": AttributeMetadata(
+        brief="The version of the React framework",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="18.2.0",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[368], description="Added react.version attribute"
+            ),
+        ],
+    ),
     "release": AttributeMetadata(
         brief="The sentry release.",
         type=AttributeType.STRING,
@@ -12483,6 +13151,20 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="prod",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[185]),
+        ],
+    ),
+    "sentry.dsc.project_id": AttributeMetadata(
+        brief="The ID of the project where the trace originated (i.e. the project of the SDK that started the trace). Propagated through the dynamic sampling context and set by Relay during ingestion.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=12345,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[358],
+                description="Add sentry.dsc.project_id as an attribute",
+            ),
         ],
     ),
     "sentry.dsc.public_key": AttributeMetadata(
@@ -13097,10 +13779,22 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "state.type": AttributeMetadata(
+        brief="The type of state management library",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="redux",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[365], description="Added state.type attribute"
+            ),
+        ],
+    ),
     "thread.id": AttributeMetadata(
         brief="Current “managed” thread ID.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example=56,
         changelog=[
@@ -13199,6 +13893,34 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "trpc.procedure_path": AttributeMetadata(
+        brief="The path of the tRPC procedure being called",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="user.getById",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[370],
+                description="Added trpc.procedure_path attribute",
+            ),
+        ],
+    ),
+    "trpc.procedure_type": AttributeMetadata(
+        brief="The type of the tRPC procedure",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        example="query",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[370],
+                description="Added trpc.procedure_type attribute",
+            ),
         ],
     ),
     "ttfb.requestTime": AttributeMetadata(
@@ -13432,7 +14154,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "url.full": AttributeMetadata(
         brief="The URL of the resource that was fetched.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         example="https://example.com/test?foo=bar#buzz",
         aliases=["http.url", "url"],
@@ -13478,7 +14200,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="The query string present in the URL. Note that this does not contain the leading ? character, while the `http.query` attribute does.",
         type=AttributeType.STRING,
         pii=PiiInfo(
-            isPii=IsPii.MAYBE,
+            isPii=IsPii.TRUE,
             reason="Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.",
         ),
         is_in_otel=True,
@@ -13514,7 +14236,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "url": AttributeMetadata(
         brief="The URL of the resource that was fetched.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         example="https://example.com/test?foo=bar#buzz",
         deprecation=DeprecationInfo(replacement="url.full"),
@@ -14056,6 +14778,7 @@ Attributes = TypedDict(
         "ai.total_cost": float,
         "ai.total_tokens.used": int,
         "ai.warnings": List[str],
+        "angular.version": str,
         "app.app_build": str,
         "app.app_identifier": str,
         "app.app_name": str,
@@ -14081,6 +14804,15 @@ Attributes = TypedDict(
         "app_start_cold": float,
         "app_start_type": str,
         "app_start_warm": float,
+        "aws.cloudwatch.logs.log_group": str,
+        "aws.cloudwatch.logs.log_stream": str,
+        "aws.cloudwatch.logs.url": str,
+        "aws.lambda.aws_request_id": str,
+        "aws.lambda.execution_duration_in_millis": float,
+        "aws.lambda.function_name": str,
+        "aws.lambda.function_version": str,
+        "aws.lambda.invoked_function_arn": str,
+        "aws.lambda.remaining_time_in_millis": float,
         "blocked_main_thread": bool,
         "browser.name": str,
         "browser.performance.navigation.activation_start": float,
@@ -14115,6 +14847,11 @@ Attributes = TypedDict(
         "channel": str,
         "client.address": str,
         "client.port": int,
+        "cloud.account.id": str,
+        "cloud.availability_zone": str,
+        "cloud.platform": str,
+        "cloud.provider": str,
+        "cloud.region": str,
         "cloudflare.d1.duration": int,
         "cloudflare.d1.rows_read": int,
         "cloudflare.d1.rows_written": int,
@@ -14213,6 +14950,15 @@ Attributes = TypedDict(
         "frames_frozen_rate": float,
         "frames_slow_rate": float,
         "fs_error": str,
+        "gcp.function.context.event_id": str,
+        "gcp.function.context.event_type": str,
+        "gcp.function.context.id": str,
+        "gcp.function.context.resource": str,
+        "gcp.function.context.source": str,
+        "gcp.function.context.specversion": str,
+        "gcp.function.context.time": str,
+        "gcp.function.context.timestamp": str,
+        "gcp.function.context.type": str,
         "gen_ai.agent.name": str,
         "gen_ai.context.utilization": float,
         "gen_ai.context.window_size": int,
@@ -14436,6 +15182,7 @@ Attributes = TypedDict(
         "process.runtime.name": str,
         "process.runtime.version": str,
         "query.<key>": str,
+        "react.version": str,
         "release": str,
         "remix.action_form_data.<key>": str,
         "replay_id": str,
@@ -14461,6 +15208,7 @@ Attributes = TypedDict(
         "sentry.dist": str,
         "sentry.domain": str,
         "sentry.dsc.environment": str,
+        "sentry.dsc.project_id": int,
         "sentry.dsc.public_key": str,
         "sentry.dsc.release": str,
         "sentry.dsc.sample_rate": str,
@@ -14515,12 +15263,15 @@ Attributes = TypedDict(
         "service.version": str,
         "stall_percentage": float,
         "stall_total_time": float,
+        "state.type": str,
         "thread.id": int,
         "thread.name": str,
         "timber.tag": str,
         "time_to_full_display": float,
         "time_to_initial_display": float,
         "transaction": str,
+        "trpc.procedure_path": str,
+        "trpc.procedure_type": str,
         "ttfb.requestTime": float,
         "ttfb": float,
         "type": str,

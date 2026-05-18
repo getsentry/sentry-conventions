@@ -495,7 +495,7 @@ export type AI_SEED_TYPE = string;
  *
  * Attribute Value Type: `boolean` {@link AI_STREAMING_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -732,6 +732,26 @@ export const AI_WARNINGS = 'ai.warnings';
  * Type for {@link AI_WARNINGS} ai.warnings
  */
 export type AI_WARNINGS_TYPE = Array<string>;
+
+// Path: model/attributes/angular/angular__version.json
+
+/**
+ * The version of the Angular framework `angular.version`
+ *
+ * Attribute Value Type: `string` {@link ANGULAR_VERSION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "17.1.0"
+ */
+export const ANGULAR_VERSION = 'angular.version';
+
+/**
+ * Type for {@link ANGULAR_VERSION} angular.version
+ */
+export type ANGULAR_VERSION_TYPE = string;
 
 // Path: model/attributes/app/app__app_build.json
 
@@ -1284,6 +1304,186 @@ export const APP_VITALS_TTID_VALUE = 'app.vitals.ttid.value';
  * Type for {@link APP_VITALS_TTID_VALUE} app.vitals.ttid.value
  */
 export type APP_VITALS_TTID_VALUE_TYPE = number;
+
+// Path: model/attributes/aws/aws__cloudwatch__logs__log_group.json
+
+/**
+ * The name of the CloudWatch Logs log group `aws.cloudwatch.logs.log_group`
+ *
+ * Attribute Value Type: `string` {@link AWS_CLOUDWATCH_LOGS_LOG_GROUP_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "/aws/lambda/my-function"
+ */
+export const AWS_CLOUDWATCH_LOGS_LOG_GROUP = 'aws.cloudwatch.logs.log_group';
+
+/**
+ * Type for {@link AWS_CLOUDWATCH_LOGS_LOG_GROUP} aws.cloudwatch.logs.log_group
+ */
+export type AWS_CLOUDWATCH_LOGS_LOG_GROUP_TYPE = string;
+
+// Path: model/attributes/aws/aws__cloudwatch__logs__log_stream.json
+
+/**
+ * The name of the CloudWatch Logs log stream `aws.cloudwatch.logs.log_stream`
+ *
+ * Attribute Value Type: `string` {@link AWS_CLOUDWATCH_LOGS_LOG_STREAM_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "2024/01/01/[$LATEST]abcdef1234567890"
+ */
+export const AWS_CLOUDWATCH_LOGS_LOG_STREAM = 'aws.cloudwatch.logs.log_stream';
+
+/**
+ * Type for {@link AWS_CLOUDWATCH_LOGS_LOG_STREAM} aws.cloudwatch.logs.log_stream
+ */
+export type AWS_CLOUDWATCH_LOGS_LOG_STREAM_TYPE = string;
+
+// Path: model/attributes/aws/aws__cloudwatch__logs__url.json
+
+/**
+ * The URL to the CloudWatch Logs log group `aws.cloudwatch.logs.url`
+ *
+ * Attribute Value Type: `string` {@link AWS_CLOUDWATCH_LOGS_URL_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups/log-group/my-log-group"
+ */
+export const AWS_CLOUDWATCH_LOGS_URL = 'aws.cloudwatch.logs.url';
+
+/**
+ * Type for {@link AWS_CLOUDWATCH_LOGS_URL} aws.cloudwatch.logs.url
+ */
+export type AWS_CLOUDWATCH_LOGS_URL_TYPE = string;
+
+// Path: model/attributes/aws/aws__lambda__aws_request_id.json
+
+/**
+ * The AWS request ID as received by the Lambda function runtime `aws.lambda.aws_request_id`
+ *
+ * Attribute Value Type: `string` {@link AWS_LAMBDA_AWS_REQUEST_ID_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "8476a536-e9f4-11e8-9739-2dfe598c3fcd"
+ */
+export const AWS_LAMBDA_AWS_REQUEST_ID = 'aws.lambda.aws_request_id';
+
+/**
+ * Type for {@link AWS_LAMBDA_AWS_REQUEST_ID} aws.lambda.aws_request_id
+ */
+export type AWS_LAMBDA_AWS_REQUEST_ID_TYPE = string;
+
+// Path: model/attributes/aws/aws__lambda__execution_duration_in_millis.json
+
+/**
+ * The execution duration of the Lambda function invocation in milliseconds `aws.lambda.execution_duration_in_millis`
+ *
+ * Attribute Value Type: `number` {@link AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 1234.56
+ */
+export const AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS = 'aws.lambda.execution_duration_in_millis';
+
+/**
+ * Type for {@link AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS} aws.lambda.execution_duration_in_millis
+ */
+export type AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS_TYPE = number;
+
+// Path: model/attributes/aws/aws__lambda__function_name.json
+
+/**
+ * The name of the Lambda function `aws.lambda.function_name`
+ *
+ * Attribute Value Type: `string` {@link AWS_LAMBDA_FUNCTION_NAME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "my-function"
+ */
+export const AWS_LAMBDA_FUNCTION_NAME = 'aws.lambda.function_name';
+
+/**
+ * Type for {@link AWS_LAMBDA_FUNCTION_NAME} aws.lambda.function_name
+ */
+export type AWS_LAMBDA_FUNCTION_NAME_TYPE = string;
+
+// Path: model/attributes/aws/aws__lambda__function_version.json
+
+/**
+ * The version of the Lambda function `aws.lambda.function_version`
+ *
+ * Attribute Value Type: `string` {@link AWS_LAMBDA_FUNCTION_VERSION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "$LATEST"
+ */
+export const AWS_LAMBDA_FUNCTION_VERSION = 'aws.lambda.function_version';
+
+/**
+ * Type for {@link AWS_LAMBDA_FUNCTION_VERSION} aws.lambda.function_version
+ */
+export type AWS_LAMBDA_FUNCTION_VERSION_TYPE = string;
+
+// Path: model/attributes/aws/aws__lambda__invoked_function_arn.json
+
+/**
+ * The full ARN of the Lambda function that was invoked `aws.lambda.invoked_function_arn`
+ *
+ * Attribute Value Type: `string` {@link AWS_LAMBDA_INVOKED_FUNCTION_ARN_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "arn:aws:lambda:us-east-1:123456789012:function:my-function"
+ */
+export const AWS_LAMBDA_INVOKED_FUNCTION_ARN = 'aws.lambda.invoked_function_arn';
+
+/**
+ * Type for {@link AWS_LAMBDA_INVOKED_FUNCTION_ARN} aws.lambda.invoked_function_arn
+ */
+export type AWS_LAMBDA_INVOKED_FUNCTION_ARN_TYPE = string;
+
+// Path: model/attributes/aws/aws__lambda__remaining_time_in_millis.json
+
+/**
+ * The remaining time in milliseconds before the Lambda function times out `aws.lambda.remaining_time_in_millis`
+ *
+ * Attribute Value Type: `number` {@link AWS_LAMBDA_REMAINING_TIME_IN_MILLIS_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 5000
+ */
+export const AWS_LAMBDA_REMAINING_TIME_IN_MILLIS = 'aws.lambda.remaining_time_in_millis';
+
+/**
+ * Type for {@link AWS_LAMBDA_REMAINING_TIME_IN_MILLIS} aws.lambda.remaining_time_in_millis
+ */
+export type AWS_LAMBDA_REMAINING_TIME_IN_MILLIS_TYPE = number;
 
 // Path: model/attributes/blocked_main_thread.json
 
@@ -2064,6 +2264,106 @@ export const CLOUDFLARE_D1_ROWS_WRITTEN = 'cloudflare.d1.rows_written';
  * Type for {@link CLOUDFLARE_D1_ROWS_WRITTEN} cloudflare.d1.rows_written
  */
 export type CLOUDFLARE_D1_ROWS_WRITTEN_TYPE = number;
+
+// Path: model/attributes/cloud/cloud__account__id.json
+
+/**
+ * The cloud account ID the resource is assigned to `cloud.account.id`
+ *
+ * Attribute Value Type: `string` {@link CLOUD_ACCOUNT_ID_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "123456789012"
+ */
+export const CLOUD_ACCOUNT_ID = 'cloud.account.id';
+
+/**
+ * Type for {@link CLOUD_ACCOUNT_ID} cloud.account.id
+ */
+export type CLOUD_ACCOUNT_ID_TYPE = string;
+
+// Path: model/attributes/cloud/cloud__availability_zone.json
+
+/**
+ * Cloud regions often have multiple, isolated locations known as zones to increase availability `cloud.availability_zone`
+ *
+ * Attribute Value Type: `string` {@link CLOUD_AVAILABILITY_ZONE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "us-east-1c"
+ */
+export const CLOUD_AVAILABILITY_ZONE = 'cloud.availability_zone';
+
+/**
+ * Type for {@link CLOUD_AVAILABILITY_ZONE} cloud.availability_zone
+ */
+export type CLOUD_AVAILABILITY_ZONE_TYPE = string;
+
+// Path: model/attributes/cloud/cloud__platform.json
+
+/**
+ * The cloud platform in use `cloud.platform`
+ *
+ * Attribute Value Type: `string` {@link CLOUD_PLATFORM_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "aws_lambda"
+ */
+export const CLOUD_PLATFORM = 'cloud.platform';
+
+/**
+ * Type for {@link CLOUD_PLATFORM} cloud.platform
+ */
+export type CLOUD_PLATFORM_TYPE = string;
+
+// Path: model/attributes/cloud/cloud__provider.json
+
+/**
+ * Name of the cloud provider `cloud.provider`
+ *
+ * Attribute Value Type: `string` {@link CLOUD_PROVIDER_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "aws"
+ */
+export const CLOUD_PROVIDER = 'cloud.provider';
+
+/**
+ * Type for {@link CLOUD_PROVIDER} cloud.provider
+ */
+export type CLOUD_PROVIDER_TYPE = string;
+
+// Path: model/attributes/cloud/cloud__region.json
+
+/**
+ * The geographical region the resource is running `cloud.region`
+ *
+ * Attribute Value Type: `string` {@link CLOUD_REGION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "us-east-1"
+ */
+export const CLOUD_REGION = 'cloud.region';
+
+/**
+ * Type for {@link CLOUD_REGION} cloud.region
+ */
+export type CLOUD_REGION_TYPE = string;
 
 // Path: model/attributes/cls.json
 
@@ -4049,6 +4349,186 @@ export const FS_ERROR = 'fs_error';
  */
 export type FS_ERROR_TYPE = string;
 
+// Path: model/attributes/gcp/gcp__function__context__event_id.json
+
+/**
+ * The event ID from the legacy GCP Cloud Function context (1st gen) `gcp.function.context.event_id`
+ *
+ * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_EVENT_ID_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "1234567890"
+ */
+export const GCP_FUNCTION_CONTEXT_EVENT_ID = 'gcp.function.context.event_id';
+
+/**
+ * Type for {@link GCP_FUNCTION_CONTEXT_EVENT_ID} gcp.function.context.event_id
+ */
+export type GCP_FUNCTION_CONTEXT_EVENT_ID_TYPE = string;
+
+// Path: model/attributes/gcp/gcp__function__context__event_type.json
+
+/**
+ * The type of the GCP Cloud Function event `gcp.function.context.event_type`
+ *
+ * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_EVENT_TYPE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "google.pubsub.topic.publish"
+ */
+export const GCP_FUNCTION_CONTEXT_EVENT_TYPE = 'gcp.function.context.event_type';
+
+/**
+ * Type for {@link GCP_FUNCTION_CONTEXT_EVENT_TYPE} gcp.function.context.event_type
+ */
+export type GCP_FUNCTION_CONTEXT_EVENT_TYPE_TYPE = string;
+
+// Path: model/attributes/gcp/gcp__function__context__id.json
+
+/**
+ * The unique event ID from the GCP CloudEvents context (2nd gen Cloud Functions) `gcp.function.context.id`
+ *
+ * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_ID_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "1234567890"
+ */
+export const GCP_FUNCTION_CONTEXT_ID = 'gcp.function.context.id';
+
+/**
+ * Type for {@link GCP_FUNCTION_CONTEXT_ID} gcp.function.context.id
+ */
+export type GCP_FUNCTION_CONTEXT_ID_TYPE = string;
+
+// Path: model/attributes/gcp/gcp__function__context__resource.json
+
+/**
+ * The resource that triggered the GCP Cloud Function event `gcp.function.context.resource`
+ *
+ * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_RESOURCE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "projects/my-project/topics/my-topic"
+ */
+export const GCP_FUNCTION_CONTEXT_RESOURCE = 'gcp.function.context.resource';
+
+/**
+ * Type for {@link GCP_FUNCTION_CONTEXT_RESOURCE} gcp.function.context.resource
+ */
+export type GCP_FUNCTION_CONTEXT_RESOURCE_TYPE = string;
+
+// Path: model/attributes/gcp/gcp__function__context__source.json
+
+/**
+ * The source of the GCP Cloud Function event `gcp.function.context.source`
+ *
+ * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_SOURCE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "//pubsub.googleapis.com/projects/my-project/topics/my-topic"
+ */
+export const GCP_FUNCTION_CONTEXT_SOURCE = 'gcp.function.context.source';
+
+/**
+ * Type for {@link GCP_FUNCTION_CONTEXT_SOURCE} gcp.function.context.source
+ */
+export type GCP_FUNCTION_CONTEXT_SOURCE_TYPE = string;
+
+// Path: model/attributes/gcp/gcp__function__context__specversion.json
+
+/**
+ * The CloudEvents specification version of the GCP Cloud Function event `gcp.function.context.specversion`
+ *
+ * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_SPECVERSION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "1.0"
+ */
+export const GCP_FUNCTION_CONTEXT_SPECVERSION = 'gcp.function.context.specversion';
+
+/**
+ * Type for {@link GCP_FUNCTION_CONTEXT_SPECVERSION} gcp.function.context.specversion
+ */
+export type GCP_FUNCTION_CONTEXT_SPECVERSION_TYPE = string;
+
+// Path: model/attributes/gcp/gcp__function__context__time.json
+
+/**
+ * The timestamp of the GCP Cloud Function event `gcp.function.context.time`
+ *
+ * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_TIME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "2024-01-01T00:00:00.000Z"
+ */
+export const GCP_FUNCTION_CONTEXT_TIME = 'gcp.function.context.time';
+
+/**
+ * Type for {@link GCP_FUNCTION_CONTEXT_TIME} gcp.function.context.time
+ */
+export type GCP_FUNCTION_CONTEXT_TIME_TYPE = string;
+
+// Path: model/attributes/gcp/gcp__function__context__timestamp.json
+
+/**
+ * The legacy timestamp of the GCP Cloud Function event `gcp.function.context.timestamp`
+ *
+ * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_TIMESTAMP_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "2024-01-01T00:00:00.000Z"
+ */
+export const GCP_FUNCTION_CONTEXT_TIMESTAMP = 'gcp.function.context.timestamp';
+
+/**
+ * Type for {@link GCP_FUNCTION_CONTEXT_TIMESTAMP} gcp.function.context.timestamp
+ */
+export type GCP_FUNCTION_CONTEXT_TIMESTAMP_TYPE = string;
+
+// Path: model/attributes/gcp/gcp__function__context__type.json
+
+/**
+ * The type of the GCP Cloud Function event context `gcp.function.context.type`
+ *
+ * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_TYPE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "cloud_functions.context"
+ */
+export const GCP_FUNCTION_CONTEXT_TYPE = 'gcp.function.context.type';
+
+/**
+ * Type for {@link GCP_FUNCTION_CONTEXT_TYPE} gcp.function.context.type
+ */
+export type GCP_FUNCTION_CONTEXT_TYPE_TYPE = string;
+
 // Path: model/attributes/gen_ai/gen_ai__agent__name.json
 
 /**
@@ -4667,7 +5147,7 @@ export type GEN_AI_RESPONSE_MODEL_TYPE = string;
  *
  * Attribute Value Type: `boolean` {@link GEN_AI_RESPONSE_STREAMING_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  *
@@ -5400,7 +5880,7 @@ export type HTTP_METHOD_TYPE = string;
  *
  * Attribute Value Type: `string` {@link HTTP_QUERY_TYPE}
  *
- * Contains PII: maybe - Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.
+ * Contains PII: true - Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.
  *
  * Attribute defined in OTEL: No
  *
@@ -6075,7 +6555,7 @@ export type HTTP_TARGET_TYPE = string;
  *
  * Attribute Value Type: `string` {@link HTTP_URL_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: Yes
  *
@@ -8736,6 +9216,26 @@ export const QUERY_KEY = 'query.<key>';
  */
 export type QUERY_KEY_TYPE = string;
 
+// Path: model/attributes/react/react__version.json
+
+/**
+ * The version of the React framework `react.version`
+ *
+ * Attribute Value Type: `string` {@link REACT_VERSION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "18.2.0"
+ */
+export const REACT_VERSION = 'react.version';
+
+/**
+ * Type for {@link REACT_VERSION} react.version
+ */
+export type REACT_VERSION_TYPE = string;
+
 // Path: model/attributes/release.json
 
 /**
@@ -9258,6 +9758,26 @@ export const SENTRY_DSC_ENVIRONMENT = 'sentry.dsc.environment';
  * Type for {@link SENTRY_DSC_ENVIRONMENT} sentry.dsc.environment
  */
 export type SENTRY_DSC_ENVIRONMENT_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__dsc__project_id.json
+
+/**
+ * The ID of the project where the trace originated (i.e. the project of the SDK that started the trace). Propagated through the dynamic sampling context and set by Relay during ingestion. `sentry.dsc.project_id`
+ *
+ * Attribute Value Type: `number` {@link SENTRY_DSC_PROJECT_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 12345
+ */
+export const SENTRY_DSC_PROJECT_ID = 'sentry.dsc.project_id';
+
+/**
+ * Type for {@link SENTRY_DSC_PROJECT_ID} sentry.dsc.project_id
+ */
+export type SENTRY_DSC_PROJECT_ID_TYPE = number;
 
 // Path: model/attributes/sentry/sentry__dsc__public_key.json
 
@@ -10358,6 +10878,26 @@ export const STALL_TOTAL_TIME = 'stall_total_time';
  */
 export type STALL_TOTAL_TIME_TYPE = number;
 
+// Path: model/attributes/state/state__type.json
+
+/**
+ * The type of state management library `state.type`
+ *
+ * Attribute Value Type: `string` {@link STATE_TYPE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "redux"
+ */
+export const STATE_TYPE = 'state.type';
+
+/**
+ * Type for {@link STATE_TYPE} state.type
+ */
+export type STATE_TYPE_TYPE = string;
+
 // Path: model/attributes/thread/thread__id.json
 
 /**
@@ -10365,7 +10905,7 @@ export type STALL_TOTAL_TIME_TYPE = number;
  *
  * Attribute Value Type: `number` {@link THREAD_ID_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  *
@@ -10486,6 +11026,46 @@ export const TRANSACTION = 'transaction';
  * Type for {@link TRANSACTION} transaction
  */
 export type TRANSACTION_TYPE = string;
+
+// Path: model/attributes/trpc/trpc__procedure_path.json
+
+/**
+ * The path of the tRPC procedure being called `trpc.procedure_path`
+ *
+ * Attribute Value Type: `string` {@link TRPC_PROCEDURE_PATH_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "user.getById"
+ */
+export const TRPC_PROCEDURE_PATH = 'trpc.procedure_path';
+
+/**
+ * Type for {@link TRPC_PROCEDURE_PATH} trpc.procedure_path
+ */
+export type TRPC_PROCEDURE_PATH_TYPE = string;
+
+// Path: model/attributes/trpc/trpc__procedure_type.json
+
+/**
+ * The type of the tRPC procedure `trpc.procedure_type`
+ *
+ * Attribute Value Type: `string` {@link TRPC_PROCEDURE_TYPE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "query"
+ */
+export const TRPC_PROCEDURE_TYPE = 'trpc.procedure_type';
+
+/**
+ * Type for {@link TRPC_PROCEDURE_TYPE} trpc.procedure_type
+ */
+export type TRPC_PROCEDURE_TYPE_TYPE = string;
 
 // Path: model/attributes/ttfb.json
 
@@ -10800,7 +11380,7 @@ export type UI_ELEMENT_WIDTH_TYPE = number;
  *
  * Attribute Value Type: `string` {@link URL_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: No
  *
@@ -10863,7 +11443,7 @@ export type URL_FRAGMENT_TYPE = string;
  *
  * Attribute Value Type: `string` {@link URL_FULL_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: Yes
  *
@@ -10949,7 +11529,7 @@ export type URL_PORT_TYPE = number;
  *
  * Attribute Value Type: `string` {@link URL_QUERY_TYPE}
  *
- * Contains PII: maybe - Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.
+ * Contains PII: true - Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.
  *
  * Attribute defined in OTEL: Yes
  *
@@ -12061,6 +12641,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [AI_TOTAL_COST]: 'double',
   [AI_TOTAL_TOKENS_USED]: 'integer',
   [AI_WARNINGS]: 'string[]',
+  [ANGULAR_VERSION]: 'string',
   [APP_APP_BUILD]: 'string',
   [APP_APP_IDENTIFIER]: 'string',
   [APP_APP_NAME]: 'string',
@@ -12086,6 +12667,15 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [APP_VITALS_START_WARM_VALUE]: 'double',
   [APP_VITALS_TTFD_VALUE]: 'double',
   [APP_VITALS_TTID_VALUE]: 'double',
+  [AWS_CLOUDWATCH_LOGS_LOG_GROUP]: 'string',
+  [AWS_CLOUDWATCH_LOGS_LOG_STREAM]: 'string',
+  [AWS_CLOUDWATCH_LOGS_URL]: 'string',
+  [AWS_LAMBDA_AWS_REQUEST_ID]: 'string',
+  [AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS]: 'double',
+  [AWS_LAMBDA_FUNCTION_NAME]: 'string',
+  [AWS_LAMBDA_FUNCTION_VERSION]: 'string',
+  [AWS_LAMBDA_INVOKED_FUNCTION_ARN]: 'string',
+  [AWS_LAMBDA_REMAINING_TIME_IN_MILLIS]: 'double',
   [BLOCKED_MAIN_THREAD]: 'boolean',
   [BROWSER_NAME]: 'string',
   [BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START]: 'double',
@@ -12123,6 +12713,11 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [CLOUDFLARE_D1_DURATION]: 'integer',
   [CLOUDFLARE_D1_ROWS_READ]: 'integer',
   [CLOUDFLARE_D1_ROWS_WRITTEN]: 'integer',
+  [CLOUD_ACCOUNT_ID]: 'string',
+  [CLOUD_AVAILABILITY_ZONE]: 'string',
+  [CLOUD_PLATFORM]: 'string',
+  [CLOUD_PROVIDER]: 'string',
+  [CLOUD_REGION]: 'string',
   [CLS]: 'double',
   [CLS_SOURCE_KEY]: 'string',
   [CODE_FILEPATH]: 'string',
@@ -12218,6 +12813,15 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [FRAMES_SLOW_RATE]: 'double',
   [FRAMES_TOTAL]: 'integer',
   [FS_ERROR]: 'string',
+  [GCP_FUNCTION_CONTEXT_EVENT_ID]: 'string',
+  [GCP_FUNCTION_CONTEXT_EVENT_TYPE]: 'string',
+  [GCP_FUNCTION_CONTEXT_ID]: 'string',
+  [GCP_FUNCTION_CONTEXT_RESOURCE]: 'string',
+  [GCP_FUNCTION_CONTEXT_SOURCE]: 'string',
+  [GCP_FUNCTION_CONTEXT_SPECVERSION]: 'string',
+  [GCP_FUNCTION_CONTEXT_TIME]: 'string',
+  [GCP_FUNCTION_CONTEXT_TIMESTAMP]: 'string',
+  [GCP_FUNCTION_CONTEXT_TYPE]: 'string',
   [GEN_AI_AGENT_NAME]: 'string',
   [GEN_AI_CONTEXT_UTILIZATION]: 'double',
   [GEN_AI_CONTEXT_WINDOW_SIZE]: 'integer',
@@ -12441,6 +13045,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [PROCESS_RUNTIME_NAME]: 'string',
   [PROCESS_RUNTIME_VERSION]: 'string',
   [QUERY_KEY]: 'string',
+  [REACT_VERSION]: 'string',
   [RELEASE]: 'string',
   [REMIX_ACTION_FORM_DATA_KEY]: 'string',
   [REPLAY_ID]: 'string',
@@ -12466,6 +13071,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_DIST]: 'string',
   [SENTRY_DOMAIN]: 'string',
   [SENTRY_DSC_ENVIRONMENT]: 'string',
+  [SENTRY_DSC_PROJECT_ID]: 'integer',
   [SENTRY_DSC_PUBLIC_KEY]: 'string',
   [SENTRY_DSC_RELEASE]: 'string',
   [SENTRY_DSC_SAMPLED]: 'boolean',
@@ -12520,12 +13126,15 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SERVICE_VERSION]: 'string',
   [STALL_PERCENTAGE]: 'double',
   [STALL_TOTAL_TIME]: 'double',
+  [STATE_TYPE]: 'string',
   [THREAD_ID]: 'integer',
   [THREAD_NAME]: 'string',
   [TIMBER_TAG]: 'string',
   [TIME_TO_FULL_DISPLAY]: 'double',
   [TIME_TO_INITIAL_DISPLAY]: 'double',
   [TRANSACTION]: 'string',
+  [TRPC_PROCEDURE_PATH]: 'string',
+  [TRPC_PROCEDURE_TYPE]: 'string',
   [TTFB]: 'double',
   [TTFB_REQUESTTIME]: 'double',
   [TYPE]: 'string',
@@ -12635,6 +13244,7 @@ export type AttributeName =
   | typeof AI_TOTAL_COST
   | typeof AI_TOTAL_TOKENS_USED
   | typeof AI_WARNINGS
+  | typeof ANGULAR_VERSION
   | typeof APP_APP_BUILD
   | typeof APP_APP_IDENTIFIER
   | typeof APP_APP_NAME
@@ -12660,6 +13270,15 @@ export type AttributeName =
   | typeof APP_VITALS_START_WARM_VALUE
   | typeof APP_VITALS_TTFD_VALUE
   | typeof APP_VITALS_TTID_VALUE
+  | typeof AWS_CLOUDWATCH_LOGS_LOG_GROUP
+  | typeof AWS_CLOUDWATCH_LOGS_LOG_STREAM
+  | typeof AWS_CLOUDWATCH_LOGS_URL
+  | typeof AWS_LAMBDA_AWS_REQUEST_ID
+  | typeof AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS
+  | typeof AWS_LAMBDA_FUNCTION_NAME
+  | typeof AWS_LAMBDA_FUNCTION_VERSION
+  | typeof AWS_LAMBDA_INVOKED_FUNCTION_ARN
+  | typeof AWS_LAMBDA_REMAINING_TIME_IN_MILLIS
   | typeof BLOCKED_MAIN_THREAD
   | typeof BROWSER_NAME
   | typeof BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START
@@ -12697,6 +13316,11 @@ export type AttributeName =
   | typeof CLOUDFLARE_D1_DURATION
   | typeof CLOUDFLARE_D1_ROWS_READ
   | typeof CLOUDFLARE_D1_ROWS_WRITTEN
+  | typeof CLOUD_ACCOUNT_ID
+  | typeof CLOUD_AVAILABILITY_ZONE
+  | typeof CLOUD_PLATFORM
+  | typeof CLOUD_PROVIDER
+  | typeof CLOUD_REGION
   | typeof CLS
   | typeof CLS_SOURCE_KEY
   | typeof CODE_FILEPATH
@@ -12792,6 +13416,15 @@ export type AttributeName =
   | typeof FRAMES_SLOW_RATE
   | typeof FRAMES_TOTAL
   | typeof FS_ERROR
+  | typeof GCP_FUNCTION_CONTEXT_EVENT_ID
+  | typeof GCP_FUNCTION_CONTEXT_EVENT_TYPE
+  | typeof GCP_FUNCTION_CONTEXT_ID
+  | typeof GCP_FUNCTION_CONTEXT_RESOURCE
+  | typeof GCP_FUNCTION_CONTEXT_SOURCE
+  | typeof GCP_FUNCTION_CONTEXT_SPECVERSION
+  | typeof GCP_FUNCTION_CONTEXT_TIME
+  | typeof GCP_FUNCTION_CONTEXT_TIMESTAMP
+  | typeof GCP_FUNCTION_CONTEXT_TYPE
   | typeof GEN_AI_AGENT_NAME
   | typeof GEN_AI_CONTEXT_UTILIZATION
   | typeof GEN_AI_CONTEXT_WINDOW_SIZE
@@ -13015,6 +13648,7 @@ export type AttributeName =
   | typeof PROCESS_RUNTIME_NAME
   | typeof PROCESS_RUNTIME_VERSION
   | typeof QUERY_KEY
+  | typeof REACT_VERSION
   | typeof RELEASE
   | typeof REMIX_ACTION_FORM_DATA_KEY
   | typeof REPLAY_ID
@@ -13040,6 +13674,7 @@ export type AttributeName =
   | typeof SENTRY_DIST
   | typeof SENTRY_DOMAIN
   | typeof SENTRY_DSC_ENVIRONMENT
+  | typeof SENTRY_DSC_PROJECT_ID
   | typeof SENTRY_DSC_PUBLIC_KEY
   | typeof SENTRY_DSC_RELEASE
   | typeof SENTRY_DSC_SAMPLED
@@ -13094,12 +13729,15 @@ export type AttributeName =
   | typeof SERVICE_VERSION
   | typeof STALL_PERCENTAGE
   | typeof STALL_TOTAL_TIME
+  | typeof STATE_TYPE
   | typeof THREAD_ID
   | typeof THREAD_NAME
   | typeof TIMBER_TAG
   | typeof TIME_TO_FULL_DISPLAY
   | typeof TIME_TO_INITIAL_DISPLAY
   | typeof TRANSACTION
+  | typeof TRPC_PROCEDURE_PATH
+  | typeof TRPC_PROCEDURE_TYPE
   | typeof TTFB
   | typeof TTFB_REQUESTTIME
   | typeof TYPE
@@ -13507,7 +14145,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Whether the request was streamed back.',
     type: 'boolean',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: true,
@@ -13675,6 +14313,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.5.0', prs: [264] },
       { version: '0.1.0', prs: [55] },
     ],
+  },
+  [ANGULAR_VERSION]: {
+    brief: 'The version of the Angular framework',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '17.1.0',
+    changelog: [{ version: 'next', prs: [367], description: 'Added angular.version attribute' }],
   },
   [APP_APP_BUILD]: {
     brief: 'Internal build identifier, as it appears on the platform.',
@@ -14054,6 +14702,98 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [TIME_TO_INITIAL_DISPLAY],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.ttid.value attribute' }],
+  },
+  [AWS_CLOUDWATCH_LOGS_LOG_GROUP]: {
+    brief: 'The name of the CloudWatch Logs log group',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '/aws/lambda/my-function',
+    changelog: [{ version: 'next', prs: [369], description: 'Added aws.cloudwatch.logs.log_group attribute' }],
+  },
+  [AWS_CLOUDWATCH_LOGS_LOG_STREAM]: {
+    brief: 'The name of the CloudWatch Logs log stream',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '2024/01/01/[$LATEST]abcdef1234567890',
+    changelog: [{ version: 'next', prs: [369], description: 'Added aws.cloudwatch.logs.log_stream attribute' }],
+  },
+  [AWS_CLOUDWATCH_LOGS_URL]: {
+    brief: 'The URL to the CloudWatch Logs log group',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups/log-group/my-log-group',
+    changelog: [{ version: 'next', prs: [369], description: 'Added aws.cloudwatch.logs.url attribute' }],
+  },
+  [AWS_LAMBDA_AWS_REQUEST_ID]: {
+    brief: 'The AWS request ID as received by the Lambda function runtime',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '8476a536-e9f4-11e8-9739-2dfe598c3fcd',
+    changelog: [{ version: 'next', prs: [369], description: 'Added aws.lambda.aws_request_id attribute' }],
+  },
+  [AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS]: {
+    brief: 'The execution duration of the Lambda function invocation in milliseconds',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 1234.56,
+    changelog: [
+      { version: 'next', prs: [369], description: 'Added aws.lambda.execution_duration_in_millis attribute' },
+    ],
+  },
+  [AWS_LAMBDA_FUNCTION_NAME]: {
+    brief: 'The name of the Lambda function',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'my-function',
+    changelog: [{ version: 'next', prs: [369], description: 'Added aws.lambda.function_name attribute' }],
+  },
+  [AWS_LAMBDA_FUNCTION_VERSION]: {
+    brief: 'The version of the Lambda function',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '$LATEST',
+    changelog: [{ version: 'next', prs: [369], description: 'Added aws.lambda.function_version attribute' }],
+  },
+  [AWS_LAMBDA_INVOKED_FUNCTION_ARN]: {
+    brief: 'The full ARN of the Lambda function that was invoked',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'arn:aws:lambda:us-east-1:123456789012:function:my-function',
+    changelog: [{ version: 'next', prs: [369], description: 'Added aws.lambda.invoked_function_arn attribute' }],
+  },
+  [AWS_LAMBDA_REMAINING_TIME_IN_MILLIS]: {
+    brief: 'The remaining time in milliseconds before the Lambda function times out',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 5000,
+    changelog: [{ version: 'next', prs: [369], description: 'Added aws.lambda.remaining_time_in_millis attribute' }],
   },
   [BLOCKED_MAIN_THREAD]: {
     brief: 'Whether the main thread was blocked by the span.',
@@ -14480,6 +15220,56 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 12,
     sdks: ['javascript-cloudflare'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+  },
+  [CLOUD_ACCOUNT_ID]: {
+    brief: 'The cloud account ID the resource is assigned to',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: '123456789012',
+    changelog: [{ version: 'next', prs: [364], description: 'Added cloud.account.id attribute' }],
+  },
+  [CLOUD_AVAILABILITY_ZONE]: {
+    brief: 'Cloud regions often have multiple, isolated locations known as zones to increase availability',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'us-east-1c',
+    changelog: [{ version: 'next', prs: [364], description: 'Added cloud.availability_zone attribute' }],
+  },
+  [CLOUD_PLATFORM]: {
+    brief: 'The cloud platform in use',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'aws_lambda',
+    changelog: [{ version: 'next', prs: [364], description: 'Added cloud.platform attribute' }],
+  },
+  [CLOUD_PROVIDER]: {
+    brief: 'Name of the cloud provider',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'aws',
+    changelog: [{ version: 'next', prs: [364], description: 'Added cloud.provider attribute' }],
+  },
+  [CLOUD_REGION]: {
+    brief: 'The geographical region the resource is running',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    example: 'us-east-1',
+    changelog: [{ version: 'next', prs: [364], description: 'Added cloud.region attribute' }],
   },
   [CLS]: {
     brief: 'The value of the recorded Cumulative Layout Shift (CLS) web vital',
@@ -15652,6 +16442,96 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['javascript-node'],
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
+  [GCP_FUNCTION_CONTEXT_EVENT_ID]: {
+    brief: 'The event ID from the legacy GCP Cloud Function context (1st gen)',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '1234567890',
+    changelog: [{ version: 'next', prs: [371], description: 'Added gcp.function.context.event_id attribute' }],
+  },
+  [GCP_FUNCTION_CONTEXT_EVENT_TYPE]: {
+    brief: 'The type of the GCP Cloud Function event',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'google.pubsub.topic.publish',
+    changelog: [{ version: 'next', prs: [371], description: 'Added gcp.function.context.event_type attribute' }],
+  },
+  [GCP_FUNCTION_CONTEXT_ID]: {
+    brief: 'The unique event ID from the GCP CloudEvents context (2nd gen Cloud Functions)',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '1234567890',
+    changelog: [{ version: 'next', prs: [371], description: 'Added gcp.function.context.id attribute' }],
+  },
+  [GCP_FUNCTION_CONTEXT_RESOURCE]: {
+    brief: 'The resource that triggered the GCP Cloud Function event',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'projects/my-project/topics/my-topic',
+    changelog: [{ version: 'next', prs: [371], description: 'Added gcp.function.context.resource attribute' }],
+  },
+  [GCP_FUNCTION_CONTEXT_SOURCE]: {
+    brief: 'The source of the GCP Cloud Function event',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '//pubsub.googleapis.com/projects/my-project/topics/my-topic',
+    changelog: [{ version: 'next', prs: [371], description: 'Added gcp.function.context.source attribute' }],
+  },
+  [GCP_FUNCTION_CONTEXT_SPECVERSION]: {
+    brief: 'The CloudEvents specification version of the GCP Cloud Function event',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '1.0',
+    changelog: [{ version: 'next', prs: [371], description: 'Added gcp.function.context.specversion attribute' }],
+  },
+  [GCP_FUNCTION_CONTEXT_TIME]: {
+    brief: 'The timestamp of the GCP Cloud Function event',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '2024-01-01T00:00:00.000Z',
+    changelog: [{ version: 'next', prs: [371], description: 'Added gcp.function.context.time attribute' }],
+  },
+  [GCP_FUNCTION_CONTEXT_TIMESTAMP]: {
+    brief: 'The legacy timestamp of the GCP Cloud Function event',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '2024-01-01T00:00:00.000Z',
+    changelog: [{ version: 'next', prs: [371], description: 'Added gcp.function.context.timestamp attribute' }],
+  },
+  [GCP_FUNCTION_CONTEXT_TYPE]: {
+    brief: 'The type of the GCP Cloud Function event context',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'cloud_functions.context',
+    changelog: [{ version: 'next', prs: [371], description: 'Added gcp.function.context.type attribute' }],
+  },
   [GEN_AI_AGENT_NAME]: {
     brief: 'The name of the agent being used.',
     type: 'string',
@@ -16028,7 +16908,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: "Whether or not the AI model call's response was streamed back asynchronously",
     type: 'boolean',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     example: true,
@@ -16500,7 +17380,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'The query string present in the URL. Note that this contains the leading ? character, while the `url.query` attribute does not.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
       reason:
         'Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.',
     },
@@ -16901,7 +17781,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The URL of the resource that was fetched.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: true,
     example: 'https://example.com/test?foo=bar#buzz',
@@ -18430,6 +19310,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     changelog: [{ version: '0.1.0', prs: [103] }],
   },
+  [REACT_VERSION]: {
+    brief: 'The version of the React framework',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: '18.2.0',
+    changelog: [{ version: 'next', prs: [368], description: 'Added react.version attribute' }],
+  },
   [RELEASE]: {
     brief: 'The sentry release.',
     type: 'string',
@@ -18717,6 +19607,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 'prod',
     changelog: [{ version: '0.3.0', prs: [185] }],
+  },
+  [SENTRY_DSC_PROJECT_ID]: {
+    brief:
+      'The ID of the project where the trace originated (i.e. the project of the SDK that started the trace). Propagated through the dynamic sampling context and set by Relay during ingestion.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 12345,
+    changelog: [{ version: 'next', prs: [358], description: 'Add sentry.dsc.project_id as an attribute' }],
   },
   [SENTRY_DSC_PUBLIC_KEY]: {
     brief: 'The public key from the dynamic sampling context.',
@@ -19312,11 +20213,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     changelog: [{ version: 'next', prs: [362], description: 'Added stall_total_time attribute' }],
   },
+  [STATE_TYPE]: {
+    brief: 'The type of state management library',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'redux',
+    changelog: [{ version: 'next', prs: [365], description: 'Added state.type attribute' }],
+  },
   [THREAD_ID]: {
     brief: 'Current “managed” thread ID.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     example: 56,
@@ -19402,6 +20313,26 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.1.0', prs: [61, 127] },
       { version: '0.0.0' },
     ],
+  },
+  [TRPC_PROCEDURE_PATH]: {
+    brief: 'The path of the tRPC procedure being called',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'user.getById',
+    changelog: [{ version: 'next', prs: [370], description: 'Added trpc.procedure_path attribute' }],
+  },
+  [TRPC_PROCEDURE_TYPE]: {
+    brief: 'The type of the tRPC procedure',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    example: 'query',
+    changelog: [{ version: 'next', prs: [370], description: 'Added trpc.procedure_type attribute' }],
   },
   [TTFB]: {
     brief: 'The value of the recorded Time To First Byte (TTFB) web vital in milliseconds',
@@ -19580,7 +20511,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The URL of the resource that was fetched.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: false,
     example: 'https://example.com/test?foo=bar#buzz',
@@ -19617,7 +20548,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The URL of the resource that was fetched.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: true,
     example: 'https://example.com/test?foo=bar#buzz',
@@ -19662,7 +20593,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'The query string present in the URL. Note that this does not contain the leading ? character, while the `http.query` attribute does.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
       reason:
         'Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.',
     },
@@ -20224,6 +21155,7 @@ export type Attributes = {
   [AI_TOTAL_COST]?: AI_TOTAL_COST_TYPE;
   [AI_TOTAL_TOKENS_USED]?: AI_TOTAL_TOKENS_USED_TYPE;
   [AI_WARNINGS]?: AI_WARNINGS_TYPE;
+  [ANGULAR_VERSION]?: ANGULAR_VERSION_TYPE;
   [APP_APP_BUILD]?: APP_APP_BUILD_TYPE;
   [APP_APP_IDENTIFIER]?: APP_APP_IDENTIFIER_TYPE;
   [APP_APP_NAME]?: APP_APP_NAME_TYPE;
@@ -20249,6 +21181,15 @@ export type Attributes = {
   [APP_VITALS_START_WARM_VALUE]?: APP_VITALS_START_WARM_VALUE_TYPE;
   [APP_VITALS_TTFD_VALUE]?: APP_VITALS_TTFD_VALUE_TYPE;
   [APP_VITALS_TTID_VALUE]?: APP_VITALS_TTID_VALUE_TYPE;
+  [AWS_CLOUDWATCH_LOGS_LOG_GROUP]?: AWS_CLOUDWATCH_LOGS_LOG_GROUP_TYPE;
+  [AWS_CLOUDWATCH_LOGS_LOG_STREAM]?: AWS_CLOUDWATCH_LOGS_LOG_STREAM_TYPE;
+  [AWS_CLOUDWATCH_LOGS_URL]?: AWS_CLOUDWATCH_LOGS_URL_TYPE;
+  [AWS_LAMBDA_AWS_REQUEST_ID]?: AWS_LAMBDA_AWS_REQUEST_ID_TYPE;
+  [AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS]?: AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS_TYPE;
+  [AWS_LAMBDA_FUNCTION_NAME]?: AWS_LAMBDA_FUNCTION_NAME_TYPE;
+  [AWS_LAMBDA_FUNCTION_VERSION]?: AWS_LAMBDA_FUNCTION_VERSION_TYPE;
+  [AWS_LAMBDA_INVOKED_FUNCTION_ARN]?: AWS_LAMBDA_INVOKED_FUNCTION_ARN_TYPE;
+  [AWS_LAMBDA_REMAINING_TIME_IN_MILLIS]?: AWS_LAMBDA_REMAINING_TIME_IN_MILLIS_TYPE;
   [BLOCKED_MAIN_THREAD]?: BLOCKED_MAIN_THREAD_TYPE;
   [BROWSER_NAME]?: BROWSER_NAME_TYPE;
   [BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START]?: BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START_TYPE;
@@ -20286,6 +21227,11 @@ export type Attributes = {
   [CLOUDFLARE_D1_DURATION]?: CLOUDFLARE_D1_DURATION_TYPE;
   [CLOUDFLARE_D1_ROWS_READ]?: CLOUDFLARE_D1_ROWS_READ_TYPE;
   [CLOUDFLARE_D1_ROWS_WRITTEN]?: CLOUDFLARE_D1_ROWS_WRITTEN_TYPE;
+  [CLOUD_ACCOUNT_ID]?: CLOUD_ACCOUNT_ID_TYPE;
+  [CLOUD_AVAILABILITY_ZONE]?: CLOUD_AVAILABILITY_ZONE_TYPE;
+  [CLOUD_PLATFORM]?: CLOUD_PLATFORM_TYPE;
+  [CLOUD_PROVIDER]?: CLOUD_PROVIDER_TYPE;
+  [CLOUD_REGION]?: CLOUD_REGION_TYPE;
   [CLS]?: CLS_TYPE;
   [CLS_SOURCE_KEY]?: CLS_SOURCE_KEY_TYPE;
   [CODE_FILEPATH]?: CODE_FILEPATH_TYPE;
@@ -20381,6 +21327,15 @@ export type Attributes = {
   [FRAMES_SLOW_RATE]?: FRAMES_SLOW_RATE_TYPE;
   [FRAMES_TOTAL]?: FRAMES_TOTAL_TYPE;
   [FS_ERROR]?: FS_ERROR_TYPE;
+  [GCP_FUNCTION_CONTEXT_EVENT_ID]?: GCP_FUNCTION_CONTEXT_EVENT_ID_TYPE;
+  [GCP_FUNCTION_CONTEXT_EVENT_TYPE]?: GCP_FUNCTION_CONTEXT_EVENT_TYPE_TYPE;
+  [GCP_FUNCTION_CONTEXT_ID]?: GCP_FUNCTION_CONTEXT_ID_TYPE;
+  [GCP_FUNCTION_CONTEXT_RESOURCE]?: GCP_FUNCTION_CONTEXT_RESOURCE_TYPE;
+  [GCP_FUNCTION_CONTEXT_SOURCE]?: GCP_FUNCTION_CONTEXT_SOURCE_TYPE;
+  [GCP_FUNCTION_CONTEXT_SPECVERSION]?: GCP_FUNCTION_CONTEXT_SPECVERSION_TYPE;
+  [GCP_FUNCTION_CONTEXT_TIME]?: GCP_FUNCTION_CONTEXT_TIME_TYPE;
+  [GCP_FUNCTION_CONTEXT_TIMESTAMP]?: GCP_FUNCTION_CONTEXT_TIMESTAMP_TYPE;
+  [GCP_FUNCTION_CONTEXT_TYPE]?: GCP_FUNCTION_CONTEXT_TYPE_TYPE;
   [GEN_AI_AGENT_NAME]?: GEN_AI_AGENT_NAME_TYPE;
   [GEN_AI_CONTEXT_UTILIZATION]?: GEN_AI_CONTEXT_UTILIZATION_TYPE;
   [GEN_AI_CONTEXT_WINDOW_SIZE]?: GEN_AI_CONTEXT_WINDOW_SIZE_TYPE;
@@ -20604,6 +21559,7 @@ export type Attributes = {
   [PROCESS_RUNTIME_NAME]?: PROCESS_RUNTIME_NAME_TYPE;
   [PROCESS_RUNTIME_VERSION]?: PROCESS_RUNTIME_VERSION_TYPE;
   [QUERY_KEY]?: QUERY_KEY_TYPE;
+  [REACT_VERSION]?: REACT_VERSION_TYPE;
   [RELEASE]?: RELEASE_TYPE;
   [REMIX_ACTION_FORM_DATA_KEY]?: REMIX_ACTION_FORM_DATA_KEY_TYPE;
   [REPLAY_ID]?: REPLAY_ID_TYPE;
@@ -20629,6 +21585,7 @@ export type Attributes = {
   [SENTRY_DIST]?: SENTRY_DIST_TYPE;
   [SENTRY_DOMAIN]?: SENTRY_DOMAIN_TYPE;
   [SENTRY_DSC_ENVIRONMENT]?: SENTRY_DSC_ENVIRONMENT_TYPE;
+  [SENTRY_DSC_PROJECT_ID]?: SENTRY_DSC_PROJECT_ID_TYPE;
   [SENTRY_DSC_PUBLIC_KEY]?: SENTRY_DSC_PUBLIC_KEY_TYPE;
   [SENTRY_DSC_RELEASE]?: SENTRY_DSC_RELEASE_TYPE;
   [SENTRY_DSC_SAMPLED]?: SENTRY_DSC_SAMPLED_TYPE;
@@ -20683,12 +21640,15 @@ export type Attributes = {
   [SERVICE_VERSION]?: SERVICE_VERSION_TYPE;
   [STALL_PERCENTAGE]?: STALL_PERCENTAGE_TYPE;
   [STALL_TOTAL_TIME]?: STALL_TOTAL_TIME_TYPE;
+  [STATE_TYPE]?: STATE_TYPE_TYPE;
   [THREAD_ID]?: THREAD_ID_TYPE;
   [THREAD_NAME]?: THREAD_NAME_TYPE;
   [TIMBER_TAG]?: TIMBER_TAG_TYPE;
   [TIME_TO_FULL_DISPLAY]?: TIME_TO_FULL_DISPLAY_TYPE;
   [TIME_TO_INITIAL_DISPLAY]?: TIME_TO_INITIAL_DISPLAY_TYPE;
   [TRANSACTION]?: TRANSACTION_TYPE;
+  [TRPC_PROCEDURE_PATH]?: TRPC_PROCEDURE_PATH_TYPE;
+  [TRPC_PROCEDURE_TYPE]?: TRPC_PROCEDURE_TYPE_TYPE;
   [TTFB]?: TTFB_TYPE;
   [TTFB_REQUESTTIME]?: TTFB_REQUESTTIME_TYPE;
   [TYPE]?: TYPE_TYPE;
