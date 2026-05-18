@@ -12519,7 +12519,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SERVICE_NAME]: 'string',
   [SERVICE_VERSION]: 'string',
   [STALL_PERCENTAGE]: 'double',
-  [STALL_TOTAL_TIME]: 'integer',
+  [STALL_TOTAL_TIME]: 'double',
   [THREAD_ID]: 'integer',
   [THREAD_NAME]: 'string',
   [TIMBER_TAG]: 'string',
@@ -19302,7 +19302,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   [STALL_TOTAL_TIME]: {
     brief: 'The combined duration of all stalls in milliseconds. Only applies to React Native.',
-    type: 'integer',
+    type: 'double',
     pii: {
       isPii: 'maybe',
     },

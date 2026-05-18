@@ -5787,7 +5787,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     STALL_TOTAL_TIME: Literal["stall_total_time"] = "stall_total_time"
     """The combined duration of all stalls in milliseconds. Only applies to React Native.
 
-    Type: int
+    Type: float
     Contains PII: maybe
     Defined in OTEL: No
     """
@@ -13086,7 +13086,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ),
     "stall_total_time": AttributeMetadata(
         brief="The combined duration of all stalls in milliseconds. Only applies to React Native.",
-        type=AttributeType.INTEGER,
+        type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         changelog=[
@@ -14514,7 +14514,7 @@ Attributes = TypedDict(
         "service.name": str,
         "service.version": str,
         "stall_percentage": float,
-        "stall_total_time": int,
+        "stall_total_time": float,
         "thread.id": int,
         "thread.name": str,
         "timber.tag": str,
