@@ -10,7 +10,7 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [363],
+      "prs": [368],
       "description": "Added react.version attribute"
     }
   ]

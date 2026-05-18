@@ -10,7 +10,7 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [363],
+      "prs": [364],
       "description": "Added cloud.availability_zone attribute"
     }
   ]

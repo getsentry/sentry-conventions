@@ -10,7 +10,7 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [363],
+      "prs": [369],
       "description": "Added aws.lambda.invoked_function_arn attribute"
     }
   ]

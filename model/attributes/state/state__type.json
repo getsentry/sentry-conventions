@@ -10,7 +10,7 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [363],
+      "prs": [365],
       "description": "Added state.type attribute"
     }
   ]

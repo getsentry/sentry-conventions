@@ -7394,7 +7394,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="17.1.0",
         changelog=[
             ChangelogEntry(
-                version="next", prs=[363], description="Added angular.version attribute"
+                version="next", prs=[367], description="Added angular.version attribute"
             ),
         ],
     ),
@@ -7957,7 +7957,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[363],
+                prs=[369],
                 description="Added aws.cloudwatch.logs.log_group attribute",
             ),
         ],
@@ -7971,7 +7971,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[363],
+                prs=[369],
                 description="Added aws.cloudwatch.logs.log_stream attribute",
             ),
         ],
@@ -7985,7 +7985,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[363],
+                prs=[369],
                 description="Added aws.cloudwatch.logs.url attribute",
             ),
         ],
@@ -7999,7 +7999,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[363],
+                prs=[369],
                 description="Added aws.lambda.aws_request_id attribute",
             ),
         ],
@@ -8013,7 +8013,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[363],
+                prs=[369],
                 description="Added aws.lambda.execution_duration_in_millis attribute",
             ),
         ],
@@ -8027,7 +8027,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[363],
+                prs=[369],
                 description="Added aws.lambda.function_name attribute",
             ),
         ],
@@ -8041,7 +8041,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[363],
+                prs=[369],
                 description="Added aws.lambda.function_version attribute",
             ),
         ],
@@ -8055,7 +8055,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[363],
+                prs=[369],
                 description="Added aws.lambda.invoked_function_arn attribute",
             ),
         ],
@@ -8069,7 +8069,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[363],
+                prs=[369],
                 description="Added aws.lambda.remaining_time_in_millis attribute",
             ),
         ],
@@ -8508,7 +8508,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[363],
+                prs=[364],
                 description="Added cloud.account.id attribute",
             ),
         ],
@@ -8522,7 +8522,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[363],
+                prs=[364],
                 description="Added cloud.availability_zone attribute",
             ),
         ],
@@ -8535,7 +8535,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="aws_lambda",
         changelog=[
             ChangelogEntry(
-                version="next", prs=[363], description="Added cloud.platform attribute"
+                version="next", prs=[364], description="Added cloud.platform attribute"
             ),
         ],
     ),
@@ -8547,7 +8547,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="aws",
         changelog=[
             ChangelogEntry(
-                version="next", prs=[363], description="Added cloud.provider attribute"
+                version="next", prs=[364], description="Added cloud.provider attribute"
             ),
         ],
     ),
@@ -8559,7 +8559,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="us-east-1",
         changelog=[
             ChangelogEntry(
-                version="next", prs=[363], description="Added cloud.region attribute"
+                version="next", prs=[364], description="Added cloud.region attribute"
             ),
         ],
     ),
@@ -12791,7 +12791,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="18.2.0",
         changelog=[
             ChangelogEntry(
-                version="next", prs=[363], description="Added react.version attribute"
+                version="next", prs=[368], description="Added react.version attribute"
             ),
         ],
     ),
@@ -13699,7 +13699,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="redux",
         changelog=[
             ChangelogEntry(
-                version="next", prs=[363], description="Added state.type attribute"
+                version="next", prs=[365], description="Added state.type attribute"
             ),
         ],
     ),
@@ -13816,7 +13816,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[363],
+                prs=[370],
                 description="Added trpc.procedure_path attribute",
             ),
         ],
@@ -13830,7 +13830,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[363],
+                prs=[370],
                 description="Added trpc.procedure_type attribute",
             ),
         ],
