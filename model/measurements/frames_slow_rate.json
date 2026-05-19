@@ -3,5 +3,6 @@
   "full_name": "The rate of slow frames",
   "brief": "measurements.frames_slow divided by the measurements.frames_total",
   "unit": "none",
-  "platform": "mobile"
+  "platform": "mobile",
+  "attribute": "frames_slow_rate"
 }
