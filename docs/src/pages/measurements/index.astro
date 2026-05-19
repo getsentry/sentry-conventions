@@ -10,7 +10,7 @@ for (const m of allMeasurements) {
   if (!platformMap.has(platform)) {
     platformMap.set(platform, []);
   }
-  platformMap.get(platform)!.push(m);
+  platformMap.get(platform)?.push(m);
 }
 
 for (const measurements of platformMap.values()) {
