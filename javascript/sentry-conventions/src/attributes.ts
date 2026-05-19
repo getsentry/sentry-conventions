@@ -5678,6 +5678,26 @@ export const GEN_AI_USAGE_TOTAL_TOKENS = 'gen_ai.usage.total_tokens';
  */
 export type GEN_AI_USAGE_TOTAL_TOKENS_TYPE = number;
 
+// Path: model/attributes/graphql/graphql__document.json
+
+/**
+ * The GraphQL document being executed. `graphql.document`
+ *
+ * Attribute Value Type: `string` {@link GRAPHQL_DOCUMENT_TYPE}
+ *
+ * Contains PII: maybe - The document may contain sensitive information in arguments or variables. Instrumentation should redact sensitive information when possible.
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "query findBookById { bookById(id: ?) { name } }"
+ */
+export const GRAPHQL_DOCUMENT = 'graphql.document';
+
+/**
+ * Type for {@link GRAPHQL_DOCUMENT} graphql.document
+ */
+export type GRAPHQL_DOCUMENT_TYPE = string;
+
 // Path: model/attributes/graphql/graphql__operation__name.json
 
 /**
@@ -12876,6 +12896,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [GEN_AI_USAGE_OUTPUT_TOKENS_REASONING]: 'integer',
   [GEN_AI_USAGE_PROMPT_TOKENS]: 'integer',
   [GEN_AI_USAGE_TOTAL_TOKENS]: 'integer',
+  [GRAPHQL_DOCUMENT]: 'string',
   [GRAPHQL_OPERATION_NAME]: 'string',
   [GRAPHQL_OPERATION_TYPE]: 'string',
   [HARDWARECONCURRENCY]: 'string',
@@ -13479,6 +13500,7 @@ export type AttributeName =
   | typeof GEN_AI_USAGE_OUTPUT_TOKENS_REASONING
   | typeof GEN_AI_USAGE_PROMPT_TOKENS
   | typeof GEN_AI_USAGE_TOTAL_TOKENS
+  | typeof GRAPHQL_DOCUMENT
   | typeof GRAPHQL_OPERATION_NAME
   | typeof GRAPHQL_OPERATION_TYPE
   | typeof HARDWARECONCURRENCY
@@ -17252,6 +17274,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [57] },
     ],
+  },
+  [GRAPHQL_DOCUMENT]: {
+    brief: 'The GraphQL document being executed.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+      reason:
+        'The document may contain sensitive information in arguments or variables. Instrumentation should redact sensitive information when possible.',
+    },
+    isInOtel: true,
+    example: 'query findBookById { bookById(id: ?) { name } }',
+    changelog: [{ version: '0.0.0' }],
   },
   [GRAPHQL_OPERATION_NAME]: {
     brief: 'The name of the operation being executed.',
@@ -21390,6 +21424,7 @@ export type Attributes = {
   [GEN_AI_USAGE_OUTPUT_TOKENS_REASONING]?: GEN_AI_USAGE_OUTPUT_TOKENS_REASONING_TYPE;
   [GEN_AI_USAGE_PROMPT_TOKENS]?: GEN_AI_USAGE_PROMPT_TOKENS_TYPE;
   [GEN_AI_USAGE_TOTAL_TOKENS]?: GEN_AI_USAGE_TOTAL_TOKENS_TYPE;
+  [GRAPHQL_DOCUMENT]?: GRAPHQL_DOCUMENT_TYPE;
   [GRAPHQL_OPERATION_NAME]?: GRAPHQL_OPERATION_NAME_TYPE;
   [GRAPHQL_OPERATION_TYPE]?: GRAPHQL_OPERATION_TYPE_TYPE;
   [HARDWARECONCURRENCY]?: HARDWARECONCURRENCY_TYPE;
