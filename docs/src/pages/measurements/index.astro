@@ -70,7 +70,7 @@ function attributeUrl(key: string): string {
                   <tr>
                     <td><code class="text-xs">{m.data.key}</code></td>
                     <td class="whitespace-nowrap text-text-primary font-medium">{m.data.full_name}</td>
-                    <td class="text-text-secondary">{m.data.brief}</td>
+                    <td class="text-text-secondary">{m.data.brief || <span class="text-text-muted">—</span>}</td>
                     <td class="whitespace-nowrap">
                       {m.data.unit === 'none' ? (
                         <span class="text-text-muted">—</span>

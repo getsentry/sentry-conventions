@@ -68,7 +68,7 @@ const names = defineCollection({
 const measurementSchema = z.object({
   key: z.string(),
   full_name: z.string(),
-  brief: z.string(),
+  brief: z.string().optional(),
   unit: z.string(),
   platform: z.enum(['web', 'mobile']),
   attribute: z.string().optional(),
