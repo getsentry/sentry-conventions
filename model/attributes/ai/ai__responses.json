@@ -10,7 +10,7 @@
   "sdks": ["python"],
   "deprecation": {
     "_status": "backfill",
-    "replacement": "gen_ai.response.text"
+    "replacement": "gen_ai.output.messages"
   },
   "changelog": [
     {

@@ -170,7 +170,7 @@ export type AI_GENERATION_ID_TYPE = string;
  *
  * Aliases: {@link GEN_AI_REQUEST_MESSAGES} `gen_ai.request.messages`
  *
- * @deprecated Use {@link GEN_AI_REQUEST_MESSAGES} (gen_ai.request.messages) instead
+ * @deprecated Use {@link GEN_AI_INPUT_MESSAGES} (gen_ai.input.messages) instead
  * @example "[{\"role\": \"user\", \"message\": \"hello\"}]"
  */
 export const AI_INPUT_MESSAGES = 'ai.input_messages';
@@ -392,7 +392,7 @@ export type AI_RAW_PROMPTING_TYPE = boolean;
  *
  * Attribute defined in OTEL: No
  *
- * @deprecated Use {@link GEN_AI_RESPONSE_TEXT} (gen_ai.response.text) instead
+ * @deprecated Use {@link GEN_AI_OUTPUT_MESSAGES} (gen_ai.output.messages) instead
  * @example ["hello","world"]
  */
 export const AI_RESPONSES = 'ai.responses';
@@ -589,7 +589,7 @@ export type AI_TEXTS_TYPE = Array<string>;
  *
  * Attribute defined in OTEL: No
  *
- * @deprecated Use {@link GEN_AI_REQUEST_AVAILABLE_TOOLS} (gen_ai.request.available_tools) instead
+ * @deprecated Use {@link GEN_AI_TOOL_DEFINITIONS} (gen_ai.tool.definitions) instead
  * @example ["function_1","function_2"]
  */
 export const AI_TOOLS = 'ai.tools';
@@ -610,7 +610,7 @@ export type AI_TOOLS_TYPE = Array<string>;
  *
  * Attribute defined in OTEL: No
  *
- * @deprecated Use {@link GEN_AI_RESPONSE_TOOL_CALLS} (gen_ai.response.tool_calls) instead
+ * @deprecated Use {@link GEN_AI_OUTPUT_MESSAGES} (gen_ai.output.messages) instead
  * @example ["tool_call_1","tool_call_2"]
  */
 export const AI_TOOL_CALLS = 'ai.tool_calls';
@@ -13926,7 +13926,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: '[{"role": "user", "message": "hello"}]',
     deprecation: {
-      replacement: 'gen_ai.request.messages',
+      replacement: 'gen_ai.input.messages',
     },
     aliases: [GEN_AI_REQUEST_MESSAGES],
     sdks: ['python'],
@@ -14080,7 +14080,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: ['hello', 'world'],
     deprecation: {
-      replacement: 'gen_ai.response.text',
+      replacement: 'gen_ai.output.messages',
     },
     sdks: ['python'],
     changelog: [{ version: '0.1.0', prs: [65, 127] }, { version: '0.0.0' }],
@@ -14214,7 +14214,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: ['function_1', 'function_2'],
     deprecation: {
-      replacement: 'gen_ai.request.available_tools',
+      replacement: 'gen_ai.tool.definitions',
     },
     changelog: [{ version: '0.1.0', prs: [55, 65, 127] }],
   },
@@ -14227,7 +14227,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: ['tool_call_1', 'tool_call_2'],
     deprecation: {
-      replacement: 'gen_ai.response.tool_calls',
+      replacement: 'gen_ai.output.messages',
     },
     changelog: [{ version: '0.1.0', prs: [55, 65] }],
   },

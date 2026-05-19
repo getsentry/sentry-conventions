@@ -348,7 +348,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Aliases: gen_ai.request.messages
-    DEPRECATED: Use gen_ai.request.messages instead
+    DEPRECATED: Use gen_ai.input.messages instead
     Example: "[{\"role\": \"user\", \"message\": \"hello\"}]"
     """
 
@@ -475,7 +475,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: List[str]
     Contains PII: maybe
     Defined in OTEL: No
-    DEPRECATED: Use gen_ai.response.text instead
+    DEPRECATED: Use gen_ai.output.messages instead
     Example: ["hello","world"]
     """
 
@@ -567,7 +567,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: List[str]
     Contains PII: true
     Defined in OTEL: No
-    DEPRECATED: Use gen_ai.response.tool_calls instead
+    DEPRECATED: Use gen_ai.output.messages instead
     Example: ["tool_call_1","tool_call_2"]
     """
 
@@ -578,7 +578,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: List[str]
     Contains PII: maybe
     Defined in OTEL: No
-    DEPRECATED: Use gen_ai.request.available_tools instead
+    DEPRECATED: Use gen_ai.tool.definitions instead
     Example: ["function_1","function_2"]
     """
 
@@ -7059,7 +7059,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example='[{"role": "user", "message": "hello"}]',
         deprecation=DeprecationInfo(
-            replacement="gen_ai.request.messages", status=DeprecationStatus.BACKFILL
+            replacement="gen_ai.input.messages", status=DeprecationStatus.BACKFILL
         ),
         aliases=["gen_ai.request.messages"],
         sdks=["python"],
@@ -7216,7 +7216,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=["hello", "world"],
         deprecation=DeprecationInfo(
-            replacement="gen_ai.response.text", status=DeprecationStatus.BACKFILL
+            replacement="gen_ai.output.messages", status=DeprecationStatus.BACKFILL
         ),
         sdks=["python"],
         changelog=[
@@ -7327,7 +7327,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=["tool_call_1", "tool_call_2"],
         deprecation=DeprecationInfo(
-            replacement="gen_ai.response.tool_calls", status=DeprecationStatus.BACKFILL
+            replacement="gen_ai.output.messages", status=DeprecationStatus.BACKFILL
         ),
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[55, 65]),
@@ -7340,8 +7340,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         example=["function_1", "function_2"],
         deprecation=DeprecationInfo(
-            replacement="gen_ai.request.available_tools",
-            status=DeprecationStatus.BACKFILL,
+            replacement="gen_ai.tool.definitions", status=DeprecationStatus.BACKFILL
         ),
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[55, 65, 127]),
