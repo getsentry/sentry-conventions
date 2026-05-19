@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allMeasurements = await getCollection('measurements');
+
+const platformMap = new Map<string, typeof allMeasurements>();
+for (const m of allMeasurements) {
+  const platform = m.data.platform;
+  if (!platformMap.has(platform)) {
+    platformMap.set(platform, []);
+  }
+  platformMap.get(platform)!.push(m);
+}
+
+for (const measurements of platformMap.values()) {
+  measurements.sort((a, b) => a.data.key.localeCompare(b.data.key));
+}
+
+const sortedPlatforms = Array.from(platformMap.keys()).sort();
+
+function attributeUrl(key: string): string {
+  const category = key.includes('.') ? key.split('.')[0] : 'general';
+  const anchor = key.replace(/\./g, '-').replace(/</g, '').replace(/>/g, '');
+  return `${import.meta.env.BASE_URL}attributes/${category}/#${anchor}`;
+}
+---
+
+<BaseLayout title="Measurements (Legacy)" description="Legacy Sentry span measurements reference">
+  <div class="mb-8">
+    <div class="flex items-start gap-3 p-4 mb-6 rounded-md bg-warning-soft border border-warning text-sm">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="flex-shrink-0 mt-0.5 text-warning">
+        <path d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+      </svg>
+      <span class="text-text-secondary">
+        <strong class="text-text-primary">Measurements are being phased out.</strong>
+        They are replaced by <a href={`${import.meta.env.BASE_URL}attributes/`} class="text-accent hover:text-accent-hover font-medium">span attributes</a>.
+        For measurements sent by legacy SDKs, Relay automatically converts them to span attributes.
+      </span>
+    </div>
+    <h1>Measurements <span class="text-lg text-text-muted font-normal align-middle">(Legacy)</span></h1>
+    <p class="text-lg text-text-secondary max-w-3xl">
+      Measurements are numeric values attached to transactions that capture performance metrics.
+    </p>
+  </div>
+
+  <div class="flex flex-col gap-12">
+    {sortedPlatforms.map((platform) => {
+      const measurements = platformMap.get(platform)!;
+      return (
+        <section class="scroll-mt-20" id={platform}>
+          <div class="flex items-baseline gap-4 mb-6 pb-3 border-b border-border">
+            <h2 class="m-0 text-2xl capitalize">{platform}</h2>
+            <span class="text-sm text-text-muted">{measurements.length} measurements</span>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table>
+              <thead>
+                <tr>
+                  <th>Key</th>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Unit</th>
+                  <th>Attribute</th>
+                </tr>
+              </thead>
+              <tbody>
+                {measurements.map((m) => (
+                  <tr>
+                    <td><code class="text-xs">{m.data.key}</code></td>
+                    <td class="whitespace-nowrap text-text-primary font-medium">{m.data.full_name}</td>
+                    <td class="text-text-secondary">{m.data.brief}</td>
+                    <td class="whitespace-nowrap">
+                      {m.data.unit === 'none' ? (
+                        <span class="text-text-muted">—</span>
+                      ) : (
+                        <code class="text-xs">{m.data.unit}</code>
+                      )}
+                    </td>
+                    <td>
+                      {m.data.attribute ? (
+                        <a href={attributeUrl(m.data.attribute)} class="text-accent hover:text-accent-hover">
+                          <code class="text-xs">{m.data.attribute}</code>
+                        </a>
+                      ) : (
+                        <span class="text-text-muted">—</span>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      );
+    })}
+  </div>
+</BaseLayout>
