@@ -7,6 +7,7 @@
   },
   "is_in_otel": false,
   "example": "tools/call",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.3.0",

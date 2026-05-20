@@ -8,6 +8,7 @@
   "is_in_otel": true,
   "example": "1234567890",
   "alias": ["ai.seed"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

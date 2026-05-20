@@ -7,6 +7,7 @@
   },
   "is_in_otel": false,
   "example": "/issues/errors-outages/",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.3.0",

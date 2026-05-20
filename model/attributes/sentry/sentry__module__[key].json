@@ -8,6 +8,7 @@
   },
   "is_in_otel": false,
   "example": "sentry.module.brianium/paratest='v7.7.0'",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

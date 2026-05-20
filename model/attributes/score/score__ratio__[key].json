@@ -8,6 +8,7 @@
   },
   "is_in_otel": false,
   "example": "score.ratio.inp=0.7748",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.7.0",

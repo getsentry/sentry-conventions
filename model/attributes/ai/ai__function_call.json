@@ -7,11 +7,12 @@
   },
   "is_in_otel": false,
   "example": "function_name",
+  "alias": ["gen_ai.tool.name"],
   "deprecation": {
     "_status": "backfill",
     "replacement": "gen_ai.tool.name"
   },
-  "alias": ["gen_ai.tool.name"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

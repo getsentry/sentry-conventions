@@ -7,11 +7,12 @@
   },
   "is_in_otel": true,
   "example": "192.168.0.1",
+  "alias": ["network.peer.address", "net.peer.ip"],
   "deprecation": {
     "_status": null,
     "replacement": "network.peer.address"
   },
-  "alias": ["network.peer.address", "net.peer.ip"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

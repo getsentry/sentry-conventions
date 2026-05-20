@@ -9,6 +9,7 @@
   "is_in_otel": false,
   "example": "url.path.parameter.id='123'",
   "alias": ["params.<key>"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

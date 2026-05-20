@@ -8,6 +8,7 @@
   "is_in_otel": false,
   "example": "AuthenticationMiddleware",
   "sdks": ["python"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.6.0",

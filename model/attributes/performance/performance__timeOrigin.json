@@ -5,15 +5,16 @@
   "pii": {
     "key": "maybe"
   },
-  "alias": ["browser.performance.time_origin"],
   "is_in_otel": false,
   "example": 1776185678.886,
+  "alias": ["browser.performance.time_origin"],
   "sdks": ["javascript-browser"],
   "deprecation": {
     "reason": "The timeOrigin is now recorded as the browser.performance.time_origin attribute.",
     "replacement": "browser.performance.time_origin",
     "_status": "backfill"
   },
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.5.0",

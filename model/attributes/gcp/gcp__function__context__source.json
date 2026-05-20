@@ -7,6 +7,7 @@
   },
   "is_in_otel": false,
   "example": "//pubsub.googleapis.com/projects/my-project/topics/my-topic",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.7.0",

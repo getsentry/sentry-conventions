@@ -8,6 +8,7 @@
   },
   "is_in_otel": false,
   "example": "score.cls=0.1723",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.7.0",

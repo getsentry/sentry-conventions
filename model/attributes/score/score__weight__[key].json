@@ -8,6 +8,7 @@
   },
   "is_in_otel": false,
   "example": "score.weight.fcp=0.25",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.7.0",

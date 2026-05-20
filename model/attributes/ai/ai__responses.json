@@ -12,6 +12,7 @@
     "_status": "backfill",
     "replacement": "gen_ai.output.messages"
   },
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

@@ -11,6 +11,7 @@
     "_status": "backfill",
     "replacement": "gen_ai.tool.definitions"
   },
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

@@ -7,6 +7,7 @@
   },
   "is_in_otel": false,
   "example": "1573817187330377061717300000",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.2.0",
