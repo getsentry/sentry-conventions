@@ -9,7 +9,7 @@
   "example": ["function_1", "function_2"],
   "deprecation": {
     "_status": "backfill",
-    "replacement": "gen_ai.request.available_tools"
+    "replacement": "gen_ai.tool.definitions"
   },
   "changelog": [
     {

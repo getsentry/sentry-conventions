@@ -11,7 +11,7 @@
   "sdks": ["python"],
   "deprecation": {
     "_status": "backfill",
-    "replacement": "gen_ai.request.messages"
+    "replacement": "gen_ai.input.messages"
   },
   "changelog": [
     {

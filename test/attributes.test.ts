@@ -123,6 +123,25 @@ describe('attribute json', async () => {
         expect(missingAliases).toEqual([]);
       });
 
+      it('its replacement should not be deprecated', async () => {
+        if (!content.deprecation?.replacement) {
+          return;
+        }
+        const replacement = content.deprecation.replacement;
+        const replacementFileName = attributeKeyToFileName(replacement);
+        let replacementFilePath: string;
+
+        if (replacement.includes('.')) {
+          const namespace = replacement.split('.')[0] as string;
+          replacementFilePath = path.join(traceFolders, namespace, replacementFileName);
+        } else {
+          replacementFilePath = path.join(traceFolders, replacementFileName);
+        }
+
+        const replacementContent: AttributeJson = JSON.parse(await fs.promises.readFile(replacementFilePath, 'utf-8'));
+        expect(replacementContent.deprecation, `replacement "${replacement}" is itself deprecated`).toBeUndefined();
+      });
+
       it('is not be a replacement of itself', async () => {
         if (!content.deprecation?.replacement) {
           return;
