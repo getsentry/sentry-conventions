@@ -4582,6 +4582,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 2
     """
 
+    # Path: model/attributes/messaging/messaging__operation__name.json
+    MESSAGING_OPERATION_NAME: Literal["messaging.operation.name"] = (
+        "messaging.operation.name"
+    )
+    """The name of the messaging operation being performed
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: Yes
+    Example: "send"
+    """
+
     # Path: model/attributes/messaging/messaging__operation__type.json
     MESSAGING_OPERATION_TYPE: Literal["messaging.operation.type"] = (
         "messaging.operation.type"
@@ -12202,6 +12214,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "messaging.operation.name": AttributeMetadata(
+        brief="The name of the messaging operation being performed",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=True,
+        example="send",
+        sdks=["javascript-cloudflare"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[392],
+                description="Added messaging.operation.name attribute",
+            ),
+        ],
+    ),
     "messaging.operation.type": AttributeMetadata(
         brief="A string identifying the type of the messaging operation",
         type=AttributeType.STRING,
@@ -15287,6 +15314,7 @@ Attributes = TypedDict(
         "messaging.message.id": str,
         "messaging.message.receive.latency": int,
         "messaging.message.retry.count": int,
+        "messaging.operation.name": str,
         "messaging.operation.type": str,
         "messaging.system": str,
         "method": str,

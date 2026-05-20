@@ -8002,6 +8002,26 @@ export const MESSAGING_MESSAGE_RETRY_COUNT = 'messaging.message.retry.count';
  */
 export type MESSAGING_MESSAGE_RETRY_COUNT_TYPE = number;
 
+// Path: model/attributes/messaging/messaging__operation__name.json
+
+/**
+ * The name of the messaging operation being performed `messaging.operation.name`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_OPERATION_NAME_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "send"
+ */
+export const MESSAGING_OPERATION_NAME = 'messaging.operation.name';
+
+/**
+ * Type for {@link MESSAGING_OPERATION_NAME} messaging.operation.name
+ */
+export type MESSAGING_OPERATION_NAME_TYPE = string;
+
 // Path: model/attributes/messaging/messaging__operation__type.json
 
 /**
@@ -13108,6 +13128,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [MESSAGING_MESSAGE_ID]: 'string',
   [MESSAGING_MESSAGE_RECEIVE_LATENCY]: 'integer',
   [MESSAGING_MESSAGE_RETRY_COUNT]: 'integer',
+  [MESSAGING_OPERATION_NAME]: 'string',
   [MESSAGING_OPERATION_TYPE]: 'string',
   [MESSAGING_SYSTEM]: 'string',
   [METHOD]: 'string',
@@ -13717,6 +13738,7 @@ export type AttributeName =
   | typeof MESSAGING_MESSAGE_ID
   | typeof MESSAGING_MESSAGE_RECEIVE_LATENCY
   | typeof MESSAGING_MESSAGE_RETRY_COUNT
+  | typeof MESSAGING_OPERATION_NAME
   | typeof MESSAGING_OPERATION_TYPE
   | typeof MESSAGING_SYSTEM
   | typeof METHOD
@@ -18737,6 +18759,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['php-laravel'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
+  [MESSAGING_OPERATION_NAME]: {
+    brief: 'The name of the messaging operation being performed',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 'send',
+    sdks: ['javascript-cloudflare'],
+    changelog: [{ version: 'next', prs: [392], description: 'Added messaging.operation.name attribute' }],
+  },
   [MESSAGING_OPERATION_TYPE]: {
     brief: 'A string identifying the type of the messaging operation',
     type: 'string',
@@ -21700,6 +21733,7 @@ export type Attributes = {
   [MESSAGING_MESSAGE_ID]?: MESSAGING_MESSAGE_ID_TYPE;
   [MESSAGING_MESSAGE_RECEIVE_LATENCY]?: MESSAGING_MESSAGE_RECEIVE_LATENCY_TYPE;
   [MESSAGING_MESSAGE_RETRY_COUNT]?: MESSAGING_MESSAGE_RETRY_COUNT_TYPE;
+  [MESSAGING_OPERATION_NAME]?: MESSAGING_OPERATION_NAME_TYPE;
   [MESSAGING_OPERATION_TYPE]?: MESSAGING_OPERATION_TYPE_TYPE;
   [MESSAGING_SYSTEM]?: MESSAGING_SYSTEM_TYPE;
   [METHOD]?: METHOD_TYPE;

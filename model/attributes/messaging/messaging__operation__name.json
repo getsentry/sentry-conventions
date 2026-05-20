@@ -1,0 +1,18 @@
+{
+  "key": "messaging.operation.name",
+  "brief": "The name of the messaging operation being performed",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "send",
+  "sdks": ["javascript-cloudflare"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [392],
+      "description": "Added messaging.operation.name attribute"
+    }
+  ]
+}
