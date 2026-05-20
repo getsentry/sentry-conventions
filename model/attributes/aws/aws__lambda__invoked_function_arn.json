@@ -9,7 +9,7 @@
   "example": "arn:aws:lambda:us-east-1:123456789012:function:my-function",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.7.0",
       "prs": [369],
       "description": "Added aws.lambda.invoked_function_arn attribute"
     }

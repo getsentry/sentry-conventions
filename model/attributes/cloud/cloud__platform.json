@@ -9,7 +9,7 @@
   "example": "aws_lambda",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.7.0",
       "prs": [364],
       "description": "Added cloud.platform attribute"
     }

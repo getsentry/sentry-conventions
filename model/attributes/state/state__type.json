@@ -9,7 +9,7 @@
   "example": "redux",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.7.0",
       "prs": [365],
       "description": "Added state.type attribute"
     }

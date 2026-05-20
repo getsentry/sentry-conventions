@@ -9,7 +9,7 @@
   "example": "https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups/log-group/my-log-group",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.7.0",
       "prs": [369],
       "description": "Added aws.cloudwatch.logs.url attribute"
     }

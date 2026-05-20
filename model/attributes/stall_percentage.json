@@ -8,7 +8,7 @@
   "is_in_otel": false,
   "changelog": [
     {
-      "version": "next",
+      "version": "0.7.0",
       "prs": [362],
       "description": "Added stall_percentage attribute"
     }

@@ -9,7 +9,7 @@
   "example": "2024/01/01/[$LATEST]abcdef1234567890",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.7.0",
       "prs": [369],
       "description": "Added aws.cloudwatch.logs.log_stream attribute"
     }

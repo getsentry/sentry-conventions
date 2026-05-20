@@ -9,7 +9,7 @@
   "example": "us-east-1c",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.7.0",
       "prs": [364],
       "description": "Added cloud.availability_zone attribute"
     }

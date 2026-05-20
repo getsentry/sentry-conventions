@@ -9,7 +9,7 @@
   "example": "$LATEST",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.7.0",
       "prs": [369],
       "description": "Added aws.lambda.function_version attribute"
     }
