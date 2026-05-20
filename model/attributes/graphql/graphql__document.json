@@ -7,6 +7,7 @@
     "reason": "The document may contain sensitive information in arguments or variables. Instrumentation should redact sensitive information when possible."
   },
   "is_in_otel": true,
+  "visibility": "public",
   "example": "query findBookById { bookById(id: ?) { name } }",
   "changelog": [
     {
