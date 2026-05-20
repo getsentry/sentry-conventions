@@ -1,5 +1,6 @@
 ---
 import PiiBadge from './PiiBadge.astro';
+import VisibilityBadge from './VisibilityBadge.astro';
 import OtelBadge from './OtelBadge.astro';
 import TypeBadge from './TypeBadge.astro';
 import type { Attribute } from '../content.config';
@@ -41,6 +42,7 @@ const rawJson = JSON.stringify(attribute, null, 2);
     <div class="flex flex-wrap items-center gap-2">
       <TypeBadge type={attribute.type} />
       <PiiBadge pii={attribute.pii.key} reason={attribute.pii.reason} />
+      <VisibilityBadge visibility={attribute.visibility} />
       {attribute.is_in_otel != null && (
         <OtelBadge isInOtel={attribute.is_in_otel} />
       )}
