@@ -13,7 +13,7 @@ const attributeSchema = z.object({
     reason: z.string().optional(),
   }),
   is_in_otel: z.boolean(),
-  visibility: z.enum(['public', 'internal']).optional(),
+  visibility: z.enum(['public', 'internal']),
   example: z
     .union([z.string(), z.boolean(), z.number(), z.array(z.string()), z.array(z.boolean()), z.array(z.number())])
     .optional(),
