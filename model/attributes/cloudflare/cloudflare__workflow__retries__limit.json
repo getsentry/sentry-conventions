@@ -1,0 +1,18 @@
+{
+  "key": "cloudflare.workflow.retries.limit",
+  "brief": "The maximum number of retries for a Cloudflare Workflow step",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 3,
+  "sdks": ["javascript-cloudflare"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [392],
+      "description": "Added cloudflare.workflow.retries.limit attribute"
+    }
+  ]
+}

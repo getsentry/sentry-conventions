@@ -1517,6 +1517,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 543
     """
 
+    # Path: model/attributes/cloudflare/cloudflare__d1__query_type.json
+    CLOUDFLARE_D1_QUERY_TYPE: Literal["cloudflare.d1.query_type"] = (
+        "cloudflare.d1.query_type"
+    )
+    """The type of query executed in a Cloudflare D1 operation
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "run"
+    """
+
     # Path: model/attributes/cloudflare/cloudflare__d1__rows_read.json
     CLOUDFLARE_D1_ROWS_READ: Literal["cloudflare.d1.rows_read"] = (
         "cloudflare.d1.rows_read"
@@ -1539,6 +1551,66 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Example: 12
+    """
+
+    # Path: model/attributes/cloudflare/cloudflare__workflow__attempt.json
+    CLOUDFLARE_WORKFLOW_ATTEMPT: Literal["cloudflare.workflow.attempt"] = (
+        "cloudflare.workflow.attempt"
+    )
+    """The current attempt number for a Cloudflare Workflow step
+
+    Type: int
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 1
+    """
+
+    # Path: model/attributes/cloudflare/cloudflare__workflow__retries__backoff.json
+    CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF: Literal[
+        "cloudflare.workflow.retries.backoff"
+    ] = "cloudflare.workflow.retries.backoff"
+    """The backoff strategy for Cloudflare Workflow step retries
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "exponential"
+    """
+
+    # Path: model/attributes/cloudflare/cloudflare__workflow__retries__delay.json
+    CLOUDFLARE_WORKFLOW_RETRIES_DELAY: Literal["cloudflare.workflow.retries.delay"] = (
+        "cloudflare.workflow.retries.delay"
+    )
+    """The delay between Cloudflare Workflow step retries
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "5 seconds"
+    """
+
+    # Path: model/attributes/cloudflare/cloudflare__workflow__retries__limit.json
+    CLOUDFLARE_WORKFLOW_RETRIES_LIMIT: Literal["cloudflare.workflow.retries.limit"] = (
+        "cloudflare.workflow.retries.limit"
+    )
+    """The maximum number of retries for a Cloudflare Workflow step
+
+    Type: int
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 3
+    """
+
+    # Path: model/attributes/cloudflare/cloudflare__workflow__timeout.json
+    CLOUDFLARE_WORKFLOW_TIMEOUT: Literal["cloudflare.workflow.timeout"] = (
+        "cloudflare.workflow.timeout"
+    )
+    """The timeout duration for a Cloudflare Workflow step
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "1 minute"
     """
 
     # Path: model/attributes/cls/cls__source__[key].json
@@ -8611,6 +8683,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "cloudflare.d1.query_type": AttributeMetadata(
+        brief="The type of query executed in a Cloudflare D1 operation",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="run",
+        sdks=["javascript-cloudflare"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[392],
+                description="Added cloudflare.d1.query_type attribute",
+            ),
+        ],
+    ),
     "cloudflare.d1.rows_read": AttributeMetadata(
         brief="The number of rows read in a Cloudflare D1 operation.",
         type=AttributeType.INTEGER,
@@ -8633,6 +8720,81 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "cloudflare.workflow.attempt": AttributeMetadata(
+        brief="The current attempt number for a Cloudflare Workflow step",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=1,
+        sdks=["javascript-cloudflare"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[392],
+                description="Added cloudflare.workflow.attempt attribute",
+            ),
+        ],
+    ),
+    "cloudflare.workflow.retries.backoff": AttributeMetadata(
+        brief="The backoff strategy for Cloudflare Workflow step retries",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="exponential",
+        sdks=["javascript-cloudflare"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[392],
+                description="Added cloudflare.workflow.retries.backoff attribute",
+            ),
+        ],
+    ),
+    "cloudflare.workflow.retries.delay": AttributeMetadata(
+        brief="The delay between Cloudflare Workflow step retries",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="5 seconds",
+        sdks=["javascript-cloudflare"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[392],
+                description="Added cloudflare.workflow.retries.delay attribute",
+            ),
+        ],
+    ),
+    "cloudflare.workflow.retries.limit": AttributeMetadata(
+        brief="The maximum number of retries for a Cloudflare Workflow step",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=3,
+        sdks=["javascript-cloudflare"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[392],
+                description="Added cloudflare.workflow.retries.limit attribute",
+            ),
+        ],
+    ),
+    "cloudflare.workflow.timeout": AttributeMetadata(
+        brief="The timeout duration for a Cloudflare Workflow step",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="1 minute",
+        sdks=["javascript-cloudflare"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[392],
+                description="Added cloudflare.workflow.timeout attribute",
+            ),
         ],
     ),
     "cls.source.<key>": AttributeMetadata(
@@ -14853,8 +15015,14 @@ Attributes = TypedDict(
         "cloud.provider": str,
         "cloud.region": str,
         "cloudflare.d1.duration": int,
+        "cloudflare.d1.query_type": str,
         "cloudflare.d1.rows_read": int,
         "cloudflare.d1.rows_written": int,
+        "cloudflare.workflow.attempt": int,
+        "cloudflare.workflow.retries.backoff": str,
+        "cloudflare.workflow.retries.delay": str,
+        "cloudflare.workflow.retries.limit": int,
+        "cloudflare.workflow.timeout": str,
         "cls.source.<key>": str,
         "cls": float,
         "code.file.path": str,
