@@ -133,5 +133,5 @@
       }
     }
   },
-  "required": ["key", "brief", "type", "pii", "is_in_otel"]
+  "required": ["key", "brief", "type", "pii", "is_in_otel", "visibility"]
 }
