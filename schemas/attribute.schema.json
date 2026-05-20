@@ -38,6 +38,10 @@
     "is_in_otel": {
       "type": "boolean"
     },
+    "visibility": {
+      "description": "The visibility of the attribute",
+      "enum": ["public", "internal"]
+    },
     "example": {
       "description": "An example value of the attribute",
       "oneOf": [
