@@ -100,6 +100,9 @@ class AttributeMetadata:
     changelog: Optional[List[ChangelogEntry]] = None
     """Changelog entries tracking how this attribute has changed across versions"""
 
+    additional_context: Optional[List[str]] = None
+    """A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances"""
+
 
 class _AttributeNamesMeta(type):
     _deprecated_names = {
