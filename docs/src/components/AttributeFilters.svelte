@@ -273,7 +273,7 @@ const resultLabel = $derived.by(() => {
 });
 </script>
 
-<div class="mb-6 p-4 bg-bg-secondary border border-border rounded-lg">
+<div class="mb-6 p-3 bg-bg-secondary border border-border rounded-lg">
   <div class="flex flex-wrap items-end gap-3">
     <label class="flex flex-col gap-1 min-w-[140px]">
       <span class="text-xs text-text-muted uppercase tracking-wider">PII</span>
