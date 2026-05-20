@@ -81,7 +81,14 @@ const createAttribute = async () => {
     intro('Create new attribute');
 
     // If any required option is provided, we'll use non-interactive mode
-    const isInteractive = !(values.key || values.description || values.type || values.has_pii || values.is_in_otel || values.visibility);
+    const isInteractive = !(
+      values.key ||
+      values.description ||
+      values.type ||
+      values.has_pii ||
+      values.is_in_otel ||
+      values.visibility
+    );
 
     let key: string | undefined;
     let description: string | undefined;
