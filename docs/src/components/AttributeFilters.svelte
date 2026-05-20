@@ -39,6 +39,7 @@ let visibleSectionCount = $state(0);
 let emptyStateEl: HTMLElement | null = null;
 let attributeListEl: HTMLElement | null = null;
 let filtersInitializedFromUrl = false;
+let latestApplyFiltersRun = 0;
 
 const hasActiveFilters = $derived(piiFilter !== '' || visibilityFilter !== '' || otelFilter !== '');
 
@@ -185,7 +186,7 @@ function resetSectionVisibility(showDefaultHidden = false) {
   }
 }
 
-async function applySectionFilters() {
+function applySectionFilters() {
   if (!hasActiveFilters) {
     resetSectionVisibility();
     visibleCardCount = applyCardFilters();
@@ -214,7 +215,12 @@ function updateEmptyState(visible: number) {
 }
 
 async function applyFilters() {
+  const applyFiltersRun = ++latestApplyFiltersRun;
   await tick();
+
+  if (applyFiltersRun !== latestApplyFiltersRun) {
+    return;
+  }
 
   if (!attributeListEl) {
     attributeListEl = document.getElementById('attribute-list');
@@ -223,7 +229,7 @@ async function applyFilters() {
   syncUrl();
 
   if (mode === 'sections') {
-    await applySectionFilters();
+    applySectionFilters();
     updateEmptyState(visibleSectionCount);
   } else {
     visibleCardCount = applyCardFilters();
@@ -247,7 +253,7 @@ onMount(() => {
   filtersInitializedFromUrl = true;
   emptyStateEl = document.getElementById('attribute-filter-empty');
   attributeListEl = document.getElementById('attribute-list');
-  applyFilters();
+  void applyFilters();
 
   window.addEventListener('popstate', handlePopState);
   return () => window.removeEventListener('popstate', handlePopState);
@@ -258,7 +264,7 @@ $effect(() => {
   visibilityFilter;
   otelFilter;
   if (!filtersInitializedFromUrl) return;
-  applyFilters();
+  void applyFilters();
 });
 
 const resultLabel = $derived.by(() => {
