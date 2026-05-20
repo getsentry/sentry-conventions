@@ -8,6 +8,7 @@
   "is_in_otel": false,
   "example": "pagehide",
   "sdks": ["javascript-browser"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.5.0",

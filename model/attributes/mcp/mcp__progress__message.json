@@ -8,6 +8,7 @@
   },
   "is_in_otel": false,
   "example": "Processing 50 of 100 items",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.3.0",

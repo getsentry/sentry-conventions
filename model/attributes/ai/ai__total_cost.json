@@ -7,11 +7,12 @@
   },
   "is_in_otel": false,
   "example": 12.34,
+  "alias": ["gen_ai.cost.total_tokens"],
   "deprecation": {
     "_status": "backfill",
     "replacement": "gen_ai.cost.total_tokens"
   },
-  "alias": ["gen_ai.cost.total_tokens"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.5.0",

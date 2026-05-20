@@ -8,6 +8,7 @@
   "is_in_otel": true,
   "example": 10,
   "alias": ["ai.completion_tokens.used", "gen_ai.usage.completion_tokens"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.5.0",

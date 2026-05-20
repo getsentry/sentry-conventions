@@ -7,6 +7,7 @@
   },
   "is_in_otel": false,
   "example": "prod",
+  "visibility": "internal",
   "changelog": [
     {
       "version": "0.3.0",

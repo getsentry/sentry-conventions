@@ -8,6 +8,7 @@ export interface AttributeJson {
     reason?: string;
   };
   is_in_otel: boolean;
+  visibility?: 'public' | 'internal';
   example?: string | boolean | number | string[] | boolean[] | number[];
   deprecation?: {
     replacement?: string;

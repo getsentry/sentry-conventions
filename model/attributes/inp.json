@@ -7,13 +7,14 @@
   },
   "is_in_otel": false,
   "example": 200,
+  "alias": ["browser.web_vital.inp.value"],
   "sdks": ["javascript-browser"],
   "deprecation": {
     "replacement": "browser.web_vital.inp.value",
     "reason": "The INP web vital is now recorded as a browser.web_vital.inp.value attribute.",
     "_status": "backfill"
   },
-  "alias": ["browser.web_vital.inp.value"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.5.0",

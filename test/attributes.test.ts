@@ -70,6 +70,10 @@ describe('attribute json', async () => {
         expect(fileNameToAttributeKey(name)).toMatch(content.key);
       });
 
+      it('should have either public or internal visibility', () => {
+        expect(content.visibility).toBeOneOf(['public', 'internal']);
+      });
+
       it('its replacement should exist', async () => {
         if (!content.deprecation?.replacement) {
           return;
@@ -187,6 +191,7 @@ describe('attribute json', async () => {
         for (let i = 1; i < content.changelog.length; i++) {
           const prev = content.changelog[i - 1]?.version;
           const curr = content.changelog[i]?.version;
+          if (!prev || !curr) continue;
           const cmp = compareVersions(prev, curr);
           expect(cmp).toBeGreaterThanOrEqual(0);
         }

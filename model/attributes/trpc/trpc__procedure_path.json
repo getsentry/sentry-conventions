@@ -7,6 +7,7 @@
   },
   "is_in_otel": false,
   "example": "user.getById",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.7.0",

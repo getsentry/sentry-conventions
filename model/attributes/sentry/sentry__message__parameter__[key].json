@@ -7,6 +7,7 @@
   },
   "is_in_otel": false,
   "example": "sentry.message.parameter.0='123'",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

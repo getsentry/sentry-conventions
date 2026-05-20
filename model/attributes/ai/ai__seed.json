@@ -7,11 +7,12 @@
   },
   "is_in_otel": false,
   "example": "1234567890",
+  "alias": ["gen_ai.request.seed"],
   "deprecation": {
     "_status": "backfill",
     "replacement": "gen_ai.request.seed"
   },
-  "alias": ["gen_ai.request.seed"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

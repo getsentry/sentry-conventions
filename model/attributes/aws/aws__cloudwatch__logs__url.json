@@ -7,6 +7,7 @@
   },
   "is_in_otel": false,
   "example": "https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups/log-group/my-log-group",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.7.0",

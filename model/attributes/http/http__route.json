@@ -8,6 +8,7 @@
   "is_in_otel": true,
   "example": "/users/:id",
   "alias": ["url.template"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

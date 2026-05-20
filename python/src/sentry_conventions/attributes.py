@@ -30,6 +30,11 @@ class IsPii(Enum):
     MAYBE = "maybe"
 
 
+class Visibility(Enum):
+    PUBLIC = "public"
+    INTERNAL = "internal"
+
+
 @dataclass
 class PiiInfo:
     """Holds information about PII in an attribute's values."""
@@ -81,6 +86,9 @@ class AttributeMetadata:
 
     is_in_otel: bool
     """Whether the attribute is defined in OpenTelemetry Semantic Conventions"""
+
+    visibility: Visibility
+    """Whether the attribute is public or internal to Sentry"""
 
     has_dynamic_suffix: Optional[bool] = None
     """If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"""
@@ -263,6 +271,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: List[str]
     Contains PII: true
     Defined in OTEL: No
+    Visibility: public
     DEPRECATED: No replacement at this time
     Example: ["Citation 1","Citation 2"]
     """
@@ -276,6 +285,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: gen_ai.usage.output_tokens, gen_ai.usage.completion_tokens
     DEPRECATED: Use gen_ai.usage.output_tokens instead
     Example: 10
@@ -288,6 +298,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: List[str]
     Contains PII: true
     Defined in OTEL: No
+    Visibility: public
     DEPRECATED: No replacement at this time
     Example: ["document1.txt","document2.pdf"]
     """
@@ -299,6 +310,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: gen_ai.response.finish_reasons
     DEPRECATED: Use gen_ai.response.finish_reasons instead
     Example: "COMPLETE"
@@ -311,6 +323,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: gen_ai.request.frequency_penalty
     DEPRECATED: Use gen_ai.request.frequency_penalty instead
     Example: 0.5
@@ -323,6 +336,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: true
     Defined in OTEL: No
+    Visibility: public
     Aliases: gen_ai.tool.name
     DEPRECATED: Use gen_ai.tool.name instead
     Example: "function_name"
@@ -335,6 +349,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: gen_ai.response.id
     DEPRECATED: Use gen_ai.response.id instead
     Example: "gen_123abc"
@@ -347,6 +362,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: gen_ai.request.messages
     DEPRECATED: Use gen_ai.input.messages instead
     Example: "[{\"role\": \"user\", \"message\": \"hello\"}]"
@@ -359,6 +375,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: bool
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     DEPRECATED: No replacement at this time
     Example: false
     """
@@ -370,6 +387,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     DEPRECATED: No replacement at this time
     Example: "{\"user_id\": 123, \"session_id\": \"abc123\"}"
     """
@@ -381,6 +399,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: gen_ai.provider.name, gen_ai.system
     DEPRECATED: Use gen_ai.provider.name instead
     Example: "openai"
@@ -393,6 +412,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: gen_ai.response.model
     DEPRECATED: Use gen_ai.response.model instead
     Example: "gpt-4"
@@ -405,6 +425,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: gen_ai.pipeline.name
     DEPRECATED: Use gen_ai.pipeline.name instead
     Example: "Autofix Pipeline"
@@ -417,6 +438,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: true
     Defined in OTEL: No
+    Visibility: public
     Aliases: gen_ai.system_instructions
     DEPRECATED: Use gen_ai.system_instructions instead
     Example: "You are now a clown."
@@ -429,6 +451,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: gen_ai.request.presence_penalty
     DEPRECATED: Use gen_ai.request.presence_penalty instead
     Example: 0.5
@@ -441,6 +464,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: gen_ai.usage.prompt_tokens, gen_ai.usage.input_tokens
     DEPRECATED: Use gen_ai.usage.input_tokens instead
     Example: 20
@@ -453,6 +477,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: bool
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     DEPRECATED: No replacement at this time
     Example: true
     """
@@ -464,6 +489,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     DEPRECATED: No replacement at this time
     Example: "json_object"
     """
@@ -475,6 +501,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: List[str]
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     DEPRECATED: Use gen_ai.output.messages instead
     Example: ["hello","world"]
     """
@@ -486,6 +513,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: List[str]
     Contains PII: true
     Defined in OTEL: No
+    Visibility: public
     DEPRECATED: No replacement at this time
     Example: ["climate change effects","renewable energy"]
     """
@@ -497,6 +525,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: List[str]
     Contains PII: true
     Defined in OTEL: No
+    Visibility: public
     DEPRECATED: No replacement at this time
     Example: ["search_result_1, search_result_2"]
     """
@@ -508,6 +537,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: gen_ai.request.seed
     DEPRECATED: Use gen_ai.request.seed instead
     Example: "1234567890"
@@ -520,6 +550,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: bool
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: gen_ai.response.streaming
     DEPRECATED: Use gen_ai.response.streaming instead
     Example: true
@@ -532,6 +563,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     DEPRECATED: No replacement at this time
     Example: "{\"executed_function\": \"add_integers\"}"
     """
@@ -543,6 +575,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: gen_ai.request.temperature
     DEPRECATED: Use gen_ai.request.temperature instead
     Example: 0.1
@@ -555,6 +588,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: List[str]
     Contains PII: true
     Defined in OTEL: No
+    Visibility: public
     Aliases: gen_ai.input.messages
     DEPRECATED: Use gen_ai.input.messages instead
     Example: ["Hello, how are you?","What is the capital of France?"]
@@ -567,6 +601,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: List[str]
     Contains PII: true
     Defined in OTEL: No
+    Visibility: public
     DEPRECATED: Use gen_ai.output.messages instead
     Example: ["tool_call_1","tool_call_2"]
     """
@@ -578,6 +613,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: List[str]
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     DEPRECATED: Use gen_ai.tool.definitions instead
     Example: ["function_1","function_2"]
     """
@@ -589,6 +625,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: gen_ai.request.top_k
     DEPRECATED: Use gen_ai.request.top_k instead
     Example: 35
@@ -601,6 +638,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: gen_ai.request.top_p
     DEPRECATED: Use gen_ai.request.top_p instead
     Example: 0.7
@@ -613,6 +651,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: gen_ai.cost.total_tokens
     DEPRECATED: Use gen_ai.cost.total_tokens instead
     Example: 12.34
@@ -625,6 +664,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: gen_ai.usage.total_tokens
     DEPRECATED: Use gen_ai.usage.total_tokens instead
     Example: 30
@@ -637,6 +677,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: List[str]
     Contains PII: true
     Defined in OTEL: No
+    Visibility: public
     DEPRECATED: No replacement at this time
     Example: ["Token limit exceeded"]
     """
@@ -648,6 +689,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "17.1.0"
     """
 
@@ -658,6 +700,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: app.build
     DEPRECATED: Use app.build instead - Deprecated in favor of app.build
     Example: "1"
@@ -670,6 +713,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: app.identifier
     DEPRECATED: Use app.identifier instead - Deprecated in favor of app.identifier
     Example: "com.example.myapp"
@@ -682,6 +726,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: app.name
     DEPRECATED: Use app.name instead - Deprecated in favor of app.name
     Example: "My App"
@@ -694,6 +739,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: app.start_time
     DEPRECATED: Use app.start_time instead - Deprecated in favor of app.start_time
     Example: "2025-01-01T00:00:00.000Z"
@@ -706,6 +752,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: app.version
     DEPRECATED: Use app.version instead - Deprecated in favor of app.version
     Example: "1.0.0"
@@ -718,6 +765,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: app.app_build
     Example: "1"
     """
@@ -729,6 +777,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: app.app_identifier
     Example: "com.example.myapp"
     """
@@ -740,6 +789,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: bool
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: true
     """
 
@@ -750,6 +800,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: app.app_name
     Example: "My App"
     """
@@ -761,6 +812,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: app.app_start_time
     Example: "2025-01-01T00:00:00.000Z"
     """
@@ -772,6 +824,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: app.app_version
     Example: "1.0.0"
     """
@@ -785,6 +838,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: frames.delay
     Example: 5
     """
@@ -798,6 +852,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: frames.frozen
     Example: 3
     """
@@ -811,6 +866,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: frames.slow
     Example: 1
     """
@@ -824,6 +880,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: frames.total
     Example: 60
     """
@@ -837,6 +894,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: app_start_cold
     Example: 1234.56
     """
@@ -850,6 +908,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "push"
     """
 
@@ -862,6 +921,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "MainActivity"
     """
 
@@ -872,6 +932,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: app_start_type
     Example: "cold"
     """
@@ -885,6 +946,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: app_start_warm
     Example: 1234.56
     """
@@ -896,6 +958,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: time_to_full_display
     Example: 1234.56
     """
@@ -907,6 +970,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: time_to_initial_display
     Example: 1234.56
     """
@@ -918,6 +982,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: app.vitals.start.cold.value
     DEPRECATED: Use app.vitals.start.cold.value instead - Replaced by app.vitals.start.cold.value to align with the app.vitals.* namespace for mobile performance attributes
     Example: 1234.56
@@ -930,6 +995,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: app.vitals.start.type
     DEPRECATED: Use app.vitals.start.type instead - Replaced by app.vitals.start.type to align with the app.vitals.* namespace for mobile performance attributes
     Example: "cold"
@@ -942,6 +1008,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: app.vitals.start.warm.value
     DEPRECATED: Use app.vitals.start.warm.value instead - Replaced by app.vitals.start.warm.value to align with the app.vitals.* namespace for mobile performance attributes
     Example: 1234.56
@@ -956,6 +1023,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "/aws/lambda/my-function"
     """
 
@@ -968,6 +1036,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "2024/01/01/[$LATEST]abcdef1234567890"
     """
 
@@ -980,6 +1049,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups/log-group/my-log-group"
     """
 
@@ -992,6 +1062,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "8476a536-e9f4-11e8-9739-2dfe598c3fcd"
     """
 
@@ -1004,6 +1075,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 1234.56
     """
 
@@ -1016,6 +1088,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "my-function"
     """
 
@@ -1028,6 +1101,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "$LATEST"
     """
 
@@ -1040,6 +1114,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "arn:aws:lambda:us-east-1:123456789012:function:my-function"
     """
 
@@ -1052,6 +1127,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 5000
     """
 
@@ -1062,6 +1138,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: bool
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: true
     """
 
@@ -1072,6 +1149,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: sentry.browser.name
     Example: "Chrome"
     """
@@ -1085,6 +1163,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: performance.activationStart
     Example: 1.983
     """
@@ -1098,6 +1177,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: performance.timeOrigin
     Example: 1776185678.886
     """
@@ -1109,6 +1189,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "network-error"
     """
 
@@ -1119,6 +1200,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "Window.requestAnimationFrame"
     """
 
@@ -1131,6 +1213,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "event-listener"
     """
 
@@ -1143,6 +1226,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 678
     """
 
@@ -1153,6 +1237,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: sentry.browser.version
     Example: "120.0.6099.130"
     """
@@ -1166,6 +1251,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "navigation"
     """
 
@@ -1178,6 +1264,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Has Dynamic Suffix: true
     Aliases: cls.source.<key>
     Example: "body > div#app"
@@ -1192,6 +1279,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: cls
     Example: 0.2361
     """
@@ -1205,6 +1293,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: fcp
     Example: 547.6951
     """
@@ -1218,6 +1307,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: fp
     Example: 477.1926
     """
@@ -1231,6 +1321,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: inp
     Example: 200
     """
@@ -1244,6 +1335,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: lcp.element
     Example: "body > div#app > div#container > div"
     """
@@ -1257,6 +1349,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: lcp.id
     Example: "#gero"
     """
@@ -1270,6 +1363,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: lcp.loadTime
     Example: 1402
     """
@@ -1283,6 +1377,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: lcp.renderTime
     Example: 1685
     """
@@ -1296,6 +1391,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "pagehide"
     """
 
@@ -1308,6 +1404,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: lcp.size
     Example: 1024
     """
@@ -1321,6 +1418,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: lcp.url
     Example: "https://example.com/static/img.png"
     """
@@ -1334,6 +1432,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: lcp
     Example: 2500
     """
@@ -1347,6 +1446,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: ttfb.requestTime
     Example: 1554.5814
     """
@@ -1360,6 +1460,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: ttfb
     Example: 194.3322
     """
@@ -1371,6 +1472,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: bool
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: true
     """
 
@@ -1381,6 +1483,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 58
     """
 
@@ -1391,6 +1494,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: List[str]
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: ["my-cache-key","my-other-cache-key"]
     """
 
@@ -1401,6 +1505,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "get"
     """
 
@@ -1411,6 +1516,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 120
     """
 
@@ -1421,6 +1527,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: bool
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: true
     """
 
@@ -1431,6 +1538,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "mail"
     """
 
@@ -1441,6 +1549,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: true
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: http.client_ip
     Example: "example.com"
     """
@@ -1452,6 +1561,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: 5432
     """
 
@@ -1462,6 +1572,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "123456789012"
     """
 
@@ -1474,6 +1585,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "us-east-1c"
     """
 
@@ -1484,6 +1596,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "aws_lambda"
     """
 
@@ -1494,6 +1607,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "aws"
     """
 
@@ -1504,6 +1618,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "us-east-1"
     """
 
@@ -1514,6 +1629,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 543
     """
 
@@ -1526,6 +1642,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 12
     """
 
@@ -1538,6 +1655,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 12
     """
 
@@ -1548,6 +1666,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Has Dynamic Suffix: true
     Aliases: browser.web_vital.cls.source.<key>
     DEPRECATED: Use browser.web_vital.cls.source.<key> instead - The CLS source is now recorded as a browser.web_vital.cls.source.<key> attribute.
@@ -1561,6 +1680,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: browser.web_vital.cls.value
     DEPRECATED: Use browser.web_vital.cls.value instead - The CLS web vital is now recorded as a browser.web_vital.cls.value attribute.
     Example: 0.2361
@@ -1573,6 +1693,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: code.filepath
     Example: "/app/myapplication/http/handler/server.py"
     """
@@ -1584,6 +1705,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: code.file.path
     DEPRECATED: Use code.file.path instead
     Example: "/app/myapplication/http/handler/server.py"
@@ -1596,6 +1718,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: code.function.name
     Example: "server_request"
     """
@@ -1607,6 +1730,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: code.function
     Example: "server_request"
     """
@@ -1618,6 +1742,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: code.lineno
     Example: 42
     """
@@ -1629,6 +1754,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: code.line.number
     DEPRECATED: Use code.line.number instead
     Example: 42
@@ -1641,6 +1767,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "http.handler"
     """
 
@@ -1651,6 +1778,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: network.connection.rtt
     DEPRECATED: Use network.connection.rtt instead - Old attribute name (no official namespace), to be replaced with network.connection.rtt for span-first future
     Example: 100
@@ -1663,6 +1791,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: network.connection.type, device.connection_type
     DEPRECATED: Use network.connection.type instead - Old namespace-less attribute, to be replaced with network.connection.type for span-first future
     Example: "wifi"
@@ -1675,6 +1804,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "GregorianCalendar"
     """
 
@@ -1685,6 +1815,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "English (United States)"
     """
 
@@ -1697,6 +1828,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: bool
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: true
     """
 
@@ -1707,6 +1839,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "en-US"
     """
 
@@ -1717,6 +1850,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "Europe/Vienna"
     """
 
@@ -1727,6 +1861,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "users"
     """
 
@@ -1737,6 +1872,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "psycopg2"
     """
 
@@ -1747,6 +1883,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: db.namespace
     DEPRECATED: Use db.namespace instead
     Example: "customers"
@@ -1759,6 +1896,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: db.name
     Example: "customers"
     """
@@ -1770,6 +1908,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: db.operation.name
     DEPRECATED: Use db.operation.name instead
     Example: "SELECT"
@@ -1782,6 +1921,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: db.operation
     Example: "SELECT"
     """
@@ -1795,6 +1935,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Has Dynamic Suffix: true
     Example: "db.query.parameter.foo='123'"
     """
@@ -1806,6 +1947,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "SELECT users;"
     """
 
@@ -1816,6 +1958,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: db.statement
     Example: "SELECT * FROM users WHERE id = $1"
     """
@@ -1827,6 +1970,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "my-redis-instance"
     """
 
@@ -1837,6 +1981,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "user:2047:city"
     """
 
@@ -1847,6 +1992,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: List[str]
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: ["test","*"]
     """
 
@@ -1857,6 +2003,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: List[str]
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     DEPRECATED: Use db.query.parameter.<key> instead - Instead of adding every binding in the db.sql.bindings attribute, add them as individual entires with db.query.parameter.<key>.
     Example: ["1","foo"]
     """
@@ -1868,6 +2015,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: db.query.text
     DEPRECATED: Use db.query.text instead
     Example: "SELECT * FROM users"
@@ -1880,6 +2028,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: db.system.name
     DEPRECATED: Use db.system.name instead
     Example: "postgresql"
@@ -1892,6 +2041,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: db.system
     Example: "postgresql"
     """
@@ -1903,6 +2053,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: true
     Defined in OTEL: Yes
+    Visibility: public
     Example: "fancy_user"
     """
 
@@ -1913,6 +2064,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: List[str]
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: ["arm64-v8a","armeabi-v7a","armeabi"]
     """
 
@@ -1923,6 +2075,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 100
     """
 
@@ -1935,6 +2088,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 25
     """
 
@@ -1945,6 +2099,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "2018-02-08T12:52:12Z"
     """
 
@@ -1955,6 +2110,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "Apple"
     """
 
@@ -1965,6 +2121,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: bool
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: false
     """
 
@@ -1975,6 +2132,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "Qualcomm SM8550"
     """
 
@@ -1985,6 +2143,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "medium"
     """
 
@@ -1995,6 +2154,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: network.connection.type, connectionType
     DEPRECATED: Use network.connection.type instead - This attribute is being deprecated in favor of network.connection.type
     Example: "wifi"
@@ -2007,6 +2167,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "Intel(R) Core(TM)2 Quad CPU Q6600 @ 2.40GHz"
     """
 
@@ -2019,6 +2180,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 67108864000
     """
 
@@ -2031,6 +2193,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 134217728000
     """
 
@@ -2041,6 +2204,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "iPhone"
     """
 
@@ -2051,6 +2215,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 2147483648
     """
 
@@ -2061,6 +2226,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 107374182400
     """
 
@@ -2071,6 +2237,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
     """
 
@@ -2081,6 +2248,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "en-US"
     """
 
@@ -2091,6 +2259,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: bool
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: false
     """
 
@@ -2101,6 +2270,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: bool
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: true
     """
 
@@ -2111,6 +2281,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "Google"
     """
 
@@ -2123,6 +2294,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: deviceMemory
     Example: 8
     """
@@ -2134,6 +2306,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 17179869184
     """
 
@@ -2144,6 +2317,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "iPhone 15 Pro Max"
     """
 
@@ -2154,6 +2328,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "N861AP"
     """
 
@@ -2164,6 +2339,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "localhost"
     """
 
@@ -2174,6 +2350,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: bool
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: true
     """
 
@@ -2184,6 +2361,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "portrait"
     """
 
@@ -2194,6 +2372,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: hardwareConcurrency
     Example: 8
     """
@@ -2207,6 +2386,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 2400
     """
 
@@ -2217,6 +2397,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 2.625
     """
 
@@ -2227,6 +2408,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 420
     """
 
@@ -2239,6 +2421,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 2400
     """
 
@@ -2251,6 +2434,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 1080
     """
 
@@ -2261,6 +2445,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: bool
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: false
     """
 
@@ -2271,6 +2456,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 274877906944
     """
 
@@ -2281,6 +2467,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "nominal"
     """
 
@@ -2291,6 +2478,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "Europe/Vienna"
     """
 
@@ -2301,6 +2489,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 2147483648
     """
 
@@ -2311,6 +2500,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: device.memory.estimated_capacity
     DEPRECATED: Use device.memory.estimated_capacity instead - Old namespace-less attribute, to be replaced with device.memory.estimated_capacity for span-first future
     Example: "8 GB"
@@ -2325,6 +2515,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: network.connection.effective_type
     DEPRECATED: Use network.connection.effective_type instead - Old namespace-less attribute, to be replaced with network.connection.effective_type for span-first future
     Example: "4g"
@@ -2337,6 +2528,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: sentry.environment
     DEPRECATED: Use sentry.environment instead
     Example: "production"
@@ -2349,6 +2541,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "timeout"
     """
 
@@ -2359,6 +2552,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: 1234567890
     """
 
@@ -2369,6 +2563,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "Process Payload"
     """
 
@@ -2379,6 +2574,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: bool
     Contains PII: false
     Defined in OTEL: Yes
+    Visibility: public
     Example: true
     """
 
@@ -2389,6 +2585,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "ENOENT: no such file or directory"
     """
 
@@ -2399,6 +2596,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "Exception in thread \"main\" java.lang.RuntimeException: Test exception\n at com.example.GenerateTrace.methodB(GenerateTrace.java:13)\n at com.example.GenerateTrace.methodA(GenerateTrace.java:9)\n at com.example.GenerateTrace.main(GenerateTrace.java:5)"
     """
 
@@ -2409,6 +2607,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "OSError"
     """
 
@@ -2419,6 +2618,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: bool
     Contains PII: false
     Defined in OTEL: Yes
+    Visibility: public
     Example: true
     """
 
@@ -2429,6 +2629,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "0/5 * * * ? *"
     """
 
@@ -2439,6 +2640,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "2020-01-23T13:47:06Z"
     """
 
@@ -2449,6 +2651,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "timer"
     """
 
@@ -2459,6 +2662,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: browser.web_vital.fcp.value
     DEPRECATED: Use browser.web_vital.fcp.value instead - This attribute is being deprecated in favor of browser.web_vital.fcp.value
     Example: 547.6951
@@ -2471,6 +2675,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: bool
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Has Dynamic Suffix: true
     Example: "flag.evaluation.is_new_ui=true"
     """
@@ -2482,6 +2687,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: browser.web_vital.fp.value
     DEPRECATED: Use browser.web_vital.fp.value instead - This attribute is being deprecated in favor of browser.web_vital.fp.value
     Example: 477.1926
@@ -2494,6 +2700,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: app.vitals.frames.delay.value
     DEPRECATED: Use app.vitals.frames.delay.value instead - Replaced by app.vitals.frames.delay.value to align with the app.vitals.* namespace for mobile performance attributes
     Example: 5
@@ -2506,6 +2713,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: app.vitals.frames.frozen.count
     DEPRECATED: Use app.vitals.frames.frozen.count instead - Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes
     Example: 3
@@ -2518,6 +2726,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: app.vitals.frames.slow.count
     DEPRECATED: Use app.vitals.frames.slow.count instead - Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes
     Example: 1
@@ -2530,6 +2739,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: app.vitals.frames.total.count
     DEPRECATED: Use app.vitals.frames.total.count instead - Replaced by app.vitals.frames.total.count to align with the app.vitals.* namespace for mobile performance attributes
     Example: 60
@@ -2542,6 +2752,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     """
 
     # Path: model/attributes/frames_slow_rate.json
@@ -2551,6 +2762,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     """
 
     # Path: model/attributes/fs_error.json
@@ -2560,6 +2772,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     DEPRECATED: Use error.type instead - This attribute is not part of the OpenTelemetry specification and error.type fits much better.
     Example: "ENOENT: no such file or directory"
     """
@@ -2573,6 +2786,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "1234567890"
     """
 
@@ -2585,6 +2799,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "google.pubsub.topic.publish"
     """
 
@@ -2597,6 +2812,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "1234567890"
     """
 
@@ -2609,6 +2825,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "projects/my-project/topics/my-topic"
     """
 
@@ -2621,6 +2838,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "//pubsub.googleapis.com/projects/my-project/topics/my-topic"
     """
 
@@ -2633,6 +2851,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "1.0"
     """
 
@@ -2645,6 +2864,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "2024-01-01T00:00:00.000Z"
     """
 
@@ -2657,6 +2877,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "2024-01-01T00:00:00.000Z"
     """
 
@@ -2669,6 +2890,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "cloud_functions.context"
     """
 
@@ -2679,6 +2901,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "ResearchAssistant"
     """
 
@@ -2691,6 +2914,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 0.75
     """
 
@@ -2703,6 +2927,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 128000
     """
 
@@ -2713,6 +2938,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "conv_5j66UpCpwteGg4YSxUnt7lPY"
     """
 
@@ -2725,6 +2951,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 123.45
     """
 
@@ -2737,6 +2964,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 123.45
     """
 
@@ -2749,6 +2977,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: ai.total_cost
     Example: 12.34
     """
@@ -2762,6 +2991,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "What's the weather in Paris?"
     """
 
@@ -2772,6 +3002,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "my-awesome-function"
     """
 
@@ -2782,6 +3013,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: ai.texts
     Example: "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"Weather in Paris?\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"result\": \"rainy, 57°F\"}]}]"
     """
@@ -2793,6 +3025,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "chat"
     """
 
@@ -2803,6 +3036,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "tool"
     """
 
@@ -2813,6 +3047,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"text\", \"content\": \"The weather in Paris is currently rainy with a temperature of 57°F.\"}], \"finish_reason\": \"stop\"}]"
     """
 
@@ -2823,6 +3058,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: ai.pipeline.name
     Example: "Autofix Pipeline"
     """
@@ -2834,6 +3070,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     DEPRECATED: No replacement at this time - Deprecated from OTEL, use gen_ai.input.messages with the new format instead.
     Example: "[{\"role\": \"user\", \"message\": \"hello\"}]"
     """
@@ -2845,6 +3082,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: ai.model.provider, gen_ai.system
     Example: "openai"
     """
@@ -2858,6 +3096,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     DEPRECATED: Use gen_ai.tool.definitions instead
     Example: "[{\"name\": \"get_weather\", \"description\": \"Get the weather for a given location\"}, {\"name\": \"get_news\", \"description\": \"Get the news for a given topic\"}]"
     """
@@ -2871,6 +3110,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: ai.frequency_penalty
     Example: 0.5
     """
@@ -2884,6 +3124,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: 2048
     """
 
@@ -2896,6 +3137,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: ai.input_messages
     DEPRECATED: Use gen_ai.input.messages instead
     Example: "[{\"role\": \"system\", \"content\": \"Generate a random number.\"}, {\"role\": \"user\", \"content\": [{\"text\": \"Generate a random number between 0 and 10.\", \"type\": \"text\"}]}, {\"role\": \"tool\", \"content\": {\"toolCallId\": \"1\", \"toolName\": \"Weather\", \"output\": \"rainy\"}}]"
@@ -2908,6 +3150,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "gpt-4-turbo-preview"
     """
 
@@ -2920,6 +3163,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: ai.presence_penalty
     Example: 0.5
     """
@@ -2931,6 +3175,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: ai.seed
     Example: "1234567890"
     """
@@ -2944,6 +3189,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: ai.temperature
     Example: 0.1
     """
@@ -2955,6 +3201,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: ai.top_k
     Example: 35
     """
@@ -2966,6 +3213,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: ai.top_p
     Example: 0.7
     """
@@ -2979,6 +3227,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: ai.finish_reason
     Example: "COMPLETE"
     """
@@ -2990,6 +3239,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: ai.generation_id
     Example: "gen_123abc"
     """
@@ -3001,6 +3251,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: ai.model_id
     Example: "gpt-4"
     """
@@ -3014,6 +3265,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: bool
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: ai.streaming
     Example: true
     """
@@ -3025,6 +3277,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     DEPRECATED: Use gen_ai.output.messages instead
     Example: "[\"The weather in Paris is rainy and overcast, with temperatures around 57°F\", \"The weather in London is sunny and warm, with temperatures around 65°F\"]"
     """
@@ -3038,6 +3291,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 0.6853435
     """
 
@@ -3050,6 +3304,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 12345.67
     """
 
@@ -3062,6 +3317,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     DEPRECATED: Use gen_ai.output.messages instead
     Example: "[{\"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]"
     """
@@ -3073,6 +3329,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: ai.model.provider, gen_ai.provider.name
     DEPRECATED: Use gen_ai.provider.name instead
     Example: "openai"
@@ -3085,6 +3342,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: true
     Defined in OTEL: No
+    Visibility: public
     DEPRECATED: Use gen_ai.system_instructions instead
     Example: "You are a helpful assistant"
     """
@@ -3098,6 +3356,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: ai.preamble
     Example: "You are a helpful assistant"
     """
@@ -3111,6 +3370,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: gen_ai.tool.input
     Example: "{\"location\": \"Paris\"}"
     """
@@ -3124,6 +3384,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: gen_ai.tool.output, gen_ai.tool.message
     Example: "rainy, 57°F"
     """
@@ -3137,6 +3398,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "[{\"type\": \"function\", \"name\": \"get_current_weather\", \"description\": \"Get the current weather in a given location\", \"parameters\": {\"type\": \"object\", \"properties\": {\"location\": {\"type\": \"string\", \"description\": \"The city and state, e.g. San Francisco, CA\"}, \"unit\": {\"type\": \"string\", \"enum\": [\"celsius\", \"fahrenheit\"]}}, \"required\": [\"location\", \"unit\"]}}]"
     """
 
@@ -3149,6 +3411,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "Searches the web for current information about a topic"
     """
 
@@ -3159,6 +3422,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: gen_ai.tool.call.arguments
     DEPRECATED: Use gen_ai.tool.call.arguments instead
     Example: "{\"location\": \"Paris\"}"
@@ -3171,6 +3435,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: true
     Defined in OTEL: No
+    Visibility: public
     Aliases: gen_ai.tool.call.result, gen_ai.tool.output
     DEPRECATED: Use gen_ai.tool.call.result instead
     Example: "rainy, 57°F"
@@ -3183,6 +3448,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: ai.function_call
     Example: "Flights"
     """
@@ -3194,6 +3460,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: gen_ai.tool.call.result, gen_ai.tool.message
     DEPRECATED: Use gen_ai.tool.call.result instead
     Example: "rainy, 57°F"
@@ -3206,6 +3473,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     DEPRECATED: No replacement at this time - The gen_ai.tool.type attribute is deprecated and should no longer be set.
     Example: "function"
     """
@@ -3219,6 +3487,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: ai.completion_tokens.used, gen_ai.usage.output_tokens
     DEPRECATED: Use gen_ai.usage.output_tokens instead
     Example: 10
@@ -3233,6 +3502,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: ai.prompt_tokens.used, gen_ai.usage.prompt_tokens
     Example: 10
     """
@@ -3246,6 +3516,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 100
     """
 
@@ -3258,6 +3529,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 50
     """
 
@@ -3270,6 +3542,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: ai.completion_tokens.used, gen_ai.usage.completion_tokens
     Example: 10
     """
@@ -3283,6 +3556,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 75
     """
 
@@ -3295,6 +3569,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: ai.prompt_tokens.used, gen_ai.usage.input_tokens
     DEPRECATED: Use gen_ai.usage.input_tokens instead
     Example: 20
@@ -3309,6 +3584,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: ai.total_tokens.used
     Example: 20
     """
@@ -3320,6 +3596,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe - The document may contain sensitive information in arguments or variables. Instrumentation should redact sensitive information when possible.
     Defined in OTEL: Yes
+    Visibility: public
     Example: "query findBookById { bookById(id: ?) { name } }"
     """
 
@@ -3330,6 +3607,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "findBookById"
     """
 
@@ -3340,6 +3618,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "query"
     """
 
@@ -3350,6 +3629,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: device.processor_count
     DEPRECATED: Use device.processor_count instead - Old namespace-less attribute, to be replaced with device.processor_count for span-first future
     Example: "14"
@@ -3362,6 +3642,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: true
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: client.address
     DEPRECATED: Use client.address instead
     Example: "example.com"
@@ -3376,6 +3657,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 456
     """
 
@@ -3386,6 +3668,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: network.protocol.version, net.protocol.version
     DEPRECATED: Use network.protocol.version instead
     Example: "1.1"
@@ -3398,6 +3681,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "#details"
     """
 
@@ -3408,6 +3692,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: server.address, client.address, http.server_name, net.host.name
     DEPRECATED: Use server.address instead - Deprecated, use one of `server.address` or `client.address`, depending on the usage
     Example: "example.com"
@@ -3420,6 +3705,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: http.request.method, http.request_method, method
     DEPRECATED: Use http.request.method instead
     Example: "GET"
@@ -3432,6 +3718,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: true - Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.
     Defined in OTEL: No
+    Visibility: public
     Example: "?foo=bar&bar=baz"
     """
 
@@ -3442,6 +3729,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "[{\"role\": \"user\", \"message\": \"hello\"}]"
     """
 
@@ -3454,6 +3742,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 1732829555.111
     """
 
@@ -3466,6 +3755,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 1732829555.15
     """
 
@@ -3478,6 +3768,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 1732829555.201
     """
 
@@ -3490,6 +3781,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 1732829555.322
     """
 
@@ -3502,6 +3794,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 1732829555.389
     """
 
@@ -3514,6 +3807,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: List[str]
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Has Dynamic Suffix: true
     Example: "http.request.header.custom-header=['foo', 'bar']"
     """
@@ -3525,6 +3819,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: method, http.method, http.request_method
     Example: "GET"
     """
@@ -3538,6 +3833,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 1732829558.502
     """
 
@@ -3550,6 +3846,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 1732829555.495
     """
 
@@ -3562,6 +3859,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 1732829555.51
     """
 
@@ -3574,6 +3872,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 2
     """
 
@@ -3586,6 +3885,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 1732829555.89
     """
 
@@ -3598,6 +3898,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 1732829555.7
     """
 
@@ -3610,6 +3911,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 1732829555.73
     """
 
@@ -3622,6 +3924,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 1.032
     """
 
@@ -3634,6 +3937,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 1732829553.68
     """
 
@@ -3644,6 +3948,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: method, http.method, http.request.method
     DEPRECATED: Use http.request.method instead
     Example: "GET"
@@ -3658,6 +3963,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: http.response_content_length, http.response.header.content-length
     Example: 123
     """
@@ -3671,6 +3977,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: List[str]
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Has Dynamic Suffix: true
     Example: "http.response.header.custom-header=['foo', 'bar']"
     """
@@ -3684,6 +3991,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: http.response_content_length, http.response.body.size
     Example: "http.response.header.custom-header=['foo', 'bar']"
     """
@@ -3695,6 +4003,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: http.response_transfer_size
     Example: 456
     """
@@ -3708,6 +4017,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: http.status_code
     Example: 404
     """
@@ -3721,6 +4031,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: http.response.body.size, http.response.header.content-length
     DEPRECATED: Use http.response.body.size instead
     Example: 123
@@ -3735,6 +4046,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: http.response.size
     DEPRECATED: Use http.response.size instead
     Example: 456
@@ -3747,6 +4059,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: url.template
     Example: "/users/:id"
     """
@@ -3758,6 +4071,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: url.scheme
     DEPRECATED: Use url.scheme instead
     Example: "https"
@@ -3772,6 +4086,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 50
     """
 
@@ -3782,6 +4097,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: server.address, net.host.name, http.host
     DEPRECATED: Use server.address instead
     Example: "example.com"
@@ -3794,6 +4110,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: http.response.status_code
     DEPRECATED: Use http.response.status_code instead
     Example: 404
@@ -3806,6 +4123,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     DEPRECATED: Use url.path instead - This attribute is being deprecated in favor of url.path and url.query
     Example: "/test?foo=bar#buzz"
     """
@@ -3817,6 +4135,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: true
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: url.full, url
     DEPRECATED: Use url.full instead
     Example: "https://example.com/test?foo=bar#buzz"
@@ -3829,6 +4148,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: user_agent.original
     DEPRECATED: Use user_agent.original instead
     Example: "Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1"
@@ -3841,6 +4161,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "f47ac10b58cc4372a5670e02b2c3d479"
     """
 
@@ -3851,6 +4172,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: browser.web_vital.inp.value
     DEPRECATED: Use browser.web_vital.inp.value instead - The INP web vital is now recorded as a browser.web_vital.inp.value attribute.
     Example: 200
@@ -3863,6 +4185,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "end of minor GC"
     """
 
@@ -3873,6 +4196,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "G1 Young Generation"
     """
 
@@ -3883,6 +4207,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "G1 Old Gen"
     """
 
@@ -3893,6 +4218,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "G1 Old Gen"
     """
 
@@ -3903,6 +4229,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: bool
     Contains PII: false
     Defined in OTEL: Yes
+    Visibility: public
     Example: true
     """
 
@@ -3913,6 +4240,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "blocked"
     """
 
@@ -3923,6 +4251,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: browser.web_vital.lcp.element
     DEPRECATED: Use browser.web_vital.lcp.element instead - The LCP element is now recorded as a browser.web_vital.lcp.element attribute.
     Example: "img"
@@ -3935,6 +4264,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: browser.web_vital.lcp.id
     DEPRECATED: Use browser.web_vital.lcp.id instead - The LCP id is now recorded as a browser.web_vital.lcp.id attribute.
     Example: "#hero"
@@ -3947,6 +4277,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: browser.web_vital.lcp.load_time
     DEPRECATED: Use browser.web_vital.lcp.load_time instead - The LCP load time is now recorded as a browser.web_vital.lcp.load_time attribute.
     Example: 1402
@@ -3959,6 +4290,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: browser.web_vital.lcp.render_time
     DEPRECATED: Use browser.web_vital.lcp.render_time instead - The LCP render time is now recorded as a browser.web_vital.lcp.render_time attribute.
     Example: 1685
@@ -3971,6 +4303,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: browser.web_vital.lcp.size
     DEPRECATED: Use browser.web_vital.lcp.size instead - The LCP size is now recorded as a browser.web_vital.lcp.size attribute.
     Example: 1234
@@ -3983,6 +4316,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: browser.web_vital.lcp.url
     DEPRECATED: Use browser.web_vital.lcp.url instead - The LCP url is now recorded as a browser.web_vital.lcp.url attribute.
     Example: "https://example.com"
@@ -3995,6 +4329,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: browser.web_vital.lcp.value
     DEPRECATED: Use browser.web_vital.lcp.value instead - The LCP web vital is now recorded as a browser.web_vital.lcp.value attribute.
     Example: 2500
@@ -4007,6 +4342,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "myLogger"
     """
 
@@ -4017,6 +4353,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe - Cancellation reasons may contain user-specific or sensitive information
     Defined in OTEL: No
+    Visibility: public
     Example: "User cancelled the request"
     """
 
@@ -4029,6 +4366,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "123"
     """
 
@@ -4039,6 +4377,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "claude-desktop"
     """
 
@@ -4049,6 +4388,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe - Client titles may reveal user-specific application configurations or custom setups
     Defined in OTEL: No
+    Visibility: public
     Example: "Claude Desktop"
     """
 
@@ -4059,6 +4399,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "1.0.0"
     """
 
@@ -4069,6 +4410,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "initialization_complete"
     """
 
@@ -4079,6 +4421,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "string"
     """
 
@@ -4089,6 +4432,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "info"
     """
 
@@ -4099,6 +4443,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe - Logger names may be user-defined and could contain sensitive information
     Defined in OTEL: No
+    Visibility: public
     Example: "mcp_server"
     """
 
@@ -4109,6 +4454,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: true - Log messages can contain user data
     Defined in OTEL: No
+    Visibility: public
     Example: "Tool execution completed successfully"
     """
 
@@ -4119,6 +4465,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "tools/call"
     """
 
@@ -4129,6 +4476,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 50
     """
 
@@ -4139,6 +4487,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe - Progress messages may contain user-specific or sensitive information
     Defined in OTEL: No
+    Visibility: public
     Example: "Processing 50 of 100 items"
     """
 
@@ -4151,6 +4500,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 50
     """
 
@@ -4161,6 +4511,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "progress-token-123"
     """
 
@@ -4171,6 +4522,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 100
     """
 
@@ -4181,6 +4533,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe - Prompt names may reveal user behavior patterns or sensitive operations
     Defined in OTEL: No
+    Visibility: public
     Example: "summarize"
     """
 
@@ -4193,6 +4546,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: true
     Defined in OTEL: No
+    Visibility: public
     Example: "A summary of the requested information"
     """
 
@@ -4205,6 +4559,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: true
     Defined in OTEL: No
+    Visibility: public
     Example: "Please provide a summary of the document"
     """
 
@@ -4217,6 +4572,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 3
     """
 
@@ -4229,6 +4585,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "user"
     """
 
@@ -4239,6 +4596,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 1
     """
 
@@ -4249,6 +4607,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "2024-11-05"
     """
 
@@ -4261,6 +4620,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: true - Arguments contain user input
     Defined in OTEL: No
+    Visibility: public
     Has Dynamic Suffix: true
     Example: "mcp.request.argument.query='weather in Paris'"
     """
@@ -4274,6 +4634,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: true - Prompt names can contain user input
     Defined in OTEL: No
+    Visibility: public
     Example: "summarize"
     """
 
@@ -4286,6 +4647,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: true - URIs can contain user file paths
     Defined in OTEL: No
+    Visibility: public
     Example: "file:///path/to/resource"
     """
 
@@ -4296,6 +4658,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "1"
     """
 
@@ -4306,6 +4669,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "file"
     """
 
@@ -4316,6 +4680,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: true - URIs can contain sensitive file paths
     Defined in OTEL: No
+    Visibility: public
     Example: "file:///path/to/file.txt"
     """
 
@@ -4326,6 +4691,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "sentry-mcp-server"
     """
 
@@ -4336,6 +4702,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe - Server titles may reveal user-specific application configurations or custom setups
     Defined in OTEL: No
+    Visibility: public
     Example: "Sentry MCP Server"
     """
 
@@ -4346,6 +4713,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "0.1.0"
     """
 
@@ -4356,6 +4724,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "550e8400-e29b-41d4-a716-446655440000"
     """
 
@@ -4366,6 +4735,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "calculator"
     """
 
@@ -4378,6 +4748,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: true - Tool results can contain user data
     Defined in OTEL: No
+    Visibility: public
     Example: "{\"output\": \"rainy\", \"toolCallId\": \"1\"}"
     """
 
@@ -4390,6 +4761,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 1
     """
 
@@ -4402,6 +4774,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: bool
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: false
     """
 
@@ -4412,6 +4785,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "stdio"
     """
 
@@ -4422,6 +4796,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Has Dynamic Suffix: true
     Example: "mdc.some_key='some_value'"
     """
@@ -4435,6 +4810,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: false
     Defined in OTEL: Yes
+    Visibility: public
     Example: 10
     """
 
@@ -4447,6 +4823,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "BestTopic"
     """
 
@@ -4459,6 +4836,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "BestTopic"
     """
 
@@ -4471,6 +4849,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: 839
     """
 
@@ -4483,6 +4862,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: 1045
     """
 
@@ -4493,6 +4873,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "f47ac10b58cc4372a5670e02b2c3d479"
     """
 
@@ -4505,6 +4886,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 1732847252
     """
 
@@ -4517,6 +4899,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 2
     """
 
@@ -4529,6 +4912,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "create"
     """
 
@@ -4539,6 +4923,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "activemq"
     """
 
@@ -4549,6 +4934,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: http.request.method, http.request_method, http.method
     DEPRECATED: Use http.request.method instead
     Example: "GET"
@@ -4561,6 +4947,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "AuthenticationMiddleware"
     """
 
@@ -4571,6 +4958,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "router.push"
     """
 
@@ -4581,6 +4969,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 100
     """
 
@@ -4591,6 +4980,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "application"
     """
 
@@ -4601,6 +4991,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "https://example.com/foo?bar=baz"
     """
 
@@ -4611,6 +5002,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 0.5
     """
 
@@ -4621,6 +5013,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "dns.unreachable"
     """
 
@@ -4631,6 +5024,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: network.local.address, net.sock.host.addr
     DEPRECATED: Use network.local.address instead
     Example: "192.168.0.1"
@@ -4643,6 +5037,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: server.address, http.server_name, http.host
     DEPRECATED: Use server.address instead
     Example: "example.com"
@@ -4655,6 +5050,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: server.port
     DEPRECATED: Use server.port instead
     Example: 1337
@@ -4667,6 +5063,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: network.peer.address, net.sock.peer.addr
     DEPRECATED: Use network.peer.address instead
     Example: "192.168.0.1"
@@ -4679,6 +5076,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     DEPRECATED: Use server.address instead - Deprecated, use server.address on client spans and client.address on server spans.
     Example: "example.com"
     """
@@ -4690,6 +5088,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     DEPRECATED: Use server.port instead - Deprecated, use server.port on client spans and client.port on server spans.
     Example: 1337
     """
@@ -4701,6 +5100,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: network.protocol.name
     DEPRECATED: Use network.protocol.name instead
     Example: "http"
@@ -4713,6 +5113,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: network.protocol.version, http.flavor
     DEPRECATED: Use network.protocol.version instead
     Example: "1.1"
@@ -4725,6 +5126,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     DEPRECATED: Use network.transport instead - Deprecated, use network.transport and network.type.
     Example: "inet"
     """
@@ -4736,6 +5138,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: network.local.address, net.host.ip
     DEPRECATED: Use network.local.address instead
     Example: "/var/my.sock"
@@ -4748,6 +5151,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: network.local.port
     DEPRECATED: Use network.local.port instead
     Example: 8080
@@ -4760,6 +5164,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: network.peer.address, net.peer.ip
     DEPRECATED: Use network.peer.address instead
     Example: "192.168.0.1"
@@ -4772,6 +5177,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     DEPRECATED: No replacement at this time - Deprecated from OTEL, no replacement at this time
     Example: "/var/my.sock"
     """
@@ -4783,6 +5189,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     DEPRECATED: Use network.peer.port instead
     Example: 8080
     """
@@ -4794,6 +5201,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: network.transport
     DEPRECATED: Use network.transport instead
     Example: "tcp"
@@ -4808,6 +5216,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: effectiveConnectionType
     Example: "4g"
     """
@@ -4819,6 +5228,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: connection.rtt
     Example: 100
     """
@@ -4832,6 +5242,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: device.connection_type, connectionType
     Example: "wifi"
     """
@@ -4843,6 +5254,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: net.host.ip, net.sock.host.addr
     Example: "10.1.2.80"
     """
@@ -4854,6 +5266,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: net.sock.host.port
     Example: 65400
     """
@@ -4865,6 +5278,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: net.peer.ip, net.sock.peer.addr
     Example: "10.1.2.80"
     """
@@ -4876,6 +5290,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: 65400
     """
 
@@ -4886,6 +5301,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: net.protocol.name
     Example: "http"
     """
@@ -4899,6 +5315,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: http.flavor, net.protocol.version
     Example: "1.1"
     """
@@ -4910,6 +5327,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: net.transport
     Example: "tcp"
     """
@@ -4921,6 +5339,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "ipv4"
     """
 
@@ -4931,6 +5350,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: os.build_id
     DEPRECATED: Use os.build_id instead
     Example: "1234567890"
@@ -4943,6 +5363,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: os.build
     Example: "1234567890"
     """
@@ -4954,6 +5375,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "Ubuntu 18.04.1 LTS"
     """
 
@@ -4964,6 +5386,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "20.2.0"
     """
 
@@ -4974,6 +5397,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "Ubuntu"
     """
 
@@ -4984,6 +5408,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "Ubuntu 22.04.4 LTS (Jammy Jellyfish)"
     """
 
@@ -4994,6 +5419,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: bool
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: true
     """
 
@@ -5004,6 +5430,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "dark"
     """
 
@@ -5014,6 +5441,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "linux"
     """
 
@@ -5024,6 +5452,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "18.04.2"
     """
 
@@ -5034,6 +5463,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "io.opentelemetry.contrib.mongodb"
     """
 
@@ -5044,6 +5474,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "2.4.5"
     """
 
@@ -5054,6 +5485,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "OK"
     """
 
@@ -5066,6 +5498,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "resource not found"
     """
 
@@ -5076,6 +5509,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Has Dynamic Suffix: true
     Aliases: url.path.parameter.<key>
     Example: "params.id='123'"
@@ -5090,6 +5524,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: browser.performance.navigation.activation_start
     DEPRECATED: Use browser.performance.navigation.activation_start instead - The activationStart is now recorded as the browser.performance.navigation.activation_start attribute.
     Example: 1.983
@@ -5102,6 +5537,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: browser.performance.time_origin
     DEPRECATED: Use browser.performance.time_origin instead - The timeOrigin is now recorded as the browser.performance.time_origin attribute.
     Example: 1776185678.886
@@ -5114,6 +5550,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "HomeScreen"
     """
 
@@ -5124,6 +5561,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: List[str]
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: ["cmd/otecol","--config=config.yaml"]
     """
 
@@ -5136,6 +5574,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "getsentry"
     """
 
@@ -5146,6 +5585,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: 12345
     """
 
@@ -5158,6 +5598,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "Eclipse OpenJ9 VM openj9-0.21.0"
     """
 
@@ -5170,6 +5611,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "v8"
     """
 
@@ -5182,6 +5624,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "12.9.202.13-rusty"
     """
 
@@ -5192,6 +5635,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "node"
     """
 
@@ -5204,6 +5648,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "18.04.2"
     """
 
@@ -5214,6 +5659,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Has Dynamic Suffix: true
     DEPRECATED: Use url.query instead - Instead of sending items individually in query.<key>, they should be sent all together with url.query.
     Example: "query.id='123'"
@@ -5226,6 +5672,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "18.2.0"
     """
 
@@ -5236,6 +5683,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: sentry.release
     DEPRECATED: Use sentry.release instead
     Example: "production"
@@ -5250,6 +5698,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Has Dynamic Suffix: true
     Example: "http.response.header.text='test'"
     """
@@ -5261,6 +5710,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Aliases: sentry.replay_id
     DEPRECATED: Use sentry.replay_id instead
     Example: "123e4567e89b12d3a456426614174000"
@@ -5275,6 +5725,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: Yes
+    Visibility: public
     DEPRECATED: Use sentry.environment instead
     Example: "production"
     """
@@ -5288,6 +5739,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: Yes
+    Visibility: public
     DEPRECATED: Use sentry.environment instead
     Example: "production"
     """
@@ -5301,6 +5753,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "non-blocking"
     """
 
@@ -5311,6 +5764,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: http.route
     DEPRECATED: Use http.route instead
     Example: "App\\Controller::indexAction"
@@ -5323,6 +5777,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: 2
     """
 
@@ -5333,6 +5788,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "com.example.ExampleService/exampleMethod"
     """
 
@@ -5345,6 +5801,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "DEADLINE_EXCEEDED"
     """
 
@@ -5355,6 +5812,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "myService.BestService"
     """
 
@@ -5365,6 +5823,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Has Dynamic Suffix: true
     Example: "score.cls=0.1723"
     """
@@ -5376,6 +5835,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Has Dynamic Suffix: true
     Example: "score.ratio.inp=0.7748"
     """
@@ -5387,6 +5847,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     """
 
     # Path: model/attributes/score/score__weight__[key].json
@@ -5396,6 +5857,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Has Dynamic Suffix: true
     Example: "score.weight.fcp=0.25"
     """
@@ -5407,6 +5869,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "SELECT"
     """
 
@@ -5417,6 +5880,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: browser.name
     DEPRECATED: Use browser.name instead
     Example: "Chrome"
@@ -5429,6 +5893,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: browser.version
     DEPRECATED: Use browser.version instead
     Example: "120.0.6099.130"
@@ -5443,6 +5908,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "document.hidden"
     """
 
@@ -5453,6 +5919,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "db"
     """
 
@@ -5465,6 +5932,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: 0.5
     """
 
@@ -5475,6 +5943,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "index view query"
     """
 
@@ -5485,6 +5954,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "1.0"
     """
 
@@ -5495,6 +5965,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "example.com"
     """
 
@@ -5505,6 +5976,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: internal
     Example: "prod"
     """
 
@@ -5515,6 +5987,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: false
     Defined in OTEL: No
+    Visibility: internal
     Example: 12345
     """
 
@@ -5525,6 +5998,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: internal
     Example: "c51734c603c4430eb57cb0a5728a479d"
     """
 
@@ -5535,6 +6009,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: internal
     Example: "frontend@e8211be71b214afab5b85de4b4c54be3714952bb"
     """
 
@@ -5545,6 +6020,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: internal
     Example: "1.0"
     """
 
@@ -5555,6 +6031,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: bool
     Contains PII: false
     Defined in OTEL: No
+    Visibility: internal
     Example: true
     """
 
@@ -5565,6 +6042,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: internal
     Example: "047372980460430cbc78d9779df33a46"
     """
 
@@ -5575,6 +6053,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: internal
     Example: "/issues/errors-outages/"
     """
 
@@ -5585,6 +6064,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Aliases: environment
     Example: "production"
     """
@@ -5596,6 +6076,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 1234
     """
 
@@ -5608,6 +6089,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "getUserById"
     """
 
@@ -5618,6 +6100,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     """
 
     # Path: model/attributes/sentry/sentry__http__prefetch.json
@@ -5627,6 +6110,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: bool
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: true
     """
 
@@ -5639,6 +6123,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "idleTimeout"
     """
 
@@ -5649,6 +6134,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: bool
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: true
     """
 
@@ -5659,6 +6145,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "server"
     """
 
@@ -5669,6 +6156,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: bool
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: true
     """
 
@@ -5681,6 +6169,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "sentry.message.parameter.0='123'"
     """
 
@@ -5693,6 +6182,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "Hello, {name}!"
     """
 
@@ -5703,6 +6193,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: bool
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: true
     """
 
@@ -5713,6 +6204,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Has Dynamic Suffix: true
     Example: "sentry.module.brianium/paratest='v7.7.0'"
     """
@@ -5726,6 +6218,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "/posts/[id]/layout"
     """
 
@@ -5738,6 +6231,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "generateMetadata"
     """
 
@@ -5750,6 +6244,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "SELECT .. FROM sentry_project WHERE (project_id = %s)"
     """
 
@@ -5762,6 +6257,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     """
 
     # Path: model/attributes/sentry/sentry__normalized_description.json
@@ -5773,6 +6269,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "SELECT .. FROM sentry_project WHERE (project_id = %s)"
     """
 
@@ -5785,6 +6282,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "1544712660300000000"
     """
 
@@ -5795,6 +6293,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "http.client"
     """
 
@@ -5805,6 +6304,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "auto.http.otel.fastify"
     """
 
@@ -5815,6 +6315,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "php"
     """
 
@@ -5825,6 +6326,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "123e4567e89b12d3a456426614174000"
     """
 
@@ -5835,6 +6337,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "18779b64dd35d1a538e7ce2dd2d3fad3"
     """
 
@@ -5845,6 +6348,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Aliases: service.version, release
     Example: "7.0.0"
     """
@@ -5856,6 +6360,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Aliases: replay_id
     Example: "123e4567e89b12d3a456426614174000"
     """
@@ -5869,6 +6374,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: bool
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: true
     """
 
@@ -5879,6 +6385,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     DEPRECATED: No replacement at this time - The report event is now recorded as a browser.web_vital.lcp.report_event or browser.web_vital.cls.report_event attribute. No backfill required.
     Example: "pagehide"
     """
@@ -5892,6 +6399,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: List[str]
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: ["InboundFilters","FunctionToString","BrowserApiErrors","Breadcrumbs"]
     """
 
@@ -5902,6 +6410,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "@sentry/react"
     """
 
@@ -5912,6 +6421,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "7.0.0"
     """
 
@@ -5922,6 +6432,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Aliases: sentry.segment_id
     Example: "051581bf3cb55c13"
     """
@@ -5933,6 +6444,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: sentry.transaction, transaction
     Example: "GET /user"
     """
@@ -5944,6 +6456,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Aliases: sentry.segment.id
     DEPRECATED: Use sentry.segment.id instead
     Example: "051581bf3cb55c13"
@@ -5958,6 +6471,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: 0.5
     """
 
@@ -5968,6 +6482,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     DEPRECATED: Use sentry.span.source instead - This attribute is being deprecated in favor of sentry.span.source
     Example: "route"
     """
@@ -5979,6 +6494,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "route"
     """
 
@@ -5989,6 +6505,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "foobar"
     """
 
@@ -5999,6 +6516,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 200
     """
 
@@ -6011,6 +6529,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: 0
     """
 
@@ -6023,6 +6542,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     DEPRECATED: No replacement at this time
     Example: "b0e6f15b45c36b12"
     """
@@ -6034,6 +6554,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Aliases: sentry.segment.name, transaction
     DEPRECATED: Use sentry.segment.name instead - This attribute is being deprecated in favor of sentry.segment.name
     Example: "GET /"
@@ -6046,6 +6567,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: http.server_name, net.host.name, http.host
     Example: "example.com"
     """
@@ -6057,6 +6579,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: net.host.port
     Example: 1337
     """
@@ -6068,6 +6591,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "omegastar"
     """
 
@@ -6078,6 +6602,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: sentry.release
     Example: "5.0.0"
     """
@@ -6089,6 +6614,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     """
 
     # Path: model/attributes/stall_total_time.json
@@ -6098,6 +6624,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     """
 
     # Path: model/attributes/state/state__type.json
@@ -6107,6 +6634,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "redux"
     """
 
@@ -6117,6 +6645,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: 56
     """
 
@@ -6127,6 +6656,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "main"
     """
 
@@ -6137,6 +6667,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "MyTag"
     """
 
@@ -6147,6 +6678,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: app.vitals.ttfd.value
     DEPRECATED: Use app.vitals.ttfd.value instead - Replaced by app.vitals.ttfd.value to align with the app.vitals.* namespace for mobile performance attributes
     Example: 1234.56
@@ -6161,6 +6693,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: app.vitals.ttid.value
     DEPRECATED: Use app.vitals.ttid.value instead - Replaced by app.vitals.ttid.value to align with the app.vitals.* namespace for mobile performance attributes
     Example: 1234.56
@@ -6173,6 +6706,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: sentry.segment.name, sentry.transaction
     DEPRECATED: Use sentry.segment.name instead
     Example: "GET /"
@@ -6185,6 +6719,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "user.getById"
     """
 
@@ -6195,6 +6730,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "query"
     """
 
@@ -6205,6 +6741,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: browser.web_vital.ttfb.request_time
     DEPRECATED: Use browser.web_vital.ttfb.request_time instead - This attribute is being deprecated in favor of browser.web_vital.ttfb.request_time
     Example: 1554.5814
@@ -6217,6 +6754,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Aliases: browser.web_vital.ttfb.value
     DEPRECATED: Use browser.web_vital.ttfb.value instead - This attribute is being deprecated in favor of browser.web_vital.ttfb.value
     Example: 194
@@ -6229,6 +6767,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "fetch"
     """
 
@@ -6239,6 +6778,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "HomeButton"
     """
 
@@ -6249,6 +6789,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: bool
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: true
     """
 
@@ -6259,6 +6800,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: bool
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: true
     """
 
@@ -6269,6 +6811,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 256
     """
 
@@ -6279,6 +6822,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "btn-login"
     """
 
@@ -6289,6 +6833,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "heroImage"
     """
 
@@ -6299,6 +6844,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 998.2234
     """
 
@@ -6309,6 +6855,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "image-paint"
     """
 
@@ -6319,6 +6866,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: float
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 1023.1124
     """
 
@@ -6329,6 +6877,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "img"
     """
 
@@ -6339,6 +6888,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "https://assets.myapp.com/hero.png"
     """
 
@@ -6349,6 +6899,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 512
     """
 
@@ -6359,6 +6910,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "example.com"
     """
 
@@ -6369,6 +6921,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "details"
     """
 
@@ -6379,6 +6932,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: true
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: http.url, url
     Example: "https://example.com/test?foo=bar#buzz"
     """
@@ -6390,6 +6944,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: "/foo"
     """
 
@@ -6402,6 +6957,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Has Dynamic Suffix: true
     Aliases: params.<key>
     Example: "url.path.parameter.id='123'"
@@ -6414,6 +6970,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Example: 1337
     """
 
@@ -6424,6 +6981,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: true - Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.
     Defined in OTEL: Yes
+    Visibility: public
     Example: "foo=bar&bar=baz"
     """
 
@@ -6434,6 +6992,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: http.scheme
     Example: "https"
     """
@@ -6445,6 +7004,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: http.route
     Example: "/users/:id"
     """
@@ -6456,6 +7016,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: true
     Defined in OTEL: No
+    Visibility: public
     Aliases: url.full, http.url
     DEPRECATED: Use url.full instead
     Example: "https://example.com/test?foo=bar#buzz"
@@ -6468,6 +7029,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: true
     Defined in OTEL: Yes
+    Visibility: public
     Example: "test@example.com"
     """
 
@@ -6478,6 +7040,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: true
     Defined in OTEL: Yes
+    Visibility: public
     Example: "John Smith"
     """
 
@@ -6488,6 +7051,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "Toronto"
     """
 
@@ -6498,6 +7062,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "CA"
     """
 
@@ -6508,6 +7073,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "Canada"
     """
 
@@ -6518,6 +7084,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "Ontario"
     """
 
@@ -6528,6 +7095,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: true
     Defined in OTEL: Yes
+    Visibility: public
     Example: "8ae4c2993e0f4f3b8b2d1b1f3b5e8f4d"
     """
 
@@ -6538,6 +7106,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: true
     Defined in OTEL: Yes
+    Visibility: public
     Example: "S-1-5-21-202424912787-2692429404-2351956786-1000"
     """
 
@@ -6548,6 +7117,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: true
     Defined in OTEL: No
+    Visibility: public
     Example: "192.168.1.1"
     """
 
@@ -6558,6 +7128,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: true
     Defined in OTEL: Yes
+    Visibility: public
     Example: "j.smith"
     """
 
@@ -6568,6 +7139,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: List[str]
     Contains PII: true
     Defined in OTEL: Yes
+    Visibility: public
     Example: ["admin","editor"]
     """
 
@@ -6578,6 +7150,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Visibility: public
     Aliases: http.user_agent
     Example: "Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1"
     """
@@ -6589,6 +7162,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "main"
     """
 
@@ -6599,6 +7173,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "bld_cotnkcr76"
     """
 
@@ -6609,6 +7184,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "dpl_233NRGRjVZX1caZrXWtz5g1TAksD"
     """
 
@@ -6619,6 +7195,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "https://vitals.vercel-insights.com/v1"
     """
 
@@ -6629,6 +7206,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "edge-function"
     """
 
@@ -6639,6 +7217,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "api/index.js"
     """
 
@@ -6651,6 +7230,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "sfo1"
     """
 
@@ -6661,6 +7241,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "1573817187330377061717300000"
     """
 
@@ -6671,6 +7252,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "769,47-53-5-10-49161-49162-49171-49172-50-56-19-4,0-10-11,23-24-25,0"
     """
 
@@ -6681,6 +7263,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "t13d1516h2_8daaf6152771_02713d6af862"
     """
 
@@ -6691,6 +7274,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "stdout"
     """
 
@@ -6701,6 +7285,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "/dynamic/[route].json"
     """
 
@@ -6711,6 +7296,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "gdufoJxB6b9b1fEqr1jUtFkyavUU"
     """
 
@@ -6721,6 +7307,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "my-app"
     """
 
@@ -6731,6 +7318,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "pdx1::v8g4b-1744143786684-93dafbc0f70d"
     """
 
@@ -6741,6 +7329,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: true
     Defined in OTEL: No
+    Visibility: public
     Example: "120.75.16.101"
     """
 
@@ -6751,6 +7340,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "test.vercel.app"
     """
 
@@ -6763,6 +7353,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "sfo1"
     """
 
@@ -6773,6 +7364,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "GET"
     """
 
@@ -6783,6 +7375,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "/dynamic/some-value.json?route=some-value"
     """
 
@@ -6793,6 +7386,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "func"
     """
 
@@ -6805,6 +7399,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "api"
     """
 
@@ -6815,6 +7410,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: "*.vercel.app"
     """
 
@@ -6825,6 +7421,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "sfo1"
     """
 
@@ -6837,6 +7434,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 1024
     """
 
@@ -6847,6 +7445,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "https"
     """
 
@@ -6859,6 +7458,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 200
     """
 
@@ -6869,6 +7469,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 1573817250172
     """
 
@@ -6881,6 +7482,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: List[str]
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: ["Mozilla/5.0..."]
     """
 
@@ -6893,6 +7495,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "REVALIDATED"
     """
 
@@ -6903,6 +7506,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "sfo1::abc123"
     """
 
@@ -6915,6 +7519,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "deny"
     """
 
@@ -6927,6 +7532,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "rule_gAHz8jtSB1Gy"
     """
 
@@ -6937,6 +7543,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "643af4e3-975a-4cc7-9e7a-1eda11539d90"
     """
 
@@ -6947,6 +7554,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "build"
     """
 
@@ -6957,6 +7565,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: maybe
     Defined in OTEL: No
+    Visibility: public
     Example: 200
     """
 
@@ -6967,6 +7576,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING_ARRAY,
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=["Citation 1", "Citation 2"],
         deprecation=DeprecationInfo(),
         changelog=[
@@ -6979,6 +7589,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=10,
         deprecation=DeprecationInfo(
             replacement="gen_ai.usage.output_tokens", status=DeprecationStatus.BACKFILL
@@ -6996,6 +7607,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING_ARRAY,
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=["document1.txt", "document2.pdf"],
         deprecation=DeprecationInfo(),
         changelog=[
@@ -7008,6 +7620,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="COMPLETE",
         deprecation=DeprecationInfo(
             replacement="gen_ai.response.finish_reasons",
@@ -7023,6 +7636,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=0.5,
         deprecation=DeprecationInfo(
             replacement="gen_ai.request.frequency_penalty",
@@ -7039,6 +7653,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="function_name",
         deprecation=DeprecationInfo(
             replacement="gen_ai.tool.name", status=DeprecationStatus.BACKFILL
@@ -7053,6 +7668,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="gen_123abc",
         deprecation=DeprecationInfo(
             replacement="gen_ai.response.id", status=DeprecationStatus.BACKFILL
@@ -7067,6 +7683,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example='[{"role": "user", "message": "hello"}]',
         deprecation=DeprecationInfo(
             replacement="gen_ai.input.messages", status=DeprecationStatus.BACKFILL
@@ -7083,6 +7700,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.BOOLEAN,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=False,
         deprecation=DeprecationInfo(),
         changelog=[
@@ -7095,6 +7713,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example='{"user_id": 123, "session_id": "abc123"}',
         deprecation=DeprecationInfo(),
         changelog=[
@@ -7107,6 +7726,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="openai",
         deprecation=DeprecationInfo(
             replacement="gen_ai.provider.name", status=DeprecationStatus.BACKFILL
@@ -7122,6 +7742,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="gpt-4",
         deprecation=DeprecationInfo(
             replacement="gen_ai.response.model", status=DeprecationStatus.BACKFILL
@@ -7138,6 +7759,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="Autofix Pipeline",
         deprecation=DeprecationInfo(
             replacement="gen_ai.pipeline.name", status=DeprecationStatus.BACKFILL
@@ -7152,6 +7774,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="You are now a clown.",
         deprecation=DeprecationInfo(
             replacement="gen_ai.system_instructions", status=DeprecationStatus.BACKFILL
@@ -7167,6 +7790,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=0.5,
         deprecation=DeprecationInfo(
             replacement="gen_ai.request.presence_penalty",
@@ -7183,6 +7807,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=20,
         deprecation=DeprecationInfo(
             replacement="gen_ai.usage.input_tokens", status=DeprecationStatus.BACKFILL
@@ -7200,6 +7825,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.BOOLEAN,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=True,
         deprecation=DeprecationInfo(),
         changelog=[
@@ -7212,6 +7838,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="json_object",
         deprecation=DeprecationInfo(),
         changelog=[
@@ -7224,6 +7851,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING_ARRAY,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=["hello", "world"],
         deprecation=DeprecationInfo(
             replacement="gen_ai.output.messages", status=DeprecationStatus.BACKFILL
@@ -7239,6 +7867,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING_ARRAY,
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=["climate change effects", "renewable energy"],
         deprecation=DeprecationInfo(),
         changelog=[
@@ -7251,6 +7880,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING_ARRAY,
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=["search_result_1, search_result_2"],
         deprecation=DeprecationInfo(),
         changelog=[
@@ -7263,6 +7893,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="1234567890",
         deprecation=DeprecationInfo(
             replacement="gen_ai.request.seed", status=DeprecationStatus.BACKFILL
@@ -7277,6 +7908,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.BOOLEAN,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=True,
         deprecation=DeprecationInfo(
             replacement="gen_ai.response.streaming", status=DeprecationStatus.BACKFILL
@@ -7293,6 +7925,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example='{"executed_function": "add_integers"}',
         deprecation=DeprecationInfo(),
         changelog=[
@@ -7305,6 +7938,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=0.1,
         deprecation=DeprecationInfo(
             replacement="gen_ai.request.temperature", status=DeprecationStatus.BACKFILL
@@ -7320,6 +7954,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING_ARRAY,
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=["Hello, how are you?", "What is the capital of France?"],
         deprecation=DeprecationInfo(
             replacement="gen_ai.input.messages", status=DeprecationStatus.BACKFILL
@@ -7335,6 +7970,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING_ARRAY,
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=["tool_call_1", "tool_call_2"],
         deprecation=DeprecationInfo(
             replacement="gen_ai.output.messages", status=DeprecationStatus.BACKFILL
@@ -7348,6 +7984,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING_ARRAY,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=["function_1", "function_2"],
         deprecation=DeprecationInfo(
             replacement="gen_ai.tool.definitions", status=DeprecationStatus.BACKFILL
@@ -7361,6 +7998,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=35,
         deprecation=DeprecationInfo(
             replacement="gen_ai.request.top_k", status=DeprecationStatus.BACKFILL
@@ -7376,6 +8014,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=0.7,
         deprecation=DeprecationInfo(
             replacement="gen_ai.request.top_p", status=DeprecationStatus.BACKFILL
@@ -7391,6 +8030,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=12.34,
         deprecation=DeprecationInfo(
             replacement="gen_ai.cost.total_tokens", status=DeprecationStatus.BACKFILL
@@ -7407,6 +8047,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=30,
         deprecation=DeprecationInfo(
             replacement="gen_ai.usage.total_tokens", status=DeprecationStatus.BACKFILL
@@ -7424,6 +8065,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING_ARRAY,
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=["Token limit exceeded"],
         deprecation=DeprecationInfo(),
         changelog=[
@@ -7436,6 +8078,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="17.1.0",
         changelog=[
             ChangelogEntry(
@@ -7450,6 +8093,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="1",
         deprecation=DeprecationInfo(
             replacement="app.build",
@@ -7476,6 +8120,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="com.example.myapp",
         deprecation=DeprecationInfo(
             replacement="app.identifier",
@@ -7502,6 +8147,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="My App",
         deprecation=DeprecationInfo(
             replacement="app.name",
@@ -7528,6 +8174,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="2025-01-01T00:00:00.000Z",
         deprecation=DeprecationInfo(
             replacement="app.start_time",
@@ -7554,6 +8201,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="1.0.0",
         deprecation=DeprecationInfo(
             replacement="app.version",
@@ -7580,6 +8228,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="1",
         aliases=["app.app_build"],
         sdks=[
@@ -7599,6 +8248,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="com.example.myapp",
         aliases=["app.app_identifier"],
         sdks=[
@@ -7618,6 +8268,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.BOOLEAN,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=True,
         sdks=[
             "sentry.cocoa",
@@ -7638,6 +8289,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="My App",
         aliases=["app.app_name"],
         sdks=[
@@ -7657,6 +8309,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="2025-01-01T00:00:00.000Z",
         aliases=["app.app_start_time"],
         sdks=[
@@ -7676,6 +8329,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="1.0.0",
         aliases=["app.app_version"],
         sdks=[
@@ -7695,6 +8349,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=5,
         aliases=["frames.delay"],
         sdks=[
@@ -7716,6 +8371,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=3,
         aliases=["frames.frozen"],
         sdks=[
@@ -7737,6 +8393,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1,
         aliases=["frames.slow"],
         sdks=[
@@ -7758,6 +8415,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=60,
         aliases=["frames.total"],
         sdks=[
@@ -7779,6 +8437,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1234.56,
         aliases=["app_start_cold"],
         sdks=[
@@ -7800,6 +8459,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="push",
         sdks=[
             "sentry.cocoa",
@@ -7821,6 +8481,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="MainActivity",
         sdks=[
             "sentry.cocoa",
@@ -7842,6 +8503,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="cold",
         aliases=["app_start_type"],
         sdks=[
@@ -7863,6 +8525,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1234.56,
         aliases=["app_start_warm"],
         sdks=[
@@ -7884,6 +8547,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1234.56,
         aliases=["time_to_full_display"],
         sdks=[
@@ -7905,6 +8569,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1234.56,
         aliases=["time_to_initial_display"],
         sdks=[
@@ -7926,6 +8591,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1234.56,
         deprecation=DeprecationInfo(
             replacement="app.vitals.start.cold.value",
@@ -7952,6 +8618,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="cold",
         deprecation=DeprecationInfo(
             replacement="app.vitals.start.type",
@@ -7974,6 +8641,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1234.56,
         deprecation=DeprecationInfo(
             replacement="app.vitals.start.warm.value",
@@ -8000,6 +8668,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="/aws/lambda/my-function",
         changelog=[
             ChangelogEntry(
@@ -8014,6 +8683,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="2024/01/01/[$LATEST]abcdef1234567890",
         changelog=[
             ChangelogEntry(
@@ -8028,6 +8698,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups/log-group/my-log-group",
         changelog=[
             ChangelogEntry(
@@ -8042,6 +8713,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="8476a536-e9f4-11e8-9739-2dfe598c3fcd",
         changelog=[
             ChangelogEntry(
@@ -8056,6 +8728,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1234.56,
         changelog=[
             ChangelogEntry(
@@ -8070,6 +8743,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="my-function",
         changelog=[
             ChangelogEntry(
@@ -8084,6 +8758,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="$LATEST",
         changelog=[
             ChangelogEntry(
@@ -8098,6 +8773,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="arn:aws:lambda:us-east-1:123456789012:function:my-function",
         changelog=[
             ChangelogEntry(
@@ -8112,6 +8788,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=5000,
         changelog=[
             ChangelogEntry(
@@ -8126,6 +8803,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.BOOLEAN,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=True,
         changelog=[
             ChangelogEntry(version="0.0.0"),
@@ -8136,6 +8814,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="Chrome",
         aliases=["sentry.browser.name"],
         changelog=[
@@ -8148,6 +8827,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1.983,
         aliases=["performance.activationStart"],
         sdks=["javascript-browser"],
@@ -8164,6 +8844,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1776185678.886,
         aliases=["performance.timeOrigin"],
         sdks=["javascript-browser"],
@@ -8180,6 +8861,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="network-error",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[68, 127]),
@@ -8190,6 +8872,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="Window.requestAnimationFrame",
         sdks=["browser"],
         changelog=[
@@ -8202,6 +8885,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="event-listener",
         sdks=["browser"],
         changelog=[
@@ -8214,6 +8898,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=678,
         sdks=["browser"],
         changelog=[
@@ -8226,6 +8911,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="120.0.6099.130",
         aliases=["sentry.browser.version"],
         changelog=[
@@ -8237,6 +8923,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="navigation",
         sdks=["javascript-browser"],
         changelog=[
@@ -8252,6 +8939,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
         example="body > div#app",
         aliases=["cls.source.<key>"],
@@ -8265,6 +8953,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=0.2361,
         aliases=["cls"],
         sdks=["javascript-browser"],
@@ -8281,6 +8970,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=547.6951,
         aliases=["fcp"],
         sdks=["javascript-browser"],
@@ -8293,6 +8983,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=477.1926,
         aliases=["fp"],
         sdks=["javascript-browser"],
@@ -8305,6 +8996,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=200,
         aliases=["inp"],
         sdks=["javascript-browser"],
@@ -8321,6 +9013,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="body > div#app > div#container > div",
         aliases=["lcp.element"],
         sdks=["javascript-browser"],
@@ -8333,6 +9026,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="#gero",
         aliases=["lcp.id"],
         sdks=["javascript-browser"],
@@ -8345,6 +9039,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1402,
         aliases=["lcp.loadTime"],
         sdks=["javascript-browser"],
@@ -8357,6 +9052,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1685,
         aliases=["lcp.renderTime"],
         sdks=["javascript-browser"],
@@ -8369,6 +9065,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="pagehide",
         sdks=["javascript-browser"],
         changelog=[
@@ -8384,6 +9081,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1024,
         aliases=["lcp.size"],
         sdks=["javascript-browser"],
@@ -8396,6 +9094,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="https://example.com/static/img.png",
         aliases=["lcp.url"],
         sdks=["javascript-browser"],
@@ -8408,6 +9107,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=2500,
         aliases=["lcp"],
         sdks=["javascript-browser"],
@@ -8424,6 +9124,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1554.5814,
         aliases=["ttfb.requestTime"],
         sdks=["javascript-browser"],
@@ -8436,6 +9137,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=194.3322,
         aliases=["ttfb"],
         sdks=["javascript-browser"],
@@ -8448,6 +9150,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.BOOLEAN,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=True,
         sdks=["php-laravel"],
         changelog=[
@@ -8459,6 +9162,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=58,
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -8470,6 +9174,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING_ARRAY,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=["my-cache-key", "my-other-cache-key"],
         sdks=["php-laravel"],
         changelog=[
@@ -8481,6 +9186,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="get",
         sdks=["php-laravel"],
         changelog=[
@@ -8493,6 +9199,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=120,
         sdks=["php-laravel"],
         changelog=[
@@ -8505,6 +9212,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.BOOLEAN,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=True,
         sdks=["java"],
         changelog=[
@@ -8516,6 +9224,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="mail",
         sdks=["php-laravel"],
         changelog=[
@@ -8528,6 +9237,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="example.com",
         aliases=["http.client_ip"],
         changelog=[
@@ -8540,6 +9250,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example=5432,
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -8551,6 +9262,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="123456789012",
         changelog=[
             ChangelogEntry(
@@ -8565,6 +9277,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="us-east-1c",
         changelog=[
             ChangelogEntry(
@@ -8579,6 +9292,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="aws_lambda",
         changelog=[
             ChangelogEntry(
@@ -8591,6 +9305,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="aws",
         changelog=[
             ChangelogEntry(
@@ -8603,6 +9318,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="us-east-1",
         changelog=[
             ChangelogEntry(
@@ -8615,6 +9331,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=543,
         sdks=["javascript-cloudflare"],
         changelog=[
@@ -8627,6 +9344,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=12,
         sdks=["javascript-cloudflare"],
         changelog=[
@@ -8639,6 +9357,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=12,
         sdks=["javascript-cloudflare"],
         changelog=[
@@ -8651,6 +9370,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
         example="body > div#app",
         deprecation=DeprecationInfo(
@@ -8669,6 +9389,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=0.2361,
         deprecation=DeprecationInfo(
             replacement="browser.web_vital.cls.value",
@@ -8690,6 +9411,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="/app/myapplication/http/handler/server.py",
         aliases=["code.filepath"],
         changelog=[
@@ -8701,6 +9423,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="/app/myapplication/http/handler/server.py",
         deprecation=DeprecationInfo(replacement="code.file.path"),
         aliases=["code.file.path"],
@@ -8714,6 +9437,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="server_request",
         aliases=["code.function.name"],
         changelog=[
@@ -8726,6 +9450,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="server_request",
         aliases=["code.function"],
         changelog=[
@@ -8738,6 +9463,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example=42,
         aliases=["code.lineno"],
         changelog=[
@@ -8750,6 +9476,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example=42,
         deprecation=DeprecationInfo(replacement="code.line.number"),
         aliases=["code.line.number"],
@@ -8764,6 +9491,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="http.handler",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 74]),
@@ -8775,6 +9503,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=100,
         deprecation=DeprecationInfo(
             replacement="network.connection.rtt",
@@ -8796,6 +9525,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="wifi",
         deprecation=DeprecationInfo(
             replacement="network.connection.type",
@@ -8817,6 +9547,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="GregorianCalendar",
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[243]),
@@ -8827,6 +9558,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="English (United States)",
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[243]),
@@ -8837,6 +9569,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.BOOLEAN,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=True,
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[243]),
@@ -8847,6 +9580,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="en-US",
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[243]),
@@ -8857,6 +9591,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="Europe/Vienna",
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[243]),
@@ -8867,6 +9602,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="users",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[106, 127]),
@@ -8878,6 +9614,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="psycopg2",
         changelog=[
             ChangelogEntry(
@@ -8890,6 +9627,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="customers",
         deprecation=DeprecationInfo(replacement="db.namespace"),
         aliases=["db.namespace"],
@@ -8903,6 +9641,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="customers",
         aliases=["db.name"],
         changelog=[
@@ -8915,6 +9654,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="SELECT",
         deprecation=DeprecationInfo(
             replacement="db.operation.name", status=DeprecationStatus.NORMALIZE
@@ -8931,6 +9671,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="SELECT",
         aliases=["db.operation"],
         changelog=[
@@ -8943,6 +9684,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
         example="db.query.parameter.foo='123'",
         changelog=[
@@ -8954,6 +9696,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="SELECT users;",
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[208]),
@@ -8966,6 +9709,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="SELECT * FROM users WHERE id = $1",
         aliases=["db.statement"],
         changelog=[
@@ -8979,6 +9723,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="my-redis-instance",
         sdks=["php-laravel"],
         changelog=[
@@ -8991,6 +9736,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="user:2047:city",
         sdks=["python"],
         changelog=[
@@ -9004,6 +9750,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING_ARRAY,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=["test", "*"],
         sdks=["php-laravel"],
         changelog=[
@@ -9015,6 +9762,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING_ARRAY,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=["1", "foo"],
         deprecation=DeprecationInfo(
             replacement="db.query.parameter.<key>",
@@ -9031,6 +9779,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="SELECT * FROM users",
         deprecation=DeprecationInfo(
             replacement="db.query.text", status=DeprecationStatus.NORMALIZE
@@ -9047,6 +9796,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="postgresql",
         deprecation=DeprecationInfo(
             replacement="db.system.name", status=DeprecationStatus.BACKFILL
@@ -9063,6 +9813,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="postgresql",
         aliases=["db.system"],
         changelog=[
@@ -9075,6 +9826,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="fancy_user",
         changelog=[
             ChangelogEntry(version="0.0.0"),
@@ -9085,6 +9837,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING_ARRAY,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=["arm64-v8a", "armeabi-v7a", "armeabi"],
         changelog=[
             ChangelogEntry(
@@ -9097,6 +9850,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=100,
         changelog=[
             ChangelogEntry(
@@ -9111,6 +9865,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=25,
         changelog=[
             ChangelogEntry(
@@ -9125,6 +9880,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="2018-02-08T12:52:12Z",
         changelog=[
             ChangelogEntry(
@@ -9139,6 +9895,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="Apple",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[116, 127]),
@@ -9149,6 +9906,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.BOOLEAN,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=False,
         changelog=[
             ChangelogEntry(
@@ -9163,6 +9921,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="Qualcomm SM8550",
         changelog=[
             ChangelogEntry(
@@ -9175,6 +9934,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="medium",
         changelog=[
             ChangelogEntry(
@@ -9187,6 +9947,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="wifi",
         deprecation=DeprecationInfo(
             replacement="network.connection.type",
@@ -9207,6 +9968,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="Intel(R) Core(TM)2 Quad CPU Q6600 @ 2.40GHz",
         changelog=[
             ChangelogEntry(
@@ -9221,6 +9983,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=67108864000,
         changelog=[
             ChangelogEntry(
@@ -9235,6 +9998,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=134217728000,
         changelog=[
             ChangelogEntry(
@@ -9249,6 +10013,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="iPhone",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[116, 127]),
@@ -9259,6 +10024,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=2147483648,
         changelog=[
             ChangelogEntry(
@@ -9273,6 +10039,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=107374182400,
         changelog=[
             ChangelogEntry(
@@ -9287,6 +10054,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="a1b2c3d4-e5f6-7890-abcd-ef1234567890",
         changelog=[
             ChangelogEntry(
@@ -9299,6 +10067,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="en-US",
         changelog=[
             ChangelogEntry(
@@ -9311,6 +10080,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.BOOLEAN,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=False,
         changelog=[
             ChangelogEntry(
@@ -9325,6 +10095,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.BOOLEAN,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=True,
         sdks=["sentry.cocoa"],
         changelog=[
@@ -9340,6 +10111,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="Google",
         changelog=[
             ChangelogEntry(
@@ -9354,6 +10126,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=8,
         aliases=["deviceMemory"],
         sdks=["javascript-browser"],
@@ -9370,6 +10143,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=17179869184,
         changelog=[
             ChangelogEntry(
@@ -9384,6 +10158,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="iPhone 15 Pro Max",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[116, 127]),
@@ -9394,6 +10169,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="N861AP",
         changelog=[
             ChangelogEntry(
@@ -9408,6 +10184,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="localhost",
         changelog=[
             ChangelogEntry(
@@ -9420,6 +10197,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.BOOLEAN,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=True,
         changelog=[
             ChangelogEntry(
@@ -9432,6 +10210,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="portrait",
         changelog=[
             ChangelogEntry(
@@ -9446,6 +10225,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=8,
         aliases=["hardwareConcurrency"],
         changelog=[
@@ -9461,6 +10241,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=2400,
         changelog=[
             ChangelogEntry(
@@ -9475,6 +10256,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=2.625,
         changelog=[
             ChangelogEntry(
@@ -9489,6 +10271,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=420,
         changelog=[
             ChangelogEntry(
@@ -9503,6 +10286,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=2400,
         changelog=[
             ChangelogEntry(
@@ -9517,6 +10301,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1080,
         changelog=[
             ChangelogEntry(
@@ -9531,6 +10316,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.BOOLEAN,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=False,
         changelog=[
             ChangelogEntry(
@@ -9545,6 +10331,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=274877906944,
         changelog=[
             ChangelogEntry(
@@ -9559,6 +10346,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="nominal",
         changelog=[
             ChangelogEntry(
@@ -9573,6 +10361,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="Europe/Vienna",
         changelog=[
             ChangelogEntry(
@@ -9587,6 +10376,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=2147483648,
         changelog=[
             ChangelogEntry(
@@ -9601,6 +10391,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="8 GB",
         deprecation=DeprecationInfo(
             replacement="device.memory.estimated_capacity",
@@ -9622,6 +10413,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="4g",
         deprecation=DeprecationInfo(
             replacement="network.connection.effective_type",
@@ -9643,6 +10435,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="production",
         deprecation=DeprecationInfo(replacement="sentry.environment"),
         aliases=["sentry.environment"],
@@ -9656,6 +10449,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="timeout",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
@@ -9667,6 +10461,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1234567890,
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[101]),
@@ -9677,6 +10472,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="Process Payload",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[101, 127]),
@@ -9687,6 +10483,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.BOOLEAN,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example=True,
         changelog=[
             ChangelogEntry(version="0.0.0"),
@@ -9697,6 +10494,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="ENOENT: no such file or directory",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
@@ -9708,6 +10506,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example='Exception in thread "main" java.lang.RuntimeException: Test exception\n at com.example.GenerateTrace.methodB(GenerateTrace.java:13)\n at com.example.GenerateTrace.methodA(GenerateTrace.java:9)\n at com.example.GenerateTrace.main(GenerateTrace.java:5)',
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
@@ -9719,6 +10518,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="OSError",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
@@ -9730,6 +10530,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.BOOLEAN,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example=True,
         changelog=[
             ChangelogEntry(version="0.0.0"),
@@ -9740,6 +10541,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="0/5 * * * ? *",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
@@ -9751,6 +10553,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="2020-01-23T13:47:06Z",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
@@ -9762,6 +10565,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="timer",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
@@ -9773,6 +10577,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=547.6951,
         deprecation=DeprecationInfo(
             replacement="browser.web_vital.fcp.value",
@@ -9790,6 +10595,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.BOOLEAN,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
         example="flag.evaluation.is_new_ui=true",
         changelog=[
@@ -9801,6 +10607,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=477.1926,
         deprecation=DeprecationInfo(
             replacement="browser.web_vital.fp.value",
@@ -9818,6 +10625,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=5,
         deprecation=DeprecationInfo(
             replacement="app.vitals.frames.delay.value",
@@ -9840,6 +10648,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=3,
         deprecation=DeprecationInfo(
             replacement="app.vitals.frames.frozen.count",
@@ -9862,6 +10671,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1,
         deprecation=DeprecationInfo(
             replacement="app.vitals.frames.slow.count",
@@ -9884,6 +10694,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=60,
         deprecation=DeprecationInfo(
             replacement="app.vitals.frames.total.count",
@@ -9906,6 +10717,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         changelog=[
             ChangelogEntry(
                 version="0.7.0",
@@ -9919,6 +10731,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         changelog=[
             ChangelogEntry(
                 version="0.7.0",
@@ -9932,6 +10745,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="ENOENT: no such file or directory",
         deprecation=DeprecationInfo(
             replacement="error.type",
@@ -9948,6 +10762,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="1234567890",
         changelog=[
             ChangelogEntry(
@@ -9962,6 +10777,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="google.pubsub.topic.publish",
         changelog=[
             ChangelogEntry(
@@ -9976,6 +10792,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="1234567890",
         changelog=[
             ChangelogEntry(
@@ -9990,6 +10807,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="projects/my-project/topics/my-topic",
         changelog=[
             ChangelogEntry(
@@ -10004,6 +10822,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="//pubsub.googleapis.com/projects/my-project/topics/my-topic",
         changelog=[
             ChangelogEntry(
@@ -10018,6 +10837,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="1.0",
         changelog=[
             ChangelogEntry(
@@ -10032,6 +10852,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="2024-01-01T00:00:00.000Z",
         changelog=[
             ChangelogEntry(
@@ -10046,6 +10867,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="2024-01-01T00:00:00.000Z",
         changelog=[
             ChangelogEntry(
@@ -10060,6 +10882,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="cloud_functions.context",
         changelog=[
             ChangelogEntry(
@@ -10074,6 +10897,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="ResearchAssistant",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[62, 127]),
@@ -10084,6 +10908,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=0.75,
         changelog=[
             ChangelogEntry(
@@ -10098,6 +10923,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=128000,
         changelog=[
             ChangelogEntry(
@@ -10112,6 +10938,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="conv_5j66UpCpwteGg4YSxUnt7lPY",
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[250]),
@@ -10122,6 +10949,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=123.45,
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -10133,6 +10961,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=123.45,
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -10144,6 +10973,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=12.34,
         aliases=["ai.total_cost"],
         changelog=[
@@ -10157,6 +10987,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="What's the weather in Paris?",
         changelog=[
             ChangelogEntry(version="0.3.1", prs=[195]),
@@ -10167,6 +10998,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="my-awesome-function",
         changelog=[
             ChangelogEntry(
@@ -10181,6 +11013,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example='[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
         aliases=["ai.texts"],
         changelog=[
@@ -10193,6 +11026,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="chat",
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[225]),
@@ -10204,6 +11038,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="tool",
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[257]),
@@ -10215,6 +11050,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example='[{"role": "assistant", "parts": [{"type": "text", "content": "The weather in Paris is currently rainy with a temperature of 57°F."}], "finish_reason": "stop"}]',
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[221]),
@@ -10225,6 +11061,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="Autofix Pipeline",
         aliases=["ai.pipeline.name"],
         changelog=[
@@ -10236,6 +11073,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example='[{"role": "user", "message": "hello"}]',
         deprecation=DeprecationInfo(
             reason="Deprecated from OTEL, use gen_ai.input.messages with the new format instead."
@@ -10250,6 +11088,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="openai",
         aliases=["ai.model.provider", "gen_ai.system"],
         changelog=[
@@ -10261,6 +11100,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example='[{"name": "get_weather", "description": "Get the weather for a given location"}, {"name": "get_news", "description": "Get the news for a given topic"}]',
         deprecation=DeprecationInfo(
             replacement="gen_ai.tool.definitions", status=DeprecationStatus.NORMALIZE
@@ -10275,6 +11115,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example=0.5,
         aliases=["ai.frequency_penalty"],
         changelog=[
@@ -10287,6 +11128,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example=2048,
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -10298,6 +11140,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example='[{"role": "system", "content": "Generate a random number."}, {"role": "user", "content": [{"text": "Generate a random number between 0 and 10.", "type": "text"}]}, {"role": "tool", "content": {"toolCallId": "1", "toolName": "Weather", "output": "rainy"}}]',
         deprecation=DeprecationInfo(
             replacement="gen_ai.input.messages", status=DeprecationStatus.NORMALIZE
@@ -10313,6 +11156,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="gpt-4-turbo-preview",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[62, 127]),
@@ -10323,6 +11167,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example=0.5,
         aliases=["ai.presence_penalty"],
         changelog=[
@@ -10335,6 +11180,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="1234567890",
         aliases=["ai.seed"],
         changelog=[
@@ -10346,6 +11192,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example=0.1,
         aliases=["ai.temperature"],
         changelog=[
@@ -10358,6 +11205,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example=35,
         aliases=["ai.top_k"],
         changelog=[
@@ -10370,6 +11218,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example=0.7,
         aliases=["ai.top_p"],
         changelog=[
@@ -10382,6 +11231,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="COMPLETE",
         aliases=["ai.finish_reason"],
         changelog=[
@@ -10393,6 +11243,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="gen_123abc",
         aliases=["ai.generation_id"],
         changelog=[
@@ -10404,6 +11255,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="gpt-4",
         aliases=["ai.model_id"],
         changelog=[
@@ -10416,6 +11268,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.BOOLEAN,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=True,
         aliases=["ai.streaming"],
         changelog=[
@@ -10427,6 +11280,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example='["The weather in Paris is rainy and overcast, with temperatures around 57°F", "The weather in London is sunny and warm, with temperatures around 65°F"]',
         deprecation=DeprecationInfo(
             replacement="gen_ai.output.messages", status=DeprecationStatus.NORMALIZE
@@ -10441,6 +11295,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=0.6853435,
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[227]),
@@ -10451,6 +11306,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=12345.67,
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -10462,6 +11318,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example='[{"name": "get_weather", "arguments": {"location": "Paris"}}]',
         deprecation=DeprecationInfo(
             replacement="gen_ai.output.messages", status=DeprecationStatus.NORMALIZE
@@ -10476,6 +11333,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="openai",
         deprecation=DeprecationInfo(
             replacement="gen_ai.provider.name", status=DeprecationStatus.NORMALIZE
@@ -10491,6 +11349,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="You are a helpful assistant",
         deprecation=DeprecationInfo(
             replacement="gen_ai.system_instructions", status=DeprecationStatus.BACKFILL
@@ -10505,6 +11364,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="You are a helpful assistant",
         aliases=["ai.preamble"],
         changelog=[
@@ -10517,6 +11377,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example='{"location": "Paris"}',
         aliases=["gen_ai.tool.input"],
         changelog=[
@@ -10529,6 +11390,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="rainy, 57°F",
         aliases=["gen_ai.tool.output", "gen_ai.tool.message"],
         changelog=[
@@ -10541,6 +11403,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example='[{"type": "function", "name": "get_current_weather", "description": "Get the current weather in a given location", "parameters": {"type": "object", "properties": {"location": {"type": "string", "description": "The city and state, e.g. San Francisco, CA"}, "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]}}, "required": ["location", "unit"]}}]',
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[221]),
@@ -10551,6 +11414,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="Searches the web for current information about a topic",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[62, 127]),
@@ -10561,6 +11425,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example='{"location": "Paris"}',
         deprecation=DeprecationInfo(
             replacement="gen_ai.tool.call.arguments", status=DeprecationStatus.NORMALIZE
@@ -10576,6 +11441,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="rainy, 57°F",
         deprecation=DeprecationInfo(
             replacement="gen_ai.tool.call.result", status=DeprecationStatus.NORMALIZE
@@ -10591,6 +11457,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="Flights",
         aliases=["ai.function_call"],
         changelog=[
@@ -10602,6 +11469,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="rainy, 57°F",
         deprecation=DeprecationInfo(
             replacement="gen_ai.tool.call.result", status=DeprecationStatus.NORMALIZE
@@ -10617,6 +11485,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="function",
         deprecation=DeprecationInfo(
             reason="The gen_ai.tool.type attribute is deprecated and should no longer be set."
@@ -10630,6 +11499,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example=10,
         deprecation=DeprecationInfo(
             replacement="gen_ai.usage.output_tokens", status=DeprecationStatus.BACKFILL
@@ -10646,6 +11516,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example=10,
         aliases=["ai.prompt_tokens.used", "gen_ai.usage.prompt_tokens"],
         changelog=[
@@ -10660,6 +11531,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=100,
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[217, 228]),
@@ -10670,6 +11542,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=50,
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -10681,6 +11554,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example=10,
         aliases=["ai.completion_tokens.used", "gen_ai.usage.completion_tokens"],
         changelog=[
@@ -10695,6 +11569,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=75,
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -10706,6 +11581,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example=20,
         deprecation=DeprecationInfo(
             replacement="gen_ai.usage.input_tokens", status=DeprecationStatus.BACKFILL
@@ -10722,6 +11598,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=20,
         aliases=["ai.total_tokens.used"],
         changelog=[
@@ -10737,6 +11614,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="The document may contain sensitive information in arguments or variables. Instrumentation should redact sensitive information when possible.",
         ),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="query findBookById { bookById(id: ?) { name } }",
         changelog=[
             ChangelogEntry(
@@ -10750,6 +11628,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="findBookById",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
@@ -10761,6 +11640,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="query",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
@@ -10772,6 +11652,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="14",
         deprecation=DeprecationInfo(
             replacement="device.processor_count",
@@ -10793,6 +11674,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="example.com",
         deprecation=DeprecationInfo(replacement="client.address"),
         aliases=["client.address"],
@@ -10806,6 +11688,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=456,
         sdks=["javascript-browser"],
         changelog=[
@@ -10818,6 +11701,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="1.1",
         deprecation=DeprecationInfo(replacement="network.protocol.version"),
         aliases=["network.protocol.version", "net.protocol.version"],
@@ -10831,6 +11715,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="#details",
         changelog=[
             ChangelogEntry(version="0.0.0"),
@@ -10841,6 +11726,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="example.com",
         deprecation=DeprecationInfo(
             replacement="server.address",
@@ -10862,6 +11748,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="GET",
         deprecation=DeprecationInfo(
             replacement="http.request.method", status=DeprecationStatus.BACKFILL
@@ -10880,6 +11767,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.",
         ),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="?foo=bar&bar=baz",
         changelog=[
             ChangelogEntry(version="0.0.0"),
@@ -10890,6 +11778,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example='[{"role": "user", "message": "hello"}]',
         changelog=[
             ChangelogEntry(
@@ -10904,6 +11793,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1732829555.111,
         sdks=["javascript-browser"],
         changelog=[
@@ -10917,6 +11807,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1732829555.15,
         sdks=["javascript-browser"],
         changelog=[
@@ -10930,6 +11821,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1732829555.201,
         sdks=["javascript-browser"],
         changelog=[
@@ -10943,6 +11835,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1732829555.322,
         sdks=["javascript-browser"],
         changelog=[
@@ -10956,6 +11849,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1732829555.389,
         sdks=["javascript-browser"],
         changelog=[
@@ -10969,6 +11863,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING_ARRAY,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
         example="http.request.header.custom-header=['foo', 'bar']",
         changelog=[
@@ -10981,6 +11876,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="GET",
         aliases=["method", "http.method", "http.request_method"],
         changelog=[
@@ -10993,6 +11889,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1732829558.502,
         sdks=["javascript-browser"],
         changelog=[
@@ -11005,6 +11902,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1732829555.495,
         sdks=["javascript-browser"],
         changelog=[
@@ -11018,6 +11916,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1732829555.51,
         sdks=["javascript-browser"],
         changelog=[
@@ -11031,6 +11930,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=2,
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -11042,6 +11942,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1732829555.89,
         sdks=["javascript-browser"],
         changelog=[
@@ -11055,6 +11956,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1732829555.7,
         sdks=["javascript-browser"],
         changelog=[
@@ -11068,6 +11970,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1732829555.73,
         sdks=["javascript-browser"],
         changelog=[
@@ -11081,6 +11984,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1.032,
         sdks=["javascript-browser"],
         changelog=[
@@ -11093,6 +11997,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1732829553.68,
         sdks=["javascript-browser"],
         changelog=[
@@ -11105,6 +12010,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="GET",
         deprecation=DeprecationInfo(
             replacement="http.request.method", status=DeprecationStatus.BACKFILL
@@ -11123,6 +12029,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example=123,
         aliases=["http.response_content_length", "http.response.header.content-length"],
         changelog=[
@@ -11136,6 +12043,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING_ARRAY,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
         example="http.response.header.custom-header=['foo', 'bar']",
         changelog=[
@@ -11148,6 +12056,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="http.response.header.custom-header=['foo', 'bar']",
         aliases=["http.response_content_length", "http.response.body.size"],
         changelog=[
@@ -11160,6 +12069,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example=456,
         aliases=["http.response_transfer_size"],
         changelog=[
@@ -11172,6 +12082,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example=404,
         aliases=["http.status_code"],
         changelog=[
@@ -11184,6 +12095,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example=123,
         deprecation=DeprecationInfo(
             replacement="http.response.body.size", status=DeprecationStatus.BACKFILL
@@ -11200,6 +12112,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=456,
         deprecation=DeprecationInfo(
             replacement="http.response.size", status=DeprecationStatus.BACKFILL
@@ -11216,6 +12129,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="/users/:id",
         aliases=["url.template"],
         changelog=[
@@ -11228,6 +12142,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="https",
         deprecation=DeprecationInfo(replacement="url.scheme"),
         aliases=["url.scheme"],
@@ -11241,6 +12156,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=50,
         sdks=["ruby"],
         changelog=[
@@ -11252,6 +12168,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="example.com",
         deprecation=DeprecationInfo(replacement="server.address"),
         aliases=["server.address", "net.host.name", "http.host"],
@@ -11265,6 +12182,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example=404,
         deprecation=DeprecationInfo(replacement="http.response.status_code"),
         aliases=["http.response.status_code"],
@@ -11279,6 +12197,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="/test?foo=bar#buzz",
         deprecation=DeprecationInfo(
             replacement="url.path",
@@ -11294,6 +12213,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="https://example.com/test?foo=bar#buzz",
         deprecation=DeprecationInfo(replacement="url.full"),
         aliases=["url.full", "url"],
@@ -11307,6 +12227,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1",
         deprecation=DeprecationInfo(replacement="user_agent.original"),
         aliases=["user_agent.original"],
@@ -11320,6 +12241,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="f47ac10b58cc4372a5670e02b2c3d479",
         sdks=["php-laravel"],
         changelog=[
@@ -11331,6 +12253,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=200,
         deprecation=DeprecationInfo(
             replacement="browser.web_vital.inp.value",
@@ -11352,6 +12275,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="end of minor GC",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
@@ -11363,6 +12287,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="G1 Young Generation",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
@@ -11374,6 +12299,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="G1 Old Gen",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
@@ -11385,6 +12311,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="G1 Old Gen",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
@@ -11396,6 +12323,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.BOOLEAN,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example=True,
         changelog=[
             ChangelogEntry(version="0.0.0"),
@@ -11406,6 +12334,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="blocked",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
@@ -11417,6 +12346,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="img",
         deprecation=DeprecationInfo(
             replacement="browser.web_vital.lcp.element",
@@ -11435,6 +12365,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="#hero",
         deprecation=DeprecationInfo(
             replacement="browser.web_vital.lcp.id",
@@ -11453,6 +12384,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1402,
         deprecation=DeprecationInfo(
             replacement="browser.web_vital.lcp.load_time",
@@ -11470,6 +12402,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1685,
         deprecation=DeprecationInfo(
             replacement="browser.web_vital.lcp.render_time",
@@ -11487,6 +12420,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1234,
         deprecation=DeprecationInfo(
             replacement="browser.web_vital.lcp.size",
@@ -11505,6 +12439,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="https://example.com",
         deprecation=DeprecationInfo(
             replacement="browser.web_vital.lcp.url",
@@ -11523,6 +12458,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=2500,
         deprecation=DeprecationInfo(
             replacement="browser.web_vital.lcp.value",
@@ -11544,6 +12480,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="myLogger",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
@@ -11558,6 +12495,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="Cancellation reasons may contain user-specific or sensitive information",
         ),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="User cancelled the request",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[171]),
@@ -11568,6 +12506,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="123",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[171]),
@@ -11578,6 +12517,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="claude-desktop",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[171]),
@@ -11591,6 +12531,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="Client titles may reveal user-specific application configurations or custom setups",
         ),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="Claude Desktop",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[171]),
@@ -11601,6 +12542,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="1.0.0",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[171]),
@@ -11611,6 +12553,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="initialization_complete",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[171]),
@@ -11621,6 +12564,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="string",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[171]),
@@ -11631,6 +12575,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="info",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[171]),
@@ -11644,6 +12589,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="Logger names may be user-defined and could contain sensitive information",
         ),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="mcp_server",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[171]),
@@ -11654,6 +12600,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.TRUE, reason="Log messages can contain user data"),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="Tool execution completed successfully",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[171]),
@@ -11664,6 +12611,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="tools/call",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[171]),
@@ -11674,6 +12622,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=50,
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -11688,6 +12637,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="Progress messages may contain user-specific or sensitive information",
         ),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="Processing 50 of 100 items",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[171]),
@@ -11698,6 +12648,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=50,
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -11709,6 +12660,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="progress-token-123",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[171]),
@@ -11719,6 +12671,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=100,
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -11733,6 +12686,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="Prompt names may reveal user behavior patterns or sensitive operations",
         ),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="summarize",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[171]),
@@ -11743,6 +12697,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="A summary of the requested information",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[171]),
@@ -11753,6 +12708,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="Please provide a summary of the document",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[171]),
@@ -11763,6 +12719,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=3,
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -11774,6 +12731,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="user",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[171]),
@@ -11784,6 +12742,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1,
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -11795,6 +12754,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="2024-11-05",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[171]),
@@ -11805,6 +12765,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.TRUE, reason="Arguments contain user input"),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
         example="mcp.request.argument.query='weather in Paris'",
         changelog=[
@@ -11816,6 +12777,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.TRUE, reason="Prompt names can contain user input"),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="summarize",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[171]),
@@ -11826,6 +12788,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.TRUE, reason="URIs can contain user file paths"),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="file:///path/to/resource",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[171]),
@@ -11836,6 +12799,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="1",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[171]),
@@ -11846,6 +12810,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="file",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[171]),
@@ -11856,6 +12821,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.TRUE, reason="URIs can contain sensitive file paths"),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="file:///path/to/file.txt",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[171]),
@@ -11866,6 +12832,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="sentry-mcp-server",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[171]),
@@ -11879,6 +12846,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="Server titles may reveal user-specific application configurations or custom setups",
         ),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="Sentry MCP Server",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[171]),
@@ -11889,6 +12857,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="0.1.0",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[171]),
@@ -11899,6 +12868,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="550e8400-e29b-41d4-a716-446655440000",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[171]),
@@ -11909,6 +12879,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="calculator",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[171]),
@@ -11919,6 +12890,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.TRUE, reason="Tool results can contain user data"),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example='{"output": "rainy", "toolCallId": "1"}',
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[171]),
@@ -11930,6 +12902,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1,
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -11941,6 +12914,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.BOOLEAN,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=False,
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[171]),
@@ -11951,6 +12925,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="stdio",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[171]),
@@ -11961,6 +12936,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
         example="mdc.some_key='some_value'",
         sdks=["java", "java.logback", "java.jul", "java.log4j2"],
@@ -11973,6 +12949,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example=10,
         sdks=["javascript-cloudflare"],
         changelog=[
@@ -11988,6 +12965,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="BestTopic",
         sdks=["php-laravel"],
         changelog=[
@@ -12000,6 +12978,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="BestTopic",
         sdks=["php-laravel"],
         changelog=[
@@ -12012,6 +12991,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example=839,
         sdks=["php-laravel"],
         changelog=[
@@ -12024,6 +13004,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example=1045,
         sdks=["php-laravel"],
         changelog=[
@@ -12036,6 +13017,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="f47ac10b58cc4372a5670e02b2c3d479",
         sdks=["php-laravel"],
         changelog=[
@@ -12048,6 +13030,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1732847252,
         sdks=["php-laravel"],
         changelog=[
@@ -12060,6 +13043,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=2,
         sdks=["php-laravel"],
         changelog=[
@@ -12072,6 +13056,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="create",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[51, 127]),
@@ -12082,6 +13067,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="activemq",
         sdks=["php-laravel"],
         changelog=[
@@ -12094,6 +13080,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="GET",
         deprecation=DeprecationInfo(replacement="http.request.method"),
         aliases=["http.request.method", "http.request_method", "http.method"],
@@ -12108,6 +13095,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="AuthenticationMiddleware",
         sdks=["python"],
         changelog=[
@@ -12123,6 +13111,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="router.push",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
@@ -12134,6 +13123,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=100,
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -12145,6 +13135,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="application",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[68, 127]),
@@ -12155,6 +13146,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="https://example.com/foo?bar=baz",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[68, 127]),
@@ -12165,6 +13157,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=0.5,
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -12176,6 +13169,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="dns.unreachable",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[68, 127]),
@@ -12186,6 +13180,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="192.168.0.1",
         deprecation=DeprecationInfo(replacement="network.local.address"),
         aliases=["network.local.address", "net.sock.host.addr"],
@@ -12199,6 +13194,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="example.com",
         deprecation=DeprecationInfo(replacement="server.address"),
         aliases=["server.address", "http.server_name", "http.host"],
@@ -12212,6 +13208,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example=1337,
         deprecation=DeprecationInfo(replacement="server.port"),
         aliases=["server.port"],
@@ -12226,6 +13223,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="192.168.0.1",
         deprecation=DeprecationInfo(replacement="network.peer.address"),
         aliases=["network.peer.address", "net.sock.peer.addr"],
@@ -12239,6 +13237,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="example.com",
         deprecation=DeprecationInfo(
             replacement="server.address",
@@ -12254,6 +13253,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example=1337,
         deprecation=DeprecationInfo(
             replacement="server.port",
@@ -12270,6 +13270,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="http",
         deprecation=DeprecationInfo(replacement="network.protocol.name"),
         aliases=["network.protocol.name"],
@@ -12283,6 +13284,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="1.1",
         deprecation=DeprecationInfo(replacement="network.protocol.version"),
         aliases=["network.protocol.version", "http.flavor"],
@@ -12296,6 +13298,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="inet",
         deprecation=DeprecationInfo(
             replacement="network.transport",
@@ -12311,6 +13314,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="/var/my.sock",
         deprecation=DeprecationInfo(replacement="network.local.address"),
         aliases=["network.local.address", "net.host.ip"],
@@ -12324,6 +13328,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example=8080,
         deprecation=DeprecationInfo(replacement="network.local.port"),
         aliases=["network.local.port"],
@@ -12338,6 +13343,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="192.168.0.1",
         deprecation=DeprecationInfo(replacement="network.peer.address"),
         aliases=["network.peer.address", "net.peer.ip"],
@@ -12351,6 +13357,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="/var/my.sock",
         deprecation=DeprecationInfo(
             reason="Deprecated from OTEL, no replacement at this time"
@@ -12365,6 +13372,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example=8080,
         deprecation=DeprecationInfo(replacement="network.peer.port"),
         changelog=[
@@ -12378,6 +13386,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="tcp",
         deprecation=DeprecationInfo(replacement="network.transport"),
         aliases=["network.transport"],
@@ -12391,6 +13400,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="4g",
         aliases=["effectiveConnectionType"],
         sdks=["javascript-browser"],
@@ -12407,6 +13417,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=100,
         aliases=["connection.rtt"],
         sdks=["javascript-browser"],
@@ -12423,6 +13434,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="wifi",
         aliases=["device.connection_type", "connectionType"],
         sdks=["javascript-browser"],
@@ -12439,6 +13451,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="10.1.2.80",
         aliases=["net.host.ip", "net.sock.host.addr"],
         changelog=[
@@ -12451,6 +13464,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example=65400,
         aliases=["net.sock.host.port"],
         changelog=[
@@ -12463,6 +13477,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="10.1.2.80",
         aliases=["net.peer.ip", "net.sock.peer.addr"],
         changelog=[
@@ -12475,6 +13490,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example=65400,
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -12486,6 +13502,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="http",
         aliases=["net.protocol.name"],
         changelog=[
@@ -12498,6 +13515,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="1.1",
         aliases=["http.flavor", "net.protocol.version"],
         changelog=[
@@ -12510,6 +13528,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="tcp",
         aliases=["net.transport"],
         changelog=[
@@ -12522,6 +13541,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="ipv4",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
@@ -12533,6 +13553,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="1234567890",
         deprecation=DeprecationInfo(
             replacement="os.build_id", status=DeprecationStatus.BACKFILL
@@ -12551,6 +13572,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="1234567890",
         aliases=["os.build"],
         changelog=[
@@ -12566,6 +13588,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="Ubuntu 18.04.1 LTS",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
@@ -12577,6 +13600,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="20.2.0",
         changelog=[
             ChangelogEntry(
@@ -12591,6 +13615,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="Ubuntu",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
@@ -12602,6 +13627,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="Ubuntu 22.04.4 LTS (Jammy Jellyfish)",
         changelog=[
             ChangelogEntry(
@@ -12616,6 +13642,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.BOOLEAN,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=True,
         changelog=[
             ChangelogEntry(
@@ -12628,6 +13655,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="dark",
         changelog=[
             ChangelogEntry(
@@ -12640,6 +13668,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="linux",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
@@ -12651,6 +13680,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="18.04.2",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
@@ -12662,6 +13692,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="io.opentelemetry.contrib.mongodb",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
@@ -12673,6 +13704,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="2.4.5",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
@@ -12684,6 +13716,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="OK",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
@@ -12695,6 +13728,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="resource not found",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
@@ -12706,6 +13740,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
         example="params.id='123'",
         aliases=["url.path.parameter.<key>"],
@@ -12718,6 +13753,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1.983,
         deprecation=DeprecationInfo(
             replacement="browser.performance.navigation.activation_start",
@@ -12739,6 +13775,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1776185678.886,
         deprecation=DeprecationInfo(
             replacement="browser.performance.time_origin",
@@ -12760,6 +13797,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="HomeScreen",
         sdks=["javascript-reactnative"],
         changelog=[
@@ -12772,6 +13810,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING_ARRAY,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example=["cmd/otecol", "--config=config.yaml"],
         sdks=["python"],
         changelog=[
@@ -12787,6 +13826,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="getsentry",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
@@ -12798,6 +13838,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example=12345,
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -12809,6 +13850,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="Eclipse OpenJ9 VM openj9-0.21.0",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
@@ -12820,6 +13862,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="v8",
         changelog=[
             ChangelogEntry(version="0.0.0"),
@@ -12830,6 +13873,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="12.9.202.13-rusty",
         changelog=[
             ChangelogEntry(version="0.0.0"),
@@ -12840,6 +13884,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="node",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
@@ -12851,6 +13896,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="18.04.2",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
@@ -12862,6 +13908,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
         example="query.id='123'",
         deprecation=DeprecationInfo(
@@ -12877,6 +13924,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="18.2.0",
         changelog=[
             ChangelogEntry(
@@ -12889,6 +13937,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="production",
         deprecation=DeprecationInfo(replacement="sentry.release"),
         aliases=["sentry.release"],
@@ -12902,6 +13951,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
         example="http.response.header.text='test'",
         sdks=["javascript-remix"],
@@ -12914,6 +13964,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="123e4567e89b12d3a456426614174000",
         deprecation=DeprecationInfo(replacement="sentry.replay_id"),
         aliases=["sentry.replay_id"],
@@ -12927,6 +13978,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="production",
         deprecation=DeprecationInfo(
             replacement="sentry.environment", status=DeprecationStatus.BACKFILL
@@ -12940,6 +13992,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="production",
         deprecation=DeprecationInfo(
             replacement="sentry.environment", status=DeprecationStatus.BACKFILL
@@ -12953,6 +14006,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="non-blocking",
         sdks=["javascript-browser"],
         changelog=[
@@ -12965,6 +14019,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="App\\Controller::indexAction",
         deprecation=DeprecationInfo(replacement="http.route"),
         aliases=["http.route"],
@@ -12979,6 +14034,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example=2,
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -12990,6 +14046,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="com.example.ExampleService/exampleMethod",
         changelog=[
             ChangelogEntry(
@@ -13002,6 +14059,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="DEADLINE_EXCEEDED",
         changelog=[
             ChangelogEntry(
@@ -13016,6 +14074,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="myService.BestService",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
@@ -13027,6 +14086,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
         example="score.cls=0.1723",
         changelog=[
@@ -13040,6 +14100,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
         example="score.ratio.inp=0.7748",
         changelog=[
@@ -13055,6 +14116,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         changelog=[
             ChangelogEntry(
                 version="0.7.0", prs=[355], description="Added score.total attribute"
@@ -13066,6 +14128,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
         example="score.weight.fcp=0.25",
         changelog=[
@@ -13081,6 +14144,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="SELECT",
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[212]),
@@ -13091,6 +14155,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="Chrome",
         deprecation=DeprecationInfo(replacement="browser.name"),
         aliases=["browser.name"],
@@ -13103,6 +14168,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="120.0.6099.130",
         deprecation=DeprecationInfo(replacement="browser.version"),
         aliases=["browser.version"],
@@ -13115,6 +14181,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="document.hidden",
         changelog=[
             ChangelogEntry(version="0.0.0"),
@@ -13125,6 +14192,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="db",
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[218]),
@@ -13135,6 +14203,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=0.5,
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[102]),
@@ -13145,6 +14214,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="index view query",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[135]),
@@ -13155,6 +14225,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="1.0",
         changelog=[
             ChangelogEntry(version="0.0.0"),
@@ -13165,6 +14236,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="example.com",
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[212]),
@@ -13175,6 +14247,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.INTERNAL,
         example="prod",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[185]),
@@ -13185,6 +14258,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.INTERNAL,
         example=12345,
         changelog=[
             ChangelogEntry(
@@ -13199,6 +14273,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.INTERNAL,
         example="c51734c603c4430eb57cb0a5728a479d",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[185]),
@@ -13209,6 +14284,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.INTERNAL,
         example="frontend@e8211be71b214afab5b85de4b4c54be3714952bb",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[185]),
@@ -13219,6 +14295,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.INTERNAL,
         example="1.0",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[185]),
@@ -13229,6 +14306,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.BOOLEAN,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.INTERNAL,
         example=True,
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[185]),
@@ -13239,6 +14317,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.INTERNAL,
         example="047372980460430cbc78d9779df33a46",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[185]),
@@ -13249,6 +14328,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.INTERNAL,
         example="/issues/errors-outages/",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[185]),
@@ -13259,6 +14339,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="production",
         aliases=["environment"],
         changelog=[
@@ -13270,6 +14351,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1234,
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -13282,6 +14364,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="getUserById",
         changelog=[
             ChangelogEntry(version="0.3.1", prs=[190]),
@@ -13292,6 +14375,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[212]),
         ],
@@ -13301,6 +14385,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.BOOLEAN,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=True,
         changelog=[
             ChangelogEntry(version="0.0.0"),
@@ -13311,6 +14396,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="idleTimeout",
         changelog=[
             ChangelogEntry(version="0.0.0"),
@@ -13321,6 +14407,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.BOOLEAN,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=True,
         changelog=[
             ChangelogEntry(version="0.3.1", prs=[190]),
@@ -13331,6 +14418,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="server",
         changelog=[
             ChangelogEntry(version="0.3.1", prs=[190]),
@@ -13341,6 +14429,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.BOOLEAN,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=True,
         changelog=[
             ChangelogEntry(version="0.5.0"),
@@ -13351,6 +14440,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="sentry.message.parameter.0='123'",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[116]),
@@ -13361,6 +14451,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="Hello, {name}!",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[116]),
@@ -13371,6 +14462,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.BOOLEAN,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=True,
         changelog=[
             ChangelogEntry(version="0.5.0"),
@@ -13381,6 +14473,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
         example="sentry.module.brianium/paratest='v7.7.0'",
         changelog=[
@@ -13392,6 +14485,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="/posts/[id]/layout",
         sdks=["javascript"],
         changelog=[
@@ -13403,6 +14497,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="generateMetadata",
         sdks=["javascript"],
         changelog=[
@@ -13414,6 +14509,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="SELECT .. FROM sentry_project WHERE (project_id = %s)",
         changelog=[
             ChangelogEntry(version="0.3.1", prs=[194]),
@@ -13424,6 +14520,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[200]),
         ],
@@ -13433,6 +14530,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="SELECT .. FROM sentry_project WHERE (project_id = %s)",
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[212]),
@@ -13443,6 +14541,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="1544712660300000000",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[174]),
@@ -13454,6 +14553,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="http.client",
         changelog=[
             ChangelogEntry(version="0.0.0"),
@@ -13464,6 +14564,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="auto.http.otel.fastify",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[68]),
@@ -13475,6 +14576,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="php",
         changelog=[
             ChangelogEntry(version="0.0.0"),
@@ -13485,6 +14587,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="123e4567e89b12d3a456426614174000",
         changelog=[
             ChangelogEntry(
@@ -13499,6 +14602,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="18779b64dd35d1a538e7ce2dd2d3fad3",
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[242]),
@@ -13509,6 +14613,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="7.0.0",
         aliases=["service.version", "release"],
         changelog=[
@@ -13520,6 +14625,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="123e4567e89b12d3a456426614174000",
         aliases=["replay_id"],
         changelog=[
@@ -13531,6 +14637,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.BOOLEAN,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=True,
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[185]),
@@ -13541,6 +14648,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="pagehide",
         deprecation=DeprecationInfo(
             reason="The report event is now recorded as a browser.web_vital.lcp.report_event or browser.web_vital.cls.report_event attribute. No backfill required."
@@ -13559,6 +14667,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING_ARRAY,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=[
             "InboundFilters",
             "FunctionToString",
@@ -13574,6 +14683,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="@sentry/react",
         changelog=[
             ChangelogEntry(version="0.0.0"),
@@ -13584,6 +14694,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="7.0.0",
         changelog=[
             ChangelogEntry(version="0.0.0"),
@@ -13594,6 +14705,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="051581bf3cb55c13",
         aliases=["sentry.segment_id"],
         changelog=[
@@ -13605,6 +14717,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="GET /user",
         aliases=["sentry.transaction", "transaction"],
         changelog=[
@@ -13621,6 +14734,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="051581bf3cb55c13",
         deprecation=DeprecationInfo(
             replacement="sentry.segment.id", status=DeprecationStatus.BACKFILL
@@ -13635,6 +14749,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=0.5,
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[102]),
@@ -13645,6 +14760,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="route",
         deprecation=DeprecationInfo(
             replacement="sentry.span.source",
@@ -13660,6 +14776,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="route",
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[214]),
@@ -13671,6 +14788,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="foobar",
         changelog=[
             ChangelogEntry(version="0.3.1", prs=[190]),
@@ -13681,6 +14799,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=200,
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[223, 228]),
@@ -13691,6 +14810,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=0,
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[262]),
@@ -13701,6 +14821,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="b0e6f15b45c36b12",
         deprecation=DeprecationInfo(),
         changelog=[
@@ -13717,6 +14838,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="GET /",
         deprecation=DeprecationInfo(
             replacement="sentry.segment.name",
@@ -13738,6 +14860,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="example.com",
         aliases=["http.server_name", "net.host.name", "http.host"],
         changelog=[
@@ -13750,6 +14873,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example=1337,
         aliases=["net.host.port"],
         changelog=[
@@ -13762,6 +14886,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="omegastar",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
@@ -13773,6 +14898,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="5.0.0",
         aliases=["sentry.release"],
         changelog=[
@@ -13785,6 +14911,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         changelog=[
             ChangelogEntry(
                 version="0.7.0",
@@ -13798,6 +14925,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         changelog=[
             ChangelogEntry(
                 version="0.7.0",
@@ -13811,6 +14939,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="redux",
         changelog=[
             ChangelogEntry(
@@ -13823,6 +14952,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example=56,
         changelog=[
             ChangelogEntry(version="0.0.0"),
@@ -13833,6 +14963,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="main",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
@@ -13844,6 +14975,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="MyTag",
         sdks=["sentry.java.android"],
         changelog=[
@@ -13855,6 +14987,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1234.56,
         deprecation=DeprecationInfo(
             replacement="app.vitals.ttfd.value",
@@ -13881,6 +15014,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1234.56,
         deprecation=DeprecationInfo(
             replacement="app.vitals.ttid.value",
@@ -13907,6 +15041,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="GET /",
         deprecation=DeprecationInfo(
             replacement="sentry.segment.name", status=DeprecationStatus.BACKFILL
@@ -13927,6 +15062,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="user.getById",
         changelog=[
             ChangelogEntry(
@@ -13941,6 +15077,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="query",
         changelog=[
             ChangelogEntry(
@@ -13955,6 +15092,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1554.5814,
         deprecation=DeprecationInfo(
             replacement="browser.web_vital.ttfb.request_time",
@@ -13972,6 +15110,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=194,
         deprecation=DeprecationInfo(
             replacement="browser.web_vital.ttfb.value",
@@ -13989,6 +15128,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="fetch",
         sdks=["javascript-browser", "javascript-node"],
         changelog=[
@@ -14000,6 +15140,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="HomeButton",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
@@ -14011,6 +15152,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.BOOLEAN,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=True,
         changelog=[
             ChangelogEntry(version="0.0.0"),
@@ -14021,6 +15163,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.BOOLEAN,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=True,
         changelog=[
             ChangelogEntry(version="0.0.0"),
@@ -14031,6 +15174,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=256,
         sdks=["javascript-browser"],
         changelog=[
@@ -14046,6 +15190,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="btn-login",
         sdks=["javascript-browser"],
         changelog=[
@@ -14059,6 +15204,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="heroImage",
         sdks=["javascript-browser"],
         changelog=[
@@ -14074,6 +15220,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=998.2234,
         sdks=["javascript-browser"],
         changelog=[
@@ -14089,6 +15236,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="image-paint",
         sdks=["javascript-browser"],
         changelog=[
@@ -14104,6 +15252,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.DOUBLE,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1023.1124,
         sdks=["javascript-browser"],
         changelog=[
@@ -14119,6 +15268,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="img",
         sdks=["javascript-browser"],
         changelog=[
@@ -14134,6 +15284,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="https://assets.myapp.com/hero.png",
         sdks=["javascript-browser"],
         changelog=[
@@ -14147,6 +15298,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=512,
         sdks=["javascript-browser"],
         changelog=[
@@ -14162,6 +15314,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="example.com",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
@@ -14173,6 +15326,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="details",
         changelog=[
             ChangelogEntry(version="0.0.0"),
@@ -14183,6 +15337,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="https://example.com/test?foo=bar#buzz",
         aliases=["http.url", "url"],
         changelog=[
@@ -14195,6 +15350,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="/foo",
         changelog=[
             ChangelogEntry(version="0.0.0"),
@@ -14205,6 +15361,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
         example="url.path.parameter.id='123'",
         aliases=["params.<key>"],
@@ -14217,6 +15374,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example=1337,
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -14231,6 +15389,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.",
         ),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="foo=bar&bar=baz",
         changelog=[
             ChangelogEntry(version="0.0.0"),
@@ -14241,6 +15400,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="https",
         aliases=["http.scheme"],
         changelog=[
@@ -14253,6 +15413,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="/users/:id",
         aliases=["http.route"],
         changelog=[
@@ -14265,6 +15426,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="https://example.com/test?foo=bar#buzz",
         deprecation=DeprecationInfo(replacement="url.full"),
         aliases=["url.full", "http.url"],
@@ -14279,6 +15441,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="test@example.com",
         changelog=[
             ChangelogEntry(version="0.0.0"),
@@ -14289,6 +15452,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="John Smith",
         changelog=[
             ChangelogEntry(version="0.0.0"),
@@ -14299,6 +15463,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="Toronto",
         changelog=[
             ChangelogEntry(version="0.0.0"),
@@ -14309,6 +15474,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="CA",
         changelog=[
             ChangelogEntry(version="0.0.0"),
@@ -14319,6 +15485,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="Canada",
         changelog=[
             ChangelogEntry(version="0.0.0"),
@@ -14329,6 +15496,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="Ontario",
         changelog=[
             ChangelogEntry(version="0.0.0"),
@@ -14339,6 +15507,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="8ae4c2993e0f4f3b8b2d1b1f3b5e8f4d",
         changelog=[
             ChangelogEntry(version="0.0.0"),
@@ -14349,6 +15518,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="S-1-5-21-202424912787-2692429404-2351956786-1000",
         changelog=[
             ChangelogEntry(version="0.0.0"),
@@ -14359,6 +15529,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="192.168.1.1",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[75]),
@@ -14369,6 +15540,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="j.smith",
         changelog=[
             ChangelogEntry(version="0.0.0"),
@@ -14379,6 +15551,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING_ARRAY,
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example=["admin", "editor"],
         changelog=[
             ChangelogEntry(version="0.0.0"),
@@ -14389,6 +15562,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1",
         aliases=["http.user_agent"],
         changelog=[
@@ -14401,6 +15575,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="main",
         changelog=[
             ChangelogEntry(version="0.2.0", prs=[163]),
@@ -14411,6 +15586,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="bld_cotnkcr76",
         changelog=[
             ChangelogEntry(version="0.2.0", prs=[163]),
@@ -14421,6 +15597,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="dpl_233NRGRjVZX1caZrXWtz5g1TAksD",
         changelog=[
             ChangelogEntry(version="0.2.0", prs=[163]),
@@ -14431,6 +15608,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="https://vitals.vercel-insights.com/v1",
         changelog=[
             ChangelogEntry(version="0.2.0", prs=[163]),
@@ -14441,6 +15619,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="edge-function",
         changelog=[
             ChangelogEntry(version="0.2.0", prs=[163]),
@@ -14451,6 +15630,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="api/index.js",
         changelog=[
             ChangelogEntry(version="0.2.0", prs=[163]),
@@ -14461,6 +15641,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="sfo1",
         changelog=[
             ChangelogEntry(version="0.2.0", prs=[163]),
@@ -14471,6 +15652,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="1573817187330377061717300000",
         changelog=[
             ChangelogEntry(version="0.2.0", prs=[163]),
@@ -14481,6 +15663,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="769,47-53-5-10-49161-49162-49171-49172-50-56-19-4,0-10-11,23-24-25,0",
         changelog=[
             ChangelogEntry(version="0.2.0", prs=[163]),
@@ -14491,6 +15674,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="t13d1516h2_8daaf6152771_02713d6af862",
         changelog=[
             ChangelogEntry(version="0.2.0", prs=[163]),
@@ -14501,6 +15685,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="stdout",
         changelog=[
             ChangelogEntry(version="0.2.0", prs=[163]),
@@ -14511,6 +15696,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="/dynamic/[route].json",
         changelog=[
             ChangelogEntry(
@@ -14523,6 +15709,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="gdufoJxB6b9b1fEqr1jUtFkyavUU",
         changelog=[
             ChangelogEntry(version="0.2.0", prs=[163]),
@@ -14533,6 +15720,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="my-app",
         changelog=[
             ChangelogEntry(version="0.2.0", prs=[163]),
@@ -14543,6 +15731,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="pdx1::v8g4b-1744143786684-93dafbc0f70d",
         changelog=[
             ChangelogEntry(version="0.2.0", prs=[163]),
@@ -14553,6 +15742,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="120.75.16.101",
         changelog=[
             ChangelogEntry(version="0.2.0", prs=[163]),
@@ -14563,6 +15753,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="test.vercel.app",
         changelog=[
             ChangelogEntry(version="0.2.0", prs=[163]),
@@ -14573,6 +15764,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="sfo1",
         changelog=[
             ChangelogEntry(version="0.2.0", prs=[163]),
@@ -14583,6 +15775,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="GET",
         changelog=[
             ChangelogEntry(version="0.2.0", prs=[163]),
@@ -14593,6 +15786,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="/dynamic/some-value.json?route=some-value",
         changelog=[
             ChangelogEntry(version="0.2.0", prs=[163]),
@@ -14603,6 +15797,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="func",
         changelog=[
             ChangelogEntry(version="0.2.0", prs=[163]),
@@ -14613,6 +15808,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="api",
         changelog=[
             ChangelogEntry(version="0.2.0", prs=[163]),
@@ -14623,6 +15819,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="*.vercel.app",
         changelog=[
             ChangelogEntry(version="0.2.0", prs=[163]),
@@ -14633,6 +15830,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="sfo1",
         changelog=[
             ChangelogEntry(version="0.2.0", prs=[163]),
@@ -14643,6 +15841,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1024,
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -14654,6 +15853,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="https",
         changelog=[
             ChangelogEntry(version="0.2.0", prs=[163]),
@@ -14664,6 +15864,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=200,
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -14675,6 +15876,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1573817250172,
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -14686,6 +15888,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING_ARRAY,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=["Mozilla/5.0..."],
         changelog=[
             ChangelogEntry(version="0.2.0", prs=[163]),
@@ -14696,6 +15899,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="REVALIDATED",
         changelog=[
             ChangelogEntry(version="0.2.0", prs=[163]),
@@ -14706,6 +15910,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="sfo1::abc123",
         changelog=[
             ChangelogEntry(version="0.2.0", prs=[163]),
@@ -14716,6 +15921,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="deny",
         changelog=[
             ChangelogEntry(version="0.2.0", prs=[163]),
@@ -14726,6 +15932,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="rule_gAHz8jtSB1Gy",
         changelog=[
             ChangelogEntry(version="0.2.0", prs=[163]),
@@ -14736,6 +15943,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="643af4e3-975a-4cc7-9e7a-1eda11539d90",
         changelog=[
             ChangelogEntry(version="0.2.0", prs=[163]),
@@ -14746,6 +15954,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="build",
         changelog=[
             ChangelogEntry(version="0.2.0", prs=[163]),
@@ -14756,6 +15965,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=200,
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),

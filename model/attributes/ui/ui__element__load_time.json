@@ -8,6 +8,7 @@
   "is_in_otel": false,
   "example": 998.2234,
   "sdks": ["javascript-browser"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.5.0",
