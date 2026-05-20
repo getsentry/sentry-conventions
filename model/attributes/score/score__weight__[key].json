@@ -10,7 +10,7 @@
   "example": "score.weight.fcp=0.25",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.7.0",
       "prs": [355],
       "description": "Added score.weight.<key> attribute"
     }

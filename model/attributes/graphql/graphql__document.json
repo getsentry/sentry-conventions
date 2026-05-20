@@ -10,7 +10,7 @@
   "example": "query findBookById { bookById(id: ?) { name } }",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.7.0",
       "description": "Adds the `graphql.document` attribute to track the GraphQL document being executed."
     }
   ]

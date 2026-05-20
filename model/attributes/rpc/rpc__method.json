@@ -9,7 +9,7 @@
   "example": "com.example.ExampleService/exampleMethod",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.7.0",
       "prs": [351],
       "description": "Added rpc.method attribute"
     }

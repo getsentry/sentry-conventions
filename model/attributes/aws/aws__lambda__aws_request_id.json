@@ -9,7 +9,7 @@
   "example": "8476a536-e9f4-11e8-9739-2dfe598c3fcd",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.7.0",
       "prs": [369],
       "description": "Added aws.lambda.aws_request_id attribute"
     }

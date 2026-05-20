@@ -9,7 +9,7 @@
   "example": "user.getById",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.7.0",
       "prs": [370],
       "description": "Added trpc.procedure_path attribute"
     }

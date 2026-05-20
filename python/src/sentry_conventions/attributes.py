@@ -7439,7 +7439,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="17.1.0",
         changelog=[
             ChangelogEntry(
-                version="next", prs=[367], description="Added angular.version attribute"
+                version="0.7.0",
+                prs=[367],
+                description="Added angular.version attribute",
             ),
         ],
     ),
@@ -7808,7 +7810,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.7.0",
                 prs=[353],
                 description="Added app.vitals.start.reason attribute",
             ),
@@ -7829,7 +7831,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.7.0",
                 prs=[353],
                 description="Added app.vitals.start.screen attribute",
             ),
@@ -8001,7 +8003,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="/aws/lambda/my-function",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.7.0",
                 prs=[369],
                 description="Added aws.cloudwatch.logs.log_group attribute",
             ),
@@ -8015,7 +8017,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="2024/01/01/[$LATEST]abcdef1234567890",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.7.0",
                 prs=[369],
                 description="Added aws.cloudwatch.logs.log_stream attribute",
             ),
@@ -8029,7 +8031,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups/log-group/my-log-group",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.7.0",
                 prs=[369],
                 description="Added aws.cloudwatch.logs.url attribute",
             ),
@@ -8043,7 +8045,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="8476a536-e9f4-11e8-9739-2dfe598c3fcd",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.7.0",
                 prs=[369],
                 description="Added aws.lambda.aws_request_id attribute",
             ),
@@ -8057,7 +8059,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=1234.56,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.7.0",
                 prs=[369],
                 description="Added aws.lambda.execution_duration_in_millis attribute",
             ),
@@ -8071,7 +8073,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="my-function",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.7.0",
                 prs=[369],
                 description="Added aws.lambda.function_name attribute",
             ),
@@ -8085,7 +8087,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="$LATEST",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.7.0",
                 prs=[369],
                 description="Added aws.lambda.function_version attribute",
             ),
@@ -8099,7 +8101,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="arn:aws:lambda:us-east-1:123456789012:function:my-function",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.7.0",
                 prs=[369],
                 description="Added aws.lambda.invoked_function_arn attribute",
             ),
@@ -8113,7 +8115,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=5000,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.7.0",
                 prs=[369],
                 description="Added aws.lambda.remaining_time_in_millis attribute",
             ),
@@ -8552,7 +8554,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="123456789012",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.7.0",
                 prs=[364],
                 description="Added cloud.account.id attribute",
             ),
@@ -8566,7 +8568,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="us-east-1c",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.7.0",
                 prs=[364],
                 description="Added cloud.availability_zone attribute",
             ),
@@ -8580,7 +8582,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="aws_lambda",
         changelog=[
             ChangelogEntry(
-                version="next", prs=[364], description="Added cloud.platform attribute"
+                version="0.7.0", prs=[364], description="Added cloud.platform attribute"
             ),
         ],
     ),
@@ -8592,7 +8594,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="aws",
         changelog=[
             ChangelogEntry(
-                version="next", prs=[364], description="Added cloud.provider attribute"
+                version="0.7.0", prs=[364], description="Added cloud.provider attribute"
             ),
         ],
     ),
@@ -8604,7 +8606,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="us-east-1",
         changelog=[
             ChangelogEntry(
-                version="next", prs=[364], description="Added cloud.region attribute"
+                version="0.7.0", prs=[364], description="Added cloud.region attribute"
             ),
         ],
     ),
@@ -9906,7 +9908,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.7.0",
                 prs=[362],
                 description="Added frames_frozen_rate attribute",
             ),
@@ -9919,7 +9921,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.7.0",
                 prs=[362],
                 description="Added frames_slow_rate attribute",
             ),
@@ -9949,7 +9951,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="1234567890",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.7.0",
                 prs=[371],
                 description="Added gcp.function.context.event_id attribute",
             ),
@@ -9963,7 +9965,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="google.pubsub.topic.publish",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.7.0",
                 prs=[371],
                 description="Added gcp.function.context.event_type attribute",
             ),
@@ -9977,7 +9979,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="1234567890",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.7.0",
                 prs=[371],
                 description="Added gcp.function.context.id attribute",
             ),
@@ -9991,7 +9993,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="projects/my-project/topics/my-topic",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.7.0",
                 prs=[371],
                 description="Added gcp.function.context.resource attribute",
             ),
@@ -10005,7 +10007,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="//pubsub.googleapis.com/projects/my-project/topics/my-topic",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.7.0",
                 prs=[371],
                 description="Added gcp.function.context.source attribute",
             ),
@@ -10019,7 +10021,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="1.0",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.7.0",
                 prs=[371],
                 description="Added gcp.function.context.specversion attribute",
             ),
@@ -10033,7 +10035,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="2024-01-01T00:00:00.000Z",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.7.0",
                 prs=[371],
                 description="Added gcp.function.context.time attribute",
             ),
@@ -10047,7 +10049,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="2024-01-01T00:00:00.000Z",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.7.0",
                 prs=[371],
                 description="Added gcp.function.context.timestamp attribute",
             ),
@@ -10061,7 +10063,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="cloud_functions.context",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.7.0",
                 prs=[371],
                 description="Added gcp.function.context.type attribute",
             ),
@@ -10738,7 +10740,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="query findBookById { bookById(id: ?) { name } }",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.7.0",
                 description="Adds the `graphql.document` attribute to track the GraphQL document being executed.",
             ),
         ],
@@ -12878,7 +12880,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="18.2.0",
         changelog=[
             ChangelogEntry(
-                version="next", prs=[368], description="Added react.version attribute"
+                version="0.7.0", prs=[368], description="Added react.version attribute"
             ),
         ],
     ),
@@ -12991,7 +12993,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="com.example.ExampleService/exampleMethod",
         changelog=[
             ChangelogEntry(
-                version="next", prs=[351], description="Added rpc.method attribute"
+                version="0.7.0", prs=[351], description="Added rpc.method attribute"
             ),
         ],
     ),
@@ -13003,7 +13005,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="DEADLINE_EXCEEDED",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.7.0",
                 prs=[352],
                 description="Added rpc.response.status_code attribute",
             ),
@@ -13029,7 +13031,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="score.cls=0.1723",
         changelog=[
             ChangelogEntry(
-                version="next", prs=[355], description="Added score.<key> attribute"
+                version="0.7.0", prs=[355], description="Added score.<key> attribute"
             ),
         ],
     ),
@@ -13042,7 +13044,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="score.ratio.inp=0.7748",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.7.0",
                 prs=[355],
                 description="Added score.ratio.<key> attribute",
             ),
@@ -13055,7 +13057,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         changelog=[
             ChangelogEntry(
-                version="next", prs=[355], description="Added score.total attribute"
+                version="0.7.0", prs=[355], description="Added score.total attribute"
             ),
         ],
     ),
@@ -13068,7 +13070,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="score.weight.fcp=0.25",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.7.0",
                 prs=[355],
                 description="Added score.weight.<key> attribute",
             ),
@@ -13186,7 +13188,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=12345,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.7.0",
                 prs=[358],
                 description="Add sentry.dsc.project_id as an attribute",
             ),
@@ -13785,7 +13787,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.7.0",
                 prs=[362],
                 description="Added stall_percentage attribute",
             ),
@@ -13798,7 +13800,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.7.0",
                 prs=[362],
                 description="Added stall_total_time attribute",
             ),
@@ -13812,7 +13814,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="redux",
         changelog=[
             ChangelogEntry(
-                version="next", prs=[365], description="Added state.type attribute"
+                version="0.7.0", prs=[365], description="Added state.type attribute"
             ),
         ],
     ),
@@ -13928,7 +13930,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="user.getById",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.7.0",
                 prs=[370],
                 description="Added trpc.procedure_path attribute",
             ),
@@ -13942,7 +13944,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="query",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.7.0",
                 prs=[370],
                 description="Added trpc.procedure_type attribute",
             ),

@@ -14344,7 +14344,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '17.1.0',
-    changelog: [{ version: 'next', prs: [367], description: 'Added angular.version attribute' }],
+    changelog: [{ version: '0.7.0', prs: [367], description: 'Added angular.version attribute' }],
   },
   [APP_APP_BUILD]: {
     brief: 'Internal build identifier, as it appears on the platform.',
@@ -14657,7 +14657,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'sentry.dart.flutter',
       'sentry.dotnet.maui',
     ],
-    changelog: [{ version: 'next', prs: [353], description: 'Added app.vitals.start.reason attribute' }],
+    changelog: [{ version: '0.7.0', prs: [353], description: 'Added app.vitals.start.reason attribute' }],
   },
   [APP_VITALS_START_SCREEN]: {
     brief:
@@ -14675,7 +14675,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'sentry.dart.flutter',
       'sentry.dotnet.maui',
     ],
-    changelog: [{ version: 'next', prs: [353], description: 'Added app.vitals.start.screen attribute' }],
+    changelog: [{ version: '0.7.0', prs: [353], description: 'Added app.vitals.start.screen attribute' }],
   },
   [APP_VITALS_START_TYPE]: {
     brief: 'The type of app start, for example `cold` or `warm`',
@@ -14733,7 +14733,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '/aws/lambda/my-function',
-    changelog: [{ version: 'next', prs: [369], description: 'Added aws.cloudwatch.logs.log_group attribute' }],
+    changelog: [{ version: '0.7.0', prs: [369], description: 'Added aws.cloudwatch.logs.log_group attribute' }],
   },
   [AWS_CLOUDWATCH_LOGS_LOG_STREAM]: {
     brief: 'The name of the CloudWatch Logs log stream',
@@ -14743,7 +14743,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '2024/01/01/[$LATEST]abcdef1234567890',
-    changelog: [{ version: 'next', prs: [369], description: 'Added aws.cloudwatch.logs.log_stream attribute' }],
+    changelog: [{ version: '0.7.0', prs: [369], description: 'Added aws.cloudwatch.logs.log_stream attribute' }],
   },
   [AWS_CLOUDWATCH_LOGS_URL]: {
     brief: 'The URL to the CloudWatch Logs log group',
@@ -14753,7 +14753,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups/log-group/my-log-group',
-    changelog: [{ version: 'next', prs: [369], description: 'Added aws.cloudwatch.logs.url attribute' }],
+    changelog: [{ version: '0.7.0', prs: [369], description: 'Added aws.cloudwatch.logs.url attribute' }],
   },
   [AWS_LAMBDA_AWS_REQUEST_ID]: {
     brief: 'The AWS request ID as received by the Lambda function runtime',
@@ -14763,7 +14763,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '8476a536-e9f4-11e8-9739-2dfe598c3fcd',
-    changelog: [{ version: 'next', prs: [369], description: 'Added aws.lambda.aws_request_id attribute' }],
+    changelog: [{ version: '0.7.0', prs: [369], description: 'Added aws.lambda.aws_request_id attribute' }],
   },
   [AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS]: {
     brief: 'The execution duration of the Lambda function invocation in milliseconds',
@@ -14774,7 +14774,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     example: 1234.56,
     changelog: [
-      { version: 'next', prs: [369], description: 'Added aws.lambda.execution_duration_in_millis attribute' },
+      { version: '0.7.0', prs: [369], description: 'Added aws.lambda.execution_duration_in_millis attribute' },
     ],
   },
   [AWS_LAMBDA_FUNCTION_NAME]: {
@@ -14785,7 +14785,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'my-function',
-    changelog: [{ version: 'next', prs: [369], description: 'Added aws.lambda.function_name attribute' }],
+    changelog: [{ version: '0.7.0', prs: [369], description: 'Added aws.lambda.function_name attribute' }],
   },
   [AWS_LAMBDA_FUNCTION_VERSION]: {
     brief: 'The version of the Lambda function',
@@ -14795,7 +14795,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '$LATEST',
-    changelog: [{ version: 'next', prs: [369], description: 'Added aws.lambda.function_version attribute' }],
+    changelog: [{ version: '0.7.0', prs: [369], description: 'Added aws.lambda.function_version attribute' }],
   },
   [AWS_LAMBDA_INVOKED_FUNCTION_ARN]: {
     brief: 'The full ARN of the Lambda function that was invoked',
@@ -14805,7 +14805,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'arn:aws:lambda:us-east-1:123456789012:function:my-function',
-    changelog: [{ version: 'next', prs: [369], description: 'Added aws.lambda.invoked_function_arn attribute' }],
+    changelog: [{ version: '0.7.0', prs: [369], description: 'Added aws.lambda.invoked_function_arn attribute' }],
   },
   [AWS_LAMBDA_REMAINING_TIME_IN_MILLIS]: {
     brief: 'The remaining time in milliseconds before the Lambda function times out',
@@ -14815,7 +14815,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 5000,
-    changelog: [{ version: 'next', prs: [369], description: 'Added aws.lambda.remaining_time_in_millis attribute' }],
+    changelog: [{ version: '0.7.0', prs: [369], description: 'Added aws.lambda.remaining_time_in_millis attribute' }],
   },
   [BLOCKED_MAIN_THREAD]: {
     brief: 'Whether the main thread was blocked by the span.',
@@ -15251,7 +15251,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: '123456789012',
-    changelog: [{ version: 'next', prs: [364], description: 'Added cloud.account.id attribute' }],
+    changelog: [{ version: '0.7.0', prs: [364], description: 'Added cloud.account.id attribute' }],
   },
   [CLOUD_AVAILABILITY_ZONE]: {
     brief: 'Cloud regions often have multiple, isolated locations known as zones to increase availability',
@@ -15261,7 +15261,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'us-east-1c',
-    changelog: [{ version: 'next', prs: [364], description: 'Added cloud.availability_zone attribute' }],
+    changelog: [{ version: '0.7.0', prs: [364], description: 'Added cloud.availability_zone attribute' }],
   },
   [CLOUD_PLATFORM]: {
     brief: 'The cloud platform in use',
@@ -15271,7 +15271,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'aws_lambda',
-    changelog: [{ version: 'next', prs: [364], description: 'Added cloud.platform attribute' }],
+    changelog: [{ version: '0.7.0', prs: [364], description: 'Added cloud.platform attribute' }],
   },
   [CLOUD_PROVIDER]: {
     brief: 'Name of the cloud provider',
@@ -15281,7 +15281,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'aws',
-    changelog: [{ version: 'next', prs: [364], description: 'Added cloud.provider attribute' }],
+    changelog: [{ version: '0.7.0', prs: [364], description: 'Added cloud.provider attribute' }],
   },
   [CLOUD_REGION]: {
     brief: 'The geographical region the resource is running',
@@ -15291,7 +15291,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'us-east-1',
-    changelog: [{ version: 'next', prs: [364], description: 'Added cloud.region attribute' }],
+    changelog: [{ version: '0.7.0', prs: [364], description: 'Added cloud.region attribute' }],
   },
   [CLS]: {
     brief: 'The value of the recorded Cumulative Layout Shift (CLS) web vital',
@@ -16397,7 +16397,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
-    changelog: [{ version: 'next', prs: [362], description: 'Added frames_frozen_rate attribute' }],
+    changelog: [{ version: '0.7.0', prs: [362], description: 'Added frames_frozen_rate attribute' }],
   },
   [FRAMES_SLOW]: {
     brief: 'The number of slow frames rendered during the lifetime of the span.',
@@ -16427,7 +16427,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
-    changelog: [{ version: 'next', prs: [362], description: 'Added frames_slow_rate attribute' }],
+    changelog: [{ version: '0.7.0', prs: [362], description: 'Added frames_slow_rate attribute' }],
   },
   [FRAMES_TOTAL]: {
     brief: 'The number of total frames rendered during the lifetime of the span.',
@@ -16472,7 +16472,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '1234567890',
-    changelog: [{ version: 'next', prs: [371], description: 'Added gcp.function.context.event_id attribute' }],
+    changelog: [{ version: '0.7.0', prs: [371], description: 'Added gcp.function.context.event_id attribute' }],
   },
   [GCP_FUNCTION_CONTEXT_EVENT_TYPE]: {
     brief: 'The type of the GCP Cloud Function event',
@@ -16482,7 +16482,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'google.pubsub.topic.publish',
-    changelog: [{ version: 'next', prs: [371], description: 'Added gcp.function.context.event_type attribute' }],
+    changelog: [{ version: '0.7.0', prs: [371], description: 'Added gcp.function.context.event_type attribute' }],
   },
   [GCP_FUNCTION_CONTEXT_ID]: {
     brief: 'The unique event ID from the GCP CloudEvents context (2nd gen Cloud Functions)',
@@ -16492,7 +16492,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '1234567890',
-    changelog: [{ version: 'next', prs: [371], description: 'Added gcp.function.context.id attribute' }],
+    changelog: [{ version: '0.7.0', prs: [371], description: 'Added gcp.function.context.id attribute' }],
   },
   [GCP_FUNCTION_CONTEXT_RESOURCE]: {
     brief: 'The resource that triggered the GCP Cloud Function event',
@@ -16502,7 +16502,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'projects/my-project/topics/my-topic',
-    changelog: [{ version: 'next', prs: [371], description: 'Added gcp.function.context.resource attribute' }],
+    changelog: [{ version: '0.7.0', prs: [371], description: 'Added gcp.function.context.resource attribute' }],
   },
   [GCP_FUNCTION_CONTEXT_SOURCE]: {
     brief: 'The source of the GCP Cloud Function event',
@@ -16512,7 +16512,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '//pubsub.googleapis.com/projects/my-project/topics/my-topic',
-    changelog: [{ version: 'next', prs: [371], description: 'Added gcp.function.context.source attribute' }],
+    changelog: [{ version: '0.7.0', prs: [371], description: 'Added gcp.function.context.source attribute' }],
   },
   [GCP_FUNCTION_CONTEXT_SPECVERSION]: {
     brief: 'The CloudEvents specification version of the GCP Cloud Function event',
@@ -16522,7 +16522,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '1.0',
-    changelog: [{ version: 'next', prs: [371], description: 'Added gcp.function.context.specversion attribute' }],
+    changelog: [{ version: '0.7.0', prs: [371], description: 'Added gcp.function.context.specversion attribute' }],
   },
   [GCP_FUNCTION_CONTEXT_TIME]: {
     brief: 'The timestamp of the GCP Cloud Function event',
@@ -16532,7 +16532,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '2024-01-01T00:00:00.000Z',
-    changelog: [{ version: 'next', prs: [371], description: 'Added gcp.function.context.time attribute' }],
+    changelog: [{ version: '0.7.0', prs: [371], description: 'Added gcp.function.context.time attribute' }],
   },
   [GCP_FUNCTION_CONTEXT_TIMESTAMP]: {
     brief: 'The legacy timestamp of the GCP Cloud Function event',
@@ -16542,7 +16542,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '2024-01-01T00:00:00.000Z',
-    changelog: [{ version: 'next', prs: [371], description: 'Added gcp.function.context.timestamp attribute' }],
+    changelog: [{ version: '0.7.0', prs: [371], description: 'Added gcp.function.context.timestamp attribute' }],
   },
   [GCP_FUNCTION_CONTEXT_TYPE]: {
     brief: 'The type of the GCP Cloud Function event context',
@@ -16552,7 +16552,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'cloud_functions.context',
-    changelog: [{ version: 'next', prs: [371], description: 'Added gcp.function.context.type attribute' }],
+    changelog: [{ version: '0.7.0', prs: [371], description: 'Added gcp.function.context.type attribute' }],
   },
   [GEN_AI_AGENT_NAME]: {
     brief: 'The name of the agent being used.',
@@ -17287,7 +17287,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'query findBookById { bookById(id: ?) { name } }',
     changelog: [
       {
-        version: 'next',
+        version: '0.7.0',
         description: 'Adds the `graphql.document` attribute to track the GraphQL document being executed.',
       },
     ],
@@ -19357,7 +19357,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '18.2.0',
-    changelog: [{ version: 'next', prs: [368], description: 'Added react.version attribute' }],
+    changelog: [{ version: '0.7.0', prs: [368], description: 'Added react.version attribute' }],
   },
   [RELEASE]: {
     brief: 'The sentry release.',
@@ -19470,7 +19470,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'com.example.ExampleService/exampleMethod',
-    changelog: [{ version: 'next', prs: [351], description: 'Added rpc.method attribute' }],
+    changelog: [{ version: '0.7.0', prs: [351], description: 'Added rpc.method attribute' }],
   },
   [RPC_RESPONSE_STATUS_CODE]: {
     brief: 'Status code of the RPC returned by the RPC server or generated by the client.',
@@ -19480,7 +19480,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'DEADLINE_EXCEEDED',
-    changelog: [{ version: 'next', prs: [352], description: 'Added rpc.response.status_code attribute' }],
+    changelog: [{ version: '0.7.0', prs: [352], description: 'Added rpc.response.status_code attribute' }],
   },
   [RPC_SERVICE]: {
     brief: 'The full (logical) name of the service being called, including its package name, if applicable.',
@@ -19502,7 +19502,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     hasDynamicSuffix: true,
     example: 'score.cls=0.1723',
-    changelog: [{ version: 'next', prs: [355], description: 'Added score.<key> attribute' }],
+    changelog: [{ version: '0.7.0', prs: [355], description: 'Added score.<key> attribute' }],
   },
   [SCORE_RATIO_KEY]: {
     brief: 'The score for a web vital, normalized to a number between 0 and 1.',
@@ -19513,7 +19513,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     hasDynamicSuffix: true,
     example: 'score.ratio.inp=0.7748',
-    changelog: [{ version: 'next', prs: [355], description: 'Added score.ratio.<key> attribute' }],
+    changelog: [{ version: '0.7.0', prs: [355], description: 'Added score.ratio.<key> attribute' }],
   },
   [SCORE_TOTAL]: {
     brief:
@@ -19523,7 +19523,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
-    changelog: [{ version: 'next', prs: [355], description: 'Added score.total attribute' }],
+    changelog: [{ version: '0.7.0', prs: [355], description: 'Added score.total attribute' }],
   },
   [SCORE_WEIGHT_KEY]: {
     brief: "The relative weight of a web vital in a span's performance score.",
@@ -19534,7 +19534,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     hasDynamicSuffix: true,
     example: 'score.weight.fcp=0.25',
-    changelog: [{ version: 'next', prs: [355], description: 'Added score.weight.<key> attribute' }],
+    changelog: [{ version: '0.7.0', prs: [355], description: 'Added score.weight.<key> attribute' }],
   },
   [SENTRY_ACTION]: {
     brief:
@@ -19656,7 +19656,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 12345,
-    changelog: [{ version: 'next', prs: [358], description: 'Add sentry.dsc.project_id as an attribute' }],
+    changelog: [{ version: '0.7.0', prs: [358], description: 'Add sentry.dsc.project_id as an attribute' }],
   },
   [SENTRY_DSC_PUBLIC_KEY]: {
     brief: 'The public key from the dynamic sampling context.',
@@ -20240,7 +20240,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
-    changelog: [{ version: 'next', prs: [362], description: 'Added stall_percentage attribute' }],
+    changelog: [{ version: '0.7.0', prs: [362], description: 'Added stall_percentage attribute' }],
   },
   [STALL_TOTAL_TIME]: {
     brief:
@@ -20250,7 +20250,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
-    changelog: [{ version: 'next', prs: [362], description: 'Added stall_total_time attribute' }],
+    changelog: [{ version: '0.7.0', prs: [362], description: 'Added stall_total_time attribute' }],
   },
   [STATE_TYPE]: {
     brief: 'The type of state management library',
@@ -20260,7 +20260,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'redux',
-    changelog: [{ version: 'next', prs: [365], description: 'Added state.type attribute' }],
+    changelog: [{ version: '0.7.0', prs: [365], description: 'Added state.type attribute' }],
   },
   [THREAD_ID]: {
     brief: 'Current “managed” thread ID.',
@@ -20361,7 +20361,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'user.getById',
-    changelog: [{ version: 'next', prs: [370], description: 'Added trpc.procedure_path attribute' }],
+    changelog: [{ version: '0.7.0', prs: [370], description: 'Added trpc.procedure_path attribute' }],
   },
   [TRPC_PROCEDURE_TYPE]: {
     brief: 'The type of the tRPC procedure',
@@ -20371,7 +20371,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'query',
-    changelog: [{ version: 'next', prs: [370], description: 'Added trpc.procedure_type attribute' }],
+    changelog: [{ version: '0.7.0', prs: [370], description: 'Added trpc.procedure_type attribute' }],
   },
   [TTFB]: {
     brief: 'The value of the recorded Time To First Byte (TTFB) web vital in milliseconds',

@@ -16,7 +16,7 @@
   ],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.7.0",
       "prs": [353],
       "description": "Added app.vitals.start.reason attribute"
     }

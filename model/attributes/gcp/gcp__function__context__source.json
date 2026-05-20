@@ -9,7 +9,7 @@
   "example": "//pubsub.googleapis.com/projects/my-project/topics/my-topic",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.7.0",
       "prs": [371],
       "description": "Added gcp.function.context.source attribute"
     }
