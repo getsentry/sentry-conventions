@@ -3313,6 +3313,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 20
     """
 
+    # Path: model/attributes/graphql/graphql__document.json
+    GRAPHQL_DOCUMENT: Literal["graphql.document"] = "graphql.document"
+    """The GraphQL document being executed.
+
+    Type: str
+    Contains PII: maybe - The document may contain sensitive information in arguments or variables. Instrumentation should redact sensitive information when possible.
+    Defined in OTEL: Yes
+    Example: "query findBookById { bookById(id: ?) { name } }"
+    """
+
     # Path: model/attributes/graphql/graphql__operation__name.json
     GRAPHQL_OPERATION_NAME: Literal["graphql.operation.name"] = "graphql.operation.name"
     """The name of the operation being executed.
@@ -10718,6 +10728,22 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[57]),
         ],
     ),
+    "graphql.document": AttributeMetadata(
+        brief="The GraphQL document being executed.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(
+            isPii=IsPii.MAYBE,
+            reason="The document may contain sensitive information in arguments or variables. Instrumentation should redact sensitive information when possible.",
+        ),
+        is_in_otel=True,
+        example="query findBookById { bookById(id: ?) { name } }",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Adds the `graphql.document` attribute to track the GraphQL document being executed.",
+            ),
+        ],
+    ),
     "graphql.operation.name": AttributeMetadata(
         brief="The name of the operation being executed.",
         type=AttributeType.STRING,
@@ -15013,6 +15039,7 @@ Attributes = TypedDict(
         "gen_ai.usage.output_tokens.reasoning": int,
         "gen_ai.usage.prompt_tokens": int,
         "gen_ai.usage.total_tokens": int,
+        "graphql.document": str,
         "graphql.operation.name": str,
         "graphql.operation.type": str,
         "hardwareConcurrency": str,
