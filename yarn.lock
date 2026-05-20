@@ -323,7 +323,7 @@
   integrity sha512-2UdiwS/9cTAx7qIUZB/fWtToJwvt0Vbo0zmnYt7ED35KPg13Q0ym1g442THLC7VyI6JfYTP4PiSOWyoMdV2/xg==
 
 "@sentry/conventions@file:/home/runner/work/sentry-conventions/sentry-conventions/javascript/sentry-conventions":
-  version "0.7.0"
+  version "0.8.0"
   resolved "file:javascript/sentry-conventions"
 
 "@shikijs/core@4.0.2":
