@@ -38,6 +38,7 @@ let visibleCardCount = $state(0);
 let visibleSectionCount = $state(0);
 let emptyStateEl: HTMLElement | null = null;
 let attributeListEl: HTMLElement | null = null;
+let filtersInitializedFromUrl = false;
 
 const hasActiveFilters = $derived(piiFilter !== '' || visibilityFilter !== '' || otelFilter !== '');
 
@@ -243,6 +244,7 @@ function handlePopState() {
 
 onMount(() => {
   readFiltersFromUrl();
+  filtersInitializedFromUrl = true;
   emptyStateEl = document.getElementById('attribute-filter-empty');
   attributeListEl = document.getElementById('attribute-list');
   applyFilters();
@@ -255,6 +257,7 @@ $effect(() => {
   piiFilter;
   visibilityFilter;
   otelFilter;
+  if (!filtersInitializedFromUrl) return;
   applyFilters();
 });
 
