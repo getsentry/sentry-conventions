@@ -170,6 +170,11 @@
   --color-otel-true-soft: rgba(80, 160, 96, 0.15);
   --color-otel-false: #6b7280;
   --color-otel-false-soft: rgba(107, 114, 128, 0.2);
+
+  --color-public: #50a060;
+  --color-public-soft: rgba(80, 160, 96, 0.15);
+  --color-internal: #d4a72c;
+  --color-internal-soft: rgba(212, 167, 44, 0.15);
 }
 
 @layer base {
