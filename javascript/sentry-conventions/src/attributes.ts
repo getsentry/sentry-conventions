@@ -17285,7 +17285,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'query findBookById { bookById(id: ?) { name } }',
-    changelog: [{ version: '0.0.0' }],
+    changelog: [
+      {
+        version: 'next',
+        description: 'Adds the `graphql.document` attribute to track the GraphQL document being executed.',
+      },
+    ],
   },
   [GRAPHQL_OPERATION_NAME]: {
     brief: 'The name of the operation being executed.',

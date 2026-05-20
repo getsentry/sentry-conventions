@@ -10738,7 +10738,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         example="query findBookById { bookById(id: ?) { name } }",
         changelog=[
-            ChangelogEntry(version="0.0.0"),
+            ChangelogEntry(
+                version="next",
+                description="Adds the `graphql.document` attribute to track the GraphQL document being executed.",
+            ),
         ],
     ),
     "graphql.operation.name": AttributeMetadata(
