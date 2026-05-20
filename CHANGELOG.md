@@ -1,3 +1,9 @@
+## 0.8.0
+
+### New Features ✨
+
+- (attributes) Add visibility field to attributes by @nsdeschenes in [#394](https://github.com/getsentry/sentry-conventions/pull/394)
+
 ## 0.7.0
 
 ### New Features ✨
