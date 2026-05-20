@@ -46,8 +46,8 @@ const hasActiveFilters = $derived(piiFilter !== '' || visibilityFilter !== '' ||
 function readFiltersFromUrl() {
   const params = new URLSearchParams(window.location.search);
   const pii = params.get('pii') ?? '';
-  // `vis` avoids clashing with CSS/DOM visibility; accept legacy `visibility` param
-  const visibility = params.get('vis') ?? params.get('visibility') ?? '';
+  // `vis` avoids clashing with CSS/DOM visibility
+  const visibility = params.get('vis') ?? '';
   const otel = params.get('otel') ?? '';
 
   piiFilter = PII_VALUES.includes(pii as (typeof PII_VALUES)[number]) ? pii : '';
@@ -68,7 +68,6 @@ function syncUrl() {
     url.searchParams.set('vis', visibilityFilter);
   } else {
     url.searchParams.delete('vis');
-    url.searchParams.delete('visibility');
   }
 
   if (otelFilter) {
