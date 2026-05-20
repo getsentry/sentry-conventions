@@ -5976,7 +5976,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
-    Visibility: public
+    Visibility: internal
     Example: "prod"
     """
 
@@ -5987,7 +5987,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: false
     Defined in OTEL: No
-    Visibility: public
+    Visibility: internal
     Example: 12345
     """
 
@@ -5998,7 +5998,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
-    Visibility: public
+    Visibility: internal
     Example: "c51734c603c4430eb57cb0a5728a479d"
     """
 
@@ -6009,7 +6009,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
-    Visibility: public
+    Visibility: internal
     Example: "frontend@e8211be71b214afab5b85de4b4c54be3714952bb"
     """
 
@@ -6020,7 +6020,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
-    Visibility: public
+    Visibility: internal
     Example: "1.0"
     """
 
@@ -6031,7 +6031,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: bool
     Contains PII: false
     Defined in OTEL: No
-    Visibility: public
+    Visibility: internal
     Example: true
     """
 
@@ -6042,7 +6042,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
-    Visibility: public
+    Visibility: internal
     Example: "047372980460430cbc78d9779df33a46"
     """
 
@@ -6053,7 +6053,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
-    Visibility: public
+    Visibility: internal
     Example: "/issues/errors-outages/"
     """
 
@@ -14247,7 +14247,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
-        visibility=Visibility.PUBLIC,
+        visibility=Visibility.INTERNAL,
         example="prod",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[185]),
@@ -14258,7 +14258,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
-        visibility=Visibility.PUBLIC,
+        visibility=Visibility.INTERNAL,
         example=12345,
         changelog=[
             ChangelogEntry(
@@ -14273,7 +14273,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
-        visibility=Visibility.PUBLIC,
+        visibility=Visibility.INTERNAL,
         example="c51734c603c4430eb57cb0a5728a479d",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[185]),
@@ -14284,7 +14284,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
-        visibility=Visibility.PUBLIC,
+        visibility=Visibility.INTERNAL,
         example="frontend@e8211be71b214afab5b85de4b4c54be3714952bb",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[185]),
@@ -14295,7 +14295,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
-        visibility=Visibility.PUBLIC,
+        visibility=Visibility.INTERNAL,
         example="1.0",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[185]),
@@ -14306,7 +14306,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.BOOLEAN,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
-        visibility=Visibility.PUBLIC,
+        visibility=Visibility.INTERNAL,
         example=True,
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[185]),
@@ -14317,7 +14317,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
-        visibility=Visibility.PUBLIC,
+        visibility=Visibility.INTERNAL,
         example="047372980460430cbc78d9779df33a46",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[185]),
@@ -14328,7 +14328,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
-        visibility=Visibility.PUBLIC,
+        visibility=Visibility.INTERNAL,
         example="/issues/errors-outages/",
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[185]),

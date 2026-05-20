@@ -10232,7 +10232,7 @@ export type SENTRY_DOMAIN_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
- * Visibility: public
+ * Visibility: internal
  *
  * @example "prod"
  */
@@ -10253,7 +10253,7 @@ export type SENTRY_DSC_ENVIRONMENT_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
- * Visibility: public
+ * Visibility: internal
  *
  * @example 12345
  */
@@ -10274,7 +10274,7 @@ export type SENTRY_DSC_PROJECT_ID_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
- * Visibility: public
+ * Visibility: internal
  *
  * @example "c51734c603c4430eb57cb0a5728a479d"
  */
@@ -10295,7 +10295,7 @@ export type SENTRY_DSC_PUBLIC_KEY_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
- * Visibility: public
+ * Visibility: internal
  *
  * @example "frontend@e8211be71b214afab5b85de4b4c54be3714952bb"
  */
@@ -10316,7 +10316,7 @@ export type SENTRY_DSC_RELEASE_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
- * Visibility: public
+ * Visibility: internal
  *
  * @example true
  */
@@ -10337,7 +10337,7 @@ export type SENTRY_DSC_SAMPLED_TYPE = boolean;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
- * Visibility: public
+ * Visibility: internal
  *
  * @example "1.0"
  */
@@ -10358,7 +10358,7 @@ export type SENTRY_DSC_SAMPLE_RATE_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
- * Visibility: public
+ * Visibility: internal
  *
  * @example "047372980460430cbc78d9779df33a46"
  */
@@ -10379,7 +10379,7 @@ export type SENTRY_DSC_TRACE_ID_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
- * Visibility: public
+ * Visibility: internal
  *
  * @example "/issues/errors-outages/"
  */
@@ -20712,7 +20712,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
-    visibility: 'public',
+    visibility: 'internal',
     example: 'prod',
     changelog: [{ version: '0.3.0', prs: [185] }],
   },
@@ -20724,7 +20724,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
-    visibility: 'public',
+    visibility: 'internal',
     example: 12345,
     changelog: [{ version: '0.7.0', prs: [358], description: 'Add sentry.dsc.project_id as an attribute' }],
   },
@@ -20735,7 +20735,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
-    visibility: 'public',
+    visibility: 'internal',
     example: 'c51734c603c4430eb57cb0a5728a479d',
     changelog: [{ version: '0.3.0', prs: [185] }],
   },
@@ -20746,7 +20746,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
-    visibility: 'public',
+    visibility: 'internal',
     example: 'frontend@e8211be71b214afab5b85de4b4c54be3714952bb',
     changelog: [{ version: '0.3.0', prs: [185] }],
   },
@@ -20757,7 +20757,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
-    visibility: 'public',
+    visibility: 'internal',
     example: true,
     changelog: [{ version: '0.3.0', prs: [185] }],
   },
@@ -20768,7 +20768,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
-    visibility: 'public',
+    visibility: 'internal',
     example: '1.0',
     changelog: [{ version: '0.3.0', prs: [185] }],
   },
@@ -20779,7 +20779,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
-    visibility: 'public',
+    visibility: 'internal',
     example: '047372980460430cbc78d9779df33a46',
     changelog: [{ version: '0.3.0', prs: [185] }],
   },
@@ -20790,7 +20790,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
-    visibility: 'public',
+    visibility: 'internal',
     example: '/issues/errors-outages/',
     changelog: [{ version: '0.3.0', prs: [185] }],
   },
