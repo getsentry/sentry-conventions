@@ -112,6 +112,12 @@ function setElementVisible(el: HTMLElement, show: boolean) {
   el.classList.toggle('hidden', !show);
 }
 
+function setDetailsOpen(el: HTMLElement, open: boolean) {
+  if (el instanceof HTMLDetailsElement) {
+    el.open = open;
+  }
+}
+
 function getFilterRoot(): ParentNode {
   return attributeListEl ?? document;
 }
@@ -166,6 +172,7 @@ function updateCategorySectionVisibility(): number {
         deprecatedBlock.querySelectorAll<HTMLElement>('[data-attribute-card]'),
       ).some(isElementVisible);
       setElementVisible(deprecatedBlock, hasVisibleDeprecated);
+      setDetailsOpen(deprecatedBlock, hasVisibleDeprecated);
     }
   }
 
@@ -181,7 +188,10 @@ function resetSectionVisibility(showDefaultHidden = false) {
     const viewAllLink = section.querySelector<HTMLElement>('[data-category-view-all]');
     if (viewAllLink) setElementVisible(viewAllLink, true);
     const deprecatedBlock = section.querySelector<HTMLElement>('[data-category-deprecated]');
-    if (deprecatedBlock) setElementVisible(deprecatedBlock, showDefaultHidden || !isDefaultHidden(deprecatedBlock));
+    if (deprecatedBlock) {
+      setElementVisible(deprecatedBlock, showDefaultHidden || !isDefaultHidden(deprecatedBlock));
+      setDetailsOpen(deprecatedBlock, false);
+    }
   }
 }
 
