@@ -5987,11 +5987,11 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     SENTRY_DSC_PROJECT_ID: Literal["sentry.dsc.project_id"] = "sentry.dsc.project_id"
     """The ID of the project where the trace originated (i.e. the project of the SDK that started the trace). Propagated through the dynamic sampling context and set by Relay during ingestion.
 
-    Type: int
+    Type: str
     Contains PII: false
     Defined in OTEL: No
     Visibility: internal
-    Example: 12345
+    Example: "12345"
     """
 
     # Path: model/attributes/sentry/sentry__dsc__public_key.json
@@ -14334,11 +14334,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ),
     "sentry.dsc.project_id": AttributeMetadata(
         brief="The ID of the project where the trace originated (i.e. the project of the SDK that started the trace). Propagated through the dynamic sampling context and set by Relay during ingestion.",
-        type=AttributeType.INTEGER,
+        type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         visibility=Visibility.INTERNAL,
-        example=12345,
+        example="12345",
         changelog=[
             ChangelogEntry(
                 version="0.7.0",
@@ -16525,7 +16525,7 @@ Attributes = TypedDict(
         "sentry.dist": str,
         "sentry.domain": str,
         "sentry.dsc.environment": str,
-        "sentry.dsc.project_id": int,
+        "sentry.dsc.project_id": str,
         "sentry.dsc.public_key": str,
         "sentry.dsc.release": str,
         "sentry.dsc.sample_rate": str,

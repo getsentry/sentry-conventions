@@ -10248,21 +10248,21 @@ export type SENTRY_DSC_ENVIRONMENT_TYPE = string;
 /**
  * The ID of the project where the trace originated (i.e. the project of the SDK that started the trace). Propagated through the dynamic sampling context and set by Relay during ingestion. `sentry.dsc.project_id`
  *
- * Attribute Value Type: `number` {@link SENTRY_DSC_PROJECT_ID_TYPE}
+ * Attribute Value Type: `string` {@link SENTRY_DSC_PROJECT_ID_TYPE}
  *
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
  * Visibility: internal
  *
- * @example 12345
+ * @example "12345"
  */
 export const SENTRY_DSC_PROJECT_ID = 'sentry.dsc.project_id';
 
 /**
  * Type for {@link SENTRY_DSC_PROJECT_ID} sentry.dsc.project_id
  */
-export type SENTRY_DSC_PROJECT_ID_TYPE = number;
+export type SENTRY_DSC_PROJECT_ID_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__dsc__public_key.json
 
@@ -13699,7 +13699,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_DIST]: 'string',
   [SENTRY_DOMAIN]: 'string',
   [SENTRY_DSC_ENVIRONMENT]: 'string',
-  [SENTRY_DSC_PROJECT_ID]: 'integer',
+  [SENTRY_DSC_PROJECT_ID]: 'string',
   [SENTRY_DSC_PUBLIC_KEY]: 'string',
   [SENTRY_DSC_RELEASE]: 'string',
   [SENTRY_DSC_SAMPLED]: 'boolean',
@@ -20785,13 +20785,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [SENTRY_DSC_PROJECT_ID]: {
     brief:
       'The ID of the project where the trace originated (i.e. the project of the SDK that started the trace). Propagated through the dynamic sampling context and set by Relay during ingestion.',
-    type: 'integer',
+    type: 'string',
     pii: {
       isPii: 'false',
     },
     isInOtel: false,
     visibility: 'internal',
-    example: 12345,
+    example: '12345',
     changelog: [{ version: '0.7.0', prs: [358], description: 'Add sentry.dsc.project_id as an attribute' }],
   },
   [SENTRY_DSC_PUBLIC_KEY]: {
