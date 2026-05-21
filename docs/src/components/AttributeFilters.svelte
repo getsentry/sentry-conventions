@@ -1,10 +1,6 @@
 <script lang="ts">
 import { onMount, tick } from 'svelte';
 
-interface WindowWithAttributeIndex {
-  attributeIndex?: AttributeIndexEntry[];
-}
-
 interface AttributeIndexEntry {
   key: string;
   brief: string;
