@@ -13230,6 +13230,8 @@ export interface AttributeMetadata {
   sdks?: string[];
   /** Changelog entries tracking how this attribute has changed across versions */
   changelog?: ChangelogEntry[];
+  /** A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances */
+  additionalContext?: string[];
 }
 
 export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {

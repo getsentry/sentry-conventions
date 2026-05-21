@@ -106,6 +106,13 @@
         "type": "string"
       }
     },
+    "additional_context": {
+      "description": "A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
     "changelog": {
       "description": "A list of changelog entries tracking how this attribute has changed across versions",
       "type": "array",

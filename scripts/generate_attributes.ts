@@ -375,7 +375,11 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
     '    """If an attribute is SDK specific, list the SDKs that use this attribute. This is not an exhaustive list, there might be SDKs that send this attribute that are is not documented here."""\n';
   content += '    \n';
   content += '    changelog: Optional[List[ChangelogEntry]] = None\n';
-  content += '    """Changelog entries tracking how this attribute has changed across versions"""\n\n';
+  content += '    """Changelog entries tracking how this attribute has changed across versions"""\n';
+  content += '    \n';
+  content += '    additional_context: Optional[List[str]] = None\n';
+  content +=
+    '    """A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances"""\n\n';
 
   let attributesTypeMembers = '';
   let deprecatedAttributesTypeMembers = '';
@@ -553,6 +557,10 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
       metadataDict += '        ],\n';
     }
 
+    if (attributeJson.additional_context && attributeJson.additional_context.length > 0) {
+      metadataDict += `        additional_context=${JSON.stringify(attributeJson.additional_context)},\n`;
+    }
+
     metadataDict += '    ),\n';
   }
 
@@ -720,6 +728,8 @@ export interface AttributeMetadata {
   sdks?: string[];
   /** Changelog entries tracking how this attribute has changed across versions */
   changelog?: ChangelogEntry[];
+  /** A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances */
+  additionalContext?: string[];
 }
 
 `;
@@ -832,6 +842,10 @@ function generateMetadataDict(
         metadataDict += ' },\n';
       }
       metadataDict += '    ],\n';
+    }
+
+    if (attributeJson.additional_context && attributeJson.additional_context.length > 0) {
+      metadataDict += `    additionalContext: ${JSON.stringify(attributeJson.additional_context)},\n`;
     }
 
     metadataDict += '  },\n';
