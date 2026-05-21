@@ -14070,6 +14070,30 @@ export const REMIX_ACTION_FORM_DATA_KEY_BASE = 'remix.action_form_data';
  */
 export type REMIX_ACTION_FORM_DATA_KEY_TYPE = string;
 
+// Path: model/attributes/replayId.json
+
+/**
+ * The id of the sentry replay. `replayId`
+ *
+ * Attribute Value Type: `string` {@link REPLAYID_TYPE}
+ *
+ * Apply Scrubbing: never
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link SENTRY_REPLAY_ID} `sentry.replay_id`
+ *
+ * @deprecated Use {@link SENTRY_REPLAY_ID} (sentry.replay_id) instead
+ * @example "123e4567e89b12d3a456426614174000"
+ */
+export const REPLAYID = 'replayId';
+
+/**
+ * Type for {@link REPLAYID} replayId
+ */
+export type REPLAYID_TYPE = string;
+
 // Path: model/attributes/replay_id.json
 
 /**
@@ -15736,7 +15760,7 @@ export type SENTRY_RELEASE_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link REPLAY_ID} `replay_id`
+ * Aliases: {@link REPLAY_ID} `replay_id`, {@link REPLAYID} `replayId`
  *
  * @example "123e4567e89b12d3a456426614174000"
  */
@@ -19358,6 +19382,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'redis.key': 'string',
   release: 'string',
   'remix.action_form_data.<key>': 'string',
+  replayId: 'string',
   replay_id: 'string',
   'resource.deployment.environment': 'string',
   'resource.deployment.environment.name': 'string',
@@ -20196,6 +20221,7 @@ export type AttributeName =
   | typeof REDIS_KEY
   | typeof RELEASE
   | typeof REMIX_ACTION_FORM_DATA_KEY
+  | typeof REPLAYID
   | typeof REPLAY_ID
   | typeof RESOURCE_DEPLOYMENT_ENVIRONMENT
   | typeof RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME
@@ -30421,6 +30447,22 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: "http.response.header.text='test'",
     changelog: [{ version: '0.1.0', prs: [103] }],
   },
+  replayId: {
+    brief: 'The id of the sentry replay.',
+    type: 'string',
+    keys: ['replayId'],
+    applyScrubbing: {
+      key: 'never',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '123e4567e89b12d3a456426614174000',
+    deprecation: {
+      replacement: 'sentry.replay_id',
+    },
+    aliases: ['sentry.replay_id'],
+    changelog: [{ version: 'next' }],
+  },
   replay_id: {
     brief: 'The id of the sentry replay.',
     type: 'string',
@@ -31567,7 +31609,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: '123e4567e89b12d3a456426614174000',
-    aliases: ['replay_id'],
+    aliases: ['replay_id', 'replayId'],
     changelog: [{ version: '0.0.0' }],
     searchAlias: {
       name: 'replay.id',
@@ -34204,6 +34246,7 @@ export type Attributes = {
   [REDIS_KEY]?: REDIS_KEY_TYPE;
   [RELEASE]?: RELEASE_TYPE;
   [REMIX_ACTION_FORM_DATA_KEY]?: REMIX_ACTION_FORM_DATA_KEY_TYPE;
+  [REPLAYID]?: REPLAYID_TYPE;
   [REPLAY_ID]?: REPLAY_ID_TYPE;
   [RESOURCE_DEPLOYMENT_ENVIRONMENT]?: RESOURCE_DEPLOYMENT_ENVIRONMENT_TYPE;
   [RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME]?: RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME_TYPE;
