@@ -22,9 +22,6 @@ export const GET: APIRoute = async () => {
       category,
       url,
       deprecated: !!attr.data.deprecation,
-      pii: attr.data.pii.key,
-      visibility: attr.data.visibility,
-      is_in_otel: attr.data.is_in_otel,
     };
   });
 

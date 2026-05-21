@@ -39,9 +39,6 @@ interface AttributeIndex {
   category: string;
   url: string;
   deprecated: boolean;
-  pii: 'true' | 'maybe' | 'false';
-  visibility: 'public' | 'internal';
-  is_in_otel: boolean;
 }
 
 let isOpen = $state(false);
@@ -62,8 +59,7 @@ const noResults = $derived(query && !isLoading && !hasResults);
 
 async function loadAttributeIndex() {
   const windowWithPagefind = window as WindowWithPagefind;
-  const cached = windowWithPagefind.attributeIndex;
-  if (cached?.length && cached[0]?.visibility !== undefined) {
+  if (windowWithPagefind.attributeIndex) {
     return;
   }
 
