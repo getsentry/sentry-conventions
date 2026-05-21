@@ -1,28 +1,27 @@
 <script lang="ts">
 import { onMount, tick } from 'svelte';
 
-interface AttributeIndexEntry {
-  key: string;
-  brief: string;
-  type: string;
+interface CategoryFilterCount {
   category: string;
-  url: string;
-  deprecated: boolean;
-  pii: 'true' | 'maybe' | 'false';
-  visibility: 'public' | 'internal';
-  is_in_otel: boolean;
+  total: number;
+  attributes: Array<{
+    pii: 'true' | 'maybe' | 'false';
+    visibility: 'public' | 'internal';
+    otel: 'true' | 'false';
+  }>;
 }
 
 interface Props {
   mode: 'cards' | 'sections';
   totalCount?: number;
+  categoryFilterCounts?: CategoryFilterCount[];
 }
 
 const PII_VALUES = ['true', 'maybe', 'false'] as const;
 const VISIBILITY_VALUES = ['public', 'internal'] as const;
 const OTEL_VALUES = ['true', 'false'] as const;
 
-const { mode, totalCount = 0 }: Props = $props();
+const { mode, totalCount = 0, categoryFilterCounts = [] }: Props = $props();
 
 let piiFilter = $state('');
 let visibilityFilter = $state('');
@@ -81,6 +80,10 @@ function matchesFilters(pii: string, visibility: string, otel: string) {
   return true;
 }
 
+function formatAttributeCount(count: number) {
+  return `${count} attribute${count === 1 ? '' : 's'}`;
+}
+
 function getCardFilterValues(card: HTMLElement) {
   return {
     pii: card.dataset.filterPii ?? card.getAttribute('data-filter-pii') ?? '',
@@ -115,6 +118,61 @@ function setDetailsOpen(el: HTMLElement, open: boolean) {
 
 function getFilterRoot(): ParentNode {
   return attributeListEl ?? document;
+}
+
+function updateCategoryLinkUrls() {
+  const root = getFilterRoot();
+  const links = root.querySelectorAll<HTMLAnchorElement>('[data-category-filter-link]');
+
+  const query = new URLSearchParams([
+    ...(piiFilter ? [['pii', piiFilter]] : []),
+    ...(visibilityFilter ? [['vis', visibilityFilter]] : []),
+    ...(otelFilter ? [['otel', otelFilter]] : []),
+  ]).toString();
+
+  for (const link of links) {
+    const originalHref = link.dataset.categoryOriginalHref ?? link.getAttribute('href') ?? '';
+    link.dataset.categoryOriginalHref = originalHref;
+
+    const url = new URL(originalHref, window.location.href);
+    url.search = query;
+    link.setAttribute('href', `${url.pathname}${url.search}${url.hash}`);
+  }
+}
+
+function resetCategoryCountLabels() {
+  const root = getFilterRoot();
+  const labels = root.querySelectorAll<HTMLElement>('[data-category-count-label]');
+
+  for (const label of labels) {
+    const total = Number(label.dataset.categoryTotal ?? 0);
+    label.textContent = formatAttributeCount(total);
+  }
+}
+
+function updateCategoryCountLabels() {
+  const labels = getFilterRoot().querySelectorAll<HTMLElement>('[data-category-count-label]');
+
+  const counts = new Map(
+    categoryFilterCounts.map(({ category, total, attributes }) => [
+      category,
+      {
+        total,
+        visible: attributes.filter((attribute) => matchesFilters(attribute.pii, attribute.visibility, attribute.otel))
+          .length,
+      },
+    ]),
+  );
+
+  for (const label of labels) {
+    const category = label.dataset.categoryCountLabel;
+    if (!category) continue;
+
+    const count = counts.get(category);
+    if (!count) continue;
+
+    label.textContent = `${count.visible}/${count.total} attribute${count.total === 1 ? '' : 's'}`;
+  }
 }
 
 function applyCardFilters(): number {
@@ -191,8 +249,11 @@ function resetSectionVisibility(showDefaultHidden = false) {
 }
 
 function applySectionFilters() {
+  updateCategoryLinkUrls();
+
   if (!hasActiveFilters) {
     resetSectionVisibility();
+    resetCategoryCountLabels();
     visibleCardCount = applyCardFilters();
     visibleSectionCount = getFilterRoot().querySelectorAll('[data-category-section]').length;
     visibleCount = visibleSectionCount;
@@ -203,6 +264,7 @@ function applySectionFilters() {
   resetSectionVisibility(true);
   visibleCardCount = applyCardFilters();
   visibleSectionCount = updateCategorySectionVisibility();
+  updateCategoryCountLabels();
   visibleCount = visibleSectionCount;
 }
 

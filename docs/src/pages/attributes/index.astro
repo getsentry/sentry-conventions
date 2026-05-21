@@ -5,6 +5,16 @@ import AttributeFilters from '../../components/AttributeFilters.svelte';
 import { getCollection } from 'astro:content';
 import { parseAttributeId } from '../../utils/category';
 
+type CategoryFilterCounts = Array<{
+  category: string;
+  total: number;
+  attributes: Array<{
+    pii: 'true' | 'maybe' | 'false';
+    visibility: 'public' | 'internal';
+    otel: 'true' | 'false';
+  }>;
+}>;
+
 // Get all attributes
 const allAttributes = await getCollection('attributes');
 
@@ -31,6 +41,20 @@ const sortedCategories = Array.from(categoryMap.keys()).sort((a, b) => {
 for (const [category, attrs] of categoryMap) {
   attrs.sort((a, b) => a.data.key.localeCompare(b.data.key));
 }
+
+const categoryFilterCounts: CategoryFilterCounts = sortedCategories.map((category) => {
+  const attributes = categoryMap.get(category) || [];
+
+  return {
+    category,
+    total: attributes.length,
+    attributes: attributes.map((attr) => ({
+      pii: attr.data.pii.key,
+      visibility: attr.data.visibility,
+      otel: attr.data.is_in_otel ? ('true' as const) : ('false' as const),
+    })),
+  };
+});
 
 // Stats
 const totalAttributes = allAttributes.length;
@@ -76,7 +100,7 @@ const deprecatedCount = totalAttributes - stableCount;
         </p>
       </div>
 
-      <AttributeFilters client:load mode="sections" />
+      <AttributeFilters client:load mode="sections" categoryFilterCounts={categoryFilterCounts} />
 
       <div
         id="attribute-filter-empty"
@@ -95,9 +119,21 @@ const deprecatedCount = totalAttributes - stableCount;
         <section class="scroll-mt-20" id={category} data-category-section>
           <div class="flex items-baseline gap-4 mb-6 pb-3 border-b border-border">
             <h2 class="m-0 text-2xl">
-              <a href={`${import.meta.env.BASE_URL}attributes/${category}/`} class="text-text-primary hover:text-accent">{category}</a>
+              <a
+                href={`${import.meta.env.BASE_URL}attributes/${category}/`}
+                class="text-text-primary hover:text-accent"
+                data-category-filter-link
+              >
+                {category}
+              </a>
             </h2>
-            <span class="text-sm text-text-muted">{attributes.length} attributes</span>
+            <span
+              class="text-sm text-text-muted"
+              data-category-count-label={category}
+              data-category-total={attributes.length}
+            >
+              {attributes.length} attributes
+            </span>
           </div>
           
           {stableAttrs.length > 0 && (
@@ -112,6 +148,7 @@ const deprecatedCount = totalAttributes - stableCount;
             <a
               href={`${import.meta.env.BASE_URL}attributes/${category}/`}
               data-category-view-all
+              data-category-filter-link
               class="inline-block mt-4 text-sm text-accent hover:text-accent-hover"
             >
               View all {attributes.length} {category} attributes →
