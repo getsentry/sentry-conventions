@@ -27,7 +27,6 @@ let piiFilter = $state('');
 let visibilityFilter = $state('');
 let otelFilter = $state('');
 
-let visibleCount = $state(0);
 let visibleCardCount = $state(0);
 let visibleSectionCount = $state(0);
 let emptyStateEl: HTMLElement | null = null;
@@ -303,7 +302,6 @@ function applySectionFilters() {
     visibleCardCount = applyCardFilters();
     revealHashTarget();
     visibleSectionCount = getFilterRoot().querySelectorAll('[data-category-section]').length;
-    visibleCount = visibleSectionCount;
     return;
   }
 
@@ -312,7 +310,6 @@ function applySectionFilters() {
   visibleCardCount = applyCardFilters();
   visibleSectionCount = updateCategorySectionVisibility();
   updateCategoryCountLabels();
-  visibleCount = visibleSectionCount;
 }
 
 function updateEmptyState(visible: number) {
@@ -346,8 +343,7 @@ async function applyFilters() {
     updateEmptyState(visibleSectionCount);
   } else {
     visibleCardCount = applyCardFilters();
-    visibleCount = visibleCardCount;
-    updateEmptyState(visibleCount);
+    updateEmptyState(visibleCardCount);
   }
 }
 
@@ -391,7 +387,7 @@ $effect(() => {
 const resultLabel = $derived.by(() => {
   if (mode === 'cards') {
     if (hasActiveFilters) {
-      return `Showing ${visibleCount} of ${formatAttributeCount(totalCount)}`;
+      return `Showing ${visibleCardCount} of ${formatAttributeCount(totalCount)}`;
     }
     return formatAttributeCount(totalCount);
   }
