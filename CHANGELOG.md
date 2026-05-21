@@ -1,3 +1,11 @@
+## 0.9.0
+
+### New Features ✨
+
+- (attributes) Add additional_context to gen_ai cost and usage attributes by @matejminar in [#397](https://github.com/getsentry/sentry-conventions/pull/397)
+- (docs) Render additional_context in attribute cards and LLM export by @matejminar in [#399](https://github.com/getsentry/sentry-conventions/pull/399)
+- (schema) Add `additional_context` field to attribute definitions by @matejminar in [#393](https://github.com/getsentry/sentry-conventions/pull/393)
+
 ## 0.8.0
 
 ### New Features ✨

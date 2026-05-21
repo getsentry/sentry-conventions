@@ -17430,7 +17430,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 123.45,
     changelog: [
-      { version: 'next', prs: [397], description: 'Add additional_context' },
+      { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [112] },
     ],
@@ -17450,7 +17450,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 123.45,
     changelog: [
-      { version: 'next', prs: [397], description: 'Add additional_context' },
+      { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [112] },
     ],
@@ -17471,7 +17471,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 12.34,
     aliases: [AI_TOTAL_COST],
     changelog: [
-      { version: 'next', prs: [397], description: 'Add additional_context' },
+      { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.5.0', prs: [264] },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [126] },
@@ -18063,7 +18063,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [AI_COMPLETION_TOKENS_USED, GEN_AI_USAGE_OUTPUT_TOKENS],
     changelog: [
-      { version: 'next', prs: [397], description: 'Add additional_context' },
+      { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [61] },
       { version: '0.0.0' },
@@ -18083,7 +18083,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 10,
     aliases: [AI_PROMPT_TOKENS_USED, GEN_AI_USAGE_PROMPT_TOKENS],
     changelog: [
-      { version: 'next', prs: [397], description: 'Add additional_context' },
+      { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.5.0', prs: [261] },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [112] },
@@ -18104,7 +18104,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 50,
     changelog: [
-      { version: 'next', prs: [397], description: 'Add additional_context' },
+      { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [62, 112] },
     ],
@@ -18123,7 +18123,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 100,
     changelog: [
-      { version: 'next', prs: [397], description: 'Add additional_context' },
+      { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [217, 228] },
     ],
     additionalContext: [
@@ -18141,7 +18141,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 10,
     aliases: [AI_COMPLETION_TOKENS_USED, GEN_AI_USAGE_COMPLETION_TOKENS],
     changelog: [
-      { version: 'next', prs: [397], description: 'Add additional_context' },
+      { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.5.0', prs: [261] },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [112] },
@@ -18162,7 +18162,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 75,
     changelog: [
-      { version: 'next', prs: [397], description: 'Add additional_context' },
+      { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [62, 112] },
     ],
@@ -18185,7 +18185,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [AI_PROMPT_TOKENS_USED, GEN_AI_USAGE_INPUT_TOKENS],
     changelog: [
-      { version: 'next', prs: [397], description: 'Add additional_context' },
+      { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [61] },
       { version: '0.0.0' },
@@ -18205,7 +18205,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 20,
     aliases: [AI_TOTAL_TOKENS_USED],
     changelog: [
-      { version: 'next', prs: [397], description: 'Add additional_context' },
+      { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [57] },
     ],
