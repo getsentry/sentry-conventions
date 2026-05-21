@@ -233,6 +233,7 @@ class _AttributeNamesMeta(type):
         "PERFORMANCE_TIMEORIGIN",
         "QUERY_KEY",
         "RELEASE",
+        "REPLAYID",
         "REPLAY_ID",
         "RESOURCE_DEPLOYMENT_ENVIRONMENT",
         "RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME",
@@ -5706,6 +5707,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "http.response.header.text='test'"
     """
 
+    # Path: model/attributes/replayId.json
+    REPLAYID: Literal["replayId"] = "replayId"
+    """The id of the sentry replay.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: sentry.replay_id
+    DEPRECATED: Use sentry.replay_id instead
+    Example: "123e4567e89b12d3a456426614174000"
+    """
+
     # Path: model/attributes/replay_id.json
     REPLAY_ID: Literal["replay_id"] = "replay_id"
     """The id of the sentry replay.
@@ -6364,7 +6378,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: false
     Defined in OTEL: No
     Visibility: public
-    Aliases: replay_id
+    Aliases: replay_id, replayId
     Example: "123e4567e89b12d3a456426614174000"
     """
 
@@ -14038,6 +14052,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[103]),
         ],
     ),
+    "replayId": AttributeMetadata(
+        brief="The id of the sentry replay.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="123e4567e89b12d3a456426614174000",
+        deprecation=DeprecationInfo(replacement="sentry.replay_id"),
+        aliases=["sentry.replay_id"],
+        changelog=[
+            ChangelogEntry(version="next"),
+        ],
+    ),
     "replay_id": AttributeMetadata(
         brief="The id of the sentry replay.",
         type=AttributeType.STRING,
@@ -14706,7 +14733,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="123e4567e89b12d3a456426614174000",
-        aliases=["replay_id"],
+        aliases=["replay_id", "replayId"],
         changelog=[
             ChangelogEntry(version="0.0.0"),
         ],
@@ -16502,6 +16529,7 @@ Attributes = TypedDict(
         "react.version": str,
         "release": str,
         "remix.action_form_data.<key>": str,
+        "replayId": str,
         "replay_id": str,
         "resource.deployment.environment": str,
         "resource.deployment.environment.name": str,
