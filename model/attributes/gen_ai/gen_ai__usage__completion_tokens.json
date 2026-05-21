@@ -18,7 +18,7 @@
   "visibility": "public",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.9.0",
       "prs": [397],
       "description": "Add additional_context"
     },

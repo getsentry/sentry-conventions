@@ -10956,7 +10956,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=123.45,
         changelog=[
             ChangelogEntry(
-                version="next", prs=[397], description="Add additional_context"
+                version="0.9.0", prs=[397], description="Add additional_context"
             ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[112]),
@@ -10976,7 +10976,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=123.45,
         changelog=[
             ChangelogEntry(
-                version="next", prs=[397], description="Add additional_context"
+                version="0.9.0", prs=[397], description="Add additional_context"
             ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[112]),
@@ -10997,7 +10997,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.total_cost"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[397], description="Add additional_context"
+                version="0.9.0", prs=[397], description="Add additional_context"
             ),
             ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -11533,7 +11533,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.completion_tokens.used", "gen_ai.usage.output_tokens"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[397], description="Add additional_context"
+                version="0.9.0", prs=[397], description="Add additional_context"
             ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[61]),
@@ -11553,7 +11553,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.prompt_tokens.used", "gen_ai.usage.prompt_tokens"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[397], description="Add additional_context"
+                version="0.9.0", prs=[397], description="Add additional_context"
             ),
             ChangelogEntry(version="0.5.0", prs=[261]),
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -11574,7 +11574,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=100,
         changelog=[
             ChangelogEntry(
-                version="next", prs=[397], description="Add additional_context"
+                version="0.9.0", prs=[397], description="Add additional_context"
             ),
             ChangelogEntry(version="0.4.0", prs=[217, 228]),
         ],
@@ -11591,7 +11591,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=50,
         changelog=[
             ChangelogEntry(
-                version="next", prs=[397], description="Add additional_context"
+                version="0.9.0", prs=[397], description="Add additional_context"
             ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[62, 112]),
@@ -11611,7 +11611,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.completion_tokens.used", "gen_ai.usage.completion_tokens"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[397], description="Add additional_context"
+                version="0.9.0", prs=[397], description="Add additional_context"
             ),
             ChangelogEntry(version="0.5.0", prs=[261]),
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -11632,7 +11632,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=75,
         changelog=[
             ChangelogEntry(
-                version="next", prs=[397], description="Add additional_context"
+                version="0.9.0", prs=[397], description="Add additional_context"
             ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[62, 112]),
@@ -11655,7 +11655,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.prompt_tokens.used", "gen_ai.usage.input_tokens"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[397], description="Add additional_context"
+                version="0.9.0", prs=[397], description="Add additional_context"
             ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[61]),
@@ -11675,7 +11675,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.total_tokens.used"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[397], description="Add additional_context"
+                version="0.9.0", prs=[397], description="Add additional_context"
             ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[57]),
