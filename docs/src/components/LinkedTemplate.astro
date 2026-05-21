@@ -20,9 +20,8 @@ interface Segment {
 
 const segments: Segment[] = [];
 let lastIndex = 0;
-let match: RegExpExecArray | null;
 
-while ((match = PLACEHOLDER.exec(template)) !== null) {
+for (const match of template.matchAll(PLACEHOLDER)) {
   if (match.index > lastIndex) {
     segments.push({ type: 'text', value: template.slice(lastIndex, match.index) });
   }
