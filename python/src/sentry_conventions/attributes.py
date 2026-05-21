@@ -2024,6 +2024,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "SELECT * FROM users"
     """
 
+    # Path: model/attributes/db/db__stored_procedure__name.json
+    DB_STORED_PROCEDURE_NAME: Literal["db.stored_procedure.name"] = (
+        "db.stored_procedure.name"
+    )
+    """The name of a stored procedure being called.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "GetUserById"
+    """
+
     # Path: model/attributes/db/db__system.json
     DB_SYSTEM: Literal["db.system"] = "db.system"
     """An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers.
@@ -9794,6 +9807,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "db.stored_procedure.name": AttributeMetadata(
+        brief="The name of a stored procedure being called.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="GetUserById",
+        changelog=[
+            ChangelogEntry(version="next", prs=[397]),
+        ],
+    ),
     "db.system": AttributeMetadata(
         brief="An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers.",
         type=AttributeType.STRING,
@@ -16125,6 +16149,7 @@ Attributes = TypedDict(
         "db.redis.parameters": List[str],
         "db.sql.bindings": List[str],
         "db.statement": str,
+        "db.stored_procedure.name": str,
         "db.system": str,
         "db.system.name": str,
         "db.user": str,
