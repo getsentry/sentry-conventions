@@ -16461,7 +16461,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'GetUserById',
-    changelog: [{ version: 'next', prs: [397] }],
+    changelog: [{ version: 'next', prs: [398] }],
   },
   [DB_SYSTEM]: {
     brief:

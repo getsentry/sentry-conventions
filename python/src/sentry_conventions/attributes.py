@@ -9815,7 +9815,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="GetUserById",
         changelog=[
-            ChangelogEntry(version="next", prs=[397]),
+            ChangelogEntry(version="next", prs=[398]),
         ],
     ),
     "db.system": AttributeMetadata(
