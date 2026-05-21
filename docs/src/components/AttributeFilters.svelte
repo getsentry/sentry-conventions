@@ -109,6 +109,46 @@ function isDefaultHidden(el: HTMLElement) {
   return el.dataset.filterDefaultHidden === 'true';
 }
 
+function getHashAnchorId() {
+  const hash = window.location.hash.slice(1);
+  if (!hash) return '';
+  try {
+    return decodeURIComponent(hash);
+  } catch {
+    return hash;
+  }
+}
+
+function isHashTarget(card: HTMLElement) {
+  const anchorId = getHashAnchorId();
+  return anchorId !== '' && card.id === anchorId;
+}
+
+function getHashTargetCard(): HTMLElement | null {
+  const anchorId = getHashAnchorId();
+  if (!anchorId) return null;
+
+  const target = getFilterRoot().querySelector<HTMLElement>(`#${CSS.escape(anchorId)}`);
+  return target?.matches('[data-attribute-card]') ? target : null;
+}
+
+function revealHashTarget() {
+  if (hasActiveFilters) return;
+
+  const target = getHashTargetCard();
+  if (!target) return;
+
+  const deprecatedBlock = target.closest<HTMLElement>('[data-category-deprecated]');
+  if (deprecatedBlock) {
+    setElementVisible(deprecatedBlock, true);
+    setDetailsOpen(deprecatedBlock, true);
+  }
+
+  requestAnimationFrame(() => {
+    target.scrollIntoView({ block: 'start' });
+  });
+}
+
 function setElementVisible(el: HTMLElement, show: boolean) {
   el.hidden = !show;
   el.classList.toggle('hidden', !show);
@@ -185,7 +225,9 @@ function applyCardFilters(): number {
   let visible = 0;
 
   for (const card of cards) {
-    const show = hasActiveFilters ? cardMatches(card) : !isDefaultHidden(card);
+    const show = hasActiveFilters
+      ? cardMatches(card)
+      : !isDefaultHidden(card) || isHashTarget(card);
     setElementVisible(card, show);
     if (show) visible++;
   }
@@ -259,6 +301,7 @@ function applySectionFilters() {
     resetSectionVisibility();
     resetCategoryCountLabels();
     visibleCardCount = applyCardFilters();
+    revealHashTarget();
     visibleSectionCount = getFilterRoot().querySelectorAll('[data-category-section]').length;
     visibleCount = visibleSectionCount;
     return;
@@ -318,6 +361,10 @@ function handlePopState() {
   readFiltersFromUrl();
 }
 
+function handleHashChange() {
+  void applyFilters();
+}
+
 onMount(() => {
   readFiltersFromUrl();
   filtersInitializedFromUrl = true;
@@ -326,7 +373,11 @@ onMount(() => {
   void applyFilters();
 
   window.addEventListener('popstate', handlePopState);
-  return () => window.removeEventListener('popstate', handlePopState);
+  window.addEventListener('hashchange', handleHashChange);
+  return () => {
+    window.removeEventListener('popstate', handlePopState);
+    window.removeEventListener('hashchange', handleHashChange);
+  };
 });
 
 $effect(() => {
