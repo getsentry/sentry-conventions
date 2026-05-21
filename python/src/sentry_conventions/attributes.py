@@ -10955,8 +10955,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=123.45,
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[397], description="Add additional_context"
+            ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[112]),
+        ],
+        additional_context=[
+            "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.",
+            "Despite the name 'cost.input_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.input_tokens.",
+            "This is the cost of non-cached input tokens only. The cost of cached tokens is excluded from this value.",
         ],
     ),
     "gen_ai.cost.output_tokens": AttributeMetadata(
@@ -10967,8 +10975,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=123.45,
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[397], description="Add additional_context"
+            ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[112]),
+        ],
+        additional_context=[
+            "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.",
+            "Despite the name 'cost.output_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.output_tokens.",
+            "This is the cost of non-reasoning output tokens only. The cost of reasoning tokens is excluded from this value.",
         ],
     ),
     "gen_ai.cost.total_tokens": AttributeMetadata(
@@ -10980,9 +10996,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=12.34,
         aliases=["ai.total_cost"],
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[397], description="Add additional_context"
+            ),
             ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[126]),
+        ],
+        additional_context=[
+            "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.",
+            "Despite the name 'cost.total_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.total_tokens.",
         ],
     ),
     "gen_ai.embeddings.input": AttributeMetadata(
@@ -11509,9 +11532,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         aliases=["ai.completion_tokens.used", "gen_ai.usage.output_tokens"],
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[397], description="Add additional_context"
+            ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[61]),
             ChangelogEntry(version="0.0.0"),
+        ],
+        additional_context=[
+            "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans."
         ],
     ),
     "gen_ai.usage.input_tokens": AttributeMetadata(
@@ -11523,10 +11552,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=10,
         aliases=["ai.prompt_tokens.used", "gen_ai.usage.prompt_tokens"],
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[397], description="Add additional_context"
+            ),
             ChangelogEntry(version="0.5.0", prs=[261]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[112]),
             ChangelogEntry(version="0.0.0"),
+        ],
+        additional_context=[
+            "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.",
+            "This count includes cached input tokens. gen_ai.usage.input_tokens.cached is a subset of this value, not an independent count — do not sum them together.",
         ],
     ),
     "gen_ai.usage.input_tokens.cache_write": AttributeMetadata(
@@ -11537,7 +11573,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=100,
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[397], description="Add additional_context"
+            ),
             ChangelogEntry(version="0.4.0", prs=[217, 228]),
+        ],
+        additional_context=[
+            "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans."
         ],
     ),
     "gen_ai.usage.input_tokens.cached": AttributeMetadata(
@@ -11548,8 +11590,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=50,
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[397], description="Add additional_context"
+            ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[62, 112]),
+        ],
+        additional_context=[
+            "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.",
+            "This is a subset of gen_ai.usage.input_tokens, not an independent count. Do not sum this with gen_ai.usage.input_tokens — it is already included.",
         ],
     ),
     "gen_ai.usage.output_tokens": AttributeMetadata(
@@ -11561,10 +11610,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=10,
         aliases=["ai.completion_tokens.used", "gen_ai.usage.completion_tokens"],
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[397], description="Add additional_context"
+            ),
             ChangelogEntry(version="0.5.0", prs=[261]),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[112]),
             ChangelogEntry(version="0.0.0"),
+        ],
+        additional_context=[
+            "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.",
+            "This count includes reasoning tokens. gen_ai.usage.output_tokens.reasoning is a subset of this value, not an independent count — do not sum them together.",
         ],
     ),
     "gen_ai.usage.output_tokens.reasoning": AttributeMetadata(
@@ -11575,8 +11631,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=75,
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[397], description="Add additional_context"
+            ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[62, 112]),
+        ],
+        additional_context=[
+            "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.",
+            "This is a subset of gen_ai.usage.output_tokens, not an independent count. Do not sum this with gen_ai.usage.output_tokens — it is already included.",
         ],
     ),
     "gen_ai.usage.prompt_tokens": AttributeMetadata(
@@ -11591,9 +11654,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         aliases=["ai.prompt_tokens.used", "gen_ai.usage.input_tokens"],
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[397], description="Add additional_context"
+            ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[61]),
             ChangelogEntry(version="0.0.0"),
+        ],
+        additional_context=[
+            "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans."
         ],
     ),
     "gen_ai.usage.total_tokens": AttributeMetadata(
@@ -11605,8 +11674,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=20,
         aliases=["ai.total_tokens.used"],
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[397], description="Add additional_context"
+            ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[57]),
+        ],
+        additional_context=[
+            "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.",
+            "This is the sum of gen_ai.usage.input_tokens and gen_ai.usage.output_tokens. Do not sum this with either of them — they are already included.",
         ],
     ),
     "graphql.document": AttributeMetadata(

@@ -17430,8 +17430,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 123.45,
     changelog: [
+      { version: 'next', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [112] },
+    ],
+    additionalContext: [
+      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
+      "Despite the name 'cost.input_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.input_tokens.",
+      'This is the cost of non-cached input tokens only. The cost of cached tokens is excluded from this value.',
     ],
   },
   [GEN_AI_COST_OUTPUT_TOKENS]: {
@@ -17444,8 +17450,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 123.45,
     changelog: [
+      { version: 'next', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [112] },
+    ],
+    additionalContext: [
+      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
+      "Despite the name 'cost.output_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.output_tokens.",
+      'This is the cost of non-reasoning output tokens only. The cost of reasoning tokens is excluded from this value.',
     ],
   },
   [GEN_AI_COST_TOTAL_TOKENS]: {
@@ -17459,9 +17471,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 12.34,
     aliases: [AI_TOTAL_COST],
     changelog: [
+      { version: 'next', prs: [397], description: 'Add additional_context' },
       { version: '0.5.0', prs: [264] },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [126] },
+    ],
+    additionalContext: [
+      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
+      "Despite the name 'cost.total_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.total_tokens.",
     ],
   },
   [GEN_AI_EMBEDDINGS_INPUT]: {
@@ -18045,7 +18062,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.usage.output_tokens',
     },
     aliases: [AI_COMPLETION_TOKENS_USED, GEN_AI_USAGE_OUTPUT_TOKENS],
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
+    changelog: [
+      { version: 'next', prs: [397], description: 'Add additional_context' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [61] },
+      { version: '0.0.0' },
+    ],
+    additionalContext: [
+      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
+    ],
   },
   [GEN_AI_USAGE_INPUT_TOKENS]: {
     brief: 'The number of tokens used to process the AI input (prompt) including cached input tokens.',
@@ -18058,10 +18083,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 10,
     aliases: [AI_PROMPT_TOKENS_USED, GEN_AI_USAGE_PROMPT_TOKENS],
     changelog: [
+      { version: 'next', prs: [397], description: 'Add additional_context' },
       { version: '0.5.0', prs: [261] },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [112] },
       { version: '0.0.0' },
+    ],
+    additionalContext: [
+      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
+      'This count includes cached input tokens. gen_ai.usage.input_tokens.cached is a subset of this value, not an independent count — do not sum them together.',
     ],
   },
   [GEN_AI_USAGE_INPUT_TOKENS_CACHED]: {
@@ -18074,8 +18104,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 50,
     changelog: [
+      { version: 'next', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [62, 112] },
+    ],
+    additionalContext: [
+      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
+      'This is a subset of gen_ai.usage.input_tokens, not an independent count. Do not sum this with gen_ai.usage.input_tokens — it is already included.',
     ],
   },
   [GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE]: {
@@ -18087,7 +18122,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 100,
-    changelog: [{ version: '0.4.0', prs: [217, 228] }],
+    changelog: [
+      { version: 'next', prs: [397], description: 'Add additional_context' },
+      { version: '0.4.0', prs: [217, 228] },
+    ],
+    additionalContext: [
+      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
+    ],
   },
   [GEN_AI_USAGE_OUTPUT_TOKENS]: {
     brief: 'The number of tokens used for creating the AI output (including reasoning tokens).',
@@ -18100,10 +18141,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 10,
     aliases: [AI_COMPLETION_TOKENS_USED, GEN_AI_USAGE_COMPLETION_TOKENS],
     changelog: [
+      { version: 'next', prs: [397], description: 'Add additional_context' },
       { version: '0.5.0', prs: [261] },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [112] },
       { version: '0.0.0' },
+    ],
+    additionalContext: [
+      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
+      'This count includes reasoning tokens. gen_ai.usage.output_tokens.reasoning is a subset of this value, not an independent count — do not sum them together.',
     ],
   },
   [GEN_AI_USAGE_OUTPUT_TOKENS_REASONING]: {
@@ -18116,8 +18162,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 75,
     changelog: [
+      { version: 'next', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [62, 112] },
+    ],
+    additionalContext: [
+      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
+      'This is a subset of gen_ai.usage.output_tokens, not an independent count. Do not sum this with gen_ai.usage.output_tokens — it is already included.',
     ],
   },
   [GEN_AI_USAGE_PROMPT_TOKENS]: {
@@ -18133,7 +18184,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.usage.input_tokens',
     },
     aliases: [AI_PROMPT_TOKENS_USED, GEN_AI_USAGE_INPUT_TOKENS],
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
+    changelog: [
+      { version: 'next', prs: [397], description: 'Add additional_context' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [61] },
+      { version: '0.0.0' },
+    ],
+    additionalContext: [
+      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
+    ],
   },
   [GEN_AI_USAGE_TOTAL_TOKENS]: {
     brief: 'The total number of tokens used to process the prompt. (input tokens plus output todkens)',
@@ -18146,8 +18205,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 20,
     aliases: [AI_TOTAL_TOKENS_USED],
     changelog: [
+      { version: 'next', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [57] },
+    ],
+    additionalContext: [
+      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
+      'This is the sum of gen_ai.usage.input_tokens and gen_ai.usage.output_tokens. Do not sum this with either of them — they are already included.',
     ],
   },
   [GRAPHQL_DOCUMENT]: {
