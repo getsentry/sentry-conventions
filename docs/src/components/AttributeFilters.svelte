@@ -19,7 +19,6 @@ interface AttributeIndexEntry {
 
 interface Props {
   mode: 'cards' | 'sections';
-  category?: string;
   totalCount?: number;
 }
 
