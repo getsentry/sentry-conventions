@@ -84,6 +84,10 @@ function formatAttributeCount(count: number) {
   return `${count} attribute${count === 1 ? '' : 's'}`;
 }
 
+function formatCategoryCount(count: number) {
+  return `${count} categor${count === 1 ? 'y' : 'ies'}`;
+}
+
 function getCardFilterValues(card: HTMLElement) {
   return {
     pii: card.dataset.filterPii ?? card.getAttribute('data-filter-pii') ?? '',
@@ -336,13 +340,13 @@ $effect(() => {
 const resultLabel = $derived.by(() => {
   if (mode === 'cards') {
     if (hasActiveFilters) {
-      return `Showing ${visibleCount} of ${totalCount} attributes`;
+      return `Showing ${visibleCount} of ${formatAttributeCount(totalCount)}`;
     }
-    return `${totalCount} attributes`;
+    return formatAttributeCount(totalCount);
   }
 
   if (hasActiveFilters) {
-    return `Showing ${visibleCardCount} attributes across ${visibleSectionCount} categories`;
+    return `Showing ${formatAttributeCount(visibleCardCount)} across ${formatCategoryCount(visibleSectionCount)}`;
   }
   return null;
 });
