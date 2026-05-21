@@ -1,0 +1,50 @@
+---
+/**
+ * Renders a span name template string, turning `{{attribute.key}}`
+ * placeholders into clickable links to the corresponding attribute page.
+ */
+import { attributeUrl } from '../utils/attributeUrl';
+
+interface Props {
+  template: string;
+}
+
+const { template } = Astro.props;
+
+const PLACEHOLDER = /\{\{([^}]+)\}\}/g;
+
+interface Segment {
+  type: 'text' | 'link';
+  value: string;
+}
+
+const segments: Segment[] = [];
+let lastIndex = 0;
+let match: RegExpExecArray | null;
+
+while ((match = PLACEHOLDER.exec(template)) !== null) {
+  if (match.index > lastIndex) {
+    segments.push({ type: 'text', value: template.slice(lastIndex, match.index) });
+  }
+  segments.push({ type: 'link', value: match[1] });
+  lastIndex = match.index + match[0].length;
+}
+
+if (lastIndex < template.length) {
+  segments.push({ type: 'text', value: template.slice(lastIndex) });
+}
+
+const hasPlaceholders = segments.some((s) => s.type === 'link');
+---
+
+{hasPlaceholders ? (
+  segments.map((seg) =>
+    seg.type === 'link' ? (
+      <a href={attributeUrl(seg.value, import.meta.env.BASE_URL)} class="text-accent hover:text-accent-hover" title={seg.value}>{`{{${seg.value}}}`}</a>
+    ) : (
+      <Fragment>{seg.value}</Fragment>
+    )
+  )
+) : (
+  <Fragment>{template}</Fragment>
+)}

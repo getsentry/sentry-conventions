@@ -4,7 +4,6 @@ import VisibilityBadge from './VisibilityBadge.astro';
 import OtelBadge from './OtelBadge.astro';
 import TypeBadge from './TypeBadge.astro';
 import AttributeLink from './AttributeLink.astro';
-import LinkedBrief from './LinkedBrief.astro';
 import type { Attribute } from '../content.config';
 import { parseAttributeId } from '../utils/category';
 
@@ -57,7 +56,7 @@ const rawJson = JSON.stringify(attribute, null, 2);
     </div>
   </div>
   
-  <p class="text-sm text-text-secondary mb-4 leading-relaxed"><LinkedBrief text={attribute.brief} /></p>
+  <p class="text-sm text-text-secondary mb-4 leading-relaxed">{attribute.brief}</p>
   
   <div class="flex flex-col gap-2">
     {attribute.pii.reason && (
