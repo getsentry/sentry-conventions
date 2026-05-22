@@ -1,12 +1,12 @@
 {
   "key": "sentry.dsc.project_id",
   "brief": "The ID of the project where the trace originated (i.e. the project of the SDK that started the trace). Propagated through the dynamic sampling context and set by Relay during ingestion.",
-  "type": "integer",
+  "type": "string",
   "pii": {
     "key": "false"
   },
   "is_in_otel": false,
-  "example": 12345,
+  "example": "12345",
   "visibility": "internal",
   "changelog": [
     {
