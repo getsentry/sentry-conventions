@@ -224,9 +224,7 @@ function applyCardFilters(): number {
   let visible = 0;
 
   for (const card of cards) {
-    const show = hasActiveFilters
-      ? cardMatches(card)
-      : !isDefaultHidden(card) || isHashTarget(card);
+    const show = hasActiveFilters ? cardMatches(card) : !isDefaultHidden(card) || isHashTarget(card);
     setElementVisible(card, show);
     if (show) visible++;
   }
