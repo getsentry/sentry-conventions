@@ -10,9 +10,10 @@ interface Props {
   attribute: Attribute;
   id: string;
   showCategory?: boolean;
+  defaultHidden?: boolean;
 }
 
-const { attribute, id, showCategory = false } = Astro.props;
+const { attribute, id, showCategory = false, defaultHidden = false } = Astro.props;
 
 const { category } = parseAttributeId(id);
 const isDeprecated = !!attribute.deprecation;
@@ -23,9 +24,16 @@ const rawJson = JSON.stringify(attribute, null, 2);
 <article 
   class:list={[
     'attribute-card bg-bg-secondary border border-border rounded-lg p-5 transition-colors duration-fast scroll-mt-24 hover:border-border-light',
+    { hidden: defaultHidden },
     { 'opacity-70 border-dashed hover:opacity-100': isDeprecated }
   ]} 
   id={anchorId}
+  hidden={defaultHidden}
+  data-attribute-card
+  data-filter-default-hidden={defaultHidden ? 'true' : undefined}
+  data-filter-pii={attribute.pii.key}
+  data-filter-visibility={attribute.visibility}
+  data-filter-otel={attribute.is_in_otel ? 'true' : 'false'}
   data-pagefind-body
 >
   <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
