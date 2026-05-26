@@ -7,11 +7,17 @@
   },
   "is_in_otel": false,
   "example": "Eclipse OpenJ9 VM openj9-0.21.0",
+  "deprecation": {
+    "replacement": "process.runtime.description",
+    "reason": "Prefer OTel-aligned process.runtime.description",
+    "_status": null
+  },
+  "alias": ["process.runtime.description"],
   "changelog": [
     {
       "version": "next",
       "prs": [383],
-      "description": "Added runtime.raw_description attribute"
+      "description": "Added and deprecated runtime.raw_description attribute in favor of process.runtime.description"
     }
   ]
 }

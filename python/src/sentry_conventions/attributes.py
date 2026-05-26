@@ -226,6 +226,10 @@ class _AttributeNamesMeta(type):
         "RESOURCE_DEPLOYMENT_ENVIRONMENT",
         "RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME",
         "ROUTE",
+        "RUNTIME_BUILD",
+        "RUNTIME_NAME",
+        "RUNTIME_RAW_DESCRIPTION",
+        "RUNTIME_VERSION",
         "SENTRY_BROWSER_NAME",
         "SENTRY_BROWSER_VERSION",
         "SENTRY_REPORT_EVENT",
@@ -4852,6 +4856,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Aliases: runtime.raw_description
     Example: "Eclipse OpenJ9 VM openj9-0.21.0"
     """
 
@@ -4886,6 +4891,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Aliases: runtime.name
     Example: "node"
     """
 
@@ -4898,6 +4904,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: Yes
+    Aliases: runtime.version
     Example: "18.04.2"
     """
 
@@ -5049,6 +5056,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    DEPRECATED: No replacement at this time - The runtime.* namespace is deprecated in favor of process.runtime.*. No direct OTel equivalent exists for this attribute.
     Example: "stable"
     """
 
@@ -5059,6 +5067,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Aliases: process.runtime.name
+    DEPRECATED: Use process.runtime.name instead - Prefer OTel-aligned process.runtime.name
     Example: "node"
     """
 
@@ -5071,6 +5081,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Aliases: process.runtime.description
+    DEPRECATED: Use process.runtime.description instead - Prefer OTel-aligned process.runtime.description
     Example: "Eclipse OpenJ9 VM openj9-0.21.0"
     """
 
@@ -5081,6 +5093,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: maybe
     Defined in OTEL: No
+    Aliases: process.runtime.version
+    DEPRECATED: Use process.runtime.version instead - Prefer OTel-aligned process.runtime.version
     Example: "18.04.2"
     """
 
@@ -12107,6 +12121,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="Eclipse OpenJ9 VM openj9-0.21.0",
+        aliases=["runtime.raw_description"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
@@ -12138,6 +12153,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="node",
+        aliases=["runtime.name"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
@@ -12149,6 +12165,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         example="18.04.2",
+        aliases=["runtime.version"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
@@ -12313,9 +12330,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="stable",
+        deprecation=DeprecationInfo(
+            reason="The runtime.* namespace is deprecated in favor of process.runtime.*. No direct OTel equivalent exists for this attribute."
+        ),
         changelog=[
             ChangelogEntry(
-                version="next", prs=[383], description="Added runtime.build attribute"
+                version="next",
+                prs=[383],
+                description="Added and deprecated runtime.build attribute",
             ),
         ],
     ),
@@ -12325,9 +12347,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="node",
+        deprecation=DeprecationInfo(
+            replacement="process.runtime.name",
+            reason="Prefer OTel-aligned process.runtime.name",
+        ),
+        aliases=["process.runtime.name"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[383], description="Added runtime.name attribute"
+                version="next",
+                prs=[383],
+                description="Added and deprecated runtime.name attribute in favor of process.runtime.name",
             ),
         ],
     ),
@@ -12337,11 +12366,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="Eclipse OpenJ9 VM openj9-0.21.0",
+        deprecation=DeprecationInfo(
+            replacement="process.runtime.description",
+            reason="Prefer OTel-aligned process.runtime.description",
+        ),
+        aliases=["process.runtime.description"],
         changelog=[
             ChangelogEntry(
                 version="next",
                 prs=[383],
-                description="Added runtime.raw_description attribute",
+                description="Added and deprecated runtime.raw_description attribute in favor of process.runtime.description",
             ),
         ],
     ),
@@ -12351,9 +12385,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         example="18.04.2",
+        deprecation=DeprecationInfo(
+            replacement="process.runtime.version",
+            reason="Prefer OTel-aligned process.runtime.version",
+        ),
+        aliases=["process.runtime.version"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[383], description="Added runtime.version attribute"
+                version="next",
+                prs=[383],
+                description="Added and deprecated runtime.version attribute in favor of process.runtime.version",
             ),
         ],
     ),

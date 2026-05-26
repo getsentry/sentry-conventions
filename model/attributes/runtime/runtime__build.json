@@ -7,11 +7,15 @@
   },
   "is_in_otel": false,
   "example": "stable",
+  "deprecation": {
+    "reason": "The runtime.* namespace is deprecated in favor of process.runtime.*. No direct OTel equivalent exists for this attribute.",
+    "_status": null
+  },
   "changelog": [
     {
       "version": "next",
       "prs": [383],
-      "description": "Added runtime.build attribute"
+      "description": "Added and deprecated runtime.build attribute"
     }
   ]
 }

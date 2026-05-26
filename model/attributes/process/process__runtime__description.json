@@ -7,6 +7,7 @@
   },
   "is_in_otel": true,
   "example": "Eclipse OpenJ9 VM openj9-0.21.0",
+  "alias": ["runtime.raw_description"],
   "changelog": [
     {
       "version": "0.1.0",

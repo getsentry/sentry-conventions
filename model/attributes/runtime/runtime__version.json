@@ -7,11 +7,17 @@
   },
   "is_in_otel": false,
   "example": "18.04.2",
+  "deprecation": {
+    "replacement": "process.runtime.version",
+    "reason": "Prefer OTel-aligned process.runtime.version",
+    "_status": null
+  },
+  "alias": ["process.runtime.version"],
   "changelog": [
     {
       "version": "next",
       "prs": [383],
-      "description": "Added runtime.version attribute"
+      "description": "Added and deprecated runtime.version attribute in favor of process.runtime.version"
     }
   ]
 }

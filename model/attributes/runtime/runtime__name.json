@@ -7,11 +7,17 @@
   },
   "is_in_otel": false,
   "example": "node",
+  "deprecation": {
+    "replacement": "process.runtime.name",
+    "reason": "Prefer OTel-aligned process.runtime.name",
+    "_status": null
+  },
+  "alias": ["process.runtime.name"],
   "changelog": [
     {
       "version": "next",
       "prs": [383],
-      "description": "Added runtime.name attribute"
+      "description": "Added and deprecated runtime.name attribute in favor of process.runtime.name"
     }
   ]
 }

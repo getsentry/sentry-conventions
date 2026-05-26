@@ -8588,6 +8588,8 @@ export type PROCESS_PID_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  *
+ * Aliases: {@link RUNTIME_RAW_DESCRIPTION} `runtime.raw_description`
+ *
  * @example "Eclipse OpenJ9 VM openj9-0.21.0"
  */
 export const PROCESS_RUNTIME_DESCRIPTION = 'process.runtime.description';
@@ -8648,6 +8650,8 @@ export type PROCESS_RUNTIME_ENGINE_VERSION_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  *
+ * Aliases: {@link RUNTIME_NAME} `runtime.name`
+ *
  * @example "node"
  */
 export const PROCESS_RUNTIME_NAME = 'process.runtime.name';
@@ -8667,6 +8671,8 @@ export type PROCESS_RUNTIME_NAME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ *
+ * Aliases: {@link RUNTIME_VERSION} `runtime.version`
  *
  * @example "18.04.2"
  */
@@ -8944,6 +8950,7 @@ export type RPC_SERVICE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
+ * @deprecated  - The runtime.* namespace is deprecated in favor of process.runtime.*. No direct OTel equivalent exists for this attribute.
  * @example "stable"
  */
 export const RUNTIME_BUILD = 'runtime.build';
@@ -8964,6 +8971,9 @@ export type RUNTIME_BUILD_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link PROCESS_RUNTIME_NAME} `process.runtime.name`
+ *
+ * @deprecated Use {@link PROCESS_RUNTIME_NAME} (process.runtime.name) instead - Prefer OTel-aligned process.runtime.name
  * @example "node"
  */
 export const RUNTIME_NAME = 'runtime.name';
@@ -8984,6 +8994,9 @@ export type RUNTIME_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link PROCESS_RUNTIME_DESCRIPTION} `process.runtime.description`
+ *
+ * @deprecated Use {@link PROCESS_RUNTIME_DESCRIPTION} (process.runtime.description) instead - Prefer OTel-aligned process.runtime.description
  * @example "Eclipse OpenJ9 VM openj9-0.21.0"
  */
 export const RUNTIME_RAW_DESCRIPTION = 'runtime.raw_description';
@@ -9004,6 +9017,9 @@ export type RUNTIME_RAW_DESCRIPTION_TYPE = string;
  *
  * Attribute defined in OTEL: No
  *
+ * Aliases: {@link PROCESS_RUNTIME_VERSION} `process.runtime.version`
+ *
+ * @deprecated Use {@link PROCESS_RUNTIME_VERSION} (process.runtime.version) instead - Prefer OTel-aligned process.runtime.version
  * @example "18.04.2"
  */
 export const RUNTIME_VERSION = 'runtime.version';
@@ -18360,6 +18376,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'Eclipse OpenJ9 VM openj9-0.21.0',
+    aliases: [RUNTIME_RAW_DESCRIPTION],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [PROCESS_RUNTIME_ENGINE_NAME]: {
@@ -18390,6 +18407,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: 'node',
+    aliases: [RUNTIME_NAME],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [PROCESS_RUNTIME_VERSION]: {
@@ -18401,6 +18419,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     example: '18.04.2',
+    aliases: [RUNTIME_VERSION],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [QUERY_KEY]: {
@@ -18559,7 +18578,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'stable',
-    changelog: [{ version: 'next', prs: [383], description: 'Added runtime.build attribute' }],
+    deprecation: {
+      reason:
+        'The runtime.* namespace is deprecated in favor of process.runtime.*. No direct OTel equivalent exists for this attribute.',
+    },
+    changelog: [{ version: 'next', prs: [383], description: 'Added and deprecated runtime.build attribute' }],
   },
   [RUNTIME_NAME]: {
     brief: 'The name of the runtime. For example node, CPython, or rustc.',
@@ -18569,7 +18592,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'node',
-    changelog: [{ version: 'next', prs: [383], description: 'Added runtime.name attribute' }],
+    deprecation: {
+      replacement: 'process.runtime.name',
+      reason: 'Prefer OTel-aligned process.runtime.name',
+    },
+    aliases: [PROCESS_RUNTIME_NAME],
+    changelog: [
+      {
+        version: 'next',
+        prs: [383],
+        description: 'Added and deprecated runtime.name attribute in favor of process.runtime.name',
+      },
+    ],
   },
   [RUNTIME_RAW_DESCRIPTION]: {
     brief:
@@ -18580,7 +18614,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: 'Eclipse OpenJ9 VM openj9-0.21.0',
-    changelog: [{ version: 'next', prs: [383], description: 'Added runtime.raw_description attribute' }],
+    deprecation: {
+      replacement: 'process.runtime.description',
+      reason: 'Prefer OTel-aligned process.runtime.description',
+    },
+    aliases: [PROCESS_RUNTIME_DESCRIPTION],
+    changelog: [
+      {
+        version: 'next',
+        prs: [383],
+        description: 'Added and deprecated runtime.raw_description attribute in favor of process.runtime.description',
+      },
+    ],
   },
   [RUNTIME_VERSION]: {
     brief: 'The version of the runtime.',
@@ -18590,7 +18635,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     example: '18.04.2',
-    changelog: [{ version: 'next', prs: [383], description: 'Added runtime.version attribute' }],
+    deprecation: {
+      replacement: 'process.runtime.version',
+      reason: 'Prefer OTel-aligned process.runtime.version',
+    },
+    aliases: [PROCESS_RUNTIME_VERSION],
+    changelog: [
+      {
+        version: 'next',
+        prs: [383],
+        description: 'Added and deprecated runtime.version attribute in favor of process.runtime.version',
+      },
+    ],
   },
   [SCORE_KEY]: {
     brief:
