@@ -3,6 +3,7 @@ import PiiBadge from './PiiBadge.astro';
 import VisibilityBadge from './VisibilityBadge.astro';
 import OtelBadge from './OtelBadge.astro';
 import TypeBadge from './TypeBadge.astro';
+import AttributeLink from './AttributeLink.astro';
 import type { Attribute } from '../content.config';
 import { parseAttributeId } from '../utils/category';
 
@@ -84,7 +85,7 @@ const rawJson = JSON.stringify(attribute, null, 2);
       <div class="flex items-baseline gap-3 text-sm">
         <span class="text-text-muted min-w-[100px] flex-shrink-0">Aliases</span>
         <span class="text-text-secondary">
-          {attribute.alias.map((a) => <code class="text-xs mr-1">{a}</code>)}
+          {attribute.alias.map((a) => <span class="mr-1"><AttributeLink name={a} /></span>)}
         </span>
       </div>
     )}
@@ -110,7 +111,7 @@ const rawJson = JSON.stringify(attribute, null, 2);
     {isDeprecated && (
       <div class="mt-3 p-3 bg-error-soft rounded-md border-l-[3px] border-error">
         {attribute.deprecation?.replacement ? (
-          <p class="text-sm m-0">Use <code class="text-accent">{attribute.deprecation.replacement}</code> instead.</p>
+          <p class="text-sm m-0">Use <AttributeLink name={attribute.deprecation.replacement} /> instead.</p>
         ) : (
           <p class="text-sm m-0">No replacement available at this time.</p>
         )}
