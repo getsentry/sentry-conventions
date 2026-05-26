@@ -7,11 +7,12 @@
   },
   "is_in_otel": true,
   "example": "example.com",
+  "alias": ["client.address"],
   "deprecation": {
     "_status": null,
     "replacement": "client.address"
   },
-  "alias": ["client.address"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

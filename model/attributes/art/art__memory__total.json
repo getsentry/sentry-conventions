@@ -6,6 +6,7 @@
     "key": "false"
   },
   "is_in_otel": false,
+  "visibility": "public",
   "example": 7774208,
   "sdks": ["sentry.java.android"],
   "changelog": [

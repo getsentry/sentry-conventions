@@ -13,6 +13,7 @@
     "_status": "backfill",
     "replacement": "gen_ai.usage.output_tokens"
   },
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.4.0",

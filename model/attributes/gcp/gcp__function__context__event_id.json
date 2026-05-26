@@ -1,0 +1,18 @@
+{
+  "key": "gcp.function.context.event_id",
+  "brief": "The event ID from the legacy GCP Cloud Function context (1st gen)",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "1234567890",
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.7.0",
+      "prs": [371],
+      "description": "Added gcp.function.context.event_id attribute"
+    }
+  ]
+}

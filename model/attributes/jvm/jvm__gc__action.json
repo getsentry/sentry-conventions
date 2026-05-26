@@ -7,6 +7,7 @@
   },
   "is_in_otel": true,
   "example": "end of minor GC",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

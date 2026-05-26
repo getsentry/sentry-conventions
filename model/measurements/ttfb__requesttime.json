@@ -3,5 +3,6 @@
   "full_name": "Time to First Byte (Request Time)",
   "brief": "The time it takes for the server to process the initial request and send the first byte of a response to the user's browser",
   "unit": "millisecond",
-  "platform": "web"
+  "platform": "web",
+  "attribute": "browser.web_vital.ttfb.request_time"
 }

@@ -7,7 +7,17 @@
   },
   "is_in_otel": false,
   "example": 50,
+  "visibility": "public",
+  "additional_context": [
+    "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.",
+    "This is a subset of gen_ai.usage.input_tokens, not an independent count. Do not sum this with gen_ai.usage.input_tokens — it is already included."
+  ],
   "changelog": [
+    {
+      "version": "0.9.0",
+      "prs": [397],
+      "description": "Add additional_context"
+    },
     {
       "version": "0.4.0",
       "prs": [228]

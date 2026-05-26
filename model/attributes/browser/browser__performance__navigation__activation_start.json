@@ -9,6 +9,7 @@
   "example": 1.983,
   "alias": ["performance.activationStart"],
   "sdks": ["javascript-browser"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.5.0",

@@ -1,0 +1,18 @@
+{
+  "key": "aws.lambda.execution_duration_in_millis",
+  "brief": "The execution duration of the Lambda function invocation in milliseconds",
+  "type": "double",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": 1234.56,
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.7.0",
+      "prs": [369],
+      "description": "Added aws.lambda.execution_duration_in_millis attribute"
+    }
+  ]
+}

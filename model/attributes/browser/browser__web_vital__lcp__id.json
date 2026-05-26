@@ -9,6 +9,7 @@
   "example": "#gero",
   "alias": ["lcp.id"],
   "sdks": ["javascript-browser"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.5.0",

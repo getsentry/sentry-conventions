@@ -9,6 +9,7 @@
   "is_in_otel": false,
   "example": "mdc.some_key='some_value'",
   "sdks": ["java", "java.logback", "java.jul", "java.log4j2"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.3.0",

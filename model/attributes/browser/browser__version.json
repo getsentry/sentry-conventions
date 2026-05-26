@@ -8,6 +8,7 @@
   "is_in_otel": false,
   "example": "120.0.6099.130",
   "alias": ["sentry.browser.version"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

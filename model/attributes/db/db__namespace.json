@@ -8,6 +8,7 @@
   "is_in_otel": true,
   "example": "customers",
   "alias": ["db.name"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

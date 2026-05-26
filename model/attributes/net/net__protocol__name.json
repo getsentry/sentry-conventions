@@ -7,11 +7,12 @@
   },
   "is_in_otel": true,
   "example": "http",
+  "alias": ["network.protocol.name"],
   "deprecation": {
     "_status": null,
     "replacement": "network.protocol.name"
   },
-  "alias": ["network.protocol.name"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

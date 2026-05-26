@@ -7,11 +7,12 @@
   },
   "is_in_otel": true,
   "example": "/app/myapplication/http/handler/server.py",
+  "alias": ["code.file.path"],
   "deprecation": {
     "_status": null,
     "replacement": "code.file.path"
   },
-  "alias": ["code.file.path"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

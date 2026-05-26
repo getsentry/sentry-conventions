@@ -8,6 +8,7 @@
   "is_in_otel": false,
   "example": "/posts/[id]/layout",
   "sdks": ["javascript"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

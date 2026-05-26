@@ -8,6 +8,7 @@
   "is_in_otel": false,
   "example": "Chrome",
   "alias": ["sentry.browser.name"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",
