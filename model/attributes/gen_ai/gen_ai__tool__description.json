@@ -7,6 +7,7 @@
   },
   "is_in_otel": true,
   "example": "Searches the web for current information about a topic",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

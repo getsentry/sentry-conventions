@@ -8,6 +8,7 @@
   },
   "is_in_otel": false,
   "example": "mcp_server",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.3.0",

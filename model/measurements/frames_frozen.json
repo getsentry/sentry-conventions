@@ -3,5 +3,6 @@
   "full_name": "Frozen Frames",
   "brief": "The number of frames that took longer than 700ms to render",
   "unit": "none",
-  "platform": "mobile"
+  "platform": "mobile",
+  "attribute": "app.vitals.frames.frozen.count"
 }

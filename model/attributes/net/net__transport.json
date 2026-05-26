@@ -7,11 +7,12 @@
   },
   "is_in_otel": true,
   "example": "tcp",
+  "alias": ["network.transport"],
   "deprecation": {
     "_status": null,
     "replacement": "network.transport"
   },
-  "alias": ["network.transport"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

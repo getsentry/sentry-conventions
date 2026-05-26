@@ -7,8 +7,9 @@
   },
   "is_in_otel": false,
   "example": 2500,
-  "sdks": ["javascript-browser"],
   "alias": ["lcp"],
+  "sdks": ["javascript-browser"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.5.0",

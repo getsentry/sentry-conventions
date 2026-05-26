@@ -7,11 +7,12 @@
   },
   "is_in_otel": true,
   "example": "customers",
+  "alias": ["db.namespace"],
   "deprecation": {
     "_status": null,
     "replacement": "db.namespace"
   },
-  "alias": ["db.namespace"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

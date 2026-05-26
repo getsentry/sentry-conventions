@@ -1,9 +1,19 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AttributeCard from '../../components/AttributeCard.astro';
-import CategoryChip from '../../components/CategoryChip.astro';
+import AttributeFilters from '../../components/AttributeFilters.svelte';
 import { getCollection } from 'astro:content';
 import { parseAttributeId } from '../../utils/category';
+
+type CategoryFilterCounts = Array<{
+  category: string;
+  total: number;
+  attributes: Array<{
+    pii: 'true' | 'maybe' | 'false';
+    visibility: 'public' | 'internal';
+    otel: 'true' | 'false';
+  }>;
+}>;
 
 // Get all attributes
 const allAttributes = await getCollection('attributes');
@@ -31,6 +41,20 @@ const sortedCategories = Array.from(categoryMap.keys()).sort((a, b) => {
 for (const [category, attrs] of categoryMap) {
   attrs.sort((a, b) => a.data.key.localeCompare(b.data.key));
 }
+
+const categoryFilterCounts: CategoryFilterCounts = sortedCategories.map((category) => {
+  const attributes = categoryMap.get(category) || [];
+
+  return {
+    category,
+    total: attributes.length,
+    attributes: attributes.map((attr) => ({
+      pii: attr.data.pii.key,
+      visibility: attr.data.visibility,
+      otel: attr.data.is_in_otel ? ('true' as const) : ('false' as const),
+    })),
+  };
+});
 
 // Stats
 const totalAttributes = allAttributes.length;
@@ -75,39 +99,72 @@ const deprecatedCount = totalAttributes - stableCount;
           LLM-friendly: <a href={`${import.meta.env.BASE_URL}llms.txt`} class="text-accent hover:text-accent-hover">llms.txt</a> · <a href={`${import.meta.env.BASE_URL}llms-full.txt`} class="text-accent hover:text-accent-hover">llms-full.txt</a>
         </p>
       </div>
+
+      <AttributeFilters client:load mode="sections" categoryFilterCounts={categoryFilterCounts} />
+
+      <div
+        id="attribute-filter-empty"
+        class="hidden mb-8 p-6 bg-bg-secondary border border-dashed border-border rounded-lg text-center text-text-muted"
+      >
+        No categories match the current filters.
+      </div>
       
-      
-      <div class="flex flex-col gap-12">
+      <div id="attribute-list" class="flex flex-col gap-12">
     {sortedCategories.map(category => {
       const attributes = categoryMap.get(category) || [];
       const stableAttrs = attributes.filter(a => !a.data.deprecation);
       const deprecatedAttrs = attributes.filter(a => a.data.deprecation);
       
       return (
-        <section class="scroll-mt-20" id={category}>
+        <section class="scroll-mt-20" id={category} data-category-section>
           <div class="flex items-baseline gap-4 mb-6 pb-3 border-b border-border">
             <h2 class="m-0 text-2xl">
-              <a href={`${import.meta.env.BASE_URL}attributes/${category}/`} class="text-text-primary hover:text-accent">{category}</a>
+              <a
+                href={`${import.meta.env.BASE_URL}attributes/${category}/`}
+                class="text-text-primary hover:text-accent"
+                data-category-filter-link
+              >
+                {category}
+              </a>
             </h2>
-            <span class="text-sm text-text-muted">{attributes.length} attributes</span>
+            <span
+              class="text-sm text-text-muted"
+              data-category-count-label={category}
+              data-category-total={attributes.length}
+            >
+              {attributes.length} attributes
+            </span>
           </div>
           
           {stableAttrs.length > 0 && (
-            <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
-              {stableAttrs.slice(0, 6).map(attr => (
-                <AttributeCard attribute={attr.data} id={attr.id} />
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-4" data-category-stable-grid>
+              {stableAttrs.map((attr, index) => (
+                <AttributeCard attribute={attr.data} id={attr.id} defaultHidden={index >= 6} />
               ))}
             </div>
           )}
           
           {stableAttrs.length > 6 && (
-            <a href={`${import.meta.env.BASE_URL}attributes/${category}/`} class="inline-block mt-4 text-sm text-accent hover:text-accent-hover">
+            <a
+              href={`${import.meta.env.BASE_URL}attributes/${category}/`}
+              data-category-view-all
+              data-category-filter-link
+              class="inline-block mt-4 text-sm text-accent hover:text-accent-hover"
+            >
               View all {attributes.length} {category} attributes →
             </a>
           )}
           
-          {stableAttrs.length <= 6 && deprecatedAttrs.length > 0 && (
-            <details class="mt-6 group">
+          {deprecatedAttrs.length > 0 && (
+            <details
+              class:list={[
+                'mt-6 group',
+                { hidden: stableAttrs.length > 6 }
+              ]}
+              hidden={stableAttrs.length > 6}
+              data-category-deprecated
+              data-filter-default-hidden={stableAttrs.length > 6 ? 'true' : undefined}
+            >
               <summary class="cursor-pointer list-none">
                 <span class="inline-flex items-center gap-2 px-4 py-2 bg-bg-secondary border border-dashed border-border rounded-md text-sm text-text-muted transition-all duration-fast hover:border-border-light hover:text-text-secondary group-open:mb-4">
                   {deprecatedAttrs.length} deprecated attribute{deprecatedAttrs.length > 1 ? 's' : ''}

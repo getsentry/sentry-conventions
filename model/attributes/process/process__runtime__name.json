@@ -8,6 +8,7 @@
   "is_in_otel": true,
   "example": "node",
   "alias": ["runtime.name"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

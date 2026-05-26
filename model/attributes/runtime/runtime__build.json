@@ -6,6 +6,7 @@
     "key": "maybe"
   },
   "is_in_otel": false,
+  "visibility": "public",
   "example": "stable",
   "deprecation": {
     "reason": "The runtime.* namespace is deprecated in favor of process.runtime.*. No direct OTel equivalent exists for this attribute.",

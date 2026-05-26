@@ -6,6 +6,7 @@
     "key": "maybe"
   },
   "is_in_otel": false,
+  "visibility": "public",
   "example": "Eclipse OpenJ9 VM openj9-0.21.0",
   "deprecation": {
     "replacement": "process.runtime.description",

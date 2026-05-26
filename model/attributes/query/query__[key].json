@@ -7,12 +7,13 @@
     "key": "maybe"
   },
   "is_in_otel": false,
+  "example": "query.id='123'",
   "deprecation": {
     "_status": null,
     "replacement": "url.query",
     "reason": "Instead of sending items individually in query.<key>, they should be sent all together with url.query."
   },
-  "example": "query.id='123'",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

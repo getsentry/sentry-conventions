@@ -8,6 +8,7 @@
   "is_in_otel": true,
   "example": "https",
   "alias": ["http.scheme"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

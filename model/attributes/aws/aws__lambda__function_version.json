@@ -1,0 +1,18 @@
+{
+  "key": "aws.lambda.function_version",
+  "brief": "The version of the Lambda function",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "$LATEST",
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.7.0",
+      "prs": [369],
+      "description": "Added aws.lambda.function_version attribute"
+    }
+  ]
+}

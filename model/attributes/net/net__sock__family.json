@@ -12,6 +12,7 @@
     "replacement": "network.transport",
     "reason": "Deprecated, use network.transport and network.type."
   },
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

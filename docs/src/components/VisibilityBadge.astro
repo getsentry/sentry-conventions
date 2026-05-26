@@ -1,0 +1,28 @@
+---
+interface Props {
+  visibility: 'public' | 'internal';
+  reason?: string;
+}
+
+const { visibility, reason } = Astro.props;
+
+const labels = {
+  public: 'Visibility: Public',
+  internal: 'Visibility: Internal',
+};
+
+const colorClasses = {
+  public: 'bg-public-soft text-public',
+  internal: 'bg-internal-soft text-internal',
+};
+---
+
+<span 
+  class:list={[
+    "inline-flex items-center px-2 py-1 text-xs font-medium rounded-sm uppercase tracking-wide",
+    colorClasses[visibility]
+  ]} 
+  title={reason}
+>
+  {labels[visibility]}
+</span>

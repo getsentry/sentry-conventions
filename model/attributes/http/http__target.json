@@ -12,6 +12,7 @@
     "replacement": "url.path",
     "reason": "This attribute is being deprecated in favor of url.path and url.query"
   },
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

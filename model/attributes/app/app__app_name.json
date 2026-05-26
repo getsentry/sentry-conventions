@@ -6,14 +6,15 @@
     "key": "maybe"
   },
   "is_in_otel": false,
-  "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
   "example": "My App",
   "alias": ["app.name"],
+  "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
   "deprecation": {
     "replacement": "app.name",
     "reason": "Deprecated in favor of app.name",
     "_status": "backfill"
   },
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.5.0",

@@ -8,6 +8,7 @@
   "is_in_otel": true,
   "example": "server_request",
   "alias": ["code.function"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

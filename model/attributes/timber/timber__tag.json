@@ -8,6 +8,7 @@
   "is_in_otel": false,
   "example": "MyTag",
   "sdks": ["sentry.java.android"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.3.0",

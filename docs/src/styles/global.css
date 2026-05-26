@@ -44,6 +44,11 @@
   --color-otel-true-soft: var(--color-otel-true-soft);
   --color-otel-false: var(--color-otel-false);
   --color-otel-false-soft: var(--color-otel-false-soft);
+
+  --color-public: var(--color-public);
+  --color-public-soft: var(--color-public-soft);
+  --color-internal: var(--color-internal);
+  --color-internal-soft: var(--color-internal-soft);
 }
 
 @theme {
@@ -117,6 +122,11 @@
   --color-otel-true-soft: rgba(34, 197, 94, 0.15);
   --color-otel-false: #64748b;
   --color-otel-false-soft: rgba(100, 116, 139, 0.2);
+
+  --color-public: #22c55e;
+  --color-public-soft: rgba(34, 197, 94, 0.15);
+  --color-internal: #eab308;
+  --color-internal-soft: rgba(234, 179, 8, 0.15);
 }
 
 .dark {
@@ -160,6 +170,11 @@
   --color-otel-true-soft: rgba(80, 160, 96, 0.15);
   --color-otel-false: #6b7280;
   --color-otel-false-soft: rgba(107, 114, 128, 0.2);
+
+  --color-public: #50a060;
+  --color-public-soft: rgba(80, 160, 96, 0.15);
+  --color-internal: #d4a72c;
+  --color-internal-soft: rgba(212, 167, 44, 0.15);
 }
 
 @layer base {

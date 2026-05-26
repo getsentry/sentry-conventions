@@ -8,6 +8,7 @@
   },
   "is_in_otel": false,
   "example": "Tool execution completed successfully",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.3.0",

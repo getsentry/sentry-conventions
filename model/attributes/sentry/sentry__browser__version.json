@@ -7,11 +7,12 @@
   },
   "is_in_otel": false,
   "example": "120.0.6099.130",
+  "alias": ["browser.version"],
   "deprecation": {
     "_status": null,
     "replacement": "browser.version"
   },
-  "alias": ["browser.version"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

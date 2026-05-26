@@ -7,13 +7,14 @@
   },
   "is_in_otel": false,
   "example": 477.1926,
+  "alias": ["browser.web_vital.fp.value"],
   "sdks": ["javascript-browser"],
   "deprecation": {
     "_status": "backfill",
     "replacement": "browser.web_vital.fp.value",
     "reason": "This attribute is being deprecated in favor of browser.web_vital.fp.value"
   },
-  "alias": ["browser.web_vital.fp.value"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.5.0",

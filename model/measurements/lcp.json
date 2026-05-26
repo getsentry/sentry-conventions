@@ -3,5 +3,6 @@
   "full_name": "Largest Contentful Paint",
   "brief": "The time it takes for the largest contentful paint element to be rendered on the screen",
   "unit": "millisecond",
-  "platform": "web"
+  "platform": "web",
+  "attribute": "browser.web_vital.lcp.value"
 }

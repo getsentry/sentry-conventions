@@ -8,6 +8,7 @@
   "is_in_otel": false,
   "example": "Autofix Pipeline",
   "alias": ["ai.pipeline.name"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

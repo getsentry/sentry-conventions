@@ -7,6 +7,7 @@
   },
   "is_in_otel": true,
   "example": "2.4.5",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

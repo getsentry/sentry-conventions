@@ -24,6 +24,10 @@
     "platform": {
       "description": "What platform the measurement is collected in",
       "enum": ["web", "mobile"]
+    },
+    "attribute": {
+      "description": "The name of the attribute corresponding to this measurement",
+      "type": "string"
     }
   },
   "required": ["key", "full_name", "unit", "platform"]

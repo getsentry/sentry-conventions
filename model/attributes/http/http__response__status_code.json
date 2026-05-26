@@ -8,6 +8,7 @@
   "is_in_otel": true,
   "example": 404,
   "alias": ["http.status_code"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.4.0",
