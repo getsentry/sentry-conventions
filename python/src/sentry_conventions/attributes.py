@@ -2636,6 +2636,39 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "0/5 * * * ? *"
     """
 
+    # Path: model/attributes/faas/faas__duration_in_ms.json
+    FAAS_DURATION_IN_MS: Literal["faas.duration_in_ms"] = "faas.duration_in_ms"
+    """The duration a function took to run, in milliseconds.
+
+    Type: int
+    Contains PII: false
+    Defined in OTEL: No
+    Visibility: public
+    Example: 1573817250172
+    """
+
+    # Path: model/attributes/faas/faas__entry_point.json
+    FAAS_ENTRY_POINT: Literal["faas.entry_point"] = "faas.entry_point"
+    """The code that's fun when the cloud provider invokes your function.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Visibility: public
+    Example: "my_main_function"
+    """
+
+    # Path: model/attributes/faas/faas__identity.json
+    FAAS_IDENTITY: Literal["faas.identity"] = "faas.identity"
+    """The Service Account (GCP), IAM Execution Role (AWS), or Managed Identity (Azure) used by the serverless function when interacting with other cloud services
+
+    Type: str
+    Contains PII: true
+    Defined in OTEL: No
+    Visibility: public
+    Example: "ame@project.iam.gserviceaccount.com (GCP), arn:aws:iam::123456789012:role/role-name (AWS), 00000000-0000-0000-0000-000000000000 (Azure)"
+    """
+
     # Path: model/attributes/faas/faas__time.json
     FAAS_TIME: Literal["faas.time"] = "faas.time"
     """A string containing the function invocation time in the ISO 8601 format expressed in UTC.
@@ -2895,6 +2928,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Example: "cloud_functions.context"
+    """
+
+    # Path: model/attributes/gcp/gcp__project__id.json
+    GCP_PROJECT_ID: Literal["gcp.project.id"] = "gcp.project.id"
+    """The ID of the project in GCP that this resource is associated with
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Visibility: public
+    Example: "my-project-123"
     """
 
     # Path: model/attributes/gen_ai/gen_ai__agent__name.json
@@ -10551,6 +10595,39 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "faas.duration_in_ms": AttributeMetadata(
+        brief="The duration a function took to run, in milliseconds.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=1573817250172,
+        changelog=[
+            ChangelogEntry(version="next"),
+        ],
+    ),
+    "faas.entry_point": AttributeMetadata(
+        brief="The code that's fun when the cloud provider invokes your function.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="my_main_function",
+        changelog=[
+            ChangelogEntry(version="next"),
+        ],
+    ),
+    "faas.identity": AttributeMetadata(
+        brief="The Service Account (GCP), IAM Execution Role (AWS), or Managed Identity (Azure) used by the serverless function when interacting with other cloud services",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.TRUE),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="ame@project.iam.gserviceaccount.com (GCP), arn:aws:iam::123456789012:role/role-name (AWS), 00000000-0000-0000-0000-000000000000 (Azure)",
+        changelog=[
+            ChangelogEntry(version="next"),
+        ],
+    ),
     "faas.time": AttributeMetadata(
         brief="A string containing the function invocation time in the ISO 8601 format expressed in UTC.",
         type=AttributeType.STRING,
@@ -10893,6 +10970,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 prs=[371],
                 description="Added gcp.function.context.type attribute",
             ),
+        ],
+    ),
+    "gcp.project.id": AttributeMetadata(
+        brief="The ID of the project in GCP that this resource is associated with",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="my-project-123",
+        changelog=[
+            ChangelogEntry(version="next"),
         ],
     ),
     "gen_ai.agent.name": AttributeMetadata(
@@ -16254,6 +16342,9 @@ Attributes = TypedDict(
         "exception.type": str,
         "faas.coldstart": bool,
         "faas.cron": str,
+        "faas.duration_in_ms": int,
+        "faas.entry_point": str,
+        "faas.identity": str,
         "faas.time": str,
         "faas.trigger": str,
         "fcp": float,
@@ -16275,6 +16366,7 @@ Attributes = TypedDict(
         "gcp.function.context.time": str,
         "gcp.function.context.timestamp": str,
         "gcp.function.context.type": str,
+        "gcp.project.id": str,
         "gen_ai.agent.name": str,
         "gen_ai.context.utilization": float,
         "gen_ai.context.window_size": int,
