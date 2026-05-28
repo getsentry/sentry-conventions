@@ -5,7 +5,7 @@
   "pii": {
     "key": "false"
   },
-  "is_in_otel": false,
+  "is_in_otel": true,
   "example": "my_function",
   "visibility": "public",
   "changelog": [
