@@ -2669,6 +2669,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "ame@project.iam.gserviceaccount.com (GCP), arn:aws:iam::123456789012:role/role-name (AWS), 00000000-0000-0000-0000-000000000000 (Azure)"
     """
 
+    # Path: model/attributes/faas/faas__name.json
+    FAAS_NAME: Literal["faas.name"] = "faas.name"
+    """The name of the serverless function
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Visibility: public
+    Example: "my_function"
+    """
+
     # Path: model/attributes/faas/faas__time.json
     FAAS_TIME: Literal["faas.time"] = "faas.time"
     """A string containing the function invocation time in the ISO 8601 format expressed in UTC.
@@ -10628,6 +10639,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="next"),
         ],
     ),
+    "faas.name": AttributeMetadata(
+        brief="The name of the serverless function",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="my_function",
+        changelog=[
+            ChangelogEntry(version="next"),
+        ],
+    ),
     "faas.time": AttributeMetadata(
         brief="A string containing the function invocation time in the ISO 8601 format expressed in UTC.",
         type=AttributeType.STRING,
@@ -16345,6 +16367,7 @@ Attributes = TypedDict(
         "faas.duration_in_ms": int,
         "faas.entry_point": str,
         "faas.identity": str,
+        "faas.name": str,
         "faas.time": str,
         "faas.trigger": str,
         "fcp": float,

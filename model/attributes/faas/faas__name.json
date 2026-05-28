@@ -1,0 +1,16 @@
+{
+  "key": "faas.name",
+  "brief": "The name of the serverless function",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "my_function",
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next"
+    }
+  ]
+}

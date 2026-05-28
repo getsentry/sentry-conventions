@@ -4348,6 +4348,27 @@ export const FAAS_IDENTITY = 'faas.identity';
  */
 export type FAAS_IDENTITY_TYPE = string;
 
+// Path: model/attributes/faas/faas__name.json
+
+/**
+ * The name of the serverless function `faas.name`
+ *
+ * Attribute Value Type: `string` {@link FAAS_NAME_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "my_function"
+ */
+export const FAAS_NAME = 'faas.name';
+
+/**
+ * Type for {@link FAAS_NAME} faas.name
+ */
+export type FAAS_NAME_TYPE = string;
+
 // Path: model/attributes/faas/faas__time.json
 
 /**
@@ -13515,6 +13536,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [FAAS_DURATION_IN_MS]: 'integer',
   [FAAS_ENTRY_POINT]: 'string',
   [FAAS_IDENTITY]: 'string',
+  [FAAS_NAME]: 'string',
   [FAAS_TIME]: 'string',
   [FAAS_TRIGGER]: 'string',
   [FCP]: 'double',
@@ -14123,6 +14145,7 @@ export type AttributeName =
   | typeof FAAS_DURATION_IN_MS
   | typeof FAAS_ENTRY_POINT
   | typeof FAAS_IDENTITY
+  | typeof FAAS_NAME
   | typeof FAAS_TIME
   | typeof FAAS_TRIGGER
   | typeof FCP
@@ -17209,6 +17232,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example:
       'ame@project.iam.gserviceaccount.com (GCP), arn:aws:iam::123456789012:role/role-name (AWS), 00000000-0000-0000-0000-000000000000 (Azure)',
+    changelog: [{ version: 'next' }],
+  },
+  [FAAS_NAME]: {
+    brief: 'The name of the serverless function',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'my_function',
     changelog: [{ version: 'next' }],
   },
   [FAAS_TIME]: {
@@ -22767,6 +22801,7 @@ export type Attributes = {
   [FAAS_DURATION_IN_MS]?: FAAS_DURATION_IN_MS_TYPE;
   [FAAS_ENTRY_POINT]?: FAAS_ENTRY_POINT_TYPE;
   [FAAS_IDENTITY]?: FAAS_IDENTITY_TYPE;
+  [FAAS_NAME]?: FAAS_NAME_TYPE;
   [FAAS_TIME]?: FAAS_TIME_TYPE;
   [FAAS_TRIGGER]?: FAAS_TRIGGER_TYPE;
   [FCP]?: FCP_TYPE;
