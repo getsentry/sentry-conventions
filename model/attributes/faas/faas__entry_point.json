@@ -1,6 +1,6 @@
 {
   "key": "faas.entry_point",
-  "brief": "The code that's fun when the cloud provider invokes your function.",
+  "brief": "The code that's run when the cloud provider invokes your function.",
   "type": "string",
   "pii": {
     "key": "false"

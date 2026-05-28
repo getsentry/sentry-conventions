@@ -6,7 +6,7 @@
     "key": "true"
   },
   "is_in_otel": false,
-  "example": "ame@project.iam.gserviceaccount.com (GCP), arn:aws:iam::123456789012:role/role-name (AWS), 00000000-0000-0000-0000-000000000000 (Azure)",
+  "example": "name@project.iam.gserviceaccount.com (GCP), arn:aws:iam::123456789012:role/role-name (AWS), 00000000-0000-0000-0000-000000000000 (Azure)",
   "visibility": "public",
   "changelog": [
     {

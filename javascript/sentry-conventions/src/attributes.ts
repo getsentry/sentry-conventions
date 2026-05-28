@@ -4297,7 +4297,7 @@ export type FAAS_CRON_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * @example 1573817250172
+ * @example 120
  */
 export const FAAS_DURATION_IN_MS = 'faas.duration_in_ms';
 
@@ -4309,7 +4309,7 @@ export type FAAS_DURATION_IN_MS_TYPE = number;
 // Path: model/attributes/faas/faas__entry_point.json
 
 /**
- * The code that's fun when the cloud provider invokes your function. `faas.entry_point`
+ * The code that's run when the cloud provider invokes your function. `faas.entry_point`
  *
  * Attribute Value Type: `string` {@link FAAS_ENTRY_POINT_TYPE}
  *
@@ -4339,7 +4339,7 @@ export type FAAS_ENTRY_POINT_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * @example "ame@project.iam.gserviceaccount.com (GCP), arn:aws:iam::123456789012:role/role-name (AWS), 00000000-0000-0000-0000-000000000000 (Azure)"
+ * @example "name@project.iam.gserviceaccount.com (GCP), arn:aws:iam::123456789012:role/role-name (AWS), 00000000-0000-0000-0000-000000000000 (Azure)"
  */
 export const FAAS_IDENTITY = 'faas.identity';
 
@@ -17207,11 +17207,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1573817250172,
+    example: 120,
     changelog: [{ version: 'next' }],
   },
   [FAAS_ENTRY_POINT]: {
-    brief: "The code that's fun when the cloud provider invokes your function.",
+    brief: "The code that's run when the cloud provider invokes your function.",
     type: 'string',
     pii: {
       isPii: 'false',
@@ -17231,7 +17231,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example:
-      'ame@project.iam.gserviceaccount.com (GCP), arn:aws:iam::123456789012:role/role-name (AWS), 00000000-0000-0000-0000-000000000000 (Azure)',
+      'name@project.iam.gserviceaccount.com (GCP), arn:aws:iam::123456789012:role/role-name (AWS), 00000000-0000-0000-0000-000000000000 (Azure)',
     changelog: [{ version: 'next' }],
   },
   [FAAS_NAME]: {

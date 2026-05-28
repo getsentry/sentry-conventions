@@ -2644,12 +2644,12 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: false
     Defined in OTEL: No
     Visibility: public
-    Example: 1573817250172
+    Example: 120
     """
 
     # Path: model/attributes/faas/faas__entry_point.json
     FAAS_ENTRY_POINT: Literal["faas.entry_point"] = "faas.entry_point"
-    """The code that's fun when the cloud provider invokes your function.
+    """The code that's run when the cloud provider invokes your function.
 
     Type: str
     Contains PII: false
@@ -2666,7 +2666,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: true
     Defined in OTEL: No
     Visibility: public
-    Example: "ame@project.iam.gserviceaccount.com (GCP), arn:aws:iam::123456789012:role/role-name (AWS), 00000000-0000-0000-0000-000000000000 (Azure)"
+    Example: "name@project.iam.gserviceaccount.com (GCP), arn:aws:iam::123456789012:role/role-name (AWS), 00000000-0000-0000-0000-000000000000 (Azure)"
     """
 
     # Path: model/attributes/faas/faas__name.json
@@ -10612,13 +10612,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
-        example=1573817250172,
+        example=120,
         changelog=[
             ChangelogEntry(version="next"),
         ],
     ),
     "faas.entry_point": AttributeMetadata(
-        brief="The code that's fun when the cloud provider invokes your function.",
+        brief="The code that's run when the cloud provider invokes your function.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
@@ -10634,7 +10634,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
-        example="ame@project.iam.gserviceaccount.com (GCP), arn:aws:iam::123456789012:role/role-name (AWS), 00000000-0000-0000-0000-000000000000 (Azure)",
+        example="name@project.iam.gserviceaccount.com (GCP), arn:aws:iam::123456789012:role/role-name (AWS), 00000000-0000-0000-0000-000000000000 (Azure)",
         changelog=[
             ChangelogEntry(version="next"),
         ],
