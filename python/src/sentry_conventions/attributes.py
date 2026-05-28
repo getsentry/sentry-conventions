@@ -2675,7 +2675,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     Type: str
     Contains PII: false
-    Defined in OTEL: No
+    Defined in OTEL: Yes
     Visibility: public
     Example: "my_function"
     """
@@ -10643,7 +10643,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="The name of the serverless function",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=False,
+        is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="my_function",
         changelog=[

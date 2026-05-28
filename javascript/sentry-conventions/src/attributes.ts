@@ -4357,7 +4357,7 @@ export type FAAS_IDENTITY_TYPE = string;
  *
  * Contains PII: false
  *
- * Attribute defined in OTEL: No
+ * Attribute defined in OTEL: Yes
  * Visibility: public
  *
  * @example "my_function"
@@ -17240,7 +17240,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     pii: {
       isPii: 'false',
     },
-    isInOtel: false,
+    isInOtel: true,
     visibility: 'public',
     example: 'my_function',
     changelog: [{ version: 'next' }],
