@@ -2328,6 +2328,27 @@ export const CLOUDFLARE_D1_DURATION = 'cloudflare.d1.duration';
  */
 export type CLOUDFLARE_D1_DURATION_TYPE = number;
 
+// Path: model/attributes/cloudflare/cloudflare__d1__query_type.json
+
+/**
+ * The type of query executed in a Cloudflare D1 operation `cloudflare.d1.query_type`
+ *
+ * Attribute Value Type: `string` {@link CLOUDFLARE_D1_QUERY_TYPE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "run"
+ */
+export const CLOUDFLARE_D1_QUERY_TYPE = 'cloudflare.d1.query_type';
+
+/**
+ * Type for {@link CLOUDFLARE_D1_QUERY_TYPE} cloudflare.d1.query_type
+ */
+export type CLOUDFLARE_D1_QUERY_TYPE_TYPE = string;
+
 // Path: model/attributes/cloudflare/cloudflare__d1__rows_read.json
 
 /**
@@ -2369,6 +2390,111 @@ export const CLOUDFLARE_D1_ROWS_WRITTEN = 'cloudflare.d1.rows_written';
  * Type for {@link CLOUDFLARE_D1_ROWS_WRITTEN} cloudflare.d1.rows_written
  */
 export type CLOUDFLARE_D1_ROWS_WRITTEN_TYPE = number;
+
+// Path: model/attributes/cloudflare/cloudflare__workflow__attempt.json
+
+/**
+ * The current attempt number for a Cloudflare Workflow step `cloudflare.workflow.attempt`
+ *
+ * Attribute Value Type: `number` {@link CLOUDFLARE_WORKFLOW_ATTEMPT_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 1
+ */
+export const CLOUDFLARE_WORKFLOW_ATTEMPT = 'cloudflare.workflow.attempt';
+
+/**
+ * Type for {@link CLOUDFLARE_WORKFLOW_ATTEMPT} cloudflare.workflow.attempt
+ */
+export type CLOUDFLARE_WORKFLOW_ATTEMPT_TYPE = number;
+
+// Path: model/attributes/cloudflare/cloudflare__workflow__retries__backoff.json
+
+/**
+ * The backoff strategy for Cloudflare Workflow step retries `cloudflare.workflow.retries.backoff`
+ *
+ * Attribute Value Type: `string` {@link CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "exponential"
+ */
+export const CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF = 'cloudflare.workflow.retries.backoff';
+
+/**
+ * Type for {@link CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF} cloudflare.workflow.retries.backoff
+ */
+export type CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF_TYPE = string;
+
+// Path: model/attributes/cloudflare/cloudflare__workflow__retries__delay.json
+
+/**
+ * The delay between Cloudflare Workflow step retries `cloudflare.workflow.retries.delay`
+ *
+ * Attribute Value Type: `string` {@link CLOUDFLARE_WORKFLOW_RETRIES_DELAY_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "5 seconds"
+ */
+export const CLOUDFLARE_WORKFLOW_RETRIES_DELAY = 'cloudflare.workflow.retries.delay';
+
+/**
+ * Type for {@link CLOUDFLARE_WORKFLOW_RETRIES_DELAY} cloudflare.workflow.retries.delay
+ */
+export type CLOUDFLARE_WORKFLOW_RETRIES_DELAY_TYPE = string;
+
+// Path: model/attributes/cloudflare/cloudflare__workflow__retries__limit.json
+
+/**
+ * The maximum number of retries for a Cloudflare Workflow step `cloudflare.workflow.retries.limit`
+ *
+ * Attribute Value Type: `number` {@link CLOUDFLARE_WORKFLOW_RETRIES_LIMIT_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 3
+ */
+export const CLOUDFLARE_WORKFLOW_RETRIES_LIMIT = 'cloudflare.workflow.retries.limit';
+
+/**
+ * Type for {@link CLOUDFLARE_WORKFLOW_RETRIES_LIMIT} cloudflare.workflow.retries.limit
+ */
+export type CLOUDFLARE_WORKFLOW_RETRIES_LIMIT_TYPE = number;
+
+// Path: model/attributes/cloudflare/cloudflare__workflow__timeout.json
+
+/**
+ * The timeout duration for a Cloudflare Workflow step `cloudflare.workflow.timeout`
+ *
+ * Attribute Value Type: `string` {@link CLOUDFLARE_WORKFLOW_TIMEOUT_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "1 minute"
+ */
+export const CLOUDFLARE_WORKFLOW_TIMEOUT = 'cloudflare.workflow.timeout';
+
+/**
+ * Type for {@link CLOUDFLARE_WORKFLOW_TIMEOUT} cloudflare.workflow.timeout
+ */
+export type CLOUDFLARE_WORKFLOW_TIMEOUT_TYPE = string;
 
 // Path: model/attributes/cloud/cloud__account__id.json
 
@@ -8277,6 +8403,27 @@ export const MESSAGING_MESSAGE_RETRY_COUNT = 'messaging.message.retry.count';
  */
 export type MESSAGING_MESSAGE_RETRY_COUNT_TYPE = number;
 
+// Path: model/attributes/messaging/messaging__operation__name.json
+
+/**
+ * The name of the messaging operation being performed `messaging.operation.name`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_OPERATION_NAME_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "send"
+ */
+export const MESSAGING_OPERATION_NAME = 'messaging.operation.name';
+
+/**
+ * Type for {@link MESSAGING_OPERATION_NAME} messaging.operation.name
+ */
+export type MESSAGING_OPERATION_NAME_TYPE = string;
+
 // Path: model/attributes/messaging/messaging__operation__type.json
 
 /**
@@ -11389,6 +11536,190 @@ export const SENTRY_TRANSACTION = 'sentry.transaction';
  */
 export type SENTRY_TRANSACTION_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__user__email.json
+
+/**
+ * User email address. `sentry.user.email`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_USER_EMAIL_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link USER_EMAIL} `user.email`
+ *
+ * @deprecated Use {@link USER_EMAIL} (user.email) instead
+ */
+export const SENTRY_USER_EMAIL = 'sentry.user.email';
+
+/**
+ * Type for {@link SENTRY_USER_EMAIL} sentry.user.email
+ */
+export type SENTRY_USER_EMAIL_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__user__geo__city.json
+
+/**
+ * Human readable city name. `sentry.user.geo.city`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_USER_GEO_CITY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link USER_GEO_CITY} `user.geo.city`
+ *
+ * @deprecated Use {@link USER_GEO_CITY} (user.geo.city) instead
+ */
+export const SENTRY_USER_GEO_CITY = 'sentry.user.geo.city';
+
+/**
+ * Type for {@link SENTRY_USER_GEO_CITY} sentry.user.geo.city
+ */
+export type SENTRY_USER_GEO_CITY_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__user__geo__country_code.json
+
+/**
+ * Two-letter country code (ISO 3166-1 alpha-2). `sentry.user.geo.country_code`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_USER_GEO_COUNTRY_CODE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link USER_GEO_COUNTRY_CODE} `user.geo.country_code`
+ *
+ * @deprecated Use {@link USER_GEO_COUNTRY_CODE} (user.geo.country_code) instead
+ */
+export const SENTRY_USER_GEO_COUNTRY_CODE = 'sentry.user.geo.country_code';
+
+/**
+ * Type for {@link SENTRY_USER_GEO_COUNTRY_CODE} sentry.user.geo.country_code
+ */
+export type SENTRY_USER_GEO_COUNTRY_CODE_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__user__geo__region.json
+
+/**
+ * Human readable region name or code. `sentry.user.geo.region`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_USER_GEO_REGION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link USER_GEO_REGION} `user.geo.region`
+ *
+ * @deprecated Use {@link USER_GEO_REGION} (user.geo.region) instead
+ */
+export const SENTRY_USER_GEO_REGION = 'sentry.user.geo.region';
+
+/**
+ * Type for {@link SENTRY_USER_GEO_REGION} sentry.user.geo.region
+ */
+export type SENTRY_USER_GEO_REGION_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__user__geo__subdivision.json
+
+/**
+ * Human readable subdivision name. `sentry.user.geo.subdivision`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_USER_GEO_SUBDIVISION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link USER_GEO_SUBDIVISION} `user.geo.subdivision`
+ *
+ * @deprecated Use {@link USER_GEO_SUBDIVISION} (user.geo.subdivision) instead
+ */
+export const SENTRY_USER_GEO_SUBDIVISION = 'sentry.user.geo.subdivision';
+
+/**
+ * Type for {@link SENTRY_USER_GEO_SUBDIVISION} sentry.user.geo.subdivision
+ */
+export type SENTRY_USER_GEO_SUBDIVISION_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__user__id.json
+
+/**
+ * Unique identifier of the user. `sentry.user.id`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_USER_ID_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link USER_ID} `user.id`
+ *
+ * @deprecated Use {@link USER_ID} (user.id) instead
+ */
+export const SENTRY_USER_ID = 'sentry.user.id';
+
+/**
+ * Type for {@link SENTRY_USER_ID} sentry.user.id
+ */
+export type SENTRY_USER_ID_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__user__ip.json
+
+/**
+ * The IP address of the user. `sentry.user.ip`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_USER_IP_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link USER_IP_ADDRESS} `user.ip_address`
+ *
+ * @deprecated Use {@link USER_IP_ADDRESS} (user.ip_address) instead
+ */
+export const SENTRY_USER_IP = 'sentry.user.ip';
+
+/**
+ * Type for {@link SENTRY_USER_IP} sentry.user.ip
+ */
+export type SENTRY_USER_IP_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__user__username.json
+
+/**
+ * Short name or login/username of the user. `sentry.user.username`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_USER_USERNAME_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link USER_NAME} `user.name`
+ *
+ * @deprecated Use {@link USER_NAME} (user.name) instead
+ */
+export const SENTRY_USER_USERNAME = 'sentry.user.username';
+
+/**
+ * Type for {@link SENTRY_USER_USERNAME} sentry.user.username
+ */
+export type SENTRY_USER_USERNAME_TYPE = string;
+
 // Path: model/attributes/server/server__address.json
 
 /**
@@ -12294,6 +12625,8 @@ export type USER_AGENT_ORIGINAL_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link SENTRY_USER_EMAIL} `sentry.user.email`
+ *
  * @example "test@example.com"
  */
 export const USER_EMAIL = 'user.email';
@@ -12336,6 +12669,8 @@ export type USER_FULL_NAME_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link SENTRY_USER_GEO_CITY} `sentry.user.geo.city`
+ *
  * @example "Toronto"
  */
 export const USER_GEO_CITY = 'user.geo.city';
@@ -12356,6 +12691,8 @@ export type USER_GEO_CITY_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Aliases: {@link SENTRY_USER_GEO_COUNTRY_CODE} `sentry.user.geo.country_code`
  *
  * @example "CA"
  */
@@ -12378,6 +12715,8 @@ export type USER_GEO_COUNTRY_CODE_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link SENTRY_USER_GEO_REGION} `sentry.user.geo.region`
+ *
  * @example "Canada"
  */
 export const USER_GEO_REGION = 'user.geo.region';
@@ -12398,6 +12737,8 @@ export type USER_GEO_REGION_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Aliases: {@link SENTRY_USER_GEO_SUBDIVISION} `sentry.user.geo.subdivision`
  *
  * @example "Ontario"
  */
@@ -12441,6 +12782,8 @@ export type USER_HASH_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link SENTRY_USER_ID} `sentry.user.id`
+ *
  * @example "S-1-5-21-202424912787-2692429404-2351956786-1000"
  */
 export const USER_ID = 'user.id';
@@ -12462,6 +12805,8 @@ export type USER_ID_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link SENTRY_USER_IP} `sentry.user.ip`
+ *
  * @example "192.168.1.1"
  */
 export const USER_IP_ADDRESS = 'user.ip_address';
@@ -12482,6 +12827,8 @@ export type USER_IP_ADDRESS_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
+ *
+ * Aliases: {@link SENTRY_USER_USERNAME} `sentry.user.username`
  *
  * @example "j.smith"
  */
@@ -13438,8 +13785,14 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [CLIENT_ADDRESS]: 'string',
   [CLIENT_PORT]: 'integer',
   [CLOUDFLARE_D1_DURATION]: 'integer',
+  [CLOUDFLARE_D1_QUERY_TYPE]: 'string',
   [CLOUDFLARE_D1_ROWS_READ]: 'integer',
   [CLOUDFLARE_D1_ROWS_WRITTEN]: 'integer',
+  [CLOUDFLARE_WORKFLOW_ATTEMPT]: 'integer',
+  [CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF]: 'string',
+  [CLOUDFLARE_WORKFLOW_RETRIES_DELAY]: 'string',
+  [CLOUDFLARE_WORKFLOW_RETRIES_LIMIT]: 'integer',
+  [CLOUDFLARE_WORKFLOW_TIMEOUT]: 'string',
   [CLOUD_ACCOUNT_ID]: 'string',
   [CLOUD_AVAILABILITY_ZONE]: 'string',
   [CLOUD_PLATFORM]: 'string',
@@ -13710,6 +14063,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [MESSAGING_MESSAGE_ID]: 'string',
   [MESSAGING_MESSAGE_RECEIVE_LATENCY]: 'integer',
   [MESSAGING_MESSAGE_RETRY_COUNT]: 'integer',
+  [MESSAGING_OPERATION_NAME]: 'string',
   [MESSAGING_OPERATION_TYPE]: 'string',
   [MESSAGING_SYSTEM]: 'string',
   [METHOD]: 'string',
@@ -13852,6 +14206,14 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_TIMESTAMP_SEQUENCE]: 'integer',
   [SENTRY_TRACE_PARENT_SPAN_ID]: 'string',
   [SENTRY_TRANSACTION]: 'string',
+  [SENTRY_USER_EMAIL]: 'string',
+  [SENTRY_USER_GEO_CITY]: 'string',
+  [SENTRY_USER_GEO_COUNTRY_CODE]: 'string',
+  [SENTRY_USER_GEO_REGION]: 'string',
+  [SENTRY_USER_GEO_SUBDIVISION]: 'string',
+  [SENTRY_USER_ID]: 'string',
+  [SENTRY_USER_IP]: 'string',
+  [SENTRY_USER_USERNAME]: 'string',
   [SERVER_ADDRESS]: 'string',
   [SERVER_PORT]: 'integer',
   [SERVICE_NAME]: 'string',
@@ -14046,8 +14408,14 @@ export type AttributeName =
   | typeof CLIENT_ADDRESS
   | typeof CLIENT_PORT
   | typeof CLOUDFLARE_D1_DURATION
+  | typeof CLOUDFLARE_D1_QUERY_TYPE
   | typeof CLOUDFLARE_D1_ROWS_READ
   | typeof CLOUDFLARE_D1_ROWS_WRITTEN
+  | typeof CLOUDFLARE_WORKFLOW_ATTEMPT
+  | typeof CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF
+  | typeof CLOUDFLARE_WORKFLOW_RETRIES_DELAY
+  | typeof CLOUDFLARE_WORKFLOW_RETRIES_LIMIT
+  | typeof CLOUDFLARE_WORKFLOW_TIMEOUT
   | typeof CLOUD_ACCOUNT_ID
   | typeof CLOUD_AVAILABILITY_ZONE
   | typeof CLOUD_PLATFORM
@@ -14318,6 +14686,7 @@ export type AttributeName =
   | typeof MESSAGING_MESSAGE_ID
   | typeof MESSAGING_MESSAGE_RECEIVE_LATENCY
   | typeof MESSAGING_MESSAGE_RETRY_COUNT
+  | typeof MESSAGING_OPERATION_NAME
   | typeof MESSAGING_OPERATION_TYPE
   | typeof MESSAGING_SYSTEM
   | typeof METHOD
@@ -14460,6 +14829,14 @@ export type AttributeName =
   | typeof SENTRY_TIMESTAMP_SEQUENCE
   | typeof SENTRY_TRACE_PARENT_SPAN_ID
   | typeof SENTRY_TRANSACTION
+  | typeof SENTRY_USER_EMAIL
+  | typeof SENTRY_USER_GEO_CITY
+  | typeof SENTRY_USER_GEO_COUNTRY_CODE
+  | typeof SENTRY_USER_GEO_REGION
+  | typeof SENTRY_USER_GEO_SUBDIVISION
+  | typeof SENTRY_USER_ID
+  | typeof SENTRY_USER_IP
+  | typeof SENTRY_USER_USERNAME
   | typeof SERVER_ADDRESS
   | typeof SERVER_PORT
   | typeof SERVICE_NAME
@@ -16039,6 +16416,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['javascript-cloudflare'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
+  [CLOUDFLARE_D1_QUERY_TYPE]: {
+    brief: 'The type of query executed in a Cloudflare D1 operation',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'run',
+    sdks: ['javascript-cloudflare'],
+    changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.d1.query_type attribute' }],
+  },
   [CLOUDFLARE_D1_ROWS_READ]: {
     brief: 'The number of rows read in a Cloudflare D1 operation.',
     type: 'integer',
@@ -16062,6 +16451,66 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 12,
     sdks: ['javascript-cloudflare'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+  },
+  [CLOUDFLARE_WORKFLOW_ATTEMPT]: {
+    brief: 'The current attempt number for a Cloudflare Workflow step',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 1,
+    sdks: ['javascript-cloudflare'],
+    changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.workflow.attempt attribute' }],
+  },
+  [CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF]: {
+    brief: 'The backoff strategy for Cloudflare Workflow step retries',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'exponential',
+    sdks: ['javascript-cloudflare'],
+    changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.workflow.retries.backoff attribute' }],
+  },
+  [CLOUDFLARE_WORKFLOW_RETRIES_DELAY]: {
+    brief: 'The delay between Cloudflare Workflow step retries',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '5 seconds',
+    sdks: ['javascript-cloudflare'],
+    changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.workflow.retries.delay attribute' }],
+  },
+  [CLOUDFLARE_WORKFLOW_RETRIES_LIMIT]: {
+    brief: 'The maximum number of retries for a Cloudflare Workflow step',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 3,
+    sdks: ['javascript-cloudflare'],
+    changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.workflow.retries.limit attribute' }],
+  },
+  [CLOUDFLARE_WORKFLOW_TIMEOUT]: {
+    brief: 'The timeout duration for a Cloudflare Workflow step',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '1 minute',
+    sdks: ['javascript-cloudflare'],
+    changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.workflow.timeout attribute' }],
   },
   [CLOUD_ACCOUNT_ID]: {
     brief: 'The cloud account ID the resource is assigned to',
@@ -19732,6 +20181,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['php-laravel'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
+  [MESSAGING_OPERATION_NAME]: {
+    brief: 'The name of the messaging operation being performed',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'send',
+    sdks: ['javascript-cloudflare'],
+    changelog: [{ version: 'next', prs: [392], description: 'Added messaging.operation.name attribute' }],
+  },
   [MESSAGING_OPERATION_TYPE]: {
     brief: 'A string identifying the type of the messaging operation',
     type: 'string',
@@ -21566,6 +22027,118 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.0.0' },
     ],
   },
+  [SENTRY_USER_EMAIL]: {
+    brief: 'User email address.',
+    type: 'string',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    deprecation: {
+      replacement: 'user.email',
+    },
+    aliases: [USER_EMAIL],
+    changelog: [{ version: '0.10.0', prs: [406] }],
+  },
+  [SENTRY_USER_GEO_CITY]: {
+    brief: 'Human readable city name.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    deprecation: {
+      replacement: 'user.geo.city',
+    },
+    aliases: [USER_GEO_CITY],
+    changelog: [{ version: '0.10.0', prs: [406] }],
+  },
+  [SENTRY_USER_GEO_COUNTRY_CODE]: {
+    brief: 'Two-letter country code (ISO 3166-1 alpha-2).',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    deprecation: {
+      replacement: 'user.geo.country_code',
+    },
+    aliases: [USER_GEO_COUNTRY_CODE],
+    changelog: [{ version: '0.10.0', prs: [406] }],
+  },
+  [SENTRY_USER_GEO_REGION]: {
+    brief: 'Human readable region name or code.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    deprecation: {
+      replacement: 'user.geo.region',
+    },
+    aliases: [USER_GEO_REGION],
+    changelog: [{ version: '0.10.0', prs: [406] }],
+  },
+  [SENTRY_USER_GEO_SUBDIVISION]: {
+    brief: 'Human readable subdivision name.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    deprecation: {
+      replacement: 'user.geo.subdivision',
+    },
+    aliases: [USER_GEO_SUBDIVISION],
+    changelog: [{ version: '0.10.0', prs: [406] }],
+  },
+  [SENTRY_USER_ID]: {
+    brief: 'Unique identifier of the user.',
+    type: 'string',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    deprecation: {
+      replacement: 'user.id',
+    },
+    aliases: [USER_ID],
+    changelog: [{ version: '0.10.0', prs: [406] }],
+  },
+  [SENTRY_USER_IP]: {
+    brief: 'The IP address of the user.',
+    type: 'string',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    deprecation: {
+      replacement: 'user.ip_address',
+    },
+    aliases: [USER_IP_ADDRESS],
+    changelog: [{ version: '0.10.0', prs: [406] }],
+  },
+  [SENTRY_USER_USERNAME]: {
+    brief: 'Short name or login/username of the user.',
+    type: 'string',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    deprecation: {
+      replacement: 'user.name',
+    },
+    aliases: [USER_NAME],
+    changelog: [{ version: '0.10.0', prs: [406] }],
+  },
   [SERVER_ADDRESS]: {
     brief:
       'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
@@ -22101,6 +22674,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'test@example.com',
+    aliases: [SENTRY_USER_EMAIL],
     changelog: [{ version: '0.0.0' }],
   },
   [USER_FULL_NAME]: {
@@ -22123,6 +22697,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'Toronto',
+    aliases: [SENTRY_USER_GEO_CITY],
     changelog: [{ version: '0.0.0' }],
   },
   [USER_GEO_COUNTRY_CODE]: {
@@ -22134,6 +22709,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'CA',
+    aliases: [SENTRY_USER_GEO_COUNTRY_CODE],
     changelog: [{ version: '0.0.0' }],
   },
   [USER_GEO_REGION]: {
@@ -22145,6 +22721,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'Canada',
+    aliases: [SENTRY_USER_GEO_REGION],
     changelog: [{ version: '0.0.0' }],
   },
   [USER_GEO_SUBDIVISION]: {
@@ -22156,6 +22733,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'Ontario',
+    aliases: [SENTRY_USER_GEO_SUBDIVISION],
     changelog: [{ version: '0.0.0' }],
   },
   [USER_HASH]: {
@@ -22178,6 +22756,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'S-1-5-21-202424912787-2692429404-2351956786-1000',
+    aliases: [SENTRY_USER_ID],
     changelog: [{ version: '0.0.0' }],
   },
   [USER_IP_ADDRESS]: {
@@ -22189,6 +22768,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: '192.168.1.1',
+    aliases: [SENTRY_USER_IP],
     changelog: [{ version: '0.1.0', prs: [75] }],
   },
   [USER_NAME]: {
@@ -22200,6 +22780,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'j.smith',
+    aliases: [SENTRY_USER_USERNAME],
     changelog: [{ version: '0.0.0' }],
   },
   [USER_ROLES]: {
@@ -22729,8 +23310,14 @@ export type Attributes = {
   [CLIENT_ADDRESS]?: CLIENT_ADDRESS_TYPE;
   [CLIENT_PORT]?: CLIENT_PORT_TYPE;
   [CLOUDFLARE_D1_DURATION]?: CLOUDFLARE_D1_DURATION_TYPE;
+  [CLOUDFLARE_D1_QUERY_TYPE]?: CLOUDFLARE_D1_QUERY_TYPE_TYPE;
   [CLOUDFLARE_D1_ROWS_READ]?: CLOUDFLARE_D1_ROWS_READ_TYPE;
   [CLOUDFLARE_D1_ROWS_WRITTEN]?: CLOUDFLARE_D1_ROWS_WRITTEN_TYPE;
+  [CLOUDFLARE_WORKFLOW_ATTEMPT]?: CLOUDFLARE_WORKFLOW_ATTEMPT_TYPE;
+  [CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF]?: CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF_TYPE;
+  [CLOUDFLARE_WORKFLOW_RETRIES_DELAY]?: CLOUDFLARE_WORKFLOW_RETRIES_DELAY_TYPE;
+  [CLOUDFLARE_WORKFLOW_RETRIES_LIMIT]?: CLOUDFLARE_WORKFLOW_RETRIES_LIMIT_TYPE;
+  [CLOUDFLARE_WORKFLOW_TIMEOUT]?: CLOUDFLARE_WORKFLOW_TIMEOUT_TYPE;
   [CLOUD_ACCOUNT_ID]?: CLOUD_ACCOUNT_ID_TYPE;
   [CLOUD_AVAILABILITY_ZONE]?: CLOUD_AVAILABILITY_ZONE_TYPE;
   [CLOUD_PLATFORM]?: CLOUD_PLATFORM_TYPE;
@@ -23001,6 +23588,7 @@ export type Attributes = {
   [MESSAGING_MESSAGE_ID]?: MESSAGING_MESSAGE_ID_TYPE;
   [MESSAGING_MESSAGE_RECEIVE_LATENCY]?: MESSAGING_MESSAGE_RECEIVE_LATENCY_TYPE;
   [MESSAGING_MESSAGE_RETRY_COUNT]?: MESSAGING_MESSAGE_RETRY_COUNT_TYPE;
+  [MESSAGING_OPERATION_NAME]?: MESSAGING_OPERATION_NAME_TYPE;
   [MESSAGING_OPERATION_TYPE]?: MESSAGING_OPERATION_TYPE_TYPE;
   [MESSAGING_SYSTEM]?: MESSAGING_SYSTEM_TYPE;
   [METHOD]?: METHOD_TYPE;
@@ -23143,6 +23731,14 @@ export type Attributes = {
   [SENTRY_TIMESTAMP_SEQUENCE]?: SENTRY_TIMESTAMP_SEQUENCE_TYPE;
   [SENTRY_TRACE_PARENT_SPAN_ID]?: SENTRY_TRACE_PARENT_SPAN_ID_TYPE;
   [SENTRY_TRANSACTION]?: SENTRY_TRANSACTION_TYPE;
+  [SENTRY_USER_EMAIL]?: SENTRY_USER_EMAIL_TYPE;
+  [SENTRY_USER_GEO_CITY]?: SENTRY_USER_GEO_CITY_TYPE;
+  [SENTRY_USER_GEO_COUNTRY_CODE]?: SENTRY_USER_GEO_COUNTRY_CODE_TYPE;
+  [SENTRY_USER_GEO_REGION]?: SENTRY_USER_GEO_REGION_TYPE;
+  [SENTRY_USER_GEO_SUBDIVISION]?: SENTRY_USER_GEO_SUBDIVISION_TYPE;
+  [SENTRY_USER_ID]?: SENTRY_USER_ID_TYPE;
+  [SENTRY_USER_IP]?: SENTRY_USER_IP_TYPE;
+  [SENTRY_USER_USERNAME]?: SENTRY_USER_USERNAME_TYPE;
   [SERVER_ADDRESS]?: SERVER_ADDRESS_TYPE;
   [SERVER_PORT]?: SERVER_PORT_TYPE;
   [SERVICE_NAME]?: SERVICE_NAME_TYPE;

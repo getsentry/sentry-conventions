@@ -1,0 +1,21 @@
+{
+  "key": "sentry.user.geo.region",
+  "brief": "Human readable region name or code.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "alias": ["user.geo.region"],
+  "deprecation": {
+    "replacement": "user.geo.region",
+    "_status": null
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.10.0",
+      "prs": [406]
+    }
+  ]
+}

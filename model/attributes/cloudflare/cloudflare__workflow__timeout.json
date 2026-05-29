@@ -1,0 +1,18 @@
+{
+  "key": "cloudflare.workflow.timeout",
+  "brief": "The timeout duration for a Cloudflare Workflow step",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "1 minute",
+  "sdks": ["javascript-cloudflare"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [392],
+      "description": "Added cloudflare.workflow.timeout attribute"
+    }
+  ]
+}

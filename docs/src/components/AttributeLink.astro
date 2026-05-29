@@ -1,0 +1,12 @@
+---
+import { attributeUrl } from '../utils/attributeUrl';
+
+interface Props {
+  name: string;
+}
+
+const { name } = Astro.props;
+const href = attributeUrl(name, import.meta.env.BASE_URL);
+---
+
+<a href={href} class="text-accent hover:text-accent-hover"><code class="text-xs">{name}</code></a>

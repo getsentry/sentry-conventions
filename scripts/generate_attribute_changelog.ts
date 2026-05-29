@@ -12,7 +12,7 @@ const IGNORED_COMMIT_HASHES = new Set<string>([
   '0db15becb4b06b592d53bd18aa9f945d7b065a71',
 ]);
 
-function isCommitIgnored(hash: string): boolean {
+export function isCommitIgnored(hash: string): boolean {
   const h = hash.trim().toLowerCase();
   if (!h) return false;
   for (const ignored of IGNORED_COMMIT_HASHES) {
@@ -262,12 +262,12 @@ function promoteNextEntries(existing: ChangelogEntry[], generated: ChangelogEntr
   return existing.map((e) => (e.version === 'next' ? { ...e, version: highestVersion } : e));
 }
 
-interface CommitInfo {
+export interface CommitInfo {
   hash: string;
   message: string;
 }
 
-function getCommitsInRange(gitPath: string, range: string): CommitInfo[] {
+export function getCommitsInRange(gitPath: string, range: string): CommitInfo[] {
   try {
     const output = execSync(`git log --no-merges --format="%H %s" ${range} -- "${gitPath}"`, { encoding: 'utf-8' });
     return output
@@ -286,7 +286,7 @@ function getCommitsInRange(gitPath: string, range: string): CommitInfo[] {
   }
 }
 
-function extractPrNumber(message: string): number | undefined {
+export function extractPrNumber(message: string): number | undefined {
   const match = message.match(/\(#(\d+)\)\s*$/);
   return match ? Number(match[1]) : undefined;
 }

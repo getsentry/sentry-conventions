@@ -1,0 +1,21 @@
+{
+  "key": "sentry.user.id",
+  "brief": "Unique identifier of the user.",
+  "type": "string",
+  "pii": {
+    "key": "true"
+  },
+  "is_in_otel": false,
+  "alias": ["user.id"],
+  "deprecation": {
+    "replacement": "user.id",
+    "_status": null
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.10.0",
+      "prs": [406]
+    }
+  ]
+}
