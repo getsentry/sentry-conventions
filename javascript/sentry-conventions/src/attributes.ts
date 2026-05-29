@@ -11289,6 +11289,190 @@ export const SENTRY_TRANSACTION = 'sentry.transaction';
  */
 export type SENTRY_TRANSACTION_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__user__email.json
+
+/**
+ * User email address. `sentry.user.email`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_USER_EMAIL_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link USER_EMAIL} `user.email`
+ *
+ * @deprecated Use {@link USER_EMAIL} (user.email) instead
+ */
+export const SENTRY_USER_EMAIL = 'sentry.user.email';
+
+/**
+ * Type for {@link SENTRY_USER_EMAIL} sentry.user.email
+ */
+export type SENTRY_USER_EMAIL_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__user__geo__city.json
+
+/**
+ * Human readable city name. `sentry.user.geo.city`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_USER_GEO_CITY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link USER_GEO_CITY} `user.geo.city`
+ *
+ * @deprecated Use {@link USER_GEO_CITY} (user.geo.city) instead
+ */
+export const SENTRY_USER_GEO_CITY = 'sentry.user.geo.city';
+
+/**
+ * Type for {@link SENTRY_USER_GEO_CITY} sentry.user.geo.city
+ */
+export type SENTRY_USER_GEO_CITY_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__user__geo__country_code.json
+
+/**
+ * Two-letter country code (ISO 3166-1 alpha-2). `sentry.user.geo.country_code`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_USER_GEO_COUNTRY_CODE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link USER_GEO_COUNTRY_CODE} `user.geo.country_code`
+ *
+ * @deprecated Use {@link USER_GEO_COUNTRY_CODE} (user.geo.country_code) instead
+ */
+export const SENTRY_USER_GEO_COUNTRY_CODE = 'sentry.user.geo.country_code';
+
+/**
+ * Type for {@link SENTRY_USER_GEO_COUNTRY_CODE} sentry.user.geo.country_code
+ */
+export type SENTRY_USER_GEO_COUNTRY_CODE_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__user__geo__region.json
+
+/**
+ * Human readable region name or code. `sentry.user.geo.region`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_USER_GEO_REGION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link USER_GEO_REGION} `user.geo.region`
+ *
+ * @deprecated Use {@link USER_GEO_REGION} (user.geo.region) instead
+ */
+export const SENTRY_USER_GEO_REGION = 'sentry.user.geo.region';
+
+/**
+ * Type for {@link SENTRY_USER_GEO_REGION} sentry.user.geo.region
+ */
+export type SENTRY_USER_GEO_REGION_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__user__geo__subdivision.json
+
+/**
+ * Human readable subdivision name. `sentry.user.geo.subdivision`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_USER_GEO_SUBDIVISION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link USER_GEO_SUBDIVISION} `user.geo.subdivision`
+ *
+ * @deprecated Use {@link USER_GEO_SUBDIVISION} (user.geo.subdivision) instead
+ */
+export const SENTRY_USER_GEO_SUBDIVISION = 'sentry.user.geo.subdivision';
+
+/**
+ * Type for {@link SENTRY_USER_GEO_SUBDIVISION} sentry.user.geo.subdivision
+ */
+export type SENTRY_USER_GEO_SUBDIVISION_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__user__id.json
+
+/**
+ * Unique identifier of the user. `sentry.user.id`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_USER_ID_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link USER_ID} `user.id`
+ *
+ * @deprecated Use {@link USER_ID} (user.id) instead
+ */
+export const SENTRY_USER_ID = 'sentry.user.id';
+
+/**
+ * Type for {@link SENTRY_USER_ID} sentry.user.id
+ */
+export type SENTRY_USER_ID_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__user__ip.json
+
+/**
+ * The IP address of the user. `sentry.user.ip`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_USER_IP_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link USER_IP_ADDRESS} `user.ip_address`
+ *
+ * @deprecated Use {@link USER_IP_ADDRESS} (user.ip_address) instead
+ */
+export const SENTRY_USER_IP = 'sentry.user.ip';
+
+/**
+ * Type for {@link SENTRY_USER_IP} sentry.user.ip
+ */
+export type SENTRY_USER_IP_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__user__username.json
+
+/**
+ * Short name or login/username of the user. `sentry.user.username`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_USER_USERNAME_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link USER_NAME} `user.name`
+ *
+ * @deprecated Use {@link USER_NAME} (user.name) instead
+ */
+export const SENTRY_USER_USERNAME = 'sentry.user.username';
+
+/**
+ * Type for {@link SENTRY_USER_USERNAME} sentry.user.username
+ */
+export type SENTRY_USER_USERNAME_TYPE = string;
+
 // Path: model/attributes/server/server__address.json
 
 /**
@@ -12194,6 +12378,8 @@ export type USER_AGENT_ORIGINAL_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link SENTRY_USER_EMAIL} `sentry.user.email`
+ *
  * @example "test@example.com"
  */
 export const USER_EMAIL = 'user.email';
@@ -12236,6 +12422,8 @@ export type USER_FULL_NAME_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link SENTRY_USER_GEO_CITY} `sentry.user.geo.city`
+ *
  * @example "Toronto"
  */
 export const USER_GEO_CITY = 'user.geo.city';
@@ -12256,6 +12444,8 @@ export type USER_GEO_CITY_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Aliases: {@link SENTRY_USER_GEO_COUNTRY_CODE} `sentry.user.geo.country_code`
  *
  * @example "CA"
  */
@@ -12278,6 +12468,8 @@ export type USER_GEO_COUNTRY_CODE_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link SENTRY_USER_GEO_REGION} `sentry.user.geo.region`
+ *
  * @example "Canada"
  */
 export const USER_GEO_REGION = 'user.geo.region';
@@ -12298,6 +12490,8 @@ export type USER_GEO_REGION_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Aliases: {@link SENTRY_USER_GEO_SUBDIVISION} `sentry.user.geo.subdivision`
  *
  * @example "Ontario"
  */
@@ -12341,6 +12535,8 @@ export type USER_HASH_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link SENTRY_USER_ID} `sentry.user.id`
+ *
  * @example "S-1-5-21-202424912787-2692429404-2351956786-1000"
  */
 export const USER_ID = 'user.id';
@@ -12362,6 +12558,8 @@ export type USER_ID_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link SENTRY_USER_IP} `sentry.user.ip`
+ *
  * @example "192.168.1.1"
  */
 export const USER_IP_ADDRESS = 'user.ip_address';
@@ -12382,6 +12580,8 @@ export type USER_IP_ADDRESS_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
+ *
+ * Aliases: {@link SENTRY_USER_USERNAME} `sentry.user.username`
  *
  * @example "j.smith"
  */
@@ -13748,6 +13948,14 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_TIMESTAMP_SEQUENCE]: 'integer',
   [SENTRY_TRACE_PARENT_SPAN_ID]: 'string',
   [SENTRY_TRANSACTION]: 'string',
+  [SENTRY_USER_EMAIL]: 'string',
+  [SENTRY_USER_GEO_CITY]: 'string',
+  [SENTRY_USER_GEO_COUNTRY_CODE]: 'string',
+  [SENTRY_USER_GEO_REGION]: 'string',
+  [SENTRY_USER_GEO_SUBDIVISION]: 'string',
+  [SENTRY_USER_ID]: 'string',
+  [SENTRY_USER_IP]: 'string',
+  [SENTRY_USER_USERNAME]: 'string',
   [SERVER_ADDRESS]: 'string',
   [SERVER_PORT]: 'integer',
   [SERVICE_NAME]: 'string',
@@ -14352,6 +14560,14 @@ export type AttributeName =
   | typeof SENTRY_TIMESTAMP_SEQUENCE
   | typeof SENTRY_TRACE_PARENT_SPAN_ID
   | typeof SENTRY_TRANSACTION
+  | typeof SENTRY_USER_EMAIL
+  | typeof SENTRY_USER_GEO_CITY
+  | typeof SENTRY_USER_GEO_COUNTRY_CODE
+  | typeof SENTRY_USER_GEO_REGION
+  | typeof SENTRY_USER_GEO_SUBDIVISION
+  | typeof SENTRY_USER_ID
+  | typeof SENTRY_USER_IP
+  | typeof SENTRY_USER_USERNAME
   | typeof SERVER_ADDRESS
   | typeof SERVER_PORT
   | typeof SERVICE_NAME
@@ -21373,6 +21589,118 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.0.0' },
     ],
   },
+  [SENTRY_USER_EMAIL]: {
+    brief: 'User email address.',
+    type: 'string',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    deprecation: {
+      replacement: 'user.email',
+    },
+    aliases: [USER_EMAIL],
+    changelog: [{ version: 'next' }],
+  },
+  [SENTRY_USER_GEO_CITY]: {
+    brief: 'Human readable city name.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    deprecation: {
+      replacement: 'user.geo.city',
+    },
+    aliases: [USER_GEO_CITY],
+    changelog: [{ version: 'next' }],
+  },
+  [SENTRY_USER_GEO_COUNTRY_CODE]: {
+    brief: 'Two-letter country code (ISO 3166-1 alpha-2).',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    deprecation: {
+      replacement: 'user.geo.country_code',
+    },
+    aliases: [USER_GEO_COUNTRY_CODE],
+    changelog: [{ version: 'next' }],
+  },
+  [SENTRY_USER_GEO_REGION]: {
+    brief: 'Human readable region name or code.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    deprecation: {
+      replacement: 'user.geo.region',
+    },
+    aliases: [USER_GEO_REGION],
+    changelog: [{ version: 'next' }],
+  },
+  [SENTRY_USER_GEO_SUBDIVISION]: {
+    brief: 'Human readable subdivision name.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    deprecation: {
+      replacement: 'user.geo.subdivision',
+    },
+    aliases: [USER_GEO_SUBDIVISION],
+    changelog: [{ version: 'next' }],
+  },
+  [SENTRY_USER_ID]: {
+    brief: 'Unique identifier of the user.',
+    type: 'string',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    deprecation: {
+      replacement: 'user.id',
+    },
+    aliases: [USER_ID],
+    changelog: [{ version: 'next' }],
+  },
+  [SENTRY_USER_IP]: {
+    brief: 'The IP address of the user.',
+    type: 'string',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    deprecation: {
+      replacement: 'user.ip_address',
+    },
+    aliases: [USER_IP_ADDRESS],
+    changelog: [{ version: 'next' }],
+  },
+  [SENTRY_USER_USERNAME]: {
+    brief: 'Short name or login/username of the user.',
+    type: 'string',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    deprecation: {
+      replacement: 'user.name',
+    },
+    aliases: [USER_NAME],
+    changelog: [{ version: 'next' }],
+  },
   [SERVER_ADDRESS]: {
     brief:
       'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
@@ -21908,6 +22236,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'test@example.com',
+    aliases: [SENTRY_USER_EMAIL],
     changelog: [{ version: '0.0.0' }],
   },
   [USER_FULL_NAME]: {
@@ -21930,6 +22259,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'Toronto',
+    aliases: [SENTRY_USER_GEO_CITY],
     changelog: [{ version: '0.0.0' }],
   },
   [USER_GEO_COUNTRY_CODE]: {
@@ -21941,6 +22271,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'CA',
+    aliases: [SENTRY_USER_GEO_COUNTRY_CODE],
     changelog: [{ version: '0.0.0' }],
   },
   [USER_GEO_REGION]: {
@@ -21952,6 +22283,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'Canada',
+    aliases: [SENTRY_USER_GEO_REGION],
     changelog: [{ version: '0.0.0' }],
   },
   [USER_GEO_SUBDIVISION]: {
@@ -21963,6 +22295,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'Ontario',
+    aliases: [SENTRY_USER_GEO_SUBDIVISION],
     changelog: [{ version: '0.0.0' }],
   },
   [USER_HASH]: {
@@ -21985,6 +22318,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'S-1-5-21-202424912787-2692429404-2351956786-1000',
+    aliases: [SENTRY_USER_ID],
     changelog: [{ version: '0.0.0' }],
   },
   [USER_IP_ADDRESS]: {
@@ -21996,6 +22330,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: '192.168.1.1',
+    aliases: [SENTRY_USER_IP],
     changelog: [{ version: '0.1.0', prs: [75] }],
   },
   [USER_NAME]: {
@@ -22007,6 +22342,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'j.smith',
+    aliases: [SENTRY_USER_USERNAME],
     changelog: [{ version: '0.0.0' }],
   },
   [USER_ROLES]: {
@@ -22946,6 +23282,14 @@ export type Attributes = {
   [SENTRY_TIMESTAMP_SEQUENCE]?: SENTRY_TIMESTAMP_SEQUENCE_TYPE;
   [SENTRY_TRACE_PARENT_SPAN_ID]?: SENTRY_TRACE_PARENT_SPAN_ID_TYPE;
   [SENTRY_TRANSACTION]?: SENTRY_TRANSACTION_TYPE;
+  [SENTRY_USER_EMAIL]?: SENTRY_USER_EMAIL_TYPE;
+  [SENTRY_USER_GEO_CITY]?: SENTRY_USER_GEO_CITY_TYPE;
+  [SENTRY_USER_GEO_COUNTRY_CODE]?: SENTRY_USER_GEO_COUNTRY_CODE_TYPE;
+  [SENTRY_USER_GEO_REGION]?: SENTRY_USER_GEO_REGION_TYPE;
+  [SENTRY_USER_GEO_SUBDIVISION]?: SENTRY_USER_GEO_SUBDIVISION_TYPE;
+  [SENTRY_USER_ID]?: SENTRY_USER_ID_TYPE;
+  [SENTRY_USER_IP]?: SENTRY_USER_IP_TYPE;
+  [SENTRY_USER_USERNAME]?: SENTRY_USER_USERNAME_TYPE;
   [SERVER_ADDRESS]?: SERVER_ADDRESS_TYPE;
   [SERVER_PORT]?: SERVER_PORT_TYPE;
   [SERVICE_NAME]?: SERVICE_NAME_TYPE;

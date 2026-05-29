@@ -1,0 +1,20 @@
+{
+  "key": "sentry.user.email",
+  "brief": "User email address.",
+  "type": "string",
+  "pii": {
+    "key": "true"
+  },
+  "is_in_otel": false,
+  "alias": ["user.email"],
+  "deprecation": {
+    "replacement": "user.email",
+    "_status": null
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next"
+    }
+  ]
+}

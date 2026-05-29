@@ -1,17 +1,20 @@
 {
-  "key": "user.geo.city",
+  "key": "sentry.user.geo.city",
   "brief": "Human readable city name.",
   "type": "string",
   "pii": {
     "key": "maybe"
   },
   "is_in_otel": false,
-  "example": "Toronto",
-  "alias": ["sentry.user.geo.city"],
+  "alias": ["user.geo.city"],
+  "deprecation": {
+    "replacement": "user.geo.city",
+    "_status": null
+  },
   "visibility": "public",
   "changelog": [
     {
-      "version": "0.0.0"
+      "version": "next"
     }
   ]
 }
