@@ -1,3 +1,25 @@
+## 0.10.0
+
+### New Features ✨
+
+#### Docs
+
+- Add links to deprecated and aliased attributes by @Lms24 in [#396](https://github.com/getsentry/sentry-conventions/pull/396)
+- Add filtering capability by @nsdeschenes in [#395](https://github.com/getsentry/sentry-conventions/pull/395)
+
+#### Other
+
+- (user) Add deprecated `sentry.user.*` attributes by @mjq in [#406](https://github.com/getsentry/sentry-conventions/pull/406)
+
+### Bug Fixes 🐛
+
+- Change type of sentry.dsc.project_id to string by @elramen in [#400](https://github.com/getsentry/sentry-conventions/pull/400)
+
+### Internal Changes 🔧
+
+- (generate) Remove deprecated attributes JSON generation by @mjq in [#404](https://github.com/getsentry/sentry-conventions/pull/404)
+- (publish) Automatically add PR numbers to attribute changelogs by @Lms24 in [#402](https://github.com/getsentry/sentry-conventions/pull/402)
+
 ## 0.9.0
 
 ### New Features ✨

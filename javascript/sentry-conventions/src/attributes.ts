@@ -21601,7 +21601,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'user.email',
     },
     aliases: [USER_EMAIL],
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.10.0', prs: [406] }],
   },
   [SENTRY_USER_GEO_CITY]: {
     brief: 'Human readable city name.',
@@ -21615,7 +21615,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'user.geo.city',
     },
     aliases: [USER_GEO_CITY],
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.10.0', prs: [406] }],
   },
   [SENTRY_USER_GEO_COUNTRY_CODE]: {
     brief: 'Two-letter country code (ISO 3166-1 alpha-2).',
@@ -21629,7 +21629,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'user.geo.country_code',
     },
     aliases: [USER_GEO_COUNTRY_CODE],
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.10.0', prs: [406] }],
   },
   [SENTRY_USER_GEO_REGION]: {
     brief: 'Human readable region name or code.',
@@ -21643,7 +21643,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'user.geo.region',
     },
     aliases: [USER_GEO_REGION],
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.10.0', prs: [406] }],
   },
   [SENTRY_USER_GEO_SUBDIVISION]: {
     brief: 'Human readable subdivision name.',
@@ -21657,7 +21657,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'user.geo.subdivision',
     },
     aliases: [USER_GEO_SUBDIVISION],
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.10.0', prs: [406] }],
   },
   [SENTRY_USER_ID]: {
     brief: 'Unique identifier of the user.',
@@ -21671,7 +21671,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'user.id',
     },
     aliases: [USER_ID],
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.10.0', prs: [406] }],
   },
   [SENTRY_USER_IP]: {
     brief: 'The IP address of the user.',
@@ -21685,7 +21685,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'user.ip_address',
     },
     aliases: [USER_IP_ADDRESS],
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.10.0', prs: [406] }],
   },
   [SENTRY_USER_USERNAME]: {
     brief: 'Short name or login/username of the user.',
@@ -21699,7 +21699,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'user.name',
     },
     aliases: [USER_NAME],
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.10.0', prs: [406] }],
   },
   [SERVER_ADDRESS]: {
     brief:

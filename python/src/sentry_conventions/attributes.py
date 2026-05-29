@@ -15059,7 +15059,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="user.email"),
         aliases=["user.email"],
         changelog=[
-            ChangelogEntry(version="next"),
+            ChangelogEntry(version="0.10.0", prs=[406]),
         ],
     ),
     "sentry.user.geo.city": AttributeMetadata(
@@ -15071,7 +15071,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="user.geo.city"),
         aliases=["user.geo.city"],
         changelog=[
-            ChangelogEntry(version="next"),
+            ChangelogEntry(version="0.10.0", prs=[406]),
         ],
     ),
     "sentry.user.geo.country_code": AttributeMetadata(
@@ -15083,7 +15083,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="user.geo.country_code"),
         aliases=["user.geo.country_code"],
         changelog=[
-            ChangelogEntry(version="next"),
+            ChangelogEntry(version="0.10.0", prs=[406]),
         ],
     ),
     "sentry.user.geo.region": AttributeMetadata(
@@ -15095,7 +15095,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="user.geo.region"),
         aliases=["user.geo.region"],
         changelog=[
-            ChangelogEntry(version="next"),
+            ChangelogEntry(version="0.10.0", prs=[406]),
         ],
     ),
     "sentry.user.geo.subdivision": AttributeMetadata(
@@ -15107,7 +15107,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="user.geo.subdivision"),
         aliases=["user.geo.subdivision"],
         changelog=[
-            ChangelogEntry(version="next"),
+            ChangelogEntry(version="0.10.0", prs=[406]),
         ],
     ),
     "sentry.user.id": AttributeMetadata(
@@ -15119,7 +15119,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="user.id"),
         aliases=["user.id"],
         changelog=[
-            ChangelogEntry(version="next"),
+            ChangelogEntry(version="0.10.0", prs=[406]),
         ],
     ),
     "sentry.user.ip": AttributeMetadata(
@@ -15131,7 +15131,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="user.ip_address"),
         aliases=["user.ip_address"],
         changelog=[
-            ChangelogEntry(version="next"),
+            ChangelogEntry(version="0.10.0", prs=[406]),
         ],
     ),
     "sentry.user.username": AttributeMetadata(
@@ -15143,7 +15143,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="user.name"),
         aliases=["user.name"],
         changelog=[
-            ChangelogEntry(version="next"),
+            ChangelogEntry(version="0.10.0", prs=[406]),
         ],
     ),
     "server.address": AttributeMetadata(
