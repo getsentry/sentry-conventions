@@ -1,17 +1,20 @@
 {
-  "key": "user.geo.region",
+  "key": "sentry.user.geo.region",
   "brief": "Human readable region name or code.",
   "type": "string",
   "pii": {
     "key": "maybe"
   },
   "is_in_otel": false,
-  "example": "Canada",
-  "alias": ["sentry.user.geo.region"],
+  "alias": ["user.geo.region"],
+  "deprecation": {
+    "replacement": "user.geo.region",
+    "_status": null
+  },
   "visibility": "public",
   "changelog": [
     {
-      "version": "0.0.0"
+      "version": "next"
     }
   ]
 }
