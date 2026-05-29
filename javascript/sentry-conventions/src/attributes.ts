@@ -2328,6 +2328,26 @@ export const CLOUDFLARE_D1_DURATION = 'cloudflare.d1.duration';
  */
 export type CLOUDFLARE_D1_DURATION_TYPE = number;
 
+// Path: model/attributes/cloudflare/cloudflare__d1__query_type.json
+
+/**
+ * The type of query executed in a Cloudflare D1 operation `cloudflare.d1.query_type`
+ *
+ * Attribute Value Type: `string` {@link CLOUDFLARE_D1_QUERY_TYPE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "run"
+ */
+export const CLOUDFLARE_D1_QUERY_TYPE = 'cloudflare.d1.query_type';
+
+/**
+ * Type for {@link CLOUDFLARE_D1_QUERY_TYPE} cloudflare.d1.query_type
+ */
+export type CLOUDFLARE_D1_QUERY_TYPE_TYPE = string;
+
 // Path: model/attributes/cloudflare/cloudflare__d1__rows_read.json
 
 /**
@@ -2369,6 +2389,106 @@ export const CLOUDFLARE_D1_ROWS_WRITTEN = 'cloudflare.d1.rows_written';
  * Type for {@link CLOUDFLARE_D1_ROWS_WRITTEN} cloudflare.d1.rows_written
  */
 export type CLOUDFLARE_D1_ROWS_WRITTEN_TYPE = number;
+
+// Path: model/attributes/cloudflare/cloudflare__workflow__attempt.json
+
+/**
+ * The current attempt number for a Cloudflare Workflow step `cloudflare.workflow.attempt`
+ *
+ * Attribute Value Type: `number` {@link CLOUDFLARE_WORKFLOW_ATTEMPT_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 1
+ */
+export const CLOUDFLARE_WORKFLOW_ATTEMPT = 'cloudflare.workflow.attempt';
+
+/**
+ * Type for {@link CLOUDFLARE_WORKFLOW_ATTEMPT} cloudflare.workflow.attempt
+ */
+export type CLOUDFLARE_WORKFLOW_ATTEMPT_TYPE = number;
+
+// Path: model/attributes/cloudflare/cloudflare__workflow__retries__backoff.json
+
+/**
+ * The backoff strategy for Cloudflare Workflow step retries `cloudflare.workflow.retries.backoff`
+ *
+ * Attribute Value Type: `string` {@link CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "exponential"
+ */
+export const CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF = 'cloudflare.workflow.retries.backoff';
+
+/**
+ * Type for {@link CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF} cloudflare.workflow.retries.backoff
+ */
+export type CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF_TYPE = string;
+
+// Path: model/attributes/cloudflare/cloudflare__workflow__retries__delay.json
+
+/**
+ * The delay between Cloudflare Workflow step retries `cloudflare.workflow.retries.delay`
+ *
+ * Attribute Value Type: `string` {@link CLOUDFLARE_WORKFLOW_RETRIES_DELAY_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "5 seconds"
+ */
+export const CLOUDFLARE_WORKFLOW_RETRIES_DELAY = 'cloudflare.workflow.retries.delay';
+
+/**
+ * Type for {@link CLOUDFLARE_WORKFLOW_RETRIES_DELAY} cloudflare.workflow.retries.delay
+ */
+export type CLOUDFLARE_WORKFLOW_RETRIES_DELAY_TYPE = string;
+
+// Path: model/attributes/cloudflare/cloudflare__workflow__retries__limit.json
+
+/**
+ * The maximum number of retries for a Cloudflare Workflow step `cloudflare.workflow.retries.limit`
+ *
+ * Attribute Value Type: `number` {@link CLOUDFLARE_WORKFLOW_RETRIES_LIMIT_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example 3
+ */
+export const CLOUDFLARE_WORKFLOW_RETRIES_LIMIT = 'cloudflare.workflow.retries.limit';
+
+/**
+ * Type for {@link CLOUDFLARE_WORKFLOW_RETRIES_LIMIT} cloudflare.workflow.retries.limit
+ */
+export type CLOUDFLARE_WORKFLOW_RETRIES_LIMIT_TYPE = number;
+
+// Path: model/attributes/cloudflare/cloudflare__workflow__timeout.json
+
+/**
+ * The timeout duration for a Cloudflare Workflow step `cloudflare.workflow.timeout`
+ *
+ * Attribute Value Type: `string` {@link CLOUDFLARE_WORKFLOW_TIMEOUT_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ *
+ * @example "1 minute"
+ */
+export const CLOUDFLARE_WORKFLOW_TIMEOUT = 'cloudflare.workflow.timeout';
+
+/**
+ * Type for {@link CLOUDFLARE_WORKFLOW_TIMEOUT} cloudflare.workflow.timeout
+ */
+export type CLOUDFLARE_WORKFLOW_TIMEOUT_TYPE = string;
 
 // Path: model/attributes/cloud/cloud__account__id.json
 
@@ -8277,6 +8397,26 @@ export const MESSAGING_MESSAGE_RETRY_COUNT = 'messaging.message.retry.count';
  */
 export type MESSAGING_MESSAGE_RETRY_COUNT_TYPE = number;
 
+// Path: model/attributes/messaging/messaging__operation__name.json
+
+/**
+ * The name of the messaging operation being performed `messaging.operation.name`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_OPERATION_NAME_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ *
+ * @example "send"
+ */
+export const MESSAGING_OPERATION_NAME = 'messaging.operation.name';
+
+/**
+ * Type for {@link MESSAGING_OPERATION_NAME} messaging.operation.name
+ */
+export type MESSAGING_OPERATION_NAME_TYPE = string;
+
 // Path: model/attributes/messaging/messaging__operation__type.json
 
 /**
@@ -13538,8 +13678,14 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [CLIENT_ADDRESS]: 'string',
   [CLIENT_PORT]: 'integer',
   [CLOUDFLARE_D1_DURATION]: 'integer',
+  [CLOUDFLARE_D1_QUERY_TYPE]: 'string',
   [CLOUDFLARE_D1_ROWS_READ]: 'integer',
   [CLOUDFLARE_D1_ROWS_WRITTEN]: 'integer',
+  [CLOUDFLARE_WORKFLOW_ATTEMPT]: 'integer',
+  [CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF]: 'string',
+  [CLOUDFLARE_WORKFLOW_RETRIES_DELAY]: 'string',
+  [CLOUDFLARE_WORKFLOW_RETRIES_LIMIT]: 'integer',
+  [CLOUDFLARE_WORKFLOW_TIMEOUT]: 'string',
   [CLOUD_ACCOUNT_ID]: 'string',
   [CLOUD_AVAILABILITY_ZONE]: 'string',
   [CLOUD_PLATFORM]: 'string',
@@ -13810,6 +13956,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [MESSAGING_MESSAGE_ID]: 'string',
   [MESSAGING_MESSAGE_RECEIVE_LATENCY]: 'integer',
   [MESSAGING_MESSAGE_RETRY_COUNT]: 'integer',
+  [MESSAGING_OPERATION_NAME]: 'string',
   [MESSAGING_OPERATION_TYPE]: 'string',
   [MESSAGING_SYSTEM]: 'string',
   [METHOD]: 'string',
@@ -14150,8 +14297,14 @@ export type AttributeName =
   | typeof CLIENT_ADDRESS
   | typeof CLIENT_PORT
   | typeof CLOUDFLARE_D1_DURATION
+  | typeof CLOUDFLARE_D1_QUERY_TYPE
   | typeof CLOUDFLARE_D1_ROWS_READ
   | typeof CLOUDFLARE_D1_ROWS_WRITTEN
+  | typeof CLOUDFLARE_WORKFLOW_ATTEMPT
+  | typeof CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF
+  | typeof CLOUDFLARE_WORKFLOW_RETRIES_DELAY
+  | typeof CLOUDFLARE_WORKFLOW_RETRIES_LIMIT
+  | typeof CLOUDFLARE_WORKFLOW_TIMEOUT
   | typeof CLOUD_ACCOUNT_ID
   | typeof CLOUD_AVAILABILITY_ZONE
   | typeof CLOUD_PLATFORM
@@ -14422,6 +14575,7 @@ export type AttributeName =
   | typeof MESSAGING_MESSAGE_ID
   | typeof MESSAGING_MESSAGE_RECEIVE_LATENCY
   | typeof MESSAGING_MESSAGE_RETRY_COUNT
+  | typeof MESSAGING_OPERATION_NAME
   | typeof MESSAGING_OPERATION_TYPE
   | typeof MESSAGING_SYSTEM
   | typeof METHOD
@@ -16147,6 +16301,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['javascript-cloudflare'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
+  [CLOUDFLARE_D1_QUERY_TYPE]: {
+    brief: 'The type of query executed in a Cloudflare D1 operation',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'run',
+    sdks: ['javascript-cloudflare'],
+    changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.d1.query_type attribute' }],
+  },
   [CLOUDFLARE_D1_ROWS_READ]: {
     brief: 'The number of rows read in a Cloudflare D1 operation.',
     type: 'integer',
@@ -16170,6 +16335,61 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 12,
     sdks: ['javascript-cloudflare'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+  },
+  [CLOUDFLARE_WORKFLOW_ATTEMPT]: {
+    brief: 'The current attempt number for a Cloudflare Workflow step',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 1,
+    sdks: ['javascript-cloudflare'],
+    changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.workflow.attempt attribute' }],
+  },
+  [CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF]: {
+    brief: 'The backoff strategy for Cloudflare Workflow step retries',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 'exponential',
+    sdks: ['javascript-cloudflare'],
+    changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.workflow.retries.backoff attribute' }],
+  },
+  [CLOUDFLARE_WORKFLOW_RETRIES_DELAY]: {
+    brief: 'The delay between Cloudflare Workflow step retries',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '5 seconds',
+    sdks: ['javascript-cloudflare'],
+    changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.workflow.retries.delay attribute' }],
+  },
+  [CLOUDFLARE_WORKFLOW_RETRIES_LIMIT]: {
+    brief: 'The maximum number of retries for a Cloudflare Workflow step',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: 3,
+    sdks: ['javascript-cloudflare'],
+    changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.workflow.retries.limit attribute' }],
+  },
+  [CLOUDFLARE_WORKFLOW_TIMEOUT]: {
+    brief: 'The timeout duration for a Cloudflare Workflow step',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    example: '1 minute',
+    sdks: ['javascript-cloudflare'],
+    changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.workflow.timeout attribute' }],
   },
   [CLOUD_ACCOUNT_ID]: {
     brief: 'The cloud account ID the resource is assigned to',
@@ -19840,6 +20060,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['php-laravel'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
+  [MESSAGING_OPERATION_NAME]: {
+    brief: 'The name of the messaging operation being performed',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    example: 'send',
+    sdks: ['javascript-cloudflare'],
+    changelog: [{ version: 'next', prs: [392], description: 'Added messaging.operation.name attribute' }],
+  },
   [MESSAGING_OPERATION_TYPE]: {
     brief: 'A string identifying the type of the messaging operation',
     type: 'string',
@@ -22872,8 +23103,14 @@ export type Attributes = {
   [CLIENT_ADDRESS]?: CLIENT_ADDRESS_TYPE;
   [CLIENT_PORT]?: CLIENT_PORT_TYPE;
   [CLOUDFLARE_D1_DURATION]?: CLOUDFLARE_D1_DURATION_TYPE;
+  [CLOUDFLARE_D1_QUERY_TYPE]?: CLOUDFLARE_D1_QUERY_TYPE_TYPE;
   [CLOUDFLARE_D1_ROWS_READ]?: CLOUDFLARE_D1_ROWS_READ_TYPE;
   [CLOUDFLARE_D1_ROWS_WRITTEN]?: CLOUDFLARE_D1_ROWS_WRITTEN_TYPE;
+  [CLOUDFLARE_WORKFLOW_ATTEMPT]?: CLOUDFLARE_WORKFLOW_ATTEMPT_TYPE;
+  [CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF]?: CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF_TYPE;
+  [CLOUDFLARE_WORKFLOW_RETRIES_DELAY]?: CLOUDFLARE_WORKFLOW_RETRIES_DELAY_TYPE;
+  [CLOUDFLARE_WORKFLOW_RETRIES_LIMIT]?: CLOUDFLARE_WORKFLOW_RETRIES_LIMIT_TYPE;
+  [CLOUDFLARE_WORKFLOW_TIMEOUT]?: CLOUDFLARE_WORKFLOW_TIMEOUT_TYPE;
   [CLOUD_ACCOUNT_ID]?: CLOUD_ACCOUNT_ID_TYPE;
   [CLOUD_AVAILABILITY_ZONE]?: CLOUD_AVAILABILITY_ZONE_TYPE;
   [CLOUD_PLATFORM]?: CLOUD_PLATFORM_TYPE;
@@ -23144,6 +23381,7 @@ export type Attributes = {
   [MESSAGING_MESSAGE_ID]?: MESSAGING_MESSAGE_ID_TYPE;
   [MESSAGING_MESSAGE_RECEIVE_LATENCY]?: MESSAGING_MESSAGE_RECEIVE_LATENCY_TYPE;
   [MESSAGING_MESSAGE_RETRY_COUNT]?: MESSAGING_MESSAGE_RETRY_COUNT_TYPE;
+  [MESSAGING_OPERATION_NAME]?: MESSAGING_OPERATION_NAME_TYPE;
   [MESSAGING_OPERATION_TYPE]?: MESSAGING_OPERATION_TYPE_TYPE;
   [MESSAGING_SYSTEM]?: MESSAGING_SYSTEM_TYPE;
   [METHOD]?: METHOD_TYPE;
