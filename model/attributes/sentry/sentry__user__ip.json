@@ -1,0 +1,21 @@
+{
+  "key": "sentry.user.ip",
+  "brief": "The IP address of the user.",
+  "type": "string",
+  "pii": {
+    "key": "true"
+  },
+  "is_in_otel": false,
+  "alias": ["user.ip_address"],
+  "deprecation": {
+    "replacement": "user.ip_address",
+    "_status": null
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.10.0",
+      "prs": [406]
+    }
+  ]
+}

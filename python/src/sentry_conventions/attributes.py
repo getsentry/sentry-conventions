@@ -244,6 +244,14 @@ class _AttributeNamesMeta(type):
         "SENTRY_SOURCE",
         "SENTRY_TRACE_PARENT_SPAN_ID",
         "SENTRY_TRANSACTION",
+        "SENTRY_USER_EMAIL",
+        "SENTRY_USER_GEO_CITY",
+        "SENTRY_USER_GEO_COUNTRY_CODE",
+        "SENTRY_USER_GEO_REGION",
+        "SENTRY_USER_GEO_SUBDIVISION",
+        "SENTRY_USER_ID",
+        "SENTRY_USER_IP",
+        "SENTRY_USER_USERNAME",
         "TIME_TO_FULL_DISPLAY",
         "TIME_TO_INITIAL_DISPLAY",
         "TRANSACTION",
@@ -1761,6 +1769,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 543
     """
 
+    # Path: model/attributes/cloudflare/cloudflare__d1__query_type.json
+    CLOUDFLARE_D1_QUERY_TYPE: Literal["cloudflare.d1.query_type"] = (
+        "cloudflare.d1.query_type"
+    )
+    """The type of query executed in a Cloudflare D1 operation
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "run"
+    """
+
     # Path: model/attributes/cloudflare/cloudflare__d1__rows_read.json
     CLOUDFLARE_D1_ROWS_READ: Literal["cloudflare.d1.rows_read"] = (
         "cloudflare.d1.rows_read"
@@ -1785,6 +1805,66 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Example: 12
+    """
+
+    # Path: model/attributes/cloudflare/cloudflare__workflow__attempt.json
+    CLOUDFLARE_WORKFLOW_ATTEMPT: Literal["cloudflare.workflow.attempt"] = (
+        "cloudflare.workflow.attempt"
+    )
+    """The current attempt number for a Cloudflare Workflow step
+
+    Type: int
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 1
+    """
+
+    # Path: model/attributes/cloudflare/cloudflare__workflow__retries__backoff.json
+    CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF: Literal[
+        "cloudflare.workflow.retries.backoff"
+    ] = "cloudflare.workflow.retries.backoff"
+    """The backoff strategy for Cloudflare Workflow step retries
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "exponential"
+    """
+
+    # Path: model/attributes/cloudflare/cloudflare__workflow__retries__delay.json
+    CLOUDFLARE_WORKFLOW_RETRIES_DELAY: Literal["cloudflare.workflow.retries.delay"] = (
+        "cloudflare.workflow.retries.delay"
+    )
+    """The delay between Cloudflare Workflow step retries
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "5 seconds"
+    """
+
+    # Path: model/attributes/cloudflare/cloudflare__workflow__retries__limit.json
+    CLOUDFLARE_WORKFLOW_RETRIES_LIMIT: Literal["cloudflare.workflow.retries.limit"] = (
+        "cloudflare.workflow.retries.limit"
+    )
+    """The maximum number of retries for a Cloudflare Workflow step
+
+    Type: int
+    Contains PII: false
+    Defined in OTEL: No
+    Example: 3
+    """
+
+    # Path: model/attributes/cloudflare/cloudflare__workflow__timeout.json
+    CLOUDFLARE_WORKFLOW_TIMEOUT: Literal["cloudflare.workflow.timeout"] = (
+        "cloudflare.workflow.timeout"
+    )
+    """The timeout duration for a Cloudflare Workflow step
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: No
+    Example: "1 minute"
     """
 
     # Path: model/attributes/cls/cls__source__[key].json
@@ -5031,6 +5111,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 2
     """
 
+    # Path: model/attributes/messaging/messaging__operation__name.json
+    MESSAGING_OPERATION_NAME: Literal["messaging.operation.name"] = (
+        "messaging.operation.name"
+    )
+    """The name of the messaging operation being performed
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: Yes
+    Example: "send"
+    """
+
     # Path: model/attributes/messaging/messaging__operation__type.json
     MESSAGING_OPERATION_TYPE: Literal["messaging.operation.type"] = (
         "messaging.operation.type"
@@ -6688,6 +6780,106 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "GET /"
     """
 
+    # Path: model/attributes/sentry/sentry__user__email.json
+    SENTRY_USER_EMAIL: Literal["sentry.user.email"] = "sentry.user.email"
+    """User email address.
+
+    Type: str
+    Contains PII: true
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: user.email
+    DEPRECATED: Use user.email instead
+    """
+
+    # Path: model/attributes/sentry/sentry__user__geo__city.json
+    SENTRY_USER_GEO_CITY: Literal["sentry.user.geo.city"] = "sentry.user.geo.city"
+    """Human readable city name.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: user.geo.city
+    DEPRECATED: Use user.geo.city instead
+    """
+
+    # Path: model/attributes/sentry/sentry__user__geo__country_code.json
+    SENTRY_USER_GEO_COUNTRY_CODE: Literal["sentry.user.geo.country_code"] = (
+        "sentry.user.geo.country_code"
+    )
+    """Two-letter country code (ISO 3166-1 alpha-2).
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: user.geo.country_code
+    DEPRECATED: Use user.geo.country_code instead
+    """
+
+    # Path: model/attributes/sentry/sentry__user__geo__region.json
+    SENTRY_USER_GEO_REGION: Literal["sentry.user.geo.region"] = "sentry.user.geo.region"
+    """Human readable region name or code.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: user.geo.region
+    DEPRECATED: Use user.geo.region instead
+    """
+
+    # Path: model/attributes/sentry/sentry__user__geo__subdivision.json
+    SENTRY_USER_GEO_SUBDIVISION: Literal["sentry.user.geo.subdivision"] = (
+        "sentry.user.geo.subdivision"
+    )
+    """Human readable subdivision name.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: user.geo.subdivision
+    DEPRECATED: Use user.geo.subdivision instead
+    """
+
+    # Path: model/attributes/sentry/sentry__user__id.json
+    SENTRY_USER_ID: Literal["sentry.user.id"] = "sentry.user.id"
+    """Unique identifier of the user.
+
+    Type: str
+    Contains PII: true
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: user.id
+    DEPRECATED: Use user.id instead
+    """
+
+    # Path: model/attributes/sentry/sentry__user__ip.json
+    SENTRY_USER_IP: Literal["sentry.user.ip"] = "sentry.user.ip"
+    """The IP address of the user.
+
+    Type: str
+    Contains PII: true
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: user.ip_address
+    DEPRECATED: Use user.ip_address instead
+    """
+
+    # Path: model/attributes/sentry/sentry__user__username.json
+    SENTRY_USER_USERNAME: Literal["sentry.user.username"] = "sentry.user.username"
+    """Short name or login/username of the user.
+
+    Type: str
+    Contains PII: true
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: user.name
+    DEPRECATED: Use user.name instead
+    """
+
     # Path: model/attributes/server/server__address.json
     SERVER_ADDRESS: Literal["server.address"] = "server.address"
     """Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
@@ -7158,6 +7350,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: true
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: sentry.user.email
     Example: "test@example.com"
     """
 
@@ -7180,6 +7373,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.user.geo.city
     Example: "Toronto"
     """
 
@@ -7191,6 +7385,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.user.geo.country_code
     Example: "CA"
     """
 
@@ -7202,6 +7397,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.user.geo.region
     Example: "Canada"
     """
 
@@ -7213,6 +7409,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.user.geo.subdivision
     Example: "Ontario"
     """
 
@@ -7235,6 +7432,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: true
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: sentry.user.id
     Example: "S-1-5-21-202424912787-2692429404-2351956786-1000"
     """
 
@@ -7246,6 +7444,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: true
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.user.ip
     Example: "192.168.1.1"
     """
 
@@ -7257,6 +7456,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: true
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: sentry.user.username
     Example: "j.smith"
     """
 
@@ -9639,6 +9839,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "cloudflare.d1.query_type": AttributeMetadata(
+        brief="The type of query executed in a Cloudflare D1 operation",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="run",
+        sdks=["javascript-cloudflare"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[392],
+                description="Added cloudflare.d1.query_type attribute",
+            ),
+        ],
+    ),
     "cloudflare.d1.rows_read": AttributeMetadata(
         brief="The number of rows read in a Cloudflare D1 operation.",
         type=AttributeType.INTEGER,
@@ -9663,6 +9878,81 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "cloudflare.workflow.attempt": AttributeMetadata(
+        brief="The current attempt number for a Cloudflare Workflow step",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=1,
+        sdks=["javascript-cloudflare"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[392],
+                description="Added cloudflare.workflow.attempt attribute",
+            ),
+        ],
+    ),
+    "cloudflare.workflow.retries.backoff": AttributeMetadata(
+        brief="The backoff strategy for Cloudflare Workflow step retries",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="exponential",
+        sdks=["javascript-cloudflare"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[392],
+                description="Added cloudflare.workflow.retries.backoff attribute",
+            ),
+        ],
+    ),
+    "cloudflare.workflow.retries.delay": AttributeMetadata(
+        brief="The delay between Cloudflare Workflow step retries",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="5 seconds",
+        sdks=["javascript-cloudflare"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[392],
+                description="Added cloudflare.workflow.retries.delay attribute",
+            ),
+        ],
+    ),
+    "cloudflare.workflow.retries.limit": AttributeMetadata(
+        brief="The maximum number of retries for a Cloudflare Workflow step",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example=3,
+        sdks=["javascript-cloudflare"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[392],
+                description="Added cloudflare.workflow.retries.limit attribute",
+            ),
+        ],
+    ),
+    "cloudflare.workflow.timeout": AttributeMetadata(
+        brief="The timeout duration for a Cloudflare Workflow step",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=False,
+        example="1 minute",
+        sdks=["javascript-cloudflare"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[392],
+                description="Added cloudflare.workflow.timeout attribute",
+            ),
         ],
     ),
     "cls.source.<key>": AttributeMetadata(
@@ -13427,6 +13717,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "messaging.operation.name": AttributeMetadata(
+        brief="The name of the messaging operation being performed",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=True,
+        example="send",
+        sdks=["javascript-cloudflare"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[392],
+                description="Added messaging.operation.name attribute",
+            ),
+        ],
+    ),
     "messaging.operation.type": AttributeMetadata(
         brief="A string identifying the type of the messaging operation",
         type=AttributeType.STRING,
@@ -15231,6 +15536,102 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "sentry.user.email": AttributeMetadata(
+        brief="User email address.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.TRUE),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        deprecation=DeprecationInfo(replacement="user.email"),
+        aliases=["user.email"],
+        changelog=[
+            ChangelogEntry(version="0.10.0", prs=[406]),
+        ],
+    ),
+    "sentry.user.geo.city": AttributeMetadata(
+        brief="Human readable city name.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        deprecation=DeprecationInfo(replacement="user.geo.city"),
+        aliases=["user.geo.city"],
+        changelog=[
+            ChangelogEntry(version="0.10.0", prs=[406]),
+        ],
+    ),
+    "sentry.user.geo.country_code": AttributeMetadata(
+        brief="Two-letter country code (ISO 3166-1 alpha-2).",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        deprecation=DeprecationInfo(replacement="user.geo.country_code"),
+        aliases=["user.geo.country_code"],
+        changelog=[
+            ChangelogEntry(version="0.10.0", prs=[406]),
+        ],
+    ),
+    "sentry.user.geo.region": AttributeMetadata(
+        brief="Human readable region name or code.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        deprecation=DeprecationInfo(replacement="user.geo.region"),
+        aliases=["user.geo.region"],
+        changelog=[
+            ChangelogEntry(version="0.10.0", prs=[406]),
+        ],
+    ),
+    "sentry.user.geo.subdivision": AttributeMetadata(
+        brief="Human readable subdivision name.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        deprecation=DeprecationInfo(replacement="user.geo.subdivision"),
+        aliases=["user.geo.subdivision"],
+        changelog=[
+            ChangelogEntry(version="0.10.0", prs=[406]),
+        ],
+    ),
+    "sentry.user.id": AttributeMetadata(
+        brief="Unique identifier of the user.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.TRUE),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        deprecation=DeprecationInfo(replacement="user.id"),
+        aliases=["user.id"],
+        changelog=[
+            ChangelogEntry(version="0.10.0", prs=[406]),
+        ],
+    ),
+    "sentry.user.ip": AttributeMetadata(
+        brief="The IP address of the user.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.TRUE),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        deprecation=DeprecationInfo(replacement="user.ip_address"),
+        aliases=["user.ip_address"],
+        changelog=[
+            ChangelogEntry(version="0.10.0", prs=[406]),
+        ],
+    ),
+    "sentry.user.username": AttributeMetadata(
+        brief="Short name or login/username of the user.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.TRUE),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        deprecation=DeprecationInfo(replacement="user.name"),
+        aliases=["user.name"],
+        changelog=[
+            ChangelogEntry(version="0.10.0", prs=[406]),
+        ],
+    ),
     "server.address": AttributeMetadata(
         brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
@@ -15819,6 +16220,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="test@example.com",
+        aliases=["sentry.user.email"],
         changelog=[
             ChangelogEntry(version="0.0.0"),
         ],
@@ -15841,6 +16243,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="Toronto",
+        aliases=["sentry.user.geo.city"],
         changelog=[
             ChangelogEntry(version="0.0.0"),
         ],
@@ -15852,6 +16255,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="CA",
+        aliases=["sentry.user.geo.country_code"],
         changelog=[
             ChangelogEntry(version="0.0.0"),
         ],
@@ -15863,6 +16267,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="Canada",
+        aliases=["sentry.user.geo.region"],
         changelog=[
             ChangelogEntry(version="0.0.0"),
         ],
@@ -15874,6 +16279,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="Ontario",
+        aliases=["sentry.user.geo.subdivision"],
         changelog=[
             ChangelogEntry(version="0.0.0"),
         ],
@@ -15896,6 +16302,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="S-1-5-21-202424912787-2692429404-2351956786-1000",
+        aliases=["sentry.user.id"],
         changelog=[
             ChangelogEntry(version="0.0.0"),
         ],
@@ -15907,6 +16314,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="192.168.1.1",
+        aliases=["sentry.user.ip"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[75]),
         ],
@@ -15918,6 +16326,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="j.smith",
+        aliases=["sentry.user.username"],
         changelog=[
             ChangelogEntry(version="0.0.0"),
         ],
@@ -16477,8 +16886,14 @@ Attributes = TypedDict(
         "cloud.provider": str,
         "cloud.region": str,
         "cloudflare.d1.duration": int,
+        "cloudflare.d1.query_type": str,
         "cloudflare.d1.rows_read": int,
         "cloudflare.d1.rows_written": int,
+        "cloudflare.workflow.attempt": int,
+        "cloudflare.workflow.retries.backoff": str,
+        "cloudflare.workflow.retries.delay": str,
+        "cloudflare.workflow.retries.limit": int,
+        "cloudflare.workflow.timeout": str,
         "cls.source.<key>": str,
         "cls": float,
         "code.file.path": str,
@@ -16744,6 +17159,7 @@ Attributes = TypedDict(
         "messaging.message.id": str,
         "messaging.message.receive.latency": int,
         "messaging.message.retry.count": int,
+        "messaging.operation.name": str,
         "messaging.operation.type": str,
         "messaging.system": str,
         "method": str,
@@ -16882,6 +17298,14 @@ Attributes = TypedDict(
         "sentry.timestamp.sequence": int,
         "sentry.trace.parent_span_id": str,
         "sentry.transaction": str,
+        "sentry.user.email": str,
+        "sentry.user.geo.city": str,
+        "sentry.user.geo.country_code": str,
+        "sentry.user.geo.region": str,
+        "sentry.user.geo.subdivision": str,
+        "sentry.user.id": str,
+        "sentry.user.ip": str,
+        "sentry.user.username": str,
         "server.address": str,
         "server.port": int,
         "service.name": str,
