@@ -1,0 +1,19 @@
+{
+  "key": "db.operation.batch.size",
+  "brief": "The number of queries included in a batch operation. Operations are only considered batches when they contain two or more operations, and so db.operation.batch.size SHOULD never be 1.",
+  "type": "integer",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "example": 3,
+  "sdks": ["javascript-node", "javascript-deno", "javascript-bun", "javascript-cloudflare"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [407],
+      "description": "Added db.operation.batch.size attribute"
+    }
+  ]
+}

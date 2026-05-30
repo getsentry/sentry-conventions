@@ -2145,6 +2145,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "SELECT"
     """
 
+    # Path: model/attributes/db/db__operation__batch__size.json
+    DB_OPERATION_BATCH_SIZE: Literal["db.operation.batch.size"] = (
+        "db.operation.batch.size"
+    )
+    """The number of queries included in a batch operation. Operations are only considered batches when they contain two or more operations, and so db.operation.batch.size SHOULD never be 1.
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: 3
+    """
+
     # Path: model/attributes/db/db__operation__name.json
     DB_OPERATION_NAME: Literal["db.operation.name"] = "db.operation.name"
     """The name of the operation being executed.
@@ -10426,6 +10439,27 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "db.operation.batch.size": AttributeMetadata(
+        brief="The number of queries included in a batch operation. Operations are only considered batches when they contain two or more operations, and so db.operation.batch.size SHOULD never be 1.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=3,
+        sdks=[
+            "javascript-node",
+            "javascript-deno",
+            "javascript-bun",
+            "javascript-cloudflare",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[407],
+                description="Added db.operation.batch.size attribute",
+            ),
+        ],
+    ),
     "db.operation.name": AttributeMetadata(
         brief="The name of the operation being executed.",
         type=AttributeType.STRING,
@@ -17234,6 +17268,7 @@ Attributes = TypedDict(
         "db.name": str,
         "db.namespace": str,
         "db.operation": str,
+        "db.operation.batch.size": int,
         "db.operation.name": str,
         "db.query.parameter.<key>": str,
         "db.query.summary": str,
