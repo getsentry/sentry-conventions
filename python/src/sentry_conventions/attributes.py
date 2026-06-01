@@ -1653,6 +1653,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "run"
     """
 
@@ -1691,6 +1692,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: 1
     """
 
@@ -1703,6 +1705,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "exponential"
     """
 
@@ -1715,6 +1718,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "5 seconds"
     """
 
@@ -1727,6 +1731,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: int
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: 3
     """
 
@@ -1739,6 +1744,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "1 minute"
     """
 
@@ -5063,6 +5069,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: Yes
+    Visibility: public
     Example: "send"
     """
 
@@ -9615,6 +9622,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="run",
         sdks=["javascript-cloudflare"],
         changelog=[
@@ -9656,6 +9664,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=1,
         sdks=["javascript-cloudflare"],
         changelog=[
@@ -9671,6 +9680,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="exponential",
         sdks=["javascript-cloudflare"],
         changelog=[
@@ -9686,6 +9696,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="5 seconds",
         sdks=["javascript-cloudflare"],
         changelog=[
@@ -9701,6 +9712,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=3,
         sdks=["javascript-cloudflare"],
         changelog=[
@@ -9716,6 +9728,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="1 minute",
         sdks=["javascript-cloudflare"],
         changelog=[
@@ -13559,6 +13572,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
+        visibility=Visibility.PUBLIC,
         example="send",
         sdks=["javascript-cloudflare"],
         changelog=[
