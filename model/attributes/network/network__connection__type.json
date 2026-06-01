@@ -9,6 +9,7 @@
   "example": "wifi",
   "alias": ["device.connection_type", "connectionType"],
   "sdks": ["javascript-browser"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.5.0",

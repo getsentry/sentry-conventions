@@ -8,6 +8,7 @@
   "is_in_otel": true,
   "example": "You are a helpful assistant",
   "alias": ["ai.preamble"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.5.0",

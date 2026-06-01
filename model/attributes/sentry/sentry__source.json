@@ -12,6 +12,7 @@
     "replacement": "sentry.span.source",
     "reason": "This attribute is being deprecated in favor of sentry.span.source"
   },
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.5.0"

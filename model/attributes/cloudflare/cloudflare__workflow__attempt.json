@@ -1,0 +1,19 @@
+{
+  "key": "cloudflare.workflow.attempt",
+  "brief": "The current attempt number for a Cloudflare Workflow step",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 1,
+  "sdks": ["javascript-cloudflare"],
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [392],
+      "description": "Added cloudflare.workflow.attempt attribute"
+    }
+  ]
+}

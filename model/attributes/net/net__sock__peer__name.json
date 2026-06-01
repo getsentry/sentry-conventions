@@ -11,6 +11,7 @@
     "_status": null,
     "reason": "Deprecated from OTEL, no replacement at this time"
   },
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

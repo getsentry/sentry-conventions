@@ -11,6 +11,7 @@
     "_status": null,
     "reason": "Deprecated from OTEL, use gen_ai.input.messages with the new format instead."
   },
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

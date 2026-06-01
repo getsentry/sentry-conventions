@@ -1,0 +1,18 @@
+{
+  "key": "graphql.document",
+  "brief": "The GraphQL document being executed.",
+  "type": "string",
+  "pii": {
+    "key": "maybe",
+    "reason": "The document may contain sensitive information in arguments or variables. Instrumentation should redact sensitive information when possible."
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "example": "query findBookById { bookById(id: ?) { name } }",
+  "changelog": [
+    {
+      "version": "0.7.0",
+      "description": "Adds the `graphql.document` attribute to track the GraphQL document being executed."
+    }
+  ]
+}

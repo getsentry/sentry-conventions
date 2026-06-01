@@ -7,11 +7,12 @@
   },
   "is_in_otel": true,
   "example": "/var/my.sock",
+  "alias": ["network.local.address", "net.host.ip"],
   "deprecation": {
     "_status": null,
     "replacement": "network.local.address"
   },
-  "alias": ["network.local.address", "net.host.ip"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

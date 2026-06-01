@@ -7,6 +7,7 @@
   },
   "is_in_otel": false,
   "example": "/dynamic/[route].json",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.6.0",

@@ -3,5 +3,6 @@
   "full_name": "Slow Frames",
   "brief": "The number of frames that took longer than 16ms (Android) or 16.67 (iOS) to render",
   "unit": "none",
-  "platform": "mobile"
+  "platform": "mobile",
+  "attribute": "app.vitals.frames.slow.count"
 }

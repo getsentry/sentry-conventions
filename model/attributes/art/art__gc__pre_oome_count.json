@@ -1,0 +1,19 @@
+{
+  "key": "art.gc.pre_oome_count",
+  "brief": "Total number of garbage collections triggered as a last resort before an OutOfMemoryError by the Android Runtime",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "example": 0,
+  "sdks": ["sentry.java.android"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [382],
+      "description": "Added art.gc.pre_oome_count attribute"
+    }
+  ]
+}

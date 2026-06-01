@@ -7,12 +7,13 @@
   },
   "is_in_otel": false,
   "example": 1234,
+  "alias": ["browser.web_vital.lcp.size"],
   "deprecation": {
     "replacement": "browser.web_vital.lcp.size",
     "reason": "The LCP size is now recorded as a browser.web_vital.lcp.size attribute.",
     "_status": "backfill"
   },
-  "alias": ["browser.web_vital.lcp.size"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.5.0",

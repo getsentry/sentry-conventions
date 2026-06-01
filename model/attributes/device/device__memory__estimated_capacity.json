@@ -9,6 +9,7 @@
   "example": 8,
   "alias": ["deviceMemory"],
   "sdks": ["javascript-browser"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.5.0",

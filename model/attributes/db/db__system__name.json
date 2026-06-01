@@ -8,6 +8,7 @@
   "is_in_otel": true,
   "example": "postgresql",
   "alias": ["db.system"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

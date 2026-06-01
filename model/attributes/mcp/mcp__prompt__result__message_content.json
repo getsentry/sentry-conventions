@@ -7,6 +7,7 @@
   },
   "is_in_otel": false,
   "example": "Please provide a summary of the document",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.3.0",

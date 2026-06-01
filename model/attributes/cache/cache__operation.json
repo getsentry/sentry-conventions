@@ -8,6 +8,7 @@
   "is_in_otel": false,
   "example": "get",
   "sdks": ["php-laravel"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",
