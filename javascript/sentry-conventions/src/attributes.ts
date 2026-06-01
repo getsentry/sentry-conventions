@@ -4405,6 +4405,90 @@ export const FAAS_CRON = 'faas.cron';
  */
 export type FAAS_CRON_TYPE = string;
 
+// Path: model/attributes/faas/faas__duration_in_ms.json
+
+/**
+ * The duration a function took to run, in milliseconds. `faas.duration_in_ms`
+ *
+ * Attribute Value Type: `number` {@link FAAS_DURATION_IN_MS_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 120
+ */
+export const FAAS_DURATION_IN_MS = 'faas.duration_in_ms';
+
+/**
+ * Type for {@link FAAS_DURATION_IN_MS} faas.duration_in_ms
+ */
+export type FAAS_DURATION_IN_MS_TYPE = number;
+
+// Path: model/attributes/faas/faas__entry_point.json
+
+/**
+ * The code that's run when the cloud provider invokes your function. `faas.entry_point`
+ *
+ * Attribute Value Type: `string` {@link FAAS_ENTRY_POINT_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "my_main_function"
+ */
+export const FAAS_ENTRY_POINT = 'faas.entry_point';
+
+/**
+ * Type for {@link FAAS_ENTRY_POINT} faas.entry_point
+ */
+export type FAAS_ENTRY_POINT_TYPE = string;
+
+// Path: model/attributes/faas/faas__identity.json
+
+/**
+ * The Service Account (GCP), IAM Execution Role (AWS), or Managed Identity (Azure) used by the serverless function when interacting with other cloud services `faas.identity`
+ *
+ * Attribute Value Type: `string` {@link FAAS_IDENTITY_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "name@project.iam.gserviceaccount.com (GCP), arn:aws:iam::123456789012:role/role-name (AWS), 00000000-0000-0000-0000-000000000000 (Azure)"
+ */
+export const FAAS_IDENTITY = 'faas.identity';
+
+/**
+ * Type for {@link FAAS_IDENTITY} faas.identity
+ */
+export type FAAS_IDENTITY_TYPE = string;
+
+// Path: model/attributes/faas/faas__name.json
+
+/**
+ * The name of the serverless function `faas.name`
+ *
+ * Attribute Value Type: `string` {@link FAAS_NAME_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "my_function"
+ */
+export const FAAS_NAME = 'faas.name';
+
+/**
+ * Type for {@link FAAS_NAME} faas.name
+ */
+export type FAAS_NAME_TYPE = string;
+
 // Path: model/attributes/faas/faas__time.json
 
 /**
@@ -4862,6 +4946,27 @@ export const GCP_FUNCTION_CONTEXT_TYPE = 'gcp.function.context.type';
  * Type for {@link GCP_FUNCTION_CONTEXT_TYPE} gcp.function.context.type
  */
 export type GCP_FUNCTION_CONTEXT_TYPE_TYPE = string;
+
+// Path: model/attributes/gcp/gcp__project__id.json
+
+/**
+ * The ID of the project in GCP that this resource is associated with `gcp.project.id`
+ *
+ * Attribute Value Type: `string` {@link GCP_PROJECT_ID_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "my-project-123"
+ */
+export const GCP_PROJECT_ID = 'gcp.project.id';
+
+/**
+ * Type for {@link GCP_PROJECT_ID} gcp.project.id
+ */
+export type GCP_PROJECT_ID_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__agent__name.json
 
@@ -13774,6 +13879,10 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [EXCEPTION_TYPE]: 'string',
   [FAAS_COLDSTART]: 'boolean',
   [FAAS_CRON]: 'string',
+  [FAAS_DURATION_IN_MS]: 'integer',
+  [FAAS_ENTRY_POINT]: 'string',
+  [FAAS_IDENTITY]: 'string',
+  [FAAS_NAME]: 'string',
   [FAAS_TIME]: 'string',
   [FAAS_TRIGGER]: 'string',
   [FCP]: 'double',
@@ -13795,6 +13904,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [GCP_FUNCTION_CONTEXT_TIME]: 'string',
   [GCP_FUNCTION_CONTEXT_TIMESTAMP]: 'string',
   [GCP_FUNCTION_CONTEXT_TYPE]: 'string',
+  [GCP_PROJECT_ID]: 'string',
   [GEN_AI_AGENT_NAME]: 'string',
   [GEN_AI_CONTEXT_UTILIZATION]: 'double',
   [GEN_AI_CONTEXT_WINDOW_SIZE]: 'integer',
@@ -14393,6 +14503,10 @@ export type AttributeName =
   | typeof EXCEPTION_TYPE
   | typeof FAAS_COLDSTART
   | typeof FAAS_CRON
+  | typeof FAAS_DURATION_IN_MS
+  | typeof FAAS_ENTRY_POINT
+  | typeof FAAS_IDENTITY
+  | typeof FAAS_NAME
   | typeof FAAS_TIME
   | typeof FAAS_TRIGGER
   | typeof FCP
@@ -14414,6 +14528,7 @@ export type AttributeName =
   | typeof GCP_FUNCTION_CONTEXT_TIME
   | typeof GCP_FUNCTION_CONTEXT_TIMESTAMP
   | typeof GCP_FUNCTION_CONTEXT_TYPE
+  | typeof GCP_PROJECT_ID
   | typeof GEN_AI_AGENT_NAME
   | typeof GEN_AI_CONTEXT_UTILIZATION
   | typeof GEN_AI_CONTEXT_WINDOW_SIZE
@@ -17520,6 +17635,52 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '0/5 * * * ? *',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  [FAAS_DURATION_IN_MS]: {
+    brief: 'The duration a function took to run, in milliseconds.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 120,
+    changelog: [{ version: 'next' }],
+  },
+  [FAAS_ENTRY_POINT]: {
+    brief: "The code that's run when the cloud provider invokes your function.",
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'my_main_function',
+    changelog: [{ version: 'next' }],
+  },
+  [FAAS_IDENTITY]: {
+    brief:
+      'The Service Account (GCP), IAM Execution Role (AWS), or Managed Identity (Azure) used by the serverless function when interacting with other cloud services',
+    type: 'string',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example:
+      'name@project.iam.gserviceaccount.com (GCP), arn:aws:iam::123456789012:role/role-name (AWS), 00000000-0000-0000-0000-000000000000 (Azure)',
+    changelog: [{ version: 'next' }],
+  },
+  [FAAS_NAME]: {
+    brief: 'The name of the serverless function',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'my_function',
+    changelog: [{ version: 'next' }],
+  },
   [FAAS_TIME]: {
     brief: 'A string containing the function invocation time in the ISO 8601 format expressed in UTC.',
     type: 'string',
@@ -17810,6 +17971,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'cloud_functions.context',
     changelog: [{ version: '0.7.0', prs: [371], description: 'Added gcp.function.context.type attribute' }],
+  },
+  [GCP_PROJECT_ID]: {
+    brief: 'The ID of the project in GCP that this resource is associated with',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'my-project-123',
+    changelog: [{ version: 'next' }],
   },
   [GEN_AI_AGENT_NAME]: {
     brief: 'The name of the agent being used.',
@@ -23199,6 +23371,10 @@ export type Attributes = {
   [EXCEPTION_TYPE]?: EXCEPTION_TYPE_TYPE;
   [FAAS_COLDSTART]?: FAAS_COLDSTART_TYPE;
   [FAAS_CRON]?: FAAS_CRON_TYPE;
+  [FAAS_DURATION_IN_MS]?: FAAS_DURATION_IN_MS_TYPE;
+  [FAAS_ENTRY_POINT]?: FAAS_ENTRY_POINT_TYPE;
+  [FAAS_IDENTITY]?: FAAS_IDENTITY_TYPE;
+  [FAAS_NAME]?: FAAS_NAME_TYPE;
   [FAAS_TIME]?: FAAS_TIME_TYPE;
   [FAAS_TRIGGER]?: FAAS_TRIGGER_TYPE;
   [FCP]?: FCP_TYPE;
@@ -23220,6 +23396,7 @@ export type Attributes = {
   [GCP_FUNCTION_CONTEXT_TIME]?: GCP_FUNCTION_CONTEXT_TIME_TYPE;
   [GCP_FUNCTION_CONTEXT_TIMESTAMP]?: GCP_FUNCTION_CONTEXT_TIMESTAMP_TYPE;
   [GCP_FUNCTION_CONTEXT_TYPE]?: GCP_FUNCTION_CONTEXT_TYPE_TYPE;
+  [GCP_PROJECT_ID]?: GCP_PROJECT_ID_TYPE;
   [GEN_AI_AGENT_NAME]?: GEN_AI_AGENT_NAME_TYPE;
   [GEN_AI_CONTEXT_UTILIZATION]?: GEN_AI_CONTEXT_UTILIZATION_TYPE;
   [GEN_AI_CONTEXT_WINDOW_SIZE]?: GEN_AI_CONTEXT_WINDOW_SIZE_TYPE;
