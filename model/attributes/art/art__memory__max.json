@@ -1,0 +1,19 @@
+{
+  "key": "art.memory.max",
+  "brief": "Maximum memory the process is allowed to use as reported by the Android Runtime, in bytes",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "example": 201326592,
+  "sdks": ["sentry.java.android"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [382],
+      "description": "Added art.memory.max attribute"
+    }
+  ]
+}

@@ -1364,6 +1364,237 @@ export const APP_VITALS_TTID_VALUE = 'app.vitals.ttid.value';
  */
 export type APP_VITALS_TTID_VALUE_TYPE = number;
 
+// Path: model/attributes/art/art__gc__blocking_count.json
+
+/**
+ * Total number of blocking (stop-the-world) garbage collections performed by the Android Runtime `art.gc.blocking_count`
+ *
+ * Attribute Value Type: `number` {@link ART_GC_BLOCKING_COUNT_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 1
+ */
+export const ART_GC_BLOCKING_COUNT = 'art.gc.blocking_count';
+
+/**
+ * Type for {@link ART_GC_BLOCKING_COUNT} art.gc.blocking_count
+ */
+export type ART_GC_BLOCKING_COUNT_TYPE = number;
+
+// Path: model/attributes/art/art__gc__blocking_time.json
+
+/**
+ * Total time spent in blocking (stop-the-world) garbage collections by the Android Runtime, in milliseconds `art.gc.blocking_time`
+ *
+ * Attribute Value Type: `number` {@link ART_GC_BLOCKING_TIME_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 11.873
+ */
+export const ART_GC_BLOCKING_TIME = 'art.gc.blocking_time';
+
+/**
+ * Type for {@link ART_GC_BLOCKING_TIME} art.gc.blocking_time
+ */
+export type ART_GC_BLOCKING_TIME_TYPE = number;
+
+// Path: model/attributes/art/art__gc__pre_oome_count.json
+
+/**
+ * Total number of garbage collections triggered as a last resort before an OutOfMemoryError by the Android Runtime `art.gc.pre_oome_count`
+ *
+ * Attribute Value Type: `number` {@link ART_GC_PRE_OOME_COUNT_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 0
+ */
+export const ART_GC_PRE_OOME_COUNT = 'art.gc.pre_oome_count';
+
+/**
+ * Type for {@link ART_GC_PRE_OOME_COUNT} art.gc.pre_oome_count
+ */
+export type ART_GC_PRE_OOME_COUNT_TYPE = number;
+
+// Path: model/attributes/art/art__gc__total_count.json
+
+/**
+ * Total number of garbage collections performed by the Android Runtime `art.gc.total_count`
+ *
+ * Attribute Value Type: `number` {@link ART_GC_TOTAL_COUNT_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 1
+ */
+export const ART_GC_TOTAL_COUNT = 'art.gc.total_count';
+
+/**
+ * Type for {@link ART_GC_TOTAL_COUNT} art.gc.total_count
+ */
+export type ART_GC_TOTAL_COUNT_TYPE = number;
+
+// Path: model/attributes/art/art__gc__total_time.json
+
+/**
+ * Total time spent in garbage collection by the Android Runtime, in milliseconds `art.gc.total_time`
+ *
+ * Attribute Value Type: `number` {@link ART_GC_TOTAL_TIME_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 11.807
+ */
+export const ART_GC_TOTAL_TIME = 'art.gc.total_time';
+
+/**
+ * Type for {@link ART_GC_TOTAL_TIME} art.gc.total_time
+ */
+export type ART_GC_TOTAL_TIME_TYPE = number;
+
+// Path: model/attributes/art/art__gc__waiting_time.json
+
+/**
+ * Total time threads spent waiting for garbage collection to complete in the Android Runtime, in milliseconds `art.gc.waiting_time`
+ *
+ * Attribute Value Type: `number` {@link ART_GC_WAITING_TIME_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 8.054
+ */
+export const ART_GC_WAITING_TIME = 'art.gc.waiting_time';
+
+/**
+ * Type for {@link ART_GC_WAITING_TIME} art.gc.waiting_time
+ */
+export type ART_GC_WAITING_TIME_TYPE = number;
+
+// Path: model/attributes/art/art__memory__free.json
+
+/**
+ * Free memory available to the process as reported by the Android Runtime, in bytes `art.memory.free`
+ *
+ * Attribute Value Type: `number` {@link ART_MEMORY_FREE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 3181568
+ */
+export const ART_MEMORY_FREE = 'art.memory.free';
+
+/**
+ * Type for {@link ART_MEMORY_FREE} art.memory.free
+ */
+export type ART_MEMORY_FREE_TYPE = number;
+
+// Path: model/attributes/art/art__memory__free_until_gc.json
+
+/**
+ * Free memory available before a garbage collection would be triggered by the Android Runtime, in bytes `art.memory.free_until_gc`
+ *
+ * Attribute Value Type: `number` {@link ART_MEMORY_FREE_UNTIL_GC_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 3181568
+ */
+export const ART_MEMORY_FREE_UNTIL_GC = 'art.memory.free_until_gc';
+
+/**
+ * Type for {@link ART_MEMORY_FREE_UNTIL_GC} art.memory.free_until_gc
+ */
+export type ART_MEMORY_FREE_UNTIL_GC_TYPE = number;
+
+// Path: model/attributes/art/art__memory__free_until_oome.json
+
+/**
+ * Free memory available before an OutOfMemoryError would be thrown by the Android Runtime, in bytes `art.memory.free_until_oome`
+ *
+ * Attribute Value Type: `number` {@link ART_MEMORY_FREE_UNTIL_OOME_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 196083712
+ */
+export const ART_MEMORY_FREE_UNTIL_OOME = 'art.memory.free_until_oome';
+
+/**
+ * Type for {@link ART_MEMORY_FREE_UNTIL_OOME} art.memory.free_until_oome
+ */
+export type ART_MEMORY_FREE_UNTIL_OOME_TYPE = number;
+
+// Path: model/attributes/art/art__memory__max.json
+
+/**
+ * Maximum memory the process is allowed to use as reported by the Android Runtime, in bytes `art.memory.max`
+ *
+ * Attribute Value Type: `number` {@link ART_MEMORY_MAX_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 201326592
+ */
+export const ART_MEMORY_MAX = 'art.memory.max';
+
+/**
+ * Type for {@link ART_MEMORY_MAX} art.memory.max
+ */
+export type ART_MEMORY_MAX_TYPE = number;
+
+// Path: model/attributes/art/art__memory__total.json
+
+/**
+ * Total memory currently allocated to the process by the Android Runtime, in bytes `art.memory.total`
+ *
+ * Attribute Value Type: `number` {@link ART_MEMORY_TOTAL_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 7774208
+ */
+export const ART_MEMORY_TOTAL = 'art.memory.total';
+
+/**
+ * Type for {@link ART_MEMORY_TOTAL} art.memory.total
+ */
+export type ART_MEMORY_TOTAL_TYPE = number;
+
 // Path: model/attributes/aws/aws__cloudwatch__logs__log_group.json
 
 /**
@@ -13767,6 +13998,17 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [APP_VITALS_START_WARM_VALUE]: 'double',
   [APP_VITALS_TTFD_VALUE]: 'double',
   [APP_VITALS_TTID_VALUE]: 'double',
+  [ART_GC_BLOCKING_COUNT]: 'integer',
+  [ART_GC_BLOCKING_TIME]: 'double',
+  [ART_GC_PRE_OOME_COUNT]: 'integer',
+  [ART_GC_TOTAL_COUNT]: 'integer',
+  [ART_GC_TOTAL_TIME]: 'double',
+  [ART_GC_WAITING_TIME]: 'double',
+  [ART_MEMORY_FREE]: 'integer',
+  [ART_MEMORY_FREE_UNTIL_GC]: 'integer',
+  [ART_MEMORY_FREE_UNTIL_OOME]: 'integer',
+  [ART_MEMORY_MAX]: 'integer',
+  [ART_MEMORY_TOTAL]: 'integer',
   [AWS_CLOUDWATCH_LOGS_LOG_GROUP]: 'string',
   [AWS_CLOUDWATCH_LOGS_LOG_STREAM]: 'string',
   [AWS_CLOUDWATCH_LOGS_URL]: 'string',
@@ -14392,6 +14634,17 @@ export type AttributeName =
   | typeof APP_VITALS_START_WARM_VALUE
   | typeof APP_VITALS_TTFD_VALUE
   | typeof APP_VITALS_TTID_VALUE
+  | typeof ART_GC_BLOCKING_COUNT
+  | typeof ART_GC_BLOCKING_TIME
+  | typeof ART_GC_PRE_OOME_COUNT
+  | typeof ART_GC_TOTAL_COUNT
+  | typeof ART_GC_TOTAL_TIME
+  | typeof ART_GC_WAITING_TIME
+  | typeof ART_MEMORY_FREE
+  | typeof ART_MEMORY_FREE_UNTIL_GC
+  | typeof ART_MEMORY_FREE_UNTIL_OOME
+  | typeof ART_MEMORY_MAX
+  | typeof ART_MEMORY_TOTAL
   | typeof AWS_CLOUDWATCH_LOGS_LOG_GROUP
   | typeof AWS_CLOUDWATCH_LOGS_LOG_STREAM
   | typeof AWS_CLOUDWATCH_LOGS_URL
@@ -15905,6 +16158,140 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [TIME_TO_INITIAL_DISPLAY],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.ttid.value attribute' }],
+  },
+  [ART_GC_BLOCKING_COUNT]: {
+    brief: 'Total number of blocking (stop-the-world) garbage collections performed by the Android Runtime',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 1,
+    sdks: ['sentry.java.android'],
+    changelog: [{ version: 'next', prs: [382], description: 'Added art.gc.blocking_count attribute' }],
+  },
+  [ART_GC_BLOCKING_TIME]: {
+    brief: 'Total time spent in blocking (stop-the-world) garbage collections by the Android Runtime, in milliseconds',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 11.873,
+    sdks: ['sentry.java.android'],
+    changelog: [{ version: 'next', prs: [382], description: 'Added art.gc.blocking_time attribute' }],
+  },
+  [ART_GC_PRE_OOME_COUNT]: {
+    brief:
+      'Total number of garbage collections triggered as a last resort before an OutOfMemoryError by the Android Runtime',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 0,
+    sdks: ['sentry.java.android'],
+    changelog: [{ version: 'next', prs: [382], description: 'Added art.gc.pre_oome_count attribute' }],
+  },
+  [ART_GC_TOTAL_COUNT]: {
+    brief: 'Total number of garbage collections performed by the Android Runtime',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 1,
+    sdks: ['sentry.java.android'],
+    changelog: [{ version: 'next', prs: [382], description: 'Added art.gc.total_count attribute' }],
+  },
+  [ART_GC_TOTAL_TIME]: {
+    brief: 'Total time spent in garbage collection by the Android Runtime, in milliseconds',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 11.807,
+    sdks: ['sentry.java.android'],
+    changelog: [{ version: 'next', prs: [382], description: 'Added art.gc.total_time attribute' }],
+  },
+  [ART_GC_WAITING_TIME]: {
+    brief:
+      'Total time threads spent waiting for garbage collection to complete in the Android Runtime, in milliseconds',
+    type: 'double',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 8.054,
+    sdks: ['sentry.java.android'],
+    changelog: [{ version: 'next', prs: [382], description: 'Added art.gc.waiting_time attribute' }],
+  },
+  [ART_MEMORY_FREE]: {
+    brief: 'Free memory available to the process as reported by the Android Runtime, in bytes',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 3181568,
+    sdks: ['sentry.java.android'],
+    changelog: [{ version: 'next', prs: [382], description: 'Added art.memory.free attribute' }],
+  },
+  [ART_MEMORY_FREE_UNTIL_GC]: {
+    brief: 'Free memory available before a garbage collection would be triggered by the Android Runtime, in bytes',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 3181568,
+    sdks: ['sentry.java.android'],
+    changelog: [{ version: 'next', prs: [382], description: 'Added art.memory.free_until_gc attribute' }],
+  },
+  [ART_MEMORY_FREE_UNTIL_OOME]: {
+    brief: 'Free memory available before an OutOfMemoryError would be thrown by the Android Runtime, in bytes',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 196083712,
+    sdks: ['sentry.java.android'],
+    changelog: [{ version: 'next', prs: [382], description: 'Added art.memory.free_until_oome attribute' }],
+  },
+  [ART_MEMORY_MAX]: {
+    brief: 'Maximum memory the process is allowed to use as reported by the Android Runtime, in bytes',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 201326592,
+    sdks: ['sentry.java.android'],
+    changelog: [{ version: 'next', prs: [382], description: 'Added art.memory.max attribute' }],
+  },
+  [ART_MEMORY_TOTAL]: {
+    brief: 'Total memory currently allocated to the process by the Android Runtime, in bytes',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 7774208,
+    sdks: ['sentry.java.android'],
+    changelog: [{ version: 'next', prs: [382], description: 'Added art.memory.total attribute' }],
   },
   [AWS_CLOUDWATCH_LOGS_LOG_GROUP]: {
     brief: 'The name of the CloudWatch Logs log group',
@@ -23279,6 +23666,17 @@ export type Attributes = {
   [APP_VITALS_START_WARM_VALUE]?: APP_VITALS_START_WARM_VALUE_TYPE;
   [APP_VITALS_TTFD_VALUE]?: APP_VITALS_TTFD_VALUE_TYPE;
   [APP_VITALS_TTID_VALUE]?: APP_VITALS_TTID_VALUE_TYPE;
+  [ART_GC_BLOCKING_COUNT]?: ART_GC_BLOCKING_COUNT_TYPE;
+  [ART_GC_BLOCKING_TIME]?: ART_GC_BLOCKING_TIME_TYPE;
+  [ART_GC_PRE_OOME_COUNT]?: ART_GC_PRE_OOME_COUNT_TYPE;
+  [ART_GC_TOTAL_COUNT]?: ART_GC_TOTAL_COUNT_TYPE;
+  [ART_GC_TOTAL_TIME]?: ART_GC_TOTAL_TIME_TYPE;
+  [ART_GC_WAITING_TIME]?: ART_GC_WAITING_TIME_TYPE;
+  [ART_MEMORY_FREE]?: ART_MEMORY_FREE_TYPE;
+  [ART_MEMORY_FREE_UNTIL_GC]?: ART_MEMORY_FREE_UNTIL_GC_TYPE;
+  [ART_MEMORY_FREE_UNTIL_OOME]?: ART_MEMORY_FREE_UNTIL_OOME_TYPE;
+  [ART_MEMORY_MAX]?: ART_MEMORY_MAX_TYPE;
+  [ART_MEMORY_TOTAL]?: ART_MEMORY_TOTAL_TYPE;
   [AWS_CLOUDWATCH_LOGS_LOG_GROUP]?: AWS_CLOUDWATCH_LOGS_LOG_GROUP_TYPE;
   [AWS_CLOUDWATCH_LOGS_LOG_STREAM]?: AWS_CLOUDWATCH_LOGS_LOG_STREAM_TYPE;
   [AWS_CLOUDWATCH_LOGS_URL]?: AWS_CLOUDWATCH_LOGS_URL_TYPE;
