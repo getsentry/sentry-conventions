@@ -3271,6 +3271,27 @@ export const DB_STATEMENT = 'db.statement';
  */
 export type DB_STATEMENT_TYPE = string;
 
+// Path: model/attributes/db/db__stored_procedure__name.json
+
+/**
+ * The name of a stored procedure being called. `db.stored_procedure.name`
+ *
+ * Attribute Value Type: `string` {@link DB_STORED_PROCEDURE_NAME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "GetUserById"
+ */
+export const DB_STORED_PROCEDURE_NAME = 'db.stored_procedure.name';
+
+/**
+ * Type for {@link DB_STORED_PROCEDURE_NAME} db.stored_procedure.name
+ */
+export type DB_STORED_PROCEDURE_NAME_TYPE = string;
+
 // Path: model/attributes/db/db__system.json
 
 /**
@@ -13826,6 +13847,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [DB_REDIS_PARAMETERS]: 'string[]',
   [DB_SQL_BINDINGS]: 'string[]',
   [DB_STATEMENT]: 'string',
+  [DB_STORED_PROCEDURE_NAME]: 'string',
   [DB_SYSTEM]: 'string',
   [DB_SYSTEM_NAME]: 'string',
   [DB_USER]: 'string',
@@ -14450,6 +14472,7 @@ export type AttributeName =
   | typeof DB_REDIS_PARAMETERS
   | typeof DB_SQL_BINDINGS
   | typeof DB_STATEMENT
+  | typeof DB_STORED_PROCEDURE_NAME
   | typeof DB_SYSTEM
   | typeof DB_SYSTEM_NAME
   | typeof DB_USER
@@ -16979,6 +17002,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [DB_QUERY_TEXT],
     changelog: [{ version: '0.4.0', prs: [199] }, { version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
+  },
+  [DB_STORED_PROCEDURE_NAME]: {
+    brief: 'The name of a stored procedure being called.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'GetUserById',
+    changelog: [{ version: 'next', prs: [398] }],
   },
   [DB_SYSTEM]: {
     brief:
@@ -23318,6 +23352,7 @@ export type Attributes = {
   [DB_REDIS_PARAMETERS]?: DB_REDIS_PARAMETERS_TYPE;
   [DB_SQL_BINDINGS]?: DB_SQL_BINDINGS_TYPE;
   [DB_STATEMENT]?: DB_STATEMENT_TYPE;
+  [DB_STORED_PROCEDURE_NAME]?: DB_STORED_PROCEDURE_NAME_TYPE;
   [DB_SYSTEM]?: DB_SYSTEM_TYPE;
   [DB_SYSTEM_NAME]?: DB_SYSTEM_NAME_TYPE;
   [DB_USER]?: DB_USER_TYPE;
