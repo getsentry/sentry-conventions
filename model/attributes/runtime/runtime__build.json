@@ -1,0 +1,22 @@
+{
+  "key": "runtime.build",
+  "brief": "The application build string, when it is separate from the version.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "example": "stable",
+  "deprecation": {
+    "reason": "The runtime.* namespace is deprecated in favor of process.runtime.*. No direct OTel equivalent exists for this attribute.",
+    "_status": null
+  },
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [383],
+      "description": "Added and deprecated runtime.build attribute"
+    }
+  ]
+}

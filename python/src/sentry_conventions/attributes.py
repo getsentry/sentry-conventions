@@ -237,6 +237,10 @@ class _AttributeNamesMeta(type):
         "RESOURCE_DEPLOYMENT_ENVIRONMENT",
         "RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME",
         "ROUTE",
+        "RUNTIME_BUILD",
+        "RUNTIME_NAME",
+        "RUNTIME_RAW_DESCRIPTION",
+        "RUNTIME_VERSION",
         "SENTRY_BROWSER_NAME",
         "SENTRY_BROWSER_VERSION",
         "SENTRY_REPORT_EVENT",
@@ -5894,6 +5898,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: runtime.raw_description
     Example: "Eclipse OpenJ9 VM openj9-0.21.0"
     """
 
@@ -5931,6 +5936,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: runtime.name
     Example: "node"
     """
 
@@ -5944,6 +5950,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: runtime.version
     Example: "18.04.2"
     """
 
@@ -6109,6 +6116,59 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Example: "myService.BestService"
+    """
+
+    # Path: model/attributes/runtime/runtime__build.json
+    RUNTIME_BUILD: Literal["runtime.build"] = "runtime.build"
+    """The application build string, when it is separate from the version.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - The runtime.* namespace is deprecated in favor of process.runtime.*. No direct OTel equivalent exists for this attribute.
+    Example: "stable"
+    """
+
+    # Path: model/attributes/runtime/runtime__name.json
+    RUNTIME_NAME: Literal["runtime.name"] = "runtime.name"
+    """The name of the runtime. For example node, CPython, or rustc.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: process.runtime.name
+    DEPRECATED: Use process.runtime.name instead - Prefer OTel-aligned process.runtime.name
+    Example: "node"
+    """
+
+    # Path: model/attributes/runtime/runtime__raw_description.json
+    RUNTIME_RAW_DESCRIPTION: Literal["runtime.raw_description"] = (
+        "runtime.raw_description"
+    )
+    """Unprocessed description string as obtained from the runtime. Used to extract name and version for well-known runtimes.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: process.runtime.description
+    DEPRECATED: Use process.runtime.description instead - Prefer OTel-aligned process.runtime.description
+    Example: "Eclipse OpenJ9 VM openj9-0.21.0"
+    """
+
+    # Path: model/attributes/runtime/runtime__version.json
+    RUNTIME_VERSION: Literal["runtime.version"] = "runtime.version"
+    """The version of the runtime.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: process.runtime.version
+    DEPRECATED: Use process.runtime.version instead - Prefer OTel-aligned process.runtime.version
+    Example: "18.04.2"
     """
 
     # Path: model/attributes/score/score__[key].json
@@ -14681,6 +14741,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="Eclipse OpenJ9 VM openj9-0.21.0",
+        aliases=["runtime.raw_description"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
@@ -14715,6 +14776,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="node",
+        aliases=["runtime.name"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
@@ -14727,6 +14789,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="18.04.2",
+        aliases=["runtime.version"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
@@ -14908,6 +14971,84 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "runtime.build": AttributeMetadata(
+        brief="The application build string, when it is separate from the version.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="stable",
+        deprecation=DeprecationInfo(
+            reason="The runtime.* namespace is deprecated in favor of process.runtime.*. No direct OTel equivalent exists for this attribute."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[383],
+                description="Added and deprecated runtime.build attribute",
+            ),
+        ],
+    ),
+    "runtime.name": AttributeMetadata(
+        brief="The name of the runtime. For example node, CPython, or rustc.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="node",
+        deprecation=DeprecationInfo(
+            replacement="process.runtime.name",
+            reason="Prefer OTel-aligned process.runtime.name",
+        ),
+        aliases=["process.runtime.name"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[383],
+                description="Added and deprecated runtime.name attribute in favor of process.runtime.name",
+            ),
+        ],
+    ),
+    "runtime.raw_description": AttributeMetadata(
+        brief="Unprocessed description string as obtained from the runtime. Used to extract name and version for well-known runtimes.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="Eclipse OpenJ9 VM openj9-0.21.0",
+        deprecation=DeprecationInfo(
+            replacement="process.runtime.description",
+            reason="Prefer OTel-aligned process.runtime.description",
+        ),
+        aliases=["process.runtime.description"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[383],
+                description="Added and deprecated runtime.raw_description attribute in favor of process.runtime.description",
+            ),
+        ],
+    ),
+    "runtime.version": AttributeMetadata(
+        brief="The version of the runtime.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="18.04.2",
+        deprecation=DeprecationInfo(
+            replacement="process.runtime.version",
+            reason="Prefer OTel-aligned process.runtime.version",
+        ),
+        aliases=["process.runtime.version"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[383],
+                description="Added and deprecated runtime.version attribute in favor of process.runtime.version",
+            ),
         ],
     ),
     "score.<key>": AttributeMetadata(
@@ -17389,6 +17530,10 @@ Attributes = TypedDict(
         "rpc.method": str,
         "rpc.response.status_code": str,
         "rpc.service": str,
+        "runtime.build": str,
+        "runtime.name": str,
+        "runtime.raw_description": str,
+        "runtime.version": str,
         "score.<key>": float,
         "score.ratio.<key>": float,
         "score.total": float,

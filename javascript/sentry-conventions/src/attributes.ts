@@ -10061,6 +10061,8 @@ export type PROCESS_PID_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link RUNTIME_RAW_DESCRIPTION} `runtime.raw_description`
+ *
  * @example "Eclipse OpenJ9 VM openj9-0.21.0"
  */
 export const PROCESS_RUNTIME_DESCRIPTION = 'process.runtime.description';
@@ -10124,6 +10126,8 @@ export type PROCESS_RUNTIME_ENGINE_VERSION_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link RUNTIME_NAME} `runtime.name`
+ *
  * @example "node"
  */
 export const PROCESS_RUNTIME_NAME = 'process.runtime.name';
@@ -10144,6 +10148,8 @@ export type PROCESS_RUNTIME_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
+ *
+ * Aliases: {@link RUNTIME_VERSION} `runtime.version`
  *
  * @example "18.04.2"
  */
@@ -10442,6 +10448,100 @@ export const RPC_SERVICE = 'rpc.service';
  * Type for {@link RPC_SERVICE} rpc.service
  */
 export type RPC_SERVICE_TYPE = string;
+
+// Path: model/attributes/runtime/runtime__build.json
+
+/**
+ * The application build string, when it is separate from the version. `runtime.build`
+ *
+ * Attribute Value Type: `string` {@link RUNTIME_BUILD_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @deprecated  - The runtime.* namespace is deprecated in favor of process.runtime.*. No direct OTel equivalent exists for this attribute.
+ * @example "stable"
+ */
+export const RUNTIME_BUILD = 'runtime.build';
+
+/**
+ * Type for {@link RUNTIME_BUILD} runtime.build
+ */
+export type RUNTIME_BUILD_TYPE = string;
+
+// Path: model/attributes/runtime/runtime__name.json
+
+/**
+ * The name of the runtime. For example node, CPython, or rustc. `runtime.name`
+ *
+ * Attribute Value Type: `string` {@link RUNTIME_NAME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link PROCESS_RUNTIME_NAME} `process.runtime.name`
+ *
+ * @deprecated Use {@link PROCESS_RUNTIME_NAME} (process.runtime.name) instead - Prefer OTel-aligned process.runtime.name
+ * @example "node"
+ */
+export const RUNTIME_NAME = 'runtime.name';
+
+/**
+ * Type for {@link RUNTIME_NAME} runtime.name
+ */
+export type RUNTIME_NAME_TYPE = string;
+
+// Path: model/attributes/runtime/runtime__raw_description.json
+
+/**
+ * Unprocessed description string as obtained from the runtime. Used to extract name and version for well-known runtimes. `runtime.raw_description`
+ *
+ * Attribute Value Type: `string` {@link RUNTIME_RAW_DESCRIPTION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link PROCESS_RUNTIME_DESCRIPTION} `process.runtime.description`
+ *
+ * @deprecated Use {@link PROCESS_RUNTIME_DESCRIPTION} (process.runtime.description) instead - Prefer OTel-aligned process.runtime.description
+ * @example "Eclipse OpenJ9 VM openj9-0.21.0"
+ */
+export const RUNTIME_RAW_DESCRIPTION = 'runtime.raw_description';
+
+/**
+ * Type for {@link RUNTIME_RAW_DESCRIPTION} runtime.raw_description
+ */
+export type RUNTIME_RAW_DESCRIPTION_TYPE = string;
+
+// Path: model/attributes/runtime/runtime__version.json
+
+/**
+ * The version of the runtime. `runtime.version`
+ *
+ * Attribute Value Type: `string` {@link RUNTIME_VERSION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link PROCESS_RUNTIME_VERSION} `process.runtime.version`
+ *
+ * @deprecated Use {@link PROCESS_RUNTIME_VERSION} (process.runtime.version) instead - Prefer OTel-aligned process.runtime.version
+ * @example "18.04.2"
+ */
+export const RUNTIME_VERSION = 'runtime.version';
+
+/**
+ * Type for {@link RUNTIME_VERSION} runtime.version
+ */
+export type RUNTIME_VERSION_TYPE = string;
 
 // Path: model/attributes/score/score__[key].json
 
@@ -14413,6 +14513,10 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [RPC_METHOD]: 'string',
   [RPC_RESPONSE_STATUS_CODE]: 'string',
   [RPC_SERVICE]: 'string',
+  [RUNTIME_BUILD]: 'string',
+  [RUNTIME_NAME]: 'string',
+  [RUNTIME_RAW_DESCRIPTION]: 'string',
+  [RUNTIME_VERSION]: 'string',
   [SCORE_KEY]: 'double',
   [SCORE_RATIO_KEY]: 'double',
   [SCORE_TOTAL]: 'double',
@@ -15049,6 +15153,10 @@ export type AttributeName =
   | typeof RPC_METHOD
   | typeof RPC_RESPONSE_STATUS_CODE
   | typeof RPC_SERVICE
+  | typeof RUNTIME_BUILD
+  | typeof RUNTIME_NAME
+  | typeof RUNTIME_RAW_DESCRIPTION
+  | typeof RUNTIME_VERSION
   | typeof SCORE_KEY
   | typeof SCORE_RATIO_KEY
   | typeof SCORE_TOTAL
@@ -21449,6 +21557,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'Eclipse OpenJ9 VM openj9-0.21.0',
+    aliases: [RUNTIME_RAW_DESCRIPTION],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [PROCESS_RUNTIME_ENGINE_NAME]: {
@@ -21482,6 +21591,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'node',
+    aliases: [RUNTIME_NAME],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [PROCESS_RUNTIME_VERSION]: {
@@ -21494,6 +21604,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: '18.04.2',
+    aliases: [RUNTIME_VERSION],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [QUERY_KEY]: {
@@ -21666,6 +21777,88 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'myService.BestService',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+  },
+  [RUNTIME_BUILD]: {
+    brief: 'The application build string, when it is separate from the version.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'stable',
+    deprecation: {
+      reason:
+        'The runtime.* namespace is deprecated in favor of process.runtime.*. No direct OTel equivalent exists for this attribute.',
+    },
+    changelog: [{ version: 'next', prs: [383], description: 'Added and deprecated runtime.build attribute' }],
+  },
+  [RUNTIME_NAME]: {
+    brief: 'The name of the runtime. For example node, CPython, or rustc.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'node',
+    deprecation: {
+      replacement: 'process.runtime.name',
+      reason: 'Prefer OTel-aligned process.runtime.name',
+    },
+    aliases: [PROCESS_RUNTIME_NAME],
+    changelog: [
+      {
+        version: 'next',
+        prs: [383],
+        description: 'Added and deprecated runtime.name attribute in favor of process.runtime.name',
+      },
+    ],
+  },
+  [RUNTIME_RAW_DESCRIPTION]: {
+    brief:
+      'Unprocessed description string as obtained from the runtime. Used to extract name and version for well-known runtimes.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'Eclipse OpenJ9 VM openj9-0.21.0',
+    deprecation: {
+      replacement: 'process.runtime.description',
+      reason: 'Prefer OTel-aligned process.runtime.description',
+    },
+    aliases: [PROCESS_RUNTIME_DESCRIPTION],
+    changelog: [
+      {
+        version: 'next',
+        prs: [383],
+        description: 'Added and deprecated runtime.raw_description attribute in favor of process.runtime.description',
+      },
+    ],
+  },
+  [RUNTIME_VERSION]: {
+    brief: 'The version of the runtime.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '18.04.2',
+    deprecation: {
+      replacement: 'process.runtime.version',
+      reason: 'Prefer OTel-aligned process.runtime.version',
+    },
+    aliases: [PROCESS_RUNTIME_VERSION],
+    changelog: [
+      {
+        version: 'next',
+        prs: [383],
+        description: 'Added and deprecated runtime.version attribute in favor of process.runtime.version',
+      },
+    ],
   },
   [SCORE_KEY]: {
     brief:
@@ -24081,6 +24274,10 @@ export type Attributes = {
   [RPC_METHOD]?: RPC_METHOD_TYPE;
   [RPC_RESPONSE_STATUS_CODE]?: RPC_RESPONSE_STATUS_CODE_TYPE;
   [RPC_SERVICE]?: RPC_SERVICE_TYPE;
+  [RUNTIME_BUILD]?: RUNTIME_BUILD_TYPE;
+  [RUNTIME_NAME]?: RUNTIME_NAME_TYPE;
+  [RUNTIME_RAW_DESCRIPTION]?: RUNTIME_RAW_DESCRIPTION_TYPE;
+  [RUNTIME_VERSION]?: RUNTIME_VERSION_TYPE;
   [SCORE_KEY]?: SCORE_KEY_TYPE;
   [SCORE_RATIO_KEY]?: SCORE_RATIO_KEY_TYPE;
   [SCORE_TOTAL]?: SCORE_TOTAL_TYPE;

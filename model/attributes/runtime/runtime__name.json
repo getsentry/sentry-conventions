@@ -1,0 +1,24 @@
+{
+  "key": "runtime.name",
+  "brief": "The name of the runtime. For example node, CPython, or rustc.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "example": "node",
+  "deprecation": {
+    "replacement": "process.runtime.name",
+    "reason": "Prefer OTel-aligned process.runtime.name",
+    "_status": null
+  },
+  "alias": ["process.runtime.name"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [383],
+      "description": "Added and deprecated runtime.name attribute in favor of process.runtime.name"
+    }
+  ]
+}

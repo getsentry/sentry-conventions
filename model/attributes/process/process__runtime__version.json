@@ -7,6 +7,7 @@
   },
   "is_in_otel": true,
   "example": "18.04.2",
+  "alias": ["runtime.version"],
   "visibility": "public",
   "changelog": [
     {
