@@ -8,6 +8,7 @@
   "is_in_otel": false,
   "example": true,
   "sdks": ["sentry.cocoa"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "next",
