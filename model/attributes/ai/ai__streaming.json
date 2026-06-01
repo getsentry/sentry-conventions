@@ -3,16 +3,17 @@
   "brief": "Whether the request was streamed back.",
   "type": "boolean",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": true,
+  "alias": ["gen_ai.response.streaming"],
   "sdks": ["python"],
   "deprecation": {
     "_status": "backfill",
     "replacement": "gen_ai.response.streaming"
   },
-  "alias": ["gen_ai.response.streaming"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

@@ -3,5 +3,6 @@
   "full_name": "First Contentful Paint",
   "brief": "The time it takes for the browser to render the first piece of meaningful content on the screen",
   "unit": "millisecond",
-  "platform": "web"
+  "platform": "web",
+  "attribute": "browser.web_vital.fcp.value"
 }

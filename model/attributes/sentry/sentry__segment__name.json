@@ -7,7 +7,8 @@
   },
   "is_in_otel": false,
   "example": "GET /user",
-  "alias": ["sentry.span.name", "sentry.transaction", "transaction"],
+  "alias": ["sentry.transaction", "transaction"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.6.0",

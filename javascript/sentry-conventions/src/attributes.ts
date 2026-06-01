@@ -10,6 +10,7 @@
  * Contains PII: true
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @deprecated
  * @example ["Citation 1","Citation 2"]
@@ -31,6 +32,7 @@ export type AI_CITATIONS_TYPE = Array<string>;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link GEN_AI_USAGE_OUTPUT_TOKENS} `gen_ai.usage.output_tokens`, {@link GEN_AI_USAGE_COMPLETION_TOKENS} `gen_ai.usage.completion_tokens`
  *
@@ -54,6 +56,7 @@ export type AI_COMPLETION_TOKENS_USED_TYPE = number;
  * Contains PII: true
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @deprecated
  * @example ["document1.txt","document2.pdf"]
@@ -75,6 +78,7 @@ export type AI_DOCUMENTS_TYPE = Array<string>;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link GEN_AI_RESPONSE_FINISH_REASONS} `gen_ai.response.finish_reasons`
  *
@@ -98,6 +102,7 @@ export type AI_FINISH_REASON_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link GEN_AI_REQUEST_FREQUENCY_PENALTY} `gen_ai.request.frequency_penalty`
  *
@@ -121,6 +126,7 @@ export type AI_FREQUENCY_PENALTY_TYPE = number;
  * Contains PII: true
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link GEN_AI_TOOL_NAME} `gen_ai.tool.name`
  *
@@ -144,6 +150,7 @@ export type AI_FUNCTION_CALL_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link GEN_AI_RESPONSE_ID} `gen_ai.response.id`
  *
@@ -167,10 +174,11 @@ export type AI_GENERATION_ID_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link GEN_AI_REQUEST_MESSAGES} `gen_ai.request.messages`
  *
- * @deprecated Use {@link GEN_AI_REQUEST_MESSAGES} (gen_ai.request.messages) instead
+ * @deprecated Use {@link GEN_AI_INPUT_MESSAGES} (gen_ai.input.messages) instead
  * @example "[{\"role\": \"user\", \"message\": \"hello\"}]"
  */
 export const AI_INPUT_MESSAGES = 'ai.input_messages';
@@ -190,6 +198,7 @@ export type AI_INPUT_MESSAGES_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @deprecated
  * @example false
@@ -211,6 +220,7 @@ export type AI_IS_SEARCH_REQUIRED_TYPE = boolean;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @deprecated
  * @example "{\"user_id\": 123, \"session_id\": \"abc123\"}"
@@ -232,6 +242,7 @@ export type AI_METADATA_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link GEN_AI_RESPONSE_MODEL} `gen_ai.response.model`
  *
@@ -255,6 +266,7 @@ export type AI_MODEL_ID_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link GEN_AI_PROVIDER_NAME} `gen_ai.provider.name`, {@link GEN_AI_SYSTEM} `gen_ai.system`
  *
@@ -278,6 +290,7 @@ export type AI_MODEL_PROVIDER_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link GEN_AI_PIPELINE_NAME} `gen_ai.pipeline.name`
  *
@@ -301,6 +314,7 @@ export type AI_PIPELINE_NAME_TYPE = string;
  * Contains PII: true
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link GEN_AI_SYSTEM_INSTRUCTIONS} `gen_ai.system_instructions`
  *
@@ -324,6 +338,7 @@ export type AI_PREAMBLE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link GEN_AI_REQUEST_PRESENCE_PENALTY} `gen_ai.request.presence_penalty`
  *
@@ -347,6 +362,7 @@ export type AI_PRESENCE_PENALTY_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link GEN_AI_USAGE_PROMPT_TOKENS} `gen_ai.usage.prompt_tokens`, {@link GEN_AI_USAGE_INPUT_TOKENS} `gen_ai.usage.input_tokens`
  *
@@ -370,6 +386,7 @@ export type AI_PROMPT_TOKENS_USED_TYPE = number;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @deprecated
  * @example true
@@ -391,8 +408,9 @@ export type AI_RAW_PROMPTING_TYPE = boolean;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
- * @deprecated Use {@link GEN_AI_RESPONSE_TEXT} (gen_ai.response.text) instead
+ * @deprecated Use {@link GEN_AI_OUTPUT_MESSAGES} (gen_ai.output.messages) instead
  * @example ["hello","world"]
  */
 export const AI_RESPONSES = 'ai.responses';
@@ -412,6 +430,7 @@ export type AI_RESPONSES_TYPE = Array<string>;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @deprecated
  * @example "json_object"
@@ -433,6 +452,7 @@ export type AI_RESPONSE_FORMAT_TYPE = string;
  * Contains PII: true
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @deprecated
  * @example ["climate change effects","renewable energy"]
@@ -454,6 +474,7 @@ export type AI_SEARCH_QUERIES_TYPE = Array<string>;
  * Contains PII: true
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @deprecated
  * @example ["search_result_1, search_result_2"]
@@ -475,6 +496,7 @@ export type AI_SEARCH_RESULTS_TYPE = Array<string>;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link GEN_AI_REQUEST_SEED} `gen_ai.request.seed`
  *
@@ -495,9 +517,10 @@ export type AI_SEED_TYPE = string;
  *
  * Attribute Value Type: `boolean` {@link AI_STREAMING_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link GEN_AI_RESPONSE_STREAMING} `gen_ai.response.streaming`
  *
@@ -521,6 +544,7 @@ export type AI_STREAMING_TYPE = boolean;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @deprecated
  * @example "{\"executed_function\": \"add_integers\"}"
@@ -542,6 +566,7 @@ export type AI_TAGS_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link GEN_AI_REQUEST_TEMPERATURE} `gen_ai.request.temperature`
  *
@@ -565,6 +590,7 @@ export type AI_TEMPERATURE_TYPE = number;
  * Contains PII: true
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link GEN_AI_INPUT_MESSAGES} `gen_ai.input.messages`
  *
@@ -588,8 +614,9 @@ export type AI_TEXTS_TYPE = Array<string>;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
- * @deprecated Use {@link GEN_AI_REQUEST_AVAILABLE_TOOLS} (gen_ai.request.available_tools) instead
+ * @deprecated Use {@link GEN_AI_TOOL_DEFINITIONS} (gen_ai.tool.definitions) instead
  * @example ["function_1","function_2"]
  */
 export const AI_TOOLS = 'ai.tools';
@@ -609,8 +636,9 @@ export type AI_TOOLS_TYPE = Array<string>;
  * Contains PII: true
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
- * @deprecated Use {@link GEN_AI_RESPONSE_TOOL_CALLS} (gen_ai.response.tool_calls) instead
+ * @deprecated Use {@link GEN_AI_OUTPUT_MESSAGES} (gen_ai.output.messages) instead
  * @example ["tool_call_1","tool_call_2"]
  */
 export const AI_TOOL_CALLS = 'ai.tool_calls';
@@ -630,6 +658,7 @@ export type AI_TOOL_CALLS_TYPE = Array<string>;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link GEN_AI_REQUEST_TOP_K} `gen_ai.request.top_k`
  *
@@ -653,6 +682,7 @@ export type AI_TOP_K_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link GEN_AI_REQUEST_TOP_P} `gen_ai.request.top_p`
  *
@@ -676,6 +706,7 @@ export type AI_TOP_P_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link GEN_AI_COST_TOTAL_TOKENS} `gen_ai.cost.total_tokens`
  *
@@ -699,6 +730,7 @@ export type AI_TOTAL_COST_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link GEN_AI_USAGE_TOTAL_TOKENS} `gen_ai.usage.total_tokens`
  *
@@ -722,6 +754,7 @@ export type AI_TOTAL_TOKENS_USED_TYPE = number;
  * Contains PII: true
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @deprecated
  * @example ["Token limit exceeded"]
@@ -733,6 +766,27 @@ export const AI_WARNINGS = 'ai.warnings';
  */
 export type AI_WARNINGS_TYPE = Array<string>;
 
+// Path: model/attributes/angular/angular__version.json
+
+/**
+ * The version of the Angular framework `angular.version`
+ *
+ * Attribute Value Type: `string` {@link ANGULAR_VERSION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "17.1.0"
+ */
+export const ANGULAR_VERSION = 'angular.version';
+
+/**
+ * Type for {@link ANGULAR_VERSION} angular.version
+ */
+export type ANGULAR_VERSION_TYPE = string;
+
 // Path: model/attributes/app/app__app_build.json
 
 /**
@@ -743,6 +797,7 @@ export type AI_WARNINGS_TYPE = Array<string>;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link APP_BUILD} `app.build`
  *
@@ -766,6 +821,7 @@ export type APP_APP_BUILD_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link APP_IDENTIFIER} `app.identifier`
  *
@@ -789,6 +845,7 @@ export type APP_APP_IDENTIFIER_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link APP_NAME} `app.name`
  *
@@ -812,6 +869,7 @@ export type APP_APP_NAME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link APP_START_TIME} `app.start_time`
  *
@@ -835,6 +893,7 @@ export type APP_APP_START_TIME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link APP_VERSION} `app.version`
  *
@@ -858,6 +917,7 @@ export type APP_APP_VERSION_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link APP_APP_BUILD} `app.app_build`
  *
@@ -880,6 +940,7 @@ export type APP_BUILD_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link APP_APP_IDENTIFIER} `app.app_identifier`
  *
@@ -902,6 +963,7 @@ export type APP_IDENTIFIER_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example true
  */
@@ -922,6 +984,7 @@ export type APP_IN_FOREGROUND_TYPE = boolean;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link APP_APP_NAME} `app.app_name`
  *
@@ -944,6 +1007,7 @@ export type APP_NAME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link APP_VITALS_START_COLD_VALUE} `app.vitals.start.cold.value`
  *
@@ -967,6 +1031,7 @@ export type APP_START_COLD_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link APP_APP_START_TIME} `app.app_start_time`
  *
@@ -989,6 +1054,7 @@ export type APP_START_TIME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link APP_VITALS_START_TYPE} `app.vitals.start.type`
  *
@@ -1012,6 +1078,7 @@ export type APP_START_TYPE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link APP_VITALS_START_WARM_VALUE} `app.vitals.start.warm.value`
  *
@@ -1035,6 +1102,7 @@ export type APP_START_WARM_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link APP_APP_VERSION} `app.app_version`
  *
@@ -1057,6 +1125,7 @@ export type APP_VERSION_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link FRAMES_DELAY} `frames.delay`
  *
@@ -1079,6 +1148,7 @@ export type APP_VITALS_FRAMES_DELAY_VALUE_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link FRAMES_FROZEN} `frames.frozen`
  *
@@ -1101,6 +1171,7 @@ export type APP_VITALS_FRAMES_FROZEN_COUNT_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link FRAMES_SLOW} `frames.slow`
  *
@@ -1123,6 +1194,7 @@ export type APP_VITALS_FRAMES_SLOW_COUNT_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link FRAMES_TOTAL} `frames.total`
  *
@@ -1145,6 +1217,7 @@ export type APP_VITALS_FRAMES_TOTAL_COUNT_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link APP_START_COLD} `app_start_cold`
  *
@@ -1167,6 +1240,7 @@ export type APP_VITALS_START_COLD_VALUE_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "push"
  */
@@ -1187,6 +1261,7 @@ export type APP_VITALS_START_REASON_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "MainActivity"
  */
@@ -1207,6 +1282,7 @@ export type APP_VITALS_START_SCREEN_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link APP_START_TYPE} `app_start_type`
  *
@@ -1229,6 +1305,7 @@ export type APP_VITALS_START_TYPE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link APP_START_WARM} `app_start_warm`
  *
@@ -1251,6 +1328,7 @@ export type APP_VITALS_START_WARM_VALUE_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link TIME_TO_FULL_DISPLAY} `time_to_full_display`
  *
@@ -1273,6 +1351,7 @@ export type APP_VITALS_TTFD_VALUE_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link TIME_TO_INITIAL_DISPLAY} `time_to_initial_display`
  *
@@ -1285,6 +1364,195 @@ export const APP_VITALS_TTID_VALUE = 'app.vitals.ttid.value';
  */
 export type APP_VITALS_TTID_VALUE_TYPE = number;
 
+// Path: model/attributes/aws/aws__cloudwatch__logs__log_group.json
+
+/**
+ * The name of the CloudWatch Logs log group `aws.cloudwatch.logs.log_group`
+ *
+ * Attribute Value Type: `string` {@link AWS_CLOUDWATCH_LOGS_LOG_GROUP_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "/aws/lambda/my-function"
+ */
+export const AWS_CLOUDWATCH_LOGS_LOG_GROUP = 'aws.cloudwatch.logs.log_group';
+
+/**
+ * Type for {@link AWS_CLOUDWATCH_LOGS_LOG_GROUP} aws.cloudwatch.logs.log_group
+ */
+export type AWS_CLOUDWATCH_LOGS_LOG_GROUP_TYPE = string;
+
+// Path: model/attributes/aws/aws__cloudwatch__logs__log_stream.json
+
+/**
+ * The name of the CloudWatch Logs log stream `aws.cloudwatch.logs.log_stream`
+ *
+ * Attribute Value Type: `string` {@link AWS_CLOUDWATCH_LOGS_LOG_STREAM_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "2024/01/01/[$LATEST]abcdef1234567890"
+ */
+export const AWS_CLOUDWATCH_LOGS_LOG_STREAM = 'aws.cloudwatch.logs.log_stream';
+
+/**
+ * Type for {@link AWS_CLOUDWATCH_LOGS_LOG_STREAM} aws.cloudwatch.logs.log_stream
+ */
+export type AWS_CLOUDWATCH_LOGS_LOG_STREAM_TYPE = string;
+
+// Path: model/attributes/aws/aws__cloudwatch__logs__url.json
+
+/**
+ * The URL to the CloudWatch Logs log group `aws.cloudwatch.logs.url`
+ *
+ * Attribute Value Type: `string` {@link AWS_CLOUDWATCH_LOGS_URL_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups/log-group/my-log-group"
+ */
+export const AWS_CLOUDWATCH_LOGS_URL = 'aws.cloudwatch.logs.url';
+
+/**
+ * Type for {@link AWS_CLOUDWATCH_LOGS_URL} aws.cloudwatch.logs.url
+ */
+export type AWS_CLOUDWATCH_LOGS_URL_TYPE = string;
+
+// Path: model/attributes/aws/aws__lambda__aws_request_id.json
+
+/**
+ * The AWS request ID as received by the Lambda function runtime `aws.lambda.aws_request_id`
+ *
+ * Attribute Value Type: `string` {@link AWS_LAMBDA_AWS_REQUEST_ID_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "8476a536-e9f4-11e8-9739-2dfe598c3fcd"
+ */
+export const AWS_LAMBDA_AWS_REQUEST_ID = 'aws.lambda.aws_request_id';
+
+/**
+ * Type for {@link AWS_LAMBDA_AWS_REQUEST_ID} aws.lambda.aws_request_id
+ */
+export type AWS_LAMBDA_AWS_REQUEST_ID_TYPE = string;
+
+// Path: model/attributes/aws/aws__lambda__execution_duration_in_millis.json
+
+/**
+ * The execution duration of the Lambda function invocation in milliseconds `aws.lambda.execution_duration_in_millis`
+ *
+ * Attribute Value Type: `number` {@link AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 1234.56
+ */
+export const AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS = 'aws.lambda.execution_duration_in_millis';
+
+/**
+ * Type for {@link AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS} aws.lambda.execution_duration_in_millis
+ */
+export type AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS_TYPE = number;
+
+// Path: model/attributes/aws/aws__lambda__function_name.json
+
+/**
+ * The name of the Lambda function `aws.lambda.function_name`
+ *
+ * Attribute Value Type: `string` {@link AWS_LAMBDA_FUNCTION_NAME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "my-function"
+ */
+export const AWS_LAMBDA_FUNCTION_NAME = 'aws.lambda.function_name';
+
+/**
+ * Type for {@link AWS_LAMBDA_FUNCTION_NAME} aws.lambda.function_name
+ */
+export type AWS_LAMBDA_FUNCTION_NAME_TYPE = string;
+
+// Path: model/attributes/aws/aws__lambda__function_version.json
+
+/**
+ * The version of the Lambda function `aws.lambda.function_version`
+ *
+ * Attribute Value Type: `string` {@link AWS_LAMBDA_FUNCTION_VERSION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "$LATEST"
+ */
+export const AWS_LAMBDA_FUNCTION_VERSION = 'aws.lambda.function_version';
+
+/**
+ * Type for {@link AWS_LAMBDA_FUNCTION_VERSION} aws.lambda.function_version
+ */
+export type AWS_LAMBDA_FUNCTION_VERSION_TYPE = string;
+
+// Path: model/attributes/aws/aws__lambda__invoked_function_arn.json
+
+/**
+ * The full ARN of the Lambda function that was invoked `aws.lambda.invoked_function_arn`
+ *
+ * Attribute Value Type: `string` {@link AWS_LAMBDA_INVOKED_FUNCTION_ARN_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "arn:aws:lambda:us-east-1:123456789012:function:my-function"
+ */
+export const AWS_LAMBDA_INVOKED_FUNCTION_ARN = 'aws.lambda.invoked_function_arn';
+
+/**
+ * Type for {@link AWS_LAMBDA_INVOKED_FUNCTION_ARN} aws.lambda.invoked_function_arn
+ */
+export type AWS_LAMBDA_INVOKED_FUNCTION_ARN_TYPE = string;
+
+// Path: model/attributes/aws/aws__lambda__remaining_time_in_millis.json
+
+/**
+ * The remaining time in milliseconds before the Lambda function times out `aws.lambda.remaining_time_in_millis`
+ *
+ * Attribute Value Type: `number` {@link AWS_LAMBDA_REMAINING_TIME_IN_MILLIS_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 5000
+ */
+export const AWS_LAMBDA_REMAINING_TIME_IN_MILLIS = 'aws.lambda.remaining_time_in_millis';
+
+/**
+ * Type for {@link AWS_LAMBDA_REMAINING_TIME_IN_MILLIS} aws.lambda.remaining_time_in_millis
+ */
+export type AWS_LAMBDA_REMAINING_TIME_IN_MILLIS_TYPE = number;
+
 // Path: model/attributes/blocked_main_thread.json
 
 /**
@@ -1295,6 +1563,7 @@ export type APP_VITALS_TTID_VALUE_TYPE = number;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example true
  */
@@ -1315,6 +1584,7 @@ export type BLOCKED_MAIN_THREAD_TYPE = boolean;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link SENTRY_BROWSER_NAME} `sentry.browser.name`
  *
@@ -1337,6 +1607,7 @@ export type BROWSER_NAME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link PERFORMANCE_ACTIVATIONSTART} `performance.activationStart`
  *
@@ -1359,6 +1630,7 @@ export type BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link PERFORMANCE_TIMEORIGIN} `performance.timeOrigin`
  *
@@ -1381,6 +1653,7 @@ export type BROWSER_PERFORMANCE_TIME_ORIGIN_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "network-error"
  */
@@ -1401,6 +1674,7 @@ export type BROWSER_REPORT_TYPE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "Window.requestAnimationFrame"
  */
@@ -1421,6 +1695,7 @@ export type BROWSER_SCRIPT_INVOKER_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "event-listener"
  */
@@ -1441,6 +1716,7 @@ export type BROWSER_SCRIPT_INVOKER_TYPE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 678
  */
@@ -1461,6 +1737,7 @@ export type BROWSER_SCRIPT_SOURCE_CHAR_POSITION_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link SENTRY_BROWSER_VERSION} `sentry.browser.version`
  *
@@ -1483,6 +1760,7 @@ export type BROWSER_VERSION_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "navigation"
  */
@@ -1503,6 +1781,7 @@ export type BROWSER_WEB_VITAL_CLS_REPORT_EVENT_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Has Dynamic Suffix: true
  *
@@ -1527,6 +1806,7 @@ export type BROWSER_WEB_VITAL_CLS_SOURCE_KEY_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link CLS} `cls`
  *
@@ -1549,6 +1829,7 @@ export type BROWSER_WEB_VITAL_CLS_VALUE_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link FCP} `fcp`
  *
@@ -1571,6 +1852,7 @@ export type BROWSER_WEB_VITAL_FCP_VALUE_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link FP} `fp`
  *
@@ -1593,6 +1875,7 @@ export type BROWSER_WEB_VITAL_FP_VALUE_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link INP} `inp`
  *
@@ -1615,6 +1898,7 @@ export type BROWSER_WEB_VITAL_INP_VALUE_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link LCP_ELEMENT} `lcp.element`
  *
@@ -1637,6 +1921,7 @@ export type BROWSER_WEB_VITAL_LCP_ELEMENT_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link LCP_ID} `lcp.id`
  *
@@ -1659,6 +1944,7 @@ export type BROWSER_WEB_VITAL_LCP_ID_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link LCP_LOADTIME} `lcp.loadTime`
  *
@@ -1681,6 +1967,7 @@ export type BROWSER_WEB_VITAL_LCP_LOAD_TIME_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link LCP_RENDERTIME} `lcp.renderTime`
  *
@@ -1703,6 +1990,7 @@ export type BROWSER_WEB_VITAL_LCP_RENDER_TIME_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "pagehide"
  */
@@ -1723,6 +2011,7 @@ export type BROWSER_WEB_VITAL_LCP_REPORT_EVENT_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link LCP_SIZE} `lcp.size`
  *
@@ -1745,6 +2034,7 @@ export type BROWSER_WEB_VITAL_LCP_SIZE_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link LCP_URL} `lcp.url`
  *
@@ -1767,6 +2057,7 @@ export type BROWSER_WEB_VITAL_LCP_URL_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link LCP} `lcp`
  *
@@ -1789,6 +2080,7 @@ export type BROWSER_WEB_VITAL_LCP_VALUE_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link TTFB_REQUESTTIME} `ttfb.requestTime`
  *
@@ -1811,6 +2103,7 @@ export type BROWSER_WEB_VITAL_TTFB_REQUEST_TIME_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link TTFB} `ttfb`
  *
@@ -1833,6 +2126,7 @@ export type BROWSER_WEB_VITAL_TTFB_VALUE_TYPE = number;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example true
  */
@@ -1853,6 +2147,7 @@ export type CACHE_HIT_TYPE = boolean;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 58
  */
@@ -1873,6 +2168,7 @@ export type CACHE_ITEM_SIZE_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example ["my-cache-key","my-other-cache-key"]
  */
@@ -1893,6 +2189,7 @@ export type CACHE_KEY_TYPE = Array<string>;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "get"
  */
@@ -1913,6 +2210,7 @@ export type CACHE_OPERATION_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 120
  */
@@ -1933,6 +2231,7 @@ export type CACHE_TTL_TYPE = number;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example true
  */
@@ -1953,6 +2252,7 @@ export type CACHE_WRITE_TYPE = boolean;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "mail"
  */
@@ -1973,6 +2273,7 @@ export type CHANNEL_TYPE = string;
  * Contains PII: true
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link HTTP_CLIENT_IP} `http.client_ip`
  *
@@ -1995,6 +2296,7 @@ export type CLIENT_ADDRESS_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example 5432
  */
@@ -2015,6 +2317,7 @@ export type CLIENT_PORT_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 543
  */
@@ -2024,6 +2327,27 @@ export const CLOUDFLARE_D1_DURATION = 'cloudflare.d1.duration';
  * Type for {@link CLOUDFLARE_D1_DURATION} cloudflare.d1.duration
  */
 export type CLOUDFLARE_D1_DURATION_TYPE = number;
+
+// Path: model/attributes/cloudflare/cloudflare__d1__query_type.json
+
+/**
+ * The type of query executed in a Cloudflare D1 operation `cloudflare.d1.query_type`
+ *
+ * Attribute Value Type: `string` {@link CLOUDFLARE_D1_QUERY_TYPE_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "run"
+ */
+export const CLOUDFLARE_D1_QUERY_TYPE = 'cloudflare.d1.query_type';
+
+/**
+ * Type for {@link CLOUDFLARE_D1_QUERY_TYPE} cloudflare.d1.query_type
+ */
+export type CLOUDFLARE_D1_QUERY_TYPE_TYPE = string;
 
 // Path: model/attributes/cloudflare/cloudflare__d1__rows_read.json
 
@@ -2035,6 +2359,7 @@ export type CLOUDFLARE_D1_DURATION_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 12
  */
@@ -2055,6 +2380,7 @@ export type CLOUDFLARE_D1_ROWS_READ_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 12
  */
@@ -2064,6 +2390,216 @@ export const CLOUDFLARE_D1_ROWS_WRITTEN = 'cloudflare.d1.rows_written';
  * Type for {@link CLOUDFLARE_D1_ROWS_WRITTEN} cloudflare.d1.rows_written
  */
 export type CLOUDFLARE_D1_ROWS_WRITTEN_TYPE = number;
+
+// Path: model/attributes/cloudflare/cloudflare__workflow__attempt.json
+
+/**
+ * The current attempt number for a Cloudflare Workflow step `cloudflare.workflow.attempt`
+ *
+ * Attribute Value Type: `number` {@link CLOUDFLARE_WORKFLOW_ATTEMPT_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 1
+ */
+export const CLOUDFLARE_WORKFLOW_ATTEMPT = 'cloudflare.workflow.attempt';
+
+/**
+ * Type for {@link CLOUDFLARE_WORKFLOW_ATTEMPT} cloudflare.workflow.attempt
+ */
+export type CLOUDFLARE_WORKFLOW_ATTEMPT_TYPE = number;
+
+// Path: model/attributes/cloudflare/cloudflare__workflow__retries__backoff.json
+
+/**
+ * The backoff strategy for Cloudflare Workflow step retries `cloudflare.workflow.retries.backoff`
+ *
+ * Attribute Value Type: `string` {@link CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "exponential"
+ */
+export const CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF = 'cloudflare.workflow.retries.backoff';
+
+/**
+ * Type for {@link CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF} cloudflare.workflow.retries.backoff
+ */
+export type CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF_TYPE = string;
+
+// Path: model/attributes/cloudflare/cloudflare__workflow__retries__delay.json
+
+/**
+ * The delay between Cloudflare Workflow step retries `cloudflare.workflow.retries.delay`
+ *
+ * Attribute Value Type: `string` {@link CLOUDFLARE_WORKFLOW_RETRIES_DELAY_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "5 seconds"
+ */
+export const CLOUDFLARE_WORKFLOW_RETRIES_DELAY = 'cloudflare.workflow.retries.delay';
+
+/**
+ * Type for {@link CLOUDFLARE_WORKFLOW_RETRIES_DELAY} cloudflare.workflow.retries.delay
+ */
+export type CLOUDFLARE_WORKFLOW_RETRIES_DELAY_TYPE = string;
+
+// Path: model/attributes/cloudflare/cloudflare__workflow__retries__limit.json
+
+/**
+ * The maximum number of retries for a Cloudflare Workflow step `cloudflare.workflow.retries.limit`
+ *
+ * Attribute Value Type: `number` {@link CLOUDFLARE_WORKFLOW_RETRIES_LIMIT_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 3
+ */
+export const CLOUDFLARE_WORKFLOW_RETRIES_LIMIT = 'cloudflare.workflow.retries.limit';
+
+/**
+ * Type for {@link CLOUDFLARE_WORKFLOW_RETRIES_LIMIT} cloudflare.workflow.retries.limit
+ */
+export type CLOUDFLARE_WORKFLOW_RETRIES_LIMIT_TYPE = number;
+
+// Path: model/attributes/cloudflare/cloudflare__workflow__timeout.json
+
+/**
+ * The timeout duration for a Cloudflare Workflow step `cloudflare.workflow.timeout`
+ *
+ * Attribute Value Type: `string` {@link CLOUDFLARE_WORKFLOW_TIMEOUT_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "1 minute"
+ */
+export const CLOUDFLARE_WORKFLOW_TIMEOUT = 'cloudflare.workflow.timeout';
+
+/**
+ * Type for {@link CLOUDFLARE_WORKFLOW_TIMEOUT} cloudflare.workflow.timeout
+ */
+export type CLOUDFLARE_WORKFLOW_TIMEOUT_TYPE = string;
+
+// Path: model/attributes/cloud/cloud__account__id.json
+
+/**
+ * The cloud account ID the resource is assigned to `cloud.account.id`
+ *
+ * Attribute Value Type: `string` {@link CLOUD_ACCOUNT_ID_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "123456789012"
+ */
+export const CLOUD_ACCOUNT_ID = 'cloud.account.id';
+
+/**
+ * Type for {@link CLOUD_ACCOUNT_ID} cloud.account.id
+ */
+export type CLOUD_ACCOUNT_ID_TYPE = string;
+
+// Path: model/attributes/cloud/cloud__availability_zone.json
+
+/**
+ * Cloud regions often have multiple, isolated locations known as zones to increase availability `cloud.availability_zone`
+ *
+ * Attribute Value Type: `string` {@link CLOUD_AVAILABILITY_ZONE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "us-east-1c"
+ */
+export const CLOUD_AVAILABILITY_ZONE = 'cloud.availability_zone';
+
+/**
+ * Type for {@link CLOUD_AVAILABILITY_ZONE} cloud.availability_zone
+ */
+export type CLOUD_AVAILABILITY_ZONE_TYPE = string;
+
+// Path: model/attributes/cloud/cloud__platform.json
+
+/**
+ * The cloud platform in use `cloud.platform`
+ *
+ * Attribute Value Type: `string` {@link CLOUD_PLATFORM_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "aws_lambda"
+ */
+export const CLOUD_PLATFORM = 'cloud.platform';
+
+/**
+ * Type for {@link CLOUD_PLATFORM} cloud.platform
+ */
+export type CLOUD_PLATFORM_TYPE = string;
+
+// Path: model/attributes/cloud/cloud__provider.json
+
+/**
+ * Name of the cloud provider `cloud.provider`
+ *
+ * Attribute Value Type: `string` {@link CLOUD_PROVIDER_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "aws"
+ */
+export const CLOUD_PROVIDER = 'cloud.provider';
+
+/**
+ * Type for {@link CLOUD_PROVIDER} cloud.provider
+ */
+export type CLOUD_PROVIDER_TYPE = string;
+
+// Path: model/attributes/cloud/cloud__region.json
+
+/**
+ * The geographical region the resource is running `cloud.region`
+ *
+ * Attribute Value Type: `string` {@link CLOUD_REGION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "us-east-1"
+ */
+export const CLOUD_REGION = 'cloud.region';
+
+/**
+ * Type for {@link CLOUD_REGION} cloud.region
+ */
+export type CLOUD_REGION_TYPE = string;
 
 // Path: model/attributes/cls.json
 
@@ -2075,6 +2611,7 @@ export type CLOUDFLARE_D1_ROWS_WRITTEN_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link BROWSER_WEB_VITAL_CLS_VALUE} `browser.web_vital.cls.value`
  *
@@ -2098,6 +2635,7 @@ export type CLS_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Has Dynamic Suffix: true
  *
@@ -2123,6 +2661,7 @@ export type CLS_SOURCE_KEY_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link CODE_FILE_PATH} `code.file.path`
  *
@@ -2146,6 +2685,7 @@ export type CODE_FILEPATH_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link CODE_FILEPATH} `code.filepath`
  *
@@ -2168,6 +2708,7 @@ export type CODE_FILE_PATH_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link CODE_FUNCTION_NAME} `code.function.name`
  *
@@ -2190,6 +2731,7 @@ export type CODE_FUNCTION_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link CODE_FUNCTION} `code.function`
  *
@@ -2212,6 +2754,7 @@ export type CODE_FUNCTION_NAME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link CODE_LINE_NUMBER} `code.line.number`
  *
@@ -2235,6 +2778,7 @@ export type CODE_LINENO_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link CODE_LINENO} `code.lineno`
  *
@@ -2257,6 +2801,7 @@ export type CODE_LINE_NUMBER_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "http.handler"
  */
@@ -2277,6 +2822,7 @@ export type CODE_NAMESPACE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link NETWORK_CONNECTION_TYPE} `network.connection.type`, {@link DEVICE_CONNECTION_TYPE} `device.connection_type`
  *
@@ -2300,6 +2846,7 @@ export type CONNECTIONTYPE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link NETWORK_CONNECTION_RTT} `network.connection.rtt`
  *
@@ -2323,6 +2870,7 @@ export type CONNECTION_RTT_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "GregorianCalendar"
  */
@@ -2343,6 +2891,7 @@ export type CULTURE_CALENDAR_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "English (United States)"
  */
@@ -2363,6 +2912,7 @@ export type CULTURE_DISPLAY_NAME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example true
  */
@@ -2383,6 +2933,7 @@ export type CULTURE_IS_24_HOUR_FORMAT_TYPE = boolean;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "en-US"
  */
@@ -2403,6 +2954,7 @@ export type CULTURE_LOCALE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "Europe/Vienna"
  */
@@ -2423,6 +2975,7 @@ export type CULTURE_TIMEZONE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "users"
  */
@@ -2443,6 +2996,7 @@ export type DB_COLLECTION_NAME_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "psycopg2"
  */
@@ -2463,6 +3017,7 @@ export type DB_DRIVER_NAME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link DB_NAMESPACE} `db.namespace`
  *
@@ -2486,6 +3041,7 @@ export type DB_NAME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link DB_NAME} `db.name`
  *
@@ -2508,6 +3064,7 @@ export type DB_NAMESPACE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link DB_OPERATION_NAME} `db.operation.name`
  *
@@ -2531,6 +3088,7 @@ export type DB_OPERATION_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link DB_OPERATION} `db.operation`
  *
@@ -2553,6 +3111,7 @@ export type DB_OPERATION_NAME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Has Dynamic Suffix: true
  *
@@ -2575,6 +3134,7 @@ export type DB_QUERY_PARAMETER_KEY_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "SELECT users;"
  */
@@ -2595,6 +3155,7 @@ export type DB_QUERY_SUMMARY_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link DB_STATEMENT} `db.statement`
  *
@@ -2617,6 +3178,7 @@ export type DB_QUERY_TEXT_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "my-redis-instance"
  */
@@ -2637,6 +3199,7 @@ export type DB_REDIS_CONNECTION_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "user:2047:city"
  */
@@ -2657,6 +3220,7 @@ export type DB_REDIS_KEY_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example ["test","*"]
  */
@@ -2677,6 +3241,7 @@ export type DB_REDIS_PARAMETERS_TYPE = Array<string>;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @deprecated Use {@link DB_QUERY_PARAMETER_KEY} (db.query.parameter.<key>) instead - Instead of adding every binding in the db.sql.bindings attribute, add them as individual entires with db.query.parameter.<key>.
  * @example ["1","foo"]
@@ -2698,6 +3263,7 @@ export type DB_SQL_BINDINGS_TYPE = Array<string>;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link DB_QUERY_TEXT} `db.query.text`
  *
@@ -2711,6 +3277,27 @@ export const DB_STATEMENT = 'db.statement';
  */
 export type DB_STATEMENT_TYPE = string;
 
+// Path: model/attributes/db/db__stored_procedure__name.json
+
+/**
+ * The name of a stored procedure being called. `db.stored_procedure.name`
+ *
+ * Attribute Value Type: `string` {@link DB_STORED_PROCEDURE_NAME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "GetUserById"
+ */
+export const DB_STORED_PROCEDURE_NAME = 'db.stored_procedure.name';
+
+/**
+ * Type for {@link DB_STORED_PROCEDURE_NAME} db.stored_procedure.name
+ */
+export type DB_STORED_PROCEDURE_NAME_TYPE = string;
+
 // Path: model/attributes/db/db__system.json
 
 /**
@@ -2721,6 +3308,7 @@ export type DB_STATEMENT_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link DB_SYSTEM_NAME} `db.system.name`
  *
@@ -2744,6 +3332,7 @@ export type DB_SYSTEM_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link DB_SYSTEM} `db.system`
  *
@@ -2766,6 +3355,7 @@ export type DB_SYSTEM_NAME_TYPE = string;
  * Contains PII: true
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "fancy_user"
  */
@@ -2786,6 +3376,7 @@ export type DB_USER_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link DEVICE_MEMORY_ESTIMATED_CAPACITY} `device.memory.estimated_capacity`
  *
@@ -2809,6 +3400,7 @@ export type DEVICEMEMORY_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example ["arm64-v8a","armeabi-v7a","armeabi"]
  */
@@ -2829,6 +3421,7 @@ export type DEVICE_ARCHS_TYPE = Array<string>;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 100
  */
@@ -2849,6 +3442,7 @@ export type DEVICE_BATTERY_LEVEL_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 25
  */
@@ -2869,6 +3463,7 @@ export type DEVICE_BATTERY_TEMPERATURE_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "2018-02-08T12:52:12Z"
  */
@@ -2889,6 +3484,7 @@ export type DEVICE_BOOT_TIME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "Apple"
  */
@@ -2909,6 +3505,7 @@ export type DEVICE_BRAND_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example false
  */
@@ -2929,6 +3526,7 @@ export type DEVICE_CHARGING_TYPE = boolean;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "Qualcomm SM8550"
  */
@@ -2949,6 +3547,7 @@ export type DEVICE_CHIPSET_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "medium"
  */
@@ -2969,6 +3568,7 @@ export type DEVICE_CLASS_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link NETWORK_CONNECTION_TYPE} `network.connection.type`, {@link CONNECTIONTYPE} `connectionType`
  *
@@ -2992,6 +3592,7 @@ export type DEVICE_CONNECTION_TYPE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "Intel(R) Core(TM)2 Quad CPU Q6600 @ 2.40GHz"
  */
@@ -3012,6 +3613,7 @@ export type DEVICE_CPU_DESCRIPTION_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 67108864000
  */
@@ -3032,6 +3634,7 @@ export type DEVICE_EXTERNAL_FREE_STORAGE_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 134217728000
  */
@@ -3052,6 +3655,7 @@ export type DEVICE_EXTERNAL_STORAGE_SIZE_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "iPhone"
  */
@@ -3072,6 +3676,7 @@ export type DEVICE_FAMILY_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 2147483648
  */
@@ -3092,6 +3697,7 @@ export type DEVICE_FREE_MEMORY_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 107374182400
  */
@@ -3112,6 +3718,7 @@ export type DEVICE_FREE_STORAGE_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
  */
@@ -3132,6 +3739,7 @@ export type DEVICE_ID_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "en-US"
  */
@@ -3152,6 +3760,7 @@ export type DEVICE_LOCALE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example false
  */
@@ -3172,6 +3781,7 @@ export type DEVICE_LOW_MEMORY_TYPE = boolean;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example true
  */
@@ -3192,6 +3802,7 @@ export type DEVICE_LOW_POWER_MODE_TYPE = boolean;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "Google"
  */
@@ -3212,6 +3823,7 @@ export type DEVICE_MANUFACTURER_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link DEVICEMEMORY} `deviceMemory`
  *
@@ -3234,6 +3846,7 @@ export type DEVICE_MEMORY_ESTIMATED_CAPACITY_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 17179869184
  */
@@ -3254,6 +3867,7 @@ export type DEVICE_MEMORY_SIZE_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "iPhone 15 Pro Max"
  */
@@ -3274,6 +3888,7 @@ export type DEVICE_MODEL_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "N861AP"
  */
@@ -3294,6 +3909,7 @@ export type DEVICE_MODEL_ID_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "localhost"
  */
@@ -3314,6 +3930,7 @@ export type DEVICE_NAME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example true
  */
@@ -3334,6 +3951,7 @@ export type DEVICE_ONLINE_TYPE = boolean;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "portrait"
  */
@@ -3354,6 +3972,7 @@ export type DEVICE_ORIENTATION_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link HARDWARECONCURRENCY} `hardwareConcurrency`
  *
@@ -3376,6 +3995,7 @@ export type DEVICE_PROCESSOR_COUNT_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 2400
  */
@@ -3396,6 +4016,7 @@ export type DEVICE_PROCESSOR_FREQUENCY_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 2.625
  */
@@ -3416,6 +4037,7 @@ export type DEVICE_SCREEN_DENSITY_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 420
  */
@@ -3436,6 +4058,7 @@ export type DEVICE_SCREEN_DPI_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 2400
  */
@@ -3456,6 +4079,7 @@ export type DEVICE_SCREEN_HEIGHT_PIXELS_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 1080
  */
@@ -3476,6 +4100,7 @@ export type DEVICE_SCREEN_WIDTH_PIXELS_TYPE = number;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example false
  */
@@ -3496,6 +4121,7 @@ export type DEVICE_SIMULATOR_TYPE = boolean;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 274877906944
  */
@@ -3516,6 +4142,7 @@ export type DEVICE_STORAGE_SIZE_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "nominal"
  */
@@ -3536,6 +4163,7 @@ export type DEVICE_THERMAL_STATE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "Europe/Vienna"
  */
@@ -3556,6 +4184,7 @@ export type DEVICE_TIMEZONE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 2147483648
  */
@@ -3576,6 +4205,7 @@ export type DEVICE_USABLE_MEMORY_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link NETWORK_CONNECTION_EFFECTIVE_TYPE} `network.connection.effective_type`
  *
@@ -3599,6 +4229,7 @@ export type EFFECTIVECONNECTIONTYPE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link SENTRY_ENVIRONMENT} `sentry.environment`
  *
@@ -3622,6 +4253,7 @@ export type ENVIRONMENT_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "timeout"
  */
@@ -3642,6 +4274,7 @@ export type ERROR_TYPE_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 1234567890
  */
@@ -3662,6 +4295,7 @@ export type EVENT_ID_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "Process Payload"
  */
@@ -3682,6 +4316,7 @@ export type EVENT_NAME_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example true
  */
@@ -3702,6 +4337,7 @@ export type EXCEPTION_ESCAPED_TYPE = boolean;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "ENOENT: no such file or directory"
  */
@@ -3722,6 +4358,7 @@ export type EXCEPTION_MESSAGE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "Exception in thread \"main\" java.lang.RuntimeException: Test exception\n at com.example.GenerateTrace.methodB(GenerateTrace.java:13)\n at com.example.GenerateTrace.methodA(GenerateTrace.java:9)\n at com.example.GenerateTrace.main(GenerateTrace.java:5)"
  */
@@ -3742,6 +4379,7 @@ export type EXCEPTION_STACKTRACE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "OSError"
  */
@@ -3762,6 +4400,7 @@ export type EXCEPTION_TYPE_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example true
  */
@@ -3782,6 +4421,7 @@ export type FAAS_COLDSTART_TYPE = boolean;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "0/5 * * * ? *"
  */
@@ -3791,6 +4431,90 @@ export const FAAS_CRON = 'faas.cron';
  * Type for {@link FAAS_CRON} faas.cron
  */
 export type FAAS_CRON_TYPE = string;
+
+// Path: model/attributes/faas/faas__duration_in_ms.json
+
+/**
+ * The duration a function took to run, in milliseconds. `faas.duration_in_ms`
+ *
+ * Attribute Value Type: `number` {@link FAAS_DURATION_IN_MS_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 120
+ */
+export const FAAS_DURATION_IN_MS = 'faas.duration_in_ms';
+
+/**
+ * Type for {@link FAAS_DURATION_IN_MS} faas.duration_in_ms
+ */
+export type FAAS_DURATION_IN_MS_TYPE = number;
+
+// Path: model/attributes/faas/faas__entry_point.json
+
+/**
+ * The code that's run when the cloud provider invokes your function. `faas.entry_point`
+ *
+ * Attribute Value Type: `string` {@link FAAS_ENTRY_POINT_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "my_main_function"
+ */
+export const FAAS_ENTRY_POINT = 'faas.entry_point';
+
+/**
+ * Type for {@link FAAS_ENTRY_POINT} faas.entry_point
+ */
+export type FAAS_ENTRY_POINT_TYPE = string;
+
+// Path: model/attributes/faas/faas__identity.json
+
+/**
+ * The Service Account (GCP), IAM Execution Role (AWS), or Managed Identity (Azure) used by the serverless function when interacting with other cloud services `faas.identity`
+ *
+ * Attribute Value Type: `string` {@link FAAS_IDENTITY_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "name@project.iam.gserviceaccount.com (GCP), arn:aws:iam::123456789012:role/role-name (AWS), 00000000-0000-0000-0000-000000000000 (Azure)"
+ */
+export const FAAS_IDENTITY = 'faas.identity';
+
+/**
+ * Type for {@link FAAS_IDENTITY} faas.identity
+ */
+export type FAAS_IDENTITY_TYPE = string;
+
+// Path: model/attributes/faas/faas__name.json
+
+/**
+ * The name of the serverless function `faas.name`
+ *
+ * Attribute Value Type: `string` {@link FAAS_NAME_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "my_function"
+ */
+export const FAAS_NAME = 'faas.name';
+
+/**
+ * Type for {@link FAAS_NAME} faas.name
+ */
+export type FAAS_NAME_TYPE = string;
 
 // Path: model/attributes/faas/faas__time.json
 
@@ -3802,6 +4526,7 @@ export type FAAS_CRON_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "2020-01-23T13:47:06Z"
  */
@@ -3822,6 +4547,7 @@ export type FAAS_TIME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "timer"
  */
@@ -3842,6 +4568,7 @@ export type FAAS_TRIGGER_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link BROWSER_WEB_VITAL_FCP_VALUE} `browser.web_vital.fcp.value`
  *
@@ -3865,6 +4592,7 @@ export type FCP_TYPE = number;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Has Dynamic Suffix: true
  *
@@ -3887,6 +4615,7 @@ export type FLAG_EVALUATION_KEY_TYPE = boolean;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link BROWSER_WEB_VITAL_FP_VALUE} `browser.web_vital.fp.value`
  *
@@ -3910,6 +4639,7 @@ export type FP_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link APP_VITALS_FRAMES_DELAY_VALUE} `app.vitals.frames.delay.value`
  *
@@ -3933,6 +4663,7 @@ export type FRAMES_DELAY_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link APP_VITALS_FRAMES_FROZEN_COUNT} `app.vitals.frames.frozen.count`
  *
@@ -3946,6 +4677,25 @@ export const FRAMES_FROZEN = 'frames.frozen';
  */
 export type FRAMES_FROZEN_TYPE = number;
 
+// Path: model/attributes/frames_frozen_rate.json
+
+/**
+ * The rate of frozen frames, or `app_vitals.frames.frozen.count` divided by `app_vitals.frames.total.count`. This is computed by Relay. `frames_frozen_rate`
+ *
+ * Attribute Value Type: `number` {@link FRAMES_FROZEN_RATE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ */
+export const FRAMES_FROZEN_RATE = 'frames_frozen_rate';
+
+/**
+ * Type for {@link FRAMES_FROZEN_RATE} frames_frozen_rate
+ */
+export type FRAMES_FROZEN_RATE_TYPE = number;
+
 // Path: model/attributes/frames/frames__slow.json
 
 /**
@@ -3956,6 +4706,7 @@ export type FRAMES_FROZEN_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link APP_VITALS_FRAMES_SLOW_COUNT} `app.vitals.frames.slow.count`
  *
@@ -3969,6 +4720,25 @@ export const FRAMES_SLOW = 'frames.slow';
  */
 export type FRAMES_SLOW_TYPE = number;
 
+// Path: model/attributes/frames_slow_rate.json
+
+/**
+ * The rate of slow frames, or `app_vitals.frames.slow.count` divided by `app_vitals.frames.total.count`. This is computed by Relay. `frames_slow_rate`
+ *
+ * Attribute Value Type: `number` {@link FRAMES_SLOW_RATE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ */
+export const FRAMES_SLOW_RATE = 'frames_slow_rate';
+
+/**
+ * Type for {@link FRAMES_SLOW_RATE} frames_slow_rate
+ */
+export type FRAMES_SLOW_RATE_TYPE = number;
+
 // Path: model/attributes/frames/frames__total.json
 
 /**
@@ -3979,6 +4749,7 @@ export type FRAMES_SLOW_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link APP_VITALS_FRAMES_TOTAL_COUNT} `app.vitals.frames.total.count`
  *
@@ -4002,6 +4773,7 @@ export type FRAMES_TOTAL_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @deprecated Use {@link ERROR_TYPE} (error.type) instead - This attribute is not part of the OpenTelemetry specification and error.type fits much better.
  * @example "ENOENT: no such file or directory"
@@ -4013,6 +4785,216 @@ export const FS_ERROR = 'fs_error';
  */
 export type FS_ERROR_TYPE = string;
 
+// Path: model/attributes/gcp/gcp__function__context__event_id.json
+
+/**
+ * The event ID from the legacy GCP Cloud Function context (1st gen) `gcp.function.context.event_id`
+ *
+ * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_EVENT_ID_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "1234567890"
+ */
+export const GCP_FUNCTION_CONTEXT_EVENT_ID = 'gcp.function.context.event_id';
+
+/**
+ * Type for {@link GCP_FUNCTION_CONTEXT_EVENT_ID} gcp.function.context.event_id
+ */
+export type GCP_FUNCTION_CONTEXT_EVENT_ID_TYPE = string;
+
+// Path: model/attributes/gcp/gcp__function__context__event_type.json
+
+/**
+ * The type of the GCP Cloud Function event `gcp.function.context.event_type`
+ *
+ * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_EVENT_TYPE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "google.pubsub.topic.publish"
+ */
+export const GCP_FUNCTION_CONTEXT_EVENT_TYPE = 'gcp.function.context.event_type';
+
+/**
+ * Type for {@link GCP_FUNCTION_CONTEXT_EVENT_TYPE} gcp.function.context.event_type
+ */
+export type GCP_FUNCTION_CONTEXT_EVENT_TYPE_TYPE = string;
+
+// Path: model/attributes/gcp/gcp__function__context__id.json
+
+/**
+ * The unique event ID from the GCP CloudEvents context (2nd gen Cloud Functions) `gcp.function.context.id`
+ *
+ * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_ID_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "1234567890"
+ */
+export const GCP_FUNCTION_CONTEXT_ID = 'gcp.function.context.id';
+
+/**
+ * Type for {@link GCP_FUNCTION_CONTEXT_ID} gcp.function.context.id
+ */
+export type GCP_FUNCTION_CONTEXT_ID_TYPE = string;
+
+// Path: model/attributes/gcp/gcp__function__context__resource.json
+
+/**
+ * The resource that triggered the GCP Cloud Function event `gcp.function.context.resource`
+ *
+ * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_RESOURCE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "projects/my-project/topics/my-topic"
+ */
+export const GCP_FUNCTION_CONTEXT_RESOURCE = 'gcp.function.context.resource';
+
+/**
+ * Type for {@link GCP_FUNCTION_CONTEXT_RESOURCE} gcp.function.context.resource
+ */
+export type GCP_FUNCTION_CONTEXT_RESOURCE_TYPE = string;
+
+// Path: model/attributes/gcp/gcp__function__context__source.json
+
+/**
+ * The source of the GCP Cloud Function event `gcp.function.context.source`
+ *
+ * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_SOURCE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "//pubsub.googleapis.com/projects/my-project/topics/my-topic"
+ */
+export const GCP_FUNCTION_CONTEXT_SOURCE = 'gcp.function.context.source';
+
+/**
+ * Type for {@link GCP_FUNCTION_CONTEXT_SOURCE} gcp.function.context.source
+ */
+export type GCP_FUNCTION_CONTEXT_SOURCE_TYPE = string;
+
+// Path: model/attributes/gcp/gcp__function__context__specversion.json
+
+/**
+ * The CloudEvents specification version of the GCP Cloud Function event `gcp.function.context.specversion`
+ *
+ * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_SPECVERSION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "1.0"
+ */
+export const GCP_FUNCTION_CONTEXT_SPECVERSION = 'gcp.function.context.specversion';
+
+/**
+ * Type for {@link GCP_FUNCTION_CONTEXT_SPECVERSION} gcp.function.context.specversion
+ */
+export type GCP_FUNCTION_CONTEXT_SPECVERSION_TYPE = string;
+
+// Path: model/attributes/gcp/gcp__function__context__time.json
+
+/**
+ * The timestamp of the GCP Cloud Function event `gcp.function.context.time`
+ *
+ * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_TIME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "2024-01-01T00:00:00.000Z"
+ */
+export const GCP_FUNCTION_CONTEXT_TIME = 'gcp.function.context.time';
+
+/**
+ * Type for {@link GCP_FUNCTION_CONTEXT_TIME} gcp.function.context.time
+ */
+export type GCP_FUNCTION_CONTEXT_TIME_TYPE = string;
+
+// Path: model/attributes/gcp/gcp__function__context__timestamp.json
+
+/**
+ * The legacy timestamp of the GCP Cloud Function event `gcp.function.context.timestamp`
+ *
+ * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_TIMESTAMP_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "2024-01-01T00:00:00.000Z"
+ */
+export const GCP_FUNCTION_CONTEXT_TIMESTAMP = 'gcp.function.context.timestamp';
+
+/**
+ * Type for {@link GCP_FUNCTION_CONTEXT_TIMESTAMP} gcp.function.context.timestamp
+ */
+export type GCP_FUNCTION_CONTEXT_TIMESTAMP_TYPE = string;
+
+// Path: model/attributes/gcp/gcp__function__context__type.json
+
+/**
+ * The type of the GCP Cloud Function event context `gcp.function.context.type`
+ *
+ * Attribute Value Type: `string` {@link GCP_FUNCTION_CONTEXT_TYPE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "cloud_functions.context"
+ */
+export const GCP_FUNCTION_CONTEXT_TYPE = 'gcp.function.context.type';
+
+/**
+ * Type for {@link GCP_FUNCTION_CONTEXT_TYPE} gcp.function.context.type
+ */
+export type GCP_FUNCTION_CONTEXT_TYPE_TYPE = string;
+
+// Path: model/attributes/gcp/gcp__project__id.json
+
+/**
+ * The ID of the project in GCP that this resource is associated with `gcp.project.id`
+ *
+ * Attribute Value Type: `string` {@link GCP_PROJECT_ID_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "my-project-123"
+ */
+export const GCP_PROJECT_ID = 'gcp.project.id';
+
+/**
+ * Type for {@link GCP_PROJECT_ID} gcp.project.id
+ */
+export type GCP_PROJECT_ID_TYPE = string;
+
 // Path: model/attributes/gen_ai/gen_ai__agent__name.json
 
 /**
@@ -4023,6 +5005,7 @@ export type FS_ERROR_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "ResearchAssistant"
  */
@@ -4043,6 +5026,7 @@ export type GEN_AI_AGENT_NAME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 0.75
  */
@@ -4063,6 +5047,7 @@ export type GEN_AI_CONTEXT_UTILIZATION_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 128000
  */
@@ -4083,6 +5068,7 @@ export type GEN_AI_CONTEXT_WINDOW_SIZE_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "conv_5j66UpCpwteGg4YSxUnt7lPY"
  */
@@ -4103,6 +5089,7 @@ export type GEN_AI_CONVERSATION_ID_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 123.45
  */
@@ -4123,6 +5110,7 @@ export type GEN_AI_COST_INPUT_TOKENS_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 123.45
  */
@@ -4143,6 +5131,7 @@ export type GEN_AI_COST_OUTPUT_TOKENS_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link AI_TOTAL_COST} `ai.total_cost`
  *
@@ -4165,6 +5154,7 @@ export type GEN_AI_COST_TOTAL_TOKENS_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "What's the weather in Paris?"
  */
@@ -4185,6 +5175,7 @@ export type GEN_AI_EMBEDDINGS_INPUT_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "my-awesome-function"
  */
@@ -4205,6 +5196,7 @@ export type GEN_AI_FUNCTION_ID_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link AI_TEXTS} `ai.texts`
  *
@@ -4227,6 +5219,7 @@ export type GEN_AI_INPUT_MESSAGES_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "chat"
  */
@@ -4247,6 +5240,7 @@ export type GEN_AI_OPERATION_NAME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "tool"
  */
@@ -4267,6 +5261,7 @@ export type GEN_AI_OPERATION_TYPE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"text\", \"content\": \"The weather in Paris is currently rainy with a temperature of 57°F.\"}], \"finish_reason\": \"stop\"}]"
  */
@@ -4287,6 +5282,7 @@ export type GEN_AI_OUTPUT_MESSAGES_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link AI_PIPELINE_NAME} `ai.pipeline.name`
  *
@@ -4309,6 +5305,7 @@ export type GEN_AI_PIPELINE_NAME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @deprecated  - Deprecated from OTEL, use gen_ai.input.messages with the new format instead.
  * @example "[{\"role\": \"user\", \"message\": \"hello\"}]"
@@ -4330,6 +5327,7 @@ export type GEN_AI_PROMPT_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link AI_MODEL_PROVIDER} `ai.model.provider`, {@link GEN_AI_SYSTEM} `gen_ai.system`
  *
@@ -4352,6 +5350,7 @@ export type GEN_AI_PROVIDER_NAME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @deprecated Use {@link GEN_AI_TOOL_DEFINITIONS} (gen_ai.tool.definitions) instead
  * @example "[{\"name\": \"get_weather\", \"description\": \"Get the weather for a given location\"}, {\"name\": \"get_news\", \"description\": \"Get the news for a given topic\"}]"
@@ -4373,6 +5372,7 @@ export type GEN_AI_REQUEST_AVAILABLE_TOOLS_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link AI_FREQUENCY_PENALTY} `ai.frequency_penalty`
  *
@@ -4395,6 +5395,7 @@ export type GEN_AI_REQUEST_FREQUENCY_PENALTY_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example 2048
  */
@@ -4415,6 +5416,7 @@ export type GEN_AI_REQUEST_MAX_TOKENS_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link AI_INPUT_MESSAGES} `ai.input_messages`
  *
@@ -4438,6 +5440,7 @@ export type GEN_AI_REQUEST_MESSAGES_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "gpt-4-turbo-preview"
  */
@@ -4458,6 +5461,7 @@ export type GEN_AI_REQUEST_MODEL_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link AI_PRESENCE_PENALTY} `ai.presence_penalty`
  *
@@ -4480,6 +5484,7 @@ export type GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link AI_SEED} `ai.seed`
  *
@@ -4502,6 +5507,7 @@ export type GEN_AI_REQUEST_SEED_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link AI_TEMPERATURE} `ai.temperature`
  *
@@ -4524,6 +5530,7 @@ export type GEN_AI_REQUEST_TEMPERATURE_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link AI_TOP_K} `ai.top_k`
  *
@@ -4546,6 +5553,7 @@ export type GEN_AI_REQUEST_TOP_K_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link AI_TOP_P} `ai.top_p`
  *
@@ -4568,6 +5576,7 @@ export type GEN_AI_REQUEST_TOP_P_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link AI_FINISH_REASON} `ai.finish_reason`
  *
@@ -4590,6 +5599,7 @@ export type GEN_AI_RESPONSE_FINISH_REASONS_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link AI_GENERATION_ID} `ai.generation_id`
  *
@@ -4612,6 +5622,7 @@ export type GEN_AI_RESPONSE_ID_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link AI_MODEL_ID} `ai.model_id`
  *
@@ -4631,9 +5642,10 @@ export type GEN_AI_RESPONSE_MODEL_TYPE = string;
  *
  * Attribute Value Type: `boolean` {@link GEN_AI_RESPONSE_STREAMING_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link AI_STREAMING} `ai.streaming`
  *
@@ -4656,6 +5668,7 @@ export type GEN_AI_RESPONSE_STREAMING_TYPE = boolean;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @deprecated Use {@link GEN_AI_OUTPUT_MESSAGES} (gen_ai.output.messages) instead
  * @example "[\"The weather in Paris is rainy and overcast, with temperatures around 57°F\", \"The weather in London is sunny and warm, with temperatures around 65°F\"]"
@@ -4677,6 +5690,7 @@ export type GEN_AI_RESPONSE_TEXT_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 0.6853435
  */
@@ -4697,6 +5711,7 @@ export type GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 12345.67
  */
@@ -4717,6 +5732,7 @@ export type GEN_AI_RESPONSE_TOKENS_PER_SECOND_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @deprecated Use {@link GEN_AI_OUTPUT_MESSAGES} (gen_ai.output.messages) instead
  * @example "[{\"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]"
@@ -4738,6 +5754,7 @@ export type GEN_AI_RESPONSE_TOOL_CALLS_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link AI_MODEL_PROVIDER} `ai.model.provider`, {@link GEN_AI_PROVIDER_NAME} `gen_ai.provider.name`
  *
@@ -4761,6 +5778,7 @@ export type GEN_AI_SYSTEM_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link AI_PREAMBLE} `ai.preamble`
  *
@@ -4783,6 +5801,7 @@ export type GEN_AI_SYSTEM_INSTRUCTIONS_TYPE = string;
  * Contains PII: true
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @deprecated Use {@link GEN_AI_SYSTEM_INSTRUCTIONS} (gen_ai.system_instructions) instead
  * @example "You are a helpful assistant"
@@ -4804,6 +5823,7 @@ export type GEN_AI_SYSTEM_MESSAGE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link GEN_AI_TOOL_INPUT} `gen_ai.tool.input`
  *
@@ -4826,6 +5846,7 @@ export type GEN_AI_TOOL_CALL_ARGUMENTS_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`
  *
@@ -4848,6 +5869,7 @@ export type GEN_AI_TOOL_CALL_RESULT_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "[{\"type\": \"function\", \"name\": \"get_current_weather\", \"description\": \"Get the current weather in a given location\", \"parameters\": {\"type\": \"object\", \"properties\": {\"location\": {\"type\": \"string\", \"description\": \"The city and state, e.g. San Francisco, CA\"}, \"unit\": {\"type\": \"string\", \"enum\": [\"celsius\", \"fahrenheit\"]}}, \"required\": [\"location\", \"unit\"]}}]"
  */
@@ -4868,6 +5890,7 @@ export type GEN_AI_TOOL_DEFINITIONS_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "Searches the web for current information about a topic"
  */
@@ -4888,6 +5911,7 @@ export type GEN_AI_TOOL_DESCRIPTION_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link GEN_AI_TOOL_CALL_ARGUMENTS} `gen_ai.tool.call.arguments`
  *
@@ -4911,6 +5935,7 @@ export type GEN_AI_TOOL_INPUT_TYPE = string;
  * Contains PII: true
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`
  *
@@ -4934,6 +5959,7 @@ export type GEN_AI_TOOL_MESSAGE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link AI_FUNCTION_CALL} `ai.function_call`
  *
@@ -4956,6 +5982,7 @@ export type GEN_AI_TOOL_NAME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`
  *
@@ -4979,6 +6006,7 @@ export type GEN_AI_TOOL_OUTPUT_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @deprecated  - The gen_ai.tool.type attribute is deprecated and should no longer be set.
  * @example "function"
@@ -5000,6 +6028,7 @@ export type GEN_AI_TOOL_TYPE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link AI_COMPLETION_TOKENS_USED} `ai.completion_tokens.used`, {@link GEN_AI_USAGE_OUTPUT_TOKENS} `gen_ai.usage.output_tokens`
  *
@@ -5023,6 +6052,7 @@ export type GEN_AI_USAGE_COMPLETION_TOKENS_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link AI_PROMPT_TOKENS_USED} `ai.prompt_tokens.used`, {@link GEN_AI_USAGE_PROMPT_TOKENS} `gen_ai.usage.prompt_tokens`
  *
@@ -5045,6 +6075,7 @@ export type GEN_AI_USAGE_INPUT_TOKENS_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 50
  */
@@ -5065,6 +6096,7 @@ export type GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 100
  */
@@ -5085,6 +6117,7 @@ export type GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link AI_COMPLETION_TOKENS_USED} `ai.completion_tokens.used`, {@link GEN_AI_USAGE_COMPLETION_TOKENS} `gen_ai.usage.completion_tokens`
  *
@@ -5107,6 +6140,7 @@ export type GEN_AI_USAGE_OUTPUT_TOKENS_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 75
  */
@@ -5127,6 +6161,7 @@ export type GEN_AI_USAGE_OUTPUT_TOKENS_REASONING_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link AI_PROMPT_TOKENS_USED} `ai.prompt_tokens.used`, {@link GEN_AI_USAGE_INPUT_TOKENS} `gen_ai.usage.input_tokens`
  *
@@ -5150,6 +6185,7 @@ export type GEN_AI_USAGE_PROMPT_TOKENS_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link AI_TOTAL_TOKENS_USED} `ai.total_tokens.used`
  *
@@ -5162,6 +6198,27 @@ export const GEN_AI_USAGE_TOTAL_TOKENS = 'gen_ai.usage.total_tokens';
  */
 export type GEN_AI_USAGE_TOTAL_TOKENS_TYPE = number;
 
+// Path: model/attributes/graphql/graphql__document.json
+
+/**
+ * The GraphQL document being executed. `graphql.document`
+ *
+ * Attribute Value Type: `string` {@link GRAPHQL_DOCUMENT_TYPE}
+ *
+ * Contains PII: maybe - The document may contain sensitive information in arguments or variables. Instrumentation should redact sensitive information when possible.
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "query findBookById { bookById(id: ?) { name } }"
+ */
+export const GRAPHQL_DOCUMENT = 'graphql.document';
+
+/**
+ * Type for {@link GRAPHQL_DOCUMENT} graphql.document
+ */
+export type GRAPHQL_DOCUMENT_TYPE = string;
+
 // Path: model/attributes/graphql/graphql__operation__name.json
 
 /**
@@ -5172,6 +6229,7 @@ export type GEN_AI_USAGE_TOTAL_TOKENS_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "findBookById"
  */
@@ -5192,6 +6250,7 @@ export type GRAPHQL_OPERATION_NAME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "query"
  */
@@ -5212,6 +6271,7 @@ export type GRAPHQL_OPERATION_TYPE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link DEVICE_PROCESSOR_COUNT} `device.processor_count`
  *
@@ -5235,6 +6295,7 @@ export type HARDWARECONCURRENCY_TYPE = string;
  * Contains PII: true
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link CLIENT_ADDRESS} `client.address`
  *
@@ -5258,6 +6319,7 @@ export type HTTP_CLIENT_IP_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 456
  */
@@ -5278,6 +6340,7 @@ export type HTTP_DECODED_RESPONSE_CONTENT_LENGTH_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link NETWORK_PROTOCOL_VERSION} `network.protocol.version`, {@link NET_PROTOCOL_VERSION} `net.protocol.version`
  *
@@ -5301,6 +6364,7 @@ export type HTTP_FLAVOR_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "#details"
  */
@@ -5321,6 +6385,7 @@ export type HTTP_FRAGMENT_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link CLIENT_ADDRESS} `client.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`
  *
@@ -5344,6 +6409,7 @@ export type HTTP_HOST_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link HTTP_REQUEST_METHOD} `http.request.method`, {@link _HTTP_REQUEST_METHOD} `http.request_method`, {@link METHOD} `method`, {@link TRANSACTION_METHOD} `transaction.method`
  *
@@ -5364,9 +6430,10 @@ export type HTTP_METHOD_TYPE = string;
  *
  * Attribute Value Type: `string` {@link HTTP_QUERY_TYPE}
  *
- * Contains PII: maybe - Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.
+ * Contains PII: true - Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "?foo=bar&bar=baz"
  */
@@ -5387,6 +6454,7 @@ export type HTTP_QUERY_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "[{\"role\": \"user\", \"message\": \"hello\"}]"
  */
@@ -5407,6 +6475,7 @@ export type HTTP_REQUEST_BODY_DATA_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 1732829555.15
  */
@@ -5427,6 +6496,7 @@ export type HTTP_REQUEST_CONNECTION_END_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 1732829555.111
  */
@@ -5447,6 +6517,7 @@ export type HTTP_REQUEST_CONNECT_START_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 1732829555.201
  */
@@ -5467,6 +6538,7 @@ export type HTTP_REQUEST_DOMAIN_LOOKUP_END_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 1732829555.322
  */
@@ -5487,6 +6559,7 @@ export type HTTP_REQUEST_DOMAIN_LOOKUP_START_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 1732829555.389
  */
@@ -5507,6 +6580,7 @@ export type HTTP_REQUEST_FETCH_START_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Has Dynamic Suffix: true
  *
@@ -5529,6 +6603,7 @@ export type HTTP_REQUEST_HEADER_KEY_TYPE = Array<string>;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link METHOD} `method`, {@link HTTP_METHOD} `http.method`, {@link _HTTP_REQUEST_METHOD} `http.request_method`, {@link TRANSACTION_METHOD} `transaction.method`
  *
@@ -5551,6 +6626,7 @@ export type HTTP_REQUEST_METHOD_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link METHOD} `method`, {@link HTTP_METHOD} `http.method`, {@link HTTP_REQUEST_METHOD} `http.request.method`, {@link TRANSACTION_METHOD} `transaction.method`
  *
@@ -5574,6 +6650,7 @@ export type _HTTP_REQUEST_METHOD_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 1732829558.502
  */
@@ -5594,6 +6671,7 @@ export type HTTP_REQUEST_REDIRECT_END_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 1732829555.495
  */
@@ -5614,6 +6692,7 @@ export type HTTP_REQUEST_REDIRECT_START_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 1732829555.51
  */
@@ -5634,6 +6713,7 @@ export type HTTP_REQUEST_REQUEST_START_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 2
  */
@@ -5654,6 +6734,7 @@ export type HTTP_REQUEST_RESEND_COUNT_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 1732829555.89
  */
@@ -5674,6 +6755,7 @@ export type HTTP_REQUEST_RESPONSE_END_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 1732829555.7
  */
@@ -5694,6 +6776,7 @@ export type HTTP_REQUEST_RESPONSE_START_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 1732829555.73
  */
@@ -5714,6 +6797,7 @@ export type HTTP_REQUEST_SECURE_CONNECTION_START_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 1.032
  */
@@ -5734,6 +6818,7 @@ export type HTTP_REQUEST_TIME_TO_FIRST_BYTE_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 1732829553.68
  */
@@ -5754,6 +6839,7 @@ export type HTTP_REQUEST_WORKER_START_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link HTTP_RESPONSE_CONTENT_LENGTH} `http.response_content_length`, {@link HTTP_RESPONSE_HEADER_CONTENT_LENGTH} `http.response.header.content-length`
  *
@@ -5776,6 +6862,7 @@ export type HTTP_RESPONSE_BODY_SIZE_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link HTTP_RESPONSE_BODY_SIZE} `http.response.body.size`, {@link HTTP_RESPONSE_HEADER_CONTENT_LENGTH} `http.response.header.content-length`
  *
@@ -5799,6 +6886,7 @@ export type HTTP_RESPONSE_CONTENT_LENGTH_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link HTTP_RESPONSE_CONTENT_LENGTH} `http.response_content_length`, {@link HTTP_RESPONSE_BODY_SIZE} `http.response.body.size`
  *
@@ -5821,6 +6909,7 @@ export type HTTP_RESPONSE_HEADER_CONTENT_LENGTH_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Has Dynamic Suffix: true
  *
@@ -5843,6 +6932,7 @@ export type HTTP_RESPONSE_HEADER_KEY_TYPE = Array<string>;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link HTTP_RESPONSE_TRANSFER_SIZE} `http.response_transfer_size`
  *
@@ -5865,6 +6955,7 @@ export type HTTP_RESPONSE_SIZE_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link HTTP_STATUS_CODE} `http.status_code`
  *
@@ -5887,6 +6978,7 @@ export type HTTP_RESPONSE_STATUS_CODE_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link HTTP_RESPONSE_SIZE} `http.response.size`
  *
@@ -5910,6 +7002,7 @@ export type HTTP_RESPONSE_TRANSFER_SIZE_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link URL_TEMPLATE} `url.template`
  *
@@ -5932,6 +7025,7 @@ export type HTTP_ROUTE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link URL_SCHEME} `url.scheme`
  *
@@ -5955,6 +7049,7 @@ export type HTTP_SCHEME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`
  *
@@ -5978,6 +7073,7 @@ export type HTTP_SERVER_NAME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 50
  */
@@ -5998,6 +7094,7 @@ export type HTTP_SERVER_REQUEST_TIME_IN_QUEUE_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link HTTP_RESPONSE_STATUS_CODE} `http.response.status_code`
  *
@@ -6021,6 +7118,7 @@ export type HTTP_STATUS_CODE_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @deprecated Use {@link URL_PATH} (url.path) instead - This attribute is being deprecated in favor of url.path and url.query
  * @example "/test?foo=bar#buzz"
@@ -6039,9 +7137,10 @@ export type HTTP_TARGET_TYPE = string;
  *
  * Attribute Value Type: `string` {@link HTTP_URL_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link URL_FULL} `url.full`, {@link URL} `url`
  *
@@ -6065,6 +7164,7 @@ export type HTTP_URL_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link USER_AGENT_ORIGINAL} `user_agent.original`
  *
@@ -6088,6 +7188,7 @@ export type HTTP_USER_AGENT_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "f47ac10b58cc4372a5670e02b2c3d479"
  */
@@ -6108,6 +7209,7 @@ export type ID_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link BROWSER_WEB_VITAL_INP_VALUE} `browser.web_vital.inp.value`
  *
@@ -6131,6 +7233,7 @@ export type INP_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "end of minor GC"
  */
@@ -6151,6 +7254,7 @@ export type JVM_GC_ACTION_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "G1 Young Generation"
  */
@@ -6171,6 +7275,7 @@ export type JVM_GC_NAME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "G1 Old Gen"
  */
@@ -6191,6 +7296,7 @@ export type JVM_MEMORY_POOL_NAME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "G1 Old Gen"
  */
@@ -6211,6 +7317,7 @@ export type JVM_MEMORY_TYPE_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example true
  */
@@ -6231,6 +7338,7 @@ export type JVM_THREAD_DAEMON_TYPE = boolean;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "blocked"
  */
@@ -6251,6 +7359,7 @@ export type JVM_THREAD_STATE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link BROWSER_WEB_VITAL_LCP_VALUE} `browser.web_vital.lcp.value`
  *
@@ -6274,6 +7383,7 @@ export type LCP_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link BROWSER_WEB_VITAL_LCP_ELEMENT} `browser.web_vital.lcp.element`
  *
@@ -6297,6 +7407,7 @@ export type LCP_ELEMENT_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link BROWSER_WEB_VITAL_LCP_ID} `browser.web_vital.lcp.id`
  *
@@ -6320,6 +7431,7 @@ export type LCP_ID_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link BROWSER_WEB_VITAL_LCP_LOAD_TIME} `browser.web_vital.lcp.load_time`
  *
@@ -6343,6 +7455,7 @@ export type LCP_LOADTIME_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link BROWSER_WEB_VITAL_LCP_RENDER_TIME} `browser.web_vital.lcp.render_time`
  *
@@ -6366,6 +7479,7 @@ export type LCP_RENDERTIME_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link BROWSER_WEB_VITAL_LCP_SIZE} `browser.web_vital.lcp.size`
  *
@@ -6389,6 +7503,7 @@ export type LCP_SIZE_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link BROWSER_WEB_VITAL_LCP_URL} `browser.web_vital.lcp.url`
  *
@@ -6412,6 +7527,7 @@ export type LCP_URL_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "myLogger"
  */
@@ -6432,6 +7548,7 @@ export type LOGGER_NAME_TYPE = string;
  * Contains PII: maybe - Cancellation reasons may contain user-specific or sensitive information
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "User cancelled the request"
  */
@@ -6452,6 +7569,7 @@ export type MCP_CANCELLED_REASON_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "123"
  */
@@ -6472,6 +7590,7 @@ export type MCP_CANCELLED_REQUEST_ID_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "claude-desktop"
  */
@@ -6492,6 +7611,7 @@ export type MCP_CLIENT_NAME_TYPE = string;
  * Contains PII: maybe - Client titles may reveal user-specific application configurations or custom setups
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "Claude Desktop"
  */
@@ -6512,6 +7632,7 @@ export type MCP_CLIENT_TITLE_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "1.0.0"
  */
@@ -6532,6 +7653,7 @@ export type MCP_CLIENT_VERSION_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "initialization_complete"
  */
@@ -6552,6 +7674,7 @@ export type MCP_LIFECYCLE_PHASE_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "string"
  */
@@ -6572,6 +7695,7 @@ export type MCP_LOGGING_DATA_TYPE_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "info"
  */
@@ -6592,6 +7716,7 @@ export type MCP_LOGGING_LEVEL_TYPE = string;
  * Contains PII: maybe - Logger names may be user-defined and could contain sensitive information
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "mcp_server"
  */
@@ -6612,6 +7737,7 @@ export type MCP_LOGGING_LOGGER_TYPE = string;
  * Contains PII: true - Log messages can contain user data
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "Tool execution completed successfully"
  */
@@ -6632,6 +7758,7 @@ export type MCP_LOGGING_MESSAGE_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "tools/call"
  */
@@ -6652,6 +7779,7 @@ export type MCP_METHOD_NAME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 50
  */
@@ -6672,6 +7800,7 @@ export type MCP_PROGRESS_CURRENT_TYPE = number;
  * Contains PII: maybe - Progress messages may contain user-specific or sensitive information
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "Processing 50 of 100 items"
  */
@@ -6692,6 +7821,7 @@ export type MCP_PROGRESS_MESSAGE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 50
  */
@@ -6712,6 +7842,7 @@ export type MCP_PROGRESS_PERCENTAGE_TYPE = number;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "progress-token-123"
  */
@@ -6732,6 +7863,7 @@ export type MCP_PROGRESS_TOKEN_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 100
  */
@@ -6752,6 +7884,7 @@ export type MCP_PROGRESS_TOTAL_TYPE = number;
  * Contains PII: maybe - Prompt names may reveal user behavior patterns or sensitive operations
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "summarize"
  */
@@ -6772,6 +7905,7 @@ export type MCP_PROMPT_NAME_TYPE = string;
  * Contains PII: true
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "A summary of the requested information"
  */
@@ -6792,6 +7926,7 @@ export type MCP_PROMPT_RESULT_DESCRIPTION_TYPE = string;
  * Contains PII: true
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "Please provide a summary of the document"
  */
@@ -6812,6 +7947,7 @@ export type MCP_PROMPT_RESULT_MESSAGE_CONTENT_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 3
  */
@@ -6832,6 +7968,7 @@ export type MCP_PROMPT_RESULT_MESSAGE_COUNT_TYPE = number;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "user"
  */
@@ -6852,6 +7989,7 @@ export type MCP_PROMPT_RESULT_MESSAGE_ROLE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 1
  */
@@ -6872,6 +8010,7 @@ export type MCP_PROTOCOL_READY_TYPE = number;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "2024-11-05"
  */
@@ -6892,6 +8031,7 @@ export type MCP_PROTOCOL_VERSION_TYPE = string;
  * Contains PII: true - Arguments contain user input
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Has Dynamic Suffix: true
  *
@@ -6914,6 +8054,7 @@ export type MCP_REQUEST_ARGUMENT_KEY_TYPE = string;
  * Contains PII: true - Prompt names can contain user input
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "summarize"
  */
@@ -6934,6 +8075,7 @@ export type MCP_REQUEST_ARGUMENT_NAME_TYPE = string;
  * Contains PII: true - URIs can contain user file paths
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "file:///path/to/resource"
  */
@@ -6954,6 +8096,7 @@ export type MCP_REQUEST_ARGUMENT_URI_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "1"
  */
@@ -6974,6 +8117,7 @@ export type MCP_REQUEST_ID_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "file"
  */
@@ -6994,6 +8138,7 @@ export type MCP_RESOURCE_PROTOCOL_TYPE = string;
  * Contains PII: true - URIs can contain sensitive file paths
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "file:///path/to/file.txt"
  */
@@ -7014,6 +8159,7 @@ export type MCP_RESOURCE_URI_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "sentry-mcp-server"
  */
@@ -7034,6 +8180,7 @@ export type MCP_SERVER_NAME_TYPE = string;
  * Contains PII: maybe - Server titles may reveal user-specific application configurations or custom setups
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "Sentry MCP Server"
  */
@@ -7054,6 +8201,7 @@ export type MCP_SERVER_TITLE_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "0.1.0"
  */
@@ -7074,6 +8222,7 @@ export type MCP_SERVER_VERSION_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "550e8400-e29b-41d4-a716-446655440000"
  */
@@ -7094,6 +8243,7 @@ export type MCP_SESSION_ID_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "calculator"
  */
@@ -7114,6 +8264,7 @@ export type MCP_TOOL_NAME_TYPE = string;
  * Contains PII: true - Tool results can contain user data
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "{\"output\": \"rainy\", \"toolCallId\": \"1\"}"
  */
@@ -7134,6 +8285,7 @@ export type MCP_TOOL_RESULT_CONTENT_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 1
  */
@@ -7154,6 +8306,7 @@ export type MCP_TOOL_RESULT_CONTENT_COUNT_TYPE = number;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example false
  */
@@ -7174,6 +8327,7 @@ export type MCP_TOOL_RESULT_IS_ERROR_TYPE = boolean;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "stdio"
  */
@@ -7194,6 +8348,7 @@ export type MCP_TRANSPORT_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Has Dynamic Suffix: true
  *
@@ -7216,6 +8371,7 @@ export type MDC_KEY_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example 10
  */
@@ -7236,6 +8392,7 @@ export type MESSAGING_BATCH_MESSAGE_COUNT_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "BestTopic"
  */
@@ -7256,6 +8413,7 @@ export type MESSAGING_DESTINATION_CONNECTION_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "BestTopic"
  */
@@ -7276,6 +8434,7 @@ export type MESSAGING_DESTINATION_NAME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example 839
  */
@@ -7296,6 +8455,7 @@ export type MESSAGING_MESSAGE_BODY_SIZE_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example 1045
  */
@@ -7316,6 +8476,7 @@ export type MESSAGING_MESSAGE_ENVELOPE_SIZE_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "f47ac10b58cc4372a5670e02b2c3d479"
  */
@@ -7336,6 +8497,7 @@ export type MESSAGING_MESSAGE_ID_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 1732847252
  */
@@ -7356,6 +8518,7 @@ export type MESSAGING_MESSAGE_RECEIVE_LATENCY_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 2
  */
@@ -7365,6 +8528,27 @@ export const MESSAGING_MESSAGE_RETRY_COUNT = 'messaging.message.retry.count';
  * Type for {@link MESSAGING_MESSAGE_RETRY_COUNT} messaging.message.retry.count
  */
 export type MESSAGING_MESSAGE_RETRY_COUNT_TYPE = number;
+
+// Path: model/attributes/messaging/messaging__operation__name.json
+
+/**
+ * The name of the messaging operation being performed `messaging.operation.name`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_OPERATION_NAME_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "send"
+ */
+export const MESSAGING_OPERATION_NAME = 'messaging.operation.name';
+
+/**
+ * Type for {@link MESSAGING_OPERATION_NAME} messaging.operation.name
+ */
+export type MESSAGING_OPERATION_NAME_TYPE = string;
 
 // Path: model/attributes/messaging/messaging__operation__type.json
 
@@ -7376,6 +8560,7 @@ export type MESSAGING_MESSAGE_RETRY_COUNT_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "create"
  */
@@ -7396,6 +8581,7 @@ export type MESSAGING_OPERATION_TYPE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "activemq"
  */
@@ -7416,6 +8602,7 @@ export type MESSAGING_SYSTEM_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link HTTP_REQUEST_METHOD} `http.request.method`, {@link _HTTP_REQUEST_METHOD} `http.request_method`, {@link HTTP_METHOD} `http.method`, {@link TRANSACTION_METHOD} `transaction.method`
  *
@@ -7439,6 +8626,7 @@ export type METHOD_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "AuthenticationMiddleware"
  */
@@ -7459,6 +8647,7 @@ export type MIDDLEWARE_NAME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "router.push"
  */
@@ -7479,6 +8668,7 @@ export type NAVIGATION_TYPE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 100
  */
@@ -7499,6 +8689,7 @@ export type NEL_ELAPSED_TIME_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "application"
  */
@@ -7519,6 +8710,7 @@ export type NEL_PHASE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "https://example.com/foo?bar=baz"
  */
@@ -7539,6 +8731,7 @@ export type NEL_REFERRER_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 0.5
  */
@@ -7559,6 +8752,7 @@ export type NEL_SAMPLING_FUNCTION_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "dns.unreachable"
  */
@@ -7579,6 +8773,7 @@ export type NEL_TYPE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link EFFECTIVECONNECTIONTYPE} `effectiveConnectionType`
  *
@@ -7601,6 +8796,7 @@ export type NETWORK_CONNECTION_EFFECTIVE_TYPE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link CONNECTION_RTT} `connection.rtt`
  *
@@ -7623,6 +8819,7 @@ export type NETWORK_CONNECTION_RTT_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link DEVICE_CONNECTION_TYPE} `device.connection_type`, {@link CONNECTIONTYPE} `connectionType`
  *
@@ -7645,6 +8842,7 @@ export type NETWORK_CONNECTION_TYPE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link NET_HOST_IP} `net.host.ip`, {@link NET_SOCK_HOST_ADDR} `net.sock.host.addr`
  *
@@ -7667,6 +8865,7 @@ export type NETWORK_LOCAL_ADDRESS_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link NET_SOCK_HOST_PORT} `net.sock.host.port`
  *
@@ -7689,6 +8888,7 @@ export type NETWORK_LOCAL_PORT_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link NET_PEER_IP} `net.peer.ip`, {@link NET_SOCK_PEER_ADDR} `net.sock.peer.addr`
  *
@@ -7711,6 +8911,7 @@ export type NETWORK_PEER_ADDRESS_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example 65400
  */
@@ -7731,6 +8932,7 @@ export type NETWORK_PEER_PORT_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link NET_PROTOCOL_NAME} `net.protocol.name`
  *
@@ -7753,6 +8955,7 @@ export type NETWORK_PROTOCOL_NAME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link HTTP_FLAVOR} `http.flavor`, {@link NET_PROTOCOL_VERSION} `net.protocol.version`
  *
@@ -7775,6 +8978,7 @@ export type NETWORK_PROTOCOL_VERSION_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link NET_TRANSPORT} `net.transport`
  *
@@ -7797,6 +9001,7 @@ export type NETWORK_TRANSPORT_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "ipv4"
  */
@@ -7817,6 +9022,7 @@ export type NETWORK_TYPE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link NETWORK_LOCAL_ADDRESS} `network.local.address`, {@link NET_SOCK_HOST_ADDR} `net.sock.host.addr`
  *
@@ -7840,6 +9046,7 @@ export type NET_HOST_IP_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link HTTP_HOST} `http.host`
  *
@@ -7863,6 +9070,7 @@ export type NET_HOST_NAME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link SERVER_PORT} `server.port`
  *
@@ -7886,6 +9094,7 @@ export type NET_HOST_PORT_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link NETWORK_PEER_ADDRESS} `network.peer.address`, {@link NET_SOCK_PEER_ADDR} `net.sock.peer.addr`
  *
@@ -7909,6 +9118,7 @@ export type NET_PEER_IP_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - Deprecated, use server.address on client spans and client.address on server spans.
  * @example "example.com"
@@ -7930,6 +9140,7 @@ export type NET_PEER_NAME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @deprecated Use {@link SERVER_PORT} (server.port) instead - Deprecated, use server.port on client spans and client.port on server spans.
  * @example 1337
@@ -7951,6 +9162,7 @@ export type NET_PEER_PORT_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link NETWORK_PROTOCOL_NAME} `network.protocol.name`
  *
@@ -7974,6 +9186,7 @@ export type NET_PROTOCOL_NAME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link NETWORK_PROTOCOL_VERSION} `network.protocol.version`, {@link HTTP_FLAVOR} `http.flavor`
  *
@@ -7997,6 +9210,7 @@ export type NET_PROTOCOL_VERSION_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @deprecated Use {@link NETWORK_TRANSPORT} (network.transport) instead - Deprecated, use network.transport and network.type.
  * @example "inet"
@@ -8018,6 +9232,7 @@ export type NET_SOCK_FAMILY_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link NETWORK_LOCAL_ADDRESS} `network.local.address`, {@link NET_HOST_IP} `net.host.ip`
  *
@@ -8041,6 +9256,7 @@ export type NET_SOCK_HOST_ADDR_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link NETWORK_LOCAL_PORT} `network.local.port`
  *
@@ -8064,6 +9280,7 @@ export type NET_SOCK_HOST_PORT_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link NETWORK_PEER_ADDRESS} `network.peer.address`, {@link NET_PEER_IP} `net.peer.ip`
  *
@@ -8087,6 +9304,7 @@ export type NET_SOCK_PEER_ADDR_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @deprecated  - Deprecated from OTEL, no replacement at this time
  * @example "/var/my.sock"
@@ -8108,6 +9326,7 @@ export type NET_SOCK_PEER_NAME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @deprecated Use {@link NETWORK_PEER_PORT} (network.peer.port) instead
  * @example 8080
@@ -8129,6 +9348,7 @@ export type NET_SOCK_PEER_PORT_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link NETWORK_TRANSPORT} `network.transport`
  *
@@ -8152,6 +9372,7 @@ export type NET_TRANSPORT_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link OS_BUILD_ID} `os.build_id`
  *
@@ -8175,6 +9396,7 @@ export type OS_BUILD_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link OS_BUILD} `os.build`
  *
@@ -8197,6 +9419,7 @@ export type OS_BUILD_ID_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "Ubuntu 18.04.1 LTS"
  */
@@ -8217,6 +9440,7 @@ export type OS_DESCRIPTION_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "20.2.0"
  */
@@ -8237,6 +9461,7 @@ export type OS_KERNEL_VERSION_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "Ubuntu"
  */
@@ -8257,6 +9482,7 @@ export type OS_NAME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "Ubuntu 22.04.4 LTS (Jammy Jellyfish)"
  */
@@ -8277,6 +9503,7 @@ export type OS_RAW_DESCRIPTION_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example true
  */
@@ -8297,6 +9524,7 @@ export type OS_ROOTED_TYPE = boolean;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "dark"
  */
@@ -8317,6 +9545,7 @@ export type OS_THEME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "linux"
  */
@@ -8337,6 +9566,7 @@ export type OS_TYPE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "18.04.2"
  */
@@ -8357,6 +9587,7 @@ export type OS_VERSION_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "io.opentelemetry.contrib.mongodb"
  */
@@ -8377,6 +9608,7 @@ export type OTEL_SCOPE_NAME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "2.4.5"
  */
@@ -8397,6 +9629,7 @@ export type OTEL_SCOPE_VERSION_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "OK"
  */
@@ -8417,6 +9650,7 @@ export type OTEL_STATUS_CODE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "resource not found"
  */
@@ -8437,6 +9671,7 @@ export type OTEL_STATUS_DESCRIPTION_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Has Dynamic Suffix: true
  *
@@ -8461,6 +9696,7 @@ export type PARAMS_KEY_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START} `browser.performance.navigation.activation_start`
  *
@@ -8484,6 +9720,7 @@ export type PERFORMANCE_ACTIVATIONSTART_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link BROWSER_PERFORMANCE_TIME_ORIGIN} `browser.performance.time_origin`
  *
@@ -8507,6 +9744,7 @@ export type PERFORMANCE_TIMEORIGIN_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "HomeScreen"
  */
@@ -8527,6 +9765,7 @@ export type PREVIOUS_ROUTE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example ["cmd/otecol","--config=config.yaml"]
  */
@@ -8547,6 +9786,7 @@ export type PROCESS_COMMAND_ARGS_TYPE = Array<string>;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "getsentry"
  */
@@ -8567,6 +9807,7 @@ export type PROCESS_EXECUTABLE_NAME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example 12345
  */
@@ -8587,6 +9828,7 @@ export type PROCESS_PID_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "Eclipse OpenJ9 VM openj9-0.21.0"
  */
@@ -8607,6 +9849,7 @@ export type PROCESS_RUNTIME_DESCRIPTION_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "v8"
  */
@@ -8627,6 +9870,7 @@ export type PROCESS_RUNTIME_ENGINE_NAME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "12.9.202.13-rusty"
  */
@@ -8647,6 +9891,7 @@ export type PROCESS_RUNTIME_ENGINE_VERSION_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "node"
  */
@@ -8667,6 +9912,7 @@ export type PROCESS_RUNTIME_NAME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "18.04.2"
  */
@@ -8687,6 +9933,7 @@ export type PROCESS_RUNTIME_VERSION_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Has Dynamic Suffix: true
  *
@@ -8700,6 +9947,27 @@ export const QUERY_KEY = 'query.<key>';
  */
 export type QUERY_KEY_TYPE = string;
 
+// Path: model/attributes/react/react__version.json
+
+/**
+ * The version of the React framework `react.version`
+ *
+ * Attribute Value Type: `string` {@link REACT_VERSION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "18.2.0"
+ */
+export const REACT_VERSION = 'react.version';
+
+/**
+ * Type for {@link REACT_VERSION} react.version
+ */
+export type REACT_VERSION_TYPE = string;
+
 // Path: model/attributes/release.json
 
 /**
@@ -8710,6 +9978,7 @@ export type QUERY_KEY_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link SENTRY_RELEASE} `sentry.release`
  *
@@ -8733,6 +10002,7 @@ export type RELEASE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Has Dynamic Suffix: true
  *
@@ -8755,6 +10025,7 @@ export type REMIX_ACTION_FORM_DATA_KEY_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link SENTRY_REPLAY_ID} `sentry.replay_id`
  *
@@ -8778,6 +10049,7 @@ export type REPLAY_ID_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @deprecated Use {@link SENTRY_ENVIRONMENT} (sentry.environment) instead
  * @example "production"
@@ -8799,6 +10071,7 @@ export type RESOURCE_DEPLOYMENT_ENVIRONMENT_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @deprecated Use {@link SENTRY_ENVIRONMENT} (sentry.environment) instead
  * @example "production"
@@ -8820,6 +10093,7 @@ export type RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "non-blocking"
  */
@@ -8840,6 +10114,7 @@ export type RESOURCE_RENDER_BLOCKING_STATUS_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link HTTP_ROUTE} `http.route`
  *
@@ -8863,6 +10138,7 @@ export type ROUTE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example 2
  */
@@ -8883,6 +10159,7 @@ export type RPC_GRPC_STATUS_CODE_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "com.example.ExampleService/exampleMethod"
  */
@@ -8903,6 +10180,7 @@ export type RPC_METHOD_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "DEADLINE_EXCEEDED"
  */
@@ -8923,6 +10201,7 @@ export type RPC_RESPONSE_STATUS_CODE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "myService.BestService"
  */
@@ -8943,6 +10222,7 @@ export type RPC_SERVICE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Has Dynamic Suffix: true
  *
@@ -8965,6 +10245,7 @@ export type SCORE_KEY_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Has Dynamic Suffix: true
  *
@@ -8987,6 +10268,7 @@ export type SCORE_RATIO_KEY_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  */
 export const SCORE_TOTAL = 'score.total';
 
@@ -9005,6 +10287,7 @@ export type SCORE_TOTAL_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Has Dynamic Suffix: true
  *
@@ -9027,6 +10310,7 @@ export type SCORE_WEIGHT_KEY_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "SELECT"
  */
@@ -9047,6 +10331,7 @@ export type SENTRY_ACTION_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link BROWSER_NAME} `browser.name`
  *
@@ -9070,6 +10355,7 @@ export type SENTRY_BROWSER_NAME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link BROWSER_VERSION} `browser.version`
  *
@@ -9093,6 +10379,7 @@ export type SENTRY_BROWSER_VERSION_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "document.hidden"
  */
@@ -9113,6 +10400,7 @@ export type SENTRY_CANCELLATION_REASON_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "db"
  */
@@ -9133,6 +10421,7 @@ export type SENTRY_CATEGORY_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 0.5
  */
@@ -9153,6 +10442,7 @@ export type SENTRY_CLIENT_SAMPLE_RATE_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "index view query"
  */
@@ -9173,6 +10463,7 @@ export type SENTRY_DESCRIPTION_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "1.0"
  */
@@ -9193,6 +10484,7 @@ export type SENTRY_DIST_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "example.com"
  */
@@ -9213,6 +10505,7 @@ export type SENTRY_DOMAIN_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: internal
  *
  * @example "prod"
  */
@@ -9222,6 +10515,27 @@ export const SENTRY_DSC_ENVIRONMENT = 'sentry.dsc.environment';
  * Type for {@link SENTRY_DSC_ENVIRONMENT} sentry.dsc.environment
  */
 export type SENTRY_DSC_ENVIRONMENT_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__dsc__project_id.json
+
+/**
+ * The ID of the project where the trace originated (i.e. the project of the SDK that started the trace). Propagated through the dynamic sampling context and set by Relay during ingestion. `sentry.dsc.project_id`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_DSC_PROJECT_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: internal
+ *
+ * @example "12345"
+ */
+export const SENTRY_DSC_PROJECT_ID = 'sentry.dsc.project_id';
+
+/**
+ * Type for {@link SENTRY_DSC_PROJECT_ID} sentry.dsc.project_id
+ */
+export type SENTRY_DSC_PROJECT_ID_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__dsc__public_key.json
 
@@ -9233,6 +10547,7 @@ export type SENTRY_DSC_ENVIRONMENT_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: internal
  *
  * @example "c51734c603c4430eb57cb0a5728a479d"
  */
@@ -9253,6 +10568,7 @@ export type SENTRY_DSC_PUBLIC_KEY_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: internal
  *
  * @example "frontend@e8211be71b214afab5b85de4b4c54be3714952bb"
  */
@@ -9273,6 +10589,7 @@ export type SENTRY_DSC_RELEASE_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: internal
  *
  * @example true
  */
@@ -9293,6 +10610,7 @@ export type SENTRY_DSC_SAMPLED_TYPE = boolean;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: internal
  *
  * @example "1.0"
  */
@@ -9313,6 +10631,7 @@ export type SENTRY_DSC_SAMPLE_RATE_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: internal
  *
  * @example "047372980460430cbc78d9779df33a46"
  */
@@ -9333,6 +10652,7 @@ export type SENTRY_DSC_TRACE_ID_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: internal
  *
  * @example "/issues/errors-outages/"
  */
@@ -9353,6 +10673,7 @@ export type SENTRY_DSC_TRANSACTION_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link ENVIRONMENT} `environment`
  *
@@ -9375,6 +10696,7 @@ export type SENTRY_ENVIRONMENT_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 1234
  */
@@ -9395,6 +10717,7 @@ export type SENTRY_EXCLUSIVE_TIME_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "getUserById"
  */
@@ -9415,6 +10738,7 @@ export type SENTRY_GRAPHQL_OPERATION_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  */
 export const SENTRY_GROUP = 'sentry.group';
 
@@ -9433,6 +10757,7 @@ export type SENTRY_GROUP_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example true
  */
@@ -9453,6 +10778,7 @@ export type SENTRY_HTTP_PREFETCH_TYPE = boolean;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "idleTimeout"
  */
@@ -9473,6 +10799,7 @@ export type SENTRY_IDLE_SPAN_FINISH_REASON_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example true
  */
@@ -9493,6 +10820,7 @@ export type SENTRY_IS_REMOTE_TYPE = boolean;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "server"
  */
@@ -9513,6 +10841,7 @@ export type SENTRY_KIND_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example true
  */
@@ -9533,6 +10862,7 @@ export type SENTRY_MAIN_THREAD_TYPE = boolean;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "sentry.message.parameter.0='123'"
  */
@@ -9553,6 +10883,7 @@ export type SENTRY_MESSAGE_PARAMETER_KEY_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "Hello, {name}!"
  */
@@ -9573,6 +10904,7 @@ export type SENTRY_MESSAGE_TEMPLATE_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example true
  */
@@ -9593,6 +10925,7 @@ export type SENTRY_MOBILE_TYPE = boolean;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Has Dynamic Suffix: true
  *
@@ -9615,6 +10948,7 @@ export type SENTRY_MODULE_KEY_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "/posts/[id]/layout"
  */
@@ -9635,6 +10969,7 @@ export type SENTRY_NEXTJS_SSR_FUNCTION_ROUTE_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "generateMetadata"
  */
@@ -9655,6 +10990,7 @@ export type SENTRY_NEXTJS_SSR_FUNCTION_TYPE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "SELECT .. FROM sentry_project WHERE (project_id = %s)"
  */
@@ -9675,6 +11011,7 @@ export type SENTRY_NORMALIZED_DB_QUERY_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  */
 export const SENTRY_NORMALIZED_DB_QUERY_HASH = 'sentry.normalized_db_query.hash';
 
@@ -9693,6 +11030,7 @@ export type SENTRY_NORMALIZED_DB_QUERY_HASH_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "SELECT .. FROM sentry_project WHERE (project_id = %s)"
  */
@@ -9713,6 +11051,7 @@ export type SENTRY_NORMALIZED_DESCRIPTION_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "1544712660300000000"
  */
@@ -9733,6 +11072,7 @@ export type SENTRY_OBSERVED_TIMESTAMP_NANOS_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "http.client"
  */
@@ -9753,6 +11093,7 @@ export type SENTRY_OP_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "auto.http.otel.fastify"
  */
@@ -9773,6 +11114,7 @@ export type SENTRY_ORIGIN_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "php"
  */
@@ -9793,6 +11135,7 @@ export type SENTRY_PLATFORM_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "18779b64dd35d1a538e7ce2dd2d3fad3"
  */
@@ -9813,6 +11156,7 @@ export type SENTRY_PROFILER_ID_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "123e4567e89b12d3a456426614174000"
  */
@@ -9833,6 +11177,7 @@ export type SENTRY_PROFILE_ID_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link SERVICE_VERSION} `service.version`, {@link RELEASE} `release`
  *
@@ -9855,6 +11200,7 @@ export type SENTRY_RELEASE_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link REPLAY_ID} `replay_id`
  *
@@ -9877,6 +11223,7 @@ export type SENTRY_REPLAY_ID_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example true
  */
@@ -9897,6 +11244,7 @@ export type SENTRY_REPLAY_IS_BUFFERING_TYPE = boolean;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @deprecated  - The report event is now recorded as a browser.web_vital.lcp.report_event or browser.web_vital.cls.report_event attribute. No backfill required.
  * @example "pagehide"
@@ -9918,6 +11266,7 @@ export type SENTRY_REPORT_EVENT_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example ["InboundFilters","FunctionToString","BrowserApiErrors","Breadcrumbs"]
  */
@@ -9938,6 +11287,7 @@ export type SENTRY_SDK_INTEGRATIONS_TYPE = Array<string>;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "@sentry/react"
  */
@@ -9958,6 +11308,7 @@ export type SENTRY_SDK_NAME_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "7.0.0"
  */
@@ -9978,6 +11329,7 @@ export type SENTRY_SDK_VERSION_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link _SENTRY_SEGMENT_ID} `sentry.segment_id`
  *
@@ -10000,6 +11352,7 @@ export type SENTRY_SEGMENT_ID_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link SENTRY_SEGMENT_ID} `sentry.segment.id`
  *
@@ -10023,8 +11376,9 @@ export type _SENTRY_SEGMENT_ID_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
- * Aliases: {@link SENTRY_SPAN_NAME} `sentry.span.name`, {@link SENTRY_TRANSACTION} `sentry.transaction`, {@link TRANSACTION} `transaction`
+ * Aliases: {@link SENTRY_TRANSACTION} `sentry.transaction`, {@link TRANSACTION} `transaction`
  *
  * @example "GET /user"
  */
@@ -10045,6 +11399,7 @@ export type SENTRY_SEGMENT_NAME_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 0.5
  */
@@ -10065,6 +11420,7 @@ export type SENTRY_SERVER_SAMPLE_RATE_TYPE = number;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @deprecated Use {@link SENTRY_SPAN_SOURCE} (sentry.span.source) instead - This attribute is being deprecated in favor of sentry.span.source
  * @example "route"
@@ -10076,28 +11432,6 @@ export const SENTRY_SOURCE = 'sentry.source';
  */
 export type SENTRY_SOURCE_TYPE = string;
 
-// Path: model/attributes/sentry/sentry__span__name.json
-
-/**
- * The name of a span `sentry.span.name`
- *
- * Attribute Value Type: `string` {@link SENTRY_SPAN_NAME_TYPE}
- *
- * Contains PII: maybe
- *
- * Attribute defined in OTEL: No
- *
- * Aliases: {@link SENTRY_SEGMENT_NAME} `sentry.segment.name`, {@link SENTRY_TRANSACTION} `sentry.transaction`, {@link TRANSACTION} `transaction`
- *
- * @example "GET /user"
- */
-export const SENTRY_SPAN_NAME = 'sentry.span.name';
-
-/**
- * Type for {@link SENTRY_SPAN_NAME} sentry.span.name
- */
-export type SENTRY_SPAN_NAME_TYPE = string;
-
 // Path: model/attributes/sentry/sentry__span__source.json
 
 /**
@@ -10108,6 +11442,7 @@ export type SENTRY_SPAN_NAME_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "route"
  */
@@ -10128,6 +11463,7 @@ export type SENTRY_SPAN_SOURCE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 200
  */
@@ -10148,6 +11484,7 @@ export type SENTRY_STATUS_CODE_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "foobar"
  */
@@ -10168,6 +11505,7 @@ export type SENTRY_STATUS_MESSAGE_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 0
  */
@@ -10188,6 +11526,7 @@ export type SENTRY_TIMESTAMP_SEQUENCE_TYPE = number;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @deprecated
  * @example "b0e6f15b45c36b12"
@@ -10209,8 +11548,9 @@ export type SENTRY_TRACE_PARENT_SPAN_ID_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
- * Aliases: {@link SENTRY_SPAN_NAME} `sentry.span.name`, {@link SENTRY_SEGMENT_NAME} `sentry.segment.name`, {@link TRANSACTION} `transaction`
+ * Aliases: {@link SENTRY_SEGMENT_NAME} `sentry.segment.name`, {@link TRANSACTION} `transaction`
  *
  * @deprecated Use {@link SENTRY_SEGMENT_NAME} (sentry.segment.name) instead - This attribute is being deprecated in favor of sentry.segment.name
  * @example "GET /"
@@ -10222,6 +11562,190 @@ export const SENTRY_TRANSACTION = 'sentry.transaction';
  */
 export type SENTRY_TRANSACTION_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__user__email.json
+
+/**
+ * User email address. `sentry.user.email`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_USER_EMAIL_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link USER_EMAIL} `user.email`
+ *
+ * @deprecated Use {@link USER_EMAIL} (user.email) instead
+ */
+export const SENTRY_USER_EMAIL = 'sentry.user.email';
+
+/**
+ * Type for {@link SENTRY_USER_EMAIL} sentry.user.email
+ */
+export type SENTRY_USER_EMAIL_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__user__geo__city.json
+
+/**
+ * Human readable city name. `sentry.user.geo.city`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_USER_GEO_CITY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link USER_GEO_CITY} `user.geo.city`
+ *
+ * @deprecated Use {@link USER_GEO_CITY} (user.geo.city) instead
+ */
+export const SENTRY_USER_GEO_CITY = 'sentry.user.geo.city';
+
+/**
+ * Type for {@link SENTRY_USER_GEO_CITY} sentry.user.geo.city
+ */
+export type SENTRY_USER_GEO_CITY_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__user__geo__country_code.json
+
+/**
+ * Two-letter country code (ISO 3166-1 alpha-2). `sentry.user.geo.country_code`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_USER_GEO_COUNTRY_CODE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link USER_GEO_COUNTRY_CODE} `user.geo.country_code`
+ *
+ * @deprecated Use {@link USER_GEO_COUNTRY_CODE} (user.geo.country_code) instead
+ */
+export const SENTRY_USER_GEO_COUNTRY_CODE = 'sentry.user.geo.country_code';
+
+/**
+ * Type for {@link SENTRY_USER_GEO_COUNTRY_CODE} sentry.user.geo.country_code
+ */
+export type SENTRY_USER_GEO_COUNTRY_CODE_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__user__geo__region.json
+
+/**
+ * Human readable region name or code. `sentry.user.geo.region`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_USER_GEO_REGION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link USER_GEO_REGION} `user.geo.region`
+ *
+ * @deprecated Use {@link USER_GEO_REGION} (user.geo.region) instead
+ */
+export const SENTRY_USER_GEO_REGION = 'sentry.user.geo.region';
+
+/**
+ * Type for {@link SENTRY_USER_GEO_REGION} sentry.user.geo.region
+ */
+export type SENTRY_USER_GEO_REGION_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__user__geo__subdivision.json
+
+/**
+ * Human readable subdivision name. `sentry.user.geo.subdivision`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_USER_GEO_SUBDIVISION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link USER_GEO_SUBDIVISION} `user.geo.subdivision`
+ *
+ * @deprecated Use {@link USER_GEO_SUBDIVISION} (user.geo.subdivision) instead
+ */
+export const SENTRY_USER_GEO_SUBDIVISION = 'sentry.user.geo.subdivision';
+
+/**
+ * Type for {@link SENTRY_USER_GEO_SUBDIVISION} sentry.user.geo.subdivision
+ */
+export type SENTRY_USER_GEO_SUBDIVISION_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__user__id.json
+
+/**
+ * Unique identifier of the user. `sentry.user.id`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_USER_ID_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link USER_ID} `user.id`
+ *
+ * @deprecated Use {@link USER_ID} (user.id) instead
+ */
+export const SENTRY_USER_ID = 'sentry.user.id';
+
+/**
+ * Type for {@link SENTRY_USER_ID} sentry.user.id
+ */
+export type SENTRY_USER_ID_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__user__ip.json
+
+/**
+ * The IP address of the user. `sentry.user.ip`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_USER_IP_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link USER_IP_ADDRESS} `user.ip_address`
+ *
+ * @deprecated Use {@link USER_IP_ADDRESS} (user.ip_address) instead
+ */
+export const SENTRY_USER_IP = 'sentry.user.ip';
+
+/**
+ * Type for {@link SENTRY_USER_IP} sentry.user.ip
+ */
+export type SENTRY_USER_IP_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__user__username.json
+
+/**
+ * Short name or login/username of the user. `sentry.user.username`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_USER_USERNAME_TYPE}
+ *
+ * Contains PII: true
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link USER_NAME} `user.name`
+ *
+ * @deprecated Use {@link USER_NAME} (user.name) instead
+ */
+export const SENTRY_USER_USERNAME = 'sentry.user.username';
+
+/**
+ * Type for {@link SENTRY_USER_USERNAME} sentry.user.username
+ */
+export type SENTRY_USER_USERNAME_TYPE = string;
+
 // Path: model/attributes/server/server__address.json
 
 /**
@@ -10232,6 +11756,7 @@ export type SENTRY_TRANSACTION_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`
  *
@@ -10254,6 +11779,7 @@ export type SERVER_ADDRESS_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link NET_HOST_PORT} `net.host.port`
  *
@@ -10276,6 +11802,7 @@ export type SERVER_PORT_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "omegastar"
  */
@@ -10296,6 +11823,7 @@ export type SERVICE_NAME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link SENTRY_RELEASE} `sentry.release`
  *
@@ -10308,6 +11836,65 @@ export const SERVICE_VERSION = 'service.version';
  */
 export type SERVICE_VERSION_TYPE = string;
 
+// Path: model/attributes/stall_percentage.json
+
+/**
+ * The fraction of time the app was stalled. Only applies to React Native. This is computed by Relay. `stall_percentage`
+ *
+ * Attribute Value Type: `number` {@link STALL_PERCENTAGE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ */
+export const STALL_PERCENTAGE = 'stall_percentage';
+
+/**
+ * Type for {@link STALL_PERCENTAGE} stall_percentage
+ */
+export type STALL_PERCENTAGE_TYPE = number;
+
+// Path: model/attributes/stall_total_time.json
+
+/**
+ * The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay. `stall_total_time`
+ *
+ * Attribute Value Type: `number` {@link STALL_TOTAL_TIME_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ */
+export const STALL_TOTAL_TIME = 'stall_total_time';
+
+/**
+ * Type for {@link STALL_TOTAL_TIME} stall_total_time
+ */
+export type STALL_TOTAL_TIME_TYPE = number;
+
+// Path: model/attributes/state/state__type.json
+
+/**
+ * The type of state management library `state.type`
+ *
+ * Attribute Value Type: `string` {@link STATE_TYPE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "redux"
+ */
+export const STATE_TYPE = 'state.type';
+
+/**
+ * Type for {@link STATE_TYPE} state.type
+ */
+export type STATE_TYPE_TYPE = string;
+
 // Path: model/attributes/thread/thread__id.json
 
 /**
@@ -10315,9 +11902,10 @@ export type SERVICE_VERSION_TYPE = string;
  *
  * Attribute Value Type: `number` {@link THREAD_ID_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example 56
  */
@@ -10338,6 +11926,7 @@ export type THREAD_ID_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "main"
  */
@@ -10358,6 +11947,7 @@ export type THREAD_NAME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "MyTag"
  */
@@ -10378,6 +11968,7 @@ export type TIMBER_TAG_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link APP_VITALS_TTFD_VALUE} `app.vitals.ttfd.value`
  *
@@ -10401,6 +11992,7 @@ export type TIME_TO_FULL_DISPLAY_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link APP_VITALS_TTID_VALUE} `app.vitals.ttid.value`
  *
@@ -10424,8 +12016,9 @@ export type TIME_TO_INITIAL_DISPLAY_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
- * Aliases: {@link SENTRY_SPAN_NAME} `sentry.span.name`, {@link SENTRY_SEGMENT_NAME} `sentry.segment.name`, {@link SENTRY_TRANSACTION} `sentry.transaction`
+ * Aliases: {@link SENTRY_SEGMENT_NAME} `sentry.segment.name`, {@link SENTRY_TRANSACTION} `sentry.transaction`
  *
  * @deprecated Use {@link SENTRY_SEGMENT_NAME} (sentry.segment.name) instead
  * @example "GET /"
@@ -10447,6 +12040,7 @@ export type TRANSACTION_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link HTTP_REQUEST_METHOD} `http.request.method`, {@link HTTP_METHOD} `http.method`, {@link _HTTP_REQUEST_METHOD} `http.request_method`, {@link METHOD} `method`
  *
@@ -10460,6 +12054,48 @@ export const TRANSACTION_METHOD = 'transaction.method';
  */
 export type TRANSACTION_METHOD_TYPE = string;
 
+// Path: model/attributes/trpc/trpc__procedure_path.json
+
+/**
+ * The path of the tRPC procedure being called `trpc.procedure_path`
+ *
+ * Attribute Value Type: `string` {@link TRPC_PROCEDURE_PATH_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "user.getById"
+ */
+export const TRPC_PROCEDURE_PATH = 'trpc.procedure_path';
+
+/**
+ * Type for {@link TRPC_PROCEDURE_PATH} trpc.procedure_path
+ */
+export type TRPC_PROCEDURE_PATH_TYPE = string;
+
+// Path: model/attributes/trpc/trpc__procedure_type.json
+
+/**
+ * The type of the tRPC procedure `trpc.procedure_type`
+ *
+ * Attribute Value Type: `string` {@link TRPC_PROCEDURE_TYPE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "query"
+ */
+export const TRPC_PROCEDURE_TYPE = 'trpc.procedure_type';
+
+/**
+ * Type for {@link TRPC_PROCEDURE_TYPE} trpc.procedure_type
+ */
+export type TRPC_PROCEDURE_TYPE_TYPE = string;
+
 // Path: model/attributes/ttfb.json
 
 /**
@@ -10470,6 +12106,7 @@ export type TRANSACTION_METHOD_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link BROWSER_WEB_VITAL_TTFB_VALUE} `browser.web_vital.ttfb.value`
  *
@@ -10493,6 +12130,7 @@ export type TTFB_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link BROWSER_WEB_VITAL_TTFB_REQUEST_TIME} `browser.web_vital.ttfb.request_time`
  *
@@ -10516,6 +12154,7 @@ export type TTFB_REQUESTTIME_TYPE = number;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "fetch"
  */
@@ -10536,6 +12175,7 @@ export type TYPE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "HomeButton"
  */
@@ -10556,6 +12196,7 @@ export type UI_COMPONENT_NAME_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example true
  */
@@ -10576,6 +12217,7 @@ export type UI_CONTRIBUTES_TO_TTFD_TYPE = boolean;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example true
  */
@@ -10596,6 +12238,7 @@ export type UI_CONTRIBUTES_TO_TTID_TYPE = boolean;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 256
  */
@@ -10616,6 +12259,7 @@ export type UI_ELEMENT_HEIGHT_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "btn-login"
  */
@@ -10636,6 +12280,7 @@ export type UI_ELEMENT_ID_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "heroImage"
  */
@@ -10656,6 +12301,7 @@ export type UI_ELEMENT_IDENTIFIER_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 998.2234
  */
@@ -10676,6 +12322,7 @@ export type UI_ELEMENT_LOAD_TIME_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "image-paint"
  */
@@ -10696,6 +12343,7 @@ export type UI_ELEMENT_PAINT_TYPE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 1023.1124
  */
@@ -10716,6 +12364,7 @@ export type UI_ELEMENT_RENDER_TIME_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "img"
  */
@@ -10736,6 +12385,7 @@ export type UI_ELEMENT_TYPE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "https://assets.myapp.com/hero.png"
  */
@@ -10756,6 +12406,7 @@ export type UI_ELEMENT_URL_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 512
  */
@@ -10773,9 +12424,10 @@ export type UI_ELEMENT_WIDTH_TYPE = number;
  *
  * Attribute Value Type: `string` {@link URL_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`
  *
@@ -10799,6 +12451,7 @@ export type URL_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "example.com"
  */
@@ -10819,6 +12472,7 @@ export type URL_DOMAIN_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "details"
  */
@@ -10836,9 +12490,10 @@ export type URL_FRAGMENT_TYPE = string;
  *
  * Attribute Value Type: `string` {@link URL_FULL_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link HTTP_URL} `http.url`, {@link URL} `url`
  *
@@ -10861,6 +12516,7 @@ export type URL_FULL_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "/foo"
  */
@@ -10881,6 +12537,7 @@ export type URL_PATH_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * Has Dynamic Suffix: true
  *
@@ -10905,6 +12562,7 @@ export type URL_PATH_PARAMETER_KEY_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example 1337
  */
@@ -10922,9 +12580,10 @@ export type URL_PORT_TYPE = number;
  *
  * Attribute Value Type: `string` {@link URL_QUERY_TYPE}
  *
- * Contains PII: maybe - Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.
+ * Contains PII: true - Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "foo=bar&bar=baz"
  */
@@ -10945,6 +12604,7 @@ export type URL_QUERY_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link HTTP_SCHEME} `http.scheme`
  *
@@ -10967,6 +12627,7 @@ export type URL_SCHEME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link HTTP_ROUTE} `http.route`
  *
@@ -10989,6 +12650,7 @@ export type URL_TEMPLATE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * Aliases: {@link HTTP_USER_AGENT} `http.user_agent`
  *
@@ -11011,6 +12673,9 @@ export type USER_AGENT_ORIGINAL_TYPE = string;
  * Contains PII: true
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link SENTRY_USER_EMAIL} `sentry.user.email`
  *
  * @example "test@example.com"
  */
@@ -11031,6 +12696,7 @@ export type USER_EMAIL_TYPE = string;
  * Contains PII: true
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "John Smith"
  */
@@ -11051,6 +12717,9 @@ export type USER_FULL_NAME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link SENTRY_USER_GEO_CITY} `sentry.user.geo.city`
  *
  * @example "Toronto"
  */
@@ -11071,6 +12740,9 @@ export type USER_GEO_CITY_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link SENTRY_USER_GEO_COUNTRY_CODE} `sentry.user.geo.country_code`
  *
  * @example "CA"
  */
@@ -11091,6 +12763,9 @@ export type USER_GEO_COUNTRY_CODE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link SENTRY_USER_GEO_REGION} `sentry.user.geo.region`
  *
  * @example "Canada"
  */
@@ -11111,6 +12786,9 @@ export type USER_GEO_REGION_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link SENTRY_USER_GEO_SUBDIVISION} `sentry.user.geo.subdivision`
  *
  * @example "Ontario"
  */
@@ -11131,6 +12809,7 @@ export type USER_GEO_SUBDIVISION_TYPE = string;
  * Contains PII: true
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "8ae4c2993e0f4f3b8b2d1b1f3b5e8f4d"
  */
@@ -11151,6 +12830,9 @@ export type USER_HASH_TYPE = string;
  * Contains PII: true
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link SENTRY_USER_ID} `sentry.user.id`
  *
  * @example "S-1-5-21-202424912787-2692429404-2351956786-1000"
  */
@@ -11171,6 +12853,9 @@ export type USER_ID_TYPE = string;
  * Contains PII: true
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link SENTRY_USER_IP} `sentry.user.ip`
  *
  * @example "192.168.1.1"
  */
@@ -11191,6 +12876,9 @@ export type USER_IP_ADDRESS_TYPE = string;
  * Contains PII: true
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link SENTRY_USER_USERNAME} `sentry.user.username`
  *
  * @example "j.smith"
  */
@@ -11211,6 +12899,7 @@ export type USER_NAME_TYPE = string;
  * Contains PII: true
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example ["admin","editor"]
  */
@@ -11231,6 +12920,7 @@ export type USER_ROLES_TYPE = Array<string>;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "main"
  */
@@ -11251,6 +12941,7 @@ export type VERCEL_BRANCH_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "bld_cotnkcr76"
  */
@@ -11271,6 +12962,7 @@ export type VERCEL_BUILD_ID_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "dpl_233NRGRjVZX1caZrXWtz5g1TAksD"
  */
@@ -11291,6 +12983,7 @@ export type VERCEL_DEPLOYMENT_ID_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "https://vitals.vercel-insights.com/v1"
  */
@@ -11311,6 +13004,7 @@ export type VERCEL_DESTINATION_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "edge-function"
  */
@@ -11331,6 +13025,7 @@ export type VERCEL_EDGE_TYPE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "api/index.js"
  */
@@ -11351,6 +13046,7 @@ export type VERCEL_ENTRYPOINT_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "sfo1"
  */
@@ -11371,6 +13067,7 @@ export type VERCEL_EXECUTION_REGION_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "1573817187330377061717300000"
  */
@@ -11391,6 +13088,7 @@ export type VERCEL_ID_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "769,47-53-5-10-49161-49162-49171-49172-50-56-19-4,0-10-11,23-24-25,0"
  */
@@ -11411,6 +13109,7 @@ export type VERCEL_JA3_DIGEST_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "t13d1516h2_8daaf6152771_02713d6af862"
  */
@@ -11431,6 +13130,7 @@ export type VERCEL_JA4_DIGEST_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "stdout"
  */
@@ -11451,6 +13151,7 @@ export type VERCEL_LOG_TYPE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "/dynamic/[route].json"
  */
@@ -11471,6 +13172,7 @@ export type VERCEL_PATH_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "gdufoJxB6b9b1fEqr1jUtFkyavUU"
  */
@@ -11491,6 +13193,7 @@ export type VERCEL_PROJECT_ID_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "my-app"
  */
@@ -11511,6 +13214,7 @@ export type VERCEL_PROJECT_NAME_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "pdx1::v8g4b-1744143786684-93dafbc0f70d"
  */
@@ -11531,6 +13235,7 @@ export type VERCEL_PROXY_CACHE_ID_TYPE = string;
  * Contains PII: true
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "120.75.16.101"
  */
@@ -11551,6 +13256,7 @@ export type VERCEL_PROXY_CLIENT_IP_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "test.vercel.app"
  */
@@ -11571,6 +13277,7 @@ export type VERCEL_PROXY_HOST_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "sfo1"
  */
@@ -11591,6 +13298,7 @@ export type VERCEL_PROXY_LAMBDA_REGION_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "GET"
  */
@@ -11611,6 +13319,7 @@ export type VERCEL_PROXY_METHOD_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "/dynamic/some-value.json?route=some-value"
  */
@@ -11631,6 +13340,7 @@ export type VERCEL_PROXY_PATH_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "func"
  */
@@ -11651,6 +13361,7 @@ export type VERCEL_PROXY_PATH_TYPE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "api"
  */
@@ -11671,6 +13382,7 @@ export type VERCEL_PROXY_PATH_TYPE_VARIANT_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "*.vercel.app"
  */
@@ -11691,6 +13403,7 @@ export type VERCEL_PROXY_REFERER_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "sfo1"
  */
@@ -11711,6 +13424,7 @@ export type VERCEL_PROXY_REGION_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 1024
  */
@@ -11731,6 +13445,7 @@ export type VERCEL_PROXY_RESPONSE_BYTE_SIZE_TYPE = number;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "https"
  */
@@ -11751,6 +13466,7 @@ export type VERCEL_PROXY_SCHEME_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 200
  */
@@ -11771,6 +13487,7 @@ export type VERCEL_PROXY_STATUS_CODE_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 1573817250172
  */
@@ -11791,6 +13508,7 @@ export type VERCEL_PROXY_TIMESTAMP_TYPE = number;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example ["Mozilla/5.0..."]
  */
@@ -11811,6 +13529,7 @@ export type VERCEL_PROXY_USER_AGENT_TYPE = Array<string>;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "REVALIDATED"
  */
@@ -11831,6 +13550,7 @@ export type VERCEL_PROXY_VERCEL_CACHE_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "sfo1::abc123"
  */
@@ -11851,6 +13571,7 @@ export type VERCEL_PROXY_VERCEL_ID_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "deny"
  */
@@ -11871,6 +13592,7 @@ export type VERCEL_PROXY_WAF_ACTION_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "rule_gAHz8jtSB1Gy"
  */
@@ -11891,6 +13613,7 @@ export type VERCEL_PROXY_WAF_RULE_ID_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "643af4e3-975a-4cc7-9e7a-1eda11539d90"
  */
@@ -11911,6 +13634,7 @@ export type VERCEL_REQUEST_ID_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "build"
  */
@@ -11931,6 +13655,7 @@ export type VERCEL_SOURCE_TYPE = string;
  * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 200
  */
@@ -11953,6 +13678,8 @@ export type AttributeType =
   | 'any';
 
 export type IsPii = 'true' | 'false' | 'maybe';
+
+export type AttributeVisibility = 'public' | 'internal';
 
 export interface PiiInfo {
   /** Whether the attribute contains PII */
@@ -11986,6 +13713,8 @@ export interface AttributeMetadata {
   pii: PiiInfo;
   /** Whether the attribute is defined in OpenTelemetry Semantic Conventions */
   isInOtel: boolean;
+  /** Whether the attribute is public or internal to Sentry */
+  visibility: AttributeVisibility;
   /** If an attribute has a dynamic suffix */
   hasDynamicSuffix?: boolean;
   /** An example value of the attribute */
@@ -11998,6 +13727,8 @@ export interface AttributeMetadata {
   sdks?: string[];
   /** Changelog entries tracking how this attribute has changed across versions */
   changelog?: ChangelogEntry[];
+  /** A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances */
+  additionalContext?: string[];
 }
 
 export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
@@ -12034,6 +13765,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [AI_TOTAL_COST]: 'double',
   [AI_TOTAL_TOKENS_USED]: 'integer',
   [AI_WARNINGS]: 'string[]',
+  [ANGULAR_VERSION]: 'string',
   [APP_APP_BUILD]: 'string',
   [APP_APP_IDENTIFIER]: 'string',
   [APP_APP_NAME]: 'string',
@@ -12059,6 +13791,15 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [APP_VITALS_START_WARM_VALUE]: 'double',
   [APP_VITALS_TTFD_VALUE]: 'double',
   [APP_VITALS_TTID_VALUE]: 'double',
+  [AWS_CLOUDWATCH_LOGS_LOG_GROUP]: 'string',
+  [AWS_CLOUDWATCH_LOGS_LOG_STREAM]: 'string',
+  [AWS_CLOUDWATCH_LOGS_URL]: 'string',
+  [AWS_LAMBDA_AWS_REQUEST_ID]: 'string',
+  [AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS]: 'double',
+  [AWS_LAMBDA_FUNCTION_NAME]: 'string',
+  [AWS_LAMBDA_FUNCTION_VERSION]: 'string',
+  [AWS_LAMBDA_INVOKED_FUNCTION_ARN]: 'string',
+  [AWS_LAMBDA_REMAINING_TIME_IN_MILLIS]: 'double',
   [BLOCKED_MAIN_THREAD]: 'boolean',
   [BROWSER_NAME]: 'string',
   [BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START]: 'double',
@@ -12094,8 +13835,19 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [CLIENT_ADDRESS]: 'string',
   [CLIENT_PORT]: 'integer',
   [CLOUDFLARE_D1_DURATION]: 'integer',
+  [CLOUDFLARE_D1_QUERY_TYPE]: 'string',
   [CLOUDFLARE_D1_ROWS_READ]: 'integer',
   [CLOUDFLARE_D1_ROWS_WRITTEN]: 'integer',
+  [CLOUDFLARE_WORKFLOW_ATTEMPT]: 'integer',
+  [CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF]: 'string',
+  [CLOUDFLARE_WORKFLOW_RETRIES_DELAY]: 'string',
+  [CLOUDFLARE_WORKFLOW_RETRIES_LIMIT]: 'integer',
+  [CLOUDFLARE_WORKFLOW_TIMEOUT]: 'string',
+  [CLOUD_ACCOUNT_ID]: 'string',
+  [CLOUD_AVAILABILITY_ZONE]: 'string',
+  [CLOUD_PLATFORM]: 'string',
+  [CLOUD_PROVIDER]: 'string',
+  [CLOUD_REGION]: 'string',
   [CLS]: 'double',
   [CLS_SOURCE_KEY]: 'string',
   [CODE_FILEPATH]: 'string',
@@ -12126,6 +13878,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [DB_REDIS_PARAMETERS]: 'string[]',
   [DB_SQL_BINDINGS]: 'string[]',
   [DB_STATEMENT]: 'string',
+  [DB_STORED_PROCEDURE_NAME]: 'string',
   [DB_SYSTEM]: 'string',
   [DB_SYSTEM_NAME]: 'string',
   [DB_USER]: 'string',
@@ -12179,6 +13932,10 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [EXCEPTION_TYPE]: 'string',
   [FAAS_COLDSTART]: 'boolean',
   [FAAS_CRON]: 'string',
+  [FAAS_DURATION_IN_MS]: 'integer',
+  [FAAS_ENTRY_POINT]: 'string',
+  [FAAS_IDENTITY]: 'string',
+  [FAAS_NAME]: 'string',
   [FAAS_TIME]: 'string',
   [FAAS_TRIGGER]: 'string',
   [FCP]: 'double',
@@ -12186,9 +13943,21 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [FP]: 'double',
   [FRAMES_DELAY]: 'integer',
   [FRAMES_FROZEN]: 'integer',
+  [FRAMES_FROZEN_RATE]: 'double',
   [FRAMES_SLOW]: 'integer',
+  [FRAMES_SLOW_RATE]: 'double',
   [FRAMES_TOTAL]: 'integer',
   [FS_ERROR]: 'string',
+  [GCP_FUNCTION_CONTEXT_EVENT_ID]: 'string',
+  [GCP_FUNCTION_CONTEXT_EVENT_TYPE]: 'string',
+  [GCP_FUNCTION_CONTEXT_ID]: 'string',
+  [GCP_FUNCTION_CONTEXT_RESOURCE]: 'string',
+  [GCP_FUNCTION_CONTEXT_SOURCE]: 'string',
+  [GCP_FUNCTION_CONTEXT_SPECVERSION]: 'string',
+  [GCP_FUNCTION_CONTEXT_TIME]: 'string',
+  [GCP_FUNCTION_CONTEXT_TIMESTAMP]: 'string',
+  [GCP_FUNCTION_CONTEXT_TYPE]: 'string',
+  [GCP_PROJECT_ID]: 'string',
   [GEN_AI_AGENT_NAME]: 'string',
   [GEN_AI_CONTEXT_UTILIZATION]: 'double',
   [GEN_AI_CONTEXT_WINDOW_SIZE]: 'integer',
@@ -12243,6 +14012,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [GEN_AI_USAGE_OUTPUT_TOKENS_REASONING]: 'integer',
   [GEN_AI_USAGE_PROMPT_TOKENS]: 'integer',
   [GEN_AI_USAGE_TOTAL_TOKENS]: 'integer',
+  [GRAPHQL_DOCUMENT]: 'string',
   [GRAPHQL_OPERATION_NAME]: 'string',
   [GRAPHQL_OPERATION_TYPE]: 'string',
   [HARDWARECONCURRENCY]: 'string',
@@ -12349,6 +14119,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [MESSAGING_MESSAGE_ID]: 'string',
   [MESSAGING_MESSAGE_RECEIVE_LATENCY]: 'integer',
   [MESSAGING_MESSAGE_RETRY_COUNT]: 'integer',
+  [MESSAGING_OPERATION_NAME]: 'string',
   [MESSAGING_OPERATION_TYPE]: 'string',
   [MESSAGING_SYSTEM]: 'string',
   [METHOD]: 'string',
@@ -12412,6 +14183,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [PROCESS_RUNTIME_NAME]: 'string',
   [PROCESS_RUNTIME_VERSION]: 'string',
   [QUERY_KEY]: 'string',
+  [REACT_VERSION]: 'string',
   [RELEASE]: 'string',
   [REMIX_ACTION_FORM_DATA_KEY]: 'string',
   [REPLAY_ID]: 'string',
@@ -12437,6 +14209,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_DIST]: 'string',
   [SENTRY_DOMAIN]: 'string',
   [SENTRY_DSC_ENVIRONMENT]: 'string',
+  [SENTRY_DSC_PROJECT_ID]: 'string',
   [SENTRY_DSC_PUBLIC_KEY]: 'string',
   [SENTRY_DSC_RELEASE]: 'string',
   [SENTRY_DSC_SAMPLED]: 'boolean',
@@ -12479,17 +14252,27 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_SEGMENT_NAME]: 'string',
   [SENTRY_SERVER_SAMPLE_RATE]: 'double',
   [SENTRY_SOURCE]: 'string',
-  [SENTRY_SPAN_NAME]: 'string',
   [SENTRY_SPAN_SOURCE]: 'string',
   [SENTRY_STATUS_CODE]: 'integer',
   [SENTRY_STATUS_MESSAGE]: 'string',
   [SENTRY_TIMESTAMP_SEQUENCE]: 'integer',
   [SENTRY_TRACE_PARENT_SPAN_ID]: 'string',
   [SENTRY_TRANSACTION]: 'string',
+  [SENTRY_USER_EMAIL]: 'string',
+  [SENTRY_USER_GEO_CITY]: 'string',
+  [SENTRY_USER_GEO_COUNTRY_CODE]: 'string',
+  [SENTRY_USER_GEO_REGION]: 'string',
+  [SENTRY_USER_GEO_SUBDIVISION]: 'string',
+  [SENTRY_USER_ID]: 'string',
+  [SENTRY_USER_IP]: 'string',
+  [SENTRY_USER_USERNAME]: 'string',
   [SERVER_ADDRESS]: 'string',
   [SERVER_PORT]: 'integer',
   [SERVICE_NAME]: 'string',
   [SERVICE_VERSION]: 'string',
+  [STALL_PERCENTAGE]: 'double',
+  [STALL_TOTAL_TIME]: 'double',
+  [STATE_TYPE]: 'string',
   [THREAD_ID]: 'integer',
   [THREAD_NAME]: 'string',
   [TIMBER_TAG]: 'string',
@@ -12497,6 +14280,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [TIME_TO_INITIAL_DISPLAY]: 'double',
   [TRANSACTION]: 'string',
   [TRANSACTION_METHOD]: 'string',
+  [TRPC_PROCEDURE_PATH]: 'string',
+  [TRPC_PROCEDURE_TYPE]: 'string',
   [TTFB]: 'double',
   [TTFB_REQUESTTIME]: 'double',
   [TYPE]: 'string',
@@ -12606,6 +14391,7 @@ export type AttributeName =
   | typeof AI_TOTAL_COST
   | typeof AI_TOTAL_TOKENS_USED
   | typeof AI_WARNINGS
+  | typeof ANGULAR_VERSION
   | typeof APP_APP_BUILD
   | typeof APP_APP_IDENTIFIER
   | typeof APP_APP_NAME
@@ -12631,6 +14417,15 @@ export type AttributeName =
   | typeof APP_VITALS_START_WARM_VALUE
   | typeof APP_VITALS_TTFD_VALUE
   | typeof APP_VITALS_TTID_VALUE
+  | typeof AWS_CLOUDWATCH_LOGS_LOG_GROUP
+  | typeof AWS_CLOUDWATCH_LOGS_LOG_STREAM
+  | typeof AWS_CLOUDWATCH_LOGS_URL
+  | typeof AWS_LAMBDA_AWS_REQUEST_ID
+  | typeof AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS
+  | typeof AWS_LAMBDA_FUNCTION_NAME
+  | typeof AWS_LAMBDA_FUNCTION_VERSION
+  | typeof AWS_LAMBDA_INVOKED_FUNCTION_ARN
+  | typeof AWS_LAMBDA_REMAINING_TIME_IN_MILLIS
   | typeof BLOCKED_MAIN_THREAD
   | typeof BROWSER_NAME
   | typeof BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START
@@ -12666,8 +14461,19 @@ export type AttributeName =
   | typeof CLIENT_ADDRESS
   | typeof CLIENT_PORT
   | typeof CLOUDFLARE_D1_DURATION
+  | typeof CLOUDFLARE_D1_QUERY_TYPE
   | typeof CLOUDFLARE_D1_ROWS_READ
   | typeof CLOUDFLARE_D1_ROWS_WRITTEN
+  | typeof CLOUDFLARE_WORKFLOW_ATTEMPT
+  | typeof CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF
+  | typeof CLOUDFLARE_WORKFLOW_RETRIES_DELAY
+  | typeof CLOUDFLARE_WORKFLOW_RETRIES_LIMIT
+  | typeof CLOUDFLARE_WORKFLOW_TIMEOUT
+  | typeof CLOUD_ACCOUNT_ID
+  | typeof CLOUD_AVAILABILITY_ZONE
+  | typeof CLOUD_PLATFORM
+  | typeof CLOUD_PROVIDER
+  | typeof CLOUD_REGION
   | typeof CLS
   | typeof CLS_SOURCE_KEY
   | typeof CODE_FILEPATH
@@ -12698,6 +14504,7 @@ export type AttributeName =
   | typeof DB_REDIS_PARAMETERS
   | typeof DB_SQL_BINDINGS
   | typeof DB_STATEMENT
+  | typeof DB_STORED_PROCEDURE_NAME
   | typeof DB_SYSTEM
   | typeof DB_SYSTEM_NAME
   | typeof DB_USER
@@ -12751,6 +14558,10 @@ export type AttributeName =
   | typeof EXCEPTION_TYPE
   | typeof FAAS_COLDSTART
   | typeof FAAS_CRON
+  | typeof FAAS_DURATION_IN_MS
+  | typeof FAAS_ENTRY_POINT
+  | typeof FAAS_IDENTITY
+  | typeof FAAS_NAME
   | typeof FAAS_TIME
   | typeof FAAS_TRIGGER
   | typeof FCP
@@ -12758,9 +14569,21 @@ export type AttributeName =
   | typeof FP
   | typeof FRAMES_DELAY
   | typeof FRAMES_FROZEN
+  | typeof FRAMES_FROZEN_RATE
   | typeof FRAMES_SLOW
+  | typeof FRAMES_SLOW_RATE
   | typeof FRAMES_TOTAL
   | typeof FS_ERROR
+  | typeof GCP_FUNCTION_CONTEXT_EVENT_ID
+  | typeof GCP_FUNCTION_CONTEXT_EVENT_TYPE
+  | typeof GCP_FUNCTION_CONTEXT_ID
+  | typeof GCP_FUNCTION_CONTEXT_RESOURCE
+  | typeof GCP_FUNCTION_CONTEXT_SOURCE
+  | typeof GCP_FUNCTION_CONTEXT_SPECVERSION
+  | typeof GCP_FUNCTION_CONTEXT_TIME
+  | typeof GCP_FUNCTION_CONTEXT_TIMESTAMP
+  | typeof GCP_FUNCTION_CONTEXT_TYPE
+  | typeof GCP_PROJECT_ID
   | typeof GEN_AI_AGENT_NAME
   | typeof GEN_AI_CONTEXT_UTILIZATION
   | typeof GEN_AI_CONTEXT_WINDOW_SIZE
@@ -12815,6 +14638,7 @@ export type AttributeName =
   | typeof GEN_AI_USAGE_OUTPUT_TOKENS_REASONING
   | typeof GEN_AI_USAGE_PROMPT_TOKENS
   | typeof GEN_AI_USAGE_TOTAL_TOKENS
+  | typeof GRAPHQL_DOCUMENT
   | typeof GRAPHQL_OPERATION_NAME
   | typeof GRAPHQL_OPERATION_TYPE
   | typeof HARDWARECONCURRENCY
@@ -12921,6 +14745,7 @@ export type AttributeName =
   | typeof MESSAGING_MESSAGE_ID
   | typeof MESSAGING_MESSAGE_RECEIVE_LATENCY
   | typeof MESSAGING_MESSAGE_RETRY_COUNT
+  | typeof MESSAGING_OPERATION_NAME
   | typeof MESSAGING_OPERATION_TYPE
   | typeof MESSAGING_SYSTEM
   | typeof METHOD
@@ -12984,6 +14809,7 @@ export type AttributeName =
   | typeof PROCESS_RUNTIME_NAME
   | typeof PROCESS_RUNTIME_VERSION
   | typeof QUERY_KEY
+  | typeof REACT_VERSION
   | typeof RELEASE
   | typeof REMIX_ACTION_FORM_DATA_KEY
   | typeof REPLAY_ID
@@ -13009,6 +14835,7 @@ export type AttributeName =
   | typeof SENTRY_DIST
   | typeof SENTRY_DOMAIN
   | typeof SENTRY_DSC_ENVIRONMENT
+  | typeof SENTRY_DSC_PROJECT_ID
   | typeof SENTRY_DSC_PUBLIC_KEY
   | typeof SENTRY_DSC_RELEASE
   | typeof SENTRY_DSC_SAMPLED
@@ -13051,17 +14878,27 @@ export type AttributeName =
   | typeof SENTRY_SEGMENT_NAME
   | typeof SENTRY_SERVER_SAMPLE_RATE
   | typeof SENTRY_SOURCE
-  | typeof SENTRY_SPAN_NAME
   | typeof SENTRY_SPAN_SOURCE
   | typeof SENTRY_STATUS_CODE
   | typeof SENTRY_STATUS_MESSAGE
   | typeof SENTRY_TIMESTAMP_SEQUENCE
   | typeof SENTRY_TRACE_PARENT_SPAN_ID
   | typeof SENTRY_TRANSACTION
+  | typeof SENTRY_USER_EMAIL
+  | typeof SENTRY_USER_GEO_CITY
+  | typeof SENTRY_USER_GEO_COUNTRY_CODE
+  | typeof SENTRY_USER_GEO_REGION
+  | typeof SENTRY_USER_GEO_SUBDIVISION
+  | typeof SENTRY_USER_ID
+  | typeof SENTRY_USER_IP
+  | typeof SENTRY_USER_USERNAME
   | typeof SERVER_ADDRESS
   | typeof SERVER_PORT
   | typeof SERVICE_NAME
   | typeof SERVICE_VERSION
+  | typeof STALL_PERCENTAGE
+  | typeof STALL_TOTAL_TIME
+  | typeof STATE_TYPE
   | typeof THREAD_ID
   | typeof THREAD_NAME
   | typeof TIMBER_TAG
@@ -13069,6 +14906,8 @@ export type AttributeName =
   | typeof TIME_TO_INITIAL_DISPLAY
   | typeof TRANSACTION
   | typeof TRANSACTION_METHOD
+  | typeof TRPC_PROCEDURE_PATH
+  | typeof TRPC_PROCEDURE_TYPE
   | typeof TTFB
   | typeof TTFB_REQUESTTIME
   | typeof TYPE
@@ -13151,6 +14990,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'true',
     },
     isInOtel: false,
+    visibility: 'public',
     example: ['Citation 1', 'Citation 2'],
     deprecation: {},
     changelog: [
@@ -13165,6 +15005,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 10,
     deprecation: {
       replacement: 'gen_ai.usage.output_tokens',
@@ -13180,6 +15021,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'true',
     },
     isInOtel: false,
+    visibility: 'public',
     example: ['document1.txt', 'document2.pdf'],
     deprecation: {},
     changelog: [
@@ -13194,6 +15036,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'COMPLETE',
     deprecation: {
       replacement: 'gen_ai.response.finish_reasons',
@@ -13209,6 +15052,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 0.5,
     deprecation: {
       replacement: 'gen_ai.request.frequency_penalty',
@@ -13227,6 +15071,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'true',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'function_name',
     deprecation: {
       replacement: 'gen_ai.tool.name',
@@ -13241,6 +15086,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'gen_123abc',
     deprecation: {
       replacement: 'gen_ai.response.id',
@@ -13255,9 +15101,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '[{"role": "user", "message": "hello"}]',
     deprecation: {
-      replacement: 'gen_ai.request.messages',
+      replacement: 'gen_ai.input.messages',
     },
     aliases: [GEN_AI_REQUEST_MESSAGES],
     sdks: ['python'],
@@ -13270,6 +15117,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: false,
     deprecation: {},
     changelog: [
@@ -13284,6 +15132,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '{"user_id": 123, "session_id": "abc123"}',
     deprecation: {},
     changelog: [
@@ -13298,6 +15147,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'gpt-4',
     deprecation: {
       replacement: 'gen_ai.response.model',
@@ -13313,6 +15163,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'openai',
     deprecation: {
       replacement: 'gen_ai.provider.name',
@@ -13330,6 +15181,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'Autofix Pipeline',
     deprecation: {
       replacement: 'gen_ai.pipeline.name',
@@ -13345,6 +15197,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'true',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'You are now a clown.',
     deprecation: {
       replacement: 'gen_ai.system_instructions',
@@ -13363,6 +15216,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 0.5,
     deprecation: {
       replacement: 'gen_ai.request.presence_penalty',
@@ -13380,6 +15234,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 20,
     deprecation: {
       replacement: 'gen_ai.usage.input_tokens',
@@ -13395,6 +15250,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: true,
     deprecation: {},
     changelog: [
@@ -13409,9 +15265,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: ['hello', 'world'],
     deprecation: {
-      replacement: 'gen_ai.response.text',
+      replacement: 'gen_ai.output.messages',
     },
     sdks: ['python'],
     changelog: [{ version: '0.1.0', prs: [65, 127] }, { version: '0.0.0' }],
@@ -13423,6 +15280,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'json_object',
     deprecation: {},
     changelog: [
@@ -13437,6 +15295,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'true',
     },
     isInOtel: false,
+    visibility: 'public',
     example: ['climate change effects', 'renewable energy'],
     deprecation: {},
     changelog: [
@@ -13451,6 +15310,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'true',
     },
     isInOtel: false,
+    visibility: 'public',
     example: ['search_result_1, search_result_2'],
     deprecation: {},
     changelog: [
@@ -13465,6 +15325,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '1234567890',
     deprecation: {
       replacement: 'gen_ai.request.seed',
@@ -13476,9 +15337,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Whether the request was streamed back.',
     type: 'boolean',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: true,
     deprecation: {
       replacement: 'gen_ai.response.streaming',
@@ -13494,6 +15356,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '{"executed_function": "add_integers"}',
     deprecation: {},
     changelog: [
@@ -13509,6 +15372,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 0.1,
     deprecation: {
       replacement: 'gen_ai.request.temperature',
@@ -13526,6 +15390,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'true',
     },
     isInOtel: false,
+    visibility: 'public',
     example: ['Hello, how are you?', 'What is the capital of France?'],
     deprecation: {
       replacement: 'gen_ai.input.messages',
@@ -13543,9 +15408,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: ['function_1', 'function_2'],
     deprecation: {
-      replacement: 'gen_ai.request.available_tools',
+      replacement: 'gen_ai.tool.definitions',
     },
     changelog: [{ version: '0.1.0', prs: [55, 65, 127] }],
   },
@@ -13556,9 +15422,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'true',
     },
     isInOtel: false,
+    visibility: 'public',
     example: ['tool_call_1', 'tool_call_2'],
     deprecation: {
-      replacement: 'gen_ai.response.tool_calls',
+      replacement: 'gen_ai.output.messages',
     },
     changelog: [{ version: '0.1.0', prs: [55, 65] }],
   },
@@ -13570,6 +15437,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 35,
     deprecation: {
       replacement: 'gen_ai.request.top_k',
@@ -13588,6 +15456,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 0.7,
     deprecation: {
       replacement: 'gen_ai.request.top_p',
@@ -13605,6 +15474,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 12.34,
     deprecation: {
       replacement: 'gen_ai.cost.total_tokens',
@@ -13623,6 +15493,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 30,
     deprecation: {
       replacement: 'gen_ai.usage.total_tokens',
@@ -13638,12 +15509,24 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'true',
     },
     isInOtel: false,
+    visibility: 'public',
     example: ['Token limit exceeded'],
     deprecation: {},
     changelog: [
       { version: '0.5.0', prs: [264] },
       { version: '0.1.0', prs: [55] },
     ],
+  },
+  [ANGULAR_VERSION]: {
+    brief: 'The version of the Angular framework',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '17.1.0',
+    changelog: [{ version: '0.7.0', prs: [367], description: 'Added angular.version attribute' }],
   },
   [APP_APP_BUILD]: {
     brief: 'Internal build identifier, as it appears on the platform.',
@@ -13652,6 +15535,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '1',
     deprecation: {
       replacement: 'app.build',
@@ -13670,6 +15554,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'com.example.myapp',
     deprecation: {
       replacement: 'app.identifier',
@@ -13692,6 +15577,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'My App',
     deprecation: {
       replacement: 'app.name',
@@ -13710,6 +15596,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '2025-01-01T00:00:00.000Z',
     deprecation: {
       replacement: 'app.start_time',
@@ -13732,6 +15619,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '1.0.0',
     deprecation: {
       replacement: 'app.version',
@@ -13750,6 +15638,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '1',
     aliases: [APP_APP_BUILD],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
@@ -13762,6 +15651,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'com.example.myapp',
     aliases: [APP_APP_IDENTIFIER],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
@@ -13774,6 +15664,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: true,
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: '0.5.0', prs: [296], description: 'Added app.in_foreground attribute' }],
@@ -13785,6 +15676,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'My App',
     aliases: [APP_APP_NAME],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
@@ -13797,6 +15689,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1234.56,
     deprecation: {
       replacement: 'app.vitals.start.cold.value',
@@ -13816,6 +15709,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '2025-01-01T00:00:00.000Z',
     aliases: [APP_APP_START_TIME],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
@@ -13828,6 +15722,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'cold',
     deprecation: {
       replacement: 'app.vitals.start.type',
@@ -13848,6 +15743,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1234.56,
     deprecation: {
       replacement: 'app.vitals.start.warm.value',
@@ -13867,6 +15763,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '1.0.0',
     aliases: [APP_APP_VERSION],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
@@ -13880,6 +15777,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 5,
     aliases: [FRAMES_DELAY],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
@@ -13894,6 +15792,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 3,
     aliases: [FRAMES_FROZEN],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
@@ -13908,6 +15807,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1,
     aliases: [FRAMES_SLOW],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
@@ -13922,6 +15822,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 60,
     aliases: [FRAMES_TOTAL],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
@@ -13936,6 +15837,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1234.56,
     aliases: [APP_START_COLD],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
@@ -13948,6 +15850,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'push',
     sdks: [
       'sentry.cocoa',
@@ -13956,7 +15859,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'sentry.dart.flutter',
       'sentry.dotnet.maui',
     ],
-    changelog: [{ version: 'next', prs: [353], description: 'Added app.vitals.start.reason attribute' }],
+    changelog: [{ version: '0.7.0', prs: [353], description: 'Added app.vitals.start.reason attribute' }],
   },
   [APP_VITALS_START_SCREEN]: {
     brief:
@@ -13966,6 +15869,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'MainActivity',
     sdks: [
       'sentry.cocoa',
@@ -13974,7 +15878,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'sentry.dart.flutter',
       'sentry.dotnet.maui',
     ],
-    changelog: [{ version: 'next', prs: [353], description: 'Added app.vitals.start.screen attribute' }],
+    changelog: [{ version: '0.7.0', prs: [353], description: 'Added app.vitals.start.screen attribute' }],
   },
   [APP_VITALS_START_TYPE]: {
     brief: 'The type of app start, for example `cold` or `warm`',
@@ -13983,6 +15887,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'cold',
     aliases: [APP_START_TYPE],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
@@ -13995,6 +15900,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1234.56,
     aliases: [APP_START_WARM],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
@@ -14007,6 +15913,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1234.56,
     aliases: [TIME_TO_FULL_DISPLAY],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
@@ -14019,10 +15926,112 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1234.56,
     aliases: [TIME_TO_INITIAL_DISPLAY],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.ttid.value attribute' }],
+  },
+  [AWS_CLOUDWATCH_LOGS_LOG_GROUP]: {
+    brief: 'The name of the CloudWatch Logs log group',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '/aws/lambda/my-function',
+    changelog: [{ version: '0.7.0', prs: [369], description: 'Added aws.cloudwatch.logs.log_group attribute' }],
+  },
+  [AWS_CLOUDWATCH_LOGS_LOG_STREAM]: {
+    brief: 'The name of the CloudWatch Logs log stream',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '2024/01/01/[$LATEST]abcdef1234567890',
+    changelog: [{ version: '0.7.0', prs: [369], description: 'Added aws.cloudwatch.logs.log_stream attribute' }],
+  },
+  [AWS_CLOUDWATCH_LOGS_URL]: {
+    brief: 'The URL to the CloudWatch Logs log group',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups/log-group/my-log-group',
+    changelog: [{ version: '0.7.0', prs: [369], description: 'Added aws.cloudwatch.logs.url attribute' }],
+  },
+  [AWS_LAMBDA_AWS_REQUEST_ID]: {
+    brief: 'The AWS request ID as received by the Lambda function runtime',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '8476a536-e9f4-11e8-9739-2dfe598c3fcd',
+    changelog: [{ version: '0.7.0', prs: [369], description: 'Added aws.lambda.aws_request_id attribute' }],
+  },
+  [AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS]: {
+    brief: 'The execution duration of the Lambda function invocation in milliseconds',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 1234.56,
+    changelog: [
+      { version: '0.7.0', prs: [369], description: 'Added aws.lambda.execution_duration_in_millis attribute' },
+    ],
+  },
+  [AWS_LAMBDA_FUNCTION_NAME]: {
+    brief: 'The name of the Lambda function',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'my-function',
+    changelog: [{ version: '0.7.0', prs: [369], description: 'Added aws.lambda.function_name attribute' }],
+  },
+  [AWS_LAMBDA_FUNCTION_VERSION]: {
+    brief: 'The version of the Lambda function',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '$LATEST',
+    changelog: [{ version: '0.7.0', prs: [369], description: 'Added aws.lambda.function_version attribute' }],
+  },
+  [AWS_LAMBDA_INVOKED_FUNCTION_ARN]: {
+    brief: 'The full ARN of the Lambda function that was invoked',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'arn:aws:lambda:us-east-1:123456789012:function:my-function',
+    changelog: [{ version: '0.7.0', prs: [369], description: 'Added aws.lambda.invoked_function_arn attribute' }],
+  },
+  [AWS_LAMBDA_REMAINING_TIME_IN_MILLIS]: {
+    brief: 'The remaining time in milliseconds before the Lambda function times out',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 5000,
+    changelog: [{ version: '0.7.0', prs: [369], description: 'Added aws.lambda.remaining_time_in_millis attribute' }],
   },
   [BLOCKED_MAIN_THREAD]: {
     brief: 'Whether the main thread was blocked by the span.',
@@ -14031,6 +16040,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: true,
     changelog: [{ version: '0.0.0' }],
   },
@@ -14041,6 +16051,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'Chrome',
     aliases: [SENTRY_BROWSER_NAME],
     changelog: [{ version: '0.1.0', prs: [127, 139] }, { version: '0.0.0' }],
@@ -14052,6 +16063,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1.983,
     aliases: [PERFORMANCE_ACTIVATIONSTART],
     sdks: ['javascript-browser'],
@@ -14066,6 +16078,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1776185678.886,
     aliases: [PERFORMANCE_TIMEORIGIN],
     sdks: ['javascript-browser'],
@@ -14080,6 +16093,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'network-error',
     changelog: [{ version: '0.1.0', prs: [68, 127] }],
   },
@@ -14090,6 +16104,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'Window.requestAnimationFrame',
     sdks: ['browser'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
@@ -14101,6 +16116,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'event-listener',
     sdks: ['browser'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
@@ -14112,6 +16128,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 678,
     sdks: ['browser'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
@@ -14123,6 +16140,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '120.0.6099.130',
     aliases: [SENTRY_BROWSER_VERSION],
     changelog: [{ version: '0.1.0', prs: [59, 127, 139] }],
@@ -14134,6 +16152,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'navigation',
     sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [319], description: 'Added browser.web_vital.cls.report_event attribute' }],
@@ -14145,6 +16164,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     hasDynamicSuffix: true,
     example: 'body > div#app',
     aliases: [CLS_SOURCE_KEY],
@@ -14158,6 +16178,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 0.2361,
     aliases: [CLS],
     sdks: ['javascript-browser'],
@@ -14170,6 +16191,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 547.6951,
     aliases: [FCP],
     sdks: ['javascript-browser'],
@@ -14182,6 +16204,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 477.1926,
     aliases: [FP],
     sdks: ['javascript-browser'],
@@ -14194,6 +16217,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 200,
     aliases: [INP],
     sdks: ['javascript-browser'],
@@ -14206,6 +16230,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'body > div#app > div#container > div',
     aliases: [LCP_ELEMENT],
     sdks: ['javascript-browser'],
@@ -14218,6 +16243,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '#gero',
     aliases: [LCP_ID],
     sdks: ['javascript-browser'],
@@ -14230,6 +16256,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1402,
     aliases: [LCP_LOADTIME],
     sdks: ['javascript-browser'],
@@ -14242,6 +16269,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1685,
     aliases: [LCP_RENDERTIME],
     sdks: ['javascript-browser'],
@@ -14254,6 +16282,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'pagehide',
     sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [319], description: 'Added browser.web_vital.lcp.report_event attribute' }],
@@ -14265,6 +16294,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1024,
     aliases: [LCP_SIZE],
     sdks: ['javascript-browser'],
@@ -14277,6 +16307,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'https://example.com/static/img.png',
     aliases: [LCP_URL],
     sdks: ['javascript-browser'],
@@ -14289,6 +16320,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 2500,
     aliases: [LCP],
     sdks: ['javascript-browser'],
@@ -14302,6 +16334,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1554.5814,
     aliases: [TTFB_REQUESTTIME],
     sdks: ['javascript-browser'],
@@ -14314,6 +16347,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 194.3322,
     aliases: [TTFB],
     sdks: ['javascript-browser'],
@@ -14326,6 +16360,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: true,
     sdks: ['php-laravel'],
     changelog: [{ version: '0.0.0' }],
@@ -14337,6 +16372,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 58,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
@@ -14347,6 +16383,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: ['my-cache-key', 'my-other-cache-key'],
     sdks: ['php-laravel'],
     changelog: [{ version: '0.0.0' }],
@@ -14358,6 +16395,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'get',
     sdks: ['php-laravel'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
@@ -14369,6 +16407,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 120,
     sdks: ['php-laravel'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
@@ -14380,6 +16419,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: true,
     sdks: ['java'],
     changelog: [{ version: '0.5.0' }],
@@ -14391,6 +16431,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'mail',
     sdks: ['php-laravel'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
@@ -14403,6 +16444,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'true',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'example.com',
     aliases: [HTTP_CLIENT_IP],
     changelog: [{ version: '0.1.0', prs: [106, 127] }, { version: '0.0.0' }],
@@ -14414,6 +16456,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 5432,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
@@ -14424,9 +16467,22 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 543,
     sdks: ['javascript-cloudflare'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+  },
+  [CLOUDFLARE_D1_QUERY_TYPE]: {
+    brief: 'The type of query executed in a Cloudflare D1 operation',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'run',
+    sdks: ['javascript-cloudflare'],
+    changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.d1.query_type attribute' }],
   },
   [CLOUDFLARE_D1_ROWS_READ]: {
     brief: 'The number of rows read in a Cloudflare D1 operation.',
@@ -14435,6 +16491,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 12,
     sdks: ['javascript-cloudflare'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
@@ -14446,9 +16503,125 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 12,
     sdks: ['javascript-cloudflare'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+  },
+  [CLOUDFLARE_WORKFLOW_ATTEMPT]: {
+    brief: 'The current attempt number for a Cloudflare Workflow step',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 1,
+    sdks: ['javascript-cloudflare'],
+    changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.workflow.attempt attribute' }],
+  },
+  [CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF]: {
+    brief: 'The backoff strategy for Cloudflare Workflow step retries',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'exponential',
+    sdks: ['javascript-cloudflare'],
+    changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.workflow.retries.backoff attribute' }],
+  },
+  [CLOUDFLARE_WORKFLOW_RETRIES_DELAY]: {
+    brief: 'The delay between Cloudflare Workflow step retries',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '5 seconds',
+    sdks: ['javascript-cloudflare'],
+    changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.workflow.retries.delay attribute' }],
+  },
+  [CLOUDFLARE_WORKFLOW_RETRIES_LIMIT]: {
+    brief: 'The maximum number of retries for a Cloudflare Workflow step',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 3,
+    sdks: ['javascript-cloudflare'],
+    changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.workflow.retries.limit attribute' }],
+  },
+  [CLOUDFLARE_WORKFLOW_TIMEOUT]: {
+    brief: 'The timeout duration for a Cloudflare Workflow step',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '1 minute',
+    sdks: ['javascript-cloudflare'],
+    changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.workflow.timeout attribute' }],
+  },
+  [CLOUD_ACCOUNT_ID]: {
+    brief: 'The cloud account ID the resource is assigned to',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: '123456789012',
+    changelog: [{ version: '0.7.0', prs: [364], description: 'Added cloud.account.id attribute' }],
+  },
+  [CLOUD_AVAILABILITY_ZONE]: {
+    brief: 'Cloud regions often have multiple, isolated locations known as zones to increase availability',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'us-east-1c',
+    changelog: [{ version: '0.7.0', prs: [364], description: 'Added cloud.availability_zone attribute' }],
+  },
+  [CLOUD_PLATFORM]: {
+    brief: 'The cloud platform in use',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'aws_lambda',
+    changelog: [{ version: '0.7.0', prs: [364], description: 'Added cloud.platform attribute' }],
+  },
+  [CLOUD_PROVIDER]: {
+    brief: 'Name of the cloud provider',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'aws',
+    changelog: [{ version: '0.7.0', prs: [364], description: 'Added cloud.provider attribute' }],
+  },
+  [CLOUD_REGION]: {
+    brief: 'The geographical region the resource is running',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'us-east-1',
+    changelog: [{ version: '0.7.0', prs: [364], description: 'Added cloud.region attribute' }],
   },
   [CLS]: {
     brief: 'The value of the recorded Cumulative Layout Shift (CLS) web vital',
@@ -14457,6 +16630,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 0.2361,
     deprecation: {
       replacement: 'browser.web_vital.cls.value',
@@ -14479,6 +16653,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     hasDynamicSuffix: true,
     example: 'body > div#app',
     deprecation: {
@@ -14497,6 +16672,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: '/app/myapplication/http/handler/server.py',
     deprecation: {
       replacement: 'code.file.path',
@@ -14512,6 +16688,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: '/app/myapplication/http/handler/server.py',
     aliases: [CODE_FILEPATH],
     changelog: [{ version: '0.0.0' }],
@@ -14523,6 +16700,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'server_request',
     aliases: [CODE_FUNCTION_NAME],
     changelog: [{ version: '0.1.0', prs: [61, 74] }, { version: '0.0.0' }],
@@ -14534,6 +16712,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'server_request',
     aliases: [CODE_FUNCTION],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
@@ -14546,6 +16725,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 42,
     deprecation: {
       replacement: 'code.line.number',
@@ -14561,6 +16741,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 42,
     aliases: [CODE_LINENO],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
@@ -14573,6 +16754,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'http.handler',
     changelog: [{ version: '0.1.0', prs: [61, 74] }, { version: '0.0.0' }],
   },
@@ -14583,6 +16765,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'wifi',
     deprecation: {
       replacement: 'network.connection.type',
@@ -14605,6 +16788,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 100,
     deprecation: {
       replacement: 'network.connection.rtt',
@@ -14628,6 +16812,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'GregorianCalendar',
     changelog: [{ version: '0.4.0', prs: [243] }],
   },
@@ -14638,6 +16823,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'English (United States)',
     changelog: [{ version: '0.4.0', prs: [243] }],
   },
@@ -14648,6 +16834,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: true,
     changelog: [{ version: '0.4.0', prs: [243] }],
   },
@@ -14658,6 +16845,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'en-US',
     changelog: [{ version: '0.4.0', prs: [243] }],
   },
@@ -14668,6 +16856,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'Europe/Vienna',
     changelog: [{ version: '0.4.0', prs: [243] }],
   },
@@ -14678,6 +16867,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'users',
     changelog: [{ version: '0.1.0', prs: [106, 127] }, { version: '0.0.0' }],
   },
@@ -14688,6 +16878,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'psycopg2',
     changelog: [{ version: '0.5.0', prs: [297], description: 'Added db.driver.name attribute' }],
   },
@@ -14698,6 +16889,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'customers',
     deprecation: {
       replacement: 'db.namespace',
@@ -14712,6 +16904,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'customers',
     aliases: [DB_NAME],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
@@ -14723,6 +16916,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'SELECT',
     deprecation: {
       replacement: 'db.operation.name',
@@ -14737,6 +16931,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'SELECT',
     aliases: [DB_OPERATION],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
@@ -14749,6 +16944,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     hasDynamicSuffix: true,
     example: "db.query.parameter.foo='123'",
     changelog: [{ version: '0.1.0', prs: [103, 127] }],
@@ -14761,6 +16957,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'SELECT users;',
     changelog: [{ version: '0.4.0', prs: [208] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
@@ -14772,6 +16969,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'SELECT * FROM users WHERE id = $1',
     aliases: [DB_STATEMENT],
     changelog: [{ version: '0.4.0', prs: [208] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
@@ -14783,6 +16981,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'my-redis-instance',
     sdks: ['php-laravel'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
@@ -14794,6 +16993,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'user:2047:city',
     sdks: ['python'],
     changelog: [{ version: '0.6.0', prs: [326], description: 'Added db.redis.key attribute' }],
@@ -14805,6 +17005,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: ['test', '*'],
     sdks: ['php-laravel'],
     changelog: [{ version: '0.0.0' }],
@@ -14816,6 +17017,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: ['1', 'foo'],
     deprecation: {
       replacement: 'db.query.parameter.<key>',
@@ -14832,12 +17034,24 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'SELECT * FROM users',
     deprecation: {
       replacement: 'db.query.text',
     },
     aliases: [DB_QUERY_TEXT],
     changelog: [{ version: '0.4.0', prs: [199] }, { version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
+  },
+  [DB_STORED_PROCEDURE_NAME]: {
+    brief: 'The name of a stored procedure being called.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'GetUserById',
+    changelog: [{ version: 'next', prs: [398] }],
   },
   [DB_SYSTEM]: {
     brief:
@@ -14847,6 +17061,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'postgresql',
     deprecation: {
       replacement: 'db.system.name',
@@ -14862,6 +17077,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'postgresql',
     aliases: [DB_SYSTEM],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
@@ -14873,6 +17089,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'true',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'fancy_user',
     changelog: [{ version: '0.0.0' }],
   },
@@ -14883,6 +17100,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '8 GB',
     deprecation: {
       replacement: 'device.memory.estimated_capacity',
@@ -14906,6 +17124,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: ['arm64-v8a', 'armeabi-v7a', 'armeabi'],
     changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.archs attribute' }],
   },
@@ -14916,6 +17135,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 100,
     changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.battery_level attribute' }],
   },
@@ -14926,6 +17146,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 25,
     changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.battery_temperature attribute' }],
   },
@@ -14936,6 +17157,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '2018-02-08T12:52:12Z',
     changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.boot_time attribute' }],
   },
@@ -14946,6 +17168,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'Apple',
     changelog: [{ version: '0.1.0', prs: [116, 127] }],
   },
@@ -14956,6 +17179,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: false,
     changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.charging attribute' }],
   },
@@ -14966,6 +17190,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'Qualcomm SM8550',
     changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.chipset attribute' }],
   },
@@ -14977,6 +17202,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'medium',
     changelog: [{ version: '0.5.0', prs: [300], description: 'Added device.class attribute' }],
   },
@@ -14987,6 +17213,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'wifi',
     deprecation: {
       replacement: 'network.connection.type',
@@ -15008,6 +17235,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'Intel(R) Core(TM)2 Quad CPU Q6600 @ 2.40GHz',
     changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.cpu_description attribute' }],
   },
@@ -15018,6 +17246,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 67108864000,
     changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.external_free_storage attribute' }],
   },
@@ -15028,6 +17257,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 134217728000,
     changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.external_storage_size attribute' }],
   },
@@ -15038,6 +17268,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'iPhone',
     changelog: [{ version: '0.1.0', prs: [116, 127] }],
   },
@@ -15048,6 +17279,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 2147483648,
     changelog: [{ version: '0.5.0', prs: [300], description: 'Added device.free_memory attribute' }],
   },
@@ -15058,6 +17290,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 107374182400,
     changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.free_storage attribute' }],
   },
@@ -15068,6 +17301,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.id attribute' }],
   },
@@ -15078,6 +17312,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'en-US',
     changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.locale attribute' }],
   },
@@ -15088,6 +17323,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: false,
     changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.low_memory attribute' }],
   },
@@ -15098,6 +17334,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: true,
     sdks: ['sentry.cocoa'],
     changelog: [{ version: '0.6.0', prs: [314], description: 'Added device.low_power_mode attribute' }],
@@ -15109,6 +17346,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'Google',
     changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.manufacturer attribute' }],
   },
@@ -15120,6 +17358,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 8,
     aliases: [DEVICEMEMORY],
     sdks: ['javascript-browser'],
@@ -15138,6 +17377,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 17179869184,
     changelog: [{ version: '0.5.0', prs: [300], description: 'Added device.memory_size attribute' }],
   },
@@ -15148,6 +17388,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'iPhone 15 Pro Max',
     changelog: [{ version: '0.1.0', prs: [116, 127] }],
   },
@@ -15158,6 +17399,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'N861AP',
     changelog: [{ version: '0.5.0', prs: [300], description: 'Added device.model_id attribute' }],
   },
@@ -15169,6 +17411,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'localhost',
     changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.name attribute' }],
   },
@@ -15179,6 +17422,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: true,
     changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.online attribute' }],
   },
@@ -15189,6 +17433,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'portrait',
     changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.orientation attribute' }],
   },
@@ -15199,6 +17444,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 8,
     aliases: [HARDWARECONCURRENCY],
     changelog: [
@@ -15216,6 +17462,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 2400,
     changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.processor_frequency attribute' }],
   },
@@ -15226,6 +17473,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 2.625,
     changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.screen_density attribute' }],
   },
@@ -15236,6 +17484,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 420,
     changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.screen_dpi attribute' }],
   },
@@ -15246,6 +17495,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 2400,
     changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.screen_height_pixels attribute' }],
   },
@@ -15256,6 +17506,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1080,
     changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.screen_width_pixels attribute' }],
   },
@@ -15266,6 +17517,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: false,
     changelog: [{ version: '0.5.0', prs: [300], description: 'Added device.simulator attribute' }],
   },
@@ -15276,6 +17528,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 274877906944,
     changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.storage_size attribute' }],
   },
@@ -15287,6 +17540,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'nominal',
     changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.thermal_state attribute' }],
   },
@@ -15297,6 +17551,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'Europe/Vienna',
     changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.timezone attribute' }],
   },
@@ -15307,6 +17562,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 2147483648,
     changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.usable_memory attribute' }],
   },
@@ -15317,6 +17573,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '4g',
     deprecation: {
       replacement: 'network.connection.effective_type',
@@ -15340,6 +17597,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'production',
     deprecation: {
       replacement: 'sentry.environment',
@@ -15354,6 +17612,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'timeout',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
@@ -15364,6 +17623,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1234567890,
     changelog: [{ version: '0.1.0', prs: [101] }],
   },
@@ -15374,6 +17634,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'Process Payload',
     changelog: [{ version: '0.1.0', prs: [101, 127] }],
   },
@@ -15385,6 +17646,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: true,
+    visibility: 'public',
     example: true,
     changelog: [{ version: '0.0.0' }],
   },
@@ -15395,6 +17657,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'ENOENT: no such file or directory',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
@@ -15406,6 +17669,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example:
       'Exception in thread "main" java.lang.RuntimeException: Test exception\n at com.example.GenerateTrace.methodB(GenerateTrace.java:13)\n at com.example.GenerateTrace.methodA(GenerateTrace.java:9)\n at com.example.GenerateTrace.main(GenerateTrace.java:5)',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
@@ -15418,6 +17682,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'OSError',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
@@ -15428,6 +17693,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: true,
+    visibility: 'public',
     example: true,
     changelog: [{ version: '0.0.0' }],
   },
@@ -15438,8 +17704,55 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: '0/5 * * * ? *',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+  },
+  [FAAS_DURATION_IN_MS]: {
+    brief: 'The duration a function took to run, in milliseconds.',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 120,
+    changelog: [{ version: 'next' }],
+  },
+  [FAAS_ENTRY_POINT]: {
+    brief: "The code that's run when the cloud provider invokes your function.",
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'my_main_function',
+    changelog: [{ version: 'next' }],
+  },
+  [FAAS_IDENTITY]: {
+    brief:
+      'The Service Account (GCP), IAM Execution Role (AWS), or Managed Identity (Azure) used by the serverless function when interacting with other cloud services',
+    type: 'string',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example:
+      'name@project.iam.gserviceaccount.com (GCP), arn:aws:iam::123456789012:role/role-name (AWS), 00000000-0000-0000-0000-000000000000 (Azure)',
+    changelog: [{ version: 'next' }],
+  },
+  [FAAS_NAME]: {
+    brief: 'The name of the serverless function',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'my_function',
+    changelog: [{ version: 'next' }],
   },
   [FAAS_TIME]: {
     brief: 'A string containing the function invocation time in the ISO 8601 format expressed in UTC.',
@@ -15448,6 +17761,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: '2020-01-23T13:47:06Z',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
@@ -15458,6 +17772,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'timer',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
@@ -15468,6 +17783,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 547.6951,
     deprecation: {
       replacement: 'browser.web_vital.fcp.value',
@@ -15485,6 +17801,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     hasDynamicSuffix: true,
     example: 'flag.evaluation.is_new_ui=true',
     changelog: [{ version: '0.1.0', prs: [103] }],
@@ -15496,6 +17813,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 477.1926,
     deprecation: {
       replacement: 'browser.web_vital.fp.value',
@@ -15513,6 +17831,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 5,
     deprecation: {
       replacement: 'app.vitals.frames.delay.value',
@@ -15533,6 +17852,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 3,
     deprecation: {
       replacement: 'app.vitals.frames.frozen.count',
@@ -15546,6 +17866,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.0.0' },
     ],
   },
+  [FRAMES_FROZEN_RATE]: {
+    brief:
+      'The rate of frozen frames, or `app_vitals.frames.frozen.count` divided by `app_vitals.frames.total.count`. This is computed by Relay.',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    changelog: [{ version: '0.7.0', prs: [362], description: 'Added frames_frozen_rate attribute' }],
+  },
   [FRAMES_SLOW]: {
     brief: 'The number of slow frames rendered during the lifetime of the span.',
     type: 'integer',
@@ -15553,6 +17884,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1,
     deprecation: {
       replacement: 'app.vitals.frames.slow.count',
@@ -15566,6 +17898,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.0.0' },
     ],
   },
+  [FRAMES_SLOW_RATE]: {
+    brief:
+      'The rate of slow frames, or `app_vitals.frames.slow.count` divided by `app_vitals.frames.total.count`. This is computed by Relay.',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    changelog: [{ version: '0.7.0', prs: [362], description: 'Added frames_slow_rate attribute' }],
+  },
   [FRAMES_TOTAL]: {
     brief: 'The number of total frames rendered during the lifetime of the span.',
     type: 'integer',
@@ -15573,6 +17916,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 60,
     deprecation: {
       replacement: 'app.vitals.frames.total.count',
@@ -15593,6 +17937,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'ENOENT: no such file or directory',
     deprecation: {
       replacement: 'error.type',
@@ -15601,6 +17946,116 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     sdks: ['javascript-node'],
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
+  [GCP_FUNCTION_CONTEXT_EVENT_ID]: {
+    brief: 'The event ID from the legacy GCP Cloud Function context (1st gen)',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '1234567890',
+    changelog: [{ version: '0.7.0', prs: [371], description: 'Added gcp.function.context.event_id attribute' }],
+  },
+  [GCP_FUNCTION_CONTEXT_EVENT_TYPE]: {
+    brief: 'The type of the GCP Cloud Function event',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'google.pubsub.topic.publish',
+    changelog: [{ version: '0.7.0', prs: [371], description: 'Added gcp.function.context.event_type attribute' }],
+  },
+  [GCP_FUNCTION_CONTEXT_ID]: {
+    brief: 'The unique event ID from the GCP CloudEvents context (2nd gen Cloud Functions)',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '1234567890',
+    changelog: [{ version: '0.7.0', prs: [371], description: 'Added gcp.function.context.id attribute' }],
+  },
+  [GCP_FUNCTION_CONTEXT_RESOURCE]: {
+    brief: 'The resource that triggered the GCP Cloud Function event',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'projects/my-project/topics/my-topic',
+    changelog: [{ version: '0.7.0', prs: [371], description: 'Added gcp.function.context.resource attribute' }],
+  },
+  [GCP_FUNCTION_CONTEXT_SOURCE]: {
+    brief: 'The source of the GCP Cloud Function event',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '//pubsub.googleapis.com/projects/my-project/topics/my-topic',
+    changelog: [{ version: '0.7.0', prs: [371], description: 'Added gcp.function.context.source attribute' }],
+  },
+  [GCP_FUNCTION_CONTEXT_SPECVERSION]: {
+    brief: 'The CloudEvents specification version of the GCP Cloud Function event',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '1.0',
+    changelog: [{ version: '0.7.0', prs: [371], description: 'Added gcp.function.context.specversion attribute' }],
+  },
+  [GCP_FUNCTION_CONTEXT_TIME]: {
+    brief: 'The timestamp of the GCP Cloud Function event',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '2024-01-01T00:00:00.000Z',
+    changelog: [{ version: '0.7.0', prs: [371], description: 'Added gcp.function.context.time attribute' }],
+  },
+  [GCP_FUNCTION_CONTEXT_TIMESTAMP]: {
+    brief: 'The legacy timestamp of the GCP Cloud Function event',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '2024-01-01T00:00:00.000Z',
+    changelog: [{ version: '0.7.0', prs: [371], description: 'Added gcp.function.context.timestamp attribute' }],
+  },
+  [GCP_FUNCTION_CONTEXT_TYPE]: {
+    brief: 'The type of the GCP Cloud Function event context',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'cloud_functions.context',
+    changelog: [{ version: '0.7.0', prs: [371], description: 'Added gcp.function.context.type attribute' }],
+  },
+  [GCP_PROJECT_ID]: {
+    brief: 'The ID of the project in GCP that this resource is associated with',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'my-project-123',
+    changelog: [{ version: 'next' }],
+  },
   [GEN_AI_AGENT_NAME]: {
     brief: 'The name of the agent being used.',
     type: 'string',
@@ -15608,6 +18063,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'ResearchAssistant',
     changelog: [{ version: '0.1.0', prs: [62, 127] }],
   },
@@ -15618,6 +18074,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 0.75,
     changelog: [{ version: '0.5.0', prs: [315], description: 'Added gen_ai.context.utilization attribute' }],
   },
@@ -15628,6 +18085,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 128000,
     changelog: [{ version: '0.5.0', prs: [315], description: 'Added gen_ai.context.window_size attribute' }],
   },
@@ -15639,6 +18097,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'conv_5j66UpCpwteGg4YSxUnt7lPY',
     changelog: [{ version: '0.4.0', prs: [250] }],
   },
@@ -15649,10 +18108,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 123.45,
     changelog: [
+      { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [112] },
+    ],
+    additionalContext: [
+      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
+      "Despite the name 'cost.input_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.input_tokens.",
+      'This is the cost of non-cached input tokens only. The cost of cached tokens is excluded from this value.',
     ],
   },
   [GEN_AI_COST_OUTPUT_TOKENS]: {
@@ -15662,10 +18128,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 123.45,
     changelog: [
+      { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [112] },
+    ],
+    additionalContext: [
+      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
+      "Despite the name 'cost.output_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.output_tokens.",
+      'This is the cost of non-reasoning output tokens only. The cost of reasoning tokens is excluded from this value.',
     ],
   },
   [GEN_AI_COST_TOTAL_TOKENS]: {
@@ -15675,12 +18148,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 12.34,
     aliases: [AI_TOTAL_COST],
     changelog: [
+      { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.5.0', prs: [264] },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [126] },
+    ],
+    additionalContext: [
+      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
+      "Despite the name 'cost.total_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.total_tokens.",
     ],
   },
   [GEN_AI_EMBEDDINGS_INPUT]: {
@@ -15690,6 +18169,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: "What's the weather in Paris?",
     changelog: [{ version: '0.3.1', prs: [195] }],
   },
@@ -15701,6 +18181,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'my-awesome-function',
     changelog: [{ version: '0.5.0', prs: [308], description: 'Added gen_ai.function_id attribute' }],
   },
@@ -15712,6 +18193,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example:
       '[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
     aliases: [AI_TEXTS],
@@ -15728,6 +18210,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'chat',
     changelog: [
       { version: '0.4.0', prs: [225] },
@@ -15742,6 +18225,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'tool',
     changelog: [
       { version: '0.4.0', prs: [257] },
@@ -15756,6 +18240,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example:
       '[{"role": "assistant", "parts": [{"type": "text", "content": "The weather in Paris is currently rainy with a temperature of 57°F."}], "finish_reason": "stop"}]',
     changelog: [{ version: '0.4.0', prs: [221] }],
@@ -15767,6 +18252,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'Autofix Pipeline',
     aliases: [AI_PIPELINE_NAME],
     changelog: [{ version: '0.1.0', prs: [76, 127] }],
@@ -15778,6 +18264,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: '[{"role": "user", "message": "hello"}]',
     deprecation: {
       reason: 'Deprecated from OTEL, use gen_ai.input.messages with the new format instead.',
@@ -15791,6 +18278,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'openai',
     aliases: [AI_MODEL_PROVIDER, GEN_AI_SYSTEM],
     changelog: [{ version: '0.4.0', prs: [253] }],
@@ -15802,6 +18290,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example:
       '[{"name": "get_weather", "description": "Get the weather for a given location"}, {"name": "get_news", "description": "Get the news for a given topic"}]',
     deprecation: {
@@ -15820,6 +18309,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 0.5,
     aliases: [AI_FREQUENCY_PENALTY],
     changelog: [
@@ -15834,6 +18324,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 2048,
     changelog: [
       { version: '0.4.0', prs: [228] },
@@ -15848,6 +18339,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example:
       '[{"role": "system", "content": "Generate a random number."}, {"role": "user", "content": [{"text": "Generate a random number between 0 and 10.", "type": "text"}]}, {"role": "tool", "content": {"toolCallId": "1", "toolName": "Weather", "output": "rainy"}}]',
     deprecation: {
@@ -15866,6 +18358,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'gpt-4-turbo-preview',
     changelog: [{ version: '0.1.0', prs: [62, 127] }],
   },
@@ -15877,6 +18370,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 0.5,
     aliases: [AI_PRESENCE_PENALTY],
     changelog: [
@@ -15891,6 +18385,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: '1234567890',
     aliases: [AI_SEED],
     changelog: [{ version: '0.1.0', prs: [57, 127] }],
@@ -15903,6 +18398,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 0.1,
     aliases: [AI_TEMPERATURE],
     changelog: [
@@ -15918,6 +18414,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 35,
     aliases: [AI_TOP_K],
     changelog: [
@@ -15933,6 +18430,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 0.7,
     aliases: [AI_TOP_P],
     changelog: [
@@ -15947,6 +18445,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'COMPLETE',
     aliases: [AI_FINISH_REASON],
     changelog: [{ version: '0.1.0', prs: [57, 127] }],
@@ -15958,6 +18457,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'gen_123abc',
     aliases: [AI_GENERATION_ID],
     changelog: [{ version: '0.1.0', prs: [57, 127] }],
@@ -15969,6 +18469,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'gpt-4',
     aliases: [AI_MODEL_ID],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
@@ -15977,9 +18478,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: "Whether or not the AI model call's response was streamed back asynchronously",
     type: 'boolean',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: true,
     aliases: [AI_STREAMING],
     changelog: [{ version: '0.1.0', prs: [76] }],
@@ -15992,6 +18494,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example:
       '["The weather in Paris is rainy and overcast, with temperatures around 57°F", "The weather in London is sunny and warm, with temperatures around 65°F"]',
     deprecation: {
@@ -16009,6 +18512,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 0.6853435,
     changelog: [{ version: '0.4.0', prs: [227] }],
   },
@@ -16019,6 +18523,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 12345.67,
     changelog: [
       { version: '0.4.0', prs: [228] },
@@ -16032,6 +18537,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '[{"name": "get_weather", "arguments": {"location": "Paris"}}]',
     deprecation: {
       replacement: 'gen_ai.output.messages',
@@ -16048,6 +18554,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'openai',
     deprecation: {
       replacement: 'gen_ai.provider.name',
@@ -16065,6 +18572,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'You are a helpful assistant',
     aliases: [AI_PREAMBLE],
     changelog: [
@@ -16079,6 +18587,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'true',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'You are a helpful assistant',
     deprecation: {
       replacement: 'gen_ai.system_instructions',
@@ -16095,6 +18604,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: '{"location": "Paris"}',
     aliases: [GEN_AI_TOOL_INPUT],
     changelog: [
@@ -16109,6 +18619,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'rainy, 57°F',
     aliases: [GEN_AI_TOOL_OUTPUT, GEN_AI_TOOL_MESSAGE],
     changelog: [
@@ -16123,6 +18634,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example:
       '[{"type": "function", "name": "get_current_weather", "description": "Get the current weather in a given location", "parameters": {"type": "object", "properties": {"location": {"type": "string", "description": "The city and state, e.g. San Francisco, CA"}, "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]}}, "required": ["location", "unit"]}}]',
     changelog: [{ version: '0.4.0', prs: [221] }],
@@ -16134,6 +18646,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'Searches the web for current information about a topic',
     changelog: [{ version: '0.1.0', prs: [62, 127] }],
   },
@@ -16144,6 +18657,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '{"location": "Paris"}',
     deprecation: {
       replacement: 'gen_ai.tool.call.arguments',
@@ -16161,6 +18675,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'true',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'rainy, 57°F',
     deprecation: {
       replacement: 'gen_ai.tool.call.result',
@@ -16178,6 +18693,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'Flights',
     aliases: [AI_FUNCTION_CALL],
     changelog: [{ version: '0.1.0', prs: [57, 127] }],
@@ -16189,6 +18705,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'rainy, 57°F',
     deprecation: {
       replacement: 'gen_ai.tool.call.result',
@@ -16206,6 +18723,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'function',
     deprecation: {
       reason: 'The gen_ai.tool.type attribute is deprecated and should no longer be set.',
@@ -16219,12 +18737,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 10,
     deprecation: {
       replacement: 'gen_ai.usage.output_tokens',
     },
     aliases: [AI_COMPLETION_TOKENS_USED, GEN_AI_USAGE_OUTPUT_TOKENS],
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
+    changelog: [
+      { version: '0.9.0', prs: [397], description: 'Add additional_context' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [61] },
+      { version: '0.0.0' },
+    ],
+    additionalContext: [
+      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
+    ],
   },
   [GEN_AI_USAGE_INPUT_TOKENS]: {
     brief: 'The number of tokens used to process the AI input (prompt) including cached input tokens.',
@@ -16233,13 +18760,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 10,
     aliases: [AI_PROMPT_TOKENS_USED, GEN_AI_USAGE_PROMPT_TOKENS],
     changelog: [
+      { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.5.0', prs: [261] },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [112] },
       { version: '0.0.0' },
+    ],
+    additionalContext: [
+      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
+      'This count includes cached input tokens. gen_ai.usage.input_tokens.cached is a subset of this value, not an independent count — do not sum them together.',
     ],
   },
   [GEN_AI_USAGE_INPUT_TOKENS_CACHED]: {
@@ -16249,10 +18782,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 50,
     changelog: [
+      { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [62, 112] },
+    ],
+    additionalContext: [
+      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
+      'This is a subset of gen_ai.usage.input_tokens, not an independent count. Do not sum this with gen_ai.usage.input_tokens — it is already included.',
     ],
   },
   [GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE]: {
@@ -16262,8 +18801,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 100,
-    changelog: [{ version: '0.4.0', prs: [217, 228] }],
+    changelog: [
+      { version: '0.9.0', prs: [397], description: 'Add additional_context' },
+      { version: '0.4.0', prs: [217, 228] },
+    ],
+    additionalContext: [
+      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
+    ],
   },
   [GEN_AI_USAGE_OUTPUT_TOKENS]: {
     brief: 'The number of tokens used for creating the AI output (including reasoning tokens).',
@@ -16272,13 +18818,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 10,
     aliases: [AI_COMPLETION_TOKENS_USED, GEN_AI_USAGE_COMPLETION_TOKENS],
     changelog: [
+      { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.5.0', prs: [261] },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [112] },
       { version: '0.0.0' },
+    ],
+    additionalContext: [
+      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
+      'This count includes reasoning tokens. gen_ai.usage.output_tokens.reasoning is a subset of this value, not an independent count — do not sum them together.',
     ],
   },
   [GEN_AI_USAGE_OUTPUT_TOKENS_REASONING]: {
@@ -16288,10 +18840,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 75,
     changelog: [
+      { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [62, 112] },
+    ],
+    additionalContext: [
+      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
+      'This is a subset of gen_ai.usage.output_tokens, not an independent count. Do not sum this with gen_ai.usage.output_tokens — it is already included.',
     ],
   },
   [GEN_AI_USAGE_PROMPT_TOKENS]: {
@@ -16301,12 +18859,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 20,
     deprecation: {
       replacement: 'gen_ai.usage.input_tokens',
     },
     aliases: [AI_PROMPT_TOKENS_USED, GEN_AI_USAGE_INPUT_TOKENS],
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
+    changelog: [
+      { version: '0.9.0', prs: [397], description: 'Add additional_context' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [61] },
+      { version: '0.0.0' },
+    ],
+    additionalContext: [
+      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
+    ],
   },
   [GEN_AI_USAGE_TOTAL_TOKENS]: {
     brief: 'The total number of tokens used to process the prompt. (input tokens plus output todkens)',
@@ -16315,11 +18882,35 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 20,
     aliases: [AI_TOTAL_TOKENS_USED],
     changelog: [
+      { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [57] },
+    ],
+    additionalContext: [
+      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
+      'This is the sum of gen_ai.usage.input_tokens and gen_ai.usage.output_tokens. Do not sum this with either of them — they are already included.',
+    ],
+  },
+  [GRAPHQL_DOCUMENT]: {
+    brief: 'The GraphQL document being executed.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+      reason:
+        'The document may contain sensitive information in arguments or variables. Instrumentation should redact sensitive information when possible.',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'query findBookById { bookById(id: ?) { name } }',
+    changelog: [
+      {
+        version: '0.7.0',
+        description: 'Adds the `graphql.document` attribute to track the GraphQL document being executed.',
+      },
     ],
   },
   [GRAPHQL_OPERATION_NAME]: {
@@ -16329,6 +18920,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'findBookById',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
@@ -16339,6 +18931,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'query',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
@@ -16349,6 +18942,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '14',
     deprecation: {
       replacement: 'device.processor_count',
@@ -16372,6 +18966,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'true',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'example.com',
     deprecation: {
       replacement: 'client.address',
@@ -16386,6 +18981,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 456,
     sdks: ['javascript-browser'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
@@ -16397,6 +18993,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: '1.1',
     deprecation: {
       replacement: 'network.protocol.version',
@@ -16412,6 +19009,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '#details',
     changelog: [{ version: '0.0.0' }],
   },
@@ -16422,6 +19020,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'example.com',
     deprecation: {
       replacement: 'server.address',
@@ -16437,6 +19036,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'GET',
     deprecation: {
       replacement: 'http.request.method',
@@ -16449,11 +19049,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'The query string present in the URL. Note that this contains the leading ? character, while the `url.query` attribute does not.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
       reason:
         'Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '?foo=bar&bar=baz',
     changelog: [{ version: '0.0.0' }],
   },
@@ -16464,6 +19065,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '[{"role": "user", "message": "hello"}]',
     changelog: [{ version: '0.6.0', prs: [336], description: 'Added http.request.body.data attribute' }],
   },
@@ -16475,6 +19077,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1732829555.15,
     sdks: ['javascript-browser'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
@@ -16487,6 +19090,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1732829555.111,
     sdks: ['javascript-browser'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
@@ -16499,6 +19103,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1732829555.201,
     sdks: ['javascript-browser'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
@@ -16511,6 +19116,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1732829555.322,
     sdks: ['javascript-browser'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
@@ -16522,6 +19128,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1732829555.389,
     sdks: ['javascript-browser'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
@@ -16534,6 +19141,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     hasDynamicSuffix: true,
     example: "http.request.header.custom-header=['foo', 'bar']",
     changelog: [
@@ -16548,6 +19156,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'GET',
     aliases: [METHOD, HTTP_METHOD, _HTTP_REQUEST_METHOD, TRANSACTION_METHOD],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
@@ -16559,6 +19168,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'GET',
     deprecation: {
       replacement: 'http.request.method',
@@ -16574,6 +19184,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1732829558.502,
     sdks: ['javascript-browser'],
     changelog: [
@@ -16588,6 +19199,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1732829555.495,
     sdks: ['javascript-browser'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
@@ -16600,6 +19212,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1732829555.51,
     sdks: ['javascript-browser'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
@@ -16611,6 +19224,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 2,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
@@ -16622,6 +19236,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1732829555.89,
     sdks: ['javascript-browser'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
@@ -16634,6 +19249,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1732829555.7,
     sdks: ['javascript-browser'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
@@ -16646,6 +19262,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1732829555.73,
     sdks: ['javascript-browser'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
@@ -16658,6 +19275,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1.032,
     sdks: ['javascript-browser'],
     changelog: [
@@ -16673,6 +19291,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1732829553.68,
     sdks: ['javascript-browser'],
     changelog: [
@@ -16687,6 +19306,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 123,
     aliases: [HTTP_RESPONSE_CONTENT_LENGTH, HTTP_RESPONSE_HEADER_CONTENT_LENGTH],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [106] }, { version: '0.0.0' }],
@@ -16698,6 +19318,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 123,
     deprecation: {
       replacement: 'http.response.body.size',
@@ -16712,6 +19333,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: "http.response.header.custom-header=['foo', 'bar']",
     aliases: [HTTP_RESPONSE_CONTENT_LENGTH, HTTP_RESPONSE_BODY_SIZE],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
@@ -16724,6 +19346,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     hasDynamicSuffix: true,
     example: "http.response.header.custom-header=['foo', 'bar']",
     changelog: [
@@ -16738,6 +19361,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 456,
     aliases: [HTTP_RESPONSE_TRANSFER_SIZE],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
@@ -16749,6 +19373,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 404,
     aliases: [HTTP_STATUS_CODE],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
@@ -16760,6 +19385,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 456,
     deprecation: {
       replacement: 'http.response.size',
@@ -16774,6 +19400,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: '/users/:id',
     aliases: [URL_TEMPLATE],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
@@ -16785,6 +19412,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'https',
     deprecation: {
       replacement: 'url.scheme',
@@ -16799,6 +19427,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'example.com',
     deprecation: {
       replacement: 'server.address',
@@ -16814,6 +19443,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 50,
     sdks: ['ruby'],
     changelog: [{ version: '0.5.0', prs: [267] }],
@@ -16825,6 +19455,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 404,
     deprecation: {
       replacement: 'http.response.status_code',
@@ -16839,6 +19470,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: '/test?foo=bar#buzz',
     deprecation: {
       replacement: 'url.path',
@@ -16850,9 +19482,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The URL of the resource that was fetched.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'https://example.com/test?foo=bar#buzz',
     deprecation: {
       replacement: 'url.full',
@@ -16867,6 +19500,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example:
       'Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1',
     deprecation: {
@@ -16882,6 +19516,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'f47ac10b58cc4372a5670e02b2c3d479',
     sdks: ['php-laravel'],
     changelog: [{ version: '0.0.0' }],
@@ -16893,6 +19528,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 200,
     deprecation: {
       replacement: 'browser.web_vital.inp.value',
@@ -16915,6 +19551,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'end of minor GC',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
@@ -16925,6 +19562,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'G1 Young Generation',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
@@ -16935,6 +19573,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'G1 Old Gen',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
@@ -16945,6 +19584,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'G1 Old Gen',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
@@ -16955,6 +19595,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: true,
+    visibility: 'public',
     example: true,
     changelog: [{ version: '0.0.0' }],
   },
@@ -16965,6 +19606,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'blocked',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
@@ -16975,6 +19617,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 2500,
     deprecation: {
       replacement: 'browser.web_vital.lcp.value',
@@ -16997,6 +19640,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'img',
     deprecation: {
       replacement: 'browser.web_vital.lcp.element',
@@ -17012,6 +19656,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '#hero',
     deprecation: {
       replacement: 'browser.web_vital.lcp.id',
@@ -17027,6 +19672,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1402,
     deprecation: {
       replacement: 'browser.web_vital.lcp.load_time',
@@ -17043,6 +19689,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1685,
     deprecation: {
       replacement: 'browser.web_vital.lcp.render_time',
@@ -17059,6 +19706,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1234,
     deprecation: {
       replacement: 'browser.web_vital.lcp.size',
@@ -17074,6 +19722,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'https://example.com',
     deprecation: {
       replacement: 'browser.web_vital.lcp.url',
@@ -17089,6 +19738,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'myLogger',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
@@ -17100,6 +19750,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Cancellation reasons may contain user-specific or sensitive information',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'User cancelled the request',
     changelog: [{ version: '0.3.0', prs: [171] }],
   },
@@ -17110,6 +19761,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '123',
     changelog: [{ version: '0.3.0', prs: [171] }],
   },
@@ -17120,6 +19772,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'claude-desktop',
     changelog: [{ version: '0.3.0', prs: [171] }],
   },
@@ -17131,6 +19784,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Client titles may reveal user-specific application configurations or custom setups',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'Claude Desktop',
     changelog: [{ version: '0.3.0', prs: [171] }],
   },
@@ -17141,6 +19795,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '1.0.0',
     changelog: [{ version: '0.3.0', prs: [171] }],
   },
@@ -17151,6 +19806,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'initialization_complete',
     changelog: [{ version: '0.3.0', prs: [171] }],
   },
@@ -17161,6 +19817,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'string',
     changelog: [{ version: '0.3.0', prs: [171] }],
   },
@@ -17171,6 +19828,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'info',
     changelog: [{ version: '0.3.0', prs: [171] }],
   },
@@ -17182,6 +19840,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Logger names may be user-defined and could contain sensitive information',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'mcp_server',
     changelog: [{ version: '0.3.0', prs: [171] }],
   },
@@ -17193,6 +19852,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Log messages can contain user data',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'Tool execution completed successfully',
     changelog: [{ version: '0.3.0', prs: [171] }],
   },
@@ -17203,6 +19863,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'tools/call',
     changelog: [{ version: '0.3.0', prs: [171] }],
   },
@@ -17213,6 +19874,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 50,
     changelog: [
       { version: '0.4.0', prs: [228] },
@@ -17227,6 +19889,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Progress messages may contain user-specific or sensitive information',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'Processing 50 of 100 items',
     changelog: [{ version: '0.3.0', prs: [171] }],
   },
@@ -17237,6 +19900,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 50,
     changelog: [
       { version: '0.4.0', prs: [228] },
@@ -17250,6 +19914,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'progress-token-123',
     changelog: [{ version: '0.3.0', prs: [171] }],
   },
@@ -17260,6 +19925,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 100,
     changelog: [
       { version: '0.4.0', prs: [228] },
@@ -17274,6 +19940,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Prompt names may reveal user behavior patterns or sensitive operations',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'summarize',
     changelog: [{ version: '0.3.0', prs: [171] }],
   },
@@ -17284,6 +19951,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'true',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'A summary of the requested information',
     changelog: [{ version: '0.3.0', prs: [171] }],
   },
@@ -17294,6 +19962,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'true',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'Please provide a summary of the document',
     changelog: [{ version: '0.3.0', prs: [171] }],
   },
@@ -17304,6 +19973,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 3,
     changelog: [
       { version: '0.4.0', prs: [228] },
@@ -17317,6 +19987,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'user',
     changelog: [{ version: '0.3.0', prs: [171] }],
   },
@@ -17327,6 +19998,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1,
     changelog: [
       { version: '0.4.0', prs: [228] },
@@ -17340,6 +20012,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '2024-11-05',
     changelog: [{ version: '0.3.0', prs: [171] }],
   },
@@ -17352,6 +20025,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Arguments contain user input',
     },
     isInOtel: false,
+    visibility: 'public',
     hasDynamicSuffix: true,
     example: "mcp.request.argument.query='weather in Paris'",
     changelog: [{ version: '0.3.0', prs: [176] }],
@@ -17364,6 +20038,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Prompt names can contain user input',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'summarize',
     changelog: [{ version: '0.3.0', prs: [171] }],
   },
@@ -17375,6 +20050,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'URIs can contain user file paths',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'file:///path/to/resource',
     changelog: [{ version: '0.3.0', prs: [171] }],
   },
@@ -17385,6 +20061,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '1',
     changelog: [{ version: '0.3.0', prs: [171] }],
   },
@@ -17395,6 +20072,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'file',
     changelog: [{ version: '0.3.0', prs: [171] }],
   },
@@ -17406,6 +20084,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'URIs can contain sensitive file paths',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'file:///path/to/file.txt',
     changelog: [{ version: '0.3.0', prs: [171] }],
   },
@@ -17416,6 +20095,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'sentry-mcp-server',
     changelog: [{ version: '0.3.0', prs: [171] }],
   },
@@ -17427,6 +20107,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Server titles may reveal user-specific application configurations or custom setups',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'Sentry MCP Server',
     changelog: [{ version: '0.3.0', prs: [171] }],
   },
@@ -17437,6 +20118,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '0.1.0',
     changelog: [{ version: '0.3.0', prs: [171] }],
   },
@@ -17447,6 +20129,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '550e8400-e29b-41d4-a716-446655440000',
     changelog: [{ version: '0.3.0', prs: [171] }],
   },
@@ -17457,6 +20140,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'calculator',
     changelog: [{ version: '0.3.0', prs: [171] }],
   },
@@ -17468,6 +20152,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Tool results can contain user data',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '{"output": "rainy", "toolCallId": "1"}',
     changelog: [
       { version: '0.3.0', prs: [171] },
@@ -17481,6 +20166,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1,
     changelog: [
       { version: '0.4.0', prs: [228] },
@@ -17494,6 +20180,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: false,
     changelog: [{ version: '0.3.0', prs: [171] }],
   },
@@ -17504,6 +20191,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'stdio',
     changelog: [{ version: '0.3.0', prs: [171] }],
   },
@@ -17515,6 +20203,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     hasDynamicSuffix: true,
     example: "mdc.some_key='some_value'",
     sdks: ['java', 'java.logback', 'java.jul', 'java.log4j2'],
@@ -17527,6 +20216,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 10,
     sdks: ['javascript-cloudflare'],
     changelog: [{ version: '0.6.0', prs: [341], description: 'Added messaging.batch.message_count attribute' }],
@@ -17538,6 +20228,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'BestTopic',
     sdks: ['php-laravel'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
@@ -17549,6 +20240,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'BestTopic',
     sdks: ['php-laravel'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
@@ -17560,6 +20252,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 839,
     sdks: ['php-laravel'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
@@ -17571,6 +20264,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 1045,
     sdks: ['php-laravel'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
@@ -17582,6 +20276,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'f47ac10b58cc4372a5670e02b2c3d479',
     sdks: ['php-laravel'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
@@ -17593,6 +20288,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1732847252,
     sdks: ['php-laravel'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
@@ -17604,9 +20300,22 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 2,
     sdks: ['php-laravel'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+  },
+  [MESSAGING_OPERATION_NAME]: {
+    brief: 'The name of the messaging operation being performed',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'send',
+    sdks: ['javascript-cloudflare'],
+    changelog: [{ version: 'next', prs: [392], description: 'Added messaging.operation.name attribute' }],
   },
   [MESSAGING_OPERATION_TYPE]: {
     brief: 'A string identifying the type of the messaging operation',
@@ -17615,6 +20324,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'create',
     changelog: [{ version: '0.1.0', prs: [51, 127] }],
   },
@@ -17625,6 +20335,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'activemq',
     sdks: ['php-laravel'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
@@ -17636,6 +20347,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'GET',
     deprecation: {
       replacement: 'http.request.method',
@@ -17651,6 +20363,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'AuthenticationMiddleware',
     sdks: ['python'],
     changelog: [{ version: '0.6.0', prs: [336], description: 'Added middleware.name attribute' }],
@@ -17662,6 +20375,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'router.push',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
@@ -17673,6 +20387,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 100,
     changelog: [
       { version: '0.4.0', prs: [228] },
@@ -17686,6 +20401,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'application',
     changelog: [{ version: '0.1.0', prs: [68, 127] }],
   },
@@ -17696,6 +20412,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'https://example.com/foo?bar=baz',
     changelog: [{ version: '0.1.0', prs: [68, 127] }],
   },
@@ -17706,6 +20423,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 0.5,
     changelog: [
       { version: '0.4.0', prs: [228] },
@@ -17719,6 +20437,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'dns.unreachable',
     changelog: [{ version: '0.1.0', prs: [68, 127] }],
   },
@@ -17729,6 +20448,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '4g',
     aliases: [EFFECTIVECONNECTIONTYPE],
     sdks: ['javascript-browser'],
@@ -17747,6 +20467,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 100,
     aliases: [CONNECTION_RTT],
     sdks: ['javascript-browser'],
@@ -17765,6 +20486,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'wifi',
     aliases: [DEVICE_CONNECTION_TYPE, CONNECTIONTYPE],
     sdks: ['javascript-browser'],
@@ -17783,6 +20505,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: '10.1.2.80',
     aliases: [NET_HOST_IP, NET_SOCK_HOST_ADDR],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
@@ -17794,6 +20517,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 65400,
     aliases: [NET_SOCK_HOST_PORT],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
@@ -17805,6 +20529,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: '10.1.2.80',
     aliases: [NET_PEER_IP, NET_SOCK_PEER_ADDR],
     changelog: [{ version: '0.1.0', prs: [108, 127] }, { version: '0.0.0' }],
@@ -17816,6 +20541,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 65400,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
@@ -17826,6 +20552,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'http',
     aliases: [NET_PROTOCOL_NAME],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
@@ -17837,6 +20564,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: '1.1',
     aliases: [HTTP_FLAVOR, NET_PROTOCOL_VERSION],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
@@ -17848,6 +20576,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'tcp',
     aliases: [NET_TRANSPORT],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
@@ -17859,6 +20588,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'ipv4',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
@@ -17869,6 +20599,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: '192.168.0.1',
     deprecation: {
       replacement: 'network.local.address',
@@ -17884,6 +20615,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'example.com',
     deprecation: {
       replacement: 'server.address',
@@ -17898,6 +20630,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 1337,
     deprecation: {
       replacement: 'server.port',
@@ -17912,6 +20645,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: '192.168.0.1',
     deprecation: {
       replacement: 'network.peer.address',
@@ -17927,6 +20661,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'example.com',
     deprecation: {
       replacement: 'server.address',
@@ -17941,6 +20676,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 1337,
     deprecation: {
       replacement: 'server.port',
@@ -17955,6 +20691,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'http',
     deprecation: {
       replacement: 'network.protocol.name',
@@ -17969,6 +20706,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: '1.1',
     deprecation: {
       replacement: 'network.protocol.version',
@@ -17983,6 +20721,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'inet',
     deprecation: {
       replacement: 'network.transport',
@@ -17997,6 +20736,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: '/var/my.sock',
     deprecation: {
       replacement: 'network.local.address',
@@ -18011,6 +20751,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 8080,
     deprecation: {
       replacement: 'network.local.port',
@@ -18025,6 +20766,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: '192.168.0.1',
     deprecation: {
       replacement: 'network.peer.address',
@@ -18039,6 +20781,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: '/var/my.sock',
     deprecation: {
       reason: 'Deprecated from OTEL, no replacement at this time',
@@ -18052,6 +20795,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 8080,
     deprecation: {
       replacement: 'network.peer.port',
@@ -18065,6 +20809,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'tcp',
     deprecation: {
       replacement: 'network.transport',
@@ -18079,6 +20824,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '1234567890',
     deprecation: {
       replacement: 'os.build_id',
@@ -18095,6 +20841,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: '1234567890',
     aliases: [OS_BUILD],
     changelog: [
@@ -18111,6 +20858,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'Ubuntu 18.04.1 LTS',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
@@ -18121,6 +20869,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '20.2.0',
     changelog: [{ version: '0.5.0', prs: [301], description: 'Added os.kernel_version attribute' }],
   },
@@ -18131,6 +20880,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'Ubuntu',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
@@ -18142,6 +20892,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'Ubuntu 22.04.4 LTS (Jammy Jellyfish)',
     changelog: [{ version: '0.5.0', prs: [301], description: 'Added os.raw_description attribute' }],
   },
@@ -18152,6 +20903,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: true,
     changelog: [{ version: '0.5.0', prs: [301], description: 'Added os.rooted attribute' }],
   },
@@ -18162,6 +20914,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'dark',
     changelog: [{ version: '0.5.0', prs: [301], description: 'Added os.theme attribute' }],
   },
@@ -18172,6 +20925,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'linux',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
@@ -18182,6 +20936,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: '18.04.2',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
@@ -18192,6 +20947,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'io.opentelemetry.contrib.mongodb',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
@@ -18202,6 +20958,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: '2.4.5',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
@@ -18212,6 +20969,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'OK',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
@@ -18222,6 +20980,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'resource not found',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
@@ -18233,6 +20992,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     hasDynamicSuffix: true,
     example: "params.id='123'",
     aliases: [URL_PATH_PARAMETER_KEY],
@@ -18245,6 +21005,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1.983,
     deprecation: {
       replacement: 'browser.performance.navigation.activation_start',
@@ -18261,6 +21022,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1776185678.886,
     deprecation: {
       replacement: 'browser.performance.time_origin',
@@ -18277,6 +21039,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'HomeScreen',
     sdks: ['javascript-reactnative'],
     changelog: [{ version: '0.1.0', prs: [74] }, { version: '0.0.0' }],
@@ -18288,6 +21051,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: ['cmd/otecol', '--config=config.yaml'],
     sdks: ['python'],
     changelog: [{ version: '0.6.0', prs: [327], description: 'Added process.command_args attribute' }],
@@ -18299,6 +21063,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'getsentry',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
@@ -18309,6 +21074,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 12345,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
@@ -18320,6 +21086,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'Eclipse OpenJ9 VM openj9-0.21.0',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
@@ -18330,6 +21097,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'v8',
     changelog: [{ version: '0.0.0' }],
   },
@@ -18340,6 +21108,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '12.9.202.13-rusty',
     changelog: [{ version: '0.0.0' }],
   },
@@ -18350,6 +21119,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'node',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
@@ -18361,6 +21131,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: '18.04.2',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
@@ -18371,6 +21142,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     hasDynamicSuffix: true,
     example: "query.id='123'",
     deprecation: {
@@ -18379,6 +21151,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     changelog: [{ version: '0.1.0', prs: [103] }],
   },
+  [REACT_VERSION]: {
+    brief: 'The version of the React framework',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '18.2.0',
+    changelog: [{ version: '0.7.0', prs: [368], description: 'Added react.version attribute' }],
+  },
   [RELEASE]: {
     brief: 'The sentry release.',
     type: 'string',
@@ -18386,6 +21169,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'production',
     deprecation: {
       replacement: 'sentry.release',
@@ -18400,6 +21184,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     hasDynamicSuffix: true,
     example: "http.response.header.text='test'",
     sdks: ['javascript-remix'],
@@ -18412,6 +21197,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '123e4567e89b12d3a456426614174000',
     deprecation: {
       replacement: 'sentry.replay_id',
@@ -18426,6 +21212,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'production',
     deprecation: {
       replacement: 'sentry.environment',
@@ -18439,6 +21226,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'production',
     deprecation: {
       replacement: 'sentry.environment',
@@ -18452,6 +21240,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'non-blocking',
     sdks: ['javascript-browser'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
@@ -18464,6 +21253,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'App\\Controller::indexAction',
     deprecation: {
       replacement: 'http.route',
@@ -18479,6 +21269,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 2,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
@@ -18489,8 +21280,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'com.example.ExampleService/exampleMethod',
-    changelog: [{ version: 'next', prs: [351], description: 'Added rpc.method attribute' }],
+    changelog: [{ version: '0.7.0', prs: [351], description: 'Added rpc.method attribute' }],
   },
   [RPC_RESPONSE_STATUS_CODE]: {
     brief: 'Status code of the RPC returned by the RPC server or generated by the client.',
@@ -18499,8 +21291,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'DEADLINE_EXCEEDED',
-    changelog: [{ version: 'next', prs: [352], description: 'Added rpc.response.status_code attribute' }],
+    changelog: [{ version: '0.7.0', prs: [352], description: 'Added rpc.response.status_code attribute' }],
   },
   [RPC_SERVICE]: {
     brief: 'The full (logical) name of the service being called, including its package name, if applicable.',
@@ -18509,6 +21302,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'myService.BestService',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
@@ -18520,9 +21314,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     hasDynamicSuffix: true,
     example: 'score.cls=0.1723',
-    changelog: [{ version: 'next', prs: [355], description: 'Added score.<key> attribute' }],
+    changelog: [{ version: '0.7.0', prs: [355], description: 'Added score.<key> attribute' }],
   },
   [SCORE_RATIO_KEY]: {
     brief: 'The score for a web vital, normalized to a number between 0 and 1.',
@@ -18531,9 +21326,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     hasDynamicSuffix: true,
     example: 'score.ratio.inp=0.7748',
-    changelog: [{ version: 'next', prs: [355], description: 'Added score.ratio.<key> attribute' }],
+    changelog: [{ version: '0.7.0', prs: [355], description: 'Added score.ratio.<key> attribute' }],
   },
   [SCORE_TOTAL]: {
     brief:
@@ -18543,7 +21339,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
-    changelog: [{ version: 'next', prs: [355], description: 'Added score.total attribute' }],
+    visibility: 'public',
+    changelog: [{ version: '0.7.0', prs: [355], description: 'Added score.total attribute' }],
   },
   [SCORE_WEIGHT_KEY]: {
     brief: "The relative weight of a web vital in a span's performance score.",
@@ -18552,9 +21349,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     hasDynamicSuffix: true,
     example: 'score.weight.fcp=0.25',
-    changelog: [{ version: 'next', prs: [355], description: 'Added score.weight.<key> attribute' }],
+    changelog: [{ version: '0.7.0', prs: [355], description: 'Added score.weight.<key> attribute' }],
   },
   [SENTRY_ACTION]: {
     brief:
@@ -18564,6 +21362,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'SELECT',
     changelog: [{ version: '0.4.0', prs: [212] }],
   },
@@ -18574,6 +21373,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'Chrome',
     deprecation: {
       replacement: 'browser.name',
@@ -18588,6 +21388,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '120.0.6099.130',
     deprecation: {
       replacement: 'browser.version',
@@ -18602,6 +21403,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'document.hidden',
     changelog: [{ version: '0.0.0' }],
   },
@@ -18613,6 +21415,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'db',
     changelog: [{ version: '0.4.0', prs: [218] }],
   },
@@ -18623,6 +21426,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 0.5,
     changelog: [{ version: '0.1.0', prs: [102] }],
   },
@@ -18633,6 +21437,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'index view query',
     changelog: [{ version: '0.1.0', prs: [135] }],
   },
@@ -18643,6 +21448,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '1.0',
     changelog: [{ version: '0.0.0' }],
   },
@@ -18654,6 +21460,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'example.com',
     changelog: [{ version: '0.4.0', prs: [212] }],
   },
@@ -18664,8 +21471,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'internal',
     example: 'prod',
     changelog: [{ version: '0.3.0', prs: [185] }],
+  },
+  [SENTRY_DSC_PROJECT_ID]: {
+    brief:
+      'The ID of the project where the trace originated (i.e. the project of the SDK that started the trace). Propagated through the dynamic sampling context and set by Relay during ingestion.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    visibility: 'internal',
+    example: '12345',
+    changelog: [{ version: '0.7.0', prs: [358], description: 'Add sentry.dsc.project_id as an attribute' }],
   },
   [SENTRY_DSC_PUBLIC_KEY]: {
     brief: 'The public key from the dynamic sampling context.',
@@ -18674,6 +21494,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'internal',
     example: 'c51734c603c4430eb57cb0a5728a479d',
     changelog: [{ version: '0.3.0', prs: [185] }],
   },
@@ -18684,6 +21505,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'internal',
     example: 'frontend@e8211be71b214afab5b85de4b4c54be3714952bb',
     changelog: [{ version: '0.3.0', prs: [185] }],
   },
@@ -18694,6 +21516,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'internal',
     example: true,
     changelog: [{ version: '0.3.0', prs: [185] }],
   },
@@ -18704,6 +21527,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'internal',
     example: '1.0',
     changelog: [{ version: '0.3.0', prs: [185] }],
   },
@@ -18714,6 +21538,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'internal',
     example: '047372980460430cbc78d9779df33a46',
     changelog: [{ version: '0.3.0', prs: [185] }],
   },
@@ -18724,6 +21549,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'internal',
     example: '/issues/errors-outages/',
     changelog: [{ version: '0.3.0', prs: [185] }],
   },
@@ -18734,6 +21560,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'production',
     aliases: [ENVIRONMENT],
     changelog: [{ version: '0.0.0' }],
@@ -18745,6 +21572,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1234,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.3.0', prs: [160] }, { version: '0.0.0' }],
   },
@@ -18755,6 +21583,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'getUserById',
     changelog: [{ version: '0.3.1', prs: [190] }],
   },
@@ -18766,6 +21595,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     changelog: [{ version: '0.4.0', prs: [212] }],
   },
   [SENTRY_HTTP_PREFETCH]: {
@@ -18775,6 +21605,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: true,
     changelog: [{ version: '0.0.0' }],
   },
@@ -18785,6 +21616,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'idleTimeout',
     changelog: [{ version: '0.0.0' }],
   },
@@ -18795,6 +21627,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: true,
     changelog: [{ version: '0.3.1', prs: [190] }],
   },
@@ -18806,6 +21639,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'server',
     changelog: [{ version: '0.3.1', prs: [190] }],
   },
@@ -18816,6 +21650,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: true,
     changelog: [{ version: '0.5.0' }],
   },
@@ -18827,6 +21662,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: "sentry.message.parameter.0='123'",
     changelog: [{ version: '0.1.0', prs: [116] }],
   },
@@ -18837,6 +21673,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'Hello, {name}!',
     changelog: [{ version: '0.1.0', prs: [116] }],
   },
@@ -18847,6 +21684,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: true,
     changelog: [{ version: '0.5.0' }],
   },
@@ -18857,6 +21695,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     hasDynamicSuffix: true,
     example: "sentry.module.brianium/paratest='v7.7.0'",
     changelog: [{ version: '0.1.0', prs: [103] }],
@@ -18869,6 +21708,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '/posts/[id]/layout',
     sdks: ['javascript'],
     changelog: [{ version: '0.1.0', prs: [54, 106] }],
@@ -18881,6 +21721,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'generateMetadata',
     sdks: ['javascript'],
     changelog: [{ version: '0.1.0', prs: [54, 106] }],
@@ -18892,6 +21733,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'SELECT .. FROM sentry_project WHERE (project_id = %s)',
     changelog: [{ version: '0.3.1', prs: [194] }],
   },
@@ -18902,6 +21744,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     changelog: [{ version: '0.4.0', prs: [200] }],
   },
   [SENTRY_NORMALIZED_DESCRIPTION]: {
@@ -18912,6 +21755,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'SELECT .. FROM sentry_project WHERE (project_id = %s)',
     changelog: [{ version: '0.4.0', prs: [212] }],
   },
@@ -18922,6 +21766,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '1544712660300000000',
     changelog: [
       { version: '0.3.0', prs: [174] },
@@ -18935,6 +21780,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'http.client',
     changelog: [{ version: '0.0.0' }],
   },
@@ -18945,6 +21791,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'auto.http.otel.fastify',
     changelog: [{ version: '0.1.0', prs: [68] }, { version: '0.0.0' }],
   },
@@ -18955,6 +21802,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'php',
     changelog: [{ version: '0.0.0' }],
   },
@@ -18965,6 +21813,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '18779b64dd35d1a538e7ce2dd2d3fad3',
     changelog: [{ version: '0.4.0', prs: [242] }],
   },
@@ -18976,6 +21825,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '123e4567e89b12d3a456426614174000',
     changelog: [{ version: '0.6.0', prs: [344], description: 'Added sentry.profile_id attribute' }],
   },
@@ -18986,6 +21836,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '7.0.0',
     aliases: [SERVICE_VERSION, RELEASE],
     changelog: [{ version: '0.0.0' }],
@@ -18997,6 +21848,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '123e4567e89b12d3a456426614174000',
     aliases: [REPLAY_ID],
     changelog: [{ version: '0.0.0' }],
@@ -19009,6 +21861,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: true,
     changelog: [{ version: '0.3.0', prs: [185] }],
   },
@@ -19019,6 +21872,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'pagehide',
     deprecation: {
       reason:
@@ -19035,6 +21889,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: ['InboundFilters', 'FunctionToString', 'BrowserApiErrors', 'Breadcrumbs'],
     changelog: [{ version: '0.0.0', prs: [42] }],
   },
@@ -19045,6 +21900,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '@sentry/react',
     changelog: [{ version: '0.0.0' }],
   },
@@ -19055,6 +21911,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '7.0.0',
     changelog: [{ version: '0.0.0' }],
   },
@@ -19065,6 +21922,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '051581bf3cb55c13',
     aliases: [_SENTRY_SEGMENT_ID],
     changelog: [{ version: '0.1.0', prs: [107, 124] }],
@@ -19076,6 +21934,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '051581bf3cb55c13',
     deprecation: {
       replacement: 'sentry.segment.id',
@@ -19090,8 +21949,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'GET /user',
-    aliases: [SENTRY_SPAN_NAME, SENTRY_TRANSACTION, TRANSACTION],
+    aliases: [SENTRY_TRANSACTION, TRANSACTION],
     changelog: [
       { version: '0.6.0', prs: [345], description: 'Added sentry.transaction and transaction aliases' },
       { version: '0.1.0', prs: [104] },
@@ -19104,6 +21964,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 0.5,
     changelog: [{ version: '0.1.0', prs: [102] }],
   },
@@ -19115,23 +21976,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'route',
     deprecation: {
       replacement: 'sentry.span.source',
       reason: 'This attribute is being deprecated in favor of sentry.span.source',
     },
     changelog: [{ version: '0.5.0' }],
-  },
-  [SENTRY_SPAN_NAME]: {
-    brief: 'The name of a span',
-    type: 'string',
-    pii: {
-      isPii: 'maybe',
-    },
-    isInOtel: false,
-    example: 'GET /user',
-    aliases: [SENTRY_SEGMENT_NAME, SENTRY_TRANSACTION, TRANSACTION],
-    changelog: [{ version: 'next', prs: [361], description: 'Added sentry.span.name attribute' }],
   },
   [SENTRY_SPAN_SOURCE]: {
     brief:
@@ -19141,6 +21992,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'route',
     changelog: [{ version: '0.4.0', prs: [214] }, { version: '0.0.0' }],
   },
@@ -19152,6 +22004,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 200,
     changelog: [{ version: '0.4.0', prs: [223, 228] }],
   },
@@ -19162,6 +22015,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'foobar',
     changelog: [{ version: '0.3.1', prs: [190] }],
   },
@@ -19173,6 +22027,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 0,
     changelog: [{ version: '0.5.0', prs: [262] }],
   },
@@ -19184,6 +22039,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'b0e6f15b45c36b12',
     deprecation: {},
     changelog: [
@@ -19198,16 +22054,129 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'GET /',
     deprecation: {
       replacement: 'sentry.segment.name',
       reason: 'This attribute is being deprecated in favor of sentry.segment.name',
     },
-    aliases: [SENTRY_SPAN_NAME, SENTRY_SEGMENT_NAME, TRANSACTION],
+    aliases: [SENTRY_SEGMENT_NAME, TRANSACTION],
     changelog: [
       { version: '0.6.0', prs: [345], description: 'Deprecated sentry.transaction in favor of sentry.segment.name' },
       { version: '0.0.0' },
     ],
+  },
+  [SENTRY_USER_EMAIL]: {
+    brief: 'User email address.',
+    type: 'string',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    deprecation: {
+      replacement: 'user.email',
+    },
+    aliases: [USER_EMAIL],
+    changelog: [{ version: '0.10.0', prs: [406] }],
+  },
+  [SENTRY_USER_GEO_CITY]: {
+    brief: 'Human readable city name.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    deprecation: {
+      replacement: 'user.geo.city',
+    },
+    aliases: [USER_GEO_CITY],
+    changelog: [{ version: '0.10.0', prs: [406] }],
+  },
+  [SENTRY_USER_GEO_COUNTRY_CODE]: {
+    brief: 'Two-letter country code (ISO 3166-1 alpha-2).',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    deprecation: {
+      replacement: 'user.geo.country_code',
+    },
+    aliases: [USER_GEO_COUNTRY_CODE],
+    changelog: [{ version: '0.10.0', prs: [406] }],
+  },
+  [SENTRY_USER_GEO_REGION]: {
+    brief: 'Human readable region name or code.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    deprecation: {
+      replacement: 'user.geo.region',
+    },
+    aliases: [USER_GEO_REGION],
+    changelog: [{ version: '0.10.0', prs: [406] }],
+  },
+  [SENTRY_USER_GEO_SUBDIVISION]: {
+    brief: 'Human readable subdivision name.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    deprecation: {
+      replacement: 'user.geo.subdivision',
+    },
+    aliases: [USER_GEO_SUBDIVISION],
+    changelog: [{ version: '0.10.0', prs: [406] }],
+  },
+  [SENTRY_USER_ID]: {
+    brief: 'Unique identifier of the user.',
+    type: 'string',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    deprecation: {
+      replacement: 'user.id',
+    },
+    aliases: [USER_ID],
+    changelog: [{ version: '0.10.0', prs: [406] }],
+  },
+  [SENTRY_USER_IP]: {
+    brief: 'The IP address of the user.',
+    type: 'string',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    deprecation: {
+      replacement: 'user.ip_address',
+    },
+    aliases: [USER_IP_ADDRESS],
+    changelog: [{ version: '0.10.0', prs: [406] }],
+  },
+  [SENTRY_USER_USERNAME]: {
+    brief: 'Short name or login/username of the user.',
+    type: 'string',
+    pii: {
+      isPii: 'true',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    deprecation: {
+      replacement: 'user.name',
+    },
+    aliases: [USER_NAME],
+    changelog: [{ version: '0.10.0', prs: [406] }],
   },
   [SERVER_ADDRESS]: {
     brief:
@@ -19217,6 +22186,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'example.com',
     aliases: [HTTP_SERVER_NAME, NET_HOST_NAME, HTTP_HOST],
     changelog: [{ version: '0.1.0', prs: [108, 127] }, { version: '0.0.0' }],
@@ -19228,6 +22198,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 1337,
     aliases: [NET_HOST_PORT],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
@@ -19239,6 +22210,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'omegastar',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
@@ -19249,17 +22221,51 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: '5.0.0',
     aliases: [SENTRY_RELEASE],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+  },
+  [STALL_PERCENTAGE]: {
+    brief: 'The fraction of time the app was stalled. Only applies to React Native. This is computed by Relay.',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    changelog: [{ version: '0.7.0', prs: [362], description: 'Added stall_percentage attribute' }],
+  },
+  [STALL_TOTAL_TIME]: {
+    brief:
+      'The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay.',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    changelog: [{ version: '0.7.0', prs: [362], description: 'Added stall_total_time attribute' }],
+  },
+  [STATE_TYPE]: {
+    brief: 'The type of state management library',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'redux',
+    changelog: [{ version: '0.7.0', prs: [365], description: 'Added state.type attribute' }],
   },
   [THREAD_ID]: {
     brief: 'Current “managed” thread ID.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 56,
     changelog: [{ version: '0.0.0' }],
   },
@@ -19270,6 +22276,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'main',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
@@ -19280,6 +22287,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'MyTag',
     sdks: ['sentry.java.android'],
     changelog: [{ version: '0.3.0', prs: [183] }],
@@ -19291,6 +22299,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1234.56,
     deprecation: {
       replacement: 'app.vitals.ttfd.value',
@@ -19310,6 +22319,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1234.56,
     deprecation: {
       replacement: 'app.vitals.ttid.value',
@@ -19329,11 +22339,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'GET /',
     deprecation: {
       replacement: 'sentry.segment.name',
     },
-    aliases: [SENTRY_SPAN_NAME, SENTRY_SEGMENT_NAME, SENTRY_TRANSACTION],
+    aliases: [SENTRY_SEGMENT_NAME, SENTRY_TRANSACTION],
     changelog: [
       {
         version: '0.6.0',
@@ -19351,12 +22362,35 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'GET',
     deprecation: {
       replacement: 'http.request.method',
     },
     aliases: [HTTP_REQUEST_METHOD, HTTP_METHOD, _HTTP_REQUEST_METHOD, METHOD],
     changelog: [{ version: 'next', prs: [361], description: 'Added transaction.method attribute' }],
+  },
+  [TRPC_PROCEDURE_PATH]: {
+    brief: 'The path of the tRPC procedure being called',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'user.getById',
+    changelog: [{ version: '0.7.0', prs: [370], description: 'Added trpc.procedure_path attribute' }],
+  },
+  [TRPC_PROCEDURE_TYPE]: {
+    brief: 'The type of the tRPC procedure',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'query',
+    changelog: [{ version: '0.7.0', prs: [370], description: 'Added trpc.procedure_type attribute' }],
   },
   [TTFB]: {
     brief: 'The value of the recorded Time To First Byte (TTFB) web vital in milliseconds',
@@ -19365,6 +22399,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 194,
     deprecation: {
       replacement: 'browser.web_vital.ttfb.value',
@@ -19382,6 +22417,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1554.5814,
     deprecation: {
       replacement: 'browser.web_vital.ttfb.request_time',
@@ -19398,6 +22434,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'fetch',
     sdks: ['javascript-browser', 'javascript-node'],
     changelog: [{ version: '0.0.0' }],
@@ -19409,6 +22446,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'HomeButton',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
@@ -19419,6 +22457,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: true,
     changelog: [{ version: '0.0.0' }],
   },
@@ -19429,6 +22468,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: true,
     changelog: [{ version: '0.0.0' }],
   },
@@ -19439,6 +22479,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 256,
     sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.height attribute' }],
@@ -19450,6 +22491,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'btn-login',
     sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.id attribute' }],
@@ -19461,6 +22503,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'heroImage',
     sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.identifier attribute' }],
@@ -19472,6 +22515,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 998.2234,
     sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.load_time attribute' }],
@@ -19483,6 +22527,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'image-paint',
     sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.paint_type attribute' }],
@@ -19494,6 +22539,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1023.1124,
     sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.render_time attribute' }],
@@ -19505,6 +22551,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'img',
     sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.type attribute' }],
@@ -19516,6 +22563,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'https://assets.myapp.com/hero.png',
     sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.url attribute' }],
@@ -19527,6 +22575,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 512,
     sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.width attribute' }],
@@ -19535,9 +22584,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The URL of the resource that was fetched.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'https://example.com/test?foo=bar#buzz',
     deprecation: {
       replacement: 'url.full',
@@ -19554,6 +22604,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'example.com',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
@@ -19565,6 +22616,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'details',
     changelog: [{ version: '0.0.0' }],
   },
@@ -19572,9 +22624,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The URL of the resource that was fetched.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'https://example.com/test?foo=bar#buzz',
     aliases: [HTTP_URL, URL],
     changelog: [{ version: '0.1.0', prs: [108] }, { version: '0.0.0' }],
@@ -19586,6 +22639,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: '/foo',
     changelog: [{ version: '0.0.0' }],
   },
@@ -19597,6 +22651,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     hasDynamicSuffix: true,
     example: "url.path.parameter.id='123'",
     aliases: [PARAMS_KEY],
@@ -19609,6 +22664,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 1337,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
@@ -19617,11 +22673,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'The query string present in the URL. Note that this does not contain the leading ? character, while the `http.query` attribute does.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
       reason:
         'Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'foo=bar&bar=baz',
     changelog: [{ version: '0.0.0' }],
   },
@@ -19632,6 +22689,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'https',
     aliases: [HTTP_SCHEME],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
@@ -19643,6 +22701,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example: '/users/:id',
     aliases: [HTTP_ROUTE],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
@@ -19654,6 +22713,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: true,
+    visibility: 'public',
     example:
       'Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1',
     aliases: [HTTP_USER_AGENT],
@@ -19666,7 +22726,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'true',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'test@example.com',
+    aliases: [SENTRY_USER_EMAIL],
     changelog: [{ version: '0.0.0' }],
   },
   [USER_FULL_NAME]: {
@@ -19676,6 +22738,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'true',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'John Smith',
     changelog: [{ version: '0.0.0' }],
   },
@@ -19686,7 +22749,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'Toronto',
+    aliases: [SENTRY_USER_GEO_CITY],
     changelog: [{ version: '0.0.0' }],
   },
   [USER_GEO_COUNTRY_CODE]: {
@@ -19696,7 +22761,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'CA',
+    aliases: [SENTRY_USER_GEO_COUNTRY_CODE],
     changelog: [{ version: '0.0.0' }],
   },
   [USER_GEO_REGION]: {
@@ -19706,7 +22773,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'Canada',
+    aliases: [SENTRY_USER_GEO_REGION],
     changelog: [{ version: '0.0.0' }],
   },
   [USER_GEO_SUBDIVISION]: {
@@ -19716,7 +22785,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'Ontario',
+    aliases: [SENTRY_USER_GEO_SUBDIVISION],
     changelog: [{ version: '0.0.0' }],
   },
   [USER_HASH]: {
@@ -19726,6 +22797,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'true',
     },
     isInOtel: true,
+    visibility: 'public',
     example: '8ae4c2993e0f4f3b8b2d1b1f3b5e8f4d',
     changelog: [{ version: '0.0.0' }],
   },
@@ -19736,7 +22808,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'true',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'S-1-5-21-202424912787-2692429404-2351956786-1000',
+    aliases: [SENTRY_USER_ID],
     changelog: [{ version: '0.0.0' }],
   },
   [USER_IP_ADDRESS]: {
@@ -19746,7 +22820,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'true',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '192.168.1.1',
+    aliases: [SENTRY_USER_IP],
     changelog: [{ version: '0.1.0', prs: [75] }],
   },
   [USER_NAME]: {
@@ -19756,7 +22832,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'true',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'j.smith',
+    aliases: [SENTRY_USER_USERNAME],
     changelog: [{ version: '0.0.0' }],
   },
   [USER_ROLES]: {
@@ -19766,6 +22844,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'true',
     },
     isInOtel: true,
+    visibility: 'public',
     example: ['admin', 'editor'],
     changelog: [{ version: '0.0.0' }],
   },
@@ -19776,6 +22855,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'main',
     changelog: [{ version: '0.2.0', prs: [163] }],
   },
@@ -19786,6 +22866,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'bld_cotnkcr76',
     changelog: [{ version: '0.2.0', prs: [163] }],
   },
@@ -19796,6 +22877,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'dpl_233NRGRjVZX1caZrXWtz5g1TAksD',
     changelog: [{ version: '0.2.0', prs: [163] }],
   },
@@ -19806,6 +22888,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'https://vitals.vercel-insights.com/v1',
     changelog: [{ version: '0.2.0', prs: [163] }],
   },
@@ -19816,6 +22899,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'edge-function',
     changelog: [{ version: '0.2.0', prs: [163] }],
   },
@@ -19826,6 +22910,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'api/index.js',
     changelog: [{ version: '0.2.0', prs: [163] }],
   },
@@ -19836,6 +22921,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'sfo1',
     changelog: [{ version: '0.2.0', prs: [163] }],
   },
@@ -19846,6 +22932,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '1573817187330377061717300000',
     changelog: [{ version: '0.2.0', prs: [163] }],
   },
@@ -19856,6 +22943,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '769,47-53-5-10-49161-49162-49171-49172-50-56-19-4,0-10-11,23-24-25,0',
     changelog: [{ version: '0.2.0', prs: [163] }],
   },
@@ -19866,6 +22954,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 't13d1516h2_8daaf6152771_02713d6af862',
     changelog: [{ version: '0.2.0', prs: [163] }],
   },
@@ -19876,6 +22965,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'stdout',
     changelog: [{ version: '0.2.0', prs: [163] }],
   },
@@ -19886,6 +22976,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '/dynamic/[route].json',
     changelog: [{ version: '0.6.0', prs: [349], description: 'Added vercel.path attribute' }],
   },
@@ -19896,6 +22987,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'gdufoJxB6b9b1fEqr1jUtFkyavUU',
     changelog: [{ version: '0.2.0', prs: [163] }],
   },
@@ -19906,6 +22998,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'my-app',
     changelog: [{ version: '0.2.0', prs: [163] }],
   },
@@ -19916,6 +23009,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'pdx1::v8g4b-1744143786684-93dafbc0f70d',
     changelog: [{ version: '0.2.0', prs: [163] }],
   },
@@ -19926,6 +23020,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'true',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '120.75.16.101',
     changelog: [{ version: '0.2.0', prs: [163] }],
   },
@@ -19936,6 +23031,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'test.vercel.app',
     changelog: [{ version: '0.2.0', prs: [163] }],
   },
@@ -19946,6 +23042,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'sfo1',
     changelog: [{ version: '0.2.0', prs: [163] }],
   },
@@ -19956,6 +23053,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'GET',
     changelog: [{ version: '0.2.0', prs: [163] }],
   },
@@ -19966,6 +23064,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '/dynamic/some-value.json?route=some-value',
     changelog: [{ version: '0.2.0', prs: [163] }],
   },
@@ -19976,6 +23075,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'func',
     changelog: [{ version: '0.2.0', prs: [163] }],
   },
@@ -19986,6 +23086,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'api',
     changelog: [{ version: '0.2.0', prs: [163] }],
   },
@@ -19996,6 +23097,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '*.vercel.app',
     changelog: [{ version: '0.2.0', prs: [163] }],
   },
@@ -20006,6 +23108,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'sfo1',
     changelog: [{ version: '0.2.0', prs: [163] }],
   },
@@ -20016,6 +23119,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1024,
     changelog: [
       { version: '0.4.0', prs: [228] },
@@ -20029,6 +23133,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'https',
     changelog: [{ version: '0.2.0', prs: [163] }],
   },
@@ -20039,6 +23144,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 200,
     changelog: [
       { version: '0.4.0', prs: [228] },
@@ -20052,6 +23158,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1573817250172,
     changelog: [
       { version: '0.4.0', prs: [228] },
@@ -20065,6 +23172,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: ['Mozilla/5.0...'],
     changelog: [{ version: '0.2.0', prs: [163] }],
   },
@@ -20075,6 +23183,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'REVALIDATED',
     changelog: [{ version: '0.2.0', prs: [163] }],
   },
@@ -20085,6 +23194,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'sfo1::abc123',
     changelog: [{ version: '0.2.0', prs: [163] }],
   },
@@ -20095,6 +23205,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'deny',
     changelog: [{ version: '0.2.0', prs: [163] }],
   },
@@ -20105,6 +23216,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'rule_gAHz8jtSB1Gy',
     changelog: [{ version: '0.2.0', prs: [163] }],
   },
@@ -20115,6 +23227,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '643af4e3-975a-4cc7-9e7a-1eda11539d90',
     changelog: [{ version: '0.2.0', prs: [163] }],
   },
@@ -20125,6 +23238,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'build',
     changelog: [{ version: '0.2.0', prs: [163] }],
   },
@@ -20135,6 +23249,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'maybe',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 200,
     changelog: [
       { version: '0.4.0', prs: [228] },
@@ -20179,6 +23294,7 @@ export type Attributes = {
   [AI_TOTAL_COST]?: AI_TOTAL_COST_TYPE;
   [AI_TOTAL_TOKENS_USED]?: AI_TOTAL_TOKENS_USED_TYPE;
   [AI_WARNINGS]?: AI_WARNINGS_TYPE;
+  [ANGULAR_VERSION]?: ANGULAR_VERSION_TYPE;
   [APP_APP_BUILD]?: APP_APP_BUILD_TYPE;
   [APP_APP_IDENTIFIER]?: APP_APP_IDENTIFIER_TYPE;
   [APP_APP_NAME]?: APP_APP_NAME_TYPE;
@@ -20204,6 +23320,15 @@ export type Attributes = {
   [APP_VITALS_START_WARM_VALUE]?: APP_VITALS_START_WARM_VALUE_TYPE;
   [APP_VITALS_TTFD_VALUE]?: APP_VITALS_TTFD_VALUE_TYPE;
   [APP_VITALS_TTID_VALUE]?: APP_VITALS_TTID_VALUE_TYPE;
+  [AWS_CLOUDWATCH_LOGS_LOG_GROUP]?: AWS_CLOUDWATCH_LOGS_LOG_GROUP_TYPE;
+  [AWS_CLOUDWATCH_LOGS_LOG_STREAM]?: AWS_CLOUDWATCH_LOGS_LOG_STREAM_TYPE;
+  [AWS_CLOUDWATCH_LOGS_URL]?: AWS_CLOUDWATCH_LOGS_URL_TYPE;
+  [AWS_LAMBDA_AWS_REQUEST_ID]?: AWS_LAMBDA_AWS_REQUEST_ID_TYPE;
+  [AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS]?: AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS_TYPE;
+  [AWS_LAMBDA_FUNCTION_NAME]?: AWS_LAMBDA_FUNCTION_NAME_TYPE;
+  [AWS_LAMBDA_FUNCTION_VERSION]?: AWS_LAMBDA_FUNCTION_VERSION_TYPE;
+  [AWS_LAMBDA_INVOKED_FUNCTION_ARN]?: AWS_LAMBDA_INVOKED_FUNCTION_ARN_TYPE;
+  [AWS_LAMBDA_REMAINING_TIME_IN_MILLIS]?: AWS_LAMBDA_REMAINING_TIME_IN_MILLIS_TYPE;
   [BLOCKED_MAIN_THREAD]?: BLOCKED_MAIN_THREAD_TYPE;
   [BROWSER_NAME]?: BROWSER_NAME_TYPE;
   [BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START]?: BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START_TYPE;
@@ -20239,8 +23364,19 @@ export type Attributes = {
   [CLIENT_ADDRESS]?: CLIENT_ADDRESS_TYPE;
   [CLIENT_PORT]?: CLIENT_PORT_TYPE;
   [CLOUDFLARE_D1_DURATION]?: CLOUDFLARE_D1_DURATION_TYPE;
+  [CLOUDFLARE_D1_QUERY_TYPE]?: CLOUDFLARE_D1_QUERY_TYPE_TYPE;
   [CLOUDFLARE_D1_ROWS_READ]?: CLOUDFLARE_D1_ROWS_READ_TYPE;
   [CLOUDFLARE_D1_ROWS_WRITTEN]?: CLOUDFLARE_D1_ROWS_WRITTEN_TYPE;
+  [CLOUDFLARE_WORKFLOW_ATTEMPT]?: CLOUDFLARE_WORKFLOW_ATTEMPT_TYPE;
+  [CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF]?: CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF_TYPE;
+  [CLOUDFLARE_WORKFLOW_RETRIES_DELAY]?: CLOUDFLARE_WORKFLOW_RETRIES_DELAY_TYPE;
+  [CLOUDFLARE_WORKFLOW_RETRIES_LIMIT]?: CLOUDFLARE_WORKFLOW_RETRIES_LIMIT_TYPE;
+  [CLOUDFLARE_WORKFLOW_TIMEOUT]?: CLOUDFLARE_WORKFLOW_TIMEOUT_TYPE;
+  [CLOUD_ACCOUNT_ID]?: CLOUD_ACCOUNT_ID_TYPE;
+  [CLOUD_AVAILABILITY_ZONE]?: CLOUD_AVAILABILITY_ZONE_TYPE;
+  [CLOUD_PLATFORM]?: CLOUD_PLATFORM_TYPE;
+  [CLOUD_PROVIDER]?: CLOUD_PROVIDER_TYPE;
+  [CLOUD_REGION]?: CLOUD_REGION_TYPE;
   [CLS]?: CLS_TYPE;
   [CLS_SOURCE_KEY]?: CLS_SOURCE_KEY_TYPE;
   [CODE_FILEPATH]?: CODE_FILEPATH_TYPE;
@@ -20271,6 +23407,7 @@ export type Attributes = {
   [DB_REDIS_PARAMETERS]?: DB_REDIS_PARAMETERS_TYPE;
   [DB_SQL_BINDINGS]?: DB_SQL_BINDINGS_TYPE;
   [DB_STATEMENT]?: DB_STATEMENT_TYPE;
+  [DB_STORED_PROCEDURE_NAME]?: DB_STORED_PROCEDURE_NAME_TYPE;
   [DB_SYSTEM]?: DB_SYSTEM_TYPE;
   [DB_SYSTEM_NAME]?: DB_SYSTEM_NAME_TYPE;
   [DB_USER]?: DB_USER_TYPE;
@@ -20324,6 +23461,10 @@ export type Attributes = {
   [EXCEPTION_TYPE]?: EXCEPTION_TYPE_TYPE;
   [FAAS_COLDSTART]?: FAAS_COLDSTART_TYPE;
   [FAAS_CRON]?: FAAS_CRON_TYPE;
+  [FAAS_DURATION_IN_MS]?: FAAS_DURATION_IN_MS_TYPE;
+  [FAAS_ENTRY_POINT]?: FAAS_ENTRY_POINT_TYPE;
+  [FAAS_IDENTITY]?: FAAS_IDENTITY_TYPE;
+  [FAAS_NAME]?: FAAS_NAME_TYPE;
   [FAAS_TIME]?: FAAS_TIME_TYPE;
   [FAAS_TRIGGER]?: FAAS_TRIGGER_TYPE;
   [FCP]?: FCP_TYPE;
@@ -20331,9 +23472,21 @@ export type Attributes = {
   [FP]?: FP_TYPE;
   [FRAMES_DELAY]?: FRAMES_DELAY_TYPE;
   [FRAMES_FROZEN]?: FRAMES_FROZEN_TYPE;
+  [FRAMES_FROZEN_RATE]?: FRAMES_FROZEN_RATE_TYPE;
   [FRAMES_SLOW]?: FRAMES_SLOW_TYPE;
+  [FRAMES_SLOW_RATE]?: FRAMES_SLOW_RATE_TYPE;
   [FRAMES_TOTAL]?: FRAMES_TOTAL_TYPE;
   [FS_ERROR]?: FS_ERROR_TYPE;
+  [GCP_FUNCTION_CONTEXT_EVENT_ID]?: GCP_FUNCTION_CONTEXT_EVENT_ID_TYPE;
+  [GCP_FUNCTION_CONTEXT_EVENT_TYPE]?: GCP_FUNCTION_CONTEXT_EVENT_TYPE_TYPE;
+  [GCP_FUNCTION_CONTEXT_ID]?: GCP_FUNCTION_CONTEXT_ID_TYPE;
+  [GCP_FUNCTION_CONTEXT_RESOURCE]?: GCP_FUNCTION_CONTEXT_RESOURCE_TYPE;
+  [GCP_FUNCTION_CONTEXT_SOURCE]?: GCP_FUNCTION_CONTEXT_SOURCE_TYPE;
+  [GCP_FUNCTION_CONTEXT_SPECVERSION]?: GCP_FUNCTION_CONTEXT_SPECVERSION_TYPE;
+  [GCP_FUNCTION_CONTEXT_TIME]?: GCP_FUNCTION_CONTEXT_TIME_TYPE;
+  [GCP_FUNCTION_CONTEXT_TIMESTAMP]?: GCP_FUNCTION_CONTEXT_TIMESTAMP_TYPE;
+  [GCP_FUNCTION_CONTEXT_TYPE]?: GCP_FUNCTION_CONTEXT_TYPE_TYPE;
+  [GCP_PROJECT_ID]?: GCP_PROJECT_ID_TYPE;
   [GEN_AI_AGENT_NAME]?: GEN_AI_AGENT_NAME_TYPE;
   [GEN_AI_CONTEXT_UTILIZATION]?: GEN_AI_CONTEXT_UTILIZATION_TYPE;
   [GEN_AI_CONTEXT_WINDOW_SIZE]?: GEN_AI_CONTEXT_WINDOW_SIZE_TYPE;
@@ -20388,6 +23541,7 @@ export type Attributes = {
   [GEN_AI_USAGE_OUTPUT_TOKENS_REASONING]?: GEN_AI_USAGE_OUTPUT_TOKENS_REASONING_TYPE;
   [GEN_AI_USAGE_PROMPT_TOKENS]?: GEN_AI_USAGE_PROMPT_TOKENS_TYPE;
   [GEN_AI_USAGE_TOTAL_TOKENS]?: GEN_AI_USAGE_TOTAL_TOKENS_TYPE;
+  [GRAPHQL_DOCUMENT]?: GRAPHQL_DOCUMENT_TYPE;
   [GRAPHQL_OPERATION_NAME]?: GRAPHQL_OPERATION_NAME_TYPE;
   [GRAPHQL_OPERATION_TYPE]?: GRAPHQL_OPERATION_TYPE_TYPE;
   [HARDWARECONCURRENCY]?: HARDWARECONCURRENCY_TYPE;
@@ -20494,6 +23648,7 @@ export type Attributes = {
   [MESSAGING_MESSAGE_ID]?: MESSAGING_MESSAGE_ID_TYPE;
   [MESSAGING_MESSAGE_RECEIVE_LATENCY]?: MESSAGING_MESSAGE_RECEIVE_LATENCY_TYPE;
   [MESSAGING_MESSAGE_RETRY_COUNT]?: MESSAGING_MESSAGE_RETRY_COUNT_TYPE;
+  [MESSAGING_OPERATION_NAME]?: MESSAGING_OPERATION_NAME_TYPE;
   [MESSAGING_OPERATION_TYPE]?: MESSAGING_OPERATION_TYPE_TYPE;
   [MESSAGING_SYSTEM]?: MESSAGING_SYSTEM_TYPE;
   [METHOD]?: METHOD_TYPE;
@@ -20557,6 +23712,7 @@ export type Attributes = {
   [PROCESS_RUNTIME_NAME]?: PROCESS_RUNTIME_NAME_TYPE;
   [PROCESS_RUNTIME_VERSION]?: PROCESS_RUNTIME_VERSION_TYPE;
   [QUERY_KEY]?: QUERY_KEY_TYPE;
+  [REACT_VERSION]?: REACT_VERSION_TYPE;
   [RELEASE]?: RELEASE_TYPE;
   [REMIX_ACTION_FORM_DATA_KEY]?: REMIX_ACTION_FORM_DATA_KEY_TYPE;
   [REPLAY_ID]?: REPLAY_ID_TYPE;
@@ -20582,6 +23738,7 @@ export type Attributes = {
   [SENTRY_DIST]?: SENTRY_DIST_TYPE;
   [SENTRY_DOMAIN]?: SENTRY_DOMAIN_TYPE;
   [SENTRY_DSC_ENVIRONMENT]?: SENTRY_DSC_ENVIRONMENT_TYPE;
+  [SENTRY_DSC_PROJECT_ID]?: SENTRY_DSC_PROJECT_ID_TYPE;
   [SENTRY_DSC_PUBLIC_KEY]?: SENTRY_DSC_PUBLIC_KEY_TYPE;
   [SENTRY_DSC_RELEASE]?: SENTRY_DSC_RELEASE_TYPE;
   [SENTRY_DSC_SAMPLED]?: SENTRY_DSC_SAMPLED_TYPE;
@@ -20624,17 +23781,27 @@ export type Attributes = {
   [SENTRY_SEGMENT_NAME]?: SENTRY_SEGMENT_NAME_TYPE;
   [SENTRY_SERVER_SAMPLE_RATE]?: SENTRY_SERVER_SAMPLE_RATE_TYPE;
   [SENTRY_SOURCE]?: SENTRY_SOURCE_TYPE;
-  [SENTRY_SPAN_NAME]?: SENTRY_SPAN_NAME_TYPE;
   [SENTRY_SPAN_SOURCE]?: SENTRY_SPAN_SOURCE_TYPE;
   [SENTRY_STATUS_CODE]?: SENTRY_STATUS_CODE_TYPE;
   [SENTRY_STATUS_MESSAGE]?: SENTRY_STATUS_MESSAGE_TYPE;
   [SENTRY_TIMESTAMP_SEQUENCE]?: SENTRY_TIMESTAMP_SEQUENCE_TYPE;
   [SENTRY_TRACE_PARENT_SPAN_ID]?: SENTRY_TRACE_PARENT_SPAN_ID_TYPE;
   [SENTRY_TRANSACTION]?: SENTRY_TRANSACTION_TYPE;
+  [SENTRY_USER_EMAIL]?: SENTRY_USER_EMAIL_TYPE;
+  [SENTRY_USER_GEO_CITY]?: SENTRY_USER_GEO_CITY_TYPE;
+  [SENTRY_USER_GEO_COUNTRY_CODE]?: SENTRY_USER_GEO_COUNTRY_CODE_TYPE;
+  [SENTRY_USER_GEO_REGION]?: SENTRY_USER_GEO_REGION_TYPE;
+  [SENTRY_USER_GEO_SUBDIVISION]?: SENTRY_USER_GEO_SUBDIVISION_TYPE;
+  [SENTRY_USER_ID]?: SENTRY_USER_ID_TYPE;
+  [SENTRY_USER_IP]?: SENTRY_USER_IP_TYPE;
+  [SENTRY_USER_USERNAME]?: SENTRY_USER_USERNAME_TYPE;
   [SERVER_ADDRESS]?: SERVER_ADDRESS_TYPE;
   [SERVER_PORT]?: SERVER_PORT_TYPE;
   [SERVICE_NAME]?: SERVICE_NAME_TYPE;
   [SERVICE_VERSION]?: SERVICE_VERSION_TYPE;
+  [STALL_PERCENTAGE]?: STALL_PERCENTAGE_TYPE;
+  [STALL_TOTAL_TIME]?: STALL_TOTAL_TIME_TYPE;
+  [STATE_TYPE]?: STATE_TYPE_TYPE;
   [THREAD_ID]?: THREAD_ID_TYPE;
   [THREAD_NAME]?: THREAD_NAME_TYPE;
   [TIMBER_TAG]?: TIMBER_TAG_TYPE;
@@ -20642,6 +23809,8 @@ export type Attributes = {
   [TIME_TO_INITIAL_DISPLAY]?: TIME_TO_INITIAL_DISPLAY_TYPE;
   [TRANSACTION]?: TRANSACTION_TYPE;
   [TRANSACTION_METHOD]?: TRANSACTION_METHOD_TYPE;
+  [TRPC_PROCEDURE_PATH]?: TRPC_PROCEDURE_PATH_TYPE;
+  [TRPC_PROCEDURE_TYPE]?: TRPC_PROCEDURE_TYPE_TYPE;
   [TTFB]?: TTFB_TYPE;
   [TTFB_REQUESTTIME]?: TTFB_REQUESTTIME_TYPE;
   [TYPE]?: TYPE_TYPE;

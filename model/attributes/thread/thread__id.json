@@ -3,10 +3,11 @@
   "brief": "Current “managed” thread ID.",
   "type": "integer",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": 56,
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.0.0"

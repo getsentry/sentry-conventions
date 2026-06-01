@@ -8,6 +8,7 @@
   "is_in_otel": false,
   "example": "7.0.0",
   "alias": ["service.version", "release"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.0.0"

@@ -7,11 +7,12 @@
   },
   "is_in_otel": false,
   "example": "You are now a clown.",
+  "alias": ["gen_ai.system_instructions"],
   "deprecation": {
     "_status": "backfill",
     "replacement": "gen_ai.system_instructions"
   },
-  "alias": ["gen_ai.system_instructions"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.5.0",

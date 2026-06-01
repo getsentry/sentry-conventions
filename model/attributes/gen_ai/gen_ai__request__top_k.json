@@ -8,6 +8,7 @@
   "is_in_otel": true,
   "example": 35,
   "alias": ["ai.top_k"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.4.0",

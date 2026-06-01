@@ -9,6 +9,7 @@
   "example": 1024,
   "alias": ["lcp.size"],
   "sdks": ["javascript-browser"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.5.0",

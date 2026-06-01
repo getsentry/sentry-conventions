@@ -8,6 +8,7 @@
   "is_in_otel": false,
   "example": "https://assets.myapp.com/hero.png",
   "sdks": ["javascript-browser"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.5.0",

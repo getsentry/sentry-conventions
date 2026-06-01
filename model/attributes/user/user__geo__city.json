@@ -7,6 +7,8 @@
   },
   "is_in_otel": false,
   "example": "Toronto",
+  "alias": ["sentry.user.geo.city"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.0.0"

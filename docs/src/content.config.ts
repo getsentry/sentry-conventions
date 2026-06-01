@@ -13,6 +13,7 @@ const attributeSchema = z.object({
     reason: z.string().optional(),
   }),
   is_in_otel: z.boolean(),
+  visibility: z.enum(['public', 'internal']),
   example: z
     .union([z.string(), z.boolean(), z.number(), z.array(z.string()), z.array(z.boolean()), z.array(z.number())])
     .optional(),
@@ -25,6 +26,7 @@ const attributeSchema = z.object({
     .optional(),
   alias: z.array(z.string()).optional(),
   sdks: z.array(z.string()).optional(),
+  additional_context: z.array(z.string()).optional(),
   changelog: z
     .array(
       z.object({
@@ -64,9 +66,26 @@ const names = defineCollection({
   schema: nameSchema,
 });
 
-export const collections = { attributes, names };
+// Schema matching schemas/measurements.schema.json
+const measurementSchema = z.object({
+  key: z.string(),
+  full_name: z.string(),
+  brief: z.string().optional(),
+  unit: z.string(),
+  platform: z.enum(['web', 'mobile']),
+  attribute: z.string().optional(),
+});
+
+// Define the measurements collection - loads all JSON files from model/measurements
+const measurements = defineCollection({
+  loader: glob({ pattern: '*.json', base: '../model/measurements' }),
+  schema: measurementSchema,
+});
+
+export const collections = { attributes, names, measurements };
 
 // Export types for use in pages
 export type Attribute = z.infer<typeof attributeSchema>;
 export type SpanName = z.infer<typeof nameSchema>;
 export type SpanOperation = z.infer<typeof spanOperationSchema>;
+export type Measurement = z.infer<typeof measurementSchema>;

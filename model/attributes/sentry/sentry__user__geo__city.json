@@ -1,0 +1,21 @@
+{
+  "key": "sentry.user.geo.city",
+  "brief": "Human readable city name.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "alias": ["user.geo.city"],
+  "deprecation": {
+    "replacement": "user.geo.city",
+    "_status": null
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.10.0",
+      "prs": [406]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "key": "state.type",
+  "brief": "The type of state management library",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "redux",
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.7.0",
+      "prs": [365],
+      "description": "Added state.type attribute"
+    }
+  ]
+}

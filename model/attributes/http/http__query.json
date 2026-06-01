@@ -3,11 +3,12 @@
   "brief": "The query string present in the URL. Note that this contains the leading ? character, while the `url.query` attribute does not.",
   "type": "string",
   "pii": {
-    "key": "maybe",
+    "key": "true",
     "reason": "Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information."
   },
   "is_in_otel": false,
   "example": "?foo=bar&bar=baz",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.0.0"

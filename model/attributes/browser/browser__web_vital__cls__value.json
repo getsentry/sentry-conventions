@@ -7,8 +7,9 @@
   },
   "is_in_otel": false,
   "example": 0.2361,
-  "sdks": ["javascript-browser"],
   "alias": ["cls"],
+  "sdks": ["javascript-browser"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.5.0",

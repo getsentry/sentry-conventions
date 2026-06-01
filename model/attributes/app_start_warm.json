@@ -7,13 +7,14 @@
   },
   "is_in_otel": false,
   "example": 1234.56,
-  "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
   "alias": ["app.vitals.start.warm.value"],
+  "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
   "deprecation": {
     "replacement": "app.vitals.start.warm.value",
     "reason": "Replaced by app.vitals.start.warm.value to align with the app.vitals.* namespace for mobile performance attributes",
     "_status": "backfill"
   },
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.5.0",

@@ -1,0 +1,18 @@
+{
+  "key": "aws.cloudwatch.logs.url",
+  "brief": "The URL to the CloudWatch Logs log group",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups/log-group/my-log-group",
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.7.0",
+      "prs": [369],
+      "description": "Added aws.cloudwatch.logs.url attribute"
+    }
+  ]
+}
