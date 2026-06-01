@@ -1230,6 +1230,27 @@ export const APP_VITALS_START_COLD_VALUE = 'app.vitals.start.cold.value';
  */
 export type APP_VITALS_START_COLD_VALUE_TYPE = number;
 
+// Path: model/attributes/app/app__vitals__start__prewarmed.json
+
+/**
+ * Whether the app start was prewarmed. `app.vitals.start.prewarmed`
+ *
+ * Attribute Value Type: `boolean` {@link APP_VITALS_START_PREWARMED_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example true
+ */
+export const APP_VITALS_START_PREWARMED = 'app.vitals.start.prewarmed';
+
+/**
+ * Type for {@link APP_VITALS_START_PREWARMED} app.vitals.start.prewarmed
+ */
+export type APP_VITALS_START_PREWARMED_TYPE = boolean;
+
 // Path: model/attributes/app/app__vitals__start__reason.json
 
 /**
@@ -14092,6 +14113,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [APP_VITALS_FRAMES_SLOW_COUNT]: 'integer',
   [APP_VITALS_FRAMES_TOTAL_COUNT]: 'integer',
   [APP_VITALS_START_COLD_VALUE]: 'double',
+  [APP_VITALS_START_PREWARMED]: 'boolean',
   [APP_VITALS_START_REASON]: 'string',
   [APP_VITALS_START_SCREEN]: 'string',
   [APP_VITALS_START_TYPE]: 'string',
@@ -14732,6 +14754,7 @@ export type AttributeName =
   | typeof APP_VITALS_FRAMES_SLOW_COUNT
   | typeof APP_VITALS_FRAMES_TOTAL_COUNT
   | typeof APP_VITALS_START_COLD_VALUE
+  | typeof APP_VITALS_START_PREWARMED
   | typeof APP_VITALS_START_REASON
   | typeof APP_VITALS_START_SCREEN
   | typeof APP_VITALS_START_TYPE
@@ -16177,6 +16200,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [APP_START_COLD],
     sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.start.cold.value attribute' }],
+  },
+  [APP_VITALS_START_PREWARMED]: {
+    brief: 'Whether the app start was prewarmed.',
+    type: 'boolean',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: true,
+    sdks: ['sentry.cocoa'],
+    changelog: [{ version: 'next', prs: [379], description: 'Added app.vitals.start.prewarmed attribute' }],
   },
   [APP_VITALS_START_REASON]: {
     brief: 'The reason that triggered the app start.',
@@ -23853,6 +23888,7 @@ export type Attributes = {
   [APP_VITALS_FRAMES_SLOW_COUNT]?: APP_VITALS_FRAMES_SLOW_COUNT_TYPE;
   [APP_VITALS_FRAMES_TOTAL_COUNT]?: APP_VITALS_FRAMES_TOTAL_COUNT_TYPE;
   [APP_VITALS_START_COLD_VALUE]?: APP_VITALS_START_COLD_VALUE_TYPE;
+  [APP_VITALS_START_PREWARMED]?: APP_VITALS_START_PREWARMED_TYPE;
   [APP_VITALS_START_REASON]?: APP_VITALS_START_REASON_TYPE;
   [APP_VITALS_START_SCREEN]?: APP_VITALS_START_SCREEN_TYPE;
   [APP_VITALS_START_TYPE]?: APP_VITALS_START_TYPE_TYPE;

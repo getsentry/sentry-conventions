@@ -1,0 +1,19 @@
+{
+  "key": "app.vitals.start.prewarmed",
+  "brief": "Whether the app start was prewarmed.",
+  "type": "boolean",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": true,
+  "sdks": ["sentry.cocoa"],
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [379],
+      "description": "Added app.vitals.start.prewarmed attribute"
+    }
+  ]
+}
