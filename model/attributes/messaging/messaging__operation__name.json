@@ -8,6 +8,7 @@
   "is_in_otel": true,
   "example": "send",
   "sdks": ["javascript-cloudflare"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "next",
