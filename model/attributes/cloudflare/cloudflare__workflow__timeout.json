@@ -8,6 +8,7 @@
   "is_in_otel": false,
   "example": "1 minute",
   "sdks": ["javascript-cloudflare"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "next",

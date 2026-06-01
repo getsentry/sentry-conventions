@@ -2338,6 +2338,7 @@ export type CLOUDFLARE_D1_DURATION_TYPE = number;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "run"
  */
@@ -2400,6 +2401,7 @@ export type CLOUDFLARE_D1_ROWS_WRITTEN_TYPE = number;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 1
  */
@@ -2420,6 +2422,7 @@ export type CLOUDFLARE_WORKFLOW_ATTEMPT_TYPE = number;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "exponential"
  */
@@ -2440,6 +2443,7 @@ export type CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "5 seconds"
  */
@@ -2460,6 +2464,7 @@ export type CLOUDFLARE_WORKFLOW_RETRIES_DELAY_TYPE = string;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example 3
  */
@@ -2480,6 +2485,7 @@ export type CLOUDFLARE_WORKFLOW_RETRIES_LIMIT_TYPE = number;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "1 minute"
  */
@@ -8407,6 +8413,7 @@ export type MESSAGING_MESSAGE_RETRY_COUNT_TYPE = number;
  * Contains PII: false
  *
  * Attribute defined in OTEL: Yes
+ * Visibility: public
  *
  * @example "send"
  */
@@ -16308,6 +16315,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'run',
     sdks: ['javascript-cloudflare'],
     changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.d1.query_type attribute' }],
@@ -16343,6 +16351,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 1,
     sdks: ['javascript-cloudflare'],
     changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.workflow.attempt attribute' }],
@@ -16354,6 +16363,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'exponential',
     sdks: ['javascript-cloudflare'],
     changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.workflow.retries.backoff attribute' }],
@@ -16365,6 +16375,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '5 seconds',
     sdks: ['javascript-cloudflare'],
     changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.workflow.retries.delay attribute' }],
@@ -16376,6 +16387,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 3,
     sdks: ['javascript-cloudflare'],
     changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.workflow.retries.limit attribute' }],
@@ -16387,6 +16399,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: '1 minute',
     sdks: ['javascript-cloudflare'],
     changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.workflow.timeout attribute' }],
@@ -20067,6 +20080,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: true,
+    visibility: 'public',
     example: 'send',
     sdks: ['javascript-cloudflare'],
     changelog: [{ version: 'next', prs: [392], description: 'Added messaging.operation.name attribute' }],
