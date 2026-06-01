@@ -923,6 +923,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: bool
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: true
     """
 
@@ -8934,6 +8935,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.BOOLEAN,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example=True,
         sdks=["sentry.cocoa"],
         changelog=[

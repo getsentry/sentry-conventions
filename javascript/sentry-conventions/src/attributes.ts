@@ -1240,6 +1240,7 @@ export type APP_VITALS_START_COLD_VALUE_TYPE = number;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example true
  */
@@ -16207,6 +16208,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: true,
     sdks: ['sentry.cocoa'],
     changelog: [{ version: 'next', prs: [379], description: 'Added app.vitals.start.prewarmed attribute' }],
