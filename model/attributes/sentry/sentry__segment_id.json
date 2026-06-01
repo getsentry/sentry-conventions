@@ -12,6 +12,7 @@
     "_status": "backfill",
     "replacement": "sentry.segment.id"
   },
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

@@ -8,6 +8,7 @@
   "is_in_otel": false,
   "example": ["my-cache-key", "my-other-cache-key"],
   "sdks": ["php-laravel"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.0.0"

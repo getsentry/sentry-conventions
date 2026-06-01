@@ -8,6 +8,7 @@
   "is_in_otel": false,
   "example": 50,
   "sdks": ["ruby"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.5.0",

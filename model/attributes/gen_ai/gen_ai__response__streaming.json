@@ -8,6 +8,7 @@
   "is_in_otel": false,
   "example": true,
   "alias": ["ai.streaming"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

@@ -13,6 +13,7 @@
     "_status": "backfill",
     "replacement": "gen_ai.response.model"
   },
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

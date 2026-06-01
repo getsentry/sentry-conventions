@@ -1,0 +1,21 @@
+{
+  "key": "sentry.user.username",
+  "brief": "Short name or login/username of the user.",
+  "type": "string",
+  "pii": {
+    "key": "true"
+  },
+  "is_in_otel": false,
+  "alias": ["user.name"],
+  "deprecation": {
+    "replacement": "user.name",
+    "_status": null
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.10.0",
+      "prs": [406]
+    }
+  ]
+}

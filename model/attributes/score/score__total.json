@@ -6,9 +6,10 @@
     "key": "maybe"
   },
   "is_in_otel": false,
+  "visibility": "public",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.7.0",
       "prs": [355],
       "description": "Added score.total attribute"
     }

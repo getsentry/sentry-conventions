@@ -74,6 +74,13 @@ export const GET: APIRoute = async () => {
         lines.push('- OpenTelemetry: yes');
       }
 
+      if (data.additional_context && data.additional_context.length > 0) {
+        lines.push('- Additional context:');
+        for (const note of data.additional_context) {
+          lines.push(`  - ${note}`);
+        }
+      }
+
       if (data.deprecation) {
         let deprecationNote = '- Deprecated: yes';
         if (data.deprecation.replacement) {

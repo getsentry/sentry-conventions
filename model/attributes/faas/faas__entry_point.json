@@ -1,0 +1,16 @@
+{
+  "key": "faas.entry_point",
+  "brief": "The code that's run when the cloud provider invokes your function.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "my_main_function",
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "key": "runtime.raw_description",
+  "brief": "Unprocessed description string as obtained from the runtime. Used to extract name and version for well-known runtimes.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "example": "Eclipse OpenJ9 VM openj9-0.21.0",
+  "deprecation": {
+    "replacement": "process.runtime.description",
+    "reason": "Prefer OTel-aligned process.runtime.description",
+    "_status": null
+  },
+  "alias": ["process.runtime.description"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [383],
+      "description": "Added and deprecated runtime.raw_description attribute in favor of process.runtime.description"
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AttributeCard from '../../components/AttributeCard.astro';
+import AttributeFilters from '../../components/AttributeFilters.svelte';
 import { getCollection } from 'astro:content';
 import { parseAttributeId } from '../../utils/category';
 
@@ -104,10 +105,19 @@ const categoryTitle = category.charAt(0).toUpperCase() + category.slice(1);
           {deprecatedCount > 0 && <span class="text-text-muted">{deprecatedCount} deprecated</span>}
         </p>
       </div>
+
+      <AttributeFilters client:load mode="cards" totalCount={totalCount} />
+
+      <div
+        id="attribute-filter-empty"
+        class="hidden mb-8 p-6 bg-bg-secondary border border-dashed border-border rounded-lg text-center text-text-muted"
+      >
+        No attributes match the current filters.
+      </div>
       
-      <div class="flex flex-col gap-12">
+      <div id="attribute-list" class="flex flex-col gap-12">
         {stableAttributes.length > 0 && (
-          <section>
+          <section data-attribute-section>
             <h2 class="mb-4 pb-3 border-b border-border">Stable Attributes</h2>
             <div class="flex flex-col gap-4">
               {stableAttributes.map(attr => (
@@ -118,7 +128,7 @@ const categoryTitle = category.charAt(0).toUpperCase() + category.slice(1);
         )}
         
         {deprecatedAttributes.length > 0 && (
-          <section class="opacity-90">
+          <section class="opacity-90" data-attribute-section>
             <h2 class="mb-4 pb-3 border-b border-border text-text-muted">Deprecated Attributes</h2>
             <p class="text-sm text-text-muted mb-6">
               These attributes are deprecated and should not be used in new code. 

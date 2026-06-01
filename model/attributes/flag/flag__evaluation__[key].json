@@ -8,6 +8,7 @@
   },
   "is_in_otel": false,
   "example": "flag.evaluation.is_new_ui=true",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

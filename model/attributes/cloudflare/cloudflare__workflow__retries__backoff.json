@@ -1,0 +1,19 @@
+{
+  "key": "cloudflare.workflow.retries.backoff",
+  "brief": "The backoff strategy for Cloudflare Workflow step retries",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "exponential",
+  "sdks": ["javascript-cloudflare"],
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [392],
+      "description": "Added cloudflare.workflow.retries.backoff attribute"
+    }
+  ]
+}

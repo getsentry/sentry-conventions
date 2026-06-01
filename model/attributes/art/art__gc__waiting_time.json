@@ -1,0 +1,19 @@
+{
+  "key": "art.gc.waiting_time",
+  "brief": "Total time threads spent waiting for garbage collection to complete in the Android Runtime, in milliseconds",
+  "type": "double",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "example": 8.054,
+  "sdks": ["sentry.java.android"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [382],
+      "description": "Added art.gc.waiting_time attribute"
+    }
+  ]
+}

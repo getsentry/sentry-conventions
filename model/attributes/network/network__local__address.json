@@ -8,6 +8,7 @@
   "is_in_otel": true,
   "example": "10.1.2.80",
   "alias": ["net.host.ip", "net.sock.host.addr"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

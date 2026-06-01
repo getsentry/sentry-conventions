@@ -7,12 +7,13 @@
   },
   "is_in_otel": false,
   "example": "https://example.com/test?foo=bar#buzz",
+  "alias": ["url.full", "http.url"],
+  "sdks": ["javascript-browser", "javascript-node"],
   "deprecation": {
     "_status": null,
     "replacement": "url.full"
   },
-  "alias": ["url.full", "http.url"],
-  "sdks": ["javascript-browser", "javascript-node"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

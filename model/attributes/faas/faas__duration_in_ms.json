@@ -1,0 +1,16 @@
+{
+  "key": "faas.duration_in_ms",
+  "brief": "The duration a function took to run, in milliseconds.",
+  "type": "integer",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": 120,
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next"
+    }
+  ]
+}

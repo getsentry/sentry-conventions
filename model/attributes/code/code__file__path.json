@@ -8,6 +8,7 @@
   "is_in_otel": true,
   "example": "/app/myapplication/http/handler/server.py",
   "alias": ["code.filepath"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.0.0"

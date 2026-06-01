@@ -1,0 +1,18 @@
+{
+  "key": "cloud.availability_zone",
+  "brief": "Cloud regions often have multiple, isolated locations known as zones to increase availability",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": true,
+  "example": "us-east-1c",
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.7.0",
+      "prs": [364],
+      "description": "Added cloud.availability_zone attribute"
+    }
+  ]
+}

@@ -7,11 +7,12 @@
   },
   "is_in_otel": false,
   "example": "Chrome",
+  "alias": ["browser.name"],
   "deprecation": {
     "_status": null,
     "replacement": "browser.name"
   },
-  "alias": ["browser.name"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",
