@@ -7,7 +7,6 @@
   },
   "is_in_otel": true,
   "example": ["cmd/otecol", "--config=config.yaml"],
-  "sdks": ["python"],
   "visibility": "public",
   "changelog": [
     {

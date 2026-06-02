@@ -7,7 +7,6 @@
   },
   "is_in_otel": false,
   "example": 1732847252,
-  "sdks": ["php-laravel"],
   "visibility": "public",
   "changelog": [
     {

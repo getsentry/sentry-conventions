@@ -7,7 +7,6 @@
   },
   "is_in_otel": false,
   "example": "exponential",
-  "sdks": ["javascript-cloudflare"],
   "visibility": "public",
   "changelog": [
     {

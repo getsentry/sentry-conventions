@@ -8,7 +8,6 @@
   "is_in_otel": false,
   "example": 547.6951,
   "alias": ["browser.web_vital.fcp.value"],
-  "sdks": ["javascript-browser"],
   "deprecation": {
     "_status": "backfill",
     "replacement": "browser.web_vital.fcp.value",

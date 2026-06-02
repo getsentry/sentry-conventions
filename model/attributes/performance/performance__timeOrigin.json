@@ -8,7 +8,6 @@
   "is_in_otel": false,
   "example": 1776185678.886,
   "alias": ["browser.performance.time_origin"],
-  "sdks": ["javascript-browser"],
   "deprecation": {
     "reason": "The timeOrigin is now recorded as the browser.performance.time_origin attribute.",
     "replacement": "browser.performance.time_origin",

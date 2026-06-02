@@ -33,7 +33,6 @@ Options:
   --visibility, -v   The visibility of the attribute (public/internal)
   --example, -e       An example value (optional)
   --alias, -a         Comma-separated list of attributes that alias to this attribute (optional)
-  --sdks, -s          Comma-separated list of SDKs that use this attribute (optional)
 
 Examples:
   # Interactive mode
@@ -68,7 +67,6 @@ const createAttribute = async () => {
         visibility: { type: 'string', short: 'v' },
         example: { type: 'string', short: 'e' },
         alias: { type: 'string', short: 'a' },
-        sdks: { type: 'string', short: 's' },
       },
       allowPositionals: true,
     });
@@ -98,7 +96,6 @@ const createAttribute = async () => {
     let visibility: string | undefined;
     let example: string | undefined;
     let alias: string | undefined;
-    let sdks: string | undefined;
 
     if (isInteractive) {
       key = await askForAttributeName();
@@ -109,7 +106,6 @@ const createAttribute = async () => {
       visibility = await askForAttributeVisibility();
       example = await askForAttributeExample();
       alias = await askForAttributeAlias();
-      sdks = await askForAttributeSdks();
     } else {
       key = values.key;
       description = values.description;
@@ -119,7 +115,6 @@ const createAttribute = async () => {
       visibility = values.visibility;
       example = values.example;
       alias = values.alias;
-      sdks = values.sdks;
     }
 
     // Validate required fields
@@ -163,7 +158,6 @@ const createAttribute = async () => {
       visibility,
       ...(example && { example: exampleValue }),
       ...(alias && alias.trim() !== '' && { alias: alias.split(',').map((s) => s.trim()) }),
-      ...(sdks && sdks.trim() !== '' && { sdks: sdks.split(',').map((s) => s.trim()) }),
       changelog: [
         {
           version: 'next',
@@ -317,15 +311,6 @@ async function askForAttributeAlias() {
     text({
       message: 'Enter attributes that alias to this attribute (comma-separated, optional)',
       placeholder: 'url.route,http.routename',
-    }),
-  );
-}
-
-async function askForAttributeSdks() {
-  return abortIfCancelled(
-    text({
-      message: 'Enter SDKs that use this attribute (comma-separated, optional)',
-      placeholder: 'javascript-browser,javascript-node',
     }),
   );
 }

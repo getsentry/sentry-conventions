@@ -8,7 +8,6 @@
   "is_in_otel": false,
   "example": 194.3322,
   "alias": ["ttfb"],
-  "sdks": ["javascript-browser"],
   "visibility": "public",
   "changelog": [
     {

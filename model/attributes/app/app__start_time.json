@@ -8,7 +8,6 @@
   "is_in_otel": false,
   "example": "2025-01-01T00:00:00.000Z",
   "alias": ["app.app_start_time"],
-  "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
   "visibility": "public",
   "changelog": [
     {

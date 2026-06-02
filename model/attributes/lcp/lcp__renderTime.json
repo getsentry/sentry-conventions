@@ -8,7 +8,6 @@
   "is_in_otel": false,
   "example": 1685,
   "alias": ["browser.web_vital.lcp.render_time"],
-  "sdks": ["javascript-browser"],
   "deprecation": {
     "replacement": "browser.web_vital.lcp.render_time",
     "reason": "The LCP render time is now recorded as a browser.web_vital.lcp.render_time attribute.",

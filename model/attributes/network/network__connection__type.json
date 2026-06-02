@@ -8,7 +8,6 @@
   "is_in_otel": true,
   "example": "wifi",
   "alias": ["device.connection_type", "connectionType"],
-  "sdks": ["javascript-browser"],
   "visibility": "public",
   "changelog": [
     {

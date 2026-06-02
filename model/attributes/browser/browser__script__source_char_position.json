@@ -7,7 +7,6 @@
   },
   "is_in_otel": false,
   "example": 678,
-  "sdks": ["browser"],
   "visibility": "public",
   "changelog": [
     {

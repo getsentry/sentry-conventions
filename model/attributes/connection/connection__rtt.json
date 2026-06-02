@@ -8,7 +8,6 @@
   "is_in_otel": false,
   "example": 100,
   "alias": ["network.connection.rtt"],
-  "sdks": ["javascript-browser"],
   "deprecation": {
     "replacement": "network.connection.rtt",
     "reason": "Old attribute name (no official namespace), to be replaced with network.connection.rtt for span-first future",

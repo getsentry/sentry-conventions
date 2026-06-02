@@ -8,7 +8,6 @@
   "is_in_otel": false,
   "example": 1,
   "alias": ["frames.slow"],
-  "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
   "visibility": "public",
   "changelog": [
     {

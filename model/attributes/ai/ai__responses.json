@@ -7,7 +7,6 @@
   },
   "is_in_otel": false,
   "example": ["hello", "world"],
-  "sdks": ["python"],
   "deprecation": {
     "_status": "backfill",
     "replacement": "gen_ai.output.messages"
