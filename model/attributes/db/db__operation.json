@@ -7,7 +7,7 @@
   },
   "is_in_otel": true,
   "example": "SELECT",
-  "alias": ["db.operation.name"],
+  "alias": ["db.operation.name", "cloudflare.d1.query_type"],
   "deprecation": {
     "_status": "normalize",
     "replacement": "db.operation.name"

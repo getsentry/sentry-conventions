@@ -2669,6 +2669,9 @@ export type CLOUDFLARE_D1_DURATION_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link DB_OPERATION_NAME} `db.operation.name`, {@link DB_OPERATION} `db.operation`
+ *
+ * @deprecated Use {@link DB_OPERATION_NAME} (db.operation.name) instead
  * @example "run"
  */
 export const CLOUDFLARE_D1_QUERY_TYPE = 'cloudflare.d1.query_type';
@@ -3542,7 +3545,7 @@ export type DB_NAMESPACE_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link DB_OPERATION_NAME} `db.operation.name`
+ * Aliases: {@link DB_OPERATION_NAME} `db.operation.name`, {@link CLOUDFLARE_D1_QUERY_TYPE} `cloudflare.d1.query_type`
  *
  * @deprecated Use {@link DB_OPERATION_NAME} (db.operation.name) instead
  * @example "SELECT"
@@ -3587,7 +3590,7 @@ export type DB_OPERATION_BATCH_SIZE_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link DB_OPERATION} `db.operation`
+ * Aliases: {@link DB_OPERATION} `db.operation`, {@link CLOUDFLARE_D1_QUERY_TYPE} `cloudflare.d1.query_type`
  *
  * @example "SELECT"
  */
@@ -17420,6 +17423,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'run',
+    deprecation: {
+      replacement: 'db.operation.name',
+    },
+    aliases: [DB_OPERATION_NAME, DB_OPERATION],
     changelog: [{ version: '0.11.0', prs: [392], description: 'Added cloudflare.d1.query_type attribute' }],
   },
   [CLOUDFLARE_D1_ROWS_READ]: {
@@ -17928,7 +17935,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'db.operation.name',
     },
-    aliases: [DB_OPERATION_NAME],
+    aliases: [DB_OPERATION_NAME, CLOUDFLARE_D1_QUERY_TYPE],
     changelog: [{ version: '0.4.0', prs: [199] }, { version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
   [DB_OPERATION_BATCH_SIZE]: {
@@ -17952,7 +17959,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'SELECT',
-    aliases: [DB_OPERATION],
+    aliases: [DB_OPERATION, CLOUDFLARE_D1_QUERY_TYPE],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [DB_QUERY_PARAMETER_KEY]: {

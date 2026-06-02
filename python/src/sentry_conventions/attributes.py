@@ -156,6 +156,7 @@ class _AttributeNamesMeta(type):
         "AWS_LAMBDA_FUNCTION_NAME",
         "AWS_LAMBDA_FUNCTION_VERSION",
         "AWS_LAMBDA_INVOKED_FUNCTION_ARN",
+        "CLOUDFLARE_D1_QUERY_TYPE",
         "CLS_SOURCE_KEY",
         "CLS",
         "CODE_FILEPATH",
@@ -1854,6 +1855,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
+    Aliases: db.operation.name, db.operation
+    DEPRECATED: Use db.operation.name instead
     Example: "run"
     """
 
@@ -2274,7 +2277,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: db.operation.name
+    Aliases: db.operation.name, cloudflare.d1.query_type
     DEPRECATED: Use db.operation.name instead
     Example: "SELECT"
     """
@@ -2300,7 +2303,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: db.operation
+    Aliases: db.operation, cloudflare.d1.query_type
     Example: "SELECT"
     """
 
@@ -10156,6 +10159,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="run",
+        deprecation=DeprecationInfo(
+            replacement="db.operation.name", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["db.operation.name", "db.operation"],
         changelog=[
             ChangelogEntry(
                 version="0.11.0",
@@ -10643,7 +10650,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="db.operation.name", status=DeprecationStatus.NORMALIZE
         ),
-        aliases=["db.operation.name"],
+        aliases=["db.operation.name", "cloudflare.d1.query_type"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[199]),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
@@ -10672,7 +10679,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="SELECT",
-        aliases=["db.operation"],
+        aliases=["db.operation", "cloudflare.d1.query_type"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
