@@ -7075,6 +7075,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "5.0.0"
     """
 
+    # Path: model/attributes/session/session__id.json
+    SESSION_ID: Literal["session.id"] = "session.id"
+    """A unique id identifying the active session at the time of setting this attribute
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "00112233-4455-6677-8899-aabbccddeeff"
+    """
+
     # Path: model/attributes/stall_percentage.json
     STALL_PERCENTAGE: Literal["stall_percentage"] = "stall_percentage"
     """The fraction of time the app was stalled. Only applies to React Native. This is computed by Relay.
@@ -16001,6 +16012,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "session.id": AttributeMetadata(
+        brief="A unique id identifying the active session at the time of setting this attribute",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="00112233-4455-6677-8899-aabbccddeeff",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[412], description="Added session.id attribute"
+            ),
+        ],
+    ),
     "stall_percentage": AttributeMetadata(
         brief="The fraction of time the app was stalled. Only applies to React Native. This is computed by Relay.",
         type=AttributeType.DOUBLE,
@@ -17639,6 +17663,7 @@ Attributes = TypedDict(
         "server.port": int,
         "service.name": str,
         "service.version": str,
+        "session.id": str,
         "stall_percentage": float,
         "stall_total_time": float,
         "state.type": str,

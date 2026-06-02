@@ -12188,6 +12188,27 @@ export const SERVICE_VERSION = 'service.version';
  */
 export type SERVICE_VERSION_TYPE = string;
 
+// Path: model/attributes/session/session__id.json
+
+/**
+ * A unique id identifying the active session at the time of setting this attribute `session.id`
+ *
+ * Attribute Value Type: `string` {@link SESSION_ID_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "00112233-4455-6677-8899-aabbccddeeff"
+ */
+export const SESSION_ID = 'session.id';
+
+/**
+ * Type for {@link SESSION_ID} session.id
+ */
+export type SESSION_ID_TYPE = string;
+
 // Path: model/attributes/stall_percentage.json
 
 /**
@@ -14614,6 +14635,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SERVER_PORT]: 'integer',
   [SERVICE_NAME]: 'string',
   [SERVICE_VERSION]: 'string',
+  [SESSION_ID]: 'string',
   [STALL_PERCENTAGE]: 'double',
   [STALL_TOTAL_TIME]: 'double',
   [STATE_TYPE]: 'string',
@@ -15255,6 +15277,7 @@ export type AttributeName =
   | typeof SERVER_PORT
   | typeof SERVICE_NAME
   | typeof SERVICE_VERSION
+  | typeof SESSION_ID
   | typeof STALL_PERCENTAGE
   | typeof STALL_TOTAL_TIME
   | typeof STATE_TYPE
@@ -22815,6 +22838,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [SENTRY_RELEASE],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  [SESSION_ID]: {
+    brief: 'A unique id identifying the active session at the time of setting this attribute',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: '00112233-4455-6677-8899-aabbccddeeff',
+    changelog: [{ version: 'next', prs: [412], description: 'Added session.id attribute' }],
+  },
   [STALL_PERCENTAGE]: {
     brief: 'The fraction of time the app was stalled. Only applies to React Native. This is computed by Relay.',
     type: 'double',
@@ -24389,6 +24423,7 @@ export type Attributes = {
   [SERVER_PORT]?: SERVER_PORT_TYPE;
   [SERVICE_NAME]?: SERVICE_NAME_TYPE;
   [SERVICE_VERSION]?: SERVICE_VERSION_TYPE;
+  [SESSION_ID]?: SESSION_ID_TYPE;
   [STALL_PERCENTAGE]?: STALL_PERCENTAGE_TYPE;
   [STALL_TOTAL_TIME]?: STALL_TOTAL_TIME_TYPE;
   [STATE_TYPE]?: STATE_TYPE_TYPE;
