@@ -9,7 +9,7 @@
   "example": "arn:aws:lambda:us-east-1:123456789012:function:my-function",
   "visibility": "public",
   "deprecation": {
-    "_status": "backfill",
+    "_status": null,
     "replacement": "aws.lambda.invoked_arn",
     "reason": "This attribute is being deprecated in favor of aws.lambda.invoked_arn"
   },

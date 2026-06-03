@@ -9456,7 +9456,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="faas.invocation_id",
             reason="This attribute is being deprecated in favor of faas.invocation_id",
-            status=DeprecationStatus.BACKFILL,
+            status=DeprecationStatus.NORMALIZE,
         ),
         changelog=[
             ChangelogEntry(
@@ -9552,7 +9552,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="aws.lambda.invoked_arn",
             reason="This attribute is being deprecated in favor of aws.lambda.invoked_arn",
-            status=DeprecationStatus.BACKFILL,
         ),
         changelog=[
             ChangelogEntry(
