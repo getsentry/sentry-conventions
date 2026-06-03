@@ -2720,6 +2720,132 @@ export const CLOUDFLARE_D1_ROWS_WRITTEN = 'cloudflare.d1.rows_written';
  */
 export type CLOUDFLARE_D1_ROWS_WRITTEN_TYPE = number;
 
+// Path: model/attributes/cloudflare/cloudflare__r2__bucket.json
+
+/**
+ * The name of the Cloudflare R2 bucket binding `cloudflare.r2.bucket`
+ *
+ * Attribute Value Type: `string` {@link CLOUDFLARE_R2_BUCKET_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "MY_BUCKET"
+ */
+export const CLOUDFLARE_R2_BUCKET = 'cloudflare.r2.bucket';
+
+/**
+ * Type for {@link CLOUDFLARE_R2_BUCKET} cloudflare.r2.bucket
+ */
+export type CLOUDFLARE_R2_BUCKET_TYPE = string;
+
+// Path: model/attributes/cloudflare/cloudflare__r2__operation.json
+
+/**
+ * The R2 API operation being performed `cloudflare.r2.operation`
+ *
+ * Attribute Value Type: `string` {@link CLOUDFLARE_R2_OPERATION_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "GetObject"
+ */
+export const CLOUDFLARE_R2_OPERATION = 'cloudflare.r2.operation';
+
+/**
+ * Type for {@link CLOUDFLARE_R2_OPERATION} cloudflare.r2.operation
+ */
+export type CLOUDFLARE_R2_OPERATION_TYPE = string;
+
+// Path: model/attributes/cloudflare/cloudflare__r2__request__delimiter.json
+
+/**
+ * The delimiter used to group objects in an R2 list operation `cloudflare.r2.request.delimiter`
+ *
+ * Attribute Value Type: `string` {@link CLOUDFLARE_R2_REQUEST_DELIMITER_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "/"
+ */
+export const CLOUDFLARE_R2_REQUEST_DELIMITER = 'cloudflare.r2.request.delimiter';
+
+/**
+ * Type for {@link CLOUDFLARE_R2_REQUEST_DELIMITER} cloudflare.r2.request.delimiter
+ */
+export type CLOUDFLARE_R2_REQUEST_DELIMITER_TYPE = string;
+
+// Path: model/attributes/cloudflare/cloudflare__r2__request__key.json
+
+/**
+ * The object key used in the R2 operation `cloudflare.r2.request.key`
+ *
+ * Attribute Value Type: `string` {@link CLOUDFLARE_R2_REQUEST_KEY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "my-file.txt"
+ */
+export const CLOUDFLARE_R2_REQUEST_KEY = 'cloudflare.r2.request.key';
+
+/**
+ * Type for {@link CLOUDFLARE_R2_REQUEST_KEY} cloudflare.r2.request.key
+ */
+export type CLOUDFLARE_R2_REQUEST_KEY_TYPE = string;
+
+// Path: model/attributes/cloudflare/cloudflare__r2__request__part_number.json
+
+/**
+ * The part number in a multipart upload operation `cloudflare.r2.request.part_number`
+ *
+ * Attribute Value Type: `number` {@link CLOUDFLARE_R2_REQUEST_PART_NUMBER_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 1
+ */
+export const CLOUDFLARE_R2_REQUEST_PART_NUMBER = 'cloudflare.r2.request.part_number';
+
+/**
+ * Type for {@link CLOUDFLARE_R2_REQUEST_PART_NUMBER} cloudflare.r2.request.part_number
+ */
+export type CLOUDFLARE_R2_REQUEST_PART_NUMBER_TYPE = number;
+
+// Path: model/attributes/cloudflare/cloudflare__r2__request__prefix.json
+
+/**
+ * The prefix used to filter objects in an R2 list operation `cloudflare.r2.request.prefix`
+ *
+ * Attribute Value Type: `string` {@link CLOUDFLARE_R2_REQUEST_PREFIX_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "images/"
+ */
+export const CLOUDFLARE_R2_REQUEST_PREFIX = 'cloudflare.r2.request.prefix';
+
+/**
+ * Type for {@link CLOUDFLARE_R2_REQUEST_PREFIX} cloudflare.r2.request.prefix
+ */
+export type CLOUDFLARE_R2_REQUEST_PREFIX_TYPE = string;
+
 // Path: model/attributes/cloudflare/cloudflare__workflow__attempt.json
 
 /**
@@ -14471,6 +14597,12 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [CLOUDFLARE_D1_QUERY_TYPE]: 'string',
   [CLOUDFLARE_D1_ROWS_READ]: 'integer',
   [CLOUDFLARE_D1_ROWS_WRITTEN]: 'integer',
+  [CLOUDFLARE_R2_BUCKET]: 'string',
+  [CLOUDFLARE_R2_OPERATION]: 'string',
+  [CLOUDFLARE_R2_REQUEST_DELIMITER]: 'string',
+  [CLOUDFLARE_R2_REQUEST_KEY]: 'string',
+  [CLOUDFLARE_R2_REQUEST_PART_NUMBER]: 'integer',
+  [CLOUDFLARE_R2_REQUEST_PREFIX]: 'string',
   [CLOUDFLARE_WORKFLOW_ATTEMPT]: 'integer',
   [CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF]: 'string',
   [CLOUDFLARE_WORKFLOW_RETRIES_DELAY]: 'string',
@@ -15124,6 +15256,12 @@ export type AttributeName =
   | typeof CLOUDFLARE_D1_QUERY_TYPE
   | typeof CLOUDFLARE_D1_ROWS_READ
   | typeof CLOUDFLARE_D1_ROWS_WRITTEN
+  | typeof CLOUDFLARE_R2_BUCKET
+  | typeof CLOUDFLARE_R2_OPERATION
+  | typeof CLOUDFLARE_R2_REQUEST_DELIMITER
+  | typeof CLOUDFLARE_R2_REQUEST_KEY
+  | typeof CLOUDFLARE_R2_REQUEST_PART_NUMBER
+  | typeof CLOUDFLARE_R2_REQUEST_PREFIX
   | typeof CLOUDFLARE_WORKFLOW_ATTEMPT
   | typeof CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF
   | typeof CLOUDFLARE_WORKFLOW_RETRIES_DELAY
@@ -17305,6 +17443,72 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 12,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+  },
+  [CLOUDFLARE_R2_BUCKET]: {
+    brief: 'The name of the Cloudflare R2 bucket binding',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'MY_BUCKET',
+    changelog: [{ version: 'next', prs: [413], description: 'Added cloudflare.r2.bucket attribute' }],
+  },
+  [CLOUDFLARE_R2_OPERATION]: {
+    brief: 'The R2 API operation being performed',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'GetObject',
+    changelog: [{ version: 'next', prs: [413], description: 'Added cloudflare.r2.operation attribute' }],
+  },
+  [CLOUDFLARE_R2_REQUEST_DELIMITER]: {
+    brief: 'The delimiter used to group objects in an R2 list operation',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '/',
+    changelog: [{ version: 'next', prs: [413], description: 'Added cloudflare.r2.request.delimiter attribute' }],
+  },
+  [CLOUDFLARE_R2_REQUEST_KEY]: {
+    brief: 'The object key used in the R2 operation',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'my-file.txt',
+    changelog: [{ version: 'next', prs: [413], description: 'Added cloudflare.r2.request.key attribute' }],
+  },
+  [CLOUDFLARE_R2_REQUEST_PART_NUMBER]: {
+    brief: 'The part number in a multipart upload operation',
+    type: 'integer',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 1,
+    changelog: [{ version: 'next', prs: [413], description: 'Added cloudflare.r2.request.part_number attribute' }],
+  },
+  [CLOUDFLARE_R2_REQUEST_PREFIX]: {
+    brief: 'The prefix used to filter objects in an R2 list operation',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'images/',
+    changelog: [{ version: 'next', prs: [413], description: 'Added cloudflare.r2.request.prefix attribute' }],
   },
   [CLOUDFLARE_WORKFLOW_ATTEMPT]: {
     brief: 'The current attempt number for a Cloudflare Workflow step',
@@ -24322,6 +24526,12 @@ export type Attributes = {
   [CLOUDFLARE_D1_QUERY_TYPE]?: CLOUDFLARE_D1_QUERY_TYPE_TYPE;
   [CLOUDFLARE_D1_ROWS_READ]?: CLOUDFLARE_D1_ROWS_READ_TYPE;
   [CLOUDFLARE_D1_ROWS_WRITTEN]?: CLOUDFLARE_D1_ROWS_WRITTEN_TYPE;
+  [CLOUDFLARE_R2_BUCKET]?: CLOUDFLARE_R2_BUCKET_TYPE;
+  [CLOUDFLARE_R2_OPERATION]?: CLOUDFLARE_R2_OPERATION_TYPE;
+  [CLOUDFLARE_R2_REQUEST_DELIMITER]?: CLOUDFLARE_R2_REQUEST_DELIMITER_TYPE;
+  [CLOUDFLARE_R2_REQUEST_KEY]?: CLOUDFLARE_R2_REQUEST_KEY_TYPE;
+  [CLOUDFLARE_R2_REQUEST_PART_NUMBER]?: CLOUDFLARE_R2_REQUEST_PART_NUMBER_TYPE;
+  [CLOUDFLARE_R2_REQUEST_PREFIX]?: CLOUDFLARE_R2_REQUEST_PREFIX_TYPE;
   [CLOUDFLARE_WORKFLOW_ATTEMPT]?: CLOUDFLARE_WORKFLOW_ATTEMPT_TYPE;
   [CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF]?: CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF_TYPE;
   [CLOUDFLARE_WORKFLOW_RETRIES_DELAY]?: CLOUDFLARE_WORKFLOW_RETRIES_DELAY_TYPE;

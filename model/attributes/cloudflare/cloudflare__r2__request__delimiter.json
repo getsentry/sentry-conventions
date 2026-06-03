@@ -1,0 +1,18 @@
+{
+  "key": "cloudflare.r2.request.delimiter",
+  "brief": "The delimiter used to group objects in an R2 list operation",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "example": "/",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [413],
+      "description": "Added cloudflare.r2.request.delimiter attribute"
+    }
+  ]
+}
