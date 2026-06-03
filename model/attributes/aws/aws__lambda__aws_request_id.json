@@ -8,7 +8,7 @@
   "is_in_otel": false,
   "example": "8476a536-e9f4-11e8-9739-2dfe598c3fcd",
   "deprecation": {
-    "_status": "null",
+    "_status": null,
     "replacement": "faas.invocation_id",
     "reason": "This attribute is being deprecated in favor of faas.invocation_id"
   },
