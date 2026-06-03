@@ -1,0 +1,16 @@
+{
+  "key": "faas.version",
+  "brief": "The version of the function that was invoked",
+  "type": "string",
+  "pii": {
+    "key": "$LATEST"
+  },
+  "is_in_otel": true,
+  "example": 1.0,
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next"
+    }
+  ]
+}

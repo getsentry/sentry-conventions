@@ -1,0 +1,16 @@
+{
+  "key": "faas.invocation_id",
+  "brief": "The invocation ID of the current function invocation.",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "af9d5aa4-a685-4c5f-a22b-444f80b3cc28",
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next"
+    }
+  ]
+}

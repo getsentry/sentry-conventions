@@ -8,7 +8,16 @@
   "is_in_otel": false,
   "example": "arn:aws:lambda:us-east-1:123456789012:function:my-function",
   "visibility": "public",
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "aws.lambda.invoked_arn",
+    "reason": "This attribute is being deprecated in favor of aws.lambda.invoked_arn"
+  },
   "changelog": [
+    {
+      "version": "next",
+      "description": "Deprecated aws.lambda.invoked_function_arn in favor of aws.lambda.invoked_arn"
+    },
     {
       "version": "0.7.0",
       "prs": [369],
