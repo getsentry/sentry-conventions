@@ -9456,7 +9456,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="faas.invocation_id",
             reason="This attribute is being deprecated in favor of faas.invocation_id",
-            status=DeprecationStatus.NORMALIZE,
         ),
         changelog=[
             ChangelogEntry(
