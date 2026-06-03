@@ -1691,6 +1691,7 @@ export type AWS_CLOUDWATCH_LOGS_URL_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * @deprecated Use {@link FAAS_INVOCATION_ID} (faas.invocation_id) instead - This attribute is being deprecated in favor of faas.invocation_id
  * @example "8476a536-e9f4-11e8-9739-2dfe598c3fcd"
  */
 export const AWS_LAMBDA_AWS_REQUEST_ID = 'aws.lambda.aws_request_id';
@@ -1733,6 +1734,7 @@ export type AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * @deprecated Use {@link FAAS_NAME} (faas.name) instead - Use the OTel-aligned faas.name attribute instead
  * @example "my-function"
  */
 export const AWS_LAMBDA_FUNCTION_NAME = 'aws.lambda.function_name';
@@ -1754,6 +1756,7 @@ export type AWS_LAMBDA_FUNCTION_NAME_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * @deprecated Use {@link FAAS_VERSION} (faas.version) instead - Use the OTel-aligned faas.version attribute instead
  * @example "$LATEST"
  */
 export const AWS_LAMBDA_FUNCTION_VERSION = 'aws.lambda.function_version';
@@ -1762,6 +1765,27 @@ export const AWS_LAMBDA_FUNCTION_VERSION = 'aws.lambda.function_version';
  * Type for {@link AWS_LAMBDA_FUNCTION_VERSION} aws.lambda.function_version
  */
 export type AWS_LAMBDA_FUNCTION_VERSION_TYPE = string;
+
+// Path: model/attributes/aws/aws__lambda__invoked_arn.json
+
+/**
+ * The full ARN of the Lambda function that was invoked `aws.lambda.invoked_arn`
+ *
+ * Attribute Value Type: `string` {@link AWS_LAMBDA_INVOKED_ARN_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "arn:aws:lambda:us-east-1:123456789012:function:my-function"
+ */
+export const AWS_LAMBDA_INVOKED_ARN = 'aws.lambda.invoked_arn';
+
+/**
+ * Type for {@link AWS_LAMBDA_INVOKED_ARN} aws.lambda.invoked_arn
+ */
+export type AWS_LAMBDA_INVOKED_ARN_TYPE = string;
 
 // Path: model/attributes/aws/aws__lambda__invoked_function_arn.json
 
@@ -1775,6 +1799,7 @@ export type AWS_LAMBDA_FUNCTION_VERSION_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * @deprecated Use {@link AWS_LAMBDA_INVOKED_ARN} (aws.lambda.invoked_arn) instead - This attribute is being deprecated in favor of aws.lambda.invoked_arn
  * @example "arn:aws:lambda:us-east-1:123456789012:function:my-function"
  */
 export const AWS_LAMBDA_INVOKED_FUNCTION_ARN = 'aws.lambda.invoked_function_arn';
@@ -1804,6 +1829,48 @@ export const AWS_LAMBDA_REMAINING_TIME_IN_MILLIS = 'aws.lambda.remaining_time_in
  * Type for {@link AWS_LAMBDA_REMAINING_TIME_IN_MILLIS} aws.lambda.remaining_time_in_millis
  */
 export type AWS_LAMBDA_REMAINING_TIME_IN_MILLIS_TYPE = number;
+
+// Path: model/attributes/aws/aws__log__group__names.json
+
+/**
+ * The name(s) of the AWS log group(s) an application is writing to. `aws.log.group.names`
+ *
+ * Attribute Value Type: `Array<string>` {@link AWS_LOG_GROUP_NAMES_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example ["/aws/lambda/my-function","opentelemetry-service"]
+ */
+export const AWS_LOG_GROUP_NAMES = 'aws.log.group.names';
+
+/**
+ * Type for {@link AWS_LOG_GROUP_NAMES} aws.log.group.names
+ */
+export type AWS_LOG_GROUP_NAMES_TYPE = Array<string>;
+
+// Path: model/attributes/aws/aws__log__stream__names.json
+
+/**
+ * The name(s) of the AWS log stream(s) an application is writing to. `aws.log.stream.names`
+ *
+ * Attribute Value Type: `Array<string>` {@link AWS_LOG_STREAM_NAMES_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example ["logs/main/10838bed-421f-43ef-870a-f43feacbbb5b"]
+ */
+export const AWS_LOG_STREAM_NAMES = 'aws.log.stream.names';
+
+/**
+ * Type for {@link AWS_LOG_STREAM_NAMES} aws.log.stream.names
+ */
+export type AWS_LOG_STREAM_NAMES_TYPE = Array<string>;
 
 // Path: model/attributes/blocked_main_thread.json
 
@@ -2852,6 +2919,27 @@ export const CLOUD_REGION = 'cloud.region';
  * Type for {@link CLOUD_REGION} cloud.region
  */
 export type CLOUD_REGION_TYPE = string;
+
+// Path: model/attributes/cloud/cloud__resource_id.json
+
+/**
+ * Cloud provider-specific native identifier of the monitored cloud resource `cloud.resource_id`
+ *
+ * Attribute Value Type: `string` {@link CLOUD_RESOURCE_ID_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "arn:aws:lambda:REGION:ACCOUNT_ID:function:my-function"
+ */
+export const CLOUD_RESOURCE_ID = 'cloud.resource_id';
+
+/**
+ * Type for {@link CLOUD_RESOURCE_ID} cloud.resource_id
+ */
+export type CLOUD_RESOURCE_ID_TYPE = string;
 
 // Path: model/attributes/cls.json
 
@@ -4747,6 +4835,27 @@ export const FAAS_IDENTITY = 'faas.identity';
  */
 export type FAAS_IDENTITY_TYPE = string;
 
+// Path: model/attributes/faas/faas__invocation_id.json
+
+/**
+ * The invocation ID of the current function invocation. `faas.invocation_id`
+ *
+ * Attribute Value Type: `string` {@link FAAS_INVOCATION_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "af9d5aa4-a685-4c5f-a22b-444f80b3cc28"
+ */
+export const FAAS_INVOCATION_ID = 'faas.invocation_id';
+
+/**
+ * Type for {@link FAAS_INVOCATION_ID} faas.invocation_id
+ */
+export type FAAS_INVOCATION_ID_TYPE = string;
+
 // Path: model/attributes/faas/faas__name.json
 
 /**
@@ -4809,6 +4918,27 @@ export const FAAS_TRIGGER = 'faas.trigger';
  * Type for {@link FAAS_TRIGGER} faas.trigger
  */
 export type FAAS_TRIGGER_TYPE = string;
+
+// Path: model/attributes/faas/faas__version.json
+
+/**
+ * The version of the function that was invoked `faas.version`
+ *
+ * Attribute Value Type: `string` {@link FAAS_VERSION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example 1
+ */
+export const FAAS_VERSION = 'faas.version';
+
+/**
+ * Type for {@link FAAS_VERSION} faas.version
+ */
+export type FAAS_VERSION_TYPE = string;
 
 // Path: model/attributes/fcp.json
 
@@ -14138,8 +14268,11 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS]: 'double',
   [AWS_LAMBDA_FUNCTION_NAME]: 'string',
   [AWS_LAMBDA_FUNCTION_VERSION]: 'string',
+  [AWS_LAMBDA_INVOKED_ARN]: 'string',
   [AWS_LAMBDA_INVOKED_FUNCTION_ARN]: 'string',
   [AWS_LAMBDA_REMAINING_TIME_IN_MILLIS]: 'double',
+  [AWS_LOG_GROUP_NAMES]: 'string[]',
+  [AWS_LOG_STREAM_NAMES]: 'string[]',
   [BLOCKED_MAIN_THREAD]: 'boolean',
   [BROWSER_NAME]: 'string',
   [BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START]: 'double',
@@ -14188,6 +14321,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [CLOUD_PLATFORM]: 'string',
   [CLOUD_PROVIDER]: 'string',
   [CLOUD_REGION]: 'string',
+  [CLOUD_RESOURCE_ID]: 'string',
   [CLS]: 'double',
   [CLS_SOURCE_KEY]: 'string',
   [CODE_FILEPATH]: 'string',
@@ -14275,9 +14409,11 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [FAAS_DURATION_IN_MS]: 'integer',
   [FAAS_ENTRY_POINT]: 'string',
   [FAAS_IDENTITY]: 'string',
+  [FAAS_INVOCATION_ID]: 'string',
   [FAAS_NAME]: 'string',
   [FAAS_TIME]: 'string',
   [FAAS_TRIGGER]: 'string',
+  [FAAS_VERSION]: 'string',
   [FCP]: 'double',
   [FLAG_EVALUATION_KEY]: 'boolean',
   [FP]: 'double',
@@ -14779,8 +14915,11 @@ export type AttributeName =
   | typeof AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS
   | typeof AWS_LAMBDA_FUNCTION_NAME
   | typeof AWS_LAMBDA_FUNCTION_VERSION
+  | typeof AWS_LAMBDA_INVOKED_ARN
   | typeof AWS_LAMBDA_INVOKED_FUNCTION_ARN
   | typeof AWS_LAMBDA_REMAINING_TIME_IN_MILLIS
+  | typeof AWS_LOG_GROUP_NAMES
+  | typeof AWS_LOG_STREAM_NAMES
   | typeof BLOCKED_MAIN_THREAD
   | typeof BROWSER_NAME
   | typeof BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START
@@ -14829,6 +14968,7 @@ export type AttributeName =
   | typeof CLOUD_PLATFORM
   | typeof CLOUD_PROVIDER
   | typeof CLOUD_REGION
+  | typeof CLOUD_RESOURCE_ID
   | typeof CLS
   | typeof CLS_SOURCE_KEY
   | typeof CODE_FILEPATH
@@ -14916,9 +15056,11 @@ export type AttributeName =
   | typeof FAAS_DURATION_IN_MS
   | typeof FAAS_ENTRY_POINT
   | typeof FAAS_IDENTITY
+  | typeof FAAS_INVOCATION_ID
   | typeof FAAS_NAME
   | typeof FAAS_TIME
   | typeof FAAS_TRIGGER
+  | typeof FAAS_VERSION
   | typeof FCP
   | typeof FLAG_EVALUATION_KEY
   | typeof FP
@@ -16478,7 +16620,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: '8476a536-e9f4-11e8-9739-2dfe598c3fcd',
-    changelog: [{ version: '0.7.0', prs: [369], description: 'Added aws.lambda.aws_request_id attribute' }],
+    deprecation: {
+      replacement: 'faas.invocation_id',
+      reason: 'This attribute is being deprecated in favor of faas.invocation_id',
+    },
+    changelog: [
+      { version: 'next', description: 'Deprecated aws.lambda.aws_request_id in favor of faas.invocation_id' },
+      { version: '0.7.0', prs: [369], description: 'Added aws.lambda.aws_request_id attribute' },
+    ],
   },
   [AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS]: {
     brief: 'The execution duration of the Lambda function invocation in milliseconds',
@@ -16502,7 +16651,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'my-function',
-    changelog: [{ version: '0.7.0', prs: [369], description: 'Added aws.lambda.function_name attribute' }],
+    deprecation: {
+      replacement: 'faas.name',
+      reason: 'Use the OTel-aligned faas.name attribute instead',
+    },
+    changelog: [
+      { version: '0.7.0', prs: [369], description: 'Added aws.lambda.function_name attribute' },
+      { version: 'next', description: 'Deprecated aws.lambda.function_name in favor of faas.name' },
+    ],
   },
   [AWS_LAMBDA_FUNCTION_VERSION]: {
     brief: 'The version of the Lambda function',
@@ -16513,7 +16669,25 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: '$LATEST',
-    changelog: [{ version: '0.7.0', prs: [369], description: 'Added aws.lambda.function_version attribute' }],
+    deprecation: {
+      replacement: 'faas.version',
+      reason: 'Use the OTel-aligned faas.version attribute instead',
+    },
+    changelog: [
+      { version: '0.7.0', prs: [369], description: 'Added aws.lambda.function_version attribute' },
+      { version: 'next', description: 'Deprecated aws.lambda.function_version in favor of faas.version' },
+    ],
+  },
+  [AWS_LAMBDA_INVOKED_ARN]: {
+    brief: 'The full ARN of the Lambda function that was invoked',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'arn:aws:lambda:us-east-1:123456789012:function:my-function',
+    changelog: [{ version: 'next' }],
   },
   [AWS_LAMBDA_INVOKED_FUNCTION_ARN]: {
     brief: 'The full ARN of the Lambda function that was invoked',
@@ -16524,7 +16698,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'arn:aws:lambda:us-east-1:123456789012:function:my-function',
-    changelog: [{ version: '0.7.0', prs: [369], description: 'Added aws.lambda.invoked_function_arn attribute' }],
+    deprecation: {
+      replacement: 'aws.lambda.invoked_arn',
+      reason: 'This attribute is being deprecated in favor of aws.lambda.invoked_arn',
+    },
+    changelog: [
+      { version: 'next', description: 'Deprecated aws.lambda.invoked_function_arn in favor of aws.lambda.invoked_arn' },
+      { version: '0.7.0', prs: [369], description: 'Added aws.lambda.invoked_function_arn attribute' },
+    ],
   },
   [AWS_LAMBDA_REMAINING_TIME_IN_MILLIS]: {
     brief: 'The remaining time in milliseconds before the Lambda function times out',
@@ -16536,6 +16717,28 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 5000,
     changelog: [{ version: '0.7.0', prs: [369], description: 'Added aws.lambda.remaining_time_in_millis attribute' }],
+  },
+  [AWS_LOG_GROUP_NAMES]: {
+    brief: 'The name(s) of the AWS log group(s) an application is writing to.',
+    type: 'string[]',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: ['/aws/lambda/my-function', 'opentelemetry-service'],
+    changelog: [{ version: 'next' }],
+  },
+  [AWS_LOG_STREAM_NAMES]: {
+    brief: 'The name(s) of the AWS log stream(s) an application is writing to.',
+    type: 'string[]',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: ['logs/main/10838bed-421f-43ef-870a-f43feacbbb5b'],
+    changelog: [{ version: 'next' }],
   },
   [BLOCKED_MAIN_THREAD]: {
     brief: 'Whether the main thread was blocked by the span.',
@@ -17126,6 +17329,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'us-east-1',
     changelog: [{ version: '0.7.0', prs: [364], description: 'Added cloud.region attribute' }],
+  },
+  [CLOUD_RESOURCE_ID]: {
+    brief: 'Cloud provider-specific native identifier of the monitored cloud resource',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'arn:aws:lambda:REGION:ACCOUNT_ID:function:my-function',
+    changelog: [{ version: 'next' }],
   },
   [CLS]: {
     brief: 'The value of the recorded Cumulative Layout Shift (CLS) web vital',
@@ -18247,6 +18461,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'name@project.iam.gserviceaccount.com (GCP), arn:aws:iam::123456789012:role/role-name (AWS), 00000000-0000-0000-0000-000000000000 (Azure)',
     changelog: [{ version: 'next' }],
   },
+  [FAAS_INVOCATION_ID]: {
+    brief: 'The invocation ID of the current function invocation.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'af9d5aa4-a685-4c5f-a22b-444f80b3cc28',
+    changelog: [{ version: 'next' }],
+  },
   [FAAS_NAME]: {
     brief: 'The name of the serverless function',
     type: 'string',
@@ -18279,6 +18504,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'timer',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+  },
+  [FAAS_VERSION]: {
+    brief: 'The version of the function that was invoked',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 1,
+    changelog: [{ version: 'next' }],
   },
   [FCP]: {
     brief: 'The time it takes for the browser to render the first piece of meaningful content on the screen',
@@ -23913,8 +24149,11 @@ export type Attributes = {
   [AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS]?: AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS_TYPE;
   [AWS_LAMBDA_FUNCTION_NAME]?: AWS_LAMBDA_FUNCTION_NAME_TYPE;
   [AWS_LAMBDA_FUNCTION_VERSION]?: AWS_LAMBDA_FUNCTION_VERSION_TYPE;
+  [AWS_LAMBDA_INVOKED_ARN]?: AWS_LAMBDA_INVOKED_ARN_TYPE;
   [AWS_LAMBDA_INVOKED_FUNCTION_ARN]?: AWS_LAMBDA_INVOKED_FUNCTION_ARN_TYPE;
   [AWS_LAMBDA_REMAINING_TIME_IN_MILLIS]?: AWS_LAMBDA_REMAINING_TIME_IN_MILLIS_TYPE;
+  [AWS_LOG_GROUP_NAMES]?: AWS_LOG_GROUP_NAMES_TYPE;
+  [AWS_LOG_STREAM_NAMES]?: AWS_LOG_STREAM_NAMES_TYPE;
   [BLOCKED_MAIN_THREAD]?: BLOCKED_MAIN_THREAD_TYPE;
   [BROWSER_NAME]?: BROWSER_NAME_TYPE;
   [BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START]?: BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START_TYPE;
@@ -23963,6 +24202,7 @@ export type Attributes = {
   [CLOUD_PLATFORM]?: CLOUD_PLATFORM_TYPE;
   [CLOUD_PROVIDER]?: CLOUD_PROVIDER_TYPE;
   [CLOUD_REGION]?: CLOUD_REGION_TYPE;
+  [CLOUD_RESOURCE_ID]?: CLOUD_RESOURCE_ID_TYPE;
   [CLS]?: CLS_TYPE;
   [CLS_SOURCE_KEY]?: CLS_SOURCE_KEY_TYPE;
   [CODE_FILEPATH]?: CODE_FILEPATH_TYPE;
@@ -24050,9 +24290,11 @@ export type Attributes = {
   [FAAS_DURATION_IN_MS]?: FAAS_DURATION_IN_MS_TYPE;
   [FAAS_ENTRY_POINT]?: FAAS_ENTRY_POINT_TYPE;
   [FAAS_IDENTITY]?: FAAS_IDENTITY_TYPE;
+  [FAAS_INVOCATION_ID]?: FAAS_INVOCATION_ID_TYPE;
   [FAAS_NAME]?: FAAS_NAME_TYPE;
   [FAAS_TIME]?: FAAS_TIME_TYPE;
   [FAAS_TRIGGER]?: FAAS_TRIGGER_TYPE;
+  [FAAS_VERSION]?: FAAS_VERSION_TYPE;
   [FCP]?: FCP_TYPE;
   [FLAG_EVALUATION_KEY]?: FLAG_EVALUATION_KEY_TYPE;
   [FP]?: FP_TYPE;
