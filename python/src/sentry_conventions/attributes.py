@@ -3011,10 +3011,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The version of the function that was invoked
 
     Type: str
-    Contains PII: $LATEST
+    Contains PII: false
     Defined in OTEL: Yes
     Visibility: public
-    Example: 1
+    Example: "$LATEST"
     """
 
     # Path: model/attributes/fcp.json
@@ -9498,13 +9498,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
+                version="next",
+                description="Deprecated aws.lambda.function_name in favor of faas.name",
+            ),
+            ChangelogEntry(
                 version="0.7.0",
                 prs=[369],
                 description="Added aws.lambda.function_name attribute",
-            ),
-            ChangelogEntry(
-                version="next",
-                description="Deprecated aws.lambda.function_name in favor of faas.name",
             ),
         ],
     ),
@@ -9521,13 +9521,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
+                version="next",
+                description="Deprecated aws.lambda.function_version in favor of faas.version",
+            ),
+            ChangelogEntry(
                 version="0.7.0",
                 prs=[369],
                 description="Added aws.lambda.function_version attribute",
-            ),
-            ChangelogEntry(
-                version="next",
-                description="Deprecated aws.lambda.function_version in favor of faas.version",
             ),
         ],
     ),
@@ -11553,10 +11553,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "faas.version": AttributeMetadata(
         brief="The version of the function that was invoked",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
-        example=1,
+        example="$LATEST",
         changelog=[
             ChangelogEntry(version="next"),
         ],

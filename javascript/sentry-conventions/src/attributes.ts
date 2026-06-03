@@ -4926,12 +4926,12 @@ export type FAAS_TRIGGER_TYPE = string;
  *
  * Attribute Value Type: `string` {@link FAAS_VERSION_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: false
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * @example 1
+ * @example "$LATEST"
  */
 export const FAAS_VERSION = 'faas.version';
 
@@ -16656,8 +16656,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Use the OTel-aligned faas.name attribute instead',
     },
     changelog: [
-      { version: '0.7.0', prs: [369], description: 'Added aws.lambda.function_name attribute' },
       { version: 'next', description: 'Deprecated aws.lambda.function_name in favor of faas.name' },
+      { version: '0.7.0', prs: [369], description: 'Added aws.lambda.function_name attribute' },
     ],
   },
   [AWS_LAMBDA_FUNCTION_VERSION]: {
@@ -16674,8 +16674,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Use the OTel-aligned faas.version attribute instead',
     },
     changelog: [
-      { version: '0.7.0', prs: [369], description: 'Added aws.lambda.function_version attribute' },
       { version: 'next', description: 'Deprecated aws.lambda.function_version in favor of faas.version' },
+      { version: '0.7.0', prs: [369], description: 'Added aws.lambda.function_version attribute' },
     ],
   },
   [AWS_LAMBDA_INVOKED_ARN]: {
@@ -18509,11 +18509,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The version of the function that was invoked',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'false',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 1,
+    example: '$LATEST',
     changelog: [{ version: 'next' }],
   },
   [FCP]: {
