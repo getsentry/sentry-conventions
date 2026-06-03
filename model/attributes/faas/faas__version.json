@@ -3,10 +3,10 @@
   "brief": "The version of the function that was invoked",
   "type": "string",
   "pii": {
-    "key": "$LATEST"
+    "key": "false"
   },
   "is_in_otel": true,
-  "example": 1.0,
+  "example": "$LATEST",
   "visibility": "public",
   "changelog": [
     {
