@@ -14025,7 +14025,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=10,
-        sdks=["javascript-cloudflare"],
+        sdks=["javascript-cloudflare", "python"],
         changelog=[
             ChangelogEntry(
                 version="0.6.0",

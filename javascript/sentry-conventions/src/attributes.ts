@@ -20958,7 +20958,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 10,
-    sdks: ['javascript-cloudflare'],
+    sdks: ['javascript-cloudflare', 'python'],
     changelog: [{ version: '0.6.0', prs: [341], description: 'Added messaging.batch.message_count attribute' }],
   },
   [MESSAGING_DESTINATION_CONNECTION]: {
