@@ -3,7 +3,7 @@
   "brief": "The part number in a multipart upload operation",
   "type": "integer",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "visibility": "public",

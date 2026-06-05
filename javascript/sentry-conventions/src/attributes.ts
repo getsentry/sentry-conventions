@@ -2650,7 +2650,7 @@ export type CLOUDFLARE_D1_ROWS_WRITTEN_TYPE = number;
  *
  * Attribute Value Type: `string` {@link CLOUDFLARE_R2_BUCKET_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -2671,7 +2671,7 @@ export type CLOUDFLARE_R2_BUCKET_TYPE = string;
  *
  * Attribute Value Type: `string` {@link CLOUDFLARE_R2_OPERATION_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -2692,7 +2692,7 @@ export type CLOUDFLARE_R2_OPERATION_TYPE = string;
  *
  * Attribute Value Type: `string` {@link CLOUDFLARE_R2_REQUEST_DELIMITER_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -2734,7 +2734,7 @@ export type CLOUDFLARE_R2_REQUEST_KEY_TYPE = string;
  *
  * Attribute Value Type: `number` {@link CLOUDFLARE_R2_REQUEST_PART_NUMBER_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -17154,7 +17154,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The name of the Cloudflare R2 bucket binding',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -17165,7 +17165,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The R2 API operation being performed',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -17176,7 +17176,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The delimiter used to group objects in an R2 list operation',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -17198,7 +17198,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The part number in a multipart upload operation',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
