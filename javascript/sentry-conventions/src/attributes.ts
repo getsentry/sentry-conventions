@@ -4712,7 +4712,7 @@ export type FAAS_DURATION_IN_MS_TYPE = number;
  *
  * Attribute Value Type: `string` {@link FAAS_ENTRY_POINT_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -4754,7 +4754,7 @@ export type FAAS_IDENTITY_TYPE = string;
  *
  * Attribute Value Type: `string` {@link FAAS_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -18227,7 +18227,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: "The code that's run when the cloud provider invokes your function.",
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -18251,12 +18251,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The name of the serverless function',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'my_function',
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: 'next', prs: [403, 415] }],
   },
   [FAAS_TIME]: {
     brief: 'A string containing the function invocation time in the ISO 8601 format expressed in UTC.',

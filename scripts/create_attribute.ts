@@ -273,10 +273,11 @@ async function askForAttributePii() {
     select({
       message: 'Does the attribute contain PII?',
       options: [
+        { value: 'maybe', label: 'Maybe' },
         { value: 'true', label: 'Yes' },
         { value: 'false', label: 'No' },
-        { value: 'maybe', label: 'Maybe' },
       ],
+      initialValue: 'maybe',
     }),
   );
 }
