@@ -2893,7 +2893,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The code that's run when the cloud provider invokes your function.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "my_main_function"
@@ -11333,7 +11333,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "faas.entry_point": AttributeMetadata(
         brief="The code that's run when the cloud provider invokes your function.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="my_main_function",

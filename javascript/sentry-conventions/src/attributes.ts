@@ -4712,7 +4712,7 @@ export type FAAS_DURATION_IN_MS_TYPE = number;
  *
  * Attribute Value Type: `string` {@link FAAS_ENTRY_POINT_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -18227,7 +18227,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: "The code that's run when the cloud provider invokes your function.",
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
