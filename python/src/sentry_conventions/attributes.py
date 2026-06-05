@@ -1888,7 +1888,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the Cloudflare R2 bucket binding
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "MY_BUCKET"
@@ -1901,7 +1901,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The R2 API operation being performed
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "GetObject"
@@ -1914,7 +1914,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The delimiter used to group objects in an R2 list operation
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "/"
@@ -1940,7 +1940,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The part number in a multipart upload operation
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: 1
@@ -10191,7 +10191,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.r2.bucket": AttributeMetadata(
         brief="The name of the Cloudflare R2 bucket binding",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="MY_BUCKET",
@@ -10206,7 +10206,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.r2.operation": AttributeMetadata(
         brief="The R2 API operation being performed",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="GetObject",
@@ -10221,7 +10221,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.r2.request.delimiter": AttributeMetadata(
         brief="The delimiter used to group objects in an R2 list operation",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="/",
@@ -10251,7 +10251,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.r2.request.part_number": AttributeMetadata(
         brief="The part number in a multipart upload operation",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1,

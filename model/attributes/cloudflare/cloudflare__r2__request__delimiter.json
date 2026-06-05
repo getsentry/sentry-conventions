@@ -3,7 +3,7 @@
   "brief": "The delimiter used to group objects in an R2 list operation",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "visibility": "public",

@@ -3,7 +3,7 @@
   "brief": "The name of the Cloudflare R2 bucket binding",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "visibility": "public",

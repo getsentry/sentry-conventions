@@ -3,7 +3,7 @@
   "brief": "The R2 API operation being performed",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "visibility": "public",
