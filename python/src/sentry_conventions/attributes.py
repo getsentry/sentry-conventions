@@ -2915,7 +2915,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the serverless function
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Visibility: public
     Example: "my_function"
@@ -11355,12 +11355,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "faas.name": AttributeMetadata(
         brief="The name of the serverless function",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="my_function",
         changelog=[
-            ChangelogEntry(version="next"),
+            ChangelogEntry(version="next", prs=[403, 415]),
         ],
     ),
     "faas.time": AttributeMetadata(
