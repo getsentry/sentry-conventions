@@ -3330,6 +3330,27 @@ export const DB_OPERATION = 'db.operation';
  */
 export type DB_OPERATION_TYPE = string;
 
+// Path: model/attributes/db/db__operation__batch__size.json
+
+/**
+ * The number of queries included in a batch operation. Operations are only considered batches when they contain two or more operations, and so db.operation.batch.size SHOULD never be 1. `db.operation.batch.size`
+ *
+ * Attribute Value Type: `number` {@link DB_OPERATION_BATCH_SIZE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example 3
+ */
+export const DB_OPERATION_BATCH_SIZE = 'db.operation.batch.size';
+
+/**
+ * Type for {@link DB_OPERATION_BATCH_SIZE} db.operation.batch.size
+ */
+export type DB_OPERATION_BATCH_SIZE_TYPE = number;
+
 // Path: model/attributes/db/db__operation__name.json
 
 /**
@@ -14209,6 +14230,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [DB_NAME]: 'string',
   [DB_NAMESPACE]: 'string',
   [DB_OPERATION]: 'string',
+  [DB_OPERATION_BATCH_SIZE]: 'integer',
   [DB_OPERATION_NAME]: 'string',
   [DB_QUERY_PARAMETER_KEY]: 'string',
   [DB_QUERY_SUMMARY]: 'string',
@@ -14850,6 +14872,7 @@ export type AttributeName =
   | typeof DB_NAME
   | typeof DB_NAMESPACE
   | typeof DB_OPERATION
+  | typeof DB_OPERATION_BATCH_SIZE
   | typeof DB_OPERATION_NAME
   | typeof DB_QUERY_PARAMETER_KEY
   | typeof DB_QUERY_SUMMARY
@@ -17427,6 +17450,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [DB_OPERATION_NAME],
     changelog: [{ version: '0.4.0', prs: [199] }, { version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
+  },
+  [DB_OPERATION_BATCH_SIZE]: {
+    brief:
+      'The number of queries included in a batch operation. Operations are only considered batches when they contain two or more operations, and so db.operation.batch.size SHOULD never be 1.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 3,
+    sdks: ['javascript-node', 'javascript-deno', 'javascript-bun', 'javascript-cloudflare'],
+    changelog: [{ version: 'next', prs: [407], description: 'Added db.operation.batch.size attribute' }],
   },
   [DB_OPERATION_NAME]: {
     brief: 'The name of the operation being executed.',
@@ -23984,6 +24020,7 @@ export type Attributes = {
   [DB_NAME]?: DB_NAME_TYPE;
   [DB_NAMESPACE]?: DB_NAMESPACE_TYPE;
   [DB_OPERATION]?: DB_OPERATION_TYPE;
+  [DB_OPERATION_BATCH_SIZE]?: DB_OPERATION_BATCH_SIZE_TYPE;
   [DB_OPERATION_NAME]?: DB_OPERATION_NAME_TYPE;
   [DB_QUERY_PARAMETER_KEY]?: DB_QUERY_PARAMETER_KEY_TYPE;
   [DB_QUERY_SUMMARY]?: DB_QUERY_SUMMARY_TYPE;
