@@ -3934,6 +3934,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "14"
     """
 
+    # Path: model/attributes/host/host__id.json
+    HOST_ID: Literal["host.id"] = "host.id"
+    """Unique host ID. For Cloud, this must be the instance_id assigned by the cloud provider. For non-containerized systems, this should be the `machine-id`.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "fdbf79e8af94cb7f9e8df36789187052"
+    """
+
     # Path: model/attributes/http/http__client_ip.json
     HTTP_CLIENT_IP: Literal["http.client_ip"] = "http.client_ip"
     """Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
@@ -12571,6 +12582,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "host.id": AttributeMetadata(
+        brief="Unique host ID. For Cloud, this must be the instance_id assigned by the cloud provider. For non-containerized systems, this should be the `machine-id`.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="fdbf79e8af94cb7f9e8df36789187052",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[416], description="Added host.id attribute"
+            ),
+        ],
+    ),
     "http.client_ip": AttributeMetadata(
         brief="Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
@@ -17381,6 +17405,7 @@ Attributes = TypedDict(
         "graphql.operation.name": str,
         "graphql.operation.type": str,
         "hardwareConcurrency": str,
+        "host.id": str,
         "http.client_ip": str,
         "http.decoded_response_content_length": int,
         "http.flavor": str,

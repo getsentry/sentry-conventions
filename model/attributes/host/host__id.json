@@ -1,0 +1,18 @@
+{
+  "key": "host.id",
+  "brief": "Unique host ID. For Cloud, this must be the instance_id assigned by the cloud provider. For non-containerized systems, this should be the `machine-id`.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "example": "fdbf79e8af94cb7f9e8df36789187052",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [416],
+      "description": "Added host.id attribute"
+    }
+  ]
+}
