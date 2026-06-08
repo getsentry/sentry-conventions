@@ -3936,7 +3936,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/host/host__id.json
     HOST_ID: Literal["host.id"] = "host.id"
-    """Unique host ID. For Cloud, this must be the instance_id assigned by the cloud provider. For non-containerized systems, this should be the `machine-id`.
+    """Unique host ID. In cloud environments, this must be the instance ID assigned by the cloud provider.
 
     Type: str
     Contains PII: maybe
@@ -12583,7 +12583,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "host.id": AttributeMetadata(
-        brief="Unique host ID. For Cloud, this must be the instance_id assigned by the cloud provider. For non-containerized systems, this should be the `machine-id`.",
+        brief="Unique host ID. In cloud environments, this must be the instance ID assigned by the cloud provider.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
