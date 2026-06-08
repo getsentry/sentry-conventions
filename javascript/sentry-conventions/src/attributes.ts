@@ -6540,7 +6540,7 @@ export type HARDWARECONCURRENCY_TYPE = string;
 // Path: model/attributes/host/host__id.json
 
 /**
- * Unique host ID. In cloud environments, this must be the instance ID assigned by the cloud provider. `host.id`
+ * Unique host ID. In cloud environments, this must be the ID of the compute instance assigned by the provider. `host.id`
  *
  * Attribute Value Type: `string` {@link HOST_ID_TYPE}
  *
@@ -19486,7 +19486,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   [HOST_ID]: {
-    brief: 'Unique host ID. In cloud environments, this must be the instance ID assigned by the cloud provider.',
+    brief:
+      'Unique host ID. In cloud environments, this must be the ID of the compute instance assigned by the provider.',
     type: 'string',
     pii: {
       isPii: 'maybe',

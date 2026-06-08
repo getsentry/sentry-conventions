@@ -1,6 +1,6 @@
 {
   "key": "host.id",
-  "brief": "Unique host ID. In cloud environments, this must be the instance ID assigned by the cloud provider.",
+  "brief": "Unique host ID. In cloud environments, this must be the ID of the compute instance assigned by the provider.",
   "type": "string",
   "pii": {
     "key": "maybe"
