@@ -262,6 +262,7 @@ class _AttributeNamesMeta(type):
         "SENTRY_USER_USERNAME",
         "TIME_TO_FULL_DISPLAY",
         "TIME_TO_INITIAL_DISPLAY",
+        "TRANSACTION_METHOD",
         "TRANSACTION",
         "TTFB_REQUESTTIME",
         "TTFB",
@@ -4086,7 +4087,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: http.request.method, http.request_method, method
+    Aliases: http.request.method, http.request_method, method, transaction.method
     DEPRECATED: Use http.request.method instead
     Example: "GET"
     """
@@ -4200,7 +4201,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: method, http.method, http.request_method
+    Aliases: method, http.method, http.request_method, transaction.method
     Example: "GET"
     """
 
@@ -4329,7 +4330,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
-    Aliases: method, http.method, http.request.method
+    Aliases: method, http.method, http.request.method, transaction.method
     DEPRECATED: Use http.request.method instead
     Example: "GET"
     """
@@ -5328,7 +5329,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
-    Aliases: http.request.method, http.request_method, http.method
+    Aliases: http.request.method, http.request_method, http.method, transaction.method
     DEPRECATED: Use http.request.method instead
     Example: "GET"
     """
@@ -7246,6 +7247,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Aliases: app.vitals.ttid.value
     DEPRECATED: Use app.vitals.ttid.value instead - Replaced by app.vitals.ttid.value to align with the app.vitals.* namespace for mobile performance attributes
     Example: 1234.56
+    """
+
+    # Path: model/attributes/transaction/transaction__method.json
+    TRANSACTION_METHOD: Literal["transaction.method"] = "transaction.method"
+    """The HTTP method of a transaction
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: http.request.method, http.method, http.request_method, method
+    DEPRECATED: Use http.request.method instead
+    Example: "GET"
     """
 
     # Path: model/attributes/transaction.json
@@ -12872,7 +12886,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="http.request.method", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["http.request.method", "http.request_method", "method"],
+        aliases=[
+            "http.request.method",
+            "http.request_method",
+            "method",
+            "transaction.method",
+        ],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
@@ -12997,7 +13016,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="GET",
-        aliases=["method", "http.method", "http.request_method"],
+        aliases=["method", "http.method", "http.request_method", "transaction.method"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
@@ -13134,7 +13153,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="http.request.method", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["method", "http.method", "http.request.method"],
+        aliases=["method", "http.method", "http.request.method", "transaction.method"],
         changelog=[
             ChangelogEntry(
                 version="0.6.0",
@@ -14218,7 +14237,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="GET",
         deprecation=DeprecationInfo(replacement="http.request.method"),
-        aliases=["http.request.method", "http.request_method", "http.method"],
+        aliases=[
+            "http.request.method",
+            "http.request_method",
+            "http.method",
+            "transaction.method",
+        ],
         sdks=["javascript-browser", "javascript-node"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
@@ -16348,6 +16372,25 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "transaction.method": AttributeMetadata(
+        brief="The HTTP method of a transaction",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="GET",
+        deprecation=DeprecationInfo(
+            replacement="http.request.method", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["http.request.method", "http.method", "http.request_method", "method"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[361],
+                description="Added transaction.method attribute",
+            ),
+        ],
+    ),
     "transaction": AttributeMetadata(
         brief="The sentry transaction (segment name).",
         type=AttributeType.STRING,
@@ -17869,6 +17912,7 @@ Attributes = TypedDict(
         "timber.tag": str,
         "time_to_full_display": float,
         "time_to_initial_display": float,
+        "transaction.method": str,
         "transaction": str,
         "trpc.procedure_path": str,
         "trpc.procedure_type": str,

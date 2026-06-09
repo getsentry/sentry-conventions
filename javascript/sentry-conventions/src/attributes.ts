@@ -6788,7 +6788,7 @@ export type HTTP_HOST_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link HTTP_REQUEST_METHOD} `http.request.method`, {@link _HTTP_REQUEST_METHOD} `http.request_method`, {@link METHOD} `method`
+ * Aliases: {@link HTTP_REQUEST_METHOD} `http.request.method`, {@link _HTTP_REQUEST_METHOD} `http.request_method`, {@link METHOD} `method`, {@link TRANSACTION_METHOD} `transaction.method`
  *
  * @deprecated Use {@link HTTP_REQUEST_METHOD} (http.request.method) instead
  * @example "GET"
@@ -6982,7 +6982,7 @@ export type HTTP_REQUEST_HEADER_KEY_TYPE = Array<string>;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link METHOD} `method`, {@link HTTP_METHOD} `http.method`, {@link _HTTP_REQUEST_METHOD} `http.request_method`
+ * Aliases: {@link METHOD} `method`, {@link HTTP_METHOD} `http.method`, {@link _HTTP_REQUEST_METHOD} `http.request_method`, {@link TRANSACTION_METHOD} `transaction.method`
  *
  * @example "GET"
  */
@@ -7005,7 +7005,7 @@ export type HTTP_REQUEST_METHOD_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link METHOD} `method`, {@link HTTP_METHOD} `http.method`, {@link HTTP_REQUEST_METHOD} `http.request.method`
+ * Aliases: {@link METHOD} `method`, {@link HTTP_METHOD} `http.method`, {@link HTTP_REQUEST_METHOD} `http.request.method`, {@link TRANSACTION_METHOD} `transaction.method`
  *
  * @deprecated Use {@link HTTP_REQUEST_METHOD} (http.request.method) instead
  * @example "GET"
@@ -8981,7 +8981,7 @@ export type MESSAGING_SYSTEM_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link HTTP_REQUEST_METHOD} `http.request.method`, {@link _HTTP_REQUEST_METHOD} `http.request_method`, {@link HTTP_METHOD} `http.method`
+ * Aliases: {@link HTTP_REQUEST_METHOD} `http.request.method`, {@link _HTTP_REQUEST_METHOD} `http.request_method`, {@link HTTP_METHOD} `http.method`, {@link TRANSACTION_METHOD} `transaction.method`
  *
  * @deprecated Use {@link HTTP_REQUEST_METHOD} (http.request.method) instead
  * @example "GET"
@@ -12507,6 +12507,30 @@ export const TRANSACTION = 'transaction';
  */
 export type TRANSACTION_TYPE = string;
 
+// Path: model/attributes/transaction/transaction__method.json
+
+/**
+ * The HTTP method of a transaction `transaction.method`
+ *
+ * Attribute Value Type: `string` {@link TRANSACTION_METHOD_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link HTTP_REQUEST_METHOD} `http.request.method`, {@link HTTP_METHOD} `http.method`, {@link _HTTP_REQUEST_METHOD} `http.request_method`, {@link METHOD} `method`
+ *
+ * @deprecated Use {@link HTTP_REQUEST_METHOD} (http.request.method) instead
+ * @example "GET"
+ */
+export const TRANSACTION_METHOD = 'transaction.method';
+
+/**
+ * Type for {@link TRANSACTION_METHOD} transaction.method
+ */
+export type TRANSACTION_METHOD_TYPE = string;
+
 // Path: model/attributes/trpc/trpc__procedure_path.json
 
 /**
@@ -14753,6 +14777,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [TIME_TO_FULL_DISPLAY]: 'double',
   [TIME_TO_INITIAL_DISPLAY]: 'double',
   [TRANSACTION]: 'string',
+  [TRANSACTION_METHOD]: 'string',
   [TRPC_PROCEDURE_PATH]: 'string',
   [TRPC_PROCEDURE_TYPE]: 'string',
   [TTFB]: 'double',
@@ -15399,6 +15424,7 @@ export type AttributeName =
   | typeof TIME_TO_FULL_DISPLAY
   | typeof TIME_TO_INITIAL_DISPLAY
   | typeof TRANSACTION
+  | typeof TRANSACTION_METHOD
   | typeof TRPC_PROCEDURE_PATH
   | typeof TRPC_PROCEDURE_TYPE
   | typeof TTFB
@@ -19776,7 +19802,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'http.request.method',
     },
-    aliases: [HTTP_REQUEST_METHOD, _HTTP_REQUEST_METHOD, METHOD],
+    aliases: [HTTP_REQUEST_METHOD, _HTTP_REQUEST_METHOD, METHOD, TRANSACTION_METHOD],
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
   [HTTP_QUERY]: {
@@ -19893,7 +19919,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'GET',
-    aliases: [METHOD, HTTP_METHOD, _HTTP_REQUEST_METHOD],
+    aliases: [METHOD, HTTP_METHOD, _HTTP_REQUEST_METHOD, TRANSACTION_METHOD],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [_HTTP_REQUEST_METHOD]: {
@@ -19908,7 +19934,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'http.request.method',
     },
-    aliases: [METHOD, HTTP_METHOD, HTTP_REQUEST_METHOD],
+    aliases: [METHOD, HTTP_METHOD, HTTP_REQUEST_METHOD, TRANSACTION_METHOD],
     changelog: [{ version: '0.6.0', prs: [343], description: 'Added http.request_method attribute' }],
   },
   [HTTP_REQUEST_REDIRECT_END]: {
@@ -21087,7 +21113,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'http.request.method',
     },
-    aliases: [HTTP_REQUEST_METHOD, _HTTP_REQUEST_METHOD, HTTP_METHOD],
+    aliases: [HTTP_REQUEST_METHOD, _HTTP_REQUEST_METHOD, HTTP_METHOD, TRANSACTION_METHOD],
     sdks: ['javascript-browser', 'javascript-node'],
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
@@ -23175,6 +23201,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.0.0' },
     ],
   },
+  [TRANSACTION_METHOD]: {
+    brief: 'The HTTP method of a transaction',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'GET',
+    deprecation: {
+      replacement: 'http.request.method',
+    },
+    aliases: [HTTP_REQUEST_METHOD, HTTP_METHOD, _HTTP_REQUEST_METHOD, METHOD],
+    changelog: [{ version: 'next', prs: [361], description: 'Added transaction.method attribute' }],
+  },
   [TRPC_PROCEDURE_PATH]: {
     brief: 'The path of the tRPC procedure being called',
     type: 'string',
@@ -24634,6 +24675,7 @@ export type Attributes = {
   [TIME_TO_FULL_DISPLAY]?: TIME_TO_FULL_DISPLAY_TYPE;
   [TIME_TO_INITIAL_DISPLAY]?: TIME_TO_INITIAL_DISPLAY_TYPE;
   [TRANSACTION]?: TRANSACTION_TYPE;
+  [TRANSACTION_METHOD]?: TRANSACTION_METHOD_TYPE;
   [TRPC_PROCEDURE_PATH]?: TRPC_PROCEDURE_PATH_TYPE;
   [TRPC_PROCEDURE_TYPE]?: TRPC_PROCEDURE_TYPE_TYPE;
   [TTFB]?: TTFB_TYPE;
