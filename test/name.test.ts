@@ -5,7 +5,7 @@ import Ajv from 'ajv';
 import { describe, expect, it } from 'vitest';
 
 import schema from '../schemas/name.schema.json';
-import type { NameJson } from '../scripts/types';
+import type { AttributeJson, NameJson } from '../scripts/types';
 import { attributeKeyToFileName } from '../scripts/utils';
 
 const namesFolder = path.resolve(__dirname, '../model/name');
@@ -45,9 +45,10 @@ describe('Name JSON', async () => {
         }
       });
 
-      it('only references existing attributes', async () => {
+      it('only references existing, non-replaced attributes', async () => {
         const placeholder = /\{\{([^}]+)\}\}/g;
         const missing: string[] = [];
+        const deprecated: string[] = [];
 
         for (const operation of content.operations) {
           for (const tmpl of operation.templates) {
@@ -66,12 +67,22 @@ describe('Name JSON', async () => {
 
               if (!exists) {
                 missing.push(key);
+                continue;
+              }
+
+              const attr: AttributeJson = JSON.parse(await fs.promises.readFile(filePath, 'utf-8'));
+              if (attr.deprecation?.replacement) {
+                deprecated.push(key);
               }
             }
           }
         }
 
         expect(missing, `template attributes without definitions: ${missing.join(', ')}`).toEqual([]);
+        expect(
+          deprecated,
+          `template references deprecated attributes with replacements: ${deprecated.join(', ')}`,
+        ).toEqual([]);
       });
     });
   }
