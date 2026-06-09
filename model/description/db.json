@@ -1,0 +1,23 @@
+{
+  "brief": "Database",
+  "operations": [
+    {
+      "name": "Queries",
+      "brief": "Operations that act on the data in a database. Includes operations like fetching, updating, and deleting records. Does not include operations like connecting to the database server.",
+      "ops": [
+        "db",
+        "db.query",
+        "db.sql.query",
+        "db.sql.prisma",
+        "db.sql.active_record",
+        "db.sql.execute",
+        "db.sql.room",
+        "db.sql.transaction",
+        "db.redis",
+        "redis"
+      ],
+      "templates": ["{{db.query.text}}"],
+      "examples": ["SELECT * FROM users WHERE id = ?"]
+    }
+  ]
+}
