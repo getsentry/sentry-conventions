@@ -12,6 +12,7 @@
     "reason": "The runtime.* namespace is deprecated in favor of process.runtime.*. No direct OTel equivalent exists for this attribute.",
     "_status": null
   },
+  "alias": ["process.runtime.build"],
   "changelog": [
     {
       "version": "next",

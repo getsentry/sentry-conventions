@@ -1,0 +1,19 @@
+{
+  "key": "process.runtime.build",
+  "brief": "The application build string. Equivalent to `build` in the Sentry runtime context.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "example": "stable",
+  "alias": ["runtime.build"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [421],
+      "description": "Added process.runtime.build attribute"
+    }
+  ]
+}
