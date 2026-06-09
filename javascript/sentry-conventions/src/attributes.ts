@@ -17499,7 +17499,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 3,
-    sdks: ['javascript-node', 'javascript-deno', 'javascript-bun', 'javascript-cloudflare'],
     changelog: [{ version: 'next', prs: [407], description: 'Added db.operation.batch.size attribute' }],
   },
   [DB_OPERATION_NAME]: {
