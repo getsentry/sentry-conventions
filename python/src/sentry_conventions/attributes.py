@@ -212,6 +212,13 @@ class _AttributeNamesMeta(type):
         "LCP_SIZE",
         "LCP_URL",
         "LCP",
+        "MCP_PROMPT_NAME",
+        "MCP_REQUEST_ID",
+        "MCP_RESOURCE_PROTOCOL",
+        "MCP_TOOL_NAME",
+        "MCP_TOOL_RESULT_CONTENT",
+        "MCP_TOOL_RESULT_IS_ERROR",
+        "MCP_TRANSPORT",
         "METHOD",
         "NET_HOST_IP",
         "NET_HOST_NAME",
@@ -3387,6 +3394,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "[{\"role\": \"user\", \"message\": \"hello\"}]"
     """
 
+    # Path: model/attributes/gen_ai/gen_ai__prompt__name.json
+    GEN_AI_PROMPT_NAME: Literal["gen_ai.prompt.name"] = "gen_ai.prompt.name"
+    """The name of the prompt that uniquely identifies it.
+
+    Type: str
+    Contains PII: maybe - Prompt names may reveal user behavior patterns or sensitive operations
+    Defined in OTEL: Yes
+    Visibility: public
+    Aliases: mcp.prompt.name
+    Example: "summarize_text"
+    """
+
     # Path: model/attributes/gen_ai/gen_ai__provider__name.json
     GEN_AI_PROVIDER_NAME: Literal["gen_ai.provider.name"] = "gen_ai.provider.name"
     """The Generative AI provider as identified by the client or server instrumentation.
@@ -4490,6 +4509,31 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 200
     """
 
+    # Path: model/attributes/jsonrpc/jsonrpc__protocol__version.json
+    JSONRPC_PROTOCOL_VERSION: Literal["jsonrpc.protocol.version"] = (
+        "jsonrpc.protocol.version"
+    )
+    """The version of the JSON-RPC protocol used.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "2.0"
+    """
+
+    # Path: model/attributes/jsonrpc/jsonrpc__request__id.json
+    JSONRPC_REQUEST_ID: Literal["jsonrpc.request.id"] = "jsonrpc.request.id"
+    """The JSON-RPC request identifier. Unique within the session.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: Yes
+    Visibility: public
+    Aliases: mcp.request.id
+    Example: "1"
+    """
+
     # Path: model/attributes/jvm/jvm__gc__action.json
     JVM_GC_ACTION: Literal["jvm.gc.action"] = "jvm.gc.action"
     """Name of the garbage collector action.
@@ -4776,7 +4820,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     Type: str
     Contains PII: false
-    Defined in OTEL: No
+    Defined in OTEL: Yes
     Visibility: public
     Example: "tools/call"
     """
@@ -4846,6 +4890,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe - Prompt names may reveal user behavior patterns or sensitive operations
     Defined in OTEL: No
     Visibility: public
+    Aliases: gen_ai.prompt.name
+    DEPRECATED: Use gen_ai.prompt.name instead - OTel uses gen_ai.prompt.name for MCP prompt names
     Example: "summarize"
     """
 
@@ -4918,7 +4964,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     Type: str
     Contains PII: false
-    Defined in OTEL: No
+    Defined in OTEL: Yes
     Visibility: public
     Example: "2024-11-05"
     """
@@ -4971,6 +5017,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: false
     Defined in OTEL: No
     Visibility: public
+    Aliases: jsonrpc.request.id
+    DEPRECATED: Use jsonrpc.request.id instead - OTel models MCP as JSON-RPC, uses jsonrpc.request.id
     Example: "1"
     """
 
@@ -4982,6 +5030,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: false
     Defined in OTEL: No
     Visibility: public
+    Aliases: network.protocol.name, net.protocol.name
+    DEPRECATED: Use network.protocol.name instead - OTel uses the generic network.protocol.name attribute
     Example: "file"
     """
 
@@ -4991,7 +5041,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     Type: str
     Contains PII: true - URIs can contain sensitive file paths
-    Defined in OTEL: No
+    Defined in OTEL: Yes
     Visibility: public
     Example: "file:///path/to/file.txt"
     """
@@ -5035,7 +5085,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     Type: str
     Contains PII: false
-    Defined in OTEL: No
+    Defined in OTEL: Yes
     Visibility: public
     Example: "550e8400-e29b-41d4-a716-446655440000"
     """
@@ -5048,6 +5098,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: false
     Defined in OTEL: No
     Visibility: public
+    DEPRECATED: Use gen_ai.tool.name instead - OTel uses gen_ai.tool.name for MCP tool names
     Example: "calculator"
     """
 
@@ -5061,6 +5112,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: true - Tool results can contain user data
     Defined in OTEL: No
     Visibility: public
+    DEPRECATED: Use gen_ai.tool.call.result instead - OTel uses gen_ai.tool.call.result for MCP tool results
     Example: "{\"output\": \"rainy\", \"toolCallId\": \"1\"}"
     """
 
@@ -5087,6 +5139,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: false
     Defined in OTEL: No
     Visibility: public
+    DEPRECATED: Use error.type instead - OTel uses error.type set to 'tool_error' when isError is true. Cannot be automatically backfilled due to type mismatch (boolean vs string).
     Example: false
     """
 
@@ -5098,6 +5151,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: false
     Defined in OTEL: No
     Visibility: public
+    Aliases: network.transport, net.transport
+    DEPRECATED: Use network.transport instead - OTel uses the generic network.transport attribute
     Example: "stdio"
     """
 
@@ -5426,7 +5481,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: network.protocol.name
+    Aliases: network.protocol.name, mcp.resource.protocol
     DEPRECATED: Use network.protocol.name instead
     Example: "http"
     """
@@ -5527,7 +5582,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: network.transport
+    Aliases: network.transport, mcp.transport
     DEPRECATED: Use network.transport instead
     Example: "tcp"
     """
@@ -5627,7 +5682,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: net.protocol.name
+    Aliases: net.protocol.name, mcp.resource.protocol
     Example: "http"
     """
 
@@ -5653,7 +5708,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: net.transport
+    Aliases: net.transport, mcp.transport
     Example: "tcp"
     """
 
@@ -11966,6 +12021,23 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "gen_ai.prompt.name": AttributeMetadata(
+        brief="The name of the prompt that uniquely identifies it.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(
+            isPii=IsPii.MAYBE,
+            reason="Prompt names may reveal user behavior patterns or sensitive operations",
+        ),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="summarize_text",
+        aliases=["mcp.prompt.name"],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added gen_ai.prompt.name attribute"
+            ),
+        ],
+    ),
     "gen_ai.provider.name": AttributeMetadata(
         brief="The Generative AI provider as identified by the client or server instrumentation.",
         type=AttributeType.STRING,
@@ -13206,6 +13278,33 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "jsonrpc.protocol.version": AttributeMetadata(
+        brief="The version of the JSON-RPC protocol used.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="2.0",
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added jsonrpc.protocol.version attribute"
+            ),
+        ],
+    ),
+    "jsonrpc.request.id": AttributeMetadata(
+        brief="The JSON-RPC request identifier. Unique within the session.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="1",
+        aliases=["mcp.request.id"],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added jsonrpc.request.id attribute"
+            ),
+        ],
+    ),
     "jvm.gc.action": AttributeMetadata(
         brief="Name of the garbage collector action.",
         type=AttributeType.STRING,
@@ -13546,10 +13645,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="The name of the MCP request or notification method being called.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=False,
+        is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="tools/call",
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Set is_in_otel=true, attribute exists in OTel MCP registry",
+            ),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -13624,7 +13727,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="summarize",
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.prompt.name",
+            reason="OTel uses gen_ai.prompt.name for MCP prompt names",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["gen_ai.prompt.name"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Deprecated in favor of gen_ai.prompt.name"
+            ),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -13689,10 +13801,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="MCP protocol version used in the session.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=False,
+        is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="2024-11-05",
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Set is_in_otel=true, attribute exists in OTel MCP registry",
+            ),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -13737,7 +13853,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="1",
+        deprecation=DeprecationInfo(
+            replacement="jsonrpc.request.id",
+            reason="OTel models MCP as JSON-RPC, uses jsonrpc.request.id",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["jsonrpc.request.id"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Deprecated in favor of jsonrpc.request.id"
+            ),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -13748,7 +13873,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="file",
+        deprecation=DeprecationInfo(
+            replacement="network.protocol.name",
+            reason="OTel uses the generic network.protocol.name attribute",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["network.protocol.name", "net.protocol.name"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Deprecated in favor of network.protocol.name",
+            ),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -13756,10 +13891,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="The resource URI being accessed in an MCP operation.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.TRUE, reason="URIs can contain sensitive file paths"),
-        is_in_otel=False,
+        is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="file:///path/to/file.txt",
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Set is_in_otel=true, attribute exists in OTel MCP registry",
+            ),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -13803,10 +13942,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="Identifier for the MCP session.",
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
-        is_in_otel=False,
+        is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="550e8400-e29b-41d4-a716-446655440000",
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Set is_in_otel=true, attribute exists in OTel MCP registry",
+            ),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -13817,7 +13960,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="calculator",
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.tool.name",
+            reason="OTel uses gen_ai.tool.name for MCP tool names",
+            status=DeprecationStatus.BACKFILL,
+        ),
         changelog=[
+            ChangelogEntry(
+                version="next", description="Deprecated in favor of gen_ai.tool.name"
+            ),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -13828,7 +13979,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example='{"output": "rainy", "toolCallId": "1"}',
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.tool.call.result",
+            reason="OTel uses gen_ai.tool.call.result for MCP tool results",
+            status=DeprecationStatus.BACKFILL,
+        ),
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Deprecated in favor of gen_ai.tool.call.result",
+            ),
             ChangelogEntry(version="0.3.0", prs=[171]),
             ChangelogEntry(version="0.2.0", prs=[164]),
         ],
@@ -13852,7 +14012,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=False,
+        deprecation=DeprecationInfo(
+            replacement="error.type",
+            reason="OTel uses error.type set to 'tool_error' when isError is true. Cannot be automatically backfilled due to type mismatch (boolean vs string).",
+        ),
         changelog=[
+            ChangelogEntry(
+                version="next", description="Deprecated in favor of error.type"
+            ),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -13863,7 +14030,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="stdio",
+        deprecation=DeprecationInfo(
+            replacement="network.transport",
+            reason="OTel uses the generic network.transport attribute",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["network.transport", "net.transport"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Deprecated in favor of network.transport"
+            ),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -14225,7 +14401,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="http",
         deprecation=DeprecationInfo(replacement="network.protocol.name"),
-        aliases=["network.protocol.name"],
+        aliases=["network.protocol.name", "mcp.resource.protocol"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
@@ -14341,7 +14517,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="tcp",
         deprecation=DeprecationInfo(replacement="network.transport"),
-        aliases=["network.transport"],
+        aliases=["network.transport", "mcp.transport"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
@@ -14456,7 +14632,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="http",
-        aliases=["net.protocol.name"],
+        aliases=["net.protocol.name", "mcp.resource.protocol"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
@@ -14482,7 +14658,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="tcp",
-        aliases=["net.transport"],
+        aliases=["net.transport", "mcp.transport"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
@@ -17373,6 +17549,7 @@ Attributes = TypedDict(
         "gen_ai.output.messages": str,
         "gen_ai.pipeline.name": str,
         "gen_ai.prompt": str,
+        "gen_ai.prompt.name": str,
         "gen_ai.provider.name": str,
         "gen_ai.request.available_tools": str,
         "gen_ai.request.frequency_penalty": float,
@@ -17458,6 +17635,8 @@ Attributes = TypedDict(
         "http.user_agent": str,
         "id": str,
         "inp": float,
+        "jsonrpc.protocol.version": str,
+        "jsonrpc.request.id": str,
         "jvm.gc.action": str,
         "jvm.gc.name": str,
         "jvm.memory.pool.name": str,

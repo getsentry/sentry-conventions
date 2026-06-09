@@ -12,6 +12,10 @@
   "visibility": "public",
   "changelog": [
     {
+      "version": "next",
+      "description": "Deprecated in favor of gen_ai.tool.call.result"
+    },
+    {
       "version": "0.3.0",
       "prs": [171]
     },
@@ -19,5 +23,10 @@
       "version": "0.2.0",
       "prs": [164]
     }
-  ]
+  ],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "gen_ai.tool.call.result",
+    "reason": "OTel uses gen_ai.tool.call.result for MCP tool results"
+  }
 }
