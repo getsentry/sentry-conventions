@@ -11,7 +11,16 @@
   "additional_context": [
     "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans."
   ],
+  "alias": ["gen_ai.usage.cache_creation.input_tokens"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "gen_ai.usage.cache_creation.input_tokens"
+  },
   "changelog": [
+    {
+      "version": "next",
+      "description": "Deprecate in favor of gen_ai.usage.cache_creation.input_tokens"
+    },
     {
       "version": "0.9.0",
       "prs": [397],

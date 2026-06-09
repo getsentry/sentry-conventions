@@ -3,14 +3,15 @@
   "brief": "The name of the serverless function",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "my_function",
   "visibility": "public",
   "changelog": [
     {
-      "version": "next"
+      "version": "next",
+      "prs": [403, 415]
     }
   ]
 }
