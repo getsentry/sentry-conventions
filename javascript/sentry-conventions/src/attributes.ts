@@ -5953,6 +5953,29 @@ export const GEN_AI_RESPONSE_TEXT = 'gen_ai.response.text';
  */
 export type GEN_AI_RESPONSE_TEXT_TYPE = string;
 
+// Path: model/attributes/gen_ai/gen_ai__response__time_to_first_chunk.json
+
+/**
+ * Time in seconds when the first response content chunk arrived in streaming responses. `gen_ai.response.time_to_first_chunk`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN} `gen_ai.response.time_to_first_token`
+ *
+ * @example 0.6853435
+ */
+export const GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK = 'gen_ai.response.time_to_first_chunk';
+
+/**
+ * Type for {@link GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK} gen_ai.response.time_to_first_chunk
+ */
+export type GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK_TYPE = number;
+
 // Path: model/attributes/gen_ai/gen_ai__response__time_to_first_token.json
 
 /**
@@ -5965,6 +5988,9 @@ export type GEN_AI_RESPONSE_TEXT_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK} `gen_ai.response.time_to_first_chunk`
+ *
+ * @deprecated Use {@link GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK} (gen_ai.response.time_to_first_chunk) instead
  * @example 0.6853435
  */
 export const GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN = 'gen_ai.response.time_to_first_token';
@@ -6291,6 +6317,52 @@ export const GEN_AI_TOOL_TYPE = 'gen_ai.tool.type';
  */
 export type GEN_AI_TOOL_TYPE_TYPE = string;
 
+// Path: model/attributes/gen_ai/gen_ai__usage__cache_creation__input_tokens.json
+
+/**
+ * The number of tokens written to the cache when processing the AI input (prompt). `gen_ai.usage.cache_creation.input_tokens`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE} `gen_ai.usage.input_tokens.cache_write`
+ *
+ * @example 100
+ */
+export const GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS = 'gen_ai.usage.cache_creation.input_tokens';
+
+/**
+ * Type for {@link GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS} gen_ai.usage.cache_creation.input_tokens
+ */
+export type GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__usage__cache_read__input_tokens.json
+
+/**
+ * The number of cached tokens used to process the AI input (prompt). `gen_ai.usage.cache_read.input_tokens`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_USAGE_INPUT_TOKENS_CACHED} `gen_ai.usage.input_tokens.cached`
+ *
+ * @example 50
+ */
+export const GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS = 'gen_ai.usage.cache_read.input_tokens';
+
+/**
+ * Type for {@link GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS} gen_ai.usage.cache_read.input_tokens
+ */
+export type GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS_TYPE = number;
+
 // Path: model/attributes/gen_ai/gen_ai__usage__completion_tokens.json
 
 /**
@@ -6350,6 +6422,9 @@ export type GEN_AI_USAGE_INPUT_TOKENS_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS} `gen_ai.usage.cache_read.input_tokens`
+ *
+ * @deprecated Use {@link GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS} (gen_ai.usage.cache_read.input_tokens) instead
  * @example 50
  */
 export const GEN_AI_USAGE_INPUT_TOKENS_CACHED = 'gen_ai.usage.input_tokens.cached';
@@ -6371,6 +6446,9 @@ export type GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS} `gen_ai.usage.cache_creation.input_tokens`
+ *
+ * @deprecated Use {@link GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS} (gen_ai.usage.cache_creation.input_tokens) instead
  * @example 100
  */
 export const GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE = 'gen_ai.usage.input_tokens.cache_write';
@@ -6415,6 +6493,9 @@ export type GEN_AI_USAGE_OUTPUT_TOKENS_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link GEN_AI_USAGE_REASONING_OUTPUT_TOKENS} `gen_ai.usage.reasoning.output_tokens`
+ *
+ * @deprecated Use {@link GEN_AI_USAGE_REASONING_OUTPUT_TOKENS} (gen_ai.usage.reasoning.output_tokens) instead
  * @example 75
  */
 export const GEN_AI_USAGE_OUTPUT_TOKENS_REASONING = 'gen_ai.usage.output_tokens.reasoning';
@@ -6447,6 +6528,29 @@ export const GEN_AI_USAGE_PROMPT_TOKENS = 'gen_ai.usage.prompt_tokens';
  * Type for {@link GEN_AI_USAGE_PROMPT_TOKENS} gen_ai.usage.prompt_tokens
  */
 export type GEN_AI_USAGE_PROMPT_TOKENS_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__usage__reasoning__output_tokens.json
+
+/**
+ * The number of tokens used for reasoning to create the AI output. `gen_ai.usage.reasoning.output_tokens`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_USAGE_REASONING_OUTPUT_TOKENS_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_USAGE_OUTPUT_TOKENS_REASONING} `gen_ai.usage.output_tokens.reasoning`
+ *
+ * @example 75
+ */
+export const GEN_AI_USAGE_REASONING_OUTPUT_TOKENS = 'gen_ai.usage.reasoning.output_tokens';
+
+/**
+ * Type for {@link GEN_AI_USAGE_REASONING_OUTPUT_TOKENS} gen_ai.usage.reasoning.output_tokens
+ */
+export type GEN_AI_USAGE_REASONING_OUTPUT_TOKENS_TYPE = number;
 
 // Path: model/attributes/gen_ai/gen_ai__usage__total_tokens.json
 
@@ -14351,6 +14455,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [GEN_AI_RESPONSE_MODEL]: 'string',
   [GEN_AI_RESPONSE_STREAMING]: 'boolean',
   [GEN_AI_RESPONSE_TEXT]: 'string',
+  [GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK]: 'double',
   [GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN]: 'double',
   [GEN_AI_RESPONSE_TOKENS_PER_SECOND]: 'double',
   [GEN_AI_RESPONSE_TOOL_CALLS]: 'string',
@@ -14366,6 +14471,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [GEN_AI_TOOL_NAME]: 'string',
   [GEN_AI_TOOL_OUTPUT]: 'string',
   [GEN_AI_TOOL_TYPE]: 'string',
+  [GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS]: 'integer',
+  [GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS]: 'integer',
   [GEN_AI_USAGE_COMPLETION_TOKENS]: 'integer',
   [GEN_AI_USAGE_INPUT_TOKENS]: 'integer',
   [GEN_AI_USAGE_INPUT_TOKENS_CACHED]: 'integer',
@@ -14373,6 +14480,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [GEN_AI_USAGE_OUTPUT_TOKENS]: 'integer',
   [GEN_AI_USAGE_OUTPUT_TOKENS_REASONING]: 'integer',
   [GEN_AI_USAGE_PROMPT_TOKENS]: 'integer',
+  [GEN_AI_USAGE_REASONING_OUTPUT_TOKENS]: 'integer',
   [GEN_AI_USAGE_TOTAL_TOKENS]: 'integer',
   [GRAPHQL_DOCUMENT]: 'string',
   [GRAPHQL_OPERATION_NAME]: 'string',
@@ -14993,6 +15101,7 @@ export type AttributeName =
   | typeof GEN_AI_RESPONSE_MODEL
   | typeof GEN_AI_RESPONSE_STREAMING
   | typeof GEN_AI_RESPONSE_TEXT
+  | typeof GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK
   | typeof GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN
   | typeof GEN_AI_RESPONSE_TOKENS_PER_SECOND
   | typeof GEN_AI_RESPONSE_TOOL_CALLS
@@ -15008,6 +15117,8 @@ export type AttributeName =
   | typeof GEN_AI_TOOL_NAME
   | typeof GEN_AI_TOOL_OUTPUT
   | typeof GEN_AI_TOOL_TYPE
+  | typeof GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS
+  | typeof GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS
   | typeof GEN_AI_USAGE_COMPLETION_TOKENS
   | typeof GEN_AI_USAGE_INPUT_TOKENS
   | typeof GEN_AI_USAGE_INPUT_TOKENS_CACHED
@@ -15015,6 +15126,7 @@ export type AttributeName =
   | typeof GEN_AI_USAGE_OUTPUT_TOKENS
   | typeof GEN_AI_USAGE_OUTPUT_TOKENS_REASONING
   | typeof GEN_AI_USAGE_PROMPT_TOKENS
+  | typeof GEN_AI_USAGE_REASONING_OUTPUT_TOKENS
   | typeof GEN_AI_USAGE_TOTAL_TOKENS
   | typeof GRAPHQL_DOCUMENT
   | typeof GRAPHQL_OPERATION_NAME
@@ -19045,6 +19157,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.1.0', prs: [63, 74] },
     ],
   },
+  [GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK]: {
+    brief: 'Time in seconds when the first response content chunk arrived in streaming responses.',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 0.6853435,
+    aliases: [GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN],
+    changelog: [{ version: 'next', description: 'Added gen_ai.response.time_to_first_chunk attribute' }],
+  },
   [GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN]: {
     brief: 'Time in seconds when the first response content chunk arrived in streaming responses.',
     type: 'double',
@@ -19054,7 +19178,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 0.6853435,
-    changelog: [{ version: '0.4.0', prs: [227] }],
+    deprecation: {
+      replacement: 'gen_ai.response.time_to_first_chunk',
+    },
+    aliases: [GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK],
+    changelog: [
+      { version: 'next', description: 'Deprecate in favor of gen_ai.response.time_to_first_chunk' },
+      { version: '0.4.0', prs: [227] },
+    ],
   },
   [GEN_AI_RESPONSE_TOKENS_PER_SECOND]: {
     brief: 'The total output tokens per seconds throughput',
@@ -19270,6 +19401,37 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     changelog: [{ version: '0.1.0', prs: [62, 127] }],
   },
+  [GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS]: {
+    brief: 'The number of tokens written to the cache when processing the AI input (prompt).',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 100,
+    aliases: [GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE],
+    changelog: [{ version: 'next', description: 'Added gen_ai.usage.cache_creation.input_tokens attribute' }],
+    additionalContext: [
+      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
+    ],
+  },
+  [GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS]: {
+    brief: 'The number of cached tokens used to process the AI input (prompt).',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 50,
+    aliases: [GEN_AI_USAGE_INPUT_TOKENS_CACHED],
+    changelog: [{ version: 'next', description: 'Added gen_ai.usage.cache_read.input_tokens attribute' }],
+    additionalContext: [
+      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
+      'This is a subset of gen_ai.usage.input_tokens, not an independent count. Do not sum this with gen_ai.usage.input_tokens — it is already included.',
+    ],
+  },
   [GEN_AI_USAGE_COMPLETION_TOKENS]: {
     brief: 'The number of tokens used in the GenAI response (completion).',
     type: 'integer',
@@ -19304,6 +19466,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 10,
     aliases: [AI_PROMPT_TOKENS_USED, GEN_AI_USAGE_PROMPT_TOKENS],
     changelog: [
+      { version: 'next', description: 'Update additional_context to reference gen_ai.usage.cache_read.input_tokens' },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.5.0', prs: [261] },
       { version: '0.4.0', prs: [228] },
@@ -19312,7 +19475,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
     additionalContext: [
       'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
-      'This count includes cached input tokens. gen_ai.usage.input_tokens.cached is a subset of this value, not an independent count — do not sum them together.',
+      'This count includes cached input tokens. gen_ai.usage.cache_read.input_tokens is a subset of this value, not an independent count — do not sum them together.',
     ],
   },
   [GEN_AI_USAGE_INPUT_TOKENS_CACHED]: {
@@ -19324,7 +19487,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 50,
+    deprecation: {
+      replacement: 'gen_ai.usage.cache_read.input_tokens',
+    },
+    aliases: [GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS],
     changelog: [
+      { version: 'next', description: 'Deprecate in favor of gen_ai.usage.cache_read.input_tokens' },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [62, 112] },
@@ -19343,7 +19511,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 100,
+    deprecation: {
+      replacement: 'gen_ai.usage.cache_creation.input_tokens',
+    },
+    aliases: [GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS],
     changelog: [
+      { version: 'next', description: 'Deprecate in favor of gen_ai.usage.cache_creation.input_tokens' },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [217, 228] },
     ],
@@ -19362,6 +19535,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 10,
     aliases: [AI_COMPLETION_TOKENS_USED, GEN_AI_USAGE_COMPLETION_TOKENS],
     changelog: [
+      { version: 'next', description: 'Update additional_context to reference gen_ai.usage.reasoning.output_tokens' },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.5.0', prs: [261] },
       { version: '0.4.0', prs: [228] },
@@ -19370,7 +19544,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
     additionalContext: [
       'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
-      'This count includes reasoning tokens. gen_ai.usage.output_tokens.reasoning is a subset of this value, not an independent count — do not sum them together.',
+      'This count includes reasoning tokens. gen_ai.usage.reasoning.output_tokens is a subset of this value, not an independent count — do not sum them together.',
     ],
   },
   [GEN_AI_USAGE_OUTPUT_TOKENS_REASONING]: {
@@ -19382,7 +19556,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 75,
+    deprecation: {
+      replacement: 'gen_ai.usage.reasoning.output_tokens',
+    },
+    aliases: [GEN_AI_USAGE_REASONING_OUTPUT_TOKENS],
     changelog: [
+      { version: 'next', description: 'Deprecate in favor of gen_ai.usage.reasoning.output_tokens' },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [62, 112] },
@@ -19413,6 +19592,22 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
     additionalContext: [
       'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
+    ],
+  },
+  [GEN_AI_USAGE_REASONING_OUTPUT_TOKENS]: {
+    brief: 'The number of tokens used for reasoning to create the AI output.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 75,
+    aliases: [GEN_AI_USAGE_OUTPUT_TOKENS_REASONING],
+    changelog: [{ version: 'next', description: 'Added gen_ai.usage.reasoning.output_tokens attribute' }],
+    additionalContext: [
+      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
+      'This is a subset of gen_ai.usage.output_tokens, not an independent count. Do not sum this with gen_ai.usage.output_tokens — it is already included.',
     ],
   },
   [GEN_AI_USAGE_TOTAL_TOKENS]: {
@@ -24141,6 +24336,7 @@ export type Attributes = {
   [GEN_AI_RESPONSE_MODEL]?: GEN_AI_RESPONSE_MODEL_TYPE;
   [GEN_AI_RESPONSE_STREAMING]?: GEN_AI_RESPONSE_STREAMING_TYPE;
   [GEN_AI_RESPONSE_TEXT]?: GEN_AI_RESPONSE_TEXT_TYPE;
+  [GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK]?: GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK_TYPE;
   [GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN]?: GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN_TYPE;
   [GEN_AI_RESPONSE_TOKENS_PER_SECOND]?: GEN_AI_RESPONSE_TOKENS_PER_SECOND_TYPE;
   [GEN_AI_RESPONSE_TOOL_CALLS]?: GEN_AI_RESPONSE_TOOL_CALLS_TYPE;
@@ -24156,6 +24352,8 @@ export type Attributes = {
   [GEN_AI_TOOL_NAME]?: GEN_AI_TOOL_NAME_TYPE;
   [GEN_AI_TOOL_OUTPUT]?: GEN_AI_TOOL_OUTPUT_TYPE;
   [GEN_AI_TOOL_TYPE]?: GEN_AI_TOOL_TYPE_TYPE;
+  [GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS]?: GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS_TYPE;
+  [GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS]?: GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_COMPLETION_TOKENS]?: GEN_AI_USAGE_COMPLETION_TOKENS_TYPE;
   [GEN_AI_USAGE_INPUT_TOKENS]?: GEN_AI_USAGE_INPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_INPUT_TOKENS_CACHED]?: GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE;
@@ -24163,6 +24361,7 @@ export type Attributes = {
   [GEN_AI_USAGE_OUTPUT_TOKENS]?: GEN_AI_USAGE_OUTPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_OUTPUT_TOKENS_REASONING]?: GEN_AI_USAGE_OUTPUT_TOKENS_REASONING_TYPE;
   [GEN_AI_USAGE_PROMPT_TOKENS]?: GEN_AI_USAGE_PROMPT_TOKENS_TYPE;
+  [GEN_AI_USAGE_REASONING_OUTPUT_TOKENS]?: GEN_AI_USAGE_REASONING_OUTPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_TOTAL_TOKENS]?: GEN_AI_USAGE_TOTAL_TOKENS_TYPE;
   [GRAPHQL_DOCUMENT]?: GRAPHQL_DOCUMENT_TYPE;
   [GRAPHQL_OPERATION_NAME]?: GRAPHQL_OPERATION_NAME_TYPE;
