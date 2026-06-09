@@ -8,7 +8,6 @@
   "is_in_otel": false,
   "example": 1.983,
   "alias": ["performance.activationStart"],
-  "sdks": ["javascript-browser"],
   "visibility": "public",
   "changelog": [
     {

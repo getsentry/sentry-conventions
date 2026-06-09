@@ -8,7 +8,6 @@
   "is_in_otel": false,
   "example": 100,
   "alias": ["connection.rtt"],
-  "sdks": ["javascript-browser"],
   "visibility": "public",
   "changelog": [
     {

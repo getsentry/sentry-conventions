@@ -8,7 +8,6 @@
   "is_in_otel": false,
   "example": "4g",
   "alias": ["effectiveConnectionType"],
-  "sdks": ["javascript-browser"],
   "visibility": "public",
   "changelog": [
     {

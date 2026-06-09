@@ -8,7 +8,6 @@
   "is_in_otel": true,
   "visibility": "public",
   "example": 3,
-  "sdks": ["javascript-node", "javascript-deno", "javascript-bun", "javascript-cloudflare"],
   "changelog": [
     {
       "version": "next",

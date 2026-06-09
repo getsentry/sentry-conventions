@@ -8,7 +8,6 @@
   "is_in_otel": false,
   "example": "GET",
   "alias": ["http.request.method", "http.request_method", "http.method"],
-  "sdks": ["javascript-browser", "javascript-node"],
   "deprecation": {
     "_status": null,
     "replacement": "http.request.method"

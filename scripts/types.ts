@@ -16,7 +16,6 @@ export interface AttributeJson {
     _status: string;
   };
   alias?: string[];
-  sdks?: string[];
   additional_context?: string[];
   changelog?: { version: string; prs?: number[]; description?: string }[];
 }

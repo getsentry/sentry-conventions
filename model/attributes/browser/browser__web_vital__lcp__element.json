@@ -8,7 +8,6 @@
   "is_in_otel": false,
   "example": "body > div#app > div#container > div",
   "alias": ["lcp.element"],
-  "sdks": ["javascript-browser"],
   "visibility": "public",
   "changelog": [
     {

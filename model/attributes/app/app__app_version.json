@@ -8,7 +8,6 @@
   "is_in_otel": false,
   "example": "1.0.0",
   "alias": ["app.version"],
-  "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
   "deprecation": {
     "replacement": "app.version",
     "reason": "Deprecated in favor of app.version",

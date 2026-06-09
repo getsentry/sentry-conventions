@@ -7,7 +7,6 @@
   },
   "is_in_otel": false,
   "example": "fetch",
-  "sdks": ["javascript-browser", "javascript-node"],
   "visibility": "public",
   "changelog": [
     {

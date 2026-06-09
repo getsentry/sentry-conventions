@@ -7,7 +7,6 @@
   },
   "is_in_otel": false,
   "example": "AuthenticationMiddleware",
-  "sdks": ["python"],
   "visibility": "public",
   "changelog": [
     {

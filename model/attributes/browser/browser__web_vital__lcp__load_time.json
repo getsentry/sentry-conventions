@@ -8,7 +8,6 @@
   "is_in_otel": false,
   "example": 1402,
   "alias": ["lcp.loadTime"],
-  "sdks": ["javascript-browser"],
   "visibility": "public",
   "changelog": [
     {

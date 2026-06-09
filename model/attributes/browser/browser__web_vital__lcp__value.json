@@ -8,7 +8,6 @@
   "is_in_otel": false,
   "example": 2500,
   "alias": ["lcp"],
-  "sdks": ["javascript-browser"],
   "visibility": "public",
   "changelog": [
     {
