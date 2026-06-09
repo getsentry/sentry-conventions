@@ -96,7 +96,7 @@ Relay incorporates `sentry-conventions` as a git submodule. This means any Relay
   git commit -am "..."
   ```
 
-2. Open a PR at https://github.com/getsentry/relay. If you didn't recompile Relay/run tests after step 1, you might now get test failures or deprecation warnings because attributes Relay was using have been deprecated. These will need to be fixed.
+2. Open a PR at https://github.com/getsentry/relay. If you didn't recompile Relay and run tests after step 1, you might now get test failures or deprecation warnings because attributes Relay was using have been deprecated. These will need to be fixed.
 3. When the PR is merged, wait for it to be deployed.
   
 
