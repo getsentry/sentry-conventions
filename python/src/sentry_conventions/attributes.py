@@ -181,6 +181,7 @@ class _AttributeNamesMeta(type):
         "GEN_AI_REQUEST_AVAILABLE_TOOLS",
         "GEN_AI_REQUEST_MESSAGES",
         "GEN_AI_RESPONSE_TEXT",
+        "GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN",
         "GEN_AI_RESPONSE_TOOL_CALLS",
         "GEN_AI_SYSTEM",
         "GEN_AI_SYSTEM_MESSAGE",
@@ -189,6 +190,9 @@ class _AttributeNamesMeta(type):
         "GEN_AI_TOOL_OUTPUT",
         "GEN_AI_TOOL_TYPE",
         "GEN_AI_USAGE_COMPLETION_TOKENS",
+        "GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE",
+        "GEN_AI_USAGE_INPUT_TOKENS_CACHED",
+        "GEN_AI_USAGE_OUTPUT_TOKENS_REASONING",
         "GEN_AI_USAGE_PROMPT_TOKENS",
         "HARDWARECONCURRENCY",
         "HTTP_CLIENT_IP",
@@ -3594,6 +3598,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "[\"The weather in Paris is rainy and overcast, with temperatures around 57°F\", \"The weather in London is sunny and warm, with temperatures around 65°F\"]"
     """
 
+    # Path: model/attributes/gen_ai/gen_ai__response__time_to_first_chunk.json
+    GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK: Literal[
+        "gen_ai.response.time_to_first_chunk"
+    ] = "gen_ai.response.time_to_first_chunk"
+    """Time in seconds when the first response content chunk arrived in streaming responses.
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: Yes
+    Visibility: public
+    Aliases: gen_ai.response.time_to_first_token
+    Example: 0.6853435
+    """
+
     # Path: model/attributes/gen_ai/gen_ai__response__time_to_first_token.json
     GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN: Literal[
         "gen_ai.response.time_to_first_token"
@@ -3604,6 +3622,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
+    Aliases: gen_ai.response.time_to_first_chunk
+    DEPRECATED: Use gen_ai.response.time_to_first_chunk instead
     Example: 0.6853435
     """
 
@@ -3790,6 +3810,34 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "function"
     """
 
+    # Path: model/attributes/gen_ai/gen_ai__usage__cache_creation__input_tokens.json
+    GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS: Literal[
+        "gen_ai.usage.cache_creation.input_tokens"
+    ] = "gen_ai.usage.cache_creation.input_tokens"
+    """The number of tokens written to the cache when processing the AI input (prompt).
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: Yes
+    Visibility: public
+    Aliases: gen_ai.usage.input_tokens.cache_write
+    Example: 100
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__usage__cache_read__input_tokens.json
+    GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS: Literal[
+        "gen_ai.usage.cache_read.input_tokens"
+    ] = "gen_ai.usage.cache_read.input_tokens"
+    """The number of cached tokens used to process the AI input (prompt).
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: Yes
+    Visibility: public
+    Aliases: gen_ai.usage.input_tokens.cached
+    Example: 50
+    """
+
     # Path: model/attributes/gen_ai/gen_ai__usage__completion_tokens.json
     GEN_AI_USAGE_COMPLETION_TOKENS: Literal["gen_ai.usage.completion_tokens"] = (
         "gen_ai.usage.completion_tokens"
@@ -3829,6 +3877,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
+    Aliases: gen_ai.usage.cache_creation.input_tokens
+    DEPRECATED: Use gen_ai.usage.cache_creation.input_tokens instead
     Example: 100
     """
 
@@ -3842,6 +3892,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
+    Aliases: gen_ai.usage.cache_read.input_tokens
+    DEPRECATED: Use gen_ai.usage.cache_read.input_tokens instead
     Example: 50
     """
 
@@ -3869,6 +3921,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
+    Aliases: gen_ai.usage.reasoning.output_tokens
+    DEPRECATED: Use gen_ai.usage.reasoning.output_tokens instead
     Example: 75
     """
 
@@ -3885,6 +3939,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Aliases: ai.prompt_tokens.used, gen_ai.usage.input_tokens
     DEPRECATED: Use gen_ai.usage.input_tokens instead
     Example: 20
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__usage__reasoning__output_tokens.json
+    GEN_AI_USAGE_REASONING_OUTPUT_TOKENS: Literal[
+        "gen_ai.usage.reasoning.output_tokens"
+    ] = "gen_ai.usage.reasoning.output_tokens"
+    """The number of tokens used for reasoning to create the AI output.
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: Yes
+    Visibility: public
+    Aliases: gen_ai.usage.output_tokens.reasoning
+    Example: 75
     """
 
     # Path: model/attributes/gen_ai/gen_ai__usage__total_tokens.json
@@ -12173,6 +12241,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[63, 74]),
         ],
     ),
+    "gen_ai.response.time_to_first_chunk": AttributeMetadata(
+        brief="Time in seconds when the first response content chunk arrived in streaming responses.",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=0.6853435,
+        aliases=["gen_ai.response.time_to_first_token"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added gen_ai.response.time_to_first_chunk attribute",
+            ),
+        ],
+    ),
     "gen_ai.response.time_to_first_token": AttributeMetadata(
         brief="Time in seconds when the first response content chunk arrived in streaming responses.",
         type=AttributeType.DOUBLE,
@@ -12180,7 +12263,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=0.6853435,
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.response.time_to_first_chunk",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["gen_ai.response.time_to_first_chunk"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Deprecate in favor of gen_ai.response.time_to_first_chunk",
+            ),
             ChangelogEntry(version="0.4.0", prs=[227]),
         ],
     ),
@@ -12377,6 +12469,43 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[62, 127]),
         ],
     ),
+    "gen_ai.usage.cache_creation.input_tokens": AttributeMetadata(
+        brief="The number of tokens written to the cache when processing the AI input (prompt).",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=100,
+        aliases=["gen_ai.usage.input_tokens.cache_write"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added gen_ai.usage.cache_creation.input_tokens attribute",
+            ),
+        ],
+        additional_context=[
+            "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans."
+        ],
+    ),
+    "gen_ai.usage.cache_read.input_tokens": AttributeMetadata(
+        brief="The number of cached tokens used to process the AI input (prompt).",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=50,
+        aliases=["gen_ai.usage.input_tokens.cached"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added gen_ai.usage.cache_read.input_tokens attribute",
+            ),
+        ],
+        additional_context=[
+            "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.",
+            "This is a subset of gen_ai.usage.input_tokens, not an independent count. Do not sum this with gen_ai.usage.input_tokens — it is already included.",
+        ],
+    ),
     "gen_ai.usage.completion_tokens": AttributeMetadata(
         brief="The number of tokens used in the GenAI response (completion).",
         type=AttributeType.INTEGER,
@@ -12410,6 +12539,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.prompt_tokens.used", "gen_ai.usage.prompt_tokens"],
         changelog=[
             ChangelogEntry(
+                version="next",
+                description="Update additional_context to reference gen_ai.usage.cache_read.input_tokens",
+            ),
+            ChangelogEntry(
                 version="0.9.0", prs=[397], description="Add additional_context"
             ),
             ChangelogEntry(version="0.5.0", prs=[261]),
@@ -12419,7 +12552,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         additional_context=[
             "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.",
-            "This count includes cached input tokens. gen_ai.usage.input_tokens.cached is a subset of this value, not an independent count — do not sum them together.",
+            "This count includes cached input tokens. gen_ai.usage.cache_read.input_tokens is a subset of this value, not an independent count — do not sum them together.",
         ],
     ),
     "gen_ai.usage.input_tokens.cache_write": AttributeMetadata(
@@ -12429,7 +12562,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=100,
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.usage.cache_creation.input_tokens",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["gen_ai.usage.cache_creation.input_tokens"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Deprecate in favor of gen_ai.usage.cache_creation.input_tokens",
+            ),
             ChangelogEntry(
                 version="0.9.0", prs=[397], description="Add additional_context"
             ),
@@ -12446,7 +12588,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=50,
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.usage.cache_read.input_tokens",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["gen_ai.usage.cache_read.input_tokens"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Deprecate in favor of gen_ai.usage.cache_read.input_tokens",
+            ),
             ChangelogEntry(
                 version="0.9.0", prs=[397], description="Add additional_context"
             ),
@@ -12468,6 +12619,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.completion_tokens.used", "gen_ai.usage.completion_tokens"],
         changelog=[
             ChangelogEntry(
+                version="next",
+                description="Update additional_context to reference gen_ai.usage.reasoning.output_tokens",
+            ),
+            ChangelogEntry(
                 version="0.9.0", prs=[397], description="Add additional_context"
             ),
             ChangelogEntry(version="0.5.0", prs=[261]),
@@ -12477,7 +12632,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         additional_context=[
             "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.",
-            "This count includes reasoning tokens. gen_ai.usage.output_tokens.reasoning is a subset of this value, not an independent count — do not sum them together.",
+            "This count includes reasoning tokens. gen_ai.usage.reasoning.output_tokens is a subset of this value, not an independent count — do not sum them together.",
         ],
     ),
     "gen_ai.usage.output_tokens.reasoning": AttributeMetadata(
@@ -12487,7 +12642,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=75,
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.usage.reasoning.output_tokens",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["gen_ai.usage.reasoning.output_tokens"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Deprecate in favor of gen_ai.usage.reasoning.output_tokens",
+            ),
             ChangelogEntry(
                 version="0.9.0", prs=[397], description="Add additional_context"
             ),
@@ -12520,6 +12684,25 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         additional_context=[
             "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans."
+        ],
+    ),
+    "gen_ai.usage.reasoning.output_tokens": AttributeMetadata(
+        brief="The number of tokens used for reasoning to create the AI output.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=75,
+        aliases=["gen_ai.usage.output_tokens.reasoning"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added gen_ai.usage.reasoning.output_tokens attribute",
+            ),
+        ],
+        additional_context=[
+            "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.",
+            "This is a subset of gen_ai.usage.output_tokens, not an independent count. Do not sum this with gen_ai.usage.output_tokens — it is already included.",
         ],
     ),
     "gen_ai.usage.total_tokens": AttributeMetadata(
@@ -17389,6 +17572,7 @@ Attributes = TypedDict(
         "gen_ai.response.model": str,
         "gen_ai.response.streaming": bool,
         "gen_ai.response.text": str,
+        "gen_ai.response.time_to_first_chunk": float,
         "gen_ai.response.time_to_first_token": float,
         "gen_ai.response.tokens_per_second": float,
         "gen_ai.response.tool_calls": str,
@@ -17404,6 +17588,8 @@ Attributes = TypedDict(
         "gen_ai.tool.name": str,
         "gen_ai.tool.output": str,
         "gen_ai.tool.type": str,
+        "gen_ai.usage.cache_creation.input_tokens": int,
+        "gen_ai.usage.cache_read.input_tokens": int,
         "gen_ai.usage.completion_tokens": int,
         "gen_ai.usage.input_tokens": int,
         "gen_ai.usage.input_tokens.cache_write": int,
@@ -17411,6 +17597,7 @@ Attributes = TypedDict(
         "gen_ai.usage.output_tokens": int,
         "gen_ai.usage.output_tokens.reasoning": int,
         "gen_ai.usage.prompt_tokens": int,
+        "gen_ai.usage.reasoning.output_tokens": int,
         "gen_ai.usage.total_tokens": int,
         "graphql.document": str,
         "graphql.operation.name": str,

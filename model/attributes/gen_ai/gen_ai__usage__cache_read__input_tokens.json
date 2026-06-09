@@ -1,39 +1,22 @@
 {
-  "key": "gen_ai.usage.input_tokens.cached",
+  "key": "gen_ai.usage.cache_read.input_tokens",
   "brief": "The number of cached tokens used to process the AI input (prompt).",
   "type": "integer",
   "pii": {
     "key": "maybe"
   },
-  "is_in_otel": false,
-  "example": 50,
+  "is_in_otel": true,
   "visibility": "public",
+  "example": 50,
   "additional_context": [
     "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.",
     "This is a subset of gen_ai.usage.input_tokens, not an independent count. Do not sum this with gen_ai.usage.input_tokens — it is already included."
   ],
-  "alias": ["gen_ai.usage.cache_read.input_tokens"],
-  "deprecation": {
-    "_status": "backfill",
-    "replacement": "gen_ai.usage.cache_read.input_tokens"
-  },
+  "alias": ["gen_ai.usage.input_tokens.cached"],
   "changelog": [
     {
       "version": "next",
-      "description": "Deprecate in favor of gen_ai.usage.cache_read.input_tokens"
-    },
-    {
-      "version": "0.9.0",
-      "prs": [397],
-      "description": "Add additional_context"
-    },
-    {
-      "version": "0.4.0",
-      "prs": [228]
-    },
-    {
-      "version": "0.1.0",
-      "prs": [62, 112]
+      "description": "Added gen_ai.usage.cache_read.input_tokens attribute"
     }
   ]
 }
