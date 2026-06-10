@@ -25,7 +25,6 @@ const attributeSchema = z.object({
     })
     .optional(),
   alias: z.array(z.string()).optional(),
-  sdks: z.array(z.string()).optional(),
   additional_context: z.array(z.string()).optional(),
   changelog: z
     .array(

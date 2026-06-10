@@ -8,7 +8,6 @@
   "is_in_otel": false,
   "example": 1.983,
   "alias": ["browser.performance.navigation.activation_start"],
-  "sdks": ["javascript-browser"],
   "deprecation": {
     "reason": "The activationStart is now recorded as the browser.performance.navigation.activation_start attribute.",
     "replacement": "browser.performance.navigation.activation_start",

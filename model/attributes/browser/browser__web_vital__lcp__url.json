@@ -8,7 +8,6 @@
   "is_in_otel": false,
   "example": "https://example.com/static/img.png",
   "alias": ["lcp.url"],
-  "sdks": ["javascript-browser"],
   "visibility": "public",
   "changelog": [
     {

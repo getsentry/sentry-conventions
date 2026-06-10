@@ -7,11 +7,10 @@
   },
   "is_in_otel": false,
   "example": "run",
-  "sdks": ["javascript-cloudflare"],
   "visibility": "public",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.11.0",
       "prs": [392],
       "description": "Added cloudflare.d1.query_type attribute"
     }

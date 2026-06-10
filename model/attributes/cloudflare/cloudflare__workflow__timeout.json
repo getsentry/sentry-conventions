@@ -7,11 +7,10 @@
   },
   "is_in_otel": false,
   "example": "1 minute",
-  "sdks": ["javascript-cloudflare"],
   "visibility": "public",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.11.0",
       "prs": [392],
       "description": "Added cloudflare.workflow.timeout attribute"
     }

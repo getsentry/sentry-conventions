@@ -8,7 +8,6 @@
   "is_in_otel": false,
   "example": "#gero",
   "alias": ["lcp.id"],
-  "sdks": ["javascript-browser"],
   "visibility": "public",
   "changelog": [
     {

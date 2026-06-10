@@ -3418,6 +3418,27 @@ export const DB_OPERATION = 'db.operation';
  */
 export type DB_OPERATION_TYPE = string;
 
+// Path: model/attributes/db/db__operation__batch__size.json
+
+/**
+ * The number of queries included in a batch operation. Operations are only considered batches when they contain two or more operations, and so db.operation.batch.size SHOULD never be 1. `db.operation.batch.size`
+ *
+ * Attribute Value Type: `number` {@link DB_OPERATION_BATCH_SIZE_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example 3
+ */
+export const DB_OPERATION_BATCH_SIZE = 'db.operation.batch.size';
+
+/**
+ * Type for {@link DB_OPERATION_BATCH_SIZE} db.operation.batch.size
+ */
+export type DB_OPERATION_BATCH_SIZE_TYPE = number;
+
 // Path: model/attributes/db/db__operation__name.json
 
 /**
@@ -4800,7 +4821,7 @@ export type FAAS_DURATION_IN_MS_TYPE = number;
  *
  * Attribute Value Type: `string` {@link FAAS_ENTRY_POINT_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -4863,7 +4884,7 @@ export type FAAS_INVOCATION_ID_TYPE = string;
  *
  * Attribute Value Type: `string` {@link FAAS_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -6062,6 +6083,29 @@ export const GEN_AI_RESPONSE_TEXT = 'gen_ai.response.text';
  */
 export type GEN_AI_RESPONSE_TEXT_TYPE = string;
 
+// Path: model/attributes/gen_ai/gen_ai__response__time_to_first_chunk.json
+
+/**
+ * Time in seconds when the first response content chunk arrived in streaming responses. `gen_ai.response.time_to_first_chunk`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN} `gen_ai.response.time_to_first_token`
+ *
+ * @example 0.6853435
+ */
+export const GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK = 'gen_ai.response.time_to_first_chunk';
+
+/**
+ * Type for {@link GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK} gen_ai.response.time_to_first_chunk
+ */
+export type GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK_TYPE = number;
+
 // Path: model/attributes/gen_ai/gen_ai__response__time_to_first_token.json
 
 /**
@@ -6074,6 +6118,9 @@ export type GEN_AI_RESPONSE_TEXT_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK} `gen_ai.response.time_to_first_chunk`
+ *
+ * @deprecated Use {@link GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK} (gen_ai.response.time_to_first_chunk) instead
  * @example 0.6853435
  */
 export const GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN = 'gen_ai.response.time_to_first_token';
@@ -6400,6 +6447,52 @@ export const GEN_AI_TOOL_TYPE = 'gen_ai.tool.type';
  */
 export type GEN_AI_TOOL_TYPE_TYPE = string;
 
+// Path: model/attributes/gen_ai/gen_ai__usage__cache_creation__input_tokens.json
+
+/**
+ * The number of tokens written to the cache when processing the AI input (prompt). `gen_ai.usage.cache_creation.input_tokens`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE} `gen_ai.usage.input_tokens.cache_write`
+ *
+ * @example 100
+ */
+export const GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS = 'gen_ai.usage.cache_creation.input_tokens';
+
+/**
+ * Type for {@link GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS} gen_ai.usage.cache_creation.input_tokens
+ */
+export type GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__usage__cache_read__input_tokens.json
+
+/**
+ * The number of cached tokens used to process the AI input (prompt). `gen_ai.usage.cache_read.input_tokens`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_USAGE_INPUT_TOKENS_CACHED} `gen_ai.usage.input_tokens.cached`
+ *
+ * @example 50
+ */
+export const GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS = 'gen_ai.usage.cache_read.input_tokens';
+
+/**
+ * Type for {@link GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS} gen_ai.usage.cache_read.input_tokens
+ */
+export type GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS_TYPE = number;
+
 // Path: model/attributes/gen_ai/gen_ai__usage__completion_tokens.json
 
 /**
@@ -6459,6 +6552,9 @@ export type GEN_AI_USAGE_INPUT_TOKENS_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS} `gen_ai.usage.cache_read.input_tokens`
+ *
+ * @deprecated Use {@link GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS} (gen_ai.usage.cache_read.input_tokens) instead
  * @example 50
  */
 export const GEN_AI_USAGE_INPUT_TOKENS_CACHED = 'gen_ai.usage.input_tokens.cached';
@@ -6480,6 +6576,9 @@ export type GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS} `gen_ai.usage.cache_creation.input_tokens`
+ *
+ * @deprecated Use {@link GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS} (gen_ai.usage.cache_creation.input_tokens) instead
  * @example 100
  */
 export const GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE = 'gen_ai.usage.input_tokens.cache_write';
@@ -6524,6 +6623,9 @@ export type GEN_AI_USAGE_OUTPUT_TOKENS_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link GEN_AI_USAGE_REASONING_OUTPUT_TOKENS} `gen_ai.usage.reasoning.output_tokens`
+ *
+ * @deprecated Use {@link GEN_AI_USAGE_REASONING_OUTPUT_TOKENS} (gen_ai.usage.reasoning.output_tokens) instead
  * @example 75
  */
 export const GEN_AI_USAGE_OUTPUT_TOKENS_REASONING = 'gen_ai.usage.output_tokens.reasoning';
@@ -6556,6 +6658,29 @@ export const GEN_AI_USAGE_PROMPT_TOKENS = 'gen_ai.usage.prompt_tokens';
  * Type for {@link GEN_AI_USAGE_PROMPT_TOKENS} gen_ai.usage.prompt_tokens
  */
 export type GEN_AI_USAGE_PROMPT_TOKENS_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__usage__reasoning__output_tokens.json
+
+/**
+ * The number of tokens used for reasoning to create the AI output. `gen_ai.usage.reasoning.output_tokens`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_USAGE_REASONING_OUTPUT_TOKENS_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_USAGE_OUTPUT_TOKENS_REASONING} `gen_ai.usage.output_tokens.reasoning`
+ *
+ * @example 75
+ */
+export const GEN_AI_USAGE_REASONING_OUTPUT_TOKENS = 'gen_ai.usage.reasoning.output_tokens';
+
+/**
+ * Type for {@link GEN_AI_USAGE_REASONING_OUTPUT_TOKENS} gen_ai.usage.reasoning.output_tokens
+ */
+export type GEN_AI_USAGE_REASONING_OUTPUT_TOKENS_TYPE = number;
 
 // Path: model/attributes/gen_ai/gen_ai__usage__total_tokens.json
 
@@ -12318,6 +12443,27 @@ export const SERVICE_VERSION = 'service.version';
  */
 export type SERVICE_VERSION_TYPE = string;
 
+// Path: model/attributes/session/session__id.json
+
+/**
+ * A unique id identifying the active session at the time of setting this attribute `session.id`
+ *
+ * Attribute Value Type: `string` {@link SESSION_ID_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "00112233-4455-6677-8899-aabbccddeeff"
+ */
+export const SESSION_ID = 'session.id';
+
+/**
+ * Type for {@link SESSION_ID} session.id
+ */
+export type SESSION_ID_TYPE = string;
+
 // Path: model/attributes/stall_percentage.json
 
 /**
@@ -14181,8 +14327,6 @@ export interface AttributeMetadata {
   deprecation?: DeprecationInfo;
   /** If there are attributes that alias to this attribute */
   aliases?: AttributeName[];
-  /** If an attribute is SDK specific, list the SDKs that use this attribute */
-  sdks?: string[];
   /** Changelog entries tracking how this attribute has changed across versions */
   changelog?: ChangelogEntry[];
   /** A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances */
@@ -14343,6 +14487,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [DB_NAME]: 'string',
   [DB_NAMESPACE]: 'string',
   [DB_OPERATION]: 'string',
+  [DB_OPERATION_BATCH_SIZE]: 'integer',
   [DB_OPERATION_NAME]: 'string',
   [DB_QUERY_PARAMETER_KEY]: 'string',
   [DB_QUERY_SUMMARY]: 'string',
@@ -14465,6 +14610,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [GEN_AI_RESPONSE_MODEL]: 'string',
   [GEN_AI_RESPONSE_STREAMING]: 'boolean',
   [GEN_AI_RESPONSE_TEXT]: 'string',
+  [GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK]: 'double',
   [GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN]: 'double',
   [GEN_AI_RESPONSE_TOKENS_PER_SECOND]: 'double',
   [GEN_AI_RESPONSE_TOOL_CALLS]: 'string',
@@ -14480,6 +14626,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [GEN_AI_TOOL_NAME]: 'string',
   [GEN_AI_TOOL_OUTPUT]: 'string',
   [GEN_AI_TOOL_TYPE]: 'string',
+  [GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS]: 'integer',
+  [GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS]: 'integer',
   [GEN_AI_USAGE_COMPLETION_TOKENS]: 'integer',
   [GEN_AI_USAGE_INPUT_TOKENS]: 'integer',
   [GEN_AI_USAGE_INPUT_TOKENS_CACHED]: 'integer',
@@ -14487,6 +14635,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [GEN_AI_USAGE_OUTPUT_TOKENS]: 'integer',
   [GEN_AI_USAGE_OUTPUT_TOKENS_REASONING]: 'integer',
   [GEN_AI_USAGE_PROMPT_TOKENS]: 'integer',
+  [GEN_AI_USAGE_REASONING_OUTPUT_TOKENS]: 'integer',
   [GEN_AI_USAGE_TOTAL_TOKENS]: 'integer',
   [GRAPHQL_DOCUMENT]: 'string',
   [GRAPHQL_OPERATION_NAME]: 'string',
@@ -14750,6 +14899,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SERVER_PORT]: 'integer',
   [SERVICE_NAME]: 'string',
   [SERVICE_VERSION]: 'string',
+  [SESSION_ID]: 'string',
   [STALL_PERCENTAGE]: 'double',
   [STALL_TOTAL_TIME]: 'double',
   [STATE_TYPE]: 'string',
@@ -14990,6 +15140,7 @@ export type AttributeName =
   | typeof DB_NAME
   | typeof DB_NAMESPACE
   | typeof DB_OPERATION
+  | typeof DB_OPERATION_BATCH_SIZE
   | typeof DB_OPERATION_NAME
   | typeof DB_QUERY_PARAMETER_KEY
   | typeof DB_QUERY_SUMMARY
@@ -15112,6 +15263,7 @@ export type AttributeName =
   | typeof GEN_AI_RESPONSE_MODEL
   | typeof GEN_AI_RESPONSE_STREAMING
   | typeof GEN_AI_RESPONSE_TEXT
+  | typeof GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK
   | typeof GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN
   | typeof GEN_AI_RESPONSE_TOKENS_PER_SECOND
   | typeof GEN_AI_RESPONSE_TOOL_CALLS
@@ -15127,6 +15279,8 @@ export type AttributeName =
   | typeof GEN_AI_TOOL_NAME
   | typeof GEN_AI_TOOL_OUTPUT
   | typeof GEN_AI_TOOL_TYPE
+  | typeof GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS
+  | typeof GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS
   | typeof GEN_AI_USAGE_COMPLETION_TOKENS
   | typeof GEN_AI_USAGE_INPUT_TOKENS
   | typeof GEN_AI_USAGE_INPUT_TOKENS_CACHED
@@ -15134,6 +15288,7 @@ export type AttributeName =
   | typeof GEN_AI_USAGE_OUTPUT_TOKENS
   | typeof GEN_AI_USAGE_OUTPUT_TOKENS_REASONING
   | typeof GEN_AI_USAGE_PROMPT_TOKENS
+  | typeof GEN_AI_USAGE_REASONING_OUTPUT_TOKENS
   | typeof GEN_AI_USAGE_TOTAL_TOKENS
   | typeof GRAPHQL_DOCUMENT
   | typeof GRAPHQL_OPERATION_NAME
@@ -15397,6 +15552,7 @@ export type AttributeName =
   | typeof SERVER_PORT
   | typeof SERVICE_NAME
   | typeof SERVICE_VERSION
+  | typeof SESSION_ID
   | typeof STALL_PERCENTAGE
   | typeof STALL_TOTAL_TIME
   | typeof STATE_TYPE
@@ -15511,7 +15667,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.usage.output_tokens',
     },
     aliases: [GEN_AI_USAGE_OUTPUT_TOKENS, GEN_AI_USAGE_COMPLETION_TOKENS],
-    sdks: ['python'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [57, 61] }, { version: '0.0.0' }],
   },
   [AI_DOCUMENTS]: {
@@ -15607,7 +15762,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.input.messages',
     },
     aliases: [GEN_AI_REQUEST_MESSAGES],
-    sdks: ['python'],
     changelog: [{ version: '0.1.0', prs: [65, 119] }, { version: '0.0.0' }],
   },
   [AI_IS_SEARCH_REQUIRED]: {
@@ -15653,7 +15807,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.response.model',
     },
     aliases: [GEN_AI_RESPONSE_MODEL],
-    sdks: ['python'],
     changelog: [{ version: '0.1.0', prs: [57, 61, 127] }, { version: '0.0.0' }],
   },
   [AI_MODEL_PROVIDER]: {
@@ -15740,7 +15893,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.usage.input_tokens',
     },
     aliases: [GEN_AI_USAGE_PROMPT_TOKENS, GEN_AI_USAGE_INPUT_TOKENS],
-    sdks: ['python'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [57, 61] }, { version: '0.0.0' }],
   },
   [AI_RAW_PROMPTING]: {
@@ -15770,7 +15922,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.output.messages',
     },
-    sdks: ['python'],
     changelog: [{ version: '0.1.0', prs: [65, 127] }, { version: '0.0.0' }],
   },
   [AI_RESPONSE_FORMAT]: {
@@ -15846,7 +15997,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.response.streaming',
     },
     aliases: [GEN_AI_RESPONSE_STREAMING],
-    sdks: ['python'],
     changelog: [{ version: '0.1.0', prs: [76, 108] }, { version: '0.0.0' }],
   },
   [AI_TAGS]: {
@@ -15999,7 +16149,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.usage.total_tokens',
     },
     aliases: [GEN_AI_USAGE_TOTAL_TOKENS],
-    sdks: ['python'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [57, 61, 108] }, { version: '0.0.0' }],
   },
   [AI_WARNINGS]: {
@@ -16042,7 +16191,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Deprecated in favor of app.build',
     },
     aliases: [APP_BUILD],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
       { version: '0.5.0', prs: [296], description: 'Added and deprecated app.app_build in favor of app.build' },
     ],
@@ -16061,7 +16209,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Deprecated in favor of app.identifier',
     },
     aliases: [APP_IDENTIFIER],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
       {
         version: '0.5.0',
@@ -16084,7 +16231,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Deprecated in favor of app.name',
     },
     aliases: [APP_NAME],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
       { version: '0.5.0', prs: [296], description: 'Added and deprecated app.app_name in favor of app.name' },
     ],
@@ -16103,7 +16249,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Deprecated in favor of app.start_time',
     },
     aliases: [APP_START_TIME],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
       {
         version: '0.5.0',
@@ -16126,7 +16271,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Deprecated in favor of app.version',
     },
     aliases: [APP_VERSION],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
       { version: '0.5.0', prs: [296], description: 'Added and deprecated app.app_version in favor of app.version' },
     ],
@@ -16141,7 +16285,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '1',
     aliases: [APP_APP_BUILD],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: '0.5.0', prs: [296], description: 'Added app.build attribute' }],
   },
   [APP_IDENTIFIER]: {
@@ -16154,7 +16297,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'com.example.myapp',
     aliases: [APP_APP_IDENTIFIER],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: '0.5.0', prs: [296], description: 'Added app.identifier attribute' }],
   },
   [APP_IN_FOREGROUND]: {
@@ -16166,7 +16308,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: true,
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: '0.5.0', prs: [296], description: 'Added app.in_foreground attribute' }],
   },
   [APP_NAME]: {
@@ -16179,7 +16320,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'My App',
     aliases: [APP_APP_NAME],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: '0.5.0', prs: [296], description: 'Added app.name attribute' }],
   },
   [APP_START_COLD]: {
@@ -16197,7 +16337,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         'Replaced by app.vitals.start.cold.value to align with the app.vitals.* namespace for mobile performance attributes',
     },
     aliases: [APP_VITALS_START_COLD_VALUE],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
       { version: '0.5.0', prs: [323], description: 'Added and deprecated in favor of app.vitals.start.cold.value' },
     ],
@@ -16212,7 +16351,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '2025-01-01T00:00:00.000Z',
     aliases: [APP_APP_START_TIME],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: '0.5.0', prs: [296], description: 'Added app.start_time attribute' }],
   },
   [APP_START_TYPE]: {
@@ -16251,7 +16389,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         'Replaced by app.vitals.start.warm.value to align with the app.vitals.* namespace for mobile performance attributes',
     },
     aliases: [APP_VITALS_START_WARM_VALUE],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
       { version: '0.5.0', prs: [323], description: 'Added and deprecated in favor of app.vitals.start.warm.value' },
     ],
@@ -16266,7 +16403,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '1.0.0',
     aliases: [APP_APP_VERSION],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: '0.5.0', prs: [296], description: 'Added app.version attribute' }],
   },
   [APP_VITALS_FRAMES_DELAY_VALUE]: {
@@ -16280,7 +16416,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 5,
     aliases: [FRAMES_DELAY],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.delay.value to replace frames.delay' },
     ],
@@ -16295,7 +16430,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 3,
     aliases: [FRAMES_FROZEN],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.frozen.count to replace frames.frozen' },
     ],
@@ -16310,7 +16444,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1,
     aliases: [FRAMES_SLOW],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.slow.count to replace frames.slow' },
     ],
@@ -16325,7 +16458,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 60,
     aliases: [FRAMES_TOTAL],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.total.count to replace frames.total' },
     ],
@@ -16340,7 +16472,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1234.56,
     aliases: [APP_START_COLD],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.start.cold.value attribute' }],
   },
   [APP_VITALS_START_PREWARMED]: {
@@ -16352,8 +16483,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: true,
-    sdks: ['sentry.cocoa'],
-    changelog: [{ version: 'next', prs: [379], description: 'Added app.vitals.start.prewarmed attribute' }],
+    changelog: [{ version: '0.11.0', prs: [379], description: 'Added app.vitals.start.prewarmed attribute' }],
   },
   [APP_VITALS_START_REASON]: {
     brief: 'The reason that triggered the app start.',
@@ -16364,13 +16494,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'push',
-    sdks: [
-      'sentry.cocoa',
-      'sentry.java.android',
-      'sentry.javascript.react-native',
-      'sentry.dart.flutter',
-      'sentry.dotnet.maui',
-    ],
     changelog: [{ version: '0.7.0', prs: [353], description: 'Added app.vitals.start.reason attribute' }],
   },
   [APP_VITALS_START_SCREEN]: {
@@ -16383,13 +16506,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'MainActivity',
-    sdks: [
-      'sentry.cocoa',
-      'sentry.java.android',
-      'sentry.javascript.react-native',
-      'sentry.dart.flutter',
-      'sentry.dotnet.maui',
-    ],
     changelog: [{ version: '0.7.0', prs: [353], description: 'Added app.vitals.start.screen attribute' }],
   },
   [APP_VITALS_START_TYPE]: {
@@ -16402,7 +16518,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'cold',
     aliases: [APP_START_TYPE],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.start.type attribute' }],
   },
   [APP_VITALS_START_WARM_VALUE]: {
@@ -16415,7 +16530,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1234.56,
     aliases: [APP_START_WARM],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.start.warm.value attribute' }],
   },
   [APP_VITALS_TTFD_VALUE]: {
@@ -16428,7 +16542,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1234.56,
     aliases: [TIME_TO_FULL_DISPLAY],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.ttfd.value attribute' }],
   },
   [APP_VITALS_TTID_VALUE]: {
@@ -16441,7 +16554,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1234.56,
     aliases: [TIME_TO_INITIAL_DISPLAY],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.ttid.value attribute' }],
   },
   [ART_GC_BLOCKING_COUNT]: {
@@ -16453,8 +16565,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1,
-    sdks: ['sentry.java.android'],
-    changelog: [{ version: 'next', prs: [382], description: 'Added art.gc.blocking_count attribute' }],
+    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.gc.blocking_count attribute' }],
   },
   [ART_GC_BLOCKING_TIME]: {
     brief: 'Total time spent in blocking (stop-the-world) garbage collections by the Android Runtime, in milliseconds',
@@ -16465,8 +16576,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 11.873,
-    sdks: ['sentry.java.android'],
-    changelog: [{ version: 'next', prs: [382], description: 'Added art.gc.blocking_time attribute' }],
+    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.gc.blocking_time attribute' }],
   },
   [ART_GC_PRE_OOME_COUNT]: {
     brief:
@@ -16478,8 +16588,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 0,
-    sdks: ['sentry.java.android'],
-    changelog: [{ version: 'next', prs: [382], description: 'Added art.gc.pre_oome_count attribute' }],
+    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.gc.pre_oome_count attribute' }],
   },
   [ART_GC_TOTAL_COUNT]: {
     brief: 'Total number of garbage collections performed by the Android Runtime',
@@ -16490,8 +16599,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1,
-    sdks: ['sentry.java.android'],
-    changelog: [{ version: 'next', prs: [382], description: 'Added art.gc.total_count attribute' }],
+    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.gc.total_count attribute' }],
   },
   [ART_GC_TOTAL_TIME]: {
     brief: 'Total time spent in garbage collection by the Android Runtime, in milliseconds',
@@ -16502,8 +16610,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 11.807,
-    sdks: ['sentry.java.android'],
-    changelog: [{ version: 'next', prs: [382], description: 'Added art.gc.total_time attribute' }],
+    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.gc.total_time attribute' }],
   },
   [ART_GC_WAITING_TIME]: {
     brief:
@@ -16515,8 +16622,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 8.054,
-    sdks: ['sentry.java.android'],
-    changelog: [{ version: 'next', prs: [382], description: 'Added art.gc.waiting_time attribute' }],
+    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.gc.waiting_time attribute' }],
   },
   [ART_MEMORY_FREE]: {
     brief: 'Free memory available to the process as reported by the Android Runtime, in bytes',
@@ -16527,8 +16633,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 3181568,
-    sdks: ['sentry.java.android'],
-    changelog: [{ version: 'next', prs: [382], description: 'Added art.memory.free attribute' }],
+    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.memory.free attribute' }],
   },
   [ART_MEMORY_FREE_UNTIL_GC]: {
     brief: 'Free memory available before a garbage collection would be triggered by the Android Runtime, in bytes',
@@ -16539,8 +16644,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 3181568,
-    sdks: ['sentry.java.android'],
-    changelog: [{ version: 'next', prs: [382], description: 'Added art.memory.free_until_gc attribute' }],
+    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.memory.free_until_gc attribute' }],
   },
   [ART_MEMORY_FREE_UNTIL_OOME]: {
     brief: 'Free memory available before an OutOfMemoryError would be thrown by the Android Runtime, in bytes',
@@ -16551,8 +16655,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 196083712,
-    sdks: ['sentry.java.android'],
-    changelog: [{ version: 'next', prs: [382], description: 'Added art.memory.free_until_oome attribute' }],
+    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.memory.free_until_oome attribute' }],
   },
   [ART_MEMORY_MAX]: {
     brief: 'Maximum memory the process is allowed to use as reported by the Android Runtime, in bytes',
@@ -16563,8 +16666,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 201326592,
-    sdks: ['sentry.java.android'],
-    changelog: [{ version: 'next', prs: [382], description: 'Added art.memory.max attribute' }],
+    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.memory.max attribute' }],
   },
   [ART_MEMORY_TOTAL]: {
     brief: 'Total memory currently allocated to the process by the Android Runtime, in bytes',
@@ -16575,8 +16677,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 7774208,
-    sdks: ['sentry.java.android'],
-    changelog: [{ version: 'next', prs: [382], description: 'Added art.memory.total attribute' }],
+    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.memory.total attribute' }],
   },
   [AWS_CLOUDWATCH_LOGS_LOG_GROUP]: {
     brief: 'The name of the CloudWatch Logs log group',
@@ -16773,7 +16874,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1.983,
     aliases: [PERFORMANCE_ACTIVATIONSTART],
-    sdks: ['javascript-browser'],
     changelog: [
       { version: '0.5.0', prs: [321], description: 'Added browser.performance.navigation.activation_start attribute' },
     ],
@@ -16788,7 +16888,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1776185678.886,
     aliases: [PERFORMANCE_TIMEORIGIN],
-    sdks: ['javascript-browser'],
     changelog: [
       { version: '0.5.0', prs: [321], description: 'Added browser.performance.time_origin attribute attribute' },
     ],
@@ -16813,7 +16912,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'Window.requestAnimationFrame',
-    sdks: ['browser'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [BROWSER_SCRIPT_INVOKER_TYPE]: {
@@ -16825,7 +16923,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'event-listener',
-    sdks: ['browser'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [BROWSER_SCRIPT_SOURCE_CHAR_POSITION]: {
@@ -16837,7 +16934,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 678,
-    sdks: ['browser'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [BROWSER_VERSION]: {
@@ -16861,7 +16957,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'navigation',
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [319], description: 'Added browser.web_vital.cls.report_event attribute' }],
   },
   [BROWSER_WEB_VITAL_CLS_SOURCE_KEY]: {
@@ -16875,7 +16970,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     hasDynamicSuffix: true,
     example: 'body > div#app',
     aliases: [CLS_SOURCE_KEY],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [234] }],
   },
   [BROWSER_WEB_VITAL_CLS_VALUE]: {
@@ -16888,7 +16982,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 0.2361,
     aliases: [CLS],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [229], description: 'Added browser.web_vital.cls.value attribute' }],
   },
   [BROWSER_WEB_VITAL_FCP_VALUE]: {
@@ -16901,7 +16994,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 547.6951,
     aliases: [FCP],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [235] }],
   },
   [BROWSER_WEB_VITAL_FP_VALUE]: {
@@ -16914,7 +17006,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 477.1926,
     aliases: [FP],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [235] }],
   },
   [BROWSER_WEB_VITAL_INP_VALUE]: {
@@ -16927,7 +17018,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 200,
     aliases: [INP],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [229], description: 'Added browser.web_vital.inp.value attribute' }],
   },
   [BROWSER_WEB_VITAL_LCP_ELEMENT]: {
@@ -16940,7 +17030,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'body > div#app > div#container > div',
     aliases: [LCP_ELEMENT],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [233] }],
   },
   [BROWSER_WEB_VITAL_LCP_ID]: {
@@ -16953,7 +17042,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '#gero',
     aliases: [LCP_ID],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [233] }],
   },
   [BROWSER_WEB_VITAL_LCP_LOAD_TIME]: {
@@ -16966,7 +17054,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1402,
     aliases: [LCP_LOADTIME],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [233] }],
   },
   [BROWSER_WEB_VITAL_LCP_RENDER_TIME]: {
@@ -16979,7 +17066,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1685,
     aliases: [LCP_RENDERTIME],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [233] }],
   },
   [BROWSER_WEB_VITAL_LCP_REPORT_EVENT]: {
@@ -16991,7 +17077,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'pagehide',
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [319], description: 'Added browser.web_vital.lcp.report_event attribute' }],
   },
   [BROWSER_WEB_VITAL_LCP_SIZE]: {
@@ -17004,7 +17089,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1024,
     aliases: [LCP_SIZE],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [233] }],
   },
   [BROWSER_WEB_VITAL_LCP_URL]: {
@@ -17017,7 +17101,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'https://example.com/static/img.png',
     aliases: [LCP_URL],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [233] }],
   },
   [BROWSER_WEB_VITAL_LCP_VALUE]: {
@@ -17030,7 +17113,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 2500,
     aliases: [LCP],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [229], description: 'Added browser.web_vital.lcp.value attribute' }],
   },
   [BROWSER_WEB_VITAL_TTFB_REQUEST_TIME]: {
@@ -17044,7 +17126,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1554.5814,
     aliases: [TTFB_REQUESTTIME],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [235] }],
   },
   [BROWSER_WEB_VITAL_TTFB_VALUE]: {
@@ -17057,7 +17138,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 194.3322,
     aliases: [TTFB],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [235] }],
   },
   [CACHE_HIT]: {
@@ -17069,7 +17149,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: true,
-    sdks: ['php-laravel'],
     changelog: [{ version: '0.0.0' }],
   },
   [CACHE_ITEM_SIZE]: {
@@ -17092,7 +17171,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: ['my-cache-key', 'my-other-cache-key'],
-    sdks: ['php-laravel'],
     changelog: [{ version: '0.0.0' }],
   },
   [CACHE_OPERATION]: {
@@ -17104,7 +17182,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'get',
-    sdks: ['php-laravel'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [CACHE_TTL]: {
@@ -17116,7 +17193,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 120,
-    sdks: ['php-laravel'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [CACHE_WRITE]: {
@@ -17128,7 +17204,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: true,
-    sdks: ['java'],
     changelog: [{ version: '0.5.0' }],
   },
   [CHANNEL]: {
@@ -17140,7 +17215,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'mail',
-    sdks: ['php-laravel'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [CLIENT_ADDRESS]: {
@@ -17176,7 +17250,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 543,
-    sdks: ['javascript-cloudflare'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [CLOUDFLARE_D1_QUERY_TYPE]: {
@@ -17188,8 +17261,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'run',
-    sdks: ['javascript-cloudflare'],
-    changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.d1.query_type attribute' }],
+    changelog: [{ version: '0.11.0', prs: [392], description: 'Added cloudflare.d1.query_type attribute' }],
   },
   [CLOUDFLARE_D1_ROWS_READ]: {
     brief: 'The number of rows read in a Cloudflare D1 operation.',
@@ -17200,7 +17272,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 12,
-    sdks: ['javascript-cloudflare'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [CLOUDFLARE_D1_ROWS_WRITTEN]: {
@@ -17212,7 +17283,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 12,
-    sdks: ['javascript-cloudflare'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [CLOUDFLARE_WORKFLOW_ATTEMPT]: {
@@ -17224,8 +17294,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1,
-    sdks: ['javascript-cloudflare'],
-    changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.workflow.attempt attribute' }],
+    changelog: [{ version: '0.11.0', prs: [392], description: 'Added cloudflare.workflow.attempt attribute' }],
   },
   [CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF]: {
     brief: 'The backoff strategy for Cloudflare Workflow step retries',
@@ -17236,8 +17305,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'exponential',
-    sdks: ['javascript-cloudflare'],
-    changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.workflow.retries.backoff attribute' }],
+    changelog: [{ version: '0.11.0', prs: [392], description: 'Added cloudflare.workflow.retries.backoff attribute' }],
   },
   [CLOUDFLARE_WORKFLOW_RETRIES_DELAY]: {
     brief: 'The delay between Cloudflare Workflow step retries',
@@ -17248,8 +17316,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: '5 seconds',
-    sdks: ['javascript-cloudflare'],
-    changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.workflow.retries.delay attribute' }],
+    changelog: [{ version: '0.11.0', prs: [392], description: 'Added cloudflare.workflow.retries.delay attribute' }],
   },
   [CLOUDFLARE_WORKFLOW_RETRIES_LIMIT]: {
     brief: 'The maximum number of retries for a Cloudflare Workflow step',
@@ -17260,8 +17327,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 3,
-    sdks: ['javascript-cloudflare'],
-    changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.workflow.retries.limit attribute' }],
+    changelog: [{ version: '0.11.0', prs: [392], description: 'Added cloudflare.workflow.retries.limit attribute' }],
   },
   [CLOUDFLARE_WORKFLOW_TIMEOUT]: {
     brief: 'The timeout duration for a Cloudflare Workflow step',
@@ -17272,8 +17338,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: '1 minute',
-    sdks: ['javascript-cloudflare'],
-    changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.workflow.timeout attribute' }],
+    changelog: [{ version: '0.11.0', prs: [392], description: 'Added cloudflare.workflow.timeout attribute' }],
   },
   [CLOUD_ACCOUNT_ID]: {
     brief: 'The cloud account ID the resource is assigned to',
@@ -17358,7 +17423,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'The CLS web vital is now recorded as a browser.web_vital.cls.value attribute.',
     },
     aliases: [BROWSER_WEB_VITAL_CLS_VALUE],
-    sdks: ['javascript-browser'],
     changelog: [
       {
         version: '0.5.0',
@@ -17382,7 +17446,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'The CLS source is now recorded as a browser.web_vital.cls.source.<key> attribute.',
     },
     aliases: [BROWSER_WEB_VITAL_CLS_SOURCE_KEY],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [234] }],
   },
   [CODE_FILEPATH]: {
@@ -17493,7 +17556,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Old namespace-less attribute, to be replaced with network.connection.type for span-first future',
     },
     aliases: [NETWORK_CONNECTION_TYPE, DEVICE_CONNECTION_TYPE],
-    sdks: ['javascript-browser'],
     changelog: [
       {
         version: '0.5.0',
@@ -17517,7 +17579,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         'Old attribute name (no official namespace), to be replaced with network.connection.rtt for span-first future',
     },
     aliases: [NETWORK_CONNECTION_RTT],
-    sdks: ['javascript-browser'],
     changelog: [
       {
         version: '0.5.0',
@@ -17645,6 +17706,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [DB_OPERATION_NAME],
     changelog: [{ version: '0.4.0', prs: [199] }, { version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
+  [DB_OPERATION_BATCH_SIZE]: {
+    brief:
+      'The number of queries included in a batch operation. Operations are only considered batches when they contain two or more operations, and so db.operation.batch.size SHOULD never be 1.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 3,
+    changelog: [{ version: '0.11.0', prs: [407], description: 'Added db.operation.batch.size attribute' }],
+  },
   [DB_OPERATION_NAME]: {
     brief: 'The name of the operation being executed.',
     type: 'string',
@@ -17704,7 +17777,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'my-redis-instance',
-    sdks: ['php-laravel'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [DB_REDIS_KEY]: {
@@ -17716,7 +17788,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'user:2047:city',
-    sdks: ['python'],
     changelog: [{ version: '0.6.0', prs: [326], description: 'Added db.redis.key attribute' }],
   },
   [DB_REDIS_PARAMETERS]: {
@@ -17728,7 +17799,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: ['test', '*'],
-    sdks: ['php-laravel'],
     changelog: [{ version: '0.0.0' }],
   },
   [DB_SQL_BINDINGS]: {
@@ -17745,7 +17815,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason:
         'Instead of adding every binding in the db.sql.bindings attribute, add them as individual entires with db.query.parameter.<key>.',
     },
-    sdks: ['php-laravel'],
     changelog: [{ version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
   },
   [DB_STATEMENT]: {
@@ -17772,7 +17841,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'GetUserById',
-    changelog: [{ version: 'next', prs: [398] }],
+    changelog: [{ version: '0.11.0', prs: [398] }],
   },
   [DB_SYSTEM]: {
     brief:
@@ -17829,7 +17898,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         'Old namespace-less attribute, to be replaced with device.memory.estimated_capacity for span-first future',
     },
     aliases: [DEVICE_MEMORY_ESTIMATED_CAPACITY],
-    sdks: ['javascript-browser'],
     changelog: [
       {
         version: '0.5.0',
@@ -18057,7 +18125,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: true,
-    sdks: ['sentry.cocoa'],
     changelog: [{ version: '0.6.0', prs: [314], description: 'Added device.low_power_mode attribute' }],
   },
   [DEVICE_MANUFACTURER]: {
@@ -18082,7 +18149,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 8,
     aliases: [DEVICEMEMORY],
-    sdks: ['javascript-browser'],
     changelog: [
       {
         version: '0.5.0',
@@ -18302,7 +18368,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         'Old namespace-less attribute, to be replaced with network.connection.effective_type for span-first future',
     },
     aliases: [NETWORK_CONNECTION_EFFECTIVE_TYPE],
-    sdks: ['javascript-browser'],
     changelog: [
       {
         version: '0.5.0',
@@ -18438,18 +18503,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 120,
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.11.0', prs: [403] }],
   },
   [FAAS_ENTRY_POINT]: {
     brief: "The code that's run when the cloud provider invokes your function.",
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
     example: 'my_main_function',
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.11.0', prs: [403, 415] }],
   },
   [FAAS_IDENTITY]: {
     brief:
@@ -18462,7 +18527,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example:
       'name@project.iam.gserviceaccount.com (GCP), arn:aws:iam::123456789012:role/role-name (AWS), 00000000-0000-0000-0000-000000000000 (Azure)',
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.11.0', prs: [403] }],
   },
   [FAAS_INVOCATION_ID]: {
     brief: 'The invocation ID of the current function invocation.',
@@ -18479,12 +18544,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The name of the serverless function',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'my_function',
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.11.0', prs: [403, 415] }],
   },
   [FAAS_TIME]: {
     brief: 'A string containing the function invocation time in the ISO 8601 format expressed in UTC.',
@@ -18533,7 +18598,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'This attribute is being deprecated in favor of browser.web_vital.fcp.value',
     },
     aliases: [BROWSER_WEB_VITAL_FCP_VALUE],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [235] }],
   },
   [FLAG_EVALUATION_KEY]: {
@@ -18563,7 +18627,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'This attribute is being deprecated in favor of browser.web_vital.fp.value',
     },
     aliases: [BROWSER_WEB_VITAL_FP_VALUE],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [235] }],
   },
   [FRAMES_DELAY]: {
@@ -18686,7 +18749,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'error.type',
       reason: 'This attribute is not part of the OpenTelemetry specification and error.type fits much better.',
     },
-    sdks: ['javascript-node'],
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
   [GCP_FUNCTION_CONTEXT_EVENT_ID]: {
@@ -18797,7 +18859,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'my-project-123',
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.11.0', prs: [403] }],
   },
   [GEN_AI_AGENT_NAME]: {
     brief: 'The name of the agent being used.',
@@ -19248,6 +19310,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.1.0', prs: [63, 74] },
     ],
   },
+  [GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK]: {
+    brief: 'Time in seconds when the first response content chunk arrived in streaming responses.',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 0.6853435,
+    aliases: [GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN],
+    changelog: [{ version: '0.11.0', prs: [418], description: 'Added gen_ai.response.time_to_first_chunk attribute' }],
+  },
   [GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN]: {
     brief: 'Time in seconds when the first response content chunk arrived in streaming responses.',
     type: 'double',
@@ -19257,7 +19331,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 0.6853435,
-    changelog: [{ version: '0.4.0', prs: [227] }],
+    deprecation: {
+      replacement: 'gen_ai.response.time_to_first_chunk',
+    },
+    aliases: [GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK],
+    changelog: [
+      { version: '0.11.0', prs: [418], description: 'Deprecate in favor of gen_ai.response.time_to_first_chunk' },
+      { version: '0.4.0', prs: [227] },
+    ],
   },
   [GEN_AI_RESPONSE_TOKENS_PER_SECOND]: {
     brief: 'The total output tokens per seconds throughput',
@@ -19473,6 +19554,39 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     changelog: [{ version: '0.1.0', prs: [62, 127] }],
   },
+  [GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS]: {
+    brief: 'The number of tokens written to the cache when processing the AI input (prompt).',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 100,
+    aliases: [GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE],
+    changelog: [
+      { version: '0.11.0', prs: [418], description: 'Added gen_ai.usage.cache_creation.input_tokens attribute' },
+    ],
+    additionalContext: [
+      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
+    ],
+  },
+  [GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS]: {
+    brief: 'The number of cached tokens used to process the AI input (prompt).',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 50,
+    aliases: [GEN_AI_USAGE_INPUT_TOKENS_CACHED],
+    changelog: [{ version: '0.11.0', prs: [418], description: 'Added gen_ai.usage.cache_read.input_tokens attribute' }],
+    additionalContext: [
+      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
+      'This is a subset of gen_ai.usage.input_tokens, not an independent count. Do not sum this with gen_ai.usage.input_tokens — it is already included.',
+    ],
+  },
   [GEN_AI_USAGE_COMPLETION_TOKENS]: {
     brief: 'The number of tokens used in the GenAI response (completion).',
     type: 'integer',
@@ -19507,6 +19621,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 10,
     aliases: [AI_PROMPT_TOKENS_USED, GEN_AI_USAGE_PROMPT_TOKENS],
     changelog: [
+      {
+        version: '0.11.0',
+        prs: [418],
+        description: 'Update additional_context to reference gen_ai.usage.cache_read.input_tokens',
+      },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.5.0', prs: [261] },
       { version: '0.4.0', prs: [228] },
@@ -19515,7 +19634,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
     additionalContext: [
       'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
-      'This count includes cached input tokens. gen_ai.usage.input_tokens.cached is a subset of this value, not an independent count — do not sum them together.',
+      'This count includes cached input tokens. gen_ai.usage.cache_read.input_tokens is a subset of this value, not an independent count — do not sum them together.',
     ],
   },
   [GEN_AI_USAGE_INPUT_TOKENS_CACHED]: {
@@ -19527,7 +19646,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 50,
+    deprecation: {
+      replacement: 'gen_ai.usage.cache_read.input_tokens',
+    },
+    aliases: [GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS],
     changelog: [
+      { version: '0.11.0', prs: [418], description: 'Deprecate in favor of gen_ai.usage.cache_read.input_tokens' },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [62, 112] },
@@ -19546,7 +19670,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 100,
+    deprecation: {
+      replacement: 'gen_ai.usage.cache_creation.input_tokens',
+    },
+    aliases: [GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS],
     changelog: [
+      { version: '0.11.0', prs: [418], description: 'Deprecate in favor of gen_ai.usage.cache_creation.input_tokens' },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [217, 228] },
     ],
@@ -19565,6 +19694,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 10,
     aliases: [AI_COMPLETION_TOKENS_USED, GEN_AI_USAGE_COMPLETION_TOKENS],
     changelog: [
+      {
+        version: '0.11.0',
+        prs: [418],
+        description: 'Update additional_context to reference gen_ai.usage.reasoning.output_tokens',
+      },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.5.0', prs: [261] },
       { version: '0.4.0', prs: [228] },
@@ -19573,7 +19707,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
     additionalContext: [
       'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
-      'This count includes reasoning tokens. gen_ai.usage.output_tokens.reasoning is a subset of this value, not an independent count — do not sum them together.',
+      'This count includes reasoning tokens. gen_ai.usage.reasoning.output_tokens is a subset of this value, not an independent count — do not sum them together.',
     ],
   },
   [GEN_AI_USAGE_OUTPUT_TOKENS_REASONING]: {
@@ -19585,7 +19719,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 75,
+    deprecation: {
+      replacement: 'gen_ai.usage.reasoning.output_tokens',
+    },
+    aliases: [GEN_AI_USAGE_REASONING_OUTPUT_TOKENS],
     changelog: [
+      { version: '0.11.0', prs: [418], description: 'Deprecate in favor of gen_ai.usage.reasoning.output_tokens' },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [62, 112] },
@@ -19616,6 +19755,22 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
     additionalContext: [
       'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
+    ],
+  },
+  [GEN_AI_USAGE_REASONING_OUTPUT_TOKENS]: {
+    brief: 'The number of tokens used for reasoning to create the AI output.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 75,
+    aliases: [GEN_AI_USAGE_OUTPUT_TOKENS_REASONING],
+    changelog: [{ version: '0.11.0', prs: [418], description: 'Added gen_ai.usage.reasoning.output_tokens attribute' }],
+    additionalContext: [
+      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
+      'This is a subset of gen_ai.usage.output_tokens, not an independent count. Do not sum this with gen_ai.usage.output_tokens — it is already included.',
     ],
   },
   [GEN_AI_USAGE_TOTAL_TOKENS]: {
@@ -19692,7 +19847,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Old namespace-less attribute, to be replaced with device.processor_count for span-first future',
     },
     aliases: [DEVICE_PROCESSOR_COUNT],
-    sdks: ['javascript-browser'],
     changelog: [
       {
         version: '0.5.0',
@@ -19726,7 +19880,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 456,
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [HTTP_FLAVOR]: {
@@ -19822,7 +19975,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1732829555.15,
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
   [HTTP_REQUEST_CONNECT_START]: {
@@ -19835,7 +19987,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1732829555.111,
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
   [HTTP_REQUEST_DOMAIN_LOOKUP_END]: {
@@ -19848,7 +19999,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1732829555.201,
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
   [HTTP_REQUEST_DOMAIN_LOOKUP_START]: {
@@ -19861,7 +20011,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1732829555.322,
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
   [HTTP_REQUEST_FETCH_START]: {
@@ -19873,7 +20022,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1732829555.389,
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
   [HTTP_REQUEST_HEADER_KEY]: {
@@ -19929,7 +20077,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1732829558.502,
-    sdks: ['javascript-browser'],
     changelog: [
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [130, 134] },
@@ -19944,7 +20091,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1732829555.495,
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
   [HTTP_REQUEST_REQUEST_START]: {
@@ -19957,7 +20103,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1732829555.51,
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
   [HTTP_REQUEST_RESEND_COUNT]: {
@@ -19981,7 +20126,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1732829555.89,
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
   [HTTP_REQUEST_RESPONSE_START]: {
@@ -19994,7 +20138,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1732829555.7,
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
   [HTTP_REQUEST_SECURE_CONNECTION_START]: {
@@ -20007,7 +20150,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1732829555.73,
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
   [HTTP_REQUEST_TIME_TO_FIRST_BYTE]: {
@@ -20020,7 +20162,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1.032,
-    sdks: ['javascript-browser'],
     changelog: [
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [131] },
@@ -20036,7 +20177,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1732829553.68,
-    sdks: ['javascript-browser'],
     changelog: [
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [130, 134] },
@@ -20188,7 +20328,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 50,
-    sdks: ['ruby'],
     changelog: [{ version: '0.5.0', prs: [267] }],
   },
   [HTTP_STATUS_CODE]: {
@@ -20261,7 +20400,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'f47ac10b58cc4372a5670e02b2c3d479',
-    sdks: ['php-laravel'],
     changelog: [{ version: '0.0.0' }],
   },
   [INP]: {
@@ -20278,7 +20416,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'The INP web vital is now recorded as a browser.web_vital.inp.value attribute.',
     },
     aliases: [BROWSER_WEB_VITAL_INP_VALUE],
-    sdks: ['javascript-browser'],
     changelog: [
       {
         version: '0.5.0',
@@ -20367,7 +20504,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'The LCP web vital is now recorded as a browser.web_vital.lcp.value attribute.',
     },
     aliases: [BROWSER_WEB_VITAL_LCP_VALUE],
-    sdks: ['javascript-browser'],
     changelog: [
       {
         version: '0.5.0',
@@ -20422,7 +20558,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'The LCP load time is now recorded as a browser.web_vital.lcp.load_time attribute.',
     },
     aliases: [BROWSER_WEB_VITAL_LCP_LOAD_TIME],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [233] }],
   },
   [LCP_RENDERTIME]: {
@@ -20439,7 +20574,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'The LCP render time is now recorded as a browser.web_vital.lcp.render_time attribute.',
     },
     aliases: [BROWSER_WEB_VITAL_LCP_RENDER_TIME],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [233] }],
   },
   [LCP_SIZE]: {
@@ -20949,7 +21083,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     hasDynamicSuffix: true,
     example: "mdc.some_key='some_value'",
-    sdks: ['java', 'java.logback', 'java.jul', 'java.log4j2'],
     changelog: [{ version: '0.3.0', prs: [176] }],
   },
   [MESSAGING_BATCH_MESSAGE_COUNT]: {
@@ -20961,7 +21094,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 10,
-    sdks: ['javascript-cloudflare', 'python'],
     changelog: [{ version: '0.6.0', prs: [341], description: 'Added messaging.batch.message_count attribute' }],
   },
   [MESSAGING_DESTINATION_CONNECTION]: {
@@ -20973,7 +21105,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'BestTopic',
-    sdks: ['php-laravel'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [MESSAGING_DESTINATION_NAME]: {
@@ -20985,7 +21116,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'BestTopic',
-    sdks: ['php-laravel'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [MESSAGING_MESSAGE_BODY_SIZE]: {
@@ -20997,7 +21127,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 839,
-    sdks: ['php-laravel'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [MESSAGING_MESSAGE_ENVELOPE_SIZE]: {
@@ -21009,7 +21138,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 1045,
-    sdks: ['php-laravel'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [MESSAGING_MESSAGE_ID]: {
@@ -21021,7 +21149,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'f47ac10b58cc4372a5670e02b2c3d479',
-    sdks: ['php-laravel'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [MESSAGING_MESSAGE_RECEIVE_LATENCY]: {
@@ -21033,7 +21160,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1732847252,
-    sdks: ['php-laravel'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [MESSAGING_MESSAGE_RETRY_COUNT]: {
@@ -21045,7 +21171,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 2,
-    sdks: ['php-laravel'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [MESSAGING_OPERATION_NAME]: {
@@ -21057,8 +21182,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'send',
-    sdks: ['javascript-cloudflare'],
-    changelog: [{ version: 'next', prs: [392], description: 'Added messaging.operation.name attribute' }],
+    changelog: [{ version: '0.11.0', prs: [392], description: 'Added messaging.operation.name attribute' }],
   },
   [MESSAGING_OPERATION_TYPE]: {
     brief: 'A string identifying the type of the messaging operation',
@@ -21080,7 +21204,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'activemq',
-    sdks: ['php-laravel'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [METHOD]: {
@@ -21096,7 +21219,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'http.request.method',
     },
     aliases: [HTTP_REQUEST_METHOD, _HTTP_REQUEST_METHOD, HTTP_METHOD],
-    sdks: ['javascript-browser', 'javascript-node'],
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
   [MIDDLEWARE_NAME]: {
@@ -21108,7 +21230,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'AuthenticationMiddleware',
-    sdks: ['python'],
     changelog: [{ version: '0.6.0', prs: [336], description: 'Added middleware.name attribute' }],
   },
   [NAVIGATION_TYPE]: {
@@ -21194,7 +21315,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '4g',
     aliases: [EFFECTIVECONNECTIONTYPE],
-    sdks: ['javascript-browser'],
     changelog: [
       {
         version: '0.5.0',
@@ -21213,7 +21333,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 100,
     aliases: [CONNECTION_RTT],
-    sdks: ['javascript-browser'],
     changelog: [
       {
         version: '0.5.0',
@@ -21232,7 +21351,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'wifi',
     aliases: [DEVICE_CONNECTION_TYPE, CONNECTIONTYPE],
-    sdks: ['javascript-browser'],
     changelog: [
       {
         version: '0.5.0',
@@ -21755,7 +21873,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'The activationStart is now recorded as the browser.performance.navigation.activation_start attribute.',
     },
     aliases: [BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [321], description: 'Added performance.activationStart attribute' }],
   },
   [PERFORMANCE_TIMEORIGIN]: {
@@ -21772,7 +21889,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'The timeOrigin is now recorded as the browser.performance.time_origin attribute.',
     },
     aliases: [BROWSER_PERFORMANCE_TIME_ORIGIN],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [321], description: 'Added performance.timeOrigin attribute' }],
   },
   [PREVIOUS_ROUTE]: {
@@ -21784,7 +21900,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'HomeScreen',
-    sdks: ['javascript-reactnative'],
     changelog: [{ version: '0.1.0', prs: [74] }, { version: '0.0.0' }],
   },
   [PROCESS_COMMAND_ARGS]: {
@@ -21796,7 +21911,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: ['cmd/otecol', '--config=config.yaml'],
-    sdks: ['python'],
     changelog: [{ version: '0.6.0', prs: [327], description: 'Added process.command_args attribute' }],
   },
   [PROCESS_EXECUTABLE_NAME]: {
@@ -21933,7 +22047,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     hasDynamicSuffix: true,
     example: "http.response.header.text='test'",
-    sdks: ['javascript-remix'],
     changelog: [{ version: '0.1.0', prs: [103] }],
   },
   [REPLAY_ID]: {
@@ -21988,7 +22101,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'non-blocking',
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [ROUTE]: {
@@ -22005,7 +22117,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'http.route',
     },
     aliases: [HTTP_ROUTE],
-    sdks: ['php-laravel', 'javascript-reactnative'],
     changelog: [{ version: '0.1.0', prs: [61, 74] }, { version: '0.0.0' }],
   },
   [RPC_GRPC_STATUS_CODE]: {
@@ -22065,7 +22176,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason:
         'The runtime.* namespace is deprecated in favor of process.runtime.*. No direct OTel equivalent exists for this attribute.',
     },
-    changelog: [{ version: 'next', prs: [383], description: 'Added and deprecated runtime.build attribute' }],
+    changelog: [{ version: '0.11.0', prs: [383], description: 'Added and deprecated runtime.build attribute' }],
   },
   [RUNTIME_NAME]: {
     brief: 'The name of the runtime. For example node, CPython, or rustc.',
@@ -22083,7 +22194,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [PROCESS_RUNTIME_NAME],
     changelog: [
       {
-        version: 'next',
+        version: '0.11.0',
         prs: [383],
         description: 'Added and deprecated runtime.name attribute in favor of process.runtime.name',
       },
@@ -22106,7 +22217,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [PROCESS_RUNTIME_DESCRIPTION],
     changelog: [
       {
-        version: 'next',
+        version: '0.11.0',
         prs: [383],
         description: 'Added and deprecated runtime.raw_description attribute in favor of process.runtime.description',
       },
@@ -22128,7 +22239,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [PROCESS_RUNTIME_VERSION],
     changelog: [
       {
-        version: 'next',
+        version: '0.11.0',
         prs: [383],
         description: 'Added and deprecated runtime.version attribute in favor of process.runtime.version',
       },
@@ -22538,7 +22649,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: '/posts/[id]/layout',
-    sdks: ['javascript'],
     changelog: [{ version: '0.1.0', prs: [54, 106] }],
   },
   [SENTRY_NEXTJS_SSR_FUNCTION_TYPE]: {
@@ -22551,7 +22661,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'generateMetadata',
-    sdks: ['javascript'],
     changelog: [{ version: '0.1.0', prs: [54, 106] }],
   },
   [SENTRY_NORMALIZED_DB_QUERY]: {
@@ -22706,7 +22815,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason:
         'The report event is now recorded as a browser.web_vital.lcp.report_event or browser.web_vital.cls.report_event attribute. No backfill required.',
     },
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [320], description: 'Added sentry.report_event attribute' }],
   },
   [SENTRY_SDK_INTEGRATIONS]: {
@@ -23054,6 +23162,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [SENTRY_RELEASE],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  [SESSION_ID]: {
+    brief: 'A unique id identifying the active session at the time of setting this attribute',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: '00112233-4455-6677-8899-aabbccddeeff',
+    changelog: [{ version: '0.11.0', prs: [412], description: 'Added session.id attribute' }],
+  },
   [STALL_PERCENTAGE]: {
     brief: 'The fraction of time the app was stalled. Only applies to React Native. This is computed by Relay.',
     type: 'double',
@@ -23117,7 +23236,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'MyTag',
-    sdks: ['sentry.java.android'],
     changelog: [{ version: '0.3.0', prs: [183] }],
   },
   [TIME_TO_FULL_DISPLAY]: {
@@ -23135,7 +23253,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         'Replaced by app.vitals.ttfd.value to align with the app.vitals.* namespace for mobile performance attributes',
     },
     aliases: [APP_VITALS_TTFD_VALUE],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
       { version: '0.5.0', prs: [313], description: 'Added and deprecated in favor of app.vitals.ttfd.value' },
     ],
@@ -23155,7 +23272,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         'Replaced by app.vitals.ttid.value to align with the app.vitals.* namespace for mobile performance attributes',
     },
     aliases: [APP_VITALS_TTID_VALUE],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
       { version: '0.5.0', prs: [313], description: 'Added and deprecated in favor of app.vitals.ttid.value' },
     ],
@@ -23219,7 +23335,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'This attribute is being deprecated in favor of browser.web_vital.ttfb.value',
     },
     aliases: [BROWSER_WEB_VITAL_TTFB_VALUE],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [235] }],
   },
   [TTFB_REQUESTTIME]: {
@@ -23237,7 +23352,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'This attribute is being deprecated in favor of browser.web_vital.ttfb.request_time',
     },
     aliases: [BROWSER_WEB_VITAL_TTFB_REQUEST_TIME],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [235] }],
   },
   [TYPE]: {
@@ -23249,7 +23363,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'fetch',
-    sdks: ['javascript-browser', 'javascript-node'],
     changelog: [{ version: '0.0.0' }],
   },
   [UI_COMPONENT_NAME]: {
@@ -23294,7 +23407,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 256,
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.height attribute' }],
   },
   [UI_ELEMENT_ID]: {
@@ -23306,7 +23418,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'btn-login',
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.id attribute' }],
   },
   [UI_ELEMENT_IDENTIFIER]: {
@@ -23318,7 +23429,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'heroImage',
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.identifier attribute' }],
   },
   [UI_ELEMENT_LOAD_TIME]: {
@@ -23330,7 +23440,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 998.2234,
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.load_time attribute' }],
   },
   [UI_ELEMENT_PAINT_TYPE]: {
@@ -23342,7 +23451,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'image-paint',
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.paint_type attribute' }],
   },
   [UI_ELEMENT_RENDER_TIME]: {
@@ -23354,7 +23462,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1023.1124,
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.render_time attribute' }],
   },
   [UI_ELEMENT_TYPE]: {
@@ -23366,7 +23473,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'img',
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.type attribute' }],
   },
   [UI_ELEMENT_URL]: {
@@ -23378,7 +23484,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'https://assets.myapp.com/hero.png',
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.url attribute' }],
   },
   [UI_ELEMENT_WIDTH]: {
@@ -23390,7 +23495,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 512,
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.width attribute' }],
   },
   [URL]: {
@@ -23406,7 +23510,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'url.full',
     },
     aliases: [URL_FULL, HTTP_URL],
-    sdks: ['javascript-browser', 'javascript-node'],
     changelog: [{ version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
   },
   [URL_DOMAIN]: {
@@ -24227,6 +24330,7 @@ export type Attributes = {
   [DB_NAME]?: DB_NAME_TYPE;
   [DB_NAMESPACE]?: DB_NAMESPACE_TYPE;
   [DB_OPERATION]?: DB_OPERATION_TYPE;
+  [DB_OPERATION_BATCH_SIZE]?: DB_OPERATION_BATCH_SIZE_TYPE;
   [DB_OPERATION_NAME]?: DB_OPERATION_NAME_TYPE;
   [DB_QUERY_PARAMETER_KEY]?: DB_QUERY_PARAMETER_KEY_TYPE;
   [DB_QUERY_SUMMARY]?: DB_QUERY_SUMMARY_TYPE;
@@ -24349,6 +24453,7 @@ export type Attributes = {
   [GEN_AI_RESPONSE_MODEL]?: GEN_AI_RESPONSE_MODEL_TYPE;
   [GEN_AI_RESPONSE_STREAMING]?: GEN_AI_RESPONSE_STREAMING_TYPE;
   [GEN_AI_RESPONSE_TEXT]?: GEN_AI_RESPONSE_TEXT_TYPE;
+  [GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK]?: GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK_TYPE;
   [GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN]?: GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN_TYPE;
   [GEN_AI_RESPONSE_TOKENS_PER_SECOND]?: GEN_AI_RESPONSE_TOKENS_PER_SECOND_TYPE;
   [GEN_AI_RESPONSE_TOOL_CALLS]?: GEN_AI_RESPONSE_TOOL_CALLS_TYPE;
@@ -24364,6 +24469,8 @@ export type Attributes = {
   [GEN_AI_TOOL_NAME]?: GEN_AI_TOOL_NAME_TYPE;
   [GEN_AI_TOOL_OUTPUT]?: GEN_AI_TOOL_OUTPUT_TYPE;
   [GEN_AI_TOOL_TYPE]?: GEN_AI_TOOL_TYPE_TYPE;
+  [GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS]?: GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS_TYPE;
+  [GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS]?: GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_COMPLETION_TOKENS]?: GEN_AI_USAGE_COMPLETION_TOKENS_TYPE;
   [GEN_AI_USAGE_INPUT_TOKENS]?: GEN_AI_USAGE_INPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_INPUT_TOKENS_CACHED]?: GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE;
@@ -24371,6 +24478,7 @@ export type Attributes = {
   [GEN_AI_USAGE_OUTPUT_TOKENS]?: GEN_AI_USAGE_OUTPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_OUTPUT_TOKENS_REASONING]?: GEN_AI_USAGE_OUTPUT_TOKENS_REASONING_TYPE;
   [GEN_AI_USAGE_PROMPT_TOKENS]?: GEN_AI_USAGE_PROMPT_TOKENS_TYPE;
+  [GEN_AI_USAGE_REASONING_OUTPUT_TOKENS]?: GEN_AI_USAGE_REASONING_OUTPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_TOTAL_TOKENS]?: GEN_AI_USAGE_TOTAL_TOKENS_TYPE;
   [GRAPHQL_DOCUMENT]?: GRAPHQL_DOCUMENT_TYPE;
   [GRAPHQL_OPERATION_NAME]?: GRAPHQL_OPERATION_NAME_TYPE;
@@ -24634,6 +24742,7 @@ export type Attributes = {
   [SERVER_PORT]?: SERVER_PORT_TYPE;
   [SERVICE_NAME]?: SERVICE_NAME_TYPE;
   [SERVICE_VERSION]?: SERVICE_VERSION_TYPE;
+  [SESSION_ID]?: SESSION_ID_TYPE;
   [STALL_PERCENTAGE]?: STALL_PERCENTAGE_TYPE;
   [STALL_TOTAL_TIME]?: STALL_TOTAL_TIME_TYPE;
   [STATE_TYPE]?: STATE_TYPE_TYPE;

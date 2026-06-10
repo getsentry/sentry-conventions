@@ -3,14 +3,15 @@
   "brief": "The code that's run when the cloud provider invokes your function.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "my_main_function",
   "visibility": "public",
   "changelog": [
     {
-      "version": "next"
+      "version": "0.11.0",
+      "prs": [403, 415]
     }
   ]
 }

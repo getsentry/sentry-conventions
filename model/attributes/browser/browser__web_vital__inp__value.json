@@ -8,7 +8,6 @@
   "is_in_otel": false,
   "example": 200,
   "alias": ["inp"],
-  "sdks": ["javascript-browser"],
   "visibility": "public",
   "changelog": [
     {
