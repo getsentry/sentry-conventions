@@ -1755,7 +1755,7 @@ export type AWS_LAMBDA_FUNCTION_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link AWS_LAMBDA_FUNCTION_VERSION_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: false
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -16783,7 +16783,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The version of the Lambda function',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'false',
     },
     isInOtel: false,
     visibility: 'public',

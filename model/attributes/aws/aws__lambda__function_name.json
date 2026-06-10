@@ -9,7 +9,7 @@
   "example": "my-function",
   "alias": ["faas.name"],
   "deprecation": {
-    "_status": null,
+    "_status": "backfill",
     "replacement": "faas.name",
     "reason": "Use the OTel-aligned faas.name attribute instead"
   },

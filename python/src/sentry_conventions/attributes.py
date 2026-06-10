@@ -1261,7 +1261,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The version of the Lambda function
 
     Type: str
-    Contains PII: maybe
+    Contains PII: false
     Defined in OTEL: No
     Visibility: public
     Aliases: faas.version
@@ -9392,6 +9392,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="faas.invocation_id",
             reason="This attribute is being deprecated in favor of faas.invocation_id",
+            status=DeprecationStatus.BACKFILL,
         ),
         aliases=["faas.invocation_id"],
         changelog=[
@@ -9431,6 +9432,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="faas.name",
             reason="Use the OTel-aligned faas.name attribute instead",
+            status=DeprecationStatus.BACKFILL,
         ),
         aliases=["faas.name"],
         changelog=[
@@ -9448,13 +9450,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.lambda.function_version": AttributeMetadata(
         brief="The version of the Lambda function",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="$LATEST",
         deprecation=DeprecationInfo(
             replacement="faas.version",
             reason="Use the OTel-aligned faas.version attribute instead",
+            status=DeprecationStatus.BACKFILL,
         ),
         aliases=["faas.version"],
         changelog=[
@@ -9491,6 +9494,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="aws.lambda.invoked_arn",
             reason="This attribute is being deprecated in favor of aws.lambda.invoked_arn",
+            status=DeprecationStatus.BACKFILL,
         ),
         aliases=["aws.lambda.invoked_arn"],
         changelog=[

@@ -10,7 +10,7 @@
   "visibility": "public",
   "alias": ["aws.lambda.invoked_arn"],
   "deprecation": {
-    "_status": null,
+    "_status": "backfill",
     "replacement": "aws.lambda.invoked_arn",
     "reason": "This attribute is being deprecated in favor of aws.lambda.invoked_arn"
   },

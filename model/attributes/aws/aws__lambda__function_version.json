@@ -3,13 +3,13 @@
   "brief": "The version of the Lambda function",
   "type": "string",
   "pii": {
-    "key": "maybe"
+    "key": "false"
   },
   "is_in_otel": false,
   "example": "$LATEST",
   "alias": ["faas.version"],
   "deprecation": {
-    "_status": null,
+    "_status": "backfill",
     "replacement": "faas.version",
     "reason": "Use the OTel-aligned faas.version attribute instead"
   },
