@@ -10,7 +10,7 @@
   "example": 196083712,
   "changelog": [
     {
-      "version": "next",
+      "version": "0.11.0",
       "prs": [382],
       "description": "Added art.memory.free_until_oome attribute"
     }

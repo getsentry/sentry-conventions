@@ -16,7 +16,7 @@
   "alias": ["process.runtime.version"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.11.0",
       "prs": [383],
       "description": "Added and deprecated runtime.version attribute in favor of process.runtime.version"
     }

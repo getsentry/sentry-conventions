@@ -10,7 +10,7 @@
   "example": 0,
   "changelog": [
     {
-      "version": "next",
+      "version": "0.11.0",
       "prs": [382],
       "description": "Added art.gc.pre_oome_count attribute"
     }
