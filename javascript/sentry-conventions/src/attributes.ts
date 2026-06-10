@@ -1691,6 +1691,8 @@ export type AWS_CLOUDWATCH_LOGS_URL_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link FAAS_INVOCATION_ID} `faas.invocation_id`
+ *
  * @deprecated Use {@link FAAS_INVOCATION_ID} (faas.invocation_id) instead - This attribute is being deprecated in favor of faas.invocation_id
  * @example "8476a536-e9f4-11e8-9739-2dfe598c3fcd"
  */
@@ -1778,6 +1780,8 @@ export type AWS_LAMBDA_FUNCTION_VERSION_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link AWS_LAMBDA_INVOKED_FUNCTION_ARN} `aws.lambda.invoked_function_arn`
+ *
  * @example "arn:aws:lambda:us-east-1:123456789012:function:my-function"
  */
 export const AWS_LAMBDA_INVOKED_ARN = 'aws.lambda.invoked_arn';
@@ -1798,6 +1802,8 @@ export type AWS_LAMBDA_INVOKED_ARN_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Aliases: {@link AWS_LAMBDA_INVOKED_ARN} `aws.lambda.invoked_arn`
  *
  * @deprecated Use {@link AWS_LAMBDA_INVOKED_ARN} (aws.lambda.invoked_arn) instead - This attribute is being deprecated in favor of aws.lambda.invoked_arn
  * @example "arn:aws:lambda:us-east-1:123456789012:function:my-function"
@@ -4867,6 +4873,8 @@ export type FAAS_IDENTITY_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
+ *
+ * Aliases: {@link AWS_LAMBDA_AWS_REQUEST_ID} `aws.lambda.aws_request_id`
  *
  * @example "af9d5aa4-a685-4c5f-a22b-444f80b3cc28"
  */
@@ -16725,6 +16733,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'faas.invocation_id',
       reason: 'This attribute is being deprecated in favor of faas.invocation_id',
     },
+    aliases: [FAAS_INVOCATION_ID],
     changelog: [
       { version: 'next', description: 'Deprecated aws.lambda.aws_request_id in favor of faas.invocation_id' },
       { version: '0.7.0', prs: [369], description: 'Added aws.lambda.aws_request_id attribute' },
@@ -16788,6 +16797,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'arn:aws:lambda:us-east-1:123456789012:function:my-function',
+    aliases: [AWS_LAMBDA_INVOKED_FUNCTION_ARN],
     changelog: [{ version: 'next' }],
   },
   [AWS_LAMBDA_INVOKED_FUNCTION_ARN]: {
@@ -16803,6 +16813,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'aws.lambda.invoked_arn',
       reason: 'This attribute is being deprecated in favor of aws.lambda.invoked_arn',
     },
+    aliases: [AWS_LAMBDA_INVOKED_ARN],
     changelog: [
       { version: 'next', description: 'Deprecated aws.lambda.invoked_function_arn in favor of aws.lambda.invoked_arn' },
       { version: '0.7.0', prs: [369], description: 'Added aws.lambda.invoked_function_arn attribute' },
@@ -18538,6 +18549,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'af9d5aa4-a685-4c5f-a22b-444f80b3cc28',
+    aliases: [AWS_LAMBDA_AWS_REQUEST_ID],
     changelog: [{ version: 'next' }],
   },
   [FAAS_NAME]: {

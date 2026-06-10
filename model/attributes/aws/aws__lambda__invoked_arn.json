@@ -7,6 +7,7 @@
   },
   "is_in_otel": true,
   "example": "arn:aws:lambda:us-east-1:123456789012:function:my-function",
+  "alias": ["aws.lambda.invoked_function_arn"],
   "visibility": "public",
   "changelog": [
     {

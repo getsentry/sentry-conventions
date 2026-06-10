@@ -1221,6 +1221,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
+    Aliases: faas.invocation_id
     DEPRECATED: Use faas.invocation_id instead - This attribute is being deprecated in favor of faas.invocation_id
     Example: "8476a536-e9f4-11e8-9739-2dfe598c3fcd"
     """
@@ -1274,6 +1275,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: aws.lambda.invoked_function_arn
     Example: "arn:aws:lambda:us-east-1:123456789012:function:my-function"
     """
 
@@ -1287,6 +1289,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
+    Aliases: aws.lambda.invoked_arn
     DEPRECATED: Use aws.lambda.invoked_arn instead - This attribute is being deprecated in favor of aws.lambda.invoked_arn
     Example: "arn:aws:lambda:us-east-1:123456789012:function:my-function"
     """
@@ -2984,6 +2987,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: false
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: aws.lambda.aws_request_id
     Example: "af9d5aa4-a685-4c5f-a22b-444f80b3cc28"
     """
 
@@ -9385,6 +9389,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             replacement="faas.invocation_id",
             reason="This attribute is being deprecated in favor of faas.invocation_id",
         ),
+        aliases=["faas.invocation_id"],
         changelog=[
             ChangelogEntry(
                 version="next",
@@ -9465,6 +9470,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="arn:aws:lambda:us-east-1:123456789012:function:my-function",
+        aliases=["aws.lambda.invoked_function_arn"],
         changelog=[
             ChangelogEntry(version="next"),
         ],
@@ -9480,6 +9486,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             replacement="aws.lambda.invoked_arn",
             reason="This attribute is being deprecated in favor of aws.lambda.invoked_arn",
         ),
+        aliases=["aws.lambda.invoked_arn"],
         changelog=[
             ChangelogEntry(
                 version="next",
@@ -11407,6 +11414,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="af9d5aa4-a685-4c5f-a22b-444f80b3cc28",
+        aliases=["aws.lambda.aws_request_id"],
         changelog=[
             ChangelogEntry(version="next"),
         ],

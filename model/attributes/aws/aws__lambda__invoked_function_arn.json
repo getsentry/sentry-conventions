@@ -8,6 +8,7 @@
   "is_in_otel": false,
   "example": "arn:aws:lambda:us-east-1:123456789012:function:my-function",
   "visibility": "public",
+  "alias": ["aws.lambda.invoked_arn"],
   "deprecation": {
     "_status": null,
     "replacement": "aws.lambda.invoked_arn",
