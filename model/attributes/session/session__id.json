@@ -10,7 +10,7 @@
   "example": "00112233-4455-6677-8899-aabbccddeeff",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.11.0",
       "prs": [412],
       "description": "Added session.id attribute"
     }

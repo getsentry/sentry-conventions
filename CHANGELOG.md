@@ -1,3 +1,33 @@
+## 0.11.0
+
+### New Features ✨
+
+#### Attributes
+
+- Add `session.id` attribute by @Lms24 in [#412](https://github.com/getsentry/sentry-conventions/pull/412)
+- Update several attributes to their lates OTel representation by @constantinius in [#418](https://github.com/getsentry/sentry-conventions/pull/418)
+- Add db.operation.batch.size by @isaacs in [#407](https://github.com/getsentry/sentry-conventions/pull/407)
+- Add `app.vitals.start.prewarmed` attribute by @itaybre in [#379](https://github.com/getsentry/sentry-conventions/pull/379)
+- Add and deprecate runtime context attributes by @markushi in [#383](https://github.com/getsentry/sentry-conventions/pull/383)
+- Add Android Runtime (ART) GC and memory attributes by @markushi in [#382](https://github.com/getsentry/sentry-conventions/pull/382)
+- Add `db.stored_procedure.name` and ensure span name attribute consistency by @Lms24 in [#398](https://github.com/getsentry/sentry-conventions/pull/398)
+- Add Cloudflare SDK attributes by @JPeer264 in [#392](https://github.com/getsentry/sentry-conventions/pull/392)
+
+#### Other
+
+- Add missing GCP and FaaS attributes by @ericapisani in [#403](https://github.com/getsentry/sentry-conventions/pull/403)
+
+### Bug Fixes 🐛
+
+- (attributes) Set `pii: 'maybe'` on `faas` string attributes by @Lms24 in [#415](https://github.com/getsentry/sentry-conventions/pull/415)
+- (cloudfare) Add missing visibility attributes by @markushi in [#408](https://github.com/getsentry/sentry-conventions/pull/408)
+
+### Internal Changes 🔧
+
+- (conventions) Remove `sdks` field from attribute schema and definitions by @Lms24 in [#410](https://github.com/getsentry/sentry-conventions/pull/410)
+- (deps-dev) Bump vitest from 3.2.4 to 4.1.0 by @dependabot in [#409](https://github.com/getsentry/sentry-conventions/pull/409)
+- Add note about updating conventions in Relay by @loewenheim in [#419](https://github.com/getsentry/sentry-conventions/pull/419)
+
 ## 0.10.0
 
 ### New Features ✨
