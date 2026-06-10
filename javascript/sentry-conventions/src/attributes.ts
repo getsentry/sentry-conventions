@@ -17340,6 +17340,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'arn:aws:lambda:REGION:ACCOUNT_ID:function:my-function',
     changelog: [{ version: 'next' }],
+    additionalContext: [
+      'This can be an identifier for a resource in AWS, GCP, or Azure. There may be some overlap in values found here with other attributes. For instance, an AWS lambda ARN may be found here as well as in `aws.lambda.invoked_arn`. OTEL recommends setting them alongside each other.',
+    ],
   },
   [CLS]: {
     brief: 'The value of the recorded Cumulative Layout Shift (CLS) web vital',

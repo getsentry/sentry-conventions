@@ -10139,6 +10139,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="next"),
         ],
+        additional_context=[
+            "This can be an identifier for a resource in AWS, GCP, or Azure. There may be some overlap in values found here with other attributes. For instance, an AWS lambda ARN may be found here as well as in `aws.lambda.invoked_arn`. OTEL recommends setting them alongside each other."
+        ],
     ),
     "cloudflare.d1.duration": AttributeMetadata(
         brief="The duration of a Cloudflare D1 operation.",
