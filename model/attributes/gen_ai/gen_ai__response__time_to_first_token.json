@@ -8,7 +8,16 @@
   "is_in_otel": false,
   "example": 0.6853435,
   "visibility": "public",
+  "alias": ["gen_ai.response.time_to_first_chunk"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "gen_ai.response.time_to_first_chunk"
+  },
   "changelog": [
+    {
+      "version": "next",
+      "description": "Deprecate in favor of gen_ai.response.time_to_first_chunk"
+    },
     {
       "version": "0.4.0",
       "prs": [227]

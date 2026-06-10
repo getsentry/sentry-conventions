@@ -8,7 +8,6 @@
   "is_in_otel": false,
   "example": true,
   "alias": ["gen_ai.response.streaming"],
-  "sdks": ["python"],
   "deprecation": {
     "_status": "backfill",
     "replacement": "gen_ai.response.streaming"

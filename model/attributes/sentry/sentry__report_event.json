@@ -7,7 +7,6 @@
   },
   "is_in_otel": false,
   "example": "pagehide",
-  "sdks": ["javascript-browser"],
   "deprecation": {
     "reason": "The report event is now recorded as a browser.web_vital.lcp.report_event or browser.web_vital.cls.report_event attribute. No backfill required.",
     "_status": null

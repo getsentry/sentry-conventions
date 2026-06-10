@@ -8,7 +8,6 @@
   "is_in_otel": false,
   "visibility": "public",
   "example": 8.054,
-  "sdks": ["sentry.java.android"],
   "changelog": [
     {
       "version": "next",

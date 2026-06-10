@@ -8,7 +8,6 @@
   "is_in_otel": false,
   "example": "14",
   "alias": ["device.processor_count"],
-  "sdks": ["javascript-browser"],
   "deprecation": {
     "replacement": "device.processor_count",
     "reason": "Old namespace-less attribute, to be replaced with device.processor_count for span-first future",

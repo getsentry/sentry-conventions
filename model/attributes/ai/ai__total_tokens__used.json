@@ -8,7 +8,6 @@
   "is_in_otel": false,
   "example": 30,
   "alias": ["gen_ai.usage.total_tokens"],
-  "sdks": ["python"],
   "deprecation": {
     "_status": "backfill",
     "replacement": "gen_ai.usage.total_tokens"

@@ -8,7 +8,6 @@
   "is_in_otel": false,
   "example": "8 GB",
   "alias": ["device.memory.estimated_capacity"],
-  "sdks": ["javascript-browser"],
   "deprecation": {
     "replacement": "device.memory.estimated_capacity",
     "reason": "Old namespace-less attribute, to be replaced with device.memory.estimated_capacity for span-first future",

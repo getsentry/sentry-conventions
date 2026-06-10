@@ -7,7 +7,6 @@
   },
   "is_in_otel": false,
   "example": "ENOENT: no such file or directory",
-  "sdks": ["javascript-node"],
   "deprecation": {
     "_status": null,
     "replacement": "error.type",

@@ -102,9 +102,6 @@ class AttributeMetadata:
     aliases: Optional[List[str]] = None
     """If there are attributes that alias to this attribute"""
 
-    sdks: Optional[List[str]] = None
-    """If an attribute is SDK specific, list the SDKs that use this attribute. This is not an exhaustive list, there might be SDKs that send this attribute that are is not documented here."""
-
     changelog: Optional[List[ChangelogEntry]] = None
     """Changelog entries tracking how this attribute has changed across versions"""
 
@@ -181,6 +178,7 @@ class _AttributeNamesMeta(type):
         "GEN_AI_REQUEST_AVAILABLE_TOOLS",
         "GEN_AI_REQUEST_MESSAGES",
         "GEN_AI_RESPONSE_TEXT",
+        "GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN",
         "GEN_AI_RESPONSE_TOOL_CALLS",
         "GEN_AI_SYSTEM",
         "GEN_AI_SYSTEM_MESSAGE",
@@ -189,6 +187,9 @@ class _AttributeNamesMeta(type):
         "GEN_AI_TOOL_OUTPUT",
         "GEN_AI_TOOL_TYPE",
         "GEN_AI_USAGE_COMPLETION_TOKENS",
+        "GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE",
+        "GEN_AI_USAGE_INPUT_TOKENS_CACHED",
+        "GEN_AI_USAGE_OUTPUT_TOKENS_REASONING",
         "GEN_AI_USAGE_PROMPT_TOKENS",
         "HARDWARECONCURRENCY",
         "HTTP_CLIENT_IP",
@@ -3594,6 +3595,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "[\"The weather in Paris is rainy and overcast, with temperatures around 57°F\", \"The weather in London is sunny and warm, with temperatures around 65°F\"]"
     """
 
+    # Path: model/attributes/gen_ai/gen_ai__response__time_to_first_chunk.json
+    GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK: Literal[
+        "gen_ai.response.time_to_first_chunk"
+    ] = "gen_ai.response.time_to_first_chunk"
+    """Time in seconds when the first response content chunk arrived in streaming responses.
+
+    Type: float
+    Contains PII: maybe
+    Defined in OTEL: Yes
+    Visibility: public
+    Aliases: gen_ai.response.time_to_first_token
+    Example: 0.6853435
+    """
+
     # Path: model/attributes/gen_ai/gen_ai__response__time_to_first_token.json
     GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN: Literal[
         "gen_ai.response.time_to_first_token"
@@ -3604,6 +3619,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
+    Aliases: gen_ai.response.time_to_first_chunk
+    DEPRECATED: Use gen_ai.response.time_to_first_chunk instead
     Example: 0.6853435
     """
 
@@ -3790,6 +3807,34 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "function"
     """
 
+    # Path: model/attributes/gen_ai/gen_ai__usage__cache_creation__input_tokens.json
+    GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS: Literal[
+        "gen_ai.usage.cache_creation.input_tokens"
+    ] = "gen_ai.usage.cache_creation.input_tokens"
+    """The number of tokens written to the cache when processing the AI input (prompt).
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: Yes
+    Visibility: public
+    Aliases: gen_ai.usage.input_tokens.cache_write
+    Example: 100
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__usage__cache_read__input_tokens.json
+    GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS: Literal[
+        "gen_ai.usage.cache_read.input_tokens"
+    ] = "gen_ai.usage.cache_read.input_tokens"
+    """The number of cached tokens used to process the AI input (prompt).
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: Yes
+    Visibility: public
+    Aliases: gen_ai.usage.input_tokens.cached
+    Example: 50
+    """
+
     # Path: model/attributes/gen_ai/gen_ai__usage__completion_tokens.json
     GEN_AI_USAGE_COMPLETION_TOKENS: Literal["gen_ai.usage.completion_tokens"] = (
         "gen_ai.usage.completion_tokens"
@@ -3829,6 +3874,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
+    Aliases: gen_ai.usage.cache_creation.input_tokens
+    DEPRECATED: Use gen_ai.usage.cache_creation.input_tokens instead
     Example: 100
     """
 
@@ -3842,6 +3889,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
+    Aliases: gen_ai.usage.cache_read.input_tokens
+    DEPRECATED: Use gen_ai.usage.cache_read.input_tokens instead
     Example: 50
     """
 
@@ -3869,6 +3918,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
+    Aliases: gen_ai.usage.reasoning.output_tokens
+    DEPRECATED: Use gen_ai.usage.reasoning.output_tokens instead
     Example: 75
     """
 
@@ -3885,6 +3936,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Aliases: ai.prompt_tokens.used, gen_ai.usage.input_tokens
     DEPRECATED: Use gen_ai.usage.input_tokens instead
     Example: 20
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__usage__reasoning__output_tokens.json
+    GEN_AI_USAGE_REASONING_OUTPUT_TOKENS: Literal[
+        "gen_ai.usage.reasoning.output_tokens"
+    ] = "gen_ai.usage.reasoning.output_tokens"
+    """The number of tokens used for reasoning to create the AI output.
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: Yes
+    Visibility: public
+    Aliases: gen_ai.usage.output_tokens.reasoning
+    Example: 75
     """
 
     # Path: model/attributes/gen_ai/gen_ai__usage__total_tokens.json
@@ -7088,6 +7153,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "5.0.0"
     """
 
+    # Path: model/attributes/session/session__id.json
+    SESSION_ID: Literal["session.id"] = "session.id"
+    """A unique id identifying the active session at the time of setting this attribute
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "00112233-4455-6677-8899-aabbccddeeff"
+    """
+
     # Path: model/attributes/stall_percentage.json
     STALL_PERCENTAGE: Literal["stall_percentage"] = "stall_percentage"
     """The fraction of time the app was stalled. Only applies to React Native. This is computed by Relay.
@@ -8084,7 +8160,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             replacement="gen_ai.usage.output_tokens", status=DeprecationStatus.BACKFILL
         ),
         aliases=["gen_ai.usage.output_tokens", "gen_ai.usage.completion_tokens"],
-        sdks=["python"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[57, 61]),
@@ -8178,7 +8253,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             replacement="gen_ai.input.messages", status=DeprecationStatus.BACKFILL
         ),
         aliases=["gen_ai.request.messages"],
-        sdks=["python"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[65, 119]),
             ChangelogEntry(version="0.0.0"),
@@ -8237,7 +8311,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             replacement="gen_ai.response.model", status=DeprecationStatus.BACKFILL
         ),
         aliases=["gen_ai.response.model"],
-        sdks=["python"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[57, 61, 127]),
             ChangelogEntry(version="0.0.0"),
@@ -8302,7 +8375,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             replacement="gen_ai.usage.input_tokens", status=DeprecationStatus.BACKFILL
         ),
         aliases=["gen_ai.usage.prompt_tokens", "gen_ai.usage.input_tokens"],
-        sdks=["python"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[57, 61]),
@@ -8345,7 +8417,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="gen_ai.output.messages", status=DeprecationStatus.BACKFILL
         ),
-        sdks=["python"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[65, 127]),
             ChangelogEntry(version="0.0.0"),
@@ -8403,7 +8474,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             replacement="gen_ai.response.streaming", status=DeprecationStatus.BACKFILL
         ),
         aliases=["gen_ai.response.streaming"],
-        sdks=["python"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[76, 108]),
             ChangelogEntry(version="0.0.0"),
@@ -8542,7 +8612,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             replacement="gen_ai.usage.total_tokens", status=DeprecationStatus.BACKFILL
         ),
         aliases=["gen_ai.usage.total_tokens"],
-        sdks=["python"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[57, 61, 108]),
@@ -8590,12 +8659,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             status=DeprecationStatus.BACKFILL,
         ),
         aliases=["app.build"],
-        sdks=[
-            "sentry.cocoa",
-            "sentry.java.android",
-            "sentry.javascript.react-native",
-            "sentry.dart.flutter",
-        ],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -8617,12 +8680,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             status=DeprecationStatus.BACKFILL,
         ),
         aliases=["app.identifier"],
-        sdks=[
-            "sentry.cocoa",
-            "sentry.java.android",
-            "sentry.javascript.react-native",
-            "sentry.dart.flutter",
-        ],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -8644,12 +8701,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             status=DeprecationStatus.BACKFILL,
         ),
         aliases=["app.name"],
-        sdks=[
-            "sentry.cocoa",
-            "sentry.java.android",
-            "sentry.javascript.react-native",
-            "sentry.dart.flutter",
-        ],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -8671,12 +8722,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             status=DeprecationStatus.BACKFILL,
         ),
         aliases=["app.start_time"],
-        sdks=[
-            "sentry.cocoa",
-            "sentry.java.android",
-            "sentry.javascript.react-native",
-            "sentry.dart.flutter",
-        ],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -8698,12 +8743,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             status=DeprecationStatus.BACKFILL,
         ),
         aliases=["app.version"],
-        sdks=[
-            "sentry.cocoa",
-            "sentry.java.android",
-            "sentry.javascript.react-native",
-            "sentry.dart.flutter",
-        ],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -8720,12 +8759,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="1",
         aliases=["app.app_build"],
-        sdks=[
-            "sentry.cocoa",
-            "sentry.java.android",
-            "sentry.javascript.react-native",
-            "sentry.dart.flutter",
-        ],
         changelog=[
             ChangelogEntry(
                 version="0.5.0", prs=[296], description="Added app.build attribute"
@@ -8740,12 +8773,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="com.example.myapp",
         aliases=["app.app_identifier"],
-        sdks=[
-            "sentry.cocoa",
-            "sentry.java.android",
-            "sentry.javascript.react-native",
-            "sentry.dart.flutter",
-        ],
         changelog=[
             ChangelogEntry(
                 version="0.5.0", prs=[296], description="Added app.identifier attribute"
@@ -8759,12 +8786,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=True,
-        sdks=[
-            "sentry.cocoa",
-            "sentry.java.android",
-            "sentry.javascript.react-native",
-            "sentry.dart.flutter",
-        ],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -8781,12 +8802,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="My App",
         aliases=["app.app_name"],
-        sdks=[
-            "sentry.cocoa",
-            "sentry.java.android",
-            "sentry.javascript.react-native",
-            "sentry.dart.flutter",
-        ],
         changelog=[
             ChangelogEntry(
                 version="0.5.0", prs=[296], description="Added app.name attribute"
@@ -8801,12 +8816,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="2025-01-01T00:00:00.000Z",
         aliases=["app.app_start_time"],
-        sdks=[
-            "sentry.cocoa",
-            "sentry.java.android",
-            "sentry.javascript.react-native",
-            "sentry.dart.flutter",
-        ],
         changelog=[
             ChangelogEntry(
                 version="0.5.0", prs=[296], description="Added app.start_time attribute"
@@ -8821,12 +8830,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="1.0.0",
         aliases=["app.app_version"],
-        sdks=[
-            "sentry.cocoa",
-            "sentry.java.android",
-            "sentry.javascript.react-native",
-            "sentry.dart.flutter",
-        ],
         changelog=[
             ChangelogEntry(
                 version="0.5.0", prs=[296], description="Added app.version attribute"
@@ -8841,12 +8844,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=5,
         aliases=["frames.delay"],
-        sdks=[
-            "sentry.cocoa",
-            "sentry.java.android",
-            "sentry.javascript.react-native",
-            "sentry.dart.flutter",
-        ],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -8863,12 +8860,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=3,
         aliases=["frames.frozen"],
-        sdks=[
-            "sentry.cocoa",
-            "sentry.java.android",
-            "sentry.javascript.react-native",
-            "sentry.dart.flutter",
-        ],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -8885,12 +8876,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=1,
         aliases=["frames.slow"],
-        sdks=[
-            "sentry.cocoa",
-            "sentry.java.android",
-            "sentry.javascript.react-native",
-            "sentry.dart.flutter",
-        ],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -8907,12 +8892,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=60,
         aliases=["frames.total"],
-        sdks=[
-            "sentry.cocoa",
-            "sentry.java.android",
-            "sentry.javascript.react-native",
-            "sentry.dart.flutter",
-        ],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -8929,12 +8908,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=1234.56,
         aliases=["app_start_cold"],
-        sdks=[
-            "sentry.cocoa",
-            "sentry.java.android",
-            "sentry.javascript.react-native",
-            "sentry.dart.flutter",
-        ],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -8950,7 +8923,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=True,
-        sdks=["sentry.cocoa"],
         changelog=[
             ChangelogEntry(
                 version="next",
@@ -8966,13 +8938,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="push",
-        sdks=[
-            "sentry.cocoa",
-            "sentry.java.android",
-            "sentry.javascript.react-native",
-            "sentry.dart.flutter",
-            "sentry.dotnet.maui",
-        ],
         changelog=[
             ChangelogEntry(
                 version="0.7.0",
@@ -8988,13 +8953,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="MainActivity",
-        sdks=[
-            "sentry.cocoa",
-            "sentry.java.android",
-            "sentry.javascript.react-native",
-            "sentry.dart.flutter",
-            "sentry.dotnet.maui",
-        ],
         changelog=[
             ChangelogEntry(
                 version="0.7.0",
@@ -9011,12 +8969,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="cold",
         aliases=["app_start_type"],
-        sdks=[
-            "sentry.cocoa",
-            "sentry.java.android",
-            "sentry.javascript.react-native",
-            "sentry.dart.flutter",
-        ],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -9033,12 +8985,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=1234.56,
         aliases=["app_start_warm"],
-        sdks=[
-            "sentry.cocoa",
-            "sentry.java.android",
-            "sentry.javascript.react-native",
-            "sentry.dart.flutter",
-        ],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -9055,12 +9001,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=1234.56,
         aliases=["time_to_full_display"],
-        sdks=[
-            "sentry.cocoa",
-            "sentry.java.android",
-            "sentry.javascript.react-native",
-            "sentry.dart.flutter",
-        ],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -9077,12 +9017,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=1234.56,
         aliases=["time_to_initial_display"],
-        sdks=[
-            "sentry.cocoa",
-            "sentry.java.android",
-            "sentry.javascript.react-native",
-            "sentry.dart.flutter",
-        ],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -9104,12 +9038,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             status=DeprecationStatus.BACKFILL,
         ),
         aliases=["app.vitals.start.cold.value"],
-        sdks=[
-            "sentry.cocoa",
-            "sentry.java.android",
-            "sentry.javascript.react-native",
-            "sentry.dart.flutter",
-        ],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -9154,12 +9082,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             status=DeprecationStatus.BACKFILL,
         ),
         aliases=["app.vitals.start.warm.value"],
-        sdks=[
-            "sentry.cocoa",
-            "sentry.java.android",
-            "sentry.javascript.react-native",
-            "sentry.dart.flutter",
-        ],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -9175,7 +9097,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1,
-        sdks=["sentry.java.android"],
         changelog=[
             ChangelogEntry(
                 version="next",
@@ -9191,7 +9112,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=11.873,
-        sdks=["sentry.java.android"],
         changelog=[
             ChangelogEntry(
                 version="next",
@@ -9207,7 +9127,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=0,
-        sdks=["sentry.java.android"],
         changelog=[
             ChangelogEntry(
                 version="next",
@@ -9223,7 +9142,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1,
-        sdks=["sentry.java.android"],
         changelog=[
             ChangelogEntry(
                 version="next",
@@ -9239,7 +9157,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=11.807,
-        sdks=["sentry.java.android"],
         changelog=[
             ChangelogEntry(
                 version="next",
@@ -9255,7 +9172,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=8.054,
-        sdks=["sentry.java.android"],
         changelog=[
             ChangelogEntry(
                 version="next",
@@ -9271,7 +9187,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=3181568,
-        sdks=["sentry.java.android"],
         changelog=[
             ChangelogEntry(
                 version="next", prs=[382], description="Added art.memory.free attribute"
@@ -9285,7 +9200,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=3181568,
-        sdks=["sentry.java.android"],
         changelog=[
             ChangelogEntry(
                 version="next",
@@ -9301,7 +9215,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=196083712,
-        sdks=["sentry.java.android"],
         changelog=[
             ChangelogEntry(
                 version="next",
@@ -9317,7 +9230,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=201326592,
-        sdks=["sentry.java.android"],
         changelog=[
             ChangelogEntry(
                 version="next", prs=[382], description="Added art.memory.max attribute"
@@ -9331,7 +9243,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=7774208,
-        sdks=["sentry.java.android"],
         changelog=[
             ChangelogEntry(
                 version="next",
@@ -9507,7 +9418,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=1.983,
         aliases=["performance.activationStart"],
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -9524,7 +9434,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=1776185678.886,
         aliases=["performance.timeOrigin"],
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -9551,7 +9460,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="Window.requestAnimationFrame",
-        sdks=["browser"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
@@ -9564,7 +9472,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="event-listener",
-        sdks=["browser"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
@@ -9577,7 +9484,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=678,
-        sdks=["browser"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
@@ -9602,7 +9508,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="navigation",
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -9620,7 +9525,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         has_dynamic_suffix=True,
         example="body > div#app",
         aliases=["cls.source.<key>"],
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[234]),
         ],
@@ -9633,7 +9537,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=0.2361,
         aliases=["cls"],
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -9650,7 +9553,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=547.6951,
         aliases=["fcp"],
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[235]),
         ],
@@ -9663,7 +9565,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=477.1926,
         aliases=["fp"],
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[235]),
         ],
@@ -9676,7 +9577,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=200,
         aliases=["inp"],
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -9693,7 +9593,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="body > div#app > div#container > div",
         aliases=["lcp.element"],
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[233]),
         ],
@@ -9706,7 +9605,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="#gero",
         aliases=["lcp.id"],
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[233]),
         ],
@@ -9719,7 +9617,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=1402,
         aliases=["lcp.loadTime"],
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[233]),
         ],
@@ -9732,7 +9629,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=1685,
         aliases=["lcp.renderTime"],
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[233]),
         ],
@@ -9744,7 +9640,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="pagehide",
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -9761,7 +9656,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=1024,
         aliases=["lcp.size"],
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[233]),
         ],
@@ -9774,7 +9668,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="https://example.com/static/img.png",
         aliases=["lcp.url"],
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[233]),
         ],
@@ -9787,7 +9680,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=2500,
         aliases=["lcp"],
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -9804,7 +9696,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=1554.5814,
         aliases=["ttfb.requestTime"],
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[235]),
         ],
@@ -9817,7 +9708,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=194.3322,
         aliases=["ttfb"],
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[235]),
         ],
@@ -9829,7 +9719,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=True,
-        sdks=["php-laravel"],
         changelog=[
             ChangelogEntry(version="0.0.0"),
         ],
@@ -9853,7 +9742,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=["my-cache-key", "my-other-cache-key"],
-        sdks=["php-laravel"],
         changelog=[
             ChangelogEntry(version="0.0.0"),
         ],
@@ -9865,7 +9753,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="get",
-        sdks=["php-laravel"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
@@ -9878,7 +9765,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=120,
-        sdks=["php-laravel"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
@@ -9891,7 +9777,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=True,
-        sdks=["java"],
         changelog=[
             ChangelogEntry(version="0.5.0"),
         ],
@@ -9903,7 +9788,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="mail",
-        sdks=["php-laravel"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
@@ -10010,7 +9894,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=543,
-        sdks=["javascript-cloudflare"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
@@ -10023,7 +9906,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="run",
-        sdks=["javascript-cloudflare"],
         changelog=[
             ChangelogEntry(
                 version="next",
@@ -10039,7 +9921,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=12,
-        sdks=["javascript-cloudflare"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
@@ -10052,7 +9933,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=12,
-        sdks=["javascript-cloudflare"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
@@ -10065,7 +9945,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1,
-        sdks=["javascript-cloudflare"],
         changelog=[
             ChangelogEntry(
                 version="next",
@@ -10081,7 +9960,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="exponential",
-        sdks=["javascript-cloudflare"],
         changelog=[
             ChangelogEntry(
                 version="next",
@@ -10097,7 +9975,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="5 seconds",
-        sdks=["javascript-cloudflare"],
         changelog=[
             ChangelogEntry(
                 version="next",
@@ -10113,7 +9990,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=3,
-        sdks=["javascript-cloudflare"],
         changelog=[
             ChangelogEntry(
                 version="next",
@@ -10129,7 +10005,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="1 minute",
-        sdks=["javascript-cloudflare"],
         changelog=[
             ChangelogEntry(
                 version="next",
@@ -10152,7 +10027,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             status=DeprecationStatus.BACKFILL,
         ),
         aliases=["browser.web_vital.cls.source.<key>"],
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[234]),
         ],
@@ -10170,7 +10044,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             status=DeprecationStatus.BACKFILL,
         ),
         aliases=["browser.web_vital.cls.value"],
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -10284,7 +10157,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             status=DeprecationStatus.BACKFILL,
         ),
         aliases=["network.connection.rtt"],
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -10306,7 +10178,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             status=DeprecationStatus.BACKFILL,
         ),
         aliases=["network.connection.type", "device.connection_type"],
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -10446,12 +10317,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=3,
-        sdks=[
-            "javascript-node",
-            "javascript-deno",
-            "javascript-bun",
-            "javascript-cloudflare",
-        ],
         changelog=[
             ChangelogEntry(
                 version="next",
@@ -10519,7 +10384,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="my-redis-instance",
-        sdks=["php-laravel"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
@@ -10532,7 +10396,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="user:2047:city",
-        sdks=["python"],
         changelog=[
             ChangelogEntry(
                 version="0.6.0", prs=[326], description="Added db.redis.key attribute"
@@ -10546,7 +10409,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=["test", "*"],
-        sdks=["php-laravel"],
         changelog=[
             ChangelogEntry(version="0.0.0"),
         ],
@@ -10562,7 +10424,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             replacement="db.query.parameter.<key>",
             reason="Instead of adding every binding in the db.sql.bindings attribute, add them as individual entires with db.query.parameter.<key>.",
         ),
-        sdks=["php-laravel"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61]),
             ChangelogEntry(version="0.0.0"),
@@ -10902,7 +10763,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=True,
-        sdks=["sentry.cocoa"],
         changelog=[
             ChangelogEntry(
                 version="0.6.0",
@@ -10934,7 +10794,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=8,
         aliases=["deviceMemory"],
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -11204,7 +11063,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             status=DeprecationStatus.BACKFILL,
         ),
         aliases=["device.memory.estimated_capacity"],
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -11226,7 +11084,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             status=DeprecationStatus.BACKFILL,
         ),
         aliases=["network.connection.effective_type"],
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -11434,7 +11291,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             status=DeprecationStatus.BACKFILL,
         ),
         aliases=["browser.web_vital.fcp.value"],
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[235]),
         ],
@@ -11464,7 +11320,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             status=DeprecationStatus.BACKFILL,
         ),
         aliases=["browser.web_vital.fp.value"],
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[235]),
         ],
@@ -11600,7 +11455,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             replacement="error.type",
             reason="This attribute is not part of the OpenTelemetry specification and error.type fits much better.",
         ),
-        sdks=["javascript-node"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
@@ -12173,6 +12027,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[63, 74]),
         ],
     ),
+    "gen_ai.response.time_to_first_chunk": AttributeMetadata(
+        brief="Time in seconds when the first response content chunk arrived in streaming responses.",
+        type=AttributeType.DOUBLE,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=0.6853435,
+        aliases=["gen_ai.response.time_to_first_token"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added gen_ai.response.time_to_first_chunk attribute",
+            ),
+        ],
+    ),
     "gen_ai.response.time_to_first_token": AttributeMetadata(
         brief="Time in seconds when the first response content chunk arrived in streaming responses.",
         type=AttributeType.DOUBLE,
@@ -12180,7 +12049,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=0.6853435,
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.response.time_to_first_chunk",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["gen_ai.response.time_to_first_chunk"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Deprecate in favor of gen_ai.response.time_to_first_chunk",
+            ),
             ChangelogEntry(version="0.4.0", prs=[227]),
         ],
     ),
@@ -12377,6 +12255,43 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[62, 127]),
         ],
     ),
+    "gen_ai.usage.cache_creation.input_tokens": AttributeMetadata(
+        brief="The number of tokens written to the cache when processing the AI input (prompt).",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=100,
+        aliases=["gen_ai.usage.input_tokens.cache_write"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added gen_ai.usage.cache_creation.input_tokens attribute",
+            ),
+        ],
+        additional_context=[
+            "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans."
+        ],
+    ),
+    "gen_ai.usage.cache_read.input_tokens": AttributeMetadata(
+        brief="The number of cached tokens used to process the AI input (prompt).",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=50,
+        aliases=["gen_ai.usage.input_tokens.cached"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added gen_ai.usage.cache_read.input_tokens attribute",
+            ),
+        ],
+        additional_context=[
+            "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.",
+            "This is a subset of gen_ai.usage.input_tokens, not an independent count. Do not sum this with gen_ai.usage.input_tokens — it is already included.",
+        ],
+    ),
     "gen_ai.usage.completion_tokens": AttributeMetadata(
         brief="The number of tokens used in the GenAI response (completion).",
         type=AttributeType.INTEGER,
@@ -12410,6 +12325,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.prompt_tokens.used", "gen_ai.usage.prompt_tokens"],
         changelog=[
             ChangelogEntry(
+                version="next",
+                description="Update additional_context to reference gen_ai.usage.cache_read.input_tokens",
+            ),
+            ChangelogEntry(
                 version="0.9.0", prs=[397], description="Add additional_context"
             ),
             ChangelogEntry(version="0.5.0", prs=[261]),
@@ -12419,7 +12338,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         additional_context=[
             "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.",
-            "This count includes cached input tokens. gen_ai.usage.input_tokens.cached is a subset of this value, not an independent count — do not sum them together.",
+            "This count includes cached input tokens. gen_ai.usage.cache_read.input_tokens is a subset of this value, not an independent count — do not sum them together.",
         ],
     ),
     "gen_ai.usage.input_tokens.cache_write": AttributeMetadata(
@@ -12429,7 +12348,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=100,
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.usage.cache_creation.input_tokens",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["gen_ai.usage.cache_creation.input_tokens"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Deprecate in favor of gen_ai.usage.cache_creation.input_tokens",
+            ),
             ChangelogEntry(
                 version="0.9.0", prs=[397], description="Add additional_context"
             ),
@@ -12446,7 +12374,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=50,
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.usage.cache_read.input_tokens",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["gen_ai.usage.cache_read.input_tokens"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Deprecate in favor of gen_ai.usage.cache_read.input_tokens",
+            ),
             ChangelogEntry(
                 version="0.9.0", prs=[397], description="Add additional_context"
             ),
@@ -12468,6 +12405,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.completion_tokens.used", "gen_ai.usage.completion_tokens"],
         changelog=[
             ChangelogEntry(
+                version="next",
+                description="Update additional_context to reference gen_ai.usage.reasoning.output_tokens",
+            ),
+            ChangelogEntry(
                 version="0.9.0", prs=[397], description="Add additional_context"
             ),
             ChangelogEntry(version="0.5.0", prs=[261]),
@@ -12477,7 +12418,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         additional_context=[
             "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.",
-            "This count includes reasoning tokens. gen_ai.usage.output_tokens.reasoning is a subset of this value, not an independent count — do not sum them together.",
+            "This count includes reasoning tokens. gen_ai.usage.reasoning.output_tokens is a subset of this value, not an independent count — do not sum them together.",
         ],
     ),
     "gen_ai.usage.output_tokens.reasoning": AttributeMetadata(
@@ -12487,7 +12428,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=75,
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.usage.reasoning.output_tokens",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["gen_ai.usage.reasoning.output_tokens"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Deprecate in favor of gen_ai.usage.reasoning.output_tokens",
+            ),
             ChangelogEntry(
                 version="0.9.0", prs=[397], description="Add additional_context"
             ),
@@ -12520,6 +12470,25 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         additional_context=[
             "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans."
+        ],
+    ),
+    "gen_ai.usage.reasoning.output_tokens": AttributeMetadata(
+        brief="The number of tokens used for reasoning to create the AI output.",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=75,
+        aliases=["gen_ai.usage.output_tokens.reasoning"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added gen_ai.usage.reasoning.output_tokens attribute",
+            ),
+        ],
+        additional_context=[
+            "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.",
+            "This is a subset of gen_ai.usage.output_tokens, not an independent count. Do not sum this with gen_ai.usage.output_tokens — it is already included.",
         ],
     ),
     "gen_ai.usage.total_tokens": AttributeMetadata(
@@ -12596,7 +12565,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             status=DeprecationStatus.BACKFILL,
         ),
         aliases=["device.processor_count"],
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -12626,7 +12594,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=456,
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
@@ -12731,7 +12698,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1732829555.111,
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[134]),
@@ -12745,7 +12711,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1732829555.15,
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[134]),
@@ -12759,7 +12724,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1732829555.201,
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[134]),
@@ -12773,7 +12737,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1732829555.322,
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[134]),
@@ -12787,7 +12750,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1732829555.389,
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[134]),
@@ -12827,7 +12789,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1732829558.502,
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[130, 134]),
@@ -12840,7 +12801,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1732829555.495,
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[134]),
@@ -12854,7 +12814,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1732829555.51,
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[134]),
@@ -12880,7 +12839,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1732829555.89,
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[134]),
@@ -12894,7 +12852,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1732829555.7,
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[134]),
@@ -12908,7 +12865,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1732829555.73,
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[134]),
@@ -12922,7 +12878,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1.032,
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[131]),
@@ -12935,7 +12890,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1732829553.68,
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[130, 134]),
@@ -13094,7 +13048,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=50,
-        sdks=["ruby"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[267]),
         ],
@@ -13179,7 +13132,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="f47ac10b58cc4372a5670e02b2c3d479",
-        sdks=["php-laravel"],
         changelog=[
             ChangelogEntry(version="0.0.0"),
         ],
@@ -13197,7 +13149,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             status=DeprecationStatus.BACKFILL,
         ),
         aliases=["browser.web_vital.inp.value"],
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -13328,7 +13279,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             status=DeprecationStatus.BACKFILL,
         ),
         aliases=["browser.web_vital.lcp.load_time"],
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[233]),
         ],
@@ -13346,7 +13296,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             status=DeprecationStatus.BACKFILL,
         ),
         aliases=["browser.web_vital.lcp.render_time"],
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[233]),
         ],
@@ -13402,7 +13351,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             status=DeprecationStatus.BACKFILL,
         ),
         aliases=["browser.web_vital.lcp.value"],
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -13875,7 +13823,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
         example="mdc.some_key='some_value'",
-        sdks=["java", "java.logback", "java.jul", "java.log4j2"],
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[176]),
         ],
@@ -13887,7 +13834,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=10,
-        sdks=["javascript-cloudflare"],
         changelog=[
             ChangelogEntry(
                 version="0.6.0",
@@ -13903,7 +13849,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="BestTopic",
-        sdks=["php-laravel"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
@@ -13916,7 +13861,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="BestTopic",
-        sdks=["php-laravel"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
@@ -13929,7 +13873,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=839,
-        sdks=["php-laravel"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
@@ -13942,7 +13885,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=1045,
-        sdks=["php-laravel"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
@@ -13955,7 +13897,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="f47ac10b58cc4372a5670e02b2c3d479",
-        sdks=["php-laravel"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
@@ -13968,7 +13909,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1732847252,
-        sdks=["php-laravel"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
@@ -13981,7 +13921,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=2,
-        sdks=["php-laravel"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
@@ -13994,7 +13933,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="send",
-        sdks=["javascript-cloudflare"],
         changelog=[
             ChangelogEntry(
                 version="next",
@@ -14021,7 +13959,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="activemq",
-        sdks=["php-laravel"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
@@ -14036,7 +13973,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="GET",
         deprecation=DeprecationInfo(replacement="http.request.method"),
         aliases=["http.request.method", "http.request_method", "http.method"],
-        sdks=["javascript-browser", "javascript-node"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
@@ -14049,7 +13985,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="AuthenticationMiddleware",
-        sdks=["python"],
         changelog=[
             ChangelogEntry(
                 version="0.6.0",
@@ -14355,7 +14290,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="4g",
         aliases=["effectiveConnectionType"],
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -14372,7 +14306,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=100,
         aliases=["connection.rtt"],
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -14389,7 +14322,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="wifi",
         aliases=["device.connection_type", "connectionType"],
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -14713,7 +14645,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             status=DeprecationStatus.BACKFILL,
         ),
         aliases=["browser.performance.navigation.activation_start"],
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -14735,7 +14666,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             status=DeprecationStatus.BACKFILL,
         ),
         aliases=["browser.performance.time_origin"],
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -14751,7 +14681,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="HomeScreen",
-        sdks=["javascript-reactnative"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[74]),
             ChangelogEntry(version="0.0.0"),
@@ -14764,7 +14693,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=["cmd/otecol", "--config=config.yaml"],
-        sdks=["python"],
         changelog=[
             ChangelogEntry(
                 version="0.6.0",
@@ -14909,7 +14837,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
         example="http.response.header.text='test'",
-        sdks=["javascript-remix"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[103]),
         ],
@@ -14963,7 +14890,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="non-blocking",
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
@@ -14978,7 +14904,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="App\\Controller::indexAction",
         deprecation=DeprecationInfo(replacement="http.route"),
         aliases=["http.route"],
-        sdks=["php-laravel", "javascript-reactnative"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 74]),
             ChangelogEntry(version="0.0.0"),
@@ -15520,7 +15445,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="/posts/[id]/layout",
-        sdks=["javascript"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[54, 106]),
         ],
@@ -15532,7 +15456,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="generateMetadata",
-        sdks=["javascript"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[54, 106]),
         ],
@@ -15686,7 +15609,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             reason="The report event is now recorded as a browser.web_vital.lcp.report_event or browser.web_vital.cls.report_event attribute. No backfill required."
         ),
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -16035,6 +15957,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "session.id": AttributeMetadata(
+        brief="A unique id identifying the active session at the time of setting this attribute",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="00112233-4455-6677-8899-aabbccddeeff",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[412], description="Added session.id attribute"
+            ),
+        ],
+    ),
     "stall_percentage": AttributeMetadata(
         brief="The fraction of time the app was stalled. Only applies to React Native. This is computed by Relay.",
         type=AttributeType.DOUBLE,
@@ -16106,7 +16041,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="MyTag",
-        sdks=["sentry.java.android"],
         changelog=[
             ChangelogEntry(version="0.3.0", prs=[183]),
         ],
@@ -16124,12 +16058,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             status=DeprecationStatus.BACKFILL,
         ),
         aliases=["app.vitals.ttfd.value"],
-        sdks=[
-            "sentry.cocoa",
-            "sentry.java.android",
-            "sentry.javascript.react-native",
-            "sentry.dart.flutter",
-        ],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -16151,12 +16079,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             status=DeprecationStatus.BACKFILL,
         ),
         aliases=["app.vitals.ttid.value"],
-        sdks=[
-            "sentry.cocoa",
-            "sentry.java.android",
-            "sentry.javascript.react-native",
-            "sentry.dart.flutter",
-        ],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -16229,7 +16151,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             status=DeprecationStatus.BACKFILL,
         ),
         aliases=["browser.web_vital.ttfb.request_time"],
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[235]),
         ],
@@ -16247,7 +16168,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             status=DeprecationStatus.BACKFILL,
         ),
         aliases=["browser.web_vital.ttfb.value"],
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[235]),
         ],
@@ -16259,7 +16179,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="fetch",
-        sdks=["javascript-browser", "javascript-node"],
         changelog=[
             ChangelogEntry(version="0.0.0"),
         ],
@@ -16305,7 +16224,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=256,
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -16321,7 +16239,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="btn-login",
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
                 version="0.5.0", prs=[284], description="Added ui.element.id attribute"
@@ -16335,7 +16252,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="heroImage",
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -16351,7 +16267,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=998.2234,
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -16367,7 +16282,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="image-paint",
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -16383,7 +16297,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1023.1124,
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -16399,7 +16312,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="img",
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -16415,7 +16327,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="https://assets.myapp.com/hero.png",
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
                 version="0.5.0", prs=[284], description="Added ui.element.url attribute"
@@ -16429,7 +16340,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=512,
-        sdks=["javascript-browser"],
         changelog=[
             ChangelogEntry(
                 version="0.5.0",
@@ -16559,7 +16469,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="https://example.com/test?foo=bar#buzz",
         deprecation=DeprecationInfo(replacement="url.full"),
         aliases=["url.full", "http.url"],
-        sdks=["javascript-browser", "javascript-node"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61]),
             ChangelogEntry(version="0.0.0"),
@@ -17389,6 +17298,7 @@ Attributes = TypedDict(
         "gen_ai.response.model": str,
         "gen_ai.response.streaming": bool,
         "gen_ai.response.text": str,
+        "gen_ai.response.time_to_first_chunk": float,
         "gen_ai.response.time_to_first_token": float,
         "gen_ai.response.tokens_per_second": float,
         "gen_ai.response.tool_calls": str,
@@ -17404,6 +17314,8 @@ Attributes = TypedDict(
         "gen_ai.tool.name": str,
         "gen_ai.tool.output": str,
         "gen_ai.tool.type": str,
+        "gen_ai.usage.cache_creation.input_tokens": int,
+        "gen_ai.usage.cache_read.input_tokens": int,
         "gen_ai.usage.completion_tokens": int,
         "gen_ai.usage.input_tokens": int,
         "gen_ai.usage.input_tokens.cache_write": int,
@@ -17411,6 +17323,7 @@ Attributes = TypedDict(
         "gen_ai.usage.output_tokens": int,
         "gen_ai.usage.output_tokens.reasoning": int,
         "gen_ai.usage.prompt_tokens": int,
+        "gen_ai.usage.reasoning.output_tokens": int,
         "gen_ai.usage.total_tokens": int,
         "graphql.document": str,
         "graphql.operation.name": str,
@@ -17674,6 +17587,7 @@ Attributes = TypedDict(
         "server.port": int,
         "service.name": str,
         "service.version": str,
+        "session.id": str,
         "stall_percentage": float,
         "stall_total_time": float,
         "state.type": str,

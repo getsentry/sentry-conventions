@@ -111,7 +111,7 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
 
   // Generate individual attribute constants with documentation AND build the explicit type map
   for (const { file, key, constantName, attributeJson, isDeprecated } of allAttributes) {
-    const { brief, type, pii, is_in_otel, example, has_dynamic_suffix, deprecation, alias, sdks } = attributeJson;
+    const { brief, type, pii, is_in_otel, example, has_dynamic_suffix, deprecation, alias } = attributeJson;
     const visibility = getVisibility(attributeJson);
 
     const tsType = getTsType(type);
@@ -370,10 +370,6 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
   content += '    aliases: Optional[List[str]] = None\n';
   content += '    """If there are attributes that alias to this attribute"""\n';
   content += '    \n';
-  content += '    sdks: Optional[List[str]] = None\n';
-  content +=
-    '    """If an attribute is SDK specific, list the SDKs that use this attribute. This is not an exhaustive list, there might be SDKs that send this attribute that are is not documented here."""\n';
-  content += '    \n';
   content += '    changelog: Optional[List[ChangelogEntry]] = None\n';
   content += '    """Changelog entries tracking how this attribute has changed across versions"""\n';
   content += '    \n';
@@ -535,10 +531,6 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
 
     if (alias && alias.length > 0) {
       metadataDict += `        aliases=${JSON.stringify(alias)},\n`;
-    }
-
-    if (attributeJson.sdks && attributeJson.sdks.length > 0) {
-      metadataDict += `        sdks=${JSON.stringify(attributeJson.sdks)},\n`;
     }
 
     if (attributeJson.changelog && attributeJson.changelog.length > 0) {
@@ -724,8 +716,6 @@ export interface AttributeMetadata {
   deprecation?: DeprecationInfo;
   /** If there are attributes that alias to this attribute */
   aliases?: AttributeName[];
-  /** If an attribute is SDK specific, list the SDKs that use this attribute */
-  sdks?: string[];
   /** Changelog entries tracking how this attribute has changed across versions */
   changelog?: ChangelogEntry[];
   /** A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances */
@@ -822,10 +812,6 @@ function generateMetadataDict(
         })
         .join(', ');
       metadataDict += `    aliases: [${constantAliases}],\n`;
-    }
-
-    if (attributeJson.sdks && attributeJson.sdks.length > 0) {
-      metadataDict += `    sdks: ${JSON.stringify(attributeJson.sdks)},\n`;
     }
 
     if (attributeJson.changelog && attributeJson.changelog.length > 0) {

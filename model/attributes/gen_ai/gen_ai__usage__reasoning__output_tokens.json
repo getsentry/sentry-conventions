@@ -1,0 +1,22 @@
+{
+  "key": "gen_ai.usage.reasoning.output_tokens",
+  "brief": "The number of tokens used for reasoning to create the AI output.",
+  "type": "integer",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "example": 75,
+  "additional_context": [
+    "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.",
+    "This is a subset of gen_ai.usage.output_tokens, not an independent count. Do not sum this with gen_ai.usage.output_tokens — it is already included."
+  ],
+  "alias": ["gen_ai.usage.output_tokens.reasoning"],
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added gen_ai.usage.reasoning.output_tokens attribute"
+    }
+  ]
+}

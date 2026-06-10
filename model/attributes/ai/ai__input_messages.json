@@ -8,7 +8,6 @@
   "is_in_otel": false,
   "example": "[{\"role\": \"user\", \"message\": \"hello\"}]",
   "alias": ["gen_ai.request.messages"],
-  "sdks": ["python"],
   "deprecation": {
     "_status": "backfill",
     "replacement": "gen_ai.input.messages"

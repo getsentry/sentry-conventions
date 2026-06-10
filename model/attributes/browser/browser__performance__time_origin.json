@@ -8,7 +8,6 @@
   "is_in_otel": false,
   "example": 1776185678.886,
   "alias": ["performance.timeOrigin"],
-  "sdks": ["javascript-browser"],
   "visibility": "public",
   "changelog": [
     {

@@ -7,7 +7,6 @@
   },
   "is_in_otel": false,
   "example": "user:2047:city",
-  "sdks": ["python"],
   "visibility": "public",
   "changelog": [
     {
