@@ -8925,7 +8925,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=True,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.0",
                 prs=[379],
                 description="Added app.vitals.start.prewarmed attribute",
             ),
@@ -9099,7 +9099,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=1,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.0",
                 prs=[382],
                 description="Added art.gc.blocking_count attribute",
             ),
@@ -9114,7 +9114,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=11.873,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.0",
                 prs=[382],
                 description="Added art.gc.blocking_time attribute",
             ),
@@ -9129,7 +9129,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=0,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.0",
                 prs=[382],
                 description="Added art.gc.pre_oome_count attribute",
             ),
@@ -9144,7 +9144,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=1,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.0",
                 prs=[382],
                 description="Added art.gc.total_count attribute",
             ),
@@ -9159,7 +9159,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=11.807,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.0",
                 prs=[382],
                 description="Added art.gc.total_time attribute",
             ),
@@ -9174,7 +9174,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=8.054,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.0",
                 prs=[382],
                 description="Added art.gc.waiting_time attribute",
             ),
@@ -9189,7 +9189,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=3181568,
         changelog=[
             ChangelogEntry(
-                version="next", prs=[382], description="Added art.memory.free attribute"
+                version="0.11.0",
+                prs=[382],
+                description="Added art.memory.free attribute",
             ),
         ],
     ),
@@ -9202,7 +9204,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=3181568,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.0",
                 prs=[382],
                 description="Added art.memory.free_until_gc attribute",
             ),
@@ -9217,7 +9219,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=196083712,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.0",
                 prs=[382],
                 description="Added art.memory.free_until_oome attribute",
             ),
@@ -9232,7 +9234,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=201326592,
         changelog=[
             ChangelogEntry(
-                version="next", prs=[382], description="Added art.memory.max attribute"
+                version="0.11.0",
+                prs=[382],
+                description="Added art.memory.max attribute",
             ),
         ],
     ),
@@ -9245,7 +9249,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=7774208,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.0",
                 prs=[382],
                 description="Added art.memory.total attribute",
             ),
@@ -9908,7 +9912,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="run",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.0",
                 prs=[392],
                 description="Added cloudflare.d1.query_type attribute",
             ),
@@ -9947,7 +9951,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=1,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.0",
                 prs=[392],
                 description="Added cloudflare.workflow.attempt attribute",
             ),
@@ -9962,7 +9966,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="exponential",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.0",
                 prs=[392],
                 description="Added cloudflare.workflow.retries.backoff attribute",
             ),
@@ -9977,7 +9981,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="5 seconds",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.0",
                 prs=[392],
                 description="Added cloudflare.workflow.retries.delay attribute",
             ),
@@ -9992,7 +9996,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=3,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.0",
                 prs=[392],
                 description="Added cloudflare.workflow.retries.limit attribute",
             ),
@@ -10007,7 +10011,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="1 minute",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.0",
                 prs=[392],
                 description="Added cloudflare.workflow.timeout attribute",
             ),
@@ -10319,7 +10323,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=3,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.0",
                 prs=[407],
                 description="Added db.operation.batch.size attribute",
             ),
@@ -10454,7 +10458,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="GetUserById",
         changelog=[
-            ChangelogEntry(version="next", prs=[398]),
+            ChangelogEntry(version="0.11.0", prs=[398]),
         ],
     ),
     "db.system": AttributeMetadata(
@@ -11218,7 +11222,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=120,
         changelog=[
-            ChangelogEntry(version="next"),
+            ChangelogEntry(version="0.11.0", prs=[403]),
         ],
     ),
     "faas.entry_point": AttributeMetadata(
@@ -11229,7 +11233,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="my_main_function",
         changelog=[
-            ChangelogEntry(version="next"),
+            ChangelogEntry(version="0.11.0", prs=[403, 415]),
         ],
     ),
     "faas.identity": AttributeMetadata(
@@ -11240,7 +11244,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="name@project.iam.gserviceaccount.com (GCP), arn:aws:iam::123456789012:role/role-name (AWS), 00000000-0000-0000-0000-000000000000 (Azure)",
         changelog=[
-            ChangelogEntry(version="next"),
+            ChangelogEntry(version="0.11.0", prs=[403]),
         ],
     ),
     "faas.name": AttributeMetadata(
@@ -11251,7 +11255,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="my_function",
         changelog=[
-            ChangelogEntry(version="next", prs=[403, 415]),
+            ChangelogEntry(version="0.11.0", prs=[403, 415]),
         ],
     ),
     "faas.time": AttributeMetadata(
@@ -11603,7 +11607,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="my-project-123",
         changelog=[
-            ChangelogEntry(version="next"),
+            ChangelogEntry(version="0.11.0", prs=[403]),
         ],
     ),
     "gen_ai.agent.name": AttributeMetadata(
@@ -12037,7 +12041,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.response.time_to_first_token"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.0",
+                prs=[418],
                 description="Added gen_ai.response.time_to_first_chunk attribute",
             ),
         ],
@@ -12056,7 +12061,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.response.time_to_first_chunk"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.0",
+                prs=[418],
                 description="Deprecate in favor of gen_ai.response.time_to_first_chunk",
             ),
             ChangelogEntry(version="0.4.0", prs=[227]),
@@ -12265,7 +12271,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.usage.input_tokens.cache_write"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.0",
+                prs=[418],
                 description="Added gen_ai.usage.cache_creation.input_tokens attribute",
             ),
         ],
@@ -12283,7 +12290,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.usage.input_tokens.cached"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.0",
+                prs=[418],
                 description="Added gen_ai.usage.cache_read.input_tokens attribute",
             ),
         ],
@@ -12325,7 +12333,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.prompt_tokens.used", "gen_ai.usage.prompt_tokens"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.0",
+                prs=[418],
                 description="Update additional_context to reference gen_ai.usage.cache_read.input_tokens",
             ),
             ChangelogEntry(
@@ -12355,7 +12364,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.usage.cache_creation.input_tokens"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.0",
+                prs=[418],
                 description="Deprecate in favor of gen_ai.usage.cache_creation.input_tokens",
             ),
             ChangelogEntry(
@@ -12381,7 +12391,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.usage.cache_read.input_tokens"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.0",
+                prs=[418],
                 description="Deprecate in favor of gen_ai.usage.cache_read.input_tokens",
             ),
             ChangelogEntry(
@@ -12405,7 +12416,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.completion_tokens.used", "gen_ai.usage.completion_tokens"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.0",
+                prs=[418],
                 description="Update additional_context to reference gen_ai.usage.reasoning.output_tokens",
             ),
             ChangelogEntry(
@@ -12435,7 +12447,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.usage.reasoning.output_tokens"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.0",
+                prs=[418],
                 description="Deprecate in favor of gen_ai.usage.reasoning.output_tokens",
             ),
             ChangelogEntry(
@@ -12482,7 +12495,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.usage.output_tokens.reasoning"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.0",
+                prs=[418],
                 description="Added gen_ai.usage.reasoning.output_tokens attribute",
             ),
         ],
@@ -13935,7 +13949,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="send",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.0",
                 prs=[392],
                 description="Added messaging.operation.name attribute",
             ),
@@ -14973,7 +14987,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.0",
                 prs=[383],
                 description="Added and deprecated runtime.build attribute",
             ),
@@ -14993,7 +15007,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["process.runtime.name"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.0",
                 prs=[383],
                 description="Added and deprecated runtime.name attribute in favor of process.runtime.name",
             ),
@@ -15013,7 +15027,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["process.runtime.description"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.0",
                 prs=[383],
                 description="Added and deprecated runtime.raw_description attribute in favor of process.runtime.description",
             ),
@@ -15033,7 +15047,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["process.runtime.version"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.0",
                 prs=[383],
                 description="Added and deprecated runtime.version attribute in favor of process.runtime.version",
             ),
@@ -15966,7 +15980,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="00112233-4455-6677-8899-aabbccddeeff",
         changelog=[
             ChangelogEntry(
-                version="next", prs=[412], description="Added session.id attribute"
+                version="0.11.0", prs=[412], description="Added session.id attribute"
             ),
         ],
     ),

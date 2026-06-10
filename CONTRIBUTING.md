@@ -83,6 +83,23 @@ The generated code packages can be published to package repositories (currently 
 2. Head over to [`getsentry/publish`](https://github.com/getsentry/publish/issues) and wait for a new issue to appear. Ensure the changes look correct and all CI checks have passed
 3. Add the `accept` label. A bot will start the release workflow. Wait for the release to complete.
 
+## Updating sentry-conventions in Relay
+
+Relay incorporates `sentry-conventions` as a git submodule. This means any Relay-facing changes made in this repository (deprecating an attribute or changing its normalization status, adding a span name convention, …) won't take effect until the submodule is updated and Relay is redeployed. To do this, proceed as follows:
+
+1. In the `relay` repo, update the submodule:
+  ```bash
+  cd relay-conventions/sentry-conventions
+  git checkout main
+  git pull
+  cd ../..
+  git commit -am "..."
+  ```
+
+2. Open a PR at https://github.com/getsentry/relay. If you didn't recompile Relay and run tests after step 1, you might now get test failures or deprecation warnings because attributes Relay was using have been deprecated. These will need to be fixed.
+3. When the PR is merged, wait for it to be deployed.
+  
+
 ## Policies
 
 ### Attributes

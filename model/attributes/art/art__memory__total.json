@@ -10,7 +10,7 @@
   "example": 7774208,
   "changelog": [
     {
-      "version": "next",
+      "version": "0.11.0",
       "prs": [382],
       "description": "Added art.memory.total attribute"
     }
