@@ -1218,7 +1218,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The AWS request ID as received by the Lambda function runtime
 
     Type: str
-    Contains PII: maybe
+    Contains PII: false
     Defined in OTEL: No
     Visibility: public
     Aliases: faas.invocation_id
@@ -1249,6 +1249,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
+    Aliases: faas.name
     DEPRECATED: Use faas.name instead - Use the OTel-aligned faas.name attribute instead
     Example: "my-function"
     """
@@ -1263,6 +1264,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
+    Aliases: faas.version
     DEPRECATED: Use faas.version instead - Use the OTel-aligned faas.version attribute instead
     Example: "$LATEST"
     """
@@ -2999,6 +3001,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: aws.lambda.function_name
     Example: "my_function"
     """
 
@@ -3032,6 +3035,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: false
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: aws.lambda.function_version
     Example: "$LATEST"
     """
 
@@ -9381,7 +9385,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.lambda.aws_request_id": AttributeMetadata(
         brief="The AWS request ID as received by the Lambda function runtime",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="8476a536-e9f4-11e8-9739-2dfe598c3fcd",
@@ -9428,6 +9432,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             replacement="faas.name",
             reason="Use the OTel-aligned faas.name attribute instead",
         ),
+        aliases=["faas.name"],
         changelog=[
             ChangelogEntry(
                 version="next",
@@ -9451,6 +9456,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             replacement="faas.version",
             reason="Use the OTel-aligned faas.version attribute instead",
         ),
+        aliases=["faas.version"],
         changelog=[
             ChangelogEntry(
                 version="next",
@@ -11426,6 +11432,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="my_function",
+        aliases=["aws.lambda.function_name"],
         changelog=[
             ChangelogEntry(version="0.11.0", prs=[403, 415]),
         ],
@@ -11461,6 +11468,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="$LATEST",
+        aliases=["aws.lambda.function_version"],
         changelog=[
             ChangelogEntry(version="next"),
         ],

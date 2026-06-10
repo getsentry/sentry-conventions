@@ -1686,7 +1686,7 @@ export type AWS_CLOUDWATCH_LOGS_URL_TYPE = string;
  *
  * Attribute Value Type: `string` {@link AWS_LAMBDA_AWS_REQUEST_ID_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: false
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -1736,6 +1736,8 @@ export type AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link FAAS_NAME} `faas.name`
+ *
  * @deprecated Use {@link FAAS_NAME} (faas.name) instead - Use the OTel-aligned faas.name attribute instead
  * @example "my-function"
  */
@@ -1757,6 +1759,8 @@ export type AWS_LAMBDA_FUNCTION_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Aliases: {@link FAAS_VERSION} `faas.version`
  *
  * @deprecated Use {@link FAAS_VERSION} (faas.version) instead - Use the OTel-aligned faas.version attribute instead
  * @example "$LATEST"
@@ -4897,6 +4901,8 @@ export type FAAS_INVOCATION_ID_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link AWS_LAMBDA_FUNCTION_NAME} `aws.lambda.function_name`
+ *
  * @example "my_function"
  */
 export const FAAS_NAME = 'faas.name';
@@ -4959,6 +4965,8 @@ export type FAAS_TRIGGER_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
+ *
+ * Aliases: {@link AWS_LAMBDA_FUNCTION_VERSION} `aws.lambda.function_version`
  *
  * @example "$LATEST"
  */
@@ -16724,7 +16732,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The AWS request ID as received by the Lambda function runtime',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'false',
     },
     isInOtel: false,
     visibility: 'public',
@@ -16765,6 +16773,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'faas.name',
       reason: 'Use the OTel-aligned faas.name attribute instead',
     },
+    aliases: [FAAS_NAME],
     changelog: [
       { version: 'next', description: 'Deprecated aws.lambda.function_name in favor of faas.name' },
       { version: '0.7.0', prs: [369], description: 'Added aws.lambda.function_name attribute' },
@@ -16783,6 +16792,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'faas.version',
       reason: 'Use the OTel-aligned faas.version attribute instead',
     },
+    aliases: [FAAS_VERSION],
     changelog: [
       { version: 'next', description: 'Deprecated aws.lambda.function_version in favor of faas.version' },
       { version: '0.7.0', prs: [369], description: 'Added aws.lambda.function_version attribute' },
@@ -18561,6 +18571,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'my_function',
+    aliases: [AWS_LAMBDA_FUNCTION_NAME],
     changelog: [{ version: '0.11.0', prs: [403, 415] }],
   },
   [FAAS_TIME]: {
@@ -18594,6 +18605,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: '$LATEST',
+    aliases: [AWS_LAMBDA_FUNCTION_VERSION],
     changelog: [{ version: 'next' }],
   },
   [FCP]: {
