@@ -7,6 +7,7 @@
   },
   "is_in_otel": false,
   "example": "$LATEST",
+  "alias": ["faas.version"],
   "deprecation": {
     "_status": null,
     "replacement": "faas.version",
