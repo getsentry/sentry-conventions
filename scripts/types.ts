@@ -32,3 +32,14 @@ export interface NameJson {
     examples?: string[];
   }[];
 }
+
+export interface DescriptionJson {
+  brief: string;
+  operations: {
+    name?: string;
+    brief: string;
+    ops: string[];
+    templates: string[];
+    examples?: string[];
+  }[];
+}

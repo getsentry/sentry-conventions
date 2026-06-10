@@ -65,6 +65,26 @@ const names = defineCollection({
   schema: nameSchema,
 });
 
+// Schema matching schemas/description.schema.json
+const descriptionOperationSchema = z.object({
+  name: z.string().optional(),
+  brief: z.string(),
+  ops: z.array(z.string()),
+  templates: z.array(z.string()),
+  examples: z.array(z.string()).optional(),
+});
+
+const descriptionSchema = z.object({
+  brief: z.string(),
+  operations: z.array(descriptionOperationSchema),
+});
+
+// Define the descriptions collection - loads all JSON files from model/description
+const descriptions = defineCollection({
+  loader: glob({ pattern: '*.json', base: '../model/description' }),
+  schema: descriptionSchema,
+});
+
 // Schema matching schemas/measurements.schema.json
 const measurementSchema = z.object({
   key: z.string(),
@@ -81,10 +101,12 @@ const measurements = defineCollection({
   schema: measurementSchema,
 });
 
-export const collections = { attributes, names, measurements };
+export const collections = { attributes, names, descriptions, measurements };
 
 // Export types for use in pages
 export type Attribute = z.infer<typeof attributeSchema>;
 export type SpanName = z.infer<typeof nameSchema>;
 export type SpanOperation = z.infer<typeof spanOperationSchema>;
+export type SpanDescription = z.infer<typeof descriptionSchema>;
+export type DescriptionOperation = z.infer<typeof descriptionOperationSchema>;
 export type Measurement = z.infer<typeof measurementSchema>;
