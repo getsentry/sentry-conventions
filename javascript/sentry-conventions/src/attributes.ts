@@ -10195,6 +10195,29 @@ export const PROCESS_PID = 'process.pid';
  */
 export type PROCESS_PID_TYPE = number;
 
+// Path: model/attributes/process/process__runtime__build.json
+
+/**
+ * The application build string. Equivalent to `build` in the Sentry runtime context. `process.runtime.build`
+ *
+ * Attribute Value Type: `string` {@link PROCESS_RUNTIME_BUILD_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link RUNTIME_BUILD} `runtime.build`
+ *
+ * @example "stable"
+ */
+export const PROCESS_RUNTIME_BUILD = 'process.runtime.build';
+
+/**
+ * Type for {@link PROCESS_RUNTIME_BUILD} process.runtime.build
+ */
+export type PROCESS_RUNTIME_BUILD_TYPE = string;
+
 // Path: model/attributes/process/process__runtime__description.json
 
 /**
@@ -10606,6 +10629,8 @@ export type RPC_SERVICE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Aliases: {@link PROCESS_RUNTIME_BUILD} `process.runtime.build`
  *
  * @deprecated  - The runtime.* namespace is deprecated in favor of process.runtime.*. No direct OTel equivalent exists for this attribute.
  * @example "stable"
@@ -14666,6 +14691,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [PROCESS_COMMAND_ARGS]: 'string[]',
   [PROCESS_EXECUTABLE_NAME]: 'string',
   [PROCESS_PID]: 'integer',
+  [PROCESS_RUNTIME_BUILD]: 'string',
   [PROCESS_RUNTIME_DESCRIPTION]: 'string',
   [PROCESS_RUNTIME_ENGINE_NAME]: 'string',
   [PROCESS_RUNTIME_ENGINE_VERSION]: 'string',
@@ -15313,6 +15339,7 @@ export type AttributeName =
   | typeof PROCESS_COMMAND_ARGS
   | typeof PROCESS_EXECUTABLE_NAME
   | typeof PROCESS_PID
+  | typeof PROCESS_RUNTIME_BUILD
   | typeof PROCESS_RUNTIME_DESCRIPTION
   | typeof PROCESS_RUNTIME_ENGINE_NAME
   | typeof PROCESS_RUNTIME_ENGINE_VERSION
@@ -21686,6 +21713,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 12345,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
+  [PROCESS_RUNTIME_BUILD]: {
+    brief: 'The application build string. Equivalent to `build` in the Sentry runtime context.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'stable',
+    aliases: [RUNTIME_BUILD],
+    changelog: [{ version: 'next', prs: [421], description: 'Added process.runtime.build attribute' }],
+  },
   [PROCESS_RUNTIME_DESCRIPTION]: {
     brief:
       'An additional description about the runtime of the process, for example a specific vendor customization of the runtime environment. Equivalent to `raw_description` in the Sentry runtime context.',
@@ -21927,6 +21966,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason:
         'The runtime.* namespace is deprecated in favor of process.runtime.*. No direct OTel equivalent exists for this attribute.',
     },
+    aliases: [PROCESS_RUNTIME_BUILD],
     changelog: [{ version: 'next', prs: [383], description: 'Added and deprecated runtime.build attribute' }],
   },
   [RUNTIME_NAME]: {
@@ -24390,6 +24430,7 @@ export type Attributes = {
   [PROCESS_COMMAND_ARGS]?: PROCESS_COMMAND_ARGS_TYPE;
   [PROCESS_EXECUTABLE_NAME]?: PROCESS_EXECUTABLE_NAME_TYPE;
   [PROCESS_PID]?: PROCESS_PID_TYPE;
+  [PROCESS_RUNTIME_BUILD]?: PROCESS_RUNTIME_BUILD_TYPE;
   [PROCESS_RUNTIME_DESCRIPTION]?: PROCESS_RUNTIME_DESCRIPTION_TYPE;
   [PROCESS_RUNTIME_ENGINE_NAME]?: PROCESS_RUNTIME_ENGINE_NAME_TYPE;
   [PROCESS_RUNTIME_ENGINE_VERSION]?: PROCESS_RUNTIME_ENGINE_VERSION_TYPE;

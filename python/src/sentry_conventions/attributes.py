@@ -5979,6 +5979,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 12345
     """
 
+    # Path: model/attributes/process/process__runtime__build.json
+    PROCESS_RUNTIME_BUILD: Literal["process.runtime.build"] = "process.runtime.build"
+    """The application build string. Equivalent to `build` in the Sentry runtime context.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: runtime.build
+    Example: "stable"
+    """
+
     # Path: model/attributes/process/process__runtime__description.json
     PROCESS_RUNTIME_DESCRIPTION: Literal["process.runtime.description"] = (
         "process.runtime.description"
@@ -6217,6 +6229,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
+    Aliases: process.runtime.build
     DEPRECATED: No replacement at this time - The runtime.* namespace is deprecated in favor of process.runtime.*. No direct OTel equivalent exists for this attribute.
     Example: "stable"
     """
@@ -14725,6 +14738,22 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "process.runtime.build": AttributeMetadata(
+        brief="The application build string. Equivalent to `build` in the Sentry runtime context.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="stable",
+        aliases=["runtime.build"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[421],
+                description="Added process.runtime.build attribute",
+            ),
+        ],
+    ),
     "process.runtime.description": AttributeMetadata(
         brief="An additional description about the runtime of the process, for example a specific vendor customization of the runtime environment. Equivalent to `raw_description` in the Sentry runtime context.",
         type=AttributeType.STRING,
@@ -14971,6 +15000,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             reason="The runtime.* namespace is deprecated in favor of process.runtime.*. No direct OTel equivalent exists for this attribute."
         ),
+        aliases=["process.runtime.build"],
         changelog=[
             ChangelogEntry(
                 version="next",
@@ -17490,6 +17520,7 @@ Attributes = TypedDict(
         "process.command_args": List[str],
         "process.executable.name": str,
         "process.pid": int,
+        "process.runtime.build": str,
         "process.runtime.description": str,
         "process.runtime.engine.name": str,
         "process.runtime.engine.version": str,
