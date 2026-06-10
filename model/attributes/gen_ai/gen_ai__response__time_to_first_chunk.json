@@ -11,7 +11,8 @@
   "alias": ["gen_ai.response.time_to_first_token"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.11.0",
+      "prs": [418],
       "description": "Added gen_ai.response.time_to_first_chunk attribute"
     }
   ]

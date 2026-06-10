@@ -16341,7 +16341,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: true,
-    changelog: [{ version: 'next', prs: [379], description: 'Added app.vitals.start.prewarmed attribute' }],
+    changelog: [{ version: '0.11.0', prs: [379], description: 'Added app.vitals.start.prewarmed attribute' }],
   },
   [APP_VITALS_START_REASON]: {
     brief: 'The reason that triggered the app start.',
@@ -16423,7 +16423,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1,
-    changelog: [{ version: 'next', prs: [382], description: 'Added art.gc.blocking_count attribute' }],
+    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.gc.blocking_count attribute' }],
   },
   [ART_GC_BLOCKING_TIME]: {
     brief: 'Total time spent in blocking (stop-the-world) garbage collections by the Android Runtime, in milliseconds',
@@ -16434,7 +16434,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 11.873,
-    changelog: [{ version: 'next', prs: [382], description: 'Added art.gc.blocking_time attribute' }],
+    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.gc.blocking_time attribute' }],
   },
   [ART_GC_PRE_OOME_COUNT]: {
     brief:
@@ -16446,7 +16446,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 0,
-    changelog: [{ version: 'next', prs: [382], description: 'Added art.gc.pre_oome_count attribute' }],
+    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.gc.pre_oome_count attribute' }],
   },
   [ART_GC_TOTAL_COUNT]: {
     brief: 'Total number of garbage collections performed by the Android Runtime',
@@ -16457,7 +16457,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1,
-    changelog: [{ version: 'next', prs: [382], description: 'Added art.gc.total_count attribute' }],
+    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.gc.total_count attribute' }],
   },
   [ART_GC_TOTAL_TIME]: {
     brief: 'Total time spent in garbage collection by the Android Runtime, in milliseconds',
@@ -16468,7 +16468,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 11.807,
-    changelog: [{ version: 'next', prs: [382], description: 'Added art.gc.total_time attribute' }],
+    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.gc.total_time attribute' }],
   },
   [ART_GC_WAITING_TIME]: {
     brief:
@@ -16480,7 +16480,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 8.054,
-    changelog: [{ version: 'next', prs: [382], description: 'Added art.gc.waiting_time attribute' }],
+    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.gc.waiting_time attribute' }],
   },
   [ART_MEMORY_FREE]: {
     brief: 'Free memory available to the process as reported by the Android Runtime, in bytes',
@@ -16491,7 +16491,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 3181568,
-    changelog: [{ version: 'next', prs: [382], description: 'Added art.memory.free attribute' }],
+    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.memory.free attribute' }],
   },
   [ART_MEMORY_FREE_UNTIL_GC]: {
     brief: 'Free memory available before a garbage collection would be triggered by the Android Runtime, in bytes',
@@ -16502,7 +16502,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 3181568,
-    changelog: [{ version: 'next', prs: [382], description: 'Added art.memory.free_until_gc attribute' }],
+    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.memory.free_until_gc attribute' }],
   },
   [ART_MEMORY_FREE_UNTIL_OOME]: {
     brief: 'Free memory available before an OutOfMemoryError would be thrown by the Android Runtime, in bytes',
@@ -16513,7 +16513,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 196083712,
-    changelog: [{ version: 'next', prs: [382], description: 'Added art.memory.free_until_oome attribute' }],
+    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.memory.free_until_oome attribute' }],
   },
   [ART_MEMORY_MAX]: {
     brief: 'Maximum memory the process is allowed to use as reported by the Android Runtime, in bytes',
@@ -16524,7 +16524,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 201326592,
-    changelog: [{ version: 'next', prs: [382], description: 'Added art.memory.max attribute' }],
+    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.memory.max attribute' }],
   },
   [ART_MEMORY_TOTAL]: {
     brief: 'Total memory currently allocated to the process by the Android Runtime, in bytes',
@@ -16535,7 +16535,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 7774208,
-    changelog: [{ version: 'next', prs: [382], description: 'Added art.memory.total attribute' }],
+    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.memory.total attribute' }],
   },
   [AWS_CLOUDWATCH_LOGS_LOG_GROUP]: {
     brief: 'The name of the CloudWatch Logs log group',
@@ -17058,7 +17058,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'run',
-    changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.d1.query_type attribute' }],
+    changelog: [{ version: '0.11.0', prs: [392], description: 'Added cloudflare.d1.query_type attribute' }],
   },
   [CLOUDFLARE_D1_ROWS_READ]: {
     brief: 'The number of rows read in a Cloudflare D1 operation.',
@@ -17091,7 +17091,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1,
-    changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.workflow.attempt attribute' }],
+    changelog: [{ version: '0.11.0', prs: [392], description: 'Added cloudflare.workflow.attempt attribute' }],
   },
   [CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF]: {
     brief: 'The backoff strategy for Cloudflare Workflow step retries',
@@ -17102,7 +17102,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'exponential',
-    changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.workflow.retries.backoff attribute' }],
+    changelog: [{ version: '0.11.0', prs: [392], description: 'Added cloudflare.workflow.retries.backoff attribute' }],
   },
   [CLOUDFLARE_WORKFLOW_RETRIES_DELAY]: {
     brief: 'The delay between Cloudflare Workflow step retries',
@@ -17113,7 +17113,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: '5 seconds',
-    changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.workflow.retries.delay attribute' }],
+    changelog: [{ version: '0.11.0', prs: [392], description: 'Added cloudflare.workflow.retries.delay attribute' }],
   },
   [CLOUDFLARE_WORKFLOW_RETRIES_LIMIT]: {
     brief: 'The maximum number of retries for a Cloudflare Workflow step',
@@ -17124,7 +17124,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 3,
-    changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.workflow.retries.limit attribute' }],
+    changelog: [{ version: '0.11.0', prs: [392], description: 'Added cloudflare.workflow.retries.limit attribute' }],
   },
   [CLOUDFLARE_WORKFLOW_TIMEOUT]: {
     brief: 'The timeout duration for a Cloudflare Workflow step',
@@ -17135,7 +17135,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: '1 minute',
-    changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.workflow.timeout attribute' }],
+    changelog: [{ version: '0.11.0', prs: [392], description: 'Added cloudflare.workflow.timeout attribute' }],
   },
   [CLOUD_ACCOUNT_ID]: {
     brief: 'The cloud account ID the resource is assigned to',
@@ -17499,7 +17499,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 3,
-    changelog: [{ version: 'next', prs: [407], description: 'Added db.operation.batch.size attribute' }],
+    changelog: [{ version: '0.11.0', prs: [407], description: 'Added db.operation.batch.size attribute' }],
   },
   [DB_OPERATION_NAME]: {
     brief: 'The name of the operation being executed.',
@@ -17624,7 +17624,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'GetUserById',
-    changelog: [{ version: 'next', prs: [398] }],
+    changelog: [{ version: '0.11.0', prs: [398] }],
   },
   [DB_SYSTEM]: {
     brief:
@@ -18286,7 +18286,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 120,
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.11.0', prs: [403] }],
   },
   [FAAS_ENTRY_POINT]: {
     brief: "The code that's run when the cloud provider invokes your function.",
@@ -18297,7 +18297,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'my_main_function',
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.11.0', prs: [403, 415] }],
   },
   [FAAS_IDENTITY]: {
     brief:
@@ -18310,7 +18310,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example:
       'name@project.iam.gserviceaccount.com (GCP), arn:aws:iam::123456789012:role/role-name (AWS), 00000000-0000-0000-0000-000000000000 (Azure)',
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.11.0', prs: [403] }],
   },
   [FAAS_NAME]: {
     brief: 'The name of the serverless function',
@@ -18321,7 +18321,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'my_function',
-    changelog: [{ version: 'next', prs: [403, 415] }],
+    changelog: [{ version: '0.11.0', prs: [403, 415] }],
   },
   [FAAS_TIME]: {
     brief: 'A string containing the function invocation time in the ISO 8601 format expressed in UTC.',
@@ -18620,7 +18620,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'my-project-123',
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.11.0', prs: [403] }],
   },
   [GEN_AI_AGENT_NAME]: {
     brief: 'The name of the agent being used.',
@@ -19081,7 +19081,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 0.6853435,
     aliases: [GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN],
-    changelog: [{ version: 'next', description: 'Added gen_ai.response.time_to_first_chunk attribute' }],
+    changelog: [{ version: '0.11.0', prs: [418], description: 'Added gen_ai.response.time_to_first_chunk attribute' }],
   },
   [GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN]: {
     brief: 'Time in seconds when the first response content chunk arrived in streaming responses.',
@@ -19097,7 +19097,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK],
     changelog: [
-      { version: 'next', description: 'Deprecate in favor of gen_ai.response.time_to_first_chunk' },
+      { version: '0.11.0', prs: [418], description: 'Deprecate in favor of gen_ai.response.time_to_first_chunk' },
       { version: '0.4.0', prs: [227] },
     ],
   },
@@ -19325,7 +19325,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 100,
     aliases: [GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE],
-    changelog: [{ version: 'next', description: 'Added gen_ai.usage.cache_creation.input_tokens attribute' }],
+    changelog: [
+      { version: '0.11.0', prs: [418], description: 'Added gen_ai.usage.cache_creation.input_tokens attribute' },
+    ],
     additionalContext: [
       'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
     ],
@@ -19340,7 +19342,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 50,
     aliases: [GEN_AI_USAGE_INPUT_TOKENS_CACHED],
-    changelog: [{ version: 'next', description: 'Added gen_ai.usage.cache_read.input_tokens attribute' }],
+    changelog: [{ version: '0.11.0', prs: [418], description: 'Added gen_ai.usage.cache_read.input_tokens attribute' }],
     additionalContext: [
       'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
       'This is a subset of gen_ai.usage.input_tokens, not an independent count. Do not sum this with gen_ai.usage.input_tokens — it is already included.',
@@ -19380,7 +19382,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 10,
     aliases: [AI_PROMPT_TOKENS_USED, GEN_AI_USAGE_PROMPT_TOKENS],
     changelog: [
-      { version: 'next', description: 'Update additional_context to reference gen_ai.usage.cache_read.input_tokens' },
+      {
+        version: '0.11.0',
+        prs: [418],
+        description: 'Update additional_context to reference gen_ai.usage.cache_read.input_tokens',
+      },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.5.0', prs: [261] },
       { version: '0.4.0', prs: [228] },
@@ -19406,7 +19412,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS],
     changelog: [
-      { version: 'next', description: 'Deprecate in favor of gen_ai.usage.cache_read.input_tokens' },
+      { version: '0.11.0', prs: [418], description: 'Deprecate in favor of gen_ai.usage.cache_read.input_tokens' },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [62, 112] },
@@ -19430,7 +19436,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS],
     changelog: [
-      { version: 'next', description: 'Deprecate in favor of gen_ai.usage.cache_creation.input_tokens' },
+      { version: '0.11.0', prs: [418], description: 'Deprecate in favor of gen_ai.usage.cache_creation.input_tokens' },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [217, 228] },
     ],
@@ -19449,7 +19455,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 10,
     aliases: [AI_COMPLETION_TOKENS_USED, GEN_AI_USAGE_COMPLETION_TOKENS],
     changelog: [
-      { version: 'next', description: 'Update additional_context to reference gen_ai.usage.reasoning.output_tokens' },
+      {
+        version: '0.11.0',
+        prs: [418],
+        description: 'Update additional_context to reference gen_ai.usage.reasoning.output_tokens',
+      },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.5.0', prs: [261] },
       { version: '0.4.0', prs: [228] },
@@ -19475,7 +19485,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [GEN_AI_USAGE_REASONING_OUTPUT_TOKENS],
     changelog: [
-      { version: 'next', description: 'Deprecate in favor of gen_ai.usage.reasoning.output_tokens' },
+      { version: '0.11.0', prs: [418], description: 'Deprecate in favor of gen_ai.usage.reasoning.output_tokens' },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [62, 112] },
@@ -19518,7 +19528,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 75,
     aliases: [GEN_AI_USAGE_OUTPUT_TOKENS_REASONING],
-    changelog: [{ version: 'next', description: 'Added gen_ai.usage.reasoning.output_tokens attribute' }],
+    changelog: [{ version: '0.11.0', prs: [418], description: 'Added gen_ai.usage.reasoning.output_tokens attribute' }],
     additionalContext: [
       'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
       'This is a subset of gen_ai.usage.output_tokens, not an independent count. Do not sum this with gen_ai.usage.output_tokens — it is already included.',
@@ -20933,7 +20943,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'send',
-    changelog: [{ version: 'next', prs: [392], description: 'Added messaging.operation.name attribute' }],
+    changelog: [{ version: '0.11.0', prs: [392], description: 'Added messaging.operation.name attribute' }],
   },
   [MESSAGING_OPERATION_TYPE]: {
     brief: 'A string identifying the type of the messaging operation',
@@ -21927,7 +21937,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason:
         'The runtime.* namespace is deprecated in favor of process.runtime.*. No direct OTel equivalent exists for this attribute.',
     },
-    changelog: [{ version: 'next', prs: [383], description: 'Added and deprecated runtime.build attribute' }],
+    changelog: [{ version: '0.11.0', prs: [383], description: 'Added and deprecated runtime.build attribute' }],
   },
   [RUNTIME_NAME]: {
     brief: 'The name of the runtime. For example node, CPython, or rustc.',
@@ -21945,7 +21955,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [PROCESS_RUNTIME_NAME],
     changelog: [
       {
-        version: 'next',
+        version: '0.11.0',
         prs: [383],
         description: 'Added and deprecated runtime.name attribute in favor of process.runtime.name',
       },
@@ -21968,7 +21978,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [PROCESS_RUNTIME_DESCRIPTION],
     changelog: [
       {
-        version: 'next',
+        version: '0.11.0',
         prs: [383],
         description: 'Added and deprecated runtime.raw_description attribute in favor of process.runtime.description',
       },
@@ -21990,7 +22000,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [PROCESS_RUNTIME_VERSION],
     changelog: [
       {
-        version: 'next',
+        version: '0.11.0',
         prs: [383],
         description: 'Added and deprecated runtime.version attribute in favor of process.runtime.version',
       },
@@ -22922,7 +22932,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: '00112233-4455-6677-8899-aabbccddeeff',
-    changelog: [{ version: 'next', prs: [412], description: 'Added session.id attribute' }],
+    changelog: [{ version: '0.11.0', prs: [412], description: 'Added session.id attribute' }],
   },
   [STALL_PERCENTAGE]: {
     brief: 'The fraction of time the app was stalled. Only applies to React Native. This is computed by Relay.',

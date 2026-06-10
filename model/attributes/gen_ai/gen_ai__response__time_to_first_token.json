@@ -15,7 +15,8 @@
   },
   "changelog": [
     {
-      "version": "next",
+      "version": "0.11.0",
+      "prs": [418],
       "description": "Deprecate in favor of gen_ai.response.time_to_first_chunk"
     },
     {

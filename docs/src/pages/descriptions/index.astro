@@ -1,0 +1,114 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CategoryChip from '../../components/CategoryChip.astro';
+import LinkedTemplate from '../../components/LinkedTemplate.astro';
+import { getCollection } from 'astro:content';
+
+// Get all description definitions
+const allDescriptions = await getCollection('descriptions');
+
+// Sort by brief (category name)
+allDescriptions.sort((a, b) => a.data.brief.localeCompare(b.data.brief));
+
+// Count total operations
+const totalOperations = allDescriptions.reduce((acc, desc) => acc + desc.data.operations.length, 0);
+---
+
+<BaseLayout
+  title="Span Descriptions"
+  description="Learn how to construct span descriptions using templates and attributes"
+>
+  <div class="mb-8">
+    <h1>Span Description Documentation</h1>
+    <p class="text-lg text-text-secondary max-w-3xl">
+      This page contains documentation for known span descriptions. You can use this documentation to understand
+      how to create the <code class="text-accent">sentry.description</code> attribute for a span, when you have the span's other attributes.
+    </p>
+  </div>
+
+  <section class="bg-bg-secondary border border-border rounded-lg p-6 mb-8">
+    <h2 class="text-xl mb-4">Generating Descriptions</h2>
+    <p class="text-sm max-w-2xl">
+      Span descriptions are generated via string template. Each span category of work has a set of templates
+      for the span description. Curly brackets in the template indicate that the contents inside the curly
+      brackets should be replaced with the contents of the span attribute of the name within the brackets.
+    </p>
+    <p class="text-sm max-w-2xl">
+      The templates should be evaluated <strong>in order of appearance</strong>. Every template references
+      at least one attribute.
+    </p>
+
+    <div class="mt-6 p-4 bg-bg-elevated rounded-md border-l-[3px] border-accent">
+      <h4 class="text-sm text-accent mb-3">Example</h4>
+      <p class="text-sm mb-2">Given template:</p>
+      <ol class="ml-4 mb-3 text-sm">
+        <li class="mb-1"><code>{"{{db.query.text}}"}</code></li>
+      </ol>
+      <p class="text-sm mb-2">And attribute <code>db.query.text = "SELECT * FROM users WHERE id = ?"</code>:</p>
+      <p class="text-sm m-0">Result: <code>"SELECT * FROM users WHERE id = ?"</code></p>
+    </div>
+  </section>
+
+  <nav class="flex items-start gap-4 p-4 bg-bg-secondary border border-border rounded-lg mb-8 flex-col md:flex-row">
+    <span class="text-sm text-text-muted whitespace-nowrap pt-1">Categories ({allDescriptions.length}):</span>
+    <div class="flex flex-wrap gap-2">
+      {allDescriptions.map(desc => (
+        <CategoryChip
+          name={desc.data.brief}
+          count={desc.data.operations.length}
+          href={`#${desc.id}`}
+        />
+      ))}
+    </div>
+  </nav>
+
+  <div class="flex flex-col gap-12">
+    {allDescriptions.map(desc => (
+      <section class="scroll-mt-20" id={desc.id}>
+        <h2 class="mb-6 pb-3 border-b border-border">{desc.data.brief}</h2>
+
+        <div class="flex flex-col gap-6">
+          {desc.data.operations.map(op => (
+            <article class="card">
+              <h3 class="text-xl mb-2">{op.name || op.brief}</h3>
+              <p class="text-sm text-text-secondary mb-4">{op.brief}</p>
+
+              <div class="flex flex-col gap-5">
+                <div>
+                  <h4 class="text-sm font-semibold text-text-muted mb-2">Affected <code class="text-accent">op</code>s</h4>
+                  <div class="flex flex-wrap gap-2">
+                    {op.ops.map(opValue => (
+                      <code class="px-2 py-1 bg-bg-elevated border border-border rounded-sm text-xs text-text-secondary">{opValue}</code>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <h4 class="text-sm font-semibold text-text-muted mb-2">Templates</h4>
+                  <ol class="m-0 pl-5 list-inside">
+                    {op.templates.map(tmpl => (
+                      <li class="flex items-center gap-2 mb-2 text-sm">
+                        <code class="px-2 py-1 bg-bg-elevated text-xs"><LinkedTemplate template={tmpl} /></code>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+
+                {op.examples && op.examples.length > 0 && (
+                  <div>
+                    <h4 class="text-sm font-semibold text-text-muted mb-2">Examples</h4>
+                    <div class="flex flex-wrap gap-2">
+                      {op.examples.map(example => (
+                        <code class="px-3 py-1 bg-accent-soft border border-transparent rounded-sm text-xs text-accent">{example}</code>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    ))}
+  </div>
+</BaseLayout>
