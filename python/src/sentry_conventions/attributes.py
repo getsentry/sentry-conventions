@@ -152,6 +152,10 @@ class _AttributeNamesMeta(type):
         "APP_START_COLD",
         "APP_START_TYPE",
         "APP_START_WARM",
+        "AWS_LAMBDA_AWS_REQUEST_ID",
+        "AWS_LAMBDA_FUNCTION_NAME",
+        "AWS_LAMBDA_FUNCTION_VERSION",
+        "AWS_LAMBDA_INVOKED_FUNCTION_ARN",
         "CLS_SOURCE_KEY",
         "CLS",
         "CODE_FILEPATH",
@@ -1214,9 +1218,11 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The AWS request ID as received by the Lambda function runtime
 
     Type: str
-    Contains PII: maybe
+    Contains PII: false
     Defined in OTEL: No
     Visibility: public
+    Aliases: faas.invocation_id
+    DEPRECATED: Use faas.invocation_id instead - This attribute is being deprecated in favor of faas.invocation_id
     Example: "8476a536-e9f4-11e8-9739-2dfe598c3fcd"
     """
 
@@ -1243,6 +1249,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
+    Aliases: faas.name
+    DEPRECATED: Use faas.name instead - Use the OTel-aligned faas.name attribute instead
     Example: "my-function"
     """
 
@@ -1253,10 +1261,24 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The version of the Lambda function
 
     Type: str
-    Contains PII: maybe
+    Contains PII: false
     Defined in OTEL: No
     Visibility: public
+    Aliases: faas.version
+    DEPRECATED: Use faas.version instead - Use the OTel-aligned faas.version attribute instead
     Example: "$LATEST"
+    """
+
+    # Path: model/attributes/aws/aws__lambda__invoked_arn.json
+    AWS_LAMBDA_INVOKED_ARN: Literal["aws.lambda.invoked_arn"] = "aws.lambda.invoked_arn"
+    """The full ARN of the Lambda function that was invoked
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: Yes
+    Visibility: public
+    Aliases: aws.lambda.invoked_function_arn
+    Example: "arn:aws:lambda:us-east-1:123456789012:function:my-function"
     """
 
     # Path: model/attributes/aws/aws__lambda__invoked_function_arn.json
@@ -1269,6 +1291,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
+    Aliases: aws.lambda.invoked_arn
+    DEPRECATED: Use aws.lambda.invoked_arn instead - This attribute is being deprecated in favor of aws.lambda.invoked_arn
     Example: "arn:aws:lambda:us-east-1:123456789012:function:my-function"
     """
 
@@ -1283,6 +1307,28 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Example: 5000
+    """
+
+    # Path: model/attributes/aws/aws__log__group__names.json
+    AWS_LOG_GROUP_NAMES: Literal["aws.log.group.names"] = "aws.log.group.names"
+    """The name(s) of the AWS log group(s) an application is writing to.
+
+    Type: List[str]
+    Contains PII: maybe
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: ["/aws/lambda/my-function","opentelemetry-service"]
+    """
+
+    # Path: model/attributes/aws/aws__log__stream__names.json
+    AWS_LOG_STREAM_NAMES: Literal["aws.log.stream.names"] = "aws.log.stream.names"
+    """The name(s) of the AWS log stream(s) an application is writing to.
+
+    Type: List[str]
+    Contains PII: maybe
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: ["logs/main/10838bed-421f-43ef-870a-f43feacbbb5b"]
     """
 
     # Path: model/attributes/blocked_main_thread.json
@@ -1774,6 +1820,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Example: "us-east-1"
+    """
+
+    # Path: model/attributes/cloud/cloud__resource_id.json
+    CLOUD_RESOURCE_ID: Literal["cloud.resource_id"] = "cloud.resource_id"
+    """Cloud provider-specific native identifier of the monitored cloud resource
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "arn:aws:lambda:REGION:ACCOUNT_ID:function:my-function"
     """
 
     # Path: model/attributes/cloudflare/cloudflare__d1__duration.json
@@ -2924,6 +2981,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "name@project.iam.gserviceaccount.com (GCP), arn:aws:iam::123456789012:role/role-name (AWS), 00000000-0000-0000-0000-000000000000 (Azure)"
     """
 
+    # Path: model/attributes/faas/faas__invocation_id.json
+    FAAS_INVOCATION_ID: Literal["faas.invocation_id"] = "faas.invocation_id"
+    """The invocation ID of the current function invocation.
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: Yes
+    Visibility: public
+    Aliases: aws.lambda.aws_request_id
+    Example: "af9d5aa4-a685-4c5f-a22b-444f80b3cc28"
+    """
+
     # Path: model/attributes/faas/faas__name.json
     FAAS_NAME: Literal["faas.name"] = "faas.name"
     """The name of the serverless function
@@ -2932,6 +3001,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: aws.lambda.function_name
     Example: "my_function"
     """
 
@@ -2955,6 +3025,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Example: "timer"
+    """
+
+    # Path: model/attributes/faas/faas__version.json
+    FAAS_VERSION: Literal["faas.version"] = "faas.version"
+    """The version of the function that was invoked
+
+    Type: str
+    Contains PII: false
+    Defined in OTEL: Yes
+    Visibility: public
+    Aliases: aws.lambda.function_version
+    Example: "$LATEST"
     """
 
     # Path: model/attributes/fcp.json
@@ -9303,11 +9385,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.lambda.aws_request_id": AttributeMetadata(
         brief="The AWS request ID as received by the Lambda function runtime",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="8476a536-e9f4-11e8-9739-2dfe598c3fcd",
+        deprecation=DeprecationInfo(
+            replacement="faas.invocation_id",
+            reason="This attribute is being deprecated in favor of faas.invocation_id",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["faas.invocation_id"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Deprecated aws.lambda.aws_request_id in favor of faas.invocation_id",
+            ),
             ChangelogEntry(
                 version="0.7.0",
                 prs=[369],
@@ -9337,7 +9429,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="my-function",
+        deprecation=DeprecationInfo(
+            replacement="faas.name",
+            reason="Use the OTel-aligned faas.name attribute instead",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["faas.name"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Deprecated aws.lambda.function_name in favor of faas.name",
+            ),
             ChangelogEntry(
                 version="0.7.0",
                 prs=[369],
@@ -9348,16 +9450,38 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.lambda.function_version": AttributeMetadata(
         brief="The version of the Lambda function",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="$LATEST",
+        deprecation=DeprecationInfo(
+            replacement="faas.version",
+            reason="Use the OTel-aligned faas.version attribute instead",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["faas.version"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Deprecated aws.lambda.function_version in favor of faas.version",
+            ),
             ChangelogEntry(
                 version="0.7.0",
                 prs=[369],
                 description="Added aws.lambda.function_version attribute",
             ),
+        ],
+    ),
+    "aws.lambda.invoked_arn": AttributeMetadata(
+        brief="The full ARN of the Lambda function that was invoked",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="arn:aws:lambda:us-east-1:123456789012:function:my-function",
+        aliases=["aws.lambda.invoked_function_arn"],
+        changelog=[
+            ChangelogEntry(version="next"),
         ],
     ),
     "aws.lambda.invoked_function_arn": AttributeMetadata(
@@ -9367,7 +9491,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="arn:aws:lambda:us-east-1:123456789012:function:my-function",
+        deprecation=DeprecationInfo(
+            replacement="aws.lambda.invoked_arn",
+            reason="This attribute is being deprecated in favor of aws.lambda.invoked_arn",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["aws.lambda.invoked_arn"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Deprecated aws.lambda.invoked_function_arn in favor of aws.lambda.invoked_arn",
+            ),
             ChangelogEntry(
                 version="0.7.0",
                 prs=[369],
@@ -9388,6 +9522,28 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 prs=[369],
                 description="Added aws.lambda.remaining_time_in_millis attribute",
             ),
+        ],
+    ),
+    "aws.log.group.names": AttributeMetadata(
+        brief="The name(s) of the AWS log group(s) an application is writing to.",
+        type=AttributeType.STRING_ARRAY,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=["/aws/lambda/my-function", "opentelemetry-service"],
+        changelog=[
+            ChangelogEntry(version="next"),
+        ],
+    ),
+    "aws.log.stream.names": AttributeMetadata(
+        brief="The name(s) of the AWS log stream(s) an application is writing to.",
+        type=AttributeType.STRING_ARRAY,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=["logs/main/10838bed-421f-43ef-870a-f43feacbbb5b"],
+        changelog=[
+            ChangelogEntry(version="next"),
         ],
     ),
     "blocked_main_thread": AttributeMetadata(
@@ -9889,6 +10045,20 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(
                 version="0.7.0", prs=[364], description="Added cloud.region attribute"
             ),
+        ],
+    ),
+    "cloud.resource_id": AttributeMetadata(
+        brief="Cloud provider-specific native identifier of the monitored cloud resource",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="arn:aws:lambda:REGION:ACCOUNT_ID:function:my-function",
+        changelog=[
+            ChangelogEntry(version="next"),
+        ],
+        additional_context=[
+            "This can be an identifier for a resource in AWS, GCP, or Azure. There may be some overlap in values found here with other attributes. For instance, an AWS lambda ARN may be found here as well as in `aws.lambda.invoked_arn`. OTEL recommends setting them alongside each other."
         ],
     ),
     "cloudflare.d1.duration": AttributeMetadata(
@@ -11247,6 +11417,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.11.0", prs=[403]),
         ],
     ),
+    "faas.invocation_id": AttributeMetadata(
+        brief="The invocation ID of the current function invocation.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="af9d5aa4-a685-4c5f-a22b-444f80b3cc28",
+        aliases=["aws.lambda.aws_request_id"],
+        changelog=[
+            ChangelogEntry(version="next"),
+        ],
+    ),
     "faas.name": AttributeMetadata(
         brief="The name of the serverless function",
         type=AttributeType.STRING,
@@ -11254,6 +11436,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="my_function",
+        aliases=["aws.lambda.function_name"],
         changelog=[
             ChangelogEntry(version="0.11.0", prs=[403, 415]),
         ],
@@ -11280,6 +11463,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "faas.version": AttributeMetadata(
+        brief="The version of the function that was invoked",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.FALSE),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="$LATEST",
+        aliases=["aws.lambda.function_version"],
+        changelog=[
+            ChangelogEntry(version="next"),
         ],
     ),
     "fcp": AttributeMetadata(
@@ -17120,8 +17315,11 @@ Attributes = TypedDict(
         "aws.lambda.execution_duration_in_millis": float,
         "aws.lambda.function_name": str,
         "aws.lambda.function_version": str,
+        "aws.lambda.invoked_arn": str,
         "aws.lambda.invoked_function_arn": str,
         "aws.lambda.remaining_time_in_millis": float,
+        "aws.log.group.names": List[str],
+        "aws.log.stream.names": List[str],
         "blocked_main_thread": bool,
         "browser.name": str,
         "browser.performance.navigation.activation_start": float,
@@ -17161,6 +17359,7 @@ Attributes = TypedDict(
         "cloud.platform": str,
         "cloud.provider": str,
         "cloud.region": str,
+        "cloud.resource_id": str,
         "cloudflare.d1.duration": int,
         "cloudflare.d1.query_type": str,
         "cloudflare.d1.rows_read": int,
@@ -17258,9 +17457,11 @@ Attributes = TypedDict(
         "faas.duration_in_ms": int,
         "faas.entry_point": str,
         "faas.identity": str,
+        "faas.invocation_id": str,
         "faas.name": str,
         "faas.time": str,
         "faas.trigger": str,
+        "faas.version": str,
         "fcp": float,
         "flag.evaluation.<key>": bool,
         "fp": float,

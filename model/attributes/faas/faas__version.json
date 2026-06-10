@@ -1,0 +1,17 @@
+{
+  "key": "faas.version",
+  "brief": "The version of the function that was invoked",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": true,
+  "example": "$LATEST",
+  "alias": ["aws.lambda.function_version"],
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next"
+    }
+  ]
+}
