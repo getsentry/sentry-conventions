@@ -4,7 +4,7 @@
   "has_dynamic_suffix": true,
   "type": "boolean",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "flag.evaluation.is_new_ui=true",

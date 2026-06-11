@@ -3,7 +3,7 @@
   "brief": "The array of query bindings.",
   "type": "string[]",
   "pii": {
-    "key": "maybe"
+    "key": "true"
   },
   "is_in_otel": false,
   "example": ["1", "foo"],

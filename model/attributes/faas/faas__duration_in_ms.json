@@ -3,7 +3,7 @@
   "brief": "The duration a function took to run, in milliseconds.",
   "type": "integer",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": 120,

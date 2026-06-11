@@ -3,7 +3,7 @@
   "brief": "Region where the request is executed",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "sfo1",

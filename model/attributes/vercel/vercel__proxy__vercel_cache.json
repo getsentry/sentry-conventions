@@ -3,7 +3,7 @@
   "brief": "Cache status sent to the browser",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "REVALIDATED",

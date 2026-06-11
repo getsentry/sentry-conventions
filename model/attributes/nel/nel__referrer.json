@@ -3,7 +3,7 @@
   "brief": "request's referrer, as determined by the referrer policy associated with its client.",
   "type": "string",
   "pii": {
-    "key": "maybe"
+    "key": "true"
   },
   "is_in_otel": false,
   "example": "https://example.com/foo?bar=baz",

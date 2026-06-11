@@ -3,7 +3,7 @@
   "brief": "Total number of garbage collections performed by the Android Runtime",
   "type": "integer",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "visibility": "public",

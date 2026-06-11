@@ -3,7 +3,7 @@
   "brief": "Version of the MCP client application.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "1.0.0",
