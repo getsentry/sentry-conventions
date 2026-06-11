@@ -5736,6 +5736,29 @@ export const GEN_AI_PROMPT = 'gen_ai.prompt';
  */
 export type GEN_AI_PROMPT_TYPE = string;
 
+// Path: model/attributes/gen_ai/gen_ai__prompt__name.json
+
+/**
+ * The name of the prompt that uniquely identifies it. `gen_ai.prompt.name`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_PROMPT_NAME_TYPE}
+ *
+ * Contains PII: maybe - Prompt names may reveal user behavior patterns or sensitive operations
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link MCP_PROMPT_NAME} `mcp.prompt.name`
+ *
+ * @example "summarize_text"
+ */
+export const GEN_AI_PROMPT_NAME = 'gen_ai.prompt.name';
+
+/**
+ * Type for {@link GEN_AI_PROMPT_NAME} gen_ai.prompt.name
+ */
+export type GEN_AI_PROMPT_NAME_TYPE = string;
+
 // Path: model/attributes/gen_ai/gen_ai__provider__name.json
 
 /**
@@ -6293,7 +6316,7 @@ export type GEN_AI_TOOL_CALL_ARGUMENTS_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`
+ * Aliases: {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`, {@link MCP_TOOL_RESULT_CONTENT} `mcp.tool.result.content`
  *
  * @example "rainy, 57°F"
  */
@@ -6406,7 +6429,7 @@ export type GEN_AI_TOOL_MESSAGE_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link AI_FUNCTION_CALL} `ai.function_call`
+ * Aliases: {@link AI_FUNCTION_CALL} `ai.function_call`, {@link MCP_TOOL_NAME} `mcp.tool.name`
  *
  * @example "Flights"
  */
@@ -7746,6 +7769,50 @@ export const INP = 'inp';
  */
 export type INP_TYPE = number;
 
+// Path: model/attributes/jsonrpc/jsonrpc__protocol__version.json
+
+/**
+ * The version of the JSON-RPC protocol used. `jsonrpc.protocol.version`
+ *
+ * Attribute Value Type: `string` {@link JSONRPC_PROTOCOL_VERSION_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "2.0"
+ */
+export const JSONRPC_PROTOCOL_VERSION = 'jsonrpc.protocol.version';
+
+/**
+ * Type for {@link JSONRPC_PROTOCOL_VERSION} jsonrpc.protocol.version
+ */
+export type JSONRPC_PROTOCOL_VERSION_TYPE = string;
+
+// Path: model/attributes/jsonrpc/jsonrpc__request__id.json
+
+/**
+ * The JSON-RPC request identifier. Unique within the session. `jsonrpc.request.id`
+ *
+ * Attribute Value Type: `string` {@link JSONRPC_REQUEST_ID_TYPE}
+ *
+ * Contains PII: false
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link MCP_REQUEST_ID} `mcp.request.id`
+ *
+ * @example "1"
+ */
+export const JSONRPC_REQUEST_ID = 'jsonrpc.request.id';
+
+/**
+ * Type for {@link JSONRPC_REQUEST_ID} jsonrpc.request.id
+ */
+export type JSONRPC_REQUEST_ID_TYPE = string;
+
 // Path: model/attributes/jvm/jvm__gc__action.json
 
 /**
@@ -8280,7 +8347,7 @@ export type MCP_LOGGING_MESSAGE_TYPE = string;
  *
  * Contains PII: false
  *
- * Attribute defined in OTEL: No
+ * Attribute defined in OTEL: Yes
  * Visibility: public
  *
  * @example "tools/call"
@@ -8409,6 +8476,9 @@ export type MCP_PROGRESS_TOTAL_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link GEN_AI_PROMPT_NAME} `gen_ai.prompt.name`
+ *
+ * @deprecated Use {@link GEN_AI_PROMPT_NAME} (gen_ai.prompt.name) instead - OTel uses gen_ai.prompt.name for MCP prompt names
  * @example "summarize"
  */
 export const MCP_PROMPT_NAME = 'mcp.prompt.name';
@@ -8532,7 +8602,7 @@ export type MCP_PROTOCOL_READY_TYPE = number;
  *
  * Contains PII: false
  *
- * Attribute defined in OTEL: No
+ * Attribute defined in OTEL: Yes
  * Visibility: public
  *
  * @example "2024-11-05"
@@ -8621,6 +8691,9 @@ export type MCP_REQUEST_ARGUMENT_URI_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link JSONRPC_REQUEST_ID} `jsonrpc.request.id`
+ *
+ * @deprecated Use {@link JSONRPC_REQUEST_ID} (jsonrpc.request.id) instead - OTel models MCP as JSON-RPC, uses jsonrpc.request.id
  * @example "1"
  */
 export const MCP_REQUEST_ID = 'mcp.request.id';
@@ -8642,6 +8715,9 @@ export type MCP_REQUEST_ID_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link NETWORK_PROTOCOL_NAME} `network.protocol.name`, {@link NET_PROTOCOL_NAME} `net.protocol.name`
+ *
+ * @deprecated Use {@link NETWORK_PROTOCOL_NAME} (network.protocol.name) instead - OTel uses the generic network.protocol.name attribute
  * @example "file"
  */
 export const MCP_RESOURCE_PROTOCOL = 'mcp.resource.protocol';
@@ -8660,7 +8736,7 @@ export type MCP_RESOURCE_PROTOCOL_TYPE = string;
  *
  * Contains PII: true - URIs can contain sensitive file paths
  *
- * Attribute defined in OTEL: No
+ * Attribute defined in OTEL: Yes
  * Visibility: public
  *
  * @example "file:///path/to/file.txt"
@@ -8744,7 +8820,7 @@ export type MCP_SERVER_VERSION_TYPE = string;
  *
  * Contains PII: false
  *
- * Attribute defined in OTEL: No
+ * Attribute defined in OTEL: Yes
  * Visibility: public
  *
  * @example "550e8400-e29b-41d4-a716-446655440000"
@@ -8768,6 +8844,7 @@ export type MCP_SESSION_ID_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * @deprecated Use {@link GEN_AI_TOOL_NAME} (gen_ai.tool.name) instead - OTel uses gen_ai.tool.name for MCP tool names
  * @example "calculator"
  */
 export const MCP_TOOL_NAME = 'mcp.tool.name';
@@ -8789,6 +8866,7 @@ export type MCP_TOOL_NAME_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * @deprecated Use {@link GEN_AI_TOOL_CALL_RESULT} (gen_ai.tool.call.result) instead - OTel uses gen_ai.tool.call.result for MCP tool results
  * @example "{\"output\": \"rainy\", \"toolCallId\": \"1\"}"
  */
 export const MCP_TOOL_RESULT_CONTENT = 'mcp.tool.result.content';
@@ -8831,6 +8909,7 @@ export type MCP_TOOL_RESULT_CONTENT_COUNT_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * @deprecated Use {@link ERROR_TYPE} (error.type) instead - OTel uses error.type set to 'tool_error' when isError is true. Cannot be automatically backfilled due to type mismatch (boolean vs string).
  * @example false
  */
 export const MCP_TOOL_RESULT_IS_ERROR = 'mcp.tool.result.is_error';
@@ -8852,6 +8931,9 @@ export type MCP_TOOL_RESULT_IS_ERROR_TYPE = boolean;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link NETWORK_TRANSPORT} `network.transport`, {@link NET_TRANSPORT} `net.transport`
+ *
+ * @deprecated Use {@link NETWORK_TRANSPORT} (network.transport) instead - OTel uses the generic network.transport attribute
  * @example "stdio"
  */
 export const MCP_TRANSPORT = 'mcp.transport';
@@ -9457,7 +9539,7 @@ export type NETWORK_PEER_PORT_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link NET_PROTOCOL_NAME} `net.protocol.name`
+ * Aliases: {@link NET_PROTOCOL_NAME} `net.protocol.name`, {@link MCP_RESOURCE_PROTOCOL} `mcp.resource.protocol`
  *
  * @example "http"
  */
@@ -9503,7 +9585,7 @@ export type NETWORK_PROTOCOL_VERSION_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link NET_TRANSPORT} `net.transport`
+ * Aliases: {@link NET_TRANSPORT} `net.transport`, {@link MCP_TRANSPORT} `mcp.transport`
  *
  * @example "tcp"
  */
@@ -9687,7 +9769,7 @@ export type NET_PEER_PORT_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link NETWORK_PROTOCOL_NAME} `network.protocol.name`
+ * Aliases: {@link NETWORK_PROTOCOL_NAME} `network.protocol.name`, {@link MCP_RESOURCE_PROTOCOL} `mcp.resource.protocol`
  *
  * @deprecated Use {@link NETWORK_PROTOCOL_NAME} (network.protocol.name) instead
  * @example "http"
@@ -9873,7 +9955,7 @@ export type NET_SOCK_PEER_PORT_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link NETWORK_TRANSPORT} `network.transport`
+ * Aliases: {@link NETWORK_TRANSPORT} `network.transport`, {@link MCP_TRANSPORT} `mcp.transport`
  *
  * @deprecated Use {@link NETWORK_TRANSPORT} (network.transport) instead
  * @example "tcp"
@@ -14610,6 +14692,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [GEN_AI_OUTPUT_MESSAGES]: 'string',
   [GEN_AI_PIPELINE_NAME]: 'string',
   [GEN_AI_PROMPT]: 'string',
+  [GEN_AI_PROMPT_NAME]: 'string',
   [GEN_AI_PROVIDER_NAME]: 'string',
   [GEN_AI_REQUEST_AVAILABLE_TOOLS]: 'string',
   [GEN_AI_REQUEST_FREQUENCY_PENALTY]: 'double',
@@ -14699,6 +14782,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [HTTP_USER_AGENT]: 'string',
   [ID]: 'string',
   [INP]: 'double',
+  [JSONRPC_PROTOCOL_VERSION]: 'string',
+  [JSONRPC_REQUEST_ID]: 'string',
   [JVM_GC_ACTION]: 'string',
   [JVM_GC_NAME]: 'string',
   [JVM_MEMORY_POOL_NAME]: 'string',
@@ -15263,6 +15348,7 @@ export type AttributeName =
   | typeof GEN_AI_OUTPUT_MESSAGES
   | typeof GEN_AI_PIPELINE_NAME
   | typeof GEN_AI_PROMPT
+  | typeof GEN_AI_PROMPT_NAME
   | typeof GEN_AI_PROVIDER_NAME
   | typeof GEN_AI_REQUEST_AVAILABLE_TOOLS
   | typeof GEN_AI_REQUEST_FREQUENCY_PENALTY
@@ -15352,6 +15438,8 @@ export type AttributeName =
   | typeof HTTP_USER_AGENT
   | typeof ID
   | typeof INP
+  | typeof JSONRPC_PROTOCOL_VERSION
+  | typeof JSONRPC_REQUEST_ID
   | typeof JVM_GC_ACTION
   | typeof JVM_GC_NAME
   | typeof JVM_MEMORY_POOL_NAME
@@ -19100,6 +19188,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     changelog: [{ version: '0.1.0', prs: [74, 108, 119] }, { version: '0.0.0' }],
   },
+  [GEN_AI_PROMPT_NAME]: {
+    brief: 'The name of the prompt that uniquely identifies it.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+      reason: 'Prompt names may reveal user behavior patterns or sensitive operations',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'summarize_text',
+    aliases: [MCP_PROMPT_NAME],
+    changelog: [{ version: 'next', description: 'Added gen_ai.prompt.name attribute' }],
+  },
   [GEN_AI_PROVIDER_NAME]: {
     brief: 'The Generative AI provider as identified by the client or server instrumentation.',
     type: 'string',
@@ -19469,7 +19570,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'rainy, 57°F',
-    aliases: [GEN_AI_TOOL_OUTPUT, GEN_AI_TOOL_MESSAGE],
+    aliases: [GEN_AI_TOOL_OUTPUT, GEN_AI_TOOL_MESSAGE, MCP_TOOL_RESULT_CONTENT],
     changelog: [
       { version: '0.5.0', prs: [265] },
       { version: '0.4.0', prs: [221] },
@@ -19543,7 +19644,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'Flights',
-    aliases: [AI_FUNCTION_CALL],
+    aliases: [AI_FUNCTION_CALL, MCP_TOOL_NAME],
     changelog: [{ version: '0.1.0', prs: [57, 127] }],
   },
   [GEN_AI_TOOL_OUTPUT]: {
@@ -20448,6 +20549,29 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       },
     ],
   },
+  [JSONRPC_PROTOCOL_VERSION]: {
+    brief: 'The version of the JSON-RPC protocol used.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: '2.0',
+    changelog: [{ version: 'next', description: 'Added jsonrpc.protocol.version attribute' }],
+  },
+  [JSONRPC_REQUEST_ID]: {
+    brief: 'The JSON-RPC request identifier. Unique within the session.',
+    type: 'string',
+    pii: {
+      isPii: 'false',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: '1',
+    aliases: [MCP_REQUEST_ID],
+    changelog: [{ version: 'next', description: 'Added jsonrpc.request.id attribute' }],
+  },
   [JVM_GC_ACTION]: {
     brief: 'Name of the garbage collector action.',
     type: 'string',
@@ -20763,10 +20887,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     pii: {
       isPii: 'false',
     },
-    isInOtel: false,
+    isInOtel: true,
     visibility: 'public',
     example: 'tools/call',
-    changelog: [{ version: '0.3.0', prs: [171] }],
+    changelog: [
+      { version: 'next', description: 'Set is_in_otel=true, attribute exists in OTel MCP registry' },
+      { version: '0.3.0', prs: [171] },
+    ],
   },
   [MCP_PROGRESS_CURRENT]: {
     brief: 'Current progress value of an MCP operation.',
@@ -20843,7 +20970,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'summarize',
-    changelog: [{ version: '0.3.0', prs: [171] }],
+    deprecation: {
+      replacement: 'gen_ai.prompt.name',
+      reason: 'OTel uses gen_ai.prompt.name for MCP prompt names',
+    },
+    aliases: [GEN_AI_PROMPT_NAME],
+    changelog: [
+      { version: 'next', description: 'Deprecated in favor of gen_ai.prompt.name' },
+      { version: '0.3.0', prs: [171] },
+    ],
   },
   [MCP_PROMPT_RESULT_DESCRIPTION]: {
     brief: 'Description of the prompt result.',
@@ -20912,10 +21047,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     pii: {
       isPii: 'false',
     },
-    isInOtel: false,
+    isInOtel: true,
     visibility: 'public',
     example: '2024-11-05',
-    changelog: [{ version: '0.3.0', prs: [171] }],
+    changelog: [
+      { version: 'next', description: 'Set is_in_otel=true, attribute exists in OTel MCP registry' },
+      { version: '0.3.0', prs: [171] },
+    ],
   },
   [MCP_REQUEST_ARGUMENT_KEY]: {
     brief:
@@ -20964,7 +21102,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: '1',
-    changelog: [{ version: '0.3.0', prs: [171] }],
+    deprecation: {
+      replacement: 'jsonrpc.request.id',
+      reason: 'OTel models MCP as JSON-RPC, uses jsonrpc.request.id',
+    },
+    aliases: [JSONRPC_REQUEST_ID],
+    changelog: [
+      { version: 'next', description: 'Deprecated in favor of jsonrpc.request.id' },
+      { version: '0.3.0', prs: [171] },
+    ],
   },
   [MCP_RESOURCE_PROTOCOL]: {
     brief: 'Protocol of the resource URI being accessed, extracted from the URI.',
@@ -20975,7 +21121,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'file',
-    changelog: [{ version: '0.3.0', prs: [171] }],
+    deprecation: {
+      replacement: 'network.protocol.name',
+      reason: 'OTel uses the generic network.protocol.name attribute',
+    },
+    aliases: [NETWORK_PROTOCOL_NAME, NET_PROTOCOL_NAME],
+    changelog: [
+      { version: 'next', description: 'Deprecated in favor of network.protocol.name' },
+      { version: '0.3.0', prs: [171] },
+    ],
   },
   [MCP_RESOURCE_URI]: {
     brief: 'The resource URI being accessed in an MCP operation.',
@@ -20984,10 +21138,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'true',
       reason: 'URIs can contain sensitive file paths',
     },
-    isInOtel: false,
+    isInOtel: true,
     visibility: 'public',
     example: 'file:///path/to/file.txt',
-    changelog: [{ version: '0.3.0', prs: [171] }],
+    changelog: [
+      { version: 'next', description: 'Set is_in_otel=true, attribute exists in OTel MCP registry' },
+      { version: '0.3.0', prs: [171] },
+    ],
   },
   [MCP_SERVER_NAME]: {
     brief: 'Name of the MCP server application.',
@@ -21029,10 +21186,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     pii: {
       isPii: 'false',
     },
-    isInOtel: false,
+    isInOtel: true,
     visibility: 'public',
     example: '550e8400-e29b-41d4-a716-446655440000',
-    changelog: [{ version: '0.3.0', prs: [171] }],
+    changelog: [
+      { version: 'next', description: 'Set is_in_otel=true, attribute exists in OTel MCP registry' },
+      { version: '0.3.0', prs: [171] },
+    ],
   },
   [MCP_TOOL_NAME]: {
     brief: 'Name of the MCP tool being called.',
@@ -21043,7 +21203,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'calculator',
-    changelog: [{ version: '0.3.0', prs: [171] }],
+    deprecation: {
+      replacement: 'gen_ai.tool.name',
+      reason: 'OTel uses gen_ai.tool.name for MCP tool names',
+    },
+    changelog: [
+      { version: 'next', description: 'Deprecated in favor of gen_ai.tool.name' },
+      { version: '0.3.0', prs: [171] },
+    ],
   },
   [MCP_TOOL_RESULT_CONTENT]: {
     brief: 'The content of the tool result.',
@@ -21055,7 +21222,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: '{"output": "rainy", "toolCallId": "1"}',
+    deprecation: {
+      replacement: 'gen_ai.tool.call.result',
+      reason: 'OTel uses gen_ai.tool.call.result for MCP tool results',
+    },
     changelog: [
+      { version: 'next', description: 'Deprecated in favor of gen_ai.tool.call.result' },
       { version: '0.3.0', prs: [171] },
       { version: '0.2.0', prs: [164] },
     ],
@@ -21083,7 +21255,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: false,
-    changelog: [{ version: '0.3.0', prs: [171] }],
+    deprecation: {
+      replacement: 'error.type',
+      reason:
+        "OTel uses error.type set to 'tool_error' when isError is true. Cannot be automatically backfilled due to type mismatch (boolean vs string).",
+    },
+    changelog: [
+      { version: 'next', description: 'Deprecated in favor of error.type' },
+      { version: '0.3.0', prs: [171] },
+    ],
   },
   [MCP_TRANSPORT]: {
     brief: 'Transport method used for MCP communication.',
@@ -21094,7 +21274,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'stdio',
-    changelog: [{ version: '0.3.0', prs: [171] }],
+    deprecation: {
+      replacement: 'network.transport',
+      reason: 'OTel uses the generic network.transport attribute',
+    },
+    aliases: [NETWORK_TRANSPORT, NET_TRANSPORT],
+    changelog: [
+      { version: 'next', description: 'Deprecated in favor of network.transport' },
+      { version: '0.3.0', prs: [171] },
+    ],
   },
   [MDC_KEY]: {
     brief:
@@ -21439,7 +21627,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'http',
-    aliases: [NET_PROTOCOL_NAME],
+    aliases: [NET_PROTOCOL_NAME, MCP_RESOURCE_PROTOCOL],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [NETWORK_PROTOCOL_VERSION]: {
@@ -21463,7 +21651,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'tcp',
-    aliases: [NET_TRANSPORT],
+    aliases: [NET_TRANSPORT, MCP_TRANSPORT],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [NETWORK_TYPE]: {
@@ -21581,7 +21769,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'network.protocol.name',
     },
-    aliases: [NETWORK_PROTOCOL_NAME],
+    aliases: [NETWORK_PROTOCOL_NAME, MCP_RESOURCE_PROTOCOL],
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
   [NET_PROTOCOL_VERSION]: {
@@ -21699,7 +21887,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'network.transport',
     },
-    aliases: [NETWORK_TRANSPORT],
+    aliases: [NETWORK_TRANSPORT, MCP_TRANSPORT],
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
   [OS_BUILD]: {
@@ -24461,6 +24649,7 @@ export type Attributes = {
   [GEN_AI_OUTPUT_MESSAGES]?: GEN_AI_OUTPUT_MESSAGES_TYPE;
   [GEN_AI_PIPELINE_NAME]?: GEN_AI_PIPELINE_NAME_TYPE;
   [GEN_AI_PROMPT]?: GEN_AI_PROMPT_TYPE;
+  [GEN_AI_PROMPT_NAME]?: GEN_AI_PROMPT_NAME_TYPE;
   [GEN_AI_PROVIDER_NAME]?: GEN_AI_PROVIDER_NAME_TYPE;
   [GEN_AI_REQUEST_AVAILABLE_TOOLS]?: GEN_AI_REQUEST_AVAILABLE_TOOLS_TYPE;
   [GEN_AI_REQUEST_FREQUENCY_PENALTY]?: GEN_AI_REQUEST_FREQUENCY_PENALTY_TYPE;
@@ -24550,6 +24739,8 @@ export type Attributes = {
   [HTTP_USER_AGENT]?: HTTP_USER_AGENT_TYPE;
   [ID]?: ID_TYPE;
   [INP]?: INP_TYPE;
+  [JSONRPC_PROTOCOL_VERSION]?: JSONRPC_PROTOCOL_VERSION_TYPE;
+  [JSONRPC_REQUEST_ID]?: JSONRPC_REQUEST_ID_TYPE;
   [JVM_GC_ACTION]?: JVM_GC_ACTION_TYPE;
   [JVM_GC_NAME]?: JVM_GC_NAME_TYPE;
   [JVM_MEMORY_POOL_NAME]?: JVM_MEMORY_POOL_NAME_TYPE;
