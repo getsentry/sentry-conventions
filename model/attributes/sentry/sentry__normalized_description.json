@@ -7,6 +7,7 @@
   },
   "is_in_otel": false,
   "example": "SELECT .. FROM sentry_project WHERE (project_id = %s)",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.4.0",

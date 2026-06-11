@@ -7,11 +7,12 @@
   },
   "is_in_otel": true,
   "example": 404,
+  "alias": ["http.response.status_code"],
   "deprecation": {
     "_status": null,
     "replacement": "http.response.status_code"
   },
-  "alias": ["http.response.status_code"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.4.0",

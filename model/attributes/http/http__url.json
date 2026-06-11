@@ -7,11 +7,12 @@
   },
   "is_in_otel": true,
   "example": "https://example.com/test?foo=bar#buzz",
+  "alias": ["url.full", "url"],
   "deprecation": {
     "_status": null,
     "replacement": "url.full"
   },
-  "alias": ["url.full", "url"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

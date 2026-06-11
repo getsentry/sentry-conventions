@@ -3,5 +3,6 @@
   "full_name": "Total Frames",
   "brief": "Total frames rendered.",
   "unit": "none",
-  "platform": "mobile"
+  "platform": "mobile",
+  "attribute": "app.vitals.frames.total.count"
 }

@@ -8,7 +8,7 @@
   "is_in_otel": false,
   "example": 1554.5814,
   "alias": ["ttfb.requestTime"],
-  "sdks": ["javascript-browser"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.5.0",

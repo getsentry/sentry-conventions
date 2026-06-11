@@ -7,11 +7,12 @@
   },
   "is_in_otel": false,
   "example": "GET",
+  "alias": ["method", "http.method", "http.request.method"],
   "deprecation": {
     "_status": "backfill",
     "replacement": "http.request.method"
   },
-  "alias": ["method", "http.method", "http.request.method"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.6.0",

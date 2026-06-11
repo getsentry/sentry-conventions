@@ -7,13 +7,13 @@
   },
   "is_in_otel": false,
   "example": "4g",
-  "sdks": ["javascript-browser"],
   "alias": ["network.connection.effective_type"],
   "deprecation": {
     "replacement": "network.connection.effective_type",
     "reason": "Old namespace-less attribute, to be replaced with network.connection.effective_type for span-first future",
     "_status": "backfill"
   },
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.5.0",

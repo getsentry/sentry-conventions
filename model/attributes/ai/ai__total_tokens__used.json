@@ -7,12 +7,12 @@
   },
   "is_in_otel": false,
   "example": 30,
-  "sdks": ["python"],
+  "alias": ["gen_ai.usage.total_tokens"],
   "deprecation": {
     "_status": "backfill",
     "replacement": "gen_ai.usage.total_tokens"
   },
-  "alias": ["gen_ai.usage.total_tokens"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.4.0",

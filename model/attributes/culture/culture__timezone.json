@@ -7,6 +7,7 @@
   },
   "is_in_otel": false,
   "example": "Europe/Vienna",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.4.0",

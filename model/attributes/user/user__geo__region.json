@@ -7,6 +7,8 @@
   },
   "is_in_otel": false,
   "example": "Canada",
+  "alias": ["sentry.user.geo.region"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.0.0"

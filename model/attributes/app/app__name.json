@@ -6,9 +6,9 @@
     "key": "maybe"
   },
   "is_in_otel": false,
-  "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
   "example": "My App",
   "alias": ["app.app_name"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.5.0",

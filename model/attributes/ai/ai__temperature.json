@@ -7,11 +7,12 @@
   },
   "is_in_otel": false,
   "example": 0.1,
+  "alias": ["gen_ai.request.temperature"],
   "deprecation": {
     "_status": "backfill",
     "replacement": "gen_ai.request.temperature"
   },
-  "alias": ["gen_ai.request.temperature"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.4.0",

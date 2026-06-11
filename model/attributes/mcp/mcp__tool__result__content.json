@@ -9,6 +9,7 @@
   "is_in_otel": false,
   "example": "{\"output\": \"rainy\", \"toolCallId\": \"1\"}",
   "alias": [],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.3.0",

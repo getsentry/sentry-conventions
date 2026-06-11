@@ -1,0 +1,28 @@
+{
+  "key": "aws.lambda.function_name",
+  "brief": "The name of the Lambda function",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "my-function",
+  "alias": ["faas.name"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "faas.name",
+    "reason": "Use the OTel-aligned faas.name attribute instead"
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Deprecated aws.lambda.function_name in favor of faas.name"
+    },
+    {
+      "version": "0.7.0",
+      "prs": [369],
+      "description": "Added aws.lambda.function_name attribute"
+    }
+  ]
+}

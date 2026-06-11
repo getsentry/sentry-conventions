@@ -7,16 +7,10 @@
   },
   "is_in_otel": false,
   "example": "MainActivity",
-  "sdks": [
-    "sentry.cocoa",
-    "sentry.java.android",
-    "sentry.javascript.react-native",
-    "sentry.dart.flutter",
-    "sentry.dotnet.maui"
-  ],
+  "visibility": "public",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.7.0",
       "prs": [353],
       "description": "Added app.vitals.start.screen attribute"
     }

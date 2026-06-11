@@ -1,0 +1,17 @@
+{
+  "key": "gcp.project.id",
+  "brief": "The ID of the project in GCP that this resource is associated with",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "my-project-123",
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.11.0",
+      "prs": [403]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "key": "cloudflare.workflow.retries.delay",
+  "brief": "The delay between Cloudflare Workflow step retries",
+  "type": "string",
+  "pii": {
+    "key": "false"
+  },
+  "is_in_otel": false,
+  "example": "5 seconds",
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.11.0",
+      "prs": [392],
+      "description": "Added cloudflare.workflow.retries.delay attribute"
+    }
+  ]
+}

@@ -1,3 +1,122 @@
+## 0.11.0
+
+### New Features ✨
+
+#### Attributes
+
+- Add `session.id` attribute by @Lms24 in [#412](https://github.com/getsentry/sentry-conventions/pull/412)
+- Update several attributes to their lates OTel representation by @constantinius in [#418](https://github.com/getsentry/sentry-conventions/pull/418)
+- Add db.operation.batch.size by @isaacs in [#407](https://github.com/getsentry/sentry-conventions/pull/407)
+- Add `app.vitals.start.prewarmed` attribute by @itaybre in [#379](https://github.com/getsentry/sentry-conventions/pull/379)
+- Add and deprecate runtime context attributes by @markushi in [#383](https://github.com/getsentry/sentry-conventions/pull/383)
+- Add Android Runtime (ART) GC and memory attributes by @markushi in [#382](https://github.com/getsentry/sentry-conventions/pull/382)
+- Add `db.stored_procedure.name` and ensure span name attribute consistency by @Lms24 in [#398](https://github.com/getsentry/sentry-conventions/pull/398)
+- Add Cloudflare SDK attributes by @JPeer264 in [#392](https://github.com/getsentry/sentry-conventions/pull/392)
+
+#### Other
+
+- Add missing GCP and FaaS attributes by @ericapisani in [#403](https://github.com/getsentry/sentry-conventions/pull/403)
+
+### Bug Fixes 🐛
+
+- (attributes) Set `pii: 'maybe'` on `faas` string attributes by @Lms24 in [#415](https://github.com/getsentry/sentry-conventions/pull/415)
+- (cloudfare) Add missing visibility attributes by @markushi in [#408](https://github.com/getsentry/sentry-conventions/pull/408)
+
+### Internal Changes 🔧
+
+- (conventions) Remove `sdks` field from attribute schema and definitions by @Lms24 in [#410](https://github.com/getsentry/sentry-conventions/pull/410)
+- (deps-dev) Bump vitest from 3.2.4 to 4.1.0 by @dependabot in [#409](https://github.com/getsentry/sentry-conventions/pull/409)
+- Add note about updating conventions in Relay by @loewenheim in [#419](https://github.com/getsentry/sentry-conventions/pull/419)
+
+## 0.10.0
+
+### New Features ✨
+
+#### Docs
+
+- Add links to deprecated and aliased attributes by @Lms24 in [#396](https://github.com/getsentry/sentry-conventions/pull/396)
+- Add filtering capability by @nsdeschenes in [#395](https://github.com/getsentry/sentry-conventions/pull/395)
+
+#### Other
+
+- (user) Add deprecated `sentry.user.*` attributes by @mjq in [#406](https://github.com/getsentry/sentry-conventions/pull/406)
+
+### Bug Fixes 🐛
+
+- Change type of sentry.dsc.project_id to string by @elramen in [#400](https://github.com/getsentry/sentry-conventions/pull/400)
+
+### Internal Changes 🔧
+
+- (generate) Remove deprecated attributes JSON generation by @mjq in [#404](https://github.com/getsentry/sentry-conventions/pull/404)
+- (publish) Automatically add PR numbers to attribute changelogs by @Lms24 in [#402](https://github.com/getsentry/sentry-conventions/pull/402)
+
+## 0.9.0
+
+### New Features ✨
+
+- (attributes) Add additional_context to gen_ai cost and usage attributes by @matejminar in [#397](https://github.com/getsentry/sentry-conventions/pull/397)
+- (docs) Render additional_context in attribute cards and LLM export by @matejminar in [#399](https://github.com/getsentry/sentry-conventions/pull/399)
+- (schema) Add `additional_context` field to attribute definitions by @matejminar in [#393](https://github.com/getsentry/sentry-conventions/pull/393)
+
+## 0.8.0
+
+### New Features ✨
+
+- (attributes) Add visibility field to attributes by @nsdeschenes in [#394](https://github.com/getsentry/sentry-conventions/pull/394)
+
+## 0.7.0
+
+### New Features ✨
+
+#### Attributes
+
+- Ensure replacements aren't deprecated by @mjq in [#391](https://github.com/getsentry/sentry-conventions/pull/391)
+- Add graphql.document attribute by @ericapisani in [#390](https://github.com/getsentry/sentry-conventions/pull/390)
+- Add several measurement attributes by @loewenheim in [#362](https://github.com/getsentry/sentry-conventions/pull/362)
+- Add `gcp.function.context.*` span attributes by @chargome in [#371](https://github.com/getsentry/sentry-conventions/pull/371)
+- Add sentry.dsc.project_id as an attribute by @constantinius in [#358](https://github.com/getsentry/sentry-conventions/pull/358)
+- Add `trpc.*` attributes by @chargome in [#370](https://github.com/getsentry/sentry-conventions/pull/370)
+- Add `angular.version` attribute by @chargome in [#367](https://github.com/getsentry/sentry-conventions/pull/367)
+- Add `aws.lambda.*` and `aws.cloudwatch.logs.*` attributes by @chargome in [#369](https://github.com/getsentry/sentry-conventions/pull/369)
+- Add `react.version` attribute by @chargome in [#368](https://github.com/getsentry/sentry-conventions/pull/368)
+- Add `state.type` attribute by @chargome in [#365](https://github.com/getsentry/sentry-conventions/pull/365)
+- Add `cloud.*` span attributes by @chargome in [#364](https://github.com/getsentry/sentry-conventions/pull/364)
+- Add calculated performance scores by @loewenheim in [#355](https://github.com/getsentry/sentry-conventions/pull/355)
+- Add `rpc.response.status_code` attribute by @alexander-alderman-webb in [#352](https://github.com/getsentry/sentry-conventions/pull/352)
+- Add `rpc.method` attribute by @alexander-alderman-webb in [#351](https://github.com/getsentry/sentry-conventions/pull/351)
+- Add app vitals start attributes by @buenaflor in [#353](https://github.com/getsentry/sentry-conventions/pull/353)
+- Add `process.runtime.engine.*` attributes by @chargome in [#347](https://github.com/getsentry/sentry-conventions/pull/347)
+
+#### Other
+
+- (docs) Add measurements page by @Lms24 in [#389](https://github.com/getsentry/sentry-conventions/pull/389)
+- (measurements) Add attribute field by @loewenheim in [#388](https://github.com/getsentry/sentry-conventions/pull/388)
+
+### Bug Fixes 🐛
+
+#### Attributes
+
+- Correct PR references in attribute changelogs by @chargome in [#384](https://github.com/getsentry/sentry-conventions/pull/384)
+- Increase some PII values by @loewenheim in [#373](https://github.com/getsentry/sentry-conventions/pull/373)
+- Change several deprecation statuses to `normalize` to align with ingestion paths by @constantinius in [#350](https://github.com/getsentry/sentry-conventions/pull/350)
+
+#### Other
+
+- (create) Replace angle brackets in file names by @loewenheim in [#356](https://github.com/getsentry/sentry-conventions/pull/356)
+
+### Internal Changes 🔧
+
+#### Deps
+
+- Bump astro from 6.1.6 to 6.1.10 by @dependabot in [#374](https://github.com/getsentry/sentry-conventions/pull/374)
+- Bump svelte from 5.53.5 to 5.55.7 by @dependabot in [#381](https://github.com/getsentry/sentry-conventions/pull/381)
+
+#### Other
+
+- (gh) Remove myself from CODEOWNERS by @lcian in [#354](https://github.com/getsentry/sentry-conventions/pull/354)
+- Bump vulnerable pytest by @alexander-alderman-webb in [#360](https://github.com/getsentry/sentry-conventions/pull/360)
+- Bump vulnerable js packages by @chargome in [#359](https://github.com/getsentry/sentry-conventions/pull/359)
+
 ## 0.6.0
 
 ### New Features ✨

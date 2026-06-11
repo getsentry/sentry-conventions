@@ -7,6 +7,7 @@
   },
   "is_in_otel": false,
   "example": "auto.http.otel.fastify",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

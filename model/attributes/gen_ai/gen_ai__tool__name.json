@@ -8,6 +8,7 @@
   "is_in_otel": true,
   "example": "Flights",
   "alias": ["ai.function_call"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",
