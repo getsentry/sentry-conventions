@@ -6144,7 +6144,7 @@ export type GEN_AI_TOOL_CALL_ARGUMENTS_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`
+ * Aliases: {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`, {@link MCP_TOOL_RESULT_CONTENT} `mcp.tool.result.content`
  *
  * @example "rainy, 57°F"
  */
@@ -6257,7 +6257,7 @@ export type GEN_AI_TOOL_MESSAGE_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link AI_FUNCTION_CALL} `ai.function_call`
+ * Aliases: {@link AI_FUNCTION_CALL} `ai.function_call`, {@link MCP_TOOL_NAME} `mcp.tool.name`
  *
  * @example "Flights"
  */
@@ -19262,7 +19262,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'rainy, 57°F',
-    aliases: [GEN_AI_TOOL_OUTPUT, GEN_AI_TOOL_MESSAGE],
+    aliases: [GEN_AI_TOOL_OUTPUT, GEN_AI_TOOL_MESSAGE, MCP_TOOL_RESULT_CONTENT],
     changelog: [
       { version: '0.5.0', prs: [265] },
       { version: '0.4.0', prs: [221] },
@@ -19336,7 +19336,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'Flights',
-    aliases: [AI_FUNCTION_CALL],
+    aliases: [AI_FUNCTION_CALL, MCP_TOOL_NAME],
     changelog: [{ version: '0.1.0', prs: [57, 127] }],
   },
   [GEN_AI_TOOL_OUTPUT]: {

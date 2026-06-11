@@ -3716,7 +3716,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: gen_ai.tool.output, gen_ai.tool.message
+    Aliases: gen_ai.tool.output, gen_ai.tool.message, mcp.tool.result.content
     Example: "rainy, 57°F"
     """
 
@@ -3780,7 +3780,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: ai.function_call
+    Aliases: ai.function_call, mcp.tool.name
     Example: "Flights"
     """
 
@@ -12347,7 +12347,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="rainy, 57°F",
-        aliases=["gen_ai.tool.output", "gen_ai.tool.message"],
+        aliases=[
+            "gen_ai.tool.output",
+            "gen_ai.tool.message",
+            "mcp.tool.result.content",
+        ],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[265]),
             ChangelogEntry(version="0.4.0", prs=[221]),
@@ -12414,7 +12418,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="Flights",
-        aliases=["ai.function_call"],
+        aliases=["ai.function_call", "mcp.tool.name"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[57, 127]),
         ],

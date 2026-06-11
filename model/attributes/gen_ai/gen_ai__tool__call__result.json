@@ -7,7 +7,7 @@
   },
   "is_in_otel": true,
   "example": "rainy, 57°F",
-  "alias": ["gen_ai.tool.output", "gen_ai.tool.message"],
+  "alias": ["gen_ai.tool.output", "gen_ai.tool.message", "mcp.tool.result.content"],
   "visibility": "public",
   "changelog": [
     {
