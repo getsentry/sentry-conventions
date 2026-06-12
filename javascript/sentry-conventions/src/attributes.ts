@@ -6808,6 +6808,27 @@ export const HARDWARECONCURRENCY = 'hardwareConcurrency';
  */
 export type HARDWARECONCURRENCY_TYPE = string;
 
+// Path: model/attributes/host/host__id.json
+
+/**
+ * Unique host ID. In cloud environments, this must be the ID of the compute instance assigned by the provider. `host.id`
+ *
+ * Attribute Value Type: `string` {@link HOST_ID_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "fdbf79e8af94cb7f9e8df36789187052"
+ */
+export const HOST_ID = 'host.id';
+
+/**
+ * Type for {@link HOST_ID} host.id
+ */
+export type HOST_ID_TYPE = string;
+
 // Path: model/attributes/http/http__client_ip.json
 
 /**
@@ -14657,6 +14678,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [GRAPHQL_OPERATION_NAME]: 'string',
   [GRAPHQL_OPERATION_TYPE]: 'string',
   [HARDWARECONCURRENCY]: 'string',
+  [HOST_ID]: 'string',
   [HTTP_CLIENT_IP]: 'string',
   [HTTP_DECODED_RESPONSE_CONTENT_LENGTH]: 'integer',
   [HTTP_FLAVOR]: 'string',
@@ -15310,6 +15332,7 @@ export type AttributeName =
   | typeof GRAPHQL_OPERATION_NAME
   | typeof GRAPHQL_OPERATION_TYPE
   | typeof HARDWARECONCURRENCY
+  | typeof HOST_ID
   | typeof HTTP_CLIENT_IP
   | typeof HTTP_DECODED_RESPONSE_CONTENT_LENGTH
   | typeof HTTP_FLAVOR
@@ -19878,6 +19901,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         description: "Added and deprecated attribute to document JS SDK's current behaviour",
       },
     ],
+  },
+  [HOST_ID]: {
+    brief:
+      'Unique host ID. In cloud environments, this must be the ID of the compute instance assigned by the provider.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'fdbf79e8af94cb7f9e8df36789187052',
+    changelog: [{ version: 'next', prs: [416], description: 'Added host.id attribute' }],
   },
   [HTTP_CLIENT_IP]: {
     brief:
@@ -24508,6 +24543,7 @@ export type Attributes = {
   [GRAPHQL_OPERATION_NAME]?: GRAPHQL_OPERATION_NAME_TYPE;
   [GRAPHQL_OPERATION_TYPE]?: GRAPHQL_OPERATION_TYPE_TYPE;
   [HARDWARECONCURRENCY]?: HARDWARECONCURRENCY_TYPE;
+  [HOST_ID]?: HOST_ID_TYPE;
   [HTTP_CLIENT_IP]?: HTTP_CLIENT_IP_TYPE;
   [HTTP_DECODED_RESPONSE_CONTENT_LENGTH]?: HTTP_DECODED_RESPONSE_CONTENT_LENGTH_TYPE;
   [HTTP_FLAVOR]?: HTTP_FLAVOR_TYPE;
