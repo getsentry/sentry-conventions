@@ -3,7 +3,7 @@
   "brief": "Whether the device is in Low Power Mode.",
   "type": "boolean",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": true,

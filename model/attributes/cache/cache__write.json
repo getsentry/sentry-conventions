@@ -3,7 +3,7 @@
   "brief": "If the cache operation resulted in a write to the cache.",
   "type": "boolean",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": true,

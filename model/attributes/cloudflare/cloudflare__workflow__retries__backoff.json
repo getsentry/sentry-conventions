@@ -3,7 +3,7 @@
   "brief": "The backoff strategy for Cloudflare Workflow step retries",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "exponential",

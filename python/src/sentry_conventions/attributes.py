@@ -393,7 +393,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Boolean indicating if the model needs to perform a search.
 
     Type: bool
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     DEPRECATED: No replacement at this time
@@ -495,7 +495,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """When enabled, the user’s prompt will be sent to the model without any pre-processing.
 
     Type: bool
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     DEPRECATED: No replacement at this time
@@ -926,7 +926,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether the app start was prewarmed.
 
     Type: bool
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: true
@@ -1052,7 +1052,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Total number of blocking (stop-the-world) garbage collections performed by the Android Runtime
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: 1
@@ -1063,7 +1063,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Total time spent in blocking (stop-the-world) garbage collections by the Android Runtime, in milliseconds
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: 11.873
@@ -1074,7 +1074,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Total number of garbage collections triggered as a last resort before an OutOfMemoryError by the Android Runtime
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: 0
@@ -1085,7 +1085,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Total number of garbage collections performed by the Android Runtime
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: 1
@@ -1096,7 +1096,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Total time spent in garbage collection by the Android Runtime, in milliseconds
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: 11.807
@@ -1107,7 +1107,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Total time threads spent waiting for garbage collection to complete in the Android Runtime, in milliseconds
 
     Type: float
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: 8.054
@@ -1118,7 +1118,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Free memory available to the process as reported by the Android Runtime, in bytes
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: 3181568
@@ -1131,7 +1131,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Free memory available before a garbage collection would be triggered by the Android Runtime, in bytes
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: 3181568
@@ -1144,7 +1144,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Free memory available before an OutOfMemoryError would be thrown by the Android Runtime, in bytes
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: 196083712
@@ -1155,7 +1155,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Maximum memory the process is allowed to use as reported by the Android Runtime, in bytes
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: 201326592
@@ -1166,7 +1166,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Total memory currently allocated to the process by the Android Runtime, in bytes
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: 7774208
@@ -1218,7 +1218,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The AWS request ID as received by the Lambda function runtime
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Aliases: faas.invocation_id
@@ -1261,7 +1261,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The version of the Lambda function
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Aliases: faas.version
@@ -1336,7 +1336,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether the main thread was blocked by the span.
 
     Type: bool
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: true
@@ -1616,7 +1616,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The url of the dom element responsible for the largest contentful paint
 
     Type: str
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: No
     Visibility: public
     Aliases: lcp.url
@@ -1670,7 +1670,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """If the cache was hit during this span.
 
     Type: bool
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: true
@@ -1725,7 +1725,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """If the cache operation resulted in a write to the cache.
 
     Type: bool
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: true
@@ -1851,7 +1851,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The type of query executed in a Cloudflare D1 operation
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "run"
@@ -1890,7 +1890,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The current attempt number for a Cloudflare Workflow step
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: 1
@@ -1903,7 +1903,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The backoff strategy for Cloudflare Workflow step retries
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "exponential"
@@ -1916,7 +1916,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The delay between Cloudflare Workflow step retries
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "5 seconds"
@@ -1929,7 +1929,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The maximum number of retries for a Cloudflare Workflow step
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: 3
@@ -1942,7 +1942,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The timeout duration for a Cloudflare Workflow step
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "1 minute"
@@ -2159,7 +2159,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the driver used for the database connection.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "psycopg2"
@@ -2235,7 +2235,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """A query parameter used in db.query.text, with <key> being the parameter name, and the attribute value being a string representation of the parameter value.
 
     Type: str
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: Yes
     Visibility: public
     Has Dynamic Suffix: true
@@ -2292,7 +2292,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The array of command parameters given to a redis command.
 
     Type: List[str]
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: No
     Visibility: public
     Example: ["test","*"]
@@ -2303,7 +2303,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The array of query bindings.
 
     Type: List[str]
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: No
     Visibility: public
     DEPRECATED: Use db.query.parameter.<key> instead - Instead of adding every binding in the db.sql.bindings attribute, add them as individual entires with db.query.parameter.<key>.
@@ -2315,7 +2315,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The database statement being executed.
 
     Type: str
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: Yes
     Visibility: public
     Aliases: db.query.text
@@ -2366,7 +2366,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The database user.
 
     Type: str
-    Contains PII: true
+    Contains PII: maybe
     Defined in OTEL: Yes
     Visibility: public
     Example: "fancy_user"
@@ -2550,7 +2550,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Unique device identifier.
 
     Type: str
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: Yes
     Visibility: public
     Example: "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
@@ -2583,7 +2583,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether the device is in Low Power Mode.
 
     Type: bool
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: true
@@ -2652,7 +2652,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname.
 
     Type: str
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: No
     Visibility: public
     Example: "localhost"
@@ -2758,7 +2758,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether the device is a simulator or an actual device.
 
     Type: bool
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: false
@@ -2865,7 +2865,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The unique identifier for this event (log record)
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: 1234567890
@@ -2887,7 +2887,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """SHOULD be set to true if the exception event is recorded at a point where it is known that the exception is escaping the scope of the span.
 
     Type: bool
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Visibility: public
     Example: true
@@ -2898,7 +2898,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The error message.
 
     Type: str
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: Yes
     Visibility: public
     Example: "ENOENT: no such file or directory"
@@ -2909,7 +2909,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """A stacktrace as a string in the natural representation for the language runtime. The representation is to be determined and documented by each language SIG.
 
     Type: str
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: Yes
     Visibility: public
     Example: "Exception in thread \"main\" java.lang.RuntimeException: Test exception\n at com.example.GenerateTrace.methodB(GenerateTrace.java:13)\n at com.example.GenerateTrace.methodA(GenerateTrace.java:9)\n at com.example.GenerateTrace.main(GenerateTrace.java:5)"
@@ -2931,7 +2931,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """A boolean that is true if the serverless function is executed for the first time (aka cold-start).
 
     Type: bool
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Visibility: public
     Example: true
@@ -2953,7 +2953,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The duration a function took to run, in milliseconds.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: 120
@@ -2975,7 +2975,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The Service Account (GCP), IAM Execution Role (AWS), or Managed Identity (Azure) used by the serverless function when interacting with other cloud services
 
     Type: str
-    Contains PII: true
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "name@project.iam.gserviceaccount.com (GCP), arn:aws:iam::123456789012:role/role-name (AWS), 00000000-0000-0000-0000-000000000000 (Azure)"
@@ -2986,7 +2986,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The invocation ID of the current function invocation.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Visibility: public
     Aliases: aws.lambda.aws_request_id
@@ -3032,7 +3032,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The version of the function that was invoked
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Visibility: public
     Aliases: aws.lambda.function_version
@@ -3057,7 +3057,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """An instance of a feature flag evaluation. The value of this attribute is the boolean representing the evaluation result. The <key> suffix is the name of the feature flag.
 
     Type: bool
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Has Dynamic Suffix: true
@@ -4053,7 +4053,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The GraphQL document being executed.
 
     Type: str
-    Contains PII: maybe - The document may contain sensitive information in arguments or variables. Instrumentation should redact sensitive information when possible.
+    Contains PII: true - The document may contain sensitive information in arguments or variables. Instrumentation should redact sensitive information when possible.
     Defined in OTEL: Yes
     Visibility: public
     Example: "query findBookById { bookById(id: ?) { name } }"
@@ -4138,7 +4138,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The fragments present in the URI. Note that this contains the leading # character, while the `url.fragment` attribute does not.
 
     Type: str
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: No
     Visibility: public
     Example: "#details"
@@ -4186,7 +4186,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """HTTP request body data. Can be given as string or structural data of any format.
 
     Type: str
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: No
     Visibility: public
     Example: "[{\"role\": \"user\", \"message\": \"hello\"}]"
@@ -4264,7 +4264,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """HTTP request headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.
 
     Type: List[str]
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: Yes
     Visibility: public
     Has Dynamic Suffix: true
@@ -4434,7 +4434,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """HTTP response headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.
 
     Type: List[str]
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: Yes
     Visibility: public
     Has Dynamic Suffix: true
@@ -4580,7 +4580,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The pathname and query string of the URL.
 
     Type: str
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: Yes
     Visibility: public
     DEPRECATED: Use url.path instead - This attribute is being deprecated in favor of url.path and url.query
@@ -4686,7 +4686,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether the thread is daemon or not.
 
     Type: bool
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Visibility: public
     Example: true
@@ -4773,7 +4773,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The url of the dom element responsible for the largest contentful paint.
 
     Type: str
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: No
     Visibility: public
     Aliases: browser.web_vital.lcp.url
@@ -4823,7 +4823,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Request ID of the cancelled MCP operation.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "123"
@@ -4834,7 +4834,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Name of the MCP client application.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "claude-desktop"
@@ -4856,7 +4856,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Version of the MCP client application.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "1.0.0"
@@ -4867,7 +4867,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Lifecycle phase indicator for MCP operations.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "initialization_complete"
@@ -4878,7 +4878,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Data type of the logged message content.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "string"
@@ -4889,7 +4889,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Log level for MCP logging operations.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "info"
@@ -4922,7 +4922,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the MCP request or notification method being called.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "tools/call"
@@ -4968,7 +4968,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Token for tracking progress of an MCP operation.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "progress-token-123"
@@ -5042,7 +5042,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Role of the message in the prompt result. Used for single message results only.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "user"
@@ -5064,7 +5064,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """MCP protocol version used in the session.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "2024-11-05"
@@ -5115,7 +5115,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """JSON-RPC request identifier for the MCP request. Unique within the MCP session.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "1"
@@ -5126,7 +5126,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Protocol of the resource URI being accessed, extracted from the URI.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "file"
@@ -5148,7 +5148,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Name of the MCP server application.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "sentry-mcp-server"
@@ -5170,7 +5170,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Version of the MCP server application.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "0.1.0"
@@ -5181,7 +5181,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Identifier for the MCP session.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "550e8400-e29b-41d4-a716-446655440000"
@@ -5192,7 +5192,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Name of the MCP tool being called.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "calculator"
@@ -5231,7 +5231,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether a tool execution resulted in an error.
 
     Type: bool
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: false
@@ -5242,7 +5242,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Transport method used for MCP communication.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "stdio"
@@ -5253,7 +5253,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Attributes from the Mapped Diagnostic Context (MDC) present at the moment the log record was created. The MDC is supported by all the most popular logging solutions in the Java ecosystem, and it's usually implemented as a thread-local map that stores context for e.g. a specific request.
 
     Type: str
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: No
     Visibility: public
     Has Dynamic Suffix: true
@@ -5267,7 +5267,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The number of messages sent, received, or processed in the scope of the batching operation.
 
     Type: int
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Visibility: public
     Example: 10
@@ -5369,7 +5369,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the messaging operation being performed
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Visibility: public
     Example: "send"
@@ -5417,7 +5417,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the middleware.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "AuthenticationMiddleware"
@@ -5461,7 +5461,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """request's referrer, as determined by the referrer policy associated with its client.
 
     Type: str
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: No
     Visibility: public
     Example: "https://example.com/foo?bar=baz"
@@ -5533,7 +5533,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Peer address of the network connection - IP address or Unix domain socket name.
 
     Type: str
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: Yes
     Visibility: public
     Aliases: network.peer.address, net.sock.peer.addr
@@ -5546,7 +5546,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
 
     Type: str
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: Yes
     Visibility: public
     DEPRECATED: Use server.address instead - Deprecated, use server.address on client spans and client.address on server spans.
@@ -5634,7 +5634,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Peer address of the network connection - IP address
 
     Type: str
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: Yes
     Visibility: public
     Aliases: network.peer.address, net.peer.ip
@@ -5647,7 +5647,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Peer address of the network connection - Unix domain socket name
 
     Type: str
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: Yes
     Visibility: public
     DEPRECATED: No replacement at this time - Deprecated from OTEL, no replacement at this time
@@ -5748,7 +5748,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Peer address of the network connection - IP address or Unix domain socket name.
 
     Type: str
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: Yes
     Visibility: public
     Aliases: net.peer.ip, net.sock.peer.addr
@@ -5968,7 +5968,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Description of the Status if it has a value, otherwise not set.
 
     Type: str
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: Yes
     Visibility: public
     Example: "resource not found"
@@ -5979,7 +5979,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.
 
     Type: str
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: No
     Visibility: public
     Has Dynamic Suffix: true
@@ -6031,7 +6031,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """All the command arguments (including the command/executable itself) as received by the process.
 
     Type: List[str]
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: Yes
     Visibility: public
     Example: ["cmd/otecol","--config=config.yaml"]
@@ -6132,7 +6132,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """An item in a query string. Usually added by client-side routing frameworks like vue-router.
 
     Type: str
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: No
     Visibility: public
     Has Dynamic Suffix: true
@@ -6171,7 +6171,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Remix form data, <key> being the form data key, the value being the form data value.
 
     Type: str
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: No
     Visibility: public
     Has Dynamic Suffix: true
@@ -6198,7 +6198,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The software deployment environment name.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Visibility: public
     DEPRECATED: Use sentry.environment instead
@@ -6212,7 +6212,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The software deployment environment name.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Visibility: public
     DEPRECATED: Use sentry.environment instead
@@ -6469,7 +6469,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The human-readable description of a span.
 
     Type: str
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: No
     Visibility: public
     Example: "index view query"
@@ -6695,7 +6695,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """A parameter used in the message template. <key> can either be the number that represent the parameter's position in the template string (sentry.message.parameter.0, sentry.message.parameter.1, etc) or the parameter's name (sentry.message.parameter.item_id, sentry.message.parameter.user_id, etc)
 
     Type: str
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: No
     Visibility: public
     Example: "sentry.message.parameter.0='123'"
@@ -6795,7 +6795,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Used as a generic attribute representing the normalized `sentry.description`. This refers to the legacy use case of `sentry.description` where it holds relevant data depending on the type of span (e.g. database query, resource url, http request description, etc).
 
     Type: str
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: No
     Visibility: public
     Example: "SELECT .. FROM sentry_project WHERE (project_id = %s)"
@@ -7404,7 +7404,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """More granular type of the operation happening.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "fetch"
@@ -7426,7 +7426,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether the span execution contributed to the TTFD (time to fully drawn) metric.
 
     Type: bool
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: true
@@ -7437,7 +7437,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether the span execution contributed to the TTID (time to initial display) metric.
 
     Type: bool
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: true
@@ -7525,7 +7525,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The URL of the UI element (e.g. an img src)
 
     Type: str
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: No
     Visibility: public
     Example: "https://assets.myapp.com/hero.png"
@@ -7558,7 +7558,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The fragments present in the URI. Note that this does not contain the leading # character, while the `http.fragment` attribute does.
 
     Type: str
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: Yes
     Visibility: public
     Example: "details"
@@ -7581,7 +7581,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The URI path component.
 
     Type: str
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: Yes
     Visibility: public
     Example: "/foo"
@@ -7594,7 +7594,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.
 
     Type: str
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: No
     Visibility: public
     Has Dynamic Suffix: true
@@ -7807,7 +7807,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Git branch name for Vercel project
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "main"
@@ -7818,7 +7818,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Identifier for the Vercel build (only present on build logs)
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "bld_cotnkcr76"
@@ -7829,7 +7829,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Identifier for the Vercel deployment
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "dpl_233NRGRjVZX1caZrXWtz5g1TAksD"
@@ -7851,7 +7851,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Type of edge runtime in Vercel
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "edge-function"
@@ -7875,7 +7875,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Region where the request is executed
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "sfo1"
@@ -7886,7 +7886,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Unique identifier for the log entry in Vercel
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "1573817187330377061717300000"
@@ -7897,7 +7897,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """JA3 fingerprint digest of Vercel request
 
     Type: str
-    Contains PII: false
+    Contains PII: true
     Defined in OTEL: No
     Visibility: public
     Example: "769,47-53-5-10-49161-49162-49171-49172-50-56-19-4,0-10-11,23-24-25,0"
@@ -7908,7 +7908,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """JA4 fingerprint digest
 
     Type: str
-    Contains PII: false
+    Contains PII: true
     Defined in OTEL: No
     Visibility: public
     Example: "t13d1516h2_8daaf6152771_02713d6af862"
@@ -7919,7 +7919,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Vercel log output type
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "stdout"
@@ -7941,7 +7941,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Identifier for the Vercel project
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "gdufoJxB6b9b1fEqr1jUtFkyavUU"
@@ -7963,7 +7963,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Original request ID when request is served from cache
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "pdx1::v8g4b-1744143786684-93dafbc0f70d"
@@ -7998,7 +7998,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Region where lambda function executed
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "sfo1"
@@ -8009,7 +8009,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """HTTP method of the request
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "GET"
@@ -8020,7 +8020,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Request path with query parameters
 
     Type: str
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: No
     Visibility: public
     Example: "/dynamic/some-value.json?route=some-value"
@@ -8031,7 +8031,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """How the request was served based on its path and project configuration
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "func"
@@ -8055,7 +8055,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Referer of the request
 
     Type: str
-    Contains PII: maybe
+    Contains PII: true
     Defined in OTEL: No
     Visibility: public
     Example: "*.vercel.app"
@@ -8066,7 +8066,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Region where the request is processed
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "sfo1"
@@ -8090,7 +8090,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Protocol of the request
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "https"
@@ -8140,7 +8140,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Cache status sent to the browser
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "REVALIDATED"
@@ -8151,7 +8151,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Vercel-specific identifier
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "sfo1::abc123"
@@ -8164,7 +8164,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Action taken by firewall rules
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "deny"
@@ -8177,7 +8177,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """ID of the firewall rule that matched
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "rule_gAHz8jtSB1Gy"
@@ -8188,7 +8188,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Identifier of the Vercel request
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "643af4e3-975a-4cc7-9e7a-1eda11539d90"
@@ -8199,7 +8199,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Origin of the Vercel log (build, edge, lambda, static, external, or firewall)
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
     Example: "build"
@@ -8343,7 +8343,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.is_search_required": AttributeMetadata(
         brief="Boolean indicating if the model needs to perform a search.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=False,
@@ -8466,7 +8466,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.raw_prompting": AttributeMetadata(
         brief="When enabled, the user’s prompt will be sent to the model without any pre-processing.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=True,
@@ -9001,7 +9001,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.vitals.start.prewarmed": AttributeMetadata(
         brief="Whether the app start was prewarmed.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=True,
@@ -9175,7 +9175,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "art.gc.blocking_count": AttributeMetadata(
         brief="Total number of blocking (stop-the-world) garbage collections performed by the Android Runtime",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1,
@@ -9190,7 +9190,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "art.gc.blocking_time": AttributeMetadata(
         brief="Total time spent in blocking (stop-the-world) garbage collections by the Android Runtime, in milliseconds",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=11.873,
@@ -9205,7 +9205,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "art.gc.pre_oome_count": AttributeMetadata(
         brief="Total number of garbage collections triggered as a last resort before an OutOfMemoryError by the Android Runtime",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=0,
@@ -9220,7 +9220,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "art.gc.total_count": AttributeMetadata(
         brief="Total number of garbage collections performed by the Android Runtime",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1,
@@ -9235,7 +9235,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "art.gc.total_time": AttributeMetadata(
         brief="Total time spent in garbage collection by the Android Runtime, in milliseconds",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=11.807,
@@ -9250,7 +9250,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "art.gc.waiting_time": AttributeMetadata(
         brief="Total time threads spent waiting for garbage collection to complete in the Android Runtime, in milliseconds",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=8.054,
@@ -9265,7 +9265,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "art.memory.free": AttributeMetadata(
         brief="Free memory available to the process as reported by the Android Runtime, in bytes",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=3181568,
@@ -9280,7 +9280,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "art.memory.free_until_gc": AttributeMetadata(
         brief="Free memory available before a garbage collection would be triggered by the Android Runtime, in bytes",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=3181568,
@@ -9295,7 +9295,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "art.memory.free_until_oome": AttributeMetadata(
         brief="Free memory available before an OutOfMemoryError would be thrown by the Android Runtime, in bytes",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=196083712,
@@ -9310,7 +9310,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "art.memory.max": AttributeMetadata(
         brief="Maximum memory the process is allowed to use as reported by the Android Runtime, in bytes",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=201326592,
@@ -9325,7 +9325,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "art.memory.total": AttributeMetadata(
         brief="Total memory currently allocated to the process by the Android Runtime, in bytes",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=7774208,
@@ -9385,7 +9385,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.lambda.aws_request_id": AttributeMetadata(
         brief="The AWS request ID as received by the Lambda function runtime",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="8476a536-e9f4-11e8-9739-2dfe598c3fcd",
@@ -9450,7 +9450,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.lambda.function_version": AttributeMetadata(
         brief="The version of the Lambda function",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="$LATEST",
@@ -9549,7 +9549,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "blocked_main_thread": AttributeMetadata(
         brief="Whether the main thread was blocked by the span.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=True,
@@ -9823,7 +9823,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.web_vital.lcp.url": AttributeMetadata(
         brief="The url of the dom element responsible for the largest contentful paint",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="https://example.com/static/img.png",
@@ -9875,7 +9875,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cache.hit": AttributeMetadata(
         brief="If the cache was hit during this span.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=True,
@@ -9933,7 +9933,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cache.write": AttributeMetadata(
         brief="If the cache operation resulted in a write to the cache.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=True,
@@ -10076,7 +10076,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.d1.query_type": AttributeMetadata(
         brief="The type of query executed in a Cloudflare D1 operation",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="run",
@@ -10115,7 +10115,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.workflow.attempt": AttributeMetadata(
         brief="The current attempt number for a Cloudflare Workflow step",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1,
@@ -10130,7 +10130,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.workflow.retries.backoff": AttributeMetadata(
         brief="The backoff strategy for Cloudflare Workflow step retries",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="exponential",
@@ -10145,7 +10145,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.workflow.retries.delay": AttributeMetadata(
         brief="The delay between Cloudflare Workflow step retries",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="5 seconds",
@@ -10160,7 +10160,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.workflow.retries.limit": AttributeMetadata(
         brief="The maximum number of retries for a Cloudflare Workflow step",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=3,
@@ -10175,7 +10175,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.workflow.timeout": AttributeMetadata(
         brief="The timeout duration for a Cloudflare Workflow step",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="1 minute",
@@ -10430,7 +10430,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.driver.name": AttributeMetadata(
         brief="The name of the driver used for the database connection.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="psycopg2",
@@ -10515,7 +10515,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.query.parameter.<key>": AttributeMetadata(
         brief="A query parameter used in db.query.text, with <key> being the parameter name, and the attribute value being a string representation of the parameter value.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
@@ -10579,7 +10579,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.redis.parameters": AttributeMetadata(
         brief="The array of command parameters given to a redis command.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=["test", "*"],
@@ -10590,7 +10590,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.sql.bindings": AttributeMetadata(
         brief="The array of query bindings.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=["1", "foo"],
@@ -10606,7 +10606,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.statement": AttributeMetadata(
         brief="The database statement being executed.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="SELECT * FROM users",
@@ -10664,7 +10664,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.user": AttributeMetadata(
         brief="The database user.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="fancy_user",
@@ -10892,7 +10892,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.id": AttributeMetadata(
         brief="Unique device identifier.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="a1b2c3d4-e5f6-7890-abcd-ef1234567890",
@@ -10933,7 +10933,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.low_power_mode": AttributeMetadata(
         brief="Whether the device is in Low Power Mode.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=True,
@@ -11020,7 +11020,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.name": AttributeMetadata(
         brief="The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="localhost",
@@ -11152,7 +11152,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.simulator": AttributeMetadata(
         brief="Whether the device is a simulator or an actual device.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=False,
@@ -11295,7 +11295,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "event.id": AttributeMetadata(
         brief="The unique identifier for this event (log record)",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1234567890,
@@ -11317,7 +11317,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "exception.escaped": AttributeMetadata(
         brief="SHOULD be set to true if the exception event is recorded at a point where it is known that the exception is escaping the scope of the span.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=True,
@@ -11328,7 +11328,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "exception.message": AttributeMetadata(
         brief="The error message.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="ENOENT: no such file or directory",
@@ -11340,7 +11340,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "exception.stacktrace": AttributeMetadata(
         brief="A stacktrace as a string in the natural representation for the language runtime. The representation is to be determined and documented by each language SIG.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example='Exception in thread "main" java.lang.RuntimeException: Test exception\n at com.example.GenerateTrace.methodB(GenerateTrace.java:13)\n at com.example.GenerateTrace.methodA(GenerateTrace.java:9)\n at com.example.GenerateTrace.main(GenerateTrace.java:5)',
@@ -11364,7 +11364,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "faas.coldstart": AttributeMetadata(
         brief="A boolean that is true if the serverless function is executed for the first time (aka cold-start).",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=True,
@@ -11387,7 +11387,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "faas.duration_in_ms": AttributeMetadata(
         brief="The duration a function took to run, in milliseconds.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=120,
@@ -11409,7 +11409,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "faas.identity": AttributeMetadata(
         brief="The Service Account (GCP), IAM Execution Role (AWS), or Managed Identity (Azure) used by the serverless function when interacting with other cloud services",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="name@project.iam.gserviceaccount.com (GCP), arn:aws:iam::123456789012:role/role-name (AWS), 00000000-0000-0000-0000-000000000000 (Azure)",
@@ -11420,7 +11420,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "faas.invocation_id": AttributeMetadata(
         brief="The invocation ID of the current function invocation.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="af9d5aa4-a685-4c5f-a22b-444f80b3cc28",
@@ -11468,7 +11468,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "faas.version": AttributeMetadata(
         brief="The version of the function that was invoked",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="$LATEST",
@@ -11497,7 +11497,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "flag.evaluation.<key>": AttributeMetadata(
         brief="An instance of a feature flag evaluation. The value of this attribute is the boolean representing the evaluation result. The <key> suffix is the name of the feature flag.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
@@ -12724,7 +12724,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="The GraphQL document being executed.",
         type=AttributeType.STRING,
         pii=PiiInfo(
-            isPii=IsPii.MAYBE,
+            isPii=IsPii.TRUE,
             reason="The document may contain sensitive information in arguments or variables. Instrumentation should redact sensitive information when possible.",
         ),
         is_in_otel=True,
@@ -12825,7 +12825,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.fragment": AttributeMetadata(
         brief="The fragments present in the URI. Note that this contains the leading # character, while the `url.fragment` attribute does not.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="#details",
@@ -12888,7 +12888,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.body.data": AttributeMetadata(
         brief="HTTP request body data. Can be given as string or structural data of any format.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example='[{"role": "user", "message": "hello"}]',
@@ -12968,7 +12968,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.header.<key>": AttributeMetadata(
         brief="HTTP request headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
@@ -13140,7 +13140,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.response.header.<key>": AttributeMetadata(
         brief="HTTP response headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
@@ -13293,7 +13293,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.target": AttributeMetadata(
         brief="The pathname and query string of the URL.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="/test?foo=bar#buzz",
@@ -13417,7 +13417,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "jvm.thread.daemon": AttributeMetadata(
         brief="Whether the thread is daemon or not.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=True,
@@ -13531,7 +13531,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "lcp.url": AttributeMetadata(
         brief="The url of the dom element responsible for the largest contentful paint.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="https://example.com",
@@ -13597,7 +13597,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.cancelled.request_id": AttributeMetadata(
         brief="Request ID of the cancelled MCP operation.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="123",
@@ -13608,7 +13608,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.client.name": AttributeMetadata(
         brief="Name of the MCP client application.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="claude-desktop",
@@ -13633,7 +13633,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.client.version": AttributeMetadata(
         brief="Version of the MCP client application.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="1.0.0",
@@ -13644,7 +13644,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.lifecycle.phase": AttributeMetadata(
         brief="Lifecycle phase indicator for MCP operations.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="initialization_complete",
@@ -13655,7 +13655,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.logging.data_type": AttributeMetadata(
         brief="Data type of the logged message content.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="string",
@@ -13666,7 +13666,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.logging.level": AttributeMetadata(
         brief="Log level for MCP logging operations.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="info",
@@ -13702,7 +13702,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.method.name": AttributeMetadata(
         brief="The name of the MCP request or notification method being called.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="tools/call",
@@ -13751,7 +13751,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.progress.token": AttributeMetadata(
         brief="Token for tracking progress of an MCP operation.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="progress-token-123",
@@ -13822,7 +13822,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.prompt.result.message_role": AttributeMetadata(
         brief="Role of the message in the prompt result. Used for single message results only.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="user",
@@ -13845,7 +13845,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.protocol.version": AttributeMetadata(
         brief="MCP protocol version used in the session.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="2024-11-05",
@@ -13890,7 +13890,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.request.id": AttributeMetadata(
         brief="JSON-RPC request identifier for the MCP request. Unique within the MCP session.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="1",
@@ -13901,7 +13901,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.resource.protocol": AttributeMetadata(
         brief="Protocol of the resource URI being accessed, extracted from the URI.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="file",
@@ -13923,7 +13923,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.server.name": AttributeMetadata(
         brief="Name of the MCP server application.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="sentry-mcp-server",
@@ -13948,7 +13948,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.server.version": AttributeMetadata(
         brief="Version of the MCP server application.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="0.1.0",
@@ -13959,7 +13959,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.session.id": AttributeMetadata(
         brief="Identifier for the MCP session.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="550e8400-e29b-41d4-a716-446655440000",
@@ -13970,7 +13970,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.tool.name": AttributeMetadata(
         brief="Name of the MCP tool being called.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="calculator",
@@ -14005,7 +14005,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.tool.result.is_error": AttributeMetadata(
         brief="Whether a tool execution resulted in an error.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=False,
@@ -14016,7 +14016,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.transport": AttributeMetadata(
         brief="Transport method used for MCP communication.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="stdio",
@@ -14027,7 +14027,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mdc.<key>": AttributeMetadata(
         brief="Attributes from the Mapped Diagnostic Context (MDC) present at the moment the log record was created. The MDC is supported by all the most popular logging solutions in the Java ecosystem, and it's usually implemented as a thread-local map that stores context for e.g. a specific request.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
@@ -14039,7 +14039,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.batch.message_count": AttributeMetadata(
         brief="The number of messages sent, received, or processed in the scope of the batching operation.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=10,
@@ -14138,7 +14138,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.operation.name": AttributeMetadata(
         brief="The name of the messaging operation being performed",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="send",
@@ -14190,7 +14190,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "middleware.name": AttributeMetadata(
         brief="The name of the middleware.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="AuthenticationMiddleware",
@@ -14240,7 +14240,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "nel.referrer": AttributeMetadata(
         brief="request's referrer, as determined by the referrer policy associated with its client.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="https://example.com/foo?bar=baz",
@@ -14317,7 +14317,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.peer.ip": AttributeMetadata(
         brief="Peer address of the network connection - IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="192.168.0.1",
@@ -14331,7 +14331,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.peer.name": AttributeMetadata(
         brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="example.com",
@@ -14437,7 +14437,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.sock.peer.addr": AttributeMetadata(
         brief="Peer address of the network connection - IP address",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="192.168.0.1",
@@ -14451,7 +14451,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.sock.peer.name": AttributeMetadata(
         brief="Peer address of the network connection - Unix domain socket name",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="/var/my.sock",
@@ -14568,7 +14568,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "network.peer.address": AttributeMetadata(
         brief="Peer address of the network connection - IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="10.1.2.80",
@@ -14819,7 +14819,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "otel.status_description": AttributeMetadata(
         brief="Description of the Status if it has a value, otherwise not set.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="resource not found",
@@ -14831,7 +14831,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "params.<key>": AttributeMetadata(
         brief="Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
@@ -14898,7 +14898,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "process.command_args": AttributeMetadata(
         brief="All the command arguments (including the command/executable itself) as received by the process.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=["cmd/otecol", "--config=config.yaml"],
@@ -14998,7 +14998,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "query.<key>": AttributeMetadata(
         brief="An item in a query string. Usually added by client-side routing frameworks like vue-router.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
@@ -15041,7 +15041,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "remix.action_form_data.<key>": AttributeMetadata(
         brief="Remix form data, <key> being the form data key, the value being the form data value.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
@@ -15067,7 +15067,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "resource.deployment.environment": AttributeMetadata(
         brief="The software deployment environment name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="production",
@@ -15081,7 +15081,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "resource.deployment.environment.name": AttributeMetadata(
         brief="The software deployment environment name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="production",
@@ -15379,7 +15379,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.description": AttributeMetadata(
         brief="The human-readable description of a span.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="index view query",
@@ -15605,7 +15605,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.message.parameter.<key>": AttributeMetadata(
         brief="A parameter used in the message template. <key> can either be the number that represent the parameter's position in the template string (sentry.message.parameter.0, sentry.message.parameter.1, etc) or the parameter's name (sentry.message.parameter.item_id, sentry.message.parameter.user_id, etc)",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="sentry.message.parameter.0='123'",
@@ -15693,7 +15693,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.normalized_description": AttributeMetadata(
         brief="Used as a generic attribute representing the normalized `sentry.description`. This refers to the legacy use case of `sentry.description` where it holds relevant data depending on the type of span (e.g. database query, resource url, http request description, etc).",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="SELECT .. FROM sentry_project WHERE (project_id = %s)",
@@ -16384,7 +16384,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "type": AttributeMetadata(
         brief="More granular type of the operation happening.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="fetch",
@@ -16407,7 +16407,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ui.contributes_to_ttfd": AttributeMetadata(
         brief="Whether the span execution contributed to the TTFD (time to fully drawn) metric.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=True,
@@ -16418,7 +16418,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ui.contributes_to_ttid": AttributeMetadata(
         brief="Whether the span execution contributed to the TTID (time to initial display) metric.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=True,
@@ -16532,7 +16532,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ui.element.url": AttributeMetadata(
         brief="The URL of the UI element (e.g. an img src)",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="https://assets.myapp.com/hero.png",
@@ -16572,7 +16572,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "url.fragment": AttributeMetadata(
         brief="The fragments present in the URI. Note that this does not contain the leading # character, while the `http.fragment` attribute does.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="details",
@@ -16596,7 +16596,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "url.path": AttributeMetadata(
         brief="The URI path component.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="/foo",
@@ -16607,7 +16607,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "url.path.parameter.<key>": AttributeMetadata(
         brief="Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
@@ -16828,7 +16828,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.branch": AttributeMetadata(
         brief="Git branch name for Vercel project",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="main",
@@ -16839,7 +16839,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.build_id": AttributeMetadata(
         brief="Identifier for the Vercel build (only present on build logs)",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="bld_cotnkcr76",
@@ -16850,7 +16850,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.deployment_id": AttributeMetadata(
         brief="Identifier for the Vercel deployment",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="dpl_233NRGRjVZX1caZrXWtz5g1TAksD",
@@ -16872,7 +16872,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.edge_type": AttributeMetadata(
         brief="Type of edge runtime in Vercel",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="edge-function",
@@ -16894,7 +16894,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.execution_region": AttributeMetadata(
         brief="Region where the request is executed",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="sfo1",
@@ -16905,7 +16905,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.id": AttributeMetadata(
         brief="Unique identifier for the log entry in Vercel",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="1573817187330377061717300000",
@@ -16916,7 +16916,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.ja3_digest": AttributeMetadata(
         brief="JA3 fingerprint digest of Vercel request",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="769,47-53-5-10-49161-49162-49171-49172-50-56-19-4,0-10-11,23-24-25,0",
@@ -16927,7 +16927,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.ja4_digest": AttributeMetadata(
         brief="JA4 fingerprint digest",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="t13d1516h2_8daaf6152771_02713d6af862",
@@ -16938,7 +16938,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.log_type": AttributeMetadata(
         brief="Vercel log output type",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="stdout",
@@ -16962,7 +16962,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.project_id": AttributeMetadata(
         brief="Identifier for the Vercel project",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="gdufoJxB6b9b1fEqr1jUtFkyavUU",
@@ -16984,7 +16984,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.cache_id": AttributeMetadata(
         brief="Original request ID when request is served from cache",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="pdx1::v8g4b-1744143786684-93dafbc0f70d",
@@ -17017,7 +17017,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.lambda_region": AttributeMetadata(
         brief="Region where lambda function executed",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="sfo1",
@@ -17028,7 +17028,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.method": AttributeMetadata(
         brief="HTTP method of the request",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="GET",
@@ -17039,7 +17039,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.path": AttributeMetadata(
         brief="Request path with query parameters",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="/dynamic/some-value.json?route=some-value",
@@ -17050,7 +17050,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.path_type": AttributeMetadata(
         brief="How the request was served based on its path and project configuration",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="func",
@@ -17072,7 +17072,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.referer": AttributeMetadata(
         brief="Referer of the request",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        pii=PiiInfo(isPii=IsPii.TRUE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="*.vercel.app",
@@ -17083,7 +17083,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.region": AttributeMetadata(
         brief="Region where the request is processed",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="sfo1",
@@ -17106,7 +17106,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.scheme": AttributeMetadata(
         brief="Protocol of the request",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="https",
@@ -17152,7 +17152,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.vercel_cache": AttributeMetadata(
         brief="Cache status sent to the browser",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="REVALIDATED",
@@ -17163,7 +17163,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.vercel_id": AttributeMetadata(
         brief="Vercel-specific identifier",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="sfo1::abc123",
@@ -17174,7 +17174,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.waf_action": AttributeMetadata(
         brief="Action taken by firewall rules",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="deny",
@@ -17185,7 +17185,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.waf_rule_id": AttributeMetadata(
         brief="ID of the firewall rule that matched",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="rule_gAHz8jtSB1Gy",
@@ -17196,7 +17196,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.request_id": AttributeMetadata(
         brief="Identifier of the Vercel request",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="643af4e3-975a-4cc7-9e7a-1eda11539d90",
@@ -17207,7 +17207,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.source": AttributeMetadata(
         brief="Origin of the Vercel log (build, edge, lambda, static, external, or firewall)",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="build",

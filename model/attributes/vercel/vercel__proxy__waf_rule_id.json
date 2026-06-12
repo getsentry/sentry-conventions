@@ -3,7 +3,7 @@
   "brief": "ID of the firewall rule that matched",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "rule_gAHz8jtSB1Gy",

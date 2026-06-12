@@ -3,7 +3,7 @@
   "brief": "How the request was served based on its path and project configuration",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "func",

@@ -3,7 +3,7 @@
   "brief": "Free memory available before a garbage collection would be triggered by the Android Runtime, in bytes",
   "type": "integer",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "visibility": "public",

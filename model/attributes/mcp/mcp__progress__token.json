@@ -3,7 +3,7 @@
   "brief": "Token for tracking progress of an MCP operation.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "progress-token-123",

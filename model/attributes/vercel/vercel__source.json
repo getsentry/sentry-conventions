@@ -3,7 +3,7 @@
   "brief": "Origin of the Vercel log (build, edge, lambda, static, external, or firewall)",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "build",

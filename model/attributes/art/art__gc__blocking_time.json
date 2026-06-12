@@ -3,7 +3,7 @@
   "brief": "Total time spent in blocking (stop-the-world) garbage collections by the Android Runtime, in milliseconds",
   "type": "double",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "visibility": "public",

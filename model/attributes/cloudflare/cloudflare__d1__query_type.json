@@ -3,7 +3,7 @@
   "brief": "The type of query executed in a Cloudflare D1 operation",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "run",

@@ -3,7 +3,7 @@
   "brief": "The URI path component.",
   "type": "string",
   "pii": {
-    "key": "maybe"
+    "key": "true"
   },
   "is_in_otel": true,
   "example": "/foo",

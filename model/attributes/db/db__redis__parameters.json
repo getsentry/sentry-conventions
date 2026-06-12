@@ -3,7 +3,7 @@
   "brief": "The array of command parameters given to a redis command.",
   "type": "string[]",
   "pii": {
-    "key": "maybe"
+    "key": "true"
   },
   "is_in_otel": false,
   "example": ["test", "*"],
