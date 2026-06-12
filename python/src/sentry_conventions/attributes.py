@@ -4094,6 +4094,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "14"
     """
 
+    # Path: model/attributes/host/host__type.json
+    HOST_TYPE: Literal["host.type"] = "host.type"
+    """Type of host. In cloud environments, this must be the type of the compute instance assigned by the provider.
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "n1-standard-1"
+    """
+
     # Path: model/attributes/http/http__client_ip.json
     HTTP_CLIENT_IP: Literal["http.client_ip"] = "http.client_ip"
     """Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
@@ -12782,6 +12793,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "host.type": AttributeMetadata(
+        brief="Type of host. In cloud environments, this must be the type of the compute instance assigned by the provider.",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="n1-standard-1",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[417], description="Added host.type attribute"
+            ),
+        ],
+    ),
     "http.client_ip": AttributeMetadata(
         brief="Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
@@ -17544,6 +17568,7 @@ Attributes = TypedDict(
         "graphql.operation.name": str,
         "graphql.operation.type": str,
         "hardwareConcurrency": str,
+        "host.type": str,
         "http.client_ip": str,
         "http.decoded_response_content_length": int,
         "http.flavor": str,
