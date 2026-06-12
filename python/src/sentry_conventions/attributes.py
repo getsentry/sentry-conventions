@@ -2550,7 +2550,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Unique device identifier.
 
     Type: str
-    Contains PII: true
+    Contains PII: maybe
     Defined in OTEL: Yes
     Visibility: public
     Example: "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
@@ -10892,7 +10892,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.id": AttributeMetadata(
         brief="Unique device identifier.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="a1b2c3d4-e5f6-7890-abcd-ef1234567890",

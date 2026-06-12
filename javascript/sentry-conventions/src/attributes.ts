@@ -4086,7 +4086,7 @@ export type DEVICE_FREE_STORAGE_TYPE = number;
  *
  * Attribute Value Type: `string` {@link DEVICE_ID_TYPE}
  *
- * Contains PII: true
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -18108,7 +18108,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Unique device identifier.',
     type: 'string',
     pii: {
-      isPii: 'true',
+      isPii: 'maybe',
     },
     isInOtel: true,
     visibility: 'public',
