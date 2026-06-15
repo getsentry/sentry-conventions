@@ -3651,6 +3651,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Type: str
     Contains PII: false
     Defined in OTEL: No
+    Visibility: public
     Example: "high"
     """
 
@@ -12301,6 +12302,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         pii=PiiInfo(isPii=IsPii.FALSE),
         is_in_otel=False,
+        visibility=Visibility.PUBLIC,
         example="high",
         changelog=[
             ChangelogEntry(

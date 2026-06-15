@@ -6032,6 +6032,7 @@ export type GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE = number;
  * Contains PII: false
  *
  * Attribute defined in OTEL: No
+ * Visibility: public
  *
  * @example "high"
  */
@@ -19447,6 +19448,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       isPii: 'false',
     },
     isInOtel: false,
+    visibility: 'public',
     example: 'high',
     changelog: [{ version: 'next', prs: [334], description: 'Added gen_ai.request.reasoning_effort attribute' }],
   },
