@@ -3,15 +3,16 @@
   "brief": "Peer address of the network connection - IP address",
   "type": "string",
   "pii": {
-    "key": "maybe"
+    "key": "true"
   },
   "is_in_otel": true,
   "example": "192.168.0.1",
+  "alias": ["network.peer.address", "net.peer.ip"],
   "deprecation": {
     "_status": null,
     "replacement": "network.peer.address"
   },
-  "alias": ["network.peer.address", "net.peer.ip"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

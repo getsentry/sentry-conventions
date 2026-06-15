@@ -3,10 +3,11 @@
   "brief": "Identifier for the Vercel build (only present on build logs)",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "bld_cotnkcr76",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.2.0",

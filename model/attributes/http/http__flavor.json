@@ -7,11 +7,12 @@
   },
   "is_in_otel": true,
   "example": "1.1",
+  "alias": ["network.protocol.version", "net.protocol.version"],
   "deprecation": {
     "_status": null,
     "replacement": "network.protocol.version"
   },
-  "alias": ["network.protocol.version", "net.protocol.version"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

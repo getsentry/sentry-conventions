@@ -8,6 +8,7 @@
   },
   "is_in_otel": false,
   "example": "Claude Desktop",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.3.0",

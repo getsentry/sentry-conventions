@@ -1,0 +1,21 @@
+{
+  "key": "sentry.user.geo.subdivision",
+  "brief": "Human readable subdivision name.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "alias": ["user.geo.subdivision"],
+  "deprecation": {
+    "replacement": "user.geo.subdivision",
+    "_status": null
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.10.0",
+      "prs": [406]
+    }
+  ]
+}

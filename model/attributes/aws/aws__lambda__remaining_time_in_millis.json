@@ -1,0 +1,18 @@
+{
+  "key": "aws.lambda.remaining_time_in_millis",
+  "brief": "The remaining time in milliseconds before the Lambda function times out",
+  "type": "double",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": 5000,
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.7.0",
+      "prs": [369],
+      "description": "Added aws.lambda.remaining_time_in_millis attribute"
+    }
+  ]
+}

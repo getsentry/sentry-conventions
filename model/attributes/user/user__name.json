@@ -7,6 +7,8 @@
   },
   "is_in_otel": true,
   "example": "j.smith",
+  "alias": ["sentry.user.username"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.0.0"

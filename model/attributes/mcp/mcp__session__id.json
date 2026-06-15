@@ -3,10 +3,11 @@
   "brief": "Identifier for the MCP session.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "550e8400-e29b-41d4-a716-446655440000",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.3.0",

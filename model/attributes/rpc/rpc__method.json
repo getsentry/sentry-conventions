@@ -1,0 +1,18 @@
+{
+  "key": "rpc.method",
+  "brief": "The fully-qualified logical name of the method from the RPC interface perspective.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": true,
+  "example": "com.example.ExampleService/exampleMethod",
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.7.0",
+      "prs": [351],
+      "description": "Added rpc.method attribute"
+    }
+  ]
+}

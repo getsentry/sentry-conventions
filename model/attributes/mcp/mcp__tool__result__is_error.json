@@ -3,10 +3,11 @@
   "brief": "Whether a tool execution resulted in an error.",
   "type": "boolean",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": false,
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.3.0",

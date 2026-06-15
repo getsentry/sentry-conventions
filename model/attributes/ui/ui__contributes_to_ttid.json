@@ -3,10 +3,11 @@
   "brief": "Whether the span execution contributed to the TTID (time to initial display) metric.",
   "type": "boolean",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": true,
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.0.0"

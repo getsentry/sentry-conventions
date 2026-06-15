@@ -1,0 +1,19 @@
+{
+  "key": "score.weight.<key>",
+  "brief": "The relative weight of a web vital in a span's performance score.",
+  "has_dynamic_suffix": true,
+  "type": "double",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "score.weight.fcp=0.25",
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.7.0",
+      "prs": [355],
+      "description": "Added score.weight.<key> attribute"
+    }
+  ]
+}

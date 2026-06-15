@@ -3,10 +3,11 @@
   "brief": "Vercel log output type",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "stdout",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.2.0",

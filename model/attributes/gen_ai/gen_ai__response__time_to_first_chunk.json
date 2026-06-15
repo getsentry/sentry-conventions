@@ -1,0 +1,19 @@
+{
+  "key": "gen_ai.response.time_to_first_chunk",
+  "brief": "Time in seconds when the first response content chunk arrived in streaming responses.",
+  "type": "double",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "example": 0.6853435,
+  "alias": ["gen_ai.response.time_to_first_token"],
+  "changelog": [
+    {
+      "version": "0.11.0",
+      "prs": [418],
+      "description": "Added gen_ai.response.time_to_first_chunk attribute"
+    }
+  ]
+}

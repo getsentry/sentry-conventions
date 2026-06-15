@@ -1,0 +1,23 @@
+{
+  "key": "cloudflare.d1.query_type",
+  "brief": "The type of query executed in a Cloudflare D1 operation",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "run",
+  "alias": ["db.operation.name", "db.operation"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "db.operation.name"
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.11.0",
+      "prs": [392],
+      "description": "Added cloudflare.d1.query_type attribute"
+    }
+  ]
+}

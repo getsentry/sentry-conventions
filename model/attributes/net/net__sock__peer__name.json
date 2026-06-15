@@ -3,7 +3,7 @@
   "brief": "Peer address of the network connection - Unix domain socket name",
   "type": "string",
   "pii": {
-    "key": "maybe"
+    "key": "true"
   },
   "is_in_otel": true,
   "example": "/var/my.sock",
@@ -11,6 +11,7 @@
     "_status": null,
     "reason": "Deprecated from OTEL, no replacement at this time"
   },
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

@@ -7,6 +7,7 @@
   },
   "is_in_otel": false,
   "example": "router.push",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

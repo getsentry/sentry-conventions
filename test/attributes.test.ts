@@ -70,6 +70,10 @@ describe('attribute json', async () => {
         expect(fileNameToAttributeKey(name)).toMatch(content.key);
       });
 
+      it('should have either public or internal visibility', () => {
+        expect(content.visibility).toBeOneOf(['public', 'internal']);
+      });
+
       it('its replacement should exist', async () => {
         if (!content.deprecation?.replacement) {
           return;
@@ -123,6 +127,25 @@ describe('attribute json', async () => {
         expect(missingAliases).toEqual([]);
       });
 
+      it('its replacement should not be deprecated', async () => {
+        if (!content.deprecation?.replacement) {
+          return;
+        }
+        const replacement = content.deprecation.replacement;
+        const replacementFileName = attributeKeyToFileName(replacement);
+        let replacementFilePath: string;
+
+        if (replacement.includes('.')) {
+          const namespace = replacement.split('.')[0] as string;
+          replacementFilePath = path.join(traceFolders, namespace, replacementFileName);
+        } else {
+          replacementFilePath = path.join(traceFolders, replacementFileName);
+        }
+
+        const replacementContent: AttributeJson = JSON.parse(await fs.promises.readFile(replacementFilePath, 'utf-8'));
+        expect(replacementContent.deprecation, `replacement "${replacement}" is itself deprecated`).toBeUndefined();
+      });
+
       it('is not be a replacement of itself', async () => {
         if (!content.deprecation?.replacement) {
           return;
@@ -168,6 +191,7 @@ describe('attribute json', async () => {
         for (let i = 1; i < content.changelog.length; i++) {
           const prev = content.changelog[i - 1]?.version;
           const curr = content.changelog[i]?.version;
+          if (!prev || !curr) continue;
           const cmp = compareVersions(prev, curr);
           expect(cmp).toBeGreaterThanOrEqual(0);
         }

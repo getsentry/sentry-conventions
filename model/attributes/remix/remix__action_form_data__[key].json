@@ -4,11 +4,11 @@
   "has_dynamic_suffix": true,
   "type": "string",
   "pii": {
-    "key": "maybe"
+    "key": "true"
   },
   "is_in_otel": false,
   "example": "http.response.header.text='test'",
-  "sdks": ["javascript-remix"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

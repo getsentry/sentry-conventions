@@ -6,7 +6,6 @@
     "key": "maybe"
   },
   "is_in_otel": false,
-  "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
   "example": "2025-01-01T00:00:00.000Z",
   "alias": ["app.start_time"],
   "deprecation": {
@@ -14,6 +13,7 @@
     "reason": "Deprecated in favor of app.start_time",
     "_status": "backfill"
   },
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.5.0",

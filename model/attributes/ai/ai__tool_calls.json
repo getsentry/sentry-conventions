@@ -9,8 +9,9 @@
   "example": ["tool_call_1", "tool_call_2"],
   "deprecation": {
     "_status": "backfill",
-    "replacement": "gen_ai.response.tool_calls"
+    "replacement": "gen_ai.output.messages"
   },
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

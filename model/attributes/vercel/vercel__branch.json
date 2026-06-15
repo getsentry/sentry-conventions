@@ -3,10 +3,11 @@
   "brief": "Git branch name for Vercel project",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "main",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.2.0",

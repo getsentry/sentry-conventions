@@ -3,15 +3,16 @@
   "brief": "The database statement being executed.",
   "type": "string",
   "pii": {
-    "key": "maybe"
+    "key": "true"
   },
   "is_in_otel": true,
   "example": "SELECT * FROM users",
+  "alias": ["db.query.text"],
   "deprecation": {
     "_status": "normalize",
     "replacement": "db.query.text"
   },
-  "alias": ["db.query.text"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.4.0",

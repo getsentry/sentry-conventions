@@ -6,9 +6,9 @@
     "key": "maybe"
   },
   "is_in_otel": false,
-  "alias": ["frames.frozen"],
-  "sdks": ["sentry.cocoa", "sentry.java.android", "sentry.javascript.react-native", "sentry.dart.flutter"],
   "example": 3,
+  "alias": ["frames.frozen"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.5.0",

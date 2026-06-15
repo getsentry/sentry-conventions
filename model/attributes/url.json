@@ -3,16 +3,16 @@
   "brief": "The URL of the resource that was fetched.",
   "type": "string",
   "pii": {
-    "key": "maybe"
+    "key": "true"
   },
   "is_in_otel": false,
   "example": "https://example.com/test?foo=bar#buzz",
+  "alias": ["url.full", "http.url"],
   "deprecation": {
     "_status": null,
     "replacement": "url.full"
   },
-  "alias": ["url.full", "http.url"],
-  "sdks": ["javascript-browser", "javascript-node"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

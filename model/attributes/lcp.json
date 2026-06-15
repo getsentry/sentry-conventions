@@ -7,13 +7,13 @@
   },
   "is_in_otel": false,
   "example": 2500,
-  "sdks": ["javascript-browser"],
+  "alias": ["browser.web_vital.lcp.value"],
   "deprecation": {
     "replacement": "browser.web_vital.lcp.value",
     "reason": "The LCP web vital is now recorded as a browser.web_vital.lcp.value attribute.",
     "_status": "backfill"
   },
-  "alias": ["browser.web_vital.lcp.value"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.5.0",

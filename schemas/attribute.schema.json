@@ -38,6 +38,10 @@
     "is_in_otel": {
       "type": "boolean"
     },
+    "visibility": {
+      "description": "The visibility of the attribute",
+      "enum": ["public", "internal"]
+    },
     "example": {
       "description": "An example value of the attribute",
       "oneOf": [
@@ -95,8 +99,8 @@
         "type": "string"
       }
     },
-    "sdks": {
-      "description": "If an attribute is SDK specific, list the SDKs that use this attribute. This is not an exhaustive list, there might be SDKs that send this attribute that are is not documented here.",
+    "additional_context": {
+      "description": "A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances",
       "type": "array",
       "items": {
         "type": "string"
@@ -129,5 +133,5 @@
       }
     }
   },
-  "required": ["key", "brief", "type", "pii", "is_in_otel"]
+  "required": ["key", "brief", "type", "pii", "is_in_otel", "visibility"]
 }

@@ -3,10 +3,11 @@
   "brief": "Region where the request is processed",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "sfo1",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.2.0",

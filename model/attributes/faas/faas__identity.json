@@ -1,0 +1,17 @@
+{
+  "key": "faas.identity",
+  "brief": "The Service Account (GCP), IAM Execution Role (AWS), or Managed Identity (Azure) used by the serverless function when interacting with other cloud services",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "name@project.iam.gserviceaccount.com (GCP), arn:aws:iam::123456789012:role/role-name (AWS), 00000000-0000-0000-0000-000000000000 (Azure)",
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.11.0",
+      "prs": [403]
+    }
+  ]
+}

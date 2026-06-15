@@ -3,11 +3,11 @@
   "brief": "Whether the device is in Low Power Mode.",
   "type": "boolean",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
-  "sdks": ["sentry.cocoa"],
   "example": true,
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.6.0",

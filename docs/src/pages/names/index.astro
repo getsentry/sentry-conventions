@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CategoryChip from '../../components/CategoryChip.astro';
+import LinkedTemplate from '../../components/LinkedTemplate.astro';
 import { getCollection } from 'astro:content';
 
 // Get all name definitions
@@ -107,13 +108,13 @@ const totalOperations = allNames.reduce((acc, name) => acc + name.data.operation
                 <div>
                   <h4 class="text-sm font-semibold text-text-muted mb-2">Templates</h4>
                   <ol class="m-0 pl-5 list-inside">
-                    {op.templates.map((template, index) => (
+                    {op.templates.map((tmpl, index) => (
                       <li class="flex items-center gap-2 mb-2 text-sm">
                         <code class:list={[
                           "px-2 py-1 bg-bg-elevated text-xs",
-                          index === op.templates.length - 1 && !template.includes('{{') ? 'border border-accent' : ''
-                        ]}>{template}</code>
-                        {index === op.templates.length - 1 && !template.includes('{{') && (
+                          index === op.templates.length - 1 && !tmpl.includes('{{') ? 'border border-accent' : ''
+                        ]}><LinkedTemplate template={tmpl} /></code>
+                        {index === op.templates.length - 1 && !tmpl.includes('{{') && (
                           <span class="text-xs px-2 py-1 bg-accent-soft text-accent rounded-sm">fallback</span>
                         )}
                       </li>

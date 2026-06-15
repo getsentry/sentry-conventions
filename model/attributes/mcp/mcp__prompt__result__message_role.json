@@ -3,10 +3,11 @@
   "brief": "Role of the message in the prompt result. Used for single message results only.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "user",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.3.0",

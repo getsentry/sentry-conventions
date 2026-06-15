@@ -3,10 +3,11 @@
   "brief": "Log level for MCP logging operations.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "info",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.3.0",

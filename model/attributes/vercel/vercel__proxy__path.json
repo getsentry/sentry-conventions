@@ -3,10 +3,11 @@
   "brief": "Request path with query parameters",
   "type": "string",
   "pii": {
-    "key": "maybe"
+    "key": "true"
   },
   "is_in_otel": false,
   "example": "/dynamic/some-value.json?route=some-value",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.2.0",

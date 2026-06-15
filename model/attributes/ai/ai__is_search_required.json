@@ -3,13 +3,14 @@
   "brief": "Boolean indicating if the model needs to perform a search.",
   "type": "boolean",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": false,
   "deprecation": {
     "_status": null
   },
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.5.0",

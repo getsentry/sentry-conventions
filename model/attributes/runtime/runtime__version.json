@@ -1,0 +1,24 @@
+{
+  "key": "runtime.version",
+  "brief": "The version of the runtime.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "example": "18.04.2",
+  "deprecation": {
+    "replacement": "process.runtime.version",
+    "reason": "Prefer OTel-aligned process.runtime.version",
+    "_status": null
+  },
+  "alias": ["process.runtime.version"],
+  "changelog": [
+    {
+      "version": "0.11.0",
+      "prs": [383],
+      "description": "Added and deprecated runtime.version attribute in favor of process.runtime.version"
+    }
+  ]
+}

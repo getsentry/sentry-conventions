@@ -1,0 +1,18 @@
+{
+  "key": "gcp.function.context.timestamp",
+  "brief": "The legacy timestamp of the GCP Cloud Function event",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "2024-01-01T00:00:00.000Z",
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.7.0",
+      "prs": [371],
+      "description": "Added gcp.function.context.timestamp attribute"
+    }
+  ]
+}

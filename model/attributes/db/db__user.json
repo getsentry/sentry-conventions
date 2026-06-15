@@ -3,10 +3,11 @@
   "brief": "The database user.",
   "type": "string",
   "pii": {
-    "key": "true"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "fancy_user",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.0.0"

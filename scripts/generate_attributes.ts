@@ -111,7 +111,8 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
 
   // Generate individual attribute constants with documentation AND build the explicit type map
   for (const { file, key, constantName, attributeJson, isDeprecated } of allAttributes) {
-    const { brief, type, pii, is_in_otel, example, has_dynamic_suffix, deprecation, alias, sdks } = attributeJson;
+    const { brief, type, pii, is_in_otel, example, has_dynamic_suffix, deprecation, alias } = attributeJson;
+    const visibility = getVisibility(attributeJson);
 
     const tsType = getTsType(type);
     attributeTypeMap += `\n  [${constantName}]?: ${constantName}_TYPE;`;
@@ -133,6 +134,7 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
     individualConstants += '\n';
     individualConstants += ' *\n';
     individualConstants += ` * Attribute defined in OTEL: ${is_in_otel ? 'Yes' : 'No'}\n`;
+    individualConstants += ` * Visibility: ${visibility}\n`;
 
     if (has_dynamic_suffix) {
       individualConstants += ' *\n';
@@ -245,6 +247,10 @@ function getConstantName(key: string, isDeprecated: boolean): string {
   return constantName;
 }
 
+function getVisibility(attributeJson: AttributeJson): 'public' | 'internal' {
+  return attributeJson.visibility ?? 'public';
+}
+
 function getTsType(type: AttributeJson['type']): string {
   switch (type) {
     case 'string':
@@ -299,6 +305,10 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
   content += '    FALSE = "false"\n';
   content += '    MAYBE = "maybe"\n\n';
 
+  content += 'class Visibility(Enum):\n';
+  content += '    PUBLIC = "public"\n';
+  content += '    INTERNAL = "internal"\n\n';
+
   content += '@dataclass\n';
   content += 'class PiiInfo:\n';
   content += `    """Holds information about PII in an attribute's values."""\n`;
@@ -344,6 +354,9 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
   content += '    is_in_otel: bool\n';
   content += '    """Whether the attribute is defined in OpenTelemetry Semantic Conventions"""\n';
   content += '    \n';
+  content += '    visibility: Visibility\n';
+  content += '    """Whether the attribute is public or internal to Sentry"""\n';
+  content += '    \n';
   content += '    has_dynamic_suffix: Optional[bool] = None\n';
   content +=
     '    """If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"""\n';
@@ -357,12 +370,12 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
   content += '    aliases: Optional[List[str]] = None\n';
   content += '    """If there are attributes that alias to this attribute"""\n';
   content += '    \n';
-  content += '    sdks: Optional[List[str]] = None\n';
-  content +=
-    '    """If an attribute is SDK specific, list the SDKs that use this attribute. This is not an exhaustive list, there might be SDKs that send this attribute that are is not documented here."""\n';
-  content += '    \n';
   content += '    changelog: Optional[List[ChangelogEntry]] = None\n';
-  content += '    """Changelog entries tracking how this attribute has changed across versions"""\n\n';
+  content += '    """Changelog entries tracking how this attribute has changed across versions"""\n';
+  content += '    \n';
+  content += '    additional_context: Optional[List[str]] = None\n';
+  content +=
+    '    """A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances"""\n\n';
 
   let attributesTypeMembers = '';
   let deprecatedAttributesTypeMembers = '';
@@ -416,6 +429,7 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
     const attributeJson = JSON.parse(fs.readFileSync(attributePath, 'utf-8')) as AttributeJson;
 
     const { key, brief, type, pii, is_in_otel, example, has_dynamic_suffix, deprecation, alias } = attributeJson;
+    const visibility = getVisibility(attributeJson);
 
     // Convert attribute key to a valid Python constant name
     const isDeprecated = !!deprecation;
@@ -429,6 +443,7 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
     content += `    Type: ${pythonType}\n`;
     content += `    Contains PII: ${pii.key}${pii.reason ? ` - ${pii.reason}` : ''}\n`;
     content += `    Defined in OTEL: ${is_in_otel ? 'Yes' : 'No'}\n`;
+    content += `    Visibility: ${visibility}\n`;
 
     if (has_dynamic_suffix) {
       content += '    Has Dynamic Suffix: true\n';
@@ -480,6 +495,7 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
     metadataDict += '\n        ),\n';
 
     metadataDict += `        is_in_otel=${is_in_otel ? 'True' : 'False'},\n`;
+    metadataDict += `        visibility=Visibility.${visibility === 'public' ? 'PUBLIC' : 'INTERNAL'},\n`;
 
     if (has_dynamic_suffix) {
       metadataDict += '        has_dynamic_suffix=True,\n';
@@ -517,10 +533,6 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
       metadataDict += `        aliases=${JSON.stringify(alias)},\n`;
     }
 
-    if (attributeJson.sdks && attributeJson.sdks.length > 0) {
-      metadataDict += `        sdks=${JSON.stringify(attributeJson.sdks)},\n`;
-    }
-
     if (attributeJson.changelog && attributeJson.changelog.length > 0) {
       metadataDict += '        changelog=[\n';
       for (const entry of attributeJson.changelog) {
@@ -535,6 +547,10 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
         metadataDict += '),\n';
       }
       metadataDict += '        ],\n';
+    }
+
+    if (attributeJson.additional_context && attributeJson.additional_context.length > 0) {
+      metadataDict += `        additional_context=${JSON.stringify(attributeJson.additional_context)},\n`;
     }
 
     metadataDict += '    ),\n';
@@ -654,6 +670,10 @@ export type IsPii =
   | 'false'
   | 'maybe';
 
+export type AttributeVisibility =
+  | 'public'
+  | 'internal';
+
 export interface PiiInfo {
   /** Whether the attribute contains PII */
   isPii: IsPii;
@@ -686,6 +706,8 @@ export interface AttributeMetadata {
   pii: PiiInfo;
   /** Whether the attribute is defined in OpenTelemetry Semantic Conventions */
   isInOtel: boolean;
+  /** Whether the attribute is public or internal to Sentry */
+  visibility: AttributeVisibility;
   /** If an attribute has a dynamic suffix */
   hasDynamicSuffix?: boolean;
   /** An example value of the attribute */
@@ -694,10 +716,10 @@ export interface AttributeMetadata {
   deprecation?: DeprecationInfo;
   /** If there are attributes that alias to this attribute */
   aliases?: AttributeName[];
-  /** If an attribute is SDK specific, list the SDKs that use this attribute */
-  sdks?: string[];
   /** Changelog entries tracking how this attribute has changed across versions */
   changelog?: ChangelogEntry[];
+  /** A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances */
+  additionalContext?: string[];
 }
 
 `;
@@ -734,6 +756,7 @@ function generateMetadataDict(
 
   for (const { key, attributeJson, constantName } of allAttributes) {
     const { brief, type, pii, is_in_otel, example, has_dynamic_suffix, deprecation, alias } = attributeJson;
+    const visibility = getVisibility(attributeJson);
 
     metadataDict += `  [${constantName}]: {\n`;
     metadataDict += `    brief: ${JSON.stringify(brief)},\n`;
@@ -749,6 +772,7 @@ function generateMetadataDict(
     metadataDict += '\n    },\n';
 
     metadataDict += `    isInOtel: ${is_in_otel},\n`;
+    metadataDict += `    visibility: '${visibility}',\n`;
 
     if (has_dynamic_suffix) {
       metadataDict += '    hasDynamicSuffix: true,\n';
@@ -790,10 +814,6 @@ function generateMetadataDict(
       metadataDict += `    aliases: [${constantAliases}],\n`;
     }
 
-    if (attributeJson.sdks && attributeJson.sdks.length > 0) {
-      metadataDict += `    sdks: ${JSON.stringify(attributeJson.sdks)},\n`;
-    }
-
     if (attributeJson.changelog && attributeJson.changelog.length > 0) {
       metadataDict += '    changelog: [\n';
       for (const entry of attributeJson.changelog) {
@@ -808,6 +828,10 @@ function generateMetadataDict(
         metadataDict += ' },\n';
       }
       metadataDict += '    ],\n';
+    }
+
+    if (attributeJson.additional_context && attributeJson.additional_context.length > 0) {
+      metadataDict += `    additionalContext: ${JSON.stringify(attributeJson.additional_context)},\n`;
     }
 
     metadataDict += '  },\n';

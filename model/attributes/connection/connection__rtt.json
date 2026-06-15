@@ -7,13 +7,13 @@
   },
   "is_in_otel": false,
   "example": 100,
-  "sdks": ["javascript-browser"],
   "alias": ["network.connection.rtt"],
   "deprecation": {
     "replacement": "network.connection.rtt",
     "reason": "Old attribute name (no official namespace), to be replaced with network.connection.rtt for span-first future",
     "_status": "backfill"
   },
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.5.0",

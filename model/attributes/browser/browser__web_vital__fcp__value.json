@@ -8,7 +8,7 @@
   "is_in_otel": false,
   "example": 547.6951,
   "alias": ["fcp"],
-  "sdks": ["javascript-browser"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.5.0",

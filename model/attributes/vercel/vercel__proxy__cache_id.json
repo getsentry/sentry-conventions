@@ -3,10 +3,11 @@
   "brief": "Original request ID when request is served from cache",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "pdx1::v8g4b-1744143786684-93dafbc0f70d",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.2.0",

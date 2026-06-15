@@ -7,13 +7,13 @@
   },
   "is_in_otel": false,
   "example": "8 GB",
-  "sdks": ["javascript-browser"],
   "alias": ["device.memory.estimated_capacity"],
   "deprecation": {
     "replacement": "device.memory.estimated_capacity",
     "reason": "Old namespace-less attribute, to be replaced with device.memory.estimated_capacity for span-first future",
     "_status": "backfill"
   },
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.5.0",

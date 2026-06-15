@@ -1,0 +1,18 @@
+{
+  "key": "react.version",
+  "brief": "The version of the React framework",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "18.2.0",
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.7.0",
+      "prs": [368],
+      "description": "Added react.version attribute"
+    }
+  ]
+}

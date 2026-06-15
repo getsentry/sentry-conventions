@@ -9,9 +9,10 @@
   "example": "[{\"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]",
   "alias": [],
   "deprecation": {
-    "_status": "backfill",
+    "_status": "normalize",
     "replacement": "gen_ai.output.messages"
   },
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.4.0",

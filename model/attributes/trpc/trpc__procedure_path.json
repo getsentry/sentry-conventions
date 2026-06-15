@@ -1,0 +1,18 @@
+{
+  "key": "trpc.procedure_path",
+  "brief": "The path of the tRPC procedure being called",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": false,
+  "example": "user.getById",
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.7.0",
+      "prs": [370],
+      "description": "Added trpc.procedure_path attribute"
+    }
+  ]
+}

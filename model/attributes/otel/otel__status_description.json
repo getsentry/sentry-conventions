@@ -3,10 +3,11 @@
   "brief": "Description of the Status if it has a value, otherwise not set.",
   "type": "string",
   "pii": {
-    "key": "maybe"
+    "key": "true"
   },
   "is_in_otel": true,
   "example": "resource not found",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

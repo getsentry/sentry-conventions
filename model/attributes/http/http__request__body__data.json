@@ -3,10 +3,11 @@
   "brief": "HTTP request body data. Can be given as string or structural data of any format.",
   "type": "string",
   "pii": {
-    "key": "maybe"
+    "key": "true"
   },
   "is_in_otel": false,
   "example": "[{\"role\": \"user\", \"message\": \"hello\"}]",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.6.0",

@@ -3,10 +3,11 @@
   "brief": "Lifecycle phase indicator for MCP operations.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "initialization_complete",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.3.0",

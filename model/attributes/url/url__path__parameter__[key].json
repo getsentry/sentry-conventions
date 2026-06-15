@@ -4,11 +4,12 @@
   "has_dynamic_suffix": true,
   "type": "string",
   "pii": {
-    "key": "maybe"
+    "key": "true"
   },
   "is_in_otel": false,
   "example": "url.path.parameter.id='123'",
   "alias": ["params.<key>"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

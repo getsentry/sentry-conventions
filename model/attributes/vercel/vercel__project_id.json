@@ -3,10 +3,11 @@
   "brief": "Identifier for the Vercel project",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "gdufoJxB6b9b1fEqr1jUtFkyavUU",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.2.0",

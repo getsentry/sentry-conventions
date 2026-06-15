@@ -7,11 +7,12 @@
   },
   "is_in_otel": false,
   "example": "production",
+  "alias": ["sentry.release"],
   "deprecation": {
     "_status": null,
     "replacement": "sentry.release"
   },
-  "alias": ["sentry.release"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

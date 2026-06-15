@@ -3,10 +3,11 @@
   "brief": "Vercel-specific identifier",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "sfo1::abc123",
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.2.0",

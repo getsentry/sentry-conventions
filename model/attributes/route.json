@@ -7,12 +7,12 @@
   },
   "is_in_otel": false,
   "example": "App\\Controller::indexAction",
+  "alias": ["http.route"],
   "deprecation": {
     "_status": null,
     "replacement": "http.route"
   },
-  "alias": ["http.route"],
-  "sdks": ["php-laravel", "javascript-reactnative"],
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

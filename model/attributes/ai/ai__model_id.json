@@ -8,11 +8,11 @@
   "is_in_otel": false,
   "example": "gpt-4",
   "alias": ["gen_ai.response.model"],
-  "sdks": ["python"],
   "deprecation": {
     "_status": "backfill",
     "replacement": "gen_ai.response.model"
   },
+  "visibility": "public",
   "changelog": [
     {
       "version": "0.1.0",

@@ -30,16 +30,16 @@ Options:
   --type, -t          The type of the attribute (string/boolean/integer/double/string[]/boolean[]/integer[]/double[])
   --has_pii, -p       Whether the attribute contains PII (true/maybe/false)
   --is_in_otel, -o    Whether the attribute is in OpenTelemetry (true/false)
+  --visibility, -v   The visibility of the attribute (public/internal)
   --example, -e       An example value (optional)
   --alias, -a         Comma-separated list of attributes that alias to this attribute (optional)
-  --sdks, -s          Comma-separated list of SDKs that use this attribute (optional)
 
 Examples:
   # Interactive mode
   yarn run create:attribute
 
   # Non-interactive mode
-  yarn run create:attribute --key http.route --description "The route pattern of the request" --type string --has_pii false --is_in_otel true --example "/users/:id" --alias "url.template"
+  yarn run create:attribute --key http.route --description "The route pattern of the request" --type string --has_pii false --is_in_otel true --visibility public --example "/users/:id" --alias "url.template"
 `;
 
 const validateSchema = (data: unknown) => {
@@ -64,9 +64,9 @@ const createAttribute = async () => {
         type: { type: 'string', short: 't' },
         has_pii: { type: 'string', short: 'p' },
         is_in_otel: { type: 'string', short: 'o' },
+        visibility: { type: 'string', short: 'v' },
         example: { type: 'string', short: 'e' },
         alias: { type: 'string', short: 'a' },
-        sdks: { type: 'string', short: 's' },
       },
       allowPositionals: true,
     });
@@ -79,16 +79,23 @@ const createAttribute = async () => {
     intro('Create new attribute');
 
     // If any required option is provided, we'll use non-interactive mode
-    const isInteractive = !(values.key || values.description || values.type || values.has_pii || values.is_in_otel);
+    const isInteractive = !(
+      values.key ||
+      values.description ||
+      values.type ||
+      values.has_pii ||
+      values.is_in_otel ||
+      values.visibility
+    );
 
     let key: string | undefined;
     let description: string | undefined;
     let type: string | undefined;
     let piiKey: string | undefined;
     let isInOtel: string | undefined;
+    let visibility: string | undefined;
     let example: string | undefined;
     let alias: string | undefined;
-    let sdks: string | undefined;
 
     if (isInteractive) {
       key = await askForAttributeName();
@@ -96,23 +103,28 @@ const createAttribute = async () => {
       type = await askForAttributeType();
       piiKey = await askForAttributePii();
       isInOtel = String(await askForAttributeIsInOtel());
+      visibility = await askForAttributeVisibility();
       example = await askForAttributeExample();
       alias = await askForAttributeAlias();
-      sdks = await askForAttributeSdks();
     } else {
       key = values.key;
       description = values.description;
       type = values.type;
       piiKey = values.has_pii;
       isInOtel = values.is_in_otel;
+      visibility = values.visibility;
       example = values.example;
       alias = values.alias;
-      sdks = values.sdks;
     }
 
     // Validate required fields
-    if (!key || !description || !type || !piiKey || !isInOtel) {
+    if (!key || !description || !type || !piiKey || !isInOtel || !visibility) {
       console.error('Error: Missing required fields. Use --help for usage information.');
+      process.exit(1);
+    }
+
+    if (visibility !== 'public' && visibility !== 'internal') {
+      console.error('Error: visibility must be "public" or "internal".');
       process.exit(1);
     }
 
@@ -143,9 +155,9 @@ const createAttribute = async () => {
         key: piiKey,
       },
       is_in_otel: isInOtel.toLowerCase() === 'true',
+      visibility,
       ...(example && { example: exampleValue }),
       ...(alias && alias.trim() !== '' && { alias: alias.split(',').map((s) => s.trim()) }),
-      ...(sdks && sdks.trim() !== '' && { sdks: sdks.split(',').map((s) => s.trim()) }),
       changelog: [
         {
           version: 'next',
@@ -157,13 +169,15 @@ const createAttribute = async () => {
 
     validateSchema(attribute);
 
+    // Replace angle brackets for Windows path safety
+    const fileKey = key.replaceAll('<', '[').replaceAll('>', ']');
     // Create the directory structure based on the key
-    const parts = key.split('.');
+    const parts = fileKey.split('.');
     let filePath: string;
 
     if (parts.length === 1) {
       // Handle simple keys like 'replay_id'
-      filePath = path.join('model', 'attributes', `${key}.json`);
+      filePath = path.join('model', 'attributes', `${fileKey}.json`);
     } else {
       // Handle dotted keys like 'http.route'
       const dirPath = path.join('model', 'attributes', parts[0] ?? '');
@@ -253,10 +267,11 @@ async function askForAttributePii() {
     select({
       message: 'Does the attribute contain PII?',
       options: [
+        { value: 'maybe', label: 'Maybe' },
         { value: 'true', label: 'Yes' },
         { value: 'false', label: 'No' },
-        { value: 'maybe', label: 'Maybe' },
       ],
+      initialValue: 'maybe',
     }),
   );
 }
@@ -266,6 +281,18 @@ async function askForAttributeIsInOtel() {
     confirm({
       message: 'Is the attribute in OpenTelemetry?',
       initialValue: true,
+    }),
+  );
+}
+
+async function askForAttributeVisibility() {
+  return abortIfCancelled(
+    select({
+      message: 'What is the visibility of the attribute?',
+      options: [
+        { value: 'public', label: 'Public' },
+        { value: 'internal', label: 'Internal' },
+      ],
     }),
   );
 }
@@ -284,15 +311,6 @@ async function askForAttributeAlias() {
     text({
       message: 'Enter attributes that alias to this attribute (comma-separated, optional)',
       placeholder: 'url.route,http.routename',
-    }),
-  );
-}
-
-async function askForAttributeSdks() {
-  return abortIfCancelled(
-    text({
-      message: 'Enter SDKs that use this attribute (comma-separated, optional)',
-      placeholder: 'javascript-browser,javascript-node',
     }),
   );
 }
