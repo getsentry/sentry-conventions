@@ -2,8 +2,8 @@
   "key": "vercel.entrypoint",
   "brief": "Entrypoint for the request in Vercel",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "api/index.js",

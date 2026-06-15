@@ -2,8 +2,8 @@
   "key": "cloudflare.d1.duration",
   "brief": "The duration of a Cloudflare D1 operation.",
   "type": "integer",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": 543,

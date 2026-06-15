@@ -2,8 +2,8 @@
   "key": "gen_ai.embeddings.input",
   "brief": "The input to the embeddings model.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "What's the weather in Paris?",

@@ -2,8 +2,8 @@
   "key": "gen_ai.context.window_size",
   "brief": "The maximum context window size supported by the model for this generation.",
   "type": "integer",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": 128000,

@@ -2,8 +2,8 @@
   "key": "sentry.origin",
   "brief": "The origin of the instrumentation (e.g. span, log, etc.)",
   "type": "string",
-  "pii": {
-    "key": "false"
+  "apply_scrubbing": {
+    "key": "never"
   },
   "is_in_otel": false,
   "example": "auto.http.otel.fastify",

@@ -2,8 +2,8 @@
   "key": "ui.element.type",
   "brief": "type of the UI element",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "img",

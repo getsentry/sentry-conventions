@@ -2,8 +2,8 @@
   "key": "ui.element.height",
   "brief": "The height of the UI element (for Html in pixels)",
   "type": "integer",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": 256,

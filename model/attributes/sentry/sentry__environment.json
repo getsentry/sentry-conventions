@@ -2,8 +2,8 @@
   "key": "sentry.environment",
   "brief": "The sentry environment.",
   "type": "string",
-  "pii": {
-    "key": "false"
+  "apply_scrubbing": {
+    "key": "never"
   },
   "is_in_otel": false,
   "example": "production",

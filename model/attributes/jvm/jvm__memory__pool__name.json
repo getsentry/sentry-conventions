@@ -2,8 +2,8 @@
   "key": "jvm.memory.pool.name",
   "brief": "Name of the memory pool.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": "G1 Old Gen",

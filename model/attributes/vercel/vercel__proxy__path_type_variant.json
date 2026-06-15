@@ -2,8 +2,8 @@
   "key": "vercel.proxy.path_type_variant",
   "brief": "Variant of the path type",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "api",

@@ -2,8 +2,8 @@
   "key": "sentry.browser.version",
   "brief": "The version of the browser.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "120.0.6099.130",

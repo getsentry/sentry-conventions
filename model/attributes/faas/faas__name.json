@@ -2,8 +2,8 @@
   "key": "faas.name",
   "brief": "The name of the serverless function",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": "my_function",

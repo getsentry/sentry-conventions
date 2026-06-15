@@ -2,8 +2,8 @@
   "key": "middleware.name",
   "brief": "The name of the middleware.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "AuthenticationMiddleware",

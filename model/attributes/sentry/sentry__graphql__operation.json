@@ -2,8 +2,8 @@
   "key": "sentry.graphql.operation",
   "brief": "Indicates the type of graphql operation, emitted by the Javascript SDK.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "getUserById",

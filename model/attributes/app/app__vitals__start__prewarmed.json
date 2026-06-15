@@ -2,8 +2,8 @@
   "key": "app.vitals.start.prewarmed",
   "brief": "Whether the app start was prewarmed.",
   "type": "boolean",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": true,

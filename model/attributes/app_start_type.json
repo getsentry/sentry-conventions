@@ -2,8 +2,8 @@
   "key": "app_start_type",
   "brief": "Mobile app start variant. Either cold or warm.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "cold",

@@ -2,8 +2,8 @@
   "key": "db.statement",
   "brief": "The database statement being executed.",
   "type": "string",
-  "pii": {
-    "key": "true"
+  "apply_scrubbing": {
+    "key": "auto"
   },
   "is_in_otel": true,
   "example": "SELECT * FROM users",

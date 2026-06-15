@@ -2,8 +2,8 @@
   "key": "vercel.proxy.response_byte_size",
   "brief": "Size of the response in bytes",
   "type": "integer",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": 1024,

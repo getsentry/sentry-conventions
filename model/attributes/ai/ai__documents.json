@@ -2,8 +2,8 @@
   "key": "ai.documents",
   "brief": "Documents or content chunks used as context for the AI model.",
   "type": "string[]",
-  "pii": {
-    "key": "true"
+  "apply_scrubbing": {
+    "key": "auto"
   },
   "is_in_otel": false,
   "example": ["document1.txt", "document2.pdf"],

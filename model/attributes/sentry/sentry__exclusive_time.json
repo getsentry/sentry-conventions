@@ -2,8 +2,8 @@
   "key": "sentry.exclusive_time",
   "brief": "The exclusive time duration of the span in milliseconds.",
   "type": "double",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": 1234,

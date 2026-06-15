@@ -2,8 +2,8 @@
   "key": "app.start_time",
   "brief": "Formatted UTC timestamp when the user started the application.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "2025-01-01T00:00:00.000Z",

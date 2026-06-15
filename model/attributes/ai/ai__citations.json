@@ -2,8 +2,8 @@
   "key": "ai.citations",
   "brief": "References or sources cited by the AI model in its response.",
   "type": "string[]",
-  "pii": {
-    "key": "true"
+  "apply_scrubbing": {
+    "key": "auto"
   },
   "is_in_otel": false,
   "example": ["Citation 1", "Citation 2"],

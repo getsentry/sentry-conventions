@@ -2,8 +2,8 @@
   "key": "db.driver.name",
   "brief": "The name of the driver used for the database connection.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "psycopg2",

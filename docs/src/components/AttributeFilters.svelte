@@ -5,7 +5,7 @@ interface CategoryFilterCount {
   category: string;
   total: number;
   attributes: Array<{
-    pii: 'true' | 'maybe' | 'false';
+    scrubbing: 'auto' | 'manual' | 'never';
     visibility: 'public' | 'internal';
     otel: 'true' | 'false';
   }>;
@@ -17,13 +17,13 @@ interface Props {
   categoryFilterCounts?: CategoryFilterCount[];
 }
 
-const PII_VALUES = ['true', 'maybe', 'false'] as const;
+const SCRUBBING_VALUES = ['auto', 'manual', 'never'] as const;
 const VISIBILITY_VALUES = ['public', 'internal'] as const;
 const OTEL_VALUES = ['true', 'false'] as const;
 
 const { mode, totalCount = 0, categoryFilterCounts = [] }: Props = $props();
 
-let piiFilter = $state('');
+let scrubbingFilter = $state('');
 let visibilityFilter = $state('');
 let otelFilter = $state('');
 
@@ -34,16 +34,16 @@ let attributeListEl: HTMLElement | null = null;
 let filtersInitializedFromUrl = false;
 let latestApplyFiltersRun = 0;
 
-const hasActiveFilters = $derived(piiFilter !== '' || visibilityFilter !== '' || otelFilter !== '');
+const hasActiveFilters = $derived(scrubbingFilter !== '' || visibilityFilter !== '' || otelFilter !== '');
 
 function readFiltersFromUrl() {
   const params = new URLSearchParams(window.location.search);
-  const pii = params.get('pii') ?? '';
+  const scrubbing = params.get('scrubbing') ?? '';
   // `vis` avoids clashing with CSS/DOM visibility
   const visibility = params.get('vis') ?? '';
   const otel = params.get('otel') ?? '';
 
-  piiFilter = PII_VALUES.includes(pii as (typeof PII_VALUES)[number]) ? pii : '';
+  scrubbingFilter = SCRUBBING_VALUES.includes(scrubbing as (typeof SCRUBBING_VALUES)[number]) ? scrubbing : '';
   visibilityFilter = VISIBILITY_VALUES.includes(visibility as (typeof VISIBILITY_VALUES)[number]) ? visibility : '';
   otelFilter = OTEL_VALUES.includes(otel as (typeof OTEL_VALUES)[number]) ? otel : '';
 }
@@ -51,10 +51,10 @@ function readFiltersFromUrl() {
 function syncUrl() {
   const url = new URL(window.location.href);
 
-  if (piiFilter) {
-    url.searchParams.set('pii', piiFilter);
+  if (scrubbingFilter) {
+    url.searchParams.set('scrubbing', scrubbingFilter);
   } else {
-    url.searchParams.delete('pii');
+    url.searchParams.delete('scrubbing');
   }
 
   if (visibilityFilter) {
@@ -72,8 +72,8 @@ function syncUrl() {
   history.replaceState(null, '', url);
 }
 
-function matchesFilters(pii: string, visibility: string, otel: string) {
-  if (piiFilter && pii !== piiFilter) return false;
+function matchesFilters(scrubbing: string, visibility: string, otel: string) {
+  if (scrubbingFilter && scrubbing !== scrubbingFilter) return false;
   if (visibilityFilter && visibility !== visibilityFilter) return false;
   if (otelFilter && otel !== otelFilter) return false;
   return true;
@@ -89,15 +89,15 @@ function formatCategoryCount(count: number) {
 
 function getCardFilterValues(card: HTMLElement) {
   return {
-    pii: card.dataset.filterPii ?? card.getAttribute('data-filter-pii') ?? '',
+    scrubbing: card.dataset.filterScrubbing ?? card.getAttribute('data-filter-scrubbing') ?? '',
     visibility: card.dataset.filterVisibility ?? card.getAttribute('data-filter-visibility') ?? '',
     otel: card.dataset.filterOtel ?? card.getAttribute('data-filter-otel') ?? '',
   };
 }
 
 function cardMatches(card: HTMLElement) {
-  const { pii, visibility, otel } = getCardFilterValues(card);
-  return matchesFilters(pii, visibility, otel);
+  const { scrubbing, visibility, otel } = getCardFilterValues(card);
+  return matchesFilters(scrubbing, visibility, otel);
 }
 
 function isElementVisible(el: HTMLElement) {
@@ -168,7 +168,7 @@ function updateCategoryLinkUrls() {
   const links = root.querySelectorAll<HTMLAnchorElement>('[data-category-filter-link]');
 
   const query = new URLSearchParams([
-    ...(piiFilter ? [['pii', piiFilter]] : []),
+    ...(scrubbingFilter ? [['scrubbing', scrubbingFilter]] : []),
     ...(visibilityFilter ? [['vis', visibilityFilter]] : []),
     ...(otelFilter ? [['otel', otelFilter]] : []),
   ]).toString();
@@ -201,8 +201,9 @@ function updateCategoryCountLabels() {
       category,
       {
         total,
-        visible: attributes.filter((attribute) => matchesFilters(attribute.pii, attribute.visibility, attribute.otel))
-          .length,
+        visible: attributes.filter((attribute) =>
+          matchesFilters(attribute.scrubbing, attribute.visibility, attribute.otel),
+        ).length,
       },
     ]),
   );
@@ -346,7 +347,7 @@ async function applyFilters() {
 }
 
 function clearFilters() {
-  piiFilter = '';
+  scrubbingFilter = '';
   visibilityFilter = '';
   otelFilter = '';
 }
@@ -375,7 +376,7 @@ onMount(() => {
 });
 
 $effect(() => {
-  piiFilter;
+  scrubbingFilter;
   visibilityFilter;
   otelFilter;
   if (!filtersInitializedFromUrl) return;
@@ -400,16 +401,16 @@ const resultLabel = $derived.by(() => {
 <div class="mb-6 p-3 bg-bg-secondary border border-border rounded-lg">
   <div class="flex flex-wrap items-end gap-3">
     <label class="flex flex-col gap-1 min-w-[140px]">
-      <span class="text-xs text-text-muted uppercase tracking-wider">PII</span>
+      <span class="text-xs text-text-muted uppercase tracking-wider">Scrubbing</span>
       <select
         class="form-input py-2"
-        bind:value={piiFilter}
-        aria-label="Filter by PII"
+        bind:value={scrubbingFilter}
+        aria-label="Filter by scrubbing mode"
       >
         <option value="">All</option>
-        <option value="true">True</option>
-        <option value="maybe">Maybe</option>
-        <option value="false">False</option>
+        <option value="auto">Auto</option>
+        <option value="manual">Manual</option>
+        <option value="never">Never</option>
       </select>
     </label>
 

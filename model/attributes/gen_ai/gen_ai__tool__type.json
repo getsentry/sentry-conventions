@@ -2,8 +2,8 @@
   "key": "gen_ai.tool.type",
   "brief": "The type of tool being used.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": "function",

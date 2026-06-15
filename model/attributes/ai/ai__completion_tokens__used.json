@@ -2,8 +2,8 @@
   "key": "ai.completion_tokens.used",
   "brief": "The number of tokens used to respond to the message.",
   "type": "integer",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": 10,

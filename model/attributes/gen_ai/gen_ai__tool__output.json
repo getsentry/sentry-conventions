@@ -2,8 +2,8 @@
   "key": "gen_ai.tool.output",
   "brief": "The output of the tool being used. It has to be a stringified version of the output of the tool.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "rainy, 57°F",

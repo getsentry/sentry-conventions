@@ -2,8 +2,8 @@
   "key": "mcp.resource.protocol",
   "brief": "Protocol of the resource URI being accessed, extracted from the URI.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "file",

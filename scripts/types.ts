@@ -3,8 +3,8 @@ export interface AttributeJson {
   brief: string;
   has_dynamic_suffix?: boolean;
   type: 'string' | 'boolean' | 'integer' | 'double' | 'string[]' | 'boolean[]' | 'integer[]' | 'double[]' | 'any';
-  pii: {
-    key: 'true' | 'maybe' | 'false';
+  apply_scrubbing: {
+    key: 'auto' | 'manual' | 'never';
     reason?: string;
   };
   is_in_otel: boolean;

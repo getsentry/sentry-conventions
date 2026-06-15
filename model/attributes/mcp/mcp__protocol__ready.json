@@ -2,8 +2,8 @@
   "key": "mcp.protocol.ready",
   "brief": "Protocol readiness indicator for MCP session. Non-zero value indicates the protocol is ready.",
   "type": "integer",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": 1,

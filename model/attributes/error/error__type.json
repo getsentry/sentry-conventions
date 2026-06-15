@@ -2,8 +2,8 @@
   "key": "error.type",
   "brief": "Describes a class of error the operation ended with.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": "timeout",

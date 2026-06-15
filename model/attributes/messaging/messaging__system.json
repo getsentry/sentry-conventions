@@ -2,8 +2,8 @@
   "key": "messaging.system",
   "brief": "The messaging system as identified by the client instrumentation.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": "activemq",

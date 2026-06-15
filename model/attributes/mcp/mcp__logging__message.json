@@ -2,8 +2,8 @@
   "key": "mcp.logging.message",
   "brief": "Log message content from MCP logging operations.",
   "type": "string",
-  "pii": {
-    "key": "true",
+  "apply_scrubbing": {
+    "key": "auto",
     "reason": "Log messages can contain user data"
   },
   "is_in_otel": false,

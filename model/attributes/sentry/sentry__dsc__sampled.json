@@ -2,8 +2,8 @@
   "key": "sentry.dsc.sampled",
   "brief": "Whether the event was sampled according to the dynamic sampling context.",
   "type": "boolean",
-  "pii": {
-    "key": "false"
+  "apply_scrubbing": {
+    "key": "never"
   },
   "is_in_otel": false,
   "example": true,

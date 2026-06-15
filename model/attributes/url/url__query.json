@@ -2,8 +2,8 @@
   "key": "url.query",
   "brief": "The query string present in the URL. Note that this does not contain the leading ? character, while the `http.query` attribute does.",
   "type": "string",
-  "pii": {
-    "key": "true",
+  "apply_scrubbing": {
+    "key": "auto",
     "reason": "Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information."
   },
   "is_in_otel": true,

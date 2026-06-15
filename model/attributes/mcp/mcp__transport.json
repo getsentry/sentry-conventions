@@ -2,8 +2,8 @@
   "key": "mcp.transport",
   "brief": "Transport method used for MCP communication.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "stdio",

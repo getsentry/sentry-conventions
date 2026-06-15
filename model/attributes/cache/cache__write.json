@@ -2,8 +2,8 @@
   "key": "cache.write",
   "brief": "If the cache operation resulted in a write to the cache.",
   "type": "boolean",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": true,

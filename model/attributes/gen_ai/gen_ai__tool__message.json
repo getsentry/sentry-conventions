@@ -2,8 +2,8 @@
   "key": "gen_ai.tool.message",
   "brief": "The response from a tool or function call passed to the model.",
   "type": "string",
-  "pii": {
-    "key": "true"
+  "apply_scrubbing": {
+    "key": "auto"
   },
   "is_in_otel": false,
   "example": "rainy, 57°F",

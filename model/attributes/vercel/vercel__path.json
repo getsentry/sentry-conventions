@@ -2,8 +2,8 @@
   "key": "vercel.path",
   "brief": "Function or dynamic path of the request in Vercel.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "/dynamic/[route].json",

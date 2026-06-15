@@ -2,8 +2,8 @@
   "key": "vercel.proxy.waf_action",
   "brief": "Action taken by firewall rules",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "deny",

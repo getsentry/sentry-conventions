@@ -2,8 +2,8 @@
   "key": "cloudflare.d1.query_type",
   "brief": "The type of query executed in a Cloudflare D1 operation",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "run",

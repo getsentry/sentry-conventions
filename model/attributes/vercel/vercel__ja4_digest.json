@@ -2,8 +2,8 @@
   "key": "vercel.ja4_digest",
   "brief": "JA4 fingerprint digest",
   "type": "string",
-  "pii": {
-    "key": "true"
+  "apply_scrubbing": {
+    "key": "auto"
   },
   "is_in_otel": false,
   "example": "t13d1516h2_8daaf6152771_02713d6af862",
