@@ -3,7 +3,7 @@
   "brief": "The GraphQL document being executed.",
   "type": "string",
   "pii": {
-    "key": "maybe",
+    "key": "true",
     "reason": "The document may contain sensitive information in arguments or variables. Instrumentation should redact sensitive information when possible."
   },
   "is_in_otel": true,

@@ -7,8 +7,18 @@
   },
   "is_in_otel": false,
   "example": "$LATEST",
+  "alias": ["faas.version"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "faas.version",
+    "reason": "Use the OTel-aligned faas.version attribute instead"
+  },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Deprecated aws.lambda.function_version in favor of faas.version"
+    },
     {
       "version": "0.7.0",
       "prs": [369],

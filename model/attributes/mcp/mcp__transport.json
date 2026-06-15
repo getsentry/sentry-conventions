@@ -3,7 +3,7 @@
   "brief": "Transport method used for MCP communication.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": false,
   "example": "stdio",

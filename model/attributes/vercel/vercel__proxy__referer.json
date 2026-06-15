@@ -3,7 +3,7 @@
   "brief": "Referer of the request",
   "type": "string",
   "pii": {
-    "key": "maybe"
+    "key": "true"
   },
   "is_in_otel": false,
   "example": "*.vercel.app",

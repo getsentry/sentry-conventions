@@ -3,7 +3,7 @@
   "brief": "The error message.",
   "type": "string",
   "pii": {
-    "key": "maybe"
+    "key": "true"
   },
   "is_in_otel": true,
   "example": "ENOENT: no such file or directory",

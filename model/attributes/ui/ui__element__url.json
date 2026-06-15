@@ -3,11 +3,10 @@
   "brief": "The URL of the UI element (e.g. an img src)",
   "type": "string",
   "pii": {
-    "key": "maybe"
+    "key": "true"
   },
   "is_in_otel": false,
   "example": "https://assets.myapp.com/hero.png",
-  "sdks": ["javascript-browser"],
   "visibility": "public",
   "changelog": [
     {

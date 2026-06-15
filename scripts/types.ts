@@ -16,7 +16,6 @@ export interface AttributeJson {
     _status: string;
   };
   alias?: string[];
-  sdks?: string[];
   additional_context?: string[];
   changelog?: { version: string; prs?: number[]; description?: string }[];
 }
@@ -28,6 +27,17 @@ export interface NameJson {
     brief: string;
     is_in_otel: boolean;
     otel_notes?: string;
+    ops: string[];
+    templates: string[];
+    examples?: string[];
+  }[];
+}
+
+export interface DescriptionJson {
+  brief: string;
+  operations: {
+    name?: string;
+    brief: string;
     ops: string[];
     templates: string[];
     examples?: string[];

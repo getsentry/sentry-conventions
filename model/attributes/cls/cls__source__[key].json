@@ -9,7 +9,6 @@
   "is_in_otel": false,
   "example": "body > div#app",
   "alias": ["browser.web_vital.cls.source.<key>"],
-  "sdks": ["javascript-browser"],
   "deprecation": {
     "replacement": "browser.web_vital.cls.source.<key>",
     "reason": "The CLS source is now recorded as a browser.web_vital.cls.source.<key> attribute.",

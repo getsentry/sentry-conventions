@@ -90,17 +90,6 @@ const rawJson = JSON.stringify(attribute, null, 2);
       </div>
     )}
     
-    {attribute.sdks && attribute.sdks.length > 0 && (
-      <div class="flex items-baseline gap-3 text-sm">
-        <span class="text-text-muted min-w-[100px] flex-shrink-0">SDKs</span>
-        <span class="inline-flex flex-wrap gap-2">
-          {attribute.sdks.map((sdk) => (
-            <span class="px-2 py-0.5 bg-bg-elevated border border-border rounded-sm text-xs text-text-secondary">{sdk}</span>
-          ))}
-        </span>
-      </div>
-    )}
-    
     {attribute.has_dynamic_suffix && (
       <div class="flex items-baseline gap-3 text-sm">
         <span class="text-text-muted min-w-[100px] flex-shrink-0">Dynamic Suffix</span>

@@ -99,13 +99,6 @@
         "type": "string"
       }
     },
-    "sdks": {
-      "description": "If an attribute is SDK specific, list the SDKs that use this attribute. This is not an exhaustive list, there might be SDKs that send this attribute that are is not documented here.",
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
     "additional_context": {
       "description": "A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances",
       "type": "array",

@@ -195,7 +195,7 @@ export type AI_INPUT_MESSAGES_TYPE = string;
  *
  * Attribute Value Type: `boolean` {@link AI_IS_SEARCH_REQUIRED_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -383,7 +383,7 @@ export type AI_PROMPT_TOKENS_USED_TYPE = number;
  *
  * Attribute Value Type: `boolean` {@link AI_RAW_PROMPTING_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -1237,7 +1237,7 @@ export type APP_VITALS_START_COLD_VALUE_TYPE = number;
  *
  * Attribute Value Type: `boolean` {@link APP_VITALS_START_PREWARMED_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -1392,7 +1392,7 @@ export type APP_VITALS_TTID_VALUE_TYPE = number;
  *
  * Attribute Value Type: `number` {@link ART_GC_BLOCKING_COUNT_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -1413,7 +1413,7 @@ export type ART_GC_BLOCKING_COUNT_TYPE = number;
  *
  * Attribute Value Type: `number` {@link ART_GC_BLOCKING_TIME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -1434,7 +1434,7 @@ export type ART_GC_BLOCKING_TIME_TYPE = number;
  *
  * Attribute Value Type: `number` {@link ART_GC_PRE_OOME_COUNT_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -1455,7 +1455,7 @@ export type ART_GC_PRE_OOME_COUNT_TYPE = number;
  *
  * Attribute Value Type: `number` {@link ART_GC_TOTAL_COUNT_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -1476,7 +1476,7 @@ export type ART_GC_TOTAL_COUNT_TYPE = number;
  *
  * Attribute Value Type: `number` {@link ART_GC_TOTAL_TIME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -1497,7 +1497,7 @@ export type ART_GC_TOTAL_TIME_TYPE = number;
  *
  * Attribute Value Type: `number` {@link ART_GC_WAITING_TIME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -1518,7 +1518,7 @@ export type ART_GC_WAITING_TIME_TYPE = number;
  *
  * Attribute Value Type: `number` {@link ART_MEMORY_FREE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -1539,7 +1539,7 @@ export type ART_MEMORY_FREE_TYPE = number;
  *
  * Attribute Value Type: `number` {@link ART_MEMORY_FREE_UNTIL_GC_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -1560,7 +1560,7 @@ export type ART_MEMORY_FREE_UNTIL_GC_TYPE = number;
  *
  * Attribute Value Type: `number` {@link ART_MEMORY_FREE_UNTIL_OOME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -1581,7 +1581,7 @@ export type ART_MEMORY_FREE_UNTIL_OOME_TYPE = number;
  *
  * Attribute Value Type: `number` {@link ART_MEMORY_MAX_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -1602,7 +1602,7 @@ export type ART_MEMORY_MAX_TYPE = number;
  *
  * Attribute Value Type: `number` {@link ART_MEMORY_TOTAL_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -1691,6 +1691,9 @@ export type AWS_CLOUDWATCH_LOGS_URL_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link FAAS_INVOCATION_ID} `faas.invocation_id`
+ *
+ * @deprecated Use {@link FAAS_INVOCATION_ID} (faas.invocation_id) instead - This attribute is being deprecated in favor of faas.invocation_id
  * @example "8476a536-e9f4-11e8-9739-2dfe598c3fcd"
  */
 export const AWS_LAMBDA_AWS_REQUEST_ID = 'aws.lambda.aws_request_id';
@@ -1733,6 +1736,9 @@ export type AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link FAAS_NAME} `faas.name`
+ *
+ * @deprecated Use {@link FAAS_NAME} (faas.name) instead - Use the OTel-aligned faas.name attribute instead
  * @example "my-function"
  */
 export const AWS_LAMBDA_FUNCTION_NAME = 'aws.lambda.function_name';
@@ -1754,6 +1760,9 @@ export type AWS_LAMBDA_FUNCTION_NAME_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link FAAS_VERSION} `faas.version`
+ *
+ * @deprecated Use {@link FAAS_VERSION} (faas.version) instead - Use the OTel-aligned faas.version attribute instead
  * @example "$LATEST"
  */
 export const AWS_LAMBDA_FUNCTION_VERSION = 'aws.lambda.function_version';
@@ -1762,6 +1771,29 @@ export const AWS_LAMBDA_FUNCTION_VERSION = 'aws.lambda.function_version';
  * Type for {@link AWS_LAMBDA_FUNCTION_VERSION} aws.lambda.function_version
  */
 export type AWS_LAMBDA_FUNCTION_VERSION_TYPE = string;
+
+// Path: model/attributes/aws/aws__lambda__invoked_arn.json
+
+/**
+ * The full ARN of the Lambda function that was invoked `aws.lambda.invoked_arn`
+ *
+ * Attribute Value Type: `string` {@link AWS_LAMBDA_INVOKED_ARN_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link AWS_LAMBDA_INVOKED_FUNCTION_ARN} `aws.lambda.invoked_function_arn`
+ *
+ * @example "arn:aws:lambda:us-east-1:123456789012:function:my-function"
+ */
+export const AWS_LAMBDA_INVOKED_ARN = 'aws.lambda.invoked_arn';
+
+/**
+ * Type for {@link AWS_LAMBDA_INVOKED_ARN} aws.lambda.invoked_arn
+ */
+export type AWS_LAMBDA_INVOKED_ARN_TYPE = string;
 
 // Path: model/attributes/aws/aws__lambda__invoked_function_arn.json
 
@@ -1775,6 +1807,9 @@ export type AWS_LAMBDA_FUNCTION_VERSION_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link AWS_LAMBDA_INVOKED_ARN} `aws.lambda.invoked_arn`
+ *
+ * @deprecated Use {@link AWS_LAMBDA_INVOKED_ARN} (aws.lambda.invoked_arn) instead - This attribute is being deprecated in favor of aws.lambda.invoked_arn
  * @example "arn:aws:lambda:us-east-1:123456789012:function:my-function"
  */
 export const AWS_LAMBDA_INVOKED_FUNCTION_ARN = 'aws.lambda.invoked_function_arn';
@@ -1805,6 +1840,48 @@ export const AWS_LAMBDA_REMAINING_TIME_IN_MILLIS = 'aws.lambda.remaining_time_in
  */
 export type AWS_LAMBDA_REMAINING_TIME_IN_MILLIS_TYPE = number;
 
+// Path: model/attributes/aws/aws__log__group__names.json
+
+/**
+ * The name(s) of the AWS log group(s) an application is writing to. `aws.log.group.names`
+ *
+ * Attribute Value Type: `Array<string>` {@link AWS_LOG_GROUP_NAMES_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example ["/aws/lambda/my-function","opentelemetry-service"]
+ */
+export const AWS_LOG_GROUP_NAMES = 'aws.log.group.names';
+
+/**
+ * Type for {@link AWS_LOG_GROUP_NAMES} aws.log.group.names
+ */
+export type AWS_LOG_GROUP_NAMES_TYPE = Array<string>;
+
+// Path: model/attributes/aws/aws__log__stream__names.json
+
+/**
+ * The name(s) of the AWS log stream(s) an application is writing to. `aws.log.stream.names`
+ *
+ * Attribute Value Type: `Array<string>` {@link AWS_LOG_STREAM_NAMES_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example ["logs/main/10838bed-421f-43ef-870a-f43feacbbb5b"]
+ */
+export const AWS_LOG_STREAM_NAMES = 'aws.log.stream.names';
+
+/**
+ * Type for {@link AWS_LOG_STREAM_NAMES} aws.log.stream.names
+ */
+export type AWS_LOG_STREAM_NAMES_TYPE = Array<string>;
+
 // Path: model/attributes/blocked_main_thread.json
 
 /**
@@ -1812,7 +1889,7 @@ export type AWS_LAMBDA_REMAINING_TIME_IN_MILLIS_TYPE = number;
  *
  * Attribute Value Type: `boolean` {@link BLOCKED_MAIN_THREAD_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -2283,7 +2360,7 @@ export type BROWSER_WEB_VITAL_LCP_SIZE_TYPE = number;
  *
  * Attribute Value Type: `string` {@link BROWSER_WEB_VITAL_LCP_URL_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -2375,7 +2452,7 @@ export type BROWSER_WEB_VITAL_TTFB_VALUE_TYPE = number;
  *
  * Attribute Value Type: `boolean` {@link CACHE_HIT_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -2480,7 +2557,7 @@ export type CACHE_TTL_TYPE = number;
  *
  * Attribute Value Type: `boolean` {@link CACHE_WRITE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -2587,11 +2664,14 @@ export type CLOUDFLARE_D1_DURATION_TYPE = number;
  *
  * Attribute Value Type: `string` {@link CLOUDFLARE_D1_QUERY_TYPE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link DB_OPERATION_NAME} `db.operation.name`, {@link DB_OPERATION} `db.operation`
+ *
+ * @deprecated Use {@link DB_OPERATION_NAME} (db.operation.name) instead
  * @example "run"
  */
 export const CLOUDFLARE_D1_QUERY_TYPE = 'cloudflare.d1.query_type';
@@ -2643,6 +2723,132 @@ export const CLOUDFLARE_D1_ROWS_WRITTEN = 'cloudflare.d1.rows_written';
  */
 export type CLOUDFLARE_D1_ROWS_WRITTEN_TYPE = number;
 
+// Path: model/attributes/cloudflare/cloudflare__r2__bucket.json
+
+/**
+ * The name of the Cloudflare R2 bucket binding `cloudflare.r2.bucket`
+ *
+ * Attribute Value Type: `string` {@link CLOUDFLARE_R2_BUCKET_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "MY_BUCKET"
+ */
+export const CLOUDFLARE_R2_BUCKET = 'cloudflare.r2.bucket';
+
+/**
+ * Type for {@link CLOUDFLARE_R2_BUCKET} cloudflare.r2.bucket
+ */
+export type CLOUDFLARE_R2_BUCKET_TYPE = string;
+
+// Path: model/attributes/cloudflare/cloudflare__r2__operation.json
+
+/**
+ * The R2 API operation being performed `cloudflare.r2.operation`
+ *
+ * Attribute Value Type: `string` {@link CLOUDFLARE_R2_OPERATION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "GetObject"
+ */
+export const CLOUDFLARE_R2_OPERATION = 'cloudflare.r2.operation';
+
+/**
+ * Type for {@link CLOUDFLARE_R2_OPERATION} cloudflare.r2.operation
+ */
+export type CLOUDFLARE_R2_OPERATION_TYPE = string;
+
+// Path: model/attributes/cloudflare/cloudflare__r2__request__delimiter.json
+
+/**
+ * The delimiter used to group objects in an R2 list operation `cloudflare.r2.request.delimiter`
+ *
+ * Attribute Value Type: `string` {@link CLOUDFLARE_R2_REQUEST_DELIMITER_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "/"
+ */
+export const CLOUDFLARE_R2_REQUEST_DELIMITER = 'cloudflare.r2.request.delimiter';
+
+/**
+ * Type for {@link CLOUDFLARE_R2_REQUEST_DELIMITER} cloudflare.r2.request.delimiter
+ */
+export type CLOUDFLARE_R2_REQUEST_DELIMITER_TYPE = string;
+
+// Path: model/attributes/cloudflare/cloudflare__r2__request__key.json
+
+/**
+ * The object key used in the R2 operation `cloudflare.r2.request.key`
+ *
+ * Attribute Value Type: `string` {@link CLOUDFLARE_R2_REQUEST_KEY_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "my-file.txt"
+ */
+export const CLOUDFLARE_R2_REQUEST_KEY = 'cloudflare.r2.request.key';
+
+/**
+ * Type for {@link CLOUDFLARE_R2_REQUEST_KEY} cloudflare.r2.request.key
+ */
+export type CLOUDFLARE_R2_REQUEST_KEY_TYPE = string;
+
+// Path: model/attributes/cloudflare/cloudflare__r2__request__part_number.json
+
+/**
+ * The part number in a multipart upload operation `cloudflare.r2.request.part_number`
+ *
+ * Attribute Value Type: `number` {@link CLOUDFLARE_R2_REQUEST_PART_NUMBER_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 1
+ */
+export const CLOUDFLARE_R2_REQUEST_PART_NUMBER = 'cloudflare.r2.request.part_number';
+
+/**
+ * Type for {@link CLOUDFLARE_R2_REQUEST_PART_NUMBER} cloudflare.r2.request.part_number
+ */
+export type CLOUDFLARE_R2_REQUEST_PART_NUMBER_TYPE = number;
+
+// Path: model/attributes/cloudflare/cloudflare__r2__request__prefix.json
+
+/**
+ * The prefix used to filter objects in an R2 list operation `cloudflare.r2.request.prefix`
+ *
+ * Attribute Value Type: `string` {@link CLOUDFLARE_R2_REQUEST_PREFIX_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "images/"
+ */
+export const CLOUDFLARE_R2_REQUEST_PREFIX = 'cloudflare.r2.request.prefix';
+
+/**
+ * Type for {@link CLOUDFLARE_R2_REQUEST_PREFIX} cloudflare.r2.request.prefix
+ */
+export type CLOUDFLARE_R2_REQUEST_PREFIX_TYPE = string;
+
 // Path: model/attributes/cloudflare/cloudflare__workflow__attempt.json
 
 /**
@@ -2650,7 +2856,7 @@ export type CLOUDFLARE_D1_ROWS_WRITTEN_TYPE = number;
  *
  * Attribute Value Type: `number` {@link CLOUDFLARE_WORKFLOW_ATTEMPT_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -2671,7 +2877,7 @@ export type CLOUDFLARE_WORKFLOW_ATTEMPT_TYPE = number;
  *
  * Attribute Value Type: `string` {@link CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -2692,7 +2898,7 @@ export type CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF_TYPE = string;
  *
  * Attribute Value Type: `string` {@link CLOUDFLARE_WORKFLOW_RETRIES_DELAY_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -2713,7 +2919,7 @@ export type CLOUDFLARE_WORKFLOW_RETRIES_DELAY_TYPE = string;
  *
  * Attribute Value Type: `number` {@link CLOUDFLARE_WORKFLOW_RETRIES_LIMIT_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -2734,7 +2940,7 @@ export type CLOUDFLARE_WORKFLOW_RETRIES_LIMIT_TYPE = number;
  *
  * Attribute Value Type: `string` {@link CLOUDFLARE_WORKFLOW_TIMEOUT_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -2852,6 +3058,27 @@ export const CLOUD_REGION = 'cloud.region';
  * Type for {@link CLOUD_REGION} cloud.region
  */
 export type CLOUD_REGION_TYPE = string;
+
+// Path: model/attributes/cloud/cloud__resource_id.json
+
+/**
+ * Cloud provider-specific native identifier of the monitored cloud resource `cloud.resource_id`
+ *
+ * Attribute Value Type: `string` {@link CLOUD_RESOURCE_ID_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "arn:aws:lambda:REGION:ACCOUNT_ID:function:my-function"
+ */
+export const CLOUD_RESOURCE_ID = 'cloud.resource_id';
+
+/**
+ * Type for {@link CLOUD_RESOURCE_ID} cloud.resource_id
+ */
+export type CLOUD_RESOURCE_ID_TYPE = string;
 
 // Path: model/attributes/cls.json
 
@@ -3245,7 +3472,7 @@ export type DB_COLLECTION_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link DB_DRIVER_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -3318,7 +3545,7 @@ export type DB_NAMESPACE_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link DB_OPERATION_NAME} `db.operation.name`
+ * Aliases: {@link DB_OPERATION_NAME} `db.operation.name`, {@link CLOUDFLARE_D1_QUERY_TYPE} `cloudflare.d1.query_type`
  *
  * @deprecated Use {@link DB_OPERATION_NAME} (db.operation.name) instead
  * @example "SELECT"
@@ -3363,7 +3590,7 @@ export type DB_OPERATION_BATCH_SIZE_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link DB_OPERATION} `db.operation`
+ * Aliases: {@link DB_OPERATION} `db.operation`, {@link CLOUDFLARE_D1_QUERY_TYPE} `cloudflare.d1.query_type`
  *
  * @example "SELECT"
  */
@@ -3381,7 +3608,7 @@ export type DB_OPERATION_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link DB_QUERY_PARAMETER_KEY_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -3490,7 +3717,7 @@ export type DB_REDIS_KEY_TYPE = string;
  *
  * Attribute Value Type: `Array<string>` {@link DB_REDIS_PARAMETERS_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -3511,7 +3738,7 @@ export type DB_REDIS_PARAMETERS_TYPE = Array<string>;
  *
  * Attribute Value Type: `Array<string>` {@link DB_SQL_BINDINGS_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -3533,7 +3760,7 @@ export type DB_SQL_BINDINGS_TYPE = Array<string>;
  *
  * Attribute Value Type: `string` {@link DB_STATEMENT_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -3625,7 +3852,7 @@ export type DB_SYSTEM_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link DB_USER_TYPE}
  *
- * Contains PII: true
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -4051,7 +4278,7 @@ export type DEVICE_LOW_MEMORY_TYPE = boolean;
  *
  * Attribute Value Type: `boolean` {@link DEVICE_LOW_POWER_MODE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -4179,7 +4406,7 @@ export type DEVICE_MODEL_ID_TYPE = string;
  *
  * Attribute Value Type: `string` {@link DEVICE_NAME_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -4370,7 +4597,7 @@ export type DEVICE_SCREEN_WIDTH_PIXELS_TYPE = number;
  *
  * Attribute Value Type: `boolean` {@link DEVICE_SIMULATOR_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -4544,7 +4771,7 @@ export type ERROR_TYPE_TYPE = string;
  *
  * Attribute Value Type: `number` {@link EVENT_ID_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -4586,7 +4813,7 @@ export type EVENT_NAME_TYPE = string;
  *
  * Attribute Value Type: `boolean` {@link EXCEPTION_ESCAPED_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -4607,7 +4834,7 @@ export type EXCEPTION_ESCAPED_TYPE = boolean;
  *
  * Attribute Value Type: `string` {@link EXCEPTION_MESSAGE_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -4628,7 +4855,7 @@ export type EXCEPTION_MESSAGE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link EXCEPTION_STACKTRACE_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -4670,7 +4897,7 @@ export type EXCEPTION_TYPE_TYPE = string;
  *
  * Attribute Value Type: `boolean` {@link FAAS_COLDSTART_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -4712,7 +4939,7 @@ export type FAAS_CRON_TYPE = string;
  *
  * Attribute Value Type: `number` {@link FAAS_DURATION_IN_MS_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -4754,7 +4981,7 @@ export type FAAS_ENTRY_POINT_TYPE = string;
  *
  * Attribute Value Type: `string` {@link FAAS_IDENTITY_TYPE}
  *
- * Contains PII: true
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -4768,6 +4995,29 @@ export const FAAS_IDENTITY = 'faas.identity';
  */
 export type FAAS_IDENTITY_TYPE = string;
 
+// Path: model/attributes/faas/faas__invocation_id.json
+
+/**
+ * The invocation ID of the current function invocation. `faas.invocation_id`
+ *
+ * Attribute Value Type: `string` {@link FAAS_INVOCATION_ID_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link AWS_LAMBDA_AWS_REQUEST_ID} `aws.lambda.aws_request_id`
+ *
+ * @example "af9d5aa4-a685-4c5f-a22b-444f80b3cc28"
+ */
+export const FAAS_INVOCATION_ID = 'faas.invocation_id';
+
+/**
+ * Type for {@link FAAS_INVOCATION_ID} faas.invocation_id
+ */
+export type FAAS_INVOCATION_ID_TYPE = string;
+
 // Path: model/attributes/faas/faas__name.json
 
 /**
@@ -4779,6 +5029,8 @@ export type FAAS_IDENTITY_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
+ *
+ * Aliases: {@link AWS_LAMBDA_FUNCTION_NAME} `aws.lambda.function_name`
  *
  * @example "my_function"
  */
@@ -4831,6 +5083,29 @@ export const FAAS_TRIGGER = 'faas.trigger';
  */
 export type FAAS_TRIGGER_TYPE = string;
 
+// Path: model/attributes/faas/faas__version.json
+
+/**
+ * The version of the function that was invoked `faas.version`
+ *
+ * Attribute Value Type: `string` {@link FAAS_VERSION_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link AWS_LAMBDA_FUNCTION_VERSION} `aws.lambda.function_version`
+ *
+ * @example "$LATEST"
+ */
+export const FAAS_VERSION = 'faas.version';
+
+/**
+ * Type for {@link FAAS_VERSION} faas.version
+ */
+export type FAAS_VERSION_TYPE = string;
+
 // Path: model/attributes/fcp.json
 
 /**
@@ -4862,7 +5137,7 @@ export type FCP_TYPE = number;
  *
  * Attribute Value Type: `boolean` {@link FLAG_EVALUATION_KEY_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -5976,6 +6251,29 @@ export const GEN_AI_RESPONSE_TEXT = 'gen_ai.response.text';
  */
 export type GEN_AI_RESPONSE_TEXT_TYPE = string;
 
+// Path: model/attributes/gen_ai/gen_ai__response__time_to_first_chunk.json
+
+/**
+ * Time in seconds when the first response content chunk arrived in streaming responses. `gen_ai.response.time_to_first_chunk`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN} `gen_ai.response.time_to_first_token`
+ *
+ * @example 0.6853435
+ */
+export const GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK = 'gen_ai.response.time_to_first_chunk';
+
+/**
+ * Type for {@link GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK} gen_ai.response.time_to_first_chunk
+ */
+export type GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK_TYPE = number;
+
 // Path: model/attributes/gen_ai/gen_ai__response__time_to_first_token.json
 
 /**
@@ -5988,6 +6286,9 @@ export type GEN_AI_RESPONSE_TEXT_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK} `gen_ai.response.time_to_first_chunk`
+ *
+ * @deprecated Use {@link GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK} (gen_ai.response.time_to_first_chunk) instead
  * @example 0.6853435
  */
 export const GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN = 'gen_ai.response.time_to_first_token';
@@ -6314,6 +6615,52 @@ export const GEN_AI_TOOL_TYPE = 'gen_ai.tool.type';
  */
 export type GEN_AI_TOOL_TYPE_TYPE = string;
 
+// Path: model/attributes/gen_ai/gen_ai__usage__cache_creation__input_tokens.json
+
+/**
+ * The number of tokens written to the cache when processing the AI input (prompt). `gen_ai.usage.cache_creation.input_tokens`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE} `gen_ai.usage.input_tokens.cache_write`
+ *
+ * @example 100
+ */
+export const GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS = 'gen_ai.usage.cache_creation.input_tokens';
+
+/**
+ * Type for {@link GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS} gen_ai.usage.cache_creation.input_tokens
+ */
+export type GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__usage__cache_read__input_tokens.json
+
+/**
+ * The number of cached tokens used to process the AI input (prompt). `gen_ai.usage.cache_read.input_tokens`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_USAGE_INPUT_TOKENS_CACHED} `gen_ai.usage.input_tokens.cached`
+ *
+ * @example 50
+ */
+export const GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS = 'gen_ai.usage.cache_read.input_tokens';
+
+/**
+ * Type for {@link GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS} gen_ai.usage.cache_read.input_tokens
+ */
+export type GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS_TYPE = number;
+
 // Path: model/attributes/gen_ai/gen_ai__usage__completion_tokens.json
 
 /**
@@ -6373,6 +6720,9 @@ export type GEN_AI_USAGE_INPUT_TOKENS_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS} `gen_ai.usage.cache_read.input_tokens`
+ *
+ * @deprecated Use {@link GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS} (gen_ai.usage.cache_read.input_tokens) instead
  * @example 50
  */
 export const GEN_AI_USAGE_INPUT_TOKENS_CACHED = 'gen_ai.usage.input_tokens.cached';
@@ -6394,6 +6744,9 @@ export type GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS} `gen_ai.usage.cache_creation.input_tokens`
+ *
+ * @deprecated Use {@link GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS} (gen_ai.usage.cache_creation.input_tokens) instead
  * @example 100
  */
 export const GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE = 'gen_ai.usage.input_tokens.cache_write';
@@ -6438,6 +6791,9 @@ export type GEN_AI_USAGE_OUTPUT_TOKENS_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link GEN_AI_USAGE_REASONING_OUTPUT_TOKENS} `gen_ai.usage.reasoning.output_tokens`
+ *
+ * @deprecated Use {@link GEN_AI_USAGE_REASONING_OUTPUT_TOKENS} (gen_ai.usage.reasoning.output_tokens) instead
  * @example 75
  */
 export const GEN_AI_USAGE_OUTPUT_TOKENS_REASONING = 'gen_ai.usage.output_tokens.reasoning';
@@ -6471,6 +6827,29 @@ export const GEN_AI_USAGE_PROMPT_TOKENS = 'gen_ai.usage.prompt_tokens';
  */
 export type GEN_AI_USAGE_PROMPT_TOKENS_TYPE = number;
 
+// Path: model/attributes/gen_ai/gen_ai__usage__reasoning__output_tokens.json
+
+/**
+ * The number of tokens used for reasoning to create the AI output. `gen_ai.usage.reasoning.output_tokens`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_USAGE_REASONING_OUTPUT_TOKENS_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_USAGE_OUTPUT_TOKENS_REASONING} `gen_ai.usage.output_tokens.reasoning`
+ *
+ * @example 75
+ */
+export const GEN_AI_USAGE_REASONING_OUTPUT_TOKENS = 'gen_ai.usage.reasoning.output_tokens';
+
+/**
+ * Type for {@link GEN_AI_USAGE_REASONING_OUTPUT_TOKENS} gen_ai.usage.reasoning.output_tokens
+ */
+export type GEN_AI_USAGE_REASONING_OUTPUT_TOKENS_TYPE = number;
+
 // Path: model/attributes/gen_ai/gen_ai__usage__total_tokens.json
 
 /**
@@ -6501,7 +6880,7 @@ export type GEN_AI_USAGE_TOTAL_TOKENS_TYPE = number;
  *
  * Attribute Value Type: `string` {@link GRAPHQL_DOCUMENT_TYPE}
  *
- * Contains PII: maybe - The document may contain sensitive information in arguments or variables. Instrumentation should redact sensitive information when possible.
+ * Contains PII: true - The document may contain sensitive information in arguments or variables. Instrumentation should redact sensitive information when possible.
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -6657,7 +7036,7 @@ export type HTTP_FLAVOR_TYPE = string;
  *
  * Attribute Value Type: `string` {@link HTTP_FRAGMENT_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -6747,7 +7126,7 @@ export type HTTP_QUERY_TYPE = string;
  *
  * Attribute Value Type: `string` {@link HTTP_REQUEST_BODY_DATA_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -6873,7 +7252,7 @@ export type HTTP_REQUEST_FETCH_START_TYPE = number;
  *
  * Attribute Value Type: `Array<string>` {@link HTTP_REQUEST_HEADER_KEY_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -7202,7 +7581,7 @@ export type HTTP_RESPONSE_HEADER_CONTENT_LENGTH_TYPE = string;
  *
  * Attribute Value Type: `Array<string>` {@link HTTP_RESPONSE_HEADER_KEY_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -7411,7 +7790,7 @@ export type HTTP_STATUS_CODE_TYPE = number;
  *
  * Attribute Value Type: `string` {@link HTTP_TARGET_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -7654,7 +8033,7 @@ export type JVM_MEMORY_TYPE_TYPE = string;
  *
  * Attribute Value Type: `boolean` {@link JVM_THREAD_DAEMON_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -7840,7 +8219,7 @@ export type LCP_SIZE_TYPE = number;
  *
  * Attribute Value Type: `string` {@link LCP_URL_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -7906,7 +8285,7 @@ export type MCP_CANCELLED_REASON_TYPE = string;
  *
  * Attribute Value Type: `string` {@link MCP_CANCELLED_REQUEST_ID_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -7927,7 +8306,7 @@ export type MCP_CANCELLED_REQUEST_ID_TYPE = string;
  *
  * Attribute Value Type: `string` {@link MCP_CLIENT_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -7969,7 +8348,7 @@ export type MCP_CLIENT_TITLE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link MCP_CLIENT_VERSION_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -7990,7 +8369,7 @@ export type MCP_CLIENT_VERSION_TYPE = string;
  *
  * Attribute Value Type: `string` {@link MCP_LIFECYCLE_PHASE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -8011,7 +8390,7 @@ export type MCP_LIFECYCLE_PHASE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link MCP_LOGGING_DATA_TYPE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -8032,7 +8411,7 @@ export type MCP_LOGGING_DATA_TYPE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link MCP_LOGGING_LEVEL_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -8095,7 +8474,7 @@ export type MCP_LOGGING_MESSAGE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link MCP_METHOD_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -8179,7 +8558,7 @@ export type MCP_PROGRESS_PERCENTAGE_TYPE = number;
  *
  * Attribute Value Type: `string` {@link MCP_PROGRESS_TOKEN_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -8308,7 +8687,7 @@ export type MCP_PROMPT_RESULT_MESSAGE_COUNT_TYPE = number;
  *
  * Attribute Value Type: `string` {@link MCP_PROMPT_RESULT_MESSAGE_ROLE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -8350,7 +8729,7 @@ export type MCP_PROTOCOL_READY_TYPE = number;
  *
  * Attribute Value Type: `string` {@link MCP_PROTOCOL_VERSION_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -8436,7 +8815,7 @@ export type MCP_REQUEST_ARGUMENT_URI_TYPE = string;
  *
  * Attribute Value Type: `string` {@link MCP_REQUEST_ID_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -8460,7 +8839,7 @@ export type MCP_REQUEST_ID_TYPE = string;
  *
  * Attribute Value Type: `string` {@link MCP_RESOURCE_PROTOCOL_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -8505,7 +8884,7 @@ export type MCP_RESOURCE_URI_TYPE = string;
  *
  * Attribute Value Type: `string` {@link MCP_SERVER_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -8547,7 +8926,7 @@ export type MCP_SERVER_TITLE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link MCP_SERVER_VERSION_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -8568,7 +8947,7 @@ export type MCP_SERVER_VERSION_TYPE = string;
  *
  * Attribute Value Type: `string` {@link MCP_SESSION_ID_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -8589,7 +8968,7 @@ export type MCP_SESSION_ID_TYPE = string;
  *
  * Attribute Value Type: `string` {@link MCP_TOOL_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -8654,7 +9033,7 @@ export type MCP_TOOL_RESULT_CONTENT_COUNT_TYPE = number;
  *
  * Attribute Value Type: `boolean` {@link MCP_TOOL_RESULT_IS_ERROR_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -8676,7 +9055,7 @@ export type MCP_TOOL_RESULT_IS_ERROR_TYPE = boolean;
  *
  * Attribute Value Type: `string` {@link MCP_TRANSPORT_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -8700,7 +9079,7 @@ export type MCP_TRANSPORT_TYPE = string;
  *
  * Attribute Value Type: `string` {@link MDC_KEY_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -8723,7 +9102,7 @@ export type MDC_KEY_TYPE = string;
  *
  * Attribute Value Type: `number` {@link MESSAGING_BATCH_MESSAGE_COUNT_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -8891,7 +9270,7 @@ export type MESSAGING_MESSAGE_RETRY_COUNT_TYPE = number;
  *
  * Attribute Value Type: `string` {@link MESSAGING_OPERATION_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -8978,7 +9357,7 @@ export type METHOD_TYPE = string;
  *
  * Attribute Value Type: `string` {@link MIDDLEWARE_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -9062,7 +9441,7 @@ export type NEL_PHASE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link NEL_REFERRER_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -9240,7 +9619,7 @@ export type NETWORK_LOCAL_PORT_TYPE = number;
  *
  * Attribute Value Type: `string` {@link NETWORK_PEER_ADDRESS_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -9446,7 +9825,7 @@ export type NET_HOST_PORT_TYPE = number;
  *
  * Attribute Value Type: `string` {@link NET_PEER_IP_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -9470,7 +9849,7 @@ export type NET_PEER_IP_TYPE = string;
  *
  * Attribute Value Type: `string` {@link NET_PEER_NAME_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -9632,7 +10011,7 @@ export type NET_SOCK_HOST_PORT_TYPE = number;
  *
  * Attribute Value Type: `string` {@link NET_SOCK_PEER_ADDR_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -9656,7 +10035,7 @@ export type NET_SOCK_PEER_ADDR_TYPE = string;
  *
  * Attribute Value Type: `string` {@link NET_SOCK_PEER_NAME_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -10002,7 +10381,7 @@ export type OTEL_STATUS_CODE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link OTEL_STATUS_DESCRIPTION_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -10023,7 +10402,7 @@ export type OTEL_STATUS_DESCRIPTION_TYPE = string;
  *
  * Attribute Value Type: `string` {@link PARAMS_KEY_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -10117,7 +10496,7 @@ export type PREVIOUS_ROUTE_TYPE = string;
  *
  * Attribute Value Type: `Array<string>` {@link PROCESS_COMMAND_ARGS_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -10291,7 +10670,7 @@ export type PROCESS_RUNTIME_VERSION_TYPE = string;
  *
  * Attribute Value Type: `string` {@link QUERY_KEY_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -10360,7 +10739,7 @@ export type RELEASE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link REMIX_ACTION_FORM_DATA_KEY_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -10407,7 +10786,7 @@ export type REPLAY_ID_TYPE = string;
  *
  * Attribute Value Type: `string` {@link RESOURCE_DEPLOYMENT_ENVIRONMENT_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -10429,7 +10808,7 @@ export type RESOURCE_DEPLOYMENT_ENVIRONMENT_TYPE = string;
  *
  * Attribute Value Type: `string` {@link RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -10894,7 +11273,7 @@ export type SENTRY_CLIENT_SAMPLE_RATE_TYPE = number;
  *
  * Attribute Value Type: `string` {@link SENTRY_DESCRIPTION_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -11314,7 +11693,7 @@ export type SENTRY_MAIN_THREAD_TYPE = boolean;
  *
  * Attribute Value Type: `string` {@link SENTRY_MESSAGE_PARAMETER_KEY_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -11482,7 +11861,7 @@ export type SENTRY_NORMALIZED_DB_QUERY_HASH_TYPE = string;
  *
  * Attribute Value Type: `string` {@link SENTRY_NORMALIZED_DESCRIPTION_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -12291,6 +12670,27 @@ export const SERVICE_VERSION = 'service.version';
  */
 export type SERVICE_VERSION_TYPE = string;
 
+// Path: model/attributes/session/session__id.json
+
+/**
+ * A unique id identifying the active session at the time of setting this attribute `session.id`
+ *
+ * Attribute Value Type: `string` {@link SESSION_ID_TYPE}
+ *
+ * Contains PII: maybe
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "00112233-4455-6677-8899-aabbccddeeff"
+ */
+export const SESSION_ID = 'session.id';
+
+/**
+ * Type for {@link SESSION_ID} session.id
+ */
+export type SESSION_ID_TYPE = string;
+
 // Path: model/attributes/stall_percentage.json
 
 /**
@@ -12582,7 +12982,7 @@ export type TTFB_REQUESTTIME_TYPE = number;
  *
  * Attribute Value Type: `string` {@link TYPE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -12624,7 +13024,7 @@ export type UI_COMPONENT_NAME_TYPE = string;
  *
  * Attribute Value Type: `boolean` {@link UI_CONTRIBUTES_TO_TTFD_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -12645,7 +13045,7 @@ export type UI_CONTRIBUTES_TO_TTFD_TYPE = boolean;
  *
  * Attribute Value Type: `boolean` {@link UI_CONTRIBUTES_TO_TTID_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -12813,7 +13213,7 @@ export type UI_ELEMENT_TYPE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link UI_ELEMENT_URL_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -12900,7 +13300,7 @@ export type URL_DOMAIN_TYPE = string;
  *
  * Attribute Value Type: `string` {@link URL_FRAGMENT_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -12944,7 +13344,7 @@ export type URL_FULL_TYPE = string;
  *
  * Attribute Value Type: `string` {@link URL_PATH_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -12965,7 +13365,7 @@ export type URL_PATH_TYPE = string;
  *
  * Attribute Value Type: `string` {@link URL_PATH_PARAMETER_KEY_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -13348,7 +13748,7 @@ export type USER_ROLES_TYPE = Array<string>;
  *
  * Attribute Value Type: `string` {@link VERCEL_BRANCH_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -13369,7 +13769,7 @@ export type VERCEL_BRANCH_TYPE = string;
  *
  * Attribute Value Type: `string` {@link VERCEL_BUILD_ID_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -13390,7 +13790,7 @@ export type VERCEL_BUILD_ID_TYPE = string;
  *
  * Attribute Value Type: `string` {@link VERCEL_DEPLOYMENT_ID_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -13432,7 +13832,7 @@ export type VERCEL_DESTINATION_TYPE = string;
  *
  * Attribute Value Type: `string` {@link VERCEL_EDGE_TYPE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -13474,7 +13874,7 @@ export type VERCEL_ENTRYPOINT_TYPE = string;
  *
  * Attribute Value Type: `string` {@link VERCEL_EXECUTION_REGION_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -13495,7 +13895,7 @@ export type VERCEL_EXECUTION_REGION_TYPE = string;
  *
  * Attribute Value Type: `string` {@link VERCEL_ID_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -13516,7 +13916,7 @@ export type VERCEL_ID_TYPE = string;
  *
  * Attribute Value Type: `string` {@link VERCEL_JA3_DIGEST_TYPE}
  *
- * Contains PII: false
+ * Contains PII: true
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -13537,7 +13937,7 @@ export type VERCEL_JA3_DIGEST_TYPE = string;
  *
  * Attribute Value Type: `string` {@link VERCEL_JA4_DIGEST_TYPE}
  *
- * Contains PII: false
+ * Contains PII: true
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -13558,7 +13958,7 @@ export type VERCEL_JA4_DIGEST_TYPE = string;
  *
  * Attribute Value Type: `string` {@link VERCEL_LOG_TYPE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -13600,7 +14000,7 @@ export type VERCEL_PATH_TYPE = string;
  *
  * Attribute Value Type: `string` {@link VERCEL_PROJECT_ID_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -13642,7 +14042,7 @@ export type VERCEL_PROJECT_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link VERCEL_PROXY_CACHE_ID_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -13705,7 +14105,7 @@ export type VERCEL_PROXY_HOST_TYPE = string;
  *
  * Attribute Value Type: `string` {@link VERCEL_PROXY_LAMBDA_REGION_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -13726,7 +14126,7 @@ export type VERCEL_PROXY_LAMBDA_REGION_TYPE = string;
  *
  * Attribute Value Type: `string` {@link VERCEL_PROXY_METHOD_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -13747,7 +14147,7 @@ export type VERCEL_PROXY_METHOD_TYPE = string;
  *
  * Attribute Value Type: `string` {@link VERCEL_PROXY_PATH_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -13768,7 +14168,7 @@ export type VERCEL_PROXY_PATH_TYPE = string;
  *
  * Attribute Value Type: `string` {@link VERCEL_PROXY_PATH_TYPE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -13810,7 +14210,7 @@ export type VERCEL_PROXY_PATH_TYPE_VARIANT_TYPE = string;
  *
  * Attribute Value Type: `string` {@link VERCEL_PROXY_REFERER_TYPE}
  *
- * Contains PII: maybe
+ * Contains PII: true
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -13831,7 +14231,7 @@ export type VERCEL_PROXY_REFERER_TYPE = string;
  *
  * Attribute Value Type: `string` {@link VERCEL_PROXY_REGION_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -13873,7 +14273,7 @@ export type VERCEL_PROXY_RESPONSE_BYTE_SIZE_TYPE = number;
  *
  * Attribute Value Type: `string` {@link VERCEL_PROXY_SCHEME_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -13957,7 +14357,7 @@ export type VERCEL_PROXY_USER_AGENT_TYPE = Array<string>;
  *
  * Attribute Value Type: `string` {@link VERCEL_PROXY_VERCEL_CACHE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -13978,7 +14378,7 @@ export type VERCEL_PROXY_VERCEL_CACHE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link VERCEL_PROXY_VERCEL_ID_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -13999,7 +14399,7 @@ export type VERCEL_PROXY_VERCEL_ID_TYPE = string;
  *
  * Attribute Value Type: `string` {@link VERCEL_PROXY_WAF_ACTION_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -14020,7 +14420,7 @@ export type VERCEL_PROXY_WAF_ACTION_TYPE = string;
  *
  * Attribute Value Type: `string` {@link VERCEL_PROXY_WAF_RULE_ID_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -14041,7 +14441,7 @@ export type VERCEL_PROXY_WAF_RULE_ID_TYPE = string;
  *
  * Attribute Value Type: `string` {@link VERCEL_REQUEST_ID_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -14062,7 +14462,7 @@ export type VERCEL_REQUEST_ID_TYPE = string;
  *
  * Attribute Value Type: `string` {@link VERCEL_SOURCE_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -14154,8 +14554,6 @@ export interface AttributeMetadata {
   deprecation?: DeprecationInfo;
   /** If there are attributes that alias to this attribute */
   aliases?: AttributeName[];
-  /** If an attribute is SDK specific, list the SDKs that use this attribute */
-  sdks?: string[];
   /** Changelog entries tracking how this attribute has changed across versions */
   changelog?: ChangelogEntry[];
   /** A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances */
@@ -14241,8 +14639,11 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS]: 'double',
   [AWS_LAMBDA_FUNCTION_NAME]: 'string',
   [AWS_LAMBDA_FUNCTION_VERSION]: 'string',
+  [AWS_LAMBDA_INVOKED_ARN]: 'string',
   [AWS_LAMBDA_INVOKED_FUNCTION_ARN]: 'string',
   [AWS_LAMBDA_REMAINING_TIME_IN_MILLIS]: 'double',
+  [AWS_LOG_GROUP_NAMES]: 'string[]',
+  [AWS_LOG_STREAM_NAMES]: 'string[]',
   [BLOCKED_MAIN_THREAD]: 'boolean',
   [BROWSER_NAME]: 'string',
   [BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START]: 'double',
@@ -14281,6 +14682,12 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [CLOUDFLARE_D1_QUERY_TYPE]: 'string',
   [CLOUDFLARE_D1_ROWS_READ]: 'integer',
   [CLOUDFLARE_D1_ROWS_WRITTEN]: 'integer',
+  [CLOUDFLARE_R2_BUCKET]: 'string',
+  [CLOUDFLARE_R2_OPERATION]: 'string',
+  [CLOUDFLARE_R2_REQUEST_DELIMITER]: 'string',
+  [CLOUDFLARE_R2_REQUEST_KEY]: 'string',
+  [CLOUDFLARE_R2_REQUEST_PART_NUMBER]: 'integer',
+  [CLOUDFLARE_R2_REQUEST_PREFIX]: 'string',
   [CLOUDFLARE_WORKFLOW_ATTEMPT]: 'integer',
   [CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF]: 'string',
   [CLOUDFLARE_WORKFLOW_RETRIES_DELAY]: 'string',
@@ -14291,6 +14698,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [CLOUD_PLATFORM]: 'string',
   [CLOUD_PROVIDER]: 'string',
   [CLOUD_REGION]: 'string',
+  [CLOUD_RESOURCE_ID]: 'string',
   [CLS]: 'double',
   [CLS_SOURCE_KEY]: 'string',
   [CODE_FILEPATH]: 'string',
@@ -14379,9 +14787,11 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [FAAS_DURATION_IN_MS]: 'integer',
   [FAAS_ENTRY_POINT]: 'string',
   [FAAS_IDENTITY]: 'string',
+  [FAAS_INVOCATION_ID]: 'string',
   [FAAS_NAME]: 'string',
   [FAAS_TIME]: 'string',
   [FAAS_TRIGGER]: 'string',
+  [FAAS_VERSION]: 'string',
   [FCP]: 'double',
   [FLAG_EVALUATION_KEY]: 'boolean',
   [FP]: 'double',
@@ -14434,6 +14844,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [GEN_AI_RESPONSE_MODEL]: 'string',
   [GEN_AI_RESPONSE_STREAMING]: 'boolean',
   [GEN_AI_RESPONSE_TEXT]: 'string',
+  [GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK]: 'double',
   [GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN]: 'double',
   [GEN_AI_RESPONSE_TOKENS_PER_SECOND]: 'double',
   [GEN_AI_RESPONSE_TOOL_CALLS]: 'string',
@@ -14449,6 +14860,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [GEN_AI_TOOL_NAME]: 'string',
   [GEN_AI_TOOL_OUTPUT]: 'string',
   [GEN_AI_TOOL_TYPE]: 'string',
+  [GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS]: 'integer',
+  [GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS]: 'integer',
   [GEN_AI_USAGE_COMPLETION_TOKENS]: 'integer',
   [GEN_AI_USAGE_INPUT_TOKENS]: 'integer',
   [GEN_AI_USAGE_INPUT_TOKENS_CACHED]: 'integer',
@@ -14456,6 +14869,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [GEN_AI_USAGE_OUTPUT_TOKENS]: 'integer',
   [GEN_AI_USAGE_OUTPUT_TOKENS_REASONING]: 'integer',
   [GEN_AI_USAGE_PROMPT_TOKENS]: 'integer',
+  [GEN_AI_USAGE_REASONING_OUTPUT_TOKENS]: 'integer',
   [GEN_AI_USAGE_TOTAL_TOKENS]: 'integer',
   [GRAPHQL_DOCUMENT]: 'string',
   [GRAPHQL_OPERATION_NAME]: 'string',
@@ -14721,6 +15135,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SERVER_PORT]: 'integer',
   [SERVICE_NAME]: 'string',
   [SERVICE_VERSION]: 'string',
+  [SESSION_ID]: 'string',
   [STALL_PERCENTAGE]: 'double',
   [STALL_TOTAL_TIME]: 'double',
   [STATE_TYPE]: 'string',
@@ -14886,8 +15301,11 @@ export type AttributeName =
   | typeof AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS
   | typeof AWS_LAMBDA_FUNCTION_NAME
   | typeof AWS_LAMBDA_FUNCTION_VERSION
+  | typeof AWS_LAMBDA_INVOKED_ARN
   | typeof AWS_LAMBDA_INVOKED_FUNCTION_ARN
   | typeof AWS_LAMBDA_REMAINING_TIME_IN_MILLIS
+  | typeof AWS_LOG_GROUP_NAMES
+  | typeof AWS_LOG_STREAM_NAMES
   | typeof BLOCKED_MAIN_THREAD
   | typeof BROWSER_NAME
   | typeof BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START
@@ -14926,6 +15344,12 @@ export type AttributeName =
   | typeof CLOUDFLARE_D1_QUERY_TYPE
   | typeof CLOUDFLARE_D1_ROWS_READ
   | typeof CLOUDFLARE_D1_ROWS_WRITTEN
+  | typeof CLOUDFLARE_R2_BUCKET
+  | typeof CLOUDFLARE_R2_OPERATION
+  | typeof CLOUDFLARE_R2_REQUEST_DELIMITER
+  | typeof CLOUDFLARE_R2_REQUEST_KEY
+  | typeof CLOUDFLARE_R2_REQUEST_PART_NUMBER
+  | typeof CLOUDFLARE_R2_REQUEST_PREFIX
   | typeof CLOUDFLARE_WORKFLOW_ATTEMPT
   | typeof CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF
   | typeof CLOUDFLARE_WORKFLOW_RETRIES_DELAY
@@ -14936,6 +15360,7 @@ export type AttributeName =
   | typeof CLOUD_PLATFORM
   | typeof CLOUD_PROVIDER
   | typeof CLOUD_REGION
+  | typeof CLOUD_RESOURCE_ID
   | typeof CLS
   | typeof CLS_SOURCE_KEY
   | typeof CODE_FILEPATH
@@ -15024,9 +15449,11 @@ export type AttributeName =
   | typeof FAAS_DURATION_IN_MS
   | typeof FAAS_ENTRY_POINT
   | typeof FAAS_IDENTITY
+  | typeof FAAS_INVOCATION_ID
   | typeof FAAS_NAME
   | typeof FAAS_TIME
   | typeof FAAS_TRIGGER
+  | typeof FAAS_VERSION
   | typeof FCP
   | typeof FLAG_EVALUATION_KEY
   | typeof FP
@@ -15079,6 +15506,7 @@ export type AttributeName =
   | typeof GEN_AI_RESPONSE_MODEL
   | typeof GEN_AI_RESPONSE_STREAMING
   | typeof GEN_AI_RESPONSE_TEXT
+  | typeof GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK
   | typeof GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN
   | typeof GEN_AI_RESPONSE_TOKENS_PER_SECOND
   | typeof GEN_AI_RESPONSE_TOOL_CALLS
@@ -15094,6 +15522,8 @@ export type AttributeName =
   | typeof GEN_AI_TOOL_NAME
   | typeof GEN_AI_TOOL_OUTPUT
   | typeof GEN_AI_TOOL_TYPE
+  | typeof GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS
+  | typeof GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS
   | typeof GEN_AI_USAGE_COMPLETION_TOKENS
   | typeof GEN_AI_USAGE_INPUT_TOKENS
   | typeof GEN_AI_USAGE_INPUT_TOKENS_CACHED
@@ -15101,6 +15531,7 @@ export type AttributeName =
   | typeof GEN_AI_USAGE_OUTPUT_TOKENS
   | typeof GEN_AI_USAGE_OUTPUT_TOKENS_REASONING
   | typeof GEN_AI_USAGE_PROMPT_TOKENS
+  | typeof GEN_AI_USAGE_REASONING_OUTPUT_TOKENS
   | typeof GEN_AI_USAGE_TOTAL_TOKENS
   | typeof GRAPHQL_DOCUMENT
   | typeof GRAPHQL_OPERATION_NAME
@@ -15366,6 +15797,7 @@ export type AttributeName =
   | typeof SERVER_PORT
   | typeof SERVICE_NAME
   | typeof SERVICE_VERSION
+  | typeof SESSION_ID
   | typeof STALL_PERCENTAGE
   | typeof STALL_TOTAL_TIME
   | typeof STATE_TYPE
@@ -15480,7 +15912,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.usage.output_tokens',
     },
     aliases: [GEN_AI_USAGE_OUTPUT_TOKENS, GEN_AI_USAGE_COMPLETION_TOKENS],
-    sdks: ['python'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [57, 61] }, { version: '0.0.0' }],
   },
   [AI_DOCUMENTS]: {
@@ -15576,14 +16007,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.input.messages',
     },
     aliases: [GEN_AI_REQUEST_MESSAGES],
-    sdks: ['python'],
     changelog: [{ version: '0.1.0', prs: [65, 119] }, { version: '0.0.0' }],
   },
   [AI_IS_SEARCH_REQUIRED]: {
     brief: 'Boolean indicating if the model needs to perform a search.',
     type: 'boolean',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -15622,7 +16052,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.response.model',
     },
     aliases: [GEN_AI_RESPONSE_MODEL],
-    sdks: ['python'],
     changelog: [{ version: '0.1.0', prs: [57, 61, 127] }, { version: '0.0.0' }],
   },
   [AI_MODEL_PROVIDER]: {
@@ -15709,14 +16138,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.usage.input_tokens',
     },
     aliases: [GEN_AI_USAGE_PROMPT_TOKENS, GEN_AI_USAGE_INPUT_TOKENS],
-    sdks: ['python'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [57, 61] }, { version: '0.0.0' }],
   },
   [AI_RAW_PROMPTING]: {
     brief: 'When enabled, the user’s prompt will be sent to the model without any pre-processing.',
     type: 'boolean',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -15739,7 +16167,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.output.messages',
     },
-    sdks: ['python'],
     changelog: [{ version: '0.1.0', prs: [65, 127] }, { version: '0.0.0' }],
   },
   [AI_RESPONSE_FORMAT]: {
@@ -15815,7 +16242,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.response.streaming',
     },
     aliases: [GEN_AI_RESPONSE_STREAMING],
-    sdks: ['python'],
     changelog: [{ version: '0.1.0', prs: [76, 108] }, { version: '0.0.0' }],
   },
   [AI_TAGS]: {
@@ -15968,7 +16394,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.usage.total_tokens',
     },
     aliases: [GEN_AI_USAGE_TOTAL_TOKENS],
-    sdks: ['python'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [57, 61, 108] }, { version: '0.0.0' }],
   },
   [AI_WARNINGS]: {
@@ -16011,7 +16436,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Deprecated in favor of app.build',
     },
     aliases: [APP_BUILD],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
       { version: '0.5.0', prs: [296], description: 'Added and deprecated app.app_build in favor of app.build' },
     ],
@@ -16030,7 +16454,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Deprecated in favor of app.identifier',
     },
     aliases: [APP_IDENTIFIER],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
       {
         version: '0.5.0',
@@ -16053,7 +16476,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Deprecated in favor of app.name',
     },
     aliases: [APP_NAME],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
       { version: '0.5.0', prs: [296], description: 'Added and deprecated app.app_name in favor of app.name' },
     ],
@@ -16072,7 +16494,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Deprecated in favor of app.start_time',
     },
     aliases: [APP_START_TIME],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
       {
         version: '0.5.0',
@@ -16095,7 +16516,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Deprecated in favor of app.version',
     },
     aliases: [APP_VERSION],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
       { version: '0.5.0', prs: [296], description: 'Added and deprecated app.app_version in favor of app.version' },
     ],
@@ -16110,7 +16530,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '1',
     aliases: [APP_APP_BUILD],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: '0.5.0', prs: [296], description: 'Added app.build attribute' }],
   },
   [APP_IDENTIFIER]: {
@@ -16123,7 +16542,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'com.example.myapp',
     aliases: [APP_APP_IDENTIFIER],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: '0.5.0', prs: [296], description: 'Added app.identifier attribute' }],
   },
   [APP_IN_FOREGROUND]: {
@@ -16135,7 +16553,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: true,
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: '0.5.0', prs: [296], description: 'Added app.in_foreground attribute' }],
   },
   [APP_NAME]: {
@@ -16148,7 +16565,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'My App',
     aliases: [APP_APP_NAME],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: '0.5.0', prs: [296], description: 'Added app.name attribute' }],
   },
   [APP_START_COLD]: {
@@ -16166,7 +16582,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         'Replaced by app.vitals.start.cold.value to align with the app.vitals.* namespace for mobile performance attributes',
     },
     aliases: [APP_VITALS_START_COLD_VALUE],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
       { version: '0.5.0', prs: [323], description: 'Added and deprecated in favor of app.vitals.start.cold.value' },
     ],
@@ -16181,7 +16596,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '2025-01-01T00:00:00.000Z',
     aliases: [APP_APP_START_TIME],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: '0.5.0', prs: [296], description: 'Added app.start_time attribute' }],
   },
   [APP_START_TYPE]: {
@@ -16220,7 +16634,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         'Replaced by app.vitals.start.warm.value to align with the app.vitals.* namespace for mobile performance attributes',
     },
     aliases: [APP_VITALS_START_WARM_VALUE],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
       { version: '0.5.0', prs: [323], description: 'Added and deprecated in favor of app.vitals.start.warm.value' },
     ],
@@ -16235,7 +16648,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '1.0.0',
     aliases: [APP_APP_VERSION],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: '0.5.0', prs: [296], description: 'Added app.version attribute' }],
   },
   [APP_VITALS_FRAMES_DELAY_VALUE]: {
@@ -16249,7 +16661,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 5,
     aliases: [FRAMES_DELAY],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.delay.value to replace frames.delay' },
     ],
@@ -16264,7 +16675,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 3,
     aliases: [FRAMES_FROZEN],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.frozen.count to replace frames.frozen' },
     ],
@@ -16279,7 +16689,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1,
     aliases: [FRAMES_SLOW],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.slow.count to replace frames.slow' },
     ],
@@ -16294,7 +16703,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 60,
     aliases: [FRAMES_TOTAL],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.total.count to replace frames.total' },
     ],
@@ -16309,20 +16717,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1234.56,
     aliases: [APP_START_COLD],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.start.cold.value attribute' }],
   },
   [APP_VITALS_START_PREWARMED]: {
     brief: 'Whether the app start was prewarmed.',
     type: 'boolean',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
     example: true,
-    sdks: ['sentry.cocoa'],
-    changelog: [{ version: 'next', prs: [379], description: 'Added app.vitals.start.prewarmed attribute' }],
+    changelog: [{ version: '0.11.0', prs: [379], description: 'Added app.vitals.start.prewarmed attribute' }],
   },
   [APP_VITALS_START_REASON]: {
     brief: 'The reason that triggered the app start.',
@@ -16333,13 +16739,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'push',
-    sdks: [
-      'sentry.cocoa',
-      'sentry.java.android',
-      'sentry.javascript.react-native',
-      'sentry.dart.flutter',
-      'sentry.dotnet.maui',
-    ],
     changelog: [{ version: '0.7.0', prs: [353], description: 'Added app.vitals.start.reason attribute' }],
   },
   [APP_VITALS_START_SCREEN]: {
@@ -16352,13 +16751,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'MainActivity',
-    sdks: [
-      'sentry.cocoa',
-      'sentry.java.android',
-      'sentry.javascript.react-native',
-      'sentry.dart.flutter',
-      'sentry.dotnet.maui',
-    ],
     changelog: [{ version: '0.7.0', prs: [353], description: 'Added app.vitals.start.screen attribute' }],
   },
   [APP_VITALS_START_TYPE]: {
@@ -16371,7 +16763,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'cold',
     aliases: [APP_START_TYPE],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.start.type attribute' }],
   },
   [APP_VITALS_START_WARM_VALUE]: {
@@ -16384,7 +16775,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1234.56,
     aliases: [APP_START_WARM],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.start.warm.value attribute' }],
   },
   [APP_VITALS_TTFD_VALUE]: {
@@ -16397,7 +16787,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1234.56,
     aliases: [TIME_TO_FULL_DISPLAY],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.ttfd.value attribute' }],
   },
   [APP_VITALS_TTID_VALUE]: {
@@ -16410,142 +16799,130 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1234.56,
     aliases: [TIME_TO_INITIAL_DISPLAY],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.ttid.value attribute' }],
   },
   [ART_GC_BLOCKING_COUNT]: {
     brief: 'Total number of blocking (stop-the-world) garbage collections performed by the Android Runtime',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
     example: 1,
-    sdks: ['sentry.java.android'],
-    changelog: [{ version: 'next', prs: [382], description: 'Added art.gc.blocking_count attribute' }],
+    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.gc.blocking_count attribute' }],
   },
   [ART_GC_BLOCKING_TIME]: {
     brief: 'Total time spent in blocking (stop-the-world) garbage collections by the Android Runtime, in milliseconds',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
     example: 11.873,
-    sdks: ['sentry.java.android'],
-    changelog: [{ version: 'next', prs: [382], description: 'Added art.gc.blocking_time attribute' }],
+    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.gc.blocking_time attribute' }],
   },
   [ART_GC_PRE_OOME_COUNT]: {
     brief:
       'Total number of garbage collections triggered as a last resort before an OutOfMemoryError by the Android Runtime',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
     example: 0,
-    sdks: ['sentry.java.android'],
-    changelog: [{ version: 'next', prs: [382], description: 'Added art.gc.pre_oome_count attribute' }],
+    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.gc.pre_oome_count attribute' }],
   },
   [ART_GC_TOTAL_COUNT]: {
     brief: 'Total number of garbage collections performed by the Android Runtime',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
     example: 1,
-    sdks: ['sentry.java.android'],
-    changelog: [{ version: 'next', prs: [382], description: 'Added art.gc.total_count attribute' }],
+    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.gc.total_count attribute' }],
   },
   [ART_GC_TOTAL_TIME]: {
     brief: 'Total time spent in garbage collection by the Android Runtime, in milliseconds',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
     example: 11.807,
-    sdks: ['sentry.java.android'],
-    changelog: [{ version: 'next', prs: [382], description: 'Added art.gc.total_time attribute' }],
+    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.gc.total_time attribute' }],
   },
   [ART_GC_WAITING_TIME]: {
     brief:
       'Total time threads spent waiting for garbage collection to complete in the Android Runtime, in milliseconds',
     type: 'double',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
     example: 8.054,
-    sdks: ['sentry.java.android'],
-    changelog: [{ version: 'next', prs: [382], description: 'Added art.gc.waiting_time attribute' }],
+    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.gc.waiting_time attribute' }],
   },
   [ART_MEMORY_FREE]: {
     brief: 'Free memory available to the process as reported by the Android Runtime, in bytes',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
     example: 3181568,
-    sdks: ['sentry.java.android'],
-    changelog: [{ version: 'next', prs: [382], description: 'Added art.memory.free attribute' }],
+    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.memory.free attribute' }],
   },
   [ART_MEMORY_FREE_UNTIL_GC]: {
     brief: 'Free memory available before a garbage collection would be triggered by the Android Runtime, in bytes',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
     example: 3181568,
-    sdks: ['sentry.java.android'],
-    changelog: [{ version: 'next', prs: [382], description: 'Added art.memory.free_until_gc attribute' }],
+    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.memory.free_until_gc attribute' }],
   },
   [ART_MEMORY_FREE_UNTIL_OOME]: {
     brief: 'Free memory available before an OutOfMemoryError would be thrown by the Android Runtime, in bytes',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
     example: 196083712,
-    sdks: ['sentry.java.android'],
-    changelog: [{ version: 'next', prs: [382], description: 'Added art.memory.free_until_oome attribute' }],
+    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.memory.free_until_oome attribute' }],
   },
   [ART_MEMORY_MAX]: {
     brief: 'Maximum memory the process is allowed to use as reported by the Android Runtime, in bytes',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
     example: 201326592,
-    sdks: ['sentry.java.android'],
-    changelog: [{ version: 'next', prs: [382], description: 'Added art.memory.max attribute' }],
+    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.memory.max attribute' }],
   },
   [ART_MEMORY_TOTAL]: {
     brief: 'Total memory currently allocated to the process by the Android Runtime, in bytes',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
     example: 7774208,
-    sdks: ['sentry.java.android'],
-    changelog: [{ version: 'next', prs: [382], description: 'Added art.memory.total attribute' }],
+    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.memory.total attribute' }],
   },
   [AWS_CLOUDWATCH_LOGS_LOG_GROUP]: {
     brief: 'The name of the CloudWatch Logs log group',
@@ -16589,7 +16966,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: '8476a536-e9f4-11e8-9739-2dfe598c3fcd',
-    changelog: [{ version: '0.7.0', prs: [369], description: 'Added aws.lambda.aws_request_id attribute' }],
+    deprecation: {
+      replacement: 'faas.invocation_id',
+      reason: 'This attribute is being deprecated in favor of faas.invocation_id',
+    },
+    aliases: [FAAS_INVOCATION_ID],
+    changelog: [
+      { version: 'next', description: 'Deprecated aws.lambda.aws_request_id in favor of faas.invocation_id' },
+      { version: '0.7.0', prs: [369], description: 'Added aws.lambda.aws_request_id attribute' },
+    ],
   },
   [AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS]: {
     brief: 'The execution duration of the Lambda function invocation in milliseconds',
@@ -16613,7 +16998,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'my-function',
-    changelog: [{ version: '0.7.0', prs: [369], description: 'Added aws.lambda.function_name attribute' }],
+    deprecation: {
+      replacement: 'faas.name',
+      reason: 'Use the OTel-aligned faas.name attribute instead',
+    },
+    aliases: [FAAS_NAME],
+    changelog: [
+      { version: 'next', description: 'Deprecated aws.lambda.function_name in favor of faas.name' },
+      { version: '0.7.0', prs: [369], description: 'Added aws.lambda.function_name attribute' },
+    ],
   },
   [AWS_LAMBDA_FUNCTION_VERSION]: {
     brief: 'The version of the Lambda function',
@@ -16624,7 +17017,27 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: '$LATEST',
-    changelog: [{ version: '0.7.0', prs: [369], description: 'Added aws.lambda.function_version attribute' }],
+    deprecation: {
+      replacement: 'faas.version',
+      reason: 'Use the OTel-aligned faas.version attribute instead',
+    },
+    aliases: [FAAS_VERSION],
+    changelog: [
+      { version: 'next', description: 'Deprecated aws.lambda.function_version in favor of faas.version' },
+      { version: '0.7.0', prs: [369], description: 'Added aws.lambda.function_version attribute' },
+    ],
+  },
+  [AWS_LAMBDA_INVOKED_ARN]: {
+    brief: 'The full ARN of the Lambda function that was invoked',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'arn:aws:lambda:us-east-1:123456789012:function:my-function',
+    aliases: [AWS_LAMBDA_INVOKED_FUNCTION_ARN],
+    changelog: [{ version: 'next' }],
   },
   [AWS_LAMBDA_INVOKED_FUNCTION_ARN]: {
     brief: 'The full ARN of the Lambda function that was invoked',
@@ -16635,7 +17048,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'arn:aws:lambda:us-east-1:123456789012:function:my-function',
-    changelog: [{ version: '0.7.0', prs: [369], description: 'Added aws.lambda.invoked_function_arn attribute' }],
+    deprecation: {
+      replacement: 'aws.lambda.invoked_arn',
+      reason: 'This attribute is being deprecated in favor of aws.lambda.invoked_arn',
+    },
+    aliases: [AWS_LAMBDA_INVOKED_ARN],
+    changelog: [
+      { version: 'next', description: 'Deprecated aws.lambda.invoked_function_arn in favor of aws.lambda.invoked_arn' },
+      { version: '0.7.0', prs: [369], description: 'Added aws.lambda.invoked_function_arn attribute' },
+    ],
   },
   [AWS_LAMBDA_REMAINING_TIME_IN_MILLIS]: {
     brief: 'The remaining time in milliseconds before the Lambda function times out',
@@ -16648,11 +17069,33 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 5000,
     changelog: [{ version: '0.7.0', prs: [369], description: 'Added aws.lambda.remaining_time_in_millis attribute' }],
   },
+  [AWS_LOG_GROUP_NAMES]: {
+    brief: 'The name(s) of the AWS log group(s) an application is writing to.',
+    type: 'string[]',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: ['/aws/lambda/my-function', 'opentelemetry-service'],
+    changelog: [{ version: 'next' }],
+  },
+  [AWS_LOG_STREAM_NAMES]: {
+    brief: 'The name(s) of the AWS log stream(s) an application is writing to.',
+    type: 'string[]',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: ['logs/main/10838bed-421f-43ef-870a-f43feacbbb5b'],
+    changelog: [{ version: 'next' }],
+  },
   [BLOCKED_MAIN_THREAD]: {
     brief: 'Whether the main thread was blocked by the span.',
     type: 'boolean',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -16681,7 +17124,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1.983,
     aliases: [PERFORMANCE_ACTIVATIONSTART],
-    sdks: ['javascript-browser'],
     changelog: [
       { version: '0.5.0', prs: [321], description: 'Added browser.performance.navigation.activation_start attribute' },
     ],
@@ -16696,7 +17138,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1776185678.886,
     aliases: [PERFORMANCE_TIMEORIGIN],
-    sdks: ['javascript-browser'],
     changelog: [
       { version: '0.5.0', prs: [321], description: 'Added browser.performance.time_origin attribute attribute' },
     ],
@@ -16721,7 +17162,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'Window.requestAnimationFrame',
-    sdks: ['browser'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [BROWSER_SCRIPT_INVOKER_TYPE]: {
@@ -16733,7 +17173,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'event-listener',
-    sdks: ['browser'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [BROWSER_SCRIPT_SOURCE_CHAR_POSITION]: {
@@ -16745,7 +17184,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 678,
-    sdks: ['browser'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [BROWSER_VERSION]: {
@@ -16769,7 +17207,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'navigation',
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [319], description: 'Added browser.web_vital.cls.report_event attribute' }],
   },
   [BROWSER_WEB_VITAL_CLS_SOURCE_KEY]: {
@@ -16783,7 +17220,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     hasDynamicSuffix: true,
     example: 'body > div#app',
     aliases: [CLS_SOURCE_KEY],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [234] }],
   },
   [BROWSER_WEB_VITAL_CLS_VALUE]: {
@@ -16796,7 +17232,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 0.2361,
     aliases: [CLS],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [229], description: 'Added browser.web_vital.cls.value attribute' }],
   },
   [BROWSER_WEB_VITAL_FCP_VALUE]: {
@@ -16809,7 +17244,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 547.6951,
     aliases: [FCP],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [235] }],
   },
   [BROWSER_WEB_VITAL_FP_VALUE]: {
@@ -16822,7 +17256,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 477.1926,
     aliases: [FP],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [235] }],
   },
   [BROWSER_WEB_VITAL_INP_VALUE]: {
@@ -16835,7 +17268,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 200,
     aliases: [INP],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [229], description: 'Added browser.web_vital.inp.value attribute' }],
   },
   [BROWSER_WEB_VITAL_LCP_ELEMENT]: {
@@ -16848,7 +17280,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'body > div#app > div#container > div',
     aliases: [LCP_ELEMENT],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [233] }],
   },
   [BROWSER_WEB_VITAL_LCP_ID]: {
@@ -16861,7 +17292,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '#gero',
     aliases: [LCP_ID],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [233] }],
   },
   [BROWSER_WEB_VITAL_LCP_LOAD_TIME]: {
@@ -16874,7 +17304,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1402,
     aliases: [LCP_LOADTIME],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [233] }],
   },
   [BROWSER_WEB_VITAL_LCP_RENDER_TIME]: {
@@ -16887,7 +17316,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1685,
     aliases: [LCP_RENDERTIME],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [233] }],
   },
   [BROWSER_WEB_VITAL_LCP_REPORT_EVENT]: {
@@ -16899,7 +17327,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'pagehide',
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [319], description: 'Added browser.web_vital.lcp.report_event attribute' }],
   },
   [BROWSER_WEB_VITAL_LCP_SIZE]: {
@@ -16912,20 +17339,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1024,
     aliases: [LCP_SIZE],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [233] }],
   },
   [BROWSER_WEB_VITAL_LCP_URL]: {
     brief: 'The url of the dom element responsible for the largest contentful paint',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: false,
     visibility: 'public',
     example: 'https://example.com/static/img.png',
     aliases: [LCP_URL],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [233] }],
   },
   [BROWSER_WEB_VITAL_LCP_VALUE]: {
@@ -16938,7 +17363,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 2500,
     aliases: [LCP],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [229], description: 'Added browser.web_vital.lcp.value attribute' }],
   },
   [BROWSER_WEB_VITAL_TTFB_REQUEST_TIME]: {
@@ -16952,7 +17376,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1554.5814,
     aliases: [TTFB_REQUESTTIME],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [235] }],
   },
   [BROWSER_WEB_VITAL_TTFB_VALUE]: {
@@ -16965,19 +17388,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 194.3322,
     aliases: [TTFB],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [235] }],
   },
   [CACHE_HIT]: {
     brief: 'If the cache was hit during this span.',
     type: 'boolean',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
     example: true,
-    sdks: ['php-laravel'],
     changelog: [{ version: '0.0.0' }],
   },
   [CACHE_ITEM_SIZE]: {
@@ -17000,7 +17421,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: ['my-cache-key', 'my-other-cache-key'],
-    sdks: ['php-laravel'],
     changelog: [{ version: '0.0.0' }],
   },
   [CACHE_OPERATION]: {
@@ -17012,7 +17432,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'get',
-    sdks: ['php-laravel'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [CACHE_TTL]: {
@@ -17024,19 +17443,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 120,
-    sdks: ['php-laravel'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [CACHE_WRITE]: {
     brief: 'If the cache operation resulted in a write to the cache.',
     type: 'boolean',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
     example: true,
-    sdks: ['java'],
     changelog: [{ version: '0.5.0' }],
   },
   [CHANNEL]: {
@@ -17048,7 +17465,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'mail',
-    sdks: ['php-laravel'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [CLIENT_ADDRESS]: {
@@ -17084,20 +17500,22 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 543,
-    sdks: ['javascript-cloudflare'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [CLOUDFLARE_D1_QUERY_TYPE]: {
     brief: 'The type of query executed in a Cloudflare D1 operation',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
     example: 'run',
-    sdks: ['javascript-cloudflare'],
-    changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.d1.query_type attribute' }],
+    deprecation: {
+      replacement: 'db.operation.name',
+    },
+    aliases: [DB_OPERATION_NAME, DB_OPERATION],
+    changelog: [{ version: '0.11.0', prs: [392], description: 'Added cloudflare.d1.query_type attribute' }],
   },
   [CLOUDFLARE_D1_ROWS_READ]: {
     brief: 'The number of rows read in a Cloudflare D1 operation.',
@@ -17108,7 +17526,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 12,
-    sdks: ['javascript-cloudflare'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [CLOUDFLARE_D1_ROWS_WRITTEN]: {
@@ -17120,68 +17537,128 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 12,
-    sdks: ['javascript-cloudflare'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+  },
+  [CLOUDFLARE_R2_BUCKET]: {
+    brief: 'The name of the Cloudflare R2 bucket binding',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'MY_BUCKET',
+    changelog: [{ version: 'next', prs: [413], description: 'Added cloudflare.r2.bucket attribute' }],
+  },
+  [CLOUDFLARE_R2_OPERATION]: {
+    brief: 'The R2 API operation being performed',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'GetObject',
+    changelog: [{ version: 'next', prs: [413], description: 'Added cloudflare.r2.operation attribute' }],
+  },
+  [CLOUDFLARE_R2_REQUEST_DELIMITER]: {
+    brief: 'The delimiter used to group objects in an R2 list operation',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '/',
+    changelog: [{ version: 'next', prs: [413], description: 'Added cloudflare.r2.request.delimiter attribute' }],
+  },
+  [CLOUDFLARE_R2_REQUEST_KEY]: {
+    brief: 'The object key used in the R2 operation',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'my-file.txt',
+    changelog: [{ version: 'next', prs: [413], description: 'Added cloudflare.r2.request.key attribute' }],
+  },
+  [CLOUDFLARE_R2_REQUEST_PART_NUMBER]: {
+    brief: 'The part number in a multipart upload operation',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 1,
+    changelog: [{ version: 'next', prs: [413], description: 'Added cloudflare.r2.request.part_number attribute' }],
+  },
+  [CLOUDFLARE_R2_REQUEST_PREFIX]: {
+    brief: 'The prefix used to filter objects in an R2 list operation',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'images/',
+    changelog: [{ version: 'next', prs: [413], description: 'Added cloudflare.r2.request.prefix attribute' }],
   },
   [CLOUDFLARE_WORKFLOW_ATTEMPT]: {
     brief: 'The current attempt number for a Cloudflare Workflow step',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
     example: 1,
-    sdks: ['javascript-cloudflare'],
-    changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.workflow.attempt attribute' }],
+    changelog: [{ version: '0.11.0', prs: [392], description: 'Added cloudflare.workflow.attempt attribute' }],
   },
   [CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF]: {
     brief: 'The backoff strategy for Cloudflare Workflow step retries',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
     example: 'exponential',
-    sdks: ['javascript-cloudflare'],
-    changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.workflow.retries.backoff attribute' }],
+    changelog: [{ version: '0.11.0', prs: [392], description: 'Added cloudflare.workflow.retries.backoff attribute' }],
   },
   [CLOUDFLARE_WORKFLOW_RETRIES_DELAY]: {
     brief: 'The delay between Cloudflare Workflow step retries',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
     example: '5 seconds',
-    sdks: ['javascript-cloudflare'],
-    changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.workflow.retries.delay attribute' }],
+    changelog: [{ version: '0.11.0', prs: [392], description: 'Added cloudflare.workflow.retries.delay attribute' }],
   },
   [CLOUDFLARE_WORKFLOW_RETRIES_LIMIT]: {
     brief: 'The maximum number of retries for a Cloudflare Workflow step',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
     example: 3,
-    sdks: ['javascript-cloudflare'],
-    changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.workflow.retries.limit attribute' }],
+    changelog: [{ version: '0.11.0', prs: [392], description: 'Added cloudflare.workflow.retries.limit attribute' }],
   },
   [CLOUDFLARE_WORKFLOW_TIMEOUT]: {
     brief: 'The timeout duration for a Cloudflare Workflow step',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
     example: '1 minute',
-    sdks: ['javascript-cloudflare'],
-    changelog: [{ version: 'next', prs: [392], description: 'Added cloudflare.workflow.timeout attribute' }],
+    changelog: [{ version: '0.11.0', prs: [392], description: 'Added cloudflare.workflow.timeout attribute' }],
   },
   [CLOUD_ACCOUNT_ID]: {
     brief: 'The cloud account ID the resource is assigned to',
@@ -17238,6 +17715,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'us-east-1',
     changelog: [{ version: '0.7.0', prs: [364], description: 'Added cloud.region attribute' }],
   },
+  [CLOUD_RESOURCE_ID]: {
+    brief: 'Cloud provider-specific native identifier of the monitored cloud resource',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'arn:aws:lambda:REGION:ACCOUNT_ID:function:my-function',
+    changelog: [{ version: 'next' }],
+    additionalContext: [
+      'This can be an identifier for a resource in AWS, GCP, or Azure. There may be some overlap in values found here with other attributes. For instance, an AWS lambda ARN may be found here as well as in `aws.lambda.invoked_arn`. OTEL recommends setting them alongside each other.',
+    ],
+  },
   [CLS]: {
     brief: 'The value of the recorded Cumulative Layout Shift (CLS) web vital',
     type: 'double',
@@ -17252,7 +17743,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'The CLS web vital is now recorded as a browser.web_vital.cls.value attribute.',
     },
     aliases: [BROWSER_WEB_VITAL_CLS_VALUE],
-    sdks: ['javascript-browser'],
     changelog: [
       {
         version: '0.5.0',
@@ -17276,7 +17766,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'The CLS source is now recorded as a browser.web_vital.cls.source.<key> attribute.',
     },
     aliases: [BROWSER_WEB_VITAL_CLS_SOURCE_KEY],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [234] }],
   },
   [CODE_FILEPATH]: {
@@ -17387,7 +17876,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Old namespace-less attribute, to be replaced with network.connection.type for span-first future',
     },
     aliases: [NETWORK_CONNECTION_TYPE, DEVICE_CONNECTION_TYPE],
-    sdks: ['javascript-browser'],
     changelog: [
       {
         version: '0.5.0',
@@ -17411,7 +17899,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         'Old attribute name (no official namespace), to be replaced with network.connection.rtt for span-first future',
     },
     aliases: [NETWORK_CONNECTION_RTT],
-    sdks: ['javascript-browser'],
     changelog: [
       {
         version: '0.5.0',
@@ -17490,7 +17977,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The name of the driver used for the database connection.',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -17536,7 +18023,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'db.operation.name',
     },
-    aliases: [DB_OPERATION_NAME],
+    aliases: [DB_OPERATION_NAME, CLOUDFLARE_D1_QUERY_TYPE],
     changelog: [{ version: '0.4.0', prs: [199] }, { version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
   [DB_OPERATION_BATCH_SIZE]: {
@@ -17549,8 +18036,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 3,
-    sdks: ['javascript-node', 'javascript-deno', 'javascript-bun', 'javascript-cloudflare'],
-    changelog: [{ version: 'next', prs: [407], description: 'Added db.operation.batch.size attribute' }],
+    changelog: [{ version: '0.11.0', prs: [407], description: 'Added db.operation.batch.size attribute' }],
   },
   [DB_OPERATION_NAME]: {
     brief: 'The name of the operation being executed.',
@@ -17561,7 +18047,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'SELECT',
-    aliases: [DB_OPERATION],
+    aliases: [DB_OPERATION, CLOUDFLARE_D1_QUERY_TYPE],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [DB_QUERY_PARAMETER_KEY]: {
@@ -17569,7 +18055,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'A query parameter used in db.query.text, with <key> being the parameter name, and the attribute value being a string representation of the parameter value.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: true,
     visibility: 'public',
@@ -17611,7 +18097,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'my-redis-instance',
-    sdks: ['php-laravel'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [DB_REDIS_KEY]: {
@@ -17623,26 +18108,24 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'user:2047:city',
-    sdks: ['python'],
     changelog: [{ version: '0.6.0', prs: [326], description: 'Added db.redis.key attribute' }],
   },
   [DB_REDIS_PARAMETERS]: {
     brief: 'The array of command parameters given to a redis command.',
     type: 'string[]',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: false,
     visibility: 'public',
     example: ['test', '*'],
-    sdks: ['php-laravel'],
     changelog: [{ version: '0.0.0' }],
   },
   [DB_SQL_BINDINGS]: {
     brief: 'The array of query bindings.',
     type: 'string[]',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: false,
     visibility: 'public',
@@ -17652,14 +18135,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason:
         'Instead of adding every binding in the db.sql.bindings attribute, add them as individual entires with db.query.parameter.<key>.',
     },
-    sdks: ['php-laravel'],
     changelog: [{ version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
   },
   [DB_STATEMENT]: {
     brief: 'The database statement being executed.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: true,
     visibility: 'public',
@@ -17679,7 +18161,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'GetUserById',
-    changelog: [{ version: 'next', prs: [398] }],
+    changelog: [{ version: '0.11.0', prs: [398] }],
   },
   [DB_SYSTEM]: {
     brief:
@@ -17714,7 +18196,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The database user.',
     type: 'string',
     pii: {
-      isPii: 'true',
+      isPii: 'maybe',
     },
     isInOtel: true,
     visibility: 'public',
@@ -17736,7 +18218,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         'Old namespace-less attribute, to be replaced with device.memory.estimated_capacity for span-first future',
     },
     aliases: [DEVICE_MEMORY_ESTIMATED_CAPACITY],
-    sdks: ['javascript-browser'],
     changelog: [
       {
         version: '0.5.0',
@@ -17959,12 +18440,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Whether the device is in Low Power Mode.',
     type: 'boolean',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
     example: true,
-    sdks: ['sentry.cocoa'],
     changelog: [{ version: '0.6.0', prs: [314], description: 'Added device.low_power_mode attribute' }],
   },
   [DEVICE_MANUFACTURER]: {
@@ -17989,7 +18469,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 8,
     aliases: [DEVICEMEMORY],
-    sdks: ['javascript-browser'],
     changelog: [
       {
         version: '0.5.0',
@@ -18036,7 +18515,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: false,
     visibility: 'public',
@@ -18142,7 +18621,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Whether the device is a simulator or an actual device.',
     type: 'boolean',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -18209,7 +18688,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         'Old namespace-less attribute, to be replaced with network.connection.effective_type for span-first future',
     },
     aliases: [NETWORK_CONNECTION_EFFECTIVE_TYPE],
-    sdks: ['javascript-browser'],
     changelog: [
       {
         version: '0.5.0',
@@ -18248,7 +18726,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The unique identifier for this event (log record)',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -18271,7 +18749,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'SHOULD be set to true if the exception event is recorded at a point where it is known that the exception is escaping the scope of the span.',
     type: 'boolean',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     visibility: 'public',
@@ -18282,7 +18760,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The error message.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: true,
     visibility: 'public',
@@ -18294,7 +18772,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'A stacktrace as a string in the natural representation for the language runtime. The representation is to be determined and documented by each language SIG.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: true,
     visibility: 'public',
@@ -18318,7 +18796,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'A boolean that is true if the serverless function is executed for the first time (aka cold-start).',
     type: 'boolean',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     visibility: 'public',
@@ -18340,12 +18818,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The duration a function took to run, in milliseconds.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
     example: 120,
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.11.0', prs: [403] }],
   },
   [FAAS_ENTRY_POINT]: {
     brief: "The code that's run when the cloud provider invokes your function.",
@@ -18356,19 +18834,31 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'my_main_function',
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.11.0', prs: [403, 415] }],
   },
   [FAAS_IDENTITY]: {
     brief:
       'The Service Account (GCP), IAM Execution Role (AWS), or Managed Identity (Azure) used by the serverless function when interacting with other cloud services',
     type: 'string',
     pii: {
-      isPii: 'true',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
     example:
       'name@project.iam.gserviceaccount.com (GCP), arn:aws:iam::123456789012:role/role-name (AWS), 00000000-0000-0000-0000-000000000000 (Azure)',
+    changelog: [{ version: '0.11.0', prs: [403] }],
+  },
+  [FAAS_INVOCATION_ID]: {
+    brief: 'The invocation ID of the current function invocation.',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'af9d5aa4-a685-4c5f-a22b-444f80b3cc28',
+    aliases: [AWS_LAMBDA_AWS_REQUEST_ID],
     changelog: [{ version: 'next' }],
   },
   [FAAS_NAME]: {
@@ -18380,7 +18870,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'my_function',
-    changelog: [{ version: 'next', prs: [403, 415] }],
+    aliases: [AWS_LAMBDA_FUNCTION_NAME],
+    changelog: [{ version: '0.11.0', prs: [403, 415] }],
   },
   [FAAS_TIME]: {
     brief: 'A string containing the function invocation time in the ISO 8601 format expressed in UTC.',
@@ -18404,6 +18895,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'timer',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  [FAAS_VERSION]: {
+    brief: 'The version of the function that was invoked',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: '$LATEST',
+    aliases: [AWS_LAMBDA_FUNCTION_VERSION],
+    changelog: [{ version: 'next' }],
+  },
   [FCP]: {
     brief: 'The time it takes for the browser to render the first piece of meaningful content on the screen',
     type: 'double',
@@ -18418,7 +18921,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'This attribute is being deprecated in favor of browser.web_vital.fcp.value',
     },
     aliases: [BROWSER_WEB_VITAL_FCP_VALUE],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [235] }],
   },
   [FLAG_EVALUATION_KEY]: {
@@ -18426,7 +18928,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'An instance of a feature flag evaluation. The value of this attribute is the boolean representing the evaluation result. The <key> suffix is the name of the feature flag.',
     type: 'boolean',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -18448,7 +18950,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'This attribute is being deprecated in favor of browser.web_vital.fp.value',
     },
     aliases: [BROWSER_WEB_VITAL_FP_VALUE],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [235] }],
   },
   [FRAMES_DELAY]: {
@@ -18571,7 +19072,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'error.type',
       reason: 'This attribute is not part of the OpenTelemetry specification and error.type fits much better.',
     },
-    sdks: ['javascript-node'],
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
   [GCP_FUNCTION_CONTEXT_EVENT_ID]: {
@@ -18682,7 +19182,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'my-project-123',
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.11.0', prs: [403] }],
   },
   [GEN_AI_AGENT_NAME]: {
     brief: 'The name of the agent being used.',
@@ -19146,6 +19646,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.1.0', prs: [63, 74] },
     ],
   },
+  [GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK]: {
+    brief: 'Time in seconds when the first response content chunk arrived in streaming responses.',
+    type: 'double',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 0.6853435,
+    aliases: [GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN],
+    changelog: [{ version: '0.11.0', prs: [418], description: 'Added gen_ai.response.time_to_first_chunk attribute' }],
+  },
   [GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN]: {
     brief: 'Time in seconds when the first response content chunk arrived in streaming responses.',
     type: 'double',
@@ -19155,7 +19667,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 0.6853435,
-    changelog: [{ version: '0.4.0', prs: [227] }],
+    deprecation: {
+      replacement: 'gen_ai.response.time_to_first_chunk',
+    },
+    aliases: [GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK],
+    changelog: [
+      { version: '0.11.0', prs: [418], description: 'Deprecate in favor of gen_ai.response.time_to_first_chunk' },
+      { version: '0.4.0', prs: [227] },
+    ],
   },
   [GEN_AI_RESPONSE_TOKENS_PER_SECOND]: {
     brief: 'The total output tokens per seconds throughput',
@@ -19371,6 +19890,39 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     changelog: [{ version: '0.1.0', prs: [62, 127] }],
   },
+  [GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS]: {
+    brief: 'The number of tokens written to the cache when processing the AI input (prompt).',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 100,
+    aliases: [GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE],
+    changelog: [
+      { version: '0.11.0', prs: [418], description: 'Added gen_ai.usage.cache_creation.input_tokens attribute' },
+    ],
+    additionalContext: [
+      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
+    ],
+  },
+  [GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS]: {
+    brief: 'The number of cached tokens used to process the AI input (prompt).',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 50,
+    aliases: [GEN_AI_USAGE_INPUT_TOKENS_CACHED],
+    changelog: [{ version: '0.11.0', prs: [418], description: 'Added gen_ai.usage.cache_read.input_tokens attribute' }],
+    additionalContext: [
+      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
+      'This is a subset of gen_ai.usage.input_tokens, not an independent count. Do not sum this with gen_ai.usage.input_tokens — it is already included.',
+    ],
+  },
   [GEN_AI_USAGE_COMPLETION_TOKENS]: {
     brief: 'The number of tokens used in the GenAI response (completion).',
     type: 'integer',
@@ -19405,6 +19957,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 10,
     aliases: [AI_PROMPT_TOKENS_USED, GEN_AI_USAGE_PROMPT_TOKENS],
     changelog: [
+      {
+        version: '0.11.0',
+        prs: [418],
+        description: 'Update additional_context to reference gen_ai.usage.cache_read.input_tokens',
+      },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.5.0', prs: [261] },
       { version: '0.4.0', prs: [228] },
@@ -19413,7 +19970,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
     additionalContext: [
       'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
-      'This count includes cached input tokens. gen_ai.usage.input_tokens.cached is a subset of this value, not an independent count — do not sum them together.',
+      'This count includes cached input tokens. gen_ai.usage.cache_read.input_tokens is a subset of this value, not an independent count — do not sum them together.',
     ],
   },
   [GEN_AI_USAGE_INPUT_TOKENS_CACHED]: {
@@ -19425,7 +19982,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 50,
+    deprecation: {
+      replacement: 'gen_ai.usage.cache_read.input_tokens',
+    },
+    aliases: [GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS],
     changelog: [
+      { version: '0.11.0', prs: [418], description: 'Deprecate in favor of gen_ai.usage.cache_read.input_tokens' },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [62, 112] },
@@ -19444,7 +20006,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 100,
+    deprecation: {
+      replacement: 'gen_ai.usage.cache_creation.input_tokens',
+    },
+    aliases: [GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS],
     changelog: [
+      { version: '0.11.0', prs: [418], description: 'Deprecate in favor of gen_ai.usage.cache_creation.input_tokens' },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [217, 228] },
     ],
@@ -19463,6 +20030,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 10,
     aliases: [AI_COMPLETION_TOKENS_USED, GEN_AI_USAGE_COMPLETION_TOKENS],
     changelog: [
+      {
+        version: '0.11.0',
+        prs: [418],
+        description: 'Update additional_context to reference gen_ai.usage.reasoning.output_tokens',
+      },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.5.0', prs: [261] },
       { version: '0.4.0', prs: [228] },
@@ -19471,7 +20043,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
     additionalContext: [
       'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
-      'This count includes reasoning tokens. gen_ai.usage.output_tokens.reasoning is a subset of this value, not an independent count — do not sum them together.',
+      'This count includes reasoning tokens. gen_ai.usage.reasoning.output_tokens is a subset of this value, not an independent count — do not sum them together.',
     ],
   },
   [GEN_AI_USAGE_OUTPUT_TOKENS_REASONING]: {
@@ -19483,7 +20055,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 75,
+    deprecation: {
+      replacement: 'gen_ai.usage.reasoning.output_tokens',
+    },
+    aliases: [GEN_AI_USAGE_REASONING_OUTPUT_TOKENS],
     changelog: [
+      { version: '0.11.0', prs: [418], description: 'Deprecate in favor of gen_ai.usage.reasoning.output_tokens' },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [62, 112] },
@@ -19516,6 +20093,22 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
     ],
   },
+  [GEN_AI_USAGE_REASONING_OUTPUT_TOKENS]: {
+    brief: 'The number of tokens used for reasoning to create the AI output.',
+    type: 'integer',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 75,
+    aliases: [GEN_AI_USAGE_OUTPUT_TOKENS_REASONING],
+    changelog: [{ version: '0.11.0', prs: [418], description: 'Added gen_ai.usage.reasoning.output_tokens attribute' }],
+    additionalContext: [
+      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
+      'This is a subset of gen_ai.usage.output_tokens, not an independent count. Do not sum this with gen_ai.usage.output_tokens — it is already included.',
+    ],
+  },
   [GEN_AI_USAGE_TOTAL_TOKENS]: {
     brief: 'The total number of tokens used to process the prompt. (input tokens plus output todkens)',
     type: 'integer',
@@ -19540,7 +20133,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The GraphQL document being executed.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
       reason:
         'The document may contain sensitive information in arguments or variables. Instrumentation should redact sensitive information when possible.',
     },
@@ -19590,7 +20183,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Old namespace-less attribute, to be replaced with device.processor_count for span-first future',
     },
     aliases: [DEVICE_PROCESSOR_COUNT],
-    sdks: ['javascript-browser'],
     changelog: [
       {
         version: '0.5.0',
@@ -19624,7 +20216,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 456,
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [HTTP_FLAVOR]: {
@@ -19647,7 +20238,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'The fragments present in the URI. Note that this contains the leading # character, while the `url.fragment` attribute does not.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: false,
     visibility: 'public',
@@ -19703,7 +20294,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'HTTP request body data. Can be given as string or structural data of any format.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: false,
     visibility: 'public',
@@ -19720,7 +20311,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1732829555.15,
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
   [HTTP_REQUEST_CONNECT_START]: {
@@ -19733,7 +20323,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1732829555.111,
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
   [HTTP_REQUEST_DOMAIN_LOOKUP_END]: {
@@ -19746,7 +20335,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1732829555.201,
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
   [HTTP_REQUEST_DOMAIN_LOOKUP_START]: {
@@ -19759,7 +20347,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1732829555.322,
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
   [HTTP_REQUEST_FETCH_START]: {
@@ -19771,7 +20358,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1732829555.389,
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
   [HTTP_REQUEST_HEADER_KEY]: {
@@ -19779,7 +20365,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'HTTP request headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.',
     type: 'string[]',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: true,
     visibility: 'public',
@@ -19827,7 +20413,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1732829558.502,
-    sdks: ['javascript-browser'],
     changelog: [
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [130, 134] },
@@ -19842,7 +20427,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1732829555.495,
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
   [HTTP_REQUEST_REQUEST_START]: {
@@ -19855,7 +20439,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1732829555.51,
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
   [HTTP_REQUEST_RESEND_COUNT]: {
@@ -19879,7 +20462,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1732829555.89,
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
   [HTTP_REQUEST_RESPONSE_START]: {
@@ -19892,7 +20474,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1732829555.7,
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
   [HTTP_REQUEST_SECURE_CONNECTION_START]: {
@@ -19905,7 +20486,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1732829555.73,
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
   [HTTP_REQUEST_TIME_TO_FIRST_BYTE]: {
@@ -19918,7 +20498,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1.032,
-    sdks: ['javascript-browser'],
     changelog: [
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [131] },
@@ -19934,7 +20513,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1732829553.68,
-    sdks: ['javascript-browser'],
     changelog: [
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [130, 134] },
@@ -19984,7 +20562,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'HTTP response headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.',
     type: 'string[]',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: true,
     visibility: 'public',
@@ -20086,7 +20664,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 50,
-    sdks: ['ruby'],
     changelog: [{ version: '0.5.0', prs: [267] }],
   },
   [HTTP_STATUS_CODE]: {
@@ -20108,7 +20685,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The pathname and query string of the URL.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: true,
     visibility: 'public',
@@ -20159,7 +20736,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'f47ac10b58cc4372a5670e02b2c3d479',
-    sdks: ['php-laravel'],
     changelog: [{ version: '0.0.0' }],
   },
   [INP]: {
@@ -20176,7 +20752,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'The INP web vital is now recorded as a browser.web_vital.inp.value attribute.',
     },
     aliases: [BROWSER_WEB_VITAL_INP_VALUE],
-    sdks: ['javascript-browser'],
     changelog: [
       {
         version: '0.5.0',
@@ -20256,7 +20831,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Whether the thread is daemon or not.',
     type: 'boolean',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     visibility: 'public',
@@ -20288,7 +20863,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'The LCP web vital is now recorded as a browser.web_vital.lcp.value attribute.',
     },
     aliases: [BROWSER_WEB_VITAL_LCP_VALUE],
-    sdks: ['javascript-browser'],
     changelog: [
       {
         version: '0.5.0',
@@ -20343,7 +20917,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'The LCP load time is now recorded as a browser.web_vital.lcp.load_time attribute.',
     },
     aliases: [BROWSER_WEB_VITAL_LCP_LOAD_TIME],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [233] }],
   },
   [LCP_RENDERTIME]: {
@@ -20360,7 +20933,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'The LCP render time is now recorded as a browser.web_vital.lcp.render_time attribute.',
     },
     aliases: [BROWSER_WEB_VITAL_LCP_RENDER_TIME],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [233] }],
   },
   [LCP_SIZE]: {
@@ -20383,7 +20955,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The url of the dom element responsible for the largest contentful paint.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: false,
     visibility: 'public',
@@ -20422,7 +20994,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Request ID of the cancelled MCP operation.',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -20433,7 +21005,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Name of the MCP client application.',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -20456,7 +21028,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Version of the MCP client application.',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -20467,7 +21039,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Lifecycle phase indicator for MCP operations.',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -20478,7 +21050,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Data type of the logged message content.',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -20489,7 +21061,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Log level for MCP logging operations.',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -20524,7 +21096,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The name of the MCP request or notification method being called.',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     visibility: 'public',
@@ -20578,7 +21150,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Token for tracking progress of an MCP operation.',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -20659,7 +21231,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Role of the message in the prompt result. Used for single message results only.',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -20684,7 +21256,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'MCP protocol version used in the session.',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     visibility: 'public',
@@ -20736,7 +21308,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'JSON-RPC request identifier for the MCP request. Unique within the MCP session.',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -20755,7 +21327,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Protocol of the resource URI being accessed, extracted from the URI.',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -20789,7 +21361,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Name of the MCP server application.',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -20812,7 +21384,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Version of the MCP server application.',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -20823,7 +21395,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Identifier for the MCP session.',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     visibility: 'public',
@@ -20837,7 +21409,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Name of the MCP tool being called.',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -20889,7 +21461,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Whether a tool execution resulted in an error.',
     type: 'boolean',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -20908,7 +21480,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Transport method used for MCP communication.',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -20928,25 +21500,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       "Attributes from the Mapped Diagnostic Context (MDC) present at the moment the log record was created. The MDC is supported by all the most popular logging solutions in the Java ecosystem, and it's usually implemented as a thread-local map that stores context for e.g. a specific request.",
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: false,
     visibility: 'public',
     hasDynamicSuffix: true,
     example: "mdc.some_key='some_value'",
-    sdks: ['java', 'java.logback', 'java.jul', 'java.log4j2'],
     changelog: [{ version: '0.3.0', prs: [176] }],
   },
   [MESSAGING_BATCH_MESSAGE_COUNT]: {
     brief: 'The number of messages sent, received, or processed in the scope of the batching operation.',
     type: 'integer',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     visibility: 'public',
     example: 10,
-    sdks: ['javascript-cloudflare'],
     changelog: [{ version: '0.6.0', prs: [341], description: 'Added messaging.batch.message_count attribute' }],
   },
   [MESSAGING_DESTINATION_CONNECTION]: {
@@ -20958,7 +21528,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'BestTopic',
-    sdks: ['php-laravel'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [MESSAGING_DESTINATION_NAME]: {
@@ -20970,7 +21539,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'BestTopic',
-    sdks: ['php-laravel'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [MESSAGING_MESSAGE_BODY_SIZE]: {
@@ -20982,7 +21550,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 839,
-    sdks: ['php-laravel'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [MESSAGING_MESSAGE_ENVELOPE_SIZE]: {
@@ -20994,7 +21561,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 1045,
-    sdks: ['php-laravel'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [MESSAGING_MESSAGE_ID]: {
@@ -21006,7 +21572,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'f47ac10b58cc4372a5670e02b2c3d479',
-    sdks: ['php-laravel'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [MESSAGING_MESSAGE_RECEIVE_LATENCY]: {
@@ -21018,7 +21583,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1732847252,
-    sdks: ['php-laravel'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [MESSAGING_MESSAGE_RETRY_COUNT]: {
@@ -21030,20 +21594,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 2,
-    sdks: ['php-laravel'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   [MESSAGING_OPERATION_NAME]: {
     brief: 'The name of the messaging operation being performed',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'send',
-    sdks: ['javascript-cloudflare'],
-    changelog: [{ version: 'next', prs: [392], description: 'Added messaging.operation.name attribute' }],
+    changelog: [{ version: '0.11.0', prs: [392], description: 'Added messaging.operation.name attribute' }],
   },
   [MESSAGING_OPERATION_TYPE]: {
     brief: 'A string identifying the type of the messaging operation',
@@ -21065,7 +21627,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'activemq',
-    sdks: ['php-laravel'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [METHOD]: {
@@ -21081,19 +21642,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'http.request.method',
     },
     aliases: [HTTP_REQUEST_METHOD, _HTTP_REQUEST_METHOD, HTTP_METHOD],
-    sdks: ['javascript-browser', 'javascript-node'],
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
   [MIDDLEWARE_NAME]: {
     brief: 'The name of the middleware.',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
     example: 'AuthenticationMiddleware',
-    sdks: ['python'],
     changelog: [{ version: '0.6.0', prs: [336], description: 'Added middleware.name attribute' }],
   },
   [NAVIGATION_TYPE]: {
@@ -21137,7 +21696,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: "request's referrer, as determined by the referrer policy associated with its client.",
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: false,
     visibility: 'public',
@@ -21179,7 +21738,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '4g',
     aliases: [EFFECTIVECONNECTIONTYPE],
-    sdks: ['javascript-browser'],
     changelog: [
       {
         version: '0.5.0',
@@ -21198,7 +21756,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 100,
     aliases: [CONNECTION_RTT],
-    sdks: ['javascript-browser'],
     changelog: [
       {
         version: '0.5.0',
@@ -21217,7 +21774,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'wifi',
     aliases: [DEVICE_CONNECTION_TYPE, CONNECTIONTYPE],
-    sdks: ['javascript-browser'],
     changelog: [
       {
         version: '0.5.0',
@@ -21254,7 +21810,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Peer address of the network connection - IP address or Unix domain socket name.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: true,
     visibility: 'public',
@@ -21370,7 +21926,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Peer address of the network connection - IP address or Unix domain socket name.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: true,
     visibility: 'public',
@@ -21386,7 +21942,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: true,
     visibility: 'public',
@@ -21491,7 +22047,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Peer address of the network connection - IP address',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: true,
     visibility: 'public',
@@ -21506,7 +22062,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Peer address of the network connection - Unix domain socket name',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: true,
     visibility: 'public',
@@ -21705,7 +22261,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Description of the Status if it has a value, otherwise not set.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: true,
     visibility: 'public',
@@ -21717,7 +22273,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: false,
     visibility: 'public',
@@ -21740,7 +22296,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'The activationStart is now recorded as the browser.performance.navigation.activation_start attribute.',
     },
     aliases: [BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [321], description: 'Added performance.activationStart attribute' }],
   },
   [PERFORMANCE_TIMEORIGIN]: {
@@ -21757,7 +22312,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'The timeOrigin is now recorded as the browser.performance.time_origin attribute.',
     },
     aliases: [BROWSER_PERFORMANCE_TIME_ORIGIN],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [321], description: 'Added performance.timeOrigin attribute' }],
   },
   [PREVIOUS_ROUTE]: {
@@ -21769,19 +22323,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'HomeScreen',
-    sdks: ['javascript-reactnative'],
     changelog: [{ version: '0.1.0', prs: [74] }, { version: '0.0.0' }],
   },
   [PROCESS_COMMAND_ARGS]: {
     brief: 'All the command arguments (including the command/executable itself) as received by the process.',
     type: 'string[]',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: true,
     visibility: 'public',
     example: ['cmd/otecol', '--config=config.yaml'],
-    sdks: ['python'],
     changelog: [{ version: '0.6.0', prs: [327], description: 'Added process.command_args attribute' }],
   },
   [PROCESS_EXECUTABLE_NAME]: {
@@ -21870,7 +22422,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'An item in a query string. Usually added by client-side routing frameworks like vue-router.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: false,
     visibility: 'public',
@@ -21912,13 +22464,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Remix form data, <key> being the form data key, the value being the form data value.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: false,
     visibility: 'public',
     hasDynamicSuffix: true,
     example: "http.response.header.text='test'",
-    sdks: ['javascript-remix'],
     changelog: [{ version: '0.1.0', prs: [103] }],
   },
   [REPLAY_ID]: {
@@ -21940,7 +22491,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The software deployment environment name.',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     visibility: 'public',
@@ -21954,7 +22505,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The software deployment environment name.',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     visibility: 'public',
@@ -21973,7 +22524,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'non-blocking',
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [ROUTE]: {
@@ -21990,7 +22540,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'http.route',
     },
     aliases: [HTTP_ROUTE],
-    sdks: ['php-laravel', 'javascript-reactnative'],
     changelog: [{ version: '0.1.0', prs: [61, 74] }, { version: '0.0.0' }],
   },
   [RPC_GRPC_STATUS_CODE]: {
@@ -22050,7 +22599,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason:
         'The runtime.* namespace is deprecated in favor of process.runtime.*. No direct OTel equivalent exists for this attribute.',
     },
-    changelog: [{ version: 'next', prs: [383], description: 'Added and deprecated runtime.build attribute' }],
+    changelog: [{ version: '0.11.0', prs: [383], description: 'Added and deprecated runtime.build attribute' }],
   },
   [RUNTIME_NAME]: {
     brief: 'The name of the runtime. For example node, CPython, or rustc.',
@@ -22068,7 +22617,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [PROCESS_RUNTIME_NAME],
     changelog: [
       {
-        version: 'next',
+        version: '0.11.0',
         prs: [383],
         description: 'Added and deprecated runtime.name attribute in favor of process.runtime.name',
       },
@@ -22091,7 +22640,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [PROCESS_RUNTIME_DESCRIPTION],
     changelog: [
       {
-        version: 'next',
+        version: '0.11.0',
         prs: [383],
         description: 'Added and deprecated runtime.raw_description attribute in favor of process.runtime.description',
       },
@@ -22113,7 +22662,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [PROCESS_RUNTIME_VERSION],
     changelog: [
       {
-        version: 'next',
+        version: '0.11.0',
         prs: [383],
         description: 'Added and deprecated runtime.version attribute in favor of process.runtime.version',
       },
@@ -22247,7 +22796,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The human-readable description of a span.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: false,
     visibility: 'public',
@@ -22472,7 +23021,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       "A parameter used in the message template. <key> can either be the number that represent the parameter's position in the template string (sentry.message.parameter.0, sentry.message.parameter.1, etc) or the parameter's name (sentry.message.parameter.item_id, sentry.message.parameter.user_id, etc)",
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: false,
     visibility: 'public',
@@ -22523,7 +23072,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: '/posts/[id]/layout',
-    sdks: ['javascript'],
     changelog: [{ version: '0.1.0', prs: [54, 106] }],
   },
   [SENTRY_NEXTJS_SSR_FUNCTION_TYPE]: {
@@ -22536,7 +23084,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'generateMetadata',
-    sdks: ['javascript'],
     changelog: [{ version: '0.1.0', prs: [54, 106] }],
   },
   [SENTRY_NORMALIZED_DB_QUERY]: {
@@ -22565,7 +23112,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'Used as a generic attribute representing the normalized `sentry.description`. This refers to the legacy use case of `sentry.description` where it holds relevant data depending on the type of span (e.g. database query, resource url, http request description, etc).',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: false,
     visibility: 'public',
@@ -22691,7 +23238,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason:
         'The report event is now recorded as a browser.web_vital.lcp.report_event or browser.web_vital.cls.report_event attribute. No backfill required.',
     },
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [320], description: 'Added sentry.report_event attribute' }],
   },
   [SENTRY_SDK_INTEGRATIONS]: {
@@ -23039,6 +23585,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: [SENTRY_RELEASE],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  [SESSION_ID]: {
+    brief: 'A unique id identifying the active session at the time of setting this attribute',
+    type: 'string',
+    pii: {
+      isPii: 'maybe',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: '00112233-4455-6677-8899-aabbccddeeff',
+    changelog: [{ version: '0.11.0', prs: [412], description: 'Added session.id attribute' }],
+  },
   [STALL_PERCENTAGE]: {
     brief: 'The fraction of time the app was stalled. Only applies to React Native. This is computed by Relay.',
     type: 'double',
@@ -23102,7 +23659,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'MyTag',
-    sdks: ['sentry.java.android'],
     changelog: [{ version: '0.3.0', prs: [183] }],
   },
   [TIME_TO_FULL_DISPLAY]: {
@@ -23120,7 +23676,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         'Replaced by app.vitals.ttfd.value to align with the app.vitals.* namespace for mobile performance attributes',
     },
     aliases: [APP_VITALS_TTFD_VALUE],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
       { version: '0.5.0', prs: [313], description: 'Added and deprecated in favor of app.vitals.ttfd.value' },
     ],
@@ -23140,7 +23695,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         'Replaced by app.vitals.ttid.value to align with the app.vitals.* namespace for mobile performance attributes',
     },
     aliases: [APP_VITALS_TTID_VALUE],
-    sdks: ['sentry.cocoa', 'sentry.java.android', 'sentry.javascript.react-native', 'sentry.dart.flutter'],
     changelog: [
       { version: '0.5.0', prs: [313], description: 'Added and deprecated in favor of app.vitals.ttid.value' },
     ],
@@ -23204,7 +23758,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'This attribute is being deprecated in favor of browser.web_vital.ttfb.value',
     },
     aliases: [BROWSER_WEB_VITAL_TTFB_VALUE],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [235] }],
   },
   [TTFB_REQUESTTIME]: {
@@ -23222,19 +23775,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'This attribute is being deprecated in favor of browser.web_vital.ttfb.request_time',
     },
     aliases: [BROWSER_WEB_VITAL_TTFB_REQUEST_TIME],
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [235] }],
   },
   [TYPE]: {
     brief: 'More granular type of the operation happening.',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
     example: 'fetch',
-    sdks: ['javascript-browser', 'javascript-node'],
     changelog: [{ version: '0.0.0' }],
   },
   [UI_COMPONENT_NAME]: {
@@ -23252,7 +23803,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Whether the span execution contributed to the TTFD (time to fully drawn) metric.',
     type: 'boolean',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -23263,7 +23814,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Whether the span execution contributed to the TTID (time to initial display) metric.',
     type: 'boolean',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -23279,7 +23830,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 256,
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.height attribute' }],
   },
   [UI_ELEMENT_ID]: {
@@ -23291,7 +23841,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'btn-login',
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.id attribute' }],
   },
   [UI_ELEMENT_IDENTIFIER]: {
@@ -23303,7 +23852,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'heroImage',
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.identifier attribute' }],
   },
   [UI_ELEMENT_LOAD_TIME]: {
@@ -23315,7 +23863,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 998.2234,
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.load_time attribute' }],
   },
   [UI_ELEMENT_PAINT_TYPE]: {
@@ -23327,7 +23874,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'image-paint',
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.paint_type attribute' }],
   },
   [UI_ELEMENT_RENDER_TIME]: {
@@ -23339,7 +23885,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1023.1124,
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.render_time attribute' }],
   },
   [UI_ELEMENT_TYPE]: {
@@ -23351,19 +23896,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'img',
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.type attribute' }],
   },
   [UI_ELEMENT_URL]: {
     brief: 'The URL of the UI element (e.g. an img src)',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: false,
     visibility: 'public',
     example: 'https://assets.myapp.com/hero.png',
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.url attribute' }],
   },
   [UI_ELEMENT_WIDTH]: {
@@ -23375,7 +23918,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 512,
-    sdks: ['javascript-browser'],
     changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.width attribute' }],
   },
   [URL]: {
@@ -23391,7 +23933,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'url.full',
     },
     aliases: [URL_FULL, HTTP_URL],
-    sdks: ['javascript-browser', 'javascript-node'],
     changelog: [{ version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
   },
   [URL_DOMAIN]: {
@@ -23411,7 +23952,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'The fragments present in the URI. Note that this does not contain the leading # character, while the `http.fragment` attribute does.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: true,
     visibility: 'public',
@@ -23434,7 +23975,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The URI path component.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: true,
     visibility: 'public',
@@ -23446,7 +23987,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: false,
     visibility: 'public',
@@ -23650,7 +24191,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Git branch name for Vercel project',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -23661,7 +24202,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Identifier for the Vercel build (only present on build logs)',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -23672,7 +24213,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Identifier for the Vercel deployment',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -23694,7 +24235,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Type of edge runtime in Vercel',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -23716,7 +24257,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Region where the request is executed',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -23727,7 +24268,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Unique identifier for the log entry in Vercel',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -23738,7 +24279,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'JA3 fingerprint digest of Vercel request',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'true',
     },
     isInOtel: false,
     visibility: 'public',
@@ -23749,7 +24290,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'JA4 fingerprint digest',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'true',
     },
     isInOtel: false,
     visibility: 'public',
@@ -23760,7 +24301,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Vercel log output type',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -23782,7 +24323,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Identifier for the Vercel project',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -23804,7 +24345,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Original request ID when request is served from cache',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -23837,7 +24378,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Region where lambda function executed',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -23848,7 +24389,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'HTTP method of the request',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -23859,7 +24400,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Request path with query parameters',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: false,
     visibility: 'public',
@@ -23870,7 +24411,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'How the request was served based on its path and project configuration',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -23892,7 +24433,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Referer of the request',
     type: 'string',
     pii: {
-      isPii: 'maybe',
+      isPii: 'true',
     },
     isInOtel: false,
     visibility: 'public',
@@ -23903,7 +24444,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Region where the request is processed',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -23928,7 +24469,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Protocol of the request',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -23978,7 +24519,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Cache status sent to the browser',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -23989,7 +24530,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Vercel-specific identifier',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -24000,7 +24541,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Action taken by firewall rules',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -24011,7 +24552,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'ID of the firewall rule that matched',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -24022,7 +24563,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Identifier of the Vercel request',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -24033,7 +24574,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Origin of the Vercel log (build, edge, lambda, static, external, or firewall)',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: false,
     visibility: 'public',
@@ -24137,8 +24678,11 @@ export type Attributes = {
   [AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS]?: AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS_TYPE;
   [AWS_LAMBDA_FUNCTION_NAME]?: AWS_LAMBDA_FUNCTION_NAME_TYPE;
   [AWS_LAMBDA_FUNCTION_VERSION]?: AWS_LAMBDA_FUNCTION_VERSION_TYPE;
+  [AWS_LAMBDA_INVOKED_ARN]?: AWS_LAMBDA_INVOKED_ARN_TYPE;
   [AWS_LAMBDA_INVOKED_FUNCTION_ARN]?: AWS_LAMBDA_INVOKED_FUNCTION_ARN_TYPE;
   [AWS_LAMBDA_REMAINING_TIME_IN_MILLIS]?: AWS_LAMBDA_REMAINING_TIME_IN_MILLIS_TYPE;
+  [AWS_LOG_GROUP_NAMES]?: AWS_LOG_GROUP_NAMES_TYPE;
+  [AWS_LOG_STREAM_NAMES]?: AWS_LOG_STREAM_NAMES_TYPE;
   [BLOCKED_MAIN_THREAD]?: BLOCKED_MAIN_THREAD_TYPE;
   [BROWSER_NAME]?: BROWSER_NAME_TYPE;
   [BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START]?: BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START_TYPE;
@@ -24177,6 +24721,12 @@ export type Attributes = {
   [CLOUDFLARE_D1_QUERY_TYPE]?: CLOUDFLARE_D1_QUERY_TYPE_TYPE;
   [CLOUDFLARE_D1_ROWS_READ]?: CLOUDFLARE_D1_ROWS_READ_TYPE;
   [CLOUDFLARE_D1_ROWS_WRITTEN]?: CLOUDFLARE_D1_ROWS_WRITTEN_TYPE;
+  [CLOUDFLARE_R2_BUCKET]?: CLOUDFLARE_R2_BUCKET_TYPE;
+  [CLOUDFLARE_R2_OPERATION]?: CLOUDFLARE_R2_OPERATION_TYPE;
+  [CLOUDFLARE_R2_REQUEST_DELIMITER]?: CLOUDFLARE_R2_REQUEST_DELIMITER_TYPE;
+  [CLOUDFLARE_R2_REQUEST_KEY]?: CLOUDFLARE_R2_REQUEST_KEY_TYPE;
+  [CLOUDFLARE_R2_REQUEST_PART_NUMBER]?: CLOUDFLARE_R2_REQUEST_PART_NUMBER_TYPE;
+  [CLOUDFLARE_R2_REQUEST_PREFIX]?: CLOUDFLARE_R2_REQUEST_PREFIX_TYPE;
   [CLOUDFLARE_WORKFLOW_ATTEMPT]?: CLOUDFLARE_WORKFLOW_ATTEMPT_TYPE;
   [CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF]?: CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF_TYPE;
   [CLOUDFLARE_WORKFLOW_RETRIES_DELAY]?: CLOUDFLARE_WORKFLOW_RETRIES_DELAY_TYPE;
@@ -24187,6 +24737,7 @@ export type Attributes = {
   [CLOUD_PLATFORM]?: CLOUD_PLATFORM_TYPE;
   [CLOUD_PROVIDER]?: CLOUD_PROVIDER_TYPE;
   [CLOUD_REGION]?: CLOUD_REGION_TYPE;
+  [CLOUD_RESOURCE_ID]?: CLOUD_RESOURCE_ID_TYPE;
   [CLS]?: CLS_TYPE;
   [CLS_SOURCE_KEY]?: CLS_SOURCE_KEY_TYPE;
   [CODE_FILEPATH]?: CODE_FILEPATH_TYPE;
@@ -24275,9 +24826,11 @@ export type Attributes = {
   [FAAS_DURATION_IN_MS]?: FAAS_DURATION_IN_MS_TYPE;
   [FAAS_ENTRY_POINT]?: FAAS_ENTRY_POINT_TYPE;
   [FAAS_IDENTITY]?: FAAS_IDENTITY_TYPE;
+  [FAAS_INVOCATION_ID]?: FAAS_INVOCATION_ID_TYPE;
   [FAAS_NAME]?: FAAS_NAME_TYPE;
   [FAAS_TIME]?: FAAS_TIME_TYPE;
   [FAAS_TRIGGER]?: FAAS_TRIGGER_TYPE;
+  [FAAS_VERSION]?: FAAS_VERSION_TYPE;
   [FCP]?: FCP_TYPE;
   [FLAG_EVALUATION_KEY]?: FLAG_EVALUATION_KEY_TYPE;
   [FP]?: FP_TYPE;
@@ -24330,6 +24883,7 @@ export type Attributes = {
   [GEN_AI_RESPONSE_MODEL]?: GEN_AI_RESPONSE_MODEL_TYPE;
   [GEN_AI_RESPONSE_STREAMING]?: GEN_AI_RESPONSE_STREAMING_TYPE;
   [GEN_AI_RESPONSE_TEXT]?: GEN_AI_RESPONSE_TEXT_TYPE;
+  [GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK]?: GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK_TYPE;
   [GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN]?: GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN_TYPE;
   [GEN_AI_RESPONSE_TOKENS_PER_SECOND]?: GEN_AI_RESPONSE_TOKENS_PER_SECOND_TYPE;
   [GEN_AI_RESPONSE_TOOL_CALLS]?: GEN_AI_RESPONSE_TOOL_CALLS_TYPE;
@@ -24345,6 +24899,8 @@ export type Attributes = {
   [GEN_AI_TOOL_NAME]?: GEN_AI_TOOL_NAME_TYPE;
   [GEN_AI_TOOL_OUTPUT]?: GEN_AI_TOOL_OUTPUT_TYPE;
   [GEN_AI_TOOL_TYPE]?: GEN_AI_TOOL_TYPE_TYPE;
+  [GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS]?: GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS_TYPE;
+  [GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS]?: GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_COMPLETION_TOKENS]?: GEN_AI_USAGE_COMPLETION_TOKENS_TYPE;
   [GEN_AI_USAGE_INPUT_TOKENS]?: GEN_AI_USAGE_INPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_INPUT_TOKENS_CACHED]?: GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE;
@@ -24352,6 +24908,7 @@ export type Attributes = {
   [GEN_AI_USAGE_OUTPUT_TOKENS]?: GEN_AI_USAGE_OUTPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_OUTPUT_TOKENS_REASONING]?: GEN_AI_USAGE_OUTPUT_TOKENS_REASONING_TYPE;
   [GEN_AI_USAGE_PROMPT_TOKENS]?: GEN_AI_USAGE_PROMPT_TOKENS_TYPE;
+  [GEN_AI_USAGE_REASONING_OUTPUT_TOKENS]?: GEN_AI_USAGE_REASONING_OUTPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_TOTAL_TOKENS]?: GEN_AI_USAGE_TOTAL_TOKENS_TYPE;
   [GRAPHQL_DOCUMENT]?: GRAPHQL_DOCUMENT_TYPE;
   [GRAPHQL_OPERATION_NAME]?: GRAPHQL_OPERATION_NAME_TYPE;
@@ -24617,6 +25174,7 @@ export type Attributes = {
   [SERVER_PORT]?: SERVER_PORT_TYPE;
   [SERVICE_NAME]?: SERVICE_NAME_TYPE;
   [SERVICE_VERSION]?: SERVICE_VERSION_TYPE;
+  [SESSION_ID]?: SESSION_ID_TYPE;
   [STALL_PERCENTAGE]?: STALL_PERCENTAGE_TYPE;
   [STALL_TOTAL_TIME]?: STALL_TOTAL_TIME_TYPE;
   [STATE_TYPE]?: STATE_TYPE_TYPE;

@@ -3,11 +3,10 @@
   "brief": "The number of messages sent, received, or processed in the scope of the batching operation.",
   "type": "integer",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": 10,
-  "sdks": ["javascript-cloudflare"],
   "visibility": "public",
   "changelog": [
     {

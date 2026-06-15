@@ -8,7 +8,6 @@
   "is_in_otel": false,
   "example": "App\\Controller::indexAction",
   "alias": ["http.route"],
-  "sdks": ["php-laravel", "javascript-reactnative"],
   "deprecation": {
     "_status": null,
     "replacement": "http.route"

@@ -1,0 +1,23 @@
+{
+  "key": "gen_ai.usage.cache_read.input_tokens",
+  "brief": "The number of cached tokens used to process the AI input (prompt).",
+  "type": "integer",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "example": 50,
+  "additional_context": [
+    "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.",
+    "This is a subset of gen_ai.usage.input_tokens, not an independent count. Do not sum this with gen_ai.usage.input_tokens — it is already included."
+  ],
+  "alias": ["gen_ai.usage.input_tokens.cached"],
+  "changelog": [
+    {
+      "version": "0.11.0",
+      "prs": [418],
+      "description": "Added gen_ai.usage.cache_read.input_tokens attribute"
+    }
+  ]
+}

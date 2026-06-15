@@ -8,7 +8,6 @@
   "is_in_otel": false,
   "example": 8,
   "alias": ["deviceMemory"],
-  "sdks": ["javascript-browser"],
   "visibility": "public",
   "changelog": [
     {

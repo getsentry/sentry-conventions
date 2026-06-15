@@ -3,7 +3,7 @@
   "brief": "The fragments present in the URI. Note that this contains the leading # character, while the `url.fragment` attribute does not.",
   "type": "string",
   "pii": {
-    "key": "maybe"
+    "key": "true"
   },
   "is_in_otel": false,
   "example": "#details",

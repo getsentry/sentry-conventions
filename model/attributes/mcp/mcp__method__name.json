@@ -3,7 +3,7 @@
   "brief": "The name of the MCP request or notification method being called.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "tools/call",

@@ -7,8 +7,18 @@
   },
   "is_in_otel": false,
   "example": "8476a536-e9f4-11e8-9739-2dfe598c3fcd",
+  "alias": ["faas.invocation_id"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "faas.invocation_id",
+    "reason": "This attribute is being deprecated in favor of faas.invocation_id"
+  },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Deprecated aws.lambda.aws_request_id in favor of faas.invocation_id"
+    },
     {
       "version": "0.7.0",
       "prs": [369],

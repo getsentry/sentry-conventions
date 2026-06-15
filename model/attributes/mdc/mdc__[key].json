@@ -4,11 +4,10 @@
   "has_dynamic_suffix": true,
   "type": "string",
   "pii": {
-    "key": "maybe"
+    "key": "true"
   },
   "is_in_otel": false,
   "example": "mdc.some_key='some_value'",
-  "sdks": ["java", "java.logback", "java.jul", "java.log4j2"],
   "visibility": "public",
   "changelog": [
     {

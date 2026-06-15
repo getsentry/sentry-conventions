@@ -3,7 +3,7 @@
   "brief": "The database user.",
   "type": "string",
   "pii": {
-    "key": "true"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "example": "fancy_user",
