@@ -128,7 +128,7 @@ export type AI_FREQUENCY_PENALTY_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_TOOL_NAME} `gen_ai.tool.name`
+ * Aliases: {@link GEN_AI_TOOL_NAME} `gen_ai.tool.name`, {@link MCP_TOOL_NAME} `mcp.tool.name`
  *
  * @deprecated Use {@link GEN_AI_TOOL_NAME} (gen_ai.tool.name) instead
  * @example "function_name"
@@ -6534,7 +6534,7 @@ export type GEN_AI_TOOL_INPUT_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`
+ * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`, {@link MCP_TOOL_RESULT_CONTENT} `mcp.tool.result.content`
  *
  * @deprecated Use {@link GEN_AI_TOOL_CALL_RESULT} (gen_ai.tool.call.result) instead
  * @example "rainy, 57°F"
@@ -6581,7 +6581,7 @@ export type GEN_AI_TOOL_NAME_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`
+ * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`, {@link MCP_TOOL_RESULT_CONTENT} `mcp.tool.result.content`
  *
  * @deprecated Use {@link GEN_AI_TOOL_CALL_RESULT} (gen_ai.tool.call.result) instead
  * @example "rainy, 57°F"
@@ -8973,6 +8973,8 @@ export type MCP_SESSION_ID_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link GEN_AI_TOOL_NAME} `gen_ai.tool.name`, {@link AI_FUNCTION_CALL} `ai.function_call`
+ *
  * @deprecated Use {@link GEN_AI_TOOL_NAME} (gen_ai.tool.name) instead - OTel uses gen_ai.tool.name for MCP tool names
  * @example "calculator"
  */
@@ -8994,6 +8996,8 @@ export type MCP_TOOL_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`, {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`
  *
  * @deprecated Use {@link GEN_AI_TOOL_CALL_RESULT} (gen_ai.tool.call.result) instead - OTel uses gen_ai.tool.call.result for MCP tool results
  * @example "{\"output\": \"rainy\", \"toolCallId\": \"1\"}"
@@ -15976,7 +15980,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.tool.name',
     },
-    aliases: [GEN_AI_TOOL_NAME],
+    aliases: [GEN_AI_TOOL_NAME, MCP_TOOL_NAME],
     changelog: [{ version: '0.1.0', prs: [55, 57, 61, 108] }],
   },
   [AI_GENERATION_ID]: {
@@ -19840,7 +19844,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.tool.call.result',
     },
-    aliases: [GEN_AI_TOOL_CALL_RESULT, GEN_AI_TOOL_OUTPUT],
+    aliases: [GEN_AI_TOOL_CALL_RESULT, GEN_AI_TOOL_OUTPUT, MCP_TOOL_RESULT_CONTENT],
     changelog: [
       { version: '0.5.0', prs: [265] },
       { version: '0.1.0', prs: [62] },
@@ -19870,7 +19874,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.tool.call.result',
     },
-    aliases: [GEN_AI_TOOL_CALL_RESULT, GEN_AI_TOOL_MESSAGE],
+    aliases: [GEN_AI_TOOL_CALL_RESULT, GEN_AI_TOOL_MESSAGE, MCP_TOOL_RESULT_CONTENT],
     changelog: [
       { version: '0.5.0', prs: [265] },
       { version: '0.1.0', prs: [63, 74] },
@@ -21418,6 +21422,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.tool.name',
       reason: 'OTel uses gen_ai.tool.name for MCP tool names',
     },
+    aliases: [GEN_AI_TOOL_NAME, AI_FUNCTION_CALL],
     changelog: [
       { version: 'next', description: 'Deprecated in favor of gen_ai.tool.name' },
       { version: '0.3.0', prs: [171] },
@@ -21437,6 +21442,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.tool.call.result',
       reason: 'OTel uses gen_ai.tool.call.result for MCP tool results',
     },
+    aliases: [GEN_AI_TOOL_CALL_RESULT, GEN_AI_TOOL_MESSAGE, GEN_AI_TOOL_OUTPUT],
     changelog: [
       { version: 'next', description: 'Deprecated in favor of gen_ai.tool.call.result' },
       { version: '0.3.0', prs: [171] },

@@ -365,7 +365,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: true
     Defined in OTEL: No
     Visibility: public
-    Aliases: gen_ai.tool.name
+    Aliases: gen_ai.tool.name, mcp.tool.name
     DEPRECATED: Use gen_ai.tool.name instead
     Example: "function_name"
     """
@@ -3945,7 +3945,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: true
     Defined in OTEL: No
     Visibility: public
-    Aliases: gen_ai.tool.call.result, gen_ai.tool.output
+    Aliases: gen_ai.tool.call.result, gen_ai.tool.output, mcp.tool.result.content
     DEPRECATED: Use gen_ai.tool.call.result instead
     Example: "rainy, 57°F"
     """
@@ -3970,7 +3970,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
-    Aliases: gen_ai.tool.call.result, gen_ai.tool.message
+    Aliases: gen_ai.tool.call.result, gen_ai.tool.message, mcp.tool.result.content
     DEPRECATED: Use gen_ai.tool.call.result instead
     Example: "rainy, 57°F"
     """
@@ -5324,6 +5324,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: maybe
     Defined in OTEL: No
     Visibility: public
+    Aliases: gen_ai.tool.name, ai.function_call
     DEPRECATED: Use gen_ai.tool.name instead - OTel uses gen_ai.tool.name for MCP tool names
     Example: "calculator"
     """
@@ -5338,6 +5339,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Contains PII: true - Tool results can contain user data
     Defined in OTEL: No
     Visibility: public
+    Aliases: gen_ai.tool.call.result, gen_ai.tool.message, gen_ai.tool.output
     DEPRECATED: Use gen_ai.tool.call.result instead - OTel uses gen_ai.tool.call.result for MCP tool results
     Example: "{\"output\": \"rainy\", \"toolCallId\": \"1\"}"
     """
@@ -8438,7 +8440,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="gen_ai.tool.name", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["gen_ai.tool.name"],
+        aliases=["gen_ai.tool.name", "mcp.tool.name"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[55, 57, 61, 108]),
         ],
@@ -12657,7 +12659,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="gen_ai.tool.call.result", status=DeprecationStatus.NORMALIZE
         ),
-        aliases=["gen_ai.tool.call.result", "gen_ai.tool.output"],
+        aliases=[
+            "gen_ai.tool.call.result",
+            "gen_ai.tool.output",
+            "mcp.tool.result.content",
+        ],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[265]),
             ChangelogEntry(version="0.1.0", prs=[62]),
@@ -12685,7 +12691,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="gen_ai.tool.call.result", status=DeprecationStatus.NORMALIZE
         ),
-        aliases=["gen_ai.tool.call.result", "gen_ai.tool.message"],
+        aliases=[
+            "gen_ai.tool.call.result",
+            "gen_ai.tool.message",
+            "mcp.tool.result.content",
+        ],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[265]),
             ChangelogEntry(version="0.1.0", prs=[63, 74]),
@@ -14299,6 +14309,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="OTel uses gen_ai.tool.name for MCP tool names",
             status=DeprecationStatus.BACKFILL,
         ),
+        aliases=["gen_ai.tool.name", "ai.function_call"],
         changelog=[
             ChangelogEntry(
                 version="next", description="Deprecated in favor of gen_ai.tool.name"
@@ -14318,6 +14329,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="OTel uses gen_ai.tool.call.result for MCP tool results",
             status=DeprecationStatus.BACKFILL,
         ),
+        aliases=[
+            "gen_ai.tool.call.result",
+            "gen_ai.tool.message",
+            "gen_ai.tool.output",
+        ],
         changelog=[
             ChangelogEntry(
                 version="next",

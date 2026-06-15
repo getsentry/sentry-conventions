@@ -5,11 +5,11 @@
       "name": "Server",
       "brief": "MCP server-side operations. Processing of incoming MCP requests or notifications initiated by a client, such as tool calls, prompt requests, and resource reads.",
       "is_in_otel": true,
-      "otel_notes": "OpenTelemetry uses gen_ai.tool.name and gen_ai.prompt.name for the target in the span name. Sentry uses mcp.tool.name and mcp.prompt.name instead.",
+      "otel_notes": "OpenTelemetry uses gen_ai.tool.name and gen_ai.prompt.name for the target in the span name.",
       "ops": ["mcp.server"],
       "templates": [
-        "{{mcp.method.name}} {{mcp.tool.name}}",
-        "{{mcp.method.name}} {{mcp.prompt.name}}",
+        "{{mcp.method.name}} {{gen_ai.tool.name}}",
+        "{{mcp.method.name}} {{gen_ai.prompt.name}}",
         "{{mcp.method.name}}",
         "MCP server operation"
       ],

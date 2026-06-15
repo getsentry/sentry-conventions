@@ -7,6 +7,7 @@
   },
   "is_in_otel": false,
   "example": "calculator",
+  "alias": ["gen_ai.tool.name", "ai.function_call"],
   "visibility": "public",
   "changelog": [
     {
