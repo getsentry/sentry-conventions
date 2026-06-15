@@ -7,6 +7,11 @@
   },
   "is_in_otel": false,
   "example": "run",
+  "alias": ["db.operation.name", "db.operation"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "db.operation.name"
+  },
   "visibility": "public",
   "changelog": [
     {
