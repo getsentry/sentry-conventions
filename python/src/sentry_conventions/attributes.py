@@ -1883,6 +1883,82 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 12
     """
 
+    # Path: model/attributes/cloudflare/cloudflare__r2__bucket.json
+    CLOUDFLARE_R2_BUCKET: Literal["cloudflare.r2.bucket"] = "cloudflare.r2.bucket"
+    """The name of the Cloudflare R2 bucket binding
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Visibility: public
+    Example: "MY_BUCKET"
+    """
+
+    # Path: model/attributes/cloudflare/cloudflare__r2__operation.json
+    CLOUDFLARE_R2_OPERATION: Literal["cloudflare.r2.operation"] = (
+        "cloudflare.r2.operation"
+    )
+    """The R2 API operation being performed
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Visibility: public
+    Example: "GetObject"
+    """
+
+    # Path: model/attributes/cloudflare/cloudflare__r2__request__delimiter.json
+    CLOUDFLARE_R2_REQUEST_DELIMITER: Literal["cloudflare.r2.request.delimiter"] = (
+        "cloudflare.r2.request.delimiter"
+    )
+    """The delimiter used to group objects in an R2 list operation
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Visibility: public
+    Example: "/"
+    """
+
+    # Path: model/attributes/cloudflare/cloudflare__r2__request__key.json
+    CLOUDFLARE_R2_REQUEST_KEY: Literal["cloudflare.r2.request.key"] = (
+        "cloudflare.r2.request.key"
+    )
+    """The object key used in the R2 operation
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Visibility: public
+    Example: "my-file.txt"
+    """
+
+    # Path: model/attributes/cloudflare/cloudflare__r2__request__part_number.json
+    CLOUDFLARE_R2_REQUEST_PART_NUMBER: Literal["cloudflare.r2.request.part_number"] = (
+        "cloudflare.r2.request.part_number"
+    )
+    """The part number in a multipart upload operation
+
+    Type: int
+    Contains PII: maybe
+    Defined in OTEL: No
+    Visibility: public
+    Example: 1
+    """
+
+    # Path: model/attributes/cloudflare/cloudflare__r2__request__prefix.json
+    CLOUDFLARE_R2_REQUEST_PREFIX: Literal["cloudflare.r2.request.prefix"] = (
+        "cloudflare.r2.request.prefix"
+    )
+    """The prefix used to filter objects in an R2 list operation
+
+    Type: str
+    Contains PII: maybe
+    Defined in OTEL: No
+    Visibility: public
+    Example: "images/"
+    """
+
     # Path: model/attributes/cloudflare/cloudflare__workflow__attempt.json
     CLOUDFLARE_WORKFLOW_ATTEMPT: Literal["cloudflare.workflow.attempt"] = (
         "cloudflare.workflow.attempt"
@@ -10112,6 +10188,96 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "cloudflare.r2.bucket": AttributeMetadata(
+        brief="The name of the Cloudflare R2 bucket binding",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="MY_BUCKET",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[413],
+                description="Added cloudflare.r2.bucket attribute",
+            ),
+        ],
+    ),
+    "cloudflare.r2.operation": AttributeMetadata(
+        brief="The R2 API operation being performed",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="GetObject",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[413],
+                description="Added cloudflare.r2.operation attribute",
+            ),
+        ],
+    ),
+    "cloudflare.r2.request.delimiter": AttributeMetadata(
+        brief="The delimiter used to group objects in an R2 list operation",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="/",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[413],
+                description="Added cloudflare.r2.request.delimiter attribute",
+            ),
+        ],
+    ),
+    "cloudflare.r2.request.key": AttributeMetadata(
+        brief="The object key used in the R2 operation",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="my-file.txt",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[413],
+                description="Added cloudflare.r2.request.key attribute",
+            ),
+        ],
+    ),
+    "cloudflare.r2.request.part_number": AttributeMetadata(
+        brief="The part number in a multipart upload operation",
+        type=AttributeType.INTEGER,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=1,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[413],
+                description="Added cloudflare.r2.request.part_number attribute",
+            ),
+        ],
+    ),
+    "cloudflare.r2.request.prefix": AttributeMetadata(
+        brief="The prefix used to filter objects in an R2 list operation",
+        type=AttributeType.STRING,
+        pii=PiiInfo(isPii=IsPii.MAYBE),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="images/",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[413],
+                description="Added cloudflare.r2.request.prefix attribute",
+            ),
+        ],
+    ),
     "cloudflare.workflow.attempt": AttributeMetadata(
         brief="The current attempt number for a Cloudflare Workflow step",
         type=AttributeType.INTEGER,
@@ -17364,6 +17530,12 @@ Attributes = TypedDict(
         "cloudflare.d1.query_type": str,
         "cloudflare.d1.rows_read": int,
         "cloudflare.d1.rows_written": int,
+        "cloudflare.r2.bucket": str,
+        "cloudflare.r2.operation": str,
+        "cloudflare.r2.request.delimiter": str,
+        "cloudflare.r2.request.key": str,
+        "cloudflare.r2.request.part_number": int,
+        "cloudflare.r2.request.prefix": str,
         "cloudflare.workflow.attempt": int,
         "cloudflare.workflow.retries.backoff": str,
         "cloudflare.workflow.retries.delay": str,
