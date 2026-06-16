@@ -5,10 +5,14 @@
   "pii": {
     "key": "maybe"
   },
-  "is_in_otel": false,
+  "is_in_otel": true,
   "example": "550e8400-e29b-41d4-a716-446655440000",
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Set is_in_otel=true, attribute exists in OTel MCP registry"
+    },
     {
       "version": "0.3.0",
       "prs": [171]

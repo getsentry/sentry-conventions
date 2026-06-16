@@ -7,11 +7,21 @@
   },
   "is_in_otel": false,
   "example": "calculator",
+  "alias": ["gen_ai.tool.name", "ai.function_call"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Deprecated in favor of gen_ai.tool.name"
+    },
     {
       "version": "0.3.0",
       "prs": [171]
     }
-  ]
+  ],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "gen_ai.tool.name",
+    "reason": "OTel uses gen_ai.tool.name for MCP tool names"
+  }
 }

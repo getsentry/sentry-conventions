@@ -6,10 +6,14 @@
     "key": "true",
     "reason": "URIs can contain sensitive file paths"
   },
-  "is_in_otel": false,
+  "is_in_otel": true,
   "example": "file:///path/to/file.txt",
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Set is_in_otel=true, attribute exists in OTel MCP registry"
+    },
     {
       "version": "0.3.0",
       "prs": [171]

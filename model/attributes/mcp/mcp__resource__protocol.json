@@ -10,8 +10,18 @@
   "visibility": "public",
   "changelog": [
     {
+      "version": "next",
+      "description": "Deprecated in favor of network.protocol.name"
+    },
+    {
       "version": "0.3.0",
       "prs": [171]
     }
-  ]
+  ],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "network.protocol.name",
+    "reason": "OTel uses the generic network.protocol.name attribute"
+  },
+  "alias": ["network.protocol.name", "net.protocol.name"]
 }
