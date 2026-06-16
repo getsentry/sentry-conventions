@@ -4742,7 +4742,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The version of the JSON-RPC protocol used.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Visibility: public
     Example: "2.0"
@@ -4753,7 +4753,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The JSON-RPC request identifier. Unique within the session.
 
     Type: str
-    Contains PII: false
+    Contains PII: maybe
     Defined in OTEL: Yes
     Visibility: public
     Aliases: mcp.request.id
@@ -13628,7 +13628,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "jsonrpc.protocol.version": AttributeMetadata(
         brief="The version of the JSON-RPC protocol used.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="2.0",
@@ -13641,7 +13641,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "jsonrpc.request.id": AttributeMetadata(
         brief="The JSON-RPC request identifier. Unique within the session.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        pii=PiiInfo(isPii=IsPii.MAYBE),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="1",

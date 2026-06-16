@@ -7905,7 +7905,7 @@ export type INP_TYPE = number;
  *
  * Attribute Value Type: `string` {@link JSONRPC_PROTOCOL_VERSION_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -7926,7 +7926,7 @@ export type JSONRPC_PROTOCOL_VERSION_TYPE = string;
  *
  * Attribute Value Type: `string` {@link JSONRPC_REQUEST_ID_TYPE}
  *
- * Contains PII: false
+ * Contains PII: maybe
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -20768,7 +20768,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The version of the JSON-RPC protocol used.',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     visibility: 'public',
@@ -20779,7 +20779,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The JSON-RPC request identifier. Unique within the session.',
     type: 'string',
     pii: {
-      isPii: 'false',
+      isPii: 'maybe',
     },
     isInOtel: true,
     visibility: 'public',

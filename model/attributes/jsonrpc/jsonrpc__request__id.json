@@ -3,7 +3,7 @@
   "brief": "The JSON-RPC request identifier. Unique within the session.",
   "type": "string",
   "pii": {
-    "key": "false"
+    "key": "maybe"
   },
   "is_in_otel": true,
   "visibility": "public",
