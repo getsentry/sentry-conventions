@@ -16976,7 +16976,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [FAAS_INVOCATION_ID],
     changelog: [
-      { version: 'next', description: 'Deprecated aws.lambda.aws_request_id in favor of faas.invocation_id' },
+      {
+        version: '0.11.1',
+        prs: [414, 424],
+        description: 'Deprecated aws.lambda.aws_request_id in favor of faas.invocation_id',
+      },
       { version: '0.7.0', prs: [369], description: 'Added aws.lambda.aws_request_id attribute' },
     ],
   },
@@ -17008,7 +17012,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [FAAS_NAME],
     changelog: [
-      { version: 'next', description: 'Deprecated aws.lambda.function_name in favor of faas.name' },
+      { version: '0.11.1', prs: [414], description: 'Deprecated aws.lambda.function_name in favor of faas.name' },
       { version: '0.7.0', prs: [369], description: 'Added aws.lambda.function_name attribute' },
     ],
   },
@@ -17027,7 +17031,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [FAAS_VERSION],
     changelog: [
-      { version: 'next', description: 'Deprecated aws.lambda.function_version in favor of faas.version' },
+      {
+        version: '0.11.1',
+        prs: [414, 424],
+        description: 'Deprecated aws.lambda.function_version in favor of faas.version',
+      },
       { version: '0.7.0', prs: [369], description: 'Added aws.lambda.function_version attribute' },
     ],
   },
@@ -17041,7 +17049,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'arn:aws:lambda:us-east-1:123456789012:function:my-function',
     aliases: [AWS_LAMBDA_INVOKED_FUNCTION_ARN],
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.11.1', prs: [414] }],
   },
   [AWS_LAMBDA_INVOKED_FUNCTION_ARN]: {
     brief: 'The full ARN of the Lambda function that was invoked',
@@ -17058,7 +17066,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [AWS_LAMBDA_INVOKED_ARN],
     changelog: [
-      { version: 'next', description: 'Deprecated aws.lambda.invoked_function_arn in favor of aws.lambda.invoked_arn' },
+      {
+        version: '0.11.1',
+        prs: [414],
+        description: 'Deprecated aws.lambda.invoked_function_arn in favor of aws.lambda.invoked_arn',
+      },
       { version: '0.7.0', prs: [369], description: 'Added aws.lambda.invoked_function_arn attribute' },
     ],
   },
@@ -17082,7 +17094,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: ['/aws/lambda/my-function', 'opentelemetry-service'],
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.11.1', prs: [414] }],
   },
   [AWS_LOG_STREAM_NAMES]: {
     brief: 'The name(s) of the AWS log stream(s) an application is writing to.',
@@ -17093,7 +17105,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: ['logs/main/10838bed-421f-43ef-870a-f43feacbbb5b'],
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.11.1', prs: [414] }],
   },
   [BLOCKED_MAIN_THREAD]: {
     brief: 'Whether the main thread was blocked by the span.',
@@ -17552,7 +17564,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'MY_BUCKET',
-    changelog: [{ version: 'next', prs: [413], description: 'Added cloudflare.r2.bucket attribute' }],
+    changelog: [{ version: '0.11.1', prs: [413], description: 'Added cloudflare.r2.bucket attribute' }],
   },
   [CLOUDFLARE_R2_OPERATION]: {
     brief: 'The R2 API operation being performed',
@@ -17563,7 +17575,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'GetObject',
-    changelog: [{ version: 'next', prs: [413], description: 'Added cloudflare.r2.operation attribute' }],
+    changelog: [{ version: '0.11.1', prs: [413], description: 'Added cloudflare.r2.operation attribute' }],
   },
   [CLOUDFLARE_R2_REQUEST_DELIMITER]: {
     brief: 'The delimiter used to group objects in an R2 list operation',
@@ -17574,7 +17586,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: '/',
-    changelog: [{ version: 'next', prs: [413], description: 'Added cloudflare.r2.request.delimiter attribute' }],
+    changelog: [{ version: '0.11.1', prs: [413], description: 'Added cloudflare.r2.request.delimiter attribute' }],
   },
   [CLOUDFLARE_R2_REQUEST_KEY]: {
     brief: 'The object key used in the R2 operation',
@@ -17585,7 +17597,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'my-file.txt',
-    changelog: [{ version: 'next', prs: [413], description: 'Added cloudflare.r2.request.key attribute' }],
+    changelog: [{ version: '0.11.1', prs: [413], description: 'Added cloudflare.r2.request.key attribute' }],
   },
   [CLOUDFLARE_R2_REQUEST_PART_NUMBER]: {
     brief: 'The part number in a multipart upload operation',
@@ -17596,7 +17608,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1,
-    changelog: [{ version: 'next', prs: [413], description: 'Added cloudflare.r2.request.part_number attribute' }],
+    changelog: [{ version: '0.11.1', prs: [413], description: 'Added cloudflare.r2.request.part_number attribute' }],
   },
   [CLOUDFLARE_R2_REQUEST_PREFIX]: {
     brief: 'The prefix used to filter objects in an R2 list operation',
@@ -17607,7 +17619,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'images/',
-    changelog: [{ version: 'next', prs: [413], description: 'Added cloudflare.r2.request.prefix attribute' }],
+    changelog: [{ version: '0.11.1', prs: [413], description: 'Added cloudflare.r2.request.prefix attribute' }],
   },
   [CLOUDFLARE_WORKFLOW_ATTEMPT]: {
     brief: 'The current attempt number for a Cloudflare Workflow step',
@@ -17728,7 +17740,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'arn:aws:lambda:REGION:ACCOUNT_ID:function:my-function',
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.11.1', prs: [414] }],
     additionalContext: [
       'This can be an identifier for a resource in AWS, GCP, or Azure. There may be some overlap in values found here with other attributes. For instance, an AWS lambda ARN may be found here as well as in `aws.lambda.invoked_arn`. OTEL recommends setting them alongside each other.',
     ],
@@ -18863,7 +18875,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'af9d5aa4-a685-4c5f-a22b-444f80b3cc28',
     aliases: [AWS_LAMBDA_AWS_REQUEST_ID],
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.11.1', prs: [414, 424] }],
   },
   [FAAS_NAME]: {
     brief: 'The name of the serverless function',
@@ -18909,7 +18921,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '$LATEST',
     aliases: [AWS_LAMBDA_FUNCTION_VERSION],
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.11.1', prs: [414, 424] }],
   },
   [FCP]: {
     brief: 'The time it takes for the browser to render the first piece of meaningful content on the screen',

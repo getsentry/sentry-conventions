@@ -9533,7 +9533,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["faas.invocation_id"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.1",
+                prs=[414, 424],
                 description="Deprecated aws.lambda.aws_request_id in favor of faas.invocation_id",
             ),
             ChangelogEntry(
@@ -9573,7 +9574,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["faas.name"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.1",
+                prs=[414],
                 description="Deprecated aws.lambda.function_name in favor of faas.name",
             ),
             ChangelogEntry(
@@ -9598,7 +9600,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["faas.version"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.1",
+                prs=[414, 424],
                 description="Deprecated aws.lambda.function_version in favor of faas.version",
             ),
             ChangelogEntry(
@@ -9617,7 +9620,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="arn:aws:lambda:us-east-1:123456789012:function:my-function",
         aliases=["aws.lambda.invoked_function_arn"],
         changelog=[
-            ChangelogEntry(version="next"),
+            ChangelogEntry(version="0.11.1", prs=[414]),
         ],
     ),
     "aws.lambda.invoked_function_arn": AttributeMetadata(
@@ -9635,7 +9638,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["aws.lambda.invoked_arn"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.1",
+                prs=[414],
                 description="Deprecated aws.lambda.invoked_function_arn in favor of aws.lambda.invoked_arn",
             ),
             ChangelogEntry(
@@ -9668,7 +9672,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=["/aws/lambda/my-function", "opentelemetry-service"],
         changelog=[
-            ChangelogEntry(version="next"),
+            ChangelogEntry(version="0.11.1", prs=[414]),
         ],
     ),
     "aws.log.stream.names": AttributeMetadata(
@@ -9679,7 +9683,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=["logs/main/10838bed-421f-43ef-870a-f43feacbbb5b"],
         changelog=[
-            ChangelogEntry(version="next"),
+            ChangelogEntry(version="0.11.1", prs=[414]),
         ],
     ),
     "blocked_main_thread": AttributeMetadata(
@@ -10191,7 +10195,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="arn:aws:lambda:REGION:ACCOUNT_ID:function:my-function",
         changelog=[
-            ChangelogEntry(version="next"),
+            ChangelogEntry(version="0.11.1", prs=[414]),
         ],
         additional_context=[
             "This can be an identifier for a resource in AWS, GCP, or Azure. There may be some overlap in values found here with other attributes. For instance, an AWS lambda ARN may be found here as well as in `aws.lambda.invoked_arn`. OTEL recommends setting them alongside each other."
@@ -10261,7 +10265,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="MY_BUCKET",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.1",
                 prs=[413],
                 description="Added cloudflare.r2.bucket attribute",
             ),
@@ -10276,7 +10280,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="GetObject",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.1",
                 prs=[413],
                 description="Added cloudflare.r2.operation attribute",
             ),
@@ -10291,7 +10295,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="/",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.1",
                 prs=[413],
                 description="Added cloudflare.r2.request.delimiter attribute",
             ),
@@ -10306,7 +10310,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="my-file.txt",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.1",
                 prs=[413],
                 description="Added cloudflare.r2.request.key attribute",
             ),
@@ -10321,7 +10325,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=1,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.1",
                 prs=[413],
                 description="Added cloudflare.r2.request.part_number attribute",
             ),
@@ -10336,7 +10340,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="images/",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.11.1",
                 prs=[413],
                 description="Added cloudflare.r2.request.prefix attribute",
             ),
@@ -11656,7 +11660,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="af9d5aa4-a685-4c5f-a22b-444f80b3cc28",
         aliases=["aws.lambda.aws_request_id"],
         changelog=[
-            ChangelogEntry(version="next"),
+            ChangelogEntry(version="0.11.1", prs=[414, 424]),
         ],
     ),
     "faas.name": AttributeMetadata(
@@ -11704,7 +11708,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="$LATEST",
         aliases=["aws.lambda.function_version"],
         changelog=[
-            ChangelogEntry(version="next"),
+            ChangelogEntry(version="0.11.1", prs=[414, 424]),
         ],
     ),
     "fcp": AttributeMetadata(
