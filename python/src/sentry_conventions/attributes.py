@@ -12266,7 +12266,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["mcp.prompt.name"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added gen_ai.prompt.name attribute"
+                version="0.12.0",
+                prs=[420],
+                description="Added gen_ai.prompt.name attribute",
             ),
         ],
     ),
@@ -13638,7 +13640,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="2.0",
         changelog=[
             ChangelogEntry(
-                version="next", description="Added jsonrpc.protocol.version attribute"
+                version="0.12.0",
+                prs=[420],
+                description="Added jsonrpc.protocol.version attribute",
             ),
         ],
     ),
@@ -13652,7 +13656,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["mcp.request.id"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added jsonrpc.request.id attribute"
+                version="0.12.0",
+                prs=[420],
+                description="Added jsonrpc.request.id attribute",
             ),
         ],
     ),
@@ -13998,7 +14004,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="tools/call",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.12.0",
+                prs=[420],
                 description="Set is_in_otel=true, attribute exists in OTel MCP registry",
             ),
             ChangelogEntry(version="0.3.0", prs=[171]),
@@ -14083,7 +14090,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.prompt.name"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Deprecated in favor of gen_ai.prompt.name"
+                version="0.12.0",
+                prs=[420],
+                description="Deprecated in favor of gen_ai.prompt.name",
             ),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
@@ -14154,7 +14163,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="2024-11-05",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.12.0",
+                prs=[420],
                 description="Set is_in_otel=true, attribute exists in OTel MCP registry",
             ),
             ChangelogEntry(version="0.3.0", prs=[171]),
@@ -14209,7 +14219,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["jsonrpc.request.id"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Deprecated in favor of jsonrpc.request.id"
+                version="0.12.0",
+                prs=[420],
+                description="Deprecated in favor of jsonrpc.request.id",
             ),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
@@ -14229,7 +14241,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["network.protocol.name", "net.protocol.name"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.12.0",
+                prs=[420],
                 description="Deprecated in favor of network.protocol.name",
             ),
             ChangelogEntry(version="0.3.0", prs=[171]),
@@ -14244,7 +14257,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="file:///path/to/file.txt",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.12.0",
+                prs=[420],
                 description="Set is_in_otel=true, attribute exists in OTel MCP registry",
             ),
             ChangelogEntry(version="0.3.0", prs=[171]),
@@ -14295,7 +14309,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="550e8400-e29b-41d4-a716-446655440000",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.12.0",
+                prs=[420],
                 description="Set is_in_otel=true, attribute exists in OTel MCP registry",
             ),
             ChangelogEntry(version="0.3.0", prs=[171]),
@@ -14316,7 +14331,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.tool.name", "ai.function_call"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Deprecated in favor of gen_ai.tool.name"
+                version="0.12.0",
+                prs=[420],
+                description="Deprecated in favor of gen_ai.tool.name",
             ),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
@@ -14340,7 +14357,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.12.0",
+                prs=[420],
                 description="Deprecated in favor of gen_ai.tool.call.result",
             ),
             ChangelogEntry(version="0.3.0", prs=[171]),
@@ -14372,7 +14390,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next", description="Deprecated in favor of error.type"
+                version="0.12.0",
+                prs=[420],
+                description="Deprecated in favor of error.type",
             ),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
@@ -14392,7 +14412,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["network.transport", "net.transport"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Deprecated in favor of network.transport"
+                version="0.12.0",
+                prs=[420],
+                description="Deprecated in favor of network.transport",
             ),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],

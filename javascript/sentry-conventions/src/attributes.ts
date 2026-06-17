@@ -19426,7 +19426,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'summarize_text',
     aliases: [MCP_PROMPT_NAME],
-    changelog: [{ version: 'next', description: 'Added gen_ai.prompt.name attribute' }],
+    changelog: [{ version: '0.12.0', prs: [420], description: 'Added gen_ai.prompt.name attribute' }],
   },
   [GEN_AI_PROVIDER_NAME]: {
     brief: 'The Generative AI provider as identified by the client or server instrumentation.',
@@ -20785,7 +20785,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: '2.0',
-    changelog: [{ version: 'next', description: 'Added jsonrpc.protocol.version attribute' }],
+    changelog: [{ version: '0.12.0', prs: [420], description: 'Added jsonrpc.protocol.version attribute' }],
   },
   [JSONRPC_REQUEST_ID]: {
     brief: 'The JSON-RPC request identifier. Unique within the session.',
@@ -20797,7 +20797,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '1',
     aliases: [MCP_REQUEST_ID],
-    changelog: [{ version: 'next', description: 'Added jsonrpc.request.id attribute' }],
+    changelog: [{ version: '0.12.0', prs: [420], description: 'Added jsonrpc.request.id attribute' }],
   },
   [JVM_GC_ACTION]: {
     brief: 'Name of the garbage collector action.',
@@ -21118,7 +21118,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'tools/call',
     changelog: [
-      { version: 'next', description: 'Set is_in_otel=true, attribute exists in OTel MCP registry' },
+      { version: '0.12.0', prs: [420], description: 'Set is_in_otel=true, attribute exists in OTel MCP registry' },
       { version: '0.3.0', prs: [171] },
     ],
   },
@@ -21203,7 +21203,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [GEN_AI_PROMPT_NAME],
     changelog: [
-      { version: 'next', description: 'Deprecated in favor of gen_ai.prompt.name' },
+      { version: '0.12.0', prs: [420], description: 'Deprecated in favor of gen_ai.prompt.name' },
       { version: '0.3.0', prs: [171] },
     ],
   },
@@ -21278,7 +21278,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '2024-11-05',
     changelog: [
-      { version: 'next', description: 'Set is_in_otel=true, attribute exists in OTel MCP registry' },
+      { version: '0.12.0', prs: [420], description: 'Set is_in_otel=true, attribute exists in OTel MCP registry' },
       { version: '0.3.0', prs: [171] },
     ],
   },
@@ -21335,7 +21335,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [JSONRPC_REQUEST_ID],
     changelog: [
-      { version: 'next', description: 'Deprecated in favor of jsonrpc.request.id' },
+      { version: '0.12.0', prs: [420], description: 'Deprecated in favor of jsonrpc.request.id' },
       { version: '0.3.0', prs: [171] },
     ],
   },
@@ -21354,7 +21354,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [NETWORK_PROTOCOL_NAME, NET_PROTOCOL_NAME],
     changelog: [
-      { version: 'next', description: 'Deprecated in favor of network.protocol.name' },
+      { version: '0.12.0', prs: [420], description: 'Deprecated in favor of network.protocol.name' },
       { version: '0.3.0', prs: [171] },
     ],
   },
@@ -21369,7 +21369,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'file:///path/to/file.txt',
     changelog: [
-      { version: 'next', description: 'Set is_in_otel=true, attribute exists in OTel MCP registry' },
+      { version: '0.12.0', prs: [420], description: 'Set is_in_otel=true, attribute exists in OTel MCP registry' },
       { version: '0.3.0', prs: [171] },
     ],
   },
@@ -21417,7 +21417,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '550e8400-e29b-41d4-a716-446655440000',
     changelog: [
-      { version: 'next', description: 'Set is_in_otel=true, attribute exists in OTel MCP registry' },
+      { version: '0.12.0', prs: [420], description: 'Set is_in_otel=true, attribute exists in OTel MCP registry' },
       { version: '0.3.0', prs: [171] },
     ],
   },
@@ -21436,7 +21436,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [GEN_AI_TOOL_NAME, AI_FUNCTION_CALL],
     changelog: [
-      { version: 'next', description: 'Deprecated in favor of gen_ai.tool.name' },
+      { version: '0.12.0', prs: [420], description: 'Deprecated in favor of gen_ai.tool.name' },
       { version: '0.3.0', prs: [171] },
     ],
   },
@@ -21456,7 +21456,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [GEN_AI_TOOL_CALL_RESULT, GEN_AI_TOOL_MESSAGE, GEN_AI_TOOL_OUTPUT],
     changelog: [
-      { version: 'next', description: 'Deprecated in favor of gen_ai.tool.call.result' },
+      { version: '0.12.0', prs: [420], description: 'Deprecated in favor of gen_ai.tool.call.result' },
       { version: '0.3.0', prs: [171] },
       { version: '0.2.0', prs: [164] },
     ],
@@ -21490,7 +21490,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         "OTel uses error.type set to 'tool_error' when isError is true. Cannot be automatically backfilled due to type mismatch (boolean vs string).",
     },
     changelog: [
-      { version: 'next', description: 'Deprecated in favor of error.type' },
+      { version: '0.12.0', prs: [420], description: 'Deprecated in favor of error.type' },
       { version: '0.3.0', prs: [171] },
     ],
   },
@@ -21509,7 +21509,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: [NETWORK_TRANSPORT, NET_TRANSPORT],
     changelog: [
-      { version: 'next', description: 'Deprecated in favor of network.transport' },
+      { version: '0.12.0', prs: [420], description: 'Deprecated in favor of network.transport' },
       { version: '0.3.0', prs: [171] },
     ],
   },
