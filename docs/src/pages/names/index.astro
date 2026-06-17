@@ -2,6 +2,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CategoryChip from '../../components/CategoryChip.astro';
 import LinkedTemplate from '../../components/LinkedTemplate.astro';
+import AnchorIcon from '../../components/icons/AnchorIcon.astro';
+import { slugify } from '../../utils/category';
 import { getCollection } from 'astro:content';
 
 // Get all name definitions
@@ -68,12 +70,24 @@ const totalOperations = allNames.reduce((acc, name) => acc + name.data.operation
   <div class="flex flex-col gap-12">
     {allNames.map(name => (
       <section class="scroll-mt-20" id={name.id}>
-        <h2 class="mb-6 pb-3 border-b border-border">{name.data.brief}</h2>
+        <h2 class="group mb-6 pb-3 border-b border-border">
+          <a href={`#${name.id}`} class="section-anchor">
+            {name.data.brief}
+            <AnchorIcon class="section-anchor-marker w-4 h-4" />
+          </a>
+        </h2>
         
         <div class="flex flex-col gap-6">
-          {name.data.operations.map(op => (
-            <article class="card">
-              <h3 class="text-xl mb-2">{op.name || op.brief}</h3>
+          {name.data.operations.map(op => {
+            const opAnchorId = `${name.id}-${slugify(op.name || op.brief)}`;
+            return (
+            <article class="card scroll-mt-24" id={opAnchorId}>
+              <h3 class="text-xl mb-2">
+                <a href={`#${opAnchorId}`} class="section-anchor">
+                  {op.name || op.brief}
+                  <AnchorIcon class="section-anchor-marker w-4 h-4" />
+                </a>
+              </h3>
               <p class="text-sm text-text-secondary mb-4">{op.brief}</p>
               
               {!op.is_in_otel && (
@@ -134,7 +148,8 @@ const totalOperations = allNames.reduce((acc, name) => acc + name.data.operation
                 )}
               </div>
             </article>
-          ))}
+            );
+          })}
         </div>
       </section>
     ))}

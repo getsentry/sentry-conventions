@@ -334,6 +334,23 @@
   .breadcrumb .current {
     @apply text-text-primary;
   }
+
+  .section-anchor {
+    @apply inline-flex items-center gap-2 text-text-primary no-underline;
+  }
+
+  .section-anchor:hover {
+    @apply text-text-primary;
+  }
+
+  .section-anchor-marker {
+    @apply text-text-muted opacity-0 transition-opacity duration-fast;
+  }
+
+  .section-anchor:hover .section-anchor-marker,
+  .section-anchor:focus-visible .section-anchor-marker {
+    @apply opacity-100;
+  }
 }
 
 @layer utilities {
