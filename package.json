@@ -44,7 +44,8 @@
     "vitest": "^4.1.9"
   },
   "resolutions": {
-    "esbuild": ">=0.28.1"
+    "//esbuild": "Forces patched esbuild (GHSA-gv7w-rqvm-qjhr, GHSA-g7r4-m6w7-qqqr). Remove once upstream bumps to >=0.28.1.",
+    "esbuild": "~0.28.1"
   },
   "workspaces": [
     "javascript/*",
