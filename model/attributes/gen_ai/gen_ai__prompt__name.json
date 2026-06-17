@@ -12,7 +12,8 @@
   "alias": ["mcp.prompt.name"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.12.0",
+      "prs": [420],
       "description": "Added gen_ai.prompt.name attribute"
     }
   ]

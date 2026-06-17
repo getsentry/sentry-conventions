@@ -1,3 +1,9 @@
+## 0.12.0
+
+### New Features ✨
+
+- (mcp) Align MCP attributes with OTel semantic conventions by @constantinius in [#420](https://github.com/getsentry/sentry-conventions/pull/420)
+
 ## 0.11.1
 
 ### New Features ✨

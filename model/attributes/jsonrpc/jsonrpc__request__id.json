@@ -11,7 +11,8 @@
   "alias": ["mcp.request.id"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.12.0",
+      "prs": [420],
       "description": "Added jsonrpc.request.id attribute"
     }
   ]
