@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import CategoryChip from '../../components/CategoryChip.astro';
 import LinkedTemplate from '../../components/LinkedTemplate.astro';
 import AnchorIcon from '../../components/icons/AnchorIcon.astro';
+import { slugify } from '../../utils/category';
 import { getCollection } from 'astro:content';
 
 // Get all description definitions
@@ -74,9 +75,16 @@ const totalOperations = allDescriptions.reduce((acc, desc) => acc + desc.data.op
         </h2>
 
         <div class="flex flex-col gap-6">
-          {desc.data.operations.map(op => (
-            <article class="card">
-              <h3 class="text-xl mb-2">{op.name || op.brief}</h3>
+          {desc.data.operations.map(op => {
+            const opAnchorId = `${desc.id}-${slugify(op.name || op.brief)}`;
+            return (
+            <article class="card scroll-mt-24" id={opAnchorId}>
+              <h3 class="text-xl mb-2">
+                <a href={`#${opAnchorId}`} class="section-anchor">
+                  {op.name || op.brief}
+                  <AnchorIcon class="section-anchor-marker w-4 h-4" />
+                </a>
+              </h3>
               <p class="text-sm text-text-secondary mb-4">{op.brief}</p>
 
               <div class="flex flex-col gap-5">
@@ -112,7 +120,8 @@ const totalOperations = allDescriptions.reduce((acc, desc) => acc + desc.data.op
                 )}
               </div>
             </article>
-          ))}
+            );
+          })}
         </div>
       </section>
     ))}
