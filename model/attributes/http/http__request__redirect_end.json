@@ -2,8 +2,8 @@
   "key": "http.request.redirect_end",
   "brief": "The UNIX timestamp representing the timestamp immediately after receiving the last byte of the response of the last redirect",
   "type": "double",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": 1732829558.502,

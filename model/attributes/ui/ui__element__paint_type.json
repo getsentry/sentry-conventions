@@ -2,8 +2,8 @@
   "key": "ui.element.paint_type",
   "brief": "The type of element paint. Can either be 'image-paint' or 'text-paint'",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "image-paint",

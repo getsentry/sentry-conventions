@@ -2,8 +2,8 @@
   "key": "mcp.logging.logger",
   "brief": "Logger name for MCP logging operations.",
   "type": "string",
-  "pii": {
-    "key": "maybe",
+  "apply_scrubbing": {
+    "key": "manual",
     "reason": "Logger names may be user-defined and could contain sensitive information"
   },
   "is_in_otel": false,

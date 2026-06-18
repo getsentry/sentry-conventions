@@ -2,8 +2,8 @@
   "key": "device.archs",
   "brief": "The CPU architectures of the device.",
   "type": "string[]",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": ["arm64-v8a", "armeabi-v7a", "armeabi"],

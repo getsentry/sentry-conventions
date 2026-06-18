@@ -2,8 +2,8 @@
   "key": "messaging.destination.connection",
   "brief": "The message destination connection.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "BestTopic",

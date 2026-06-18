@@ -2,8 +2,8 @@
   "key": "device.processor_count",
   "brief": "Number of \"logical processors\".",
   "type": "integer",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": 8,

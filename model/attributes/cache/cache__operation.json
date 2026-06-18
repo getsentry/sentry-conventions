@@ -2,8 +2,8 @@
   "key": "cache.operation",
   "brief": "The operation being performed on the cache.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "get",

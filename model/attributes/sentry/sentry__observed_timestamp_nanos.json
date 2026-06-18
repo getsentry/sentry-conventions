@@ -2,8 +2,8 @@
   "key": "sentry.observed_timestamp_nanos",
   "brief": "The timestamp at which an envelope was received by Relay, in nanoseconds.",
   "type": "string",
-  "pii": {
-    "key": "false"
+  "apply_scrubbing": {
+    "key": "never"
   },
   "is_in_otel": false,
   "example": "1544712660300000000",

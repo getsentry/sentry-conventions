@@ -21,13 +21,13 @@
       "description": "The type of the attribute value",
       "enum": ["string", "boolean", "integer", "double", "string[]", "boolean[]", "integer[]", "double[]", "any"]
     },
-    "pii": {
-      "description": "If an attribute can have pii. Is either true, false or maybe. Optionally include a reason about why it has PII or not",
+    "apply_scrubbing": {
+      "description": "How PII scrubbing should be applied to the attribute value. 'auto' scrubs automatically, 'manual' requires manual scrubbing rules, 'never' is never scrubbed. Optionally include a reason about why this mode applies",
       "type": "object",
       "additionalProperties": false,
       "properties": {
         "key": {
-          "enum": ["true", "maybe", "false"]
+          "enum": ["auto", "manual", "never"]
         },
         "reason": {
           "type": "string"
@@ -133,5 +133,5 @@
       }
     }
   },
-  "required": ["key", "brief", "type", "pii", "is_in_otel", "visibility"]
+  "required": ["key", "brief", "type", "apply_scrubbing", "is_in_otel", "visibility"]
 }

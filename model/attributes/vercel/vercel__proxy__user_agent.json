@@ -2,8 +2,8 @@
   "key": "vercel.proxy.user_agent",
   "brief": "User agent strings of the request",
   "type": "string[]",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": ["Mozilla/5.0..."],

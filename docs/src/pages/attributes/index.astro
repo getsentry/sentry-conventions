@@ -9,7 +9,7 @@ type CategoryFilterCounts = Array<{
   category: string;
   total: number;
   attributes: Array<{
-    pii: 'true' | 'maybe' | 'false';
+    scrubbing: 'auto' | 'manual' | 'never';
     visibility: 'public' | 'internal';
     otel: 'true' | 'false';
   }>;
@@ -49,7 +49,7 @@ const categoryFilterCounts: CategoryFilterCounts = sortedCategories.map((categor
     category,
     total: attributes.length,
     attributes: attributes.map((attr) => ({
-      pii: attr.data.pii.key,
+      scrubbing: attr.data.apply_scrubbing.key,
       visibility: attr.data.visibility,
       otel: attr.data.is_in_otel ? ('true' as const) : ('false' as const),
     })),

@@ -111,7 +111,7 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
 
   // Generate individual attribute constants with documentation AND build the explicit type map
   for (const { file, key, constantName, attributeJson, isDeprecated } of allAttributes) {
-    const { brief, type, pii, is_in_otel, example, has_dynamic_suffix, deprecation, alias } = attributeJson;
+    const { brief, type, apply_scrubbing, is_in_otel, example, has_dynamic_suffix, deprecation, alias } = attributeJson;
     const visibility = getVisibility(attributeJson);
 
     const tsType = getTsType(type);
@@ -125,11 +125,10 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
     individualConstants += ` * Attribute Value Type: \`${tsType}\` {@link ${constantName}_TYPE}\n`;
     individualConstants += ' *\n';
 
-    // PII info
-    const piiText = pii.key === 'true' ? 'true' : pii.key === 'false' ? 'false' : 'maybe';
-    individualConstants += ` * Contains PII: ${piiText}`;
-    if (pii.reason) {
-      individualConstants += ` - ${pii.reason}`;
+    // Scrubbing info
+    individualConstants += ` * Apply Scrubbing: ${apply_scrubbing.key}`;
+    if (apply_scrubbing.reason) {
+      individualConstants += ` - ${apply_scrubbing.reason}`;
     }
     individualConstants += '\n';
     individualConstants += ' *\n';
@@ -300,19 +299,19 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
   content += '    DOUBLE_ARRAY = "double[]"\n';
   content += '    ANY = "any"\n\n';
 
-  content += 'class IsPii(Enum):\n';
-  content += '    TRUE = "true"\n';
-  content += '    FALSE = "false"\n';
-  content += '    MAYBE = "maybe"\n\n';
+  content += 'class ApplyScrubbing(Enum):\n';
+  content += '    AUTO = "auto"\n';
+  content += '    MANUAL = "manual"\n';
+  content += '    NEVER = "never"\n\n';
 
   content += 'class Visibility(Enum):\n';
   content += '    PUBLIC = "public"\n';
   content += '    INTERNAL = "internal"\n\n';
 
   content += '@dataclass\n';
-  content += 'class PiiInfo:\n';
-  content += `    """Holds information about PII in an attribute's values."""\n`;
-  content += '    isPii: IsPii\n';
+  content += 'class ApplyScrubbingInfo:\n';
+  content += `    """Holds information about how PII scrubbing should be applied to an attribute's values."""\n`;
+  content += '    key: ApplyScrubbing\n';
   content += '    reason: Optional[str] = None\n\n';
 
   content += 'class DeprecationStatus(Enum):\n';
@@ -347,9 +346,9 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
   content += '    type: AttributeType\n';
   content += '    """The type of the attribute value"""\n';
   content += '    \n';
-  content += '    pii: PiiInfo\n';
+  content += '    apply_scrubbing: ApplyScrubbingInfo\n';
   content +=
-    '    """If an attribute can have pii. Is either true, false or maybe. Optionally include a reason about why it has PII or not"""\n';
+    '    """How PII scrubbing should be applied to the attribute value. Is either auto, manual or never. Optionally include a reason about why this mode applies"""\n';
   content += '    \n';
   content += '    is_in_otel: bool\n';
   content += '    """Whether the attribute is defined in OpenTelemetry Semantic Conventions"""\n';
@@ -428,7 +427,8 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
     const attributePath = path.join(attributesDir, file);
     const attributeJson = JSON.parse(fs.readFileSync(attributePath, 'utf-8')) as AttributeJson;
 
-    const { key, brief, type, pii, is_in_otel, example, has_dynamic_suffix, deprecation, alias } = attributeJson;
+    const { key, brief, type, apply_scrubbing, is_in_otel, example, has_dynamic_suffix, deprecation, alias } =
+      attributeJson;
     const visibility = getVisibility(attributeJson);
 
     // Convert attribute key to a valid Python constant name
@@ -441,7 +441,7 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
     content += `    ${constantName}: Literal["${key}"] = "${key}"\n`;
     content += `    """${brief}\n\n`;
     content += `    Type: ${pythonType}\n`;
-    content += `    Contains PII: ${pii.key}${pii.reason ? ` - ${pii.reason}` : ''}\n`;
+    content += `    Apply Scrubbing: ${apply_scrubbing.key}${apply_scrubbing.reason ? ` - ${apply_scrubbing.reason}` : ''}\n`;
     content += `    Defined in OTEL: ${is_in_otel ? 'Yes' : 'No'}\n`;
     content += `    Visibility: ${visibility}\n`;
 
@@ -485,12 +485,17 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
     metadataDict += `        brief=${JSON.stringify(brief)},\n`;
     metadataDict += `        type=AttributeType.${getAttributeTypeEnum(type)},\n`;
 
-    // Build PII info structure
-    const piiStatus = pii.key === 'true' ? 'IsPii.TRUE' : pii.key === 'false' ? 'IsPii.FALSE' : 'IsPii.MAYBE';
-    metadataDict += '        pii=PiiInfo(\n';
-    metadataDict += `            isPii=${piiStatus}`;
-    if (pii.reason) {
-      metadataDict += `,\n            reason=${JSON.stringify(pii.reason)}`;
+    // Build scrubbing info structure
+    const scrubbingStatus =
+      apply_scrubbing.key === 'auto'
+        ? 'ApplyScrubbing.AUTO'
+        : apply_scrubbing.key === 'never'
+          ? 'ApplyScrubbing.NEVER'
+          : 'ApplyScrubbing.MANUAL';
+    metadataDict += '        apply_scrubbing=ApplyScrubbingInfo(\n';
+    metadataDict += `            key=${scrubbingStatus}`;
+    if (apply_scrubbing.reason) {
+      metadataDict += `,\n            reason=${JSON.stringify(apply_scrubbing.reason)}`;
     }
     metadataDict += '\n        ),\n';
 
@@ -665,19 +670,19 @@ export type AttributeType =
   | 'double[]'
   | 'any';
 
-export type IsPii = 
-  | 'true'
-  | 'false'
-  | 'maybe';
+export type ApplyScrubbing =
+  | 'auto'
+  | 'manual'
+  | 'never';
 
 export type AttributeVisibility =
   | 'public'
   | 'internal';
 
-export interface PiiInfo {
-  /** Whether the attribute contains PII */
-  isPii: IsPii;
-  /** Reason why it has PII or not */
+export interface ApplyScrubbingInfo {
+  /** How PII scrubbing should be applied to the attribute value */
+  key: ApplyScrubbing;
+  /** Reason why this scrubbing mode applies */
   reason?: string;
 }
 
@@ -702,8 +707,8 @@ export interface AttributeMetadata {
   brief: string;
   /** The type of the attribute value */
   type: AttributeType;
-  /** If an attribute can have PII */
-  pii: PiiInfo;
+  /** How PII scrubbing should be applied to the attribute value */
+  applyScrubbing: ApplyScrubbingInfo;
   /** Whether the attribute is defined in OpenTelemetry Semantic Conventions */
   isInOtel: boolean;
   /** Whether the attribute is public or internal to Sentry */
@@ -755,19 +760,20 @@ function generateMetadataDict(
   metadataDict += 'export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {\n';
 
   for (const { key, attributeJson, constantName } of allAttributes) {
-    const { brief, type, pii, is_in_otel, example, has_dynamic_suffix, deprecation, alias } = attributeJson;
+    const { brief, type, apply_scrubbing, is_in_otel, example, has_dynamic_suffix, deprecation, alias } = attributeJson;
     const visibility = getVisibility(attributeJson);
 
     metadataDict += `  [${constantName}]: {\n`;
     metadataDict += `    brief: ${JSON.stringify(brief)},\n`;
     metadataDict += `    type: '${type}',\n`;
 
-    // Build PII info structure
-    const piiStatus = pii.key === 'true' ? "'true'" : pii.key === 'false' ? "'false'" : "'maybe'";
-    metadataDict += '    pii: {\n';
-    metadataDict += `      isPii: ${piiStatus}`;
-    if (pii.reason) {
-      metadataDict += `,\n      reason: ${JSON.stringify(pii.reason)}`;
+    // Build scrubbing info structure
+    const scrubbingStatus =
+      apply_scrubbing.key === 'auto' ? "'auto'" : apply_scrubbing.key === 'never' ? "'never'" : "'manual'";
+    metadataDict += '    applyScrubbing: {\n';
+    metadataDict += `      key: ${scrubbingStatus}`;
+    if (apply_scrubbing.reason) {
+      metadataDict += `,\n      reason: ${JSON.stringify(apply_scrubbing.reason)}`;
     }
     metadataDict += '\n    },\n';
 

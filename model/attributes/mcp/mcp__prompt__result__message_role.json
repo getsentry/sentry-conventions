@@ -2,8 +2,8 @@
   "key": "mcp.prompt.result.message_role",
   "brief": "Role of the message in the prompt result. Used for single message results only.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "user",

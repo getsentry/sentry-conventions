@@ -2,8 +2,8 @@
   "key": "http.host",
   "brief": "The domain name.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": "example.com",

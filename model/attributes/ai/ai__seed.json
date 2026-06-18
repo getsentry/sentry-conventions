@@ -2,8 +2,8 @@
   "key": "ai.seed",
   "brief": "The seed, ideally models given the same seed and same other parameters will produce the exact same output.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "1234567890",

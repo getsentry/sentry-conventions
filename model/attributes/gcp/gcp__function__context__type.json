@@ -2,8 +2,8 @@
   "key": "gcp.function.context.type",
   "brief": "The type of the GCP Cloud Function event context",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "cloud_functions.context",

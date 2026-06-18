@@ -2,8 +2,8 @@
   "key": "cloudflare.workflow.retries.delay",
   "brief": "The delay between Cloudflare Workflow step retries",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "5 seconds",

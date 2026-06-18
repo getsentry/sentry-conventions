@@ -2,8 +2,8 @@
   "key": "type",
   "brief": "More granular type of the operation happening.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "fetch",

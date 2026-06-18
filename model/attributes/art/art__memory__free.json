@@ -2,8 +2,8 @@
   "key": "art.memory.free",
   "brief": "Free memory available to the process as reported by the Android Runtime, in bytes",
   "type": "integer",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "visibility": "public",

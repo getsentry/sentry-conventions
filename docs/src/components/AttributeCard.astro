@@ -1,5 +1,5 @@
 ---
-import PiiBadge from './PiiBadge.astro';
+import ScrubbingBadge from './ScrubbingBadge.astro';
 import VisibilityBadge from './VisibilityBadge.astro';
 import OtelBadge from './OtelBadge.astro';
 import TypeBadge from './TypeBadge.astro';
@@ -32,7 +32,7 @@ const rawJson = JSON.stringify(attribute, null, 2);
   hidden={defaultHidden}
   data-attribute-card
   data-filter-default-hidden={defaultHidden ? 'true' : undefined}
-  data-filter-pii={attribute.pii.key}
+  data-filter-scrubbing={attribute.apply_scrubbing.key}
   data-filter-visibility={attribute.visibility}
   data-filter-otel={attribute.is_in_otel ? 'true' : 'false'}
   data-pagefind-body
@@ -50,7 +50,7 @@ const rawJson = JSON.stringify(attribute, null, 2);
     </h3>
     <div class="flex flex-wrap items-center gap-2">
       <TypeBadge type={attribute.type} />
-      <PiiBadge pii={attribute.pii.key} reason={attribute.pii.reason} />
+      <ScrubbingBadge mode={attribute.apply_scrubbing.key} reason={attribute.apply_scrubbing.reason} />
       <VisibilityBadge visibility={attribute.visibility} />
       {attribute.is_in_otel != null && (
         <OtelBadge isInOtel={attribute.is_in_otel} />
@@ -67,10 +67,10 @@ const rawJson = JSON.stringify(attribute, null, 2);
   <p class="text-sm text-text-secondary mb-4 leading-relaxed">{attribute.brief}</p>
   
   <div class="flex flex-col gap-2">
-    {attribute.pii.reason && (
+    {attribute.apply_scrubbing.reason && (
       <div class="flex items-baseline gap-3 text-sm">
-        <span class="text-text-muted min-w-[100px] flex-shrink-0">PII Reason</span>
-        <span class="text-text-secondary">{attribute.pii.reason}</span>
+        <span class="text-text-muted min-w-[100px] flex-shrink-0">Scrubbing Reason</span>
+        <span class="text-text-secondary">{attribute.apply_scrubbing.reason}</span>
       </div>
     )}
     

@@ -2,8 +2,8 @@
   "key": "ai.pipeline.name",
   "brief": "The name of the AI pipeline.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "Autofix Pipeline",

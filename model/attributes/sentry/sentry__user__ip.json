@@ -2,8 +2,8 @@
   "key": "sentry.user.ip",
   "brief": "The IP address of the user.",
   "type": "string",
-  "pii": {
-    "key": "true"
+  "apply_scrubbing": {
+    "key": "auto"
   },
   "is_in_otel": false,
   "alias": ["user.ip_address"],

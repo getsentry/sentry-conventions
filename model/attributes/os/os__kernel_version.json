@@ -2,8 +2,8 @@
   "key": "os.kernel_version",
   "brief": "An independent kernel version string. Typically the entire output of the `uname` syscall.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "20.2.0",

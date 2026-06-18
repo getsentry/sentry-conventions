@@ -2,8 +2,8 @@
   "key": "cloud.account.id",
   "brief": "The cloud account ID the resource is assigned to",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": "123456789012",

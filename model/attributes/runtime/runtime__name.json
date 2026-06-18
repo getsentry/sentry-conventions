@@ -2,8 +2,8 @@
   "key": "runtime.name",
   "brief": "The name of the runtime. For example node, CPython, or rustc.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "visibility": "public",

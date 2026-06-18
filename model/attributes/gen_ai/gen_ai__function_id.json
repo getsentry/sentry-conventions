@@ -2,8 +2,8 @@
   "key": "gen_ai.function_id",
   "brief": "Framework-specific tracing label for the execution of a function or other unit of execution in a generative AI system.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "my-awesome-function",

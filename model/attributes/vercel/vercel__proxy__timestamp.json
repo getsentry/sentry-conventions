@@ -2,8 +2,8 @@
   "key": "vercel.proxy.timestamp",
   "brief": "Unix timestamp when the proxy request was made",
   "type": "integer",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": 1573817250172,

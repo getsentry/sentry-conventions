@@ -2,8 +2,8 @@
   "key": "browser.report.type",
   "brief": "A browser report sent via reporting API..",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "network-error",

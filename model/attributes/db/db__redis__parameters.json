@@ -2,8 +2,8 @@
   "key": "db.redis.parameters",
   "brief": "The array of command parameters given to a redis command.",
   "type": "string[]",
-  "pii": {
-    "key": "true"
+  "apply_scrubbing": {
+    "key": "auto"
   },
   "is_in_otel": false,
   "example": ["test", "*"],

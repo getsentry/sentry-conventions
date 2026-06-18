@@ -2,8 +2,8 @@
   "key": "hardwareConcurrency",
   "brief": "The number of logical CPU cores available.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "14",

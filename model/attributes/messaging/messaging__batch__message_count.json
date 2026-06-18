@@ -2,8 +2,8 @@
   "key": "messaging.batch.message_count",
   "brief": "The number of messages sent, received, or processed in the scope of the batching operation.",
   "type": "integer",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": 10,

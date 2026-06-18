@@ -2,8 +2,8 @@
   "key": "network.connection.type",
   "brief": "Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": "wifi",

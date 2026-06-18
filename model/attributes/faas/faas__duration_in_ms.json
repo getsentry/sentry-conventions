@@ -2,8 +2,8 @@
   "key": "faas.duration_in_ms",
   "brief": "The duration a function took to run, in milliseconds.",
   "type": "integer",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": 120,

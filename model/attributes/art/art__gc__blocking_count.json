@@ -2,8 +2,8 @@
   "key": "art.gc.blocking_count",
   "brief": "Total number of blocking (stop-the-world) garbage collections performed by the Android Runtime",
   "type": "integer",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "visibility": "public",

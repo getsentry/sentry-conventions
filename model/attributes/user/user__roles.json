@@ -2,8 +2,8 @@
   "key": "user.roles",
   "brief": "Array of user roles at the time of the event.",
   "type": "string[]",
-  "pii": {
-    "key": "true"
+  "apply_scrubbing": {
+    "key": "auto"
   },
   "is_in_otel": true,
   "example": ["admin", "editor"],

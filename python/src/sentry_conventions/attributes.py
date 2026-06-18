@@ -24,10 +24,10 @@ class AttributeType(Enum):
     ANY = "any"
 
 
-class IsPii(Enum):
-    TRUE = "true"
-    FALSE = "false"
-    MAYBE = "maybe"
+class ApplyScrubbing(Enum):
+    AUTO = "auto"
+    MANUAL = "manual"
+    NEVER = "never"
 
 
 class Visibility(Enum):
@@ -36,10 +36,10 @@ class Visibility(Enum):
 
 
 @dataclass
-class PiiInfo:
-    """Holds information about PII in an attribute's values."""
+class ApplyScrubbingInfo:
+    """Holds information about how PII scrubbing should be applied to an attribute's values."""
 
-    isPii: IsPii
+    key: ApplyScrubbing
     reason: Optional[str] = None
 
 
@@ -81,8 +81,8 @@ class AttributeMetadata:
     type: AttributeType
     """The type of the attribute value"""
 
-    pii: PiiInfo
-    """If an attribute can have pii. Is either true, false or maybe. Optionally include a reason about why it has PII or not"""
+    apply_scrubbing: ApplyScrubbingInfo
+    """How PII scrubbing should be applied to the attribute value. Is either auto, manual or never. Optionally include a reason about why this mode applies"""
 
     is_in_otel: bool
     """Whether the attribute is defined in OpenTelemetry Semantic Conventions"""
@@ -297,7 +297,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """References or sources cited by the AI model in its response.
 
     Type: List[str]
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     DEPRECATED: No replacement at this time
@@ -311,7 +311,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The number of tokens used to respond to the message.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.usage.output_tokens, gen_ai.usage.completion_tokens
@@ -324,7 +324,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Documents or content chunks used as context for the AI model.
 
     Type: List[str]
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     DEPRECATED: No replacement at this time
@@ -336,7 +336,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The reason why the model stopped generating.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.response.finish_reasons
@@ -349,7 +349,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.request.frequency_penalty
@@ -362,7 +362,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """For an AI model call, the function that was called. This is deprecated for OpenAI, and replaced by tool_calls
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.tool.name, mcp.tool.name
@@ -375,7 +375,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Unique identifier for the completion.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.response.id
@@ -388,7 +388,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The input messages sent to the model
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.request.messages
@@ -401,7 +401,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Boolean indicating if the model needs to perform a search.
 
     Type: bool
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     DEPRECATED: No replacement at this time
@@ -413,7 +413,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Extra metadata passed to an AI pipeline step.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     DEPRECATED: No replacement at this time
@@ -425,7 +425,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The provider of the model.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.provider.name, gen_ai.system
@@ -438,7 +438,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The vendor-specific ID of the model used.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.response.model
@@ -451,7 +451,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the AI pipeline.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.pipeline.name
@@ -464,7 +464,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """For an AI model call, the preamble parameter. Preambles are a part of the prompt used to adjust the model's overall behavior and conversation style.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.system_instructions
@@ -477,7 +477,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.request.presence_penalty
@@ -490,7 +490,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The number of tokens used to process just the prompt.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.usage.prompt_tokens, gen_ai.usage.input_tokens
@@ -503,7 +503,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """When enabled, the user’s prompt will be sent to the model without any pre-processing.
 
     Type: bool
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     DEPRECATED: No replacement at this time
@@ -515,7 +515,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """For an AI model call, the format of the response
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     DEPRECATED: No replacement at this time
@@ -527,7 +527,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The response messages sent back by the AI model.
 
     Type: List[str]
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     DEPRECATED: Use gen_ai.output.messages instead
@@ -539,7 +539,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Queries used to search for relevant context or documents.
 
     Type: List[str]
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     DEPRECATED: No replacement at this time
@@ -551,7 +551,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Results returned from search queries for context.
 
     Type: List[str]
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     DEPRECATED: No replacement at this time
@@ -563,7 +563,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The seed, ideally models given the same seed and same other parameters will produce the exact same output.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.request.seed
@@ -576,7 +576,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether the request was streamed back.
 
     Type: bool
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.response.streaming
@@ -589,7 +589,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Tags that describe an AI pipeline step.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     DEPRECATED: No replacement at this time
@@ -601,7 +601,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.request.temperature
@@ -614,7 +614,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Raw text inputs provided to the model.
 
     Type: List[str]
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.input.messages
@@ -627,7 +627,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """For an AI model call, the tool calls that were made.
 
     Type: List[str]
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     DEPRECATED: Use gen_ai.output.messages instead
@@ -639,7 +639,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """For an AI model call, the functions that are available
 
     Type: List[str]
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     DEPRECATED: Use gen_ai.tool.definitions instead
@@ -651,7 +651,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.request.top_k
@@ -664,7 +664,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.request.top_p
@@ -677,7 +677,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The total cost for the tokens used.
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.cost.total_tokens
@@ -690,7 +690,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The total number of tokens used to process the prompt.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.usage.total_tokens
@@ -703,7 +703,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Warning messages generated during model execution.
 
     Type: List[str]
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     DEPRECATED: No replacement at this time
@@ -715,7 +715,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The version of the Angular framework
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "17.1.0"
@@ -726,7 +726,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Internal build identifier, as it appears on the platform.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: app.build
@@ -739,7 +739,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Version-independent application identifier, often a dotted bundle ID.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: app.identifier
@@ -752,7 +752,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Human readable application name, as it appears on the platform.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: app.name
@@ -765,7 +765,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Formatted UTC timestamp when the user started the application.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: app.start_time
@@ -778,7 +778,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Human readable application version, as it appears on the platform.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: app.version
@@ -791,7 +791,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Internal build identifier, as it appears on the platform.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: app.app_build
@@ -803,7 +803,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Version-independent application identifier, often a dotted bundle ID.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: app.app_identifier
@@ -815,7 +815,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether the application is currently in the foreground.
 
     Type: bool
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: true
@@ -826,7 +826,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Human readable application name, as it appears on the platform.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: app.app_name
@@ -838,7 +838,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Formatted UTC timestamp when the user started the application.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: app.app_start_time
@@ -850,7 +850,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Human readable application version, as it appears on the platform.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: app.app_version
@@ -864,7 +864,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: frames.delay
@@ -878,7 +878,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The number of frozen frames rendered during the lifetime of the span.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: frames.frozen
@@ -892,7 +892,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The number of slow frames rendered during the lifetime of the span.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: frames.slow
@@ -906,7 +906,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The number of total frames rendered during the lifetime of the span.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: frames.total
@@ -920,7 +920,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The duration of a cold app start in milliseconds
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: app_start_cold
@@ -934,7 +934,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether the app start was prewarmed.
 
     Type: bool
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: true
@@ -947,7 +947,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The reason that triggered the app start.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "push"
@@ -960,7 +960,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The screen that is rendered when the app start is complete. This is the screen the user first sees and can interact with after launch. The absence of this attribute on the app start span indicates a background app start where no UI was rendered.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "MainActivity"
@@ -971,7 +971,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The type of app start, for example `cold` or `warm`
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: app_start_type
@@ -985,7 +985,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The duration of a warm app start in milliseconds
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: app_start_warm
@@ -997,7 +997,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The duration of time to full display in milliseconds
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: time_to_full_display
@@ -1009,7 +1009,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The duration of time to initial display in milliseconds
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: time_to_initial_display
@@ -1021,7 +1021,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The duration of a cold app start in milliseconds
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: app.vitals.start.cold.value
@@ -1034,7 +1034,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Mobile app start variant. Either cold or warm.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: app.vitals.start.type
@@ -1047,7 +1047,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The duration of a warm app start in milliseconds
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: app.vitals.start.warm.value
@@ -1060,7 +1060,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Total number of blocking (stop-the-world) garbage collections performed by the Android Runtime
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 1
@@ -1071,7 +1071,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Total time spent in blocking (stop-the-world) garbage collections by the Android Runtime, in milliseconds
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 11.873
@@ -1082,7 +1082,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Total number of garbage collections triggered as a last resort before an OutOfMemoryError by the Android Runtime
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 0
@@ -1093,7 +1093,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Total number of garbage collections performed by the Android Runtime
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 1
@@ -1104,7 +1104,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Total time spent in garbage collection by the Android Runtime, in milliseconds
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 11.807
@@ -1115,7 +1115,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Total time threads spent waiting for garbage collection to complete in the Android Runtime, in milliseconds
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 8.054
@@ -1126,7 +1126,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Free memory available to the process as reported by the Android Runtime, in bytes
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 3181568
@@ -1139,7 +1139,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Free memory available before a garbage collection would be triggered by the Android Runtime, in bytes
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 3181568
@@ -1152,7 +1152,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Free memory available before an OutOfMemoryError would be thrown by the Android Runtime, in bytes
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 196083712
@@ -1163,7 +1163,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Maximum memory the process is allowed to use as reported by the Android Runtime, in bytes
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 201326592
@@ -1174,7 +1174,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Total memory currently allocated to the process by the Android Runtime, in bytes
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 7774208
@@ -1187,7 +1187,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the CloudWatch Logs log group
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "/aws/lambda/my-function"
@@ -1200,7 +1200,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the CloudWatch Logs log stream
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "2024/01/01/[$LATEST]abcdef1234567890"
@@ -1213,7 +1213,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The URL to the CloudWatch Logs log group
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups/log-group/my-log-group"
@@ -1226,7 +1226,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The AWS request ID as received by the Lambda function runtime
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: faas.invocation_id
@@ -1241,7 +1241,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The execution duration of the Lambda function invocation in milliseconds
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 1234.56
@@ -1254,7 +1254,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the Lambda function
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: faas.name
@@ -1269,7 +1269,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The version of the Lambda function
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: faas.version
@@ -1282,7 +1282,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The full ARN of the Lambda function that was invoked
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: aws.lambda.invoked_function_arn
@@ -1296,7 +1296,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The full ARN of the Lambda function that was invoked
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: aws.lambda.invoked_arn
@@ -1311,7 +1311,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The remaining time in milliseconds before the Lambda function times out
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 5000
@@ -1322,7 +1322,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name(s) of the AWS log group(s) an application is writing to.
 
     Type: List[str]
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: ["/aws/lambda/my-function","opentelemetry-service"]
@@ -1333,7 +1333,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name(s) of the AWS log stream(s) an application is writing to.
 
     Type: List[str]
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: ["logs/main/10838bed-421f-43ef-870a-f43feacbbb5b"]
@@ -1344,7 +1344,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether the main thread was blocked by the span.
 
     Type: bool
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: true
@@ -1355,7 +1355,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the browser.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: sentry.browser.name
@@ -1369,7 +1369,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The time between initiating a navigation to a page and the browser activating the page
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: performance.activationStart
@@ -1383,7 +1383,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The browser's performance.timeOrigin timestamp representing the time when the pageload was initiated
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: performance.timeOrigin
@@ -1395,7 +1395,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """A browser report sent via reporting API..
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "network-error"
@@ -1406,7 +1406,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """How a script was called in the browser.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "Window.requestAnimationFrame"
@@ -1419,7 +1419,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Browser script entry point type.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "event-listener"
@@ -1432,7 +1432,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """A number representing the script character position of the script.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 678
@@ -1443,7 +1443,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The version of the browser.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: sentry.browser.version
@@ -1457,7 +1457,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The event that caused the SDK to report CLS (pagehide or navigation)
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "navigation"
@@ -1470,7 +1470,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Has Dynamic Suffix: true
@@ -1485,7 +1485,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The value of the recorded Cumulative Layout Shift (CLS) web vital
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: cls
@@ -1499,7 +1499,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The time it takes for the browser to render the first piece of meaningful content on the screen
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: fcp
@@ -1513,7 +1513,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The time in milliseconds it takes for the browser to render the first pixel on the screen
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: fp
@@ -1527,7 +1527,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The value of the recorded Interaction to Next Paint (INP) web vital
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: inp
@@ -1541,7 +1541,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The HTML element selector or component name for which LCP was reported
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: lcp.element
@@ -1555,7 +1555,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The id of the dom element responsible for the largest contentful paint
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: lcp.id
@@ -1569,7 +1569,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The time it took for the LCP element to be loaded
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: lcp.loadTime
@@ -1583,7 +1583,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The time it took for the LCP element to be rendered
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: lcp.renderTime
@@ -1597,7 +1597,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The event that caused the SDK to report LCP (pagehide or navigation)
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "pagehide"
@@ -1610,7 +1610,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The size of the largest contentful paint element
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: lcp.size
@@ -1624,7 +1624,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The url of the dom element responsible for the largest contentful paint
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     Aliases: lcp.url
@@ -1638,7 +1638,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The value of the recorded Largest Contentful Paint (LCP) web vital
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: lcp
@@ -1652,7 +1652,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The time it takes for the server to process the initial request and send the first byte of a response to the user's browser
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: ttfb.requestTime
@@ -1666,7 +1666,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The value of the recorded Time To First Byte (TTFB) web vital in Milliseconds
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: ttfb
@@ -1678,7 +1678,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """If the cache was hit during this span.
 
     Type: bool
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: true
@@ -1689,7 +1689,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The size of the requested item in the cache. In bytes.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 58
@@ -1700,7 +1700,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The key of the cache accessed.
 
     Type: List[str]
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: ["my-cache-key","my-other-cache-key"]
@@ -1711,7 +1711,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The operation being performed on the cache.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "get"
@@ -1722,7 +1722,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The ttl of the cache in seconds
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 120
@@ -1733,7 +1733,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """If the cache operation resulted in a write to the cache.
 
     Type: bool
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: true
@@ -1744,7 +1744,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The channel name that is being used.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "mail"
@@ -1755,7 +1755,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     Aliases: http.client_ip
@@ -1767,7 +1767,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Client port number.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: 5432
@@ -1778,7 +1778,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The cloud account ID the resource is assigned to
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "123456789012"
@@ -1791,7 +1791,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Cloud regions often have multiple, isolated locations known as zones to increase availability
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "us-east-1c"
@@ -1802,7 +1802,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The cloud platform in use
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "aws_lambda"
@@ -1813,7 +1813,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Name of the cloud provider
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "aws"
@@ -1824,7 +1824,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The geographical region the resource is running
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "us-east-1"
@@ -1835,7 +1835,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Cloud provider-specific native identifier of the monitored cloud resource
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "arn:aws:lambda:REGION:ACCOUNT_ID:function:my-function"
@@ -1846,7 +1846,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The duration of a Cloudflare D1 operation.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 543
@@ -1859,7 +1859,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The type of query executed in a Cloudflare D1 operation
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: db.operation.name, db.operation
@@ -1874,7 +1874,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The number of rows read in a Cloudflare D1 operation.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 12
@@ -1887,7 +1887,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The number of rows written in a Cloudflare D1 operation.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 12
@@ -1898,7 +1898,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the Cloudflare R2 bucket binding
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "MY_BUCKET"
@@ -1911,7 +1911,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The R2 API operation being performed
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "GetObject"
@@ -1924,7 +1924,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The delimiter used to group objects in an R2 list operation
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "/"
@@ -1937,7 +1937,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The object key used in the R2 operation
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "my-file.txt"
@@ -1950,7 +1950,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The part number in a multipart upload operation
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 1
@@ -1963,7 +1963,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The prefix used to filter objects in an R2 list operation
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "images/"
@@ -1976,7 +1976,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The current attempt number for a Cloudflare Workflow step
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 1
@@ -1989,7 +1989,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The backoff strategy for Cloudflare Workflow step retries
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "exponential"
@@ -2002,7 +2002,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The delay between Cloudflare Workflow step retries
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "5 seconds"
@@ -2015,7 +2015,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The maximum number of retries for a Cloudflare Workflow step
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 3
@@ -2028,7 +2028,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The timeout duration for a Cloudflare Workflow step
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "1 minute"
@@ -2039,7 +2039,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Has Dynamic Suffix: true
@@ -2053,7 +2053,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The value of the recorded Cumulative Layout Shift (CLS) web vital
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: browser.web_vital.cls.value
@@ -2066,7 +2066,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: code.filepath
@@ -2078,7 +2078,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: code.file.path
@@ -2091,7 +2091,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The method or function name, or equivalent (usually rightmost part of the code unit's name).
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: code.function.name
@@ -2103,7 +2103,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The method or function fully-qualified name without arguments.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: code.function
@@ -2115,7 +2115,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: code.lineno
@@ -2127,7 +2127,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: code.line.number
@@ -2140,7 +2140,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The 'namespace' within which code.function is defined. Usually the qualified class or module name, such that code.namespace + some separator + code.function form a unique identifier for the code unit.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "http.handler"
@@ -2151,7 +2151,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Specifies the estimated effective round-trip time of the current connection, in milliseconds.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: network.connection.rtt
@@ -2164,7 +2164,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: network.connection.type, device.connection_type
@@ -2177,7 +2177,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The calendar system used by the culture.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "GregorianCalendar"
@@ -2188,7 +2188,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Human readable name of the culture.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "English (United States)"
@@ -2201,7 +2201,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether the culture uses 24-hour time format.
 
     Type: bool
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: true
@@ -2212,7 +2212,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The locale identifier following RFC 4646.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "en-US"
@@ -2223,7 +2223,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The timezone of the culture, as a geographic timezone identifier.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "Europe/Vienna"
@@ -2234,7 +2234,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of a collection (table, container) within the database.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "users"
@@ -2245,7 +2245,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the driver used for the database connection.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "psycopg2"
@@ -2256,7 +2256,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the database being accessed.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: db.namespace
@@ -2269,7 +2269,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the database being accessed.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: db.name
@@ -2281,7 +2281,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the operation being executed.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: db.operation.name, cloudflare.d1.query_type
@@ -2296,7 +2296,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The number of queries included in a batch operation. Operations are only considered batches when they contain two or more operations, and so db.operation.batch.size SHOULD never be 1.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: 3
@@ -2307,7 +2307,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the operation being executed.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: db.operation, cloudflare.d1.query_type
@@ -2321,7 +2321,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """A query parameter used in db.query.text, with <key> being the parameter name, and the attribute value being a string representation of the parameter value.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     Has Dynamic Suffix: true
@@ -2333,7 +2333,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """A shortened representation of operation(s) in the full query. This attribute must be low-cardinality and should only contain the operation table names.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "SELECT users;"
@@ -2344,7 +2344,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The database parameterized query being executed. Any parameter values (filters, insertion values, etc) should be replaced with parameter placeholders. If applicable, use `db.query.parameter.<key>` to add the parameter value.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: db.statement
@@ -2356,7 +2356,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The redis connection name.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "my-redis-instance"
@@ -2367,7 +2367,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The key the Redis command is operating on.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "user:2047:city"
@@ -2378,7 +2378,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The array of command parameters given to a redis command.
 
     Type: List[str]
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     Example: ["test","*"]
@@ -2389,7 +2389,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The array of query bindings.
 
     Type: List[str]
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     DEPRECATED: Use db.query.parameter.<key> instead - Instead of adding every binding in the db.sql.bindings attribute, add them as individual entires with db.query.parameter.<key>.
@@ -2401,7 +2401,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The database statement being executed.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     Aliases: db.query.text
@@ -2416,7 +2416,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of a stored procedure being called.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "GetUserById"
@@ -2427,7 +2427,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: db.system.name
@@ -2440,7 +2440,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: db.system
@@ -2452,7 +2452,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The database user.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "fancy_user"
@@ -2463,7 +2463,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The CPU architectures of the device.
 
     Type: List[str]
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: ["arm64-v8a","armeabi-v7a","armeabi"]
@@ -2474,7 +2474,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The battery level of the device as a percentage (0-100).
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 100
@@ -2487,7 +2487,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The battery temperature of the device in Celsius.
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 25
@@ -2498,7 +2498,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """A formatted UTC timestamp when the system was booted.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "2018-02-08T12:52:12Z"
@@ -2509,7 +2509,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The brand of the device.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "Apple"
@@ -2520,7 +2520,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether the device was charging or not.
 
     Type: bool
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: false
@@ -2531,7 +2531,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The chipset of the device.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "Qualcomm SM8550"
@@ -2542,7 +2542,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "medium"
@@ -2553,7 +2553,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The internet connection type currently being used by the device.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: network.connection.type, connectionType
@@ -2566,7 +2566,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """A description of the CPU of the device.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "Intel(R) Core(TM)2 Quad CPU Q6600 @ 2.40GHz"
@@ -2579,7 +2579,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """External storage free size in bytes.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 67108864000
@@ -2592,7 +2592,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """External storage total size in bytes.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 134217728000
@@ -2603,7 +2603,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The family of the device.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "iPhone"
@@ -2614,7 +2614,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Free system memory in bytes.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 2147483648
@@ -2625,7 +2625,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Free device storage in bytes.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 107374182400
@@ -2636,7 +2636,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Unique device identifier.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
@@ -2647,7 +2647,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The locale of the device.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "en-US"
@@ -2658,7 +2658,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether the device was low on memory.
 
     Type: bool
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: false
@@ -2669,7 +2669,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether the device is in Low Power Mode.
 
     Type: bool
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: true
@@ -2680,7 +2680,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The manufacturer of the device.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "Google"
@@ -2693,7 +2693,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The estimated total memory capacity of the device, only a rough estimation in gigabytes. Browsers report estimations in buckets of powers of 2, mostly capped at 8 GB
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: deviceMemory
@@ -2705,7 +2705,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Total system memory available in bytes.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 17179869184
@@ -2716,7 +2716,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The model of the device.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "iPhone 15 Pro Max"
@@ -2727,7 +2727,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """An internal hardware revision to identify the device exactly.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "N861AP"
@@ -2738,7 +2738,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     Example: "localhost"
@@ -2749,7 +2749,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether the device was online or not.
 
     Type: bool
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: true
@@ -2760,7 +2760,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The orientation of the device, either "portrait" or "landscape".
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "portrait"
@@ -2771,7 +2771,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Number of "logical processors".
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: hardwareConcurrency
@@ -2785,7 +2785,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Processor frequency in MHz.
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 2400
@@ -2796,7 +2796,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The screen density of the device.
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 2.625
@@ -2807,7 +2807,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The screen density in dots-per-inch (DPI) of the device.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 420
@@ -2820,7 +2820,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The height of the device screen in pixels.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 2400
@@ -2833,7 +2833,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The width of the device screen in pixels.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 1080
@@ -2844,7 +2844,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether the device is a simulator or an actual device.
 
     Type: bool
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: false
@@ -2855,7 +2855,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Total device storage in bytes.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 274877906944
@@ -2866,7 +2866,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum: `nominal`, `fair`, `serious`, or `critical`.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "nominal"
@@ -2877,7 +2877,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The timezone of the device.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "Europe/Vienna"
@@ -2888,7 +2888,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Memory usable for the app in bytes.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 2147483648
@@ -2899,7 +2899,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The estimated total memory capacity of the device, only a rough estimation in gigabytes.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: device.memory.estimated_capacity
@@ -2914,7 +2914,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: network.connection.effective_type
@@ -2927,7 +2927,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The sentry environment.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: sentry.environment
@@ -2940,7 +2940,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Describes a class of error the operation ended with.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "timeout"
@@ -2951,7 +2951,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The unique identifier for this event (log record)
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 1234567890
@@ -2962,7 +2962,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name that uniquely identifies this event (log record)
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "Process Payload"
@@ -2973,7 +2973,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """SHOULD be set to true if the exception event is recorded at a point where it is known that the exception is escaping the scope of the span.
 
     Type: bool
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: true
@@ -2984,7 +2984,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The error message.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     Example: "ENOENT: no such file or directory"
@@ -2995,7 +2995,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """A stacktrace as a string in the natural representation for the language runtime. The representation is to be determined and documented by each language SIG.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     Example: "Exception in thread \"main\" java.lang.RuntimeException: Test exception\n at com.example.GenerateTrace.methodB(GenerateTrace.java:13)\n at com.example.GenerateTrace.methodA(GenerateTrace.java:9)\n at com.example.GenerateTrace.main(GenerateTrace.java:5)"
@@ -3006,7 +3006,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The type of the exception (its fully-qualified class name, if applicable). The dynamic type of the exception should be preferred over the static type in languages that support it.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "OSError"
@@ -3017,7 +3017,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """A boolean that is true if the serverless function is executed for the first time (aka cold-start).
 
     Type: bool
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: true
@@ -3028,7 +3028,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """A string containing the schedule period as Cron Expression.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "0/5 * * * ? *"
@@ -3039,7 +3039,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The duration a function took to run, in milliseconds.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 120
@@ -3050,7 +3050,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The code that's run when the cloud provider invokes your function.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "my_main_function"
@@ -3061,7 +3061,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The Service Account (GCP), IAM Execution Role (AWS), or Managed Identity (Azure) used by the serverless function when interacting with other cloud services
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "name@project.iam.gserviceaccount.com (GCP), arn:aws:iam::123456789012:role/role-name (AWS), 00000000-0000-0000-0000-000000000000 (Azure)"
@@ -3072,7 +3072,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The invocation ID of the current function invocation.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: aws.lambda.aws_request_id
@@ -3084,7 +3084,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the serverless function
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: aws.lambda.function_name
@@ -3096,7 +3096,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """A string containing the function invocation time in the ISO 8601 format expressed in UTC.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "2020-01-23T13:47:06Z"
@@ -3107,7 +3107,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Type of the trigger which caused this function invocation.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "timer"
@@ -3118,7 +3118,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The version of the function that was invoked
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: aws.lambda.function_version
@@ -3130,7 +3130,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The time it takes for the browser to render the first piece of meaningful content on the screen
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: browser.web_vital.fcp.value
@@ -3143,7 +3143,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """An instance of a feature flag evaluation. The value of this attribute is the boolean representing the evaluation result. The <key> suffix is the name of the feature flag.
 
     Type: bool
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Has Dynamic Suffix: true
@@ -3155,7 +3155,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The time it takes for the browser to render the first pixel on the screen
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: browser.web_vital.fp.value
@@ -3168,7 +3168,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: app.vitals.frames.delay.value
@@ -3181,7 +3181,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The number of frozen frames rendered during the lifetime of the span.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: app.vitals.frames.frozen.count
@@ -3194,7 +3194,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The number of slow frames rendered during the lifetime of the span.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: app.vitals.frames.slow.count
@@ -3207,7 +3207,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The number of total frames rendered during the lifetime of the span.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: app.vitals.frames.total.count
@@ -3220,7 +3220,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The rate of frozen frames, or `app_vitals.frames.frozen.count` divided by `app_vitals.frames.total.count`. This is computed by Relay.
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     """
@@ -3230,7 +3230,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The rate of slow frames, or `app_vitals.frames.slow.count` divided by `app_vitals.frames.total.count`. This is computed by Relay.
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     """
@@ -3240,7 +3240,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The error message of a file system error.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     DEPRECATED: Use error.type instead - This attribute is not part of the OpenTelemetry specification and error.type fits much better.
@@ -3254,7 +3254,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The event ID from the legacy GCP Cloud Function context (1st gen)
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "1234567890"
@@ -3267,7 +3267,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The type of the GCP Cloud Function event
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "google.pubsub.topic.publish"
@@ -3280,7 +3280,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The unique event ID from the GCP CloudEvents context (2nd gen Cloud Functions)
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "1234567890"
@@ -3293,7 +3293,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The resource that triggered the GCP Cloud Function event
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "projects/my-project/topics/my-topic"
@@ -3306,7 +3306,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The source of the GCP Cloud Function event
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "//pubsub.googleapis.com/projects/my-project/topics/my-topic"
@@ -3319,7 +3319,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The CloudEvents specification version of the GCP Cloud Function event
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "1.0"
@@ -3332,7 +3332,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The timestamp of the GCP Cloud Function event
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "2024-01-01T00:00:00.000Z"
@@ -3345,7 +3345,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The legacy timestamp of the GCP Cloud Function event
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "2024-01-01T00:00:00.000Z"
@@ -3358,7 +3358,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The type of the GCP Cloud Function event context
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "cloud_functions.context"
@@ -3369,7 +3369,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The ID of the project in GCP that this resource is associated with
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "my-project-123"
@@ -3380,7 +3380,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the agent being used.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "ResearchAssistant"
@@ -3393,7 +3393,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The fraction of the model context window utilized by this generation.
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 0.75
@@ -3406,7 +3406,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The maximum context window size supported by the model for this generation.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 128000
@@ -3417,7 +3417,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The unique identifier for a conversation (session, thread), used to store and correlate messages within this conversation.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "conv_5j66UpCpwteGg4YSxUnt7lPY"
@@ -3430,7 +3430,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The cost of tokens used to process the AI input (prompt) in USD (without cached input tokens).
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 123.45
@@ -3443,7 +3443,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The cost of tokens used for creating the AI output in USD (without reasoning tokens).
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 123.45
@@ -3456,7 +3456,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The total cost for the tokens used.
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: ai.total_cost
@@ -3470,7 +3470,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The input to the embeddings model.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "What's the weather in Paris?"
@@ -3481,7 +3481,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Framework-specific tracing label for the execution of a function or other unit of execution in a generative AI system.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "my-awesome-function"
@@ -3492,7 +3492,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: ai.texts
@@ -3504,7 +3504,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'embeddings', 'execute_tool', 'generate_content', 'invoke_agent', 'text_completion'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "chat"
@@ -3515,7 +3515,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The type of AI operation. Must be one of 'agent' (invoke_agent and create_agent spans), 'ai_client' (any LLM call), 'tool' (execute_tool spans), 'handoff' (handoff spans), 'other' (input and output processors, skill loading, guardrails etc.) . Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "tool"
@@ -3526,7 +3526,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"text\", \"content\": \"The weather in Paris is currently rainy with a temperature of 57°F.\"}], \"finish_reason\": \"stop\"}]"
@@ -3537,7 +3537,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Name of the AI pipeline or chain being executed.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: ai.pipeline.name
@@ -3549,7 +3549,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The input messages sent to the model
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     DEPRECATED: No replacement at this time - Deprecated from OTEL, use gen_ai.input.messages with the new format instead.
@@ -3561,7 +3561,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the prompt that uniquely identifies it.
 
     Type: str
-    Contains PII: maybe - Prompt names may reveal user behavior patterns or sensitive operations
+    Apply Scrubbing: manual - Prompt names may reveal user behavior patterns or sensitive operations
     Defined in OTEL: Yes
     Visibility: public
     Aliases: mcp.prompt.name
@@ -3573,7 +3573,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The Generative AI provider as identified by the client or server instrumentation.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: ai.model.provider, gen_ai.system
@@ -3587,7 +3587,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The available tools for the model. It has to be a stringified version of an array of objects.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     DEPRECATED: Use gen_ai.tool.definitions instead
@@ -3601,7 +3601,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: ai.frequency_penalty
@@ -3615,7 +3615,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The maximum number of tokens to generate in the response.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: 2048
@@ -3628,7 +3628,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: ai.input_messages
@@ -3641,7 +3641,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The model identifier being used for the request.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "gpt-4-turbo-preview"
@@ -3654,7 +3654,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: ai.presence_penalty
@@ -3666,7 +3666,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The seed, ideally models given the same seed and same other parameters will produce the exact same output.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: ai.seed
@@ -3680,7 +3680,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: ai.temperature
@@ -3692,7 +3692,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: ai.top_k
@@ -3704,7 +3704,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: ai.top_p
@@ -3718,7 +3718,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The reason why the model stopped generating.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: ai.finish_reason
@@ -3730,7 +3730,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Unique identifier for the completion.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: ai.generation_id
@@ -3742,7 +3742,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The vendor-specific ID of the model used.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: ai.model_id
@@ -3756,7 +3756,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether or not the AI model call's response was streamed back asynchronously
 
     Type: bool
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: ai.streaming
@@ -3768,7 +3768,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The model's response text messages. It has to be a stringified version of an array of response text messages.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     DEPRECATED: Use gen_ai.output.messages instead
@@ -3782,7 +3782,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Time in seconds when the first response content chunk arrived in streaming responses.
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: gen_ai.response.time_to_first_token
@@ -3796,7 +3796,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Time in seconds when the first response content chunk arrived in streaming responses.
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.response.time_to_first_chunk
@@ -3811,7 +3811,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The total output tokens per seconds throughput
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 12345.67
@@ -3824,7 +3824,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The tool calls in the model's response. It has to be a stringified version of an array of objects.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     DEPRECATED: Use gen_ai.output.messages instead
@@ -3836,7 +3836,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The provider of the model.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: ai.model.provider, gen_ai.provider.name
@@ -3849,7 +3849,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The system instructions passed to the model.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     DEPRECATED: Use gen_ai.system_instructions instead
@@ -3863,7 +3863,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The system instructions passed to the model.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: ai.preamble
@@ -3877,7 +3877,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The arguments of the tool call. It has to be a stringified version of the arguments to the tool.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: gen_ai.tool.input
@@ -3891,7 +3891,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The result of the tool call. It has to be a stringified version of the result of the tool.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: gen_ai.tool.output, gen_ai.tool.message, mcp.tool.result.content
@@ -3905,7 +3905,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The list of source system tool definitions available to the GenAI agent or model.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "[{\"type\": \"function\", \"name\": \"get_current_weather\", \"description\": \"Get the current weather in a given location\", \"parameters\": {\"type\": \"object\", \"properties\": {\"location\": {\"type\": \"string\", \"description\": \"The city and state, e.g. San Francisco, CA\"}, \"unit\": {\"type\": \"string\", \"enum\": [\"celsius\", \"fahrenheit\"]}}, \"required\": [\"location\", \"unit\"]}}]"
@@ -3918,7 +3918,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The description of the tool being used.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "Searches the web for current information about a topic"
@@ -3929,7 +3929,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The input of the tool being used. It has to be a stringified version of the input to the tool.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.tool.call.arguments
@@ -3942,7 +3942,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The response from a tool or function call passed to the model.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.tool.call.result, gen_ai.tool.output, mcp.tool.result.content
@@ -3955,7 +3955,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Name of the tool utilized by the agent.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: ai.function_call, mcp.tool.name
@@ -3967,7 +3967,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The output of the tool being used. It has to be a stringified version of the output of the tool.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.tool.call.result, gen_ai.tool.message, mcp.tool.result.content
@@ -3980,7 +3980,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The type of tool being used.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     DEPRECATED: No replacement at this time - The gen_ai.tool.type attribute is deprecated and should no longer be set.
@@ -3994,7 +3994,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The number of tokens written to the cache when processing the AI input (prompt).
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: gen_ai.usage.input_tokens.cache_write
@@ -4008,7 +4008,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The number of cached tokens used to process the AI input (prompt).
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: gen_ai.usage.input_tokens.cached
@@ -4022,7 +4022,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The number of tokens used in the GenAI response (completion).
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: ai.completion_tokens.used, gen_ai.usage.output_tokens
@@ -4037,7 +4037,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The number of tokens used to process the AI input (prompt) including cached input tokens.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: ai.prompt_tokens.used, gen_ai.usage.prompt_tokens
@@ -4051,7 +4051,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The number of tokens written to the cache when processing the AI input (prompt).
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.usage.cache_creation.input_tokens
@@ -4066,7 +4066,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The number of cached tokens used to process the AI input (prompt).
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.usage.cache_read.input_tokens
@@ -4081,7 +4081,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The number of tokens used for creating the AI output (including reasoning tokens).
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: ai.completion_tokens.used, gen_ai.usage.completion_tokens
@@ -4095,7 +4095,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The number of tokens used for reasoning to create the AI output.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.usage.reasoning.output_tokens
@@ -4110,7 +4110,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The number of tokens used in the GenAI input (prompt).
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: ai.prompt_tokens.used, gen_ai.usage.input_tokens
@@ -4125,7 +4125,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The number of tokens used for reasoning to create the AI output.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: gen_ai.usage.output_tokens.reasoning
@@ -4139,7 +4139,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The total number of tokens used to process the prompt. (input tokens plus output todkens)
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: ai.total_tokens.used
@@ -4151,7 +4151,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The GraphQL document being executed.
 
     Type: str
-    Contains PII: true - The document may contain sensitive information in arguments or variables. Instrumentation should redact sensitive information when possible.
+    Apply Scrubbing: auto - The document may contain sensitive information in arguments or variables. Instrumentation should redact sensitive information when possible.
     Defined in OTEL: Yes
     Visibility: public
     Example: "query findBookById { bookById(id: ?) { name } }"
@@ -4162,7 +4162,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the operation being executed.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "findBookById"
@@ -4173,7 +4173,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The type of the operation being executed.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "query"
@@ -4184,7 +4184,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The number of logical CPU cores available.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: device.processor_count
@@ -4197,7 +4197,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     Aliases: client.address
@@ -4212,7 +4212,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The decoded body size of the response (in bytes).
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 456
@@ -4223,7 +4223,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The actual version of the protocol used for network communication.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: network.protocol.version, net.protocol.version
@@ -4236,7 +4236,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The fragments present in the URI. Note that this contains the leading # character, while the `url.fragment` attribute does not.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     Example: "#details"
@@ -4247,7 +4247,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The domain name.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: server.address, client.address, http.server_name, net.host.name
@@ -4260,7 +4260,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The HTTP method used.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: http.request.method, http.request_method, method
@@ -4273,7 +4273,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The query string present in the URL. Note that this contains the leading ? character, while the `url.query` attribute does not.
 
     Type: str
-    Contains PII: true - Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.
+    Apply Scrubbing: auto - Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.
     Defined in OTEL: No
     Visibility: public
     Example: "?foo=bar&bar=baz"
@@ -4284,7 +4284,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """HTTP request body data. Can be given as string or structural data of any format.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     Example: "[{\"role\": \"user\", \"message\": \"hello\"}]"
@@ -4297,7 +4297,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The UNIX timestamp representing the time immediately before the user agent starts establishing the connection to the server to retrieve the resource.
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 1732829555.111
@@ -4310,7 +4310,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The UNIX timestamp representing the time immediately after the browser finishes establishing the connection to the server to retrieve the resource. The timestamp value includes the time interval to establish the transport connection, as well as other time intervals such as TLS handshake and SOCKS authentication.
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 1732829555.15
@@ -4323,7 +4323,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The UNIX timestamp representing the time immediately after the browser finishes the domain-name lookup for the resource.
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 1732829555.201
@@ -4336,7 +4336,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The UNIX timestamp representing the time immediately before the browser starts the domain name lookup for the resource.
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 1732829555.322
@@ -4349,7 +4349,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The UNIX timestamp representing the time immediately before the browser starts to fetch the resource.
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 1732829555.389
@@ -4362,7 +4362,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """HTTP request headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.
 
     Type: List[str]
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     Has Dynamic Suffix: true
@@ -4374,7 +4374,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The HTTP method used.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: method, http.method, http.request_method
@@ -4388,7 +4388,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The UNIX timestamp representing the timestamp immediately after receiving the last byte of the response of the last redirect
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 1732829558.502
@@ -4401,7 +4401,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The UNIX timestamp representing the start time of the fetch which that initiates the redirect.
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 1732829555.495
@@ -4414,7 +4414,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 1732829555.51
@@ -4427,7 +4427,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The ordinal number of request resending attempt (for any reason, including redirects).
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 2
@@ -4440,7 +4440,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The UNIX timestamp representing the time immediately after the browser receives the last byte of the resource or immediately before the transport connection is closed, whichever comes first.
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 1732829555.89
@@ -4453,7 +4453,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 1732829555.7
@@ -4466,7 +4466,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The UNIX timestamp representing the time immediately before the browser starts the handshake process to secure the current connection. If a secure connection is not used, the property returns zero.
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 1732829555.73
@@ -4479,7 +4479,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The time in seconds from the browser's timeorigin to when the first byte of the request's response was received. See https://web.dev/articles/ttfb#measure-resource-requests
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 1.032
@@ -4492,7 +4492,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The UNIX timestamp representing the timestamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running.
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 1732829553.68
@@ -4503,7 +4503,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The HTTP method used.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: method, http.method, http.request.method
@@ -4518,7 +4518,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The encoded body size of the response (in bytes).
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: http.response_content_length, http.response.header.content-length
@@ -4532,7 +4532,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """HTTP response headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.
 
     Type: List[str]
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     Has Dynamic Suffix: true
@@ -4546,7 +4546,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The size of the message body sent to the recipient (in bytes)
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: http.response_content_length, http.response.body.size
@@ -4558,7 +4558,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The transfer size of the response (in bytes).
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: http.response_transfer_size
@@ -4572,7 +4572,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The status code of the HTTP response.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: http.status_code
@@ -4586,7 +4586,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The encoded body size of the response (in bytes).
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: http.response.body.size, http.response.header.content-length
@@ -4601,7 +4601,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The transfer size of the response (in bytes).
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: http.response.size
@@ -4614,7 +4614,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The matched route, that is, the path template in the format used by the respective server framework.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: url.template
@@ -4626,7 +4626,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The URI scheme component identifying the used protocol.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: url.scheme
@@ -4641,7 +4641,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The time in milliseconds the request spent in the server queue before processing began. Measured from the X-Request-Start header set by reverse proxies (e.g., Nginx, HAProxy, Heroku) to when the application started handling the request.
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 50
@@ -4652,7 +4652,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The server domain name
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: server.address, net.host.name, http.host
@@ -4665,7 +4665,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The status code of the HTTP response.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: http.response.status_code
@@ -4678,7 +4678,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The pathname and query string of the URL.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     DEPRECATED: Use url.path instead - This attribute is being deprecated in favor of url.path and url.query
@@ -4690,7 +4690,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The URL of the resource that was fetched.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     Aliases: url.full, url
@@ -4703,7 +4703,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Value of the HTTP User-Agent header sent by the client.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: user_agent.original
@@ -4716,7 +4716,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """A unique identifier for the span.
 
     Type: str
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     Example: "f47ac10b58cc4372a5670e02b2c3d479"
@@ -4727,7 +4727,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The value of the recorded Interaction to Next Paint (INP) web vital
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: browser.web_vital.inp.value
@@ -4742,7 +4742,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The version of the JSON-RPC protocol used.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "2.0"
@@ -4753,7 +4753,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The JSON-RPC request identifier. Unique within the session.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: mcp.request.id
@@ -4765,7 +4765,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Name of the garbage collector action.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "end of minor GC"
@@ -4776,7 +4776,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Name of the garbage collector.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "G1 Young Generation"
@@ -4787,7 +4787,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Name of the memory pool.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "G1 Old Gen"
@@ -4798,7 +4798,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Name of the memory pool.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "G1 Old Gen"
@@ -4809,7 +4809,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether the thread is daemon or not.
 
     Type: bool
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: true
@@ -4820,7 +4820,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """State of the thread.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "blocked"
@@ -4831,7 +4831,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The dom element responsible for the largest contentful paint.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: browser.web_vital.lcp.element
@@ -4844,7 +4844,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The id of the dom element responsible for the largest contentful paint.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: browser.web_vital.lcp.id
@@ -4857,7 +4857,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The time it took for the LCP element to be loaded
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: browser.web_vital.lcp.load_time
@@ -4870,7 +4870,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The time it took for the LCP element to be rendered
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: browser.web_vital.lcp.render_time
@@ -4883,7 +4883,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The size of the largest contentful paint element.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: browser.web_vital.lcp.size
@@ -4896,7 +4896,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The url of the dom element responsible for the largest contentful paint.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     Aliases: browser.web_vital.lcp.url
@@ -4909,7 +4909,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The value of the recorded Largest Contentful Paint (LCP) web vital
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: browser.web_vital.lcp.value
@@ -4922,7 +4922,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the logger that generated this event.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "myLogger"
@@ -4933,7 +4933,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Reason for the cancellation of an MCP operation.
 
     Type: str
-    Contains PII: maybe - Cancellation reasons may contain user-specific or sensitive information
+    Apply Scrubbing: manual - Cancellation reasons may contain user-specific or sensitive information
     Defined in OTEL: No
     Visibility: public
     Example: "User cancelled the request"
@@ -4946,7 +4946,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Request ID of the cancelled MCP operation.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "123"
@@ -4957,7 +4957,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Name of the MCP client application.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "claude-desktop"
@@ -4968,7 +4968,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Display title of the MCP client application.
 
     Type: str
-    Contains PII: maybe - Client titles may reveal user-specific application configurations or custom setups
+    Apply Scrubbing: manual - Client titles may reveal user-specific application configurations or custom setups
     Defined in OTEL: No
     Visibility: public
     Example: "Claude Desktop"
@@ -4979,7 +4979,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Version of the MCP client application.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "1.0.0"
@@ -4990,7 +4990,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Lifecycle phase indicator for MCP operations.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "initialization_complete"
@@ -5001,7 +5001,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Data type of the logged message content.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "string"
@@ -5012,7 +5012,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Log level for MCP logging operations.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "info"
@@ -5023,7 +5023,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Logger name for MCP logging operations.
 
     Type: str
-    Contains PII: maybe - Logger names may be user-defined and could contain sensitive information
+    Apply Scrubbing: manual - Logger names may be user-defined and could contain sensitive information
     Defined in OTEL: No
     Visibility: public
     Example: "mcp_server"
@@ -5034,7 +5034,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Log message content from MCP logging operations.
 
     Type: str
-    Contains PII: true - Log messages can contain user data
+    Apply Scrubbing: auto - Log messages can contain user data
     Defined in OTEL: No
     Visibility: public
     Example: "Tool execution completed successfully"
@@ -5045,7 +5045,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the MCP request or notification method being called.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "tools/call"
@@ -5056,7 +5056,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Current progress value of an MCP operation.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 50
@@ -5067,7 +5067,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Progress message describing the current state of an MCP operation.
 
     Type: str
-    Contains PII: maybe - Progress messages may contain user-specific or sensitive information
+    Apply Scrubbing: manual - Progress messages may contain user-specific or sensitive information
     Defined in OTEL: No
     Visibility: public
     Example: "Processing 50 of 100 items"
@@ -5080,7 +5080,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Calculated progress percentage of an MCP operation. Computed from current/total * 100.
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 50
@@ -5091,7 +5091,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Token for tracking progress of an MCP operation.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "progress-token-123"
@@ -5102,7 +5102,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Total progress target value of an MCP operation.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 100
@@ -5113,7 +5113,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Name of the MCP prompt template being used.
 
     Type: str
-    Contains PII: maybe - Prompt names may reveal user behavior patterns or sensitive operations
+    Apply Scrubbing: manual - Prompt names may reveal user behavior patterns or sensitive operations
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.prompt.name
@@ -5128,7 +5128,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Description of the prompt result.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     Example: "A summary of the requested information"
@@ -5141,7 +5141,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Content of the message in the prompt result. Used for single message results only.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     Example: "Please provide a summary of the document"
@@ -5154,7 +5154,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Number of messages in the prompt result.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 3
@@ -5167,7 +5167,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Role of the message in the prompt result. Used for single message results only.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "user"
@@ -5178,7 +5178,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Protocol readiness indicator for MCP session. Non-zero value indicates the protocol is ready.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 1
@@ -5189,7 +5189,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """MCP protocol version used in the session.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "2024-11-05"
@@ -5202,7 +5202,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """MCP request argument with dynamic key suffix. The <key> is replaced with the actual argument name. The value is a JSON-stringified representation of the argument value.
 
     Type: str
-    Contains PII: true - Arguments contain user input
+    Apply Scrubbing: auto - Arguments contain user input
     Defined in OTEL: No
     Visibility: public
     Has Dynamic Suffix: true
@@ -5216,7 +5216,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Name argument from prompts/get MCP request.
 
     Type: str
-    Contains PII: true - Prompt names can contain user input
+    Apply Scrubbing: auto - Prompt names can contain user input
     Defined in OTEL: No
     Visibility: public
     Example: "summarize"
@@ -5229,7 +5229,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """URI argument from resources/read MCP request.
 
     Type: str
-    Contains PII: true - URIs can contain user file paths
+    Apply Scrubbing: auto - URIs can contain user file paths
     Defined in OTEL: No
     Visibility: public
     Example: "file:///path/to/resource"
@@ -5240,7 +5240,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """JSON-RPC request identifier for the MCP request. Unique within the MCP session.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: jsonrpc.request.id
@@ -5253,7 +5253,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Protocol of the resource URI being accessed, extracted from the URI.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: network.protocol.name, net.protocol.name
@@ -5266,7 +5266,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The resource URI being accessed in an MCP operation.
 
     Type: str
-    Contains PII: true - URIs can contain sensitive file paths
+    Apply Scrubbing: auto - URIs can contain sensitive file paths
     Defined in OTEL: Yes
     Visibility: public
     Example: "file:///path/to/file.txt"
@@ -5277,7 +5277,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Name of the MCP server application.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "sentry-mcp-server"
@@ -5288,7 +5288,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Display title of the MCP server application.
 
     Type: str
-    Contains PII: maybe - Server titles may reveal user-specific application configurations or custom setups
+    Apply Scrubbing: manual - Server titles may reveal user-specific application configurations or custom setups
     Defined in OTEL: No
     Visibility: public
     Example: "Sentry MCP Server"
@@ -5299,7 +5299,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Version of the MCP server application.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "0.1.0"
@@ -5310,7 +5310,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Identifier for the MCP session.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "550e8400-e29b-41d4-a716-446655440000"
@@ -5321,7 +5321,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Name of the MCP tool being called.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.tool.name, ai.function_call
@@ -5336,7 +5336,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The content of the tool result.
 
     Type: str
-    Contains PII: true - Tool results can contain user data
+    Apply Scrubbing: auto - Tool results can contain user data
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.tool.call.result, gen_ai.tool.message, gen_ai.tool.output
@@ -5351,7 +5351,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Number of content items in the tool result.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 1
@@ -5364,7 +5364,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether a tool execution resulted in an error.
 
     Type: bool
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     DEPRECATED: Use error.type instead - OTel uses error.type set to 'tool_error' when isError is true. Cannot be automatically backfilled due to type mismatch (boolean vs string).
@@ -5376,7 +5376,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Transport method used for MCP communication.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: network.transport, net.transport
@@ -5389,7 +5389,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Attributes from the Mapped Diagnostic Context (MDC) present at the moment the log record was created. The MDC is supported by all the most popular logging solutions in the Java ecosystem, and it's usually implemented as a thread-local map that stores context for e.g. a specific request.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     Has Dynamic Suffix: true
@@ -5403,7 +5403,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The number of messages sent, received, or processed in the scope of the batching operation.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: 10
@@ -5416,7 +5416,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The message destination connection.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "BestTopic"
@@ -5429,7 +5429,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The message destination name.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "BestTopic"
@@ -5442,7 +5442,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The size of the message body in bytes.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: 839
@@ -5455,7 +5455,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The size of the message body and metadata in bytes.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: 1045
@@ -5466,7 +5466,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """A value used by the messaging system as an identifier for the message, represented as a string.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "f47ac10b58cc4372a5670e02b2c3d479"
@@ -5479,7 +5479,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The latency between when the message was published and received.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 1732847252
@@ -5492,7 +5492,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The amount of attempts to send the message.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 2
@@ -5505,7 +5505,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the messaging operation being performed
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "send"
@@ -5518,7 +5518,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """A string identifying the type of the messaging operation
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "create"
@@ -5529,7 +5529,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The messaging system as identified by the client instrumentation.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "activemq"
@@ -5540,7 +5540,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The HTTP method used.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: http.request.method, http.request_method, http.method
@@ -5553,7 +5553,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the middleware.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "AuthenticationMiddleware"
@@ -5564,7 +5564,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The type of navigation done by a client-side router.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "router.push"
@@ -5575,7 +5575,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The elapsed number of milliseconds between the start of the resource fetch and when it was completed or aborted by the user agent.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 100
@@ -5586,7 +5586,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """If request failed, the phase of its network error. If request succeeded, "application".
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "application"
@@ -5597,7 +5597,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """request's referrer, as determined by the referrer policy associated with its client.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     Example: "https://example.com/foo?bar=baz"
@@ -5608,7 +5608,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The sampling function used to determine if the request should be sampled.
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 0.5
@@ -5619,7 +5619,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """If request failed, the type of its network error. If request succeeded, "ok".
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "dns.unreachable"
@@ -5630,7 +5630,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Local address of the network connection - IP address or Unix domain socket name.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: network.local.address, net.sock.host.addr
@@ -5643,7 +5643,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: server.address, http.server_name, http.host
@@ -5656,7 +5656,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Server port number.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: server.port
@@ -5669,7 +5669,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Peer address of the network connection - IP address or Unix domain socket name.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     Aliases: network.peer.address, net.sock.peer.addr
@@ -5682,7 +5682,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     DEPRECATED: Use server.address instead - Deprecated, use server.address on client spans and client.address on server spans.
@@ -5694,7 +5694,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Peer port number.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     DEPRECATED: Use server.port instead - Deprecated, use server.port on client spans and client.port on server spans.
@@ -5706,7 +5706,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """OSI application layer or non-OSI equivalent.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: network.protocol.name, mcp.resource.protocol
@@ -5719,7 +5719,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The actual version of the protocol used for network communication.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: network.protocol.version, http.flavor
@@ -5732,7 +5732,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """OSI transport and network layer
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     DEPRECATED: Use network.transport instead - Deprecated, use network.transport and network.type.
@@ -5744,7 +5744,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Local address of the network connection mapping to Unix domain socket name.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: network.local.address, net.host.ip
@@ -5757,7 +5757,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Local port number of the network connection.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: network.local.port
@@ -5770,7 +5770,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Peer address of the network connection - IP address
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     Aliases: network.peer.address, net.peer.ip
@@ -5783,7 +5783,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Peer address of the network connection - Unix domain socket name
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     DEPRECATED: No replacement at this time - Deprecated from OTEL, no replacement at this time
@@ -5795,7 +5795,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Peer port number of the network connection.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     DEPRECATED: Use network.peer.port instead
@@ -5807,7 +5807,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """OSI transport layer or inter-process communication method.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: network.transport, mcp.transport
@@ -5822,7 +5822,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Specifies the effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: effectiveConnectionType
@@ -5834,7 +5834,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Specifies the estimated effective round-trip time of the current connection, in milliseconds.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: connection.rtt
@@ -5848,7 +5848,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: device.connection_type, connectionType
@@ -5860,7 +5860,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Local address of the network connection - IP address or Unix domain socket name.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: net.host.ip, net.sock.host.addr
@@ -5872,7 +5872,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Local port number of the network connection.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: net.sock.host.port
@@ -5884,7 +5884,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Peer address of the network connection - IP address or Unix domain socket name.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     Aliases: net.peer.ip, net.sock.peer.addr
@@ -5896,7 +5896,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Peer port number of the network connection.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: 65400
@@ -5907,7 +5907,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """OSI application layer or non-OSI equivalent.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: net.protocol.name, mcp.resource.protocol
@@ -5921,7 +5921,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The actual version of the protocol used for network communication.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: http.flavor, net.protocol.version
@@ -5933,7 +5933,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """OSI transport layer or inter-process communication method.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: net.transport, mcp.transport
@@ -5945,7 +5945,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """OSI network layer or non-OSI equivalent.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "ipv4"
@@ -5956,7 +5956,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The build ID of the operating system.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: os.build_id
@@ -5969,7 +5969,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The build ID of the operating system.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: os.build
@@ -5981,7 +5981,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Human readable (not intended to be parsed) OS version information, like e.g. reported by ver or lsb_release -a commands.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "Ubuntu 18.04.1 LTS"
@@ -5992,7 +5992,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """An independent kernel version string. Typically the entire output of the `uname` syscall.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "20.2.0"
@@ -6003,7 +6003,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Human readable operating system name.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "Ubuntu"
@@ -6014,7 +6014,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """An unprocessed description string obtained by the operating system. For some well-known runtimes, Sentry will attempt to parse `name` and `version` from this string, if they are not explicitly given.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "Ubuntu 22.04.4 LTS (Jammy Jellyfish)"
@@ -6025,7 +6025,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether the operating system has been jailbroken or rooted.
 
     Type: bool
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: true
@@ -6036,7 +6036,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether the OS runs in dark mode or light mode.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "dark"
@@ -6047,7 +6047,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The operating system type.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "linux"
@@ -6058,7 +6058,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The version of the operating system.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "18.04.2"
@@ -6069,7 +6069,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the instrumentation scope - (InstrumentationScope.Name in OTLP).
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "io.opentelemetry.contrib.mongodb"
@@ -6080,7 +6080,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The version of the instrumentation scope - (InstrumentationScope.Version in OTLP).
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "2.4.5"
@@ -6091,7 +6091,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Name of the code, either “OK” or “ERROR”. MUST NOT be set if the status code is UNSET.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "OK"
@@ -6104,7 +6104,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Description of the Status if it has a value, otherwise not set.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     Example: "resource not found"
@@ -6115,7 +6115,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     Has Dynamic Suffix: true
@@ -6130,7 +6130,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The time between initiating a navigation to a page and the browser activating the page
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: browser.performance.navigation.activation_start
@@ -6143,7 +6143,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The browser's performance.timeOrigin timestamp representing the time when the pageload was initiated
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: browser.performance.time_origin
@@ -6156,7 +6156,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Also used by mobile SDKs to indicate the previous route in the application.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "HomeScreen"
@@ -6167,7 +6167,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """All the command arguments (including the command/executable itself) as received by the process.
 
     Type: List[str]
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     Example: ["cmd/otecol","--config=config.yaml"]
@@ -6180,7 +6180,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the executable that started the process.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "getsentry"
@@ -6191,7 +6191,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The process ID of the running process.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: 12345
@@ -6204,7 +6204,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """An additional description about the runtime of the process, for example a specific vendor customization of the runtime environment. Equivalent to `raw_description` in the Sentry runtime context.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: runtime.raw_description
@@ -6218,7 +6218,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the runtime engine.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "v8"
@@ -6231,7 +6231,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The version of the runtime engine.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "12.9.202.13-rusty"
@@ -6242,7 +6242,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the runtime. Equivalent to `name` in the Sentry runtime context.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: runtime.name
@@ -6256,7 +6256,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The version of the runtime of this process, as returned by the runtime without modification. Equivalent to `version` in the Sentry runtime context.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: runtime.version
@@ -6268,7 +6268,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """An item in a query string. Usually added by client-side routing frameworks like vue-router.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     Has Dynamic Suffix: true
@@ -6281,7 +6281,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The version of the React framework
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "18.2.0"
@@ -6292,7 +6292,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The sentry release.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: sentry.release
@@ -6307,7 +6307,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Remix form data, <key> being the form data key, the value being the form data value.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     Has Dynamic Suffix: true
@@ -6319,7 +6319,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The id of the sentry replay.
 
     Type: str
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     Aliases: sentry.replay_id
@@ -6334,7 +6334,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The software deployment environment name.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     DEPRECATED: Use sentry.environment instead
@@ -6348,7 +6348,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The software deployment environment name.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     DEPRECATED: Use sentry.environment instead
@@ -6362,7 +6362,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The render blocking status of the resource.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "non-blocking"
@@ -6373,7 +6373,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The matched route, that is, the path template in the format used by the respective server framework. Also used by mobile SDKs to indicate the current route in the application.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: http.route
@@ -6386,7 +6386,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The numeric status code of the gRPC request.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: 2
@@ -6397,7 +6397,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The fully-qualified logical name of the method from the RPC interface perspective.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "com.example.ExampleService/exampleMethod"
@@ -6410,7 +6410,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Status code of the RPC returned by the RPC server or generated by the client.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "DEADLINE_EXCEEDED"
@@ -6421,7 +6421,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The full (logical) name of the service being called, including its package name, if applicable.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "myService.BestService"
@@ -6432,7 +6432,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The application build string, when it is separate from the version.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     DEPRECATED: No replacement at this time - The runtime.* namespace is deprecated in favor of process.runtime.*. No direct OTel equivalent exists for this attribute.
@@ -6444,7 +6444,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the runtime. For example node, CPython, or rustc.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: process.runtime.name
@@ -6459,7 +6459,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Unprocessed description string as obtained from the runtime. Used to extract name and version for well-known runtimes.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: process.runtime.description
@@ -6472,7 +6472,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The version of the runtime.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: process.runtime.version
@@ -6485,7 +6485,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The weighted performance score for a web vital. This is defined as `score.weight.<key>` * `score.ratio.<key>`.
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Has Dynamic Suffix: true
@@ -6497,7 +6497,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The score for a web vital, normalized to a number between 0 and 1.
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Has Dynamic Suffix: true
@@ -6509,7 +6509,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The total performance score of a span. This is the sum of individual weighted web vital scores (see `score.<key>`).
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     """
@@ -6519,7 +6519,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The relative weight of a web vital in a span's performance score.
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Has Dynamic Suffix: true
@@ -6531,7 +6531,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Used as a generic attribute representing the action depending on the type of span. For instance, this is the database query operation for DB spans, and the request method for HTTP spans.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "SELECT"
@@ -6542,7 +6542,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the browser.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: browser.name
@@ -6555,7 +6555,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The version of the browser.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: browser.version
@@ -6570,7 +6570,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The reason why a span ended early.
 
     Type: str
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     Example: "document.hidden"
@@ -6581,7 +6581,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI). Known values include: 'ai', 'ai.pipeline', 'app', 'browser', 'cache', 'console', 'db', 'event', 'file', 'function.aws', 'function.azure', 'function.gcp', 'function.nextjs', 'function.remix', 'graphql', 'grpc', 'http', 'measure', 'middleware', 'navigation', 'pageload', 'queue', 'resource', 'rpc', 'serialize', 'subprocess', 'template', 'topic', 'ui', 'ui.angular', 'ui.ember', 'ui.react', 'ui.svelte', 'ui.vue', 'view', 'websocket'.
 
     Type: str
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     Example: "db"
@@ -6594,7 +6594,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Rate at which a span was sampled in the SDK.
 
     Type: float
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     Example: 0.5
@@ -6605,7 +6605,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The human-readable description of a span.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     Example: "index view query"
@@ -6616,7 +6616,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The sentry dist.
 
     Type: str
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     Example: "1.0"
@@ -6627,7 +6627,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Used as a generic attribute representing the domain depending on the type of span. For instance, this is the collection/table name for database spans, and the server address for HTTP spans.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "example.com"
@@ -6638,7 +6638,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The environment from the dynamic sampling context.
 
     Type: str
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: internal
     Example: "prod"
@@ -6649,7 +6649,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The ID of the project where the trace originated (i.e. the project of the SDK that started the trace). Propagated through the dynamic sampling context and set by Relay during ingestion.
 
     Type: str
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: internal
     Example: "12345"
@@ -6660,7 +6660,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The public key from the dynamic sampling context.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: internal
     Example: "c51734c603c4430eb57cb0a5728a479d"
@@ -6671,7 +6671,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The release identifier from the dynamic sampling context.
 
     Type: str
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: internal
     Example: "frontend@e8211be71b214afab5b85de4b4c54be3714952bb"
@@ -6682,7 +6682,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The sample rate from the dynamic sampling context.
 
     Type: str
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: internal
     Example: "1.0"
@@ -6693,7 +6693,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether the event was sampled according to the dynamic sampling context.
 
     Type: bool
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: internal
     Example: true
@@ -6704,7 +6704,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The trace ID from the dynamic sampling context.
 
     Type: str
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: internal
     Example: "047372980460430cbc78d9779df33a46"
@@ -6715,7 +6715,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The transaction name from the dynamic sampling context.
 
     Type: str
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: internal
     Example: "/issues/errors-outages/"
@@ -6726,7 +6726,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The sentry environment.
 
     Type: str
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     Aliases: environment
@@ -6738,7 +6738,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The exclusive time duration of the span in milliseconds.
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 1234
@@ -6751,7 +6751,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Indicates the type of graphql operation, emitted by the Javascript SDK.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "getUserById"
@@ -6762,7 +6762,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Stores the hash of `sentry.normalized_description`. This is primarily used for grouping spans in the product end.
 
     Type: str
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     """
@@ -6772,7 +6772,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """If an http request was a prefetch request.
 
     Type: bool
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     Example: true
@@ -6785,7 +6785,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The reason why an idle span ended early.
 
     Type: str
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     Example: "idleTimeout"
@@ -6796,7 +6796,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Indicates whether a span's parent is remote.
 
     Type: bool
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     Example: true
@@ -6807,7 +6807,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Used to clarify the relationship between parents and children, or to distinguish between spans, e.g. a `server` and `client` span with the same name.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "server"
@@ -6818,7 +6818,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs.
 
     Type: bool
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     Example: true
@@ -6831,7 +6831,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """A parameter used in the message template. <key> can either be the number that represent the parameter's position in the template string (sentry.message.parameter.0, sentry.message.parameter.1, etc) or the parameter's name (sentry.message.parameter.item_id, sentry.message.parameter.user_id, etc)
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     Example: "sentry.message.parameter.0='123'"
@@ -6844,7 +6844,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The parameterized template string.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "Hello, {name}!"
@@ -6855,7 +6855,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether the application is using a mobile SDK. Computed by Relay and should not be set by SDKs.
 
     Type: bool
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     Example: true
@@ -6866,7 +6866,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """A module that was loaded in the process. The key is the name of the module.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Has Dynamic Suffix: true
@@ -6880,7 +6880,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """A parameterized route for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions when the file location of the function is known.
 
     Type: str
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     Example: "/posts/[id]/layout"
@@ -6893,7 +6893,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """A descriptor for a for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions.
 
     Type: str
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     Example: "generateMetadata"
@@ -6906,7 +6906,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The normalized version of `db.query.text`.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "SELECT .. FROM sentry_project WHERE (project_id = %s)"
@@ -6919,7 +6919,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The hash of `sentry.normalized_db_query`.
 
     Type: str
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     """
@@ -6931,7 +6931,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Used as a generic attribute representing the normalized `sentry.description`. This refers to the legacy use case of `sentry.description` where it holds relevant data depending on the type of span (e.g. database query, resource url, http request description, etc).
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     Example: "SELECT .. FROM sentry_project WHERE (project_id = %s)"
@@ -6944,7 +6944,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The timestamp at which an envelope was received by Relay, in nanoseconds.
 
     Type: str
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     Example: "1544712660300000000"
@@ -6955,7 +6955,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The operation of a span.
 
     Type: str
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     Example: "http.client"
@@ -6966,7 +6966,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The origin of the instrumentation (e.g. span, log, etc.)
 
     Type: str
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     Example: "auto.http.otel.fastify"
@@ -6977,7 +6977,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The sdk platform that generated the event.
 
     Type: str
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     Example: "php"
@@ -6988,7 +6988,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.
 
     Type: str
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     Example: "123e4567e89b12d3a456426614174000"
@@ -6999,7 +6999,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The id of the currently running profiler (continuous profiling)
 
     Type: str
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     Example: "18779b64dd35d1a538e7ce2dd2d3fad3"
@@ -7010,7 +7010,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The sentry release.
 
     Type: str
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     Aliases: service.version, release
@@ -7022,7 +7022,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The id of the sentry replay.
 
     Type: str
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     Aliases: replay_id
@@ -7036,7 +7036,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate).
 
     Type: bool
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     Example: true
@@ -7047,7 +7047,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """(Deprecated) The event that caused the SDK to report CLS or LCP (pagehide or navigation)
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     DEPRECATED: No replacement at this time - The report event is now recorded as a browser.web_vital.lcp.report_event or browser.web_vital.cls.report_event attribute. No backfill required.
@@ -7061,7 +7061,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """A list of names identifying enabled integrations. The list shouldhave all enabled integrations, including default integrations. Defaultintegrations are included because different SDK releases may contain differentdefault integrations.
 
     Type: List[str]
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     Example: ["InboundFilters","FunctionToString","BrowserApiErrors","Breadcrumbs"]
@@ -7072,7 +7072,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The sentry sdk name.
 
     Type: str
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     Example: "@sentry/react"
@@ -7083,7 +7083,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The sentry sdk version.
 
     Type: str
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     Example: "7.0.0"
@@ -7094,7 +7094,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The segment ID of a span
 
     Type: str
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     Aliases: sentry.segment_id
@@ -7106,7 +7106,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The segment name of a span
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: sentry.transaction, transaction
@@ -7118,7 +7118,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The segment ID of a span
 
     Type: str
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     Aliases: sentry.segment.id
@@ -7133,7 +7133,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Rate at which a span was sampled in Relay.
 
     Type: float
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     Example: 0.5
@@ -7144,7 +7144,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.
 
     Type: str
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     DEPRECATED: Use sentry.span.source instead - This attribute is being deprecated in favor of sentry.span.source
@@ -7156,7 +7156,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.
 
     Type: str
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     Example: "route"
@@ -7167,7 +7167,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The from OTLP extracted status message.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "foobar"
@@ -7178,7 +7178,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The HTTP status code used in Sentry Insights. Typically set by Sentry during ingestion, rather than by clients.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 200
@@ -7191,7 +7191,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """A sequencing counter for deterministic ordering of logs or metrics when timestamps share the same integer millisecond. Starts at 0 on SDK initialization, increments by 1 for each captured item, and resets to 0 when the integer millisecond of the current item differs from the previous one.
 
     Type: int
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     Example: 0
@@ -7204,7 +7204,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The span id of the span that was active when the log was collected. This should not be set if there was no active span.
 
     Type: str
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     DEPRECATED: No replacement at this time
@@ -7216,7 +7216,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The sentry transaction (segment name).
 
     Type: str
-    Contains PII: false
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     Aliases: sentry.segment.name, transaction
@@ -7229,7 +7229,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """User email address.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     Aliases: user.email
@@ -7241,7 +7241,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Human readable city name.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: user.geo.city
@@ -7255,7 +7255,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Two-letter country code (ISO 3166-1 alpha-2).
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: user.geo.country_code
@@ -7267,7 +7267,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Human readable region name or code.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: user.geo.region
@@ -7281,7 +7281,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Human readable subdivision name.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: user.geo.subdivision
@@ -7293,7 +7293,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Unique identifier of the user.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     Aliases: user.id
@@ -7305,7 +7305,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The IP address of the user.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     Aliases: user.ip_address
@@ -7317,7 +7317,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Short name or login/username of the user.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     Aliases: user.name
@@ -7329,7 +7329,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: http.server_name, net.host.name, http.host
@@ -7341,7 +7341,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Server port number.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: net.host.port
@@ -7353,7 +7353,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Logical name of the service.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "omegastar"
@@ -7364,7 +7364,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The version string of the service API or implementation. The format is not defined by these conventions.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: sentry.release
@@ -7376,7 +7376,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """A unique id identifying the active session at the time of setting this attribute
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "00112233-4455-6677-8899-aabbccddeeff"
@@ -7387,7 +7387,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The fraction of time the app was stalled. Only applies to React Native. This is computed by Relay.
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     """
@@ -7397,7 +7397,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay.
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     """
@@ -7407,7 +7407,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The type of state management library
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "redux"
@@ -7418,7 +7418,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Current “managed” thread ID.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: 56
@@ -7429,7 +7429,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Current thread name.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "main"
@@ -7440,7 +7440,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The log tag provided by the timber logging framework.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "MyTag"
@@ -7451,7 +7451,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The duration of time to full display in milliseconds
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: app.vitals.ttfd.value
@@ -7466,7 +7466,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The duration of time to initial display in milliseconds
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: app.vitals.ttid.value
@@ -7479,7 +7479,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The sentry transaction (segment name).
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: sentry.segment.name, sentry.transaction
@@ -7492,7 +7492,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The path of the tRPC procedure being called
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "user.getById"
@@ -7503,7 +7503,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The type of the tRPC procedure
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "query"
@@ -7514,7 +7514,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The time it takes for the server to process the initial request and send the first byte of a response to the user's browser
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: browser.web_vital.ttfb.request_time
@@ -7527,7 +7527,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The value of the recorded Time To First Byte (TTFB) web vital in milliseconds
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: browser.web_vital.ttfb.value
@@ -7540,7 +7540,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """More granular type of the operation happening.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "fetch"
@@ -7551,7 +7551,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the associated component.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "HomeButton"
@@ -7562,7 +7562,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether the span execution contributed to the TTFD (time to fully drawn) metric.
 
     Type: bool
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: true
@@ -7573,7 +7573,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether the span execution contributed to the TTID (time to initial display) metric.
 
     Type: bool
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: true
@@ -7584,7 +7584,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The height of the UI element (for Html in pixels)
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 256
@@ -7595,7 +7595,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The id of the UI element
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "btn-login"
@@ -7606,7 +7606,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The identifier used to measure the UI element timing
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "heroImage"
@@ -7617,7 +7617,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The loading time of a UI element (from time origin to finished loading)
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 998.2234
@@ -7628,7 +7628,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The type of element paint. Can either be 'image-paint' or 'text-paint'
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "image-paint"
@@ -7639,7 +7639,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The rendering time of the UI element (from time origin to finished rendering)
 
     Type: float
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 1023.1124
@@ -7650,7 +7650,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """type of the UI element
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "img"
@@ -7661,7 +7661,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The URL of the UI element (e.g. an img src)
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     Example: "https://assets.myapp.com/hero.png"
@@ -7672,7 +7672,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The width of the UI element (for HTML in pixels)
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 512
@@ -7683,7 +7683,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: "example.com"
@@ -7694,7 +7694,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The fragments present in the URI. Note that this does not contain the leading # character, while the `http.fragment` attribute does.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     Example: "details"
@@ -7705,7 +7705,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The URL of the resource that was fetched.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     Aliases: http.url, url
@@ -7717,7 +7717,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The URI path component.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     Example: "/foo"
@@ -7730,7 +7730,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     Has Dynamic Suffix: true
@@ -7743,7 +7743,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Server port number.
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Example: 1337
@@ -7754,7 +7754,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The query string present in the URL. Note that this does not contain the leading ? character, while the `http.query` attribute does.
 
     Type: str
-    Contains PII: true - Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.
+    Apply Scrubbing: auto - Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.
     Defined in OTEL: Yes
     Visibility: public
     Example: "foo=bar&bar=baz"
@@ -7765,7 +7765,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The URI scheme component identifying the used protocol.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: http.scheme
@@ -7777,7 +7777,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The low-cardinality template of an absolute path reference.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: http.route
@@ -7789,7 +7789,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The URL of the resource that was fetched.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     Aliases: url.full, http.url
@@ -7802,7 +7802,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """User email address.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     Aliases: sentry.user.email
@@ -7814,7 +7814,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """User's full name.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     Example: "John Smith"
@@ -7825,7 +7825,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Human readable city name.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: sentry.user.geo.city
@@ -7837,7 +7837,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Two-letter country code (ISO 3166-1 alpha-2).
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: sentry.user.geo.country_code
@@ -7849,7 +7849,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Human readable region name or code.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: sentry.user.geo.region
@@ -7861,7 +7861,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Human readable subdivision name.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: sentry.user.geo.subdivision
@@ -7873,7 +7873,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Unique user hash to correlate information for a user in anonymized form.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     Example: "8ae4c2993e0f4f3b8b2d1b1f3b5e8f4d"
@@ -7884,7 +7884,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Unique identifier of the user.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     Aliases: sentry.user.id
@@ -7896,7 +7896,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The IP address of the user.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     Aliases: sentry.user.ip
@@ -7908,7 +7908,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Short name or login/username of the user.
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     Aliases: sentry.user.username
@@ -7920,7 +7920,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Array of user roles at the time of the event.
 
     Type: List[str]
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     Example: ["admin","editor"]
@@ -7931,7 +7931,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Value of the HTTP User-Agent header sent by the client.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: http.user_agent
@@ -7943,7 +7943,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Git branch name for Vercel project
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "main"
@@ -7954,7 +7954,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Identifier for the Vercel build (only present on build logs)
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "bld_cotnkcr76"
@@ -7965,7 +7965,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Identifier for the Vercel deployment
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "dpl_233NRGRjVZX1caZrXWtz5g1TAksD"
@@ -7976,7 +7976,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Origin of the external content in Vercel (only on external logs)
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "https://vitals.vercel-insights.com/v1"
@@ -7987,7 +7987,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Type of edge runtime in Vercel
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "edge-function"
@@ -7998,7 +7998,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Entrypoint for the request in Vercel
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "api/index.js"
@@ -8011,7 +8011,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Region where the request is executed
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "sfo1"
@@ -8022,7 +8022,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Unique identifier for the log entry in Vercel
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "1573817187330377061717300000"
@@ -8033,7 +8033,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """JA3 fingerprint digest of Vercel request
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     Example: "769,47-53-5-10-49161-49162-49171-49172-50-56-19-4,0-10-11,23-24-25,0"
@@ -8044,7 +8044,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """JA4 fingerprint digest
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     Example: "t13d1516h2_8daaf6152771_02713d6af862"
@@ -8055,7 +8055,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Vercel log output type
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "stdout"
@@ -8066,7 +8066,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Function or dynamic path of the request in Vercel.
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "/dynamic/[route].json"
@@ -8077,7 +8077,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Identifier for the Vercel project
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "gdufoJxB6b9b1fEqr1jUtFkyavUU"
@@ -8088,7 +8088,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Name of the Vercel project
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "my-app"
@@ -8099,7 +8099,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Original request ID when request is served from cache
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "pdx1::v8g4b-1744143786684-93dafbc0f70d"
@@ -8110,7 +8110,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Client IP address
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     Example: "120.75.16.101"
@@ -8121,7 +8121,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Hostname of the request
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "test.vercel.app"
@@ -8134,7 +8134,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Region where lambda function executed
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "sfo1"
@@ -8145,7 +8145,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """HTTP method of the request
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "GET"
@@ -8156,7 +8156,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Request path with query parameters
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     Example: "/dynamic/some-value.json?route=some-value"
@@ -8167,7 +8167,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """How the request was served based on its path and project configuration
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "func"
@@ -8180,7 +8180,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Variant of the path type
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "api"
@@ -8191,7 +8191,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Referer of the request
 
     Type: str
-    Contains PII: true
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     Example: "*.vercel.app"
@@ -8202,7 +8202,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Region where the request is processed
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "sfo1"
@@ -8215,7 +8215,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Size of the response in bytes
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 1024
@@ -8226,7 +8226,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Protocol of the request
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "https"
@@ -8239,7 +8239,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """HTTP status code of the proxy request
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 200
@@ -8250,7 +8250,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Unix timestamp when the proxy request was made
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 1573817250172
@@ -8263,7 +8263,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """User agent strings of the request
 
     Type: List[str]
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: ["Mozilla/5.0..."]
@@ -8276,7 +8276,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Cache status sent to the browser
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "REVALIDATED"
@@ -8287,7 +8287,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Vercel-specific identifier
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "sfo1::abc123"
@@ -8300,7 +8300,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Action taken by firewall rules
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "deny"
@@ -8313,7 +8313,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """ID of the firewall rule that matched
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "rule_gAHz8jtSB1Gy"
@@ -8324,7 +8324,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Identifier of the Vercel request
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "643af4e3-975a-4cc7-9e7a-1eda11539d90"
@@ -8335,7 +8335,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Origin of the Vercel log (build, edge, lambda, static, external, or firewall)
 
     Type: str
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "build"
@@ -8346,7 +8346,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """HTTP status code of the request (-1 means no response returned and the lambda crashed)
 
     Type: int
-    Contains PII: maybe
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 200
@@ -8357,7 +8357,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.citations": AttributeMetadata(
         brief="References or sources cited by the AI model in its response.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=["Citation 1", "Citation 2"],
@@ -8370,7 +8370,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.completion_tokens.used": AttributeMetadata(
         brief="The number of tokens used to respond to the message.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=10,
@@ -8387,7 +8387,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.documents": AttributeMetadata(
         brief="Documents or content chunks used as context for the AI model.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=["document1.txt", "document2.pdf"],
@@ -8400,7 +8400,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.finish_reason": AttributeMetadata(
         brief="The reason why the model stopped generating.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="COMPLETE",
@@ -8416,7 +8416,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.frequency_penalty": AttributeMetadata(
         brief="Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=0.5,
@@ -8433,7 +8433,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.function_call": AttributeMetadata(
         brief="For an AI model call, the function that was called. This is deprecated for OpenAI, and replaced by tool_calls",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="function_name",
@@ -8448,7 +8448,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.generation_id": AttributeMetadata(
         brief="Unique identifier for the completion.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="gen_123abc",
@@ -8463,7 +8463,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.input_messages": AttributeMetadata(
         brief="The input messages sent to the model",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example='[{"role": "user", "message": "hello"}]',
@@ -8479,7 +8479,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.is_search_required": AttributeMetadata(
         brief="Boolean indicating if the model needs to perform a search.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=False,
@@ -8492,7 +8492,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.metadata": AttributeMetadata(
         brief="Extra metadata passed to an AI pipeline step.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example='{"user_id": 123, "session_id": "abc123"}',
@@ -8505,7 +8505,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.model.provider": AttributeMetadata(
         brief="The provider of the model.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="openai",
@@ -8521,7 +8521,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.model_id": AttributeMetadata(
         brief="The vendor-specific ID of the model used.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="gpt-4",
@@ -8537,7 +8537,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.pipeline.name": AttributeMetadata(
         brief="The name of the AI pipeline.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="Autofix Pipeline",
@@ -8552,7 +8552,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.preamble": AttributeMetadata(
         brief="For an AI model call, the preamble parameter. Preambles are a part of the prompt used to adjust the model's overall behavior and conversation style.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="You are now a clown.",
@@ -8568,7 +8568,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.presence_penalty": AttributeMetadata(
         brief="Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=0.5,
@@ -8585,7 +8585,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.prompt_tokens.used": AttributeMetadata(
         brief="The number of tokens used to process just the prompt.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=20,
@@ -8602,7 +8602,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.raw_prompting": AttributeMetadata(
         brief="When enabled, the user’s prompt will be sent to the model without any pre-processing.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=True,
@@ -8615,7 +8615,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.response_format": AttributeMetadata(
         brief="For an AI model call, the format of the response",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="json_object",
@@ -8628,7 +8628,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.responses": AttributeMetadata(
         brief="The response messages sent back by the AI model.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=["hello", "world"],
@@ -8643,7 +8643,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.search_queries": AttributeMetadata(
         brief="Queries used to search for relevant context or documents.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=["climate change effects", "renewable energy"],
@@ -8656,7 +8656,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.search_results": AttributeMetadata(
         brief="Results returned from search queries for context.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=["search_result_1, search_result_2"],
@@ -8669,7 +8669,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.seed": AttributeMetadata(
         brief="The seed, ideally models given the same seed and same other parameters will produce the exact same output.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="1234567890",
@@ -8684,7 +8684,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.streaming": AttributeMetadata(
         brief="Whether the request was streamed back.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=True,
@@ -8700,7 +8700,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.tags": AttributeMetadata(
         brief="Tags that describe an AI pipeline step.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example='{"executed_function": "add_integers"}',
@@ -8713,7 +8713,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.temperature": AttributeMetadata(
         brief="For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=0.1,
@@ -8729,7 +8729,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.texts": AttributeMetadata(
         brief="Raw text inputs provided to the model.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=["Hello, how are you?", "What is the capital of France?"],
@@ -8745,7 +8745,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.tool_calls": AttributeMetadata(
         brief="For an AI model call, the tool calls that were made.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=["tool_call_1", "tool_call_2"],
@@ -8759,7 +8759,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.tools": AttributeMetadata(
         brief="For an AI model call, the functions that are available",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=["function_1", "function_2"],
@@ -8773,7 +8773,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.top_k": AttributeMetadata(
         brief="Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=35,
@@ -8789,7 +8789,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.top_p": AttributeMetadata(
         brief="Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=0.7,
@@ -8805,7 +8805,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.total_cost": AttributeMetadata(
         brief="The total cost for the tokens used.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=12.34,
@@ -8822,7 +8822,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.total_tokens.used": AttributeMetadata(
         brief="The total number of tokens used to process the prompt.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=30,
@@ -8839,7 +8839,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.warnings": AttributeMetadata(
         brief="Warning messages generated during model execution.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=["Token limit exceeded"],
@@ -8852,7 +8852,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "angular.version": AttributeMetadata(
         brief="The version of the Angular framework",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="17.1.0",
@@ -8867,7 +8867,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.app_build": AttributeMetadata(
         brief="Internal build identifier, as it appears on the platform.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="1",
@@ -8888,7 +8888,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.app_identifier": AttributeMetadata(
         brief="Version-independent application identifier, often a dotted bundle ID.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="com.example.myapp",
@@ -8909,7 +8909,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.app_name": AttributeMetadata(
         brief="Human readable application name, as it appears on the platform.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="My App",
@@ -8930,7 +8930,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.app_start_time": AttributeMetadata(
         brief="Formatted UTC timestamp when the user started the application.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="2025-01-01T00:00:00.000Z",
@@ -8951,7 +8951,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.app_version": AttributeMetadata(
         brief="Human readable application version, as it appears on the platform.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="1.0.0",
@@ -8972,7 +8972,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.build": AttributeMetadata(
         brief="Internal build identifier, as it appears on the platform.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="1",
@@ -8986,7 +8986,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.identifier": AttributeMetadata(
         brief="Version-independent application identifier, often a dotted bundle ID.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="com.example.myapp",
@@ -9000,7 +9000,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.in_foreground": AttributeMetadata(
         brief="Whether the application is currently in the foreground.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=True,
@@ -9015,7 +9015,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.name": AttributeMetadata(
         brief="Human readable application name, as it appears on the platform.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="My App",
@@ -9029,7 +9029,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.start_time": AttributeMetadata(
         brief="Formatted UTC timestamp when the user started the application.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="2025-01-01T00:00:00.000Z",
@@ -9043,7 +9043,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.version": AttributeMetadata(
         brief="Human readable application version, as it appears on the platform.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="1.0.0",
@@ -9057,7 +9057,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.vitals.frames.delay.value": AttributeMetadata(
         brief="The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=5,
@@ -9073,7 +9073,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.vitals.frames.frozen.count": AttributeMetadata(
         brief="The number of frozen frames rendered during the lifetime of the span.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=3,
@@ -9089,7 +9089,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.vitals.frames.slow.count": AttributeMetadata(
         brief="The number of slow frames rendered during the lifetime of the span.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1,
@@ -9105,7 +9105,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.vitals.frames.total.count": AttributeMetadata(
         brief="The number of total frames rendered during the lifetime of the span.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=60,
@@ -9121,7 +9121,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.vitals.start.cold.value": AttributeMetadata(
         brief="The duration of a cold app start in milliseconds",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1234.56,
@@ -9137,7 +9137,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.vitals.start.prewarmed": AttributeMetadata(
         brief="Whether the app start was prewarmed.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=True,
@@ -9152,7 +9152,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.vitals.start.reason": AttributeMetadata(
         brief="The reason that triggered the app start.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="push",
@@ -9167,7 +9167,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.vitals.start.screen": AttributeMetadata(
         brief="The screen that is rendered when the app start is complete. This is the screen the user first sees and can interact with after launch. The absence of this attribute on the app start span indicates a background app start where no UI was rendered.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="MainActivity",
@@ -9182,7 +9182,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.vitals.start.type": AttributeMetadata(
         brief="The type of app start, for example `cold` or `warm`",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="cold",
@@ -9198,7 +9198,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.vitals.start.warm.value": AttributeMetadata(
         brief="The duration of a warm app start in milliseconds",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1234.56,
@@ -9214,7 +9214,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.vitals.ttfd.value": AttributeMetadata(
         brief="The duration of time to full display in milliseconds",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1234.56,
@@ -9230,7 +9230,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.vitals.ttid.value": AttributeMetadata(
         brief="The duration of time to initial display in milliseconds",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1234.56,
@@ -9246,7 +9246,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app_start_cold": AttributeMetadata(
         brief="The duration of a cold app start in milliseconds",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1234.56,
@@ -9267,7 +9267,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app_start_type": AttributeMetadata(
         brief="Mobile app start variant. Either cold or warm.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="cold",
@@ -9290,7 +9290,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app_start_warm": AttributeMetadata(
         brief="The duration of a warm app start in milliseconds",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1234.56,
@@ -9311,7 +9311,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "art.gc.blocking_count": AttributeMetadata(
         brief="Total number of blocking (stop-the-world) garbage collections performed by the Android Runtime",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1,
@@ -9326,7 +9326,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "art.gc.blocking_time": AttributeMetadata(
         brief="Total time spent in blocking (stop-the-world) garbage collections by the Android Runtime, in milliseconds",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=11.873,
@@ -9341,7 +9341,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "art.gc.pre_oome_count": AttributeMetadata(
         brief="Total number of garbage collections triggered as a last resort before an OutOfMemoryError by the Android Runtime",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=0,
@@ -9356,7 +9356,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "art.gc.total_count": AttributeMetadata(
         brief="Total number of garbage collections performed by the Android Runtime",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1,
@@ -9371,7 +9371,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "art.gc.total_time": AttributeMetadata(
         brief="Total time spent in garbage collection by the Android Runtime, in milliseconds",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=11.807,
@@ -9386,7 +9386,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "art.gc.waiting_time": AttributeMetadata(
         brief="Total time threads spent waiting for garbage collection to complete in the Android Runtime, in milliseconds",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=8.054,
@@ -9401,7 +9401,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "art.memory.free": AttributeMetadata(
         brief="Free memory available to the process as reported by the Android Runtime, in bytes",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=3181568,
@@ -9416,7 +9416,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "art.memory.free_until_gc": AttributeMetadata(
         brief="Free memory available before a garbage collection would be triggered by the Android Runtime, in bytes",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=3181568,
@@ -9431,7 +9431,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "art.memory.free_until_oome": AttributeMetadata(
         brief="Free memory available before an OutOfMemoryError would be thrown by the Android Runtime, in bytes",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=196083712,
@@ -9446,7 +9446,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "art.memory.max": AttributeMetadata(
         brief="Maximum memory the process is allowed to use as reported by the Android Runtime, in bytes",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=201326592,
@@ -9461,7 +9461,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "art.memory.total": AttributeMetadata(
         brief="Total memory currently allocated to the process by the Android Runtime, in bytes",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=7774208,
@@ -9476,7 +9476,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.cloudwatch.logs.log_group": AttributeMetadata(
         brief="The name of the CloudWatch Logs log group",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="/aws/lambda/my-function",
@@ -9491,7 +9491,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.cloudwatch.logs.log_stream": AttributeMetadata(
         brief="The name of the CloudWatch Logs log stream",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="2024/01/01/[$LATEST]abcdef1234567890",
@@ -9506,7 +9506,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.cloudwatch.logs.url": AttributeMetadata(
         brief="The URL to the CloudWatch Logs log group",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups/log-group/my-log-group",
@@ -9521,7 +9521,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.lambda.aws_request_id": AttributeMetadata(
         brief="The AWS request ID as received by the Lambda function runtime",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="8476a536-e9f4-11e8-9739-2dfe598c3fcd",
@@ -9547,7 +9547,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.lambda.execution_duration_in_millis": AttributeMetadata(
         brief="The execution duration of the Lambda function invocation in milliseconds",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1234.56,
@@ -9562,7 +9562,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.lambda.function_name": AttributeMetadata(
         brief="The name of the Lambda function",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="my-function",
@@ -9588,7 +9588,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.lambda.function_version": AttributeMetadata(
         brief="The version of the Lambda function",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="$LATEST",
@@ -9614,7 +9614,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.lambda.invoked_arn": AttributeMetadata(
         brief="The full ARN of the Lambda function that was invoked",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="arn:aws:lambda:us-east-1:123456789012:function:my-function",
@@ -9626,7 +9626,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.lambda.invoked_function_arn": AttributeMetadata(
         brief="The full ARN of the Lambda function that was invoked",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="arn:aws:lambda:us-east-1:123456789012:function:my-function",
@@ -9652,7 +9652,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.lambda.remaining_time_in_millis": AttributeMetadata(
         brief="The remaining time in milliseconds before the Lambda function times out",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=5000,
@@ -9667,7 +9667,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.log.group.names": AttributeMetadata(
         brief="The name(s) of the AWS log group(s) an application is writing to.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=["/aws/lambda/my-function", "opentelemetry-service"],
@@ -9678,7 +9678,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.log.stream.names": AttributeMetadata(
         brief="The name(s) of the AWS log stream(s) an application is writing to.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=["logs/main/10838bed-421f-43ef-870a-f43feacbbb5b"],
@@ -9689,7 +9689,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "blocked_main_thread": AttributeMetadata(
         brief="Whether the main thread was blocked by the span.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=True,
@@ -9700,7 +9700,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.name": AttributeMetadata(
         brief="The name of the browser.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="Chrome",
@@ -9713,7 +9713,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.performance.navigation.activation_start": AttributeMetadata(
         brief="The time between initiating a navigation to a page and the browser activating the page",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1.983,
@@ -9729,7 +9729,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.performance.time_origin": AttributeMetadata(
         brief="The browser's performance.timeOrigin timestamp representing the time when the pageload was initiated",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1776185678.886,
@@ -9745,7 +9745,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.report.type": AttributeMetadata(
         brief="A browser report sent via reporting API..",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="network-error",
@@ -9756,7 +9756,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.script.invoker": AttributeMetadata(
         brief="How a script was called in the browser.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="Window.requestAnimationFrame",
@@ -9768,7 +9768,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.script.invoker_type": AttributeMetadata(
         brief="Browser script entry point type.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="event-listener",
@@ -9780,7 +9780,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.script.source_char_position": AttributeMetadata(
         brief="A number representing the script character position of the script.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=678,
@@ -9792,7 +9792,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.version": AttributeMetadata(
         brief="The version of the browser.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="120.0.6099.130",
@@ -9804,7 +9804,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.web_vital.cls.report_event": AttributeMetadata(
         brief="The event that caused the SDK to report CLS (pagehide or navigation)",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="navigation",
@@ -9819,7 +9819,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.web_vital.cls.source.<key>": AttributeMetadata(
         brief="The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
@@ -9832,7 +9832,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.web_vital.cls.value": AttributeMetadata(
         brief="The value of the recorded Cumulative Layout Shift (CLS) web vital",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=0.2361,
@@ -9848,7 +9848,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.web_vital.fcp.value": AttributeMetadata(
         brief="The time it takes for the browser to render the first piece of meaningful content on the screen",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=547.6951,
@@ -9860,7 +9860,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.web_vital.fp.value": AttributeMetadata(
         brief="The time in milliseconds it takes for the browser to render the first pixel on the screen",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=477.1926,
@@ -9872,7 +9872,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.web_vital.inp.value": AttributeMetadata(
         brief="The value of the recorded Interaction to Next Paint (INP) web vital",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=200,
@@ -9888,7 +9888,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.web_vital.lcp.element": AttributeMetadata(
         brief="The HTML element selector or component name for which LCP was reported",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="body > div#app > div#container > div",
@@ -9900,7 +9900,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.web_vital.lcp.id": AttributeMetadata(
         brief="The id of the dom element responsible for the largest contentful paint",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="#gero",
@@ -9912,7 +9912,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.web_vital.lcp.load_time": AttributeMetadata(
         brief="The time it took for the LCP element to be loaded",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1402,
@@ -9924,7 +9924,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.web_vital.lcp.render_time": AttributeMetadata(
         brief="The time it took for the LCP element to be rendered",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1685,
@@ -9936,7 +9936,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.web_vital.lcp.report_event": AttributeMetadata(
         brief="The event that caused the SDK to report LCP (pagehide or navigation)",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="pagehide",
@@ -9951,7 +9951,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.web_vital.lcp.size": AttributeMetadata(
         brief="The size of the largest contentful paint element",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1024,
@@ -9963,7 +9963,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.web_vital.lcp.url": AttributeMetadata(
         brief="The url of the dom element responsible for the largest contentful paint",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="https://example.com/static/img.png",
@@ -9975,7 +9975,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.web_vital.lcp.value": AttributeMetadata(
         brief="The value of the recorded Largest Contentful Paint (LCP) web vital",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=2500,
@@ -9991,7 +9991,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.web_vital.ttfb.request_time": AttributeMetadata(
         brief="The time it takes for the server to process the initial request and send the first byte of a response to the user's browser",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1554.5814,
@@ -10003,7 +10003,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.web_vital.ttfb.value": AttributeMetadata(
         brief="The value of the recorded Time To First Byte (TTFB) web vital in Milliseconds",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=194.3322,
@@ -10015,7 +10015,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cache.hit": AttributeMetadata(
         brief="If the cache was hit during this span.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=True,
@@ -10026,7 +10026,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cache.item_size": AttributeMetadata(
         brief="The size of the requested item in the cache. In bytes.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=58,
@@ -10038,7 +10038,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cache.key": AttributeMetadata(
         brief="The key of the cache accessed.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=["my-cache-key", "my-other-cache-key"],
@@ -10049,7 +10049,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cache.operation": AttributeMetadata(
         brief="The operation being performed on the cache.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="get",
@@ -10061,7 +10061,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cache.ttl": AttributeMetadata(
         brief="The ttl of the cache in seconds",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=120,
@@ -10073,7 +10073,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cache.write": AttributeMetadata(
         brief="If the cache operation resulted in a write to the cache.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=True,
@@ -10084,7 +10084,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "channel": AttributeMetadata(
         brief="The channel name that is being used.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="mail",
@@ -10096,7 +10096,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "client.address": AttributeMetadata(
         brief="Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="example.com",
@@ -10109,7 +10109,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "client.port": AttributeMetadata(
         brief="Client port number.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=5432,
@@ -10121,7 +10121,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloud.account.id": AttributeMetadata(
         brief="The cloud account ID the resource is assigned to",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="123456789012",
@@ -10136,7 +10136,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloud.availability_zone": AttributeMetadata(
         brief="Cloud regions often have multiple, isolated locations known as zones to increase availability",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="us-east-1c",
@@ -10151,7 +10151,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloud.platform": AttributeMetadata(
         brief="The cloud platform in use",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="aws_lambda",
@@ -10164,7 +10164,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloud.provider": AttributeMetadata(
         brief="Name of the cloud provider",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="aws",
@@ -10177,7 +10177,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloud.region": AttributeMetadata(
         brief="The geographical region the resource is running",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="us-east-1",
@@ -10190,7 +10190,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloud.resource_id": AttributeMetadata(
         brief="Cloud provider-specific native identifier of the monitored cloud resource",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="arn:aws:lambda:REGION:ACCOUNT_ID:function:my-function",
@@ -10204,7 +10204,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.d1.duration": AttributeMetadata(
         brief="The duration of a Cloudflare D1 operation.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=543,
@@ -10216,7 +10216,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.d1.query_type": AttributeMetadata(
         brief="The type of query executed in a Cloudflare D1 operation",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="run",
@@ -10235,7 +10235,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.d1.rows_read": AttributeMetadata(
         brief="The number of rows read in a Cloudflare D1 operation.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=12,
@@ -10247,7 +10247,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.d1.rows_written": AttributeMetadata(
         brief="The number of rows written in a Cloudflare D1 operation.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=12,
@@ -10259,7 +10259,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.r2.bucket": AttributeMetadata(
         brief="The name of the Cloudflare R2 bucket binding",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="MY_BUCKET",
@@ -10274,7 +10274,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.r2.operation": AttributeMetadata(
         brief="The R2 API operation being performed",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="GetObject",
@@ -10289,7 +10289,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.r2.request.delimiter": AttributeMetadata(
         brief="The delimiter used to group objects in an R2 list operation",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="/",
@@ -10304,7 +10304,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.r2.request.key": AttributeMetadata(
         brief="The object key used in the R2 operation",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="my-file.txt",
@@ -10319,7 +10319,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.r2.request.part_number": AttributeMetadata(
         brief="The part number in a multipart upload operation",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1,
@@ -10334,7 +10334,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.r2.request.prefix": AttributeMetadata(
         brief="The prefix used to filter objects in an R2 list operation",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="images/",
@@ -10349,7 +10349,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.workflow.attempt": AttributeMetadata(
         brief="The current attempt number for a Cloudflare Workflow step",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1,
@@ -10364,7 +10364,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.workflow.retries.backoff": AttributeMetadata(
         brief="The backoff strategy for Cloudflare Workflow step retries",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="exponential",
@@ -10379,7 +10379,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.workflow.retries.delay": AttributeMetadata(
         brief="The delay between Cloudflare Workflow step retries",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="5 seconds",
@@ -10394,7 +10394,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.workflow.retries.limit": AttributeMetadata(
         brief="The maximum number of retries for a Cloudflare Workflow step",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=3,
@@ -10409,7 +10409,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.workflow.timeout": AttributeMetadata(
         brief="The timeout duration for a Cloudflare Workflow step",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="1 minute",
@@ -10424,7 +10424,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cls.source.<key>": AttributeMetadata(
         brief="The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
@@ -10442,7 +10442,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cls": AttributeMetadata(
         brief="The value of the recorded Cumulative Layout Shift (CLS) web vital",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=0.2361,
@@ -10463,7 +10463,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "code.file.path": AttributeMetadata(
         brief="The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="/app/myapplication/http/handler/server.py",
@@ -10475,7 +10475,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "code.filepath": AttributeMetadata(
         brief="The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="/app/myapplication/http/handler/server.py",
@@ -10489,7 +10489,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "code.function": AttributeMetadata(
         brief="The method or function name, or equivalent (usually rightmost part of the code unit's name).",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="server_request",
@@ -10502,7 +10502,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "code.function.name": AttributeMetadata(
         brief="The method or function fully-qualified name without arguments.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="server_request",
@@ -10515,7 +10515,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "code.line.number": AttributeMetadata(
         brief="The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=42,
@@ -10528,7 +10528,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "code.lineno": AttributeMetadata(
         brief="The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=42,
@@ -10543,7 +10543,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "code.namespace": AttributeMetadata(
         brief="The 'namespace' within which code.function is defined. Usually the qualified class or module name, such that code.namespace + some separator + code.function form a unique identifier for the code unit.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="http.handler",
@@ -10555,7 +10555,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "connection.rtt": AttributeMetadata(
         brief="Specifies the estimated effective round-trip time of the current connection, in milliseconds.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=100,
@@ -10576,7 +10576,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "connectionType": AttributeMetadata(
         brief="Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="wifi",
@@ -10597,7 +10597,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "culture.calendar": AttributeMetadata(
         brief="The calendar system used by the culture.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="GregorianCalendar",
@@ -10608,7 +10608,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "culture.display_name": AttributeMetadata(
         brief="Human readable name of the culture.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="English (United States)",
@@ -10619,7 +10619,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "culture.is_24_hour_format": AttributeMetadata(
         brief="Whether the culture uses 24-hour time format.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=True,
@@ -10630,7 +10630,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "culture.locale": AttributeMetadata(
         brief="The locale identifier following RFC 4646.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="en-US",
@@ -10641,7 +10641,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "culture.timezone": AttributeMetadata(
         brief="The timezone of the culture, as a geographic timezone identifier.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="Europe/Vienna",
@@ -10652,7 +10652,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.collection.name": AttributeMetadata(
         brief="The name of a collection (table, container) within the database.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="users",
@@ -10664,7 +10664,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.driver.name": AttributeMetadata(
         brief="The name of the driver used for the database connection.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="psycopg2",
@@ -10677,7 +10677,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.name": AttributeMetadata(
         brief="The name of the database being accessed.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="customers",
@@ -10691,7 +10691,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.namespace": AttributeMetadata(
         brief="The name of the database being accessed.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="customers",
@@ -10704,7 +10704,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.operation": AttributeMetadata(
         brief="The name of the operation being executed.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="SELECT",
@@ -10721,7 +10721,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.operation.batch.size": AttributeMetadata(
         brief="The number of queries included in a batch operation. Operations are only considered batches when they contain two or more operations, and so db.operation.batch.size SHOULD never be 1.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=3,
@@ -10736,7 +10736,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.operation.name": AttributeMetadata(
         brief="The name of the operation being executed.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="SELECT",
@@ -10749,7 +10749,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.query.parameter.<key>": AttributeMetadata(
         brief="A query parameter used in db.query.text, with <key> being the parameter name, and the attribute value being a string representation of the parameter value.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
@@ -10761,7 +10761,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.query.summary": AttributeMetadata(
         brief="A shortened representation of operation(s) in the full query. This attribute must be low-cardinality and should only contain the operation table names.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="SELECT users;",
@@ -10774,7 +10774,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.query.text": AttributeMetadata(
         brief="The database parameterized query being executed. Any parameter values (filters, insertion values, etc) should be replaced with parameter placeholders. If applicable, use `db.query.parameter.<key>` to add the parameter value.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="SELECT * FROM users WHERE id = $1",
@@ -10788,7 +10788,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.redis.connection": AttributeMetadata(
         brief="The redis connection name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="my-redis-instance",
@@ -10800,7 +10800,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.redis.key": AttributeMetadata(
         brief="The key the Redis command is operating on.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="user:2047:city",
@@ -10813,7 +10813,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.redis.parameters": AttributeMetadata(
         brief="The array of command parameters given to a redis command.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=["test", "*"],
@@ -10824,7 +10824,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.sql.bindings": AttributeMetadata(
         brief="The array of query bindings.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=["1", "foo"],
@@ -10840,7 +10840,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.statement": AttributeMetadata(
         brief="The database statement being executed.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="SELECT * FROM users",
@@ -10857,7 +10857,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.stored_procedure.name": AttributeMetadata(
         brief="The name of a stored procedure being called.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="GetUserById",
@@ -10868,7 +10868,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.system": AttributeMetadata(
         brief="An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="postgresql",
@@ -10885,7 +10885,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.system.name": AttributeMetadata(
         brief="An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="postgresql",
@@ -10898,7 +10898,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.user": AttributeMetadata(
         brief="The database user.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="fancy_user",
@@ -10909,7 +10909,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.archs": AttributeMetadata(
         brief="The CPU architectures of the device.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=["arm64-v8a", "armeabi-v7a", "armeabi"],
@@ -10922,7 +10922,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.battery_level": AttributeMetadata(
         brief="The battery level of the device as a percentage (0-100).",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=100,
@@ -10937,7 +10937,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.battery_temperature": AttributeMetadata(
         brief="The battery temperature of the device in Celsius.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=25,
@@ -10952,7 +10952,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.boot_time": AttributeMetadata(
         brief="A formatted UTC timestamp when the system was booted.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="2018-02-08T12:52:12Z",
@@ -10967,7 +10967,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.brand": AttributeMetadata(
         brief="The brand of the device.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="Apple",
@@ -10978,7 +10978,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.charging": AttributeMetadata(
         brief="Whether the device was charging or not.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=False,
@@ -10993,7 +10993,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.chipset": AttributeMetadata(
         brief="The chipset of the device.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="Qualcomm SM8550",
@@ -11006,7 +11006,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.class": AttributeMetadata(
         brief="The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="medium",
@@ -11019,7 +11019,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.connection_type": AttributeMetadata(
         brief="The internet connection type currently being used by the device.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="wifi",
@@ -11040,7 +11040,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.cpu_description": AttributeMetadata(
         brief="A description of the CPU of the device.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="Intel(R) Core(TM)2 Quad CPU Q6600 @ 2.40GHz",
@@ -11055,7 +11055,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.external_free_storage": AttributeMetadata(
         brief="External storage free size in bytes.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=67108864000,
@@ -11070,7 +11070,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.external_storage_size": AttributeMetadata(
         brief="External storage total size in bytes.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=134217728000,
@@ -11085,7 +11085,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.family": AttributeMetadata(
         brief="The family of the device.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="iPhone",
@@ -11096,7 +11096,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.free_memory": AttributeMetadata(
         brief="Free system memory in bytes.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=2147483648,
@@ -11111,7 +11111,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.free_storage": AttributeMetadata(
         brief="Free device storage in bytes.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=107374182400,
@@ -11126,7 +11126,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.id": AttributeMetadata(
         brief="Unique device identifier.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="a1b2c3d4-e5f6-7890-abcd-ef1234567890",
@@ -11139,7 +11139,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.locale": AttributeMetadata(
         brief="The locale of the device.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="en-US",
@@ -11152,7 +11152,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.low_memory": AttributeMetadata(
         brief="Whether the device was low on memory.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=False,
@@ -11167,7 +11167,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.low_power_mode": AttributeMetadata(
         brief="Whether the device is in Low Power Mode.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=True,
@@ -11182,7 +11182,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.manufacturer": AttributeMetadata(
         brief="The manufacturer of the device.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="Google",
@@ -11197,7 +11197,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.memory.estimated_capacity": AttributeMetadata(
         brief="The estimated total memory capacity of the device, only a rough estimation in gigabytes. Browsers report estimations in buckets of powers of 2, mostly capped at 8 GB",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=8,
@@ -11213,7 +11213,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.memory_size": AttributeMetadata(
         brief="Total system memory available in bytes.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=17179869184,
@@ -11228,7 +11228,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.model": AttributeMetadata(
         brief="The model of the device.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="iPhone 15 Pro Max",
@@ -11239,7 +11239,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.model_id": AttributeMetadata(
         brief="An internal hardware revision to identify the device exactly.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="N861AP",
@@ -11254,7 +11254,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.name": AttributeMetadata(
         brief="The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="localhost",
@@ -11267,7 +11267,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.online": AttributeMetadata(
         brief="Whether the device was online or not.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=True,
@@ -11280,7 +11280,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.orientation": AttributeMetadata(
         brief='The orientation of the device, either "portrait" or "landscape".',
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="portrait",
@@ -11295,7 +11295,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.processor_count": AttributeMetadata(
         brief='Number of "logical processors".',
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=8,
@@ -11311,7 +11311,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.processor_frequency": AttributeMetadata(
         brief="Processor frequency in MHz.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=2400,
@@ -11326,7 +11326,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.screen_density": AttributeMetadata(
         brief="The screen density of the device.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=2.625,
@@ -11341,7 +11341,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.screen_dpi": AttributeMetadata(
         brief="The screen density in dots-per-inch (DPI) of the device.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=420,
@@ -11356,7 +11356,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.screen_height_pixels": AttributeMetadata(
         brief="The height of the device screen in pixels.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=2400,
@@ -11371,7 +11371,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.screen_width_pixels": AttributeMetadata(
         brief="The width of the device screen in pixels.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1080,
@@ -11386,7 +11386,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.simulator": AttributeMetadata(
         brief="Whether the device is a simulator or an actual device.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=False,
@@ -11401,7 +11401,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.storage_size": AttributeMetadata(
         brief="Total device storage in bytes.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=274877906944,
@@ -11416,7 +11416,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.thermal_state": AttributeMetadata(
         brief="The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum: `nominal`, `fair`, `serious`, or `critical`.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="nominal",
@@ -11431,7 +11431,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.timezone": AttributeMetadata(
         brief="The timezone of the device.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="Europe/Vienna",
@@ -11446,7 +11446,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.usable_memory": AttributeMetadata(
         brief="Memory usable for the app in bytes.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=2147483648,
@@ -11461,7 +11461,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "deviceMemory": AttributeMetadata(
         brief="The estimated total memory capacity of the device, only a rough estimation in gigabytes.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="8 GB",
@@ -11482,7 +11482,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "effectiveConnectionType": AttributeMetadata(
         brief="Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="4g",
@@ -11503,7 +11503,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "environment": AttributeMetadata(
         brief="The sentry environment.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="production",
@@ -11517,7 +11517,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "error.type": AttributeMetadata(
         brief="Describes a class of error the operation ended with.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="timeout",
@@ -11529,7 +11529,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "event.id": AttributeMetadata(
         brief="The unique identifier for this event (log record)",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1234567890,
@@ -11540,7 +11540,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "event.name": AttributeMetadata(
         brief="The name that uniquely identifies this event (log record)",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="Process Payload",
@@ -11551,7 +11551,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "exception.escaped": AttributeMetadata(
         brief="SHOULD be set to true if the exception event is recorded at a point where it is known that the exception is escaping the scope of the span.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=True,
@@ -11562,7 +11562,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "exception.message": AttributeMetadata(
         brief="The error message.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="ENOENT: no such file or directory",
@@ -11574,7 +11574,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "exception.stacktrace": AttributeMetadata(
         brief="A stacktrace as a string in the natural representation for the language runtime. The representation is to be determined and documented by each language SIG.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example='Exception in thread "main" java.lang.RuntimeException: Test exception\n at com.example.GenerateTrace.methodB(GenerateTrace.java:13)\n at com.example.GenerateTrace.methodA(GenerateTrace.java:9)\n at com.example.GenerateTrace.main(GenerateTrace.java:5)',
@@ -11586,7 +11586,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "exception.type": AttributeMetadata(
         brief="The type of the exception (its fully-qualified class name, if applicable). The dynamic type of the exception should be preferred over the static type in languages that support it.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="OSError",
@@ -11598,7 +11598,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "faas.coldstart": AttributeMetadata(
         brief="A boolean that is true if the serverless function is executed for the first time (aka cold-start).",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=True,
@@ -11609,7 +11609,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "faas.cron": AttributeMetadata(
         brief="A string containing the schedule period as Cron Expression.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="0/5 * * * ? *",
@@ -11621,7 +11621,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "faas.duration_in_ms": AttributeMetadata(
         brief="The duration a function took to run, in milliseconds.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=120,
@@ -11632,7 +11632,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "faas.entry_point": AttributeMetadata(
         brief="The code that's run when the cloud provider invokes your function.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="my_main_function",
@@ -11643,7 +11643,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "faas.identity": AttributeMetadata(
         brief="The Service Account (GCP), IAM Execution Role (AWS), or Managed Identity (Azure) used by the serverless function when interacting with other cloud services",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="name@project.iam.gserviceaccount.com (GCP), arn:aws:iam::123456789012:role/role-name (AWS), 00000000-0000-0000-0000-000000000000 (Azure)",
@@ -11654,7 +11654,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "faas.invocation_id": AttributeMetadata(
         brief="The invocation ID of the current function invocation.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="af9d5aa4-a685-4c5f-a22b-444f80b3cc28",
@@ -11666,7 +11666,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "faas.name": AttributeMetadata(
         brief="The name of the serverless function",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="my_function",
@@ -11678,7 +11678,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "faas.time": AttributeMetadata(
         brief="A string containing the function invocation time in the ISO 8601 format expressed in UTC.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="2020-01-23T13:47:06Z",
@@ -11690,7 +11690,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "faas.trigger": AttributeMetadata(
         brief="Type of the trigger which caused this function invocation.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="timer",
@@ -11702,7 +11702,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "faas.version": AttributeMetadata(
         brief="The version of the function that was invoked",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="$LATEST",
@@ -11714,7 +11714,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "fcp": AttributeMetadata(
         brief="The time it takes for the browser to render the first piece of meaningful content on the screen",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=547.6951,
@@ -11731,7 +11731,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "flag.evaluation.<key>": AttributeMetadata(
         brief="An instance of a feature flag evaluation. The value of this attribute is the boolean representing the evaluation result. The <key> suffix is the name of the feature flag.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
@@ -11743,7 +11743,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "fp": AttributeMetadata(
         brief="The time it takes for the browser to render the first pixel on the screen",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=477.1926,
@@ -11760,7 +11760,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "frames.delay": AttributeMetadata(
         brief="The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=5,
@@ -11783,7 +11783,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "frames.frozen": AttributeMetadata(
         brief="The number of frozen frames rendered during the lifetime of the span.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=3,
@@ -11806,7 +11806,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "frames.slow": AttributeMetadata(
         brief="The number of slow frames rendered during the lifetime of the span.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1,
@@ -11829,7 +11829,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "frames.total": AttributeMetadata(
         brief="The number of total frames rendered during the lifetime of the span.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=60,
@@ -11852,7 +11852,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "frames_frozen_rate": AttributeMetadata(
         brief="The rate of frozen frames, or `app_vitals.frames.frozen.count` divided by `app_vitals.frames.total.count`. This is computed by Relay.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         changelog=[
@@ -11866,7 +11866,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "frames_slow_rate": AttributeMetadata(
         brief="The rate of slow frames, or `app_vitals.frames.slow.count` divided by `app_vitals.frames.total.count`. This is computed by Relay.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         changelog=[
@@ -11880,7 +11880,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "fs_error": AttributeMetadata(
         brief="The error message of a file system error.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="ENOENT: no such file or directory",
@@ -11896,7 +11896,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gcp.function.context.event_id": AttributeMetadata(
         brief="The event ID from the legacy GCP Cloud Function context (1st gen)",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="1234567890",
@@ -11911,7 +11911,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gcp.function.context.event_type": AttributeMetadata(
         brief="The type of the GCP Cloud Function event",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="google.pubsub.topic.publish",
@@ -11926,7 +11926,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gcp.function.context.id": AttributeMetadata(
         brief="The unique event ID from the GCP CloudEvents context (2nd gen Cloud Functions)",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="1234567890",
@@ -11941,7 +11941,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gcp.function.context.resource": AttributeMetadata(
         brief="The resource that triggered the GCP Cloud Function event",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="projects/my-project/topics/my-topic",
@@ -11956,7 +11956,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gcp.function.context.source": AttributeMetadata(
         brief="The source of the GCP Cloud Function event",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="//pubsub.googleapis.com/projects/my-project/topics/my-topic",
@@ -11971,7 +11971,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gcp.function.context.specversion": AttributeMetadata(
         brief="The CloudEvents specification version of the GCP Cloud Function event",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="1.0",
@@ -11986,7 +11986,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gcp.function.context.time": AttributeMetadata(
         brief="The timestamp of the GCP Cloud Function event",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="2024-01-01T00:00:00.000Z",
@@ -12001,7 +12001,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gcp.function.context.timestamp": AttributeMetadata(
         brief="The legacy timestamp of the GCP Cloud Function event",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="2024-01-01T00:00:00.000Z",
@@ -12016,7 +12016,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gcp.function.context.type": AttributeMetadata(
         brief="The type of the GCP Cloud Function event context",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="cloud_functions.context",
@@ -12031,7 +12031,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gcp.project.id": AttributeMetadata(
         brief="The ID of the project in GCP that this resource is associated with",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="my-project-123",
@@ -12042,7 +12042,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.agent.name": AttributeMetadata(
         brief="The name of the agent being used.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="ResearchAssistant",
@@ -12053,7 +12053,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.context.utilization": AttributeMetadata(
         brief="The fraction of the model context window utilized by this generation.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=0.75,
@@ -12068,7 +12068,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.context.window_size": AttributeMetadata(
         brief="The maximum context window size supported by the model for this generation.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=128000,
@@ -12083,7 +12083,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.conversation.id": AttributeMetadata(
         brief="The unique identifier for a conversation (session, thread), used to store and correlate messages within this conversation.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="conv_5j66UpCpwteGg4YSxUnt7lPY",
@@ -12094,7 +12094,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.cost.input_tokens": AttributeMetadata(
         brief="The cost of tokens used to process the AI input (prompt) in USD (without cached input tokens).",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=123.45,
@@ -12114,7 +12114,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.cost.output_tokens": AttributeMetadata(
         brief="The cost of tokens used for creating the AI output in USD (without reasoning tokens).",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=123.45,
@@ -12134,7 +12134,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.cost.total_tokens": AttributeMetadata(
         brief="The total cost for the tokens used.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=12.34,
@@ -12155,7 +12155,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.embeddings.input": AttributeMetadata(
         brief="The input to the embeddings model.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="What's the weather in Paris?",
@@ -12166,7 +12166,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.function_id": AttributeMetadata(
         brief="Framework-specific tracing label for the execution of a function or other unit of execution in a generative AI system.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="my-awesome-function",
@@ -12181,7 +12181,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.input.messages": AttributeMetadata(
         brief='The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.',
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example='[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
@@ -12194,7 +12194,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.operation.name": AttributeMetadata(
         brief="The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'embeddings', 'execute_tool', 'generate_content', 'invoke_agent', 'text_completion'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="chat",
@@ -12206,7 +12206,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.operation.type": AttributeMetadata(
         brief="The type of AI operation. Must be one of 'agent' (invoke_agent and create_agent spans), 'ai_client' (any LLM call), 'tool' (execute_tool spans), 'handoff' (handoff spans), 'other' (input and output processors, skill loading, guardrails etc.) . Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="tool",
@@ -12218,7 +12218,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.output.messages": AttributeMetadata(
         brief="The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example='[{"role": "assistant", "parts": [{"type": "text", "content": "The weather in Paris is currently rainy with a temperature of 57°F."}], "finish_reason": "stop"}]',
@@ -12229,7 +12229,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.pipeline.name": AttributeMetadata(
         brief="Name of the AI pipeline or chain being executed.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="Autofix Pipeline",
@@ -12241,7 +12241,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.prompt": AttributeMetadata(
         brief="The input messages sent to the model",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example='[{"role": "user", "message": "hello"}]',
@@ -12256,8 +12256,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.prompt.name": AttributeMetadata(
         brief="The name of the prompt that uniquely identifies it.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE,
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.MANUAL,
             reason="Prompt names may reveal user behavior patterns or sensitive operations",
         ),
         is_in_otel=True,
@@ -12275,7 +12275,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.provider.name": AttributeMetadata(
         brief="The Generative AI provider as identified by the client or server instrumentation.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="openai",
@@ -12287,7 +12287,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.request.available_tools": AttributeMetadata(
         brief="The available tools for the model. It has to be a stringified version of an array of objects.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example='[{"name": "get_weather", "description": "Get the weather for a given location"}, {"name": "get_news", "description": "Get the news for a given topic"}]',
@@ -12302,7 +12302,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.request.frequency_penalty": AttributeMetadata(
         brief="Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=0.5,
@@ -12315,7 +12315,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.request.max_tokens": AttributeMetadata(
         brief="The maximum number of tokens to generate in the response.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=2048,
@@ -12327,7 +12327,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.request.messages": AttributeMetadata(
         brief='The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.',
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example='[{"role": "system", "content": "Generate a random number."}, {"role": "user", "content": [{"text": "Generate a random number between 0 and 10.", "type": "text"}]}, {"role": "tool", "content": {"toolCallId": "1", "toolName": "Weather", "output": "rainy"}}]',
@@ -12343,7 +12343,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.request.model": AttributeMetadata(
         brief="The model identifier being used for the request.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="gpt-4-turbo-preview",
@@ -12354,7 +12354,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.request.presence_penalty": AttributeMetadata(
         brief="Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=0.5,
@@ -12367,7 +12367,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.request.seed": AttributeMetadata(
         brief="The seed, ideally models given the same seed and same other parameters will produce the exact same output.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="1234567890",
@@ -12379,7 +12379,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.request.temperature": AttributeMetadata(
         brief="For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=0.1,
@@ -12392,7 +12392,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.request.top_k": AttributeMetadata(
         brief="Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=35,
@@ -12405,7 +12405,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.request.top_p": AttributeMetadata(
         brief="Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=0.7,
@@ -12418,7 +12418,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.response.finish_reasons": AttributeMetadata(
         brief="The reason why the model stopped generating.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="COMPLETE",
@@ -12430,7 +12430,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.response.id": AttributeMetadata(
         brief="Unique identifier for the completion.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="gen_123abc",
@@ -12442,7 +12442,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.response.model": AttributeMetadata(
         brief="The vendor-specific ID of the model used.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="gpt-4",
@@ -12455,7 +12455,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.response.streaming": AttributeMetadata(
         brief="Whether or not the AI model call's response was streamed back asynchronously",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=True,
@@ -12467,7 +12467,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.response.text": AttributeMetadata(
         brief="The model's response text messages. It has to be a stringified version of an array of response text messages.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example='["The weather in Paris is rainy and overcast, with temperatures around 57°F", "The weather in London is sunny and warm, with temperatures around 65°F"]',
@@ -12482,7 +12482,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.response.time_to_first_chunk": AttributeMetadata(
         brief="Time in seconds when the first response content chunk arrived in streaming responses.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=0.6853435,
@@ -12498,7 +12498,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.response.time_to_first_token": AttributeMetadata(
         brief="Time in seconds when the first response content chunk arrived in streaming responses.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=0.6853435,
@@ -12519,7 +12519,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.response.tokens_per_second": AttributeMetadata(
         brief="The total output tokens per seconds throughput",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=12345.67,
@@ -12531,7 +12531,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.response.tool_calls": AttributeMetadata(
         brief="The tool calls in the model's response. It has to be a stringified version of an array of objects.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example='[{"name": "get_weather", "arguments": {"location": "Paris"}}]',
@@ -12546,7 +12546,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.system": AttributeMetadata(
         brief="The provider of the model.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="openai",
@@ -12562,7 +12562,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.system.message": AttributeMetadata(
         brief="The system instructions passed to the model.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="You are a helpful assistant",
@@ -12577,7 +12577,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.system_instructions": AttributeMetadata(
         brief="The system instructions passed to the model.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="You are a helpful assistant",
@@ -12590,7 +12590,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.tool.call.arguments": AttributeMetadata(
         brief="The arguments of the tool call. It has to be a stringified version of the arguments to the tool.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example='{"location": "Paris"}',
@@ -12603,7 +12603,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.tool.call.result": AttributeMetadata(
         brief="The result of the tool call. It has to be a stringified version of the result of the tool.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="rainy, 57°F",
@@ -12620,7 +12620,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.tool.definitions": AttributeMetadata(
         brief="The list of source system tool definitions available to the GenAI agent or model.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example='[{"type": "function", "name": "get_current_weather", "description": "Get the current weather in a given location", "parameters": {"type": "object", "properties": {"location": {"type": "string", "description": "The city and state, e.g. San Francisco, CA"}, "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]}}, "required": ["location", "unit"]}}]',
@@ -12631,7 +12631,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.tool.description": AttributeMetadata(
         brief="The description of the tool being used.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="Searches the web for current information about a topic",
@@ -12642,7 +12642,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.tool.input": AttributeMetadata(
         brief="The input of the tool being used. It has to be a stringified version of the input to the tool.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example='{"location": "Paris"}',
@@ -12658,7 +12658,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.tool.message": AttributeMetadata(
         brief="The response from a tool or function call passed to the model.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="rainy, 57°F",
@@ -12678,7 +12678,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.tool.name": AttributeMetadata(
         brief="Name of the tool utilized by the agent.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="Flights",
@@ -12690,7 +12690,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.tool.output": AttributeMetadata(
         brief="The output of the tool being used. It has to be a stringified version of the output of the tool.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="rainy, 57°F",
@@ -12710,7 +12710,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.tool.type": AttributeMetadata(
         brief="The type of tool being used.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="function",
@@ -12724,7 +12724,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.usage.cache_creation.input_tokens": AttributeMetadata(
         brief="The number of tokens written to the cache when processing the AI input (prompt).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=100,
@@ -12743,7 +12743,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.usage.cache_read.input_tokens": AttributeMetadata(
         brief="The number of cached tokens used to process the AI input (prompt).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=50,
@@ -12763,7 +12763,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.usage.completion_tokens": AttributeMetadata(
         brief="The number of tokens used in the GenAI response (completion).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=10,
@@ -12786,7 +12786,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.usage.input_tokens": AttributeMetadata(
         brief="The number of tokens used to process the AI input (prompt) including cached input tokens.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=10,
@@ -12813,7 +12813,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.usage.input_tokens.cache_write": AttributeMetadata(
         brief="The number of tokens written to the cache when processing the AI input (prompt).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=100,
@@ -12840,7 +12840,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.usage.input_tokens.cached": AttributeMetadata(
         brief="The number of cached tokens used to process the AI input (prompt).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=50,
@@ -12869,7 +12869,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.usage.output_tokens": AttributeMetadata(
         brief="The number of tokens used for creating the AI output (including reasoning tokens).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=10,
@@ -12896,7 +12896,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.usage.output_tokens.reasoning": AttributeMetadata(
         brief="The number of tokens used for reasoning to create the AI output.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=75,
@@ -12925,7 +12925,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.usage.prompt_tokens": AttributeMetadata(
         brief="The number of tokens used in the GenAI input (prompt).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=20,
@@ -12948,7 +12948,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.usage.reasoning.output_tokens": AttributeMetadata(
         brief="The number of tokens used for reasoning to create the AI output.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=75,
@@ -12968,7 +12968,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.usage.total_tokens": AttributeMetadata(
         brief="The total number of tokens used to process the prompt. (input tokens plus output todkens)",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=20,
@@ -12988,8 +12988,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "graphql.document": AttributeMetadata(
         brief="The GraphQL document being executed.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.TRUE,
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
             reason="The document may contain sensitive information in arguments or variables. Instrumentation should redact sensitive information when possible.",
         ),
         is_in_otel=True,
@@ -13005,7 +13005,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "graphql.operation.name": AttributeMetadata(
         brief="The name of the operation being executed.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="findBookById",
@@ -13017,7 +13017,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "graphql.operation.type": AttributeMetadata(
         brief="The type of the operation being executed.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="query",
@@ -13029,7 +13029,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "hardwareConcurrency": AttributeMetadata(
         brief="The number of logical CPU cores available.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="14",
@@ -13050,7 +13050,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.client_ip": AttributeMetadata(
         brief="Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="example.com",
@@ -13064,7 +13064,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.decoded_response_content_length": AttributeMetadata(
         brief="The decoded body size of the response (in bytes).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=456,
@@ -13076,7 +13076,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.flavor": AttributeMetadata(
         brief="The actual version of the protocol used for network communication.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="1.1",
@@ -13090,7 +13090,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.fragment": AttributeMetadata(
         brief="The fragments present in the URI. Note that this contains the leading # character, while the `url.fragment` attribute does not.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="#details",
@@ -13101,7 +13101,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.host": AttributeMetadata(
         brief="The domain name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="example.com",
@@ -13123,7 +13123,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.method": AttributeMetadata(
         brief="The HTTP method used.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="GET",
@@ -13139,8 +13139,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.query": AttributeMetadata(
         brief="The query string present in the URL. Note that this contains the leading ? character, while the `url.query` attribute does not.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.TRUE,
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
             reason="Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.",
         ),
         is_in_otel=False,
@@ -13153,7 +13153,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.body.data": AttributeMetadata(
         brief="HTTP request body data. Can be given as string or structural data of any format.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example='[{"role": "user", "message": "hello"}]',
@@ -13168,7 +13168,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.connect_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the user agent starts establishing the connection to the server to retrieve the resource.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1732829555.111,
@@ -13181,7 +13181,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.connection_end": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately after the browser finishes establishing the connection to the server to retrieve the resource. The timestamp value includes the time interval to establish the transport connection, as well as other time intervals such as TLS handshake and SOCKS authentication.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1732829555.15,
@@ -13194,7 +13194,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.domain_lookup_end": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately after the browser finishes the domain-name lookup for the resource.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1732829555.201,
@@ -13207,7 +13207,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.domain_lookup_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the browser starts the domain name lookup for the resource.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1732829555.322,
@@ -13220,7 +13220,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.fetch_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the browser starts to fetch the resource.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1732829555.389,
@@ -13233,7 +13233,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.header.<key>": AttributeMetadata(
         brief="HTTP request headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
@@ -13246,7 +13246,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.method": AttributeMetadata(
         brief="The HTTP method used.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="GET",
@@ -13259,7 +13259,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.redirect_end": AttributeMetadata(
         brief="The UNIX timestamp representing the timestamp immediately after receiving the last byte of the response of the last redirect",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1732829558.502,
@@ -13271,7 +13271,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.redirect_start": AttributeMetadata(
         brief="The UNIX timestamp representing the start time of the fetch which that initiates the redirect.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1732829555.495,
@@ -13284,7 +13284,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.request_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1732829555.51,
@@ -13297,7 +13297,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.resend_count": AttributeMetadata(
         brief="The ordinal number of request resending attempt (for any reason, including redirects).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=2,
@@ -13309,7 +13309,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.response_end": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately after the browser receives the last byte of the resource or immediately before the transport connection is closed, whichever comes first.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1732829555.89,
@@ -13322,7 +13322,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.response_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1732829555.7,
@@ -13335,7 +13335,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.secure_connection_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the browser starts the handshake process to secure the current connection. If a secure connection is not used, the property returns zero.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1732829555.73,
@@ -13348,7 +13348,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.time_to_first_byte": AttributeMetadata(
         brief="The time in seconds from the browser's timeorigin to when the first byte of the request's response was received. See https://web.dev/articles/ttfb#measure-resource-requests",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1.032,
@@ -13360,7 +13360,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.worker_start": AttributeMetadata(
         brief="The UNIX timestamp representing the timestamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1732829553.68,
@@ -13372,7 +13372,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request_method": AttributeMetadata(
         brief="The HTTP method used.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="GET",
@@ -13391,7 +13391,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.response.body.size": AttributeMetadata(
         brief="The encoded body size of the response (in bytes).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=123,
@@ -13405,7 +13405,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.response.header.<key>": AttributeMetadata(
         brief="HTTP response headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
@@ -13418,7 +13418,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.response.header.content-length": AttributeMetadata(
         brief="The size of the message body sent to the recipient (in bytes)",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="http.response.header.custom-header=['foo', 'bar']",
@@ -13431,7 +13431,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.response.size": AttributeMetadata(
         brief="The transfer size of the response (in bytes).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=456,
@@ -13444,7 +13444,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.response.status_code": AttributeMetadata(
         brief="The status code of the HTTP response.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=404,
@@ -13457,7 +13457,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.response_content_length": AttributeMetadata(
         brief="The encoded body size of the response (in bytes).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=123,
@@ -13474,7 +13474,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.response_transfer_size": AttributeMetadata(
         brief="The transfer size of the response (in bytes).",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=456,
@@ -13491,7 +13491,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.route": AttributeMetadata(
         brief="The matched route, that is, the path template in the format used by the respective server framework.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="/users/:id",
@@ -13504,7 +13504,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.scheme": AttributeMetadata(
         brief="The URI scheme component identifying the used protocol.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="https",
@@ -13518,7 +13518,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.server.request.time_in_queue": AttributeMetadata(
         brief="The time in milliseconds the request spent in the server queue before processing began. Measured from the X-Request-Start header set by reverse proxies (e.g., Nginx, HAProxy, Heroku) to when the application started handling the request.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=50,
@@ -13529,7 +13529,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.server_name": AttributeMetadata(
         brief="The server domain name",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="example.com",
@@ -13543,7 +13543,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.status_code": AttributeMetadata(
         brief="The status code of the HTTP response.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=404,
@@ -13558,7 +13558,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.target": AttributeMetadata(
         brief="The pathname and query string of the URL.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="/test?foo=bar#buzz",
@@ -13574,7 +13574,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.url": AttributeMetadata(
         brief="The URL of the resource that was fetched.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="https://example.com/test?foo=bar#buzz",
@@ -13588,7 +13588,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.user_agent": AttributeMetadata(
         brief="Value of the HTTP User-Agent header sent by the client.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1",
@@ -13602,7 +13602,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "id": AttributeMetadata(
         brief="A unique identifier for the span.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="f47ac10b58cc4372a5670e02b2c3d479",
@@ -13613,7 +13613,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "inp": AttributeMetadata(
         brief="The value of the recorded Interaction to Next Paint (INP) web vital",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=200,
@@ -13634,7 +13634,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "jsonrpc.protocol.version": AttributeMetadata(
         brief="The version of the JSON-RPC protocol used.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="2.0",
@@ -13649,7 +13649,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "jsonrpc.request.id": AttributeMetadata(
         brief="The JSON-RPC request identifier. Unique within the session.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="1",
@@ -13665,7 +13665,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "jvm.gc.action": AttributeMetadata(
         brief="Name of the garbage collector action.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="end of minor GC",
@@ -13677,7 +13677,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "jvm.gc.name": AttributeMetadata(
         brief="Name of the garbage collector.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="G1 Young Generation",
@@ -13689,7 +13689,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "jvm.memory.pool.name": AttributeMetadata(
         brief="Name of the memory pool.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="G1 Old Gen",
@@ -13701,7 +13701,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "jvm.memory.type": AttributeMetadata(
         brief="Name of the memory pool.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="G1 Old Gen",
@@ -13713,7 +13713,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "jvm.thread.daemon": AttributeMetadata(
         brief="Whether the thread is daemon or not.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=True,
@@ -13724,7 +13724,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "jvm.thread.state": AttributeMetadata(
         brief="State of the thread.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="blocked",
@@ -13736,7 +13736,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "lcp.element": AttributeMetadata(
         brief="The dom element responsible for the largest contentful paint.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="img",
@@ -13755,7 +13755,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "lcp.id": AttributeMetadata(
         brief="The id of the dom element responsible for the largest contentful paint.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="#hero",
@@ -13774,7 +13774,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "lcp.loadTime": AttributeMetadata(
         brief="The time it took for the LCP element to be loaded",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1402,
@@ -13791,7 +13791,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "lcp.renderTime": AttributeMetadata(
         brief="The time it took for the LCP element to be rendered",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1685,
@@ -13808,7 +13808,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "lcp.size": AttributeMetadata(
         brief="The size of the largest contentful paint element.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1234,
@@ -13827,7 +13827,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "lcp.url": AttributeMetadata(
         brief="The url of the dom element responsible for the largest contentful paint.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="https://example.com",
@@ -13846,7 +13846,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "lcp": AttributeMetadata(
         brief="The value of the recorded Largest Contentful Paint (LCP) web vital",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=2500,
@@ -13867,7 +13867,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "logger.name": AttributeMetadata(
         brief="The name of the logger that generated this event.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="myLogger",
@@ -13879,8 +13879,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.cancelled.reason": AttributeMetadata(
         brief="Reason for the cancellation of an MCP operation.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE,
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.MANUAL,
             reason="Cancellation reasons may contain user-specific or sensitive information",
         ),
         is_in_otel=False,
@@ -13893,7 +13893,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.cancelled.request_id": AttributeMetadata(
         brief="Request ID of the cancelled MCP operation.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="123",
@@ -13904,7 +13904,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.client.name": AttributeMetadata(
         brief="Name of the MCP client application.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="claude-desktop",
@@ -13915,8 +13915,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.client.title": AttributeMetadata(
         brief="Display title of the MCP client application.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE,
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.MANUAL,
             reason="Client titles may reveal user-specific application configurations or custom setups",
         ),
         is_in_otel=False,
@@ -13929,7 +13929,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.client.version": AttributeMetadata(
         brief="Version of the MCP client application.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="1.0.0",
@@ -13940,7 +13940,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.lifecycle.phase": AttributeMetadata(
         brief="Lifecycle phase indicator for MCP operations.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="initialization_complete",
@@ -13951,7 +13951,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.logging.data_type": AttributeMetadata(
         brief="Data type of the logged message content.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="string",
@@ -13962,7 +13962,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.logging.level": AttributeMetadata(
         brief="Log level for MCP logging operations.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="info",
@@ -13973,8 +13973,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.logging.logger": AttributeMetadata(
         brief="Logger name for MCP logging operations.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE,
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.MANUAL,
             reason="Logger names may be user-defined and could contain sensitive information",
         ),
         is_in_otel=False,
@@ -13987,7 +13987,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.logging.message": AttributeMetadata(
         brief="Log message content from MCP logging operations.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE, reason="Log messages can contain user data"),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO, reason="Log messages can contain user data"
+        ),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="Tool execution completed successfully",
@@ -13998,7 +14000,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.method.name": AttributeMetadata(
         brief="The name of the MCP request or notification method being called.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="tools/call",
@@ -14014,7 +14016,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.progress.current": AttributeMetadata(
         brief="Current progress value of an MCP operation.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=50,
@@ -14026,8 +14028,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.progress.message": AttributeMetadata(
         brief="Progress message describing the current state of an MCP operation.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE,
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.MANUAL,
             reason="Progress messages may contain user-specific or sensitive information",
         ),
         is_in_otel=False,
@@ -14040,7 +14042,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.progress.percentage": AttributeMetadata(
         brief="Calculated progress percentage of an MCP operation. Computed from current/total * 100.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=50,
@@ -14052,7 +14054,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.progress.token": AttributeMetadata(
         brief="Token for tracking progress of an MCP operation.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="progress-token-123",
@@ -14063,7 +14065,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.progress.total": AttributeMetadata(
         brief="Total progress target value of an MCP operation.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=100,
@@ -14075,8 +14077,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.prompt.name": AttributeMetadata(
         brief="Name of the MCP prompt template being used.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE,
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.MANUAL,
             reason="Prompt names may reveal user behavior patterns or sensitive operations",
         ),
         is_in_otel=False,
@@ -14100,7 +14102,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.prompt.result.description": AttributeMetadata(
         brief="Description of the prompt result.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="A summary of the requested information",
@@ -14111,7 +14113,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.prompt.result.message_content": AttributeMetadata(
         brief="Content of the message in the prompt result. Used for single message results only.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="Please provide a summary of the document",
@@ -14122,7 +14124,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.prompt.result.message_count": AttributeMetadata(
         brief="Number of messages in the prompt result.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=3,
@@ -14134,7 +14136,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.prompt.result.message_role": AttributeMetadata(
         brief="Role of the message in the prompt result. Used for single message results only.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="user",
@@ -14145,7 +14147,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.protocol.ready": AttributeMetadata(
         brief="Protocol readiness indicator for MCP session. Non-zero value indicates the protocol is ready.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1,
@@ -14157,7 +14159,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.protocol.version": AttributeMetadata(
         brief="MCP protocol version used in the session.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="2024-11-05",
@@ -14173,7 +14175,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.request.argument.<key>": AttributeMetadata(
         brief="MCP request argument with dynamic key suffix. The <key> is replaced with the actual argument name. The value is a JSON-stringified representation of the argument value.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE, reason="Arguments contain user input"),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO, reason="Arguments contain user input"
+        ),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
@@ -14185,7 +14189,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.request.argument.name": AttributeMetadata(
         brief="Name argument from prompts/get MCP request.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE, reason="Prompt names can contain user input"),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO, reason="Prompt names can contain user input"
+        ),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="summarize",
@@ -14196,7 +14202,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.request.argument.uri": AttributeMetadata(
         brief="URI argument from resources/read MCP request.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE, reason="URIs can contain user file paths"),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO, reason="URIs can contain user file paths"
+        ),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="file:///path/to/resource",
@@ -14207,7 +14215,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.request.id": AttributeMetadata(
         brief="JSON-RPC request identifier for the MCP request. Unique within the MCP session.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="1",
@@ -14229,7 +14237,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.resource.protocol": AttributeMetadata(
         brief="Protocol of the resource URI being accessed, extracted from the URI.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="file",
@@ -14251,7 +14259,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.resource.uri": AttributeMetadata(
         brief="The resource URI being accessed in an MCP operation.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE, reason="URIs can contain sensitive file paths"),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO, reason="URIs can contain sensitive file paths"
+        ),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="file:///path/to/file.txt",
@@ -14267,7 +14277,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.server.name": AttributeMetadata(
         brief="Name of the MCP server application.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="sentry-mcp-server",
@@ -14278,8 +14288,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.server.title": AttributeMetadata(
         brief="Display title of the MCP server application.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.MAYBE,
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.MANUAL,
             reason="Server titles may reveal user-specific application configurations or custom setups",
         ),
         is_in_otel=False,
@@ -14292,7 +14302,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.server.version": AttributeMetadata(
         brief="Version of the MCP server application.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="0.1.0",
@@ -14303,7 +14313,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.session.id": AttributeMetadata(
         brief="Identifier for the MCP session.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="550e8400-e29b-41d4-a716-446655440000",
@@ -14319,7 +14329,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.tool.name": AttributeMetadata(
         brief="Name of the MCP tool being called.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="calculator",
@@ -14341,7 +14351,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.tool.result.content": AttributeMetadata(
         brief="The content of the tool result.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE, reason="Tool results can contain user data"),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO, reason="Tool results can contain user data"
+        ),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example='{"output": "rainy", "toolCallId": "1"}',
@@ -14368,7 +14380,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.tool.result.content_count": AttributeMetadata(
         brief="Number of content items in the tool result.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1,
@@ -14380,7 +14392,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.tool.result.is_error": AttributeMetadata(
         brief="Whether a tool execution resulted in an error.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=False,
@@ -14400,7 +14412,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.transport": AttributeMetadata(
         brief="Transport method used for MCP communication.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="stdio",
@@ -14422,7 +14434,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mdc.<key>": AttributeMetadata(
         brief="Attributes from the Mapped Diagnostic Context (MDC) present at the moment the log record was created. The MDC is supported by all the most popular logging solutions in the Java ecosystem, and it's usually implemented as a thread-local map that stores context for e.g. a specific request.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
@@ -14434,7 +14446,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.batch.message_count": AttributeMetadata(
         brief="The number of messages sent, received, or processed in the scope of the batching operation.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=10,
@@ -14449,7 +14461,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.destination.connection": AttributeMetadata(
         brief="The message destination connection.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="BestTopic",
@@ -14461,7 +14473,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.destination.name": AttributeMetadata(
         brief="The message destination name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="BestTopic",
@@ -14473,7 +14485,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.message.body.size": AttributeMetadata(
         brief="The size of the message body in bytes.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=839,
@@ -14485,7 +14497,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.message.envelope.size": AttributeMetadata(
         brief="The size of the message body and metadata in bytes.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=1045,
@@ -14497,7 +14509,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.message.id": AttributeMetadata(
         brief="A value used by the messaging system as an identifier for the message, represented as a string.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="f47ac10b58cc4372a5670e02b2c3d479",
@@ -14509,7 +14521,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.message.receive.latency": AttributeMetadata(
         brief="The latency between when the message was published and received.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1732847252,
@@ -14521,7 +14533,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.message.retry.count": AttributeMetadata(
         brief="The amount of attempts to send the message.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=2,
@@ -14533,7 +14545,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.operation.name": AttributeMetadata(
         brief="The name of the messaging operation being performed",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="send",
@@ -14548,7 +14560,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.operation.type": AttributeMetadata(
         brief="A string identifying the type of the messaging operation",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="create",
@@ -14559,7 +14571,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.system": AttributeMetadata(
         brief="The messaging system as identified by the client instrumentation.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="activemq",
@@ -14571,7 +14583,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "method": AttributeMetadata(
         brief="The HTTP method used.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="GET",
@@ -14585,7 +14597,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "middleware.name": AttributeMetadata(
         brief="The name of the middleware.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="AuthenticationMiddleware",
@@ -14600,7 +14612,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "navigation.type": AttributeMetadata(
         brief="The type of navigation done by a client-side router.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="router.push",
@@ -14612,7 +14624,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "nel.elapsed_time": AttributeMetadata(
         brief="The elapsed number of milliseconds between the start of the resource fetch and when it was completed or aborted by the user agent.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=100,
@@ -14624,7 +14636,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "nel.phase": AttributeMetadata(
         brief='If request failed, the phase of its network error. If request succeeded, "application".',
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="application",
@@ -14635,7 +14647,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "nel.referrer": AttributeMetadata(
         brief="request's referrer, as determined by the referrer policy associated with its client.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="https://example.com/foo?bar=baz",
@@ -14646,7 +14658,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "nel.sampling_function": AttributeMetadata(
         brief="The sampling function used to determine if the request should be sampled.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=0.5,
@@ -14658,7 +14670,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "nel.type": AttributeMetadata(
         brief='If request failed, the type of its network error. If request succeeded, "ok".',
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="dns.unreachable",
@@ -14669,7 +14681,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.host.ip": AttributeMetadata(
         brief="Local address of the network connection - IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="192.168.0.1",
@@ -14683,7 +14695,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.host.name": AttributeMetadata(
         brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="example.com",
@@ -14697,7 +14709,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.host.port": AttributeMetadata(
         brief="Server port number.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=1337,
@@ -14712,7 +14724,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.peer.ip": AttributeMetadata(
         brief="Peer address of the network connection - IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="192.168.0.1",
@@ -14726,7 +14738,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.peer.name": AttributeMetadata(
         brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="example.com",
@@ -14742,7 +14754,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.peer.port": AttributeMetadata(
         brief="Peer port number.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=1337,
@@ -14759,7 +14771,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.protocol.name": AttributeMetadata(
         brief="OSI application layer or non-OSI equivalent.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="http",
@@ -14773,7 +14785,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.protocol.version": AttributeMetadata(
         brief="The actual version of the protocol used for network communication.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="1.1",
@@ -14787,7 +14799,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.sock.family": AttributeMetadata(
         brief="OSI transport and network layer",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="inet",
@@ -14803,7 +14815,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.sock.host.addr": AttributeMetadata(
         brief="Local address of the network connection mapping to Unix domain socket name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="/var/my.sock",
@@ -14817,7 +14829,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.sock.host.port": AttributeMetadata(
         brief="Local port number of the network connection.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=8080,
@@ -14832,7 +14844,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.sock.peer.addr": AttributeMetadata(
         brief="Peer address of the network connection - IP address",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="192.168.0.1",
@@ -14846,7 +14858,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.sock.peer.name": AttributeMetadata(
         brief="Peer address of the network connection - Unix domain socket name",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="/var/my.sock",
@@ -14861,7 +14873,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.sock.peer.port": AttributeMetadata(
         brief="Peer port number of the network connection.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=8080,
@@ -14875,7 +14887,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.transport": AttributeMetadata(
         brief="OSI transport layer or inter-process communication method.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="tcp",
@@ -14889,7 +14901,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "network.connection.effective_type": AttributeMetadata(
         brief="Specifies the effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="4g",
@@ -14905,7 +14917,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "network.connection.rtt": AttributeMetadata(
         brief="Specifies the estimated effective round-trip time of the current connection, in milliseconds.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=100,
@@ -14921,7 +14933,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "network.connection.type": AttributeMetadata(
         brief="Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="wifi",
@@ -14937,7 +14949,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "network.local.address": AttributeMetadata(
         brief="Local address of the network connection - IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="10.1.2.80",
@@ -14950,7 +14962,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "network.local.port": AttributeMetadata(
         brief="Local port number of the network connection.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=65400,
@@ -14963,7 +14975,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "network.peer.address": AttributeMetadata(
         brief="Peer address of the network connection - IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="10.1.2.80",
@@ -14976,7 +14988,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "network.peer.port": AttributeMetadata(
         brief="Peer port number of the network connection.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=65400,
@@ -14988,7 +15000,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "network.protocol.name": AttributeMetadata(
         brief="OSI application layer or non-OSI equivalent.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="http",
@@ -15001,7 +15013,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "network.protocol.version": AttributeMetadata(
         brief="The actual version of the protocol used for network communication.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="1.1",
@@ -15014,7 +15026,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "network.transport": AttributeMetadata(
         brief="OSI transport layer or inter-process communication method.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="tcp",
@@ -15027,7 +15039,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "network.type": AttributeMetadata(
         brief="OSI network layer or non-OSI equivalent.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="ipv4",
@@ -15039,7 +15051,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "os.build": AttributeMetadata(
         brief="The build ID of the operating system.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="1234567890",
@@ -15058,7 +15070,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "os.build_id": AttributeMetadata(
         brief="The build ID of the operating system.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="1234567890",
@@ -15074,7 +15086,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "os.description": AttributeMetadata(
         brief="Human readable (not intended to be parsed) OS version information, like e.g. reported by ver or lsb_release -a commands.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="Ubuntu 18.04.1 LTS",
@@ -15086,7 +15098,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "os.kernel_version": AttributeMetadata(
         brief="An independent kernel version string. Typically the entire output of the `uname` syscall.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="20.2.0",
@@ -15101,7 +15113,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "os.name": AttributeMetadata(
         brief="Human readable operating system name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="Ubuntu",
@@ -15113,7 +15125,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "os.raw_description": AttributeMetadata(
         brief="An unprocessed description string obtained by the operating system. For some well-known runtimes, Sentry will attempt to parse `name` and `version` from this string, if they are not explicitly given.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="Ubuntu 22.04.4 LTS (Jammy Jellyfish)",
@@ -15128,7 +15140,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "os.rooted": AttributeMetadata(
         brief="Whether the operating system has been jailbroken or rooted.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=True,
@@ -15141,7 +15153,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "os.theme": AttributeMetadata(
         brief="Whether the OS runs in dark mode or light mode.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="dark",
@@ -15154,7 +15166,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "os.type": AttributeMetadata(
         brief="The operating system type.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="linux",
@@ -15166,7 +15178,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "os.version": AttributeMetadata(
         brief="The version of the operating system.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="18.04.2",
@@ -15178,7 +15190,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "otel.scope.name": AttributeMetadata(
         brief="The name of the instrumentation scope - (InstrumentationScope.Name in OTLP).",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="io.opentelemetry.contrib.mongodb",
@@ -15190,7 +15202,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "otel.scope.version": AttributeMetadata(
         brief="The version of the instrumentation scope - (InstrumentationScope.Version in OTLP).",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="2.4.5",
@@ -15202,7 +15214,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "otel.status_code": AttributeMetadata(
         brief="Name of the code, either “OK” or “ERROR”. MUST NOT be set if the status code is UNSET.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="OK",
@@ -15214,7 +15226,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "otel.status_description": AttributeMetadata(
         brief="Description of the Status if it has a value, otherwise not set.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="resource not found",
@@ -15226,7 +15238,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "params.<key>": AttributeMetadata(
         brief="Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
@@ -15239,7 +15251,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "performance.activationStart": AttributeMetadata(
         brief="The time between initiating a navigation to a page and the browser activating the page",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1.983,
@@ -15260,7 +15272,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "performance.timeOrigin": AttributeMetadata(
         brief="The browser's performance.timeOrigin timestamp representing the time when the pageload was initiated",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1776185678.886,
@@ -15281,7 +15293,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "previous_route": AttributeMetadata(
         brief="Also used by mobile SDKs to indicate the previous route in the application.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="HomeScreen",
@@ -15293,7 +15305,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "process.command_args": AttributeMetadata(
         brief="All the command arguments (including the command/executable itself) as received by the process.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=["cmd/otecol", "--config=config.yaml"],
@@ -15308,7 +15320,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "process.executable.name": AttributeMetadata(
         brief="The name of the executable that started the process.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="getsentry",
@@ -15320,7 +15332,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "process.pid": AttributeMetadata(
         brief="The process ID of the running process.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=12345,
@@ -15332,7 +15344,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "process.runtime.description": AttributeMetadata(
         brief="An additional description about the runtime of the process, for example a specific vendor customization of the runtime environment. Equivalent to `raw_description` in the Sentry runtime context.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="Eclipse OpenJ9 VM openj9-0.21.0",
@@ -15345,7 +15357,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "process.runtime.engine.name": AttributeMetadata(
         brief="The name of the runtime engine.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="v8",
@@ -15356,7 +15368,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "process.runtime.engine.version": AttributeMetadata(
         brief="The version of the runtime engine.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="12.9.202.13-rusty",
@@ -15367,7 +15379,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "process.runtime.name": AttributeMetadata(
         brief="The name of the runtime. Equivalent to `name` in the Sentry runtime context.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="node",
@@ -15380,7 +15392,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "process.runtime.version": AttributeMetadata(
         brief="The version of the runtime of this process, as returned by the runtime without modification. Equivalent to `version` in the Sentry runtime context.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="18.04.2",
@@ -15393,7 +15405,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "query.<key>": AttributeMetadata(
         brief="An item in a query string. Usually added by client-side routing frameworks like vue-router.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
@@ -15409,7 +15421,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "react.version": AttributeMetadata(
         brief="The version of the React framework",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="18.2.0",
@@ -15422,7 +15434,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "release": AttributeMetadata(
         brief="The sentry release.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="production",
@@ -15436,7 +15448,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "remix.action_form_data.<key>": AttributeMetadata(
         brief="Remix form data, <key> being the form data key, the value being the form data value.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
@@ -15448,7 +15460,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "replay_id": AttributeMetadata(
         brief="The id of the sentry replay.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="123e4567e89b12d3a456426614174000",
@@ -15462,7 +15474,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "resource.deployment.environment": AttributeMetadata(
         brief="The software deployment environment name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="production",
@@ -15476,7 +15488,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "resource.deployment.environment.name": AttributeMetadata(
         brief="The software deployment environment name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="production",
@@ -15490,7 +15502,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "resource.render_blocking_status": AttributeMetadata(
         brief="The render blocking status of the resource.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="non-blocking",
@@ -15502,7 +15514,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "route": AttributeMetadata(
         brief="The matched route, that is, the path template in the format used by the respective server framework. Also used by mobile SDKs to indicate the current route in the application.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="App\\Controller::indexAction",
@@ -15516,7 +15528,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "rpc.grpc.status_code": AttributeMetadata(
         brief="The numeric status code of the gRPC request.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=2,
@@ -15528,7 +15540,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "rpc.method": AttributeMetadata(
         brief="The fully-qualified logical name of the method from the RPC interface perspective.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="com.example.ExampleService/exampleMethod",
@@ -15541,7 +15553,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "rpc.response.status_code": AttributeMetadata(
         brief="Status code of the RPC returned by the RPC server or generated by the client.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="DEADLINE_EXCEEDED",
@@ -15556,7 +15568,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "rpc.service": AttributeMetadata(
         brief="The full (logical) name of the service being called, including its package name, if applicable.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="myService.BestService",
@@ -15568,7 +15580,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "runtime.build": AttributeMetadata(
         brief="The application build string, when it is separate from the version.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="stable",
@@ -15586,7 +15598,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "runtime.name": AttributeMetadata(
         brief="The name of the runtime. For example node, CPython, or rustc.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="node",
@@ -15606,7 +15618,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "runtime.raw_description": AttributeMetadata(
         brief="Unprocessed description string as obtained from the runtime. Used to extract name and version for well-known runtimes.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="Eclipse OpenJ9 VM openj9-0.21.0",
@@ -15626,7 +15638,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "runtime.version": AttributeMetadata(
         brief="The version of the runtime.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="18.04.2",
@@ -15646,7 +15658,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "score.<key>": AttributeMetadata(
         brief="The weighted performance score for a web vital. This is defined as `score.weight.<key>` * `score.ratio.<key>`.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
@@ -15660,7 +15672,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "score.ratio.<key>": AttributeMetadata(
         brief="The score for a web vital, normalized to a number between 0 and 1.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
@@ -15676,7 +15688,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "score.total": AttributeMetadata(
         brief="The total performance score of a span. This is the sum of individual weighted web vital scores (see `score.<key>`).",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         changelog=[
@@ -15688,7 +15700,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "score.weight.<key>": AttributeMetadata(
         brief="The relative weight of a web vital in a span's performance score.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
@@ -15704,7 +15716,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.action": AttributeMetadata(
         brief="Used as a generic attribute representing the action depending on the type of span. For instance, this is the database query operation for DB spans, and the request method for HTTP spans.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="SELECT",
@@ -15715,7 +15727,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.browser.name": AttributeMetadata(
         brief="The name of the browser.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="Chrome",
@@ -15728,7 +15740,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.browser.version": AttributeMetadata(
         brief="The version of the browser.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="120.0.6099.130",
@@ -15741,7 +15753,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.cancellation_reason": AttributeMetadata(
         brief="The reason why a span ended early.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="document.hidden",
@@ -15752,7 +15764,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.category": AttributeMetadata(
         brief="The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI). Known values include: 'ai', 'ai.pipeline', 'app', 'browser', 'cache', 'console', 'db', 'event', 'file', 'function.aws', 'function.azure', 'function.gcp', 'function.nextjs', 'function.remix', 'graphql', 'grpc', 'http', 'measure', 'middleware', 'navigation', 'pageload', 'queue', 'resource', 'rpc', 'serialize', 'subprocess', 'template', 'topic', 'ui', 'ui.angular', 'ui.ember', 'ui.react', 'ui.svelte', 'ui.vue', 'view', 'websocket'.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="db",
@@ -15763,7 +15775,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.client_sample_rate": AttributeMetadata(
         brief="Rate at which a span was sampled in the SDK.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=0.5,
@@ -15774,7 +15786,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.description": AttributeMetadata(
         brief="The human-readable description of a span.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="index view query",
@@ -15785,7 +15797,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.dist": AttributeMetadata(
         brief="The sentry dist.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="1.0",
@@ -15796,7 +15808,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.domain": AttributeMetadata(
         brief="Used as a generic attribute representing the domain depending on the type of span. For instance, this is the collection/table name for database spans, and the server address for HTTP spans.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="example.com",
@@ -15807,7 +15819,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.dsc.environment": AttributeMetadata(
         brief="The environment from the dynamic sampling context.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.INTERNAL,
         example="prod",
@@ -15818,7 +15830,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.dsc.project_id": AttributeMetadata(
         brief="The ID of the project where the trace originated (i.e. the project of the SDK that started the trace). Propagated through the dynamic sampling context and set by Relay during ingestion.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.INTERNAL,
         example="12345",
@@ -15833,7 +15845,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.dsc.public_key": AttributeMetadata(
         brief="The public key from the dynamic sampling context.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.INTERNAL,
         example="c51734c603c4430eb57cb0a5728a479d",
@@ -15844,7 +15856,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.dsc.release": AttributeMetadata(
         brief="The release identifier from the dynamic sampling context.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.INTERNAL,
         example="frontend@e8211be71b214afab5b85de4b4c54be3714952bb",
@@ -15855,7 +15867,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.dsc.sample_rate": AttributeMetadata(
         brief="The sample rate from the dynamic sampling context.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.INTERNAL,
         example="1.0",
@@ -15866,7 +15878,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.dsc.sampled": AttributeMetadata(
         brief="Whether the event was sampled according to the dynamic sampling context.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.INTERNAL,
         example=True,
@@ -15877,7 +15889,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.dsc.trace_id": AttributeMetadata(
         brief="The trace ID from the dynamic sampling context.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.INTERNAL,
         example="047372980460430cbc78d9779df33a46",
@@ -15888,7 +15900,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.dsc.transaction": AttributeMetadata(
         brief="The transaction name from the dynamic sampling context.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.INTERNAL,
         example="/issues/errors-outages/",
@@ -15899,7 +15911,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.environment": AttributeMetadata(
         brief="The sentry environment.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="production",
@@ -15911,7 +15923,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.exclusive_time": AttributeMetadata(
         brief="The exclusive time duration of the span in milliseconds.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1234,
@@ -15924,7 +15936,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.graphql.operation": AttributeMetadata(
         brief="Indicates the type of graphql operation, emitted by the Javascript SDK.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="getUserById",
@@ -15935,7 +15947,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.group": AttributeMetadata(
         brief="Stores the hash of `sentry.normalized_description`. This is primarily used for grouping spans in the product end.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         changelog=[
@@ -15945,7 +15957,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.http.prefetch": AttributeMetadata(
         brief="If an http request was a prefetch request.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=True,
@@ -15956,7 +15968,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.idle_span_finish_reason": AttributeMetadata(
         brief="The reason why an idle span ended early.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="idleTimeout",
@@ -15967,7 +15979,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.is_remote": AttributeMetadata(
         brief="Indicates whether a span's parent is remote.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=True,
@@ -15978,7 +15990,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.kind": AttributeMetadata(
         brief="Used to clarify the relationship between parents and children, or to distinguish between spans, e.g. a `server` and `client` span with the same name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="server",
@@ -15989,7 +16001,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.main_thread": AttributeMetadata(
         brief="Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=True,
@@ -16000,7 +16012,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.message.parameter.<key>": AttributeMetadata(
         brief="A parameter used in the message template. <key> can either be the number that represent the parameter's position in the template string (sentry.message.parameter.0, sentry.message.parameter.1, etc) or the parameter's name (sentry.message.parameter.item_id, sentry.message.parameter.user_id, etc)",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="sentry.message.parameter.0='123'",
@@ -16011,7 +16023,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.message.template": AttributeMetadata(
         brief="The parameterized template string.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="Hello, {name}!",
@@ -16022,7 +16034,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.mobile": AttributeMetadata(
         brief="Whether the application is using a mobile SDK. Computed by Relay and should not be set by SDKs.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=True,
@@ -16033,7 +16045,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.module.<key>": AttributeMetadata(
         brief="A module that was loaded in the process. The key is the name of the module.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
@@ -16045,7 +16057,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.nextjs.ssr.function.route": AttributeMetadata(
         brief="A parameterized route for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions when the file location of the function is known.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="/posts/[id]/layout",
@@ -16056,7 +16068,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.nextjs.ssr.function.type": AttributeMetadata(
         brief="A descriptor for a for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="generateMetadata",
@@ -16067,7 +16079,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.normalized_db_query": AttributeMetadata(
         brief="The normalized version of `db.query.text`.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="SELECT .. FROM sentry_project WHERE (project_id = %s)",
@@ -16078,7 +16090,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.normalized_db_query.hash": AttributeMetadata(
         brief="The hash of `sentry.normalized_db_query`.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         changelog=[
@@ -16088,7 +16100,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.normalized_description": AttributeMetadata(
         brief="Used as a generic attribute representing the normalized `sentry.description`. This refers to the legacy use case of `sentry.description` where it holds relevant data depending on the type of span (e.g. database query, resource url, http request description, etc).",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="SELECT .. FROM sentry_project WHERE (project_id = %s)",
@@ -16099,7 +16111,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.observed_timestamp_nanos": AttributeMetadata(
         brief="The timestamp at which an envelope was received by Relay, in nanoseconds.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="1544712660300000000",
@@ -16111,7 +16123,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.op": AttributeMetadata(
         brief="The operation of a span.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="http.client",
@@ -16122,7 +16134,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.origin": AttributeMetadata(
         brief="The origin of the instrumentation (e.g. span, log, etc.)",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="auto.http.otel.fastify",
@@ -16134,7 +16146,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.platform": AttributeMetadata(
         brief="The sdk platform that generated the event.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="php",
@@ -16145,7 +16157,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.profile_id": AttributeMetadata(
         brief="The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="123e4567e89b12d3a456426614174000",
@@ -16160,7 +16172,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.profiler_id": AttributeMetadata(
         brief="The id of the currently running profiler (continuous profiling)",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="18779b64dd35d1a538e7ce2dd2d3fad3",
@@ -16171,7 +16183,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.release": AttributeMetadata(
         brief="The sentry release.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="7.0.0",
@@ -16183,7 +16195,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.replay_id": AttributeMetadata(
         brief="The id of the sentry replay.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="123e4567e89b12d3a456426614174000",
@@ -16195,7 +16207,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.replay_is_buffering": AttributeMetadata(
         brief="A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate).",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=True,
@@ -16206,7 +16218,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.report_event": AttributeMetadata(
         brief="(Deprecated) The event that caused the SDK to report CLS or LCP (pagehide or navigation)",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="pagehide",
@@ -16224,7 +16236,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.sdk.integrations": AttributeMetadata(
         brief="A list of names identifying enabled integrations. The list shouldhave all enabled integrations, including default integrations. Defaultintegrations are included because different SDK releases may contain differentdefault integrations.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=[
@@ -16240,7 +16252,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.sdk.name": AttributeMetadata(
         brief="The sentry sdk name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="@sentry/react",
@@ -16251,7 +16263,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.sdk.version": AttributeMetadata(
         brief="The sentry sdk version.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="7.0.0",
@@ -16262,7 +16274,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.segment.id": AttributeMetadata(
         brief="The segment ID of a span",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="051581bf3cb55c13",
@@ -16274,7 +16286,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.segment.name": AttributeMetadata(
         brief="The segment name of a span",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="GET /user",
@@ -16291,7 +16303,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.segment_id": AttributeMetadata(
         brief="The segment ID of a span",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="051581bf3cb55c13",
@@ -16306,7 +16318,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.server_sample_rate": AttributeMetadata(
         brief="Rate at which a span was sampled in Relay.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=0.5,
@@ -16317,7 +16329,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.source": AttributeMetadata(
         brief="The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="route",
@@ -16333,7 +16345,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.span.source": AttributeMetadata(
         brief="The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="route",
@@ -16345,7 +16357,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.status.message": AttributeMetadata(
         brief="The from OTLP extracted status message.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="foobar",
@@ -16356,7 +16368,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.status_code": AttributeMetadata(
         brief="The HTTP status code used in Sentry Insights. Typically set by Sentry during ingestion, rather than by clients.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=200,
@@ -16367,7 +16379,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.timestamp.sequence": AttributeMetadata(
         brief="A sequencing counter for deterministic ordering of logs or metrics when timestamps share the same integer millisecond. Starts at 0 on SDK initialization, increments by 1 for each captured item, and resets to 0 when the integer millisecond of the current item differs from the previous one.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=0,
@@ -16378,7 +16390,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.trace.parent_span_id": AttributeMetadata(
         brief="The span id of the span that was active when the log was collected. This should not be set if there was no active span.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="b0e6f15b45c36b12",
@@ -16395,7 +16407,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.transaction": AttributeMetadata(
         brief="The sentry transaction (segment name).",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="GET /",
@@ -16417,7 +16429,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.user.email": AttributeMetadata(
         brief="User email address.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         deprecation=DeprecationInfo(replacement="user.email"),
@@ -16429,7 +16441,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.user.geo.city": AttributeMetadata(
         brief="Human readable city name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         deprecation=DeprecationInfo(replacement="user.geo.city"),
@@ -16441,7 +16453,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.user.geo.country_code": AttributeMetadata(
         brief="Two-letter country code (ISO 3166-1 alpha-2).",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         deprecation=DeprecationInfo(replacement="user.geo.country_code"),
@@ -16453,7 +16465,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.user.geo.region": AttributeMetadata(
         brief="Human readable region name or code.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         deprecation=DeprecationInfo(replacement="user.geo.region"),
@@ -16465,7 +16477,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.user.geo.subdivision": AttributeMetadata(
         brief="Human readable subdivision name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         deprecation=DeprecationInfo(replacement="user.geo.subdivision"),
@@ -16477,7 +16489,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.user.id": AttributeMetadata(
         brief="Unique identifier of the user.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         deprecation=DeprecationInfo(replacement="user.id"),
@@ -16489,7 +16501,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.user.ip": AttributeMetadata(
         brief="The IP address of the user.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         deprecation=DeprecationInfo(replacement="user.ip_address"),
@@ -16501,7 +16513,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.user.username": AttributeMetadata(
         brief="Short name or login/username of the user.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         deprecation=DeprecationInfo(replacement="user.name"),
@@ -16513,7 +16525,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "server.address": AttributeMetadata(
         brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="example.com",
@@ -16526,7 +16538,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "server.port": AttributeMetadata(
         brief="Server port number.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=1337,
@@ -16539,7 +16551,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "service.name": AttributeMetadata(
         brief="Logical name of the service.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="omegastar",
@@ -16551,7 +16563,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "service.version": AttributeMetadata(
         brief="The version string of the service API or implementation. The format is not defined by these conventions.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="5.0.0",
@@ -16564,7 +16576,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "session.id": AttributeMetadata(
         brief="A unique id identifying the active session at the time of setting this attribute",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="00112233-4455-6677-8899-aabbccddeeff",
@@ -16577,7 +16589,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "stall_percentage": AttributeMetadata(
         brief="The fraction of time the app was stalled. Only applies to React Native. This is computed by Relay.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         changelog=[
@@ -16591,7 +16603,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "stall_total_time": AttributeMetadata(
         brief="The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay.",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         changelog=[
@@ -16605,7 +16617,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "state.type": AttributeMetadata(
         brief="The type of state management library",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="redux",
@@ -16618,7 +16630,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "thread.id": AttributeMetadata(
         brief="Current “managed” thread ID.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=56,
@@ -16629,7 +16641,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "thread.name": AttributeMetadata(
         brief="Current thread name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="main",
@@ -16641,7 +16653,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "timber.tag": AttributeMetadata(
         brief="The log tag provided by the timber logging framework.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="MyTag",
@@ -16652,7 +16664,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "time_to_full_display": AttributeMetadata(
         brief="The duration of time to full display in milliseconds",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1234.56,
@@ -16673,7 +16685,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "time_to_initial_display": AttributeMetadata(
         brief="The duration of time to initial display in milliseconds",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1234.56,
@@ -16694,7 +16706,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "transaction": AttributeMetadata(
         brief="The sentry transaction (segment name).",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="GET /",
@@ -16715,7 +16727,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "trpc.procedure_path": AttributeMetadata(
         brief="The path of the tRPC procedure being called",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="user.getById",
@@ -16730,7 +16742,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "trpc.procedure_type": AttributeMetadata(
         brief="The type of the tRPC procedure",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="query",
@@ -16745,7 +16757,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ttfb.requestTime": AttributeMetadata(
         brief="The time it takes for the server to process the initial request and send the first byte of a response to the user's browser",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1554.5814,
@@ -16762,7 +16774,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ttfb": AttributeMetadata(
         brief="The value of the recorded Time To First Byte (TTFB) web vital in milliseconds",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=194,
@@ -16779,7 +16791,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "type": AttributeMetadata(
         brief="More granular type of the operation happening.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="fetch",
@@ -16790,7 +16802,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ui.component_name": AttributeMetadata(
         brief="The name of the associated component.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="HomeButton",
@@ -16802,7 +16814,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ui.contributes_to_ttfd": AttributeMetadata(
         brief="Whether the span execution contributed to the TTFD (time to fully drawn) metric.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=True,
@@ -16813,7 +16825,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ui.contributes_to_ttid": AttributeMetadata(
         brief="Whether the span execution contributed to the TTID (time to initial display) metric.",
         type=AttributeType.BOOLEAN,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=True,
@@ -16824,7 +16836,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ui.element.height": AttributeMetadata(
         brief="The height of the UI element (for Html in pixels)",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=256,
@@ -16839,7 +16851,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ui.element.id": AttributeMetadata(
         brief="The id of the UI element",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="btn-login",
@@ -16852,7 +16864,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ui.element.identifier": AttributeMetadata(
         brief="The identifier used to measure the UI element timing",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="heroImage",
@@ -16867,7 +16879,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ui.element.load_time": AttributeMetadata(
         brief="The loading time of a UI element (from time origin to finished loading)",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=998.2234,
@@ -16882,7 +16894,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ui.element.paint_type": AttributeMetadata(
         brief="The type of element paint. Can either be 'image-paint' or 'text-paint'",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="image-paint",
@@ -16897,7 +16909,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ui.element.render_time": AttributeMetadata(
         brief="The rendering time of the UI element (from time origin to finished rendering)",
         type=AttributeType.DOUBLE,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1023.1124,
@@ -16912,7 +16924,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ui.element.type": AttributeMetadata(
         brief="type of the UI element",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="img",
@@ -16927,7 +16939,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ui.element.url": AttributeMetadata(
         brief="The URL of the UI element (e.g. an img src)",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="https://assets.myapp.com/hero.png",
@@ -16940,7 +16952,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ui.element.width": AttributeMetadata(
         brief="The width of the UI element (for HTML in pixels)",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=512,
@@ -16955,7 +16967,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "url.domain": AttributeMetadata(
         brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="example.com",
@@ -16967,7 +16979,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "url.fragment": AttributeMetadata(
         brief="The fragments present in the URI. Note that this does not contain the leading # character, while the `http.fragment` attribute does.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="details",
@@ -16978,7 +16990,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "url.full": AttributeMetadata(
         brief="The URL of the resource that was fetched.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="https://example.com/test?foo=bar#buzz",
@@ -16991,7 +17003,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "url.path": AttributeMetadata(
         brief="The URI path component.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="/foo",
@@ -17002,7 +17014,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "url.path.parameter.<key>": AttributeMetadata(
         brief="Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
@@ -17015,7 +17027,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "url.port": AttributeMetadata(
         brief="Server port number.",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=1337,
@@ -17027,8 +17039,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "url.query": AttributeMetadata(
         brief="The query string present in the URL. Note that this does not contain the leading ? character, while the `http.query` attribute does.",
         type=AttributeType.STRING,
-        pii=PiiInfo(
-            isPii=IsPii.TRUE,
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
             reason="Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.",
         ),
         is_in_otel=True,
@@ -17041,7 +17053,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "url.scheme": AttributeMetadata(
         brief="The URI scheme component identifying the used protocol.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="https",
@@ -17054,7 +17066,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "url.template": AttributeMetadata(
         brief="The low-cardinality template of an absolute path reference.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="/users/:id",
@@ -17067,7 +17079,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "url": AttributeMetadata(
         brief="The URL of the resource that was fetched.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="https://example.com/test?foo=bar#buzz",
@@ -17081,7 +17093,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "user.email": AttributeMetadata(
         brief="User email address.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="test@example.com",
@@ -17093,7 +17105,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "user.full_name": AttributeMetadata(
         brief="User's full name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="John Smith",
@@ -17104,7 +17116,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "user.geo.city": AttributeMetadata(
         brief="Human readable city name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="Toronto",
@@ -17116,7 +17128,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "user.geo.country_code": AttributeMetadata(
         brief="Two-letter country code (ISO 3166-1 alpha-2).",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="CA",
@@ -17128,7 +17140,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "user.geo.region": AttributeMetadata(
         brief="Human readable region name or code.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="Canada",
@@ -17140,7 +17152,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "user.geo.subdivision": AttributeMetadata(
         brief="Human readable subdivision name.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="Ontario",
@@ -17152,7 +17164,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "user.hash": AttributeMetadata(
         brief="Unique user hash to correlate information for a user in anonymized form.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="8ae4c2993e0f4f3b8b2d1b1f3b5e8f4d",
@@ -17163,7 +17175,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "user.id": AttributeMetadata(
         brief="Unique identifier of the user.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="S-1-5-21-202424912787-2692429404-2351956786-1000",
@@ -17175,7 +17187,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "user.ip_address": AttributeMetadata(
         brief="The IP address of the user.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="192.168.1.1",
@@ -17187,7 +17199,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "user.name": AttributeMetadata(
         brief="Short name or login/username of the user.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="j.smith",
@@ -17199,7 +17211,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "user.roles": AttributeMetadata(
         brief="Array of user roles at the time of the event.",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=["admin", "editor"],
@@ -17210,7 +17222,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "user_agent.original": AttributeMetadata(
         brief="Value of the HTTP User-Agent header sent by the client.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1",
@@ -17223,7 +17235,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.branch": AttributeMetadata(
         brief="Git branch name for Vercel project",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="main",
@@ -17234,7 +17246,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.build_id": AttributeMetadata(
         brief="Identifier for the Vercel build (only present on build logs)",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="bld_cotnkcr76",
@@ -17245,7 +17257,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.deployment_id": AttributeMetadata(
         brief="Identifier for the Vercel deployment",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="dpl_233NRGRjVZX1caZrXWtz5g1TAksD",
@@ -17256,7 +17268,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.destination": AttributeMetadata(
         brief="Origin of the external content in Vercel (only on external logs)",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="https://vitals.vercel-insights.com/v1",
@@ -17267,7 +17279,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.edge_type": AttributeMetadata(
         brief="Type of edge runtime in Vercel",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="edge-function",
@@ -17278,7 +17290,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.entrypoint": AttributeMetadata(
         brief="Entrypoint for the request in Vercel",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="api/index.js",
@@ -17289,7 +17301,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.execution_region": AttributeMetadata(
         brief="Region where the request is executed",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="sfo1",
@@ -17300,7 +17312,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.id": AttributeMetadata(
         brief="Unique identifier for the log entry in Vercel",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="1573817187330377061717300000",
@@ -17311,7 +17323,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.ja3_digest": AttributeMetadata(
         brief="JA3 fingerprint digest of Vercel request",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="769,47-53-5-10-49161-49162-49171-49172-50-56-19-4,0-10-11,23-24-25,0",
@@ -17322,7 +17334,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.ja4_digest": AttributeMetadata(
         brief="JA4 fingerprint digest",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="t13d1516h2_8daaf6152771_02713d6af862",
@@ -17333,7 +17345,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.log_type": AttributeMetadata(
         brief="Vercel log output type",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="stdout",
@@ -17344,7 +17356,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.path": AttributeMetadata(
         brief="Function or dynamic path of the request in Vercel.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="/dynamic/[route].json",
@@ -17357,7 +17369,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.project_id": AttributeMetadata(
         brief="Identifier for the Vercel project",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="gdufoJxB6b9b1fEqr1jUtFkyavUU",
@@ -17368,7 +17380,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.project_name": AttributeMetadata(
         brief="Name of the Vercel project",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="my-app",
@@ -17379,7 +17391,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.cache_id": AttributeMetadata(
         brief="Original request ID when request is served from cache",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="pdx1::v8g4b-1744143786684-93dafbc0f70d",
@@ -17390,7 +17402,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.client_ip": AttributeMetadata(
         brief="Client IP address",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="120.75.16.101",
@@ -17401,7 +17413,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.host": AttributeMetadata(
         brief="Hostname of the request",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="test.vercel.app",
@@ -17412,7 +17424,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.lambda_region": AttributeMetadata(
         brief="Region where lambda function executed",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="sfo1",
@@ -17423,7 +17435,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.method": AttributeMetadata(
         brief="HTTP method of the request",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="GET",
@@ -17434,7 +17446,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.path": AttributeMetadata(
         brief="Request path with query parameters",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="/dynamic/some-value.json?route=some-value",
@@ -17445,7 +17457,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.path_type": AttributeMetadata(
         brief="How the request was served based on its path and project configuration",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="func",
@@ -17456,7 +17468,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.path_type_variant": AttributeMetadata(
         brief="Variant of the path type",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="api",
@@ -17467,7 +17479,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.referer": AttributeMetadata(
         brief="Referer of the request",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.TRUE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="*.vercel.app",
@@ -17478,7 +17490,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.region": AttributeMetadata(
         brief="Region where the request is processed",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="sfo1",
@@ -17489,7 +17501,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.response_byte_size": AttributeMetadata(
         brief="Size of the response in bytes",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1024,
@@ -17501,7 +17513,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.scheme": AttributeMetadata(
         brief="Protocol of the request",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="https",
@@ -17512,7 +17524,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.status_code": AttributeMetadata(
         brief="HTTP status code of the proxy request",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=200,
@@ -17524,7 +17536,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.timestamp": AttributeMetadata(
         brief="Unix timestamp when the proxy request was made",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1573817250172,
@@ -17536,7 +17548,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.user_agent": AttributeMetadata(
         brief="User agent strings of the request",
         type=AttributeType.STRING_ARRAY,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=["Mozilla/5.0..."],
@@ -17547,7 +17559,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.vercel_cache": AttributeMetadata(
         brief="Cache status sent to the browser",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="REVALIDATED",
@@ -17558,7 +17570,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.vercel_id": AttributeMetadata(
         brief="Vercel-specific identifier",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="sfo1::abc123",
@@ -17569,7 +17581,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.waf_action": AttributeMetadata(
         brief="Action taken by firewall rules",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="deny",
@@ -17580,7 +17592,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.waf_rule_id": AttributeMetadata(
         brief="ID of the firewall rule that matched",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="rule_gAHz8jtSB1Gy",
@@ -17591,7 +17603,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.request_id": AttributeMetadata(
         brief="Identifier of the Vercel request",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="643af4e3-975a-4cc7-9e7a-1eda11539d90",
@@ -17602,7 +17614,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.source": AttributeMetadata(
         brief="Origin of the Vercel log (build, edge, lambda, static, external, or firewall)",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="build",
@@ -17613,7 +17625,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.status_code": AttributeMetadata(
         brief="HTTP status code of the request (-1 means no response returned and the lambda crashed)",
         type=AttributeType.INTEGER,
-        pii=PiiInfo(isPii=IsPii.MAYBE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=200,

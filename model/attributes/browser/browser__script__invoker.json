@@ -2,8 +2,8 @@
   "key": "browser.script.invoker",
   "brief": "How a script was called in the browser.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "Window.requestAnimationFrame",

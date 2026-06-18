@@ -28,7 +28,7 @@ Options:
   --key, -k           The attribute key (e.g. http.route)
   --description, -d   A description of the attribute
   --type, -t          The type of the attribute (string/boolean/integer/double/string[]/boolean[]/integer[]/double[])
-  --has_pii, -p       Whether the attribute contains PII (true/maybe/false)
+  --apply_scrubbing, -s   How PII scrubbing should be applied (auto/manual/never)
   --is_in_otel, -o    Whether the attribute is in OpenTelemetry (true/false)
   --visibility, -v   The visibility of the attribute (public/internal)
   --example, -e       An example value (optional)
@@ -39,7 +39,7 @@ Examples:
   yarn run create:attribute
 
   # Non-interactive mode
-  yarn run create:attribute --key http.route --description "The route pattern of the request" --type string --has_pii false --is_in_otel true --visibility public --example "/users/:id" --alias "url.template"
+  yarn run create:attribute --key http.route --description "The route pattern of the request" --type string --apply_scrubbing never --is_in_otel true --visibility public --example "/users/:id" --alias "url.template"
 `;
 
 const validateSchema = (data: unknown) => {
@@ -62,7 +62,7 @@ const createAttribute = async () => {
         key: { type: 'string', short: 'k' },
         description: { type: 'string', short: 'd' },
         type: { type: 'string', short: 't' },
-        has_pii: { type: 'string', short: 'p' },
+        apply_scrubbing: { type: 'string', short: 's' },
         is_in_otel: { type: 'string', short: 'o' },
         visibility: { type: 'string', short: 'v' },
         example: { type: 'string', short: 'e' },
@@ -83,7 +83,7 @@ const createAttribute = async () => {
       values.key ||
       values.description ||
       values.type ||
-      values.has_pii ||
+      values.apply_scrubbing ||
       values.is_in_otel ||
       values.visibility
     );
@@ -91,7 +91,7 @@ const createAttribute = async () => {
     let key: string | undefined;
     let description: string | undefined;
     let type: string | undefined;
-    let piiKey: string | undefined;
+    let applyScrubbingKey: string | undefined;
     let isInOtel: string | undefined;
     let visibility: string | undefined;
     let example: string | undefined;
@@ -101,7 +101,7 @@ const createAttribute = async () => {
       key = await askForAttributeName();
       description = await askForAttributeDescription();
       type = await askForAttributeType();
-      piiKey = await askForAttributePii();
+      applyScrubbingKey = await askForApplyScrubbing();
       isInOtel = String(await askForAttributeIsInOtel());
       visibility = await askForAttributeVisibility();
       example = await askForAttributeExample();
@@ -110,7 +110,7 @@ const createAttribute = async () => {
       key = values.key;
       description = values.description;
       type = values.type;
-      piiKey = values.has_pii;
+      applyScrubbingKey = values.apply_scrubbing;
       isInOtel = values.is_in_otel;
       visibility = values.visibility;
       example = values.example;
@@ -118,7 +118,7 @@ const createAttribute = async () => {
     }
 
     // Validate required fields
-    if (!key || !description || !type || !piiKey || !isInOtel || !visibility) {
+    if (!key || !description || !type || !applyScrubbingKey || !isInOtel || !visibility) {
       console.error('Error: Missing required fields. Use --help for usage information.');
       process.exit(1);
     }
@@ -151,8 +151,8 @@ const createAttribute = async () => {
       brief: description,
       ...(hasDynamicSuffix && { has_dynamic_suffix: true }),
       type,
-      pii: {
-        key: piiKey,
+      apply_scrubbing: {
+        key: applyScrubbingKey,
       },
       is_in_otel: isInOtel.toLowerCase() === 'true',
       visibility,
@@ -262,16 +262,16 @@ async function askForAttributeType() {
   );
 }
 
-async function askForAttributePii() {
+async function askForApplyScrubbing() {
   return abortIfCancelled(
     select({
-      message: 'Does the attribute contain PII?',
+      message: 'How should PII scrubbing be applied?',
       options: [
-        { value: 'maybe', label: 'Maybe' },
-        { value: 'true', label: 'Yes' },
-        { value: 'false', label: 'No' },
+        { value: 'manual', label: 'Manual' },
+        { value: 'auto', label: 'Auto' },
+        { value: 'never', label: 'Never' },
       ],
-      initialValue: 'maybe',
+      initialValue: 'manual',
     }),
   );
 }

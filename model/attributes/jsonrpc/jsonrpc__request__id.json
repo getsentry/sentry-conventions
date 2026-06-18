@@ -2,8 +2,8 @@
   "key": "jsonrpc.request.id",
   "brief": "The JSON-RPC request identifier. Unique within the session.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "visibility": "public",

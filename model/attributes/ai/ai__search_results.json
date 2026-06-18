@@ -2,8 +2,8 @@
   "key": "ai.search_results",
   "brief": "Results returned from search queries for context.",
   "type": "string[]",
-  "pii": {
-    "key": "true"
+  "apply_scrubbing": {
+    "key": "auto"
   },
   "is_in_otel": false,
   "example": ["search_result_1, search_result_2"],
