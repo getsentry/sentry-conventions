@@ -10,7 +10,7 @@
   "example": 1,
   "changelog": [
     {
-      "version": "next",
+      "version": "0.11.1",
       "prs": [413],
       "description": "Added cloudflare.r2.request.part_number attribute"
     }

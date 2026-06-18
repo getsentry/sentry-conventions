@@ -1,0 +1,19 @@
+{
+  "key": "jsonrpc.request.id",
+  "brief": "The JSON-RPC request identifier. Unique within the session.",
+  "type": "string",
+  "pii": {
+    "key": "maybe"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "example": "1",
+  "alias": ["mcp.request.id"],
+  "changelog": [
+    {
+      "version": "0.12.0",
+      "prs": [420],
+      "description": "Added jsonrpc.request.id attribute"
+    }
+  ]
+}

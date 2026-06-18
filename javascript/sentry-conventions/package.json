@@ -1,7 +1,7 @@
 {
   "name": "@sentry/conventions",
   "license": "MIT",
-  "version": "0.11.0",
+  "version": "0.12.0",
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
@@ -23,8 +23,8 @@
     "build:tarball": "yarn build && yarn pack"
   },
   "devDependencies": {
-    "typescript": "^5.8.3",
-    "unbuild": "^3.5.0"
+    "typescript": "^6.0.3",
+    "unbuild": "^3.6.1"
   },
   "sideEffects": false,
   "engines": {

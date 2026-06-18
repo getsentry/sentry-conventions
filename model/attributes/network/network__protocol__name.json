@@ -7,7 +7,7 @@
   },
   "is_in_otel": true,
   "example": "http",
-  "alias": ["net.protocol.name"],
+  "alias": ["net.protocol.name", "mcp.resource.protocol"],
   "visibility": "public",
   "changelog": [
     {

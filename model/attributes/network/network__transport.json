@@ -7,7 +7,7 @@
   },
   "is_in_otel": true,
   "example": "tcp",
-  "alias": ["net.transport"],
+  "alias": ["net.transport", "mcp.transport"],
   "visibility": "public",
   "changelog": [
     {

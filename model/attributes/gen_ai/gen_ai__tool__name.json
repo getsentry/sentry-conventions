@@ -7,7 +7,7 @@
   },
   "is_in_otel": true,
   "example": "Flights",
-  "alias": ["ai.function_call"],
+  "alias": ["ai.function_call", "mcp.tool.name"],
   "visibility": "public",
   "changelog": [
     {

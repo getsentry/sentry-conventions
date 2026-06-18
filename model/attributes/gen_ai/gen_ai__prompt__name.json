@@ -1,0 +1,20 @@
+{
+  "key": "gen_ai.prompt.name",
+  "brief": "The name of the prompt that uniquely identifies it.",
+  "type": "string",
+  "pii": {
+    "key": "maybe",
+    "reason": "Prompt names may reveal user behavior patterns or sensitive operations"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "example": "summarize_text",
+  "alias": ["mcp.prompt.name"],
+  "changelog": [
+    {
+      "version": "0.12.0",
+      "prs": [420],
+      "description": "Added gen_ai.prompt.name attribute"
+    }
+  ]
+}

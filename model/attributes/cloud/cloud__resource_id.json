@@ -13,7 +13,8 @@
   "visibility": "public",
   "changelog": [
     {
-      "version": "next"
+      "version": "0.11.1",
+      "prs": [414]
     }
   ]
 }

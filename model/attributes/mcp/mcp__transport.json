@@ -10,8 +10,19 @@
   "visibility": "public",
   "changelog": [
     {
+      "version": "0.12.0",
+      "prs": [420],
+      "description": "Deprecated in favor of network.transport"
+    },
+    {
       "version": "0.3.0",
       "prs": [171]
     }
-  ]
+  ],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "network.transport",
+    "reason": "OTel uses the generic network.transport attribute"
+  },
+  "alias": ["network.transport", "net.transport"]
 }

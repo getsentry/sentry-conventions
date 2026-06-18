@@ -5,10 +5,15 @@
   "apply_scrubbing": {
     "key": "manual"
   },
-  "is_in_otel": false,
+  "is_in_otel": true,
   "example": "tools/call",
   "visibility": "public",
   "changelog": [
+    {
+      "version": "0.12.0",
+      "prs": [420],
+      "description": "Set is_in_otel=true, attribute exists in OTel MCP registry"
+    },
     {
       "version": "0.3.0",
       "prs": [171]

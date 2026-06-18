@@ -1,9 +1,17 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.3/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.5.0/schema.json",
   "vcs": { "enabled": false, "clientKind": "git", "useIgnoreFile": false },
   "files": {
     "ignoreUnknown": false,
-    "ignore": ["dist/*", "javascript/sentry-conventions/package.json", "rust/*", "python/*", ".claude/*", ".astro/*"]
+    "includes": [
+      "**",
+      "!**/dist/**/*",
+      "!**/javascript/sentry-conventions/package.json",
+      "!**/rust/**/*",
+      "!**/python/**/*",
+      "!**/.claude/**/*",
+      "!**/.astro/**/*"
+    ]
   },
   "formatter": {
     "enabled": true,
@@ -16,8 +24,13 @@
     "attributePosition": "auto",
     "bracketSpacing": true
   },
-  "organizeImports": { "enabled": true },
-  "linter": { "enabled": true, "rules": { "recommended": true } },
+  "assist": { "actions": { "source": { "organizeImports": "on" } } },
+  "linter": { "enabled": true, "rules": { "preset": "recommended" } },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
+  },
   "javascript": {
     "formatter": {
       "jsxQuoteStyle": "double",
