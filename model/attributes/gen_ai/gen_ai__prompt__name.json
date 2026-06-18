@@ -2,8 +2,8 @@
   "key": "gen_ai.prompt.name",
   "brief": "The name of the prompt that uniquely identifies it.",
   "type": "string",
-  "pii": {
-    "key": "maybe",
+  "apply_scrubbing": {
+    "key": "manual",
     "reason": "Prompt names may reveal user behavior patterns or sensitive operations"
   },
   "is_in_otel": true,

@@ -5872,7 +5872,7 @@ export type GEN_AI_PROMPT_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GEN_AI_PROMPT_NAME_TYPE}
  *
- * Contains PII: maybe - Prompt names may reveal user behavior patterns or sensitive operations
+ * Apply Scrubbing: manual - Prompt names may reveal user behavior patterns or sensitive operations
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -7905,7 +7905,7 @@ export type INP_TYPE = number;
  *
  * Attribute Value Type: `string` {@link JSONRPC_PROTOCOL_VERSION_TYPE}
  *
- * Contains PII: maybe
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -7926,7 +7926,7 @@ export type JSONRPC_PROTOCOL_VERSION_TYPE = string;
  *
  * Attribute Value Type: `string` {@link JSONRPC_REQUEST_ID_TYPE}
  *
- * Contains PII: maybe
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -19418,8 +19418,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [GEN_AI_PROMPT_NAME]: {
     brief: 'The name of the prompt that uniquely identifies it.',
     type: 'string',
-    pii: {
-      isPii: 'maybe',
+    applyScrubbing: {
+      key: 'manual',
       reason: 'Prompt names may reveal user behavior patterns or sensitive operations',
     },
     isInOtel: true,
@@ -20779,8 +20779,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [JSONRPC_PROTOCOL_VERSION]: {
     brief: 'The version of the JSON-RPC protocol used.',
     type: 'string',
-    pii: {
-      isPii: 'maybe',
+    applyScrubbing: {
+      key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
@@ -20790,8 +20790,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [JSONRPC_REQUEST_ID]: {
     brief: 'The JSON-RPC request identifier. Unique within the session.',
     type: 'string',
-    pii: {
-      isPii: 'maybe',
+    applyScrubbing: {
+      key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
