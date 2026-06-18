@@ -2,8 +2,8 @@
   "key": "ai.model.provider",
   "brief": "The provider of the model.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "openai",

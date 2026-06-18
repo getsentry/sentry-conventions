@@ -2,8 +2,8 @@
   "key": "fcp",
   "brief": "The time it takes for the browser to render the first piece of meaningful content on the screen",
   "type": "double",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": 547.6951,

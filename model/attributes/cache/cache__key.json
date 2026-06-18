@@ -2,8 +2,8 @@
   "key": "cache.key",
   "brief": "The key of the cache accessed.",
   "type": "string[]",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": ["my-cache-key", "my-other-cache-key"],

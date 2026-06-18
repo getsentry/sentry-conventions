@@ -49,7 +49,7 @@ Run `yarn run create:attribute` to create a new attribute. This will prompt you 
 yarn run create:attribute
 
 # Non-interactive mode
-yarn run create:attribute --key http.route --description "The route pattern of the request" --type string --has_pii false --is_in_otel true --visibility public --example "/users/:id" --alias "url.template"
+yarn run create:attribute --key http.route --description "The route pattern of the request" --type string --apply_scrubbing never --is_in_otel true --visibility public --example "/users/:id" --alias "url.template"
 ```
 
 After you've created an attribute, the script will ask if you'd like to generate the docs. This will run `yarn run generate`. If you want to skip this step, you can run `yarn run generate` manually afterwards.
@@ -91,7 +91,7 @@ Here's a list of policies that any newly added attributes MUST follow. Most of t
 - Use dots as separators for namespaces and logical grouoing, not underscores (`http.request.method`, not `http_request_method`)
 - Use `snake_case` for multi-word names (`browser.web_vital.ttfb.request_time`, not `browser.webVital.ttfb.request-time`)
 - Namespace first (`db.system`, not `system.db`)
-- The `pii` field in the attribute definition MUST be `maybe` or `true` (if the attribute can contain sensitive data). It SHOULD be `false` only if scrubbing the attribute value for PII would potentially break product features. For example, `sentry.replay_id` should have `pii` set to `false`.
+- The `apply_scrubbing` field in the attribute definition MUST be `manual` or `auto` (if the attribute can contain sensitive data). It SHOULD be `never` only if scrubbing the attribute value for PII would potentially break product features. For example, `sentry.replay_id` should have `apply_scrubbing` set to `never`.
 - When an attribute is added that deprecates an old one:
   - The old one should be marked as deprecated, and it MUST point to the new one using the `deprecation.replacement` field.
   - For both the new and the old attribute, and any existing aliases of the old attribute, the new and old names MUST be added to the `aliases` list.

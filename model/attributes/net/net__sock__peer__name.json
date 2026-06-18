@@ -2,8 +2,8 @@
   "key": "net.sock.peer.name",
   "brief": "Peer address of the network connection - Unix domain socket name",
   "type": "string",
-  "pii": {
-    "key": "true"
+  "apply_scrubbing": {
+    "key": "auto"
   },
   "is_in_otel": true,
   "example": "/var/my.sock",

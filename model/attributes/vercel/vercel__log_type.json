@@ -2,8 +2,8 @@
   "key": "vercel.log_type",
   "brief": "Vercel log output type",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "stdout",

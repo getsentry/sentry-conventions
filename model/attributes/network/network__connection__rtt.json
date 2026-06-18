@@ -2,8 +2,8 @@
   "key": "network.connection.rtt",
   "brief": "Specifies the estimated effective round-trip time of the current connection, in milliseconds.",
   "type": "integer",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": 100,

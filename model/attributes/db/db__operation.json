@@ -2,8 +2,8 @@
   "key": "db.operation",
   "brief": "The name of the operation being executed.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": "SELECT",

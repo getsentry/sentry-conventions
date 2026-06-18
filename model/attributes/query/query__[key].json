@@ -3,8 +3,8 @@
   "brief": "An item in a query string. Usually added by client-side routing frameworks like vue-router.",
   "has_dynamic_suffix": true,
   "type": "string",
-  "pii": {
-    "key": "true"
+  "apply_scrubbing": {
+    "key": "auto"
   },
   "is_in_otel": false,
   "example": "query.id='123'",

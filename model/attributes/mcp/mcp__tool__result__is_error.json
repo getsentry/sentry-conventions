@@ -2,8 +2,8 @@
   "key": "mcp.tool.result.is_error",
   "brief": "Whether a tool execution resulted in an error.",
   "type": "boolean",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": false,

@@ -2,8 +2,8 @@
   "key": "culture.locale",
   "brief": "The locale identifier following RFC 4646.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "en-US",

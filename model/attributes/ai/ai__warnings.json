@@ -2,8 +2,8 @@
   "key": "ai.warnings",
   "brief": "Warning messages generated during model execution.",
   "type": "string[]",
-  "pii": {
-    "key": "true"
+  "apply_scrubbing": {
+    "key": "auto"
   },
   "is_in_otel": false,
   "example": ["Token limit exceeded"],

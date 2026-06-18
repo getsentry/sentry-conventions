@@ -2,8 +2,8 @@
   "key": "browser.web_vital.lcp.load_time",
   "brief": "The time it took for the LCP element to be loaded",
   "type": "integer",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": 1402,

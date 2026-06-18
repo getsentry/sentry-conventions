@@ -2,8 +2,8 @@
   "key": "rpc.method",
   "brief": "The fully-qualified logical name of the method from the RPC interface perspective.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": "com.example.ExampleService/exampleMethod",

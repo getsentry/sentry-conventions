@@ -2,8 +2,8 @@
   "key": "gen_ai.usage.output_tokens.reasoning",
   "brief": "The number of tokens used for reasoning to create the AI output.",
   "type": "integer",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": 75,

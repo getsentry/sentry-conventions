@@ -2,8 +2,8 @@
   "key": "lcp.element",
   "brief": "The dom element responsible for the largest contentful paint.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "img",

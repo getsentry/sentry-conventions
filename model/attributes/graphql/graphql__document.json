@@ -2,8 +2,8 @@
   "key": "graphql.document",
   "brief": "The GraphQL document being executed.",
   "type": "string",
-  "pii": {
-    "key": "true",
+  "apply_scrubbing": {
+    "key": "auto",
     "reason": "The document may contain sensitive information in arguments or variables. Instrumentation should redact sensitive information when possible."
   },
   "is_in_otel": true,

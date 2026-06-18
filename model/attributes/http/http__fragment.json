@@ -2,8 +2,8 @@
   "key": "http.fragment",
   "brief": "The fragments present in the URI. Note that this contains the leading # character, while the `url.fragment` attribute does not.",
   "type": "string",
-  "pii": {
-    "key": "true"
+  "apply_scrubbing": {
+    "key": "auto"
   },
   "is_in_otel": false,
   "example": "#details",

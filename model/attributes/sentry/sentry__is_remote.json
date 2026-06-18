@@ -2,8 +2,8 @@
   "key": "sentry.is_remote",
   "brief": "Indicates whether a span's parent is remote.",
   "type": "boolean",
-  "pii": {
-    "key": "false"
+  "apply_scrubbing": {
+    "key": "never"
   },
   "is_in_otel": false,
   "example": true,

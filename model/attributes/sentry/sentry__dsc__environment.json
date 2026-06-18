@@ -2,8 +2,8 @@
   "key": "sentry.dsc.environment",
   "brief": "The environment from the dynamic sampling context.",
   "type": "string",
-  "pii": {
-    "key": "false"
+  "apply_scrubbing": {
+    "key": "never"
   },
   "is_in_otel": false,
   "example": "prod",

@@ -2,8 +2,8 @@
   "key": "vercel.edge_type",
   "brief": "Type of edge runtime in Vercel",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "edge-function",

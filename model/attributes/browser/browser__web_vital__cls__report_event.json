@@ -2,8 +2,8 @@
   "key": "browser.web_vital.cls.report_event",
   "brief": "The event that caused the SDK to report CLS (pagehide or navigation)",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "navigation",

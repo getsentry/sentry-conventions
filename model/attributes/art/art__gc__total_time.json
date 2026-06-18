@@ -2,8 +2,8 @@
   "key": "art.gc.total_time",
   "brief": "Total time spent in garbage collection by the Android Runtime, in milliseconds",
   "type": "double",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "visibility": "public",

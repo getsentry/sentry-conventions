@@ -2,8 +2,8 @@
   "key": "aws.lambda.execution_duration_in_millis",
   "brief": "The execution duration of the Lambda function invocation in milliseconds",
   "type": "double",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": 1234.56,

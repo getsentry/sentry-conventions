@@ -2,8 +2,8 @@
   "key": "gen_ai.response.time_to_first_chunk",
   "brief": "Time in seconds when the first response content chunk arrived in streaming responses.",
   "type": "double",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "visibility": "public",

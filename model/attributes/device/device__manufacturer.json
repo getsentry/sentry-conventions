@@ -2,8 +2,8 @@
   "key": "device.manufacturer",
   "brief": "The manufacturer of the device.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": "Google",

@@ -2,8 +2,8 @@
   "key": "net.peer.name",
   "brief": "Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
   "type": "string",
-  "pii": {
-    "key": "true"
+  "apply_scrubbing": {
+    "key": "auto"
   },
   "is_in_otel": true,
   "example": "example.com",

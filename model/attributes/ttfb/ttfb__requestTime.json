@@ -2,8 +2,8 @@
   "key": "ttfb.requestTime",
   "brief": "The time it takes for the server to process the initial request and send the first byte of a response to the user's browser",
   "type": "double",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": 1554.5814,

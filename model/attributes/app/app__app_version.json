@@ -2,8 +2,8 @@
   "key": "app.app_version",
   "brief": "Human readable application version, as it appears on the platform.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "1.0.0",

@@ -2,8 +2,8 @@
   "key": "sentry.user.geo.country_code",
   "brief": "Two-letter country code (ISO 3166-1 alpha-2).",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "alias": ["user.geo.country_code"],

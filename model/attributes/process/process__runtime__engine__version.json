@@ -2,8 +2,8 @@
   "key": "process.runtime.engine.version",
   "brief": "The version of the runtime engine.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "12.9.202.13-rusty",

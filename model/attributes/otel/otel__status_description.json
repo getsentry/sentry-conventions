@@ -2,8 +2,8 @@
   "key": "otel.status_description",
   "brief": "Description of the Status if it has a value, otherwise not set.",
   "type": "string",
-  "pii": {
-    "key": "true"
+  "apply_scrubbing": {
+    "key": "auto"
   },
   "is_in_otel": true,
   "example": "resource not found",

@@ -2,8 +2,8 @@
   "key": "gen_ai.usage.completion_tokens",
   "brief": "The number of tokens used in the GenAI response (completion).",
   "type": "integer",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": 10,

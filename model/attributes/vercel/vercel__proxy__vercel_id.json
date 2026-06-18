@@ -2,8 +2,8 @@
   "key": "vercel.proxy.vercel_id",
   "brief": "Vercel-specific identifier",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "sfo1::abc123",

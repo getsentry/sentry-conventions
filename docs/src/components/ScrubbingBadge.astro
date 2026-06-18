@@ -1,0 +1,30 @@
+---
+interface Props {
+  mode: 'auto' | 'manual' | 'never';
+  reason?: string;
+}
+
+const { mode, reason } = Astro.props;
+
+const labels = {
+  auto: 'Scrub: Auto',
+  manual: 'Scrub: Manual',
+  never: 'Scrub: Never',
+};
+
+const colorClasses = {
+  auto: 'bg-pii-true-soft text-pii-true',
+  manual: 'bg-pii-maybe-soft text-pii-maybe',
+  never: 'bg-pii-false-soft text-pii-false',
+};
+---
+
+<span
+  class:list={[
+    "inline-flex items-center px-2 py-1 text-xs font-medium rounded-sm uppercase tracking-wide",
+    colorClasses[mode]
+  ]}
+  title={reason}
+>
+  {labels[mode]}
+</span>

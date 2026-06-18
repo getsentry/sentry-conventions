@@ -2,8 +2,8 @@
   "key": "ui.component_name",
   "brief": "The name of the associated component.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "HomeButton",

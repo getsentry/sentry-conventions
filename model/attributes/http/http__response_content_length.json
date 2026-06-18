@@ -2,8 +2,8 @@
   "key": "http.response_content_length",
   "brief": "The encoded body size of the response (in bytes).",
   "type": "integer",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": 123,

@@ -2,8 +2,8 @@
   "key": "code.function.name",
   "brief": "The method or function fully-qualified name without arguments.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": "server_request",

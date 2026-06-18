@@ -8,8 +8,8 @@ const attributeSchema = z.object({
   brief: z.string(),
   has_dynamic_suffix: z.boolean().optional(),
   type: z.enum(['string', 'boolean', 'integer', 'double', 'string[]', 'boolean[]', 'integer[]', 'double[]']),
-  pii: z.object({
-    key: z.enum(['true', 'maybe', 'false']),
+  apply_scrubbing: z.object({
+    key: z.enum(['auto', 'manual', 'never']),
     reason: z.string().optional(),
   }),
   is_in_otel: z.boolean(),

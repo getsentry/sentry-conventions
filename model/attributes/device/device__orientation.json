@@ -2,8 +2,8 @@
   "key": "device.orientation",
   "brief": "The orientation of the device, either \"portrait\" or \"landscape\".",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "portrait",

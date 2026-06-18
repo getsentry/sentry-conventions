@@ -2,8 +2,8 @@
   "key": "vercel.proxy.lambda_region",
   "brief": "Region where lambda function executed",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "sfo1",

@@ -2,8 +2,8 @@
   "key": "cloudflare.r2.request.part_number",
   "brief": "The part number in a multipart upload operation",
   "type": "integer",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "visibility": "public",

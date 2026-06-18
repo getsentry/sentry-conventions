@@ -2,8 +2,8 @@
   "key": "culture.calendar",
   "brief": "The calendar system used by the culture.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "GregorianCalendar",
