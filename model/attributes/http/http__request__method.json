@@ -2,8 +2,8 @@
   "key": "http.request.method",
   "brief": "The HTTP method used.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": "GET",

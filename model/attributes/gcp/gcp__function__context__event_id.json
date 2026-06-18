@@ -2,8 +2,8 @@
   "key": "gcp.function.context.event_id",
   "brief": "The event ID from the legacy GCP Cloud Function context (1st gen)",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "1234567890",

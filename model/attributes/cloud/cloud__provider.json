@@ -2,8 +2,8 @@
   "key": "cloud.provider",
   "brief": "Name of the cloud provider",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": "aws",

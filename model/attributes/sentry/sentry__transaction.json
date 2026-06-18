@@ -2,8 +2,8 @@
   "key": "sentry.transaction",
   "brief": "The sentry transaction (segment name).",
   "type": "string",
-  "pii": {
-    "key": "false"
+  "apply_scrubbing": {
+    "key": "never"
   },
   "is_in_otel": false,
   "example": "GET /",

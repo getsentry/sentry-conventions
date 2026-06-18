@@ -2,8 +2,8 @@
   "key": "sentry.status_code",
   "brief": "The HTTP status code used in Sentry Insights. Typically set by Sentry during ingestion, rather than by clients.",
   "type": "integer",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": 200,

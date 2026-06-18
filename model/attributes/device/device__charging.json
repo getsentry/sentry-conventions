@@ -2,8 +2,8 @@
   "key": "device.charging",
   "brief": "Whether the device was charging or not.",
   "type": "boolean",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": false,

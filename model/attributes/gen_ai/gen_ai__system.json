@@ -2,8 +2,8 @@
   "key": "gen_ai.system",
   "brief": "The provider of the model.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": "openai",

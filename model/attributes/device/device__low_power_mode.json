@@ -2,8 +2,8 @@
   "key": "device.low_power_mode",
   "brief": "Whether the device is in Low Power Mode.",
   "type": "boolean",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": true,

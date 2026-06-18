@@ -2,8 +2,8 @@
   "key": "messaging.operation.name",
   "brief": "The name of the messaging operation being performed",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": "send",

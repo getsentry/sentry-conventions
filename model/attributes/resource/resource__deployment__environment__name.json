@@ -2,8 +2,8 @@
   "key": "resource.deployment.environment.name",
   "brief": "The software deployment environment name.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": "production",

@@ -2,8 +2,8 @@
   "key": "jvm.gc.name",
   "brief": "Name of the garbage collector.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": "G1 Young Generation",

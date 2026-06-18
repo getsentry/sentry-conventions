@@ -2,8 +2,8 @@
   "key": "art.gc.waiting_time",
   "brief": "Total time threads spent waiting for garbage collection to complete in the Android Runtime, in milliseconds",
   "type": "double",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "visibility": "public",

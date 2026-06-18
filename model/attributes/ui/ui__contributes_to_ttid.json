@@ -2,8 +2,8 @@
   "key": "ui.contributes_to_ttid",
   "brief": "Whether the span execution contributed to the TTID (time to initial display) metric.",
   "type": "boolean",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": true,

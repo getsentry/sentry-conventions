@@ -2,8 +2,8 @@
   "key": "sentry.user.username",
   "brief": "Short name or login/username of the user.",
   "type": "string",
-  "pii": {
-    "key": "true"
+  "apply_scrubbing": {
+    "key": "auto"
   },
   "is_in_otel": false,
   "alias": ["user.name"],

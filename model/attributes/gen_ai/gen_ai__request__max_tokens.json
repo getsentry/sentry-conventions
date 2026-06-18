@@ -2,8 +2,8 @@
   "key": "gen_ai.request.max_tokens",
   "brief": "The maximum number of tokens to generate in the response.",
   "type": "integer",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": 2048,

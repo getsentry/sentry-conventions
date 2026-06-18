@@ -2,8 +2,8 @@
   "key": "vercel.proxy.referer",
   "brief": "Referer of the request",
   "type": "string",
-  "pii": {
-    "key": "true"
+  "apply_scrubbing": {
+    "key": "auto"
   },
   "is_in_otel": false,
   "example": "*.vercel.app",

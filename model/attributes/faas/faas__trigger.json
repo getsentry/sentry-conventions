@@ -2,8 +2,8 @@
   "key": "faas.trigger",
   "brief": "Type of the trigger which caused this function invocation.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": "timer",

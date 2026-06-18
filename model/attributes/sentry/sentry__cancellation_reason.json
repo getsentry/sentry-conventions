@@ -2,8 +2,8 @@
   "key": "sentry.cancellation_reason",
   "brief": "The reason why a span ended early.",
   "type": "string",
-  "pii": {
-    "key": "false"
+  "apply_scrubbing": {
+    "key": "never"
   },
   "is_in_otel": false,
   "example": "document.hidden",

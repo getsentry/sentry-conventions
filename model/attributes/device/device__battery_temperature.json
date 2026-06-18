@@ -2,8 +2,8 @@
   "key": "device.battery_temperature",
   "brief": "The battery temperature of the device in Celsius.",
   "type": "double",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": 25,

@@ -2,8 +2,8 @@
   "key": "mcp.request.argument.name",
   "brief": "Name argument from prompts/get MCP request.",
   "type": "string",
-  "pii": {
-    "key": "true",
+  "apply_scrubbing": {
+    "key": "auto",
     "reason": "Prompt names can contain user input"
   },
   "is_in_otel": false,

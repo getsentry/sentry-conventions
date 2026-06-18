@@ -49,7 +49,7 @@ Run `yarn run create:attribute` to create a new attribute. This will prompt you 
 yarn run create:attribute
 
 # Non-interactive mode
-yarn run create:attribute --key http.route --description "The route pattern of the request" --type string --has_pii false --is_in_otel true --visibility public --example "/users/:id" --alias "url.template"
+yarn run create:attribute --key http.route --description "The route pattern of the request" --type string --apply_scrubbing never --is_in_otel true --visibility public --example "/users/:id" --alias "url.template"
 ```
 
 After you've created an attribute, the script will ask if you'd like to generate the docs. This will run `yarn run generate`. If you want to skip this step, you can run `yarn run generate` manually afterwards.
@@ -71,34 +71,15 @@ Span name conventions are organized loosely by type of span operation. To create
 
 Remember to run `yarn run generate` after editing or creating a `name` convention to recreate the documentation and auto-generated code.
 
-## Code and Docs Generation
+## Code Generation
 
 After you edit an attribute or add a new one, run `yarn run generate` to generate and format the code, which are generated from the json files stored in the `model` directory.
 
 Docs are generated on every PR merge.
 
-The generated code packages can be published to package repositories (currently npm and pypi) at any time by creating a new release:
+## Releasing and Updating Downstream Repos
 
-1. Trigger the [Release](https://github.com/getsentry/sentry-conventions/actions/workflows/release.yml) Github workflow. Define the version to be released. Usually, assuming any attribute changes are part of the release, that's a new minor version. We're intentionally on major version `0.x` to allow breaking changes in minor releases for now.
-2. Head over to [`getsentry/publish`](https://github.com/getsentry/publish/issues) and wait for a new issue to appear. Ensure the changes look correct and all CI checks have passed
-3. Add the `accept` label. A bot will start the release workflow. Wait for the release to complete.
-
-## Updating sentry-conventions in Relay
-
-Relay incorporates `sentry-conventions` as a git submodule. This means any Relay-facing changes made in this repository (deprecating an attribute or changing its normalization status, adding a span name convention, …) won't take effect until the submodule is updated and Relay is redeployed. To do this, proceed as follows:
-
-1. In the `relay` repo, update the submodule:
-  ```bash
-  cd relay-conventions/sentry-conventions
-  git checkout main
-  git pull
-  cd ../..
-  git commit -am "..."
-  ```
-
-2. Open a PR at https://github.com/getsentry/relay. If you didn't recompile Relay and run tests after step 1, you might now get test failures or deprecation warnings because attributes Relay was using have been deprecated. These will need to be fixed.
-3. When the PR is merged, wait for it to be deployed.
-  
+For detailed instructions on releasing new versions and updating downstream repos (Relay, Snuba, Sentry), see the [Sentry Conventions engineering practice guide](https://develop.sentry.dev/engineering-practices/sentry-conventions/) on the develop docs.
 
 ## Policies
 
@@ -110,7 +91,7 @@ Here's a list of policies that any newly added attributes MUST follow. Most of t
 - Use dots as separators for namespaces and logical grouoing, not underscores (`http.request.method`, not `http_request_method`)
 - Use `snake_case` for multi-word names (`browser.web_vital.ttfb.request_time`, not `browser.webVital.ttfb.request-time`)
 - Namespace first (`db.system`, not `system.db`)
-- The `pii` field in the attribute definition MUST be `maybe` or `true` (if the attribute can contain sensitive data). It SHOULD be `false` only if scrubbing the attribute value for PII would potentially break product features. For example, `sentry.replay_id` should have `pii` set to `false`.
+- The `apply_scrubbing` field in the attribute definition MUST be `manual` or `auto` (if the attribute can contain sensitive data). It SHOULD be `never` only if scrubbing the attribute value for PII would potentially break product features. For example, `sentry.replay_id` should have `apply_scrubbing` set to `never`.
 - When an attribute is added that deprecates an old one:
   - The old one should be marked as deprecated, and it MUST point to the new one using the `deprecation.replacement` field.
   - For both the new and the old attribute, and any existing aliases of the old attribute, the new and old names MUST be added to the `aliases` list.

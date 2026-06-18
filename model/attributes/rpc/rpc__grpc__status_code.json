@@ -2,8 +2,8 @@
   "key": "rpc.grpc.status_code",
   "brief": "The numeric status code of the gRPC request.",
   "type": "integer",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": 2,

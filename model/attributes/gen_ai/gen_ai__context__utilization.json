@@ -2,8 +2,8 @@
   "key": "gen_ai.context.utilization",
   "brief": "The fraction of the model context window utilized by this generation.",
   "type": "double",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": 0.75,

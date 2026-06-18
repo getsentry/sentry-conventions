@@ -2,8 +2,8 @@
   "key": "db.redis.connection",
   "brief": "The redis connection name.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "my-redis-instance",

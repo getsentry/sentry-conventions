@@ -2,8 +2,8 @@
   "key": "http.status_code",
   "brief": "The status code of the HTTP response.",
   "type": "integer",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": 404,

@@ -2,8 +2,8 @@
   "key": "sentry.group",
   "brief": "Stores the hash of `sentry.normalized_description`. This is primarily used for grouping spans in the product end.",
   "type": "string",
-  "pii": {
-    "key": "false"
+  "apply_scrubbing": {
+    "key": "never"
   },
   "is_in_otel": false,
   "visibility": "public",

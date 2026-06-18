@@ -2,8 +2,8 @@
   "key": "performance.activationStart",
   "brief": "The time between initiating a navigation to a page and the browser activating the page",
   "type": "double",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": 1.983,

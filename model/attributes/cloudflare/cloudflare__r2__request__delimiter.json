@@ -2,8 +2,8 @@
   "key": "cloudflare.r2.request.delimiter",
   "brief": "The delimiter used to group objects in an R2 list operation",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "visibility": "public",

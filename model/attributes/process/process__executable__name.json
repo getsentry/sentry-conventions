@@ -2,8 +2,8 @@
   "key": "process.executable.name",
   "brief": "The name of the executable that started the process.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": "getsentry",

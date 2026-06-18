@@ -2,8 +2,8 @@
   "key": "mcp.tool.result.content_count",
   "brief": "Number of content items in the tool result.",
   "type": "integer",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": 1,

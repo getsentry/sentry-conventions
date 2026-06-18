@@ -2,8 +2,8 @@
   "key": "gen_ai.tool.name",
   "brief": "Name of the tool utilized by the agent.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": "Flights",

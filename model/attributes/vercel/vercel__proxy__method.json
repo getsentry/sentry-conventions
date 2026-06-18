@@ -2,8 +2,8 @@
   "key": "vercel.proxy.method",
   "brief": "HTTP method of the request",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "GET",

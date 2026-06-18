@@ -2,8 +2,8 @@
   "key": "net.protocol.version",
   "brief": "The actual version of the protocol used for network communication.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": "1.1",

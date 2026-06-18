@@ -2,8 +2,8 @@
   "key": "ui.element.render_time",
   "brief": "The rendering time of the UI element (from time origin to finished rendering)",
   "type": "double",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": 1023.1124,

@@ -2,8 +2,8 @@
   "key": "ai.tags",
   "brief": "Tags that describe an AI pipeline step.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "{\"executed_function\": \"add_integers\"}",
