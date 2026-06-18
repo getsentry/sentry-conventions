@@ -4,5 +4,5 @@
 #   git config blame.ignoreRevsFile .git-blame-ignore-revs
 # GitHub applies this file automatically.
 
-# ref(attributes)!: Rename pii field to apply_scrubbing
-98461969b7a78428a45c555446c55a53c537b877
+# ref(attributes): Rename pii field to apply_scrubbing
+bb21c4edc3450fa18de19d6916705d50551557c6
