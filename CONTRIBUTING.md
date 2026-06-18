@@ -71,34 +71,15 @@ Span name conventions are organized loosely by type of span operation. To create
 
 Remember to run `yarn run generate` after editing or creating a `name` convention to recreate the documentation and auto-generated code.
 
-## Code and Docs Generation
+## Code Generation
 
 After you edit an attribute or add a new one, run `yarn run generate` to generate and format the code, which are generated from the json files stored in the `model` directory.
 
 Docs are generated on every PR merge.
 
-The generated code packages can be published to package repositories (currently npm and pypi) at any time by creating a new release:
+## Releasing and Updating Downstream Repos
 
-1. Trigger the [Release](https://github.com/getsentry/sentry-conventions/actions/workflows/release.yml) Github workflow. Define the version to be released. Usually, assuming any attribute changes are part of the release, that's a new minor version. We're intentionally on major version `0.x` to allow breaking changes in minor releases for now.
-2. Head over to [`getsentry/publish`](https://github.com/getsentry/publish/issues) and wait for a new issue to appear. Ensure the changes look correct and all CI checks have passed
-3. Add the `accept` label. A bot will start the release workflow. Wait for the release to complete.
-
-## Updating sentry-conventions in Relay
-
-Relay incorporates `sentry-conventions` as a git submodule. This means any Relay-facing changes made in this repository (deprecating an attribute or changing its normalization status, adding a span name convention, …) won't take effect until the submodule is updated and Relay is redeployed. To do this, proceed as follows:
-
-1. In the `relay` repo, update the submodule:
-  ```bash
-  cd relay-conventions/sentry-conventions
-  git checkout main
-  git pull
-  cd ../..
-  git commit -am "..."
-  ```
-
-2. Open a PR at https://github.com/getsentry/relay. If you didn't recompile Relay and run tests after step 1, you might now get test failures or deprecation warnings because attributes Relay was using have been deprecated. These will need to be fixed.
-3. When the PR is merged, wait for it to be deployed.
-  
+For detailed instructions on releasing new versions and updating downstream repos (Relay, Snuba, Sentry), see the [Sentry Conventions engineering practice guide](https://develop.sentry.dev/engineering-practices/sentry-conventions/) on the develop docs.
 
 ## Policies
 
