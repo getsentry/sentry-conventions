@@ -12695,6 +12695,27 @@ export const SESSION_ID = 'session.id';
  */
 export type SESSION_ID_TYPE = string;
 
+// Path: model/attributes/span/span__initial_name.json
+
+/**
+ * Stores the initial name of the span (prior to any potential name update) that can for example be used SDK-side to filter spans `span.initial_name`
+ *
+ * Attribute Value Type: `string` {@link SPAN_INITIAL_NAME_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "GET /users/123"
+ */
+export const SPAN_INITIAL_NAME = 'span.initial_name';
+
+/**
+ * Type for {@link SPAN_INITIAL_NAME} span.initial_name
+ */
+export type SPAN_INITIAL_NAME_TYPE = string;
+
 // Path: model/attributes/stall_percentage.json
 
 /**
@@ -15140,6 +15161,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SERVICE_NAME]: 'string',
   [SERVICE_VERSION]: 'string',
   [SESSION_ID]: 'string',
+  [SPAN_INITIAL_NAME]: 'string',
   [STALL_PERCENTAGE]: 'double',
   [STALL_TOTAL_TIME]: 'double',
   [STATE_TYPE]: 'string',
@@ -15802,6 +15824,7 @@ export type AttributeName =
   | typeof SERVICE_NAME
   | typeof SERVICE_VERSION
   | typeof SESSION_ID
+  | typeof SPAN_INITIAL_NAME
   | typeof STALL_PERCENTAGE
   | typeof STALL_TOTAL_TIME
   | typeof STATE_TYPE
@@ -23614,6 +23637,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '00112233-4455-6677-8899-aabbccddeeff',
     changelog: [{ version: '0.11.0', prs: [412], description: 'Added session.id attribute' }],
   },
+  [SPAN_INITIAL_NAME]: {
+    brief:
+      'Stores the initial name of the span (prior to any potential name update) that can for example be used SDK-side to filter spans',
+    type: 'string',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'GET /users/123',
+    changelog: [{ version: 'next', prs: [443], description: 'Added span.initial_name attribute' }],
+    additionalContext: [
+      'This attribute must be set to the value that the SDK applies to `ignoreSpans` or `tracesSampler`. Only relevant for streamed spans.',
+    ],
+  },
   [STALL_PERCENTAGE]: {
     brief: 'The fraction of time the app was stalled. Only applies to React Native. This is computed by Relay.',
     type: 'double',
@@ -25193,6 +25231,7 @@ export type Attributes = {
   [SERVICE_NAME]?: SERVICE_NAME_TYPE;
   [SERVICE_VERSION]?: SERVICE_VERSION_TYPE;
   [SESSION_ID]?: SESSION_ID_TYPE;
+  [SPAN_INITIAL_NAME]?: SPAN_INITIAL_NAME_TYPE;
   [STALL_PERCENTAGE]?: STALL_PERCENTAGE_TYPE;
   [STALL_TOTAL_TIME]?: STALL_TOTAL_TIME_TYPE;
   [STATE_TYPE]?: STATE_TYPE_TYPE;
