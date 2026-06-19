@@ -242,6 +242,7 @@ class _AttributeNamesMeta(type):
         "NET_SOCK_PEER_PORT",
         "NET_TRANSPORT",
         "OS_BUILD",
+        "OTEL_KIND",
         "PERFORMANCE_ACTIVATIONSTART",
         "PERFORMANCE_TIMEORIGIN",
         "QUERY_KEY",
@@ -6064,6 +6065,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "18.04.2"
     """
 
+    # Path: model/attributes/otel/otel__kind.json
+    OTEL_KIND: Literal["otel.kind"] = "otel.kind"
+    """The span kind (https://opentelemetry.io/docs/concepts/signals/traces/#span-kind). Deprecated, use `sentry.kind` instead.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: sentry.kind
+    DEPRECATED: Use sentry.kind instead - Deprecated in favor of sentry.kind
+    Example: "SERVER"
+    """
+
     # Path: model/attributes/otel/otel__scope__name.json
     OTEL_SCOPE_NAME: Literal["otel.scope.name"] = "otel.scope.name"
     """The name of the instrumentation scope - (InstrumentationScope.Name in OTLP).
@@ -6810,6 +6824,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: otel.kind
     Example: "server"
     """
 
@@ -15187,6 +15202,25 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "otel.kind": AttributeMetadata(
+        brief="The span kind (https://opentelemetry.io/docs/concepts/signals/traces/#span-kind). Deprecated, use `sentry.kind` instead.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="SERVER",
+        deprecation=DeprecationInfo(
+            replacement="sentry.kind",
+            reason="Deprecated in favor of sentry.kind",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["sentry.kind"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[440], description="Added otel.kind attribute"
+            ),
+        ],
+    ),
     "otel.scope.name": AttributeMetadata(
         brief="The name of the instrumentation scope - (InstrumentationScope.Name in OTLP).",
         type=AttributeType.STRING,
@@ -15994,6 +16028,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="server",
+        aliases=["otel.kind"],
         changelog=[
             ChangelogEntry(version="0.3.1", prs=[190]),
         ],
@@ -18110,6 +18145,7 @@ Attributes = TypedDict(
         "os.theme": str,
         "os.type": str,
         "os.version": str,
+        "otel.kind": str,
         "otel.scope.name": str,
         "otel.scope.version": str,
         "otel.status_code": str,

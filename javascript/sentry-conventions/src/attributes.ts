@@ -10315,6 +10315,30 @@ export const OS_VERSION = 'os.version';
  */
 export type OS_VERSION_TYPE = string;
 
+// Path: model/attributes/otel/otel__kind.json
+
+/**
+ * The span kind (https://opentelemetry.io/docs/concepts/signals/traces/#span-kind). Deprecated, use `sentry.kind` instead. `otel.kind`
+ *
+ * Attribute Value Type: `string` {@link OTEL_KIND_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link SENTRY_KIND} `sentry.kind`
+ *
+ * @deprecated Use {@link SENTRY_KIND} (sentry.kind) instead - Deprecated in favor of sentry.kind
+ * @example "SERVER"
+ */
+export const OTEL_KIND = 'otel.kind';
+
+/**
+ * Type for {@link OTEL_KIND} otel.kind
+ */
+export type OTEL_KIND_TYPE = string;
+
 // Path: model/attributes/otel/otel__scope__name.json
 
 /**
@@ -11659,6 +11683,8 @@ export type SENTRY_IS_REMOTE_TYPE = boolean;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Aliases: {@link OTEL_KIND} `otel.kind`
  *
  * @example "server"
  */
@@ -15031,6 +15057,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [OS_THEME]: 'string',
   [OS_TYPE]: 'string',
   [OS_VERSION]: 'string',
+  [OTEL_KIND]: 'string',
   [OTEL_SCOPE_NAME]: 'string',
   [OTEL_SCOPE_VERSION]: 'string',
   [OTEL_STATUS_CODE]: 'string',
@@ -15693,6 +15720,7 @@ export type AttributeName =
   | typeof OS_THEME
   | typeof OS_TYPE
   | typeof OS_VERSION
+  | typeof OTEL_KIND
   | typeof OTEL_SCOPE_NAME
   | typeof OTEL_SCOPE_VERSION
   | typeof OTEL_STATUS_CODE
@@ -22242,6 +22270,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '18.04.2',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  [OTEL_KIND]: {
+    brief:
+      'The span kind (https://opentelemetry.io/docs/concepts/signals/traces/#span-kind). Deprecated, use `sentry.kind` instead.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'SERVER',
+    deprecation: {
+      replacement: 'sentry.kind',
+      reason: 'Deprecated in favor of sentry.kind',
+    },
+    aliases: [SENTRY_KIND],
+    changelog: [{ version: 'next', prs: [440], description: 'Added otel.kind attribute' }],
+  },
   [OTEL_SCOPE_NAME]: {
     brief: 'The name of the instrumentation scope - (InstrumentationScope.Name in OTLP).',
     type: 'string',
@@ -23021,6 +23066,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'server',
+    aliases: [OTEL_KIND],
     changelog: [{ version: '0.3.1', prs: [190] }],
   },
   [SENTRY_MAIN_THREAD]: {
@@ -25084,6 +25130,7 @@ export type Attributes = {
   [OS_THEME]?: OS_THEME_TYPE;
   [OS_TYPE]?: OS_TYPE_TYPE;
   [OS_VERSION]?: OS_VERSION_TYPE;
+  [OTEL_KIND]?: OTEL_KIND_TYPE;
   [OTEL_SCOPE_NAME]?: OTEL_SCOPE_NAME_TYPE;
   [OTEL_SCOPE_VERSION]?: OTEL_SCOPE_VERSION_TYPE;
   [OTEL_STATUS_CODE]?: OTEL_STATUS_CODE_TYPE;
