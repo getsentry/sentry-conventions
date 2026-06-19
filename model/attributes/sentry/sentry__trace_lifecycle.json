@@ -1,0 +1,18 @@
+{
+  "key": "sentry.trace_lifecycle",
+  "brief": "Indicates the chosen trace lifecycle mode of the SDK (stream or static)",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "example": "stream",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [442],
+      "description": "Added sentry.trace_lifecycle attribute"
+    }
+  ]
+}
