@@ -20,6 +20,12 @@ pub const BROWSER_RESOURCE_IMG_SPAN_OP: &str = "resource.img";
 
 pub const BROWSER_RESOURCE_CSS_SPAN_OP: &str = "resource.css";
 
+pub const BROWSER_RESOURCE_AUDIO_SPAN_OP: &str = "resource.audio";
+
+pub const BROWSER_RESOURCE_VIDEO_SPAN_OP: &str = "resource.video";
+
+pub const BROWSER_RESOURCE_IFRAME_SPAN_OP: &str = "resource.iframe";
+
 pub const BROWSER_RESOURCE_OTHER_SPAN_OP: &str = "resource.other";
 
 /// Usage of browser APIs or functionality

@@ -26,6 +26,12 @@ export const BROWSER_RESOURCE_IMG_SPAN_OP = 'resource.img';
 
 export const BROWSER_RESOURCE_CSS_SPAN_OP = 'resource.css';
 
+export const BROWSER_RESOURCE_AUDIO_SPAN_OP = 'resource.audio';
+
+export const BROWSER_RESOURCE_VIDEO_SPAN_OP = 'resource.video';
+
+export const BROWSER_RESOURCE_IFRAME_SPAN_OP = 'resource.iframe';
+
 export const BROWSER_RESOURCE_OTHER_SPAN_OP = 'resource.other';
 
 /**
