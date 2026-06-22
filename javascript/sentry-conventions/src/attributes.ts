@@ -3636,7 +3636,7 @@ export type DB_QUERY_PARAMETER_KEY_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * @example "SELECT users;"
+ * @example "SELECT users"
  */
 export const DB_QUERY_SUMMARY = 'db.query.summary';
 
@@ -18116,7 +18116,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'SELECT users;',
+    example: 'SELECT users',
     changelog: [{ version: '0.4.0', prs: [208] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   [DB_QUERY_TEXT]: {
