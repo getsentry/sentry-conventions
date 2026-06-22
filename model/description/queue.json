@@ -4,7 +4,14 @@
     {
       "name": "Queue",
       "brief": "Operations that represent working with message queues, including publishing, receiving, processing, and settling messages.",
-      "ops": ["queue", "queue.publish", "queue.create", "queue.receive", "queue.process", "queue.settle"],
+      "ops": [
+        "queue",
+        "queue.publish",
+        "queue.create",
+        "queue.receive",
+        "queue.process",
+        "queue.settle"
+      ],
       "templates": ["{{messaging.destination.name}}"],
       "examples": ["order-events"]
     }
