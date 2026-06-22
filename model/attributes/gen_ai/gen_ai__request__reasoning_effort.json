@@ -2,8 +2,8 @@
   "key": "gen_ai.request.reasoning_effort",
   "brief": "Constrains the effort on reasoning for reasoning models. Supported values vary by provider.",
   "type": "string",
-  "pii": {
-    "key": "false"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "visibility": "public",

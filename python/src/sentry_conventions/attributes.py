@@ -3669,7 +3669,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Constrains the effort on reasoning for reasoning models. Supported values vary by provider.
 
     Type: str
-    Contains PII: false
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "high"
@@ -12395,7 +12395,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.request.reasoning_effort": AttributeMetadata(
         brief="Constrains the effort on reasoning for reasoning models. Supported values vary by provider.",
         type=AttributeType.STRING,
-        pii=PiiInfo(isPii=IsPii.FALSE),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="high",

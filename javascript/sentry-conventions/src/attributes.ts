@@ -6052,7 +6052,7 @@ export type GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE = number;
  *
  * Attribute Value Type: `string` {@link GEN_AI_REQUEST_REASONING_EFFORT_TYPE}
  *
- * Contains PII: false
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -19589,8 +19589,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   [GEN_AI_REQUEST_REASONING_EFFORT]: {
     brief: 'Constrains the effort on reasoning for reasoning models. Supported values vary by provider.',
     type: 'string',
-    pii: {
-      isPii: 'false',
+    applyScrubbing: {
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
