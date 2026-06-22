@@ -7,7 +7,7 @@
       "is_in_otel": false,
       "ops": ["pageload"],
       "templates": ["{{url.template}}", "Pageload"],
-      "examples": ["/users/:id", "/home"]
+      "examples": ["/users/:id", "/home", "Pageload"]
     },
     {
       "name": "Navigation",
