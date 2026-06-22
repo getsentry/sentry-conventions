@@ -17,7 +17,7 @@
         "{{http.request.method}} {{url.path}}",
         "{{http.request.method}} {{url.full}}"
       ],
-      "examples": ["GET /users/123", "GET http://example.com/users/123"]
+      "examples": ["GET /users/:id", "GET /users/123", "GET http://example.com/users/123"]
     }
   ]
 }
