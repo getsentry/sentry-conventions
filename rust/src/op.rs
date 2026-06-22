@@ -106,6 +106,28 @@ pub const GENERAL_MARK_SPAN_OP: &str = "mark";
 /// The time it took for a set of instructions to execute
 pub const GENERAL_FUNCTION_SPAN_OP: &str = "function";
 
+// Path: model/op/messaging.json
+// Name: messaging
+
+// Description: Messaging related spans represent operations on topics in streaming data systems and queues, such as producing and consuming messages in Kafka, RabbitMQ.
+/// A general queue operation.
+pub const MESSAGING_QUEUE_SPAN_OP: &str = "queue";
+
+/// Publishing a message to a queue.
+pub const MESSAGING_QUEUE_PUBLISH_SPAN_OP: &str = "queue.publish";
+
+/// Creating a queue or a message for later publishing.
+pub const MESSAGING_QUEUE_CREATE_SPAN_OP: &str = "queue.create";
+
+/// Receiving a message from a queue.
+pub const MESSAGING_QUEUE_RECEIVE_SPAN_OP: &str = "queue.receive";
+
+/// Processing a message from a queue.
+pub const MESSAGING_QUEUE_PROCESS_SPAN_OP: &str = "queue.process";
+
+/// Settling a message, e.g. acknowledging or rejecting it.
+pub const MESSAGING_QUEUE_SETTLE_SPAN_OP: &str = "queue.settle";
+
 // Path: model/op/mobile.json
 // Name: mobile
 
@@ -120,28 +142,6 @@ pub const MOBILE_FILE_SPAN_OP: &str = "file";
 pub const MOBILE_SERIALIZE_SPAN_OP: &str = "serialize";
 
 pub const MOBILE_HTTP_SPAN_OP: &str = "http";
-
-// Path: model/op/queue.json
-// Name: queue
-
-// Description: Queue related spans represent operations on message queues, such as publishing, receiving, processing, and settling messages.
-/// A general queue operation.
-pub const QUEUE_QUEUE_SPAN_OP: &str = "queue";
-
-/// Publishing a message to a queue.
-pub const QUEUE_QUEUE_PUBLISH_SPAN_OP: &str = "queue.publish";
-
-/// Creating a queue or a message for later publishing.
-pub const QUEUE_QUEUE_CREATE_SPAN_OP: &str = "queue.create";
-
-/// Receiving a message from a queue.
-pub const QUEUE_QUEUE_RECEIVE_SPAN_OP: &str = "queue.receive";
-
-/// Processing a message from a queue.
-pub const QUEUE_QUEUE_PROCESS_SPAN_OP: &str = "queue.process";
-
-/// Settling a message, e.g. acknowledging or rejecting it.
-pub const QUEUE_QUEUE_SETTLE_SPAN_OP: &str = "queue.settle";
 
 // Path: model/op/web_server.json
 // Name: web_server
