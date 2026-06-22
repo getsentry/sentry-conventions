@@ -17,26 +17,28 @@ Before attributes are sent from SDKs, or attribute values or definitions change,
 The merge process for sentry-conventions PRs:
 
 1. Open a PR with the proposed convention change ([Adding an Attribute](#adding-a-new-attribute)).
-2. Get an approval from at least one code owner. 
+2. Get an approval from at least one code owner.
 3. Wait for at least 3 business days after the first approval to give other code owners a chance to review.
-   This grace period exists because attribute names, once shipped in an SDK release, are effectively permanent. If a bad name gets adopted by even one SDK, fixing it requires a deprecation cycle across the SDK(s) that shipped it and the Sentry backend. 
-   There is no urgency exception. 
+   This grace period exists because attribute names, once shipped in an SDK release, are effectively permanent. If a bad name gets adopted by even one SDK, fixing it requires a deprecation cycle across the SDK(s) that shipped it and the Sentry backend.
+   There is no urgency exception.
    If a name feels wrong, raise it during review, not after.
 4. Merge your PR (alternatively, code owners may merge it after review)
 
 ## Adding a new attribute
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
+>
 > ### OTel Alignment
 >
-> Before proposing a new attribute, check the [OpenTelemetry semantic conventions registry](https://opentelemetry.io/docs/specs/semconv/registry/attributes/).     
->   
+> Before proposing a new attribute, check the [OpenTelemetry semantic conventions registry](https://opentelemetry.io/docs/specs/semconv/registry/attributes/).
+>
 > If OTel already defines the attribute:
-> - Use the OTel name and type. Set `is_in_otel: true`. 
->  - Do not create a Sentry-specific synonym!. Diverging from OTel for the same concept creates more confusion and work than value.
-> 
-> If OTel doesn't define it, or the concept is Sentry-specific, set `is_in_otel: false`.                                                       
-> 
+>
+> - Use the OTel name and type. Set `is_in_otel: true`.
+> - Do not create a Sentry-specific synonym!. Diverging from OTel for the same concept creates more confusion and work than value.
+>
+> If OTel doesn't define it, or the concept is Sentry-specific, set `is_in_otel: false`.
+>
 > When in doubt, prefer OTel alignment. Sentry conventions should only extend OTel, not diverge from it.
 
 Run `yarn run create:attribute` to create a new attribute. This will prompt you to enter information about the attribute. There are two modes:
@@ -109,7 +111,7 @@ yarn test
 
 ## Linting
 
-This repo uses [Biome](https://biome.sh/) and other platform-specific tools for linting. To run the linting, run `yarn lint`.
+This repo uses [oxlint](https://oxc.rs/docs/guide/usage/linter.html) and [oxfmt](https://oxc.rs/docs/guide/usage/formatter.html) along with other platform-specific tools for linting and formatting. To run the linting, run `yarn lint`.
 
 ```bash
 yarn lint
