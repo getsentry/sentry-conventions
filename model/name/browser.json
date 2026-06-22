@@ -15,7 +15,7 @@
       "is_in_otel": false,
       "ops": ["navigation"],
       "templates": ["{{url.template}}", "Navigation"],
-      "examples": ["/users/:id", "/home"]
+      "examples": ["/users/:id", "/home", "Navigation"]
     }
   ]
 }
