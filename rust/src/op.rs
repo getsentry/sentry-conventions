@@ -121,6 +121,28 @@ pub const MOBILE_SERIALIZE_SPAN_OP: &str = "serialize";
 
 pub const MOBILE_HTTP_SPAN_OP: &str = "http";
 
+// Path: model/op/queue.json
+// Name: queue
+
+// Description: Queue related spans represent operations on message queues, such as publishing, receiving, processing, and settling messages.
+/// A general queue operation.
+pub const QUEUE_QUEUE_SPAN_OP: &str = "queue";
+
+/// Publishing a message to a queue.
+pub const QUEUE_QUEUE_PUBLISH_SPAN_OP: &str = "queue.publish";
+
+/// Creating a queue or a message for later publishing.
+pub const QUEUE_QUEUE_CREATE_SPAN_OP: &str = "queue.create";
+
+/// Receiving a message from a queue.
+pub const QUEUE_QUEUE_RECEIVE_SPAN_OP: &str = "queue.receive";
+
+/// Processing a message from a queue.
+pub const QUEUE_QUEUE_PROCESS_SPAN_OP: &str = "queue.process";
+
+/// Settling a message, e.g. acknowledging or rejecting it.
+pub const QUEUE_QUEUE_SETTLE_SPAN_OP: &str = "queue.settle";
+
 // Path: model/op/web_server.json
 // Name: web_server
 
