@@ -17,7 +17,7 @@
         "resource.other"
       ],
       "templates": ["{{url.domain}}", "Resource"],
-      "examples": ["https://example.com/static/app.js"]
+      "examples": ["example.com"]
     }
   ]
 }
