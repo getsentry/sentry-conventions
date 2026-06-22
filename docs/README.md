@@ -59,6 +59,7 @@ The site is available at: https://getsentry.github.io/sentry-conventions/
 ### Adding a new page
 
 Create a new `.astro` file in `src/pages/`. The file path determines the URL:
+
 - `src/pages/foo.astro` → `/sentry-conventions/foo/`
 - `src/pages/bar/index.astro` → `/sentry-conventions/bar/`
 
