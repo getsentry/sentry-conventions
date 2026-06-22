@@ -4,12 +4,7 @@
     {
       "name": "Operations",
       "brief": "Operations that interact with a cache, such as reading or writing cached values.",
-      "ops": [
-        "cache",
-        "cache.get",
-        "cache.put",
-        "cache.remove"
-      ],
+      "ops": ["cache", "cache.get", "cache.put", "cache.remove"],
       "templates": ["{{cache.key}}"],
       "examples": ["my-cache-key"]
     }

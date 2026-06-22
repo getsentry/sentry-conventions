@@ -67,6 +67,12 @@ pub const DATABASE_DB_QUERY_SPAN_OP: &str = "db.query";
 
 pub const DATABASE_CACHE_SPAN_OP: &str = "cache";
 
+pub const DATABASE_CACHE_GET_SPAN_OP: &str = "cache.get";
+
+pub const DATABASE_CACHE_PUT_SPAN_OP: &str = "cache.put";
+
+pub const DATABASE_CACHE_REMOVE_SPAN_OP: &str = "cache.remove";
+
 // Path: model/op/faas.json
 // Name: faas
 
