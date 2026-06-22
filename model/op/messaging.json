@@ -1,6 +1,6 @@
 {
-  "name": "queue",
-  "description": "Queue related spans represent operations on message queues, such as publishing, receiving, processing, and settling messages.",
+  "name": "messaging",
+  "description": "Messaging related spans represent operations on topics in streaming data systems and queues, such as producing and consuming messages in Kafka, RabbitMQ.",
   "fields": [
     {
       "name": "queue",
