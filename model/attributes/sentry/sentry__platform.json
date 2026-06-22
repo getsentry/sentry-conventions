@@ -2,8 +2,8 @@
   "key": "sentry.platform",
   "brief": "The sdk platform that generated the event.",
   "type": "string",
-  "pii": {
-    "key": "false"
+  "apply_scrubbing": {
+    "key": "never"
   },
   "is_in_otel": false,
   "example": "php",

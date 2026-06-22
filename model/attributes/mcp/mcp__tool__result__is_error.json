@@ -2,16 +2,26 @@
   "key": "mcp.tool.result.is_error",
   "brief": "Whether a tool execution resulted in an error.",
   "type": "boolean",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": false,
   "visibility": "public",
   "changelog": [
     {
+      "version": "0.12.0",
+      "prs": [420],
+      "description": "Deprecated in favor of error.type"
+    },
+    {
       "version": "0.3.0",
       "prs": [171]
     }
-  ]
+  ],
+  "deprecation": {
+    "_status": null,
+    "replacement": "error.type",
+    "reason": "OTel uses error.type set to 'tool_error' when isError is true. Cannot be automatically backfilled due to type mismatch (boolean vs string)."
+  }
 }

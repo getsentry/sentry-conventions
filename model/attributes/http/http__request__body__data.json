@@ -2,8 +2,8 @@
   "key": "http.request.body.data",
   "brief": "HTTP request body data. Can be given as string or structural data of any format.",
   "type": "string",
-  "pii": {
-    "key": "true"
+  "apply_scrubbing": {
+    "key": "auto"
   },
   "is_in_otel": false,
   "example": "[{\"role\": \"user\", \"message\": \"hello\"}]",

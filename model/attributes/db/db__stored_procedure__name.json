@@ -2,8 +2,8 @@
   "key": "db.stored_procedure.name",
   "brief": "The name of a stored procedure being called.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": "GetUserById",

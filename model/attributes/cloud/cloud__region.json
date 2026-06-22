@@ -2,8 +2,8 @@
   "key": "cloud.region",
   "brief": "The geographical region the resource is running",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": "us-east-1",

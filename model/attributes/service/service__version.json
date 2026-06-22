@@ -2,8 +2,8 @@
   "key": "service.version",
   "brief": "The version string of the service API or implementation. The format is not defined by these conventions.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": "5.0.0",

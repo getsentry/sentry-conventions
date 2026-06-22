@@ -2,8 +2,8 @@
   "key": "resource.render_blocking_status",
   "brief": "The render blocking status of the resource.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "non-blocking",

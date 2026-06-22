@@ -3,8 +3,8 @@ export type {
   AttributeType,
   AttributeValue,
   Attributes,
-  IsPii,
-  PiiInfo,
+  ApplyScrubbing,
+  ApplyScrubbingInfo,
   DeprecationInfo,
   AttributeMetadata,
 } from './attributes';

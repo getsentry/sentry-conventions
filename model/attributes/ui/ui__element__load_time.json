@@ -2,8 +2,8 @@
   "key": "ui.element.load_time",
   "brief": "The loading time of a UI element (from time origin to finished loading)",
   "type": "double",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": 998.2234,

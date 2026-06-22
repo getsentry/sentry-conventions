@@ -2,8 +2,8 @@
   "key": "lcp.renderTime",
   "brief": "The time it took for the LCP element to be rendered",
   "type": "integer",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": 1685,

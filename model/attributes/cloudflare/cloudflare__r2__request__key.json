@@ -2,15 +2,15 @@
   "key": "cloudflare.r2.request.key",
   "brief": "The object key used in the R2 operation",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "visibility": "public",
   "example": "my-file.txt",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.11.1",
       "prs": [413],
       "description": "Added cloudflare.r2.request.key attribute"
     }

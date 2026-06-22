@@ -2,8 +2,8 @@
   "key": "sentry.replay_is_buffering",
   "brief": "A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate).",
   "type": "boolean",
-  "pii": {
-    "key": "false"
+  "apply_scrubbing": {
+    "key": "never"
   },
   "is_in_otel": false,
   "example": true,

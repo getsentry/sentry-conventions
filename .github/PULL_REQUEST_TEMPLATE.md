@@ -8,7 +8,7 @@
 
 If an attribute was added:
 - [ ] The attribute is in a namespace (e.g. `nextjs.function_id`, not `function_id`)
-- [ ] I have used the correct value for `pii` (i.e. `maybe` or `true`. Use `false` only for values that should never be scrubbed such as IDs)
+- [ ] I have used the correct value for `apply_scrubbing` (i.e. `manual` or `auto`. Use `never` only for values that should never be scrubbed such as IDs)
 
 If an attribute was deprecated:
 - [ ] I've followed the policies described in [CONTRIBUTING.md](https://github.com/getsentry/sentry-conventions/blob/main/CONTRIBUTING.md)

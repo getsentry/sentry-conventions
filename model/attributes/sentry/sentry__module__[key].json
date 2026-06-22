@@ -3,8 +3,8 @@
   "brief": "A module that was loaded in the process. The key is the name of the module.",
   "has_dynamic_suffix": true,
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "sentry.module.brianium/paratest='v7.7.0'",

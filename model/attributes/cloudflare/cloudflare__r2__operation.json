@@ -2,15 +2,15 @@
   "key": "cloudflare.r2.operation",
   "brief": "The R2 API operation being performed",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "visibility": "public",
   "example": "GetObject",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.11.1",
       "prs": [413],
       "description": "Added cloudflare.r2.operation attribute"
     }

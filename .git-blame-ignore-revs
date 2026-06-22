@@ -1,0 +1,8 @@
+# Revisions listed here are ignored by `git blame` (large mechanical changes).
+#
+# Enable locally with:
+#   git config blame.ignoreRevsFile .git-blame-ignore-revs
+# GitHub applies this file automatically.
+
+# ref(attributes): Rename pii field to apply_scrubbing
+bb21c4edc3450fa18de19d6916705d50551557c6

@@ -2,8 +2,8 @@
   "key": "sentry.idle_span_finish_reason",
   "brief": "The reason why an idle span ended early.",
   "type": "string",
-  "pii": {
-    "key": "false"
+  "apply_scrubbing": {
+    "key": "never"
   },
   "is_in_otel": false,
   "example": "idleTimeout",

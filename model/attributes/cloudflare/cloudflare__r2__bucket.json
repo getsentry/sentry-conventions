@@ -2,15 +2,15 @@
   "key": "cloudflare.r2.bucket",
   "brief": "The name of the Cloudflare R2 bucket binding",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "visibility": "public",
   "example": "MY_BUCKET",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.11.1",
       "prs": [413],
       "description": "Added cloudflare.r2.bucket attribute"
     }

@@ -2,8 +2,8 @@
   "key": "http.scheme",
   "brief": "The URI scheme component identifying the used protocol.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": "https",

@@ -2,8 +2,8 @@
   "key": "sentry.dist",
   "brief": "The sentry dist.",
   "type": "string",
-  "pii": {
-    "key": "false"
+  "apply_scrubbing": {
+    "key": "never"
   },
   "is_in_otel": false,
   "example": "1.0",

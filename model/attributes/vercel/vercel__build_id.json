@@ -2,8 +2,8 @@
   "key": "vercel.build_id",
   "brief": "Identifier for the Vercel build (only present on build logs)",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "bld_cotnkcr76",

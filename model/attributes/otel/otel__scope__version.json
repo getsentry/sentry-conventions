@@ -2,8 +2,8 @@
   "key": "otel.scope.version",
   "brief": "The version of the instrumentation scope - (InstrumentationScope.Version in OTLP).",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": "2.4.5",

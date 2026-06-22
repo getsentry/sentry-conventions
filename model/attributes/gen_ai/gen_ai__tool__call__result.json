@@ -2,12 +2,12 @@
   "key": "gen_ai.tool.call.result",
   "brief": "The result of the tool call. It has to be a stringified version of the result of the tool.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": "rainy, 57°F",
-  "alias": ["gen_ai.tool.output", "gen_ai.tool.message"],
+  "alias": ["gen_ai.tool.output", "gen_ai.tool.message", "mcp.tool.result.content"],
   "visibility": "public",
   "changelog": [
     {

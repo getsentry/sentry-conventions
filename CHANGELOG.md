@@ -1,3 +1,35 @@
+## 0.12.0
+
+### New Features ✨
+
+- (mcp) Align MCP attributes with OTel semantic conventions by @constantinius in [#420](https://github.com/getsentry/sentry-conventions/pull/420)
+
+## 0.11.1
+
+### New Features ✨
+
+#### Attributes
+
+- Deprecate cloudflare.d1.query_type by @JPeer264 in [#411](https://github.com/getsentry/sentry-conventions/pull/411)
+- Add Cloudflare R2 attributes by @JPeer264 in [#413](https://github.com/getsentry/sentry-conventions/pull/413)
+- Add FaaS/AWS conventions and deprecate Lambda-specific attributes by @ericapisani in [#414](https://github.com/getsentry/sentry-conventions/pull/414)
+
+#### Other
+
+- (description) Add span description conventions by @mjq in [#422](https://github.com/getsentry/sentry-conventions/pull/422)
+- Add span name conventions for MCP server spans by @gggritso in [#377](https://github.com/getsentry/sentry-conventions/pull/377)
+
+### Internal Changes 🔧
+
+#### Pii
+
+- Review pii settings for attributes part 2 by @Dav1dde in [#425](https://github.com/getsentry/sentry-conventions/pull/425)
+- Review pii settings for attributes by @Dav1dde in [#424](https://github.com/getsentry/sentry-conventions/pull/424)
+
+#### Other
+
+- (name) Disallow replaced attributes by @mjq in [#423](https://github.com/getsentry/sentry-conventions/pull/423)
+
 ## 0.11.0
 
 ### New Features ✨

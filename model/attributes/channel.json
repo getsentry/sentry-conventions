@@ -2,8 +2,8 @@
   "key": "channel",
   "brief": "The channel name that is being used.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "mail",

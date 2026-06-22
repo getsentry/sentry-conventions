@@ -2,8 +2,8 @@
   "key": "vercel.project_name",
   "brief": "Name of the Vercel project",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "my-app",

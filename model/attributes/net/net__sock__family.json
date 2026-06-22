@@ -2,8 +2,8 @@
   "key": "net.sock.family",
   "brief": "OSI transport and network layer",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": "inet",

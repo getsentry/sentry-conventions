@@ -2,8 +2,8 @@
   "key": "session.id",
   "brief": "A unique id identifying the active session at the time of setting this attribute",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "visibility": "public",

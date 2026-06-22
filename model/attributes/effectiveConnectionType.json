@@ -2,8 +2,8 @@
   "key": "effectiveConnectionType",
   "brief": "Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "4g",

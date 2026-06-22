@@ -2,9 +2,10 @@
   "key": "sentry.kind",
   "brief": "Used to clarify the relationship between parents and children, or to distinguish between spans, e.g. a `server` and `client` span with the same name.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
+  "alias": ["otel.kind"],
   "is_in_otel": false,
   "example": "server",
   "visibility": "public",

@@ -2,8 +2,8 @@
   "key": "sentry.sdk.name",
   "brief": "The sentry sdk name.",
   "type": "string",
-  "pii": {
-    "key": "false"
+  "apply_scrubbing": {
+    "key": "never"
   },
   "is_in_otel": false,
   "example": "@sentry/react",

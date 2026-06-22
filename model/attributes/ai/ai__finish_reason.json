@@ -2,8 +2,8 @@
   "key": "ai.finish_reason",
   "brief": "The reason why the model stopped generating.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "COMPLETE",

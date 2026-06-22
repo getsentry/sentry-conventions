@@ -12,7 +12,8 @@
     "lint:python": "(cd python && uv run pyflakes src/ && uv run mypy .)",
     "lint-fix": "biome lint . --write",
     "test": "yarn test:js && yarn test:python",
-    "test:js": "vitest",
+    "test:js": "vitest run",
+    "test:js:watch": "vitest",
     "test:python": "cd python && uv sync && uv pip install -e . && uv run pytest",
     "build": "yarn build:js && yarn build:python && yarn build:tarball",
     "build:js": "(cd javascript/sentry-conventions && yarn build)",
@@ -35,16 +36,24 @@
     "node": ">=22"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.9.4",
-    "@clack/prompts": "^0.11.0",
-    "@types/node": "^22.19.18",
-    "@types/tar": "^6.1.13",
+    "@biomejs/biome": "2.5.0",
+    "@clack/prompts": "^1.5.1",
+    "@types/node": "^25.9.3",
     "ajv": "^8.20.0",
-    "tar": "^7.5.15",
-    "tsx": "^4.21.0",
-    "vitest": "^4.1.0"
+    "tar": "^7.5.16",
+    "tsx": "^4.22.4",
+    "vitest": "^4.1.9"
   },
-  "workspaces": ["javascript/*", "python/*", "rust/*", "docs"],
+  "resolutions": {
+    "//esbuild": "Forces patched esbuild (GHSA-gv7w-rqvm-qjhr, GHSA-g7r4-m6w7-qqqr). Remove once upstream bumps to >=0.28.1.",
+    "esbuild": "~0.28.1"
+  },
+  "workspaces": [
+    "javascript/*",
+    "python/*",
+    "rust/*",
+    "docs"
+  ],
   "packageManager": "yarn@1.22.22",
   "volta": {
     "node": "22.15.0",

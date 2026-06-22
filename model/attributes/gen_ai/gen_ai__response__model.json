@@ -2,8 +2,8 @@
   "key": "gen_ai.response.model",
   "brief": "The vendor-specific ID of the model used.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": "gpt-4",

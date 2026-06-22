@@ -2,8 +2,8 @@
   "key": "sentry.normalized_db_query",
   "brief": "The normalized version of `db.query.text`.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "SELECT .. FROM sentry_project WHERE (project_id = %s)",

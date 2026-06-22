@@ -2,12 +2,12 @@
   "key": "net.transport",
   "brief": "OSI transport layer or inter-process communication method.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": "tcp",
-  "alias": ["network.transport"],
+  "alias": ["network.transport", "mcp.transport"],
   "deprecation": {
     "_status": null,
     "replacement": "network.transport"

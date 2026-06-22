@@ -2,15 +2,16 @@
   "key": "aws.log.group.names",
   "brief": "The name(s) of the AWS log group(s) an application is writing to.",
   "type": "string[]",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": ["/aws/lambda/my-function", "opentelemetry-service"],
   "visibility": "public",
   "changelog": [
     {
-      "version": "next"
+      "version": "0.11.1",
+      "prs": [414]
     }
   ]
 }

@@ -2,8 +2,8 @@
   "key": "mcp.server.version",
   "brief": "Version of the MCP server application.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "0.1.0",

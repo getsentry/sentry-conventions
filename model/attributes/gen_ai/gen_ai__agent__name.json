@@ -2,8 +2,8 @@
   "key": "gen_ai.agent.name",
   "brief": "The name of the agent being used.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": "ResearchAssistant",

@@ -2,8 +2,8 @@
   "key": "cloud.resource_id",
   "brief": "Cloud provider-specific native identifier of the monitored cloud resource",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": "arn:aws:lambda:REGION:ACCOUNT_ID:function:my-function",
@@ -13,7 +13,8 @@
   "visibility": "public",
   "changelog": [
     {
-      "version": "next"
+      "version": "0.11.1",
+      "prs": [414]
     }
   ]
 }

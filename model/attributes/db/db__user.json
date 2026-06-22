@@ -2,8 +2,8 @@
   "key": "db.user",
   "brief": "The database user.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": "fancy_user",

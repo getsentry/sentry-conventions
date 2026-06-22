@@ -2,14 +2,19 @@
   "key": "mcp.resource.uri",
   "brief": "The resource URI being accessed in an MCP operation.",
   "type": "string",
-  "pii": {
-    "key": "true",
+  "apply_scrubbing": {
+    "key": "auto",
     "reason": "URIs can contain sensitive file paths"
   },
-  "is_in_otel": false,
+  "is_in_otel": true,
   "example": "file:///path/to/file.txt",
   "visibility": "public",
   "changelog": [
+    {
+      "version": "0.12.0",
+      "prs": [420],
+      "description": "Set is_in_otel=true, attribute exists in OTel MCP registry"
+    },
     {
       "version": "0.3.0",
       "prs": [171]

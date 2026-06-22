@@ -2,8 +2,8 @@
   "key": "mcp.cancelled.reason",
   "brief": "Reason for the cancellation of an MCP operation.",
   "type": "string",
-  "pii": {
-    "key": "maybe",
+  "apply_scrubbing": {
+    "key": "manual",
     "reason": "Cancellation reasons may contain user-specific or sensitive information"
   },
   "is_in_otel": false,

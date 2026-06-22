@@ -2,8 +2,8 @@
   "key": "db.redis.key",
   "brief": "The key the Redis command is operating on.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "user:2047:city",

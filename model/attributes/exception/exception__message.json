@@ -2,8 +2,8 @@
   "key": "exception.message",
   "brief": "The error message.",
   "type": "string",
-  "pii": {
-    "key": "true"
+  "apply_scrubbing": {
+    "key": "auto"
   },
   "is_in_otel": true,
   "example": "ENOENT: no such file or directory",

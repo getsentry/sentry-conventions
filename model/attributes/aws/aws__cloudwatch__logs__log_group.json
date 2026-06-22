@@ -2,8 +2,8 @@
   "key": "aws.cloudwatch.logs.log_group",
   "brief": "The name of the CloudWatch Logs log group",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "/aws/lambda/my-function",

@@ -2,8 +2,8 @@
   "key": "device.external_storage_size",
   "brief": "External storage total size in bytes.",
   "type": "integer",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": 134217728000,

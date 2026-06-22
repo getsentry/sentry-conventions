@@ -2,15 +2,16 @@
   "key": "aws.log.stream.names",
   "brief": "The name(s) of the AWS log stream(s) an application is writing to.",
   "type": "string[]",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": ["logs/main/10838bed-421f-43ef-870a-f43feacbbb5b"],
   "visibility": "public",
   "changelog": [
     {
-      "version": "next"
+      "version": "0.11.1",
+      "prs": [414]
     }
   ]
 }

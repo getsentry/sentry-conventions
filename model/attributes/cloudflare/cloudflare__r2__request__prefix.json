@@ -2,15 +2,15 @@
   "key": "cloudflare.r2.request.prefix",
   "brief": "The prefix used to filter objects in an R2 list operation",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "visibility": "public",
   "example": "images/",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.11.1",
       "prs": [413],
       "description": "Added cloudflare.r2.request.prefix attribute"
     }

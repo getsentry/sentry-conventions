@@ -2,8 +2,8 @@
   "key": "service.name",
   "brief": "Logical name of the service.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": "omegastar",

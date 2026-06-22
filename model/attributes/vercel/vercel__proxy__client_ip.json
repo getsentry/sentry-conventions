@@ -2,8 +2,8 @@
   "key": "vercel.proxy.client_ip",
   "brief": "Client IP address",
   "type": "string",
-  "pii": {
-    "key": "true"
+  "apply_scrubbing": {
+    "key": "auto"
   },
   "is_in_otel": false,
   "example": "120.75.16.101",

@@ -2,8 +2,8 @@
   "key": "gen_ai.usage.total_tokens",
   "brief": "The total number of tokens used to process the prompt. (input tokens plus output todkens)",
   "type": "integer",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": 20,

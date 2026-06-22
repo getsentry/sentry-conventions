@@ -2,8 +2,8 @@
   "key": "client.port",
   "brief": "Client port number.",
   "type": "integer",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": 5432,

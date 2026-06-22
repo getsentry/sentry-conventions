@@ -2,11 +2,11 @@
   "key": "db.query.summary",
   "brief": "A shortened representation of operation(s) in the full query. This attribute must be low-cardinality and should only contain the operation table names.",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
-  "example": "SELECT users;",
+  "example": "SELECT users",
   "visibility": "public",
   "changelog": [
     {

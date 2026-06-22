@@ -2,12 +2,12 @@
   "key": "gen_ai.tool.message",
   "brief": "The response from a tool or function call passed to the model.",
   "type": "string",
-  "pii": {
-    "key": "true"
+  "apply_scrubbing": {
+    "key": "auto"
   },
   "is_in_otel": false,
   "example": "rainy, 57°F",
-  "alias": ["gen_ai.tool.call.result", "gen_ai.tool.output"],
+  "alias": ["gen_ai.tool.call.result", "gen_ai.tool.output", "mcp.tool.result.content"],
   "deprecation": {
     "_status": "normalize",
     "replacement": "gen_ai.tool.call.result"

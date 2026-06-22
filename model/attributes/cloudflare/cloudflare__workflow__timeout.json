@@ -2,8 +2,8 @@
   "key": "cloudflare.workflow.timeout",
   "brief": "The timeout duration for a Cloudflare Workflow step",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "1 minute",

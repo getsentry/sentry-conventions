@@ -3,8 +3,8 @@
   "brief": "The score for a web vital, normalized to a number between 0 and 1.",
   "has_dynamic_suffix": true,
   "type": "double",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "score.ratio.inp=0.7748",

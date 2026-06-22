@@ -2,15 +2,20 @@
   "key": "mcp.tool.result.content",
   "brief": "The content of the tool result.",
   "type": "string",
-  "pii": {
-    "key": "true",
+  "apply_scrubbing": {
+    "key": "auto",
     "reason": "Tool results can contain user data"
   },
   "is_in_otel": false,
   "example": "{\"output\": \"rainy\", \"toolCallId\": \"1\"}",
-  "alias": [],
+  "alias": ["gen_ai.tool.call.result", "gen_ai.tool.message", "gen_ai.tool.output"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "0.12.0",
+      "prs": [420],
+      "description": "Deprecated in favor of gen_ai.tool.call.result"
+    },
     {
       "version": "0.3.0",
       "prs": [171]
@@ -19,5 +24,10 @@
       "version": "0.2.0",
       "prs": [164]
     }
-  ]
+  ],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "gen_ai.tool.call.result",
+    "reason": "OTel uses gen_ai.tool.call.result for MCP tool results"
+  }
 }

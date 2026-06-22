@@ -2,8 +2,8 @@
   "key": "gen_ai.prompt",
   "brief": "The input messages sent to the model",
   "type": "string",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": true,
   "example": "[{\"role\": \"user\", \"message\": \"hello\"}]",

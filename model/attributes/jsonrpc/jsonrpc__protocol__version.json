@@ -1,0 +1,18 @@
+{
+  "key": "jsonrpc.protocol.version",
+  "brief": "The version of the JSON-RPC protocol used.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "example": "2.0",
+  "changelog": [
+    {
+      "version": "0.12.0",
+      "prs": [420],
+      "description": "Added jsonrpc.protocol.version attribute"
+    }
+  ]
+}

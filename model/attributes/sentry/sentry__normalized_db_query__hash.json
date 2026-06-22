@@ -2,8 +2,8 @@
   "key": "sentry.normalized_db_query.hash",
   "brief": "The hash of `sentry.normalized_db_query`.",
   "type": "string",
-  "pii": {
-    "key": "false"
+  "apply_scrubbing": {
+    "key": "never"
   },
   "is_in_otel": false,
   "visibility": "public",

@@ -2,8 +2,8 @@
   "key": "ttfb",
   "brief": "The value of the recorded Time To First Byte (TTFB) web vital in milliseconds",
   "type": "double",
-  "pii": {
-    "key": "maybe"
+  "apply_scrubbing": {
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": 194,
