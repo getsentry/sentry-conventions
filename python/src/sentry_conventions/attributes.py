@@ -260,6 +260,7 @@ class _AttributeNamesMeta(type):
         "SENTRY_REPORT_EVENT",
         "_SENTRY_SEGMENT_ID",
         "SENTRY_SOURCE",
+        "SENTRY_THREAD_ID",
         "SENTRY_TRACE_PARENT_SPAN_ID",
         "SENTRY_TRANSACTION",
         "SENTRY_USER_EMAIL",
@@ -7210,6 +7211,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Example: 200
+    """
+
+    # Path: model/attributes/sentry/sentry__thread__id.json
+    SENTRY_THREAD_ID: Literal["sentry.thread.id"] = "sentry.thread.id"
+    """Current “managed” thread ID.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: Use thread.id instead - This attribute is being deprecated in favor of the OTel-standard thread.id
+    Example: 56
     """
 
     # Path: model/attributes/sentry/sentry__timestamp__sequence.json
@@ -16439,6 +16452,22 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.4.0", prs=[223, 228]),
         ],
     ),
+    "sentry.thread.id": AttributeMetadata(
+        brief="Current “managed” thread ID.",
+        type=AttributeType.INTEGER,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=56,
+        deprecation=DeprecationInfo(
+            replacement="thread.id",
+            reason="This attribute is being deprecated in favor of the OTel-standard thread.id",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        changelog=[
+            ChangelogEntry(version="next"),
+        ],
+    ),
     "sentry.timestamp.sequence": AttributeMetadata(
         brief="A sequencing counter for deterministic ordering of logs or metrics when timestamps share the same integer millisecond. Starts at 0 on SDK initialization, increments by 1 for each captured item, and resets to 0 when the integer millisecond of the current item differs from the previous one.",
         type=AttributeType.INTEGER,
@@ -18268,6 +18297,7 @@ Attributes = TypedDict(
         "sentry.span.source": str,
         "sentry.status.message": str,
         "sentry.status_code": int,
+        "sentry.thread.id": int,
         "sentry.timestamp.sequence": int,
         "sentry.trace.parent_span_id": str,
         "sentry.transaction": str,
