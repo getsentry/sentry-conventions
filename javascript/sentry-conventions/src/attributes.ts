@@ -12380,6 +12380,28 @@ export const SENTRY_STATUS_MESSAGE = 'sentry.status.message';
  */
 export type SENTRY_STATUS_MESSAGE_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__thread__id.json
+
+/**
+ * Current “managed” thread ID. `sentry.thread.id`
+ *
+ * Attribute Value Type: `number` {@link SENTRY_THREAD_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @deprecated Use {@link THREAD_ID} (thread.id) instead - This attribute is being deprecated in favor of the OTel-standard thread.id
+ * @example 56
+ */
+export const SENTRY_THREAD_ID = 'sentry.thread.id';
+
+/**
+ * Type for {@link SENTRY_THREAD_ID} sentry.thread.id
+ */
+export type SENTRY_THREAD_ID_TYPE = number;
+
 // Path: model/attributes/sentry/sentry__timestamp__sequence.json
 
 /**
@@ -15173,6 +15195,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_SPAN_SOURCE]: 'string',
   [SENTRY_STATUS_CODE]: 'integer',
   [SENTRY_STATUS_MESSAGE]: 'string',
+  [SENTRY_THREAD_ID]: 'integer',
   [SENTRY_TIMESTAMP_SEQUENCE]: 'integer',
   [SENTRY_TRACE_PARENT_SPAN_ID]: 'string',
   [SENTRY_TRANSACTION]: 'string',
@@ -15837,6 +15860,7 @@ export type AttributeName =
   | typeof SENTRY_SPAN_SOURCE
   | typeof SENTRY_STATUS_CODE
   | typeof SENTRY_STATUS_MESSAGE
+  | typeof SENTRY_THREAD_ID
   | typeof SENTRY_TIMESTAMP_SEQUENCE
   | typeof SENTRY_TRACE_PARENT_SPAN_ID
   | typeof SENTRY_TRANSACTION
@@ -23476,6 +23500,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'foobar',
     changelog: [{ version: '0.3.1', prs: [190] }],
   },
+  [SENTRY_THREAD_ID]: {
+    brief: 'Current “managed” thread ID.',
+    type: 'integer',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 56,
+    deprecation: {
+      replacement: 'thread.id',
+      reason: 'This attribute is being deprecated in favor of the OTel-standard thread.id',
+    },
+    changelog: [{ version: 'next' }],
+  },
   [SENTRY_TIMESTAMP_SEQUENCE]: {
     brief:
       'A sequencing counter for deterministic ordering of logs or metrics when timestamps share the same integer millisecond. Starts at 0 on SDK initialization, increments by 1 for each captured item, and resets to 0 when the integer millisecond of the current item differs from the previous one.',
@@ -25259,6 +25298,7 @@ export type Attributes = {
   [SENTRY_SPAN_SOURCE]?: SENTRY_SPAN_SOURCE_TYPE;
   [SENTRY_STATUS_CODE]?: SENTRY_STATUS_CODE_TYPE;
   [SENTRY_STATUS_MESSAGE]?: SENTRY_STATUS_MESSAGE_TYPE;
+  [SENTRY_THREAD_ID]?: SENTRY_THREAD_ID_TYPE;
   [SENTRY_TIMESTAMP_SEQUENCE]?: SENTRY_TIMESTAMP_SEQUENCE_TYPE;
   [SENTRY_TRACE_PARENT_SPAN_ID]?: SENTRY_TRACE_PARENT_SPAN_ID_TYPE;
   [SENTRY_TRANSACTION]?: SENTRY_TRANSACTION_TYPE;
