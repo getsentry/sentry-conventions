@@ -2723,6 +2723,69 @@ export const CLOUDFLARE_D1_ROWS_WRITTEN = 'cloudflare.d1.rows_written';
  */
 export type CLOUDFLARE_D1_ROWS_WRITTEN_TYPE = number;
 
+// Path: model/attributes/cloudflare/cloudflare__durable_object__query__bindings.json
+
+/**
+ * The number of bound parameters passed to the SQL exec call. `cloudflare.durable_object.query.bindings`
+ *
+ * Attribute Value Type: `number` {@link CLOUDFLARE_DURABLE_OBJECT_QUERY_BINDINGS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 2
+ */
+export const CLOUDFLARE_DURABLE_OBJECT_QUERY_BINDINGS = 'cloudflare.durable_object.query.bindings';
+
+/**
+ * Type for {@link CLOUDFLARE_DURABLE_OBJECT_QUERY_BINDINGS} cloudflare.durable_object.query.bindings
+ */
+export type CLOUDFLARE_DURABLE_OBJECT_QUERY_BINDINGS_TYPE = number;
+
+// Path: model/attributes/cloudflare/cloudflare__durable_object__response__rows_read.json
+
+/**
+ * The number of rows read by a Cloudflare Durable Object SQL operation. `cloudflare.durable_object.response.rows_read`
+ *
+ * Attribute Value Type: `number` {@link CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_READ_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 12
+ */
+export const CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_READ = 'cloudflare.durable_object.response.rows_read';
+
+/**
+ * Type for {@link CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_READ} cloudflare.durable_object.response.rows_read
+ */
+export type CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_READ_TYPE = number;
+
+// Path: model/attributes/cloudflare/cloudflare__durable_object__response__rows_written.json
+
+/**
+ * The number of rows written by a Cloudflare Durable Object SQL operation. `cloudflare.durable_object.response.rows_written`
+ *
+ * Attribute Value Type: `number` {@link CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_WRITTEN_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 1
+ */
+export const CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_WRITTEN = 'cloudflare.durable_object.response.rows_written';
+
+/**
+ * Type for {@link CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_WRITTEN} cloudflare.durable_object.response.rows_written
+ */
+export type CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_WRITTEN_TYPE = number;
+
 // Path: model/attributes/cloudflare/cloudflare__r2__bucket.json
 
 /**
@@ -6044,6 +6107,27 @@ export const GEN_AI_REQUEST_PRESENCE_PENALTY = 'gen_ai.request.presence_penalty'
  * Type for {@link GEN_AI_REQUEST_PRESENCE_PENALTY} gen_ai.request.presence_penalty
  */
 export type GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__request__reasoning_effort.json
+
+/**
+ * Constrains the effort on reasoning for reasoning models. Supported values vary by provider. `gen_ai.request.reasoning_effort`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_REQUEST_REASONING_EFFORT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "high"
+ */
+export const GEN_AI_REQUEST_REASONING_EFFORT = 'gen_ai.request.reasoning_effort';
+
+/**
+ * Type for {@link GEN_AI_REQUEST_REASONING_EFFORT} gen_ai.request.reasoning_effort
+ */
+export type GEN_AI_REQUEST_REASONING_EFFORT_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__request__seed.json
 
@@ -10315,6 +10399,30 @@ export const OS_VERSION = 'os.version';
  */
 export type OS_VERSION_TYPE = string;
 
+// Path: model/attributes/otel/otel__kind.json
+
+/**
+ * The span kind (https://opentelemetry.io/docs/concepts/signals/traces/#span-kind). Deprecated, use `sentry.kind` instead. `otel.kind`
+ *
+ * Attribute Value Type: `string` {@link OTEL_KIND_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link SENTRY_KIND} `sentry.kind`
+ *
+ * @deprecated Use {@link SENTRY_KIND} (sentry.kind) instead - Deprecated in favor of sentry.kind
+ * @example "SERVER"
+ */
+export const OTEL_KIND = 'otel.kind';
+
+/**
+ * Type for {@link OTEL_KIND} otel.kind
+ */
+export type OTEL_KIND_TYPE = string;
+
 // Path: model/attributes/otel/otel__scope__name.json
 
 /**
@@ -11660,6 +11768,8 @@ export type SENTRY_IS_REMOTE_TYPE = boolean;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link OTEL_KIND} `otel.kind`
+ *
  * @example "server"
  */
 export const SENTRY_KIND = 'sentry.kind';
@@ -12332,6 +12442,28 @@ export const SENTRY_STATUS_MESSAGE = 'sentry.status.message';
  * Type for {@link SENTRY_STATUS_MESSAGE} sentry.status.message
  */
 export type SENTRY_STATUS_MESSAGE_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__thread__id.json
+
+/**
+ * Current “managed” thread ID. `sentry.thread.id`
+ *
+ * Attribute Value Type: `number` {@link SENTRY_THREAD_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @deprecated Use {@link THREAD_ID} (thread.id) instead - This attribute is being deprecated in favor of the OTel-standard thread.id
+ * @example 56
+ */
+export const SENTRY_THREAD_ID = 'sentry.thread.id';
+
+/**
+ * Type for {@link SENTRY_THREAD_ID} sentry.thread.id
+ */
+export type SENTRY_THREAD_ID_TYPE = number;
 
 // Path: model/attributes/sentry/sentry__timestamp__sequence.json
 
@@ -14707,6 +14839,9 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [CLOUDFLARE_D1_QUERY_TYPE]: 'string',
   [CLOUDFLARE_D1_ROWS_READ]: 'integer',
   [CLOUDFLARE_D1_ROWS_WRITTEN]: 'integer',
+  [CLOUDFLARE_DURABLE_OBJECT_QUERY_BINDINGS]: 'integer',
+  [CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_READ]: 'integer',
+  [CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_WRITTEN]: 'integer',
   [CLOUDFLARE_R2_BUCKET]: 'string',
   [CLOUDFLARE_R2_OPERATION]: 'string',
   [CLOUDFLARE_R2_REQUEST_DELIMITER]: 'string',
@@ -14860,6 +14995,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [GEN_AI_REQUEST_MESSAGES]: 'string',
   [GEN_AI_REQUEST_MODEL]: 'string',
   [GEN_AI_REQUEST_PRESENCE_PENALTY]: 'double',
+  [GEN_AI_REQUEST_REASONING_EFFORT]: 'string',
   [GEN_AI_REQUEST_SEED]: 'string',
   [GEN_AI_REQUEST_TEMPERATURE]: 'double',
   [GEN_AI_REQUEST_TOP_K]: 'integer',
@@ -15052,6 +15188,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [OS_THEME]: 'string',
   [OS_TYPE]: 'string',
   [OS_VERSION]: 'string',
+  [OTEL_KIND]: 'string',
   [OTEL_SCOPE_NAME]: 'string',
   [OTEL_SCOPE_VERSION]: 'string',
   [OTEL_STATUS_CODE]: 'string',
@@ -15145,6 +15282,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_SPAN_SOURCE]: 'string',
   [SENTRY_STATUS_CODE]: 'integer',
   [SENTRY_STATUS_MESSAGE]: 'string',
+  [SENTRY_THREAD_ID]: 'integer',
   [SENTRY_TIMESTAMP_SEQUENCE]: 'integer',
   [SENTRY_TRACE_LIFECYCLE]: 'string',
   [SENTRY_TRACE_PARENT_SPAN_ID]: 'string',
@@ -15370,6 +15508,9 @@ export type AttributeName =
   | typeof CLOUDFLARE_D1_QUERY_TYPE
   | typeof CLOUDFLARE_D1_ROWS_READ
   | typeof CLOUDFLARE_D1_ROWS_WRITTEN
+  | typeof CLOUDFLARE_DURABLE_OBJECT_QUERY_BINDINGS
+  | typeof CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_READ
+  | typeof CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_WRITTEN
   | typeof CLOUDFLARE_R2_BUCKET
   | typeof CLOUDFLARE_R2_OPERATION
   | typeof CLOUDFLARE_R2_REQUEST_DELIMITER
@@ -15523,6 +15664,7 @@ export type AttributeName =
   | typeof GEN_AI_REQUEST_MESSAGES
   | typeof GEN_AI_REQUEST_MODEL
   | typeof GEN_AI_REQUEST_PRESENCE_PENALTY
+  | typeof GEN_AI_REQUEST_REASONING_EFFORT
   | typeof GEN_AI_REQUEST_SEED
   | typeof GEN_AI_REQUEST_TEMPERATURE
   | typeof GEN_AI_REQUEST_TOP_K
@@ -15715,6 +15857,7 @@ export type AttributeName =
   | typeof OS_THEME
   | typeof OS_TYPE
   | typeof OS_VERSION
+  | typeof OTEL_KIND
   | typeof OTEL_SCOPE_NAME
   | typeof OTEL_SCOPE_VERSION
   | typeof OTEL_STATUS_CODE
@@ -15808,6 +15951,7 @@ export type AttributeName =
   | typeof SENTRY_SPAN_SOURCE
   | typeof SENTRY_STATUS_CODE
   | typeof SENTRY_STATUS_MESSAGE
+  | typeof SENTRY_THREAD_ID
   | typeof SENTRY_TIMESTAMP_SEQUENCE
   | typeof SENTRY_TRACE_LIFECYCLE
   | typeof SENTRY_TRACE_PARENT_SPAN_ID
@@ -17577,6 +17721,45 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 12,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+  },
+  [CLOUDFLARE_DURABLE_OBJECT_QUERY_BINDINGS]: {
+    brief: 'The number of bound parameters passed to the SQL exec call.',
+    type: 'integer',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 2,
+    changelog: [
+      { version: 'next', prs: [435], description: 'Added cloudflare.durable_object.query.bindings attribute' },
+    ],
+  },
+  [CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_READ]: {
+    brief: 'The number of rows read by a Cloudflare Durable Object SQL operation.',
+    type: 'integer',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 12,
+    changelog: [
+      { version: 'next', prs: [435], description: 'Added cloudflare.durable_object.response.rows_read attribute' },
+    ],
+  },
+  [CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_WRITTEN]: {
+    brief: 'The number of rows written by a Cloudflare Durable Object SQL operation.',
+    type: 'integer',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 1,
+    changelog: [
+      { version: 'next', prs: [435], description: 'Added cloudflare.durable_object.response.rows_written attribute' },
+    ],
   },
   [CLOUDFLARE_R2_BUCKET]: {
     brief: 'The name of the Cloudflare R2 bucket binding',
@@ -19557,6 +19740,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [57] },
     ],
+  },
+  [GEN_AI_REQUEST_REASONING_EFFORT]: {
+    brief: 'Constrains the effort on reasoning for reasoning models. Supported values vary by provider.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'high',
+    changelog: [{ version: 'next', prs: [334], description: 'Added gen_ai.request.reasoning_effort attribute' }],
   },
   [GEN_AI_REQUEST_SEED]: {
     brief: 'The seed, ideally models given the same seed and same other parameters will produce the exact same output.',
@@ -22265,6 +22459,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '18.04.2',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  [OTEL_KIND]: {
+    brief:
+      'The span kind (https://opentelemetry.io/docs/concepts/signals/traces/#span-kind). Deprecated, use `sentry.kind` instead.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'SERVER',
+    deprecation: {
+      replacement: 'sentry.kind',
+      reason: 'Deprecated in favor of sentry.kind',
+    },
+    aliases: [SENTRY_KIND],
+    changelog: [{ version: 'next', prs: [440], description: 'Added otel.kind attribute' }],
+  },
   [OTEL_SCOPE_NAME]: {
     brief: 'The name of the instrumentation scope - (InstrumentationScope.Name in OTLP).',
     type: 'string',
@@ -23044,6 +23255,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'server',
+    aliases: [OTEL_KIND],
     changelog: [{ version: '0.3.1', prs: [190] }],
   },
   [SENTRY_MAIN_THREAD]: {
@@ -23418,6 +23630,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'foobar',
     changelog: [{ version: '0.3.1', prs: [190] }],
+  },
+  [SENTRY_THREAD_ID]: {
+    brief: 'Current “managed” thread ID.',
+    type: 'integer',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 56,
+    deprecation: {
+      replacement: 'thread.id',
+      reason: 'This attribute is being deprecated in favor of the OTel-standard thread.id',
+    },
+    changelog: [{ version: 'next' }],
   },
   [SENTRY_TIMESTAMP_SEQUENCE]: {
     brief:
@@ -24773,6 +25000,9 @@ export type Attributes = {
   [CLOUDFLARE_D1_QUERY_TYPE]?: CLOUDFLARE_D1_QUERY_TYPE_TYPE;
   [CLOUDFLARE_D1_ROWS_READ]?: CLOUDFLARE_D1_ROWS_READ_TYPE;
   [CLOUDFLARE_D1_ROWS_WRITTEN]?: CLOUDFLARE_D1_ROWS_WRITTEN_TYPE;
+  [CLOUDFLARE_DURABLE_OBJECT_QUERY_BINDINGS]?: CLOUDFLARE_DURABLE_OBJECT_QUERY_BINDINGS_TYPE;
+  [CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_READ]?: CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_READ_TYPE;
+  [CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_WRITTEN]?: CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_WRITTEN_TYPE;
   [CLOUDFLARE_R2_BUCKET]?: CLOUDFLARE_R2_BUCKET_TYPE;
   [CLOUDFLARE_R2_OPERATION]?: CLOUDFLARE_R2_OPERATION_TYPE;
   [CLOUDFLARE_R2_REQUEST_DELIMITER]?: CLOUDFLARE_R2_REQUEST_DELIMITER_TYPE;
@@ -24926,6 +25156,7 @@ export type Attributes = {
   [GEN_AI_REQUEST_MESSAGES]?: GEN_AI_REQUEST_MESSAGES_TYPE;
   [GEN_AI_REQUEST_MODEL]?: GEN_AI_REQUEST_MODEL_TYPE;
   [GEN_AI_REQUEST_PRESENCE_PENALTY]?: GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE;
+  [GEN_AI_REQUEST_REASONING_EFFORT]?: GEN_AI_REQUEST_REASONING_EFFORT_TYPE;
   [GEN_AI_REQUEST_SEED]?: GEN_AI_REQUEST_SEED_TYPE;
   [GEN_AI_REQUEST_TEMPERATURE]?: GEN_AI_REQUEST_TEMPERATURE_TYPE;
   [GEN_AI_REQUEST_TOP_K]?: GEN_AI_REQUEST_TOP_K_TYPE;
@@ -25118,6 +25349,7 @@ export type Attributes = {
   [OS_THEME]?: OS_THEME_TYPE;
   [OS_TYPE]?: OS_TYPE_TYPE;
   [OS_VERSION]?: OS_VERSION_TYPE;
+  [OTEL_KIND]?: OTEL_KIND_TYPE;
   [OTEL_SCOPE_NAME]?: OTEL_SCOPE_NAME_TYPE;
   [OTEL_SCOPE_VERSION]?: OTEL_SCOPE_VERSION_TYPE;
   [OTEL_STATUS_CODE]?: OTEL_STATUS_CODE_TYPE;
@@ -25211,6 +25443,7 @@ export type Attributes = {
   [SENTRY_SPAN_SOURCE]?: SENTRY_SPAN_SOURCE_TYPE;
   [SENTRY_STATUS_CODE]?: SENTRY_STATUS_CODE_TYPE;
   [SENTRY_STATUS_MESSAGE]?: SENTRY_STATUS_MESSAGE_TYPE;
+  [SENTRY_THREAD_ID]?: SENTRY_THREAD_ID_TYPE;
   [SENTRY_TIMESTAMP_SEQUENCE]?: SENTRY_TIMESTAMP_SEQUENCE_TYPE;
   [SENTRY_TRACE_LIFECYCLE]?: SENTRY_TRACE_LIFECYCLE_TYPE;
   [SENTRY_TRACE_PARENT_SPAN_ID]?: SENTRY_TRACE_PARENT_SPAN_ID_TYPE;

@@ -195,7 +195,7 @@
 
 - Add LCP and CLS web vital report event attribute by @Lms24 in [#319](https://github.com/getsentry/sentry-conventions/pull/319)
 - Deprecate app_start_cold and app_start_warm by @buenaflor in [#323](https://github.com/getsentry/sentry-conventions/pull/323)
-- Add app.vitals.* attributes for mobile performance by @buenaflor in [#313](https://github.com/getsentry/sentry-conventions/pull/313)
+- Add app.vitals.\* attributes for mobile performance by @buenaflor in [#313](https://github.com/getsentry/sentry-conventions/pull/313)
 - Add remaining app context attributes by @buenaflor in [#304](https://github.com/getsentry/sentry-conventions/pull/304)
 - Add `sentry.mobile` and `sentry.main_thread` attributes by @buenaflor in [#317](https://github.com/getsentry/sentry-conventions/pull/317)
 - Add more device context attributes by @buenaflor in [#303](https://github.com/getsentry/sentry-conventions/pull/303)
