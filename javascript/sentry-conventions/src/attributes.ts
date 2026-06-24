@@ -12486,6 +12486,27 @@ export const SENTRY_TIMESTAMP_SEQUENCE = 'sentry.timestamp.sequence';
  */
 export type SENTRY_TIMESTAMP_SEQUENCE_TYPE = number;
 
+// Path: model/attributes/sentry/sentry__trace_lifecycle.json
+
+/**
+ * Indicates the chosen trace lifecycle mode of the SDK (stream or static) `sentry.trace_lifecycle`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_TRACE_LIFECYCLE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "stream"
+ */
+export const SENTRY_TRACE_LIFECYCLE = 'sentry.trace_lifecycle';
+
+/**
+ * Type for {@link SENTRY_TRACE_LIFECYCLE} sentry.trace_lifecycle
+ */
+export type SENTRY_TRACE_LIFECYCLE_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__trace__parent_span_id.json
 
 /**
@@ -15263,6 +15284,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_STATUS_MESSAGE]: 'string',
   [SENTRY_THREAD_ID]: 'integer',
   [SENTRY_TIMESTAMP_SEQUENCE]: 'integer',
+  [SENTRY_TRACE_LIFECYCLE]: 'string',
   [SENTRY_TRACE_PARENT_SPAN_ID]: 'string',
   [SENTRY_TRANSACTION]: 'string',
   [SENTRY_USER_EMAIL]: 'string',
@@ -15931,6 +15953,7 @@ export type AttributeName =
   | typeof SENTRY_STATUS_MESSAGE
   | typeof SENTRY_THREAD_ID
   | typeof SENTRY_TIMESTAMP_SEQUENCE
+  | typeof SENTRY_TRACE_LIFECYCLE
   | typeof SENTRY_TRACE_PARENT_SPAN_ID
   | typeof SENTRY_TRANSACTION
   | typeof SENTRY_USER_EMAIL
@@ -23635,6 +23658,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 0,
     changelog: [{ version: '0.5.0', prs: [262] }],
   },
+  [SENTRY_TRACE_LIFECYCLE]: {
+    brief: 'Indicates the chosen trace lifecycle mode of the SDK (stream or static)',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'stream',
+    changelog: [{ version: 'next', prs: [442], description: 'Added sentry.trace_lifecycle attribute' }],
+  },
   [SENTRY_TRACE_PARENT_SPAN_ID]: {
     brief:
       'The span id of the span that was active when the log was collected. This should not be set if there was no active span.',
@@ -25411,6 +25445,7 @@ export type Attributes = {
   [SENTRY_STATUS_MESSAGE]?: SENTRY_STATUS_MESSAGE_TYPE;
   [SENTRY_THREAD_ID]?: SENTRY_THREAD_ID_TYPE;
   [SENTRY_TIMESTAMP_SEQUENCE]?: SENTRY_TIMESTAMP_SEQUENCE_TYPE;
+  [SENTRY_TRACE_LIFECYCLE]?: SENTRY_TRACE_LIFECYCLE_TYPE;
   [SENTRY_TRACE_PARENT_SPAN_ID]?: SENTRY_TRACE_PARENT_SPAN_ID_TYPE;
   [SENTRY_TRANSACTION]?: SENTRY_TRANSACTION_TYPE;
   [SENTRY_USER_EMAIL]?: SENTRY_USER_EMAIL_TYPE;

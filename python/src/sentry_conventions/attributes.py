@@ -7291,6 +7291,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "b0e6f15b45c36b12"
     """
 
+    # Path: model/attributes/sentry/sentry__trace_lifecycle.json
+    SENTRY_TRACE_LIFECYCLE: Literal["sentry.trace_lifecycle"] = "sentry.trace_lifecycle"
+    """Indicates the chosen trace lifecycle mode of the SDK (stream or static)
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "stream"
+    """
+
     # Path: model/attributes/sentry/sentry__transaction.json
     SENTRY_TRANSACTION: Literal["sentry.transaction"] = "sentry.transaction"
     """The sentry transaction (segment name).
@@ -16580,6 +16591,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[116]),
         ],
     ),
+    "sentry.trace_lifecycle": AttributeMetadata(
+        brief="Indicates the chosen trace lifecycle mode of the SDK (stream or static)",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="stream",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[442],
+                description="Added sentry.trace_lifecycle attribute",
+            ),
+        ],
+    ),
     "sentry.transaction": AttributeMetadata(
         brief="The sentry transaction (segment name).",
         type=AttributeType.STRING,
@@ -18387,6 +18413,7 @@ Attributes = TypedDict(
         "sentry.thread.id": int,
         "sentry.timestamp.sequence": int,
         "sentry.trace.parent_span_id": str,
+        "sentry.trace_lifecycle": str,
         "sentry.transaction": str,
         "sentry.user.email": str,
         "sentry.user.geo.city": str,
