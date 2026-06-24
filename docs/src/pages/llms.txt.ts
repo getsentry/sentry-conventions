@@ -14,6 +14,7 @@ Sentry Semantic Conventions define standardized attribute keys, span operation n
 - [All Attributes](${baseUrl}llms-full.txt): Complete list of all span and breadcrumb attributes in plain text
 - [Attributes Reference](${baseUrl}attributes/): Browse attributes grouped by category
 - [Span Names](${baseUrl}names/): How to construct span names using templates
+- [Span Operations](${baseUrl}ops/): Known span operations (the sentry.op attribute) grouped by category
 
 ## Optional
 
