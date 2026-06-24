@@ -2723,6 +2723,69 @@ export const CLOUDFLARE_D1_ROWS_WRITTEN = 'cloudflare.d1.rows_written';
  */
 export type CLOUDFLARE_D1_ROWS_WRITTEN_TYPE = number;
 
+// Path: model/attributes/cloudflare/cloudflare__durable_object__query__bindings.json
+
+/**
+ * The number of bound parameters passed to the SQL exec call. `cloudflare.durable_object.query.bindings`
+ *
+ * Attribute Value Type: `number` {@link CLOUDFLARE_DURABLE_OBJECT_QUERY_BINDINGS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 2
+ */
+export const CLOUDFLARE_DURABLE_OBJECT_QUERY_BINDINGS = 'cloudflare.durable_object.query.bindings';
+
+/**
+ * Type for {@link CLOUDFLARE_DURABLE_OBJECT_QUERY_BINDINGS} cloudflare.durable_object.query.bindings
+ */
+export type CLOUDFLARE_DURABLE_OBJECT_QUERY_BINDINGS_TYPE = number;
+
+// Path: model/attributes/cloudflare/cloudflare__durable_object__response__rows_read.json
+
+/**
+ * The number of rows read by a Cloudflare Durable Object SQL operation. `cloudflare.durable_object.response.rows_read`
+ *
+ * Attribute Value Type: `number` {@link CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_READ_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 12
+ */
+export const CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_READ = 'cloudflare.durable_object.response.rows_read';
+
+/**
+ * Type for {@link CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_READ} cloudflare.durable_object.response.rows_read
+ */
+export type CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_READ_TYPE = number;
+
+// Path: model/attributes/cloudflare/cloudflare__durable_object__response__rows_written.json
+
+/**
+ * The number of rows written by a Cloudflare Durable Object SQL operation. `cloudflare.durable_object.response.rows_written`
+ *
+ * Attribute Value Type: `number` {@link CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_WRITTEN_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 1
+ */
+export const CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_WRITTEN = 'cloudflare.durable_object.response.rows_written';
+
+/**
+ * Type for {@link CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_WRITTEN} cloudflare.durable_object.response.rows_written
+ */
+export type CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_WRITTEN_TYPE = number;
+
 // Path: model/attributes/cloudflare/cloudflare__r2__bucket.json
 
 /**
@@ -14755,6 +14818,9 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [CLOUDFLARE_D1_QUERY_TYPE]: 'string',
   [CLOUDFLARE_D1_ROWS_READ]: 'integer',
   [CLOUDFLARE_D1_ROWS_WRITTEN]: 'integer',
+  [CLOUDFLARE_DURABLE_OBJECT_QUERY_BINDINGS]: 'integer',
+  [CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_READ]: 'integer',
+  [CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_WRITTEN]: 'integer',
   [CLOUDFLARE_R2_BUCKET]: 'string',
   [CLOUDFLARE_R2_OPERATION]: 'string',
   [CLOUDFLARE_R2_REQUEST_DELIMITER]: 'string',
@@ -15420,6 +15486,9 @@ export type AttributeName =
   | typeof CLOUDFLARE_D1_QUERY_TYPE
   | typeof CLOUDFLARE_D1_ROWS_READ
   | typeof CLOUDFLARE_D1_ROWS_WRITTEN
+  | typeof CLOUDFLARE_DURABLE_OBJECT_QUERY_BINDINGS
+  | typeof CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_READ
+  | typeof CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_WRITTEN
   | typeof CLOUDFLARE_R2_BUCKET
   | typeof CLOUDFLARE_R2_OPERATION
   | typeof CLOUDFLARE_R2_REQUEST_DELIMITER
@@ -17629,6 +17698,45 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 12,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+  },
+  [CLOUDFLARE_DURABLE_OBJECT_QUERY_BINDINGS]: {
+    brief: 'The number of bound parameters passed to the SQL exec call.',
+    type: 'integer',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 2,
+    changelog: [
+      { version: 'next', prs: [435], description: 'Added cloudflare.durable_object.query.bindings attribute' },
+    ],
+  },
+  [CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_READ]: {
+    brief: 'The number of rows read by a Cloudflare Durable Object SQL operation.',
+    type: 'integer',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 12,
+    changelog: [
+      { version: 'next', prs: [435], description: 'Added cloudflare.durable_object.response.rows_read attribute' },
+    ],
+  },
+  [CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_WRITTEN]: {
+    brief: 'The number of rows written by a Cloudflare Durable Object SQL operation.',
+    type: 'integer',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 1,
+    changelog: [
+      { version: 'next', prs: [435], description: 'Added cloudflare.durable_object.response.rows_written attribute' },
+    ],
   },
   [CLOUDFLARE_R2_BUCKET]: {
     brief: 'The name of the Cloudflare R2 bucket binding',
@@ -24858,6 +24966,9 @@ export type Attributes = {
   [CLOUDFLARE_D1_QUERY_TYPE]?: CLOUDFLARE_D1_QUERY_TYPE_TYPE;
   [CLOUDFLARE_D1_ROWS_READ]?: CLOUDFLARE_D1_ROWS_READ_TYPE;
   [CLOUDFLARE_D1_ROWS_WRITTEN]?: CLOUDFLARE_D1_ROWS_WRITTEN_TYPE;
+  [CLOUDFLARE_DURABLE_OBJECT_QUERY_BINDINGS]?: CLOUDFLARE_DURABLE_OBJECT_QUERY_BINDINGS_TYPE;
+  [CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_READ]?: CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_READ_TYPE;
+  [CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_WRITTEN]?: CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_WRITTEN_TYPE;
   [CLOUDFLARE_R2_BUCKET]?: CLOUDFLARE_R2_BUCKET_TYPE;
   [CLOUDFLARE_R2_OPERATION]?: CLOUDFLARE_R2_OPERATION_TYPE;
   [CLOUDFLARE_R2_REQUEST_DELIMITER]?: CLOUDFLARE_R2_REQUEST_DELIMITER_TYPE;

@@ -1895,6 +1895,45 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 12
     """
 
+    # Path: model/attributes/cloudflare/cloudflare__durable_object__query__bindings.json
+    CLOUDFLARE_DURABLE_OBJECT_QUERY_BINDINGS: Literal[
+        "cloudflare.durable_object.query.bindings"
+    ] = "cloudflare.durable_object.query.bindings"
+    """The number of bound parameters passed to the SQL exec call.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 2
+    """
+
+    # Path: model/attributes/cloudflare/cloudflare__durable_object__response__rows_read.json
+    CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_READ: Literal[
+        "cloudflare.durable_object.response.rows_read"
+    ] = "cloudflare.durable_object.response.rows_read"
+    """The number of rows read by a Cloudflare Durable Object SQL operation.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 12
+    """
+
+    # Path: model/attributes/cloudflare/cloudflare__durable_object__response__rows_written.json
+    CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_WRITTEN: Literal[
+        "cloudflare.durable_object.response.rows_written"
+    ] = "cloudflare.durable_object.response.rows_written"
+    """The number of rows written by a Cloudflare Durable Object SQL operation.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 1
+    """
+
     # Path: model/attributes/cloudflare/cloudflare__r2__bucket.json
     CLOUDFLARE_R2_BUCKET: Literal["cloudflare.r2.bucket"] = "cloudflare.r2.bucket"
     """The name of the Cloudflare R2 bucket binding
@@ -10297,6 +10336,51 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "cloudflare.durable_object.query.bindings": AttributeMetadata(
+        brief="The number of bound parameters passed to the SQL exec call.",
+        type=AttributeType.INTEGER,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=2,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[435],
+                description="Added cloudflare.durable_object.query.bindings attribute",
+            ),
+        ],
+    ),
+    "cloudflare.durable_object.response.rows_read": AttributeMetadata(
+        brief="The number of rows read by a Cloudflare Durable Object SQL operation.",
+        type=AttributeType.INTEGER,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=12,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[435],
+                description="Added cloudflare.durable_object.response.rows_read attribute",
+            ),
+        ],
+    ),
+    "cloudflare.durable_object.response.rows_written": AttributeMetadata(
+        brief="The number of rows written by a Cloudflare Durable Object SQL operation.",
+        type=AttributeType.INTEGER,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=1,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[435],
+                description="Added cloudflare.durable_object.response.rows_written attribute",
+            ),
+        ],
+    ),
     "cloudflare.r2.bucket": AttributeMetadata(
         brief="The name of the Cloudflare R2 bucket binding",
         type=AttributeType.STRING,
@@ -17863,6 +17947,9 @@ Attributes = TypedDict(
         "cloudflare.d1.query_type": str,
         "cloudflare.d1.rows_read": int,
         "cloudflare.d1.rows_written": int,
+        "cloudflare.durable_object.query.bindings": int,
+        "cloudflare.durable_object.response.rows_read": int,
+        "cloudflare.durable_object.response.rows_written": int,
         "cloudflare.r2.bucket": str,
         "cloudflare.r2.operation": str,
         "cloudflare.r2.request.delimiter": str,
