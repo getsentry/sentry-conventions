@@ -1,3 +1,48 @@
+## 0.13.0
+
+### New Features ✨
+
+#### Attributes
+
+- Add `sentry.trace_lifecycle` attribute by @Lms24 in [#442](https://github.com/getsentry/sentry-conventions/pull/442)
+- Add Cloudflare DO sql attributes by @JPeer264 in [#435](https://github.com/getsentry/sentry-conventions/pull/435)
+- Add `gen_ai.request.reasoning_effort` attribute by @cleptric in [#334](https://github.com/getsentry/sentry-conventions/pull/334)
+- Add deprecated `otel.kind` attribute by @Lms24 in [#440](https://github.com/getsentry/sentry-conventions/pull/440)
+
+#### Docs
+
+- Add span operations reference page by @Lms24 in [#452](https://github.com/getsentry/sentry-conventions/pull/452)
+- Make span name and description cards linkable by @Lms24 in [#433](https://github.com/getsentry/sentry-conventions/pull/433)
+
+### Bug Fixes 🐛
+
+- (attributes) Add deprecated `sentry.thread.id` by @mjq in [#451](https://github.com/getsentry/sentry-conventions/pull/451)
+
+### Documentation 📚
+
+- (contributing) Improve releasing and downstream update instructions by @constantinius in [#434](https://github.com/getsentry/sentry-conventions/pull/434)
+- Remove semicolon in db.query.summary example by @JPeer264 in [#439](https://github.com/getsentry/sentry-conventions/pull/439)
+
+### Internal Changes 🔧
+
+#### Deps
+
+- Bump dompurify from 3.4.10 to 3.4.11 by @dependabot in [#438](https://github.com/getsentry/sentry-conventions/pull/438)
+- Bump astro from 6.1.10 to 6.4.6 in /docs by @dependabot in [#432](https://github.com/getsentry/sentry-conventions/pull/432)
+
+#### Other
+
+- (attributes) Rename pii field to apply_scrubbing by @cleptric in [#426](https://github.com/getsentry/sentry-conventions/pull/426)
+- (test) Exit vitest when running `yarn test` by @Lms24 in [#441](https://github.com/getsentry/sentry-conventions/pull/441)
+- Exclude formatting changes from git blame by @Lms24 in [#450](https://github.com/getsentry/sentry-conventions/pull/450)
+- Use oxfmt and oxlint for formatting and linting by @Lms24 in [#449](https://github.com/getsentry/sentry-conventions/pull/449)
+- Update yarn.lock file by @JPeer264 in [#436](https://github.com/getsentry/sentry-conventions/pull/436)
+- Bump all dependencies to fix esbuild security issues by @cleptric in [#431](https://github.com/getsentry/sentry-conventions/pull/431)
+
+### Other
+
+- Update blame ignore revs for pii field renaming by @cleptric in [#437](https://github.com/getsentry/sentry-conventions/pull/437)
+
 ## 0.12.0
 
 ### New Features ✨

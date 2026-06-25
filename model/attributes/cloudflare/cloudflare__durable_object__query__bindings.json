@@ -10,7 +10,7 @@
   "example": 2,
   "changelog": [
     {
-      "version": "next",
+      "version": "0.13.0",
       "prs": [435],
       "description": "Added cloudflare.durable_object.query.bindings attribute"
     }

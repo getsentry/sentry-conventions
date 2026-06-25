@@ -10,7 +10,7 @@
   "example": 12,
   "changelog": [
     {
-      "version": "next",
+      "version": "0.13.0",
       "prs": [435],
       "description": "Added cloudflare.durable_object.response.rows_read attribute"
     }

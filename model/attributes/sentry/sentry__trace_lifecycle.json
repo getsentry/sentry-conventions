@@ -10,7 +10,7 @@
   "example": "stream",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.13.0",
       "prs": [442],
       "description": "Added sentry.trace_lifecycle attribute"
     }
