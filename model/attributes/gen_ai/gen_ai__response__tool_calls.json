@@ -8,6 +8,9 @@
   "is_in_otel": false,
   "example": "[{\"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]",
   "alias": [],
+  "migration": {
+    "source_for": ["gen_ai_response_to_output_messages"]
+  },
   "deprecation": {
     "_status": "normalize",
     "replacement": "gen_ai.output.messages"

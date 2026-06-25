@@ -49,6 +49,14 @@ class DeprecationStatus(Enum):
 
 
 @dataclass
+class AttributeMigrationInfo:
+    """Holds information about data migrations this attribute participates in."""
+
+    source_for: Optional[List[str]] = None
+    target_of: Optional[List[str]] = None
+
+
+@dataclass
 class DeprecationInfo:
     """Holds information about a deprecation."""
 
@@ -95,6 +103,9 @@ class AttributeMetadata:
 
     example: Optional[AttributeValue] = None
     """An example value of the attribute"""
+
+    migration: Optional[AttributeMigrationInfo] = None
+    """Data migrations that this attribute participates in"""
 
     deprecation: Optional[DeprecationInfo] = None
     """If an attribute was deprecated, and what it was replaced with"""
@@ -12321,6 +12332,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example='[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
+        migration=AttributeMigrationInfo(
+            target_of=["gen_ai_request_messages_to_input_messages"]
+        ),
         aliases=["ai.texts"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[264]),
@@ -12358,6 +12372,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example='[{"role": "assistant", "parts": [{"type": "text", "content": "The weather in Paris is currently rainy with a temperature of 57°F."}], "finish_reason": "stop"}]',
+        migration=AttributeMigrationInfo(
+            target_of=["gen_ai_response_to_output_messages"]
+        ),
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[221]),
         ],
@@ -12467,6 +12484,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example='[{"role": "system", "content": "Generate a random number."}, {"role": "user", "content": [{"text": "Generate a random number between 0 and 10.", "type": "text"}]}, {"role": "tool", "content": {"toolCallId": "1", "toolName": "Weather", "output": "rainy"}}]',
+        migration=AttributeMigrationInfo(
+            source_for=["gen_ai_request_messages_to_input_messages"]
+        ),
         deprecation=DeprecationInfo(
             replacement="gen_ai.input.messages", status=DeprecationStatus.NORMALIZE
         ),
@@ -12622,6 +12642,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example='["The weather in Paris is rainy and overcast, with temperatures around 57°F", "The weather in London is sunny and warm, with temperatures around 65°F"]',
+        migration=AttributeMigrationInfo(
+            source_for=["gen_ai_response_to_output_messages"]
+        ),
         deprecation=DeprecationInfo(
             replacement="gen_ai.output.messages", status=DeprecationStatus.NORMALIZE
         ),
@@ -12686,6 +12709,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example='[{"name": "get_weather", "arguments": {"location": "Paris"}}]',
+        migration=AttributeMigrationInfo(
+            source_for=["gen_ai_response_to_output_messages"]
+        ),
         deprecation=DeprecationInfo(
             replacement="gen_ai.output.messages", status=DeprecationStatus.NORMALIZE
         ),

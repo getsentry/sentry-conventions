@@ -1,3 +1,5 @@
+export type AttributeMigrationId = 'gen_ai_request_messages_to_input_messages' | 'gen_ai_response_to_output_messages';
+
 export interface AttributeJson {
   key: string;
   brief: string;
@@ -10,10 +12,14 @@ export interface AttributeJson {
   is_in_otel: boolean;
   visibility?: 'public' | 'internal';
   example?: string | boolean | number | string[] | boolean[] | number[];
+  migration?: {
+    source_for?: AttributeMigrationId[];
+    target_of?: AttributeMigrationId[];
+  };
   deprecation?: {
     replacement?: string;
     reason?: string;
-    _status: string;
+    _status: 'backfill' | 'normalize' | null;
   };
   alias?: string[];
   additional_context?: string[];

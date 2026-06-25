@@ -8,6 +8,9 @@
   "is_in_otel": false,
   "example": "[{\"role\": \"system\", \"content\": \"Generate a random number.\"}, {\"role\": \"user\", \"content\": [{\"text\": \"Generate a random number between 0 and 10.\", \"type\": \"text\"}]}, {\"role\": \"tool\", \"content\": {\"toolCallId\": \"1\", \"toolName\": \"Weather\", \"output\": \"rainy\"}}]",
   "alias": ["ai.input_messages"],
+  "migration": {
+    "source_for": ["gen_ai_request_messages_to_input_messages"]
+  },
   "deprecation": {
     "_status": "normalize",
     "replacement": "gen_ai.input.messages"
