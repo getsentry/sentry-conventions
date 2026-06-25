@@ -1,0 +1,21 @@
+{
+  "key": "span.initial_name",
+  "brief": "Stores the initial name of the span (prior to any potential name update) that can for example be used SDK-side to filter spans",
+  "additional_context": [
+    "This attribute must be set to the value that the SDK applies to `ignoreSpans` or `tracesSampler`. Only relevant for streamed spans."
+  ],
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "auto"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "example": "GET /users/123",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [443],
+      "description": "Added span.initial_name attribute"
+    }
+  ]
+}
