@@ -16,7 +16,7 @@
   },
   "changelog": [
     {
-      "version": "next",
+      "version": "0.13.0",
       "prs": [440],
       "description": "Added otel.kind attribute"
     }

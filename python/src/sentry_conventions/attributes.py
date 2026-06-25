@@ -10356,7 +10356,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=2,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.13.0",
                 prs=[435],
                 description="Added cloudflare.durable_object.query.bindings attribute",
             ),
@@ -10371,7 +10371,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=12,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.13.0",
                 prs=[435],
                 description="Added cloudflare.durable_object.response.rows_read attribute",
             ),
@@ -10386,7 +10386,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=1,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.13.0",
                 prs=[435],
                 description="Added cloudflare.durable_object.response.rows_written attribute",
             ),
@@ -12509,7 +12509,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="high",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.13.0",
                 prs=[334],
                 description="Added gen_ai.request.reasoning_effort attribute",
             ),
@@ -15353,7 +15353,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["sentry.kind"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[440], description="Added otel.kind attribute"
+                version="0.13.0", prs=[440], description="Added otel.kind attribute"
             ),
         ],
     ),
@@ -16560,7 +16560,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             status=DeprecationStatus.BACKFILL,
         ),
         changelog=[
-            ChangelogEntry(version="next"),
+            ChangelogEntry(version="0.13.0", prs=[451]),
         ],
     ),
     "sentry.timestamp.sequence": AttributeMetadata(
@@ -16600,7 +16600,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="stream",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.13.0",
                 prs=[442],
                 description="Added sentry.trace_lifecycle attribute",
             ),

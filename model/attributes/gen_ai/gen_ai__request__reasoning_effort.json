@@ -10,7 +10,7 @@
   "example": "high",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.13.0",
       "prs": [334],
       "description": "Added gen_ai.request.reasoning_effort attribute"
     }

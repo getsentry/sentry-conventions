@@ -17732,7 +17732,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 2,
     changelog: [
-      { version: 'next', prs: [435], description: 'Added cloudflare.durable_object.query.bindings attribute' },
+      { version: '0.13.0', prs: [435], description: 'Added cloudflare.durable_object.query.bindings attribute' },
     ],
   },
   [CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_READ]: {
@@ -17745,7 +17745,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 12,
     changelog: [
-      { version: 'next', prs: [435], description: 'Added cloudflare.durable_object.response.rows_read attribute' },
+      { version: '0.13.0', prs: [435], description: 'Added cloudflare.durable_object.response.rows_read attribute' },
     ],
   },
   [CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_WRITTEN]: {
@@ -17758,7 +17758,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1,
     changelog: [
-      { version: 'next', prs: [435], description: 'Added cloudflare.durable_object.response.rows_written attribute' },
+      { version: '0.13.0', prs: [435], description: 'Added cloudflare.durable_object.response.rows_written attribute' },
     ],
   },
   [CLOUDFLARE_R2_BUCKET]: {
@@ -19750,7 +19750,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'high',
-    changelog: [{ version: 'next', prs: [334], description: 'Added gen_ai.request.reasoning_effort attribute' }],
+    changelog: [{ version: '0.13.0', prs: [334], description: 'Added gen_ai.request.reasoning_effort attribute' }],
   },
   [GEN_AI_REQUEST_SEED]: {
     brief: 'The seed, ideally models given the same seed and same other parameters will produce the exact same output.',
@@ -22474,7 +22474,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Deprecated in favor of sentry.kind',
     },
     aliases: [SENTRY_KIND],
-    changelog: [{ version: 'next', prs: [440], description: 'Added otel.kind attribute' }],
+    changelog: [{ version: '0.13.0', prs: [440], description: 'Added otel.kind attribute' }],
   },
   [OTEL_SCOPE_NAME]: {
     brief: 'The name of the instrumentation scope - (InstrumentationScope.Name in OTLP).',
@@ -23644,7 +23644,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'thread.id',
       reason: 'This attribute is being deprecated in favor of the OTel-standard thread.id',
     },
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.13.0', prs: [451] }],
   },
   [SENTRY_TIMESTAMP_SEQUENCE]: {
     brief:
@@ -23667,7 +23667,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'stream',
-    changelog: [{ version: 'next', prs: [442], description: 'Added sentry.trace_lifecycle attribute' }],
+    changelog: [{ version: '0.13.0', prs: [442], description: 'Added sentry.trace_lifecycle attribute' }],
   },
   [SENTRY_TRACE_PARENT_SPAN_ID]: {
     brief:
