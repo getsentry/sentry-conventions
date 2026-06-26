@@ -1,0 +1,30 @@
+{
+  "name": "messaging",
+  "description": "Messaging related spans represent operations on topics in streaming data systems and queues, such as producing and consuming messages in Kafka, RabbitMQ.",
+  "fields": [
+    {
+      "name": "queue",
+      "description": "A general queue operation."
+    },
+    {
+      "name": "queue.publish",
+      "description": "Publishing a message to a queue."
+    },
+    {
+      "name": "queue.create",
+      "description": "Creating a queue or a message for later publishing."
+    },
+    {
+      "name": "queue.receive",
+      "description": "Receiving a message from a queue."
+    },
+    {
+      "name": "queue.process",
+      "description": "Processing a message from a queue."
+    },
+    {
+      "name": "queue.settle",
+      "description": "Settling a message, e.g. acknowledging or rejecting it."
+    }
+  ]
+}
