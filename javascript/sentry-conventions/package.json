@@ -11,6 +11,10 @@
       "import": "./dist/attributes.mjs",
       "require": "./dist/attributes.cjs"
     },
+    "./migrations": {
+      "import": "./dist/migrations.mjs",
+      "require": "./dist/migrations.cjs"
+    },
     "./op": {
       "import": "./dist/op.mjs",
       "require": "./dist/op.cjs"

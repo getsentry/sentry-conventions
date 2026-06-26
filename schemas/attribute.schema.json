@@ -74,6 +74,32 @@
         }
       ]
     },
+    "migration": {
+      "description": "Data migrations that this attribute participates in. Migration definitions live in model/attribute_migrations/.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "source_for": {
+          "description": "Migrations that consume this attribute as a source.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "target_of": {
+          "description": "Migrations that produce this attribute as a target.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      },
+      "anyOf": [{ "required": ["source_for"] }, { "required": ["target_of"] }]
+    },
     "deprecation": {
       "description": "If an attribute was deprecated, and what it was replaced with",
       "type": "object",

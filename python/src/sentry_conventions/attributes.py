@@ -49,6 +49,14 @@ class DeprecationStatus(Enum):
 
 
 @dataclass
+class AttributeMigrationInfo:
+    """Holds information about data migrations this attribute participates in."""
+
+    source_for: Optional[List[str]] = None
+    target_of: Optional[List[str]] = None
+
+
+@dataclass
 class DeprecationInfo:
     """Holds information about a deprecation."""
 
@@ -95,6 +103,9 @@ class AttributeMetadata:
 
     example: Optional[AttributeValue] = None
     """An example value of the attribute"""
+
+    migration: Optional[AttributeMigrationInfo] = None
+    """Data migrations that this attribute participates in"""
 
     deprecation: Optional[DeprecationInfo] = None
     """If an attribute was deprecated, and what it was replaced with"""

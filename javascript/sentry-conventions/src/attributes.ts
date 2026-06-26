@@ -14676,11 +14676,24 @@ export interface ApplyScrubbingInfo {
   reason?: string;
 }
 
+export type DeprecationStatus = 'backfill' | 'normalize';
+
+export type AttributeMigrationId = string;
+
+export interface AttributeMigrationInfo {
+  /** Migrations that consume this attribute as a source */
+  sourceFor?: AttributeMigrationId[];
+  /** Migrations that produce this attribute as a target */
+  targetOf?: AttributeMigrationId[];
+}
+
 export interface DeprecationInfo {
   /** What this attribute was replaced with */
   replacement?: string;
   /** Reason for deprecation */
   reason?: string;
+  /** How the attribute should be handled in the ingestion pipeline */
+  status?: DeprecationStatus;
 }
 
 export interface ChangelogEntry {
@@ -14707,6 +14720,8 @@ export interface AttributeMetadata {
   hasDynamicSuffix?: boolean;
   /** An example value of the attribute */
   example?: AttributeValue;
+  /** Data migrations that this attribute participates in */
+  migration?: AttributeMigrationInfo;
   /** If an attribute was deprecated, and what it was replaced with */
   deprecation?: DeprecationInfo;
   /** If there are attributes that alias to this attribute */
@@ -16081,6 +16096,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 10,
     deprecation: {
       replacement: 'gen_ai.usage.output_tokens',
+      status: 'backfill',
     },
     aliases: [GEN_AI_USAGE_OUTPUT_TOKENS, GEN_AI_USAGE_COMPLETION_TOKENS],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [57, 61] }, { version: '0.0.0' }],
@@ -16111,6 +16127,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'COMPLETE',
     deprecation: {
       replacement: 'gen_ai.response.finish_reasons',
+      status: 'backfill',
     },
     aliases: [GEN_AI_RESPONSE_FINISH_REASONS],
     changelog: [{ version: '0.1.0', prs: [55, 57, 61, 108, 127] }],
@@ -16127,6 +16144,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 0.5,
     deprecation: {
       replacement: 'gen_ai.request.frequency_penalty',
+      status: 'backfill',
     },
     aliases: [GEN_AI_REQUEST_FREQUENCY_PENALTY],
     changelog: [
@@ -16146,6 +16164,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'function_name',
     deprecation: {
       replacement: 'gen_ai.tool.name',
+      status: 'backfill',
     },
     aliases: [GEN_AI_TOOL_NAME, MCP_TOOL_NAME],
     changelog: [{ version: '0.1.0', prs: [55, 57, 61, 108] }],
@@ -16161,6 +16180,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'gen_123abc',
     deprecation: {
       replacement: 'gen_ai.response.id',
+      status: 'backfill',
     },
     aliases: [GEN_AI_RESPONSE_ID],
     changelog: [{ version: '0.1.0', prs: [55, 57, 61, 108, 127] }],
@@ -16176,6 +16196,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '[{"role": "user", "message": "hello"}]',
     deprecation: {
       replacement: 'gen_ai.input.messages',
+      status: 'backfill',
     },
     aliases: [GEN_AI_REQUEST_MESSAGES],
     changelog: [{ version: '0.1.0', prs: [65, 119] }, { version: '0.0.0' }],
@@ -16221,6 +16242,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'gpt-4',
     deprecation: {
       replacement: 'gen_ai.response.model',
+      status: 'backfill',
     },
     aliases: [GEN_AI_RESPONSE_MODEL],
     changelog: [{ version: '0.1.0', prs: [57, 61, 127] }, { version: '0.0.0' }],
@@ -16236,6 +16258,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'openai',
     deprecation: {
       replacement: 'gen_ai.provider.name',
+      status: 'backfill',
     },
     aliases: [GEN_AI_PROVIDER_NAME, GEN_AI_SYSTEM],
     changelog: [
@@ -16254,6 +16277,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'Autofix Pipeline',
     deprecation: {
       replacement: 'gen_ai.pipeline.name',
+      status: 'backfill',
     },
     aliases: [GEN_AI_PIPELINE_NAME],
     changelog: [{ version: '0.1.0', prs: [53, 76, 108, 127] }],
@@ -16270,6 +16294,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'You are now a clown.',
     deprecation: {
       replacement: 'gen_ai.system_instructions',
+      status: 'backfill',
     },
     aliases: [GEN_AI_SYSTEM_INSTRUCTIONS],
     changelog: [
@@ -16289,6 +16314,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 0.5,
     deprecation: {
       replacement: 'gen_ai.request.presence_penalty',
+      status: 'backfill',
     },
     aliases: [GEN_AI_REQUEST_PRESENCE_PENALTY],
     changelog: [
@@ -16307,6 +16333,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 20,
     deprecation: {
       replacement: 'gen_ai.usage.input_tokens',
+      status: 'backfill',
     },
     aliases: [GEN_AI_USAGE_PROMPT_TOKENS, GEN_AI_USAGE_INPUT_TOKENS],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [57, 61] }, { version: '0.0.0' }],
@@ -16337,6 +16364,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: ['hello', 'world'],
     deprecation: {
       replacement: 'gen_ai.output.messages',
+      status: 'backfill',
     },
     changelog: [{ version: '0.1.0', prs: [65, 127] }, { version: '0.0.0' }],
   },
@@ -16396,6 +16424,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '1234567890',
     deprecation: {
       replacement: 'gen_ai.request.seed',
+      status: 'backfill',
     },
     aliases: [GEN_AI_REQUEST_SEED],
     changelog: [{ version: '0.1.0', prs: [55, 57, 61, 108, 127] }],
@@ -16411,6 +16440,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: true,
     deprecation: {
       replacement: 'gen_ai.response.streaming',
+      status: 'backfill',
     },
     aliases: [GEN_AI_RESPONSE_STREAMING],
     changelog: [{ version: '0.1.0', prs: [76, 108] }, { version: '0.0.0' }],
@@ -16442,6 +16472,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 0.1,
     deprecation: {
       replacement: 'gen_ai.request.temperature',
+      status: 'backfill',
     },
     aliases: [GEN_AI_REQUEST_TEMPERATURE],
     changelog: [
@@ -16460,6 +16491,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: ['Hello, how are you?', 'What is the capital of France?'],
     deprecation: {
       replacement: 'gen_ai.input.messages',
+      status: 'backfill',
     },
     aliases: [GEN_AI_INPUT_MESSAGES],
     changelog: [
@@ -16478,6 +16510,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: ['function_1', 'function_2'],
     deprecation: {
       replacement: 'gen_ai.tool.definitions',
+      status: 'backfill',
     },
     changelog: [{ version: '0.1.0', prs: [55, 65, 127] }],
   },
@@ -16492,6 +16525,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: ['tool_call_1', 'tool_call_2'],
     deprecation: {
       replacement: 'gen_ai.output.messages',
+      status: 'backfill',
     },
     changelog: [{ version: '0.1.0', prs: [55, 65] }],
   },
@@ -16507,6 +16541,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 35,
     deprecation: {
       replacement: 'gen_ai.request.top_k',
+      status: 'backfill',
     },
     aliases: [GEN_AI_REQUEST_TOP_K],
     changelog: [
@@ -16526,6 +16561,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 0.7,
     deprecation: {
       replacement: 'gen_ai.request.top_p',
+      status: 'backfill',
     },
     aliases: [GEN_AI_REQUEST_TOP_P],
     changelog: [
@@ -16544,6 +16580,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 12.34,
     deprecation: {
       replacement: 'gen_ai.cost.total_tokens',
+      status: 'backfill',
     },
     aliases: [GEN_AI_COST_TOTAL_TOKENS],
     changelog: [
@@ -16563,6 +16600,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 30,
     deprecation: {
       replacement: 'gen_ai.usage.total_tokens',
+      status: 'backfill',
     },
     aliases: [GEN_AI_USAGE_TOTAL_TOKENS],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [57, 61, 108] }, { version: '0.0.0' }],
@@ -16605,6 +16643,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'app.build',
       reason: 'Deprecated in favor of app.build',
+      status: 'backfill',
     },
     aliases: [APP_BUILD],
     changelog: [
@@ -16623,6 +16662,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'app.identifier',
       reason: 'Deprecated in favor of app.identifier',
+      status: 'backfill',
     },
     aliases: [APP_IDENTIFIER],
     changelog: [
@@ -16645,6 +16685,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'app.name',
       reason: 'Deprecated in favor of app.name',
+      status: 'backfill',
     },
     aliases: [APP_NAME],
     changelog: [
@@ -16663,6 +16704,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'app.start_time',
       reason: 'Deprecated in favor of app.start_time',
+      status: 'backfill',
     },
     aliases: [APP_START_TIME],
     changelog: [
@@ -16685,6 +16727,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'app.version',
       reason: 'Deprecated in favor of app.version',
+      status: 'backfill',
     },
     aliases: [APP_VERSION],
     changelog: [
@@ -16751,6 +16794,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'app.vitals.start.cold.value',
       reason:
         'Replaced by app.vitals.start.cold.value to align with the app.vitals.* namespace for mobile performance attributes',
+      status: 'backfill',
     },
     aliases: [APP_VITALS_START_COLD_VALUE],
     changelog: [
@@ -16782,6 +16826,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'app.vitals.start.type',
       reason:
         'Replaced by app.vitals.start.type to align with the app.vitals.* namespace for mobile performance attributes',
+      status: 'backfill',
     },
     aliases: [APP_VITALS_START_TYPE],
     changelog: [
@@ -16803,6 +16848,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'app.vitals.start.warm.value',
       reason:
         'Replaced by app.vitals.start.warm.value to align with the app.vitals.* namespace for mobile performance attributes',
+      status: 'backfill',
     },
     aliases: [APP_VITALS_START_WARM_VALUE],
     changelog: [
@@ -17140,6 +17186,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'faas.invocation_id',
       reason: 'This attribute is being deprecated in favor of faas.invocation_id',
+      status: 'backfill',
     },
     aliases: [FAAS_INVOCATION_ID],
     changelog: [
@@ -17176,6 +17223,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'faas.name',
       reason: 'Use the OTel-aligned faas.name attribute instead',
+      status: 'backfill',
     },
     aliases: [FAAS_NAME],
     changelog: [
@@ -17195,6 +17243,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'faas.version',
       reason: 'Use the OTel-aligned faas.version attribute instead',
+      status: 'backfill',
     },
     aliases: [FAAS_VERSION],
     changelog: [
@@ -17230,6 +17279,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'aws.lambda.invoked_arn',
       reason: 'This attribute is being deprecated in favor of aws.lambda.invoked_arn',
+      status: 'backfill',
     },
     aliases: [AWS_LAMBDA_INVOKED_ARN],
     changelog: [
@@ -17696,6 +17746,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'run',
     deprecation: {
       replacement: 'db.operation.name',
+      status: 'backfill',
     },
     aliases: [DB_OPERATION_NAME, DB_OPERATION],
     changelog: [{ version: '0.11.0', prs: [392], description: 'Added cloudflare.d1.query_type attribute' }],
@@ -17963,6 +18014,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.cls.value',
       reason: 'The CLS web vital is now recorded as a browser.web_vital.cls.value attribute.',
+      status: 'backfill',
     },
     aliases: [BROWSER_WEB_VITAL_CLS_VALUE],
     changelog: [
@@ -17986,6 +18038,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.cls.source.<key>',
       reason: 'The CLS source is now recorded as a browser.web_vital.cls.source.<key> attribute.',
+      status: 'backfill',
     },
     aliases: [BROWSER_WEB_VITAL_CLS_SOURCE_KEY],
     changelog: [{ version: '0.5.0', prs: [234] }],
@@ -18096,6 +18149,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'network.connection.type',
       reason: 'Old namespace-less attribute, to be replaced with network.connection.type for span-first future',
+      status: 'backfill',
     },
     aliases: [NETWORK_CONNECTION_TYPE, DEVICE_CONNECTION_TYPE],
     changelog: [
@@ -18119,6 +18173,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'network.connection.rtt',
       reason:
         'Old attribute name (no official namespace), to be replaced with network.connection.rtt for span-first future',
+      status: 'backfill',
     },
     aliases: [NETWORK_CONNECTION_RTT],
     changelog: [
@@ -18244,6 +18299,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'SELECT',
     deprecation: {
       replacement: 'db.operation.name',
+      status: 'normalize',
     },
     aliases: [DB_OPERATION_NAME, CLOUDFLARE_D1_QUERY_TYPE],
     changelog: [{ version: '0.4.0', prs: [199] }, { version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
@@ -18370,6 +18426,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'SELECT * FROM users',
     deprecation: {
       replacement: 'db.query.text',
+      status: 'normalize',
     },
     aliases: [DB_QUERY_TEXT],
     changelog: [{ version: '0.4.0', prs: [199] }, { version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
@@ -18397,6 +18454,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'postgresql',
     deprecation: {
       replacement: 'db.system.name',
+      status: 'backfill',
     },
     aliases: [DB_SYSTEM_NAME],
     changelog: [{ version: '0.4.0', prs: [199, 224] }, { version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
@@ -18438,6 +18496,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'device.memory.estimated_capacity',
       reason:
         'Old namespace-less attribute, to be replaced with device.memory.estimated_capacity for span-first future',
+      status: 'backfill',
     },
     aliases: [DEVICE_MEMORY_ESTIMATED_CAPACITY],
     changelog: [
@@ -18549,6 +18608,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'network.connection.type',
       reason: 'This attribute is being deprecated in favor of network.connection.type',
+      status: 'backfill',
     },
     aliases: [NETWORK_CONNECTION_TYPE, CONNECTIONTYPE],
     changelog: [
@@ -18908,6 +18968,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'network.connection.effective_type',
       reason:
         'Old namespace-less attribute, to be replaced with network.connection.effective_type for span-first future',
+      status: 'backfill',
     },
     aliases: [NETWORK_CONNECTION_EFFECTIVE_TYPE],
     changelog: [
@@ -19141,6 +19202,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.fcp.value',
       reason: 'This attribute is being deprecated in favor of browser.web_vital.fcp.value',
+      status: 'backfill',
     },
     aliases: [BROWSER_WEB_VITAL_FCP_VALUE],
     changelog: [{ version: '0.5.0', prs: [235] }],
@@ -19170,6 +19232,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.fp.value',
       reason: 'This attribute is being deprecated in favor of browser.web_vital.fp.value',
+      status: 'backfill',
     },
     aliases: [BROWSER_WEB_VITAL_FP_VALUE],
     changelog: [{ version: '0.5.0', prs: [235] }],
@@ -19188,6 +19251,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'app.vitals.frames.delay.value',
       reason:
         'Replaced by app.vitals.frames.delay.value to align with the app.vitals.* namespace for mobile performance attributes',
+      status: 'backfill',
     },
     aliases: [APP_VITALS_FRAMES_DELAY_VALUE],
     changelog: [
@@ -19209,6 +19273,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'app.vitals.frames.frozen.count',
       reason:
         'Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes',
+      status: 'backfill',
     },
     aliases: [APP_VITALS_FRAMES_FROZEN_COUNT],
     changelog: [
@@ -19241,6 +19306,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'app.vitals.frames.slow.count',
       reason:
         'Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes',
+      status: 'backfill',
     },
     aliases: [APP_VITALS_FRAMES_SLOW_COUNT],
     changelog: [
@@ -19273,6 +19339,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'app.vitals.frames.total.count',
       reason:
         'Replaced by app.vitals.frames.total.count to align with the app.vitals.* namespace for mobile performance attributes',
+      status: 'backfill',
     },
     aliases: [APP_VITALS_FRAMES_TOTAL_COUNT],
     changelog: [
@@ -19658,6 +19725,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       '[{"name": "get_weather", "description": "Get the weather for a given location"}, {"name": "get_news", "description": "Get the news for a given topic"}]',
     deprecation: {
       replacement: 'gen_ai.tool.definitions',
+      status: 'normalize',
     },
     changelog: [
       { version: '0.4.0', prs: [221] },
@@ -19707,6 +19775,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       '[{"role": "system", "content": "Generate a random number."}, {"role": "user", "content": [{"text": "Generate a random number between 0 and 10.", "type": "text"}]}, {"role": "tool", "content": {"toolCallId": "1", "toolName": "Weather", "output": "rainy"}}]',
     deprecation: {
       replacement: 'gen_ai.input.messages',
+      status: 'normalize',
     },
     aliases: [AI_INPUT_MESSAGES],
     changelog: [
@@ -19873,6 +19942,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       '["The weather in Paris is rainy and overcast, with temperatures around 57°F", "The weather in London is sunny and warm, with temperatures around 65°F"]',
     deprecation: {
       replacement: 'gen_ai.output.messages',
+      status: 'normalize',
     },
     changelog: [
       { version: '0.4.0', prs: [221] },
@@ -19902,6 +19972,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 0.6853435,
     deprecation: {
       replacement: 'gen_ai.response.time_to_first_chunk',
+      status: 'backfill',
     },
     aliases: [GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK],
     changelog: [
@@ -19934,6 +20005,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '[{"name": "get_weather", "arguments": {"location": "Paris"}}]',
     deprecation: {
       replacement: 'gen_ai.output.messages',
+      status: 'normalize',
     },
     changelog: [
       { version: '0.4.0', prs: [221] },
@@ -19951,6 +20023,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'openai',
     deprecation: {
       replacement: 'gen_ai.provider.name',
+      status: 'normalize',
     },
     aliases: [AI_MODEL_PROVIDER, GEN_AI_PROVIDER_NAME],
     changelog: [
@@ -19984,6 +20057,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'You are a helpful assistant',
     deprecation: {
       replacement: 'gen_ai.system_instructions',
+      status: 'backfill',
     },
     changelog: [
       { version: '0.4.0', prs: [221] },
@@ -20054,6 +20128,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '{"location": "Paris"}',
     deprecation: {
       replacement: 'gen_ai.tool.call.arguments',
+      status: 'normalize',
     },
     aliases: [GEN_AI_TOOL_CALL_ARGUMENTS],
     changelog: [
@@ -20072,6 +20147,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'rainy, 57°F',
     deprecation: {
       replacement: 'gen_ai.tool.call.result',
+      status: 'normalize',
     },
     aliases: [GEN_AI_TOOL_CALL_RESULT, GEN_AI_TOOL_OUTPUT, MCP_TOOL_RESULT_CONTENT],
     changelog: [
@@ -20102,6 +20178,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'rainy, 57°F',
     deprecation: {
       replacement: 'gen_ai.tool.call.result',
+      status: 'normalize',
     },
     aliases: [GEN_AI_TOOL_CALL_RESULT, GEN_AI_TOOL_MESSAGE, MCP_TOOL_RESULT_CONTENT],
     changelog: [
@@ -20167,6 +20244,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 10,
     deprecation: {
       replacement: 'gen_ai.usage.output_tokens',
+      status: 'backfill',
     },
     aliases: [AI_COMPLETION_TOKENS_USED, GEN_AI_USAGE_OUTPUT_TOKENS],
     changelog: [
@@ -20217,6 +20295,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 50,
     deprecation: {
       replacement: 'gen_ai.usage.cache_read.input_tokens',
+      status: 'backfill',
     },
     aliases: [GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS],
     changelog: [
@@ -20241,6 +20320,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 100,
     deprecation: {
       replacement: 'gen_ai.usage.cache_creation.input_tokens',
+      status: 'backfill',
     },
     aliases: [GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS],
     changelog: [
@@ -20290,6 +20370,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 75,
     deprecation: {
       replacement: 'gen_ai.usage.reasoning.output_tokens',
+      status: 'backfill',
     },
     aliases: [GEN_AI_USAGE_REASONING_OUTPUT_TOKENS],
     changelog: [
@@ -20314,6 +20395,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 20,
     deprecation: {
       replacement: 'gen_ai.usage.input_tokens',
+      status: 'backfill',
     },
     aliases: [AI_PROMPT_TOKENS_USED, GEN_AI_USAGE_INPUT_TOKENS],
     changelog: [
@@ -20414,6 +20496,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'device.processor_count',
       reason: 'Old namespace-less attribute, to be replaced with device.processor_count for span-first future',
+      status: 'backfill',
     },
     aliases: [DEVICE_PROCESSOR_COUNT],
     changelog: [
@@ -20505,6 +20588,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'GET',
     deprecation: {
       replacement: 'http.request.method',
+      status: 'backfill',
     },
     aliases: [HTTP_REQUEST_METHOD, _HTTP_REQUEST_METHOD, METHOD],
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
@@ -20632,6 +20716,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'GET',
     deprecation: {
       replacement: 'http.request.method',
+      status: 'backfill',
     },
     aliases: [METHOD, HTTP_METHOD, HTTP_REQUEST_METHOD],
     changelog: [{ version: '0.6.0', prs: [343], description: 'Added http.request_method attribute' }],
@@ -20774,6 +20859,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 123,
     deprecation: {
       replacement: 'http.response.body.size',
+      status: 'backfill',
     },
     aliases: [HTTP_RESPONSE_BODY_SIZE, HTTP_RESPONSE_HEADER_CONTENT_LENGTH],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61, 106] }, { version: '0.0.0' }],
@@ -20841,6 +20927,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 456,
     deprecation: {
       replacement: 'http.response.size',
+      status: 'backfill',
     },
     aliases: [HTTP_RESPONSE_SIZE],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
@@ -20983,6 +21070,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.inp.value',
       reason: 'The INP web vital is now recorded as a browser.web_vital.inp.value attribute.',
+      status: 'backfill',
     },
     aliases: [BROWSER_WEB_VITAL_INP_VALUE],
     changelog: [
@@ -21094,6 +21182,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.lcp.value',
       reason: 'The LCP web vital is now recorded as a browser.web_vital.lcp.value attribute.',
+      status: 'backfill',
     },
     aliases: [BROWSER_WEB_VITAL_LCP_VALUE],
     changelog: [
@@ -21116,6 +21205,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.lcp.element',
       reason: 'The LCP element is now recorded as a browser.web_vital.lcp.element attribute.',
+      status: 'backfill',
     },
     aliases: [BROWSER_WEB_VITAL_LCP_ELEMENT],
     changelog: [{ version: '0.5.0', prs: [233] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
@@ -21132,6 +21222,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.lcp.id',
       reason: 'The LCP id is now recorded as a browser.web_vital.lcp.id attribute.',
+      status: 'backfill',
     },
     aliases: [BROWSER_WEB_VITAL_LCP_ID],
     changelog: [{ version: '0.5.0', prs: [233] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
@@ -21148,6 +21239,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.lcp.load_time',
       reason: 'The LCP load time is now recorded as a browser.web_vital.lcp.load_time attribute.',
+      status: 'backfill',
     },
     aliases: [BROWSER_WEB_VITAL_LCP_LOAD_TIME],
     changelog: [{ version: '0.5.0', prs: [233] }],
@@ -21164,6 +21256,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.lcp.render_time',
       reason: 'The LCP render time is now recorded as a browser.web_vital.lcp.render_time attribute.',
+      status: 'backfill',
     },
     aliases: [BROWSER_WEB_VITAL_LCP_RENDER_TIME],
     changelog: [{ version: '0.5.0', prs: [233] }],
@@ -21180,6 +21273,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.lcp.size',
       reason: 'The LCP size is now recorded as a browser.web_vital.lcp.size attribute.',
+      status: 'backfill',
     },
     aliases: [BROWSER_WEB_VITAL_LCP_SIZE],
     changelog: [{ version: '0.5.0', prs: [233] }, { version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
@@ -21196,6 +21290,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.lcp.url',
       reason: 'The LCP url is now recorded as a browser.web_vital.lcp.url attribute.',
+      status: 'backfill',
     },
     aliases: [BROWSER_WEB_VITAL_LCP_URL],
     changelog: [{ version: '0.5.0', prs: [233] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
@@ -21417,6 +21512,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.prompt.name',
       reason: 'OTel uses gen_ai.prompt.name for MCP prompt names',
+      status: 'backfill',
     },
     aliases: [GEN_AI_PROMPT_NAME],
     changelog: [
@@ -21549,6 +21645,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'jsonrpc.request.id',
       reason: 'OTel models MCP as JSON-RPC, uses jsonrpc.request.id',
+      status: 'backfill',
     },
     aliases: [JSONRPC_REQUEST_ID],
     changelog: [
@@ -21568,6 +21665,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'network.protocol.name',
       reason: 'OTel uses the generic network.protocol.name attribute',
+      status: 'backfill',
     },
     aliases: [NETWORK_PROTOCOL_NAME, NET_PROTOCOL_NAME],
     changelog: [
@@ -21650,6 +21748,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.tool.name',
       reason: 'OTel uses gen_ai.tool.name for MCP tool names',
+      status: 'backfill',
     },
     aliases: [GEN_AI_TOOL_NAME, AI_FUNCTION_CALL],
     changelog: [
@@ -21670,6 +21769,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.tool.call.result',
       reason: 'OTel uses gen_ai.tool.call.result for MCP tool results',
+      status: 'backfill',
     },
     aliases: [GEN_AI_TOOL_CALL_RESULT, GEN_AI_TOOL_MESSAGE, GEN_AI_TOOL_OUTPUT],
     changelog: [
@@ -21723,6 +21823,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'network.transport',
       reason: 'OTel uses the generic network.transport attribute',
+      status: 'backfill',
     },
     aliases: [NETWORK_TRANSPORT, NET_TRANSPORT],
     changelog: [
@@ -22347,6 +22448,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '1234567890',
     deprecation: {
       replacement: 'os.build_id',
+      status: 'backfill',
     },
     aliases: [OS_BUILD_ID],
     changelog: [
@@ -22472,6 +22574,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'sentry.kind',
       reason: 'Deprecated in favor of sentry.kind',
+      status: 'backfill',
     },
     aliases: [SENTRY_KIND],
     changelog: [{ version: '0.13.0', prs: [440], description: 'Added otel.kind attribute' }],
@@ -22546,6 +22649,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.performance.navigation.activation_start',
       reason: 'The activationStart is now recorded as the browser.performance.navigation.activation_start attribute.',
+      status: 'backfill',
     },
     aliases: [BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START],
     changelog: [{ version: '0.5.0', prs: [321], description: 'Added performance.activationStart attribute' }],
@@ -22562,6 +22666,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.performance.time_origin',
       reason: 'The timeOrigin is now recorded as the browser.performance.time_origin attribute.',
+      status: 'backfill',
     },
     aliases: [BROWSER_PERFORMANCE_TIME_ORIGIN],
     changelog: [{ version: '0.5.0', prs: [321], description: 'Added performance.timeOrigin attribute' }],
@@ -22750,6 +22855,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'production',
     deprecation: {
       replacement: 'sentry.environment',
+      status: 'backfill',
     },
     changelog: [{ version: '0.5.0', prs: [266] }],
   },
@@ -22764,6 +22870,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'production',
     deprecation: {
       replacement: 'sentry.environment',
+      status: 'backfill',
     },
     changelog: [{ version: '0.3.1', prs: [196] }],
   },
@@ -23550,6 +23657,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '051581bf3cb55c13',
     deprecation: {
       replacement: 'sentry.segment.id',
+      status: 'backfill',
     },
     aliases: [SENTRY_SEGMENT_ID],
     changelog: [{ version: '0.1.0', prs: [124] }],
@@ -23593,6 +23701,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'sentry.span.source',
       reason: 'This attribute is being deprecated in favor of sentry.span.source',
+      status: 'backfill',
     },
     changelog: [{ version: '0.5.0' }],
   },
@@ -23643,6 +23752,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'thread.id',
       reason: 'This attribute is being deprecated in favor of the OTel-standard thread.id',
+      status: 'backfill',
     },
     changelog: [{ version: '0.13.0', prs: [451] }],
   },
@@ -23697,6 +23807,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'sentry.segment.name',
       reason: 'This attribute is being deprecated in favor of sentry.segment.name',
+      status: 'backfill',
     },
     aliases: [SENTRY_SEGMENT_NAME, TRANSACTION],
     changelog: [
@@ -23953,6 +24064,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'app.vitals.ttfd.value',
       reason:
         'Replaced by app.vitals.ttfd.value to align with the app.vitals.* namespace for mobile performance attributes',
+      status: 'backfill',
     },
     aliases: [APP_VITALS_TTFD_VALUE],
     changelog: [
@@ -23972,6 +24084,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'app.vitals.ttid.value',
       reason:
         'Replaced by app.vitals.ttid.value to align with the app.vitals.* namespace for mobile performance attributes',
+      status: 'backfill',
     },
     aliases: [APP_VITALS_TTID_VALUE],
     changelog: [
@@ -23989,6 +24102,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'GET /',
     deprecation: {
       replacement: 'sentry.segment.name',
+      status: 'backfill',
     },
     aliases: [SENTRY_SEGMENT_NAME, SENTRY_TRANSACTION],
     changelog: [
@@ -24035,6 +24149,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.ttfb.value',
       reason: 'This attribute is being deprecated in favor of browser.web_vital.ttfb.value',
+      status: 'backfill',
     },
     aliases: [BROWSER_WEB_VITAL_TTFB_VALUE],
     changelog: [{ version: '0.5.0', prs: [235] }],
@@ -24052,6 +24167,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.ttfb.request_time',
       reason: 'This attribute is being deprecated in favor of browser.web_vital.ttfb.request_time',
+      status: 'backfill',
     },
     aliases: [BROWSER_WEB_VITAL_TTFB_REQUEST_TIME],
     changelog: [{ version: '0.5.0', prs: [235] }],

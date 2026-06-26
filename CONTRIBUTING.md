@@ -58,6 +58,31 @@ After you've created an attribute, the script will ask if you'd like to generate
 
 If you need help, run `yarn run create:attribute --help` to see the available options.
 
+### Adding a data migration for deprecated attributes
+
+Most deprecated attributes only need a direct rename via `deprecation.replacement` and a `_status` of `backfill` or `normalize`. Add a data migration only when the replacement value must be derived or transformed from one or more source attributes.
+
+When adding a data migration:
+
+1. Choose a stable, descriptive string migration id, for example `namespace_old_attribute_to_new_attribute`.
+2. Mark every source attribute with `migration.source_for` and the replacement attribute with `migration.target_of` in their JSON definitions under `model/attributes/`.
+3. Keep the source attribute deprecation metadata up to date:
+   - set `deprecation.replacement` to the replacement attribute,
+   - set `_status` to `backfill` for the initial rollout,
+   - switch `_status` to `normalize` only after the backfill period.
+4. Implement the migration for every generated package:
+   - `javascript/sentry-conventions/src/migrations.ts`,
+   - `python/src/sentry_conventions/migrations.py`,
+   - `rust/src/migrations.rs`.
+5. Add or update tests for every implementation:
+   - `test/migrations.test.ts`,
+   - `python/tests/test_migrations.py`,
+   - `rust/tests/migrations.rs`.
+6. Run `yarn run generate` so generated metadata includes the migration information.
+7. Run the relevant tests, or `yarn test` for the full suite.
+
+After the change is released, update downstream consumers that apply conventions at ingest time, especially Relay.
+
 ## Adding a new convention for span names
 
 Span name conventions are organized loosely by type of span operation. To create a convention for a new type of span operation:

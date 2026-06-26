@@ -13,6 +13,9 @@ export async function generateAttributes() {
 
   // Generate and write Python code
   writeToPython(attributesDir, attributeFiles);
+
+  // Generate and write Rust code
+  writeToRust(attributesDir, attributeFiles);
 }
 
 async function getAllJsonFiles(dir: string): Promise<string[]> {
@@ -110,7 +113,7 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
   let individualConstants = '';
 
   // Generate individual attribute constants with documentation AND build the explicit type map
-  for (const { file, key, constantName, attributeJson, isDeprecated } of allAttributes) {
+  for (const { file, key, constantName, attributeJson } of allAttributes) {
     const { brief, type, apply_scrubbing, is_in_otel, example, has_dynamic_suffix, deprecation, alias } = attributeJson;
     const visibility = getVisibility(attributeJson);
 
@@ -275,6 +278,60 @@ function getTsType(type: AttributeJson['type']): string {
   }
 }
 
+function writeToRust(attributesDir: string, attributeFiles: string[]) {
+  let content = '// This is an auto-generated file. Do not edit!\n\n';
+
+  constantNameMemo.clear();
+  constantNameInnerMemo.clear();
+  usedConstantNames.clear();
+
+  const allAttributesPartial: Array<{
+    file: string;
+    key: string;
+    attributeJson: AttributeJson;
+    isDeprecated: boolean;
+  }> = [];
+
+  for (const file of attributeFiles) {
+    const attributePath = path.join(attributesDir, file);
+    const attributeJson = JSON.parse(fs.readFileSync(attributePath, 'utf-8')) as AttributeJson;
+    allAttributesPartial.push({
+      file,
+      key: attributeJson.key,
+      attributeJson,
+      isDeprecated: !!attributeJson.deprecation,
+    });
+  }
+
+  allAttributesPartial.sort((a, b) => {
+    const aName = getConstantNameInner(a.key);
+    const bName = getConstantNameInner(b.key);
+    if (aName < bName) return -1;
+    if (aName > bName) return 1;
+    if (a.isDeprecated === b.isDeprecated) return 0;
+    return a.isDeprecated ? 1 : -1;
+  });
+
+  for (const { file, key, attributeJson, isDeprecated } of allAttributesPartial) {
+    const constantName = getConstantName(key, isDeprecated);
+    const brief = attributeJson.brief.replaceAll('\n', '\n/// ');
+
+    content += `// Path: model/attributes/${file}\n`;
+    content += `/// ${brief}\n`;
+    if (attributeJson.deprecation?.replacement) {
+      content += `#[deprecated(note = "Use ${attributeJson.deprecation.replacement} instead.")]\n`;
+    } else if (attributeJson.deprecation) {
+      content += '#[deprecated]\n';
+    }
+    content += `pub const ${constantName}: &str = ${JSON.stringify(key)};\n\n`;
+  }
+
+  const outputFilePath = path.join(__dirname, '..', 'rust', 'src', 'attributes.rs');
+  fs.writeFileSync(outputFilePath, content);
+
+  console.log(`Generated Rust attributes file at: ${outputFilePath}`);
+}
+
 function writeToPython(attributesDir: string, attributeFiles: string[]) {
   let content = `"""`;
   content +=
@@ -319,11 +376,17 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
   content += '    NORMALIZE = "normalize"\n\n';
 
   content += '@dataclass\n';
+  content += 'class AttributeMigrationInfo:\n';
+  content += '    """Holds information about data migrations this attribute participates in."""\n';
+  content += '    source_for: Optional[List[str]] = None\n';
+  content += '    target_of: Optional[List[str]] = None\n\n';
+
+  content += '@dataclass\n';
   content += 'class DeprecationInfo:\n';
   content += '    """Holds information about a deprecation."""\n';
   content += '    replacement: Optional[str] = None\n';
   content += '    reason: Optional[str] = None\n';
-  content += '    status: Optional[DeprecationStatus] = None\n\n';
+  content += '    status: Optional[DeprecationStatus] = None\n';
 
   content += '@dataclass\n';
   content += 'class ChangelogEntry:\n';
@@ -362,6 +425,9 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
   content += '    \n';
   content += '    example: Optional[AttributeValue] = None\n';
   content += '    """An example value of the attribute"""\n';
+  content += '    \n';
+  content += '    migration: Optional[AttributeMigrationInfo] = None\n';
+  content += '    """Data migrations that this attribute participates in"""\n';
   content += '    \n';
   content += '    deprecation: Optional[DeprecationInfo] = None\n';
   content += '    """If an attribute was deprecated, and what it was replaced with"""\n';
@@ -509,6 +575,19 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
     if (example !== undefined) {
       const pythonExample = convertToPythonLiteral(example);
       metadataDict += `        example=${pythonExample},\n`;
+    }
+
+    if (attributeJson.migration) {
+      metadataDict += '        migration=AttributeMigrationInfo(';
+      const migrationFields: string[] = [];
+      if (attributeJson.migration.source_for && attributeJson.migration.source_for.length > 0) {
+        migrationFields.push(`source_for=${convertToPythonLiteral(attributeJson.migration.source_for)}`);
+      }
+      if (attributeJson.migration.target_of && attributeJson.migration.target_of.length > 0) {
+        migrationFields.push(`target_of=${convertToPythonLiteral(attributeJson.migration.target_of)}`);
+      }
+      metadataDict += migrationFields.join(', ');
+      metadataDict += '),\n';
     }
 
     // Build deprecation info structure if present
@@ -686,11 +765,24 @@ export interface ApplyScrubbingInfo {
   reason?: string;
 }
 
+export type DeprecationStatus = 'backfill' | 'normalize';
+
+export type AttributeMigrationId = string;
+
+export interface AttributeMigrationInfo {
+  /** Migrations that consume this attribute as a source */
+  sourceFor?: AttributeMigrationId[];
+  /** Migrations that produce this attribute as a target */
+  targetOf?: AttributeMigrationId[];
+}
+
 export interface DeprecationInfo {
   /** What this attribute was replaced with */
   replacement?: string;
   /** Reason for deprecation */
   reason?: string;
+  /** How the attribute should be handled in the ingestion pipeline */
+  status?: DeprecationStatus;
 }
 
 export interface ChangelogEntry {
@@ -717,6 +809,8 @@ export interface AttributeMetadata {
   hasDynamicSuffix?: boolean;
   /** An example value of the attribute */
   example?: AttributeValue;
+  /** Data migrations that this attribute participates in */
+  migration?: AttributeMigrationInfo;
   /** If an attribute was deprecated, and what it was replaced with */
   deprecation?: DeprecationInfo;
   /** If there are attributes that alias to this attribute */
@@ -744,7 +838,7 @@ function generateMetadataDict(
   // Generate ATTRIBUTE_TYPE using individual constants
   let attributeTypeMap = 'export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {\n';
 
-  for (const { key, constantName, attributeJson } of allAttributes) {
+  for (const { constantName, attributeJson } of allAttributes) {
     const { type } = attributeJson;
 
     attributeTypeMap += `  [${constantName}]: '${type}',\n`;
@@ -759,7 +853,7 @@ function generateMetadataDict(
   let metadataDict = attributeTypeMap + attributeNameType;
   metadataDict += 'export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {\n';
 
-  for (const { key, attributeJson, constantName } of allAttributes) {
+  for (const { attributeJson, constantName } of allAttributes) {
     const { brief, type, apply_scrubbing, is_in_otel, example, has_dynamic_suffix, deprecation, alias } = attributeJson;
     const visibility = getVisibility(attributeJson);
 
@@ -788,6 +882,19 @@ function generateMetadataDict(
       metadataDict += `    example: ${JSON.stringify(example)},\n`;
     }
 
+    if (attributeJson.migration) {
+      metadataDict += '    migration: {';
+      const migrationFields: string[] = [];
+      if (attributeJson.migration.source_for && attributeJson.migration.source_for.length > 0) {
+        migrationFields.push(`\n      sourceFor: ${JSON.stringify(attributeJson.migration.source_for)}`);
+      }
+      if (attributeJson.migration.target_of && attributeJson.migration.target_of.length > 0) {
+        migrationFields.push(`\n      targetOf: ${JSON.stringify(attributeJson.migration.target_of)}`);
+      }
+      metadataDict += migrationFields.join(',');
+      metadataDict += '\n    },\n';
+    }
+
     // Build deprecation info structure if present
     if (deprecation) {
       metadataDict += '    deprecation: {';
@@ -797,6 +904,9 @@ function generateMetadataDict(
       }
       if (deprecation.reason) {
         deprecationFields.push(`\n      reason: ${JSON.stringify(deprecation.reason)}`);
+      }
+      if (deprecation._status) {
+        deprecationFields.push(`\n      status: ${JSON.stringify(deprecation._status)}`);
       }
       if (deprecationFields.length > 0) {
         metadataDict += deprecationFields.join(',');
