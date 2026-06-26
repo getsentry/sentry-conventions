@@ -7,6 +7,7 @@ export async function generateOps() {
   const opFiles = await fs.promises.readdir(opDir);
   writeToJs(opDir, opFiles);
   writeToRust(opDir, opFiles);
+  writeToPython(opDir, opFiles);
 }
 
 function writeToRust(opDir: string, opFiles: string[]) {
@@ -72,6 +73,40 @@ function writeToJs(opDir: string, opFiles: string[]) {
   }
 
   const opFilePath = path.join(__dirname, '..', 'javascript', 'sentry-conventions', 'src', 'op.ts');
+
+  fs.writeFileSync(opFilePath, opContent);
+}
+
+function writeToPython(opDir: string, opFiles: string[]) {
+  let opContent = '"""Span operation constants as defined in the Sentry Semantic Conventions registry."""\n\n';
+  opContent += '# This is an auto-generated file. Do not edit!\n';
+
+  for (const file of opFiles) {
+    const opPath = path.join(opDir, file);
+    const opJson = JSON.parse(fs.readFileSync(opPath, 'utf-8'));
+
+    const { name, description, fields } = opJson;
+
+    opContent += `\n# Path: model/op/${file}\n# Name: ${name}\n`;
+    if (description) {
+      opContent += `\n# Description: ${description}\n`;
+    }
+
+    for (const field of fields) {
+      opContent += '\n';
+      const constantName = `${name.toUpperCase().replaceAll('.', '_')}_${field.name
+        .toUpperCase()
+        .replaceAll('.', '_')}_SPAN_OP`;
+      if (field.description) {
+        opContent += `${constantName}: str = "${field.name}"\n`;
+        opContent += `"""${field.description}"""\n`;
+      } else {
+        opContent += `${constantName}: str = "${field.name}"\n`;
+      }
+    }
+  }
+
+  const opFilePath = path.join(__dirname, '..', 'python', 'src', 'sentry_conventions', 'op.py');
 
   fs.writeFileSync(opFilePath, opContent);
 }
