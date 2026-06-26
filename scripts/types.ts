@@ -1,3 +1,5 @@
+export type AttributeMigrationId = string;
+
 export interface AttributeJson {
   key: string;
   brief: string;
@@ -10,10 +12,14 @@ export interface AttributeJson {
   is_in_otel: boolean;
   visibility?: 'public' | 'internal';
   example?: string | boolean | number | string[] | boolean[] | number[];
+  migration?: {
+    source_for?: AttributeMigrationId[];
+    target_of?: AttributeMigrationId[];
+  };
   deprecation?: {
     replacement?: string;
     reason?: string;
-    _status: string;
+    _status: 'backfill' | 'normalize' | null;
   };
   alias?: string[];
   additional_context?: string[];
