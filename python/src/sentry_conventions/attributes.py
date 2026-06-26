@@ -7230,6 +7230,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "route"
     """
 
+    # Path: model/attributes/sentry/sentry__status.json
+    SENTRY_STATUS: Literal["sentry.status"] = "sentry.status"
+    """The span's status (either "ok" or "error"). Older SDKs may set this to a more specific error, but this behaviour is deprecated.
+
+    Type: str
+    Apply Scrubbing: never
+    Defined in OTEL: No
+    Visibility: public
+    Example: "ok"
+    """
+
     # Path: model/attributes/sentry/sentry__status__message.json
     SENTRY_STATUS_MESSAGE: Literal["sentry.status.message"] = "sentry.status.message"
     """The from OTLP extracted status message.
@@ -7289,6 +7300,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     DEPRECATED: No replacement at this time
     Example: "b0e6f15b45c36b12"
+    """
+
+    # Path: model/attributes/sentry/sentry__trace__status.json
+    SENTRY_TRACE_STATUS: Literal["sentry.trace.status"] = "sentry.trace.status"
+    """The segment's status (either "ok" or "error"). Older SDKs may set this to a more specific error, but this behaviour is deprecated.
+
+    Type: str
+    Apply Scrubbing: never
+    Defined in OTEL: No
+    Visibility: public
+    Example: "ok"
     """
 
     # Path: model/attributes/sentry/sentry__trace_lifecycle.json
@@ -16525,6 +16547,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "sentry.status": AttributeMetadata(
+        brief='The span\'s status (either "ok" or "error"). Older SDKs may set this to a more specific error, but this behaviour is deprecated.',
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="ok",
+        changelog=[
+            ChangelogEntry(version="next"),
+        ],
+    ),
     "sentry.status.message": AttributeMetadata(
         brief="The from OTLP extracted status message.",
         type=AttributeType.STRING,
@@ -16589,6 +16622,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 description="Deprecate `sentry.trace.parent_span_id`",
             ),
             ChangelogEntry(version="0.1.0", prs=[116]),
+        ],
+    ),
+    "sentry.trace.status": AttributeMetadata(
+        brief='The segment\'s status (either "ok" or "error"). Older SDKs may set this to a more specific error, but this behaviour is deprecated.',
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="ok",
+        changelog=[
+            ChangelogEntry(version="next"),
         ],
     ),
     "sentry.trace_lifecycle": AttributeMetadata(
@@ -18408,11 +18452,13 @@ Attributes = TypedDict(
         "sentry.server_sample_rate": float,
         "sentry.source": str,
         "sentry.span.source": str,
+        "sentry.status": str,
         "sentry.status.message": str,
         "sentry.status_code": int,
         "sentry.thread.id": int,
         "sentry.timestamp.sequence": int,
         "sentry.trace.parent_span_id": str,
+        "sentry.trace.status": str,
         "sentry.trace_lifecycle": str,
         "sentry.transaction": str,
         "sentry.user.email": str,

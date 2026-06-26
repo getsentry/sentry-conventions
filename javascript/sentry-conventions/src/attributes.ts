@@ -12401,6 +12401,27 @@ export const SENTRY_SPAN_SOURCE = 'sentry.span.source';
  */
 export type SENTRY_SPAN_SOURCE_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__status.json
+
+/**
+ * The span's status (either "ok" or "error"). Older SDKs may set this to a more specific error, but this behaviour is deprecated. `sentry.status`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_STATUS_TYPE}
+ *
+ * Apply Scrubbing: never
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "ok"
+ */
+export const SENTRY_STATUS = 'sentry.status';
+
+/**
+ * Type for {@link SENTRY_STATUS} sentry.status
+ */
+export type SENTRY_STATUS_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__status_code.json
 
 /**
@@ -12528,6 +12549,27 @@ export const SENTRY_TRACE_PARENT_SPAN_ID = 'sentry.trace.parent_span_id';
  * Type for {@link SENTRY_TRACE_PARENT_SPAN_ID} sentry.trace.parent_span_id
  */
 export type SENTRY_TRACE_PARENT_SPAN_ID_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__trace__status.json
+
+/**
+ * The segment's status (either "ok" or "error"). Older SDKs may set this to a more specific error, but this behaviour is deprecated. `sentry.trace.status`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_TRACE_STATUS_TYPE}
+ *
+ * Apply Scrubbing: never
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "ok"
+ */
+export const SENTRY_TRACE_STATUS = 'sentry.trace.status';
+
+/**
+ * Type for {@link SENTRY_TRACE_STATUS} sentry.trace.status
+ */
+export type SENTRY_TRACE_STATUS_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__transaction.json
 
@@ -15280,12 +15322,14 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   [SENTRY_SERVER_SAMPLE_RATE]: 'double',
   [SENTRY_SOURCE]: 'string',
   [SENTRY_SPAN_SOURCE]: 'string',
+  [SENTRY_STATUS]: 'string',
   [SENTRY_STATUS_CODE]: 'integer',
   [SENTRY_STATUS_MESSAGE]: 'string',
   [SENTRY_THREAD_ID]: 'integer',
   [SENTRY_TIMESTAMP_SEQUENCE]: 'integer',
   [SENTRY_TRACE_LIFECYCLE]: 'string',
   [SENTRY_TRACE_PARENT_SPAN_ID]: 'string',
+  [SENTRY_TRACE_STATUS]: 'string',
   [SENTRY_TRANSACTION]: 'string',
   [SENTRY_USER_EMAIL]: 'string',
   [SENTRY_USER_GEO_CITY]: 'string',
@@ -15949,12 +15993,14 @@ export type AttributeName =
   | typeof SENTRY_SERVER_SAMPLE_RATE
   | typeof SENTRY_SOURCE
   | typeof SENTRY_SPAN_SOURCE
+  | typeof SENTRY_STATUS
   | typeof SENTRY_STATUS_CODE
   | typeof SENTRY_STATUS_MESSAGE
   | typeof SENTRY_THREAD_ID
   | typeof SENTRY_TIMESTAMP_SEQUENCE
   | typeof SENTRY_TRACE_LIFECYCLE
   | typeof SENTRY_TRACE_PARENT_SPAN_ID
+  | typeof SENTRY_TRACE_STATUS
   | typeof SENTRY_TRANSACTION
   | typeof SENTRY_USER_EMAIL
   | typeof SENTRY_USER_GEO_CITY
@@ -23608,6 +23654,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'route',
     changelog: [{ version: '0.4.0', prs: [214] }, { version: '0.0.0' }],
   },
+  [SENTRY_STATUS]: {
+    brief:
+      'The span\'s status (either "ok" or "error"). Older SDKs may set this to a more specific error, but this behaviour is deprecated.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'never',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'ok',
+    changelog: [{ version: 'next' }],
+  },
   [SENTRY_STATUS_CODE]: {
     brief:
       'The HTTP status code used in Sentry Insights. Typically set by Sentry during ingestion, rather than by clients.',
@@ -23684,6 +23742,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.5.0', prs: [287], description: 'Deprecate `sentry.trace.parent_span_id`' },
       { version: '0.1.0', prs: [116] },
     ],
+  },
+  [SENTRY_TRACE_STATUS]: {
+    brief:
+      'The segment\'s status (either "ok" or "error"). Older SDKs may set this to a more specific error, but this behaviour is deprecated.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'never',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'ok',
+    changelog: [{ version: 'next' }],
   },
   [SENTRY_TRANSACTION]: {
     brief: 'The sentry transaction (segment name).',
@@ -25441,12 +25511,14 @@ export type Attributes = {
   [SENTRY_SERVER_SAMPLE_RATE]?: SENTRY_SERVER_SAMPLE_RATE_TYPE;
   [SENTRY_SOURCE]?: SENTRY_SOURCE_TYPE;
   [SENTRY_SPAN_SOURCE]?: SENTRY_SPAN_SOURCE_TYPE;
+  [SENTRY_STATUS]?: SENTRY_STATUS_TYPE;
   [SENTRY_STATUS_CODE]?: SENTRY_STATUS_CODE_TYPE;
   [SENTRY_STATUS_MESSAGE]?: SENTRY_STATUS_MESSAGE_TYPE;
   [SENTRY_THREAD_ID]?: SENTRY_THREAD_ID_TYPE;
   [SENTRY_TIMESTAMP_SEQUENCE]?: SENTRY_TIMESTAMP_SEQUENCE_TYPE;
   [SENTRY_TRACE_LIFECYCLE]?: SENTRY_TRACE_LIFECYCLE_TYPE;
   [SENTRY_TRACE_PARENT_SPAN_ID]?: SENTRY_TRACE_PARENT_SPAN_ID_TYPE;
+  [SENTRY_TRACE_STATUS]?: SENTRY_TRACE_STATUS_TYPE;
   [SENTRY_TRANSACTION]?: SENTRY_TRANSACTION_TYPE;
   [SENTRY_USER_EMAIL]?: SENTRY_USER_EMAIL_TYPE;
   [SENTRY_USER_GEO_CITY]?: SENTRY_USER_GEO_CITY_TYPE;
