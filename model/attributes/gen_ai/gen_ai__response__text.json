@@ -8,6 +8,9 @@
   "is_in_otel": false,
   "example": "[\"The weather in Paris is rainy and overcast, with temperatures around 57°F\", \"The weather in London is sunny and warm, with temperatures around 65°F\"]",
   "alias": [],
+  "migration": {
+    "source_for": ["gen_ai_response_to_output_messages"]
+  },
   "deprecation": {
     "_status": "normalize",
     "replacement": "gen_ai.output.messages"

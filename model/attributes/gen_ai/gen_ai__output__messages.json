@@ -7,6 +7,9 @@
   },
   "is_in_otel": true,
   "example": "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"text\", \"content\": \"The weather in Paris is currently rainy with a temperature of 57°F.\"}], \"finish_reason\": \"stop\"}]",
+  "migration": {
+    "target_of": ["gen_ai_response_to_output_messages"]
+  },
   "visibility": "public",
   "changelog": [
     {
