@@ -20,6 +20,12 @@ pub const BROWSER_RESOURCE_IMG_SPAN_OP: &str = "resource.img";
 
 pub const BROWSER_RESOURCE_CSS_SPAN_OP: &str = "resource.css";
 
+pub const BROWSER_RESOURCE_AUDIO_SPAN_OP: &str = "resource.audio";
+
+pub const BROWSER_RESOURCE_VIDEO_SPAN_OP: &str = "resource.video";
+
+pub const BROWSER_RESOURCE_IFRAME_SPAN_OP: &str = "resource.iframe";
+
 pub const BROWSER_RESOURCE_OTHER_SPAN_OP: &str = "resource.other";
 
 /// Usage of browser APIs or functionality
@@ -66,6 +72,12 @@ pub const DATABASE_DB_SPAN_OP: &str = "db";
 pub const DATABASE_DB_QUERY_SPAN_OP: &str = "db.query";
 
 pub const DATABASE_CACHE_SPAN_OP: &str = "cache";
+
+pub const DATABASE_CACHE_GET_SPAN_OP: &str = "cache.get";
+
+pub const DATABASE_CACHE_PUT_SPAN_OP: &str = "cache.put";
+
+pub const DATABASE_CACHE_REMOVE_SPAN_OP: &str = "cache.remove";
 
 // Path: model/op/faas.json
 // Name: faas

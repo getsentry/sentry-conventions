@@ -10,6 +10,15 @@
     },
     {
       "name": "cache"
+    },
+    {
+      "name": "cache.get"
+    },
+    {
+      "name": "cache.put"
+    },
+    {
+      "name": "cache.remove"
     }
   ]
 }
