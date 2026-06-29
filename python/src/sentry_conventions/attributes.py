@@ -7495,6 +7495,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "00112233-4455-6677-8899-aabbccddeeff"
     """
 
+    # Path: model/attributes/span/span__initial_name.json
+    SPAN_INITIAL_NAME: Literal["span.initial_name"] = "span.initial_name"
+    """Stores the initial name of the span (prior to any potential name update) that can for example be used SDK-side to filter spans
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Example: "GET /users/123"
+    """
+
     # Path: model/attributes/stall_percentage.json
     STALL_PERCENTAGE: Literal["stall_percentage"] = "stall_percentage"
     """The fraction of time the app was stalled. Only applies to React Native. This is computed by Relay.
@@ -16832,6 +16843,24 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "span.initial_name": AttributeMetadata(
+        brief="Stores the initial name of the span (prior to any potential name update) that can for example be used SDK-side to filter spans",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="GET /users/123",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[443],
+                description="Added span.initial_name attribute",
+            ),
+        ],
+        additional_context=[
+            "This attribute must be set to the value that the SDK applies to `ignoreSpans` or `tracesSampler`. Only relevant for streamed spans."
+        ],
+    ),
     "stall_percentage": AttributeMetadata(
         brief="The fraction of time the app was stalled. Only applies to React Native. This is computed by Relay.",
         type=AttributeType.DOUBLE,
@@ -18474,6 +18503,7 @@ Attributes = TypedDict(
         "service.name": str,
         "service.version": str,
         "session.id": str,
+        "span.initial_name": str,
         "stall_percentage": float,
         "stall_total_time": float,
         "state.type": str,
