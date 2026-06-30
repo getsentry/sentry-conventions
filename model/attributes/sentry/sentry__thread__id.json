@@ -1,0 +1,22 @@
+{
+  "key": "sentry.thread.id",
+  "brief": "Current “managed” thread ID.",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "example": 56,
+  "visibility": "public",
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "thread.id",
+    "reason": "This attribute is being deprecated in favor of the OTel-standard thread.id"
+  },
+  "changelog": [
+    {
+      "version": "0.13.0",
+      "prs": [451]
+    }
+  ]
+}

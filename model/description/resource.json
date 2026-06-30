@@ -1,0 +1,22 @@
+{
+  "brief": "Resource",
+  "operations": [
+    {
+      "name": "Resources",
+      "brief": "Loading of resources in the browser.",
+      "ops": [
+        "resource",
+        "resource.script",
+        "resource.css",
+        "resource.link",
+        "resource.img",
+        "resource.audio",
+        "resource.video",
+        "resource.iframe",
+        "resource.other"
+      ],
+      "templates": ["{{url.full}}"],
+      "examples": ["https://example.com/static/app.js"]
+    }
+  ]
+}

@@ -26,6 +26,12 @@ export const BROWSER_RESOURCE_IMG_SPAN_OP = 'resource.img';
 
 export const BROWSER_RESOURCE_CSS_SPAN_OP = 'resource.css';
 
+export const BROWSER_RESOURCE_AUDIO_SPAN_OP = 'resource.audio';
+
+export const BROWSER_RESOURCE_VIDEO_SPAN_OP = 'resource.video';
+
+export const BROWSER_RESOURCE_IFRAME_SPAN_OP = 'resource.iframe';
+
 export const BROWSER_RESOURCE_OTHER_SPAN_OP = 'resource.other';
 
 /**
@@ -79,6 +85,12 @@ export const DATABASE_DB_SPAN_OP = 'db';
 export const DATABASE_DB_QUERY_SPAN_OP = 'db.query';
 
 export const DATABASE_CACHE_SPAN_OP = 'cache';
+
+export const DATABASE_CACHE_GET_SPAN_OP = 'cache.get';
+
+export const DATABASE_CACHE_PUT_SPAN_OP = 'cache.put';
+
+export const DATABASE_CACHE_REMOVE_SPAN_OP = 'cache.remove';
 
 // Path: model/op/faas.json
 // Name: faas

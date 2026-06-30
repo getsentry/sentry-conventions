@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CategoryChip from '../../components/CategoryChip.astro';
+import AttributeLink from '../../components/AttributeLink.astro';
+import AnchorIcon from '../../components/icons/AnchorIcon.astro';
+import { renderMarkdownLinks } from '../../utils/markdown';
+import { getCollection } from 'astro:content';
+
+// Get all span operation categories
+const allOps = await getCollection('ops');
+
+// Sort categories alphabetically, but put 'general' first
+allOps.sort((a, b) => {
+  if (a.id === 'general') return -1;
+  if (b.id === 'general') return 1;
+  return a.id.localeCompare(b.id);
+});
+
+// Count total operations across all categories
+const totalOps = allOps.reduce((acc, op) => acc + op.data.fields.length, 0);
+---
+
+<BaseLayout
+  title="Span Operations"
+  description="Reference for Sentry span operations (the sentry.op attribute) grouped by category"
+>
+  <div class="mb-8">
+    <h1>Span Operation Documentation</h1>
+    <p class="text-lg text-text-secondary max-w-3xl">
+      This page lists known span operations. The operation is a low-cardinality string that describes
+      the category of work a span represents, and is stored in the <AttributeLink name="sentry.op" /> attribute.
+    </p>
+  </div>
+
+  <section class="bg-bg-secondary border border-border rounded-lg p-6 mb-8">
+    <h2 class="text-xl mb-4">Choosing an Operation</h2>
+    <p class="text-sm max-w-2xl">
+      Operations are grouped by category (for example <code>database</code> or <code>browser</code>).
+      Within a category, more specific operations use a dotted hierarchy such as
+      <code>ui.react.render</code>, where each segment narrows down the kind of work being measured.
+    </p>
+    <p class="text-sm max-w-2xl">
+      Use the most specific operation that accurately describes the span. When no specific operation
+      fits, fall back to the closest broader operation in the same category.
+    </p>
+
+    <div class="mt-6 p-4 bg-bg-elevated rounded-md border-l-[3px] border-accent">
+      <h4 class="text-sm text-accent mb-3">Example</h4>
+      <p class="text-sm mb-2">A span measuring a database query sets:</p>
+      <p class="text-sm m-0"><code>sentry.op = "db.query"</code></p>
+    </div>
+  </section>
+
+  <nav class="flex items-start gap-4 p-4 bg-bg-secondary border border-border rounded-lg mb-8 flex-col md:flex-row">
+    <span class="text-sm text-text-muted whitespace-nowrap pt-1">Categories ({allOps.length}):</span>
+    <div class="flex flex-wrap gap-2">
+      {allOps.map(op => (
+        <CategoryChip
+          name={op.data.name}
+          count={op.data.fields.length}
+          href={`#${op.id}`}
+        />
+      ))}
+    </div>
+  </nav>
+
+  <div class="flex flex-col gap-12">
+    {allOps.map(op => (
+      <section class="scroll-mt-20" id={op.id}>
+        <div class="flex items-baseline gap-4 mb-2 group">
+          <h2 class="m-0 text-2xl">
+            <a href={`#${op.id}`} class="section-anchor">
+              {op.data.name}
+              <AnchorIcon class="section-anchor-marker w-4 h-4" />
+            </a>
+          </h2>
+          <span class="text-sm text-text-muted">{op.data.fields.length} operations</span>
+        </div>
+        {op.data.description && (
+          <p class="text-sm text-text-secondary mb-4 max-w-3xl">{op.data.description}</p>
+        )}
+
+        <div class="overflow-x-auto">
+          <table>
+            <thead>
+              <tr>
+                <th>Operation</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              {op.data.fields.map(field => (
+                <tr>
+                  <td class="whitespace-nowrap align-top"><code class="text-xs">{field.name}</code></td>
+                  <td class="text-text-secondary">
+                    {field.description ? (
+                      <span set:html={renderMarkdownLinks(field.description)} />
+                    ) : (
+                      <span class="text-text-muted">—</span>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    ))}
+  </div>
+</BaseLayout>

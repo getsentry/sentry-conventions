@@ -47,9 +47,9 @@ let attributeResults = $state<AttributeIndex[]>([]);
 let pageResults = $state<SearchResult[]>([]);
 let selectedIndex = $state(0);
 let isLoading = $state(false);
-// biome-ignore lint/style/useConst: <false flag by biome. We bind this state to an element and it needs to be mutable>
+// oxlint-disable-next-line prefer-const -- We bind this state to an element and it needs to be mutable
 let inputEl: HTMLInputElement | undefined = $state();
-// biome-ignore lint/style/useConst: <false flag by biome. We bind this state to an element and it needs to be mutable>
+// oxlint-disable-next-line prefer-const -- We bind this state to an element and it needs to be mutable
 let resultsEl: HTMLDivElement | undefined = $state();
 let usingKeyboard = $state(false);
 

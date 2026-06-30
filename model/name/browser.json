@@ -1,0 +1,21 @@
+{
+  "brief": "Browser",
+  "operations": [
+    {
+      "name": "Pageload",
+      "brief": "A full page load of a web application.",
+      "is_in_otel": false,
+      "ops": ["pageload"],
+      "templates": ["{{url.template}}", "Pageload"],
+      "examples": ["/users/:id", "/home", "Pageload"]
+    },
+    {
+      "name": "Navigation",
+      "brief": "Client-side browser history change in a web application.",
+      "is_in_otel": false,
+      "ops": ["navigation"],
+      "templates": ["{{url.template}}", "Navigation"],
+      "examples": ["/users/:id", "/home", "Navigation"]
+    }
+  ]
+}

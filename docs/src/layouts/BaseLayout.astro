@@ -91,6 +91,17 @@ const currentPath = Astro.url.pathname;
               Span Descriptions
             </a>
             <a
+              href={`${import.meta.env.BASE_URL}ops/`}
+              class:list={[
+                "nav-link",
+                currentPath.includes('/ops')
+                  ? "text-accent bg-accent-soft"
+                  : "text-text-secondary hover:text-text-primary hover:bg-bg-hover"
+              ]}
+            >
+              Span Operations
+            </a>
+            <a
               href="https://github.com/getsentry/sentry-conventions"
               class="nav-link text-text-secondary hover:text-text-primary hover:bg-bg-hover"
               target="_blank"

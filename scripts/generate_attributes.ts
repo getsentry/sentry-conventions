@@ -741,13 +741,13 @@ function generateMetadataDict(
     isDeprecated: boolean;
   }>,
 ): string {
-  // Generate ATTRIBUTE_TYPE using individual constants
+  // Use string literal keys so bundlers can tree-shake unused attribute constants.
   let attributeTypeMap = 'export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {\n';
 
-  for (const { key, constantName, attributeJson } of allAttributes) {
+  for (const { key, attributeJson } of allAttributes) {
     const { type } = attributeJson;
 
-    attributeTypeMap += `  [${constantName}]: '${type}',\n`;
+    attributeTypeMap += `  ${JSON.stringify(key)}: '${type}',\n`;
   }
 
   attributeTypeMap += '};\n\n';
@@ -759,11 +759,11 @@ function generateMetadataDict(
   let metadataDict = attributeTypeMap + attributeNameType;
   metadataDict += 'export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {\n';
 
-  for (const { key, attributeJson, constantName } of allAttributes) {
+  for (const { key, attributeJson } of allAttributes) {
     const { brief, type, apply_scrubbing, is_in_otel, example, has_dynamic_suffix, deprecation, alias } = attributeJson;
     const visibility = getVisibility(attributeJson);
 
-    metadataDict += `  [${constantName}]: {\n`;
+    metadataDict += `  ${JSON.stringify(key)}: {\n`;
     metadataDict += `    brief: ${JSON.stringify(brief)},\n`;
     metadataDict += `    type: '${type}',\n`;
 
@@ -807,17 +807,15 @@ function generateMetadataDict(
     }
 
     if (alias && alias.length > 0) {
-      // Use constant names for aliases
-      const constantAliases = alias
+      const stringAliases = alias
         .map((aliasKey) => {
-          const aliasConstantName = allAttributes.find((attr) => attr.key === aliasKey)?.constantName;
-          if (aliasConstantName === null) {
+          if (!allAttributes.some((attr) => attr.key === aliasKey)) {
             throw new Error(`Alias with key ${aliasKey} not found in allAttributes`);
           }
-          return aliasConstantName;
+          return JSON.stringify(aliasKey);
         })
         .join(', ');
-      metadataDict += `    aliases: [${constantAliases}],\n`;
+      metadataDict += `    aliases: [${stringAliases}],\n`;
     }
 
     if (attributeJson.changelog && attributeJson.changelog.length > 0) {
