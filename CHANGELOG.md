@@ -1,3 +1,13 @@
+## 0.14.0
+
+### New Features ✨
+
+- (attributes) Add sentry.status and sentry.trace.status by @mjq in [#453](https://github.com/getsentry/sentry-conventions/pull/453)
+
+### Bug Fixes 🐛
+
+- (build) Do not reference const in object by @JPeer264 in [#457](https://github.com/getsentry/sentry-conventions/pull/457)
+
 ## 0.13.0
 
 ### New Features ✨

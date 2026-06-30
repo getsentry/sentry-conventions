@@ -16555,7 +16555,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="ok",
         changelog=[
-            ChangelogEntry(version="next"),
+            ChangelogEntry(version="0.14.0", prs=[453]),
         ],
     ),
     "sentry.status.message": AttributeMetadata(
@@ -16632,7 +16632,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="ok",
         changelog=[
-            ChangelogEntry(version="next"),
+            ChangelogEntry(version="0.14.0", prs=[453]),
         ],
     ),
     "sentry.trace_lifecycle": AttributeMetadata(
