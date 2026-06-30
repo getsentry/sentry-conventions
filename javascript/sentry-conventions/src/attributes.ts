@@ -23664,7 +23664,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'ok',
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.14.0', prs: [453] }],
   },
   'sentry.status_code': {
     brief:
@@ -23753,7 +23753,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'ok',
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.14.0', prs: [453] }],
   },
   'sentry.transaction': {
     brief: 'The sentry transaction (segment name).',
