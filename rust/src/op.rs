@@ -118,6 +118,28 @@ pub const GENERAL_MARK_SPAN_OP: &str = "mark";
 /// The time it took for a set of instructions to execute
 pub const GENERAL_FUNCTION_SPAN_OP: &str = "function";
 
+// Path: model/op/messaging.json
+// Name: messaging
+
+// Description: Messaging related spans represent operations on topics in streaming data systems and queues, such as producing and consuming messages in Kafka, RabbitMQ.
+/// A general queue operation.
+pub const MESSAGING_QUEUE_SPAN_OP: &str = "queue";
+
+/// Publishing a message to a queue.
+pub const MESSAGING_QUEUE_PUBLISH_SPAN_OP: &str = "queue.publish";
+
+/// Creating a queue or a message for later publishing.
+pub const MESSAGING_QUEUE_CREATE_SPAN_OP: &str = "queue.create";
+
+/// Receiving a message from a queue.
+pub const MESSAGING_QUEUE_RECEIVE_SPAN_OP: &str = "queue.receive";
+
+/// Processing a message from a queue.
+pub const MESSAGING_QUEUE_PROCESS_SPAN_OP: &str = "queue.process";
+
+/// Settling a message, e.g. acknowledging or rejecting it.
+pub const MESSAGING_QUEUE_SETTLE_SPAN_OP: &str = "queue.settle";
+
 // Path: model/op/mobile.json
 // Name: mobile
 
