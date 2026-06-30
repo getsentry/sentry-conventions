@@ -27,6 +27,15 @@
       "name": "resource.css"
     },
     {
+      "name": "resource.audio"
+    },
+    {
+      "name": "resource.video"
+    },
+    {
+      "name": "resource.iframe"
+    },
+    {
       "name": "resource.other"
     },
     {

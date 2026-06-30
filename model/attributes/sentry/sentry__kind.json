@@ -5,6 +5,7 @@
   "apply_scrubbing": {
     "key": "manual"
   },
+  "alias": ["otel.kind"],
   "is_in_otel": false,
   "example": "server",
   "visibility": "public",

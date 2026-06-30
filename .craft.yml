@@ -5,7 +5,7 @@ preReleaseCommand: bash scripts/craft-pre-release.sh
 targets:
   # NPM Release Target
   - name: npm
-    id: "@sentry/conventions"
+    id: '@sentry/conventions'
     includeNames: /sentry-conventions-v.*\.tgz$/
 
   # pypi Release Targets

@@ -1,0 +1,19 @@
+{
+  "brief": "Browser",
+  "operations": [
+    {
+      "name": "Pageload",
+      "brief": "A full page load of a web application.",
+      "ops": ["pageload"],
+      "templates": ["{{url.template}}", "{{url.path}}", "{{url.full}}"],
+      "examples": ["/users/:id", "/users/123", "http://example.com/users/123"]
+    },
+    {
+      "name": "Navigation",
+      "brief": "Client-side browser history change in a web application.",
+      "ops": ["navigation"],
+      "templates": ["{{url.template}}", "{{url.path}}", "{{url.full}}"],
+      "examples": ["/users/:id", "/users/123", "http://example.com/users/123"]
+    }
+  ]
+}

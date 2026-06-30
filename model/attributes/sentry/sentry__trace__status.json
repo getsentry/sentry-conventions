@@ -1,0 +1,17 @@
+{
+  "key": "sentry.trace.status",
+  "brief": "The segment's status (either \"ok\" or \"error\"). Older SDKs may set this to a more specific error, but this behaviour is deprecated.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "never"
+  },
+  "is_in_otel": false,
+  "example": "ok",
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.14.0",
+      "prs": [453]
+    }
+  ]
+}

@@ -242,6 +242,7 @@ class _AttributeNamesMeta(type):
         "NET_SOCK_PEER_PORT",
         "NET_TRANSPORT",
         "OS_BUILD",
+        "OTEL_KIND",
         "PERFORMANCE_ACTIVATIONSTART",
         "PERFORMANCE_TIMEORIGIN",
         "QUERY_KEY",
@@ -259,6 +260,7 @@ class _AttributeNamesMeta(type):
         "SENTRY_REPORT_EVENT",
         "_SENTRY_SEGMENT_ID",
         "SENTRY_SOURCE",
+        "SENTRY_THREAD_ID",
         "SENTRY_TRACE_PARENT_SPAN_ID",
         "SENTRY_TRANSACTION",
         "SENTRY_USER_EMAIL",
@@ -1891,6 +1893,45 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Example: 12
+    """
+
+    # Path: model/attributes/cloudflare/cloudflare__durable_object__query__bindings.json
+    CLOUDFLARE_DURABLE_OBJECT_QUERY_BINDINGS: Literal[
+        "cloudflare.durable_object.query.bindings"
+    ] = "cloudflare.durable_object.query.bindings"
+    """The number of bound parameters passed to the SQL exec call.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 2
+    """
+
+    # Path: model/attributes/cloudflare/cloudflare__durable_object__response__rows_read.json
+    CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_READ: Literal[
+        "cloudflare.durable_object.response.rows_read"
+    ] = "cloudflare.durable_object.response.rows_read"
+    """The number of rows read by a Cloudflare Durable Object SQL operation.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 12
+    """
+
+    # Path: model/attributes/cloudflare/cloudflare__durable_object__response__rows_written.json
+    CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_WRITTEN: Literal[
+        "cloudflare.durable_object.response.rows_written"
+    ] = "cloudflare.durable_object.response.rows_written"
+    """The number of rows written by a Cloudflare Durable Object SQL operation.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 1
     """
 
     # Path: model/attributes/cloudflare/cloudflare__r2__bucket.json
@@ -3659,6 +3700,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Aliases: ai.presence_penalty
     Example: 0.5
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__request__reasoning_effort.json
+    GEN_AI_REQUEST_REASONING_EFFORT: Literal["gen_ai.request.reasoning_effort"] = (
+        "gen_ai.request.reasoning_effort"
+    )
+    """Constrains the effort on reasoning for reasoning models. Supported values vary by provider.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "high"
     """
 
     # Path: model/attributes/gen_ai/gen_ai__request__seed.json
@@ -6064,6 +6118,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "18.04.2"
     """
 
+    # Path: model/attributes/otel/otel__kind.json
+    OTEL_KIND: Literal["otel.kind"] = "otel.kind"
+    """The span kind (https://opentelemetry.io/docs/concepts/signals/traces/#span-kind). Deprecated, use `sentry.kind` instead.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: sentry.kind
+    DEPRECATED: Use sentry.kind instead - Deprecated in favor of sentry.kind
+    Example: "SERVER"
+    """
+
     # Path: model/attributes/otel/otel__scope__name.json
     OTEL_SCOPE_NAME: Literal["otel.scope.name"] = "otel.scope.name"
     """The name of the instrumentation scope - (InstrumentationScope.Name in OTLP).
@@ -6810,6 +6877,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: otel.kind
     Example: "server"
     """
 
@@ -7162,6 +7230,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "route"
     """
 
+    # Path: model/attributes/sentry/sentry__status.json
+    SENTRY_STATUS: Literal["sentry.status"] = "sentry.status"
+    """The span's status (either "ok" or "error"). Older SDKs may set this to a more specific error, but this behaviour is deprecated.
+
+    Type: str
+    Apply Scrubbing: never
+    Defined in OTEL: No
+    Visibility: public
+    Example: "ok"
+    """
+
     # Path: model/attributes/sentry/sentry__status__message.json
     SENTRY_STATUS_MESSAGE: Literal["sentry.status.message"] = "sentry.status.message"
     """The from OTLP extracted status message.
@@ -7182,6 +7261,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Example: 200
+    """
+
+    # Path: model/attributes/sentry/sentry__thread__id.json
+    SENTRY_THREAD_ID: Literal["sentry.thread.id"] = "sentry.thread.id"
+    """Current “managed” thread ID.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: Use thread.id instead - This attribute is being deprecated in favor of the OTel-standard thread.id
+    Example: 56
     """
 
     # Path: model/attributes/sentry/sentry__timestamp__sequence.json
@@ -7209,6 +7300,28 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     DEPRECATED: No replacement at this time
     Example: "b0e6f15b45c36b12"
+    """
+
+    # Path: model/attributes/sentry/sentry__trace__status.json
+    SENTRY_TRACE_STATUS: Literal["sentry.trace.status"] = "sentry.trace.status"
+    """The segment's status (either "ok" or "error"). Older SDKs may set this to a more specific error, but this behaviour is deprecated.
+
+    Type: str
+    Apply Scrubbing: never
+    Defined in OTEL: No
+    Visibility: public
+    Example: "ok"
+    """
+
+    # Path: model/attributes/sentry/sentry__trace_lifecycle.json
+    SENTRY_TRACE_LIFECYCLE: Literal["sentry.trace_lifecycle"] = "sentry.trace_lifecycle"
+    """Indicates the chosen trace lifecycle mode of the SDK (stream or static)
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "stream"
     """
 
     # Path: model/attributes/sentry/sentry__transaction.json
@@ -10256,6 +10369,51 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "cloudflare.durable_object.query.bindings": AttributeMetadata(
+        brief="The number of bound parameters passed to the SQL exec call.",
+        type=AttributeType.INTEGER,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=2,
+        changelog=[
+            ChangelogEntry(
+                version="0.13.0",
+                prs=[435],
+                description="Added cloudflare.durable_object.query.bindings attribute",
+            ),
+        ],
+    ),
+    "cloudflare.durable_object.response.rows_read": AttributeMetadata(
+        brief="The number of rows read by a Cloudflare Durable Object SQL operation.",
+        type=AttributeType.INTEGER,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=12,
+        changelog=[
+            ChangelogEntry(
+                version="0.13.0",
+                prs=[435],
+                description="Added cloudflare.durable_object.response.rows_read attribute",
+            ),
+        ],
+    ),
+    "cloudflare.durable_object.response.rows_written": AttributeMetadata(
+        brief="The number of rows written by a Cloudflare Durable Object SQL operation.",
+        type=AttributeType.INTEGER,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=1,
+        changelog=[
+            ChangelogEntry(
+                version="0.13.0",
+                prs=[435],
+                description="Added cloudflare.durable_object.response.rows_written attribute",
+            ),
+        ],
+    ),
     "cloudflare.r2.bucket": AttributeMetadata(
         brief="The name of the Cloudflare R2 bucket binding",
         type=AttributeType.STRING,
@@ -12362,6 +12520,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[57]),
+        ],
+    ),
+    "gen_ai.request.reasoning_effort": AttributeMetadata(
+        brief="Constrains the effort on reasoning for reasoning models. Supported values vary by provider.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="high",
+        changelog=[
+            ChangelogEntry(
+                version="0.13.0",
+                prs=[334],
+                description="Added gen_ai.request.reasoning_effort attribute",
+            ),
         ],
     ),
     "gen_ai.request.seed": AttributeMetadata(
@@ -15187,6 +15360,25 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "otel.kind": AttributeMetadata(
+        brief="The span kind (https://opentelemetry.io/docs/concepts/signals/traces/#span-kind). Deprecated, use `sentry.kind` instead.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="SERVER",
+        deprecation=DeprecationInfo(
+            replacement="sentry.kind",
+            reason="Deprecated in favor of sentry.kind",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["sentry.kind"],
+        changelog=[
+            ChangelogEntry(
+                version="0.13.0", prs=[440], description="Added otel.kind attribute"
+            ),
+        ],
+    ),
     "otel.scope.name": AttributeMetadata(
         brief="The name of the instrumentation scope - (InstrumentationScope.Name in OTLP).",
         type=AttributeType.STRING,
@@ -15994,6 +16186,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="server",
+        aliases=["otel.kind"],
         changelog=[
             ChangelogEntry(version="0.3.1", prs=[190]),
         ],
@@ -16354,6 +16547,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "sentry.status": AttributeMetadata(
+        brief='The span\'s status (either "ok" or "error"). Older SDKs may set this to a more specific error, but this behaviour is deprecated.',
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="ok",
+        changelog=[
+            ChangelogEntry(version="0.14.0", prs=[453]),
+        ],
+    ),
     "sentry.status.message": AttributeMetadata(
         brief="The from OTLP extracted status message.",
         type=AttributeType.STRING,
@@ -16374,6 +16578,22 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=200,
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[223, 228]),
+        ],
+    ),
+    "sentry.thread.id": AttributeMetadata(
+        brief="Current “managed” thread ID.",
+        type=AttributeType.INTEGER,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=56,
+        deprecation=DeprecationInfo(
+            replacement="thread.id",
+            reason="This attribute is being deprecated in favor of the OTel-standard thread.id",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        changelog=[
+            ChangelogEntry(version="0.13.0", prs=[451]),
         ],
     ),
     "sentry.timestamp.sequence": AttributeMetadata(
@@ -16402,6 +16622,32 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 description="Deprecate `sentry.trace.parent_span_id`",
             ),
             ChangelogEntry(version="0.1.0", prs=[116]),
+        ],
+    ),
+    "sentry.trace.status": AttributeMetadata(
+        brief='The segment\'s status (either "ok" or "error"). Older SDKs may set this to a more specific error, but this behaviour is deprecated.',
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="ok",
+        changelog=[
+            ChangelogEntry(version="0.14.0", prs=[453]),
+        ],
+    ),
+    "sentry.trace_lifecycle": AttributeMetadata(
+        brief="Indicates the chosen trace lifecycle mode of the SDK (stream or static)",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="stream",
+        changelog=[
+            ChangelogEntry(
+                version="0.13.0",
+                prs=[442],
+                description="Added sentry.trace_lifecycle attribute",
+            ),
         ],
     ),
     "sentry.transaction": AttributeMetadata(
@@ -17771,6 +18017,9 @@ Attributes = TypedDict(
         "cloudflare.d1.query_type": str,
         "cloudflare.d1.rows_read": int,
         "cloudflare.d1.rows_written": int,
+        "cloudflare.durable_object.query.bindings": int,
+        "cloudflare.durable_object.response.rows_read": int,
+        "cloudflare.durable_object.response.rows_written": int,
         "cloudflare.r2.bucket": str,
         "cloudflare.r2.operation": str,
         "cloudflare.r2.request.delimiter": str,
@@ -17918,6 +18167,7 @@ Attributes = TypedDict(
         "gen_ai.request.messages": str,
         "gen_ai.request.model": str,
         "gen_ai.request.presence_penalty": float,
+        "gen_ai.request.reasoning_effort": str,
         "gen_ai.request.seed": str,
         "gen_ai.request.temperature": float,
         "gen_ai.request.top_k": int,
@@ -18110,6 +18360,7 @@ Attributes = TypedDict(
         "os.theme": str,
         "os.type": str,
         "os.version": str,
+        "otel.kind": str,
         "otel.scope.name": str,
         "otel.scope.version": str,
         "otel.status_code": str,
@@ -18201,10 +18452,14 @@ Attributes = TypedDict(
         "sentry.server_sample_rate": float,
         "sentry.source": str,
         "sentry.span.source": str,
+        "sentry.status": str,
         "sentry.status.message": str,
         "sentry.status_code": int,
+        "sentry.thread.id": int,
         "sentry.timestamp.sequence": int,
         "sentry.trace.parent_span_id": str,
+        "sentry.trace.status": str,
+        "sentry.trace_lifecycle": str,
         "sentry.transaction": str,
         "sentry.user.email": str,
         "sentry.user.geo.city": str,
