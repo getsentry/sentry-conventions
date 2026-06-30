@@ -1,0 +1,18 @@
+{
+  "key": "cloudflare.durable_object.query.bindings",
+  "brief": "The number of bound parameters passed to the SQL exec call.",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "example": 2,
+  "changelog": [
+    {
+      "version": "0.13.0",
+      "prs": [435],
+      "description": "Added cloudflare.durable_object.query.bindings attribute"
+    }
+  ]
+}
