@@ -5,12 +5,12 @@
   "version": "1.0.0",
   "scripts": {
     "format": "yarn format:js && yarn format:python",
-    "format:js": "biome format . --write",
+    "format:js": "oxfmt",
     "format:python": "(cd python && uv run black src/ && uv run isort src/)",
     "lint": "yarn lint:js && yarn lint:python",
-    "lint:js": "biome format . && biome lint .",
+    "lint:js": "oxfmt --check && oxlint",
     "lint:python": "(cd python && uv run pyflakes src/ && uv run mypy .)",
-    "lint-fix": "biome lint . --write",
+    "lint-fix": "oxlint --fix",
     "test": "yarn test:js && yarn test:python",
     "test:js": "vitest run",
     "test:js:watch": "vitest",
@@ -36,10 +36,11 @@
     "node": ">=22"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.0",
     "@clack/prompts": "^1.5.1",
     "@types/node": "^25.9.3",
     "ajv": "^8.20.0",
+    "oxfmt": "^0.56.0",
+    "oxlint": "^1.71.0",
     "tar": "^7.5.16",
     "tsx": "^4.22.4",
     "vitest": "^4.1.9"

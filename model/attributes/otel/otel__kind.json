@@ -1,0 +1,24 @@
+{
+  "key": "otel.kind",
+  "brief": "The span kind (https://opentelemetry.io/docs/concepts/signals/traces/#span-kind). Deprecated, use `sentry.kind` instead.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "example": "SERVER",
+  "alias": ["sentry.kind"],
+  "deprecation": {
+    "replacement": "sentry.kind",
+    "reason": "Deprecated in favor of sentry.kind",
+    "_status": "backfill"
+  },
+  "changelog": [
+    {
+      "version": "0.13.0",
+      "prs": [440],
+      "description": "Added otel.kind attribute"
+    }
+  ]
+}

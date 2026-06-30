@@ -1,0 +1,18 @@
+{
+  "key": "cloudflare.durable_object.response.rows_written",
+  "brief": "The number of rows written by a Cloudflare Durable Object SQL operation.",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "example": 1,
+  "changelog": [
+    {
+      "version": "0.13.0",
+      "prs": [435],
+      "description": "Added cloudflare.durable_object.response.rows_written attribute"
+    }
+  ]
+}

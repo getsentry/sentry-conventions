@@ -9,7 +9,4 @@ export type {
   AttributeMetadata,
 } from './attributes';
 
-export {
-  ATTRIBUTE_METADATA,
-  ATTRIBUTE_TYPE,
-} from './attributes';
+export { ATTRIBUTE_METADATA, ATTRIBUTE_TYPE } from './attributes';
