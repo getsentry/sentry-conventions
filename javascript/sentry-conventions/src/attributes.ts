@@ -5193,6 +5193,48 @@ export const FCP = 'fcp';
  */
 export type FCP_TYPE = number;
 
+// Path: model/attributes/file/file__path.json
+
+/**
+ * Path to the file. `file.path`
+ *
+ * Attribute Value Type: `string` {@link FILE_PATH_TYPE}
+ *
+ * Apply Scrubbing: auto - File paths can contain end-user paths (e.g. from stack traces) that may be sensitive.
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "/home/user/example.txt"
+ */
+export const FILE_PATH = 'file.path';
+
+/**
+ * Type for {@link FILE_PATH} file.path
+ */
+export type FILE_PATH_TYPE = string;
+
+// Path: model/attributes/file/file__size.json
+
+/**
+ * File size in bytes. `file.size`
+ *
+ * Attribute Value Type: `number` {@link FILE_SIZE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example 1024
+ */
+export const FILE_SIZE = 'file.size';
+
+/**
+ * Type for {@link FILE_SIZE} file.size
+ */
+export type FILE_SIZE_TYPE = number;
+
 // Path: model/attributes/flag/flag__evaluation__[key].json
 
 /**
@@ -14995,6 +15037,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'faas.trigger': 'string',
   'faas.version': 'string',
   fcp: 'double',
+  'file.path': 'string',
+  'file.size': 'integer',
   'flag.evaluation.<key>': 'boolean',
   fp: 'double',
   'frames.delay': 'integer',
@@ -15666,6 +15710,8 @@ export type AttributeName =
   | typeof FAAS_TRIGGER
   | typeof FAAS_VERSION
   | typeof FCP
+  | typeof FILE_PATH
+  | typeof FILE_SIZE
   | typeof FLAG_EVALUATION_KEY
   | typeof FP
   | typeof FRAMES_DELAY
@@ -19190,6 +19236,29 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['browser.web_vital.fcp.value'],
     changelog: [{ version: '0.5.0', prs: [235] }],
+  },
+  'file.path': {
+    brief: 'Path to the file.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'auto',
+      reason: 'File paths can contain end-user paths (e.g. from stack traces) that may be sensitive.',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: '/home/user/example.txt',
+    changelog: [{ version: 'next', prs: [458], description: 'Added file.path attribute' }],
+  },
+  'file.size': {
+    brief: 'File size in bytes.',
+    type: 'integer',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 1024,
+    changelog: [{ version: 'next', prs: [458], description: 'Added file.size attribute' }],
   },
   'flag.evaluation.<key>': {
     brief:
@@ -25184,6 +25253,8 @@ export type Attributes = {
   [FAAS_TRIGGER]?: FAAS_TRIGGER_TYPE;
   [FAAS_VERSION]?: FAAS_VERSION_TYPE;
   [FCP]?: FCP_TYPE;
+  [FILE_PATH]?: FILE_PATH_TYPE;
+  [FILE_SIZE]?: FILE_SIZE_TYPE;
   [FLAG_EVALUATION_KEY]?: FLAG_EVALUATION_KEY_TYPE;
   [FP]?: FP_TYPE;
   [FRAMES_DELAY]?: FRAMES_DELAY_TYPE;
