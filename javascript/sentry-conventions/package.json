@@ -31,7 +31,11 @@
     "node": ">=14"
   },
   "files": [
-    "dist"
+    "dist",
+    "attributes.js",
+    "attributes.d.ts",
+    "op.js",
+    "op.d.ts"
   ],
   "repository": {
     "type": "git",
