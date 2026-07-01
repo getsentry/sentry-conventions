@@ -276,6 +276,7 @@ class _AttributeNamesMeta(type):
         "TRANSACTION",
         "TTFB_REQUESTTIME",
         "TTFB",
+        "URL_SAME_ORIGIN",
         "URL",
     }
 
@@ -4513,6 +4514,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 1732829555.7
     """
 
+    # Path: model/attributes/http/http__request__same_origin.json
+    HTTP_REQUEST_SAME_ORIGIN: Literal["http.request.same_origin"] = (
+        "http.request.same_origin"
+    )
+    """Indicates that a URL has the same origin as the current page's origin in the browser.
+
+    Type: bool
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: url.same_origin
+    Example: true
+    """
+
     # Path: model/attributes/http/http__request__secure_connection_start.json
     HTTP_REQUEST_SECURE_CONNECTION_START: Literal[
         "http.request.secure_connection_start"
@@ -7871,6 +7886,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Example: "foo=bar&bar=baz"
+    """
+
+    # Path: model/attributes/url/url__same_origin.json
+    URL_SAME_ORIGIN: Literal["url.same_origin"] = "url.same_origin"
+    """Indicates that a URL has the same origin as the current page's origin in the browser.
+
+    Type: bool
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: http.request.same_origin
+    DEPRECATED: Use http.request.same_origin instead - This attribute is being deprecated in favor of http.request.same_origin.
+    Example: true
     """
 
     # Path: model/attributes/url/url__scheme.json
@@ -13505,6 +13533,22 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "http.request.same_origin": AttributeMetadata(
+        brief="Indicates that a URL has the same origin as the current page's origin in the browser.",
+        type=AttributeType.BOOLEAN,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=True,
+        aliases=["url.same_origin"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[456],
+                description="Added http.request.same_origin attribute",
+            ),
+        ],
+    ),
     "http.request.secure_connection_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the browser starts the handshake process to secure the current connection. If a secure connection is not used, the property returns zero.",
         type=AttributeType.DOUBLE,
@@ -17296,6 +17340,27 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "url.same_origin": AttributeMetadata(
+        brief="Indicates that a URL has the same origin as the current page's origin in the browser.",
+        type=AttributeType.BOOLEAN,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=True,
+        deprecation=DeprecationInfo(
+            replacement="http.request.same_origin",
+            reason="This attribute is being deprecated in favor of http.request.same_origin.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["http.request.same_origin"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[456],
+                description="Added url.same_origin attribute, deprecated in favor of http.request.same_origin",
+            ),
+        ],
+    ),
     "url.scheme": AttributeMetadata(
         brief="The URI scheme component identifying the used protocol.",
         type=AttributeType.STRING,
@@ -18229,6 +18294,7 @@ Attributes = TypedDict(
         "http.request.resend_count": int,
         "http.request.response_end": float,
         "http.request.response_start": float,
+        "http.request.same_origin": bool,
         "http.request.secure_connection_start": float,
         "http.request.time_to_first_byte": float,
         "http.request.worker_start": float,
@@ -18507,6 +18573,7 @@ Attributes = TypedDict(
         "url.path.parameter.<key>": str,
         "url.port": int,
         "url.query": str,
+        "url.same_origin": bool,
         "url.scheme": str,
         "url.template": str,
         "url": str,
