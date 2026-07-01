@@ -3,7 +3,8 @@
   "brief": "Path to the file.",
   "type": "string",
   "apply_scrubbing": {
-    "key": "manual"
+    "key": "auto",
+    "reason": "File paths can contain end-user paths (e.g. from stack traces) that may be sensitive."
   },
   "is_in_otel": true,
   "visibility": "public",

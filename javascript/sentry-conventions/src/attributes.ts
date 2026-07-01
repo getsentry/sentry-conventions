@@ -5200,7 +5200,7 @@ export type FCP_TYPE = number;
  *
  * Attribute Value Type: `string` {@link FILE_PATH_TYPE}
  *
- * Apply Scrubbing: manual
+ * Apply Scrubbing: auto - File paths can contain end-user paths (e.g. from stack traces) that may be sensitive.
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -19241,7 +19241,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'Path to the file.',
     type: 'string',
     applyScrubbing: {
-      key: 'manual',
+      key: 'auto',
+      reason: 'File paths can contain end-user paths (e.g. from stack traces) that may be sensitive.',
     },
     isInOtel: true,
     visibility: 'public',

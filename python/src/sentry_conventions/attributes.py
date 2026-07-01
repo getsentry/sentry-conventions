@@ -3184,7 +3184,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Path to the file.
 
     Type: str
-    Apply Scrubbing: manual
+    Apply Scrubbing: auto - File paths can contain end-user paths (e.g. from stack traces) that may be sensitive.
     Defined in OTEL: Yes
     Visibility: public
     Example: "/home/user/example.txt"
@@ -11911,7 +11911,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "file.path": AttributeMetadata(
         brief="Path to the file.",
         type=AttributeType.STRING,
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
+            reason="File paths can contain end-user paths (e.g. from stack traces) that may be sensitive.",
+        ),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="/home/user/example.txt",
