@@ -1,0 +1,20 @@
+{
+  "key": "rpc.grpc.error.quota_failure.violations",
+  "brief": "The individual quota violations from a google.rpc.QuotaFailure error detail. Each entry is a JSON-encoded object with subject, description, api_service, quota_metric, quota_id, quota_dimensions, quota_value, and (optional) future_quota_value keys, mirroring google.rpc.QuotaFailure.Violation. SDKs should only send this attribute when sendDefaultPii is enabled, since violation subjects may identify specific resources or users.",
+  "type": "string[]",
+  "apply_scrubbing": {
+    "key": "auto"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "example": [
+    "{\"subject\":\"clientip:127.0.0.1\",\"description\":\"Limit checks failed.\",\"api_service\":\"example.googleapis.com\",\"quota_metric\":\"example.googleapis.com/read_requests\",\"quota_id\":\"ReadRequestsPerMinutePerProject\",\"quota_dimensions\":{\"region\":\"us-central1\"},\"quota_value\":1000}"
+  ],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [460],
+      "description": "Added rpc.grpc.error.quota_failure.violations attribute"
+    }
+  ]
+}
