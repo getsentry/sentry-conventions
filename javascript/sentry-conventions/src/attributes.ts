@@ -10980,6 +10980,281 @@ export const ROUTE = 'route';
  */
 export type ROUTE_TYPE = string;
 
+// Path: model/attributes/rpc/rpc__grpc__error__bad_request__field_violations.json
+
+/**
+ * The individual field violations from a google.rpc.BadRequest error detail. Each entry is a JSON-encoded object with field, description, reason, and (optional) localized_message keys, mirroring google.rpc.BadRequest.FieldViolation. `rpc.grpc.error.bad_request.field_violations`
+ *
+ * Attribute Value Type: `Array<string>` {@link RPC_GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example ["{\"field\":\"email\",\"description\":\"must be a valid email address\",\"reason\":\"FIELD_INVALID\",\"localized_message\":{\"locale\":\"en-US\",\"message\":\"Must be a valid email address\"}}"]
+ */
+export const RPC_GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS = 'rpc.grpc.error.bad_request.field_violations';
+
+/**
+ * Type for {@link RPC_GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS} rpc.grpc.error.bad_request.field_violations
+ */
+export type RPC_GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS_TYPE = Array<string>;
+
+// Path: model/attributes/rpc/rpc__grpc__error__debug_info__detail.json
+
+/**
+ * Additional debugging information, such as a server-side stack trace, from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled. `rpc.grpc.error.debug_info.detail`
+ *
+ * Attribute Value Type: `string` {@link RPC_GRPC_ERROR_DEBUG_INFO_DETAIL_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "at com.example.Service.method(Service.java:42)"
+ */
+export const RPC_GRPC_ERROR_DEBUG_INFO_DETAIL = 'rpc.grpc.error.debug_info.detail';
+
+/**
+ * Type for {@link RPC_GRPC_ERROR_DEBUG_INFO_DETAIL} rpc.grpc.error.debug_info.detail
+ */
+export type RPC_GRPC_ERROR_DEBUG_INFO_DETAIL_TYPE = string;
+
+// Path: model/attributes/rpc/rpc__grpc__error__debug_info__stack_entries.json
+
+/**
+ * The server-side stack trace entries from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled. `rpc.grpc.error.debug_info.stack_entries`
+ *
+ * Attribute Value Type: `Array<string>` {@link RPC_GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example ["com.example.Service.method(Service.java:42)","com.example.Server.handle(Server.java:100)"]
+ */
+export const RPC_GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES = 'rpc.grpc.error.debug_info.stack_entries';
+
+/**
+ * Type for {@link RPC_GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES} rpc.grpc.error.debug_info.stack_entries
+ */
+export type RPC_GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES_TYPE = Array<string>;
+
+// Path: model/attributes/rpc/rpc__grpc__error__error_info__domain.json
+
+/**
+ * The logical grouping to which the gRPC error reason belongs, from the google.rpc.ErrorInfo error detail. `rpc.grpc.error.error_info.domain`
+ *
+ * Attribute Value Type: `string` {@link RPC_GRPC_ERROR_ERROR_INFO_DOMAIN_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "example.sentry.io"
+ */
+export const RPC_GRPC_ERROR_ERROR_INFO_DOMAIN = 'rpc.grpc.error.error_info.domain';
+
+/**
+ * Type for {@link RPC_GRPC_ERROR_ERROR_INFO_DOMAIN} rpc.grpc.error.error_info.domain
+ */
+export type RPC_GRPC_ERROR_ERROR_INFO_DOMAIN_TYPE = string;
+
+// Path: model/attributes/rpc/rpc__grpc__error__error_info__metadata__[key].json
+
+/**
+ * Additional structured metadata attached to a google.rpc.ErrorInfo error detail, with <key> being the metadata key name. SDKs should only send this attribute when sendDefaultPii is enabled. `rpc.grpc.error.error_info.metadata.<key>`
+ *
+ * Attribute Value Type: `string` {@link RPC_GRPC_ERROR_ERROR_INFO_METADATA_KEY_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Has Dynamic Suffix: true
+ *
+ * @example "rpc.grpc.error.error_info.metadata.user_id='123'"
+ */
+export const RPC_GRPC_ERROR_ERROR_INFO_METADATA_KEY = 'rpc.grpc.error.error_info.metadata.<key>';
+
+/**
+ * Type for {@link RPC_GRPC_ERROR_ERROR_INFO_METADATA_KEY} rpc.grpc.error.error_info.metadata.<key>
+ */
+export type RPC_GRPC_ERROR_ERROR_INFO_METADATA_KEY_TYPE = string;
+
+// Path: model/attributes/rpc/rpc__grpc__error__error_info__reason.json
+
+/**
+ * The reason for the gRPC error, as defined by the service that generated it, from the google.rpc.ErrorInfo error detail. `rpc.grpc.error.error_info.reason`
+ *
+ * Attribute Value Type: `string` {@link RPC_GRPC_ERROR_ERROR_INFO_REASON_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "FIELD_INVALID"
+ */
+export const RPC_GRPC_ERROR_ERROR_INFO_REASON = 'rpc.grpc.error.error_info.reason';
+
+/**
+ * Type for {@link RPC_GRPC_ERROR_ERROR_INFO_REASON} rpc.grpc.error.error_info.reason
+ */
+export type RPC_GRPC_ERROR_ERROR_INFO_REASON_TYPE = string;
+
+// Path: model/attributes/rpc/rpc__grpc__error__precondition_failure__violations.json
+
+/**
+ * The individual precondition violations from a google.rpc.PreconditionFailure error detail. Each entry is a JSON-encoded object with type, subject, and description keys. SDKs should only send this attribute when sendDefaultPii is enabled, since violation subjects may identify specific resources or users. `rpc.grpc.error.precondition_failure.violations`
+ *
+ * Attribute Value Type: `Array<string>` {@link RPC_GRPC_ERROR_PRECONDITION_FAILURE_VIOLATIONS_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example ["{\"type\":\"TOS\",\"subject\":\"example.com/user/123\",\"description\":\"User must accept the terms of service\"}"]
+ */
+export const RPC_GRPC_ERROR_PRECONDITION_FAILURE_VIOLATIONS = 'rpc.grpc.error.precondition_failure.violations';
+
+/**
+ * Type for {@link RPC_GRPC_ERROR_PRECONDITION_FAILURE_VIOLATIONS} rpc.grpc.error.precondition_failure.violations
+ */
+export type RPC_GRPC_ERROR_PRECONDITION_FAILURE_VIOLATIONS_TYPE = Array<string>;
+
+// Path: model/attributes/rpc/rpc__grpc__error__quota_failure__violations.json
+
+/**
+ * The individual quota violations from a google.rpc.QuotaFailure error detail. Each entry is a JSON-encoded object with subject, description, api_service, quota_metric, quota_id, quota_dimensions, quota_value, and (optional) future_quota_value keys, mirroring google.rpc.QuotaFailure.Violation. SDKs should only send this attribute when sendDefaultPii is enabled, since violation subjects may identify specific resources or users. `rpc.grpc.error.quota_failure.violations`
+ *
+ * Attribute Value Type: `Array<string>` {@link RPC_GRPC_ERROR_QUOTA_FAILURE_VIOLATIONS_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example ["{\"subject\":\"clientip:127.0.0.1\",\"description\":\"Limit checks failed.\",\"api_service\":\"example.googleapis.com\",\"quota_metric\":\"example.googleapis.com/read_requests\",\"quota_id\":\"ReadRequestsPerMinutePerProject\",\"quota_dimensions\":{\"region\":\"us-central1\"},\"quota_value\":1000}"]
+ */
+export const RPC_GRPC_ERROR_QUOTA_FAILURE_VIOLATIONS = 'rpc.grpc.error.quota_failure.violations';
+
+/**
+ * Type for {@link RPC_GRPC_ERROR_QUOTA_FAILURE_VIOLATIONS} rpc.grpc.error.quota_failure.violations
+ */
+export type RPC_GRPC_ERROR_QUOTA_FAILURE_VIOLATIONS_TYPE = Array<string>;
+
+// Path: model/attributes/rpc/rpc__grpc__error__resource_info__description.json
+
+/**
+ * A description of the error that occurred while accessing the resource, from a google.rpc.ResourceInfo error detail. `rpc.grpc.error.resource_info.description`
+ *
+ * Attribute Value Type: `string` {@link RPC_GRPC_ERROR_RESOURCE_INFO_DESCRIPTION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "Instance is not ready for the request."
+ */
+export const RPC_GRPC_ERROR_RESOURCE_INFO_DESCRIPTION = 'rpc.grpc.error.resource_info.description';
+
+/**
+ * Type for {@link RPC_GRPC_ERROR_RESOURCE_INFO_DESCRIPTION} rpc.grpc.error.resource_info.description
+ */
+export type RPC_GRPC_ERROR_RESOURCE_INFO_DESCRIPTION_TYPE = string;
+
+// Path: model/attributes/rpc/rpc__grpc__error__resource_info__owner.json
+
+/**
+ * The owner of the resource being accessed (e.g. project or account owning it), from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled. `rpc.grpc.error.resource_info.owner`
+ *
+ * Attribute Value Type: `string` {@link RPC_GRPC_ERROR_RESOURCE_INFO_OWNER_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "user@example.com"
+ */
+export const RPC_GRPC_ERROR_RESOURCE_INFO_OWNER = 'rpc.grpc.error.resource_info.owner';
+
+/**
+ * Type for {@link RPC_GRPC_ERROR_RESOURCE_INFO_OWNER} rpc.grpc.error.resource_info.owner
+ */
+export type RPC_GRPC_ERROR_RESOURCE_INFO_OWNER_TYPE = string;
+
+// Path: model/attributes/rpc/rpc__grpc__error__resource_info__resource_name.json
+
+/**
+ * The name of the resource being accessed, from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled. `rpc.grpc.error.resource_info.resource_name`
+ *
+ * Attribute Value Type: `string` {@link RPC_GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "projects/example/instances/example-instance"
+ */
+export const RPC_GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME = 'rpc.grpc.error.resource_info.resource_name';
+
+/**
+ * Type for {@link RPC_GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME} rpc.grpc.error.resource_info.resource_name
+ */
+export type RPC_GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME_TYPE = string;
+
+// Path: model/attributes/rpc/rpc__grpc__error__resource_info__resource_type.json
+
+/**
+ * The type of resource being accessed, from a google.rpc.ResourceInfo error detail. `rpc.grpc.error.resource_info.resource_type`
+ *
+ * Attribute Value Type: `string` {@link RPC_GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "database"
+ */
+export const RPC_GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE = 'rpc.grpc.error.resource_info.resource_type';
+
+/**
+ * Type for {@link RPC_GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE} rpc.grpc.error.resource_info.resource_type
+ */
+export type RPC_GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE_TYPE = string;
+
+// Path: model/attributes/rpc/rpc__grpc__error__retry_info__retry_delay_in_ms.json
+
+/**
+ * How long the client should wait before retrying the gRPC call, in milliseconds, from the google.rpc.RetryInfo error detail. `rpc.grpc.error.retry_info.retry_delay_in_ms`
+ *
+ * Attribute Value Type: `number` {@link RPC_GRPC_ERROR_RETRY_INFO_RETRY_DELAY_IN_MS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 5000
+ */
+export const RPC_GRPC_ERROR_RETRY_INFO_RETRY_DELAY_IN_MS = 'rpc.grpc.error.retry_info.retry_delay_in_ms';
+
+/**
+ * Type for {@link RPC_GRPC_ERROR_RETRY_INFO_RETRY_DELAY_IN_MS} rpc.grpc.error.retry_info.retry_delay_in_ms
+ */
+export type RPC_GRPC_ERROR_RETRY_INFO_RETRY_DELAY_IN_MS_TYPE = number;
+
 // Path: model/attributes/rpc/rpc__grpc__status_code.json
 
 /**
@@ -15256,6 +15531,19 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'resource.deployment.environment.name': 'string',
   'resource.render_blocking_status': 'string',
   route: 'string',
+  'rpc.grpc.error.bad_request.field_violations': 'string[]',
+  'rpc.grpc.error.debug_info.detail': 'string',
+  'rpc.grpc.error.debug_info.stack_entries': 'string[]',
+  'rpc.grpc.error.error_info.domain': 'string',
+  'rpc.grpc.error.error_info.metadata.<key>': 'string',
+  'rpc.grpc.error.error_info.reason': 'string',
+  'rpc.grpc.error.precondition_failure.violations': 'string[]',
+  'rpc.grpc.error.quota_failure.violations': 'string[]',
+  'rpc.grpc.error.resource_info.description': 'string',
+  'rpc.grpc.error.resource_info.owner': 'string',
+  'rpc.grpc.error.resource_info.resource_name': 'string',
+  'rpc.grpc.error.resource_info.resource_type': 'string',
+  'rpc.grpc.error.retry_info.retry_delay_in_ms': 'integer',
   'rpc.grpc.status_code': 'integer',
   'rpc.method': 'string',
   'rpc.response.status_code': 'string',
@@ -15927,6 +16215,19 @@ export type AttributeName =
   | typeof RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME
   | typeof RESOURCE_RENDER_BLOCKING_STATUS
   | typeof ROUTE
+  | typeof RPC_GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS
+  | typeof RPC_GRPC_ERROR_DEBUG_INFO_DETAIL
+  | typeof RPC_GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES
+  | typeof RPC_GRPC_ERROR_ERROR_INFO_DOMAIN
+  | typeof RPC_GRPC_ERROR_ERROR_INFO_METADATA_KEY
+  | typeof RPC_GRPC_ERROR_ERROR_INFO_REASON
+  | typeof RPC_GRPC_ERROR_PRECONDITION_FAILURE_VIOLATIONS
+  | typeof RPC_GRPC_ERROR_QUOTA_FAILURE_VIOLATIONS
+  | typeof RPC_GRPC_ERROR_RESOURCE_INFO_DESCRIPTION
+  | typeof RPC_GRPC_ERROR_RESOURCE_INFO_OWNER
+  | typeof RPC_GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME
+  | typeof RPC_GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE
+  | typeof RPC_GRPC_ERROR_RETRY_INFO_RETRY_DELAY_IN_MS
   | typeof RPC_GRPC_STATUS_CODE
   | typeof RPC_METHOD
   | typeof RPC_RESPONSE_STATUS_CODE
@@ -22840,6 +23141,183 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['http.route'],
     changelog: [{ version: '0.1.0', prs: [61, 74] }, { version: '0.0.0' }],
   },
+  'rpc.grpc.error.bad_request.field_violations': {
+    brief:
+      'The individual field violations from a google.rpc.BadRequest error detail. Each entry is a JSON-encoded object with field, description, reason, and (optional) localized_message keys, mirroring google.rpc.BadRequest.FieldViolation.',
+    type: 'string[]',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: [
+      '{"field":"email","description":"must be a valid email address","reason":"FIELD_INVALID","localized_message":{"locale":"en-US","message":"Must be a valid email address"}}',
+    ],
+    changelog: [
+      { version: 'next', prs: [460], description: 'Added rpc.grpc.error.bad_request.field_violations attribute' },
+    ],
+  },
+  'rpc.grpc.error.debug_info.detail': {
+    brief:
+      'Additional debugging information, such as a server-side stack trace, from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'at com.example.Service.method(Service.java:42)',
+    changelog: [{ version: 'next', prs: [460], description: 'Added rpc.grpc.error.debug_info.detail attribute' }],
+  },
+  'rpc.grpc.error.debug_info.stack_entries': {
+    brief:
+      'The server-side stack trace entries from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled.',
+    type: 'string[]',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: ['com.example.Service.method(Service.java:42)', 'com.example.Server.handle(Server.java:100)'],
+    changelog: [
+      { version: 'next', prs: [460], description: 'Added rpc.grpc.error.debug_info.stack_entries attribute' },
+    ],
+  },
+  'rpc.grpc.error.error_info.domain': {
+    brief: 'The logical grouping to which the gRPC error reason belongs, from the google.rpc.ErrorInfo error detail.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'example.sentry.io',
+    changelog: [{ version: 'next', prs: [460], description: 'Added rpc.grpc.error.error_info.domain attribute' }],
+  },
+  'rpc.grpc.error.error_info.metadata.<key>': {
+    brief:
+      'Additional structured metadata attached to a google.rpc.ErrorInfo error detail, with <key> being the metadata key name. SDKs should only send this attribute when sendDefaultPii is enabled.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    hasDynamicSuffix: true,
+    example: "rpc.grpc.error.error_info.metadata.user_id='123'",
+    changelog: [
+      { version: 'next', prs: [460], description: 'Added rpc.grpc.error.error_info.metadata.<key> attribute' },
+    ],
+  },
+  'rpc.grpc.error.error_info.reason': {
+    brief:
+      'The reason for the gRPC error, as defined by the service that generated it, from the google.rpc.ErrorInfo error detail.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'FIELD_INVALID',
+    changelog: [{ version: 'next', prs: [460], description: 'Added rpc.grpc.error.error_info.reason attribute' }],
+  },
+  'rpc.grpc.error.precondition_failure.violations': {
+    brief:
+      'The individual precondition violations from a google.rpc.PreconditionFailure error detail. Each entry is a JSON-encoded object with type, subject, and description keys. SDKs should only send this attribute when sendDefaultPii is enabled, since violation subjects may identify specific resources or users.',
+    type: 'string[]',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: ['{"type":"TOS","subject":"example.com/user/123","description":"User must accept the terms of service"}'],
+    changelog: [
+      { version: 'next', prs: [460], description: 'Added rpc.grpc.error.precondition_failure.violations attribute' },
+    ],
+  },
+  'rpc.grpc.error.quota_failure.violations': {
+    brief:
+      'The individual quota violations from a google.rpc.QuotaFailure error detail. Each entry is a JSON-encoded object with subject, description, api_service, quota_metric, quota_id, quota_dimensions, quota_value, and (optional) future_quota_value keys, mirroring google.rpc.QuotaFailure.Violation. SDKs should only send this attribute when sendDefaultPii is enabled, since violation subjects may identify specific resources or users.',
+    type: 'string[]',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: [
+      '{"subject":"clientip:127.0.0.1","description":"Limit checks failed.","api_service":"example.googleapis.com","quota_metric":"example.googleapis.com/read_requests","quota_id":"ReadRequestsPerMinutePerProject","quota_dimensions":{"region":"us-central1"},"quota_value":1000}',
+    ],
+    changelog: [
+      { version: 'next', prs: [460], description: 'Added rpc.grpc.error.quota_failure.violations attribute' },
+    ],
+  },
+  'rpc.grpc.error.resource_info.description': {
+    brief:
+      'A description of the error that occurred while accessing the resource, from a google.rpc.ResourceInfo error detail.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'Instance is not ready for the request.',
+    changelog: [
+      { version: 'next', prs: [460], description: 'Added rpc.grpc.error.resource_info.description attribute' },
+    ],
+  },
+  'rpc.grpc.error.resource_info.owner': {
+    brief:
+      'The owner of the resource being accessed (e.g. project or account owning it), from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'user@example.com',
+    changelog: [{ version: 'next', prs: [460], description: 'Added rpc.grpc.error.resource_info.owner attribute' }],
+  },
+  'rpc.grpc.error.resource_info.resource_name': {
+    brief:
+      'The name of the resource being accessed, from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'projects/example/instances/example-instance',
+    changelog: [
+      { version: 'next', prs: [460], description: 'Added rpc.grpc.error.resource_info.resource_name attribute' },
+    ],
+  },
+  'rpc.grpc.error.resource_info.resource_type': {
+    brief: 'The type of resource being accessed, from a google.rpc.ResourceInfo error detail.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'database',
+    changelog: [
+      { version: 'next', prs: [460], description: 'Added rpc.grpc.error.resource_info.resource_type attribute' },
+    ],
+  },
+  'rpc.grpc.error.retry_info.retry_delay_in_ms': {
+    brief:
+      'How long the client should wait before retrying the gRPC call, in milliseconds, from the google.rpc.RetryInfo error detail.',
+    type: 'integer',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 5000,
+    changelog: [
+      { version: 'next', prs: [460], description: 'Added rpc.grpc.error.retry_info.retry_delay_in_ms attribute' },
+    ],
+  },
   'rpc.grpc.status_code': {
     brief: 'The numeric status code of the gRPC request.',
     type: 'integer',
@@ -25445,6 +25923,19 @@ export type Attributes = {
   [RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME]?: RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME_TYPE;
   [RESOURCE_RENDER_BLOCKING_STATUS]?: RESOURCE_RENDER_BLOCKING_STATUS_TYPE;
   [ROUTE]?: ROUTE_TYPE;
+  [RPC_GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS]?: RPC_GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS_TYPE;
+  [RPC_GRPC_ERROR_DEBUG_INFO_DETAIL]?: RPC_GRPC_ERROR_DEBUG_INFO_DETAIL_TYPE;
+  [RPC_GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES]?: RPC_GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES_TYPE;
+  [RPC_GRPC_ERROR_ERROR_INFO_DOMAIN]?: RPC_GRPC_ERROR_ERROR_INFO_DOMAIN_TYPE;
+  [RPC_GRPC_ERROR_ERROR_INFO_METADATA_KEY]?: RPC_GRPC_ERROR_ERROR_INFO_METADATA_KEY_TYPE;
+  [RPC_GRPC_ERROR_ERROR_INFO_REASON]?: RPC_GRPC_ERROR_ERROR_INFO_REASON_TYPE;
+  [RPC_GRPC_ERROR_PRECONDITION_FAILURE_VIOLATIONS]?: RPC_GRPC_ERROR_PRECONDITION_FAILURE_VIOLATIONS_TYPE;
+  [RPC_GRPC_ERROR_QUOTA_FAILURE_VIOLATIONS]?: RPC_GRPC_ERROR_QUOTA_FAILURE_VIOLATIONS_TYPE;
+  [RPC_GRPC_ERROR_RESOURCE_INFO_DESCRIPTION]?: RPC_GRPC_ERROR_RESOURCE_INFO_DESCRIPTION_TYPE;
+  [RPC_GRPC_ERROR_RESOURCE_INFO_OWNER]?: RPC_GRPC_ERROR_RESOURCE_INFO_OWNER_TYPE;
+  [RPC_GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME]?: RPC_GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME_TYPE;
+  [RPC_GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE]?: RPC_GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE_TYPE;
+  [RPC_GRPC_ERROR_RETRY_INFO_RETRY_DELAY_IN_MS]?: RPC_GRPC_ERROR_RETRY_INFO_RETRY_DELAY_IN_MS_TYPE;
   [RPC_GRPC_STATUS_CODE]?: RPC_GRPC_STATUS_CODE_TYPE;
   [RPC_METHOD]?: RPC_METHOD_TYPE;
   [RPC_RESPONSE_STATUS_CODE]?: RPC_RESPONSE_STATUS_CODE_TYPE;

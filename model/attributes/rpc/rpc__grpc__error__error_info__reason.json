@@ -1,0 +1,18 @@
+{
+  "key": "rpc.grpc.error.error_info.reason",
+  "brief": "The reason for the gRPC error, as defined by the service that generated it, from the google.rpc.ErrorInfo error detail.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "example": "FIELD_INVALID",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [460],
+      "description": "Added rpc.grpc.error.error_info.reason attribute"
+    }
+  ]
+}
