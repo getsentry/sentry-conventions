@@ -1,0 +1,23 @@
+{
+  "key": "gen_ai.cost.cache_read.input_tokens",
+  "brief": "The cost of cached input tokens in USD.",
+  "type": "double",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "example": 12.34,
+  "visibility": "public",
+  "additional_context": [
+    "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.",
+    "Despite the name 'cost.cache_read.input_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.cache_read.input_tokens.",
+    "This is a subset of gen_ai.cost.input_tokens, not an independent cost. Do not sum this with gen_ai.cost.input_tokens — it is already included."
+  ],
+  "changelog": [
+    {
+      "version": "0.16.0",
+      "prs": [],
+      "description": "Added gen_ai.cost.cache_read.input_tokens attribute"
+    }
+  ]
+}
