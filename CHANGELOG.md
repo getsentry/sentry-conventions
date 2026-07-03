@@ -1,3 +1,18 @@
+## 0.15.1
+
+### Bug Fixes 🐛
+
+- (build/js) Add subpath export shims for legacy bundlers by @Lms24 in [#459](https://github.com/getsentry/sentry-conventions/pull/459)
+
+## 0.15.0
+
+### New Features ✨
+
+- (description) Add cache and resource description models by @cleptric in [#444](https://github.com/getsentry/sentry-conventions/pull/444)
+- (name) Add resource span name model by @cleptric in [#445](https://github.com/getsentry/sentry-conventions/pull/445)
+- Add queue name, description, and op models by @cleptric in [#446](https://github.com/getsentry/sentry-conventions/pull/446)
+- Add name and description models for browser and url.template for HTTP server by @cleptric in [#448](https://github.com/getsentry/sentry-conventions/pull/448)
+
 ## 0.14.0
 
 ### New Features ✨

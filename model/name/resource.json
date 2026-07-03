@@ -1,0 +1,23 @@
+{
+  "brief": "Resource",
+  "operations": [
+    {
+      "name": "Resources",
+      "brief": "Loading of resources in the browser.",
+      "is_in_otel": false,
+      "ops": [
+        "resource",
+        "resource.script",
+        "resource.css",
+        "resource.link",
+        "resource.img",
+        "resource.audio",
+        "resource.video",
+        "resource.iframe",
+        "resource.other"
+      ],
+      "templates": ["{{url.domain}}", "Resource"],
+      "examples": ["example.com"]
+    }
+  ]
+}

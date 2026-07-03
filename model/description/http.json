@@ -12,8 +12,12 @@
       "name": "Server",
       "brief": "Operations that represent processing incoming HTTP requests in a web server.",
       "ops": ["http.server"],
-      "templates": ["{{http.request.method}} {{url.path}}", "{{http.request.method}} {{url.full}}"],
-      "examples": ["GET /users/123", "GET http://example.com/users/123"]
+      "templates": [
+        "{{http.request.method}} {{url.template}}",
+        "{{http.request.method}} {{url.path}}",
+        "{{http.request.method}} {{url.full}}"
+      ],
+      "examples": ["GET /users/:id", "GET /users/123", "GET http://example.com/users/123"]
     }
   ]
 }

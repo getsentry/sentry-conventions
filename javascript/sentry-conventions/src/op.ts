@@ -26,6 +26,12 @@ export const BROWSER_RESOURCE_IMG_SPAN_OP = 'resource.img';
 
 export const BROWSER_RESOURCE_CSS_SPAN_OP = 'resource.css';
 
+export const BROWSER_RESOURCE_AUDIO_SPAN_OP = 'resource.audio';
+
+export const BROWSER_RESOURCE_VIDEO_SPAN_OP = 'resource.video';
+
+export const BROWSER_RESOURCE_IFRAME_SPAN_OP = 'resource.iframe';
+
 export const BROWSER_RESOURCE_OTHER_SPAN_OP = 'resource.other';
 
 /**
@@ -80,6 +86,12 @@ export const DATABASE_DB_QUERY_SPAN_OP = 'db.query';
 
 export const DATABASE_CACHE_SPAN_OP = 'cache';
 
+export const DATABASE_CACHE_GET_SPAN_OP = 'cache.get';
+
+export const DATABASE_CACHE_PUT_SPAN_OP = 'cache.put';
+
+export const DATABASE_CACHE_REMOVE_SPAN_OP = 'cache.remove';
+
 // Path: model/op/faas.json
 // Name: faas
 
@@ -132,6 +144,41 @@ export const GENERAL_MARK_SPAN_OP = 'mark';
  * The time it took for a set of instructions to execute
  */
 export const GENERAL_FUNCTION_SPAN_OP = 'function';
+
+// Path: model/op/messaging.json
+// Name: messaging
+
+// Description: Messaging related spans represent operations on topics in streaming data systems and queues, such as producing and consuming messages in Kafka, RabbitMQ.
+
+/**
+ * A general queue operation.
+ */
+export const MESSAGING_QUEUE_SPAN_OP = 'queue';
+
+/**
+ * Publishing a message to a queue.
+ */
+export const MESSAGING_QUEUE_PUBLISH_SPAN_OP = 'queue.publish';
+
+/**
+ * Creating a queue or a message for later publishing.
+ */
+export const MESSAGING_QUEUE_CREATE_SPAN_OP = 'queue.create';
+
+/**
+ * Receiving a message from a queue.
+ */
+export const MESSAGING_QUEUE_RECEIVE_SPAN_OP = 'queue.receive';
+
+/**
+ * Processing a message from a queue.
+ */
+export const MESSAGING_QUEUE_PROCESS_SPAN_OP = 'queue.process';
+
+/**
+ * Settling a message, e.g. acknowledging or rejecting it.
+ */
+export const MESSAGING_QUEUE_SETTLE_SPAN_OP = 'queue.settle';
 
 // Path: model/op/mobile.json
 // Name: mobile

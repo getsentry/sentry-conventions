@@ -1,6 +1,6 @@
 {
   "key": "gen_ai.cost.input_tokens",
-  "brief": "The cost of tokens used to process the AI input (prompt) in USD (without cached input tokens).",
+  "brief": "The total cost of all input tokens in USD (includes cached and cache creation tokens).",
   "type": "double",
   "apply_scrubbing": {
     "key": "manual"
@@ -11,7 +11,7 @@
   "additional_context": [
     "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.",
     "Despite the name 'cost.input_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.input_tokens.",
-    "This is the cost of non-cached input tokens only. The cost of cached tokens is excluded from this value."
+    "This is the total cost of all input tokens, including cached and cache creation tokens at their respective rates. For the cached portion, see gen_ai.cost.cache_read.input_tokens. For the cache creation portion, see gen_ai.cost.cache_creation.input_tokens."
   ],
   "changelog": [
     {

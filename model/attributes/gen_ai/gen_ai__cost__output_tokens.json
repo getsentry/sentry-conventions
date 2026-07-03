@@ -1,6 +1,6 @@
 {
   "key": "gen_ai.cost.output_tokens",
-  "brief": "The cost of tokens used for creating the AI output in USD (without reasoning tokens).",
+  "brief": "The total cost of all output tokens in USD (includes reasoning tokens).",
   "type": "double",
   "apply_scrubbing": {
     "key": "manual"
@@ -11,7 +11,7 @@
   "additional_context": [
     "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.",
     "Despite the name 'cost.output_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.output_tokens.",
-    "This is the cost of non-reasoning output tokens only. The cost of reasoning tokens is excluded from this value."
+    "This is the total cost of all output tokens, including reasoning tokens at their respective rate. For the reasoning portion, see gen_ai.cost.reasoning.output_tokens."
   ],
   "changelog": [
     {
