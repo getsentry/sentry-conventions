@@ -1,5 +1,5 @@
 {
-  "key": "rpc.grpc.error.error_info.metadata.<key>",
+  "key": "grpc.error.error_info.metadata.<key>",
   "brief": "Additional structured metadata attached to a google.rpc.ErrorInfo error detail, with <key> being the metadata key name. SDKs should only send this attribute when sendDefaultPii is enabled.",
   "has_dynamic_suffix": true,
   "type": "string",
@@ -8,12 +8,12 @@
   },
   "is_in_otel": false,
   "visibility": "public",
-  "example": "rpc.grpc.error.error_info.metadata.user_id='123'",
+  "example": "grpc.error.error_info.metadata.user_id='123'",
   "changelog": [
     {
       "version": "next",
       "prs": [460],
-      "description": "Added rpc.grpc.error.error_info.metadata.<key> attribute"
+      "description": "Added grpc.error.error_info.metadata.<key> attribute"
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "key": "rpc.grpc.error.bad_request.field_violations",
+  "key": "grpc.error.bad_request.field_violations",
   "brief": "The individual field violations from a google.rpc.BadRequest error detail. Each entry is a JSON-encoded object with field, description, reason, and (optional) localized_message keys, mirroring google.rpc.BadRequest.FieldViolation.",
   "type": "string[]",
   "apply_scrubbing": {
@@ -14,7 +14,7 @@
     {
       "version": "next",
       "prs": [460],
-      "description": "Added rpc.grpc.error.bad_request.field_violations attribute"
+      "description": "Added grpc.error.bad_request.field_violations attribute"
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "key": "rpc.grpc.error.debug_info.detail",
+  "key": "grpc.error.debug_info.detail",
   "brief": "Additional debugging information, such as a server-side stack trace, from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.",
   "type": "string",
   "apply_scrubbing": {
@@ -12,7 +12,7 @@
     {
       "version": "next",
       "prs": [460],
-      "description": "Added rpc.grpc.error.debug_info.detail attribute"
+      "description": "Added grpc.error.debug_info.detail attribute"
     }
   ]
 }

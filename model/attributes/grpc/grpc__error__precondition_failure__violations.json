@@ -1,5 +1,5 @@
 {
-  "key": "rpc.grpc.error.precondition_failure.violations",
+  "key": "grpc.error.precondition_failure.violations",
   "brief": "The individual precondition violations from a google.rpc.PreconditionFailure error detail. Each entry is a JSON-encoded object with type, subject, and description keys. SDKs should only send this attribute when sendDefaultPii is enabled, since violation subjects may identify specific resources or users.",
   "type": "string[]",
   "apply_scrubbing": {
@@ -14,7 +14,7 @@
     {
       "version": "next",
       "prs": [460],
-      "description": "Added rpc.grpc.error.precondition_failure.violations attribute"
+      "description": "Added grpc.error.precondition_failure.violations attribute"
     }
   ]
 }

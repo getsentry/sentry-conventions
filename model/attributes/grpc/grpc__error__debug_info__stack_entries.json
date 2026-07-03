@@ -1,5 +1,5 @@
 {
-  "key": "rpc.grpc.error.debug_info.stack_entries",
+  "key": "grpc.error.debug_info.stack_entries",
   "brief": "The server-side stack trace entries from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled.",
   "type": "string[]",
   "apply_scrubbing": {
@@ -12,7 +12,7 @@
     {
       "version": "next",
       "prs": [460],
-      "description": "Added rpc.grpc.error.debug_info.stack_entries attribute"
+      "description": "Added grpc.error.debug_info.stack_entries attribute"
     }
   ]
 }

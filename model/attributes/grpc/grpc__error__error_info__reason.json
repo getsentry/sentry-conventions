@@ -1,5 +1,5 @@
 {
-  "key": "rpc.grpc.error.error_info.reason",
+  "key": "grpc.error.error_info.reason",
   "brief": "The reason for the gRPC error, as defined by the service that generated it, from the google.rpc.ErrorInfo error detail.",
   "type": "string",
   "apply_scrubbing": {
@@ -12,7 +12,7 @@
     {
       "version": "next",
       "prs": [460],
-      "description": "Added rpc.grpc.error.error_info.reason attribute"
+      "description": "Added grpc.error.error_info.reason attribute"
     }
   ]
 }

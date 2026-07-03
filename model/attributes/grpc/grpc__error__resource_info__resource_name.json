@@ -1,5 +1,5 @@
 {
-  "key": "rpc.grpc.error.resource_info.resource_name",
+  "key": "grpc.error.resource_info.resource_name",
   "brief": "The name of the resource being accessed, from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled.",
   "type": "string",
   "apply_scrubbing": {
@@ -12,7 +12,7 @@
     {
       "version": "next",
       "prs": [460],
-      "description": "Added rpc.grpc.error.resource_info.resource_name attribute"
+      "description": "Added grpc.error.resource_info.resource_name attribute"
     }
   ]
 }
