@@ -5690,10 +5690,52 @@ export const GEN_AI_CONVERSATION_ID = 'gen_ai.conversation.id';
  */
 export type GEN_AI_CONVERSATION_ID_TYPE = string;
 
+// Path: model/attributes/gen_ai/gen_ai__cost__cache_creation__input_tokens.json
+
+/**
+ * The cost of input tokens written to cache in USD. `gen_ai.cost.cache_creation.input_tokens`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_COST_CACHE_CREATION_INPUT_TOKENS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 12.34
+ */
+export const GEN_AI_COST_CACHE_CREATION_INPUT_TOKENS = 'gen_ai.cost.cache_creation.input_tokens';
+
+/**
+ * Type for {@link GEN_AI_COST_CACHE_CREATION_INPUT_TOKENS} gen_ai.cost.cache_creation.input_tokens
+ */
+export type GEN_AI_COST_CACHE_CREATION_INPUT_TOKENS_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__cost__cache_read__input_tokens.json
+
+/**
+ * The cost of cached input tokens in USD. `gen_ai.cost.cache_read.input_tokens`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_COST_CACHE_READ_INPUT_TOKENS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 12.34
+ */
+export const GEN_AI_COST_CACHE_READ_INPUT_TOKENS = 'gen_ai.cost.cache_read.input_tokens';
+
+/**
+ * Type for {@link GEN_AI_COST_CACHE_READ_INPUT_TOKENS} gen_ai.cost.cache_read.input_tokens
+ */
+export type GEN_AI_COST_CACHE_READ_INPUT_TOKENS_TYPE = number;
+
 // Path: model/attributes/gen_ai/gen_ai__cost__input_tokens.json
 
 /**
- * The cost of tokens used to process the AI input (prompt) in USD (without cached input tokens). `gen_ai.cost.input_tokens`
+ * The total cost of all input tokens in USD (includes cached and cache creation tokens). `gen_ai.cost.input_tokens`
  *
  * Attribute Value Type: `number` {@link GEN_AI_COST_INPUT_TOKENS_TYPE}
  *
@@ -5714,7 +5756,7 @@ export type GEN_AI_COST_INPUT_TOKENS_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__cost__output_tokens.json
 
 /**
- * The cost of tokens used for creating the AI output in USD (without reasoning tokens). `gen_ai.cost.output_tokens`
+ * The total cost of all output tokens in USD (includes reasoning tokens). `gen_ai.cost.output_tokens`
  *
  * Attribute Value Type: `number` {@link GEN_AI_COST_OUTPUT_TOKENS_TYPE}
  *
@@ -5731,6 +5773,27 @@ export const GEN_AI_COST_OUTPUT_TOKENS = 'gen_ai.cost.output_tokens';
  * Type for {@link GEN_AI_COST_OUTPUT_TOKENS} gen_ai.cost.output_tokens
  */
 export type GEN_AI_COST_OUTPUT_TOKENS_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__cost__reasoning__output_tokens.json
+
+/**
+ * The cost of reasoning output tokens in USD. `gen_ai.cost.reasoning.output_tokens`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_COST_REASONING_OUTPUT_TOKENS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 12.34
+ */
+export const GEN_AI_COST_REASONING_OUTPUT_TOKENS = 'gen_ai.cost.reasoning.output_tokens';
+
+/**
+ * Type for {@link GEN_AI_COST_REASONING_OUTPUT_TOKENS} gen_ai.cost.reasoning.output_tokens
+ */
+export type GEN_AI_COST_REASONING_OUTPUT_TOKENS_TYPE = number;
 
 // Path: model/attributes/gen_ai/gen_ai__cost__total_tokens.json
 
@@ -15293,8 +15356,11 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'gen_ai.context.utilization': 'double',
   'gen_ai.context.window_size': 'integer',
   'gen_ai.conversation.id': 'string',
+  'gen_ai.cost.cache_creation.input_tokens': 'double',
+  'gen_ai.cost.cache_read.input_tokens': 'double',
   'gen_ai.cost.input_tokens': 'double',
   'gen_ai.cost.output_tokens': 'double',
+  'gen_ai.cost.reasoning.output_tokens': 'double',
   'gen_ai.cost.total_tokens': 'double',
   'gen_ai.embeddings.input': 'string',
   'gen_ai.function_id': 'string',
@@ -15977,8 +16043,11 @@ export type AttributeName =
   | typeof GEN_AI_CONTEXT_UTILIZATION
   | typeof GEN_AI_CONTEXT_WINDOW_SIZE
   | typeof GEN_AI_CONVERSATION_ID
+  | typeof GEN_AI_COST_CACHE_CREATION_INPUT_TOKENS
+  | typeof GEN_AI_COST_CACHE_READ_INPUT_TOKENS
   | typeof GEN_AI_COST_INPUT_TOKENS
   | typeof GEN_AI_COST_OUTPUT_TOKENS
+  | typeof GEN_AI_COST_REASONING_OUTPUT_TOKENS
   | typeof GEN_AI_COST_TOTAL_TOKENS
   | typeof GEN_AI_EMBEDDINGS_INPUT
   | typeof GEN_AI_FUNCTION_ID
@@ -19798,8 +19867,40 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'conv_5j66UpCpwteGg4YSxUnt7lPY',
     changelog: [{ version: '0.4.0', prs: [250] }],
   },
+  'gen_ai.cost.cache_creation.input_tokens': {
+    brief: 'The cost of input tokens written to cache in USD.',
+    type: 'double',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 12.34,
+    changelog: [{ version: '0.16.0', description: 'Added gen_ai.cost.cache_creation.input_tokens attribute' }],
+    additionalContext: [
+      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
+      "Despite the name 'cost.cache_creation.input_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.cache_creation.input_tokens.",
+      'This is a subset of gen_ai.cost.input_tokens, not an independent cost. Do not sum this with gen_ai.cost.input_tokens — it is already included.',
+    ],
+  },
+  'gen_ai.cost.cache_read.input_tokens': {
+    brief: 'The cost of cached input tokens in USD.',
+    type: 'double',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 12.34,
+    changelog: [{ version: '0.16.0', description: 'Added gen_ai.cost.cache_read.input_tokens attribute' }],
+    additionalContext: [
+      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
+      "Despite the name 'cost.cache_read.input_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.cache_read.input_tokens.",
+      'This is a subset of gen_ai.cost.input_tokens, not an independent cost. Do not sum this with gen_ai.cost.input_tokens — it is already included.',
+    ],
+  },
   'gen_ai.cost.input_tokens': {
-    brief: 'The cost of tokens used to process the AI input (prompt) in USD (without cached input tokens).',
+    brief: 'The total cost of all input tokens in USD (includes cached and cache creation tokens).',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
@@ -19815,11 +19916,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     additionalContext: [
       'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
       "Despite the name 'cost.input_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.input_tokens.",
-      'This is the cost of non-cached input tokens only. The cost of cached tokens is excluded from this value.',
+      'This is the total cost of all input tokens, including cached and cache creation tokens at their respective rates. For the cached portion, see gen_ai.cost.cache_read.input_tokens. For the cache creation portion, see gen_ai.cost.cache_creation.input_tokens.',
     ],
   },
   'gen_ai.cost.output_tokens': {
-    brief: 'The cost of tokens used for creating the AI output in USD (without reasoning tokens).',
+    brief: 'The total cost of all output tokens in USD (includes reasoning tokens).',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
@@ -19835,7 +19936,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     additionalContext: [
       'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
       "Despite the name 'cost.output_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.output_tokens.",
-      'This is the cost of non-reasoning output tokens only. The cost of reasoning tokens is excluded from this value.',
+      'This is the total cost of all output tokens, including reasoning tokens at their respective rate. For the reasoning portion, see gen_ai.cost.reasoning.output_tokens.',
+    ],
+  },
+  'gen_ai.cost.reasoning.output_tokens': {
+    brief: 'The cost of reasoning output tokens in USD.',
+    type: 'double',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 12.34,
+    changelog: [{ version: '0.16.0', description: 'Added gen_ai.cost.reasoning.output_tokens attribute' }],
+    additionalContext: [
+      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
+      "Despite the name 'cost.reasoning.output_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.reasoning.output_tokens.",
+      'This is a subset of gen_ai.cost.output_tokens, not an independent cost. Do not sum this with gen_ai.cost.output_tokens — it is already included.',
     ],
   },
   'gen_ai.cost.total_tokens': {
@@ -25673,8 +25790,11 @@ export type Attributes = {
   [GEN_AI_CONTEXT_UTILIZATION]?: GEN_AI_CONTEXT_UTILIZATION_TYPE;
   [GEN_AI_CONTEXT_WINDOW_SIZE]?: GEN_AI_CONTEXT_WINDOW_SIZE_TYPE;
   [GEN_AI_CONVERSATION_ID]?: GEN_AI_CONVERSATION_ID_TYPE;
+  [GEN_AI_COST_CACHE_CREATION_INPUT_TOKENS]?: GEN_AI_COST_CACHE_CREATION_INPUT_TOKENS_TYPE;
+  [GEN_AI_COST_CACHE_READ_INPUT_TOKENS]?: GEN_AI_COST_CACHE_READ_INPUT_TOKENS_TYPE;
   [GEN_AI_COST_INPUT_TOKENS]?: GEN_AI_COST_INPUT_TOKENS_TYPE;
   [GEN_AI_COST_OUTPUT_TOKENS]?: GEN_AI_COST_OUTPUT_TOKENS_TYPE;
+  [GEN_AI_COST_REASONING_OUTPUT_TOKENS]?: GEN_AI_COST_REASONING_OUTPUT_TOKENS_TYPE;
   [GEN_AI_COST_TOTAL_TOKENS]?: GEN_AI_COST_TOTAL_TOKENS_TYPE;
   [GEN_AI_EMBEDDINGS_INPUT]?: GEN_AI_EMBEDDINGS_INPUT_TYPE;
   [GEN_AI_FUNCTION_ID]?: GEN_AI_FUNCTION_ID_TYPE;
