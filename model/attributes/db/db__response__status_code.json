@@ -1,0 +1,18 @@
+{
+  "key": "db.response.status_code",
+  "brief": "Database response status code. The status code returned by the database. Usually it represents an error code, but may also represent partial success, warning, or differentiate between various types of successful outcomes.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "example": "ORA-17002",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [462],
+      "description": "Added db.response.status_code attribute"
+    }
+  ]
+}
