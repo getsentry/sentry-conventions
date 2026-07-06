@@ -2425,6 +2425,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: ["test","*"]
     """
 
+    # Path: model/attributes/db/db__response__status_code.json
+    DB_RESPONSE_STATUS_CODE: Literal["db.response.status_code"] = (
+        "db.response.status_code"
+    )
+    """Database response status code. The status code returned by the database. Usually it represents an error code, but may also represent partial success, warning, or differentiate between various types of successful outcomes.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "ORA-17002"
+    """
+
     # Path: model/attributes/db/db__sql__bindings.json
     DB_SQL_BINDINGS: Literal["db.sql.bindings"] = "db.sql.bindings"
     """The array of query bindings.
@@ -11018,6 +11031,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "db.response.status_code": AttributeMetadata(
+        brief="Database response status code. The status code returned by the database. Usually it represents an error code, but may also represent partial success, warning, or differentiate between various types of successful outcomes.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="ORA-17002",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[462],
+                description="Added db.response.status_code attribute",
+            ),
+        ],
+    ),
     "db.sql.bindings": AttributeMetadata(
         brief="The array of query bindings.",
         type=AttributeType.STRING_ARRAY,
@@ -18156,6 +18184,7 @@ Attributes = TypedDict(
         "db.redis.connection": str,
         "db.redis.key": str,
         "db.redis.parameters": List[str],
+        "db.response.status_code": str,
         "db.sql.bindings": List[str],
         "db.statement": str,
         "db.stored_procedure.name": str,
