@@ -12421,7 +12421,7 @@ export const SENTRY_SEGMENT_NAME = 'sentry.segment.name';
  */
 export type SENTRY_SEGMENT_NAME_TYPE = string;
 
-// Path: model/attributes/sentry/sentry__segment__source.json
+// Path: model/attributes/sentry/sentry__segment__name__source.json
 
 /**
  * The name source of the segment span. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. `sentry.segment.name.source`

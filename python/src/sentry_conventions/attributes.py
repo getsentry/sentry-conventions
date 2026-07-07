@@ -7233,7 +7233,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "GET /user"
     """
 
-    # Path: model/attributes/sentry/sentry__segment__source.json
+    # Path: model/attributes/sentry/sentry__segment__name__source.json
     SENTRY_SEGMENT_NAME_SOURCE: Literal["sentry.segment.name.source"] = (
         "sentry.segment.name.source"
     )
