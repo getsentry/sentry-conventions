@@ -3794,6 +3794,27 @@ export const DB_REDIS_PARAMETERS = 'db.redis.parameters';
  */
 export type DB_REDIS_PARAMETERS_TYPE = Array<string>;
 
+// Path: model/attributes/db/db__response__status_code.json
+
+/**
+ * Database response status code. The status code returned by the database. Usually it represents an error code, but may also represent partial success, warning, or differentiate between various types of successful outcomes. `db.response.status_code`
+ *
+ * Attribute Value Type: `string` {@link DB_RESPONSE_STATUS_CODE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "ORA-17002"
+ */
+export const DB_RESPONSE_STATUS_CODE = 'db.response.status_code';
+
+/**
+ * Type for {@link DB_RESPONSE_STATUS_CODE} db.response.status_code
+ */
+export type DB_RESPONSE_STATUS_CODE_TYPE = string;
+
 // Path: model/attributes/db/db__sql__bindings.json
 
 /**
@@ -15268,6 +15289,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'db.redis.connection': 'string',
   'db.redis.key': 'string',
   'db.redis.parameters': 'string[]',
+  'db.response.status_code': 'string',
   'db.sql.bindings': 'string[]',
   'db.statement': 'string',
   'db.stored_procedure.name': 'string',
@@ -15955,6 +15977,7 @@ export type AttributeName =
   | typeof DB_REDIS_CONNECTION
   | typeof DB_REDIS_KEY
   | typeof DB_REDIS_PARAMETERS
+  | typeof DB_RESPONSE_STATUS_CODE
   | typeof DB_SQL_BINDINGS
   | typeof DB_STATEMENT
   | typeof DB_STORED_PROCEDURE_NAME
@@ -18758,6 +18781,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: ['test', '*'],
     changelog: [{ version: '0.0.0' }],
+  },
+  'db.response.status_code': {
+    brief:
+      'Database response status code. The status code returned by the database. Usually it represents an error code, but may also represent partial success, warning, or differentiate between various types of successful outcomes.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'ORA-17002',
+    changelog: [{ version: 'next', prs: [462], description: 'Added db.response.status_code attribute' }],
   },
   'db.sql.bindings': {
     brief: 'The array of query bindings.',
@@ -25702,6 +25737,7 @@ export type Attributes = {
   [DB_REDIS_CONNECTION]?: DB_REDIS_CONNECTION_TYPE;
   [DB_REDIS_KEY]?: DB_REDIS_KEY_TYPE;
   [DB_REDIS_PARAMETERS]?: DB_REDIS_PARAMETERS_TYPE;
+  [DB_RESPONSE_STATUS_CODE]?: DB_RESPONSE_STATUS_CODE_TYPE;
   [DB_SQL_BINDINGS]?: DB_SQL_BINDINGS_TYPE;
   [DB_STATEMENT]?: DB_STATEMENT_TYPE;
   [DB_STORED_PROCEDURE_NAME]?: DB_STORED_PROCEDURE_NAME_TYPE;
