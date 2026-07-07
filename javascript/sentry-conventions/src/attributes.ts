@@ -3794,6 +3794,27 @@ export const DB_REDIS_PARAMETERS = 'db.redis.parameters';
  */
 export type DB_REDIS_PARAMETERS_TYPE = Array<string>;
 
+// Path: model/attributes/db/db__response__status_code.json
+
+/**
+ * Database response status code. The status code returned by the database. Usually it represents an error code, but may also represent partial success, warning, or differentiate between various types of successful outcomes. `db.response.status_code`
+ *
+ * Attribute Value Type: `string` {@link DB_RESPONSE_STATUS_CODE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "ORA-17002"
+ */
+export const DB_RESPONSE_STATUS_CODE = 'db.response.status_code';
+
+/**
+ * Type for {@link DB_RESPONSE_STATUS_CODE} db.response.status_code
+ */
+export type DB_RESPONSE_STATUS_CODE_TYPE = string;
+
 // Path: model/attributes/db/db__sql__bindings.json
 
 /**
@@ -5690,10 +5711,52 @@ export const GEN_AI_CONVERSATION_ID = 'gen_ai.conversation.id';
  */
 export type GEN_AI_CONVERSATION_ID_TYPE = string;
 
+// Path: model/attributes/gen_ai/gen_ai__cost__cache_creation__input_tokens.json
+
+/**
+ * The cost of input tokens written to cache in USD. `gen_ai.cost.cache_creation.input_tokens`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_COST_CACHE_CREATION_INPUT_TOKENS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 12.34
+ */
+export const GEN_AI_COST_CACHE_CREATION_INPUT_TOKENS = 'gen_ai.cost.cache_creation.input_tokens';
+
+/**
+ * Type for {@link GEN_AI_COST_CACHE_CREATION_INPUT_TOKENS} gen_ai.cost.cache_creation.input_tokens
+ */
+export type GEN_AI_COST_CACHE_CREATION_INPUT_TOKENS_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__cost__cache_read__input_tokens.json
+
+/**
+ * The cost of cached input tokens in USD. `gen_ai.cost.cache_read.input_tokens`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_COST_CACHE_READ_INPUT_TOKENS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 12.34
+ */
+export const GEN_AI_COST_CACHE_READ_INPUT_TOKENS = 'gen_ai.cost.cache_read.input_tokens';
+
+/**
+ * Type for {@link GEN_AI_COST_CACHE_READ_INPUT_TOKENS} gen_ai.cost.cache_read.input_tokens
+ */
+export type GEN_AI_COST_CACHE_READ_INPUT_TOKENS_TYPE = number;
+
 // Path: model/attributes/gen_ai/gen_ai__cost__input_tokens.json
 
 /**
- * The cost of tokens used to process the AI input (prompt) in USD (without cached input tokens). `gen_ai.cost.input_tokens`
+ * The total cost of all input tokens in USD (includes cached and cache creation tokens). `gen_ai.cost.input_tokens`
  *
  * Attribute Value Type: `number` {@link GEN_AI_COST_INPUT_TOKENS_TYPE}
  *
@@ -5714,7 +5777,7 @@ export type GEN_AI_COST_INPUT_TOKENS_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__cost__output_tokens.json
 
 /**
- * The cost of tokens used for creating the AI output in USD (without reasoning tokens). `gen_ai.cost.output_tokens`
+ * The total cost of all output tokens in USD (includes reasoning tokens). `gen_ai.cost.output_tokens`
  *
  * Attribute Value Type: `number` {@link GEN_AI_COST_OUTPUT_TOKENS_TYPE}
  *
@@ -5731,6 +5794,27 @@ export const GEN_AI_COST_OUTPUT_TOKENS = 'gen_ai.cost.output_tokens';
  * Type for {@link GEN_AI_COST_OUTPUT_TOKENS} gen_ai.cost.output_tokens
  */
 export type GEN_AI_COST_OUTPUT_TOKENS_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__cost__reasoning__output_tokens.json
+
+/**
+ * The cost of reasoning output tokens in USD. `gen_ai.cost.reasoning.output_tokens`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_COST_REASONING_OUTPUT_TOKENS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 12.34
+ */
+export const GEN_AI_COST_REASONING_OUTPUT_TOKENS = 'gen_ai.cost.reasoning.output_tokens';
+
+/**
+ * Type for {@link GEN_AI_COST_REASONING_OUTPUT_TOKENS} gen_ai.cost.reasoning.output_tokens
+ */
+export type GEN_AI_COST_REASONING_OUTPUT_TOKENS_TYPE = number;
 
 // Path: model/attributes/gen_ai/gen_ai__cost__total_tokens.json
 
@@ -14977,6 +15061,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'db.redis.connection': 'string',
   'db.redis.key': 'string',
   'db.redis.parameters': 'string[]',
+  'db.response.status_code': 'string',
   'db.sql.bindings': 'string[]',
   'db.statement': 'string',
   'db.stored_procedure.name': 'string',
@@ -15065,8 +15150,11 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'gen_ai.context.utilization': 'double',
   'gen_ai.context.window_size': 'integer',
   'gen_ai.conversation.id': 'string',
+  'gen_ai.cost.cache_creation.input_tokens': 'double',
+  'gen_ai.cost.cache_read.input_tokens': 'double',
   'gen_ai.cost.input_tokens': 'double',
   'gen_ai.cost.output_tokens': 'double',
+  'gen_ai.cost.reasoning.output_tokens': 'double',
   'gen_ai.cost.total_tokens': 'double',
   'gen_ai.embeddings.input': 'string',
   'gen_ai.function_id': 'string',
@@ -15650,6 +15738,7 @@ export type AttributeName =
   | typeof DB_REDIS_CONNECTION
   | typeof DB_REDIS_KEY
   | typeof DB_REDIS_PARAMETERS
+  | typeof DB_RESPONSE_STATUS_CODE
   | typeof DB_SQL_BINDINGS
   | typeof DB_STATEMENT
   | typeof DB_STORED_PROCEDURE_NAME
@@ -15738,8 +15827,11 @@ export type AttributeName =
   | typeof GEN_AI_CONTEXT_UTILIZATION
   | typeof GEN_AI_CONTEXT_WINDOW_SIZE
   | typeof GEN_AI_CONVERSATION_ID
+  | typeof GEN_AI_COST_CACHE_CREATION_INPUT_TOKENS
+  | typeof GEN_AI_COST_CACHE_READ_INPUT_TOKENS
   | typeof GEN_AI_COST_INPUT_TOKENS
   | typeof GEN_AI_COST_OUTPUT_TOKENS
+  | typeof GEN_AI_COST_REASONING_OUTPUT_TOKENS
   | typeof GEN_AI_COST_TOTAL_TOKENS
   | typeof GEN_AI_EMBEDDINGS_INPUT
   | typeof GEN_AI_FUNCTION_ID
@@ -18440,6 +18532,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: ['test', '*'],
     changelog: [{ version: '0.0.0' }],
   },
+  'db.response.status_code': {
+    brief:
+      'Database response status code. The status code returned by the database. Usually it represents an error code, but may also represent partial success, warning, or differentiate between various types of successful outcomes.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'ORA-17002',
+    changelog: [{ version: 'next', prs: [462], description: 'Added db.response.status_code attribute' }],
+  },
   'db.sql.bindings': {
     brief: 'The array of query bindings.',
     type: 'string[]',
@@ -19548,8 +19652,40 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'conv_5j66UpCpwteGg4YSxUnt7lPY',
     changelog: [{ version: '0.4.0', prs: [250] }],
   },
+  'gen_ai.cost.cache_creation.input_tokens': {
+    brief: 'The cost of input tokens written to cache in USD.',
+    type: 'double',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 12.34,
+    changelog: [{ version: '0.16.0', description: 'Added gen_ai.cost.cache_creation.input_tokens attribute' }],
+    additionalContext: [
+      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
+      "Despite the name 'cost.cache_creation.input_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.cache_creation.input_tokens.",
+      'This is a subset of gen_ai.cost.input_tokens, not an independent cost. Do not sum this with gen_ai.cost.input_tokens — it is already included.',
+    ],
+  },
+  'gen_ai.cost.cache_read.input_tokens': {
+    brief: 'The cost of cached input tokens in USD.',
+    type: 'double',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 12.34,
+    changelog: [{ version: '0.16.0', description: 'Added gen_ai.cost.cache_read.input_tokens attribute' }],
+    additionalContext: [
+      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
+      "Despite the name 'cost.cache_read.input_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.cache_read.input_tokens.",
+      'This is a subset of gen_ai.cost.input_tokens, not an independent cost. Do not sum this with gen_ai.cost.input_tokens — it is already included.',
+    ],
+  },
   'gen_ai.cost.input_tokens': {
-    brief: 'The cost of tokens used to process the AI input (prompt) in USD (without cached input tokens).',
+    brief: 'The total cost of all input tokens in USD (includes cached and cache creation tokens).',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
@@ -19565,11 +19701,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     additionalContext: [
       'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
       "Despite the name 'cost.input_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.input_tokens.",
-      'This is the cost of non-cached input tokens only. The cost of cached tokens is excluded from this value.',
+      'This is the total cost of all input tokens, including cached and cache creation tokens at their respective rates. For the cached portion, see gen_ai.cost.cache_read.input_tokens. For the cache creation portion, see gen_ai.cost.cache_creation.input_tokens.',
     ],
   },
   'gen_ai.cost.output_tokens': {
-    brief: 'The cost of tokens used for creating the AI output in USD (without reasoning tokens).',
+    brief: 'The total cost of all output tokens in USD (includes reasoning tokens).',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
@@ -19585,7 +19721,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     additionalContext: [
       'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
       "Despite the name 'cost.output_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.output_tokens.",
-      'This is the cost of non-reasoning output tokens only. The cost of reasoning tokens is excluded from this value.',
+      'This is the total cost of all output tokens, including reasoning tokens at their respective rate. For the reasoning portion, see gen_ai.cost.reasoning.output_tokens.',
+    ],
+  },
+  'gen_ai.cost.reasoning.output_tokens': {
+    brief: 'The cost of reasoning output tokens in USD.',
+    type: 'double',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 12.34,
+    changelog: [{ version: '0.16.0', description: 'Added gen_ai.cost.reasoning.output_tokens attribute' }],
+    additionalContext: [
+      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
+      "Despite the name 'cost.reasoning.output_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.reasoning.output_tokens.",
+      'This is a subset of gen_ai.cost.output_tokens, not an independent cost. Do not sum this with gen_ai.cost.output_tokens — it is already included.',
     ],
   },
   'gen_ai.cost.total_tokens': {
@@ -25204,6 +25356,7 @@ export type Attributes = {
   [DB_REDIS_CONNECTION]?: DB_REDIS_CONNECTION_TYPE;
   [DB_REDIS_KEY]?: DB_REDIS_KEY_TYPE;
   [DB_REDIS_PARAMETERS]?: DB_REDIS_PARAMETERS_TYPE;
+  [DB_RESPONSE_STATUS_CODE]?: DB_RESPONSE_STATUS_CODE_TYPE;
   [DB_SQL_BINDINGS]?: DB_SQL_BINDINGS_TYPE;
   [DB_STATEMENT]?: DB_STATEMENT_TYPE;
   [DB_STORED_PROCEDURE_NAME]?: DB_STORED_PROCEDURE_NAME_TYPE;
@@ -25292,8 +25445,11 @@ export type Attributes = {
   [GEN_AI_CONTEXT_UTILIZATION]?: GEN_AI_CONTEXT_UTILIZATION_TYPE;
   [GEN_AI_CONTEXT_WINDOW_SIZE]?: GEN_AI_CONTEXT_WINDOW_SIZE_TYPE;
   [GEN_AI_CONVERSATION_ID]?: GEN_AI_CONVERSATION_ID_TYPE;
+  [GEN_AI_COST_CACHE_CREATION_INPUT_TOKENS]?: GEN_AI_COST_CACHE_CREATION_INPUT_TOKENS_TYPE;
+  [GEN_AI_COST_CACHE_READ_INPUT_TOKENS]?: GEN_AI_COST_CACHE_READ_INPUT_TOKENS_TYPE;
   [GEN_AI_COST_INPUT_TOKENS]?: GEN_AI_COST_INPUT_TOKENS_TYPE;
   [GEN_AI_COST_OUTPUT_TOKENS]?: GEN_AI_COST_OUTPUT_TOKENS_TYPE;
+  [GEN_AI_COST_REASONING_OUTPUT_TOKENS]?: GEN_AI_COST_REASONING_OUTPUT_TOKENS_TYPE;
   [GEN_AI_COST_TOTAL_TOKENS]?: GEN_AI_COST_TOTAL_TOKENS_TYPE;
   [GEN_AI_EMBEDDINGS_INPUT]?: GEN_AI_EMBEDDINGS_INPUT_TYPE;
   [GEN_AI_FUNCTION_ID]?: GEN_AI_FUNCTION_ID_TYPE;

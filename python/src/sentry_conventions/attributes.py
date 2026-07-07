@@ -2426,6 +2426,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: ["test","*"]
     """
 
+    # Path: model/attributes/db/db__response__status_code.json
+    DB_RESPONSE_STATUS_CODE: Literal["db.response.status_code"] = (
+        "db.response.status_code"
+    )
+    """Database response status code. The status code returned by the database. Usually it represents an error code, but may also represent partial success, warning, or differentiate between various types of successful outcomes.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "ORA-17002"
+    """
+
     # Path: model/attributes/db/db__sql__bindings.json
     DB_SQL_BINDINGS: Literal["db.sql.bindings"] = "db.sql.bindings"
     """The array of query bindings.
@@ -3465,11 +3478,37 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "conv_5j66UpCpwteGg4YSxUnt7lPY"
     """
 
+    # Path: model/attributes/gen_ai/gen_ai__cost__cache_creation__input_tokens.json
+    GEN_AI_COST_CACHE_CREATION_INPUT_TOKENS: Literal[
+        "gen_ai.cost.cache_creation.input_tokens"
+    ] = "gen_ai.cost.cache_creation.input_tokens"
+    """The cost of input tokens written to cache in USD.
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 12.34
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__cost__cache_read__input_tokens.json
+    GEN_AI_COST_CACHE_READ_INPUT_TOKENS: Literal[
+        "gen_ai.cost.cache_read.input_tokens"
+    ] = "gen_ai.cost.cache_read.input_tokens"
+    """The cost of cached input tokens in USD.
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 12.34
+    """
+
     # Path: model/attributes/gen_ai/gen_ai__cost__input_tokens.json
     GEN_AI_COST_INPUT_TOKENS: Literal["gen_ai.cost.input_tokens"] = (
         "gen_ai.cost.input_tokens"
     )
-    """The cost of tokens used to process the AI input (prompt) in USD (without cached input tokens).
+    """The total cost of all input tokens in USD (includes cached and cache creation tokens).
 
     Type: float
     Apply Scrubbing: manual
@@ -3482,13 +3521,26 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     GEN_AI_COST_OUTPUT_TOKENS: Literal["gen_ai.cost.output_tokens"] = (
         "gen_ai.cost.output_tokens"
     )
-    """The cost of tokens used for creating the AI output in USD (without reasoning tokens).
+    """The total cost of all output tokens in USD (includes reasoning tokens).
 
     Type: float
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 123.45
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__cost__reasoning__output_tokens.json
+    GEN_AI_COST_REASONING_OUTPUT_TOKENS: Literal[
+        "gen_ai.cost.reasoning.output_tokens"
+    ] = "gen_ai.cost.reasoning.output_tokens"
+    """The cost of reasoning output tokens in USD.
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 12.34
     """
 
     # Path: model/attributes/gen_ai/gen_ai__cost__total_tokens.json
@@ -11007,6 +11059,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "db.response.status_code": AttributeMetadata(
+        brief="Database response status code. The status code returned by the database. Usually it represents an error code, but may also represent partial success, warning, or differentiate between various types of successful outcomes.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="ORA-17002",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[462],
+                description="Added db.response.status_code attribute",
+            ),
+        ],
+    ),
     "db.sql.bindings": AttributeMetadata(
         brief="The array of query bindings.",
         type=AttributeType.STRING_ARRAY,
@@ -12277,8 +12344,46 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.4.0", prs=[250]),
         ],
     ),
+    "gen_ai.cost.cache_creation.input_tokens": AttributeMetadata(
+        brief="The cost of input tokens written to cache in USD.",
+        type=AttributeType.DOUBLE,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=12.34,
+        changelog=[
+            ChangelogEntry(
+                version="0.16.0",
+                description="Added gen_ai.cost.cache_creation.input_tokens attribute",
+            ),
+        ],
+        additional_context=[
+            "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.",
+            "Despite the name 'cost.cache_creation.input_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.cache_creation.input_tokens.",
+            "This is a subset of gen_ai.cost.input_tokens, not an independent cost. Do not sum this with gen_ai.cost.input_tokens — it is already included.",
+        ],
+    ),
+    "gen_ai.cost.cache_read.input_tokens": AttributeMetadata(
+        brief="The cost of cached input tokens in USD.",
+        type=AttributeType.DOUBLE,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=12.34,
+        changelog=[
+            ChangelogEntry(
+                version="0.16.0",
+                description="Added gen_ai.cost.cache_read.input_tokens attribute",
+            ),
+        ],
+        additional_context=[
+            "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.",
+            "Despite the name 'cost.cache_read.input_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.cache_read.input_tokens.",
+            "This is a subset of gen_ai.cost.input_tokens, not an independent cost. Do not sum this with gen_ai.cost.input_tokens — it is already included.",
+        ],
+    ),
     "gen_ai.cost.input_tokens": AttributeMetadata(
-        brief="The cost of tokens used to process the AI input (prompt) in USD (without cached input tokens).",
+        brief="The total cost of all input tokens in USD (includes cached and cache creation tokens).",
         type=AttributeType.DOUBLE,
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
@@ -12294,11 +12399,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         additional_context=[
             "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.",
             "Despite the name 'cost.input_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.input_tokens.",
-            "This is the cost of non-cached input tokens only. The cost of cached tokens is excluded from this value.",
+            "This is the total cost of all input tokens, including cached and cache creation tokens at their respective rates. For the cached portion, see gen_ai.cost.cache_read.input_tokens. For the cache creation portion, see gen_ai.cost.cache_creation.input_tokens.",
         ],
     ),
     "gen_ai.cost.output_tokens": AttributeMetadata(
-        brief="The cost of tokens used for creating the AI output in USD (without reasoning tokens).",
+        brief="The total cost of all output tokens in USD (includes reasoning tokens).",
         type=AttributeType.DOUBLE,
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
@@ -12314,7 +12419,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         additional_context=[
             "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.",
             "Despite the name 'cost.output_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.output_tokens.",
-            "This is the cost of non-reasoning output tokens only. The cost of reasoning tokens is excluded from this value.",
+            "This is the total cost of all output tokens, including reasoning tokens at their respective rate. For the reasoning portion, see gen_ai.cost.reasoning.output_tokens.",
+        ],
+    ),
+    "gen_ai.cost.reasoning.output_tokens": AttributeMetadata(
+        brief="The cost of reasoning output tokens in USD.",
+        type=AttributeType.DOUBLE,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=12.34,
+        changelog=[
+            ChangelogEntry(
+                version="0.16.0",
+                description="Added gen_ai.cost.reasoning.output_tokens attribute",
+            ),
+        ],
+        additional_context=[
+            "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.",
+            "Despite the name 'cost.reasoning.output_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.reasoning.output_tokens.",
+            "This is a subset of gen_ai.cost.output_tokens, not an independent cost. Do not sum this with gen_ai.cost.output_tokens — it is already included.",
         ],
     ),
     "gen_ai.cost.total_tokens": AttributeMetadata(
@@ -18125,6 +18249,7 @@ Attributes = TypedDict(
         "db.redis.connection": str,
         "db.redis.key": str,
         "db.redis.parameters": List[str],
+        "db.response.status_code": str,
         "db.sql.bindings": List[str],
         "db.statement": str,
         "db.stored_procedure.name": str,
@@ -18213,8 +18338,11 @@ Attributes = TypedDict(
         "gen_ai.context.utilization": float,
         "gen_ai.context.window_size": int,
         "gen_ai.conversation.id": str,
+        "gen_ai.cost.cache_creation.input_tokens": float,
+        "gen_ai.cost.cache_read.input_tokens": float,
         "gen_ai.cost.input_tokens": float,
         "gen_ai.cost.output_tokens": float,
+        "gen_ai.cost.reasoning.output_tokens": float,
         "gen_ai.cost.total_tokens": float,
         "gen_ai.embeddings.input": str,
         "gen_ai.function_id": str,

@@ -1,3 +1,9 @@
+## 0.15.1
+
+### Bug Fixes 🐛
+
+- (build/js) Add subpath export shims for legacy bundlers by @Lms24 in [#459](https://github.com/getsentry/sentry-conventions/pull/459)
+
 ## 0.15.0
 
 ### New Features ✨
