@@ -1,0 +1,18 @@
+{
+  "key": "sentry.segment.source",
+  "brief": "The name source of the segment span. Should only be set on segment spans.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "internal",
+  "example": "'route'",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [466],
+      "description": "Added sentry.segment.source attribute"
+    }
+  ]
+}

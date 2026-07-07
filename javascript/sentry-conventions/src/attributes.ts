@@ -12421,6 +12421,27 @@ export const SENTRY_SEGMENT_NAME = 'sentry.segment.name';
  */
 export type SENTRY_SEGMENT_NAME_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__segment__source.json
+
+/**
+ * The name source of the segment span. Should only be set on segment spans. `sentry.segment.source`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_SEGMENT_SOURCE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: internal
+ *
+ * @example "'route'"
+ */
+export const SENTRY_SEGMENT_SOURCE = 'sentry.segment.source';
+
+/**
+ * Type for {@link SENTRY_SEGMENT_SOURCE} sentry.segment.source
+ */
+export type SENTRY_SEGMENT_SOURCE_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__server_sample_rate.json
 
 /**
@@ -15407,6 +15428,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.segment.id': 'string',
   'sentry.segment_id': 'string',
   'sentry.segment.name': 'string',
+  'sentry.segment.source': 'string',
   'sentry.server_sample_rate': 'double',
   'sentry.source': 'string',
   'sentry.span.source': 'string',
@@ -16082,6 +16104,7 @@ export type AttributeName =
   | typeof SENTRY_SEGMENT_ID
   | typeof _SENTRY_SEGMENT_ID
   | typeof SENTRY_SEGMENT_NAME
+  | typeof SENTRY_SEGMENT_SOURCE
   | typeof SENTRY_SERVER_SAMPLE_RATE
   | typeof SENTRY_SOURCE
   | typeof SENTRY_SPAN_SOURCE
@@ -23767,6 +23790,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.1.0', prs: [104] },
     ],
   },
+  'sentry.segment.source': {
+    brief: 'The name source of the segment span. Should only be set on segment spans.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'internal',
+    example: "'route'",
+    changelog: [{ version: 'next', prs: [466], description: 'Added sentry.segment.source attribute' }],
+  },
   'sentry.server_sample_rate': {
     brief: 'Rate at which a span was sampled in Relay.',
     type: 'double',
@@ -25664,6 +25698,7 @@ export type Attributes = {
   [SENTRY_SEGMENT_ID]?: SENTRY_SEGMENT_ID_TYPE;
   [_SENTRY_SEGMENT_ID]?: _SENTRY_SEGMENT_ID_TYPE;
   [SENTRY_SEGMENT_NAME]?: SENTRY_SEGMENT_NAME_TYPE;
+  [SENTRY_SEGMENT_SOURCE]?: SENTRY_SEGMENT_SOURCE_TYPE;
   [SENTRY_SERVER_SAMPLE_RATE]?: SENTRY_SERVER_SAMPLE_RATE_TYPE;
   [SENTRY_SOURCE]?: SENTRY_SOURCE_TYPE;
   [SENTRY_SPAN_SOURCE]?: SENTRY_SPAN_SOURCE_TYPE;
