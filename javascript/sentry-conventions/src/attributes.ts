@@ -7609,6 +7609,29 @@ export const HTTP_REQUEST_RESPONSE_START = 'http.request.response_start';
  */
 export type HTTP_REQUEST_RESPONSE_START_TYPE = number;
 
+// Path: model/attributes/http/http__request__same_origin.json
+
+/**
+ * Indicates that a URL has the same origin as the current page's origin in the browser. `http.request.same_origin`
+ *
+ * Attribute Value Type: `boolean` {@link HTTP_REQUEST_SAME_ORIGIN_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link URL_SAME_ORIGIN} `url.same_origin`
+ *
+ * @example true
+ */
+export const HTTP_REQUEST_SAME_ORIGIN = 'http.request.same_origin';
+
+/**
+ * Type for {@link HTTP_REQUEST_SAME_ORIGIN} http.request.same_origin
+ */
+export type HTTP_REQUEST_SAME_ORIGIN_TYPE = boolean;
+
 // Path: model/attributes/http/http__request__secure_connection_start.json
 
 /**
@@ -13708,6 +13731,30 @@ export const URL_QUERY = 'url.query';
  */
 export type URL_QUERY_TYPE = string;
 
+// Path: model/attributes/url/url__same_origin.json
+
+/**
+ * Indicates that a URL has the same origin as the current page's origin in the browser. `url.same_origin`
+ *
+ * Attribute Value Type: `boolean` {@link URL_SAME_ORIGIN_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link HTTP_REQUEST_SAME_ORIGIN} `http.request.same_origin`
+ *
+ * @deprecated Use {@link HTTP_REQUEST_SAME_ORIGIN} (http.request.same_origin) instead - This attribute is being deprecated in favor of http.request.same_origin.
+ * @example true
+ */
+export const URL_SAME_ORIGIN = 'url.same_origin';
+
+/**
+ * Type for {@link URL_SAME_ORIGIN} url.same_origin
+ */
+export type URL_SAME_ORIGIN_TYPE = boolean;
+
 // Path: model/attributes/url/url__scheme.json
 
 /**
@@ -15188,6 +15235,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'http.request.resend_count': 'integer',
   'http.request.response_end': 'double',
   'http.request.response_start': 'double',
+  'http.request.same_origin': 'boolean',
   'http.request.secure_connection_start': 'double',
   'http.request.time_to_first_byte': 'double',
   'http.request.worker_start': 'double',
@@ -15466,6 +15514,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'url.path.parameter.<key>': 'string',
   'url.port': 'integer',
   'url.query': 'string',
+  'url.same_origin': 'boolean',
   'url.scheme': 'string',
   'url.template': 'string',
   'user_agent.original': 'string',
@@ -15863,6 +15912,7 @@ export type AttributeName =
   | typeof HTTP_REQUEST_RESEND_COUNT
   | typeof HTTP_REQUEST_RESPONSE_END
   | typeof HTTP_REQUEST_RESPONSE_START
+  | typeof HTTP_REQUEST_SAME_ORIGIN
   | typeof HTTP_REQUEST_SECURE_CONNECTION_START
   | typeof HTTP_REQUEST_TIME_TO_FIRST_BYTE
   | typeof HTTP_REQUEST_WORKER_START
@@ -16141,6 +16191,7 @@ export type AttributeName =
   | typeof URL_PATH_PARAMETER_KEY
   | typeof URL_PORT
   | typeof URL_QUERY
+  | typeof URL_SAME_ORIGIN
   | typeof URL_SCHEME
   | typeof URL_TEMPLATE
   | typeof USER_AGENT_ORIGINAL
@@ -20907,6 +20958,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1732829555.7,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
+  'http.request.same_origin': {
+    brief: "Indicates that a URL has the same origin as the current page's origin in the browser.",
+    type: 'boolean',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: true,
+    aliases: ['url.same_origin'],
+    changelog: [{ version: 'next', prs: [456], description: 'Added http.request.same_origin attribute' }],
+  },
   'http.request.secure_connection_start': {
     brief:
       'The UNIX timestamp representing the time immediately before the browser starts the handshake process to secure the current connection. If a secure connection is not used, the property returns zero.',
@@ -24522,6 +24585,28 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'foo=bar&bar=baz',
     changelog: [{ version: '0.0.0' }],
   },
+  'url.same_origin': {
+    brief: "Indicates that a URL has the same origin as the current page's origin in the browser.",
+    type: 'boolean',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: true,
+    deprecation: {
+      replacement: 'http.request.same_origin',
+      reason: 'This attribute is being deprecated in favor of http.request.same_origin.',
+    },
+    aliases: ['http.request.same_origin'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [456],
+        description: 'Added url.same_origin attribute, deprecated in favor of http.request.same_origin',
+      },
+    ],
+  },
   'url.scheme': {
     brief: 'The URI scheme component identifying the used protocol.',
     type: 'string',
@@ -25445,6 +25530,7 @@ export type Attributes = {
   [HTTP_REQUEST_RESEND_COUNT]?: HTTP_REQUEST_RESEND_COUNT_TYPE;
   [HTTP_REQUEST_RESPONSE_END]?: HTTP_REQUEST_RESPONSE_END_TYPE;
   [HTTP_REQUEST_RESPONSE_START]?: HTTP_REQUEST_RESPONSE_START_TYPE;
+  [HTTP_REQUEST_SAME_ORIGIN]?: HTTP_REQUEST_SAME_ORIGIN_TYPE;
   [HTTP_REQUEST_SECURE_CONNECTION_START]?: HTTP_REQUEST_SECURE_CONNECTION_START_TYPE;
   [HTTP_REQUEST_TIME_TO_FIRST_BYTE]?: HTTP_REQUEST_TIME_TO_FIRST_BYTE_TYPE;
   [HTTP_REQUEST_WORKER_START]?: HTTP_REQUEST_WORKER_START_TYPE;
@@ -25723,6 +25809,7 @@ export type Attributes = {
   [URL_PATH_PARAMETER_KEY]?: URL_PATH_PARAMETER_KEY_TYPE;
   [URL_PORT]?: URL_PORT_TYPE;
   [URL_QUERY]?: URL_QUERY_TYPE;
+  [URL_SAME_ORIGIN]?: URL_SAME_ORIGIN_TYPE;
   [URL_SCHEME]?: URL_SCHEME_TYPE;
   [URL_TEMPLATE]?: URL_TEMPLATE_TYPE;
   [USER_AGENT_ORIGINAL]?: USER_AGENT_ORIGINAL_TYPE;

@@ -1,0 +1,24 @@
+{
+  "key": "url.same_origin",
+  "brief": "Indicates that a URL has the same origin as the current page's origin in the browser.",
+  "type": "boolean",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "example": true,
+  "alias": ["http.request.same_origin"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "http.request.same_origin",
+    "reason": "This attribute is being deprecated in favor of http.request.same_origin."
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [456],
+      "description": "Added url.same_origin attribute, deprecated in favor of http.request.same_origin"
+    }
+  ]
+}
