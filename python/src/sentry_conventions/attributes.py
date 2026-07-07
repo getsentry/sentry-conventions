@@ -16641,7 +16641,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(
                 version="next",
                 prs=[466],
-                description="Added sentry.segment.source attribute",
+                description="Added sentry.segment.name.source",
             ),
         ],
     ),

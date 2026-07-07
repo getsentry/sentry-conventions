@@ -23800,7 +23800,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'internal',
     example: "'route'",
-    changelog: [{ version: 'next', prs: [466], description: 'Added sentry.segment.source attribute' }],
+    changelog: [{ version: 'next', prs: [466], description: 'Added sentry.segment.name.source' }],
   },
   'sentry.server_sample_rate': {
     brief: 'Rate at which a span was sampled in Relay.',
