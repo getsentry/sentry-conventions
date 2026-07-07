@@ -7234,8 +7234,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__segment__source.json
-    SENTRY_SEGMENT_SOURCE: Literal["sentry.segment.source"] = "sentry.segment.source"
-    """The name source of the segment span. Should only be set on segment spans.
+    SENTRY_SEGMENT_NAME_SOURCE: Literal["sentry.segment.name.source"] = (
+        "sentry.segment.name.source"
+    )
+    """The name source of the segment span. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.
 
     Type: str
     Apply Scrubbing: manual
@@ -16628,8 +16630,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[104]),
         ],
     ),
-    "sentry.segment.source": AttributeMetadata(
-        brief="The name source of the segment span. Should only be set on segment spans.",
+    "sentry.segment.name.source": AttributeMetadata(
+        brief="The name source of the segment span. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.",
         type=AttributeType.STRING,
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
@@ -18602,7 +18604,7 @@ Attributes = TypedDict(
         "sentry.sdk.version": str,
         "sentry.segment.id": str,
         "sentry.segment.name": str,
-        "sentry.segment.source": str,
+        "sentry.segment.name.source": str,
         "sentry.segment_id": str,
         "sentry.server_sample_rate": float,
         "sentry.source": str,
