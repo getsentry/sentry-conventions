@@ -1,6 +1,6 @@
 {
   "key": "grpc.error.error_info.metadata.<key>",
-  "brief": "Additional structured metadata attached to a google.rpc.ErrorInfo error detail, with <key> being the metadata key name. SDKs should only send this attribute when sendDefaultPii is enabled.",
+  "brief": "Additional structured metadata attached to a google.rpc.ErrorInfo error detail, with <key> being the metadata key name. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.",
   "has_dynamic_suffix": true,
   "type": "string",
   "apply_scrubbing": {

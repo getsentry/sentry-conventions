@@ -4315,7 +4315,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES: Literal[
         "grpc.error.debug_info.stack_entries"
     ] = "grpc.error.debug_info.stack_entries"
-    """The server-side stack trace entries from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled.
+    """The server-side stack trace entries from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.
 
     Type: List[str]
     Apply Scrubbing: auto
@@ -4341,7 +4341,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     GRPC_ERROR_ERROR_INFO_METADATA_KEY: Literal[
         "grpc.error.error_info.metadata.<key>"
     ] = "grpc.error.error_info.metadata.<key>"
-    """Additional structured metadata attached to a google.rpc.ErrorInfo error detail, with <key> being the metadata key name. SDKs should only send this attribute when sendDefaultPii is enabled.
+    """Additional structured metadata attached to a google.rpc.ErrorInfo error detail, with <key> being the metadata key name. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.
 
     Type: str
     Apply Scrubbing: auto
@@ -4368,7 +4368,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     GRPC_ERROR_PRECONDITION_FAILURE_VIOLATIONS: Literal[
         "grpc.error.precondition_failure.violations"
     ] = "grpc.error.precondition_failure.violations"
-    """The individual precondition violations from a google.rpc.PreconditionFailure error detail. Each entry is a JSON-encoded object with type, subject, and description keys. SDKs should only send this attribute when sendDefaultPii is enabled, since violation subjects may identify specific resources or users.
+    """The individual precondition violations from a google.rpc.PreconditionFailure error detail. Each entry is a JSON-encoded object with type, subject, and description keys. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly, since violation subjects may identify specific resources or users.
 
     Type: List[str]
     Apply Scrubbing: auto
@@ -4381,7 +4381,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     GRPC_ERROR_QUOTA_FAILURE_VIOLATIONS: Literal[
         "grpc.error.quota_failure.violations"
     ] = "grpc.error.quota_failure.violations"
-    """The individual quota violations from a google.rpc.QuotaFailure error detail. Each entry is a JSON-encoded object with subject, description, api_service, quota_metric, quota_id, quota_dimensions, quota_value, and (optional) future_quota_value keys, mirroring google.rpc.QuotaFailure.Violation. SDKs should only send this attribute when sendDefaultPii is enabled, since violation subjects may identify specific resources or users.
+    """The individual quota violations from a google.rpc.QuotaFailure error detail. Each entry is a JSON-encoded object with subject, description, api_service, quota_metric, quota_id, quota_dimensions, quota_value, and (optional) future_quota_value keys, mirroring google.rpc.QuotaFailure.Violation. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly, since violation subjects may identify specific resources or users.
 
     Type: List[str]
     Apply Scrubbing: auto
@@ -4407,7 +4407,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     GRPC_ERROR_RESOURCE_INFO_OWNER: Literal["grpc.error.resource_info.owner"] = (
         "grpc.error.resource_info.owner"
     )
-    """The owner of the resource being accessed (e.g. project or account owning it), from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled.
+    """The owner of the resource being accessed (e.g. project or account owning it), from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.
 
     Type: str
     Apply Scrubbing: auto
@@ -4420,7 +4420,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME: Literal[
         "grpc.error.resource_info.resource_name"
     ] = "grpc.error.resource_info.resource_name"
-    """The name of the resource being accessed, from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled.
+    """The name of the resource being accessed, from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.
 
     Type: str
     Apply Scrubbing: auto
@@ -4442,10 +4442,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "database"
     """
 
-    # Path: model/attributes/grpc/grpc__error__retry_info__retry_delay_in_ms.json
-    GRPC_ERROR_RETRY_INFO_RETRY_DELAY_IN_MS: Literal[
-        "grpc.error.retry_info.retry_delay_in_ms"
-    ] = "grpc.error.retry_info.retry_delay_in_ms"
+    # Path: model/attributes/grpc/grpc__error__retry_info__retry_delay_ms.json
+    GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS: Literal[
+        "grpc.error.retry_info.retry_delay_ms"
+    ] = "grpc.error.retry_info.retry_delay_ms"
     """How long the client should wait before retrying the gRPC call, in milliseconds, from the google.rpc.RetryInfo error detail.
 
     Type: int
@@ -13526,7 +13526,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "grpc.error.debug_info.stack_entries": AttributeMetadata(
-        brief="The server-side stack trace entries from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled.",
+        brief="The server-side stack trace entries from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.",
         type=AttributeType.STRING_ARRAY,
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
@@ -13559,7 +13559,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "grpc.error.error_info.metadata.<key>": AttributeMetadata(
-        brief="Additional structured metadata attached to a google.rpc.ErrorInfo error detail, with <key> being the metadata key name. SDKs should only send this attribute when sendDefaultPii is enabled.",
+        brief="Additional structured metadata attached to a google.rpc.ErrorInfo error detail, with <key> being the metadata key name. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.",
         type=AttributeType.STRING,
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
@@ -13590,7 +13590,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "grpc.error.precondition_failure.violations": AttributeMetadata(
-        brief="The individual precondition violations from a google.rpc.PreconditionFailure error detail. Each entry is a JSON-encoded object with type, subject, and description keys. SDKs should only send this attribute when sendDefaultPii is enabled, since violation subjects may identify specific resources or users.",
+        brief="The individual precondition violations from a google.rpc.PreconditionFailure error detail. Each entry is a JSON-encoded object with type, subject, and description keys. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly, since violation subjects may identify specific resources or users.",
         type=AttributeType.STRING_ARRAY,
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
@@ -13607,7 +13607,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "grpc.error.quota_failure.violations": AttributeMetadata(
-        brief="The individual quota violations from a google.rpc.QuotaFailure error detail. Each entry is a JSON-encoded object with subject, description, api_service, quota_metric, quota_id, quota_dimensions, quota_value, and (optional) future_quota_value keys, mirroring google.rpc.QuotaFailure.Violation. SDKs should only send this attribute when sendDefaultPii is enabled, since violation subjects may identify specific resources or users.",
+        brief="The individual quota violations from a google.rpc.QuotaFailure error detail. Each entry is a JSON-encoded object with subject, description, api_service, quota_metric, quota_id, quota_dimensions, quota_value, and (optional) future_quota_value keys, mirroring google.rpc.QuotaFailure.Violation. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly, since violation subjects may identify specific resources or users.",
         type=AttributeType.STRING_ARRAY,
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
@@ -13639,7 +13639,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "grpc.error.resource_info.owner": AttributeMetadata(
-        brief="The owner of the resource being accessed (e.g. project or account owning it), from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled.",
+        brief="The owner of the resource being accessed (e.g. project or account owning it), from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.",
         type=AttributeType.STRING,
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
@@ -13654,7 +13654,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "grpc.error.resource_info.resource_name": AttributeMetadata(
-        brief="The name of the resource being accessed, from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled.",
+        brief="The name of the resource being accessed, from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.",
         type=AttributeType.STRING,
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
@@ -13683,7 +13683,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
-    "grpc.error.retry_info.retry_delay_in_ms": AttributeMetadata(
+    "grpc.error.retry_info.retry_delay_ms": AttributeMetadata(
         brief="How long the client should wait before retrying the gRPC call, in milliseconds, from the google.rpc.RetryInfo error detail.",
         type=AttributeType.INTEGER,
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -13694,7 +13694,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(
                 version="next",
                 prs=[460],
-                description="Added grpc.error.retry_info.retry_delay_in_ms attribute",
+                description="Added grpc.error.retry_info.retry_delay_ms attribute",
             ),
         ],
     ),
@@ -18722,7 +18722,7 @@ Attributes = TypedDict(
         "grpc.error.resource_info.owner": str,
         "grpc.error.resource_info.resource_name": str,
         "grpc.error.resource_info.resource_type": str,
-        "grpc.error.retry_info.retry_delay_in_ms": int,
+        "grpc.error.retry_info.retry_delay_ms": int,
         "hardwareConcurrency": str,
         "http.client_ip": str,
         "http.decoded_response_content_length": int,

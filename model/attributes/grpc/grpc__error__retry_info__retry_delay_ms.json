@@ -1,5 +1,5 @@
 {
-  "key": "grpc.error.retry_info.retry_delay_in_ms",
+  "key": "grpc.error.retry_info.retry_delay_ms",
   "brief": "How long the client should wait before retrying the gRPC call, in milliseconds, from the google.rpc.RetryInfo error detail.",
   "type": "integer",
   "apply_scrubbing": {
@@ -12,7 +12,7 @@
     {
       "version": "next",
       "prs": [460],
-      "description": "Added grpc.error.retry_info.retry_delay_in_ms attribute"
+      "description": "Added grpc.error.retry_info.retry_delay_ms attribute"
     }
   ]
 }

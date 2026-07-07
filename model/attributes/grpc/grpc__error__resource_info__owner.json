@@ -1,6 +1,6 @@
 {
   "key": "grpc.error.resource_info.owner",
-  "brief": "The owner of the resource being accessed (e.g. project or account owning it), from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled.",
+  "brief": "The owner of the resource being accessed (e.g. project or account owning it), from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.",
   "type": "string",
   "apply_scrubbing": {
     "key": "auto"

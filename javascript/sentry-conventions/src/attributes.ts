@@ -7149,7 +7149,7 @@ export type GRPC_ERROR_DEBUG_INFO_DETAIL_TYPE = string;
 // Path: model/attributes/grpc/grpc__error__debug_info__stack_entries.json
 
 /**
- * The server-side stack trace entries from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled. `grpc.error.debug_info.stack_entries`
+ * The server-side stack trace entries from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly. `grpc.error.debug_info.stack_entries`
  *
  * Attribute Value Type: `Array<string>` {@link GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES_TYPE}
  *
@@ -7191,7 +7191,7 @@ export type GRPC_ERROR_ERROR_INFO_DOMAIN_TYPE = string;
 // Path: model/attributes/grpc/grpc__error__error_info__metadata__[key].json
 
 /**
- * Additional structured metadata attached to a google.rpc.ErrorInfo error detail, with <key> being the metadata key name. SDKs should only send this attribute when sendDefaultPii is enabled. `grpc.error.error_info.metadata.<key>`
+ * Additional structured metadata attached to a google.rpc.ErrorInfo error detail, with <key> being the metadata key name. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly. `grpc.error.error_info.metadata.<key>`
  *
  * Attribute Value Type: `string` {@link GRPC_ERROR_ERROR_INFO_METADATA_KEY_TYPE}
  *
@@ -7235,7 +7235,7 @@ export type GRPC_ERROR_ERROR_INFO_REASON_TYPE = string;
 // Path: model/attributes/grpc/grpc__error__precondition_failure__violations.json
 
 /**
- * The individual precondition violations from a google.rpc.PreconditionFailure error detail. Each entry is a JSON-encoded object with type, subject, and description keys. SDKs should only send this attribute when sendDefaultPii is enabled, since violation subjects may identify specific resources or users. `grpc.error.precondition_failure.violations`
+ * The individual precondition violations from a google.rpc.PreconditionFailure error detail. Each entry is a JSON-encoded object with type, subject, and description keys. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly, since violation subjects may identify specific resources or users. `grpc.error.precondition_failure.violations`
  *
  * Attribute Value Type: `Array<string>` {@link GRPC_ERROR_PRECONDITION_FAILURE_VIOLATIONS_TYPE}
  *
@@ -7256,7 +7256,7 @@ export type GRPC_ERROR_PRECONDITION_FAILURE_VIOLATIONS_TYPE = Array<string>;
 // Path: model/attributes/grpc/grpc__error__quota_failure__violations.json
 
 /**
- * The individual quota violations from a google.rpc.QuotaFailure error detail. Each entry is a JSON-encoded object with subject, description, api_service, quota_metric, quota_id, quota_dimensions, quota_value, and (optional) future_quota_value keys, mirroring google.rpc.QuotaFailure.Violation. SDKs should only send this attribute when sendDefaultPii is enabled, since violation subjects may identify specific resources or users. `grpc.error.quota_failure.violations`
+ * The individual quota violations from a google.rpc.QuotaFailure error detail. Each entry is a JSON-encoded object with subject, description, api_service, quota_metric, quota_id, quota_dimensions, quota_value, and (optional) future_quota_value keys, mirroring google.rpc.QuotaFailure.Violation. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly, since violation subjects may identify specific resources or users. `grpc.error.quota_failure.violations`
  *
  * Attribute Value Type: `Array<string>` {@link GRPC_ERROR_QUOTA_FAILURE_VIOLATIONS_TYPE}
  *
@@ -7298,7 +7298,7 @@ export type GRPC_ERROR_RESOURCE_INFO_DESCRIPTION_TYPE = string;
 // Path: model/attributes/grpc/grpc__error__resource_info__owner.json
 
 /**
- * The owner of the resource being accessed (e.g. project or account owning it), from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled. `grpc.error.resource_info.owner`
+ * The owner of the resource being accessed (e.g. project or account owning it), from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly. `grpc.error.resource_info.owner`
  *
  * Attribute Value Type: `string` {@link GRPC_ERROR_RESOURCE_INFO_OWNER_TYPE}
  *
@@ -7319,7 +7319,7 @@ export type GRPC_ERROR_RESOURCE_INFO_OWNER_TYPE = string;
 // Path: model/attributes/grpc/grpc__error__resource_info__resource_name.json
 
 /**
- * The name of the resource being accessed, from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled. `grpc.error.resource_info.resource_name`
+ * The name of the resource being accessed, from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly. `grpc.error.resource_info.resource_name`
  *
  * Attribute Value Type: `string` {@link GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME_TYPE}
  *
@@ -7358,12 +7358,12 @@ export const GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE = 'grpc.error.resource_info.
  */
 export type GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE_TYPE = string;
 
-// Path: model/attributes/grpc/grpc__error__retry_info__retry_delay_in_ms.json
+// Path: model/attributes/grpc/grpc__error__retry_info__retry_delay_ms.json
 
 /**
- * How long the client should wait before retrying the gRPC call, in milliseconds, from the google.rpc.RetryInfo error detail. `grpc.error.retry_info.retry_delay_in_ms`
+ * How long the client should wait before retrying the gRPC call, in milliseconds, from the google.rpc.RetryInfo error detail. `grpc.error.retry_info.retry_delay_ms`
  *
- * Attribute Value Type: `number` {@link GRPC_ERROR_RETRY_INFO_RETRY_DELAY_IN_MS_TYPE}
+ * Attribute Value Type: `number` {@link GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS_TYPE}
  *
  * Apply Scrubbing: manual
  *
@@ -7372,12 +7372,12 @@ export type GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE_TYPE = string;
  *
  * @example 5000
  */
-export const GRPC_ERROR_RETRY_INFO_RETRY_DELAY_IN_MS = 'grpc.error.retry_info.retry_delay_in_ms';
+export const GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS = 'grpc.error.retry_info.retry_delay_ms';
 
 /**
- * Type for {@link GRPC_ERROR_RETRY_INFO_RETRY_DELAY_IN_MS} grpc.error.retry_info.retry_delay_in_ms
+ * Type for {@link GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS} grpc.error.retry_info.retry_delay_ms
  */
-export type GRPC_ERROR_RETRY_INFO_RETRY_DELAY_IN_MS_TYPE = number;
+export type GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS_TYPE = number;
 
 // Path: model/attributes/hardwareConcurrency.json
 
@@ -15452,7 +15452,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'grpc.error.resource_info.owner': 'string',
   'grpc.error.resource_info.resource_name': 'string',
   'grpc.error.resource_info.resource_type': 'string',
-  'grpc.error.retry_info.retry_delay_in_ms': 'integer',
+  'grpc.error.retry_info.retry_delay_ms': 'integer',
   hardwareConcurrency: 'string',
   'http.client_ip': 'string',
   'http.decoded_response_content_length': 'integer',
@@ -16140,7 +16140,7 @@ export type AttributeName =
   | typeof GRPC_ERROR_RESOURCE_INFO_OWNER
   | typeof GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME
   | typeof GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE
-  | typeof GRPC_ERROR_RETRY_INFO_RETRY_DELAY_IN_MS
+  | typeof GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS
   | typeof HARDWARECONCURRENCY
   | typeof HTTP_CLIENT_IP
   | typeof HTTP_DECODED_RESPONSE_CONTENT_LENGTH
@@ -20931,7 +20931,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'grpc.error.debug_info.stack_entries': {
     brief:
-      'The server-side stack trace entries from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled.',
+      'The server-side stack trace entries from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.',
     type: 'string[]',
     applyScrubbing: {
       key: 'auto',
@@ -20954,7 +20954,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'grpc.error.error_info.metadata.<key>': {
     brief:
-      'Additional structured metadata attached to a google.rpc.ErrorInfo error detail, with <key> being the metadata key name. SDKs should only send this attribute when sendDefaultPii is enabled.',
+      'Additional structured metadata attached to a google.rpc.ErrorInfo error detail, with <key> being the metadata key name. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
@@ -20979,7 +20979,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'grpc.error.precondition_failure.violations': {
     brief:
-      'The individual precondition violations from a google.rpc.PreconditionFailure error detail. Each entry is a JSON-encoded object with type, subject, and description keys. SDKs should only send this attribute when sendDefaultPii is enabled, since violation subjects may identify specific resources or users.',
+      'The individual precondition violations from a google.rpc.PreconditionFailure error detail. Each entry is a JSON-encoded object with type, subject, and description keys. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly, since violation subjects may identify specific resources or users.',
     type: 'string[]',
     applyScrubbing: {
       key: 'auto',
@@ -20993,7 +20993,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'grpc.error.quota_failure.violations': {
     brief:
-      'The individual quota violations from a google.rpc.QuotaFailure error detail. Each entry is a JSON-encoded object with subject, description, api_service, quota_metric, quota_id, quota_dimensions, quota_value, and (optional) future_quota_value keys, mirroring google.rpc.QuotaFailure.Violation. SDKs should only send this attribute when sendDefaultPii is enabled, since violation subjects may identify specific resources or users.',
+      'The individual quota violations from a google.rpc.QuotaFailure error detail. Each entry is a JSON-encoded object with subject, description, api_service, quota_metric, quota_id, quota_dimensions, quota_value, and (optional) future_quota_value keys, mirroring google.rpc.QuotaFailure.Violation. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly, since violation subjects may identify specific resources or users.',
     type: 'string[]',
     applyScrubbing: {
       key: 'auto',
@@ -21019,7 +21019,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'grpc.error.resource_info.owner': {
     brief:
-      'The owner of the resource being accessed (e.g. project or account owning it), from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled.',
+      'The owner of the resource being accessed (e.g. project or account owning it), from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
@@ -21031,7 +21031,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'grpc.error.resource_info.resource_name': {
     brief:
-      'The name of the resource being accessed, from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled.',
+      'The name of the resource being accessed, from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
@@ -21052,7 +21052,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'database',
     changelog: [{ version: 'next', prs: [460], description: 'Added grpc.error.resource_info.resource_type attribute' }],
   },
-  'grpc.error.retry_info.retry_delay_in_ms': {
+  'grpc.error.retry_info.retry_delay_ms': {
     brief:
       'How long the client should wait before retrying the gRPC call, in milliseconds, from the google.rpc.RetryInfo error detail.',
     type: 'integer',
@@ -21062,9 +21062,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 5000,
-    changelog: [
-      { version: 'next', prs: [460], description: 'Added grpc.error.retry_info.retry_delay_in_ms attribute' },
-    ],
+    changelog: [{ version: 'next', prs: [460], description: 'Added grpc.error.retry_info.retry_delay_ms attribute' }],
   },
   hardwareConcurrency: {
     brief: 'The number of logical CPU cores available.',
@@ -25900,7 +25898,7 @@ export type Attributes = {
   [GRPC_ERROR_RESOURCE_INFO_OWNER]?: GRPC_ERROR_RESOURCE_INFO_OWNER_TYPE;
   [GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME]?: GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME_TYPE;
   [GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE]?: GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE_TYPE;
-  [GRPC_ERROR_RETRY_INFO_RETRY_DELAY_IN_MS]?: GRPC_ERROR_RETRY_INFO_RETRY_DELAY_IN_MS_TYPE;
+  [GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS]?: GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS_TYPE;
   [HARDWARECONCURRENCY]?: HARDWARECONCURRENCY_TYPE;
   [HTTP_CLIENT_IP]?: HTTP_CLIENT_IP_TYPE;
   [HTTP_DECODED_RESPONSE_CONTENT_LENGTH]?: HTTP_DECODED_RESPONSE_CONTENT_LENGTH_TYPE;
