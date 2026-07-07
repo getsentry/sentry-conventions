@@ -1,0 +1,45 @@
+{
+  "id": "gen_ai_request_messages_to_input_messages",
+  "brief": "Transform deprecated gen_ai.request.messages values into the newer gen_ai.input.messages format.",
+  "inputs": [
+    {
+      "attribute": "gen_ai.request.messages",
+      "brief": "Deprecated request messages attribute to transform."
+    }
+  ],
+  "outputs": [
+    {
+      "attribute": "gen_ai.input.messages",
+      "brief": "Normalized input messages attribute."
+    }
+  ],
+  "actions": [
+    "If gen_ai.input.messages is already present, keep it and do not overwrite it.",
+    "Read gen_ai.request.messages as the source value.",
+    "Convert each message object's content field to parts.",
+    "Convert string content to a text part with type=\"text\" and content set to the string.",
+    "Preserve message fields that are not renamed.",
+    "Write the transformed messages to gen_ai.input.messages.",
+    "Remove gen_ai.request.messages once the deprecated attribute is normalized."
+  ],
+  "examples": [
+    {
+      "name": "message content string",
+      "input": {
+        "gen_ai.request.messages": "[{\"role\":\"user\",\"content\":\"hello\"}]"
+      },
+      "output": {
+        "gen_ai.input.messages": "[{\"role\":\"user\",\"parts\":[{\"type\":\"text\",\"content\":\"hello\"}]}]"
+      }
+    },
+    {
+      "name": "message content parts",
+      "input": {
+        "gen_ai.request.messages": "[{\"role\":\"user\",\"content\":[{\"type\":\"text\",\"text\":\"hello\"}]}]"
+      },
+      "output": {
+        "gen_ai.input.messages": "[{\"role\":\"user\",\"parts\":[{\"type\":\"text\",\"text\":\"hello\",\"content\":\"hello\"}]}]"
+      }
+    }
+  ]
+}

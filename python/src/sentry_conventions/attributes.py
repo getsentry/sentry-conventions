@@ -46,6 +46,7 @@ class ApplyScrubbingInfo:
 class DeprecationStatus(Enum):
     BACKFILL = "backfill"
     NORMALIZE = "normalize"
+    TRANSFORM = "transform"
 
 
 @dataclass
@@ -55,6 +56,7 @@ class DeprecationInfo:
     replacement: Optional[str] = None
     reason: Optional[str] = None
     status: Optional[DeprecationStatus] = None
+    transformation: Optional[str] = None
 
 
 @dataclass
@@ -12614,7 +12616,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example='[{"role": "system", "content": "Generate a random number."}, {"role": "user", "content": [{"text": "Generate a random number between 0 and 10.", "type": "text"}]}, {"role": "tool", "content": {"toolCallId": "1", "toolName": "Weather", "output": "rainy"}}]',
         deprecation=DeprecationInfo(
-            replacement="gen_ai.input.messages", status=DeprecationStatus.NORMALIZE
+            replacement="gen_ai.input.messages",
+            status=DeprecationStatus.TRANSFORM,
+            transformation="gen_ai_request_messages_to_input_messages",
         ),
         aliases=["ai.input_messages"],
         changelog=[
@@ -12769,7 +12773,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example='["The weather in Paris is rainy and overcast, with temperatures around 57°F", "The weather in London is sunny and warm, with temperatures around 65°F"]',
         deprecation=DeprecationInfo(
-            replacement="gen_ai.output.messages", status=DeprecationStatus.NORMALIZE
+            replacement="gen_ai.output.messages",
+            status=DeprecationStatus.TRANSFORM,
+            transformation="gen_ai_response_to_output_messages",
         ),
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[221]),
@@ -12833,7 +12839,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example='[{"name": "get_weather", "arguments": {"location": "Paris"}}]',
         deprecation=DeprecationInfo(
-            replacement="gen_ai.output.messages", status=DeprecationStatus.NORMALIZE
+            replacement="gen_ai.output.messages",
+            status=DeprecationStatus.TRANSFORM,
+            transformation="gen_ai_response_to_output_messages",
         ),
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[221]),
