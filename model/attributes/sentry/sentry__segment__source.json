@@ -1,6 +1,6 @@
 {
-  "key": "sentry.segment.source",
-  "brief": "The name source of the segment span. Should only be set on segment spans.",
+  "key": "sentry.segment.name.source",
+  "brief": "The name source of the segment span. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.",
   "type": "string",
   "apply_scrubbing": {
     "key": "manual"
