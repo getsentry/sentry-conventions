@@ -6224,6 +6224,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "/users/:id"
     """
 
+    # Path: model/attributes/navigation/navigation__route__id.json
+    NAVIGATION_ROUTE_ID: Literal["navigation.route.id"] = "navigation.route.id"
+    """The identifier of the matched client-side route, as assigned by the routing framework (e.g., vue-router name, react-router id).
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Example: "AboutView"
+    """
+
     # Path: model/attributes/navigation/navigation__type.json
     NAVIGATION_TYPE: Literal["navigation.type"] = "navigation.type"
     """The type of navigation done by a client-side router.
@@ -16269,6 +16280,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "navigation.route.id": AttributeMetadata(
+        brief="The identifier of the matched client-side route, as assigned by the routing framework (e.g., vue-router name, react-router id).",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="AboutView",
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added navigation.route.id attribute"
+            ),
+        ],
+    ),
     "navigation.type": AttributeMetadata(
         brief="The type of navigation done by a client-side router.",
         type=AttributeType.STRING,
@@ -19985,6 +20009,7 @@ Attributes = TypedDict(
         "method": str,
         "middleware.name": str,
         "navigation.origin": str,
+        "navigation.route.id": str,
         "navigation.type": str,
         "nel.elapsed_time": int,
         "nel.phase": str,
