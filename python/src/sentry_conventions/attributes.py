@@ -5569,6 +5569,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 839
     """
 
+    # Path: model/attributes/messaging/messaging__message__conversation_id.json
+    MESSAGING_MESSAGE_CONVERSATION_ID: Literal["messaging.message.conversation_id"] = (
+        "messaging.message.conversation_id"
+    )
+    """The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID".
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "MyConversationId"
+    """
+
     # Path: model/attributes/messaging/messaging__message__envelope__size.json
     MESSAGING_MESSAGE_ENVELOPE_SIZE: Literal["messaging.message.envelope.size"] = (
         "messaging.message.envelope.size"
@@ -5643,6 +5656,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Example: "create"
+    """
+
+    # Path: model/attributes/messaging/messaging__rabbitmq__destination__routing_key.json
+    MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY: Literal[
+        "messaging.rabbitmq.destination.routing_key"
+    ] = "messaging.rabbitmq.destination.routing_key"
+    """RabbitMQ message routing key.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "myKey"
     """
 
     # Path: model/attributes/messaging/messaging__system.json
@@ -14835,6 +14861,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "messaging.message.conversation_id": AttributeMetadata(
+        brief='The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID".',
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="MyConversationId",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[468],
+                description="Added messaging.message.conversation_id attribute",
+            ),
+        ],
+    ),
     "messaging.message.envelope.size": AttributeMetadata(
         brief="The size of the message body and metadata in bytes.",
         type=AttributeType.INTEGER,
@@ -14907,6 +14948,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="create",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[51, 127]),
+        ],
+    ),
+    "messaging.rabbitmq.destination.routing_key": AttributeMetadata(
+        brief="RabbitMQ message routing key.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="myKey",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[468],
+                description="Added messaging.rabbitmq.destination.routing_key attribute",
+            ),
         ],
     ),
     "messaging.system": AttributeMetadata(
@@ -18503,12 +18559,14 @@ Attributes = TypedDict(
         "messaging.destination.connection": str,
         "messaging.destination.name": str,
         "messaging.message.body.size": int,
+        "messaging.message.conversation_id": str,
         "messaging.message.envelope.size": int,
         "messaging.message.id": str,
         "messaging.message.receive.latency": int,
         "messaging.message.retry.count": int,
         "messaging.operation.name": str,
         "messaging.operation.type": str,
+        "messaging.rabbitmq.destination.routing_key": str,
         "messaging.system": str,
         "method": str,
         "middleware.name": str,
