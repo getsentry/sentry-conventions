@@ -43,8 +43,8 @@
       "description": "Processing a message from a Celery queue."
     },
     {
-      "name": "queue.task.rq",
-      "description": "Processing a message from an RQ queue."
+      "name": "queue.task.dramatiq",
+      "description": "Publishing a message from a Dramatiq queue."
     },
     {
       "name": "queue.submit.huey",
@@ -55,8 +55,8 @@
       "description": "Processing a message from a Huey instance."
     },
     {
-      "name": "queue.task.dramatiq",
-      "description": "Publishing a message from a Dramatiq queue."
+      "name": "queue.task.rq",
+      "description": "Processing a message from an RQ queue."
     }
   ]
 }
