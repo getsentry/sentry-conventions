@@ -260,6 +260,9 @@ class _AttributeNamesMeta(type):
         "SENTRY_REPORT_EVENT",
         "_SENTRY_SEGMENT_ID",
         "SENTRY_SOURCE",
+        "SENTRY_SVELTEKIT_NAVIGATION_FROM",
+        "SENTRY_SVELTEKIT_NAVIGATION_TO",
+        "SENTRY_SVELTEKIT_NAVIGATION_TYPE",
         "SENTRY_THREAD_ID",
         "SENTRY_TRACE_PARENT_SPAN_ID",
         "SENTRY_TRANSACTION",
@@ -5680,6 +5683,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "AuthenticationMiddleware"
     """
 
+    # Path: model/attributes/navigation/navigation__origin.json
+    NAVIGATION_ORIGIN: Literal["navigation.origin"] = "navigation.origin"
+    """The origin of the navigation (usually client side router navigations). Should preferrably parameterized template (like url.template) or a URL path otherwise.
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: sentry.sveltekit.navigation.from
+    Example: "/users/:id"
+    """
+
     # Path: model/attributes/navigation/navigation__type.json
     NAVIGATION_TYPE: Literal["navigation.type"] = "navigation.type"
     """The type of navigation done by a client-side router.
@@ -5688,6 +5703,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.sveltekit.navigation.type
     Example: "router.push"
     """
 
@@ -7328,6 +7344,50 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Example: 200
+    """
+
+    # Path: model/attributes/sentry/sentry__sveltekit__navigation__from.json
+    SENTRY_SVELTEKIT_NAVIGATION_FROM: Literal["sentry.sveltekit.navigation.from"] = (
+        "sentry.sveltekit.navigation.from"
+    )
+    """the navigation origin (sveltekit router)
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: navigation.origin
+    DEPRECATED: Use navigation.origin instead - Use the more generic attribute instead
+    Example: "/home"
+    """
+
+    # Path: model/attributes/sentry/sentry__sveltekit__navigation__to.json
+    SENTRY_SVELTEKIT_NAVIGATION_TO: Literal["sentry.sveltekit.navigation.to"] = (
+        "sentry.sveltekit.navigation.to"
+    )
+    """the navigation destination
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - the navigation destination is already covered by url.* attributes
+    Example: "/users/:id"
+    """
+
+    # Path: model/attributes/sentry/sentry__sveltekit__navigation__type.json
+    SENTRY_SVELTEKIT_NAVIGATION_TYPE: Literal["sentry.sveltekit.navigation.type"] = (
+        "sentry.sveltekit.navigation.type"
+    )
+    """The type of navigation event emitted from the sveltekit client router
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: navigation.type
+    DEPRECATED: Use navigation.type instead - Use the more generic attribute instead
+    Example: "link"
     """
 
     # Path: model/attributes/sentry/sentry__thread__id.json
@@ -14950,6 +15010,22 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "navigation.origin": AttributeMetadata(
+        brief="The origin of the navigation (usually client side router navigations). Should preferrably parameterized template (like url.template) or a URL path otherwise.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="/users/:id",
+        aliases=["sentry.sveltekit.navigation.from"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[467],
+                description="Added navigation.origin attribute",
+            ),
+        ],
+    ),
     "navigation.type": AttributeMetadata(
         brief="The type of navigation done by a client-side router.",
         type=AttributeType.STRING,
@@ -14957,7 +15033,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="router.push",
+        aliases=["sentry.sveltekit.navigation.type"],
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[467], description="Added new deprecated alias"
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -16748,6 +16828,66 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.4.0", prs=[223, 228]),
         ],
     ),
+    "sentry.sveltekit.navigation.from": AttributeMetadata(
+        brief="the navigation origin (sveltekit router)",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="/home",
+        deprecation=DeprecationInfo(
+            replacement="navigation.origin",
+            reason="Use the more generic attribute instead",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["navigation.origin"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[467],
+                description="Added sentry.sveltekit.navigation.from attribute",
+            ),
+        ],
+    ),
+    "sentry.sveltekit.navigation.to": AttributeMetadata(
+        brief="the navigation destination",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="/users/:id",
+        deprecation=DeprecationInfo(
+            reason="the navigation destination is already covered by url.* attributes"
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[467],
+                description="Added sentry.sveltekit.navigation.to attribute",
+            ),
+        ],
+    ),
+    "sentry.sveltekit.navigation.type": AttributeMetadata(
+        brief="The type of navigation event emitted from the sveltekit client router",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="link",
+        deprecation=DeprecationInfo(
+            replacement="navigation.type",
+            reason="Use the more generic attribute instead",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["navigation.type"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[467],
+                description="Added sentry.sveltekit.navigation.type attribute",
+            ),
+        ],
+    ),
     "sentry.thread.id": AttributeMetadata(
         brief="Current “managed” thread ID.",
         type=AttributeType.INTEGER,
@@ -18512,6 +18652,7 @@ Attributes = TypedDict(
         "messaging.system": str,
         "method": str,
         "middleware.name": str,
+        "navigation.origin": str,
         "navigation.type": str,
         "nel.elapsed_time": int,
         "nel.phase": str,
@@ -18649,6 +18790,9 @@ Attributes = TypedDict(
         "sentry.status": str,
         "sentry.status.message": str,
         "sentry.status_code": int,
+        "sentry.sveltekit.navigation.from": str,
+        "sentry.sveltekit.navigation.to": str,
+        "sentry.sveltekit.navigation.type": str,
         "sentry.thread.id": int,
         "sentry.timestamp.sequence": int,
         "sentry.trace.parent_span_id": str,
