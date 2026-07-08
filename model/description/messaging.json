@@ -4,7 +4,22 @@
     {
       "name": "Queue",
       "brief": "Operations that represent working with message queues, including publishing, receiving, processing, and settling messages.",
-      "ops": ["queue", "queue.publish", "queue.create", "queue.receive", "queue.process", "queue.settle", "queue.submit.arq", "queue.task.arq", "queue.submit.celery", "queue.task.celery", "queue.task.dramatiq", "queue.submit.huey", "queue.task.huey", "queue.task.rq"],
+      "ops": [
+        "queue",
+        "queue.publish",
+        "queue.create",
+        "queue.receive",
+        "queue.process",
+        "queue.settle",
+        "queue.submit.arq",
+        "queue.task.arq",
+        "queue.submit.celery",
+        "queue.task.celery",
+        "queue.task.dramatiq",
+        "queue.submit.huey",
+        "queue.task.huey",
+        "queue.task.rq"
+      ],
       "templates": ["{{messaging.destination.name}}"],
       "examples": ["order-events"]
     }

@@ -140,6 +140,30 @@ pub const MESSAGING_QUEUE_PROCESS_SPAN_OP: &str = "queue.process";
 /// Settling a message, e.g. acknowledging or rejecting it.
 pub const MESSAGING_QUEUE_SETTLE_SPAN_OP: &str = "queue.settle";
 
+/// Publishing a message to an arq queue.
+pub const MESSAGING_QUEUE_SUBMIT_ARQ_SPAN_OP: &str = "queue.submit.arq";
+
+/// Processing a message from an arq queue.
+pub const MESSAGING_QUEUE_TASK_ARQ_SPAN_OP: &str = "queue.task.arq";
+
+/// Publishing a message to a Celery broker.
+pub const MESSAGING_QUEUE_SUBMIT_CELERY_SPAN_OP: &str = "queue.submit.celery";
+
+/// Processing a message from a Celery queue.
+pub const MESSAGING_QUEUE_TASK_CELERY_SPAN_OP: &str = "queue.task.celery";
+
+/// Publishing a message from a Dramatiq queue.
+pub const MESSAGING_QUEUE_TASK_DRAMATIQ_SPAN_OP: &str = "queue.task.dramatiq";
+
+/// Publishing a message to a Huey instance.
+pub const MESSAGING_QUEUE_SUBMIT_HUEY_SPAN_OP: &str = "queue.submit.huey";
+
+/// Processing a message from a Huey instance.
+pub const MESSAGING_QUEUE_TASK_HUEY_SPAN_OP: &str = "queue.task.huey";
+
+/// Processing a message from an RQ queue.
+pub const MESSAGING_QUEUE_TASK_RQ_SPAN_OP: &str = "queue.task.rq";
+
 // Path: model/op/mobile.json
 // Name: mobile
 
