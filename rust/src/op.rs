@@ -152,7 +152,7 @@ pub const MESSAGING_QUEUE_SUBMIT_CELERY_SPAN_OP: &str = "queue.submit.celery";
 /// Processing a message from a Celery queue.
 pub const MESSAGING_QUEUE_TASK_CELERY_SPAN_OP: &str = "queue.task.celery";
 
-/// Publishing a message from a Dramatiq queue.
+/// Processing a message from a Dramatiq queue.
 pub const MESSAGING_QUEUE_TASK_DRAMATIQ_SPAN_OP: &str = "queue.task.dramatiq";
 
 /// Publishing a message to a Huey instance.

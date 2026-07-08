@@ -201,7 +201,7 @@ export const MESSAGING_QUEUE_SUBMIT_CELERY_SPAN_OP = 'queue.submit.celery';
 export const MESSAGING_QUEUE_TASK_CELERY_SPAN_OP = 'queue.task.celery';
 
 /**
- * Publishing a message from a Dramatiq queue.
+ * Processing a message from a Dramatiq queue.
  */
 export const MESSAGING_QUEUE_TASK_DRAMATIQ_SPAN_OP = 'queue.task.dramatiq';
 

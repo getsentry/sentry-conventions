@@ -44,7 +44,7 @@
     },
     {
       "name": "queue.task.dramatiq",
-      "description": "Publishing a message from a Dramatiq queue."
+      "description": "Processing a message from a Dramatiq queue."
     },
     {
       "name": "queue.submit.huey",
