@@ -9374,6 +9374,27 @@ export const MESSAGING_MESSAGE_BODY_SIZE = 'messaging.message.body.size';
  */
 export type MESSAGING_MESSAGE_BODY_SIZE_TYPE = number;
 
+// Path: model/attributes/messaging/messaging__message__conversation_id.json
+
+/**
+ * The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID". `messaging.message.conversation_id`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_MESSAGE_CONVERSATION_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "MyConversationId"
+ */
+export const MESSAGING_MESSAGE_CONVERSATION_ID = 'messaging.message.conversation_id';
+
+/**
+ * Type for {@link MESSAGING_MESSAGE_CONVERSATION_ID} messaging.message.conversation_id
+ */
+export type MESSAGING_MESSAGE_CONVERSATION_ID_TYPE = string;
+
 // Path: model/attributes/messaging/messaging__message__envelope__size.json
 
 /**
@@ -9499,6 +9520,27 @@ export const MESSAGING_OPERATION_TYPE = 'messaging.operation.type';
  * Type for {@link MESSAGING_OPERATION_TYPE} messaging.operation.type
  */
 export type MESSAGING_OPERATION_TYPE_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__rabbitmq__destination__routing_key.json
+
+/**
+ * RabbitMQ message routing key. `messaging.rabbitmq.destination.routing_key`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "myKey"
+ */
+export const MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY = 'messaging.rabbitmq.destination.routing_key';
+
+/**
+ * Type for {@link MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY} messaging.rabbitmq.destination.routing_key
+ */
+export type MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY_TYPE = string;
 
 // Path: model/attributes/messaging/messaging__system.json
 
@@ -15315,12 +15357,14 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'messaging.destination.connection': 'string',
   'messaging.destination.name': 'string',
   'messaging.message.body.size': 'integer',
+  'messaging.message.conversation_id': 'string',
   'messaging.message.envelope.size': 'integer',
   'messaging.message.id': 'string',
   'messaging.message.receive.latency': 'integer',
   'messaging.message.retry.count': 'integer',
   'messaging.operation.name': 'string',
   'messaging.operation.type': 'string',
+  'messaging.rabbitmq.destination.routing_key': 'string',
   'messaging.system': 'string',
   method: 'string',
   'middleware.name': 'string',
@@ -15992,12 +16036,14 @@ export type AttributeName =
   | typeof MESSAGING_DESTINATION_CONNECTION
   | typeof MESSAGING_DESTINATION_NAME
   | typeof MESSAGING_MESSAGE_BODY_SIZE
+  | typeof MESSAGING_MESSAGE_CONVERSATION_ID
   | typeof MESSAGING_MESSAGE_ENVELOPE_SIZE
   | typeof MESSAGING_MESSAGE_ID
   | typeof MESSAGING_MESSAGE_RECEIVE_LATENCY
   | typeof MESSAGING_MESSAGE_RETRY_COUNT
   | typeof MESSAGING_OPERATION_NAME
   | typeof MESSAGING_OPERATION_TYPE
+  | typeof MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY
   | typeof MESSAGING_SYSTEM
   | typeof METHOD
   | typeof MIDDLEWARE_NAME
@@ -22048,6 +22094,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 839,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
+  'messaging.message.conversation_id': {
+    brief:
+      'The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID".',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'MyConversationId',
+    changelog: [{ version: 'next', prs: [468], description: 'Added messaging.message.conversation_id attribute' }],
+  },
   'messaging.message.envelope.size': {
     brief: 'The size of the message body and metadata in bytes.',
     type: 'integer',
@@ -22113,6 +22171,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'create',
     changelog: [{ version: '0.1.0', prs: [51, 127] }],
+  },
+  'messaging.rabbitmq.destination.routing_key': {
+    brief: 'RabbitMQ message routing key.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'myKey',
+    changelog: [
+      { version: 'next', prs: [468], description: 'Added messaging.rabbitmq.destination.routing_key attribute' },
+    ],
   },
   'messaging.system': {
     brief: 'The messaging system as identified by the client instrumentation.',
@@ -25610,12 +25681,14 @@ export type Attributes = {
   [MESSAGING_DESTINATION_CONNECTION]?: MESSAGING_DESTINATION_CONNECTION_TYPE;
   [MESSAGING_DESTINATION_NAME]?: MESSAGING_DESTINATION_NAME_TYPE;
   [MESSAGING_MESSAGE_BODY_SIZE]?: MESSAGING_MESSAGE_BODY_SIZE_TYPE;
+  [MESSAGING_MESSAGE_CONVERSATION_ID]?: MESSAGING_MESSAGE_CONVERSATION_ID_TYPE;
   [MESSAGING_MESSAGE_ENVELOPE_SIZE]?: MESSAGING_MESSAGE_ENVELOPE_SIZE_TYPE;
   [MESSAGING_MESSAGE_ID]?: MESSAGING_MESSAGE_ID_TYPE;
   [MESSAGING_MESSAGE_RECEIVE_LATENCY]?: MESSAGING_MESSAGE_RECEIVE_LATENCY_TYPE;
   [MESSAGING_MESSAGE_RETRY_COUNT]?: MESSAGING_MESSAGE_RETRY_COUNT_TYPE;
   [MESSAGING_OPERATION_NAME]?: MESSAGING_OPERATION_NAME_TYPE;
   [MESSAGING_OPERATION_TYPE]?: MESSAGING_OPERATION_TYPE_TYPE;
+  [MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY]?: MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY_TYPE;
   [MESSAGING_SYSTEM]?: MESSAGING_SYSTEM_TYPE;
   [METHOD]?: METHOD_TYPE;
   [MIDDLEWARE_NAME]?: MIDDLEWARE_NAME_TYPE;
