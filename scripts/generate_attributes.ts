@@ -175,6 +175,15 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
     individualConstants += ' */\n';
     individualConstants += `export const ${constantName} = '${key}';\n\n`;
 
+    if (has_dynamic_suffix) {
+      const keyBase = getDynamicSuffixBase(key);
+      const constantNameBase = `${constantName}_BASE`;
+      individualConstants += '/**\n';
+      individualConstants += ` * Base key for {@link ${constantName}}. Use with a dynamic suffix, e.g. \`\${${constantNameBase}}.\${key}\`.\n`;
+      individualConstants += ' */\n';
+      individualConstants += `export const ${constantNameBase} = '${keyBase}';\n\n`;
+    }
+
     // Generate type constant
     individualConstants += '/**\n';
     individualConstants += ` * Type for {@link ${constantName}} ${key}\n`;
@@ -207,6 +216,14 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
 const constantNameMemo = new Map<string, string>();
 const constantNameInnerMemo = new Map<string, string>();
 const usedConstantNames = new Set<string>();
+
+function getDynamicSuffixBase(key: string): string {
+  const suffix = '.<key>';
+  if (!key.endsWith(suffix)) {
+    throw new Error(`Expected dynamic suffix attribute key to end with "${suffix}", got "${key}"`);
+  }
+  return key.slice(0, -suffix.length);
+}
 
 // Computes a constant name for an attribute without regard for deprecation status.
 function getConstantNameInner(key: string): string {
