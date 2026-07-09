@@ -3134,6 +3134,8 @@ export type CLOUD_REGION_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link FAAS_ID} `faas.id`
+ *
  * @example "arn:aws:lambda:REGION:ACCOUNT_ID:function:my-function"
  */
 export const CLOUD_RESOURCE_ID = 'cloud.resource_id';
@@ -5081,6 +5083,30 @@ export const FAAS_EXECUTION = 'faas.execution';
  * Type for {@link FAAS_EXECUTION} faas.execution
  */
 export type FAAS_EXECUTION_TYPE = string;
+
+// Path: model/attributes/faas/faas__id.json
+
+/**
+ * The unique ID of the single function that this runtime instance executes. `faas.id`
+ *
+ * Attribute Value Type: `string` {@link FAAS_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link CLOUD_RESOURCE_ID} `cloud.resource_id`
+ *
+ * @deprecated Use {@link CLOUD_RESOURCE_ID} (cloud.resource_id) instead - This attribute is being deprecated in favor of cloud.resource_id, which is the OTel-aligned replacement (renamed in OTel semantic conventions v1.19.0).
+ * @example "arn:aws:lambda:REGION:ACCOUNT_ID:function:my-function"
+ */
+export const FAAS_ID = 'faas.id';
+
+/**
+ * Type for {@link FAAS_ID} faas.id
+ */
+export type FAAS_ID_TYPE = string;
 
 // Path: model/attributes/faas/faas__identity.json
 
@@ -15187,6 +15213,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'faas.duration_in_ms': 'integer',
   'faas.entry_point': 'string',
   'faas.execution': 'string',
+  'faas.id': 'string',
   'faas.identity': 'string',
   'faas.invocation_id': 'string',
   'faas.name': 'string',
@@ -15867,6 +15894,7 @@ export type AttributeName =
   | typeof FAAS_DURATION_IN_MS
   | typeof FAAS_ENTRY_POINT
   | typeof FAAS_EXECUTION
+  | typeof FAAS_ID
   | typeof FAAS_IDENTITY
   | typeof FAAS_INVOCATION_ID
   | typeof FAAS_NAME
@@ -18208,7 +18236,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'arn:aws:lambda:REGION:ACCOUNT_ID:function:my-function',
-    changelog: [{ version: '0.11.1', prs: [414] }],
+    aliases: ['faas.id'],
+    changelog: [
+      { version: 'next', description: 'Added faas.id as an alias' },
+      { version: '0.11.1', prs: [414] },
+    ],
     additionalContext: [
       'This can be an identifier for a resource in AWS, GCP, or Azure. There may be some overlap in values found here with other attributes. For instance, an AWS lambda ARN may be found here as well as in `aws.lambda.invoked_arn`. OTEL recommends setting them alongside each other.',
     ],
@@ -19354,6 +19386,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         description: 'Added faas.execution attribute, deprecated in favor of faas.invocation_id',
       },
     ],
+  },
+  'faas.id': {
+    brief: 'The unique ID of the single function that this runtime instance executes.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'arn:aws:lambda:REGION:ACCOUNT_ID:function:my-function',
+    deprecation: {
+      replacement: 'cloud.resource_id',
+      reason:
+        'This attribute is being deprecated in favor of cloud.resource_id, which is the OTel-aligned replacement (renamed in OTel semantic conventions v1.19.0).',
+    },
+    aliases: ['cloud.resource_id'],
+    changelog: [{ version: 'next', description: 'Added faas.id attribute, deprecated in favor of cloud.resource_id' }],
   },
   'faas.identity': {
     brief:
@@ -25540,6 +25589,7 @@ export type Attributes = {
   [FAAS_DURATION_IN_MS]?: FAAS_DURATION_IN_MS_TYPE;
   [FAAS_ENTRY_POINT]?: FAAS_ENTRY_POINT_TYPE;
   [FAAS_EXECUTION]?: FAAS_EXECUTION_TYPE;
+  [FAAS_ID]?: FAAS_ID_TYPE;
   [FAAS_IDENTITY]?: FAAS_IDENTITY_TYPE;
   [FAAS_INVOCATION_ID]?: FAAS_INVOCATION_ID_TYPE;
   [FAAS_NAME]?: FAAS_NAME_TYPE;
