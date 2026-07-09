@@ -198,7 +198,6 @@ class _AttributeNamesMeta(type):
         "GEN_AI_USAGE_INPUT_TOKENS_CACHED",
         "GEN_AI_USAGE_OUTPUT_TOKENS_REASONING",
         "GEN_AI_USAGE_PROMPT_TOKENS",
-        "_SERVER_ADDRESS",
         "HARDWARECONCURRENCY",
         "HTTP_CLIENT_IP",
         "HTTP_FLAVOR",
@@ -274,6 +273,7 @@ class _AttributeNamesMeta(type):
         "SENTRY_USER_ID",
         "SENTRY_USER_IP",
         "SENTRY_USER_USERNAME",
+        "_SERVER_ADDRESS",
         "TIME_TO_FULL_DISPLAY",
         "TIME_TO_INITIAL_DISPLAY",
         "TRANSACTION",
@@ -4283,19 +4283,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 20
     """
 
-    # Path: model/attributes/general/server_address.json
-    _SERVER_ADDRESS: Literal["server_address"] = "server_address"
-    """Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
-
-    Type: str
-    Apply Scrubbing: manual
-    Defined in OTEL: No
-    Visibility: public
-    Aliases: server.address
-    DEPRECATED: Use server.address instead - This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.
-    Example: "example.com"
-    """
-
     # Path: model/attributes/graphql/graphql__document.json
     GRAPHQL_DOCUMENT: Literal["graphql.document"] = "graphql.document"
     """The GraphQL document being executed.
@@ -7606,6 +7593,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Aliases: net.host.port
     Example: 1337
+    """
+
+    # Path: model/attributes/server_address.json
+    _SERVER_ADDRESS: Literal["server_address"] = "server_address"
+    """Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: server.address
+    DEPRECATED: Use server.address instead - This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.
+    Example: "example.com"
     """
 
     # Path: model/attributes/service/service__name.json
@@ -13446,26 +13446,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "This is the sum of gen_ai.usage.input_tokens and gen_ai.usage.output_tokens. Do not sum this with either of them — they are already included.",
         ],
     ),
-    "server_address": AttributeMetadata(
-        brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
-        type=AttributeType.STRING,
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
-        is_in_otel=False,
-        visibility=Visibility.PUBLIC,
-        example="example.com",
-        deprecation=DeprecationInfo(
-            replacement="server.address",
-            reason="This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.",
-            status=DeprecationStatus.BACKFILL,
-        ),
-        aliases=["server.address"],
-        changelog=[
-            ChangelogEntry(
-                version="next",
-                description="Added server_address attribute, deprecated in favor of server.address",
-            ),
-        ],
-    ),
     "graphql.document": AttributeMetadata(
         brief="The GraphQL document being executed.",
         type=AttributeType.STRING,
@@ -17161,6 +17141,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "server_address": AttributeMetadata(
+        brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="example.com",
+        deprecation=DeprecationInfo(
+            replacement="server.address",
+            reason="This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["server.address"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added server_address attribute, deprecated in favor of server.address",
+            ),
+        ],
+    ),
     "service.name": AttributeMetadata(
         brief="Logical name of the service.",
         type=AttributeType.STRING,
@@ -18598,7 +18598,6 @@ Attributes = TypedDict(
         "gen_ai.usage.prompt_tokens": int,
         "gen_ai.usage.reasoning.output_tokens": int,
         "gen_ai.usage.total_tokens": int,
-        "server_address": str,
         "graphql.document": str,
         "graphql.operation.name": str,
         "graphql.operation.type": str,
@@ -18870,6 +18869,7 @@ Attributes = TypedDict(
         "sentry.user.username": str,
         "server.address": str,
         "server.port": int,
+        "server_address": str,
         "service.name": str,
         "service.version": str,
         "session.id": str,

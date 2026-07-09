@@ -13022,7 +13022,7 @@ export const SERVER_ADDRESS = 'server.address';
  */
 export type SERVER_ADDRESS_TYPE = string;
 
-// Path: model/attributes/general/server_address.json
+// Path: model/attributes/server_address.json
 
 /**
  * Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name. `server_address`
