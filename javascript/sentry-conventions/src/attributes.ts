@@ -3195,6 +3195,8 @@ export const CLS_SOURCE_KEY = 'cls.source.<key>';
 
 /**
  * Base key for {@link CLS_SOURCE_KEY}. Use with a dynamic suffix, e.g. `${CLS_SOURCE_KEY_BASE}.${key}`.
+ *
+ * @deprecated Use {@link BROWSER_WEB_VITAL_CLS_SOURCE_KEY_BASE} (browser.web_vital.cls.source) instead - The CLS source is now recorded as a browser.web_vital.cls.source.<key> attribute.
  */
 export const CLS_SOURCE_KEY_BASE = 'cls.source';
 
@@ -10990,6 +10992,8 @@ export const QUERY_KEY = 'query.<key>';
 
 /**
  * Base key for {@link QUERY_KEY}. Use with a dynamic suffix, e.g. `${QUERY_KEY_BASE}.${key}`.
+ *
+ * @deprecated Use {@link URL_QUERY} (url.query) instead - Instead of sending items individually in query.<key>, they should be sent all together with url.query.
  */
 export const QUERY_KEY_BASE = 'query';
 
