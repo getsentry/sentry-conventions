@@ -11949,6 +11949,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
+                prs=[473],
                 description="Added faas.execution attribute, deprecated in favor of faas.invocation_id",
             ),
         ],
@@ -11974,7 +11975,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["aws.lambda.aws_request_id", "faas.execution"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added faas.execution as an alias"
+                version="next",
+                prs=[473],
+                description="Added faas.execution as an alias",
             ),
             ChangelogEntry(version="0.11.1", prs=[414, 424]),
         ],

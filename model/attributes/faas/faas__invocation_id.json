@@ -12,6 +12,7 @@
   "changelog": [
     {
       "version": "next",
+      "prs": [473],
       "description": "Added faas.execution as an alias"
     },
     {

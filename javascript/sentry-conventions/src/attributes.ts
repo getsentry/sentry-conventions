@@ -19347,7 +19347,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['faas.invocation_id'],
     changelog: [
-      { version: 'next', description: 'Added faas.execution attribute, deprecated in favor of faas.invocation_id' },
+      {
+        version: 'next',
+        prs: [473],
+        description: 'Added faas.execution attribute, deprecated in favor of faas.invocation_id',
+      },
     ],
   },
   'faas.identity': {
@@ -19374,7 +19378,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'af9d5aa4-a685-4c5f-a22b-444f80b3cc28',
     aliases: ['aws.lambda.aws_request_id', 'faas.execution'],
     changelog: [
-      { version: 'next', description: 'Added faas.execution as an alias' },
+      { version: 'next', prs: [473], description: 'Added faas.execution as an alias' },
       { version: '0.11.1', prs: [414, 424] },
     ],
   },

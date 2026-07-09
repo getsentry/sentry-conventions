@@ -17,6 +17,7 @@
   "changelog": [
     {
       "version": "next",
+      "prs": [473],
       "description": "Added faas.execution attribute, deprecated in favor of faas.invocation_id"
     }
   ]
