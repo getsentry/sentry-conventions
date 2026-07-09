@@ -1691,7 +1691,7 @@ export type AWS_CLOUDWATCH_LOGS_URL_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link FAAS_INVOCATION_ID} `faas.invocation_id`
+ * Aliases: {@link FAAS_INVOCATION_ID} `faas.invocation_id`, {@link FAAS_EXECUTION} `faas.execution`
  *
  * @deprecated Use {@link FAAS_INVOCATION_ID} (faas.invocation_id) instead - This attribute is being deprecated in favor of faas.invocation_id
  * @example "8476a536-e9f4-11e8-9739-2dfe598c3fcd"
@@ -5070,7 +5070,7 @@ export type FAAS_ENTRY_POINT_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link FAAS_INVOCATION_ID} `faas.invocation_id`
+ * Aliases: {@link FAAS_INVOCATION_ID} `faas.invocation_id`, {@link AWS_LAMBDA_AWS_REQUEST_ID} `aws.lambda.aws_request_id`
  *
  * @deprecated Use {@link FAAS_INVOCATION_ID} (faas.invocation_id) instead - This attribute is being deprecated in favor of faas.invocation_id, which is the OTel-aligned replacement.
  * @example "af9d5aa4-a685-4c5f-a22b-444f80b3cc28"
@@ -17402,8 +17402,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'faas.invocation_id',
       reason: 'This attribute is being deprecated in favor of faas.invocation_id',
     },
-    aliases: ['faas.invocation_id'],
+    aliases: ['faas.invocation_id', 'faas.execution'],
     changelog: [
+      { version: 'next', prs: [473], description: 'Added faas.execution as an alias' },
       {
         version: '0.11.1',
         prs: [414, 424],
@@ -19345,7 +19346,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason:
         'This attribute is being deprecated in favor of faas.invocation_id, which is the OTel-aligned replacement.',
     },
-    aliases: ['faas.invocation_id'],
+    aliases: ['faas.invocation_id', 'aws.lambda.aws_request_id'],
     changelog: [
       {
         version: 'next',

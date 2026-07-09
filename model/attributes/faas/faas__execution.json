@@ -7,7 +7,7 @@
   },
   "is_in_otel": false,
   "example": "af9d5aa4-a685-4c5f-a22b-444f80b3cc28",
-  "alias": ["faas.invocation_id"],
+  "alias": ["faas.invocation_id", "aws.lambda.aws_request_id"],
   "deprecation": {
     "_status": "backfill",
     "replacement": "faas.invocation_id",

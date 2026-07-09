@@ -1233,7 +1233,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: faas.invocation_id
+    Aliases: faas.invocation_id, faas.execution
     DEPRECATED: Use faas.invocation_id instead - This attribute is being deprecated in favor of faas.invocation_id
     Example: "8476a536-e9f4-11e8-9739-2dfe598c3fcd"
     """
@@ -3120,7 +3120,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: faas.invocation_id
+    Aliases: faas.invocation_id, aws.lambda.aws_request_id
     DEPRECATED: Use faas.invocation_id instead - This attribute is being deprecated in favor of faas.invocation_id, which is the OTel-aligned replacement.
     Example: "af9d5aa4-a685-4c5f-a22b-444f80b3cc28"
     """
@@ -9763,8 +9763,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="This attribute is being deprecated in favor of faas.invocation_id",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["faas.invocation_id"],
+        aliases=["faas.invocation_id", "faas.execution"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[473],
+                description="Added faas.execution as an alias",
+            ),
             ChangelogEntry(
                 version="0.11.1",
                 prs=[414, 424],
@@ -11945,7 +11950,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="This attribute is being deprecated in favor of faas.invocation_id, which is the OTel-aligned replacement.",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["faas.invocation_id"],
+        aliases=["faas.invocation_id", "aws.lambda.aws_request_id"],
         changelog=[
             ChangelogEntry(
                 version="next",
