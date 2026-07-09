@@ -4387,7 +4387,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: server.address, client.address, http.server_name, net.host.name
+    Aliases: server.address, client.address, http.server_name, net.host.name, server_address
     DEPRECATED: Use server.address instead - Deprecated, use one of `server.address` or `client.address`, depending on the usage
     Example: "example.com"
     """
@@ -4806,7 +4806,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: server.address, net.host.name, http.host
+    Aliases: server.address, net.host.name, http.host, server_address
     DEPRECATED: Use server.address instead
     Example: "example.com"
     """
@@ -5823,7 +5823,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: server.address, http.server_name, http.host
+    Aliases: server.address, http.server_name, http.host, server_address
     DEPRECATED: Use server.address instead
     Example: "example.com"
     """
@@ -7603,7 +7603,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: server.address
+    Aliases: server.address, http.server_name, net.host.name, http.host
     DEPRECATED: Use server.address instead - This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.
     Example: "example.com"
     """
@@ -13575,6 +13575,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "client.address",
             "http.server_name",
             "net.host.name",
+            "server_address",
         ],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
@@ -14011,7 +14012,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="example.com",
         deprecation=DeprecationInfo(replacement="server.address"),
-        aliases=["server.address", "net.host.name", "http.host"],
+        aliases=["server.address", "net.host.name", "http.host", "server_address"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
             ChangelogEntry(version="0.0.0"),
@@ -15207,7 +15208,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="example.com",
         deprecation=DeprecationInfo(replacement="server.address"),
-        aliases=["server.address", "http.server_name", "http.host"],
+        aliases=["server.address", "http.server_name", "http.host", "server_address"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
             ChangelogEntry(version="0.0.0"),
@@ -17153,7 +17154,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["server.address"],
+        aliases=["server.address", "http.server_name", "net.host.name", "http.host"],
         changelog=[
             ChangelogEntry(
                 version="next",

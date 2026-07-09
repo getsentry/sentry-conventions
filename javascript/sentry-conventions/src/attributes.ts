@@ -7280,7 +7280,7 @@ export type HTTP_FRAGMENT_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link CLIENT_ADDRESS} `client.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`
+ * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link CLIENT_ADDRESS} `client.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link _SERVER_ADDRESS} `server_address`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - Deprecated, use one of `server.address` or `client.address`, depending on the usage
  * @example "example.com"
@@ -7967,7 +7967,7 @@ export type HTTP_SCHEME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`
+ * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link _SERVER_ADDRESS} `server_address`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead
  * @example "example.com"
@@ -10069,7 +10069,7 @@ export type NET_HOST_IP_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link HTTP_HOST} `http.host`
+ * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link HTTP_HOST} `http.host`, {@link _SERVER_ADDRESS} `server_address`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead
  * @example "example.com"
@@ -13034,7 +13034,7 @@ export type SERVER_ADDRESS_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link SERVER_ADDRESS} `server.address`
+ * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.
  * @example "example.com"
@@ -20939,7 +20939,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'server.address',
       reason: 'Deprecated, use one of `server.address` or `client.address`, depending on the usage',
     },
-    aliases: ['server.address', 'client.address', 'http.server_name', 'net.host.name'],
+    aliases: ['server.address', 'client.address', 'http.server_name', 'net.host.name', 'server_address'],
     changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
   },
   'http.method': {
@@ -21344,7 +21344,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'server.address',
     },
-    aliases: ['server.address', 'net.host.name', 'http.host'],
+    aliases: ['server.address', 'net.host.name', 'http.host', 'server_address'],
     changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
   },
   'http.server.request.time_in_queue': {
@@ -22624,7 +22624,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'server.address',
     },
-    aliases: ['server.address', 'http.server_name', 'http.host'],
+    aliases: ['server.address', 'http.server_name', 'http.host', 'server_address'],
     changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
   },
   'net.host.port': {
@@ -24364,7 +24364,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'server.address',
       reason: 'This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.',
     },
-    aliases: ['server.address'],
+    aliases: ['server.address', 'http.server_name', 'net.host.name', 'http.host'],
     changelog: [
       { version: 'next', description: 'Added server_address attribute, deprecated in favor of server.address' },
     ],
