@@ -17,6 +17,7 @@
   "changelog": [
     {
       "version": "next",
+      "prs": [475],
       "description": "Added faas.id attribute, deprecated in favor of cloud.resource_id"
     }
   ]

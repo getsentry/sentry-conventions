@@ -10449,7 +10449,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="arn:aws:lambda:REGION:ACCOUNT_ID:function:my-function",
         aliases=["faas.id"],
         changelog=[
-            ChangelogEntry(version="next", description="Added faas.id as an alias"),
+            ChangelogEntry(
+                version="next", prs=[475], description="Added faas.id as an alias"
+            ),
             ChangelogEntry(version="0.11.1", prs=[414]),
         ],
         additional_context=[
@@ -11992,6 +11994,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
+                prs=[475],
                 description="Added faas.id attribute, deprecated in favor of cloud.resource_id",
             ),
         ],

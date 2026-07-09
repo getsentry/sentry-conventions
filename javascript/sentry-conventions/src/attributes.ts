@@ -18238,7 +18238,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'arn:aws:lambda:REGION:ACCOUNT_ID:function:my-function',
     aliases: ['faas.id'],
     changelog: [
-      { version: 'next', description: 'Added faas.id as an alias' },
+      { version: 'next', prs: [475], description: 'Added faas.id as an alias' },
       { version: '0.11.1', prs: [414] },
     ],
     additionalContext: [
@@ -19402,7 +19402,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         'This attribute is being deprecated in favor of cloud.resource_id, which is the OTel-aligned replacement (renamed in OTel semantic conventions v1.19.0).',
     },
     aliases: ['cloud.resource_id'],
-    changelog: [{ version: 'next', description: 'Added faas.id attribute, deprecated in favor of cloud.resource_id' }],
+    changelog: [
+      { version: 'next', prs: [475], description: 'Added faas.id attribute, deprecated in favor of cloud.resource_id' },
+    ],
   },
   'faas.identity': {
     brief:

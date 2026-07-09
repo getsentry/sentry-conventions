@@ -15,6 +15,7 @@
   "changelog": [
     {
       "version": "next",
+      "prs": [475],
       "description": "Added faas.id as an alias"
     },
     {
