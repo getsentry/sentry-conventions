@@ -273,6 +273,7 @@ class _AttributeNamesMeta(type):
         "SENTRY_USER_ID",
         "SENTRY_USER_IP",
         "SENTRY_USER_USERNAME",
+        "_SERVER_ADDRESS",
         "TIME_TO_FULL_DISPLAY",
         "TIME_TO_INITIAL_DISPLAY",
         "TRANSACTION",
@@ -7578,7 +7579,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: http.server_name, net.host.name, http.host
+    Aliases: http.server_name, net.host.name, http.host, server_address
     Example: "example.com"
     """
 
@@ -7592,6 +7593,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Aliases: net.host.port
     Example: 1337
+    """
+
+    # Path: model/attributes/server_address.json
+    _SERVER_ADDRESS: Literal["server_address"] = "server_address"
+    """Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: server.address
+    DEPRECATED: Use server.address instead - This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.
+    Example: "example.com"
     """
 
     # Path: model/attributes/service/service__name.json
@@ -17108,7 +17122,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="example.com",
-        aliases=["http.server_name", "net.host.name", "http.host"],
+        aliases=["http.server_name", "net.host.name", "http.host", "server_address"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[108, 127]),
             ChangelogEntry(version="0.0.0"),
@@ -17125,6 +17139,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "server_address": AttributeMetadata(
+        brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="example.com",
+        deprecation=DeprecationInfo(
+            replacement="server.address",
+            reason="This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["server.address"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added server_address attribute, deprecated in favor of server.address",
+            ),
         ],
     ),
     "service.name": AttributeMetadata(
@@ -18835,6 +18869,7 @@ Attributes = TypedDict(
         "sentry.user.username": str,
         "server.address": str,
         "server.port": int,
+        "server_address": str,
         "service.name": str,
         "service.version": str,
         "session.id": str,
