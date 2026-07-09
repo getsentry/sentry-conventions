@@ -9353,6 +9353,90 @@ export const MESSAGING_DESTINATION_NAME = 'messaging.destination.name';
  */
 export type MESSAGING_DESTINATION_NAME_TYPE = string;
 
+// Path: model/attributes/messaging/messaging__destination__partition__id.json
+
+/**
+ * The identifier of the partition messages are sent to or received from, unique within the messaging.destination.name. `messaging.destination.partition.id`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_DESTINATION_PARTITION_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "1"
+ */
+export const MESSAGING_DESTINATION_PARTITION_ID = 'messaging.destination.partition.id';
+
+/**
+ * Type for {@link MESSAGING_DESTINATION_PARTITION_ID} messaging.destination.partition.id
+ */
+export type MESSAGING_DESTINATION_PARTITION_ID_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__kafka__message__key.json
+
+/**
+ * Message keys in Kafka are used for grouping alike messages to ensure they're processed on the same partition. They differ from messaging.message.id in that they're not unique. If the key is null, the attribute MUST NOT be set. `messaging.kafka.message.key`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_KAFKA_MESSAGE_KEY_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "myKey"
+ */
+export const MESSAGING_KAFKA_MESSAGE_KEY = 'messaging.kafka.message.key';
+
+/**
+ * Type for {@link MESSAGING_KAFKA_MESSAGE_KEY} messaging.kafka.message.key
+ */
+export type MESSAGING_KAFKA_MESSAGE_KEY_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__kafka__message__tombstone.json
+
+/**
+ * A boolean that is true if the message is a tombstone. `messaging.kafka.message.tombstone`
+ *
+ * Attribute Value Type: `boolean` {@link MESSAGING_KAFKA_MESSAGE_TOMBSTONE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example true
+ */
+export const MESSAGING_KAFKA_MESSAGE_TOMBSTONE = 'messaging.kafka.message.tombstone';
+
+/**
+ * Type for {@link MESSAGING_KAFKA_MESSAGE_TOMBSTONE} messaging.kafka.message.tombstone
+ */
+export type MESSAGING_KAFKA_MESSAGE_TOMBSTONE_TYPE = boolean;
+
+// Path: model/attributes/messaging/messaging__kafka__offset.json
+
+/**
+ * The offset of a record in the corresponding Kafka partition. `messaging.kafka.offset`
+ *
+ * Attribute Value Type: `number` {@link MESSAGING_KAFKA_OFFSET_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example 42
+ */
+export const MESSAGING_KAFKA_OFFSET = 'messaging.kafka.offset';
+
+/**
+ * Type for {@link MESSAGING_KAFKA_OFFSET} messaging.kafka.offset
+ */
+export type MESSAGING_KAFKA_OFFSET_TYPE = number;
+
 // Path: model/attributes/messaging/messaging__message__body__size.json
 
 /**
@@ -15356,6 +15440,10 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'messaging.batch.message_count': 'integer',
   'messaging.destination.connection': 'string',
   'messaging.destination.name': 'string',
+  'messaging.destination.partition.id': 'string',
+  'messaging.kafka.message.key': 'string',
+  'messaging.kafka.message.tombstone': 'boolean',
+  'messaging.kafka.offset': 'integer',
   'messaging.message.body.size': 'integer',
   'messaging.message.conversation_id': 'string',
   'messaging.message.envelope.size': 'integer',
@@ -16035,6 +16123,10 @@ export type AttributeName =
   | typeof MESSAGING_BATCH_MESSAGE_COUNT
   | typeof MESSAGING_DESTINATION_CONNECTION
   | typeof MESSAGING_DESTINATION_NAME
+  | typeof MESSAGING_DESTINATION_PARTITION_ID
+  | typeof MESSAGING_KAFKA_MESSAGE_KEY
+  | typeof MESSAGING_KAFKA_MESSAGE_TOMBSTONE
+  | typeof MESSAGING_KAFKA_OFFSET
   | typeof MESSAGING_MESSAGE_BODY_SIZE
   | typeof MESSAGING_MESSAGE_CONVERSATION_ID
   | typeof MESSAGING_MESSAGE_ENVELOPE_SIZE
@@ -22083,6 +22175,52 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'BestTopic',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  'messaging.destination.partition.id': {
+    brief:
+      'The identifier of the partition messages are sent to or received from, unique within the messaging.destination.name.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: '1',
+    changelog: [{ version: 'next', prs: [474], description: 'Added messaging.destination.partition.id attribute' }],
+  },
+  'messaging.kafka.message.key': {
+    brief:
+      "Message keys in Kafka are used for grouping alike messages to ensure they're processed on the same partition. They differ from messaging.message.id in that they're not unique. If the key is null, the attribute MUST NOT be set.",
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'myKey',
+    changelog: [{ version: 'next', prs: [474], description: 'Added messaging.kafka.message.key attribute' }],
+  },
+  'messaging.kafka.message.tombstone': {
+    brief: 'A boolean that is true if the message is a tombstone.',
+    type: 'boolean',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: true,
+    changelog: [{ version: 'next', prs: [474], description: 'Added messaging.kafka.message.tombstone attribute' }],
+  },
+  'messaging.kafka.offset': {
+    brief: 'The offset of a record in the corresponding Kafka partition.',
+    type: 'integer',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 42,
+    changelog: [{ version: 'next', prs: [474], description: 'Added messaging.kafka.offset attribute' }],
+  },
   'messaging.message.body.size': {
     brief: 'The size of the message body in bytes.',
     type: 'integer',
@@ -25680,6 +25818,10 @@ export type Attributes = {
   [MESSAGING_BATCH_MESSAGE_COUNT]?: MESSAGING_BATCH_MESSAGE_COUNT_TYPE;
   [MESSAGING_DESTINATION_CONNECTION]?: MESSAGING_DESTINATION_CONNECTION_TYPE;
   [MESSAGING_DESTINATION_NAME]?: MESSAGING_DESTINATION_NAME_TYPE;
+  [MESSAGING_DESTINATION_PARTITION_ID]?: MESSAGING_DESTINATION_PARTITION_ID_TYPE;
+  [MESSAGING_KAFKA_MESSAGE_KEY]?: MESSAGING_KAFKA_MESSAGE_KEY_TYPE;
+  [MESSAGING_KAFKA_MESSAGE_TOMBSTONE]?: MESSAGING_KAFKA_MESSAGE_TOMBSTONE_TYPE;
+  [MESSAGING_KAFKA_OFFSET]?: MESSAGING_KAFKA_OFFSET_TYPE;
   [MESSAGING_MESSAGE_BODY_SIZE]?: MESSAGING_MESSAGE_BODY_SIZE_TYPE;
   [MESSAGING_MESSAGE_CONVERSATION_ID]?: MESSAGING_MESSAGE_CONVERSATION_ID_TYPE;
   [MESSAGING_MESSAGE_ENVELOPE_SIZE]?: MESSAGING_MESSAGE_ENVELOPE_SIZE_TYPE;
