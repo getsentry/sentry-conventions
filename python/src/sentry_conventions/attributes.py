@@ -4947,6 +4947,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "blocked"
     """
 
+    # Path: model/attributes/koa/koa__type.json
+    KOA_TYPE: Literal["koa.type"] = "koa.type"
+    """The type of the Koa layer that handled the request.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "router"
+    """
+
     # Path: model/attributes/lcp/lcp__element.json
     LCP_ELEMENT: Literal["lcp.element"] = "lcp.element"
     """The dom element responsible for the largest contentful paint.
@@ -14074,6 +14085,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "koa.type": AttributeMetadata(
+        brief="The type of the Koa layer that handled the request.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="router",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[471], description="Added koa.type attribute"
+            ),
+        ],
+    ),
     "lcp.element": AttributeMetadata(
         brief="The dom element responsible for the largest contentful paint.",
         type=AttributeType.STRING,
@@ -18452,6 +18476,7 @@ Attributes = TypedDict(
         "jvm.memory.type": str,
         "jvm.thread.daemon": bool,
         "jvm.thread.state": str,
+        "koa.type": str,
         "lcp.element": str,
         "lcp.id": str,
         "lcp.loadTime": int,
