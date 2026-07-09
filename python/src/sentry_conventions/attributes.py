@@ -173,6 +173,7 @@ class _AttributeNamesMeta(type):
         "EFFECTIVECONNECTIONTYPE",
         "ENVIRONMENT",
         "FAAS_EXECUTION",
+        "FAAS_ID",
         "FCP",
         "FP",
         "FRAMES_DELAY",
@@ -1842,6 +1843,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: faas.id
     Example: "arn:aws:lambda:REGION:ACCOUNT_ID:function:my-function"
     """
 
@@ -3123,6 +3125,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Aliases: faas.invocation_id, aws.lambda.aws_request_id
     DEPRECATED: Use faas.invocation_id instead - This attribute is being deprecated in favor of faas.invocation_id, which is the OTel-aligned replacement.
     Example: "af9d5aa4-a685-4c5f-a22b-444f80b3cc28"
+    """
+
+    # Path: model/attributes/faas/faas__id.json
+    FAAS_ID: Literal["faas.id"] = "faas.id"
+    """The unique ID of the single function that this runtime instance executes.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: cloud.resource_id
+    DEPRECATED: Use cloud.resource_id instead - This attribute is being deprecated in favor of cloud.resource_id, which is the OTel-aligned replacement (renamed in OTel semantic conventions v1.19.0).
+    Example: "arn:aws:lambda:REGION:ACCOUNT_ID:function:my-function"
     """
 
     # Path: model/attributes/faas/faas__identity.json
@@ -10432,7 +10447,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="arn:aws:lambda:REGION:ACCOUNT_ID:function:my-function",
+        aliases=["faas.id"],
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[475], description="Added faas.id as an alias"
+            ),
             ChangelogEntry(version="0.11.1", prs=[414]),
         ],
         additional_context=[
@@ -11956,6 +11975,27 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 version="next",
                 prs=[473],
                 description="Added faas.execution attribute, deprecated in favor of faas.invocation_id",
+            ),
+        ],
+    ),
+    "faas.id": AttributeMetadata(
+        brief="The unique ID of the single function that this runtime instance executes.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="arn:aws:lambda:REGION:ACCOUNT_ID:function:my-function",
+        deprecation=DeprecationInfo(
+            replacement="cloud.resource_id",
+            reason="This attribute is being deprecated in favor of cloud.resource_id, which is the OTel-aligned replacement (renamed in OTel semantic conventions v1.19.0).",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["cloud.resource_id"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[475],
+                description="Added faas.id attribute, deprecated in favor of cloud.resource_id",
             ),
         ],
     ),
@@ -18410,6 +18450,7 @@ Attributes = TypedDict(
         "faas.duration_in_ms": int,
         "faas.entry_point": str,
         "faas.execution": str,
+        "faas.id": str,
         "faas.identity": str,
         "faas.invocation_id": str,
         "faas.name": str,
