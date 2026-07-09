@@ -172,6 +172,7 @@ class _AttributeNamesMeta(type):
         "DEVICEMEMORY",
         "EFFECTIVECONNECTIONTYPE",
         "ENVIRONMENT",
+        "FAAS_EXECUTION",
         "FCP",
         "FP",
         "FRAMES_DELAY",
@@ -1232,7 +1233,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: faas.invocation_id
+    Aliases: faas.invocation_id, faas.execution
     DEPRECATED: Use faas.invocation_id instead - This attribute is being deprecated in favor of faas.invocation_id
     Example: "8476a536-e9f4-11e8-9739-2dfe598c3fcd"
     """
@@ -3111,6 +3112,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "my_main_function"
     """
 
+    # Path: model/attributes/faas/faas__execution.json
+    FAAS_EXECUTION: Literal["faas.execution"] = "faas.execution"
+    """The execution ID of the current function execution.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: faas.invocation_id, aws.lambda.aws_request_id
+    DEPRECATED: Use faas.invocation_id instead - This attribute is being deprecated in favor of faas.invocation_id, which is the OTel-aligned replacement.
+    Example: "af9d5aa4-a685-4c5f-a22b-444f80b3cc28"
+    """
+
     # Path: model/attributes/faas/faas__identity.json
     FAAS_IDENTITY: Literal["faas.identity"] = "faas.identity"
     """The Service Account (GCP), IAM Execution Role (AWS), or Managed Identity (Azure) used by the serverless function when interacting with other cloud services
@@ -3130,7 +3144,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: aws.lambda.aws_request_id
+    Aliases: aws.lambda.aws_request_id, faas.execution
     Example: "af9d5aa4-a685-4c5f-a22b-444f80b3cc28"
     """
 
@@ -9749,8 +9763,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="This attribute is being deprecated in favor of faas.invocation_id",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["faas.invocation_id"],
+        aliases=["faas.invocation_id", "faas.execution"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[473],
+                description="Added faas.execution as an alias",
+            ),
             ChangelogEntry(
                 version="0.11.1",
                 prs=[414, 424],
@@ -11919,6 +11938,27 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.11.0", prs=[403, 415]),
         ],
     ),
+    "faas.execution": AttributeMetadata(
+        brief="The execution ID of the current function execution.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="af9d5aa4-a685-4c5f-a22b-444f80b3cc28",
+        deprecation=DeprecationInfo(
+            replacement="faas.invocation_id",
+            reason="This attribute is being deprecated in favor of faas.invocation_id, which is the OTel-aligned replacement.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["faas.invocation_id", "aws.lambda.aws_request_id"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[473],
+                description="Added faas.execution attribute, deprecated in favor of faas.invocation_id",
+            ),
+        ],
+    ),
     "faas.identity": AttributeMetadata(
         brief="The Service Account (GCP), IAM Execution Role (AWS), or Managed Identity (Azure) used by the serverless function when interacting with other cloud services",
         type=AttributeType.STRING,
@@ -11937,8 +11977,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="af9d5aa4-a685-4c5f-a22b-444f80b3cc28",
-        aliases=["aws.lambda.aws_request_id"],
+        aliases=["aws.lambda.aws_request_id", "faas.execution"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[473],
+                description="Added faas.execution as an alias",
+            ),
             ChangelogEntry(version="0.11.1", prs=[414, 424]),
         ],
     ),
@@ -18364,6 +18409,7 @@ Attributes = TypedDict(
         "faas.cron": str,
         "faas.duration_in_ms": int,
         "faas.entry_point": str,
+        "faas.execution": str,
         "faas.identity": str,
         "faas.invocation_id": str,
         "faas.name": str,

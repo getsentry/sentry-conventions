@@ -1691,7 +1691,7 @@ export type AWS_CLOUDWATCH_LOGS_URL_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link FAAS_INVOCATION_ID} `faas.invocation_id`
+ * Aliases: {@link FAAS_INVOCATION_ID} `faas.invocation_id`, {@link FAAS_EXECUTION} `faas.execution`
  *
  * @deprecated Use {@link FAAS_INVOCATION_ID} (faas.invocation_id) instead - This attribute is being deprecated in favor of faas.invocation_id
  * @example "8476a536-e9f4-11e8-9739-2dfe598c3fcd"
@@ -5058,6 +5058,30 @@ export const FAAS_ENTRY_POINT = 'faas.entry_point';
  */
 export type FAAS_ENTRY_POINT_TYPE = string;
 
+// Path: model/attributes/faas/faas__execution.json
+
+/**
+ * The execution ID of the current function execution. `faas.execution`
+ *
+ * Attribute Value Type: `string` {@link FAAS_EXECUTION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link FAAS_INVOCATION_ID} `faas.invocation_id`, {@link AWS_LAMBDA_AWS_REQUEST_ID} `aws.lambda.aws_request_id`
+ *
+ * @deprecated Use {@link FAAS_INVOCATION_ID} (faas.invocation_id) instead - This attribute is being deprecated in favor of faas.invocation_id, which is the OTel-aligned replacement.
+ * @example "af9d5aa4-a685-4c5f-a22b-444f80b3cc28"
+ */
+export const FAAS_EXECUTION = 'faas.execution';
+
+/**
+ * Type for {@link FAAS_EXECUTION} faas.execution
+ */
+export type FAAS_EXECUTION_TYPE = string;
+
 // Path: model/attributes/faas/faas__identity.json
 
 /**
@@ -5091,7 +5115,7 @@ export type FAAS_IDENTITY_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link AWS_LAMBDA_AWS_REQUEST_ID} `aws.lambda.aws_request_id`
+ * Aliases: {@link AWS_LAMBDA_AWS_REQUEST_ID} `aws.lambda.aws_request_id`, {@link FAAS_EXECUTION} `faas.execution`
  *
  * @example "af9d5aa4-a685-4c5f-a22b-444f80b3cc28"
  */
@@ -15162,6 +15186,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'faas.cron': 'string',
   'faas.duration_in_ms': 'integer',
   'faas.entry_point': 'string',
+  'faas.execution': 'string',
   'faas.identity': 'string',
   'faas.invocation_id': 'string',
   'faas.name': 'string',
@@ -15841,6 +15866,7 @@ export type AttributeName =
   | typeof FAAS_CRON
   | typeof FAAS_DURATION_IN_MS
   | typeof FAAS_ENTRY_POINT
+  | typeof FAAS_EXECUTION
   | typeof FAAS_IDENTITY
   | typeof FAAS_INVOCATION_ID
   | typeof FAAS_NAME
@@ -17376,8 +17402,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'faas.invocation_id',
       reason: 'This attribute is being deprecated in favor of faas.invocation_id',
     },
-    aliases: ['faas.invocation_id'],
+    aliases: ['faas.invocation_id', 'faas.execution'],
     changelog: [
+      { version: 'next', prs: [473], description: 'Added faas.execution as an alias' },
       {
         version: '0.11.1',
         prs: [414, 424],
@@ -19305,6 +19332,29 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'my_main_function',
     changelog: [{ version: '0.11.0', prs: [403, 415] }],
   },
+  'faas.execution': {
+    brief: 'The execution ID of the current function execution.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'af9d5aa4-a685-4c5f-a22b-444f80b3cc28',
+    deprecation: {
+      replacement: 'faas.invocation_id',
+      reason:
+        'This attribute is being deprecated in favor of faas.invocation_id, which is the OTel-aligned replacement.',
+    },
+    aliases: ['faas.invocation_id', 'aws.lambda.aws_request_id'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [473],
+        description: 'Added faas.execution attribute, deprecated in favor of faas.invocation_id',
+      },
+    ],
+  },
   'faas.identity': {
     brief:
       'The Service Account (GCP), IAM Execution Role (AWS), or Managed Identity (Azure) used by the serverless function when interacting with other cloud services',
@@ -19327,8 +19377,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'af9d5aa4-a685-4c5f-a22b-444f80b3cc28',
-    aliases: ['aws.lambda.aws_request_id'],
-    changelog: [{ version: '0.11.1', prs: [414, 424] }],
+    aliases: ['aws.lambda.aws_request_id', 'faas.execution'],
+    changelog: [
+      { version: 'next', prs: [473], description: 'Added faas.execution as an alias' },
+      { version: '0.11.1', prs: [414, 424] },
+    ],
   },
   'faas.name': {
     brief: 'The name of the serverless function',
@@ -25486,6 +25539,7 @@ export type Attributes = {
   [FAAS_CRON]?: FAAS_CRON_TYPE;
   [FAAS_DURATION_IN_MS]?: FAAS_DURATION_IN_MS_TYPE;
   [FAAS_ENTRY_POINT]?: FAAS_ENTRY_POINT_TYPE;
+  [FAAS_EXECUTION]?: FAAS_EXECUTION_TYPE;
   [FAAS_IDENTITY]?: FAAS_IDENTITY_TYPE;
   [FAAS_INVOCATION_ID]?: FAAS_INVOCATION_ID_TYPE;
   [FAAS_NAME]?: FAAS_NAME_TYPE;
