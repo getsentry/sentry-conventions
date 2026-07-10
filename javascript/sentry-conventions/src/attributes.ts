@@ -10854,6 +10854,8 @@ export type PROCESS_EXECUTABLE_NAME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link SUBPROCESS_PID} `subprocess.pid`
+ *
  * @example 12345
  */
 export const PROCESS_PID = 'process.pid';
@@ -13168,6 +13170,30 @@ export const STATE_TYPE = 'state.type';
  * Type for {@link STATE_TYPE} state.type
  */
 export type STATE_TYPE_TYPE = string;
+
+// Path: model/attributes/subprocess/subprocess__pid.json
+
+/**
+ * The process ID of a subprocess. `subprocess.pid`
+ *
+ * Attribute Value Type: `number` {@link SUBPROCESS_PID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link PROCESS_PID} `process.pid`
+ *
+ * @deprecated Use {@link PROCESS_PID} (process.pid) instead - This attribute is being deprecated in favor of process.pid, which is the OTel-aligned replacement.
+ * @example 12345
+ */
+export const SUBPROCESS_PID = 'subprocess.pid';
+
+/**
+ * Type for {@link SUBPROCESS_PID} subprocess.pid
+ */
+export type SUBPROCESS_PID_TYPE = number;
 
 // Path: model/attributes/thread/thread__id.json
 
@@ -15601,6 +15627,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   stall_percentage: 'double',
   stall_total_time: 'double',
   'state.type': 'string',
+  'subprocess.pid': 'integer',
   'thread.id': 'integer',
   'thread.name': 'string',
   'timber.tag': 'string',
@@ -16283,6 +16310,7 @@ export type AttributeName =
   | typeof STALL_PERCENTAGE
   | typeof STALL_TOTAL_TIME
   | typeof STATE_TYPE
+  | typeof SUBPROCESS_PID
   | typeof THREAD_ID
   | typeof THREAD_NAME
   | typeof TIMBER_TAG
@@ -23067,7 +23095,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 12345,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    aliases: ['subprocess.pid'],
+    changelog: [
+      { version: 'next', description: 'Added subprocess.pid as an alias' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.0.0' },
+    ],
   },
   'process.runtime.description': {
     brief:
@@ -24401,6 +24434,22 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'redux',
     changelog: [{ version: '0.7.0', prs: [365], description: 'Added state.type attribute' }],
+  },
+  'subprocess.pid': {
+    brief: 'The process ID of a subprocess.',
+    type: 'integer',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 12345,
+    deprecation: {
+      replacement: 'process.pid',
+      reason: 'This attribute is being deprecated in favor of process.pid, which is the OTel-aligned replacement.',
+    },
+    aliases: ['process.pid'],
+    changelog: [{ version: 'next', description: 'Added subprocess.pid attribute, deprecated in favor of process.pid' }],
   },
   'thread.id': {
     brief: 'Current “managed” thread ID.',
@@ -25993,6 +26042,7 @@ export type Attributes = {
   [STALL_PERCENTAGE]?: STALL_PERCENTAGE_TYPE;
   [STALL_TOTAL_TIME]?: STALL_TOTAL_TIME_TYPE;
   [STATE_TYPE]?: STATE_TYPE_TYPE;
+  [SUBPROCESS_PID]?: SUBPROCESS_PID_TYPE;
   [THREAD_ID]?: THREAD_ID_TYPE;
   [THREAD_NAME]?: THREAD_NAME_TYPE;
   [TIMBER_TAG]?: TIMBER_TAG_TYPE;

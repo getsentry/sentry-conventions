@@ -273,6 +273,7 @@ class _AttributeNamesMeta(type):
         "SENTRY_USER_ID",
         "SENTRY_USER_IP",
         "SENTRY_USER_USERNAME",
+        "SUBPROCESS_PID",
         "TIME_TO_FULL_DISPLAY",
         "TIME_TO_INITIAL_DISPLAY",
         "TRANSACTION",
@@ -6383,6 +6384,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: subprocess.pid
     Example: 12345
     """
 
@@ -7657,6 +7659,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Example: "redux"
+    """
+
+    # Path: model/attributes/subprocess/subprocess__pid.json
+    SUBPROCESS_PID: Literal["subprocess.pid"] = "subprocess.pid"
+    """The process ID of a subprocess.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: process.pid
+    DEPRECATED: Use process.pid instead - This attribute is being deprecated in favor of process.pid, which is the OTel-aligned replacement.
+    Example: 12345
     """
 
     # Path: model/attributes/thread/thread__id.json
@@ -15848,7 +15863,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=12345,
+        aliases=["subprocess.pid"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added subprocess.pid as an alias"
+            ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -17203,6 +17222,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="0.7.0", prs=[365], description="Added state.type attribute"
+            ),
+        ],
+    ),
+    "subprocess.pid": AttributeMetadata(
+        brief="The process ID of a subprocess.",
+        type=AttributeType.INTEGER,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=12345,
+        deprecation=DeprecationInfo(
+            replacement="process.pid",
+            reason="This attribute is being deprecated in favor of process.pid, which is the OTel-aligned replacement.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["process.pid"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added subprocess.pid attribute, deprecated in favor of process.pid",
             ),
         ],
     ),
@@ -18841,6 +18880,7 @@ Attributes = TypedDict(
         "stall_percentage": float,
         "stall_total_time": float,
         "state.type": str,
+        "subprocess.pid": int,
         "thread.id": int,
         "thread.name": str,
         "timber.tag": str,
