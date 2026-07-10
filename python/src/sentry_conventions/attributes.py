@@ -254,6 +254,7 @@ class _AttributeNamesMeta(type):
         "RESOURCE_DEPLOYMENT_ENVIRONMENT",
         "RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME",
         "ROUTE",
+        "RPC_SYSTEM",
         "RUNTIME_BUILD",
         "RUNTIME_NAME",
         "RUNTIME_RAW_DESCRIPTION",
@@ -6650,8 +6651,22 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     Type: str
     Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: rpc.system.name
+    DEPRECATED: Use rpc.system.name instead - This attribute is being deprecated in favor of rpc.system.name, which is the OTel-aligned replacement.
+    Example: "aws-api"
+    """
+
+    # Path: model/attributes/rpc/rpc__system__name.json
+    RPC_SYSTEM_NAME: Literal["rpc.system.name"] = "rpc.system.name"
+    """A string identifying the remoting system.
+
+    Type: str
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: rpc.system
     Example: "aws-api"
     """
 
@@ -16174,12 +16189,34 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="A string identifying the remoting system.",
         type=AttributeType.STRING,
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="aws-api",
+        deprecation=DeprecationInfo(
+            replacement="rpc.system.name",
+            reason="This attribute is being deprecated in favor of rpc.system.name, which is the OTel-aligned replacement.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["rpc.system.name"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[482],
+                description="Added rpc.system attribute, deprecated in favor of rpc.system.name",
+            ),
+        ],
+    ),
+    "rpc.system.name": AttributeMetadata(
+        brief="A string identifying the remoting system.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="aws-api",
+        aliases=["rpc.system"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[482], description="Added rpc.system attribute"
+                version="next", prs=[482], description="Added rpc.system.name attribute"
             ),
         ],
     ),
@@ -18850,6 +18887,7 @@ Attributes = TypedDict(
         "rpc.response.status_code": str,
         "rpc.service": str,
         "rpc.system": str,
+        "rpc.system.name": str,
         "runtime.build": str,
         "runtime.name": str,
         "runtime.raw_description": str,

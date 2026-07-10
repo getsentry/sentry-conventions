@@ -11378,9 +11378,12 @@ export type RPC_SERVICE_TYPE = string;
  *
  * Apply Scrubbing: manual
  *
- * Attribute defined in OTEL: Yes
+ * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link RPC_SYSTEM_NAME} `rpc.system.name`
+ *
+ * @deprecated Use {@link RPC_SYSTEM_NAME} (rpc.system.name) instead - This attribute is being deprecated in favor of rpc.system.name, which is the OTel-aligned replacement.
  * @example "aws-api"
  */
 export const RPC_SYSTEM = 'rpc.system';
@@ -11389,6 +11392,29 @@ export const RPC_SYSTEM = 'rpc.system';
  * Type for {@link RPC_SYSTEM} rpc.system
  */
 export type RPC_SYSTEM_TYPE = string;
+
+// Path: model/attributes/rpc/rpc__system__name.json
+
+/**
+ * A string identifying the remoting system. `rpc.system.name`
+ *
+ * Attribute Value Type: `string` {@link RPC_SYSTEM_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link RPC_SYSTEM} `rpc.system`
+ *
+ * @example "aws-api"
+ */
+export const RPC_SYSTEM_NAME = 'rpc.system.name';
+
+/**
+ * Type for {@link RPC_SYSTEM_NAME} rpc.system.name
+ */
+export type RPC_SYSTEM_NAME_TYPE = string;
 
 // Path: model/attributes/runtime/runtime__build.json
 
@@ -15668,6 +15694,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'rpc.response.status_code': 'string',
   'rpc.service': 'string',
   'rpc.system': 'string',
+  'rpc.system.name': 'string',
   'runtime.build': 'string',
   'runtime.name': 'string',
   'runtime.raw_description': 'string',
@@ -16353,6 +16380,7 @@ export type AttributeName =
   | typeof RPC_RESPONSE_STATUS_CODE
   | typeof RPC_SERVICE
   | typeof RPC_SYSTEM
+  | typeof RPC_SYSTEM_NAME
   | typeof RUNTIME_BUILD
   | typeof RUNTIME_NAME
   | typeof RUNTIME_RAW_DESCRIPTION
@@ -23500,10 +23528,33 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     applyScrubbing: {
       key: 'manual',
     },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'aws-api',
+    deprecation: {
+      replacement: 'rpc.system.name',
+      reason: 'This attribute is being deprecated in favor of rpc.system.name, which is the OTel-aligned replacement.',
+    },
+    aliases: ['rpc.system.name'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [482],
+        description: 'Added rpc.system attribute, deprecated in favor of rpc.system.name',
+      },
+    ],
+  },
+  'rpc.system.name': {
+    brief: 'A string identifying the remoting system.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
     isInOtel: true,
     visibility: 'public',
     example: 'aws-api',
-    changelog: [{ version: 'next', prs: [482], description: 'Added rpc.system attribute' }],
+    aliases: ['rpc.system'],
+    changelog: [{ version: 'next', prs: [482], description: 'Added rpc.system.name attribute' }],
   },
   'runtime.build': {
     brief: 'The application build string, when it is separate from the version.',
@@ -26116,6 +26167,7 @@ export type Attributes = {
   [RPC_RESPONSE_STATUS_CODE]?: RPC_RESPONSE_STATUS_CODE_TYPE;
   [RPC_SERVICE]?: RPC_SERVICE_TYPE;
   [RPC_SYSTEM]?: RPC_SYSTEM_TYPE;
+  [RPC_SYSTEM_NAME]?: RPC_SYSTEM_NAME_TYPE;
   [RUNTIME_BUILD]?: RUNTIME_BUILD_TYPE;
   [RUNTIME_NAME]?: RUNTIME_NAME_TYPE;
   [RUNTIME_RAW_DESCRIPTION]?: RUNTIME_RAW_DESCRIPTION_TYPE;
