@@ -1882,6 +1882,30 @@ export const AWS_LOG_STREAM_NAMES = 'aws.log.stream.names';
  */
 export type AWS_LOG_STREAM_NAMES_TYPE = Array<string>;
 
+// Path: model/attributes/aws/aws__request__url.json
+
+/**
+ * The URL of the AWS API request. `aws.request.url`
+ *
+ * Attribute Value Type: `string` {@link AWS_REQUEST_URL_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link URL_FULL} `url.full`
+ *
+ * @deprecated Use {@link URL_FULL} (url.full) instead - This attribute is being deprecated in favor of url.full, which is the OTel-aligned replacement.
+ * @example "https://sqs.us-east-1.amazonaws.com/123456789/my-queue"
+ */
+export const AWS_REQUEST_URL = 'aws.request.url';
+
+/**
+ * Type for {@link AWS_REQUEST_URL} aws.request.url
+ */
+export type AWS_REQUEST_URL_TYPE = string;
+
 // Path: model/attributes/blocked_main_thread.json
 
 /**
@@ -13745,7 +13769,7 @@ export type URL_FRAGMENT_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link HTTP_URL} `http.url`, {@link URL} `url`
+ * Aliases: {@link HTTP_URL} `http.url`, {@link URL} `url`, {@link AWS_REQUEST_URL} `aws.request.url`
  *
  * @example "https://example.com/test?foo=bar#buzz"
  */
@@ -15087,6 +15111,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'aws.lambda.remaining_time_in_millis': 'double',
   'aws.log.group.names': 'string[]',
   'aws.log.stream.names': 'string[]',
+  'aws.request.url': 'string',
   blocked_main_thread: 'boolean',
   'browser.name': 'string',
   'browser.performance.navigation.activation_start': 'double',
@@ -15769,6 +15794,7 @@ export type AttributeName =
   | typeof AWS_LAMBDA_REMAINING_TIME_IN_MILLIS
   | typeof AWS_LOG_GROUP_NAMES
   | typeof AWS_LOG_STREAM_NAMES
+  | typeof AWS_REQUEST_URL
   | typeof BLOCKED_MAIN_THREAD
   | typeof BROWSER_NAME
   | typeof BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START
@@ -17586,6 +17612,22 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: ['logs/main/10838bed-421f-43ef-870a-f43feacbbb5b'],
     changelog: [{ version: '0.11.1', prs: [414] }],
+  },
+  'aws.request.url': {
+    brief: 'The URL of the AWS API request.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'https://sqs.us-east-1.amazonaws.com/123456789/my-queue',
+    deprecation: {
+      replacement: 'url.full',
+      reason: 'This attribute is being deprecated in favor of url.full, which is the OTel-aligned replacement.',
+    },
+    aliases: ['url.full'],
+    changelog: [{ version: 'next', description: 'Added aws.request.url attribute, deprecated in favor of url.full' }],
   },
   blocked_main_thread: {
     brief: 'Whether the main thread was blocked by the span.',
@@ -24742,8 +24784,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'https://example.com/test?foo=bar#buzz',
-    aliases: ['http.url', 'url'],
-    changelog: [{ version: '0.1.0', prs: [108] }, { version: '0.0.0' }],
+    aliases: ['http.url', 'url', 'aws.request.url'],
+    changelog: [
+      { version: 'next', description: 'Added aws.request.url as an alias' },
+      { version: '0.1.0', prs: [108] },
+      { version: '0.0.0' },
+    ],
   },
   'url.path': {
     brief: 'The URI path component.',
@@ -25479,6 +25525,7 @@ export type Attributes = {
   [AWS_LAMBDA_REMAINING_TIME_IN_MILLIS]?: AWS_LAMBDA_REMAINING_TIME_IN_MILLIS_TYPE;
   [AWS_LOG_GROUP_NAMES]?: AWS_LOG_GROUP_NAMES_TYPE;
   [AWS_LOG_STREAM_NAMES]?: AWS_LOG_STREAM_NAMES_TYPE;
+  [AWS_REQUEST_URL]?: AWS_REQUEST_URL_TYPE;
   [BLOCKED_MAIN_THREAD]?: BLOCKED_MAIN_THREAD_TYPE;
   [BROWSER_NAME]?: BROWSER_NAME_TYPE;
   [BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START]?: BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START_TYPE;

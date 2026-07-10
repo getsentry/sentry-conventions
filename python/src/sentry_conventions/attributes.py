@@ -156,6 +156,7 @@ class _AttributeNamesMeta(type):
         "AWS_LAMBDA_FUNCTION_NAME",
         "AWS_LAMBDA_FUNCTION_VERSION",
         "AWS_LAMBDA_INVOKED_FUNCTION_ARN",
+        "AWS_REQUEST_URL",
         "CLOUDFLARE_D1_QUERY_TYPE",
         "CLS_SOURCE_KEY",
         "CLS",
@@ -1342,6 +1343,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Example: ["logs/main/10838bed-421f-43ef-870a-f43feacbbb5b"]
+    """
+
+    # Path: model/attributes/aws/aws__request__url.json
+    AWS_REQUEST_URL: Literal["aws.request.url"] = "aws.request.url"
+    """The URL of the AWS API request.
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: url.full
+    DEPRECATED: Use url.full instead - This attribute is being deprecated in favor of url.full, which is the OTel-aligned replacement.
+    Example: "https://sqs.us-east-1.amazonaws.com/123456789/my-queue"
     """
 
     # Path: model/attributes/blocked_main_thread.json
@@ -7954,7 +7968,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: http.url, url
+    Aliases: http.url, url, aws.request.url
     Example: "https://example.com/test?foo=bar#buzz"
     """
 
@@ -9948,6 +9962,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=["logs/main/10838bed-421f-43ef-870a-f43feacbbb5b"],
         changelog=[
             ChangelogEntry(version="0.11.1", prs=[414]),
+        ],
+    ),
+    "aws.request.url": AttributeMetadata(
+        brief="The URL of the AWS API request.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="https://sqs.us-east-1.amazonaws.com/123456789/my-queue",
+        deprecation=DeprecationInfo(
+            replacement="url.full",
+            reason="This attribute is being deprecated in favor of url.full, which is the OTel-aligned replacement.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["url.full"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added aws.request.url attribute, deprecated in favor of url.full",
+            ),
         ],
     ),
     "blocked_main_thread": AttributeMetadata(
@@ -17573,8 +17607,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="https://example.com/test?foo=bar#buzz",
-        aliases=["http.url", "url"],
+        aliases=["http.url", "url", "aws.request.url"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added aws.request.url as an alias"
+            ),
             ChangelogEntry(version="0.1.0", prs=[108]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -18327,6 +18364,7 @@ Attributes = TypedDict(
         "aws.lambda.remaining_time_in_millis": float,
         "aws.log.group.names": List[str],
         "aws.log.stream.names": List[str],
+        "aws.request.url": str,
         "blocked_main_thread": bool,
         "browser.name": str,
         "browser.performance.navigation.activation_start": float,

@@ -1,0 +1,23 @@
+{
+  "key": "aws.request.url",
+  "brief": "The URL of the AWS API request.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "auto"
+  },
+  "is_in_otel": false,
+  "example": "https://sqs.us-east-1.amazonaws.com/123456789/my-queue",
+  "alias": ["url.full"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "url.full",
+    "reason": "This attribute is being deprecated in favor of url.full, which is the OTel-aligned replacement."
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added aws.request.url attribute, deprecated in favor of url.full"
+    }
+  ]
+}
