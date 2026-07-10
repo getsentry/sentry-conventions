@@ -11,7 +11,7 @@
   "alias": ["sentry.dist"],
   "deprecation": {
     "_status": "backfill",
-    "replacement": "server.dist",
+    "replacement": "sentry.dist",
     "reason": "This attribute is being deprecated in favor of sentry.dist."
   },
   "changelog": [

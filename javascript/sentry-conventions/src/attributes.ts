@@ -4812,7 +4812,7 @@ export type DEVICE_USABLE_MEMORY_TYPE = number;
  *
  * Aliases: {@link SENTRY_DIST} `sentry.dist`
  *
- * @deprecated Use {@link SERVER_DIST} (server.dist) instead - This attribute is being deprecated in favor of sentry.dist.
+ * @deprecated Use {@link SENTRY_DIST} (sentry.dist) instead - This attribute is being deprecated in favor of sentry.dist.
  * @example "1.0"
  */
 export const DIST = 'dist';
@@ -11707,6 +11707,8 @@ export type SENTRY_DESCRIPTION_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Aliases: {@link DIST} `dist`
  *
  * @example "1.0"
  */
@@ -19344,7 +19346,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '1.0',
     deprecation: {
-      replacement: 'server.dist',
+      replacement: 'sentry.dist',
       reason: 'This attribute is being deprecated in favor of sentry.dist.',
     },
     aliases: ['sentry.dist'],
@@ -23649,7 +23651,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: '1.0',
-    changelog: [{ version: '0.0.0' }],
+    aliases: ['dist'],
+    changelog: [{ version: 'next', description: 'Added dist as an alias' }, { version: '0.0.0' }],
   },
   'sentry.domain': {
     brief:

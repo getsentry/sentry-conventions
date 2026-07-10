@@ -2975,7 +2975,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Aliases: sentry.dist
-    DEPRECATED: Use server.dist instead - This attribute is being deprecated in favor of sentry.dist.
+    DEPRECATED: Use sentry.dist instead - This attribute is being deprecated in favor of sentry.dist.
     Example: "1.0"
     """
 
@@ -6822,6 +6822,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
+    Aliases: dist
     Example: "1.0"
     """
 
@@ -11829,7 +11830,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="1.0",
         deprecation=DeprecationInfo(
-            replacement="server.dist",
+            replacement="sentry.dist",
             reason="This attribute is being deprecated in favor of sentry.dist.",
             status=DeprecationStatus.BACKFILL,
         ),
@@ -16346,7 +16347,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="1.0",
+        aliases=["dist"],
         changelog=[
+            ChangelogEntry(version="next", description="Added dist as an alias"),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
