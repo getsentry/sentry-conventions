@@ -227,6 +227,7 @@ class _AttributeNamesMeta(type):
         "MCP_TOOL_RESULT_CONTENT",
         "MCP_TOOL_RESULT_IS_ERROR",
         "MCP_TRANSPORT",
+        "MESSAGING_DESTINATION",
         "METHOD",
         "NET_HOST_IP",
         "NET_HOST_NAME",
@@ -253,6 +254,7 @@ class _AttributeNamesMeta(type):
         "RESOURCE_DEPLOYMENT_ENVIRONMENT",
         "RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME",
         "ROUTE",
+        "RPC_SYSTEM",
         "RUNTIME_BUILD",
         "RUNTIME_NAME",
         "RUNTIME_RAW_DESCRIPTION",
@@ -4107,6 +4109,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "1234567890"
     """
 
+    # Path: model/attributes/gen_ai/gen_ai__request__stop_sequences.json
+    GEN_AI_REQUEST_STOP_SEQUENCES: Literal["gen_ai.request.stop_sequences"] = (
+        "gen_ai.request.stop_sequences"
+    )
+    """List of sequences that the model will use to stop generating further tokens.
+
+    Type: List[str]
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: ["forest","lived"]
+    """
+
     # Path: model/attributes/gen_ai/gen_ai__request__temperature.json
     GEN_AI_REQUEST_TEMPERATURE: Literal["gen_ai.request.temperature"] = (
         "gen_ai.request.temperature"
@@ -5857,6 +5872,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 10
     """
 
+    # Path: model/attributes/messaging/messaging__destination.json
+    MESSAGING_DESTINATION: Literal["messaging.destination"] = "messaging.destination"
+    """The message destination name.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: messaging.destination.name
+    DEPRECATED: Use messaging.destination.name instead - This attribute is being deprecated in favor of messaging.destination.name, which is the OTel-aligned replacement.
+    Example: "BestTopic"
+    """
+
     # Path: model/attributes/messaging/messaging__destination__connection.json
     MESSAGING_DESTINATION_CONNECTION: Literal["messaging.destination.connection"] = (
         "messaging.destination.connection"
@@ -5880,6 +5908,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: messaging.destination
     Example: "BestTopic"
     """
 
@@ -6912,6 +6941,31 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Example: "myService.BestService"
+    """
+
+    # Path: model/attributes/rpc/rpc__system.json
+    RPC_SYSTEM: Literal["rpc.system"] = "rpc.system"
+    """A string identifying the remoting system.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Aliases: rpc.system.name
+    DEPRECATED: Use rpc.system.name instead - This attribute is being deprecated in favor of rpc.system.name, which is the OTel-aligned replacement.
+    Example: "aws-api"
+    """
+
+    # Path: model/attributes/rpc/rpc__system__name.json
+    RPC_SYSTEM_NAME: Literal["rpc.system.name"] = "rpc.system.name"
+    """A string identifying the remoting system.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Aliases: rpc.system
+    Example: "aws-api"
     """
 
     # Path: model/attributes/runtime/runtime__build.json
@@ -13489,6 +13543,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[57, 127]),
         ],
     ),
+    "gen_ai.request.stop_sequences": AttributeMetadata(
+        brief="List of sequences that the model will use to stop generating further tokens.",
+        type=AttributeType.STRING_ARRAY,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=["forest", "lived"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[482],
+                description="Added gen_ai.request.stop_sequences attribute",
+            ),
+        ],
+    ),
     "gen_ai.request.temperature": AttributeMetadata(
         brief="For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.",
         type=AttributeType.DOUBLE,
@@ -15587,6 +15656,27 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "messaging.destination": AttributeMetadata(
+        brief="The message destination name.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="BestTopic",
+        deprecation=DeprecationInfo(
+            replacement="messaging.destination.name",
+            reason="This attribute is being deprecated in favor of messaging.destination.name, which is the OTel-aligned replacement.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["messaging.destination.name"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[482],
+                description="Added messaging.destination attribute, deprecated in favor of messaging.destination.name",
+            ),
+        ],
+    ),
     "messaging.destination.connection": AttributeMetadata(
         brief="The message destination connection.",
         type=AttributeType.STRING,
@@ -15606,7 +15696,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="BestTopic",
+        aliases=["messaging.destination"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[482],
+                description="Added messaging.destination as an alias",
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -16753,6 +16849,41 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "rpc.system": AttributeMetadata(
+        brief="A string identifying the remoting system.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="aws-api",
+        deprecation=DeprecationInfo(
+            replacement="rpc.system.name",
+            reason="This attribute is being deprecated in favor of rpc.system.name, which is the OTel-aligned replacement.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["rpc.system.name"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[482],
+                description="Added rpc.system attribute, deprecated in favor of rpc.system.name",
+            ),
+        ],
+    ),
+    "rpc.system.name": AttributeMetadata(
+        brief="A string identifying the remoting system.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="aws-api",
+        aliases=["rpc.system"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[482], description="Added rpc.system.name attribute"
+            ),
         ],
     ),
     "runtime.build": AttributeMetadata(
@@ -19219,6 +19350,7 @@ Attributes = TypedDict(
         "gen_ai.request.presence_penalty": float,
         "gen_ai.request.reasoning_effort": str,
         "gen_ai.request.seed": str,
+        "gen_ai.request.stop_sequences": List[str],
         "gen_ai.request.temperature": float,
         "gen_ai.request.top_k": int,
         "gen_ai.request.top_p": float,
@@ -19357,6 +19489,7 @@ Attributes = TypedDict(
         "mcp.transport": str,
         "mdc.<key>": str,
         "messaging.batch.message_count": int,
+        "messaging.destination": str,
         "messaging.destination.connection": str,
         "messaging.destination.name": str,
         "messaging.message.body.size": int,
@@ -19443,6 +19576,8 @@ Attributes = TypedDict(
         "rpc.method": str,
         "rpc.response.status_code": str,
         "rpc.service": str,
+        "rpc.system": str,
+        "rpc.system.name": str,
         "runtime.build": str,
         "runtime.name": str,
         "runtime.raw_description": str,
