@@ -2120,6 +2120,27 @@ export const AWS_DYNAMODB_TOTAL_SEGMENTS = 'aws.dynamodb.total_segments';
  */
 export type AWS_DYNAMODB_TOTAL_SEGMENTS_TYPE = number;
 
+// Path: model/attributes/aws/aws__kinesis__stream__name.json
+
+/**
+ * The name of the AWS Kinesis stream the request refers to. `aws.kinesis.stream.name`
+ *
+ * Attribute Value Type: `string` {@link AWS_KINESIS_STREAM_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "some-stream-name"
+ */
+export const AWS_KINESIS_STREAM_NAME = 'aws.kinesis.stream.name';
+
+/**
+ * Type for {@link AWS_KINESIS_STREAM_NAME} aws.kinesis.stream.name
+ */
+export type AWS_KINESIS_STREAM_NAME_TYPE = string;
+
 // Path: model/attributes/aws/aws__lambda__aws_request_id.json
 
 /**
@@ -2322,6 +2343,153 @@ export const AWS_LOG_STREAM_NAMES = 'aws.log.stream.names';
  * Type for {@link AWS_LOG_STREAM_NAMES} aws.log.stream.names
  */
 export type AWS_LOG_STREAM_NAMES_TYPE = Array<string>;
+
+// Path: model/attributes/aws/aws__request__extended_id.json
+
+/**
+ * The AWS extended request ID as returned in the response headers. `aws.request.extended_id`
+ *
+ * Attribute Value Type: `string` {@link AWS_REQUEST_EXTENDED_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "wzHcyEWfmOGDIE5QOhTAqFDoDWP3y8IUvpNINCwL9N4TEHbUw0/gZJ+VZTmCNCWR7fezEN3eCiQ="
+ */
+export const AWS_REQUEST_EXTENDED_ID = 'aws.request.extended_id';
+
+/**
+ * Type for {@link AWS_REQUEST_EXTENDED_ID} aws.request.extended_id
+ */
+export type AWS_REQUEST_EXTENDED_ID_TYPE = string;
+
+// Path: model/attributes/aws/aws__request__id.json
+
+/**
+ * The AWS request ID as returned in the response headers. `aws.request.id`
+ *
+ * Attribute Value Type: `string` {@link AWS_REQUEST_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "79b9da39-b7ae-508a-a6bc-864b2829c622"
+ */
+export const AWS_REQUEST_ID = 'aws.request.id';
+
+/**
+ * Type for {@link AWS_REQUEST_ID} aws.request.id
+ */
+export type AWS_REQUEST_ID_TYPE = string;
+
+// Path: model/attributes/aws/aws__s3__bucket.json
+
+/**
+ * The S3 bucket name the request refers to. `aws.s3.bucket`
+ *
+ * Attribute Value Type: `string` {@link AWS_S3_BUCKET_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "ot-demo-test"
+ */
+export const AWS_S3_BUCKET = 'aws.s3.bucket';
+
+/**
+ * Type for {@link AWS_S3_BUCKET} aws.s3.bucket
+ */
+export type AWS_S3_BUCKET_TYPE = string;
+
+// Path: model/attributes/aws/aws__secretsmanager__secret__arn.json
+
+/**
+ * The ARN of the Secret stored in Secrets Manager. `aws.secretsmanager.secret.arn`
+ *
+ * Attribute Value Type: `string` {@link AWS_SECRETSMANAGER_SECRET_ARN_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "arn:aws:secretsmanager:us-east-1:123456789012:secret:SecretName-6RandomCharacters"
+ */
+export const AWS_SECRETSMANAGER_SECRET_ARN = 'aws.secretsmanager.secret.arn';
+
+/**
+ * Type for {@link AWS_SECRETSMANAGER_SECRET_ARN} aws.secretsmanager.secret.arn
+ */
+export type AWS_SECRETSMANAGER_SECRET_ARN_TYPE = string;
+
+// Path: model/attributes/aws/aws__sns__topic__arn.json
+
+/**
+ * The ARN of the AWS SNS Topic. An Amazon SNS topic is a logical access point that acts as a communication channel. `aws.sns.topic.arn`
+ *
+ * Attribute Value Type: `string` {@link AWS_SNS_TOPIC_ARN_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "arn:aws:sns:us-east-1:123456789012:mystack-mytopic-NZJ5JSMVGFIE"
+ */
+export const AWS_SNS_TOPIC_ARN = 'aws.sns.topic.arn';
+
+/**
+ * Type for {@link AWS_SNS_TOPIC_ARN} aws.sns.topic.arn
+ */
+export type AWS_SNS_TOPIC_ARN_TYPE = string;
+
+// Path: model/attributes/aws/aws__step_functions__activity__arn.json
+
+/**
+ * The ARN of the AWS Step Functions Activity. `aws.step_functions.activity.arn`
+ *
+ * Attribute Value Type: `string` {@link AWS_STEP_FUNCTIONS_ACTIVITY_ARN_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "arn:aws:states:us-east-1:123456789012:activity:get-greeting"
+ */
+export const AWS_STEP_FUNCTIONS_ACTIVITY_ARN = 'aws.step_functions.activity.arn';
+
+/**
+ * Type for {@link AWS_STEP_FUNCTIONS_ACTIVITY_ARN} aws.step_functions.activity.arn
+ */
+export type AWS_STEP_FUNCTIONS_ACTIVITY_ARN_TYPE = string;
+
+// Path: model/attributes/aws/aws__step_functions__state_machine__arn.json
+
+/**
+ * The ARN of the AWS Step Functions State Machine. `aws.step_functions.state_machine.arn`
+ *
+ * Attribute Value Type: `string` {@link AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "arn:aws:states:us-east-1:123456789012:stateMachine:myStateMachine:1"
+ */
+export const AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN = 'aws.step_functions.state_machine.arn';
+
+/**
+ * Type for {@link AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN} aws.step_functions.state_machine.arn
+ */
+export type AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN_TYPE = string;
 
 // Path: model/attributes/blocked_main_thread.json
 
@@ -15781,6 +15949,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'aws.dynamodb.table_count': 'integer',
   'aws.dynamodb.table_names': 'string[]',
   'aws.dynamodb.total_segments': 'integer',
+  'aws.kinesis.stream.name': 'string',
   'aws.lambda.aws_request_id': 'string',
   'aws.lambda.execution_duration_in_millis': 'double',
   'aws.lambda.function_name': 'string',
@@ -15790,6 +15959,13 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'aws.lambda.remaining_time_in_millis': 'double',
   'aws.log.group.names': 'string[]',
   'aws.log.stream.names': 'string[]',
+  'aws.request.extended_id': 'string',
+  'aws.request.id': 'string',
+  'aws.s3.bucket': 'string',
+  'aws.secretsmanager.secret.arn': 'string',
+  'aws.sns.topic.arn': 'string',
+  'aws.step_functions.activity.arn': 'string',
+  'aws.step_functions.state_machine.arn': 'string',
   blocked_main_thread: 'boolean',
   'browser.name': 'string',
   'browser.performance.navigation.activation_start': 'double',
@@ -16491,6 +16667,7 @@ export type AttributeName =
   | typeof AWS_DYNAMODB_TABLE_COUNT
   | typeof AWS_DYNAMODB_TABLE_NAMES
   | typeof AWS_DYNAMODB_TOTAL_SEGMENTS
+  | typeof AWS_KINESIS_STREAM_NAME
   | typeof AWS_LAMBDA_AWS_REQUEST_ID
   | typeof AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS
   | typeof AWS_LAMBDA_FUNCTION_NAME
@@ -16500,6 +16677,13 @@ export type AttributeName =
   | typeof AWS_LAMBDA_REMAINING_TIME_IN_MILLIS
   | typeof AWS_LOG_GROUP_NAMES
   | typeof AWS_LOG_STREAM_NAMES
+  | typeof AWS_REQUEST_EXTENDED_ID
+  | typeof AWS_REQUEST_ID
+  | typeof AWS_S3_BUCKET
+  | typeof AWS_SECRETSMANAGER_SECRET_ARN
+  | typeof AWS_SNS_TOPIC_ARN
+  | typeof AWS_STEP_FUNCTIONS_ACTIVITY_ARN
+  | typeof AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN
   | typeof BLOCKED_MAIN_THREAD
   | typeof BROWSER_NAME
   | typeof BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START
@@ -18422,6 +18606,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 100,
     changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.total_segments attribute' }],
   },
+  'aws.kinesis.stream.name': {
+    brief: 'The name of the AWS Kinesis stream the request refers to.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'some-stream-name',
+    changelog: [{ version: 'next', prs: [480], description: 'Added aws.kinesis.stream.name attribute' }],
+  },
   'aws.lambda.aws_request_id': {
     brief: 'The AWS request ID as received by the Lambda function runtime',
     type: 'string',
@@ -18568,6 +18763,84 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: ['logs/main/10838bed-421f-43ef-870a-f43feacbbb5b'],
     changelog: [{ version: '0.11.1', prs: [414] }],
+  },
+  'aws.request.extended_id': {
+    brief: 'The AWS extended request ID as returned in the response headers.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'wzHcyEWfmOGDIE5QOhTAqFDoDWP3y8IUvpNINCwL9N4TEHbUw0/gZJ+VZTmCNCWR7fezEN3eCiQ=',
+    changelog: [{ version: 'next', prs: [480], description: 'Added aws.request.extended_id attribute' }],
+  },
+  'aws.request.id': {
+    brief: 'The AWS request ID as returned in the response headers.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '79b9da39-b7ae-508a-a6bc-864b2829c622',
+    changelog: [{ version: 'next', prs: [480], description: 'Added aws.request.id attribute' }],
+  },
+  'aws.s3.bucket': {
+    brief: 'The S3 bucket name the request refers to.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'ot-demo-test',
+    changelog: [{ version: 'next', prs: [480], description: 'Added aws.s3.bucket attribute' }],
+  },
+  'aws.secretsmanager.secret.arn': {
+    brief: 'The ARN of the Secret stored in Secrets Manager.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'arn:aws:secretsmanager:us-east-1:123456789012:secret:SecretName-6RandomCharacters',
+    changelog: [{ version: 'next', prs: [480], description: 'Added aws.secretsmanager.secret.arn attribute' }],
+  },
+  'aws.sns.topic.arn': {
+    brief:
+      'The ARN of the AWS SNS Topic. An Amazon SNS topic is a logical access point that acts as a communication channel.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'arn:aws:sns:us-east-1:123456789012:mystack-mytopic-NZJ5JSMVGFIE',
+    changelog: [{ version: 'next', prs: [480], description: 'Added aws.sns.topic.arn attribute' }],
+  },
+  'aws.step_functions.activity.arn': {
+    brief: 'The ARN of the AWS Step Functions Activity.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'arn:aws:states:us-east-1:123456789012:activity:get-greeting',
+    changelog: [{ version: 'next', prs: [480], description: 'Added aws.step_functions.activity.arn attribute' }],
+  },
+  'aws.step_functions.state_machine.arn': {
+    brief: 'The ARN of the AWS Step Functions State Machine.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'arn:aws:states:us-east-1:123456789012:stateMachine:myStateMachine:1',
+    changelog: [{ version: 'next', prs: [480], description: 'Added aws.step_functions.state_machine.arn attribute' }],
   },
   blocked_main_thread: {
     brief: 'Whether the main thread was blocked by the span.',
@@ -26579,6 +26852,7 @@ export type Attributes = {
   [AWS_DYNAMODB_TABLE_COUNT]?: AWS_DYNAMODB_TABLE_COUNT_TYPE;
   [AWS_DYNAMODB_TABLE_NAMES]?: AWS_DYNAMODB_TABLE_NAMES_TYPE;
   [AWS_DYNAMODB_TOTAL_SEGMENTS]?: AWS_DYNAMODB_TOTAL_SEGMENTS_TYPE;
+  [AWS_KINESIS_STREAM_NAME]?: AWS_KINESIS_STREAM_NAME_TYPE;
   [AWS_LAMBDA_AWS_REQUEST_ID]?: AWS_LAMBDA_AWS_REQUEST_ID_TYPE;
   [AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS]?: AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS_TYPE;
   [AWS_LAMBDA_FUNCTION_NAME]?: AWS_LAMBDA_FUNCTION_NAME_TYPE;
@@ -26588,6 +26862,13 @@ export type Attributes = {
   [AWS_LAMBDA_REMAINING_TIME_IN_MILLIS]?: AWS_LAMBDA_REMAINING_TIME_IN_MILLIS_TYPE;
   [AWS_LOG_GROUP_NAMES]?: AWS_LOG_GROUP_NAMES_TYPE;
   [AWS_LOG_STREAM_NAMES]?: AWS_LOG_STREAM_NAMES_TYPE;
+  [AWS_REQUEST_EXTENDED_ID]?: AWS_REQUEST_EXTENDED_ID_TYPE;
+  [AWS_REQUEST_ID]?: AWS_REQUEST_ID_TYPE;
+  [AWS_S3_BUCKET]?: AWS_S3_BUCKET_TYPE;
+  [AWS_SECRETSMANAGER_SECRET_ARN]?: AWS_SECRETSMANAGER_SECRET_ARN_TYPE;
+  [AWS_SNS_TOPIC_ARN]?: AWS_SNS_TOPIC_ARN_TYPE;
+  [AWS_STEP_FUNCTIONS_ACTIVITY_ARN]?: AWS_STEP_FUNCTIONS_ACTIVITY_ARN_TYPE;
+  [AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN]?: AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN_TYPE;
   [BLOCKED_MAIN_THREAD]?: BLOCKED_MAIN_THREAD_TYPE;
   [BROWSER_NAME]?: BROWSER_NAME_TYPE;
   [BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START]?: BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START_TYPE;
