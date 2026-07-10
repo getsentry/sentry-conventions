@@ -1691,7 +1691,7 @@ export type AWS_CLOUDWATCH_LOGS_URL_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link FAAS_INVOCATION_ID} `faas.invocation_id`
+ * Aliases: {@link FAAS_INVOCATION_ID} `faas.invocation_id`, {@link FAAS_EXECUTION} `faas.execution`
  *
  * @deprecated Use {@link FAAS_INVOCATION_ID} (faas.invocation_id) instead - This attribute is being deprecated in favor of faas.invocation_id
  * @example "8476a536-e9f4-11e8-9739-2dfe598c3fcd"
@@ -2119,6 +2119,11 @@ export type BROWSER_WEB_VITAL_CLS_REPORT_EVENT_TYPE = string;
  * @example "body > div#app"
  */
 export const BROWSER_WEB_VITAL_CLS_SOURCE_KEY = 'browser.web_vital.cls.source.<key>';
+
+/**
+ * Base key for {@link BROWSER_WEB_VITAL_CLS_SOURCE_KEY}. Use with a dynamic suffix, e.g. `${BROWSER_WEB_VITAL_CLS_SOURCE_KEY_BASE}.${key}`.
+ */
+export const BROWSER_WEB_VITAL_CLS_SOURCE_KEY_BASE = 'browser.web_vital.cls.source';
 
 /**
  * Type for {@link BROWSER_WEB_VITAL_CLS_SOURCE_KEY} browser.web_vital.cls.source.<key>
@@ -3134,6 +3139,8 @@ export type CLOUD_REGION_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link FAAS_ID} `faas.id`
+ *
  * @example "arn:aws:lambda:REGION:ACCOUNT_ID:function:my-function"
  */
 export const CLOUD_RESOURCE_ID = 'cloud.resource_id';
@@ -3187,6 +3194,13 @@ export type CLS_TYPE = number;
  * @example "body > div#app"
  */
 export const CLS_SOURCE_KEY = 'cls.source.<key>';
+
+/**
+ * Base key for {@link CLS_SOURCE_KEY}. Use with a dynamic suffix, e.g. `${CLS_SOURCE_KEY_BASE}.${key}`.
+ *
+ * @deprecated Use {@link BROWSER_WEB_VITAL_CLS_SOURCE_KEY_BASE} (browser.web_vital.cls.source) instead - The CLS source is now recorded as a browser.web_vital.cls.source.<key> attribute.
+ */
+export const CLS_SOURCE_KEY_BASE = 'cls.source';
 
 /**
  * Type for {@link CLS_SOURCE_KEY} cls.source.<key>
@@ -3681,6 +3695,11 @@ export type DB_OPERATION_NAME_TYPE = string;
  * @example "db.query.parameter.foo='123'"
  */
 export const DB_QUERY_PARAMETER_KEY = 'db.query.parameter.<key>';
+
+/**
+ * Base key for {@link DB_QUERY_PARAMETER_KEY}. Use with a dynamic suffix, e.g. `${DB_QUERY_PARAMETER_KEY_BASE}.${key}`.
+ */
+export const DB_QUERY_PARAMETER_KEY_BASE = 'db.query.parameter';
 
 /**
  * Type for {@link DB_QUERY_PARAMETER_KEY} db.query.parameter.<key>
@@ -5058,6 +5077,54 @@ export const FAAS_ENTRY_POINT = 'faas.entry_point';
  */
 export type FAAS_ENTRY_POINT_TYPE = string;
 
+// Path: model/attributes/faas/faas__execution.json
+
+/**
+ * The execution ID of the current function execution. `faas.execution`
+ *
+ * Attribute Value Type: `string` {@link FAAS_EXECUTION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link FAAS_INVOCATION_ID} `faas.invocation_id`, {@link AWS_LAMBDA_AWS_REQUEST_ID} `aws.lambda.aws_request_id`
+ *
+ * @deprecated Use {@link FAAS_INVOCATION_ID} (faas.invocation_id) instead - This attribute is being deprecated in favor of faas.invocation_id, which is the OTel-aligned replacement.
+ * @example "af9d5aa4-a685-4c5f-a22b-444f80b3cc28"
+ */
+export const FAAS_EXECUTION = 'faas.execution';
+
+/**
+ * Type for {@link FAAS_EXECUTION} faas.execution
+ */
+export type FAAS_EXECUTION_TYPE = string;
+
+// Path: model/attributes/faas/faas__id.json
+
+/**
+ * The unique ID of the single function that this runtime instance executes. `faas.id`
+ *
+ * Attribute Value Type: `string` {@link FAAS_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link CLOUD_RESOURCE_ID} `cloud.resource_id`
+ *
+ * @deprecated Use {@link CLOUD_RESOURCE_ID} (cloud.resource_id) instead - This attribute is being deprecated in favor of cloud.resource_id, which is the OTel-aligned replacement (renamed in OTel semantic conventions v1.19.0).
+ * @example "arn:aws:lambda:REGION:ACCOUNT_ID:function:my-function"
+ */
+export const FAAS_ID = 'faas.id';
+
+/**
+ * Type for {@link FAAS_ID} faas.id
+ */
+export type FAAS_ID_TYPE = string;
+
 // Path: model/attributes/faas/faas__identity.json
 
 /**
@@ -5091,7 +5158,7 @@ export type FAAS_IDENTITY_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link AWS_LAMBDA_AWS_REQUEST_ID} `aws.lambda.aws_request_id`
+ * Aliases: {@link AWS_LAMBDA_AWS_REQUEST_ID} `aws.lambda.aws_request_id`, {@link FAAS_EXECUTION} `faas.execution`
  *
  * @example "af9d5aa4-a685-4c5f-a22b-444f80b3cc28"
  */
@@ -5231,6 +5298,11 @@ export type FCP_TYPE = number;
  * @example "flag.evaluation.is_new_ui=true"
  */
 export const FLAG_EVALUATION_KEY = 'flag.evaluation.<key>';
+
+/**
+ * Base key for {@link FLAG_EVALUATION_KEY}. Use with a dynamic suffix, e.g. `${FLAG_EVALUATION_KEY_BASE}.${key}`.
+ */
+export const FLAG_EVALUATION_KEY_BASE = 'flag.evaluation';
 
 /**
  * Type for {@link FLAG_EVALUATION_KEY} flag.evaluation.<key>
@@ -7707,6 +7779,11 @@ export type HTTP_REQUEST_FETCH_START_TYPE = number;
 export const HTTP_REQUEST_HEADER_KEY = 'http.request.header.<key>';
 
 /**
+ * Base key for {@link HTTP_REQUEST_HEADER_KEY}. Use with a dynamic suffix, e.g. `${HTTP_REQUEST_HEADER_KEY_BASE}.${key}`.
+ */
+export const HTTP_REQUEST_HEADER_KEY_BASE = 'http.request.header';
+
+/**
  * Type for {@link HTTP_REQUEST_HEADER_KEY} http.request.header.<key>
  */
 export type HTTP_REQUEST_HEADER_KEY_TYPE = Array<string>;
@@ -7884,6 +7961,29 @@ export const HTTP_REQUEST_RESPONSE_START = 'http.request.response_start';
  */
 export type HTTP_REQUEST_RESPONSE_START_TYPE = number;
 
+// Path: model/attributes/http/http__request__same_origin.json
+
+/**
+ * Indicates that a URL has the same origin as the current page's origin in the browser. `http.request.same_origin`
+ *
+ * Attribute Value Type: `boolean` {@link HTTP_REQUEST_SAME_ORIGIN_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link URL_SAME_ORIGIN} `url.same_origin`
+ *
+ * @example true
+ */
+export const HTTP_REQUEST_SAME_ORIGIN = 'http.request.same_origin';
+
+/**
+ * Type for {@link HTTP_REQUEST_SAME_ORIGIN} http.request.same_origin
+ */
+export type HTTP_REQUEST_SAME_ORIGIN_TYPE = boolean;
+
 // Path: model/attributes/http/http__request__secure_connection_start.json
 
 /**
@@ -8034,6 +8134,11 @@ export type HTTP_RESPONSE_HEADER_CONTENT_LENGTH_TYPE = string;
  * @example "http.response.header.custom-header=['foo', 'bar']"
  */
 export const HTTP_RESPONSE_HEADER_KEY = 'http.response.header.<key>';
+
+/**
+ * Base key for {@link HTTP_RESPONSE_HEADER_KEY}. Use with a dynamic suffix, e.g. `${HTTP_RESPONSE_HEADER_KEY_BASE}.${key}`.
+ */
+export const HTTP_RESPONSE_HEADER_KEY_BASE = 'http.response.header';
 
 /**
  * Type for {@link HTTP_RESPONSE_HEADER_KEY} http.response.header.<key>
@@ -9205,6 +9310,11 @@ export type MCP_PROTOCOL_VERSION_TYPE = string;
 export const MCP_REQUEST_ARGUMENT_KEY = 'mcp.request.argument.<key>';
 
 /**
+ * Base key for {@link MCP_REQUEST_ARGUMENT_KEY}. Use with a dynamic suffix, e.g. `${MCP_REQUEST_ARGUMENT_KEY_BASE}.${key}`.
+ */
+export const MCP_REQUEST_ARGUMENT_KEY_BASE = 'mcp.request.argument';
+
+/**
  * Type for {@link MCP_REQUEST_ARGUMENT_KEY} mcp.request.argument.<key>
  */
 export type MCP_REQUEST_ARGUMENT_KEY_TYPE = string;
@@ -9538,6 +9648,11 @@ export type MCP_TRANSPORT_TYPE = string;
 export const MDC_KEY = 'mdc.<key>';
 
 /**
+ * Base key for {@link MDC_KEY}. Use with a dynamic suffix, e.g. `${MDC_KEY_BASE}.${key}`.
+ */
+export const MDC_KEY_BASE = 'mdc';
+
+/**
  * Type for {@link MDC_KEY} mdc.<key>
  */
 export type MDC_KEY_TYPE = string;
@@ -9625,6 +9740,27 @@ export const MESSAGING_MESSAGE_BODY_SIZE = 'messaging.message.body.size';
  * Type for {@link MESSAGING_MESSAGE_BODY_SIZE} messaging.message.body.size
  */
 export type MESSAGING_MESSAGE_BODY_SIZE_TYPE = number;
+
+// Path: model/attributes/messaging/messaging__message__conversation_id.json
+
+/**
+ * The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID". `messaging.message.conversation_id`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_MESSAGE_CONVERSATION_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "MyConversationId"
+ */
+export const MESSAGING_MESSAGE_CONVERSATION_ID = 'messaging.message.conversation_id';
+
+/**
+ * Type for {@link MESSAGING_MESSAGE_CONVERSATION_ID} messaging.message.conversation_id
+ */
+export type MESSAGING_MESSAGE_CONVERSATION_ID_TYPE = string;
 
 // Path: model/attributes/messaging/messaging__message__envelope__size.json
 
@@ -9751,6 +9887,27 @@ export const MESSAGING_OPERATION_TYPE = 'messaging.operation.type';
  * Type for {@link MESSAGING_OPERATION_TYPE} messaging.operation.type
  */
 export type MESSAGING_OPERATION_TYPE_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__rabbitmq__destination__routing_key.json
+
+/**
+ * RabbitMQ message routing key. `messaging.rabbitmq.destination.routing_key`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "myKey"
+ */
+export const MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY = 'messaging.rabbitmq.destination.routing_key';
+
+/**
+ * Type for {@link MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY} messaging.rabbitmq.destination.routing_key
+ */
+export type MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY_TYPE = string;
 
 // Path: model/attributes/messaging/messaging__system.json
 
@@ -10887,6 +11044,11 @@ export type OTEL_STATUS_DESCRIPTION_TYPE = string;
 export const PARAMS_KEY = 'params.<key>';
 
 /**
+ * Base key for {@link PARAMS_KEY}. Use with a dynamic suffix, e.g. `${PARAMS_KEY_BASE}.${key}`.
+ */
+export const PARAMS_KEY_BASE = 'params';
+
+/**
  * Type for {@link PARAMS_KEY} params.<key>
  */
 export type PARAMS_KEY_TYPE = string;
@@ -11154,6 +11316,13 @@ export type PROCESS_RUNTIME_VERSION_TYPE = string;
 export const QUERY_KEY = 'query.<key>';
 
 /**
+ * Base key for {@link QUERY_KEY}. Use with a dynamic suffix, e.g. `${QUERY_KEY_BASE}.${key}`.
+ *
+ * @deprecated Use {@link URL_QUERY} (url.query) instead - Instead of sending items individually in query.<key>, they should be sent all together with url.query.
+ */
+export const QUERY_KEY_BASE = 'query';
+
+/**
  * Type for {@link QUERY_KEY} query.<key>
  */
 export type QUERY_KEY_TYPE = string;
@@ -11220,6 +11389,11 @@ export type RELEASE_TYPE = string;
  * @example "http.response.header.text='test'"
  */
 export const REMIX_ACTION_FORM_DATA_KEY = 'remix.action_form_data.<key>';
+
+/**
+ * Base key for {@link REMIX_ACTION_FORM_DATA_KEY}. Use with a dynamic suffix, e.g. `${REMIX_ACTION_FORM_DATA_KEY_BASE}.${key}`.
+ */
+export const REMIX_ACTION_FORM_DATA_KEY_BASE = 'remix.action_form_data';
 
 /**
  * Type for {@link REMIX_ACTION_FORM_DATA_KEY} remix.action_form_data.<key>
@@ -11536,6 +11710,11 @@ export type RUNTIME_VERSION_TYPE = string;
 export const SCORE_KEY = 'score.<key>';
 
 /**
+ * Base key for {@link SCORE_KEY}. Use with a dynamic suffix, e.g. `${SCORE_KEY_BASE}.${key}`.
+ */
+export const SCORE_KEY_BASE = 'score';
+
+/**
  * Type for {@link SCORE_KEY} score.<key>
  */
 export type SCORE_KEY_TYPE = number;
@@ -11557,6 +11736,11 @@ export type SCORE_KEY_TYPE = number;
  * @example "score.ratio.inp=0.7748"
  */
 export const SCORE_RATIO_KEY = 'score.ratio.<key>';
+
+/**
+ * Base key for {@link SCORE_RATIO_KEY}. Use with a dynamic suffix, e.g. `${SCORE_RATIO_KEY_BASE}.${key}`.
+ */
+export const SCORE_RATIO_KEY_BASE = 'score.ratio';
 
 /**
  * Type for {@link SCORE_RATIO_KEY} score.ratio.<key>
@@ -11599,6 +11783,11 @@ export type SCORE_TOTAL_TYPE = number;
  * @example "score.weight.fcp=0.25"
  */
 export const SCORE_WEIGHT_KEY = 'score.weight.<key>';
+
+/**
+ * Base key for {@link SCORE_WEIGHT_KEY}. Use with a dynamic suffix, e.g. `${SCORE_WEIGHT_KEY_BASE}.${key}`.
+ */
+export const SCORE_WEIGHT_KEY_BASE = 'score.weight';
 
 /**
  * Type for {@link SCORE_WEIGHT_KEY} score.weight.<key>
@@ -12201,6 +12390,27 @@ export const SENTRY_MESSAGE_TEMPLATE = 'sentry.message.template';
  */
 export type SENTRY_MESSAGE_TEMPLATE_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__metric__source.json
+
+/**
+ * The provenance of a metric.  For example, this can be set to indicate if a metric was generated by Relay from a span. `sentry.metric.source`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_METRIC_SOURCE_TYPE}
+ *
+ * Apply Scrubbing: never
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "span"
+ */
+export const SENTRY_METRIC_SOURCE = 'sentry.metric.source';
+
+/**
+ * Type for {@link SENTRY_METRIC_SOURCE} sentry.metric.source
+ */
+export type SENTRY_METRIC_SOURCE_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__mobile.json
 
 /**
@@ -12239,6 +12449,11 @@ export type SENTRY_MOBILE_TYPE = boolean;
  * @example "sentry.module.brianium/paratest='v7.7.0'"
  */
 export const SENTRY_MODULE_KEY = 'sentry.module.<key>';
+
+/**
+ * Base key for {@link SENTRY_MODULE_KEY}. Use with a dynamic suffix, e.g. `${SENTRY_MODULE_KEY_BASE}.${key}`.
+ */
+export const SENTRY_MODULE_KEY_BASE = 'sentry.module';
 
 /**
  * Type for {@link SENTRY_MODULE_KEY} sentry.module.<key>
@@ -13937,6 +14152,11 @@ export type URL_PATH_TYPE = string;
 export const URL_PATH_PARAMETER_KEY = 'url.path.parameter.<key>';
 
 /**
+ * Base key for {@link URL_PATH_PARAMETER_KEY}. Use with a dynamic suffix, e.g. `${URL_PATH_PARAMETER_KEY_BASE}.${key}`.
+ */
+export const URL_PATH_PARAMETER_KEY_BASE = 'url.path.parameter';
+
+/**
  * Type for {@link URL_PATH_PARAMETER_KEY} url.path.parameter.<key>
  */
 export type URL_PATH_PARAMETER_KEY_TYPE = string;
@@ -13982,6 +14202,30 @@ export const URL_QUERY = 'url.query';
  * Type for {@link URL_QUERY} url.query
  */
 export type URL_QUERY_TYPE = string;
+
+// Path: model/attributes/url/url__same_origin.json
+
+/**
+ * Indicates that a URL has the same origin as the current page's origin in the browser. `url.same_origin`
+ *
+ * Attribute Value Type: `boolean` {@link URL_SAME_ORIGIN_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link HTTP_REQUEST_SAME_ORIGIN} `http.request.same_origin`
+ *
+ * @deprecated Use {@link HTTP_REQUEST_SAME_ORIGIN} (http.request.same_origin) instead - This attribute is being deprecated in favor of http.request.same_origin.
+ * @example true
+ */
+export const URL_SAME_ORIGIN = 'url.same_origin';
+
+/**
+ * Type for {@link URL_SAME_ORIGIN} url.same_origin
+ */
+export type URL_SAME_ORIGIN_TYPE = boolean;
 
 // Path: model/attributes/url/url__scheme.json
 
@@ -15348,6 +15592,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'faas.cron': 'string',
   'faas.duration_in_ms': 'integer',
   'faas.entry_point': 'string',
+  'faas.execution': 'string',
+  'faas.id': 'string',
   'faas.identity': 'string',
   'faas.invocation_id': 'string',
   'faas.name': 'string',
@@ -15476,6 +15722,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'http.request.resend_count': 'integer',
   'http.request.response_end': 'double',
   'http.request.response_start': 'double',
+  'http.request.same_origin': 'boolean',
   'http.request.secure_connection_start': 'double',
   'http.request.time_to_first_byte': 'double',
   'http.request.worker_start': 'double',
@@ -15555,12 +15802,14 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'messaging.destination.connection': 'string',
   'messaging.destination.name': 'string',
   'messaging.message.body.size': 'integer',
+  'messaging.message.conversation_id': 'string',
   'messaging.message.envelope.size': 'integer',
   'messaging.message.id': 'string',
   'messaging.message.receive.latency': 'integer',
   'messaging.message.retry.count': 'integer',
   'messaging.operation.name': 'string',
   'messaging.operation.type': 'string',
+  'messaging.rabbitmq.destination.routing_key': 'string',
   'messaging.system': 'string',
   method: 'string',
   'middleware.name': 'string',
@@ -15672,6 +15921,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.main_thread': 'boolean',
   'sentry.message.parameter.<key>': 'string',
   'sentry.message.template': 'string',
+  'sentry.metric.source': 'string',
   'sentry.mobile': 'boolean',
   'sentry.module.<key>': 'string',
   'sentry.nextjs.ssr.function.route': 'string',
@@ -15754,6 +16004,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'url.path.parameter.<key>': 'string',
   'url.port': 'integer',
   'url.query': 'string',
+  'url.same_origin': 'boolean',
   'url.scheme': 'string',
   'url.template': 'string',
   'user_agent.original': 'string',
@@ -16036,6 +16287,8 @@ export type AttributeName =
   | typeof FAAS_CRON
   | typeof FAAS_DURATION_IN_MS
   | typeof FAAS_ENTRY_POINT
+  | typeof FAAS_EXECUTION
+  | typeof FAAS_ID
   | typeof FAAS_IDENTITY
   | typeof FAAS_INVOCATION_ID
   | typeof FAAS_NAME
@@ -16164,6 +16417,7 @@ export type AttributeName =
   | typeof HTTP_REQUEST_RESEND_COUNT
   | typeof HTTP_REQUEST_RESPONSE_END
   | typeof HTTP_REQUEST_RESPONSE_START
+  | typeof HTTP_REQUEST_SAME_ORIGIN
   | typeof HTTP_REQUEST_SECURE_CONNECTION_START
   | typeof HTTP_REQUEST_TIME_TO_FIRST_BYTE
   | typeof HTTP_REQUEST_WORKER_START
@@ -16243,12 +16497,14 @@ export type AttributeName =
   | typeof MESSAGING_DESTINATION_CONNECTION
   | typeof MESSAGING_DESTINATION_NAME
   | typeof MESSAGING_MESSAGE_BODY_SIZE
+  | typeof MESSAGING_MESSAGE_CONVERSATION_ID
   | typeof MESSAGING_MESSAGE_ENVELOPE_SIZE
   | typeof MESSAGING_MESSAGE_ID
   | typeof MESSAGING_MESSAGE_RECEIVE_LATENCY
   | typeof MESSAGING_MESSAGE_RETRY_COUNT
   | typeof MESSAGING_OPERATION_NAME
   | typeof MESSAGING_OPERATION_TYPE
+  | typeof MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY
   | typeof MESSAGING_SYSTEM
   | typeof METHOD
   | typeof MIDDLEWARE_NAME
@@ -16360,6 +16616,7 @@ export type AttributeName =
   | typeof SENTRY_MAIN_THREAD
   | typeof SENTRY_MESSAGE_PARAMETER_KEY
   | typeof SENTRY_MESSAGE_TEMPLATE
+  | typeof SENTRY_METRIC_SOURCE
   | typeof SENTRY_MOBILE
   | typeof SENTRY_MODULE_KEY
   | typeof SENTRY_NEXTJS_SSR_FUNCTION_ROUTE
@@ -16442,6 +16699,7 @@ export type AttributeName =
   | typeof URL_PATH_PARAMETER_KEY
   | typeof URL_PORT
   | typeof URL_QUERY
+  | typeof URL_SAME_ORIGIN
   | typeof URL_SCHEME
   | typeof URL_TEMPLATE
   | typeof USER_AGENT_ORIGINAL
@@ -17580,8 +17838,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'faas.invocation_id',
       reason: 'This attribute is being deprecated in favor of faas.invocation_id',
     },
-    aliases: ['faas.invocation_id'],
+    aliases: ['faas.invocation_id', 'faas.execution'],
     changelog: [
+      { version: 'next', prs: [473], description: 'Added faas.execution as an alias' },
       {
         version: '0.11.1',
         prs: [414, 424],
@@ -18385,7 +18644,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'arn:aws:lambda:REGION:ACCOUNT_ID:function:my-function',
-    changelog: [{ version: '0.11.1', prs: [414] }],
+    aliases: ['faas.id'],
+    changelog: [
+      { version: 'next', prs: [475], description: 'Added faas.id as an alias' },
+      { version: '0.11.1', prs: [414] },
+    ],
     additionalContext: [
       'This can be an identifier for a resource in AWS, GCP, or Azure. There may be some overlap in values found here with other attributes. For instance, an AWS lambda ARN may be found here as well as in `aws.lambda.invoked_arn`. OTEL recommends setting them alongside each other.',
     ],
@@ -19509,6 +19772,48 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'my_main_function',
     changelog: [{ version: '0.11.0', prs: [403, 415] }],
   },
+  'faas.execution': {
+    brief: 'The execution ID of the current function execution.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'af9d5aa4-a685-4c5f-a22b-444f80b3cc28',
+    deprecation: {
+      replacement: 'faas.invocation_id',
+      reason:
+        'This attribute is being deprecated in favor of faas.invocation_id, which is the OTel-aligned replacement.',
+    },
+    aliases: ['faas.invocation_id', 'aws.lambda.aws_request_id'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [473],
+        description: 'Added faas.execution attribute, deprecated in favor of faas.invocation_id',
+      },
+    ],
+  },
+  'faas.id': {
+    brief: 'The unique ID of the single function that this runtime instance executes.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'arn:aws:lambda:REGION:ACCOUNT_ID:function:my-function',
+    deprecation: {
+      replacement: 'cloud.resource_id',
+      reason:
+        'This attribute is being deprecated in favor of cloud.resource_id, which is the OTel-aligned replacement (renamed in OTel semantic conventions v1.19.0).',
+    },
+    aliases: ['cloud.resource_id'],
+    changelog: [
+      { version: 'next', prs: [475], description: 'Added faas.id attribute, deprecated in favor of cloud.resource_id' },
+    ],
+  },
   'faas.identity': {
     brief:
       'The Service Account (GCP), IAM Execution Role (AWS), or Managed Identity (Azure) used by the serverless function when interacting with other cloud services',
@@ -19531,8 +19836,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'af9d5aa4-a685-4c5f-a22b-444f80b3cc28',
-    aliases: ['aws.lambda.aws_request_id'],
-    changelog: [{ version: '0.11.1', prs: [414, 424] }],
+    aliases: ['aws.lambda.aws_request_id', 'faas.execution'],
+    changelog: [
+      { version: 'next', prs: [473], description: 'Added faas.execution as an alias' },
+      { version: '0.11.1', prs: [414, 424] },
+    ],
   },
   'faas.name': {
     brief: 'The name of the serverless function',
@@ -21371,6 +21679,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1732829555.7,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
+  'http.request.same_origin': {
+    brief: "Indicates that a URL has the same origin as the current page's origin in the browser.",
+    type: 'boolean',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: true,
+    aliases: ['url.same_origin'],
+    changelog: [{ version: 'next', prs: [456], description: 'Added http.request.same_origin attribute' }],
+  },
   'http.request.secure_connection_start': {
     brief:
       'The UNIX timestamp representing the time immediately before the browser starts the handshake process to secure the current connection. If a secure connection is not used, the property returns zero.',
@@ -22449,6 +22769,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 839,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
+  'messaging.message.conversation_id': {
+    brief:
+      'The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID".',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'MyConversationId',
+    changelog: [{ version: 'next', prs: [468], description: 'Added messaging.message.conversation_id attribute' }],
+  },
   'messaging.message.envelope.size': {
     brief: 'The size of the message body and metadata in bytes.',
     type: 'integer',
@@ -22514,6 +22846,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'create',
     changelog: [{ version: '0.1.0', prs: [51, 127] }],
+  },
+  'messaging.rabbitmq.destination.routing_key': {
+    brief: 'RabbitMQ message routing key.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'myKey',
+    changelog: [
+      { version: 'next', prs: [468], description: 'Added messaging.rabbitmq.destination.routing_key attribute' },
+    ],
   },
   'messaging.system': {
     brief: 'The messaging system as identified by the client instrumentation.',
@@ -23954,6 +24299,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'Hello, {name}!',
     changelog: [{ version: '0.1.0', prs: [116] }],
   },
+  'sentry.metric.source': {
+    brief:
+      'The provenance of a metric.  For example, this can be set to indicate if a metric was generated by Relay from a span.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'never',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'span',
+    changelog: [{ version: 'next', description: 'Added sentry.metric.source attribute' }],
+  },
   'sentry.mobile': {
     brief: 'Whether the application is using a mobile SDK. Computed by Relay and should not be set by SDKs.',
     type: 'boolean',
@@ -24986,6 +25343,28 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'foo=bar&bar=baz',
     changelog: [{ version: '0.0.0' }],
   },
+  'url.same_origin': {
+    brief: "Indicates that a URL has the same origin as the current page's origin in the browser.",
+    type: 'boolean',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: true,
+    deprecation: {
+      replacement: 'http.request.same_origin',
+      reason: 'This attribute is being deprecated in favor of http.request.same_origin.',
+    },
+    aliases: ['http.request.same_origin'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [456],
+        description: 'Added url.same_origin attribute, deprecated in favor of http.request.same_origin',
+      },
+    ],
+  },
   'url.scheme': {
     brief: 'The URI scheme component identifying the used protocol.',
     type: 'string',
@@ -25794,6 +26173,8 @@ export type Attributes = {
   [FAAS_CRON]?: FAAS_CRON_TYPE;
   [FAAS_DURATION_IN_MS]?: FAAS_DURATION_IN_MS_TYPE;
   [FAAS_ENTRY_POINT]?: FAAS_ENTRY_POINT_TYPE;
+  [FAAS_EXECUTION]?: FAAS_EXECUTION_TYPE;
+  [FAAS_ID]?: FAAS_ID_TYPE;
   [FAAS_IDENTITY]?: FAAS_IDENTITY_TYPE;
   [FAAS_INVOCATION_ID]?: FAAS_INVOCATION_ID_TYPE;
   [FAAS_NAME]?: FAAS_NAME_TYPE;
@@ -25922,6 +26303,7 @@ export type Attributes = {
   [HTTP_REQUEST_RESEND_COUNT]?: HTTP_REQUEST_RESEND_COUNT_TYPE;
   [HTTP_REQUEST_RESPONSE_END]?: HTTP_REQUEST_RESPONSE_END_TYPE;
   [HTTP_REQUEST_RESPONSE_START]?: HTTP_REQUEST_RESPONSE_START_TYPE;
+  [HTTP_REQUEST_SAME_ORIGIN]?: HTTP_REQUEST_SAME_ORIGIN_TYPE;
   [HTTP_REQUEST_SECURE_CONNECTION_START]?: HTTP_REQUEST_SECURE_CONNECTION_START_TYPE;
   [HTTP_REQUEST_TIME_TO_FIRST_BYTE]?: HTTP_REQUEST_TIME_TO_FIRST_BYTE_TYPE;
   [HTTP_REQUEST_WORKER_START]?: HTTP_REQUEST_WORKER_START_TYPE;
@@ -26001,12 +26383,14 @@ export type Attributes = {
   [MESSAGING_DESTINATION_CONNECTION]?: MESSAGING_DESTINATION_CONNECTION_TYPE;
   [MESSAGING_DESTINATION_NAME]?: MESSAGING_DESTINATION_NAME_TYPE;
   [MESSAGING_MESSAGE_BODY_SIZE]?: MESSAGING_MESSAGE_BODY_SIZE_TYPE;
+  [MESSAGING_MESSAGE_CONVERSATION_ID]?: MESSAGING_MESSAGE_CONVERSATION_ID_TYPE;
   [MESSAGING_MESSAGE_ENVELOPE_SIZE]?: MESSAGING_MESSAGE_ENVELOPE_SIZE_TYPE;
   [MESSAGING_MESSAGE_ID]?: MESSAGING_MESSAGE_ID_TYPE;
   [MESSAGING_MESSAGE_RECEIVE_LATENCY]?: MESSAGING_MESSAGE_RECEIVE_LATENCY_TYPE;
   [MESSAGING_MESSAGE_RETRY_COUNT]?: MESSAGING_MESSAGE_RETRY_COUNT_TYPE;
   [MESSAGING_OPERATION_NAME]?: MESSAGING_OPERATION_NAME_TYPE;
   [MESSAGING_OPERATION_TYPE]?: MESSAGING_OPERATION_TYPE_TYPE;
+  [MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY]?: MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY_TYPE;
   [MESSAGING_SYSTEM]?: MESSAGING_SYSTEM_TYPE;
   [METHOD]?: METHOD_TYPE;
   [MIDDLEWARE_NAME]?: MIDDLEWARE_NAME_TYPE;
@@ -26118,6 +26502,7 @@ export type Attributes = {
   [SENTRY_MAIN_THREAD]?: SENTRY_MAIN_THREAD_TYPE;
   [SENTRY_MESSAGE_PARAMETER_KEY]?: SENTRY_MESSAGE_PARAMETER_KEY_TYPE;
   [SENTRY_MESSAGE_TEMPLATE]?: SENTRY_MESSAGE_TEMPLATE_TYPE;
+  [SENTRY_METRIC_SOURCE]?: SENTRY_METRIC_SOURCE_TYPE;
   [SENTRY_MOBILE]?: SENTRY_MOBILE_TYPE;
   [SENTRY_MODULE_KEY]?: SENTRY_MODULE_KEY_TYPE;
   [SENTRY_NEXTJS_SSR_FUNCTION_ROUTE]?: SENTRY_NEXTJS_SSR_FUNCTION_ROUTE_TYPE;
@@ -26200,6 +26585,7 @@ export type Attributes = {
   [URL_PATH_PARAMETER_KEY]?: URL_PATH_PARAMETER_KEY_TYPE;
   [URL_PORT]?: URL_PORT_TYPE;
   [URL_QUERY]?: URL_QUERY_TYPE;
+  [URL_SAME_ORIGIN]?: URL_SAME_ORIGIN_TYPE;
   [URL_SCHEME]?: URL_SCHEME_TYPE;
   [URL_TEMPLATE]?: URL_TEMPLATE_TYPE;
   [USER_AGENT_ORIGINAL]?: USER_AGENT_ORIGINAL_TYPE;

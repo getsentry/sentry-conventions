@@ -172,6 +172,8 @@ class _AttributeNamesMeta(type):
         "DEVICEMEMORY",
         "EFFECTIVECONNECTIONTYPE",
         "ENVIRONMENT",
+        "FAAS_EXECUTION",
+        "FAAS_ID",
         "FCP",
         "FP",
         "FRAMES_DELAY",
@@ -276,6 +278,7 @@ class _AttributeNamesMeta(type):
         "TRANSACTION",
         "TTFB_REQUESTTIME",
         "TTFB",
+        "URL_SAME_ORIGIN",
         "URL",
     }
 
@@ -1231,7 +1234,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: faas.invocation_id
+    Aliases: faas.invocation_id, faas.execution
     DEPRECATED: Use faas.invocation_id instead - This attribute is being deprecated in favor of faas.invocation_id
     Example: "8476a536-e9f4-11e8-9739-2dfe598c3fcd"
     """
@@ -1840,6 +1843,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: faas.id
     Example: "arn:aws:lambda:REGION:ACCOUNT_ID:function:my-function"
     """
 
@@ -3110,6 +3114,32 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "my_main_function"
     """
 
+    # Path: model/attributes/faas/faas__execution.json
+    FAAS_EXECUTION: Literal["faas.execution"] = "faas.execution"
+    """The execution ID of the current function execution.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: faas.invocation_id, aws.lambda.aws_request_id
+    DEPRECATED: Use faas.invocation_id instead - This attribute is being deprecated in favor of faas.invocation_id, which is the OTel-aligned replacement.
+    Example: "af9d5aa4-a685-4c5f-a22b-444f80b3cc28"
+    """
+
+    # Path: model/attributes/faas/faas__id.json
+    FAAS_ID: Literal["faas.id"] = "faas.id"
+    """The unique ID of the single function that this runtime instance executes.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: cloud.resource_id
+    DEPRECATED: Use cloud.resource_id instead - This attribute is being deprecated in favor of cloud.resource_id, which is the OTel-aligned replacement (renamed in OTel semantic conventions v1.19.0).
+    Example: "arn:aws:lambda:REGION:ACCOUNT_ID:function:my-function"
+    """
+
     # Path: model/attributes/faas/faas__identity.json
     FAAS_IDENTITY: Literal["faas.identity"] = "faas.identity"
     """The Service Account (GCP), IAM Execution Role (AWS), or Managed Identity (Azure) used by the serverless function when interacting with other cloud services
@@ -3129,7 +3159,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: aws.lambda.aws_request_id
+    Aliases: aws.lambda.aws_request_id, faas.execution
     Example: "af9d5aa4-a685-4c5f-a22b-444f80b3cc28"
     """
 
@@ -4735,6 +4765,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 1732829555.7
     """
 
+    # Path: model/attributes/http/http__request__same_origin.json
+    HTTP_REQUEST_SAME_ORIGIN: Literal["http.request.same_origin"] = (
+        "http.request.same_origin"
+    )
+    """Indicates that a URL has the same origin as the current page's origin in the browser.
+
+    Type: bool
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: url.same_origin
+    Example: true
+    """
+
     # Path: model/attributes/http/http__request__secure_connection_start.json
     HTTP_REQUEST_SECURE_CONNECTION_START: Literal[
         "http.request.secure_connection_start"
@@ -5724,6 +5768,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 839
     """
 
+    # Path: model/attributes/messaging/messaging__message__conversation_id.json
+    MESSAGING_MESSAGE_CONVERSATION_ID: Literal["messaging.message.conversation_id"] = (
+        "messaging.message.conversation_id"
+    )
+    """The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID".
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "MyConversationId"
+    """
+
     # Path: model/attributes/messaging/messaging__message__envelope__size.json
     MESSAGING_MESSAGE_ENVELOPE_SIZE: Literal["messaging.message.envelope.size"] = (
         "messaging.message.envelope.size"
@@ -5798,6 +5855,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Example: "create"
+    """
+
+    # Path: model/attributes/messaging/messaging__rabbitmq__destination__routing_key.json
+    MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY: Literal[
+        "messaging.rabbitmq.destination.routing_key"
+    ] = "messaging.rabbitmq.destination.routing_key"
+    """RabbitMQ message routing key.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "myKey"
     """
 
     # Path: model/attributes/messaging/messaging__system.json
@@ -7140,6 +7210,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "Hello, {name}!"
     """
 
+    # Path: model/attributes/sentry/sentry__metric__source.json
+    SENTRY_METRIC_SOURCE: Literal["sentry.metric.source"] = "sentry.metric.source"
+    """The provenance of a metric.  For example, this can be set to indicate if a metric was generated by Relay from a span.
+
+    Type: str
+    Apply Scrubbing: never
+    Defined in OTEL: No
+    Visibility: public
+    Example: "span"
+    """
+
     # Path: model/attributes/sentry/sentry__mobile.json
     SENTRY_MOBILE: Literal["sentry.mobile"] = "sentry.mobile"
     """Whether the application is using a mobile SDK. Computed by Relay and should not be set by SDKs.
@@ -8093,6 +8174,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Example: "foo=bar&bar=baz"
+    """
+
+    # Path: model/attributes/url/url__same_origin.json
+    URL_SAME_ORIGIN: Literal["url.same_origin"] = "url.same_origin"
+    """Indicates that a URL has the same origin as the current page's origin in the browser.
+
+    Type: bool
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: http.request.same_origin
+    DEPRECATED: Use http.request.same_origin instead - This attribute is being deprecated in favor of http.request.same_origin.
+    Example: true
     """
 
     # Path: model/attributes/url/url__scheme.json
@@ -9865,8 +9959,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="This attribute is being deprecated in favor of faas.invocation_id",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["faas.invocation_id"],
+        aliases=["faas.invocation_id", "faas.execution"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[473],
+                description="Added faas.execution as an alias",
+            ),
             ChangelogEntry(
                 version="0.11.1",
                 prs=[414, 424],
@@ -10529,7 +10628,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="arn:aws:lambda:REGION:ACCOUNT_ID:function:my-function",
+        aliases=["faas.id"],
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[475], description="Added faas.id as an alias"
+            ),
             ChangelogEntry(version="0.11.1", prs=[414]),
         ],
         additional_context=[
@@ -12035,6 +12138,48 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.11.0", prs=[403, 415]),
         ],
     ),
+    "faas.execution": AttributeMetadata(
+        brief="The execution ID of the current function execution.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="af9d5aa4-a685-4c5f-a22b-444f80b3cc28",
+        deprecation=DeprecationInfo(
+            replacement="faas.invocation_id",
+            reason="This attribute is being deprecated in favor of faas.invocation_id, which is the OTel-aligned replacement.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["faas.invocation_id", "aws.lambda.aws_request_id"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[473],
+                description="Added faas.execution attribute, deprecated in favor of faas.invocation_id",
+            ),
+        ],
+    ),
+    "faas.id": AttributeMetadata(
+        brief="The unique ID of the single function that this runtime instance executes.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="arn:aws:lambda:REGION:ACCOUNT_ID:function:my-function",
+        deprecation=DeprecationInfo(
+            replacement="cloud.resource_id",
+            reason="This attribute is being deprecated in favor of cloud.resource_id, which is the OTel-aligned replacement (renamed in OTel semantic conventions v1.19.0).",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["cloud.resource_id"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[475],
+                description="Added faas.id attribute, deprecated in favor of cloud.resource_id",
+            ),
+        ],
+    ),
     "faas.identity": AttributeMetadata(
         brief="The Service Account (GCP), IAM Execution Role (AWS), or Managed Identity (Azure) used by the serverless function when interacting with other cloud services",
         type=AttributeType.STRING,
@@ -12053,8 +12198,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="af9d5aa4-a685-4c5f-a22b-444f80b3cc28",
-        aliases=["aws.lambda.aws_request_id"],
+        aliases=["aws.lambda.aws_request_id", "faas.execution"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[473],
+                description="Added faas.execution as an alias",
+            ),
             ChangelogEntry(version="0.11.1", prs=[414, 424]),
         ],
     ),
@@ -14004,6 +14154,22 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "http.request.same_origin": AttributeMetadata(
+        brief="Indicates that a URL has the same origin as the current page's origin in the browser.",
+        type=AttributeType.BOOLEAN,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=True,
+        aliases=["url.same_origin"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[456],
+                description="Added http.request.same_origin attribute",
+            ),
+        ],
+    ),
     "http.request.secure_connection_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the browser starts the handshake process to secure the current connection. If a secure connection is not used, the property returns zero.",
         type=AttributeType.DOUBLE,
@@ -15166,6 +15332,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "messaging.message.conversation_id": AttributeMetadata(
+        brief='The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID".',
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="MyConversationId",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[468],
+                description="Added messaging.message.conversation_id attribute",
+            ),
+        ],
+    ),
     "messaging.message.envelope.size": AttributeMetadata(
         brief="The size of the message body and metadata in bytes.",
         type=AttributeType.INTEGER,
@@ -15238,6 +15419,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="create",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[51, 127]),
+        ],
+    ),
+    "messaging.rabbitmq.destination.routing_key": AttributeMetadata(
+        brief="RabbitMQ message routing key.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="myKey",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[468],
+                description="Added messaging.rabbitmq.destination.routing_key attribute",
+            ),
         ],
     ),
     "messaging.system": AttributeMetadata(
@@ -16723,6 +16919,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[116]),
         ],
     ),
+    "sentry.metric.source": AttributeMetadata(
+        brief="The provenance of a metric.  For example, this can be set to indicate if a metric was generated by Relay from a span.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="span",
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added sentry.metric.source attribute"
+            ),
+        ],
+    ),
     "sentry.mobile": AttributeMetadata(
         brief="Whether the application is using a mobile SDK. Computed by Relay and should not be set by SDKs.",
         type=AttributeType.BOOLEAN,
@@ -17795,6 +18004,27 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "url.same_origin": AttributeMetadata(
+        brief="Indicates that a URL has the same origin as the current page's origin in the browser.",
+        type=AttributeType.BOOLEAN,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=True,
+        deprecation=DeprecationInfo(
+            replacement="http.request.same_origin",
+            reason="This attribute is being deprecated in favor of http.request.same_origin.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["http.request.same_origin"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[456],
+                description="Added url.same_origin attribute, deprecated in favor of http.request.same_origin",
+            ),
+        ],
+    ),
     "url.scheme": AttributeMetadata(
         brief="The URI scheme component identifying the used protocol.",
         type=AttributeType.STRING,
@@ -18618,6 +18848,8 @@ Attributes = TypedDict(
         "faas.cron": str,
         "faas.duration_in_ms": int,
         "faas.entry_point": str,
+        "faas.execution": str,
+        "faas.id": str,
         "faas.identity": str,
         "faas.invocation_id": str,
         "faas.name": str,
@@ -18745,6 +18977,7 @@ Attributes = TypedDict(
         "http.request.resend_count": int,
         "http.request.response_end": float,
         "http.request.response_start": float,
+        "http.request.same_origin": bool,
         "http.request.secure_connection_start": float,
         "http.request.time_to_first_byte": float,
         "http.request.worker_start": float,
@@ -18825,12 +19058,14 @@ Attributes = TypedDict(
         "messaging.destination.connection": str,
         "messaging.destination.name": str,
         "messaging.message.body.size": int,
+        "messaging.message.conversation_id": str,
         "messaging.message.envelope.size": int,
         "messaging.message.id": str,
         "messaging.message.receive.latency": int,
         "messaging.message.retry.count": int,
         "messaging.operation.name": str,
         "messaging.operation.type": str,
+        "messaging.rabbitmq.destination.routing_key": str,
         "messaging.system": str,
         "method": str,
         "middleware.name": str,
@@ -18942,6 +19177,7 @@ Attributes = TypedDict(
         "sentry.main_thread": bool,
         "sentry.message.parameter.<key>": str,
         "sentry.message.template": str,
+        "sentry.metric.source": str,
         "sentry.mobile": bool,
         "sentry.module.<key>": str,
         "sentry.nextjs.ssr.function.route": str,
@@ -19023,6 +19259,7 @@ Attributes = TypedDict(
         "url.path.parameter.<key>": str,
         "url.port": int,
         "url.query": str,
+        "url.same_origin": bool,
         "url.scheme": str,
         "url.template": str,
         "url": str,
