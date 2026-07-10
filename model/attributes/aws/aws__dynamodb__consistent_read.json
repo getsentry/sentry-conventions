@@ -1,0 +1,18 @@
+{
+  "key": "aws.dynamodb.consistent_read",
+  "brief": "The value of the `ConsistentRead` request parameter.",
+  "type": "boolean",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "example": true,
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [479],
+      "description": "Added aws.dynamodb.consistent_read attribute"
+    }
+  ]
+}

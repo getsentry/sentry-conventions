@@ -1,0 +1,18 @@
+{
+  "key": "aws.dynamodb.segment",
+  "brief": "The value of the `Segment` request parameter.",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "example": 10,
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [479],
+      "description": "Added aws.dynamodb.segment attribute"
+    }
+  ]
+}
