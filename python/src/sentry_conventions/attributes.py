@@ -152,10 +152,13 @@ class _AttributeNamesMeta(type):
         "APP_START_COLD",
         "APP_START_TYPE",
         "APP_START_WARM",
+        "_AWS_KINESIS_STREAM_NAME",
         "AWS_LAMBDA_AWS_REQUEST_ID",
         "AWS_LAMBDA_FUNCTION_NAME",
         "AWS_LAMBDA_FUNCTION_VERSION",
         "AWS_LAMBDA_INVOKED_FUNCTION_ARN",
+        "AWS_REQUEST_EXTENDED_ID",
+        "_AWS_REQUEST_ID",
         "CLOUDFLARE_D1_QUERY_TYPE",
         "CLS_SOURCE_KEY",
         "CLS",
@@ -1491,6 +1494,49 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 100
     """
 
+    # Path: model/attributes/aws/aws__extended_request_id.json
+    AWS_EXTENDED_REQUEST_ID: Literal["aws.extended_request_id"] = (
+        "aws.extended_request_id"
+    )
+    """The AWS extended request ID as returned in the response headers.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Aliases: aws.request.extended_id
+    Example: "wzHcyEWfmOGDIE5QOhTAqFDoDWP3y8IUvpNINCwL9N4TEHbUw0/gZJ+VZTmCNCWR7fezEN3eCiQ="
+    """
+
+    # Path: model/attributes/aws/aws__kinesis__stream__name.json
+    _AWS_KINESIS_STREAM_NAME: Literal["aws.kinesis.stream.name"] = (
+        "aws.kinesis.stream.name"
+    )
+    """The name of the AWS Kinesis stream the request refers to.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: aws.kinesis.stream_name
+    DEPRECATED: Use aws.kinesis.stream_name instead - This attribute is being deprecated in favor of aws.kinesis.stream_name, which is the OTel-aligned replacement.
+    Example: "some-stream-name"
+    """
+
+    # Path: model/attributes/aws/aws__kinesis__stream_name.json
+    AWS_KINESIS_STREAM_NAME: Literal["aws.kinesis.stream_name"] = (
+        "aws.kinesis.stream_name"
+    )
+    """The name of the AWS Kinesis stream the request refers to.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Aliases: aws.kinesis.stream.name
+    Example: "some-stream-name"
+    """
+
     # Path: model/attributes/aws/aws__lambda__aws_request_id.json
     AWS_LAMBDA_AWS_REQUEST_ID: Literal["aws.lambda.aws_request_id"] = (
         "aws.lambda.aws_request_id"
@@ -1609,6 +1655,107 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Example: ["logs/main/10838bed-421f-43ef-870a-f43feacbbb5b"]
+    """
+
+    # Path: model/attributes/aws/aws__request__extended_id.json
+    AWS_REQUEST_EXTENDED_ID: Literal["aws.request.extended_id"] = (
+        "aws.request.extended_id"
+    )
+    """The AWS extended request ID as returned in the response headers.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: aws.extended_request_id
+    DEPRECATED: Use aws.extended_request_id instead - This attribute is being deprecated in favor of aws.extended_request_id, which is the OTel-aligned replacement.
+    Example: "wzHcyEWfmOGDIE5QOhTAqFDoDWP3y8IUvpNINCwL9N4TEHbUw0/gZJ+VZTmCNCWR7fezEN3eCiQ="
+    """
+
+    # Path: model/attributes/aws/aws__request__id.json
+    _AWS_REQUEST_ID: Literal["aws.request.id"] = "aws.request.id"
+    """The AWS request ID as returned in the response headers.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: aws.request_id
+    DEPRECATED: Use aws.request_id instead - This attribute is being deprecated in favor of aws.request_id, which is the OTel-aligned replacement.
+    Example: "79b9da39-b7ae-508a-a6bc-864b2829c622"
+    """
+
+    # Path: model/attributes/aws/aws__request_id.json
+    AWS_REQUEST_ID: Literal["aws.request_id"] = "aws.request_id"
+    """The AWS request ID as returned in the response headers.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Aliases: aws.request.id
+    Example: "79b9da39-b7ae-508a-a6bc-864b2829c622"
+    """
+
+    # Path: model/attributes/aws/aws__s3__bucket.json
+    AWS_S3_BUCKET: Literal["aws.s3.bucket"] = "aws.s3.bucket"
+    """The S3 bucket name the request refers to.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "ot-demo-test"
+    """
+
+    # Path: model/attributes/aws/aws__secretsmanager__secret__arn.json
+    AWS_SECRETSMANAGER_SECRET_ARN: Literal["aws.secretsmanager.secret.arn"] = (
+        "aws.secretsmanager.secret.arn"
+    )
+    """The ARN of the Secret stored in Secrets Manager.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "arn:aws:secretsmanager:us-east-1:123456789012:secret:SecretName-6RandomCharacters"
+    """
+
+    # Path: model/attributes/aws/aws__sns__topic__arn.json
+    AWS_SNS_TOPIC_ARN: Literal["aws.sns.topic.arn"] = "aws.sns.topic.arn"
+    """The ARN of the AWS SNS Topic. An Amazon SNS topic is a logical access point that acts as a communication channel.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "arn:aws:sns:us-east-1:123456789012:mystack-mytopic-NZJ5JSMVGFIE"
+    """
+
+    # Path: model/attributes/aws/aws__step_functions__activity__arn.json
+    AWS_STEP_FUNCTIONS_ACTIVITY_ARN: Literal["aws.step_functions.activity.arn"] = (
+        "aws.step_functions.activity.arn"
+    )
+    """The ARN of the AWS Step Functions Activity.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "arn:aws:states:us-east-1:123456789012:activity:get-greeting"
+    """
+
+    # Path: model/attributes/aws/aws__step_functions__state_machine__arn.json
+    AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN: Literal[
+        "aws.step_functions.state_machine.arn"
+    ] = "aws.step_functions.state_machine.arn"
+    """The ARN of the AWS Step Functions State Machine.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "arn:aws:states:us-east-1:123456789012:stateMachine:myStateMachine:1"
     """
 
     # Path: model/attributes/blocked_main_thread.json
@@ -10452,6 +10599,59 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "aws.extended_request_id": AttributeMetadata(
+        brief="The AWS extended request ID as returned in the response headers.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="wzHcyEWfmOGDIE5QOhTAqFDoDWP3y8IUvpNINCwL9N4TEHbUw0/gZJ+VZTmCNCWR7fezEN3eCiQ=",
+        aliases=["aws.request.extended_id"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[480],
+                description="Added aws.extended_request_id attribute",
+            ),
+        ],
+    ),
+    "aws.kinesis.stream.name": AttributeMetadata(
+        brief="The name of the AWS Kinesis stream the request refers to.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="some-stream-name",
+        deprecation=DeprecationInfo(
+            replacement="aws.kinesis.stream_name",
+            reason="This attribute is being deprecated in favor of aws.kinesis.stream_name, which is the OTel-aligned replacement.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["aws.kinesis.stream_name"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[480],
+                description="Added aws.kinesis.stream.name attribute, deprecated in favor of aws.kinesis.stream_name",
+            ),
+        ],
+    ),
+    "aws.kinesis.stream_name": AttributeMetadata(
+        brief="The name of the AWS Kinesis stream the request refers to.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="some-stream-name",
+        aliases=["aws.kinesis.stream.name"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[480],
+                description="Added aws.kinesis.stream_name attribute",
+            ),
+        ],
+    ),
     "aws.lambda.aws_request_id": AttributeMetadata(
         brief="The AWS request ID as received by the Lambda function runtime",
         type=AttributeType.STRING,
@@ -10623,6 +10823,135 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=["logs/main/10838bed-421f-43ef-870a-f43feacbbb5b"],
         changelog=[
             ChangelogEntry(version="0.11.1", prs=[414]),
+        ],
+    ),
+    "aws.request.extended_id": AttributeMetadata(
+        brief="The AWS extended request ID as returned in the response headers.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="wzHcyEWfmOGDIE5QOhTAqFDoDWP3y8IUvpNINCwL9N4TEHbUw0/gZJ+VZTmCNCWR7fezEN3eCiQ=",
+        deprecation=DeprecationInfo(
+            replacement="aws.extended_request_id",
+            reason="This attribute is being deprecated in favor of aws.extended_request_id, which is the OTel-aligned replacement.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["aws.extended_request_id"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[480],
+                description="Added aws.request.extended_id attribute, deprecated in favor of aws.extended_request_id",
+            ),
+        ],
+    ),
+    "aws.request.id": AttributeMetadata(
+        brief="The AWS request ID as returned in the response headers.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="79b9da39-b7ae-508a-a6bc-864b2829c622",
+        deprecation=DeprecationInfo(
+            replacement="aws.request_id",
+            reason="This attribute is being deprecated in favor of aws.request_id, which is the OTel-aligned replacement.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["aws.request_id"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[480],
+                description="Added aws.request.id attribute, deprecated in favor of aws.request_id",
+            ),
+        ],
+    ),
+    "aws.request_id": AttributeMetadata(
+        brief="The AWS request ID as returned in the response headers.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="79b9da39-b7ae-508a-a6bc-864b2829c622",
+        aliases=["aws.request.id"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[480], description="Added aws.request_id attribute"
+            ),
+        ],
+    ),
+    "aws.s3.bucket": AttributeMetadata(
+        brief="The S3 bucket name the request refers to.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="ot-demo-test",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[480], description="Added aws.s3.bucket attribute"
+            ),
+        ],
+    ),
+    "aws.secretsmanager.secret.arn": AttributeMetadata(
+        brief="The ARN of the Secret stored in Secrets Manager.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="arn:aws:secretsmanager:us-east-1:123456789012:secret:SecretName-6RandomCharacters",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[480],
+                description="Added aws.secretsmanager.secret.arn attribute",
+            ),
+        ],
+    ),
+    "aws.sns.topic.arn": AttributeMetadata(
+        brief="The ARN of the AWS SNS Topic. An Amazon SNS topic is a logical access point that acts as a communication channel.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="arn:aws:sns:us-east-1:123456789012:mystack-mytopic-NZJ5JSMVGFIE",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[480],
+                description="Added aws.sns.topic.arn attribute",
+            ),
+        ],
+    ),
+    "aws.step_functions.activity.arn": AttributeMetadata(
+        brief="The ARN of the AWS Step Functions Activity.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="arn:aws:states:us-east-1:123456789012:activity:get-greeting",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[480],
+                description="Added aws.step_functions.activity.arn attribute",
+            ),
+        ],
+    ),
+    "aws.step_functions.state_machine.arn": AttributeMetadata(
+        brief="The ARN of the AWS Step Functions State Machine.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="arn:aws:states:us-east-1:123456789012:stateMachine:myStateMachine:1",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[480],
+                description="Added aws.step_functions.state_machine.arn attribute",
+            ),
         ],
     ),
     "blocked_main_thread": AttributeMetadata(
@@ -19136,6 +19465,9 @@ Attributes = TypedDict(
         "aws.dynamodb.table_count": int,
         "aws.dynamodb.table_names": List[str],
         "aws.dynamodb.total_segments": int,
+        "aws.extended_request_id": str,
+        "aws.kinesis.stream.name": str,
+        "aws.kinesis.stream_name": str,
         "aws.lambda.aws_request_id": str,
         "aws.lambda.execution_duration_in_millis": float,
         "aws.lambda.function_name": str,
@@ -19145,6 +19477,14 @@ Attributes = TypedDict(
         "aws.lambda.remaining_time_in_millis": float,
         "aws.log.group.names": List[str],
         "aws.log.stream.names": List[str],
+        "aws.request.extended_id": str,
+        "aws.request.id": str,
+        "aws.request_id": str,
+        "aws.s3.bucket": str,
+        "aws.secretsmanager.secret.arn": str,
+        "aws.sns.topic.arn": str,
+        "aws.step_functions.activity.arn": str,
+        "aws.step_functions.state_machine.arn": str,
         "blocked_main_thread": bool,
         "browser.name": str,
         "browser.performance.navigation.activation_start": float,
