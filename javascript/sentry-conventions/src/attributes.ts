@@ -4798,6 +4798,30 @@ export const DEVICE_USABLE_MEMORY = 'device.usable_memory';
  */
 export type DEVICE_USABLE_MEMORY_TYPE = number;
 
+// Path: model/attributes/dist.json
+
+/**
+ * The sentry dist. `dist`
+ *
+ * Attribute Value Type: `string` {@link DIST_TYPE}
+ *
+ * Apply Scrubbing: never
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link SENTRY_DIST} `sentry.dist`
+ *
+ * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - This attribute is being deprecated in favor of sentry.dist.
+ * @example "1.0"
+ */
+export const DIST = 'dist';
+
+/**
+ * Type for {@link DIST} dist
+ */
+export type DIST_TYPE = string;
+
 // Path: model/attributes/effectiveConnectionType.json
 
 /**
@@ -15304,6 +15328,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'device.thermal_state': 'string',
   'device.timezone': 'string',
   'device.usable_memory': 'integer',
+  dist: 'string',
   effectiveConnectionType: 'string',
   environment: 'string',
   'error.type': 'string',
@@ -15986,6 +16011,7 @@ export type AttributeName =
   | typeof DEVICE_THERMAL_STATE
   | typeof DEVICE_TIMEZONE
   | typeof DEVICE_USABLE_MEMORY
+  | typeof DIST
   | typeof EFFECTIVECONNECTIONTYPE
   | typeof ENVIRONMENT
   | typeof ERROR_TYPE
@@ -19307,6 +19333,22 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 2147483648,
     changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.usable_memory attribute' }],
+  },
+  dist: {
+    brief: 'The sentry dist.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'never',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '1.0',
+    deprecation: {
+      replacement: 'server.address',
+      reason: 'This attribute is being deprecated in favor of sentry.dist.',
+    },
+    aliases: ['sentry.dist'],
+    changelog: [{ version: 'next', prs: [489], description: 'Added dist attribute' }],
   },
   effectiveConnectionType: {
     brief: 'Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).',
@@ -25696,6 +25738,7 @@ export type Attributes = {
   [DEVICE_THERMAL_STATE]?: DEVICE_THERMAL_STATE_TYPE;
   [DEVICE_TIMEZONE]?: DEVICE_TIMEZONE_TYPE;
   [DEVICE_USABLE_MEMORY]?: DEVICE_USABLE_MEMORY_TYPE;
+  [DIST]?: DIST_TYPE;
   [EFFECTIVECONNECTIONTYPE]?: EFFECTIVECONNECTIONTYPE_TYPE;
   [ENVIRONMENT]?: ENVIRONMENT_TYPE;
   [ERROR_TYPE]?: ERROR_TYPE_TYPE;

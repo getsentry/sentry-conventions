@@ -170,6 +170,7 @@ class _AttributeNamesMeta(type):
         "DB_SYSTEM",
         "DEVICE_CONNECTION_TYPE",
         "DEVICEMEMORY",
+        "DIST",
         "EFFECTIVECONNECTIONTYPE",
         "ENVIRONMENT",
         "FAAS_EXECUTION",
@@ -2963,6 +2964,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Aliases: device.memory.estimated_capacity
     DEPRECATED: Use device.memory.estimated_capacity instead - Old namespace-less attribute, to be replaced with device.memory.estimated_capacity for span-first future
     Example: "8 GB"
+    """
+
+    # Path: model/attributes/dist.json
+    DIST: Literal["dist"] = "dist"
+    """The sentry dist.
+
+    Type: str
+    Apply Scrubbing: never
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: sentry.dist
+    DEPRECATED: Use server.address instead - This attribute is being deprecated in favor of sentry.dist.
+    Example: "1.0"
     """
 
     # Path: model/attributes/effectiveConnectionType.json
@@ -11807,6 +11821,25 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "dist": AttributeMetadata(
+        brief="The sentry dist.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="1.0",
+        deprecation=DeprecationInfo(
+            replacement="server.address",
+            reason="This attribute is being deprecated in favor of sentry.dist.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["sentry.dist"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[489], description="Added dist attribute"
+            ),
+        ],
+    ),
     "effectiveConnectionType": AttributeMetadata(
         brief="Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).",
         type=AttributeType.STRING,
@@ -18460,6 +18493,7 @@ Attributes = TypedDict(
         "device.timezone": str,
         "device.usable_memory": int,
         "deviceMemory": str,
+        "dist": str,
         "effectiveConnectionType": str,
         "environment": str,
         "error.type": str,
