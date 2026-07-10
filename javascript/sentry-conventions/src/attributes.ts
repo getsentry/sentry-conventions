@@ -5169,6 +5169,69 @@ export const FAAS_INVOCATION_ID = 'faas.invocation_id';
  */
 export type FAAS_INVOCATION_ID_TYPE = string;
 
+// Path: model/attributes/faas/faas__invoked_name.json
+
+/**
+ * The name of the invoked function. `faas.invoked_name`
+ *
+ * Attribute Value Type: `string` {@link FAAS_INVOKED_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "my-function"
+ */
+export const FAAS_INVOKED_NAME = 'faas.invoked_name';
+
+/**
+ * Type for {@link FAAS_INVOKED_NAME} faas.invoked_name
+ */
+export type FAAS_INVOKED_NAME_TYPE = string;
+
+// Path: model/attributes/faas/faas__invoked_provider.json
+
+/**
+ * The cloud provider of the invoked function. `faas.invoked_provider`
+ *
+ * Attribute Value Type: `string` {@link FAAS_INVOKED_PROVIDER_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "aws"
+ */
+export const FAAS_INVOKED_PROVIDER = 'faas.invoked_provider';
+
+/**
+ * Type for {@link FAAS_INVOKED_PROVIDER} faas.invoked_provider
+ */
+export type FAAS_INVOKED_PROVIDER_TYPE = string;
+
+// Path: model/attributes/faas/faas__invoked_region.json
+
+/**
+ * The cloud region of the invoked function. `faas.invoked_region`
+ *
+ * Attribute Value Type: `string` {@link FAAS_INVOKED_REGION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "eu-central-1"
+ */
+export const FAAS_INVOKED_REGION = 'faas.invoked_region';
+
+/**
+ * Type for {@link FAAS_INVOKED_REGION} faas.invoked_region
+ */
+export type FAAS_INVOKED_REGION_TYPE = string;
+
 // Path: model/attributes/faas/faas__name.json
 
 /**
@@ -15321,6 +15384,9 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'faas.id': 'string',
   'faas.identity': 'string',
   'faas.invocation_id': 'string',
+  'faas.invoked_name': 'string',
+  'faas.invoked_provider': 'string',
+  'faas.invoked_region': 'string',
   'faas.name': 'string',
   'faas.time': 'string',
   'faas.trigger': 'string',
@@ -16003,6 +16069,9 @@ export type AttributeName =
   | typeof FAAS_ID
   | typeof FAAS_IDENTITY
   | typeof FAAS_INVOCATION_ID
+  | typeof FAAS_INVOKED_NAME
+  | typeof FAAS_INVOKED_PROVIDER
+  | typeof FAAS_INVOKED_REGION
   | typeof FAAS_NAME
   | typeof FAAS_TIME
   | typeof FAAS_TRIGGER
@@ -19540,6 +19609,39 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: 'next', prs: [473], description: 'Added faas.execution as an alias' },
       { version: '0.11.1', prs: [414, 424] },
     ],
+  },
+  'faas.invoked_name': {
+    brief: 'The name of the invoked function.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'my-function',
+    changelog: [{ version: 'next', prs: [481], description: 'Added faas.invoked_name attribute' }],
+  },
+  'faas.invoked_provider': {
+    brief: 'The cloud provider of the invoked function.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'aws',
+    changelog: [{ version: 'next', prs: [481], description: 'Added faas.invoked_provider attribute' }],
+  },
+  'faas.invoked_region': {
+    brief: 'The cloud region of the invoked function.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'eu-central-1',
+    changelog: [{ version: 'next', prs: [481], description: 'Added faas.invoked_region attribute' }],
   },
   'faas.name': {
     brief: 'The name of the serverless function',
@@ -25713,6 +25815,9 @@ export type Attributes = {
   [FAAS_ID]?: FAAS_ID_TYPE;
   [FAAS_IDENTITY]?: FAAS_IDENTITY_TYPE;
   [FAAS_INVOCATION_ID]?: FAAS_INVOCATION_ID_TYPE;
+  [FAAS_INVOKED_NAME]?: FAAS_INVOKED_NAME_TYPE;
+  [FAAS_INVOKED_PROVIDER]?: FAAS_INVOKED_PROVIDER_TYPE;
+  [FAAS_INVOKED_REGION]?: FAAS_INVOKED_REGION_TYPE;
   [FAAS_NAME]?: FAAS_NAME_TYPE;
   [FAAS_TIME]?: FAAS_TIME_TYPE;
   [FAAS_TRIGGER]?: FAAS_TRIGGER_TYPE;

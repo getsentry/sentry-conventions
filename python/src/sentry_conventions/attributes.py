@@ -3163,6 +3163,39 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "af9d5aa4-a685-4c5f-a22b-444f80b3cc28"
     """
 
+    # Path: model/attributes/faas/faas__invoked_name.json
+    FAAS_INVOKED_NAME: Literal["faas.invoked_name"] = "faas.invoked_name"
+    """The name of the invoked function.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "my-function"
+    """
+
+    # Path: model/attributes/faas/faas__invoked_provider.json
+    FAAS_INVOKED_PROVIDER: Literal["faas.invoked_provider"] = "faas.invoked_provider"
+    """The cloud provider of the invoked function.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "aws"
+    """
+
+    # Path: model/attributes/faas/faas__invoked_region.json
+    FAAS_INVOKED_REGION: Literal["faas.invoked_region"] = "faas.invoked_region"
+    """The cloud region of the invoked function.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "eu-central-1"
+    """
+
     # Path: model/attributes/faas/faas__name.json
     FAAS_NAME: Literal["faas.name"] = "faas.name"
     """The name of the serverless function
@@ -12038,6 +12071,51 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.11.1", prs=[414, 424]),
         ],
     ),
+    "faas.invoked_name": AttributeMetadata(
+        brief="The name of the invoked function.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="my-function",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[481],
+                description="Added faas.invoked_name attribute",
+            ),
+        ],
+    ),
+    "faas.invoked_provider": AttributeMetadata(
+        brief="The cloud provider of the invoked function.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="aws",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[481],
+                description="Added faas.invoked_provider attribute",
+            ),
+        ],
+    ),
+    "faas.invoked_region": AttributeMetadata(
+        brief="The cloud region of the invoked function.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="eu-central-1",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[481],
+                description="Added faas.invoked_region attribute",
+            ),
+        ],
+    ),
     "faas.name": AttributeMetadata(
         brief="The name of the serverless function",
         type=AttributeType.STRING,
@@ -18477,6 +18555,9 @@ Attributes = TypedDict(
         "faas.id": str,
         "faas.identity": str,
         "faas.invocation_id": str,
+        "faas.invoked_name": str,
+        "faas.invoked_provider": str,
+        "faas.invoked_region": str,
         "faas.name": str,
         "faas.time": str,
         "faas.trigger": str,
