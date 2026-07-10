@@ -1,0 +1,17 @@
+{
+  "key": "aws.dynamodb.provisioned_write_capacity",
+  "brief": "The value of the `ProvisionedThroughput.WriteCapacityUnits` request parameter.",
+  "type": "double",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "example": 2,
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added aws.dynamodb.provisioned_write_capacity attribute"
+    }
+  ]
+}

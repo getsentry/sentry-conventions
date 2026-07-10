@@ -7,8 +7,13 @@
   },
   "is_in_otel": true,
   "example": "BestTopic",
+  "alias": ["messaging.destination"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added messaging.destination as an alias"
+    },
     {
       "version": "0.1.0",
       "prs": [127]

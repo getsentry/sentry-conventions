@@ -1,0 +1,17 @@
+{
+  "key": "faas.invoked_provider",
+  "brief": "The cloud provider of the invoked function.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "example": "aws",
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added faas.invoked_provider attribute"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "key": "messaging.destination",
+  "brief": "The message destination name.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "example": "BestTopic",
+  "alias": ["messaging.destination.name"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "messaging.destination.name",
+    "reason": "This attribute is being deprecated in favor of messaging.destination.name, which is the OTel-aligned replacement."
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added messaging.destination attribute, deprecated in favor of messaging.destination.name"
+    }
+  ]
+}

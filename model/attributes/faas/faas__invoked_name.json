@@ -1,0 +1,17 @@
+{
+  "key": "faas.invoked_name",
+  "brief": "The name of the invoked function.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "example": "my-function",
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added faas.invoked_name attribute"
+    }
+  ]
+}

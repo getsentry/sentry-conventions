@@ -1,0 +1,19 @@
+{
+  "key": "aws.dynamodb.global_secondary_index_updates",
+  "brief": "The JSON-serialized value of each item in the `GlobalSecondaryIndexUpdates` request field.",
+  "type": "string[]",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "example": [
+    "{ \"Create\": { \"IndexName\": \"string\", \"KeySchema\": [ { \"AttributeName\": \"string\", \"KeyType\": \"string\" } ], \"Projection\": { \"NonKeyAttributes\": [ \"string\" ], \"ProjectionType\": \"string\" }, \"ProvisionedThroughput\": { \"ReadCapacityUnits\": number, \"WriteCapacityUnits\": number } }"
+  ],
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added aws.dynamodb.global_secondary_index_updates attribute"
+    }
+  ]
+}

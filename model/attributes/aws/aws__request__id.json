@@ -1,0 +1,17 @@
+{
+  "key": "aws.request.id",
+  "brief": "The AWS request ID as returned in the response headers.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "example": "79b9da39-b7ae-508a-a6bc-864b2829c622",
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added aws.request.id attribute"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "key": "aws.dynamodb.projection",
+  "brief": "The value of the `ProjectionExpression` request parameter.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "example": "Title, Price, Color",
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added aws.dynamodb.projection attribute"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "key": "aws.kinesis.stream.name",
+  "brief": "The name of the AWS Kinesis stream the request refers to.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "example": "some-stream-name",
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added aws.kinesis.stream.name attribute"
+    }
+  ]
+}

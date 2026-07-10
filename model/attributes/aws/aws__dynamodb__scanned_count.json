@@ -1,0 +1,17 @@
+{
+  "key": "aws.dynamodb.scanned_count",
+  "brief": "The value of the `ScannedCount` response parameter.",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "example": 50,
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added aws.dynamodb.scanned_count attribute"
+    }
+  ]
+}

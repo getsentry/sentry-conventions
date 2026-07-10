@@ -1,0 +1,17 @@
+{
+  "key": "faas.invoked_region",
+  "brief": "The cloud region of the invoked function.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "example": "eu-central-1",
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added faas.invoked_region attribute"
+    }
+  ]
+}

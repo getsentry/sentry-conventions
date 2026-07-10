@@ -1,0 +1,17 @@
+{
+  "key": "aws.s3.bucket",
+  "brief": "The S3 bucket name the request refers to.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "example": "ot-demo-test",
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added aws.s3.bucket attribute"
+    }
+  ]
+}
