@@ -1353,7 +1353,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
-    Aliases: url.full
+    Aliases: url.full, http.url, url
     DEPRECATED: Use url.full instead - This attribute is being deprecated in favor of url.full, which is the OTel-aligned replacement.
     Example: "https://sqs.us-east-1.amazonaws.com/123456789/my-queue"
     """
@@ -4857,7 +4857,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: url.full, url
+    Aliases: url.full, url, aws.request.url
     DEPRECATED: Use url.full instead
     Example: "https://example.com/test?foo=bar#buzz"
     """
@@ -8065,7 +8065,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
-    Aliases: url.full, http.url
+    Aliases: url.full, http.url, aws.request.url
     DEPRECATED: Use url.full instead
     Example: "https://example.com/test?foo=bar#buzz"
     """
@@ -9976,7 +9976,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="This attribute is being deprecated in favor of url.full, which is the OTel-aligned replacement.",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["url.full"],
+        aliases=["url.full", "http.url", "url"],
         changelog=[
             ChangelogEntry(
                 version="next",
@@ -14076,7 +14076,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="https://example.com/test?foo=bar#buzz",
         deprecation=DeprecationInfo(replacement="url.full"),
-        aliases=["url.full", "url"],
+        aliases=["url.full", "url", "aws.request.url"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 108]),
             ChangelogEntry(version="0.0.0"),
@@ -17721,7 +17721,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="https://example.com/test?foo=bar#buzz",
         deprecation=DeprecationInfo(replacement="url.full"),
-        aliases=["url.full", "http.url"],
+        aliases=["url.full", "http.url", "aws.request.url"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61]),
             ChangelogEntry(version="0.0.0"),

@@ -7,7 +7,7 @@
   },
   "is_in_otel": false,
   "example": "https://sqs.us-east-1.amazonaws.com/123456789/my-queue",
-  "alias": ["url.full"],
+  "alias": ["url.full", "http.url", "url"],
   "deprecation": {
     "_status": "backfill",
     "replacement": "url.full",

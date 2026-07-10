@@ -1894,7 +1894,7 @@ export type AWS_LOG_STREAM_NAMES_TYPE = Array<string>;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link URL_FULL} `url.full`
+ * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link URL} `url`
  *
  * @deprecated Use {@link URL_FULL} (url.full) instead - This attribute is being deprecated in favor of url.full, which is the OTel-aligned replacement.
  * @example "https://sqs.us-east-1.amazonaws.com/123456789/my-queue"
@@ -8082,7 +8082,7 @@ export type HTTP_TARGET_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link URL_FULL} `url.full`, {@link URL} `url`
+ * Aliases: {@link URL_FULL} `url.full`, {@link URL} `url`, {@link AWS_REQUEST_URL} `aws.request.url`
  *
  * @deprecated Use {@link URL_FULL} (url.full) instead
  * @example "https://example.com/test?foo=bar#buzz"
@@ -13703,7 +13703,7 @@ export type UI_ELEMENT_WIDTH_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`
+ * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link AWS_REQUEST_URL} `aws.request.url`
  *
  * @deprecated Use {@link URL_FULL} (url.full) instead
  * @example "https://example.com/test?foo=bar#buzz"
@@ -17626,7 +17626,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'url.full',
       reason: 'This attribute is being deprecated in favor of url.full, which is the OTel-aligned replacement.',
     },
-    aliases: ['url.full'],
+    aliases: ['url.full', 'http.url', 'url'],
     changelog: [{ version: 'next', description: 'Added aws.request.url attribute, deprecated in favor of url.full' }],
   },
   blocked_main_thread: {
@@ -21417,7 +21417,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'url.full',
     },
-    aliases: ['url.full', 'url'],
+    aliases: ['url.full', 'url', 'aws.request.url'],
     changelog: [{ version: '0.1.0', prs: [61, 108] }, { version: '0.0.0' }],
   },
   'http.user_agent': {
@@ -24748,7 +24748,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'url.full',
     },
-    aliases: ['url.full', 'http.url'],
+    aliases: ['url.full', 'http.url', 'aws.request.url'],
     changelog: [{ version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
   },
   'url.domain': {
