@@ -18259,7 +18259,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: ['{ "AttributeName": "string", "AttributeType": "string" }'],
-    changelog: [{ version: 'next', description: 'Added aws.dynamodb.attribute_definitions attribute' }],
+    changelog: [{ version: 'next', prs: [478], description: 'Added aws.dynamodb.attribute_definitions attribute' }],
   },
   'aws.dynamodb.consistent_read': {
     brief: 'The value of the `ConsistentRead` request parameter.',
@@ -18270,7 +18270,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: true,
-    changelog: [{ version: 'next', description: 'Added aws.dynamodb.consistent_read attribute' }],
+    changelog: [{ version: 'next', prs: [478], description: 'Added aws.dynamodb.consistent_read attribute' }],
   },
   'aws.dynamodb.consumed_capacity': {
     brief: 'The JSON-serialized value of each item in the `ConsumedCapacity` response field.',
@@ -18283,7 +18283,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: [
       '{ "CapacityUnits": number, "GlobalSecondaryIndexes": { "string" : { "CapacityUnits": number, "ReadCapacityUnits": number, "WriteCapacityUnits": number } }, "LocalSecondaryIndexes": { "string" : { "CapacityUnits": number, "ReadCapacityUnits": number, "WriteCapacityUnits": number } }, "ReadCapacityUnits": number, "Table": { "CapacityUnits": number, "ReadCapacityUnits": number, "WriteCapacityUnits": number }, "TableName": "string", "WriteCapacityUnits": number }',
     ],
-    changelog: [{ version: 'next', description: 'Added aws.dynamodb.consumed_capacity attribute' }],
+    changelog: [{ version: 'next', prs: [478], description: 'Added aws.dynamodb.consumed_capacity attribute' }],
   },
   'aws.dynamodb.count': {
     brief: 'The value of the `Count` response parameter.',
@@ -18294,7 +18294,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 10,
-    changelog: [{ version: 'next', description: 'Added aws.dynamodb.count attribute' }],
+    changelog: [{ version: 'next', prs: [478], description: 'Added aws.dynamodb.count attribute' }],
   },
   'aws.dynamodb.exclusive_start_table': {
     brief: 'The value of the `ExclusiveStartTableName` request parameter.',
@@ -18305,7 +18305,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'Users',
-    changelog: [{ version: 'next', description: 'Added aws.dynamodb.exclusive_start_table attribute' }],
+    changelog: [{ version: 'next', prs: [478], description: 'Added aws.dynamodb.exclusive_start_table attribute' }],
   },
   'aws.dynamodb.global_secondary_indexes': {
     brief: 'The JSON-serialized value of each item of the `GlobalSecondaryIndexes` request field.',
@@ -18318,7 +18318,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: [
       '{ "IndexName": "string", "KeySchema": [ { "AttributeName": "string", "KeyType": "string" } ], "Projection": { "NonKeyAttributes": [ "string" ], "ProjectionType": "string" }, "ProvisionedThroughput": { "ReadCapacityUnits": number, "WriteCapacityUnits": number } }',
     ],
-    changelog: [{ version: 'next', description: 'Added aws.dynamodb.global_secondary_indexes attribute' }],
+    changelog: [{ version: 'next', prs: [478], description: 'Added aws.dynamodb.global_secondary_indexes attribute' }],
   },
   'aws.dynamodb.global_secondary_index_updates': {
     brief: 'The JSON-serialized value of each item in the `GlobalSecondaryIndexUpdates` request field.',
@@ -18331,7 +18331,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: [
       '{ "Create": { "IndexName": "string", "KeySchema": [ { "AttributeName": "string", "KeyType": "string" } ], "Projection": { "NonKeyAttributes": [ "string" ], "ProjectionType": "string" }, "ProvisionedThroughput": { "ReadCapacityUnits": number, "WriteCapacityUnits": number } }',
     ],
-    changelog: [{ version: 'next', description: 'Added aws.dynamodb.global_secondary_index_updates attribute' }],
+    changelog: [
+      { version: 'next', prs: [478], description: 'Added aws.dynamodb.global_secondary_index_updates attribute' },
+    ],
   },
   'aws.dynamodb.index_name': {
     brief: 'The value of the `IndexName` request parameter.',
@@ -18342,7 +18344,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'name_to_group',
-    changelog: [{ version: 'next', description: 'Added aws.dynamodb.index_name attribute' }],
+    changelog: [{ version: 'next', prs: [478], description: 'Added aws.dynamodb.index_name attribute' }],
   },
   'aws.dynamodb.item_collection_metrics': {
     brief: 'The JSON-serialized value of the `ItemCollectionMetrics` response field.',
@@ -18354,7 +18356,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example:
       '{ "string" : [ { "ItemCollectionKey": { "string" : { "B": blob, "BOOL": boolean, "BS": [ blob ], "L": [ "AttributeValue" ], "M": { "string" : "AttributeValue" }, "N": "string", "NS": [ "string" ], "NULL": boolean, "S": "string", "SS": [ "string" ] } }, "SizeEstimateRangeGB": [ number ] } ] }',
-    changelog: [{ version: 'next', description: 'Added aws.dynamodb.item_collection_metrics attribute' }],
+    changelog: [{ version: 'next', prs: [478], description: 'Added aws.dynamodb.item_collection_metrics attribute' }],
   },
   'aws.dynamodb.limit': {
     brief: 'The value of the `Limit` request parameter.',
@@ -18365,7 +18367,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 10,
-    changelog: [{ version: 'next', description: 'Added aws.dynamodb.limit attribute' }],
+    changelog: [{ version: 'next', prs: [478], description: 'Added aws.dynamodb.limit attribute' }],
   },
   'aws.dynamodb.local_secondary_indexes': {
     brief: 'The JSON-serialized value of each item of the `LocalSecondaryIndexes` request field.',
@@ -18378,7 +18380,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: [
       '{ "IndexArn": "string", "IndexName": "string", "IndexSizeBytes": number, "ItemCount": number, "KeySchema": [ { "AttributeName": "string", "KeyType": "string" } ], "Projection": { "NonKeyAttributes": [ "string" ], "ProjectionType": "string" } }',
     ],
-    changelog: [{ version: 'next', description: 'Added aws.dynamodb.local_secondary_indexes attribute' }],
+    changelog: [{ version: 'next', prs: [478], description: 'Added aws.dynamodb.local_secondary_indexes attribute' }],
   },
   'aws.dynamodb.projection': {
     brief: 'The value of the `ProjectionExpression` request parameter.',
@@ -18389,7 +18391,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'Title, Price, Color',
-    changelog: [{ version: 'next', description: 'Added aws.dynamodb.projection attribute' }],
+    changelog: [{ version: 'next', prs: [478], description: 'Added aws.dynamodb.projection attribute' }],
   },
   'aws.dynamodb.provisioned_read_capacity': {
     brief: 'The value of the `ProvisionedThroughput.ReadCapacityUnits` request parameter.',
@@ -18400,7 +18402,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 1,
-    changelog: [{ version: 'next', description: 'Added aws.dynamodb.provisioned_read_capacity attribute' }],
+    changelog: [{ version: 'next', prs: [478], description: 'Added aws.dynamodb.provisioned_read_capacity attribute' }],
   },
   'aws.dynamodb.provisioned_write_capacity': {
     brief: 'The value of the `ProvisionedThroughput.WriteCapacityUnits` request parameter.',
@@ -18411,7 +18413,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 2,
-    changelog: [{ version: 'next', description: 'Added aws.dynamodb.provisioned_write_capacity attribute' }],
+    changelog: [
+      { version: 'next', prs: [478], description: 'Added aws.dynamodb.provisioned_write_capacity attribute' },
+    ],
   },
   'aws.dynamodb.scanned_count': {
     brief: 'The value of the `ScannedCount` response parameter.',
@@ -18422,7 +18426,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 50,
-    changelog: [{ version: 'next', description: 'Added aws.dynamodb.scanned_count attribute' }],
+    changelog: [{ version: 'next', prs: [478], description: 'Added aws.dynamodb.scanned_count attribute' }],
   },
   'aws.dynamodb.scan_forward': {
     brief: 'The value of the `ScanIndexForward` request parameter.',
@@ -18433,7 +18437,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: true,
-    changelog: [{ version: 'next', description: 'Added aws.dynamodb.scan_forward attribute' }],
+    changelog: [{ version: 'next', prs: [478], description: 'Added aws.dynamodb.scan_forward attribute' }],
   },
   'aws.dynamodb.segment': {
     brief: 'The value of the `Segment` request parameter.',
@@ -18444,7 +18448,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 10,
-    changelog: [{ version: 'next', description: 'Added aws.dynamodb.segment attribute' }],
+    changelog: [{ version: 'next', prs: [478], description: 'Added aws.dynamodb.segment attribute' }],
   },
   'aws.dynamodb.select': {
     brief: 'The value of the `Select` request parameter.',
@@ -18455,7 +18459,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'ALL_ATTRIBUTES',
-    changelog: [{ version: 'next', description: 'Added aws.dynamodb.select attribute' }],
+    changelog: [{ version: 'next', prs: [478], description: 'Added aws.dynamodb.select attribute' }],
   },
   'aws.dynamodb.table_count': {
     brief: 'The number of items in the `TableNames` response parameter.',
@@ -18466,7 +18470,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 20,
-    changelog: [{ version: 'next', description: 'Added aws.dynamodb.table_count attribute' }],
+    changelog: [{ version: 'next', prs: [478], description: 'Added aws.dynamodb.table_count attribute' }],
   },
   'aws.dynamodb.table_names': {
     brief: 'The keys in the `RequestItems` object field.',
@@ -18477,7 +18481,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: ['Users', 'Cats'],
-    changelog: [{ version: 'next', description: 'Added aws.dynamodb.table_names attribute' }],
+    changelog: [{ version: 'next', prs: [478], description: 'Added aws.dynamodb.table_names attribute' }],
   },
   'aws.dynamodb.total_segments': {
     brief: 'The value of the `TotalSegments` request parameter.',
@@ -18488,7 +18492,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 100,
-    changelog: [{ version: 'next', description: 'Added aws.dynamodb.total_segments attribute' }],
+    changelog: [{ version: 'next', prs: [478], description: 'Added aws.dynamodb.total_segments attribute' }],
   },
   'aws.kinesis.stream.name': {
     brief: 'The name of the AWS Kinesis stream the request refers to.',
@@ -18499,7 +18503,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'some-stream-name',
-    changelog: [{ version: 'next', description: 'Added aws.kinesis.stream.name attribute' }],
+    changelog: [{ version: 'next', prs: [478], description: 'Added aws.kinesis.stream.name attribute' }],
   },
   'aws.lambda.aws_request_id': {
     brief: 'The AWS request ID as received by the Lambda function runtime',
@@ -18657,7 +18661,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'wzHcyEWfmOGDIE5QOhTAqFDoDWP3y8IUvpNINCwL9N4TEHbUw0/gZJ+VZTmCNCWR7fezEN3eCiQ=',
-    changelog: [{ version: 'next', description: 'Added aws.request.extended_id attribute' }],
+    changelog: [{ version: 'next', prs: [478], description: 'Added aws.request.extended_id attribute' }],
   },
   'aws.request.id': {
     brief: 'The AWS request ID as returned in the response headers.',
@@ -18668,7 +18672,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: '79b9da39-b7ae-508a-a6bc-864b2829c622',
-    changelog: [{ version: 'next', description: 'Added aws.request.id attribute' }],
+    changelog: [{ version: 'next', prs: [478], description: 'Added aws.request.id attribute' }],
   },
   'aws.s3.bucket': {
     brief: 'The S3 bucket name the request refers to.',
@@ -18679,7 +18683,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'ot-demo-test',
-    changelog: [{ version: 'next', description: 'Added aws.s3.bucket attribute' }],
+    changelog: [{ version: 'next', prs: [478], description: 'Added aws.s3.bucket attribute' }],
   },
   'aws.secretsmanager.secret.arn': {
     brief: 'The ARN of the Secret stored in Secrets Manager.',
@@ -18690,7 +18694,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'arn:aws:secretsmanager:us-east-1:123456789012:secret:SecretName-6RandomCharacters',
-    changelog: [{ version: 'next', description: 'Added aws.secretsmanager.secret.arn attribute' }],
+    changelog: [{ version: 'next', prs: [478], description: 'Added aws.secretsmanager.secret.arn attribute' }],
   },
   'aws.sns.topic.arn': {
     brief:
@@ -18702,7 +18706,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'arn:aws:sns:us-east-1:123456789012:mystack-mytopic-NZJ5JSMVGFIE',
-    changelog: [{ version: 'next', description: 'Added aws.sns.topic.arn attribute' }],
+    changelog: [{ version: 'next', prs: [478], description: 'Added aws.sns.topic.arn attribute' }],
   },
   'aws.step_functions.activity.arn': {
     brief: 'The ARN of the AWS Step Functions Activity.',
@@ -18713,7 +18717,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'arn:aws:states:us-east-1:123456789012:activity:get-greeting',
-    changelog: [{ version: 'next', description: 'Added aws.step_functions.activity.arn attribute' }],
+    changelog: [{ version: 'next', prs: [478], description: 'Added aws.step_functions.activity.arn attribute' }],
   },
   'aws.step_functions.state_machine.arn': {
     brief: 'The ARN of the AWS Step Functions State Machine.',
@@ -18724,7 +18728,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'arn:aws:states:us-east-1:123456789012:stateMachine:myStateMachine:1',
-    changelog: [{ version: 'next', description: 'Added aws.step_functions.state_machine.arn attribute' }],
+    changelog: [{ version: 'next', prs: [478], description: 'Added aws.step_functions.state_machine.arn attribute' }],
   },
   blocked_main_thread: {
     brief: 'Whether the main thread was blocked by the span.',
@@ -20605,7 +20609,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'my-function',
-    changelog: [{ version: 'next', description: 'Added faas.invoked_name attribute' }],
+    changelog: [{ version: 'next', prs: [478], description: 'Added faas.invoked_name attribute' }],
   },
   'faas.invoked_provider': {
     brief: 'The cloud provider of the invoked function.',
@@ -20616,7 +20620,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'aws',
-    changelog: [{ version: 'next', description: 'Added faas.invoked_provider attribute' }],
+    changelog: [{ version: 'next', prs: [478], description: 'Added faas.invoked_provider attribute' }],
   },
   'faas.invoked_region': {
     brief: 'The cloud region of the invoked function.',
@@ -20627,7 +20631,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'eu-central-1',
-    changelog: [{ version: 'next', description: 'Added faas.invoked_region attribute' }],
+    changelog: [{ version: 'next', prs: [478], description: 'Added faas.invoked_region attribute' }],
   },
   'faas.name': {
     brief: 'The name of the serverless function',
@@ -21367,7 +21371,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: ['forest', 'lived'],
-    changelog: [{ version: 'next', description: 'Added gen_ai.request.stop_sequences attribute' }],
+    changelog: [{ version: 'next', prs: [478], description: 'Added gen_ai.request.stop_sequences attribute' }],
   },
   'gen_ai.request.temperature': {
     brief:
@@ -23389,6 +23393,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [
       {
         version: 'next',
+        prs: [478],
         description: 'Added messaging.destination attribute, deprecated in favor of messaging.destination.name',
       },
     ],
@@ -23415,7 +23420,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'BestTopic',
     aliases: ['messaging.destination'],
     changelog: [
-      { version: 'next', description: 'Added messaging.destination as an alias' },
+      { version: 'next', prs: [478], description: 'Added messaging.destination as an alias' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
     ],
@@ -24516,7 +24521,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'aws-api',
-    changelog: [{ version: 'next', description: 'Added rpc.system attribute' }],
+    changelog: [{ version: 'next', prs: [478], description: 'Added rpc.system attribute' }],
   },
   'runtime.build': {
     brief: 'The application build string, when it is separate from the version.',

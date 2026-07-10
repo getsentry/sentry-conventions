@@ -11,6 +11,7 @@
   "changelog": [
     {
       "version": "next",
+      "prs": [478],
       "description": "Added aws.dynamodb.index_name attribute"
     }
   ]

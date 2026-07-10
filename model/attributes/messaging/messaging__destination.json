@@ -17,6 +17,7 @@
   "changelog": [
     {
       "version": "next",
+      "prs": [478],
       "description": "Added messaging.destination attribute, deprecated in favor of messaging.destination.name"
     }
   ]

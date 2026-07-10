@@ -13,6 +13,7 @@
   "changelog": [
     {
       "version": "next",
+      "prs": [478],
       "description": "Added aws.dynamodb.local_secondary_indexes attribute"
     }
   ]
