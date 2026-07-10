@@ -1,0 +1,18 @@
+{
+  "key": "rpc.system",
+  "brief": "A string identifying the remoting system.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "example": "aws-api",
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [482],
+      "description": "Added rpc.system attribute"
+    }
+  ]
+}

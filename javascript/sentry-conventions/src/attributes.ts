@@ -6308,6 +6308,27 @@ export const GEN_AI_REQUEST_SEED = 'gen_ai.request.seed';
  */
 export type GEN_AI_REQUEST_SEED_TYPE = string;
 
+// Path: model/attributes/gen_ai/gen_ai__request__stop_sequences.json
+
+/**
+ * List of sequences that the model will use to stop generating further tokens. `gen_ai.request.stop_sequences`
+ *
+ * Attribute Value Type: `Array<string>` {@link GEN_AI_REQUEST_STOP_SEQUENCES_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example ["forest","lived"]
+ */
+export const GEN_AI_REQUEST_STOP_SEQUENCES = 'gen_ai.request.stop_sequences';
+
+/**
+ * Type for {@link GEN_AI_REQUEST_STOP_SEQUENCES} gen_ai.request.stop_sequences
+ */
+export type GEN_AI_REQUEST_STOP_SEQUENCES_TYPE = Array<string>;
+
 // Path: model/attributes/gen_ai/gen_ai__request__temperature.json
 
 /**
@@ -9403,6 +9424,30 @@ export const MESSAGING_BATCH_MESSAGE_COUNT = 'messaging.batch.message_count';
  */
 export type MESSAGING_BATCH_MESSAGE_COUNT_TYPE = number;
 
+// Path: model/attributes/messaging/messaging__destination.json
+
+/**
+ * The message destination name. `messaging.destination`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_DESTINATION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link MESSAGING_DESTINATION_NAME} `messaging.destination.name`
+ *
+ * @deprecated Use {@link MESSAGING_DESTINATION_NAME} (messaging.destination.name) instead - This attribute is being deprecated in favor of messaging.destination.name, which is the OTel-aligned replacement.
+ * @example "BestTopic"
+ */
+export const MESSAGING_DESTINATION = 'messaging.destination';
+
+/**
+ * Type for {@link MESSAGING_DESTINATION} messaging.destination
+ */
+export type MESSAGING_DESTINATION_TYPE = string;
+
 // Path: model/attributes/messaging/messaging__destination__connection.json
 
 /**
@@ -9435,6 +9480,8 @@ export type MESSAGING_DESTINATION_CONNECTION_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
+ *
+ * Aliases: {@link MESSAGING_DESTINATION} `messaging.destination`
  *
  * @example "BestTopic"
  */
@@ -11321,6 +11368,27 @@ export const RPC_SERVICE = 'rpc.service';
  * Type for {@link RPC_SERVICE} rpc.service
  */
 export type RPC_SERVICE_TYPE = string;
+
+// Path: model/attributes/rpc/rpc__system.json
+
+/**
+ * A string identifying the remoting system. `rpc.system`
+ *
+ * Attribute Value Type: `string` {@link RPC_SYSTEM_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "aws-api"
+ */
+export const RPC_SYSTEM = 'rpc.system';
+
+/**
+ * Type for {@link RPC_SYSTEM} rpc.system
+ */
+export type RPC_SYSTEM_TYPE = string;
 
 // Path: model/attributes/runtime/runtime__build.json
 
@@ -15373,6 +15441,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'gen_ai.request.presence_penalty': 'double',
   'gen_ai.request.reasoning_effort': 'string',
   'gen_ai.request.seed': 'string',
+  'gen_ai.request.stop_sequences': 'string[]',
   'gen_ai.request.temperature': 'double',
   'gen_ai.request.top_k': 'integer',
   'gen_ai.request.top_p': 'double',
@@ -15511,6 +15580,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'mcp.transport': 'string',
   'mdc.<key>': 'string',
   'messaging.batch.message_count': 'integer',
+  'messaging.destination': 'string',
   'messaging.destination.connection': 'string',
   'messaging.destination.name': 'string',
   'messaging.message.body.size': 'integer',
@@ -15597,6 +15667,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'rpc.method': 'string',
   'rpc.response.status_code': 'string',
   'rpc.service': 'string',
+  'rpc.system': 'string',
   'runtime.build': 'string',
   'runtime.name': 'string',
   'runtime.raw_description': 'string',
@@ -16055,6 +16126,7 @@ export type AttributeName =
   | typeof GEN_AI_REQUEST_PRESENCE_PENALTY
   | typeof GEN_AI_REQUEST_REASONING_EFFORT
   | typeof GEN_AI_REQUEST_SEED
+  | typeof GEN_AI_REQUEST_STOP_SEQUENCES
   | typeof GEN_AI_REQUEST_TEMPERATURE
   | typeof GEN_AI_REQUEST_TOP_K
   | typeof GEN_AI_REQUEST_TOP_P
@@ -16193,6 +16265,7 @@ export type AttributeName =
   | typeof MCP_TRANSPORT
   | typeof MDC_KEY
   | typeof MESSAGING_BATCH_MESSAGE_COUNT
+  | typeof MESSAGING_DESTINATION
   | typeof MESSAGING_DESTINATION_CONNECTION
   | typeof MESSAGING_DESTINATION_NAME
   | typeof MESSAGING_MESSAGE_BODY_SIZE
@@ -16279,6 +16352,7 @@ export type AttributeName =
   | typeof RPC_METHOD
   | typeof RPC_RESPONSE_STATUS_CODE
   | typeof RPC_SERVICE
+  | typeof RPC_SYSTEM
   | typeof RUNTIME_BUILD
   | typeof RUNTIME_NAME
   | typeof RUNTIME_RAW_DESCRIPTION
@@ -20270,6 +20344,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['ai.seed'],
     changelog: [{ version: '0.1.0', prs: [57, 127] }],
   },
+  'gen_ai.request.stop_sequences': {
+    brief: 'List of sequences that the model will use to stop generating further tokens.',
+    type: 'string[]',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: ['forest', 'lived'],
+    changelog: [{ version: 'next', prs: [482], description: 'Added gen_ai.request.stop_sequences attribute' }],
+  },
   'gen_ai.request.temperature': {
     brief:
       'For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.',
@@ -22272,6 +22357,29 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 10,
     changelog: [{ version: '0.6.0', prs: [341], description: 'Added messaging.batch.message_count attribute' }],
   },
+  'messaging.destination': {
+    brief: 'The message destination name.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'BestTopic',
+    deprecation: {
+      replacement: 'messaging.destination.name',
+      reason:
+        'This attribute is being deprecated in favor of messaging.destination.name, which is the OTel-aligned replacement.',
+    },
+    aliases: ['messaging.destination.name'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [482],
+        description: 'Added messaging.destination attribute, deprecated in favor of messaging.destination.name',
+      },
+    ],
+  },
   'messaging.destination.connection': {
     brief: 'The message destination connection.',
     type: 'string',
@@ -22292,7 +22400,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'BestTopic',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: ['messaging.destination'],
+    changelog: [
+      { version: 'next', prs: [482], description: 'Added messaging.destination as an alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'messaging.message.body.size': {
     brief: 'The size of the message body in bytes.',
@@ -23380,6 +23493,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'myService.BestService',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+  },
+  'rpc.system': {
+    brief: 'A string identifying the remoting system.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'aws-api',
+    changelog: [{ version: 'next', prs: [482], description: 'Added rpc.system attribute' }],
   },
   'runtime.build': {
     brief: 'The application build string, when it is separate from the version.',
@@ -25765,6 +25889,7 @@ export type Attributes = {
   [GEN_AI_REQUEST_PRESENCE_PENALTY]?: GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE;
   [GEN_AI_REQUEST_REASONING_EFFORT]?: GEN_AI_REQUEST_REASONING_EFFORT_TYPE;
   [GEN_AI_REQUEST_SEED]?: GEN_AI_REQUEST_SEED_TYPE;
+  [GEN_AI_REQUEST_STOP_SEQUENCES]?: GEN_AI_REQUEST_STOP_SEQUENCES_TYPE;
   [GEN_AI_REQUEST_TEMPERATURE]?: GEN_AI_REQUEST_TEMPERATURE_TYPE;
   [GEN_AI_REQUEST_TOP_K]?: GEN_AI_REQUEST_TOP_K_TYPE;
   [GEN_AI_REQUEST_TOP_P]?: GEN_AI_REQUEST_TOP_P_TYPE;
@@ -25903,6 +26028,7 @@ export type Attributes = {
   [MCP_TRANSPORT]?: MCP_TRANSPORT_TYPE;
   [MDC_KEY]?: MDC_KEY_TYPE;
   [MESSAGING_BATCH_MESSAGE_COUNT]?: MESSAGING_BATCH_MESSAGE_COUNT_TYPE;
+  [MESSAGING_DESTINATION]?: MESSAGING_DESTINATION_TYPE;
   [MESSAGING_DESTINATION_CONNECTION]?: MESSAGING_DESTINATION_CONNECTION_TYPE;
   [MESSAGING_DESTINATION_NAME]?: MESSAGING_DESTINATION_NAME_TYPE;
   [MESSAGING_MESSAGE_BODY_SIZE]?: MESSAGING_MESSAGE_BODY_SIZE_TYPE;
@@ -25989,6 +26115,7 @@ export type Attributes = {
   [RPC_METHOD]?: RPC_METHOD_TYPE;
   [RPC_RESPONSE_STATUS_CODE]?: RPC_RESPONSE_STATUS_CODE_TYPE;
   [RPC_SERVICE]?: RPC_SERVICE_TYPE;
+  [RPC_SYSTEM]?: RPC_SYSTEM_TYPE;
   [RUNTIME_BUILD]?: RUNTIME_BUILD_TYPE;
   [RUNTIME_NAME]?: RUNTIME_NAME_TYPE;
   [RUNTIME_RAW_DESCRIPTION]?: RUNTIME_RAW_DESCRIPTION_TYPE;
