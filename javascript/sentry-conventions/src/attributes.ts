@@ -2121,6 +2121,11 @@ export type BROWSER_WEB_VITAL_CLS_REPORT_EVENT_TYPE = string;
 export const BROWSER_WEB_VITAL_CLS_SOURCE_KEY = 'browser.web_vital.cls.source.<key>';
 
 /**
+ * Base key for {@link BROWSER_WEB_VITAL_CLS_SOURCE_KEY}. Use with a dynamic suffix, e.g. `${BROWSER_WEB_VITAL_CLS_SOURCE_KEY_BASE}.${key}`.
+ */
+export const BROWSER_WEB_VITAL_CLS_SOURCE_KEY_BASE = 'browser.web_vital.cls.source';
+
+/**
  * Type for {@link BROWSER_WEB_VITAL_CLS_SOURCE_KEY} browser.web_vital.cls.source.<key>
  */
 export type BROWSER_WEB_VITAL_CLS_SOURCE_KEY_TYPE = string;
@@ -3191,6 +3196,13 @@ export type CLS_TYPE = number;
 export const CLS_SOURCE_KEY = 'cls.source.<key>';
 
 /**
+ * Base key for {@link CLS_SOURCE_KEY}. Use with a dynamic suffix, e.g. `${CLS_SOURCE_KEY_BASE}.${key}`.
+ *
+ * @deprecated Use {@link BROWSER_WEB_VITAL_CLS_SOURCE_KEY_BASE} (browser.web_vital.cls.source) instead - The CLS source is now recorded as a browser.web_vital.cls.source.<key> attribute.
+ */
+export const CLS_SOURCE_KEY_BASE = 'cls.source';
+
+/**
  * Type for {@link CLS_SOURCE_KEY} cls.source.<key>
  */
 export type CLS_SOURCE_KEY_TYPE = string;
@@ -3683,6 +3695,11 @@ export type DB_OPERATION_NAME_TYPE = string;
  * @example "db.query.parameter.foo='123'"
  */
 export const DB_QUERY_PARAMETER_KEY = 'db.query.parameter.<key>';
+
+/**
+ * Base key for {@link DB_QUERY_PARAMETER_KEY}. Use with a dynamic suffix, e.g. `${DB_QUERY_PARAMETER_KEY_BASE}.${key}`.
+ */
+export const DB_QUERY_PARAMETER_KEY_BASE = 'db.query.parameter';
 
 /**
  * Type for {@link DB_QUERY_PARAMETER_KEY} db.query.parameter.<key>
@@ -5281,6 +5298,11 @@ export type FCP_TYPE = number;
  * @example "flag.evaluation.is_new_ui=true"
  */
 export const FLAG_EVALUATION_KEY = 'flag.evaluation.<key>';
+
+/**
+ * Base key for {@link FLAG_EVALUATION_KEY}. Use with a dynamic suffix, e.g. `${FLAG_EVALUATION_KEY_BASE}.${key}`.
+ */
+export const FLAG_EVALUATION_KEY_BASE = 'flag.evaluation';
 
 /**
  * Type for {@link FLAG_EVALUATION_KEY} flag.evaluation.<key>
@@ -7482,6 +7504,11 @@ export type HTTP_REQUEST_FETCH_START_TYPE = number;
 export const HTTP_REQUEST_HEADER_KEY = 'http.request.header.<key>';
 
 /**
+ * Base key for {@link HTTP_REQUEST_HEADER_KEY}. Use with a dynamic suffix, e.g. `${HTTP_REQUEST_HEADER_KEY_BASE}.${key}`.
+ */
+export const HTTP_REQUEST_HEADER_KEY_BASE = 'http.request.header';
+
+/**
  * Type for {@link HTTP_REQUEST_HEADER_KEY} http.request.header.<key>
  */
 export type HTTP_REQUEST_HEADER_KEY_TYPE = Array<string>;
@@ -7832,6 +7859,11 @@ export type HTTP_RESPONSE_HEADER_CONTENT_LENGTH_TYPE = string;
  * @example "http.response.header.custom-header=['foo', 'bar']"
  */
 export const HTTP_RESPONSE_HEADER_KEY = 'http.response.header.<key>';
+
+/**
+ * Base key for {@link HTTP_RESPONSE_HEADER_KEY}. Use with a dynamic suffix, e.g. `${HTTP_RESPONSE_HEADER_KEY_BASE}.${key}`.
+ */
+export const HTTP_RESPONSE_HEADER_KEY_BASE = 'http.response.header';
 
 /**
  * Type for {@link HTTP_RESPONSE_HEADER_KEY} http.response.header.<key>
@@ -9003,6 +9035,11 @@ export type MCP_PROTOCOL_VERSION_TYPE = string;
 export const MCP_REQUEST_ARGUMENT_KEY = 'mcp.request.argument.<key>';
 
 /**
+ * Base key for {@link MCP_REQUEST_ARGUMENT_KEY}. Use with a dynamic suffix, e.g. `${MCP_REQUEST_ARGUMENT_KEY_BASE}.${key}`.
+ */
+export const MCP_REQUEST_ARGUMENT_KEY_BASE = 'mcp.request.argument';
+
+/**
  * Type for {@link MCP_REQUEST_ARGUMENT_KEY} mcp.request.argument.<key>
  */
 export type MCP_REQUEST_ARGUMENT_KEY_TYPE = string;
@@ -9334,6 +9371,11 @@ export type MCP_TRANSPORT_TYPE = string;
  * @example "mdc.some_key='some_value'"
  */
 export const MDC_KEY = 'mdc.<key>';
+
+/**
+ * Base key for {@link MDC_KEY}. Use with a dynamic suffix, e.g. `${MDC_KEY_BASE}.${key}`.
+ */
+export const MDC_KEY_BASE = 'mdc';
 
 /**
  * Type for {@link MDC_KEY} mdc.<key>
@@ -10727,6 +10769,11 @@ export type OTEL_STATUS_DESCRIPTION_TYPE = string;
 export const PARAMS_KEY = 'params.<key>';
 
 /**
+ * Base key for {@link PARAMS_KEY}. Use with a dynamic suffix, e.g. `${PARAMS_KEY_BASE}.${key}`.
+ */
+export const PARAMS_KEY_BASE = 'params';
+
+/**
  * Type for {@link PARAMS_KEY} params.<key>
  */
 export type PARAMS_KEY_TYPE = string;
@@ -10994,6 +11041,13 @@ export type PROCESS_RUNTIME_VERSION_TYPE = string;
 export const QUERY_KEY = 'query.<key>';
 
 /**
+ * Base key for {@link QUERY_KEY}. Use with a dynamic suffix, e.g. `${QUERY_KEY_BASE}.${key}`.
+ *
+ * @deprecated Use {@link URL_QUERY} (url.query) instead - Instead of sending items individually in query.<key>, they should be sent all together with url.query.
+ */
+export const QUERY_KEY_BASE = 'query';
+
+/**
  * Type for {@link QUERY_KEY} query.<key>
  */
 export type QUERY_KEY_TYPE = string;
@@ -11060,6 +11114,11 @@ export type RELEASE_TYPE = string;
  * @example "http.response.header.text='test'"
  */
 export const REMIX_ACTION_FORM_DATA_KEY = 'remix.action_form_data.<key>';
+
+/**
+ * Base key for {@link REMIX_ACTION_FORM_DATA_KEY}. Use with a dynamic suffix, e.g. `${REMIX_ACTION_FORM_DATA_KEY_BASE}.${key}`.
+ */
+export const REMIX_ACTION_FORM_DATA_KEY_BASE = 'remix.action_form_data';
 
 /**
  * Type for {@link REMIX_ACTION_FORM_DATA_KEY} remix.action_form_data.<key>
@@ -11376,6 +11435,11 @@ export type RUNTIME_VERSION_TYPE = string;
 export const SCORE_KEY = 'score.<key>';
 
 /**
+ * Base key for {@link SCORE_KEY}. Use with a dynamic suffix, e.g. `${SCORE_KEY_BASE}.${key}`.
+ */
+export const SCORE_KEY_BASE = 'score';
+
+/**
  * Type for {@link SCORE_KEY} score.<key>
  */
 export type SCORE_KEY_TYPE = number;
@@ -11397,6 +11461,11 @@ export type SCORE_KEY_TYPE = number;
  * @example "score.ratio.inp=0.7748"
  */
 export const SCORE_RATIO_KEY = 'score.ratio.<key>';
+
+/**
+ * Base key for {@link SCORE_RATIO_KEY}. Use with a dynamic suffix, e.g. `${SCORE_RATIO_KEY_BASE}.${key}`.
+ */
+export const SCORE_RATIO_KEY_BASE = 'score.ratio';
 
 /**
  * Type for {@link SCORE_RATIO_KEY} score.ratio.<key>
@@ -11439,6 +11508,11 @@ export type SCORE_TOTAL_TYPE = number;
  * @example "score.weight.fcp=0.25"
  */
 export const SCORE_WEIGHT_KEY = 'score.weight.<key>';
+
+/**
+ * Base key for {@link SCORE_WEIGHT_KEY}. Use with a dynamic suffix, e.g. `${SCORE_WEIGHT_KEY_BASE}.${key}`.
+ */
+export const SCORE_WEIGHT_KEY_BASE = 'score.weight';
 
 /**
  * Type for {@link SCORE_WEIGHT_KEY} score.weight.<key>
@@ -12100,6 +12174,11 @@ export type SENTRY_MOBILE_TYPE = boolean;
  * @example "sentry.module.brianium/paratest='v7.7.0'"
  */
 export const SENTRY_MODULE_KEY = 'sentry.module.<key>';
+
+/**
+ * Base key for {@link SENTRY_MODULE_KEY}. Use with a dynamic suffix, e.g. `${SENTRY_MODULE_KEY_BASE}.${key}`.
+ */
+export const SENTRY_MODULE_KEY_BASE = 'sentry.module';
 
 /**
  * Type for {@link SENTRY_MODULE_KEY} sentry.module.<key>
@@ -13796,6 +13875,11 @@ export type URL_PATH_TYPE = string;
  * @example "url.path.parameter.id='123'"
  */
 export const URL_PATH_PARAMETER_KEY = 'url.path.parameter.<key>';
+
+/**
+ * Base key for {@link URL_PATH_PARAMETER_KEY}. Use with a dynamic suffix, e.g. `${URL_PATH_PARAMETER_KEY_BASE}.${key}`.
+ */
+export const URL_PATH_PARAMETER_KEY_BASE = 'url.path.parameter';
 
 /**
  * Type for {@link URL_PATH_PARAMETER_KEY} url.path.parameter.<key>
