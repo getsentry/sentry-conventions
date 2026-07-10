@@ -273,6 +273,7 @@ class _AttributeNamesMeta(type):
         "SENTRY_USER_ID",
         "SENTRY_USER_IP",
         "SENTRY_USER_USERNAME",
+        "STARLETTE_MIDDLEWARE_NAME",
         "TIME_TO_FULL_DISPLAY",
         "TIME_TO_INITIAL_DISPLAY",
         "TRANSACTION",
@@ -5732,6 +5733,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: starlette.middleware_name
     Example: "AuthenticationMiddleware"
     """
 
@@ -7646,6 +7648,21 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    """
+
+    # Path: model/attributes/starlette/starlette__middleware_name.json
+    STARLETTE_MIDDLEWARE_NAME: Literal["starlette.middleware_name"] = (
+        "starlette.middleware_name"
+    )
+    """The name of the Starlette middleware.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: middleware.name
+    DEPRECATED: Use middleware.name instead - This attribute is being deprecated in favor of middleware.name, which is the framework-agnostic replacement.
+    Example: "AuthenticationMiddleware"
     """
 
     # Path: model/attributes/state/state__type.json
@@ -15094,7 +15111,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="AuthenticationMiddleware",
+        aliases=["starlette.middleware_name"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added starlette.middleware_name as an alias",
+            ),
             ChangelogEntry(
                 version="0.6.0",
                 prs=[336],
@@ -17193,6 +17215,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "starlette.middleware_name": AttributeMetadata(
+        brief="The name of the Starlette middleware.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="AuthenticationMiddleware",
+        deprecation=DeprecationInfo(
+            replacement="middleware.name",
+            reason="This attribute is being deprecated in favor of middleware.name, which is the framework-agnostic replacement.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["middleware.name"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added starlette.middleware_name attribute, deprecated in favor of middleware.name",
+            ),
+        ],
+    ),
     "state.type": AttributeMetadata(
         brief="The type of state management library",
         type=AttributeType.STRING,
@@ -18840,6 +18882,7 @@ Attributes = TypedDict(
         "session.id": str,
         "stall_percentage": float,
         "stall_total_time": float,
+        "starlette.middleware_name": str,
         "state.type": str,
         "thread.id": int,
         "thread.name": str,
