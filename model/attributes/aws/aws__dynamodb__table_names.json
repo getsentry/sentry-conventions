@@ -1,0 +1,18 @@
+{
+  "key": "aws.dynamodb.table_names",
+  "brief": "The keys in the `RequestItems` object field.",
+  "type": "string[]",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "example": ["Users", "Cats"],
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [479],
+      "description": "Added aws.dynamodb.table_names attribute"
+    }
+  ]
+}
