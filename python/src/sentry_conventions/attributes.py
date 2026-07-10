@@ -6651,7 +6651,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     Type: str
     Apply Scrubbing: manual
-    Defined in OTEL: No
+    Defined in OTEL: Yes
     Visibility: public
     Aliases: rpc.system.name
     DEPRECATED: Use rpc.system.name instead - This attribute is being deprecated in favor of rpc.system.name, which is the OTel-aligned replacement.
@@ -16189,7 +16189,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="A string identifying the remoting system.",
         type=AttributeType.STRING,
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
-        is_in_otel=False,
+        is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="aws-api",
         deprecation=DeprecationInfo(

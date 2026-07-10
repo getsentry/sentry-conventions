@@ -11378,7 +11378,7 @@ export type RPC_SERVICE_TYPE = string;
  *
  * Apply Scrubbing: manual
  *
- * Attribute defined in OTEL: No
+ * Attribute defined in OTEL: Yes
  * Visibility: public
  *
  * Aliases: {@link RPC_SYSTEM_NAME} `rpc.system.name`
@@ -23528,7 +23528,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     applyScrubbing: {
       key: 'manual',
     },
-    isInOtel: false,
+    isInOtel: true,
     visibility: 'public',
     example: 'aws-api',
     deprecation: {

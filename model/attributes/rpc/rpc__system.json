@@ -5,7 +5,7 @@
   "apply_scrubbing": {
     "key": "manual"
   },
-  "is_in_otel": false,
+  "is_in_otel": true,
   "example": "aws-api",
   "alias": ["rpc.system.name"],
   "deprecation": {
